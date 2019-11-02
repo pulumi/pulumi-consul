@@ -141,7 +141,14 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"consul_keys":           {Tok: makeResource(mainMod, "Keys")},
+			"consul_keys": {
+				Tok: makeResource(mainMod, "Keys"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"key": {
+						CSharpName: "KeysCollection",
+					},
+				},
+			},
 			"consul_node":           {Tok: makeResource(mainMod, "Node")},
 			"consul_prepared_query": {Tok: makeResource(mainMod, "PreparedQuery")},
 			"consul_service":        {Tok: makeResource(mainMod, "Service")},

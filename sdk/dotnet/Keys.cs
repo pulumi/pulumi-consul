@@ -24,7 +24,7 @@ namespace Pulumi.Consul
         /// Supported values documented below.
         /// </summary>
         [Output("keys")]
-        public Output<ImmutableArray<Outputs.KeysKeys>> Keys { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.KeysKeys>> KeysCollection { get; private set; } = null!;
 
         /// <summary>
         /// The ACL token to use. This overrides the
@@ -96,7 +96,7 @@ namespace Pulumi.Consul
         /// Specifies a key in Consul to be written.
         /// Supported values documented below.
         /// </summary>
-        public InputList<Inputs.KeysKeysArgs> Keys
+        public InputList<Inputs.KeysKeysArgs> KeysCollection
         {
             get => _keys ?? (_keys = new InputList<Inputs.KeysKeysArgs>());
             set => _keys = value;
@@ -130,7 +130,7 @@ namespace Pulumi.Consul
         /// Specifies a key in Consul to be written.
         /// Supported values documented below.
         /// </summary>
-        public InputList<Inputs.KeysKeysGetArgs> Keys
+        public InputList<Inputs.KeysKeysGetArgs> KeysCollection
         {
             get => _keys ?? (_keys = new InputList<Inputs.KeysKeysGetArgs>());
             set => _keys = value;
