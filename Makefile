@@ -65,6 +65,7 @@ build:: tfgen provider install_plugins
 
 install_plugins::
 	pulumi plugin install resource aws 1.0.0
+	pulumi plugin install resource vault 1.0.0
 
 tfgen::
 	go install -ldflags "-X github.com/pulumi/pulumi-${PACK}/pkg/version.Version=${VERSION}" ${PROJECT}/cmd/${TFGEN}
