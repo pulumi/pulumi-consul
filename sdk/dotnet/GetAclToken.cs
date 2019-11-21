@@ -19,7 +19,7 @@ namespace Pulumi.Consul
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/acl_token.html.markdown.
         /// </summary>
         public static Task<GetAclTokenResult> GetAclToken(GetAclTokenArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAclTokenResult>("consul:index/getAclToken:getAclToken", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAclTokenResult>("consul:index/getAclToken:getAclToken", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetAclTokenArgs : Pulumi.ResourceArgs

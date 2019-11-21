@@ -21,7 +21,7 @@ namespace Pulumi.Consul
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/service_health.html.markdown.
         /// </summary>
         public static Task<GetServiceHealthResult> GetServiceHealth(GetServiceHealthArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServiceHealthResult>("consul:index/getServiceHealth:getServiceHealth", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetServiceHealthResult>("consul:index/getServiceHealth:getServiceHealth", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetServiceHealthArgs : Pulumi.ResourceArgs

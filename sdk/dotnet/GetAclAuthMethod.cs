@@ -16,7 +16,7 @@ namespace Pulumi.Consul
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/acl_auth_method.html.markdown.
         /// </summary>
         public static Task<GetAclAuthMethodResult> GetAclAuthMethod(GetAclAuthMethodArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAclAuthMethodResult>("consul:index/getAclAuthMethod:getAclAuthMethod", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAclAuthMethodResult>("consul:index/getAclAuthMethod:getAclAuthMethod", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetAclAuthMethodArgs : Pulumi.ResourceArgs

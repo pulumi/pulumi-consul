@@ -62,7 +62,7 @@ namespace Pulumi.Consul
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public CatalogEntry(string name, CatalogEntryArgs args, CustomResourceOptions? options = null)
-            : base("consul:index/catalogEntry:CatalogEntry", name, args, MakeResourceOptions(options, ""))
+            : base("consul:index/catalogEntry:CatalogEntry", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

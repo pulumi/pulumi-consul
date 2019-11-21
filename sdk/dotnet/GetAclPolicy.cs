@@ -16,7 +16,7 @@ namespace Pulumi.Consul
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/acl_policy.html.markdown.
         /// </summary>
         public static Task<GetAclPolicyResult> GetAclPolicy(GetAclPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAclPolicyResult>("consul:index/getAclPolicy:getAclPolicy", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAclPolicyResult>("consul:index/getAclPolicy:getAclPolicy", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetAclPolicyArgs : Pulumi.ResourceArgs

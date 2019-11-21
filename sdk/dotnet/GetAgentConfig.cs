@@ -21,7 +21,7 @@ namespace Pulumi.Consul
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/agent_config.html.markdown.
         /// </summary>
         public static Task<GetAgentConfigResult> GetAgentConfig(InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAgentConfigResult>("consul:index/getAgentConfig:getAgentConfig", null, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAgentConfigResult>("consul:index/getAgentConfig:getAgentConfig", ResourceArgs.Empty, options.WithVersion());
     }
 
     [OutputType]

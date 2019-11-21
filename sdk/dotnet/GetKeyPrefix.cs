@@ -13,7 +13,7 @@ namespace Pulumi.Consul
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/key_prefix.html.markdown.
         /// </summary>
         public static Task<GetKeyPrefixResult> GetKeyPrefix(GetKeyPrefixArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKeyPrefixResult>("consul:index/getKeyPrefix:getKeyPrefix", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetKeyPrefixResult>("consul:index/getKeyPrefix:getKeyPrefix", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetKeyPrefixArgs : Pulumi.ResourceArgs

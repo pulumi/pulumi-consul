@@ -63,7 +63,7 @@ namespace Pulumi.Consul
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Intention(string name, IntentionArgs args, CustomResourceOptions? options = null)
-            : base("consul:index/intention:Intention", name, args, MakeResourceOptions(options, ""))
+            : base("consul:index/intention:Intention", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

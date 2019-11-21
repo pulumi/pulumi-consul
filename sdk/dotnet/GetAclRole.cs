@@ -16,7 +16,7 @@ namespace Pulumi.Consul
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/acl_role.html.markdown.
         /// </summary>
         public static Task<GetAclRoleResult> GetAclRole(GetAclRoleArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAclRoleResult>("consul:index/getAclRole:getAclRole", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAclRoleResult>("consul:index/getAclRole:getAclRole", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetAclRoleArgs : Pulumi.ResourceArgs

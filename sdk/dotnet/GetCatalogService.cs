@@ -10,7 +10,7 @@ namespace Pulumi.Consul
     public static partial class Invokes
     {
         public static Task<GetCatalogServiceResult> GetCatalogService(GetCatalogServiceArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCatalogServiceResult>("consul:index/getCatalogService:getCatalogService", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetCatalogServiceResult>("consul:index/getCatalogService:getCatalogService", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetCatalogServiceArgs : Pulumi.ResourceArgs

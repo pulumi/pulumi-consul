@@ -54,7 +54,7 @@ namespace Pulumi.Consul
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Node(string name, NodeArgs args, CustomResourceOptions? options = null)
-            : base("consul:index/node:Node", name, args, MakeResourceOptions(options, ""))
+            : base("consul:index/node:Node", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

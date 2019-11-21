@@ -13,7 +13,7 @@ namespace Pulumi.Consul
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/acl_token_secret_id.html.markdown.
         /// </summary>
         public static Task<GetAclTokenSecretIdResult> GetAclTokenSecretId(GetAclTokenSecretIdArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAclTokenSecretIdResult>("consul:index/getAclTokenSecretId:getAclTokenSecretId", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAclTokenSecretIdResult>("consul:index/getAclTokenSecretId:getAclTokenSecretId", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetAclTokenSecretIdArgs : Pulumi.ResourceArgs
