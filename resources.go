@@ -122,17 +122,37 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		PreConfigureCallback: preConfigureCallback,
 		Resources: map[string]*tfbridge.ResourceInfo{
-			"consul_acl_auth_method":             {Tok: makeResource(mainMod, "AclAuthMethod")},
-			"consul_acl_binding_rule":            {Tok: makeResource(mainMod, "AclBindingRule")},
-			"consul_acl_policy":                  {Tok: makeResource(mainMod, "AclPolicy")},
-			"consul_acl_role":                    {Tok: makeResource(mainMod, "AclRole")},
+			"consul_acl_auth_method": {
+				Tok: makeResource(mainMod, "AclAuthMethod"),
+				Docs: &tfbridge.DocInfo{
+					Source: "acl_auth_method.markdown",
+				},
+			},
+			"consul_acl_binding_rule": {
+				Tok: makeResource(mainMod, "AclBindingRule"),
+				Docs: &tfbridge.DocInfo{
+					Source: "acl_binding_rule.markdown",
+				},
+			},
+			"consul_acl_policy": {Tok: makeResource(mainMod, "AclPolicy")},
+			"consul_acl_role": {
+				Tok: makeResource(mainMod, "AclRole"),
+				Docs: &tfbridge.DocInfo{
+					Source: "acl_role.markdown",
+				},
+			},
 			"consul_acl_token":                   {Tok: makeResource(mainMod, "AclToken")},
 			"consul_acl_token_policy_attachment": {Tok: makeResource(mainMod, "AclTokenPolicyAttachment")},
 			"consul_agent_service":               {Tok: makeResource(mainMod, "AgentService")},
 			"consul_autopilot_config":            {Tok: makeResource(mainMod, "AutopilotConfig")},
 			"consul_catalog_entry":               {Tok: makeResource(mainMod, "CatalogEntry")},
-			"consul_config_entry":                {Tok: makeResource(mainMod, "ConfigEntry")},
-			"consul_intention":                   {Tok: makeResource(mainMod, "Intention")},
+			"consul_config_entry": {
+				Tok: makeResource(mainMod, "ConfigEntry"),
+				Docs: &tfbridge.DocInfo{
+					Source: "config_entry.markdown",
+				},
+			},
+			"consul_intention": {Tok: makeResource(mainMod, "Intention")},
 			"consul_key_prefix": {
 				Tok: makeResource(mainMod, "KeyPrefix"),
 				Fields: map[string]*tfbridge.SchemaInfo{
@@ -149,9 +169,14 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"consul_node":           {Tok: makeResource(mainMod, "Node")},
-			"consul_prepared_query": {Tok: makeResource(mainMod, "PreparedQuery")},
-			"consul_service":        {Tok: makeResource(mainMod, "Service")},
+			"consul_node": {Tok: makeResource(mainMod, "Node")},
+			"consul_prepared_query": {
+				Tok: makeResource(mainMod, "PreparedQuery"),
+				Docs: &tfbridge.DocInfo{
+					Source: "prepared_query.markdown",
+				},
+			},
+			"consul_service": {Tok: makeResource(mainMod, "Service")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"consul_acl_auth_method":     {Tok: makeDataSource(mainMod, "getAclAuthMethod")},
