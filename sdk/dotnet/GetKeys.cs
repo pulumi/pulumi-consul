@@ -16,7 +16,7 @@ namespace Pulumi.Consul
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/keys.html.markdown.
         /// </summary>
         public static Task<GetKeysResult> GetKeys(GetKeysArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKeysResult>("consul:index/getKeys:getKeys", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetKeysResult>("consul:index/getKeys:getKeys", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetKeysArgs : Pulumi.ResourceArgs

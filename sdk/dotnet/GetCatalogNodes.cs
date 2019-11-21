@@ -10,7 +10,7 @@ namespace Pulumi.Consul
     public static partial class Invokes
     {
         public static Task<GetCatalogNodesResult> GetCatalogNodes(GetCatalogNodesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCatalogNodesResult>("consul:index/getCatalogNodes:getCatalogNodes", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetCatalogNodesResult>("consul:index/getCatalogNodes:getCatalogNodes", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetCatalogNodesArgs : Pulumi.ResourceArgs

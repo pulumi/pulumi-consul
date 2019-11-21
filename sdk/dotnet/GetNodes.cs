@@ -18,7 +18,7 @@ namespace Pulumi.Consul
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/nodes.html.markdown.
         /// </summary>
         public static Task<GetNodesResult> GetNodes(GetNodesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNodesResult>("consul:index/getNodes:getNodes", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetNodesResult>("consul:index/getNodes:getNodes", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetNodesArgs : Pulumi.ResourceArgs

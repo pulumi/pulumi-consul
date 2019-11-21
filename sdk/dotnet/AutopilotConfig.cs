@@ -85,7 +85,7 @@ namespace Pulumi.Consul
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AutopilotConfig(string name, AutopilotConfigArgs? args = null, CustomResourceOptions? options = null)
-            : base("consul:index/autopilotConfig:AutopilotConfig", name, args, MakeResourceOptions(options, ""))
+            : base("consul:index/autopilotConfig:AutopilotConfig", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

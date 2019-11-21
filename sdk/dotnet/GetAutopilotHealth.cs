@@ -17,7 +17,7 @@ namespace Pulumi.Consul
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/autopilot_health.html.markdown.
         /// </summary>
         public static Task<GetAutopilotHealthResult> GetAutopilotHealth(GetAutopilotHealthArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAutopilotHealthResult>("consul:index/getAutopilotHealth:getAutopilotHealth", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAutopilotHealthResult>("consul:index/getAutopilotHealth:getAutopilotHealth", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetAutopilotHealthArgs : Pulumi.ResourceArgs

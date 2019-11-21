@@ -21,7 +21,7 @@ namespace Pulumi.Consul
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/agent_self.html.markdown.
         /// </summary>
         public static Task<GetAgentSelfResult> GetAgentSelf(InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAgentSelfResult>("consul:index/getAgentSelf:getAgentSelf", null, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAgentSelfResult>("consul:index/getAgentSelf:getAgentSelf", ResourceArgs.Empty, options.WithVersion());
     }
 
     [OutputType]

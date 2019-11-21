@@ -59,7 +59,7 @@ namespace Pulumi.Consul
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public KeyPrefix(string name, KeyPrefixArgs args, CustomResourceOptions? options = null)
-            : base("consul:index/keyPrefix:KeyPrefix", name, args, MakeResourceOptions(options, ""))
+            : base("consul:index/keyPrefix:KeyPrefix", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 
