@@ -84,63 +84,63 @@ func GetPreparedQuery(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *PreparedQuery) URN() *pulumi.URNOutput {
+func (r *PreparedQuery) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *PreparedQuery) ID() *pulumi.IDOutput {
+func (r *PreparedQuery) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // When `true` the prepared query will return connect
 // proxy services for a queried service.  Conditions such as `tags` in the
 // prepared query will be matched against the proxy service. Defaults to false.
-func (r *PreparedQuery) Connect() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["connect"])
+func (r *PreparedQuery) Connect() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["connect"])
 }
 
 // The datacenter to use. This overrides the
 // agent's default datacenter and the datacenter in the provider setup.
-func (r *PreparedQuery) Datacenter() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["datacenter"])
+func (r *PreparedQuery) Datacenter() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["datacenter"])
 }
 
 // Settings for controlling the DNS response details.
-func (r *PreparedQuery) Dns() *pulumi.Output {
+func (r *PreparedQuery) Dns() pulumi.Output {
 	return r.s.State["dns"]
 }
 
 // Options for controlling behavior when no healthy
 // nodes are available in the local DC.
-func (r *PreparedQuery) Failover() *pulumi.Output {
+func (r *PreparedQuery) Failover() pulumi.Output {
 	return r.s.State["failover"]
 }
 
 // The name of the prepared query. Used to identify
 // the prepared query during requests. Can be specified as an empty string
 // to configure the query as a catch-all.
-func (r *PreparedQuery) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *PreparedQuery) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Allows specifying the name of a node to sort results
 // near using Consul's distance sorting and network coordinates. The magic
 // `_agent` value can be used to always sort nearest the node servicing the
 // request.
-func (r *PreparedQuery) Near() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["near"])
+func (r *PreparedQuery) Near() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["near"])
 }
 
 // When `true`, the prepared query will only
 // return nodes with passing health checks in the result.
-func (r *PreparedQuery) OnlyPassing() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["onlyPassing"])
+func (r *PreparedQuery) OnlyPassing() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["onlyPassing"])
 }
 
 // The name of the service to query.
-func (r *PreparedQuery) Service() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["service"])
+func (r *PreparedQuery) Service() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["service"])
 }
 
 // The name of the Consul session to tie this query's
@@ -148,33 +148,33 @@ func (r *PreparedQuery) Service() *pulumi.StringOutput {
 // complete understanding of Consul sessions and the implications of their use
 // (it is recommended to leave this blank in nearly all cases).  If this
 // parameter is omitted the query will not expire.
-func (r *PreparedQuery) Session() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["session"])
+func (r *PreparedQuery) Session() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["session"])
 }
 
 // The ACL token to store with the prepared
 // query. This token will be used by default whenever the query is executed.
-func (r *PreparedQuery) StoredToken() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["storedToken"])
+func (r *PreparedQuery) StoredToken() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["storedToken"])
 }
 
 // The list of required and/or disallowed tags.  If a tag is
 // in this list it must be present.  If the tag is preceded with a "!" then it is
 // disallowed.
-func (r *PreparedQuery) Tags() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["tags"])
+func (r *PreparedQuery) Tags() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["tags"])
 }
 
 // Query templating options. This is used to make a
 // single prepared query respond to many different requests.
-func (r *PreparedQuery) Template() *pulumi.Output {
+func (r *PreparedQuery) Template() pulumi.Output {
 	return r.s.State["template"]
 }
 
 // The ACL token to use when saving the prepared query.
 // This overrides the token that the agent provides by default.
-func (r *PreparedQuery) Token() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["token"])
+func (r *PreparedQuery) Token() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["token"])
 }
 
 // Input properties used for looking up and filtering PreparedQuery resources.

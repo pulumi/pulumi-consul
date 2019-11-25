@@ -55,34 +55,34 @@ func GetAclToken(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *AclToken) URN() *pulumi.URNOutput {
+func (r *AclToken) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *AclToken) ID() *pulumi.IDOutput {
+func (r *AclToken) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The uuid of the token. If omitted, Consul will
 // generate a random uuid.
-func (r *AclToken) AccessorId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["accessorId"])
+func (r *AclToken) AccessorId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["accessorId"])
 }
 
 // The description of the token.
-func (r *AclToken) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *AclToken) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // The flag to set the token local to the current datacenter.
-func (r *AclToken) Local() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["local"])
+func (r *AclToken) Local() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["local"])
 }
 
 // The list of policies attached to the token.
-func (r *AclToken) Policies() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["policies"])
+func (r *AclToken) Policies() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["policies"])
 }
 
 // Input properties used for looking up and filtering AclToken resources.

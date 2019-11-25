@@ -63,40 +63,40 @@ func GetNode(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Node) URN() *pulumi.URNOutput {
+func (r *Node) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Node) ID() *pulumi.IDOutput {
+func (r *Node) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The address of the node being added to,
 // or referenced in the catalog.
-func (r *Node) Address() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["address"])
+func (r *Node) Address() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["address"])
 }
 
 // The datacenter to use. This overrides the agent's
 // default datacenter and the datacenter in the provider setup.
-func (r *Node) Datacenter() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["datacenter"])
+func (r *Node) Datacenter() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["datacenter"])
 }
 
 // Key/value pairs that are associated with the node.
-func (r *Node) Meta() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["meta"])
+func (r *Node) Meta() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["meta"])
 }
 
 // The name of the node being added to, or
 // referenced in the catalog.
-func (r *Node) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Node) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
-func (r *Node) Token() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["token"])
+func (r *Node) Token() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["token"])
 }
 
 // Input properties used for looking up and filtering Node resources.

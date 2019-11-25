@@ -71,63 +71,63 @@ func GetAutopilotConfig(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *AutopilotConfig) URN() *pulumi.URNOutput {
+func (r *AutopilotConfig) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *AutopilotConfig) ID() *pulumi.IDOutput {
+func (r *AutopilotConfig) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Whether to remove failing servers when a
 // replacement comes online. Defaults to true.
-func (r *AutopilotConfig) CleanupDeadServers() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["cleanupDeadServers"])
+func (r *AutopilotConfig) CleanupDeadServers() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["cleanupDeadServers"])
 }
 
 // The datacenter to use. This overrides the agent's
 // default datacenter and the datacenter in the provider setup.
-func (r *AutopilotConfig) Datacenter() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["datacenter"])
+func (r *AutopilotConfig) Datacenter() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["datacenter"])
 }
 
 // Whether to disable [upgrade migrations](https://www.consul.io/docs/guides/autopilot.html#redundancy-zones).
 // Defaults to false.
-func (r *AutopilotConfig) DisableUpgradeMigration() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["disableUpgradeMigration"])
+func (r *AutopilotConfig) DisableUpgradeMigration() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["disableUpgradeMigration"])
 }
 
 // The time after which a server is
 // considered as unhealthy and will be removed. Defaults to `"200ms"`.
-func (r *AutopilotConfig) LastContactThreshold() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["lastContactThreshold"])
+func (r *AutopilotConfig) LastContactThreshold() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["lastContactThreshold"])
 }
 
 // The maximum number of Raft log entries a
 // server can trail the leader. Defaults to 250.
-func (r *AutopilotConfig) MaxTrailingLogs() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["maxTrailingLogs"])
+func (r *AutopilotConfig) MaxTrailingLogs() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["maxTrailingLogs"])
 }
 
 // The [redundancy zone](https://www.consul.io/docs/guides/autopilot.html#redundancy-zones)
 // tag to use. Consul will try to keep one voting server by zone to take advantage
 // of isolated failure domains. Defaults to an empty string.
-func (r *AutopilotConfig) RedundancyZoneTag() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["redundancyZoneTag"])
+func (r *AutopilotConfig) RedundancyZoneTag() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["redundancyZoneTag"])
 }
 
 // The period to wait for a server to be
 // healthy and stable before being promoted to a full, voting member. Defaults to
 // `"10s"`.
-func (r *AutopilotConfig) ServerStabilizationTime() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["serverStabilizationTime"])
+func (r *AutopilotConfig) ServerStabilizationTime() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["serverStabilizationTime"])
 }
 
 // The tag to override the version information
 // used during a migration. Defaults to an empty string.
-func (r *AutopilotConfig) UpgradeVersionTag() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["upgradeVersionTag"])
+func (r *AutopilotConfig) UpgradeVersionTag() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["upgradeVersionTag"])
 }
 
 // Input properties used for looking up and filtering AutopilotConfig resources.

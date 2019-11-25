@@ -60,46 +60,46 @@ func GetKeyPrefix(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *KeyPrefix) URN() *pulumi.URNOutput {
+func (r *KeyPrefix) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *KeyPrefix) ID() *pulumi.IDOutput {
+func (r *KeyPrefix) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The datacenter to use. This overrides the
 // agent's default datacenter and the datacenter in the provider setup.
-func (r *KeyPrefix) Datacenter() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["datacenter"])
+func (r *KeyPrefix) Datacenter() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["datacenter"])
 }
 
 // Specifies the common prefix shared by all keys
 // that will be managed by this resource instance. In most cases this will
 // end with a slash, to manage a "folder" of keys.
-func (r *KeyPrefix) PathPrefix() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["pathPrefix"])
+func (r *KeyPrefix) PathPrefix() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["pathPrefix"])
 }
 
 // A subkey to add. Supported values documented below.
 // Multiple blocks supported.
-func (r *KeyPrefix) SubkeyCollection() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["subkeyCollection"])
+func (r *KeyPrefix) SubkeyCollection() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["subkeyCollection"])
 }
 
 // A mapping from subkey name (which will be appended
 // to the given `pathPrefix`) to the value that should be stored at that key.
 // Use slashes, as shown in the above example, to create "sub-folders" under
 // the given path prefix.
-func (r *KeyPrefix) Subkeys() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["subkeys"])
+func (r *KeyPrefix) Subkeys() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["subkeys"])
 }
 
 // The ACL token to use. This overrides the
 // token that the agent provides by default.
-func (r *KeyPrefix) Token() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["token"])
+func (r *KeyPrefix) Token() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["token"])
 }
 
 // Input properties used for looking up and filtering KeyPrefix resources.

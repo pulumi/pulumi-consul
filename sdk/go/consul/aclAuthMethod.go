@@ -63,33 +63,33 @@ func GetAclAuthMethod(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *AclAuthMethod) URN() *pulumi.URNOutput {
+func (r *AclAuthMethod) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *AclAuthMethod) ID() *pulumi.IDOutput {
+func (r *AclAuthMethod) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The raw configuration for this ACL auth method.
-func (r *AclAuthMethod) Config() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["config"])
+func (r *AclAuthMethod) Config() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["config"])
 }
 
 // A free form human readable description of the auth method.
-func (r *AclAuthMethod) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *AclAuthMethod) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // The name of the ACL auth method.
-func (r *AclAuthMethod) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *AclAuthMethod) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The type of the ACL auth method.
-func (r *AclAuthMethod) Type() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["type"])
+func (r *AclAuthMethod) Type() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["type"])
 }
 
 // Input properties used for looking up and filtering AclAuthMethod resources.

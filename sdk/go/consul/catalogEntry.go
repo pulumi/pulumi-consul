@@ -70,42 +70,42 @@ func GetCatalogEntry(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *CatalogEntry) URN() *pulumi.URNOutput {
+func (r *CatalogEntry) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *CatalogEntry) ID() *pulumi.IDOutput {
+func (r *CatalogEntry) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The address of the node being added to,
 // or referenced in the catalog.
-func (r *CatalogEntry) Address() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["address"])
+func (r *CatalogEntry) Address() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["address"])
 }
 
 // The datacenter to use. This overrides the
 // agent's default datacenter and the datacenter in the provider setup.
-func (r *CatalogEntry) Datacenter() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["datacenter"])
+func (r *CatalogEntry) Datacenter() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["datacenter"])
 }
 
 // The name of the node being added to, or
 // referenced in the catalog.
-func (r *CatalogEntry) Node() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["node"])
+func (r *CatalogEntry) Node() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["node"])
 }
 
 // A service to optionally associated with
 // the node. Supported values are documented below.
-func (r *CatalogEntry) Services() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["services"])
+func (r *CatalogEntry) Services() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["services"])
 }
 
 // ACL token.
-func (r *CatalogEntry) Token() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["token"])
+func (r *CatalogEntry) Token() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["token"])
 }
 
 // Input properties used for looking up and filtering CatalogEntry resources.

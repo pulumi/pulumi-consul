@@ -83,65 +83,65 @@ func GetService(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Service) URN() *pulumi.URNOutput {
+func (r *Service) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Service) ID() *pulumi.IDOutput {
+func (r *Service) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The address of the service. Defaults to the
 // address of the node.
-func (r *Service) Address() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["address"])
+func (r *Service) Address() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["address"])
 }
 
-func (r *Service) Checks() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["checks"])
+func (r *Service) Checks() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["checks"])
 }
 
 // The datacenter to use. This overrides the
 // agent's default datacenter and the datacenter in the provider setup.
-func (r *Service) Datacenter() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["datacenter"])
+func (r *Service) Datacenter() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["datacenter"])
 }
 
-func (r *Service) External() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["external"])
+func (r *Service) External() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["external"])
 }
 
 // A map of arbitrary KV metadata linked to the service
 // instance.
-func (r *Service) Meta() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["meta"])
+func (r *Service) Meta() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["meta"])
 }
 
 // The name of the header.
-func (r *Service) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Service) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The name of the node the to register the service on.
-func (r *Service) Node() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["node"])
+func (r *Service) Node() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["node"])
 }
 
 // The port of the service.
-func (r *Service) Port() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["port"])
+func (r *Service) Port() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["port"])
 }
 
 // The ID of the service.
-func (r *Service) ServiceId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["serviceId"])
+func (r *Service) ServiceId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["serviceId"])
 }
 
 // A list of values that are opaque to Consul,
 // but can be used to distinguish between services or nodes.
-func (r *Service) Tags() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["tags"])
+func (r *Service) Tags() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["tags"])
 }
 
 // Input properties used for looking up and filtering Service resources.

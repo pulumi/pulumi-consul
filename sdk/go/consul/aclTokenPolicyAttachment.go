@@ -54,23 +54,23 @@ func GetAclTokenPolicyAttachment(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *AclTokenPolicyAttachment) URN() *pulumi.URNOutput {
+func (r *AclTokenPolicyAttachment) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *AclTokenPolicyAttachment) ID() *pulumi.IDOutput {
+func (r *AclTokenPolicyAttachment) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The name of the policy attached to the token.
-func (r *AclTokenPolicyAttachment) Policy() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["policy"])
+func (r *AclTokenPolicyAttachment) Policy() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["policy"])
 }
 
 // The id of the token.
-func (r *AclTokenPolicyAttachment) TokenId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["tokenId"])
+func (r *AclTokenPolicyAttachment) TokenId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["tokenId"])
 }
 
 // Input properties used for looking up and filtering AclTokenPolicyAttachment resources.
