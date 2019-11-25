@@ -69,41 +69,41 @@ func GetAclBindingRule(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *AclBindingRule) URN() *pulumi.URNOutput {
+func (r *AclBindingRule) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *AclBindingRule) ID() *pulumi.IDOutput {
+func (r *AclBindingRule) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The name of the ACL auth method this rule apply.
-func (r *AclBindingRule) AuthMethod() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["authMethod"])
+func (r *AclBindingRule) AuthMethod() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["authMethod"])
 }
 
 // The name to bind to a token at login-time.
-func (r *AclBindingRule) BindName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["bindName"])
+func (r *AclBindingRule) BindName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["bindName"])
 }
 
 // Specifies the way the binding rule affects a token
 // created at login.
-func (r *AclBindingRule) BindType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["bindType"])
+func (r *AclBindingRule) BindType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["bindType"])
 }
 
 // A free form human readable description of the
 // binding rule.
-func (r *AclBindingRule) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *AclBindingRule) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // The expression used to math this rule against valid
 // identities returned from an auth method validation.
-func (r *AclBindingRule) Selector() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["selector"])
+func (r *AclBindingRule) Selector() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["selector"])
 }
 
 // Input properties used for looking up and filtering AclBindingRule resources.

@@ -52,35 +52,35 @@ func GetKeys(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Keys) URN() *pulumi.URNOutput {
+func (r *Keys) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Keys) ID() *pulumi.IDOutput {
+func (r *Keys) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The datacenter to use. This overrides the
 // agent's default datacenter and the datacenter in the provider setup.
-func (r *Keys) Datacenter() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["datacenter"])
+func (r *Keys) Datacenter() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["datacenter"])
 }
 
 // Specifies a key in Consul to be written.
 // Supported values documented below.
-func (r *Keys) Keys() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["keys"])
+func (r *Keys) Keys() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["keys"])
 }
 
 // The ACL token to use. This overrides the
 // token that the agent provides by default.
-func (r *Keys) Token() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["token"])
+func (r *Keys) Token() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["token"])
 }
 
-func (r *Keys) Var() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["var"])
+func (r *Keys) Var() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["var"])
 }
 
 // Input properties used for looking up and filtering Keys resources.

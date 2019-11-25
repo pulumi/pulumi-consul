@@ -58,28 +58,28 @@ func GetConfigEntry(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *ConfigEntry) URN() *pulumi.URNOutput {
+func (r *ConfigEntry) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *ConfigEntry) ID() *pulumi.IDOutput {
+func (r *ConfigEntry) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // An arbitrary map of configuration values.
-func (r *ConfigEntry) ConfigJson() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["configJson"])
+func (r *ConfigEntry) ConfigJson() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["configJson"])
 }
 
 // The kind of configuration entry to register.
-func (r *ConfigEntry) Kind() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["kind"])
+func (r *ConfigEntry) Kind() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["kind"])
 }
 
 // The name of the configuration entry being registred.
-func (r *ConfigEntry) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *ConfigEntry) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Input properties used for looking up and filtering ConfigEntry resources.

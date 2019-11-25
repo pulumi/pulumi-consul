@@ -61,35 +61,35 @@ func GetAgentService(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *AgentService) URN() *pulumi.URNOutput {
+func (r *AgentService) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *AgentService) ID() *pulumi.IDOutput {
+func (r *AgentService) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The address of the service. Defaults to the
 // address of the agent.
-func (r *AgentService) Address() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["address"])
+func (r *AgentService) Address() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["address"])
 }
 
 // The name of the service.
-func (r *AgentService) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *AgentService) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The port of the service.
-func (r *AgentService) Port() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["port"])
+func (r *AgentService) Port() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["port"])
 }
 
 // A list of values that are opaque to Consul,
 // but can be used to distinguish between services or nodes.
-func (r *AgentService) Tags() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["tags"])
+func (r *AgentService) Tags() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["tags"])
 }
 
 // Input properties used for looking up and filtering AgentService resources.

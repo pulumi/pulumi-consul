@@ -55,34 +55,34 @@ func GetAclRole(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *AclRole) URN() *pulumi.URNOutput {
+func (r *AclRole) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *AclRole) ID() *pulumi.IDOutput {
+func (r *AclRole) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // A free form human readable description of the role.
-func (r *AclRole) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *AclRole) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // The name of the ACL role.
-func (r *AclRole) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *AclRole) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The list of policies that should be applied to the role.
-func (r *AclRole) Policies() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["policies"])
+func (r *AclRole) Policies() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["policies"])
 }
 
 // The list of service identities that should
 // be applied to the role.
-func (r *AclRole) ServiceIdentities() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["serviceIdentities"])
+func (r *AclRole) ServiceIdentities() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["serviceIdentities"])
 }
 
 // Input properties used for looking up and filtering AclRole resources.

@@ -59,33 +59,33 @@ func GetAclPolicy(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *AclPolicy) URN() *pulumi.URNOutput {
+func (r *AclPolicy) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *AclPolicy) ID() *pulumi.IDOutput {
+func (r *AclPolicy) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The datacenters of the policy.
-func (r *AclPolicy) Datacenters() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["datacenters"])
+func (r *AclPolicy) Datacenters() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["datacenters"])
 }
 
 // The description of the policy.
-func (r *AclPolicy) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *AclPolicy) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // The name of the policy.
-func (r *AclPolicy) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *AclPolicy) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The rules of the policy.
-func (r *AclPolicy) Rules() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["rules"])
+func (r *AclPolicy) Rules() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["rules"])
 }
 
 // Input properties used for looking up and filtering AclPolicy resources.

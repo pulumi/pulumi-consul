@@ -74,42 +74,42 @@ func GetIntention(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Intention) URN() *pulumi.URNOutput {
+func (r *Intention) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Intention) ID() *pulumi.IDOutput {
+func (r *Intention) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The intention action. Must be one of `allow` or `deny`.
-func (r *Intention) Action() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["action"])
+func (r *Intention) Action() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["action"])
 }
 
 // Optional description that can be used by Consul
 // tooling, but is not used internally.
-func (r *Intention) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *Intention) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // The name of the destination service for the intention. This
 // service does not have to exist.
-func (r *Intention) DestinationName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["destinationName"])
+func (r *Intention) DestinationName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["destinationName"])
 }
 
 // Key/value pairs that are opaque to Consul and are associated
 // with the intention.
-func (r *Intention) Meta() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["meta"])
+func (r *Intention) Meta() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["meta"])
 }
 
 // The name of the source service for the intention. This
 // service does not have to exist.
-func (r *Intention) SourceName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["sourceName"])
+func (r *Intention) SourceName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["sourceName"])
 }
 
 // Input properties used for looking up and filtering Intention resources.
