@@ -13,13 +13,19 @@ class GetAclTokenSecretIdResult:
     """
     A collection of values returned by getAclTokenSecretId.
     """
-    def __init__(__self__, accessor_id=None, encrypted_secret_id=None, pgp_key=None, secret_id=None, id=None):
+    def __init__(__self__, accessor_id=None, encrypted_secret_id=None, id=None, pgp_key=None, secret_id=None):
         if accessor_id and not isinstance(accessor_id, str):
             raise TypeError("Expected argument 'accessor_id' to be a str")
         __self__.accessor_id = accessor_id
         if encrypted_secret_id and not isinstance(encrypted_secret_id, str):
             raise TypeError("Expected argument 'encrypted_secret_id' to be a str")
         __self__.encrypted_secret_id = encrypted_secret_id
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if pgp_key and not isinstance(pgp_key, str):
             raise TypeError("Expected argument 'pgp_key' to be a str")
         __self__.pgp_key = pgp_key
@@ -29,12 +35,6 @@ class GetAclTokenSecretIdResult:
         """
         The secret ID of the ACL token if `gpg_key` has not been set.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetAclTokenSecretIdResult(GetAclTokenSecretIdResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -43,19 +43,18 @@ class AwaitableGetAclTokenSecretIdResult(GetAclTokenSecretIdResult):
         return GetAclTokenSecretIdResult(
             accessor_id=self.accessor_id,
             encrypted_secret_id=self.encrypted_secret_id,
+            id=self.id,
             pgp_key=self.pgp_key,
-            secret_id=self.secret_id,
-            id=self.id)
+            secret_id=self.secret_id)
 
 def get_acl_token_secret_id(accessor_id=None,pgp_key=None,opts=None):
     """
     Use this data source to access information about an existing resource.
-    
-    :param str accessor_id: The accessor ID of the ACL token.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/acl_token_secret_id.html.markdown.
+    :param str accessor_id: The accessor ID of the ACL token.
     """
     __args__ = dict()
+
 
     __args__['accessorId'] = accessor_id
     __args__['pgpKey'] = pgp_key
@@ -68,6 +67,6 @@ def get_acl_token_secret_id(accessor_id=None,pgp_key=None,opts=None):
     return AwaitableGetAclTokenSecretIdResult(
         accessor_id=__ret__.get('accessorId'),
         encrypted_secret_id=__ret__.get('encryptedSecretId'),
+        id=__ret__.get('id'),
         pgp_key=__ret__.get('pgpKey'),
-        secret_id=__ret__.get('secretId'),
-        id=__ret__.get('id'))
+        secret_id=__ret__.get('secretId'))

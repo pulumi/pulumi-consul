@@ -29,15 +29,15 @@ class AclPolicy(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, datacenters=None, description=None, name=None, rules=None, __props__=None, __name__=None, __opts__=None):
         """
         Starting with Consul 1.4.0, the .AclPolicy can be used to managed Consul ACL policies.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/acl_policy.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] datacenters: The datacenters of the policy.
         :param pulumi.Input[str] description: The description of the policy.
         :param pulumi.Input[str] name: The name of the policy.
         :param pulumi.Input[str] rules: The rules of the policy.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/acl_policy.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -73,7 +73,7 @@ class AclPolicy(pulumi.CustomResource):
         """
         Get an existing AclPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -81,12 +81,11 @@ class AclPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the policy.
         :param pulumi.Input[str] name: The name of the policy.
         :param pulumi.Input[str] rules: The rules of the policy.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/acl_policy.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["datacenters"] = datacenters
         __props__["description"] = description
         __props__["name"] = name

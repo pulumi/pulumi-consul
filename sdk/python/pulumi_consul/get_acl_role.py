@@ -13,12 +13,18 @@ class GetAclRoleResult:
     """
     A collection of values returned by getAclRole.
     """
-    def __init__(__self__, description=None, name=None, policies=None, service_identities=None, id=None):
+    def __init__(__self__, description=None, id=None, name=None, policies=None, service_identities=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         __self__.description = description
         """
         The description of the ACL Role.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
@@ -37,12 +43,6 @@ class GetAclRoleResult:
         The list of service identities associated with the ACL
         Role. Each entry has a `service_name` attribute and a list of `datacenters`.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetAclRoleResult(GetAclRoleResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -50,31 +50,33 @@ class AwaitableGetAclRoleResult(GetAclRoleResult):
             yield self
         return GetAclRoleResult(
             description=self.description,
+            id=self.id,
             name=self.name,
             policies=self.policies,
-            service_identities=self.service_identities,
-            id=self.id)
+            service_identities=self.service_identities)
 
 def get_acl_role(description=None,name=None,policies=None,service_identities=None,opts=None):
     """
     The `.AclRole` data source returns the information related to a
     [Consul ACL Role](https://www.consul.io/api/acl/roles.html).
-    
-    :param str name: The name of the ACL Role.
-    
-    The **policies** object supports the following:
-    
-      * `id` (`str`)
-      * `name` (`str`) - The name of the ACL Role.
-    
-    The **service_identities** object supports the following:
-    
-      * `datacenters` (`list`)
-      * `serviceName` (`str`)
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/acl_role.html.markdown.
+
+
+    :param str name: The name of the ACL Role.
+
+    The **policies** object supports the following:
+
+      * `id` (`str`)
+      * `name` (`str`) - The name of the ACL Role.
+
+    The **service_identities** object supports the following:
+
+      * `datacenters` (`list`)
+      * `serviceName` (`str`)
     """
     __args__ = dict()
+
 
     __args__['description'] = description
     __args__['name'] = name
@@ -88,7 +90,7 @@ def get_acl_role(description=None,name=None,policies=None,service_identities=Non
 
     return AwaitableGetAclRoleResult(
         description=__ret__.get('description'),
+        id=__ret__.get('id'),
         name=__ret__.get('name'),
         policies=__ret__.get('policies'),
-        service_identities=__ret__.get('serviceIdentities'),
-        id=__ret__.get('id'))
+        service_identities=__ret__.get('serviceIdentities'))

@@ -26,14 +26,16 @@ class AclRole(pulumi.CustomResource):
     """
     The list of service identities that should
     be applied to the role.
-    
+
       * `datacenters` (`list`) - The datacenters the effective policy is valid within.
       * `serviceName` (`str`) - The name of the service.
     """
     def __init__(__self__, resource_name, opts=None, description=None, name=None, policies=None, service_identities=None, __props__=None, __name__=None, __opts__=None):
         """
         Starting with Consul 1.5.0, the .AclRole can be used to managed Consul ACL roles.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/acl_role.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A free form human readable description of the role.
@@ -41,13 +43,11 @@ class AclRole(pulumi.CustomResource):
         :param pulumi.Input[list] policies: The list of policies that should be applied to the role.
         :param pulumi.Input[list] service_identities: The list of service identities that should
                be applied to the role.
-        
+
         The **service_identities** object supports the following:
-        
+
           * `datacenters` (`pulumi.Input[list]`) - The datacenters the effective policy is valid within.
           * `serviceName` (`pulumi.Input[str]`) - The name of the service.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/acl_role.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -81,7 +81,7 @@ class AclRole(pulumi.CustomResource):
         """
         Get an existing AclRole resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -90,17 +90,16 @@ class AclRole(pulumi.CustomResource):
         :param pulumi.Input[list] policies: The list of policies that should be applied to the role.
         :param pulumi.Input[list] service_identities: The list of service identities that should
                be applied to the role.
-        
+
         The **service_identities** object supports the following:
-        
+
           * `datacenters` (`pulumi.Input[list]`) - The datacenters the effective policy is valid within.
           * `serviceName` (`pulumi.Input[str]`) - The name of the service.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/acl_role.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["description"] = description
         __props__["name"] = name
         __props__["policies"] = policies

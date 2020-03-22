@@ -12,10 +12,10 @@ import (
 // have been registered with the Consul cluster in a given datacenter.  By
 // specifying a different datacenter in the `queryOptions` it is possible to
 // retrieve a list of services from a different WAN-attached Consul datacenter.
-// 
+//
 // This data source is different from the `.Service` (singular) data
 // source, which provides a detailed response about a specific Consul service.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/services.html.markdown.
 func GetServices(ctx *pulumi.Context, args *GetServicesArgs, opts ...pulumi.InvokeOption) (*GetServicesResult, error) {
 	var rv GetServicesResult

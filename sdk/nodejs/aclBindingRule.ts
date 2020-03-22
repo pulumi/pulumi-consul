@@ -35,7 +35,7 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/acl_binding_rule.html.markdown.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/acl_binding_rule.markdown.
  */
 export class AclBindingRule extends pulumi.CustomResource {
     /**

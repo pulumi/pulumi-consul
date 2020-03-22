@@ -30,15 +30,15 @@ class AclAuthMethod(pulumi.CustomResource):
         """
         Starting with Consul 1.5.0, the .AclAuthMethod resource can be used to
         managed Consul ACL auth methods.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/acl_auth_method.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] config: The raw configuration for this ACL auth method.
         :param pulumi.Input[str] description: A free form human readable description of the auth method.
         :param pulumi.Input[str] name: The name of the ACL auth method.
         :param pulumi.Input[str] type: The type of the ACL auth method.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/acl_auth_method.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -76,7 +76,7 @@ class AclAuthMethod(pulumi.CustomResource):
         """
         Get an existing AclAuthMethod resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -84,12 +84,11 @@ class AclAuthMethod(pulumi.CustomResource):
         :param pulumi.Input[str] description: A free form human readable description of the auth method.
         :param pulumi.Input[str] name: The name of the ACL auth method.
         :param pulumi.Input[str] type: The type of the ACL auth method.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/acl_auth_method.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["config"] = config
         __props__["description"] = description
         __props__["name"] = name

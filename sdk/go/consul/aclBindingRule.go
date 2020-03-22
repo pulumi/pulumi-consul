@@ -13,8 +13,8 @@ import (
 
 // Starting with Consul 1.5.0, the .AclBindingRule resource can be used to
 // managed Consul ACL binding rules.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/acl_binding_rule.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/acl_binding_rule.markdown.
 type AclBindingRule struct {
 	pulumi.CustomResourceState
 

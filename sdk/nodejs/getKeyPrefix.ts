@@ -6,9 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/key_prefix.html.markdown.
- */
 export function getKeyPrefix(args: GetKeyPrefixArgs, opts?: pulumi.InvokeOptions): Promise<GetKeyPrefixResult> & GetKeyPrefixResult {
     if (!opts) {
         opts = {}

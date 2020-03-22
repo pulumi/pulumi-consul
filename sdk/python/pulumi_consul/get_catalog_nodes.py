@@ -13,10 +13,16 @@ class GetCatalogNodesResult:
     """
     A collection of values returned by getCatalogNodes.
     """
-    def __init__(__self__, datacenter=None, node_ids=None, node_names=None, nodes=None, query_options=None, id=None):
+    def __init__(__self__, datacenter=None, id=None, node_ids=None, node_names=None, nodes=None, query_options=None):
         if datacenter and not isinstance(datacenter, str):
             raise TypeError("Expected argument 'datacenter' to be a str")
         __self__.datacenter = datacenter
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if node_ids and not isinstance(node_ids, list):
             raise TypeError("Expected argument 'node_ids' to be a list")
         __self__.node_ids = node_ids
@@ -29,12 +35,6 @@ class GetCatalogNodesResult:
         if query_options and not isinstance(query_options, list):
             raise TypeError("Expected argument 'query_options' to be a list")
         __self__.query_options = query_options
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetCatalogNodesResult(GetCatalogNodesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -42,19 +42,19 @@ class AwaitableGetCatalogNodesResult(GetCatalogNodesResult):
             yield self
         return GetCatalogNodesResult(
             datacenter=self.datacenter,
+            id=self.id,
             node_ids=self.node_ids,
             node_names=self.node_names,
             nodes=self.nodes,
-            query_options=self.query_options,
-            id=self.id)
+            query_options=self.query_options)
 
 def get_catalog_nodes(query_options=None,opts=None):
     """
     Use this data source to access information about an existing resource.
-    
-    
+
+
     The **query_options** object supports the following:
-    
+
       * `allowStale` (`bool`)
       * `datacenter` (`str`)
       * `near` (`str`)
@@ -66,6 +66,7 @@ def get_catalog_nodes(query_options=None,opts=None):
     """
     __args__ = dict()
 
+
     __args__['queryOptions'] = query_options
     if opts is None:
         opts = pulumi.InvokeOptions()
@@ -75,8 +76,8 @@ def get_catalog_nodes(query_options=None,opts=None):
 
     return AwaitableGetCatalogNodesResult(
         datacenter=__ret__.get('datacenter'),
+        id=__ret__.get('id'),
         node_ids=__ret__.get('nodeIds'),
         node_names=__ret__.get('nodeNames'),
         nodes=__ret__.get('nodes'),
-        query_options=__ret__.get('queryOptions'),
-        id=__ret__.get('id'))
+        query_options=__ret__.get('queryOptions'))

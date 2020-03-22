@@ -21,13 +21,10 @@ class AclTokenPolicyAttachment(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, policy=None, token_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a AclTokenPolicyAttachment resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] policy: The name of the policy attached to the token.
         :param pulumi.Input[str] token_id: The id of the token.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/acl_token_policy_attachment.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -63,18 +60,17 @@ class AclTokenPolicyAttachment(pulumi.CustomResource):
         """
         Get an existing AclTokenPolicyAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] policy: The name of the policy attached to the token.
         :param pulumi.Input[str] token_id: The id of the token.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/acl_token_policy_attachment.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["policy"] = policy
         __props__["token_id"] = token_id
         return AclTokenPolicyAttachment(resource_name, opts=opts, __props__=__props__)

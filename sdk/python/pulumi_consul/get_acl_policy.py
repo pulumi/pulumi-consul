@@ -13,7 +13,7 @@ class GetAclPolicyResult:
     """
     A collection of values returned by getAclPolicy.
     """
-    def __init__(__self__, datacenters=None, description=None, name=None, rules=None, id=None):
+    def __init__(__self__, datacenters=None, description=None, id=None, name=None, rules=None):
         if datacenters and not isinstance(datacenters, list):
             raise TypeError("Expected argument 'datacenters' to be a list")
         __self__.datacenters = datacenters
@@ -26,6 +26,12 @@ class GetAclPolicyResult:
         """
         The description of the ACL Policy.
         """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         __self__.name = name
@@ -35,12 +41,6 @@ class GetAclPolicyResult:
         """
         The rules associated with the ACL Policy.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetAclPolicyResult(GetAclPolicyResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -49,20 +49,22 @@ class AwaitableGetAclPolicyResult(GetAclPolicyResult):
         return GetAclPolicyResult(
             datacenters=self.datacenters,
             description=self.description,
+            id=self.id,
             name=self.name,
-            rules=self.rules,
-            id=self.id)
+            rules=self.rules)
 
 def get_acl_policy(datacenters=None,description=None,name=None,rules=None,opts=None):
     """
     The `.AclPolicy` data source returns the information related to a
     [Consul ACL Policy](https://www.consul.io/docs/acl/acl-system.html#acl-policies).
-    
-    :param str name: The name of the ACL Policy.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/acl_policy.html.markdown.
+
+
+    :param str name: The name of the ACL Policy.
     """
     __args__ = dict()
+
 
     __args__['datacenters'] = datacenters
     __args__['description'] = description
@@ -77,6 +79,6 @@ def get_acl_policy(datacenters=None,description=None,name=None,rules=None,opts=N
     return AwaitableGetAclPolicyResult(
         datacenters=__ret__.get('datacenters'),
         description=__ret__.get('description'),
+        id=__ret__.get('id'),
         name=__ret__.get('name'),
-        rules=__ret__.get('rules'),
-        id=__ret__.get('id'))
+        rules=__ret__.get('rules'))

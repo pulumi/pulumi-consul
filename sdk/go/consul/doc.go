@@ -1,6 +1,6 @@
 // Package consul exports types, functions, subpackages for provisioning consul resources.//
 // A Pulumi package for creating and managing consul resources.
-// 
+//
 // > This provider is a derived work of the [Terraform Provider](https://github.com/terraform-providers/terraform-provider-consul)
 // > distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,
 // > first check the [`pulumi/pulumi-consul` repo](https://github.com/pulumi/pulumi-consul/issues); however, if that doesn't turn up anything,

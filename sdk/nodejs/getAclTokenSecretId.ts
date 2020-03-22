@@ -6,9 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/acl_token_secret_id.html.markdown.
- */
 export function getAclTokenSecretId(args: GetAclTokenSecretIdArgs, opts?: pulumi.InvokeOptions): Promise<GetAclTokenSecretIdResult> & GetAclTokenSecretIdResult {
     if (!opts) {
         opts = {}

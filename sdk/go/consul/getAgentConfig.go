@@ -11,11 +11,11 @@ import (
 // > **Note:** The `.getAgentConfig` resource differs from [`.getAgentSelf`](https://www.terraform.io/docs/providers/consul/d/agent_self.html),
 // providing less information but utilizing stable APIs. `.getAgentSelf` will be
 // deprecated in a future release.
-// 
+//
 // The `.getAgentConfig` data source returns
 // [configuration data](https://www.consul.io/api/agent.html#read-configuration)
 // from the agent specified in the `provider`.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/agent_config.html.markdown.
 func GetAgentConfig(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetAgentConfigResult, error) {
 	var rv GetAgentConfigResult

@@ -11,7 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/acl_token_policy_attachment.html.markdown.
 type AclTokenPolicyAttachment struct {
 	pulumi.CustomResourceState
 

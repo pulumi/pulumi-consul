@@ -56,10 +56,12 @@ class AutopilotConfig(pulumi.CustomResource):
         """
         Provides access to the [Autopilot Configuration](https://www.consul.io/docs/guides/autopilot.html)
         of Consul to automatically manage Consul servers.
-        
+
         It includes to automatically cleanup dead servers, monitor the status of the Raft
         cluster and stable server introduction.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/autopilot_config.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] cleanup_dead_servers: Whether to remove failing servers when a
@@ -80,8 +82,6 @@ class AutopilotConfig(pulumi.CustomResource):
                `"10s"`.
         :param pulumi.Input[str] upgrade_version_tag: The tag to override the version information
                used during a migration. Defaults to an empty string.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/autopilot_config.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -119,7 +119,7 @@ class AutopilotConfig(pulumi.CustomResource):
         """
         Get an existing AutopilotConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -141,12 +141,11 @@ class AutopilotConfig(pulumi.CustomResource):
                `"10s"`.
         :param pulumi.Input[str] upgrade_version_tag: The tag to override the version information
                used during a migration. Defaults to an empty string.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/autopilot_config.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["cleanup_dead_servers"] = cleanup_dead_servers
         __props__["datacenter"] = datacenter
         __props__["disable_upgrade_migration"] = disable_upgrade_migration

@@ -29,7 +29,7 @@ class CatalogEntry(pulumi.CustomResource):
     """
     A service to optionally associated with
     the node. Supported values are documented below.
-    
+
       * `address` (`str`) - The address of the node being added to,
         or referenced in the catalog.
       * `id` (`str`)
@@ -46,10 +46,12 @@ class CatalogEntry(pulumi.CustomResource):
         !> The `.CatalogEntry` resource has been deprecated in version 2.0.0 of the provider
         and will be removed in a future release. Please read the [upgrade guide](https://www.terraform.io/docs/providers/consul/upgrading.html#deprecation-of-consul_catalog_entry)
         for more information.
-        
+
         Registers a node or service with the [Consul Catalog](https://www.consul.io/docs/agent/http/catalog.html#catalog_register).
         Currently, defining health checks is not supported.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/catalog_entry.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address: The address of the node being added to,
@@ -61,17 +63,15 @@ class CatalogEntry(pulumi.CustomResource):
         :param pulumi.Input[list] services: A service to optionally associated with
                the node. Supported values are documented below.
         :param pulumi.Input[str] token: ACL token.
-        
+
         The **services** object supports the following:
-        
+
           * `address` (`pulumi.Input[str]`) - The address of the node being added to,
             or referenced in the catalog.
           * `id` (`pulumi.Input[str]`)
           * `name` (`pulumi.Input[str]`)
           * `port` (`pulumi.Input[float]`)
           * `tags` (`pulumi.Input[list]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/catalog_entry.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -110,7 +110,7 @@ class CatalogEntry(pulumi.CustomResource):
         """
         Get an existing CatalogEntry resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -123,21 +123,20 @@ class CatalogEntry(pulumi.CustomResource):
         :param pulumi.Input[list] services: A service to optionally associated with
                the node. Supported values are documented below.
         :param pulumi.Input[str] token: ACL token.
-        
+
         The **services** object supports the following:
-        
+
           * `address` (`pulumi.Input[str]`) - The address of the node being added to,
             or referenced in the catalog.
           * `id` (`pulumi.Input[str]`)
           * `name` (`pulumi.Input[str]`)
           * `port` (`pulumi.Input[float]`)
           * `tags` (`pulumi.Input[list]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/catalog_entry.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["address"] = address
         __props__["datacenter"] = datacenter
         __props__["node"] = node

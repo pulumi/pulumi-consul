@@ -12,7 +12,7 @@ import (
 )
 
 // Starting with Consul 1.4.0, the .AclPolicy can be used to managed Consul ACL policies.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/acl_policy.html.markdown.
 type AclPolicy struct {
 	pulumi.CustomResourceState

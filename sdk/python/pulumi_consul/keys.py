@@ -19,7 +19,7 @@ class Keys(pulumi.CustomResource):
     """
     Specifies a key in Consul to be written.
     Supported values documented below.
-    
+
       * `default` (`str`)
       * `delete` (`bool`)
       * `flags` (`float`)
@@ -36,7 +36,6 @@ class Keys(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, datacenter=None, keys=None, token=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Keys resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the
@@ -45,17 +44,15 @@ class Keys(pulumi.CustomResource):
                Supported values documented below.
         :param pulumi.Input[str] token: The ACL token to use. This overrides the
                token that the agent provides by default.
-        
+
         The **keys** object supports the following:
-        
+
           * `default` (`pulumi.Input[str]`)
           * `delete` (`pulumi.Input[bool]`)
           * `flags` (`pulumi.Input[float]`)
           * `name` (`pulumi.Input[str]`)
           * `path` (`pulumi.Input[str]`)
           * `value` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/keys.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -89,7 +86,7 @@ class Keys(pulumi.CustomResource):
         """
         Get an existing Keys resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -99,21 +96,20 @@ class Keys(pulumi.CustomResource):
                Supported values documented below.
         :param pulumi.Input[str] token: The ACL token to use. This overrides the
                token that the agent provides by default.
-        
+
         The **keys** object supports the following:
-        
+
           * `default` (`pulumi.Input[str]`)
           * `delete` (`pulumi.Input[bool]`)
           * `flags` (`pulumi.Input[float]`)
           * `name` (`pulumi.Input[str]`)
           * `path` (`pulumi.Input[str]`)
           * `value` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/keys.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["datacenter"] = datacenter
         __props__["keys"] = keys
         __props__["token"] = token

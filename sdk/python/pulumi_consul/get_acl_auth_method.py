@@ -13,7 +13,7 @@ class GetAclAuthMethodResult:
     """
     A collection of values returned by getAclAuthMethod.
     """
-    def __init__(__self__, config=None, description=None, name=None, type=None, id=None):
+    def __init__(__self__, config=None, description=None, id=None, name=None, type=None):
         if config and not isinstance(config, dict):
             raise TypeError("Expected argument 'config' to be a dict")
         __self__.config = config
@@ -26,6 +26,12 @@ class GetAclAuthMethodResult:
         """
         The description of the ACL Auth Method.
         """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         __self__.name = name
@@ -35,12 +41,6 @@ class GetAclAuthMethodResult:
         """
         The type of the ACL Auth Method.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetAclAuthMethodResult(GetAclAuthMethodResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -49,20 +49,22 @@ class AwaitableGetAclAuthMethodResult(GetAclAuthMethodResult):
         return GetAclAuthMethodResult(
             config=self.config,
             description=self.description,
+            id=self.id,
             name=self.name,
-            type=self.type,
-            id=self.id)
+            type=self.type)
 
 def get_acl_auth_method(config=None,description=None,name=None,type=None,opts=None):
     """
     The `.AclAuthMethod` data source returns the information related to a
     [Consul Auth Method](https://www.consul.io/docs/acl/acl-auth-methods.html).
-    
-    :param str name: The name of the ACL Auth Method.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/acl_auth_method.html.markdown.
+
+
+    :param str name: The name of the ACL Auth Method.
     """
     __args__ = dict()
+
 
     __args__['config'] = config
     __args__['description'] = description
@@ -77,6 +79,6 @@ def get_acl_auth_method(config=None,description=None,name=None,type=None,opts=No
     return AwaitableGetAclAuthMethodResult(
         config=__ret__.get('config'),
         description=__ret__.get('description'),
+        id=__ret__.get('id'),
         name=__ret__.get('name'),
-        type=__ret__.get('type'),
-        id=__ret__.get('id'))
+        type=__ret__.get('type'))

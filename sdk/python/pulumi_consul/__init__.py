@@ -20,12 +20,6 @@ from .agent_service import *
 from .autopilot_config import *
 from .catalog_entry import *
 from .config_entry import *
-from .intention import *
-from .key_prefix import *
-from .keys import *
-from .node import *
-from .prepared_query import *
-from .service import *
 from .get_acl_auth_method import *
 from .get_acl_policy import *
 from .get_acl_role import *
@@ -43,4 +37,10 @@ from .get_nodes import *
 from .get_service import *
 from .get_service_health import *
 from .get_services import *
+from .intention import *
+from .key_prefix import *
+from .keys import *
+from .node import *
+from .prepared_query import *
 from .provider import *
+from .service import *

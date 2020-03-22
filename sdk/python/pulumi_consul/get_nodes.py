@@ -13,12 +13,18 @@ class GetNodesResult:
     """
     A collection of values returned by getNodes.
     """
-    def __init__(__self__, datacenter=None, node_ids=None, node_names=None, nodes=None, query_options=None, id=None):
+    def __init__(__self__, datacenter=None, id=None, node_ids=None, node_names=None, nodes=None, query_options=None):
         if datacenter and not isinstance(datacenter, str):
             raise TypeError("Expected argument 'datacenter' to be a str")
         __self__.datacenter = datacenter
         """
         The datacenter the keys are being read from to.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if node_ids and not isinstance(node_ids, list):
             raise TypeError("Expected argument 'node_ids' to be a list")
@@ -42,12 +48,6 @@ class GetNodesResult:
         if query_options and not isinstance(query_options, list):
             raise TypeError("Expected argument 'query_options' to be a list")
         __self__.query_options = query_options
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetNodesResult(GetNodesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -55,11 +55,11 @@ class AwaitableGetNodesResult(GetNodesResult):
             yield self
         return GetNodesResult(
             datacenter=self.datacenter,
+            id=self.id,
             node_ids=self.node_ids,
             node_names=self.node_names,
             nodes=self.nodes,
-            query_options=self.query_options,
-            id=self.id)
+            query_options=self.query_options)
 
 def get_nodes(query_options=None,opts=None):
     """
@@ -67,11 +67,14 @@ def get_nodes(query_options=None,opts=None):
     been registered with the Consul cluster in a given datacenter.  By specifying a
     different datacenter in the `query_options` it is possible to retrieve a list of
     nodes from a different WAN-attached Consul datacenter.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/nodes.html.markdown.
+
+
     :param list query_options: See below.
-    
+
     The **query_options** object supports the following:
-    
+
       * `allowStale` (`bool`)
       * `datacenter` (`str`) - The Consul datacenter to query.  Defaults to the
         same value found in `query_options` parameter specified below, or if that is
@@ -83,10 +86,9 @@ def get_nodes(query_options=None,opts=None):
       * `token` (`str`)
       * `waitIndex` (`float`)
       * `waitTime` (`str`)
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/nodes.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['queryOptions'] = query_options
     if opts is None:
@@ -97,8 +99,8 @@ def get_nodes(query_options=None,opts=None):
 
     return AwaitableGetNodesResult(
         datacenter=__ret__.get('datacenter'),
+        id=__ret__.get('id'),
         node_ids=__ret__.get('nodeIds'),
         node_names=__ret__.get('nodeNames'),
         nodes=__ret__.get('nodes'),
-        query_options=__ret__.get('queryOptions'),
-        id=__ret__.get('id'))
+        query_options=__ret__.get('queryOptions'))

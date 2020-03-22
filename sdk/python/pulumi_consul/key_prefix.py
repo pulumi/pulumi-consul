@@ -25,7 +25,7 @@ class KeyPrefix(pulumi.CustomResource):
     """
     A subkey to add. Supported values documented below.
     Multiple blocks supported.
-    
+
       * `flags` (`float`)
       * `path` (`str`)
       * `value` (`str`)
@@ -45,7 +45,6 @@ class KeyPrefix(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, datacenter=None, path_prefix=None, subkey_collection=None, subkeys=None, token=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a KeyPrefix resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the
@@ -61,14 +60,12 @@ class KeyPrefix(pulumi.CustomResource):
                the given path prefix.
         :param pulumi.Input[str] token: The ACL token to use. This overrides the
                token that the agent provides by default.
-        
+
         The **subkey_collection** object supports the following:
-        
+
           * `flags` (`pulumi.Input[float]`)
           * `path` (`pulumi.Input[str]`)
           * `value` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/key_prefix.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -105,7 +102,7 @@ class KeyPrefix(pulumi.CustomResource):
         """
         Get an existing KeyPrefix resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -122,18 +119,17 @@ class KeyPrefix(pulumi.CustomResource):
                the given path prefix.
         :param pulumi.Input[str] token: The ACL token to use. This overrides the
                token that the agent provides by default.
-        
+
         The **subkey_collection** object supports the following:
-        
+
           * `flags` (`pulumi.Input[float]`)
           * `path` (`pulumi.Input[str]`)
           * `value` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/key_prefix.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["datacenter"] = datacenter
         __props__["path_prefix"] = path_prefix
         __props__["subkey_collection"] = subkey_collection

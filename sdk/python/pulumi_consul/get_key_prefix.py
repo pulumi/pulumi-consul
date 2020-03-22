@@ -13,12 +13,18 @@ class GetKeyPrefixResult:
     """
     A collection of values returned by getKeyPrefix.
     """
-    def __init__(__self__, datacenter=None, path_prefix=None, subkey_collection=None, subkeys=None, token=None, var=None, id=None):
+    def __init__(__self__, datacenter=None, id=None, path_prefix=None, subkey_collection=None, subkeys=None, token=None, var=None):
         if datacenter and not isinstance(datacenter, str):
             raise TypeError("Expected argument 'datacenter' to be a str")
         __self__.datacenter = datacenter
         """
         The datacenter the keys are being read from.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if path_prefix and not isinstance(path_prefix, str):
             raise TypeError("Expected argument 'path_prefix' to be a str")
@@ -44,12 +50,6 @@ class GetKeyPrefixResult:
         if var and not isinstance(var, dict):
             raise TypeError("Expected argument 'var' to be a dict")
         __self__.var = var
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetKeyPrefixResult(GetKeyPrefixResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -57,17 +57,17 @@ class AwaitableGetKeyPrefixResult(GetKeyPrefixResult):
             yield self
         return GetKeyPrefixResult(
             datacenter=self.datacenter,
+            id=self.id,
             path_prefix=self.path_prefix,
             subkey_collection=self.subkey_collection,
             subkeys=self.subkeys,
             token=self.token,
-            var=self.var,
-            id=self.id)
+            var=self.var)
 
 def get_key_prefix(datacenter=None,path_prefix=None,subkey_collection=None,token=None,opts=None):
     """
     Use this data source to access information about an existing resource.
-    
+
     :param str datacenter: The datacenter to use. This overrides the
            agent's default datacenter and the datacenter in the provider setup.
     :param str path_prefix: Specifies the common prefix shared by all keys
@@ -77,16 +77,15 @@ def get_key_prefix(datacenter=None,path_prefix=None,subkey_collection=None,token
            values documented below. Multiple blocks supported.
     :param str token: The ACL token to use. This overrides the
            token that the agent provides by default.
-    
+
     The **subkey_collection** object supports the following:
-    
+
       * `default` (`str`)
       * `name` (`str`)
       * `path` (`str`)
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/key_prefix.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['datacenter'] = datacenter
     __args__['pathPrefix'] = path_prefix
@@ -100,9 +99,9 @@ def get_key_prefix(datacenter=None,path_prefix=None,subkey_collection=None,token
 
     return AwaitableGetKeyPrefixResult(
         datacenter=__ret__.get('datacenter'),
+        id=__ret__.get('id'),
         path_prefix=__ret__.get('pathPrefix'),
         subkey_collection=__ret__.get('subkeyCollection'),
         subkeys=__ret__.get('subkeys'),
         token=__ret__.get('token'),
-        var=__ret__.get('var'),
-        id=__ret__.get('id'))
+        var=__ret__.get('var'))

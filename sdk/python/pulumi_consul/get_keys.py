@@ -13,7 +13,7 @@ class GetKeysResult:
     """
     A collection of values returned by getKeys.
     """
-    def __init__(__self__, datacenter=None, keys=None, token=None, var=None, id=None):
+    def __init__(__self__, datacenter=None, id=None, keys=None, token=None, var=None):
         if datacenter and not isinstance(datacenter, str):
             raise TypeError("Expected argument 'datacenter' to be a str")
         __self__.datacenter = datacenter
@@ -21,6 +21,12 @@ class GetKeysResult:
         The datacenter the keys are being read from.
         * `var.<name>` - For each name given, the corresponding attribute
         has the value of the key.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if keys and not isinstance(keys, list):
             raise TypeError("Expected argument 'keys' to be a list")
@@ -31,12 +37,6 @@ class GetKeysResult:
         if var and not isinstance(var, dict):
             raise TypeError("Expected argument 'var' to be a dict")
         __self__.var = var
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetKeysResult(GetKeysResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -44,32 +44,34 @@ class AwaitableGetKeysResult(GetKeysResult):
             yield self
         return GetKeysResult(
             datacenter=self.datacenter,
+            id=self.id,
             keys=self.keys,
             token=self.token,
-            var=self.var,
-            id=self.id)
+            var=self.var)
 
 def get_keys(datacenter=None,keys=None,token=None,opts=None):
     """
     The `.Keys` resource reads values from the Consul key/value store.
     This is a powerful way dynamically set values in templates.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/keys.html.markdown.
+
+
     :param str datacenter: The datacenter to use. This overrides the
            agent's default datacenter and the datacenter in the provider setup.
     :param list keys: Specifies a key in Consul to be read. Supported
            values documented below. Multiple blocks supported.
     :param str token: The ACL token to use. This overrides the
            token that the agent provides by default.
-    
+
     The **keys** object supports the following:
-    
+
       * `default` (`str`)
       * `name` (`str`)
       * `path` (`str`)
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/keys.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['datacenter'] = datacenter
     __args__['keys'] = keys
@@ -82,7 +84,7 @@ def get_keys(datacenter=None,keys=None,token=None,opts=None):
 
     return AwaitableGetKeysResult(
         datacenter=__ret__.get('datacenter'),
+        id=__ret__.get('id'),
         keys=__ret__.get('keys'),
         token=__ret__.get('token'),
-        var=__ret__.get('var'),
-        id=__ret__.get('id'))
+        var=__ret__.get('var'))

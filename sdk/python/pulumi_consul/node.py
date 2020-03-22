@@ -34,7 +34,9 @@ class Node(pulumi.CustomResource):
         """
         Provides access to Node data in Consul. This can be used to define a
         node. Currently, defining health checks is not supported.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/node.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address: The address of the node being added to,
@@ -44,8 +46,6 @@ class Node(pulumi.CustomResource):
         :param pulumi.Input[dict] meta: Key/value pairs that are associated with the node.
         :param pulumi.Input[str] name: The name of the node being added to, or
                referenced in the catalog.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/node.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -82,7 +82,7 @@ class Node(pulumi.CustomResource):
         """
         Get an existing Node resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -93,12 +93,11 @@ class Node(pulumi.CustomResource):
         :param pulumi.Input[dict] meta: Key/value pairs that are associated with the node.
         :param pulumi.Input[str] name: The name of the node being added to, or
                referenced in the catalog.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/node.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["address"] = address
         __props__["datacenter"] = datacenter
         __props__["meta"] = meta
