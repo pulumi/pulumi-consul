@@ -13,12 +13,18 @@ class GetServiceResult:
     """
     A collection of values returned by getService.
     """
-    def __init__(__self__, datacenter=None, name=None, query_options=None, services=None, tag=None, id=None):
+    def __init__(__self__, datacenter=None, id=None, name=None, query_options=None, services=None, tag=None):
         if datacenter and not isinstance(datacenter, str):
             raise TypeError("Expected argument 'datacenter' to be a str")
         __self__.datacenter = datacenter
         """
         The datacenter the keys are being read from to.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
@@ -43,12 +49,6 @@ class GetServiceResult:
         """
         The name of the tag used to filter the list of nodes in `service`.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetServiceResult(GetServiceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -56,11 +56,11 @@ class AwaitableGetServiceResult(GetServiceResult):
             yield self
         return GetServiceResult(
             datacenter=self.datacenter,
+            id=self.id,
             name=self.name,
             query_options=self.query_options,
             services=self.services,
-            tag=self.tag,
-            id=self.id)
+            tag=self.tag)
 
 def get_service(datacenter=None,name=None,query_options=None,tag=None,opts=None):
     """
@@ -69,10 +69,13 @@ def get_service(datacenter=None,name=None,query_options=None,tag=None,opts=None)
     service, the node's IP address, port number, node ID, etc.  By specifying a
     different datacenter in the `query_options` it is possible to retrieve a list of
     services from a different WAN-attached Consul datacenter.
-    
+
     This data source is different from the `.getServices` (plural) data
     source, which provides a summary of the current Consul services.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/service.html.markdown.
+
+
     :param str datacenter: The Consul datacenter to query.  Defaults to the
            same value found in `query_options` parameter specified below, or if that is
            empty, the `datacenter` value found in the Consul agent that this provider is
@@ -81,9 +84,9 @@ def get_service(datacenter=None,name=None,query_options=None,tag=None,opts=None)
     :param list query_options: See below.
     :param str tag: A single tag that can be used to filter the list of nodes
            to return based on a single matching tag..
-    
+
     The **query_options** object supports the following:
-    
+
       * `allowStale` (`bool`)
       * `datacenter` (`str`) - The Consul datacenter to query.  Defaults to the
         same value found in `query_options` parameter specified below, or if that is
@@ -95,10 +98,9 @@ def get_service(datacenter=None,name=None,query_options=None,tag=None,opts=None)
       * `token` (`str`)
       * `waitIndex` (`float`)
       * `waitTime` (`str`)
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/service.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['datacenter'] = datacenter
     __args__['name'] = name
@@ -112,8 +114,8 @@ def get_service(datacenter=None,name=None,query_options=None,tag=None,opts=None)
 
     return AwaitableGetServiceResult(
         datacenter=__ret__.get('datacenter'),
+        id=__ret__.get('id'),
         name=__ret__.get('name'),
         query_options=__ret__.get('queryOptions'),
         services=__ret__.get('services'),
-        tag=__ret__.get('tag'),
-        id=__ret__.get('id'))
+        tag=__ret__.get('tag'))

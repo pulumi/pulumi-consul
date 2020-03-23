@@ -54,10 +54,12 @@ class Service(pulumi.CustomResource):
         is appropriate for registering [external services](https://www.consul.io/docs/guides/external.html) and
         can be used to create services addressable by Consul that cannot be registered
         with a [local agent](https://www.consul.io/docs/agent/basics.html).
-        
+
         If the Consul agent is running on the node where this service is registered, it is
         not recommended to use this resource.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/service.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address: The address of the service. Defaults to the
@@ -72,9 +74,9 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] service_id: The ID of the service.
         :param pulumi.Input[list] tags: A list of values that are opaque to Consul,
                but can be used to distinguish between services or nodes.
-        
+
         The **checks** object supports the following:
-        
+
           * `checkId` (`pulumi.Input[str]`) - An ID, *unique per agent*. Will default to *name*
             if not set.
           * `deregisterCriticalServiceAfter` (`pulumi.Input[str]`) - The time after which
@@ -82,10 +84,9 @@ class Service(pulumi.CustomResource):
             Defaults to `30s`.
           * `headers` (`pulumi.Input[list]`) - The headers to send for an HTTP check.
             The attributes of each header is given below.
-        
             * `name` (`pulumi.Input[str]`) - The name of the header.
             * `values` (`pulumi.Input[list]`) - The header's list of values.
-        
+
           * `http` (`pulumi.Input[str]`) - The HTTP endpoint to call for an HTTP check.
           * `interval` (`pulumi.Input[str]`) - The interval to wait between each health-check
             invocation.
@@ -98,8 +99,6 @@ class Service(pulumi.CustomResource):
           * `timeout` (`pulumi.Input[str]`) - The timeout value for HTTP checks.
           * `tlsSkipVerify` (`pulumi.Input[bool]`) - Whether to deactivate certificate
             verification for HTTP health-checks. Defaults to `false`.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/service.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -141,7 +140,7 @@ class Service(pulumi.CustomResource):
         """
         Get an existing Service resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -157,9 +156,9 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] service_id: The ID of the service.
         :param pulumi.Input[list] tags: A list of values that are opaque to Consul,
                but can be used to distinguish between services or nodes.
-        
+
         The **checks** object supports the following:
-        
+
           * `checkId` (`pulumi.Input[str]`) - An ID, *unique per agent*. Will default to *name*
             if not set.
           * `deregisterCriticalServiceAfter` (`pulumi.Input[str]`) - The time after which
@@ -167,10 +166,9 @@ class Service(pulumi.CustomResource):
             Defaults to `30s`.
           * `headers` (`pulumi.Input[list]`) - The headers to send for an HTTP check.
             The attributes of each header is given below.
-        
             * `name` (`pulumi.Input[str]`) - The name of the header.
             * `values` (`pulumi.Input[list]`) - The header's list of values.
-        
+
           * `http` (`pulumi.Input[str]`) - The HTTP endpoint to call for an HTTP check.
           * `interval` (`pulumi.Input[str]`) - The interval to wait between each health-check
             invocation.
@@ -183,12 +181,11 @@ class Service(pulumi.CustomResource):
           * `timeout` (`pulumi.Input[str]`) - The timeout value for HTTP checks.
           * `tlsSkipVerify` (`pulumi.Input[bool]`) - Whether to deactivate certificate
             verification for HTTP health-checks. Defaults to `false`.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/service.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["address"] = address
         __props__["checks"] = checks
         __props__["datacenter"] = datacenter

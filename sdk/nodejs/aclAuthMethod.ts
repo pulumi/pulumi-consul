@@ -28,7 +28,7 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/acl_auth_method.html.markdown.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/acl_auth_method.markdown.
  */
 export class AclAuthMethod extends pulumi.CustomResource {
     /**

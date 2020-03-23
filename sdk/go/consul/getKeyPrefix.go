@@ -8,7 +8,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/key_prefix.html.markdown.
 func LookupKeyPrefix(ctx *pulumi.Context, args *LookupKeyPrefixArgs, opts ...pulumi.InvokeOption) (*LookupKeyPrefixResult, error) {
 	var rv LookupKeyPrefixResult
 	err := ctx.Invoke("consul:index/getKeyPrefix:getKeyPrefix", args, &rv, opts...)

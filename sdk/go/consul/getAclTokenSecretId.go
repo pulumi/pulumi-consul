@@ -8,7 +8,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/acl_token_secret_id.html.markdown.
 func GetAclTokenSecretId(ctx *pulumi.Context, args *GetAclTokenSecretIdArgs, opts ...pulumi.InvokeOption) (*GetAclTokenSecretIdResult, error) {
 	var rv GetAclTokenSecretIdResult
 	err := ctx.Invoke("consul:index/getAclTokenSecretId:getAclTokenSecretId", args, &rv, opts...)

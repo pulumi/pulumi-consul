@@ -14,8 +14,8 @@ import (
 // The [Configuration Entry](https://www.consul.io/docs/agent/config_entries.html)
 // resource can be used to provide cluster-wide defaults for various aspects of
 // Consul.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/config_entry.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/config_entry.markdown.
 type ConfigEntry struct {
 	pulumi.CustomResourceState
 

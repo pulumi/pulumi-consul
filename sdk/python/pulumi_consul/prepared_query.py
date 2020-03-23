@@ -24,14 +24,14 @@ class PreparedQuery(pulumi.CustomResource):
     dns: pulumi.Output[dict]
     """
     Settings for controlling the DNS response details.
-    
+
       * `ttl` (`str`) - The TTL to send when returning DNS results.
     """
     failover: pulumi.Output[dict]
     """
     Options for controlling behavior when no healthy
     nodes are available in the local DC.
-    
+
       * `datacenters` (`list`) - Remote datacenters to return results from.
       * `nearestN` (`float`) - Return results from this many datacenters,
         sorted in ascending order of estimated RTT.
@@ -81,7 +81,7 @@ class PreparedQuery(pulumi.CustomResource):
     """
     Query templating options. This is used to make a
     single prepared query respond to many different requests.
-    
+
       * `regexp` (`str`) - The regular expression to match with. When using
         `name_prefix_match`, this regex is applied against the query name.
       * `type` (`str`) - The type of template matching to perform. Currently
@@ -95,7 +95,6 @@ class PreparedQuery(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, connect=None, datacenter=None, dns=None, failover=None, name=None, near=None, only_passing=None, service=None, session=None, stored_token=None, tags=None, template=None, token=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a PreparedQuery resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] connect: When `true` the prepared query will return connect
@@ -130,25 +129,23 @@ class PreparedQuery(pulumi.CustomResource):
                single prepared query respond to many different requests.
         :param pulumi.Input[str] token: The ACL token to use when saving the prepared query.
                This overrides the token that the agent provides by default.
-        
+
         The **dns** object supports the following:
-        
+
           * `ttl` (`pulumi.Input[str]`) - The TTL to send when returning DNS results.
-        
+
         The **failover** object supports the following:
-        
+
           * `datacenters` (`pulumi.Input[list]`) - Remote datacenters to return results from.
           * `nearestN` (`pulumi.Input[float]`) - Return results from this many datacenters,
             sorted in ascending order of estimated RTT.
-        
+
         The **template** object supports the following:
-        
+
           * `regexp` (`pulumi.Input[str]`) - The regular expression to match with. When using
             `name_prefix_match`, this regex is applied against the query name.
           * `type` (`pulumi.Input[str]`) - The type of template matching to perform. Currently
             only `name_prefix_match` is supported.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/prepared_query.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -193,7 +190,7 @@ class PreparedQuery(pulumi.CustomResource):
         """
         Get an existing PreparedQuery resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -229,29 +226,28 @@ class PreparedQuery(pulumi.CustomResource):
                single prepared query respond to many different requests.
         :param pulumi.Input[str] token: The ACL token to use when saving the prepared query.
                This overrides the token that the agent provides by default.
-        
+
         The **dns** object supports the following:
-        
+
           * `ttl` (`pulumi.Input[str]`) - The TTL to send when returning DNS results.
-        
+
         The **failover** object supports the following:
-        
+
           * `datacenters` (`pulumi.Input[list]`) - Remote datacenters to return results from.
           * `nearestN` (`pulumi.Input[float]`) - Return results from this many datacenters,
             sorted in ascending order of estimated RTT.
-        
+
         The **template** object supports the following:
-        
+
           * `regexp` (`pulumi.Input[str]`) - The regular expression to match with. When using
             `name_prefix_match`, this regex is applied against the query name.
           * `type` (`pulumi.Input[str]`) - The type of template matching to perform. Currently
             only `name_prefix_match` is supported.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/prepared_query.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["connect"] = connect
         __props__["datacenter"] = datacenter
         __props__["dns"] = dns

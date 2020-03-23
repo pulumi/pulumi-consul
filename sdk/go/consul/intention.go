@@ -13,12 +13,12 @@ import (
 
 // [Intentions](https://www.consul.io/docs/connect/intentions.html) are used to define
 // rules for which services may connect to one another when using [Consul Connect](https://www.consul.io/docs/connect/index.html).
-// 
+//
 // It is appropriate to either reference existing services or specify non-existent services
 // that will be created in the future when creating intentions. This resource can be used
 // in conjunction with the `.Service` datasource when referencing services
 // registered on nodes that have a running Consul agent.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/intention.html.markdown.
 type Intention struct {
 	pulumi.CustomResourceState

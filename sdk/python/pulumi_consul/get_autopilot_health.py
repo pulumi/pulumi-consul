@@ -13,7 +13,7 @@ class GetAutopilotHealthResult:
     """
     A collection of values returned by getAutopilotHealth.
     """
-    def __init__(__self__, datacenter=None, failure_tolerance=None, healthy=None, servers=None, id=None):
+    def __init__(__self__, datacenter=None, failure_tolerance=None, healthy=None, id=None, servers=None):
         if datacenter and not isinstance(datacenter, str):
             raise TypeError("Expected argument 'datacenter' to be a str")
         __self__.datacenter = datacenter
@@ -31,18 +31,18 @@ class GetAutopilotHealthResult:
         Whether the server is healthy according to the current Autopilot
         configuration
         """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if servers and not isinstance(servers, list):
             raise TypeError("Expected argument 'servers' to be a list")
         __self__.servers = servers
         """
         A list of server health information. See below for details on the
         available information.
-        """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
         """
 class AwaitableGetAutopilotHealthResult(GetAutopilotHealthResult):
     # pylint: disable=using-constant-test
@@ -53,21 +53,23 @@ class AwaitableGetAutopilotHealthResult(GetAutopilotHealthResult):
             datacenter=self.datacenter,
             failure_tolerance=self.failure_tolerance,
             healthy=self.healthy,
-            servers=self.servers,
-            id=self.id)
+            id=self.id,
+            servers=self.servers)
 
 def get_autopilot_health(datacenter=None,opts=None):
     """
     The `.getAutopilotHealth` data source returns
     [autopilot health information](https://www.consul.io/api/operator/autopilot.html#read-health)
     about the current Consul cluster.
-    
-    :param str datacenter: The datacenter to use. This overrides the agent's
-           default datacenter and the datacenter in the provider setup.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/autopilot_health.html.markdown.
+
+
+    :param str datacenter: The datacenter to use. This overrides the agent's
+           default datacenter and the datacenter in the provider setup.
     """
     __args__ = dict()
+
 
     __args__['datacenter'] = datacenter
     if opts is None:
@@ -80,5 +82,5 @@ def get_autopilot_health(datacenter=None,opts=None):
         datacenter=__ret__.get('datacenter'),
         failure_tolerance=__ret__.get('failureTolerance'),
         healthy=__ret__.get('healthy'),
-        servers=__ret__.get('servers'),
-        id=__ret__.get('id'))
+        id=__ret__.get('id'),
+        servers=__ret__.get('servers'))

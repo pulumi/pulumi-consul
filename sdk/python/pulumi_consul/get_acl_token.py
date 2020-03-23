@@ -13,7 +13,7 @@ class GetAclTokenResult:
     """
     A collection of values returned by getAclToken.
     """
-    def __init__(__self__, accessor_id=None, description=None, local=None, policies=None, id=None):
+    def __init__(__self__, accessor_id=None, description=None, id=None, local=None, policies=None):
         if accessor_id and not isinstance(accessor_id, str):
             raise TypeError("Expected argument 'accessor_id' to be a str")
         __self__.accessor_id = accessor_id
@@ -22,6 +22,12 @@ class GetAclTokenResult:
         __self__.description = description
         """
         The description of the ACL token.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if local and not isinstance(local, bool):
             raise TypeError("Expected argument 'local' to be a bool")
@@ -36,12 +42,6 @@ class GetAclTokenResult:
         A list of policies associated with the ACL token. Each entry has
         an `id` and a `name` attribute.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetAclTokenResult(GetAclTokenResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -50,28 +50,30 @@ class AwaitableGetAclTokenResult(GetAclTokenResult):
         return GetAclTokenResult(
             accessor_id=self.accessor_id,
             description=self.description,
+            id=self.id,
             local=self.local,
-            policies=self.policies,
-            id=self.id)
+            policies=self.policies)
 
 def get_acl_token(accessor_id=None,description=None,local=None,policies=None,opts=None):
     """
     The `.AclToken` data source returns the information related to the
     `.AclToken` resource with the exception of its secret ID.
-    
+
     If you want to get the secret ID associated with a token, use the
     [`.getAclTokenSecretId` data source](https://www.terraform.io/docs/providers/consul/d/acl_token_secret_id.html).
-    
-    :param str accessor_id: The accessor ID of the ACL token.
-    
-    The **policies** object supports the following:
-    
-      * `id` (`str`)
-      * `name` (`str`)
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/acl_token.html.markdown.
+
+
+    :param str accessor_id: The accessor ID of the ACL token.
+
+    The **policies** object supports the following:
+
+      * `id` (`str`)
+      * `name` (`str`)
     """
     __args__ = dict()
+
 
     __args__['accessorId'] = accessor_id
     __args__['description'] = description
@@ -86,6 +88,6 @@ def get_acl_token(accessor_id=None,description=None,local=None,policies=None,opt
     return AwaitableGetAclTokenResult(
         accessor_id=__ret__.get('accessorId'),
         description=__ret__.get('description'),
+        id=__ret__.get('id'),
         local=__ret__.get('local'),
-        policies=__ret__.get('policies'),
-        id=__ret__.get('id'))
+        policies=__ret__.get('policies'))

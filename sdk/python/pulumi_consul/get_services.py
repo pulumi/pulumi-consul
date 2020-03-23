@@ -13,12 +13,18 @@ class GetServicesResult:
     """
     A collection of values returned by getServices.
     """
-    def __init__(__self__, datacenter=None, names=None, query_options=None, services=None, id=None):
+    def __init__(__self__, datacenter=None, id=None, names=None, query_options=None, services=None):
         if datacenter and not isinstance(datacenter, str):
             raise TypeError("Expected argument 'datacenter' to be a str")
         __self__.datacenter = datacenter
         """
         The datacenter the keys are being read from to.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if names and not isinstance(names, list):
             raise TypeError("Expected argument 'names' to be a list")
@@ -29,12 +35,6 @@ class GetServicesResult:
         if services and not isinstance(services, dict):
             raise TypeError("Expected argument 'services' to be a dict")
         __self__.services = services
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetServicesResult(GetServicesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -42,10 +42,10 @@ class AwaitableGetServicesResult(GetServicesResult):
             yield self
         return GetServicesResult(
             datacenter=self.datacenter,
+            id=self.id,
             names=self.names,
             query_options=self.query_options,
-            services=self.services,
-            id=self.id)
+            services=self.services)
 
 def get_services(query_options=None,opts=None):
     """
@@ -53,14 +53,17 @@ def get_services(query_options=None,opts=None):
     have been registered with the Consul cluster in a given datacenter.  By
     specifying a different datacenter in the `query_options` it is possible to
     retrieve a list of services from a different WAN-attached Consul datacenter.
-    
+
     This data source is different from the `.Service` (singular) data
     source, which provides a detailed response about a specific Consul service.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/services.html.markdown.
+
+
     :param list query_options: See below.
-    
+
     The **query_options** object supports the following:
-    
+
       * `allowStale` (`bool`)
       * `datacenter` (`str`) - The Consul datacenter to query.  Defaults to the
         same value found in `query_options` parameter specified below, or if that is
@@ -72,10 +75,9 @@ def get_services(query_options=None,opts=None):
       * `token` (`str`)
       * `waitIndex` (`float`)
       * `waitTime` (`str`)
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/services.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['queryOptions'] = query_options
     if opts is None:
@@ -86,7 +88,7 @@ def get_services(query_options=None,opts=None):
 
     return AwaitableGetServicesResult(
         datacenter=__ret__.get('datacenter'),
+        id=__ret__.get('id'),
         names=__ret__.get('names'),
         query_options=__ret__.get('queryOptions'),
-        services=__ret__.get('services'),
-        id=__ret__.get('id'))
+        services=__ret__.get('services'))

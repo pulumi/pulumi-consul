@@ -13,7 +13,7 @@ class GetAgentSelfResult:
     """
     A collection of values returned by getAgentSelf.
     """
-    def __init__(__self__, acl_datacenter=None, acl_default_policy=None, acl_disabled_ttl=None, acl_down_policy=None, acl_enforce08_semantics=None, acl_ttl=None, addresses=None, advertise_addr=None, advertise_addr_wan=None, advertise_addrs=None, atlas_join=None, bind_addr=None, bootstrap_expect=None, bootstrap_mode=None, check_deregister_interval_min=None, check_reap_interval=None, check_update_interval=None, client_addr=None, data_dir=None, datacenter=None, dev_mode=None, dns=None, dns_recursors=None, domain=None, enable_anonymous_signature=None, enable_coordinates=None, enable_debug=None, enable_remote_exec=None, enable_syslog=None, enable_ui=None, enable_update_check=None, id=None, leave_on_int=None, leave_on_term=None, log_level=None, name=None, performance=None, pid_file=None, ports=None, protocol_version=None, reconnect_timeout_lan=None, reconnect_timeout_wan=None, rejoin_after_leave=None, retry_joins=None, retry_join_ec2=None, retry_join_gce=None, retry_join_wans=None, retry_max_attempts=None, retry_max_attempts_wan=None, serf_lan_bind_addr=None, serf_wan_bind_addr=None, server_mode=None, server_name=None, session_ttl_min=None, start_joins=None, start_join_wans=None, syslog_facility=None, tagged_addresses=None, telemetry=None, tls_ca_file=None, tls_cert_file=None, tls_key_file=None, tls_min_version=None, tls_verify_incoming=None, tls_verify_outgoing=None, tls_verify_server_hostname=None, translate_wan_addrs=None, ui_dir=None, unix_sockets=None, version=None, version_prerelease=None, version_revision=None):
+    def __init__(__self__, acl_datacenter=None, acl_default_policy=None, acl_disabled_ttl=None, acl_down_policy=None, acl_enforce08_semantics=None, acl_ttl=None, addresses=None, advertise_addr=None, advertise_addr_wan=None, advertise_addrs=None, atlas_join=None, bind_addr=None, bootstrap_expect=None, bootstrap_mode=None, check_deregister_interval_min=None, check_reap_interval=None, check_update_interval=None, client_addr=None, data_dir=None, datacenter=None, dev_mode=None, dns=None, dns_recursors=None, domain=None, enable_anonymous_signature=None, enable_coordinates=None, enable_debug=None, enable_remote_exec=None, enable_syslog=None, enable_ui=None, enable_update_check=None, id=None, leave_on_int=None, leave_on_term=None, log_level=None, name=None, performance=None, pid_file=None, ports=None, protocol_version=None, reconnect_timeout_lan=None, reconnect_timeout_wan=None, rejoin_after_leave=None, retry_join_ec2=None, retry_join_gce=None, retry_join_wans=None, retry_joins=None, retry_max_attempts=None, retry_max_attempts_wan=None, serf_lan_bind_addr=None, serf_wan_bind_addr=None, server_mode=None, server_name=None, session_ttl_min=None, start_join_wans=None, start_joins=None, syslog_facility=None, tagged_addresses=None, telemetry=None, tls_ca_file=None, tls_cert_file=None, tls_key_file=None, tls_min_version=None, tls_verify_incoming=None, tls_verify_outgoing=None, tls_verify_server_hostname=None, translate_wan_addrs=None, ui_dir=None, unix_sockets=None, version=None, version_prerelease=None, version_revision=None):
         if acl_datacenter and not isinstance(acl_datacenter, str):
             raise TypeError("Expected argument 'acl_datacenter' to be a str")
         __self__.acl_datacenter = acl_datacenter
@@ -203,9 +203,6 @@ class GetAgentSelfResult:
         if rejoin_after_leave and not isinstance(rejoin_after_leave, bool):
             raise TypeError("Expected argument 'rejoin_after_leave' to be a bool")
         __self__.rejoin_after_leave = rejoin_after_leave
-        if retry_joins and not isinstance(retry_joins, list):
-            raise TypeError("Expected argument 'retry_joins' to be a list")
-        __self__.retry_joins = retry_joins
         if retry_join_ec2 and not isinstance(retry_join_ec2, dict):
             raise TypeError("Expected argument 'retry_join_ec2' to be a dict")
         __self__.retry_join_ec2 = retry_join_ec2
@@ -215,6 +212,9 @@ class GetAgentSelfResult:
         if retry_join_wans and not isinstance(retry_join_wans, list):
             raise TypeError("Expected argument 'retry_join_wans' to be a list")
         __self__.retry_join_wans = retry_join_wans
+        if retry_joins and not isinstance(retry_joins, list):
+            raise TypeError("Expected argument 'retry_joins' to be a list")
+        __self__.retry_joins = retry_joins
         if retry_max_attempts and not isinstance(retry_max_attempts, float):
             raise TypeError("Expected argument 'retry_max_attempts' to be a float")
         __self__.retry_max_attempts = retry_max_attempts
@@ -236,12 +236,12 @@ class GetAgentSelfResult:
         if session_ttl_min and not isinstance(session_ttl_min, str):
             raise TypeError("Expected argument 'session_ttl_min' to be a str")
         __self__.session_ttl_min = session_ttl_min
-        if start_joins and not isinstance(start_joins, list):
-            raise TypeError("Expected argument 'start_joins' to be a list")
-        __self__.start_joins = start_joins
         if start_join_wans and not isinstance(start_join_wans, list):
             raise TypeError("Expected argument 'start_join_wans' to be a list")
         __self__.start_join_wans = start_join_wans
+        if start_joins and not isinstance(start_joins, list):
+            raise TypeError("Expected argument 'start_joins' to be a list")
+        __self__.start_joins = start_joins
         if syslog_facility and not isinstance(syslog_facility, str):
             raise TypeError("Expected argument 'syslog_facility' to be a str")
         __self__.syslog_facility = syslog_facility
@@ -344,10 +344,10 @@ class AwaitableGetAgentSelfResult(GetAgentSelfResult):
             reconnect_timeout_lan=self.reconnect_timeout_lan,
             reconnect_timeout_wan=self.reconnect_timeout_wan,
             rejoin_after_leave=self.rejoin_after_leave,
-            retry_joins=self.retry_joins,
             retry_join_ec2=self.retry_join_ec2,
             retry_join_gce=self.retry_join_gce,
             retry_join_wans=self.retry_join_wans,
+            retry_joins=self.retry_joins,
             retry_max_attempts=self.retry_max_attempts,
             retry_max_attempts_wan=self.retry_max_attempts_wan,
             serf_lan_bind_addr=self.serf_lan_bind_addr,
@@ -355,8 +355,8 @@ class AwaitableGetAgentSelfResult(GetAgentSelfResult):
             server_mode=self.server_mode,
             server_name=self.server_name,
             session_ttl_min=self.session_ttl_min,
-            start_joins=self.start_joins,
             start_join_wans=self.start_join_wans,
+            start_joins=self.start_joins,
             syslog_facility=self.syslog_facility,
             tagged_addresses=self.tagged_addresses,
             telemetry=self.telemetry,
@@ -378,8 +378,8 @@ def get_agent_self(opts=None):
     """
     > **Warning:** The `.getAgentSelf` resource has been deprecated and will be removed
     from a future release of the provider. Read the [upgrade instructions](https://www.terraform.io/docs/providers/consul/upgrading.html#deprecation-of-consul_agent_self) for more information.
-    
-    
+
+
     The `.getAgentSelf` data source returns
     [configuration and status data](https://www.consul.io/docs/agent/http/agent.html#agent_self)
     from the agent specified in the `provider`.
@@ -387,6 +387,7 @@ def get_agent_self(opts=None):
     > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/agent_self.html.markdown.
     """
     __args__ = dict()
+
 
     if opts is None:
         opts = pulumi.InvokeOptions()
@@ -438,10 +439,10 @@ def get_agent_self(opts=None):
         reconnect_timeout_lan=__ret__.get('reconnectTimeoutLan'),
         reconnect_timeout_wan=__ret__.get('reconnectTimeoutWan'),
         rejoin_after_leave=__ret__.get('rejoinAfterLeave'),
-        retry_joins=__ret__.get('retryJoins'),
         retry_join_ec2=__ret__.get('retryJoinEc2'),
         retry_join_gce=__ret__.get('retryJoinGce'),
         retry_join_wans=__ret__.get('retryJoinWans'),
+        retry_joins=__ret__.get('retryJoins'),
         retry_max_attempts=__ret__.get('retryMaxAttempts'),
         retry_max_attempts_wan=__ret__.get('retryMaxAttemptsWan'),
         serf_lan_bind_addr=__ret__.get('serfLanBindAddr'),
@@ -449,8 +450,8 @@ def get_agent_self(opts=None):
         server_mode=__ret__.get('serverMode'),
         server_name=__ret__.get('serverName'),
         session_ttl_min=__ret__.get('sessionTtlMin'),
-        start_joins=__ret__.get('startJoins'),
         start_join_wans=__ret__.get('startJoinWans'),
+        start_joins=__ret__.get('startJoins'),
         syslog_facility=__ret__.get('syslogFacility'),
         tagged_addresses=__ret__.get('taggedAddresses'),
         telemetry=__ret__.get('telemetry'),

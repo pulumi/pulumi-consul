@@ -13,7 +13,7 @@ class GetServiceHealthResult:
     """
     A collection of values returned by getServiceHealth.
     """
-    def __init__(__self__, datacenter=None, name=None, near=None, node_meta=None, passing=None, results=None, tag=None, wait_for=None, id=None):
+    def __init__(__self__, datacenter=None, id=None, name=None, near=None, node_meta=None, passing=None, results=None, tag=None, wait_for=None):
         if datacenter and not isinstance(datacenter, str):
             raise TypeError("Expected argument 'datacenter' to be a str")
         __self__.datacenter = datacenter
@@ -21,6 +21,12 @@ class GetServiceHealthResult:
         The datacenter in which the node is running.
         * [`tagged_addresses`](https://www.consul.io/docs/agent/http/catalog.html#TaggedAddresses) -
         List of explicit LAN and WAN IP addresses for the agent.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
@@ -64,12 +70,6 @@ class GetServiceHealthResult:
         if wait_for and not isinstance(wait_for, str):
             raise TypeError("Expected argument 'wait_for' to be a str")
         __self__.wait_for = wait_for
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetServiceHealthResult(GetServiceHealthResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -77,14 +77,14 @@ class AwaitableGetServiceHealthResult(GetServiceHealthResult):
             yield self
         return GetServiceHealthResult(
             datacenter=self.datacenter,
+            id=self.id,
             name=self.name,
             near=self.near,
             node_meta=self.node_meta,
             passing=self.passing,
             results=self.results,
             tag=self.tag,
-            wait_for=self.wait_for,
-            id=self.id)
+            wait_for=self.wait_for)
 
 def get_service_health(datacenter=None,name=None,near=None,node_meta=None,passing=None,tag=None,wait_for=None,opts=None):
     """
@@ -92,10 +92,13 @@ def get_service_health(datacenter=None,name=None,near=None,node_meta=None,passin
     are currently healthy, according to their associated  health-checks.
     The result includes the list of service instances, the node associated to each
     instance and its health-checks.
-    
+
     This resource is likely to change as frequently as the health-checks are being
     updated, you should expect different results in a frequent basis.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/service_health.html.markdown.
+
+
     :param str datacenter: The Consul datacenter to query.
     :param str name: The service name to select.
     :param str near: Specifies a node name to sort the node list in ascending order
@@ -106,10 +109,9 @@ def get_service_health(datacenter=None,name=None,near=None,node_meta=None,passin
            passing state. Defaults to `true`.
     :param str tag: A single tag that can be used to filter the list to return
            based on a single matching tag.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/service_health.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['datacenter'] = datacenter
     __args__['name'] = name
@@ -126,11 +128,11 @@ def get_service_health(datacenter=None,name=None,near=None,node_meta=None,passin
 
     return AwaitableGetServiceHealthResult(
         datacenter=__ret__.get('datacenter'),
+        id=__ret__.get('id'),
         name=__ret__.get('name'),
         near=__ret__.get('near'),
         node_meta=__ret__.get('nodeMeta'),
         passing=__ret__.get('passing'),
         results=__ret__.get('results'),
         tag=__ret__.get('tag'),
-        wait_for=__ret__.get('waitFor'),
-        id=__ret__.get('id'))
+        wait_for=__ret__.get('waitFor'))

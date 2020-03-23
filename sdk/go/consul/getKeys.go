@@ -10,7 +10,7 @@ import (
 
 // The `.Keys` resource reads values from the Consul key/value store.
 // This is a powerful way dynamically set values in templates.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/keys.html.markdown.
 func LookupKeys(ctx *pulumi.Context, args *LookupKeysArgs, opts ...pulumi.InvokeOption) (*LookupKeysResult, error) {
 	var rv LookupKeysResult

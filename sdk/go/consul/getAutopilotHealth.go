@@ -11,7 +11,7 @@ import (
 // The `.getAutopilotHealth` data source returns
 // [autopilot health information](https://www.consul.io/api/operator/autopilot.html#read-health)
 // about the current Consul cluster.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/autopilot_health.html.markdown.
 func GetAutopilotHealth(ctx *pulumi.Context, args *GetAutopilotHealthArgs, opts ...pulumi.InvokeOption) (*GetAutopilotHealthResult, error) {
 	var rv GetAutopilotHealthResult

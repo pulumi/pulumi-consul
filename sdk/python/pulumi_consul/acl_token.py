@@ -30,7 +30,9 @@ class AclToken(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, accessor_id=None, description=None, local=None, policies=None, __props__=None, __name__=None, __opts__=None):
         """
         The `.AclToken` resource writes an ACL token into Consul.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/acl_token.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] accessor_id: The uuid of the token. If omitted, Consul will
@@ -38,8 +40,6 @@ class AclToken(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the token.
         :param pulumi.Input[bool] local: The flag to set the token local to the current datacenter.
         :param pulumi.Input[list] policies: The list of policies attached to the token.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/acl_token.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -73,7 +73,7 @@ class AclToken(pulumi.CustomResource):
         """
         Get an existing AclToken resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -82,12 +82,11 @@ class AclToken(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the token.
         :param pulumi.Input[bool] local: The flag to set the token local to the current datacenter.
         :param pulumi.Input[list] policies: The list of policies attached to the token.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/acl_token.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["accessor_id"] = accessor_id
         __props__["description"] = description
         __props__["local"] = local

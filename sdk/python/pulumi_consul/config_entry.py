@@ -27,14 +27,14 @@ class ConfigEntry(pulumi.CustomResource):
         The [Configuration Entry](https://www.consul.io/docs/agent/config_entries.html)
         resource can be used to provide cluster-wide defaults for various aspects of
         Consul.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/config_entry.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] config_json: An arbitrary map of configuration values.
         :param pulumi.Input[str] kind: The kind of configuration entry to register.
         :param pulumi.Input[str] name: The name of the configuration entry being registred.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/config_entry.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -69,19 +69,18 @@ class ConfigEntry(pulumi.CustomResource):
         """
         Get an existing ConfigEntry resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] config_json: An arbitrary map of configuration values.
         :param pulumi.Input[str] kind: The kind of configuration entry to register.
         :param pulumi.Input[str] name: The name of the configuration entry being registred.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/config_entry.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["config_json"] = config_json
         __props__["kind"] = kind
         __props__["name"] = name

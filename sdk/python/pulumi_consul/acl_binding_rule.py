@@ -37,7 +37,9 @@ class AclBindingRule(pulumi.CustomResource):
         """
         Starting with Consul 1.5.0, the .AclBindingRule resource can be used to
         managed Consul ACL binding rules.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/acl_binding_rule.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] auth_method: The name of the ACL auth method this rule apply.
@@ -48,8 +50,6 @@ class AclBindingRule(pulumi.CustomResource):
                binding rule.
         :param pulumi.Input[str] selector: The expression used to math this rule against valid
                identities returned from an auth method validation.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/acl_binding_rule.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -90,7 +90,7 @@ class AclBindingRule(pulumi.CustomResource):
         """
         Get an existing AclBindingRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -102,12 +102,11 @@ class AclBindingRule(pulumi.CustomResource):
                binding rule.
         :param pulumi.Input[str] selector: The expression used to math this rule against valid
                identities returned from an auth method validation.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/acl_binding_rule.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["auth_method"] = auth_method
         __props__["bind_name"] = bind_name
         __props__["bind_type"] = bind_type

@@ -13,12 +13,18 @@ class GetAgentConfigResult:
     """
     A collection of values returned by getAgentConfig.
     """
-    def __init__(__self__, datacenter=None, node_id=None, node_name=None, revision=None, server=None, version=None, id=None):
+    def __init__(__self__, datacenter=None, id=None, node_id=None, node_name=None, revision=None, server=None, version=None):
         if datacenter and not isinstance(datacenter, str):
             raise TypeError("Expected argument 'datacenter' to be a str")
         __self__.datacenter = datacenter
         """
         The datacenter the agent is running in
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if node_id and not isinstance(node_id, str):
             raise TypeError("Expected argument 'node_id' to be a str")
@@ -50,12 +56,6 @@ class GetAgentConfigResult:
         """
         The version of the build of Consul that is running
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetAgentConfigResult(GetAgentConfigResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -63,19 +63,19 @@ class AwaitableGetAgentConfigResult(GetAgentConfigResult):
             yield self
         return GetAgentConfigResult(
             datacenter=self.datacenter,
+            id=self.id,
             node_id=self.node_id,
             node_name=self.node_name,
             revision=self.revision,
             server=self.server,
-            version=self.version,
-            id=self.id)
+            version=self.version)
 
 def get_agent_config(opts=None):
     """
     > **Note:** The `.getAgentConfig` resource differs from [`.getAgentSelf`](https://www.terraform.io/docs/providers/consul/d/agent_self.html),
     providing less information but utilizing stable APIs. `.getAgentSelf` will be
     deprecated in a future release.
-    
+
     The `.getAgentConfig` data source returns
     [configuration data](https://www.consul.io/api/agent.html#read-configuration)
     from the agent specified in the `provider`.
@@ -83,6 +83,7 @@ def get_agent_config(opts=None):
     > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/agent_config.html.markdown.
     """
     __args__ = dict()
+
 
     if opts is None:
         opts = pulumi.InvokeOptions()
@@ -92,9 +93,9 @@ def get_agent_config(opts=None):
 
     return AwaitableGetAgentConfigResult(
         datacenter=__ret__.get('datacenter'),
+        id=__ret__.get('id'),
         node_id=__ret__.get('nodeId'),
         node_name=__ret__.get('nodeName'),
         revision=__ret__.get('revision'),
         server=__ret__.get('server'),
-        version=__ret__.get('version'),
-        id=__ret__.get('id'))
+        version=__ret__.get('version'))

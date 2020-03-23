@@ -1,0 +1,3 @@
+name: consul
+description: A Pulumi resource provider for consul.
+language: schema
