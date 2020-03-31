@@ -28,6 +28,9 @@ type AclBindingRule struct {
 	// A free form human readable description of the
 	// binding rule.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// The namespace to create the binding
+	// rule within.
+	Namespace pulumi.StringPtrOutput `pulumi:"namespace"`
 	// The expression used to math this rule against valid
 	// identities returned from an auth method validation.
 	Selector pulumi.StringPtrOutput `pulumi:"selector"`
@@ -80,6 +83,9 @@ type aclBindingRuleState struct {
 	// A free form human readable description of the
 	// binding rule.
 	Description *string `pulumi:"description"`
+	// The namespace to create the binding
+	// rule within.
+	Namespace *string `pulumi:"namespace"`
 	// The expression used to math this rule against valid
 	// identities returned from an auth method validation.
 	Selector *string `pulumi:"selector"`
@@ -96,6 +102,9 @@ type AclBindingRuleState struct {
 	// A free form human readable description of the
 	// binding rule.
 	Description pulumi.StringPtrInput
+	// The namespace to create the binding
+	// rule within.
+	Namespace pulumi.StringPtrInput
 	// The expression used to math this rule against valid
 	// identities returned from an auth method validation.
 	Selector pulumi.StringPtrInput
@@ -116,6 +125,9 @@ type aclBindingRuleArgs struct {
 	// A free form human readable description of the
 	// binding rule.
 	Description *string `pulumi:"description"`
+	// The namespace to create the binding
+	// rule within.
+	Namespace *string `pulumi:"namespace"`
 	// The expression used to math this rule against valid
 	// identities returned from an auth method validation.
 	Selector *string `pulumi:"selector"`
@@ -133,6 +145,9 @@ type AclBindingRuleArgs struct {
 	// A free form human readable description of the
 	// binding rule.
 	Description pulumi.StringPtrInput
+	// The namespace to create the binding
+	// rule within.
+	Namespace pulumi.StringPtrInput
 	// The expression used to math this rule against valid
 	// identities returned from an auth method validation.
 	Selector pulumi.StringPtrInput

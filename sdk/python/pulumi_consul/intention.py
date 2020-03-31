@@ -24,6 +24,11 @@ class Intention(pulumi.CustomResource):
     The name of the destination service for the intention. This
     service does not have to exist.
     """
+    destination_namespace: pulumi.Output[str]
+    """
+    The destination
+    namespace of the intention.
+    """
     meta: pulumi.Output[dict]
     """
     Key/value pairs that are opaque to Consul and are associated
@@ -34,7 +39,12 @@ class Intention(pulumi.CustomResource):
     The name of the source service for the intention. This
     service does not have to exist.
     """
-    def __init__(__self__, resource_name, opts=None, action=None, description=None, destination_name=None, meta=None, source_name=None, __props__=None, __name__=None, __opts__=None):
+    source_namespace: pulumi.Output[str]
+    """
+    The source namespace of the
+    intention.
+    """
+    def __init__(__self__, resource_name, opts=None, action=None, description=None, destination_name=None, destination_namespace=None, meta=None, source_name=None, source_namespace=None, __props__=None, __name__=None, __opts__=None):
         """
         [Intentions](https://www.consul.io/docs/connect/intentions.html) are used to define
         rules for which services may connect to one another when using [Consul Connect](https://www.consul.io/docs/connect/index.html).
@@ -53,10 +63,14 @@ class Intention(pulumi.CustomResource):
                tooling, but is not used internally.
         :param pulumi.Input[str] destination_name: The name of the destination service for the intention. This
                service does not have to exist.
+        :param pulumi.Input[str] destination_namespace: The destination
+               namespace of the intention.
         :param pulumi.Input[dict] meta: Key/value pairs that are opaque to Consul and are associated
                with the intention.
         :param pulumi.Input[str] source_name: The name of the source service for the intention. This
                service does not have to exist.
+        :param pulumi.Input[str] source_namespace: The source namespace of the
+               intention.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -82,10 +96,12 @@ class Intention(pulumi.CustomResource):
             if destination_name is None:
                 raise TypeError("Missing required property 'destination_name'")
             __props__['destination_name'] = destination_name
+            __props__['destination_namespace'] = destination_namespace
             __props__['meta'] = meta
             if source_name is None:
                 raise TypeError("Missing required property 'source_name'")
             __props__['source_name'] = source_name
+            __props__['source_namespace'] = source_namespace
         super(Intention, __self__).__init__(
             'consul:index/intention:Intention',
             resource_name,
@@ -93,7 +109,7 @@ class Intention(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, action=None, description=None, destination_name=None, meta=None, source_name=None):
+    def get(resource_name, id, opts=None, action=None, description=None, destination_name=None, destination_namespace=None, meta=None, source_name=None, source_namespace=None):
         """
         Get an existing Intention resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -106,10 +122,14 @@ class Intention(pulumi.CustomResource):
                tooling, but is not used internally.
         :param pulumi.Input[str] destination_name: The name of the destination service for the intention. This
                service does not have to exist.
+        :param pulumi.Input[str] destination_namespace: The destination
+               namespace of the intention.
         :param pulumi.Input[dict] meta: Key/value pairs that are opaque to Consul and are associated
                with the intention.
         :param pulumi.Input[str] source_name: The name of the source service for the intention. This
                service does not have to exist.
+        :param pulumi.Input[str] source_namespace: The source namespace of the
+               intention.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -118,8 +138,10 @@ class Intention(pulumi.CustomResource):
         __props__["action"] = action
         __props__["description"] = description
         __props__["destination_name"] = destination_name
+        __props__["destination_namespace"] = destination_namespace
         __props__["meta"] = meta
         __props__["source_name"] = source_name
+        __props__["source_namespace"] = source_namespace
         return Intention(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

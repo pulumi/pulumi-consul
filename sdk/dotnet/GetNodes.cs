@@ -107,10 +107,10 @@ namespace Pulumi.Consul
         public string? Near { get; set; }
 
         [Input("nodeMeta")]
-        private Dictionary<string, object>? _nodeMeta;
-        public Dictionary<string, object> NodeMeta
+        private Dictionary<string, string>? _nodeMeta;
+        public Dictionary<string, string> NodeMeta
         {
-            get => _nodeMeta ?? (_nodeMeta = new Dictionary<string, object>());
+            get => _nodeMeta ?? (_nodeMeta = new Dictionary<string, string>());
             set => _nodeMeta = value;
         }
 
@@ -151,39 +151,23 @@ namespace Pulumi.Consul
         /// List of explicit LAN and WAN IP addresses for the agent.
         /// </summary>
         public readonly string Id;
-        public readonly ImmutableDictionary<string, object> Meta;
+        public readonly ImmutableDictionary<string, string> Meta;
         public readonly string Name;
-        public readonly GetNodesNodesTaggedAddressesResult TaggedAddresses;
+        public readonly ImmutableDictionary<string, string> TaggedAddresses;
 
         [OutputConstructor]
         private GetNodesNodesResult(
             string address,
             string id,
-            ImmutableDictionary<string, object> meta,
+            ImmutableDictionary<string, string> meta,
             string name,
-            GetNodesNodesTaggedAddressesResult taggedAddresses)
+            ImmutableDictionary<string, string> taggedAddresses)
         {
             Address = address;
             Id = id;
             Meta = meta;
             Name = name;
             TaggedAddresses = taggedAddresses;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetNodesNodesTaggedAddressesResult
-    {
-        public readonly string Lan;
-        public readonly string Wan;
-
-        [OutputConstructor]
-        private GetNodesNodesTaggedAddressesResult(
-            string lan,
-            string wan)
-        {
-            Lan = lan;
-            Wan = wan;
         }
     }
 
@@ -199,7 +183,7 @@ namespace Pulumi.Consul
         /// </summary>
         public readonly string? Datacenter;
         public readonly string? Near;
-        public readonly ImmutableDictionary<string, object>? NodeMeta;
+        public readonly ImmutableDictionary<string, string>? NodeMeta;
         public readonly bool? RequireConsistent;
         public readonly string? Token;
         public readonly int? WaitIndex;
@@ -210,7 +194,7 @@ namespace Pulumi.Consul
             bool? allowStale,
             string? datacenter,
             string? near,
-            ImmutableDictionary<string, object>? nodeMeta,
+            ImmutableDictionary<string, string>? nodeMeta,
             bool? requireConsistent,
             string? token,
             int? waitIndex,

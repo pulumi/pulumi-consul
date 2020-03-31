@@ -24,6 +24,7 @@ export function getAclPolicy(args: GetAclPolicyArgs, opts?: pulumi.InvokeOptions
         "datacenters": args.datacenters,
         "description": args.description,
         "name": args.name,
+        "namespace": args.namespace,
         "rules": args.rules,
     }, opts);
 
@@ -40,6 +41,10 @@ export interface GetAclPolicyArgs {
      * The name of the ACL Policy.
      */
     readonly name: string;
+    /**
+     * The namespace to lookup the policy.
+     */
+    readonly namespace?: string;
     readonly rules?: string;
 }
 
@@ -56,6 +61,7 @@ export interface GetAclPolicyResult {
      */
     readonly description?: string;
     readonly name: string;
+    readonly namespace?: string;
     /**
      * The rules associated with the ACL Policy.
      */

@@ -19,10 +19,12 @@ type Keys struct {
 	// Specifies a key in Consul to be written.
 	// Supported values documented below.
 	Keys KeysKeyArrayOutput `pulumi:"keys"`
+	// The namespace to create the keys within.
+	Namespace pulumi.StringPtrOutput `pulumi:"namespace"`
 	// The ACL token to use. This overrides the
 	// token that the agent provides by default.
 	Token pulumi.StringPtrOutput `pulumi:"token"`
-	Var pulumi.MapOutput `pulumi:"var"`
+	Var pulumi.StringMapOutput `pulumi:"var"`
 }
 
 // NewKeys registers a new resource with the given unique name, arguments, and options.
@@ -59,10 +61,12 @@ type keysState struct {
 	// Specifies a key in Consul to be written.
 	// Supported values documented below.
 	Keys []KeysKey `pulumi:"keys"`
+	// The namespace to create the keys within.
+	Namespace *string `pulumi:"namespace"`
 	// The ACL token to use. This overrides the
 	// token that the agent provides by default.
 	Token *string `pulumi:"token"`
-	Var map[string]interface{} `pulumi:"var"`
+	Var map[string]string `pulumi:"var"`
 }
 
 type KeysState struct {
@@ -72,10 +76,12 @@ type KeysState struct {
 	// Specifies a key in Consul to be written.
 	// Supported values documented below.
 	Keys KeysKeyArrayInput
+	// The namespace to create the keys within.
+	Namespace pulumi.StringPtrInput
 	// The ACL token to use. This overrides the
 	// token that the agent provides by default.
 	Token pulumi.StringPtrInput
-	Var pulumi.MapInput
+	Var pulumi.StringMapInput
 }
 
 func (KeysState) ElementType() reflect.Type {
@@ -89,6 +95,8 @@ type keysArgs struct {
 	// Specifies a key in Consul to be written.
 	// Supported values documented below.
 	Keys []KeysKey `pulumi:"keys"`
+	// The namespace to create the keys within.
+	Namespace *string `pulumi:"namespace"`
 	// The ACL token to use. This overrides the
 	// token that the agent provides by default.
 	Token *string `pulumi:"token"`
@@ -102,6 +110,8 @@ type KeysArgs struct {
 	// Specifies a key in Consul to be written.
 	// Supported values documented below.
 	Keys KeysKeyArrayInput
+	// The namespace to create the keys within.
+	Namespace pulumi.StringPtrInput
 	// The ACL token to use. This overrides the
 	// token that the agent provides by default.
 	Token pulumi.StringPtrInput

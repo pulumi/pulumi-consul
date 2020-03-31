@@ -24,10 +24,10 @@ namespace Pulumi.Consul
     public sealed class GetAclAuthMethodArgs : Pulumi.InvokeArgs
     {
         [Input("config")]
-        private Dictionary<string, object>? _config;
-        public Dictionary<string, object> Config
+        private Dictionary<string, string>? _config;
+        public Dictionary<string, string> Config
         {
-            get => _config ?? (_config = new Dictionary<string, object>());
+            get => _config ?? (_config = new Dictionary<string, string>());
             set => _config = value;
         }
 
@@ -39,6 +39,12 @@ namespace Pulumi.Consul
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
+
+        /// <summary>
+        /// The namespace to lookup the auth method.
+        /// </summary>
+        [Input("namespace")]
+        public string? Namespace { get; set; }
 
         [Input("type")]
         public string? Type { get; set; }
@@ -54,12 +60,13 @@ namespace Pulumi.Consul
         /// <summary>
         /// The configuration options of the ACL Auth Method.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Config;
+        public readonly ImmutableDictionary<string, string>? Config;
         /// <summary>
         /// The description of the ACL Auth Method.
         /// </summary>
         public readonly string? Description;
         public readonly string Name;
+        public readonly string? Namespace;
         /// <summary>
         /// The type of the ACL Auth Method.
         /// </summary>
@@ -71,15 +78,17 @@ namespace Pulumi.Consul
 
         [OutputConstructor]
         private GetAclAuthMethodResult(
-            ImmutableDictionary<string, object>? config,
+            ImmutableDictionary<string, string>? config,
             string? description,
             string name,
+            string? @namespace,
             string? type,
             string id)
         {
             Config = config;
             Description = description;
             Name = name;
+            Namespace = @namespace;
             Type = type;
             Id = id;
         }

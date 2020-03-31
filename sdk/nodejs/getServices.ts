@@ -53,7 +53,7 @@ export interface GetServicesResult {
     readonly datacenter: string;
     readonly names: string[];
     readonly queryOptions?: outputs.GetServicesQueryOption[];
-    readonly services: outputs.GetServicesServices;
+    readonly services: {[key: string]: string};
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

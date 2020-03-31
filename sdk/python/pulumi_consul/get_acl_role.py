@@ -13,7 +13,7 @@ class GetAclRoleResult:
     """
     A collection of values returned by getAclRole.
     """
-    def __init__(__self__, description=None, id=None, name=None, policies=None, service_identities=None):
+    def __init__(__self__, description=None, id=None, name=None, namespace=None, policies=None, service_identities=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         __self__.description = description
@@ -29,6 +29,9 @@ class GetAclRoleResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         __self__.name = name
+        if namespace and not isinstance(namespace, str):
+            raise TypeError("Expected argument 'namespace' to be a str")
+        __self__.namespace = namespace
         if policies and not isinstance(policies, list):
             raise TypeError("Expected argument 'policies' to be a list")
         __self__.policies = policies
@@ -52,10 +55,11 @@ class AwaitableGetAclRoleResult(GetAclRoleResult):
             description=self.description,
             id=self.id,
             name=self.name,
+            namespace=self.namespace,
             policies=self.policies,
             service_identities=self.service_identities)
 
-def get_acl_role(description=None,name=None,policies=None,service_identities=None,opts=None):
+def get_acl_role(description=None,name=None,namespace=None,policies=None,service_identities=None,opts=None):
     """
     The `.AclRole` data source returns the information related to a
     [Consul ACL Role](https://www.consul.io/api/acl/roles.html).
@@ -64,6 +68,7 @@ def get_acl_role(description=None,name=None,policies=None,service_identities=Non
 
 
     :param str name: The name of the ACL Role.
+    :param str namespace: The namespace to lookup the role.
 
     The **policies** object supports the following:
 
@@ -80,6 +85,7 @@ def get_acl_role(description=None,name=None,policies=None,service_identities=Non
 
     __args__['description'] = description
     __args__['name'] = name
+    __args__['namespace'] = namespace
     __args__['policies'] = policies
     __args__['serviceIdentities'] = service_identities
     if opts is None:
@@ -92,5 +98,6 @@ def get_acl_role(description=None,name=None,policies=None,service_identities=Non
         description=__ret__.get('description'),
         id=__ret__.get('id'),
         name=__ret__.get('name'),
+        namespace=__ret__.get('namespace'),
         policies=__ret__.get('policies'),
         service_identities=__ret__.get('serviceIdentities'))

@@ -39,6 +39,10 @@ export class KeyPrefix extends pulumi.CustomResource {
      */
     public readonly datacenter!: pulumi.Output<string>;
     /**
+     * The namespace to create the keys within.
+     */
+    public readonly namespace!: pulumi.Output<string | undefined>;
+    /**
      * Specifies the common prefix shared by all keys
      * that will be managed by this resource instance. In most cases this will
      * end with a slash, to manage a "folder" of keys.
@@ -75,6 +79,7 @@ export class KeyPrefix extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as KeyPrefixState | undefined;
             inputs["datacenter"] = state ? state.datacenter : undefined;
+            inputs["namespace"] = state ? state.namespace : undefined;
             inputs["pathPrefix"] = state ? state.pathPrefix : undefined;
             inputs["subkeyCollection"] = state ? state.subkeyCollection : undefined;
             inputs["subkeys"] = state ? state.subkeys : undefined;
@@ -85,6 +90,7 @@ export class KeyPrefix extends pulumi.CustomResource {
                 throw new Error("Missing required property 'pathPrefix'");
             }
             inputs["datacenter"] = args ? args.datacenter : undefined;
+            inputs["namespace"] = args ? args.namespace : undefined;
             inputs["pathPrefix"] = args ? args.pathPrefix : undefined;
             inputs["subkeyCollection"] = args ? args.subkeyCollection : undefined;
             inputs["subkeys"] = args ? args.subkeys : undefined;
@@ -110,6 +116,10 @@ export interface KeyPrefixState {
      * agent's default datacenter and the datacenter in the provider setup.
      */
     readonly datacenter?: pulumi.Input<string>;
+    /**
+     * The namespace to create the keys within.
+     */
+    readonly namespace?: pulumi.Input<string>;
     /**
      * Specifies the common prefix shared by all keys
      * that will be managed by this resource instance. In most cases this will
@@ -144,6 +154,10 @@ export interface KeyPrefixArgs {
      * agent's default datacenter and the datacenter in the provider setup.
      */
     readonly datacenter?: pulumi.Input<string>;
+    /**
+     * The namespace to create the keys within.
+     */
+    readonly namespace?: pulumi.Input<string>;
     /**
      * Specifies the common prefix shared by all keys
      * that will be managed by this resource instance. In most cases this will

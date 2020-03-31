@@ -25,6 +25,8 @@ namespace Pulumi.Consul
 
         public static string? KeyFile { get; set; } = __config.Get("keyFile") ?? Utilities.GetEnv("CONSUL_KEY_FILE");
 
+        public static string? Namespace { get; set; } = __config.Get("namespace");
+
         public static string? Scheme { get; set; } = __config.Get("scheme") ?? Utilities.GetEnv("CONSUL_SCHEME", "CONSUL_HTTP_SCHEME") ?? "http";
 
         public static string? Token { get; set; } = __config.Get("token") ?? Utilities.GetEnv("CONSUL_TOKEN", "CONSUL_HTTP_TOKEN");

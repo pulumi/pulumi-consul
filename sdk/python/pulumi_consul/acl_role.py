@@ -18,6 +18,10 @@ class AclRole(pulumi.CustomResource):
     """
     The name of the ACL role.
     """
+    namespace: pulumi.Output[str]
+    """
+    The namespace to create the role within.
+    """
     policies: pulumi.Output[list]
     """
     The list of policies that should be applied to the role.
@@ -30,7 +34,7 @@ class AclRole(pulumi.CustomResource):
       * `datacenters` (`list`) - The datacenters the effective policy is valid within.
       * `serviceName` (`str`) - The name of the service.
     """
-    def __init__(__self__, resource_name, opts=None, description=None, name=None, policies=None, service_identities=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, description=None, name=None, namespace=None, policies=None, service_identities=None, __props__=None, __name__=None, __opts__=None):
         """
         Starting with Consul 1.5.0, the .AclRole can be used to managed Consul ACL roles.
 
@@ -40,6 +44,7 @@ class AclRole(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A free form human readable description of the role.
         :param pulumi.Input[str] name: The name of the ACL role.
+        :param pulumi.Input[str] namespace: The namespace to create the role within.
         :param pulumi.Input[list] policies: The list of policies that should be applied to the role.
         :param pulumi.Input[list] service_identities: The list of service identities that should
                be applied to the role.
@@ -68,6 +73,7 @@ class AclRole(pulumi.CustomResource):
 
             __props__['description'] = description
             __props__['name'] = name
+            __props__['namespace'] = namespace
             __props__['policies'] = policies
             __props__['service_identities'] = service_identities
         super(AclRole, __self__).__init__(
@@ -77,7 +83,7 @@ class AclRole(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, description=None, name=None, policies=None, service_identities=None):
+    def get(resource_name, id, opts=None, description=None, name=None, namespace=None, policies=None, service_identities=None):
         """
         Get an existing AclRole resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -87,6 +93,7 @@ class AclRole(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A free form human readable description of the role.
         :param pulumi.Input[str] name: The name of the ACL role.
+        :param pulumi.Input[str] namespace: The namespace to create the role within.
         :param pulumi.Input[list] policies: The list of policies that should be applied to the role.
         :param pulumi.Input[list] service_identities: The list of service identities that should
                be applied to the role.
@@ -102,6 +109,7 @@ class AclRole(pulumi.CustomResource):
 
         __props__["description"] = description
         __props__["name"] = name
+        __props__["namespace"] = namespace
         __props__["policies"] = policies
         __props__["service_identities"] = service_identities
         return AclRole(resource_name, opts=opts, __props__=__props__)

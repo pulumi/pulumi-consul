@@ -13,7 +13,7 @@ class GetAclAuthMethodResult:
     """
     A collection of values returned by getAclAuthMethod.
     """
-    def __init__(__self__, config=None, description=None, id=None, name=None, type=None):
+    def __init__(__self__, config=None, description=None, id=None, name=None, namespace=None, type=None):
         if config and not isinstance(config, dict):
             raise TypeError("Expected argument 'config' to be a dict")
         __self__.config = config
@@ -35,6 +35,9 @@ class GetAclAuthMethodResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         __self__.name = name
+        if namespace and not isinstance(namespace, str):
+            raise TypeError("Expected argument 'namespace' to be a str")
+        __self__.namespace = namespace
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         __self__.type = type
@@ -51,9 +54,10 @@ class AwaitableGetAclAuthMethodResult(GetAclAuthMethodResult):
             description=self.description,
             id=self.id,
             name=self.name,
+            namespace=self.namespace,
             type=self.type)
 
-def get_acl_auth_method(config=None,description=None,name=None,type=None,opts=None):
+def get_acl_auth_method(config=None,description=None,name=None,namespace=None,type=None,opts=None):
     """
     The `.AclAuthMethod` data source returns the information related to a
     [Consul Auth Method](https://www.consul.io/docs/acl/acl-auth-methods.html).
@@ -62,6 +66,7 @@ def get_acl_auth_method(config=None,description=None,name=None,type=None,opts=No
 
 
     :param str name: The name of the ACL Auth Method.
+    :param str namespace: The namespace to lookup the auth method.
     """
     __args__ = dict()
 
@@ -69,6 +74,7 @@ def get_acl_auth_method(config=None,description=None,name=None,type=None,opts=No
     __args__['config'] = config
     __args__['description'] = description
     __args__['name'] = name
+    __args__['namespace'] = namespace
     __args__['type'] = type
     if opts is None:
         opts = pulumi.InvokeOptions()
@@ -81,4 +87,5 @@ def get_acl_auth_method(config=None,description=None,name=None,type=None,opts=No
         description=__ret__.get('description'),
         id=__ret__.get('id'),
         name=__ret__.get('name'),
+        namespace=__ret__.get('namespace'),
         type=__ret__.get('type'))

@@ -35,7 +35,7 @@ namespace Pulumi.Consul
         /// Key/value pairs that are associated with the node.
         /// </summary>
         [Output("meta")]
-        public Output<ImmutableDictionary<string, object>?> Meta { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Meta { get; private set; } = null!;
 
         /// <summary>
         /// The name of the node being added to, or
@@ -108,14 +108,14 @@ namespace Pulumi.Consul
         public Input<string>? Datacenter { get; set; }
 
         [Input("meta")]
-        private InputMap<object>? _meta;
+        private InputMap<string>? _meta;
 
         /// <summary>
         /// Key/value pairs that are associated with the node.
         /// </summary>
-        public InputMap<object> Meta
+        public InputMap<string> Meta
         {
-            get => _meta ?? (_meta = new InputMap<object>());
+            get => _meta ?? (_meta = new InputMap<string>());
             set => _meta = value;
         }
 
@@ -151,14 +151,14 @@ namespace Pulumi.Consul
         public Input<string>? Datacenter { get; set; }
 
         [Input("meta")]
-        private InputMap<object>? _meta;
+        private InputMap<string>? _meta;
 
         /// <summary>
         /// Key/value pairs that are associated with the node.
         /// </summary>
-        public InputMap<object> Meta
+        public InputMap<string> Meta
         {
-            get => _meta ?? (_meta = new InputMap<object>());
+            get => _meta ?? (_meta = new InputMap<string>());
             set => _meta = value;
         }
 

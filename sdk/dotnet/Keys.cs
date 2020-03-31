@@ -26,6 +26,12 @@ namespace Pulumi.Consul
         public Output<ImmutableArray<Outputs.KeysKeys>> KeysCollection { get; private set; } = null!;
 
         /// <summary>
+        /// The namespace to create the keys within.
+        /// </summary>
+        [Output("namespace")]
+        public Output<string?> Namespace { get; private set; } = null!;
+
+        /// <summary>
         /// The ACL token to use. This overrides the
         /// token that the agent provides by default.
         /// </summary>
@@ -33,7 +39,7 @@ namespace Pulumi.Consul
         public Output<string?> Token { get; private set; } = null!;
 
         [Output("var")]
-        public Output<ImmutableDictionary<string, object>> Var { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> Var { get; private set; } = null!;
 
 
         /// <summary>
@@ -102,6 +108,12 @@ namespace Pulumi.Consul
         }
 
         /// <summary>
+        /// The namespace to create the keys within.
+        /// </summary>
+        [Input("namespace")]
+        public Input<string>? Namespace { get; set; }
+
+        /// <summary>
         /// The ACL token to use. This overrides the
         /// token that the agent provides by default.
         /// </summary>
@@ -136,6 +148,12 @@ namespace Pulumi.Consul
         }
 
         /// <summary>
+        /// The namespace to create the keys within.
+        /// </summary>
+        [Input("namespace")]
+        public Input<string>? Namespace { get; set; }
+
+        /// <summary>
         /// The ACL token to use. This overrides the
         /// token that the agent provides by default.
         /// </summary>
@@ -143,10 +161,10 @@ namespace Pulumi.Consul
         public Input<string>? Token { get; set; }
 
         [Input("var")]
-        private InputMap<object>? _var;
-        public InputMap<object> Var
+        private InputMap<string>? _var;
+        public InputMap<string> Var
         {
-            get => _var ?? (_var = new InputMap<object>());
+            get => _var ?? (_var = new InputMap<string>());
             set => _var = value;
         }
 

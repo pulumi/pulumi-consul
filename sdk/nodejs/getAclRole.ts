@@ -23,6 +23,7 @@ export function getAclRole(args: GetAclRoleArgs, opts?: pulumi.InvokeOptions): P
     const promise: Promise<GetAclRoleResult> = pulumi.runtime.invoke("consul:index/getAclRole:getAclRole", {
         "description": args.description,
         "name": args.name,
+        "namespace": args.namespace,
         "policies": args.policies,
         "serviceIdentities": args.serviceIdentities,
     }, opts);
@@ -39,6 +40,10 @@ export interface GetAclRoleArgs {
      * The name of the ACL Role.
      */
     readonly name: string;
+    /**
+     * The namespace to lookup the role.
+     */
+    readonly namespace?: string;
     readonly policies?: inputs.GetAclRolePolicy[];
     readonly serviceIdentities?: inputs.GetAclRoleServiceIdentity[];
 }
@@ -52,6 +57,7 @@ export interface GetAclRoleResult {
      */
     readonly description?: string;
     readonly name: string;
+    readonly namespace?: string;
     /**
      * The list of policies associated with the ACL Role. Each entry has
      * an `id` and a `name` attribute.

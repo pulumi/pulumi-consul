@@ -25,6 +25,12 @@ namespace Pulumi.Consul
         public string? Datacenter { get; set; }
 
         /// <summary>
+        /// The namespace to create the keys within.
+        /// </summary>
+        [Input("namespace")]
+        public string? Namespace { get; set; }
+
+        /// <summary>
         /// Specifies the common prefix shared by all keys
         /// that will be read by this data source instance. In most cases, this will
         /// end with a slash to read a "folder" of subkeys.
@@ -64,6 +70,7 @@ namespace Pulumi.Consul
         /// The datacenter the keys are being read from.
         /// </summary>
         public readonly string Datacenter;
+        public readonly string? Namespace;
         /// <summary>
         /// the common prefix shared by all keys being read.
         /// * `var.&lt;name&gt;` - For each name given, the corresponding attribute
@@ -77,7 +84,7 @@ namespace Pulumi.Consul
         /// </summary>
         public readonly ImmutableDictionary<string, string> Subkeys;
         public readonly string? Token;
-        public readonly ImmutableDictionary<string, object> Var;
+        public readonly ImmutableDictionary<string, string> Var;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -86,14 +93,16 @@ namespace Pulumi.Consul
         [OutputConstructor]
         private GetKeyPrefixResult(
             string datacenter,
+            string? @namespace,
             string pathPrefix,
             ImmutableArray<Outputs.GetKeyPrefixSubkeyCollectionResult> subkeyCollection,
             ImmutableDictionary<string, string> subkeys,
             string? token,
-            ImmutableDictionary<string, object> var,
+            ImmutableDictionary<string, string> var,
             string id)
         {
             Datacenter = datacenter;
+            Namespace = @namespace;
             PathPrefix = pathPrefix;
             SubkeyCollection = subkeyCollection;
             Subkeys = subkeys;

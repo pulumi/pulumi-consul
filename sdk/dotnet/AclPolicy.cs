@@ -35,6 +35,12 @@ namespace Pulumi.Consul
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// The namespace to create the policy within.
+        /// </summary>
+        [Output("namespace")]
+        public Output<string?> Namespace { get; private set; } = null!;
+
+        /// <summary>
         /// The rules of the policy.
         /// </summary>
         [Output("rules")]
@@ -111,6 +117,12 @@ namespace Pulumi.Consul
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// The namespace to create the policy within.
+        /// </summary>
+        [Input("namespace")]
+        public Input<string>? Namespace { get; set; }
+
+        /// <summary>
         /// The rules of the policy.
         /// </summary>
         [Input("rules", required: true)]
@@ -146,6 +158,12 @@ namespace Pulumi.Consul
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The namespace to create the policy within.
+        /// </summary>
+        [Input("namespace")]
+        public Input<string>? Namespace { get; set; }
 
         /// <summary>
         /// The rules of the policy.

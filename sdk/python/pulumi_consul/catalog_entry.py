@@ -44,7 +44,7 @@ class CatalogEntry(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, address=None, datacenter=None, node=None, services=None, token=None, __props__=None, __name__=None, __opts__=None):
         """
         !> The `.CatalogEntry` resource has been deprecated in version 2.0.0 of the provider
-        and will be removed in a future release. Please read the [upgrade guide](https://www.terraform.io/docs/providers/consul/upgrading.html#deprecation-of-consul_catalog_entry)
+        and will be removed in a future release. Please read the [upgrade guide](https://www.terraform.io/docs/providers/consul/guides/upgrading.html#deprecation-of-consul_catalog_entry)
         for more information.
 
         Registers a node or service with the [Consul Catalog](https://www.consul.io/docs/agent/http/catalog.html#catalog_register).

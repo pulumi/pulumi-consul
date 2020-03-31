@@ -13,7 +13,7 @@ class GetAclTokenResult:
     """
     A collection of values returned by getAclToken.
     """
-    def __init__(__self__, accessor_id=None, description=None, id=None, local=None, policies=None):
+    def __init__(__self__, accessor_id=None, description=None, id=None, local=None, namespace=None, policies=None):
         if accessor_id and not isinstance(accessor_id, str):
             raise TypeError("Expected argument 'accessor_id' to be a str")
         __self__.accessor_id = accessor_id
@@ -35,6 +35,9 @@ class GetAclTokenResult:
         """
         Whether the ACL token is local to the datacenter it was created within.
         """
+        if namespace and not isinstance(namespace, str):
+            raise TypeError("Expected argument 'namespace' to be a str")
+        __self__.namespace = namespace
         if policies and not isinstance(policies, list):
             raise TypeError("Expected argument 'policies' to be a list")
         __self__.policies = policies
@@ -52,9 +55,10 @@ class AwaitableGetAclTokenResult(GetAclTokenResult):
             description=self.description,
             id=self.id,
             local=self.local,
+            namespace=self.namespace,
             policies=self.policies)
 
-def get_acl_token(accessor_id=None,description=None,local=None,policies=None,opts=None):
+def get_acl_token(accessor_id=None,description=None,local=None,namespace=None,policies=None,opts=None):
     """
     The `.AclToken` data source returns the information related to the
     `.AclToken` resource with the exception of its secret ID.
@@ -66,6 +70,7 @@ def get_acl_token(accessor_id=None,description=None,local=None,policies=None,opt
 
 
     :param str accessor_id: The accessor ID of the ACL token.
+    :param str namespace: The namespace to lookup the ACL token.
 
     The **policies** object supports the following:
 
@@ -78,6 +83,7 @@ def get_acl_token(accessor_id=None,description=None,local=None,policies=None,opt
     __args__['accessorId'] = accessor_id
     __args__['description'] = description
     __args__['local'] = local
+    __args__['namespace'] = namespace
     __args__['policies'] = policies
     if opts is None:
         opts = pulumi.InvokeOptions()
@@ -90,4 +96,5 @@ def get_acl_token(accessor_id=None,description=None,local=None,policies=None,opt
         description=__ret__.get('description'),
         id=__ret__.get('id'),
         local=__ret__.get('local'),
+        namespace=__ret__.get('namespace'),
         policies=__ret__.get('policies'))

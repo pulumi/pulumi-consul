@@ -27,13 +27,17 @@ class Keys(pulumi.CustomResource):
       * `path` (`str`)
       * `value` (`str`)
     """
+    namespace: pulumi.Output[str]
+    """
+    The namespace to create the keys within.
+    """
     token: pulumi.Output[str]
     """
     The ACL token to use. This overrides the
     token that the agent provides by default.
     """
     var: pulumi.Output[dict]
-    def __init__(__self__, resource_name, opts=None, datacenter=None, keys=None, token=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, datacenter=None, keys=None, namespace=None, token=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Keys resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
@@ -42,6 +46,7 @@ class Keys(pulumi.CustomResource):
                agent's default datacenter and the datacenter in the provider setup.
         :param pulumi.Input[list] keys: Specifies a key in Consul to be written.
                Supported values documented below.
+        :param pulumi.Input[str] namespace: The namespace to create the keys within.
         :param pulumi.Input[str] token: The ACL token to use. This overrides the
                token that the agent provides by default.
 
@@ -73,6 +78,7 @@ class Keys(pulumi.CustomResource):
 
             __props__['datacenter'] = datacenter
             __props__['keys'] = keys
+            __props__['namespace'] = namespace
             __props__['token'] = token
             __props__['var'] = None
         super(Keys, __self__).__init__(
@@ -82,7 +88,7 @@ class Keys(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, datacenter=None, keys=None, token=None, var=None):
+    def get(resource_name, id, opts=None, datacenter=None, keys=None, namespace=None, token=None, var=None):
         """
         Get an existing Keys resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -94,6 +100,7 @@ class Keys(pulumi.CustomResource):
                agent's default datacenter and the datacenter in the provider setup.
         :param pulumi.Input[list] keys: Specifies a key in Consul to be written.
                Supported values documented below.
+        :param pulumi.Input[str] namespace: The namespace to create the keys within.
         :param pulumi.Input[str] token: The ACL token to use. This overrides the
                token that the agent provides by default.
 
@@ -112,6 +119,7 @@ class Keys(pulumi.CustomResource):
 
         __props__["datacenter"] = datacenter
         __props__["keys"] = keys
+        __props__["namespace"] = namespace
         __props__["token"] = token
         __props__["var"] = var
         return Keys(resource_name, opts=opts, __props__=__props__)

@@ -60,7 +60,7 @@ export class AclAuthMethod extends pulumi.CustomResource {
     /**
      * The raw configuration for this ACL auth method.
      */
-    public readonly config!: pulumi.Output<{[key: string]: any}>;
+    public readonly config!: pulumi.Output<{[key: string]: string}>;
     /**
      * A free form human readable description of the auth method.
      */
@@ -69,6 +69,10 @@ export class AclAuthMethod extends pulumi.CustomResource {
      * The name of the ACL auth method.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The namespace to create the policy within.
+     */
+    public readonly namespace!: pulumi.Output<string | undefined>;
     /**
      * The type of the ACL auth method.
      */
@@ -89,6 +93,7 @@ export class AclAuthMethod extends pulumi.CustomResource {
             inputs["config"] = state ? state.config : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["namespace"] = state ? state.namespace : undefined;
             inputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as AclAuthMethodArgs | undefined;
@@ -101,6 +106,7 @@ export class AclAuthMethod extends pulumi.CustomResource {
             inputs["config"] = args ? args.config : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["namespace"] = args ? args.namespace : undefined;
             inputs["type"] = args ? args.type : undefined;
         }
         if (!opts) {
@@ -121,7 +127,7 @@ export interface AclAuthMethodState {
     /**
      * The raw configuration for this ACL auth method.
      */
-    readonly config?: pulumi.Input<{[key: string]: any}>;
+    readonly config?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A free form human readable description of the auth method.
      */
@@ -130,6 +136,10 @@ export interface AclAuthMethodState {
      * The name of the ACL auth method.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The namespace to create the policy within.
+     */
+    readonly namespace?: pulumi.Input<string>;
     /**
      * The type of the ACL auth method.
      */
@@ -143,7 +153,7 @@ export interface AclAuthMethodArgs {
     /**
      * The raw configuration for this ACL auth method.
      */
-    readonly config: pulumi.Input<{[key: string]: any}>;
+    readonly config: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A free form human readable description of the auth method.
      */
@@ -152,6 +162,10 @@ export interface AclAuthMethodArgs {
      * The name of the ACL auth method.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The namespace to create the policy within.
+     */
+    readonly namespace?: pulumi.Input<string>;
     /**
      * The type of the ACL auth method.
      */

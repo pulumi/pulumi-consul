@@ -73,9 +73,17 @@ export class AclToken extends pulumi.CustomResource {
      */
     public readonly local!: pulumi.Output<boolean | undefined>;
     /**
+     * The namespace to create the token within.
+     */
+    public readonly namespace!: pulumi.Output<string | undefined>;
+    /**
      * The list of policies attached to the token.
      */
     public readonly policies!: pulumi.Output<string[] | undefined>;
+    /**
+     * The list of roles attached to the token.
+     */
+    public readonly roles!: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a AclToken resource with the given unique name, arguments, and options.
@@ -92,13 +100,17 @@ export class AclToken extends pulumi.CustomResource {
             inputs["accessorId"] = state ? state.accessorId : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["local"] = state ? state.local : undefined;
+            inputs["namespace"] = state ? state.namespace : undefined;
             inputs["policies"] = state ? state.policies : undefined;
+            inputs["roles"] = state ? state.roles : undefined;
         } else {
             const args = argsOrState as AclTokenArgs | undefined;
             inputs["accessorId"] = args ? args.accessorId : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["local"] = args ? args.local : undefined;
+            inputs["namespace"] = args ? args.namespace : undefined;
             inputs["policies"] = args ? args.policies : undefined;
+            inputs["roles"] = args ? args.roles : undefined;
         }
         if (!opts) {
             opts = {}
@@ -129,9 +141,17 @@ export interface AclTokenState {
      */
     readonly local?: pulumi.Input<boolean>;
     /**
+     * The namespace to create the token within.
+     */
+    readonly namespace?: pulumi.Input<string>;
+    /**
      * The list of policies attached to the token.
      */
     readonly policies?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The list of roles attached to the token.
+     */
+    readonly roles?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -152,7 +172,15 @@ export interface AclTokenArgs {
      */
     readonly local?: pulumi.Input<boolean>;
     /**
+     * The namespace to create the token within.
+     */
+    readonly namespace?: pulumi.Input<string>;
+    /**
      * The list of policies attached to the token.
      */
     readonly policies?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The list of roles attached to the token.
+     */
+    readonly roles?: pulumi.Input<pulumi.Input<string>[]>;
 }

@@ -70,6 +70,9 @@ namespace Pulumi.Consul
         [Input("keyFile")]
         public Input<string>? KeyFile { get; set; }
 
+        [Input("namespace")]
+        public Input<string>? Namespace { get; set; }
+
         [Input("scheme")]
         public Input<string>? Scheme { get; set; }
 

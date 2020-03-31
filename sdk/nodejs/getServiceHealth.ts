@@ -72,7 +72,7 @@ export interface GetServiceHealthArgs {
      * Filter the results to nodes with the specified key/value
      * pairs.
      */
-    readonly nodeMeta?: {[key: string]: any};
+    readonly nodeMeta?: {[key: string]: string};
     /**
      * Whether to return only nodes with all checks in the
      * passing state. Defaults to `true`.
@@ -107,7 +107,7 @@ export interface GetServiceHealthResult {
     /**
      * The list of metadata to filter the nodes.
      */
-    readonly nodeMeta?: {[key: string]: any};
+    readonly nodeMeta?: {[key: string]: string};
     /**
      * Whether to return only nodes with all checks in the
      * passing state.

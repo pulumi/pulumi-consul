@@ -123,11 +123,15 @@ export class Service extends pulumi.CustomResource {
      * A map of arbitrary KV metadata linked to the service
      * instance.
      */
-    public readonly meta!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly meta!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The name of the header.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The namespace to create the service within.
+     */
+    public readonly namespace!: pulumi.Output<string | undefined>;
     /**
      * The name of the node the to register the service on.
      */
@@ -164,6 +168,7 @@ export class Service extends pulumi.CustomResource {
             inputs["external"] = state ? state.external : undefined;
             inputs["meta"] = state ? state.meta : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["namespace"] = state ? state.namespace : undefined;
             inputs["node"] = state ? state.node : undefined;
             inputs["port"] = state ? state.port : undefined;
             inputs["serviceId"] = state ? state.serviceId : undefined;
@@ -179,6 +184,7 @@ export class Service extends pulumi.CustomResource {
             inputs["external"] = args ? args.external : undefined;
             inputs["meta"] = args ? args.meta : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["namespace"] = args ? args.namespace : undefined;
             inputs["node"] = args ? args.node : undefined;
             inputs["port"] = args ? args.port : undefined;
             inputs["serviceId"] = args ? args.serviceId : undefined;
@@ -215,11 +221,15 @@ export interface ServiceState {
      * A map of arbitrary KV metadata linked to the service
      * instance.
      */
-    readonly meta?: pulumi.Input<{[key: string]: any}>;
+    readonly meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the header.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The namespace to create the service within.
+     */
+    readonly namespace?: pulumi.Input<string>;
     /**
      * The name of the node the to register the service on.
      */
@@ -259,11 +269,15 @@ export interface ServiceArgs {
      * A map of arbitrary KV metadata linked to the service
      * instance.
      */
-    readonly meta?: pulumi.Input<{[key: string]: any}>;
+    readonly meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the header.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The namespace to create the service within.
+     */
+    readonly namespace?: pulumi.Input<string>;
     /**
      * The name of the node the to register the service on.
      */

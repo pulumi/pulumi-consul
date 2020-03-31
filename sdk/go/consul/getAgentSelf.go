@@ -9,7 +9,7 @@ import (
 )
 
 // > **Warning:** The `.getAgentSelf` resource has been deprecated and will be removed
-// from a future release of the provider. Read the [upgrade instructions](https://www.terraform.io/docs/providers/consul/upgrading.html#deprecation-of-consul_agent_self) for more information.
+// from a future release of the provider. Read the [upgrade instructions](https://www.terraform.io/docs/providers/consul/guides/upgrading.html#deprecation-of-consul_agent_self) for more information.
 //
 //
 // The `.getAgentSelf` data source returns
@@ -34,10 +34,10 @@ type GetAgentSelfResult struct {
 	AclDownPolicy string `pulumi:"aclDownPolicy"`
 	AclEnforce08Semantics bool `pulumi:"aclEnforce08Semantics"`
 	AclTtl string `pulumi:"aclTtl"`
-	Addresses GetAgentSelfAddresses `pulumi:"addresses"`
+	Addresses map[string]string `pulumi:"addresses"`
 	AdvertiseAddr string `pulumi:"advertiseAddr"`
 	AdvertiseAddrWan string `pulumi:"advertiseAddrWan"`
-	AdvertiseAddrs GetAgentSelfAdvertiseAddrs `pulumi:"advertiseAddrs"`
+	AdvertiseAddrs map[string]string `pulumi:"advertiseAddrs"`
 	AtlasJoin bool `pulumi:"atlasJoin"`
 	BindAddr string `pulumi:"bindAddr"`
 	BootstrapExpect int `pulumi:"bootstrapExpect"`
@@ -107,7 +107,7 @@ type GetAgentSelfResult struct {
 	// * [`translateWanAddrs`](https://www.consul.io/docs/agent/options.html#translate_wan_addrs)
 	// * [`uiDir`](https://www.consul.io/docs/agent/options.html#ui_dir)
 	// * [`unixSockets`](https://www.consul.io/docs/agent/options.html#unix_sockets)
-	Dns GetAgentSelfDns `pulumi:"dns"`
+	Dns map[string]string `pulumi:"dns"`
 	DnsRecursors []string `pulumi:"dnsRecursors"`
 	Domain string `pulumi:"domain"`
 	EnableAnonymousSignature bool `pulumi:"enableAnonymousSignature"`
@@ -122,15 +122,15 @@ type GetAgentSelfResult struct {
 	LeaveOnTerm bool `pulumi:"leaveOnTerm"`
 	LogLevel string `pulumi:"logLevel"`
 	Name string `pulumi:"name"`
-	Performance GetAgentSelfPerformance `pulumi:"performance"`
+	Performance map[string]string `pulumi:"performance"`
 	PidFile string `pulumi:"pidFile"`
-	Ports GetAgentSelfPorts `pulumi:"ports"`
+	Ports map[string]int `pulumi:"ports"`
 	ProtocolVersion int `pulumi:"protocolVersion"`
 	ReconnectTimeoutLan string `pulumi:"reconnectTimeoutLan"`
 	ReconnectTimeoutWan string `pulumi:"reconnectTimeoutWan"`
 	RejoinAfterLeave bool `pulumi:"rejoinAfterLeave"`
-	RetryJoinEc2 GetAgentSelfRetryJoinEc2 `pulumi:"retryJoinEc2"`
-	RetryJoinGce GetAgentSelfRetryJoinGce `pulumi:"retryJoinGce"`
+	RetryJoinEc2 map[string]string `pulumi:"retryJoinEc2"`
+	RetryJoinGce map[string]string `pulumi:"retryJoinGce"`
 	RetryJoinWans []string `pulumi:"retryJoinWans"`
 	RetryJoins []string `pulumi:"retryJoins"`
 	RetryMaxAttempts int `pulumi:"retryMaxAttempts"`
@@ -143,8 +143,8 @@ type GetAgentSelfResult struct {
 	StartJoinWans []string `pulumi:"startJoinWans"`
 	StartJoins []string `pulumi:"startJoins"`
 	SyslogFacility string `pulumi:"syslogFacility"`
-	TaggedAddresses GetAgentSelfTaggedAddresses `pulumi:"taggedAddresses"`
-	Telemetry GetAgentSelfTelemetry `pulumi:"telemetry"`
+	TaggedAddresses map[string]string `pulumi:"taggedAddresses"`
+	Telemetry map[string]string `pulumi:"telemetry"`
 	TlsCaFile string `pulumi:"tlsCaFile"`
 	TlsCertFile string `pulumi:"tlsCertFile"`
 	TlsKeyFile string `pulumi:"tlsKeyFile"`
@@ -154,7 +154,7 @@ type GetAgentSelfResult struct {
 	TlsVerifyServerHostname bool `pulumi:"tlsVerifyServerHostname"`
 	TranslateWanAddrs bool `pulumi:"translateWanAddrs"`
 	UiDir string `pulumi:"uiDir"`
-	UnixSockets GetAgentSelfUnixSockets `pulumi:"unixSockets"`
+	UnixSockets map[string]string `pulumi:"unixSockets"`
 	// The version of the Consul agent.
 	// * `versionPrerelease`
 	// * `versionRevision`

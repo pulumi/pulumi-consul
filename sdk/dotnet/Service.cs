@@ -47,13 +47,19 @@ namespace Pulumi.Consul
         /// instance.
         /// </summary>
         [Output("meta")]
-        public Output<ImmutableDictionary<string, object>?> Meta { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Meta { get; private set; } = null!;
 
         /// <summary>
         /// The name of the header.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The namespace to create the service within.
+        /// </summary>
+        [Output("namespace")]
+        public Output<string?> Namespace { get; private set; } = null!;
 
         /// <summary>
         /// The name of the node the to register the service on.
@@ -152,15 +158,15 @@ namespace Pulumi.Consul
         public Input<bool>? External { get; set; }
 
         [Input("meta")]
-        private InputMap<object>? _meta;
+        private InputMap<string>? _meta;
 
         /// <summary>
         /// A map of arbitrary KV metadata linked to the service
         /// instance.
         /// </summary>
-        public InputMap<object> Meta
+        public InputMap<string> Meta
         {
-            get => _meta ?? (_meta = new InputMap<object>());
+            get => _meta ?? (_meta = new InputMap<string>());
             set => _meta = value;
         }
 
@@ -169,6 +175,12 @@ namespace Pulumi.Consul
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The namespace to create the service within.
+        /// </summary>
+        [Input("namespace")]
+        public Input<string>? Namespace { get; set; }
 
         /// <summary>
         /// The name of the node the to register the service on.
@@ -234,15 +246,15 @@ namespace Pulumi.Consul
         public Input<bool>? External { get; set; }
 
         [Input("meta")]
-        private InputMap<object>? _meta;
+        private InputMap<string>? _meta;
 
         /// <summary>
         /// A map of arbitrary KV metadata linked to the service
         /// instance.
         /// </summary>
-        public InputMap<object> Meta
+        public InputMap<string> Meta
         {
-            get => _meta ?? (_meta = new InputMap<object>());
+            get => _meta ?? (_meta = new InputMap<string>());
             set => _meta = value;
         }
 
@@ -251,6 +263,12 @@ namespace Pulumi.Consul
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The namespace to create the service within.
+        /// </summary>
+        [Input("namespace")]
+        public Input<string>? Namespace { get; set; }
 
         /// <summary>
         /// The name of the node the to register the service on.

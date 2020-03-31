@@ -68,6 +68,7 @@ type providerArgs struct {
 	HttpAuth *string `pulumi:"httpAuth"`
 	InsecureHttps *bool `pulumi:"insecureHttps"`
 	KeyFile *string `pulumi:"keyFile"`
+	Namespace *string `pulumi:"namespace"`
 	Scheme *string `pulumi:"scheme"`
 	Token *string `pulumi:"token"`
 }
@@ -82,6 +83,7 @@ type ProviderArgs struct {
 	HttpAuth pulumi.StringPtrInput
 	InsecureHttps pulumi.BoolPtrInput
 	KeyFile pulumi.StringPtrInput
+	Namespace pulumi.StringPtrInput
 	Scheme pulumi.StringPtrInput
 	Token pulumi.StringPtrInput
 }

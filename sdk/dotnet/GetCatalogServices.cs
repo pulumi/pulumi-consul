@@ -36,7 +36,7 @@ namespace Pulumi.Consul
         public readonly string Datacenter;
         public readonly ImmutableArray<string> Names;
         public readonly ImmutableArray<Outputs.GetCatalogServicesQueryOptionsResult> QueryOptions;
-        public readonly Outputs.GetCatalogServicesServicesResult Services;
+        public readonly ImmutableDictionary<string, string> Services;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -47,7 +47,7 @@ namespace Pulumi.Consul
             string datacenter,
             ImmutableArray<string> names,
             ImmutableArray<Outputs.GetCatalogServicesQueryOptionsResult> queryOptions,
-            Outputs.GetCatalogServicesServicesResult services,
+            ImmutableDictionary<string, string> services,
             string id)
         {
             Datacenter = datacenter;
@@ -69,14 +69,17 @@ namespace Pulumi.Consul
         [Input("datacenter")]
         public string? Datacenter { get; set; }
 
+        [Input("namespace")]
+        public string? Namespace { get; set; }
+
         [Input("near")]
         public string? Near { get; set; }
 
         [Input("nodeMeta")]
-        private Dictionary<string, object>? _nodeMeta;
-        public Dictionary<string, object> NodeMeta
+        private Dictionary<string, string>? _nodeMeta;
+        public Dictionary<string, string> NodeMeta
         {
-            get => _nodeMeta ?? (_nodeMeta = new Dictionary<string, object>());
+            get => _nodeMeta ?? (_nodeMeta = new Dictionary<string, string>());
             set => _nodeMeta = value;
         }
 
@@ -106,8 +109,9 @@ namespace Pulumi.Consul
     {
         public readonly bool? AllowStale;
         public readonly string? Datacenter;
+        public readonly string? Namespace;
         public readonly string? Near;
-        public readonly ImmutableDictionary<string, object>? NodeMeta;
+        public readonly ImmutableDictionary<string, string>? NodeMeta;
         public readonly bool? RequireConsistent;
         public readonly string? Token;
         public readonly int? WaitIndex;
@@ -117,8 +121,9 @@ namespace Pulumi.Consul
         private GetCatalogServicesQueryOptionsResult(
             bool? allowStale,
             string? datacenter,
+            string? @namespace,
             string? near,
-            ImmutableDictionary<string, object>? nodeMeta,
+            ImmutableDictionary<string, string>? nodeMeta,
             bool? requireConsistent,
             string? token,
             int? waitIndex,
@@ -126,24 +131,13 @@ namespace Pulumi.Consul
         {
             AllowStale = allowStale;
             Datacenter = datacenter;
+            Namespace = @namespace;
             Near = near;
             NodeMeta = nodeMeta;
             RequireConsistent = requireConsistent;
             Token = token;
             WaitIndex = waitIndex;
             WaitTime = waitTime;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetCatalogServicesServicesResult
-    {
-        public readonly ImmutableArray<string> Tags;
-
-        [OutputConstructor]
-        private GetCatalogServicesServicesResult(ImmutableArray<string> tags)
-        {
-            Tags = tags;
         }
     }
     }

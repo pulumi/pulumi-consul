@@ -23,11 +23,19 @@ class AclToken(pulumi.CustomResource):
     """
     The flag to set the token local to the current datacenter.
     """
+    namespace: pulumi.Output[str]
+    """
+    The namespace to create the token within.
+    """
     policies: pulumi.Output[list]
     """
     The list of policies attached to the token.
     """
-    def __init__(__self__, resource_name, opts=None, accessor_id=None, description=None, local=None, policies=None, __props__=None, __name__=None, __opts__=None):
+    roles: pulumi.Output[list]
+    """
+    The list of roles attached to the token.
+    """
+    def __init__(__self__, resource_name, opts=None, accessor_id=None, description=None, local=None, namespace=None, policies=None, roles=None, __props__=None, __name__=None, __opts__=None):
         """
         The `.AclToken` resource writes an ACL token into Consul.
 
@@ -39,7 +47,9 @@ class AclToken(pulumi.CustomResource):
                generate a random uuid.
         :param pulumi.Input[str] description: The description of the token.
         :param pulumi.Input[bool] local: The flag to set the token local to the current datacenter.
+        :param pulumi.Input[str] namespace: The namespace to create the token within.
         :param pulumi.Input[list] policies: The list of policies attached to the token.
+        :param pulumi.Input[list] roles: The list of roles attached to the token.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -61,7 +71,9 @@ class AclToken(pulumi.CustomResource):
             __props__['accessor_id'] = accessor_id
             __props__['description'] = description
             __props__['local'] = local
+            __props__['namespace'] = namespace
             __props__['policies'] = policies
+            __props__['roles'] = roles
         super(AclToken, __self__).__init__(
             'consul:index/aclToken:AclToken',
             resource_name,
@@ -69,7 +81,7 @@ class AclToken(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, accessor_id=None, description=None, local=None, policies=None):
+    def get(resource_name, id, opts=None, accessor_id=None, description=None, local=None, namespace=None, policies=None, roles=None):
         """
         Get an existing AclToken resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -81,7 +93,9 @@ class AclToken(pulumi.CustomResource):
                generate a random uuid.
         :param pulumi.Input[str] description: The description of the token.
         :param pulumi.Input[bool] local: The flag to set the token local to the current datacenter.
+        :param pulumi.Input[str] namespace: The namespace to create the token within.
         :param pulumi.Input[list] policies: The list of policies attached to the token.
+        :param pulumi.Input[list] roles: The list of roles attached to the token.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -90,7 +104,9 @@ class AclToken(pulumi.CustomResource):
         __props__["accessor_id"] = accessor_id
         __props__["description"] = description
         __props__["local"] = local
+        __props__["namespace"] = namespace
         __props__["policies"] = policies
+        __props__["roles"] = roles
         return AclToken(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

@@ -13,7 +13,7 @@ class GetKeysResult:
     """
     A collection of values returned by getKeys.
     """
-    def __init__(__self__, datacenter=None, id=None, keys=None, token=None, var=None):
+    def __init__(__self__, datacenter=None, id=None, keys=None, namespace=None, token=None, var=None):
         if datacenter and not isinstance(datacenter, str):
             raise TypeError("Expected argument 'datacenter' to be a str")
         __self__.datacenter = datacenter
@@ -31,6 +31,9 @@ class GetKeysResult:
         if keys and not isinstance(keys, list):
             raise TypeError("Expected argument 'keys' to be a list")
         __self__.keys = keys
+        if namespace and not isinstance(namespace, str):
+            raise TypeError("Expected argument 'namespace' to be a str")
+        __self__.namespace = namespace
         if token and not isinstance(token, str):
             raise TypeError("Expected argument 'token' to be a str")
         __self__.token = token
@@ -46,10 +49,11 @@ class AwaitableGetKeysResult(GetKeysResult):
             datacenter=self.datacenter,
             id=self.id,
             keys=self.keys,
+            namespace=self.namespace,
             token=self.token,
             var=self.var)
 
-def get_keys(datacenter=None,keys=None,token=None,opts=None):
+def get_keys(datacenter=None,keys=None,namespace=None,token=None,opts=None):
     """
     The `.Keys` resource reads values from the Consul key/value store.
     This is a powerful way dynamically set values in templates.
@@ -61,6 +65,7 @@ def get_keys(datacenter=None,keys=None,token=None,opts=None):
            agent's default datacenter and the datacenter in the provider setup.
     :param list keys: Specifies a key in Consul to be read. Supported
            values documented below. Multiple blocks supported.
+    :param str namespace: The namespace to lookup the keys.
     :param str token: The ACL token to use. This overrides the
            token that the agent provides by default.
 
@@ -75,6 +80,7 @@ def get_keys(datacenter=None,keys=None,token=None,opts=None):
 
     __args__['datacenter'] = datacenter
     __args__['keys'] = keys
+    __args__['namespace'] = namespace
     __args__['token'] = token
     if opts is None:
         opts = pulumi.InvokeOptions()
@@ -86,5 +92,6 @@ def get_keys(datacenter=None,keys=None,token=None,opts=None):
         datacenter=__ret__.get('datacenter'),
         id=__ret__.get('id'),
         keys=__ret__.get('keys'),
+        namespace=__ret__.get('namespace'),
         token=__ret__.get('token'),
         var=__ret__.get('var'))

@@ -27,6 +27,8 @@ type LookupAclPolicyArgs struct {
 	Description *string `pulumi:"description"`
 	// The name of the ACL Policy.
 	Name string `pulumi:"name"`
+	// The namespace to lookup the policy.
+	Namespace *string `pulumi:"namespace"`
 	Rules *string `pulumi:"rules"`
 }
 
@@ -40,6 +42,7 @@ type LookupAclPolicyResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	Name string `pulumi:"name"`
+	Namespace *string `pulumi:"namespace"`
 	// The rules associated with the ACL Policy.
 	Rules *string `pulumi:"rules"`
 }

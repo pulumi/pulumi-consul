@@ -33,9 +33,11 @@ type Service struct {
 	External pulumi.BoolPtrOutput `pulumi:"external"`
 	// A map of arbitrary KV metadata linked to the service
 	// instance.
-	Meta pulumi.MapOutput `pulumi:"meta"`
+	Meta pulumi.StringMapOutput `pulumi:"meta"`
 	// The name of the header.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The namespace to create the service within.
+	Namespace pulumi.StringPtrOutput `pulumi:"namespace"`
 	// The name of the node the to register the service on.
 	Node pulumi.StringOutput `pulumi:"node"`
 	// The port of the service.
@@ -88,9 +90,11 @@ type serviceState struct {
 	External *bool `pulumi:"external"`
 	// A map of arbitrary KV metadata linked to the service
 	// instance.
-	Meta map[string]interface{} `pulumi:"meta"`
+	Meta map[string]string `pulumi:"meta"`
 	// The name of the header.
 	Name *string `pulumi:"name"`
+	// The namespace to create the service within.
+	Namespace *string `pulumi:"namespace"`
 	// The name of the node the to register the service on.
 	Node *string `pulumi:"node"`
 	// The port of the service.
@@ -113,9 +117,11 @@ type ServiceState struct {
 	External pulumi.BoolPtrInput
 	// A map of arbitrary KV metadata linked to the service
 	// instance.
-	Meta pulumi.MapInput
+	Meta pulumi.StringMapInput
 	// The name of the header.
 	Name pulumi.StringPtrInput
+	// The namespace to create the service within.
+	Namespace pulumi.StringPtrInput
 	// The name of the node the to register the service on.
 	Node pulumi.StringPtrInput
 	// The port of the service.
@@ -142,9 +148,11 @@ type serviceArgs struct {
 	External *bool `pulumi:"external"`
 	// A map of arbitrary KV metadata linked to the service
 	// instance.
-	Meta map[string]interface{} `pulumi:"meta"`
+	Meta map[string]string `pulumi:"meta"`
 	// The name of the header.
 	Name *string `pulumi:"name"`
+	// The namespace to create the service within.
+	Namespace *string `pulumi:"namespace"`
 	// The name of the node the to register the service on.
 	Node string `pulumi:"node"`
 	// The port of the service.
@@ -168,9 +176,11 @@ type ServiceArgs struct {
 	External pulumi.BoolPtrInput
 	// A map of arbitrary KV metadata linked to the service
 	// instance.
-	Meta pulumi.MapInput
+	Meta pulumi.StringMapInput
 	// The name of the header.
 	Name pulumi.StringPtrInput
+	// The namespace to create the service within.
+	Namespace pulumi.StringPtrInput
 	// The name of the node the to register the service on.
 	Node pulumi.StringInput
 	// The port of the service.

@@ -22,11 +22,15 @@ class AclPolicy(pulumi.CustomResource):
     """
     The name of the policy.
     """
+    namespace: pulumi.Output[str]
+    """
+    The namespace to create the policy within.
+    """
     rules: pulumi.Output[str]
     """
     The rules of the policy.
     """
-    def __init__(__self__, resource_name, opts=None, datacenters=None, description=None, name=None, rules=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, datacenters=None, description=None, name=None, namespace=None, rules=None, __props__=None, __name__=None, __opts__=None):
         """
         Starting with Consul 1.4.0, the .AclPolicy can be used to managed Consul ACL policies.
 
@@ -37,6 +41,7 @@ class AclPolicy(pulumi.CustomResource):
         :param pulumi.Input[list] datacenters: The datacenters of the policy.
         :param pulumi.Input[str] description: The description of the policy.
         :param pulumi.Input[str] name: The name of the policy.
+        :param pulumi.Input[str] namespace: The namespace to create the policy within.
         :param pulumi.Input[str] rules: The rules of the policy.
         """
         if __name__ is not None:
@@ -59,6 +64,7 @@ class AclPolicy(pulumi.CustomResource):
             __props__['datacenters'] = datacenters
             __props__['description'] = description
             __props__['name'] = name
+            __props__['namespace'] = namespace
             if rules is None:
                 raise TypeError("Missing required property 'rules'")
             __props__['rules'] = rules
@@ -69,7 +75,7 @@ class AclPolicy(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, datacenters=None, description=None, name=None, rules=None):
+    def get(resource_name, id, opts=None, datacenters=None, description=None, name=None, namespace=None, rules=None):
         """
         Get an existing AclPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -80,6 +86,7 @@ class AclPolicy(pulumi.CustomResource):
         :param pulumi.Input[list] datacenters: The datacenters of the policy.
         :param pulumi.Input[str] description: The description of the policy.
         :param pulumi.Input[str] name: The name of the policy.
+        :param pulumi.Input[str] namespace: The namespace to create the policy within.
         :param pulumi.Input[str] rules: The rules of the policy.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -89,6 +96,7 @@ class AclPolicy(pulumi.CustomResource):
         __props__["datacenters"] = datacenters
         __props__["description"] = description
         __props__["name"] = name
+        __props__["namespace"] = namespace
         __props__["rules"] = rules
         return AclPolicy(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):

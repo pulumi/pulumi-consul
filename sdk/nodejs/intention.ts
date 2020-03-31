@@ -90,6 +90,11 @@ export class Intention extends pulumi.CustomResource {
      */
     public readonly destinationName!: pulumi.Output<string>;
     /**
+     * The destination
+     * namespace of the intention.
+     */
+    public readonly destinationNamespace!: pulumi.Output<string | undefined>;
+    /**
      * Key/value pairs that are opaque to Consul and are associated
      * with the intention.
      */
@@ -99,6 +104,11 @@ export class Intention extends pulumi.CustomResource {
      * service does not have to exist.
      */
     public readonly sourceName!: pulumi.Output<string>;
+    /**
+     * The source namespace of the
+     * intention.
+     */
+    public readonly sourceNamespace!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Intention resource with the given unique name, arguments, and options.
@@ -115,8 +125,10 @@ export class Intention extends pulumi.CustomResource {
             inputs["action"] = state ? state.action : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["destinationName"] = state ? state.destinationName : undefined;
+            inputs["destinationNamespace"] = state ? state.destinationNamespace : undefined;
             inputs["meta"] = state ? state.meta : undefined;
             inputs["sourceName"] = state ? state.sourceName : undefined;
+            inputs["sourceNamespace"] = state ? state.sourceNamespace : undefined;
         } else {
             const args = argsOrState as IntentionArgs | undefined;
             if (!args || args.action === undefined) {
@@ -131,8 +143,10 @@ export class Intention extends pulumi.CustomResource {
             inputs["action"] = args ? args.action : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["destinationName"] = args ? args.destinationName : undefined;
+            inputs["destinationNamespace"] = args ? args.destinationNamespace : undefined;
             inputs["meta"] = args ? args.meta : undefined;
             inputs["sourceName"] = args ? args.sourceName : undefined;
+            inputs["sourceNamespace"] = args ? args.sourceNamespace : undefined;
         }
         if (!opts) {
             opts = {}
@@ -164,6 +178,11 @@ export interface IntentionState {
      */
     readonly destinationName?: pulumi.Input<string>;
     /**
+     * The destination
+     * namespace of the intention.
+     */
+    readonly destinationNamespace?: pulumi.Input<string>;
+    /**
      * Key/value pairs that are opaque to Consul and are associated
      * with the intention.
      */
@@ -173,6 +192,11 @@ export interface IntentionState {
      * service does not have to exist.
      */
     readonly sourceName?: pulumi.Input<string>;
+    /**
+     * The source namespace of the
+     * intention.
+     */
+    readonly sourceNamespace?: pulumi.Input<string>;
 }
 
 /**
@@ -194,6 +218,11 @@ export interface IntentionArgs {
      */
     readonly destinationName: pulumi.Input<string>;
     /**
+     * The destination
+     * namespace of the intention.
+     */
+    readonly destinationNamespace?: pulumi.Input<string>;
+    /**
      * Key/value pairs that are opaque to Consul and are associated
      * with the intention.
      */
@@ -203,4 +232,9 @@ export interface IntentionArgs {
      * service does not have to exist.
      */
     readonly sourceName: pulumi.Input<string>;
+    /**
+     * The source namespace of the
+     * intention.
+     */
+    readonly sourceNamespace?: pulumi.Input<string>;
 }

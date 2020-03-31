@@ -63,7 +63,7 @@ export class Node extends pulumi.CustomResource {
     /**
      * Key/value pairs that are associated with the node.
      */
-    public readonly meta!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly meta!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The name of the node being added to, or
      * referenced in the catalog.
@@ -127,7 +127,7 @@ export interface NodeState {
     /**
      * Key/value pairs that are associated with the node.
      */
-    readonly meta?: pulumi.Input<{[key: string]: any}>;
+    readonly meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the node being added to, or
      * referenced in the catalog.
@@ -153,7 +153,7 @@ export interface NodeArgs {
     /**
      * Key/value pairs that are associated with the node.
      */
-    readonly meta?: pulumi.Input<{[key: string]: any}>;
+    readonly meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the node being added to, or
      * referenced in the catalog.

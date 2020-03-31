@@ -13,7 +13,7 @@ namespace Pulumi.Consul
     {
         /// <summary>
         /// &gt; **Warning:** The `consul..getAgentSelf` resource has been deprecated and will be removed
-        /// from a future release of the provider. Read the [upgrade instructions](https://www.terraform.io/docs/providers/consul/upgrading.html#deprecation-of-consul_agent_self) for more information.
+        /// from a future release of the provider. Read the [upgrade instructions](https://www.terraform.io/docs/providers/consul/guides/upgrading.html#deprecation-of-consul_agent_self) for more information.
         /// 
         /// 
         /// The `consul..getAgentSelf` data source returns
@@ -35,10 +35,10 @@ namespace Pulumi.Consul
         public readonly string AclDownPolicy;
         public readonly bool AclEnforce08Semantics;
         public readonly string AclTtl;
-        public readonly Outputs.GetAgentSelfAddressesResult Addresses;
+        public readonly ImmutableDictionary<string, string> Addresses;
         public readonly string AdvertiseAddr;
         public readonly string AdvertiseAddrWan;
-        public readonly Outputs.GetAgentSelfAdvertiseAddrsResult AdvertiseAddrs;
+        public readonly ImmutableDictionary<string, string> AdvertiseAddrs;
         public readonly bool AtlasJoin;
         public readonly string BindAddr;
         public readonly int BootstrapExpect;
@@ -110,7 +110,7 @@ namespace Pulumi.Consul
         /// * [`ui_dir`](https://www.consul.io/docs/agent/options.html#ui_dir)
         /// * [`unix_sockets`](https://www.consul.io/docs/agent/options.html#unix_sockets)
         /// </summary>
-        public readonly Outputs.GetAgentSelfDnsResult Dns;
+        public readonly ImmutableDictionary<string, string> Dns;
         public readonly ImmutableArray<string> DnsRecursors;
         public readonly string Domain;
         public readonly bool EnableAnonymousSignature;
@@ -125,16 +125,16 @@ namespace Pulumi.Consul
         public readonly bool LeaveOnTerm;
         public readonly string LogLevel;
         public readonly string Name;
-        public readonly Outputs.GetAgentSelfPerformanceResult Performance;
+        public readonly ImmutableDictionary<string, string> Performance;
         public readonly string PidFile;
-        public readonly Outputs.GetAgentSelfPortsResult Ports;
+        public readonly ImmutableDictionary<string, int> Ports;
         public readonly int ProtocolVersion;
         public readonly string ReconnectTimeoutLan;
         public readonly string ReconnectTimeoutWan;
         public readonly bool RejoinAfterLeave;
         public readonly ImmutableArray<string> RetryJoins;
-        public readonly Outputs.GetAgentSelfRetryJoinEc2Result RetryJoinEc2;
-        public readonly Outputs.GetAgentSelfRetryJoinGceResult RetryJoinGce;
+        public readonly ImmutableDictionary<string, string> RetryJoinEc2;
+        public readonly ImmutableDictionary<string, string> RetryJoinGce;
         public readonly ImmutableArray<string> RetryJoinWans;
         public readonly int RetryMaxAttempts;
         public readonly int RetryMaxAttemptsWan;
@@ -146,8 +146,8 @@ namespace Pulumi.Consul
         public readonly ImmutableArray<string> StartJoins;
         public readonly ImmutableArray<string> StartJoinWans;
         public readonly string SyslogFacility;
-        public readonly Outputs.GetAgentSelfTaggedAddressesResult TaggedAddresses;
-        public readonly Outputs.GetAgentSelfTelemetryResult Telemetry;
+        public readonly ImmutableDictionary<string, string> TaggedAddresses;
+        public readonly ImmutableDictionary<string, string> Telemetry;
         public readonly string TlsCaFile;
         public readonly string TlsCertFile;
         public readonly string TlsKeyFile;
@@ -157,7 +157,7 @@ namespace Pulumi.Consul
         public readonly bool TlsVerifyServerHostname;
         public readonly bool TranslateWanAddrs;
         public readonly string UiDir;
-        public readonly Outputs.GetAgentSelfUnixSocketsResult UnixSockets;
+        public readonly ImmutableDictionary<string, string> UnixSockets;
         /// <summary>
         /// The version of the Consul agent.
         /// * `version_prerelease`
@@ -175,10 +175,10 @@ namespace Pulumi.Consul
             string aclDownPolicy,
             bool aclEnforce08Semantics,
             string aclTtl,
-            Outputs.GetAgentSelfAddressesResult addresses,
+            ImmutableDictionary<string, string> addresses,
             string advertiseAddr,
             string advertiseAddrWan,
-            Outputs.GetAgentSelfAdvertiseAddrsResult advertiseAddrs,
+            ImmutableDictionary<string, string> advertiseAddrs,
             bool atlasJoin,
             string bindAddr,
             int bootstrapExpect,
@@ -190,7 +190,7 @@ namespace Pulumi.Consul
             string dataDir,
             string datacenter,
             bool devMode,
-            Outputs.GetAgentSelfDnsResult dns,
+            ImmutableDictionary<string, string> dns,
             ImmutableArray<string> dnsRecursors,
             string domain,
             bool enableAnonymousSignature,
@@ -205,16 +205,16 @@ namespace Pulumi.Consul
             bool leaveOnTerm,
             string logLevel,
             string name,
-            Outputs.GetAgentSelfPerformanceResult performance,
+            ImmutableDictionary<string, string> performance,
             string pidFile,
-            Outputs.GetAgentSelfPortsResult ports,
+            ImmutableDictionary<string, int> ports,
             int protocolVersion,
             string reconnectTimeoutLan,
             string reconnectTimeoutWan,
             bool rejoinAfterLeave,
             ImmutableArray<string> retryJoins,
-            Outputs.GetAgentSelfRetryJoinEc2Result retryJoinEc2,
-            Outputs.GetAgentSelfRetryJoinGceResult retryJoinGce,
+            ImmutableDictionary<string, string> retryJoinEc2,
+            ImmutableDictionary<string, string> retryJoinGce,
             ImmutableArray<string> retryJoinWans,
             int retryMaxAttempts,
             int retryMaxAttemptsWan,
@@ -226,8 +226,8 @@ namespace Pulumi.Consul
             ImmutableArray<string> startJoins,
             ImmutableArray<string> startJoinWans,
             string syslogFacility,
-            Outputs.GetAgentSelfTaggedAddressesResult taggedAddresses,
-            Outputs.GetAgentSelfTelemetryResult telemetry,
+            ImmutableDictionary<string, string> taggedAddresses,
+            ImmutableDictionary<string, string> telemetry,
             string tlsCaFile,
             string tlsCertFile,
             string tlsKeyFile,
@@ -237,7 +237,7 @@ namespace Pulumi.Consul
             bool tlsVerifyServerHostname,
             bool translateWanAddrs,
             string uiDir,
-            Outputs.GetAgentSelfUnixSocketsResult unixSockets,
+            ImmutableDictionary<string, string> unixSockets,
             string version,
             string versionPrerelease,
             string versionRevision)
@@ -315,393 +315,5 @@ namespace Pulumi.Consul
             VersionPrerelease = versionPrerelease;
             VersionRevision = versionRevision;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetAgentSelfAddressesResult
-    {
-        /// <summary>
-        /// A map of DNS configuration attributes.  See below for details on the
-        /// contents of the `dns` attribute.
-        /// * [`dns_recursors`](https://www.consul.io/docs/agent/options.html#recursors) - A
-        /// list of all DNS recursors.
-        /// * [`data_dir`](https://www.consul.io/docs/agent/options.html#_data_dir)
-        /// * [`datacenter`](https://www.consul.io/docs/agent/options.html#_datacenter)
-        /// * [`dev_mode`](https://www.consul.io/docs/agent/options.html#_dev)
-        /// * [`domain`](https://www.consul.io/docs/agent/options.html#_domain)
-        /// * [`enable_anonymous_signature`](https://www.consul.io/docs/agent/options.html#disable_anonymous_signature)
-        /// * `enable_coordinates`
-        /// * [`enable_debug`](https://www.consul.io/docs/agent/options.html#enable_debug)
-        /// * [`enable_remote_exec`](https://www.consul.io/docs/agent/options.html#disable_remote_exec)
-        /// * [`enable_syslog`](https://www.consul.io/docs/agent/options.html#_syslog)
-        /// * [`enable_ui`](https://www.consul.io/docs/agent/options.html#_ui)
-        /// * [`enable_update_check`](https://www.consul.io/docs/agent/options.html#disable_update_check)
-        /// * [`id`](https://www.consul.io/docs/agent/options.html#_node_id)
-        /// * [`leave_on_int`](https://www.consul.io/docs/agent/options.html#skip_leave_on_interrupt)
-        /// * [`leave_on_term`](https://www.consul.io/docs/agent/options.html#leave_on_terminate)
-        /// * [`log_level`](https://www.consul.io/docs/agent/options.html#_log_level)
-        /// * [`name`](https://www.consul.io/docs/agent/options.html#_node)
-        /// * [`performance`](https://www.consul.io/docs/agent/options.html#performance)
-        /// * [`pid_file`](https://www.consul.io/docs/agent/options.html#_pid_file)
-        /// * [`ports`](https://www.consul.io/docs/agent/options.html#ports)
-        /// * [`protocol_version`](https://www.consul.io/docs/agent/options.html#_protocol)
-        /// * [`reconnect_timeout_lan`](https://www.consul.io/docs/agent/options.html#reconnect_timeout)
-        /// * [`reconnect_timeout_wan`](https://www.consul.io/docs/agent/options.html#reconnect_timeout_wan)
-        /// * [`rejoin_after_leave`](https://www.consul.io/docs/agent/options.html#_rejoin)
-        /// * [`retry_join`](https://www.consul.io/docs/agent/options.html#retry_join)
-        /// * [`retry_join_ec2`](https://www.consul.io/docs/agent/options.html#retry_join_ec2) -
-        /// A map of EC2 retry attributes.  See below for details on the available
-        /// information.
-        /// * [`retry_join_gce`](https://www.consul.io/docs/agent/options.html#retry_join_gce) -
-        /// A map of GCE retry attributes.  See below for details on the available
-        /// information.
-        /// * [`retry_join_wan`](https://www.consul.io/docs/agent/options.html#_retry_join_wan)
-        /// * [`retry_max_attempts`](https://www.consul.io/docs/agent/options.html#_retry_max)
-        /// * [`retry_max_attempts_wan`](https://www.consul.io/docs/agent/options.html#_retry_max_wan)
-        /// * [`serf_lan_bind_addr`](https://www.consul.io/docs/agent/options.html#_serf_lan_bind)
-        /// * [`serf_wan_bind_addr`](https://www.consul.io/docs/agent/options.html#_serf_wan_bind)
-        /// * [`server_mode`](https://www.consul.io/docs/agent/options.html#_server)
-        /// * [`server_name`](https://www.consul.io/docs/agent/options.html#server_name)
-        /// * [`session_ttl_min`](https://www.consul.io/docs/agent/options.html#session_ttl_min)
-        /// * [`start_join`](https://www.consul.io/docs/agent/options.html#start_join)
-        /// * [`start_join_wan`](https://www.consul.io/docs/agent/options.html#start_join_wan)
-        /// * [`syslog_facility`](https://www.consul.io/docs/agent/options.html#syslog_facility)
-        /// * [`tls_ca_file`](https://www.consul.io/docs/agent/options.html#ca_file)
-        /// * [`tls_cert_file`](https://www.consul.io/docs/agent/options.html#cert_file)
-        /// * [`tls_key_file`](https://www.consul.io/docs/agent/options.html#key_file)
-        /// * [`tls_min_version`](https://www.consul.io/docs/agent/options.html#tls_min_version)
-        /// * [`tls_verify_incoming`](https://www.consul.io/docs/agent/options.html#verify_incoming)
-        /// * [`tls_verify_outgoing`](https://www.consul.io/docs/agent/options.html#verify_outgoing)
-        /// * [`tls_verify_server_hostname`](https://www.consul.io/docs/agent/options.html#verify_server_hostname)
-        /// * [`tagged_addresses`](https://www.consul.io/docs/agent/options.html#translate_wan_addrs)
-        /// * [`telemetry`](https://www.consul.io/docs/agent/options.html#telemetry) - A map
-        /// of telemetry configuration.
-        /// * [`translate_wan_addrs`](https://www.consul.io/docs/agent/options.html#translate_wan_addrs)
-        /// * [`ui_dir`](https://www.consul.io/docs/agent/options.html#ui_dir)
-        /// * [`unix_sockets`](https://www.consul.io/docs/agent/options.html#unix_sockets)
-        /// </summary>
-        public readonly string Dns;
-        public readonly string Http;
-        public readonly string Https;
-        public readonly string Rpc;
-
-        [OutputConstructor]
-        private GetAgentSelfAddressesResult(
-            string dns,
-            string http,
-            string https,
-            string rpc)
-        {
-            Dns = dns;
-            Http = http;
-            Https = https;
-            Rpc = rpc;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetAgentSelfAdvertiseAddrsResult
-    {
-        public readonly string Rpc;
-        public readonly string SerfLan;
-        public readonly string SerfWan;
-
-        [OutputConstructor]
-        private GetAgentSelfAdvertiseAddrsResult(
-            string rpc,
-            string serfLan,
-            string serfWan)
-        {
-            Rpc = rpc;
-            SerfLan = serfLan;
-            SerfWan = serfWan;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetAgentSelfDnsResult
-    {
-        public readonly bool AllowStale;
-        public readonly bool EnableCompression;
-        public readonly bool EnableTruncate;
-        public readonly string MaxStale;
-        public readonly string NodeTtl;
-        public readonly bool OnlyPassing;
-        public readonly string RecursorTimeout;
-        public readonly string ServiceTtl;
-        public readonly int UdpAnswerLimit;
-
-        [OutputConstructor]
-        private GetAgentSelfDnsResult(
-            bool allowStale,
-            bool enableCompression,
-            bool enableTruncate,
-            string maxStale,
-            string nodeTtl,
-            bool onlyPassing,
-            string recursorTimeout,
-            string serviceTtl,
-            int udpAnswerLimit)
-        {
-            AllowStale = allowStale;
-            EnableCompression = enableCompression;
-            EnableTruncate = enableTruncate;
-            MaxStale = maxStale;
-            NodeTtl = nodeTtl;
-            OnlyPassing = onlyPassing;
-            RecursorTimeout = recursorTimeout;
-            ServiceTtl = serviceTtl;
-            UdpAnswerLimit = udpAnswerLimit;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetAgentSelfPerformanceResult
-    {
-        public readonly string RaftMultiplier;
-
-        [OutputConstructor]
-        private GetAgentSelfPerformanceResult(string raftMultiplier)
-        {
-            RaftMultiplier = raftMultiplier;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetAgentSelfPortsResult
-    {
-        /// <summary>
-        /// A map of DNS configuration attributes.  See below for details on the
-        /// contents of the `dns` attribute.
-        /// * [`dns_recursors`](https://www.consul.io/docs/agent/options.html#recursors) - A
-        /// list of all DNS recursors.
-        /// * [`data_dir`](https://www.consul.io/docs/agent/options.html#_data_dir)
-        /// * [`datacenter`](https://www.consul.io/docs/agent/options.html#_datacenter)
-        /// * [`dev_mode`](https://www.consul.io/docs/agent/options.html#_dev)
-        /// * [`domain`](https://www.consul.io/docs/agent/options.html#_domain)
-        /// * [`enable_anonymous_signature`](https://www.consul.io/docs/agent/options.html#disable_anonymous_signature)
-        /// * `enable_coordinates`
-        /// * [`enable_debug`](https://www.consul.io/docs/agent/options.html#enable_debug)
-        /// * [`enable_remote_exec`](https://www.consul.io/docs/agent/options.html#disable_remote_exec)
-        /// * [`enable_syslog`](https://www.consul.io/docs/agent/options.html#_syslog)
-        /// * [`enable_ui`](https://www.consul.io/docs/agent/options.html#_ui)
-        /// * [`enable_update_check`](https://www.consul.io/docs/agent/options.html#disable_update_check)
-        /// * [`id`](https://www.consul.io/docs/agent/options.html#_node_id)
-        /// * [`leave_on_int`](https://www.consul.io/docs/agent/options.html#skip_leave_on_interrupt)
-        /// * [`leave_on_term`](https://www.consul.io/docs/agent/options.html#leave_on_terminate)
-        /// * [`log_level`](https://www.consul.io/docs/agent/options.html#_log_level)
-        /// * [`name`](https://www.consul.io/docs/agent/options.html#_node)
-        /// * [`performance`](https://www.consul.io/docs/agent/options.html#performance)
-        /// * [`pid_file`](https://www.consul.io/docs/agent/options.html#_pid_file)
-        /// * [`ports`](https://www.consul.io/docs/agent/options.html#ports)
-        /// * [`protocol_version`](https://www.consul.io/docs/agent/options.html#_protocol)
-        /// * [`reconnect_timeout_lan`](https://www.consul.io/docs/agent/options.html#reconnect_timeout)
-        /// * [`reconnect_timeout_wan`](https://www.consul.io/docs/agent/options.html#reconnect_timeout_wan)
-        /// * [`rejoin_after_leave`](https://www.consul.io/docs/agent/options.html#_rejoin)
-        /// * [`retry_join`](https://www.consul.io/docs/agent/options.html#retry_join)
-        /// * [`retry_join_ec2`](https://www.consul.io/docs/agent/options.html#retry_join_ec2) -
-        /// A map of EC2 retry attributes.  See below for details on the available
-        /// information.
-        /// * [`retry_join_gce`](https://www.consul.io/docs/agent/options.html#retry_join_gce) -
-        /// A map of GCE retry attributes.  See below for details on the available
-        /// information.
-        /// * [`retry_join_wan`](https://www.consul.io/docs/agent/options.html#_retry_join_wan)
-        /// * [`retry_max_attempts`](https://www.consul.io/docs/agent/options.html#_retry_max)
-        /// * [`retry_max_attempts_wan`](https://www.consul.io/docs/agent/options.html#_retry_max_wan)
-        /// * [`serf_lan_bind_addr`](https://www.consul.io/docs/agent/options.html#_serf_lan_bind)
-        /// * [`serf_wan_bind_addr`](https://www.consul.io/docs/agent/options.html#_serf_wan_bind)
-        /// * [`server_mode`](https://www.consul.io/docs/agent/options.html#_server)
-        /// * [`server_name`](https://www.consul.io/docs/agent/options.html#server_name)
-        /// * [`session_ttl_min`](https://www.consul.io/docs/agent/options.html#session_ttl_min)
-        /// * [`start_join`](https://www.consul.io/docs/agent/options.html#start_join)
-        /// * [`start_join_wan`](https://www.consul.io/docs/agent/options.html#start_join_wan)
-        /// * [`syslog_facility`](https://www.consul.io/docs/agent/options.html#syslog_facility)
-        /// * [`tls_ca_file`](https://www.consul.io/docs/agent/options.html#ca_file)
-        /// * [`tls_cert_file`](https://www.consul.io/docs/agent/options.html#cert_file)
-        /// * [`tls_key_file`](https://www.consul.io/docs/agent/options.html#key_file)
-        /// * [`tls_min_version`](https://www.consul.io/docs/agent/options.html#tls_min_version)
-        /// * [`tls_verify_incoming`](https://www.consul.io/docs/agent/options.html#verify_incoming)
-        /// * [`tls_verify_outgoing`](https://www.consul.io/docs/agent/options.html#verify_outgoing)
-        /// * [`tls_verify_server_hostname`](https://www.consul.io/docs/agent/options.html#verify_server_hostname)
-        /// * [`tagged_addresses`](https://www.consul.io/docs/agent/options.html#translate_wan_addrs)
-        /// * [`telemetry`](https://www.consul.io/docs/agent/options.html#telemetry) - A map
-        /// of telemetry configuration.
-        /// * [`translate_wan_addrs`](https://www.consul.io/docs/agent/options.html#translate_wan_addrs)
-        /// * [`ui_dir`](https://www.consul.io/docs/agent/options.html#ui_dir)
-        /// * [`unix_sockets`](https://www.consul.io/docs/agent/options.html#unix_sockets)
-        /// </summary>
-        public readonly int Dns;
-        public readonly int Http;
-        public readonly int Https;
-        public readonly int Rpc;
-        public readonly int SerfLan;
-        public readonly int SerfWan;
-        public readonly int Server;
-
-        [OutputConstructor]
-        private GetAgentSelfPortsResult(
-            int dns,
-            int http,
-            int https,
-            int rpc,
-            int serfLan,
-            int serfWan,
-            int server)
-        {
-            Dns = dns;
-            Http = http;
-            Https = https;
-            Rpc = rpc;
-            SerfLan = serfLan;
-            SerfWan = serfWan;
-            Server = server;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetAgentSelfRetryJoinEc2Result
-    {
-        public readonly string Region;
-        public readonly string TagKey;
-        public readonly string TagValue;
-
-        [OutputConstructor]
-        private GetAgentSelfRetryJoinEc2Result(
-            string region,
-            string tagKey,
-            string tagValue)
-        {
-            Region = region;
-            TagKey = tagKey;
-            TagValue = tagValue;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetAgentSelfRetryJoinGceResult
-    {
-        public readonly string CredentialsFile;
-        public readonly string ProjectName;
-        public readonly string TagValue;
-        public readonly string ZonePattern;
-
-        [OutputConstructor]
-        private GetAgentSelfRetryJoinGceResult(
-            string credentialsFile,
-            string projectName,
-            string tagValue,
-            string zonePattern)
-        {
-            CredentialsFile = credentialsFile;
-            ProjectName = projectName;
-            TagValue = tagValue;
-            ZonePattern = zonePattern;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetAgentSelfTaggedAddressesResult
-    {
-        public readonly string Lan;
-        public readonly string Wan;
-
-        [OutputConstructor]
-        private GetAgentSelfTaggedAddressesResult(
-            string lan,
-            string wan)
-        {
-            Lan = lan;
-            Wan = wan;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetAgentSelfTelemetryResult
-    {
-        public readonly string CirconusApiApp;
-        public readonly string CirconusApiToken;
-        public readonly string CirconusApiUrl;
-        public readonly string CirconusBrokerId;
-        public readonly string CirconusCheckId;
-        public readonly string CirconusCheckTags;
-        public readonly string CirconusDisplayName;
-        public readonly bool CirconusForceMetricActivation;
-        public readonly string CirconusInstanceId;
-        public readonly string CirconusSearchTag;
-        public readonly string CirconusSelectTag;
-        public readonly string CirconusSubmissionInterval;
-        public readonly string CirconusSubmissionUrl;
-        public readonly string DogstatsdAddr;
-        public readonly ImmutableArray<string> DogstatsdTags;
-        public readonly string EnableHostname;
-        public readonly string StatsdAddr;
-        public readonly string StatsiteAddr;
-        public readonly string StatsitePrefix;
-
-        [OutputConstructor]
-        private GetAgentSelfTelemetryResult(
-            string circonusApiApp,
-            string circonusApiToken,
-            string circonusApiUrl,
-            string circonusBrokerId,
-            string circonusCheckId,
-            string circonusCheckTags,
-            string circonusDisplayName,
-            bool circonusForceMetricActivation,
-            string circonusInstanceId,
-            string circonusSearchTag,
-            string circonusSelectTag,
-            string circonusSubmissionInterval,
-            string circonusSubmissionUrl,
-            string dogstatsdAddr,
-            ImmutableArray<string> dogstatsdTags,
-            string enableHostname,
-            string statsdAddr,
-            string statsiteAddr,
-            string statsitePrefix)
-        {
-            CirconusApiApp = circonusApiApp;
-            CirconusApiToken = circonusApiToken;
-            CirconusApiUrl = circonusApiUrl;
-            CirconusBrokerId = circonusBrokerId;
-            CirconusCheckId = circonusCheckId;
-            CirconusCheckTags = circonusCheckTags;
-            CirconusDisplayName = circonusDisplayName;
-            CirconusForceMetricActivation = circonusForceMetricActivation;
-            CirconusInstanceId = circonusInstanceId;
-            CirconusSearchTag = circonusSearchTag;
-            CirconusSelectTag = circonusSelectTag;
-            CirconusSubmissionInterval = circonusSubmissionInterval;
-            CirconusSubmissionUrl = circonusSubmissionUrl;
-            DogstatsdAddr = dogstatsdAddr;
-            DogstatsdTags = dogstatsdTags;
-            EnableHostname = enableHostname;
-            StatsdAddr = statsdAddr;
-            StatsiteAddr = statsiteAddr;
-            StatsitePrefix = statsitePrefix;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetAgentSelfUnixSocketsResult
-    {
-        public readonly string Group;
-        public readonly string Mode;
-        public readonly string User;
-
-        [OutputConstructor]
-        private GetAgentSelfUnixSocketsResult(
-            string group,
-            string mode,
-            string user)
-        {
-            Group = group;
-            Mode = mode;
-            User = user;
-        }
-    }
     }
 }

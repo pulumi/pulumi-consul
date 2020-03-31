@@ -31,6 +31,10 @@ class Service(pulumi.CustomResource):
     """
     The name of the header.
     """
+    namespace: pulumi.Output[str]
+    """
+    The namespace to create the service within.
+    """
     node: pulumi.Output[str]
     """
     The name of the node the to register the service on.
@@ -48,7 +52,7 @@ class Service(pulumi.CustomResource):
     A list of values that are opaque to Consul,
     but can be used to distinguish between services or nodes.
     """
-    def __init__(__self__, resource_name, opts=None, address=None, checks=None, datacenter=None, external=None, meta=None, name=None, node=None, port=None, service_id=None, tags=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, address=None, checks=None, datacenter=None, external=None, meta=None, name=None, namespace=None, node=None, port=None, service_id=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         A high-level resource for creating a Service in Consul in the Consul catalog. This
         is appropriate for registering [external services](https://www.consul.io/docs/guides/external.html) and
@@ -69,6 +73,7 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[dict] meta: A map of arbitrary KV metadata linked to the service
                instance.
         :param pulumi.Input[str] name: The name of the header.
+        :param pulumi.Input[str] namespace: The namespace to create the service within.
         :param pulumi.Input[str] node: The name of the node the to register the service on.
         :param pulumi.Input[float] port: The port of the service.
         :param pulumi.Input[str] service_id: The ID of the service.
@@ -123,6 +128,7 @@ class Service(pulumi.CustomResource):
             __props__['external'] = external
             __props__['meta'] = meta
             __props__['name'] = name
+            __props__['namespace'] = namespace
             if node is None:
                 raise TypeError("Missing required property 'node'")
             __props__['node'] = node
@@ -136,7 +142,7 @@ class Service(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, address=None, checks=None, datacenter=None, external=None, meta=None, name=None, node=None, port=None, service_id=None, tags=None):
+    def get(resource_name, id, opts=None, address=None, checks=None, datacenter=None, external=None, meta=None, name=None, namespace=None, node=None, port=None, service_id=None, tags=None):
         """
         Get an existing Service resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -151,6 +157,7 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[dict] meta: A map of arbitrary KV metadata linked to the service
                instance.
         :param pulumi.Input[str] name: The name of the header.
+        :param pulumi.Input[str] namespace: The namespace to create the service within.
         :param pulumi.Input[str] node: The name of the node the to register the service on.
         :param pulumi.Input[float] port: The port of the service.
         :param pulumi.Input[str] service_id: The ID of the service.
@@ -192,6 +199,7 @@ class Service(pulumi.CustomResource):
         __props__["external"] = external
         __props__["meta"] = meta
         __props__["name"] = name
+        __props__["namespace"] = namespace
         __props__["node"] = node
         __props__["port"] = port
         __props__["service_id"] = service_id
