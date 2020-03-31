@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v2.7.0 of the Consul Terraform Provider 
+_(none)_
 
 ---
+
+## 1.7.0 (2020-03-31)
+* Upgrade to v2.7.0 of the Consul Terraform Provider 
 
 ## 1.6.0 (2020-03-23)
 * Upgrade to Pulumi v1.12.1
