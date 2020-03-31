@@ -22,11 +22,15 @@ class AclAuthMethod(pulumi.CustomResource):
     """
     The name of the ACL auth method.
     """
+    namespace: pulumi.Output[str]
+    """
+    The namespace to create the policy within.
+    """
     type: pulumi.Output[str]
     """
     The type of the ACL auth method.
     """
-    def __init__(__self__, resource_name, opts=None, config=None, description=None, name=None, type=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, config=None, description=None, name=None, namespace=None, type=None, __props__=None, __name__=None, __opts__=None):
         """
         Starting with Consul 1.5.0, the .AclAuthMethod resource can be used to
         managed Consul ACL auth methods.
@@ -38,6 +42,7 @@ class AclAuthMethod(pulumi.CustomResource):
         :param pulumi.Input[dict] config: The raw configuration for this ACL auth method.
         :param pulumi.Input[str] description: A free form human readable description of the auth method.
         :param pulumi.Input[str] name: The name of the ACL auth method.
+        :param pulumi.Input[str] namespace: The namespace to create the policy within.
         :param pulumi.Input[str] type: The type of the ACL auth method.
         """
         if __name__ is not None:
@@ -62,6 +67,7 @@ class AclAuthMethod(pulumi.CustomResource):
             __props__['config'] = config
             __props__['description'] = description
             __props__['name'] = name
+            __props__['namespace'] = namespace
             if type is None:
                 raise TypeError("Missing required property 'type'")
             __props__['type'] = type
@@ -72,7 +78,7 @@ class AclAuthMethod(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, config=None, description=None, name=None, type=None):
+    def get(resource_name, id, opts=None, config=None, description=None, name=None, namespace=None, type=None):
         """
         Get an existing AclAuthMethod resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -83,6 +89,7 @@ class AclAuthMethod(pulumi.CustomResource):
         :param pulumi.Input[dict] config: The raw configuration for this ACL auth method.
         :param pulumi.Input[str] description: A free form human readable description of the auth method.
         :param pulumi.Input[str] name: The name of the ACL auth method.
+        :param pulumi.Input[str] namespace: The namespace to create the policy within.
         :param pulumi.Input[str] type: The type of the ACL auth method.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -92,6 +99,7 @@ class AclAuthMethod(pulumi.CustomResource):
         __props__["config"] = config
         __props__["description"] = description
         __props__["name"] = name
+        __props__["namespace"] = namespace
         __props__["type"] = type
         return AclAuthMethod(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):

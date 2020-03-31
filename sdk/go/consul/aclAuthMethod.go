@@ -19,11 +19,13 @@ type AclAuthMethod struct {
 	pulumi.CustomResourceState
 
 	// The raw configuration for this ACL auth method.
-	Config pulumi.MapOutput `pulumi:"config"`
+	Config pulumi.StringMapOutput `pulumi:"config"`
 	// A free form human readable description of the auth method.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The name of the ACL auth method.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The namespace to create the policy within.
+	Namespace pulumi.StringPtrOutput `pulumi:"namespace"`
 	// The type of the ACL auth method.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -63,22 +65,26 @@ func GetAclAuthMethod(ctx *pulumi.Context,
 // Input properties used for looking up and filtering AclAuthMethod resources.
 type aclAuthMethodState struct {
 	// The raw configuration for this ACL auth method.
-	Config map[string]interface{} `pulumi:"config"`
+	Config map[string]string `pulumi:"config"`
 	// A free form human readable description of the auth method.
 	Description *string `pulumi:"description"`
 	// The name of the ACL auth method.
 	Name *string `pulumi:"name"`
+	// The namespace to create the policy within.
+	Namespace *string `pulumi:"namespace"`
 	// The type of the ACL auth method.
 	Type *string `pulumi:"type"`
 }
 
 type AclAuthMethodState struct {
 	// The raw configuration for this ACL auth method.
-	Config pulumi.MapInput
+	Config pulumi.StringMapInput
 	// A free form human readable description of the auth method.
 	Description pulumi.StringPtrInput
 	// The name of the ACL auth method.
 	Name pulumi.StringPtrInput
+	// The namespace to create the policy within.
+	Namespace pulumi.StringPtrInput
 	// The type of the ACL auth method.
 	Type pulumi.StringPtrInput
 }
@@ -89,11 +95,13 @@ func (AclAuthMethodState) ElementType() reflect.Type {
 
 type aclAuthMethodArgs struct {
 	// The raw configuration for this ACL auth method.
-	Config map[string]interface{} `pulumi:"config"`
+	Config map[string]string `pulumi:"config"`
 	// A free form human readable description of the auth method.
 	Description *string `pulumi:"description"`
 	// The name of the ACL auth method.
 	Name *string `pulumi:"name"`
+	// The namespace to create the policy within.
+	Namespace *string `pulumi:"namespace"`
 	// The type of the ACL auth method.
 	Type string `pulumi:"type"`
 }
@@ -101,11 +109,13 @@ type aclAuthMethodArgs struct {
 // The set of arguments for constructing a AclAuthMethod resource.
 type AclAuthMethodArgs struct {
 	// The raw configuration for this ACL auth method.
-	Config pulumi.MapInput
+	Config pulumi.StringMapInput
 	// A free form human readable description of the auth method.
 	Description pulumi.StringPtrInput
 	// The name of the ACL auth method.
 	Name pulumi.StringPtrInput
+	// The namespace to create the policy within.
+	Namespace pulumi.StringPtrInput
 	// The type of the ACL auth method.
 	Type pulumi.StringInput
 }

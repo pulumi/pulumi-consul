@@ -14,5 +14,6 @@ export let datacenter: string | undefined = __config.get("datacenter");
 export let httpAuth: string | undefined = __config.get("httpAuth") || utilities.getEnv("CONSUL_HTTP_AUTH");
 export let insecureHttps: boolean | undefined = __config.getObject<boolean>("insecureHttps");
 export let keyFile: string | undefined = __config.get("keyFile") || utilities.getEnv("CONSUL_KEY_FILE");
+export let namespace: string | undefined = __config.get("namespace");
 export let scheme: string | undefined = __config.get("scheme") || (utilities.getEnv("CONSUL_SCHEME", "CONSUL_HTTP_SCHEME") || "http");
 export let token: string | undefined = __config.get("token") || utilities.getEnv("CONSUL_TOKEN", "CONSUL_HTTP_TOKEN");

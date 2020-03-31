@@ -22,6 +22,8 @@ type LookupKeyPrefixArgs struct {
 	// The datacenter to use. This overrides the
 	// agent's default datacenter and the datacenter in the provider setup.
 	Datacenter *string `pulumi:"datacenter"`
+	// The namespace to create the keys within.
+	Namespace *string `pulumi:"namespace"`
 	// Specifies the common prefix shared by all keys
 	// that will be read by this data source instance. In most cases, this will
 	// end with a slash to read a "folder" of subkeys.
@@ -41,6 +43,7 @@ type LookupKeyPrefixResult struct {
 	Datacenter string `pulumi:"datacenter"`
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
+	Namespace *string `pulumi:"namespace"`
 	// the common prefix shared by all keys being read.
 	// * `var.<name>` - For each name given, the corresponding attribute
 	// has the value of the key.
@@ -50,6 +53,6 @@ type LookupKeyPrefixResult struct {
 	// block is provided.
 	Subkeys map[string]string `pulumi:"subkeys"`
 	Token *string `pulumi:"token"`
-	Var map[string]interface{} `pulumi:"var"`
+	Var map[string]string `pulumi:"var"`
 }
 

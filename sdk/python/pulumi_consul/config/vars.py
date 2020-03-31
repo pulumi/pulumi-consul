@@ -27,6 +27,8 @@ insecure_https = __config__.get('insecureHttps')
 
 key_file = __config__.get('keyFile') or utilities.get_env('CONSUL_KEY_FILE')
 
+namespace = __config__.get('namespace')
+
 scheme = __config__.get('scheme') or (utilities.get_env('CONSUL_SCHEME', 'CONSUL_HTTP_SCHEME') or 'http')
 
 token = __config__.get('token') or utilities.get_env('CONSUL_TOKEN', 'CONSUL_HTTP_TOKEN')

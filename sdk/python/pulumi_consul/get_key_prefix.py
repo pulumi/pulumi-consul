@@ -13,7 +13,7 @@ class GetKeyPrefixResult:
     """
     A collection of values returned by getKeyPrefix.
     """
-    def __init__(__self__, datacenter=None, id=None, path_prefix=None, subkey_collection=None, subkeys=None, token=None, var=None):
+    def __init__(__self__, datacenter=None, id=None, namespace=None, path_prefix=None, subkey_collection=None, subkeys=None, token=None, var=None):
         if datacenter and not isinstance(datacenter, str):
             raise TypeError("Expected argument 'datacenter' to be a str")
         __self__.datacenter = datacenter
@@ -26,6 +26,9 @@ class GetKeyPrefixResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
+        if namespace and not isinstance(namespace, str):
+            raise TypeError("Expected argument 'namespace' to be a str")
+        __self__.namespace = namespace
         if path_prefix and not isinstance(path_prefix, str):
             raise TypeError("Expected argument 'path_prefix' to be a str")
         __self__.path_prefix = path_prefix
@@ -58,18 +61,20 @@ class AwaitableGetKeyPrefixResult(GetKeyPrefixResult):
         return GetKeyPrefixResult(
             datacenter=self.datacenter,
             id=self.id,
+            namespace=self.namespace,
             path_prefix=self.path_prefix,
             subkey_collection=self.subkey_collection,
             subkeys=self.subkeys,
             token=self.token,
             var=self.var)
 
-def get_key_prefix(datacenter=None,path_prefix=None,subkey_collection=None,token=None,opts=None):
+def get_key_prefix(datacenter=None,namespace=None,path_prefix=None,subkey_collection=None,token=None,opts=None):
     """
     Use this data source to access information about an existing resource.
 
     :param str datacenter: The datacenter to use. This overrides the
            agent's default datacenter and the datacenter in the provider setup.
+    :param str namespace: The namespace to create the keys within.
     :param str path_prefix: Specifies the common prefix shared by all keys
            that will be read by this data source instance. In most cases, this will
            end with a slash to read a "folder" of subkeys.
@@ -88,6 +93,7 @@ def get_key_prefix(datacenter=None,path_prefix=None,subkey_collection=None,token
 
 
     __args__['datacenter'] = datacenter
+    __args__['namespace'] = namespace
     __args__['pathPrefix'] = path_prefix
     __args__['subkeyCollection'] = subkey_collection
     __args__['token'] = token
@@ -100,6 +106,7 @@ def get_key_prefix(datacenter=None,path_prefix=None,subkey_collection=None,token
     return AwaitableGetKeyPrefixResult(
         datacenter=__ret__.get('datacenter'),
         id=__ret__.get('id'),
+        namespace=__ret__.get('namespace'),
         path_prefix=__ret__.get('pathPrefix'),
         subkey_collection=__ret__.get('subkeyCollection'),
         subkeys=__ret__.get('subkeys'),

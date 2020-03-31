@@ -31,12 +31,18 @@ type Intention struct {
 	// The name of the destination service for the intention. This
 	// service does not have to exist.
 	DestinationName pulumi.StringOutput `pulumi:"destinationName"`
+	// The destination
+	// namespace of the intention.
+	DestinationNamespace pulumi.StringPtrOutput `pulumi:"destinationNamespace"`
 	// Key/value pairs that are opaque to Consul and are associated
 	// with the intention.
 	Meta pulumi.StringMapOutput `pulumi:"meta"`
 	// The name of the source service for the intention. This
 	// service does not have to exist.
 	SourceName pulumi.StringOutput `pulumi:"sourceName"`
+	// The source namespace of the
+	// intention.
+	SourceNamespace pulumi.StringPtrOutput `pulumi:"sourceNamespace"`
 }
 
 // NewIntention registers a new resource with the given unique name, arguments, and options.
@@ -84,12 +90,18 @@ type intentionState struct {
 	// The name of the destination service for the intention. This
 	// service does not have to exist.
 	DestinationName *string `pulumi:"destinationName"`
+	// The destination
+	// namespace of the intention.
+	DestinationNamespace *string `pulumi:"destinationNamespace"`
 	// Key/value pairs that are opaque to Consul and are associated
 	// with the intention.
 	Meta map[string]string `pulumi:"meta"`
 	// The name of the source service for the intention. This
 	// service does not have to exist.
 	SourceName *string `pulumi:"sourceName"`
+	// The source namespace of the
+	// intention.
+	SourceNamespace *string `pulumi:"sourceNamespace"`
 }
 
 type IntentionState struct {
@@ -101,12 +113,18 @@ type IntentionState struct {
 	// The name of the destination service for the intention. This
 	// service does not have to exist.
 	DestinationName pulumi.StringPtrInput
+	// The destination
+	// namespace of the intention.
+	DestinationNamespace pulumi.StringPtrInput
 	// Key/value pairs that are opaque to Consul and are associated
 	// with the intention.
 	Meta pulumi.StringMapInput
 	// The name of the source service for the intention. This
 	// service does not have to exist.
 	SourceName pulumi.StringPtrInput
+	// The source namespace of the
+	// intention.
+	SourceNamespace pulumi.StringPtrInput
 }
 
 func (IntentionState) ElementType() reflect.Type {
@@ -122,12 +140,18 @@ type intentionArgs struct {
 	// The name of the destination service for the intention. This
 	// service does not have to exist.
 	DestinationName string `pulumi:"destinationName"`
+	// The destination
+	// namespace of the intention.
+	DestinationNamespace *string `pulumi:"destinationNamespace"`
 	// Key/value pairs that are opaque to Consul and are associated
 	// with the intention.
 	Meta map[string]string `pulumi:"meta"`
 	// The name of the source service for the intention. This
 	// service does not have to exist.
 	SourceName string `pulumi:"sourceName"`
+	// The source namespace of the
+	// intention.
+	SourceNamespace *string `pulumi:"sourceNamespace"`
 }
 
 // The set of arguments for constructing a Intention resource.
@@ -140,12 +164,18 @@ type IntentionArgs struct {
 	// The name of the destination service for the intention. This
 	// service does not have to exist.
 	DestinationName pulumi.StringInput
+	// The destination
+	// namespace of the intention.
+	DestinationNamespace pulumi.StringPtrInput
 	// Key/value pairs that are opaque to Consul and are associated
 	// with the intention.
 	Meta pulumi.StringMapInput
 	// The name of the source service for the intention. This
 	// service does not have to exist.
 	SourceName pulumi.StringInput
+	// The source namespace of the
+	// intention.
+	SourceNamespace pulumi.StringPtrInput
 }
 
 func (IntentionArgs) ElementType() reflect.Type {

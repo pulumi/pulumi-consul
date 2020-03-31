@@ -23,6 +23,8 @@ type AclPolicy struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The name of the policy.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The namespace to create the policy within.
+	Namespace pulumi.StringPtrOutput `pulumi:"namespace"`
 	// The rules of the policy.
 	Rules pulumi.StringOutput `pulumi:"rules"`
 }
@@ -64,6 +66,8 @@ type aclPolicyState struct {
 	Description *string `pulumi:"description"`
 	// The name of the policy.
 	Name *string `pulumi:"name"`
+	// The namespace to create the policy within.
+	Namespace *string `pulumi:"namespace"`
 	// The rules of the policy.
 	Rules *string `pulumi:"rules"`
 }
@@ -75,6 +79,8 @@ type AclPolicyState struct {
 	Description pulumi.StringPtrInput
 	// The name of the policy.
 	Name pulumi.StringPtrInput
+	// The namespace to create the policy within.
+	Namespace pulumi.StringPtrInput
 	// The rules of the policy.
 	Rules pulumi.StringPtrInput
 }
@@ -90,6 +96,8 @@ type aclPolicyArgs struct {
 	Description *string `pulumi:"description"`
 	// The name of the policy.
 	Name *string `pulumi:"name"`
+	// The namespace to create the policy within.
+	Namespace *string `pulumi:"namespace"`
 	// The rules of the policy.
 	Rules string `pulumi:"rules"`
 }
@@ -102,6 +110,8 @@ type AclPolicyArgs struct {
 	Description pulumi.StringPtrInput
 	// The name of the policy.
 	Name pulumi.StringPtrInput
+	// The namespace to create the policy within.
+	Namespace pulumi.StringPtrInput
 	// The rules of the policy.
 	Rules pulumi.StringInput
 }

@@ -26,6 +26,8 @@ type LookupAclRoleArgs struct {
 	Description *string `pulumi:"description"`
 	// The name of the ACL Role.
 	Name string `pulumi:"name"`
+	// The namespace to lookup the role.
+	Namespace *string `pulumi:"namespace"`
 	Policies []GetAclRolePolicy `pulumi:"policies"`
 	ServiceIdentities []GetAclRoleServiceIdentity `pulumi:"serviceIdentities"`
 }
@@ -38,6 +40,7 @@ type LookupAclRoleResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	Name string `pulumi:"name"`
+	Namespace *string `pulumi:"namespace"`
 	// The list of policies associated with the ACL Role. Each entry has
 	// an `id` and a `name` attribute.
 	Policies []GetAclRolePolicy `pulumi:"policies"`

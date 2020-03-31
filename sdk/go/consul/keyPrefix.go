@@ -17,6 +17,8 @@ type KeyPrefix struct {
 	// The datacenter to use. This overrides the
 	// agent's default datacenter and the datacenter in the provider setup.
 	Datacenter pulumi.StringOutput `pulumi:"datacenter"`
+	// The namespace to create the keys within.
+	Namespace pulumi.StringPtrOutput `pulumi:"namespace"`
 	// Specifies the common prefix shared by all keys
 	// that will be managed by this resource instance. In most cases this will
 	// end with a slash, to manage a "folder" of keys.
@@ -68,6 +70,8 @@ type keyPrefixState struct {
 	// The datacenter to use. This overrides the
 	// agent's default datacenter and the datacenter in the provider setup.
 	Datacenter *string `pulumi:"datacenter"`
+	// The namespace to create the keys within.
+	Namespace *string `pulumi:"namespace"`
 	// Specifies the common prefix shared by all keys
 	// that will be managed by this resource instance. In most cases this will
 	// end with a slash, to manage a "folder" of keys.
@@ -89,6 +93,8 @@ type KeyPrefixState struct {
 	// The datacenter to use. This overrides the
 	// agent's default datacenter and the datacenter in the provider setup.
 	Datacenter pulumi.StringPtrInput
+	// The namespace to create the keys within.
+	Namespace pulumi.StringPtrInput
 	// Specifies the common prefix shared by all keys
 	// that will be managed by this resource instance. In most cases this will
 	// end with a slash, to manage a "folder" of keys.
@@ -114,6 +120,8 @@ type keyPrefixArgs struct {
 	// The datacenter to use. This overrides the
 	// agent's default datacenter and the datacenter in the provider setup.
 	Datacenter *string `pulumi:"datacenter"`
+	// The namespace to create the keys within.
+	Namespace *string `pulumi:"namespace"`
 	// Specifies the common prefix shared by all keys
 	// that will be managed by this resource instance. In most cases this will
 	// end with a slash, to manage a "folder" of keys.
@@ -136,6 +144,8 @@ type KeyPrefixArgs struct {
 	// The datacenter to use. This overrides the
 	// agent's default datacenter and the datacenter in the provider setup.
 	Datacenter pulumi.StringPtrInput
+	// The namespace to create the keys within.
+	Namespace pulumi.StringPtrInput
 	// Specifies the common prefix shared by all keys
 	// that will be managed by this resource instance. In most cases this will
 	// end with a slash, to manage a "folder" of keys.

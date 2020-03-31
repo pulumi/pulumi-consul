@@ -32,6 +32,12 @@ namespace Pulumi.Consul
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
+        /// <summary>
+        /// The namespace to lookup the role.
+        /// </summary>
+        [Input("namespace")]
+        public string? Namespace { get; set; }
+
         [Input("policies")]
         private List<Inputs.GetAclRolePoliciesArgs>? _policies;
         public List<Inputs.GetAclRolePoliciesArgs> Policies
@@ -61,6 +67,7 @@ namespace Pulumi.Consul
         /// </summary>
         public readonly string? Description;
         public readonly string Name;
+        public readonly string? Namespace;
         /// <summary>
         /// The list of policies associated with the ACL Role. Each entry has
         /// an `id` and a `name` attribute.
@@ -80,12 +87,14 @@ namespace Pulumi.Consul
         private GetAclRoleResult(
             string? description,
             string name,
+            string? @namespace,
             ImmutableArray<Outputs.GetAclRolePoliciesResult> policies,
             ImmutableArray<Outputs.GetAclRoleServiceIdentitiesResult> serviceIdentities,
             string id)
         {
             Description = description;
             Name = name;
+            Namespace = @namespace;
             Policies = policies;
             ServiceIdentities = serviceIdentities;
             Id = id;

@@ -48,15 +48,15 @@ namespace Pulumi.Consul
         public string? Near { get; set; }
 
         [Input("nodeMeta")]
-        private Dictionary<string, object>? _nodeMeta;
+        private Dictionary<string, string>? _nodeMeta;
 
         /// <summary>
         /// Filter the results to nodes with the specified key/value
         /// pairs.
         /// </summary>
-        public Dictionary<string, object> NodeMeta
+        public Dictionary<string, string> NodeMeta
         {
-            get => _nodeMeta ?? (_nodeMeta = new Dictionary<string, object>());
+            get => _nodeMeta ?? (_nodeMeta = new Dictionary<string, string>());
             set => _nodeMeta = value;
         }
 
@@ -102,7 +102,7 @@ namespace Pulumi.Consul
         /// <summary>
         /// The list of metadata to filter the nodes.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? NodeMeta;
+        public readonly ImmutableDictionary<string, string>? NodeMeta;
         /// <summary>
         /// Whether to return only nodes with all checks in the
         /// passing state.
@@ -129,7 +129,7 @@ namespace Pulumi.Consul
             string? datacenter,
             string name,
             string? near,
-            ImmutableDictionary<string, object>? nodeMeta,
+            ImmutableDictionary<string, string>? nodeMeta,
             bool? passing,
             ImmutableArray<Outputs.GetServiceHealthResultsResult> results,
             string? tag,

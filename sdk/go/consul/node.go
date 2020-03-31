@@ -25,7 +25,7 @@ type Node struct {
 	// default datacenter and the datacenter in the provider setup.
 	Datacenter pulumi.StringOutput `pulumi:"datacenter"`
 	// Key/value pairs that are associated with the node.
-	Meta pulumi.MapOutput `pulumi:"meta"`
+	Meta pulumi.StringMapOutput `pulumi:"meta"`
 	// The name of the node being added to, or
 	// referenced in the catalog.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -70,7 +70,7 @@ type nodeState struct {
 	// default datacenter and the datacenter in the provider setup.
 	Datacenter *string `pulumi:"datacenter"`
 	// Key/value pairs that are associated with the node.
-	Meta map[string]interface{} `pulumi:"meta"`
+	Meta map[string]string `pulumi:"meta"`
 	// The name of the node being added to, or
 	// referenced in the catalog.
 	Name *string `pulumi:"name"`
@@ -85,7 +85,7 @@ type NodeState struct {
 	// default datacenter and the datacenter in the provider setup.
 	Datacenter pulumi.StringPtrInput
 	// Key/value pairs that are associated with the node.
-	Meta pulumi.MapInput
+	Meta pulumi.StringMapInput
 	// The name of the node being added to, or
 	// referenced in the catalog.
 	Name pulumi.StringPtrInput
@@ -104,7 +104,7 @@ type nodeArgs struct {
 	// default datacenter and the datacenter in the provider setup.
 	Datacenter *string `pulumi:"datacenter"`
 	// Key/value pairs that are associated with the node.
-	Meta map[string]interface{} `pulumi:"meta"`
+	Meta map[string]string `pulumi:"meta"`
 	// The name of the node being added to, or
 	// referenced in the catalog.
 	Name *string `pulumi:"name"`
@@ -120,7 +120,7 @@ type NodeArgs struct {
 	// default datacenter and the datacenter in the provider setup.
 	Datacenter pulumi.StringPtrInput
 	// Key/value pairs that are associated with the node.
-	Meta pulumi.MapInput
+	Meta pulumi.StringMapInput
 	// The name of the node being added to, or
 	// referenced in the catalog.
 	Name pulumi.StringPtrInput

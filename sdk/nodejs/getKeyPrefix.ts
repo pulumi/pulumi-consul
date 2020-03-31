@@ -16,6 +16,7 @@ export function getKeyPrefix(args: GetKeyPrefixArgs, opts?: pulumi.InvokeOptions
     }
     const promise: Promise<GetKeyPrefixResult> = pulumi.runtime.invoke("consul:index/getKeyPrefix:getKeyPrefix", {
         "datacenter": args.datacenter,
+        "namespace": args.namespace,
         "pathPrefix": args.pathPrefix,
         "subkeyCollection": args.subkeyCollection,
         "token": args.token,
@@ -33,6 +34,10 @@ export interface GetKeyPrefixArgs {
      * agent's default datacenter and the datacenter in the provider setup.
      */
     readonly datacenter?: string;
+    /**
+     * The namespace to create the keys within.
+     */
+    readonly namespace?: string;
     /**
      * Specifies the common prefix shared by all keys
      * that will be read by this data source instance. In most cases, this will
@@ -59,6 +64,7 @@ export interface GetKeyPrefixResult {
      * The datacenter the keys are being read from.
      */
     readonly datacenter: string;
+    readonly namespace?: string;
     /**
      * the common prefix shared by all keys being read.
      * * `var.<name>` - For each name given, the corresponding attribute
@@ -72,7 +78,7 @@ export interface GetKeyPrefixResult {
      */
     readonly subkeys: {[key: string]: string};
     readonly token?: string;
-    readonly var: {[key: string]: any};
+    readonly var: {[key: string]: string};
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

@@ -29,6 +29,12 @@ namespace Pulumi.Consul
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// The namespace to create the role within.
+        /// </summary>
+        [Output("namespace")]
+        public Output<string?> Namespace { get; private set; } = null!;
+
+        /// <summary>
         /// The list of policies that should be applied to the role.
         /// </summary>
         [Output("policies")]
@@ -99,6 +105,12 @@ namespace Pulumi.Consul
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The namespace to create the role within.
+        /// </summary>
+        [Input("namespace")]
+        public Input<string>? Namespace { get; set; }
+
         [Input("policies")]
         private InputList<string>? _policies;
 
@@ -142,6 +154,12 @@ namespace Pulumi.Consul
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The namespace to create the role within.
+        /// </summary>
+        [Input("namespace")]
+        public Input<string>? Namespace { get; set; }
 
         [Input("policies")]
         private InputList<string>? _policies;

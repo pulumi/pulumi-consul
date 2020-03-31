@@ -1401,1074 +1401,6 @@ func (o GetAclTokenPolicyArrayOutput) Index(i pulumi.IntInput) GetAclTokenPolicy
 	}).(GetAclTokenPolicyOutput)
 }
 
-type GetAgentSelfAddresses struct {
-	// A map of DNS configuration attributes.  See below for details on the
-	// contents of the `dns` attribute.
-	// * [`dnsRecursors`](https://www.consul.io/docs/agent/options.html#recursors) - A
-	// list of all DNS recursors.
-	// * [`dataDir`](https://www.consul.io/docs/agent/options.html#_data_dir)
-	// * [`datacenter`](https://www.consul.io/docs/agent/options.html#_datacenter)
-	// * [`devMode`](https://www.consul.io/docs/agent/options.html#_dev)
-	// * [`domain`](https://www.consul.io/docs/agent/options.html#_domain)
-	// * [`enableAnonymousSignature`](https://www.consul.io/docs/agent/options.html#disable_anonymous_signature)
-	// * `enableCoordinates`
-	// * [`enableDebug`](https://www.consul.io/docs/agent/options.html#enable_debug)
-	// * [`enableRemoteExec`](https://www.consul.io/docs/agent/options.html#disable_remote_exec)
-	// * [`enableSyslog`](https://www.consul.io/docs/agent/options.html#_syslog)
-	// * [`enableUi`](https://www.consul.io/docs/agent/options.html#_ui)
-	// * [`enableUpdateCheck`](https://www.consul.io/docs/agent/options.html#disable_update_check)
-	// * [`id`](https://www.consul.io/docs/agent/options.html#_node_id)
-	// * [`leaveOnInt`](https://www.consul.io/docs/agent/options.html#skip_leave_on_interrupt)
-	// * [`leaveOnTerm`](https://www.consul.io/docs/agent/options.html#leave_on_terminate)
-	// * [`logLevel`](https://www.consul.io/docs/agent/options.html#_log_level)
-	// * [`name`](https://www.consul.io/docs/agent/options.html#_node)
-	// * [`performance`](https://www.consul.io/docs/agent/options.html#performance)
-	// * [`pidFile`](https://www.consul.io/docs/agent/options.html#_pid_file)
-	// * [`ports`](https://www.consul.io/docs/agent/options.html#ports)
-	// * [`protocolVersion`](https://www.consul.io/docs/agent/options.html#_protocol)
-	// * [`reconnectTimeoutLan`](https://www.consul.io/docs/agent/options.html#reconnect_timeout)
-	// * [`reconnectTimeoutWan`](https://www.consul.io/docs/agent/options.html#reconnect_timeout_wan)
-	// * [`rejoinAfterLeave`](https://www.consul.io/docs/agent/options.html#_rejoin)
-	// * [`retryJoin`](https://www.consul.io/docs/agent/options.html#retry_join)
-	// * [`retryJoinEc2`](https://www.consul.io/docs/agent/options.html#retry_join_ec2) -
-	// A map of EC2 retry attributes.  See below for details on the available
-	// information.
-	// * [`retryJoinGce`](https://www.consul.io/docs/agent/options.html#retry_join_gce) -
-	// A map of GCE retry attributes.  See below for details on the available
-	// information.
-	// * [`retryJoinWan`](https://www.consul.io/docs/agent/options.html#_retry_join_wan)
-	// * [`retryMaxAttempts`](https://www.consul.io/docs/agent/options.html#_retry_max)
-	// * [`retryMaxAttemptsWan`](https://www.consul.io/docs/agent/options.html#_retry_max_wan)
-	// * [`serfLanBindAddr`](https://www.consul.io/docs/agent/options.html#_serf_lan_bind)
-	// * [`serfWanBindAddr`](https://www.consul.io/docs/agent/options.html#_serf_wan_bind)
-	// * [`serverMode`](https://www.consul.io/docs/agent/options.html#_server)
-	// * [`serverName`](https://www.consul.io/docs/agent/options.html#server_name)
-	// * [`sessionTtlMin`](https://www.consul.io/docs/agent/options.html#session_ttl_min)
-	// * [`startJoin`](https://www.consul.io/docs/agent/options.html#start_join)
-	// * [`startJoinWan`](https://www.consul.io/docs/agent/options.html#start_join_wan)
-	// * [`syslogFacility`](https://www.consul.io/docs/agent/options.html#syslog_facility)
-	// * [`tlsCaFile`](https://www.consul.io/docs/agent/options.html#ca_file)
-	// * [`tlsCertFile`](https://www.consul.io/docs/agent/options.html#cert_file)
-	// * [`tlsKeyFile`](https://www.consul.io/docs/agent/options.html#key_file)
-	// * [`tlsMinVersion`](https://www.consul.io/docs/agent/options.html#tls_min_version)
-	// * [`tlsVerifyIncoming`](https://www.consul.io/docs/agent/options.html#verify_incoming)
-	// * [`tlsVerifyOutgoing`](https://www.consul.io/docs/agent/options.html#verify_outgoing)
-	// * [`tlsVerifyServerHostname`](https://www.consul.io/docs/agent/options.html#verify_server_hostname)
-	// * [`taggedAddresses`](https://www.consul.io/docs/agent/options.html#translate_wan_addrs)
-	// * [`telemetry`](https://www.consul.io/docs/agent/options.html#telemetry) - A map
-	// of telemetry configuration.
-	// * [`translateWanAddrs`](https://www.consul.io/docs/agent/options.html#translate_wan_addrs)
-	// * [`uiDir`](https://www.consul.io/docs/agent/options.html#ui_dir)
-	// * [`unixSockets`](https://www.consul.io/docs/agent/options.html#unix_sockets)
-	Dns string `pulumi:"dns"`
-	Http string `pulumi:"http"`
-	Https string `pulumi:"https"`
-	Rpc string `pulumi:"rpc"`
-}
-
-type GetAgentSelfAddressesInput interface {
-	pulumi.Input
-
-	ToGetAgentSelfAddressesOutput() GetAgentSelfAddressesOutput
-	ToGetAgentSelfAddressesOutputWithContext(context.Context) GetAgentSelfAddressesOutput
-}
-
-type GetAgentSelfAddressesArgs struct {
-	// A map of DNS configuration attributes.  See below for details on the
-	// contents of the `dns` attribute.
-	// * [`dnsRecursors`](https://www.consul.io/docs/agent/options.html#recursors) - A
-	// list of all DNS recursors.
-	// * [`dataDir`](https://www.consul.io/docs/agent/options.html#_data_dir)
-	// * [`datacenter`](https://www.consul.io/docs/agent/options.html#_datacenter)
-	// * [`devMode`](https://www.consul.io/docs/agent/options.html#_dev)
-	// * [`domain`](https://www.consul.io/docs/agent/options.html#_domain)
-	// * [`enableAnonymousSignature`](https://www.consul.io/docs/agent/options.html#disable_anonymous_signature)
-	// * `enableCoordinates`
-	// * [`enableDebug`](https://www.consul.io/docs/agent/options.html#enable_debug)
-	// * [`enableRemoteExec`](https://www.consul.io/docs/agent/options.html#disable_remote_exec)
-	// * [`enableSyslog`](https://www.consul.io/docs/agent/options.html#_syslog)
-	// * [`enableUi`](https://www.consul.io/docs/agent/options.html#_ui)
-	// * [`enableUpdateCheck`](https://www.consul.io/docs/agent/options.html#disable_update_check)
-	// * [`id`](https://www.consul.io/docs/agent/options.html#_node_id)
-	// * [`leaveOnInt`](https://www.consul.io/docs/agent/options.html#skip_leave_on_interrupt)
-	// * [`leaveOnTerm`](https://www.consul.io/docs/agent/options.html#leave_on_terminate)
-	// * [`logLevel`](https://www.consul.io/docs/agent/options.html#_log_level)
-	// * [`name`](https://www.consul.io/docs/agent/options.html#_node)
-	// * [`performance`](https://www.consul.io/docs/agent/options.html#performance)
-	// * [`pidFile`](https://www.consul.io/docs/agent/options.html#_pid_file)
-	// * [`ports`](https://www.consul.io/docs/agent/options.html#ports)
-	// * [`protocolVersion`](https://www.consul.io/docs/agent/options.html#_protocol)
-	// * [`reconnectTimeoutLan`](https://www.consul.io/docs/agent/options.html#reconnect_timeout)
-	// * [`reconnectTimeoutWan`](https://www.consul.io/docs/agent/options.html#reconnect_timeout_wan)
-	// * [`rejoinAfterLeave`](https://www.consul.io/docs/agent/options.html#_rejoin)
-	// * [`retryJoin`](https://www.consul.io/docs/agent/options.html#retry_join)
-	// * [`retryJoinEc2`](https://www.consul.io/docs/agent/options.html#retry_join_ec2) -
-	// A map of EC2 retry attributes.  See below for details on the available
-	// information.
-	// * [`retryJoinGce`](https://www.consul.io/docs/agent/options.html#retry_join_gce) -
-	// A map of GCE retry attributes.  See below for details on the available
-	// information.
-	// * [`retryJoinWan`](https://www.consul.io/docs/agent/options.html#_retry_join_wan)
-	// * [`retryMaxAttempts`](https://www.consul.io/docs/agent/options.html#_retry_max)
-	// * [`retryMaxAttemptsWan`](https://www.consul.io/docs/agent/options.html#_retry_max_wan)
-	// * [`serfLanBindAddr`](https://www.consul.io/docs/agent/options.html#_serf_lan_bind)
-	// * [`serfWanBindAddr`](https://www.consul.io/docs/agent/options.html#_serf_wan_bind)
-	// * [`serverMode`](https://www.consul.io/docs/agent/options.html#_server)
-	// * [`serverName`](https://www.consul.io/docs/agent/options.html#server_name)
-	// * [`sessionTtlMin`](https://www.consul.io/docs/agent/options.html#session_ttl_min)
-	// * [`startJoin`](https://www.consul.io/docs/agent/options.html#start_join)
-	// * [`startJoinWan`](https://www.consul.io/docs/agent/options.html#start_join_wan)
-	// * [`syslogFacility`](https://www.consul.io/docs/agent/options.html#syslog_facility)
-	// * [`tlsCaFile`](https://www.consul.io/docs/agent/options.html#ca_file)
-	// * [`tlsCertFile`](https://www.consul.io/docs/agent/options.html#cert_file)
-	// * [`tlsKeyFile`](https://www.consul.io/docs/agent/options.html#key_file)
-	// * [`tlsMinVersion`](https://www.consul.io/docs/agent/options.html#tls_min_version)
-	// * [`tlsVerifyIncoming`](https://www.consul.io/docs/agent/options.html#verify_incoming)
-	// * [`tlsVerifyOutgoing`](https://www.consul.io/docs/agent/options.html#verify_outgoing)
-	// * [`tlsVerifyServerHostname`](https://www.consul.io/docs/agent/options.html#verify_server_hostname)
-	// * [`taggedAddresses`](https://www.consul.io/docs/agent/options.html#translate_wan_addrs)
-	// * [`telemetry`](https://www.consul.io/docs/agent/options.html#telemetry) - A map
-	// of telemetry configuration.
-	// * [`translateWanAddrs`](https://www.consul.io/docs/agent/options.html#translate_wan_addrs)
-	// * [`uiDir`](https://www.consul.io/docs/agent/options.html#ui_dir)
-	// * [`unixSockets`](https://www.consul.io/docs/agent/options.html#unix_sockets)
-	Dns pulumi.StringInput `pulumi:"dns"`
-	Http pulumi.StringInput `pulumi:"http"`
-	Https pulumi.StringInput `pulumi:"https"`
-	Rpc pulumi.StringInput `pulumi:"rpc"`
-}
-
-func (GetAgentSelfAddressesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAgentSelfAddresses)(nil)).Elem()
-}
-
-func (i GetAgentSelfAddressesArgs) ToGetAgentSelfAddressesOutput() GetAgentSelfAddressesOutput {
-	return i.ToGetAgentSelfAddressesOutputWithContext(context.Background())
-}
-
-func (i GetAgentSelfAddressesArgs) ToGetAgentSelfAddressesOutputWithContext(ctx context.Context) GetAgentSelfAddressesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAgentSelfAddressesOutput)
-}
-
-type GetAgentSelfAddressesOutput struct { *pulumi.OutputState }
-
-func (GetAgentSelfAddressesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAgentSelfAddresses)(nil)).Elem()
-}
-
-func (o GetAgentSelfAddressesOutput) ToGetAgentSelfAddressesOutput() GetAgentSelfAddressesOutput {
-	return o
-}
-
-func (o GetAgentSelfAddressesOutput) ToGetAgentSelfAddressesOutputWithContext(ctx context.Context) GetAgentSelfAddressesOutput {
-	return o
-}
-
-// A map of DNS configuration attributes.  See below for details on the
-// contents of the `dns` attribute.
-// * [`dnsRecursors`](https://www.consul.io/docs/agent/options.html#recursors) - A
-// list of all DNS recursors.
-// * [`dataDir`](https://www.consul.io/docs/agent/options.html#_data_dir)
-// * [`datacenter`](https://www.consul.io/docs/agent/options.html#_datacenter)
-// * [`devMode`](https://www.consul.io/docs/agent/options.html#_dev)
-// * [`domain`](https://www.consul.io/docs/agent/options.html#_domain)
-// * [`enableAnonymousSignature`](https://www.consul.io/docs/agent/options.html#disable_anonymous_signature)
-// * `enableCoordinates`
-// * [`enableDebug`](https://www.consul.io/docs/agent/options.html#enable_debug)
-// * [`enableRemoteExec`](https://www.consul.io/docs/agent/options.html#disable_remote_exec)
-// * [`enableSyslog`](https://www.consul.io/docs/agent/options.html#_syslog)
-// * [`enableUi`](https://www.consul.io/docs/agent/options.html#_ui)
-// * [`enableUpdateCheck`](https://www.consul.io/docs/agent/options.html#disable_update_check)
-// * [`id`](https://www.consul.io/docs/agent/options.html#_node_id)
-// * [`leaveOnInt`](https://www.consul.io/docs/agent/options.html#skip_leave_on_interrupt)
-// * [`leaveOnTerm`](https://www.consul.io/docs/agent/options.html#leave_on_terminate)
-// * [`logLevel`](https://www.consul.io/docs/agent/options.html#_log_level)
-// * [`name`](https://www.consul.io/docs/agent/options.html#_node)
-// * [`performance`](https://www.consul.io/docs/agent/options.html#performance)
-// * [`pidFile`](https://www.consul.io/docs/agent/options.html#_pid_file)
-// * [`ports`](https://www.consul.io/docs/agent/options.html#ports)
-// * [`protocolVersion`](https://www.consul.io/docs/agent/options.html#_protocol)
-// * [`reconnectTimeoutLan`](https://www.consul.io/docs/agent/options.html#reconnect_timeout)
-// * [`reconnectTimeoutWan`](https://www.consul.io/docs/agent/options.html#reconnect_timeout_wan)
-// * [`rejoinAfterLeave`](https://www.consul.io/docs/agent/options.html#_rejoin)
-// * [`retryJoin`](https://www.consul.io/docs/agent/options.html#retry_join)
-// * [`retryJoinEc2`](https://www.consul.io/docs/agent/options.html#retry_join_ec2) -
-// A map of EC2 retry attributes.  See below for details on the available
-// information.
-// * [`retryJoinGce`](https://www.consul.io/docs/agent/options.html#retry_join_gce) -
-// A map of GCE retry attributes.  See below for details on the available
-// information.
-// * [`retryJoinWan`](https://www.consul.io/docs/agent/options.html#_retry_join_wan)
-// * [`retryMaxAttempts`](https://www.consul.io/docs/agent/options.html#_retry_max)
-// * [`retryMaxAttemptsWan`](https://www.consul.io/docs/agent/options.html#_retry_max_wan)
-// * [`serfLanBindAddr`](https://www.consul.io/docs/agent/options.html#_serf_lan_bind)
-// * [`serfWanBindAddr`](https://www.consul.io/docs/agent/options.html#_serf_wan_bind)
-// * [`serverMode`](https://www.consul.io/docs/agent/options.html#_server)
-// * [`serverName`](https://www.consul.io/docs/agent/options.html#server_name)
-// * [`sessionTtlMin`](https://www.consul.io/docs/agent/options.html#session_ttl_min)
-// * [`startJoin`](https://www.consul.io/docs/agent/options.html#start_join)
-// * [`startJoinWan`](https://www.consul.io/docs/agent/options.html#start_join_wan)
-// * [`syslogFacility`](https://www.consul.io/docs/agent/options.html#syslog_facility)
-// * [`tlsCaFile`](https://www.consul.io/docs/agent/options.html#ca_file)
-// * [`tlsCertFile`](https://www.consul.io/docs/agent/options.html#cert_file)
-// * [`tlsKeyFile`](https://www.consul.io/docs/agent/options.html#key_file)
-// * [`tlsMinVersion`](https://www.consul.io/docs/agent/options.html#tls_min_version)
-// * [`tlsVerifyIncoming`](https://www.consul.io/docs/agent/options.html#verify_incoming)
-// * [`tlsVerifyOutgoing`](https://www.consul.io/docs/agent/options.html#verify_outgoing)
-// * [`tlsVerifyServerHostname`](https://www.consul.io/docs/agent/options.html#verify_server_hostname)
-// * [`taggedAddresses`](https://www.consul.io/docs/agent/options.html#translate_wan_addrs)
-// * [`telemetry`](https://www.consul.io/docs/agent/options.html#telemetry) - A map
-// of telemetry configuration.
-// * [`translateWanAddrs`](https://www.consul.io/docs/agent/options.html#translate_wan_addrs)
-// * [`uiDir`](https://www.consul.io/docs/agent/options.html#ui_dir)
-// * [`unixSockets`](https://www.consul.io/docs/agent/options.html#unix_sockets)
-func (o GetAgentSelfAddressesOutput) Dns() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAgentSelfAddresses) string { return v.Dns }).(pulumi.StringOutput)
-}
-
-func (o GetAgentSelfAddressesOutput) Http() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAgentSelfAddresses) string { return v.Http }).(pulumi.StringOutput)
-}
-
-func (o GetAgentSelfAddressesOutput) Https() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAgentSelfAddresses) string { return v.Https }).(pulumi.StringOutput)
-}
-
-func (o GetAgentSelfAddressesOutput) Rpc() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAgentSelfAddresses) string { return v.Rpc }).(pulumi.StringOutput)
-}
-
-type GetAgentSelfAdvertiseAddrs struct {
-	Rpc string `pulumi:"rpc"`
-	SerfLan string `pulumi:"serfLan"`
-	SerfWan string `pulumi:"serfWan"`
-}
-
-type GetAgentSelfAdvertiseAddrsInput interface {
-	pulumi.Input
-
-	ToGetAgentSelfAdvertiseAddrsOutput() GetAgentSelfAdvertiseAddrsOutput
-	ToGetAgentSelfAdvertiseAddrsOutputWithContext(context.Context) GetAgentSelfAdvertiseAddrsOutput
-}
-
-type GetAgentSelfAdvertiseAddrsArgs struct {
-	Rpc pulumi.StringInput `pulumi:"rpc"`
-	SerfLan pulumi.StringInput `pulumi:"serfLan"`
-	SerfWan pulumi.StringInput `pulumi:"serfWan"`
-}
-
-func (GetAgentSelfAdvertiseAddrsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAgentSelfAdvertiseAddrs)(nil)).Elem()
-}
-
-func (i GetAgentSelfAdvertiseAddrsArgs) ToGetAgentSelfAdvertiseAddrsOutput() GetAgentSelfAdvertiseAddrsOutput {
-	return i.ToGetAgentSelfAdvertiseAddrsOutputWithContext(context.Background())
-}
-
-func (i GetAgentSelfAdvertiseAddrsArgs) ToGetAgentSelfAdvertiseAddrsOutputWithContext(ctx context.Context) GetAgentSelfAdvertiseAddrsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAgentSelfAdvertiseAddrsOutput)
-}
-
-type GetAgentSelfAdvertiseAddrsOutput struct { *pulumi.OutputState }
-
-func (GetAgentSelfAdvertiseAddrsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAgentSelfAdvertiseAddrs)(nil)).Elem()
-}
-
-func (o GetAgentSelfAdvertiseAddrsOutput) ToGetAgentSelfAdvertiseAddrsOutput() GetAgentSelfAdvertiseAddrsOutput {
-	return o
-}
-
-func (o GetAgentSelfAdvertiseAddrsOutput) ToGetAgentSelfAdvertiseAddrsOutputWithContext(ctx context.Context) GetAgentSelfAdvertiseAddrsOutput {
-	return o
-}
-
-func (o GetAgentSelfAdvertiseAddrsOutput) Rpc() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAgentSelfAdvertiseAddrs) string { return v.Rpc }).(pulumi.StringOutput)
-}
-
-func (o GetAgentSelfAdvertiseAddrsOutput) SerfLan() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAgentSelfAdvertiseAddrs) string { return v.SerfLan }).(pulumi.StringOutput)
-}
-
-func (o GetAgentSelfAdvertiseAddrsOutput) SerfWan() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAgentSelfAdvertiseAddrs) string { return v.SerfWan }).(pulumi.StringOutput)
-}
-
-type GetAgentSelfDns struct {
-	AllowStale bool `pulumi:"allowStale"`
-	EnableCompression bool `pulumi:"enableCompression"`
-	EnableTruncate bool `pulumi:"enableTruncate"`
-	MaxStale string `pulumi:"maxStale"`
-	NodeTtl string `pulumi:"nodeTtl"`
-	OnlyPassing bool `pulumi:"onlyPassing"`
-	RecursorTimeout string `pulumi:"recursorTimeout"`
-	ServiceTtl string `pulumi:"serviceTtl"`
-	UdpAnswerLimit int `pulumi:"udpAnswerLimit"`
-}
-
-type GetAgentSelfDnsInput interface {
-	pulumi.Input
-
-	ToGetAgentSelfDnsOutput() GetAgentSelfDnsOutput
-	ToGetAgentSelfDnsOutputWithContext(context.Context) GetAgentSelfDnsOutput
-}
-
-type GetAgentSelfDnsArgs struct {
-	AllowStale pulumi.BoolInput `pulumi:"allowStale"`
-	EnableCompression pulumi.BoolInput `pulumi:"enableCompression"`
-	EnableTruncate pulumi.BoolInput `pulumi:"enableTruncate"`
-	MaxStale pulumi.StringInput `pulumi:"maxStale"`
-	NodeTtl pulumi.StringInput `pulumi:"nodeTtl"`
-	OnlyPassing pulumi.BoolInput `pulumi:"onlyPassing"`
-	RecursorTimeout pulumi.StringInput `pulumi:"recursorTimeout"`
-	ServiceTtl pulumi.StringInput `pulumi:"serviceTtl"`
-	UdpAnswerLimit pulumi.IntInput `pulumi:"udpAnswerLimit"`
-}
-
-func (GetAgentSelfDnsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAgentSelfDns)(nil)).Elem()
-}
-
-func (i GetAgentSelfDnsArgs) ToGetAgentSelfDnsOutput() GetAgentSelfDnsOutput {
-	return i.ToGetAgentSelfDnsOutputWithContext(context.Background())
-}
-
-func (i GetAgentSelfDnsArgs) ToGetAgentSelfDnsOutputWithContext(ctx context.Context) GetAgentSelfDnsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAgentSelfDnsOutput)
-}
-
-type GetAgentSelfDnsOutput struct { *pulumi.OutputState }
-
-func (GetAgentSelfDnsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAgentSelfDns)(nil)).Elem()
-}
-
-func (o GetAgentSelfDnsOutput) ToGetAgentSelfDnsOutput() GetAgentSelfDnsOutput {
-	return o
-}
-
-func (o GetAgentSelfDnsOutput) ToGetAgentSelfDnsOutputWithContext(ctx context.Context) GetAgentSelfDnsOutput {
-	return o
-}
-
-func (o GetAgentSelfDnsOutput) AllowStale() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetAgentSelfDns) bool { return v.AllowStale }).(pulumi.BoolOutput)
-}
-
-func (o GetAgentSelfDnsOutput) EnableCompression() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetAgentSelfDns) bool { return v.EnableCompression }).(pulumi.BoolOutput)
-}
-
-func (o GetAgentSelfDnsOutput) EnableTruncate() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetAgentSelfDns) bool { return v.EnableTruncate }).(pulumi.BoolOutput)
-}
-
-func (o GetAgentSelfDnsOutput) MaxStale() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAgentSelfDns) string { return v.MaxStale }).(pulumi.StringOutput)
-}
-
-func (o GetAgentSelfDnsOutput) NodeTtl() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAgentSelfDns) string { return v.NodeTtl }).(pulumi.StringOutput)
-}
-
-func (o GetAgentSelfDnsOutput) OnlyPassing() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetAgentSelfDns) bool { return v.OnlyPassing }).(pulumi.BoolOutput)
-}
-
-func (o GetAgentSelfDnsOutput) RecursorTimeout() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAgentSelfDns) string { return v.RecursorTimeout }).(pulumi.StringOutput)
-}
-
-func (o GetAgentSelfDnsOutput) ServiceTtl() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAgentSelfDns) string { return v.ServiceTtl }).(pulumi.StringOutput)
-}
-
-func (o GetAgentSelfDnsOutput) UdpAnswerLimit() pulumi.IntOutput {
-	return o.ApplyT(func (v GetAgentSelfDns) int { return v.UdpAnswerLimit }).(pulumi.IntOutput)
-}
-
-type GetAgentSelfPerformance struct {
-	RaftMultiplier string `pulumi:"raftMultiplier"`
-}
-
-type GetAgentSelfPerformanceInput interface {
-	pulumi.Input
-
-	ToGetAgentSelfPerformanceOutput() GetAgentSelfPerformanceOutput
-	ToGetAgentSelfPerformanceOutputWithContext(context.Context) GetAgentSelfPerformanceOutput
-}
-
-type GetAgentSelfPerformanceArgs struct {
-	RaftMultiplier pulumi.StringInput `pulumi:"raftMultiplier"`
-}
-
-func (GetAgentSelfPerformanceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAgentSelfPerformance)(nil)).Elem()
-}
-
-func (i GetAgentSelfPerformanceArgs) ToGetAgentSelfPerformanceOutput() GetAgentSelfPerformanceOutput {
-	return i.ToGetAgentSelfPerformanceOutputWithContext(context.Background())
-}
-
-func (i GetAgentSelfPerformanceArgs) ToGetAgentSelfPerformanceOutputWithContext(ctx context.Context) GetAgentSelfPerformanceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAgentSelfPerformanceOutput)
-}
-
-type GetAgentSelfPerformanceOutput struct { *pulumi.OutputState }
-
-func (GetAgentSelfPerformanceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAgentSelfPerformance)(nil)).Elem()
-}
-
-func (o GetAgentSelfPerformanceOutput) ToGetAgentSelfPerformanceOutput() GetAgentSelfPerformanceOutput {
-	return o
-}
-
-func (o GetAgentSelfPerformanceOutput) ToGetAgentSelfPerformanceOutputWithContext(ctx context.Context) GetAgentSelfPerformanceOutput {
-	return o
-}
-
-func (o GetAgentSelfPerformanceOutput) RaftMultiplier() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAgentSelfPerformance) string { return v.RaftMultiplier }).(pulumi.StringOutput)
-}
-
-type GetAgentSelfPorts struct {
-	// A map of DNS configuration attributes.  See below for details on the
-	// contents of the `dns` attribute.
-	// * [`dnsRecursors`](https://www.consul.io/docs/agent/options.html#recursors) - A
-	// list of all DNS recursors.
-	// * [`dataDir`](https://www.consul.io/docs/agent/options.html#_data_dir)
-	// * [`datacenter`](https://www.consul.io/docs/agent/options.html#_datacenter)
-	// * [`devMode`](https://www.consul.io/docs/agent/options.html#_dev)
-	// * [`domain`](https://www.consul.io/docs/agent/options.html#_domain)
-	// * [`enableAnonymousSignature`](https://www.consul.io/docs/agent/options.html#disable_anonymous_signature)
-	// * `enableCoordinates`
-	// * [`enableDebug`](https://www.consul.io/docs/agent/options.html#enable_debug)
-	// * [`enableRemoteExec`](https://www.consul.io/docs/agent/options.html#disable_remote_exec)
-	// * [`enableSyslog`](https://www.consul.io/docs/agent/options.html#_syslog)
-	// * [`enableUi`](https://www.consul.io/docs/agent/options.html#_ui)
-	// * [`enableUpdateCheck`](https://www.consul.io/docs/agent/options.html#disable_update_check)
-	// * [`id`](https://www.consul.io/docs/agent/options.html#_node_id)
-	// * [`leaveOnInt`](https://www.consul.io/docs/agent/options.html#skip_leave_on_interrupt)
-	// * [`leaveOnTerm`](https://www.consul.io/docs/agent/options.html#leave_on_terminate)
-	// * [`logLevel`](https://www.consul.io/docs/agent/options.html#_log_level)
-	// * [`name`](https://www.consul.io/docs/agent/options.html#_node)
-	// * [`performance`](https://www.consul.io/docs/agent/options.html#performance)
-	// * [`pidFile`](https://www.consul.io/docs/agent/options.html#_pid_file)
-	// * [`ports`](https://www.consul.io/docs/agent/options.html#ports)
-	// * [`protocolVersion`](https://www.consul.io/docs/agent/options.html#_protocol)
-	// * [`reconnectTimeoutLan`](https://www.consul.io/docs/agent/options.html#reconnect_timeout)
-	// * [`reconnectTimeoutWan`](https://www.consul.io/docs/agent/options.html#reconnect_timeout_wan)
-	// * [`rejoinAfterLeave`](https://www.consul.io/docs/agent/options.html#_rejoin)
-	// * [`retryJoin`](https://www.consul.io/docs/agent/options.html#retry_join)
-	// * [`retryJoinEc2`](https://www.consul.io/docs/agent/options.html#retry_join_ec2) -
-	// A map of EC2 retry attributes.  See below for details on the available
-	// information.
-	// * [`retryJoinGce`](https://www.consul.io/docs/agent/options.html#retry_join_gce) -
-	// A map of GCE retry attributes.  See below for details on the available
-	// information.
-	// * [`retryJoinWan`](https://www.consul.io/docs/agent/options.html#_retry_join_wan)
-	// * [`retryMaxAttempts`](https://www.consul.io/docs/agent/options.html#_retry_max)
-	// * [`retryMaxAttemptsWan`](https://www.consul.io/docs/agent/options.html#_retry_max_wan)
-	// * [`serfLanBindAddr`](https://www.consul.io/docs/agent/options.html#_serf_lan_bind)
-	// * [`serfWanBindAddr`](https://www.consul.io/docs/agent/options.html#_serf_wan_bind)
-	// * [`serverMode`](https://www.consul.io/docs/agent/options.html#_server)
-	// * [`serverName`](https://www.consul.io/docs/agent/options.html#server_name)
-	// * [`sessionTtlMin`](https://www.consul.io/docs/agent/options.html#session_ttl_min)
-	// * [`startJoin`](https://www.consul.io/docs/agent/options.html#start_join)
-	// * [`startJoinWan`](https://www.consul.io/docs/agent/options.html#start_join_wan)
-	// * [`syslogFacility`](https://www.consul.io/docs/agent/options.html#syslog_facility)
-	// * [`tlsCaFile`](https://www.consul.io/docs/agent/options.html#ca_file)
-	// * [`tlsCertFile`](https://www.consul.io/docs/agent/options.html#cert_file)
-	// * [`tlsKeyFile`](https://www.consul.io/docs/agent/options.html#key_file)
-	// * [`tlsMinVersion`](https://www.consul.io/docs/agent/options.html#tls_min_version)
-	// * [`tlsVerifyIncoming`](https://www.consul.io/docs/agent/options.html#verify_incoming)
-	// * [`tlsVerifyOutgoing`](https://www.consul.io/docs/agent/options.html#verify_outgoing)
-	// * [`tlsVerifyServerHostname`](https://www.consul.io/docs/agent/options.html#verify_server_hostname)
-	// * [`taggedAddresses`](https://www.consul.io/docs/agent/options.html#translate_wan_addrs)
-	// * [`telemetry`](https://www.consul.io/docs/agent/options.html#telemetry) - A map
-	// of telemetry configuration.
-	// * [`translateWanAddrs`](https://www.consul.io/docs/agent/options.html#translate_wan_addrs)
-	// * [`uiDir`](https://www.consul.io/docs/agent/options.html#ui_dir)
-	// * [`unixSockets`](https://www.consul.io/docs/agent/options.html#unix_sockets)
-	Dns int `pulumi:"dns"`
-	Http int `pulumi:"http"`
-	Https int `pulumi:"https"`
-	Rpc int `pulumi:"rpc"`
-	SerfLan int `pulumi:"serfLan"`
-	SerfWan int `pulumi:"serfWan"`
-	Server int `pulumi:"server"`
-}
-
-type GetAgentSelfPortsInput interface {
-	pulumi.Input
-
-	ToGetAgentSelfPortsOutput() GetAgentSelfPortsOutput
-	ToGetAgentSelfPortsOutputWithContext(context.Context) GetAgentSelfPortsOutput
-}
-
-type GetAgentSelfPortsArgs struct {
-	// A map of DNS configuration attributes.  See below for details on the
-	// contents of the `dns` attribute.
-	// * [`dnsRecursors`](https://www.consul.io/docs/agent/options.html#recursors) - A
-	// list of all DNS recursors.
-	// * [`dataDir`](https://www.consul.io/docs/agent/options.html#_data_dir)
-	// * [`datacenter`](https://www.consul.io/docs/agent/options.html#_datacenter)
-	// * [`devMode`](https://www.consul.io/docs/agent/options.html#_dev)
-	// * [`domain`](https://www.consul.io/docs/agent/options.html#_domain)
-	// * [`enableAnonymousSignature`](https://www.consul.io/docs/agent/options.html#disable_anonymous_signature)
-	// * `enableCoordinates`
-	// * [`enableDebug`](https://www.consul.io/docs/agent/options.html#enable_debug)
-	// * [`enableRemoteExec`](https://www.consul.io/docs/agent/options.html#disable_remote_exec)
-	// * [`enableSyslog`](https://www.consul.io/docs/agent/options.html#_syslog)
-	// * [`enableUi`](https://www.consul.io/docs/agent/options.html#_ui)
-	// * [`enableUpdateCheck`](https://www.consul.io/docs/agent/options.html#disable_update_check)
-	// * [`id`](https://www.consul.io/docs/agent/options.html#_node_id)
-	// * [`leaveOnInt`](https://www.consul.io/docs/agent/options.html#skip_leave_on_interrupt)
-	// * [`leaveOnTerm`](https://www.consul.io/docs/agent/options.html#leave_on_terminate)
-	// * [`logLevel`](https://www.consul.io/docs/agent/options.html#_log_level)
-	// * [`name`](https://www.consul.io/docs/agent/options.html#_node)
-	// * [`performance`](https://www.consul.io/docs/agent/options.html#performance)
-	// * [`pidFile`](https://www.consul.io/docs/agent/options.html#_pid_file)
-	// * [`ports`](https://www.consul.io/docs/agent/options.html#ports)
-	// * [`protocolVersion`](https://www.consul.io/docs/agent/options.html#_protocol)
-	// * [`reconnectTimeoutLan`](https://www.consul.io/docs/agent/options.html#reconnect_timeout)
-	// * [`reconnectTimeoutWan`](https://www.consul.io/docs/agent/options.html#reconnect_timeout_wan)
-	// * [`rejoinAfterLeave`](https://www.consul.io/docs/agent/options.html#_rejoin)
-	// * [`retryJoin`](https://www.consul.io/docs/agent/options.html#retry_join)
-	// * [`retryJoinEc2`](https://www.consul.io/docs/agent/options.html#retry_join_ec2) -
-	// A map of EC2 retry attributes.  See below for details on the available
-	// information.
-	// * [`retryJoinGce`](https://www.consul.io/docs/agent/options.html#retry_join_gce) -
-	// A map of GCE retry attributes.  See below for details on the available
-	// information.
-	// * [`retryJoinWan`](https://www.consul.io/docs/agent/options.html#_retry_join_wan)
-	// * [`retryMaxAttempts`](https://www.consul.io/docs/agent/options.html#_retry_max)
-	// * [`retryMaxAttemptsWan`](https://www.consul.io/docs/agent/options.html#_retry_max_wan)
-	// * [`serfLanBindAddr`](https://www.consul.io/docs/agent/options.html#_serf_lan_bind)
-	// * [`serfWanBindAddr`](https://www.consul.io/docs/agent/options.html#_serf_wan_bind)
-	// * [`serverMode`](https://www.consul.io/docs/agent/options.html#_server)
-	// * [`serverName`](https://www.consul.io/docs/agent/options.html#server_name)
-	// * [`sessionTtlMin`](https://www.consul.io/docs/agent/options.html#session_ttl_min)
-	// * [`startJoin`](https://www.consul.io/docs/agent/options.html#start_join)
-	// * [`startJoinWan`](https://www.consul.io/docs/agent/options.html#start_join_wan)
-	// * [`syslogFacility`](https://www.consul.io/docs/agent/options.html#syslog_facility)
-	// * [`tlsCaFile`](https://www.consul.io/docs/agent/options.html#ca_file)
-	// * [`tlsCertFile`](https://www.consul.io/docs/agent/options.html#cert_file)
-	// * [`tlsKeyFile`](https://www.consul.io/docs/agent/options.html#key_file)
-	// * [`tlsMinVersion`](https://www.consul.io/docs/agent/options.html#tls_min_version)
-	// * [`tlsVerifyIncoming`](https://www.consul.io/docs/agent/options.html#verify_incoming)
-	// * [`tlsVerifyOutgoing`](https://www.consul.io/docs/agent/options.html#verify_outgoing)
-	// * [`tlsVerifyServerHostname`](https://www.consul.io/docs/agent/options.html#verify_server_hostname)
-	// * [`taggedAddresses`](https://www.consul.io/docs/agent/options.html#translate_wan_addrs)
-	// * [`telemetry`](https://www.consul.io/docs/agent/options.html#telemetry) - A map
-	// of telemetry configuration.
-	// * [`translateWanAddrs`](https://www.consul.io/docs/agent/options.html#translate_wan_addrs)
-	// * [`uiDir`](https://www.consul.io/docs/agent/options.html#ui_dir)
-	// * [`unixSockets`](https://www.consul.io/docs/agent/options.html#unix_sockets)
-	Dns pulumi.IntInput `pulumi:"dns"`
-	Http pulumi.IntInput `pulumi:"http"`
-	Https pulumi.IntInput `pulumi:"https"`
-	Rpc pulumi.IntInput `pulumi:"rpc"`
-	SerfLan pulumi.IntInput `pulumi:"serfLan"`
-	SerfWan pulumi.IntInput `pulumi:"serfWan"`
-	Server pulumi.IntInput `pulumi:"server"`
-}
-
-func (GetAgentSelfPortsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAgentSelfPorts)(nil)).Elem()
-}
-
-func (i GetAgentSelfPortsArgs) ToGetAgentSelfPortsOutput() GetAgentSelfPortsOutput {
-	return i.ToGetAgentSelfPortsOutputWithContext(context.Background())
-}
-
-func (i GetAgentSelfPortsArgs) ToGetAgentSelfPortsOutputWithContext(ctx context.Context) GetAgentSelfPortsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAgentSelfPortsOutput)
-}
-
-type GetAgentSelfPortsOutput struct { *pulumi.OutputState }
-
-func (GetAgentSelfPortsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAgentSelfPorts)(nil)).Elem()
-}
-
-func (o GetAgentSelfPortsOutput) ToGetAgentSelfPortsOutput() GetAgentSelfPortsOutput {
-	return o
-}
-
-func (o GetAgentSelfPortsOutput) ToGetAgentSelfPortsOutputWithContext(ctx context.Context) GetAgentSelfPortsOutput {
-	return o
-}
-
-// A map of DNS configuration attributes.  See below for details on the
-// contents of the `dns` attribute.
-// * [`dnsRecursors`](https://www.consul.io/docs/agent/options.html#recursors) - A
-// list of all DNS recursors.
-// * [`dataDir`](https://www.consul.io/docs/agent/options.html#_data_dir)
-// * [`datacenter`](https://www.consul.io/docs/agent/options.html#_datacenter)
-// * [`devMode`](https://www.consul.io/docs/agent/options.html#_dev)
-// * [`domain`](https://www.consul.io/docs/agent/options.html#_domain)
-// * [`enableAnonymousSignature`](https://www.consul.io/docs/agent/options.html#disable_anonymous_signature)
-// * `enableCoordinates`
-// * [`enableDebug`](https://www.consul.io/docs/agent/options.html#enable_debug)
-// * [`enableRemoteExec`](https://www.consul.io/docs/agent/options.html#disable_remote_exec)
-// * [`enableSyslog`](https://www.consul.io/docs/agent/options.html#_syslog)
-// * [`enableUi`](https://www.consul.io/docs/agent/options.html#_ui)
-// * [`enableUpdateCheck`](https://www.consul.io/docs/agent/options.html#disable_update_check)
-// * [`id`](https://www.consul.io/docs/agent/options.html#_node_id)
-// * [`leaveOnInt`](https://www.consul.io/docs/agent/options.html#skip_leave_on_interrupt)
-// * [`leaveOnTerm`](https://www.consul.io/docs/agent/options.html#leave_on_terminate)
-// * [`logLevel`](https://www.consul.io/docs/agent/options.html#_log_level)
-// * [`name`](https://www.consul.io/docs/agent/options.html#_node)
-// * [`performance`](https://www.consul.io/docs/agent/options.html#performance)
-// * [`pidFile`](https://www.consul.io/docs/agent/options.html#_pid_file)
-// * [`ports`](https://www.consul.io/docs/agent/options.html#ports)
-// * [`protocolVersion`](https://www.consul.io/docs/agent/options.html#_protocol)
-// * [`reconnectTimeoutLan`](https://www.consul.io/docs/agent/options.html#reconnect_timeout)
-// * [`reconnectTimeoutWan`](https://www.consul.io/docs/agent/options.html#reconnect_timeout_wan)
-// * [`rejoinAfterLeave`](https://www.consul.io/docs/agent/options.html#_rejoin)
-// * [`retryJoin`](https://www.consul.io/docs/agent/options.html#retry_join)
-// * [`retryJoinEc2`](https://www.consul.io/docs/agent/options.html#retry_join_ec2) -
-// A map of EC2 retry attributes.  See below for details on the available
-// information.
-// * [`retryJoinGce`](https://www.consul.io/docs/agent/options.html#retry_join_gce) -
-// A map of GCE retry attributes.  See below for details on the available
-// information.
-// * [`retryJoinWan`](https://www.consul.io/docs/agent/options.html#_retry_join_wan)
-// * [`retryMaxAttempts`](https://www.consul.io/docs/agent/options.html#_retry_max)
-// * [`retryMaxAttemptsWan`](https://www.consul.io/docs/agent/options.html#_retry_max_wan)
-// * [`serfLanBindAddr`](https://www.consul.io/docs/agent/options.html#_serf_lan_bind)
-// * [`serfWanBindAddr`](https://www.consul.io/docs/agent/options.html#_serf_wan_bind)
-// * [`serverMode`](https://www.consul.io/docs/agent/options.html#_server)
-// * [`serverName`](https://www.consul.io/docs/agent/options.html#server_name)
-// * [`sessionTtlMin`](https://www.consul.io/docs/agent/options.html#session_ttl_min)
-// * [`startJoin`](https://www.consul.io/docs/agent/options.html#start_join)
-// * [`startJoinWan`](https://www.consul.io/docs/agent/options.html#start_join_wan)
-// * [`syslogFacility`](https://www.consul.io/docs/agent/options.html#syslog_facility)
-// * [`tlsCaFile`](https://www.consul.io/docs/agent/options.html#ca_file)
-// * [`tlsCertFile`](https://www.consul.io/docs/agent/options.html#cert_file)
-// * [`tlsKeyFile`](https://www.consul.io/docs/agent/options.html#key_file)
-// * [`tlsMinVersion`](https://www.consul.io/docs/agent/options.html#tls_min_version)
-// * [`tlsVerifyIncoming`](https://www.consul.io/docs/agent/options.html#verify_incoming)
-// * [`tlsVerifyOutgoing`](https://www.consul.io/docs/agent/options.html#verify_outgoing)
-// * [`tlsVerifyServerHostname`](https://www.consul.io/docs/agent/options.html#verify_server_hostname)
-// * [`taggedAddresses`](https://www.consul.io/docs/agent/options.html#translate_wan_addrs)
-// * [`telemetry`](https://www.consul.io/docs/agent/options.html#telemetry) - A map
-// of telemetry configuration.
-// * [`translateWanAddrs`](https://www.consul.io/docs/agent/options.html#translate_wan_addrs)
-// * [`uiDir`](https://www.consul.io/docs/agent/options.html#ui_dir)
-// * [`unixSockets`](https://www.consul.io/docs/agent/options.html#unix_sockets)
-func (o GetAgentSelfPortsOutput) Dns() pulumi.IntOutput {
-	return o.ApplyT(func (v GetAgentSelfPorts) int { return v.Dns }).(pulumi.IntOutput)
-}
-
-func (o GetAgentSelfPortsOutput) Http() pulumi.IntOutput {
-	return o.ApplyT(func (v GetAgentSelfPorts) int { return v.Http }).(pulumi.IntOutput)
-}
-
-func (o GetAgentSelfPortsOutput) Https() pulumi.IntOutput {
-	return o.ApplyT(func (v GetAgentSelfPorts) int { return v.Https }).(pulumi.IntOutput)
-}
-
-func (o GetAgentSelfPortsOutput) Rpc() pulumi.IntOutput {
-	return o.ApplyT(func (v GetAgentSelfPorts) int { return v.Rpc }).(pulumi.IntOutput)
-}
-
-func (o GetAgentSelfPortsOutput) SerfLan() pulumi.IntOutput {
-	return o.ApplyT(func (v GetAgentSelfPorts) int { return v.SerfLan }).(pulumi.IntOutput)
-}
-
-func (o GetAgentSelfPortsOutput) SerfWan() pulumi.IntOutput {
-	return o.ApplyT(func (v GetAgentSelfPorts) int { return v.SerfWan }).(pulumi.IntOutput)
-}
-
-func (o GetAgentSelfPortsOutput) Server() pulumi.IntOutput {
-	return o.ApplyT(func (v GetAgentSelfPorts) int { return v.Server }).(pulumi.IntOutput)
-}
-
-type GetAgentSelfRetryJoinEc2 struct {
-	Region string `pulumi:"region"`
-	TagKey string `pulumi:"tagKey"`
-	TagValue string `pulumi:"tagValue"`
-}
-
-type GetAgentSelfRetryJoinEc2Input interface {
-	pulumi.Input
-
-	ToGetAgentSelfRetryJoinEc2Output() GetAgentSelfRetryJoinEc2Output
-	ToGetAgentSelfRetryJoinEc2OutputWithContext(context.Context) GetAgentSelfRetryJoinEc2Output
-}
-
-type GetAgentSelfRetryJoinEc2Args struct {
-	Region pulumi.StringInput `pulumi:"region"`
-	TagKey pulumi.StringInput `pulumi:"tagKey"`
-	TagValue pulumi.StringInput `pulumi:"tagValue"`
-}
-
-func (GetAgentSelfRetryJoinEc2Args) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAgentSelfRetryJoinEc2)(nil)).Elem()
-}
-
-func (i GetAgentSelfRetryJoinEc2Args) ToGetAgentSelfRetryJoinEc2Output() GetAgentSelfRetryJoinEc2Output {
-	return i.ToGetAgentSelfRetryJoinEc2OutputWithContext(context.Background())
-}
-
-func (i GetAgentSelfRetryJoinEc2Args) ToGetAgentSelfRetryJoinEc2OutputWithContext(ctx context.Context) GetAgentSelfRetryJoinEc2Output {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAgentSelfRetryJoinEc2Output)
-}
-
-type GetAgentSelfRetryJoinEc2Output struct { *pulumi.OutputState }
-
-func (GetAgentSelfRetryJoinEc2Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAgentSelfRetryJoinEc2)(nil)).Elem()
-}
-
-func (o GetAgentSelfRetryJoinEc2Output) ToGetAgentSelfRetryJoinEc2Output() GetAgentSelfRetryJoinEc2Output {
-	return o
-}
-
-func (o GetAgentSelfRetryJoinEc2Output) ToGetAgentSelfRetryJoinEc2OutputWithContext(ctx context.Context) GetAgentSelfRetryJoinEc2Output {
-	return o
-}
-
-func (o GetAgentSelfRetryJoinEc2Output) Region() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAgentSelfRetryJoinEc2) string { return v.Region }).(pulumi.StringOutput)
-}
-
-func (o GetAgentSelfRetryJoinEc2Output) TagKey() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAgentSelfRetryJoinEc2) string { return v.TagKey }).(pulumi.StringOutput)
-}
-
-func (o GetAgentSelfRetryJoinEc2Output) TagValue() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAgentSelfRetryJoinEc2) string { return v.TagValue }).(pulumi.StringOutput)
-}
-
-type GetAgentSelfRetryJoinGce struct {
-	CredentialsFile string `pulumi:"credentialsFile"`
-	ProjectName string `pulumi:"projectName"`
-	TagValue string `pulumi:"tagValue"`
-	ZonePattern string `pulumi:"zonePattern"`
-}
-
-type GetAgentSelfRetryJoinGceInput interface {
-	pulumi.Input
-
-	ToGetAgentSelfRetryJoinGceOutput() GetAgentSelfRetryJoinGceOutput
-	ToGetAgentSelfRetryJoinGceOutputWithContext(context.Context) GetAgentSelfRetryJoinGceOutput
-}
-
-type GetAgentSelfRetryJoinGceArgs struct {
-	CredentialsFile pulumi.StringInput `pulumi:"credentialsFile"`
-	ProjectName pulumi.StringInput `pulumi:"projectName"`
-	TagValue pulumi.StringInput `pulumi:"tagValue"`
-	ZonePattern pulumi.StringInput `pulumi:"zonePattern"`
-}
-
-func (GetAgentSelfRetryJoinGceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAgentSelfRetryJoinGce)(nil)).Elem()
-}
-
-func (i GetAgentSelfRetryJoinGceArgs) ToGetAgentSelfRetryJoinGceOutput() GetAgentSelfRetryJoinGceOutput {
-	return i.ToGetAgentSelfRetryJoinGceOutputWithContext(context.Background())
-}
-
-func (i GetAgentSelfRetryJoinGceArgs) ToGetAgentSelfRetryJoinGceOutputWithContext(ctx context.Context) GetAgentSelfRetryJoinGceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAgentSelfRetryJoinGceOutput)
-}
-
-type GetAgentSelfRetryJoinGceOutput struct { *pulumi.OutputState }
-
-func (GetAgentSelfRetryJoinGceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAgentSelfRetryJoinGce)(nil)).Elem()
-}
-
-func (o GetAgentSelfRetryJoinGceOutput) ToGetAgentSelfRetryJoinGceOutput() GetAgentSelfRetryJoinGceOutput {
-	return o
-}
-
-func (o GetAgentSelfRetryJoinGceOutput) ToGetAgentSelfRetryJoinGceOutputWithContext(ctx context.Context) GetAgentSelfRetryJoinGceOutput {
-	return o
-}
-
-func (o GetAgentSelfRetryJoinGceOutput) CredentialsFile() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAgentSelfRetryJoinGce) string { return v.CredentialsFile }).(pulumi.StringOutput)
-}
-
-func (o GetAgentSelfRetryJoinGceOutput) ProjectName() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAgentSelfRetryJoinGce) string { return v.ProjectName }).(pulumi.StringOutput)
-}
-
-func (o GetAgentSelfRetryJoinGceOutput) TagValue() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAgentSelfRetryJoinGce) string { return v.TagValue }).(pulumi.StringOutput)
-}
-
-func (o GetAgentSelfRetryJoinGceOutput) ZonePattern() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAgentSelfRetryJoinGce) string { return v.ZonePattern }).(pulumi.StringOutput)
-}
-
-type GetAgentSelfTaggedAddresses struct {
-	Lan string `pulumi:"lan"`
-	Wan string `pulumi:"wan"`
-}
-
-type GetAgentSelfTaggedAddressesInput interface {
-	pulumi.Input
-
-	ToGetAgentSelfTaggedAddressesOutput() GetAgentSelfTaggedAddressesOutput
-	ToGetAgentSelfTaggedAddressesOutputWithContext(context.Context) GetAgentSelfTaggedAddressesOutput
-}
-
-type GetAgentSelfTaggedAddressesArgs struct {
-	Lan pulumi.StringInput `pulumi:"lan"`
-	Wan pulumi.StringInput `pulumi:"wan"`
-}
-
-func (GetAgentSelfTaggedAddressesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAgentSelfTaggedAddresses)(nil)).Elem()
-}
-
-func (i GetAgentSelfTaggedAddressesArgs) ToGetAgentSelfTaggedAddressesOutput() GetAgentSelfTaggedAddressesOutput {
-	return i.ToGetAgentSelfTaggedAddressesOutputWithContext(context.Background())
-}
-
-func (i GetAgentSelfTaggedAddressesArgs) ToGetAgentSelfTaggedAddressesOutputWithContext(ctx context.Context) GetAgentSelfTaggedAddressesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAgentSelfTaggedAddressesOutput)
-}
-
-type GetAgentSelfTaggedAddressesOutput struct { *pulumi.OutputState }
-
-func (GetAgentSelfTaggedAddressesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAgentSelfTaggedAddresses)(nil)).Elem()
-}
-
-func (o GetAgentSelfTaggedAddressesOutput) ToGetAgentSelfTaggedAddressesOutput() GetAgentSelfTaggedAddressesOutput {
-	return o
-}
-
-func (o GetAgentSelfTaggedAddressesOutput) ToGetAgentSelfTaggedAddressesOutputWithContext(ctx context.Context) GetAgentSelfTaggedAddressesOutput {
-	return o
-}
-
-func (o GetAgentSelfTaggedAddressesOutput) Lan() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAgentSelfTaggedAddresses) string { return v.Lan }).(pulumi.StringOutput)
-}
-
-func (o GetAgentSelfTaggedAddressesOutput) Wan() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAgentSelfTaggedAddresses) string { return v.Wan }).(pulumi.StringOutput)
-}
-
-type GetAgentSelfTelemetry struct {
-	CirconusApiApp string `pulumi:"circonusApiApp"`
-	CirconusApiToken string `pulumi:"circonusApiToken"`
-	CirconusApiUrl string `pulumi:"circonusApiUrl"`
-	CirconusBrokerId string `pulumi:"circonusBrokerId"`
-	CirconusCheckId string `pulumi:"circonusCheckId"`
-	CirconusCheckTags string `pulumi:"circonusCheckTags"`
-	CirconusDisplayName string `pulumi:"circonusDisplayName"`
-	CirconusForceMetricActivation bool `pulumi:"circonusForceMetricActivation"`
-	CirconusInstanceId string `pulumi:"circonusInstanceId"`
-	CirconusSearchTag string `pulumi:"circonusSearchTag"`
-	CirconusSelectTag string `pulumi:"circonusSelectTag"`
-	CirconusSubmissionInterval string `pulumi:"circonusSubmissionInterval"`
-	CirconusSubmissionUrl string `pulumi:"circonusSubmissionUrl"`
-	DogstatsdAddr string `pulumi:"dogstatsdAddr"`
-	DogstatsdTags []string `pulumi:"dogstatsdTags"`
-	EnableHostname string `pulumi:"enableHostname"`
-	StatsdAddr string `pulumi:"statsdAddr"`
-	StatsiteAddr string `pulumi:"statsiteAddr"`
-	StatsitePrefix string `pulumi:"statsitePrefix"`
-}
-
-type GetAgentSelfTelemetryInput interface {
-	pulumi.Input
-
-	ToGetAgentSelfTelemetryOutput() GetAgentSelfTelemetryOutput
-	ToGetAgentSelfTelemetryOutputWithContext(context.Context) GetAgentSelfTelemetryOutput
-}
-
-type GetAgentSelfTelemetryArgs struct {
-	CirconusApiApp pulumi.StringInput `pulumi:"circonusApiApp"`
-	CirconusApiToken pulumi.StringInput `pulumi:"circonusApiToken"`
-	CirconusApiUrl pulumi.StringInput `pulumi:"circonusApiUrl"`
-	CirconusBrokerId pulumi.StringInput `pulumi:"circonusBrokerId"`
-	CirconusCheckId pulumi.StringInput `pulumi:"circonusCheckId"`
-	CirconusCheckTags pulumi.StringInput `pulumi:"circonusCheckTags"`
-	CirconusDisplayName pulumi.StringInput `pulumi:"circonusDisplayName"`
-	CirconusForceMetricActivation pulumi.BoolInput `pulumi:"circonusForceMetricActivation"`
-	CirconusInstanceId pulumi.StringInput `pulumi:"circonusInstanceId"`
-	CirconusSearchTag pulumi.StringInput `pulumi:"circonusSearchTag"`
-	CirconusSelectTag pulumi.StringInput `pulumi:"circonusSelectTag"`
-	CirconusSubmissionInterval pulumi.StringInput `pulumi:"circonusSubmissionInterval"`
-	CirconusSubmissionUrl pulumi.StringInput `pulumi:"circonusSubmissionUrl"`
-	DogstatsdAddr pulumi.StringInput `pulumi:"dogstatsdAddr"`
-	DogstatsdTags pulumi.StringArrayInput `pulumi:"dogstatsdTags"`
-	EnableHostname pulumi.StringInput `pulumi:"enableHostname"`
-	StatsdAddr pulumi.StringInput `pulumi:"statsdAddr"`
-	StatsiteAddr pulumi.StringInput `pulumi:"statsiteAddr"`
-	StatsitePrefix pulumi.StringInput `pulumi:"statsitePrefix"`
-}
-
-func (GetAgentSelfTelemetryArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAgentSelfTelemetry)(nil)).Elem()
-}
-
-func (i GetAgentSelfTelemetryArgs) ToGetAgentSelfTelemetryOutput() GetAgentSelfTelemetryOutput {
-	return i.ToGetAgentSelfTelemetryOutputWithContext(context.Background())
-}
-
-func (i GetAgentSelfTelemetryArgs) ToGetAgentSelfTelemetryOutputWithContext(ctx context.Context) GetAgentSelfTelemetryOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAgentSelfTelemetryOutput)
-}
-
-type GetAgentSelfTelemetryOutput struct { *pulumi.OutputState }
-
-func (GetAgentSelfTelemetryOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAgentSelfTelemetry)(nil)).Elem()
-}
-
-func (o GetAgentSelfTelemetryOutput) ToGetAgentSelfTelemetryOutput() GetAgentSelfTelemetryOutput {
-	return o
-}
-
-func (o GetAgentSelfTelemetryOutput) ToGetAgentSelfTelemetryOutputWithContext(ctx context.Context) GetAgentSelfTelemetryOutput {
-	return o
-}
-
-func (o GetAgentSelfTelemetryOutput) CirconusApiApp() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAgentSelfTelemetry) string { return v.CirconusApiApp }).(pulumi.StringOutput)
-}
-
-func (o GetAgentSelfTelemetryOutput) CirconusApiToken() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAgentSelfTelemetry) string { return v.CirconusApiToken }).(pulumi.StringOutput)
-}
-
-func (o GetAgentSelfTelemetryOutput) CirconusApiUrl() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAgentSelfTelemetry) string { return v.CirconusApiUrl }).(pulumi.StringOutput)
-}
-
-func (o GetAgentSelfTelemetryOutput) CirconusBrokerId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAgentSelfTelemetry) string { return v.CirconusBrokerId }).(pulumi.StringOutput)
-}
-
-func (o GetAgentSelfTelemetryOutput) CirconusCheckId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAgentSelfTelemetry) string { return v.CirconusCheckId }).(pulumi.StringOutput)
-}
-
-func (o GetAgentSelfTelemetryOutput) CirconusCheckTags() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAgentSelfTelemetry) string { return v.CirconusCheckTags }).(pulumi.StringOutput)
-}
-
-func (o GetAgentSelfTelemetryOutput) CirconusDisplayName() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAgentSelfTelemetry) string { return v.CirconusDisplayName }).(pulumi.StringOutput)
-}
-
-func (o GetAgentSelfTelemetryOutput) CirconusForceMetricActivation() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetAgentSelfTelemetry) bool { return v.CirconusForceMetricActivation }).(pulumi.BoolOutput)
-}
-
-func (o GetAgentSelfTelemetryOutput) CirconusInstanceId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAgentSelfTelemetry) string { return v.CirconusInstanceId }).(pulumi.StringOutput)
-}
-
-func (o GetAgentSelfTelemetryOutput) CirconusSearchTag() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAgentSelfTelemetry) string { return v.CirconusSearchTag }).(pulumi.StringOutput)
-}
-
-func (o GetAgentSelfTelemetryOutput) CirconusSelectTag() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAgentSelfTelemetry) string { return v.CirconusSelectTag }).(pulumi.StringOutput)
-}
-
-func (o GetAgentSelfTelemetryOutput) CirconusSubmissionInterval() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAgentSelfTelemetry) string { return v.CirconusSubmissionInterval }).(pulumi.StringOutput)
-}
-
-func (o GetAgentSelfTelemetryOutput) CirconusSubmissionUrl() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAgentSelfTelemetry) string { return v.CirconusSubmissionUrl }).(pulumi.StringOutput)
-}
-
-func (o GetAgentSelfTelemetryOutput) DogstatsdAddr() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAgentSelfTelemetry) string { return v.DogstatsdAddr }).(pulumi.StringOutput)
-}
-
-func (o GetAgentSelfTelemetryOutput) DogstatsdTags() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetAgentSelfTelemetry) []string { return v.DogstatsdTags }).(pulumi.StringArrayOutput)
-}
-
-func (o GetAgentSelfTelemetryOutput) EnableHostname() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAgentSelfTelemetry) string { return v.EnableHostname }).(pulumi.StringOutput)
-}
-
-func (o GetAgentSelfTelemetryOutput) StatsdAddr() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAgentSelfTelemetry) string { return v.StatsdAddr }).(pulumi.StringOutput)
-}
-
-func (o GetAgentSelfTelemetryOutput) StatsiteAddr() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAgentSelfTelemetry) string { return v.StatsiteAddr }).(pulumi.StringOutput)
-}
-
-func (o GetAgentSelfTelemetryOutput) StatsitePrefix() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAgentSelfTelemetry) string { return v.StatsitePrefix }).(pulumi.StringOutput)
-}
-
-type GetAgentSelfUnixSockets struct {
-	Group string `pulumi:"group"`
-	Mode string `pulumi:"mode"`
-	User string `pulumi:"user"`
-}
-
-type GetAgentSelfUnixSocketsInput interface {
-	pulumi.Input
-
-	ToGetAgentSelfUnixSocketsOutput() GetAgentSelfUnixSocketsOutput
-	ToGetAgentSelfUnixSocketsOutputWithContext(context.Context) GetAgentSelfUnixSocketsOutput
-}
-
-type GetAgentSelfUnixSocketsArgs struct {
-	Group pulumi.StringInput `pulumi:"group"`
-	Mode pulumi.StringInput `pulumi:"mode"`
-	User pulumi.StringInput `pulumi:"user"`
-}
-
-func (GetAgentSelfUnixSocketsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAgentSelfUnixSockets)(nil)).Elem()
-}
-
-func (i GetAgentSelfUnixSocketsArgs) ToGetAgentSelfUnixSocketsOutput() GetAgentSelfUnixSocketsOutput {
-	return i.ToGetAgentSelfUnixSocketsOutputWithContext(context.Background())
-}
-
-func (i GetAgentSelfUnixSocketsArgs) ToGetAgentSelfUnixSocketsOutputWithContext(ctx context.Context) GetAgentSelfUnixSocketsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAgentSelfUnixSocketsOutput)
-}
-
-type GetAgentSelfUnixSocketsOutput struct { *pulumi.OutputState }
-
-func (GetAgentSelfUnixSocketsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAgentSelfUnixSockets)(nil)).Elem()
-}
-
-func (o GetAgentSelfUnixSocketsOutput) ToGetAgentSelfUnixSocketsOutput() GetAgentSelfUnixSocketsOutput {
-	return o
-}
-
-func (o GetAgentSelfUnixSocketsOutput) ToGetAgentSelfUnixSocketsOutputWithContext(ctx context.Context) GetAgentSelfUnixSocketsOutput {
-	return o
-}
-
-func (o GetAgentSelfUnixSocketsOutput) Group() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAgentSelfUnixSockets) string { return v.Group }).(pulumi.StringOutput)
-}
-
-func (o GetAgentSelfUnixSocketsOutput) Mode() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAgentSelfUnixSockets) string { return v.Mode }).(pulumi.StringOutput)
-}
-
-func (o GetAgentSelfUnixSocketsOutput) User() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAgentSelfUnixSockets) string { return v.User }).(pulumi.StringOutput)
-}
-
 type GetAutopilotHealthServer struct {
 	// The address of the server
 	Address string `pulumi:"address"`
@@ -2669,9 +1601,9 @@ func (o GetAutopilotHealthServerArrayOutput) Index(i pulumi.IntInput) GetAutopil
 type GetCatalogNodesNode struct {
 	Address string `pulumi:"address"`
 	Id string `pulumi:"id"`
-	Meta map[string]interface{} `pulumi:"meta"`
+	Meta map[string]string `pulumi:"meta"`
 	Name string `pulumi:"name"`
-	TaggedAddresses GetCatalogNodesNodeTaggedAddresses `pulumi:"taggedAddresses"`
+	TaggedAddresses map[string]string `pulumi:"taggedAddresses"`
 }
 
 type GetCatalogNodesNodeInput interface {
@@ -2684,9 +1616,9 @@ type GetCatalogNodesNodeInput interface {
 type GetCatalogNodesNodeArgs struct {
 	Address pulumi.StringInput `pulumi:"address"`
 	Id pulumi.StringInput `pulumi:"id"`
-	Meta pulumi.MapInput `pulumi:"meta"`
+	Meta pulumi.StringMapInput `pulumi:"meta"`
 	Name pulumi.StringInput `pulumi:"name"`
-	TaggedAddresses GetCatalogNodesNodeTaggedAddressesInput `pulumi:"taggedAddresses"`
+	TaggedAddresses pulumi.StringMapInput `pulumi:"taggedAddresses"`
 }
 
 func (GetCatalogNodesNodeArgs) ElementType() reflect.Type {
@@ -2744,16 +1676,16 @@ func (o GetCatalogNodesNodeOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func (v GetCatalogNodesNode) string { return v.Id }).(pulumi.StringOutput)
 }
 
-func (o GetCatalogNodesNodeOutput) Meta() pulumi.MapOutput {
-	return o.ApplyT(func (v GetCatalogNodesNode) map[string]interface{} { return v.Meta }).(pulumi.MapOutput)
+func (o GetCatalogNodesNodeOutput) Meta() pulumi.StringMapOutput {
+	return o.ApplyT(func (v GetCatalogNodesNode) map[string]string { return v.Meta }).(pulumi.StringMapOutput)
 }
 
 func (o GetCatalogNodesNodeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func (v GetCatalogNodesNode) string { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o GetCatalogNodesNodeOutput) TaggedAddresses() GetCatalogNodesNodeTaggedAddressesOutput {
-	return o.ApplyT(func (v GetCatalogNodesNode) GetCatalogNodesNodeTaggedAddresses { return v.TaggedAddresses }).(GetCatalogNodesNodeTaggedAddressesOutput)
+func (o GetCatalogNodesNodeOutput) TaggedAddresses() pulumi.StringMapOutput {
+	return o.ApplyT(func (v GetCatalogNodesNode) map[string]string { return v.TaggedAddresses }).(pulumi.StringMapOutput)
 }
 
 type GetCatalogNodesNodeArrayOutput struct { *pulumi.OutputState}
@@ -2776,62 +1708,11 @@ func (o GetCatalogNodesNodeArrayOutput) Index(i pulumi.IntInput) GetCatalogNodes
 	}).(GetCatalogNodesNodeOutput)
 }
 
-type GetCatalogNodesNodeTaggedAddresses struct {
-	Lan string `pulumi:"lan"`
-	Wan string `pulumi:"wan"`
-}
-
-type GetCatalogNodesNodeTaggedAddressesInput interface {
-	pulumi.Input
-
-	ToGetCatalogNodesNodeTaggedAddressesOutput() GetCatalogNodesNodeTaggedAddressesOutput
-	ToGetCatalogNodesNodeTaggedAddressesOutputWithContext(context.Context) GetCatalogNodesNodeTaggedAddressesOutput
-}
-
-type GetCatalogNodesNodeTaggedAddressesArgs struct {
-	Lan pulumi.StringInput `pulumi:"lan"`
-	Wan pulumi.StringInput `pulumi:"wan"`
-}
-
-func (GetCatalogNodesNodeTaggedAddressesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetCatalogNodesNodeTaggedAddresses)(nil)).Elem()
-}
-
-func (i GetCatalogNodesNodeTaggedAddressesArgs) ToGetCatalogNodesNodeTaggedAddressesOutput() GetCatalogNodesNodeTaggedAddressesOutput {
-	return i.ToGetCatalogNodesNodeTaggedAddressesOutputWithContext(context.Background())
-}
-
-func (i GetCatalogNodesNodeTaggedAddressesArgs) ToGetCatalogNodesNodeTaggedAddressesOutputWithContext(ctx context.Context) GetCatalogNodesNodeTaggedAddressesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetCatalogNodesNodeTaggedAddressesOutput)
-}
-
-type GetCatalogNodesNodeTaggedAddressesOutput struct { *pulumi.OutputState }
-
-func (GetCatalogNodesNodeTaggedAddressesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetCatalogNodesNodeTaggedAddresses)(nil)).Elem()
-}
-
-func (o GetCatalogNodesNodeTaggedAddressesOutput) ToGetCatalogNodesNodeTaggedAddressesOutput() GetCatalogNodesNodeTaggedAddressesOutput {
-	return o
-}
-
-func (o GetCatalogNodesNodeTaggedAddressesOutput) ToGetCatalogNodesNodeTaggedAddressesOutputWithContext(ctx context.Context) GetCatalogNodesNodeTaggedAddressesOutput {
-	return o
-}
-
-func (o GetCatalogNodesNodeTaggedAddressesOutput) Lan() pulumi.StringOutput {
-	return o.ApplyT(func (v GetCatalogNodesNodeTaggedAddresses) string { return v.Lan }).(pulumi.StringOutput)
-}
-
-func (o GetCatalogNodesNodeTaggedAddressesOutput) Wan() pulumi.StringOutput {
-	return o.ApplyT(func (v GetCatalogNodesNodeTaggedAddresses) string { return v.Wan }).(pulumi.StringOutput)
-}
-
 type GetCatalogNodesQueryOption struct {
 	AllowStale *bool `pulumi:"allowStale"`
 	Datacenter *string `pulumi:"datacenter"`
 	Near *string `pulumi:"near"`
-	NodeMeta map[string]interface{} `pulumi:"nodeMeta"`
+	NodeMeta map[string]string `pulumi:"nodeMeta"`
 	RequireConsistent *bool `pulumi:"requireConsistent"`
 	Token *string `pulumi:"token"`
 	WaitIndex *int `pulumi:"waitIndex"`
@@ -2849,7 +1730,7 @@ type GetCatalogNodesQueryOptionArgs struct {
 	AllowStale pulumi.BoolPtrInput `pulumi:"allowStale"`
 	Datacenter pulumi.StringPtrInput `pulumi:"datacenter"`
 	Near pulumi.StringPtrInput `pulumi:"near"`
-	NodeMeta pulumi.MapInput `pulumi:"nodeMeta"`
+	NodeMeta pulumi.StringMapInput `pulumi:"nodeMeta"`
 	RequireConsistent pulumi.BoolPtrInput `pulumi:"requireConsistent"`
 	Token pulumi.StringPtrInput `pulumi:"token"`
 	WaitIndex pulumi.IntPtrInput `pulumi:"waitIndex"`
@@ -2915,8 +1796,8 @@ func (o GetCatalogNodesQueryOptionOutput) Near() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v GetCatalogNodesQueryOption) *string { return v.Near }).(pulumi.StringPtrOutput)
 }
 
-func (o GetCatalogNodesQueryOptionOutput) NodeMeta() pulumi.MapOutput {
-	return o.ApplyT(func (v GetCatalogNodesQueryOption) map[string]interface{} { return v.NodeMeta }).(pulumi.MapOutput)
+func (o GetCatalogNodesQueryOptionOutput) NodeMeta() pulumi.StringMapOutput {
+	return o.ApplyT(func (v GetCatalogNodesQueryOption) map[string]string { return v.NodeMeta }).(pulumi.StringMapOutput)
 }
 
 func (o GetCatalogNodesQueryOptionOutput) RequireConsistent() pulumi.BoolPtrOutput {
@@ -2958,8 +1839,9 @@ func (o GetCatalogNodesQueryOptionArrayOutput) Index(i pulumi.IntInput) GetCatal
 type GetCatalogServiceQueryOption struct {
 	AllowStale *bool `pulumi:"allowStale"`
 	Datacenter *string `pulumi:"datacenter"`
+	Namespace *string `pulumi:"namespace"`
 	Near *string `pulumi:"near"`
-	NodeMeta map[string]interface{} `pulumi:"nodeMeta"`
+	NodeMeta map[string]string `pulumi:"nodeMeta"`
 	RequireConsistent *bool `pulumi:"requireConsistent"`
 	Token *string `pulumi:"token"`
 	WaitIndex *int `pulumi:"waitIndex"`
@@ -2976,8 +1858,9 @@ type GetCatalogServiceQueryOptionInput interface {
 type GetCatalogServiceQueryOptionArgs struct {
 	AllowStale pulumi.BoolPtrInput `pulumi:"allowStale"`
 	Datacenter pulumi.StringPtrInput `pulumi:"datacenter"`
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
 	Near pulumi.StringPtrInput `pulumi:"near"`
-	NodeMeta pulumi.MapInput `pulumi:"nodeMeta"`
+	NodeMeta pulumi.StringMapInput `pulumi:"nodeMeta"`
 	RequireConsistent pulumi.BoolPtrInput `pulumi:"requireConsistent"`
 	Token pulumi.StringPtrInput `pulumi:"token"`
 	WaitIndex pulumi.IntPtrInput `pulumi:"waitIndex"`
@@ -3039,12 +1922,16 @@ func (o GetCatalogServiceQueryOptionOutput) Datacenter() pulumi.StringPtrOutput 
 	return o.ApplyT(func (v GetCatalogServiceQueryOption) *string { return v.Datacenter }).(pulumi.StringPtrOutput)
 }
 
+func (o GetCatalogServiceQueryOptionOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v GetCatalogServiceQueryOption) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
 func (o GetCatalogServiceQueryOptionOutput) Near() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v GetCatalogServiceQueryOption) *string { return v.Near }).(pulumi.StringPtrOutput)
 }
 
-func (o GetCatalogServiceQueryOptionOutput) NodeMeta() pulumi.MapOutput {
-	return o.ApplyT(func (v GetCatalogServiceQueryOption) map[string]interface{} { return v.NodeMeta }).(pulumi.MapOutput)
+func (o GetCatalogServiceQueryOptionOutput) NodeMeta() pulumi.StringMapOutput {
+	return o.ApplyT(func (v GetCatalogServiceQueryOption) map[string]string { return v.NodeMeta }).(pulumi.StringMapOutput)
 }
 
 func (o GetCatalogServiceQueryOptionOutput) RequireConsistent() pulumi.BoolPtrOutput {
@@ -3088,15 +1975,15 @@ type GetCatalogServiceService struct {
 	CreateIndex string `pulumi:"createIndex"`
 	EnableTagOverride string `pulumi:"enableTagOverride"`
 	Id string `pulumi:"id"`
-	Meta map[string]interface{} `pulumi:"meta"`
+	Meta map[string]string `pulumi:"meta"`
 	ModifyIndex string `pulumi:"modifyIndex"`
 	Name string `pulumi:"name"`
 	NodeAddress string `pulumi:"nodeAddress"`
 	NodeId string `pulumi:"nodeId"`
-	NodeMeta map[string]interface{} `pulumi:"nodeMeta"`
+	NodeMeta map[string]string `pulumi:"nodeMeta"`
 	NodeName string `pulumi:"nodeName"`
 	Port string `pulumi:"port"`
-	TaggedAddresses GetCatalogServiceServiceTaggedAddresses `pulumi:"taggedAddresses"`
+	TaggedAddresses map[string]string `pulumi:"taggedAddresses"`
 	Tags []string `pulumi:"tags"`
 }
 
@@ -3112,15 +1999,15 @@ type GetCatalogServiceServiceArgs struct {
 	CreateIndex pulumi.StringInput `pulumi:"createIndex"`
 	EnableTagOverride pulumi.StringInput `pulumi:"enableTagOverride"`
 	Id pulumi.StringInput `pulumi:"id"`
-	Meta pulumi.MapInput `pulumi:"meta"`
+	Meta pulumi.StringMapInput `pulumi:"meta"`
 	ModifyIndex pulumi.StringInput `pulumi:"modifyIndex"`
 	Name pulumi.StringInput `pulumi:"name"`
 	NodeAddress pulumi.StringInput `pulumi:"nodeAddress"`
 	NodeId pulumi.StringInput `pulumi:"nodeId"`
-	NodeMeta pulumi.MapInput `pulumi:"nodeMeta"`
+	NodeMeta pulumi.StringMapInput `pulumi:"nodeMeta"`
 	NodeName pulumi.StringInput `pulumi:"nodeName"`
 	Port pulumi.StringInput `pulumi:"port"`
-	TaggedAddresses GetCatalogServiceServiceTaggedAddressesInput `pulumi:"taggedAddresses"`
+	TaggedAddresses pulumi.StringMapInput `pulumi:"taggedAddresses"`
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
 }
 
@@ -3187,8 +2074,8 @@ func (o GetCatalogServiceServiceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func (v GetCatalogServiceService) string { return v.Id }).(pulumi.StringOutput)
 }
 
-func (o GetCatalogServiceServiceOutput) Meta() pulumi.MapOutput {
-	return o.ApplyT(func (v GetCatalogServiceService) map[string]interface{} { return v.Meta }).(pulumi.MapOutput)
+func (o GetCatalogServiceServiceOutput) Meta() pulumi.StringMapOutput {
+	return o.ApplyT(func (v GetCatalogServiceService) map[string]string { return v.Meta }).(pulumi.StringMapOutput)
 }
 
 func (o GetCatalogServiceServiceOutput) ModifyIndex() pulumi.StringOutput {
@@ -3207,8 +2094,8 @@ func (o GetCatalogServiceServiceOutput) NodeId() pulumi.StringOutput {
 	return o.ApplyT(func (v GetCatalogServiceService) string { return v.NodeId }).(pulumi.StringOutput)
 }
 
-func (o GetCatalogServiceServiceOutput) NodeMeta() pulumi.MapOutput {
-	return o.ApplyT(func (v GetCatalogServiceService) map[string]interface{} { return v.NodeMeta }).(pulumi.MapOutput)
+func (o GetCatalogServiceServiceOutput) NodeMeta() pulumi.StringMapOutput {
+	return o.ApplyT(func (v GetCatalogServiceService) map[string]string { return v.NodeMeta }).(pulumi.StringMapOutput)
 }
 
 func (o GetCatalogServiceServiceOutput) NodeName() pulumi.StringOutput {
@@ -3219,8 +2106,8 @@ func (o GetCatalogServiceServiceOutput) Port() pulumi.StringOutput {
 	return o.ApplyT(func (v GetCatalogServiceService) string { return v.Port }).(pulumi.StringOutput)
 }
 
-func (o GetCatalogServiceServiceOutput) TaggedAddresses() GetCatalogServiceServiceTaggedAddressesOutput {
-	return o.ApplyT(func (v GetCatalogServiceService) GetCatalogServiceServiceTaggedAddresses { return v.TaggedAddresses }).(GetCatalogServiceServiceTaggedAddressesOutput)
+func (o GetCatalogServiceServiceOutput) TaggedAddresses() pulumi.StringMapOutput {
+	return o.ApplyT(func (v GetCatalogServiceService) map[string]string { return v.TaggedAddresses }).(pulumi.StringMapOutput)
 }
 
 func (o GetCatalogServiceServiceOutput) Tags() pulumi.StringArrayOutput {
@@ -3247,62 +2134,12 @@ func (o GetCatalogServiceServiceArrayOutput) Index(i pulumi.IntInput) GetCatalog
 	}).(GetCatalogServiceServiceOutput)
 }
 
-type GetCatalogServiceServiceTaggedAddresses struct {
-	Lan string `pulumi:"lan"`
-	Wan string `pulumi:"wan"`
-}
-
-type GetCatalogServiceServiceTaggedAddressesInput interface {
-	pulumi.Input
-
-	ToGetCatalogServiceServiceTaggedAddressesOutput() GetCatalogServiceServiceTaggedAddressesOutput
-	ToGetCatalogServiceServiceTaggedAddressesOutputWithContext(context.Context) GetCatalogServiceServiceTaggedAddressesOutput
-}
-
-type GetCatalogServiceServiceTaggedAddressesArgs struct {
-	Lan pulumi.StringInput `pulumi:"lan"`
-	Wan pulumi.StringInput `pulumi:"wan"`
-}
-
-func (GetCatalogServiceServiceTaggedAddressesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetCatalogServiceServiceTaggedAddresses)(nil)).Elem()
-}
-
-func (i GetCatalogServiceServiceTaggedAddressesArgs) ToGetCatalogServiceServiceTaggedAddressesOutput() GetCatalogServiceServiceTaggedAddressesOutput {
-	return i.ToGetCatalogServiceServiceTaggedAddressesOutputWithContext(context.Background())
-}
-
-func (i GetCatalogServiceServiceTaggedAddressesArgs) ToGetCatalogServiceServiceTaggedAddressesOutputWithContext(ctx context.Context) GetCatalogServiceServiceTaggedAddressesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetCatalogServiceServiceTaggedAddressesOutput)
-}
-
-type GetCatalogServiceServiceTaggedAddressesOutput struct { *pulumi.OutputState }
-
-func (GetCatalogServiceServiceTaggedAddressesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetCatalogServiceServiceTaggedAddresses)(nil)).Elem()
-}
-
-func (o GetCatalogServiceServiceTaggedAddressesOutput) ToGetCatalogServiceServiceTaggedAddressesOutput() GetCatalogServiceServiceTaggedAddressesOutput {
-	return o
-}
-
-func (o GetCatalogServiceServiceTaggedAddressesOutput) ToGetCatalogServiceServiceTaggedAddressesOutputWithContext(ctx context.Context) GetCatalogServiceServiceTaggedAddressesOutput {
-	return o
-}
-
-func (o GetCatalogServiceServiceTaggedAddressesOutput) Lan() pulumi.StringOutput {
-	return o.ApplyT(func (v GetCatalogServiceServiceTaggedAddresses) string { return v.Lan }).(pulumi.StringOutput)
-}
-
-func (o GetCatalogServiceServiceTaggedAddressesOutput) Wan() pulumi.StringOutput {
-	return o.ApplyT(func (v GetCatalogServiceServiceTaggedAddresses) string { return v.Wan }).(pulumi.StringOutput)
-}
-
 type GetCatalogServicesQueryOption struct {
 	AllowStale *bool `pulumi:"allowStale"`
 	Datacenter *string `pulumi:"datacenter"`
+	Namespace *string `pulumi:"namespace"`
 	Near *string `pulumi:"near"`
-	NodeMeta map[string]interface{} `pulumi:"nodeMeta"`
+	NodeMeta map[string]string `pulumi:"nodeMeta"`
 	RequireConsistent *bool `pulumi:"requireConsistent"`
 	Token *string `pulumi:"token"`
 	WaitIndex *int `pulumi:"waitIndex"`
@@ -3319,8 +2156,9 @@ type GetCatalogServicesQueryOptionInput interface {
 type GetCatalogServicesQueryOptionArgs struct {
 	AllowStale pulumi.BoolPtrInput `pulumi:"allowStale"`
 	Datacenter pulumi.StringPtrInput `pulumi:"datacenter"`
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
 	Near pulumi.StringPtrInput `pulumi:"near"`
-	NodeMeta pulumi.MapInput `pulumi:"nodeMeta"`
+	NodeMeta pulumi.StringMapInput `pulumi:"nodeMeta"`
 	RequireConsistent pulumi.BoolPtrInput `pulumi:"requireConsistent"`
 	Token pulumi.StringPtrInput `pulumi:"token"`
 	WaitIndex pulumi.IntPtrInput `pulumi:"waitIndex"`
@@ -3382,12 +2220,16 @@ func (o GetCatalogServicesQueryOptionOutput) Datacenter() pulumi.StringPtrOutput
 	return o.ApplyT(func (v GetCatalogServicesQueryOption) *string { return v.Datacenter }).(pulumi.StringPtrOutput)
 }
 
+func (o GetCatalogServicesQueryOptionOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v GetCatalogServicesQueryOption) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
 func (o GetCatalogServicesQueryOptionOutput) Near() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v GetCatalogServicesQueryOption) *string { return v.Near }).(pulumi.StringPtrOutput)
 }
 
-func (o GetCatalogServicesQueryOptionOutput) NodeMeta() pulumi.MapOutput {
-	return o.ApplyT(func (v GetCatalogServicesQueryOption) map[string]interface{} { return v.NodeMeta }).(pulumi.MapOutput)
+func (o GetCatalogServicesQueryOptionOutput) NodeMeta() pulumi.StringMapOutput {
+	return o.ApplyT(func (v GetCatalogServicesQueryOption) map[string]string { return v.NodeMeta }).(pulumi.StringMapOutput)
 }
 
 func (o GetCatalogServicesQueryOptionOutput) RequireConsistent() pulumi.BoolPtrOutput {
@@ -3424,51 +2266,6 @@ func (o GetCatalogServicesQueryOptionArrayOutput) Index(i pulumi.IntInput) GetCa
 	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetCatalogServicesQueryOption {
 		return vs[0].([]GetCatalogServicesQueryOption)[vs[1].(int)]
 	}).(GetCatalogServicesQueryOptionOutput)
-}
-
-type GetCatalogServicesServices struct {
-	Tags []string `pulumi:"tags"`
-}
-
-type GetCatalogServicesServicesInput interface {
-	pulumi.Input
-
-	ToGetCatalogServicesServicesOutput() GetCatalogServicesServicesOutput
-	ToGetCatalogServicesServicesOutputWithContext(context.Context) GetCatalogServicesServicesOutput
-}
-
-type GetCatalogServicesServicesArgs struct {
-	Tags pulumi.StringArrayInput `pulumi:"tags"`
-}
-
-func (GetCatalogServicesServicesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetCatalogServicesServices)(nil)).Elem()
-}
-
-func (i GetCatalogServicesServicesArgs) ToGetCatalogServicesServicesOutput() GetCatalogServicesServicesOutput {
-	return i.ToGetCatalogServicesServicesOutputWithContext(context.Background())
-}
-
-func (i GetCatalogServicesServicesArgs) ToGetCatalogServicesServicesOutputWithContext(ctx context.Context) GetCatalogServicesServicesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetCatalogServicesServicesOutput)
-}
-
-type GetCatalogServicesServicesOutput struct { *pulumi.OutputState }
-
-func (GetCatalogServicesServicesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetCatalogServicesServices)(nil)).Elem()
-}
-
-func (o GetCatalogServicesServicesOutput) ToGetCatalogServicesServicesOutput() GetCatalogServicesServicesOutput {
-	return o
-}
-
-func (o GetCatalogServicesServicesOutput) ToGetCatalogServicesServicesOutputWithContext(ctx context.Context) GetCatalogServicesServicesOutput {
-	return o
-}
-
-func (o GetCatalogServicesServicesOutput) Tags() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetCatalogServicesServices) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
 type GetKeyPrefixSubkeyCollection struct {
@@ -3679,9 +2476,9 @@ type GetNodesNode struct {
 	// * [`taggedAddresses`](https://www.consul.io/docs/agent/http/catalog.html#TaggedAddresses) -
 	// List of explicit LAN and WAN IP addresses for the agent.
 	Id string `pulumi:"id"`
-	Meta map[string]interface{} `pulumi:"meta"`
+	Meta map[string]string `pulumi:"meta"`
 	Name string `pulumi:"name"`
-	TaggedAddresses GetNodesNodeTaggedAddresses `pulumi:"taggedAddresses"`
+	TaggedAddresses map[string]string `pulumi:"taggedAddresses"`
 }
 
 type GetNodesNodeInput interface {
@@ -3703,9 +2500,9 @@ type GetNodesNodeArgs struct {
 	// * [`taggedAddresses`](https://www.consul.io/docs/agent/http/catalog.html#TaggedAddresses) -
 	// List of explicit LAN and WAN IP addresses for the agent.
 	Id pulumi.StringInput `pulumi:"id"`
-	Meta pulumi.MapInput `pulumi:"meta"`
+	Meta pulumi.StringMapInput `pulumi:"meta"`
 	Name pulumi.StringInput `pulumi:"name"`
-	TaggedAddresses GetNodesNodeTaggedAddressesInput `pulumi:"taggedAddresses"`
+	TaggedAddresses pulumi.StringMapInput `pulumi:"taggedAddresses"`
 }
 
 func (GetNodesNodeArgs) ElementType() reflect.Type {
@@ -3772,16 +2569,16 @@ func (o GetNodesNodeOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func (v GetNodesNode) string { return v.Id }).(pulumi.StringOutput)
 }
 
-func (o GetNodesNodeOutput) Meta() pulumi.MapOutput {
-	return o.ApplyT(func (v GetNodesNode) map[string]interface{} { return v.Meta }).(pulumi.MapOutput)
+func (o GetNodesNodeOutput) Meta() pulumi.StringMapOutput {
+	return o.ApplyT(func (v GetNodesNode) map[string]string { return v.Meta }).(pulumi.StringMapOutput)
 }
 
 func (o GetNodesNodeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func (v GetNodesNode) string { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o GetNodesNodeOutput) TaggedAddresses() GetNodesNodeTaggedAddressesOutput {
-	return o.ApplyT(func (v GetNodesNode) GetNodesNodeTaggedAddresses { return v.TaggedAddresses }).(GetNodesNodeTaggedAddressesOutput)
+func (o GetNodesNodeOutput) TaggedAddresses() pulumi.StringMapOutput {
+	return o.ApplyT(func (v GetNodesNode) map[string]string { return v.TaggedAddresses }).(pulumi.StringMapOutput)
 }
 
 type GetNodesNodeArrayOutput struct { *pulumi.OutputState}
@@ -3804,57 +2601,6 @@ func (o GetNodesNodeArrayOutput) Index(i pulumi.IntInput) GetNodesNodeOutput {
 	}).(GetNodesNodeOutput)
 }
 
-type GetNodesNodeTaggedAddresses struct {
-	Lan string `pulumi:"lan"`
-	Wan string `pulumi:"wan"`
-}
-
-type GetNodesNodeTaggedAddressesInput interface {
-	pulumi.Input
-
-	ToGetNodesNodeTaggedAddressesOutput() GetNodesNodeTaggedAddressesOutput
-	ToGetNodesNodeTaggedAddressesOutputWithContext(context.Context) GetNodesNodeTaggedAddressesOutput
-}
-
-type GetNodesNodeTaggedAddressesArgs struct {
-	Lan pulumi.StringInput `pulumi:"lan"`
-	Wan pulumi.StringInput `pulumi:"wan"`
-}
-
-func (GetNodesNodeTaggedAddressesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetNodesNodeTaggedAddresses)(nil)).Elem()
-}
-
-func (i GetNodesNodeTaggedAddressesArgs) ToGetNodesNodeTaggedAddressesOutput() GetNodesNodeTaggedAddressesOutput {
-	return i.ToGetNodesNodeTaggedAddressesOutputWithContext(context.Background())
-}
-
-func (i GetNodesNodeTaggedAddressesArgs) ToGetNodesNodeTaggedAddressesOutputWithContext(ctx context.Context) GetNodesNodeTaggedAddressesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetNodesNodeTaggedAddressesOutput)
-}
-
-type GetNodesNodeTaggedAddressesOutput struct { *pulumi.OutputState }
-
-func (GetNodesNodeTaggedAddressesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetNodesNodeTaggedAddresses)(nil)).Elem()
-}
-
-func (o GetNodesNodeTaggedAddressesOutput) ToGetNodesNodeTaggedAddressesOutput() GetNodesNodeTaggedAddressesOutput {
-	return o
-}
-
-func (o GetNodesNodeTaggedAddressesOutput) ToGetNodesNodeTaggedAddressesOutputWithContext(ctx context.Context) GetNodesNodeTaggedAddressesOutput {
-	return o
-}
-
-func (o GetNodesNodeTaggedAddressesOutput) Lan() pulumi.StringOutput {
-	return o.ApplyT(func (v GetNodesNodeTaggedAddresses) string { return v.Lan }).(pulumi.StringOutput)
-}
-
-func (o GetNodesNodeTaggedAddressesOutput) Wan() pulumi.StringOutput {
-	return o.ApplyT(func (v GetNodesNodeTaggedAddresses) string { return v.Wan }).(pulumi.StringOutput)
-}
-
 type GetNodesQueryOption struct {
 	AllowStale *bool `pulumi:"allowStale"`
 	// The Consul datacenter to query.  Defaults to the
@@ -3863,7 +2609,7 @@ type GetNodesQueryOption struct {
 	// configured to talk to then the datacenter in the provider setup.
 	Datacenter *string `pulumi:"datacenter"`
 	Near *string `pulumi:"near"`
-	NodeMeta map[string]interface{} `pulumi:"nodeMeta"`
+	NodeMeta map[string]string `pulumi:"nodeMeta"`
 	RequireConsistent *bool `pulumi:"requireConsistent"`
 	Token *string `pulumi:"token"`
 	WaitIndex *int `pulumi:"waitIndex"`
@@ -3885,7 +2631,7 @@ type GetNodesQueryOptionArgs struct {
 	// configured to talk to then the datacenter in the provider setup.
 	Datacenter pulumi.StringPtrInput `pulumi:"datacenter"`
 	Near pulumi.StringPtrInput `pulumi:"near"`
-	NodeMeta pulumi.MapInput `pulumi:"nodeMeta"`
+	NodeMeta pulumi.StringMapInput `pulumi:"nodeMeta"`
 	RequireConsistent pulumi.BoolPtrInput `pulumi:"requireConsistent"`
 	Token pulumi.StringPtrInput `pulumi:"token"`
 	WaitIndex pulumi.IntPtrInput `pulumi:"waitIndex"`
@@ -3955,8 +2701,8 @@ func (o GetNodesQueryOptionOutput) Near() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v GetNodesQueryOption) *string { return v.Near }).(pulumi.StringPtrOutput)
 }
 
-func (o GetNodesQueryOptionOutput) NodeMeta() pulumi.MapOutput {
-	return o.ApplyT(func (v GetNodesQueryOption) map[string]interface{} { return v.NodeMeta }).(pulumi.MapOutput)
+func (o GetNodesQueryOptionOutput) NodeMeta() pulumi.StringMapOutput {
+	return o.ApplyT(func (v GetNodesQueryOption) map[string]string { return v.NodeMeta }).(pulumi.StringMapOutput)
 }
 
 func (o GetNodesQueryOptionOutput) RequireConsistent() pulumi.BoolPtrOutput {
@@ -4447,8 +3193,9 @@ type GetServiceQueryOption struct {
 	// empty, the `datacenter` value found in the Consul agent that this provider is
 	// configured to talk to.
 	Datacenter *string `pulumi:"datacenter"`
+	Namespace *string `pulumi:"namespace"`
 	Near *string `pulumi:"near"`
-	NodeMeta map[string]interface{} `pulumi:"nodeMeta"`
+	NodeMeta map[string]string `pulumi:"nodeMeta"`
 	RequireConsistent *bool `pulumi:"requireConsistent"`
 	Token *string `pulumi:"token"`
 	WaitIndex *int `pulumi:"waitIndex"`
@@ -4469,8 +3216,9 @@ type GetServiceQueryOptionArgs struct {
 	// empty, the `datacenter` value found in the Consul agent that this provider is
 	// configured to talk to.
 	Datacenter pulumi.StringPtrInput `pulumi:"datacenter"`
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
 	Near pulumi.StringPtrInput `pulumi:"near"`
-	NodeMeta pulumi.MapInput `pulumi:"nodeMeta"`
+	NodeMeta pulumi.StringMapInput `pulumi:"nodeMeta"`
 	RequireConsistent pulumi.BoolPtrInput `pulumi:"requireConsistent"`
 	Token pulumi.StringPtrInput `pulumi:"token"`
 	WaitIndex pulumi.IntPtrInput `pulumi:"waitIndex"`
@@ -4536,12 +3284,16 @@ func (o GetServiceQueryOptionOutput) Datacenter() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v GetServiceQueryOption) *string { return v.Datacenter }).(pulumi.StringPtrOutput)
 }
 
+func (o GetServiceQueryOptionOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v GetServiceQueryOption) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
 func (o GetServiceQueryOptionOutput) Near() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v GetServiceQueryOption) *string { return v.Near }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServiceQueryOptionOutput) NodeMeta() pulumi.MapOutput {
-	return o.ApplyT(func (v GetServiceQueryOption) map[string]interface{} { return v.NodeMeta }).(pulumi.MapOutput)
+func (o GetServiceQueryOptionOutput) NodeMeta() pulumi.StringMapOutput {
+	return o.ApplyT(func (v GetServiceQueryOption) map[string]string { return v.NodeMeta }).(pulumi.StringMapOutput)
 }
 
 func (o GetServiceQueryOptionOutput) RequireConsistent() pulumi.BoolPtrOutput {
@@ -4585,7 +3337,7 @@ type GetServiceService struct {
 	CreateIndex string `pulumi:"createIndex"`
 	EnableTagOverride string `pulumi:"enableTagOverride"`
 	Id string `pulumi:"id"`
-	Meta map[string]interface{} `pulumi:"meta"`
+	Meta map[string]string `pulumi:"meta"`
 	ModifyIndex string `pulumi:"modifyIndex"`
 	// The service name to select.
 	Name string `pulumi:"name"`
@@ -4614,10 +3366,10 @@ type GetServiceService struct {
 	// * [`meta`](https://www.consul.io/docs/agent/http/catalog.html#Meta) - Service meta
 	// data tag information, if any.
 	NodeId string `pulumi:"nodeId"`
-	NodeMeta map[string]interface{} `pulumi:"nodeMeta"`
+	NodeMeta map[string]string `pulumi:"nodeMeta"`
 	NodeName string `pulumi:"nodeName"`
 	Port string `pulumi:"port"`
-	TaggedAddresses GetServiceServiceTaggedAddresses `pulumi:"taggedAddresses"`
+	TaggedAddresses map[string]string `pulumi:"taggedAddresses"`
 	Tags []string `pulumi:"tags"`
 }
 
@@ -4633,7 +3385,7 @@ type GetServiceServiceArgs struct {
 	CreateIndex pulumi.StringInput `pulumi:"createIndex"`
 	EnableTagOverride pulumi.StringInput `pulumi:"enableTagOverride"`
 	Id pulumi.StringInput `pulumi:"id"`
-	Meta pulumi.MapInput `pulumi:"meta"`
+	Meta pulumi.StringMapInput `pulumi:"meta"`
 	ModifyIndex pulumi.StringInput `pulumi:"modifyIndex"`
 	// The service name to select.
 	Name pulumi.StringInput `pulumi:"name"`
@@ -4662,10 +3414,10 @@ type GetServiceServiceArgs struct {
 	// * [`meta`](https://www.consul.io/docs/agent/http/catalog.html#Meta) - Service meta
 	// data tag information, if any.
 	NodeId pulumi.StringInput `pulumi:"nodeId"`
-	NodeMeta pulumi.MapInput `pulumi:"nodeMeta"`
+	NodeMeta pulumi.StringMapInput `pulumi:"nodeMeta"`
 	NodeName pulumi.StringInput `pulumi:"nodeName"`
 	Port pulumi.StringInput `pulumi:"port"`
-	TaggedAddresses GetServiceServiceTaggedAddressesInput `pulumi:"taggedAddresses"`
+	TaggedAddresses pulumi.StringMapInput `pulumi:"taggedAddresses"`
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
 }
 
@@ -4732,8 +3484,8 @@ func (o GetServiceServiceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func (v GetServiceService) string { return v.Id }).(pulumi.StringOutput)
 }
 
-func (o GetServiceServiceOutput) Meta() pulumi.MapOutput {
-	return o.ApplyT(func (v GetServiceService) map[string]interface{} { return v.Meta }).(pulumi.MapOutput)
+func (o GetServiceServiceOutput) Meta() pulumi.StringMapOutput {
+	return o.ApplyT(func (v GetServiceService) map[string]string { return v.Meta }).(pulumi.StringMapOutput)
 }
 
 func (o GetServiceServiceOutput) ModifyIndex() pulumi.StringOutput {
@@ -4776,8 +3528,8 @@ func (o GetServiceServiceOutput) NodeId() pulumi.StringOutput {
 	return o.ApplyT(func (v GetServiceService) string { return v.NodeId }).(pulumi.StringOutput)
 }
 
-func (o GetServiceServiceOutput) NodeMeta() pulumi.MapOutput {
-	return o.ApplyT(func (v GetServiceService) map[string]interface{} { return v.NodeMeta }).(pulumi.MapOutput)
+func (o GetServiceServiceOutput) NodeMeta() pulumi.StringMapOutput {
+	return o.ApplyT(func (v GetServiceService) map[string]string { return v.NodeMeta }).(pulumi.StringMapOutput)
 }
 
 func (o GetServiceServiceOutput) NodeName() pulumi.StringOutput {
@@ -4788,8 +3540,8 @@ func (o GetServiceServiceOutput) Port() pulumi.StringOutput {
 	return o.ApplyT(func (v GetServiceService) string { return v.Port }).(pulumi.StringOutput)
 }
 
-func (o GetServiceServiceOutput) TaggedAddresses() GetServiceServiceTaggedAddressesOutput {
-	return o.ApplyT(func (v GetServiceService) GetServiceServiceTaggedAddresses { return v.TaggedAddresses }).(GetServiceServiceTaggedAddressesOutput)
+func (o GetServiceServiceOutput) TaggedAddresses() pulumi.StringMapOutput {
+	return o.ApplyT(func (v GetServiceService) map[string]string { return v.TaggedAddresses }).(pulumi.StringMapOutput)
 }
 
 func (o GetServiceServiceOutput) Tags() pulumi.StringArrayOutput {
@@ -4816,57 +3568,6 @@ func (o GetServiceServiceArrayOutput) Index(i pulumi.IntInput) GetServiceService
 	}).(GetServiceServiceOutput)
 }
 
-type GetServiceServiceTaggedAddresses struct {
-	Lan string `pulumi:"lan"`
-	Wan string `pulumi:"wan"`
-}
-
-type GetServiceServiceTaggedAddressesInput interface {
-	pulumi.Input
-
-	ToGetServiceServiceTaggedAddressesOutput() GetServiceServiceTaggedAddressesOutput
-	ToGetServiceServiceTaggedAddressesOutputWithContext(context.Context) GetServiceServiceTaggedAddressesOutput
-}
-
-type GetServiceServiceTaggedAddressesArgs struct {
-	Lan pulumi.StringInput `pulumi:"lan"`
-	Wan pulumi.StringInput `pulumi:"wan"`
-}
-
-func (GetServiceServiceTaggedAddressesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceServiceTaggedAddresses)(nil)).Elem()
-}
-
-func (i GetServiceServiceTaggedAddressesArgs) ToGetServiceServiceTaggedAddressesOutput() GetServiceServiceTaggedAddressesOutput {
-	return i.ToGetServiceServiceTaggedAddressesOutputWithContext(context.Background())
-}
-
-func (i GetServiceServiceTaggedAddressesArgs) ToGetServiceServiceTaggedAddressesOutputWithContext(ctx context.Context) GetServiceServiceTaggedAddressesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceServiceTaggedAddressesOutput)
-}
-
-type GetServiceServiceTaggedAddressesOutput struct { *pulumi.OutputState }
-
-func (GetServiceServiceTaggedAddressesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceServiceTaggedAddresses)(nil)).Elem()
-}
-
-func (o GetServiceServiceTaggedAddressesOutput) ToGetServiceServiceTaggedAddressesOutput() GetServiceServiceTaggedAddressesOutput {
-	return o
-}
-
-func (o GetServiceServiceTaggedAddressesOutput) ToGetServiceServiceTaggedAddressesOutputWithContext(ctx context.Context) GetServiceServiceTaggedAddressesOutput {
-	return o
-}
-
-func (o GetServiceServiceTaggedAddressesOutput) Lan() pulumi.StringOutput {
-	return o.ApplyT(func (v GetServiceServiceTaggedAddresses) string { return v.Lan }).(pulumi.StringOutput)
-}
-
-func (o GetServiceServiceTaggedAddressesOutput) Wan() pulumi.StringOutput {
-	return o.ApplyT(func (v GetServiceServiceTaggedAddresses) string { return v.Wan }).(pulumi.StringOutput)
-}
-
 type GetServicesQueryOption struct {
 	AllowStale *bool `pulumi:"allowStale"`
 	// The Consul datacenter to query.  Defaults to the
@@ -4874,8 +3575,9 @@ type GetServicesQueryOption struct {
 	// empty, the `datacenter` value found in the Consul agent that this provider is
 	// configured to talk to.
 	Datacenter *string `pulumi:"datacenter"`
+	Namespace *string `pulumi:"namespace"`
 	Near *string `pulumi:"near"`
-	NodeMeta map[string]interface{} `pulumi:"nodeMeta"`
+	NodeMeta map[string]string `pulumi:"nodeMeta"`
 	RequireConsistent *bool `pulumi:"requireConsistent"`
 	Token *string `pulumi:"token"`
 	WaitIndex *int `pulumi:"waitIndex"`
@@ -4896,8 +3598,9 @@ type GetServicesQueryOptionArgs struct {
 	// empty, the `datacenter` value found in the Consul agent that this provider is
 	// configured to talk to.
 	Datacenter pulumi.StringPtrInput `pulumi:"datacenter"`
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
 	Near pulumi.StringPtrInput `pulumi:"near"`
-	NodeMeta pulumi.MapInput `pulumi:"nodeMeta"`
+	NodeMeta pulumi.StringMapInput `pulumi:"nodeMeta"`
 	RequireConsistent pulumi.BoolPtrInput `pulumi:"requireConsistent"`
 	Token pulumi.StringPtrInput `pulumi:"token"`
 	WaitIndex pulumi.IntPtrInput `pulumi:"waitIndex"`
@@ -4963,12 +3666,16 @@ func (o GetServicesQueryOptionOutput) Datacenter() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v GetServicesQueryOption) *string { return v.Datacenter }).(pulumi.StringPtrOutput)
 }
 
+func (o GetServicesQueryOptionOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v GetServicesQueryOption) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
 func (o GetServicesQueryOptionOutput) Near() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v GetServicesQueryOption) *string { return v.Near }).(pulumi.StringPtrOutput)
 }
 
-func (o GetServicesQueryOptionOutput) NodeMeta() pulumi.MapOutput {
-	return o.ApplyT(func (v GetServicesQueryOption) map[string]interface{} { return v.NodeMeta }).(pulumi.MapOutput)
+func (o GetServicesQueryOptionOutput) NodeMeta() pulumi.StringMapOutput {
+	return o.ApplyT(func (v GetServicesQueryOption) map[string]string { return v.NodeMeta }).(pulumi.StringMapOutput)
 }
 
 func (o GetServicesQueryOptionOutput) RequireConsistent() pulumi.BoolPtrOutput {
@@ -5007,63 +3714,6 @@ func (o GetServicesQueryOptionArrayOutput) Index(i pulumi.IntInput) GetServicesQ
 	}).(GetServicesQueryOptionOutput)
 }
 
-type GetServicesServices struct {
-	// A map of the tags found for each service.  If more than one service
-	// shares the same tag, unique service names will be joined by whitespace (this
-	// is the inverse of `services` and can be used to lookup the services that match
-	// a single tag).
-	Tags []string `pulumi:"tags"`
-}
-
-type GetServicesServicesInput interface {
-	pulumi.Input
-
-	ToGetServicesServicesOutput() GetServicesServicesOutput
-	ToGetServicesServicesOutputWithContext(context.Context) GetServicesServicesOutput
-}
-
-type GetServicesServicesArgs struct {
-	// A map of the tags found for each service.  If more than one service
-	// shares the same tag, unique service names will be joined by whitespace (this
-	// is the inverse of `services` and can be used to lookup the services that match
-	// a single tag).
-	Tags pulumi.StringArrayInput `pulumi:"tags"`
-}
-
-func (GetServicesServicesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServicesServices)(nil)).Elem()
-}
-
-func (i GetServicesServicesArgs) ToGetServicesServicesOutput() GetServicesServicesOutput {
-	return i.ToGetServicesServicesOutputWithContext(context.Background())
-}
-
-func (i GetServicesServicesArgs) ToGetServicesServicesOutputWithContext(ctx context.Context) GetServicesServicesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServicesServicesOutput)
-}
-
-type GetServicesServicesOutput struct { *pulumi.OutputState }
-
-func (GetServicesServicesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServicesServices)(nil)).Elem()
-}
-
-func (o GetServicesServicesOutput) ToGetServicesServicesOutput() GetServicesServicesOutput {
-	return o
-}
-
-func (o GetServicesServicesOutput) ToGetServicesServicesOutputWithContext(ctx context.Context) GetServicesServicesOutput {
-	return o
-}
-
-// A map of the tags found for each service.  If more than one service
-// shares the same tag, unique service names will be joined by whitespace (this
-// is the inverse of `services` and can be used to lookup the services that match
-// a single tag).
-func (o GetServicesServicesOutput) Tags() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetServicesServices) []string { return v.Tags }).(pulumi.StringArrayOutput)
-}
-
 func init() {
 	pulumi.RegisterOutputType(AclRoleServiceIdentityOutput{})
 	pulumi.RegisterOutputType(AclRoleServiceIdentityArrayOutput{})
@@ -5089,38 +3739,24 @@ func init() {
 	pulumi.RegisterOutputType(GetAclRoleServiceIdentityArrayOutput{})
 	pulumi.RegisterOutputType(GetAclTokenPolicyOutput{})
 	pulumi.RegisterOutputType(GetAclTokenPolicyArrayOutput{})
-	pulumi.RegisterOutputType(GetAgentSelfAddressesOutput{})
-	pulumi.RegisterOutputType(GetAgentSelfAdvertiseAddrsOutput{})
-	pulumi.RegisterOutputType(GetAgentSelfDnsOutput{})
-	pulumi.RegisterOutputType(GetAgentSelfPerformanceOutput{})
-	pulumi.RegisterOutputType(GetAgentSelfPortsOutput{})
-	pulumi.RegisterOutputType(GetAgentSelfRetryJoinEc2Output{})
-	pulumi.RegisterOutputType(GetAgentSelfRetryJoinGceOutput{})
-	pulumi.RegisterOutputType(GetAgentSelfTaggedAddressesOutput{})
-	pulumi.RegisterOutputType(GetAgentSelfTelemetryOutput{})
-	pulumi.RegisterOutputType(GetAgentSelfUnixSocketsOutput{})
 	pulumi.RegisterOutputType(GetAutopilotHealthServerOutput{})
 	pulumi.RegisterOutputType(GetAutopilotHealthServerArrayOutput{})
 	pulumi.RegisterOutputType(GetCatalogNodesNodeOutput{})
 	pulumi.RegisterOutputType(GetCatalogNodesNodeArrayOutput{})
-	pulumi.RegisterOutputType(GetCatalogNodesNodeTaggedAddressesOutput{})
 	pulumi.RegisterOutputType(GetCatalogNodesQueryOptionOutput{})
 	pulumi.RegisterOutputType(GetCatalogNodesQueryOptionArrayOutput{})
 	pulumi.RegisterOutputType(GetCatalogServiceQueryOptionOutput{})
 	pulumi.RegisterOutputType(GetCatalogServiceQueryOptionArrayOutput{})
 	pulumi.RegisterOutputType(GetCatalogServiceServiceOutput{})
 	pulumi.RegisterOutputType(GetCatalogServiceServiceArrayOutput{})
-	pulumi.RegisterOutputType(GetCatalogServiceServiceTaggedAddressesOutput{})
 	pulumi.RegisterOutputType(GetCatalogServicesQueryOptionOutput{})
 	pulumi.RegisterOutputType(GetCatalogServicesQueryOptionArrayOutput{})
-	pulumi.RegisterOutputType(GetCatalogServicesServicesOutput{})
 	pulumi.RegisterOutputType(GetKeyPrefixSubkeyCollectionOutput{})
 	pulumi.RegisterOutputType(GetKeyPrefixSubkeyCollectionArrayOutput{})
 	pulumi.RegisterOutputType(GetKeysKeyOutput{})
 	pulumi.RegisterOutputType(GetKeysKeyArrayOutput{})
 	pulumi.RegisterOutputType(GetNodesNodeOutput{})
 	pulumi.RegisterOutputType(GetNodesNodeArrayOutput{})
-	pulumi.RegisterOutputType(GetNodesNodeTaggedAddressesOutput{})
 	pulumi.RegisterOutputType(GetNodesQueryOptionOutput{})
 	pulumi.RegisterOutputType(GetNodesQueryOptionArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceHealthResultTypeOutput{})
@@ -5133,8 +3769,6 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceQueryOptionArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceServiceOutput{})
 	pulumi.RegisterOutputType(GetServiceServiceArrayOutput{})
-	pulumi.RegisterOutputType(GetServiceServiceTaggedAddressesOutput{})
 	pulumi.RegisterOutputType(GetServicesQueryOptionOutput{})
 	pulumi.RegisterOutputType(GetServicesQueryOptionArrayOutput{})
-	pulumi.RegisterOutputType(GetServicesServicesOutput{})
 }

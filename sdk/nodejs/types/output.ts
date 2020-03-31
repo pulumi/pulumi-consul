@@ -45,211 +45,6 @@ export interface GetAclTokenPolicy {
     name: string;
 }
 
-export interface GetAgentSelfAddresses {
-    /**
-     * A map of DNS configuration attributes.  See below for details on the
-     * contents of the `dns` attribute.
-     * * [`dnsRecursors`](https://www.consul.io/docs/agent/options.html#recursors) - A
-     * list of all DNS recursors.
-     * * [`dataDir`](https://www.consul.io/docs/agent/options.html#_data_dir)
-     * * [`datacenter`](https://www.consul.io/docs/agent/options.html#_datacenter)
-     * * [`devMode`](https://www.consul.io/docs/agent/options.html#_dev)
-     * * [`domain`](https://www.consul.io/docs/agent/options.html#_domain)
-     * * [`enableAnonymousSignature`](https://www.consul.io/docs/agent/options.html#disable_anonymous_signature)
-     * * `enableCoordinates`
-     * * [`enableDebug`](https://www.consul.io/docs/agent/options.html#enable_debug)
-     * * [`enableRemoteExec`](https://www.consul.io/docs/agent/options.html#disable_remote_exec)
-     * * [`enableSyslog`](https://www.consul.io/docs/agent/options.html#_syslog)
-     * * [`enableUi`](https://www.consul.io/docs/agent/options.html#_ui)
-     * * [`enableUpdateCheck`](https://www.consul.io/docs/agent/options.html#disable_update_check)
-     * * [`id`](https://www.consul.io/docs/agent/options.html#_node_id)
-     * * [`leaveOnInt`](https://www.consul.io/docs/agent/options.html#skip_leave_on_interrupt)
-     * * [`leaveOnTerm`](https://www.consul.io/docs/agent/options.html#leave_on_terminate)
-     * * [`logLevel`](https://www.consul.io/docs/agent/options.html#_log_level)
-     * * [`name`](https://www.consul.io/docs/agent/options.html#_node)
-     * * [`performance`](https://www.consul.io/docs/agent/options.html#performance)
-     * * [`pidFile`](https://www.consul.io/docs/agent/options.html#_pid_file)
-     * * [`ports`](https://www.consul.io/docs/agent/options.html#ports)
-     * * [`protocolVersion`](https://www.consul.io/docs/agent/options.html#_protocol)
-     * * [`reconnectTimeoutLan`](https://www.consul.io/docs/agent/options.html#reconnect_timeout)
-     * * [`reconnectTimeoutWan`](https://www.consul.io/docs/agent/options.html#reconnect_timeout_wan)
-     * * [`rejoinAfterLeave`](https://www.consul.io/docs/agent/options.html#_rejoin)
-     * * [`retryJoin`](https://www.consul.io/docs/agent/options.html#retry_join)
-     * * [`retryJoinEc2`](https://www.consul.io/docs/agent/options.html#retry_join_ec2) -
-     * A map of EC2 retry attributes.  See below for details on the available
-     * information.
-     * * [`retryJoinGce`](https://www.consul.io/docs/agent/options.html#retry_join_gce) -
-     * A map of GCE retry attributes.  See below for details on the available
-     * information.
-     * * [`retryJoinWan`](https://www.consul.io/docs/agent/options.html#_retry_join_wan)
-     * * [`retryMaxAttempts`](https://www.consul.io/docs/agent/options.html#_retry_max)
-     * * [`retryMaxAttemptsWan`](https://www.consul.io/docs/agent/options.html#_retry_max_wan)
-     * * [`serfLanBindAddr`](https://www.consul.io/docs/agent/options.html#_serf_lan_bind)
-     * * [`serfWanBindAddr`](https://www.consul.io/docs/agent/options.html#_serf_wan_bind)
-     * * [`serverMode`](https://www.consul.io/docs/agent/options.html#_server)
-     * * [`serverName`](https://www.consul.io/docs/agent/options.html#server_name)
-     * * [`sessionTtlMin`](https://www.consul.io/docs/agent/options.html#session_ttl_min)
-     * * [`startJoin`](https://www.consul.io/docs/agent/options.html#start_join)
-     * * [`startJoinWan`](https://www.consul.io/docs/agent/options.html#start_join_wan)
-     * * [`syslogFacility`](https://www.consul.io/docs/agent/options.html#syslog_facility)
-     * * [`tlsCaFile`](https://www.consul.io/docs/agent/options.html#ca_file)
-     * * [`tlsCertFile`](https://www.consul.io/docs/agent/options.html#cert_file)
-     * * [`tlsKeyFile`](https://www.consul.io/docs/agent/options.html#key_file)
-     * * [`tlsMinVersion`](https://www.consul.io/docs/agent/options.html#tls_min_version)
-     * * [`tlsVerifyIncoming`](https://www.consul.io/docs/agent/options.html#verify_incoming)
-     * * [`tlsVerifyOutgoing`](https://www.consul.io/docs/agent/options.html#verify_outgoing)
-     * * [`tlsVerifyServerHostname`](https://www.consul.io/docs/agent/options.html#verify_server_hostname)
-     * * [`taggedAddresses`](https://www.consul.io/docs/agent/options.html#translate_wan_addrs)
-     * * [`telemetry`](https://www.consul.io/docs/agent/options.html#telemetry) - A map
-     * of telemetry configuration.
-     * * [`translateWanAddrs`](https://www.consul.io/docs/agent/options.html#translate_wan_addrs)
-     * * [`uiDir`](https://www.consul.io/docs/agent/options.html#ui_dir)
-     * * [`unixSockets`](https://www.consul.io/docs/agent/options.html#unix_sockets)
-     */
-    dns: string;
-    http: string;
-    https: string;
-    rpc: string;
-}
-
-export interface GetAgentSelfAdvertiseAddrs {
-    rpc: string;
-    serfLan: string;
-    serfWan: string;
-}
-
-export interface GetAgentSelfDns {
-    allowStale: boolean;
-    enableCompression: boolean;
-    enableTruncate: boolean;
-    maxStale: string;
-    nodeTtl: string;
-    onlyPassing: boolean;
-    recursorTimeout: string;
-    serviceTtl: string;
-    udpAnswerLimit: number;
-}
-
-export interface GetAgentSelfPerformance {
-    raftMultiplier: string;
-}
-
-export interface GetAgentSelfPorts {
-    /**
-     * A map of DNS configuration attributes.  See below for details on the
-     * contents of the `dns` attribute.
-     * * [`dnsRecursors`](https://www.consul.io/docs/agent/options.html#recursors) - A
-     * list of all DNS recursors.
-     * * [`dataDir`](https://www.consul.io/docs/agent/options.html#_data_dir)
-     * * [`datacenter`](https://www.consul.io/docs/agent/options.html#_datacenter)
-     * * [`devMode`](https://www.consul.io/docs/agent/options.html#_dev)
-     * * [`domain`](https://www.consul.io/docs/agent/options.html#_domain)
-     * * [`enableAnonymousSignature`](https://www.consul.io/docs/agent/options.html#disable_anonymous_signature)
-     * * `enableCoordinates`
-     * * [`enableDebug`](https://www.consul.io/docs/agent/options.html#enable_debug)
-     * * [`enableRemoteExec`](https://www.consul.io/docs/agent/options.html#disable_remote_exec)
-     * * [`enableSyslog`](https://www.consul.io/docs/agent/options.html#_syslog)
-     * * [`enableUi`](https://www.consul.io/docs/agent/options.html#_ui)
-     * * [`enableUpdateCheck`](https://www.consul.io/docs/agent/options.html#disable_update_check)
-     * * [`id`](https://www.consul.io/docs/agent/options.html#_node_id)
-     * * [`leaveOnInt`](https://www.consul.io/docs/agent/options.html#skip_leave_on_interrupt)
-     * * [`leaveOnTerm`](https://www.consul.io/docs/agent/options.html#leave_on_terminate)
-     * * [`logLevel`](https://www.consul.io/docs/agent/options.html#_log_level)
-     * * [`name`](https://www.consul.io/docs/agent/options.html#_node)
-     * * [`performance`](https://www.consul.io/docs/agent/options.html#performance)
-     * * [`pidFile`](https://www.consul.io/docs/agent/options.html#_pid_file)
-     * * [`ports`](https://www.consul.io/docs/agent/options.html#ports)
-     * * [`protocolVersion`](https://www.consul.io/docs/agent/options.html#_protocol)
-     * * [`reconnectTimeoutLan`](https://www.consul.io/docs/agent/options.html#reconnect_timeout)
-     * * [`reconnectTimeoutWan`](https://www.consul.io/docs/agent/options.html#reconnect_timeout_wan)
-     * * [`rejoinAfterLeave`](https://www.consul.io/docs/agent/options.html#_rejoin)
-     * * [`retryJoin`](https://www.consul.io/docs/agent/options.html#retry_join)
-     * * [`retryJoinEc2`](https://www.consul.io/docs/agent/options.html#retry_join_ec2) -
-     * A map of EC2 retry attributes.  See below for details on the available
-     * information.
-     * * [`retryJoinGce`](https://www.consul.io/docs/agent/options.html#retry_join_gce) -
-     * A map of GCE retry attributes.  See below for details on the available
-     * information.
-     * * [`retryJoinWan`](https://www.consul.io/docs/agent/options.html#_retry_join_wan)
-     * * [`retryMaxAttempts`](https://www.consul.io/docs/agent/options.html#_retry_max)
-     * * [`retryMaxAttemptsWan`](https://www.consul.io/docs/agent/options.html#_retry_max_wan)
-     * * [`serfLanBindAddr`](https://www.consul.io/docs/agent/options.html#_serf_lan_bind)
-     * * [`serfWanBindAddr`](https://www.consul.io/docs/agent/options.html#_serf_wan_bind)
-     * * [`serverMode`](https://www.consul.io/docs/agent/options.html#_server)
-     * * [`serverName`](https://www.consul.io/docs/agent/options.html#server_name)
-     * * [`sessionTtlMin`](https://www.consul.io/docs/agent/options.html#session_ttl_min)
-     * * [`startJoin`](https://www.consul.io/docs/agent/options.html#start_join)
-     * * [`startJoinWan`](https://www.consul.io/docs/agent/options.html#start_join_wan)
-     * * [`syslogFacility`](https://www.consul.io/docs/agent/options.html#syslog_facility)
-     * * [`tlsCaFile`](https://www.consul.io/docs/agent/options.html#ca_file)
-     * * [`tlsCertFile`](https://www.consul.io/docs/agent/options.html#cert_file)
-     * * [`tlsKeyFile`](https://www.consul.io/docs/agent/options.html#key_file)
-     * * [`tlsMinVersion`](https://www.consul.io/docs/agent/options.html#tls_min_version)
-     * * [`tlsVerifyIncoming`](https://www.consul.io/docs/agent/options.html#verify_incoming)
-     * * [`tlsVerifyOutgoing`](https://www.consul.io/docs/agent/options.html#verify_outgoing)
-     * * [`tlsVerifyServerHostname`](https://www.consul.io/docs/agent/options.html#verify_server_hostname)
-     * * [`taggedAddresses`](https://www.consul.io/docs/agent/options.html#translate_wan_addrs)
-     * * [`telemetry`](https://www.consul.io/docs/agent/options.html#telemetry) - A map
-     * of telemetry configuration.
-     * * [`translateWanAddrs`](https://www.consul.io/docs/agent/options.html#translate_wan_addrs)
-     * * [`uiDir`](https://www.consul.io/docs/agent/options.html#ui_dir)
-     * * [`unixSockets`](https://www.consul.io/docs/agent/options.html#unix_sockets)
-     */
-    dns: number;
-    http: number;
-    https: number;
-    rpc: number;
-    serfLan: number;
-    serfWan: number;
-    server: number;
-}
-
-export interface GetAgentSelfRetryJoinEc2 {
-    region: string;
-    tagKey: string;
-    tagValue: string;
-}
-
-export interface GetAgentSelfRetryJoinGce {
-    credentialsFile: string;
-    projectName: string;
-    tagValue: string;
-    zonePattern: string;
-}
-
-export interface GetAgentSelfTaggedAddresses {
-    lan: string;
-    wan: string;
-}
-
-export interface GetAgentSelfTelemetry {
-    circonusApiApp: string;
-    circonusApiToken: string;
-    circonusApiUrl: string;
-    circonusBrokerId: string;
-    circonusCheckId: string;
-    circonusCheckTags: string;
-    circonusDisplayName: string;
-    circonusForceMetricActivation: boolean;
-    circonusInstanceId: string;
-    circonusSearchTag: string;
-    circonusSelectTag: string;
-    circonusSubmissionInterval: string;
-    circonusSubmissionUrl: string;
-    dogstatsdAddr: string;
-    dogstatsdTags: string[];
-    enableHostname: string;
-    statsdAddr: string;
-    statsiteAddr: string;
-    statsitePrefix: string;
-}
-
-export interface GetAgentSelfUnixSockets {
-    group: string;
-    mode: string;
-    user: string;
-}
-
 export interface GetAutopilotHealthServer {
     /**
      * The address of the server
@@ -307,21 +102,16 @@ export interface GetAutopilotHealthServer {
 export interface GetCatalogNodesNode {
     address: string;
     id: string;
-    meta: {[key: string]: any};
+    meta: {[key: string]: string};
     name: string;
-    taggedAddresses: outputs.GetCatalogNodesNodeTaggedAddresses;
-}
-
-export interface GetCatalogNodesNodeTaggedAddresses {
-    lan: string;
-    wan: string;
+    taggedAddresses: {[key: string]: string};
 }
 
 export interface GetCatalogNodesQueryOption {
     allowStale?: boolean;
     datacenter?: string;
     near?: string;
-    nodeMeta?: {[key: string]: any};
+    nodeMeta?: {[key: string]: string};
     requireConsistent?: boolean;
     token?: string;
     waitIndex?: number;
@@ -331,8 +121,9 @@ export interface GetCatalogNodesQueryOption {
 export interface GetCatalogServiceQueryOption {
     allowStale?: boolean;
     datacenter?: string;
+    namespace?: string;
     near?: string;
-    nodeMeta?: {[key: string]: any};
+    nodeMeta?: {[key: string]: string};
     requireConsistent?: boolean;
     token?: string;
     waitIndex?: number;
@@ -344,36 +135,28 @@ export interface GetCatalogServiceService {
     createIndex: string;
     enableTagOverride: string;
     id: string;
-    meta: {[key: string]: any};
+    meta: {[key: string]: string};
     modifyIndex: string;
     name: string;
     nodeAddress: string;
     nodeId: string;
-    nodeMeta: {[key: string]: any};
+    nodeMeta: {[key: string]: string};
     nodeName: string;
     port: string;
-    taggedAddresses: outputs.GetCatalogServiceServiceTaggedAddresses;
+    taggedAddresses: {[key: string]: string};
     tags: string[];
-}
-
-export interface GetCatalogServiceServiceTaggedAddresses {
-    lan: string;
-    wan: string;
 }
 
 export interface GetCatalogServicesQueryOption {
     allowStale?: boolean;
     datacenter?: string;
+    namespace?: string;
     near?: string;
-    nodeMeta?: {[key: string]: any};
+    nodeMeta?: {[key: string]: string};
     requireConsistent?: boolean;
     token?: string;
     waitIndex?: number;
     waitTime?: string;
-}
-
-export interface GetCatalogServicesServices {
-    tags: string[];
 }
 
 export interface GetKeyPrefixSubkeyCollection {
@@ -402,14 +185,9 @@ export interface GetNodesNode {
      * List of explicit LAN and WAN IP addresses for the agent.
      */
     id: string;
-    meta: {[key: string]: any};
+    meta: {[key: string]: string};
     name: string;
-    taggedAddresses: outputs.GetNodesNodeTaggedAddresses;
-}
-
-export interface GetNodesNodeTaggedAddresses {
-    lan: string;
-    wan: string;
+    taggedAddresses: {[key: string]: string};
 }
 
 export interface GetNodesQueryOption {
@@ -422,7 +200,7 @@ export interface GetNodesQueryOption {
      */
     datacenter?: string;
     near?: string;
-    nodeMeta?: {[key: string]: any};
+    nodeMeta?: {[key: string]: string};
     requireConsistent?: boolean;
     token?: string;
     waitIndex?: number;
@@ -537,8 +315,9 @@ export interface GetServiceQueryOption {
      * configured to talk to.
      */
     datacenter?: string;
+    namespace?: string;
     near?: string;
-    nodeMeta?: {[key: string]: any};
+    nodeMeta?: {[key: string]: string};
     requireConsistent?: boolean;
     token?: string;
     waitIndex?: number;
@@ -550,7 +329,7 @@ export interface GetServiceService {
     createIndex: string;
     enableTagOverride: string;
     id: string;
-    meta: {[key: string]: any};
+    meta: {[key: string]: string};
     modifyIndex: string;
     /**
      * The service name to select.
@@ -583,16 +362,11 @@ export interface GetServiceService {
      * data tag information, if any.
      */
     nodeId: string;
-    nodeMeta: {[key: string]: any};
+    nodeMeta: {[key: string]: string};
     nodeName: string;
     port: string;
-    taggedAddresses: outputs.GetServiceServiceTaggedAddresses;
+    taggedAddresses: {[key: string]: string};
     tags: string[];
-}
-
-export interface GetServiceServiceTaggedAddresses {
-    lan: string;
-    wan: string;
 }
 
 export interface GetServicesQueryOption {
@@ -604,22 +378,13 @@ export interface GetServicesQueryOption {
      * configured to talk to.
      */
     datacenter?: string;
+    namespace?: string;
     near?: string;
-    nodeMeta?: {[key: string]: any};
+    nodeMeta?: {[key: string]: string};
     requireConsistent?: boolean;
     token?: string;
     waitIndex?: number;
     waitTime?: string;
-}
-
-export interface GetServicesServices {
-    /**
-     * A map of the tags found for each service.  If more than one service
-     * shares the same tag, unique service names will be joined by whitespace (this
-     * is the inverse of `services` and can be used to lookup the services that match
-     * a single tag).
-     */
-    tags: string[];
 }
 
 export interface KeyPrefixSubkeyCollection {

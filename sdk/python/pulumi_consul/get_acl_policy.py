@@ -13,7 +13,7 @@ class GetAclPolicyResult:
     """
     A collection of values returned by getAclPolicy.
     """
-    def __init__(__self__, datacenters=None, description=None, id=None, name=None, rules=None):
+    def __init__(__self__, datacenters=None, description=None, id=None, name=None, namespace=None, rules=None):
         if datacenters and not isinstance(datacenters, list):
             raise TypeError("Expected argument 'datacenters' to be a list")
         __self__.datacenters = datacenters
@@ -35,6 +35,9 @@ class GetAclPolicyResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         __self__.name = name
+        if namespace and not isinstance(namespace, str):
+            raise TypeError("Expected argument 'namespace' to be a str")
+        __self__.namespace = namespace
         if rules and not isinstance(rules, str):
             raise TypeError("Expected argument 'rules' to be a str")
         __self__.rules = rules
@@ -51,9 +54,10 @@ class AwaitableGetAclPolicyResult(GetAclPolicyResult):
             description=self.description,
             id=self.id,
             name=self.name,
+            namespace=self.namespace,
             rules=self.rules)
 
-def get_acl_policy(datacenters=None,description=None,name=None,rules=None,opts=None):
+def get_acl_policy(datacenters=None,description=None,name=None,namespace=None,rules=None,opts=None):
     """
     The `.AclPolicy` data source returns the information related to a
     [Consul ACL Policy](https://www.consul.io/docs/acl/acl-system.html#acl-policies).
@@ -62,6 +66,7 @@ def get_acl_policy(datacenters=None,description=None,name=None,rules=None,opts=N
 
 
     :param str name: The name of the ACL Policy.
+    :param str namespace: The namespace to lookup the policy.
     """
     __args__ = dict()
 
@@ -69,6 +74,7 @@ def get_acl_policy(datacenters=None,description=None,name=None,rules=None,opts=N
     __args__['datacenters'] = datacenters
     __args__['description'] = description
     __args__['name'] = name
+    __args__['namespace'] = namespace
     __args__['rules'] = rules
     if opts is None:
         opts = pulumi.InvokeOptions()
@@ -81,4 +87,5 @@ def get_acl_policy(datacenters=None,description=None,name=None,rules=None,opts=N
         description=__ret__.get('description'),
         id=__ret__.get('id'),
         name=__ret__.get('name'),
+        namespace=__ret__.get('namespace'),
         rules=__ret__.get('rules'))

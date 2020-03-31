@@ -49,7 +49,7 @@ export interface GetCatalogNodesQueryOption {
     allowStale?: boolean;
     datacenter?: string;
     near?: string;
-    nodeMeta?: {[key: string]: any};
+    nodeMeta?: {[key: string]: string};
     requireConsistent?: boolean;
     token?: string;
     waitIndex?: number;
@@ -59,8 +59,9 @@ export interface GetCatalogNodesQueryOption {
 export interface GetCatalogServiceQueryOption {
     allowStale?: boolean;
     datacenter?: string;
+    namespace?: string;
     near?: string;
-    nodeMeta?: {[key: string]: any};
+    nodeMeta?: {[key: string]: string};
     requireConsistent?: boolean;
     token?: string;
     waitIndex?: number;
@@ -70,8 +71,9 @@ export interface GetCatalogServiceQueryOption {
 export interface GetCatalogServicesQueryOption {
     allowStale?: boolean;
     datacenter?: string;
+    namespace?: string;
     near?: string;
-    nodeMeta?: {[key: string]: any};
+    nodeMeta?: {[key: string]: string};
     requireConsistent?: boolean;
     token?: string;
     waitIndex?: number;
@@ -100,7 +102,7 @@ export interface GetNodesQueryOption {
      */
     datacenter?: string;
     near?: string;
-    nodeMeta?: {[key: string]: any};
+    nodeMeta?: {[key: string]: string};
     requireConsistent?: boolean;
     token?: string;
     waitIndex?: number;
@@ -116,8 +118,9 @@ export interface GetServiceQueryOption {
      * configured to talk to.
      */
     datacenter?: string;
+    namespace?: string;
     near?: string;
-    nodeMeta?: {[key: string]: any};
+    nodeMeta?: {[key: string]: string};
     requireConsistent?: boolean;
     token?: string;
     waitIndex?: number;
@@ -133,8 +136,9 @@ export interface GetServicesQueryOption {
      * configured to talk to.
      */
     datacenter?: string;
+    namespace?: string;
     near?: string;
-    nodeMeta?: {[key: string]: any};
+    nodeMeta?: {[key: string]: string};
     requireConsistent?: boolean;
     token?: string;
     waitIndex?: number;

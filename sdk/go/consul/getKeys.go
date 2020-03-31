@@ -29,6 +29,8 @@ type LookupKeysArgs struct {
 	// Specifies a key in Consul to be read. Supported
 	// values documented below. Multiple blocks supported.
 	Keys []GetKeysKey `pulumi:"keys"`
+	// The namespace to lookup the keys.
+	Namespace *string `pulumi:"namespace"`
 	// The ACL token to use. This overrides the
 	// token that the agent provides by default.
 	Token *string `pulumi:"token"`
@@ -44,7 +46,8 @@ type LookupKeysResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	Keys []GetKeysKey `pulumi:"keys"`
+	Namespace *string `pulumi:"namespace"`
 	Token *string `pulumi:"token"`
-	Var map[string]interface{} `pulumi:"var"`
+	Var map[string]string `pulumi:"var"`
 }
 

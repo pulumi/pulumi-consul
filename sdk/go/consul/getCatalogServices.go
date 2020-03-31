@@ -30,6 +30,6 @@ type GetCatalogServicesResult struct {
 	Id string `pulumi:"id"`
 	Names []string `pulumi:"names"`
 	QueryOptions []GetCatalogServicesQueryOption `pulumi:"queryOptions"`
-	Services GetCatalogServicesServices `pulumi:"services"`
+	Services map[string]string `pulumi:"services"`
 }
 

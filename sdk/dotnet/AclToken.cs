@@ -36,10 +36,22 @@ namespace Pulumi.Consul
         public Output<bool?> Local { get; private set; } = null!;
 
         /// <summary>
+        /// The namespace to create the token within.
+        /// </summary>
+        [Output("namespace")]
+        public Output<string?> Namespace { get; private set; } = null!;
+
+        /// <summary>
         /// The list of policies attached to the token.
         /// </summary>
         [Output("policies")]
         public Output<ImmutableArray<string>> Policies { get; private set; } = null!;
+
+        /// <summary>
+        /// The list of roles attached to the token.
+        /// </summary>
+        [Output("roles")]
+        public Output<ImmutableArray<string>> Roles { get; private set; } = null!;
 
 
         /// <summary>
@@ -106,6 +118,12 @@ namespace Pulumi.Consul
         [Input("local")]
         public Input<bool>? Local { get; set; }
 
+        /// <summary>
+        /// The namespace to create the token within.
+        /// </summary>
+        [Input("namespace")]
+        public Input<string>? Namespace { get; set; }
+
         [Input("policies")]
         private InputList<string>? _policies;
 
@@ -116,6 +134,18 @@ namespace Pulumi.Consul
         {
             get => _policies ?? (_policies = new InputList<string>());
             set => _policies = value;
+        }
+
+        [Input("roles")]
+        private InputList<string>? _roles;
+
+        /// <summary>
+        /// The list of roles attached to the token.
+        /// </summary>
+        public InputList<string> Roles
+        {
+            get => _roles ?? (_roles = new InputList<string>());
+            set => _roles = value;
         }
 
         public AclTokenArgs()
@@ -144,6 +174,12 @@ namespace Pulumi.Consul
         [Input("local")]
         public Input<bool>? Local { get; set; }
 
+        /// <summary>
+        /// The namespace to create the token within.
+        /// </summary>
+        [Input("namespace")]
+        public Input<string>? Namespace { get; set; }
+
         [Input("policies")]
         private InputList<string>? _policies;
 
@@ -154,6 +190,18 @@ namespace Pulumi.Consul
         {
             get => _policies ?? (_policies = new InputList<string>());
             set => _policies = value;
+        }
+
+        [Input("roles")]
+        private InputList<string>? _roles;
+
+        /// <summary>
+        /// The list of roles attached to the token.
+        /// </summary>
+        public InputList<string> Roles
+        {
+            get => _roles ?? (_roles = new InputList<string>());
+            set => _roles = value;
         }
 
         public AclTokenState()

@@ -40,6 +40,12 @@ namespace Pulumi.Consul
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
+        /// <summary>
+        /// The namespace to lookup the policy.
+        /// </summary>
+        [Input("namespace")]
+        public string? Namespace { get; set; }
+
         [Input("rules")]
         public string? Rules { get; set; }
 
@@ -60,6 +66,7 @@ namespace Pulumi.Consul
         /// </summary>
         public readonly string? Description;
         public readonly string Name;
+        public readonly string? Namespace;
         /// <summary>
         /// The rules associated with the ACL Policy.
         /// </summary>
@@ -74,12 +81,14 @@ namespace Pulumi.Consul
             ImmutableArray<string> datacenters,
             string? description,
             string name,
+            string? @namespace,
             string? rules,
             string id)
         {
             Datacenters = datacenters;
             Description = description;
             Name = name;
+            Namespace = @namespace;
             Rules = rules;
             Id = id;
         }

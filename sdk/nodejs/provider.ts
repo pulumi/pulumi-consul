@@ -48,6 +48,7 @@ export class Provider extends pulumi.ProviderResource {
             inputs["httpAuth"] = (args ? args.httpAuth : undefined) || utilities.getEnv("CONSUL_HTTP_AUTH");
             inputs["insecureHttps"] = pulumi.output(args ? args.insecureHttps : undefined).apply(JSON.stringify);
             inputs["keyFile"] = (args ? args.keyFile : undefined) || utilities.getEnv("CONSUL_KEY_FILE");
+            inputs["namespace"] = args ? args.namespace : undefined;
             inputs["scheme"] = (args ? args.scheme : undefined) || (utilities.getEnv("CONSUL_SCHEME", "CONSUL_HTTP_SCHEME") || "http");
             inputs["token"] = (args ? args.token : undefined) || utilities.getEnv("CONSUL_TOKEN", "CONSUL_HTTP_TOKEN");
         }
@@ -74,6 +75,7 @@ export interface ProviderArgs {
     readonly httpAuth?: pulumi.Input<string>;
     readonly insecureHttps?: pulumi.Input<boolean>;
     readonly keyFile?: pulumi.Input<string>;
+    readonly namespace?: pulumi.Input<string>;
     readonly scheme?: pulumi.Input<string>;
     readonly token?: pulumi.Input<string>;
 }

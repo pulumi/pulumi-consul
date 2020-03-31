@@ -30,6 +30,8 @@ type LookupAclTokenArgs struct {
 	AccessorId string `pulumi:"accessorId"`
 	Description *string `pulumi:"description"`
 	Local *bool `pulumi:"local"`
+	// The namespace to lookup the ACL token.
+	Namespace *string `pulumi:"namespace"`
 	Policies []GetAclTokenPolicy `pulumi:"policies"`
 }
 
@@ -43,6 +45,7 @@ type LookupAclTokenResult struct {
 	Id string `pulumi:"id"`
 	// Whether the ACL token is local to the datacenter it was created within.
 	Local *bool `pulumi:"local"`
+	Namespace *string `pulumi:"namespace"`
 	// A list of policies associated with the ACL token. Each entry has
 	// an `id` and a `name` attribute.
 	Policies []GetAclTokenPolicy `pulumi:"policies"`

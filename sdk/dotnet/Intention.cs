@@ -43,6 +43,13 @@ namespace Pulumi.Consul
         public Output<string> DestinationName { get; private set; } = null!;
 
         /// <summary>
+        /// The destination
+        /// namespace of the intention.
+        /// </summary>
+        [Output("destinationNamespace")]
+        public Output<string?> DestinationNamespace { get; private set; } = null!;
+
+        /// <summary>
         /// Key/value pairs that are opaque to Consul and are associated
         /// with the intention.
         /// </summary>
@@ -55,6 +62,13 @@ namespace Pulumi.Consul
         /// </summary>
         [Output("sourceName")]
         public Output<string> SourceName { get; private set; } = null!;
+
+        /// <summary>
+        /// The source namespace of the
+        /// intention.
+        /// </summary>
+        [Output("sourceNamespace")]
+        public Output<string?> SourceNamespace { get; private set; } = null!;
 
 
         /// <summary>
@@ -122,6 +136,13 @@ namespace Pulumi.Consul
         [Input("destinationName", required: true)]
         public Input<string> DestinationName { get; set; } = null!;
 
+        /// <summary>
+        /// The destination
+        /// namespace of the intention.
+        /// </summary>
+        [Input("destinationNamespace")]
+        public Input<string>? DestinationNamespace { get; set; }
+
         [Input("meta")]
         private InputMap<string>? _meta;
 
@@ -141,6 +162,13 @@ namespace Pulumi.Consul
         /// </summary>
         [Input("sourceName", required: true)]
         public Input<string> SourceName { get; set; } = null!;
+
+        /// <summary>
+        /// The source namespace of the
+        /// intention.
+        /// </summary>
+        [Input("sourceNamespace")]
+        public Input<string>? SourceNamespace { get; set; }
 
         public IntentionArgs()
         {
@@ -169,6 +197,13 @@ namespace Pulumi.Consul
         [Input("destinationName")]
         public Input<string>? DestinationName { get; set; }
 
+        /// <summary>
+        /// The destination
+        /// namespace of the intention.
+        /// </summary>
+        [Input("destinationNamespace")]
+        public Input<string>? DestinationNamespace { get; set; }
+
         [Input("meta")]
         private InputMap<string>? _meta;
 
@@ -188,6 +223,13 @@ namespace Pulumi.Consul
         /// </summary>
         [Input("sourceName")]
         public Input<string>? SourceName { get; set; }
+
+        /// <summary>
+        /// The source namespace of the
+        /// intention.
+        /// </summary>
+        [Input("sourceNamespace")]
+        public Input<string>? SourceNamespace { get; set; }
 
         public IntentionState()
         {

@@ -37,7 +37,7 @@ type GetServiceHealthArgs struct {
 	Near *string `pulumi:"near"`
 	// Filter the results to nodes with the specified key/value
 	// pairs.
-	NodeMeta map[string]interface{} `pulumi:"nodeMeta"`
+	NodeMeta map[string]string `pulumi:"nodeMeta"`
 	// Whether to return only nodes with all checks in the
 	// passing state. Defaults to `true`.
 	Passing *bool `pulumi:"passing"`
@@ -61,7 +61,7 @@ type GetServiceHealthResult struct {
 	// The node to which the result must be sorted to.
 	Near *string `pulumi:"near"`
 	// The list of metadata to filter the nodes.
-	NodeMeta map[string]interface{} `pulumi:"nodeMeta"`
+	NodeMeta map[string]string `pulumi:"nodeMeta"`
 	// Whether to return only nodes with all checks in the
 	// passing state.
 	Passing *bool `pulumi:"passing"`

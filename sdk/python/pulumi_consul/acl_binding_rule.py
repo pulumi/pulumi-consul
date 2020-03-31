@@ -28,12 +28,17 @@ class AclBindingRule(pulumi.CustomResource):
     A free form human readable description of the
     binding rule.
     """
+    namespace: pulumi.Output[str]
+    """
+    The namespace to create the binding
+    rule within.
+    """
     selector: pulumi.Output[str]
     """
     The expression used to math this rule against valid
     identities returned from an auth method validation.
     """
-    def __init__(__self__, resource_name, opts=None, auth_method=None, bind_name=None, bind_type=None, description=None, selector=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, auth_method=None, bind_name=None, bind_type=None, description=None, namespace=None, selector=None, __props__=None, __name__=None, __opts__=None):
         """
         Starting with Consul 1.5.0, the .AclBindingRule resource can be used to
         managed Consul ACL binding rules.
@@ -48,6 +53,8 @@ class AclBindingRule(pulumi.CustomResource):
                created at login.
         :param pulumi.Input[str] description: A free form human readable description of the
                binding rule.
+        :param pulumi.Input[str] namespace: The namespace to create the binding
+               rule within.
         :param pulumi.Input[str] selector: The expression used to math this rule against valid
                identities returned from an auth method validation.
         """
@@ -78,6 +85,7 @@ class AclBindingRule(pulumi.CustomResource):
                 raise TypeError("Missing required property 'bind_type'")
             __props__['bind_type'] = bind_type
             __props__['description'] = description
+            __props__['namespace'] = namespace
             __props__['selector'] = selector
         super(AclBindingRule, __self__).__init__(
             'consul:index/aclBindingRule:AclBindingRule',
@@ -86,7 +94,7 @@ class AclBindingRule(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, auth_method=None, bind_name=None, bind_type=None, description=None, selector=None):
+    def get(resource_name, id, opts=None, auth_method=None, bind_name=None, bind_type=None, description=None, namespace=None, selector=None):
         """
         Get an existing AclBindingRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -100,6 +108,8 @@ class AclBindingRule(pulumi.CustomResource):
                created at login.
         :param pulumi.Input[str] description: A free form human readable description of the
                binding rule.
+        :param pulumi.Input[str] namespace: The namespace to create the binding
+               rule within.
         :param pulumi.Input[str] selector: The expression used to math this rule against valid
                identities returned from an auth method validation.
         """
@@ -111,6 +121,7 @@ class AclBindingRule(pulumi.CustomResource):
         __props__["bind_name"] = bind_name
         __props__["bind_type"] = bind_type
         __props__["description"] = description
+        __props__["namespace"] = namespace
         __props__["selector"] = selector
         return AclBindingRule(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):

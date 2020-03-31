@@ -65,6 +65,10 @@ export class AclPolicy extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * The namespace to create the policy within.
+     */
+    public readonly namespace!: pulumi.Output<string | undefined>;
+    /**
      * The rules of the policy.
      */
     public readonly rules!: pulumi.Output<string>;
@@ -84,6 +88,7 @@ export class AclPolicy extends pulumi.CustomResource {
             inputs["datacenters"] = state ? state.datacenters : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["namespace"] = state ? state.namespace : undefined;
             inputs["rules"] = state ? state.rules : undefined;
         } else {
             const args = argsOrState as AclPolicyArgs | undefined;
@@ -93,6 +98,7 @@ export class AclPolicy extends pulumi.CustomResource {
             inputs["datacenters"] = args ? args.datacenters : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["namespace"] = args ? args.namespace : undefined;
             inputs["rules"] = args ? args.rules : undefined;
         }
         if (!opts) {
@@ -123,6 +129,10 @@ export interface AclPolicyState {
      */
     readonly name?: pulumi.Input<string>;
     /**
+     * The namespace to create the policy within.
+     */
+    readonly namespace?: pulumi.Input<string>;
+    /**
      * The rules of the policy.
      */
     readonly rules?: pulumi.Input<string>;
@@ -144,6 +154,10 @@ export interface AclPolicyArgs {
      * The name of the policy.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The namespace to create the policy within.
+     */
+    readonly namespace?: pulumi.Input<string>;
     /**
      * The rules of the policy.
      */

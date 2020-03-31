@@ -44,11 +44,15 @@ export class Keys extends pulumi.CustomResource {
      */
     public readonly keys!: pulumi.Output<outputs.KeysKey[] | undefined>;
     /**
+     * The namespace to create the keys within.
+     */
+    public readonly namespace!: pulumi.Output<string | undefined>;
+    /**
      * The ACL token to use. This overrides the
      * token that the agent provides by default.
      */
     public readonly token!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly var!: pulumi.Output<{[key: string]: any}>;
+    public /*out*/ readonly var!: pulumi.Output<{[key: string]: string}>;
 
     /**
      * Create a Keys resource with the given unique name, arguments, and options.
@@ -64,12 +68,14 @@ export class Keys extends pulumi.CustomResource {
             const state = argsOrState as KeysState | undefined;
             inputs["datacenter"] = state ? state.datacenter : undefined;
             inputs["keys"] = state ? state.keys : undefined;
+            inputs["namespace"] = state ? state.namespace : undefined;
             inputs["token"] = state ? state.token : undefined;
             inputs["var"] = state ? state.var : undefined;
         } else {
             const args = argsOrState as KeysArgs | undefined;
             inputs["datacenter"] = args ? args.datacenter : undefined;
             inputs["keys"] = args ? args.keys : undefined;
+            inputs["namespace"] = args ? args.namespace : undefined;
             inputs["token"] = args ? args.token : undefined;
             inputs["var"] = undefined /*out*/;
         }
@@ -99,11 +105,15 @@ export interface KeysState {
      */
     readonly keys?: pulumi.Input<pulumi.Input<inputs.KeysKey>[]>;
     /**
+     * The namespace to create the keys within.
+     */
+    readonly namespace?: pulumi.Input<string>;
+    /**
      * The ACL token to use. This overrides the
      * token that the agent provides by default.
      */
     readonly token?: pulumi.Input<string>;
-    readonly var?: pulumi.Input<{[key: string]: any}>;
+    readonly var?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -120,6 +130,10 @@ export interface KeysArgs {
      * Supported values documented below.
      */
     readonly keys?: pulumi.Input<pulumi.Input<inputs.KeysKey>[]>;
+    /**
+     * The namespace to create the keys within.
+     */
+    readonly namespace?: pulumi.Input<string>;
     /**
      * The ACL token to use. This overrides the
      * token that the agent provides by default.

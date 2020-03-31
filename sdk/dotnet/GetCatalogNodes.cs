@@ -76,10 +76,10 @@ namespace Pulumi.Consul
         public string? Near { get; set; }
 
         [Input("nodeMeta")]
-        private Dictionary<string, object>? _nodeMeta;
-        public Dictionary<string, object> NodeMeta
+        private Dictionary<string, string>? _nodeMeta;
+        public Dictionary<string, string> NodeMeta
         {
-            get => _nodeMeta ?? (_nodeMeta = new Dictionary<string, object>());
+            get => _nodeMeta ?? (_nodeMeta = new Dictionary<string, string>());
             set => _nodeMeta = value;
         }
 
@@ -109,17 +109,17 @@ namespace Pulumi.Consul
     {
         public readonly string Address;
         public readonly string Id;
-        public readonly ImmutableDictionary<string, object> Meta;
+        public readonly ImmutableDictionary<string, string> Meta;
         public readonly string Name;
-        public readonly GetCatalogNodesNodesTaggedAddressesResult TaggedAddresses;
+        public readonly ImmutableDictionary<string, string> TaggedAddresses;
 
         [OutputConstructor]
         private GetCatalogNodesNodesResult(
             string address,
             string id,
-            ImmutableDictionary<string, object> meta,
+            ImmutableDictionary<string, string> meta,
             string name,
-            GetCatalogNodesNodesTaggedAddressesResult taggedAddresses)
+            ImmutableDictionary<string, string> taggedAddresses)
         {
             Address = address;
             Id = id;
@@ -130,28 +130,12 @@ namespace Pulumi.Consul
     }
 
     [OutputType]
-    public sealed class GetCatalogNodesNodesTaggedAddressesResult
-    {
-        public readonly string Lan;
-        public readonly string Wan;
-
-        [OutputConstructor]
-        private GetCatalogNodesNodesTaggedAddressesResult(
-            string lan,
-            string wan)
-        {
-            Lan = lan;
-            Wan = wan;
-        }
-    }
-
-    [OutputType]
     public sealed class GetCatalogNodesQueryOptionsResult
     {
         public readonly bool? AllowStale;
         public readonly string? Datacenter;
         public readonly string? Near;
-        public readonly ImmutableDictionary<string, object>? NodeMeta;
+        public readonly ImmutableDictionary<string, string>? NodeMeta;
         public readonly bool? RequireConsistent;
         public readonly string? Token;
         public readonly int? WaitIndex;
@@ -162,7 +146,7 @@ namespace Pulumi.Consul
             bool? allowStale,
             string? datacenter,
             string? near,
-            ImmutableDictionary<string, object>? nodeMeta,
+            ImmutableDictionary<string, string>? nodeMeta,
             bool? requireConsistent,
             string? token,
             int? waitIndex,

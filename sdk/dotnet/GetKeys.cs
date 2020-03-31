@@ -44,6 +44,12 @@ namespace Pulumi.Consul
         }
 
         /// <summary>
+        /// The namespace to lookup the keys.
+        /// </summary>
+        [Input("namespace")]
+        public string? Namespace { get; set; }
+
+        /// <summary>
         /// The ACL token to use. This overrides the
         /// token that the agent provides by default.
         /// </summary>
@@ -65,8 +71,9 @@ namespace Pulumi.Consul
         /// </summary>
         public readonly string Datacenter;
         public readonly ImmutableArray<Outputs.GetKeysKeysResult> Keys;
+        public readonly string? Namespace;
         public readonly string? Token;
-        public readonly ImmutableDictionary<string, object> Var;
+        public readonly ImmutableDictionary<string, string> Var;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -76,12 +83,14 @@ namespace Pulumi.Consul
         private GetKeysResult(
             string datacenter,
             ImmutableArray<Outputs.GetKeysKeysResult> keys,
+            string? @namespace,
             string? token,
-            ImmutableDictionary<string, object> var,
+            ImmutableDictionary<string, string> var,
             string id)
         {
             Datacenter = datacenter;
             Keys = keys;
+            Namespace = @namespace;
             Token = token;
             Var = var;
             Id = id;

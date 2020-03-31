@@ -44,6 +44,13 @@ namespace Pulumi.Consul
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// The namespace to create the binding
+        /// rule within.
+        /// </summary>
+        [Output("namespace")]
+        public Output<string?> Namespace { get; private set; } = null!;
+
+        /// <summary>
         /// The expression used to math this rule against valid
         /// identities returned from an auth method validation.
         /// </summary>
@@ -123,6 +130,13 @@ namespace Pulumi.Consul
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// The namespace to create the binding
+        /// rule within.
+        /// </summary>
+        [Input("namespace")]
+        public Input<string>? Namespace { get; set; }
+
+        /// <summary>
         /// The expression used to math this rule against valid
         /// identities returned from an auth method validation.
         /// </summary>
@@ -161,6 +175,13 @@ namespace Pulumi.Consul
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The namespace to create the binding
+        /// rule within.
+        /// </summary>
+        [Input("namespace")]
+        public Input<string>? Namespace { get; set; }
 
         /// <summary>
         /// The expression used to math this rule against valid

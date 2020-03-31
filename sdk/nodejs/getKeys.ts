@@ -47,6 +47,7 @@ export function getKeys(args?: GetKeysArgs, opts?: pulumi.InvokeOptions): Promis
     const promise: Promise<GetKeysResult> = pulumi.runtime.invoke("consul:index/getKeys:getKeys", {
         "datacenter": args.datacenter,
         "keys": args.keys,
+        "namespace": args.namespace,
         "token": args.token,
     }, opts);
 
@@ -68,6 +69,10 @@ export interface GetKeysArgs {
      */
     readonly keys?: inputs.GetKeysKey[];
     /**
+     * The namespace to lookup the keys.
+     */
+    readonly namespace?: string;
+    /**
      * The ACL token to use. This overrides the
      * token that the agent provides by default.
      */
@@ -85,8 +90,9 @@ export interface GetKeysResult {
      */
     readonly datacenter: string;
     readonly keys?: outputs.GetKeysKey[];
+    readonly namespace?: string;
     readonly token?: string;
-    readonly var: {[key: string]: any};
+    readonly var: {[key: string]: string};
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

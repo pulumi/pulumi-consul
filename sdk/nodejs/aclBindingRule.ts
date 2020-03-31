@@ -83,6 +83,11 @@ export class AclBindingRule extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * The namespace to create the binding
+     * rule within.
+     */
+    public readonly namespace!: pulumi.Output<string | undefined>;
+    /**
      * The expression used to math this rule against valid
      * identities returned from an auth method validation.
      */
@@ -104,6 +109,7 @@ export class AclBindingRule extends pulumi.CustomResource {
             inputs["bindName"] = state ? state.bindName : undefined;
             inputs["bindType"] = state ? state.bindType : undefined;
             inputs["description"] = state ? state.description : undefined;
+            inputs["namespace"] = state ? state.namespace : undefined;
             inputs["selector"] = state ? state.selector : undefined;
         } else {
             const args = argsOrState as AclBindingRuleArgs | undefined;
@@ -120,6 +126,7 @@ export class AclBindingRule extends pulumi.CustomResource {
             inputs["bindName"] = args ? args.bindName : undefined;
             inputs["bindType"] = args ? args.bindType : undefined;
             inputs["description"] = args ? args.description : undefined;
+            inputs["namespace"] = args ? args.namespace : undefined;
             inputs["selector"] = args ? args.selector : undefined;
         }
         if (!opts) {
@@ -156,6 +163,11 @@ export interface AclBindingRuleState {
      */
     readonly description?: pulumi.Input<string>;
     /**
+     * The namespace to create the binding
+     * rule within.
+     */
+    readonly namespace?: pulumi.Input<string>;
+    /**
      * The expression used to math this rule against valid
      * identities returned from an auth method validation.
      */
@@ -184,6 +196,11 @@ export interface AclBindingRuleArgs {
      * binding rule.
      */
     readonly description?: pulumi.Input<string>;
+    /**
+     * The namespace to create the binding
+     * rule within.
+     */
+    readonly namespace?: pulumi.Input<string>;
     /**
      * The expression used to math this rule against valid
      * identities returned from an auth method validation.

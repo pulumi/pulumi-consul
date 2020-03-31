@@ -92,6 +92,7 @@ def get_service(datacenter=None,name=None,query_options=None,tag=None,opts=None)
         same value found in `query_options` parameter specified below, or if that is
         empty, the `datacenter` value found in the Consul agent that this provider is
         configured to talk to.
+      * `namespace` (`str`)
       * `near` (`str`)
       * `nodeMeta` (`dict`)
       * `requireConsistent` (`bool`)

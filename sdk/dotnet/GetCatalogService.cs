@@ -81,14 +81,17 @@ namespace Pulumi.Consul
         [Input("datacenter")]
         public string? Datacenter { get; set; }
 
+        [Input("namespace")]
+        public string? Namespace { get; set; }
+
         [Input("near")]
         public string? Near { get; set; }
 
         [Input("nodeMeta")]
-        private Dictionary<string, object>? _nodeMeta;
-        public Dictionary<string, object> NodeMeta
+        private Dictionary<string, string>? _nodeMeta;
+        public Dictionary<string, string> NodeMeta
         {
-            get => _nodeMeta ?? (_nodeMeta = new Dictionary<string, object>());
+            get => _nodeMeta ?? (_nodeMeta = new Dictionary<string, string>());
             set => _nodeMeta = value;
         }
 
@@ -118,8 +121,9 @@ namespace Pulumi.Consul
     {
         public readonly bool? AllowStale;
         public readonly string? Datacenter;
+        public readonly string? Namespace;
         public readonly string? Near;
-        public readonly ImmutableDictionary<string, object>? NodeMeta;
+        public readonly ImmutableDictionary<string, string>? NodeMeta;
         public readonly bool? RequireConsistent;
         public readonly string? Token;
         public readonly int? WaitIndex;
@@ -129,8 +133,9 @@ namespace Pulumi.Consul
         private GetCatalogServiceQueryOptionsResult(
             bool? allowStale,
             string? datacenter,
+            string? @namespace,
             string? near,
-            ImmutableDictionary<string, object>? nodeMeta,
+            ImmutableDictionary<string, string>? nodeMeta,
             bool? requireConsistent,
             string? token,
             int? waitIndex,
@@ -138,6 +143,7 @@ namespace Pulumi.Consul
         {
             AllowStale = allowStale;
             Datacenter = datacenter;
+            Namespace = @namespace;
             Near = near;
             NodeMeta = nodeMeta;
             RequireConsistent = requireConsistent;
@@ -154,15 +160,15 @@ namespace Pulumi.Consul
         public readonly string CreateIndex;
         public readonly string EnableTagOverride;
         public readonly string Id;
-        public readonly ImmutableDictionary<string, object> Meta;
+        public readonly ImmutableDictionary<string, string> Meta;
         public readonly string ModifyIndex;
         public readonly string Name;
         public readonly string NodeAddress;
         public readonly string NodeId;
-        public readonly ImmutableDictionary<string, object> NodeMeta;
+        public readonly ImmutableDictionary<string, string> NodeMeta;
         public readonly string NodeName;
         public readonly string Port;
-        public readonly GetCatalogServiceServicesTaggedAddressesResult TaggedAddresses;
+        public readonly ImmutableDictionary<string, string> TaggedAddresses;
         public readonly ImmutableArray<string> Tags;
 
         [OutputConstructor]
@@ -171,15 +177,15 @@ namespace Pulumi.Consul
             string createIndex,
             string enableTagOverride,
             string id,
-            ImmutableDictionary<string, object> meta,
+            ImmutableDictionary<string, string> meta,
             string modifyIndex,
             string name,
             string nodeAddress,
             string nodeId,
-            ImmutableDictionary<string, object> nodeMeta,
+            ImmutableDictionary<string, string> nodeMeta,
             string nodeName,
             string port,
-            GetCatalogServiceServicesTaggedAddressesResult taggedAddresses,
+            ImmutableDictionary<string, string> taggedAddresses,
             ImmutableArray<string> tags)
         {
             Address = address;
@@ -196,22 +202,6 @@ namespace Pulumi.Consul
             Port = port;
             TaggedAddresses = taggedAddresses;
             Tags = tags;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetCatalogServiceServicesTaggedAddressesResult
-    {
-        public readonly string Lan;
-        public readonly string Wan;
-
-        [OutputConstructor]
-        private GetCatalogServiceServicesTaggedAddressesResult(
-            string lan,
-            string wan)
-        {
-            Lan = lan;
-            Wan = wan;
         }
     }
     }

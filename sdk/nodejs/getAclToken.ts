@@ -40,6 +40,7 @@ export function getAclToken(args: GetAclTokenArgs, opts?: pulumi.InvokeOptions):
         "accessorId": args.accessorId,
         "description": args.description,
         "local": args.local,
+        "namespace": args.namespace,
         "policies": args.policies,
     }, opts);
 
@@ -56,6 +57,10 @@ export interface GetAclTokenArgs {
     readonly accessorId: string;
     readonly description?: string;
     readonly local?: boolean;
+    /**
+     * The namespace to lookup the ACL token.
+     */
+    readonly namespace?: string;
     readonly policies?: inputs.GetAclTokenPolicy[];
 }
 
@@ -72,6 +77,7 @@ export interface GetAclTokenResult {
      * Whether the ACL token is local to the datacenter it was created within.
      */
     readonly local?: boolean;
+    readonly namespace?: string;
     /**
      * A list of policies associated with the ACL token. Each entry has
      * an `id` and a `name` attribute.

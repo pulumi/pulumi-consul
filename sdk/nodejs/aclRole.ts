@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  *     datacenters: ["dc1"],
  *     rules: "node \"\" { policy = \"read\" }",
  * });
- * const test = new consul.AclRole("test", {
+ * const read = new consul.AclRole("read", {
  *     description: "bar",
  *     policies: [read_policy.id],
  *     serviceIdentities: [{
@@ -67,6 +67,10 @@ export class AclRole extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * The namespace to create the role within.
+     */
+    public readonly namespace!: pulumi.Output<string | undefined>;
+    /**
      * The list of policies that should be applied to the role.
      */
     public readonly policies!: pulumi.Output<string[] | undefined>;
@@ -90,12 +94,14 @@ export class AclRole extends pulumi.CustomResource {
             const state = argsOrState as AclRoleState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["namespace"] = state ? state.namespace : undefined;
             inputs["policies"] = state ? state.policies : undefined;
             inputs["serviceIdentities"] = state ? state.serviceIdentities : undefined;
         } else {
             const args = argsOrState as AclRoleArgs | undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["namespace"] = args ? args.namespace : undefined;
             inputs["policies"] = args ? args.policies : undefined;
             inputs["serviceIdentities"] = args ? args.serviceIdentities : undefined;
         }
@@ -123,6 +129,10 @@ export interface AclRoleState {
      */
     readonly name?: pulumi.Input<string>;
     /**
+     * The namespace to create the role within.
+     */
+    readonly namespace?: pulumi.Input<string>;
+    /**
      * The list of policies that should be applied to the role.
      */
     readonly policies?: pulumi.Input<pulumi.Input<string>[]>;
@@ -145,6 +155,10 @@ export interface AclRoleArgs {
      * The name of the ACL role.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The namespace to create the role within.
+     */
+    readonly namespace?: pulumi.Input<string>;
     /**
      * The list of policies that should be applied to the role.
      */

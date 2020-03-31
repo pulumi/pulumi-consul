@@ -38,6 +38,12 @@ namespace Pulumi.Consul
         [Input("local")]
         public bool? Local { get; set; }
 
+        /// <summary>
+        /// The namespace to lookup the ACL token.
+        /// </summary>
+        [Input("namespace")]
+        public string? Namespace { get; set; }
+
         [Input("policies")]
         private List<Inputs.GetAclTokenPoliciesArgs>? _policies;
         public List<Inputs.GetAclTokenPoliciesArgs> Policies
@@ -63,6 +69,7 @@ namespace Pulumi.Consul
         /// Whether the ACL token is local to the datacenter it was created within.
         /// </summary>
         public readonly bool? Local;
+        public readonly string? Namespace;
         /// <summary>
         /// A list of policies associated with the ACL token. Each entry has
         /// an `id` and a `name` attribute.
@@ -78,12 +85,14 @@ namespace Pulumi.Consul
             string accessorId,
             string? description,
             bool? local,
+            string? @namespace,
             ImmutableArray<Outputs.GetAclTokenPoliciesResult> policies,
             string id)
         {
             AccessorId = accessorId;
             Description = description;
             Local = local;
+            Namespace = @namespace;
             Policies = policies;
             Id = id;
         }

@@ -20,6 +20,8 @@ type AclRole struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The name of the ACL role.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The namespace to create the role within.
+	Namespace pulumi.StringPtrOutput `pulumi:"namespace"`
 	// The list of policies that should be applied to the role.
 	Policies pulumi.StringArrayOutput `pulumi:"policies"`
 	// The list of service identities that should
@@ -59,6 +61,8 @@ type aclRoleState struct {
 	Description *string `pulumi:"description"`
 	// The name of the ACL role.
 	Name *string `pulumi:"name"`
+	// The namespace to create the role within.
+	Namespace *string `pulumi:"namespace"`
 	// The list of policies that should be applied to the role.
 	Policies []string `pulumi:"policies"`
 	// The list of service identities that should
@@ -71,6 +75,8 @@ type AclRoleState struct {
 	Description pulumi.StringPtrInput
 	// The name of the ACL role.
 	Name pulumi.StringPtrInput
+	// The namespace to create the role within.
+	Namespace pulumi.StringPtrInput
 	// The list of policies that should be applied to the role.
 	Policies pulumi.StringArrayInput
 	// The list of service identities that should
@@ -87,6 +93,8 @@ type aclRoleArgs struct {
 	Description *string `pulumi:"description"`
 	// The name of the ACL role.
 	Name *string `pulumi:"name"`
+	// The namespace to create the role within.
+	Namespace *string `pulumi:"namespace"`
 	// The list of policies that should be applied to the role.
 	Policies []string `pulumi:"policies"`
 	// The list of service identities that should
@@ -100,6 +108,8 @@ type AclRoleArgs struct {
 	Description pulumi.StringPtrInput
 	// The name of the ACL role.
 	Name pulumi.StringPtrInput
+	// The namespace to create the role within.
+	Namespace pulumi.StringPtrInput
 	// The list of policies that should be applied to the role.
 	Policies pulumi.StringArrayInput
 	// The list of service identities that should

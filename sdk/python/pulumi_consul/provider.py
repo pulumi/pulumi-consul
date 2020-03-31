@@ -10,7 +10,7 @@ from typing import Union
 from . import utilities, tables
 
 class Provider(pulumi.ProviderResource):
-    def __init__(__self__, resource_name, opts=None, address=None, ca_file=None, ca_path=None, cert_file=None, datacenter=None, http_auth=None, insecure_https=None, key_file=None, scheme=None, token=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, address=None, ca_file=None, ca_path=None, cert_file=None, datacenter=None, http_auth=None, insecure_https=None, key_file=None, namespace=None, scheme=None, token=None, __props__=None, __name__=None, __opts__=None):
         """
         The provider type for the consul package. By default, resources use package-wide configuration
         settings, however an explicit `Provider` instance may be created and passed during resource
@@ -59,6 +59,7 @@ class Provider(pulumi.ProviderResource):
             if key_file is None:
                 key_file = utilities.get_env('CONSUL_KEY_FILE')
             __props__['key_file'] = key_file
+            __props__['namespace'] = namespace
             if scheme is None:
                 scheme = (utilities.get_env('CONSUL_SCHEME', 'CONSUL_HTTP_SCHEME') or 'http')
             __props__['scheme'] = scheme

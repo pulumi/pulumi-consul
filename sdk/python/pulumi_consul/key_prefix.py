@@ -15,6 +15,10 @@ class KeyPrefix(pulumi.CustomResource):
     The datacenter to use. This overrides the
     agent's default datacenter and the datacenter in the provider setup.
     """
+    namespace: pulumi.Output[str]
+    """
+    The namespace to create the keys within.
+    """
     path_prefix: pulumi.Output[str]
     """
     Specifies the common prefix shared by all keys
@@ -42,13 +46,14 @@ class KeyPrefix(pulumi.CustomResource):
     The ACL token to use. This overrides the
     token that the agent provides by default.
     """
-    def __init__(__self__, resource_name, opts=None, datacenter=None, path_prefix=None, subkey_collection=None, subkeys=None, token=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, datacenter=None, namespace=None, path_prefix=None, subkey_collection=None, subkeys=None, token=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a KeyPrefix resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the
                agent's default datacenter and the datacenter in the provider setup.
+        :param pulumi.Input[str] namespace: The namespace to create the keys within.
         :param pulumi.Input[str] path_prefix: Specifies the common prefix shared by all keys
                that will be managed by this resource instance. In most cases this will
                end with a slash, to manage a "folder" of keys.
@@ -85,6 +90,7 @@ class KeyPrefix(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['datacenter'] = datacenter
+            __props__['namespace'] = namespace
             if path_prefix is None:
                 raise TypeError("Missing required property 'path_prefix'")
             __props__['path_prefix'] = path_prefix
@@ -98,7 +104,7 @@ class KeyPrefix(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, datacenter=None, path_prefix=None, subkey_collection=None, subkeys=None, token=None):
+    def get(resource_name, id, opts=None, datacenter=None, namespace=None, path_prefix=None, subkey_collection=None, subkeys=None, token=None):
         """
         Get an existing KeyPrefix resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -108,6 +114,7 @@ class KeyPrefix(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the
                agent's default datacenter and the datacenter in the provider setup.
+        :param pulumi.Input[str] namespace: The namespace to create the keys within.
         :param pulumi.Input[str] path_prefix: Specifies the common prefix shared by all keys
                that will be managed by this resource instance. In most cases this will
                end with a slash, to manage a "folder" of keys.
@@ -131,6 +138,7 @@ class KeyPrefix(pulumi.CustomResource):
         __props__ = dict()
 
         __props__["datacenter"] = datacenter
+        __props__["namespace"] = namespace
         __props__["path_prefix"] = path_prefix
         __props__["subkey_collection"] = subkey_collection
         __props__["subkeys"] = subkeys

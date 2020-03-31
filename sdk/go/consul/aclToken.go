@@ -23,8 +23,12 @@ type AclToken struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The flag to set the token local to the current datacenter.
 	Local pulumi.BoolPtrOutput `pulumi:"local"`
+	// The namespace to create the token within.
+	Namespace pulumi.StringPtrOutput `pulumi:"namespace"`
 	// The list of policies attached to the token.
 	Policies pulumi.StringArrayOutput `pulumi:"policies"`
+	// The list of roles attached to the token.
+	Roles pulumi.StringArrayOutput `pulumi:"roles"`
 }
 
 // NewAclToken registers a new resource with the given unique name, arguments, and options.
@@ -62,8 +66,12 @@ type aclTokenState struct {
 	Description *string `pulumi:"description"`
 	// The flag to set the token local to the current datacenter.
 	Local *bool `pulumi:"local"`
+	// The namespace to create the token within.
+	Namespace *string `pulumi:"namespace"`
 	// The list of policies attached to the token.
 	Policies []string `pulumi:"policies"`
+	// The list of roles attached to the token.
+	Roles []string `pulumi:"roles"`
 }
 
 type AclTokenState struct {
@@ -74,8 +82,12 @@ type AclTokenState struct {
 	Description pulumi.StringPtrInput
 	// The flag to set the token local to the current datacenter.
 	Local pulumi.BoolPtrInput
+	// The namespace to create the token within.
+	Namespace pulumi.StringPtrInput
 	// The list of policies attached to the token.
 	Policies pulumi.StringArrayInput
+	// The list of roles attached to the token.
+	Roles pulumi.StringArrayInput
 }
 
 func (AclTokenState) ElementType() reflect.Type {
@@ -90,8 +102,12 @@ type aclTokenArgs struct {
 	Description *string `pulumi:"description"`
 	// The flag to set the token local to the current datacenter.
 	Local *bool `pulumi:"local"`
+	// The namespace to create the token within.
+	Namespace *string `pulumi:"namespace"`
 	// The list of policies attached to the token.
 	Policies []string `pulumi:"policies"`
+	// The list of roles attached to the token.
+	Roles []string `pulumi:"roles"`
 }
 
 // The set of arguments for constructing a AclToken resource.
@@ -103,8 +119,12 @@ type AclTokenArgs struct {
 	Description pulumi.StringPtrInput
 	// The flag to set the token local to the current datacenter.
 	Local pulumi.BoolPtrInput
+	// The namespace to create the token within.
+	Namespace pulumi.StringPtrInput
 	// The list of policies attached to the token.
 	Policies pulumi.StringArrayInput
+	// The list of roles attached to the token.
+	Roles pulumi.StringArrayInput
 }
 
 func (AclTokenArgs) ElementType() reflect.Type {

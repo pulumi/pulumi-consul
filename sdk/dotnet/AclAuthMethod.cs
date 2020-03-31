@@ -21,7 +21,7 @@ namespace Pulumi.Consul
         /// The raw configuration for this ACL auth method.
         /// </summary>
         [Output("config")]
-        public Output<ImmutableDictionary<string, object>> Config { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> Config { get; private set; } = null!;
 
         /// <summary>
         /// A free form human readable description of the auth method.
@@ -34,6 +34,12 @@ namespace Pulumi.Consul
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The namespace to create the policy within.
+        /// </summary>
+        [Output("namespace")]
+        public Output<string?> Namespace { get; private set; } = null!;
 
         /// <summary>
         /// The type of the ACL auth method.
@@ -88,14 +94,14 @@ namespace Pulumi.Consul
     public sealed class AclAuthMethodArgs : Pulumi.ResourceArgs
     {
         [Input("config", required: true)]
-        private InputMap<object>? _config;
+        private InputMap<string>? _config;
 
         /// <summary>
         /// The raw configuration for this ACL auth method.
         /// </summary>
-        public InputMap<object> Config
+        public InputMap<string> Config
         {
-            get => _config ?? (_config = new InputMap<object>());
+            get => _config ?? (_config = new InputMap<string>());
             set => _config = value;
         }
 
@@ -110,6 +116,12 @@ namespace Pulumi.Consul
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The namespace to create the policy within.
+        /// </summary>
+        [Input("namespace")]
+        public Input<string>? Namespace { get; set; }
 
         /// <summary>
         /// The type of the ACL auth method.
@@ -125,14 +137,14 @@ namespace Pulumi.Consul
     public sealed class AclAuthMethodState : Pulumi.ResourceArgs
     {
         [Input("config")]
-        private InputMap<object>? _config;
+        private InputMap<string>? _config;
 
         /// <summary>
         /// The raw configuration for this ACL auth method.
         /// </summary>
-        public InputMap<object> Config
+        public InputMap<string> Config
         {
-            get => _config ?? (_config = new InputMap<object>());
+            get => _config ?? (_config = new InputMap<string>());
             set => _config = value;
         }
 
@@ -147,6 +159,12 @@ namespace Pulumi.Consul
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The namespace to create the policy within.
+        /// </summary>
+        [Input("namespace")]
+        public Input<string>? Namespace { get; set; }
 
         /// <summary>
         /// The type of the ACL auth method.

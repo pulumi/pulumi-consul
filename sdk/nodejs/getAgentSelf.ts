@@ -8,7 +8,7 @@ import * as utilities from "./utilities";
 
 /**
  * > **Warning:** The `consul..getAgentSelf` resource has been deprecated and will be removed
- * from a future release of the provider. Read the [upgrade instructions](https://www.terraform.io/docs/providers/consul/upgrading.html#deprecation-of-consul_agent_self) for more information.
+ * from a future release of the provider. Read the [upgrade instructions](https://www.terraform.io/docs/providers/consul/guides/upgrading.html#deprecation-of-consul_agent_self) for more information.
  * 
  * 
  * The `consul..getAgentSelf` data source returns
@@ -41,10 +41,10 @@ export interface GetAgentSelfResult {
     readonly aclDownPolicy: string;
     readonly aclEnforce08Semantics: boolean;
     readonly aclTtl: string;
-    readonly addresses: outputs.GetAgentSelfAddresses;
+    readonly addresses: {[key: string]: string};
     readonly advertiseAddr: string;
     readonly advertiseAddrWan: string;
-    readonly advertiseAddrs: outputs.GetAgentSelfAdvertiseAddrs;
+    readonly advertiseAddrs: {[key: string]: string};
     readonly atlasJoin: boolean;
     readonly bindAddr: string;
     readonly bootstrapExpect: number;
@@ -116,7 +116,7 @@ export interface GetAgentSelfResult {
      * * [`uiDir`](https://www.consul.io/docs/agent/options.html#ui_dir)
      * * [`unixSockets`](https://www.consul.io/docs/agent/options.html#unix_sockets)
      */
-    readonly dns: outputs.GetAgentSelfDns;
+    readonly dns: {[key: string]: string};
     readonly dnsRecursors: string[];
     readonly domain: string;
     readonly enableAnonymousSignature: boolean;
@@ -131,16 +131,16 @@ export interface GetAgentSelfResult {
     readonly leaveOnTerm: boolean;
     readonly logLevel: string;
     readonly name: string;
-    readonly performance: outputs.GetAgentSelfPerformance;
+    readonly performance: {[key: string]: string};
     readonly pidFile: string;
-    readonly ports: outputs.GetAgentSelfPorts;
+    readonly ports: {[key: string]: number};
     readonly protocolVersion: number;
     readonly reconnectTimeoutLan: string;
     readonly reconnectTimeoutWan: string;
     readonly rejoinAfterLeave: boolean;
     readonly retryJoins: string[];
-    readonly retryJoinEc2: outputs.GetAgentSelfRetryJoinEc2;
-    readonly retryJoinGce: outputs.GetAgentSelfRetryJoinGce;
+    readonly retryJoinEc2: {[key: string]: string};
+    readonly retryJoinGce: {[key: string]: string};
     readonly retryJoinWans: string[];
     readonly retryMaxAttempts: number;
     readonly retryMaxAttemptsWan: number;
@@ -152,8 +152,8 @@ export interface GetAgentSelfResult {
     readonly startJoins: string[];
     readonly startJoinWans: string[];
     readonly syslogFacility: string;
-    readonly taggedAddresses: outputs.GetAgentSelfTaggedAddresses;
-    readonly telemetry: outputs.GetAgentSelfTelemetry;
+    readonly taggedAddresses: {[key: string]: string};
+    readonly telemetry: {[key: string]: string};
     readonly tlsCaFile: string;
     readonly tlsCertFile: string;
     readonly tlsKeyFile: string;
@@ -163,7 +163,7 @@ export interface GetAgentSelfResult {
     readonly tlsVerifyServerHostname: boolean;
     readonly translateWanAddrs: boolean;
     readonly uiDir: string;
-    readonly unixSockets: outputs.GetAgentSelfUnixSockets;
+    readonly unixSockets: {[key: string]: string};
     /**
      * The version of the Consul agent.
      * * `versionPrerelease`
