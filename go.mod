@@ -7,7 +7,7 @@ require (
 	github.com/pkg/errors v0.8.1
 	github.com/pulumi/pulumi v1.12.2-0.20200313044354-8111d33438b9
 	github.com/pulumi/pulumi-terraform-bridge v1.8.2
-	github.com/terraform-providers/terraform-provider-consul v0.0.0-20191025151742-3d78dec813d9
+	github.com/terraform-providers/terraform-provider-consul v1.1.1-0.20200326204544-6a3c38fc1ba8
 )
 
 replace (
