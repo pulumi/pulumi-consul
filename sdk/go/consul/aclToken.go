@@ -130,4 +130,3 @@ type AclTokenArgs struct {
 func (AclTokenArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*aclTokenArgs)(nil)).Elem()
 }
-

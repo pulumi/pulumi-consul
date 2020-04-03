@@ -23,23 +23,11 @@ func LookupAclRole(ctx *pulumi.Context, args *LookupAclRoleArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getAclRole.
 type LookupAclRoleArgs struct {
+	// The description of the ACL Role.
 	Description *string `pulumi:"description"`
 	// The name of the ACL Role.
 	Name string `pulumi:"name"`
 	// The namespace to lookup the role.
-	Namespace *string `pulumi:"namespace"`
-	Policies []GetAclRolePolicy `pulumi:"policies"`
-	ServiceIdentities []GetAclRoleServiceIdentity `pulumi:"serviceIdentities"`
-}
-
-
-// A collection of values returned by getAclRole.
-type LookupAclRoleResult struct {
-	// The description of the ACL Role.
-	Description *string `pulumi:"description"`
-	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	Name string `pulumi:"name"`
 	Namespace *string `pulumi:"namespace"`
 	// The list of policies associated with the ACL Role. Each entry has
 	// an `id` and a `name` attribute.
@@ -49,3 +37,18 @@ type LookupAclRoleResult struct {
 	ServiceIdentities []GetAclRoleServiceIdentity `pulumi:"serviceIdentities"`
 }
 
+// A collection of values returned by getAclRole.
+type LookupAclRoleResult struct {
+	// The description of the ACL Role.
+	Description *string `pulumi:"description"`
+	// id is the provider-assigned unique ID for this managed resource.
+	Id        string  `pulumi:"id"`
+	Name      string  `pulumi:"name"`
+	Namespace *string `pulumi:"namespace"`
+	// The list of policies associated with the ACL Role. Each entry has
+	// an `id` and a `name` attribute.
+	Policies []GetAclRolePolicy `pulumi:"policies"`
+	// The list of service identities associated with the ACL
+	// Role. Each entry has a `serviceName` attribute and a list of `datacenters`.
+	ServiceIdentities []GetAclRoleServiceIdentity `pulumi:"serviceIdentities"`
+}

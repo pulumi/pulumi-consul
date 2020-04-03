@@ -18,7 +18,20 @@ namespace Pulumi.Consul
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/autopilot_health.html.markdown.
         /// </summary>
+        [Obsolete("Use GetAutopilotHealth.InvokeAsync() instead")]
         public static Task<GetAutopilotHealthResult> GetAutopilotHealth(GetAutopilotHealthArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAutopilotHealthResult>("consul:index/getAutopilotHealth:getAutopilotHealth", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetAutopilotHealth
+    {
+        /// <summary>
+        /// The `consul..getAutopilotHealth` data source returns
+        /// [autopilot health information](https://www.consul.io/api/operator/autopilot.html#read-health)
+        /// about the current Consul cluster.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/autopilot_health.html.markdown.
+        /// </summary>
+        public static Task<GetAutopilotHealthResult> InvokeAsync(GetAutopilotHealthArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAutopilotHealthResult>("consul:index/getAutopilotHealth:getAutopilotHealth", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

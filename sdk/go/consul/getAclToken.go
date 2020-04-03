@@ -28,13 +28,16 @@ func LookupAclToken(ctx *pulumi.Context, args *LookupAclTokenArgs, opts ...pulum
 type LookupAclTokenArgs struct {
 	// The accessor ID of the ACL token.
 	AccessorId string `pulumi:"accessorId"`
+	// The description of the ACL token.
 	Description *string `pulumi:"description"`
+	// Whether the ACL token is local to the datacenter it was created within.
 	Local *bool `pulumi:"local"`
 	// The namespace to lookup the ACL token.
 	Namespace *string `pulumi:"namespace"`
+	// A list of policies associated with the ACL token. Each entry has
+	// an `id` and a `name` attribute.
 	Policies []GetAclTokenPolicy `pulumi:"policies"`
 }
-
 
 // A collection of values returned by getAclToken.
 type LookupAclTokenResult struct {
@@ -44,10 +47,9 @@ type LookupAclTokenResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Whether the ACL token is local to the datacenter it was created within.
-	Local *bool `pulumi:"local"`
+	Local     *bool   `pulumi:"local"`
 	Namespace *string `pulumi:"namespace"`
 	// A list of policies associated with the ACL token. Each entry has
 	// an `id` and a `name` attribute.
 	Policies []GetAclTokenPolicy `pulumi:"policies"`
 }
-

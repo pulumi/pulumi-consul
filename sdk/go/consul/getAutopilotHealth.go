@@ -29,7 +29,6 @@ type GetAutopilotHealthArgs struct {
 	Datacenter *string `pulumi:"datacenter"`
 }
 
-
 // A collection of values returned by getAutopilotHealth.
 type GetAutopilotHealthResult struct {
 	Datacenter *string `pulumi:"datacenter"`
@@ -45,4 +44,3 @@ type GetAutopilotHealthResult struct {
 	// available information.
 	Servers []GetAutopilotHealthServer `pulumi:"servers"`
 }
-

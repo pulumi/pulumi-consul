@@ -156,4 +156,3 @@ type AclBindingRuleArgs struct {
 func (AclBindingRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*aclBindingRuleArgs)(nil)).Elem()
 }
-

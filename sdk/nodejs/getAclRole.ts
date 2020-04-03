@@ -35,6 +35,9 @@ export function getAclRole(args: GetAclRoleArgs, opts?: pulumi.InvokeOptions): P
  * A collection of arguments for invoking getAclRole.
  */
 export interface GetAclRoleArgs {
+    /**
+     * The description of the ACL Role.
+     */
     readonly description?: string;
     /**
      * The name of the ACL Role.
@@ -44,7 +47,15 @@ export interface GetAclRoleArgs {
      * The namespace to lookup the role.
      */
     readonly namespace?: string;
+    /**
+     * The list of policies associated with the ACL Role. Each entry has
+     * an `id` and a `name` attribute.
+     */
     readonly policies?: inputs.GetAclRolePolicy[];
+    /**
+     * The list of service identities associated with the ACL
+     * Role. Each entry has a `serviceName` attribute and a list of `datacenters`.
+     */
     readonly serviceIdentities?: inputs.GetAclRoleServiceIdentity[];
 }
 

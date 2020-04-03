@@ -75,17 +75,23 @@ def get_nodes(query_options=None,opts=None):
 
     The **query_options** object supports the following:
 
-      * `allowStale` (`bool`)
+      * `allowStale` (`bool`) - When `true`, the default, allow responses from
+        Consul servers that are followers.
       * `datacenter` (`str`) - The Consul datacenter to query.  Defaults to the
         same value found in `query_options` parameter specified below, or if that is
         empty, the `datacenter` value found in the Consul agent that this provider is
         configured to talk to then the datacenter in the provider setup.
       * `near` (`str`)
       * `nodeMeta` (`dict`)
-      * `requireConsistent` (`bool`)
-      * `token` (`str`)
-      * `waitIndex` (`float`)
-      * `waitTime` (`str`)
+      * `requireConsistent` (`bool`) - When `true` force the client to perform a
+        read on at least quorum servers and verify the result is the same.  Defaults
+        to `false`.
+      * `token` (`str`) - Specify the Consul ACL token to use when performing the
+        request.  This defaults to the same API token configured by the `consul`
+        provider but may be overriden if necessary.
+      * `waitIndex` (`float`) - Index number used to enable blocking quereis.
+      * `waitTime` (`str`) - Max time the client should wait for a blocking query
+        to return.
     """
     __args__ = dict()
 

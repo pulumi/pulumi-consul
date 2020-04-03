@@ -22,15 +22,13 @@ type GetCatalogNodesArgs struct {
 	QueryOptions []GetCatalogNodesQueryOption `pulumi:"queryOptions"`
 }
 
-
 // A collection of values returned by getCatalogNodes.
 type GetCatalogNodesResult struct {
 	Datacenter string `pulumi:"datacenter"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	NodeIds []string `pulumi:"nodeIds"`
-	NodeNames []string `pulumi:"nodeNames"`
-	Nodes []GetCatalogNodesNode `pulumi:"nodes"`
+	Id           string                       `pulumi:"id"`
+	NodeIds      []string                     `pulumi:"nodeIds"`
+	NodeNames    []string                     `pulumi:"nodeNames"`
+	Nodes        []GetCatalogNodesNode        `pulumi:"nodes"`
 	QueryOptions []GetCatalogNodesQueryOption `pulumi:"queryOptions"`
 }
-

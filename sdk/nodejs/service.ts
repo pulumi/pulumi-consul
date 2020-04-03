@@ -125,7 +125,7 @@ export class Service extends pulumi.CustomResource {
      */
     public readonly meta!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The name of the header.
+     * The name of the health-check.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -223,7 +223,7 @@ export interface ServiceState {
      */
     readonly meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The name of the header.
+     * The name of the health-check.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -271,7 +271,7 @@ export interface ServiceArgs {
      */
     readonly meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The name of the header.
+     * The name of the health-check.
      */
     readonly name?: pulumi.Input<string>;
     /**

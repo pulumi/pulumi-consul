@@ -67,8 +67,13 @@ def get_acl_role(description=None,name=None,namespace=None,policies=None,service
     > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/acl_role.html.markdown.
 
 
+    :param str description: The description of the ACL Role.
     :param str name: The name of the ACL Role.
     :param str namespace: The namespace to lookup the role.
+    :param list policies: The list of policies associated with the ACL Role. Each entry has
+           an `id` and a `name` attribute.
+    :param list service_identities: The list of service identities associated with the ACL
+           Role. Each entry has a `service_name` attribute and a list of `datacenters`.
 
     The **policies** object supports the following:
 

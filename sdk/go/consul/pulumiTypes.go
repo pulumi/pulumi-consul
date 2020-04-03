@@ -65,7 +65,7 @@ func (i AclRoleServiceIdentityArray) ToAclRoleServiceIdentityArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(AclRoleServiceIdentityArrayOutput)
 }
 
-type AclRoleServiceIdentityOutput struct { *pulumi.OutputState }
+type AclRoleServiceIdentityOutput struct{ *pulumi.OutputState }
 
 func (AclRoleServiceIdentityOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AclRoleServiceIdentity)(nil)).Elem()
@@ -81,15 +81,15 @@ func (o AclRoleServiceIdentityOutput) ToAclRoleServiceIdentityOutputWithContext(
 
 // The datacenters the effective policy is valid within.
 func (o AclRoleServiceIdentityOutput) Datacenters() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v AclRoleServiceIdentity) []string { return v.Datacenters }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v AclRoleServiceIdentity) []string { return v.Datacenters }).(pulumi.StringArrayOutput)
 }
 
 // The name of the service.
 func (o AclRoleServiceIdentityOutput) ServiceName() pulumi.StringOutput {
-	return o.ApplyT(func (v AclRoleServiceIdentity) string { return v.ServiceName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v AclRoleServiceIdentity) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-type AclRoleServiceIdentityArrayOutput struct { *pulumi.OutputState}
+type AclRoleServiceIdentityArrayOutput struct{ *pulumi.OutputState }
 
 func (AclRoleServiceIdentityArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]AclRoleServiceIdentity)(nil)).Elem()
@@ -104,18 +104,23 @@ func (o AclRoleServiceIdentityArrayOutput) ToAclRoleServiceIdentityArrayOutputWi
 }
 
 func (o AclRoleServiceIdentityArrayOutput) Index(i pulumi.IntInput) AclRoleServiceIdentityOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) AclRoleServiceIdentity {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AclRoleServiceIdentity {
 		return vs[0].([]AclRoleServiceIdentity)[vs[1].(int)]
 	}).(AclRoleServiceIdentityOutput)
 }
 
 type CatalogEntryService struct {
-	// The address of the node being added to,
-	// or referenced in the catalog.
+	// The address of the service. Defaults to the
+	// node address.
 	Address *string `pulumi:"address"`
+	// The ID of the service. Defaults to the `name`.
 	Id *string `pulumi:"id"`
+	// The name of the service
 	Name string `pulumi:"name"`
+	// The port of the service.
 	Port *int `pulumi:"port"`
+	// A list of values that are opaque to Consul,
+	// but can be used to distinguish between services or nodes.
 	Tags []string `pulumi:"tags"`
 }
 
@@ -127,12 +132,17 @@ type CatalogEntryServiceInput interface {
 }
 
 type CatalogEntryServiceArgs struct {
-	// The address of the node being added to,
-	// or referenced in the catalog.
+	// The address of the service. Defaults to the
+	// node address.
 	Address pulumi.StringPtrInput `pulumi:"address"`
+	// The ID of the service. Defaults to the `name`.
 	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The name of the service
 	Name pulumi.StringInput `pulumi:"name"`
+	// The port of the service.
 	Port pulumi.IntPtrInput `pulumi:"port"`
+	// A list of values that are opaque to Consul,
+	// but can be used to distinguish between services or nodes.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
 }
 
@@ -169,7 +179,7 @@ func (i CatalogEntryServiceArray) ToCatalogEntryServiceArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(CatalogEntryServiceArrayOutput)
 }
 
-type CatalogEntryServiceOutput struct { *pulumi.OutputState }
+type CatalogEntryServiceOutput struct{ *pulumi.OutputState }
 
 func (CatalogEntryServiceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*CatalogEntryService)(nil)).Elem()
@@ -183,29 +193,34 @@ func (o CatalogEntryServiceOutput) ToCatalogEntryServiceOutputWithContext(ctx co
 	return o
 }
 
-// The address of the node being added to,
-// or referenced in the catalog.
+// The address of the service. Defaults to the
+// node address.
 func (o CatalogEntryServiceOutput) Address() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v CatalogEntryService) *string { return v.Address }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v CatalogEntryService) *string { return v.Address }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the service. Defaults to the `name`.
 func (o CatalogEntryServiceOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v CatalogEntryService) *string { return v.Id }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v CatalogEntryService) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// The name of the service
 func (o CatalogEntryServiceOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v CatalogEntryService) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v CatalogEntryService) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The port of the service.
 func (o CatalogEntryServiceOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v CatalogEntryService) *int { return v.Port }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v CatalogEntryService) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
+// A list of values that are opaque to Consul,
+// but can be used to distinguish between services or nodes.
 func (o CatalogEntryServiceOutput) Tags() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v CatalogEntryService) []string { return v.Tags }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v CatalogEntryService) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-type CatalogEntryServiceArrayOutput struct { *pulumi.OutputState}
+type CatalogEntryServiceArrayOutput struct{ *pulumi.OutputState }
 
 func (CatalogEntryServiceArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]CatalogEntryService)(nil)).Elem()
@@ -220,14 +235,19 @@ func (o CatalogEntryServiceArrayOutput) ToCatalogEntryServiceArrayOutputWithCont
 }
 
 func (o CatalogEntryServiceArrayOutput) Index(i pulumi.IntInput) CatalogEntryServiceOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) CatalogEntryService {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CatalogEntryService {
 		return vs[0].([]CatalogEntryService)[vs[1].(int)]
 	}).(CatalogEntryServiceOutput)
 }
 
 type KeyPrefixSubkeyCollection struct {
+	// An [unsigned integer value](https://www.consul.io/api/kv.html#flags-1)
+	// to attach to the key (defaults to 0).
 	Flags *int `pulumi:"flags"`
+	// This is the path (which will be appended to the given
+	// `pathPrefix`) in Consul that should be written to.
 	Path string `pulumi:"path"`
+	// The value to write to the given path.
 	Value string `pulumi:"value"`
 }
 
@@ -239,8 +259,13 @@ type KeyPrefixSubkeyCollectionInput interface {
 }
 
 type KeyPrefixSubkeyCollectionArgs struct {
+	// An [unsigned integer value](https://www.consul.io/api/kv.html#flags-1)
+	// to attach to the key (defaults to 0).
 	Flags pulumi.IntPtrInput `pulumi:"flags"`
+	// This is the path (which will be appended to the given
+	// `pathPrefix`) in Consul that should be written to.
 	Path pulumi.StringInput `pulumi:"path"`
+	// The value to write to the given path.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -277,7 +302,7 @@ func (i KeyPrefixSubkeyCollectionArray) ToKeyPrefixSubkeyCollectionArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(KeyPrefixSubkeyCollectionArrayOutput)
 }
 
-type KeyPrefixSubkeyCollectionOutput struct { *pulumi.OutputState }
+type KeyPrefixSubkeyCollectionOutput struct{ *pulumi.OutputState }
 
 func (KeyPrefixSubkeyCollectionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*KeyPrefixSubkeyCollection)(nil)).Elem()
@@ -291,19 +316,24 @@ func (o KeyPrefixSubkeyCollectionOutput) ToKeyPrefixSubkeyCollectionOutputWithCo
 	return o
 }
 
+// An [unsigned integer value](https://www.consul.io/api/kv.html#flags-1)
+// to attach to the key (defaults to 0).
 func (o KeyPrefixSubkeyCollectionOutput) Flags() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v KeyPrefixSubkeyCollection) *int { return v.Flags }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v KeyPrefixSubkeyCollection) *int { return v.Flags }).(pulumi.IntPtrOutput)
 }
 
+// This is the path (which will be appended to the given
+// `pathPrefix`) in Consul that should be written to.
 func (o KeyPrefixSubkeyCollectionOutput) Path() pulumi.StringOutput {
-	return o.ApplyT(func (v KeyPrefixSubkeyCollection) string { return v.Path }).(pulumi.StringOutput)
+	return o.ApplyT(func(v KeyPrefixSubkeyCollection) string { return v.Path }).(pulumi.StringOutput)
 }
 
+// The value to write to the given path.
 func (o KeyPrefixSubkeyCollectionOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func (v KeyPrefixSubkeyCollection) string { return v.Value }).(pulumi.StringOutput)
+	return o.ApplyT(func(v KeyPrefixSubkeyCollection) string { return v.Value }).(pulumi.StringOutput)
 }
 
-type KeyPrefixSubkeyCollectionArrayOutput struct { *pulumi.OutputState}
+type KeyPrefixSubkeyCollectionArrayOutput struct{ *pulumi.OutputState }
 
 func (KeyPrefixSubkeyCollectionArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]KeyPrefixSubkeyCollection)(nil)).Elem()
@@ -318,17 +348,25 @@ func (o KeyPrefixSubkeyCollectionArrayOutput) ToKeyPrefixSubkeyCollectionArrayOu
 }
 
 func (o KeyPrefixSubkeyCollectionArrayOutput) Index(i pulumi.IntInput) KeyPrefixSubkeyCollectionOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) KeyPrefixSubkeyCollection {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KeyPrefixSubkeyCollection {
 		return vs[0].([]KeyPrefixSubkeyCollection)[vs[1].(int)]
 	}).(KeyPrefixSubkeyCollectionOutput)
 }
 
 type KeysKey struct {
 	Default *string `pulumi:"default"`
+	// If true, then the key will be deleted when
+	// either its configuration block is removed from the configuration or
+	// the entire resource is destroyed. Otherwise, it will be left in Consul.
+	// Defaults to false.
 	Delete *bool `pulumi:"delete"`
-	Flags *int `pulumi:"flags"`
-	Name *string `pulumi:"name"`
+	// An [unsigned integer value](https://www.consul.io/api/kv.html#flags-1)
+	// to attach to the key (defaults to 0).
+	Flags *int    `pulumi:"flags"`
+	Name  *string `pulumi:"name"`
+	// This is the path in Consul that should be written to.
 	Path string `pulumi:"path"`
+	// The value to write to the given path.
 	Value *string `pulumi:"value"`
 }
 
@@ -341,10 +379,18 @@ type KeysKeyInput interface {
 
 type KeysKeyArgs struct {
 	Default pulumi.StringPtrInput `pulumi:"default"`
+	// If true, then the key will be deleted when
+	// either its configuration block is removed from the configuration or
+	// the entire resource is destroyed. Otherwise, it will be left in Consul.
+	// Defaults to false.
 	Delete pulumi.BoolPtrInput `pulumi:"delete"`
-	Flags pulumi.IntPtrInput `pulumi:"flags"`
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	// An [unsigned integer value](https://www.consul.io/api/kv.html#flags-1)
+	// to attach to the key (defaults to 0).
+	Flags pulumi.IntPtrInput    `pulumi:"flags"`
+	Name  pulumi.StringPtrInput `pulumi:"name"`
+	// This is the path in Consul that should be written to.
 	Path pulumi.StringInput `pulumi:"path"`
+	// The value to write to the given path.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -381,7 +427,7 @@ func (i KeysKeyArray) ToKeysKeyArrayOutputWithContext(ctx context.Context) KeysK
 	return pulumi.ToOutputWithContext(ctx, i).(KeysKeyArrayOutput)
 }
 
-type KeysKeyOutput struct { *pulumi.OutputState }
+type KeysKeyOutput struct{ *pulumi.OutputState }
 
 func (KeysKeyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*KeysKey)(nil)).Elem()
@@ -396,30 +442,38 @@ func (o KeysKeyOutput) ToKeysKeyOutputWithContext(ctx context.Context) KeysKeyOu
 }
 
 func (o KeysKeyOutput) Default() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v KeysKey) *string { return v.Default }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v KeysKey) *string { return v.Default }).(pulumi.StringPtrOutput)
 }
 
+// If true, then the key will be deleted when
+// either its configuration block is removed from the configuration or
+// the entire resource is destroyed. Otherwise, it will be left in Consul.
+// Defaults to false.
 func (o KeysKeyOutput) Delete() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v KeysKey) *bool { return v.Delete }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v KeysKey) *bool { return v.Delete }).(pulumi.BoolPtrOutput)
 }
 
+// An [unsigned integer value](https://www.consul.io/api/kv.html#flags-1)
+// to attach to the key (defaults to 0).
 func (o KeysKeyOutput) Flags() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v KeysKey) *int { return v.Flags }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v KeysKey) *int { return v.Flags }).(pulumi.IntPtrOutput)
 }
 
 func (o KeysKeyOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v KeysKey) *string { return v.Name }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v KeysKey) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// This is the path in Consul that should be written to.
 func (o KeysKeyOutput) Path() pulumi.StringOutput {
-	return o.ApplyT(func (v KeysKey) string { return v.Path }).(pulumi.StringOutput)
+	return o.ApplyT(func(v KeysKey) string { return v.Path }).(pulumi.StringOutput)
 }
 
+// The value to write to the given path.
 func (o KeysKeyOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v KeysKey) *string { return v.Value }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v KeysKey) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
-type KeysKeyArrayOutput struct { *pulumi.OutputState}
+type KeysKeyArrayOutput struct{ *pulumi.OutputState }
 
 func (KeysKeyArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]KeysKey)(nil)).Elem()
@@ -434,7 +488,7 @@ func (o KeysKeyArrayOutput) ToKeysKeyArrayOutputWithContext(ctx context.Context)
 }
 
 func (o KeysKeyArrayOutput) Index(i pulumi.IntInput) KeysKeyOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) KeysKey {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KeysKey {
 		return vs[0].([]KeysKey)[vs[1].(int)]
 	}).(KeysKeyOutput)
 }
@@ -485,7 +539,8 @@ type PreparedQueryDnsPtrInput interface {
 
 type preparedQueryDnsPtrType PreparedQueryDnsArgs
 
-func PreparedQueryDnsPtr(v *PreparedQueryDnsArgs) PreparedQueryDnsPtrInput {	return (*preparedQueryDnsPtrType)(v)
+func PreparedQueryDnsPtr(v *PreparedQueryDnsArgs) PreparedQueryDnsPtrInput {
+	return (*preparedQueryDnsPtrType)(v)
 }
 
 func (*preparedQueryDnsPtrType) ElementType() reflect.Type {
@@ -500,7 +555,7 @@ func (i *preparedQueryDnsPtrType) ToPreparedQueryDnsPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(PreparedQueryDnsPtrOutput)
 }
 
-type PreparedQueryDnsOutput struct { *pulumi.OutputState }
+type PreparedQueryDnsOutput struct{ *pulumi.OutputState }
 
 func (PreparedQueryDnsOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*PreparedQueryDns)(nil)).Elem()
@@ -523,12 +578,13 @@ func (o PreparedQueryDnsOutput) ToPreparedQueryDnsPtrOutputWithContext(ctx conte
 		return &v
 	}).(PreparedQueryDnsPtrOutput)
 }
+
 // The TTL to send when returning DNS results.
 func (o PreparedQueryDnsOutput) Ttl() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v PreparedQueryDns) *string { return v.Ttl }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v PreparedQueryDns) *string { return v.Ttl }).(pulumi.StringPtrOutput)
 }
 
-type PreparedQueryDnsPtrOutput struct { *pulumi.OutputState}
+type PreparedQueryDnsPtrOutput struct{ *pulumi.OutputState }
 
 func (PreparedQueryDnsPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**PreparedQueryDns)(nil)).Elem()
@@ -543,12 +599,12 @@ func (o PreparedQueryDnsPtrOutput) ToPreparedQueryDnsPtrOutputWithContext(ctx co
 }
 
 func (o PreparedQueryDnsPtrOutput) Elem() PreparedQueryDnsOutput {
-	return o.ApplyT(func (v *PreparedQueryDns) PreparedQueryDns { return *v }).(PreparedQueryDnsOutput)
+	return o.ApplyT(func(v *PreparedQueryDns) PreparedQueryDns { return *v }).(PreparedQueryDnsOutput)
 }
 
 // The TTL to send when returning DNS results.
 func (o PreparedQueryDnsPtrOutput) Ttl() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v PreparedQueryDns) *string { return v.Ttl }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v PreparedQueryDns) *string { return v.Ttl }).(pulumi.StringPtrOutput)
 }
 
 type PreparedQueryFailover struct {
@@ -603,7 +659,8 @@ type PreparedQueryFailoverPtrInput interface {
 
 type preparedQueryFailoverPtrType PreparedQueryFailoverArgs
 
-func PreparedQueryFailoverPtr(v *PreparedQueryFailoverArgs) PreparedQueryFailoverPtrInput {	return (*preparedQueryFailoverPtrType)(v)
+func PreparedQueryFailoverPtr(v *PreparedQueryFailoverArgs) PreparedQueryFailoverPtrInput {
+	return (*preparedQueryFailoverPtrType)(v)
 }
 
 func (*preparedQueryFailoverPtrType) ElementType() reflect.Type {
@@ -618,7 +675,7 @@ func (i *preparedQueryFailoverPtrType) ToPreparedQueryFailoverPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(PreparedQueryFailoverPtrOutput)
 }
 
-type PreparedQueryFailoverOutput struct { *pulumi.OutputState }
+type PreparedQueryFailoverOutput struct{ *pulumi.OutputState }
 
 func (PreparedQueryFailoverOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*PreparedQueryFailover)(nil)).Elem()
@@ -641,18 +698,19 @@ func (o PreparedQueryFailoverOutput) ToPreparedQueryFailoverPtrOutputWithContext
 		return &v
 	}).(PreparedQueryFailoverPtrOutput)
 }
+
 // Remote datacenters to return results from.
 func (o PreparedQueryFailoverOutput) Datacenters() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v PreparedQueryFailover) []string { return v.Datacenters }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v PreparedQueryFailover) []string { return v.Datacenters }).(pulumi.StringArrayOutput)
 }
 
 // Return results from this many datacenters,
 // sorted in ascending order of estimated RTT.
 func (o PreparedQueryFailoverOutput) NearestN() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v PreparedQueryFailover) *int { return v.NearestN }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v PreparedQueryFailover) *int { return v.NearestN }).(pulumi.IntPtrOutput)
 }
 
-type PreparedQueryFailoverPtrOutput struct { *pulumi.OutputState}
+type PreparedQueryFailoverPtrOutput struct{ *pulumi.OutputState }
 
 func (PreparedQueryFailoverPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**PreparedQueryFailover)(nil)).Elem()
@@ -667,18 +725,18 @@ func (o PreparedQueryFailoverPtrOutput) ToPreparedQueryFailoverPtrOutputWithCont
 }
 
 func (o PreparedQueryFailoverPtrOutput) Elem() PreparedQueryFailoverOutput {
-	return o.ApplyT(func (v *PreparedQueryFailover) PreparedQueryFailover { return *v }).(PreparedQueryFailoverOutput)
+	return o.ApplyT(func(v *PreparedQueryFailover) PreparedQueryFailover { return *v }).(PreparedQueryFailoverOutput)
 }
 
 // Remote datacenters to return results from.
 func (o PreparedQueryFailoverPtrOutput) Datacenters() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v PreparedQueryFailover) []string { return v.Datacenters }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v PreparedQueryFailover) []string { return v.Datacenters }).(pulumi.StringArrayOutput)
 }
 
 // Return results from this many datacenters,
 // sorted in ascending order of estimated RTT.
 func (o PreparedQueryFailoverPtrOutput) NearestN() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v PreparedQueryFailover) *int { return v.NearestN }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v PreparedQueryFailover) *int { return v.NearestN }).(pulumi.IntPtrOutput)
 }
 
 type PreparedQueryTemplate struct {
@@ -735,7 +793,8 @@ type PreparedQueryTemplatePtrInput interface {
 
 type preparedQueryTemplatePtrType PreparedQueryTemplateArgs
 
-func PreparedQueryTemplatePtr(v *PreparedQueryTemplateArgs) PreparedQueryTemplatePtrInput {	return (*preparedQueryTemplatePtrType)(v)
+func PreparedQueryTemplatePtr(v *PreparedQueryTemplateArgs) PreparedQueryTemplatePtrInput {
+	return (*preparedQueryTemplatePtrType)(v)
 }
 
 func (*preparedQueryTemplatePtrType) ElementType() reflect.Type {
@@ -750,7 +809,7 @@ func (i *preparedQueryTemplatePtrType) ToPreparedQueryTemplatePtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(PreparedQueryTemplatePtrOutput)
 }
 
-type PreparedQueryTemplateOutput struct { *pulumi.OutputState }
+type PreparedQueryTemplateOutput struct{ *pulumi.OutputState }
 
 func (PreparedQueryTemplateOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*PreparedQueryTemplate)(nil)).Elem()
@@ -773,19 +832,20 @@ func (o PreparedQueryTemplateOutput) ToPreparedQueryTemplatePtrOutputWithContext
 		return &v
 	}).(PreparedQueryTemplatePtrOutput)
 }
+
 // The regular expression to match with. When using
 // `namePrefixMatch`, this regex is applied against the query name.
 func (o PreparedQueryTemplateOutput) Regexp() pulumi.StringOutput {
-	return o.ApplyT(func (v PreparedQueryTemplate) string { return v.Regexp }).(pulumi.StringOutput)
+	return o.ApplyT(func(v PreparedQueryTemplate) string { return v.Regexp }).(pulumi.StringOutput)
 }
 
 // The type of template matching to perform. Currently
 // only `namePrefixMatch` is supported.
 func (o PreparedQueryTemplateOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func (v PreparedQueryTemplate) string { return v.Type }).(pulumi.StringOutput)
+	return o.ApplyT(func(v PreparedQueryTemplate) string { return v.Type }).(pulumi.StringOutput)
 }
 
-type PreparedQueryTemplatePtrOutput struct { *pulumi.OutputState}
+type PreparedQueryTemplatePtrOutput struct{ *pulumi.OutputState }
 
 func (PreparedQueryTemplatePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**PreparedQueryTemplate)(nil)).Elem()
@@ -800,19 +860,19 @@ func (o PreparedQueryTemplatePtrOutput) ToPreparedQueryTemplatePtrOutputWithCont
 }
 
 func (o PreparedQueryTemplatePtrOutput) Elem() PreparedQueryTemplateOutput {
-	return o.ApplyT(func (v *PreparedQueryTemplate) PreparedQueryTemplate { return *v }).(PreparedQueryTemplateOutput)
+	return o.ApplyT(func(v *PreparedQueryTemplate) PreparedQueryTemplate { return *v }).(PreparedQueryTemplateOutput)
 }
 
 // The regular expression to match with. When using
 // `namePrefixMatch`, this regex is applied against the query name.
 func (o PreparedQueryTemplatePtrOutput) Regexp() pulumi.StringOutput {
-	return o.ApplyT(func (v PreparedQueryTemplate) string { return v.Regexp }).(pulumi.StringOutput)
+	return o.ApplyT(func(v PreparedQueryTemplate) string { return v.Regexp }).(pulumi.StringOutput)
 }
 
 // The type of template matching to perform. Currently
 // only `namePrefixMatch` is supported.
 func (o PreparedQueryTemplatePtrOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func (v PreparedQueryTemplate) string { return v.Type }).(pulumi.StringOutput)
+	return o.ApplyT(func(v PreparedQueryTemplate) string { return v.Type }).(pulumi.StringOutput)
 }
 
 type ServiceCheck struct {
@@ -834,7 +894,7 @@ type ServiceCheck struct {
 	// The method to use for HTTP health-checks. Defaults
 	// to `GET`.
 	Method *string `pulumi:"method"`
-	// The name of the header.
+	// The name of the health-check.
 	Name string `pulumi:"name"`
 	// An opaque field meant to hold human readable text.
 	Notes *string `pulumi:"notes"`
@@ -875,7 +935,7 @@ type ServiceCheckArgs struct {
 	// The method to use for HTTP health-checks. Defaults
 	// to `GET`.
 	Method pulumi.StringPtrInput `pulumi:"method"`
-	// The name of the header.
+	// The name of the health-check.
 	Name pulumi.StringInput `pulumi:"name"`
 	// An opaque field meant to hold human readable text.
 	Notes pulumi.StringPtrInput `pulumi:"notes"`
@@ -923,7 +983,7 @@ func (i ServiceCheckArray) ToServiceCheckArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceCheckArrayOutput)
 }
 
-type ServiceCheckOutput struct { *pulumi.OutputState }
+type ServiceCheckOutput struct{ *pulumi.OutputState }
 
 func (ServiceCheckOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ServiceCheck)(nil)).Elem()
@@ -940,71 +1000,71 @@ func (o ServiceCheckOutput) ToServiceCheckOutputWithContext(ctx context.Context)
 // An ID, *unique per agent*. Will default to *name*
 // if not set.
 func (o ServiceCheckOutput) CheckId() pulumi.StringOutput {
-	return o.ApplyT(func (v ServiceCheck) string { return v.CheckId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ServiceCheck) string { return v.CheckId }).(pulumi.StringOutput)
 }
 
 // The time after which
 // the service is automatically deregistered when in the `critical` state.
 // Defaults to `30s`.
 func (o ServiceCheckOutput) DeregisterCriticalServiceAfter() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ServiceCheck) *string { return v.DeregisterCriticalServiceAfter }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ServiceCheck) *string { return v.DeregisterCriticalServiceAfter }).(pulumi.StringPtrOutput)
 }
 
 // The headers to send for an HTTP check.
 // The attributes of each header is given below.
 func (o ServiceCheckOutput) Headers() ServiceCheckHeaderArrayOutput {
-	return o.ApplyT(func (v ServiceCheck) []ServiceCheckHeader { return v.Headers }).(ServiceCheckHeaderArrayOutput)
+	return o.ApplyT(func(v ServiceCheck) []ServiceCheckHeader { return v.Headers }).(ServiceCheckHeaderArrayOutput)
 }
 
 // The HTTP endpoint to call for an HTTP check.
 func (o ServiceCheckOutput) Http() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ServiceCheck) *string { return v.Http }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ServiceCheck) *string { return v.Http }).(pulumi.StringPtrOutput)
 }
 
 // The interval to wait between each health-check
 // invocation.
 func (o ServiceCheckOutput) Interval() pulumi.StringOutput {
-	return o.ApplyT(func (v ServiceCheck) string { return v.Interval }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ServiceCheck) string { return v.Interval }).(pulumi.StringOutput)
 }
 
 // The method to use for HTTP health-checks. Defaults
 // to `GET`.
 func (o ServiceCheckOutput) Method() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ServiceCheck) *string { return v.Method }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ServiceCheck) *string { return v.Method }).(pulumi.StringPtrOutput)
 }
 
-// The name of the header.
+// The name of the health-check.
 func (o ServiceCheckOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v ServiceCheck) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ServiceCheck) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // An opaque field meant to hold human readable text.
 func (o ServiceCheckOutput) Notes() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ServiceCheck) *string { return v.Notes }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ServiceCheck) *string { return v.Notes }).(pulumi.StringPtrOutput)
 }
 
 // The initial health-check status.
 func (o ServiceCheckOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ServiceCheck) *string { return v.Status }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ServiceCheck) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
 // The TCP address and port to connect to for a TCP check.
 func (o ServiceCheckOutput) Tcp() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ServiceCheck) *string { return v.Tcp }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ServiceCheck) *string { return v.Tcp }).(pulumi.StringPtrOutput)
 }
 
 // The timeout value for HTTP checks.
 func (o ServiceCheckOutput) Timeout() pulumi.StringOutput {
-	return o.ApplyT(func (v ServiceCheck) string { return v.Timeout }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ServiceCheck) string { return v.Timeout }).(pulumi.StringOutput)
 }
 
 // Whether to deactivate certificate
 // verification for HTTP health-checks. Defaults to `false`.
 func (o ServiceCheckOutput) TlsSkipVerify() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ServiceCheck) *bool { return v.TlsSkipVerify }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ServiceCheck) *bool { return v.TlsSkipVerify }).(pulumi.BoolPtrOutput)
 }
 
-type ServiceCheckArrayOutput struct { *pulumi.OutputState}
+type ServiceCheckArrayOutput struct{ *pulumi.OutputState }
 
 func (ServiceCheckArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ServiceCheck)(nil)).Elem()
@@ -1019,7 +1079,7 @@ func (o ServiceCheckArrayOutput) ToServiceCheckArrayOutputWithContext(ctx contex
 }
 
 func (o ServiceCheckArrayOutput) Index(i pulumi.IntInput) ServiceCheckOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ServiceCheck {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceCheck {
 		return vs[0].([]ServiceCheck)[vs[1].(int)]
 	}).(ServiceCheckOutput)
 }
@@ -1078,7 +1138,7 @@ func (i ServiceCheckHeaderArray) ToServiceCheckHeaderArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceCheckHeaderArrayOutput)
 }
 
-type ServiceCheckHeaderOutput struct { *pulumi.OutputState }
+type ServiceCheckHeaderOutput struct{ *pulumi.OutputState }
 
 func (ServiceCheckHeaderOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ServiceCheckHeader)(nil)).Elem()
@@ -1094,15 +1154,15 @@ func (o ServiceCheckHeaderOutput) ToServiceCheckHeaderOutputWithContext(ctx cont
 
 // The name of the header.
 func (o ServiceCheckHeaderOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v ServiceCheckHeader) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ServiceCheckHeader) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The header's list of values.
 func (o ServiceCheckHeaderOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v ServiceCheckHeader) []string { return v.Values }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v ServiceCheckHeader) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
 
-type ServiceCheckHeaderArrayOutput struct { *pulumi.OutputState}
+type ServiceCheckHeaderArrayOutput struct{ *pulumi.OutputState }
 
 func (ServiceCheckHeaderArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ServiceCheckHeader)(nil)).Elem()
@@ -1117,7 +1177,7 @@ func (o ServiceCheckHeaderArrayOutput) ToServiceCheckHeaderArrayOutputWithContex
 }
 
 func (o ServiceCheckHeaderArrayOutput) Index(i pulumi.IntInput) ServiceCheckHeaderOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ServiceCheckHeader {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceCheckHeader {
 		return vs[0].([]ServiceCheckHeader)[vs[1].(int)]
 	}).(ServiceCheckHeaderOutput)
 }
@@ -1174,7 +1234,7 @@ func (i GetAclRolePolicyArray) ToGetAclRolePolicyArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetAclRolePolicyArrayOutput)
 }
 
-type GetAclRolePolicyOutput struct { *pulumi.OutputState }
+type GetAclRolePolicyOutput struct{ *pulumi.OutputState }
 
 func (GetAclRolePolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetAclRolePolicy)(nil)).Elem()
@@ -1189,15 +1249,15 @@ func (o GetAclRolePolicyOutput) ToGetAclRolePolicyOutputWithContext(ctx context.
 }
 
 func (o GetAclRolePolicyOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAclRolePolicy) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetAclRolePolicy) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The name of the ACL Role.
 func (o GetAclRolePolicyOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAclRolePolicy) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetAclRolePolicy) string { return v.Name }).(pulumi.StringOutput)
 }
 
-type GetAclRolePolicyArrayOutput struct { *pulumi.OutputState}
+type GetAclRolePolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (GetAclRolePolicyArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetAclRolePolicy)(nil)).Elem()
@@ -1212,14 +1272,14 @@ func (o GetAclRolePolicyArrayOutput) ToGetAclRolePolicyArrayOutputWithContext(ct
 }
 
 func (o GetAclRolePolicyArrayOutput) Index(i pulumi.IntInput) GetAclRolePolicyOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetAclRolePolicy {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAclRolePolicy {
 		return vs[0].([]GetAclRolePolicy)[vs[1].(int)]
 	}).(GetAclRolePolicyOutput)
 }
 
 type GetAclRoleServiceIdentity struct {
 	Datacenters []string `pulumi:"datacenters"`
-	ServiceName *string `pulumi:"serviceName"`
+	ServiceName *string  `pulumi:"serviceName"`
 }
 
 type GetAclRoleServiceIdentityInput interface {
@@ -1231,7 +1291,7 @@ type GetAclRoleServiceIdentityInput interface {
 
 type GetAclRoleServiceIdentityArgs struct {
 	Datacenters pulumi.StringArrayInput `pulumi:"datacenters"`
-	ServiceName pulumi.StringPtrInput `pulumi:"serviceName"`
+	ServiceName pulumi.StringPtrInput   `pulumi:"serviceName"`
 }
 
 func (GetAclRoleServiceIdentityArgs) ElementType() reflect.Type {
@@ -1267,7 +1327,7 @@ func (i GetAclRoleServiceIdentityArray) ToGetAclRoleServiceIdentityArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetAclRoleServiceIdentityArrayOutput)
 }
 
-type GetAclRoleServiceIdentityOutput struct { *pulumi.OutputState }
+type GetAclRoleServiceIdentityOutput struct{ *pulumi.OutputState }
 
 func (GetAclRoleServiceIdentityOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetAclRoleServiceIdentity)(nil)).Elem()
@@ -1282,14 +1342,14 @@ func (o GetAclRoleServiceIdentityOutput) ToGetAclRoleServiceIdentityOutputWithCo
 }
 
 func (o GetAclRoleServiceIdentityOutput) Datacenters() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetAclRoleServiceIdentity) []string { return v.Datacenters }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetAclRoleServiceIdentity) []string { return v.Datacenters }).(pulumi.StringArrayOutput)
 }
 
 func (o GetAclRoleServiceIdentityOutput) ServiceName() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetAclRoleServiceIdentity) *string { return v.ServiceName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GetAclRoleServiceIdentity) *string { return v.ServiceName }).(pulumi.StringPtrOutput)
 }
 
-type GetAclRoleServiceIdentityArrayOutput struct { *pulumi.OutputState}
+type GetAclRoleServiceIdentityArrayOutput struct{ *pulumi.OutputState }
 
 func (GetAclRoleServiceIdentityArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetAclRoleServiceIdentity)(nil)).Elem()
@@ -1304,13 +1364,13 @@ func (o GetAclRoleServiceIdentityArrayOutput) ToGetAclRoleServiceIdentityArrayOu
 }
 
 func (o GetAclRoleServiceIdentityArrayOutput) Index(i pulumi.IntInput) GetAclRoleServiceIdentityOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetAclRoleServiceIdentity {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAclRoleServiceIdentity {
 		return vs[0].([]GetAclRoleServiceIdentity)[vs[1].(int)]
 	}).(GetAclRoleServiceIdentityOutput)
 }
 
 type GetAclTokenPolicy struct {
-	Id string `pulumi:"id"`
+	Id   string `pulumi:"id"`
 	Name string `pulumi:"name"`
 }
 
@@ -1322,7 +1382,7 @@ type GetAclTokenPolicyInput interface {
 }
 
 type GetAclTokenPolicyArgs struct {
-	Id pulumi.StringInput `pulumi:"id"`
+	Id   pulumi.StringInput `pulumi:"id"`
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -1359,7 +1419,7 @@ func (i GetAclTokenPolicyArray) ToGetAclTokenPolicyArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetAclTokenPolicyArrayOutput)
 }
 
-type GetAclTokenPolicyOutput struct { *pulumi.OutputState }
+type GetAclTokenPolicyOutput struct{ *pulumi.OutputState }
 
 func (GetAclTokenPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetAclTokenPolicy)(nil)).Elem()
@@ -1374,14 +1434,14 @@ func (o GetAclTokenPolicyOutput) ToGetAclTokenPolicyOutputWithContext(ctx contex
 }
 
 func (o GetAclTokenPolicyOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAclTokenPolicy) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetAclTokenPolicy) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetAclTokenPolicyOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAclTokenPolicy) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetAclTokenPolicy) string { return v.Name }).(pulumi.StringOutput)
 }
 
-type GetAclTokenPolicyArrayOutput struct { *pulumi.OutputState}
+type GetAclTokenPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (GetAclTokenPolicyArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetAclTokenPolicy)(nil)).Elem()
@@ -1396,7 +1456,7 @@ func (o GetAclTokenPolicyArrayOutput) ToGetAclTokenPolicyArrayOutputWithContext(
 }
 
 func (o GetAclTokenPolicyArrayOutput) Index(i pulumi.IntInput) GetAclTokenPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetAclTokenPolicy {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAclTokenPolicy {
 		return vs[0].([]GetAclTokenPolicy)[vs[1].(int)]
 	}).(GetAclTokenPolicyOutput)
 }
@@ -1501,7 +1561,7 @@ func (i GetAutopilotHealthServerArray) ToGetAutopilotHealthServerArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetAutopilotHealthServerArrayOutput)
 }
 
-type GetAutopilotHealthServerOutput struct { *pulumi.OutputState }
+type GetAutopilotHealthServerOutput struct{ *pulumi.OutputState }
 
 func (GetAutopilotHealthServerOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetAutopilotHealthServer)(nil)).Elem()
@@ -1517,68 +1577,68 @@ func (o GetAutopilotHealthServerOutput) ToGetAutopilotHealthServerOutputWithCont
 
 // The address of the server
 func (o GetAutopilotHealthServerOutput) Address() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAutopilotHealthServer) string { return v.Address }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetAutopilotHealthServer) string { return v.Address }).(pulumi.StringOutput)
 }
 
 // Whether the server is healthy according to the current Autopilot
 // configuration
 func (o GetAutopilotHealthServerOutput) Healthy() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetAutopilotHealthServer) bool { return v.Healthy }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetAutopilotHealthServer) bool { return v.Healthy }).(pulumi.BoolOutput)
 }
 
 // The Raft ID of the server
 func (o GetAutopilotHealthServerOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAutopilotHealthServer) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetAutopilotHealthServer) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The time elapsed since the server's last contact with
 // the leader
 func (o GetAutopilotHealthServerOutput) LastContact() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAutopilotHealthServer) string { return v.LastContact }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetAutopilotHealthServer) string { return v.LastContact }).(pulumi.StringOutput)
 }
 
 // The index of the server's last committed Raft log entry
 func (o GetAutopilotHealthServerOutput) LastIndex() pulumi.IntOutput {
-	return o.ApplyT(func (v GetAutopilotHealthServer) int { return v.LastIndex }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetAutopilotHealthServer) int { return v.LastIndex }).(pulumi.IntOutput)
 }
 
 // The server's last known Raft leader term
 func (o GetAutopilotHealthServerOutput) LastTerm() pulumi.IntOutput {
-	return o.ApplyT(func (v GetAutopilotHealthServer) int { return v.LastTerm }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetAutopilotHealthServer) int { return v.LastTerm }).(pulumi.IntOutput)
 }
 
 // Whether the server is currently leader
 func (o GetAutopilotHealthServerOutput) Leader() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetAutopilotHealthServer) bool { return v.Leader }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetAutopilotHealthServer) bool { return v.Leader }).(pulumi.BoolOutput)
 }
 
 // The node name of the server
 func (o GetAutopilotHealthServerOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAutopilotHealthServer) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetAutopilotHealthServer) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The status of the SerfHealth check of the server
 func (o GetAutopilotHealthServerOutput) SerfStatus() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAutopilotHealthServer) string { return v.SerfStatus }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetAutopilotHealthServer) string { return v.SerfStatus }).(pulumi.StringOutput)
 }
 
 // The time this server has been in its current ``Healthy``
 // state
 func (o GetAutopilotHealthServerOutput) StableSince() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAutopilotHealthServer) string { return v.StableSince }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetAutopilotHealthServer) string { return v.StableSince }).(pulumi.StringOutput)
 }
 
 // The Consul version of the server
 func (o GetAutopilotHealthServerOutput) Version() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAutopilotHealthServer) string { return v.Version }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetAutopilotHealthServer) string { return v.Version }).(pulumi.StringOutput)
 }
 
 // Whether the server is a voting member of the Raft cluster
 func (o GetAutopilotHealthServerOutput) Voter() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetAutopilotHealthServer) bool { return v.Voter }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetAutopilotHealthServer) bool { return v.Voter }).(pulumi.BoolOutput)
 }
 
-type GetAutopilotHealthServerArrayOutput struct { *pulumi.OutputState}
+type GetAutopilotHealthServerArrayOutput struct{ *pulumi.OutputState }
 
 func (GetAutopilotHealthServerArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetAutopilotHealthServer)(nil)).Elem()
@@ -1593,16 +1653,16 @@ func (o GetAutopilotHealthServerArrayOutput) ToGetAutopilotHealthServerArrayOutp
 }
 
 func (o GetAutopilotHealthServerArrayOutput) Index(i pulumi.IntInput) GetAutopilotHealthServerOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetAutopilotHealthServer {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAutopilotHealthServer {
 		return vs[0].([]GetAutopilotHealthServer)[vs[1].(int)]
 	}).(GetAutopilotHealthServerOutput)
 }
 
 type GetCatalogNodesNode struct {
-	Address string `pulumi:"address"`
-	Id string `pulumi:"id"`
-	Meta map[string]string `pulumi:"meta"`
-	Name string `pulumi:"name"`
+	Address         string            `pulumi:"address"`
+	Id              string            `pulumi:"id"`
+	Meta            map[string]string `pulumi:"meta"`
+	Name            string            `pulumi:"name"`
 	TaggedAddresses map[string]string `pulumi:"taggedAddresses"`
 }
 
@@ -1614,10 +1674,10 @@ type GetCatalogNodesNodeInput interface {
 }
 
 type GetCatalogNodesNodeArgs struct {
-	Address pulumi.StringInput `pulumi:"address"`
-	Id pulumi.StringInput `pulumi:"id"`
-	Meta pulumi.StringMapInput `pulumi:"meta"`
-	Name pulumi.StringInput `pulumi:"name"`
+	Address         pulumi.StringInput    `pulumi:"address"`
+	Id              pulumi.StringInput    `pulumi:"id"`
+	Meta            pulumi.StringMapInput `pulumi:"meta"`
+	Name            pulumi.StringInput    `pulumi:"name"`
 	TaggedAddresses pulumi.StringMapInput `pulumi:"taggedAddresses"`
 }
 
@@ -1654,7 +1714,7 @@ func (i GetCatalogNodesNodeArray) ToGetCatalogNodesNodeArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetCatalogNodesNodeArrayOutput)
 }
 
-type GetCatalogNodesNodeOutput struct { *pulumi.OutputState }
+type GetCatalogNodesNodeOutput struct{ *pulumi.OutputState }
 
 func (GetCatalogNodesNodeOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetCatalogNodesNode)(nil)).Elem()
@@ -1669,26 +1729,26 @@ func (o GetCatalogNodesNodeOutput) ToGetCatalogNodesNodeOutputWithContext(ctx co
 }
 
 func (o GetCatalogNodesNodeOutput) Address() pulumi.StringOutput {
-	return o.ApplyT(func (v GetCatalogNodesNode) string { return v.Address }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetCatalogNodesNode) string { return v.Address }).(pulumi.StringOutput)
 }
 
 func (o GetCatalogNodesNodeOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetCatalogNodesNode) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetCatalogNodesNode) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetCatalogNodesNodeOutput) Meta() pulumi.StringMapOutput {
-	return o.ApplyT(func (v GetCatalogNodesNode) map[string]string { return v.Meta }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v GetCatalogNodesNode) map[string]string { return v.Meta }).(pulumi.StringMapOutput)
 }
 
 func (o GetCatalogNodesNodeOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetCatalogNodesNode) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetCatalogNodesNode) string { return v.Name }).(pulumi.StringOutput)
 }
 
 func (o GetCatalogNodesNodeOutput) TaggedAddresses() pulumi.StringMapOutput {
-	return o.ApplyT(func (v GetCatalogNodesNode) map[string]string { return v.TaggedAddresses }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v GetCatalogNodesNode) map[string]string { return v.TaggedAddresses }).(pulumi.StringMapOutput)
 }
 
-type GetCatalogNodesNodeArrayOutput struct { *pulumi.OutputState}
+type GetCatalogNodesNodeArrayOutput struct{ *pulumi.OutputState }
 
 func (GetCatalogNodesNodeArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetCatalogNodesNode)(nil)).Elem()
@@ -1703,20 +1763,20 @@ func (o GetCatalogNodesNodeArrayOutput) ToGetCatalogNodesNodeArrayOutputWithCont
 }
 
 func (o GetCatalogNodesNodeArrayOutput) Index(i pulumi.IntInput) GetCatalogNodesNodeOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetCatalogNodesNode {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCatalogNodesNode {
 		return vs[0].([]GetCatalogNodesNode)[vs[1].(int)]
 	}).(GetCatalogNodesNodeOutput)
 }
 
 type GetCatalogNodesQueryOption struct {
-	AllowStale *bool `pulumi:"allowStale"`
-	Datacenter *string `pulumi:"datacenter"`
-	Near *string `pulumi:"near"`
-	NodeMeta map[string]string `pulumi:"nodeMeta"`
-	RequireConsistent *bool `pulumi:"requireConsistent"`
-	Token *string `pulumi:"token"`
-	WaitIndex *int `pulumi:"waitIndex"`
-	WaitTime *string `pulumi:"waitTime"`
+	AllowStale        *bool             `pulumi:"allowStale"`
+	Datacenter        *string           `pulumi:"datacenter"`
+	Near              *string           `pulumi:"near"`
+	NodeMeta          map[string]string `pulumi:"nodeMeta"`
+	RequireConsistent *bool             `pulumi:"requireConsistent"`
+	Token             *string           `pulumi:"token"`
+	WaitIndex         *int              `pulumi:"waitIndex"`
+	WaitTime          *string           `pulumi:"waitTime"`
 }
 
 type GetCatalogNodesQueryOptionInput interface {
@@ -1727,14 +1787,14 @@ type GetCatalogNodesQueryOptionInput interface {
 }
 
 type GetCatalogNodesQueryOptionArgs struct {
-	AllowStale pulumi.BoolPtrInput `pulumi:"allowStale"`
-	Datacenter pulumi.StringPtrInput `pulumi:"datacenter"`
-	Near pulumi.StringPtrInput `pulumi:"near"`
-	NodeMeta pulumi.StringMapInput `pulumi:"nodeMeta"`
-	RequireConsistent pulumi.BoolPtrInput `pulumi:"requireConsistent"`
-	Token pulumi.StringPtrInput `pulumi:"token"`
-	WaitIndex pulumi.IntPtrInput `pulumi:"waitIndex"`
-	WaitTime pulumi.StringPtrInput `pulumi:"waitTime"`
+	AllowStale        pulumi.BoolPtrInput   `pulumi:"allowStale"`
+	Datacenter        pulumi.StringPtrInput `pulumi:"datacenter"`
+	Near              pulumi.StringPtrInput `pulumi:"near"`
+	NodeMeta          pulumi.StringMapInput `pulumi:"nodeMeta"`
+	RequireConsistent pulumi.BoolPtrInput   `pulumi:"requireConsistent"`
+	Token             pulumi.StringPtrInput `pulumi:"token"`
+	WaitIndex         pulumi.IntPtrInput    `pulumi:"waitIndex"`
+	WaitTime          pulumi.StringPtrInput `pulumi:"waitTime"`
 }
 
 func (GetCatalogNodesQueryOptionArgs) ElementType() reflect.Type {
@@ -1770,7 +1830,7 @@ func (i GetCatalogNodesQueryOptionArray) ToGetCatalogNodesQueryOptionArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetCatalogNodesQueryOptionArrayOutput)
 }
 
-type GetCatalogNodesQueryOptionOutput struct { *pulumi.OutputState }
+type GetCatalogNodesQueryOptionOutput struct{ *pulumi.OutputState }
 
 func (GetCatalogNodesQueryOptionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetCatalogNodesQueryOption)(nil)).Elem()
@@ -1785,38 +1845,38 @@ func (o GetCatalogNodesQueryOptionOutput) ToGetCatalogNodesQueryOptionOutputWith
 }
 
 func (o GetCatalogNodesQueryOptionOutput) AllowStale() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v GetCatalogNodesQueryOption) *bool { return v.AllowStale }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v GetCatalogNodesQueryOption) *bool { return v.AllowStale }).(pulumi.BoolPtrOutput)
 }
 
 func (o GetCatalogNodesQueryOptionOutput) Datacenter() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetCatalogNodesQueryOption) *string { return v.Datacenter }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GetCatalogNodesQueryOption) *string { return v.Datacenter }).(pulumi.StringPtrOutput)
 }
 
 func (o GetCatalogNodesQueryOptionOutput) Near() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetCatalogNodesQueryOption) *string { return v.Near }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GetCatalogNodesQueryOption) *string { return v.Near }).(pulumi.StringPtrOutput)
 }
 
 func (o GetCatalogNodesQueryOptionOutput) NodeMeta() pulumi.StringMapOutput {
-	return o.ApplyT(func (v GetCatalogNodesQueryOption) map[string]string { return v.NodeMeta }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v GetCatalogNodesQueryOption) map[string]string { return v.NodeMeta }).(pulumi.StringMapOutput)
 }
 
 func (o GetCatalogNodesQueryOptionOutput) RequireConsistent() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v GetCatalogNodesQueryOption) *bool { return v.RequireConsistent }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v GetCatalogNodesQueryOption) *bool { return v.RequireConsistent }).(pulumi.BoolPtrOutput)
 }
 
 func (o GetCatalogNodesQueryOptionOutput) Token() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetCatalogNodesQueryOption) *string { return v.Token }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GetCatalogNodesQueryOption) *string { return v.Token }).(pulumi.StringPtrOutput)
 }
 
 func (o GetCatalogNodesQueryOptionOutput) WaitIndex() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v GetCatalogNodesQueryOption) *int { return v.WaitIndex }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v GetCatalogNodesQueryOption) *int { return v.WaitIndex }).(pulumi.IntPtrOutput)
 }
 
 func (o GetCatalogNodesQueryOptionOutput) WaitTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetCatalogNodesQueryOption) *string { return v.WaitTime }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GetCatalogNodesQueryOption) *string { return v.WaitTime }).(pulumi.StringPtrOutput)
 }
 
-type GetCatalogNodesQueryOptionArrayOutput struct { *pulumi.OutputState}
+type GetCatalogNodesQueryOptionArrayOutput struct{ *pulumi.OutputState }
 
 func (GetCatalogNodesQueryOptionArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetCatalogNodesQueryOption)(nil)).Elem()
@@ -1831,21 +1891,21 @@ func (o GetCatalogNodesQueryOptionArrayOutput) ToGetCatalogNodesQueryOptionArray
 }
 
 func (o GetCatalogNodesQueryOptionArrayOutput) Index(i pulumi.IntInput) GetCatalogNodesQueryOptionOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetCatalogNodesQueryOption {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCatalogNodesQueryOption {
 		return vs[0].([]GetCatalogNodesQueryOption)[vs[1].(int)]
 	}).(GetCatalogNodesQueryOptionOutput)
 }
 
 type GetCatalogServiceQueryOption struct {
-	AllowStale *bool `pulumi:"allowStale"`
-	Datacenter *string `pulumi:"datacenter"`
-	Namespace *string `pulumi:"namespace"`
-	Near *string `pulumi:"near"`
-	NodeMeta map[string]string `pulumi:"nodeMeta"`
-	RequireConsistent *bool `pulumi:"requireConsistent"`
-	Token *string `pulumi:"token"`
-	WaitIndex *int `pulumi:"waitIndex"`
-	WaitTime *string `pulumi:"waitTime"`
+	AllowStale        *bool             `pulumi:"allowStale"`
+	Datacenter        *string           `pulumi:"datacenter"`
+	Namespace         *string           `pulumi:"namespace"`
+	Near              *string           `pulumi:"near"`
+	NodeMeta          map[string]string `pulumi:"nodeMeta"`
+	RequireConsistent *bool             `pulumi:"requireConsistent"`
+	Token             *string           `pulumi:"token"`
+	WaitIndex         *int              `pulumi:"waitIndex"`
+	WaitTime          *string           `pulumi:"waitTime"`
 }
 
 type GetCatalogServiceQueryOptionInput interface {
@@ -1856,15 +1916,15 @@ type GetCatalogServiceQueryOptionInput interface {
 }
 
 type GetCatalogServiceQueryOptionArgs struct {
-	AllowStale pulumi.BoolPtrInput `pulumi:"allowStale"`
-	Datacenter pulumi.StringPtrInput `pulumi:"datacenter"`
-	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
-	Near pulumi.StringPtrInput `pulumi:"near"`
-	NodeMeta pulumi.StringMapInput `pulumi:"nodeMeta"`
-	RequireConsistent pulumi.BoolPtrInput `pulumi:"requireConsistent"`
-	Token pulumi.StringPtrInput `pulumi:"token"`
-	WaitIndex pulumi.IntPtrInput `pulumi:"waitIndex"`
-	WaitTime pulumi.StringPtrInput `pulumi:"waitTime"`
+	AllowStale        pulumi.BoolPtrInput   `pulumi:"allowStale"`
+	Datacenter        pulumi.StringPtrInput `pulumi:"datacenter"`
+	Namespace         pulumi.StringPtrInput `pulumi:"namespace"`
+	Near              pulumi.StringPtrInput `pulumi:"near"`
+	NodeMeta          pulumi.StringMapInput `pulumi:"nodeMeta"`
+	RequireConsistent pulumi.BoolPtrInput   `pulumi:"requireConsistent"`
+	Token             pulumi.StringPtrInput `pulumi:"token"`
+	WaitIndex         pulumi.IntPtrInput    `pulumi:"waitIndex"`
+	WaitTime          pulumi.StringPtrInput `pulumi:"waitTime"`
 }
 
 func (GetCatalogServiceQueryOptionArgs) ElementType() reflect.Type {
@@ -1900,7 +1960,7 @@ func (i GetCatalogServiceQueryOptionArray) ToGetCatalogServiceQueryOptionArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetCatalogServiceQueryOptionArrayOutput)
 }
 
-type GetCatalogServiceQueryOptionOutput struct { *pulumi.OutputState }
+type GetCatalogServiceQueryOptionOutput struct{ *pulumi.OutputState }
 
 func (GetCatalogServiceQueryOptionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetCatalogServiceQueryOption)(nil)).Elem()
@@ -1915,42 +1975,42 @@ func (o GetCatalogServiceQueryOptionOutput) ToGetCatalogServiceQueryOptionOutput
 }
 
 func (o GetCatalogServiceQueryOptionOutput) AllowStale() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v GetCatalogServiceQueryOption) *bool { return v.AllowStale }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v GetCatalogServiceQueryOption) *bool { return v.AllowStale }).(pulumi.BoolPtrOutput)
 }
 
 func (o GetCatalogServiceQueryOptionOutput) Datacenter() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetCatalogServiceQueryOption) *string { return v.Datacenter }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GetCatalogServiceQueryOption) *string { return v.Datacenter }).(pulumi.StringPtrOutput)
 }
 
 func (o GetCatalogServiceQueryOptionOutput) Namespace() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetCatalogServiceQueryOption) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GetCatalogServiceQueryOption) *string { return v.Namespace }).(pulumi.StringPtrOutput)
 }
 
 func (o GetCatalogServiceQueryOptionOutput) Near() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetCatalogServiceQueryOption) *string { return v.Near }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GetCatalogServiceQueryOption) *string { return v.Near }).(pulumi.StringPtrOutput)
 }
 
 func (o GetCatalogServiceQueryOptionOutput) NodeMeta() pulumi.StringMapOutput {
-	return o.ApplyT(func (v GetCatalogServiceQueryOption) map[string]string { return v.NodeMeta }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v GetCatalogServiceQueryOption) map[string]string { return v.NodeMeta }).(pulumi.StringMapOutput)
 }
 
 func (o GetCatalogServiceQueryOptionOutput) RequireConsistent() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v GetCatalogServiceQueryOption) *bool { return v.RequireConsistent }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v GetCatalogServiceQueryOption) *bool { return v.RequireConsistent }).(pulumi.BoolPtrOutput)
 }
 
 func (o GetCatalogServiceQueryOptionOutput) Token() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetCatalogServiceQueryOption) *string { return v.Token }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GetCatalogServiceQueryOption) *string { return v.Token }).(pulumi.StringPtrOutput)
 }
 
 func (o GetCatalogServiceQueryOptionOutput) WaitIndex() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v GetCatalogServiceQueryOption) *int { return v.WaitIndex }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v GetCatalogServiceQueryOption) *int { return v.WaitIndex }).(pulumi.IntPtrOutput)
 }
 
 func (o GetCatalogServiceQueryOptionOutput) WaitTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetCatalogServiceQueryOption) *string { return v.WaitTime }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GetCatalogServiceQueryOption) *string { return v.WaitTime }).(pulumi.StringPtrOutput)
 }
 
-type GetCatalogServiceQueryOptionArrayOutput struct { *pulumi.OutputState}
+type GetCatalogServiceQueryOptionArrayOutput struct{ *pulumi.OutputState }
 
 func (GetCatalogServiceQueryOptionArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetCatalogServiceQueryOption)(nil)).Elem()
@@ -1965,26 +2025,26 @@ func (o GetCatalogServiceQueryOptionArrayOutput) ToGetCatalogServiceQueryOptionA
 }
 
 func (o GetCatalogServiceQueryOptionArrayOutput) Index(i pulumi.IntInput) GetCatalogServiceQueryOptionOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetCatalogServiceQueryOption {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCatalogServiceQueryOption {
 		return vs[0].([]GetCatalogServiceQueryOption)[vs[1].(int)]
 	}).(GetCatalogServiceQueryOptionOutput)
 }
 
 type GetCatalogServiceService struct {
-	Address string `pulumi:"address"`
-	CreateIndex string `pulumi:"createIndex"`
-	EnableTagOverride string `pulumi:"enableTagOverride"`
-	Id string `pulumi:"id"`
-	Meta map[string]string `pulumi:"meta"`
-	ModifyIndex string `pulumi:"modifyIndex"`
-	Name string `pulumi:"name"`
-	NodeAddress string `pulumi:"nodeAddress"`
-	NodeId string `pulumi:"nodeId"`
-	NodeMeta map[string]string `pulumi:"nodeMeta"`
-	NodeName string `pulumi:"nodeName"`
-	Port string `pulumi:"port"`
-	TaggedAddresses map[string]string `pulumi:"taggedAddresses"`
-	Tags []string `pulumi:"tags"`
+	Address           string            `pulumi:"address"`
+	CreateIndex       string            `pulumi:"createIndex"`
+	EnableTagOverride string            `pulumi:"enableTagOverride"`
+	Id                string            `pulumi:"id"`
+	Meta              map[string]string `pulumi:"meta"`
+	ModifyIndex       string            `pulumi:"modifyIndex"`
+	Name              string            `pulumi:"name"`
+	NodeAddress       string            `pulumi:"nodeAddress"`
+	NodeId            string            `pulumi:"nodeId"`
+	NodeMeta          map[string]string `pulumi:"nodeMeta"`
+	NodeName          string            `pulumi:"nodeName"`
+	Port              string            `pulumi:"port"`
+	TaggedAddresses   map[string]string `pulumi:"taggedAddresses"`
+	Tags              []string          `pulumi:"tags"`
 }
 
 type GetCatalogServiceServiceInput interface {
@@ -1995,20 +2055,20 @@ type GetCatalogServiceServiceInput interface {
 }
 
 type GetCatalogServiceServiceArgs struct {
-	Address pulumi.StringInput `pulumi:"address"`
-	CreateIndex pulumi.StringInput `pulumi:"createIndex"`
-	EnableTagOverride pulumi.StringInput `pulumi:"enableTagOverride"`
-	Id pulumi.StringInput `pulumi:"id"`
-	Meta pulumi.StringMapInput `pulumi:"meta"`
-	ModifyIndex pulumi.StringInput `pulumi:"modifyIndex"`
-	Name pulumi.StringInput `pulumi:"name"`
-	NodeAddress pulumi.StringInput `pulumi:"nodeAddress"`
-	NodeId pulumi.StringInput `pulumi:"nodeId"`
-	NodeMeta pulumi.StringMapInput `pulumi:"nodeMeta"`
-	NodeName pulumi.StringInput `pulumi:"nodeName"`
-	Port pulumi.StringInput `pulumi:"port"`
-	TaggedAddresses pulumi.StringMapInput `pulumi:"taggedAddresses"`
-	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	Address           pulumi.StringInput      `pulumi:"address"`
+	CreateIndex       pulumi.StringInput      `pulumi:"createIndex"`
+	EnableTagOverride pulumi.StringInput      `pulumi:"enableTagOverride"`
+	Id                pulumi.StringInput      `pulumi:"id"`
+	Meta              pulumi.StringMapInput   `pulumi:"meta"`
+	ModifyIndex       pulumi.StringInput      `pulumi:"modifyIndex"`
+	Name              pulumi.StringInput      `pulumi:"name"`
+	NodeAddress       pulumi.StringInput      `pulumi:"nodeAddress"`
+	NodeId            pulumi.StringInput      `pulumi:"nodeId"`
+	NodeMeta          pulumi.StringMapInput   `pulumi:"nodeMeta"`
+	NodeName          pulumi.StringInput      `pulumi:"nodeName"`
+	Port              pulumi.StringInput      `pulumi:"port"`
+	TaggedAddresses   pulumi.StringMapInput   `pulumi:"taggedAddresses"`
+	Tags              pulumi.StringArrayInput `pulumi:"tags"`
 }
 
 func (GetCatalogServiceServiceArgs) ElementType() reflect.Type {
@@ -2044,7 +2104,7 @@ func (i GetCatalogServiceServiceArray) ToGetCatalogServiceServiceArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetCatalogServiceServiceArrayOutput)
 }
 
-type GetCatalogServiceServiceOutput struct { *pulumi.OutputState }
+type GetCatalogServiceServiceOutput struct{ *pulumi.OutputState }
 
 func (GetCatalogServiceServiceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetCatalogServiceService)(nil)).Elem()
@@ -2059,62 +2119,62 @@ func (o GetCatalogServiceServiceOutput) ToGetCatalogServiceServiceOutputWithCont
 }
 
 func (o GetCatalogServiceServiceOutput) Address() pulumi.StringOutput {
-	return o.ApplyT(func (v GetCatalogServiceService) string { return v.Address }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetCatalogServiceService) string { return v.Address }).(pulumi.StringOutput)
 }
 
 func (o GetCatalogServiceServiceOutput) CreateIndex() pulumi.StringOutput {
-	return o.ApplyT(func (v GetCatalogServiceService) string { return v.CreateIndex }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetCatalogServiceService) string { return v.CreateIndex }).(pulumi.StringOutput)
 }
 
 func (o GetCatalogServiceServiceOutput) EnableTagOverride() pulumi.StringOutput {
-	return o.ApplyT(func (v GetCatalogServiceService) string { return v.EnableTagOverride }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetCatalogServiceService) string { return v.EnableTagOverride }).(pulumi.StringOutput)
 }
 
 func (o GetCatalogServiceServiceOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetCatalogServiceService) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetCatalogServiceService) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetCatalogServiceServiceOutput) Meta() pulumi.StringMapOutput {
-	return o.ApplyT(func (v GetCatalogServiceService) map[string]string { return v.Meta }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v GetCatalogServiceService) map[string]string { return v.Meta }).(pulumi.StringMapOutput)
 }
 
 func (o GetCatalogServiceServiceOutput) ModifyIndex() pulumi.StringOutput {
-	return o.ApplyT(func (v GetCatalogServiceService) string { return v.ModifyIndex }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetCatalogServiceService) string { return v.ModifyIndex }).(pulumi.StringOutput)
 }
 
 func (o GetCatalogServiceServiceOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetCatalogServiceService) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetCatalogServiceService) string { return v.Name }).(pulumi.StringOutput)
 }
 
 func (o GetCatalogServiceServiceOutput) NodeAddress() pulumi.StringOutput {
-	return o.ApplyT(func (v GetCatalogServiceService) string { return v.NodeAddress }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetCatalogServiceService) string { return v.NodeAddress }).(pulumi.StringOutput)
 }
 
 func (o GetCatalogServiceServiceOutput) NodeId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetCatalogServiceService) string { return v.NodeId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetCatalogServiceService) string { return v.NodeId }).(pulumi.StringOutput)
 }
 
 func (o GetCatalogServiceServiceOutput) NodeMeta() pulumi.StringMapOutput {
-	return o.ApplyT(func (v GetCatalogServiceService) map[string]string { return v.NodeMeta }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v GetCatalogServiceService) map[string]string { return v.NodeMeta }).(pulumi.StringMapOutput)
 }
 
 func (o GetCatalogServiceServiceOutput) NodeName() pulumi.StringOutput {
-	return o.ApplyT(func (v GetCatalogServiceService) string { return v.NodeName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetCatalogServiceService) string { return v.NodeName }).(pulumi.StringOutput)
 }
 
 func (o GetCatalogServiceServiceOutput) Port() pulumi.StringOutput {
-	return o.ApplyT(func (v GetCatalogServiceService) string { return v.Port }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetCatalogServiceService) string { return v.Port }).(pulumi.StringOutput)
 }
 
 func (o GetCatalogServiceServiceOutput) TaggedAddresses() pulumi.StringMapOutput {
-	return o.ApplyT(func (v GetCatalogServiceService) map[string]string { return v.TaggedAddresses }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v GetCatalogServiceService) map[string]string { return v.TaggedAddresses }).(pulumi.StringMapOutput)
 }
 
 func (o GetCatalogServiceServiceOutput) Tags() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetCatalogServiceService) []string { return v.Tags }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetCatalogServiceService) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-type GetCatalogServiceServiceArrayOutput struct { *pulumi.OutputState}
+type GetCatalogServiceServiceArrayOutput struct{ *pulumi.OutputState }
 
 func (GetCatalogServiceServiceArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetCatalogServiceService)(nil)).Elem()
@@ -2129,21 +2189,21 @@ func (o GetCatalogServiceServiceArrayOutput) ToGetCatalogServiceServiceArrayOutp
 }
 
 func (o GetCatalogServiceServiceArrayOutput) Index(i pulumi.IntInput) GetCatalogServiceServiceOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetCatalogServiceService {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCatalogServiceService {
 		return vs[0].([]GetCatalogServiceService)[vs[1].(int)]
 	}).(GetCatalogServiceServiceOutput)
 }
 
 type GetCatalogServicesQueryOption struct {
-	AllowStale *bool `pulumi:"allowStale"`
-	Datacenter *string `pulumi:"datacenter"`
-	Namespace *string `pulumi:"namespace"`
-	Near *string `pulumi:"near"`
-	NodeMeta map[string]string `pulumi:"nodeMeta"`
-	RequireConsistent *bool `pulumi:"requireConsistent"`
-	Token *string `pulumi:"token"`
-	WaitIndex *int `pulumi:"waitIndex"`
-	WaitTime *string `pulumi:"waitTime"`
+	AllowStale        *bool             `pulumi:"allowStale"`
+	Datacenter        *string           `pulumi:"datacenter"`
+	Namespace         *string           `pulumi:"namespace"`
+	Near              *string           `pulumi:"near"`
+	NodeMeta          map[string]string `pulumi:"nodeMeta"`
+	RequireConsistent *bool             `pulumi:"requireConsistent"`
+	Token             *string           `pulumi:"token"`
+	WaitIndex         *int              `pulumi:"waitIndex"`
+	WaitTime          *string           `pulumi:"waitTime"`
 }
 
 type GetCatalogServicesQueryOptionInput interface {
@@ -2154,15 +2214,15 @@ type GetCatalogServicesQueryOptionInput interface {
 }
 
 type GetCatalogServicesQueryOptionArgs struct {
-	AllowStale pulumi.BoolPtrInput `pulumi:"allowStale"`
-	Datacenter pulumi.StringPtrInput `pulumi:"datacenter"`
-	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
-	Near pulumi.StringPtrInput `pulumi:"near"`
-	NodeMeta pulumi.StringMapInput `pulumi:"nodeMeta"`
-	RequireConsistent pulumi.BoolPtrInput `pulumi:"requireConsistent"`
-	Token pulumi.StringPtrInput `pulumi:"token"`
-	WaitIndex pulumi.IntPtrInput `pulumi:"waitIndex"`
-	WaitTime pulumi.StringPtrInput `pulumi:"waitTime"`
+	AllowStale        pulumi.BoolPtrInput   `pulumi:"allowStale"`
+	Datacenter        pulumi.StringPtrInput `pulumi:"datacenter"`
+	Namespace         pulumi.StringPtrInput `pulumi:"namespace"`
+	Near              pulumi.StringPtrInput `pulumi:"near"`
+	NodeMeta          pulumi.StringMapInput `pulumi:"nodeMeta"`
+	RequireConsistent pulumi.BoolPtrInput   `pulumi:"requireConsistent"`
+	Token             pulumi.StringPtrInput `pulumi:"token"`
+	WaitIndex         pulumi.IntPtrInput    `pulumi:"waitIndex"`
+	WaitTime          pulumi.StringPtrInput `pulumi:"waitTime"`
 }
 
 func (GetCatalogServicesQueryOptionArgs) ElementType() reflect.Type {
@@ -2198,7 +2258,7 @@ func (i GetCatalogServicesQueryOptionArray) ToGetCatalogServicesQueryOptionArray
 	return pulumi.ToOutputWithContext(ctx, i).(GetCatalogServicesQueryOptionArrayOutput)
 }
 
-type GetCatalogServicesQueryOptionOutput struct { *pulumi.OutputState }
+type GetCatalogServicesQueryOptionOutput struct{ *pulumi.OutputState }
 
 func (GetCatalogServicesQueryOptionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetCatalogServicesQueryOption)(nil)).Elem()
@@ -2213,42 +2273,42 @@ func (o GetCatalogServicesQueryOptionOutput) ToGetCatalogServicesQueryOptionOutp
 }
 
 func (o GetCatalogServicesQueryOptionOutput) AllowStale() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v GetCatalogServicesQueryOption) *bool { return v.AllowStale }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v GetCatalogServicesQueryOption) *bool { return v.AllowStale }).(pulumi.BoolPtrOutput)
 }
 
 func (o GetCatalogServicesQueryOptionOutput) Datacenter() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetCatalogServicesQueryOption) *string { return v.Datacenter }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GetCatalogServicesQueryOption) *string { return v.Datacenter }).(pulumi.StringPtrOutput)
 }
 
 func (o GetCatalogServicesQueryOptionOutput) Namespace() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetCatalogServicesQueryOption) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GetCatalogServicesQueryOption) *string { return v.Namespace }).(pulumi.StringPtrOutput)
 }
 
 func (o GetCatalogServicesQueryOptionOutput) Near() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetCatalogServicesQueryOption) *string { return v.Near }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GetCatalogServicesQueryOption) *string { return v.Near }).(pulumi.StringPtrOutput)
 }
 
 func (o GetCatalogServicesQueryOptionOutput) NodeMeta() pulumi.StringMapOutput {
-	return o.ApplyT(func (v GetCatalogServicesQueryOption) map[string]string { return v.NodeMeta }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v GetCatalogServicesQueryOption) map[string]string { return v.NodeMeta }).(pulumi.StringMapOutput)
 }
 
 func (o GetCatalogServicesQueryOptionOutput) RequireConsistent() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v GetCatalogServicesQueryOption) *bool { return v.RequireConsistent }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v GetCatalogServicesQueryOption) *bool { return v.RequireConsistent }).(pulumi.BoolPtrOutput)
 }
 
 func (o GetCatalogServicesQueryOptionOutput) Token() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetCatalogServicesQueryOption) *string { return v.Token }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GetCatalogServicesQueryOption) *string { return v.Token }).(pulumi.StringPtrOutput)
 }
 
 func (o GetCatalogServicesQueryOptionOutput) WaitIndex() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v GetCatalogServicesQueryOption) *int { return v.WaitIndex }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v GetCatalogServicesQueryOption) *int { return v.WaitIndex }).(pulumi.IntPtrOutput)
 }
 
 func (o GetCatalogServicesQueryOptionOutput) WaitTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetCatalogServicesQueryOption) *string { return v.WaitTime }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GetCatalogServicesQueryOption) *string { return v.WaitTime }).(pulumi.StringPtrOutput)
 }
 
-type GetCatalogServicesQueryOptionArrayOutput struct { *pulumi.OutputState}
+type GetCatalogServicesQueryOptionArrayOutput struct{ *pulumi.OutputState }
 
 func (GetCatalogServicesQueryOptionArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetCatalogServicesQueryOption)(nil)).Elem()
@@ -2263,14 +2323,22 @@ func (o GetCatalogServicesQueryOptionArrayOutput) ToGetCatalogServicesQueryOptio
 }
 
 func (o GetCatalogServicesQueryOptionArrayOutput) Index(i pulumi.IntInput) GetCatalogServicesQueryOptionOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetCatalogServicesQueryOption {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCatalogServicesQueryOption {
 		return vs[0].([]GetCatalogServicesQueryOption)[vs[1].(int)]
 	}).(GetCatalogServicesQueryOptionOutput)
 }
 
 type GetKeyPrefixSubkeyCollection struct {
+	// This is the default value to set for `var.<name>`
+	// if the key does not exist in Consul. Defaults to an empty string.
 	Default *string `pulumi:"default"`
+	// This is the name of the key. This value of the
+	// key is exposed as `var.<name>`. This is not the path of the subkey
+	// in Consul.
 	Name string `pulumi:"name"`
+	// This is the subkey path in Consul (which will be appended
+	// to the given `pathPrefix`) to construct the full key that will be used
+	// to read the value.
 	Path string `pulumi:"path"`
 }
 
@@ -2282,8 +2350,16 @@ type GetKeyPrefixSubkeyCollectionInput interface {
 }
 
 type GetKeyPrefixSubkeyCollectionArgs struct {
+	// This is the default value to set for `var.<name>`
+	// if the key does not exist in Consul. Defaults to an empty string.
 	Default pulumi.StringPtrInput `pulumi:"default"`
+	// This is the name of the key. This value of the
+	// key is exposed as `var.<name>`. This is not the path of the subkey
+	// in Consul.
 	Name pulumi.StringInput `pulumi:"name"`
+	// This is the subkey path in Consul (which will be appended
+	// to the given `pathPrefix`) to construct the full key that will be used
+	// to read the value.
 	Path pulumi.StringInput `pulumi:"path"`
 }
 
@@ -2320,7 +2396,7 @@ func (i GetKeyPrefixSubkeyCollectionArray) ToGetKeyPrefixSubkeyCollectionArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetKeyPrefixSubkeyCollectionArrayOutput)
 }
 
-type GetKeyPrefixSubkeyCollectionOutput struct { *pulumi.OutputState }
+type GetKeyPrefixSubkeyCollectionOutput struct{ *pulumi.OutputState }
 
 func (GetKeyPrefixSubkeyCollectionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetKeyPrefixSubkeyCollection)(nil)).Elem()
@@ -2334,19 +2410,27 @@ func (o GetKeyPrefixSubkeyCollectionOutput) ToGetKeyPrefixSubkeyCollectionOutput
 	return o
 }
 
+// This is the default value to set for `var.<name>`
+// if the key does not exist in Consul. Defaults to an empty string.
 func (o GetKeyPrefixSubkeyCollectionOutput) Default() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetKeyPrefixSubkeyCollection) *string { return v.Default }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GetKeyPrefixSubkeyCollection) *string { return v.Default }).(pulumi.StringPtrOutput)
 }
 
+// This is the name of the key. This value of the
+// key is exposed as `var.<name>`. This is not the path of the subkey
+// in Consul.
 func (o GetKeyPrefixSubkeyCollectionOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKeyPrefixSubkeyCollection) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKeyPrefixSubkeyCollection) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// This is the subkey path in Consul (which will be appended
+// to the given `pathPrefix`) to construct the full key that will be used
+// to read the value.
 func (o GetKeyPrefixSubkeyCollectionOutput) Path() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKeyPrefixSubkeyCollection) string { return v.Path }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKeyPrefixSubkeyCollection) string { return v.Path }).(pulumi.StringOutput)
 }
 
-type GetKeyPrefixSubkeyCollectionArrayOutput struct { *pulumi.OutputState}
+type GetKeyPrefixSubkeyCollectionArrayOutput struct{ *pulumi.OutputState }
 
 func (GetKeyPrefixSubkeyCollectionArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetKeyPrefixSubkeyCollection)(nil)).Elem()
@@ -2361,14 +2445,21 @@ func (o GetKeyPrefixSubkeyCollectionArrayOutput) ToGetKeyPrefixSubkeyCollectionA
 }
 
 func (o GetKeyPrefixSubkeyCollectionArrayOutput) Index(i pulumi.IntInput) GetKeyPrefixSubkeyCollectionOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetKeyPrefixSubkeyCollection {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKeyPrefixSubkeyCollection {
 		return vs[0].([]GetKeyPrefixSubkeyCollection)[vs[1].(int)]
 	}).(GetKeyPrefixSubkeyCollectionOutput)
 }
 
 type GetKeysKey struct {
+	// This is the default value to set for `var.<name>`
+	// if the key does not exist in Consul. Defaults to an empty string.
 	Default *string `pulumi:"default"`
+	// This is the name of the key. This value of the
+	// key is exposed as `var.<name>`. This is not the path of the key
+	// in Consul.
 	Name string `pulumi:"name"`
+	// This is the path in Consul that should be read
+	// or written to.
 	Path string `pulumi:"path"`
 }
 
@@ -2380,8 +2471,15 @@ type GetKeysKeyInput interface {
 }
 
 type GetKeysKeyArgs struct {
+	// This is the default value to set for `var.<name>`
+	// if the key does not exist in Consul. Defaults to an empty string.
 	Default pulumi.StringPtrInput `pulumi:"default"`
+	// This is the name of the key. This value of the
+	// key is exposed as `var.<name>`. This is not the path of the key
+	// in Consul.
 	Name pulumi.StringInput `pulumi:"name"`
+	// This is the path in Consul that should be read
+	// or written to.
 	Path pulumi.StringInput `pulumi:"path"`
 }
 
@@ -2418,7 +2516,7 @@ func (i GetKeysKeyArray) ToGetKeysKeyArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(GetKeysKeyArrayOutput)
 }
 
-type GetKeysKeyOutput struct { *pulumi.OutputState }
+type GetKeysKeyOutput struct{ *pulumi.OutputState }
 
 func (GetKeysKeyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetKeysKey)(nil)).Elem()
@@ -2432,19 +2530,26 @@ func (o GetKeysKeyOutput) ToGetKeysKeyOutputWithContext(ctx context.Context) Get
 	return o
 }
 
+// This is the default value to set for `var.<name>`
+// if the key does not exist in Consul. Defaults to an empty string.
 func (o GetKeysKeyOutput) Default() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetKeysKey) *string { return v.Default }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GetKeysKey) *string { return v.Default }).(pulumi.StringPtrOutput)
 }
 
+// This is the name of the key. This value of the
+// key is exposed as `var.<name>`. This is not the path of the key
+// in Consul.
 func (o GetKeysKeyOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKeysKey) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKeysKey) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// This is the path in Consul that should be read
+// or written to.
 func (o GetKeysKeyOutput) Path() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKeysKey) string { return v.Path }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKeysKey) string { return v.Path }).(pulumi.StringOutput)
 }
 
-type GetKeysKeyArrayOutput struct { *pulumi.OutputState}
+type GetKeysKeyArrayOutput struct{ *pulumi.OutputState }
 
 func (GetKeysKeyArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetKeysKey)(nil)).Elem()
@@ -2459,7 +2564,7 @@ func (o GetKeysKeyArrayOutput) ToGetKeysKeyArrayOutputWithContext(ctx context.Co
 }
 
 func (o GetKeysKeyArrayOutput) Index(i pulumi.IntInput) GetKeysKeyOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetKeysKey {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKeysKey {
 		return vs[0].([]GetKeysKey)[vs[1].(int)]
 	}).(GetKeysKeyOutput)
 }
@@ -2475,9 +2580,9 @@ type GetNodesNode struct {
 	// IP address the node is advertising to the Consul cluster.
 	// * [`taggedAddresses`](https://www.consul.io/docs/agent/http/catalog.html#TaggedAddresses) -
 	// List of explicit LAN and WAN IP addresses for the agent.
-	Id string `pulumi:"id"`
-	Meta map[string]string `pulumi:"meta"`
-	Name string `pulumi:"name"`
+	Id              string            `pulumi:"id"`
+	Meta            map[string]string `pulumi:"meta"`
+	Name            string            `pulumi:"name"`
 	TaggedAddresses map[string]string `pulumi:"taggedAddresses"`
 }
 
@@ -2499,9 +2604,9 @@ type GetNodesNodeArgs struct {
 	// IP address the node is advertising to the Consul cluster.
 	// * [`taggedAddresses`](https://www.consul.io/docs/agent/http/catalog.html#TaggedAddresses) -
 	// List of explicit LAN and WAN IP addresses for the agent.
-	Id pulumi.StringInput `pulumi:"id"`
-	Meta pulumi.StringMapInput `pulumi:"meta"`
-	Name pulumi.StringInput `pulumi:"name"`
+	Id              pulumi.StringInput    `pulumi:"id"`
+	Meta            pulumi.StringMapInput `pulumi:"meta"`
+	Name            pulumi.StringInput    `pulumi:"name"`
 	TaggedAddresses pulumi.StringMapInput `pulumi:"taggedAddresses"`
 }
 
@@ -2538,7 +2643,7 @@ func (i GetNodesNodeArray) ToGetNodesNodeArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetNodesNodeArrayOutput)
 }
 
-type GetNodesNodeOutput struct { *pulumi.OutputState }
+type GetNodesNodeOutput struct{ *pulumi.OutputState }
 
 func (GetNodesNodeOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetNodesNode)(nil)).Elem()
@@ -2553,7 +2658,7 @@ func (o GetNodesNodeOutput) ToGetNodesNodeOutputWithContext(ctx context.Context)
 }
 
 func (o GetNodesNodeOutput) Address() pulumi.StringOutput {
-	return o.ApplyT(func (v GetNodesNode) string { return v.Address }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetNodesNode) string { return v.Address }).(pulumi.StringOutput)
 }
 
 // The Node ID of the Consul agent.
@@ -2566,22 +2671,22 @@ func (o GetNodesNodeOutput) Address() pulumi.StringOutput {
 // * [`taggedAddresses`](https://www.consul.io/docs/agent/http/catalog.html#TaggedAddresses) -
 // List of explicit LAN and WAN IP addresses for the agent.
 func (o GetNodesNodeOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetNodesNode) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetNodesNode) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetNodesNodeOutput) Meta() pulumi.StringMapOutput {
-	return o.ApplyT(func (v GetNodesNode) map[string]string { return v.Meta }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v GetNodesNode) map[string]string { return v.Meta }).(pulumi.StringMapOutput)
 }
 
 func (o GetNodesNodeOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetNodesNode) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetNodesNode) string { return v.Name }).(pulumi.StringOutput)
 }
 
 func (o GetNodesNodeOutput) TaggedAddresses() pulumi.StringMapOutput {
-	return o.ApplyT(func (v GetNodesNode) map[string]string { return v.TaggedAddresses }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v GetNodesNode) map[string]string { return v.TaggedAddresses }).(pulumi.StringMapOutput)
 }
 
-type GetNodesNodeArrayOutput struct { *pulumi.OutputState}
+type GetNodesNodeArrayOutput struct{ *pulumi.OutputState }
 
 func (GetNodesNodeArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetNodesNode)(nil)).Elem()
@@ -2596,23 +2701,34 @@ func (o GetNodesNodeArrayOutput) ToGetNodesNodeArrayOutputWithContext(ctx contex
 }
 
 func (o GetNodesNodeArrayOutput) Index(i pulumi.IntInput) GetNodesNodeOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetNodesNode {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNodesNode {
 		return vs[0].([]GetNodesNode)[vs[1].(int)]
 	}).(GetNodesNodeOutput)
 }
 
 type GetNodesQueryOption struct {
+	// When `true`, the default, allow responses from
+	// Consul servers that are followers.
 	AllowStale *bool `pulumi:"allowStale"`
 	// The Consul datacenter to query.  Defaults to the
 	// same value found in `queryOptions` parameter specified below, or if that is
 	// empty, the `datacenter` value found in the Consul agent that this provider is
 	// configured to talk to then the datacenter in the provider setup.
-	Datacenter *string `pulumi:"datacenter"`
-	Near *string `pulumi:"near"`
-	NodeMeta map[string]string `pulumi:"nodeMeta"`
+	Datacenter *string           `pulumi:"datacenter"`
+	Near       *string           `pulumi:"near"`
+	NodeMeta   map[string]string `pulumi:"nodeMeta"`
+	// When `true` force the client to perform a
+	// read on at least quorum servers and verify the result is the same.  Defaults
+	// to `false`.
 	RequireConsistent *bool `pulumi:"requireConsistent"`
+	// Specify the Consul ACL token to use when performing the
+	// request.  This defaults to the same API token configured by the `consul`
+	// provider but may be overriden if necessary.
 	Token *string `pulumi:"token"`
+	// Index number used to enable blocking quereis.
 	WaitIndex *int `pulumi:"waitIndex"`
+	// Max time the client should wait for a blocking query
+	// to return.
 	WaitTime *string `pulumi:"waitTime"`
 }
 
@@ -2624,17 +2740,28 @@ type GetNodesQueryOptionInput interface {
 }
 
 type GetNodesQueryOptionArgs struct {
+	// When `true`, the default, allow responses from
+	// Consul servers that are followers.
 	AllowStale pulumi.BoolPtrInput `pulumi:"allowStale"`
 	// The Consul datacenter to query.  Defaults to the
 	// same value found in `queryOptions` parameter specified below, or if that is
 	// empty, the `datacenter` value found in the Consul agent that this provider is
 	// configured to talk to then the datacenter in the provider setup.
 	Datacenter pulumi.StringPtrInput `pulumi:"datacenter"`
-	Near pulumi.StringPtrInput `pulumi:"near"`
-	NodeMeta pulumi.StringMapInput `pulumi:"nodeMeta"`
+	Near       pulumi.StringPtrInput `pulumi:"near"`
+	NodeMeta   pulumi.StringMapInput `pulumi:"nodeMeta"`
+	// When `true` force the client to perform a
+	// read on at least quorum servers and verify the result is the same.  Defaults
+	// to `false`.
 	RequireConsistent pulumi.BoolPtrInput `pulumi:"requireConsistent"`
+	// Specify the Consul ACL token to use when performing the
+	// request.  This defaults to the same API token configured by the `consul`
+	// provider but may be overriden if necessary.
 	Token pulumi.StringPtrInput `pulumi:"token"`
+	// Index number used to enable blocking quereis.
 	WaitIndex pulumi.IntPtrInput `pulumi:"waitIndex"`
+	// Max time the client should wait for a blocking query
+	// to return.
 	WaitTime pulumi.StringPtrInput `pulumi:"waitTime"`
 }
 
@@ -2671,7 +2798,7 @@ func (i GetNodesQueryOptionArray) ToGetNodesQueryOptionArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetNodesQueryOptionArrayOutput)
 }
 
-type GetNodesQueryOptionOutput struct { *pulumi.OutputState }
+type GetNodesQueryOptionOutput struct{ *pulumi.OutputState }
 
 func (GetNodesQueryOptionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetNodesQueryOption)(nil)).Elem()
@@ -2685,8 +2812,10 @@ func (o GetNodesQueryOptionOutput) ToGetNodesQueryOptionOutputWithContext(ctx co
 	return o
 }
 
+// When `true`, the default, allow responses from
+// Consul servers that are followers.
 func (o GetNodesQueryOptionOutput) AllowStale() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v GetNodesQueryOption) *bool { return v.AllowStale }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v GetNodesQueryOption) *bool { return v.AllowStale }).(pulumi.BoolPtrOutput)
 }
 
 // The Consul datacenter to query.  Defaults to the
@@ -2694,34 +2823,43 @@ func (o GetNodesQueryOptionOutput) AllowStale() pulumi.BoolPtrOutput {
 // empty, the `datacenter` value found in the Consul agent that this provider is
 // configured to talk to then the datacenter in the provider setup.
 func (o GetNodesQueryOptionOutput) Datacenter() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetNodesQueryOption) *string { return v.Datacenter }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GetNodesQueryOption) *string { return v.Datacenter }).(pulumi.StringPtrOutput)
 }
 
 func (o GetNodesQueryOptionOutput) Near() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetNodesQueryOption) *string { return v.Near }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GetNodesQueryOption) *string { return v.Near }).(pulumi.StringPtrOutput)
 }
 
 func (o GetNodesQueryOptionOutput) NodeMeta() pulumi.StringMapOutput {
-	return o.ApplyT(func (v GetNodesQueryOption) map[string]string { return v.NodeMeta }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v GetNodesQueryOption) map[string]string { return v.NodeMeta }).(pulumi.StringMapOutput)
 }
 
+// When `true` force the client to perform a
+// read on at least quorum servers and verify the result is the same.  Defaults
+// to `false`.
 func (o GetNodesQueryOptionOutput) RequireConsistent() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v GetNodesQueryOption) *bool { return v.RequireConsistent }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v GetNodesQueryOption) *bool { return v.RequireConsistent }).(pulumi.BoolPtrOutput)
 }
 
+// Specify the Consul ACL token to use when performing the
+// request.  This defaults to the same API token configured by the `consul`
+// provider but may be overriden if necessary.
 func (o GetNodesQueryOptionOutput) Token() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetNodesQueryOption) *string { return v.Token }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GetNodesQueryOption) *string { return v.Token }).(pulumi.StringPtrOutput)
 }
 
+// Index number used to enable blocking quereis.
 func (o GetNodesQueryOptionOutput) WaitIndex() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v GetNodesQueryOption) *int { return v.WaitIndex }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v GetNodesQueryOption) *int { return v.WaitIndex }).(pulumi.IntPtrOutput)
 }
 
+// Max time the client should wait for a blocking query
+// to return.
 func (o GetNodesQueryOptionOutput) WaitTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetNodesQueryOption) *string { return v.WaitTime }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GetNodesQueryOption) *string { return v.WaitTime }).(pulumi.StringPtrOutput)
 }
 
-type GetNodesQueryOptionArrayOutput struct { *pulumi.OutputState}
+type GetNodesQueryOptionArrayOutput struct{ *pulumi.OutputState }
 
 func (GetNodesQueryOptionArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetNodesQueryOption)(nil)).Elem()
@@ -2736,7 +2874,7 @@ func (o GetNodesQueryOptionArrayOutput) ToGetNodesQueryOptionArrayOutputWithCont
 }
 
 func (o GetNodesQueryOptionArrayOutput) Index(i pulumi.IntInput) GetNodesQueryOptionOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetNodesQueryOption {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNodesQueryOption {
 		return vs[0].([]GetNodesQueryOption)[vs[1].(int)]
 	}).(GetNodesQueryOptionOutput)
 }
@@ -2744,7 +2882,7 @@ func (o GetNodesQueryOptionArrayOutput) Index(i pulumi.IntInput) GetNodesQueryOp
 type GetServiceHealthResultType struct {
 	Checks []GetServiceHealthResultCheck `pulumi:"checks"`
 	// The name of the node associated with this health-check.
-	Node GetServiceHealthResultNode `pulumi:"node"`
+	Node    GetServiceHealthResultNode    `pulumi:"node"`
 	Service GetServiceHealthResultService `pulumi:"service"`
 }
 
@@ -2758,7 +2896,7 @@ type GetServiceHealthResultTypeInput interface {
 type GetServiceHealthResultTypeArgs struct {
 	Checks GetServiceHealthResultCheckArrayInput `pulumi:"checks"`
 	// The name of the node associated with this health-check.
-	Node GetServiceHealthResultNodeInput `pulumi:"node"`
+	Node    GetServiceHealthResultNodeInput    `pulumi:"node"`
 	Service GetServiceHealthResultServiceInput `pulumi:"service"`
 }
 
@@ -2795,7 +2933,7 @@ func (i GetServiceHealthResultTypeArray) ToGetServiceHealthResultTypeArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetServiceHealthResultTypeArrayOutput)
 }
 
-type GetServiceHealthResultTypeOutput struct { *pulumi.OutputState }
+type GetServiceHealthResultTypeOutput struct{ *pulumi.OutputState }
 
 func (GetServiceHealthResultTypeOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetServiceHealthResultType)(nil)).Elem()
@@ -2810,19 +2948,19 @@ func (o GetServiceHealthResultTypeOutput) ToGetServiceHealthResultTypeOutputWith
 }
 
 func (o GetServiceHealthResultTypeOutput) Checks() GetServiceHealthResultCheckArrayOutput {
-	return o.ApplyT(func (v GetServiceHealthResultType) []GetServiceHealthResultCheck { return v.Checks }).(GetServiceHealthResultCheckArrayOutput)
+	return o.ApplyT(func(v GetServiceHealthResultType) []GetServiceHealthResultCheck { return v.Checks }).(GetServiceHealthResultCheckArrayOutput)
 }
 
 // The name of the node associated with this health-check.
 func (o GetServiceHealthResultTypeOutput) Node() GetServiceHealthResultNodeOutput {
-	return o.ApplyT(func (v GetServiceHealthResultType) GetServiceHealthResultNode { return v.Node }).(GetServiceHealthResultNodeOutput)
+	return o.ApplyT(func(v GetServiceHealthResultType) GetServiceHealthResultNode { return v.Node }).(GetServiceHealthResultNodeOutput)
 }
 
 func (o GetServiceHealthResultTypeOutput) Service() GetServiceHealthResultServiceOutput {
-	return o.ApplyT(func (v GetServiceHealthResultType) GetServiceHealthResultService { return v.Service }).(GetServiceHealthResultServiceOutput)
+	return o.ApplyT(func(v GetServiceHealthResultType) GetServiceHealthResultService { return v.Service }).(GetServiceHealthResultServiceOutput)
 }
 
-type GetServiceHealthResultTypeArrayOutput struct { *pulumi.OutputState}
+type GetServiceHealthResultTypeArrayOutput struct{ *pulumi.OutputState }
 
 func (GetServiceHealthResultTypeArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetServiceHealthResultType)(nil)).Elem()
@@ -2837,7 +2975,7 @@ func (o GetServiceHealthResultTypeArrayOutput) ToGetServiceHealthResultTypeArray
 }
 
 func (o GetServiceHealthResultTypeArrayOutput) Index(i pulumi.IntInput) GetServiceHealthResultTypeOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetServiceHealthResultType {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceHealthResultType {
 		return vs[0].([]GetServiceHealthResultType)[vs[1].(int)]
 	}).(GetServiceHealthResultTypeOutput)
 }
@@ -2924,7 +3062,7 @@ func (i GetServiceHealthResultCheckArray) ToGetServiceHealthResultCheckArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetServiceHealthResultCheckArrayOutput)
 }
 
-type GetServiceHealthResultCheckOutput struct { *pulumi.OutputState }
+type GetServiceHealthResultCheckOutput struct{ *pulumi.OutputState }
 
 func (GetServiceHealthResultCheckOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetServiceHealthResultCheck)(nil)).Elem()
@@ -2940,50 +3078,50 @@ func (o GetServiceHealthResultCheckOutput) ToGetServiceHealthResultCheckOutputWi
 
 // The ID of this health-check.
 func (o GetServiceHealthResultCheckOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetServiceHealthResultCheck) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetServiceHealthResultCheck) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The service name to select.
 func (o GetServiceHealthResultCheckOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetServiceHealthResultCheck) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetServiceHealthResultCheck) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The name of the node associated with this health-check.
 func (o GetServiceHealthResultCheckOutput) Node() pulumi.StringOutput {
-	return o.ApplyT(func (v GetServiceHealthResultCheck) string { return v.Node }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetServiceHealthResultCheck) string { return v.Node }).(pulumi.StringOutput)
 }
 
 // A human readable description of the current state of the health-check.
 func (o GetServiceHealthResultCheckOutput) Notes() pulumi.StringOutput {
-	return o.ApplyT(func (v GetServiceHealthResultCheck) string { return v.Notes }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetServiceHealthResultCheck) string { return v.Notes }).(pulumi.StringOutput)
 }
 
 // The output of the health-check.
 func (o GetServiceHealthResultCheckOutput) Output() pulumi.StringOutput {
-	return o.ApplyT(func (v GetServiceHealthResultCheck) string { return v.Output }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetServiceHealthResultCheck) string { return v.Output }).(pulumi.StringOutput)
 }
 
 // The ID of the service associated to this health-check.
 func (o GetServiceHealthResultCheckOutput) ServiceId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetServiceHealthResultCheck) string { return v.ServiceId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetServiceHealthResultCheck) string { return v.ServiceId }).(pulumi.StringOutput)
 }
 
 // The name of the service associated with this health-check.
 func (o GetServiceHealthResultCheckOutput) ServiceName() pulumi.StringOutput {
-	return o.ApplyT(func (v GetServiceHealthResultCheck) string { return v.ServiceName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetServiceHealthResultCheck) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
 // The list of tags associated with this health-check.
 func (o GetServiceHealthResultCheckOutput) ServiceTags() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetServiceHealthResultCheck) []string { return v.ServiceTags }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetServiceHealthResultCheck) []string { return v.ServiceTags }).(pulumi.StringArrayOutput)
 }
 
 // The status of this health-check.
 func (o GetServiceHealthResultCheckOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func (v GetServiceHealthResultCheck) string { return v.Status }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetServiceHealthResultCheck) string { return v.Status }).(pulumi.StringOutput)
 }
 
-type GetServiceHealthResultCheckArrayOutput struct { *pulumi.OutputState}
+type GetServiceHealthResultCheckArrayOutput struct{ *pulumi.OutputState }
 
 func (GetServiceHealthResultCheckArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetServiceHealthResultCheck)(nil)).Elem()
@@ -2998,7 +3136,7 @@ func (o GetServiceHealthResultCheckArrayOutput) ToGetServiceHealthResultCheckArr
 }
 
 func (o GetServiceHealthResultCheckArrayOutput) Index(i pulumi.IntInput) GetServiceHealthResultCheckOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetServiceHealthResultCheck {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceHealthResultCheck {
 		return vs[0].([]GetServiceHealthResultCheck)[vs[1].(int)]
 	}).(GetServiceHealthResultCheckOutput)
 }
@@ -3013,7 +3151,7 @@ type GetServiceHealthResultNode struct {
 	// Service metadata tag information, if any.
 	Meta map[string]string `pulumi:"meta"`
 	// The service name to select.
-	Name string `pulumi:"name"`
+	Name            string            `pulumi:"name"`
 	TaggedAddresses map[string]string `pulumi:"taggedAddresses"`
 }
 
@@ -3034,7 +3172,7 @@ type GetServiceHealthResultNodeArgs struct {
 	// Service metadata tag information, if any.
 	Meta pulumi.StringMapInput `pulumi:"meta"`
 	// The service name to select.
-	Name pulumi.StringInput `pulumi:"name"`
+	Name            pulumi.StringInput    `pulumi:"name"`
 	TaggedAddresses pulumi.StringMapInput `pulumi:"taggedAddresses"`
 }
 
@@ -3050,7 +3188,7 @@ func (i GetServiceHealthResultNodeArgs) ToGetServiceHealthResultNodeOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetServiceHealthResultNodeOutput)
 }
 
-type GetServiceHealthResultNodeOutput struct { *pulumi.OutputState }
+type GetServiceHealthResultNodeOutput struct{ *pulumi.OutputState }
 
 func (GetServiceHealthResultNodeOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetServiceHealthResultNode)(nil)).Elem()
@@ -3066,31 +3204,31 @@ func (o GetServiceHealthResultNodeOutput) ToGetServiceHealthResultNodeOutputWith
 
 // The address of this instance.
 func (o GetServiceHealthResultNodeOutput) Address() pulumi.StringOutput {
-	return o.ApplyT(func (v GetServiceHealthResultNode) string { return v.Address }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetServiceHealthResultNode) string { return v.Address }).(pulumi.StringOutput)
 }
 
 // The Consul datacenter to query.
 func (o GetServiceHealthResultNodeOutput) Datacenter() pulumi.StringOutput {
-	return o.ApplyT(func (v GetServiceHealthResultNode) string { return v.Datacenter }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetServiceHealthResultNode) string { return v.Datacenter }).(pulumi.StringOutput)
 }
 
 // The ID of this health-check.
 func (o GetServiceHealthResultNodeOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetServiceHealthResultNode) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetServiceHealthResultNode) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Service metadata tag information, if any.
 func (o GetServiceHealthResultNodeOutput) Meta() pulumi.StringMapOutput {
-	return o.ApplyT(func (v GetServiceHealthResultNode) map[string]string { return v.Meta }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v GetServiceHealthResultNode) map[string]string { return v.Meta }).(pulumi.StringMapOutput)
 }
 
 // The service name to select.
 func (o GetServiceHealthResultNodeOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetServiceHealthResultNode) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetServiceHealthResultNode) string { return v.Name }).(pulumi.StringOutput)
 }
 
 func (o GetServiceHealthResultNodeOutput) TaggedAddresses() pulumi.StringMapOutput {
-	return o.ApplyT(func (v GetServiceHealthResultNode) map[string]string { return v.TaggedAddresses }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v GetServiceHealthResultNode) map[string]string { return v.TaggedAddresses }).(pulumi.StringMapOutput)
 }
 
 type GetServiceHealthResultService struct {
@@ -3142,7 +3280,7 @@ func (i GetServiceHealthResultServiceArgs) ToGetServiceHealthResultServiceOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetServiceHealthResultServiceOutput)
 }
 
-type GetServiceHealthResultServiceOutput struct { *pulumi.OutputState }
+type GetServiceHealthResultServiceOutput struct{ *pulumi.OutputState }
 
 func (GetServiceHealthResultServiceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetServiceHealthResultService)(nil)).Elem()
@@ -3158,47 +3296,59 @@ func (o GetServiceHealthResultServiceOutput) ToGetServiceHealthResultServiceOutp
 
 // The address of this instance.
 func (o GetServiceHealthResultServiceOutput) Address() pulumi.StringOutput {
-	return o.ApplyT(func (v GetServiceHealthResultService) string { return v.Address }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetServiceHealthResultService) string { return v.Address }).(pulumi.StringOutput)
 }
 
 // The ID of this health-check.
 func (o GetServiceHealthResultServiceOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetServiceHealthResultService) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetServiceHealthResultService) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Service metadata tag information, if any.
 func (o GetServiceHealthResultServiceOutput) Meta() pulumi.StringMapOutput {
-	return o.ApplyT(func (v GetServiceHealthResultService) map[string]string { return v.Meta }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v GetServiceHealthResultService) map[string]string { return v.Meta }).(pulumi.StringMapOutput)
 }
 
 // The service name to select.
 func (o GetServiceHealthResultServiceOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetServiceHealthResultService) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetServiceHealthResultService) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The port of this instance.
 func (o GetServiceHealthResultServiceOutput) Port() pulumi.IntOutput {
-	return o.ApplyT(func (v GetServiceHealthResultService) int { return v.Port }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetServiceHealthResultService) int { return v.Port }).(pulumi.IntOutput)
 }
 
 // The list of tags associated with this instance.
 func (o GetServiceHealthResultServiceOutput) Tags() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetServiceHealthResultService) []string { return v.Tags }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetServiceHealthResultService) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
 type GetServiceQueryOption struct {
+	// When `true`, the default, allow responses from
+	// Consul servers that are followers.
 	AllowStale *bool `pulumi:"allowStale"`
 	// The Consul datacenter to query.  Defaults to the
 	// same value found in `queryOptions` parameter specified below, or if that is
 	// empty, the `datacenter` value found in the Consul agent that this provider is
 	// configured to talk to.
 	Datacenter *string `pulumi:"datacenter"`
-	Namespace *string `pulumi:"namespace"`
-	Near *string `pulumi:"near"`
-	NodeMeta map[string]string `pulumi:"nodeMeta"`
+	// The namespace to lookup the service.
+	Namespace *string           `pulumi:"namespace"`
+	Near      *string           `pulumi:"near"`
+	NodeMeta  map[string]string `pulumi:"nodeMeta"`
+	// When `true` force the client to perform a
+	// read on at least quorum servers and verify the result is the same.  Defaults
+	// to `false`.
 	RequireConsistent *bool `pulumi:"requireConsistent"`
+	// Specify the Consul ACL token to use when performing the
+	// request.  This defaults to the same API token configured by the `consul`
+	// provider but may be overriden if necessary.
 	Token *string `pulumi:"token"`
+	// Index number used to enable blocking quereis.
 	WaitIndex *int `pulumi:"waitIndex"`
+	// Max time the client should wait for a blocking query
+	// to return.
 	WaitTime *string `pulumi:"waitTime"`
 }
 
@@ -3210,18 +3360,30 @@ type GetServiceQueryOptionInput interface {
 }
 
 type GetServiceQueryOptionArgs struct {
+	// When `true`, the default, allow responses from
+	// Consul servers that are followers.
 	AllowStale pulumi.BoolPtrInput `pulumi:"allowStale"`
 	// The Consul datacenter to query.  Defaults to the
 	// same value found in `queryOptions` parameter specified below, or if that is
 	// empty, the `datacenter` value found in the Consul agent that this provider is
 	// configured to talk to.
 	Datacenter pulumi.StringPtrInput `pulumi:"datacenter"`
+	// The namespace to lookup the service.
 	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
-	Near pulumi.StringPtrInput `pulumi:"near"`
-	NodeMeta pulumi.StringMapInput `pulumi:"nodeMeta"`
+	Near      pulumi.StringPtrInput `pulumi:"near"`
+	NodeMeta  pulumi.StringMapInput `pulumi:"nodeMeta"`
+	// When `true` force the client to perform a
+	// read on at least quorum servers and verify the result is the same.  Defaults
+	// to `false`.
 	RequireConsistent pulumi.BoolPtrInput `pulumi:"requireConsistent"`
+	// Specify the Consul ACL token to use when performing the
+	// request.  This defaults to the same API token configured by the `consul`
+	// provider but may be overriden if necessary.
 	Token pulumi.StringPtrInput `pulumi:"token"`
+	// Index number used to enable blocking quereis.
 	WaitIndex pulumi.IntPtrInput `pulumi:"waitIndex"`
+	// Max time the client should wait for a blocking query
+	// to return.
 	WaitTime pulumi.StringPtrInput `pulumi:"waitTime"`
 }
 
@@ -3258,7 +3420,7 @@ func (i GetServiceQueryOptionArray) ToGetServiceQueryOptionArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetServiceQueryOptionArrayOutput)
 }
 
-type GetServiceQueryOptionOutput struct { *pulumi.OutputState }
+type GetServiceQueryOptionOutput struct{ *pulumi.OutputState }
 
 func (GetServiceQueryOptionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetServiceQueryOption)(nil)).Elem()
@@ -3272,8 +3434,10 @@ func (o GetServiceQueryOptionOutput) ToGetServiceQueryOptionOutputWithContext(ct
 	return o
 }
 
+// When `true`, the default, allow responses from
+// Consul servers that are followers.
 func (o GetServiceQueryOptionOutput) AllowStale() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v GetServiceQueryOption) *bool { return v.AllowStale }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v GetServiceQueryOption) *bool { return v.AllowStale }).(pulumi.BoolPtrOutput)
 }
 
 // The Consul datacenter to query.  Defaults to the
@@ -3281,38 +3445,48 @@ func (o GetServiceQueryOptionOutput) AllowStale() pulumi.BoolPtrOutput {
 // empty, the `datacenter` value found in the Consul agent that this provider is
 // configured to talk to.
 func (o GetServiceQueryOptionOutput) Datacenter() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetServiceQueryOption) *string { return v.Datacenter }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GetServiceQueryOption) *string { return v.Datacenter }).(pulumi.StringPtrOutput)
 }
 
+// The namespace to lookup the service.
 func (o GetServiceQueryOptionOutput) Namespace() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetServiceQueryOption) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GetServiceQueryOption) *string { return v.Namespace }).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceQueryOptionOutput) Near() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetServiceQueryOption) *string { return v.Near }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GetServiceQueryOption) *string { return v.Near }).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceQueryOptionOutput) NodeMeta() pulumi.StringMapOutput {
-	return o.ApplyT(func (v GetServiceQueryOption) map[string]string { return v.NodeMeta }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v GetServiceQueryOption) map[string]string { return v.NodeMeta }).(pulumi.StringMapOutput)
 }
 
+// When `true` force the client to perform a
+// read on at least quorum servers and verify the result is the same.  Defaults
+// to `false`.
 func (o GetServiceQueryOptionOutput) RequireConsistent() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v GetServiceQueryOption) *bool { return v.RequireConsistent }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v GetServiceQueryOption) *bool { return v.RequireConsistent }).(pulumi.BoolPtrOutput)
 }
 
+// Specify the Consul ACL token to use when performing the
+// request.  This defaults to the same API token configured by the `consul`
+// provider but may be overriden if necessary.
 func (o GetServiceQueryOptionOutput) Token() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetServiceQueryOption) *string { return v.Token }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GetServiceQueryOption) *string { return v.Token }).(pulumi.StringPtrOutput)
 }
 
+// Index number used to enable blocking quereis.
 func (o GetServiceQueryOptionOutput) WaitIndex() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v GetServiceQueryOption) *int { return v.WaitIndex }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v GetServiceQueryOption) *int { return v.WaitIndex }).(pulumi.IntPtrOutput)
 }
 
+// Max time the client should wait for a blocking query
+// to return.
 func (o GetServiceQueryOptionOutput) WaitTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetServiceQueryOption) *string { return v.WaitTime }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GetServiceQueryOption) *string { return v.WaitTime }).(pulumi.StringPtrOutput)
 }
 
-type GetServiceQueryOptionArrayOutput struct { *pulumi.OutputState}
+type GetServiceQueryOptionArrayOutput struct{ *pulumi.OutputState }
 
 func (GetServiceQueryOptionArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetServiceQueryOption)(nil)).Elem()
@@ -3327,20 +3501,20 @@ func (o GetServiceQueryOptionArrayOutput) ToGetServiceQueryOptionArrayOutputWith
 }
 
 func (o GetServiceQueryOptionArrayOutput) Index(i pulumi.IntInput) GetServiceQueryOptionOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetServiceQueryOption {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceQueryOption {
 		return vs[0].([]GetServiceQueryOption)[vs[1].(int)]
 	}).(GetServiceQueryOptionOutput)
 }
 
 type GetServiceService struct {
-	Address string `pulumi:"address"`
-	CreateIndex string `pulumi:"createIndex"`
-	EnableTagOverride string `pulumi:"enableTagOverride"`
-	Id string `pulumi:"id"`
-	Meta map[string]string `pulumi:"meta"`
-	ModifyIndex string `pulumi:"modifyIndex"`
+	Address           string            `pulumi:"address"`
+	CreateIndex       string            `pulumi:"createIndex"`
+	EnableTagOverride string            `pulumi:"enableTagOverride"`
+	Id                string            `pulumi:"id"`
+	Meta              map[string]string `pulumi:"meta"`
+	ModifyIndex       string            `pulumi:"modifyIndex"`
 	// The service name to select.
-	Name string `pulumi:"name"`
+	Name        string `pulumi:"name"`
 	NodeAddress string `pulumi:"nodeAddress"`
 	// The Node ID of the Consul agent advertising the service.
 	// * [`nodeMeta`](https://www.consul.io/docs/agent/http/catalog.html#Meta) - Node
@@ -3365,12 +3539,12 @@ type GetServiceService struct {
 	// List of tags for the service.
 	// * [`meta`](https://www.consul.io/docs/agent/http/catalog.html#Meta) - Service meta
 	// data tag information, if any.
-	NodeId string `pulumi:"nodeId"`
-	NodeMeta map[string]string `pulumi:"nodeMeta"`
-	NodeName string `pulumi:"nodeName"`
-	Port string `pulumi:"port"`
+	NodeId          string            `pulumi:"nodeId"`
+	NodeMeta        map[string]string `pulumi:"nodeMeta"`
+	NodeName        string            `pulumi:"nodeName"`
+	Port            string            `pulumi:"port"`
 	TaggedAddresses map[string]string `pulumi:"taggedAddresses"`
-	Tags []string `pulumi:"tags"`
+	Tags            []string          `pulumi:"tags"`
 }
 
 type GetServiceServiceInput interface {
@@ -3381,14 +3555,14 @@ type GetServiceServiceInput interface {
 }
 
 type GetServiceServiceArgs struct {
-	Address pulumi.StringInput `pulumi:"address"`
-	CreateIndex pulumi.StringInput `pulumi:"createIndex"`
-	EnableTagOverride pulumi.StringInput `pulumi:"enableTagOverride"`
-	Id pulumi.StringInput `pulumi:"id"`
-	Meta pulumi.StringMapInput `pulumi:"meta"`
-	ModifyIndex pulumi.StringInput `pulumi:"modifyIndex"`
+	Address           pulumi.StringInput    `pulumi:"address"`
+	CreateIndex       pulumi.StringInput    `pulumi:"createIndex"`
+	EnableTagOverride pulumi.StringInput    `pulumi:"enableTagOverride"`
+	Id                pulumi.StringInput    `pulumi:"id"`
+	Meta              pulumi.StringMapInput `pulumi:"meta"`
+	ModifyIndex       pulumi.StringInput    `pulumi:"modifyIndex"`
 	// The service name to select.
-	Name pulumi.StringInput `pulumi:"name"`
+	Name        pulumi.StringInput `pulumi:"name"`
 	NodeAddress pulumi.StringInput `pulumi:"nodeAddress"`
 	// The Node ID of the Consul agent advertising the service.
 	// * [`nodeMeta`](https://www.consul.io/docs/agent/http/catalog.html#Meta) - Node
@@ -3413,12 +3587,12 @@ type GetServiceServiceArgs struct {
 	// List of tags for the service.
 	// * [`meta`](https://www.consul.io/docs/agent/http/catalog.html#Meta) - Service meta
 	// data tag information, if any.
-	NodeId pulumi.StringInput `pulumi:"nodeId"`
-	NodeMeta pulumi.StringMapInput `pulumi:"nodeMeta"`
-	NodeName pulumi.StringInput `pulumi:"nodeName"`
-	Port pulumi.StringInput `pulumi:"port"`
-	TaggedAddresses pulumi.StringMapInput `pulumi:"taggedAddresses"`
-	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	NodeId          pulumi.StringInput      `pulumi:"nodeId"`
+	NodeMeta        pulumi.StringMapInput   `pulumi:"nodeMeta"`
+	NodeName        pulumi.StringInput      `pulumi:"nodeName"`
+	Port            pulumi.StringInput      `pulumi:"port"`
+	TaggedAddresses pulumi.StringMapInput   `pulumi:"taggedAddresses"`
+	Tags            pulumi.StringArrayInput `pulumi:"tags"`
 }
 
 func (GetServiceServiceArgs) ElementType() reflect.Type {
@@ -3454,7 +3628,7 @@ func (i GetServiceServiceArray) ToGetServiceServiceArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetServiceServiceArrayOutput)
 }
 
-type GetServiceServiceOutput struct { *pulumi.OutputState }
+type GetServiceServiceOutput struct{ *pulumi.OutputState }
 
 func (GetServiceServiceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetServiceService)(nil)).Elem()
@@ -3469,36 +3643,36 @@ func (o GetServiceServiceOutput) ToGetServiceServiceOutputWithContext(ctx contex
 }
 
 func (o GetServiceServiceOutput) Address() pulumi.StringOutput {
-	return o.ApplyT(func (v GetServiceService) string { return v.Address }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetServiceService) string { return v.Address }).(pulumi.StringOutput)
 }
 
 func (o GetServiceServiceOutput) CreateIndex() pulumi.StringOutput {
-	return o.ApplyT(func (v GetServiceService) string { return v.CreateIndex }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetServiceService) string { return v.CreateIndex }).(pulumi.StringOutput)
 }
 
 func (o GetServiceServiceOutput) EnableTagOverride() pulumi.StringOutput {
-	return o.ApplyT(func (v GetServiceService) string { return v.EnableTagOverride }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetServiceService) string { return v.EnableTagOverride }).(pulumi.StringOutput)
 }
 
 func (o GetServiceServiceOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetServiceService) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetServiceService) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetServiceServiceOutput) Meta() pulumi.StringMapOutput {
-	return o.ApplyT(func (v GetServiceService) map[string]string { return v.Meta }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v GetServiceService) map[string]string { return v.Meta }).(pulumi.StringMapOutput)
 }
 
 func (o GetServiceServiceOutput) ModifyIndex() pulumi.StringOutput {
-	return o.ApplyT(func (v GetServiceService) string { return v.ModifyIndex }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetServiceService) string { return v.ModifyIndex }).(pulumi.StringOutput)
 }
 
 // The service name to select.
 func (o GetServiceServiceOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetServiceService) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetServiceService) string { return v.Name }).(pulumi.StringOutput)
 }
 
 func (o GetServiceServiceOutput) NodeAddress() pulumi.StringOutput {
-	return o.ApplyT(func (v GetServiceService) string { return v.NodeAddress }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetServiceService) string { return v.NodeAddress }).(pulumi.StringOutput)
 }
 
 // The Node ID of the Consul agent advertising the service.
@@ -3525,30 +3699,30 @@ func (o GetServiceServiceOutput) NodeAddress() pulumi.StringOutput {
 // * [`meta`](https://www.consul.io/docs/agent/http/catalog.html#Meta) - Service meta
 // data tag information, if any.
 func (o GetServiceServiceOutput) NodeId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetServiceService) string { return v.NodeId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetServiceService) string { return v.NodeId }).(pulumi.StringOutput)
 }
 
 func (o GetServiceServiceOutput) NodeMeta() pulumi.StringMapOutput {
-	return o.ApplyT(func (v GetServiceService) map[string]string { return v.NodeMeta }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v GetServiceService) map[string]string { return v.NodeMeta }).(pulumi.StringMapOutput)
 }
 
 func (o GetServiceServiceOutput) NodeName() pulumi.StringOutput {
-	return o.ApplyT(func (v GetServiceService) string { return v.NodeName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetServiceService) string { return v.NodeName }).(pulumi.StringOutput)
 }
 
 func (o GetServiceServiceOutput) Port() pulumi.StringOutput {
-	return o.ApplyT(func (v GetServiceService) string { return v.Port }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetServiceService) string { return v.Port }).(pulumi.StringOutput)
 }
 
 func (o GetServiceServiceOutput) TaggedAddresses() pulumi.StringMapOutput {
-	return o.ApplyT(func (v GetServiceService) map[string]string { return v.TaggedAddresses }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v GetServiceService) map[string]string { return v.TaggedAddresses }).(pulumi.StringMapOutput)
 }
 
 func (o GetServiceServiceOutput) Tags() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetServiceService) []string { return v.Tags }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetServiceService) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-type GetServiceServiceArrayOutput struct { *pulumi.OutputState}
+type GetServiceServiceArrayOutput struct{ *pulumi.OutputState }
 
 func (GetServiceServiceArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetServiceService)(nil)).Elem()
@@ -3563,24 +3737,36 @@ func (o GetServiceServiceArrayOutput) ToGetServiceServiceArrayOutputWithContext(
 }
 
 func (o GetServiceServiceArrayOutput) Index(i pulumi.IntInput) GetServiceServiceOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetServiceService {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceService {
 		return vs[0].([]GetServiceService)[vs[1].(int)]
 	}).(GetServiceServiceOutput)
 }
 
 type GetServicesQueryOption struct {
+	// When `true`, the default, allow responses from
+	// Consul servers that are followers.
 	AllowStale *bool `pulumi:"allowStale"`
 	// The Consul datacenter to query.  Defaults to the
 	// same value found in `queryOptions` parameter specified below, or if that is
 	// empty, the `datacenter` value found in the Consul agent that this provider is
 	// configured to talk to.
 	Datacenter *string `pulumi:"datacenter"`
-	Namespace *string `pulumi:"namespace"`
-	Near *string `pulumi:"near"`
-	NodeMeta map[string]string `pulumi:"nodeMeta"`
+	// The namespace to lookup the services.
+	Namespace *string           `pulumi:"namespace"`
+	Near      *string           `pulumi:"near"`
+	NodeMeta  map[string]string `pulumi:"nodeMeta"`
+	// When `true` force the client to perform a
+	// read on at least quorum servers and verify the result is the same.  Defaults
+	// to `false`.
 	RequireConsistent *bool `pulumi:"requireConsistent"`
+	// Specify the Consul ACL token to use when performing the
+	// request.  This defaults to the same API token configured by the `consul`
+	// provider but may be overriden if necessary.
 	Token *string `pulumi:"token"`
+	// Index number used to enable blocking quereis.
 	WaitIndex *int `pulumi:"waitIndex"`
+	// Max time the client should wait for a blocking query
+	// to return.
 	WaitTime *string `pulumi:"waitTime"`
 }
 
@@ -3592,18 +3778,30 @@ type GetServicesQueryOptionInput interface {
 }
 
 type GetServicesQueryOptionArgs struct {
+	// When `true`, the default, allow responses from
+	// Consul servers that are followers.
 	AllowStale pulumi.BoolPtrInput `pulumi:"allowStale"`
 	// The Consul datacenter to query.  Defaults to the
 	// same value found in `queryOptions` parameter specified below, or if that is
 	// empty, the `datacenter` value found in the Consul agent that this provider is
 	// configured to talk to.
 	Datacenter pulumi.StringPtrInput `pulumi:"datacenter"`
+	// The namespace to lookup the services.
 	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
-	Near pulumi.StringPtrInput `pulumi:"near"`
-	NodeMeta pulumi.StringMapInput `pulumi:"nodeMeta"`
+	Near      pulumi.StringPtrInput `pulumi:"near"`
+	NodeMeta  pulumi.StringMapInput `pulumi:"nodeMeta"`
+	// When `true` force the client to perform a
+	// read on at least quorum servers and verify the result is the same.  Defaults
+	// to `false`.
 	RequireConsistent pulumi.BoolPtrInput `pulumi:"requireConsistent"`
+	// Specify the Consul ACL token to use when performing the
+	// request.  This defaults to the same API token configured by the `consul`
+	// provider but may be overriden if necessary.
 	Token pulumi.StringPtrInput `pulumi:"token"`
+	// Index number used to enable blocking quereis.
 	WaitIndex pulumi.IntPtrInput `pulumi:"waitIndex"`
+	// Max time the client should wait for a blocking query
+	// to return.
 	WaitTime pulumi.StringPtrInput `pulumi:"waitTime"`
 }
 
@@ -3640,7 +3838,7 @@ func (i GetServicesQueryOptionArray) ToGetServicesQueryOptionArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetServicesQueryOptionArrayOutput)
 }
 
-type GetServicesQueryOptionOutput struct { *pulumi.OutputState }
+type GetServicesQueryOptionOutput struct{ *pulumi.OutputState }
 
 func (GetServicesQueryOptionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetServicesQueryOption)(nil)).Elem()
@@ -3654,8 +3852,10 @@ func (o GetServicesQueryOptionOutput) ToGetServicesQueryOptionOutputWithContext(
 	return o
 }
 
+// When `true`, the default, allow responses from
+// Consul servers that are followers.
 func (o GetServicesQueryOptionOutput) AllowStale() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v GetServicesQueryOption) *bool { return v.AllowStale }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v GetServicesQueryOption) *bool { return v.AllowStale }).(pulumi.BoolPtrOutput)
 }
 
 // The Consul datacenter to query.  Defaults to the
@@ -3663,38 +3863,48 @@ func (o GetServicesQueryOptionOutput) AllowStale() pulumi.BoolPtrOutput {
 // empty, the `datacenter` value found in the Consul agent that this provider is
 // configured to talk to.
 func (o GetServicesQueryOptionOutput) Datacenter() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetServicesQueryOption) *string { return v.Datacenter }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GetServicesQueryOption) *string { return v.Datacenter }).(pulumi.StringPtrOutput)
 }
 
+// The namespace to lookup the services.
 func (o GetServicesQueryOptionOutput) Namespace() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetServicesQueryOption) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GetServicesQueryOption) *string { return v.Namespace }).(pulumi.StringPtrOutput)
 }
 
 func (o GetServicesQueryOptionOutput) Near() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetServicesQueryOption) *string { return v.Near }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GetServicesQueryOption) *string { return v.Near }).(pulumi.StringPtrOutput)
 }
 
 func (o GetServicesQueryOptionOutput) NodeMeta() pulumi.StringMapOutput {
-	return o.ApplyT(func (v GetServicesQueryOption) map[string]string { return v.NodeMeta }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v GetServicesQueryOption) map[string]string { return v.NodeMeta }).(pulumi.StringMapOutput)
 }
 
+// When `true` force the client to perform a
+// read on at least quorum servers and verify the result is the same.  Defaults
+// to `false`.
 func (o GetServicesQueryOptionOutput) RequireConsistent() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v GetServicesQueryOption) *bool { return v.RequireConsistent }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v GetServicesQueryOption) *bool { return v.RequireConsistent }).(pulumi.BoolPtrOutput)
 }
 
+// Specify the Consul ACL token to use when performing the
+// request.  This defaults to the same API token configured by the `consul`
+// provider but may be overriden if necessary.
 func (o GetServicesQueryOptionOutput) Token() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetServicesQueryOption) *string { return v.Token }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GetServicesQueryOption) *string { return v.Token }).(pulumi.StringPtrOutput)
 }
 
+// Index number used to enable blocking quereis.
 func (o GetServicesQueryOptionOutput) WaitIndex() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v GetServicesQueryOption) *int { return v.WaitIndex }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v GetServicesQueryOption) *int { return v.WaitIndex }).(pulumi.IntPtrOutput)
 }
 
+// Max time the client should wait for a blocking query
+// to return.
 func (o GetServicesQueryOptionOutput) WaitTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetServicesQueryOption) *string { return v.WaitTime }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GetServicesQueryOption) *string { return v.WaitTime }).(pulumi.StringPtrOutput)
 }
 
-type GetServicesQueryOptionArrayOutput struct { *pulumi.OutputState}
+type GetServicesQueryOptionArrayOutput struct{ *pulumi.OutputState }
 
 func (GetServicesQueryOptionArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetServicesQueryOption)(nil)).Elem()
@@ -3709,7 +3919,7 @@ func (o GetServicesQueryOptionArrayOutput) ToGetServicesQueryOptionArrayOutputWi
 }
 
 func (o GetServicesQueryOptionArrayOutput) Index(i pulumi.IntInput) GetServicesQueryOptionOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetServicesQueryOption {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServicesQueryOption {
 		return vs[0].([]GetServicesQueryOption)[vs[1].(int)]
 	}).(GetServicesQueryOptionOutput)
 }

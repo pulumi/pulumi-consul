@@ -36,23 +36,21 @@ type LookupKeyPrefixArgs struct {
 	Token *string `pulumi:"token"`
 }
 
-
 // A collection of values returned by getKeyPrefix.
 type LookupKeyPrefixResult struct {
 	// The datacenter the keys are being read from.
 	Datacenter string `pulumi:"datacenter"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id        string  `pulumi:"id"`
 	Namespace *string `pulumi:"namespace"`
 	// the common prefix shared by all keys being read.
 	// * `var.<name>` - For each name given, the corresponding attribute
 	// has the value of the key.
-	PathPrefix string `pulumi:"pathPrefix"`
+	PathPrefix       string                         `pulumi:"pathPrefix"`
 	SubkeyCollection []GetKeyPrefixSubkeyCollection `pulumi:"subkeyCollection"`
 	// A map of the subkeys and values is set if no `subkey`
 	// block is provided.
 	Subkeys map[string]string `pulumi:"subkeys"`
-	Token *string `pulumi:"token"`
-	Var map[string]string `pulumi:"var"`
+	Token   *string           `pulumi:"token"`
+	Var     map[string]string `pulumi:"var"`
 }
-

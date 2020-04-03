@@ -230,12 +230,23 @@ namespace Pulumi.Consul
 
     public sealed class KeyPrefixSubkeyCollectionArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// An [unsigned integer value](https://www.consul.io/api/kv.html#flags-1)
+        /// to attach to the key (defaults to 0).
+        /// </summary>
         [Input("flags")]
         public Input<int>? Flags { get; set; }
 
+        /// <summary>
+        /// This is the path (which will be appended to the given
+        /// `path_prefix`) in Consul that should be written to.
+        /// </summary>
         [Input("path", required: true)]
         public Input<string> Path { get; set; } = null!;
 
+        /// <summary>
+        /// The value to write to the given path.
+        /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;
 
@@ -246,12 +257,23 @@ namespace Pulumi.Consul
 
     public sealed class KeyPrefixSubkeyCollectionGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// An [unsigned integer value](https://www.consul.io/api/kv.html#flags-1)
+        /// to attach to the key (defaults to 0).
+        /// </summary>
         [Input("flags")]
         public Input<int>? Flags { get; set; }
 
+        /// <summary>
+        /// This is the path (which will be appended to the given
+        /// `path_prefix`) in Consul that should be written to.
+        /// </summary>
         [Input("path", required: true)]
         public Input<string> Path { get; set; } = null!;
 
+        /// <summary>
+        /// The value to write to the given path.
+        /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;
 
@@ -267,8 +289,19 @@ namespace Pulumi.Consul
     [OutputType]
     public sealed class KeyPrefixSubkeyCollection
     {
+        /// <summary>
+        /// An [unsigned integer value](https://www.consul.io/api/kv.html#flags-1)
+        /// to attach to the key (defaults to 0).
+        /// </summary>
         public readonly int? Flags;
+        /// <summary>
+        /// This is the path (which will be appended to the given
+        /// `path_prefix`) in Consul that should be written to.
+        /// </summary>
         public readonly string Path;
+        /// <summary>
+        /// The value to write to the given path.
+        /// </summary>
         public readonly string Value;
 
         [OutputConstructor]

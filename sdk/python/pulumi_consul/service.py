@@ -29,7 +29,7 @@ class Service(pulumi.CustomResource):
     """
     name: pulumi.Output[str]
     """
-    The name of the header.
+    The name of the health-check.
     """
     namespace: pulumi.Output[str]
     """
@@ -72,7 +72,7 @@ class Service(pulumi.CustomResource):
                agent's default datacenter and the datacenter in the provider setup.
         :param pulumi.Input[dict] meta: A map of arbitrary KV metadata linked to the service
                instance.
-        :param pulumi.Input[str] name: The name of the header.
+        :param pulumi.Input[str] name: The name of the health-check.
         :param pulumi.Input[str] namespace: The namespace to create the service within.
         :param pulumi.Input[str] node: The name of the node the to register the service on.
         :param pulumi.Input[float] port: The port of the service.
@@ -97,7 +97,7 @@ class Service(pulumi.CustomResource):
             invocation.
           * `method` (`pulumi.Input[str]`) - The method to use for HTTP health-checks. Defaults
             to `GET`.
-          * `name` (`pulumi.Input[str]`) - The name of the header.
+          * `name` (`pulumi.Input[str]`) - The name of the health-check.
           * `notes` (`pulumi.Input[str]`) - An opaque field meant to hold human readable text.
           * `status` (`pulumi.Input[str]`) - The initial health-check status.
           * `tcp` (`pulumi.Input[str]`) - The TCP address and port to connect to for a TCP check.
@@ -156,7 +156,7 @@ class Service(pulumi.CustomResource):
                agent's default datacenter and the datacenter in the provider setup.
         :param pulumi.Input[dict] meta: A map of arbitrary KV metadata linked to the service
                instance.
-        :param pulumi.Input[str] name: The name of the header.
+        :param pulumi.Input[str] name: The name of the health-check.
         :param pulumi.Input[str] namespace: The namespace to create the service within.
         :param pulumi.Input[str] node: The name of the node the to register the service on.
         :param pulumi.Input[float] port: The port of the service.
@@ -181,7 +181,7 @@ class Service(pulumi.CustomResource):
             invocation.
           * `method` (`pulumi.Input[str]`) - The method to use for HTTP health-checks. Defaults
             to `GET`.
-          * `name` (`pulumi.Input[str]`) - The name of the header.
+          * `name` (`pulumi.Input[str]`) - The name of the health-check.
           * `notes` (`pulumi.Input[str]`) - An opaque field meant to hold human readable text.
           * `status` (`pulumi.Input[str]`) - The initial health-check status.
           * `tcp` (`pulumi.Input[str]`) - The TCP address and port to connect to for a TCP check.

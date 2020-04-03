@@ -43,10 +43,9 @@ type GetServiceHealthArgs struct {
 	Passing *bool `pulumi:"passing"`
 	// A single tag that can be used to filter the list to return
 	// based on a single matching tag.
-	Tag *string `pulumi:"tag"`
+	Tag     *string `pulumi:"tag"`
 	WaitFor *string `pulumi:"waitFor"`
 }
-
 
 // A collection of values returned by getServiceHealth.
 type GetServiceHealthResult struct {
@@ -70,7 +69,6 @@ type GetServiceHealthResult struct {
 	// `checks`.  The list of the attributes of each one is detailed below.
 	Results []GetServiceHealthResultType `pulumi:"results"`
 	// The name of the tag used to filter the list.
-	Tag *string `pulumi:"tag"`
+	Tag     *string `pulumi:"tag"`
 	WaitFor *string `pulumi:"waitFor"`
 }
-

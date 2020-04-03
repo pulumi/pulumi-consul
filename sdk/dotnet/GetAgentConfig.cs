@@ -22,7 +22,24 @@ namespace Pulumi.Consul
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/agent_config.html.markdown.
         /// </summary>
+        [Obsolete("Use GetAgentConfig.InvokeAsync() instead")]
         public static Task<GetAgentConfigResult> GetAgentConfig(InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAgentConfigResult>("consul:index/getAgentConfig:getAgentConfig", InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetAgentConfig
+    {
+        /// <summary>
+        /// &gt; **Note:** The `consul..getAgentConfig` resource differs from [`consul..getAgentSelf`](https://www.terraform.io/docs/providers/consul/d/agent_self.html),
+        /// providing less information but utilizing stable APIs. `consul..getAgentSelf` will be
+        /// deprecated in a future release.
+        /// 
+        /// The `consul..getAgentConfig` data source returns
+        /// [configuration data](https://www.consul.io/api/agent.html#read-configuration)
+        /// from the agent specified in the `provider`.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/agent_config.html.markdown.
+        /// </summary>
+        public static Task<GetAgentConfigResult> InvokeAsync(InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAgentConfigResult>("consul:index/getAgentConfig:getAgentConfig", InvokeArgs.Empty, options.WithVersion());
     }
 

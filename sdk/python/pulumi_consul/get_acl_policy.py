@@ -65,8 +65,11 @@ def get_acl_policy(datacenters=None,description=None,name=None,namespace=None,ru
     > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/acl_policy.html.markdown.
 
 
+    :param list datacenters: The datacenters associated with the ACL Policy.
+    :param str description: The description of the ACL Policy.
     :param str name: The name of the ACL Policy.
     :param str namespace: The namespace to lookup the policy.
+    :param str rules: The rules associated with the ACL Policy.
     """
     __args__ = dict()
 

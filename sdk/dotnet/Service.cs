@@ -50,7 +50,7 @@ namespace Pulumi.Consul
         public Output<ImmutableDictionary<string, string>?> Meta { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the header.
+        /// The name of the health-check.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -171,7 +171,7 @@ namespace Pulumi.Consul
         }
 
         /// <summary>
-        /// The name of the header.
+        /// The name of the health-check.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -259,7 +259,7 @@ namespace Pulumi.Consul
         }
 
         /// <summary>
-        /// The name of the header.
+        /// The name of the health-check.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -360,7 +360,7 @@ namespace Pulumi.Consul
         public Input<string>? Method { get; set; }
 
         /// <summary>
-        /// The name of the header.
+        /// The name of the health-check.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -452,7 +452,7 @@ namespace Pulumi.Consul
         public Input<string>? Method { get; set; }
 
         /// <summary>
-        /// The name of the header.
+        /// The name of the health-check.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -581,7 +581,7 @@ namespace Pulumi.Consul
         /// </summary>
         public readonly string? Method;
         /// <summary>
-        /// The name of the header.
+        /// The name of the health-check.
         /// </summary>
         public readonly string Name;
         /// <summary>

@@ -30,9 +30,11 @@ class KeyPrefix(pulumi.CustomResource):
     A subkey to add. Supported values documented below.
     Multiple blocks supported.
 
-      * `flags` (`float`)
-      * `path` (`str`)
-      * `value` (`str`)
+      * `flags` (`float`) - An [unsigned integer value](https://www.consul.io/api/kv.html#flags-1)
+        to attach to the key (defaults to 0).
+      * `path` (`str`) - This is the path (which will be appended to the given
+        `path_prefix`) in Consul that should be written to.
+      * `value` (`str`) - The value to write to the given path.
     """
     subkeys: pulumi.Output[dict]
     """
@@ -68,9 +70,11 @@ class KeyPrefix(pulumi.CustomResource):
 
         The **subkey_collection** object supports the following:
 
-          * `flags` (`pulumi.Input[float]`)
-          * `path` (`pulumi.Input[str]`)
-          * `value` (`pulumi.Input[str]`)
+          * `flags` (`pulumi.Input[float]`) - An [unsigned integer value](https://www.consul.io/api/kv.html#flags-1)
+            to attach to the key (defaults to 0).
+          * `path` (`pulumi.Input[str]`) - This is the path (which will be appended to the given
+            `path_prefix`) in Consul that should be written to.
+          * `value` (`pulumi.Input[str]`) - The value to write to the given path.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -129,9 +133,11 @@ class KeyPrefix(pulumi.CustomResource):
 
         The **subkey_collection** object supports the following:
 
-          * `flags` (`pulumi.Input[float]`)
-          * `path` (`pulumi.Input[str]`)
-          * `value` (`pulumi.Input[str]`)
+          * `flags` (`pulumi.Input[float]`) - An [unsigned integer value](https://www.consul.io/api/kv.html#flags-1)
+            to attach to the key (defaults to 0).
+          * `path` (`pulumi.Input[str]`) - This is the path (which will be appended to the given
+            `path_prefix`) in Consul that should be written to.
+          * `value` (`pulumi.Input[str]`) - The value to write to the given path.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

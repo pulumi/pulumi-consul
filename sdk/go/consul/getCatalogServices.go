@@ -22,14 +22,12 @@ type GetCatalogServicesArgs struct {
 	QueryOptions []GetCatalogServicesQueryOption `pulumi:"queryOptions"`
 }
 
-
 // A collection of values returned by getCatalogServices.
 type GetCatalogServicesResult struct {
 	Datacenter string `pulumi:"datacenter"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	Names []string `pulumi:"names"`
+	Id           string                          `pulumi:"id"`
+	Names        []string                        `pulumi:"names"`
 	QueryOptions []GetCatalogServicesQueryOption `pulumi:"queryOptions"`
-	Services map[string]string `pulumi:"services"`
+	Services     map[string]string               `pulumi:"services"`
 }
-

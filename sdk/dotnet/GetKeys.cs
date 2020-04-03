@@ -17,7 +17,19 @@ namespace Pulumi.Consul
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/keys.html.markdown.
         /// </summary>
+        [Obsolete("Use GetKeys.InvokeAsync() instead")]
         public static Task<GetKeysResult> GetKeys(GetKeysArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetKeysResult>("consul:index/getKeys:getKeys", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetKeys
+    {
+        /// <summary>
+        /// The `consul..Keys` resource reads values from the Consul key/value store.
+        /// This is a powerful way dynamically set values in templates.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/keys.html.markdown.
+        /// </summary>
+        public static Task<GetKeysResult> InvokeAsync(GetKeysArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKeysResult>("consul:index/getKeys:getKeys", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 
@@ -102,12 +114,25 @@ namespace Pulumi.Consul
 
     public sealed class GetKeysKeysArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// This is the default value to set for `var.&lt;name&gt;`
+        /// if the key does not exist in Consul. Defaults to an empty string.
+        /// </summary>
         [Input("default")]
         public string? Default { get; set; }
 
+        /// <summary>
+        /// This is the name of the key. This value of the
+        /// key is exposed as `var.&lt;name&gt;`. This is not the path of the key
+        /// in Consul.
+        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
+        /// <summary>
+        /// This is the path in Consul that should be read
+        /// or written to.
+        /// </summary>
         [Input("path", required: true)]
         public string Path { get; set; } = null!;
 
@@ -123,8 +148,21 @@ namespace Pulumi.Consul
     [OutputType]
     public sealed class GetKeysKeysResult
     {
+        /// <summary>
+        /// This is the default value to set for `var.&lt;name&gt;`
+        /// if the key does not exist in Consul. Defaults to an empty string.
+        /// </summary>
         public readonly string? Default;
+        /// <summary>
+        /// This is the name of the key. This value of the
+        /// key is exposed as `var.&lt;name&gt;`. This is not the path of the key
+        /// in Consul.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// This is the path in Consul that should be read
+        /// or written to.
+        /// </summary>
         public readonly string Path;
 
         [OutputConstructor]

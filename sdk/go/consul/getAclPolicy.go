@@ -23,15 +23,17 @@ func LookupAclPolicy(ctx *pulumi.Context, args *LookupAclPolicyArgs, opts ...pul
 
 // A collection of arguments for invoking getAclPolicy.
 type LookupAclPolicyArgs struct {
+	// The datacenters associated with the ACL Policy.
 	Datacenters []string `pulumi:"datacenters"`
+	// The description of the ACL Policy.
 	Description *string `pulumi:"description"`
 	// The name of the ACL Policy.
 	Name string `pulumi:"name"`
 	// The namespace to lookup the policy.
 	Namespace *string `pulumi:"namespace"`
+	// The rules associated with the ACL Policy.
 	Rules *string `pulumi:"rules"`
 }
-
 
 // A collection of values returned by getAclPolicy.
 type LookupAclPolicyResult struct {
@@ -40,10 +42,9 @@ type LookupAclPolicyResult struct {
 	// The description of the ACL Policy.
 	Description *string `pulumi:"description"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	Name string `pulumi:"name"`
+	Id        string  `pulumi:"id"`
+	Name      string  `pulumi:"name"`
 	Namespace *string `pulumi:"namespace"`
 	// The rules associated with the ACL Policy.
 	Rules *string `pulumi:"rules"`
 }
-

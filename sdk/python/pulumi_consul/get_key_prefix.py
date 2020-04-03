@@ -85,9 +85,14 @@ def get_key_prefix(datacenter=None,namespace=None,path_prefix=None,subkey_collec
 
     The **subkey_collection** object supports the following:
 
-      * `default` (`str`)
-      * `name` (`str`)
-      * `path` (`str`)
+      * `default` (`str`) - This is the default value to set for `var.<name>`
+        if the key does not exist in Consul. Defaults to an empty string.
+      * `name` (`str`) - This is the name of the key. This value of the
+        key is exposed as `var.<name>`. This is not the path of the subkey
+        in Consul.
+      * `path` (`str`) - This is the subkey path in Consul (which will be appended
+        to the given `path_prefix`) to construct the full key that will be used
+        to read the value.
     """
     __args__ = dict()
 

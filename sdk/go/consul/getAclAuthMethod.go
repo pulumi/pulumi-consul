@@ -23,15 +23,17 @@ func LookupAclAuthMethod(ctx *pulumi.Context, args *LookupAclAuthMethodArgs, opt
 
 // A collection of arguments for invoking getAclAuthMethod.
 type LookupAclAuthMethodArgs struct {
+	// The configuration options of the ACL Auth Method.
 	Config map[string]string `pulumi:"config"`
+	// The description of the ACL Auth Method.
 	Description *string `pulumi:"description"`
 	// The name of the ACL Auth Method.
 	Name string `pulumi:"name"`
 	// The namespace to lookup the auth method.
 	Namespace *string `pulumi:"namespace"`
+	// The type of the ACL Auth Method.
 	Type *string `pulumi:"type"`
 }
-
 
 // A collection of values returned by getAclAuthMethod.
 type LookupAclAuthMethodResult struct {
@@ -40,10 +42,9 @@ type LookupAclAuthMethodResult struct {
 	// The description of the ACL Auth Method.
 	Description *string `pulumi:"description"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	Name string `pulumi:"name"`
+	Id        string  `pulumi:"id"`
+	Name      string  `pulumi:"name"`
 	Namespace *string `pulumi:"namespace"`
 	// The type of the ACL Auth Method.
 	Type *string `pulumi:"type"`
 }
-

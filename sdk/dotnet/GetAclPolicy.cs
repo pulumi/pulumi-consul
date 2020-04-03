@@ -17,7 +17,19 @@ namespace Pulumi.Consul
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/acl_policy.html.markdown.
         /// </summary>
+        [Obsolete("Use GetAclPolicy.InvokeAsync() instead")]
         public static Task<GetAclPolicyResult> GetAclPolicy(GetAclPolicyArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAclPolicyResult>("consul:index/getAclPolicy:getAclPolicy", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetAclPolicy
+    {
+        /// <summary>
+        /// The `consul..AclPolicy` data source returns the information related to a
+        /// [Consul ACL Policy](https://www.consul.io/docs/acl/acl-system.html#acl-policies).
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/acl_policy.html.markdown.
+        /// </summary>
+        public static Task<GetAclPolicyResult> InvokeAsync(GetAclPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAclPolicyResult>("consul:index/getAclPolicy:getAclPolicy", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 
@@ -25,12 +37,19 @@ namespace Pulumi.Consul
     {
         [Input("datacenters")]
         private List<string>? _datacenters;
+
+        /// <summary>
+        /// The datacenters associated with the ACL Policy.
+        /// </summary>
         public List<string> Datacenters
         {
             get => _datacenters ?? (_datacenters = new List<string>());
             set => _datacenters = value;
         }
 
+        /// <summary>
+        /// The description of the ACL Policy.
+        /// </summary>
         [Input("description")]
         public string? Description { get; set; }
 
@@ -46,6 +65,9 @@ namespace Pulumi.Consul
         [Input("namespace")]
         public string? Namespace { get; set; }
 
+        /// <summary>
+        /// The rules associated with the ACL Policy.
+        /// </summary>
         [Input("rules")]
         public string? Rules { get; set; }
 

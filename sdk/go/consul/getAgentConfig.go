@@ -43,4 +43,3 @@ type GetAgentConfigResult struct {
 	// The version of the build of Consul that is running
 	Version string `pulumi:"version"`
 }
-

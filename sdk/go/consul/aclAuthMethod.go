@@ -123,4 +123,3 @@ type AclAuthMethodArgs struct {
 func (AclAuthMethodArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*aclAuthMethodArgs)(nil)).Elem()
 }
-
