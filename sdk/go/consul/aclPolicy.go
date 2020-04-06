@@ -119,4 +119,3 @@ type AclPolicyArgs struct {
 func (AclPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*aclPolicyArgs)(nil)).Elem()
 }
-

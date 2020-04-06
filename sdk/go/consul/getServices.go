@@ -32,15 +32,13 @@ type GetServicesArgs struct {
 	QueryOptions []GetServicesQueryOption `pulumi:"queryOptions"`
 }
 
-
 // A collection of values returned by getServices.
 type GetServicesResult struct {
 	// The datacenter the keys are being read from to.
 	Datacenter string `pulumi:"datacenter"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	Names []string `pulumi:"names"`
+	Id           string                   `pulumi:"id"`
+	Names        []string                 `pulumi:"names"`
 	QueryOptions []GetServicesQueryOption `pulumi:"queryOptions"`
-	Services map[string]string `pulumi:"services"`
+	Services     map[string]string        `pulumi:"services"`
 }
-

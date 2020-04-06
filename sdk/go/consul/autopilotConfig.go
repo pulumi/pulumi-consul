@@ -199,4 +199,3 @@ type AutopilotConfigArgs struct {
 func (AutopilotConfigArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*autopilotConfigArgs)(nil)).Elem()
 }
-

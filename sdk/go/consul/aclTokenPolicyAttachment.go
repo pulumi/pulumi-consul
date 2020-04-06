@@ -89,4 +89,3 @@ type AclTokenPolicyAttachmentArgs struct {
 func (AclTokenPolicyAttachmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*aclTokenPolicyAttachmentArgs)(nil)).Elem()
 }
-

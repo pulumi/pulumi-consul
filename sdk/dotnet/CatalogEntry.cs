@@ -199,23 +199,37 @@ namespace Pulumi.Consul
     public sealed class CatalogEntryServicesArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The address of the node being added to,
-        /// or referenced in the catalog.
+        /// The address of the service. Defaults to the
+        /// node address.
         /// </summary>
         [Input("address")]
         public Input<string>? Address { get; set; }
 
+        /// <summary>
+        /// The ID of the service. Defaults to the `name`.
+        /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
+        /// <summary>
+        /// The name of the service
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// The port of the service.
+        /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;
+
+        /// <summary>
+        /// A list of values that are opaque to Consul,
+        /// but can be used to distinguish between services or nodes.
+        /// </summary>
         public InputList<string> Tags
         {
             get => _tags ?? (_tags = new InputList<string>());
@@ -230,23 +244,37 @@ namespace Pulumi.Consul
     public sealed class CatalogEntryServicesGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The address of the node being added to,
-        /// or referenced in the catalog.
+        /// The address of the service. Defaults to the
+        /// node address.
         /// </summary>
         [Input("address")]
         public Input<string>? Address { get; set; }
 
+        /// <summary>
+        /// The ID of the service. Defaults to the `name`.
+        /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
+        /// <summary>
+        /// The name of the service
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// The port of the service.
+        /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;
+
+        /// <summary>
+        /// A list of values that are opaque to Consul,
+        /// but can be used to distinguish between services or nodes.
+        /// </summary>
         public InputList<string> Tags
         {
             get => _tags ?? (_tags = new InputList<string>());
@@ -266,13 +294,26 @@ namespace Pulumi.Consul
     public sealed class CatalogEntryServices
     {
         /// <summary>
-        /// The address of the node being added to,
-        /// or referenced in the catalog.
+        /// The address of the service. Defaults to the
+        /// node address.
         /// </summary>
         public readonly string? Address;
+        /// <summary>
+        /// The ID of the service. Defaults to the `name`.
+        /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The name of the service
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The port of the service.
+        /// </summary>
         public readonly int? Port;
+        /// <summary>
+        /// A list of values that are opaque to Consul,
+        /// but can be used to distinguish between services or nodes.
+        /// </summary>
         public readonly ImmutableArray<string> Tags;
 
         [OutputConstructor]

@@ -17,7 +17,19 @@ namespace Pulumi.Consul
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/acl_auth_method.html.markdown.
         /// </summary>
+        [Obsolete("Use GetAclAuthMethod.InvokeAsync() instead")]
         public static Task<GetAclAuthMethodResult> GetAclAuthMethod(GetAclAuthMethodArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAclAuthMethodResult>("consul:index/getAclAuthMethod:getAclAuthMethod", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetAclAuthMethod
+    {
+        /// <summary>
+        /// The `consul..AclAuthMethod` data source returns the information related to a
+        /// [Consul Auth Method](https://www.consul.io/docs/acl/acl-auth-methods.html).
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/acl_auth_method.html.markdown.
+        /// </summary>
+        public static Task<GetAclAuthMethodResult> InvokeAsync(GetAclAuthMethodArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAclAuthMethodResult>("consul:index/getAclAuthMethod:getAclAuthMethod", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 
@@ -25,12 +37,19 @@ namespace Pulumi.Consul
     {
         [Input("config")]
         private Dictionary<string, string>? _config;
+
+        /// <summary>
+        /// The configuration options of the ACL Auth Method.
+        /// </summary>
         public Dictionary<string, string> Config
         {
             get => _config ?? (_config = new Dictionary<string, string>());
             set => _config = value;
         }
 
+        /// <summary>
+        /// The description of the ACL Auth Method.
+        /// </summary>
         [Input("description")]
         public string? Description { get; set; }
 
@@ -46,6 +65,9 @@ namespace Pulumi.Consul
         [Input("namespace")]
         public string? Namespace { get; set; }
 
+        /// <summary>
+        /// The type of the ACL Auth Method.
+        /// </summary>
         [Input("type")]
         public string? Type { get; set; }
 

@@ -21,11 +21,15 @@ class Keys(pulumi.CustomResource):
     Supported values documented below.
 
       * `default` (`str`)
-      * `delete` (`bool`)
-      * `flags` (`float`)
+      * `delete` (`bool`) - If true, then the key will be deleted when
+        either its configuration block is removed from the configuration or
+        the entire resource is destroyed. Otherwise, it will be left in Consul.
+        Defaults to false.
+      * `flags` (`float`) - An [unsigned integer value](https://www.consul.io/api/kv.html#flags-1)
+        to attach to the key (defaults to 0).
       * `name` (`str`)
-      * `path` (`str`)
-      * `value` (`str`)
+      * `path` (`str`) - This is the path in Consul that should be written to.
+      * `value` (`str`) - The value to write to the given path.
     """
     namespace: pulumi.Output[str]
     """
@@ -53,11 +57,15 @@ class Keys(pulumi.CustomResource):
         The **keys** object supports the following:
 
           * `default` (`pulumi.Input[str]`)
-          * `delete` (`pulumi.Input[bool]`)
-          * `flags` (`pulumi.Input[float]`)
+          * `delete` (`pulumi.Input[bool]`) - If true, then the key will be deleted when
+            either its configuration block is removed from the configuration or
+            the entire resource is destroyed. Otherwise, it will be left in Consul.
+            Defaults to false.
+          * `flags` (`pulumi.Input[float]`) - An [unsigned integer value](https://www.consul.io/api/kv.html#flags-1)
+            to attach to the key (defaults to 0).
           * `name` (`pulumi.Input[str]`)
-          * `path` (`pulumi.Input[str]`)
-          * `value` (`pulumi.Input[str]`)
+          * `path` (`pulumi.Input[str]`) - This is the path in Consul that should be written to.
+          * `value` (`pulumi.Input[str]`) - The value to write to the given path.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -107,11 +115,15 @@ class Keys(pulumi.CustomResource):
         The **keys** object supports the following:
 
           * `default` (`pulumi.Input[str]`)
-          * `delete` (`pulumi.Input[bool]`)
-          * `flags` (`pulumi.Input[float]`)
+          * `delete` (`pulumi.Input[bool]`) - If true, then the key will be deleted when
+            either its configuration block is removed from the configuration or
+            the entire resource is destroyed. Otherwise, it will be left in Consul.
+            Defaults to false.
+          * `flags` (`pulumi.Input[float]`) - An [unsigned integer value](https://www.consul.io/api/kv.html#flags-1)
+            to attach to the key (defaults to 0).
           * `name` (`pulumi.Input[str]`)
-          * `path` (`pulumi.Input[str]`)
-          * `value` (`pulumi.Input[str]`)
+          * `path` (`pulumi.Input[str]`) - This is the path in Consul that should be written to.
+          * `value` (`pulumi.Input[str]`) - The value to write to the given path.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

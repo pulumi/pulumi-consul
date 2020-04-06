@@ -24,7 +24,7 @@ type Keys struct {
 	// The ACL token to use. This overrides the
 	// token that the agent provides by default.
 	Token pulumi.StringPtrOutput `pulumi:"token"`
-	Var pulumi.StringMapOutput `pulumi:"var"`
+	Var   pulumi.StringMapOutput `pulumi:"var"`
 }
 
 // NewKeys registers a new resource with the given unique name, arguments, and options.
@@ -65,8 +65,8 @@ type keysState struct {
 	Namespace *string `pulumi:"namespace"`
 	// The ACL token to use. This overrides the
 	// token that the agent provides by default.
-	Token *string `pulumi:"token"`
-	Var map[string]string `pulumi:"var"`
+	Token *string           `pulumi:"token"`
+	Var   map[string]string `pulumi:"var"`
 }
 
 type KeysState struct {
@@ -81,7 +81,7 @@ type KeysState struct {
 	// The ACL token to use. This overrides the
 	// token that the agent provides by default.
 	Token pulumi.StringPtrInput
-	Var pulumi.StringMapInput
+	Var   pulumi.StringMapInput
 }
 
 func (KeysState) ElementType() reflect.Type {
@@ -120,4 +120,3 @@ type KeysArgs struct {
 func (KeysArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*keysArgs)(nil)).Elem()
 }
-

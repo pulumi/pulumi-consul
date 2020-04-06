@@ -36,7 +36,6 @@ type LookupKeysArgs struct {
 	Token *string `pulumi:"token"`
 }
 
-
 // A collection of values returned by getKeys.
 type LookupKeysResult struct {
 	// The datacenter the keys are being read from.
@@ -44,10 +43,9 @@ type LookupKeysResult struct {
 	// has the value of the key.
 	Datacenter string `pulumi:"datacenter"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	Keys []GetKeysKey `pulumi:"keys"`
-	Namespace *string `pulumi:"namespace"`
-	Token *string `pulumi:"token"`
-	Var map[string]string `pulumi:"var"`
+	Id        string            `pulumi:"id"`
+	Keys      []GetKeysKey      `pulumi:"keys"`
+	Namespace *string           `pulumi:"namespace"`
+	Token     *string           `pulumi:"token"`
+	Var       map[string]string `pulumi:"var"`
 }
-

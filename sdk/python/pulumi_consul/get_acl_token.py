@@ -70,7 +70,11 @@ def get_acl_token(accessor_id=None,description=None,local=None,namespace=None,po
 
 
     :param str accessor_id: The accessor ID of the ACL token.
+    :param str description: The description of the ACL token.
+    :param bool local: Whether the ACL token is local to the datacenter it was created within.
     :param str namespace: The namespace to lookup the ACL token.
+    :param list policies: A list of policies associated with the ACL token. Each entry has
+           an `id` and a `name` attribute.
 
     The **policies** object supports the following:
 

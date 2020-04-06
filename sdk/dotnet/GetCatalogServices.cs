@@ -11,7 +11,13 @@ namespace Pulumi.Consul
 {
     public static partial class Invokes
     {
+        [Obsolete("Use GetCatalogServices.InvokeAsync() instead")]
         public static Task<GetCatalogServicesResult> GetCatalogServices(GetCatalogServicesArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetCatalogServicesResult>("consul:index/getCatalogServices:getCatalogServices", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetCatalogServices
+    {
+        public static Task<GetCatalogServicesResult> InvokeAsync(GetCatalogServicesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCatalogServicesResult>("consul:index/getCatalogServices:getCatalogServices", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

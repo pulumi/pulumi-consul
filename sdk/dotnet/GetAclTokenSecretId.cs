@@ -11,7 +11,13 @@ namespace Pulumi.Consul
 {
     public static partial class Invokes
     {
+        [Obsolete("Use GetAclTokenSecretId.InvokeAsync() instead")]
         public static Task<GetAclTokenSecretIdResult> GetAclTokenSecretId(GetAclTokenSecretIdArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAclTokenSecretIdResult>("consul:index/getAclTokenSecretId:getAclTokenSecretId", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetAclTokenSecretId
+    {
+        public static Task<GetAclTokenSecretIdResult> InvokeAsync(GetAclTokenSecretIdArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAclTokenSecretIdResult>("consul:index/getAclTokenSecretId:getAclTokenSecretId", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

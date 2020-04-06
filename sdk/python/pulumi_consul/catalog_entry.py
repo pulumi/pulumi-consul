@@ -30,12 +30,13 @@ class CatalogEntry(pulumi.CustomResource):
     A service to optionally associated with
     the node. Supported values are documented below.
 
-      * `address` (`str`) - The address of the node being added to,
-        or referenced in the catalog.
-      * `id` (`str`)
-      * `name` (`str`)
-      * `port` (`float`)
-      * `tags` (`list`)
+      * `address` (`str`) - The address of the service. Defaults to the
+        node address.
+      * `id` (`str`) - The ID of the service. Defaults to the `name`.
+      * `name` (`str`) - The name of the service
+      * `port` (`float`) - The port of the service.
+      * `tags` (`list`) - A list of values that are opaque to Consul,
+        but can be used to distinguish between services or nodes.
     """
     token: pulumi.Output[str]
     """
@@ -66,12 +67,13 @@ class CatalogEntry(pulumi.CustomResource):
 
         The **services** object supports the following:
 
-          * `address` (`pulumi.Input[str]`) - The address of the node being added to,
-            or referenced in the catalog.
-          * `id` (`pulumi.Input[str]`)
-          * `name` (`pulumi.Input[str]`)
-          * `port` (`pulumi.Input[float]`)
-          * `tags` (`pulumi.Input[list]`)
+          * `address` (`pulumi.Input[str]`) - The address of the service. Defaults to the
+            node address.
+          * `id` (`pulumi.Input[str]`) - The ID of the service. Defaults to the `name`.
+          * `name` (`pulumi.Input[str]`) - The name of the service
+          * `port` (`pulumi.Input[float]`) - The port of the service.
+          * `tags` (`pulumi.Input[list]`) - A list of values that are opaque to Consul,
+            but can be used to distinguish between services or nodes.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -126,12 +128,13 @@ class CatalogEntry(pulumi.CustomResource):
 
         The **services** object supports the following:
 
-          * `address` (`pulumi.Input[str]`) - The address of the node being added to,
-            or referenced in the catalog.
-          * `id` (`pulumi.Input[str]`)
-          * `name` (`pulumi.Input[str]`)
-          * `port` (`pulumi.Input[float]`)
-          * `tags` (`pulumi.Input[list]`)
+          * `address` (`pulumi.Input[str]`) - The address of the service. Defaults to the
+            node address.
+          * `id` (`pulumi.Input[str]`) - The ID of the service. Defaults to the `name`.
+          * `name` (`pulumi.Input[str]`) - The name of the service
+          * `port` (`pulumi.Input[float]`) - The port of the service.
+          * `tags` (`pulumi.Input[list]`) - A list of values that are opaque to Consul,
+            but can be used to distinguish between services or nodes.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

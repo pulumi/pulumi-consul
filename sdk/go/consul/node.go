@@ -28,7 +28,7 @@ type Node struct {
 	Meta pulumi.StringMapOutput `pulumi:"meta"`
 	// The name of the node being added to, or
 	// referenced in the catalog.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name  pulumi.StringOutput    `pulumi:"name"`
 	Token pulumi.StringPtrOutput `pulumi:"token"`
 }
 
@@ -73,7 +73,7 @@ type nodeState struct {
 	Meta map[string]string `pulumi:"meta"`
 	// The name of the node being added to, or
 	// referenced in the catalog.
-	Name *string `pulumi:"name"`
+	Name  *string `pulumi:"name"`
 	Token *string `pulumi:"token"`
 }
 
@@ -88,7 +88,7 @@ type NodeState struct {
 	Meta pulumi.StringMapInput
 	// The name of the node being added to, or
 	// referenced in the catalog.
-	Name pulumi.StringPtrInput
+	Name  pulumi.StringPtrInput
 	Token pulumi.StringPtrInput
 }
 
@@ -107,7 +107,7 @@ type nodeArgs struct {
 	Meta map[string]string `pulumi:"meta"`
 	// The name of the node being added to, or
 	// referenced in the catalog.
-	Name *string `pulumi:"name"`
+	Name  *string `pulumi:"name"`
 	Token *string `pulumi:"token"`
 }
 
@@ -123,11 +123,10 @@ type NodeArgs struct {
 	Meta pulumi.StringMapInput
 	// The name of the node being added to, or
 	// referenced in the catalog.
-	Name pulumi.StringPtrInput
+	Name  pulumi.StringPtrInput
 	Token pulumi.StringPtrInput
 }
 
 func (NodeArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*nodeArgs)(nil)).Elem()
 }
-

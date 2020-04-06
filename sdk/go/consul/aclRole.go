@@ -120,4 +120,3 @@ type AclRoleArgs struct {
 func (AclRoleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*aclRoleArgs)(nil)).Elem()
 }
-

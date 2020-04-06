@@ -55,12 +55,22 @@ export interface GetAclTokenArgs {
      * The accessor ID of the ACL token.
      */
     readonly accessorId: string;
+    /**
+     * The description of the ACL token.
+     */
     readonly description?: string;
+    /**
+     * Whether the ACL token is local to the datacenter it was created within.
+     */
     readonly local?: boolean;
     /**
      * The namespace to lookup the ACL token.
      */
     readonly namespace?: string;
+    /**
+     * A list of policies associated with the ACL token. Each entry has
+     * an `id` and a `name` attribute.
+     */
     readonly policies?: inputs.GetAclTokenPolicy[];
 }
 

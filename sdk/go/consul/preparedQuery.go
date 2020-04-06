@@ -291,4 +291,3 @@ type PreparedQueryArgs struct {
 func (PreparedQueryArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*preparedQueryArgs)(nil)).Elem()
 }
-

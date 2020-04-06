@@ -181,18 +181,34 @@ namespace Pulumi.Consul
         [Input("default")]
         public Input<string>? Default { get; set; }
 
+        /// <summary>
+        /// If true, then the key will be deleted when
+        /// either its configuration block is removed from the configuration or
+        /// the entire resource is destroyed. Otherwise, it will be left in Consul.
+        /// Defaults to false.
+        /// </summary>
         [Input("delete")]
         public Input<bool>? Delete { get; set; }
 
+        /// <summary>
+        /// An [unsigned integer value](https://www.consul.io/api/kv.html#flags-1)
+        /// to attach to the key (defaults to 0).
+        /// </summary>
         [Input("flags")]
         public Input<int>? Flags { get; set; }
 
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// This is the path in Consul that should be written to.
+        /// </summary>
         [Input("path", required: true)]
         public Input<string> Path { get; set; } = null!;
 
+        /// <summary>
+        /// The value to write to the given path.
+        /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
 
@@ -206,18 +222,34 @@ namespace Pulumi.Consul
         [Input("default")]
         public Input<string>? Default { get; set; }
 
+        /// <summary>
+        /// If true, then the key will be deleted when
+        /// either its configuration block is removed from the configuration or
+        /// the entire resource is destroyed. Otherwise, it will be left in Consul.
+        /// Defaults to false.
+        /// </summary>
         [Input("delete")]
         public Input<bool>? Delete { get; set; }
 
+        /// <summary>
+        /// An [unsigned integer value](https://www.consul.io/api/kv.html#flags-1)
+        /// to attach to the key (defaults to 0).
+        /// </summary>
         [Input("flags")]
         public Input<int>? Flags { get; set; }
 
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// This is the path in Consul that should be written to.
+        /// </summary>
         [Input("path", required: true)]
         public Input<string> Path { get; set; } = null!;
 
+        /// <summary>
+        /// The value to write to the given path.
+        /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
 
@@ -234,10 +266,26 @@ namespace Pulumi.Consul
     public sealed class KeysKeys
     {
         public readonly string? Default;
+        /// <summary>
+        /// If true, then the key will be deleted when
+        /// either its configuration block is removed from the configuration or
+        /// the entire resource is destroyed. Otherwise, it will be left in Consul.
+        /// Defaults to false.
+        /// </summary>
         public readonly bool? Delete;
+        /// <summary>
+        /// An [unsigned integer value](https://www.consul.io/api/kv.html#flags-1)
+        /// to attach to the key (defaults to 0).
+        /// </summary>
         public readonly int? Flags;
         public readonly string? Name;
+        /// <summary>
+        /// This is the path in Consul that should be written to.
+        /// </summary>
         public readonly string Path;
+        /// <summary>
+        /// The value to write to the given path.
+        /// </summary>
         public readonly string Value;
 
         [OutputConstructor]

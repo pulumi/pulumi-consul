@@ -17,12 +17,27 @@ namespace Pulumi.Consul
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/acl_role.html.markdown.
         /// </summary>
+        [Obsolete("Use GetAclRole.InvokeAsync() instead")]
         public static Task<GetAclRoleResult> GetAclRole(GetAclRoleArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAclRoleResult>("consul:index/getAclRole:getAclRole", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetAclRole
+    {
+        /// <summary>
+        /// The `consul..AclRole` data source returns the information related to a
+        /// [Consul ACL Role](https://www.consul.io/api/acl/roles.html).
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/acl_role.html.markdown.
+        /// </summary>
+        public static Task<GetAclRoleResult> InvokeAsync(GetAclRoleArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAclRoleResult>("consul:index/getAclRole:getAclRole", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetAclRoleArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The description of the ACL Role.
+        /// </summary>
         [Input("description")]
         public string? Description { get; set; }
 
@@ -40,6 +55,11 @@ namespace Pulumi.Consul
 
         [Input("policies")]
         private List<Inputs.GetAclRolePoliciesArgs>? _policies;
+
+        /// <summary>
+        /// The list of policies associated with the ACL Role. Each entry has
+        /// an `id` and a `name` attribute.
+        /// </summary>
         public List<Inputs.GetAclRolePoliciesArgs> Policies
         {
             get => _policies ?? (_policies = new List<Inputs.GetAclRolePoliciesArgs>());
@@ -48,6 +68,11 @@ namespace Pulumi.Consul
 
         [Input("serviceIdentities")]
         private List<Inputs.GetAclRoleServiceIdentitiesArgs>? _serviceIdentities;
+
+        /// <summary>
+        /// The list of service identities associated with the ACL
+        /// Role. Each entry has a `service_name` attribute and a list of `datacenters`.
+        /// </summary>
         public List<Inputs.GetAclRoleServiceIdentitiesArgs> ServiceIdentities
         {
             get => _serviceIdentities ?? (_serviceIdentities = new List<Inputs.GetAclRoleServiceIdentitiesArgs>());

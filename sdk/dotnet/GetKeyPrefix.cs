@@ -11,7 +11,13 @@ namespace Pulumi.Consul
 {
     public static partial class Invokes
     {
+        [Obsolete("Use GetKeyPrefix.InvokeAsync() instead")]
         public static Task<GetKeyPrefixResult> GetKeyPrefix(GetKeyPrefixArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetKeyPrefixResult>("consul:index/getKeyPrefix:getKeyPrefix", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetKeyPrefix
+    {
+        public static Task<GetKeyPrefixResult> InvokeAsync(GetKeyPrefixArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKeyPrefixResult>("consul:index/getKeyPrefix:getKeyPrefix", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 
@@ -117,12 +123,26 @@ namespace Pulumi.Consul
 
     public sealed class GetKeyPrefixSubkeyCollectionArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// This is the default value to set for `var.&lt;name&gt;`
+        /// if the key does not exist in Consul. Defaults to an empty string.
+        /// </summary>
         [Input("default")]
         public string? Default { get; set; }
 
+        /// <summary>
+        /// This is the name of the key. This value of the
+        /// key is exposed as `var.&lt;name&gt;`. This is not the path of the subkey
+        /// in Consul.
+        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
+        /// <summary>
+        /// This is the subkey path in Consul (which will be appended
+        /// to the given `path_prefix`) to construct the full key that will be used
+        /// to read the value.
+        /// </summary>
         [Input("path", required: true)]
         public string Path { get; set; } = null!;
 
@@ -138,8 +158,22 @@ namespace Pulumi.Consul
     [OutputType]
     public sealed class GetKeyPrefixSubkeyCollectionResult
     {
+        /// <summary>
+        /// This is the default value to set for `var.&lt;name&gt;`
+        /// if the key does not exist in Consul. Defaults to an empty string.
+        /// </summary>
         public readonly string? Default;
+        /// <summary>
+        /// This is the name of the key. This value of the
+        /// key is exposed as `var.&lt;name&gt;`. This is not the path of the subkey
+        /// in Consul.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// This is the subkey path in Consul (which will be appended
+        /// to the given `path_prefix`) to construct the full key that will be used
+        /// to read the value.
+        /// </summary>
         public readonly string Path;
 
         [OutputConstructor]

@@ -25,16 +25,16 @@ type Service struct {
 
 	// The address of the service. Defaults to the
 	// address of the node.
-	Address pulumi.StringOutput `pulumi:"address"`
-	Checks ServiceCheckArrayOutput `pulumi:"checks"`
+	Address pulumi.StringOutput     `pulumi:"address"`
+	Checks  ServiceCheckArrayOutput `pulumi:"checks"`
 	// The datacenter to use. This overrides the
 	// agent's default datacenter and the datacenter in the provider setup.
-	Datacenter pulumi.StringOutput `pulumi:"datacenter"`
-	External pulumi.BoolPtrOutput `pulumi:"external"`
+	Datacenter pulumi.StringOutput  `pulumi:"datacenter"`
+	External   pulumi.BoolPtrOutput `pulumi:"external"`
 	// A map of arbitrary KV metadata linked to the service
 	// instance.
 	Meta pulumi.StringMapOutput `pulumi:"meta"`
-	// The name of the header.
+	// The name of the health-check.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The namespace to create the service within.
 	Namespace pulumi.StringPtrOutput `pulumi:"namespace"`
@@ -82,16 +82,16 @@ func GetService(ctx *pulumi.Context,
 type serviceState struct {
 	// The address of the service. Defaults to the
 	// address of the node.
-	Address *string `pulumi:"address"`
-	Checks []ServiceCheck `pulumi:"checks"`
+	Address *string        `pulumi:"address"`
+	Checks  []ServiceCheck `pulumi:"checks"`
 	// The datacenter to use. This overrides the
 	// agent's default datacenter and the datacenter in the provider setup.
 	Datacenter *string `pulumi:"datacenter"`
-	External *bool `pulumi:"external"`
+	External   *bool   `pulumi:"external"`
 	// A map of arbitrary KV metadata linked to the service
 	// instance.
 	Meta map[string]string `pulumi:"meta"`
-	// The name of the header.
+	// The name of the health-check.
 	Name *string `pulumi:"name"`
 	// The namespace to create the service within.
 	Namespace *string `pulumi:"namespace"`
@@ -110,15 +110,15 @@ type ServiceState struct {
 	// The address of the service. Defaults to the
 	// address of the node.
 	Address pulumi.StringPtrInput
-	Checks ServiceCheckArrayInput
+	Checks  ServiceCheckArrayInput
 	// The datacenter to use. This overrides the
 	// agent's default datacenter and the datacenter in the provider setup.
 	Datacenter pulumi.StringPtrInput
-	External pulumi.BoolPtrInput
+	External   pulumi.BoolPtrInput
 	// A map of arbitrary KV metadata linked to the service
 	// instance.
 	Meta pulumi.StringMapInput
-	// The name of the header.
+	// The name of the health-check.
 	Name pulumi.StringPtrInput
 	// The namespace to create the service within.
 	Namespace pulumi.StringPtrInput
@@ -140,16 +140,16 @@ func (ServiceState) ElementType() reflect.Type {
 type serviceArgs struct {
 	// The address of the service. Defaults to the
 	// address of the node.
-	Address *string `pulumi:"address"`
-	Checks []ServiceCheck `pulumi:"checks"`
+	Address *string        `pulumi:"address"`
+	Checks  []ServiceCheck `pulumi:"checks"`
 	// The datacenter to use. This overrides the
 	// agent's default datacenter and the datacenter in the provider setup.
 	Datacenter *string `pulumi:"datacenter"`
-	External *bool `pulumi:"external"`
+	External   *bool   `pulumi:"external"`
 	// A map of arbitrary KV metadata linked to the service
 	// instance.
 	Meta map[string]string `pulumi:"meta"`
-	// The name of the header.
+	// The name of the health-check.
 	Name *string `pulumi:"name"`
 	// The namespace to create the service within.
 	Namespace *string `pulumi:"namespace"`
@@ -169,15 +169,15 @@ type ServiceArgs struct {
 	// The address of the service. Defaults to the
 	// address of the node.
 	Address pulumi.StringPtrInput
-	Checks ServiceCheckArrayInput
+	Checks  ServiceCheckArrayInput
 	// The datacenter to use. This overrides the
 	// agent's default datacenter and the datacenter in the provider setup.
 	Datacenter pulumi.StringPtrInput
-	External pulumi.BoolPtrInput
+	External   pulumi.BoolPtrInput
 	// A map of arbitrary KV metadata linked to the service
 	// instance.
 	Meta pulumi.StringMapInput
-	// The name of the header.
+	// The name of the health-check.
 	Name pulumi.StringPtrInput
 	// The namespace to create the service within.
 	Namespace pulumi.StringPtrInput
@@ -195,4 +195,3 @@ type ServiceArgs struct {
 func (ServiceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*serviceArgs)(nil)).Elem()
 }
-

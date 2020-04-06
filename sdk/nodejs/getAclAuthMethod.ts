@@ -35,7 +35,13 @@ export function getAclAuthMethod(args: GetAclAuthMethodArgs, opts?: pulumi.Invok
  * A collection of arguments for invoking getAclAuthMethod.
  */
 export interface GetAclAuthMethodArgs {
+    /**
+     * The configuration options of the ACL Auth Method.
+     */
     readonly config?: {[key: string]: string};
+    /**
+     * The description of the ACL Auth Method.
+     */
     readonly description?: string;
     /**
      * The name of the ACL Auth Method.
@@ -45,6 +51,9 @@ export interface GetAclAuthMethodArgs {
      * The namespace to lookup the auth method.
      */
     readonly namespace?: string;
+    /**
+     * The type of the ACL Auth Method.
+     */
     readonly type?: string;
 }
 

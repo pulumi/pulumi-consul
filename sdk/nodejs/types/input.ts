@@ -17,13 +17,26 @@ export interface AclRoleServiceIdentity {
 
 export interface CatalogEntryService {
     /**
-     * The address of the node being added to,
-     * or referenced in the catalog.
+     * The address of the service. Defaults to the
+     * node address.
      */
     address?: pulumi.Input<string>;
+    /**
+     * The ID of the service. Defaults to the `name`.
+     */
     id?: pulumi.Input<string>;
+    /**
+     * The name of the service
+     */
     name: pulumi.Input<string>;
+    /**
+     * The port of the service.
+     */
     port?: pulumi.Input<number>;
+    /**
+     * A list of values that are opaque to Consul,
+     * but can be used to distinguish between services or nodes.
+     */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -81,18 +94,49 @@ export interface GetCatalogServicesQueryOption {
 }
 
 export interface GetKeyPrefixSubkeyCollection {
+    /**
+     * This is the default value to set for `var.<name>`
+     * if the key does not exist in Consul. Defaults to an empty string.
+     */
     default?: string;
+    /**
+     * This is the name of the key. This value of the
+     * key is exposed as `var.<name>`. This is not the path of the subkey
+     * in Consul.
+     */
     name: string;
+    /**
+     * This is the subkey path in Consul (which will be appended
+     * to the given `pathPrefix`) to construct the full key that will be used
+     * to read the value.
+     */
     path: string;
 }
 
 export interface GetKeysKey {
+    /**
+     * This is the default value to set for `var.<name>`
+     * if the key does not exist in Consul. Defaults to an empty string.
+     */
     default?: string;
+    /**
+     * This is the name of the key. This value of the
+     * key is exposed as `var.<name>`. This is not the path of the key
+     * in Consul.
+     */
     name: string;
+    /**
+     * This is the path in Consul that should be read
+     * or written to.
+     */
     path: string;
 }
 
 export interface GetNodesQueryOption {
+    /**
+     * When `true`, the default, allow responses from
+     * Consul servers that are followers.
+     */
     allowStale?: boolean;
     /**
      * The Consul datacenter to query.  Defaults to the
@@ -103,13 +147,34 @@ export interface GetNodesQueryOption {
     datacenter?: string;
     near?: string;
     nodeMeta?: {[key: string]: string};
+    /**
+     * When `true` force the client to perform a
+     * read on at least quorum servers and verify the result is the same.  Defaults
+     * to `false`.
+     */
     requireConsistent?: boolean;
+    /**
+     * Specify the Consul ACL token to use when performing the
+     * request.  This defaults to the same API token configured by the `consul`
+     * provider but may be overriden if necessary.
+     */
     token?: string;
+    /**
+     * Index number used to enable blocking quereis.
+     */
     waitIndex?: number;
+    /**
+     * Max time the client should wait for a blocking query
+     * to return.
+     */
     waitTime?: string;
 }
 
 export interface GetServiceQueryOption {
+    /**
+     * When `true`, the default, allow responses from
+     * Consul servers that are followers.
+     */
     allowStale?: boolean;
     /**
      * The Consul datacenter to query.  Defaults to the
@@ -118,16 +183,40 @@ export interface GetServiceQueryOption {
      * configured to talk to.
      */
     datacenter?: string;
+    /**
+     * The namespace to lookup the service.
+     */
     namespace?: string;
     near?: string;
     nodeMeta?: {[key: string]: string};
+    /**
+     * When `true` force the client to perform a
+     * read on at least quorum servers and verify the result is the same.  Defaults
+     * to `false`.
+     */
     requireConsistent?: boolean;
+    /**
+     * Specify the Consul ACL token to use when performing the
+     * request.  This defaults to the same API token configured by the `consul`
+     * provider but may be overriden if necessary.
+     */
     token?: string;
+    /**
+     * Index number used to enable blocking quereis.
+     */
     waitIndex?: number;
+    /**
+     * Max time the client should wait for a blocking query
+     * to return.
+     */
     waitTime?: string;
 }
 
 export interface GetServicesQueryOption {
+    /**
+     * When `true`, the default, allow responses from
+     * Consul servers that are followers.
+     */
     allowStale?: boolean;
     /**
      * The Consul datacenter to query.  Defaults to the
@@ -136,27 +225,74 @@ export interface GetServicesQueryOption {
      * configured to talk to.
      */
     datacenter?: string;
+    /**
+     * The namespace to lookup the services.
+     */
     namespace?: string;
     near?: string;
     nodeMeta?: {[key: string]: string};
+    /**
+     * When `true` force the client to perform a
+     * read on at least quorum servers and verify the result is the same.  Defaults
+     * to `false`.
+     */
     requireConsistent?: boolean;
+    /**
+     * Specify the Consul ACL token to use when performing the
+     * request.  This defaults to the same API token configured by the `consul`
+     * provider but may be overriden if necessary.
+     */
     token?: string;
+    /**
+     * Index number used to enable blocking quereis.
+     */
     waitIndex?: number;
+    /**
+     * Max time the client should wait for a blocking query
+     * to return.
+     */
     waitTime?: string;
 }
 
 export interface KeyPrefixSubkeyCollection {
+    /**
+     * An [unsigned integer value](https://www.consul.io/api/kv.html#flags-1)
+     * to attach to the key (defaults to 0).
+     */
     flags?: pulumi.Input<number>;
+    /**
+     * This is the path (which will be appended to the given
+     * `pathPrefix`) in Consul that should be written to.
+     */
     path: pulumi.Input<string>;
+    /**
+     * The value to write to the given path.
+     */
     value: pulumi.Input<string>;
 }
 
 export interface KeysKey {
     default?: pulumi.Input<string>;
+    /**
+     * If true, then the key will be deleted when
+     * either its configuration block is removed from the configuration or
+     * the entire resource is destroyed. Otherwise, it will be left in Consul.
+     * Defaults to false.
+     */
     delete?: pulumi.Input<boolean>;
+    /**
+     * An [unsigned integer value](https://www.consul.io/api/kv.html#flags-1)
+     * to attach to the key (defaults to 0).
+     */
     flags?: pulumi.Input<number>;
     name?: pulumi.Input<string>;
+    /**
+     * This is the path in Consul that should be written to.
+     */
     path: pulumi.Input<string>;
+    /**
+     * The value to write to the given path.
+     */
     value?: pulumi.Input<string>;
 }
 
@@ -224,7 +360,7 @@ export interface ServiceCheck {
      */
     method?: pulumi.Input<string>;
     /**
-     * The name of the header.
+     * The name of the health-check.
      */
     name: pulumi.Input<string>;
     /**

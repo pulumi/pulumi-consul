@@ -29,7 +29,6 @@ type GetNodesArgs struct {
 	QueryOptions []GetNodesQueryOption `pulumi:"queryOptions"`
 }
 
-
 // A collection of values returned by getNodes.
 type GetNodesResult struct {
 	// The datacenter the keys are being read from to.
@@ -42,7 +41,6 @@ type GetNodesResult struct {
 	NodeNames []string `pulumi:"nodeNames"`
 	// A list of nodes and details about each Consul agent.  The list of
 	// per-node attributes is detailed below.
-	Nodes []GetNodesNode `pulumi:"nodes"`
+	Nodes        []GetNodesNode        `pulumi:"nodes"`
 	QueryOptions []GetNodesQueryOption `pulumi:"queryOptions"`
 }
-

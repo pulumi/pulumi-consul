@@ -19,7 +19,21 @@ namespace Pulumi.Consul
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/nodes.html.markdown.
         /// </summary>
+        [Obsolete("Use GetNodes.InvokeAsync() instead")]
         public static Task<GetNodesResult> GetNodes(GetNodesArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetNodesResult>("consul:index/getNodes:getNodes", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetNodes
+    {
+        /// <summary>
+        /// The `consul..getNodes` data source returns a list of Consul nodes that have
+        /// been registered with the Consul cluster in a given datacenter.  By specifying a
+        /// different datacenter in the `query_options` it is possible to retrieve a list of
+        /// nodes from a different WAN-attached Consul datacenter.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/nodes.html.markdown.
+        /// </summary>
+        public static Task<GetNodesResult> InvokeAsync(GetNodesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNodesResult>("consul:index/getNodes:getNodes", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 
@@ -91,6 +105,10 @@ namespace Pulumi.Consul
 
     public sealed class GetNodesQueryOptionsArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// When `true`, the default, allow responses from
+        /// Consul servers that are followers.
+        /// </summary>
         [Input("allowStale")]
         public bool? AllowStale { get; set; }
 
@@ -114,15 +132,32 @@ namespace Pulumi.Consul
             set => _nodeMeta = value;
         }
 
+        /// <summary>
+        /// When `true` force the client to perform a
+        /// read on at least quorum servers and verify the result is the same.  Defaults
+        /// to `false`.
+        /// </summary>
         [Input("requireConsistent")]
         public bool? RequireConsistent { get; set; }
 
+        /// <summary>
+        /// Specify the Consul ACL token to use when performing the
+        /// request.  This defaults to the same API token configured by the `consul`
+        /// provider but may be overriden if necessary.
+        /// </summary>
         [Input("token")]
         public string? Token { get; set; }
 
+        /// <summary>
+        /// Index number used to enable blocking quereis.
+        /// </summary>
         [Input("waitIndex")]
         public int? WaitIndex { get; set; }
 
+        /// <summary>
+        /// Max time the client should wait for a blocking query
+        /// to return.
+        /// </summary>
         [Input("waitTime")]
         public string? WaitTime { get; set; }
 
@@ -174,6 +209,10 @@ namespace Pulumi.Consul
     [OutputType]
     public sealed class GetNodesQueryOptionsResult
     {
+        /// <summary>
+        /// When `true`, the default, allow responses from
+        /// Consul servers that are followers.
+        /// </summary>
         public readonly bool? AllowStale;
         /// <summary>
         /// The Consul datacenter to query.  Defaults to the
@@ -184,9 +223,26 @@ namespace Pulumi.Consul
         public readonly string? Datacenter;
         public readonly string? Near;
         public readonly ImmutableDictionary<string, string>? NodeMeta;
+        /// <summary>
+        /// When `true` force the client to perform a
+        /// read on at least quorum servers and verify the result is the same.  Defaults
+        /// to `false`.
+        /// </summary>
         public readonly bool? RequireConsistent;
+        /// <summary>
+        /// Specify the Consul ACL token to use when performing the
+        /// request.  This defaults to the same API token configured by the `consul`
+        /// provider but may be overriden if necessary.
+        /// </summary>
         public readonly string? Token;
+        /// <summary>
+        /// Index number used to enable blocking quereis.
+        /// </summary>
         public readonly int? WaitIndex;
+        /// <summary>
+        /// Max time the client should wait for a blocking query
+        /// to return.
+        /// </summary>
         public readonly string? WaitTime;
 
         [OutputConstructor]

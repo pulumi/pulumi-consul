@@ -43,7 +43,6 @@ type LookupServiceArgs struct {
 	Tag *string `pulumi:"tag"`
 }
 
-
 // A collection of values returned by getService.
 type LookupServiceResult struct {
 	// The datacenter the keys are being read from to.
@@ -51,7 +50,7 @@ type LookupServiceResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The name of the service
-	Name string `pulumi:"name"`
+	Name         string                  `pulumi:"name"`
 	QueryOptions []GetServiceQueryOption `pulumi:"queryOptions"`
 	// A list of nodes and details about each endpoint advertising a
 	// service.  Each element in the list is a map of attributes that correspond to
@@ -60,4 +59,3 @@ type LookupServiceResult struct {
 	// The name of the tag used to filter the list of nodes in `service`.
 	Tag *string `pulumi:"tag"`
 }
-

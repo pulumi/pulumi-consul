@@ -11,7 +11,13 @@ namespace Pulumi.Consul
 {
     public static partial class Invokes
     {
+        [Obsolete("Use GetCatalogNodes.InvokeAsync() instead")]
         public static Task<GetCatalogNodesResult> GetCatalogNodes(GetCatalogNodesArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetCatalogNodesResult>("consul:index/getCatalogNodes:getCatalogNodes", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetCatalogNodes
+    {
+        public static Task<GetCatalogNodesResult> InvokeAsync(GetCatalogNodesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCatalogNodesResult>("consul:index/getCatalogNodes:getCatalogNodes", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

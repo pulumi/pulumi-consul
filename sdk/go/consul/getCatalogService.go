@@ -19,21 +19,19 @@ func GetCatalogService(ctx *pulumi.Context, args *GetCatalogServiceArgs, opts ..
 
 // A collection of arguments for invoking getCatalogService.
 type GetCatalogServiceArgs struct {
-	Datacenter *string `pulumi:"datacenter"`
-	Name string `pulumi:"name"`
+	Datacenter   *string                        `pulumi:"datacenter"`
+	Name         string                         `pulumi:"name"`
 	QueryOptions []GetCatalogServiceQueryOption `pulumi:"queryOptions"`
-	Tag *string `pulumi:"tag"`
+	Tag          *string                        `pulumi:"tag"`
 }
-
 
 // A collection of values returned by getCatalogService.
 type GetCatalogServiceResult struct {
 	Datacenter *string `pulumi:"datacenter"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	Name string `pulumi:"name"`
+	Id           string                         `pulumi:"id"`
+	Name         string                         `pulumi:"name"`
 	QueryOptions []GetCatalogServiceQueryOption `pulumi:"queryOptions"`
-	Services []GetCatalogServiceService `pulumi:"services"`
-	Tag *string `pulumi:"tag"`
+	Services     []GetCatalogServiceService     `pulumi:"services"`
+	Tag          *string                        `pulumi:"tag"`
 }
-

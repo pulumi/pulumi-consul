@@ -166,4 +166,3 @@ type KeyPrefixArgs struct {
 func (KeyPrefixArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*keyPrefixArgs)(nil)).Elem()
 }
-

@@ -181,4 +181,3 @@ type IntentionArgs struct {
 func (IntentionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*intentionArgs)(nil)).Elem()
 }
-
