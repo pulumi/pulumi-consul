@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // A high-level resource for creating a Service in Consul in the Consul catalog. This
@@ -18,6 +18,8 @@ import (
 //
 // If the Consul agent is running on the node where this service is registered, it is
 // not recommended to use this resource.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/service.html.markdown.
 type Service struct {

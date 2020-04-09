@@ -12,6 +12,9 @@ namespace Pulumi.Consul
     /// <summary>
     /// Starting with Consul 1.4.0, the consul..AclPolicy can be used to managed Consul ACL policies.
     /// 
+    /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/acl_policy.html.markdown.
     /// </summary>
     public partial class AclPolicy : Pulumi.CustomResource

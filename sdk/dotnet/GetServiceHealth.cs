@@ -20,6 +20,8 @@ namespace Pulumi.Consul
         /// This resource is likely to change as frequently as the health-checks are being
         /// updated, you should expect different results in a frequent basis.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/service_health.html.markdown.
         /// </summary>
         [Obsolete("Use GetServiceHealth.InvokeAsync() instead")]
@@ -36,6 +38,8 @@ namespace Pulumi.Consul
         /// 
         /// This resource is likely to change as frequently as the health-checks are being
         /// updated, you should expect different results in a frequent basis.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/service_health.html.markdown.
         /// </summary>

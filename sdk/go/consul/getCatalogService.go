@@ -5,7 +5,7 @@
 package consul
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 func GetCatalogService(ctx *pulumi.Context, args *GetCatalogServiceArgs, opts ...pulumi.InvokeOption) (*GetCatalogServiceResult, error) {

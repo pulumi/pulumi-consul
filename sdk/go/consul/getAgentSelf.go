@@ -5,7 +5,7 @@
 package consul
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // > **Warning:** The `.getAgentSelf` resource has been deprecated and will be removed
@@ -15,6 +15,8 @@ import (
 // The `.getAgentSelf` data source returns
 // [configuration and status data](https://www.consul.io/docs/agent/http/agent.html#agent_self)
 // from the agent specified in the `provider`.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/agent_self.html.markdown.
 func GetAgentSelf(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetAgentSelfResult, error) {

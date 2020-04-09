@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // [Intentions](https://www.consul.io/docs/connect/intentions.html) are used to define
@@ -18,6 +18,8 @@ import (
 // that will be created in the future when creating intentions. This resource can be used
 // in conjunction with the `.Service` datasource when referencing services
 // registered on nodes that have a running Consul agent.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/intention.html.markdown.
 type Intention struct {

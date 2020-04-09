@@ -62,6 +62,8 @@ def get_autopilot_health(datacenter=None,opts=None):
     [autopilot health information](https://www.consul.io/api/operator/autopilot.html#read-health)
     about the current Consul cluster.
 
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/autopilot_health.html.markdown.
 
 

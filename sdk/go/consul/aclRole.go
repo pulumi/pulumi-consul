@@ -7,10 +7,13 @@ package consul
 import (
 	"reflect"
 
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Starting with Consul 1.5.0, the .AclRole can be used to managed Consul ACL roles.
+//
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/acl_role.markdown.
 type AclRole struct {

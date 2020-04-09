@@ -14,6 +14,8 @@ namespace Pulumi.Consul
     /// resource can be used to provide cluster-wide defaults for various aspects of
     /// Consul.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/config_entry.markdown.
     /// </summary>
     public partial class ConfigEntry : Pulumi.CustomResource

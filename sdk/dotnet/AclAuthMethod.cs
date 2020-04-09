@@ -13,6 +13,9 @@ namespace Pulumi.Consul
     /// Starting with Consul 1.5.0, the consul..AclAuthMethod resource can be used to
     /// managed Consul ACL auth methods.
     /// 
+    /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/acl_auth_method.markdown.
     /// </summary>
     public partial class AclAuthMethod : Pulumi.CustomResource

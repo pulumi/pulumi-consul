@@ -8,11 +8,14 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Starting with Consul 1.5.0, the .AclAuthMethod resource can be used to
 // managed Consul ACL auth methods.
+//
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/acl_auth_method.markdown.
 type AclAuthMethod struct {

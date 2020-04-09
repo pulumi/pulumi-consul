@@ -18,6 +18,8 @@ namespace Pulumi.Consul
     /// in conjunction with the `consul..Service` datasource when referencing services
     /// registered on nodes that have a running Consul agent.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/intention.html.markdown.
     /// </summary>
     public partial class Intention : Pulumi.CustomResource

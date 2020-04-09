@@ -7,7 +7,7 @@ package consul
 import (
 	"reflect"
 
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Provides access to the [Autopilot Configuration](https://www.consul.io/docs/guides/autopilot.html)
@@ -15,6 +15,8 @@ import (
 //
 // It includes to automatically cleanup dead servers, monitor the status of the Raft
 // cluster and stable server introduction.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/autopilot_config.html.markdown.
 type AutopilotConfig struct {

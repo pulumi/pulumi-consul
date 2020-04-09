@@ -6,7 +6,7 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-export function getCatalogNodes(args?: GetCatalogNodesArgs, opts?: pulumi.InvokeOptions): Promise<GetCatalogNodesResult> & GetCatalogNodesResult {
+export function getCatalogNodes(args?: GetCatalogNodesArgs, opts?: pulumi.InvokeOptions): Promise<GetCatalogNodesResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -15,11 +15,9 @@ export function getCatalogNodes(args?: GetCatalogNodesArgs, opts?: pulumi.Invoke
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetCatalogNodesResult> = pulumi.runtime.invoke("consul:index/getCatalogNodes:getCatalogNodes", {
+    return pulumi.runtime.invoke("consul:index/getCatalogNodes:getCatalogNodes", {
         "queryOptions": args.queryOptions,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

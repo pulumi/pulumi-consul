@@ -6,7 +6,7 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-export function getCatalogService(args: GetCatalogServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetCatalogServiceResult> & GetCatalogServiceResult {
+export function getCatalogService(args: GetCatalogServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetCatalogServiceResult> {
     if (!opts) {
         opts = {}
     }
@@ -14,14 +14,12 @@ export function getCatalogService(args: GetCatalogServiceArgs, opts?: pulumi.Inv
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetCatalogServiceResult> = pulumi.runtime.invoke("consul:index/getCatalogService:getCatalogService", {
+    return pulumi.runtime.invoke("consul:index/getCatalogService:getCatalogService", {
         "datacenter": args.datacenter,
         "name": args.name,
         "queryOptions": args.queryOptions,
         "tag": args.tag,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

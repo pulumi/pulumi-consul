@@ -5,11 +5,13 @@
 package consul
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // The `.AclRole` data source returns the information related to a
 // [Consul ACL Role](https://www.consul.io/api/acl/roles.html).
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/acl_role.html.markdown.
 func LookupAclRole(ctx *pulumi.Context, args *LookupAclRoleArgs, opts ...pulumi.InvokeOption) (*LookupAclRoleResult, error) {

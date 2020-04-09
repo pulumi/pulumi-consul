@@ -6,7 +6,7 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-export function getKeyPrefix(args: GetKeyPrefixArgs, opts?: pulumi.InvokeOptions): Promise<GetKeyPrefixResult> & GetKeyPrefixResult {
+export function getKeyPrefix(args: GetKeyPrefixArgs, opts?: pulumi.InvokeOptions): Promise<GetKeyPrefixResult> {
     if (!opts) {
         opts = {}
     }
@@ -14,15 +14,13 @@ export function getKeyPrefix(args: GetKeyPrefixArgs, opts?: pulumi.InvokeOptions
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetKeyPrefixResult> = pulumi.runtime.invoke("consul:index/getKeyPrefix:getKeyPrefix", {
+    return pulumi.runtime.invoke("consul:index/getKeyPrefix:getKeyPrefix", {
         "datacenter": args.datacenter,
         "namespace": args.namespace,
         "pathPrefix": args.pathPrefix,
         "subkeyCollection": args.subkeyCollection,
         "token": args.token,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

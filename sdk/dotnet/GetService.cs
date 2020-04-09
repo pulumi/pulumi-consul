@@ -21,6 +21,8 @@ namespace Pulumi.Consul
         /// This data source is different from the `consul..getServices` (plural) data
         /// source, which provides a summary of the current Consul services.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/service.html.markdown.
         /// </summary>
         [Obsolete("Use GetService.InvokeAsync() instead")]
@@ -38,6 +40,8 @@ namespace Pulumi.Consul
         /// 
         /// This data source is different from the `consul..getServices` (plural) data
         /// source, which provides a summary of the current Consul services.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/service.html.markdown.
         /// </summary>

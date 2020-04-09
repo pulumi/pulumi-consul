@@ -15,6 +15,8 @@ namespace Pulumi.Consul
         /// The `consul..Keys` resource reads values from the Consul key/value store.
         /// This is a powerful way dynamically set values in templates.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/keys.html.markdown.
         /// </summary>
         [Obsolete("Use GetKeys.InvokeAsync() instead")]
@@ -26,6 +28,8 @@ namespace Pulumi.Consul
         /// <summary>
         /// The `consul..Keys` resource reads values from the Consul key/value store.
         /// This is a powerful way dynamically set values in templates.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/keys.html.markdown.
         /// </summary>

@@ -7,7 +7,7 @@ package consul
 import (
 	"reflect"
 
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // !> The `.AgentService` resource has been deprecated in version 2.0.0 of the provider
@@ -17,6 +17,8 @@ import (
 // Provides access to the agent service data in Consul. This can be used to
 // define a service associated with a particular agent. Currently, defining
 // health checks for an agent service is not supported.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/agent_service.html.markdown.
 type AgentService struct {

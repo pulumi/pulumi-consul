@@ -68,6 +68,8 @@ def get_nodes(query_options=None,opts=None):
     different datacenter in the `query_options` it is possible to retrieve a list of
     nodes from a different WAN-attached Consul datacenter.
 
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/nodes.html.markdown.
 
 

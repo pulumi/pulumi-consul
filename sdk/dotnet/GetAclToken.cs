@@ -18,6 +18,8 @@ namespace Pulumi.Consul
         /// If you want to get the secret ID associated with a token, use the
         /// [`consul..getAclTokenSecretId` data source](https://www.terraform.io/docs/providers/consul/d/acl_token_secret_id.html).
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/acl_token.html.markdown.
         /// </summary>
         [Obsolete("Use GetAclToken.InvokeAsync() instead")]
@@ -32,6 +34,8 @@ namespace Pulumi.Consul
         /// 
         /// If you want to get the secret ID associated with a token, use the
         /// [`consul..getAclTokenSecretId` data source](https://www.terraform.io/docs/providers/consul/d/acl_token_secret_id.html).
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/acl_token.html.markdown.
         /// </summary>

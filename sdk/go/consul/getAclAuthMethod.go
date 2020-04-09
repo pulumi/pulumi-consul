@@ -5,11 +5,13 @@
 package consul
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // The `.AclAuthMethod` data source returns the information related to a
 // [Consul Auth Method](https://www.consul.io/docs/acl/acl-auth-methods.html).
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/acl_auth_method.html.markdown.
 func LookupAclAuthMethod(ctx *pulumi.Context, args *LookupAclAuthMethodArgs, opts ...pulumi.InvokeOption) (*LookupAclAuthMethodResult, error) {

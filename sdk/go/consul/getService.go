@@ -5,7 +5,7 @@
 package consul
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // `.Service` provides details about a specific Consul service in a
@@ -16,6 +16,8 @@ import (
 //
 // This data source is different from the `.getServices` (plural) data
 // source, which provides a summary of the current Consul services.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/service.html.markdown.
 func LookupService(ctx *pulumi.Context, args *LookupServiceArgs, opts ...pulumi.InvokeOption) (*LookupServiceResult, error) {

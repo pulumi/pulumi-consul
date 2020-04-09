@@ -15,6 +15,9 @@ namespace Pulumi.Consul
         /// The `consul..AclPolicy` data source returns the information related to a
         /// [Consul ACL Policy](https://www.consul.io/docs/acl/acl-system.html#acl-policies).
         /// 
+        /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/acl_policy.html.markdown.
         /// </summary>
         [Obsolete("Use GetAclPolicy.InvokeAsync() instead")]
@@ -26,6 +29,9 @@ namespace Pulumi.Consul
         /// <summary>
         /// The `consul..AclPolicy` data source returns the information related to a
         /// [Consul ACL Policy](https://www.consul.io/docs/acl/acl-system.html#acl-policies).
+        /// 
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/acl_policy.html.markdown.
         /// </summary>

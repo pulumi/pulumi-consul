@@ -5,13 +5,15 @@
 package consul
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // The `.getNodes` data source returns a list of Consul nodes that have
 // been registered with the Consul cluster in a given datacenter.  By specifying a
 // different datacenter in the `queryOptions` it is possible to retrieve a list of
 // nodes from a different WAN-attached Consul datacenter.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/nodes.html.markdown.
 func GetNodes(ctx *pulumi.Context, args *GetNodesArgs, opts ...pulumi.InvokeOption) (*GetNodesResult, error) {

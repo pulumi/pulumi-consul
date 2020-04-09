@@ -17,6 +17,8 @@ namespace Pulumi.Consul
     /// Registers a node or service with the [Consul Catalog](https://www.consul.io/docs/agent/http/catalog.html#catalog_register).
     /// Currently, defining health checks is not supported.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/catalog_entry.html.markdown.
     /// </summary>
     public partial class CatalogEntry : Pulumi.CustomResource

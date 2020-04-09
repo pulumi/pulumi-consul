@@ -15,6 +15,8 @@ namespace Pulumi.Consul
         /// The `consul..AclRole` data source returns the information related to a
         /// [Consul ACL Role](https://www.consul.io/api/acl/roles.html).
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/acl_role.html.markdown.
         /// </summary>
         [Obsolete("Use GetAclRole.InvokeAsync() instead")]
@@ -26,6 +28,8 @@ namespace Pulumi.Consul
         /// <summary>
         /// The `consul..AclRole` data source returns the information related to a
         /// [Consul ACL Role](https://www.consul.io/api/acl/roles.html).
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/acl_role.html.markdown.
         /// </summary>

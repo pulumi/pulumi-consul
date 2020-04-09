@@ -62,6 +62,8 @@ def get_acl_auth_method(config=None,description=None,name=None,namespace=None,ty
     The `.AclAuthMethod` data source returns the information related to a
     [Consul Auth Method](https://www.consul.io/docs/acl/acl-auth-methods.html).
 
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/acl_auth_method.html.markdown.
 
 

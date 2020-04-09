@@ -14,10 +14,11 @@ import * as utilities from "./utilities";
  * 
  * This data source is different from the `consul..Service` (singular) data
  * source, which provides a detailed response about a specific Consul service.
+ * 
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/services.html.markdown.
  */
-export function getServices(args?: GetServicesArgs, opts?: pulumi.InvokeOptions): Promise<GetServicesResult> & GetServicesResult {
+export function getServices(args?: GetServicesArgs, opts?: pulumi.InvokeOptions): Promise<GetServicesResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -26,11 +27,9 @@ export function getServices(args?: GetServicesArgs, opts?: pulumi.InvokeOptions)
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetServicesResult> = pulumi.runtime.invoke("consul:index/getServices:getServices", {
+    return pulumi.runtime.invoke("consul:index/getServices:getServices", {
         "queryOptions": args.queryOptions,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

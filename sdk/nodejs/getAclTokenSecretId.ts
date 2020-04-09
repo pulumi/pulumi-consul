@@ -6,7 +6,7 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-export function getAclTokenSecretId(args: GetAclTokenSecretIdArgs, opts?: pulumi.InvokeOptions): Promise<GetAclTokenSecretIdResult> & GetAclTokenSecretIdResult {
+export function getAclTokenSecretId(args: GetAclTokenSecretIdArgs, opts?: pulumi.InvokeOptions): Promise<GetAclTokenSecretIdResult> {
     if (!opts) {
         opts = {}
     }
@@ -14,12 +14,10 @@ export function getAclTokenSecretId(args: GetAclTokenSecretIdArgs, opts?: pulumi
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetAclTokenSecretIdResult> = pulumi.runtime.invoke("consul:index/getAclTokenSecretId:getAclTokenSecretId", {
+    return pulumi.runtime.invoke("consul:index/getAclTokenSecretId:getAclTokenSecretId", {
         "accessorId": args.accessorId,
         "pgpKey": args.pgpKey,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

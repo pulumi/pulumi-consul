@@ -11,10 +11,11 @@ import * as utilities from "./utilities";
  * been registered with the Consul cluster in a given datacenter.  By specifying a
  * different datacenter in the `queryOptions` it is possible to retrieve a list of
  * nodes from a different WAN-attached Consul datacenter.
+ * 
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/nodes.html.markdown.
  */
-export function getNodes(args?: GetNodesArgs, opts?: pulumi.InvokeOptions): Promise<GetNodesResult> & GetNodesResult {
+export function getNodes(args?: GetNodesArgs, opts?: pulumi.InvokeOptions): Promise<GetNodesResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -23,11 +24,9 @@ export function getNodes(args?: GetNodesArgs, opts?: pulumi.InvokeOptions): Prom
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetNodesResult> = pulumi.runtime.invoke("consul:index/getNodes:getNodes", {
+    return pulumi.runtime.invoke("consul:index/getNodes:getNodes", {
         "queryOptions": args.queryOptions,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

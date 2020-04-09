@@ -5,7 +5,7 @@
 package consul
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // > **Note:** The `.getAgentConfig` resource differs from [`.getAgentSelf`](https://www.terraform.io/docs/providers/consul/d/agent_self.html),
@@ -15,6 +15,8 @@ import (
 // The `.getAgentConfig` data source returns
 // [configuration data](https://www.consul.io/api/agent.html#read-configuration)
 // from the agent specified in the `provider`.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/agent_config.html.markdown.
 func GetAgentConfig(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetAgentConfigResult, error) {

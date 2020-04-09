@@ -12,6 +12,9 @@ namespace Pulumi.Consul
     /// <summary>
     /// Starting with Consul 1.5.0, the consul..AclRole can be used to managed Consul ACL roles.
     /// 
+    /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/acl_role.markdown.
     /// </summary>
     public partial class AclRole : Pulumi.CustomResource

@@ -384,6 +384,8 @@ def get_agent_self(opts=None):
     [configuration and status data](https://www.consul.io/docs/agent/http/agent.html#agent_self)
     from the agent specified in the `provider`.
 
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/agent_self.html.markdown.
     """
     __args__ = dict()

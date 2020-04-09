@@ -5,7 +5,7 @@
 package consul
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // `.getServiceHealth` can be used to get the list of the instances that
@@ -15,6 +15,8 @@ import (
 //
 // This resource is likely to change as frequently as the health-checks are being
 // updated, you should expect different results in a frequent basis.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/service_health.html.markdown.
 func GetServiceHealth(ctx *pulumi.Context, args *GetServiceHealthArgs, opts ...pulumi.InvokeOption) (*GetServiceHealthResult, error) {

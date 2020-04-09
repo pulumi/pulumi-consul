@@ -18,6 +18,8 @@ namespace Pulumi.Consul
     /// define a service associated with a particular agent. Currently, defining
     /// health checks for an agent service is not supported.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/agent_service.html.markdown.
     /// </summary>
     public partial class AgentService : Pulumi.CustomResource

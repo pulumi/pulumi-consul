@@ -12,6 +12,8 @@ namespace Pulumi.Consul
     /// <summary>
     /// The `consul..AclToken` resource writes an ACL token into Consul.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/acl_token.html.markdown.
     /// </summary>
     public partial class AclToken : Pulumi.CustomResource

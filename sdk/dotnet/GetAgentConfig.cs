@@ -20,6 +20,8 @@ namespace Pulumi.Consul
         /// [configuration data](https://www.consul.io/api/agent.html#read-configuration)
         /// from the agent specified in the `provider`.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/agent_config.html.markdown.
         /// </summary>
         [Obsolete("Use GetAgentConfig.InvokeAsync() instead")]
@@ -36,6 +38,8 @@ namespace Pulumi.Consul
         /// The `consul..getAgentConfig` data source returns
         /// [configuration data](https://www.consul.io/api/agent.html#read-configuration)
         /// from the agent specified in the `provider`.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/agent_config.html.markdown.
         /// </summary>

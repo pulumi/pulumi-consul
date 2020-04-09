@@ -16,6 +16,8 @@ namespace Pulumi.Consul
         /// [autopilot health information](https://www.consul.io/api/operator/autopilot.html#read-health)
         /// about the current Consul cluster.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/autopilot_health.html.markdown.
         /// </summary>
         [Obsolete("Use GetAutopilotHealth.InvokeAsync() instead")]
@@ -28,6 +30,8 @@ namespace Pulumi.Consul
         /// The `consul..getAutopilotHealth` data source returns
         /// [autopilot health information](https://www.consul.io/api/operator/autopilot.html#read-health)
         /// about the current Consul cluster.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/autopilot_health.html.markdown.
         /// </summary>

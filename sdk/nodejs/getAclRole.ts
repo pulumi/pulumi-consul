@@ -9,10 +9,11 @@ import * as utilities from "./utilities";
 /**
  * The `consul..AclRole` data source returns the information related to a
  * [Consul ACL Role](https://www.consul.io/api/acl/roles.html).
+ * 
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/acl_role.html.markdown.
  */
-export function getAclRole(args: GetAclRoleArgs, opts?: pulumi.InvokeOptions): Promise<GetAclRoleResult> & GetAclRoleResult {
+export function getAclRole(args: GetAclRoleArgs, opts?: pulumi.InvokeOptions): Promise<GetAclRoleResult> {
     if (!opts) {
         opts = {}
     }
@@ -20,15 +21,13 @@ export function getAclRole(args: GetAclRoleArgs, opts?: pulumi.InvokeOptions): P
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetAclRoleResult> = pulumi.runtime.invoke("consul:index/getAclRole:getAclRole", {
+    return pulumi.runtime.invoke("consul:index/getAclRole:getAclRole", {
         "description": args.description,
         "name": args.name,
         "namespace": args.namespace,
         "policies": args.policies,
         "serviceIdentities": args.serviceIdentities,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

@@ -18,6 +18,8 @@ namespace Pulumi.Consul
     /// If the Consul agent is running on the node where this service is registered, it is
     /// not recommended to use this resource.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/service.html.markdown.
     /// </summary>
     public partial class Service : Pulumi.CustomResource

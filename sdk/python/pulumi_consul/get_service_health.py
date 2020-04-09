@@ -96,6 +96,8 @@ def get_service_health(datacenter=None,name=None,near=None,node_meta=None,passin
     This resource is likely to change as frequently as the health-checks are being
     updated, you should expect different results in a frequent basis.
 
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/service_health.html.markdown.
 
 

@@ -16,6 +16,8 @@ namespace Pulumi.Consul
     /// It includes to automatically cleanup dead servers, monitor the status of the Raft
     /// cluster and stable server introduction.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/autopilot_config.html.markdown.
     /// </summary>
     public partial class AutopilotConfig : Pulumi.CustomResource

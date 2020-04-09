@@ -15,6 +15,8 @@ namespace Pulumi.Consul
         /// The `consul..AclAuthMethod` data source returns the information related to a
         /// [Consul Auth Method](https://www.consul.io/docs/acl/acl-auth-methods.html).
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/acl_auth_method.html.markdown.
         /// </summary>
         [Obsolete("Use GetAclAuthMethod.InvokeAsync() instead")]
@@ -26,6 +28,8 @@ namespace Pulumi.Consul
         /// <summary>
         /// The `consul..AclAuthMethod` data source returns the information related to a
         /// [Consul Auth Method](https://www.consul.io/docs/acl/acl-auth-methods.html).
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/acl_auth_method.html.markdown.
         /// </summary>

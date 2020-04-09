@@ -13,6 +13,8 @@ namespace Pulumi.Consul
     /// Provides access to Node data in Consul. This can be used to define a
     /// node. Currently, defining health checks is not supported.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/node.html.markdown.
     /// </summary>
     public partial class Node : Pulumi.CustomResource

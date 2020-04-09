@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * 
  * ## Example Usage
  * 
- * Creating a new node with the service:
+ * 
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -30,51 +30,6 @@ import * as utilities from "./utilities";
  *     node: compute.name,
  *     port: 80,
  *     tags: ["tag0"],
- * });
- * ```
- * 
- * Utilizing an existing known node:
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as consul from "@pulumi/consul";
- * 
- * const google = new consul.Service("google", {
- *     node: "google",
- *     port: 443,
- * });
- * ```
- * 
- * Register an health-check:
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as consul from "@pulumi/consul";
- * 
- * const redis = new consul.Service("redis", {
- *     checks: [{
- *         checkId: "service:redis1",
- *         deregisterCriticalServiceAfter: "30s",
- *         headers: [
- *             {
- *                 name: "foo",
- *                 values: ["test"],
- *             },
- *             {
- *                 name: "bar",
- *                 values: ["test"],
- *             },
- *         ],
- *         http: "https://www.hashicorptest.com",
- *         interval: "5s",
- *         method: "PUT",
- *         name: "Redis health check",
- *         status: "passing",
- *         timeout: "1s",
- *         tlsSkipVerify: false,
- *     }],
- *     node: "redis",
- *     port: 6379,
  * });
  * ```
  *
