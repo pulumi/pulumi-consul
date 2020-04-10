@@ -64,8 +64,6 @@ def get_autopilot_health(datacenter=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/autopilot_health.html.markdown.
-
 
     :param str datacenter: The datacenter to use. This overrides the agent's
            default datacenter and the datacenter in the provider setup.

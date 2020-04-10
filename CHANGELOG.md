@@ -2,9 +2,8 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to Pulumi v1.13.1
-* Upgrade to pulumi-terraform-bridge v1.8.4
-* Upgrade to terraform-sdk v1.7.0
+* Upgrade to Pulumi v2.0.0-beta.3
+* Upgrade to pulumi-terraform-bridge v2.0.0-beta.1
 * Refactor layout to support Go modules
 
 ---

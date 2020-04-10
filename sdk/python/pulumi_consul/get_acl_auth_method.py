@@ -64,8 +64,6 @@ def get_acl_auth_method(config=None,description=None,name=None,namespace=None,ty
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/acl_auth_method.html.markdown.
-
 
     :param dict config: The configuration options of the ACL Auth Method.
     :param str description: The description of the ACL Auth Method.

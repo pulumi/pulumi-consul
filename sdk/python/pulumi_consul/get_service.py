@@ -75,8 +75,6 @@ def get_service(datacenter=None,name=None,query_options=None,tag=None,opts=None)
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/service.html.markdown.
-
 
     :param str datacenter: The Consul datacenter to query.  Defaults to the
            same value found in `query_options` parameter specified below, or if that is

@@ -98,8 +98,6 @@ def get_service_health(datacenter=None,name=None,near=None,node_meta=None,passin
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/service_health.html.markdown.
-
 
     :param str datacenter: The Consul datacenter to query.
     :param str name: The service name to select.

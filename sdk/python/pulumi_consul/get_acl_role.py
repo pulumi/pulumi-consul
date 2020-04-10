@@ -66,8 +66,6 @@ def get_acl_role(description=None,name=None,namespace=None,policies=None,service
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/acl_role.html.markdown.
-
 
     :param str description: The description of the ACL Role.
     :param str name: The name of the ACL Role.

@@ -70,8 +70,6 @@ def get_nodes(query_options=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/nodes.html.markdown.
-
 
     :param list query_options: See below.
 

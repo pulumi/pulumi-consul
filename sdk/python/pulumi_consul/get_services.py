@@ -59,8 +59,6 @@ def get_services(query_options=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/services.html.markdown.
-
 
     :param list query_options: See below.
 
