@@ -9,29 +9,19 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Consul
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// The `consul..Keys` resource reads values from the Consul key/value store.
-        /// This is a powerful way dynamically set values in templates.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/keys.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetKeys.InvokeAsync() instead")]
-        public static Task<GetKeysResult> GetKeys(GetKeysArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKeysResult>("consul:index/getKeys:getKeys", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetKeys
     {
         /// <summary>
         /// The `consul..Keys` resource reads values from the Consul key/value store.
         /// This is a powerful way dynamically set values in templates.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/keys.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetKeysResult> InvokeAsync(GetKeysArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKeysResult>("consul:index/getKeys:getKeys", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetKeysResult>("consul:index/getKeys:getKeys", args ?? new GetKeysArgs(), options.WithVersion());
     }
+
 
     public sealed class GetKeysArgs : Pulumi.InvokeArgs
     {
@@ -43,15 +33,15 @@ namespace Pulumi.Consul
         public string? Datacenter { get; set; }
 
         [Input("keys")]
-        private List<Inputs.GetKeysKeysArgs>? _keys;
+        private List<Inputs.GetKeysKeyArgs>? _keys;
 
         /// <summary>
         /// Specifies a key in Consul to be read. Supported
         /// values documented below. Multiple blocks supported.
         /// </summary>
-        public List<Inputs.GetKeysKeysArgs> Keys
+        public List<Inputs.GetKeysKeyArgs> Keys
         {
-            get => _keys ?? (_keys = new List<Inputs.GetKeysKeysArgs>());
+            get => _keys ?? (_keys = new List<Inputs.GetKeysKeyArgs>());
             set => _keys = value;
         }
 
@@ -73,6 +63,7 @@ namespace Pulumi.Consul
         }
     }
 
+
     [OutputType]
     public sealed class GetKeysResult
     {
@@ -82,99 +73,35 @@ namespace Pulumi.Consul
         /// has the value of the key.
         /// </summary>
         public readonly string Datacenter;
-        public readonly ImmutableArray<Outputs.GetKeysKeysResult> Keys;
-        public readonly string? Namespace;
-        public readonly string? Token;
-        public readonly ImmutableDictionary<string, string> Var;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly ImmutableArray<Outputs.GetKeysKeyResult> Keys;
+        public readonly string? Namespace;
+        public readonly string? Token;
+        public readonly ImmutableDictionary<string, string> Var;
 
         [OutputConstructor]
         private GetKeysResult(
             string datacenter,
-            ImmutableArray<Outputs.GetKeysKeysResult> keys,
+
+            string id,
+
+            ImmutableArray<Outputs.GetKeysKeyResult> keys,
+
             string? @namespace,
+
             string? token,
-            ImmutableDictionary<string, string> var,
-            string id)
+
+            ImmutableDictionary<string, string> var)
         {
             Datacenter = datacenter;
+            Id = id;
             Keys = keys;
             Namespace = @namespace;
             Token = token;
             Var = var;
-            Id = id;
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class GetKeysKeysArgs : Pulumi.InvokeArgs
-    {
-        /// <summary>
-        /// This is the default value to set for `var.&lt;name&gt;`
-        /// if the key does not exist in Consul. Defaults to an empty string.
-        /// </summary>
-        [Input("default")]
-        public string? Default { get; set; }
-
-        /// <summary>
-        /// This is the name of the key. This value of the
-        /// key is exposed as `var.&lt;name&gt;`. This is not the path of the key
-        /// in Consul.
-        /// </summary>
-        [Input("name", required: true)]
-        public string Name { get; set; } = null!;
-
-        /// <summary>
-        /// This is the path in Consul that should be read
-        /// or written to.
-        /// </summary>
-        [Input("path", required: true)]
-        public string Path { get; set; } = null!;
-
-        public GetKeysKeysArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetKeysKeysResult
-    {
-        /// <summary>
-        /// This is the default value to set for `var.&lt;name&gt;`
-        /// if the key does not exist in Consul. Defaults to an empty string.
-        /// </summary>
-        public readonly string? Default;
-        /// <summary>
-        /// This is the name of the key. This value of the
-        /// key is exposed as `var.&lt;name&gt;`. This is not the path of the key
-        /// in Consul.
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// This is the path in Consul that should be read
-        /// or written to.
-        /// </summary>
-        public readonly string Path;
-
-        [OutputConstructor]
-        private GetKeysKeysResult(
-            string? @default,
-            string name,
-            string path)
-        {
-            Default = @default;
-            Name = name;
-            Path = path;
-        }
-    }
     }
 }

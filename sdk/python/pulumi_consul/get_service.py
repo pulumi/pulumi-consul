@@ -73,7 +73,7 @@ def get_service(datacenter=None,name=None,query_options=None,tag=None,opts=None)
     This data source is different from the `.getServices` (plural) data
     source, which provides a summary of the current Consul services.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/service.html.markdown.
+
 
 
     :param str datacenter: The Consul datacenter to query.  Defaults to the

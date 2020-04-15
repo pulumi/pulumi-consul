@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * 
  * ## Example Usage
  * 
- * Create a simplest intention with static service names:
+ * 
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -27,22 +27,6 @@ import * as utilities from "./utilities";
  *     action: "allow",
  *     destinationName: "db",
  *     sourceName: "api",
- * });
- * ```
- * 
- * Referencing a known service via a datasource:
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as consul from "@pulumi/consul";
- * 
- * const database = new consul.Intention("database", {
- *     action: "allow",
- *     destinationName: consul_service_pg.name,
- *     sourceName: "api",
- * });
- * const pg = consul.getService({
- *     name: "postgresql",
  * });
  * ```
  *

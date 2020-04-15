@@ -62,7 +62,8 @@ def get_acl_policy(datacenters=None,description=None,name=None,namespace=None,ru
     The `.AclPolicy` data source returns the information related to a
     [Consul ACL Policy](https://www.consul.io/docs/acl/acl-system.html#acl-policies).
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/acl_policy.html.markdown.
+
+
 
 
     :param list datacenters: The datacenters associated with the ACL Policy.

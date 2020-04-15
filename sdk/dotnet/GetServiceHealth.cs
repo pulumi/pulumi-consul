@@ -9,23 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Consul
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// `consul..getServiceHealth` can be used to get the list of the instances that
-        /// are currently healthy, according to their associated  health-checks.
-        /// The result includes the list of service instances, the node associated to each
-        /// instance and its health-checks.
-        /// 
-        /// This resource is likely to change as frequently as the health-checks are being
-        /// updated, you should expect different results in a frequent basis.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/service_health.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetServiceHealth.InvokeAsync() instead")]
-        public static Task<GetServiceHealthResult> GetServiceHealth(GetServiceHealthArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServiceHealthResult>("consul:index/getServiceHealth:getServiceHealth", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetServiceHealth
     {
         /// <summary>
@@ -37,11 +20,13 @@ namespace Pulumi.Consul
         /// This resource is likely to change as frequently as the health-checks are being
         /// updated, you should expect different results in a frequent basis.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/service_health.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetServiceHealthResult> InvokeAsync(GetServiceHealthArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServiceHealthResult>("consul:index/getServiceHealth:getServiceHealth", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetServiceHealthResult>("consul:index/getServiceHealth:getServiceHealth", args ?? new GetServiceHealthArgs(), options.WithVersion());
     }
+
 
     public sealed class GetServiceHealthArgs : Pulumi.InvokeArgs
     {
@@ -99,6 +84,7 @@ namespace Pulumi.Consul
         }
     }
 
+
     [OutputType]
     public sealed class GetServiceHealthResult
     {
@@ -108,6 +94,10 @@ namespace Pulumi.Consul
         /// List of explicit LAN and WAN IP addresses for the agent.
         /// </summary>
         public readonly string? Datacenter;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// The name of this health-check.
         /// </summary>
@@ -130,30 +120,35 @@ namespace Pulumi.Consul
         /// service.  Each element in the list has three attributes: `node`, `service` and
         /// `checks`.  The list of the attributes of each one is detailed below.
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetServiceHealthResultsResult> Results;
+        public readonly ImmutableArray<Outputs.GetServiceHealthResultResult> Results;
         /// <summary>
         /// The name of the tag used to filter the list.
         /// </summary>
         public readonly string? Tag;
         public readonly string? WaitFor;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetServiceHealthResult(
             string? datacenter,
+
+            string id,
+
             string name,
+
             string? near,
+
             ImmutableDictionary<string, string>? nodeMeta,
+
             bool? passing,
-            ImmutableArray<Outputs.GetServiceHealthResultsResult> results,
+
+            ImmutableArray<Outputs.GetServiceHealthResultResult> results,
+
             string? tag,
-            string? waitFor,
-            string id)
+
+            string? waitFor)
         {
             Datacenter = datacenter;
+            Id = id;
             Name = name;
             Near = near;
             NodeMeta = nodeMeta;
@@ -161,186 +156,6 @@ namespace Pulumi.Consul
             Results = results;
             Tag = tag;
             WaitFor = waitFor;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetServiceHealthResultsChecksResult
-    {
-        /// <summary>
-        /// The ID of this health-check.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// The service name to select.
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// The name of the node associated with this health-check.
-        /// </summary>
-        public readonly string Node;
-        /// <summary>
-        /// A human readable description of the current state of the health-check.
-        /// </summary>
-        public readonly string Notes;
-        /// <summary>
-        /// The output of the health-check.
-        /// </summary>
-        public readonly string Output;
-        /// <summary>
-        /// The ID of the service associated to this health-check.
-        /// </summary>
-        public readonly string ServiceId;
-        /// <summary>
-        /// The name of the service associated with this health-check.
-        /// </summary>
-        public readonly string ServiceName;
-        /// <summary>
-        /// The list of tags associated with this health-check.
-        /// </summary>
-        public readonly ImmutableArray<string> ServiceTags;
-        /// <summary>
-        /// The status of this health-check.
-        /// </summary>
-        public readonly string Status;
-
-        [OutputConstructor]
-        private GetServiceHealthResultsChecksResult(
-            string id,
-            string name,
-            string node,
-            string notes,
-            string output,
-            string serviceId,
-            string serviceName,
-            ImmutableArray<string> serviceTags,
-            string status)
-        {
-            Id = id;
-            Name = name;
-            Node = node;
-            Notes = notes;
-            Output = output;
-            ServiceId = serviceId;
-            ServiceName = serviceName;
-            ServiceTags = serviceTags;
-            Status = status;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetServiceHealthResultsNodeResult
-    {
-        /// <summary>
-        /// The address of this instance.
-        /// </summary>
-        public readonly string Address;
-        /// <summary>
-        /// The Consul datacenter to query.
-        /// </summary>
-        public readonly string Datacenter;
-        /// <summary>
-        /// The ID of this health-check.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// Service metadata tag information, if any.
-        /// </summary>
-        public readonly ImmutableDictionary<string, string> Meta;
-        /// <summary>
-        /// The service name to select.
-        /// </summary>
-        public readonly string Name;
-        public readonly ImmutableDictionary<string, string> TaggedAddresses;
-
-        [OutputConstructor]
-        private GetServiceHealthResultsNodeResult(
-            string address,
-            string datacenter,
-            string id,
-            ImmutableDictionary<string, string> meta,
-            string name,
-            ImmutableDictionary<string, string> taggedAddresses)
-        {
-            Address = address;
-            Datacenter = datacenter;
-            Id = id;
-            Meta = meta;
-            Name = name;
-            TaggedAddresses = taggedAddresses;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetServiceHealthResultsResult
-    {
-        public readonly ImmutableArray<GetServiceHealthResultsChecksResult> Checks;
-        /// <summary>
-        /// The name of the node associated with this health-check.
-        /// </summary>
-        public readonly GetServiceHealthResultsNodeResult Node;
-        public readonly GetServiceHealthResultsServiceResult Service;
-
-        [OutputConstructor]
-        private GetServiceHealthResultsResult(
-            ImmutableArray<GetServiceHealthResultsChecksResult> checks,
-            GetServiceHealthResultsNodeResult node,
-            GetServiceHealthResultsServiceResult service)
-        {
-            Checks = checks;
-            Node = node;
-            Service = service;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetServiceHealthResultsServiceResult
-    {
-        /// <summary>
-        /// The address of this instance.
-        /// </summary>
-        public readonly string Address;
-        /// <summary>
-        /// The ID of this health-check.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// Service metadata tag information, if any.
-        /// </summary>
-        public readonly ImmutableDictionary<string, string> Meta;
-        /// <summary>
-        /// The service name to select.
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// The port of this instance.
-        /// </summary>
-        public readonly int Port;
-        /// <summary>
-        /// The list of tags associated with this instance.
-        /// </summary>
-        public readonly ImmutableArray<string> Tags;
-
-        [OutputConstructor]
-        private GetServiceHealthResultsServiceResult(
-            string address,
-            string id,
-            ImmutableDictionary<string, string> meta,
-            string name,
-            int port,
-            ImmutableArray<string> tags)
-        {
-            Address = address;
-            Id = id;
-            Meta = meta;
-            Name = name;
-            Port = port;
-            Tags = tags;
-        }
-    }
     }
 }

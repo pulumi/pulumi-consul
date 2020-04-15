@@ -17,6 +17,8 @@ import * as utilities from "./utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
@@ -30,7 +32,7 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/service_health.html.markdown.
  */
-export function getServiceHealth(args: GetServiceHealthArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceHealthResult> & GetServiceHealthResult {
+export function getServiceHealth(args: GetServiceHealthArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceHealthResult> {
     if (!opts) {
         opts = {}
     }
@@ -38,7 +40,7 @@ export function getServiceHealth(args: GetServiceHealthArgs, opts?: pulumi.Invok
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetServiceHealthResult> = pulumi.runtime.invoke("consul:index/getServiceHealth:getServiceHealth", {
+    return pulumi.runtime.invoke("consul:index/getServiceHealth:getServiceHealth", {
         "datacenter": args.datacenter,
         "name": args.name,
         "near": args.near,
@@ -47,8 +49,6 @@ export function getServiceHealth(args: GetServiceHealthArgs, opts?: pulumi.Invok
         "tag": args.tag,
         "waitFor": args.waitFor,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

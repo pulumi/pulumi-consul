@@ -23,7 +23,7 @@ namespace Pulumi.Consul
         /// Supported values documented below.
         /// </summary>
         [Output("keys")]
-        public Output<ImmutableArray<Outputs.KeysKeys>> KeysCollection { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.KeysKey>> KeysCollection { get; private set; } = null!;
 
         /// <summary>
         /// The namespace to create the keys within.
@@ -50,7 +50,7 @@ namespace Pulumi.Consul
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Keys(string name, KeysArgs? args = null, CustomResourceOptions? options = null)
-            : base("consul:index/keys:Keys", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("consul:index/keys:Keys", name, args ?? new KeysArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -95,15 +95,15 @@ namespace Pulumi.Consul
         public Input<string>? Datacenter { get; set; }
 
         [Input("keys")]
-        private InputList<Inputs.KeysKeysArgs>? _keys;
+        private InputList<Inputs.KeysKeyArgs>? _keys;
 
         /// <summary>
         /// Specifies a key in Consul to be written.
         /// Supported values documented below.
         /// </summary>
-        public InputList<Inputs.KeysKeysArgs> KeysCollection
+        public InputList<Inputs.KeysKeyArgs> KeysCollection
         {
-            get => _keys ?? (_keys = new InputList<Inputs.KeysKeysArgs>());
+            get => _keys ?? (_keys = new InputList<Inputs.KeysKeyArgs>());
             set => _keys = value;
         }
 
@@ -135,15 +135,15 @@ namespace Pulumi.Consul
         public Input<string>? Datacenter { get; set; }
 
         [Input("keys")]
-        private InputList<Inputs.KeysKeysGetArgs>? _keys;
+        private InputList<Inputs.KeysKeyGetArgs>? _keys;
 
         /// <summary>
         /// Specifies a key in Consul to be written.
         /// Supported values documented below.
         /// </summary>
-        public InputList<Inputs.KeysKeysGetArgs> KeysCollection
+        public InputList<Inputs.KeysKeyGetArgs> KeysCollection
         {
-            get => _keys ?? (_keys = new InputList<Inputs.KeysKeysGetArgs>());
+            get => _keys ?? (_keys = new InputList<Inputs.KeysKeyGetArgs>());
             set => _keys = value;
         }
 
@@ -171,139 +171,5 @@ namespace Pulumi.Consul
         public KeysState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class KeysKeysArgs : Pulumi.ResourceArgs
-    {
-        [Input("default")]
-        public Input<string>? Default { get; set; }
-
-        /// <summary>
-        /// If true, then the key will be deleted when
-        /// either its configuration block is removed from the configuration or
-        /// the entire resource is destroyed. Otherwise, it will be left in Consul.
-        /// Defaults to false.
-        /// </summary>
-        [Input("delete")]
-        public Input<bool>? Delete { get; set; }
-
-        /// <summary>
-        /// An [unsigned integer value](https://www.consul.io/api/kv.html#flags-1)
-        /// to attach to the key (defaults to 0).
-        /// </summary>
-        [Input("flags")]
-        public Input<int>? Flags { get; set; }
-
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        /// <summary>
-        /// This is the path in Consul that should be written to.
-        /// </summary>
-        [Input("path", required: true)]
-        public Input<string> Path { get; set; } = null!;
-
-        /// <summary>
-        /// The value to write to the given path.
-        /// </summary>
-        [Input("value")]
-        public Input<string>? Value { get; set; }
-
-        public KeysKeysArgs()
-        {
-        }
-    }
-
-    public sealed class KeysKeysGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("default")]
-        public Input<string>? Default { get; set; }
-
-        /// <summary>
-        /// If true, then the key will be deleted when
-        /// either its configuration block is removed from the configuration or
-        /// the entire resource is destroyed. Otherwise, it will be left in Consul.
-        /// Defaults to false.
-        /// </summary>
-        [Input("delete")]
-        public Input<bool>? Delete { get; set; }
-
-        /// <summary>
-        /// An [unsigned integer value](https://www.consul.io/api/kv.html#flags-1)
-        /// to attach to the key (defaults to 0).
-        /// </summary>
-        [Input("flags")]
-        public Input<int>? Flags { get; set; }
-
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        /// <summary>
-        /// This is the path in Consul that should be written to.
-        /// </summary>
-        [Input("path", required: true)]
-        public Input<string> Path { get; set; } = null!;
-
-        /// <summary>
-        /// The value to write to the given path.
-        /// </summary>
-        [Input("value")]
-        public Input<string>? Value { get; set; }
-
-        public KeysKeysGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class KeysKeys
-    {
-        public readonly string? Default;
-        /// <summary>
-        /// If true, then the key will be deleted when
-        /// either its configuration block is removed from the configuration or
-        /// the entire resource is destroyed. Otherwise, it will be left in Consul.
-        /// Defaults to false.
-        /// </summary>
-        public readonly bool? Delete;
-        /// <summary>
-        /// An [unsigned integer value](https://www.consul.io/api/kv.html#flags-1)
-        /// to attach to the key (defaults to 0).
-        /// </summary>
-        public readonly int? Flags;
-        public readonly string? Name;
-        /// <summary>
-        /// This is the path in Consul that should be written to.
-        /// </summary>
-        public readonly string Path;
-        /// <summary>
-        /// The value to write to the given path.
-        /// </summary>
-        public readonly string Value;
-
-        [OutputConstructor]
-        private KeysKeys(
-            string? @default,
-            bool? delete,
-            int? flags,
-            string? name,
-            string path,
-            string value)
-        {
-            Default = @default;
-            Delete = delete;
-            Flags = flags;
-            Name = name;
-            Path = path;
-            Value = value;
-        }
-    }
     }
 }

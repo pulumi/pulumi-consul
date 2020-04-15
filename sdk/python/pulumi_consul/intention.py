@@ -54,7 +54,7 @@ class Intention(pulumi.CustomResource):
         in conjunction with the `.Service` datasource when referencing services
         registered on nodes that have a running Consul agent.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/intention.html.markdown.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

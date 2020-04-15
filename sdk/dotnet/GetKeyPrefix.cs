@@ -9,17 +9,12 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Consul
 {
-    public static partial class Invokes
-    {
-        [Obsolete("Use GetKeyPrefix.InvokeAsync() instead")]
-        public static Task<GetKeyPrefixResult> GetKeyPrefix(GetKeyPrefixArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKeyPrefixResult>("consul:index/getKeyPrefix:getKeyPrefix", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetKeyPrefix
     {
         public static Task<GetKeyPrefixResult> InvokeAsync(GetKeyPrefixArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKeyPrefixResult>("consul:index/getKeyPrefix:getKeyPrefix", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetKeyPrefixResult>("consul:index/getKeyPrefix:getKeyPrefix", args ?? new GetKeyPrefixArgs(), options.WithVersion());
     }
+
 
     public sealed class GetKeyPrefixArgs : Pulumi.InvokeArgs
     {
@@ -69,6 +64,7 @@ namespace Pulumi.Consul
         }
     }
 
+
     [OutputType]
     public sealed class GetKeyPrefixResult
     {
@@ -76,6 +72,10 @@ namespace Pulumi.Consul
         /// The datacenter the keys are being read from.
         /// </summary>
         public readonly string Datacenter;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         public readonly string? Namespace;
         /// <summary>
         /// the common prefix shared by all keys being read.
@@ -91,101 +91,33 @@ namespace Pulumi.Consul
         public readonly ImmutableDictionary<string, string> Subkeys;
         public readonly string? Token;
         public readonly ImmutableDictionary<string, string> Var;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetKeyPrefixResult(
             string datacenter,
+
+            string id,
+
             string? @namespace,
+
             string pathPrefix,
+
             ImmutableArray<Outputs.GetKeyPrefixSubkeyCollectionResult> subkeyCollection,
+
             ImmutableDictionary<string, string> subkeys,
+
             string? token,
-            ImmutableDictionary<string, string> var,
-            string id)
+
+            ImmutableDictionary<string, string> var)
         {
             Datacenter = datacenter;
+            Id = id;
             Namespace = @namespace;
             PathPrefix = pathPrefix;
             SubkeyCollection = subkeyCollection;
             Subkeys = subkeys;
             Token = token;
             Var = var;
-            Id = id;
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class GetKeyPrefixSubkeyCollectionArgs : Pulumi.InvokeArgs
-    {
-        /// <summary>
-        /// This is the default value to set for `var.&lt;name&gt;`
-        /// if the key does not exist in Consul. Defaults to an empty string.
-        /// </summary>
-        [Input("default")]
-        public string? Default { get; set; }
-
-        /// <summary>
-        /// This is the name of the key. This value of the
-        /// key is exposed as `var.&lt;name&gt;`. This is not the path of the subkey
-        /// in Consul.
-        /// </summary>
-        [Input("name", required: true)]
-        public string Name { get; set; } = null!;
-
-        /// <summary>
-        /// This is the subkey path in Consul (which will be appended
-        /// to the given `path_prefix`) to construct the full key that will be used
-        /// to read the value.
-        /// </summary>
-        [Input("path", required: true)]
-        public string Path { get; set; } = null!;
-
-        public GetKeyPrefixSubkeyCollectionArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetKeyPrefixSubkeyCollectionResult
-    {
-        /// <summary>
-        /// This is the default value to set for `var.&lt;name&gt;`
-        /// if the key does not exist in Consul. Defaults to an empty string.
-        /// </summary>
-        public readonly string? Default;
-        /// <summary>
-        /// This is the name of the key. This value of the
-        /// key is exposed as `var.&lt;name&gt;`. This is not the path of the subkey
-        /// in Consul.
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// This is the subkey path in Consul (which will be appended
-        /// to the given `path_prefix`) to construct the full key that will be used
-        /// to read the value.
-        /// </summary>
-        public readonly string Path;
-
-        [OutputConstructor]
-        private GetKeyPrefixSubkeyCollectionResult(
-            string? @default,
-            string name,
-            string path)
-        {
-            Default = @default;
-            Name = name;
-            Path = path;
-        }
-    }
     }
 }

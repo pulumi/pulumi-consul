@@ -12,8 +12,6 @@ namespace Pulumi.Consul
     /// <summary>
     /// Starting with Consul 1.5.0, the consul..AclBindingRule resource can be used to
     /// managed Consul ACL binding rules.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/acl_binding_rule.markdown.
     /// </summary>
     public partial class AclBindingRule : Pulumi.CustomResource
     {
@@ -66,7 +64,7 @@ namespace Pulumi.Consul
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AclBindingRule(string name, AclBindingRuleArgs args, CustomResourceOptions? options = null)
-            : base("consul:index/aclBindingRule:AclBindingRule", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("consul:index/aclBindingRule:AclBindingRule", name, args ?? new AclBindingRuleArgs(), MakeResourceOptions(options, ""))
         {
         }
 

@@ -9,29 +9,20 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Consul
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// The `consul..AclPolicy` data source returns the information related to a
-        /// [Consul ACL Policy](https://www.consul.io/docs/acl/acl-system.html#acl-policies).
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/acl_policy.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetAclPolicy.InvokeAsync() instead")]
-        public static Task<GetAclPolicyResult> GetAclPolicy(GetAclPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAclPolicyResult>("consul:index/getAclPolicy:getAclPolicy", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetAclPolicy
     {
         /// <summary>
         /// The `consul..AclPolicy` data source returns the information related to a
         /// [Consul ACL Policy](https://www.consul.io/docs/acl/acl-system.html#acl-policies).
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/acl_policy.html.markdown.
+        /// 
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAclPolicyResult> InvokeAsync(GetAclPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAclPolicyResult>("consul:index/getAclPolicy:getAclPolicy", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAclPolicyResult>("consul:index/getAclPolicy:getAclPolicy", args ?? new GetAclPolicyArgs(), options.WithVersion());
     }
+
 
     public sealed class GetAclPolicyArgs : Pulumi.InvokeArgs
     {
@@ -76,6 +67,7 @@ namespace Pulumi.Consul
         }
     }
 
+
     [OutputType]
     public sealed class GetAclPolicyResult
     {
@@ -87,32 +79,37 @@ namespace Pulumi.Consul
         /// The description of the ACL Policy.
         /// </summary>
         public readonly string? Description;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         public readonly string Name;
         public readonly string? Namespace;
         /// <summary>
         /// The rules associated with the ACL Policy.
         /// </summary>
         public readonly string? Rules;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetAclPolicyResult(
             ImmutableArray<string> datacenters,
+
             string? description,
+
+            string id,
+
             string name,
+
             string? @namespace,
-            string? rules,
-            string id)
+
+            string? rules)
         {
             Datacenters = datacenters;
             Description = description;
+            Id = id;
             Name = name;
             Namespace = @namespace;
             Rules = rules;
-            Id = id;
         }
     }
 }

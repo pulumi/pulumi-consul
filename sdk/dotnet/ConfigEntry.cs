@@ -13,8 +13,6 @@ namespace Pulumi.Consul
     /// The [Configuration Entry](https://www.consul.io/docs/agent/config_entries.html)
     /// resource can be used to provide cluster-wide defaults for various aspects of
     /// Consul.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/config_entry.markdown.
     /// </summary>
     public partial class ConfigEntry : Pulumi.CustomResource
     {
@@ -45,7 +43,7 @@ namespace Pulumi.Consul
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ConfigEntry(string name, ConfigEntryArgs args, CustomResourceOptions? options = null)
-            : base("consul:index/configEntry:ConfigEntry", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("consul:index/configEntry:ConfigEntry", name, args ?? new ConfigEntryArgs(), MakeResourceOptions(options, ""))
         {
         }
 

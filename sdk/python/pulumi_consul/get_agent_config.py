@@ -79,8 +79,6 @@ def get_agent_config(opts=None):
     The `.getAgentConfig` data source returns
     [configuration data](https://www.consul.io/api/agent.html#read-configuration)
     from the agent specified in the `provider`.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/agent_config.html.markdown.
     """
     __args__ = dict()
 

@@ -57,7 +57,7 @@ def get_services(query_options=None,opts=None):
     This data source is different from the `.Service` (singular) data
     source, which provides a detailed response about a specific Consul service.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/services.html.markdown.
+
 
 
     :param list query_options: See below.

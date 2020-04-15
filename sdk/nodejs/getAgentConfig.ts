@@ -17,6 +17,8 @@ import * as utilities from "./utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
@@ -28,7 +30,7 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/agent_config.html.markdown.
  */
-export function getAgentConfig(opts?: pulumi.InvokeOptions): Promise<GetAgentConfigResult> & GetAgentConfigResult {
+export function getAgentConfig(opts?: pulumi.InvokeOptions): Promise<GetAgentConfigResult> {
     if (!opts) {
         opts = {}
     }
@@ -36,10 +38,8 @@ export function getAgentConfig(opts?: pulumi.InvokeOptions): Promise<GetAgentCon
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetAgentConfigResult> = pulumi.runtime.invoke("consul:index/getAgentConfig:getAgentConfig", {
+    return pulumi.runtime.invoke("consul:index/getAgentConfig:getAgentConfig", {
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

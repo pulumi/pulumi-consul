@@ -11,8 +11,6 @@ namespace Pulumi.Consul
 {
     /// <summary>
     /// Starting with Consul 1.5.0, the consul..AclRole can be used to managed Consul ACL roles.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/acl_role.markdown.
     /// </summary>
     public partial class AclRole : Pulumi.CustomResource
     {
@@ -45,7 +43,7 @@ namespace Pulumi.Consul
         /// be applied to the role.
         /// </summary>
         [Output("serviceIdentities")]
-        public Output<ImmutableArray<Outputs.AclRoleServiceIdentities>> ServiceIdentities { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.AclRoleServiceIdentity>> ServiceIdentities { get; private set; } = null!;
 
 
         /// <summary>
@@ -56,7 +54,7 @@ namespace Pulumi.Consul
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AclRole(string name, AclRoleArgs? args = null, CustomResourceOptions? options = null)
-            : base("consul:index/aclRole:AclRole", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("consul:index/aclRole:AclRole", name, args ?? new AclRoleArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -124,15 +122,15 @@ namespace Pulumi.Consul
         }
 
         [Input("serviceIdentities")]
-        private InputList<Inputs.AclRoleServiceIdentitiesArgs>? _serviceIdentities;
+        private InputList<Inputs.AclRoleServiceIdentityArgs>? _serviceIdentities;
 
         /// <summary>
         /// The list of service identities that should
         /// be applied to the role.
         /// </summary>
-        public InputList<Inputs.AclRoleServiceIdentitiesArgs> ServiceIdentities
+        public InputList<Inputs.AclRoleServiceIdentityArgs> ServiceIdentities
         {
-            get => _serviceIdentities ?? (_serviceIdentities = new InputList<Inputs.AclRoleServiceIdentitiesArgs>());
+            get => _serviceIdentities ?? (_serviceIdentities = new InputList<Inputs.AclRoleServiceIdentityArgs>());
             set => _serviceIdentities = value;
         }
 
@@ -174,100 +172,20 @@ namespace Pulumi.Consul
         }
 
         [Input("serviceIdentities")]
-        private InputList<Inputs.AclRoleServiceIdentitiesGetArgs>? _serviceIdentities;
+        private InputList<Inputs.AclRoleServiceIdentityGetArgs>? _serviceIdentities;
 
         /// <summary>
         /// The list of service identities that should
         /// be applied to the role.
         /// </summary>
-        public InputList<Inputs.AclRoleServiceIdentitiesGetArgs> ServiceIdentities
+        public InputList<Inputs.AclRoleServiceIdentityGetArgs> ServiceIdentities
         {
-            get => _serviceIdentities ?? (_serviceIdentities = new InputList<Inputs.AclRoleServiceIdentitiesGetArgs>());
+            get => _serviceIdentities ?? (_serviceIdentities = new InputList<Inputs.AclRoleServiceIdentityGetArgs>());
             set => _serviceIdentities = value;
         }
 
         public AclRoleState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class AclRoleServiceIdentitiesArgs : Pulumi.ResourceArgs
-    {
-        [Input("datacenters")]
-        private InputList<string>? _datacenters;
-
-        /// <summary>
-        /// The datacenters the effective policy is valid within.
-        /// </summary>
-        public InputList<string> Datacenters
-        {
-            get => _datacenters ?? (_datacenters = new InputList<string>());
-            set => _datacenters = value;
-        }
-
-        /// <summary>
-        /// The name of the service.
-        /// </summary>
-        [Input("serviceName", required: true)]
-        public Input<string> ServiceName { get; set; } = null!;
-
-        public AclRoleServiceIdentitiesArgs()
-        {
-        }
-    }
-
-    public sealed class AclRoleServiceIdentitiesGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("datacenters")]
-        private InputList<string>? _datacenters;
-
-        /// <summary>
-        /// The datacenters the effective policy is valid within.
-        /// </summary>
-        public InputList<string> Datacenters
-        {
-            get => _datacenters ?? (_datacenters = new InputList<string>());
-            set => _datacenters = value;
-        }
-
-        /// <summary>
-        /// The name of the service.
-        /// </summary>
-        [Input("serviceName", required: true)]
-        public Input<string> ServiceName { get; set; } = null!;
-
-        public AclRoleServiceIdentitiesGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class AclRoleServiceIdentities
-    {
-        /// <summary>
-        /// The datacenters the effective policy is valid within.
-        /// </summary>
-        public readonly ImmutableArray<string> Datacenters;
-        /// <summary>
-        /// The name of the service.
-        /// </summary>
-        public readonly string ServiceName;
-
-        [OutputConstructor]
-        private AclRoleServiceIdentities(
-            ImmutableArray<string> datacenters,
-            string serviceName)
-        {
-            Datacenters = datacenters;
-            ServiceName = serviceName;
-        }
-    }
     }
 }

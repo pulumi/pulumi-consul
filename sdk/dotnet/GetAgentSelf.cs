@@ -9,23 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Consul
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// &gt; **Warning:** The `consul..getAgentSelf` resource has been deprecated and will be removed
-        /// from a future release of the provider. Read the [upgrade instructions](https://www.terraform.io/docs/providers/consul/guides/upgrading.html#deprecation-of-consul_agent_self) for more information.
-        /// 
-        /// 
-        /// The `consul..getAgentSelf` data source returns
-        /// [configuration and status data](https://www.consul.io/docs/agent/http/agent.html#agent_self)
-        /// from the agent specified in the `provider`.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/agent_self.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetAgentSelf.InvokeAsync() instead")]
-        public static Task<GetAgentSelfResult> GetAgentSelf(InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAgentSelfResult>("consul:index/getAgentSelf:getAgentSelf", InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetAgentSelf
     {
         /// <summary>
@@ -37,11 +20,13 @@ namespace Pulumi.Consul
         /// [configuration and status data](https://www.consul.io/docs/agent/http/agent.html#agent_self)
         /// from the agent specified in the `provider`.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/agent_self.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAgentSelfResult> InvokeAsync(InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAgentSelfResult>("consul:index/getAgentSelf:getAgentSelf", InvokeArgs.Empty, options.WithVersion());
     }
+
 
     [OutputType]
     public sealed class GetAgentSelfResult
@@ -149,10 +134,10 @@ namespace Pulumi.Consul
         public readonly string ReconnectTimeoutLan;
         public readonly string ReconnectTimeoutWan;
         public readonly bool RejoinAfterLeave;
-        public readonly ImmutableArray<string> RetryJoins;
         public readonly ImmutableDictionary<string, string> RetryJoinEc2;
         public readonly ImmutableDictionary<string, string> RetryJoinGce;
         public readonly ImmutableArray<string> RetryJoinWans;
+        public readonly ImmutableArray<string> RetryJoins;
         public readonly int RetryMaxAttempts;
         public readonly int RetryMaxAttemptsWan;
         public readonly string SerfLanBindAddr;
@@ -160,8 +145,8 @@ namespace Pulumi.Consul
         public readonly bool ServerMode;
         public readonly string ServerName;
         public readonly string SessionTtlMin;
-        public readonly ImmutableArray<string> StartJoins;
         public readonly ImmutableArray<string> StartJoinWans;
+        public readonly ImmutableArray<string> StartJoins;
         public readonly string SyslogFacility;
         public readonly ImmutableDictionary<string, string> TaggedAddresses;
         public readonly ImmutableDictionary<string, string> Telemetry;
@@ -187,76 +172,147 @@ namespace Pulumi.Consul
         [OutputConstructor]
         private GetAgentSelfResult(
             string aclDatacenter,
+
             string aclDefaultPolicy,
+
             string aclDisabledTtl,
+
             string aclDownPolicy,
+
             bool aclEnforce08Semantics,
+
             string aclTtl,
+
             ImmutableDictionary<string, string> addresses,
+
             string advertiseAddr,
+
             string advertiseAddrWan,
+
             ImmutableDictionary<string, string> advertiseAddrs,
+
             bool atlasJoin,
+
             string bindAddr,
+
             int bootstrapExpect,
+
             bool bootstrapMode,
+
             string checkDeregisterIntervalMin,
+
             string checkReapInterval,
+
             string checkUpdateInterval,
+
             string clientAddr,
+
             string dataDir,
+
             string datacenter,
+
             bool devMode,
+
             ImmutableDictionary<string, string> dns,
+
             ImmutableArray<string> dnsRecursors,
+
             string domain,
+
             bool enableAnonymousSignature,
+
             bool enableCoordinates,
+
             bool enableDebug,
+
             bool enableRemoteExec,
+
             bool enableSyslog,
+
             bool enableUi,
+
             bool enableUpdateCheck,
+
             string id,
+
             bool leaveOnInt,
+
             bool leaveOnTerm,
+
             string logLevel,
+
             string name,
+
             ImmutableDictionary<string, string> performance,
+
             string pidFile,
+
             ImmutableDictionary<string, int> ports,
+
             int protocolVersion,
+
             string reconnectTimeoutLan,
+
             string reconnectTimeoutWan,
+
             bool rejoinAfterLeave,
-            ImmutableArray<string> retryJoins,
+
             ImmutableDictionary<string, string> retryJoinEc2,
+
             ImmutableDictionary<string, string> retryJoinGce,
+
             ImmutableArray<string> retryJoinWans,
+
+            ImmutableArray<string> retryJoins,
+
             int retryMaxAttempts,
+
             int retryMaxAttemptsWan,
+
             string serfLanBindAddr,
+
             string serfWanBindAddr,
+
             bool serverMode,
+
             string serverName,
+
             string sessionTtlMin,
-            ImmutableArray<string> startJoins,
+
             ImmutableArray<string> startJoinWans,
+
+            ImmutableArray<string> startJoins,
+
             string syslogFacility,
+
             ImmutableDictionary<string, string> taggedAddresses,
+
             ImmutableDictionary<string, string> telemetry,
+
             string tlsCaFile,
+
             string tlsCertFile,
+
             string tlsKeyFile,
+
             string tlsMinVersion,
+
             bool tlsVerifyIncoming,
+
             bool tlsVerifyOutgoing,
+
             bool tlsVerifyServerHostname,
+
             bool translateWanAddrs,
+
             string uiDir,
+
             ImmutableDictionary<string, string> unixSockets,
+
             string version,
+
             string versionPrerelease,
+
             string versionRevision)
         {
             AclDatacenter = aclDatacenter;
@@ -302,10 +358,10 @@ namespace Pulumi.Consul
             ReconnectTimeoutLan = reconnectTimeoutLan;
             ReconnectTimeoutWan = reconnectTimeoutWan;
             RejoinAfterLeave = rejoinAfterLeave;
-            RetryJoins = retryJoins;
             RetryJoinEc2 = retryJoinEc2;
             RetryJoinGce = retryJoinGce;
             RetryJoinWans = retryJoinWans;
+            RetryJoins = retryJoins;
             RetryMaxAttempts = retryMaxAttempts;
             RetryMaxAttemptsWan = retryMaxAttemptsWan;
             SerfLanBindAddr = serfLanBindAddr;
@@ -313,8 +369,8 @@ namespace Pulumi.Consul
             ServerMode = serverMode;
             ServerName = serverName;
             SessionTtlMin = sessionTtlMin;
-            StartJoins = startJoins;
             StartJoinWans = startJoinWans;
+            StartJoins = startJoins;
             SyslogFacility = syslogFacility;
             TaggedAddresses = taggedAddresses;
             Telemetry = telemetry;

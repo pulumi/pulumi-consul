@@ -15,6 +15,8 @@ import * as utilities from "./utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
@@ -28,7 +30,7 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/acl_token.html.markdown.
  */
-export function getAclToken(args: GetAclTokenArgs, opts?: pulumi.InvokeOptions): Promise<GetAclTokenResult> & GetAclTokenResult {
+export function getAclToken(args: GetAclTokenArgs, opts?: pulumi.InvokeOptions): Promise<GetAclTokenResult> {
     if (!opts) {
         opts = {}
     }
@@ -36,15 +38,13 @@ export function getAclToken(args: GetAclTokenArgs, opts?: pulumi.InvokeOptions):
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetAclTokenResult> = pulumi.runtime.invoke("consul:index/getAclToken:getAclToken", {
+    return pulumi.runtime.invoke("consul:index/getAclToken:getAclToken", {
         "accessorId": args.accessorId,
         "description": args.description,
         "local": args.local,
         "namespace": args.namespace,
         "policies": args.policies,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

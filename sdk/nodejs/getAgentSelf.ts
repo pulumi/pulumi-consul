@@ -14,10 +14,11 @@ import * as utilities from "./utilities";
  * The `consul..getAgentSelf` data source returns
  * [configuration and status data](https://www.consul.io/docs/agent/http/agent.html#agent_self)
  * from the agent specified in the `provider`.
+ * 
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/agent_self.html.markdown.
  */
-export function getAgentSelf(opts?: pulumi.InvokeOptions): Promise<GetAgentSelfResult> & GetAgentSelfResult {
+export function getAgentSelf(opts?: pulumi.InvokeOptions): Promise<GetAgentSelfResult> {
     if (!opts) {
         opts = {}
     }
@@ -25,10 +26,8 @@ export function getAgentSelf(opts?: pulumi.InvokeOptions): Promise<GetAgentSelfR
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetAgentSelfResult> = pulumi.runtime.invoke("consul:index/getAgentSelf:getAgentSelf", {
+    return pulumi.runtime.invoke("consul:index/getAgentSelf:getAgentSelf", {
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

@@ -17,8 +17,6 @@ namespace Pulumi.Consul
     /// Provides access to the agent service data in Consul. This can be used to
     /// define a service associated with a particular agent. Currently, defining
     /// health checks for an agent service is not supported.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/agent_service.html.markdown.
     /// </summary>
     public partial class AgentService : Pulumi.CustomResource
     {
@@ -57,7 +55,7 @@ namespace Pulumi.Consul
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AgentService(string name, AgentServiceArgs? args = null, CustomResourceOptions? options = null)
-            : base("consul:index/agentService:AgentService", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("consul:index/agentService:AgentService", name, args ?? new AgentServiceArgs(), MakeResourceOptions(options, ""))
         {
         }
 

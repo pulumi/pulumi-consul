@@ -8,7 +8,6 @@ namespace Pulumi.Consul
     public static class Config
     {
         private static readonly Pulumi.Config __config = new Pulumi.Config("consul");
-
         public static string? Address { get; set; } = __config.Get("address") ?? Utilities.GetEnv("CONSUL_ADDRESS", "CONSUL_HTTP_ADDR") ?? "localhost:8500";
 
         public static string? CaFile { get; set; } = __config.Get("caFile") ?? Utilities.GetEnv("CONSUL_CA_FILE");
@@ -31,8 +30,5 @@ namespace Pulumi.Consul
 
         public static string? Token { get; set; } = __config.Get("token") ?? Utilities.GetEnv("CONSUL_TOKEN", "CONSUL_HTTP_TOKEN");
 
-    }
-    namespace ConfigTypes
-    {
     }
 }

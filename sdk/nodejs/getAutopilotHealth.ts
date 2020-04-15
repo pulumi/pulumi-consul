@@ -13,6 +13,8 @@ import * as utilities from "./utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
@@ -24,7 +26,7 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/autopilot_health.html.markdown.
  */
-export function getAutopilotHealth(args?: GetAutopilotHealthArgs, opts?: pulumi.InvokeOptions): Promise<GetAutopilotHealthResult> & GetAutopilotHealthResult {
+export function getAutopilotHealth(args?: GetAutopilotHealthArgs, opts?: pulumi.InvokeOptions): Promise<GetAutopilotHealthResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -33,11 +35,9 @@ export function getAutopilotHealth(args?: GetAutopilotHealthArgs, opts?: pulumi.
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetAutopilotHealthResult> = pulumi.runtime.invoke("consul:index/getAutopilotHealth:getAutopilotHealth", {
+    return pulumi.runtime.invoke("consul:index/getAutopilotHealth:getAutopilotHealth", {
         "datacenter": args.datacenter,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

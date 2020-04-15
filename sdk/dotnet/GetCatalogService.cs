@@ -9,17 +9,12 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Consul
 {
-    public static partial class Invokes
-    {
-        [Obsolete("Use GetCatalogService.InvokeAsync() instead")]
-        public static Task<GetCatalogServiceResult> GetCatalogService(GetCatalogServiceArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCatalogServiceResult>("consul:index/getCatalogService:getCatalogService", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetCatalogService
     {
         public static Task<GetCatalogServiceResult> InvokeAsync(GetCatalogServiceArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCatalogServiceResult>("consul:index/getCatalogService:getCatalogService", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetCatalogServiceResult>("consul:index/getCatalogService:getCatalogService", args ?? new GetCatalogServiceArgs(), options.WithVersion());
     }
+
 
     public sealed class GetCatalogServiceArgs : Pulumi.InvokeArgs
     {
@@ -30,10 +25,10 @@ namespace Pulumi.Consul
         public string Name { get; set; } = null!;
 
         [Input("queryOptions")]
-        private List<Inputs.GetCatalogServiceQueryOptionsArgs>? _queryOptions;
-        public List<Inputs.GetCatalogServiceQueryOptionsArgs> QueryOptions
+        private List<Inputs.GetCatalogServiceQueryOptionArgs>? _queryOptions;
+        public List<Inputs.GetCatalogServiceQueryOptionArgs> QueryOptions
         {
-            get => _queryOptions ?? (_queryOptions = new List<Inputs.GetCatalogServiceQueryOptionsArgs>());
+            get => _queryOptions ?? (_queryOptions = new List<Inputs.GetCatalogServiceQueryOptionArgs>());
             set => _queryOptions = value;
         }
 
@@ -45,170 +40,40 @@ namespace Pulumi.Consul
         }
     }
 
+
     [OutputType]
     public sealed class GetCatalogServiceResult
     {
         public readonly string? Datacenter;
-        public readonly string Name;
-        public readonly ImmutableArray<Outputs.GetCatalogServiceQueryOptionsResult> QueryOptions;
-        public readonly ImmutableArray<Outputs.GetCatalogServiceServicesResult> Services;
-        public readonly string? Tag;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly string Name;
+        public readonly ImmutableArray<Outputs.GetCatalogServiceQueryOptionResult> QueryOptions;
+        public readonly ImmutableArray<Outputs.GetCatalogServiceServiceResult> Services;
+        public readonly string? Tag;
 
         [OutputConstructor]
         private GetCatalogServiceResult(
             string? datacenter,
+
+            string id,
+
             string name,
-            ImmutableArray<Outputs.GetCatalogServiceQueryOptionsResult> queryOptions,
-            ImmutableArray<Outputs.GetCatalogServiceServicesResult> services,
-            string? tag,
-            string id)
+
+            ImmutableArray<Outputs.GetCatalogServiceQueryOptionResult> queryOptions,
+
+            ImmutableArray<Outputs.GetCatalogServiceServiceResult> services,
+
+            string? tag)
         {
             Datacenter = datacenter;
+            Id = id;
             Name = name;
             QueryOptions = queryOptions;
             Services = services;
             Tag = tag;
-            Id = id;
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class GetCatalogServiceQueryOptionsArgs : Pulumi.InvokeArgs
-    {
-        [Input("allowStale")]
-        public bool? AllowStale { get; set; }
-
-        [Input("datacenter")]
-        public string? Datacenter { get; set; }
-
-        [Input("namespace")]
-        public string? Namespace { get; set; }
-
-        [Input("near")]
-        public string? Near { get; set; }
-
-        [Input("nodeMeta")]
-        private Dictionary<string, string>? _nodeMeta;
-        public Dictionary<string, string> NodeMeta
-        {
-            get => _nodeMeta ?? (_nodeMeta = new Dictionary<string, string>());
-            set => _nodeMeta = value;
-        }
-
-        [Input("requireConsistent")]
-        public bool? RequireConsistent { get; set; }
-
-        [Input("token")]
-        public string? Token { get; set; }
-
-        [Input("waitIndex")]
-        public int? WaitIndex { get; set; }
-
-        [Input("waitTime")]
-        public string? WaitTime { get; set; }
-
-        public GetCatalogServiceQueryOptionsArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetCatalogServiceQueryOptionsResult
-    {
-        public readonly bool? AllowStale;
-        public readonly string? Datacenter;
-        public readonly string? Namespace;
-        public readonly string? Near;
-        public readonly ImmutableDictionary<string, string>? NodeMeta;
-        public readonly bool? RequireConsistent;
-        public readonly string? Token;
-        public readonly int? WaitIndex;
-        public readonly string? WaitTime;
-
-        [OutputConstructor]
-        private GetCatalogServiceQueryOptionsResult(
-            bool? allowStale,
-            string? datacenter,
-            string? @namespace,
-            string? near,
-            ImmutableDictionary<string, string>? nodeMeta,
-            bool? requireConsistent,
-            string? token,
-            int? waitIndex,
-            string? waitTime)
-        {
-            AllowStale = allowStale;
-            Datacenter = datacenter;
-            Namespace = @namespace;
-            Near = near;
-            NodeMeta = nodeMeta;
-            RequireConsistent = requireConsistent;
-            Token = token;
-            WaitIndex = waitIndex;
-            WaitTime = waitTime;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetCatalogServiceServicesResult
-    {
-        public readonly string Address;
-        public readonly string CreateIndex;
-        public readonly string EnableTagOverride;
-        public readonly string Id;
-        public readonly ImmutableDictionary<string, string> Meta;
-        public readonly string ModifyIndex;
-        public readonly string Name;
-        public readonly string NodeAddress;
-        public readonly string NodeId;
-        public readonly ImmutableDictionary<string, string> NodeMeta;
-        public readonly string NodeName;
-        public readonly string Port;
-        public readonly ImmutableDictionary<string, string> TaggedAddresses;
-        public readonly ImmutableArray<string> Tags;
-
-        [OutputConstructor]
-        private GetCatalogServiceServicesResult(
-            string address,
-            string createIndex,
-            string enableTagOverride,
-            string id,
-            ImmutableDictionary<string, string> meta,
-            string modifyIndex,
-            string name,
-            string nodeAddress,
-            string nodeId,
-            ImmutableDictionary<string, string> nodeMeta,
-            string nodeName,
-            string port,
-            ImmutableDictionary<string, string> taggedAddresses,
-            ImmutableArray<string> tags)
-        {
-            Address = address;
-            CreateIndex = createIndex;
-            EnableTagOverride = enableTagOverride;
-            Id = id;
-            Meta = meta;
-            ModifyIndex = modifyIndex;
-            Name = name;
-            NodeAddress = nodeAddress;
-            NodeId = nodeId;
-            NodeMeta = nodeMeta;
-            NodeName = nodeName;
-            Port = port;
-            TaggedAddresses = taggedAddresses;
-            Tags = tags;
-        }
-    }
     }
 }

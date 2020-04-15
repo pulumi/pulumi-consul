@@ -9,29 +9,19 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Consul
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// The `consul..AclAuthMethod` data source returns the information related to a
-        /// [Consul Auth Method](https://www.consul.io/docs/acl/acl-auth-methods.html).
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/acl_auth_method.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetAclAuthMethod.InvokeAsync() instead")]
-        public static Task<GetAclAuthMethodResult> GetAclAuthMethod(GetAclAuthMethodArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAclAuthMethodResult>("consul:index/getAclAuthMethod:getAclAuthMethod", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetAclAuthMethod
     {
         /// <summary>
         /// The `consul..AclAuthMethod` data source returns the information related to a
         /// [Consul Auth Method](https://www.consul.io/docs/acl/acl-auth-methods.html).
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/acl_auth_method.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAclAuthMethodResult> InvokeAsync(GetAclAuthMethodArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAclAuthMethodResult>("consul:index/getAclAuthMethod:getAclAuthMethod", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAclAuthMethodResult>("consul:index/getAclAuthMethod:getAclAuthMethod", args ?? new GetAclAuthMethodArgs(), options.WithVersion());
     }
+
 
     public sealed class GetAclAuthMethodArgs : Pulumi.InvokeArgs
     {
@@ -76,6 +66,7 @@ namespace Pulumi.Consul
         }
     }
 
+
     [OutputType]
     public sealed class GetAclAuthMethodResult
     {
@@ -87,32 +78,37 @@ namespace Pulumi.Consul
         /// The description of the ACL Auth Method.
         /// </summary>
         public readonly string? Description;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         public readonly string Name;
         public readonly string? Namespace;
         /// <summary>
         /// The type of the ACL Auth Method.
         /// </summary>
         public readonly string? Type;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetAclAuthMethodResult(
             ImmutableDictionary<string, string>? config,
+
             string? description,
+
+            string id,
+
             string name,
+
             string? @namespace,
-            string? type,
-            string id)
+
+            string? type)
         {
             Config = config;
             Description = description;
+            Id = id;
             Name = name;
             Namespace = @namespace;
             Type = type;
-            Id = id;
         }
     }
 }

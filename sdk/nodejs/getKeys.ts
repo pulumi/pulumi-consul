@@ -12,6 +12,8 @@ import * as utilities from "./utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -35,7 +37,7 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/keys.html.markdown.
  */
-export function getKeys(args?: GetKeysArgs, opts?: pulumi.InvokeOptions): Promise<GetKeysResult> & GetKeysResult {
+export function getKeys(args?: GetKeysArgs, opts?: pulumi.InvokeOptions): Promise<GetKeysResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -44,14 +46,12 @@ export function getKeys(args?: GetKeysArgs, opts?: pulumi.InvokeOptions): Promis
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetKeysResult> = pulumi.runtime.invoke("consul:index/getKeys:getKeys", {
+    return pulumi.runtime.invoke("consul:index/getKeys:getKeys", {
         "datacenter": args.datacenter,
         "keys": args.keys,
         "namespace": args.namespace,
         "token": args.token,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

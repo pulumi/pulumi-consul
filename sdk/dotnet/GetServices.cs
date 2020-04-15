@@ -9,23 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Consul
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// The `consul..getServices` data source returns a list of Consul services that
-        /// have been registered with the Consul cluster in a given datacenter.  By
-        /// specifying a different datacenter in the `query_options` it is possible to
-        /// retrieve a list of services from a different WAN-attached Consul datacenter.
-        /// 
-        /// This data source is different from the `consul..Service` (singular) data
-        /// source, which provides a detailed response about a specific Consul service.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/services.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetServices.InvokeAsync() instead")]
-        public static Task<GetServicesResult> GetServices(GetServicesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServicesResult>("consul:index/getServices:getServices", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetServices
     {
         /// <summary>
@@ -37,23 +20,25 @@ namespace Pulumi.Consul
         /// This data source is different from the `consul..Service` (singular) data
         /// source, which provides a detailed response about a specific Consul service.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/services.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetServicesResult> InvokeAsync(GetServicesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServicesResult>("consul:index/getServices:getServices", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetServicesResult>("consul:index/getServices:getServices", args ?? new GetServicesArgs(), options.WithVersion());
     }
+
 
     public sealed class GetServicesArgs : Pulumi.InvokeArgs
     {
         [Input("queryOptions")]
-        private List<Inputs.GetServicesQueryOptionsArgs>? _queryOptions;
+        private List<Inputs.GetServicesQueryOptionArgs>? _queryOptions;
 
         /// <summary>
         /// See below.
         /// </summary>
-        public List<Inputs.GetServicesQueryOptionsArgs> QueryOptions
+        public List<Inputs.GetServicesQueryOptionArgs> QueryOptions
         {
-            get => _queryOptions ?? (_queryOptions = new List<Inputs.GetServicesQueryOptionsArgs>());
+            get => _queryOptions ?? (_queryOptions = new List<Inputs.GetServicesQueryOptionArgs>());
             set => _queryOptions = value;
         }
 
@@ -62,6 +47,7 @@ namespace Pulumi.Consul
         }
     }
 
+
     [OutputType]
     public sealed class GetServicesResult
     {
@@ -69,171 +55,31 @@ namespace Pulumi.Consul
         /// The datacenter the keys are being read from to.
         /// </summary>
         public readonly string Datacenter;
-        public readonly ImmutableArray<string> Names;
-        public readonly ImmutableArray<Outputs.GetServicesQueryOptionsResult> QueryOptions;
-        public readonly ImmutableDictionary<string, string> Services;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly ImmutableArray<string> Names;
+        public readonly ImmutableArray<Outputs.GetServicesQueryOptionResult> QueryOptions;
+        public readonly ImmutableDictionary<string, string> Services;
 
         [OutputConstructor]
         private GetServicesResult(
             string datacenter,
+
+            string id,
+
             ImmutableArray<string> names,
-            ImmutableArray<Outputs.GetServicesQueryOptionsResult> queryOptions,
-            ImmutableDictionary<string, string> services,
-            string id)
+
+            ImmutableArray<Outputs.GetServicesQueryOptionResult> queryOptions,
+
+            ImmutableDictionary<string, string> services)
         {
             Datacenter = datacenter;
+            Id = id;
             Names = names;
             QueryOptions = queryOptions;
             Services = services;
-            Id = id;
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class GetServicesQueryOptionsArgs : Pulumi.InvokeArgs
-    {
-        /// <summary>
-        /// When `true`, the default, allow responses from
-        /// Consul servers that are followers.
-        /// </summary>
-        [Input("allowStale")]
-        public bool? AllowStale { get; set; }
-
-        /// <summary>
-        /// The Consul datacenter to query.  Defaults to the
-        /// same value found in `query_options` parameter specified below, or if that is
-        /// empty, the `datacenter` value found in the Consul agent that this provider is
-        /// configured to talk to.
-        /// </summary>
-        [Input("datacenter")]
-        public string? Datacenter { get; set; }
-
-        /// <summary>
-        /// The namespace to lookup the services.
-        /// </summary>
-        [Input("namespace")]
-        public string? Namespace { get; set; }
-
-        [Input("near")]
-        public string? Near { get; set; }
-
-        [Input("nodeMeta")]
-        private Dictionary<string, string>? _nodeMeta;
-        public Dictionary<string, string> NodeMeta
-        {
-            get => _nodeMeta ?? (_nodeMeta = new Dictionary<string, string>());
-            set => _nodeMeta = value;
-        }
-
-        /// <summary>
-        /// When `true` force the client to perform a
-        /// read on at least quorum servers and verify the result is the same.  Defaults
-        /// to `false`.
-        /// </summary>
-        [Input("requireConsistent")]
-        public bool? RequireConsistent { get; set; }
-
-        /// <summary>
-        /// Specify the Consul ACL token to use when performing the
-        /// request.  This defaults to the same API token configured by the `consul`
-        /// provider but may be overriden if necessary.
-        /// </summary>
-        [Input("token")]
-        public string? Token { get; set; }
-
-        /// <summary>
-        /// Index number used to enable blocking quereis.
-        /// </summary>
-        [Input("waitIndex")]
-        public int? WaitIndex { get; set; }
-
-        /// <summary>
-        /// Max time the client should wait for a blocking query
-        /// to return.
-        /// </summary>
-        [Input("waitTime")]
-        public string? WaitTime { get; set; }
-
-        public GetServicesQueryOptionsArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetServicesQueryOptionsResult
-    {
-        /// <summary>
-        /// When `true`, the default, allow responses from
-        /// Consul servers that are followers.
-        /// </summary>
-        public readonly bool? AllowStale;
-        /// <summary>
-        /// The Consul datacenter to query.  Defaults to the
-        /// same value found in `query_options` parameter specified below, or if that is
-        /// empty, the `datacenter` value found in the Consul agent that this provider is
-        /// configured to talk to.
-        /// </summary>
-        public readonly string? Datacenter;
-        /// <summary>
-        /// The namespace to lookup the services.
-        /// </summary>
-        public readonly string? Namespace;
-        public readonly string? Near;
-        public readonly ImmutableDictionary<string, string>? NodeMeta;
-        /// <summary>
-        /// When `true` force the client to perform a
-        /// read on at least quorum servers and verify the result is the same.  Defaults
-        /// to `false`.
-        /// </summary>
-        public readonly bool? RequireConsistent;
-        /// <summary>
-        /// Specify the Consul ACL token to use when performing the
-        /// request.  This defaults to the same API token configured by the `consul`
-        /// provider but may be overriden if necessary.
-        /// </summary>
-        public readonly string? Token;
-        /// <summary>
-        /// Index number used to enable blocking quereis.
-        /// </summary>
-        public readonly int? WaitIndex;
-        /// <summary>
-        /// Max time the client should wait for a blocking query
-        /// to return.
-        /// </summary>
-        public readonly string? WaitTime;
-
-        [OutputConstructor]
-        private GetServicesQueryOptionsResult(
-            bool? allowStale,
-            string? datacenter,
-            string? @namespace,
-            string? near,
-            ImmutableDictionary<string, string>? nodeMeta,
-            bool? requireConsistent,
-            string? token,
-            int? waitIndex,
-            string? waitTime)
-        {
-            AllowStale = allowStale;
-            Datacenter = datacenter;
-            Namespace = @namespace;
-            Near = near;
-            NodeMeta = nodeMeta;
-            RequireConsistent = requireConsistent;
-            Token = token;
-            WaitIndex = waitIndex;
-            WaitTime = waitTime;
-        }
-    }
     }
 }

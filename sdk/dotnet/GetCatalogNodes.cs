@@ -9,25 +9,20 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Consul
 {
-    public static partial class Invokes
-    {
-        [Obsolete("Use GetCatalogNodes.InvokeAsync() instead")]
-        public static Task<GetCatalogNodesResult> GetCatalogNodes(GetCatalogNodesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCatalogNodesResult>("consul:index/getCatalogNodes:getCatalogNodes", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetCatalogNodes
     {
         public static Task<GetCatalogNodesResult> InvokeAsync(GetCatalogNodesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCatalogNodesResult>("consul:index/getCatalogNodes:getCatalogNodes", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetCatalogNodesResult>("consul:index/getCatalogNodes:getCatalogNodes", args ?? new GetCatalogNodesArgs(), options.WithVersion());
     }
+
 
     public sealed class GetCatalogNodesArgs : Pulumi.InvokeArgs
     {
         [Input("queryOptions")]
-        private List<Inputs.GetCatalogNodesQueryOptionsArgs>? _queryOptions;
-        public List<Inputs.GetCatalogNodesQueryOptionsArgs> QueryOptions
+        private List<Inputs.GetCatalogNodesQueryOptionArgs>? _queryOptions;
+        public List<Inputs.GetCatalogNodesQueryOptionArgs> QueryOptions
         {
-            get => _queryOptions ?? (_queryOptions = new List<Inputs.GetCatalogNodesQueryOptionsArgs>());
+            get => _queryOptions ?? (_queryOptions = new List<Inputs.GetCatalogNodesQueryOptionArgs>());
             set => _queryOptions = value;
         }
 
@@ -36,137 +31,40 @@ namespace Pulumi.Consul
         }
     }
 
+
     [OutputType]
     public sealed class GetCatalogNodesResult
     {
         public readonly string Datacenter;
-        public readonly ImmutableArray<string> NodeIds;
-        public readonly ImmutableArray<string> NodeNames;
-        public readonly ImmutableArray<Outputs.GetCatalogNodesNodesResult> Nodes;
-        public readonly ImmutableArray<Outputs.GetCatalogNodesQueryOptionsResult> QueryOptions;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly ImmutableArray<string> NodeIds;
+        public readonly ImmutableArray<string> NodeNames;
+        public readonly ImmutableArray<Outputs.GetCatalogNodesNodeResult> Nodes;
+        public readonly ImmutableArray<Outputs.GetCatalogNodesQueryOptionResult> QueryOptions;
 
         [OutputConstructor]
         private GetCatalogNodesResult(
             string datacenter,
+
+            string id,
+
             ImmutableArray<string> nodeIds,
+
             ImmutableArray<string> nodeNames,
-            ImmutableArray<Outputs.GetCatalogNodesNodesResult> nodes,
-            ImmutableArray<Outputs.GetCatalogNodesQueryOptionsResult> queryOptions,
-            string id)
+
+            ImmutableArray<Outputs.GetCatalogNodesNodeResult> nodes,
+
+            ImmutableArray<Outputs.GetCatalogNodesQueryOptionResult> queryOptions)
         {
             Datacenter = datacenter;
+            Id = id;
             NodeIds = nodeIds;
             NodeNames = nodeNames;
             Nodes = nodes;
             QueryOptions = queryOptions;
-            Id = id;
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class GetCatalogNodesQueryOptionsArgs : Pulumi.InvokeArgs
-    {
-        [Input("allowStale")]
-        public bool? AllowStale { get; set; }
-
-        [Input("datacenter")]
-        public string? Datacenter { get; set; }
-
-        [Input("near")]
-        public string? Near { get; set; }
-
-        [Input("nodeMeta")]
-        private Dictionary<string, string>? _nodeMeta;
-        public Dictionary<string, string> NodeMeta
-        {
-            get => _nodeMeta ?? (_nodeMeta = new Dictionary<string, string>());
-            set => _nodeMeta = value;
-        }
-
-        [Input("requireConsistent")]
-        public bool? RequireConsistent { get; set; }
-
-        [Input("token")]
-        public string? Token { get; set; }
-
-        [Input("waitIndex")]
-        public int? WaitIndex { get; set; }
-
-        [Input("waitTime")]
-        public string? WaitTime { get; set; }
-
-        public GetCatalogNodesQueryOptionsArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetCatalogNodesNodesResult
-    {
-        public readonly string Address;
-        public readonly string Id;
-        public readonly ImmutableDictionary<string, string> Meta;
-        public readonly string Name;
-        public readonly ImmutableDictionary<string, string> TaggedAddresses;
-
-        [OutputConstructor]
-        private GetCatalogNodesNodesResult(
-            string address,
-            string id,
-            ImmutableDictionary<string, string> meta,
-            string name,
-            ImmutableDictionary<string, string> taggedAddresses)
-        {
-            Address = address;
-            Id = id;
-            Meta = meta;
-            Name = name;
-            TaggedAddresses = taggedAddresses;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetCatalogNodesQueryOptionsResult
-    {
-        public readonly bool? AllowStale;
-        public readonly string? Datacenter;
-        public readonly string? Near;
-        public readonly ImmutableDictionary<string, string>? NodeMeta;
-        public readonly bool? RequireConsistent;
-        public readonly string? Token;
-        public readonly int? WaitIndex;
-        public readonly string? WaitTime;
-
-        [OutputConstructor]
-        private GetCatalogNodesQueryOptionsResult(
-            bool? allowStale,
-            string? datacenter,
-            string? near,
-            ImmutableDictionary<string, string>? nodeMeta,
-            bool? requireConsistent,
-            string? token,
-            int? waitIndex,
-            string? waitTime)
-        {
-            AllowStale = allowStale;
-            Datacenter = datacenter;
-            Near = near;
-            NodeMeta = nodeMeta;
-            RequireConsistent = requireConsistent;
-            Token = token;
-            WaitIndex = waitIndex;
-            WaitTime = waitTime;
-        }
-    }
     }
 }

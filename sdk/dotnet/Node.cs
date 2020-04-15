@@ -12,8 +12,6 @@ namespace Pulumi.Consul
     /// <summary>
     /// Provides access to Node data in Consul. This can be used to define a
     /// node. Currently, defining health checks is not supported.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/node.html.markdown.
     /// </summary>
     public partial class Node : Pulumi.CustomResource
     {
@@ -56,7 +54,7 @@ namespace Pulumi.Consul
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Node(string name, NodeArgs args, CustomResourceOptions? options = null)
-            : base("consul:index/node:Node", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("consul:index/node:Node", name, args ?? new NodeArgs(), MakeResourceOptions(options, ""))
         {
         }
 

@@ -60,7 +60,7 @@ class AutopilotConfig(pulumi.CustomResource):
         It includes to automatically cleanup dead servers, monitor the status of the Raft
         cluster and stable server introduction.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/autopilot_config.html.markdown.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -11,8 +11,6 @@ namespace Pulumi.Consul
 {
     /// <summary>
     /// Starting with Consul 1.4.0, the consul..AclPolicy can be used to managed Consul ACL policies.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/acl_policy.html.markdown.
     /// </summary>
     public partial class AclPolicy : Pulumi.CustomResource
     {
@@ -55,7 +53,7 @@ namespace Pulumi.Consul
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AclPolicy(string name, AclPolicyArgs args, CustomResourceOptions? options = null)
-            : base("consul:index/aclPolicy:AclPolicy", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("consul:index/aclPolicy:AclPolicy", name, args ?? new AclPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 

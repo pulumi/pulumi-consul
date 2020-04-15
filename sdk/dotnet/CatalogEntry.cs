@@ -16,8 +16,6 @@ namespace Pulumi.Consul
     /// 
     /// Registers a node or service with the [Consul Catalog](https://www.consul.io/docs/agent/http/catalog.html#catalog_register).
     /// Currently, defining health checks is not supported.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/catalog_entry.html.markdown.
     /// </summary>
     public partial class CatalogEntry : Pulumi.CustomResource
     {
@@ -47,7 +45,7 @@ namespace Pulumi.Consul
         /// the node. Supported values are documented below.
         /// </summary>
         [Output("services")]
-        public Output<ImmutableArray<Outputs.CatalogEntryServices>> Services { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.CatalogEntryService>> Services { get; private set; } = null!;
 
         /// <summary>
         /// ACL token.
@@ -64,7 +62,7 @@ namespace Pulumi.Consul
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public CatalogEntry(string name, CatalogEntryArgs args, CustomResourceOptions? options = null)
-            : base("consul:index/catalogEntry:CatalogEntry", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("consul:index/catalogEntry:CatalogEntry", name, args ?? new CatalogEntryArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -123,15 +121,15 @@ namespace Pulumi.Consul
         public Input<string> Node { get; set; } = null!;
 
         [Input("services")]
-        private InputList<Inputs.CatalogEntryServicesArgs>? _services;
+        private InputList<Inputs.CatalogEntryServiceArgs>? _services;
 
         /// <summary>
         /// A service to optionally associated with
         /// the node. Supported values are documented below.
         /// </summary>
-        public InputList<Inputs.CatalogEntryServicesArgs> Services
+        public InputList<Inputs.CatalogEntryServiceArgs> Services
         {
-            get => _services ?? (_services = new InputList<Inputs.CatalogEntryServicesArgs>());
+            get => _services ?? (_services = new InputList<Inputs.CatalogEntryServiceArgs>());
             set => _services = value;
         }
 
@@ -170,15 +168,15 @@ namespace Pulumi.Consul
         public Input<string>? Node { get; set; }
 
         [Input("services")]
-        private InputList<Inputs.CatalogEntryServicesGetArgs>? _services;
+        private InputList<Inputs.CatalogEntryServiceGetArgs>? _services;
 
         /// <summary>
         /// A service to optionally associated with
         /// the node. Supported values are documented below.
         /// </summary>
-        public InputList<Inputs.CatalogEntryServicesGetArgs> Services
+        public InputList<Inputs.CatalogEntryServiceGetArgs> Services
         {
-            get => _services ?? (_services = new InputList<Inputs.CatalogEntryServicesGetArgs>());
+            get => _services ?? (_services = new InputList<Inputs.CatalogEntryServiceGetArgs>());
             set => _services = value;
         }
 
@@ -191,145 +189,5 @@ namespace Pulumi.Consul
         public CatalogEntryState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class CatalogEntryServicesArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The address of the service. Defaults to the
-        /// node address.
-        /// </summary>
-        [Input("address")]
-        public Input<string>? Address { get; set; }
-
-        /// <summary>
-        /// The ID of the service. Defaults to the `name`.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        /// <summary>
-        /// The name of the service
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        /// <summary>
-        /// The port of the service.
-        /// </summary>
-        [Input("port")]
-        public Input<int>? Port { get; set; }
-
-        [Input("tags")]
-        private InputList<string>? _tags;
-
-        /// <summary>
-        /// A list of values that are opaque to Consul,
-        /// but can be used to distinguish between services or nodes.
-        /// </summary>
-        public InputList<string> Tags
-        {
-            get => _tags ?? (_tags = new InputList<string>());
-            set => _tags = value;
-        }
-
-        public CatalogEntryServicesArgs()
-        {
-        }
-    }
-
-    public sealed class CatalogEntryServicesGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The address of the service. Defaults to the
-        /// node address.
-        /// </summary>
-        [Input("address")]
-        public Input<string>? Address { get; set; }
-
-        /// <summary>
-        /// The ID of the service. Defaults to the `name`.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        /// <summary>
-        /// The name of the service
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        /// <summary>
-        /// The port of the service.
-        /// </summary>
-        [Input("port")]
-        public Input<int>? Port { get; set; }
-
-        [Input("tags")]
-        private InputList<string>? _tags;
-
-        /// <summary>
-        /// A list of values that are opaque to Consul,
-        /// but can be used to distinguish between services or nodes.
-        /// </summary>
-        public InputList<string> Tags
-        {
-            get => _tags ?? (_tags = new InputList<string>());
-            set => _tags = value;
-        }
-
-        public CatalogEntryServicesGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class CatalogEntryServices
-    {
-        /// <summary>
-        /// The address of the service. Defaults to the
-        /// node address.
-        /// </summary>
-        public readonly string? Address;
-        /// <summary>
-        /// The ID of the service. Defaults to the `name`.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// The name of the service
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// The port of the service.
-        /// </summary>
-        public readonly int? Port;
-        /// <summary>
-        /// A list of values that are opaque to Consul,
-        /// but can be used to distinguish between services or nodes.
-        /// </summary>
-        public readonly ImmutableArray<string> Tags;
-
-        [OutputConstructor]
-        private CatalogEntryServices(
-            string? address,
-            string id,
-            string name,
-            int? port,
-            ImmutableArray<string> tags)
-        {
-            Address = address;
-            Id = id;
-            Name = name;
-            Port = port;
-            Tags = tags;
-        }
-    }
     }
 }

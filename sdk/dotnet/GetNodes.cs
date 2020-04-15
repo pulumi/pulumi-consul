@@ -9,20 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Consul
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// The `consul..getNodes` data source returns a list of Consul nodes that have
-        /// been registered with the Consul cluster in a given datacenter.  By specifying a
-        /// different datacenter in the `query_options` it is possible to retrieve a list of
-        /// nodes from a different WAN-attached Consul datacenter.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/nodes.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetNodes.InvokeAsync() instead")]
-        public static Task<GetNodesResult> GetNodes(GetNodesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNodesResult>("consul:index/getNodes:getNodes", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetNodes
     {
         /// <summary>
@@ -31,23 +17,25 @@ namespace Pulumi.Consul
         /// different datacenter in the `query_options` it is possible to retrieve a list of
         /// nodes from a different WAN-attached Consul datacenter.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/nodes.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetNodesResult> InvokeAsync(GetNodesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNodesResult>("consul:index/getNodes:getNodes", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetNodesResult>("consul:index/getNodes:getNodes", args ?? new GetNodesArgs(), options.WithVersion());
     }
+
 
     public sealed class GetNodesArgs : Pulumi.InvokeArgs
     {
         [Input("queryOptions")]
-        private List<Inputs.GetNodesQueryOptionsArgs>? _queryOptions;
+        private List<Inputs.GetNodesQueryOptionArgs>? _queryOptions;
 
         /// <summary>
         /// See below.
         /// </summary>
-        public List<Inputs.GetNodesQueryOptionsArgs> QueryOptions
+        public List<Inputs.GetNodesQueryOptionArgs> QueryOptions
         {
-            get => _queryOptions ?? (_queryOptions = new List<Inputs.GetNodesQueryOptionsArgs>());
+            get => _queryOptions ?? (_queryOptions = new List<Inputs.GetNodesQueryOptionArgs>());
             set => _queryOptions = value;
         }
 
@@ -56,6 +44,7 @@ namespace Pulumi.Consul
         }
     }
 
+
     [OutputType]
     public sealed class GetNodesResult
     {
@@ -63,6 +52,10 @@ namespace Pulumi.Consul
         /// The datacenter the keys are being read from to.
         /// </summary>
         public readonly string Datacenter;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// A list of the Consul node IDs.
         /// </summary>
@@ -75,196 +68,29 @@ namespace Pulumi.Consul
         /// A list of nodes and details about each Consul agent.  The list of
         /// per-node attributes is detailed below.
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetNodesNodesResult> Nodes;
-        public readonly ImmutableArray<Outputs.GetNodesQueryOptionsResult> QueryOptions;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
+        public readonly ImmutableArray<Outputs.GetNodesNodeResult> Nodes;
+        public readonly ImmutableArray<Outputs.GetNodesQueryOptionResult> QueryOptions;
 
         [OutputConstructor]
         private GetNodesResult(
             string datacenter,
+
+            string id,
+
             ImmutableArray<string> nodeIds,
+
             ImmutableArray<string> nodeNames,
-            ImmutableArray<Outputs.GetNodesNodesResult> nodes,
-            ImmutableArray<Outputs.GetNodesQueryOptionsResult> queryOptions,
-            string id)
+
+            ImmutableArray<Outputs.GetNodesNodeResult> nodes,
+
+            ImmutableArray<Outputs.GetNodesQueryOptionResult> queryOptions)
         {
             Datacenter = datacenter;
+            Id = id;
             NodeIds = nodeIds;
             NodeNames = nodeNames;
             Nodes = nodes;
             QueryOptions = queryOptions;
-            Id = id;
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class GetNodesQueryOptionsArgs : Pulumi.InvokeArgs
-    {
-        /// <summary>
-        /// When `true`, the default, allow responses from
-        /// Consul servers that are followers.
-        /// </summary>
-        [Input("allowStale")]
-        public bool? AllowStale { get; set; }
-
-        /// <summary>
-        /// The Consul datacenter to query.  Defaults to the
-        /// same value found in `query_options` parameter specified below, or if that is
-        /// empty, the `datacenter` value found in the Consul agent that this provider is
-        /// configured to talk to then the datacenter in the provider setup.
-        /// </summary>
-        [Input("datacenter")]
-        public string? Datacenter { get; set; }
-
-        [Input("near")]
-        public string? Near { get; set; }
-
-        [Input("nodeMeta")]
-        private Dictionary<string, string>? _nodeMeta;
-        public Dictionary<string, string> NodeMeta
-        {
-            get => _nodeMeta ?? (_nodeMeta = new Dictionary<string, string>());
-            set => _nodeMeta = value;
-        }
-
-        /// <summary>
-        /// When `true` force the client to perform a
-        /// read on at least quorum servers and verify the result is the same.  Defaults
-        /// to `false`.
-        /// </summary>
-        [Input("requireConsistent")]
-        public bool? RequireConsistent { get; set; }
-
-        /// <summary>
-        /// Specify the Consul ACL token to use when performing the
-        /// request.  This defaults to the same API token configured by the `consul`
-        /// provider but may be overriden if necessary.
-        /// </summary>
-        [Input("token")]
-        public string? Token { get; set; }
-
-        /// <summary>
-        /// Index number used to enable blocking quereis.
-        /// </summary>
-        [Input("waitIndex")]
-        public int? WaitIndex { get; set; }
-
-        /// <summary>
-        /// Max time the client should wait for a blocking query
-        /// to return.
-        /// </summary>
-        [Input("waitTime")]
-        public string? WaitTime { get; set; }
-
-        public GetNodesQueryOptionsArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetNodesNodesResult
-    {
-        public readonly string Address;
-        /// <summary>
-        /// The Node ID of the Consul agent.
-        /// * [`meta`](https://www.consul.io/docs/agent/http/catalog.html#Meta) - Node meta
-        /// data tag information, if any.
-        /// * [`name`](https://www.consul.io/docs/agent/http/catalog.html#Node) - The name
-        /// of the Consul node.
-        /// * [`address`](https://www.consul.io/docs/agent/http/catalog.html#Address) - The
-        /// IP address the node is advertising to the Consul cluster.
-        /// * [`tagged_addresses`](https://www.consul.io/docs/agent/http/catalog.html#TaggedAddresses) -
-        /// List of explicit LAN and WAN IP addresses for the agent.
-        /// </summary>
-        public readonly string Id;
-        public readonly ImmutableDictionary<string, string> Meta;
-        public readonly string Name;
-        public readonly ImmutableDictionary<string, string> TaggedAddresses;
-
-        [OutputConstructor]
-        private GetNodesNodesResult(
-            string address,
-            string id,
-            ImmutableDictionary<string, string> meta,
-            string name,
-            ImmutableDictionary<string, string> taggedAddresses)
-        {
-            Address = address;
-            Id = id;
-            Meta = meta;
-            Name = name;
-            TaggedAddresses = taggedAddresses;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetNodesQueryOptionsResult
-    {
-        /// <summary>
-        /// When `true`, the default, allow responses from
-        /// Consul servers that are followers.
-        /// </summary>
-        public readonly bool? AllowStale;
-        /// <summary>
-        /// The Consul datacenter to query.  Defaults to the
-        /// same value found in `query_options` parameter specified below, or if that is
-        /// empty, the `datacenter` value found in the Consul agent that this provider is
-        /// configured to talk to then the datacenter in the provider setup.
-        /// </summary>
-        public readonly string? Datacenter;
-        public readonly string? Near;
-        public readonly ImmutableDictionary<string, string>? NodeMeta;
-        /// <summary>
-        /// When `true` force the client to perform a
-        /// read on at least quorum servers and verify the result is the same.  Defaults
-        /// to `false`.
-        /// </summary>
-        public readonly bool? RequireConsistent;
-        /// <summary>
-        /// Specify the Consul ACL token to use when performing the
-        /// request.  This defaults to the same API token configured by the `consul`
-        /// provider but may be overriden if necessary.
-        /// </summary>
-        public readonly string? Token;
-        /// <summary>
-        /// Index number used to enable blocking quereis.
-        /// </summary>
-        public readonly int? WaitIndex;
-        /// <summary>
-        /// Max time the client should wait for a blocking query
-        /// to return.
-        /// </summary>
-        public readonly string? WaitTime;
-
-        [OutputConstructor]
-        private GetNodesQueryOptionsResult(
-            bool? allowStale,
-            string? datacenter,
-            string? near,
-            ImmutableDictionary<string, string>? nodeMeta,
-            bool? requireConsistent,
-            string? token,
-            int? waitIndex,
-            string? waitTime)
-        {
-            AllowStale = allowStale;
-            Datacenter = datacenter;
-            Near = near;
-            NodeMeta = nodeMeta;
-            RequireConsistent = requireConsistent;
-            Token = token;
-            WaitIndex = waitIndex;
-            WaitTime = waitTime;
-        }
-    }
     }
 }

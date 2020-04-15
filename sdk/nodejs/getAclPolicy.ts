@@ -9,10 +9,12 @@ import * as utilities from "./utilities";
 /**
  * The `consul..AclPolicy` data source returns the information related to a
  * [Consul ACL Policy](https://www.consul.io/docs/acl/acl-system.html#acl-policies).
+ * 
+ * 
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/acl_policy.html.markdown.
  */
-export function getAclPolicy(args: GetAclPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetAclPolicyResult> & GetAclPolicyResult {
+export function getAclPolicy(args: GetAclPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetAclPolicyResult> {
     if (!opts) {
         opts = {}
     }
@@ -20,15 +22,13 @@ export function getAclPolicy(args: GetAclPolicyArgs, opts?: pulumi.InvokeOptions
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetAclPolicyResult> = pulumi.runtime.invoke("consul:index/getAclPolicy:getAclPolicy", {
+    return pulumi.runtime.invoke("consul:index/getAclPolicy:getAclPolicy", {
         "datacenters": args.datacenters,
         "description": args.description,
         "name": args.name,
         "namespace": args.namespace,
         "rules": args.rules,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

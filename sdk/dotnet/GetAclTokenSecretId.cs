@@ -9,17 +9,12 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Consul
 {
-    public static partial class Invokes
-    {
-        [Obsolete("Use GetAclTokenSecretId.InvokeAsync() instead")]
-        public static Task<GetAclTokenSecretIdResult> GetAclTokenSecretId(GetAclTokenSecretIdArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAclTokenSecretIdResult>("consul:index/getAclTokenSecretId:getAclTokenSecretId", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetAclTokenSecretId
     {
         public static Task<GetAclTokenSecretIdResult> InvokeAsync(GetAclTokenSecretIdArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAclTokenSecretIdResult>("consul:index/getAclTokenSecretId:getAclTokenSecretId", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAclTokenSecretIdResult>("consul:index/getAclTokenSecretId:getAclTokenSecretId", args ?? new GetAclTokenSecretIdArgs(), options.WithVersion());
     }
+
 
     public sealed class GetAclTokenSecretIdArgs : Pulumi.InvokeArgs
     {
@@ -37,34 +32,39 @@ namespace Pulumi.Consul
         }
     }
 
+
     [OutputType]
     public sealed class GetAclTokenSecretIdResult
     {
         public readonly string AccessorId;
         public readonly string EncryptedSecretId;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         public readonly string? PgpKey;
         /// <summary>
         /// The secret ID of the ACL token if `gpg_key` has not been set.
         /// </summary>
         public readonly string SecretId;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetAclTokenSecretIdResult(
             string accessorId,
+
             string encryptedSecretId,
+
+            string id,
+
             string? pgpKey,
-            string secretId,
-            string id)
+
+            string secretId)
         {
             AccessorId = accessorId;
             EncryptedSecretId = encryptedSecretId;
+            Id = id;
             PgpKey = pgpKey;
             SecretId = secretId;
-            Id = id;
         }
     }
 }

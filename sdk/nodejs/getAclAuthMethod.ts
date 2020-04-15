@@ -9,10 +9,11 @@ import * as utilities from "./utilities";
 /**
  * The `consul..AclAuthMethod` data source returns the information related to a
  * [Consul Auth Method](https://www.consul.io/docs/acl/acl-auth-methods.html).
+ * 
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/acl_auth_method.html.markdown.
  */
-export function getAclAuthMethod(args: GetAclAuthMethodArgs, opts?: pulumi.InvokeOptions): Promise<GetAclAuthMethodResult> & GetAclAuthMethodResult {
+export function getAclAuthMethod(args: GetAclAuthMethodArgs, opts?: pulumi.InvokeOptions): Promise<GetAclAuthMethodResult> {
     if (!opts) {
         opts = {}
     }
@@ -20,15 +21,13 @@ export function getAclAuthMethod(args: GetAclAuthMethodArgs, opts?: pulumi.Invok
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetAclAuthMethodResult> = pulumi.runtime.invoke("consul:index/getAclAuthMethod:getAclAuthMethod", {
+    return pulumi.runtime.invoke("consul:index/getAclAuthMethod:getAclAuthMethod", {
         "config": args.config,
         "description": args.description,
         "name": args.name,
         "namespace": args.namespace,
         "type": args.type,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

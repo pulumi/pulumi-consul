@@ -17,8 +17,6 @@ namespace Pulumi.Consul
     /// 
     /// If the Consul agent is running on the node where this service is registered, it is
     /// not recommended to use this resource.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/service.html.markdown.
     /// </summary>
     public partial class Service : Pulumi.CustomResource
     {
@@ -30,7 +28,7 @@ namespace Pulumi.Consul
         public Output<string> Address { get; private set; } = null!;
 
         [Output("checks")]
-        public Output<ImmutableArray<Outputs.ServiceChecks>> Checks { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.ServiceCheck>> Checks { get; private set; } = null!;
 
         /// <summary>
         /// The datacenter to use. This overrides the
@@ -95,7 +93,7 @@ namespace Pulumi.Consul
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Service(string name, ServiceArgs args, CustomResourceOptions? options = null)
-            : base("consul:index/service:Service", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("consul:index/service:Service", name, args ?? new ServiceArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -140,10 +138,10 @@ namespace Pulumi.Consul
         public Input<string>? Address { get; set; }
 
         [Input("checks")]
-        private InputList<Inputs.ServiceChecksArgs>? _checks;
-        public InputList<Inputs.ServiceChecksArgs> Checks
+        private InputList<Inputs.ServiceCheckArgs>? _checks;
+        public InputList<Inputs.ServiceCheckArgs> Checks
         {
-            get => _checks ?? (_checks = new InputList<Inputs.ServiceChecksArgs>());
+            get => _checks ?? (_checks = new InputList<Inputs.ServiceCheckArgs>());
             set => _checks = value;
         }
 
@@ -228,10 +226,10 @@ namespace Pulumi.Consul
         public Input<string>? Address { get; set; }
 
         [Input("checks")]
-        private InputList<Inputs.ServiceChecksGetArgs>? _checks;
-        public InputList<Inputs.ServiceChecksGetArgs> Checks
+        private InputList<Inputs.ServiceCheckGetArgs>? _checks;
+        public InputList<Inputs.ServiceCheckGetArgs> Checks
         {
-            get => _checks ?? (_checks = new InputList<Inputs.ServiceChecksGetArgs>());
+            get => _checks ?? (_checks = new InputList<Inputs.ServiceCheckGetArgs>());
             set => _checks = value;
         }
 
@@ -304,358 +302,5 @@ namespace Pulumi.Consul
         public ServiceState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class ServiceChecksArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// An ID, *unique per agent*. Will default to *name*
-        /// if not set.
-        /// </summary>
-        [Input("checkId", required: true)]
-        public Input<string> CheckId { get; set; } = null!;
-
-        /// <summary>
-        /// The time after which
-        /// the service is automatically deregistered when in the `critical` state.
-        /// Defaults to `30s`.
-        /// </summary>
-        [Input("deregisterCriticalServiceAfter")]
-        public Input<string>? DeregisterCriticalServiceAfter { get; set; }
-
-        [Input("headers")]
-        private InputList<ServiceChecksHeadersArgs>? _headers;
-
-        /// <summary>
-        /// The headers to send for an HTTP check.
-        /// The attributes of each header is given below.
-        /// </summary>
-        public InputList<ServiceChecksHeadersArgs> Headers
-        {
-            get => _headers ?? (_headers = new InputList<ServiceChecksHeadersArgs>());
-            set => _headers = value;
-        }
-
-        /// <summary>
-        /// The HTTP endpoint to call for an HTTP check.
-        /// </summary>
-        [Input("http")]
-        public Input<string>? Http { get; set; }
-
-        /// <summary>
-        /// The interval to wait between each health-check
-        /// invocation.
-        /// </summary>
-        [Input("interval", required: true)]
-        public Input<string> Interval { get; set; } = null!;
-
-        /// <summary>
-        /// The method to use for HTTP health-checks. Defaults
-        /// to `GET`.
-        /// </summary>
-        [Input("method")]
-        public Input<string>? Method { get; set; }
-
-        /// <summary>
-        /// The name of the health-check.
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        /// <summary>
-        /// An opaque field meant to hold human readable text.
-        /// </summary>
-        [Input("notes")]
-        public Input<string>? Notes { get; set; }
-
-        /// <summary>
-        /// The initial health-check status.
-        /// </summary>
-        [Input("status")]
-        public Input<string>? Status { get; set; }
-
-        /// <summary>
-        /// The TCP address and port to connect to for a TCP check.
-        /// </summary>
-        [Input("tcp")]
-        public Input<string>? Tcp { get; set; }
-
-        /// <summary>
-        /// The timeout value for HTTP checks.
-        /// </summary>
-        [Input("timeout", required: true)]
-        public Input<string> Timeout { get; set; } = null!;
-
-        /// <summary>
-        /// Whether to deactivate certificate
-        /// verification for HTTP health-checks. Defaults to `false`.
-        /// </summary>
-        [Input("tlsSkipVerify")]
-        public Input<bool>? TlsSkipVerify { get; set; }
-
-        public ServiceChecksArgs()
-        {
-        }
-    }
-
-    public sealed class ServiceChecksGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// An ID, *unique per agent*. Will default to *name*
-        /// if not set.
-        /// </summary>
-        [Input("checkId", required: true)]
-        public Input<string> CheckId { get; set; } = null!;
-
-        /// <summary>
-        /// The time after which
-        /// the service is automatically deregistered when in the `critical` state.
-        /// Defaults to `30s`.
-        /// </summary>
-        [Input("deregisterCriticalServiceAfter")]
-        public Input<string>? DeregisterCriticalServiceAfter { get; set; }
-
-        [Input("headers")]
-        private InputList<ServiceChecksHeadersGetArgs>? _headers;
-
-        /// <summary>
-        /// The headers to send for an HTTP check.
-        /// The attributes of each header is given below.
-        /// </summary>
-        public InputList<ServiceChecksHeadersGetArgs> Headers
-        {
-            get => _headers ?? (_headers = new InputList<ServiceChecksHeadersGetArgs>());
-            set => _headers = value;
-        }
-
-        /// <summary>
-        /// The HTTP endpoint to call for an HTTP check.
-        /// </summary>
-        [Input("http")]
-        public Input<string>? Http { get; set; }
-
-        /// <summary>
-        /// The interval to wait between each health-check
-        /// invocation.
-        /// </summary>
-        [Input("interval", required: true)]
-        public Input<string> Interval { get; set; } = null!;
-
-        /// <summary>
-        /// The method to use for HTTP health-checks. Defaults
-        /// to `GET`.
-        /// </summary>
-        [Input("method")]
-        public Input<string>? Method { get; set; }
-
-        /// <summary>
-        /// The name of the health-check.
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        /// <summary>
-        /// An opaque field meant to hold human readable text.
-        /// </summary>
-        [Input("notes")]
-        public Input<string>? Notes { get; set; }
-
-        /// <summary>
-        /// The initial health-check status.
-        /// </summary>
-        [Input("status")]
-        public Input<string>? Status { get; set; }
-
-        /// <summary>
-        /// The TCP address and port to connect to for a TCP check.
-        /// </summary>
-        [Input("tcp")]
-        public Input<string>? Tcp { get; set; }
-
-        /// <summary>
-        /// The timeout value for HTTP checks.
-        /// </summary>
-        [Input("timeout", required: true)]
-        public Input<string> Timeout { get; set; } = null!;
-
-        /// <summary>
-        /// Whether to deactivate certificate
-        /// verification for HTTP health-checks. Defaults to `false`.
-        /// </summary>
-        [Input("tlsSkipVerify")]
-        public Input<bool>? TlsSkipVerify { get; set; }
-
-        public ServiceChecksGetArgs()
-        {
-        }
-    }
-
-    public sealed class ServiceChecksHeadersArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The name of the header.
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        [Input("values", required: true)]
-        private InputList<string>? _values;
-
-        /// <summary>
-        /// The header's list of values.
-        /// </summary>
-        public InputList<string> Values
-        {
-            get => _values ?? (_values = new InputList<string>());
-            set => _values = value;
-        }
-
-        public ServiceChecksHeadersArgs()
-        {
-        }
-    }
-
-    public sealed class ServiceChecksHeadersGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The name of the header.
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        [Input("values", required: true)]
-        private InputList<string>? _values;
-
-        /// <summary>
-        /// The header's list of values.
-        /// </summary>
-        public InputList<string> Values
-        {
-            get => _values ?? (_values = new InputList<string>());
-            set => _values = value;
-        }
-
-        public ServiceChecksHeadersGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class ServiceChecks
-    {
-        /// <summary>
-        /// An ID, *unique per agent*. Will default to *name*
-        /// if not set.
-        /// </summary>
-        public readonly string CheckId;
-        /// <summary>
-        /// The time after which
-        /// the service is automatically deregistered when in the `critical` state.
-        /// Defaults to `30s`.
-        /// </summary>
-        public readonly string? DeregisterCriticalServiceAfter;
-        /// <summary>
-        /// The headers to send for an HTTP check.
-        /// The attributes of each header is given below.
-        /// </summary>
-        public readonly ImmutableArray<ServiceChecksHeaders> Headers;
-        /// <summary>
-        /// The HTTP endpoint to call for an HTTP check.
-        /// </summary>
-        public readonly string? Http;
-        /// <summary>
-        /// The interval to wait between each health-check
-        /// invocation.
-        /// </summary>
-        public readonly string Interval;
-        /// <summary>
-        /// The method to use for HTTP health-checks. Defaults
-        /// to `GET`.
-        /// </summary>
-        public readonly string? Method;
-        /// <summary>
-        /// The name of the health-check.
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// An opaque field meant to hold human readable text.
-        /// </summary>
-        public readonly string? Notes;
-        /// <summary>
-        /// The initial health-check status.
-        /// </summary>
-        public readonly string Status;
-        /// <summary>
-        /// The TCP address and port to connect to for a TCP check.
-        /// </summary>
-        public readonly string? Tcp;
-        /// <summary>
-        /// The timeout value for HTTP checks.
-        /// </summary>
-        public readonly string Timeout;
-        /// <summary>
-        /// Whether to deactivate certificate
-        /// verification for HTTP health-checks. Defaults to `false`.
-        /// </summary>
-        public readonly bool? TlsSkipVerify;
-
-        [OutputConstructor]
-        private ServiceChecks(
-            string checkId,
-            string? deregisterCriticalServiceAfter,
-            ImmutableArray<ServiceChecksHeaders> headers,
-            string? http,
-            string interval,
-            string? method,
-            string name,
-            string? notes,
-            string status,
-            string? tcp,
-            string timeout,
-            bool? tlsSkipVerify)
-        {
-            CheckId = checkId;
-            DeregisterCriticalServiceAfter = deregisterCriticalServiceAfter;
-            Headers = headers;
-            Http = http;
-            Interval = interval;
-            Method = method;
-            Name = name;
-            Notes = notes;
-            Status = status;
-            Tcp = tcp;
-            Timeout = timeout;
-            TlsSkipVerify = tlsSkipVerify;
-        }
-    }
-
-    [OutputType]
-    public sealed class ServiceChecksHeaders
-    {
-        /// <summary>
-        /// The name of the header.
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// The header's list of values.
-        /// </summary>
-        public readonly ImmutableArray<string> Values;
-
-        [OutputConstructor]
-        private ServiceChecksHeaders(
-            string name,
-            ImmutableArray<string> values)
-        {
-            Name = name;
-            Values = values;
-        }
-    }
     }
 }

@@ -64,7 +64,7 @@ def get_acl_role(description=None,name=None,namespace=None,policies=None,service
     The `.AclRole` data source returns the information related to a
     [Consul ACL Role](https://www.consul.io/api/acl/roles.html).
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/acl_role.html.markdown.
+
 
 
     :param str description: The description of the ACL Role.

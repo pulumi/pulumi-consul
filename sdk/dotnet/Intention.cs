@@ -17,8 +17,6 @@ namespace Pulumi.Consul
     /// that will be created in the future when creating intentions. This resource can be used
     /// in conjunction with the `consul..Service` datasource when referencing services
     /// registered on nodes that have a running Consul agent.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/intention.html.markdown.
     /// </summary>
     public partial class Intention : Pulumi.CustomResource
     {
@@ -79,7 +77,7 @@ namespace Pulumi.Consul
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Intention(string name, IntentionArgs args, CustomResourceOptions? options = null)
-            : base("consul:index/intention:Intention", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("consul:index/intention:Intention", name, args ?? new IntentionArgs(), MakeResourceOptions(options, ""))
         {
         }
 

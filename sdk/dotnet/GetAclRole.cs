@@ -9,29 +9,19 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Consul
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// The `consul..AclRole` data source returns the information related to a
-        /// [Consul ACL Role](https://www.consul.io/api/acl/roles.html).
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/acl_role.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetAclRole.InvokeAsync() instead")]
-        public static Task<GetAclRoleResult> GetAclRole(GetAclRoleArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAclRoleResult>("consul:index/getAclRole:getAclRole", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetAclRole
     {
         /// <summary>
         /// The `consul..AclRole` data source returns the information related to a
         /// [Consul ACL Role](https://www.consul.io/api/acl/roles.html).
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/acl_role.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAclRoleResult> InvokeAsync(GetAclRoleArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAclRoleResult>("consul:index/getAclRole:getAclRole", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAclRoleResult>("consul:index/getAclRole:getAclRole", args ?? new GetAclRoleArgs(), options.WithVersion());
     }
+
 
     public sealed class GetAclRoleArgs : Pulumi.InvokeArgs
     {
@@ -54,28 +44,28 @@ namespace Pulumi.Consul
         public string? Namespace { get; set; }
 
         [Input("policies")]
-        private List<Inputs.GetAclRolePoliciesArgs>? _policies;
+        private List<Inputs.GetAclRolePolicyArgs>? _policies;
 
         /// <summary>
         /// The list of policies associated with the ACL Role. Each entry has
         /// an `id` and a `name` attribute.
         /// </summary>
-        public List<Inputs.GetAclRolePoliciesArgs> Policies
+        public List<Inputs.GetAclRolePolicyArgs> Policies
         {
-            get => _policies ?? (_policies = new List<Inputs.GetAclRolePoliciesArgs>());
+            get => _policies ?? (_policies = new List<Inputs.GetAclRolePolicyArgs>());
             set => _policies = value;
         }
 
         [Input("serviceIdentities")]
-        private List<Inputs.GetAclRoleServiceIdentitiesArgs>? _serviceIdentities;
+        private List<Inputs.GetAclRoleServiceIdentityArgs>? _serviceIdentities;
 
         /// <summary>
         /// The list of service identities associated with the ACL
         /// Role. Each entry has a `service_name` attribute and a list of `datacenters`.
         /// </summary>
-        public List<Inputs.GetAclRoleServiceIdentitiesArgs> ServiceIdentities
+        public List<Inputs.GetAclRoleServiceIdentityArgs> ServiceIdentities
         {
-            get => _serviceIdentities ?? (_serviceIdentities = new List<Inputs.GetAclRoleServiceIdentitiesArgs>());
+            get => _serviceIdentities ?? (_serviceIdentities = new List<Inputs.GetAclRoleServiceIdentityArgs>());
             set => _serviceIdentities = value;
         }
 
@@ -84,6 +74,7 @@ namespace Pulumi.Consul
         }
     }
 
+
     [OutputType]
     public sealed class GetAclRoleResult
     {
@@ -91,115 +82,43 @@ namespace Pulumi.Consul
         /// The description of the ACL Role.
         /// </summary>
         public readonly string? Description;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         public readonly string Name;
         public readonly string? Namespace;
         /// <summary>
         /// The list of policies associated with the ACL Role. Each entry has
         /// an `id` and a `name` attribute.
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetAclRolePoliciesResult> Policies;
+        public readonly ImmutableArray<Outputs.GetAclRolePolicyResult> Policies;
         /// <summary>
         /// The list of service identities associated with the ACL
         /// Role. Each entry has a `service_name` attribute and a list of `datacenters`.
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetAclRoleServiceIdentitiesResult> ServiceIdentities;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
+        public readonly ImmutableArray<Outputs.GetAclRoleServiceIdentityResult> ServiceIdentities;
 
         [OutputConstructor]
         private GetAclRoleResult(
             string? description,
+
+            string id,
+
             string name,
+
             string? @namespace,
-            ImmutableArray<Outputs.GetAclRolePoliciesResult> policies,
-            ImmutableArray<Outputs.GetAclRoleServiceIdentitiesResult> serviceIdentities,
-            string id)
+
+            ImmutableArray<Outputs.GetAclRolePolicyResult> policies,
+
+            ImmutableArray<Outputs.GetAclRoleServiceIdentityResult> serviceIdentities)
         {
             Description = description;
+            Id = id;
             Name = name;
             Namespace = @namespace;
             Policies = policies;
             ServiceIdentities = serviceIdentities;
-            Id = id;
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class GetAclRolePoliciesArgs : Pulumi.InvokeArgs
-    {
-        [Input("id")]
-        public string? Id { get; set; }
-
-        /// <summary>
-        /// The name of the ACL Role.
-        /// </summary>
-        [Input("name")]
-        public string? Name { get; set; }
-
-        public GetAclRolePoliciesArgs()
-        {
-        }
-    }
-
-    public sealed class GetAclRoleServiceIdentitiesArgs : Pulumi.InvokeArgs
-    {
-        [Input("datacenters")]
-        private List<string>? _datacenters;
-        public List<string> Datacenters
-        {
-            get => _datacenters ?? (_datacenters = new List<string>());
-            set => _datacenters = value;
-        }
-
-        [Input("serviceName")]
-        public string? ServiceName { get; set; }
-
-        public GetAclRoleServiceIdentitiesArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetAclRolePoliciesResult
-    {
-        public readonly string Id;
-        /// <summary>
-        /// The name of the ACL Role.
-        /// </summary>
-        public readonly string Name;
-
-        [OutputConstructor]
-        private GetAclRolePoliciesResult(
-            string id,
-            string name)
-        {
-            Id = id;
-            Name = name;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetAclRoleServiceIdentitiesResult
-    {
-        public readonly ImmutableArray<string> Datacenters;
-        public readonly string? ServiceName;
-
-        [OutputConstructor]
-        private GetAclRoleServiceIdentitiesResult(
-            ImmutableArray<string> datacenters,
-            string? serviceName)
-        {
-            Datacenters = datacenters;
-            ServiceName = serviceName;
-        }
-    }
     }
 }
