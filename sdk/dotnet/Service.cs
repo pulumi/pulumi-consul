@@ -72,7 +72,8 @@ namespace Pulumi.Consul
         public Output<int?> Port { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the service.
+        /// - If the service ID is not provided, it will be defaulted to the value
+        /// of the `name` attribute.
         /// </summary>
         [Output("serviceId")]
         public Output<string> ServiceId { get; private set; } = null!;
@@ -193,7 +194,8 @@ namespace Pulumi.Consul
         public Input<int>? Port { get; set; }
 
         /// <summary>
-        /// The ID of the service.
+        /// - If the service ID is not provided, it will be defaulted to the value
+        /// of the `name` attribute.
         /// </summary>
         [Input("serviceId")]
         public Input<string>? ServiceId { get; set; }
@@ -281,7 +283,8 @@ namespace Pulumi.Consul
         public Input<int>? Port { get; set; }
 
         /// <summary>
-        /// The ID of the service.
+        /// - If the service ID is not provided, it will be defaulted to the value
+        /// of the `name` attribute.
         /// </summary>
         [Input("serviceId")]
         public Input<string>? ServiceId { get; set; }

@@ -38,7 +38,7 @@ type LookupAclRoleArgs struct {
 type LookupAclRoleResult struct {
 	// The description of the ACL Role.
 	Description *string `pulumi:"description"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id        string  `pulumi:"id"`
 	Name      string  `pulumi:"name"`
 	Namespace *string `pulumi:"namespace"`

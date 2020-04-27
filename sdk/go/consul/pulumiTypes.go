@@ -657,7 +657,12 @@ func (o PreparedQueryDnsPtrOutput) Elem() PreparedQueryDnsOutput {
 
 // The TTL to send when returning DNS results.
 func (o PreparedQueryDnsPtrOutput) Ttl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PreparedQueryDns) *string { return v.Ttl }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *PreparedQueryDns) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Ttl
+	}).(pulumi.StringPtrOutput)
 }
 
 type PreparedQueryFailover struct {
@@ -797,13 +802,23 @@ func (o PreparedQueryFailoverPtrOutput) Elem() PreparedQueryFailoverOutput {
 
 // Remote datacenters to return results from.
 func (o PreparedQueryFailoverPtrOutput) Datacenters() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v PreparedQueryFailover) []string { return v.Datacenters }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *PreparedQueryFailover) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Datacenters
+	}).(pulumi.StringArrayOutput)
 }
 
 // Return results from this many datacenters,
 // sorted in ascending order of estimated RTT.
 func (o PreparedQueryFailoverPtrOutput) NearestN() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v PreparedQueryFailover) *int { return v.NearestN }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *PreparedQueryFailover) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NearestN
+	}).(pulumi.IntPtrOutput)
 }
 
 type PreparedQueryTemplate struct {
@@ -946,14 +961,24 @@ func (o PreparedQueryTemplatePtrOutput) Elem() PreparedQueryTemplateOutput {
 
 // The regular expression to match with. When using
 // `namePrefixMatch`, this regex is applied against the query name.
-func (o PreparedQueryTemplatePtrOutput) Regexp() pulumi.StringOutput {
-	return o.ApplyT(func(v PreparedQueryTemplate) string { return v.Regexp }).(pulumi.StringOutput)
+func (o PreparedQueryTemplatePtrOutput) Regexp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreparedQueryTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Regexp
+	}).(pulumi.StringPtrOutput)
 }
 
 // The type of template matching to perform. Currently
 // only `namePrefixMatch` is supported.
-func (o PreparedQueryTemplatePtrOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v PreparedQueryTemplate) string { return v.Type }).(pulumi.StringOutput)
+func (o PreparedQueryTemplatePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreparedQueryTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceCheck struct {

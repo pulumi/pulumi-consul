@@ -24,7 +24,7 @@ type GetCatalogNodesArgs struct {
 // A collection of values returned by getCatalogNodes.
 type GetCatalogNodesResult struct {
 	Datacenter string `pulumi:"datacenter"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id           string                       `pulumi:"id"`
 	NodeIds      []string                     `pulumi:"nodeIds"`
 	NodeNames    []string                     `pulumi:"nodeNames"`

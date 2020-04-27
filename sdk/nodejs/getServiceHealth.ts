@@ -125,7 +125,7 @@ export interface GetServiceHealthResult {
     readonly tag?: string;
     readonly waitFor?: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }
