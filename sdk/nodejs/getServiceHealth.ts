@@ -24,10 +24,10 @@ import * as utilities from "./utilities";
  * import * as consul from "@pulumi/consul";
  * import * as vault from "@pulumi/vault";
  * 
- * const vaultServiceHealth = consul.getServiceHealth({
+ * const vaultServiceHealth = pulumi.output(consul.getServiceHealth({
  *     passing: true,
  *     service: "vault",
- * });
+ * }, { async: true }));
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/service_health.html.markdown.

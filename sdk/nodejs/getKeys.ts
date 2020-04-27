@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  * import * as aws from "@pulumi/aws";
  * import * as consul from "@pulumi/consul";
  * 
- * const appKeys = consul.getKeys({
+ * const appKeys = pulumi.output(consul.getKeys({
  *     datacenter: "nyc1",
  *     // Read the launch AMI from Consul
  *     keys: [{
@@ -28,7 +28,7 @@ import * as utilities from "./utilities";
  *         path: "service/app/launch_ami",
  *     }],
  *     token: "abcd",
- * });
+ * }, { async: true }));
  * // Start our instance with the dynamic ami value
  * const appInstance = new aws.ec2.Instance("app", {
  *     ami: appKeys.var.ami,
