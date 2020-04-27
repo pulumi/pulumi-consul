@@ -39,7 +39,7 @@ type LookupKeysResult struct {
 	// * `var.<name>` - For each name given, the corresponding attribute
 	// has the value of the key.
 	Datacenter string `pulumi:"datacenter"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id        string            `pulumi:"id"`
 	Keys      []GetKeysKey      `pulumi:"keys"`
 	Namespace *string           `pulumi:"namespace"`

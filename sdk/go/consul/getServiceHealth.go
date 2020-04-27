@@ -50,7 +50,7 @@ type GetServiceHealthResult struct {
 	// * [`taggedAddresses`](https://www.consul.io/docs/agent/http/catalog.html#TaggedAddresses) -
 	// List of explicit LAN and WAN IP addresses for the agent.
 	Datacenter *string `pulumi:"datacenter"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The name of this health-check.
 	Name string `pulumi:"name"`

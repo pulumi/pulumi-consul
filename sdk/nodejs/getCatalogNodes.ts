@@ -37,7 +37,7 @@ export interface GetCatalogNodesResult {
     readonly nodes: outputs.GetCatalogNodesNode[];
     readonly queryOptions?: outputs.GetCatalogNodesQueryOption[];
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

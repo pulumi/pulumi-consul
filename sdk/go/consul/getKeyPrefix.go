@@ -39,7 +39,7 @@ type LookupKeyPrefixArgs struct {
 type LookupKeyPrefixResult struct {
 	// The datacenter the keys are being read from.
 	Datacenter string `pulumi:"datacenter"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id        string  `pulumi:"id"`
 	Namespace *string `pulumi:"namespace"`
 	// the common prefix shared by all keys being read.

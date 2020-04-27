@@ -35,7 +35,7 @@ type GetAutopilotHealthResult struct {
 	// Whether the server is healthy according to the current Autopilot
 	// configuration
 	Healthy bool `pulumi:"healthy"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of server health information. See below for details on the
 	// available information.

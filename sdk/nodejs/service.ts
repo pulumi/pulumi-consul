@@ -96,7 +96,8 @@ export class Service extends pulumi.CustomResource {
      */
     public readonly port!: pulumi.Output<number | undefined>;
     /**
-     * The ID of the service.
+     * - If the service ID is not provided, it will be defaulted to the value
+     * of the `name` attribute.
      */
     public readonly serviceId!: pulumi.Output<string>;
     /**
@@ -194,7 +195,8 @@ export interface ServiceState {
      */
     readonly port?: pulumi.Input<number>;
     /**
-     * The ID of the service.
+     * - If the service ID is not provided, it will be defaulted to the value
+     * of the `name` attribute.
      */
     readonly serviceId?: pulumi.Input<string>;
     /**
@@ -242,7 +244,8 @@ export interface ServiceArgs {
      */
     readonly port?: pulumi.Input<number>;
     /**
-     * The ID of the service.
+     * - If the service ID is not provided, it will be defaulted to the value
+     * of the `name` attribute.
      */
     readonly serviceId?: pulumi.Input<string>;
     /**

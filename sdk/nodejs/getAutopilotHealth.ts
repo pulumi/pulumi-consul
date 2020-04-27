@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
  * 
- * const read = consul.getAutopilotHealth();
+ * const read = pulumi.output(consul.getAutopilotHealth({ async: true }));
  * 
  * export const health = read.healthy;
  * ```
@@ -72,7 +72,7 @@ export interface GetAutopilotHealthResult {
      */
     readonly servers: outputs.GetAutopilotHealthServer[];
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

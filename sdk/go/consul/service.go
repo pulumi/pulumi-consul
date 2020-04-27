@@ -39,7 +39,8 @@ type Service struct {
 	Node pulumi.StringOutput `pulumi:"node"`
 	// The port of the service.
 	Port pulumi.IntPtrOutput `pulumi:"port"`
-	// The ID of the service.
+	// - If the service ID is not provided, it will be defaulted to the value
+	// of the `name` attribute.
 	ServiceId pulumi.StringOutput `pulumi:"serviceId"`
 	// A list of values that are opaque to Consul,
 	// but can be used to distinguish between services or nodes.
@@ -96,7 +97,8 @@ type serviceState struct {
 	Node *string `pulumi:"node"`
 	// The port of the service.
 	Port *int `pulumi:"port"`
-	// The ID of the service.
+	// - If the service ID is not provided, it will be defaulted to the value
+	// of the `name` attribute.
 	ServiceId *string `pulumi:"serviceId"`
 	// A list of values that are opaque to Consul,
 	// but can be used to distinguish between services or nodes.
@@ -123,7 +125,8 @@ type ServiceState struct {
 	Node pulumi.StringPtrInput
 	// The port of the service.
 	Port pulumi.IntPtrInput
-	// The ID of the service.
+	// - If the service ID is not provided, it will be defaulted to the value
+	// of the `name` attribute.
 	ServiceId pulumi.StringPtrInput
 	// A list of values that are opaque to Consul,
 	// but can be used to distinguish between services or nodes.
@@ -154,7 +157,8 @@ type serviceArgs struct {
 	Node string `pulumi:"node"`
 	// The port of the service.
 	Port *int `pulumi:"port"`
-	// The ID of the service.
+	// - If the service ID is not provided, it will be defaulted to the value
+	// of the `name` attribute.
 	ServiceId *string `pulumi:"serviceId"`
 	// A list of values that are opaque to Consul,
 	// but can be used to distinguish between services or nodes.
@@ -182,7 +186,8 @@ type ServiceArgs struct {
 	Node pulumi.StringInput
 	// The port of the service.
 	Port pulumi.IntPtrInput
-	// The ID of the service.
+	// - If the service ID is not provided, it will be defaulted to the value
+	// of the `name` attribute.
 	ServiceId pulumi.StringPtrInput
 	// A list of values that are opaque to Consul,
 	// but can be used to distinguish between services or nodes.

@@ -41,7 +41,7 @@ type LookupAclTokenResult struct {
 	AccessorId string `pulumi:"accessorId"`
 	// The description of the ACL token.
 	Description *string `pulumi:"description"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Whether the ACL token is local to the datacenter it was created within.
 	Local     *bool   `pulumi:"local"`

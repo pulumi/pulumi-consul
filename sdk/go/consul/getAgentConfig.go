@@ -27,7 +27,7 @@ func GetAgentConfig(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetAgent
 type GetAgentConfigResult struct {
 	// The datacenter the agent is running in
 	Datacenter string `pulumi:"datacenter"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The ID of the node the agent is running on
 	NodeId string `pulumi:"nodeId"`

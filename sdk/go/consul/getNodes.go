@@ -30,7 +30,7 @@ type GetNodesArgs struct {
 type GetNodesResult struct {
 	// The datacenter the keys are being read from to.
 	Datacenter string `pulumi:"datacenter"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of the Consul node IDs.
 	NodeIds []string `pulumi:"nodeIds"`

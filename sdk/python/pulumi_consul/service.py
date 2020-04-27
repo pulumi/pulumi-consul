@@ -45,7 +45,8 @@ class Service(pulumi.CustomResource):
     """
     service_id: pulumi.Output[str]
     """
-    The ID of the service.
+    - If the service ID is not provided, it will be defaulted to the value
+    of the `name` attribute.
     """
     tags: pulumi.Output[list]
     """
@@ -76,7 +77,8 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] namespace: The namespace to create the service within.
         :param pulumi.Input[str] node: The name of the node the to register the service on.
         :param pulumi.Input[float] port: The port of the service.
-        :param pulumi.Input[str] service_id: The ID of the service.
+        :param pulumi.Input[str] service_id: - If the service ID is not provided, it will be defaulted to the value
+               of the `name` attribute.
         :param pulumi.Input[list] tags: A list of values that are opaque to Consul,
                but can be used to distinguish between services or nodes.
 
@@ -160,7 +162,8 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] namespace: The namespace to create the service within.
         :param pulumi.Input[str] node: The name of the node the to register the service on.
         :param pulumi.Input[float] port: The port of the service.
-        :param pulumi.Input[str] service_id: The ID of the service.
+        :param pulumi.Input[str] service_id: - If the service ID is not provided, it will be defaulted to the value
+               of the `name` attribute.
         :param pulumi.Input[list] tags: A list of values that are opaque to Consul,
                but can be used to distinguish between services or nodes.
 
