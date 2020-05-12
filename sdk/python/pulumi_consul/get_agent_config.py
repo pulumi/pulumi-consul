@@ -79,6 +79,18 @@ def get_agent_config(opts=None):
     The `.getAgentConfig` data source returns
     [configuration data](https://www.consul.io/api/agent.html#read-configuration)
     from the agent specified in the `provider`.
+
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_consul as consul
+
+    remote_agent = consul.get_agent_config()
+    pulumi.export("consulVersion", remote_agent.version)
+    ```
     """
     __args__ = dict()
 

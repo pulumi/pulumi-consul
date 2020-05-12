@@ -62,6 +62,17 @@ def get_autopilot_health(datacenter=None,opts=None):
     [autopilot health information](https://www.consul.io/api/operator/autopilot.html#read-health)
     about the current Consul cluster.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_consul as consul
+
+    read = consul.get_autopilot_health()
+    pulumi.export("health", read.healthy)
+    ```
 
 
 

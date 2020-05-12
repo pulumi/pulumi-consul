@@ -51,6 +51,28 @@ class CatalogEntry(pulumi.CustomResource):
         Registers a node or service with the [Consul Catalog](https://www.consul.io/docs/agent/http/catalog.html#catalog_register).
         Currently, defining health checks is not supported.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_consul as consul
+
+        app = consul.CatalogEntry("app",
+            address="192.168.10.10",
+            node="foobar",
+            services=[{
+                "address": "127.0.0.1",
+                "id": "redis1",
+                "name": "redis",
+                "port": 8000,
+                "tags": [
+                    "master",
+                    "v1",
+                ],
+            }])
+        ```
 
 
         :param str resource_name: The name of the resource.

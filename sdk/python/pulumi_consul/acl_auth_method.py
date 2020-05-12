@@ -36,6 +36,26 @@ class AclAuthMethod(pulumi.CustomResource):
         managed Consul ACL auth methods.
 
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_consul as consul
+
+        minikube = consul.AclAuthMethod("minikube",
+            config={
+                "CACert": \"\"\"-----BEGIN CERTIFICATE-----
+        ...-----END CERTIFICATE-----
+
+        \"\"\",
+                "Host": "https://192.0.2.42:8443",
+                "ServiceAccountJWT": "eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9...",
+            },
+            description="dev minikube cluster",
+            type="kubernetes")
+        ```
 
 
         :param str resource_name: The name of the resource.

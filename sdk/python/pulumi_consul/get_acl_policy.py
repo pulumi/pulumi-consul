@@ -63,6 +63,17 @@ def get_acl_policy(datacenters=None,description=None,name=None,namespace=None,ru
     [Consul ACL Policy](https://www.consul.io/docs/acl/acl-system.html#acl-policies).
 
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_consul as consul
+
+    agent = consul.get_acl_policy(name="agent")
+    pulumi.export("consulAclPolicy", agent.rules)
+    ```
 
 
 

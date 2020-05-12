@@ -38,6 +38,22 @@ class AgentService(pulumi.CustomResource):
         define a service associated with a particular agent. Currently, defining
         health checks for an agent service is not supported.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_consul as consul
+
+        app = consul.AgentService("app",
+            address="www.google.com",
+            port=80,
+            tags=[
+                "tag0",
+                "tag1",
+            ])
+        ```
 
 
         :param str resource_name: The name of the resource.

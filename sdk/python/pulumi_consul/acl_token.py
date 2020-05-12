@@ -39,6 +39,24 @@ class AclToken(pulumi.CustomResource):
         """
         The `.AclToken` resource writes an ACL token into Consul.
 
+        ## Example Usage
+
+        ### Basic usage
+
+        ```python
+        import pulumi
+        import pulumi_consul as consul
+
+        agent = consul.AclPolicy("agent", rules=\"\"\"node_prefix "" {
+          policy = "read"
+        }
+
+        \"\"\")
+        test = consul.AclToken("test",
+            description="my test token",
+            local=True,
+            policies=[agent.name])
+        ```
 
 
         :param str resource_name: The name of the resource.

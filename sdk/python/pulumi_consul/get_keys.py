@@ -58,6 +58,25 @@ def get_keys(datacenter=None,keys=None,namespace=None,token=None,opts=None):
     The `.Keys` resource reads values from the Consul key/value store.
     This is a powerful way dynamically set values in templates.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_aws as aws
+    import pulumi_consul as consul
+
+    app_keys = consul.get_keys(datacenter="nyc1",
+        keys=[{
+            "default": "ami-1234",
+            "name": "ami",
+            "path": "service/app/launch_ami",
+        }],
+        token="abcd")
+    # Start our instance with the dynamic ami value
+    app_instance = aws.ec2.Instance("appInstance", ami=app_keys.var["ami"])
+    ```
 
 
 

@@ -10,6 +10,19 @@ import * as utilities from "./utilities";
  * The `consul..AclRole` data source returns the information related to a
  * [Consul ACL Role](https://www.consul.io/api/acl/roles.html).
  * 
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ * 
+ * const test = consul.getAclRole({
+ *     name: "example-role",
+ * });
+ * export const consulAclRole = test.then(test => test.id);
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/acl_role.html.markdown.
  */

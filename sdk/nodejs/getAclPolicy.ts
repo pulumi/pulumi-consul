@@ -11,6 +11,19 @@ import * as utilities from "./utilities";
  * [Consul ACL Policy](https://www.consul.io/docs/acl/acl-system.html#acl-policies).
  * 
  * 
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ * 
+ * const agent = consul.getAclPolicy({
+ *     name: "agent",
+ * });
+ * export const consulAclPolicy = agent.then(agent => agent.rules);
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/acl_policy.html.markdown.
  */

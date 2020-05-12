@@ -35,6 +35,22 @@ class AclPolicy(pulumi.CustomResource):
         Starting with Consul 1.4.0, the .AclPolicy can be used to managed Consul ACL policies.
 
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_consul as consul
+
+        test = consul.AclPolicy("test",
+            datacenters=["dc1"],
+            rules=\"\"\"node_prefix "" {
+          policy = "read"
+        }
+
+        \"\"\")
+        ```
 
 
         :param str resource_name: The name of the resource.

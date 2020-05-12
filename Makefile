@@ -47,8 +47,8 @@ build:: provider install_plugins
   	dotnet build /p:Version=${DOTNET_VERSION}
 
 install_plugins::
-	pulumi plugin install resource aws 1.10.0
-	pulumi plugin install resource vault 1.0.0
+	pulumi plugin install resource aws 2.3.0
+	pulumi plugin install resource vault 2.1.0
 
 tfgen::
 	cd provider && go install -ldflags "-X github.com/pulumi/pulumi-${PACK}/provider/v2/pkg/version.Version=${VERSION}" ${PROJECT}/provider/v2/cmd/${TFGEN}

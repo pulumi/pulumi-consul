@@ -63,6 +63,20 @@ class Service(pulumi.CustomResource):
         If the Consul agent is running on the node where this service is registered, it is
         not recommended to use this resource.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_consul as consul
+
+        compute = consul.Node("compute", address="www.google.com")
+        google = consul.Service("google",
+            node=compute.name,
+            port=80,
+            tags=["tag0"])
+        ```
 
 
         :param str resource_name: The name of the resource.

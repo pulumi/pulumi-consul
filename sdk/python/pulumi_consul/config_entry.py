@@ -28,6 +28,75 @@ class ConfigEntry(pulumi.CustomResource):
         resource can be used to provide cluster-wide defaults for various aspects of
         Consul.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_consul as consul
+
+        proxy_defaults = consul.ConfigEntry("proxyDefaults",
+            kind="proxy-defaults",
+            config_json=json.dumps({
+                "Config": {
+                    "local_connect_timeout_ms": 1000,
+                    "handshake_timeout_ms": 10000,
+                },
+            }))
+        web = consul.ConfigEntry("web",
+            kind="service-defaults",
+            config_json=json.dumps({
+                "Protocol": "http",
+            }))
+        admin = consul.ConfigEntry("admin",
+            kind="service-defaults",
+            config_json=json.dumps({
+                "Protocol": "http",
+            }))
+        service_resolver = consul.ConfigEntry("serviceResolver",
+            kind="service-resolver",
+            config_json=json.dumps({
+                "DefaultSubset": "v1",
+                "Subsets": {
+                    "v1": {
+                        "Filter": "Service.Meta.version == v1",
+                    },
+                    "v2": {
+                        "Filter": "Service.Meta.version == v2",
+                    },
+                },
+            }))
+        service_splitter = consul.ConfigEntry("serviceSplitter",
+            kind="service-splitter",
+            config_json=json.dumps({
+                "Splits": [
+                    {
+                        "Weight": 90,
+                        "ServiceSubset": "v1",
+                    },
+                    {
+                        "Weight": 10,
+                        "ServiceSubset": "v2",
+                    },
+                ],
+            }))
+        service_router = consul.ConfigEntry("serviceRouter",
+            kind="service-router",
+            config_json=json.dumps({
+                "Routes": [{
+                    "Match": {
+                        "HTTP": {
+                            "PathPrefix": "/admin",
+                        },
+                    },
+                    "Destination": {
+                        "Service": "admin",
+                    },
+                }],
+            }))
+        ```
 
 
         :param str resource_name: The name of the resource.
