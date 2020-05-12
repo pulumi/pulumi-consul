@@ -11,6 +11,80 @@ import * as utilities from "./utilities";
  * resource can be used to provide cluster-wide defaults for various aspects of
  * Consul.
  * 
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ * 
+ * const proxyDefaults = new consul.ConfigEntry("proxyDefaults", {
+ *     kind: "proxy-defaults",
+ *     configJson: JSON.stringify({
+ *         Config: {
+ *             local_connect_timeout_ms: 1000,
+ *             handshake_timeout_ms: 10000,
+ *         },
+ *     }),
+ * });
+ * const web = new consul.ConfigEntry("web", {
+ *     kind: "service-defaults",
+ *     configJson: JSON.stringify({
+ *         Protocol: "http",
+ *     }),
+ * });
+ * const admin = new consul.ConfigEntry("admin", {
+ *     kind: "service-defaults",
+ *     configJson: JSON.stringify({
+ *         Protocol: "http",
+ *     }),
+ * });
+ * const serviceResolver = new consul.ConfigEntry("serviceResolver", {
+ *     kind: "service-resolver",
+ *     configJson: JSON.stringify({
+ *         DefaultSubset: "v1",
+ *         Subsets: {
+ *             v1: {
+ *                 Filter: "Service.Meta.version == v1",
+ *             },
+ *             v2: {
+ *                 Filter: "Service.Meta.version == v2",
+ *             },
+ *         },
+ *     }),
+ * });
+ * const serviceSplitter = new consul.ConfigEntry("serviceSplitter", {
+ *     kind: "service-splitter",
+ *     configJson: JSON.stringify({
+ *         Splits: [
+ *             {
+ *                 Weight: 90,
+ *                 ServiceSubset: "v1",
+ *             },
+ *             {
+ *                 Weight: 10,
+ *                 ServiceSubset: "v2",
+ *             },
+ *         ],
+ *     }),
+ * });
+ * const serviceRouter = new consul.ConfigEntry("serviceRouter", {
+ *     kind: "service-router",
+ *     configJson: JSON.stringify({
+ *         Routes: [{
+ *             Match: {
+ *                 HTTP: {
+ *                     PathPrefix: "/admin",
+ *                 },
+ *             },
+ *             Destination: {
+ *                 Service: "admin",
+ *             },
+ *         }],
+ *     }),
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/config_entry.markdown.
  */

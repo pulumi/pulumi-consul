@@ -205,7 +205,6 @@ func Provider() tfbridge.ProviderInfo {
 			"consul_services":       {Tok: makeDataSource(mainMod, "getServices")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
-			AsyncDataSources: true,
 			Dependencies: map[string]string{
 				"@pulumi/pulumi": "^2.0.0",
 			},

@@ -10,6 +10,19 @@ import * as utilities from "./utilities";
  * The `consul..AclAuthMethod` data source returns the information related to a
  * [Consul Auth Method](https://www.consul.io/docs/acl/acl-auth-methods.html).
  * 
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ * 
+ * const test = consul.getAclAuthMethod({
+ *     name: "minikube",
+ * });
+ * export const consulAclAuthMethod = test.then(test => test.config);
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/acl_auth_method.html.markdown.
  */

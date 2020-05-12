@@ -54,6 +54,19 @@ class Intention(pulumi.CustomResource):
         in conjunction with the `.Service` datasource when referencing services
         registered on nodes that have a running Consul agent.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_consul as consul
+
+        database = consul.Intention("database",
+            action="allow",
+            destination_name="db",
+            source_name="api")
+        ```
 
 
         :param str resource_name: The name of the resource.

@@ -66,6 +66,17 @@ def get_acl_token(accessor_id=None,description=None,local=None,namespace=None,po
     If you want to get the secret ID associated with a token, use the
     [`.getAclTokenSecretId` data source](https://www.terraform.io/docs/providers/consul/d/acl_token_secret_id.html).
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_consul as consul
+
+    test = consul.get_acl_token(accessor_id="00000000-0000-0000-0000-000000000002")
+    pulumi.export("consulAclPolicies", test.policies)
+    ```
 
 
 

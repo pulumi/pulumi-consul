@@ -39,6 +39,24 @@ class AclRole(pulumi.CustomResource):
         Starting with Consul 1.5.0, the .AclRole can be used to managed Consul ACL roles.
 
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_consul as consul
+
+        read_policy = consul.AclPolicy("read-policy",
+            datacenters=["dc1"],
+            rules="node \"\" { policy = \"read\" }")
+        read = consul.AclRole("read",
+            description="bar",
+            policies=[read_policy.id],
+            service_identities=[{
+                "serviceName": "foo",
+            }])
+        ```
 
 
         :param str resource_name: The name of the resource.

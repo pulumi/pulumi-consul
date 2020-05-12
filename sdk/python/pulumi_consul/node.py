@@ -35,6 +35,16 @@ class Node(pulumi.CustomResource):
         Provides access to Node data in Consul. This can be used to define a
         node. Currently, defining health checks is not supported.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_consul as consul
+
+        foobar = consul.Node("foobar", address="192.168.10.10")
+        ```
 
 
         :param str resource_name: The name of the resource.
