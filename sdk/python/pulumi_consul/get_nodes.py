@@ -82,7 +82,7 @@ def get_nodes(query_options=None,opts=None):
         empty, the `datacenter` value found in the Consul agent that this provider is
         configured to talk to then the datacenter in the provider setup.
       * `near` (`str`)
-      * `nodeMeta` (`dict`)
+      * `node_meta` (`dict`)
       * `requireConsistent` (`bool`) - When `true` force the client to perform a
         read on at least quorum servers and verify the result is the same.  Defaults
         to `false`.

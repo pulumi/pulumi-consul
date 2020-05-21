@@ -58,7 +58,7 @@ def get_catalog_nodes(query_options=None,opts=None):
       * `allowStale` (`bool`)
       * `datacenter` (`str`)
       * `near` (`str`)
-      * `nodeMeta` (`dict`)
+      * `node_meta` (`dict`)
       * `requireConsistent` (`bool`)
       * `token` (`str`)
       * `waitIndex` (`float`)

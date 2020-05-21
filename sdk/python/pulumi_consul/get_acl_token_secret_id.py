@@ -33,7 +33,7 @@ class GetAclTokenSecretIdResult:
             raise TypeError("Expected argument 'secret_id' to be a str")
         __self__.secret_id = secret_id
         """
-        The secret ID of the ACL token if `gpg_key` has not been set.
+        The secret ID of the ACL token if `pgp_key` has not been set.
         """
 class AwaitableGetAclTokenSecretIdResult(GetAclTokenSecretIdResult):
     # pylint: disable=using-constant-test

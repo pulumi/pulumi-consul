@@ -211,6 +211,56 @@ export interface GetKeysKey {
     path: string;
 }
 
+export interface GetNetworkAreaMembersMember {
+    /**
+     * The IP address of the server.
+     */
+    address: string;
+    /**
+     * The Consul version running on the node.
+     */
+    build: string;
+    /**
+     * The datacenter to use. This overrides the
+     * agent's default datacenter and the datacenter in the provider setup.
+     */
+    datacenter: string;
+    /**
+     * The node ID of the server.
+     */
+    id: string;
+    /**
+     * The node name of the server, with its datacenter appended.
+     */
+    name: string;
+    /**
+     * The server RPC port the node.
+     */
+    port: number;
+    /**
+     * The protocol version being spoken by the node.
+     */
+    protocol: number;
+    /**
+     * Role is always `"server"` since only Consul servers can participate
+     * in network areas.
+     */
+    role: string;
+    /**
+     * An estimated network round trip time from the server answering the
+     * query to the given server, in nanoseconds. This is computed using network
+     * coordinates.
+     */
+    rtt: number;
+    /**
+     * The current health status of the node, as determined by the
+     * network area distributed failure detector. This will be `"alive"`, `"leaving"`,
+     * or `"failed"`. A `"failed"` status means that other servers are not able to
+     * probe this server over its server RPC interface.
+     */
+    status: string;
+}
+
 export interface GetNodesNode {
     address: string;
     /**

@@ -25,6 +25,13 @@ type PreparedQuery struct {
 	// Options for controlling behavior when no healthy
 	// nodes are available in the local DC.
 	Failover PreparedQueryFailoverPtrOutput `pulumi:"failover"`
+	// Specifies a list of check IDs that should be
+	// ignored when filtering unhealthy instances. This is mostly useful in an
+	// emergency or as a temporary measure when a health check is found to be
+	// unreliable. Being able to ignore it in centrally-defined queries can be
+	// simpler than de-registering the check as an interim solution until the check
+	// can be fixed.
+	IgnoreCheckIds pulumi.StringArrayOutput `pulumi:"ignoreCheckIds"`
 	// The name of the prepared query. Used to identify
 	// the prepared query during requests. Can be specified as an empty string
 	// to configure the query as a catch-all.
@@ -34,11 +41,19 @@ type PreparedQuery struct {
 	// `_agent` value can be used to always sort nearest the node servicing the
 	// request.
 	Near pulumi.StringPtrOutput `pulumi:"near"`
+	// Specifies a list of user-defined key/value pairs that
+	// will be used for filtering the query results to nodes with the given metadata
+	// values present.
+	NodeMeta pulumi.StringMapOutput `pulumi:"nodeMeta"`
 	// When `true`, the prepared query will only
 	// return nodes with passing health checks in the result.
 	OnlyPassing pulumi.BoolPtrOutput `pulumi:"onlyPassing"`
 	// The name of the service to query.
 	Service pulumi.StringOutput `pulumi:"service"`
+	// Specifies a list of user-defined key/value pairs
+	// that will be used for filtering the query results to services with the given
+	// metadata values present.
+	ServiceMeta pulumi.StringMapOutput `pulumi:"serviceMeta"`
 	// The name of the Consul session to tie this query's
 	// lifetime to.  This is an advanced parameter that should not be used without a
 	// complete understanding of Consul sessions and the implications of their use
@@ -103,6 +118,13 @@ type preparedQueryState struct {
 	// Options for controlling behavior when no healthy
 	// nodes are available in the local DC.
 	Failover *PreparedQueryFailover `pulumi:"failover"`
+	// Specifies a list of check IDs that should be
+	// ignored when filtering unhealthy instances. This is mostly useful in an
+	// emergency or as a temporary measure when a health check is found to be
+	// unreliable. Being able to ignore it in centrally-defined queries can be
+	// simpler than de-registering the check as an interim solution until the check
+	// can be fixed.
+	IgnoreCheckIds []string `pulumi:"ignoreCheckIds"`
 	// The name of the prepared query. Used to identify
 	// the prepared query during requests. Can be specified as an empty string
 	// to configure the query as a catch-all.
@@ -112,11 +134,19 @@ type preparedQueryState struct {
 	// `_agent` value can be used to always sort nearest the node servicing the
 	// request.
 	Near *string `pulumi:"near"`
+	// Specifies a list of user-defined key/value pairs that
+	// will be used for filtering the query results to nodes with the given metadata
+	// values present.
+	NodeMeta map[string]string `pulumi:"nodeMeta"`
 	// When `true`, the prepared query will only
 	// return nodes with passing health checks in the result.
 	OnlyPassing *bool `pulumi:"onlyPassing"`
 	// The name of the service to query.
 	Service *string `pulumi:"service"`
+	// Specifies a list of user-defined key/value pairs
+	// that will be used for filtering the query results to services with the given
+	// metadata values present.
+	ServiceMeta map[string]string `pulumi:"serviceMeta"`
 	// The name of the Consul session to tie this query's
 	// lifetime to.  This is an advanced parameter that should not be used without a
 	// complete understanding of Consul sessions and the implications of their use
@@ -151,6 +181,13 @@ type PreparedQueryState struct {
 	// Options for controlling behavior when no healthy
 	// nodes are available in the local DC.
 	Failover PreparedQueryFailoverPtrInput
+	// Specifies a list of check IDs that should be
+	// ignored when filtering unhealthy instances. This is mostly useful in an
+	// emergency or as a temporary measure when a health check is found to be
+	// unreliable. Being able to ignore it in centrally-defined queries can be
+	// simpler than de-registering the check as an interim solution until the check
+	// can be fixed.
+	IgnoreCheckIds pulumi.StringArrayInput
 	// The name of the prepared query. Used to identify
 	// the prepared query during requests. Can be specified as an empty string
 	// to configure the query as a catch-all.
@@ -160,11 +197,19 @@ type PreparedQueryState struct {
 	// `_agent` value can be used to always sort nearest the node servicing the
 	// request.
 	Near pulumi.StringPtrInput
+	// Specifies a list of user-defined key/value pairs that
+	// will be used for filtering the query results to nodes with the given metadata
+	// values present.
+	NodeMeta pulumi.StringMapInput
 	// When `true`, the prepared query will only
 	// return nodes with passing health checks in the result.
 	OnlyPassing pulumi.BoolPtrInput
 	// The name of the service to query.
 	Service pulumi.StringPtrInput
+	// Specifies a list of user-defined key/value pairs
+	// that will be used for filtering the query results to services with the given
+	// metadata values present.
+	ServiceMeta pulumi.StringMapInput
 	// The name of the Consul session to tie this query's
 	// lifetime to.  This is an advanced parameter that should not be used without a
 	// complete understanding of Consul sessions and the implications of their use
@@ -203,6 +248,13 @@ type preparedQueryArgs struct {
 	// Options for controlling behavior when no healthy
 	// nodes are available in the local DC.
 	Failover *PreparedQueryFailover `pulumi:"failover"`
+	// Specifies a list of check IDs that should be
+	// ignored when filtering unhealthy instances. This is mostly useful in an
+	// emergency or as a temporary measure when a health check is found to be
+	// unreliable. Being able to ignore it in centrally-defined queries can be
+	// simpler than de-registering the check as an interim solution until the check
+	// can be fixed.
+	IgnoreCheckIds []string `pulumi:"ignoreCheckIds"`
 	// The name of the prepared query. Used to identify
 	// the prepared query during requests. Can be specified as an empty string
 	// to configure the query as a catch-all.
@@ -212,11 +264,19 @@ type preparedQueryArgs struct {
 	// `_agent` value can be used to always sort nearest the node servicing the
 	// request.
 	Near *string `pulumi:"near"`
+	// Specifies a list of user-defined key/value pairs that
+	// will be used for filtering the query results to nodes with the given metadata
+	// values present.
+	NodeMeta map[string]string `pulumi:"nodeMeta"`
 	// When `true`, the prepared query will only
 	// return nodes with passing health checks in the result.
 	OnlyPassing *bool `pulumi:"onlyPassing"`
 	// The name of the service to query.
 	Service string `pulumi:"service"`
+	// Specifies a list of user-defined key/value pairs
+	// that will be used for filtering the query results to services with the given
+	// metadata values present.
+	ServiceMeta map[string]string `pulumi:"serviceMeta"`
 	// The name of the Consul session to tie this query's
 	// lifetime to.  This is an advanced parameter that should not be used without a
 	// complete understanding of Consul sessions and the implications of their use
@@ -252,6 +312,13 @@ type PreparedQueryArgs struct {
 	// Options for controlling behavior when no healthy
 	// nodes are available in the local DC.
 	Failover PreparedQueryFailoverPtrInput
+	// Specifies a list of check IDs that should be
+	// ignored when filtering unhealthy instances. This is mostly useful in an
+	// emergency or as a temporary measure when a health check is found to be
+	// unreliable. Being able to ignore it in centrally-defined queries can be
+	// simpler than de-registering the check as an interim solution until the check
+	// can be fixed.
+	IgnoreCheckIds pulumi.StringArrayInput
 	// The name of the prepared query. Used to identify
 	// the prepared query during requests. Can be specified as an empty string
 	// to configure the query as a catch-all.
@@ -261,11 +328,19 @@ type PreparedQueryArgs struct {
 	// `_agent` value can be used to always sort nearest the node servicing the
 	// request.
 	Near pulumi.StringPtrInput
+	// Specifies a list of user-defined key/value pairs that
+	// will be used for filtering the query results to nodes with the given metadata
+	// values present.
+	NodeMeta pulumi.StringMapInput
 	// When `true`, the prepared query will only
 	// return nodes with passing health checks in the result.
 	OnlyPassing pulumi.BoolPtrInput
 	// The name of the service to query.
 	Service pulumi.StringInput
+	// Specifies a list of user-defined key/value pairs
+	// that will be used for filtering the query results to services with the given
+	// metadata values present.
+	ServiceMeta pulumi.StringMapInput
 	// The name of the Consul session to tie this query's
 	// lifetime to.  This is an advanced parameter that should not be used without a
 	// complete understanding of Consul sessions and the implications of their use

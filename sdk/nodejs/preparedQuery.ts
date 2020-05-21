@@ -54,6 +54,15 @@ export class PreparedQuery extends pulumi.CustomResource {
      */
     public readonly failover!: pulumi.Output<outputs.PreparedQueryFailover | undefined>;
     /**
+     * Specifies a list of check IDs that should be
+     * ignored when filtering unhealthy instances. This is mostly useful in an
+     * emergency or as a temporary measure when a health check is found to be
+     * unreliable. Being able to ignore it in centrally-defined queries can be
+     * simpler than de-registering the check as an interim solution until the check
+     * can be fixed.
+     */
+    public readonly ignoreCheckIds!: pulumi.Output<string[] | undefined>;
+    /**
      * The name of the prepared query. Used to identify
      * the prepared query during requests. Can be specified as an empty string
      * to configure the query as a catch-all.
@@ -67,6 +76,12 @@ export class PreparedQuery extends pulumi.CustomResource {
      */
     public readonly near!: pulumi.Output<string | undefined>;
     /**
+     * Specifies a list of user-defined key/value pairs that
+     * will be used for filtering the query results to nodes with the given metadata
+     * values present.
+     */
+    public readonly nodeMeta!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * When `true`, the prepared query will only
      * return nodes with passing health checks in the result.
      */
@@ -75,6 +90,12 @@ export class PreparedQuery extends pulumi.CustomResource {
      * The name of the service to query.
      */
     public readonly service!: pulumi.Output<string>;
+    /**
+     * Specifies a list of user-defined key/value pairs
+     * that will be used for filtering the query results to services with the given
+     * metadata values present.
+     */
+    public readonly serviceMeta!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The name of the Consul session to tie this query's
      * lifetime to.  This is an advanced parameter that should not be used without a
@@ -121,10 +142,13 @@ export class PreparedQuery extends pulumi.CustomResource {
             inputs["datacenter"] = state ? state.datacenter : undefined;
             inputs["dns"] = state ? state.dns : undefined;
             inputs["failover"] = state ? state.failover : undefined;
+            inputs["ignoreCheckIds"] = state ? state.ignoreCheckIds : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["near"] = state ? state.near : undefined;
+            inputs["nodeMeta"] = state ? state.nodeMeta : undefined;
             inputs["onlyPassing"] = state ? state.onlyPassing : undefined;
             inputs["service"] = state ? state.service : undefined;
+            inputs["serviceMeta"] = state ? state.serviceMeta : undefined;
             inputs["session"] = state ? state.session : undefined;
             inputs["storedToken"] = state ? state.storedToken : undefined;
             inputs["tags"] = state ? state.tags : undefined;
@@ -139,10 +163,13 @@ export class PreparedQuery extends pulumi.CustomResource {
             inputs["datacenter"] = args ? args.datacenter : undefined;
             inputs["dns"] = args ? args.dns : undefined;
             inputs["failover"] = args ? args.failover : undefined;
+            inputs["ignoreCheckIds"] = args ? args.ignoreCheckIds : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["near"] = args ? args.near : undefined;
+            inputs["nodeMeta"] = args ? args.nodeMeta : undefined;
             inputs["onlyPassing"] = args ? args.onlyPassing : undefined;
             inputs["service"] = args ? args.service : undefined;
+            inputs["serviceMeta"] = args ? args.serviceMeta : undefined;
             inputs["session"] = args ? args.session : undefined;
             inputs["storedToken"] = args ? args.storedToken : undefined;
             inputs["tags"] = args ? args.tags : undefined;
@@ -185,6 +212,15 @@ export interface PreparedQueryState {
      */
     readonly failover?: pulumi.Input<inputs.PreparedQueryFailover>;
     /**
+     * Specifies a list of check IDs that should be
+     * ignored when filtering unhealthy instances. This is mostly useful in an
+     * emergency or as a temporary measure when a health check is found to be
+     * unreliable. Being able to ignore it in centrally-defined queries can be
+     * simpler than de-registering the check as an interim solution until the check
+     * can be fixed.
+     */
+    readonly ignoreCheckIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * The name of the prepared query. Used to identify
      * the prepared query during requests. Can be specified as an empty string
      * to configure the query as a catch-all.
@@ -198,6 +234,12 @@ export interface PreparedQueryState {
      */
     readonly near?: pulumi.Input<string>;
     /**
+     * Specifies a list of user-defined key/value pairs that
+     * will be used for filtering the query results to nodes with the given metadata
+     * values present.
+     */
+    readonly nodeMeta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * When `true`, the prepared query will only
      * return nodes with passing health checks in the result.
      */
@@ -206,6 +248,12 @@ export interface PreparedQueryState {
      * The name of the service to query.
      */
     readonly service?: pulumi.Input<string>;
+    /**
+     * Specifies a list of user-defined key/value pairs
+     * that will be used for filtering the query results to services with the given
+     * metadata values present.
+     */
+    readonly serviceMeta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the Consul session to tie this query's
      * lifetime to.  This is an advanced parameter that should not be used without a
@@ -262,6 +310,15 @@ export interface PreparedQueryArgs {
      */
     readonly failover?: pulumi.Input<inputs.PreparedQueryFailover>;
     /**
+     * Specifies a list of check IDs that should be
+     * ignored when filtering unhealthy instances. This is mostly useful in an
+     * emergency or as a temporary measure when a health check is found to be
+     * unreliable. Being able to ignore it in centrally-defined queries can be
+     * simpler than de-registering the check as an interim solution until the check
+     * can be fixed.
+     */
+    readonly ignoreCheckIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * The name of the prepared query. Used to identify
      * the prepared query during requests. Can be specified as an empty string
      * to configure the query as a catch-all.
@@ -275,6 +332,12 @@ export interface PreparedQueryArgs {
      */
     readonly near?: pulumi.Input<string>;
     /**
+     * Specifies a list of user-defined key/value pairs that
+     * will be used for filtering the query results to nodes with the given metadata
+     * values present.
+     */
+    readonly nodeMeta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * When `true`, the prepared query will only
      * return nodes with passing health checks in the result.
      */
@@ -283,6 +346,12 @@ export interface PreparedQueryArgs {
      * The name of the service to query.
      */
     readonly service: pulumi.Input<string>;
+    /**
+     * Specifies a list of user-defined key/value pairs
+     * that will be used for filtering the query results to services with the given
+     * metadata values present.
+     */
+    readonly serviceMeta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the Consul session to tie this query's
      * lifetime to.  This is an advanced parameter that should not be used without a

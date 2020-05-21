@@ -177,6 +177,16 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 			"consul_service": {Tok: makeResource(mainMod, "Service")},
+			"consul_license": {
+				Tok: makeResource(mainMod, "License"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"license": {
+						CSharpName: "ConsulLicense",
+					},
+				},
+			},
+			"consul_namespace":    {Tok: makeResource(mainMod, "Namespace")},
+			"consul_network_area": {Tok: makeResource(mainMod, "NetworkArea")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"consul_acl_auth_method":     {Tok: makeDataSource(mainMod, "getAclAuthMethod")},
@@ -198,11 +208,13 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"consul_keys":           {Tok: makeDataSource(mainMod, "getKeys")},
-			"consul_nodes":          {Tok: makeDataSource(mainMod, "getNodes")},
-			"consul_service":        {Tok: makeDataSource(mainMod, "getService")},
-			"consul_service_health": {Tok: makeDataSource(mainMod, "getServiceHealth")},
-			"consul_services":       {Tok: makeDataSource(mainMod, "getServices")},
+			"consul_keys":                 {Tok: makeDataSource(mainMod, "getKeys")},
+			"consul_nodes":                {Tok: makeDataSource(mainMod, "getNodes")},
+			"consul_service":              {Tok: makeDataSource(mainMod, "getService")},
+			"consul_service_health":       {Tok: makeDataSource(mainMod, "getServiceHealth")},
+			"consul_services":             {Tok: makeDataSource(mainMod, "getServices")},
+			"consul_network_area_members": {Tok: makeDataSource(mainMod, "getNetworkAreaMembers")},
+			"consul_network_segments":     {Tok: makeDataSource(mainMod, "getNetworkSegments")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{

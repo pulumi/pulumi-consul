@@ -36,6 +36,15 @@ class PreparedQuery(pulumi.CustomResource):
       * `nearestN` (`float`) - Return results from this many datacenters,
         sorted in ascending order of estimated RTT.
     """
+    ignore_check_ids: pulumi.Output[list]
+    """
+    Specifies a list of check IDs that should be
+    ignored when filtering unhealthy instances. This is mostly useful in an
+    emergency or as a temporary measure when a health check is found to be
+    unreliable. Being able to ignore it in centrally-defined queries can be
+    simpler than de-registering the check as an interim solution until the check
+    can be fixed.
+    """
     name: pulumi.Output[str]
     """
     The name of the prepared query. Used to identify
@@ -49,6 +58,12 @@ class PreparedQuery(pulumi.CustomResource):
     `_agent` value can be used to always sort nearest the node servicing the
     request.
     """
+    node_meta: pulumi.Output[dict]
+    """
+    Specifies a list of user-defined key/value pairs that
+    will be used for filtering the query results to nodes with the given metadata
+    values present.
+    """
     only_passing: pulumi.Output[bool]
     """
     When `true`, the prepared query will only
@@ -57,6 +72,12 @@ class PreparedQuery(pulumi.CustomResource):
     service: pulumi.Output[str]
     """
     The name of the service to query.
+    """
+    service_meta: pulumi.Output[dict]
+    """
+    Specifies a list of user-defined key/value pairs
+    that will be used for filtering the query results to services with the given
+    metadata values present.
     """
     session: pulumi.Output[str]
     """
@@ -92,7 +113,7 @@ class PreparedQuery(pulumi.CustomResource):
     The ACL token to use when saving the prepared query.
     This overrides the token that the agent provides by default.
     """
-    def __init__(__self__, resource_name, opts=None, connect=None, datacenter=None, dns=None, failover=None, name=None, near=None, only_passing=None, service=None, session=None, stored_token=None, tags=None, template=None, token=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, connect=None, datacenter=None, dns=None, failover=None, ignore_check_ids=None, name=None, near=None, node_meta=None, only_passing=None, service=None, service_meta=None, session=None, stored_token=None, tags=None, template=None, token=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a PreparedQuery resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
@@ -105,6 +126,12 @@ class PreparedQuery(pulumi.CustomResource):
         :param pulumi.Input[dict] dns: Settings for controlling the DNS response details.
         :param pulumi.Input[dict] failover: Options for controlling behavior when no healthy
                nodes are available in the local DC.
+        :param pulumi.Input[list] ignore_check_ids: Specifies a list of check IDs that should be
+               ignored when filtering unhealthy instances. This is mostly useful in an
+               emergency or as a temporary measure when a health check is found to be
+               unreliable. Being able to ignore it in centrally-defined queries can be
+               simpler than de-registering the check as an interim solution until the check
+               can be fixed.
         :param pulumi.Input[str] name: The name of the prepared query. Used to identify
                the prepared query during requests. Can be specified as an empty string
                to configure the query as a catch-all.
@@ -112,9 +139,15 @@ class PreparedQuery(pulumi.CustomResource):
                near using Consul's distance sorting and network coordinates. The magic
                `_agent` value can be used to always sort nearest the node servicing the
                request.
+        :param pulumi.Input[dict] node_meta: Specifies a list of user-defined key/value pairs that
+               will be used for filtering the query results to nodes with the given metadata
+               values present.
         :param pulumi.Input[bool] only_passing: When `true`, the prepared query will only
                return nodes with passing health checks in the result.
         :param pulumi.Input[str] service: The name of the service to query.
+        :param pulumi.Input[dict] service_meta: Specifies a list of user-defined key/value pairs
+               that will be used for filtering the query results to services with the given
+               metadata values present.
         :param pulumi.Input[str] session: The name of the Consul session to tie this query's
                lifetime to.  This is an advanced parameter that should not be used without a
                complete understanding of Consul sessions and the implications of their use
@@ -168,12 +201,15 @@ class PreparedQuery(pulumi.CustomResource):
             __props__['datacenter'] = datacenter
             __props__['dns'] = dns
             __props__['failover'] = failover
+            __props__['ignore_check_ids'] = ignore_check_ids
             __props__['name'] = name
             __props__['near'] = near
+            __props__['node_meta'] = node_meta
             __props__['only_passing'] = only_passing
             if service is None:
                 raise TypeError("Missing required property 'service'")
             __props__['service'] = service
+            __props__['service_meta'] = service_meta
             __props__['session'] = session
             __props__['stored_token'] = stored_token
             __props__['tags'] = tags
@@ -186,7 +222,7 @@ class PreparedQuery(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, connect=None, datacenter=None, dns=None, failover=None, name=None, near=None, only_passing=None, service=None, session=None, stored_token=None, tags=None, template=None, token=None):
+    def get(resource_name, id, opts=None, connect=None, datacenter=None, dns=None, failover=None, ignore_check_ids=None, name=None, near=None, node_meta=None, only_passing=None, service=None, service_meta=None, session=None, stored_token=None, tags=None, template=None, token=None):
         """
         Get an existing PreparedQuery resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -202,6 +238,12 @@ class PreparedQuery(pulumi.CustomResource):
         :param pulumi.Input[dict] dns: Settings for controlling the DNS response details.
         :param pulumi.Input[dict] failover: Options for controlling behavior when no healthy
                nodes are available in the local DC.
+        :param pulumi.Input[list] ignore_check_ids: Specifies a list of check IDs that should be
+               ignored when filtering unhealthy instances. This is mostly useful in an
+               emergency or as a temporary measure when a health check is found to be
+               unreliable. Being able to ignore it in centrally-defined queries can be
+               simpler than de-registering the check as an interim solution until the check
+               can be fixed.
         :param pulumi.Input[str] name: The name of the prepared query. Used to identify
                the prepared query during requests. Can be specified as an empty string
                to configure the query as a catch-all.
@@ -209,9 +251,15 @@ class PreparedQuery(pulumi.CustomResource):
                near using Consul's distance sorting and network coordinates. The magic
                `_agent` value can be used to always sort nearest the node servicing the
                request.
+        :param pulumi.Input[dict] node_meta: Specifies a list of user-defined key/value pairs that
+               will be used for filtering the query results to nodes with the given metadata
+               values present.
         :param pulumi.Input[bool] only_passing: When `true`, the prepared query will only
                return nodes with passing health checks in the result.
         :param pulumi.Input[str] service: The name of the service to query.
+        :param pulumi.Input[dict] service_meta: Specifies a list of user-defined key/value pairs
+               that will be used for filtering the query results to services with the given
+               metadata values present.
         :param pulumi.Input[str] session: The name of the Consul session to tie this query's
                lifetime to.  This is an advanced parameter that should not be used without a
                complete understanding of Consul sessions and the implications of their use
@@ -252,10 +300,13 @@ class PreparedQuery(pulumi.CustomResource):
         __props__["datacenter"] = datacenter
         __props__["dns"] = dns
         __props__["failover"] = failover
+        __props__["ignore_check_ids"] = ignore_check_ids
         __props__["name"] = name
         __props__["near"] = near
+        __props__["node_meta"] = node_meta
         __props__["only_passing"] = only_passing
         __props__["service"] = service
+        __props__["service_meta"] = service_meta
         __props__["session"] = session
         __props__["stored_token"] = stored_token
         __props__["tags"] = tags

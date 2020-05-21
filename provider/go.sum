@@ -851,8 +851,8 @@ github.com/svanharmelen/jsonapi v0.0.0-20180618144545-0c0828c3f16d/go.mod h1:BST
 github.com/tent/http-link-go v0.0.0-20130702225549-ac974c61c2f9/go.mod h1:RHkNRtSLfOK7qBTHaeSX1D6BNpI3qw7NTxsmNr4RvN8=
 github.com/terraform-providers/terraform-provider-archive v1.3.0 h1:8WzDXMwTdTd4Z7KAUjnYwopk1DgGJ/DLH0xowJ8h+/8=
 github.com/terraform-providers/terraform-provider-archive v1.3.0/go.mod h1:7oAwNW55F65KauS++/XmAnrXhLfQRTYt549eYs4zU0w=
-github.com/terraform-providers/terraform-provider-consul v1.1.1-0.20200326204544-6a3c38fc1ba8 h1:fDnKiB96mLOxLAGL8yqt24Vrpnt6HNPj5083vwK+/i0=
-github.com/terraform-providers/terraform-provider-consul v1.1.1-0.20200326204544-6a3c38fc1ba8/go.mod h1:9Wa6mvt21TS1SHBsuSrENBfSeTQDGan2uqZo8zHRWcY=
+github.com/terraform-providers/terraform-provider-consul v1.1.1-0.20200521135537-45c597fcbe0f h1:YXqFQ1nypq9UkK9ZGPxcNoY0eWrYwFMrQc0Dr2kyqW0=
+github.com/terraform-providers/terraform-provider-consul v1.1.1-0.20200521135537-45c597fcbe0f/go.mod h1:9Wa6mvt21TS1SHBsuSrENBfSeTQDGan2uqZo8zHRWcY=
 github.com/terraform-providers/terraform-provider-http v1.2.0 h1:pOP/SNlLjB18CydtTJJwzkZGkHYX3LWzIoQpYQuBdyw=
 github.com/terraform-providers/terraform-provider-http v1.2.0/go.mod h1:2Iot921OkLVSZr8FbIkvRN84ZV3w+oFKb7RlmPTQQAQ=
 github.com/terraform-providers/terraform-provider-openstack v1.15.0/go.mod h1:2aQ6n/BtChAl1y2S60vebhyJyZXBsuAI5G4+lHrT1Ew=
