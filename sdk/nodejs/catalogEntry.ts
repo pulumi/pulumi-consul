@@ -10,18 +10,18 @@ import * as utilities from "./utilities";
  * !> The `consul..CatalogEntry` resource has been deprecated in version 2.0.0 of the provider
  * and will be removed in a future release. Please read the [upgrade guide](https://www.terraform.io/docs/providers/consul/guides/upgrading.html#deprecation-of-consul_catalog_entry)
  * for more information.
- * 
+ *
  * Registers a node or service with the [Consul Catalog](https://www.consul.io/docs/agent/http/catalog.html#catalog_register).
  * Currently, defining health checks is not supported.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
- * 
+ *
  * const app = new consul.CatalogEntry("app", {
  *     address: "192.168.10.10",
  *     node: "foobar",
@@ -37,8 +37,6 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/catalog_entry.html.markdown.
  */
 export class CatalogEntry extends pulumi.CustomResource {
     /**

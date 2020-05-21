@@ -9,16 +9,16 @@ import * as utilities from "./utilities";
 /**
  * The `consul..Keys` resource reads values from the Consul key/value store.
  * This is a powerful way dynamically set values in templates.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
  * import * as consul from "@pulumi/consul";
- * 
+ *
  * const appKeys = pulumi.output(consul.getKeys({
  *     datacenter: "nyc1",
  *     // Read the launch AMI from Consul
@@ -34,8 +34,6 @@ import * as utilities from "./utilities";
  *     ami: appKeys.var.ami,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/keys.html.markdown.
  */
 export function getKeys(args?: GetKeysArgs, opts?: pulumi.InvokeOptions): Promise<GetKeysResult> {
     args = args || {};

@@ -9,26 +9,24 @@ import * as utilities from "./utilities";
 /**
  * The `consul..AclToken` data source returns the information related to the
  * `consul..AclToken` resource with the exception of its secret ID.
- * 
+ *
  * If you want to get the secret ID associated with a token, use the
  * [`consul..getAclTokenSecretId` data source](https://www.terraform.io/docs/providers/consul/d/acl_token_secret_id.html).
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
- * 
+ *
  * const test = pulumi.output(consul.getAclToken({
  *     accessorId: "00000000-0000-0000-0000-000000000002",
  * }, { async: true }));
- * 
+ *
  * export const consulAclPolicies = test.policies!;
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/acl_token.html.markdown.
  */
 export function getAclToken(args: GetAclTokenArgs, opts?: pulumi.InvokeOptions): Promise<GetAclTokenResult> {
     if (!opts) {
