@@ -7,16 +7,16 @@ import * as utilities from "./utilities";
 /**
  * Starting with Consul 1.5.0, the consul..AclBindingRule resource can be used to
  * managed Consul ACL binding rules.
- * 
- * 
+ *
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
- * 
+ *
  * const minikube = new consul.AclAuthMethod("minikube", {
  *     config: {
  *         CACert: `-----BEGIN CERTIFICATE-----
@@ -36,8 +36,6 @@ import * as utilities from "./utilities";
  *     selector: "serviceaccount.namespace==default",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/acl_binding_rule.markdown.
  */
 export class AclBindingRule extends pulumi.CustomResource {
     /**

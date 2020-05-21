@@ -9,28 +9,26 @@ import * as utilities from "./utilities";
 /**
  * [Intentions](https://www.consul.io/docs/connect/intentions.html) are used to define
  * rules for which services may connect to one another when using [Consul Connect](https://www.consul.io/docs/connect/index.html).
- * 
+ *
  * It is appropriate to either reference existing services or specify non-existent services
  * that will be created in the future when creating intentions. This resource can be used
  * in conjunction with the `consul..Service` datasource when referencing services
  * registered on nodes that have a running Consul agent.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
- * 
+ *
  * const database = new consul.Intention("database", {
  *     action: "allow",
  *     destinationName: "db",
  *     sourceName: "api",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/intention.html.markdown.
  */
 export class Intention extends pulumi.CustomResource {
     /**

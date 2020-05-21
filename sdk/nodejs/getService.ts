@@ -12,12 +12,10 @@ import * as utilities from "./utilities";
  * service, the node's IP address, port number, node ID, etc.  By specifying a
  * different datacenter in the `queryOptions` it is possible to retrieve a list of
  * services from a different WAN-attached Consul datacenter.
- * 
+ *
  * This data source is different from the `consul..getServices` (plural) data
  * source, which provides a summary of the current Consul services.
- * 
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/service.html.markdown.
  */
 export function getService(args: GetServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceResult> {
     if (!opts) {

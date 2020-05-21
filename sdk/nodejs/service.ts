@@ -11,18 +11,18 @@ import * as utilities from "./utilities";
  * is appropriate for registering [external services](https://www.consul.io/docs/guides/external.html) and
  * can be used to create services addressable by Consul that cannot be registered
  * with a [local agent](https://www.consul.io/docs/agent/basics.html).
- * 
+ *
  * If the Consul agent is running on the node where this service is registered, it is
  * not recommended to use this resource.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
- * 
+ *
  * const compute = new consul.Node("compute", {
  *     address: "www.google.com",
  * });
@@ -32,8 +32,6 @@ import * as utilities from "./utilities";
  *     tags: ["tag0"],
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/service.html.markdown.
  */
 export class Service extends pulumi.CustomResource {
     /**

@@ -10,19 +10,19 @@ import * as utilities from "./utilities";
  * !> The `consul..AgentService` resource has been deprecated in version 2.0.0 of the provider
  * and will be removed in a future release. Please read the [upgrade guide](https://www.terraform.io/docs/providers/consul/guides/upgrading.html#deprecation-of-consul_agent_service)
  * for more information.
- * 
+ *
  * Provides access to the agent service data in Consul. This can be used to
  * define a service associated with a particular agent. Currently, defining
  * health checks for an agent service is not supported.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
- * 
+ *
  * const app = new consul.AgentService("app", {
  *     address: "www.google.com",
  *     port: 80,
@@ -32,8 +32,6 @@ import * as utilities from "./utilities";
  *     ],
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/agent_service.html.markdown.
  */
 export class AgentService extends pulumi.CustomResource {
     /**

@@ -6,16 +6,16 @@ import * as utilities from "./utilities";
 
 /**
  * Starting with Consul 1.4.0, the consul..AclPolicy can be used to managed Consul ACL policies.
- * 
- * 
+ *
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
- * 
+ *
  * const test = new consul.AclPolicy("test", {
  *     datacenters: ["dc1"],
  *     rules: `nodePrefix "" {
@@ -24,8 +24,6 @@ import * as utilities from "./utilities";
  * `,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/acl_policy.html.markdown.
  */
 export class AclPolicy extends pulumi.CustomResource {
     /**

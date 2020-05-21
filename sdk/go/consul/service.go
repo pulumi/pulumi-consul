@@ -26,8 +26,9 @@ type Service struct {
 	Checks  ServiceCheckArrayOutput `pulumi:"checks"`
 	// The datacenter to use. This overrides the
 	// agent's default datacenter and the datacenter in the provider setup.
-	Datacenter pulumi.StringOutput  `pulumi:"datacenter"`
-	External   pulumi.BoolPtrOutput `pulumi:"external"`
+	Datacenter pulumi.StringOutput `pulumi:"datacenter"`
+	// Deprecated: The external field has been deprecated and does nothing.
+	External pulumi.BoolPtrOutput `pulumi:"external"`
 	// A map of arbitrary KV metadata linked to the service
 	// instance.
 	Meta pulumi.StringMapOutput `pulumi:"meta"`
@@ -85,7 +86,8 @@ type serviceState struct {
 	// The datacenter to use. This overrides the
 	// agent's default datacenter and the datacenter in the provider setup.
 	Datacenter *string `pulumi:"datacenter"`
-	External   *bool   `pulumi:"external"`
+	// Deprecated: The external field has been deprecated and does nothing.
+	External *bool `pulumi:"external"`
 	// A map of arbitrary KV metadata linked to the service
 	// instance.
 	Meta map[string]string `pulumi:"meta"`
@@ -113,7 +115,8 @@ type ServiceState struct {
 	// The datacenter to use. This overrides the
 	// agent's default datacenter and the datacenter in the provider setup.
 	Datacenter pulumi.StringPtrInput
-	External   pulumi.BoolPtrInput
+	// Deprecated: The external field has been deprecated and does nothing.
+	External pulumi.BoolPtrInput
 	// A map of arbitrary KV metadata linked to the service
 	// instance.
 	Meta pulumi.StringMapInput
@@ -145,7 +148,8 @@ type serviceArgs struct {
 	// The datacenter to use. This overrides the
 	// agent's default datacenter and the datacenter in the provider setup.
 	Datacenter *string `pulumi:"datacenter"`
-	External   *bool   `pulumi:"external"`
+	// Deprecated: The external field has been deprecated and does nothing.
+	External *bool `pulumi:"external"`
 	// A map of arbitrary KV metadata linked to the service
 	// instance.
 	Meta map[string]string `pulumi:"meta"`
@@ -174,7 +178,8 @@ type ServiceArgs struct {
 	// The datacenter to use. This overrides the
 	// agent's default datacenter and the datacenter in the provider setup.
 	Datacenter pulumi.StringPtrInput
-	External   pulumi.BoolPtrInput
+	// Deprecated: The external field has been deprecated and does nothing.
+	External pulumi.BoolPtrInput
 	// A map of arbitrary KV metadata linked to the service
 	// instance.
 	Meta pulumi.StringMapInput

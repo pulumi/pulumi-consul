@@ -9,21 +9,19 @@ import * as utilities from "./utilities";
 /**
  * Provides access to Node data in Consul. This can be used to define a
  * node. Currently, defining health checks is not supported.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
- * 
+ *
  * const foobar = new consul.Node("foobar", {
  *     address: "192.168.10.10",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/node.html.markdown.
  */
 export class Node extends pulumi.CustomResource {
     /**

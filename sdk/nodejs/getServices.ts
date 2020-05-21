@@ -11,12 +11,10 @@ import * as utilities from "./utilities";
  * have been registered with the Consul cluster in a given datacenter.  By
  * specifying a different datacenter in the `queryOptions` it is possible to
  * retrieve a list of services from a different WAN-attached Consul datacenter.
- * 
+ *
  * This data source is different from the `consul..Service` (singular) data
  * source, which provides a detailed response about a specific Consul service.
- * 
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/d/services.html.markdown.
  */
 export function getServices(args?: GetServicesArgs, opts?: pulumi.InvokeOptions): Promise<GetServicesResult> {
     args = args || {};

@@ -10,15 +10,15 @@ import * as utilities from "./utilities";
  * The [Configuration Entry](https://www.consul.io/docs/agent/config_entries.html)
  * resource can be used to provide cluster-wide defaults for various aspects of
  * Consul.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
- * 
+ *
  * const proxyDefaults = new consul.ConfigEntry("proxyDefaults", {
  *     kind: "proxy-defaults",
  *     configJson: JSON.stringify({
@@ -85,8 +85,6 @@ import * as utilities from "./utilities";
  *     }),
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-consul/blob/master/website/docs/r/config_entry.markdown.
  */
 export class ConfigEntry extends pulumi.CustomResource {
     /**

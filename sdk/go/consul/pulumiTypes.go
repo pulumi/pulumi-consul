@@ -391,8 +391,9 @@ type KeysKey struct {
 	Delete *bool `pulumi:"delete"`
 	// An [unsigned integer value](https://www.consul.io/api/kv.html#flags-1)
 	// to attach to the key (defaults to 0).
-	Flags *int    `pulumi:"flags"`
-	Name  *string `pulumi:"name"`
+	Flags *int `pulumi:"flags"`
+	// Deprecated: Using consul_keys resource to *read* is deprecated; please use consul_keys data source instead
+	Name *string `pulumi:"name"`
 	// This is the path in Consul that should be written to.
 	Path string `pulumi:"path"`
 	// The value to write to the given path.
@@ -420,8 +421,9 @@ type KeysKeyArgs struct {
 	Delete pulumi.BoolPtrInput `pulumi:"delete"`
 	// An [unsigned integer value](https://www.consul.io/api/kv.html#flags-1)
 	// to attach to the key (defaults to 0).
-	Flags pulumi.IntPtrInput    `pulumi:"flags"`
-	Name  pulumi.StringPtrInput `pulumi:"name"`
+	Flags pulumi.IntPtrInput `pulumi:"flags"`
+	// Deprecated: Using consul_keys resource to *read* is deprecated; please use consul_keys data source instead
+	Name pulumi.StringPtrInput `pulumi:"name"`
 	// This is the path in Consul that should be written to.
 	Path pulumi.StringInput `pulumi:"path"`
 	// The value to write to the given path.
@@ -498,6 +500,7 @@ func (o KeysKeyOutput) Flags() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v KeysKey) *int { return v.Flags }).(pulumi.IntPtrOutput)
 }
 
+// Deprecated: Using consul_keys resource to *read* is deprecated; please use consul_keys data source instead
 func (o KeysKeyOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KeysKey) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
