@@ -1205,6 +1205,113 @@
                 "path"
             ]
         },
+        "consul:/getNetworkAreaMembersMember:getNetworkAreaMembersMember": {
+            "properties": {
+                "address": {
+                    "type": "string",
+                    "description": "The IP address of the server.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "build": {
+                    "type": "string",
+                    "description": "The Consul version running on the node.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "datacenter": {
+                    "type": "string",
+                    "description": "The datacenter to use. This overrides the\nagent's default datacenter and the datacenter in the provider setup.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The node ID of the server.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The node name of the server, with its datacenter appended.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "The server RPC port the node.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "protocol": {
+                    "type": "integer",
+                    "description": "The protocol version being spoken by the node.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "role": {
+                    "type": "string",
+                    "description": "Role is always `\"server\"` since only Consul servers can participate\nin network areas.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "rtt": {
+                    "type": "integer",
+                    "description": "An estimated network round trip time from the server answering the\nquery to the given server, in nanoseconds. This is computed using network\ncoordinates.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "status": {
+                    "type": "string",
+                    "description": "The current health status of the node, as determined by the\nnetwork area distributed failure detector. This will be `\"alive\"`, `\"leaving\"`,\nor `\"failed\"`. A `\"failed\"` status means that other servers are not able to\nprobe this server over its server RPC interface.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "address",
+                "build",
+                "datacenter",
+                "id",
+                "name",
+                "port",
+                "protocol",
+                "role",
+                "rtt",
+                "status"
+            ]
+        },
         "consul:/getNodesNode:getNodesNode": {
             "properties": {
                 "address": {
@@ -3205,6 +3312,373 @@
                 "type": "object"
             }
         },
+        "consul:index/license:License": {
+            "description": "\u003e **NOTE:** This feature requires [Consul Enterprise](https://www.consul.io/docs/enterprise/index.html).\n\nThe `consul..License` resource provides datacenter-level management of\nthe Consul Enterprise license. If ACLs are enabled then a token with operator\nprivileges may be required in order to use this command.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "properties": {
+                "customerId": {
+                    "type": "string",
+                    "description": "The ID of the customer the license is attached to.\n"
+                },
+                "datacenter": {
+                    "type": "string",
+                    "description": "The datacenter to use. This overrides the\nagent's default datacenter and the datacenter in the provider setup.\n"
+                },
+                "expirationTime": {
+                    "type": "string",
+                    "description": "The expiration time of the license.\n"
+                },
+                "features": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The features for which the license is valid.\n"
+                },
+                "flags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "The metadata attached to the license.\n"
+                },
+                "installationId": {
+                    "type": "string",
+                    "description": "The ID of the current installation.\n"
+                },
+                "issueTime": {
+                    "type": "string",
+                    "description": "The date the license was issued.\n"
+                },
+                "license": {
+                    "type": "string",
+                    "description": "The Consul license to use.\n",
+                    "language": {
+                        "csharp": {
+                            "name": "ConsulLicense"
+                        }
+                    }
+                },
+                "licenseId": {
+                    "type": "string",
+                    "description": "The ID of the license used.\n"
+                },
+                "product": {
+                    "type": "string",
+                    "description": "The product for which the license is valid.\n"
+                },
+                "startTime": {
+                    "type": "string",
+                    "description": "The start time of the license.\n"
+                },
+                "valid": {
+                    "type": "boolean",
+                    "description": "Whether the license is valid.\n"
+                },
+                "warnings": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of warning messages regarding the license validity.\n"
+                }
+            },
+            "required": [
+                "customerId",
+                "expirationTime",
+                "features",
+                "flags",
+                "installationId",
+                "issueTime",
+                "license",
+                "licenseId",
+                "product",
+                "startTime",
+                "valid",
+                "warnings"
+            ],
+            "inputProperties": {
+                "datacenter": {
+                    "type": "string",
+                    "description": "The datacenter to use. This overrides the\nagent's default datacenter and the datacenter in the provider setup.\n"
+                },
+                "license": {
+                    "type": "string",
+                    "description": "The Consul license to use.\n",
+                    "language": {
+                        "csharp": {
+                            "name": "ConsulLicense"
+                        }
+                    }
+                }
+            },
+            "requiredInputs": [
+                "license"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering License resources.\n",
+                "properties": {
+                    "customerId": {
+                        "type": "string",
+                        "description": "The ID of the customer the license is attached to.\n"
+                    },
+                    "datacenter": {
+                        "type": "string",
+                        "description": "The datacenter to use. This overrides the\nagent's default datacenter and the datacenter in the provider setup.\n"
+                    },
+                    "expirationTime": {
+                        "type": "string",
+                        "description": "The expiration time of the license.\n"
+                    },
+                    "features": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The features for which the license is valid.\n"
+                    },
+                    "flags": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "The metadata attached to the license.\n"
+                    },
+                    "installationId": {
+                        "type": "string",
+                        "description": "The ID of the current installation.\n"
+                    },
+                    "issueTime": {
+                        "type": "string",
+                        "description": "The date the license was issued.\n"
+                    },
+                    "license": {
+                        "type": "string",
+                        "description": "The Consul license to use.\n",
+                        "language": {
+                            "csharp": {
+                                "name": "ConsulLicense"
+                            }
+                        }
+                    },
+                    "licenseId": {
+                        "type": "string",
+                        "description": "The ID of the license used.\n"
+                    },
+                    "product": {
+                        "type": "string",
+                        "description": "The product for which the license is valid.\n"
+                    },
+                    "startTime": {
+                        "type": "string",
+                        "description": "The start time of the license.\n"
+                    },
+                    "valid": {
+                        "type": "boolean",
+                        "description": "Whether the license is valid.\n"
+                    },
+                    "warnings": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of warning messages regarding the license validity.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "consul:index/namespace:Namespace": {
+            "description": "\u003e **NOTE:** This feature requires Consul Enterprise.\n\nThe `consul..Namespace` resource provides isolated [Consul Enterprise Namespaces](https://www.consul.io/docs/enterprise/namespaces/index.html).\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "Free form namespace description.\n"
+                },
+                "meta": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Specifies arbitrary KV metadata to associate with the\nnamespace.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The namespace name.\n"
+                },
+                "policyDefaults": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The list of default policies that should be\napplied to all tokens created in this namespace.\n"
+                },
+                "roleDefaults": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The list of default roles that should be applied\nto all tokens created in this namespace.\n"
+                }
+            },
+            "required": [
+                "name"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "Free form namespace description.\n"
+                },
+                "meta": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Specifies arbitrary KV metadata to associate with the\nnamespace.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The namespace name.\n"
+                },
+                "policyDefaults": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The list of default policies that should be\napplied to all tokens created in this namespace.\n"
+                },
+                "roleDefaults": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The list of default roles that should be applied\nto all tokens created in this namespace.\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Namespace resources.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "Free form namespace description.\n"
+                    },
+                    "meta": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Specifies arbitrary KV metadata to associate with the\nnamespace.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The namespace name.\n"
+                    },
+                    "policyDefaults": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The list of default policies that should be\napplied to all tokens created in this namespace.\n"
+                    },
+                    "roleDefaults": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The list of default roles that should be applied\nto all tokens created in this namespace.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "consul:index/networkArea:NetworkArea": {
+            "description": "\u003e **NOTE:** This feature requires [Consul Enterprise](https://www.consul.io/docs/enterprise/index.html).\n\nThe `consul..NetworkArea` resource manages a relationship between servers in two\ndifferent Consul datacenters.\n\nUnlike Consul's WAN feature, network areas use just the server RPC port for\ncommunication, and relationships can be made between independent pairs of\ndatacenters, so not all servers need to be fully connected. This allows for\ncomplex topologies among Consul datacenters like hub/spoke and more general trees.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "properties": {
+                "datacenter": {
+                    "type": "string",
+                    "description": "The datacenter to use. This overrides the\nagent's default datacenter and the datacenter in the provider setup.\n"
+                },
+                "peerDatacenter": {
+                    "type": "string",
+                    "description": "The name of the Consul datacenter that will be\njoined to form the area.\n"
+                },
+                "retryJoins": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Specifies a list of Consul servers to attempt to\njoin. Servers can be given as `IP`, `IP:port`, `hostname`, or `hostname:port`.\n"
+                },
+                "token": {
+                    "type": "string",
+                    "description": "The ACL token to use. This overrides the\ntoken that the agent provides by default.\n"
+                },
+                "useTls": {
+                    "type": "boolean",
+                    "description": "Specifies whether gossip over this area should be\nencrypted with TLS if possible. Defaults to `false`.\n"
+                }
+            },
+            "required": [
+                "datacenter",
+                "peerDatacenter"
+            ],
+            "inputProperties": {
+                "datacenter": {
+                    "type": "string",
+                    "description": "The datacenter to use. This overrides the\nagent's default datacenter and the datacenter in the provider setup.\n"
+                },
+                "peerDatacenter": {
+                    "type": "string",
+                    "description": "The name of the Consul datacenter that will be\njoined to form the area.\n"
+                },
+                "retryJoins": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Specifies a list of Consul servers to attempt to\njoin. Servers can be given as `IP`, `IP:port`, `hostname`, or `hostname:port`.\n"
+                },
+                "token": {
+                    "type": "string",
+                    "description": "The ACL token to use. This overrides the\ntoken that the agent provides by default.\n"
+                },
+                "useTls": {
+                    "type": "boolean",
+                    "description": "Specifies whether gossip over this area should be\nencrypted with TLS if possible. Defaults to `false`.\n"
+                }
+            },
+            "requiredInputs": [
+                "peerDatacenter"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering NetworkArea resources.\n",
+                "properties": {
+                    "datacenter": {
+                        "type": "string",
+                        "description": "The datacenter to use. This overrides the\nagent's default datacenter and the datacenter in the provider setup.\n"
+                    },
+                    "peerDatacenter": {
+                        "type": "string",
+                        "description": "The name of the Consul datacenter that will be\njoined to form the area.\n"
+                    },
+                    "retryJoins": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Specifies a list of Consul servers to attempt to\njoin. Servers can be given as `IP`, `IP:port`, `hostname`, or `hostname:port`.\n"
+                    },
+                    "token": {
+                        "type": "string",
+                        "description": "The ACL token to use. This overrides the\ntoken that the agent provides by default.\n"
+                    },
+                    "useTls": {
+                        "type": "boolean",
+                        "description": "Specifies whether gossip over this area should be\nencrypted with TLS if possible. Defaults to `false`.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "consul:index/node:Node": {
             "description": "Provides access to Node data in Consul. This can be used to define a\nnode. Currently, defining health checks is not supported.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as consul from \"@pulumi/consul\";\n\nconst foobar = new consul.Node(\"foobar\", {\n    address: \"192.168.10.10\",\n});\n```\n```python\nimport pulumi\nimport pulumi_consul as consul\n\nfoobar = consul.Node(\"foobar\", address=\"192.168.10.10\")\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "properties": {
@@ -3310,6 +3784,13 @@
                     "$ref": "#/types/consul:/PreparedQueryFailover:PreparedQueryFailover",
                     "description": "Options for controlling behavior when no healthy\nnodes are available in the local DC.\n"
                 },
+                "ignoreCheckIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Specifies a list of check IDs that should be\nignored when filtering unhealthy instances. This is mostly useful in an\nemergency or as a temporary measure when a health check is found to be\nunreliable. Being able to ignore it in centrally-defined queries can be\nsimpler than de-registering the check as an interim solution until the check\ncan be fixed.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "The name of the prepared query. Used to identify\nthe prepared query during requests. Can be specified as an empty string\nto configure the query as a catch-all.\n"
@@ -3318,6 +3799,13 @@
                     "type": "string",
                     "description": "Allows specifying the name of a node to sort results\nnear using Consul's distance sorting and network coordinates. The magic\n`_agent` value can be used to always sort nearest the node servicing the\nrequest.\n"
                 },
+                "nodeMeta": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Specifies a list of user-defined key/value pairs that\nwill be used for filtering the query results to nodes with the given metadata\nvalues present.\n"
+                },
                 "onlyPassing": {
                     "type": "boolean",
                     "description": "When `true`, the prepared query will only\nreturn nodes with passing health checks in the result.\n"
@@ -3325,6 +3813,13 @@
                 "service": {
                     "type": "string",
                     "description": "The name of the service to query.\n"
+                },
+                "serviceMeta": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Specifies a list of user-defined key/value pairs\nthat will be used for filtering the query results to services with the given\nmetadata values present.\n"
                 },
                 "session": {
                     "type": "string",
@@ -3371,6 +3866,13 @@
                     "$ref": "#/types/consul:/PreparedQueryFailover:PreparedQueryFailover",
                     "description": "Options for controlling behavior when no healthy\nnodes are available in the local DC.\n"
                 },
+                "ignoreCheckIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Specifies a list of check IDs that should be\nignored when filtering unhealthy instances. This is mostly useful in an\nemergency or as a temporary measure when a health check is found to be\nunreliable. Being able to ignore it in centrally-defined queries can be\nsimpler than de-registering the check as an interim solution until the check\ncan be fixed.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "The name of the prepared query. Used to identify\nthe prepared query during requests. Can be specified as an empty string\nto configure the query as a catch-all.\n"
@@ -3379,6 +3881,13 @@
                     "type": "string",
                     "description": "Allows specifying the name of a node to sort results\nnear using Consul's distance sorting and network coordinates. The magic\n`_agent` value can be used to always sort nearest the node servicing the\nrequest.\n"
                 },
+                "nodeMeta": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Specifies a list of user-defined key/value pairs that\nwill be used for filtering the query results to nodes with the given metadata\nvalues present.\n"
+                },
                 "onlyPassing": {
                     "type": "boolean",
                     "description": "When `true`, the prepared query will only\nreturn nodes with passing health checks in the result.\n"
@@ -3386,6 +3895,13 @@
                 "service": {
                     "type": "string",
                     "description": "The name of the service to query.\n"
+                },
+                "serviceMeta": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Specifies a list of user-defined key/value pairs\nthat will be used for filtering the query results to services with the given\nmetadata values present.\n"
                 },
                 "session": {
                     "type": "string",
@@ -3433,6 +3949,13 @@
                         "$ref": "#/types/consul:/PreparedQueryFailover:PreparedQueryFailover",
                         "description": "Options for controlling behavior when no healthy\nnodes are available in the local DC.\n"
                     },
+                    "ignoreCheckIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Specifies a list of check IDs that should be\nignored when filtering unhealthy instances. This is mostly useful in an\nemergency or as a temporary measure when a health check is found to be\nunreliable. Being able to ignore it in centrally-defined queries can be\nsimpler than de-registering the check as an interim solution until the check\ncan be fixed.\n"
+                    },
                     "name": {
                         "type": "string",
                         "description": "The name of the prepared query. Used to identify\nthe prepared query during requests. Can be specified as an empty string\nto configure the query as a catch-all.\n"
@@ -3441,6 +3964,13 @@
                         "type": "string",
                         "description": "Allows specifying the name of a node to sort results\nnear using Consul's distance sorting and network coordinates. The magic\n`_agent` value can be used to always sort nearest the node servicing the\nrequest.\n"
                     },
+                    "nodeMeta": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Specifies a list of user-defined key/value pairs that\nwill be used for filtering the query results to nodes with the given metadata\nvalues present.\n"
+                    },
                     "onlyPassing": {
                         "type": "boolean",
                         "description": "When `true`, the prepared query will only\nreturn nodes with passing health checks in the result.\n"
@@ -3448,6 +3978,13 @@
                     "service": {
                         "type": "string",
                         "description": "The name of the service to query.\n"
+                    },
+                    "serviceMeta": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Specifies a list of user-defined key/value pairs\nthat will be used for filtering the query results to services with the given\nmetadata values present.\n"
                     },
                     "session": {
                         "type": "string",
@@ -3978,7 +4515,7 @@
                     },
                     "secretId": {
                         "type": "string",
-                        "description": "The secret ID of the ACL token if `gpg_key` has not been set.\n"
+                        "description": "The secret ID of the ACL token if `pgp_key` has not been set.\n"
                     }
                 },
                 "type": "object",
@@ -4745,6 +5282,110 @@
                 "required": [
                     "datacenter",
                     "var",
+                    "id"
+                ]
+            }
+        },
+        "consul:index/getNetworkAreaMembers:getNetworkAreaMembers": {
+            "description": "\u003e **NOTE:** This feature requires [Consul Enterprise](https://www.consul.io/docs/enterprise/index.html).\n\nThe `consul..getNetworkAreaMembers` data source provides a list of the Consul\nservers present in a specific network area.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getNetworkAreaMembers.\n",
+                "properties": {
+                    "datacenter": {
+                        "type": "string",
+                        "description": "The datacenter to use. This overrides the\nagent's default datacenter and the datacenter in the provider setup.\n"
+                    },
+                    "token": {
+                        "type": "string",
+                        "description": "The ACL token to use. This overrides the\ntoken that the agent provides by default.\n"
+                    },
+                    "uuid": {
+                        "type": "string",
+                        "description": "The UUID of the area to list.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "uuid"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getNetworkAreaMembers.\n",
+                "properties": {
+                    "datacenter": {
+                        "type": "string",
+                        "description": "The node's Consul datacenter.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "members": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/consul:/getNetworkAreaMembersMember:getNetworkAreaMembersMember"
+                        },
+                        "description": "The list of Consul servers in this network area\n"
+                    },
+                    "token": {
+                        "type": "string"
+                    },
+                    "uuid": {
+                        "type": "string",
+                        "description": "The UUID of the Network Area being queried.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "datacenter",
+                    "members",
+                    "uuid",
+                    "id"
+                ]
+            }
+        },
+        "consul:index/getNetworkSegments:getNetworkSegments": {
+            "description": "\u003e **NOTE:** This feature requires [Consul Enterprise](https://www.consul.io/docs/enterprise/index.html).\n\nThe `consul_network_segment` data source can be used to retrieve the network\nsegments defined in the configuration.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getNetworkSegments.\n",
+                "properties": {
+                    "datacenter": {
+                        "type": "string",
+                        "description": "The datacenter to use. This overrides the\nagent's default datacenter and the datacenter in the provider setup.\n"
+                    },
+                    "token": {
+                        "type": "string",
+                        "description": "The ACL token to use. This overrides the\ntoken that the agent provides by default.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getNetworkSegments.\n",
+                "properties": {
+                    "datacenter": {
+                        "type": "string",
+                        "description": "The datacenter the segments are being read from.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "segments": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The list of network segments.\n"
+                    },
+                    "token": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "datacenter",
+                    "segments",
                     "id"
                 ]
             }

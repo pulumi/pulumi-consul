@@ -40,6 +40,17 @@ namespace Pulumi.Consul
         public Output<Outputs.PreparedQueryFailover?> Failover { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies a list of check IDs that should be
+        /// ignored when filtering unhealthy instances. This is mostly useful in an
+        /// emergency or as a temporary measure when a health check is found to be
+        /// unreliable. Being able to ignore it in centrally-defined queries can be
+        /// simpler than de-registering the check as an interim solution until the check
+        /// can be fixed.
+        /// </summary>
+        [Output("ignoreCheckIds")]
+        public Output<ImmutableArray<string>> IgnoreCheckIds { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the prepared query. Used to identify
         /// the prepared query during requests. Can be specified as an empty string
         /// to configure the query as a catch-all.
@@ -57,6 +68,14 @@ namespace Pulumi.Consul
         public Output<string?> Near { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies a list of user-defined key/value pairs that
+        /// will be used for filtering the query results to nodes with the given metadata
+        /// values present.
+        /// </summary>
+        [Output("nodeMeta")]
+        public Output<ImmutableDictionary<string, string>?> NodeMeta { get; private set; } = null!;
+
+        /// <summary>
         /// When `true`, the prepared query will only
         /// return nodes with passing health checks in the result.
         /// </summary>
@@ -68,6 +87,14 @@ namespace Pulumi.Consul
         /// </summary>
         [Output("service")]
         public Output<string> Service { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies a list of user-defined key/value pairs
+        /// that will be used for filtering the query results to services with the given
+        /// metadata values present.
+        /// </summary>
+        [Output("serviceMeta")]
+        public Output<ImmutableDictionary<string, string>?> ServiceMeta { get; private set; } = null!;
 
         /// <summary>
         /// The name of the Consul session to tie this query's
@@ -182,6 +209,23 @@ namespace Pulumi.Consul
         [Input("failover")]
         public Input<Inputs.PreparedQueryFailoverArgs>? Failover { get; set; }
 
+        [Input("ignoreCheckIds")]
+        private InputList<string>? _ignoreCheckIds;
+
+        /// <summary>
+        /// Specifies a list of check IDs that should be
+        /// ignored when filtering unhealthy instances. This is mostly useful in an
+        /// emergency or as a temporary measure when a health check is found to be
+        /// unreliable. Being able to ignore it in centrally-defined queries can be
+        /// simpler than de-registering the check as an interim solution until the check
+        /// can be fixed.
+        /// </summary>
+        public InputList<string> IgnoreCheckIds
+        {
+            get => _ignoreCheckIds ?? (_ignoreCheckIds = new InputList<string>());
+            set => _ignoreCheckIds = value;
+        }
+
         /// <summary>
         /// The name of the prepared query. Used to identify
         /// the prepared query during requests. Can be specified as an empty string
@@ -199,6 +243,20 @@ namespace Pulumi.Consul
         [Input("near")]
         public Input<string>? Near { get; set; }
 
+        [Input("nodeMeta")]
+        private InputMap<string>? _nodeMeta;
+
+        /// <summary>
+        /// Specifies a list of user-defined key/value pairs that
+        /// will be used for filtering the query results to nodes with the given metadata
+        /// values present.
+        /// </summary>
+        public InputMap<string> NodeMeta
+        {
+            get => _nodeMeta ?? (_nodeMeta = new InputMap<string>());
+            set => _nodeMeta = value;
+        }
+
         /// <summary>
         /// When `true`, the prepared query will only
         /// return nodes with passing health checks in the result.
@@ -211,6 +269,20 @@ namespace Pulumi.Consul
         /// </summary>
         [Input("service", required: true)]
         public Input<string> Service { get; set; } = null!;
+
+        [Input("serviceMeta")]
+        private InputMap<string>? _serviceMeta;
+
+        /// <summary>
+        /// Specifies a list of user-defined key/value pairs
+        /// that will be used for filtering the query results to services with the given
+        /// metadata values present.
+        /// </summary>
+        public InputMap<string> ServiceMeta
+        {
+            get => _serviceMeta ?? (_serviceMeta = new InputMap<string>());
+            set => _serviceMeta = value;
+        }
 
         /// <summary>
         /// The name of the Consul session to tie this query's
@@ -292,6 +364,23 @@ namespace Pulumi.Consul
         [Input("failover")]
         public Input<Inputs.PreparedQueryFailoverGetArgs>? Failover { get; set; }
 
+        [Input("ignoreCheckIds")]
+        private InputList<string>? _ignoreCheckIds;
+
+        /// <summary>
+        /// Specifies a list of check IDs that should be
+        /// ignored when filtering unhealthy instances. This is mostly useful in an
+        /// emergency or as a temporary measure when a health check is found to be
+        /// unreliable. Being able to ignore it in centrally-defined queries can be
+        /// simpler than de-registering the check as an interim solution until the check
+        /// can be fixed.
+        /// </summary>
+        public InputList<string> IgnoreCheckIds
+        {
+            get => _ignoreCheckIds ?? (_ignoreCheckIds = new InputList<string>());
+            set => _ignoreCheckIds = value;
+        }
+
         /// <summary>
         /// The name of the prepared query. Used to identify
         /// the prepared query during requests. Can be specified as an empty string
@@ -309,6 +398,20 @@ namespace Pulumi.Consul
         [Input("near")]
         public Input<string>? Near { get; set; }
 
+        [Input("nodeMeta")]
+        private InputMap<string>? _nodeMeta;
+
+        /// <summary>
+        /// Specifies a list of user-defined key/value pairs that
+        /// will be used for filtering the query results to nodes with the given metadata
+        /// values present.
+        /// </summary>
+        public InputMap<string> NodeMeta
+        {
+            get => _nodeMeta ?? (_nodeMeta = new InputMap<string>());
+            set => _nodeMeta = value;
+        }
+
         /// <summary>
         /// When `true`, the prepared query will only
         /// return nodes with passing health checks in the result.
@@ -321,6 +424,20 @@ namespace Pulumi.Consul
         /// </summary>
         [Input("service")]
         public Input<string>? Service { get; set; }
+
+        [Input("serviceMeta")]
+        private InputMap<string>? _serviceMeta;
+
+        /// <summary>
+        /// Specifies a list of user-defined key/value pairs
+        /// that will be used for filtering the query results to services with the given
+        /// metadata values present.
+        /// </summary>
+        public InputMap<string> ServiceMeta
+        {
+            get => _serviceMeta ?? (_serviceMeta = new InputMap<string>());
+            set => _serviceMeta = value;
+        }
 
         /// <summary>
         /// The name of the Consul session to tie this query's

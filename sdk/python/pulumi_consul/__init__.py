@@ -33,6 +33,8 @@ from .get_catalog_service import *
 from .get_catalog_services import *
 from .get_key_prefix import *
 from .get_keys import *
+from .get_network_area_members import *
+from .get_network_segments import *
 from .get_nodes import *
 from .get_service import *
 from .get_service_health import *
@@ -40,6 +42,9 @@ from .get_services import *
 from .intention import *
 from .key_prefix import *
 from .keys import *
+from .license import *
+from .namespace import *
+from .network_area import *
 from .node import *
 from .prepared_query import *
 from .provider import *

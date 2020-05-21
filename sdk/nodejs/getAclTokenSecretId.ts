@@ -39,7 +39,7 @@ export interface GetAclTokenSecretIdResult {
     readonly encryptedSecretId: string;
     readonly pgpKey?: string;
     /**
-     * The secret ID of the ACL token if `gpgKey` has not been set.
+     * The secret ID of the ACL token if `pgpKey` has not been set.
      */
     readonly secretId: string;
     /**

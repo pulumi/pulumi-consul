@@ -44,7 +44,7 @@ namespace Pulumi.Consul
         public readonly string Id;
         public readonly string? PgpKey;
         /// <summary>
-        /// The secret ID of the ACL token if `gpg_key` has not been set.
+        /// The secret ID of the ACL token if `pgp_key` has not been set.
         /// </summary>
         public readonly string SecretId;
 

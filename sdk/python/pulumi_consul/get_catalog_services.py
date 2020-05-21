@@ -55,7 +55,7 @@ def get_catalog_services(query_options=None,opts=None):
       * `datacenter` (`str`)
       * `namespace` (`str`)
       * `near` (`str`)
-      * `nodeMeta` (`dict`)
+      * `node_meta` (`dict`)
       * `requireConsistent` (`bool`)
       * `token` (`str`)
       * `waitIndex` (`float`)

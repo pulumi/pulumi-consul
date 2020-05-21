@@ -95,7 +95,7 @@ def get_service(datacenter=None,name=None,query_options=None,tag=None,opts=None)
         configured to talk to.
       * `namespace` (`str`) - The namespace to lookup the service.
       * `near` (`str`)
-      * `nodeMeta` (`dict`)
+      * `node_meta` (`dict`)
       * `requireConsistent` (`bool`) - When `true` force the client to perform a
         read on at least quorum servers and verify the result is the same.  Defaults
         to `false`.

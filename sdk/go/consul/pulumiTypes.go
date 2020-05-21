@@ -2808,6 +2808,207 @@ func (o GetKeysKeyArrayOutput) Index(i pulumi.IntInput) GetKeysKeyOutput {
 	}).(GetKeysKeyOutput)
 }
 
+type GetNetworkAreaMembersMember struct {
+	// The IP address of the server.
+	Address string `pulumi:"address"`
+	// The Consul version running on the node.
+	Build string `pulumi:"build"`
+	// The datacenter to use. This overrides the
+	// agent's default datacenter and the datacenter in the provider setup.
+	Datacenter string `pulumi:"datacenter"`
+	// The node ID of the server.
+	Id string `pulumi:"id"`
+	// The node name of the server, with its datacenter appended.
+	Name string `pulumi:"name"`
+	// The server RPC port the node.
+	Port int `pulumi:"port"`
+	// The protocol version being spoken by the node.
+	Protocol int `pulumi:"protocol"`
+	// Role is always `"server"` since only Consul servers can participate
+	// in network areas.
+	Role string `pulumi:"role"`
+	// An estimated network round trip time from the server answering the
+	// query to the given server, in nanoseconds. This is computed using network
+	// coordinates.
+	Rtt int `pulumi:"rtt"`
+	// The current health status of the node, as determined by the
+	// network area distributed failure detector. This will be `"alive"`, `"leaving"`,
+	// or `"failed"`. A `"failed"` status means that other servers are not able to
+	// probe this server over its server RPC interface.
+	Status string `pulumi:"status"`
+}
+
+// GetNetworkAreaMembersMemberInput is an input type that accepts GetNetworkAreaMembersMemberArgs and GetNetworkAreaMembersMemberOutput values.
+// You can construct a concrete instance of `GetNetworkAreaMembersMemberInput` via:
+//
+// 		 GetNetworkAreaMembersMemberArgs{...}
+//
+type GetNetworkAreaMembersMemberInput interface {
+	pulumi.Input
+
+	ToGetNetworkAreaMembersMemberOutput() GetNetworkAreaMembersMemberOutput
+	ToGetNetworkAreaMembersMemberOutputWithContext(context.Context) GetNetworkAreaMembersMemberOutput
+}
+
+type GetNetworkAreaMembersMemberArgs struct {
+	// The IP address of the server.
+	Address pulumi.StringInput `pulumi:"address"`
+	// The Consul version running on the node.
+	Build pulumi.StringInput `pulumi:"build"`
+	// The datacenter to use. This overrides the
+	// agent's default datacenter and the datacenter in the provider setup.
+	Datacenter pulumi.StringInput `pulumi:"datacenter"`
+	// The node ID of the server.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The node name of the server, with its datacenter appended.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The server RPC port the node.
+	Port pulumi.IntInput `pulumi:"port"`
+	// The protocol version being spoken by the node.
+	Protocol pulumi.IntInput `pulumi:"protocol"`
+	// Role is always `"server"` since only Consul servers can participate
+	// in network areas.
+	Role pulumi.StringInput `pulumi:"role"`
+	// An estimated network round trip time from the server answering the
+	// query to the given server, in nanoseconds. This is computed using network
+	// coordinates.
+	Rtt pulumi.IntInput `pulumi:"rtt"`
+	// The current health status of the node, as determined by the
+	// network area distributed failure detector. This will be `"alive"`, `"leaving"`,
+	// or `"failed"`. A `"failed"` status means that other servers are not able to
+	// probe this server over its server RPC interface.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetNetworkAreaMembersMemberArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkAreaMembersMember)(nil)).Elem()
+}
+
+func (i GetNetworkAreaMembersMemberArgs) ToGetNetworkAreaMembersMemberOutput() GetNetworkAreaMembersMemberOutput {
+	return i.ToGetNetworkAreaMembersMemberOutputWithContext(context.Background())
+}
+
+func (i GetNetworkAreaMembersMemberArgs) ToGetNetworkAreaMembersMemberOutputWithContext(ctx context.Context) GetNetworkAreaMembersMemberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkAreaMembersMemberOutput)
+}
+
+// GetNetworkAreaMembersMemberArrayInput is an input type that accepts GetNetworkAreaMembersMemberArray and GetNetworkAreaMembersMemberArrayOutput values.
+// You can construct a concrete instance of `GetNetworkAreaMembersMemberArrayInput` via:
+//
+// 		 GetNetworkAreaMembersMemberArray{ GetNetworkAreaMembersMemberArgs{...} }
+//
+type GetNetworkAreaMembersMemberArrayInput interface {
+	pulumi.Input
+
+	ToGetNetworkAreaMembersMemberArrayOutput() GetNetworkAreaMembersMemberArrayOutput
+	ToGetNetworkAreaMembersMemberArrayOutputWithContext(context.Context) GetNetworkAreaMembersMemberArrayOutput
+}
+
+type GetNetworkAreaMembersMemberArray []GetNetworkAreaMembersMemberInput
+
+func (GetNetworkAreaMembersMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkAreaMembersMember)(nil)).Elem()
+}
+
+func (i GetNetworkAreaMembersMemberArray) ToGetNetworkAreaMembersMemberArrayOutput() GetNetworkAreaMembersMemberArrayOutput {
+	return i.ToGetNetworkAreaMembersMemberArrayOutputWithContext(context.Background())
+}
+
+func (i GetNetworkAreaMembersMemberArray) ToGetNetworkAreaMembersMemberArrayOutputWithContext(ctx context.Context) GetNetworkAreaMembersMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkAreaMembersMemberArrayOutput)
+}
+
+type GetNetworkAreaMembersMemberOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkAreaMembersMemberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkAreaMembersMember)(nil)).Elem()
+}
+
+func (o GetNetworkAreaMembersMemberOutput) ToGetNetworkAreaMembersMemberOutput() GetNetworkAreaMembersMemberOutput {
+	return o
+}
+
+func (o GetNetworkAreaMembersMemberOutput) ToGetNetworkAreaMembersMemberOutputWithContext(ctx context.Context) GetNetworkAreaMembersMemberOutput {
+	return o
+}
+
+// The IP address of the server.
+func (o GetNetworkAreaMembersMemberOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkAreaMembersMember) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// The Consul version running on the node.
+func (o GetNetworkAreaMembersMemberOutput) Build() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkAreaMembersMember) string { return v.Build }).(pulumi.StringOutput)
+}
+
+// The datacenter to use. This overrides the
+// agent's default datacenter and the datacenter in the provider setup.
+func (o GetNetworkAreaMembersMemberOutput) Datacenter() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkAreaMembersMember) string { return v.Datacenter }).(pulumi.StringOutput)
+}
+
+// The node ID of the server.
+func (o GetNetworkAreaMembersMemberOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkAreaMembersMember) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The node name of the server, with its datacenter appended.
+func (o GetNetworkAreaMembersMemberOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkAreaMembersMember) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The server RPC port the node.
+func (o GetNetworkAreaMembersMemberOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNetworkAreaMembersMember) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// The protocol version being spoken by the node.
+func (o GetNetworkAreaMembersMemberOutput) Protocol() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNetworkAreaMembersMember) int { return v.Protocol }).(pulumi.IntOutput)
+}
+
+// Role is always `"server"` since only Consul servers can participate
+// in network areas.
+func (o GetNetworkAreaMembersMemberOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkAreaMembersMember) string { return v.Role }).(pulumi.StringOutput)
+}
+
+// An estimated network round trip time from the server answering the
+// query to the given server, in nanoseconds. This is computed using network
+// coordinates.
+func (o GetNetworkAreaMembersMemberOutput) Rtt() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNetworkAreaMembersMember) int { return v.Rtt }).(pulumi.IntOutput)
+}
+
+// The current health status of the node, as determined by the
+// network area distributed failure detector. This will be `"alive"`, `"leaving"`,
+// or `"failed"`. A `"failed"` status means that other servers are not able to
+// probe this server over its server RPC interface.
+func (o GetNetworkAreaMembersMemberOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkAreaMembersMember) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetNetworkAreaMembersMemberArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkAreaMembersMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkAreaMembersMember)(nil)).Elem()
+}
+
+func (o GetNetworkAreaMembersMemberArrayOutput) ToGetNetworkAreaMembersMemberArrayOutput() GetNetworkAreaMembersMemberArrayOutput {
+	return o
+}
+
+func (o GetNetworkAreaMembersMemberArrayOutput) ToGetNetworkAreaMembersMemberArrayOutputWithContext(ctx context.Context) GetNetworkAreaMembersMemberArrayOutput {
+	return o
+}
+
+func (o GetNetworkAreaMembersMemberArrayOutput) Index(i pulumi.IntInput) GetNetworkAreaMembersMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworkAreaMembersMember {
+		return vs[0].([]GetNetworkAreaMembersMember)[vs[1].(int)]
+	}).(GetNetworkAreaMembersMemberOutput)
+}
+
 type GetNodesNode struct {
 	Address string `pulumi:"address"`
 	// The Node ID of the Consul agent.
@@ -4284,6 +4485,8 @@ func init() {
 	pulumi.RegisterOutputType(GetKeyPrefixSubkeyCollectionArrayOutput{})
 	pulumi.RegisterOutputType(GetKeysKeyOutput{})
 	pulumi.RegisterOutputType(GetKeysKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetNetworkAreaMembersMemberOutput{})
+	pulumi.RegisterOutputType(GetNetworkAreaMembersMemberArrayOutput{})
 	pulumi.RegisterOutputType(GetNodesNodeOutput{})
 	pulumi.RegisterOutputType(GetNodesNodeArrayOutput{})
 	pulumi.RegisterOutputType(GetNodesQueryOptionOutput{})
