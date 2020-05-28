@@ -18,6 +18,27 @@ namespace Pulumi.Consul
         /// segments defined in the configuration.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Consul = Pulumi.Consul;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var segmentsNetworkSegments = Output.Create(Consul.GetNetworkSegments.InvokeAsync());
+        ///         this.Segments = segmentsNetworkSegments.Apply(segmentsNetworkSegments =&gt; segmentsNetworkSegments.Segments);
+        ///     }
+        /// 
+        ///     [Output("segments")]
+        ///     public Output&lt;string&gt; Segments { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetNetworkSegmentsResult> InvokeAsync(GetNetworkSegmentsArgs? args = null, InvokeOptions? options = null)

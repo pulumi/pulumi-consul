@@ -11,6 +11,36 @@ namespace Pulumi.Consul
 {
     /// <summary>
     /// Starting with Consul 1.4.0, the consul..AclPolicy can be used to managed Consul ACL policies.
+    /// 
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Consul = Pulumi.Consul;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var test = new Consul.AclPolicy("test", new Consul.AclPolicyArgs
+    ///         {
+    ///             Datacenters = 
+    ///             {
+    ///                 "dc1",
+    ///             },
+    ///             Rules = @"node_prefix """" {
+    ///   policy = ""read""
+    /// }
+    /// 
+    /// ",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class AclPolicy : Pulumi.CustomResource
     {

@@ -16,6 +16,31 @@ namespace Pulumi.Consul
         /// [Consul ACL Role](https://www.consul.io/api/acl/roles.html).
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Consul = Pulumi.Consul;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var test = Output.Create(Consul.GetAclRole.InvokeAsync(new Consul.GetAclRoleArgs
+        ///         {
+        ///             Name = "example-role",
+        ///         }));
+        ///         this.ConsulAclRole = test.Apply(test =&gt; test.Id);
+        ///     }
+        /// 
+        ///     [Output("consulAclRole")]
+        ///     public Output&lt;string&gt; ConsulAclRole { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAclRoleResult> InvokeAsync(GetAclRoleArgs args, InvokeOptions? options = null)

@@ -17,6 +17,36 @@ namespace Pulumi.Consul
     /// 
     /// If the Consul agent is running on the node where this service is registered, it is
     /// not recommended to use this resource.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Consul = Pulumi.Consul;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var compute = new Consul.Node("compute", new Consul.NodeArgs
+    ///         {
+    ///             Address = "www.google.com",
+    ///         });
+    ///         var google = new Consul.Service("google", new Consul.ServiceArgs
+    ///         {
+    ///             Node = compute.Name,
+    ///             Port = 80,
+    ///             Tags = 
+    ///             {
+    ///                 "tag0",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Service : Pulumi.CustomResource
     {

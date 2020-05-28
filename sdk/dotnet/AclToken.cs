@@ -11,6 +11,40 @@ namespace Pulumi.Consul
 {
     /// <summary>
     /// The `consul..AclToken` resource writes an ACL token into Consul.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ### Basic usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Consul = Pulumi.Consul;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var agent = new Consul.AclPolicy("agent", new Consul.AclPolicyArgs
+    ///         {
+    ///             Rules = @"node_prefix """" {
+    ///   policy = ""read""
+    /// }
+    /// 
+    /// ",
+    ///         });
+    ///         var test = new Consul.AclToken("test", new Consul.AclTokenArgs
+    ///         {
+    ///             Description = "my test token",
+    ///             Local = true,
+    ///             Policies = 
+    ///             {
+    ///                 agent.Name,
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class AclToken : Pulumi.CustomResource
     {

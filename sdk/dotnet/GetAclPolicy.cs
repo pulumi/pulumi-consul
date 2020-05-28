@@ -17,6 +17,31 @@ namespace Pulumi.Consul
         /// 
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Consul = Pulumi.Consul;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var agent = Output.Create(Consul.GetAclPolicy.InvokeAsync(new Consul.GetAclPolicyArgs
+        ///         {
+        ///             Name = "agent",
+        ///         }));
+        ///         this.ConsulAclPolicy = agent.Apply(agent =&gt; agent.Rules);
+        ///     }
+        /// 
+        ///     [Output("consulAclPolicy")]
+        ///     public Output&lt;string&gt; ConsulAclPolicy { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAclPolicyResult> InvokeAsync(GetAclPolicyArgs args, InvokeOptions? options = null)
