@@ -49,7 +49,7 @@ build:: install_plugins provider
   	dotnet build /p:Version=${DOTNET_VERSION}
 
 install_plugins::
-	pulumi plugin install resource $(PACK) $(PROVIDER_VERSION)
+	pulumi plugin install resource $(PACK) 2.1.1
 	pulumi plugin install resource aws 2.3.0
 	pulumi plugin install resource vault 2.1.0
 
