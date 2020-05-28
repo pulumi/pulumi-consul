@@ -21,6 +21,27 @@ namespace Pulumi.Consul
         /// from the agent specified in the `provider`.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Consul = Pulumi.Consul;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var remoteAgent = Output.Create(Consul.GetAgentConfig.InvokeAsync());
+        ///         this.ConsulVersion = remoteAgent.Apply(remoteAgent =&gt; remoteAgent.Version);
+        ///     }
+        /// 
+        ///     [Output("consulVersion")]
+        ///     public Output&lt;string&gt; ConsulVersion { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAgentConfigResult> InvokeAsync(InvokeOptions? options = null)

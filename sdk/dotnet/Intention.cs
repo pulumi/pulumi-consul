@@ -17,6 +17,29 @@ namespace Pulumi.Consul
     /// that will be created in the future when creating intentions. This resource can be used
     /// in conjunction with the `consul..Service` datasource when referencing services
     /// registered on nodes that have a running Consul agent.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Consul = Pulumi.Consul;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var database = new Consul.Intention("database", new Consul.IntentionArgs
+    ///         {
+    ///             Action = "allow",
+    ///             DestinationName = "db",
+    ///             SourceName = "api",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Intention : Pulumi.CustomResource
     {

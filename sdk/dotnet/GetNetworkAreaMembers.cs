@@ -18,6 +18,39 @@ namespace Pulumi.Consul
         /// servers present in a specific network area.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Consul = Pulumi.Consul;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var dc2NetworkArea = new Consul.NetworkArea("dc2NetworkArea", new Consul.NetworkAreaArgs
+        ///         {
+        ///             PeerDatacenter = "dc2",
+        ///             RetryJoins = 
+        ///             {
+        ///                 "1.2.3.4",
+        ///             },
+        ///             UseTls = true,
+        ///         });
+        ///         var dc2NetworkAreaMembers = dc2NetworkArea.Id.Apply(id =&gt; Consul.GetNetworkAreaMembers.InvokeAsync(new Consul.GetNetworkAreaMembersArgs
+        ///         {
+        ///             Uuid = id,
+        ///         }));
+        ///         this.Members = dc2NetworkAreaMembers.Apply(dc2NetworkAreaMembers =&gt; dc2NetworkAreaMembers.Members);
+        ///     }
+        /// 
+        ///     [Output("members")]
+        ///     public Output&lt;string&gt; Members { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetNetworkAreaMembersResult> InvokeAsync(GetNetworkAreaMembersArgs args, InvokeOptions? options = null)

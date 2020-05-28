@@ -13,6 +13,31 @@ namespace Pulumi.Consul
     /// &gt; **NOTE:** This feature requires Consul Enterprise.
     /// 
     /// The `consul..Namespace` resource provides isolated [Consul Enterprise Namespaces](https://www.consul.io/docs/enterprise/namespaces/index.html).
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Consul = Pulumi.Consul;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var production = new Consul.Namespace("production", new Consul.NamespaceArgs
+    ///         {
+    ///             Description = "Production namespace",
+    ///             Meta = 
+    ///             {
+    ///                 { "foo", "bar" },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Namespace : Pulumi.CustomResource
     {

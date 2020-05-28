@@ -12,6 +12,38 @@ namespace Pulumi.Consul
     /// <summary>
     /// Starting with Consul 1.5.0, the consul..AclAuthMethod resource can be used to
     /// managed Consul ACL auth methods.
+    /// 
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Consul = Pulumi.Consul;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var minikube = new Consul.AclAuthMethod("minikube", new Consul.AclAuthMethodArgs
+    ///         {
+    ///             Config = 
+    ///             {
+    ///                 { "CACert", @"-----BEGIN CERTIFICATE-----
+    /// ...-----END CERTIFICATE-----
+    /// 
+    /// " },
+    ///                 { "Host", "https://192.0.2.42:8443" },
+    ///                 { "ServiceAccountJWT", "eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9..." },
+    ///             },
+    ///             Description = "dev minikube cluster",
+    ///             Type = "kubernetes",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class AclAuthMethod : Pulumi.CustomResource
     {

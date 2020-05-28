@@ -19,6 +19,31 @@ namespace Pulumi.Consul
         /// [`consul..getAclTokenSecretId` data source](https://www.terraform.io/docs/providers/consul/d/acl_token_secret_id.html).
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Consul = Pulumi.Consul;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var test = Output.Create(Consul.GetAclToken.InvokeAsync(new Consul.GetAclTokenArgs
+        ///         {
+        ///             AccessorId = "00000000-0000-0000-0000-000000000002",
+        ///         }));
+        ///         this.ConsulAclPolicies = test.Apply(test =&gt; test.Policies);
+        ///     }
+        /// 
+        ///     [Output("consulAclPolicies")]
+        ///     public Output&lt;string&gt; ConsulAclPolicies { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAclTokenResult> InvokeAsync(GetAclTokenArgs args, InvokeOptions? options = null)

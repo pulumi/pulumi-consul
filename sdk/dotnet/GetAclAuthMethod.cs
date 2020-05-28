@@ -16,6 +16,31 @@ namespace Pulumi.Consul
         /// [Consul Auth Method](https://www.consul.io/docs/acl/acl-auth-methods.html).
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Consul = Pulumi.Consul;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var test = Output.Create(Consul.GetAclAuthMethod.InvokeAsync(new Consul.GetAclAuthMethodArgs
+        ///         {
+        ///             Name = "minikube",
+        ///         }));
+        ///         this.ConsulAclAuthMethod = test.Apply(test =&gt; test.Config);
+        ///     }
+        /// 
+        ///     [Output("consulAclAuthMethod")]
+        ///     public Output&lt;string&gt; ConsulAclAuthMethod { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAclAuthMethodResult> InvokeAsync(GetAclAuthMethodArgs args, InvokeOptions? options = null)

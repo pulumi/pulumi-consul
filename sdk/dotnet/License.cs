@@ -15,6 +15,28 @@ namespace Pulumi.Consul
     /// The `consul..License` resource provides datacenter-level management of
     /// the Consul Enterprise license. If ACLs are enabled then a token with operator
     /// privileges may be required in order to use this command.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using System.IO;
+    /// using Pulumi;
+    /// using Consul = Pulumi.Consul;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var license = new Consul.License("license", new Consul.LicenseArgs
+    ///         {
+    ///             License = File.ReadAllText("license.hclic"),
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class License : Pulumi.CustomResource
     {

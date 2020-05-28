@@ -17,6 +17,27 @@ namespace Pulumi.Consul
         /// about the current Consul cluster.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Consul = Pulumi.Consul;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var read = Output.Create(Consul.GetAutopilotHealth.InvokeAsync());
+        ///         this.Health = read.Apply(read =&gt; read.Healthy);
+        ///     }
+        /// 
+        ///     [Output("health")]
+        ///     public Output&lt;string&gt; Health { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAutopilotHealthResult> InvokeAsync(GetAutopilotHealthArgs? args = null, InvokeOptions? options = null)
