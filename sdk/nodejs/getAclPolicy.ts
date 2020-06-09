@@ -80,14 +80,14 @@ export interface GetAclPolicyResult {
      * The description of the ACL Policy.
      */
     readonly description?: string;
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly name: string;
     readonly namespace?: string;
     /**
      * The rules associated with the ACL Policy.
      */
     readonly rules?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

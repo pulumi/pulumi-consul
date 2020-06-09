@@ -178,7 +178,15 @@
             "type": "object",
             "required": [
                 "name"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "id",
+                        "name"
+                    ]
+                }
+            }
         },
         "consul:/KeyPrefixSubkeyCollection:KeyPrefixSubkeyCollection": {
             "properties": {
@@ -275,7 +283,15 @@
             "type": "object",
             "required": [
                 "path"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "path",
+                        "value"
+                    ]
+                }
+            }
         },
         "consul:/PreparedQueryDns:PreparedQueryDns": {
             "properties": {
@@ -464,7 +480,18 @@
                 "interval",
                 "name",
                 "timeout"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "checkId",
+                        "interval",
+                        "name",
+                        "status",
+                        "timeout"
+                    ]
+                }
+            }
         },
         "consul:/ServiceCheckHeader:ServiceCheckHeader": {
             "properties": {
@@ -520,7 +547,12 @@
             "required": [
                 "id",
                 "name"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "consul:/getAclRoleServiceIdentity:getAclRoleServiceIdentity": {
             "properties": {
@@ -569,7 +601,12 @@
             "required": [
                 "id",
                 "name"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "consul:/getAutopilotHealthServer:getAutopilotHealthServer": {
             "properties": {
@@ -696,7 +733,12 @@
                 "stableSince",
                 "version",
                 "voter"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "consul:/getCatalogNodesNode:getCatalogNodesNode": {
             "properties": {
@@ -754,7 +796,12 @@
                 "meta",
                 "name",
                 "taggedAddresses"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "consul:/getCatalogNodesQueryOption:getCatalogNodesQueryOption": {
             "properties": {
@@ -1051,7 +1098,12 @@
                 "port",
                 "taggedAddresses",
                 "tags"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "consul:/getCatalogServicesQueryOption:getCatalogServicesQueryOption": {
             "properties": {
@@ -1310,7 +1362,12 @@
                 "role",
                 "rtt",
                 "status"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "consul:/getNodesNode:getNodesNode": {
             "properties": {
@@ -1369,7 +1426,12 @@
                 "meta",
                 "name",
                 "taggedAddresses"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "consul:/getNodesQueryOption:getNodesQueryOption": {
             "properties": {
@@ -1485,7 +1547,12 @@
                 "checks",
                 "node",
                 "service"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "consul:/getServiceHealthResultCheck:getServiceHealthResultCheck": {
             "properties": {
@@ -1585,7 +1652,12 @@
                 "serviceName",
                 "serviceTags",
                 "status"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "consul:/getServiceHealthResultNode:getServiceHealthResultNode": {
             "properties": {
@@ -1657,7 +1729,12 @@
                 "meta",
                 "name",
                 "taggedAddresses"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "consul:/getServiceHealthResultService:getServiceHealthResultService": {
             "properties": {
@@ -1730,7 +1807,12 @@
                 "name",
                 "port",
                 "tags"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "consul:/getServiceQueryOption:getServiceQueryOption": {
             "properties": {
@@ -1964,7 +2046,12 @@
                 "port",
                 "taggedAddresses",
                 "tags"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "consul:/getServicesQueryOption:getServicesQueryOption": {
             "properties": {
@@ -3313,7 +3400,7 @@
             }
         },
         "consul:index/license:License": {
-            "description": "\u003e **NOTE:** This feature requires [Consul Enterprise](https://www.consul.io/docs/enterprise/index.html).\n\nThe `consul..License` resource provides datacenter-level management of\nthe Consul Enterprise license. If ACLs are enabled then a token with operator\nprivileges may be required in order to use this command.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "description": "\u003e **NOTE:** This feature requires [Consul Enterprise](https://www.consul.io/docs/enterprise/index.html).\n\nThe `consul..License` resource provides datacenter-level management of\nthe Consul Enterprise license. If ACLs are enabled then a token with operator\nprivileges may be required in order to use this command.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as consul from \"@pulumi/consul\";\nimport * from \"fs\";\n\nconst license = new consul.License(\"license\", {license: fs.readFileSync(\"license.hclic\")});\n```\n```python\nimport pulumi\nimport pulumi_consul as consul\n\nlicense = consul.License(\"license\", license=(lambda path: open(path).read())(\"license.hclic\"))\n```\n```csharp\nusing System.IO;\nusing Pulumi;\nusing Consul = Pulumi.Consul;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var license = new Consul.License(\"license\", new Consul.LicenseArgs\n        {\n            License = File.ReadAllText(\"license.hclic\"),\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "properties": {
                 "customerId": {
                     "type": "string",
@@ -3488,7 +3575,7 @@
             }
         },
         "consul:index/namespace:Namespace": {
-            "description": "\u003e **NOTE:** This feature requires Consul Enterprise.\n\nThe `consul..Namespace` resource provides isolated [Consul Enterprise Namespaces](https://www.consul.io/docs/enterprise/namespaces/index.html).\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "description": "\u003e **NOTE:** This feature requires Consul Enterprise.\n\nThe `consul..Namespace` resource provides isolated [Consul Enterprise Namespaces](https://www.consul.io/docs/enterprise/namespaces/index.html).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as consul from \"@pulumi/consul\";\n\nconst production = new consul.Namespace(\"production\", {\n    description: \"Production namespace\",\n    meta: {\n        foo: \"bar\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_consul as consul\n\nproduction = consul.Namespace(\"production\",\n    description=\"Production namespace\",\n    meta={\n        \"foo\": \"bar\",\n    })\n```\n```csharp\nusing Pulumi;\nusing Consul = Pulumi.Consul;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var production = new Consul.Namespace(\"production\", new Consul.NamespaceArgs\n        {\n            Description = \"Production namespace\",\n            Meta = \n            {\n                { \"foo\", \"bar\" },\n            },\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "properties": {
                 "description": {
                     "type": "string",
@@ -3591,7 +3678,7 @@
             }
         },
         "consul:index/networkArea:NetworkArea": {
-            "description": "\u003e **NOTE:** This feature requires [Consul Enterprise](https://www.consul.io/docs/enterprise/index.html).\n\nThe `consul..NetworkArea` resource manages a relationship between servers in two\ndifferent Consul datacenters.\n\nUnlike Consul's WAN feature, network areas use just the server RPC port for\ncommunication, and relationships can be made between independent pairs of\ndatacenters, so not all servers need to be fully connected. This allows for\ncomplex topologies among Consul datacenters like hub/spoke and more general trees.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "description": "\u003e **NOTE:** This feature requires [Consul Enterprise](https://www.consul.io/docs/enterprise/index.html).\n\nThe `consul..NetworkArea` resource manages a relationship between servers in two\ndifferent Consul datacenters.\n\nUnlike Consul's WAN feature, network areas use just the server RPC port for\ncommunication, and relationships can be made between independent pairs of\ndatacenters, so not all servers need to be fully connected. This allows for\ncomplex topologies among Consul datacenters like hub/spoke and more general trees.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as consul from \"@pulumi/consul\";\n\nconst dc2 = new consul.NetworkArea(\"dc2\", {\n    peerDatacenter: \"dc2\",\n    retryJoins: [\"1.2.3.4\"],\n    useTls: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_consul as consul\n\ndc2 = consul.NetworkArea(\"dc2\",\n    peer_datacenter=\"dc2\",\n    retry_joins=[\"1.2.3.4\"],\n    use_tls=True)\n```\n```csharp\nusing Pulumi;\nusing Consul = Pulumi.Consul;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var dc2 = new Consul.NetworkArea(\"dc2\", new Consul.NetworkAreaArgs\n        {\n            PeerDatacenter = \"dc2\",\n            RetryJoins = \n            {\n                \"1.2.3.4\",\n            },\n            UseTls = true,\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "properties": {
                 "datacenter": {
                     "type": "string",
@@ -5287,7 +5374,7 @@
             }
         },
         "consul:index/getNetworkAreaMembers:getNetworkAreaMembers": {
-            "description": "\u003e **NOTE:** This feature requires [Consul Enterprise](https://www.consul.io/docs/enterprise/index.html).\n\nThe `consul..getNetworkAreaMembers` data source provides a list of the Consul\nservers present in a specific network area.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "description": "\u003e **NOTE:** This feature requires [Consul Enterprise](https://www.consul.io/docs/enterprise/index.html).\n\nThe `consul..getNetworkAreaMembers` data source provides a list of the Consul\nservers present in a specific network area.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as consul from \"@pulumi/consul\";\n\nconst dc2NetworkArea = new consul.NetworkArea(\"dc2NetworkArea\", {\n    peerDatacenter: \"dc2\",\n    retryJoins: [\"1.2.3.4\"],\n    useTls: true,\n});\nconst dc2NetworkAreaMembers = dc2NetworkArea.id.apply(id =\u003e consul.getNetworkAreaMembers({\n    uuid: id,\n}));\nexport const members = dc2NetworkAreaMembers.members;\n```\n```python\nimport pulumi\nimport pulumi_consul as consul\n\ndc2_network_area = consul.NetworkArea(\"dc2NetworkArea\",\n    peer_datacenter=\"dc2\",\n    retry_joins=[\"1.2.3.4\"],\n    use_tls=True)\ndc2_network_area_members = dc2_network_area.id.apply(lambda id: consul.get_network_area_members(uuid=id))\npulumi.export(\"members\", dc2_network_area_members.members)\n```\n```csharp\nusing Pulumi;\nusing Consul = Pulumi.Consul;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var dc2NetworkArea = new Consul.NetworkArea(\"dc2NetworkArea\", new Consul.NetworkAreaArgs\n        {\n            PeerDatacenter = \"dc2\",\n            RetryJoins = \n            {\n                \"1.2.3.4\",\n            },\n            UseTls = true,\n        });\n        var dc2NetworkAreaMembers = dc2NetworkArea.Id.Apply(id =\u003e Consul.GetNetworkAreaMembers.InvokeAsync(new Consul.GetNetworkAreaMembersArgs\n        {\n            Uuid = id,\n        }));\n        this.Members = dc2NetworkAreaMembers.Apply(dc2NetworkAreaMembers =\u003e dc2NetworkAreaMembers.Members);\n    }\n\n    [Output(\"members\")]\n    public Output\u003cstring\u003e Members { get; set; }\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getNetworkAreaMembers.\n",
                 "properties": {
@@ -5345,7 +5432,7 @@
             }
         },
         "consul:index/getNetworkSegments:getNetworkSegments": {
-            "description": "\u003e **NOTE:** This feature requires [Consul Enterprise](https://www.consul.io/docs/enterprise/index.html).\n\nThe `consul_network_segment` data source can be used to retrieve the network\nsegments defined in the configuration.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "description": "\u003e **NOTE:** This feature requires [Consul Enterprise](https://www.consul.io/docs/enterprise/index.html).\n\nThe `consul_network_segment` data source can be used to retrieve the network\nsegments defined in the configuration.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as consul from \"@pulumi/consul\";\n\nconst segmentsNetworkSegments = consul.getNetworkSegments({});\nexport const segments = segmentsNetworkSegments.then(segmentsNetworkSegments =\u003e segmentsNetworkSegments.segments);\n```\n```python\nimport pulumi\nimport pulumi_consul as consul\n\nsegments_network_segments = consul.get_network_segments()\npulumi.export(\"segments\", segments_network_segments.segments)\n```\n```csharp\nusing Pulumi;\nusing Consul = Pulumi.Consul;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var segmentsNetworkSegments = Output.Create(Consul.GetNetworkSegments.InvokeAsync());\n        this.Segments = segmentsNetworkSegments.Apply(segmentsNetworkSegments =\u003e segmentsNetworkSegments.Segments);\n    }\n\n    [Output(\"segments\")]\n    public Output\u003cstring\u003e Segments { get; set; }\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getNetworkSegments.\n",
                 "properties": {
@@ -5692,8 +5779,10 @@
                 "@types/mime": "^2.0.0",
                 "@types/node": "^8.0.25"
             },
+            "disableUnionOutputTypes": true,
             "packageDescription": "A Pulumi package for creating and managing consul resources.",
             "packageName": "",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/terraform-providers/terraform-provider-consul)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-consul` repo](https://github.com/pulumi/pulumi-consul/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-providers/terraform-provider-consul` repo](https://github.com/terraform-providers/terraform-provider-consul/issues).",
             "typescriptVersion": ""
         },
         "python": {

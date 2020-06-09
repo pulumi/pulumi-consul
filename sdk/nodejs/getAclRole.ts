@@ -77,6 +77,10 @@ export interface GetAclRoleResult {
      * The description of the ACL Role.
      */
     readonly description?: string;
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly name: string;
     readonly namespace?: string;
     /**
@@ -89,8 +93,4 @@ export interface GetAclRoleResult {
      * Role. Each entry has a `serviceName` attribute and a list of `datacenters`.
      */
     readonly serviceIdentities?: outputs.GetAclRoleServiceIdentity[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

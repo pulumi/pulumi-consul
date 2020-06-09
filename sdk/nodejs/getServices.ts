@@ -14,7 +14,6 @@ import * as utilities from "./utilities";
  *
  * This data source is different from the `consul..Service` (singular) data
  * source, which provides a detailed response about a specific Consul service.
- *
  */
 export function getServices(args?: GetServicesArgs, opts?: pulumi.InvokeOptions): Promise<GetServicesResult> {
     args = args || {};
@@ -48,11 +47,11 @@ export interface GetServicesResult {
      * The datacenter the keys are being read from to.
      */
     readonly datacenter: string;
-    readonly names: string[];
-    readonly queryOptions?: outputs.GetServicesQueryOption[];
-    readonly services: {[key: string]: string};
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly names: string[];
+    readonly queryOptions?: outputs.GetServicesQueryOption[];
+    readonly services: {[key: string]: string};
 }

@@ -41,6 +41,7 @@ export class Service extends pulumi.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ServiceState, opts?: pulumi.CustomResourceOptions): Service {
         return new Service(name, <any>state, { ...opts, id: id });
@@ -71,6 +72,9 @@ export class Service extends pulumi.CustomResource {
      * agent's default datacenter and the datacenter in the provider setup.
      */
     public readonly datacenter!: pulumi.Output<string>;
+    /**
+     * @deprecated The external field has been deprecated and does nothing.
+     */
     public readonly external!: pulumi.Output<boolean | undefined>;
     /**
      * A map of arbitrary KV metadata linked to the service
@@ -170,6 +174,9 @@ export interface ServiceState {
      * agent's default datacenter and the datacenter in the provider setup.
      */
     readonly datacenter?: pulumi.Input<string>;
+    /**
+     * @deprecated The external field has been deprecated and does nothing.
+     */
     readonly external?: pulumi.Input<boolean>;
     /**
      * A map of arbitrary KV metadata linked to the service
@@ -219,6 +226,9 @@ export interface ServiceArgs {
      * agent's default datacenter and the datacenter in the provider setup.
      */
     readonly datacenter?: pulumi.Input<string>;
+    /**
+     * @deprecated The external field has been deprecated and does nothing.
+     */
     readonly external?: pulumi.Input<boolean>;
     /**
      * A map of arbitrary KV metadata linked to the service

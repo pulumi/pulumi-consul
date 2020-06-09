@@ -37,13 +37,13 @@ export interface GetAclTokenSecretIdArgs {
 export interface GetAclTokenSecretIdResult {
     readonly accessorId: string;
     readonly encryptedSecretId: string;
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly pgpKey?: string;
     /**
      * The secret ID of the ACL token if `pgpKey` has not been set.
      */
     readonly secretId: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

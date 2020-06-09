@@ -79,14 +79,14 @@ export interface GetAclAuthMethodResult {
      * The description of the ACL Auth Method.
      */
     readonly description?: string;
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly name: string;
     readonly namespace?: string;
     /**
      * The type of the ACL Auth Method.
      */
     readonly type?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

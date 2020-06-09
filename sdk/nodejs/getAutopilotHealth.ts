@@ -65,12 +65,12 @@ export interface GetAutopilotHealthResult {
      */
     readonly healthy: boolean;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of server health information. See below for details on the
      * available information.
      */
     readonly servers: outputs.GetAutopilotHealthServer[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

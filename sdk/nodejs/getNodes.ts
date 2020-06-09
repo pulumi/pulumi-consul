@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  * been registered with the Consul cluster in a given datacenter.  By specifying a
  * different datacenter in the `queryOptions` it is possible to retrieve a list of
  * nodes from a different WAN-attached Consul datacenter.
- *
  */
 export function getNodes(args?: GetNodesArgs, opts?: pulumi.InvokeOptions): Promise<GetNodesResult> {
     args = args || {};
@@ -46,6 +45,10 @@ export interface GetNodesResult {
      */
     readonly datacenter: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of the Consul node IDs.
      */
     readonly nodeIds: string[];
@@ -59,8 +62,4 @@ export interface GetNodesResult {
      */
     readonly nodes: outputs.GetNodesNode[];
     readonly queryOptions?: outputs.GetNodesQueryOption[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

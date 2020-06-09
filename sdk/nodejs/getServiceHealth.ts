@@ -95,6 +95,10 @@ export interface GetServiceHealthResult {
      */
     readonly datacenter?: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * The name of this health-check.
      */
     readonly name: string;
@@ -122,8 +126,4 @@ export interface GetServiceHealthResult {
      */
     readonly tag?: string;
     readonly waitFor?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

@@ -14,7 +14,6 @@ import * as utilities from "./utilities";
  * The `consul..getAgentSelf` data source returns
  * [configuration and status data](https://www.consul.io/docs/agent/http/agent.html#agent_self)
  * from the agent specified in the `provider`.
- *
  */
 export function getAgentSelf(opts?: pulumi.InvokeOptions): Promise<GetAgentSelfResult> {
     if (!opts) {
@@ -135,10 +134,10 @@ export interface GetAgentSelfResult {
     readonly reconnectTimeoutLan: string;
     readonly reconnectTimeoutWan: string;
     readonly rejoinAfterLeave: boolean;
-    readonly retryJoins: string[];
     readonly retryJoinEc2: {[key: string]: string};
     readonly retryJoinGce: {[key: string]: string};
     readonly retryJoinWans: string[];
+    readonly retryJoins: string[];
     readonly retryMaxAttempts: number;
     readonly retryMaxAttemptsWan: number;
     readonly serfLanBindAddr: string;
@@ -146,8 +145,8 @@ export interface GetAgentSelfResult {
     readonly serverMode: boolean;
     readonly serverName: string;
     readonly sessionTtlMin: string;
-    readonly startJoins: string[];
     readonly startJoinWans: string[];
+    readonly startJoins: string[];
     readonly syslogFacility: string;
     readonly taggedAddresses: {[key: string]: string};
     readonly telemetry: {[key: string]: string};

@@ -75,6 +75,10 @@ export interface GetNetworkAreaMembersResult {
      */
     readonly datacenter: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * The list of Consul servers in this network area
      */
     readonly members: outputs.GetNetworkAreaMembersMember[];
@@ -83,8 +87,4 @@ export interface GetNetworkAreaMembersResult {
      * The UUID of the Network Area being queried.
      */
     readonly uuid: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

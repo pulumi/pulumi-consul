@@ -62,6 +62,10 @@ export interface GetKeyPrefixResult {
      * The datacenter the keys are being read from.
      */
     readonly datacenter: string;
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly namespace?: string;
     /**
      * the common prefix shared by all keys being read.
@@ -77,8 +81,4 @@ export interface GetKeyPrefixResult {
     readonly subkeys: {[key: string]: string};
     readonly token?: string;
     readonly var: {[key: string]: string};
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }
