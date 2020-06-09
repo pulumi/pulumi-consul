@@ -82,6 +82,10 @@ export interface GetAclTokenResult {
      */
     readonly description?: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * Whether the ACL token is local to the datacenter it was created within.
      */
     readonly local?: boolean;
@@ -91,8 +95,4 @@ export interface GetAclTokenResult {
      * an `id` and a `name` attribute.
      */
     readonly policies?: outputs.GetAclTokenPolicy[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

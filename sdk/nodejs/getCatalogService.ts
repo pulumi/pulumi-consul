@@ -37,12 +37,12 @@ export interface GetCatalogServiceArgs {
  */
 export interface GetCatalogServiceResult {
     readonly datacenter?: string;
-    readonly name: string;
-    readonly queryOptions?: outputs.GetCatalogServiceQueryOption[];
-    readonly services: outputs.GetCatalogServiceService[];
-    readonly tag?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly name: string;
+    readonly queryOptions?: outputs.GetCatalogServiceQueryOption[];
+    readonly services: outputs.GetCatalogServiceService[];
+    readonly tag?: string;
 }

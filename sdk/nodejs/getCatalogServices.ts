@@ -32,11 +32,11 @@ export interface GetCatalogServicesArgs {
  */
 export interface GetCatalogServicesResult {
     readonly datacenter: string;
-    readonly names: string[];
-    readonly queryOptions?: outputs.GetCatalogServicesQueryOption[];
-    readonly services: {[key: string]: string};
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly names: string[];
+    readonly queryOptions?: outputs.GetCatalogServicesQueryOption[];
+    readonly services: {[key: string]: string};
 }

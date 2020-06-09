@@ -64,12 +64,12 @@ export interface GetNetworkSegmentsResult {
      */
     readonly datacenter: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * The list of network segments.
      */
     readonly segments: string[];
     readonly token?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

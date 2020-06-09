@@ -87,12 +87,12 @@ export interface GetKeysResult {
      * has the value of the key.
      */
     readonly datacenter: string;
-    readonly keys?: outputs.GetKeysKey[];
-    readonly namespace?: string;
-    readonly token?: string;
-    readonly var: {[key: string]: string};
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly keys?: outputs.GetKeysKey[];
+    readonly namespace?: string;
+    readonly token?: string;
+    readonly var: {[key: string]: string};
 }

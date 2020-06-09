@@ -49,6 +49,10 @@ export interface GetAgentConfigResult {
      */
     readonly datacenter: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * The ID of the node the agent is running on
      */
     readonly nodeId: string;
@@ -68,8 +72,4 @@ export interface GetAgentConfigResult {
      * The version of the build of Consul that is running
      */
     readonly version: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

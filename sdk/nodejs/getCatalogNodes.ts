@@ -32,12 +32,12 @@ export interface GetCatalogNodesArgs {
  */
 export interface GetCatalogNodesResult {
     readonly datacenter: string;
-    readonly nodeIds: string[];
-    readonly nodeNames: string[];
-    readonly nodes: outputs.GetCatalogNodesNode[];
-    readonly queryOptions?: outputs.GetCatalogNodesQueryOption[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly nodeIds: string[];
+    readonly nodeNames: string[];
+    readonly nodes: outputs.GetCatalogNodesNode[];
+    readonly queryOptions?: outputs.GetCatalogNodesQueryOption[];
 }

@@ -3,6 +3,7 @@
 
 import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 
 export interface AclRoleServiceIdentity {
     /**
@@ -285,6 +286,9 @@ export interface KeysKey {
      * to attach to the key (defaults to 0).
      */
     flags?: pulumi.Input<number>;
+    /**
+     * @deprecated Using consul_keys resource to *read* is deprecated; please use consul_keys data source instead
+     */
     name?: pulumi.Input<string>;
     /**
      * This is the path in Consul that should be written to.
