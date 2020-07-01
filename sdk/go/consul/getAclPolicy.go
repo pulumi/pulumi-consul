@@ -7,8 +7,32 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// The `.AclPolicy` data source returns the information related to a
+// The `AclPolicy` data source returns the information related to a
 // [Consul ACL Policy](https://www.consul.io/docs/acl/acl-system.html#acl-policies).
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		agent, err := consul.LookupAclPolicy(ctx, &consul.LookupAclPolicyArgs{
+// 			Name: "agent",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("consulAclPolicy", agent.Rules)
+// 		return nil
+// 	})
+// }
+// ```
 func LookupAclPolicy(ctx *pulumi.Context, args *LookupAclPolicyArgs, opts ...pulumi.InvokeOption) (*LookupAclPolicyResult, error) {
 	var rv LookupAclPolicyResult
 	err := ctx.Invoke("consul:index/getAclPolicy:getAclPolicy", args, &rv, opts...)

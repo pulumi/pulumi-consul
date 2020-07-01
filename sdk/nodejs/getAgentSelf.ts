@@ -7,11 +7,10 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * > **Warning:** The `consul..getAgentSelf` resource has been deprecated and will be removed
+ * > **Warning:** The `consul.getAgentSelf` resource has been deprecated and will be removed
  * from a future release of the provider. Read the [upgrade instructions](https://www.terraform.io/docs/providers/consul/guides/upgrading.html#deprecation-of-consul_agent_self) for more information.
  *
- *
- * The `consul..getAgentSelf` data source returns
+ * The `consul.getAgentSelf` data source returns
  * [configuration and status data](https://www.consul.io/docs/agent/http/agent.html#agent_self)
  * from the agent specified in the `provider`.
  */

@@ -15,8 +15,66 @@ import (
 //
 // It is appropriate to either reference existing services or specify non-existent services
 // that will be created in the future when creating intentions. This resource can be used
-// in conjunction with the `.Service` datasource when referencing services
+// in conjunction with the `Service` datasource when referencing services
 // registered on nodes that have a running Consul agent.
+//
+// ## Example Usage
+//
+// Create a simplest intention with static service names:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := consul.NewIntention(ctx, "database", &consul.IntentionArgs{
+// 			Action:          pulumi.String("allow"),
+// 			DestinationName: pulumi.String("db"),
+// 			SourceName:      pulumi.String("api"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// Referencing a known service via a datasource:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := consul.NewIntention(ctx, "database", &consul.IntentionArgs{
+// 			Action:          pulumi.String("allow"),
+// 			DestinationName: pulumi.String(consul_service.Pg.Name),
+// 			SourceName:      pulumi.String("api"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = consul.LookupService(ctx, &consul.LookupServiceArgs{
+// 			Name: "postgresql",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Intention struct {
 	pulumi.CustomResourceState
 

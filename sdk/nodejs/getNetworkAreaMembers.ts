@@ -9,12 +9,10 @@ import * as utilities from "./utilities";
 /**
  * > **NOTE:** This feature requires [Consul Enterprise](https://www.consul.io/docs/enterprise/index.html).
  *
- * The `consul..getNetworkAreaMembers` data source provides a list of the Consul
+ * The `consul.getNetworkAreaMembers` data source provides a list of the Consul
  * servers present in a specific network area.
  *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

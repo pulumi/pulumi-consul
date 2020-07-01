@@ -7,15 +7,13 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The `consul..AclToken` data source returns the information related to the
- * `consul..AclToken` resource with the exception of its secret ID.
+ * The `consul.AclToken` data source returns the information related to the
+ * `consul.AclToken` resource with the exception of its secret ID.
  *
  * If you want to get the secret ID associated with a token, use the
- * [`consul..getAclTokenSecretId` data source](https://www.terraform.io/docs/providers/consul/d/acl_token_secret_id.html).
+ * [`consul.getAclTokenSecretId` data source](https://www.terraform.io/docs/providers/consul/d/acl_token_secret_id.html).
  *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

@@ -12,7 +12,7 @@ namespace Pulumi.Consul
     public static class GetAclAuthMethod
     {
         /// <summary>
-        /// The `consul..AclAuthMethod` data source returns the information related to a
+        /// The `consul.AclAuthMethod` data source returns the information related to a
         /// [Consul Auth Method](https://www.consul.io/docs/acl/acl-auth-methods.html).
         /// 
         /// {{% examples %}}
@@ -38,8 +38,6 @@ namespace Pulumi.Consul
         ///     public Output&lt;string&gt; ConsulAclAuthMethod { get; set; }
         /// }
         /// ```
-        /// 
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

@@ -13,6 +13,140 @@ import (
 // The [Configuration Entry](https://www.consul.io/docs/agent/config_entries.html)
 // resource can be used to provide cluster-wide defaults for various aspects of
 // Consul.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"encoding/json"
+//
+// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
+// 			"Config": map[string]interface{}{
+// 				"local_connect_timeout_ms": 1000,
+// 				"handshake_timeout_ms":     10000,
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		json0 := string(tmpJSON0)
+// 		_, err := consul.NewConfigEntry(ctx, "proxyDefaults", &consul.ConfigEntryArgs{
+// 			Kind:       pulumi.String("proxy-defaults"),
+// 			ConfigJson: pulumi.String(json0),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		tmpJSON1, err := json.Marshal(map[string]interface{}{
+// 			"Protocol": "http",
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		json1 := string(tmpJSON1)
+// 		_, err = consul.NewConfigEntry(ctx, "web", &consul.ConfigEntryArgs{
+// 			Kind:       pulumi.String("service-defaults"),
+// 			ConfigJson: pulumi.String(json1),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		tmpJSON2, err := json.Marshal(map[string]interface{}{
+// 			"Protocol": "http",
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		json2 := string(tmpJSON2)
+// 		_, err = consul.NewConfigEntry(ctx, "admin", &consul.ConfigEntryArgs{
+// 			Kind:       pulumi.String("service-defaults"),
+// 			ConfigJson: pulumi.String(json2),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		tmpJSON3, err := json.Marshal(map[string]interface{}{
+// 			"DefaultSubset": "v1",
+// 			"Subsets": map[string]interface{}{
+// 				"v1": map[string]interface{}{
+// 					"Filter": "Service.Meta.version == v1",
+// 				},
+// 				"v2": map[string]interface{}{
+// 					"Filter": "Service.Meta.version == v2",
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		json3 := string(tmpJSON3)
+// 		_, err = consul.NewConfigEntry(ctx, "serviceResolver", &consul.ConfigEntryArgs{
+// 			Kind:       pulumi.String("service-resolver"),
+// 			ConfigJson: pulumi.String(json3),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		tmpJSON4, err := json.Marshal(map[string]interface{}{
+// 			"Splits": []map[string]interface{}{
+// 				map[string]interface{}{
+// 					"Weight":        90,
+// 					"ServiceSubset": "v1",
+// 				},
+// 				map[string]interface{}{
+// 					"Weight":        10,
+// 					"ServiceSubset": "v2",
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		json4 := string(tmpJSON4)
+// 		_, err = consul.NewConfigEntry(ctx, "serviceSplitter", &consul.ConfigEntryArgs{
+// 			Kind:       pulumi.String("service-splitter"),
+// 			ConfigJson: pulumi.String(json4),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		tmpJSON5, err := json.Marshal(map[string]interface{}{
+// 			"Routes": []map[string]interface{}{
+// 				map[string]interface{}{
+// 					"Match": map[string]interface{}{
+// 						"HTTP": map[string]interface{}{
+// 							"PathPrefix": "/admin",
+// 						},
+// 					},
+// 					"Destination": map[string]interface{}{
+// 						"Service": "admin",
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		json5 := string(tmpJSON5)
+// 		_, err = consul.NewConfigEntry(ctx, "serviceRouter", &consul.ConfigEntryArgs{
+// 			Kind:       pulumi.String("service-router"),
+// 			ConfigJson: pulumi.String(json5),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type ConfigEntry struct {
 	pulumi.CustomResourceState
 

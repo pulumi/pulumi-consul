@@ -10,13 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.Consul
 {
     /// <summary>
-    /// Starting with Consul 1.5.0, the consul..AclBindingRule resource can be used to
+    /// Starting with Consul 1.5.0, the consul.AclBindingRule resource can be used to
     /// managed Consul ACL binding rules.
     /// 
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

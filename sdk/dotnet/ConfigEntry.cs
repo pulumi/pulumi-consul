@@ -16,8 +16,6 @@ namespace Pulumi.Consul
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Text.Json;

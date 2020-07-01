@@ -12,6 +12,29 @@ import (
 
 // Provides access to Node data in Consul. This can be used to define a
 // node. Currently, defining health checks is not supported.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := consul.NewNode(ctx, "foobar", &consul.NodeArgs{
+// 			Address: pulumi.String("192.168.10.10"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Node struct {
 	pulumi.CustomResourceState
 

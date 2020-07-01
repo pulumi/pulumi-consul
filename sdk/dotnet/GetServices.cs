@@ -12,16 +12,13 @@ namespace Pulumi.Consul
     public static class GetServices
     {
         /// <summary>
-        /// The `consul..getServices` data source returns a list of Consul services that
+        /// The `consul.getServices` data source returns a list of Consul services that
         /// have been registered with the Consul cluster in a given datacenter.  By
         /// specifying a different datacenter in the `query_options` it is possible to
         /// retrieve a list of services from a different WAN-attached Consul datacenter.
         /// 
-        /// This data source is different from the `consul..Service` (singular) data
+        /// This data source is different from the `consul.Service` (singular) data
         /// source, which provides a detailed response about a specific Consul service.
-        /// 
-        /// {{% examples %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetServicesResult> InvokeAsync(GetServicesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetServicesResult>("consul:index/getServices:getServices", args ?? new GetServicesArgs(), options.WithVersion());

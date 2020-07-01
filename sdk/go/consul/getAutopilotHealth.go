@@ -7,9 +7,31 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// The `.getAutopilotHealth` data source returns
+// The `getAutopilotHealth` data source returns
 // [autopilot health information](https://www.consul.io/api/operator/autopilot.html#read-health)
 // about the current Consul cluster.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		read, err := consul.GetAutopilotHealth(ctx, nil, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("health", read.Healthy)
+// 		return nil
+// 	})
+// }
+// ```
 func GetAutopilotHealth(ctx *pulumi.Context, args *GetAutopilotHealthArgs, opts ...pulumi.InvokeOption) (*GetAutopilotHealthResult, error) {
 	var rv GetAutopilotHealthResult
 	err := ctx.Invoke("consul:index/getAutopilotHealth:getAutopilotHealth", args, &rv, opts...)

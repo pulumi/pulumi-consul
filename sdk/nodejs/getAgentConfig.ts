@@ -7,17 +7,15 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * > **Note:** The `consul..getAgentConfig` resource differs from [`consul..getAgentSelf`](https://www.terraform.io/docs/providers/consul/d/agent_self.html),
- * providing less information but utilizing stable APIs. `consul..getAgentSelf` will be
+ * > **Note:** The `consul.getAgentConfig` resource differs from [`consul.getAgentSelf`](https://www.terraform.io/docs/providers/consul/d/agent_self.html),
+ * providing less information but utilizing stable APIs. `consul.getAgentSelf` will be
  * deprecated in a future release.
  *
- * The `consul..getAgentConfig` data source returns
+ * The `consul.getAgentConfig` data source returns
  * [configuration data](https://www.consul.io/api/agent.html#read-configuration)
  * from the agent specified in the `provider`.
  *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

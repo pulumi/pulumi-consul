@@ -7,12 +7,12 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The `consul..getServices` data source returns a list of Consul services that
+ * The `consul.getServices` data source returns a list of Consul services that
  * have been registered with the Consul cluster in a given datacenter.  By
  * specifying a different datacenter in the `queryOptions` it is possible to
  * retrieve a list of services from a different WAN-attached Consul datacenter.
  *
- * This data source is different from the `consul..Service` (singular) data
+ * This data source is different from the `consul.Service` (singular) data
  * source, which provides a detailed response about a specific Consul service.
  */
 export function getServices(args?: GetServicesArgs, opts?: pulumi.InvokeOptions): Promise<GetServicesResult> {

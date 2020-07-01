@@ -7,7 +7,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// `.getServiceHealth` can be used to get the list of the instances that
+// `getServiceHealth` can be used to get the list of the instances that
 // are currently healthy, according to their associated  health-checks.
 // The result includes the list of service instances, the node associated to each
 // instance and its health-checks.
@@ -48,7 +48,7 @@ type GetServiceHealthArgs struct {
 type GetServiceHealthResult struct {
 	// The datacenter in which the node is running.
 	// * [`taggedAddresses`](https://www.consul.io/docs/agent/http/catalog.html#TaggedAddresses) -
-	// List of explicit LAN and WAN IP addresses for the agent.
+	//   List of explicit LAN and WAN IP addresses for the agent.
 	Datacenter *string `pulumi:"datacenter"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`

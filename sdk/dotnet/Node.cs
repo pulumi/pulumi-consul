@@ -15,8 +15,6 @@ namespace Pulumi.Consul
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using Consul = Pulumi.Consul;

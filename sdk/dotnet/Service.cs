@@ -20,7 +20,7 @@ namespace Pulumi.Consul
     /// 
     /// ## Example Usage
     /// 
-    /// 
+    /// Creating a new node with the service:
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -42,6 +42,80 @@ namespace Pulumi.Consul
     ///             {
     ///                 "tag0",
     ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// Utilizing an existing known node:
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Consul = Pulumi.Consul;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var google = new Consul.Service("google", new Consul.ServiceArgs
+    ///         {
+    ///             Node = "google",
+    ///             Port = 443,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// Register an health-check:
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Consul = Pulumi.Consul;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var redis = new Consul.Service("redis", new Consul.ServiceArgs
+    ///         {
+    ///             Checks = 
+    ///             {
+    ///                 new Consul.Inputs.ServiceCheckArgs
+    ///                 {
+    ///                     CheckId = "service:redis1",
+    ///                     DeregisterCriticalServiceAfter = "30s",
+    ///                     Headers = 
+    ///                     {
+    ///                         new Consul.Inputs.ServiceCheckHeaderArgs
+    ///                         {
+    ///                             Name = "foo",
+    ///                             Value = 
+    ///                             {
+    ///                                 "test",
+    ///                             },
+    ///                         },
+    ///                         new Consul.Inputs.ServiceCheckHeaderArgs
+    ///                         {
+    ///                             Name = "bar",
+    ///                             Value = 
+    ///                             {
+    ///                                 "test",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                     Http = "https://www.hashicorptest.com",
+    ///                     Interval = "5s",
+    ///                     Method = "PUT",
+    ///                     Name = "Redis health check",
+    ///                     Status = "passing",
+    ///                     Timeout = "1s",
+    ///                     TlsSkipVerify = false,
+    ///                 },
+    ///             },
+    ///             Node = "redis",
+    ///             Port = 6379,
     ///         });
     ///     }
     /// 

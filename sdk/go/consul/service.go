@@ -17,6 +17,116 @@ import (
 //
 // If the Consul agent is running on the node where this service is registered, it is
 // not recommended to use this resource.
+//
+// ## Example Usage
+//
+// Creating a new node with the service:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		compute, err := consul.NewNode(ctx, "compute", &consul.NodeArgs{
+// 			Address: pulumi.String("www.google.com"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = consul.NewService(ctx, "google", &consul.ServiceArgs{
+// 			Node: compute.Name,
+// 			Port: pulumi.Int(80),
+// 			Tags: pulumi.StringArray{
+// 				pulumi.String("tag0"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// Utilizing an existing known node:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := consul.NewService(ctx, "google", &consul.ServiceArgs{
+// 			Node: pulumi.String("google"),
+// 			Port: pulumi.Int(443),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// Register an health-check:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := consul.NewService(ctx, "redis", &consul.ServiceArgs{
+// 			Checks: consul.ServiceCheckArray{
+// 				&consul.ServiceCheckArgs{
+// 					CheckId:                        pulumi.String("service:redis1"),
+// 					DeregisterCriticalServiceAfter: pulumi.String("30s"),
+// 					Headers: consul.ServiceCheckHeaderArray{
+// 						&consul.ServiceCheckHeaderArgs{
+// 							Name: pulumi.String("foo"),
+// 							Value: pulumi.StringArray{
+// 								pulumi.String("test"),
+// 							},
+// 						},
+// 						&consul.ServiceCheckHeaderArgs{
+// 							Name: pulumi.String("bar"),
+// 							Value: pulumi.StringArray{
+// 								pulumi.String("test"),
+// 							},
+// 						},
+// 					},
+// 					Http:          pulumi.String("https://www.hashicorptest.com"),
+// 					Interval:      pulumi.String("5s"),
+// 					Method:        pulumi.String("PUT"),
+// 					Name:          pulumi.String("Redis health check"),
+// 					Status:        pulumi.String("passing"),
+// 					Timeout:       pulumi.String("1s"),
+// 					TlsSkipVerify: pulumi.Bool(false),
+// 				},
+// 			},
+// 			Node: pulumi.String("redis"),
+// 			Port: pulumi.Int(6379),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Service struct {
 	pulumi.CustomResourceState
 
@@ -41,7 +151,7 @@ type Service struct {
 	// The port of the service.
 	Port pulumi.IntPtrOutput `pulumi:"port"`
 	// - If the service ID is not provided, it will be defaulted to the value
-	// of the `name` attribute.
+	//   of the `name` attribute.
 	ServiceId pulumi.StringOutput `pulumi:"serviceId"`
 	// A list of values that are opaque to Consul,
 	// but can be used to distinguish between services or nodes.
@@ -100,7 +210,7 @@ type serviceState struct {
 	// The port of the service.
 	Port *int `pulumi:"port"`
 	// - If the service ID is not provided, it will be defaulted to the value
-	// of the `name` attribute.
+	//   of the `name` attribute.
 	ServiceId *string `pulumi:"serviceId"`
 	// A list of values that are opaque to Consul,
 	// but can be used to distinguish between services or nodes.
@@ -129,7 +239,7 @@ type ServiceState struct {
 	// The port of the service.
 	Port pulumi.IntPtrInput
 	// - If the service ID is not provided, it will be defaulted to the value
-	// of the `name` attribute.
+	//   of the `name` attribute.
 	ServiceId pulumi.StringPtrInput
 	// A list of values that are opaque to Consul,
 	// but can be used to distinguish between services or nodes.
@@ -162,7 +272,7 @@ type serviceArgs struct {
 	// The port of the service.
 	Port *int `pulumi:"port"`
 	// - If the service ID is not provided, it will be defaulted to the value
-	// of the `name` attribute.
+	//   of the `name` attribute.
 	ServiceId *string `pulumi:"serviceId"`
 	// A list of values that are opaque to Consul,
 	// but can be used to distinguish between services or nodes.
@@ -192,7 +302,7 @@ type ServiceArgs struct {
 	// The port of the service.
 	Port pulumi.IntPtrInput
 	// - If the service ID is not provided, it will be defaulted to the value
-	// of the `name` attribute.
+	//   of the `name` attribute.
 	ServiceId pulumi.StringPtrInput
 	// A list of values that are opaque to Consul,
 	// but can be used to distinguish between services or nodes.

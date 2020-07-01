@@ -12,11 +12,9 @@ namespace Pulumi.Consul
     /// <summary>
     /// &gt; **NOTE:** This feature requires Consul Enterprise.
     /// 
-    /// The `consul..Namespace` resource provides isolated [Consul Enterprise Namespaces](https://www.consul.io/docs/enterprise/namespaces/index.html).
+    /// The `consul.Namespace` resource provides isolated [Consul Enterprise Namespaces](https://www.consul.io/docs/enterprise/namespaces/index.html).
     /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

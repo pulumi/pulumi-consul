@@ -10,12 +10,12 @@ import * as utilities from "./utilities";
  *
  * It is appropriate to either reference existing services or specify non-existent services
  * that will be created in the future when creating intentions. This resource can be used
- * in conjunction with the `consul..Service` datasource when referencing services
+ * in conjunction with the `consul.Service` datasource when referencing services
  * registered on nodes that have a running Consul agent.
  *
  * ## Example Usage
  *
- *
+ * Create a simplest intention with static service names:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -26,6 +26,22 @@ import * as utilities from "./utilities";
  *     destinationName: "db",
  *     sourceName: "api",
  * });
+ * ```
+ *
+ * Referencing a known service via a datasource:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ *
+ * const database = new consul.Intention("database", {
+ *     action: "allow",
+ *     destinationName: consul_service_pg.name,
+ *     sourceName: "api",
+ * });
+ * const pg = pulumi.output(consul.getService({
+ *     name: "postgresql",
+ * }, { async: true }));
  * ```
  */
 export class Intention extends pulumi.CustomResource {

@@ -7,12 +7,10 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The `consul..Keys` resource reads values from the Consul key/value store.
+ * The `consul.Keys` resource reads values from the Consul key/value store.
  * This is a powerful way dynamically set values in templates.
  *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

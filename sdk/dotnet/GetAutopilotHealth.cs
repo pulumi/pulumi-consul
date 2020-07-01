@@ -12,7 +12,7 @@ namespace Pulumi.Consul
     public static class GetAutopilotHealth
     {
         /// <summary>
-        /// The `consul..getAutopilotHealth` data source returns
+        /// The `consul.getAutopilotHealth` data source returns
         /// [autopilot health information](https://www.consul.io/api/operator/autopilot.html#read-health)
         /// about the current Consul cluster.
         /// 
@@ -36,7 +36,6 @@ namespace Pulumi.Consul
         ///     public Output&lt;string&gt; Health { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

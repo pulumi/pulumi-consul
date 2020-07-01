@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * `consul..getServiceHealth` can be used to get the list of the instances that
+ * `consul.getServiceHealth` can be used to get the list of the instances that
  * are currently healthy, according to their associated  health-checks.
  * The result includes the list of service instances, the node associated to each
  * instance and its health-checks.
@@ -16,8 +16,6 @@ import * as utilities from "./utilities";
  * updated, you should expect different results in a frequent basis.
  *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

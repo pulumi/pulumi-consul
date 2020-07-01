@@ -7,12 +7,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// The `.getServices` data source returns a list of Consul services that
+// The `getServices` data source returns a list of Consul services that
 // have been registered with the Consul cluster in a given datacenter.  By
 // specifying a different datacenter in the `queryOptions` it is possible to
 // retrieve a list of services from a different WAN-attached Consul datacenter.
 //
-// This data source is different from the `.Service` (singular) data
+// This data source is different from the `Service` (singular) data
 // source, which provides a detailed response about a specific Consul service.
 func GetServices(ctx *pulumi.Context, args *GetServicesArgs, opts ...pulumi.InvokeOption) (*GetServicesResult, error) {
 	var rv GetServicesResult

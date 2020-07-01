@@ -44,7 +44,7 @@ type LookupKeyPrefixResult struct {
 	Namespace *string `pulumi:"namespace"`
 	// the common prefix shared by all keys being read.
 	// * `var.<name>` - For each name given, the corresponding attribute
-	// has the value of the key.
+	//   has the value of the key.
 	PathPrefix       string                         `pulumi:"pathPrefix"`
 	SubkeyCollection []GetKeyPrefixSubkeyCollection `pulumi:"subkeyCollection"`
 	// A map of the subkeys and values is set if no `subkey`
