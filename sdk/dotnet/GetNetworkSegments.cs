@@ -37,7 +37,6 @@ namespace Pulumi.Consul
         ///     public Output&lt;string&gt; Segments { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

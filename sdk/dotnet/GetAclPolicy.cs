@@ -12,7 +12,7 @@ namespace Pulumi.Consul
     public static class GetAclPolicy
     {
         /// <summary>
-        /// The `consul..AclPolicy` data source returns the information related to a
+        /// The `consul.AclPolicy` data source returns the information related to a
         /// [Consul ACL Policy](https://www.consul.io/docs/acl/acl-system.html#acl-policies).
         /// 
         /// 
@@ -39,8 +39,6 @@ namespace Pulumi.Consul
         ///     public Output&lt;string&gt; ConsulAclPolicy { get; set; }
         /// }
         /// ```
-        /// 
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

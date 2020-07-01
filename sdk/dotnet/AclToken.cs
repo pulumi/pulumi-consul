@@ -10,10 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Consul
 {
     /// <summary>
-    /// The `consul..AclToken` resource writes an ACL token into Consul.
+    /// The `consul.AclToken` resource writes an ACL token into Consul.
     /// 
     /// ## Example Usage
-    /// 
     /// ### Basic usage
     /// 
     /// ```csharp

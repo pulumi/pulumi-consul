@@ -7,12 +7,10 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The `consul..AclAuthMethod` data source returns the information related to a
+ * The `consul.AclAuthMethod` data source returns the information related to a
  * [Consul Auth Method](https://www.consul.io/docs/acl/acl-auth-methods.html).
  *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

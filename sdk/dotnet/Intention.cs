@@ -15,12 +15,12 @@ namespace Pulumi.Consul
     /// 
     /// It is appropriate to either reference existing services or specify non-existent services
     /// that will be created in the future when creating intentions. This resource can be used
-    /// in conjunction with the `consul..Service` datasource when referencing services
+    /// in conjunction with the `consul.Service` datasource when referencing services
     /// registered on nodes that have a running Consul agent.
     /// 
     /// ## Example Usage
     /// 
-    /// 
+    /// Create a simplest intention with static service names:
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -36,6 +36,31 @@ namespace Pulumi.Consul
     ///             DestinationName = "db",
     ///             SourceName = "api",
     ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// Referencing a known service via a datasource:
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Consul = Pulumi.Consul;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var database = new Consul.Intention("database", new Consul.IntentionArgs
+    ///         {
+    ///             Action = "allow",
+    ///             DestinationName = consul_service.Pg.Name,
+    ///             SourceName = "api",
+    ///         });
+    ///         var pg = Output.Create(Consul.GetService.InvokeAsync(new Consul.GetServiceArgs
+    ///         {
+    ///             Name = "postgresql",
+    ///         }));
     ///     }
     /// 
     /// }

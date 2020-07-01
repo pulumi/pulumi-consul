@@ -12,7 +12,7 @@ namespace Pulumi.Consul
     public static class GetAclRole
     {
         /// <summary>
-        /// The `consul..AclRole` data source returns the information related to a
+        /// The `consul.AclRole` data source returns the information related to a
         /// [Consul ACL Role](https://www.consul.io/api/acl/roles.html).
         /// 
         /// {{% examples %}}
@@ -38,8 +38,6 @@ namespace Pulumi.Consul
         ///     public Output&lt;string&gt; ConsulAclRole { get; set; }
         /// }
         /// ```
-        /// 
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

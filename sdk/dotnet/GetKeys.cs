@@ -12,7 +12,7 @@ namespace Pulumi.Consul
     public static class GetKeys
     {
         /// <summary>
-        /// The `consul..Keys` resource reads values from the Consul key/value store.
+        /// The `consul.Keys` resource reads values from the Consul key/value store.
         /// This is a powerful way dynamically set values in templates.
         /// 
         /// {{% examples %}}
@@ -51,7 +51,6 @@ namespace Pulumi.Consul
         /// 
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

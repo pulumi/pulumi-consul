@@ -5,13 +5,10 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Starting with Consul 1.5.0, the consul..AclBindingRule resource can be used to
+ * Starting with Consul 1.5.0, the consul.AclBindingRule resource can be used to
  * managed Consul ACL binding rules.
  *
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

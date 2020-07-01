@@ -7,8 +7,48 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// The `.Keys` resource reads values from the Consul key/value store.
+// The `Keys` resource reads values from the Consul key/value store.
 // This is a powerful way dynamically set values in templates.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aws/sdk/v2/go/aws/ec2"
+// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "nyc1"
+// 		opt1 := "abcd"
+// 		appKeys, err := consul.LookupKeys(ctx, &consul.LookupKeysArgs{
+// 			Datacenter: &opt0,
+// 			Keys: []consul.GetKeysKey{
+// 				consul.GetKeysKey{
+// 					Default: "ami-1234",
+// 					Name:    "ami",
+// 					Path:    "service/app/launch_ami",
+// 				},
+// 			},
+// 			Token: &opt1,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = ec2.NewInstance(ctx, "appInstance", &ec2.InstanceArgs{
+// 			Ami: pulumi.String(appKeys.Var.Ami),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupKeys(ctx *pulumi.Context, args *LookupKeysArgs, opts ...pulumi.InvokeOption) (*LookupKeysResult, error) {
 	var rv LookupKeysResult
 	err := ctx.Invoke("consul:index/getKeys:getKeys", args, &rv, opts...)
@@ -37,7 +77,7 @@ type LookupKeysArgs struct {
 type LookupKeysResult struct {
 	// The datacenter the keys are being read from.
 	// * `var.<name>` - For each name given, the corresponding attribute
-	// has the value of the key.
+	//   has the value of the key.
 	Datacenter string `pulumi:"datacenter"`
 	// The provider-assigned unique ID for this managed resource.
 	Id        string            `pulumi:"id"`

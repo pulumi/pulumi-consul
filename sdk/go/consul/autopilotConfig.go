@@ -14,6 +14,31 @@ import (
 //
 // It includes to automatically cleanup dead servers, monitor the status of the Raft
 // cluster and stable server introduction.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := consul.NewAutopilotConfig(ctx, "config", &consul.AutopilotConfigArgs{
+// 			CleanupDeadServers:   pulumi.Bool(false),
+// 			LastContactThreshold: pulumi.String("1s"),
+// 			MaxTrailingLogs:      pulumi.Int(500),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type AutopilotConfig struct {
 	pulumi.CustomResourceState
 

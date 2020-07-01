@@ -7,13 +7,10 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The `consul..AclPolicy` data source returns the information related to a
+ * The `consul.AclPolicy` data source returns the information related to a
  * [Consul ACL Policy](https://www.consul.io/docs/acl/acl-system.html#acl-policies).
  *
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

@@ -7,13 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The `consul..getAutopilotHealth` data source returns
+ * The `consul.getAutopilotHealth` data source returns
  * [autopilot health information](https://www.consul.io/api/operator/autopilot.html#read-health)
  * about the current Consul cluster.
  *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

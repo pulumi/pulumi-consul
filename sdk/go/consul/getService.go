@@ -7,13 +7,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// `.Service` provides details about a specific Consul service in a
+// `Service` provides details about a specific Consul service in a
 // given datacenter.  The results include a list of nodes advertising the specified
 // service, the node's IP address, port number, node ID, etc.  By specifying a
 // different datacenter in the `queryOptions` it is possible to retrieve a list of
 // services from a different WAN-attached Consul datacenter.
 //
-// This data source is different from the `.getServices` (plural) data
+// This data source is different from the `getServices` (plural) data
 // source, which provides a summary of the current Consul services.
 func LookupService(ctx *pulumi.Context, args *LookupServiceArgs, opts ...pulumi.InvokeOption) (*LookupServiceResult, error) {
 	var rv LookupServiceResult

@@ -7,13 +7,11 @@ import * as utilities from "./utilities";
 /**
  * > **NOTE:** This feature requires [Consul Enterprise](https://www.consul.io/docs/enterprise/index.html).
  *
- * The `consul..License` resource provides datacenter-level management of
+ * The `consul.License` resource provides datacenter-level management of
  * the Consul Enterprise license. If ACLs are enabled then a token with operator
  * privileges may be required in order to use this command.
  *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 /**
  * > **NOTE:** This feature requires [Consul Enterprise](https://www.consul.io/docs/enterprise/index.html).
  *
- * The `consul..NetworkArea` resource manages a relationship between servers in two
+ * The `consul.NetworkArea` resource manages a relationship between servers in two
  * different Consul datacenters.
  *
  * Unlike Consul's WAN feature, network areas use just the server RPC port for
@@ -16,8 +16,6 @@ import * as utilities from "./utilities";
  * complex topologies among Consul datacenters like hub/spoke and more general trees.
  *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

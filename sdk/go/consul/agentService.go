@@ -9,13 +9,41 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// !> The `.AgentService` resource has been deprecated in version 2.0.0 of the provider
+// !> The `AgentService` resource has been deprecated in version 2.0.0 of the provider
 // and will be removed in a future release. Please read the [upgrade guide](https://www.terraform.io/docs/providers/consul/guides/upgrading.html#deprecation-of-consul_agent_service)
 // for more information.
 //
 // Provides access to the agent service data in Consul. This can be used to
 // define a service associated with a particular agent. Currently, defining
 // health checks for an agent service is not supported.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := consul.NewAgentService(ctx, "app", &consul.AgentServiceArgs{
+// 			Address: pulumi.String("www.google.com"),
+// 			Port:    pulumi.Int(80),
+// 			Tags: pulumi.StringArray{
+// 				pulumi.String("tag0"),
+// 				pulumi.String("tag1"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type AgentService struct {
 	pulumi.CustomResourceState
 

@@ -12,11 +12,11 @@ namespace Pulumi.Consul
     public static class GetAgentConfig
     {
         /// <summary>
-        /// &gt; **Note:** The `consul..getAgentConfig` resource differs from [`consul..getAgentSelf`](https://www.terraform.io/docs/providers/consul/d/agent_self.html),
-        /// providing less information but utilizing stable APIs. `consul..getAgentSelf` will be
+        /// &gt; **Note:** The `consul.getAgentConfig` resource differs from [`consul.getAgentSelf`](https://www.terraform.io/docs/providers/consul/d/agent_self.html),
+        /// providing less information but utilizing stable APIs. `consul.getAgentSelf` will be
         /// deprecated in a future release.
         /// 
-        /// The `consul..getAgentConfig` data source returns
+        /// The `consul.getAgentConfig` data source returns
         /// [configuration data](https://www.consul.io/api/agent.html#read-configuration)
         /// from the agent specified in the `provider`.
         /// 
@@ -40,7 +40,6 @@ namespace Pulumi.Consul
         ///     public Output&lt;string&gt; ConsulVersion { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

@@ -12,13 +12,10 @@ namespace Pulumi.Consul
     public static class GetNodes
     {
         /// <summary>
-        /// The `consul..getNodes` data source returns a list of Consul nodes that have
+        /// The `consul.getNodes` data source returns a list of Consul nodes that have
         /// been registered with the Consul cluster in a given datacenter.  By specifying a
         /// different datacenter in the `query_options` it is possible to retrieve a list of
         /// nodes from a different WAN-attached Consul datacenter.
-        /// 
-        /// {{% examples %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetNodesResult> InvokeAsync(GetNodesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNodesResult>("consul:index/getNodes:getNodes", args ?? new GetNodesArgs(), options.WithVersion());

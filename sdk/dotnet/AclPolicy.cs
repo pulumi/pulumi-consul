@@ -10,12 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Consul
 {
     /// <summary>
-    /// Starting with Consul 1.4.0, the consul..AclPolicy can be used to managed Consul ACL policies.
-    /// 
+    /// Starting with Consul 1.4.0, the consul.AclPolicy can be used to managed Consul ACL policies.
     /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

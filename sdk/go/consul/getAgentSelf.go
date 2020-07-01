@@ -7,11 +7,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// > **Warning:** The `.getAgentSelf` resource has been deprecated and will be removed
+// > **Warning:** The `getAgentSelf` resource has been deprecated and will be removed
 // from a future release of the provider. Read the [upgrade instructions](https://www.terraform.io/docs/providers/consul/guides/upgrading.html#deprecation-of-consul_agent_self) for more information.
 //
-//
-// The `.getAgentSelf` data source returns
+// The `getAgentSelf` data source returns
 // [configuration and status data](https://www.consul.io/docs/agent/http/agent.html#agent_self)
 // from the agent specified in the `provider`.
 func GetAgentSelf(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetAgentSelfResult, error) {
@@ -49,7 +48,7 @@ type GetAgentSelfResult struct {
 	// A map of DNS configuration attributes.  See below for details on the
 	// contents of the `dns` attribute.
 	// * [`dnsRecursors`](https://www.consul.io/docs/agent/options.html#recursors) - A
-	// list of all DNS recursors.
+	//   list of all DNS recursors.
 	// * [`dataDir`](https://www.consul.io/docs/agent/options.html#_data_dir)
 	// * [`datacenter`](https://www.consul.io/docs/agent/options.html#_datacenter)
 	// * [`devMode`](https://www.consul.io/docs/agent/options.html#_dev)
@@ -75,11 +74,11 @@ type GetAgentSelfResult struct {
 	// * [`rejoinAfterLeave`](https://www.consul.io/docs/agent/options.html#_rejoin)
 	// * [`retryJoin`](https://www.consul.io/docs/agent/options.html#retry_join)
 	// * [`retryJoinEc2`](https://www.consul.io/docs/agent/options.html#retry_join_ec2) -
-	// A map of EC2 retry attributes.  See below for details on the available
-	// information.
+	//   A map of EC2 retry attributes.  See below for details on the available
+	//   information.
 	// * [`retryJoinGce`](https://www.consul.io/docs/agent/options.html#retry_join_gce) -
-	// A map of GCE retry attributes.  See below for details on the available
-	// information.
+	//   A map of GCE retry attributes.  See below for details on the available
+	//   information.
 	// * [`retryJoinWan`](https://www.consul.io/docs/agent/options.html#_retry_join_wan)
 	// * [`retryMaxAttempts`](https://www.consul.io/docs/agent/options.html#_retry_max)
 	// * [`retryMaxAttemptsWan`](https://www.consul.io/docs/agent/options.html#_retry_max_wan)
@@ -100,7 +99,7 @@ type GetAgentSelfResult struct {
 	// * [`tlsVerifyServerHostname`](https://www.consul.io/docs/agent/options.html#verify_server_hostname)
 	// * [`taggedAddresses`](https://www.consul.io/docs/agent/options.html#translate_wan_addrs)
 	// * [`telemetry`](https://www.consul.io/docs/agent/options.html#telemetry) - A map
-	// of telemetry configuration.
+	//   of telemetry configuration.
 	// * [`translateWanAddrs`](https://www.consul.io/docs/agent/options.html#translate_wan_addrs)
 	// * [`uiDir`](https://www.consul.io/docs/agent/options.html#ui_dir)
 	// * [`unixSockets`](https://www.consul.io/docs/agent/options.html#unix_sockets)

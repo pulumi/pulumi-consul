@@ -9,7 +9,43 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// The `.AclToken` resource writes an ACL token into Consul.
+// The `AclToken` resource writes an ACL token into Consul.
+//
+// ## Example Usage
+// ### Basic usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		agent, err := consul.NewAclPolicy(ctx, "agent", &consul.AclPolicyArgs{
+// 			Rules: pulumi.String(fmt.Sprintf("%v%v%v%v", "node_prefix \"\" {\n", "  policy = \"read\"\n", "}\n", "\n")),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = consul.NewAclToken(ctx, "test", &consul.AclTokenArgs{
+// 			Description: pulumi.String("my test token"),
+// 			Local:       pulumi.Bool(true),
+// 			Policies: pulumi.StringArray{
+// 				agent.Name,
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type AclToken struct {
 	pulumi.CustomResourceState
 

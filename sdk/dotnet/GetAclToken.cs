@@ -12,11 +12,11 @@ namespace Pulumi.Consul
     public static class GetAclToken
     {
         /// <summary>
-        /// The `consul..AclToken` data source returns the information related to the
-        /// `consul..AclToken` resource with the exception of its secret ID.
+        /// The `consul.AclToken` data source returns the information related to the
+        /// `consul.AclToken` resource with the exception of its secret ID.
         /// 
         /// If you want to get the secret ID associated with a token, use the
-        /// [`consul..getAclTokenSecretId` data source](https://www.terraform.io/docs/providers/consul/d/acl_token_secret_id.html).
+        /// [`consul.getAclTokenSecretId` data source](https://www.terraform.io/docs/providers/consul/d/acl_token_secret_id.html).
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -41,8 +41,6 @@ namespace Pulumi.Consul
         ///     public Output&lt;string&gt; ConsulAclPolicies { get; set; }
         /// }
         /// ```
-        /// 
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
