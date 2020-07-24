@@ -12,10 +12,23 @@ class GetAclAuthMethodResult:
     """
     A collection of values returned by getAclAuthMethod.
     """
-    def __init__(__self__, config=None, description=None, id=None, name=None, namespace=None, type=None):
+    def __init__(__self__, config=None, config_json=None, description=None, display_name=None, id=None, max_token_ttl=None, name=None, namespace=None, namespace_rules=None, token_locality=None, type=None):
         if config and not isinstance(config, dict):
             raise TypeError("Expected argument 'config' to be a dict")
+        if config is not None:
+            warnings.warn("The config attribute is deprecated, please use config_json instead.", DeprecationWarning)
+            pulumi.log.warn("config is deprecated: The config attribute is deprecated, please use config_json instead.")
+
         __self__.config = config
+        """
+        The configuration options of the ACL Auth Method. This attribute is
+        deprecated and will be removed in a future version. If the configuration is
+        too complex to be represented as a map of strings, it will be blank.
+        `config_json` should be used instead.
+        """
+        if config_json and not isinstance(config_json, str):
+            raise TypeError("Expected argument 'config_json' to be a str")
+        __self__.config_json = config_json
         """
         The configuration options of the ACL Auth Method.
         """
@@ -25,11 +38,24 @@ class GetAclAuthMethodResult:
         """
         The description of the ACL Auth Method.
         """
+        if display_name and not isinstance(display_name, str):
+            raise TypeError("Expected argument 'display_name' to be a str")
+        __self__.display_name = display_name
+        """
+        An optional name to use instead of the name attribute when
+        displaying information about this auth method.
+        """
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
         The provider-assigned unique ID for this managed resource.
+        """
+        if max_token_ttl and not isinstance(max_token_ttl, str):
+            raise TypeError("Expected argument 'max_token_ttl' to be a str")
+        __self__.max_token_ttl = max_token_ttl
+        """
+        The maximum life of any token created by this auth method.
         """
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
@@ -37,6 +63,20 @@ class GetAclAuthMethodResult:
         if namespace and not isinstance(namespace, str):
             raise TypeError("Expected argument 'namespace' to be a str")
         __self__.namespace = namespace
+        if namespace_rules and not isinstance(namespace_rules, list):
+            raise TypeError("Expected argument 'namespace_rules' to be a list")
+        __self__.namespace_rules = namespace_rules
+        """
+        (Enterprise Only) A set of rules that control which
+        namespace tokens created via this auth method will be created within
+        """
+        if token_locality and not isinstance(token_locality, str):
+            raise TypeError("Expected argument 'token_locality' to be a str")
+        __self__.token_locality = token_locality
+        """
+        The kind of token that this auth method produces. This can
+        be either 'local' or 'global'.
+        """
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         __self__.type = type
@@ -50,13 +90,18 @@ class AwaitableGetAclAuthMethodResult(GetAclAuthMethodResult):
             yield self
         return GetAclAuthMethodResult(
             config=self.config,
+            config_json=self.config_json,
             description=self.description,
+            display_name=self.display_name,
             id=self.id,
+            max_token_ttl=self.max_token_ttl,
             name=self.name,
             namespace=self.namespace,
+            namespace_rules=self.namespace_rules,
+            token_locality=self.token_locality,
             type=self.type)
 
-def get_acl_auth_method(config=None,description=None,name=None,namespace=None,type=None,opts=None):
+def get_acl_auth_method(name=None,namespace=None,opts=None):
     """
     The `AclAuthMethod` data source returns the information related to a
     [Consul Auth Method](https://www.consul.io/docs/acl/acl-auth-methods.html).
@@ -72,20 +117,14 @@ def get_acl_auth_method(config=None,description=None,name=None,namespace=None,ty
     ```
 
 
-    :param dict config: The configuration options of the ACL Auth Method.
-    :param str description: The description of the ACL Auth Method.
     :param str name: The name of the ACL Auth Method.
     :param str namespace: The namespace to lookup the auth method.
-    :param str type: The type of the ACL Auth Method.
     """
     __args__ = dict()
 
 
-    __args__['config'] = config
-    __args__['description'] = description
     __args__['name'] = name
     __args__['namespace'] = namespace
-    __args__['type'] = type
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
@@ -94,8 +133,13 @@ def get_acl_auth_method(config=None,description=None,name=None,namespace=None,ty
 
     return AwaitableGetAclAuthMethodResult(
         config=__ret__.get('config'),
+        config_json=__ret__.get('configJson'),
         description=__ret__.get('description'),
+        display_name=__ret__.get('displayName'),
         id=__ret__.get('id'),
+        max_token_ttl=__ret__.get('maxTokenTtl'),
         name=__ret__.get('name'),
         namespace=__ret__.get('namespace'),
+        namespace_rules=__ret__.get('namespaceRules'),
+        token_locality=__ret__.get('tokenLocality'),
         type=__ret__.get('type'))

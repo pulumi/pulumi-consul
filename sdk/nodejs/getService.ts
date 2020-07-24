@@ -26,6 +26,7 @@ export function getService(args: GetServiceArgs, opts?: pulumi.InvokeOptions): P
     }
     return pulumi.runtime.invoke("consul:index/getService:getService", {
         "datacenter": args.datacenter,
+        "filter": args.filter,
         "name": args.name,
         "queryOptions": args.queryOptions,
         "tag": args.tag,
@@ -43,6 +44,11 @@ export interface GetServiceArgs {
      * configured to talk to.
      */
     readonly datacenter?: string;
+    /**
+     * A filter expression to refine the query, see https://www.consul.io/api-docs/features/filtering
+     * and https://www.consul.io/api-docs/catalog#filtering-1.
+     */
+    readonly filter?: string;
     /**
      * The service name to select.
      */
@@ -66,6 +72,7 @@ export interface GetServiceResult {
      * The datacenter the keys are being read from to.
      */
     readonly datacenter?: string;
+    readonly filter?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */

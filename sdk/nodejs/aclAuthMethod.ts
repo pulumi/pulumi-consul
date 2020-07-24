@@ -2,28 +2,49 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
  * Starting with Consul 1.5.0, the consul.AclAuthMethod resource can be used to
- * managed Consul ACL auth methods.
+ * managed [Consul ACL auth methods](https://www.consul.io/docs/acl/auth-methods).
  *
  * ## Example Usage
  *
+ * Define a `kubernetes` auth method:
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
  *
  * const minikube = new consul.AclAuthMethod("minikube", {
- *     config: {
+ *     type: "kubernetes",
+ *     description: "dev minikube cluster",
+ *     configJson: JSON.stringify({
+ *         Host: "https://192.0.2.42:8443",
  *         CACert: `-----BEGIN CERTIFICATE-----
  * ...-----END CERTIFICATE-----
  * `,
- *         Host: "https://192.0.2.42:8443",
  *         ServiceAccountJWT: "eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9...",
- *     },
- *     description: "dev minikube cluster",
- *     type: "kubernetes",
+ *     }),
+ * });
+ * ```
+ *
+ * Define a `jwt` auth method:
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ *
+ * const minikube = new consul.AclAuthMethod("minikube", {
+ *     type: "jwt",
+ *     configJson: JSON.stringify({
+ *         JWKSURL: "https://example.com/identity/oidc/.well-known/keys",
+ *         JWTSupportedAlgs: "RS256",
+ *         BoundIssuer: "https://example.com",
+ *         ClaimMappings: {
+ *             subject: "subject",
+ *         },
+ *     }),
  * });
  * ```
  */
@@ -56,13 +77,31 @@ export class AclAuthMethod extends pulumi.CustomResource {
     }
 
     /**
+     * The raw configuration for this ACL auth method. This
+     * attribute is deprecated and will be removed in a future version. `configJson`
+     * should be used instead.
+     *
+     * @deprecated The config attribute is deprecated, please use config_json instead.
+     */
+    public readonly config!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * The raw configuration for this ACL auth method.
      */
-    public readonly config!: pulumi.Output<{[key: string]: string}>;
+    public readonly configJson!: pulumi.Output<string | undefined>;
     /**
      * A free form human readable description of the auth method.
      */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * An optional name to use instead of the name
+     * attribute when displaying information about this auth method.
+     */
+    public readonly displayName!: pulumi.Output<string | undefined>;
+    /**
+     * The maximum life of any token created by this
+     * auth method.
+     */
+    public readonly maxTokenTtl!: pulumi.Output<string | undefined>;
     /**
      * The name of the ACL auth method.
      */
@@ -71,6 +110,16 @@ export class AclAuthMethod extends pulumi.CustomResource {
      * The namespace to create the policy within.
      */
     public readonly namespace!: pulumi.Output<string | undefined>;
+    /**
+     * A set of rules that control
+     * which namespace tokens created via this auth method will be created within.
+     */
+    public readonly namespaceRules!: pulumi.Output<outputs.AclAuthMethodNamespaceRule[] | undefined>;
+    /**
+     * The kind of token that this auth method
+     * produces. This can be either 'local' or 'global'.
+     */
+    public readonly tokenLocality!: pulumi.Output<string | undefined>;
     /**
      * The type of the ACL auth method.
      */
@@ -89,22 +138,29 @@ export class AclAuthMethod extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as AclAuthMethodState | undefined;
             inputs["config"] = state ? state.config : undefined;
+            inputs["configJson"] = state ? state.configJson : undefined;
             inputs["description"] = state ? state.description : undefined;
+            inputs["displayName"] = state ? state.displayName : undefined;
+            inputs["maxTokenTtl"] = state ? state.maxTokenTtl : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["namespace"] = state ? state.namespace : undefined;
+            inputs["namespaceRules"] = state ? state.namespaceRules : undefined;
+            inputs["tokenLocality"] = state ? state.tokenLocality : undefined;
             inputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as AclAuthMethodArgs | undefined;
-            if (!args || args.config === undefined) {
-                throw new Error("Missing required property 'config'");
-            }
             if (!args || args.type === undefined) {
                 throw new Error("Missing required property 'type'");
             }
             inputs["config"] = args ? args.config : undefined;
+            inputs["configJson"] = args ? args.configJson : undefined;
             inputs["description"] = args ? args.description : undefined;
+            inputs["displayName"] = args ? args.displayName : undefined;
+            inputs["maxTokenTtl"] = args ? args.maxTokenTtl : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["namespace"] = args ? args.namespace : undefined;
+            inputs["namespaceRules"] = args ? args.namespaceRules : undefined;
+            inputs["tokenLocality"] = args ? args.tokenLocality : undefined;
             inputs["type"] = args ? args.type : undefined;
         }
         if (!opts) {
@@ -123,13 +179,31 @@ export class AclAuthMethod extends pulumi.CustomResource {
  */
 export interface AclAuthMethodState {
     /**
-     * The raw configuration for this ACL auth method.
+     * The raw configuration for this ACL auth method. This
+     * attribute is deprecated and will be removed in a future version. `configJson`
+     * should be used instead.
+     *
+     * @deprecated The config attribute is deprecated, please use config_json instead.
      */
     readonly config?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The raw configuration for this ACL auth method.
+     */
+    readonly configJson?: pulumi.Input<string>;
     /**
      * A free form human readable description of the auth method.
      */
     readonly description?: pulumi.Input<string>;
+    /**
+     * An optional name to use instead of the name
+     * attribute when displaying information about this auth method.
+     */
+    readonly displayName?: pulumi.Input<string>;
+    /**
+     * The maximum life of any token created by this
+     * auth method.
+     */
+    readonly maxTokenTtl?: pulumi.Input<string>;
     /**
      * The name of the ACL auth method.
      */
@@ -138,6 +212,16 @@ export interface AclAuthMethodState {
      * The namespace to create the policy within.
      */
     readonly namespace?: pulumi.Input<string>;
+    /**
+     * A set of rules that control
+     * which namespace tokens created via this auth method will be created within.
+     */
+    readonly namespaceRules?: pulumi.Input<pulumi.Input<inputs.AclAuthMethodNamespaceRule>[]>;
+    /**
+     * The kind of token that this auth method
+     * produces. This can be either 'local' or 'global'.
+     */
+    readonly tokenLocality?: pulumi.Input<string>;
     /**
      * The type of the ACL auth method.
      */
@@ -149,13 +233,31 @@ export interface AclAuthMethodState {
  */
 export interface AclAuthMethodArgs {
     /**
+     * The raw configuration for this ACL auth method. This
+     * attribute is deprecated and will be removed in a future version. `configJson`
+     * should be used instead.
+     *
+     * @deprecated The config attribute is deprecated, please use config_json instead.
+     */
+    readonly config?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The raw configuration for this ACL auth method.
      */
-    readonly config: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    readonly configJson?: pulumi.Input<string>;
     /**
      * A free form human readable description of the auth method.
      */
     readonly description?: pulumi.Input<string>;
+    /**
+     * An optional name to use instead of the name
+     * attribute when displaying information about this auth method.
+     */
+    readonly displayName?: pulumi.Input<string>;
+    /**
+     * The maximum life of any token created by this
+     * auth method.
+     */
+    readonly maxTokenTtl?: pulumi.Input<string>;
     /**
      * The name of the ACL auth method.
      */
@@ -164,6 +266,16 @@ export interface AclAuthMethodArgs {
      * The namespace to create the policy within.
      */
     readonly namespace?: pulumi.Input<string>;
+    /**
+     * A set of rules that control
+     * which namespace tokens created via this auth method will be created within.
+     */
+    readonly namespaceRules?: pulumi.Input<pulumi.Input<inputs.AclAuthMethodNamespaceRule>[]>;
+    /**
+     * The kind of token that this auth method
+     * produces. This can be either 'local' or 'global'.
+     */
+    readonly tokenLocality?: pulumi.Input<string>;
     /**
      * The type of the ACL auth method.
      */

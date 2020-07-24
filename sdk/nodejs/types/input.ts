@@ -5,6 +5,20 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface AclAuthMethodNamespaceRule {
+    /**
+     * If the namespace rule's `selector` matches then
+     * this is used to control the namespace where the token is created.
+     */
+    bindNamespace: pulumi.Input<string>;
+    /**
+     * Specifies the expression used to match this namespace
+     * rule against valid identities returned from an auth method validation.
+     * Defaults to `""`.
+     */
+    selector?: pulumi.Input<string>;
+}
+
 export interface AclRoleServiceIdentity {
     /**
      * The datacenters the effective policy is valid within.

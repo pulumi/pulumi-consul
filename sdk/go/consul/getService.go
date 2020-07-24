@@ -31,6 +31,9 @@ type LookupServiceArgs struct {
 	// empty, the `datacenter` value found in the Consul agent that this provider is
 	// configured to talk to.
 	Datacenter *string `pulumi:"datacenter"`
+	// A filter expression to refine the query, see https://www.consul.io/api-docs/features/filtering
+	// and https://www.consul.io/api-docs/catalog#filtering-1.
+	Filter *string `pulumi:"filter"`
 	// The service name to select.
 	Name string `pulumi:"name"`
 	// See below.
@@ -44,6 +47,7 @@ type LookupServiceArgs struct {
 type LookupServiceResult struct {
 	// The datacenter the keys are being read from to.
 	Datacenter *string `pulumi:"datacenter"`
+	Filter     *string `pulumi:"filter"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The name of the service

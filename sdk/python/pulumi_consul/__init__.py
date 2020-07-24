@@ -12,6 +12,7 @@ from .acl_token_policy_attachment import *
 from .agent_service import *
 from .autopilot_config import *
 from .catalog_entry import *
+from .certificate_authority import *
 from .config_entry import *
 from .get_acl_auth_method import *
 from .get_acl_policy import *

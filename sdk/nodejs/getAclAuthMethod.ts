@@ -31,11 +31,8 @@ export function getAclAuthMethod(args: GetAclAuthMethodArgs, opts?: pulumi.Invok
         opts.version = utilities.getVersion();
     }
     return pulumi.runtime.invoke("consul:index/getAclAuthMethod:getAclAuthMethod", {
-        "config": args.config,
-        "description": args.description,
         "name": args.name,
         "namespace": args.namespace,
-        "type": args.type,
     }, opts);
 }
 
@@ -44,14 +41,6 @@ export function getAclAuthMethod(args: GetAclAuthMethodArgs, opts?: pulumi.Invok
  */
 export interface GetAclAuthMethodArgs {
     /**
-     * The configuration options of the ACL Auth Method.
-     */
-    readonly config?: {[key: string]: string};
-    /**
-     * The description of the ACL Auth Method.
-     */
-    readonly description?: string;
-    /**
      * The name of the ACL Auth Method.
      */
     readonly name: string;
@@ -59,10 +48,6 @@ export interface GetAclAuthMethodArgs {
      * The namespace to lookup the auth method.
      */
     readonly namespace?: string;
-    /**
-     * The type of the ACL Auth Method.
-     */
-    readonly type?: string;
 }
 
 /**
@@ -70,21 +55,49 @@ export interface GetAclAuthMethodArgs {
  */
 export interface GetAclAuthMethodResult {
     /**
+     * The configuration options of the ACL Auth Method. This attribute is
+     * deprecated and will be removed in a future version. If the configuration is
+     * too complex to be represented as a map of strings, it will be blank.
+     * `configJson` should be used instead.
+     *
+     * @deprecated The config attribute is deprecated, please use config_json instead.
+     */
+    readonly config: {[key: string]: string};
+    /**
      * The configuration options of the ACL Auth Method.
      */
-    readonly config?: {[key: string]: string};
+    readonly configJson: string;
     /**
      * The description of the ACL Auth Method.
      */
-    readonly description?: string;
+    readonly description: string;
+    /**
+     * An optional name to use instead of the name attribute when
+     * displaying information about this auth method.
+     */
+    readonly displayName: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The maximum life of any token created by this auth method.
+     */
+    readonly maxTokenTtl: string;
     readonly name: string;
     readonly namespace?: string;
     /**
+     * (Enterprise Only) A set of rules that control which
+     * namespace tokens created via this auth method will be created within
+     */
+    readonly namespaceRules: outputs.GetAclAuthMethodNamespaceRule[];
+    /**
+     * The kind of token that this auth method produces. This can
+     * be either 'local' or 'global'.
+     */
+    readonly tokenLocality: string;
+    /**
      * The type of the ACL Auth Method.
      */
-    readonly type?: string;
+    readonly type: string;
 }

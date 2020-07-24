@@ -143,6 +143,51 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
+// 		tmpJSON6, err := json.Marshal(map[string]interface{}{
+// 			"TLS": map[string]interface{}{
+// 				"Enabled": true,
+// 			},
+// 			"Listeners": []map[string]interface{}{
+// 				map[string]interface{}{
+// 					"Port":     8000,
+// 					"Protocol": "http",
+// 					"Services": []map[string]interface{}{
+// 						map[string]interface{}{
+// 							"Name": "*",
+// 						},
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		json6 := string(tmpJSON6)
+// 		_, err = consul.NewConfigEntry(ctx, "ingressGateway", &consul.ConfigEntryArgs{
+// 			Kind:       pulumi.String("ingress-gateway"),
+// 			ConfigJson: pulumi.String(json6),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		tmpJSON7, err := json.Marshal(map[string]interface{}{
+// 			"Services": []map[string]interface{}{
+// 				map[string]interface{}{
+// 					"Name": "billing",
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		json7 := string(tmpJSON7)
+// 		_, err = consul.NewConfigEntry(ctx, "terminatingGateway", &consul.ConfigEntryArgs{
+// 			Kind:       pulumi.String("terminating-gateway"),
+// 			ConfigJson: pulumi.String(json7),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
 // 		return nil
 // 	})
 // }

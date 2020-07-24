@@ -21,6 +21,9 @@ namespace Pulumi.Consul
         [Input("datacenter")]
         public string? Datacenter { get; set; }
 
+        [Input("filter")]
+        public string? Filter { get; set; }
+
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
@@ -45,6 +48,7 @@ namespace Pulumi.Consul
     public sealed class GetCatalogServiceResult
     {
         public readonly string? Datacenter;
+        public readonly string? Filter;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -58,6 +62,8 @@ namespace Pulumi.Consul
         private GetCatalogServiceResult(
             string? datacenter,
 
+            string? filter,
+
             string id,
 
             string name,
@@ -69,6 +75,7 @@ namespace Pulumi.Consul
             string? tag)
         {
             Datacenter = datacenter;
+            Filter = filter;
             Id = id;
             Name = name;
             QueryOptions = queryOptions;

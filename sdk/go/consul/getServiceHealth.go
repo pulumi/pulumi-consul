@@ -27,6 +27,9 @@ func GetServiceHealth(ctx *pulumi.Context, args *GetServiceHealthArgs, opts ...p
 type GetServiceHealthArgs struct {
 	// The Consul datacenter to query.
 	Datacenter *string `pulumi:"datacenter"`
+	// A filter expression to refine the list of results, see
+	// https://www.consul.io/api-docs/features/filtering and https://www.consul.io/api-docs/health#filtering-2.
+	Filter *string `pulumi:"filter"`
 	// The service name to select.
 	Name string `pulumi:"name"`
 	// Specifies a node name to sort the node list in ascending order
@@ -50,6 +53,7 @@ type GetServiceHealthResult struct {
 	// * [`taggedAddresses`](https://www.consul.io/docs/agent/http/catalog.html#TaggedAddresses) -
 	//   List of explicit LAN and WAN IP addresses for the agent.
 	Datacenter *string `pulumi:"datacenter"`
+	Filter     *string `pulumi:"filter"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The name of this health-check.

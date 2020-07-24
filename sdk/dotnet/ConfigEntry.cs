@@ -119,6 +119,49 @@ namespace Pulumi.Consul
     ///                  },
     ///             }),
     ///         });
+    ///         var ingressGateway = new Consul.ConfigEntry("ingressGateway", new Consul.ConfigEntryArgs
+    ///         {
+    ///             Kind = "ingress-gateway",
+    ///             ConfigJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 { "TLS", new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     { "Enabled", true },
+    ///                 } },
+    ///                 { "Listeners", new[]
+    ///                     {
+    ///                         new Dictionary&lt;string, object?&gt;
+    ///                         {
+    ///                             { "Port", 8000 },
+    ///                             { "Protocol", "http" },
+    ///                             { "Services", new[]
+    ///                                 {
+    ///                                     new Dictionary&lt;string, object?&gt;
+    ///                                     {
+    ///                                         { "Name", "*" },
+    ///                                     },
+    ///                                 }
+    ///                              },
+    ///                         },
+    ///                     }
+    ///                  },
+    ///             }),
+    ///         });
+    ///         var terminatingGateway = new Consul.ConfigEntry("terminatingGateway", new Consul.ConfigEntryArgs
+    ///         {
+    ///             Kind = "terminating-gateway",
+    ///             ConfigJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 { "Services", new[]
+    ///                     {
+    ///                         new Dictionary&lt;string, object?&gt;
+    ///                         {
+    ///                             { "Name", "billing" },
+    ///                         },
+    ///                     }
+    ///                  },
+    ///             }),
+    ///         });
     ///     }
     /// 
     /// }

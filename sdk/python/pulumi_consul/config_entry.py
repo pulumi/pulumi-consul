@@ -94,6 +94,27 @@ class ConfigEntry(pulumi.CustomResource):
                     },
                 }],
             }))
+        ingress_gateway = consul.ConfigEntry("ingressGateway",
+            kind="ingress-gateway",
+            config_json=json.dumps({
+                "TLS": {
+                    "Enabled": True,
+                },
+                "Listeners": [{
+                    "Port": 8000,
+                    "Protocol": "http",
+                    "Services": [{
+                        "Name": "*",
+                    }],
+                }],
+            }))
+        terminating_gateway = consul.ConfigEntry("terminatingGateway",
+            kind="terminating-gateway",
+            config_json=json.dumps({
+                "Services": [{
+                    "Name": "billing",
+                }],
+            }))
         ```
 
         :param str resource_name: The name of the resource.

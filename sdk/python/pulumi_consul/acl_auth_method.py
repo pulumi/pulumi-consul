@@ -12,11 +12,27 @@ from . import utilities, tables
 class AclAuthMethod(pulumi.CustomResource):
     config: pulumi.Output[dict]
     """
+    The raw configuration for this ACL auth method. This
+    attribute is deprecated and will be removed in a future version. `config_json`
+    should be used instead.
+    """
+    config_json: pulumi.Output[str]
+    """
     The raw configuration for this ACL auth method.
     """
     description: pulumi.Output[str]
     """
     A free form human readable description of the auth method.
+    """
+    display_name: pulumi.Output[str]
+    """
+    An optional name to use instead of the name
+    attribute when displaying information about this auth method.
+    """
+    max_token_ttl: pulumi.Output[str]
+    """
+    The maximum life of any token created by this
+    auth method.
     """
     name: pulumi.Output[str]
     """
@@ -26,41 +42,95 @@ class AclAuthMethod(pulumi.CustomResource):
     """
     The namespace to create the policy within.
     """
+    namespace_rules: pulumi.Output[list]
+    """
+    A set of rules that control
+    which namespace tokens created via this auth method will be created within.
+
+      * `bindNamespace` (`str`) - If the namespace rule's `selector` matches then
+        this is used to control the namespace where the token is created.
+      * `selector` (`str`) - Specifies the expression used to match this namespace
+        rule against valid identities returned from an auth method validation.
+        Defaults to `""`.
+    """
+    token_locality: pulumi.Output[str]
+    """
+    The kind of token that this auth method
+    produces. This can be either 'local' or 'global'.
+    """
     type: pulumi.Output[str]
     """
     The type of the ACL auth method.
     """
-    def __init__(__self__, resource_name, opts=None, config=None, description=None, name=None, namespace=None, type=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, config=None, config_json=None, description=None, display_name=None, max_token_ttl=None, name=None, namespace=None, namespace_rules=None, token_locality=None, type=None, __props__=None, __name__=None, __opts__=None):
         """
         Starting with Consul 1.5.0, the AclAuthMethod resource can be used to
-        managed Consul ACL auth methods.
+        managed [Consul ACL auth methods](https://www.consul.io/docs/acl/auth-methods).
 
         ## Example Usage
 
+        Define a `kubernetes` auth method:
         ```python
         import pulumi
+        import json
         import pulumi_consul as consul
 
         minikube = consul.AclAuthMethod("minikube",
-            config={
+            type="kubernetes",
+            description="dev minikube cluster",
+            config_json=json.dumps({
+                "Host": "https://192.0.2.42:8443",
                 "CACert": \"\"\"-----BEGIN CERTIFICATE-----
         ...-----END CERTIFICATE-----
-
         \"\"\",
-                "Host": "https://192.0.2.42:8443",
                 "ServiceAccountJWT": "eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9...",
-            },
-            description="dev minikube cluster",
-            type="kubernetes")
+            }))
+        ```
+
+        Define a `jwt` auth method:
+        ```python
+        import pulumi
+        import json
+        import pulumi_consul as consul
+
+        minikube = consul.AclAuthMethod("minikube",
+            type="jwt",
+            config_json=json.dumps({
+                "JWKSURL": "https://example.com/identity/oidc/.well-known/keys",
+                "JWTSupportedAlgs": "RS256",
+                "BoundIssuer": "https://example.com",
+                "ClaimMappings": {
+                    "subject": "subject",
+                },
+            }))
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] config: The raw configuration for this ACL auth method.
+        :param pulumi.Input[dict] config: The raw configuration for this ACL auth method. This
+               attribute is deprecated and will be removed in a future version. `config_json`
+               should be used instead.
+        :param pulumi.Input[str] config_json: The raw configuration for this ACL auth method.
         :param pulumi.Input[str] description: A free form human readable description of the auth method.
+        :param pulumi.Input[str] display_name: An optional name to use instead of the name
+               attribute when displaying information about this auth method.
+        :param pulumi.Input[str] max_token_ttl: The maximum life of any token created by this
+               auth method.
         :param pulumi.Input[str] name: The name of the ACL auth method.
         :param pulumi.Input[str] namespace: The namespace to create the policy within.
+        :param pulumi.Input[list] namespace_rules: A set of rules that control
+               which namespace tokens created via this auth method will be created within.
+        :param pulumi.Input[str] token_locality: The kind of token that this auth method
+               produces. This can be either 'local' or 'global'.
         :param pulumi.Input[str] type: The type of the ACL auth method.
+
+        The **namespace_rules** object supports the following:
+
+          * `bindNamespace` (`pulumi.Input[str]`) - If the namespace rule's `selector` matches then
+            this is used to control the namespace where the token is created.
+          * `selector` (`pulumi.Input[str]`) - Specifies the expression used to match this namespace
+            rule against valid identities returned from an auth method validation.
+            Defaults to `""`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -79,12 +149,18 @@ class AclAuthMethod(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if config is None:
-                raise TypeError("Missing required property 'config'")
+            if config is not None:
+                warnings.warn("The config attribute is deprecated, please use config_json instead.", DeprecationWarning)
+                pulumi.log.warn("config is deprecated: The config attribute is deprecated, please use config_json instead.")
             __props__['config'] = config
+            __props__['config_json'] = config_json
             __props__['description'] = description
+            __props__['display_name'] = display_name
+            __props__['max_token_ttl'] = max_token_ttl
             __props__['name'] = name
             __props__['namespace'] = namespace
+            __props__['namespace_rules'] = namespace_rules
+            __props__['token_locality'] = token_locality
             if type is None:
                 raise TypeError("Missing required property 'type'")
             __props__['type'] = type
@@ -95,7 +171,7 @@ class AclAuthMethod(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, config=None, description=None, name=None, namespace=None, type=None):
+    def get(resource_name, id, opts=None, config=None, config_json=None, description=None, display_name=None, max_token_ttl=None, name=None, namespace=None, namespace_rules=None, token_locality=None, type=None):
         """
         Get an existing AclAuthMethod resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -103,20 +179,44 @@ class AclAuthMethod(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] config: The raw configuration for this ACL auth method.
+        :param pulumi.Input[dict] config: The raw configuration for this ACL auth method. This
+               attribute is deprecated and will be removed in a future version. `config_json`
+               should be used instead.
+        :param pulumi.Input[str] config_json: The raw configuration for this ACL auth method.
         :param pulumi.Input[str] description: A free form human readable description of the auth method.
+        :param pulumi.Input[str] display_name: An optional name to use instead of the name
+               attribute when displaying information about this auth method.
+        :param pulumi.Input[str] max_token_ttl: The maximum life of any token created by this
+               auth method.
         :param pulumi.Input[str] name: The name of the ACL auth method.
         :param pulumi.Input[str] namespace: The namespace to create the policy within.
+        :param pulumi.Input[list] namespace_rules: A set of rules that control
+               which namespace tokens created via this auth method will be created within.
+        :param pulumi.Input[str] token_locality: The kind of token that this auth method
+               produces. This can be either 'local' or 'global'.
         :param pulumi.Input[str] type: The type of the ACL auth method.
+
+        The **namespace_rules** object supports the following:
+
+          * `bindNamespace` (`pulumi.Input[str]`) - If the namespace rule's `selector` matches then
+            this is used to control the namespace where the token is created.
+          * `selector` (`pulumi.Input[str]`) - Specifies the expression used to match this namespace
+            rule against valid identities returned from an auth method validation.
+            Defaults to `""`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
 
         __props__["config"] = config
+        __props__["config_json"] = config_json
         __props__["description"] = description
+        __props__["display_name"] = display_name
+        __props__["max_token_ttl"] = max_token_ttl
         __props__["name"] = name
         __props__["namespace"] = namespace
+        __props__["namespace_rules"] = namespace_rules
+        __props__["token_locality"] = token_locality
         __props__["type"] = type
         return AclAuthMethod(resource_name, opts=opts, __props__=__props__)
 

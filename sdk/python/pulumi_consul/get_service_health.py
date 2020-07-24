@@ -12,7 +12,7 @@ class GetServiceHealthResult:
     """
     A collection of values returned by getServiceHealth.
     """
-    def __init__(__self__, datacenter=None, id=None, name=None, near=None, node_meta=None, passing=None, results=None, tag=None, wait_for=None):
+    def __init__(__self__, datacenter=None, filter=None, id=None, name=None, near=None, node_meta=None, passing=None, results=None, tag=None, wait_for=None):
         if datacenter and not isinstance(datacenter, str):
             raise TypeError("Expected argument 'datacenter' to be a str")
         __self__.datacenter = datacenter
@@ -21,6 +21,9 @@ class GetServiceHealthResult:
         * [`tagged_addresses`](https://www.consul.io/docs/agent/http/catalog.html#TaggedAddresses) -
         List of explicit LAN and WAN IP addresses for the agent.
         """
+        if filter and not isinstance(filter, str):
+            raise TypeError("Expected argument 'filter' to be a str")
+        __self__.filter = filter
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
@@ -76,6 +79,7 @@ class AwaitableGetServiceHealthResult(GetServiceHealthResult):
             yield self
         return GetServiceHealthResult(
             datacenter=self.datacenter,
+            filter=self.filter,
             id=self.id,
             name=self.name,
             near=self.near,
@@ -85,7 +89,7 @@ class AwaitableGetServiceHealthResult(GetServiceHealthResult):
             tag=self.tag,
             wait_for=self.wait_for)
 
-def get_service_health(datacenter=None,name=None,near=None,node_meta=None,passing=None,tag=None,wait_for=None,opts=None):
+def get_service_health(datacenter=None,filter=None,name=None,near=None,node_meta=None,passing=None,tag=None,wait_for=None,opts=None):
     """
     `getServiceHealth` can be used to get the list of the instances that
     are currently healthy, according to their associated  health-checks.
@@ -97,6 +101,8 @@ def get_service_health(datacenter=None,name=None,near=None,node_meta=None,passin
 
 
     :param str datacenter: The Consul datacenter to query.
+    :param str filter: A filter expression to refine the list of results, see
+           https://www.consul.io/api-docs/features/filtering and https://www.consul.io/api-docs/health#filtering-2.
     :param str name: The service name to select.
     :param str near: Specifies a node name to sort the node list in ascending order
            based on the estimated round trip time from that node.
@@ -111,6 +117,7 @@ def get_service_health(datacenter=None,name=None,near=None,node_meta=None,passin
 
 
     __args__['datacenter'] = datacenter
+    __args__['filter'] = filter
     __args__['name'] = name
     __args__['near'] = near
     __args__['nodeMeta'] = node_meta
@@ -125,6 +132,7 @@ def get_service_health(datacenter=None,name=None,near=None,node_meta=None,passin
 
     return AwaitableGetServiceHealthResult(
         datacenter=__ret__.get('datacenter'),
+        filter=__ret__.get('filter'),
         id=__ret__.get('id'),
         name=__ret__.get('name'),
         near=__ret__.get('near'),

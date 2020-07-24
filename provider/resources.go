@@ -185,8 +185,9 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"consul_namespace":    {Tok: makeResource(mainMod, "Namespace")},
-			"consul_network_area": {Tok: makeResource(mainMod, "NetworkArea")},
+			"consul_namespace":             {Tok: makeResource(mainMod, "Namespace")},
+			"consul_network_area":          {Tok: makeResource(mainMod, "NetworkArea")},
+			"consul_certificate_authority": {Tok: makeResource(mainMod, "CertificateAuthority")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"consul_acl_auth_method":     {Tok: makeDataSource(mainMod, "getAclAuthMethod")},

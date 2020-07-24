@@ -68,7 +68,7 @@ namespace Pulumi.Consul
     /// }
     /// ```
     /// 
-    /// Register an health-check:
+    /// Register a health-check:
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -140,6 +140,13 @@ namespace Pulumi.Consul
         /// </summary>
         [Output("datacenter")]
         public Output<string> Datacenter { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies to disable the
+        /// anti-entropy feature for this service's tags. Defaults to `false`.
+        /// </summary>
+        [Output("enableTagOverride")]
+        public Output<bool?> EnableTagOverride { get; private set; } = null!;
 
         [Output("external")]
         public Output<bool?> External { get; private set; } = null!;
@@ -257,6 +264,13 @@ namespace Pulumi.Consul
         [Input("datacenter")]
         public Input<string>? Datacenter { get; set; }
 
+        /// <summary>
+        /// Specifies to disable the
+        /// anti-entropy feature for this service's tags. Defaults to `false`.
+        /// </summary>
+        [Input("enableTagOverride")]
+        public Input<bool>? EnableTagOverride { get; set; }
+
         [Input("external")]
         public Input<bool>? External { get; set; }
 
@@ -345,6 +359,13 @@ namespace Pulumi.Consul
         /// </summary>
         [Input("datacenter")]
         public Input<string>? Datacenter { get; set; }
+
+        /// <summary>
+        /// Specifies to disable the
+        /// anti-entropy feature for this service's tags. Defaults to `false`.
+        /// </summary>
+        [Input("enableTagOverride")]
+        public Input<bool>? EnableTagOverride { get; set; }
 
         [Input("external")]
         public Input<bool>? External { get; set; }

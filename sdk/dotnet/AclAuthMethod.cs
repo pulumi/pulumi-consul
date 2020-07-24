@@ -11,11 +11,14 @@ namespace Pulumi.Consul
 {
     /// <summary>
     /// Starting with Consul 1.5.0, the consul.AclAuthMethod resource can be used to
-    /// managed Consul ACL auth methods.
+    /// managed [Consul ACL auth methods](https://www.consul.io/docs/acl/auth-methods).
     /// 
     /// ## Example Usage
     /// 
+    /// Define a `kubernetes` auth method:
     /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Text.Json;
     /// using Pulumi;
     /// using Consul = Pulumi.Consul;
     /// 
@@ -25,17 +28,46 @@ namespace Pulumi.Consul
     ///     {
     ///         var minikube = new Consul.AclAuthMethod("minikube", new Consul.AclAuthMethodArgs
     ///         {
-    ///             Config = 
+    ///             Type = "kubernetes",
+    ///             Description = "dev minikube cluster",
+    ///             ConfigJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///             {
+    ///                 { "Host", "https://192.0.2.42:8443" },
     ///                 { "CACert", @"-----BEGIN CERTIFICATE-----
     /// ...-----END CERTIFICATE-----
-    /// 
     /// " },
-    ///                 { "Host", "https://192.0.2.42:8443" },
     ///                 { "ServiceAccountJWT", "eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9..." },
-    ///             },
-    ///             Description = "dev minikube cluster",
-    ///             Type = "kubernetes",
+    ///             }),
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// Define a `jwt` auth method:
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using Consul = Pulumi.Consul;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var minikube = new Consul.AclAuthMethod("minikube", new Consul.AclAuthMethodArgs
+    ///         {
+    ///             Type = "jwt",
+    ///             ConfigJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 { "JWKSURL", "https://example.com/identity/oidc/.well-known/keys" },
+    ///                 { "JWTSupportedAlgs", "RS256" },
+    ///                 { "BoundIssuer", "https://example.com" },
+    ///                 { "ClaimMappings", new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     { "subject", "subject" },
+    ///                 } },
+    ///             }),
     ///         });
     ///     }
     /// 
@@ -45,16 +77,38 @@ namespace Pulumi.Consul
     public partial class AclAuthMethod : Pulumi.CustomResource
     {
         /// <summary>
-        /// The raw configuration for this ACL auth method.
+        /// The raw configuration for this ACL auth method. This
+        /// attribute is deprecated and will be removed in a future version. `config_json`
+        /// should be used instead.
         /// </summary>
         [Output("config")]
-        public Output<ImmutableDictionary<string, string>> Config { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Config { get; private set; } = null!;
+
+        /// <summary>
+        /// The raw configuration for this ACL auth method.
+        /// </summary>
+        [Output("configJson")]
+        public Output<string?> ConfigJson { get; private set; } = null!;
 
         /// <summary>
         /// A free form human readable description of the auth method.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// An optional name to use instead of the name
+        /// attribute when displaying information about this auth method.
+        /// </summary>
+        [Output("displayName")]
+        public Output<string?> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// The maximum life of any token created by this
+        /// auth method.
+        /// </summary>
+        [Output("maxTokenTtl")]
+        public Output<string?> MaxTokenTtl { get; private set; } = null!;
 
         /// <summary>
         /// The name of the ACL auth method.
@@ -67,6 +121,20 @@ namespace Pulumi.Consul
         /// </summary>
         [Output("namespace")]
         public Output<string?> Namespace { get; private set; } = null!;
+
+        /// <summary>
+        /// A set of rules that control
+        /// which namespace tokens created via this auth method will be created within.
+        /// </summary>
+        [Output("namespaceRules")]
+        public Output<ImmutableArray<Outputs.AclAuthMethodNamespaceRule>> NamespaceRules { get; private set; } = null!;
+
+        /// <summary>
+        /// The kind of token that this auth method
+        /// produces. This can be either 'local' or 'global'.
+        /// </summary>
+        [Output("tokenLocality")]
+        public Output<string?> TokenLocality { get; private set; } = null!;
 
         /// <summary>
         /// The type of the ACL auth method.
@@ -120,12 +188,15 @@ namespace Pulumi.Consul
 
     public sealed class AclAuthMethodArgs : Pulumi.ResourceArgs
     {
-        [Input("config", required: true)]
+        [Input("config")]
         private InputMap<string>? _config;
 
         /// <summary>
-        /// The raw configuration for this ACL auth method.
+        /// The raw configuration for this ACL auth method. This
+        /// attribute is deprecated and will be removed in a future version. `config_json`
+        /// should be used instead.
         /// </summary>
+        [Obsolete(@"The config attribute is deprecated, please use config_json instead.")]
         public InputMap<string> Config
         {
             get => _config ?? (_config = new InputMap<string>());
@@ -133,10 +204,30 @@ namespace Pulumi.Consul
         }
 
         /// <summary>
+        /// The raw configuration for this ACL auth method.
+        /// </summary>
+        [Input("configJson")]
+        public Input<string>? ConfigJson { get; set; }
+
+        /// <summary>
         /// A free form human readable description of the auth method.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// An optional name to use instead of the name
+        /// attribute when displaying information about this auth method.
+        /// </summary>
+        [Input("displayName")]
+        public Input<string>? DisplayName { get; set; }
+
+        /// <summary>
+        /// The maximum life of any token created by this
+        /// auth method.
+        /// </summary>
+        [Input("maxTokenTtl")]
+        public Input<string>? MaxTokenTtl { get; set; }
 
         /// <summary>
         /// The name of the ACL auth method.
@@ -149,6 +240,26 @@ namespace Pulumi.Consul
         /// </summary>
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }
+
+        [Input("namespaceRules")]
+        private InputList<Inputs.AclAuthMethodNamespaceRuleArgs>? _namespaceRules;
+
+        /// <summary>
+        /// A set of rules that control
+        /// which namespace tokens created via this auth method will be created within.
+        /// </summary>
+        public InputList<Inputs.AclAuthMethodNamespaceRuleArgs> NamespaceRules
+        {
+            get => _namespaceRules ?? (_namespaceRules = new InputList<Inputs.AclAuthMethodNamespaceRuleArgs>());
+            set => _namespaceRules = value;
+        }
+
+        /// <summary>
+        /// The kind of token that this auth method
+        /// produces. This can be either 'local' or 'global'.
+        /// </summary>
+        [Input("tokenLocality")]
+        public Input<string>? TokenLocality { get; set; }
 
         /// <summary>
         /// The type of the ACL auth method.
@@ -167,8 +278,11 @@ namespace Pulumi.Consul
         private InputMap<string>? _config;
 
         /// <summary>
-        /// The raw configuration for this ACL auth method.
+        /// The raw configuration for this ACL auth method. This
+        /// attribute is deprecated and will be removed in a future version. `config_json`
+        /// should be used instead.
         /// </summary>
+        [Obsolete(@"The config attribute is deprecated, please use config_json instead.")]
         public InputMap<string> Config
         {
             get => _config ?? (_config = new InputMap<string>());
@@ -176,10 +290,30 @@ namespace Pulumi.Consul
         }
 
         /// <summary>
+        /// The raw configuration for this ACL auth method.
+        /// </summary>
+        [Input("configJson")]
+        public Input<string>? ConfigJson { get; set; }
+
+        /// <summary>
         /// A free form human readable description of the auth method.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// An optional name to use instead of the name
+        /// attribute when displaying information about this auth method.
+        /// </summary>
+        [Input("displayName")]
+        public Input<string>? DisplayName { get; set; }
+
+        /// <summary>
+        /// The maximum life of any token created by this
+        /// auth method.
+        /// </summary>
+        [Input("maxTokenTtl")]
+        public Input<string>? MaxTokenTtl { get; set; }
 
         /// <summary>
         /// The name of the ACL auth method.
@@ -192,6 +326,26 @@ namespace Pulumi.Consul
         /// </summary>
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }
+
+        [Input("namespaceRules")]
+        private InputList<Inputs.AclAuthMethodNamespaceRuleGetArgs>? _namespaceRules;
+
+        /// <summary>
+        /// A set of rules that control
+        /// which namespace tokens created via this auth method will be created within.
+        /// </summary>
+        public InputList<Inputs.AclAuthMethodNamespaceRuleGetArgs> NamespaceRules
+        {
+            get => _namespaceRules ?? (_namespaceRules = new InputList<Inputs.AclAuthMethodNamespaceRuleGetArgs>());
+            set => _namespaceRules = value;
+        }
+
+        /// <summary>
+        /// The kind of token that this auth method
+        /// produces. This can be either 'local' or 'global'.
+        /// </summary>
+        [Input("tokenLocality")]
+        public Input<string>? TokenLocality { get; set; }
 
         /// <summary>
         /// The type of the ACL auth method.
