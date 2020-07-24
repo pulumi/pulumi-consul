@@ -48,7 +48,7 @@ build:: install_plugins provider
 
 install_plugins::
 	[ -x $(shell which pulumi) ] || curl -fsSL https://get.pulumi.com | sh
-	pulumi plugin install resource aws 2.3.0
+	pulumi plugin install resource aws 2.8.0
 	pulumi plugin install resource vault 2.1.0
 
 tfgen::

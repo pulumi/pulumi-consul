@@ -12,13 +12,16 @@ class GetServiceResult:
     """
     A collection of values returned by getService.
     """
-    def __init__(__self__, datacenter=None, id=None, name=None, query_options=None, services=None, tag=None):
+    def __init__(__self__, datacenter=None, filter=None, id=None, name=None, query_options=None, services=None, tag=None):
         if datacenter and not isinstance(datacenter, str):
             raise TypeError("Expected argument 'datacenter' to be a str")
         __self__.datacenter = datacenter
         """
         The datacenter the keys are being read from to.
         """
+        if filter and not isinstance(filter, str):
+            raise TypeError("Expected argument 'filter' to be a str")
+        __self__.filter = filter
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
@@ -55,13 +58,14 @@ class AwaitableGetServiceResult(GetServiceResult):
             yield self
         return GetServiceResult(
             datacenter=self.datacenter,
+            filter=self.filter,
             id=self.id,
             name=self.name,
             query_options=self.query_options,
             services=self.services,
             tag=self.tag)
 
-def get_service(datacenter=None,name=None,query_options=None,tag=None,opts=None):
+def get_service(datacenter=None,filter=None,name=None,query_options=None,tag=None,opts=None):
     """
     `Service` provides details about a specific Consul service in a
     given datacenter.  The results include a list of nodes advertising the specified
@@ -77,6 +81,8 @@ def get_service(datacenter=None,name=None,query_options=None,tag=None,opts=None)
            same value found in `query_options` parameter specified below, or if that is
            empty, the `datacenter` value found in the Consul agent that this provider is
            configured to talk to.
+    :param str filter: A filter expression to refine the query, see https://www.consul.io/api-docs/features/filtering
+           and https://www.consul.io/api-docs/catalog#filtering-1.
     :param str name: The service name to select.
     :param list query_options: See below.
     :param str tag: A single tag that can be used to filter the list of nodes
@@ -107,6 +113,7 @@ def get_service(datacenter=None,name=None,query_options=None,tag=None,opts=None)
 
 
     __args__['datacenter'] = datacenter
+    __args__['filter'] = filter
     __args__['name'] = name
     __args__['queryOptions'] = query_options
     __args__['tag'] = tag
@@ -118,6 +125,7 @@ def get_service(datacenter=None,name=None,query_options=None,tag=None,opts=None)
 
     return AwaitableGetServiceResult(
         datacenter=__ret__.get('datacenter'),
+        filter=__ret__.get('filter'),
         id=__ret__.get('id'),
         name=__ret__.get('name'),
         query_options=__ret__.get('queryOptions'),

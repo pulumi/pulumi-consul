@@ -10,6 +10,121 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+type AclAuthMethodNamespaceRule struct {
+	// If the namespace rule's `selector` matches then
+	// this is used to control the namespace where the token is created.
+	BindNamespace string `pulumi:"bindNamespace"`
+	// Specifies the expression used to match this namespace
+	// rule against valid identities returned from an auth method validation.
+	// Defaults to `""`.
+	Selector *string `pulumi:"selector"`
+}
+
+// AclAuthMethodNamespaceRuleInput is an input type that accepts AclAuthMethodNamespaceRuleArgs and AclAuthMethodNamespaceRuleOutput values.
+// You can construct a concrete instance of `AclAuthMethodNamespaceRuleInput` via:
+//
+//          AclAuthMethodNamespaceRuleArgs{...}
+type AclAuthMethodNamespaceRuleInput interface {
+	pulumi.Input
+
+	ToAclAuthMethodNamespaceRuleOutput() AclAuthMethodNamespaceRuleOutput
+	ToAclAuthMethodNamespaceRuleOutputWithContext(context.Context) AclAuthMethodNamespaceRuleOutput
+}
+
+type AclAuthMethodNamespaceRuleArgs struct {
+	// If the namespace rule's `selector` matches then
+	// this is used to control the namespace where the token is created.
+	BindNamespace pulumi.StringInput `pulumi:"bindNamespace"`
+	// Specifies the expression used to match this namespace
+	// rule against valid identities returned from an auth method validation.
+	// Defaults to `""`.
+	Selector pulumi.StringPtrInput `pulumi:"selector"`
+}
+
+func (AclAuthMethodNamespaceRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AclAuthMethodNamespaceRule)(nil)).Elem()
+}
+
+func (i AclAuthMethodNamespaceRuleArgs) ToAclAuthMethodNamespaceRuleOutput() AclAuthMethodNamespaceRuleOutput {
+	return i.ToAclAuthMethodNamespaceRuleOutputWithContext(context.Background())
+}
+
+func (i AclAuthMethodNamespaceRuleArgs) ToAclAuthMethodNamespaceRuleOutputWithContext(ctx context.Context) AclAuthMethodNamespaceRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AclAuthMethodNamespaceRuleOutput)
+}
+
+// AclAuthMethodNamespaceRuleArrayInput is an input type that accepts AclAuthMethodNamespaceRuleArray and AclAuthMethodNamespaceRuleArrayOutput values.
+// You can construct a concrete instance of `AclAuthMethodNamespaceRuleArrayInput` via:
+//
+//          AclAuthMethodNamespaceRuleArray{ AclAuthMethodNamespaceRuleArgs{...} }
+type AclAuthMethodNamespaceRuleArrayInput interface {
+	pulumi.Input
+
+	ToAclAuthMethodNamespaceRuleArrayOutput() AclAuthMethodNamespaceRuleArrayOutput
+	ToAclAuthMethodNamespaceRuleArrayOutputWithContext(context.Context) AclAuthMethodNamespaceRuleArrayOutput
+}
+
+type AclAuthMethodNamespaceRuleArray []AclAuthMethodNamespaceRuleInput
+
+func (AclAuthMethodNamespaceRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AclAuthMethodNamespaceRule)(nil)).Elem()
+}
+
+func (i AclAuthMethodNamespaceRuleArray) ToAclAuthMethodNamespaceRuleArrayOutput() AclAuthMethodNamespaceRuleArrayOutput {
+	return i.ToAclAuthMethodNamespaceRuleArrayOutputWithContext(context.Background())
+}
+
+func (i AclAuthMethodNamespaceRuleArray) ToAclAuthMethodNamespaceRuleArrayOutputWithContext(ctx context.Context) AclAuthMethodNamespaceRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AclAuthMethodNamespaceRuleArrayOutput)
+}
+
+type AclAuthMethodNamespaceRuleOutput struct{ *pulumi.OutputState }
+
+func (AclAuthMethodNamespaceRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AclAuthMethodNamespaceRule)(nil)).Elem()
+}
+
+func (o AclAuthMethodNamespaceRuleOutput) ToAclAuthMethodNamespaceRuleOutput() AclAuthMethodNamespaceRuleOutput {
+	return o
+}
+
+func (o AclAuthMethodNamespaceRuleOutput) ToAclAuthMethodNamespaceRuleOutputWithContext(ctx context.Context) AclAuthMethodNamespaceRuleOutput {
+	return o
+}
+
+// If the namespace rule's `selector` matches then
+// this is used to control the namespace where the token is created.
+func (o AclAuthMethodNamespaceRuleOutput) BindNamespace() pulumi.StringOutput {
+	return o.ApplyT(func(v AclAuthMethodNamespaceRule) string { return v.BindNamespace }).(pulumi.StringOutput)
+}
+
+// Specifies the expression used to match this namespace
+// rule against valid identities returned from an auth method validation.
+// Defaults to `""`.
+func (o AclAuthMethodNamespaceRuleOutput) Selector() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AclAuthMethodNamespaceRule) *string { return v.Selector }).(pulumi.StringPtrOutput)
+}
+
+type AclAuthMethodNamespaceRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (AclAuthMethodNamespaceRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AclAuthMethodNamespaceRule)(nil)).Elem()
+}
+
+func (o AclAuthMethodNamespaceRuleArrayOutput) ToAclAuthMethodNamespaceRuleArrayOutput() AclAuthMethodNamespaceRuleArrayOutput {
+	return o
+}
+
+func (o AclAuthMethodNamespaceRuleArrayOutput) ToAclAuthMethodNamespaceRuleArrayOutputWithContext(ctx context.Context) AclAuthMethodNamespaceRuleArrayOutput {
+	return o
+}
+
+func (o AclAuthMethodNamespaceRuleArrayOutput) Index(i pulumi.IntInput) AclAuthMethodNamespaceRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AclAuthMethodNamespaceRule {
+		return vs[0].([]AclAuthMethodNamespaceRule)[vs[1].(int)]
+	}).(AclAuthMethodNamespaceRuleOutput)
+}
+
 type AclRoleServiceIdentity struct {
 	// The datacenters the effective policy is valid within.
 	Datacenters []string `pulumi:"datacenters"`
@@ -1291,6 +1406,106 @@ func (o ServiceCheckHeaderArrayOutput) Index(i pulumi.IntInput) ServiceCheckHead
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceCheckHeader {
 		return vs[0].([]ServiceCheckHeader)[vs[1].(int)]
 	}).(ServiceCheckHeaderOutput)
+}
+
+type GetAclAuthMethodNamespaceRule struct {
+	BindNamespace string `pulumi:"bindNamespace"`
+	Selector      string `pulumi:"selector"`
+}
+
+// GetAclAuthMethodNamespaceRuleInput is an input type that accepts GetAclAuthMethodNamespaceRuleArgs and GetAclAuthMethodNamespaceRuleOutput values.
+// You can construct a concrete instance of `GetAclAuthMethodNamespaceRuleInput` via:
+//
+//          GetAclAuthMethodNamespaceRuleArgs{...}
+type GetAclAuthMethodNamespaceRuleInput interface {
+	pulumi.Input
+
+	ToGetAclAuthMethodNamespaceRuleOutput() GetAclAuthMethodNamespaceRuleOutput
+	ToGetAclAuthMethodNamespaceRuleOutputWithContext(context.Context) GetAclAuthMethodNamespaceRuleOutput
+}
+
+type GetAclAuthMethodNamespaceRuleArgs struct {
+	BindNamespace pulumi.StringInput `pulumi:"bindNamespace"`
+	Selector      pulumi.StringInput `pulumi:"selector"`
+}
+
+func (GetAclAuthMethodNamespaceRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAclAuthMethodNamespaceRule)(nil)).Elem()
+}
+
+func (i GetAclAuthMethodNamespaceRuleArgs) ToGetAclAuthMethodNamespaceRuleOutput() GetAclAuthMethodNamespaceRuleOutput {
+	return i.ToGetAclAuthMethodNamespaceRuleOutputWithContext(context.Background())
+}
+
+func (i GetAclAuthMethodNamespaceRuleArgs) ToGetAclAuthMethodNamespaceRuleOutputWithContext(ctx context.Context) GetAclAuthMethodNamespaceRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAclAuthMethodNamespaceRuleOutput)
+}
+
+// GetAclAuthMethodNamespaceRuleArrayInput is an input type that accepts GetAclAuthMethodNamespaceRuleArray and GetAclAuthMethodNamespaceRuleArrayOutput values.
+// You can construct a concrete instance of `GetAclAuthMethodNamespaceRuleArrayInput` via:
+//
+//          GetAclAuthMethodNamespaceRuleArray{ GetAclAuthMethodNamespaceRuleArgs{...} }
+type GetAclAuthMethodNamespaceRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetAclAuthMethodNamespaceRuleArrayOutput() GetAclAuthMethodNamespaceRuleArrayOutput
+	ToGetAclAuthMethodNamespaceRuleArrayOutputWithContext(context.Context) GetAclAuthMethodNamespaceRuleArrayOutput
+}
+
+type GetAclAuthMethodNamespaceRuleArray []GetAclAuthMethodNamespaceRuleInput
+
+func (GetAclAuthMethodNamespaceRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAclAuthMethodNamespaceRule)(nil)).Elem()
+}
+
+func (i GetAclAuthMethodNamespaceRuleArray) ToGetAclAuthMethodNamespaceRuleArrayOutput() GetAclAuthMethodNamespaceRuleArrayOutput {
+	return i.ToGetAclAuthMethodNamespaceRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetAclAuthMethodNamespaceRuleArray) ToGetAclAuthMethodNamespaceRuleArrayOutputWithContext(ctx context.Context) GetAclAuthMethodNamespaceRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAclAuthMethodNamespaceRuleArrayOutput)
+}
+
+type GetAclAuthMethodNamespaceRuleOutput struct{ *pulumi.OutputState }
+
+func (GetAclAuthMethodNamespaceRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAclAuthMethodNamespaceRule)(nil)).Elem()
+}
+
+func (o GetAclAuthMethodNamespaceRuleOutput) ToGetAclAuthMethodNamespaceRuleOutput() GetAclAuthMethodNamespaceRuleOutput {
+	return o
+}
+
+func (o GetAclAuthMethodNamespaceRuleOutput) ToGetAclAuthMethodNamespaceRuleOutputWithContext(ctx context.Context) GetAclAuthMethodNamespaceRuleOutput {
+	return o
+}
+
+func (o GetAclAuthMethodNamespaceRuleOutput) BindNamespace() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAclAuthMethodNamespaceRule) string { return v.BindNamespace }).(pulumi.StringOutput)
+}
+
+func (o GetAclAuthMethodNamespaceRuleOutput) Selector() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAclAuthMethodNamespaceRule) string { return v.Selector }).(pulumi.StringOutput)
+}
+
+type GetAclAuthMethodNamespaceRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAclAuthMethodNamespaceRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAclAuthMethodNamespaceRule)(nil)).Elem()
+}
+
+func (o GetAclAuthMethodNamespaceRuleArrayOutput) ToGetAclAuthMethodNamespaceRuleArrayOutput() GetAclAuthMethodNamespaceRuleArrayOutput {
+	return o
+}
+
+func (o GetAclAuthMethodNamespaceRuleArrayOutput) ToGetAclAuthMethodNamespaceRuleArrayOutputWithContext(ctx context.Context) GetAclAuthMethodNamespaceRuleArrayOutput {
+	return o
+}
+
+func (o GetAclAuthMethodNamespaceRuleArrayOutput) Index(i pulumi.IntInput) GetAclAuthMethodNamespaceRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAclAuthMethodNamespaceRule {
+		return vs[0].([]GetAclAuthMethodNamespaceRule)[vs[1].(int)]
+	}).(GetAclAuthMethodNamespaceRuleOutput)
 }
 
 type GetAclRolePolicy struct {
@@ -3296,8 +3511,8 @@ func (o GetNodesQueryOptionArrayOutput) Index(i pulumi.IntInput) GetNodesQueryOp
 type GetServiceHealthResultType struct {
 	Checks []GetServiceHealthResultCheck `pulumi:"checks"`
 	// The name of the node associated with this health-check.
-	Node    GetServiceHealthResultNode    `pulumi:"node"`
-	Service GetServiceHealthResultService `pulumi:"service"`
+	Nodes    []GetServiceHealthResultNode    `pulumi:"nodes"`
+	Services []GetServiceHealthResultService `pulumi:"services"`
 }
 
 // GetServiceHealthResultTypeInput is an input type that accepts GetServiceHealthResultTypeArgs and GetServiceHealthResultTypeOutput values.
@@ -3314,8 +3529,8 @@ type GetServiceHealthResultTypeInput interface {
 type GetServiceHealthResultTypeArgs struct {
 	Checks GetServiceHealthResultCheckArrayInput `pulumi:"checks"`
 	// The name of the node associated with this health-check.
-	Node    GetServiceHealthResultNodeInput    `pulumi:"node"`
-	Service GetServiceHealthResultServiceInput `pulumi:"service"`
+	Nodes    GetServiceHealthResultNodeArrayInput    `pulumi:"nodes"`
+	Services GetServiceHealthResultServiceArrayInput `pulumi:"services"`
 }
 
 func (GetServiceHealthResultTypeArgs) ElementType() reflect.Type {
@@ -3374,12 +3589,12 @@ func (o GetServiceHealthResultTypeOutput) Checks() GetServiceHealthResultCheckAr
 }
 
 // The name of the node associated with this health-check.
-func (o GetServiceHealthResultTypeOutput) Node() GetServiceHealthResultNodeOutput {
-	return o.ApplyT(func(v GetServiceHealthResultType) GetServiceHealthResultNode { return v.Node }).(GetServiceHealthResultNodeOutput)
+func (o GetServiceHealthResultTypeOutput) Nodes() GetServiceHealthResultNodeArrayOutput {
+	return o.ApplyT(func(v GetServiceHealthResultType) []GetServiceHealthResultNode { return v.Nodes }).(GetServiceHealthResultNodeArrayOutput)
 }
 
-func (o GetServiceHealthResultTypeOutput) Service() GetServiceHealthResultServiceOutput {
-	return o.ApplyT(func(v GetServiceHealthResultType) GetServiceHealthResultService { return v.Service }).(GetServiceHealthResultServiceOutput)
+func (o GetServiceHealthResultTypeOutput) Services() GetServiceHealthResultServiceArrayOutput {
+	return o.ApplyT(func(v GetServiceHealthResultType) []GetServiceHealthResultService { return v.Services }).(GetServiceHealthResultServiceArrayOutput)
 }
 
 type GetServiceHealthResultTypeArrayOutput struct{ *pulumi.OutputState }
@@ -3622,6 +3837,31 @@ func (i GetServiceHealthResultNodeArgs) ToGetServiceHealthResultNodeOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetServiceHealthResultNodeOutput)
 }
 
+// GetServiceHealthResultNodeArrayInput is an input type that accepts GetServiceHealthResultNodeArray and GetServiceHealthResultNodeArrayOutput values.
+// You can construct a concrete instance of `GetServiceHealthResultNodeArrayInput` via:
+//
+//          GetServiceHealthResultNodeArray{ GetServiceHealthResultNodeArgs{...} }
+type GetServiceHealthResultNodeArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceHealthResultNodeArrayOutput() GetServiceHealthResultNodeArrayOutput
+	ToGetServiceHealthResultNodeArrayOutputWithContext(context.Context) GetServiceHealthResultNodeArrayOutput
+}
+
+type GetServiceHealthResultNodeArray []GetServiceHealthResultNodeInput
+
+func (GetServiceHealthResultNodeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceHealthResultNode)(nil)).Elem()
+}
+
+func (i GetServiceHealthResultNodeArray) ToGetServiceHealthResultNodeArrayOutput() GetServiceHealthResultNodeArrayOutput {
+	return i.ToGetServiceHealthResultNodeArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceHealthResultNodeArray) ToGetServiceHealthResultNodeArrayOutputWithContext(ctx context.Context) GetServiceHealthResultNodeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceHealthResultNodeArrayOutput)
+}
+
 type GetServiceHealthResultNodeOutput struct{ *pulumi.OutputState }
 
 func (GetServiceHealthResultNodeOutput) ElementType() reflect.Type {
@@ -3663,6 +3903,26 @@ func (o GetServiceHealthResultNodeOutput) Name() pulumi.StringOutput {
 
 func (o GetServiceHealthResultNodeOutput) TaggedAddresses() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetServiceHealthResultNode) map[string]string { return v.TaggedAddresses }).(pulumi.StringMapOutput)
+}
+
+type GetServiceHealthResultNodeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceHealthResultNodeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceHealthResultNode)(nil)).Elem()
+}
+
+func (o GetServiceHealthResultNodeArrayOutput) ToGetServiceHealthResultNodeArrayOutput() GetServiceHealthResultNodeArrayOutput {
+	return o
+}
+
+func (o GetServiceHealthResultNodeArrayOutput) ToGetServiceHealthResultNodeArrayOutputWithContext(ctx context.Context) GetServiceHealthResultNodeArrayOutput {
+	return o
+}
+
+func (o GetServiceHealthResultNodeArrayOutput) Index(i pulumi.IntInput) GetServiceHealthResultNodeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceHealthResultNode {
+		return vs[0].([]GetServiceHealthResultNode)[vs[1].(int)]
+	}).(GetServiceHealthResultNodeOutput)
 }
 
 type GetServiceHealthResultService struct {
@@ -3718,6 +3978,31 @@ func (i GetServiceHealthResultServiceArgs) ToGetServiceHealthResultServiceOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetServiceHealthResultServiceOutput)
 }
 
+// GetServiceHealthResultServiceArrayInput is an input type that accepts GetServiceHealthResultServiceArray and GetServiceHealthResultServiceArrayOutput values.
+// You can construct a concrete instance of `GetServiceHealthResultServiceArrayInput` via:
+//
+//          GetServiceHealthResultServiceArray{ GetServiceHealthResultServiceArgs{...} }
+type GetServiceHealthResultServiceArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceHealthResultServiceArrayOutput() GetServiceHealthResultServiceArrayOutput
+	ToGetServiceHealthResultServiceArrayOutputWithContext(context.Context) GetServiceHealthResultServiceArrayOutput
+}
+
+type GetServiceHealthResultServiceArray []GetServiceHealthResultServiceInput
+
+func (GetServiceHealthResultServiceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceHealthResultService)(nil)).Elem()
+}
+
+func (i GetServiceHealthResultServiceArray) ToGetServiceHealthResultServiceArrayOutput() GetServiceHealthResultServiceArrayOutput {
+	return i.ToGetServiceHealthResultServiceArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceHealthResultServiceArray) ToGetServiceHealthResultServiceArrayOutputWithContext(ctx context.Context) GetServiceHealthResultServiceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceHealthResultServiceArrayOutput)
+}
+
 type GetServiceHealthResultServiceOutput struct{ *pulumi.OutputState }
 
 func (GetServiceHealthResultServiceOutput) ElementType() reflect.Type {
@@ -3760,6 +4045,26 @@ func (o GetServiceHealthResultServiceOutput) Port() pulumi.IntOutput {
 // The list of tags associated with this instance.
 func (o GetServiceHealthResultServiceOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetServiceHealthResultService) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+type GetServiceHealthResultServiceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceHealthResultServiceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceHealthResultService)(nil)).Elem()
+}
+
+func (o GetServiceHealthResultServiceArrayOutput) ToGetServiceHealthResultServiceArrayOutput() GetServiceHealthResultServiceArrayOutput {
+	return o
+}
+
+func (o GetServiceHealthResultServiceArrayOutput) ToGetServiceHealthResultServiceArrayOutputWithContext(ctx context.Context) GetServiceHealthResultServiceArrayOutput {
+	return o
+}
+
+func (o GetServiceHealthResultServiceArrayOutput) Index(i pulumi.IntInput) GetServiceHealthResultServiceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceHealthResultService {
+		return vs[0].([]GetServiceHealthResultService)[vs[1].(int)]
+	}).(GetServiceHealthResultServiceOutput)
 }
 
 type GetServiceQueryOption struct {
@@ -4387,6 +4692,8 @@ func (o GetServicesQueryOptionArrayOutput) Index(i pulumi.IntInput) GetServicesQ
 }
 
 func init() {
+	pulumi.RegisterOutputType(AclAuthMethodNamespaceRuleOutput{})
+	pulumi.RegisterOutputType(AclAuthMethodNamespaceRuleArrayOutput{})
 	pulumi.RegisterOutputType(AclRoleServiceIdentityOutput{})
 	pulumi.RegisterOutputType(AclRoleServiceIdentityArrayOutput{})
 	pulumi.RegisterOutputType(CatalogEntryServiceOutput{})
@@ -4405,6 +4712,8 @@ func init() {
 	pulumi.RegisterOutputType(ServiceCheckArrayOutput{})
 	pulumi.RegisterOutputType(ServiceCheckHeaderOutput{})
 	pulumi.RegisterOutputType(ServiceCheckHeaderArrayOutput{})
+	pulumi.RegisterOutputType(GetAclAuthMethodNamespaceRuleOutput{})
+	pulumi.RegisterOutputType(GetAclAuthMethodNamespaceRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetAclRolePolicyOutput{})
 	pulumi.RegisterOutputType(GetAclRolePolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetAclRoleServiceIdentityOutput{})
@@ -4438,7 +4747,9 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceHealthResultCheckOutput{})
 	pulumi.RegisterOutputType(GetServiceHealthResultCheckArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceHealthResultNodeOutput{})
+	pulumi.RegisterOutputType(GetServiceHealthResultNodeArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceHealthResultServiceOutput{})
+	pulumi.RegisterOutputType(GetServiceHealthResultServiceArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceQueryOptionOutput{})
 	pulumi.RegisterOutputType(GetServiceQueryOptionArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceServiceOutput{})

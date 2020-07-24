@@ -48,24 +48,6 @@ namespace Pulumi.Consul
 
     public sealed class GetAclAuthMethodArgs : Pulumi.InvokeArgs
     {
-        [Input("config")]
-        private Dictionary<string, string>? _config;
-
-        /// <summary>
-        /// The configuration options of the ACL Auth Method.
-        /// </summary>
-        public Dictionary<string, string> Config
-        {
-            get => _config ?? (_config = new Dictionary<string, string>());
-            set => _config = value;
-        }
-
-        /// <summary>
-        /// The description of the ACL Auth Method.
-        /// </summary>
-        [Input("description")]
-        public string? Description { get; set; }
-
         /// <summary>
         /// The name of the ACL Auth Method.
         /// </summary>
@@ -78,12 +60,6 @@ namespace Pulumi.Consul
         [Input("namespace")]
         public string? Namespace { get; set; }
 
-        /// <summary>
-        /// The type of the ACL Auth Method.
-        /// </summary>
-        [Input("type")]
-        public string? Type { get; set; }
-
         public GetAclAuthMethodArgs()
         {
         }
@@ -94,43 +70,84 @@ namespace Pulumi.Consul
     public sealed class GetAclAuthMethodResult
     {
         /// <summary>
+        /// The configuration options of the ACL Auth Method. This attribute is
+        /// deprecated and will be removed in a future version. If the configuration is
+        /// too complex to be represented as a map of strings, it will be blank.
+        /// `config_json` should be used instead.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> Config;
+        /// <summary>
         /// The configuration options of the ACL Auth Method.
         /// </summary>
-        public readonly ImmutableDictionary<string, string>? Config;
+        public readonly string ConfigJson;
         /// <summary>
         /// The description of the ACL Auth Method.
         /// </summary>
-        public readonly string? Description;
+        public readonly string Description;
+        /// <summary>
+        /// An optional name to use instead of the name attribute when
+        /// displaying information about this auth method.
+        /// </summary>
+        public readonly string DisplayName;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The maximum life of any token created by this auth method.
+        /// </summary>
+        public readonly string MaxTokenTtl;
         public readonly string Name;
         public readonly string? Namespace;
         /// <summary>
+        /// (Enterprise Only) A set of rules that control which
+        /// namespace tokens created via this auth method will be created within
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetAclAuthMethodNamespaceRuleResult> NamespaceRules;
+        /// <summary>
+        /// The kind of token that this auth method produces. This can
+        /// be either 'local' or 'global'.
+        /// </summary>
+        public readonly string TokenLocality;
+        /// <summary>
         /// The type of the ACL Auth Method.
         /// </summary>
-        public readonly string? Type;
+        public readonly string Type;
 
         [OutputConstructor]
         private GetAclAuthMethodResult(
-            ImmutableDictionary<string, string>? config,
+            ImmutableDictionary<string, string> config,
 
-            string? description,
+            string configJson,
+
+            string description,
+
+            string displayName,
 
             string id,
+
+            string maxTokenTtl,
 
             string name,
 
             string? @namespace,
 
-            string? type)
+            ImmutableArray<Outputs.GetAclAuthMethodNamespaceRuleResult> namespaceRules,
+
+            string tokenLocality,
+
+            string type)
         {
             Config = config;
+            ConfigJson = configJson;
             Description = description;
+            DisplayName = displayName;
             Id = id;
+            MaxTokenTtl = maxTokenTtl;
             Name = name;
             Namespace = @namespace;
+            NamespaceRules = namespaceRules;
+            TokenLocality = tokenLocality;
             Type = type;
         }
     }

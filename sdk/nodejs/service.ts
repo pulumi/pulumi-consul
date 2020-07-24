@@ -45,7 +45,7 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
- * Register an health-check:
+ * Register a health-check:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -118,6 +118,11 @@ export class Service extends pulumi.CustomResource {
      */
     public readonly datacenter!: pulumi.Output<string>;
     /**
+     * Specifies to disable the
+     * anti-entropy feature for this service's tags. Defaults to `false`.
+     */
+    public readonly enableTagOverride!: pulumi.Output<boolean | undefined>;
+    /**
      * @deprecated The external field has been deprecated and does nothing.
      */
     public readonly external!: pulumi.Output<boolean | undefined>;
@@ -168,6 +173,7 @@ export class Service extends pulumi.CustomResource {
             inputs["address"] = state ? state.address : undefined;
             inputs["checks"] = state ? state.checks : undefined;
             inputs["datacenter"] = state ? state.datacenter : undefined;
+            inputs["enableTagOverride"] = state ? state.enableTagOverride : undefined;
             inputs["external"] = state ? state.external : undefined;
             inputs["meta"] = state ? state.meta : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -184,6 +190,7 @@ export class Service extends pulumi.CustomResource {
             inputs["address"] = args ? args.address : undefined;
             inputs["checks"] = args ? args.checks : undefined;
             inputs["datacenter"] = args ? args.datacenter : undefined;
+            inputs["enableTagOverride"] = args ? args.enableTagOverride : undefined;
             inputs["external"] = args ? args.external : undefined;
             inputs["meta"] = args ? args.meta : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -219,6 +226,11 @@ export interface ServiceState {
      * agent's default datacenter and the datacenter in the provider setup.
      */
     readonly datacenter?: pulumi.Input<string>;
+    /**
+     * Specifies to disable the
+     * anti-entropy feature for this service's tags. Defaults to `false`.
+     */
+    readonly enableTagOverride?: pulumi.Input<boolean>;
     /**
      * @deprecated The external field has been deprecated and does nothing.
      */
@@ -271,6 +283,11 @@ export interface ServiceArgs {
      * agent's default datacenter and the datacenter in the provider setup.
      */
     readonly datacenter?: pulumi.Input<string>;
+    /**
+     * Specifies to disable the
+     * anti-entropy feature for this service's tags. Defaults to `false`.
+     */
+    readonly enableTagOverride?: pulumi.Input<boolean>;
     /**
      * @deprecated The external field has been deprecated and does nothing.
      */

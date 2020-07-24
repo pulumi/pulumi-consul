@@ -11,6 +11,7 @@ export * from "./aclTokenPolicyAttachment";
 export * from "./agentService";
 export * from "./autopilotConfig";
 export * from "./catalogEntry";
+export * from "./certificateAuthority";
 export * from "./configEntry";
 export * from "./getAclAuthMethod";
 export * from "./getAclPolicy";

@@ -38,6 +38,7 @@ export function getServiceHealth(args: GetServiceHealthArgs, opts?: pulumi.Invok
     }
     return pulumi.runtime.invoke("consul:index/getServiceHealth:getServiceHealth", {
         "datacenter": args.datacenter,
+        "filter": args.filter,
         "name": args.name,
         "near": args.near,
         "nodeMeta": args.nodeMeta,
@@ -55,6 +56,11 @@ export interface GetServiceHealthArgs {
      * The Consul datacenter to query.
      */
     readonly datacenter?: string;
+    /**
+     * A filter expression to refine the list of results, see
+     * https://www.consul.io/api-docs/features/filtering and https://www.consul.io/api-docs/health#filtering-2.
+     */
+    readonly filter?: string;
     /**
      * The service name to select.
      */
@@ -92,6 +98,7 @@ export interface GetServiceHealthResult {
      * List of explicit LAN and WAN IP addresses for the agent.
      */
     readonly datacenter?: string;
+    readonly filter?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */

@@ -22,6 +22,7 @@
         "agentService.ts",
         "autopilotConfig.ts",
         "catalogEntry.ts",
+        "certificateAuthority.ts",
         "config/index.ts",
         "config/vars.ts",
         "configEntry.ts",

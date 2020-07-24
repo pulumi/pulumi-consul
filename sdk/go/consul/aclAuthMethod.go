@@ -11,15 +11,16 @@ import (
 )
 
 // Starting with Consul 1.5.0, the AclAuthMethod resource can be used to
-// managed Consul ACL auth methods.
+// managed [Consul ACL auth methods](https://www.consul.io/docs/acl/auth-methods).
 //
 // ## Example Usage
 //
+// Define a `kubernetes` auth method:
 // ```go
 // package main
 //
 // import (
-// 	"fmt"
+// 	"encoding/json"
 //
 // 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -27,14 +28,56 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
+// 			"Host":              "https://192.0.2.42:8443",
+// 			"CACert":            "-----BEGIN CERTIFICATE-----\n...-----END CERTIFICATE-----\n",
+// 			"ServiceAccountJWT": "eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9...",
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		json0 := string(tmpJSON0)
 // 		_, err := consul.NewAclAuthMethod(ctx, "minikube", &consul.AclAuthMethodArgs{
-// 			Config: pulumi.StringMap{
-// 				"CACert":            pulumi.String(fmt.Sprintf("%v%v%v", "-----BEGIN CERTIFICATE-----\n", "...-----END CERTIFICATE-----\n", "\n")),
-// 				"Host":              pulumi.String("https://192.0.2.42:8443"),
-// 				"ServiceAccountJWT": pulumi.String("eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9..."),
-// 			},
-// 			Description: pulumi.String("dev minikube cluster"),
 // 			Type:        pulumi.String("kubernetes"),
+// 			Description: pulumi.String("dev minikube cluster"),
+// 			ConfigJson:  pulumi.String(json0),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// Define a `jwt` auth method:
+// ```go
+// package main
+//
+// import (
+// 	"encoding/json"
+//
+// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
+// 			"JWKSURL":          "https://example.com/identity/oidc/.well-known/keys",
+// 			"JWTSupportedAlgs": "RS256",
+// 			"BoundIssuer":      "https://example.com",
+// 			"ClaimMappings": map[string]interface{}{
+// 				"subject": "subject",
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		json0 := string(tmpJSON0)
+// 		_, err := consul.NewAclAuthMethod(ctx, "minikube", &consul.AclAuthMethodArgs{
+// 			Type:       pulumi.String("jwt"),
+// 			ConfigJson: pulumi.String(json0),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -46,14 +89,32 @@ import (
 type AclAuthMethod struct {
 	pulumi.CustomResourceState
 
-	// The raw configuration for this ACL auth method.
+	// The raw configuration for this ACL auth method. This
+	// attribute is deprecated and will be removed in a future version. `configJson`
+	// should be used instead.
+	//
+	// Deprecated: The config attribute is deprecated, please use config_json instead.
 	Config pulumi.StringMapOutput `pulumi:"config"`
+	// The raw configuration for this ACL auth method.
+	ConfigJson pulumi.StringPtrOutput `pulumi:"configJson"`
 	// A free form human readable description of the auth method.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// An optional name to use instead of the name
+	// attribute when displaying information about this auth method.
+	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
+	// The maximum life of any token created by this
+	// auth method.
+	MaxTokenTtl pulumi.StringPtrOutput `pulumi:"maxTokenTtl"`
 	// The name of the ACL auth method.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The namespace to create the policy within.
 	Namespace pulumi.StringPtrOutput `pulumi:"namespace"`
+	// A set of rules that control
+	// which namespace tokens created via this auth method will be created within.
+	NamespaceRules AclAuthMethodNamespaceRuleArrayOutput `pulumi:"namespaceRules"`
+	// The kind of token that this auth method
+	// produces. This can be either 'local' or 'global'.
+	TokenLocality pulumi.StringPtrOutput `pulumi:"tokenLocality"`
 	// The type of the ACL auth method.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -61,9 +122,6 @@ type AclAuthMethod struct {
 // NewAclAuthMethod registers a new resource with the given unique name, arguments, and options.
 func NewAclAuthMethod(ctx *pulumi.Context,
 	name string, args *AclAuthMethodArgs, opts ...pulumi.ResourceOption) (*AclAuthMethod, error) {
-	if args == nil || args.Config == nil {
-		return nil, errors.New("missing required argument 'Config'")
-	}
 	if args == nil || args.Type == nil {
 		return nil, errors.New("missing required argument 'Type'")
 	}
@@ -92,27 +150,63 @@ func GetAclAuthMethod(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AclAuthMethod resources.
 type aclAuthMethodState struct {
-	// The raw configuration for this ACL auth method.
+	// The raw configuration for this ACL auth method. This
+	// attribute is deprecated and will be removed in a future version. `configJson`
+	// should be used instead.
+	//
+	// Deprecated: The config attribute is deprecated, please use config_json instead.
 	Config map[string]string `pulumi:"config"`
+	// The raw configuration for this ACL auth method.
+	ConfigJson *string `pulumi:"configJson"`
 	// A free form human readable description of the auth method.
 	Description *string `pulumi:"description"`
+	// An optional name to use instead of the name
+	// attribute when displaying information about this auth method.
+	DisplayName *string `pulumi:"displayName"`
+	// The maximum life of any token created by this
+	// auth method.
+	MaxTokenTtl *string `pulumi:"maxTokenTtl"`
 	// The name of the ACL auth method.
 	Name *string `pulumi:"name"`
 	// The namespace to create the policy within.
 	Namespace *string `pulumi:"namespace"`
+	// A set of rules that control
+	// which namespace tokens created via this auth method will be created within.
+	NamespaceRules []AclAuthMethodNamespaceRule `pulumi:"namespaceRules"`
+	// The kind of token that this auth method
+	// produces. This can be either 'local' or 'global'.
+	TokenLocality *string `pulumi:"tokenLocality"`
 	// The type of the ACL auth method.
 	Type *string `pulumi:"type"`
 }
 
 type AclAuthMethodState struct {
-	// The raw configuration for this ACL auth method.
+	// The raw configuration for this ACL auth method. This
+	// attribute is deprecated and will be removed in a future version. `configJson`
+	// should be used instead.
+	//
+	// Deprecated: The config attribute is deprecated, please use config_json instead.
 	Config pulumi.StringMapInput
+	// The raw configuration for this ACL auth method.
+	ConfigJson pulumi.StringPtrInput
 	// A free form human readable description of the auth method.
 	Description pulumi.StringPtrInput
+	// An optional name to use instead of the name
+	// attribute when displaying information about this auth method.
+	DisplayName pulumi.StringPtrInput
+	// The maximum life of any token created by this
+	// auth method.
+	MaxTokenTtl pulumi.StringPtrInput
 	// The name of the ACL auth method.
 	Name pulumi.StringPtrInput
 	// The namespace to create the policy within.
 	Namespace pulumi.StringPtrInput
+	// A set of rules that control
+	// which namespace tokens created via this auth method will be created within.
+	NamespaceRules AclAuthMethodNamespaceRuleArrayInput
+	// The kind of token that this auth method
+	// produces. This can be either 'local' or 'global'.
+	TokenLocality pulumi.StringPtrInput
 	// The type of the ACL auth method.
 	Type pulumi.StringPtrInput
 }
@@ -122,28 +216,64 @@ func (AclAuthMethodState) ElementType() reflect.Type {
 }
 
 type aclAuthMethodArgs struct {
-	// The raw configuration for this ACL auth method.
+	// The raw configuration for this ACL auth method. This
+	// attribute is deprecated and will be removed in a future version. `configJson`
+	// should be used instead.
+	//
+	// Deprecated: The config attribute is deprecated, please use config_json instead.
 	Config map[string]string `pulumi:"config"`
+	// The raw configuration for this ACL auth method.
+	ConfigJson *string `pulumi:"configJson"`
 	// A free form human readable description of the auth method.
 	Description *string `pulumi:"description"`
+	// An optional name to use instead of the name
+	// attribute when displaying information about this auth method.
+	DisplayName *string `pulumi:"displayName"`
+	// The maximum life of any token created by this
+	// auth method.
+	MaxTokenTtl *string `pulumi:"maxTokenTtl"`
 	// The name of the ACL auth method.
 	Name *string `pulumi:"name"`
 	// The namespace to create the policy within.
 	Namespace *string `pulumi:"namespace"`
+	// A set of rules that control
+	// which namespace tokens created via this auth method will be created within.
+	NamespaceRules []AclAuthMethodNamespaceRule `pulumi:"namespaceRules"`
+	// The kind of token that this auth method
+	// produces. This can be either 'local' or 'global'.
+	TokenLocality *string `pulumi:"tokenLocality"`
 	// The type of the ACL auth method.
 	Type string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a AclAuthMethod resource.
 type AclAuthMethodArgs struct {
-	// The raw configuration for this ACL auth method.
+	// The raw configuration for this ACL auth method. This
+	// attribute is deprecated and will be removed in a future version. `configJson`
+	// should be used instead.
+	//
+	// Deprecated: The config attribute is deprecated, please use config_json instead.
 	Config pulumi.StringMapInput
+	// The raw configuration for this ACL auth method.
+	ConfigJson pulumi.StringPtrInput
 	// A free form human readable description of the auth method.
 	Description pulumi.StringPtrInput
+	// An optional name to use instead of the name
+	// attribute when displaying information about this auth method.
+	DisplayName pulumi.StringPtrInput
+	// The maximum life of any token created by this
+	// auth method.
+	MaxTokenTtl pulumi.StringPtrInput
 	// The name of the ACL auth method.
 	Name pulumi.StringPtrInput
 	// The namespace to create the policy within.
 	Namespace pulumi.StringPtrInput
+	// A set of rules that control
+	// which namespace tokens created via this auth method will be created within.
+	NamespaceRules AclAuthMethodNamespaceRuleArrayInput
+	// The kind of token that this auth method
+	// produces. This can be either 'local' or 'global'.
+	TokenLocality pulumi.StringPtrInput
 	// The type of the ACL auth method.
 	Type pulumi.StringInput
 }

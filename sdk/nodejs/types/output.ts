@@ -5,6 +5,20 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface AclAuthMethodNamespaceRule {
+    /**
+     * If the namespace rule's `selector` matches then
+     * this is used to control the namespace where the token is created.
+     */
+    bindNamespace: string;
+    /**
+     * Specifies the expression used to match this namespace
+     * rule against valid identities returned from an auth method validation.
+     * Defaults to `""`.
+     */
+    selector?: string;
+}
+
 export interface AclRoleServiceIdentity {
     /**
      * The datacenters the effective policy is valid within.
@@ -39,6 +53,11 @@ export interface CatalogEntryService {
      * but can be used to distinguish between services or nodes.
      */
     tags?: string[];
+}
+
+export interface GetAclAuthMethodNamespaceRule {
+    bindNamespace: string;
+    selector: string;
 }
 
 export interface GetAclRolePolicy {
@@ -324,8 +343,8 @@ export interface GetServiceHealthResult {
     /**
      * The name of the node associated with this health-check.
      */
-    node: outputs.GetServiceHealthResultNode;
-    service: outputs.GetServiceHealthResultService;
+    nodes: outputs.GetServiceHealthResultNode[];
+    services: outputs.GetServiceHealthResultService[];
 }
 
 export interface GetServiceHealthResultCheck {

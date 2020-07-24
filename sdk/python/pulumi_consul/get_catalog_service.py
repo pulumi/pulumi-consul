@@ -12,10 +12,13 @@ class GetCatalogServiceResult:
     """
     A collection of values returned by getCatalogService.
     """
-    def __init__(__self__, datacenter=None, id=None, name=None, query_options=None, services=None, tag=None):
+    def __init__(__self__, datacenter=None, filter=None, id=None, name=None, query_options=None, services=None, tag=None):
         if datacenter and not isinstance(datacenter, str):
             raise TypeError("Expected argument 'datacenter' to be a str")
         __self__.datacenter = datacenter
+        if filter and not isinstance(filter, str):
+            raise TypeError("Expected argument 'filter' to be a str")
+        __self__.filter = filter
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
@@ -41,13 +44,14 @@ class AwaitableGetCatalogServiceResult(GetCatalogServiceResult):
             yield self
         return GetCatalogServiceResult(
             datacenter=self.datacenter,
+            filter=self.filter,
             id=self.id,
             name=self.name,
             query_options=self.query_options,
             services=self.services,
             tag=self.tag)
 
-def get_catalog_service(datacenter=None,name=None,query_options=None,tag=None,opts=None):
+def get_catalog_service(datacenter=None,filter=None,name=None,query_options=None,tag=None,opts=None):
     """
     Use this data source to access information about an existing resource.
 
@@ -68,6 +72,7 @@ def get_catalog_service(datacenter=None,name=None,query_options=None,tag=None,op
 
 
     __args__['datacenter'] = datacenter
+    __args__['filter'] = filter
     __args__['name'] = name
     __args__['queryOptions'] = query_options
     __args__['tag'] = tag
@@ -79,6 +84,7 @@ def get_catalog_service(datacenter=None,name=None,query_options=None,tag=None,op
 
     return AwaitableGetCatalogServiceResult(
         datacenter=__ret__.get('datacenter'),
+        filter=__ret__.get('filter'),
         id=__ret__.get('id'),
         name=__ret__.get('name'),
         query_options=__ret__.get('queryOptions'),

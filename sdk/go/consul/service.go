@@ -77,7 +77,7 @@ import (
 // }
 // ```
 //
-// Register an health-check:
+// Register a health-check:
 //
 // ```go
 // package main
@@ -137,6 +137,9 @@ type Service struct {
 	// The datacenter to use. This overrides the
 	// agent's default datacenter and the datacenter in the provider setup.
 	Datacenter pulumi.StringOutput `pulumi:"datacenter"`
+	// Specifies to disable the
+	// anti-entropy feature for this service's tags. Defaults to `false`.
+	EnableTagOverride pulumi.BoolPtrOutput `pulumi:"enableTagOverride"`
 	// Deprecated: The external field has been deprecated and does nothing.
 	External pulumi.BoolPtrOutput `pulumi:"external"`
 	// A map of arbitrary KV metadata linked to the service
@@ -196,6 +199,9 @@ type serviceState struct {
 	// The datacenter to use. This overrides the
 	// agent's default datacenter and the datacenter in the provider setup.
 	Datacenter *string `pulumi:"datacenter"`
+	// Specifies to disable the
+	// anti-entropy feature for this service's tags. Defaults to `false`.
+	EnableTagOverride *bool `pulumi:"enableTagOverride"`
 	// Deprecated: The external field has been deprecated and does nothing.
 	External *bool `pulumi:"external"`
 	// A map of arbitrary KV metadata linked to the service
@@ -225,6 +231,9 @@ type ServiceState struct {
 	// The datacenter to use. This overrides the
 	// agent's default datacenter and the datacenter in the provider setup.
 	Datacenter pulumi.StringPtrInput
+	// Specifies to disable the
+	// anti-entropy feature for this service's tags. Defaults to `false`.
+	EnableTagOverride pulumi.BoolPtrInput
 	// Deprecated: The external field has been deprecated and does nothing.
 	External pulumi.BoolPtrInput
 	// A map of arbitrary KV metadata linked to the service
@@ -258,6 +267,9 @@ type serviceArgs struct {
 	// The datacenter to use. This overrides the
 	// agent's default datacenter and the datacenter in the provider setup.
 	Datacenter *string `pulumi:"datacenter"`
+	// Specifies to disable the
+	// anti-entropy feature for this service's tags. Defaults to `false`.
+	EnableTagOverride *bool `pulumi:"enableTagOverride"`
 	// Deprecated: The external field has been deprecated and does nothing.
 	External *bool `pulumi:"external"`
 	// A map of arbitrary KV metadata linked to the service
@@ -288,6 +300,9 @@ type ServiceArgs struct {
 	// The datacenter to use. This overrides the
 	// agent's default datacenter and the datacenter in the provider setup.
 	Datacenter pulumi.StringPtrInput
+	// Specifies to disable the
+	// anti-entropy feature for this service's tags. Defaults to `false`.
+	EnableTagOverride pulumi.BoolPtrInput
 	// Deprecated: The external field has been deprecated and does nothing.
 	External pulumi.BoolPtrInput
 	// A map of arbitrary KV metadata linked to the service

@@ -34,6 +34,13 @@ namespace Pulumi.Consul
         public string? Datacenter { get; set; }
 
         /// <summary>
+        /// A filter expression to refine the list of results, see
+        /// https://www.consul.io/api-docs/features/filtering and https://www.consul.io/api-docs/health#filtering-2.
+        /// </summary>
+        [Input("filter")]
+        public string? Filter { get; set; }
+
+        /// <summary>
         /// The service name to select.
         /// </summary>
         [Input("name", required: true)]
@@ -91,6 +98,7 @@ namespace Pulumi.Consul
         /// List of explicit LAN and WAN IP addresses for the agent.
         /// </summary>
         public readonly string? Datacenter;
+        public readonly string? Filter;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -128,6 +136,8 @@ namespace Pulumi.Consul
         private GetServiceHealthResult(
             string? datacenter,
 
+            string? filter,
+
             string id,
 
             string name,
@@ -145,6 +155,7 @@ namespace Pulumi.Consul
             string? waitFor)
         {
             Datacenter = datacenter;
+            Filter = filter;
             Id = id;
             Name = name;
             Near = near;

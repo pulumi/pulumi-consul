@@ -44,28 +44,40 @@ func LookupAclAuthMethod(ctx *pulumi.Context, args *LookupAclAuthMethodArgs, opt
 
 // A collection of arguments for invoking getAclAuthMethod.
 type LookupAclAuthMethodArgs struct {
-	// The configuration options of the ACL Auth Method.
-	Config map[string]string `pulumi:"config"`
-	// The description of the ACL Auth Method.
-	Description *string `pulumi:"description"`
 	// The name of the ACL Auth Method.
 	Name string `pulumi:"name"`
 	// The namespace to lookup the auth method.
 	Namespace *string `pulumi:"namespace"`
-	// The type of the ACL Auth Method.
-	Type *string `pulumi:"type"`
 }
 
 // A collection of values returned by getAclAuthMethod.
 type LookupAclAuthMethodResult struct {
-	// The configuration options of the ACL Auth Method.
+	// The configuration options of the ACL Auth Method. This attribute is
+	// deprecated and will be removed in a future version. If the configuration is
+	// too complex to be represented as a map of strings, it will be blank.
+	// `configJson` should be used instead.
+	//
+	// Deprecated: The config attribute is deprecated, please use config_json instead.
 	Config map[string]string `pulumi:"config"`
+	// The configuration options of the ACL Auth Method.
+	ConfigJson string `pulumi:"configJson"`
 	// The description of the ACL Auth Method.
-	Description *string `pulumi:"description"`
+	Description string `pulumi:"description"`
+	// An optional name to use instead of the name attribute when
+	// displaying information about this auth method.
+	DisplayName string `pulumi:"displayName"`
 	// The provider-assigned unique ID for this managed resource.
-	Id        string  `pulumi:"id"`
-	Name      string  `pulumi:"name"`
-	Namespace *string `pulumi:"namespace"`
+	Id string `pulumi:"id"`
+	// The maximum life of any token created by this auth method.
+	MaxTokenTtl string  `pulumi:"maxTokenTtl"`
+	Name        string  `pulumi:"name"`
+	Namespace   *string `pulumi:"namespace"`
+	// (Enterprise Only) A set of rules that control which
+	// namespace tokens created via this auth method will be created within
+	NamespaceRules []GetAclAuthMethodNamespaceRule `pulumi:"namespaceRules"`
+	// The kind of token that this auth method produces. This can
+	// be either 'local' or 'global'.
+	TokenLocality string `pulumi:"tokenLocality"`
 	// The type of the ACL Auth Method.
-	Type *string `pulumi:"type"`
+	Type string `pulumi:"type"`
 }

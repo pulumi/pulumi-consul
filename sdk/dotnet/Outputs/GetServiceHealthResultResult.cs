@@ -17,20 +17,20 @@ namespace Pulumi.Consul.Outputs
         /// <summary>
         /// The name of the node associated with this health-check.
         /// </summary>
-        public readonly Outputs.GetServiceHealthResultNodeResult Node;
-        public readonly Outputs.GetServiceHealthResultServiceResult Service;
+        public readonly ImmutableArray<Outputs.GetServiceHealthResultNodeResult> Nodes;
+        public readonly ImmutableArray<Outputs.GetServiceHealthResultServiceResult> Services;
 
         [OutputConstructor]
         private GetServiceHealthResultResult(
             ImmutableArray<Outputs.GetServiceHealthResultCheckResult> checks,
 
-            Outputs.GetServiceHealthResultNodeResult node,
+            ImmutableArray<Outputs.GetServiceHealthResultNodeResult> nodes,
 
-            Outputs.GetServiceHealthResultServiceResult service)
+            ImmutableArray<Outputs.GetServiceHealthResultServiceResult> services)
         {
             Checks = checks;
-            Node = node;
-            Service = service;
+            Nodes = nodes;
+            Services = services;
         }
     }
 }

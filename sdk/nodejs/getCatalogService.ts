@@ -16,6 +16,7 @@ export function getCatalogService(args: GetCatalogServiceArgs, opts?: pulumi.Inv
     }
     return pulumi.runtime.invoke("consul:index/getCatalogService:getCatalogService", {
         "datacenter": args.datacenter,
+        "filter": args.filter,
         "name": args.name,
         "queryOptions": args.queryOptions,
         "tag": args.tag,
@@ -27,6 +28,7 @@ export function getCatalogService(args: GetCatalogServiceArgs, opts?: pulumi.Inv
  */
 export interface GetCatalogServiceArgs {
     readonly datacenter?: string;
+    readonly filter?: string;
     readonly name: string;
     readonly queryOptions?: inputs.GetCatalogServiceQueryOption[];
     readonly tag?: string;
@@ -37,6 +39,7 @@ export interface GetCatalogServiceArgs {
  */
 export interface GetCatalogServiceResult {
     readonly datacenter?: string;
+    readonly filter?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */

@@ -21,6 +21,11 @@ class Service(pulumi.CustomResource):
     The datacenter to use. This overrides the
     agent's default datacenter and the datacenter in the provider setup.
     """
+    enable_tag_override: pulumi.Output[bool]
+    """
+    Specifies to disable the
+    anti-entropy feature for this service's tags. Defaults to `false`.
+    """
     external: pulumi.Output[bool]
     meta: pulumi.Output[dict]
     """
@@ -53,7 +58,7 @@ class Service(pulumi.CustomResource):
     A list of values that are opaque to Consul,
     but can be used to distinguish between services or nodes.
     """
-    def __init__(__self__, resource_name, opts=None, address=None, checks=None, datacenter=None, external=None, meta=None, name=None, namespace=None, node=None, port=None, service_id=None, tags=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, address=None, checks=None, datacenter=None, enable_tag_override=None, external=None, meta=None, name=None, namespace=None, node=None, port=None, service_id=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         A high-level resource for creating a Service in Consul in the Consul catalog. This
         is appropriate for registering [external services](https://www.consul.io/docs/guides/external.html) and
@@ -89,7 +94,7 @@ class Service(pulumi.CustomResource):
             port=443)
         ```
 
-        Register an health-check:
+        Register a health-check:
 
         ```python
         import pulumi
@@ -127,6 +132,8 @@ class Service(pulumi.CustomResource):
                address of the node.
         :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the
                agent's default datacenter and the datacenter in the provider setup.
+        :param pulumi.Input[bool] enable_tag_override: Specifies to disable the
+               anti-entropy feature for this service's tags. Defaults to `false`.
         :param pulumi.Input[dict] meta: A map of arbitrary KV metadata linked to the service
                instance.
         :param pulumi.Input[str] name: The name of the health-check.
@@ -183,6 +190,7 @@ class Service(pulumi.CustomResource):
             __props__['address'] = address
             __props__['checks'] = checks
             __props__['datacenter'] = datacenter
+            __props__['enable_tag_override'] = enable_tag_override
             if external is not None:
                 warnings.warn("The external field has been deprecated and does nothing.", DeprecationWarning)
                 pulumi.log.warn("external is deprecated: The external field has been deprecated and does nothing.")
@@ -203,7 +211,7 @@ class Service(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, address=None, checks=None, datacenter=None, external=None, meta=None, name=None, namespace=None, node=None, port=None, service_id=None, tags=None):
+    def get(resource_name, id, opts=None, address=None, checks=None, datacenter=None, enable_tag_override=None, external=None, meta=None, name=None, namespace=None, node=None, port=None, service_id=None, tags=None):
         """
         Get an existing Service resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -215,6 +223,8 @@ class Service(pulumi.CustomResource):
                address of the node.
         :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the
                agent's default datacenter and the datacenter in the provider setup.
+        :param pulumi.Input[bool] enable_tag_override: Specifies to disable the
+               anti-entropy feature for this service's tags. Defaults to `false`.
         :param pulumi.Input[dict] meta: A map of arbitrary KV metadata linked to the service
                instance.
         :param pulumi.Input[str] name: The name of the health-check.
@@ -258,6 +268,7 @@ class Service(pulumi.CustomResource):
         __props__["address"] = address
         __props__["checks"] = checks
         __props__["datacenter"] = datacenter
+        __props__["enable_tag_override"] = enable_tag_override
         __props__["external"] = external
         __props__["meta"] = meta
         __props__["name"] = name

@@ -80,6 +80,29 @@ import * as utilities from "./utilities";
  *         }],
  *     }),
  * });
+ * const ingressGateway = new consul.ConfigEntry("ingressGateway", {
+ *     kind: "ingress-gateway",
+ *     configJson: JSON.stringify({
+ *         TLS: {
+ *             Enabled: true,
+ *         },
+ *         Listeners: [{
+ *             Port: 8000,
+ *             Protocol: "http",
+ *             Services: [{
+ *                 Name: "*",
+ *             }],
+ *         }],
+ *     }),
+ * });
+ * const terminatingGateway = new consul.ConfigEntry("terminatingGateway", {
+ *     kind: "terminating-gateway",
+ *     configJson: JSON.stringify({
+ *         Services: [{
+ *             Name: "billing",
+ *         }],
+ *     }),
+ * });
  * ```
  */
 export class ConfigEntry extends pulumi.CustomResource {
