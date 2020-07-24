@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v2.9.0 of the Consul Terraform Provider
+_(none)_
 
 ---
+
+## 2.3.0 (2020-07-24)
+* Upgrade to v2.9.0 of the Consul Terraform Provider
 
 ## 2.2.1 (2020-06-10)
 * Switch to GitHub actions for build
