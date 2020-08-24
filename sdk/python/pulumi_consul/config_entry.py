@@ -5,24 +5,22 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = ['ConfigEntry']
 
 
 class ConfigEntry(pulumi.CustomResource):
-    config_json: pulumi.Output[str]
-    """
-    An arbitrary map of configuration values.
-    """
-    kind: pulumi.Output[str]
-    """
-    The kind of configuration entry to register.
-    """
-    name: pulumi.Output[str]
-    """
-    The name of the configuration entry being registred.
-    """
-    def __init__(__self__, resource_name, opts=None, config_json=None, kind=None, name=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 config_json: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         The [Configuration Entry](https://www.consul.io/docs/agent/config_entries.html)
         resource can be used to provide cluster-wide defaults for various aspects of
@@ -134,7 +132,7 @@ class ConfigEntry(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -152,13 +150,18 @@ class ConfigEntry(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, config_json=None, kind=None, name=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            config_json: Optional[pulumi.Input[str]] = None,
+            kind: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None) -> 'ConfigEntry':
         """
         Get an existing ConfigEntry resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] config_json: An arbitrary map of configuration values.
         :param pulumi.Input[str] kind: The kind of configuration entry to register.
@@ -173,8 +176,33 @@ class ConfigEntry(pulumi.CustomResource):
         __props__["name"] = name
         return ConfigEntry(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="configJson")
+    def config_json(self) -> Optional[str]:
+        """
+        An arbitrary map of configuration values.
+        """
+        return pulumi.get(self, "config_json")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> str:
+        """
+        The kind of configuration entry to register.
+        """
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the configuration entry being registred.
+        """
+        return pulumi.get(self, "name")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

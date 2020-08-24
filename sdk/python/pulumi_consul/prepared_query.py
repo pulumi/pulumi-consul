@@ -5,115 +5,37 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['PreparedQuery']
 
 
 class PreparedQuery(pulumi.CustomResource):
-    connect: pulumi.Output[bool]
-    """
-    When `true` the prepared query will return connect
-    proxy services for a queried service.  Conditions such as `tags` in the
-    prepared query will be matched against the proxy service. Defaults to false.
-    """
-    datacenter: pulumi.Output[str]
-    """
-    The datacenter to use. This overrides the
-    agent's default datacenter and the datacenter in the provider setup.
-    """
-    dns: pulumi.Output[dict]
-    """
-    Settings for controlling the DNS response details.
-
-      * `ttl` (`str`) - The TTL to send when returning DNS results.
-    """
-    failover: pulumi.Output[dict]
-    """
-    Options for controlling behavior when no healthy
-    nodes are available in the local DC.
-
-      * `datacenters` (`list`) - Remote datacenters to return results from.
-      * `nearestN` (`float`) - Return results from this many datacenters,
-        sorted in ascending order of estimated RTT.
-    """
-    ignore_check_ids: pulumi.Output[list]
-    """
-    Specifies a list of check IDs that should be
-    ignored when filtering unhealthy instances. This is mostly useful in an
-    emergency or as a temporary measure when a health check is found to be
-    unreliable. Being able to ignore it in centrally-defined queries can be
-    simpler than de-registering the check as an interim solution until the check
-    can be fixed.
-    """
-    name: pulumi.Output[str]
-    """
-    The name of the prepared query. Used to identify
-    the prepared query during requests. Can be specified as an empty string
-    to configure the query as a catch-all.
-    """
-    near: pulumi.Output[str]
-    """
-    Allows specifying the name of a node to sort results
-    near using Consul's distance sorting and network coordinates. The magic
-    `_agent` value can be used to always sort nearest the node servicing the
-    request.
-    """
-    node_meta: pulumi.Output[dict]
-    """
-    Specifies a list of user-defined key/value pairs that
-    will be used for filtering the query results to nodes with the given metadata
-    values present.
-    """
-    only_passing: pulumi.Output[bool]
-    """
-    When `true`, the prepared query will only
-    return nodes with passing health checks in the result.
-    """
-    service: pulumi.Output[str]
-    """
-    The name of the service to query.
-    """
-    service_meta: pulumi.Output[dict]
-    """
-    Specifies a list of user-defined key/value pairs
-    that will be used for filtering the query results to services with the given
-    metadata values present.
-    """
-    session: pulumi.Output[str]
-    """
-    The name of the Consul session to tie this query's
-    lifetime to.  This is an advanced parameter that should not be used without a
-    complete understanding of Consul sessions and the implications of their use
-    (it is recommended to leave this blank in nearly all cases).  If this
-    parameter is omitted the query will not expire.
-    """
-    stored_token: pulumi.Output[str]
-    """
-    The ACL token to store with the prepared
-    query. This token will be used by default whenever the query is executed.
-    """
-    tags: pulumi.Output[list]
-    """
-    The list of required and/or disallowed tags.  If a tag is
-    in this list it must be present.  If the tag is preceded with a "!" then it is
-    disallowed.
-    """
-    template: pulumi.Output[dict]
-    """
-    Query templating options. This is used to make a
-    single prepared query respond to many different requests.
-
-      * `regexp` (`str`) - The regular expression to match with. When using
-        `name_prefix_match`, this regex is applied against the query name.
-      * `type` (`str`) - The type of template matching to perform. Currently
-        only `name_prefix_match` is supported.
-    """
-    token: pulumi.Output[str]
-    """
-    The ACL token to use when saving the prepared query.
-    This overrides the token that the agent provides by default.
-    """
-    def __init__(__self__, resource_name, opts=None, connect=None, datacenter=None, dns=None, failover=None, ignore_check_ids=None, name=None, near=None, node_meta=None, only_passing=None, service=None, service_meta=None, session=None, stored_token=None, tags=None, template=None, token=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 connect: Optional[pulumi.Input[bool]] = None,
+                 datacenter: Optional[pulumi.Input[str]] = None,
+                 dns: Optional[pulumi.Input[pulumi.InputType['PreparedQueryDnsArgs']]] = None,
+                 failover: Optional[pulumi.Input[pulumi.InputType['PreparedQueryFailoverArgs']]] = None,
+                 ignore_check_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 near: Optional[pulumi.Input[str]] = None,
+                 node_meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 only_passing: Optional[pulumi.Input[bool]] = None,
+                 service: Optional[pulumi.Input[str]] = None,
+                 service_meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 session: Optional[pulumi.Input[str]] = None,
+                 stored_token: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 template: Optional[pulumi.Input[pulumi.InputType['PreparedQueryTemplateArgs']]] = None,
+                 token: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Create a PreparedQuery resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
@@ -123,10 +45,10 @@ class PreparedQuery(pulumi.CustomResource):
                prepared query will be matched against the proxy service. Defaults to false.
         :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the
                agent's default datacenter and the datacenter in the provider setup.
-        :param pulumi.Input[dict] dns: Settings for controlling the DNS response details.
-        :param pulumi.Input[dict] failover: Options for controlling behavior when no healthy
+        :param pulumi.Input[pulumi.InputType['PreparedQueryDnsArgs']] dns: Settings for controlling the DNS response details.
+        :param pulumi.Input[pulumi.InputType['PreparedQueryFailoverArgs']] failover: Options for controlling behavior when no healthy
                nodes are available in the local DC.
-        :param pulumi.Input[list] ignore_check_ids: Specifies a list of check IDs that should be
+        :param pulumi.Input[List[pulumi.Input[str]]] ignore_check_ids: Specifies a list of check IDs that should be
                ignored when filtering unhealthy instances. This is mostly useful in an
                emergency or as a temporary measure when a health check is found to be
                unreliable. Being able to ignore it in centrally-defined queries can be
@@ -139,13 +61,13 @@ class PreparedQuery(pulumi.CustomResource):
                near using Consul's distance sorting and network coordinates. The magic
                `_agent` value can be used to always sort nearest the node servicing the
                request.
-        :param pulumi.Input[dict] node_meta: Specifies a list of user-defined key/value pairs that
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] node_meta: Specifies a list of user-defined key/value pairs that
                will be used for filtering the query results to nodes with the given metadata
                values present.
         :param pulumi.Input[bool] only_passing: When `true`, the prepared query will only
                return nodes with passing health checks in the result.
         :param pulumi.Input[str] service: The name of the service to query.
-        :param pulumi.Input[dict] service_meta: Specifies a list of user-defined key/value pairs
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] service_meta: Specifies a list of user-defined key/value pairs
                that will be used for filtering the query results to services with the given
                metadata values present.
         :param pulumi.Input[str] session: The name of the Consul session to tie this query's
@@ -155,30 +77,13 @@ class PreparedQuery(pulumi.CustomResource):
                parameter is omitted the query will not expire.
         :param pulumi.Input[str] stored_token: The ACL token to store with the prepared
                query. This token will be used by default whenever the query is executed.
-        :param pulumi.Input[list] tags: The list of required and/or disallowed tags.  If a tag is
+        :param pulumi.Input[List[pulumi.Input[str]]] tags: The list of required and/or disallowed tags.  If a tag is
                in this list it must be present.  If the tag is preceded with a "!" then it is
                disallowed.
-        :param pulumi.Input[dict] template: Query templating options. This is used to make a
+        :param pulumi.Input[pulumi.InputType['PreparedQueryTemplateArgs']] template: Query templating options. This is used to make a
                single prepared query respond to many different requests.
         :param pulumi.Input[str] token: The ACL token to use when saving the prepared query.
                This overrides the token that the agent provides by default.
-
-        The **dns** object supports the following:
-
-          * `ttl` (`pulumi.Input[str]`) - The TTL to send when returning DNS results.
-
-        The **failover** object supports the following:
-
-          * `datacenters` (`pulumi.Input[list]`) - Remote datacenters to return results from.
-          * `nearestN` (`pulumi.Input[float]`) - Return results from this many datacenters,
-            sorted in ascending order of estimated RTT.
-
-        The **template** object supports the following:
-
-          * `regexp` (`pulumi.Input[str]`) - The regular expression to match with. When using
-            `name_prefix_match`, this regex is applied against the query name.
-          * `type` (`pulumi.Input[str]`) - The type of template matching to perform. Currently
-            only `name_prefix_match` is supported.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -191,7 +96,7 @@ class PreparedQuery(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -222,23 +127,41 @@ class PreparedQuery(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, connect=None, datacenter=None, dns=None, failover=None, ignore_check_ids=None, name=None, near=None, node_meta=None, only_passing=None, service=None, service_meta=None, session=None, stored_token=None, tags=None, template=None, token=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            connect: Optional[pulumi.Input[bool]] = None,
+            datacenter: Optional[pulumi.Input[str]] = None,
+            dns: Optional[pulumi.Input[pulumi.InputType['PreparedQueryDnsArgs']]] = None,
+            failover: Optional[pulumi.Input[pulumi.InputType['PreparedQueryFailoverArgs']]] = None,
+            ignore_check_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            near: Optional[pulumi.Input[str]] = None,
+            node_meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            only_passing: Optional[pulumi.Input[bool]] = None,
+            service: Optional[pulumi.Input[str]] = None,
+            service_meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            session: Optional[pulumi.Input[str]] = None,
+            stored_token: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            template: Optional[pulumi.Input[pulumi.InputType['PreparedQueryTemplateArgs']]] = None,
+            token: Optional[pulumi.Input[str]] = None) -> 'PreparedQuery':
         """
         Get an existing PreparedQuery resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] connect: When `true` the prepared query will return connect
                proxy services for a queried service.  Conditions such as `tags` in the
                prepared query will be matched against the proxy service. Defaults to false.
         :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the
                agent's default datacenter and the datacenter in the provider setup.
-        :param pulumi.Input[dict] dns: Settings for controlling the DNS response details.
-        :param pulumi.Input[dict] failover: Options for controlling behavior when no healthy
+        :param pulumi.Input[pulumi.InputType['PreparedQueryDnsArgs']] dns: Settings for controlling the DNS response details.
+        :param pulumi.Input[pulumi.InputType['PreparedQueryFailoverArgs']] failover: Options for controlling behavior when no healthy
                nodes are available in the local DC.
-        :param pulumi.Input[list] ignore_check_ids: Specifies a list of check IDs that should be
+        :param pulumi.Input[List[pulumi.Input[str]]] ignore_check_ids: Specifies a list of check IDs that should be
                ignored when filtering unhealthy instances. This is mostly useful in an
                emergency or as a temporary measure when a health check is found to be
                unreliable. Being able to ignore it in centrally-defined queries can be
@@ -251,13 +174,13 @@ class PreparedQuery(pulumi.CustomResource):
                near using Consul's distance sorting and network coordinates. The magic
                `_agent` value can be used to always sort nearest the node servicing the
                request.
-        :param pulumi.Input[dict] node_meta: Specifies a list of user-defined key/value pairs that
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] node_meta: Specifies a list of user-defined key/value pairs that
                will be used for filtering the query results to nodes with the given metadata
                values present.
         :param pulumi.Input[bool] only_passing: When `true`, the prepared query will only
                return nodes with passing health checks in the result.
         :param pulumi.Input[str] service: The name of the service to query.
-        :param pulumi.Input[dict] service_meta: Specifies a list of user-defined key/value pairs
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] service_meta: Specifies a list of user-defined key/value pairs
                that will be used for filtering the query results to services with the given
                metadata values present.
         :param pulumi.Input[str] session: The name of the Consul session to tie this query's
@@ -267,30 +190,13 @@ class PreparedQuery(pulumi.CustomResource):
                parameter is omitted the query will not expire.
         :param pulumi.Input[str] stored_token: The ACL token to store with the prepared
                query. This token will be used by default whenever the query is executed.
-        :param pulumi.Input[list] tags: The list of required and/or disallowed tags.  If a tag is
+        :param pulumi.Input[List[pulumi.Input[str]]] tags: The list of required and/or disallowed tags.  If a tag is
                in this list it must be present.  If the tag is preceded with a "!" then it is
                disallowed.
-        :param pulumi.Input[dict] template: Query templating options. This is used to make a
+        :param pulumi.Input[pulumi.InputType['PreparedQueryTemplateArgs']] template: Query templating options. This is used to make a
                single prepared query respond to many different requests.
         :param pulumi.Input[str] token: The ACL token to use when saving the prepared query.
                This overrides the token that the agent provides by default.
-
-        The **dns** object supports the following:
-
-          * `ttl` (`pulumi.Input[str]`) - The TTL to send when returning DNS results.
-
-        The **failover** object supports the following:
-
-          * `datacenters` (`pulumi.Input[list]`) - Remote datacenters to return results from.
-          * `nearestN` (`pulumi.Input[float]`) - Return results from this many datacenters,
-            sorted in ascending order of estimated RTT.
-
-        The **template** object supports the following:
-
-          * `regexp` (`pulumi.Input[str]`) - The regular expression to match with. When using
-            `name_prefix_match`, this regex is applied against the query name.
-          * `type` (`pulumi.Input[str]`) - The type of template matching to perform. Currently
-            only `name_prefix_match` is supported.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -314,8 +220,165 @@ class PreparedQuery(pulumi.CustomResource):
         __props__["token"] = token
         return PreparedQuery(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def connect(self) -> Optional[bool]:
+        """
+        When `true` the prepared query will return connect
+        proxy services for a queried service.  Conditions such as `tags` in the
+        prepared query will be matched against the proxy service. Defaults to false.
+        """
+        return pulumi.get(self, "connect")
+
+    @property
+    @pulumi.getter
+    def datacenter(self) -> Optional[str]:
+        """
+        The datacenter to use. This overrides the
+        agent's default datacenter and the datacenter in the provider setup.
+        """
+        return pulumi.get(self, "datacenter")
+
+    @property
+    @pulumi.getter
+    def dns(self) -> Optional['outputs.PreparedQueryDns']:
+        """
+        Settings for controlling the DNS response details.
+        """
+        return pulumi.get(self, "dns")
+
+    @property
+    @pulumi.getter
+    def failover(self) -> Optional['outputs.PreparedQueryFailover']:
+        """
+        Options for controlling behavior when no healthy
+        nodes are available in the local DC.
+        """
+        return pulumi.get(self, "failover")
+
+    @property
+    @pulumi.getter(name="ignoreCheckIds")
+    def ignore_check_ids(self) -> Optional[List[str]]:
+        """
+        Specifies a list of check IDs that should be
+        ignored when filtering unhealthy instances. This is mostly useful in an
+        emergency or as a temporary measure when a health check is found to be
+        unreliable. Being able to ignore it in centrally-defined queries can be
+        simpler than de-registering the check as an interim solution until the check
+        can be fixed.
+        """
+        return pulumi.get(self, "ignore_check_ids")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the prepared query. Used to identify
+        the prepared query during requests. Can be specified as an empty string
+        to configure the query as a catch-all.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def near(self) -> Optional[str]:
+        """
+        Allows specifying the name of a node to sort results
+        near using Consul's distance sorting and network coordinates. The magic
+        `_agent` value can be used to always sort nearest the node servicing the
+        request.
+        """
+        return pulumi.get(self, "near")
+
+    @property
+    @pulumi.getter(name="nodeMeta")
+    def node_meta(self) -> Optional[Mapping[str, str]]:
+        """
+        Specifies a list of user-defined key/value pairs that
+        will be used for filtering the query results to nodes with the given metadata
+        values present.
+        """
+        return pulumi.get(self, "node_meta")
+
+    @property
+    @pulumi.getter(name="onlyPassing")
+    def only_passing(self) -> Optional[bool]:
+        """
+        When `true`, the prepared query will only
+        return nodes with passing health checks in the result.
+        """
+        return pulumi.get(self, "only_passing")
+
+    @property
+    @pulumi.getter
+    def service(self) -> str:
+        """
+        The name of the service to query.
+        """
+        return pulumi.get(self, "service")
+
+    @property
+    @pulumi.getter(name="serviceMeta")
+    def service_meta(self) -> Optional[Mapping[str, str]]:
+        """
+        Specifies a list of user-defined key/value pairs
+        that will be used for filtering the query results to services with the given
+        metadata values present.
+        """
+        return pulumi.get(self, "service_meta")
+
+    @property
+    @pulumi.getter
+    def session(self) -> Optional[str]:
+        """
+        The name of the Consul session to tie this query's
+        lifetime to.  This is an advanced parameter that should not be used without a
+        complete understanding of Consul sessions and the implications of their use
+        (it is recommended to leave this blank in nearly all cases).  If this
+        parameter is omitted the query will not expire.
+        """
+        return pulumi.get(self, "session")
+
+    @property
+    @pulumi.getter(name="storedToken")
+    def stored_token(self) -> Optional[str]:
+        """
+        The ACL token to store with the prepared
+        query. This token will be used by default whenever the query is executed.
+        """
+        return pulumi.get(self, "stored_token")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[List[str]]:
+        """
+        The list of required and/or disallowed tags.  If a tag is
+        in this list it must be present.  If the tag is preceded with a "!" then it is
+        disallowed.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def template(self) -> Optional['outputs.PreparedQueryTemplate']:
+        """
+        Query templating options. This is used to make a
+        single prepared query respond to many different requests.
+        """
+        return pulumi.get(self, "template")
+
+    @property
+    @pulumi.getter
+    def token(self) -> Optional[str]:
+        """
+        The ACL token to use when saving the prepared query.
+        This overrides the token that the agent provides by default.
+        """
+        return pulumi.get(self, "token")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

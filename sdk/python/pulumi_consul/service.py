@@ -5,60 +5,33 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['Service']
 
 
 class Service(pulumi.CustomResource):
-    address: pulumi.Output[str]
-    """
-    The address of the service. Defaults to the
-    address of the node.
-    """
-    checks: pulumi.Output[list]
-    datacenter: pulumi.Output[str]
-    """
-    The datacenter to use. This overrides the
-    agent's default datacenter and the datacenter in the provider setup.
-    """
-    enable_tag_override: pulumi.Output[bool]
-    """
-    Specifies to disable the
-    anti-entropy feature for this service's tags. Defaults to `false`.
-    """
-    external: pulumi.Output[bool]
-    meta: pulumi.Output[dict]
-    """
-    A map of arbitrary KV metadata linked to the service
-    instance.
-    """
-    name: pulumi.Output[str]
-    """
-    The name of the health-check.
-    """
-    namespace: pulumi.Output[str]
-    """
-    The namespace to create the service within.
-    """
-    node: pulumi.Output[str]
-    """
-    The name of the node the to register the service on.
-    """
-    port: pulumi.Output[float]
-    """
-    The port of the service.
-    """
-    service_id: pulumi.Output[str]
-    """
-    - If the service ID is not provided, it will be defaulted to the value
-    of the `name` attribute.
-    """
-    tags: pulumi.Output[list]
-    """
-    A list of values that are opaque to Consul,
-    but can be used to distinguish between services or nodes.
-    """
-    def __init__(__self__, resource_name, opts=None, address=None, checks=None, datacenter=None, enable_tag_override=None, external=None, meta=None, name=None, namespace=None, node=None, port=None, service_id=None, tags=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 address: Optional[pulumi.Input[str]] = None,
+                 checks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ServiceCheckArgs']]]]] = None,
+                 datacenter: Optional[pulumi.Input[str]] = None,
+                 enable_tag_override: Optional[pulumi.Input[bool]] = None,
+                 external: Optional[pulumi.Input[bool]] = None,
+                 meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 namespace: Optional[pulumi.Input[str]] = None,
+                 node: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[float]] = None,
+                 service_id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         A high-level resource for creating a Service in Consul in the Consul catalog. This
         is appropriate for registering [external services](https://www.consul.io/docs/guides/external.html) and
@@ -101,27 +74,27 @@ class Service(pulumi.CustomResource):
         import pulumi_consul as consul
 
         redis = consul.Service("redis",
-            checks=[{
-                "checkId": "service:redis1",
-                "deregisterCriticalServiceAfter": "30s",
-                "headers": [
-                    {
-                        "name": "foo",
-                        "value": ["test"],
-                    },
-                    {
-                        "name": "bar",
-                        "value": ["test"],
-                    },
+            checks=[consul.ServiceCheckArgs(
+                check_id="service:redis1",
+                deregister_critical_service_after="30s",
+                headers=[
+                    consul.ServiceCheckHeaderArgs(
+                        name="foo",
+                        value=["test"],
+                    ),
+                    consul.ServiceCheckHeaderArgs(
+                        name="bar",
+                        value=["test"],
+                    ),
                 ],
-                "http": "https://www.hashicorptest.com",
-                "interval": "5s",
-                "method": "PUT",
-                "name": "Redis health check",
-                "status": "passing",
-                "timeout": "1s",
-                "tlsSkipVerify": False,
-            }],
+                http="https://www.hashicorptest.com",
+                interval="5s",
+                method="PUT",
+                name="Redis health check",
+                status="passing",
+                timeout="1s",
+                tls_skip_verify=False,
+            )],
             node="redis",
             port=6379)
         ```
@@ -134,7 +107,7 @@ class Service(pulumi.CustomResource):
                agent's default datacenter and the datacenter in the provider setup.
         :param pulumi.Input[bool] enable_tag_override: Specifies to disable the
                anti-entropy feature for this service's tags. Defaults to `false`.
-        :param pulumi.Input[dict] meta: A map of arbitrary KV metadata linked to the service
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: A map of arbitrary KV metadata linked to the service
                instance.
         :param pulumi.Input[str] name: The name of the health-check.
         :param pulumi.Input[str] namespace: The namespace to create the service within.
@@ -142,33 +115,8 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[float] port: The port of the service.
         :param pulumi.Input[str] service_id: - If the service ID is not provided, it will be defaulted to the value
                of the `name` attribute.
-        :param pulumi.Input[list] tags: A list of values that are opaque to Consul,
+        :param pulumi.Input[List[pulumi.Input[str]]] tags: A list of values that are opaque to Consul,
                but can be used to distinguish between services or nodes.
-
-        The **checks** object supports the following:
-
-          * `checkId` (`pulumi.Input[str]`) - An ID, *unique per agent*. Will default to *name*
-            if not set.
-          * `deregisterCriticalServiceAfter` (`pulumi.Input[str]`) - The time after which
-            the service is automatically deregistered when in the `critical` state.
-            Defaults to `30s`.
-          * `headers` (`pulumi.Input[list]`) - The headers to send for an HTTP check.
-            The attributes of each header is given below.
-            * `name` (`pulumi.Input[str]`) - The name of the header.
-            * `values` (`pulumi.Input[list]`) - The header's list of values.
-
-          * `http` (`pulumi.Input[str]`) - The HTTP endpoint to call for an HTTP check.
-          * `interval` (`pulumi.Input[str]`) - The interval to wait between each health-check
-            invocation.
-          * `method` (`pulumi.Input[str]`) - The method to use for HTTP health-checks. Defaults
-            to `GET`.
-          * `name` (`pulumi.Input[str]`) - The name of the health-check.
-          * `notes` (`pulumi.Input[str]`) - An opaque field meant to hold human readable text.
-          * `status` (`pulumi.Input[str]`) - The initial health-check status.
-          * `tcp` (`pulumi.Input[str]`) - The TCP address and port to connect to for a TCP check.
-          * `timeout` (`pulumi.Input[str]`) - The timeout value for HTTP checks.
-          * `tlsSkipVerify` (`pulumi.Input[bool]`) - Whether to deactivate certificate
-            verification for HTTP health-checks. Defaults to `false`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -181,7 +129,7 @@ class Service(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -211,13 +159,27 @@ class Service(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, address=None, checks=None, datacenter=None, enable_tag_override=None, external=None, meta=None, name=None, namespace=None, node=None, port=None, service_id=None, tags=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            address: Optional[pulumi.Input[str]] = None,
+            checks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ServiceCheckArgs']]]]] = None,
+            datacenter: Optional[pulumi.Input[str]] = None,
+            enable_tag_override: Optional[pulumi.Input[bool]] = None,
+            external: Optional[pulumi.Input[bool]] = None,
+            meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            namespace: Optional[pulumi.Input[str]] = None,
+            node: Optional[pulumi.Input[str]] = None,
+            port: Optional[pulumi.Input[float]] = None,
+            service_id: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None) -> 'Service':
         """
         Get an existing Service resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address: The address of the service. Defaults to the
                address of the node.
@@ -225,7 +187,7 @@ class Service(pulumi.CustomResource):
                agent's default datacenter and the datacenter in the provider setup.
         :param pulumi.Input[bool] enable_tag_override: Specifies to disable the
                anti-entropy feature for this service's tags. Defaults to `false`.
-        :param pulumi.Input[dict] meta: A map of arbitrary KV metadata linked to the service
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: A map of arbitrary KV metadata linked to the service
                instance.
         :param pulumi.Input[str] name: The name of the health-check.
         :param pulumi.Input[str] namespace: The namespace to create the service within.
@@ -233,33 +195,8 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[float] port: The port of the service.
         :param pulumi.Input[str] service_id: - If the service ID is not provided, it will be defaulted to the value
                of the `name` attribute.
-        :param pulumi.Input[list] tags: A list of values that are opaque to Consul,
+        :param pulumi.Input[List[pulumi.Input[str]]] tags: A list of values that are opaque to Consul,
                but can be used to distinguish between services or nodes.
-
-        The **checks** object supports the following:
-
-          * `checkId` (`pulumi.Input[str]`) - An ID, *unique per agent*. Will default to *name*
-            if not set.
-          * `deregisterCriticalServiceAfter` (`pulumi.Input[str]`) - The time after which
-            the service is automatically deregistered when in the `critical` state.
-            Defaults to `30s`.
-          * `headers` (`pulumi.Input[list]`) - The headers to send for an HTTP check.
-            The attributes of each header is given below.
-            * `name` (`pulumi.Input[str]`) - The name of the header.
-            * `values` (`pulumi.Input[list]`) - The header's list of values.
-
-          * `http` (`pulumi.Input[str]`) - The HTTP endpoint to call for an HTTP check.
-          * `interval` (`pulumi.Input[str]`) - The interval to wait between each health-check
-            invocation.
-          * `method` (`pulumi.Input[str]`) - The method to use for HTTP health-checks. Defaults
-            to `GET`.
-          * `name` (`pulumi.Input[str]`) - The name of the health-check.
-          * `notes` (`pulumi.Input[str]`) - An opaque field meant to hold human readable text.
-          * `status` (`pulumi.Input[str]`) - The initial health-check status.
-          * `tcp` (`pulumi.Input[str]`) - The TCP address and port to connect to for a TCP check.
-          * `timeout` (`pulumi.Input[str]`) - The timeout value for HTTP checks.
-          * `tlsSkipVerify` (`pulumi.Input[bool]`) - Whether to deactivate certificate
-            verification for HTTP health-checks. Defaults to `false`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -279,8 +216,105 @@ class Service(pulumi.CustomResource):
         __props__["tags"] = tags
         return Service(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def address(self) -> str:
+        """
+        The address of the service. Defaults to the
+        address of the node.
+        """
+        return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter
+    def checks(self) -> Optional[List['outputs.ServiceCheck']]:
+        return pulumi.get(self, "checks")
+
+    @property
+    @pulumi.getter
+    def datacenter(self) -> str:
+        """
+        The datacenter to use. This overrides the
+        agent's default datacenter and the datacenter in the provider setup.
+        """
+        return pulumi.get(self, "datacenter")
+
+    @property
+    @pulumi.getter(name="enableTagOverride")
+    def enable_tag_override(self) -> Optional[bool]:
+        """
+        Specifies to disable the
+        anti-entropy feature for this service's tags. Defaults to `false`.
+        """
+        return pulumi.get(self, "enable_tag_override")
+
+    @property
+    @pulumi.getter
+    def external(self) -> Optional[bool]:
+        return pulumi.get(self, "external")
+
+    @property
+    @pulumi.getter
+    def meta(self) -> Optional[Mapping[str, str]]:
+        """
+        A map of arbitrary KV metadata linked to the service
+        instance.
+        """
+        return pulumi.get(self, "meta")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the health-check.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[str]:
+        """
+        The namespace to create the service within.
+        """
+        return pulumi.get(self, "namespace")
+
+    @property
+    @pulumi.getter
+    def node(self) -> str:
+        """
+        The name of the node the to register the service on.
+        """
+        return pulumi.get(self, "node")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[float]:
+        """
+        The port of the service.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="serviceId")
+    def service_id(self) -> str:
+        """
+        - If the service ID is not provided, it will be defaulted to the value
+        of the `name` attribute.
+        """
+        return pulumi.get(self, "service_id")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[List[str]]:
+        """
+        A list of values that are opaque to Consul,
+        but can be used to distinguish between services or nodes.
+        """
+        return pulumi.get(self, "tags")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

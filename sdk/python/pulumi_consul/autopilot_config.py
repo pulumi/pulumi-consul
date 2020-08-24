@@ -5,54 +5,27 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = ['AutopilotConfig']
 
 
 class AutopilotConfig(pulumi.CustomResource):
-    cleanup_dead_servers: pulumi.Output[bool]
-    """
-    Whether to remove failing servers when a
-    replacement comes online. Defaults to true.
-    """
-    datacenter: pulumi.Output[str]
-    """
-    The datacenter to use. This overrides the agent's
-    default datacenter and the datacenter in the provider setup.
-    """
-    disable_upgrade_migration: pulumi.Output[bool]
-    """
-    Whether to disable [upgrade migrations](https://www.consul.io/docs/guides/autopilot.html#redundancy-zones).
-    Defaults to false.
-    """
-    last_contact_threshold: pulumi.Output[str]
-    """
-    The time after which a server is
-    considered as unhealthy and will be removed. Defaults to `"200ms"`.
-    """
-    max_trailing_logs: pulumi.Output[float]
-    """
-    The maximum number of Raft log entries a
-    server can trail the leader. Defaults to 250.
-    """
-    redundancy_zone_tag: pulumi.Output[str]
-    """
-    The [redundancy zone](https://www.consul.io/docs/guides/autopilot.html#redundancy-zones)
-    tag to use. Consul will try to keep one voting server by zone to take advantage
-    of isolated failure domains. Defaults to an empty string.
-    """
-    server_stabilization_time: pulumi.Output[str]
-    """
-    The period to wait for a server to be
-    healthy and stable before being promoted to a full, voting member. Defaults to
-    `"10s"`.
-    """
-    upgrade_version_tag: pulumi.Output[str]
-    """
-    The tag to override the version information
-    used during a migration. Defaults to an empty string.
-    """
-    def __init__(__self__, resource_name, opts=None, cleanup_dead_servers=None, datacenter=None, disable_upgrade_migration=None, last_contact_threshold=None, max_trailing_logs=None, redundancy_zone_tag=None, server_stabilization_time=None, upgrade_version_tag=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 cleanup_dead_servers: Optional[pulumi.Input[bool]] = None,
+                 datacenter: Optional[pulumi.Input[str]] = None,
+                 disable_upgrade_migration: Optional[pulumi.Input[bool]] = None,
+                 last_contact_threshold: Optional[pulumi.Input[str]] = None,
+                 max_trailing_logs: Optional[pulumi.Input[float]] = None,
+                 redundancy_zone_tag: Optional[pulumi.Input[str]] = None,
+                 server_stabilization_time: Optional[pulumi.Input[str]] = None,
+                 upgrade_version_tag: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides access to the [Autopilot Configuration](https://www.consul.io/docs/guides/autopilot.html)
         of Consul to automatically manage Consul servers.
@@ -104,7 +77,7 @@ class AutopilotConfig(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -125,13 +98,23 @@ class AutopilotConfig(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, cleanup_dead_servers=None, datacenter=None, disable_upgrade_migration=None, last_contact_threshold=None, max_trailing_logs=None, redundancy_zone_tag=None, server_stabilization_time=None, upgrade_version_tag=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cleanup_dead_servers: Optional[pulumi.Input[bool]] = None,
+            datacenter: Optional[pulumi.Input[str]] = None,
+            disable_upgrade_migration: Optional[pulumi.Input[bool]] = None,
+            last_contact_threshold: Optional[pulumi.Input[str]] = None,
+            max_trailing_logs: Optional[pulumi.Input[float]] = None,
+            redundancy_zone_tag: Optional[pulumi.Input[str]] = None,
+            server_stabilization_time: Optional[pulumi.Input[str]] = None,
+            upgrade_version_tag: Optional[pulumi.Input[str]] = None) -> 'AutopilotConfig':
         """
         Get an existing AutopilotConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] cleanup_dead_servers: Whether to remove failing servers when a
                replacement comes online. Defaults to true.
@@ -166,8 +149,83 @@ class AutopilotConfig(pulumi.CustomResource):
         __props__["upgrade_version_tag"] = upgrade_version_tag
         return AutopilotConfig(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="cleanupDeadServers")
+    def cleanup_dead_servers(self) -> Optional[bool]:
+        """
+        Whether to remove failing servers when a
+        replacement comes online. Defaults to true.
+        """
+        return pulumi.get(self, "cleanup_dead_servers")
+
+    @property
+    @pulumi.getter
+    def datacenter(self) -> Optional[str]:
+        """
+        The datacenter to use. This overrides the agent's
+        default datacenter and the datacenter in the provider setup.
+        """
+        return pulumi.get(self, "datacenter")
+
+    @property
+    @pulumi.getter(name="disableUpgradeMigration")
+    def disable_upgrade_migration(self) -> Optional[bool]:
+        """
+        Whether to disable [upgrade migrations](https://www.consul.io/docs/guides/autopilot.html#redundancy-zones).
+        Defaults to false.
+        """
+        return pulumi.get(self, "disable_upgrade_migration")
+
+    @property
+    @pulumi.getter(name="lastContactThreshold")
+    def last_contact_threshold(self) -> Optional[str]:
+        """
+        The time after which a server is
+        considered as unhealthy and will be removed. Defaults to `"200ms"`.
+        """
+        return pulumi.get(self, "last_contact_threshold")
+
+    @property
+    @pulumi.getter(name="maxTrailingLogs")
+    def max_trailing_logs(self) -> Optional[float]:
+        """
+        The maximum number of Raft log entries a
+        server can trail the leader. Defaults to 250.
+        """
+        return pulumi.get(self, "max_trailing_logs")
+
+    @property
+    @pulumi.getter(name="redundancyZoneTag")
+    def redundancy_zone_tag(self) -> Optional[str]:
+        """
+        The [redundancy zone](https://www.consul.io/docs/guides/autopilot.html#redundancy-zones)
+        tag to use. Consul will try to keep one voting server by zone to take advantage
+        of isolated failure domains. Defaults to an empty string.
+        """
+        return pulumi.get(self, "redundancy_zone_tag")
+
+    @property
+    @pulumi.getter(name="serverStabilizationTime")
+    def server_stabilization_time(self) -> Optional[str]:
+        """
+        The period to wait for a server to be
+        healthy and stable before being promoted to a full, voting member. Defaults to
+        `"10s"`.
+        """
+        return pulumi.get(self, "server_stabilization_time")
+
+    @property
+    @pulumi.getter(name="upgradeVersionTag")
+    def upgrade_version_tag(self) -> Optional[str]:
+        """
+        The tag to override the version information
+        used during a migration. Defaults to an empty string.
+        """
+        return pulumi.get(self, "upgrade_version_tag")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

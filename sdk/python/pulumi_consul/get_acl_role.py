@@ -5,9 +5,18 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
 
+__all__ = [
+    'GetAclRoleResult',
+    'AwaitableGetAclRoleResult',
+    'get_acl_role',
+]
+
+@pulumi.output_type
 class GetAclRoleResult:
     """
     A collection of values returned by getAclRole.
@@ -15,36 +24,68 @@ class GetAclRoleResult:
     def __init__(__self__, description=None, id=None, name=None, namespace=None, policies=None, service_identities=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
-        __self__.description = description
+        pulumi.set(__self__, "description", description)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if namespace and not isinstance(namespace, str):
+            raise TypeError("Expected argument 'namespace' to be a str")
+        pulumi.set(__self__, "namespace", namespace)
+        if policies and not isinstance(policies, list):
+            raise TypeError("Expected argument 'policies' to be a list")
+        pulumi.set(__self__, "policies", policies)
+        if service_identities and not isinstance(service_identities, list):
+            raise TypeError("Expected argument 'service_identities' to be a list")
+        pulumi.set(__self__, "service_identities", service_identities)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
         """
         The description of the ACL Role.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
-        if namespace and not isinstance(namespace, str):
-            raise TypeError("Expected argument 'namespace' to be a str")
-        __self__.namespace = namespace
-        if policies and not isinstance(policies, list):
-            raise TypeError("Expected argument 'policies' to be a list")
-        __self__.policies = policies
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[str]:
+        return pulumi.get(self, "namespace")
+
+    @property
+    @pulumi.getter
+    def policies(self) -> Optional[List['outputs.GetAclRolePolicyResult']]:
         """
         The list of policies associated with the ACL Role. Each entry has
         an `id` and a `name` attribute.
         """
-        if service_identities and not isinstance(service_identities, list):
-            raise TypeError("Expected argument 'service_identities' to be a list")
-        __self__.service_identities = service_identities
+        return pulumi.get(self, "policies")
+
+    @property
+    @pulumi.getter(name="serviceIdentities")
+    def service_identities(self) -> Optional[List['outputs.GetAclRoleServiceIdentityResult']]:
         """
         The list of service identities associated with the ACL
         Role. Each entry has a `service_name` attribute and a list of `datacenters`.
         """
+        return pulumi.get(self, "service_identities")
+
+
 class AwaitableGetAclRoleResult(GetAclRoleResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -58,7 +99,13 @@ class AwaitableGetAclRoleResult(GetAclRoleResult):
             policies=self.policies,
             service_identities=self.service_identities)
 
-def get_acl_role(description=None,name=None,namespace=None,policies=None,service_identities=None,opts=None):
+
+def get_acl_role(description: Optional[str] = None,
+                 name: Optional[str] = None,
+                 namespace: Optional[str] = None,
+                 policies: Optional[List[pulumi.InputType['GetAclRolePolicyArgs']]] = None,
+                 service_identities: Optional[List[pulumi.InputType['GetAclRoleServiceIdentityArgs']]] = None,
+                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAclRoleResult:
     """
     The `AclRole` data source returns the information related to a
     [Consul ACL Role](https://www.consul.io/api/acl/roles.html).
@@ -77,24 +124,12 @@ def get_acl_role(description=None,name=None,namespace=None,policies=None,service
     :param str description: The description of the ACL Role.
     :param str name: The name of the ACL Role.
     :param str namespace: The namespace to lookup the role.
-    :param list policies: The list of policies associated with the ACL Role. Each entry has
+    :param List[pulumi.InputType['GetAclRolePolicyArgs']] policies: The list of policies associated with the ACL Role. Each entry has
            an `id` and a `name` attribute.
-    :param list service_identities: The list of service identities associated with the ACL
+    :param List[pulumi.InputType['GetAclRoleServiceIdentityArgs']] service_identities: The list of service identities associated with the ACL
            Role. Each entry has a `service_name` attribute and a list of `datacenters`.
-
-    The **policies** object supports the following:
-
-      * `id` (`str`)
-      * `name` (`str`) - The name of the ACL Role.
-
-    The **service_identities** object supports the following:
-
-      * `datacenters` (`list`)
-      * `serviceName` (`str`)
     """
     __args__ = dict()
-
-
     __args__['description'] = description
     __args__['name'] = name
     __args__['namespace'] = namespace
@@ -103,13 +138,13 @@ def get_acl_role(description=None,name=None,namespace=None,policies=None,service
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('consul:index/getAclRole:getAclRole', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('consul:index/getAclRole:getAclRole', __args__, opts=opts, typ=GetAclRoleResult).value
 
     return AwaitableGetAclRoleResult(
-        description=__ret__.get('description'),
-        id=__ret__.get('id'),
-        name=__ret__.get('name'),
-        namespace=__ret__.get('namespace'),
-        policies=__ret__.get('policies'),
-        service_identities=__ret__.get('serviceIdentities'))
+        description=__ret__.description,
+        id=__ret__.id,
+        name=__ret__.name,
+        namespace=__ret__.namespace,
+        policies=__ret__.policies,
+        service_identities=__ret__.service_identities)

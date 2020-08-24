@@ -5,9 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
 
+__all__ = [
+    'GetNetworkSegmentsResult',
+    'AwaitableGetNetworkSegmentsResult',
+    'get_network_segments',
+]
+
+@pulumi.output_type
 class GetNetworkSegmentsResult:
     """
     A collection of values returned by getNetworkSegments.
@@ -15,25 +22,47 @@ class GetNetworkSegmentsResult:
     def __init__(__self__, datacenter=None, id=None, segments=None, token=None):
         if datacenter and not isinstance(datacenter, str):
             raise TypeError("Expected argument 'datacenter' to be a str")
-        __self__.datacenter = datacenter
+        pulumi.set(__self__, "datacenter", datacenter)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if segments and not isinstance(segments, list):
+            raise TypeError("Expected argument 'segments' to be a list")
+        pulumi.set(__self__, "segments", segments)
+        if token and not isinstance(token, str):
+            raise TypeError("Expected argument 'token' to be a str")
+        pulumi.set(__self__, "token", token)
+
+    @property
+    @pulumi.getter
+    def datacenter(self) -> str:
         """
         The datacenter the segments are being read from.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        return pulumi.get(self, "datacenter")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if segments and not isinstance(segments, list):
-            raise TypeError("Expected argument 'segments' to be a list")
-        __self__.segments = segments
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def segments(self) -> List[str]:
         """
         The list of network segments.
         """
-        if token and not isinstance(token, str):
-            raise TypeError("Expected argument 'token' to be a str")
-        __self__.token = token
+        return pulumi.get(self, "segments")
+
+    @property
+    @pulumi.getter
+    def token(self) -> Optional[str]:
+        return pulumi.get(self, "token")
+
+
 class AwaitableGetNetworkSegmentsResult(GetNetworkSegmentsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -45,7 +74,10 @@ class AwaitableGetNetworkSegmentsResult(GetNetworkSegmentsResult):
             segments=self.segments,
             token=self.token)
 
-def get_network_segments(datacenter=None,token=None,opts=None):
+
+def get_network_segments(datacenter: Optional[str] = None,
+                         token: Optional[str] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNetworkSegmentsResult:
     """
     > **NOTE:** This feature requires [Consul Enterprise](https://www.consul.io/docs/enterprise/index.html).
 
@@ -69,18 +101,16 @@ def get_network_segments(datacenter=None,token=None,opts=None):
            token that the agent provides by default.
     """
     __args__ = dict()
-
-
     __args__['datacenter'] = datacenter
     __args__['token'] = token
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('consul:index/getNetworkSegments:getNetworkSegments', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('consul:index/getNetworkSegments:getNetworkSegments', __args__, opts=opts, typ=GetNetworkSegmentsResult).value
 
     return AwaitableGetNetworkSegmentsResult(
-        datacenter=__ret__.get('datacenter'),
-        id=__ret__.get('id'),
-        segments=__ret__.get('segments'),
-        token=__ret__.get('token'))
+        datacenter=__ret__.datacenter,
+        id=__ret__.id,
+        segments=__ret__.segments,
+        token=__ret__.token)

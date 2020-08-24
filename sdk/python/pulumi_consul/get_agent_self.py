@@ -5,9 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
 
+__all__ = [
+    'GetAgentSelfResult',
+    'AwaitableGetAgentSelfResult',
+    'get_agent_self',
+]
+
+@pulumi.output_type
 class GetAgentSelfResult:
     """
     A collection of values returned by getAgentSelf.
@@ -15,70 +22,329 @@ class GetAgentSelfResult:
     def __init__(__self__, acl_datacenter=None, acl_default_policy=None, acl_disabled_ttl=None, acl_down_policy=None, acl_enforce08_semantics=None, acl_ttl=None, addresses=None, advertise_addr=None, advertise_addr_wan=None, advertise_addrs=None, atlas_join=None, bind_addr=None, bootstrap_expect=None, bootstrap_mode=None, check_deregister_interval_min=None, check_reap_interval=None, check_update_interval=None, client_addr=None, data_dir=None, datacenter=None, dev_mode=None, dns=None, dns_recursors=None, domain=None, enable_anonymous_signature=None, enable_coordinates=None, enable_debug=None, enable_remote_exec=None, enable_syslog=None, enable_ui=None, enable_update_check=None, id=None, leave_on_int=None, leave_on_term=None, log_level=None, name=None, performance=None, pid_file=None, ports=None, protocol_version=None, reconnect_timeout_lan=None, reconnect_timeout_wan=None, rejoin_after_leave=None, retry_join_ec2=None, retry_join_gce=None, retry_join_wans=None, retry_joins=None, retry_max_attempts=None, retry_max_attempts_wan=None, serf_lan_bind_addr=None, serf_wan_bind_addr=None, server_mode=None, server_name=None, session_ttl_min=None, start_join_wans=None, start_joins=None, syslog_facility=None, tagged_addresses=None, telemetry=None, tls_ca_file=None, tls_cert_file=None, tls_key_file=None, tls_min_version=None, tls_verify_incoming=None, tls_verify_outgoing=None, tls_verify_server_hostname=None, translate_wan_addrs=None, ui_dir=None, unix_sockets=None, version=None, version_prerelease=None, version_revision=None):
         if acl_datacenter and not isinstance(acl_datacenter, str):
             raise TypeError("Expected argument 'acl_datacenter' to be a str")
-        __self__.acl_datacenter = acl_datacenter
+        pulumi.set(__self__, "acl_datacenter", acl_datacenter)
         if acl_default_policy and not isinstance(acl_default_policy, str):
             raise TypeError("Expected argument 'acl_default_policy' to be a str")
-        __self__.acl_default_policy = acl_default_policy
+        pulumi.set(__self__, "acl_default_policy", acl_default_policy)
         if acl_disabled_ttl and not isinstance(acl_disabled_ttl, str):
             raise TypeError("Expected argument 'acl_disabled_ttl' to be a str")
-        __self__.acl_disabled_ttl = acl_disabled_ttl
+        pulumi.set(__self__, "acl_disabled_ttl", acl_disabled_ttl)
         if acl_down_policy and not isinstance(acl_down_policy, str):
             raise TypeError("Expected argument 'acl_down_policy' to be a str")
-        __self__.acl_down_policy = acl_down_policy
+        pulumi.set(__self__, "acl_down_policy", acl_down_policy)
         if acl_enforce08_semantics and not isinstance(acl_enforce08_semantics, bool):
             raise TypeError("Expected argument 'acl_enforce08_semantics' to be a bool")
-        __self__.acl_enforce08_semantics = acl_enforce08_semantics
+        pulumi.set(__self__, "acl_enforce08_semantics", acl_enforce08_semantics)
         if acl_ttl and not isinstance(acl_ttl, str):
             raise TypeError("Expected argument 'acl_ttl' to be a str")
-        __self__.acl_ttl = acl_ttl
+        pulumi.set(__self__, "acl_ttl", acl_ttl)
         if addresses and not isinstance(addresses, dict):
             raise TypeError("Expected argument 'addresses' to be a dict")
-        __self__.addresses = addresses
+        pulumi.set(__self__, "addresses", addresses)
         if advertise_addr and not isinstance(advertise_addr, str):
             raise TypeError("Expected argument 'advertise_addr' to be a str")
-        __self__.advertise_addr = advertise_addr
+        pulumi.set(__self__, "advertise_addr", advertise_addr)
         if advertise_addr_wan and not isinstance(advertise_addr_wan, str):
             raise TypeError("Expected argument 'advertise_addr_wan' to be a str")
-        __self__.advertise_addr_wan = advertise_addr_wan
+        pulumi.set(__self__, "advertise_addr_wan", advertise_addr_wan)
         if advertise_addrs and not isinstance(advertise_addrs, dict):
             raise TypeError("Expected argument 'advertise_addrs' to be a dict")
-        __self__.advertise_addrs = advertise_addrs
+        pulumi.set(__self__, "advertise_addrs", advertise_addrs)
         if atlas_join and not isinstance(atlas_join, bool):
             raise TypeError("Expected argument 'atlas_join' to be a bool")
-        __self__.atlas_join = atlas_join
+        pulumi.set(__self__, "atlas_join", atlas_join)
         if bind_addr and not isinstance(bind_addr, str):
             raise TypeError("Expected argument 'bind_addr' to be a str")
-        __self__.bind_addr = bind_addr
+        pulumi.set(__self__, "bind_addr", bind_addr)
         if bootstrap_expect and not isinstance(bootstrap_expect, float):
             raise TypeError("Expected argument 'bootstrap_expect' to be a float")
-        __self__.bootstrap_expect = bootstrap_expect
+        pulumi.set(__self__, "bootstrap_expect", bootstrap_expect)
         if bootstrap_mode and not isinstance(bootstrap_mode, bool):
             raise TypeError("Expected argument 'bootstrap_mode' to be a bool")
-        __self__.bootstrap_mode = bootstrap_mode
+        pulumi.set(__self__, "bootstrap_mode", bootstrap_mode)
         if check_deregister_interval_min and not isinstance(check_deregister_interval_min, str):
             raise TypeError("Expected argument 'check_deregister_interval_min' to be a str")
-        __self__.check_deregister_interval_min = check_deregister_interval_min
+        pulumi.set(__self__, "check_deregister_interval_min", check_deregister_interval_min)
         if check_reap_interval and not isinstance(check_reap_interval, str):
             raise TypeError("Expected argument 'check_reap_interval' to be a str")
-        __self__.check_reap_interval = check_reap_interval
+        pulumi.set(__self__, "check_reap_interval", check_reap_interval)
         if check_update_interval and not isinstance(check_update_interval, str):
             raise TypeError("Expected argument 'check_update_interval' to be a str")
-        __self__.check_update_interval = check_update_interval
+        pulumi.set(__self__, "check_update_interval", check_update_interval)
         if client_addr and not isinstance(client_addr, str):
             raise TypeError("Expected argument 'client_addr' to be a str")
-        __self__.client_addr = client_addr
+        pulumi.set(__self__, "client_addr", client_addr)
         if data_dir and not isinstance(data_dir, str):
             raise TypeError("Expected argument 'data_dir' to be a str")
-        __self__.data_dir = data_dir
+        pulumi.set(__self__, "data_dir", data_dir)
         if datacenter and not isinstance(datacenter, str):
             raise TypeError("Expected argument 'datacenter' to be a str")
-        __self__.datacenter = datacenter
+        pulumi.set(__self__, "datacenter", datacenter)
         if dev_mode and not isinstance(dev_mode, bool):
             raise TypeError("Expected argument 'dev_mode' to be a bool")
-        __self__.dev_mode = dev_mode
+        pulumi.set(__self__, "dev_mode", dev_mode)
         if dns and not isinstance(dns, dict):
             raise TypeError("Expected argument 'dns' to be a dict")
-        __self__.dns = dns
+        pulumi.set(__self__, "dns", dns)
+        if dns_recursors and not isinstance(dns_recursors, list):
+            raise TypeError("Expected argument 'dns_recursors' to be a list")
+        pulumi.set(__self__, "dns_recursors", dns_recursors)
+        if domain and not isinstance(domain, str):
+            raise TypeError("Expected argument 'domain' to be a str")
+        pulumi.set(__self__, "domain", domain)
+        if enable_anonymous_signature and not isinstance(enable_anonymous_signature, bool):
+            raise TypeError("Expected argument 'enable_anonymous_signature' to be a bool")
+        pulumi.set(__self__, "enable_anonymous_signature", enable_anonymous_signature)
+        if enable_coordinates and not isinstance(enable_coordinates, bool):
+            raise TypeError("Expected argument 'enable_coordinates' to be a bool")
+        pulumi.set(__self__, "enable_coordinates", enable_coordinates)
+        if enable_debug and not isinstance(enable_debug, bool):
+            raise TypeError("Expected argument 'enable_debug' to be a bool")
+        pulumi.set(__self__, "enable_debug", enable_debug)
+        if enable_remote_exec and not isinstance(enable_remote_exec, bool):
+            raise TypeError("Expected argument 'enable_remote_exec' to be a bool")
+        pulumi.set(__self__, "enable_remote_exec", enable_remote_exec)
+        if enable_syslog and not isinstance(enable_syslog, bool):
+            raise TypeError("Expected argument 'enable_syslog' to be a bool")
+        pulumi.set(__self__, "enable_syslog", enable_syslog)
+        if enable_ui and not isinstance(enable_ui, bool):
+            raise TypeError("Expected argument 'enable_ui' to be a bool")
+        pulumi.set(__self__, "enable_ui", enable_ui)
+        if enable_update_check and not isinstance(enable_update_check, bool):
+            raise TypeError("Expected argument 'enable_update_check' to be a bool")
+        pulumi.set(__self__, "enable_update_check", enable_update_check)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if leave_on_int and not isinstance(leave_on_int, bool):
+            raise TypeError("Expected argument 'leave_on_int' to be a bool")
+        pulumi.set(__self__, "leave_on_int", leave_on_int)
+        if leave_on_term and not isinstance(leave_on_term, bool):
+            raise TypeError("Expected argument 'leave_on_term' to be a bool")
+        pulumi.set(__self__, "leave_on_term", leave_on_term)
+        if log_level and not isinstance(log_level, str):
+            raise TypeError("Expected argument 'log_level' to be a str")
+        pulumi.set(__self__, "log_level", log_level)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if performance and not isinstance(performance, dict):
+            raise TypeError("Expected argument 'performance' to be a dict")
+        pulumi.set(__self__, "performance", performance)
+        if pid_file and not isinstance(pid_file, str):
+            raise TypeError("Expected argument 'pid_file' to be a str")
+        pulumi.set(__self__, "pid_file", pid_file)
+        if ports and not isinstance(ports, dict):
+            raise TypeError("Expected argument 'ports' to be a dict")
+        pulumi.set(__self__, "ports", ports)
+        if protocol_version and not isinstance(protocol_version, float):
+            raise TypeError("Expected argument 'protocol_version' to be a float")
+        pulumi.set(__self__, "protocol_version", protocol_version)
+        if reconnect_timeout_lan and not isinstance(reconnect_timeout_lan, str):
+            raise TypeError("Expected argument 'reconnect_timeout_lan' to be a str")
+        pulumi.set(__self__, "reconnect_timeout_lan", reconnect_timeout_lan)
+        if reconnect_timeout_wan and not isinstance(reconnect_timeout_wan, str):
+            raise TypeError("Expected argument 'reconnect_timeout_wan' to be a str")
+        pulumi.set(__self__, "reconnect_timeout_wan", reconnect_timeout_wan)
+        if rejoin_after_leave and not isinstance(rejoin_after_leave, bool):
+            raise TypeError("Expected argument 'rejoin_after_leave' to be a bool")
+        pulumi.set(__self__, "rejoin_after_leave", rejoin_after_leave)
+        if retry_join_ec2 and not isinstance(retry_join_ec2, dict):
+            raise TypeError("Expected argument 'retry_join_ec2' to be a dict")
+        pulumi.set(__self__, "retry_join_ec2", retry_join_ec2)
+        if retry_join_gce and not isinstance(retry_join_gce, dict):
+            raise TypeError("Expected argument 'retry_join_gce' to be a dict")
+        pulumi.set(__self__, "retry_join_gce", retry_join_gce)
+        if retry_join_wans and not isinstance(retry_join_wans, list):
+            raise TypeError("Expected argument 'retry_join_wans' to be a list")
+        pulumi.set(__self__, "retry_join_wans", retry_join_wans)
+        if retry_joins and not isinstance(retry_joins, list):
+            raise TypeError("Expected argument 'retry_joins' to be a list")
+        pulumi.set(__self__, "retry_joins", retry_joins)
+        if retry_max_attempts and not isinstance(retry_max_attempts, float):
+            raise TypeError("Expected argument 'retry_max_attempts' to be a float")
+        pulumi.set(__self__, "retry_max_attempts", retry_max_attempts)
+        if retry_max_attempts_wan and not isinstance(retry_max_attempts_wan, float):
+            raise TypeError("Expected argument 'retry_max_attempts_wan' to be a float")
+        pulumi.set(__self__, "retry_max_attempts_wan", retry_max_attempts_wan)
+        if serf_lan_bind_addr and not isinstance(serf_lan_bind_addr, str):
+            raise TypeError("Expected argument 'serf_lan_bind_addr' to be a str")
+        pulumi.set(__self__, "serf_lan_bind_addr", serf_lan_bind_addr)
+        if serf_wan_bind_addr and not isinstance(serf_wan_bind_addr, str):
+            raise TypeError("Expected argument 'serf_wan_bind_addr' to be a str")
+        pulumi.set(__self__, "serf_wan_bind_addr", serf_wan_bind_addr)
+        if server_mode and not isinstance(server_mode, bool):
+            raise TypeError("Expected argument 'server_mode' to be a bool")
+        pulumi.set(__self__, "server_mode", server_mode)
+        if server_name and not isinstance(server_name, str):
+            raise TypeError("Expected argument 'server_name' to be a str")
+        pulumi.set(__self__, "server_name", server_name)
+        if session_ttl_min and not isinstance(session_ttl_min, str):
+            raise TypeError("Expected argument 'session_ttl_min' to be a str")
+        pulumi.set(__self__, "session_ttl_min", session_ttl_min)
+        if start_join_wans and not isinstance(start_join_wans, list):
+            raise TypeError("Expected argument 'start_join_wans' to be a list")
+        pulumi.set(__self__, "start_join_wans", start_join_wans)
+        if start_joins and not isinstance(start_joins, list):
+            raise TypeError("Expected argument 'start_joins' to be a list")
+        pulumi.set(__self__, "start_joins", start_joins)
+        if syslog_facility and not isinstance(syslog_facility, str):
+            raise TypeError("Expected argument 'syslog_facility' to be a str")
+        pulumi.set(__self__, "syslog_facility", syslog_facility)
+        if tagged_addresses and not isinstance(tagged_addresses, dict):
+            raise TypeError("Expected argument 'tagged_addresses' to be a dict")
+        pulumi.set(__self__, "tagged_addresses", tagged_addresses)
+        if telemetry and not isinstance(telemetry, dict):
+            raise TypeError("Expected argument 'telemetry' to be a dict")
+        pulumi.set(__self__, "telemetry", telemetry)
+        if tls_ca_file and not isinstance(tls_ca_file, str):
+            raise TypeError("Expected argument 'tls_ca_file' to be a str")
+        pulumi.set(__self__, "tls_ca_file", tls_ca_file)
+        if tls_cert_file and not isinstance(tls_cert_file, str):
+            raise TypeError("Expected argument 'tls_cert_file' to be a str")
+        pulumi.set(__self__, "tls_cert_file", tls_cert_file)
+        if tls_key_file and not isinstance(tls_key_file, str):
+            raise TypeError("Expected argument 'tls_key_file' to be a str")
+        pulumi.set(__self__, "tls_key_file", tls_key_file)
+        if tls_min_version and not isinstance(tls_min_version, str):
+            raise TypeError("Expected argument 'tls_min_version' to be a str")
+        pulumi.set(__self__, "tls_min_version", tls_min_version)
+        if tls_verify_incoming and not isinstance(tls_verify_incoming, bool):
+            raise TypeError("Expected argument 'tls_verify_incoming' to be a bool")
+        pulumi.set(__self__, "tls_verify_incoming", tls_verify_incoming)
+        if tls_verify_outgoing and not isinstance(tls_verify_outgoing, bool):
+            raise TypeError("Expected argument 'tls_verify_outgoing' to be a bool")
+        pulumi.set(__self__, "tls_verify_outgoing", tls_verify_outgoing)
+        if tls_verify_server_hostname and not isinstance(tls_verify_server_hostname, bool):
+            raise TypeError("Expected argument 'tls_verify_server_hostname' to be a bool")
+        pulumi.set(__self__, "tls_verify_server_hostname", tls_verify_server_hostname)
+        if translate_wan_addrs and not isinstance(translate_wan_addrs, bool):
+            raise TypeError("Expected argument 'translate_wan_addrs' to be a bool")
+        pulumi.set(__self__, "translate_wan_addrs", translate_wan_addrs)
+        if ui_dir and not isinstance(ui_dir, str):
+            raise TypeError("Expected argument 'ui_dir' to be a str")
+        pulumi.set(__self__, "ui_dir", ui_dir)
+        if unix_sockets and not isinstance(unix_sockets, dict):
+            raise TypeError("Expected argument 'unix_sockets' to be a dict")
+        pulumi.set(__self__, "unix_sockets", unix_sockets)
+        if version and not isinstance(version, str):
+            raise TypeError("Expected argument 'version' to be a str")
+        pulumi.set(__self__, "version", version)
+        if version_prerelease and not isinstance(version_prerelease, str):
+            raise TypeError("Expected argument 'version_prerelease' to be a str")
+        pulumi.set(__self__, "version_prerelease", version_prerelease)
+        if version_revision and not isinstance(version_revision, str):
+            raise TypeError("Expected argument 'version_revision' to be a str")
+        pulumi.set(__self__, "version_revision", version_revision)
+
+    @property
+    @pulumi.getter(name="aclDatacenter")
+    def acl_datacenter(self) -> str:
+        return pulumi.get(self, "acl_datacenter")
+
+    @property
+    @pulumi.getter(name="aclDefaultPolicy")
+    def acl_default_policy(self) -> str:
+        return pulumi.get(self, "acl_default_policy")
+
+    @property
+    @pulumi.getter(name="aclDisabledTtl")
+    def acl_disabled_ttl(self) -> str:
+        return pulumi.get(self, "acl_disabled_ttl")
+
+    @property
+    @pulumi.getter(name="aclDownPolicy")
+    def acl_down_policy(self) -> str:
+        return pulumi.get(self, "acl_down_policy")
+
+    @property
+    @pulumi.getter(name="aclEnforce08Semantics")
+    def acl_enforce08_semantics(self) -> bool:
+        return pulumi.get(self, "acl_enforce08_semantics")
+
+    @property
+    @pulumi.getter(name="aclTtl")
+    def acl_ttl(self) -> str:
+        return pulumi.get(self, "acl_ttl")
+
+    @property
+    @pulumi.getter
+    def addresses(self) -> Mapping[str, str]:
+        return pulumi.get(self, "addresses")
+
+    @property
+    @pulumi.getter(name="advertiseAddr")
+    def advertise_addr(self) -> str:
+        return pulumi.get(self, "advertise_addr")
+
+    @property
+    @pulumi.getter(name="advertiseAddrWan")
+    def advertise_addr_wan(self) -> str:
+        return pulumi.get(self, "advertise_addr_wan")
+
+    @property
+    @pulumi.getter(name="advertiseAddrs")
+    def advertise_addrs(self) -> Mapping[str, str]:
+        return pulumi.get(self, "advertise_addrs")
+
+    @property
+    @pulumi.getter(name="atlasJoin")
+    def atlas_join(self) -> bool:
+        return pulumi.get(self, "atlas_join")
+
+    @property
+    @pulumi.getter(name="bindAddr")
+    def bind_addr(self) -> str:
+        return pulumi.get(self, "bind_addr")
+
+    @property
+    @pulumi.getter(name="bootstrapExpect")
+    def bootstrap_expect(self) -> float:
+        return pulumi.get(self, "bootstrap_expect")
+
+    @property
+    @pulumi.getter(name="bootstrapMode")
+    def bootstrap_mode(self) -> bool:
+        return pulumi.get(self, "bootstrap_mode")
+
+    @property
+    @pulumi.getter(name="checkDeregisterIntervalMin")
+    def check_deregister_interval_min(self) -> str:
+        return pulumi.get(self, "check_deregister_interval_min")
+
+    @property
+    @pulumi.getter(name="checkReapInterval")
+    def check_reap_interval(self) -> str:
+        return pulumi.get(self, "check_reap_interval")
+
+    @property
+    @pulumi.getter(name="checkUpdateInterval")
+    def check_update_interval(self) -> str:
+        return pulumi.get(self, "check_update_interval")
+
+    @property
+    @pulumi.getter(name="clientAddr")
+    def client_addr(self) -> str:
+        return pulumi.get(self, "client_addr")
+
+    @property
+    @pulumi.getter(name="dataDir")
+    def data_dir(self) -> str:
+        return pulumi.get(self, "data_dir")
+
+    @property
+    @pulumi.getter
+    def datacenter(self) -> str:
+        return pulumi.get(self, "datacenter")
+
+    @property
+    @pulumi.getter(name="devMode")
+    def dev_mode(self) -> bool:
+        return pulumi.get(self, "dev_mode")
+
+    @property
+    @pulumi.getter
+    def dns(self) -> Mapping[str, str]:
         """
         A map of DNS configuration attributes.  See below for details on the
         contents of the `dns` attribute.
@@ -139,161 +405,264 @@ class GetAgentSelfResult:
         * [`ui_dir`](https://www.consul.io/docs/agent/options.html#ui_dir)
         * [`unix_sockets`](https://www.consul.io/docs/agent/options.html#unix_sockets)
         """
-        if dns_recursors and not isinstance(dns_recursors, list):
-            raise TypeError("Expected argument 'dns_recursors' to be a list")
-        __self__.dns_recursors = dns_recursors
-        if domain and not isinstance(domain, str):
-            raise TypeError("Expected argument 'domain' to be a str")
-        __self__.domain = domain
-        if enable_anonymous_signature and not isinstance(enable_anonymous_signature, bool):
-            raise TypeError("Expected argument 'enable_anonymous_signature' to be a bool")
-        __self__.enable_anonymous_signature = enable_anonymous_signature
-        if enable_coordinates and not isinstance(enable_coordinates, bool):
-            raise TypeError("Expected argument 'enable_coordinates' to be a bool")
-        __self__.enable_coordinates = enable_coordinates
-        if enable_debug and not isinstance(enable_debug, bool):
-            raise TypeError("Expected argument 'enable_debug' to be a bool")
-        __self__.enable_debug = enable_debug
-        if enable_remote_exec and not isinstance(enable_remote_exec, bool):
-            raise TypeError("Expected argument 'enable_remote_exec' to be a bool")
-        __self__.enable_remote_exec = enable_remote_exec
-        if enable_syslog and not isinstance(enable_syslog, bool):
-            raise TypeError("Expected argument 'enable_syslog' to be a bool")
-        __self__.enable_syslog = enable_syslog
-        if enable_ui and not isinstance(enable_ui, bool):
-            raise TypeError("Expected argument 'enable_ui' to be a bool")
-        __self__.enable_ui = enable_ui
-        if enable_update_check and not isinstance(enable_update_check, bool):
-            raise TypeError("Expected argument 'enable_update_check' to be a bool")
-        __self__.enable_update_check = enable_update_check
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        if leave_on_int and not isinstance(leave_on_int, bool):
-            raise TypeError("Expected argument 'leave_on_int' to be a bool")
-        __self__.leave_on_int = leave_on_int
-        if leave_on_term and not isinstance(leave_on_term, bool):
-            raise TypeError("Expected argument 'leave_on_term' to be a bool")
-        __self__.leave_on_term = leave_on_term
-        if log_level and not isinstance(log_level, str):
-            raise TypeError("Expected argument 'log_level' to be a str")
-        __self__.log_level = log_level
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
-        if performance and not isinstance(performance, dict):
-            raise TypeError("Expected argument 'performance' to be a dict")
-        __self__.performance = performance
-        if pid_file and not isinstance(pid_file, str):
-            raise TypeError("Expected argument 'pid_file' to be a str")
-        __self__.pid_file = pid_file
-        if ports and not isinstance(ports, dict):
-            raise TypeError("Expected argument 'ports' to be a dict")
-        __self__.ports = ports
-        if protocol_version and not isinstance(protocol_version, float):
-            raise TypeError("Expected argument 'protocol_version' to be a float")
-        __self__.protocol_version = protocol_version
-        if reconnect_timeout_lan and not isinstance(reconnect_timeout_lan, str):
-            raise TypeError("Expected argument 'reconnect_timeout_lan' to be a str")
-        __self__.reconnect_timeout_lan = reconnect_timeout_lan
-        if reconnect_timeout_wan and not isinstance(reconnect_timeout_wan, str):
-            raise TypeError("Expected argument 'reconnect_timeout_wan' to be a str")
-        __self__.reconnect_timeout_wan = reconnect_timeout_wan
-        if rejoin_after_leave and not isinstance(rejoin_after_leave, bool):
-            raise TypeError("Expected argument 'rejoin_after_leave' to be a bool")
-        __self__.rejoin_after_leave = rejoin_after_leave
-        if retry_join_ec2 and not isinstance(retry_join_ec2, dict):
-            raise TypeError("Expected argument 'retry_join_ec2' to be a dict")
-        __self__.retry_join_ec2 = retry_join_ec2
-        if retry_join_gce and not isinstance(retry_join_gce, dict):
-            raise TypeError("Expected argument 'retry_join_gce' to be a dict")
-        __self__.retry_join_gce = retry_join_gce
-        if retry_join_wans and not isinstance(retry_join_wans, list):
-            raise TypeError("Expected argument 'retry_join_wans' to be a list")
-        __self__.retry_join_wans = retry_join_wans
-        if retry_joins and not isinstance(retry_joins, list):
-            raise TypeError("Expected argument 'retry_joins' to be a list")
-        __self__.retry_joins = retry_joins
-        if retry_max_attempts and not isinstance(retry_max_attempts, float):
-            raise TypeError("Expected argument 'retry_max_attempts' to be a float")
-        __self__.retry_max_attempts = retry_max_attempts
-        if retry_max_attempts_wan and not isinstance(retry_max_attempts_wan, float):
-            raise TypeError("Expected argument 'retry_max_attempts_wan' to be a float")
-        __self__.retry_max_attempts_wan = retry_max_attempts_wan
-        if serf_lan_bind_addr and not isinstance(serf_lan_bind_addr, str):
-            raise TypeError("Expected argument 'serf_lan_bind_addr' to be a str")
-        __self__.serf_lan_bind_addr = serf_lan_bind_addr
-        if serf_wan_bind_addr and not isinstance(serf_wan_bind_addr, str):
-            raise TypeError("Expected argument 'serf_wan_bind_addr' to be a str")
-        __self__.serf_wan_bind_addr = serf_wan_bind_addr
-        if server_mode and not isinstance(server_mode, bool):
-            raise TypeError("Expected argument 'server_mode' to be a bool")
-        __self__.server_mode = server_mode
-        if server_name and not isinstance(server_name, str):
-            raise TypeError("Expected argument 'server_name' to be a str")
-        __self__.server_name = server_name
-        if session_ttl_min and not isinstance(session_ttl_min, str):
-            raise TypeError("Expected argument 'session_ttl_min' to be a str")
-        __self__.session_ttl_min = session_ttl_min
-        if start_join_wans and not isinstance(start_join_wans, list):
-            raise TypeError("Expected argument 'start_join_wans' to be a list")
-        __self__.start_join_wans = start_join_wans
-        if start_joins and not isinstance(start_joins, list):
-            raise TypeError("Expected argument 'start_joins' to be a list")
-        __self__.start_joins = start_joins
-        if syslog_facility and not isinstance(syslog_facility, str):
-            raise TypeError("Expected argument 'syslog_facility' to be a str")
-        __self__.syslog_facility = syslog_facility
-        if tagged_addresses and not isinstance(tagged_addresses, dict):
-            raise TypeError("Expected argument 'tagged_addresses' to be a dict")
-        __self__.tagged_addresses = tagged_addresses
-        if telemetry and not isinstance(telemetry, dict):
-            raise TypeError("Expected argument 'telemetry' to be a dict")
-        __self__.telemetry = telemetry
-        if tls_ca_file and not isinstance(tls_ca_file, str):
-            raise TypeError("Expected argument 'tls_ca_file' to be a str")
-        __self__.tls_ca_file = tls_ca_file
-        if tls_cert_file and not isinstance(tls_cert_file, str):
-            raise TypeError("Expected argument 'tls_cert_file' to be a str")
-        __self__.tls_cert_file = tls_cert_file
-        if tls_key_file and not isinstance(tls_key_file, str):
-            raise TypeError("Expected argument 'tls_key_file' to be a str")
-        __self__.tls_key_file = tls_key_file
-        if tls_min_version and not isinstance(tls_min_version, str):
-            raise TypeError("Expected argument 'tls_min_version' to be a str")
-        __self__.tls_min_version = tls_min_version
-        if tls_verify_incoming and not isinstance(tls_verify_incoming, bool):
-            raise TypeError("Expected argument 'tls_verify_incoming' to be a bool")
-        __self__.tls_verify_incoming = tls_verify_incoming
-        if tls_verify_outgoing and not isinstance(tls_verify_outgoing, bool):
-            raise TypeError("Expected argument 'tls_verify_outgoing' to be a bool")
-        __self__.tls_verify_outgoing = tls_verify_outgoing
-        if tls_verify_server_hostname and not isinstance(tls_verify_server_hostname, bool):
-            raise TypeError("Expected argument 'tls_verify_server_hostname' to be a bool")
-        __self__.tls_verify_server_hostname = tls_verify_server_hostname
-        if translate_wan_addrs and not isinstance(translate_wan_addrs, bool):
-            raise TypeError("Expected argument 'translate_wan_addrs' to be a bool")
-        __self__.translate_wan_addrs = translate_wan_addrs
-        if ui_dir and not isinstance(ui_dir, str):
-            raise TypeError("Expected argument 'ui_dir' to be a str")
-        __self__.ui_dir = ui_dir
-        if unix_sockets and not isinstance(unix_sockets, dict):
-            raise TypeError("Expected argument 'unix_sockets' to be a dict")
-        __self__.unix_sockets = unix_sockets
-        if version and not isinstance(version, str):
-            raise TypeError("Expected argument 'version' to be a str")
-        __self__.version = version
+        return pulumi.get(self, "dns")
+
+    @property
+    @pulumi.getter(name="dnsRecursors")
+    def dns_recursors(self) -> List[str]:
+        return pulumi.get(self, "dns_recursors")
+
+    @property
+    @pulumi.getter
+    def domain(self) -> str:
+        return pulumi.get(self, "domain")
+
+    @property
+    @pulumi.getter(name="enableAnonymousSignature")
+    def enable_anonymous_signature(self) -> bool:
+        return pulumi.get(self, "enable_anonymous_signature")
+
+    @property
+    @pulumi.getter(name="enableCoordinates")
+    def enable_coordinates(self) -> bool:
+        return pulumi.get(self, "enable_coordinates")
+
+    @property
+    @pulumi.getter(name="enableDebug")
+    def enable_debug(self) -> bool:
+        return pulumi.get(self, "enable_debug")
+
+    @property
+    @pulumi.getter(name="enableRemoteExec")
+    def enable_remote_exec(self) -> bool:
+        return pulumi.get(self, "enable_remote_exec")
+
+    @property
+    @pulumi.getter(name="enableSyslog")
+    def enable_syslog(self) -> bool:
+        return pulumi.get(self, "enable_syslog")
+
+    @property
+    @pulumi.getter(name="enableUi")
+    def enable_ui(self) -> bool:
+        return pulumi.get(self, "enable_ui")
+
+    @property
+    @pulumi.getter(name="enableUpdateCheck")
+    def enable_update_check(self) -> bool:
+        return pulumi.get(self, "enable_update_check")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="leaveOnInt")
+    def leave_on_int(self) -> bool:
+        return pulumi.get(self, "leave_on_int")
+
+    @property
+    @pulumi.getter(name="leaveOnTerm")
+    def leave_on_term(self) -> bool:
+        return pulumi.get(self, "leave_on_term")
+
+    @property
+    @pulumi.getter(name="logLevel")
+    def log_level(self) -> str:
+        return pulumi.get(self, "log_level")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def performance(self) -> Mapping[str, str]:
+        return pulumi.get(self, "performance")
+
+    @property
+    @pulumi.getter(name="pidFile")
+    def pid_file(self) -> str:
+        return pulumi.get(self, "pid_file")
+
+    @property
+    @pulumi.getter
+    def ports(self) -> Mapping[str, float]:
+        return pulumi.get(self, "ports")
+
+    @property
+    @pulumi.getter(name="protocolVersion")
+    def protocol_version(self) -> float:
+        return pulumi.get(self, "protocol_version")
+
+    @property
+    @pulumi.getter(name="reconnectTimeoutLan")
+    def reconnect_timeout_lan(self) -> str:
+        return pulumi.get(self, "reconnect_timeout_lan")
+
+    @property
+    @pulumi.getter(name="reconnectTimeoutWan")
+    def reconnect_timeout_wan(self) -> str:
+        return pulumi.get(self, "reconnect_timeout_wan")
+
+    @property
+    @pulumi.getter(name="rejoinAfterLeave")
+    def rejoin_after_leave(self) -> bool:
+        return pulumi.get(self, "rejoin_after_leave")
+
+    @property
+    @pulumi.getter(name="retryJoinEc2")
+    def retry_join_ec2(self) -> Mapping[str, str]:
+        return pulumi.get(self, "retry_join_ec2")
+
+    @property
+    @pulumi.getter(name="retryJoinGce")
+    def retry_join_gce(self) -> Mapping[str, str]:
+        return pulumi.get(self, "retry_join_gce")
+
+    @property
+    @pulumi.getter(name="retryJoinWans")
+    def retry_join_wans(self) -> List[str]:
+        return pulumi.get(self, "retry_join_wans")
+
+    @property
+    @pulumi.getter(name="retryJoins")
+    def retry_joins(self) -> List[str]:
+        return pulumi.get(self, "retry_joins")
+
+    @property
+    @pulumi.getter(name="retryMaxAttempts")
+    def retry_max_attempts(self) -> float:
+        return pulumi.get(self, "retry_max_attempts")
+
+    @property
+    @pulumi.getter(name="retryMaxAttemptsWan")
+    def retry_max_attempts_wan(self) -> float:
+        return pulumi.get(self, "retry_max_attempts_wan")
+
+    @property
+    @pulumi.getter(name="serfLanBindAddr")
+    def serf_lan_bind_addr(self) -> str:
+        return pulumi.get(self, "serf_lan_bind_addr")
+
+    @property
+    @pulumi.getter(name="serfWanBindAddr")
+    def serf_wan_bind_addr(self) -> str:
+        return pulumi.get(self, "serf_wan_bind_addr")
+
+    @property
+    @pulumi.getter(name="serverMode")
+    def server_mode(self) -> bool:
+        return pulumi.get(self, "server_mode")
+
+    @property
+    @pulumi.getter(name="serverName")
+    def server_name(self) -> str:
+        return pulumi.get(self, "server_name")
+
+    @property
+    @pulumi.getter(name="sessionTtlMin")
+    def session_ttl_min(self) -> str:
+        return pulumi.get(self, "session_ttl_min")
+
+    @property
+    @pulumi.getter(name="startJoinWans")
+    def start_join_wans(self) -> List[str]:
+        return pulumi.get(self, "start_join_wans")
+
+    @property
+    @pulumi.getter(name="startJoins")
+    def start_joins(self) -> List[str]:
+        return pulumi.get(self, "start_joins")
+
+    @property
+    @pulumi.getter(name="syslogFacility")
+    def syslog_facility(self) -> str:
+        return pulumi.get(self, "syslog_facility")
+
+    @property
+    @pulumi.getter(name="taggedAddresses")
+    def tagged_addresses(self) -> Mapping[str, str]:
+        return pulumi.get(self, "tagged_addresses")
+
+    @property
+    @pulumi.getter
+    def telemetry(self) -> Mapping[str, str]:
+        return pulumi.get(self, "telemetry")
+
+    @property
+    @pulumi.getter(name="tlsCaFile")
+    def tls_ca_file(self) -> str:
+        return pulumi.get(self, "tls_ca_file")
+
+    @property
+    @pulumi.getter(name="tlsCertFile")
+    def tls_cert_file(self) -> str:
+        return pulumi.get(self, "tls_cert_file")
+
+    @property
+    @pulumi.getter(name="tlsKeyFile")
+    def tls_key_file(self) -> str:
+        return pulumi.get(self, "tls_key_file")
+
+    @property
+    @pulumi.getter(name="tlsMinVersion")
+    def tls_min_version(self) -> str:
+        return pulumi.get(self, "tls_min_version")
+
+    @property
+    @pulumi.getter(name="tlsVerifyIncoming")
+    def tls_verify_incoming(self) -> bool:
+        return pulumi.get(self, "tls_verify_incoming")
+
+    @property
+    @pulumi.getter(name="tlsVerifyOutgoing")
+    def tls_verify_outgoing(self) -> bool:
+        return pulumi.get(self, "tls_verify_outgoing")
+
+    @property
+    @pulumi.getter(name="tlsVerifyServerHostname")
+    def tls_verify_server_hostname(self) -> bool:
+        return pulumi.get(self, "tls_verify_server_hostname")
+
+    @property
+    @pulumi.getter(name="translateWanAddrs")
+    def translate_wan_addrs(self) -> bool:
+        return pulumi.get(self, "translate_wan_addrs")
+
+    @property
+    @pulumi.getter(name="uiDir")
+    def ui_dir(self) -> str:
+        return pulumi.get(self, "ui_dir")
+
+    @property
+    @pulumi.getter(name="unixSockets")
+    def unix_sockets(self) -> Mapping[str, str]:
+        return pulumi.get(self, "unix_sockets")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
         """
         The version of the Consul agent.
         * `version_prerelease`
         * `version_revision`
         """
-        if version_prerelease and not isinstance(version_prerelease, str):
-            raise TypeError("Expected argument 'version_prerelease' to be a str")
-        __self__.version_prerelease = version_prerelease
-        if version_revision and not isinstance(version_revision, str):
-            raise TypeError("Expected argument 'version_revision' to be a str")
-        __self__.version_revision = version_revision
+        return pulumi.get(self, "version")
+
+    @property
+    @pulumi.getter(name="versionPrerelease")
+    def version_prerelease(self) -> str:
+        return pulumi.get(self, "version_prerelease")
+
+    @property
+    @pulumi.getter(name="versionRevision")
+    def version_revision(self) -> str:
+        return pulumi.get(self, "version_revision")
+
+
 class AwaitableGetAgentSelfResult(GetAgentSelfResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -373,7 +742,8 @@ class AwaitableGetAgentSelfResult(GetAgentSelfResult):
             version_prerelease=self.version_prerelease,
             version_revision=self.version_revision)
 
-def get_agent_self(opts=None):
+
+def get_agent_self(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAgentSelfResult:
     """
     > **Warning:** The `getAgentSelf` resource has been deprecated and will be removed
     from a future release of the provider. Read the [upgrade instructions](https://www.terraform.io/docs/providers/consul/guides/upgrading.html#deprecation-of-consul_agent_self) for more information.
@@ -383,84 +753,82 @@ def get_agent_self(opts=None):
     from the agent specified in the `provider`.
     """
     __args__ = dict()
-
-
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('consul:index/getAgentSelf:getAgentSelf', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('consul:index/getAgentSelf:getAgentSelf', __args__, opts=opts, typ=GetAgentSelfResult).value
 
     return AwaitableGetAgentSelfResult(
-        acl_datacenter=__ret__.get('aclDatacenter'),
-        acl_default_policy=__ret__.get('aclDefaultPolicy'),
-        acl_disabled_ttl=__ret__.get('aclDisabledTtl'),
-        acl_down_policy=__ret__.get('aclDownPolicy'),
-        acl_enforce08_semantics=__ret__.get('aclEnforce08Semantics'),
-        acl_ttl=__ret__.get('aclTtl'),
-        addresses=__ret__.get('addresses'),
-        advertise_addr=__ret__.get('advertiseAddr'),
-        advertise_addr_wan=__ret__.get('advertiseAddrWan'),
-        advertise_addrs=__ret__.get('advertiseAddrs'),
-        atlas_join=__ret__.get('atlasJoin'),
-        bind_addr=__ret__.get('bindAddr'),
-        bootstrap_expect=__ret__.get('bootstrapExpect'),
-        bootstrap_mode=__ret__.get('bootstrapMode'),
-        check_deregister_interval_min=__ret__.get('checkDeregisterIntervalMin'),
-        check_reap_interval=__ret__.get('checkReapInterval'),
-        check_update_interval=__ret__.get('checkUpdateInterval'),
-        client_addr=__ret__.get('clientAddr'),
-        data_dir=__ret__.get('dataDir'),
-        datacenter=__ret__.get('datacenter'),
-        dev_mode=__ret__.get('devMode'),
-        dns=__ret__.get('dns'),
-        dns_recursors=__ret__.get('dnsRecursors'),
-        domain=__ret__.get('domain'),
-        enable_anonymous_signature=__ret__.get('enableAnonymousSignature'),
-        enable_coordinates=__ret__.get('enableCoordinates'),
-        enable_debug=__ret__.get('enableDebug'),
-        enable_remote_exec=__ret__.get('enableRemoteExec'),
-        enable_syslog=__ret__.get('enableSyslog'),
-        enable_ui=__ret__.get('enableUi'),
-        enable_update_check=__ret__.get('enableUpdateCheck'),
-        id=__ret__.get('id'),
-        leave_on_int=__ret__.get('leaveOnInt'),
-        leave_on_term=__ret__.get('leaveOnTerm'),
-        log_level=__ret__.get('logLevel'),
-        name=__ret__.get('name'),
-        performance=__ret__.get('performance'),
-        pid_file=__ret__.get('pidFile'),
-        ports=__ret__.get('ports'),
-        protocol_version=__ret__.get('protocolVersion'),
-        reconnect_timeout_lan=__ret__.get('reconnectTimeoutLan'),
-        reconnect_timeout_wan=__ret__.get('reconnectTimeoutWan'),
-        rejoin_after_leave=__ret__.get('rejoinAfterLeave'),
-        retry_join_ec2=__ret__.get('retryJoinEc2'),
-        retry_join_gce=__ret__.get('retryJoinGce'),
-        retry_join_wans=__ret__.get('retryJoinWans'),
-        retry_joins=__ret__.get('retryJoins'),
-        retry_max_attempts=__ret__.get('retryMaxAttempts'),
-        retry_max_attempts_wan=__ret__.get('retryMaxAttemptsWan'),
-        serf_lan_bind_addr=__ret__.get('serfLanBindAddr'),
-        serf_wan_bind_addr=__ret__.get('serfWanBindAddr'),
-        server_mode=__ret__.get('serverMode'),
-        server_name=__ret__.get('serverName'),
-        session_ttl_min=__ret__.get('sessionTtlMin'),
-        start_join_wans=__ret__.get('startJoinWans'),
-        start_joins=__ret__.get('startJoins'),
-        syslog_facility=__ret__.get('syslogFacility'),
-        tagged_addresses=__ret__.get('taggedAddresses'),
-        telemetry=__ret__.get('telemetry'),
-        tls_ca_file=__ret__.get('tlsCaFile'),
-        tls_cert_file=__ret__.get('tlsCertFile'),
-        tls_key_file=__ret__.get('tlsKeyFile'),
-        tls_min_version=__ret__.get('tlsMinVersion'),
-        tls_verify_incoming=__ret__.get('tlsVerifyIncoming'),
-        tls_verify_outgoing=__ret__.get('tlsVerifyOutgoing'),
-        tls_verify_server_hostname=__ret__.get('tlsVerifyServerHostname'),
-        translate_wan_addrs=__ret__.get('translateWanAddrs'),
-        ui_dir=__ret__.get('uiDir'),
-        unix_sockets=__ret__.get('unixSockets'),
-        version=__ret__.get('version'),
-        version_prerelease=__ret__.get('versionPrerelease'),
-        version_revision=__ret__.get('versionRevision'))
+        acl_datacenter=__ret__.acl_datacenter,
+        acl_default_policy=__ret__.acl_default_policy,
+        acl_disabled_ttl=__ret__.acl_disabled_ttl,
+        acl_down_policy=__ret__.acl_down_policy,
+        acl_enforce08_semantics=__ret__.acl_enforce08_semantics,
+        acl_ttl=__ret__.acl_ttl,
+        addresses=__ret__.addresses,
+        advertise_addr=__ret__.advertise_addr,
+        advertise_addr_wan=__ret__.advertise_addr_wan,
+        advertise_addrs=__ret__.advertise_addrs,
+        atlas_join=__ret__.atlas_join,
+        bind_addr=__ret__.bind_addr,
+        bootstrap_expect=__ret__.bootstrap_expect,
+        bootstrap_mode=__ret__.bootstrap_mode,
+        check_deregister_interval_min=__ret__.check_deregister_interval_min,
+        check_reap_interval=__ret__.check_reap_interval,
+        check_update_interval=__ret__.check_update_interval,
+        client_addr=__ret__.client_addr,
+        data_dir=__ret__.data_dir,
+        datacenter=__ret__.datacenter,
+        dev_mode=__ret__.dev_mode,
+        dns=__ret__.dns,
+        dns_recursors=__ret__.dns_recursors,
+        domain=__ret__.domain,
+        enable_anonymous_signature=__ret__.enable_anonymous_signature,
+        enable_coordinates=__ret__.enable_coordinates,
+        enable_debug=__ret__.enable_debug,
+        enable_remote_exec=__ret__.enable_remote_exec,
+        enable_syslog=__ret__.enable_syslog,
+        enable_ui=__ret__.enable_ui,
+        enable_update_check=__ret__.enable_update_check,
+        id=__ret__.id,
+        leave_on_int=__ret__.leave_on_int,
+        leave_on_term=__ret__.leave_on_term,
+        log_level=__ret__.log_level,
+        name=__ret__.name,
+        performance=__ret__.performance,
+        pid_file=__ret__.pid_file,
+        ports=__ret__.ports,
+        protocol_version=__ret__.protocol_version,
+        reconnect_timeout_lan=__ret__.reconnect_timeout_lan,
+        reconnect_timeout_wan=__ret__.reconnect_timeout_wan,
+        rejoin_after_leave=__ret__.rejoin_after_leave,
+        retry_join_ec2=__ret__.retry_join_ec2,
+        retry_join_gce=__ret__.retry_join_gce,
+        retry_join_wans=__ret__.retry_join_wans,
+        retry_joins=__ret__.retry_joins,
+        retry_max_attempts=__ret__.retry_max_attempts,
+        retry_max_attempts_wan=__ret__.retry_max_attempts_wan,
+        serf_lan_bind_addr=__ret__.serf_lan_bind_addr,
+        serf_wan_bind_addr=__ret__.serf_wan_bind_addr,
+        server_mode=__ret__.server_mode,
+        server_name=__ret__.server_name,
+        session_ttl_min=__ret__.session_ttl_min,
+        start_join_wans=__ret__.start_join_wans,
+        start_joins=__ret__.start_joins,
+        syslog_facility=__ret__.syslog_facility,
+        tagged_addresses=__ret__.tagged_addresses,
+        telemetry=__ret__.telemetry,
+        tls_ca_file=__ret__.tls_ca_file,
+        tls_cert_file=__ret__.tls_cert_file,
+        tls_key_file=__ret__.tls_key_file,
+        tls_min_version=__ret__.tls_min_version,
+        tls_verify_incoming=__ret__.tls_verify_incoming,
+        tls_verify_outgoing=__ret__.tls_verify_outgoing,
+        tls_verify_server_hostname=__ret__.tls_verify_server_hostname,
+        translate_wan_addrs=__ret__.translate_wan_addrs,
+        ui_dir=__ret__.ui_dir,
+        unix_sockets=__ret__.unix_sockets,
+        version=__ret__.version,
+        version_prerelease=__ret__.version_prerelease,
+        version_revision=__ret__.version_revision)

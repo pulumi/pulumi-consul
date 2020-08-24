@@ -5,9 +5,17 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
 
+__all__ = [
+    'GetAclAuthMethodResult',
+    'AwaitableGetAclAuthMethodResult',
+    'get_acl_auth_method',
+]
+
+@pulumi.output_type
 class GetAclAuthMethodResult:
     """
     A collection of values returned by getAclAuthMethod.
@@ -19,70 +27,127 @@ class GetAclAuthMethodResult:
             warnings.warn("The config attribute is deprecated, please use config_json instead.", DeprecationWarning)
             pulumi.log.warn("config is deprecated: The config attribute is deprecated, please use config_json instead.")
 
-        __self__.config = config
+        pulumi.set(__self__, "config", config)
+        if config_json and not isinstance(config_json, str):
+            raise TypeError("Expected argument 'config_json' to be a str")
+        pulumi.set(__self__, "config_json", config_json)
+        if description and not isinstance(description, str):
+            raise TypeError("Expected argument 'description' to be a str")
+        pulumi.set(__self__, "description", description)
+        if display_name and not isinstance(display_name, str):
+            raise TypeError("Expected argument 'display_name' to be a str")
+        pulumi.set(__self__, "display_name", display_name)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if max_token_ttl and not isinstance(max_token_ttl, str):
+            raise TypeError("Expected argument 'max_token_ttl' to be a str")
+        pulumi.set(__self__, "max_token_ttl", max_token_ttl)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if namespace and not isinstance(namespace, str):
+            raise TypeError("Expected argument 'namespace' to be a str")
+        pulumi.set(__self__, "namespace", namespace)
+        if namespace_rules and not isinstance(namespace_rules, list):
+            raise TypeError("Expected argument 'namespace_rules' to be a list")
+        pulumi.set(__self__, "namespace_rules", namespace_rules)
+        if token_locality and not isinstance(token_locality, str):
+            raise TypeError("Expected argument 'token_locality' to be a str")
+        pulumi.set(__self__, "token_locality", token_locality)
+        if type and not isinstance(type, str):
+            raise TypeError("Expected argument 'type' to be a str")
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def config(self) -> Mapping[str, str]:
         """
         The configuration options of the ACL Auth Method. This attribute is
         deprecated and will be removed in a future version. If the configuration is
         too complex to be represented as a map of strings, it will be blank.
         `config_json` should be used instead.
         """
-        if config_json and not isinstance(config_json, str):
-            raise TypeError("Expected argument 'config_json' to be a str")
-        __self__.config_json = config_json
+        return pulumi.get(self, "config")
+
+    @property
+    @pulumi.getter(name="configJson")
+    def config_json(self) -> str:
         """
         The configuration options of the ACL Auth Method.
         """
-        if description and not isinstance(description, str):
-            raise TypeError("Expected argument 'description' to be a str")
-        __self__.description = description
+        return pulumi.get(self, "config_json")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
         """
         The description of the ACL Auth Method.
         """
-        if display_name and not isinstance(display_name, str):
-            raise TypeError("Expected argument 'display_name' to be a str")
-        __self__.display_name = display_name
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
         """
         An optional name to use instead of the name attribute when
         displaying information about this auth method.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if max_token_ttl and not isinstance(max_token_ttl, str):
-            raise TypeError("Expected argument 'max_token_ttl' to be a str")
-        __self__.max_token_ttl = max_token_ttl
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="maxTokenTtl")
+    def max_token_ttl(self) -> str:
         """
         The maximum life of any token created by this auth method.
         """
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
-        if namespace and not isinstance(namespace, str):
-            raise TypeError("Expected argument 'namespace' to be a str")
-        __self__.namespace = namespace
-        if namespace_rules and not isinstance(namespace_rules, list):
-            raise TypeError("Expected argument 'namespace_rules' to be a list")
-        __self__.namespace_rules = namespace_rules
+        return pulumi.get(self, "max_token_ttl")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[str]:
+        return pulumi.get(self, "namespace")
+
+    @property
+    @pulumi.getter(name="namespaceRules")
+    def namespace_rules(self) -> List['outputs.GetAclAuthMethodNamespaceRuleResult']:
         """
         (Enterprise Only) A set of rules that control which
         namespace tokens created via this auth method will be created within
         """
-        if token_locality and not isinstance(token_locality, str):
-            raise TypeError("Expected argument 'token_locality' to be a str")
-        __self__.token_locality = token_locality
+        return pulumi.get(self, "namespace_rules")
+
+    @property
+    @pulumi.getter(name="tokenLocality")
+    def token_locality(self) -> str:
         """
         The kind of token that this auth method produces. This can
         be either 'local' or 'global'.
         """
-        if type and not isinstance(type, str):
-            raise TypeError("Expected argument 'type' to be a str")
-        __self__.type = type
+        return pulumi.get(self, "token_locality")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
         """
         The type of the ACL Auth Method.
         """
+        return pulumi.get(self, "type")
+
+
 class AwaitableGetAclAuthMethodResult(GetAclAuthMethodResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -101,7 +166,10 @@ class AwaitableGetAclAuthMethodResult(GetAclAuthMethodResult):
             token_locality=self.token_locality,
             type=self.type)
 
-def get_acl_auth_method(name=None,namespace=None,opts=None):
+
+def get_acl_auth_method(name: Optional[str] = None,
+                        namespace: Optional[str] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAclAuthMethodResult:
     """
     The `AclAuthMethod` data source returns the information related to a
     [Consul Auth Method](https://www.consul.io/docs/acl/acl-auth-methods.html).
@@ -121,25 +189,23 @@ def get_acl_auth_method(name=None,namespace=None,opts=None):
     :param str namespace: The namespace to lookup the auth method.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['namespace'] = namespace
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('consul:index/getAclAuthMethod:getAclAuthMethod', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('consul:index/getAclAuthMethod:getAclAuthMethod', __args__, opts=opts, typ=GetAclAuthMethodResult).value
 
     return AwaitableGetAclAuthMethodResult(
-        config=__ret__.get('config'),
-        config_json=__ret__.get('configJson'),
-        description=__ret__.get('description'),
-        display_name=__ret__.get('displayName'),
-        id=__ret__.get('id'),
-        max_token_ttl=__ret__.get('maxTokenTtl'),
-        name=__ret__.get('name'),
-        namespace=__ret__.get('namespace'),
-        namespace_rules=__ret__.get('namespaceRules'),
-        token_locality=__ret__.get('tokenLocality'),
-        type=__ret__.get('type'))
+        config=__ret__.config,
+        config_json=__ret__.config_json,
+        description=__ret__.description,
+        display_name=__ret__.display_name,
+        id=__ret__.id,
+        max_token_ttl=__ret__.max_token_ttl,
+        name=__ret__.name,
+        namespace=__ret__.namespace,
+        namespace_rules=__ret__.namespace_rules,
+        token_locality=__ret__.token_locality,
+        type=__ret__.type)

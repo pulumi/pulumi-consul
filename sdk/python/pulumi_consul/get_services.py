@@ -5,9 +5,18 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
 
+__all__ = [
+    'GetServicesResult',
+    'AwaitableGetServicesResult',
+    'get_services',
+]
+
+@pulumi.output_type
 class GetServicesResult:
     """
     A collection of values returned by getServices.
@@ -15,25 +24,52 @@ class GetServicesResult:
     def __init__(__self__, datacenter=None, id=None, names=None, query_options=None, services=None):
         if datacenter and not isinstance(datacenter, str):
             raise TypeError("Expected argument 'datacenter' to be a str")
-        __self__.datacenter = datacenter
+        pulumi.set(__self__, "datacenter", datacenter)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if names and not isinstance(names, list):
+            raise TypeError("Expected argument 'names' to be a list")
+        pulumi.set(__self__, "names", names)
+        if query_options and not isinstance(query_options, list):
+            raise TypeError("Expected argument 'query_options' to be a list")
+        pulumi.set(__self__, "query_options", query_options)
+        if services and not isinstance(services, dict):
+            raise TypeError("Expected argument 'services' to be a dict")
+        pulumi.set(__self__, "services", services)
+
+    @property
+    @pulumi.getter
+    def datacenter(self) -> str:
         """
         The datacenter the keys are being read from to.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        return pulumi.get(self, "datacenter")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if names and not isinstance(names, list):
-            raise TypeError("Expected argument 'names' to be a list")
-        __self__.names = names
-        if query_options and not isinstance(query_options, list):
-            raise TypeError("Expected argument 'query_options' to be a list")
-        __self__.query_options = query_options
-        if services and not isinstance(services, dict):
-            raise TypeError("Expected argument 'services' to be a dict")
-        __self__.services = services
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def names(self) -> List[str]:
+        return pulumi.get(self, "names")
+
+    @property
+    @pulumi.getter(name="queryOptions")
+    def query_options(self) -> Optional[List['outputs.GetServicesQueryOptionResult']]:
+        return pulumi.get(self, "query_options")
+
+    @property
+    @pulumi.getter
+    def services(self) -> Mapping[str, str]:
+        return pulumi.get(self, "services")
+
+
 class AwaitableGetServicesResult(GetServicesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -46,7 +82,9 @@ class AwaitableGetServicesResult(GetServicesResult):
             query_options=self.query_options,
             services=self.services)
 
-def get_services(query_options=None,opts=None):
+
+def get_services(query_options: Optional[List[pulumi.InputType['GetServicesQueryOptionArgs']]] = None,
+                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServicesResult:
     """
     The `getServices` data source returns a list of Consul services that
     have been registered with the Consul cluster in a given datacenter.  By
@@ -57,42 +95,19 @@ def get_services(query_options=None,opts=None):
     source, which provides a detailed response about a specific Consul service.
 
 
-    :param list query_options: See below.
-
-    The **query_options** object supports the following:
-
-      * `allowStale` (`bool`) - When `true`, the default, allow responses from
-        Consul servers that are followers.
-      * `datacenter` (`str`) - The Consul datacenter to query.  Defaults to the
-        same value found in `query_options` parameter specified below, or if that is
-        empty, the `datacenter` value found in the Consul agent that this provider is
-        configured to talk to.
-      * `namespace` (`str`) - The namespace to lookup the services.
-      * `near` (`str`)
-      * `node_meta` (`dict`)
-      * `requireConsistent` (`bool`) - When `true` force the client to perform a
-        read on at least quorum servers and verify the result is the same.  Defaults
-        to `false`.
-      * `token` (`str`) - Specify the Consul ACL token to use when performing the
-        request.  This defaults to the same API token configured by the `consul`
-        provider but may be overriden if necessary.
-      * `waitIndex` (`float`) - Index number used to enable blocking quereis.
-      * `waitTime` (`str`) - Max time the client should wait for a blocking query
-        to return.
+    :param List[pulumi.InputType['GetServicesQueryOptionArgs']] query_options: See below.
     """
     __args__ = dict()
-
-
     __args__['queryOptions'] = query_options
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('consul:index/getServices:getServices', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('consul:index/getServices:getServices', __args__, opts=opts, typ=GetServicesResult).value
 
     return AwaitableGetServicesResult(
-        datacenter=__ret__.get('datacenter'),
-        id=__ret__.get('id'),
-        names=__ret__.get('names'),
-        query_options=__ret__.get('queryOptions'),
-        services=__ret__.get('services'))
+        datacenter=__ret__.datacenter,
+        id=__ret__.id,
+        names=__ret__.names,
+        query_options=__ret__.query_options,
+        services=__ret__.services)

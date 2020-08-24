@@ -5,46 +5,26 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = ['Intention']
 
 
 class Intention(pulumi.CustomResource):
-    action: pulumi.Output[str]
-    """
-    The intention action. Must be one of `allow` or `deny`.
-    """
-    description: pulumi.Output[str]
-    """
-    Optional description that can be used by Consul
-    tooling, but is not used internally.
-    """
-    destination_name: pulumi.Output[str]
-    """
-    The name of the destination service for the intention. This
-    service does not have to exist.
-    """
-    destination_namespace: pulumi.Output[str]
-    """
-    The destination
-    namespace of the intention.
-    """
-    meta: pulumi.Output[dict]
-    """
-    Key/value pairs that are opaque to Consul and are associated
-    with the intention.
-    """
-    source_name: pulumi.Output[str]
-    """
-    The name of the source service for the intention. This
-    service does not have to exist.
-    """
-    source_namespace: pulumi.Output[str]
-    """
-    The source namespace of the
-    intention.
-    """
-    def __init__(__self__, resource_name, opts=None, action=None, description=None, destination_name=None, destination_namespace=None, meta=None, source_name=None, source_namespace=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 action: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 destination_name: Optional[pulumi.Input[str]] = None,
+                 destination_namespace: Optional[pulumi.Input[str]] = None,
+                 meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 source_name: Optional[pulumi.Input[str]] = None,
+                 source_namespace: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         [Intentions](https://www.consul.io/docs/connect/intentions.html) are used to define
         rules for which services may connect to one another when using [Consul Connect](https://www.consul.io/docs/connect/index.html).
@@ -90,7 +70,7 @@ class Intention(pulumi.CustomResource):
                service does not have to exist.
         :param pulumi.Input[str] destination_namespace: The destination
                namespace of the intention.
-        :param pulumi.Input[dict] meta: Key/value pairs that are opaque to Consul and are associated
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: Key/value pairs that are opaque to Consul and are associated
                with the intention.
         :param pulumi.Input[str] source_name: The name of the source service for the intention. This
                service does not have to exist.
@@ -108,7 +88,7 @@ class Intention(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -134,13 +114,22 @@ class Intention(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, action=None, description=None, destination_name=None, destination_namespace=None, meta=None, source_name=None, source_namespace=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            action: Optional[pulumi.Input[str]] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            destination_name: Optional[pulumi.Input[str]] = None,
+            destination_namespace: Optional[pulumi.Input[str]] = None,
+            meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            source_name: Optional[pulumi.Input[str]] = None,
+            source_namespace: Optional[pulumi.Input[str]] = None) -> 'Intention':
         """
         Get an existing Intention resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action: The intention action. Must be one of `allow` or `deny`.
         :param pulumi.Input[str] description: Optional description that can be used by Consul
@@ -149,7 +138,7 @@ class Intention(pulumi.CustomResource):
                service does not have to exist.
         :param pulumi.Input[str] destination_namespace: The destination
                namespace of the intention.
-        :param pulumi.Input[dict] meta: Key/value pairs that are opaque to Consul and are associated
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: Key/value pairs that are opaque to Consul and are associated
                with the intention.
         :param pulumi.Input[str] source_name: The name of the source service for the intention. This
                service does not have to exist.
@@ -169,8 +158,71 @@ class Intention(pulumi.CustomResource):
         __props__["source_namespace"] = source_namespace
         return Intention(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def action(self) -> str:
+        """
+        The intention action. Must be one of `allow` or `deny`.
+        """
+        return pulumi.get(self, "action")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        Optional description that can be used by Consul
+        tooling, but is not used internally.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="destinationName")
+    def destination_name(self) -> str:
+        """
+        The name of the destination service for the intention. This
+        service does not have to exist.
+        """
+        return pulumi.get(self, "destination_name")
+
+    @property
+    @pulumi.getter(name="destinationNamespace")
+    def destination_namespace(self) -> Optional[str]:
+        """
+        The destination
+        namespace of the intention.
+        """
+        return pulumi.get(self, "destination_namespace")
+
+    @property
+    @pulumi.getter
+    def meta(self) -> Optional[Mapping[str, str]]:
+        """
+        Key/value pairs that are opaque to Consul and are associated
+        with the intention.
+        """
+        return pulumi.get(self, "meta")
+
+    @property
+    @pulumi.getter(name="sourceName")
+    def source_name(self) -> str:
+        """
+        The name of the source service for the intention. This
+        service does not have to exist.
+        """
+        return pulumi.get(self, "source_name")
+
+    @property
+    @pulumi.getter(name="sourceNamespace")
+    def source_namespace(self) -> Optional[str]:
+        """
+        The source namespace of the
+        intention.
+        """
+        return pulumi.get(self, "source_namespace")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

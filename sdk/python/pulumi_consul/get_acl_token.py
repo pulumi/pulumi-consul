@@ -5,9 +5,18 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
 
+__all__ = [
+    'GetAclTokenResult',
+    'AwaitableGetAclTokenResult',
+    'get_acl_token',
+]
+
+@pulumi.output_type
 class GetAclTokenResult:
     """
     A collection of values returned by getAclToken.
@@ -15,35 +24,67 @@ class GetAclTokenResult:
     def __init__(__self__, accessor_id=None, description=None, id=None, local=None, namespace=None, policies=None):
         if accessor_id and not isinstance(accessor_id, str):
             raise TypeError("Expected argument 'accessor_id' to be a str")
-        __self__.accessor_id = accessor_id
+        pulumi.set(__self__, "accessor_id", accessor_id)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
-        __self__.description = description
+        pulumi.set(__self__, "description", description)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if local and not isinstance(local, bool):
+            raise TypeError("Expected argument 'local' to be a bool")
+        pulumi.set(__self__, "local", local)
+        if namespace and not isinstance(namespace, str):
+            raise TypeError("Expected argument 'namespace' to be a str")
+        pulumi.set(__self__, "namespace", namespace)
+        if policies and not isinstance(policies, list):
+            raise TypeError("Expected argument 'policies' to be a list")
+        pulumi.set(__self__, "policies", policies)
+
+    @property
+    @pulumi.getter(name="accessorId")
+    def accessor_id(self) -> str:
+        return pulumi.get(self, "accessor_id")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
         """
         The description of the ACL token.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if local and not isinstance(local, bool):
-            raise TypeError("Expected argument 'local' to be a bool")
-        __self__.local = local
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def local(self) -> Optional[bool]:
         """
         Whether the ACL token is local to the datacenter it was created within.
         """
-        if namespace and not isinstance(namespace, str):
-            raise TypeError("Expected argument 'namespace' to be a str")
-        __self__.namespace = namespace
-        if policies and not isinstance(policies, list):
-            raise TypeError("Expected argument 'policies' to be a list")
-        __self__.policies = policies
+        return pulumi.get(self, "local")
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[str]:
+        return pulumi.get(self, "namespace")
+
+    @property
+    @pulumi.getter
+    def policies(self) -> Optional[List['outputs.GetAclTokenPolicyResult']]:
         """
         A list of policies associated with the ACL token. Each entry has
         an `id` and a `name` attribute.
         """
+        return pulumi.get(self, "policies")
+
+
 class AwaitableGetAclTokenResult(GetAclTokenResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -57,7 +98,13 @@ class AwaitableGetAclTokenResult(GetAclTokenResult):
             namespace=self.namespace,
             policies=self.policies)
 
-def get_acl_token(accessor_id=None,description=None,local=None,namespace=None,policies=None,opts=None):
+
+def get_acl_token(accessor_id: Optional[str] = None,
+                  description: Optional[str] = None,
+                  local: Optional[bool] = None,
+                  namespace: Optional[str] = None,
+                  policies: Optional[List[pulumi.InputType['GetAclTokenPolicyArgs']]] = None,
+                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAclTokenResult:
     """
     The `AclToken` data source returns the information related to the
     `AclToken` resource with the exception of its secret ID.
@@ -80,17 +127,10 @@ def get_acl_token(accessor_id=None,description=None,local=None,namespace=None,po
     :param str description: The description of the ACL token.
     :param bool local: Whether the ACL token is local to the datacenter it was created within.
     :param str namespace: The namespace to lookup the ACL token.
-    :param list policies: A list of policies associated with the ACL token. Each entry has
+    :param List[pulumi.InputType['GetAclTokenPolicyArgs']] policies: A list of policies associated with the ACL token. Each entry has
            an `id` and a `name` attribute.
-
-    The **policies** object supports the following:
-
-      * `id` (`str`)
-      * `name` (`str`)
     """
     __args__ = dict()
-
-
     __args__['accessorId'] = accessor_id
     __args__['description'] = description
     __args__['local'] = local
@@ -99,13 +139,13 @@ def get_acl_token(accessor_id=None,description=None,local=None,namespace=None,po
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('consul:index/getAclToken:getAclToken', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('consul:index/getAclToken:getAclToken', __args__, opts=opts, typ=GetAclTokenResult).value
 
     return AwaitableGetAclTokenResult(
-        accessor_id=__ret__.get('accessorId'),
-        description=__ret__.get('description'),
-        id=__ret__.get('id'),
-        local=__ret__.get('local'),
-        namespace=__ret__.get('namespace'),
-        policies=__ret__.get('policies'))
+        accessor_id=__ret__.accessor_id,
+        description=__ret__.description,
+        id=__ret__.id,
+        local=__ret__.local,
+        namespace=__ret__.namespace,
+        policies=__ret__.policies)

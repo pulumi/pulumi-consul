@@ -5,9 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
 
+__all__ = [
+    'GetAclTokenSecretIdResult',
+    'AwaitableGetAclTokenSecretIdResult',
+    'get_acl_token_secret_id',
+]
+
+@pulumi.output_type
 class GetAclTokenSecretIdResult:
     """
     A collection of values returned by getAclTokenSecretId.
@@ -15,25 +22,52 @@ class GetAclTokenSecretIdResult:
     def __init__(__self__, accessor_id=None, encrypted_secret_id=None, id=None, pgp_key=None, secret_id=None):
         if accessor_id and not isinstance(accessor_id, str):
             raise TypeError("Expected argument 'accessor_id' to be a str")
-        __self__.accessor_id = accessor_id
+        pulumi.set(__self__, "accessor_id", accessor_id)
         if encrypted_secret_id and not isinstance(encrypted_secret_id, str):
             raise TypeError("Expected argument 'encrypted_secret_id' to be a str")
-        __self__.encrypted_secret_id = encrypted_secret_id
+        pulumi.set(__self__, "encrypted_secret_id", encrypted_secret_id)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if pgp_key and not isinstance(pgp_key, str):
+            raise TypeError("Expected argument 'pgp_key' to be a str")
+        pulumi.set(__self__, "pgp_key", pgp_key)
+        if secret_id and not isinstance(secret_id, str):
+            raise TypeError("Expected argument 'secret_id' to be a str")
+        pulumi.set(__self__, "secret_id", secret_id)
+
+    @property
+    @pulumi.getter(name="accessorId")
+    def accessor_id(self) -> str:
+        return pulumi.get(self, "accessor_id")
+
+    @property
+    @pulumi.getter(name="encryptedSecretId")
+    def encrypted_secret_id(self) -> str:
+        return pulumi.get(self, "encrypted_secret_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if pgp_key and not isinstance(pgp_key, str):
-            raise TypeError("Expected argument 'pgp_key' to be a str")
-        __self__.pgp_key = pgp_key
-        if secret_id and not isinstance(secret_id, str):
-            raise TypeError("Expected argument 'secret_id' to be a str")
-        __self__.secret_id = secret_id
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="pgpKey")
+    def pgp_key(self) -> Optional[str]:
+        return pulumi.get(self, "pgp_key")
+
+    @property
+    @pulumi.getter(name="secretId")
+    def secret_id(self) -> str:
         """
         The secret ID of the ACL token if `pgp_key` has not been set.
         """
+        return pulumi.get(self, "secret_id")
+
+
 class AwaitableGetAclTokenSecretIdResult(GetAclTokenSecretIdResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -46,26 +80,27 @@ class AwaitableGetAclTokenSecretIdResult(GetAclTokenSecretIdResult):
             pgp_key=self.pgp_key,
             secret_id=self.secret_id)
 
-def get_acl_token_secret_id(accessor_id=None,pgp_key=None,opts=None):
+
+def get_acl_token_secret_id(accessor_id: Optional[str] = None,
+                            pgp_key: Optional[str] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAclTokenSecretIdResult:
     """
     Use this data source to access information about an existing resource.
 
     :param str accessor_id: The accessor ID of the ACL token.
     """
     __args__ = dict()
-
-
     __args__['accessorId'] = accessor_id
     __args__['pgpKey'] = pgp_key
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('consul:index/getAclTokenSecretId:getAclTokenSecretId', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('consul:index/getAclTokenSecretId:getAclTokenSecretId', __args__, opts=opts, typ=GetAclTokenSecretIdResult).value
 
     return AwaitableGetAclTokenSecretIdResult(
-        accessor_id=__ret__.get('accessorId'),
-        encrypted_secret_id=__ret__.get('encryptedSecretId'),
-        id=__ret__.get('id'),
-        pgp_key=__ret__.get('pgpKey'),
-        secret_id=__ret__.get('secretId'))
+        accessor_id=__ret__.accessor_id,
+        encrypted_secret_id=__ret__.encrypted_secret_id,
+        id=__ret__.id,
+        pgp_key=__ret__.pgp_key,
+        secret_id=__ret__.secret_id)

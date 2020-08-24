@@ -59,7 +59,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := consul.NewIntention(ctx, "database", &consul.IntentionArgs{
 // 			Action:          pulumi.String("allow"),
-// 			DestinationName: pulumi.String(consul_service.Pg.Name),
+// 			DestinationName: pulumi.Any(consul_service.Pg.Name),
 // 			SourceName:      pulumi.String("api"),
 // 		})
 // 		if err != nil {

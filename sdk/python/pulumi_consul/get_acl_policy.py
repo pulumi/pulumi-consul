@@ -5,9 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
 
+__all__ = [
+    'GetAclPolicyResult',
+    'AwaitableGetAclPolicyResult',
+    'get_acl_policy',
+]
+
+@pulumi.output_type
 class GetAclPolicyResult:
     """
     A collection of values returned by getAclPolicy.
@@ -15,34 +22,66 @@ class GetAclPolicyResult:
     def __init__(__self__, datacenters=None, description=None, id=None, name=None, namespace=None, rules=None):
         if datacenters and not isinstance(datacenters, list):
             raise TypeError("Expected argument 'datacenters' to be a list")
-        __self__.datacenters = datacenters
+        pulumi.set(__self__, "datacenters", datacenters)
+        if description and not isinstance(description, str):
+            raise TypeError("Expected argument 'description' to be a str")
+        pulumi.set(__self__, "description", description)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if namespace and not isinstance(namespace, str):
+            raise TypeError("Expected argument 'namespace' to be a str")
+        pulumi.set(__self__, "namespace", namespace)
+        if rules and not isinstance(rules, str):
+            raise TypeError("Expected argument 'rules' to be a str")
+        pulumi.set(__self__, "rules", rules)
+
+    @property
+    @pulumi.getter
+    def datacenters(self) -> Optional[List[str]]:
         """
         The datacenters associated with the ACL Policy.
         """
-        if description and not isinstance(description, str):
-            raise TypeError("Expected argument 'description' to be a str")
-        __self__.description = description
+        return pulumi.get(self, "datacenters")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
         """
         The description of the ACL Policy.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
-        if namespace and not isinstance(namespace, str):
-            raise TypeError("Expected argument 'namespace' to be a str")
-        __self__.namespace = namespace
-        if rules and not isinstance(rules, str):
-            raise TypeError("Expected argument 'rules' to be a str")
-        __self__.rules = rules
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[str]:
+        return pulumi.get(self, "namespace")
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[str]:
         """
         The rules associated with the ACL Policy.
         """
+        return pulumi.get(self, "rules")
+
+
 class AwaitableGetAclPolicyResult(GetAclPolicyResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -56,7 +95,13 @@ class AwaitableGetAclPolicyResult(GetAclPolicyResult):
             namespace=self.namespace,
             rules=self.rules)
 
-def get_acl_policy(datacenters=None,description=None,name=None,namespace=None,rules=None,opts=None):
+
+def get_acl_policy(datacenters: Optional[List[str]] = None,
+                   description: Optional[str] = None,
+                   name: Optional[str] = None,
+                   namespace: Optional[str] = None,
+                   rules: Optional[str] = None,
+                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAclPolicyResult:
     """
     The `AclPolicy` data source returns the information related to a
     [Consul ACL Policy](https://www.consul.io/docs/acl/acl-system.html#acl-policies).
@@ -72,15 +117,13 @@ def get_acl_policy(datacenters=None,description=None,name=None,namespace=None,ru
     ```
 
 
-    :param list datacenters: The datacenters associated with the ACL Policy.
+    :param List[str] datacenters: The datacenters associated with the ACL Policy.
     :param str description: The description of the ACL Policy.
     :param str name: The name of the ACL Policy.
     :param str namespace: The namespace to lookup the policy.
     :param str rules: The rules associated with the ACL Policy.
     """
     __args__ = dict()
-
-
     __args__['datacenters'] = datacenters
     __args__['description'] = description
     __args__['name'] = name
@@ -89,13 +132,13 @@ def get_acl_policy(datacenters=None,description=None,name=None,namespace=None,ru
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('consul:index/getAclPolicy:getAclPolicy', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('consul:index/getAclPolicy:getAclPolicy', __args__, opts=opts, typ=GetAclPolicyResult).value
 
     return AwaitableGetAclPolicyResult(
-        datacenters=__ret__.get('datacenters'),
-        description=__ret__.get('description'),
-        id=__ret__.get('id'),
-        name=__ret__.get('name'),
-        namespace=__ret__.get('namespace'),
-        rules=__ret__.get('rules'))
+        datacenters=__ret__.datacenters,
+        description=__ret__.description,
+        id=__ret__.id,
+        name=__ret__.name,
+        namespace=__ret__.namespace,
+        rules=__ret__.rules)

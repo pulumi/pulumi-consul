@@ -5,9 +5,18 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
 
+__all__ = [
+    'GetKeysResult',
+    'AwaitableGetKeysResult',
+    'get_keys',
+]
+
+@pulumi.output_type
 class GetKeysResult:
     """
     A collection of values returned by getKeys.
@@ -15,30 +24,62 @@ class GetKeysResult:
     def __init__(__self__, datacenter=None, id=None, keys=None, namespace=None, token=None, var=None):
         if datacenter and not isinstance(datacenter, str):
             raise TypeError("Expected argument 'datacenter' to be a str")
-        __self__.datacenter = datacenter
+        pulumi.set(__self__, "datacenter", datacenter)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if keys and not isinstance(keys, list):
+            raise TypeError("Expected argument 'keys' to be a list")
+        pulumi.set(__self__, "keys", keys)
+        if namespace and not isinstance(namespace, str):
+            raise TypeError("Expected argument 'namespace' to be a str")
+        pulumi.set(__self__, "namespace", namespace)
+        if token and not isinstance(token, str):
+            raise TypeError("Expected argument 'token' to be a str")
+        pulumi.set(__self__, "token", token)
+        if var and not isinstance(var, dict):
+            raise TypeError("Expected argument 'var' to be a dict")
+        pulumi.set(__self__, "var", var)
+
+    @property
+    @pulumi.getter
+    def datacenter(self) -> str:
         """
         The datacenter the keys are being read from.
         * `var.<name>` - For each name given, the corresponding attribute
         has the value of the key.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        return pulumi.get(self, "datacenter")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if keys and not isinstance(keys, list):
-            raise TypeError("Expected argument 'keys' to be a list")
-        __self__.keys = keys
-        if namespace and not isinstance(namespace, str):
-            raise TypeError("Expected argument 'namespace' to be a str")
-        __self__.namespace = namespace
-        if token and not isinstance(token, str):
-            raise TypeError("Expected argument 'token' to be a str")
-        __self__.token = token
-        if var and not isinstance(var, dict):
-            raise TypeError("Expected argument 'var' to be a dict")
-        __self__.var = var
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def keys(self) -> Optional[List['outputs.GetKeysKeyResult']]:
+        return pulumi.get(self, "keys")
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[str]:
+        return pulumi.get(self, "namespace")
+
+    @property
+    @pulumi.getter
+    def token(self) -> Optional[str]:
+        return pulumi.get(self, "token")
+
+    @property
+    @pulumi.getter
+    def var(self) -> Mapping[str, str]:
+        return pulumi.get(self, "var")
+
+
 class AwaitableGetKeysResult(GetKeysResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -52,7 +93,12 @@ class AwaitableGetKeysResult(GetKeysResult):
             token=self.token,
             var=self.var)
 
-def get_keys(datacenter=None,keys=None,namespace=None,token=None,opts=None):
+
+def get_keys(datacenter: Optional[str] = None,
+             keys: Optional[List[pulumi.InputType['GetKeysKeyArgs']]] = None,
+             namespace: Optional[str] = None,
+             token: Optional[str] = None,
+             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKeysResult:
     """
     The `Keys` resource reads values from the Consul key/value store.
     This is a powerful way dynamically set values in templates.
@@ -65,11 +111,11 @@ def get_keys(datacenter=None,keys=None,namespace=None,token=None,opts=None):
     import pulumi_consul as consul
 
     app_keys = consul.get_keys(datacenter="nyc1",
-        keys=[{
-            "default": "ami-1234",
-            "name": "ami",
-            "path": "service/app/launch_ami",
-        }],
+        keys=[consul.GetKeysKeyArgs(
+            default="ami-1234",
+            name="ami",
+            path="service/app/launch_ami",
+        )],
         token="abcd")
     # Start our instance with the dynamic ami value
     app_instance = aws.ec2.Instance("appInstance", ami=app_keys.var["ami"])
@@ -78,25 +124,13 @@ def get_keys(datacenter=None,keys=None,namespace=None,token=None,opts=None):
 
     :param str datacenter: The datacenter to use. This overrides the
            agent's default datacenter and the datacenter in the provider setup.
-    :param list keys: Specifies a key in Consul to be read. Supported
+    :param List[pulumi.InputType['GetKeysKeyArgs']] keys: Specifies a key in Consul to be read. Supported
            values documented below. Multiple blocks supported.
     :param str namespace: The namespace to lookup the keys.
     :param str token: The ACL token to use. This overrides the
            token that the agent provides by default.
-
-    The **keys** object supports the following:
-
-      * `default` (`str`) - This is the default value to set for `var.<name>`
-        if the key does not exist in Consul. Defaults to an empty string.
-      * `name` (`str`) - This is the name of the key. This value of the
-        key is exposed as `var.<name>`. This is not the path of the key
-        in Consul.
-      * `path` (`str`) - This is the path in Consul that should be read
-        or written to.
     """
     __args__ = dict()
-
-
     __args__['datacenter'] = datacenter
     __args__['keys'] = keys
     __args__['namespace'] = namespace
@@ -104,13 +138,13 @@ def get_keys(datacenter=None,keys=None,namespace=None,token=None,opts=None):
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('consul:index/getKeys:getKeys', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('consul:index/getKeys:getKeys', __args__, opts=opts, typ=GetKeysResult).value
 
     return AwaitableGetKeysResult(
-        datacenter=__ret__.get('datacenter'),
-        id=__ret__.get('id'),
-        keys=__ret__.get('keys'),
-        namespace=__ret__.get('namespace'),
-        token=__ret__.get('token'),
-        var=__ret__.get('var'))
+        datacenter=__ret__.datacenter,
+        id=__ret__.id,
+        keys=__ret__.keys,
+        namespace=__ret__.namespace,
+        token=__ret__.token,
+        var=__ret__.var)

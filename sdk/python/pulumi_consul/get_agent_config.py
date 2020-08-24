@@ -5,9 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
 
+__all__ = [
+    'GetAgentConfigResult',
+    'AwaitableGetAgentConfigResult',
+    'get_agent_config',
+]
+
+@pulumi.output_type
 class GetAgentConfigResult:
     """
     A collection of values returned by getAgentConfig.
@@ -15,46 +22,83 @@ class GetAgentConfigResult:
     def __init__(__self__, datacenter=None, id=None, node_id=None, node_name=None, revision=None, server=None, version=None):
         if datacenter and not isinstance(datacenter, str):
             raise TypeError("Expected argument 'datacenter' to be a str")
-        __self__.datacenter = datacenter
+        pulumi.set(__self__, "datacenter", datacenter)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if node_id and not isinstance(node_id, str):
+            raise TypeError("Expected argument 'node_id' to be a str")
+        pulumi.set(__self__, "node_id", node_id)
+        if node_name and not isinstance(node_name, str):
+            raise TypeError("Expected argument 'node_name' to be a str")
+        pulumi.set(__self__, "node_name", node_name)
+        if revision and not isinstance(revision, str):
+            raise TypeError("Expected argument 'revision' to be a str")
+        pulumi.set(__self__, "revision", revision)
+        if server and not isinstance(server, bool):
+            raise TypeError("Expected argument 'server' to be a bool")
+        pulumi.set(__self__, "server", server)
+        if version and not isinstance(version, str):
+            raise TypeError("Expected argument 'version' to be a str")
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def datacenter(self) -> str:
         """
         The datacenter the agent is running in
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        return pulumi.get(self, "datacenter")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if node_id and not isinstance(node_id, str):
-            raise TypeError("Expected argument 'node_id' to be a str")
-        __self__.node_id = node_id
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="nodeId")
+    def node_id(self) -> str:
         """
         The ID of the node the agent is running on
         """
-        if node_name and not isinstance(node_name, str):
-            raise TypeError("Expected argument 'node_name' to be a str")
-        __self__.node_name = node_name
+        return pulumi.get(self, "node_id")
+
+    @property
+    @pulumi.getter(name="nodeName")
+    def node_name(self) -> str:
         """
         The name of the node the agent is running on
         """
-        if revision and not isinstance(revision, str):
-            raise TypeError("Expected argument 'revision' to be a str")
-        __self__.revision = revision
+        return pulumi.get(self, "node_name")
+
+    @property
+    @pulumi.getter
+    def revision(self) -> str:
         """
         The first 9 characters of the VCS revision of the build of Consul that is running
         """
-        if server and not isinstance(server, bool):
-            raise TypeError("Expected argument 'server' to be a bool")
-        __self__.server = server
+        return pulumi.get(self, "revision")
+
+    @property
+    @pulumi.getter
+    def server(self) -> bool:
         """
         Boolean if the agent is a server or not
         """
-        if version and not isinstance(version, str):
-            raise TypeError("Expected argument 'version' to be a str")
-        __self__.version = version
+        return pulumi.get(self, "server")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
         """
         The version of the build of Consul that is running
         """
+        return pulumi.get(self, "version")
+
+
 class AwaitableGetAgentConfigResult(GetAgentConfigResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -69,7 +113,8 @@ class AwaitableGetAgentConfigResult(GetAgentConfigResult):
             server=self.server,
             version=self.version)
 
-def get_agent_config(opts=None):
+
+def get_agent_config(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAgentConfigResult:
     """
     > **Note:** The `getAgentConfig` resource differs from [`getAgentSelf`](https://www.terraform.io/docs/providers/consul/d/agent_self.html),
     providing less information but utilizing stable APIs. `getAgentSelf` will be
@@ -90,19 +135,17 @@ def get_agent_config(opts=None):
     ```
     """
     __args__ = dict()
-
-
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('consul:index/getAgentConfig:getAgentConfig', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('consul:index/getAgentConfig:getAgentConfig', __args__, opts=opts, typ=GetAgentConfigResult).value
 
     return AwaitableGetAgentConfigResult(
-        datacenter=__ret__.get('datacenter'),
-        id=__ret__.get('id'),
-        node_id=__ret__.get('nodeId'),
-        node_name=__ret__.get('nodeName'),
-        revision=__ret__.get('revision'),
-        server=__ret__.get('server'),
-        version=__ret__.get('version'))
+        datacenter=__ret__.datacenter,
+        id=__ret__.id,
+        node_id=__ret__.node_id,
+        node_name=__ret__.node_name,
+        revision=__ret__.revision,
+        server=__ret__.server,
+        version=__ret__.version)
