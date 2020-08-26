@@ -5,50 +5,27 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['KeyPrefix']
 
 
 class KeyPrefix(pulumi.CustomResource):
-    datacenter: pulumi.Output[str]
-    """
-    The datacenter to use. This overrides the
-    agent's default datacenter and the datacenter in the provider setup.
-    """
-    namespace: pulumi.Output[str]
-    """
-    The namespace to create the keys within.
-    """
-    path_prefix: pulumi.Output[str]
-    """
-    Specifies the common prefix shared by all keys
-    that will be managed by this resource instance. In most cases this will
-    end with a slash, to manage a "folder" of keys.
-    """
-    subkey_collection: pulumi.Output[list]
-    """
-    A subkey to add. Supported values documented below.
-    Multiple blocks supported.
-
-      * `flags` (`float`) - An [unsigned integer value](https://www.consul.io/api/kv.html#flags-1)
-        to attach to the key (defaults to 0).
-      * `path` (`str`) - This is the path (which will be appended to the given
-        `path_prefix`) in Consul that should be written to.
-      * `value` (`str`) - The value to write to the given path.
-    """
-    subkeys: pulumi.Output[dict]
-    """
-    A mapping from subkey name (which will be appended
-    to the given `path_prefix`) to the value that should be stored at that key.
-    Use slashes, as shown in the above example, to create "sub-folders" under
-    the given path prefix.
-    """
-    token: pulumi.Output[str]
-    """
-    The ACL token to use. This overrides the
-    token that the agent provides by default.
-    """
-    def __init__(__self__, resource_name, opts=None, datacenter=None, namespace=None, path_prefix=None, subkey_collection=None, subkeys=None, token=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 datacenter: Optional[pulumi.Input[str]] = None,
+                 namespace: Optional[pulumi.Input[str]] = None,
+                 path_prefix: Optional[pulumi.Input[str]] = None,
+                 subkey_collection: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['KeyPrefixSubkeyCollectionArgs']]]]] = None,
+                 subkeys: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 token: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Create a KeyPrefix resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
@@ -59,22 +36,14 @@ class KeyPrefix(pulumi.CustomResource):
         :param pulumi.Input[str] path_prefix: Specifies the common prefix shared by all keys
                that will be managed by this resource instance. In most cases this will
                end with a slash, to manage a "folder" of keys.
-        :param pulumi.Input[list] subkey_collection: A subkey to add. Supported values documented below.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['KeyPrefixSubkeyCollectionArgs']]]] subkey_collection: A subkey to add. Supported values documented below.
                Multiple blocks supported.
-        :param pulumi.Input[dict] subkeys: A mapping from subkey name (which will be appended
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] subkeys: A mapping from subkey name (which will be appended
                to the given `path_prefix`) to the value that should be stored at that key.
                Use slashes, as shown in the above example, to create "sub-folders" under
                the given path prefix.
         :param pulumi.Input[str] token: The ACL token to use. This overrides the
                token that the agent provides by default.
-
-        The **subkey_collection** object supports the following:
-
-          * `flags` (`pulumi.Input[float]`) - An [unsigned integer value](https://www.consul.io/api/kv.html#flags-1)
-            to attach to the key (defaults to 0).
-          * `path` (`pulumi.Input[str]`) - This is the path (which will be appended to the given
-            `path_prefix`) in Consul that should be written to.
-          * `value` (`pulumi.Input[str]`) - The value to write to the given path.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -87,7 +56,7 @@ class KeyPrefix(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -108,13 +77,21 @@ class KeyPrefix(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, datacenter=None, namespace=None, path_prefix=None, subkey_collection=None, subkeys=None, token=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            datacenter: Optional[pulumi.Input[str]] = None,
+            namespace: Optional[pulumi.Input[str]] = None,
+            path_prefix: Optional[pulumi.Input[str]] = None,
+            subkey_collection: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['KeyPrefixSubkeyCollectionArgs']]]]] = None,
+            subkeys: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            token: Optional[pulumi.Input[str]] = None) -> 'KeyPrefix':
         """
         Get an existing KeyPrefix resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the
                agent's default datacenter and the datacenter in the provider setup.
@@ -122,22 +99,14 @@ class KeyPrefix(pulumi.CustomResource):
         :param pulumi.Input[str] path_prefix: Specifies the common prefix shared by all keys
                that will be managed by this resource instance. In most cases this will
                end with a slash, to manage a "folder" of keys.
-        :param pulumi.Input[list] subkey_collection: A subkey to add. Supported values documented below.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['KeyPrefixSubkeyCollectionArgs']]]] subkey_collection: A subkey to add. Supported values documented below.
                Multiple blocks supported.
-        :param pulumi.Input[dict] subkeys: A mapping from subkey name (which will be appended
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] subkeys: A mapping from subkey name (which will be appended
                to the given `path_prefix`) to the value that should be stored at that key.
                Use slashes, as shown in the above example, to create "sub-folders" under
                the given path prefix.
         :param pulumi.Input[str] token: The ACL token to use. This overrides the
                token that the agent provides by default.
-
-        The **subkey_collection** object supports the following:
-
-          * `flags` (`pulumi.Input[float]`) - An [unsigned integer value](https://www.consul.io/api/kv.html#flags-1)
-            to attach to the key (defaults to 0).
-          * `path` (`pulumi.Input[str]`) - This is the path (which will be appended to the given
-            `path_prefix`) in Consul that should be written to.
-          * `value` (`pulumi.Input[str]`) - The value to write to the given path.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -151,8 +120,65 @@ class KeyPrefix(pulumi.CustomResource):
         __props__["token"] = token
         return KeyPrefix(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def datacenter(self) -> str:
+        """
+        The datacenter to use. This overrides the
+        agent's default datacenter and the datacenter in the provider setup.
+        """
+        return pulumi.get(self, "datacenter")
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[str]:
+        """
+        The namespace to create the keys within.
+        """
+        return pulumi.get(self, "namespace")
+
+    @property
+    @pulumi.getter(name="pathPrefix")
+    def path_prefix(self) -> str:
+        """
+        Specifies the common prefix shared by all keys
+        that will be managed by this resource instance. In most cases this will
+        end with a slash, to manage a "folder" of keys.
+        """
+        return pulumi.get(self, "path_prefix")
+
+    @property
+    @pulumi.getter(name="subkeyCollection")
+    def subkey_collection(self) -> Optional[List['outputs.KeyPrefixSubkeyCollection']]:
+        """
+        A subkey to add. Supported values documented below.
+        Multiple blocks supported.
+        """
+        return pulumi.get(self, "subkey_collection")
+
+    @property
+    @pulumi.getter
+    def subkeys(self) -> Optional[Mapping[str, str]]:
+        """
+        A mapping from subkey name (which will be appended
+        to the given `path_prefix`) to the value that should be stored at that key.
+        Use slashes, as shown in the above example, to create "sub-folders" under
+        the given path prefix.
+        """
+        return pulumi.get(self, "subkeys")
+
+    @property
+    @pulumi.getter
+    def token(self) -> Optional[str]:
+        """
+        The ACL token to use. This overrides the
+        token that the agent provides by default.
+        """
+        return pulumi.get(self, "token")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

@@ -5,32 +5,24 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = ['Node']
 
 
 class Node(pulumi.CustomResource):
-    address: pulumi.Output[str]
-    """
-    The address of the node being added to,
-    or referenced in the catalog.
-    """
-    datacenter: pulumi.Output[str]
-    """
-    The datacenter to use. This overrides the agent's
-    default datacenter and the datacenter in the provider setup.
-    """
-    meta: pulumi.Output[dict]
-    """
-    Key/value pairs that are associated with the node.
-    """
-    name: pulumi.Output[str]
-    """
-    The name of the node being added to, or
-    referenced in the catalog.
-    """
-    token: pulumi.Output[str]
-    def __init__(__self__, resource_name, opts=None, address=None, datacenter=None, meta=None, name=None, token=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 address: Optional[pulumi.Input[str]] = None,
+                 datacenter: Optional[pulumi.Input[str]] = None,
+                 meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 token: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides access to Node data in Consul. This can be used to define a
         node. Currently, defining health checks is not supported.
@@ -50,7 +42,7 @@ class Node(pulumi.CustomResource):
                or referenced in the catalog.
         :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the agent's
                default datacenter and the datacenter in the provider setup.
-        :param pulumi.Input[dict] meta: Key/value pairs that are associated with the node.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: Key/value pairs that are associated with the node.
         :param pulumi.Input[str] name: The name of the node being added to, or
                referenced in the catalog.
         """
@@ -65,7 +57,7 @@ class Node(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -85,19 +77,26 @@ class Node(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, address=None, datacenter=None, meta=None, name=None, token=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            address: Optional[pulumi.Input[str]] = None,
+            datacenter: Optional[pulumi.Input[str]] = None,
+            meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            token: Optional[pulumi.Input[str]] = None) -> 'Node':
         """
         Get an existing Node resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address: The address of the node being added to,
                or referenced in the catalog.
         :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the agent's
                default datacenter and the datacenter in the provider setup.
-        :param pulumi.Input[dict] meta: Key/value pairs that are associated with the node.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: Key/value pairs that are associated with the node.
         :param pulumi.Input[str] name: The name of the node being added to, or
                referenced in the catalog.
         """
@@ -112,8 +111,49 @@ class Node(pulumi.CustomResource):
         __props__["token"] = token
         return Node(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def address(self) -> str:
+        """
+        The address of the node being added to,
+        or referenced in the catalog.
+        """
+        return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter
+    def datacenter(self) -> str:
+        """
+        The datacenter to use. This overrides the agent's
+        default datacenter and the datacenter in the provider setup.
+        """
+        return pulumi.get(self, "datacenter")
+
+    @property
+    @pulumi.getter
+    def meta(self) -> Optional[Mapping[str, str]]:
+        """
+        Key/value pairs that are associated with the node.
+        """
+        return pulumi.get(self, "meta")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the node being added to, or
+        referenced in the catalog.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def token(self) -> Optional[str]:
+        return pulumi.get(self, "token")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

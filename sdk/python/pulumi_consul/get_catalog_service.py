@@ -5,9 +5,18 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
 
+__all__ = [
+    'GetCatalogServiceResult',
+    'AwaitableGetCatalogServiceResult',
+    'get_catalog_service',
+]
+
+@pulumi.output_type
 class GetCatalogServiceResult:
     """
     A collection of values returned by getCatalogService.
@@ -15,28 +24,65 @@ class GetCatalogServiceResult:
     def __init__(__self__, datacenter=None, filter=None, id=None, name=None, query_options=None, services=None, tag=None):
         if datacenter and not isinstance(datacenter, str):
             raise TypeError("Expected argument 'datacenter' to be a str")
-        __self__.datacenter = datacenter
+        pulumi.set(__self__, "datacenter", datacenter)
         if filter and not isinstance(filter, str):
             raise TypeError("Expected argument 'filter' to be a str")
-        __self__.filter = filter
+        pulumi.set(__self__, "filter", filter)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if query_options and not isinstance(query_options, list):
+            raise TypeError("Expected argument 'query_options' to be a list")
+        pulumi.set(__self__, "query_options", query_options)
+        if services and not isinstance(services, list):
+            raise TypeError("Expected argument 'services' to be a list")
+        pulumi.set(__self__, "services", services)
+        if tag and not isinstance(tag, str):
+            raise TypeError("Expected argument 'tag' to be a str")
+        pulumi.set(__self__, "tag", tag)
+
+    @property
+    @pulumi.getter
+    def datacenter(self) -> Optional[str]:
+        return pulumi.get(self, "datacenter")
+
+    @property
+    @pulumi.getter
+    def filter(self) -> Optional[str]:
+        return pulumi.get(self, "filter")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
-        if query_options and not isinstance(query_options, list):
-            raise TypeError("Expected argument 'query_options' to be a list")
-        __self__.query_options = query_options
-        if services and not isinstance(services, list):
-            raise TypeError("Expected argument 'services' to be a list")
-        __self__.services = services
-        if tag and not isinstance(tag, str):
-            raise TypeError("Expected argument 'tag' to be a str")
-        __self__.tag = tag
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="queryOptions")
+    def query_options(self) -> Optional[List['outputs.GetCatalogServiceQueryOptionResult']]:
+        return pulumi.get(self, "query_options")
+
+    @property
+    @pulumi.getter
+    def services(self) -> List['outputs.GetCatalogServiceServiceResult']:
+        return pulumi.get(self, "services")
+
+    @property
+    @pulumi.getter
+    def tag(self) -> Optional[str]:
+        return pulumi.get(self, "tag")
+
+
 class AwaitableGetCatalogServiceResult(GetCatalogServiceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -51,26 +97,17 @@ class AwaitableGetCatalogServiceResult(GetCatalogServiceResult):
             services=self.services,
             tag=self.tag)
 
-def get_catalog_service(datacenter=None,filter=None,name=None,query_options=None,tag=None,opts=None):
+
+def get_catalog_service(datacenter: Optional[str] = None,
+                        filter: Optional[str] = None,
+                        name: Optional[str] = None,
+                        query_options: Optional[List[pulumi.InputType['GetCatalogServiceQueryOptionArgs']]] = None,
+                        tag: Optional[str] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCatalogServiceResult:
     """
     Use this data source to access information about an existing resource.
-
-
-    The **query_options** object supports the following:
-
-      * `allowStale` (`bool`)
-      * `datacenter` (`str`)
-      * `namespace` (`str`)
-      * `near` (`str`)
-      * `node_meta` (`dict`)
-      * `requireConsistent` (`bool`)
-      * `token` (`str`)
-      * `waitIndex` (`float`)
-      * `waitTime` (`str`)
     """
     __args__ = dict()
-
-
     __args__['datacenter'] = datacenter
     __args__['filter'] = filter
     __args__['name'] = name
@@ -79,14 +116,14 @@ def get_catalog_service(datacenter=None,filter=None,name=None,query_options=None
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('consul:index/getCatalogService:getCatalogService', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('consul:index/getCatalogService:getCatalogService', __args__, opts=opts, typ=GetCatalogServiceResult).value
 
     return AwaitableGetCatalogServiceResult(
-        datacenter=__ret__.get('datacenter'),
-        filter=__ret__.get('filter'),
-        id=__ret__.get('id'),
-        name=__ret__.get('name'),
-        query_options=__ret__.get('queryOptions'),
-        services=__ret__.get('services'),
-        tag=__ret__.get('tag'))
+        datacenter=__ret__.datacenter,
+        filter=__ret__.filter,
+        id=__ret__.id,
+        name=__ret__.name,
+        query_options=__ret__.query_options,
+        services=__ret__.services,
+        tag=__ret__.tag)

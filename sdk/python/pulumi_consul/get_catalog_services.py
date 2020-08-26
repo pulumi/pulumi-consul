@@ -5,9 +5,18 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
 
+__all__ = [
+    'GetCatalogServicesResult',
+    'AwaitableGetCatalogServicesResult',
+    'get_catalog_services',
+]
+
+@pulumi.output_type
 class GetCatalogServicesResult:
     """
     A collection of values returned by getCatalogServices.
@@ -15,22 +24,49 @@ class GetCatalogServicesResult:
     def __init__(__self__, datacenter=None, id=None, names=None, query_options=None, services=None):
         if datacenter and not isinstance(datacenter, str):
             raise TypeError("Expected argument 'datacenter' to be a str")
-        __self__.datacenter = datacenter
+        pulumi.set(__self__, "datacenter", datacenter)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if names and not isinstance(names, list):
+            raise TypeError("Expected argument 'names' to be a list")
+        pulumi.set(__self__, "names", names)
+        if query_options and not isinstance(query_options, list):
+            raise TypeError("Expected argument 'query_options' to be a list")
+        pulumi.set(__self__, "query_options", query_options)
+        if services and not isinstance(services, dict):
+            raise TypeError("Expected argument 'services' to be a dict")
+        pulumi.set(__self__, "services", services)
+
+    @property
+    @pulumi.getter
+    def datacenter(self) -> str:
+        return pulumi.get(self, "datacenter")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if names and not isinstance(names, list):
-            raise TypeError("Expected argument 'names' to be a list")
-        __self__.names = names
-        if query_options and not isinstance(query_options, list):
-            raise TypeError("Expected argument 'query_options' to be a list")
-        __self__.query_options = query_options
-        if services and not isinstance(services, dict):
-            raise TypeError("Expected argument 'services' to be a dict")
-        __self__.services = services
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def names(self) -> List[str]:
+        return pulumi.get(self, "names")
+
+    @property
+    @pulumi.getter(name="queryOptions")
+    def query_options(self) -> Optional[List['outputs.GetCatalogServicesQueryOptionResult']]:
+        return pulumi.get(self, "query_options")
+
+    @property
+    @pulumi.getter
+    def services(self) -> Mapping[str, str]:
+        return pulumi.get(self, "services")
+
+
 class AwaitableGetCatalogServicesResult(GetCatalogServicesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -43,36 +79,23 @@ class AwaitableGetCatalogServicesResult(GetCatalogServicesResult):
             query_options=self.query_options,
             services=self.services)
 
-def get_catalog_services(query_options=None,opts=None):
+
+def get_catalog_services(query_options: Optional[List[pulumi.InputType['GetCatalogServicesQueryOptionArgs']]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCatalogServicesResult:
     """
     Use this data source to access information about an existing resource.
-
-
-    The **query_options** object supports the following:
-
-      * `allowStale` (`bool`)
-      * `datacenter` (`str`)
-      * `namespace` (`str`)
-      * `near` (`str`)
-      * `node_meta` (`dict`)
-      * `requireConsistent` (`bool`)
-      * `token` (`str`)
-      * `waitIndex` (`float`)
-      * `waitTime` (`str`)
     """
     __args__ = dict()
-
-
     __args__['queryOptions'] = query_options
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('consul:index/getCatalogServices:getCatalogServices', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('consul:index/getCatalogServices:getCatalogServices', __args__, opts=opts, typ=GetCatalogServicesResult).value
 
     return AwaitableGetCatalogServicesResult(
-        datacenter=__ret__.get('datacenter'),
-        id=__ret__.get('id'),
-        names=__ret__.get('names'),
-        query_options=__ret__.get('queryOptions'),
-        services=__ret__.get('services'))
+        datacenter=__ret__.datacenter,
+        id=__ret__.id,
+        names=__ret__.names,
+        query_options=__ret__.query_options,
+        services=__ret__.services)

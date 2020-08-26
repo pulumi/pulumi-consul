@@ -5,9 +5,18 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
 
+__all__ = [
+    'GetKeyPrefixResult',
+    'AwaitableGetKeyPrefixResult',
+    'get_key_prefix',
+]
+
+@pulumi.output_type
 class GetKeyPrefixResult:
     """
     A collection of values returned by getKeyPrefix.
@@ -15,43 +24,85 @@ class GetKeyPrefixResult:
     def __init__(__self__, datacenter=None, id=None, namespace=None, path_prefix=None, subkey_collection=None, subkeys=None, token=None, var=None):
         if datacenter and not isinstance(datacenter, str):
             raise TypeError("Expected argument 'datacenter' to be a str")
-        __self__.datacenter = datacenter
+        pulumi.set(__self__, "datacenter", datacenter)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if namespace and not isinstance(namespace, str):
+            raise TypeError("Expected argument 'namespace' to be a str")
+        pulumi.set(__self__, "namespace", namespace)
+        if path_prefix and not isinstance(path_prefix, str):
+            raise TypeError("Expected argument 'path_prefix' to be a str")
+        pulumi.set(__self__, "path_prefix", path_prefix)
+        if subkey_collection and not isinstance(subkey_collection, list):
+            raise TypeError("Expected argument 'subkey_collection' to be a list")
+        pulumi.set(__self__, "subkey_collection", subkey_collection)
+        if subkeys and not isinstance(subkeys, dict):
+            raise TypeError("Expected argument 'subkeys' to be a dict")
+        pulumi.set(__self__, "subkeys", subkeys)
+        if token and not isinstance(token, str):
+            raise TypeError("Expected argument 'token' to be a str")
+        pulumi.set(__self__, "token", token)
+        if var and not isinstance(var, dict):
+            raise TypeError("Expected argument 'var' to be a dict")
+        pulumi.set(__self__, "var", var)
+
+    @property
+    @pulumi.getter
+    def datacenter(self) -> str:
         """
         The datacenter the keys are being read from.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        return pulumi.get(self, "datacenter")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if namespace and not isinstance(namespace, str):
-            raise TypeError("Expected argument 'namespace' to be a str")
-        __self__.namespace = namespace
-        if path_prefix and not isinstance(path_prefix, str):
-            raise TypeError("Expected argument 'path_prefix' to be a str")
-        __self__.path_prefix = path_prefix
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[str]:
+        return pulumi.get(self, "namespace")
+
+    @property
+    @pulumi.getter(name="pathPrefix")
+    def path_prefix(self) -> str:
         """
         the common prefix shared by all keys being read.
         * `var.<name>` - For each name given, the corresponding attribute
         has the value of the key.
         """
-        if subkey_collection and not isinstance(subkey_collection, list):
-            raise TypeError("Expected argument 'subkey_collection' to be a list")
-        __self__.subkey_collection = subkey_collection
-        if subkeys and not isinstance(subkeys, dict):
-            raise TypeError("Expected argument 'subkeys' to be a dict")
-        __self__.subkeys = subkeys
+        return pulumi.get(self, "path_prefix")
+
+    @property
+    @pulumi.getter(name="subkeyCollection")
+    def subkey_collection(self) -> Optional[List['outputs.GetKeyPrefixSubkeyCollectionResult']]:
+        return pulumi.get(self, "subkey_collection")
+
+    @property
+    @pulumi.getter
+    def subkeys(self) -> Mapping[str, str]:
         """
         A map of the subkeys and values is set if no `subkey`
         block is provided.
         """
-        if token and not isinstance(token, str):
-            raise TypeError("Expected argument 'token' to be a str")
-        __self__.token = token
-        if var and not isinstance(var, dict):
-            raise TypeError("Expected argument 'var' to be a dict")
-        __self__.var = var
+        return pulumi.get(self, "subkeys")
+
+    @property
+    @pulumi.getter
+    def token(self) -> Optional[str]:
+        return pulumi.get(self, "token")
+
+    @property
+    @pulumi.getter
+    def var(self) -> Mapping[str, str]:
+        return pulumi.get(self, "var")
+
+
 class AwaitableGetKeyPrefixResult(GetKeyPrefixResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -67,7 +118,13 @@ class AwaitableGetKeyPrefixResult(GetKeyPrefixResult):
             token=self.token,
             var=self.var)
 
-def get_key_prefix(datacenter=None,namespace=None,path_prefix=None,subkey_collection=None,token=None,opts=None):
+
+def get_key_prefix(datacenter: Optional[str] = None,
+                   namespace: Optional[str] = None,
+                   path_prefix: Optional[str] = None,
+                   subkey_collection: Optional[List[pulumi.InputType['GetKeyPrefixSubkeyCollectionArgs']]] = None,
+                   token: Optional[str] = None,
+                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKeyPrefixResult:
     """
     Use this data source to access information about an existing resource.
 
@@ -77,25 +134,12 @@ def get_key_prefix(datacenter=None,namespace=None,path_prefix=None,subkey_collec
     :param str path_prefix: Specifies the common prefix shared by all keys
            that will be read by this data source instance. In most cases, this will
            end with a slash to read a "folder" of subkeys.
-    :param list subkey_collection: Specifies a subkey in Consul to be read. Supported
+    :param List[pulumi.InputType['GetKeyPrefixSubkeyCollectionArgs']] subkey_collection: Specifies a subkey in Consul to be read. Supported
            values documented below. Multiple blocks supported.
     :param str token: The ACL token to use. This overrides the
            token that the agent provides by default.
-
-    The **subkey_collection** object supports the following:
-
-      * `default` (`str`) - This is the default value to set for `var.<name>`
-        if the key does not exist in Consul. Defaults to an empty string.
-      * `name` (`str`) - This is the name of the key. This value of the
-        key is exposed as `var.<name>`. This is not the path of the subkey
-        in Consul.
-      * `path` (`str`) - This is the subkey path in Consul (which will be appended
-        to the given `path_prefix`) to construct the full key that will be used
-        to read the value.
     """
     __args__ = dict()
-
-
     __args__['datacenter'] = datacenter
     __args__['namespace'] = namespace
     __args__['pathPrefix'] = path_prefix
@@ -104,15 +148,15 @@ def get_key_prefix(datacenter=None,namespace=None,path_prefix=None,subkey_collec
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('consul:index/getKeyPrefix:getKeyPrefix', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('consul:index/getKeyPrefix:getKeyPrefix', __args__, opts=opts, typ=GetKeyPrefixResult).value
 
     return AwaitableGetKeyPrefixResult(
-        datacenter=__ret__.get('datacenter'),
-        id=__ret__.get('id'),
-        namespace=__ret__.get('namespace'),
-        path_prefix=__ret__.get('pathPrefix'),
-        subkey_collection=__ret__.get('subkeyCollection'),
-        subkeys=__ret__.get('subkeys'),
-        token=__ret__.get('token'),
-        var=__ret__.get('var'))
+        datacenter=__ret__.datacenter,
+        id=__ret__.id,
+        namespace=__ret__.namespace,
+        path_prefix=__ret__.path_prefix,
+        subkey_collection=__ret__.subkey_collection,
+        subkeys=__ret__.subkeys,
+        token=__ret__.token,
+        var=__ret__.var)

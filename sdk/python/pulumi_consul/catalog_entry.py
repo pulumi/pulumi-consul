@@ -5,44 +5,26 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['CatalogEntry']
 
 
 class CatalogEntry(pulumi.CustomResource):
-    address: pulumi.Output[str]
-    """
-    The address of the node being added to,
-    or referenced in the catalog.
-    """
-    datacenter: pulumi.Output[str]
-    """
-    The datacenter to use. This overrides the
-    agent's default datacenter and the datacenter in the provider setup.
-    """
-    node: pulumi.Output[str]
-    """
-    The name of the node being added to, or
-    referenced in the catalog.
-    """
-    services: pulumi.Output[list]
-    """
-    A service to optionally associated with
-    the node. Supported values are documented below.
-
-      * `address` (`str`) - The address of the service. Defaults to the
-        node address.
-      * `id` (`str`) - The ID of the service. Defaults to the `name`.
-      * `name` (`str`) - The name of the service
-      * `port` (`float`) - The port of the service.
-      * `tags` (`list`) - A list of values that are opaque to Consul,
-        but can be used to distinguish between services or nodes.
-    """
-    token: pulumi.Output[str]
-    """
-    ACL token.
-    """
-    def __init__(__self__, resource_name, opts=None, address=None, datacenter=None, node=None, services=None, token=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 address: Optional[pulumi.Input[str]] = None,
+                 datacenter: Optional[pulumi.Input[str]] = None,
+                 node: Optional[pulumi.Input[str]] = None,
+                 services: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['CatalogEntryServiceArgs']]]]] = None,
+                 token: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         !> The `CatalogEntry` resource has been deprecated in version 2.0.0 of the provider
         and will be removed in a future release. Please read the [upgrade guide](https://www.terraform.io/docs/providers/consul/guides/upgrading.html#deprecation-of-consul_catalog_entry)
@@ -60,16 +42,16 @@ class CatalogEntry(pulumi.CustomResource):
         app = consul.CatalogEntry("app",
             address="192.168.10.10",
             node="foobar",
-            services=[{
-                "address": "127.0.0.1",
-                "id": "redis1",
-                "name": "redis",
-                "port": 8000,
-                "tags": [
+            services=[consul.CatalogEntryServiceArgs(
+                address="127.0.0.1",
+                id="redis1",
+                name="redis",
+                port=8000,
+                tags=[
                     "master",
                     "v1",
                 ],
-            }])
+            )])
         ```
 
         :param str resource_name: The name of the resource.
@@ -80,19 +62,9 @@ class CatalogEntry(pulumi.CustomResource):
                agent's default datacenter and the datacenter in the provider setup.
         :param pulumi.Input[str] node: The name of the node being added to, or
                referenced in the catalog.
-        :param pulumi.Input[list] services: A service to optionally associated with
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['CatalogEntryServiceArgs']]]] services: A service to optionally associated with
                the node. Supported values are documented below.
         :param pulumi.Input[str] token: ACL token.
-
-        The **services** object supports the following:
-
-          * `address` (`pulumi.Input[str]`) - The address of the service. Defaults to the
-            node address.
-          * `id` (`pulumi.Input[str]`) - The ID of the service. Defaults to the `name`.
-          * `name` (`pulumi.Input[str]`) - The name of the service
-          * `port` (`pulumi.Input[float]`) - The port of the service.
-          * `tags` (`pulumi.Input[list]`) - A list of values that are opaque to Consul,
-            but can be used to distinguish between services or nodes.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -105,7 +77,7 @@ class CatalogEntry(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -127,13 +99,20 @@ class CatalogEntry(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, address=None, datacenter=None, node=None, services=None, token=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            address: Optional[pulumi.Input[str]] = None,
+            datacenter: Optional[pulumi.Input[str]] = None,
+            node: Optional[pulumi.Input[str]] = None,
+            services: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['CatalogEntryServiceArgs']]]]] = None,
+            token: Optional[pulumi.Input[str]] = None) -> 'CatalogEntry':
         """
         Get an existing CatalogEntry resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address: The address of the node being added to,
                or referenced in the catalog.
@@ -141,19 +120,9 @@ class CatalogEntry(pulumi.CustomResource):
                agent's default datacenter and the datacenter in the provider setup.
         :param pulumi.Input[str] node: The name of the node being added to, or
                referenced in the catalog.
-        :param pulumi.Input[list] services: A service to optionally associated with
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['CatalogEntryServiceArgs']]]] services: A service to optionally associated with
                the node. Supported values are documented below.
         :param pulumi.Input[str] token: ACL token.
-
-        The **services** object supports the following:
-
-          * `address` (`pulumi.Input[str]`) - The address of the service. Defaults to the
-            node address.
-          * `id` (`pulumi.Input[str]`) - The ID of the service. Defaults to the `name`.
-          * `name` (`pulumi.Input[str]`) - The name of the service
-          * `port` (`pulumi.Input[float]`) - The port of the service.
-          * `tags` (`pulumi.Input[list]`) - A list of values that are opaque to Consul,
-            but can be used to distinguish between services or nodes.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -166,8 +135,53 @@ class CatalogEntry(pulumi.CustomResource):
         __props__["token"] = token
         return CatalogEntry(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def address(self) -> str:
+        """
+        The address of the node being added to,
+        or referenced in the catalog.
+        """
+        return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter
+    def datacenter(self) -> str:
+        """
+        The datacenter to use. This overrides the
+        agent's default datacenter and the datacenter in the provider setup.
+        """
+        return pulumi.get(self, "datacenter")
+
+    @property
+    @pulumi.getter
+    def node(self) -> str:
+        """
+        The name of the node being added to, or
+        referenced in the catalog.
+        """
+        return pulumi.get(self, "node")
+
+    @property
+    @pulumi.getter
+    def services(self) -> Optional[List['outputs.CatalogEntryService']]:
+        """
+        A service to optionally associated with
+        the node. Supported values are documented below.
+        """
+        return pulumi.get(self, "services")
+
+    @property
+    @pulumi.getter
+    def token(self) -> Optional[str]:
+        """
+        ACL token.
+        """
+        return pulumi.get(self, "token")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

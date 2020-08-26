@@ -5,65 +5,21 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = ['License']
 
 
 class License(pulumi.CustomResource):
-    customer_id: pulumi.Output[str]
-    """
-    The ID of the customer the license is attached to.
-    """
-    datacenter: pulumi.Output[str]
-    """
-    The datacenter to use. This overrides the
-    agent's default datacenter and the datacenter in the provider setup.
-    """
-    expiration_time: pulumi.Output[str]
-    """
-    The expiration time of the license.
-    """
-    features: pulumi.Output[list]
-    """
-    The features for which the license is valid.
-    """
-    flags: pulumi.Output[dict]
-    """
-    The metadata attached to the license.
-    """
-    installation_id: pulumi.Output[str]
-    """
-    The ID of the current installation.
-    """
-    issue_time: pulumi.Output[str]
-    """
-    The date the license was issued.
-    """
-    license: pulumi.Output[str]
-    """
-    The Consul license to use.
-    """
-    license_id: pulumi.Output[str]
-    """
-    The ID of the license used.
-    """
-    product: pulumi.Output[str]
-    """
-    The product for which the license is valid.
-    """
-    start_time: pulumi.Output[str]
-    """
-    The start time of the license.
-    """
-    valid: pulumi.Output[bool]
-    """
-    Whether the license is valid.
-    """
-    warnings: pulumi.Output[list]
-    """
-    A list of warning messages regarding the license validity.
-    """
-    def __init__(__self__, resource_name, opts=None, datacenter=None, license=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 datacenter: Optional[pulumi.Input[str]] = None,
+                 license: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         > **NOTE:** This feature requires [Consul Enterprise](https://www.consul.io/docs/enterprise/index.html).
 
@@ -97,7 +53,7 @@ class License(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -125,20 +81,35 @@ class License(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, customer_id=None, datacenter=None, expiration_time=None, features=None, flags=None, installation_id=None, issue_time=None, license=None, license_id=None, product=None, start_time=None, valid=None, warnings=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            customer_id: Optional[pulumi.Input[str]] = None,
+            datacenter: Optional[pulumi.Input[str]] = None,
+            expiration_time: Optional[pulumi.Input[str]] = None,
+            features: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            flags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            installation_id: Optional[pulumi.Input[str]] = None,
+            issue_time: Optional[pulumi.Input[str]] = None,
+            license: Optional[pulumi.Input[str]] = None,
+            license_id: Optional[pulumi.Input[str]] = None,
+            product: Optional[pulumi.Input[str]] = None,
+            start_time: Optional[pulumi.Input[str]] = None,
+            valid: Optional[pulumi.Input[bool]] = None,
+            warnings: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None) -> 'License':
         """
         Get an existing License resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] customer_id: The ID of the customer the license is attached to.
         :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the
                agent's default datacenter and the datacenter in the provider setup.
         :param pulumi.Input[str] expiration_time: The expiration time of the license.
-        :param pulumi.Input[list] features: The features for which the license is valid.
-        :param pulumi.Input[dict] flags: The metadata attached to the license.
+        :param pulumi.Input[List[pulumi.Input[str]]] features: The features for which the license is valid.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] flags: The metadata attached to the license.
         :param pulumi.Input[str] installation_id: The ID of the current installation.
         :param pulumi.Input[str] issue_time: The date the license was issued.
         :param pulumi.Input[str] license: The Consul license to use.
@@ -146,7 +117,7 @@ class License(pulumi.CustomResource):
         :param pulumi.Input[str] product: The product for which the license is valid.
         :param pulumi.Input[str] start_time: The start time of the license.
         :param pulumi.Input[bool] valid: Whether the license is valid.
-        :param pulumi.Input[list] warnings: A list of warning messages regarding the license validity.
+        :param pulumi.Input[List[pulumi.Input[str]]] warnings: A list of warning messages regarding the license validity.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -167,8 +138,114 @@ class License(pulumi.CustomResource):
         __props__["warnings"] = warnings
         return License(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="customerId")
+    def customer_id(self) -> str:
+        """
+        The ID of the customer the license is attached to.
+        """
+        return pulumi.get(self, "customer_id")
+
+    @property
+    @pulumi.getter
+    def datacenter(self) -> Optional[str]:
+        """
+        The datacenter to use. This overrides the
+        agent's default datacenter and the datacenter in the provider setup.
+        """
+        return pulumi.get(self, "datacenter")
+
+    @property
+    @pulumi.getter(name="expirationTime")
+    def expiration_time(self) -> str:
+        """
+        The expiration time of the license.
+        """
+        return pulumi.get(self, "expiration_time")
+
+    @property
+    @pulumi.getter
+    def features(self) -> List[str]:
+        """
+        The features for which the license is valid.
+        """
+        return pulumi.get(self, "features")
+
+    @property
+    @pulumi.getter
+    def flags(self) -> Mapping[str, str]:
+        """
+        The metadata attached to the license.
+        """
+        return pulumi.get(self, "flags")
+
+    @property
+    @pulumi.getter(name="installationId")
+    def installation_id(self) -> str:
+        """
+        The ID of the current installation.
+        """
+        return pulumi.get(self, "installation_id")
+
+    @property
+    @pulumi.getter(name="issueTime")
+    def issue_time(self) -> str:
+        """
+        The date the license was issued.
+        """
+        return pulumi.get(self, "issue_time")
+
+    @property
+    @pulumi.getter
+    def license(self) -> str:
+        """
+        The Consul license to use.
+        """
+        return pulumi.get(self, "license")
+
+    @property
+    @pulumi.getter(name="licenseId")
+    def license_id(self) -> str:
+        """
+        The ID of the license used.
+        """
+        return pulumi.get(self, "license_id")
+
+    @property
+    @pulumi.getter
+    def product(self) -> str:
+        """
+        The product for which the license is valid.
+        """
+        return pulumi.get(self, "product")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> str:
+        """
+        The start time of the license.
+        """
+        return pulumi.get(self, "start_time")
+
+    @property
+    @pulumi.getter
+    def valid(self) -> bool:
+        """
+        Whether the license is valid.
+        """
+        return pulumi.get(self, "valid")
+
+    @property
+    @pulumi.getter
+    def warnings(self) -> List[str]:
+        """
+        A list of warning messages regarding the license validity.
+        """
+        return pulumi.get(self, "warnings")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

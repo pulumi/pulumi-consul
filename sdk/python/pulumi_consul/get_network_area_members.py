@@ -5,9 +5,17 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
 
+__all__ = [
+    'GetNetworkAreaMembersResult',
+    'AwaitableGetNetworkAreaMembersResult',
+    'get_network_area_members',
+]
+
+@pulumi.output_type
 class GetNetworkAreaMembersResult:
     """
     A collection of values returned by getNetworkAreaMembers.
@@ -15,31 +23,58 @@ class GetNetworkAreaMembersResult:
     def __init__(__self__, datacenter=None, id=None, members=None, token=None, uuid=None):
         if datacenter and not isinstance(datacenter, str):
             raise TypeError("Expected argument 'datacenter' to be a str")
-        __self__.datacenter = datacenter
+        pulumi.set(__self__, "datacenter", datacenter)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if members and not isinstance(members, list):
+            raise TypeError("Expected argument 'members' to be a list")
+        pulumi.set(__self__, "members", members)
+        if token and not isinstance(token, str):
+            raise TypeError("Expected argument 'token' to be a str")
+        pulumi.set(__self__, "token", token)
+        if uuid and not isinstance(uuid, str):
+            raise TypeError("Expected argument 'uuid' to be a str")
+        pulumi.set(__self__, "uuid", uuid)
+
+    @property
+    @pulumi.getter
+    def datacenter(self) -> str:
         """
         The node's Consul datacenter.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        return pulumi.get(self, "datacenter")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if members and not isinstance(members, list):
-            raise TypeError("Expected argument 'members' to be a list")
-        __self__.members = members
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def members(self) -> List['outputs.GetNetworkAreaMembersMemberResult']:
         """
         The list of Consul servers in this network area
         """
-        if token and not isinstance(token, str):
-            raise TypeError("Expected argument 'token' to be a str")
-        __self__.token = token
-        if uuid and not isinstance(uuid, str):
-            raise TypeError("Expected argument 'uuid' to be a str")
-        __self__.uuid = uuid
+        return pulumi.get(self, "members")
+
+    @property
+    @pulumi.getter
+    def token(self) -> Optional[str]:
+        return pulumi.get(self, "token")
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> str:
         """
         The UUID of the Network Area being queried.
         """
+        return pulumi.get(self, "uuid")
+
+
 class AwaitableGetNetworkAreaMembersResult(GetNetworkAreaMembersResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -52,7 +87,11 @@ class AwaitableGetNetworkAreaMembersResult(GetNetworkAreaMembersResult):
             token=self.token,
             uuid=self.uuid)
 
-def get_network_area_members(datacenter=None,token=None,uuid=None,opts=None):
+
+def get_network_area_members(datacenter: Optional[str] = None,
+                             token: Optional[str] = None,
+                             uuid: Optional[str] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNetworkAreaMembersResult:
     """
     > **NOTE:** This feature requires [Consul Enterprise](https://www.consul.io/docs/enterprise/index.html).
 
@@ -81,20 +120,18 @@ def get_network_area_members(datacenter=None,token=None,uuid=None,opts=None):
     :param str uuid: The UUID of the area to list.
     """
     __args__ = dict()
-
-
     __args__['datacenter'] = datacenter
     __args__['token'] = token
     __args__['uuid'] = uuid
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('consul:index/getNetworkAreaMembers:getNetworkAreaMembers', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('consul:index/getNetworkAreaMembers:getNetworkAreaMembers', __args__, opts=opts, typ=GetNetworkAreaMembersResult).value
 
     return AwaitableGetNetworkAreaMembersResult(
-        datacenter=__ret__.get('datacenter'),
-        id=__ret__.get('id'),
-        members=__ret__.get('members'),
-        token=__ret__.get('token'),
-        uuid=__ret__.get('uuid'))
+        datacenter=__ret__.datacenter,
+        id=__ret__.id,
+        members=__ret__.members,
+        token=__ret__.token,
+        uuid=__ret__.uuid)

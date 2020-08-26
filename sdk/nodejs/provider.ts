@@ -35,17 +35,19 @@ export class Provider extends pulumi.ProviderResource {
      */
     constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        inputs["address"] = (args ? args.address : undefined) || (utilities.getEnv("CONSUL_ADDRESS", "CONSUL_HTTP_ADDR") || "localhost:8500");
-        inputs["caFile"] = (args ? args.caFile : undefined) || utilities.getEnv("CONSUL_CA_FILE");
-        inputs["caPath"] = (args ? args.caPath : undefined) || utilities.getEnv("CONSUL_CAPATH");
-        inputs["certFile"] = (args ? args.certFile : undefined) || utilities.getEnv("CONSUL_CERT_FILE");
-        inputs["datacenter"] = args ? args.datacenter : undefined;
-        inputs["httpAuth"] = (args ? args.httpAuth : undefined) || utilities.getEnv("CONSUL_HTTP_AUTH");
-        inputs["insecureHttps"] = pulumi.output(args ? args.insecureHttps : undefined).apply(JSON.stringify);
-        inputs["keyFile"] = (args ? args.keyFile : undefined) || utilities.getEnv("CONSUL_KEY_FILE");
-        inputs["namespace"] = args ? args.namespace : undefined;
-        inputs["scheme"] = (args ? args.scheme : undefined) || (utilities.getEnv("CONSUL_SCHEME", "CONSUL_HTTP_SCHEME") || "http");
-        inputs["token"] = (args ? args.token : undefined) || utilities.getEnv("CONSUL_TOKEN", "CONSUL_HTTP_TOKEN");
+        {
+            inputs["address"] = (args ? args.address : undefined) || (utilities.getEnv("CONSUL_ADDRESS", "CONSUL_HTTP_ADDR") || "localhost:8500");
+            inputs["caFile"] = (args ? args.caFile : undefined) || utilities.getEnv("CONSUL_CA_FILE");
+            inputs["caPath"] = (args ? args.caPath : undefined) || utilities.getEnv("CONSUL_CAPATH");
+            inputs["certFile"] = (args ? args.certFile : undefined) || utilities.getEnv("CONSUL_CERT_FILE");
+            inputs["datacenter"] = args ? args.datacenter : undefined;
+            inputs["httpAuth"] = (args ? args.httpAuth : undefined) || utilities.getEnv("CONSUL_HTTP_AUTH");
+            inputs["insecureHttps"] = pulumi.output(args ? args.insecureHttps : undefined).apply(JSON.stringify);
+            inputs["keyFile"] = (args ? args.keyFile : undefined) || utilities.getEnv("CONSUL_KEY_FILE");
+            inputs["namespace"] = args ? args.namespace : undefined;
+            inputs["scheme"] = (args ? args.scheme : undefined) || (utilities.getEnv("CONSUL_SCHEME", "CONSUL_HTTP_SCHEME") || "http");
+            inputs["token"] = (args ? args.token : undefined) || utilities.getEnv("CONSUL_TOKEN", "CONSUL_HTTP_TOKEN");
+        }
         if (!opts) {
             opts = {}
         }

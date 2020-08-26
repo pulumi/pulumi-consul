@@ -5,9 +5,18 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
 
+__all__ = [
+    'GetNodesResult',
+    'AwaitableGetNodesResult',
+    'get_nodes',
+]
+
+@pulumi.output_type
 class GetNodesResult:
     """
     A collection of values returned by getNodes.
@@ -15,38 +24,70 @@ class GetNodesResult:
     def __init__(__self__, datacenter=None, id=None, node_ids=None, node_names=None, nodes=None, query_options=None):
         if datacenter and not isinstance(datacenter, str):
             raise TypeError("Expected argument 'datacenter' to be a str")
-        __self__.datacenter = datacenter
+        pulumi.set(__self__, "datacenter", datacenter)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if node_ids and not isinstance(node_ids, list):
+            raise TypeError("Expected argument 'node_ids' to be a list")
+        pulumi.set(__self__, "node_ids", node_ids)
+        if node_names and not isinstance(node_names, list):
+            raise TypeError("Expected argument 'node_names' to be a list")
+        pulumi.set(__self__, "node_names", node_names)
+        if nodes and not isinstance(nodes, list):
+            raise TypeError("Expected argument 'nodes' to be a list")
+        pulumi.set(__self__, "nodes", nodes)
+        if query_options and not isinstance(query_options, list):
+            raise TypeError("Expected argument 'query_options' to be a list")
+        pulumi.set(__self__, "query_options", query_options)
+
+    @property
+    @pulumi.getter
+    def datacenter(self) -> str:
         """
         The datacenter the keys are being read from to.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        return pulumi.get(self, "datacenter")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if node_ids and not isinstance(node_ids, list):
-            raise TypeError("Expected argument 'node_ids' to be a list")
-        __self__.node_ids = node_ids
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="nodeIds")
+    def node_ids(self) -> List[str]:
         """
         A list of the Consul node IDs.
         """
-        if node_names and not isinstance(node_names, list):
-            raise TypeError("Expected argument 'node_names' to be a list")
-        __self__.node_names = node_names
+        return pulumi.get(self, "node_ids")
+
+    @property
+    @pulumi.getter(name="nodeNames")
+    def node_names(self) -> List[str]:
         """
         A list of the Consul node names.
         """
-        if nodes and not isinstance(nodes, list):
-            raise TypeError("Expected argument 'nodes' to be a list")
-        __self__.nodes = nodes
+        return pulumi.get(self, "node_names")
+
+    @property
+    @pulumi.getter
+    def nodes(self) -> List['outputs.GetNodesNodeResult']:
         """
         A list of nodes and details about each Consul agent.  The list of
         per-node attributes is detailed below.
         """
-        if query_options and not isinstance(query_options, list):
-            raise TypeError("Expected argument 'query_options' to be a list")
-        __self__.query_options = query_options
+        return pulumi.get(self, "nodes")
+
+    @property
+    @pulumi.getter(name="queryOptions")
+    def query_options(self) -> Optional[List['outputs.GetNodesQueryOptionResult']]:
+        return pulumi.get(self, "query_options")
+
+
 class AwaitableGetNodesResult(GetNodesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -60,7 +101,9 @@ class AwaitableGetNodesResult(GetNodesResult):
             nodes=self.nodes,
             query_options=self.query_options)
 
-def get_nodes(query_options=None,opts=None):
+
+def get_nodes(query_options: Optional[List[pulumi.InputType['GetNodesQueryOptionArgs']]] = None,
+              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNodesResult:
     """
     The `getNodes` data source returns a list of Consul nodes that have
     been registered with the Consul cluster in a given datacenter.  By specifying a
@@ -68,42 +111,20 @@ def get_nodes(query_options=None,opts=None):
     nodes from a different WAN-attached Consul datacenter.
 
 
-    :param list query_options: See below.
-
-    The **query_options** object supports the following:
-
-      * `allowStale` (`bool`) - When `true`, the default, allow responses from
-        Consul servers that are followers.
-      * `datacenter` (`str`) - The Consul datacenter to query.  Defaults to the
-        same value found in `query_options` parameter specified below, or if that is
-        empty, the `datacenter` value found in the Consul agent that this provider is
-        configured to talk to then the datacenter in the provider setup.
-      * `near` (`str`)
-      * `node_meta` (`dict`)
-      * `requireConsistent` (`bool`) - When `true` force the client to perform a
-        read on at least quorum servers and verify the result is the same.  Defaults
-        to `false`.
-      * `token` (`str`) - Specify the Consul ACL token to use when performing the
-        request.  This defaults to the same API token configured by the `consul`
-        provider but may be overriden if necessary.
-      * `waitIndex` (`float`) - Index number used to enable blocking quereis.
-      * `waitTime` (`str`) - Max time the client should wait for a blocking query
-        to return.
+    :param List[pulumi.InputType['GetNodesQueryOptionArgs']] query_options: See below.
     """
     __args__ = dict()
-
-
     __args__['queryOptions'] = query_options
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('consul:index/getNodes:getNodes', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('consul:index/getNodes:getNodes', __args__, opts=opts, typ=GetNodesResult).value
 
     return AwaitableGetNodesResult(
-        datacenter=__ret__.get('datacenter'),
-        id=__ret__.get('id'),
-        node_ids=__ret__.get('nodeIds'),
-        node_names=__ret__.get('nodeNames'),
-        nodes=__ret__.get('nodes'),
-        query_options=__ret__.get('queryOptions'))
+        datacenter=__ret__.datacenter,
+        id=__ret__.id,
+        node_ids=__ret__.node_ids,
+        node_names=__ret__.node_names,
+        nodes=__ret__.nodes,
+        query_options=__ret__.query_options)

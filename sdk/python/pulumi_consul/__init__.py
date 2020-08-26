@@ -43,3 +43,10 @@ from .node import *
 from .prepared_query import *
 from .provider import *
 from .service import *
+from ._inputs import *
+from . import outputs
+
+# Make subpackages available:
+from . import (
+    config,
+)

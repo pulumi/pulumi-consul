@@ -5,9 +5,17 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
 
+__all__ = [
+    'GetServiceHealthResult',
+    'AwaitableGetServiceHealthResult',
+    'get_service_health',
+]
+
+@pulumi.output_type
 class GetServiceHealthResult:
     """
     A collection of values returned by getServiceHealth.
@@ -15,63 +23,115 @@ class GetServiceHealthResult:
     def __init__(__self__, datacenter=None, filter=None, id=None, name=None, near=None, node_meta=None, passing=None, results=None, tag=None, wait_for=None):
         if datacenter and not isinstance(datacenter, str):
             raise TypeError("Expected argument 'datacenter' to be a str")
-        __self__.datacenter = datacenter
+        pulumi.set(__self__, "datacenter", datacenter)
+        if filter and not isinstance(filter, str):
+            raise TypeError("Expected argument 'filter' to be a str")
+        pulumi.set(__self__, "filter", filter)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if near and not isinstance(near, str):
+            raise TypeError("Expected argument 'near' to be a str")
+        pulumi.set(__self__, "near", near)
+        if node_meta and not isinstance(node_meta, dict):
+            raise TypeError("Expected argument 'node_meta' to be a dict")
+        pulumi.set(__self__, "node_meta", node_meta)
+        if passing and not isinstance(passing, bool):
+            raise TypeError("Expected argument 'passing' to be a bool")
+        pulumi.set(__self__, "passing", passing)
+        if results and not isinstance(results, list):
+            raise TypeError("Expected argument 'results' to be a list")
+        pulumi.set(__self__, "results", results)
+        if tag and not isinstance(tag, str):
+            raise TypeError("Expected argument 'tag' to be a str")
+        pulumi.set(__self__, "tag", tag)
+        if wait_for and not isinstance(wait_for, str):
+            raise TypeError("Expected argument 'wait_for' to be a str")
+        pulumi.set(__self__, "wait_for", wait_for)
+
+    @property
+    @pulumi.getter
+    def datacenter(self) -> Optional[str]:
         """
         The datacenter in which the node is running.
         * [`tagged_addresses`](https://www.consul.io/docs/agent/http/catalog.html#TaggedAddresses) -
         List of explicit LAN and WAN IP addresses for the agent.
         """
-        if filter and not isinstance(filter, str):
-            raise TypeError("Expected argument 'filter' to be a str")
-        __self__.filter = filter
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        return pulumi.get(self, "datacenter")
+
+    @property
+    @pulumi.getter
+    def filter(self) -> Optional[str]:
+        return pulumi.get(self, "filter")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        __self__.name = name
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
         """
         The name of this health-check.
         """
-        if near and not isinstance(near, str):
-            raise TypeError("Expected argument 'near' to be a str")
-        __self__.near = near
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def near(self) -> Optional[str]:
         """
         The node to which the result must be sorted to.
         """
-        if node_meta and not isinstance(node_meta, dict):
-            raise TypeError("Expected argument 'node_meta' to be a dict")
-        __self__.node_meta = node_meta
+        return pulumi.get(self, "near")
+
+    @property
+    @pulumi.getter(name="nodeMeta")
+    def node_meta(self) -> Optional[Mapping[str, str]]:
         """
         The list of metadata to filter the nodes.
         """
-        if passing and not isinstance(passing, bool):
-            raise TypeError("Expected argument 'passing' to be a bool")
-        __self__.passing = passing
+        return pulumi.get(self, "node_meta")
+
+    @property
+    @pulumi.getter
+    def passing(self) -> Optional[bool]:
         """
         Whether to return only nodes with all checks in the
         passing state.
         """
-        if results and not isinstance(results, list):
-            raise TypeError("Expected argument 'results' to be a list")
-        __self__.results = results
+        return pulumi.get(self, "passing")
+
+    @property
+    @pulumi.getter
+    def results(self) -> List['outputs.GetServiceHealthResultResult']:
         """
         A list of entries and details about each endpoint advertising a
         service.  Each element in the list has three attributes: `node`, `service` and
         `checks`.  The list of the attributes of each one is detailed below.
         """
-        if tag and not isinstance(tag, str):
-            raise TypeError("Expected argument 'tag' to be a str")
-        __self__.tag = tag
+        return pulumi.get(self, "results")
+
+    @property
+    @pulumi.getter
+    def tag(self) -> Optional[str]:
         """
         The name of the tag used to filter the list.
         """
-        if wait_for and not isinstance(wait_for, str):
-            raise TypeError("Expected argument 'wait_for' to be a str")
-        __self__.wait_for = wait_for
+        return pulumi.get(self, "tag")
+
+    @property
+    @pulumi.getter(name="waitFor")
+    def wait_for(self) -> Optional[str]:
+        return pulumi.get(self, "wait_for")
+
+
 class AwaitableGetServiceHealthResult(GetServiceHealthResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -89,7 +149,16 @@ class AwaitableGetServiceHealthResult(GetServiceHealthResult):
             tag=self.tag,
             wait_for=self.wait_for)
 
-def get_service_health(datacenter=None,filter=None,name=None,near=None,node_meta=None,passing=None,tag=None,wait_for=None,opts=None):
+
+def get_service_health(datacenter: Optional[str] = None,
+                       filter: Optional[str] = None,
+                       name: Optional[str] = None,
+                       near: Optional[str] = None,
+                       node_meta: Optional[Mapping[str, str]] = None,
+                       passing: Optional[bool] = None,
+                       tag: Optional[str] = None,
+                       wait_for: Optional[str] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServiceHealthResult:
     """
     `getServiceHealth` can be used to get the list of the instances that
     are currently healthy, according to their associated  health-checks.
@@ -106,7 +175,7 @@ def get_service_health(datacenter=None,filter=None,name=None,near=None,node_meta
     :param str name: The service name to select.
     :param str near: Specifies a node name to sort the node list in ascending order
            based on the estimated round trip time from that node.
-    :param dict node_meta: Filter the results to nodes with the specified key/value
+    :param Mapping[str, str] node_meta: Filter the results to nodes with the specified key/value
            pairs.
     :param bool passing: Whether to return only nodes with all checks in the
            passing state. Defaults to `true`.
@@ -114,8 +183,6 @@ def get_service_health(datacenter=None,filter=None,name=None,near=None,node_meta
            based on a single matching tag.
     """
     __args__ = dict()
-
-
     __args__['datacenter'] = datacenter
     __args__['filter'] = filter
     __args__['name'] = name
@@ -127,17 +194,17 @@ def get_service_health(datacenter=None,filter=None,name=None,near=None,node_meta
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('consul:index/getServiceHealth:getServiceHealth', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('consul:index/getServiceHealth:getServiceHealth', __args__, opts=opts, typ=GetServiceHealthResult).value
 
     return AwaitableGetServiceHealthResult(
-        datacenter=__ret__.get('datacenter'),
-        filter=__ret__.get('filter'),
-        id=__ret__.get('id'),
-        name=__ret__.get('name'),
-        near=__ret__.get('near'),
-        node_meta=__ret__.get('nodeMeta'),
-        passing=__ret__.get('passing'),
-        results=__ret__.get('results'),
-        tag=__ret__.get('tag'),
-        wait_for=__ret__.get('waitFor'))
+        datacenter=__ret__.datacenter,
+        filter=__ret__.filter,
+        id=__ret__.id,
+        name=__ret__.name,
+        near=__ret__.near,
+        node_meta=__ret__.node_meta,
+        passing=__ret__.passing,
+        results=__ret__.results,
+        tag=__ret__.tag,
+        wait_for=__ret__.wait_for)

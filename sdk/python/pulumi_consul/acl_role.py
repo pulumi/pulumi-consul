@@ -5,36 +5,26 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['AclRole']
 
 
 class AclRole(pulumi.CustomResource):
-    description: pulumi.Output[str]
-    """
-    A free form human readable description of the role.
-    """
-    name: pulumi.Output[str]
-    """
-    The name of the ACL role.
-    """
-    namespace: pulumi.Output[str]
-    """
-    The namespace to create the role within.
-    """
-    policies: pulumi.Output[list]
-    """
-    The list of policies that should be applied to the role.
-    """
-    service_identities: pulumi.Output[list]
-    """
-    The list of service identities that should
-    be applied to the role.
-
-      * `datacenters` (`list`) - The datacenters the effective policy is valid within.
-      * `serviceName` (`str`) - The name of the service.
-    """
-    def __init__(__self__, resource_name, opts=None, description=None, name=None, namespace=None, policies=None, service_identities=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 namespace: Optional[pulumi.Input[str]] = None,
+                 policies: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 service_identities: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['AclRoleServiceIdentityArgs']]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Starting with Consul 1.5.0, the AclRole can be used to managed Consul ACL roles.
 
@@ -50,9 +40,9 @@ class AclRole(pulumi.CustomResource):
         read = consul.AclRole("read",
             description="bar",
             policies=[read_policy.id],
-            service_identities=[{
-                "serviceName": "foo",
-            }])
+            service_identities=[consul.AclRoleServiceIdentityArgs(
+                service_name="foo",
+            )])
         ```
 
         :param str resource_name: The name of the resource.
@@ -60,14 +50,9 @@ class AclRole(pulumi.CustomResource):
         :param pulumi.Input[str] description: A free form human readable description of the role.
         :param pulumi.Input[str] name: The name of the ACL role.
         :param pulumi.Input[str] namespace: The namespace to create the role within.
-        :param pulumi.Input[list] policies: The list of policies that should be applied to the role.
-        :param pulumi.Input[list] service_identities: The list of service identities that should
+        :param pulumi.Input[List[pulumi.Input[str]]] policies: The list of policies that should be applied to the role.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['AclRoleServiceIdentityArgs']]]] service_identities: The list of service identities that should
                be applied to the role.
-
-        The **service_identities** object supports the following:
-
-          * `datacenters` (`pulumi.Input[list]`) - The datacenters the effective policy is valid within.
-          * `serviceName` (`pulumi.Input[str]`) - The name of the service.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -80,7 +65,7 @@ class AclRole(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -98,25 +83,27 @@ class AclRole(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, description=None, name=None, namespace=None, policies=None, service_identities=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            namespace: Optional[pulumi.Input[str]] = None,
+            policies: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            service_identities: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['AclRoleServiceIdentityArgs']]]]] = None) -> 'AclRole':
         """
         Get an existing AclRole resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A free form human readable description of the role.
         :param pulumi.Input[str] name: The name of the ACL role.
         :param pulumi.Input[str] namespace: The namespace to create the role within.
-        :param pulumi.Input[list] policies: The list of policies that should be applied to the role.
-        :param pulumi.Input[list] service_identities: The list of service identities that should
+        :param pulumi.Input[List[pulumi.Input[str]]] policies: The list of policies that should be applied to the role.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['AclRoleServiceIdentityArgs']]]] service_identities: The list of service identities that should
                be applied to the role.
-
-        The **service_identities** object supports the following:
-
-          * `datacenters` (`pulumi.Input[list]`) - The datacenters the effective policy is valid within.
-          * `serviceName` (`pulumi.Input[str]`) - The name of the service.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -129,8 +116,50 @@ class AclRole(pulumi.CustomResource):
         __props__["service_identities"] = service_identities
         return AclRole(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        A free form human readable description of the role.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the ACL role.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[str]:
+        """
+        The namespace to create the role within.
+        """
+        return pulumi.get(self, "namespace")
+
+    @property
+    @pulumi.getter
+    def policies(self) -> Optional[List[str]]:
+        """
+        The list of policies that should be applied to the role.
+        """
+        return pulumi.get(self, "policies")
+
+    @property
+    @pulumi.getter(name="serviceIdentities")
+    def service_identities(self) -> Optional[List['outputs.AclRoleServiceIdentity']]:
+        """
+        The list of service identities that should
+        be applied to the role.
+        """
+        return pulumi.get(self, "service_identities")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+
