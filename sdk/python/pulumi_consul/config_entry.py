@@ -13,7 +13,7 @@ __all__ = ['ConfigEntry']
 
 class ConfigEntry(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  config_json: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
@@ -178,7 +178,7 @@ class ConfigEntry(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="configJson")
-    def config_json(self) -> Optional[str]:
+    def config_json(self) -> pulumi.Output[Optional[str]]:
         """
         An arbitrary map of configuration values.
         """
@@ -186,7 +186,7 @@ class ConfigEntry(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def kind(self) -> str:
+    def kind(self) -> pulumi.Output[str]:
         """
         The kind of configuration entry to register.
         """
@@ -194,7 +194,7 @@ class ConfigEntry(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the configuration entry being registred.
         """

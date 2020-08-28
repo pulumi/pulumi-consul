@@ -13,7 +13,7 @@ __all__ = ['AutopilotConfig']
 
 class AutopilotConfig(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cleanup_dead_servers: Optional[pulumi.Input[bool]] = None,
                  datacenter: Optional[pulumi.Input[str]] = None,
@@ -151,7 +151,7 @@ class AutopilotConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cleanupDeadServers")
-    def cleanup_dead_servers(self) -> Optional[bool]:
+    def cleanup_dead_servers(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether to remove failing servers when a
         replacement comes online. Defaults to true.
@@ -160,7 +160,7 @@ class AutopilotConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def datacenter(self) -> Optional[str]:
+    def datacenter(self) -> pulumi.Output[Optional[str]]:
         """
         The datacenter to use. This overrides the agent's
         default datacenter and the datacenter in the provider setup.
@@ -169,7 +169,7 @@ class AutopilotConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="disableUpgradeMigration")
-    def disable_upgrade_migration(self) -> Optional[bool]:
+    def disable_upgrade_migration(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether to disable [upgrade migrations](https://www.consul.io/docs/guides/autopilot.html#redundancy-zones).
         Defaults to false.
@@ -178,7 +178,7 @@ class AutopilotConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="lastContactThreshold")
-    def last_contact_threshold(self) -> Optional[str]:
+    def last_contact_threshold(self) -> pulumi.Output[Optional[str]]:
         """
         The time after which a server is
         considered as unhealthy and will be removed. Defaults to `"200ms"`.
@@ -187,7 +187,7 @@ class AutopilotConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxTrailingLogs")
-    def max_trailing_logs(self) -> Optional[float]:
+    def max_trailing_logs(self) -> pulumi.Output[Optional[float]]:
         """
         The maximum number of Raft log entries a
         server can trail the leader. Defaults to 250.
@@ -196,7 +196,7 @@ class AutopilotConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="redundancyZoneTag")
-    def redundancy_zone_tag(self) -> Optional[str]:
+    def redundancy_zone_tag(self) -> pulumi.Output[Optional[str]]:
         """
         The [redundancy zone](https://www.consul.io/docs/guides/autopilot.html#redundancy-zones)
         tag to use. Consul will try to keep one voting server by zone to take advantage
@@ -206,7 +206,7 @@ class AutopilotConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serverStabilizationTime")
-    def server_stabilization_time(self) -> Optional[str]:
+    def server_stabilization_time(self) -> pulumi.Output[Optional[str]]:
         """
         The period to wait for a server to be
         healthy and stable before being promoted to a full, voting member. Defaults to
@@ -216,7 +216,7 @@ class AutopilotConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="upgradeVersionTag")
-    def upgrade_version_tag(self) -> Optional[str]:
+    def upgrade_version_tag(self) -> pulumi.Output[Optional[str]]:
         """
         The tag to override the version information
         used during a migration. Defaults to an empty string.

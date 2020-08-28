@@ -13,7 +13,7 @@ __all__ = ['Node']
 
 class Node(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  address: Optional[pulumi.Input[str]] = None,
                  datacenter: Optional[pulumi.Input[str]] = None,
@@ -113,7 +113,7 @@ class Node(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def address(self) -> str:
+    def address(self) -> pulumi.Output[str]:
         """
         The address of the node being added to,
         or referenced in the catalog.
@@ -122,7 +122,7 @@ class Node(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def datacenter(self) -> str:
+    def datacenter(self) -> pulumi.Output[str]:
         """
         The datacenter to use. This overrides the agent's
         default datacenter and the datacenter in the provider setup.
@@ -131,7 +131,7 @@ class Node(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def meta(self) -> Optional[Mapping[str, str]]:
+    def meta(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Key/value pairs that are associated with the node.
         """
@@ -139,7 +139,7 @@ class Node(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the node being added to, or
         referenced in the catalog.
@@ -148,7 +148,7 @@ class Node(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def token(self) -> Optional[str]:
+    def token(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "token")
 
     def translate_output_property(self, prop):

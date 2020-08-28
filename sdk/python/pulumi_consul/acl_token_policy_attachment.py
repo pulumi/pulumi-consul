@@ -13,7 +13,7 @@ __all__ = ['AclTokenPolicyAttachment']
 
 class AclTokenPolicyAttachment(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  policy: Optional[pulumi.Input[str]] = None,
                  token_id: Optional[pulumi.Input[str]] = None,
@@ -82,7 +82,7 @@ class AclTokenPolicyAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def policy(self) -> str:
+    def policy(self) -> pulumi.Output[str]:
         """
         The name of the policy attached to the token.
         """
@@ -90,7 +90,7 @@ class AclTokenPolicyAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tokenId")
-    def token_id(self) -> str:
+    def token_id(self) -> pulumi.Output[str]:
         """
         The id of the token.
         """

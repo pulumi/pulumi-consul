@@ -15,7 +15,7 @@ __all__ = ['Service']
 
 class Service(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  address: Optional[pulumi.Input[str]] = None,
                  checks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ServiceCheckArgs']]]]] = None,
@@ -218,7 +218,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def address(self) -> str:
+    def address(self) -> pulumi.Output[str]:
         """
         The address of the service. Defaults to the
         address of the node.
@@ -227,12 +227,12 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def checks(self) -> Optional[List['outputs.ServiceCheck']]:
+    def checks(self) -> pulumi.Output[Optional[List['outputs.ServiceCheck']]]:
         return pulumi.get(self, "checks")
 
     @property
     @pulumi.getter
-    def datacenter(self) -> str:
+    def datacenter(self) -> pulumi.Output[str]:
         """
         The datacenter to use. This overrides the
         agent's default datacenter and the datacenter in the provider setup.
@@ -241,7 +241,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enableTagOverride")
-    def enable_tag_override(self) -> Optional[bool]:
+    def enable_tag_override(self) -> pulumi.Output[Optional[bool]]:
         """
         Specifies to disable the
         anti-entropy feature for this service's tags. Defaults to `false`.
@@ -250,12 +250,12 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def external(self) -> Optional[bool]:
+    def external(self) -> pulumi.Output[Optional[bool]]:
         return pulumi.get(self, "external")
 
     @property
     @pulumi.getter
-    def meta(self) -> Optional[Mapping[str, str]]:
+    def meta(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A map of arbitrary KV metadata linked to the service
         instance.
@@ -264,7 +264,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the health-check.
         """
@@ -272,7 +272,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def namespace(self) -> Optional[str]:
+    def namespace(self) -> pulumi.Output[Optional[str]]:
         """
         The namespace to create the service within.
         """
@@ -280,7 +280,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def node(self) -> str:
+    def node(self) -> pulumi.Output[str]:
         """
         The name of the node the to register the service on.
         """
@@ -288,7 +288,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def port(self) -> Optional[float]:
+    def port(self) -> pulumi.Output[Optional[float]]:
         """
         The port of the service.
         """
@@ -296,7 +296,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceId")
-    def service_id(self) -> str:
+    def service_id(self) -> pulumi.Output[str]:
         """
         - If the service ID is not provided, it will be defaulted to the value
         of the `name` attribute.
@@ -305,7 +305,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List[str]]:
+    def tags(self) -> pulumi.Output[Optional[List[str]]]:
         """
         A list of values that are opaque to Consul,
         but can be used to distinguish between services or nodes.

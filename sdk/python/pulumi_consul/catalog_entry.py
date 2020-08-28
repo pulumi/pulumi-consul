@@ -15,7 +15,7 @@ __all__ = ['CatalogEntry']
 
 class CatalogEntry(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  address: Optional[pulumi.Input[str]] = None,
                  datacenter: Optional[pulumi.Input[str]] = None,
@@ -137,7 +137,7 @@ class CatalogEntry(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def address(self) -> str:
+    def address(self) -> pulumi.Output[str]:
         """
         The address of the node being added to,
         or referenced in the catalog.
@@ -146,7 +146,7 @@ class CatalogEntry(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def datacenter(self) -> str:
+    def datacenter(self) -> pulumi.Output[str]:
         """
         The datacenter to use. This overrides the
         agent's default datacenter and the datacenter in the provider setup.
@@ -155,7 +155,7 @@ class CatalogEntry(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def node(self) -> str:
+    def node(self) -> pulumi.Output[str]:
         """
         The name of the node being added to, or
         referenced in the catalog.
@@ -164,7 +164,7 @@ class CatalogEntry(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def services(self) -> Optional[List['outputs.CatalogEntryService']]:
+    def services(self) -> pulumi.Output[Optional[List['outputs.CatalogEntryService']]]:
         """
         A service to optionally associated with
         the node. Supported values are documented below.
@@ -173,7 +173,7 @@ class CatalogEntry(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def token(self) -> Optional[str]:
+    def token(self) -> pulumi.Output[Optional[str]]:
         """
         ACL token.
         """

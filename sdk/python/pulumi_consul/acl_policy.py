@@ -13,7 +13,7 @@ __all__ = ['AclPolicy']
 
 class AclPolicy(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  datacenters: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -114,7 +114,7 @@ class AclPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def datacenters(self) -> Optional[List[str]]:
+    def datacenters(self) -> pulumi.Output[Optional[List[str]]]:
         """
         The datacenters of the policy.
         """
@@ -122,7 +122,7 @@ class AclPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         The description of the policy.
         """
@@ -130,7 +130,7 @@ class AclPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the policy.
         """
@@ -138,7 +138,7 @@ class AclPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def namespace(self) -> Optional[str]:
+    def namespace(self) -> pulumi.Output[Optional[str]]:
         """
         The namespace to create the policy within.
         """
@@ -146,7 +146,7 @@ class AclPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def rules(self) -> str:
+    def rules(self) -> pulumi.Output[str]:
         """
         The rules of the policy.
         """

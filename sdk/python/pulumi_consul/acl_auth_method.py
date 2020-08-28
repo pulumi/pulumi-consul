@@ -15,7 +15,7 @@ __all__ = ['AclAuthMethod']
 
 class AclAuthMethod(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  config_json: Optional[pulumi.Input[str]] = None,
@@ -185,7 +185,7 @@ class AclAuthMethod(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def config(self) -> Optional[Mapping[str, str]]:
+    def config(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The raw configuration for this ACL auth method. This
         attribute is deprecated and will be removed in a future version. `config_json`
@@ -195,7 +195,7 @@ class AclAuthMethod(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="configJson")
-    def config_json(self) -> Optional[str]:
+    def config_json(self) -> pulumi.Output[Optional[str]]:
         """
         The raw configuration for this ACL auth method.
         """
@@ -203,7 +203,7 @@ class AclAuthMethod(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         A free form human readable description of the auth method.
         """
@@ -211,7 +211,7 @@ class AclAuthMethod(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[str]:
+    def display_name(self) -> pulumi.Output[Optional[str]]:
         """
         An optional name to use instead of the name
         attribute when displaying information about this auth method.
@@ -220,7 +220,7 @@ class AclAuthMethod(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxTokenTtl")
-    def max_token_ttl(self) -> Optional[str]:
+    def max_token_ttl(self) -> pulumi.Output[Optional[str]]:
         """
         The maximum life of any token created by this
         auth method.
@@ -229,7 +229,7 @@ class AclAuthMethod(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the ACL auth method.
         """
@@ -237,7 +237,7 @@ class AclAuthMethod(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def namespace(self) -> Optional[str]:
+    def namespace(self) -> pulumi.Output[Optional[str]]:
         """
         The namespace to create the policy within.
         """
@@ -245,7 +245,7 @@ class AclAuthMethod(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="namespaceRules")
-    def namespace_rules(self) -> Optional[List['outputs.AclAuthMethodNamespaceRule']]:
+    def namespace_rules(self) -> pulumi.Output[Optional[List['outputs.AclAuthMethodNamespaceRule']]]:
         """
         A set of rules that control
         which namespace tokens created via this auth method will be created within.
@@ -254,7 +254,7 @@ class AclAuthMethod(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tokenLocality")
-    def token_locality(self) -> Optional[str]:
+    def token_locality(self) -> pulumi.Output[Optional[str]]:
         """
         The kind of token that this auth method
         produces. This can be either 'local' or 'global'.
@@ -263,7 +263,7 @@ class AclAuthMethod(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def type(self) -> str:
+    def type(self) -> pulumi.Output[str]:
         """
         The type of the ACL auth method.
         """

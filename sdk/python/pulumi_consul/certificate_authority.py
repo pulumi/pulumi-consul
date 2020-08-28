@@ -13,7 +13,7 @@ __all__ = ['CertificateAuthority']
 
 class CertificateAuthority(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  connect_provider: Optional[pulumi.Input[str]] = None,
@@ -84,7 +84,7 @@ class CertificateAuthority(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def config(self) -> Mapping[str, str]:
+    def config(self) -> pulumi.Output[Mapping[str, str]]:
         """
         The raw configuration to use for the chosen provider.
         """
@@ -92,7 +92,7 @@ class CertificateAuthority(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="connectProvider")
-    def connect_provider(self) -> str:
+    def connect_provider(self) -> pulumi.Output[str]:
         """
         Specifies the CA provider type to use.
         """

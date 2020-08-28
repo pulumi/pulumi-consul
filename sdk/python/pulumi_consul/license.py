@@ -13,7 +13,7 @@ __all__ = ['License']
 
 class License(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  datacenter: Optional[pulumi.Input[str]] = None,
                  license: Optional[pulumi.Input[str]] = None,
@@ -140,7 +140,7 @@ class License(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="customerId")
-    def customer_id(self) -> str:
+    def customer_id(self) -> pulumi.Output[str]:
         """
         The ID of the customer the license is attached to.
         """
@@ -148,7 +148,7 @@ class License(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def datacenter(self) -> Optional[str]:
+    def datacenter(self) -> pulumi.Output[Optional[str]]:
         """
         The datacenter to use. This overrides the
         agent's default datacenter and the datacenter in the provider setup.
@@ -157,7 +157,7 @@ class License(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="expirationTime")
-    def expiration_time(self) -> str:
+    def expiration_time(self) -> pulumi.Output[str]:
         """
         The expiration time of the license.
         """
@@ -165,7 +165,7 @@ class License(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def features(self) -> List[str]:
+    def features(self) -> pulumi.Output[List[str]]:
         """
         The features for which the license is valid.
         """
@@ -173,7 +173,7 @@ class License(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def flags(self) -> Mapping[str, str]:
+    def flags(self) -> pulumi.Output[Mapping[str, str]]:
         """
         The metadata attached to the license.
         """
@@ -181,7 +181,7 @@ class License(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="installationId")
-    def installation_id(self) -> str:
+    def installation_id(self) -> pulumi.Output[str]:
         """
         The ID of the current installation.
         """
@@ -189,7 +189,7 @@ class License(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="issueTime")
-    def issue_time(self) -> str:
+    def issue_time(self) -> pulumi.Output[str]:
         """
         The date the license was issued.
         """
@@ -197,7 +197,7 @@ class License(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def license(self) -> str:
+    def license(self) -> pulumi.Output[str]:
         """
         The Consul license to use.
         """
@@ -205,7 +205,7 @@ class License(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="licenseId")
-    def license_id(self) -> str:
+    def license_id(self) -> pulumi.Output[str]:
         """
         The ID of the license used.
         """
@@ -213,7 +213,7 @@ class License(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def product(self) -> str:
+    def product(self) -> pulumi.Output[str]:
         """
         The product for which the license is valid.
         """
@@ -221,7 +221,7 @@ class License(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="startTime")
-    def start_time(self) -> str:
+    def start_time(self) -> pulumi.Output[str]:
         """
         The start time of the license.
         """
@@ -229,7 +229,7 @@ class License(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def valid(self) -> bool:
+    def valid(self) -> pulumi.Output[bool]:
         """
         Whether the license is valid.
         """
@@ -237,7 +237,7 @@ class License(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def warnings(self) -> List[str]:
+    def warnings(self) -> pulumi.Output[List[str]]:
         """
         A list of warning messages regarding the license validity.
         """

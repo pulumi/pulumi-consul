@@ -13,7 +13,7 @@ __all__ = ['AclToken']
 
 class AclToken(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  accessor_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -123,7 +123,7 @@ class AclToken(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accessorId")
-    def accessor_id(self) -> str:
+    def accessor_id(self) -> pulumi.Output[str]:
         """
         The uuid of the token. If omitted, Consul will
         generate a random uuid.
@@ -132,7 +132,7 @@ class AclToken(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         The description of the token.
         """
@@ -140,7 +140,7 @@ class AclToken(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def local(self) -> Optional[bool]:
+    def local(self) -> pulumi.Output[Optional[bool]]:
         """
         The flag to set the token local to the current datacenter.
         """
@@ -148,7 +148,7 @@ class AclToken(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def namespace(self) -> Optional[str]:
+    def namespace(self) -> pulumi.Output[Optional[str]]:
         """
         The namespace to create the token within.
         """
@@ -156,7 +156,7 @@ class AclToken(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def policies(self) -> Optional[List[str]]:
+    def policies(self) -> pulumi.Output[Optional[List[str]]]:
         """
         The list of policies attached to the token.
         """
@@ -164,7 +164,7 @@ class AclToken(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def roles(self) -> Optional[List[str]]:
+    def roles(self) -> pulumi.Output[Optional[List[str]]]:
         """
         The list of roles attached to the token.
         """
