@@ -15,7 +15,7 @@ __all__ = ['Keys']
 
 class Keys(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  datacenter: Optional[pulumi.Input[str]] = None,
                  keys: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['KeysKeyArgs']]]]] = None,
@@ -101,7 +101,7 @@ class Keys(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def datacenter(self) -> str:
+    def datacenter(self) -> pulumi.Output[str]:
         """
         The datacenter to use. This overrides the
         agent's default datacenter and the datacenter in the provider setup.
@@ -110,7 +110,7 @@ class Keys(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def keys(self) -> Optional[List['outputs.KeysKey']]:
+    def keys(self) -> pulumi.Output[Optional[List['outputs.KeysKey']]]:
         """
         Specifies a key in Consul to be written.
         Supported values documented below.
@@ -119,7 +119,7 @@ class Keys(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def namespace(self) -> Optional[str]:
+    def namespace(self) -> pulumi.Output[Optional[str]]:
         """
         The namespace to create the keys within.
         """
@@ -127,7 +127,7 @@ class Keys(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def token(self) -> Optional[str]:
+    def token(self) -> pulumi.Output[Optional[str]]:
         """
         The ACL token to use. This overrides the
         token that the agent provides by default.
@@ -136,7 +136,7 @@ class Keys(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def var(self) -> Mapping[str, str]:
+    def var(self) -> pulumi.Output[Mapping[str, str]]:
         return pulumi.get(self, "var")
 
     def translate_output_property(self, prop):

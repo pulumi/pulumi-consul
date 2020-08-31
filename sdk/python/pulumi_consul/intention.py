@@ -13,7 +13,7 @@ __all__ = ['Intention']
 
 class Intention(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -160,7 +160,7 @@ class Intention(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def action(self) -> str:
+    def action(self) -> pulumi.Output[str]:
         """
         The intention action. Must be one of `allow` or `deny`.
         """
@@ -168,7 +168,7 @@ class Intention(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         Optional description that can be used by Consul
         tooling, but is not used internally.
@@ -177,7 +177,7 @@ class Intention(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="destinationName")
-    def destination_name(self) -> str:
+    def destination_name(self) -> pulumi.Output[str]:
         """
         The name of the destination service for the intention. This
         service does not have to exist.
@@ -186,7 +186,7 @@ class Intention(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="destinationNamespace")
-    def destination_namespace(self) -> Optional[str]:
+    def destination_namespace(self) -> pulumi.Output[Optional[str]]:
         """
         The destination
         namespace of the intention.
@@ -195,7 +195,7 @@ class Intention(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def meta(self) -> Optional[Mapping[str, str]]:
+    def meta(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Key/value pairs that are opaque to Consul and are associated
         with the intention.
@@ -204,7 +204,7 @@ class Intention(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sourceName")
-    def source_name(self) -> str:
+    def source_name(self) -> pulumi.Output[str]:
         """
         The name of the source service for the intention. This
         service does not have to exist.
@@ -213,7 +213,7 @@ class Intention(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sourceNamespace")
-    def source_namespace(self) -> Optional[str]:
+    def source_namespace(self) -> pulumi.Output[Optional[str]]:
         """
         The source namespace of the
         intention.

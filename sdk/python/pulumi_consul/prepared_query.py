@@ -15,7 +15,7 @@ __all__ = ['PreparedQuery']
 
 class PreparedQuery(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connect: Optional[pulumi.Input[bool]] = None,
                  datacenter: Optional[pulumi.Input[str]] = None,
@@ -222,7 +222,7 @@ class PreparedQuery(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def connect(self) -> Optional[bool]:
+    def connect(self) -> pulumi.Output[Optional[bool]]:
         """
         When `true` the prepared query will return connect
         proxy services for a queried service.  Conditions such as `tags` in the
@@ -232,7 +232,7 @@ class PreparedQuery(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def datacenter(self) -> Optional[str]:
+    def datacenter(self) -> pulumi.Output[Optional[str]]:
         """
         The datacenter to use. This overrides the
         agent's default datacenter and the datacenter in the provider setup.
@@ -241,7 +241,7 @@ class PreparedQuery(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def dns(self) -> Optional['outputs.PreparedQueryDns']:
+    def dns(self) -> pulumi.Output[Optional['outputs.PreparedQueryDns']]:
         """
         Settings for controlling the DNS response details.
         """
@@ -249,7 +249,7 @@ class PreparedQuery(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def failover(self) -> Optional['outputs.PreparedQueryFailover']:
+    def failover(self) -> pulumi.Output[Optional['outputs.PreparedQueryFailover']]:
         """
         Options for controlling behavior when no healthy
         nodes are available in the local DC.
@@ -258,7 +258,7 @@ class PreparedQuery(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ignoreCheckIds")
-    def ignore_check_ids(self) -> Optional[List[str]]:
+    def ignore_check_ids(self) -> pulumi.Output[Optional[List[str]]]:
         """
         Specifies a list of check IDs that should be
         ignored when filtering unhealthy instances. This is mostly useful in an
@@ -271,7 +271,7 @@ class PreparedQuery(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the prepared query. Used to identify
         the prepared query during requests. Can be specified as an empty string
@@ -281,7 +281,7 @@ class PreparedQuery(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def near(self) -> Optional[str]:
+    def near(self) -> pulumi.Output[Optional[str]]:
         """
         Allows specifying the name of a node to sort results
         near using Consul's distance sorting and network coordinates. The magic
@@ -292,7 +292,7 @@ class PreparedQuery(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nodeMeta")
-    def node_meta(self) -> Optional[Mapping[str, str]]:
+    def node_meta(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Specifies a list of user-defined key/value pairs that
         will be used for filtering the query results to nodes with the given metadata
@@ -302,7 +302,7 @@ class PreparedQuery(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="onlyPassing")
-    def only_passing(self) -> Optional[bool]:
+    def only_passing(self) -> pulumi.Output[Optional[bool]]:
         """
         When `true`, the prepared query will only
         return nodes with passing health checks in the result.
@@ -311,7 +311,7 @@ class PreparedQuery(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def service(self) -> str:
+    def service(self) -> pulumi.Output[str]:
         """
         The name of the service to query.
         """
@@ -319,7 +319,7 @@ class PreparedQuery(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceMeta")
-    def service_meta(self) -> Optional[Mapping[str, str]]:
+    def service_meta(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Specifies a list of user-defined key/value pairs
         that will be used for filtering the query results to services with the given
@@ -329,7 +329,7 @@ class PreparedQuery(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def session(self) -> Optional[str]:
+    def session(self) -> pulumi.Output[Optional[str]]:
         """
         The name of the Consul session to tie this query's
         lifetime to.  This is an advanced parameter that should not be used without a
@@ -341,7 +341,7 @@ class PreparedQuery(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="storedToken")
-    def stored_token(self) -> Optional[str]:
+    def stored_token(self) -> pulumi.Output[Optional[str]]:
         """
         The ACL token to store with the prepared
         query. This token will be used by default whenever the query is executed.
@@ -350,7 +350,7 @@ class PreparedQuery(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List[str]]:
+    def tags(self) -> pulumi.Output[Optional[List[str]]]:
         """
         The list of required and/or disallowed tags.  If a tag is
         in this list it must be present.  If the tag is preceded with a "!" then it is
@@ -360,7 +360,7 @@ class PreparedQuery(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def template(self) -> Optional['outputs.PreparedQueryTemplate']:
+    def template(self) -> pulumi.Output[Optional['outputs.PreparedQueryTemplate']]:
         """
         Query templating options. This is used to make a
         single prepared query respond to many different requests.
@@ -369,7 +369,7 @@ class PreparedQuery(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def token(self) -> Optional[str]:
+    def token(self) -> pulumi.Output[Optional[str]]:
         """
         The ACL token to use when saving the prepared query.
         This overrides the token that the agent provides by default.

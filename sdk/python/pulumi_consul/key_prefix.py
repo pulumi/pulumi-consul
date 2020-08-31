@@ -15,7 +15,7 @@ __all__ = ['KeyPrefix']
 
 class KeyPrefix(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  datacenter: Optional[pulumi.Input[str]] = None,
                  namespace: Optional[pulumi.Input[str]] = None,
@@ -122,7 +122,7 @@ class KeyPrefix(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def datacenter(self) -> str:
+    def datacenter(self) -> pulumi.Output[str]:
         """
         The datacenter to use. This overrides the
         agent's default datacenter and the datacenter in the provider setup.
@@ -131,7 +131,7 @@ class KeyPrefix(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def namespace(self) -> Optional[str]:
+    def namespace(self) -> pulumi.Output[Optional[str]]:
         """
         The namespace to create the keys within.
         """
@@ -139,7 +139,7 @@ class KeyPrefix(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="pathPrefix")
-    def path_prefix(self) -> str:
+    def path_prefix(self) -> pulumi.Output[str]:
         """
         Specifies the common prefix shared by all keys
         that will be managed by this resource instance. In most cases this will
@@ -149,7 +149,7 @@ class KeyPrefix(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="subkeyCollection")
-    def subkey_collection(self) -> Optional[List['outputs.KeyPrefixSubkeyCollection']]:
+    def subkey_collection(self) -> pulumi.Output[Optional[List['outputs.KeyPrefixSubkeyCollection']]]:
         """
         A subkey to add. Supported values documented below.
         Multiple blocks supported.
@@ -158,7 +158,7 @@ class KeyPrefix(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def subkeys(self) -> Optional[Mapping[str, str]]:
+    def subkeys(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A mapping from subkey name (which will be appended
         to the given `path_prefix`) to the value that should be stored at that key.
@@ -169,7 +169,7 @@ class KeyPrefix(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def token(self) -> Optional[str]:
+    def token(self) -> pulumi.Output[Optional[str]]:
         """
         The ACL token to use. This overrides the
         token that the agent provides by default.

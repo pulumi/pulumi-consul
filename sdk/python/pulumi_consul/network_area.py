@@ -13,7 +13,7 @@ __all__ = ['NetworkArea']
 
 class NetworkArea(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  datacenter: Optional[pulumi.Input[str]] = None,
                  peer_datacenter: Optional[pulumi.Input[str]] = None,
@@ -129,7 +129,7 @@ class NetworkArea(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def datacenter(self) -> str:
+    def datacenter(self) -> pulumi.Output[str]:
         """
         The datacenter to use. This overrides the
         agent's default datacenter and the datacenter in the provider setup.
@@ -138,7 +138,7 @@ class NetworkArea(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="peerDatacenter")
-    def peer_datacenter(self) -> str:
+    def peer_datacenter(self) -> pulumi.Output[str]:
         """
         The name of the Consul datacenter that will be
         joined to form the area.
@@ -147,7 +147,7 @@ class NetworkArea(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="retryJoins")
-    def retry_joins(self) -> Optional[List[str]]:
+    def retry_joins(self) -> pulumi.Output[Optional[List[str]]]:
         """
         Specifies a list of Consul servers to attempt to
         join. Servers can be given as `IP`, `IP:port`, `hostname`, or `hostname:port`.
@@ -156,7 +156,7 @@ class NetworkArea(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def token(self) -> Optional[str]:
+    def token(self) -> pulumi.Output[Optional[str]]:
         """
         The ACL token to use. This overrides the
         token that the agent provides by default.
@@ -165,7 +165,7 @@ class NetworkArea(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="useTls")
-    def use_tls(self) -> Optional[bool]:
+    def use_tls(self) -> pulumi.Output[Optional[bool]]:
         """
         Specifies whether gossip over this area should be
         encrypted with TLS if possible. Defaults to `false`.

@@ -15,7 +15,7 @@ __all__ = ['AclRole']
 
 class AclRole(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -118,7 +118,7 @@ class AclRole(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         A free form human readable description of the role.
         """
@@ -126,7 +126,7 @@ class AclRole(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the ACL role.
         """
@@ -134,7 +134,7 @@ class AclRole(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def namespace(self) -> Optional[str]:
+    def namespace(self) -> pulumi.Output[Optional[str]]:
         """
         The namespace to create the role within.
         """
@@ -142,7 +142,7 @@ class AclRole(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def policies(self) -> Optional[List[str]]:
+    def policies(self) -> pulumi.Output[Optional[List[str]]]:
         """
         The list of policies that should be applied to the role.
         """
@@ -150,7 +150,7 @@ class AclRole(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceIdentities")
-    def service_identities(self) -> Optional[List['outputs.AclRoleServiceIdentity']]:
+    def service_identities(self) -> pulumi.Output[Optional[List['outputs.AclRoleServiceIdentity']]]:
         """
         The list of service identities that should
         be applied to the role.

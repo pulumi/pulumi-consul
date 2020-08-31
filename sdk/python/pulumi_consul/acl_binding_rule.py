@@ -13,7 +13,7 @@ __all__ = ['AclBindingRule']
 
 class AclBindingRule(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auth_method: Optional[pulumi.Input[str]] = None,
                  bind_name: Optional[pulumi.Input[str]] = None,
@@ -143,7 +143,7 @@ class AclBindingRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="authMethod")
-    def auth_method(self) -> str:
+    def auth_method(self) -> pulumi.Output[str]:
         """
         The name of the ACL auth method this rule apply.
         """
@@ -151,7 +151,7 @@ class AclBindingRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="bindName")
-    def bind_name(self) -> str:
+    def bind_name(self) -> pulumi.Output[str]:
         """
         The name to bind to a token at login-time.
         """
@@ -159,7 +159,7 @@ class AclBindingRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="bindType")
-    def bind_type(self) -> str:
+    def bind_type(self) -> pulumi.Output[str]:
         """
         Specifies the way the binding rule affects a token
         created at login.
@@ -168,7 +168,7 @@ class AclBindingRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         A free form human readable description of the
         binding rule.
@@ -177,7 +177,7 @@ class AclBindingRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def namespace(self) -> Optional[str]:
+    def namespace(self) -> pulumi.Output[Optional[str]]:
         """
         The namespace to create the binding
         rule within.
@@ -186,7 +186,7 @@ class AclBindingRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def selector(self) -> Optional[str]:
+    def selector(self) -> pulumi.Output[Optional[str]]:
         """
         The expression used to math this rule against valid
         identities returned from an auth method validation.

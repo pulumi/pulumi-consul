@@ -2,7 +2,7 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to pulumi-terraform-bridge v2.7.0
+* Upgrade to pulumi-terraform-bridge v2.7.3
 * Upgrade to Pulumi v2.9.0, which adds type annotations and input/output classes to Python
 
 ---
@@ -14,7 +14,7 @@ CHANGELOG
 * Switch to GitHub actions for build
 
 ## 2.2.0 (2020-05-28)
-* Upgrade to Pulumi v2.3.0 
+* Upgrade to Pulumi v2.3.0
 * Upgrade to pulumi-terraform-bridge v2.4.0
 * Upgrade to v2.8.0 of the Consul Terraform Provider
 
@@ -36,7 +36,7 @@ CHANGELOG
 * Refactor layout to support Go modules
 
 ## 1.7.0 (2020-03-31)
-* Upgrade to v2.7.0 of the Consul Terraform Provider 
+* Upgrade to v2.7.0 of the Consul Terraform Provider
 
 ## 1.6.0 (2020-03-23)
 * Upgrade to Pulumi v1.12.1
