@@ -19,11 +19,14 @@ class Provider(pulumi.ProviderResource):
                  address: Optional[pulumi.Input[str]] = None,
                  ca_file: Optional[pulumi.Input[str]] = None,
                  ca_path: Optional[pulumi.Input[str]] = None,
+                 ca_pem: Optional[pulumi.Input[str]] = None,
                  cert_file: Optional[pulumi.Input[str]] = None,
+                 cert_pem: Optional[pulumi.Input[str]] = None,
                  datacenter: Optional[pulumi.Input[str]] = None,
                  http_auth: Optional[pulumi.Input[str]] = None,
                  insecure_https: Optional[pulumi.Input[bool]] = None,
                  key_file: Optional[pulumi.Input[str]] = None,
+                 key_pem: Optional[pulumi.Input[str]] = None,
                  namespace: Optional[pulumi.Input[str]] = None,
                  scheme: Optional[pulumi.Input[str]] = None,
                  token: Optional[pulumi.Input[str]] = None,
@@ -65,9 +68,11 @@ class Provider(pulumi.ProviderResource):
             if ca_path is None:
                 ca_path = _utilities.get_env('CONSUL_CAPATH')
             __props__['ca_path'] = ca_path
+            __props__['ca_pem'] = ca_pem
             if cert_file is None:
                 cert_file = _utilities.get_env('CONSUL_CERT_FILE')
             __props__['cert_file'] = cert_file
+            __props__['cert_pem'] = cert_pem
             __props__['datacenter'] = datacenter
             if http_auth is None:
                 http_auth = _utilities.get_env('CONSUL_HTTP_AUTH')
@@ -76,6 +81,7 @@ class Provider(pulumi.ProviderResource):
             if key_file is None:
                 key_file = _utilities.get_env('CONSUL_KEY_FILE')
             __props__['key_file'] = key_file
+            __props__['key_pem'] = key_pem
             __props__['namespace'] = namespace
             if scheme is None:
                 scheme = (_utilities.get_env('CONSUL_SCHEME', 'CONSUL_HTTP_SCHEME') or 'http')

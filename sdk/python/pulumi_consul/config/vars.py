@@ -12,11 +12,14 @@ __all__ = [
     'address',
     'ca_file',
     'ca_path',
+    'ca_pem',
     'cert_file',
+    'cert_pem',
     'datacenter',
     'http_auth',
     'insecure_https',
     'key_file',
+    'key_pem',
     'namespace',
     'scheme',
     'token',
@@ -30,7 +33,11 @@ ca_file = __config__.get('caFile') or _utilities.get_env('CONSUL_CA_FILE')
 
 ca_path = __config__.get('caPath') or _utilities.get_env('CONSUL_CAPATH')
 
+ca_pem = __config__.get('caPem')
+
 cert_file = __config__.get('certFile') or _utilities.get_env('CONSUL_CERT_FILE')
+
+cert_pem = __config__.get('certPem')
 
 datacenter = __config__.get('datacenter')
 
@@ -39,6 +46,8 @@ http_auth = __config__.get('httpAuth') or _utilities.get_env('CONSUL_HTTP_AUTH')
 insecure_https = __config__.get('insecureHttps')
 
 key_file = __config__.get('keyFile') or _utilities.get_env('CONSUL_KEY_FILE')
+
+key_pem = __config__.get('keyPem')
 
 namespace = __config__.get('namespace')
 

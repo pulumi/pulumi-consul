@@ -75,6 +75,13 @@ namespace Pulumi.Consul
         public Output<string> Action { get; private set; } = null!;
 
         /// <summary>
+        /// The datacenter to use. This overrides the
+        /// agent's default datacenter and the datacenter in the provider setup.
+        /// </summary>
+        [Output("datacenter")]
+        public Output<string> Datacenter { get; private set; } = null!;
+
+        /// <summary>
         /// Optional description that can be used by Consul
         /// tooling, but is not used internally.
         /// </summary>
@@ -169,6 +176,13 @@ namespace Pulumi.Consul
         public Input<string> Action { get; set; } = null!;
 
         /// <summary>
+        /// The datacenter to use. This overrides the
+        /// agent's default datacenter and the datacenter in the provider setup.
+        /// </summary>
+        [Input("datacenter")]
+        public Input<string>? Datacenter { get; set; }
+
+        /// <summary>
         /// Optional description that can be used by Consul
         /// tooling, but is not used internally.
         /// </summary>
@@ -228,6 +242,13 @@ namespace Pulumi.Consul
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }
+
+        /// <summary>
+        /// The datacenter to use. This overrides the
+        /// agent's default datacenter and the datacenter in the provider setup.
+        /// </summary>
+        [Input("datacenter")]
+        public Input<string>? Datacenter { get; set; }
 
         /// <summary>
         /// Optional description that can be used by Consul

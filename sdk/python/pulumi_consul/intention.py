@@ -16,6 +16,7 @@ class Intention(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: Optional[pulumi.Input[str]] = None,
+                 datacenter: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  destination_name: Optional[pulumi.Input[str]] = None,
                  destination_namespace: Optional[pulumi.Input[str]] = None,
@@ -64,6 +65,8 @@ class Intention(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action: The intention action. Must be one of `allow` or `deny`.
+        :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the
+               agent's default datacenter and the datacenter in the provider setup.
         :param pulumi.Input[str] description: Optional description that can be used by Consul
                tooling, but is not used internally.
         :param pulumi.Input[str] destination_name: The name of the destination service for the intention. This
@@ -97,6 +100,7 @@ class Intention(pulumi.CustomResource):
             if action is None:
                 raise TypeError("Missing required property 'action'")
             __props__['action'] = action
+            __props__['datacenter'] = datacenter
             __props__['description'] = description
             if destination_name is None:
                 raise TypeError("Missing required property 'destination_name'")
@@ -118,6 +122,7 @@ class Intention(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             action: Optional[pulumi.Input[str]] = None,
+            datacenter: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             destination_name: Optional[pulumi.Input[str]] = None,
             destination_namespace: Optional[pulumi.Input[str]] = None,
@@ -132,6 +137,8 @@ class Intention(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action: The intention action. Must be one of `allow` or `deny`.
+        :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the
+               agent's default datacenter and the datacenter in the provider setup.
         :param pulumi.Input[str] description: Optional description that can be used by Consul
                tooling, but is not used internally.
         :param pulumi.Input[str] destination_name: The name of the destination service for the intention. This
@@ -150,6 +157,7 @@ class Intention(pulumi.CustomResource):
         __props__ = dict()
 
         __props__["action"] = action
+        __props__["datacenter"] = datacenter
         __props__["description"] = description
         __props__["destination_name"] = destination_name
         __props__["destination_namespace"] = destination_namespace
@@ -165,6 +173,15 @@ class Intention(pulumi.CustomResource):
         The intention action. Must be one of `allow` or `deny`.
         """
         return pulumi.get(self, "action")
+
+    @property
+    @pulumi.getter
+    def datacenter(self) -> pulumi.Output[str]:
+        """
+        The datacenter to use. This overrides the
+        agent's default datacenter and the datacenter in the provider setup.
+        """
+        return pulumi.get(self, "datacenter")
 
     @property
     @pulumi.getter

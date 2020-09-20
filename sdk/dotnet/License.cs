@@ -64,12 +64,6 @@ namespace Pulumi.Consul
         public Output<ImmutableArray<string>> Features { get; private set; } = null!;
 
         /// <summary>
-        /// The metadata attached to the license.
-        /// </summary>
-        [Output("flags")]
-        public Output<ImmutableDictionary<string, string>> Flags { get; private set; } = null!;
-
-        /// <summary>
         /// The ID of the current installation.
         /// </summary>
         [Output("installationId")]
@@ -212,18 +206,6 @@ namespace Pulumi.Consul
         {
             get => _features ?? (_features = new InputList<string>());
             set => _features = value;
-        }
-
-        [Input("flags")]
-        private InputMap<string>? _flags;
-
-        /// <summary>
-        /// The metadata attached to the license.
-        /// </summary>
-        public InputMap<string> Flags
-        {
-            get => _flags ?? (_flags = new InputMap<string>());
-            set => _flags = value;
         }
 
         /// <summary>

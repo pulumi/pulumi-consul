@@ -80,6 +80,9 @@ type Intention struct {
 
 	// The intention action. Must be one of `allow` or `deny`.
 	Action pulumi.StringOutput `pulumi:"action"`
+	// The datacenter to use. This overrides the
+	// agent's default datacenter and the datacenter in the provider setup.
+	Datacenter pulumi.StringOutput `pulumi:"datacenter"`
 	// Optional description that can be used by Consul
 	// tooling, but is not used internally.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -139,6 +142,9 @@ func GetIntention(ctx *pulumi.Context,
 type intentionState struct {
 	// The intention action. Must be one of `allow` or `deny`.
 	Action *string `pulumi:"action"`
+	// The datacenter to use. This overrides the
+	// agent's default datacenter and the datacenter in the provider setup.
+	Datacenter *string `pulumi:"datacenter"`
 	// Optional description that can be used by Consul
 	// tooling, but is not used internally.
 	Description *string `pulumi:"description"`
@@ -162,6 +168,9 @@ type intentionState struct {
 type IntentionState struct {
 	// The intention action. Must be one of `allow` or `deny`.
 	Action pulumi.StringPtrInput
+	// The datacenter to use. This overrides the
+	// agent's default datacenter and the datacenter in the provider setup.
+	Datacenter pulumi.StringPtrInput
 	// Optional description that can be used by Consul
 	// tooling, but is not used internally.
 	Description pulumi.StringPtrInput
@@ -189,6 +198,9 @@ func (IntentionState) ElementType() reflect.Type {
 type intentionArgs struct {
 	// The intention action. Must be one of `allow` or `deny`.
 	Action string `pulumi:"action"`
+	// The datacenter to use. This overrides the
+	// agent's default datacenter and the datacenter in the provider setup.
+	Datacenter *string `pulumi:"datacenter"`
 	// Optional description that can be used by Consul
 	// tooling, but is not used internally.
 	Description *string `pulumi:"description"`
@@ -213,6 +225,9 @@ type intentionArgs struct {
 type IntentionArgs struct {
 	// The intention action. Must be one of `allow` or `deny`.
 	Action pulumi.StringInput
+	// The datacenter to use. This overrides the
+	// agent's default datacenter and the datacenter in the provider setup.
+	Datacenter pulumi.StringPtrInput
 	// Optional description that can be used by Consul
 	// tooling, but is not used internally.
 	Description pulumi.StringPtrInput

@@ -27,8 +27,6 @@ type License struct {
 	ExpirationTime pulumi.StringOutput `pulumi:"expirationTime"`
 	// The features for which the license is valid.
 	Features pulumi.StringArrayOutput `pulumi:"features"`
-	// The metadata attached to the license.
-	Flags pulumi.StringMapOutput `pulumi:"flags"`
 	// The ID of the current installation.
 	InstallationId pulumi.StringOutput `pulumi:"installationId"`
 	// The date the license was issued.
@@ -87,8 +85,6 @@ type licenseState struct {
 	ExpirationTime *string `pulumi:"expirationTime"`
 	// The features for which the license is valid.
 	Features []string `pulumi:"features"`
-	// The metadata attached to the license.
-	Flags map[string]string `pulumi:"flags"`
 	// The ID of the current installation.
 	InstallationId *string `pulumi:"installationId"`
 	// The date the license was issued.
@@ -117,8 +113,6 @@ type LicenseState struct {
 	ExpirationTime pulumi.StringPtrInput
 	// The features for which the license is valid.
 	Features pulumi.StringArrayInput
-	// The metadata attached to the license.
-	Flags pulumi.StringMapInput
 	// The ID of the current installation.
 	InstallationId pulumi.StringPtrInput
 	// The date the license was issued.

@@ -14,7 +14,11 @@ namespace Pulumi.Consul
 
         public static string? CaPath { get; set; } = __config.Get("caPath") ?? Utilities.GetEnv("CONSUL_CAPATH");
 
+        public static string? CaPem { get; set; } = __config.Get("caPem");
+
         public static string? CertFile { get; set; } = __config.Get("certFile") ?? Utilities.GetEnv("CONSUL_CERT_FILE");
+
+        public static string? CertPem { get; set; } = __config.Get("certPem");
 
         public static string? Datacenter { get; set; } = __config.Get("datacenter");
 
@@ -23,6 +27,8 @@ namespace Pulumi.Consul
         public static bool? InsecureHttps { get; set; } = __config.GetBoolean("insecureHttps");
 
         public static string? KeyFile { get; set; } = __config.Get("keyFile") ?? Utilities.GetEnv("CONSUL_KEY_FILE");
+
+        public static string? KeyPem { get; set; } = __config.Get("keyPem");
 
         public static string? Namespace { get; set; } = __config.Get("namespace");
 

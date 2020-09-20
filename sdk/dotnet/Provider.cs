@@ -53,8 +53,14 @@ namespace Pulumi.Consul
         [Input("caPath")]
         public Input<string>? CaPath { get; set; }
 
+        [Input("caPem")]
+        public Input<string>? CaPem { get; set; }
+
         [Input("certFile")]
         public Input<string>? CertFile { get; set; }
+
+        [Input("certPem")]
+        public Input<string>? CertPem { get; set; }
 
         [Input("datacenter")]
         public Input<string>? Datacenter { get; set; }
@@ -67,6 +73,9 @@ namespace Pulumi.Consul
 
         [Input("keyFile")]
         public Input<string>? KeyFile { get; set; }
+
+        [Input("keyPem")]
+        public Input<string>? KeyPem { get; set; }
 
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }

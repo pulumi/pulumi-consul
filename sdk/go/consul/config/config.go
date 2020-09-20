@@ -29,12 +29,18 @@ func GetCaPath(ctx *pulumi.Context) string {
 	}
 	return getEnvOrDefault("", nil, "CONSUL_CAPATH").(string)
 }
+func GetCaPem(ctx *pulumi.Context) string {
+	return config.Get(ctx, "consul:caPem")
+}
 func GetCertFile(ctx *pulumi.Context) string {
 	v, err := config.Try(ctx, "consul:certFile")
 	if err == nil {
 		return v
 	}
 	return getEnvOrDefault("", nil, "CONSUL_CERT_FILE").(string)
+}
+func GetCertPem(ctx *pulumi.Context) string {
+	return config.Get(ctx, "consul:certPem")
 }
 func GetDatacenter(ctx *pulumi.Context) string {
 	return config.Get(ctx, "consul:datacenter")
@@ -55,6 +61,9 @@ func GetKeyFile(ctx *pulumi.Context) string {
 		return v
 	}
 	return getEnvOrDefault("", nil, "CONSUL_KEY_FILE").(string)
+}
+func GetKeyPem(ctx *pulumi.Context) string {
+	return config.Get(ctx, "consul:keyPem")
 }
 func GetNamespace(ctx *pulumi.Context) string {
 	return config.Get(ctx, "consul:namespace")

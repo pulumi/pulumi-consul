@@ -5,8 +5,57 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `certificateAuthority` resource can be used to manage the configuration of
+ * The `consul.CertificateAuthority` resource can be used to manage the configuration of
  * the Certificate Authority used by [Consul Connect](https://www.consul.io/docs/connect/ca).
+ *
+ * ## Example Usage
+ *
+ * Use the built-in CA with specific TTL:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ *
+ * const connect = new consul.CertificateAuthority("connect", {
+ *     config: {
+ *         IntermediateCertTTL: "8760h",
+ *         LeafCertTTL: "24h",
+ *         RotationPeriod: "2160h",
+ *     },
+ *     connectProvider: "consul",
+ * });
+ * ```
+ *
+ * Use Vault to manage and sign certificates:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ *
+ * const connect = new consul.CertificateAuthority("connect", {
+ *     config: {
+ *         address: "http://localhost:8200",
+ *         intermediate_pki_path: "connect-intermediate",
+ *         root_pki_path: "connect-root",
+ *         token: "...",
+ *     },
+ *     connectProvider: "vault",
+ * });
+ * ```
+ *
+ * Use the [AWS Certificate Manager Private Certificate Authority](https://aws.amazon.com/certificate-manager/private-certificate-authority/):
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ *
+ * const connect = new consul.CertificateAuthority("connect", {
+ *     config: {
+ *         existing_arn: "arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-123456789012",
+ *     },
+ *     connectProvider: "aws-pca",
+ * });
+ * ```
  */
 export class CertificateAuthority extends pulumi.CustomResource {
     /**

@@ -77,6 +77,11 @@ export class Intention extends pulumi.CustomResource {
      */
     public readonly action!: pulumi.Output<string>;
     /**
+     * The datacenter to use. This overrides the
+     * agent's default datacenter and the datacenter in the provider setup.
+     */
+    public readonly datacenter!: pulumi.Output<string>;
+    /**
      * Optional description that can be used by Consul
      * tooling, but is not used internally.
      */
@@ -120,6 +125,7 @@ export class Intention extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as IntentionState | undefined;
             inputs["action"] = state ? state.action : undefined;
+            inputs["datacenter"] = state ? state.datacenter : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["destinationName"] = state ? state.destinationName : undefined;
             inputs["destinationNamespace"] = state ? state.destinationNamespace : undefined;
@@ -138,6 +144,7 @@ export class Intention extends pulumi.CustomResource {
                 throw new Error("Missing required property 'sourceName'");
             }
             inputs["action"] = args ? args.action : undefined;
+            inputs["datacenter"] = args ? args.datacenter : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["destinationName"] = args ? args.destinationName : undefined;
             inputs["destinationNamespace"] = args ? args.destinationNamespace : undefined;
@@ -164,6 +171,11 @@ export interface IntentionState {
      * The intention action. Must be one of `allow` or `deny`.
      */
     readonly action?: pulumi.Input<string>;
+    /**
+     * The datacenter to use. This overrides the
+     * agent's default datacenter and the datacenter in the provider setup.
+     */
+    readonly datacenter?: pulumi.Input<string>;
     /**
      * Optional description that can be used by Consul
      * tooling, but is not used internally.
@@ -204,6 +216,11 @@ export interface IntentionArgs {
      * The intention action. Must be one of `allow` or `deny`.
      */
     readonly action: pulumi.Input<string>;
+    /**
+     * The datacenter to use. This overrides the
+     * agent's default datacenter and the datacenter in the provider setup.
+     */
+    readonly datacenter?: pulumi.Input<string>;
     /**
      * Optional description that can be used by Consul
      * tooling, but is not used internally.

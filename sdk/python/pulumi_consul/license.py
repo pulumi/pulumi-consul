@@ -66,7 +66,6 @@ class License(pulumi.CustomResource):
             __props__['customer_id'] = None
             __props__['expiration_time'] = None
             __props__['features'] = None
-            __props__['flags'] = None
             __props__['installation_id'] = None
             __props__['issue_time'] = None
             __props__['license_id'] = None
@@ -88,7 +87,6 @@ class License(pulumi.CustomResource):
             datacenter: Optional[pulumi.Input[str]] = None,
             expiration_time: Optional[pulumi.Input[str]] = None,
             features: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            flags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             installation_id: Optional[pulumi.Input[str]] = None,
             issue_time: Optional[pulumi.Input[str]] = None,
             license: Optional[pulumi.Input[str]] = None,
@@ -109,7 +107,6 @@ class License(pulumi.CustomResource):
                agent's default datacenter and the datacenter in the provider setup.
         :param pulumi.Input[str] expiration_time: The expiration time of the license.
         :param pulumi.Input[List[pulumi.Input[str]]] features: The features for which the license is valid.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] flags: The metadata attached to the license.
         :param pulumi.Input[str] installation_id: The ID of the current installation.
         :param pulumi.Input[str] issue_time: The date the license was issued.
         :param pulumi.Input[str] license: The Consul license to use.
@@ -127,7 +124,6 @@ class License(pulumi.CustomResource):
         __props__["datacenter"] = datacenter
         __props__["expiration_time"] = expiration_time
         __props__["features"] = features
-        __props__["flags"] = flags
         __props__["installation_id"] = installation_id
         __props__["issue_time"] = issue_time
         __props__["license"] = license
@@ -170,14 +166,6 @@ class License(pulumi.CustomResource):
         The features for which the license is valid.
         """
         return pulumi.get(self, "features")
-
-    @property
-    @pulumi.getter
-    def flags(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        The metadata attached to the license.
-        """
-        return pulumi.get(self, "flags")
 
     @property
     @pulumi.getter(name="installationId")
