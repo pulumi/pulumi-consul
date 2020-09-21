@@ -21,8 +21,54 @@ class CertificateAuthority(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        The `certificate_authority` resource can be used to manage the configuration of
+        The `CertificateAuthority` resource can be used to manage the configuration of
         the Certificate Authority used by [Consul Connect](https://www.consul.io/docs/connect/ca).
+
+        ## Example Usage
+
+        Use the built-in CA with specific TTL:
+
+        ```python
+        import pulumi
+        import pulumi_consul as consul
+
+        connect = consul.CertificateAuthority("connect",
+            config={
+                "IntermediateCertTTL": "8760h",
+                "LeafCertTTL": "24h",
+                "RotationPeriod": "2160h",
+            },
+            connect_provider="consul")
+        ```
+
+        Use Vault to manage and sign certificates:
+
+        ```python
+        import pulumi
+        import pulumi_consul as consul
+
+        connect = consul.CertificateAuthority("connect",
+            config={
+                "address": "http://localhost:8200",
+                "intermediate_pki_path": "connect-intermediate",
+                "root_pki_path": "connect-root",
+                "token": "...",
+            },
+            connect_provider="vault")
+        ```
+
+        Use the [AWS Certificate Manager Private Certificate Authority](https://aws.amazon.com/certificate-manager/private-certificate-authority/):
+
+        ```python
+        import pulumi
+        import pulumi_consul as consul
+
+        connect = consul.CertificateAuthority("connect",
+            config={
+                "existing_arn": "arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-123456789012",
+            },
+            connect_provider="aws-pca")
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

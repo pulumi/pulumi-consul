@@ -10,8 +10,93 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// The `certificateAuthority` resource can be used to manage the configuration of
+// The `CertificateAuthority` resource can be used to manage the configuration of
 // the Certificate Authority used by [Consul Connect](https://www.consul.io/docs/connect/ca).
+//
+// ## Example Usage
+//
+// Use the built-in CA with specific TTL:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := consul.NewCertificateAuthority(ctx, "connect", &consul.CertificateAuthorityArgs{
+// 			Config: pulumi.StringMap{
+// 				"IntermediateCertTTL": pulumi.String("8760h"),
+// 				"LeafCertTTL":         pulumi.String("24h"),
+// 				"RotationPeriod":      pulumi.String("2160h"),
+// 			},
+// 			ConnectProvider: pulumi.String("consul"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// Use Vault to manage and sign certificates:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := consul.NewCertificateAuthority(ctx, "connect", &consul.CertificateAuthorityArgs{
+// 			Config: pulumi.StringMap{
+// 				"address":               pulumi.String("http://localhost:8200"),
+// 				"intermediate_pki_path": pulumi.String("connect-intermediate"),
+// 				"root_pki_path":         pulumi.String("connect-root"),
+// 				"token":                 pulumi.String("..."),
+// 			},
+// 			ConnectProvider: pulumi.String("vault"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// Use the [AWS Certificate Manager Private Certificate Authority](https://aws.amazon.com/certificate-manager/private-certificate-authority/):
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := consul.NewCertificateAuthority(ctx, "connect", &consul.CertificateAuthorityArgs{
+// 			Config: pulumi.StringMap{
+// 				"existing_arn": pulumi.String("arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-123456789012"),
+// 			},
+// 			ConnectProvider: pulumi.String("aws-pca"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type CertificateAuthority struct {
 	pulumi.CustomResourceState
 

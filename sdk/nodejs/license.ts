@@ -67,10 +67,6 @@ export class License extends pulumi.CustomResource {
      */
     public /*out*/ readonly features!: pulumi.Output<string[]>;
     /**
-     * The metadata attached to the license.
-     */
-    public /*out*/ readonly flags!: pulumi.Output<{[key: string]: string}>;
-    /**
      * The ID of the current installation.
      */
     public /*out*/ readonly installationId!: pulumi.Output<string>;
@@ -119,7 +115,6 @@ export class License extends pulumi.CustomResource {
             inputs["datacenter"] = state ? state.datacenter : undefined;
             inputs["expirationTime"] = state ? state.expirationTime : undefined;
             inputs["features"] = state ? state.features : undefined;
-            inputs["flags"] = state ? state.flags : undefined;
             inputs["installationId"] = state ? state.installationId : undefined;
             inputs["issueTime"] = state ? state.issueTime : undefined;
             inputs["license"] = state ? state.license : undefined;
@@ -138,7 +133,6 @@ export class License extends pulumi.CustomResource {
             inputs["customerId"] = undefined /*out*/;
             inputs["expirationTime"] = undefined /*out*/;
             inputs["features"] = undefined /*out*/;
-            inputs["flags"] = undefined /*out*/;
             inputs["installationId"] = undefined /*out*/;
             inputs["issueTime"] = undefined /*out*/;
             inputs["licenseId"] = undefined /*out*/;
@@ -179,10 +173,6 @@ export interface LicenseState {
      * The features for which the license is valid.
      */
     readonly features?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The metadata attached to the license.
-     */
-    readonly flags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the current installation.
      */

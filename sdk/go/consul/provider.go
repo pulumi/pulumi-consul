@@ -59,11 +59,14 @@ type providerArgs struct {
 	Address       *string `pulumi:"address"`
 	CaFile        *string `pulumi:"caFile"`
 	CaPath        *string `pulumi:"caPath"`
+	CaPem         *string `pulumi:"caPem"`
 	CertFile      *string `pulumi:"certFile"`
+	CertPem       *string `pulumi:"certPem"`
 	Datacenter    *string `pulumi:"datacenter"`
 	HttpAuth      *string `pulumi:"httpAuth"`
 	InsecureHttps *bool   `pulumi:"insecureHttps"`
 	KeyFile       *string `pulumi:"keyFile"`
+	KeyPem        *string `pulumi:"keyPem"`
 	Namespace     *string `pulumi:"namespace"`
 	Scheme        *string `pulumi:"scheme"`
 	Token         *string `pulumi:"token"`
@@ -74,11 +77,14 @@ type ProviderArgs struct {
 	Address       pulumi.StringPtrInput
 	CaFile        pulumi.StringPtrInput
 	CaPath        pulumi.StringPtrInput
+	CaPem         pulumi.StringPtrInput
 	CertFile      pulumi.StringPtrInput
+	CertPem       pulumi.StringPtrInput
 	Datacenter    pulumi.StringPtrInput
 	HttpAuth      pulumi.StringPtrInput
 	InsecureHttps pulumi.BoolPtrInput
 	KeyFile       pulumi.StringPtrInput
+	KeyPem        pulumi.StringPtrInput
 	Namespace     pulumi.StringPtrInput
 	Scheme        pulumi.StringPtrInput
 	Token         pulumi.StringPtrInput

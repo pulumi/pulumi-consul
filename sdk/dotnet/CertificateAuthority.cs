@@ -10,8 +10,84 @@ using Pulumi.Serialization;
 namespace Pulumi.Consul
 {
     /// <summary>
-    /// The `certificate_authority` resource can be used to manage the configuration of
+    /// The `consul.CertificateAuthority` resource can be used to manage the configuration of
     /// the Certificate Authority used by [Consul Connect](https://www.consul.io/docs/connect/ca).
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Use the built-in CA with specific TTL:
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Consul = Pulumi.Consul;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var connect = new Consul.CertificateAuthority("connect", new Consul.CertificateAuthorityArgs
+    ///         {
+    ///             Config = 
+    ///             {
+    ///                 { "IntermediateCertTTL", "8760h" },
+    ///                 { "LeafCertTTL", "24h" },
+    ///                 { "RotationPeriod", "2160h" },
+    ///             },
+    ///             ConnectProvider = "consul",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// Use Vault to manage and sign certificates:
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Consul = Pulumi.Consul;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var connect = new Consul.CertificateAuthority("connect", new Consul.CertificateAuthorityArgs
+    ///         {
+    ///             Config = 
+    ///             {
+    ///                 { "address", "http://localhost:8200" },
+    ///                 { "intermediate_pki_path", "connect-intermediate" },
+    ///                 { "root_pki_path", "connect-root" },
+    ///                 { "token", "..." },
+    ///             },
+    ///             ConnectProvider = "vault",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// Use the [AWS Certificate Manager Private Certificate Authority](https://aws.amazon.com/certificate-manager/private-certificate-authority/):
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Consul = Pulumi.Consul;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var connect = new Consul.CertificateAuthority("connect", new Consul.CertificateAuthorityArgs
+    ///         {
+    ///             Config = 
+    ///             {
+    ///                 { "existing_arn", "arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-123456789012" },
+    ///             },
+    ///             ConnectProvider = "aws-pca",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class CertificateAuthority : Pulumi.CustomResource
     {
