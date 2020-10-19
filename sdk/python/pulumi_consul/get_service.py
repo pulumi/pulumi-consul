@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -75,12 +75,12 @@ class GetServiceResult:
 
     @property
     @pulumi.getter(name="queryOptions")
-    def query_options(self) -> Optional[List['outputs.GetServiceQueryOptionResult']]:
+    def query_options(self) -> Optional[Sequence['outputs.GetServiceQueryOptionResult']]:
         return pulumi.get(self, "query_options")
 
     @property
     @pulumi.getter
-    def services(self) -> List['outputs.GetServiceServiceResult']:
+    def services(self) -> Sequence['outputs.GetServiceServiceResult']:
         """
         A list of nodes and details about each endpoint advertising a
         service.  Each element in the list is a map of attributes that correspond to
@@ -115,7 +115,7 @@ class AwaitableGetServiceResult(GetServiceResult):
 def get_service(datacenter: Optional[str] = None,
                 filter: Optional[str] = None,
                 name: Optional[str] = None,
-                query_options: Optional[List[pulumi.InputType['GetServiceQueryOptionArgs']]] = None,
+                query_options: Optional[Sequence[pulumi.InputType['GetServiceQueryOptionArgs']]] = None,
                 tag: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServiceResult:
     """
@@ -136,7 +136,7 @@ def get_service(datacenter: Optional[str] = None,
     :param str filter: A filter expression to refine the query, see https://www.consul.io/api-docs/features/filtering
            and https://www.consul.io/api-docs/catalog#filtering-1.
     :param str name: The service name to select.
-    :param List[pulumi.InputType['GetServiceQueryOptionArgs']] query_options: See below.
+    :param Sequence[pulumi.InputType['GetServiceQueryOptionArgs']] query_options: See below.
     :param str tag: A single tag that can be used to filter the list of nodes
            to return based on a single matching tag..
     """

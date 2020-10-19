@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -56,22 +56,22 @@ class GetCatalogNodesResult:
 
     @property
     @pulumi.getter(name="nodeIds")
-    def node_ids(self) -> List[str]:
+    def node_ids(self) -> Sequence[str]:
         return pulumi.get(self, "node_ids")
 
     @property
     @pulumi.getter(name="nodeNames")
-    def node_names(self) -> List[str]:
+    def node_names(self) -> Sequence[str]:
         return pulumi.get(self, "node_names")
 
     @property
     @pulumi.getter
-    def nodes(self) -> List['outputs.GetCatalogNodesNodeResult']:
+    def nodes(self) -> Sequence['outputs.GetCatalogNodesNodeResult']:
         return pulumi.get(self, "nodes")
 
     @property
     @pulumi.getter(name="queryOptions")
-    def query_options(self) -> Optional[List['outputs.GetCatalogNodesQueryOptionResult']]:
+    def query_options(self) -> Optional[Sequence['outputs.GetCatalogNodesQueryOptionResult']]:
         return pulumi.get(self, "query_options")
 
 
@@ -89,7 +89,7 @@ class AwaitableGetCatalogNodesResult(GetCatalogNodesResult):
             query_options=self.query_options)
 
 
-def get_catalog_nodes(query_options: Optional[List[pulumi.InputType['GetCatalogNodesQueryOptionArgs']]] = None,
+def get_catalog_nodes(query_options: Optional[Sequence[pulumi.InputType['GetCatalogNodesQueryOptionArgs']]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCatalogNodesResult:
     """
     Use this data source to access information about an existing resource.

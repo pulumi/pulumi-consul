@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -77,7 +77,7 @@ class GetAclTokenResult:
 
     @property
     @pulumi.getter
-    def policies(self) -> Optional[List['outputs.GetAclTokenPolicyResult']]:
+    def policies(self) -> Optional[Sequence['outputs.GetAclTokenPolicyResult']]:
         """
         A list of policies associated with the ACL token. Each entry has
         an `id` and a `name` attribute.
@@ -103,7 +103,7 @@ def get_acl_token(accessor_id: Optional[str] = None,
                   description: Optional[str] = None,
                   local: Optional[bool] = None,
                   namespace: Optional[str] = None,
-                  policies: Optional[List[pulumi.InputType['GetAclTokenPolicyArgs']]] = None,
+                  policies: Optional[Sequence[pulumi.InputType['GetAclTokenPolicyArgs']]] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAclTokenResult:
     """
     The `AclToken` data source returns the information related to the
@@ -127,7 +127,7 @@ def get_acl_token(accessor_id: Optional[str] = None,
     :param str description: The description of the ACL token.
     :param bool local: Whether the ACL token is local to the datacenter it was created within.
     :param str namespace: The namespace to lookup the ACL token.
-    :param List[pulumi.InputType['GetAclTokenPolicyArgs']] policies: A list of policies associated with the ACL token. Each entry has
+    :param Sequence[pulumi.InputType['GetAclTokenPolicyArgs']] policies: A list of policies associated with the ACL token. Each entry has
            an `id` and a `name` attribute.
     """
     __args__ = dict()

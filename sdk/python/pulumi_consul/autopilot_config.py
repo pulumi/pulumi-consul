@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = ['AutopilotConfig']
@@ -19,7 +19,7 @@ class AutopilotConfig(pulumi.CustomResource):
                  datacenter: Optional[pulumi.Input[str]] = None,
                  disable_upgrade_migration: Optional[pulumi.Input[bool]] = None,
                  last_contact_threshold: Optional[pulumi.Input[str]] = None,
-                 max_trailing_logs: Optional[pulumi.Input[float]] = None,
+                 max_trailing_logs: Optional[pulumi.Input[int]] = None,
                  redundancy_zone_tag: Optional[pulumi.Input[str]] = None,
                  server_stabilization_time: Optional[pulumi.Input[str]] = None,
                  upgrade_version_tag: Optional[pulumi.Input[str]] = None,
@@ -55,7 +55,7 @@ class AutopilotConfig(pulumi.CustomResource):
                Defaults to false.
         :param pulumi.Input[str] last_contact_threshold: The time after which a server is
                considered as unhealthy and will be removed. Defaults to `"200ms"`.
-        :param pulumi.Input[float] max_trailing_logs: The maximum number of Raft log entries a
+        :param pulumi.Input[int] max_trailing_logs: The maximum number of Raft log entries a
                server can trail the leader. Defaults to 250.
         :param pulumi.Input[str] redundancy_zone_tag: The [redundancy zone](https://www.consul.io/docs/guides/autopilot.html#redundancy-zones)
                tag to use. Consul will try to keep one voting server by zone to take advantage
@@ -105,7 +105,7 @@ class AutopilotConfig(pulumi.CustomResource):
             datacenter: Optional[pulumi.Input[str]] = None,
             disable_upgrade_migration: Optional[pulumi.Input[bool]] = None,
             last_contact_threshold: Optional[pulumi.Input[str]] = None,
-            max_trailing_logs: Optional[pulumi.Input[float]] = None,
+            max_trailing_logs: Optional[pulumi.Input[int]] = None,
             redundancy_zone_tag: Optional[pulumi.Input[str]] = None,
             server_stabilization_time: Optional[pulumi.Input[str]] = None,
             upgrade_version_tag: Optional[pulumi.Input[str]] = None) -> 'AutopilotConfig':
@@ -124,7 +124,7 @@ class AutopilotConfig(pulumi.CustomResource):
                Defaults to false.
         :param pulumi.Input[str] last_contact_threshold: The time after which a server is
                considered as unhealthy and will be removed. Defaults to `"200ms"`.
-        :param pulumi.Input[float] max_trailing_logs: The maximum number of Raft log entries a
+        :param pulumi.Input[int] max_trailing_logs: The maximum number of Raft log entries a
                server can trail the leader. Defaults to 250.
         :param pulumi.Input[str] redundancy_zone_tag: The [redundancy zone](https://www.consul.io/docs/guides/autopilot.html#redundancy-zones)
                tag to use. Consul will try to keep one voting server by zone to take advantage
@@ -187,7 +187,7 @@ class AutopilotConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxTrailingLogs")
-    def max_trailing_logs(self) -> pulumi.Output[Optional[float]]:
+    def max_trailing_logs(self) -> pulumi.Output[Optional[int]]:
         """
         The maximum number of Raft log entries a
         server can trail the leader. Defaults to 250.

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = ['Namespace']
@@ -18,8 +18,8 @@ class Namespace(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 policy_defaults: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 role_defaults: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 policy_defaults: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 role_defaults: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -47,9 +47,9 @@ class Namespace(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: Specifies arbitrary KV metadata to associate with the
                namespace.
         :param pulumi.Input[str] name: The namespace name.
-        :param pulumi.Input[List[pulumi.Input[str]]] policy_defaults: The list of default policies that should be
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] policy_defaults: The list of default policies that should be
                applied to all tokens created in this namespace.
-        :param pulumi.Input[List[pulumi.Input[str]]] role_defaults: The list of default roles that should be applied
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] role_defaults: The list of default roles that should be applied
                to all tokens created in this namespace.
         """
         if __name__ is not None:
@@ -87,8 +87,8 @@ class Namespace(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            policy_defaults: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            role_defaults: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None) -> 'Namespace':
+            policy_defaults: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            role_defaults: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'Namespace':
         """
         Get an existing Namespace resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -100,9 +100,9 @@ class Namespace(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: Specifies arbitrary KV metadata to associate with the
                namespace.
         :param pulumi.Input[str] name: The namespace name.
-        :param pulumi.Input[List[pulumi.Input[str]]] policy_defaults: The list of default policies that should be
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] policy_defaults: The list of default policies that should be
                applied to all tokens created in this namespace.
-        :param pulumi.Input[List[pulumi.Input[str]]] role_defaults: The list of default roles that should be applied
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] role_defaults: The list of default roles that should be applied
                to all tokens created in this namespace.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -143,7 +143,7 @@ class Namespace(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="policyDefaults")
-    def policy_defaults(self) -> pulumi.Output[Optional[List[str]]]:
+    def policy_defaults(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         The list of default policies that should be
         applied to all tokens created in this namespace.
@@ -152,7 +152,7 @@ class Namespace(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="roleDefaults")
-    def role_defaults(self) -> pulumi.Output[Optional[List[str]]]:
+    def role_defaults(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         The list of default roles that should be applied
         to all tokens created in this namespace.

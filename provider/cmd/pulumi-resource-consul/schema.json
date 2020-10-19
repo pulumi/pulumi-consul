@@ -104,7 +104,7 @@
         }
     },
     "types": {
-        "consul:/AclAuthMethodNamespaceRule:AclAuthMethodNamespaceRule": {
+        "consul:index/AclAuthMethodNamespaceRule:AclAuthMethodNamespaceRule": {
             "properties": {
                 "bindNamespace": {
                     "type": "string",
@@ -130,7 +130,7 @@
                 "bindNamespace"
             ]
         },
-        "consul:/AclRoleServiceIdentity:AclRoleServiceIdentity": {
+        "consul:index/AclRoleServiceIdentity:AclRoleServiceIdentity": {
             "properties": {
                 "datacenters": {
                     "type": "array",
@@ -159,7 +159,7 @@
                 "serviceName"
             ]
         },
-        "consul:/CatalogEntryService:CatalogEntryService": {
+        "consul:index/CatalogEntryService:CatalogEntryService": {
             "properties": {
                 "address": {
                     "type": "string",
@@ -223,7 +223,7 @@
                 }
             }
         },
-        "consul:/KeyPrefixSubkeyCollection:KeyPrefixSubkeyCollection": {
+        "consul:index/KeyPrefixSubkeyCollection:KeyPrefixSubkeyCollection": {
             "properties": {
                 "flags": {
                     "type": "integer",
@@ -259,7 +259,7 @@
                 "value"
             ]
         },
-        "consul:/KeysKey:KeysKey": {
+        "consul:index/KeysKey:KeysKey": {
             "properties": {
                 "default": {
                     "type": "string",
@@ -328,7 +328,7 @@
                 }
             }
         },
-        "consul:/PreparedQueryDns:PreparedQueryDns": {
+        "consul:index/PreparedQueryDns:PreparedQueryDns": {
             "properties": {
                 "ttl": {
                     "type": "string",
@@ -342,7 +342,7 @@
             },
             "type": "object"
         },
-        "consul:/PreparedQueryFailover:PreparedQueryFailover": {
+        "consul:index/PreparedQueryFailover:PreparedQueryFailover": {
             "properties": {
                 "datacenters": {
                     "type": "array",
@@ -368,7 +368,7 @@
             },
             "type": "object"
         },
-        "consul:/PreparedQueryTemplate:PreparedQueryTemplate": {
+        "consul:index/PreparedQueryTemplate:PreparedQueryTemplate": {
             "properties": {
                 "regexp": {
                     "type": "string",
@@ -395,7 +395,7 @@
                 "type"
             ]
         },
-        "consul:/ServiceCheck:ServiceCheck": {
+        "consul:index/ServiceCheck:ServiceCheck": {
             "properties": {
                 "checkId": {
                     "type": "string",
@@ -418,7 +418,7 @@
                 "headers": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/consul:/ServiceCheckHeader:ServiceCheckHeader"
+                        "$ref": "#/types/consul:index/ServiceCheckHeader:ServiceCheckHeader"
                     },
                     "description": "The headers to send for an HTTP check.\nThe attributes of each header is given below.\n",
                     "language": {
@@ -528,7 +528,7 @@
                 }
             }
         },
-        "consul:/ServiceCheckHeader:ServiceCheckHeader": {
+        "consul:index/ServiceCheckHeader:ServiceCheckHeader": {
             "properties": {
                 "name": {
                     "type": "string",
@@ -558,7 +558,7 @@
                 "values"
             ]
         },
-        "consul:/getAclAuthMethodNamespaceRule:getAclAuthMethodNamespaceRule": {
+        "consul:index/getAclAuthMethodNamespaceRule:getAclAuthMethodNamespaceRule": {
             "properties": {
                 "bindNamespace": {
                     "type": "string",
@@ -588,7 +588,7 @@
                 }
             }
         },
-        "consul:/getAclRolePolicy:getAclRolePolicy": {
+        "consul:index/getAclRolePolicy:getAclRolePolicy": {
             "properties": {
                 "id": {
                     "type": "string",
@@ -619,7 +619,7 @@
                 }
             }
         },
-        "consul:/getAclRoleServiceIdentity:getAclRoleServiceIdentity": {
+        "consul:index/getAclRoleServiceIdentity:getAclRoleServiceIdentity": {
             "properties": {
                 "datacenters": {
                     "type": "array",
@@ -643,7 +643,7 @@
             },
             "type": "object"
         },
-        "consul:/getAclTokenPolicy:getAclTokenPolicy": {
+        "consul:index/getAclTokenPolicy:getAclTokenPolicy": {
             "properties": {
                 "id": {
                     "type": "string",
@@ -673,7 +673,7 @@
                 }
             }
         },
-        "consul:/getAutopilotHealthServer:getAutopilotHealthServer": {
+        "consul:index/getAutopilotHealthServer:getAutopilotHealthServer": {
             "properties": {
                 "address": {
                     "type": "string",
@@ -805,7 +805,7 @@
                 }
             }
         },
-        "consul:/getCatalogNodesNode:getCatalogNodesNode": {
+        "consul:index/getCatalogNodesNode:getCatalogNodesNode": {
             "properties": {
                 "address": {
                     "type": "string",
@@ -868,7 +868,7 @@
                 }
             }
         },
-        "consul:/getCatalogNodesQueryOption:getCatalogNodesQueryOption": {
+        "consul:index/getCatalogNodesQueryOption:getCatalogNodesQueryOption": {
             "properties": {
                 "allowStale": {
                     "type": "boolean",
@@ -940,7 +940,7 @@
             },
             "type": "object"
         },
-        "consul:/getCatalogServiceQueryOption:getCatalogServiceQueryOption": {
+        "consul:index/getCatalogServiceQueryOption:getCatalogServiceQueryOption": {
             "properties": {
                 "allowStale": {
                     "type": "boolean",
@@ -1020,7 +1020,7 @@
             },
             "type": "object"
         },
-        "consul:/getCatalogServiceService:getCatalogServiceService": {
+        "consul:index/getCatalogServiceService:getCatalogServiceService": {
             "properties": {
                 "address": {
                     "type": "string",
@@ -1170,7 +1170,7 @@
                 }
             }
         },
-        "consul:/getCatalogServicesQueryOption:getCatalogServicesQueryOption": {
+        "consul:index/getCatalogServicesQueryOption:getCatalogServicesQueryOption": {
             "properties": {
                 "allowStale": {
                     "type": "boolean",
@@ -1250,7 +1250,7 @@
             },
             "type": "object"
         },
-        "consul:/getKeyPrefixSubkeyCollection:getKeyPrefixSubkeyCollection": {
+        "consul:index/getKeyPrefixSubkeyCollection:getKeyPrefixSubkeyCollection": {
             "properties": {
                 "default": {
                     "type": "string",
@@ -1286,7 +1286,7 @@
                 "path"
             ]
         },
-        "consul:/getKeysKey:getKeysKey": {
+        "consul:index/getKeysKey:getKeysKey": {
             "properties": {
                 "default": {
                     "type": "string",
@@ -1322,7 +1322,7 @@
                 "path"
             ]
         },
-        "consul:/getNetworkAreaMembersMember:getNetworkAreaMembersMember": {
+        "consul:index/getNetworkAreaMembersMember:getNetworkAreaMembersMember": {
             "properties": {
                 "address": {
                     "type": "string",
@@ -1434,7 +1434,7 @@
                 }
             }
         },
-        "consul:/getNodesNode:getNodesNode": {
+        "consul:index/getNodesNode:getNodesNode": {
             "properties": {
                 "address": {
                     "type": "string",
@@ -1498,7 +1498,7 @@
                 }
             }
         },
-        "consul:/getNodesQueryOption:getNodesQueryOption": {
+        "consul:index/getNodesQueryOption:getNodesQueryOption": {
             "properties": {
                 "allowStale": {
                     "type": "boolean",
@@ -1576,12 +1576,12 @@
             },
             "type": "object"
         },
-        "consul:/getServiceHealthResult:getServiceHealthResult": {
+        "consul:index/getServiceHealthResult:getServiceHealthResult": {
             "properties": {
                 "checks": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/consul:/getServiceHealthResultCheck:getServiceHealthResultCheck"
+                        "$ref": "#/types/consul:index/getServiceHealthResultCheck:getServiceHealthResultCheck"
                     },
                     "language": {
                         "python": {
@@ -1592,7 +1592,7 @@
                 "nodes": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/consul:/getServiceHealthResultNode:getServiceHealthResultNode"
+                        "$ref": "#/types/consul:index/getServiceHealthResultNode:getServiceHealthResultNode"
                     },
                     "description": "The name of the node associated with this health-check.\n",
                     "language": {
@@ -1604,7 +1604,7 @@
                 "services": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/consul:/getServiceHealthResultService:getServiceHealthResultService"
+                        "$ref": "#/types/consul:index/getServiceHealthResultService:getServiceHealthResultService"
                     },
                     "language": {
                         "python": {
@@ -1625,7 +1625,7 @@
                 }
             }
         },
-        "consul:/getServiceHealthResultCheck:getServiceHealthResultCheck": {
+        "consul:index/getServiceHealthResultCheck:getServiceHealthResultCheck": {
             "properties": {
                 "id": {
                     "type": "string",
@@ -1730,7 +1730,7 @@
                 }
             }
         },
-        "consul:/getServiceHealthResultNode:getServiceHealthResultNode": {
+        "consul:index/getServiceHealthResultNode:getServiceHealthResultNode": {
             "properties": {
                 "address": {
                     "type": "string",
@@ -1807,7 +1807,7 @@
                 }
             }
         },
-        "consul:/getServiceHealthResultService:getServiceHealthResultService": {
+        "consul:index/getServiceHealthResultService:getServiceHealthResultService": {
             "properties": {
                 "address": {
                     "type": "string",
@@ -1885,7 +1885,7 @@
                 }
             }
         },
-        "consul:/getServiceQueryOption:getServiceQueryOption": {
+        "consul:index/getServiceQueryOption:getServiceQueryOption": {
             "properties": {
                 "allowStale": {
                     "type": "boolean",
@@ -1972,7 +1972,7 @@
             },
             "type": "object"
         },
-        "consul:/getServiceService:getServiceService": {
+        "consul:index/getServiceService:getServiceService": {
             "properties": {
                 "address": {
                     "type": "string",
@@ -2124,7 +2124,7 @@
                 }
             }
         },
-        "consul:/getServicesQueryOption:getServicesQueryOption": {
+        "consul:index/getServicesQueryOption:getServicesQueryOption": {
             "properties": {
                 "allowStale": {
                     "type": "boolean",
@@ -2343,7 +2343,7 @@
                 "namespaceRules": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/consul:/AclAuthMethodNamespaceRule:AclAuthMethodNamespaceRule"
+                        "$ref": "#/types/consul:index/AclAuthMethodNamespaceRule:AclAuthMethodNamespaceRule"
                     },
                     "description": "A set of rules that control\nwhich namespace tokens created via this auth method will be created within.\n"
                 },
@@ -2396,7 +2396,7 @@
                 "namespaceRules": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/consul:/AclAuthMethodNamespaceRule:AclAuthMethodNamespaceRule"
+                        "$ref": "#/types/consul:index/AclAuthMethodNamespaceRule:AclAuthMethodNamespaceRule"
                     },
                     "description": "A set of rules that control\nwhich namespace tokens created via this auth method will be created within.\n"
                 },
@@ -2450,7 +2450,7 @@
                     "namespaceRules": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/consul:/AclAuthMethodNamespaceRule:AclAuthMethodNamespaceRule"
+                            "$ref": "#/types/consul:index/AclAuthMethodNamespaceRule:AclAuthMethodNamespaceRule"
                         },
                         "description": "A set of rules that control\nwhich namespace tokens created via this auth method will be created within.\n"
                     },
@@ -2675,7 +2675,7 @@
                 "serviceIdentities": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/consul:/AclRoleServiceIdentity:AclRoleServiceIdentity"
+                        "$ref": "#/types/consul:index/AclRoleServiceIdentity:AclRoleServiceIdentity"
                     },
                     "description": "The list of service identities that should\nbe applied to the role.\n"
                 }
@@ -2706,7 +2706,7 @@
                 "serviceIdentities": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/consul:/AclRoleServiceIdentity:AclRoleServiceIdentity"
+                        "$ref": "#/types/consul:index/AclRoleServiceIdentity:AclRoleServiceIdentity"
                     },
                     "description": "The list of service identities that should\nbe applied to the role.\n"
                 }
@@ -2736,7 +2736,7 @@
                     "serviceIdentities": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/consul:/AclRoleServiceIdentity:AclRoleServiceIdentity"
+                            "$ref": "#/types/consul:index/AclRoleServiceIdentity:AclRoleServiceIdentity"
                         },
                         "description": "The list of service identities that should\nbe applied to the role.\n"
                     }
@@ -3095,7 +3095,7 @@
                 "services": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/consul:/CatalogEntryService:CatalogEntryService"
+                        "$ref": "#/types/consul:index/CatalogEntryService:CatalogEntryService"
                     },
                     "description": "A service to optionally associated with\nthe node. Supported values are documented below.\n"
                 },
@@ -3125,7 +3125,7 @@
                 "services": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/consul:/CatalogEntryService:CatalogEntryService"
+                        "$ref": "#/types/consul:index/CatalogEntryService:CatalogEntryService"
                     },
                     "description": "A service to optionally associated with\nthe node. Supported values are documented below.\n"
                 },
@@ -3156,7 +3156,7 @@
                     "services": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/consul:/CatalogEntryService:CatalogEntryService"
+                            "$ref": "#/types/consul:index/CatalogEntryService:CatalogEntryService"
                         },
                         "description": "A service to optionally associated with\nthe node. Supported values are documented below.\n"
                     },
@@ -3424,7 +3424,7 @@
                 "subkeyCollection": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/consul:/KeyPrefixSubkeyCollection:KeyPrefixSubkeyCollection"
+                        "$ref": "#/types/consul:index/KeyPrefixSubkeyCollection:KeyPrefixSubkeyCollection"
                     },
                     "description": "A subkey to add. Supported values documented below.\nMultiple blocks supported.\n"
                 },
@@ -3460,7 +3460,7 @@
                 "subkeyCollection": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/consul:/KeyPrefixSubkeyCollection:KeyPrefixSubkeyCollection"
+                        "$ref": "#/types/consul:index/KeyPrefixSubkeyCollection:KeyPrefixSubkeyCollection"
                     },
                     "description": "A subkey to add. Supported values documented below.\nMultiple blocks supported.\n"
                 },
@@ -3497,7 +3497,7 @@
                     "subkeyCollection": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/consul:/KeyPrefixSubkeyCollection:KeyPrefixSubkeyCollection"
+                            "$ref": "#/types/consul:index/KeyPrefixSubkeyCollection:KeyPrefixSubkeyCollection"
                         },
                         "description": "A subkey to add. Supported values documented below.\nMultiple blocks supported.\n"
                     },
@@ -3525,7 +3525,7 @@
                 "keys": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/consul:/KeysKey:KeysKey"
+                        "$ref": "#/types/consul:index/KeysKey:KeysKey"
                     },
                     "description": "Specifies a key in Consul to be written.\nSupported values documented below.\n",
                     "language": {
@@ -3561,7 +3561,7 @@
                 "keys": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/consul:/KeysKey:KeysKey"
+                        "$ref": "#/types/consul:index/KeysKey:KeysKey"
                     },
                     "description": "Specifies a key in Consul to be written.\nSupported values documented below.\n",
                     "language": {
@@ -3589,7 +3589,7 @@
                     "keys": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/consul:/KeysKey:KeysKey"
+                            "$ref": "#/types/consul:index/KeysKey:KeysKey"
                         },
                         "description": "Specifies a key in Consul to be written.\nSupported values documented below.\n",
                         "language": {
@@ -4066,11 +4066,11 @@
                     "description": "The datacenter to use. This overrides the\nagent's default datacenter and the datacenter in the provider setup.\n"
                 },
                 "dns": {
-                    "$ref": "#/types/consul:/PreparedQueryDns:PreparedQueryDns",
+                    "$ref": "#/types/consul:index/PreparedQueryDns:PreparedQueryDns",
                     "description": "Settings for controlling the DNS response details.\n"
                 },
                 "failover": {
-                    "$ref": "#/types/consul:/PreparedQueryFailover:PreparedQueryFailover",
+                    "$ref": "#/types/consul:index/PreparedQueryFailover:PreparedQueryFailover",
                     "description": "Options for controlling behavior when no healthy\nnodes are available in the local DC.\n"
                 },
                 "ignoreCheckIds": {
@@ -4126,7 +4126,7 @@
                     "description": "The list of required and/or disallowed tags.  If a tag is\nin this list it must be present.  If the tag is preceded with a \"!\" then it is\ndisallowed.\n"
                 },
                 "template": {
-                    "$ref": "#/types/consul:/PreparedQueryTemplate:PreparedQueryTemplate",
+                    "$ref": "#/types/consul:index/PreparedQueryTemplate:PreparedQueryTemplate",
                     "description": "Query templating options. This is used to make a\nsingle prepared query respond to many different requests.\n"
                 },
                 "token": {
@@ -4148,11 +4148,11 @@
                     "description": "The datacenter to use. This overrides the\nagent's default datacenter and the datacenter in the provider setup.\n"
                 },
                 "dns": {
-                    "$ref": "#/types/consul:/PreparedQueryDns:PreparedQueryDns",
+                    "$ref": "#/types/consul:index/PreparedQueryDns:PreparedQueryDns",
                     "description": "Settings for controlling the DNS response details.\n"
                 },
                 "failover": {
-                    "$ref": "#/types/consul:/PreparedQueryFailover:PreparedQueryFailover",
+                    "$ref": "#/types/consul:index/PreparedQueryFailover:PreparedQueryFailover",
                     "description": "Options for controlling behavior when no healthy\nnodes are available in the local DC.\n"
                 },
                 "ignoreCheckIds": {
@@ -4208,7 +4208,7 @@
                     "description": "The list of required and/or disallowed tags.  If a tag is\nin this list it must be present.  If the tag is preceded with a \"!\" then it is\ndisallowed.\n"
                 },
                 "template": {
-                    "$ref": "#/types/consul:/PreparedQueryTemplate:PreparedQueryTemplate",
+                    "$ref": "#/types/consul:index/PreparedQueryTemplate:PreparedQueryTemplate",
                     "description": "Query templating options. This is used to make a\nsingle prepared query respond to many different requests.\n"
                 },
                 "token": {
@@ -4231,11 +4231,11 @@
                         "description": "The datacenter to use. This overrides the\nagent's default datacenter and the datacenter in the provider setup.\n"
                     },
                     "dns": {
-                        "$ref": "#/types/consul:/PreparedQueryDns:PreparedQueryDns",
+                        "$ref": "#/types/consul:index/PreparedQueryDns:PreparedQueryDns",
                         "description": "Settings for controlling the DNS response details.\n"
                     },
                     "failover": {
-                        "$ref": "#/types/consul:/PreparedQueryFailover:PreparedQueryFailover",
+                        "$ref": "#/types/consul:index/PreparedQueryFailover:PreparedQueryFailover",
                         "description": "Options for controlling behavior when no healthy\nnodes are available in the local DC.\n"
                     },
                     "ignoreCheckIds": {
@@ -4291,7 +4291,7 @@
                         "description": "The list of required and/or disallowed tags.  If a tag is\nin this list it must be present.  If the tag is preceded with a \"!\" then it is\ndisallowed.\n"
                     },
                     "template": {
-                        "$ref": "#/types/consul:/PreparedQueryTemplate:PreparedQueryTemplate",
+                        "$ref": "#/types/consul:index/PreparedQueryTemplate:PreparedQueryTemplate",
                         "description": "Query templating options. This is used to make a\nsingle prepared query respond to many different requests.\n"
                     },
                     "token": {
@@ -4312,7 +4312,7 @@
                 "checks": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/consul:/ServiceCheck:ServiceCheck"
+                        "$ref": "#/types/consul:index/ServiceCheck:ServiceCheck"
                     }
                 },
                 "datacenter": {
@@ -4377,7 +4377,7 @@
                 "checks": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/consul:/ServiceCheck:ServiceCheck"
+                        "$ref": "#/types/consul:index/ServiceCheck:ServiceCheck"
                     }
                 },
                 "datacenter": {
@@ -4440,7 +4440,7 @@
                     "checks": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/consul:/ServiceCheck:ServiceCheck"
+                            "$ref": "#/types/consul:index/ServiceCheck:ServiceCheck"
                         }
                     },
                     "datacenter": {
@@ -4554,7 +4554,7 @@
                     "namespaceRules": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/consul:/getAclAuthMethodNamespaceRule:getAclAuthMethodNamespaceRule"
+                            "$ref": "#/types/consul:index/getAclAuthMethodNamespaceRule:getAclAuthMethodNamespaceRule"
                         },
                         "description": "(Enterprise Only) A set of rules that control which\nnamespace tokens created via this auth method will be created within\n"
                     },
@@ -4672,14 +4672,14 @@
                     "policies": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/consul:/getAclRolePolicy:getAclRolePolicy"
+                            "$ref": "#/types/consul:index/getAclRolePolicy:getAclRolePolicy"
                         },
                         "description": "The list of policies associated with the ACL Role. Each entry has\nan `id` and a `name` attribute.\n"
                     },
                     "serviceIdentities": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/consul:/getAclRoleServiceIdentity:getAclRoleServiceIdentity"
+                            "$ref": "#/types/consul:index/getAclRoleServiceIdentity:getAclRoleServiceIdentity"
                         },
                         "description": "The list of service identities associated with the ACL\nRole. Each entry has a `service_name` attribute and a list of `datacenters`.\n"
                     }
@@ -4709,14 +4709,14 @@
                     "policies": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/consul:/getAclRolePolicy:getAclRolePolicy"
+                            "$ref": "#/types/consul:index/getAclRolePolicy:getAclRolePolicy"
                         },
                         "description": "The list of policies associated with the ACL Role. Each entry has\nan `id` and a `name` attribute.\n"
                     },
                     "serviceIdentities": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/consul:/getAclRoleServiceIdentity:getAclRoleServiceIdentity"
+                            "$ref": "#/types/consul:index/getAclRoleServiceIdentity:getAclRoleServiceIdentity"
                         },
                         "description": "The list of service identities associated with the ACL\nRole. Each entry has a `service_name` attribute and a list of `datacenters`.\n"
                     }
@@ -4752,7 +4752,7 @@
                     "policies": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/consul:/getAclTokenPolicy:getAclTokenPolicy"
+                            "$ref": "#/types/consul:index/getAclTokenPolicy:getAclTokenPolicy"
                         },
                         "description": "A list of policies associated with the ACL token. Each entry has\nan `id` and a `name` attribute.\n"
                     }
@@ -4786,7 +4786,7 @@
                     "policies": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/consul:/getAclTokenPolicy:getAclTokenPolicy"
+                            "$ref": "#/types/consul:index/getAclTokenPolicy:getAclTokenPolicy"
                         },
                         "description": "A list of policies associated with the ACL token. Each entry has\nan `id` and a `name` attribute.\n"
                     }
@@ -5270,7 +5270,7 @@
                     "servers": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/consul:/getAutopilotHealthServer:getAutopilotHealthServer"
+                            "$ref": "#/types/consul:index/getAutopilotHealthServer:getAutopilotHealthServer"
                         },
                         "description": "A list of server health information. See below for details on the\navailable information.\n"
                     }
@@ -5291,7 +5291,7 @@
                     "queryOptions": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/consul:/getCatalogNodesQueryOption:getCatalogNodesQueryOption"
+                            "$ref": "#/types/consul:index/getCatalogNodesQueryOption:getCatalogNodesQueryOption"
                         }
                     }
                 },
@@ -5322,13 +5322,13 @@
                     "nodes": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/consul:/getCatalogNodesNode:getCatalogNodesNode"
+                            "$ref": "#/types/consul:index/getCatalogNodesNode:getCatalogNodesNode"
                         }
                     },
                     "queryOptions": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/consul:/getCatalogNodesQueryOption:getCatalogNodesQueryOption"
+                            "$ref": "#/types/consul:index/getCatalogNodesQueryOption:getCatalogNodesQueryOption"
                         }
                     }
                 },
@@ -5358,7 +5358,7 @@
                     "queryOptions": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/consul:/getCatalogServiceQueryOption:getCatalogServiceQueryOption"
+                            "$ref": "#/types/consul:index/getCatalogServiceQueryOption:getCatalogServiceQueryOption"
                         }
                     },
                     "tag": {
@@ -5389,13 +5389,13 @@
                     "queryOptions": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/consul:/getCatalogServiceQueryOption:getCatalogServiceQueryOption"
+                            "$ref": "#/types/consul:index/getCatalogServiceQueryOption:getCatalogServiceQueryOption"
                         }
                     },
                     "services": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/consul:/getCatalogServiceService:getCatalogServiceService"
+                            "$ref": "#/types/consul:index/getCatalogServiceService:getCatalogServiceService"
                         }
                     },
                     "tag": {
@@ -5417,7 +5417,7 @@
                     "queryOptions": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/consul:/getCatalogServicesQueryOption:getCatalogServicesQueryOption"
+                            "$ref": "#/types/consul:index/getCatalogServicesQueryOption:getCatalogServicesQueryOption"
                         }
                     }
                 },
@@ -5442,7 +5442,7 @@
                     "queryOptions": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/consul:/getCatalogServicesQueryOption:getCatalogServicesQueryOption"
+                            "$ref": "#/types/consul:index/getCatalogServicesQueryOption:getCatalogServicesQueryOption"
                         }
                     },
                     "services": {
@@ -5480,7 +5480,7 @@
                     "subkeyCollection": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/consul:/getKeyPrefixSubkeyCollection:getKeyPrefixSubkeyCollection"
+                            "$ref": "#/types/consul:index/getKeyPrefixSubkeyCollection:getKeyPrefixSubkeyCollection"
                         },
                         "description": "Specifies a subkey in Consul to be read. Supported\nvalues documented below. Multiple blocks supported.\n"
                     },
@@ -5515,7 +5515,7 @@
                     "subkeyCollection": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/consul:/getKeyPrefixSubkeyCollection:getKeyPrefixSubkeyCollection"
+                            "$ref": "#/types/consul:index/getKeyPrefixSubkeyCollection:getKeyPrefixSubkeyCollection"
                         }
                     },
                     "subkeys": {
@@ -5557,7 +5557,7 @@
                     "keys": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/consul:/getKeysKey:getKeysKey"
+                            "$ref": "#/types/consul:index/getKeysKey:getKeysKey"
                         },
                         "description": "Specifies a key in Consul to be read. Supported\nvalues documented below. Multiple blocks supported.\n"
                     },
@@ -5586,7 +5586,7 @@
                     "keys": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/consul:/getKeysKey:getKeysKey"
+                            "$ref": "#/types/consul:index/getKeysKey:getKeysKey"
                         }
                     },
                     "namespace": {
@@ -5611,7 +5611,7 @@
             }
         },
         "consul:index/getNetworkAreaMembers:getNetworkAreaMembers": {
-            "description": "\u003e **NOTE:** This feature requires [Consul Enterprise](https://www.consul.io/docs/enterprise/index.html).\n\nThe `consul.getNetworkAreaMembers` data source provides a list of the Consul\nservers present in a specific network area.\n",
+            "description": "\u003e **NOTE:** This feature requires [Consul Enterprise](https://www.consul.io/docs/enterprise/index.html).\n\nThe `consul.getNetworkAreaMembers` data source provides a list of the Consul\nservers present in a specific network area.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as consul from \"@pulumi/consul\";\n\nconst dc2NetworkArea = new consul.NetworkArea(\"dc2NetworkArea\", {\n    peerDatacenter: \"dc2\",\n    retryJoins: [\"1.2.3.4\"],\n    useTls: true,\n});\nconst dc2NetworkAreaMembers = dc2NetworkArea.id.apply(id =\u003e consul.getNetworkAreaMembers({\n    uuid: id,\n}));\nexport const members = dc2NetworkAreaMembers.members;\n```\n```python\nimport pulumi\nimport pulumi_consul as consul\n\ndc2_network_area = consul.NetworkArea(\"dc2NetworkArea\",\n    peer_datacenter=\"dc2\",\n    retry_joins=[\"1.2.3.4\"],\n    use_tls=True)\ndc2_network_area_members = dc2_network_area.id.apply(lambda id: consul.get_network_area_members(uuid=id))\npulumi.export(\"members\", dc2_network_area_members.members)\n```\n```csharp\nusing Pulumi;\nusing Consul = Pulumi.Consul;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var dc2NetworkArea = new Consul.NetworkArea(\"dc2NetworkArea\", new Consul.NetworkAreaArgs\n        {\n            PeerDatacenter = \"dc2\",\n            RetryJoins = \n            {\n                \"1.2.3.4\",\n            },\n            UseTls = true,\n        });\n        var dc2NetworkAreaMembers = dc2NetworkArea.Id.Apply(id =\u003e Consul.GetNetworkAreaMembers.InvokeAsync(new Consul.GetNetworkAreaMembersArgs\n        {\n            Uuid = id,\n        }));\n        this.Members = dc2NetworkAreaMembers.Apply(dc2NetworkAreaMembers =\u003e dc2NetworkAreaMembers.Members);\n    }\n\n    [Output(\"members\")]\n    public Output\u003cstring\u003e Members { get; set; }\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getNetworkAreaMembers.\n",
                 "properties": {
@@ -5647,7 +5647,7 @@
                     "members": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/consul:/getNetworkAreaMembersMember:getNetworkAreaMembersMember"
+                            "$ref": "#/types/consul:index/getNetworkAreaMembersMember:getNetworkAreaMembersMember"
                         },
                         "description": "The list of Consul servers in this network area\n"
                     },
@@ -5722,7 +5722,7 @@
                     "queryOptions": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/consul:/getNodesQueryOption:getNodesQueryOption"
+                            "$ref": "#/types/consul:index/getNodesQueryOption:getNodesQueryOption"
                         },
                         "description": "See below.\n"
                     }
@@ -5757,14 +5757,14 @@
                     "nodes": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/consul:/getNodesNode:getNodesNode"
+                            "$ref": "#/types/consul:index/getNodesNode:getNodesNode"
                         },
                         "description": "A list of nodes and details about each Consul agent.  The list of\nper-node attributes is detailed below.\n"
                     },
                     "queryOptions": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/consul:/getNodesQueryOption:getNodesQueryOption"
+                            "$ref": "#/types/consul:index/getNodesQueryOption:getNodesQueryOption"
                         }
                     }
                 },
@@ -5798,7 +5798,7 @@
                     "queryOptions": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/consul:/getServiceQueryOption:getServiceQueryOption"
+                            "$ref": "#/types/consul:index/getServiceQueryOption:getServiceQueryOption"
                         },
                         "description": "See below.\n"
                     },
@@ -5833,13 +5833,13 @@
                     "queryOptions": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/consul:/getServiceQueryOption:getServiceQueryOption"
+                            "$ref": "#/types/consul:index/getServiceQueryOption:getServiceQueryOption"
                         }
                     },
                     "services": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/consul:/getServiceService:getServiceService"
+                            "$ref": "#/types/consul:index/getServiceService:getServiceService"
                         },
                         "description": "A list of nodes and details about each endpoint advertising a\nservice.  Each element in the list is a map of attributes that correspond to\neach individual node.  The list of per-node attributes is detailed below.\n"
                     },
@@ -5937,7 +5937,7 @@
                     "results": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/consul:/getServiceHealthResult:getServiceHealthResult"
+                            "$ref": "#/types/consul:index/getServiceHealthResult:getServiceHealthResult"
                         },
                         "description": "A list of entries and details about each endpoint advertising a\nservice.  Each element in the list has three attributes: `node`, `service` and\n`checks`.  The list of the attributes of each one is detailed below.\n"
                     },
@@ -5965,7 +5965,7 @@
                     "queryOptions": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/consul:/getServicesQueryOption:getServicesQueryOption"
+                            "$ref": "#/types/consul:index/getServicesQueryOption:getServicesQueryOption"
                         },
                         "description": "See below.\n"
                     }
@@ -5992,7 +5992,7 @@
                     "queryOptions": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/consul:/getServicesQueryOption:getServicesQueryOption"
+                            "$ref": "#/types/consul:index/getServicesQueryOption:getServicesQueryOption"
                         }
                     },
                     "services": {

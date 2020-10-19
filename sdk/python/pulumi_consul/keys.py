@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -18,7 +18,7 @@ class Keys(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  datacenter: Optional[pulumi.Input[str]] = None,
-                 keys: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['KeysKeyArgs']]]]] = None,
+                 keys: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KeysKeyArgs']]]]] = None,
                  namespace: Optional[pulumi.Input[str]] = None,
                  token: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -30,7 +30,7 @@ class Keys(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the
                agent's default datacenter and the datacenter in the provider setup.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['KeysKeyArgs']]]] keys: Specifies a key in Consul to be written.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KeysKeyArgs']]]] keys: Specifies a key in Consul to be written.
                Supported values documented below.
         :param pulumi.Input[str] namespace: The namespace to create the keys within.
         :param pulumi.Input[str] token: The ACL token to use. This overrides the
@@ -69,7 +69,7 @@ class Keys(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             datacenter: Optional[pulumi.Input[str]] = None,
-            keys: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['KeysKeyArgs']]]]] = None,
+            keys: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KeysKeyArgs']]]]] = None,
             namespace: Optional[pulumi.Input[str]] = None,
             token: Optional[pulumi.Input[str]] = None,
             var: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'Keys':
@@ -82,7 +82,7 @@ class Keys(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the
                agent's default datacenter and the datacenter in the provider setup.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['KeysKeyArgs']]]] keys: Specifies a key in Consul to be written.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KeysKeyArgs']]]] keys: Specifies a key in Consul to be written.
                Supported values documented below.
         :param pulumi.Input[str] namespace: The namespace to create the keys within.
         :param pulumi.Input[str] token: The ACL token to use. This overrides the
@@ -110,7 +110,7 @@ class Keys(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def keys(self) -> pulumi.Output[Optional[List['outputs.KeysKey']]]:
+    def keys(self) -> pulumi.Output[Optional[Sequence['outputs.KeysKey']]]:
         """
         Specifies a key in Consul to be written.
         Supported values documented below.

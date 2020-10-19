@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = ['NetworkArea']
@@ -17,7 +17,7 @@ class NetworkArea(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  datacenter: Optional[pulumi.Input[str]] = None,
                  peer_datacenter: Optional[pulumi.Input[str]] = None,
-                 retry_joins: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 retry_joins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  token: Optional[pulumi.Input[str]] = None,
                  use_tls: Optional[pulumi.Input[bool]] = None,
                  __props__=None,
@@ -52,7 +52,7 @@ class NetworkArea(pulumi.CustomResource):
                agent's default datacenter and the datacenter in the provider setup.
         :param pulumi.Input[str] peer_datacenter: The name of the Consul datacenter that will be
                joined to form the area.
-        :param pulumi.Input[List[pulumi.Input[str]]] retry_joins: Specifies a list of Consul servers to attempt to
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] retry_joins: Specifies a list of Consul servers to attempt to
                join. Servers can be given as `IP`, `IP:port`, `hostname`, or `hostname:port`.
         :param pulumi.Input[str] token: The ACL token to use. This overrides the
                token that the agent provides by default.
@@ -95,7 +95,7 @@ class NetworkArea(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             datacenter: Optional[pulumi.Input[str]] = None,
             peer_datacenter: Optional[pulumi.Input[str]] = None,
-            retry_joins: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            retry_joins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             token: Optional[pulumi.Input[str]] = None,
             use_tls: Optional[pulumi.Input[bool]] = None) -> 'NetworkArea':
         """
@@ -109,7 +109,7 @@ class NetworkArea(pulumi.CustomResource):
                agent's default datacenter and the datacenter in the provider setup.
         :param pulumi.Input[str] peer_datacenter: The name of the Consul datacenter that will be
                joined to form the area.
-        :param pulumi.Input[List[pulumi.Input[str]]] retry_joins: Specifies a list of Consul servers to attempt to
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] retry_joins: Specifies a list of Consul servers to attempt to
                join. Servers can be given as `IP`, `IP:port`, `hostname`, or `hostname:port`.
         :param pulumi.Input[str] token: The ACL token to use. This overrides the
                token that the agent provides by default.
@@ -147,7 +147,7 @@ class NetworkArea(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="retryJoins")
-    def retry_joins(self) -> pulumi.Output[Optional[List[str]]]:
+    def retry_joins(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         Specifies a list of Consul servers to attempt to
         join. Servers can be given as `IP`, `IP:port`, `hostname`, or `hostname:port`.

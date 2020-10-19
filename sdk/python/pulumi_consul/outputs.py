@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 
@@ -87,10 +87,10 @@ class AclAuthMethodNamespaceRule(dict):
 class AclRoleServiceIdentity(dict):
     def __init__(__self__, *,
                  service_name: str,
-                 datacenters: Optional[List[str]] = None):
+                 datacenters: Optional[Sequence[str]] = None):
         """
         :param str service_name: The name of the service.
-        :param List[str] datacenters: The datacenters the effective policy is valid within.
+        :param Sequence[str] datacenters: The datacenters the effective policy is valid within.
         """
         pulumi.set(__self__, "service_name", service_name)
         if datacenters is not None:
@@ -106,7 +106,7 @@ class AclRoleServiceIdentity(dict):
 
     @property
     @pulumi.getter
-    def datacenters(self) -> Optional[List[str]]:
+    def datacenters(self) -> Optional[Sequence[str]]:
         """
         The datacenters the effective policy is valid within.
         """
@@ -122,15 +122,15 @@ class CatalogEntryService(dict):
                  name: str,
                  address: Optional[str] = None,
                  id: Optional[str] = None,
-                 port: Optional[float] = None,
-                 tags: Optional[List[str]] = None):
+                 port: Optional[int] = None,
+                 tags: Optional[Sequence[str]] = None):
         """
         :param str name: The name of the service
         :param str address: The address of the service. Defaults to the
                node address.
         :param str id: The ID of the service. Defaults to the `name`.
-        :param float port: The port of the service.
-        :param List[str] tags: A list of values that are opaque to Consul,
+        :param int port: The port of the service.
+        :param Sequence[str] tags: A list of values that are opaque to Consul,
                but can be used to distinguish between services or nodes.
         """
         pulumi.set(__self__, "name", name)
@@ -170,7 +170,7 @@ class CatalogEntryService(dict):
 
     @property
     @pulumi.getter
-    def port(self) -> Optional[float]:
+    def port(self) -> Optional[int]:
         """
         The port of the service.
         """
@@ -178,7 +178,7 @@ class CatalogEntryService(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List[str]]:
+    def tags(self) -> Optional[Sequence[str]]:
         """
         A list of values that are opaque to Consul,
         but can be used to distinguish between services or nodes.
@@ -194,12 +194,12 @@ class KeyPrefixSubkeyCollection(dict):
     def __init__(__self__, *,
                  path: str,
                  value: str,
-                 flags: Optional[float] = None):
+                 flags: Optional[int] = None):
         """
         :param str path: This is the path (which will be appended to the given
                `path_prefix`) in Consul that should be written to.
         :param str value: The value to write to the given path.
-        :param float flags: An [unsigned integer value](https://www.consul.io/api/kv.html#flags-1)
+        :param int flags: An [unsigned integer value](https://www.consul.io/api/kv.html#flags-1)
                to attach to the key (defaults to 0).
         """
         pulumi.set(__self__, "path", path)
@@ -226,7 +226,7 @@ class KeyPrefixSubkeyCollection(dict):
 
     @property
     @pulumi.getter
-    def flags(self) -> Optional[float]:
+    def flags(self) -> Optional[int]:
         """
         An [unsigned integer value](https://www.consul.io/api/kv.html#flags-1)
         to attach to the key (defaults to 0).
@@ -243,7 +243,7 @@ class KeysKey(dict):
                  path: str,
                  default: Optional[str] = None,
                  delete: Optional[bool] = None,
-                 flags: Optional[float] = None,
+                 flags: Optional[int] = None,
                  name: Optional[str] = None,
                  value: Optional[str] = None):
         """
@@ -252,7 +252,7 @@ class KeysKey(dict):
                either its configuration block is removed from the configuration or
                the entire resource is destroyed. Otherwise, it will be left in Consul.
                Defaults to false.
-        :param float flags: An [unsigned integer value](https://www.consul.io/api/kv.html#flags-1)
+        :param int flags: An [unsigned integer value](https://www.consul.io/api/kv.html#flags-1)
                to attach to the key (defaults to 0).
         :param str value: The value to write to the given path.
         """
@@ -294,7 +294,7 @@ class KeysKey(dict):
 
     @property
     @pulumi.getter
-    def flags(self) -> Optional[float]:
+    def flags(self) -> Optional[int]:
         """
         An [unsigned integer value](https://www.consul.io/api/kv.html#flags-1)
         to attach to the key (defaults to 0).
@@ -343,11 +343,11 @@ class PreparedQueryDns(dict):
 @pulumi.output_type
 class PreparedQueryFailover(dict):
     def __init__(__self__, *,
-                 datacenters: Optional[List[str]] = None,
-                 nearest_n: Optional[float] = None):
+                 datacenters: Optional[Sequence[str]] = None,
+                 nearest_n: Optional[int] = None):
         """
-        :param List[str] datacenters: Remote datacenters to return results from.
-        :param float nearest_n: Return results from this many datacenters,
+        :param Sequence[str] datacenters: Remote datacenters to return results from.
+        :param int nearest_n: Return results from this many datacenters,
                sorted in ascending order of estimated RTT.
         """
         if datacenters is not None:
@@ -357,7 +357,7 @@ class PreparedQueryFailover(dict):
 
     @property
     @pulumi.getter
-    def datacenters(self) -> Optional[List[str]]:
+    def datacenters(self) -> Optional[Sequence[str]]:
         """
         Remote datacenters to return results from.
         """
@@ -365,7 +365,7 @@ class PreparedQueryFailover(dict):
 
     @property
     @pulumi.getter(name="nearestN")
-    def nearest_n(self) -> Optional[float]:
+    def nearest_n(self) -> Optional[int]:
         """
         Return results from this many datacenters,
         sorted in ascending order of estimated RTT.
@@ -420,7 +420,7 @@ class ServiceCheck(dict):
                  name: str,
                  timeout: str,
                  deregister_critical_service_after: Optional[str] = None,
-                 headers: Optional[List['outputs.ServiceCheckHeader']] = None,
+                 headers: Optional[Sequence['outputs.ServiceCheckHeader']] = None,
                  http: Optional[str] = None,
                  method: Optional[str] = None,
                  notes: Optional[str] = None,
@@ -437,7 +437,7 @@ class ServiceCheck(dict):
         :param str deregister_critical_service_after: The time after which
                the service is automatically deregistered when in the `critical` state.
                Defaults to `30s`.
-        :param List['ServiceCheckHeaderArgs'] headers: The headers to send for an HTTP check.
+        :param Sequence['ServiceCheckHeaderArgs'] headers: The headers to send for an HTTP check.
                The attributes of each header is given below.
         :param str http: The HTTP endpoint to call for an HTTP check.
         :param str method: The method to use for HTTP health-checks. Defaults
@@ -515,7 +515,7 @@ class ServiceCheck(dict):
 
     @property
     @pulumi.getter
-    def headers(self) -> Optional[List['outputs.ServiceCheckHeader']]:
+    def headers(self) -> Optional[Sequence['outputs.ServiceCheckHeader']]:
         """
         The headers to send for an HTTP check.
         The attributes of each header is given below.
@@ -580,10 +580,10 @@ class ServiceCheck(dict):
 class ServiceCheckHeader(dict):
     def __init__(__self__, *,
                  name: str,
-                 values: List[str]):
+                 values: Sequence[str]):
         """
         :param str name: The name of the header.
-        :param List[str] values: The header's list of values.
+        :param Sequence[str] values: The header's list of values.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
@@ -598,7 +598,7 @@ class ServiceCheckHeader(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         The header's list of values.
         """
@@ -655,7 +655,7 @@ class GetAclRolePolicyResult(dict):
 @pulumi.output_type
 class GetAclRoleServiceIdentityResult(dict):
     def __init__(__self__, *,
-                 datacenters: Optional[List[str]] = None,
+                 datacenters: Optional[Sequence[str]] = None,
                  service_name: Optional[str] = None):
         if datacenters is not None:
             pulumi.set(__self__, "datacenters", datacenters)
@@ -664,7 +664,7 @@ class GetAclRoleServiceIdentityResult(dict):
 
     @property
     @pulumi.getter
-    def datacenters(self) -> Optional[List[str]]:
+    def datacenters(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "datacenters")
 
     @property
@@ -699,8 +699,8 @@ class GetAutopilotHealthServerResult(dict):
                  healthy: bool,
                  id: str,
                  last_contact: str,
-                 last_index: float,
-                 last_term: float,
+                 last_index: int,
+                 last_term: int,
                  leader: bool,
                  name: str,
                  serf_status: str,
@@ -714,8 +714,8 @@ class GetAutopilotHealthServerResult(dict):
         :param str id: The Raft ID of the server
         :param str last_contact: The time elapsed since the server's last contact with
                the leader
-        :param float last_index: The index of the server's last committed Raft log entry
-        :param float last_term: The server's last known Raft leader term
+        :param int last_index: The index of the server's last committed Raft log entry
+        :param int last_term: The server's last known Raft leader term
         :param bool leader: Whether the server is currently leader
         :param str name: The node name of the server
         :param str serf_status: The status of the SerfHealth check of the server
@@ -773,7 +773,7 @@ class GetAutopilotHealthServerResult(dict):
 
     @property
     @pulumi.getter(name="lastIndex")
-    def last_index(self) -> float:
+    def last_index(self) -> int:
         """
         The index of the server's last committed Raft log entry
         """
@@ -781,7 +781,7 @@ class GetAutopilotHealthServerResult(dict):
 
     @property
     @pulumi.getter(name="lastTerm")
-    def last_term(self) -> float:
+    def last_term(self) -> int:
         """
         The server's last known Raft leader term
         """
@@ -886,7 +886,7 @@ class GetCatalogNodesQueryOptionResult(dict):
                  node_meta: Optional[Mapping[str, str]] = None,
                  require_consistent: Optional[bool] = None,
                  token: Optional[str] = None,
-                 wait_index: Optional[float] = None,
+                 wait_index: Optional[int] = None,
                  wait_time: Optional[str] = None):
         if allow_stale is not None:
             pulumi.set(__self__, "allow_stale", allow_stale)
@@ -937,7 +937,7 @@ class GetCatalogNodesQueryOptionResult(dict):
 
     @property
     @pulumi.getter(name="waitIndex")
-    def wait_index(self) -> Optional[float]:
+    def wait_index(self) -> Optional[int]:
         return pulumi.get(self, "wait_index")
 
     @property
@@ -956,7 +956,7 @@ class GetCatalogServiceQueryOptionResult(dict):
                  node_meta: Optional[Mapping[str, str]] = None,
                  require_consistent: Optional[bool] = None,
                  token: Optional[str] = None,
-                 wait_index: Optional[float] = None,
+                 wait_index: Optional[int] = None,
                  wait_time: Optional[str] = None):
         if allow_stale is not None:
             pulumi.set(__self__, "allow_stale", allow_stale)
@@ -1014,7 +1014,7 @@ class GetCatalogServiceQueryOptionResult(dict):
 
     @property
     @pulumi.getter(name="waitIndex")
-    def wait_index(self) -> Optional[float]:
+    def wait_index(self) -> Optional[int]:
         return pulumi.get(self, "wait_index")
 
     @property
@@ -1039,7 +1039,7 @@ class GetCatalogServiceServiceResult(dict):
                  node_name: str,
                  port: str,
                  tagged_addresses: Mapping[str, str],
-                 tags: List[str]):
+                 tags: Sequence[str]):
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "create_index", create_index)
         pulumi.set(__self__, "enable_tag_override", enable_tag_override)
@@ -1122,7 +1122,7 @@ class GetCatalogServiceServiceResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> List[str]:
+    def tags(self) -> Sequence[str]:
         return pulumi.get(self, "tags")
 
 
@@ -1136,7 +1136,7 @@ class GetCatalogServicesQueryOptionResult(dict):
                  node_meta: Optional[Mapping[str, str]] = None,
                  require_consistent: Optional[bool] = None,
                  token: Optional[str] = None,
-                 wait_index: Optional[float] = None,
+                 wait_index: Optional[int] = None,
                  wait_time: Optional[str] = None):
         if allow_stale is not None:
             pulumi.set(__self__, "allow_stale", allow_stale)
@@ -1194,7 +1194,7 @@ class GetCatalogServicesQueryOptionResult(dict):
 
     @property
     @pulumi.getter(name="waitIndex")
-    def wait_index(self) -> Optional[float]:
+    def wait_index(self) -> Optional[int]:
         return pulumi.get(self, "wait_index")
 
     @property
@@ -1311,10 +1311,10 @@ class GetNetworkAreaMembersMemberResult(dict):
                  datacenter: str,
                  id: str,
                  name: str,
-                 port: float,
-                 protocol: float,
+                 port: int,
+                 protocol: int,
                  role: str,
-                 rtt: float,
+                 rtt: int,
                  status: str):
         """
         :param str address: The IP address of the server.
@@ -1323,11 +1323,11 @@ class GetNetworkAreaMembersMemberResult(dict):
                agent's default datacenter and the datacenter in the provider setup.
         :param str id: The node ID of the server.
         :param str name: The node name of the server, with its datacenter appended.
-        :param float port: The server RPC port the node.
-        :param float protocol: The protocol version being spoken by the node.
+        :param int port: The server RPC port the node.
+        :param int protocol: The protocol version being spoken by the node.
         :param str role: Role is always `"server"` since only Consul servers can participate
                in network areas.
-        :param float rtt: An estimated network round trip time from the server answering the
+        :param int rtt: An estimated network round trip time from the server answering the
                query to the given server, in nanoseconds. This is computed using network
                coordinates.
         :param str status: The current health status of the node, as determined by the
@@ -1389,7 +1389,7 @@ class GetNetworkAreaMembersMemberResult(dict):
 
     @property
     @pulumi.getter
-    def port(self) -> float:
+    def port(self) -> int:
         """
         The server RPC port the node.
         """
@@ -1397,7 +1397,7 @@ class GetNetworkAreaMembersMemberResult(dict):
 
     @property
     @pulumi.getter
-    def protocol(self) -> float:
+    def protocol(self) -> int:
         """
         The protocol version being spoken by the node.
         """
@@ -1414,7 +1414,7 @@ class GetNetworkAreaMembersMemberResult(dict):
 
     @property
     @pulumi.getter
-    def rtt(self) -> float:
+    def rtt(self) -> int:
         """
         An estimated network round trip time from the server answering the
         query to the given server, in nanoseconds. This is computed using network
@@ -1505,7 +1505,7 @@ class GetNodesQueryOptionResult(dict):
                  node_meta: Optional[Mapping[str, str]] = None,
                  require_consistent: Optional[bool] = None,
                  token: Optional[str] = None,
-                 wait_index: Optional[float] = None,
+                 wait_index: Optional[int] = None,
                  wait_time: Optional[str] = None):
         """
         :param bool allow_stale: When `true`, the default, allow responses from
@@ -1520,7 +1520,7 @@ class GetNodesQueryOptionResult(dict):
         :param str token: Specify the Consul ACL token to use when performing the
                request.  This defaults to the same API token configured by the `consul`
                provider but may be overriden if necessary.
-        :param float wait_index: Index number used to enable blocking quereis.
+        :param int wait_index: Index number used to enable blocking quereis.
         :param str wait_time: Max time the client should wait for a blocking query
                to return.
         """
@@ -1593,7 +1593,7 @@ class GetNodesQueryOptionResult(dict):
 
     @property
     @pulumi.getter(name="waitIndex")
-    def wait_index(self) -> Optional[float]:
+    def wait_index(self) -> Optional[int]:
         """
         Index number used to enable blocking quereis.
         """
@@ -1612,11 +1612,11 @@ class GetNodesQueryOptionResult(dict):
 @pulumi.output_type
 class GetServiceHealthResultResult(dict):
     def __init__(__self__, *,
-                 checks: List['outputs.GetServiceHealthResultCheckResult'],
-                 nodes: List['outputs.GetServiceHealthResultNodeResult'],
-                 services: List['outputs.GetServiceHealthResultServiceResult']):
+                 checks: Sequence['outputs.GetServiceHealthResultCheckResult'],
+                 nodes: Sequence['outputs.GetServiceHealthResultNodeResult'],
+                 services: Sequence['outputs.GetServiceHealthResultServiceResult']):
         """
-        :param List['GetServiceHealthResultNodeArgs'] nodes: The name of the node associated with this health-check.
+        :param Sequence['GetServiceHealthResultNodeArgs'] nodes: The name of the node associated with this health-check.
         """
         pulumi.set(__self__, "checks", checks)
         pulumi.set(__self__, "nodes", nodes)
@@ -1624,12 +1624,12 @@ class GetServiceHealthResultResult(dict):
 
     @property
     @pulumi.getter
-    def checks(self) -> List['outputs.GetServiceHealthResultCheckResult']:
+    def checks(self) -> Sequence['outputs.GetServiceHealthResultCheckResult']:
         return pulumi.get(self, "checks")
 
     @property
     @pulumi.getter
-    def nodes(self) -> List['outputs.GetServiceHealthResultNodeResult']:
+    def nodes(self) -> Sequence['outputs.GetServiceHealthResultNodeResult']:
         """
         The name of the node associated with this health-check.
         """
@@ -1637,7 +1637,7 @@ class GetServiceHealthResultResult(dict):
 
     @property
     @pulumi.getter
-    def services(self) -> List['outputs.GetServiceHealthResultServiceResult']:
+    def services(self) -> Sequence['outputs.GetServiceHealthResultServiceResult']:
         return pulumi.get(self, "services")
 
 
@@ -1651,7 +1651,7 @@ class GetServiceHealthResultCheckResult(dict):
                  output: str,
                  service_id: str,
                  service_name: str,
-                 service_tags: List[str],
+                 service_tags: Sequence[str],
                  status: str):
         """
         :param str id: The ID of this health-check.
@@ -1661,7 +1661,7 @@ class GetServiceHealthResultCheckResult(dict):
         :param str output: The output of the health-check.
         :param str service_id: The ID of the service associated to this health-check.
         :param str service_name: The name of the service associated with this health-check.
-        :param List[str] service_tags: The list of tags associated with this health-check.
+        :param Sequence[str] service_tags: The list of tags associated with this health-check.
         :param str status: The status of this health-check.
         """
         pulumi.set(__self__, "id", id)
@@ -1732,7 +1732,7 @@ class GetServiceHealthResultCheckResult(dict):
 
     @property
     @pulumi.getter(name="serviceTags")
-    def service_tags(self) -> List[str]:
+    def service_tags(self) -> Sequence[str]:
         """
         The list of tags associated with this health-check.
         """
@@ -1823,15 +1823,15 @@ class GetServiceHealthResultServiceResult(dict):
                  id: str,
                  meta: Mapping[str, str],
                  name: str,
-                 port: float,
-                 tags: List[str]):
+                 port: int,
+                 tags: Sequence[str]):
         """
         :param str address: The address of this instance.
         :param str id: The ID of this health-check.
         :param Mapping[str, str] meta: Service metadata tag information, if any.
         :param str name: The service name to select.
-        :param float port: The port of this instance.
-        :param List[str] tags: The list of tags associated with this instance.
+        :param int port: The port of this instance.
+        :param Sequence[str] tags: The list of tags associated with this instance.
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "id", id)
@@ -1874,7 +1874,7 @@ class GetServiceHealthResultServiceResult(dict):
 
     @property
     @pulumi.getter
-    def port(self) -> float:
+    def port(self) -> int:
         """
         The port of this instance.
         """
@@ -1882,7 +1882,7 @@ class GetServiceHealthResultServiceResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> List[str]:
+    def tags(self) -> Sequence[str]:
         """
         The list of tags associated with this instance.
         """
@@ -1899,7 +1899,7 @@ class GetServiceQueryOptionResult(dict):
                  node_meta: Optional[Mapping[str, str]] = None,
                  require_consistent: Optional[bool] = None,
                  token: Optional[str] = None,
-                 wait_index: Optional[float] = None,
+                 wait_index: Optional[int] = None,
                  wait_time: Optional[str] = None):
         """
         :param bool allow_stale: When `true`, the default, allow responses from
@@ -1915,7 +1915,7 @@ class GetServiceQueryOptionResult(dict):
         :param str token: Specify the Consul ACL token to use when performing the
                request.  This defaults to the same API token configured by the `consul`
                provider but may be overriden if necessary.
-        :param float wait_index: Index number used to enable blocking quereis.
+        :param int wait_index: Index number used to enable blocking quereis.
         :param str wait_time: Max time the client should wait for a blocking query
                to return.
         """
@@ -1998,7 +1998,7 @@ class GetServiceQueryOptionResult(dict):
 
     @property
     @pulumi.getter(name="waitIndex")
-    def wait_index(self) -> Optional[float]:
+    def wait_index(self) -> Optional[int]:
         """
         Index number used to enable blocking quereis.
         """
@@ -2030,7 +2030,7 @@ class GetServiceServiceResult(dict):
                  node_name: str,
                  port: str,
                  tagged_addresses: Mapping[str, str],
-                 tags: List[str]):
+                 tags: Sequence[str]):
         """
         :param str name: The service name to select.
         :param str node_id: The Node ID of the Consul agent advertising the service.
@@ -2167,7 +2167,7 @@ class GetServiceServiceResult(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> List[str]:
+    def tags(self) -> Sequence[str]:
         return pulumi.get(self, "tags")
 
 
@@ -2181,7 +2181,7 @@ class GetServicesQueryOptionResult(dict):
                  node_meta: Optional[Mapping[str, str]] = None,
                  require_consistent: Optional[bool] = None,
                  token: Optional[str] = None,
-                 wait_index: Optional[float] = None,
+                 wait_index: Optional[int] = None,
                  wait_time: Optional[str] = None):
         """
         :param bool allow_stale: When `true`, the default, allow responses from
@@ -2197,7 +2197,7 @@ class GetServicesQueryOptionResult(dict):
         :param str token: Specify the Consul ACL token to use when performing the
                request.  This defaults to the same API token configured by the `consul`
                provider but may be overriden if necessary.
-        :param float wait_index: Index number used to enable blocking quereis.
+        :param int wait_index: Index number used to enable blocking quereis.
         :param str wait_time: Max time the client should wait for a blocking query
                to return.
         """
@@ -2280,7 +2280,7 @@ class GetServicesQueryOptionResult(dict):
 
     @property
     @pulumi.getter(name="waitIndex")
-    def wait_index(self) -> Optional[float]:
+    def wait_index(self) -> Optional[int]:
         """
         Index number used to enable blocking quereis.
         """

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = [
@@ -41,7 +41,7 @@ class GetAclPolicyResult:
 
     @property
     @pulumi.getter
-    def datacenters(self) -> Optional[List[str]]:
+    def datacenters(self) -> Optional[Sequence[str]]:
         """
         The datacenters associated with the ACL Policy.
         """
@@ -96,7 +96,7 @@ class AwaitableGetAclPolicyResult(GetAclPolicyResult):
             rules=self.rules)
 
 
-def get_acl_policy(datacenters: Optional[List[str]] = None,
+def get_acl_policy(datacenters: Optional[Sequence[str]] = None,
                    description: Optional[str] = None,
                    name: Optional[str] = None,
                    namespace: Optional[str] = None,
@@ -117,7 +117,7 @@ def get_acl_policy(datacenters: Optional[List[str]] = None,
     ```
 
 
-    :param List[str] datacenters: The datacenters associated with the ACL Policy.
+    :param Sequence[str] datacenters: The datacenters associated with the ACL Policy.
     :param str description: The description of the ACL Policy.
     :param str name: The name of the ACL Policy.
     :param str namespace: The namespace to lookup the policy.

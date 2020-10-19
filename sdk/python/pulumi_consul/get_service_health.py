@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 
@@ -110,7 +110,7 @@ class GetServiceHealthResult:
 
     @property
     @pulumi.getter
-    def results(self) -> List['outputs.GetServiceHealthResultResult']:
+    def results(self) -> Sequence['outputs.GetServiceHealthResultResult']:
         """
         A list of entries and details about each endpoint advertising a
         service.  Each element in the list has three attributes: `node`, `service` and

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = [
@@ -80,10 +80,10 @@ class AclAuthMethodNamespaceRuleArgs:
 class AclRoleServiceIdentityArgs:
     def __init__(__self__, *,
                  service_name: pulumi.Input[str],
-                 datacenters: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
+                 datacenters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] service_name: The name of the service.
-        :param pulumi.Input[List[pulumi.Input[str]]] datacenters: The datacenters the effective policy is valid within.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] datacenters: The datacenters the effective policy is valid within.
         """
         pulumi.set(__self__, "service_name", service_name)
         if datacenters is not None:
@@ -103,14 +103,14 @@ class AclRoleServiceIdentityArgs:
 
     @property
     @pulumi.getter
-    def datacenters(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def datacenters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The datacenters the effective policy is valid within.
         """
         return pulumi.get(self, "datacenters")
 
     @datacenters.setter
-    def datacenters(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def datacenters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "datacenters", value)
 
 
@@ -120,15 +120,15 @@ class CatalogEntryServiceArgs:
                  name: pulumi.Input[str],
                  address: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 port: Optional[pulumi.Input[float]] = None,
-                 tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
+                 port: Optional[pulumi.Input[int]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] name: The name of the service
         :param pulumi.Input[str] address: The address of the service. Defaults to the
                node address.
         :param pulumi.Input[str] id: The ID of the service. Defaults to the `name`.
-        :param pulumi.Input[float] port: The port of the service.
-        :param pulumi.Input[List[pulumi.Input[str]]] tags: A list of values that are opaque to Consul,
+        :param pulumi.Input[int] port: The port of the service.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of values that are opaque to Consul,
                but can be used to distinguish between services or nodes.
         """
         pulumi.set(__self__, "name", name)
@@ -180,19 +180,19 @@ class CatalogEntryServiceArgs:
 
     @property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[float]]:
+    def port(self) -> Optional[pulumi.Input[int]]:
         """
         The port of the service.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[float]]):
+    def port(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "port", value)
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A list of values that are opaque to Consul,
         but can be used to distinguish between services or nodes.
@@ -200,7 +200,7 @@ class CatalogEntryServiceArgs:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -209,12 +209,12 @@ class KeyPrefixSubkeyCollectionArgs:
     def __init__(__self__, *,
                  path: pulumi.Input[str],
                  value: pulumi.Input[str],
-                 flags: Optional[pulumi.Input[float]] = None):
+                 flags: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] path: This is the path (which will be appended to the given
                `path_prefix`) in Consul that should be written to.
         :param pulumi.Input[str] value: The value to write to the given path.
-        :param pulumi.Input[float] flags: An [unsigned integer value](https://www.consul.io/api/kv.html#flags-1)
+        :param pulumi.Input[int] flags: An [unsigned integer value](https://www.consul.io/api/kv.html#flags-1)
                to attach to the key (defaults to 0).
         """
         pulumi.set(__self__, "path", path)
@@ -249,7 +249,7 @@ class KeyPrefixSubkeyCollectionArgs:
 
     @property
     @pulumi.getter
-    def flags(self) -> Optional[pulumi.Input[float]]:
+    def flags(self) -> Optional[pulumi.Input[int]]:
         """
         An [unsigned integer value](https://www.consul.io/api/kv.html#flags-1)
         to attach to the key (defaults to 0).
@@ -257,7 +257,7 @@ class KeyPrefixSubkeyCollectionArgs:
         return pulumi.get(self, "flags")
 
     @flags.setter
-    def flags(self, value: Optional[pulumi.Input[float]]):
+    def flags(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "flags", value)
 
 
@@ -267,7 +267,7 @@ class KeysKeyArgs:
                  path: pulumi.Input[str],
                  default: Optional[pulumi.Input[str]] = None,
                  delete: Optional[pulumi.Input[bool]] = None,
-                 flags: Optional[pulumi.Input[float]] = None,
+                 flags: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
         """
@@ -276,7 +276,7 @@ class KeysKeyArgs:
                either its configuration block is removed from the configuration or
                the entire resource is destroyed. Otherwise, it will be left in Consul.
                Defaults to false.
-        :param pulumi.Input[float] flags: An [unsigned integer value](https://www.consul.io/api/kv.html#flags-1)
+        :param pulumi.Input[int] flags: An [unsigned integer value](https://www.consul.io/api/kv.html#flags-1)
                to attach to the key (defaults to 0).
         :param pulumi.Input[str] value: The value to write to the given path.
         """
@@ -333,7 +333,7 @@ class KeysKeyArgs:
 
     @property
     @pulumi.getter
-    def flags(self) -> Optional[pulumi.Input[float]]:
+    def flags(self) -> Optional[pulumi.Input[int]]:
         """
         An [unsigned integer value](https://www.consul.io/api/kv.html#flags-1)
         to attach to the key (defaults to 0).
@@ -341,7 +341,7 @@ class KeysKeyArgs:
         return pulumi.get(self, "flags")
 
     @flags.setter
-    def flags(self, value: Optional[pulumi.Input[float]]):
+    def flags(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "flags", value)
 
     @property
@@ -392,11 +392,11 @@ class PreparedQueryDnsArgs:
 @pulumi.input_type
 class PreparedQueryFailoverArgs:
     def __init__(__self__, *,
-                 datacenters: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 nearest_n: Optional[pulumi.Input[float]] = None):
+                 datacenters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 nearest_n: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[List[pulumi.Input[str]]] datacenters: Remote datacenters to return results from.
-        :param pulumi.Input[float] nearest_n: Return results from this many datacenters,
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] datacenters: Remote datacenters to return results from.
+        :param pulumi.Input[int] nearest_n: Return results from this many datacenters,
                sorted in ascending order of estimated RTT.
         """
         if datacenters is not None:
@@ -406,19 +406,19 @@ class PreparedQueryFailoverArgs:
 
     @property
     @pulumi.getter
-    def datacenters(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def datacenters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Remote datacenters to return results from.
         """
         return pulumi.get(self, "datacenters")
 
     @datacenters.setter
-    def datacenters(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def datacenters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "datacenters", value)
 
     @property
     @pulumi.getter(name="nearestN")
-    def nearest_n(self) -> Optional[pulumi.Input[float]]:
+    def nearest_n(self) -> Optional[pulumi.Input[int]]:
         """
         Return results from this many datacenters,
         sorted in ascending order of estimated RTT.
@@ -426,7 +426,7 @@ class PreparedQueryFailoverArgs:
         return pulumi.get(self, "nearest_n")
 
     @nearest_n.setter
-    def nearest_n(self, value: Optional[pulumi.Input[float]]):
+    def nearest_n(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "nearest_n", value)
 
 
@@ -479,7 +479,7 @@ class ServiceCheckArgs:
                  name: pulumi.Input[str],
                  timeout: pulumi.Input[str],
                  deregister_critical_service_after: Optional[pulumi.Input[str]] = None,
-                 headers: Optional[pulumi.Input[List[pulumi.Input['ServiceCheckHeaderArgs']]]] = None,
+                 headers: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceCheckHeaderArgs']]]] = None,
                  http: Optional[pulumi.Input[str]] = None,
                  method: Optional[pulumi.Input[str]] = None,
                  notes: Optional[pulumi.Input[str]] = None,
@@ -496,7 +496,7 @@ class ServiceCheckArgs:
         :param pulumi.Input[str] deregister_critical_service_after: The time after which
                the service is automatically deregistered when in the `critical` state.
                Defaults to `30s`.
-        :param pulumi.Input[List[pulumi.Input['ServiceCheckHeaderArgs']]] headers: The headers to send for an HTTP check.
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceCheckHeaderArgs']]] headers: The headers to send for an HTTP check.
                The attributes of each header is given below.
         :param pulumi.Input[str] http: The HTTP endpoint to call for an HTTP check.
         :param pulumi.Input[str] method: The method to use for HTTP health-checks. Defaults
@@ -594,7 +594,7 @@ class ServiceCheckArgs:
 
     @property
     @pulumi.getter
-    def headers(self) -> Optional[pulumi.Input[List[pulumi.Input['ServiceCheckHeaderArgs']]]]:
+    def headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceCheckHeaderArgs']]]]:
         """
         The headers to send for an HTTP check.
         The attributes of each header is given below.
@@ -602,7 +602,7 @@ class ServiceCheckArgs:
         return pulumi.get(self, "headers")
 
     @headers.setter
-    def headers(self, value: Optional[pulumi.Input[List[pulumi.Input['ServiceCheckHeaderArgs']]]]):
+    def headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceCheckHeaderArgs']]]]):
         pulumi.set(self, "headers", value)
 
     @property
@@ -684,10 +684,10 @@ class ServiceCheckArgs:
 class ServiceCheckHeaderArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
-                 values: pulumi.Input[List[pulumi.Input[str]]]):
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
         :param pulumi.Input[str] name: The name of the header.
-        :param pulumi.Input[List[pulumi.Input[str]]] values: The header's list of values.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: The header's list of values.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
@@ -706,14 +706,14 @@ class ServiceCheckHeaderArgs:
 
     @property
     @pulumi.getter
-    def values(self) -> pulumi.Input[List[pulumi.Input[str]]]:
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         The header's list of values.
         """
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: pulumi.Input[List[pulumi.Input[str]]]):
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
 
 
@@ -753,7 +753,7 @@ class GetAclRolePolicyArgs:
 @pulumi.input_type
 class GetAclRoleServiceIdentityArgs:
     def __init__(__self__, *,
-                 datacenters: Optional[List[str]] = None,
+                 datacenters: Optional[Sequence[str]] = None,
                  service_name: Optional[str] = None):
         if datacenters is not None:
             pulumi.set(__self__, "datacenters", datacenters)
@@ -762,11 +762,11 @@ class GetAclRoleServiceIdentityArgs:
 
     @property
     @pulumi.getter
-    def datacenters(self) -> Optional[List[str]]:
+    def datacenters(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "datacenters")
 
     @datacenters.setter
-    def datacenters(self, value: Optional[List[str]]):
+    def datacenters(self, value: Optional[Sequence[str]]):
         pulumi.set(self, "datacenters", value)
 
     @property
@@ -815,7 +815,7 @@ class GetCatalogNodesQueryOptionArgs:
                  node_meta: Optional[Mapping[str, str]] = None,
                  require_consistent: Optional[bool] = None,
                  token: Optional[str] = None,
-                 wait_index: Optional[float] = None,
+                 wait_index: Optional[int] = None,
                  wait_time: Optional[str] = None):
         if allow_stale is not None:
             pulumi.set(__self__, "allow_stale", allow_stale)
@@ -890,11 +890,11 @@ class GetCatalogNodesQueryOptionArgs:
 
     @property
     @pulumi.getter(name="waitIndex")
-    def wait_index(self) -> Optional[float]:
+    def wait_index(self) -> Optional[int]:
         return pulumi.get(self, "wait_index")
 
     @wait_index.setter
-    def wait_index(self, value: Optional[float]):
+    def wait_index(self, value: Optional[int]):
         pulumi.set(self, "wait_index", value)
 
     @property
@@ -917,7 +917,7 @@ class GetCatalogServiceQueryOptionArgs:
                  node_meta: Optional[Mapping[str, str]] = None,
                  require_consistent: Optional[bool] = None,
                  token: Optional[str] = None,
-                 wait_index: Optional[float] = None,
+                 wait_index: Optional[int] = None,
                  wait_time: Optional[str] = None):
         if allow_stale is not None:
             pulumi.set(__self__, "allow_stale", allow_stale)
@@ -1003,11 +1003,11 @@ class GetCatalogServiceQueryOptionArgs:
 
     @property
     @pulumi.getter(name="waitIndex")
-    def wait_index(self) -> Optional[float]:
+    def wait_index(self) -> Optional[int]:
         return pulumi.get(self, "wait_index")
 
     @wait_index.setter
-    def wait_index(self, value: Optional[float]):
+    def wait_index(self, value: Optional[int]):
         pulumi.set(self, "wait_index", value)
 
     @property
@@ -1030,7 +1030,7 @@ class GetCatalogServicesQueryOptionArgs:
                  node_meta: Optional[Mapping[str, str]] = None,
                  require_consistent: Optional[bool] = None,
                  token: Optional[str] = None,
-                 wait_index: Optional[float] = None,
+                 wait_index: Optional[int] = None,
                  wait_time: Optional[str] = None):
         if allow_stale is not None:
             pulumi.set(__self__, "allow_stale", allow_stale)
@@ -1116,11 +1116,11 @@ class GetCatalogServicesQueryOptionArgs:
 
     @property
     @pulumi.getter(name="waitIndex")
-    def wait_index(self) -> Optional[float]:
+    def wait_index(self) -> Optional[int]:
         return pulumi.get(self, "wait_index")
 
     @wait_index.setter
-    def wait_index(self, value: Optional[float]):
+    def wait_index(self, value: Optional[int]):
         pulumi.set(self, "wait_index", value)
 
     @property
@@ -1266,7 +1266,7 @@ class GetNodesQueryOptionArgs:
                  node_meta: Optional[Mapping[str, str]] = None,
                  require_consistent: Optional[bool] = None,
                  token: Optional[str] = None,
-                 wait_index: Optional[float] = None,
+                 wait_index: Optional[int] = None,
                  wait_time: Optional[str] = None):
         """
         :param bool allow_stale: When `true`, the default, allow responses from
@@ -1281,7 +1281,7 @@ class GetNodesQueryOptionArgs:
         :param str token: Specify the Consul ACL token to use when performing the
                request.  This defaults to the same API token configured by the `consul`
                provider but may be overriden if necessary.
-        :param float wait_index: Index number used to enable blocking quereis.
+        :param int wait_index: Index number used to enable blocking quereis.
         :param str wait_time: Max time the client should wait for a blocking query
                to return.
         """
@@ -1378,14 +1378,14 @@ class GetNodesQueryOptionArgs:
 
     @property
     @pulumi.getter(name="waitIndex")
-    def wait_index(self) -> Optional[float]:
+    def wait_index(self) -> Optional[int]:
         """
         Index number used to enable blocking quereis.
         """
         return pulumi.get(self, "wait_index")
 
     @wait_index.setter
-    def wait_index(self, value: Optional[float]):
+    def wait_index(self, value: Optional[int]):
         pulumi.set(self, "wait_index", value)
 
     @property
@@ -1412,7 +1412,7 @@ class GetServiceQueryOptionArgs:
                  node_meta: Optional[Mapping[str, str]] = None,
                  require_consistent: Optional[bool] = None,
                  token: Optional[str] = None,
-                 wait_index: Optional[float] = None,
+                 wait_index: Optional[int] = None,
                  wait_time: Optional[str] = None):
         """
         :param bool allow_stale: When `true`, the default, allow responses from
@@ -1428,7 +1428,7 @@ class GetServiceQueryOptionArgs:
         :param str token: Specify the Consul ACL token to use when performing the
                request.  This defaults to the same API token configured by the `consul`
                provider but may be overriden if necessary.
-        :param float wait_index: Index number used to enable blocking quereis.
+        :param int wait_index: Index number used to enable blocking quereis.
         :param str wait_time: Max time the client should wait for a blocking query
                to return.
         """
@@ -1539,14 +1539,14 @@ class GetServiceQueryOptionArgs:
 
     @property
     @pulumi.getter(name="waitIndex")
-    def wait_index(self) -> Optional[float]:
+    def wait_index(self) -> Optional[int]:
         """
         Index number used to enable blocking quereis.
         """
         return pulumi.get(self, "wait_index")
 
     @wait_index.setter
-    def wait_index(self, value: Optional[float]):
+    def wait_index(self, value: Optional[int]):
         pulumi.set(self, "wait_index", value)
 
     @property
@@ -1573,7 +1573,7 @@ class GetServicesQueryOptionArgs:
                  node_meta: Optional[Mapping[str, str]] = None,
                  require_consistent: Optional[bool] = None,
                  token: Optional[str] = None,
-                 wait_index: Optional[float] = None,
+                 wait_index: Optional[int] = None,
                  wait_time: Optional[str] = None):
         """
         :param bool allow_stale: When `true`, the default, allow responses from
@@ -1589,7 +1589,7 @@ class GetServicesQueryOptionArgs:
         :param str token: Specify the Consul ACL token to use when performing the
                request.  This defaults to the same API token configured by the `consul`
                provider but may be overriden if necessary.
-        :param float wait_index: Index number used to enable blocking quereis.
+        :param int wait_index: Index number used to enable blocking quereis.
         :param str wait_time: Max time the client should wait for a blocking query
                to return.
         """
@@ -1700,14 +1700,14 @@ class GetServicesQueryOptionArgs:
 
     @property
     @pulumi.getter(name="waitIndex")
-    def wait_index(self) -> Optional[float]:
+    def wait_index(self) -> Optional[int]:
         """
         Index number used to enable blocking quereis.
         """
         return pulumi.get(self, "wait_index")
 
     @wait_index.setter
-    def wait_index(self, value: Optional[float]):
+    def wait_index(self, value: Optional[int]):
         pulumi.set(self, "wait_index", value)
 
     @property
