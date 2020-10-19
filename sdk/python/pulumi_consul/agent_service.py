@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = ['AgentService']
@@ -17,8 +17,8 @@ class AgentService(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  address: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 port: Optional[pulumi.Input[float]] = None,
-                 tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -51,8 +51,8 @@ class AgentService(pulumi.CustomResource):
         :param pulumi.Input[str] address: The address of the service. Defaults to the
                address of the agent.
         :param pulumi.Input[str] name: The name of the service.
-        :param pulumi.Input[float] port: The port of the service.
-        :param pulumi.Input[List[pulumi.Input[str]]] tags: A list of values that are opaque to Consul,
+        :param pulumi.Input[int] port: The port of the service.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of values that are opaque to Consul,
                but can be used to distinguish between services or nodes.
         """
         if __name__ is not None:
@@ -88,8 +88,8 @@ class AgentService(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             address: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            port: Optional[pulumi.Input[float]] = None,
-            tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None) -> 'AgentService':
+            port: Optional[pulumi.Input[int]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'AgentService':
         """
         Get an existing AgentService resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -100,8 +100,8 @@ class AgentService(pulumi.CustomResource):
         :param pulumi.Input[str] address: The address of the service. Defaults to the
                address of the agent.
         :param pulumi.Input[str] name: The name of the service.
-        :param pulumi.Input[float] port: The port of the service.
-        :param pulumi.Input[List[pulumi.Input[str]]] tags: A list of values that are opaque to Consul,
+        :param pulumi.Input[int] port: The port of the service.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of values that are opaque to Consul,
                but can be used to distinguish between services or nodes.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -133,7 +133,7 @@ class AgentService(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def port(self) -> pulumi.Output[Optional[float]]:
+    def port(self) -> pulumi.Output[Optional[int]]:
         """
         The port of the service.
         """
@@ -141,7 +141,7 @@ class AgentService(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[List[str]]]:
+    def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         A list of values that are opaque to Consul,
         but can be used to distinguish between services or nodes.

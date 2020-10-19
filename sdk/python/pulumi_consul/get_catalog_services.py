@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -53,12 +53,12 @@ class GetCatalogServicesResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         return pulumi.get(self, "names")
 
     @property
     @pulumi.getter(name="queryOptions")
-    def query_options(self) -> Optional[List['outputs.GetCatalogServicesQueryOptionResult']]:
+    def query_options(self) -> Optional[Sequence['outputs.GetCatalogServicesQueryOptionResult']]:
         return pulumi.get(self, "query_options")
 
     @property
@@ -80,7 +80,7 @@ class AwaitableGetCatalogServicesResult(GetCatalogServicesResult):
             services=self.services)
 
 
-def get_catalog_services(query_options: Optional[List[pulumi.InputType['GetCatalogServicesQueryOptionArgs']]] = None,
+def get_catalog_services(query_options: Optional[Sequence[pulumi.InputType['GetCatalogServicesQueryOptionArgs']]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCatalogServicesResult:
     """
     Use this data source to access information about an existing resource.

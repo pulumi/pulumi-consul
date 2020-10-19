@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -56,12 +56,12 @@ class GetServicesResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         return pulumi.get(self, "names")
 
     @property
     @pulumi.getter(name="queryOptions")
-    def query_options(self) -> Optional[List['outputs.GetServicesQueryOptionResult']]:
+    def query_options(self) -> Optional[Sequence['outputs.GetServicesQueryOptionResult']]:
         return pulumi.get(self, "query_options")
 
     @property
@@ -83,7 +83,7 @@ class AwaitableGetServicesResult(GetServicesResult):
             services=self.services)
 
 
-def get_services(query_options: Optional[List[pulumi.InputType['GetServicesQueryOptionArgs']]] = None,
+def get_services(query_options: Optional[Sequence[pulumi.InputType['GetServicesQueryOptionArgs']]] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServicesResult:
     """
     The `getServices` data source returns a list of Consul services that
@@ -95,7 +95,7 @@ def get_services(query_options: Optional[List[pulumi.InputType['GetServicesQuery
     source, which provides a detailed response about a specific Consul service.
 
 
-    :param List[pulumi.InputType['GetServicesQueryOptionArgs']] query_options: See below.
+    :param Sequence[pulumi.InputType['GetServicesQueryOptionArgs']] query_options: See below.
     """
     __args__ = dict()
     __args__['queryOptions'] = query_options

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -69,12 +69,12 @@ class GetCatalogServiceResult:
 
     @property
     @pulumi.getter(name="queryOptions")
-    def query_options(self) -> Optional[List['outputs.GetCatalogServiceQueryOptionResult']]:
+    def query_options(self) -> Optional[Sequence['outputs.GetCatalogServiceQueryOptionResult']]:
         return pulumi.get(self, "query_options")
 
     @property
     @pulumi.getter
-    def services(self) -> List['outputs.GetCatalogServiceServiceResult']:
+    def services(self) -> Sequence['outputs.GetCatalogServiceServiceResult']:
         return pulumi.get(self, "services")
 
     @property
@@ -101,7 +101,7 @@ class AwaitableGetCatalogServiceResult(GetCatalogServiceResult):
 def get_catalog_service(datacenter: Optional[str] = None,
                         filter: Optional[str] = None,
                         name: Optional[str] = None,
-                        query_options: Optional[List[pulumi.InputType['GetCatalogServiceQueryOptionArgs']]] = None,
+                        query_options: Optional[Sequence[pulumi.InputType['GetCatalogServiceQueryOptionArgs']]] = None,
                         tag: Optional[str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCatalogServiceResult:
     """

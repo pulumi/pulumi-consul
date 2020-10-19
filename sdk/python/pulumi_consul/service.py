@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -18,7 +18,7 @@ class Service(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  address: Optional[pulumi.Input[str]] = None,
-                 checks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ServiceCheckArgs']]]]] = None,
+                 checks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceCheckArgs']]]]] = None,
                  datacenter: Optional[pulumi.Input[str]] = None,
                  enable_tag_override: Optional[pulumi.Input[bool]] = None,
                  external: Optional[pulumi.Input[bool]] = None,
@@ -26,9 +26,9 @@ class Service(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  namespace: Optional[pulumi.Input[str]] = None,
                  node: Optional[pulumi.Input[str]] = None,
-                 port: Optional[pulumi.Input[float]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -113,10 +113,10 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the health-check.
         :param pulumi.Input[str] namespace: The namespace to create the service within.
         :param pulumi.Input[str] node: The name of the node the to register the service on.
-        :param pulumi.Input[float] port: The port of the service.
+        :param pulumi.Input[int] port: The port of the service.
         :param pulumi.Input[str] service_id: - If the service ID is not provided, it will be defaulted to the value
                of the `name` attribute.
-        :param pulumi.Input[List[pulumi.Input[str]]] tags: A list of values that are opaque to Consul,
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of values that are opaque to Consul,
                but can be used to distinguish between services or nodes.
         """
         if __name__ is not None:
@@ -164,7 +164,7 @@ class Service(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             address: Optional[pulumi.Input[str]] = None,
-            checks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ServiceCheckArgs']]]]] = None,
+            checks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceCheckArgs']]]]] = None,
             datacenter: Optional[pulumi.Input[str]] = None,
             enable_tag_override: Optional[pulumi.Input[bool]] = None,
             external: Optional[pulumi.Input[bool]] = None,
@@ -172,9 +172,9 @@ class Service(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             namespace: Optional[pulumi.Input[str]] = None,
             node: Optional[pulumi.Input[str]] = None,
-            port: Optional[pulumi.Input[float]] = None,
+            port: Optional[pulumi.Input[int]] = None,
             service_id: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None) -> 'Service':
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'Service':
         """
         Get an existing Service resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -193,10 +193,10 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the health-check.
         :param pulumi.Input[str] namespace: The namespace to create the service within.
         :param pulumi.Input[str] node: The name of the node the to register the service on.
-        :param pulumi.Input[float] port: The port of the service.
+        :param pulumi.Input[int] port: The port of the service.
         :param pulumi.Input[str] service_id: - If the service ID is not provided, it will be defaulted to the value
                of the `name` attribute.
-        :param pulumi.Input[List[pulumi.Input[str]]] tags: A list of values that are opaque to Consul,
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of values that are opaque to Consul,
                but can be used to distinguish between services or nodes.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -228,7 +228,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def checks(self) -> pulumi.Output[Optional[List['outputs.ServiceCheck']]]:
+    def checks(self) -> pulumi.Output[Optional[Sequence['outputs.ServiceCheck']]]:
         return pulumi.get(self, "checks")
 
     @property
@@ -289,7 +289,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def port(self) -> pulumi.Output[Optional[float]]:
+    def port(self) -> pulumi.Output[Optional[int]]:
         """
         The port of the service.
         """
@@ -306,7 +306,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[List[str]]]:
+    def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         A list of values that are opaque to Consul,
         but can be used to distinguish between services or nodes.

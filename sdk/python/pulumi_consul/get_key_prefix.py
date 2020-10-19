@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -80,7 +80,7 @@ class GetKeyPrefixResult:
 
     @property
     @pulumi.getter(name="subkeyCollection")
-    def subkey_collection(self) -> Optional[List['outputs.GetKeyPrefixSubkeyCollectionResult']]:
+    def subkey_collection(self) -> Optional[Sequence['outputs.GetKeyPrefixSubkeyCollectionResult']]:
         return pulumi.get(self, "subkey_collection")
 
     @property
@@ -122,7 +122,7 @@ class AwaitableGetKeyPrefixResult(GetKeyPrefixResult):
 def get_key_prefix(datacenter: Optional[str] = None,
                    namespace: Optional[str] = None,
                    path_prefix: Optional[str] = None,
-                   subkey_collection: Optional[List[pulumi.InputType['GetKeyPrefixSubkeyCollectionArgs']]] = None,
+                   subkey_collection: Optional[Sequence[pulumi.InputType['GetKeyPrefixSubkeyCollectionArgs']]] = None,
                    token: Optional[str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKeyPrefixResult:
     """
@@ -134,7 +134,7 @@ def get_key_prefix(datacenter: Optional[str] = None,
     :param str path_prefix: Specifies the common prefix shared by all keys
            that will be read by this data source instance. In most cases, this will
            end with a slash to read a "folder" of subkeys.
-    :param List[pulumi.InputType['GetKeyPrefixSubkeyCollectionArgs']] subkey_collection: Specifies a subkey in Consul to be read. Supported
+    :param Sequence[pulumi.InputType['GetKeyPrefixSubkeyCollectionArgs']] subkey_collection: Specifies a subkey in Consul to be read. Supported
            values documented below. Multiple blocks supported.
     :param str token: The ACL token to use. This overrides the
            token that the agent provides by default.

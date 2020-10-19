@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -61,7 +61,7 @@ class GetKeysResult:
 
     @property
     @pulumi.getter
-    def keys(self) -> Optional[List['outputs.GetKeysKeyResult']]:
+    def keys(self) -> Optional[Sequence['outputs.GetKeysKeyResult']]:
         return pulumi.get(self, "keys")
 
     @property
@@ -95,7 +95,7 @@ class AwaitableGetKeysResult(GetKeysResult):
 
 
 def get_keys(datacenter: Optional[str] = None,
-             keys: Optional[List[pulumi.InputType['GetKeysKeyArgs']]] = None,
+             keys: Optional[Sequence[pulumi.InputType['GetKeysKeyArgs']]] = None,
              namespace: Optional[str] = None,
              token: Optional[str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKeysResult:
@@ -124,7 +124,7 @@ def get_keys(datacenter: Optional[str] = None,
 
     :param str datacenter: The datacenter to use. This overrides the
            agent's default datacenter and the datacenter in the provider setup.
-    :param List[pulumi.InputType['GetKeysKeyArgs']] keys: Specifies a key in Consul to be read. Supported
+    :param Sequence[pulumi.InputType['GetKeysKeyArgs']] keys: Specifies a key in Consul to be read. Supported
            values documented below. Multiple blocks supported.
     :param str namespace: The namespace to lookup the keys.
     :param str token: The ACL token to use. This overrides the

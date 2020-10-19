@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = ['AclPolicy']
@@ -15,7 +15,7 @@ class AclPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 datacenters: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 datacenters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  namespace: Optional[pulumi.Input[str]] = None,
@@ -43,7 +43,7 @@ class AclPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[str]]] datacenters: The datacenters of the policy.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] datacenters: The datacenters of the policy.
         :param pulumi.Input[str] description: The description of the policy.
         :param pulumi.Input[str] name: The name of the policy.
         :param pulumi.Input[str] namespace: The namespace to create the policy within.
@@ -83,7 +83,7 @@ class AclPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            datacenters: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            datacenters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             namespace: Optional[pulumi.Input[str]] = None,
@@ -95,7 +95,7 @@ class AclPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[str]]] datacenters: The datacenters of the policy.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] datacenters: The datacenters of the policy.
         :param pulumi.Input[str] description: The description of the policy.
         :param pulumi.Input[str] name: The name of the policy.
         :param pulumi.Input[str] namespace: The namespace to create the policy within.
@@ -114,7 +114,7 @@ class AclPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def datacenters(self) -> pulumi.Output[Optional[List[str]]]:
+    def datacenters(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         The datacenters of the policy.
         """

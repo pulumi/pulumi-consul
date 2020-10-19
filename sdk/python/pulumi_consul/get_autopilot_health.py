@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 
@@ -24,8 +24,8 @@ class GetAutopilotHealthResult:
         if datacenter and not isinstance(datacenter, str):
             raise TypeError("Expected argument 'datacenter' to be a str")
         pulumi.set(__self__, "datacenter", datacenter)
-        if failure_tolerance and not isinstance(failure_tolerance, float):
-            raise TypeError("Expected argument 'failure_tolerance' to be a float")
+        if failure_tolerance and not isinstance(failure_tolerance, int):
+            raise TypeError("Expected argument 'failure_tolerance' to be a int")
         pulumi.set(__self__, "failure_tolerance", failure_tolerance)
         if healthy and not isinstance(healthy, bool):
             raise TypeError("Expected argument 'healthy' to be a bool")
@@ -44,7 +44,7 @@ class GetAutopilotHealthResult:
 
     @property
     @pulumi.getter(name="failureTolerance")
-    def failure_tolerance(self) -> float:
+    def failure_tolerance(self) -> int:
         """
         The number of redundant healthy servers that could fail
         without causing an outage
@@ -70,7 +70,7 @@ class GetAutopilotHealthResult:
 
     @property
     @pulumi.getter
-    def servers(self) -> List['outputs.GetAutopilotHealthServerResult']:
+    def servers(self) -> Sequence['outputs.GetAutopilotHealthServerResult']:
         """
         A list of server health information. See below for details on the
         available information.

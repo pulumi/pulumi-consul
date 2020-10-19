@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -59,7 +59,7 @@ class GetNodesResult:
 
     @property
     @pulumi.getter(name="nodeIds")
-    def node_ids(self) -> List[str]:
+    def node_ids(self) -> Sequence[str]:
         """
         A list of the Consul node IDs.
         """
@@ -67,7 +67,7 @@ class GetNodesResult:
 
     @property
     @pulumi.getter(name="nodeNames")
-    def node_names(self) -> List[str]:
+    def node_names(self) -> Sequence[str]:
         """
         A list of the Consul node names.
         """
@@ -75,7 +75,7 @@ class GetNodesResult:
 
     @property
     @pulumi.getter
-    def nodes(self) -> List['outputs.GetNodesNodeResult']:
+    def nodes(self) -> Sequence['outputs.GetNodesNodeResult']:
         """
         A list of nodes and details about each Consul agent.  The list of
         per-node attributes is detailed below.
@@ -84,7 +84,7 @@ class GetNodesResult:
 
     @property
     @pulumi.getter(name="queryOptions")
-    def query_options(self) -> Optional[List['outputs.GetNodesQueryOptionResult']]:
+    def query_options(self) -> Optional[Sequence['outputs.GetNodesQueryOptionResult']]:
         return pulumi.get(self, "query_options")
 
 
@@ -102,7 +102,7 @@ class AwaitableGetNodesResult(GetNodesResult):
             query_options=self.query_options)
 
 
-def get_nodes(query_options: Optional[List[pulumi.InputType['GetNodesQueryOptionArgs']]] = None,
+def get_nodes(query_options: Optional[Sequence[pulumi.InputType['GetNodesQueryOptionArgs']]] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNodesResult:
     """
     The `getNodes` data source returns a list of Consul nodes that have
@@ -111,7 +111,7 @@ def get_nodes(query_options: Optional[List[pulumi.InputType['GetNodesQueryOption
     nodes from a different WAN-attached Consul datacenter.
 
 
-    :param List[pulumi.InputType['GetNodesQueryOptionArgs']] query_options: See below.
+    :param Sequence[pulumi.InputType['GetNodesQueryOptionArgs']] query_options: See below.
     """
     __args__ = dict()
     __args__['queryOptions'] = query_options

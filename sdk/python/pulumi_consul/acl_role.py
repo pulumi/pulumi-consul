@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -20,8 +20,8 @@ class AclRole(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  namespace: Optional[pulumi.Input[str]] = None,
-                 policies: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 service_identities: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['AclRoleServiceIdentityArgs']]]]] = None,
+                 policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 service_identities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclRoleServiceIdentityArgs']]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -50,8 +50,8 @@ class AclRole(pulumi.CustomResource):
         :param pulumi.Input[str] description: A free form human readable description of the role.
         :param pulumi.Input[str] name: The name of the ACL role.
         :param pulumi.Input[str] namespace: The namespace to create the role within.
-        :param pulumi.Input[List[pulumi.Input[str]]] policies: The list of policies that should be applied to the role.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['AclRoleServiceIdentityArgs']]]] service_identities: The list of service identities that should
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] policies: The list of policies that should be applied to the role.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclRoleServiceIdentityArgs']]]] service_identities: The list of service identities that should
                be applied to the role.
         """
         if __name__ is not None:
@@ -89,8 +89,8 @@ class AclRole(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             namespace: Optional[pulumi.Input[str]] = None,
-            policies: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            service_identities: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['AclRoleServiceIdentityArgs']]]]] = None) -> 'AclRole':
+            policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            service_identities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclRoleServiceIdentityArgs']]]]] = None) -> 'AclRole':
         """
         Get an existing AclRole resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -101,8 +101,8 @@ class AclRole(pulumi.CustomResource):
         :param pulumi.Input[str] description: A free form human readable description of the role.
         :param pulumi.Input[str] name: The name of the ACL role.
         :param pulumi.Input[str] namespace: The namespace to create the role within.
-        :param pulumi.Input[List[pulumi.Input[str]]] policies: The list of policies that should be applied to the role.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['AclRoleServiceIdentityArgs']]]] service_identities: The list of service identities that should
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] policies: The list of policies that should be applied to the role.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclRoleServiceIdentityArgs']]]] service_identities: The list of service identities that should
                be applied to the role.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -142,7 +142,7 @@ class AclRole(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def policies(self) -> pulumi.Output[Optional[List[str]]]:
+    def policies(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         The list of policies that should be applied to the role.
         """
@@ -150,7 +150,7 @@ class AclRole(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceIdentities")
-    def service_identities(self) -> pulumi.Output[Optional[List['outputs.AclRoleServiceIdentity']]]:
+    def service_identities(self) -> pulumi.Output[Optional[Sequence['outputs.AclRoleServiceIdentity']]]:
         """
         The list of service identities that should
         be applied to the role.

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 
@@ -55,7 +55,7 @@ class GetNetworkAreaMembersResult:
 
     @property
     @pulumi.getter
-    def members(self) -> List['outputs.GetNetworkAreaMembersMemberResult']:
+    def members(self) -> Sequence['outputs.GetNetworkAreaMembersMemberResult']:
         """
         The list of Consul servers in this network area
         """

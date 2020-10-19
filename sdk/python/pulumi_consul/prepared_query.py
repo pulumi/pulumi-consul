@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -21,7 +21,7 @@ class PreparedQuery(pulumi.CustomResource):
                  datacenter: Optional[pulumi.Input[str]] = None,
                  dns: Optional[pulumi.Input[pulumi.InputType['PreparedQueryDnsArgs']]] = None,
                  failover: Optional[pulumi.Input[pulumi.InputType['PreparedQueryFailoverArgs']]] = None,
-                 ignore_check_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 ignore_check_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  near: Optional[pulumi.Input[str]] = None,
                  node_meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -30,7 +30,7 @@ class PreparedQuery(pulumi.CustomResource):
                  service_meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  session: Optional[pulumi.Input[str]] = None,
                  stored_token: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template: Optional[pulumi.Input[pulumi.InputType['PreparedQueryTemplateArgs']]] = None,
                  token: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -48,7 +48,7 @@ class PreparedQuery(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['PreparedQueryDnsArgs']] dns: Settings for controlling the DNS response details.
         :param pulumi.Input[pulumi.InputType['PreparedQueryFailoverArgs']] failover: Options for controlling behavior when no healthy
                nodes are available in the local DC.
-        :param pulumi.Input[List[pulumi.Input[str]]] ignore_check_ids: Specifies a list of check IDs that should be
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ignore_check_ids: Specifies a list of check IDs that should be
                ignored when filtering unhealthy instances. This is mostly useful in an
                emergency or as a temporary measure when a health check is found to be
                unreliable. Being able to ignore it in centrally-defined queries can be
@@ -77,7 +77,7 @@ class PreparedQuery(pulumi.CustomResource):
                parameter is omitted the query will not expire.
         :param pulumi.Input[str] stored_token: The ACL token to store with the prepared
                query. This token will be used by default whenever the query is executed.
-        :param pulumi.Input[List[pulumi.Input[str]]] tags: The list of required and/or disallowed tags.  If a tag is
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The list of required and/or disallowed tags.  If a tag is
                in this list it must be present.  If the tag is preceded with a "!" then it is
                disallowed.
         :param pulumi.Input[pulumi.InputType['PreparedQueryTemplateArgs']] template: Query templating options. This is used to make a
@@ -134,7 +134,7 @@ class PreparedQuery(pulumi.CustomResource):
             datacenter: Optional[pulumi.Input[str]] = None,
             dns: Optional[pulumi.Input[pulumi.InputType['PreparedQueryDnsArgs']]] = None,
             failover: Optional[pulumi.Input[pulumi.InputType['PreparedQueryFailoverArgs']]] = None,
-            ignore_check_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            ignore_check_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             near: Optional[pulumi.Input[str]] = None,
             node_meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -143,7 +143,7 @@ class PreparedQuery(pulumi.CustomResource):
             service_meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             session: Optional[pulumi.Input[str]] = None,
             stored_token: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             template: Optional[pulumi.Input[pulumi.InputType['PreparedQueryTemplateArgs']]] = None,
             token: Optional[pulumi.Input[str]] = None) -> 'PreparedQuery':
         """
@@ -161,7 +161,7 @@ class PreparedQuery(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['PreparedQueryDnsArgs']] dns: Settings for controlling the DNS response details.
         :param pulumi.Input[pulumi.InputType['PreparedQueryFailoverArgs']] failover: Options for controlling behavior when no healthy
                nodes are available in the local DC.
-        :param pulumi.Input[List[pulumi.Input[str]]] ignore_check_ids: Specifies a list of check IDs that should be
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ignore_check_ids: Specifies a list of check IDs that should be
                ignored when filtering unhealthy instances. This is mostly useful in an
                emergency or as a temporary measure when a health check is found to be
                unreliable. Being able to ignore it in centrally-defined queries can be
@@ -190,7 +190,7 @@ class PreparedQuery(pulumi.CustomResource):
                parameter is omitted the query will not expire.
         :param pulumi.Input[str] stored_token: The ACL token to store with the prepared
                query. This token will be used by default whenever the query is executed.
-        :param pulumi.Input[List[pulumi.Input[str]]] tags: The list of required and/or disallowed tags.  If a tag is
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The list of required and/or disallowed tags.  If a tag is
                in this list it must be present.  If the tag is preceded with a "!" then it is
                disallowed.
         :param pulumi.Input[pulumi.InputType['PreparedQueryTemplateArgs']] template: Query templating options. This is used to make a
@@ -258,7 +258,7 @@ class PreparedQuery(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ignoreCheckIds")
-    def ignore_check_ids(self) -> pulumi.Output[Optional[List[str]]]:
+    def ignore_check_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         Specifies a list of check IDs that should be
         ignored when filtering unhealthy instances. This is mostly useful in an
@@ -350,7 +350,7 @@ class PreparedQuery(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[List[str]]]:
+    def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         The list of required and/or disallowed tags.  If a tag is
         in this list it must be present.  If the tag is preceded with a "!" then it is

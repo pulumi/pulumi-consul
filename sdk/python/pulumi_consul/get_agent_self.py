@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = [
@@ -56,8 +56,8 @@ class GetAgentSelfResult:
         if bind_addr and not isinstance(bind_addr, str):
             raise TypeError("Expected argument 'bind_addr' to be a str")
         pulumi.set(__self__, "bind_addr", bind_addr)
-        if bootstrap_expect and not isinstance(bootstrap_expect, float):
-            raise TypeError("Expected argument 'bootstrap_expect' to be a float")
+        if bootstrap_expect and not isinstance(bootstrap_expect, int):
+            raise TypeError("Expected argument 'bootstrap_expect' to be a int")
         pulumi.set(__self__, "bootstrap_expect", bootstrap_expect)
         if bootstrap_mode and not isinstance(bootstrap_mode, bool):
             raise TypeError("Expected argument 'bootstrap_mode' to be a bool")
@@ -137,8 +137,8 @@ class GetAgentSelfResult:
         if ports and not isinstance(ports, dict):
             raise TypeError("Expected argument 'ports' to be a dict")
         pulumi.set(__self__, "ports", ports)
-        if protocol_version and not isinstance(protocol_version, float):
-            raise TypeError("Expected argument 'protocol_version' to be a float")
+        if protocol_version and not isinstance(protocol_version, int):
+            raise TypeError("Expected argument 'protocol_version' to be a int")
         pulumi.set(__self__, "protocol_version", protocol_version)
         if reconnect_timeout_lan and not isinstance(reconnect_timeout_lan, str):
             raise TypeError("Expected argument 'reconnect_timeout_lan' to be a str")
@@ -161,11 +161,11 @@ class GetAgentSelfResult:
         if retry_joins and not isinstance(retry_joins, list):
             raise TypeError("Expected argument 'retry_joins' to be a list")
         pulumi.set(__self__, "retry_joins", retry_joins)
-        if retry_max_attempts and not isinstance(retry_max_attempts, float):
-            raise TypeError("Expected argument 'retry_max_attempts' to be a float")
+        if retry_max_attempts and not isinstance(retry_max_attempts, int):
+            raise TypeError("Expected argument 'retry_max_attempts' to be a int")
         pulumi.set(__self__, "retry_max_attempts", retry_max_attempts)
-        if retry_max_attempts_wan and not isinstance(retry_max_attempts_wan, float):
-            raise TypeError("Expected argument 'retry_max_attempts_wan' to be a float")
+        if retry_max_attempts_wan and not isinstance(retry_max_attempts_wan, int):
+            raise TypeError("Expected argument 'retry_max_attempts_wan' to be a int")
         pulumi.set(__self__, "retry_max_attempts_wan", retry_max_attempts_wan)
         if serf_lan_bind_addr and not isinstance(serf_lan_bind_addr, str):
             raise TypeError("Expected argument 'serf_lan_bind_addr' to be a str")
@@ -299,7 +299,7 @@ class GetAgentSelfResult:
 
     @property
     @pulumi.getter(name="bootstrapExpect")
-    def bootstrap_expect(self) -> float:
+    def bootstrap_expect(self) -> int:
         return pulumi.get(self, "bootstrap_expect")
 
     @property
@@ -409,7 +409,7 @@ class GetAgentSelfResult:
 
     @property
     @pulumi.getter(name="dnsRecursors")
-    def dns_recursors(self) -> List[str]:
+    def dns_recursors(self) -> Sequence[str]:
         return pulumi.get(self, "dns_recursors")
 
     @property
@@ -489,12 +489,12 @@ class GetAgentSelfResult:
 
     @property
     @pulumi.getter
-    def ports(self) -> Mapping[str, float]:
+    def ports(self) -> Mapping[str, int]:
         return pulumi.get(self, "ports")
 
     @property
     @pulumi.getter(name="protocolVersion")
-    def protocol_version(self) -> float:
+    def protocol_version(self) -> int:
         return pulumi.get(self, "protocol_version")
 
     @property
@@ -524,22 +524,22 @@ class GetAgentSelfResult:
 
     @property
     @pulumi.getter(name="retryJoinWans")
-    def retry_join_wans(self) -> List[str]:
+    def retry_join_wans(self) -> Sequence[str]:
         return pulumi.get(self, "retry_join_wans")
 
     @property
     @pulumi.getter(name="retryJoins")
-    def retry_joins(self) -> List[str]:
+    def retry_joins(self) -> Sequence[str]:
         return pulumi.get(self, "retry_joins")
 
     @property
     @pulumi.getter(name="retryMaxAttempts")
-    def retry_max_attempts(self) -> float:
+    def retry_max_attempts(self) -> int:
         return pulumi.get(self, "retry_max_attempts")
 
     @property
     @pulumi.getter(name="retryMaxAttemptsWan")
-    def retry_max_attempts_wan(self) -> float:
+    def retry_max_attempts_wan(self) -> int:
         return pulumi.get(self, "retry_max_attempts_wan")
 
     @property
@@ -569,12 +569,12 @@ class GetAgentSelfResult:
 
     @property
     @pulumi.getter(name="startJoinWans")
-    def start_join_wans(self) -> List[str]:
+    def start_join_wans(self) -> Sequence[str]:
         return pulumi.get(self, "start_join_wans")
 
     @property
     @pulumi.getter(name="startJoins")
-    def start_joins(self) -> List[str]:
+    def start_joins(self) -> Sequence[str]:
         return pulumi.get(self, "start_joins")
 
     @property

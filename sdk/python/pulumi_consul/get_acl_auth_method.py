@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 
@@ -123,7 +123,7 @@ class GetAclAuthMethodResult:
 
     @property
     @pulumi.getter(name="namespaceRules")
-    def namespace_rules(self) -> List['outputs.GetAclAuthMethodNamespaceRuleResult']:
+    def namespace_rules(self) -> Sequence['outputs.GetAclAuthMethodNamespaceRuleResult']:
         """
         (Enterprise Only) A set of rules that control which
         namespace tokens created via this auth method will be created within
