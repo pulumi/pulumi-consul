@@ -4,6 +4,7 @@
 package consul
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -97,6 +98,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// `certificate_authority` can be imported
+//
+// ```sh
+//  $ pulumi import consul:index/certificateAuthority:CertificateAuthority connect connect-ca
+// ```
 type CertificateAuthority struct {
 	pulumi.CustomResourceState
 
@@ -174,4 +183,43 @@ type CertificateAuthorityArgs struct {
 
 func (CertificateAuthorityArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*certificateAuthorityArgs)(nil)).Elem()
+}
+
+type CertificateAuthorityInput interface {
+	pulumi.Input
+
+	ToCertificateAuthorityOutput() CertificateAuthorityOutput
+	ToCertificateAuthorityOutputWithContext(ctx context.Context) CertificateAuthorityOutput
+}
+
+func (CertificateAuthority) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateAuthority)(nil)).Elem()
+}
+
+func (i CertificateAuthority) ToCertificateAuthorityOutput() CertificateAuthorityOutput {
+	return i.ToCertificateAuthorityOutputWithContext(context.Background())
+}
+
+func (i CertificateAuthority) ToCertificateAuthorityOutputWithContext(ctx context.Context) CertificateAuthorityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateAuthorityOutput)
+}
+
+type CertificateAuthorityOutput struct {
+	*pulumi.OutputState
+}
+
+func (CertificateAuthorityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateAuthorityOutput)(nil)).Elem()
+}
+
+func (o CertificateAuthorityOutput) ToCertificateAuthorityOutput() CertificateAuthorityOutput {
+	return o
+}
+
+func (o CertificateAuthorityOutput) ToCertificateAuthorityOutputWithContext(ctx context.Context) CertificateAuthorityOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(CertificateAuthorityOutput{})
 }

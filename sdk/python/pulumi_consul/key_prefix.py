@@ -27,7 +27,14 @@ class KeyPrefix(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a KeyPrefix resource with the given unique name, props, and options.
+        ## Import
+
+        `consul_key_prefix` can be imported. This is useful when the path already and you know all keys in path must be removed.
+
+        ```sh
+         $ pulumi import consul:index/keyPrefix:KeyPrefix myapp_config myapp/config/
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the

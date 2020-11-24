@@ -141,7 +141,7 @@ class Service(pulumi.CustomResource):
             __props__['datacenter'] = datacenter
             __props__['enable_tag_override'] = enable_tag_override
             if external is not None:
-                warnings.warn("The external field has been deprecated and does nothing.", DeprecationWarning)
+                warnings.warn("""The external field has been deprecated and does nothing.""", DeprecationWarning)
                 pulumi.log.warn("external is deprecated: The external field has been deprecated and does nothing.")
             __props__['external'] = external
             __props__['meta'] = meta

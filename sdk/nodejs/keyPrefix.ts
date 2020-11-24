@@ -2,10 +2,18 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "./types/input";
-import * as outputs from "./types/output";
+import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
+/**
+ * ## Import
+ *
+ * `consul_key_prefix` can be imported. This is useful when the path already and you know all keys in path must be removed.
+ *
+ * ```sh
+ *  $ pulumi import consul:index/keyPrefix:KeyPrefix myapp_config myapp/config/
+ * ```
+ */
 export class KeyPrefix extends pulumi.CustomResource {
     /**
      * Get an existing KeyPrefix resource's state with the given name, ID, and optional extra

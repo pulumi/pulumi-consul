@@ -4,6 +4,7 @@
 package consul
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -49,6 +50,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// `consul_acl_role` can be imported
+//
+// ```sh
+//  $ pulumi import consul:index/aclRole:AclRole read 816a195f-6cb1-2e8d-92af-3011ae706318
 // ```
 type AclRole struct {
 	pulumi.CustomResourceState
@@ -156,4 +165,43 @@ type AclRoleArgs struct {
 
 func (AclRoleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*aclRoleArgs)(nil)).Elem()
+}
+
+type AclRoleInput interface {
+	pulumi.Input
+
+	ToAclRoleOutput() AclRoleOutput
+	ToAclRoleOutputWithContext(ctx context.Context) AclRoleOutput
+}
+
+func (AclRole) ElementType() reflect.Type {
+	return reflect.TypeOf((*AclRole)(nil)).Elem()
+}
+
+func (i AclRole) ToAclRoleOutput() AclRoleOutput {
+	return i.ToAclRoleOutputWithContext(context.Background())
+}
+
+func (i AclRole) ToAclRoleOutputWithContext(ctx context.Context) AclRoleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AclRoleOutput)
+}
+
+type AclRoleOutput struct {
+	*pulumi.OutputState
+}
+
+func (AclRoleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AclRoleOutput)(nil)).Elem()
+}
+
+func (o AclRoleOutput) ToAclRoleOutput() AclRoleOutput {
+	return o
+}
+
+func (o AclRoleOutput) ToAclRoleOutputWithContext(ctx context.Context) AclRoleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AclRoleOutput{})
 }

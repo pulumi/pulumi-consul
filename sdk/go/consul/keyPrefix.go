@@ -4,12 +4,20 @@
 package consul
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// `consul_key_prefix` can be imported. This is useful when the path already and you know all keys in path must be removed.
+//
+// ```sh
+//  $ pulumi import consul:index/keyPrefix:KeyPrefix myapp_config myapp/config/
+// ```
 type KeyPrefix struct {
 	pulumi.CustomResourceState
 
@@ -164,4 +172,43 @@ type KeyPrefixArgs struct {
 
 func (KeyPrefixArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*keyPrefixArgs)(nil)).Elem()
+}
+
+type KeyPrefixInput interface {
+	pulumi.Input
+
+	ToKeyPrefixOutput() KeyPrefixOutput
+	ToKeyPrefixOutputWithContext(ctx context.Context) KeyPrefixOutput
+}
+
+func (KeyPrefix) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyPrefix)(nil)).Elem()
+}
+
+func (i KeyPrefix) ToKeyPrefixOutput() KeyPrefixOutput {
+	return i.ToKeyPrefixOutputWithContext(context.Background())
+}
+
+func (i KeyPrefix) ToKeyPrefixOutputWithContext(ctx context.Context) KeyPrefixOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyPrefixOutput)
+}
+
+type KeyPrefixOutput struct {
+	*pulumi.OutputState
+}
+
+func (KeyPrefixOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyPrefixOutput)(nil)).Elem()
+}
+
+func (o KeyPrefixOutput) ToKeyPrefixOutput() KeyPrefixOutput {
+	return o
+}
+
+func (o KeyPrefixOutput) ToKeyPrefixOutputWithContext(ctx context.Context) KeyPrefixOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(KeyPrefixOutput{})
 }

@@ -4,12 +4,24 @@
 package consul
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// `consul_acl_token_policy_attachment` can be imported. This is especially useful to manage the policies attached to the anonymous and the master tokens with Terraform
+//
+// ```sh
+//  $ pulumi import consul:index/aclTokenPolicyAttachment:AclTokenPolicyAttachment anonymous 00000000-0000-0000-0000-000000000002:policy_name
+// ```
+//
+// ```sh
+//  $ pulumi import consul:index/aclTokenPolicyAttachment:AclTokenPolicyAttachment master-token 624d94ca-bc5c-f960-4e83-0a609cf588be:policy_name
+// ```
 type AclTokenPolicyAttachment struct {
 	pulumi.CustomResourceState
 
@@ -87,4 +99,43 @@ type AclTokenPolicyAttachmentArgs struct {
 
 func (AclTokenPolicyAttachmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*aclTokenPolicyAttachmentArgs)(nil)).Elem()
+}
+
+type AclTokenPolicyAttachmentInput interface {
+	pulumi.Input
+
+	ToAclTokenPolicyAttachmentOutput() AclTokenPolicyAttachmentOutput
+	ToAclTokenPolicyAttachmentOutputWithContext(ctx context.Context) AclTokenPolicyAttachmentOutput
+}
+
+func (AclTokenPolicyAttachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*AclTokenPolicyAttachment)(nil)).Elem()
+}
+
+func (i AclTokenPolicyAttachment) ToAclTokenPolicyAttachmentOutput() AclTokenPolicyAttachmentOutput {
+	return i.ToAclTokenPolicyAttachmentOutputWithContext(context.Background())
+}
+
+func (i AclTokenPolicyAttachment) ToAclTokenPolicyAttachmentOutputWithContext(ctx context.Context) AclTokenPolicyAttachmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AclTokenPolicyAttachmentOutput)
+}
+
+type AclTokenPolicyAttachmentOutput struct {
+	*pulumi.OutputState
+}
+
+func (AclTokenPolicyAttachmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AclTokenPolicyAttachmentOutput)(nil)).Elem()
+}
+
+func (o AclTokenPolicyAttachmentOutput) ToAclTokenPolicyAttachmentOutput() AclTokenPolicyAttachmentOutput {
+	return o
+}
+
+func (o AclTokenPolicyAttachmentOutput) ToAclTokenPolicyAttachmentOutputWithContext(ctx context.Context) AclTokenPolicyAttachmentOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AclTokenPolicyAttachmentOutput{})
 }

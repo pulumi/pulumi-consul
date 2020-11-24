@@ -4,6 +4,7 @@
 package consul
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -118,4 +119,43 @@ type KeysArgs struct {
 
 func (KeysArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*keysArgs)(nil)).Elem()
+}
+
+type KeysInput interface {
+	pulumi.Input
+
+	ToKeysOutput() KeysOutput
+	ToKeysOutputWithContext(ctx context.Context) KeysOutput
+}
+
+func (Keys) ElementType() reflect.Type {
+	return reflect.TypeOf((*Keys)(nil)).Elem()
+}
+
+func (i Keys) ToKeysOutput() KeysOutput {
+	return i.ToKeysOutputWithContext(context.Background())
+}
+
+func (i Keys) ToKeysOutputWithContext(ctx context.Context) KeysOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeysOutput)
+}
+
+type KeysOutput struct {
+	*pulumi.OutputState
+}
+
+func (KeysOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeysOutput)(nil)).Elem()
+}
+
+func (o KeysOutput) ToKeysOutput() KeysOutput {
+	return o
+}
+
+func (o KeysOutput) ToKeysOutputWithContext(ctx context.Context) KeysOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(KeysOutput{})
 }

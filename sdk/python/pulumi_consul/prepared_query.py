@@ -37,7 +37,14 @@ class PreparedQuery(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a PreparedQuery resource with the given unique name, props, and options.
+        ## Import
+
+        `consul_prepared_query` can be imported with the query's ID in the Consul HTTP API.
+
+        ```sh
+         $ pulumi import consul:index/preparedQuery:PreparedQuery my_service 71ecfb82-717a-4258-b4b6-2fb75144d856
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] connect: When `true` the prepared query will return connect

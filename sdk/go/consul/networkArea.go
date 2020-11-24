@@ -4,6 +4,7 @@
 package consul
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -175,4 +176,43 @@ type NetworkAreaArgs struct {
 
 func (NetworkAreaArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkAreaArgs)(nil)).Elem()
+}
+
+type NetworkAreaInput interface {
+	pulumi.Input
+
+	ToNetworkAreaOutput() NetworkAreaOutput
+	ToNetworkAreaOutputWithContext(ctx context.Context) NetworkAreaOutput
+}
+
+func (NetworkArea) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkArea)(nil)).Elem()
+}
+
+func (i NetworkArea) ToNetworkAreaOutput() NetworkAreaOutput {
+	return i.ToNetworkAreaOutputWithContext(context.Background())
+}
+
+func (i NetworkArea) ToNetworkAreaOutputWithContext(ctx context.Context) NetworkAreaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkAreaOutput)
+}
+
+type NetworkAreaOutput struct {
+	*pulumi.OutputState
+}
+
+func (NetworkAreaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkAreaOutput)(nil)).Elem()
+}
+
+func (o NetworkAreaOutput) ToNetworkAreaOutput() NetworkAreaOutput {
+	return o
+}
+
+func (o NetworkAreaOutput) ToNetworkAreaOutputWithContext(ctx context.Context) NetworkAreaOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(NetworkAreaOutput{})
 }

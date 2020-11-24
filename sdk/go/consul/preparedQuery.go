@@ -4,12 +4,20 @@
 package consul
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// `consul_prepared_query` can be imported with the query's ID in the Consul HTTP API.
+//
+// ```sh
+//  $ pulumi import consul:index/preparedQuery:PreparedQuery my_service 71ecfb82-717a-4258-b4b6-2fb75144d856
+// ```
 type PreparedQuery struct {
 	pulumi.CustomResourceState
 
@@ -364,4 +372,43 @@ type PreparedQueryArgs struct {
 
 func (PreparedQueryArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*preparedQueryArgs)(nil)).Elem()
+}
+
+type PreparedQueryInput interface {
+	pulumi.Input
+
+	ToPreparedQueryOutput() PreparedQueryOutput
+	ToPreparedQueryOutputWithContext(ctx context.Context) PreparedQueryOutput
+}
+
+func (PreparedQuery) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreparedQuery)(nil)).Elem()
+}
+
+func (i PreparedQuery) ToPreparedQueryOutput() PreparedQueryOutput {
+	return i.ToPreparedQueryOutputWithContext(context.Background())
+}
+
+func (i PreparedQuery) ToPreparedQueryOutputWithContext(ctx context.Context) PreparedQueryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreparedQueryOutput)
+}
+
+type PreparedQueryOutput struct {
+	*pulumi.OutputState
+}
+
+func (PreparedQueryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreparedQueryOutput)(nil)).Elem()
+}
+
+func (o PreparedQueryOutput) ToPreparedQueryOutput() PreparedQueryOutput {
+	return o
+}
+
+func (o PreparedQueryOutput) ToPreparedQueryOutputWithContext(ctx context.Context) PreparedQueryOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(PreparedQueryOutput{})
 }

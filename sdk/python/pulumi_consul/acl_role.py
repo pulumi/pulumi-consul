@@ -45,6 +45,14 @@ class AclRole(pulumi.CustomResource):
             )])
         ```
 
+        ## Import
+
+        `consul_acl_role` can be imported
+
+        ```sh
+         $ pulumi import consul:index/aclRole:AclRole read 816a195f-6cb1-2e8d-92af-3011ae706318
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A free form human readable description of the role.

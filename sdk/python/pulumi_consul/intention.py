@@ -62,6 +62,14 @@ class Intention(pulumi.CustomResource):
         pg = consul.get_service(name="postgresql")
         ```
 
+        ## Import
+
+        `consul_intention` can be imported
+
+        ```sh
+         $ pulumi import consul:index/intention:Intention database 657a57d6-0d56-57e2-31cb-e9f1ed3c18dd
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action: The intention action. Must be one of `allow` or `deny`.

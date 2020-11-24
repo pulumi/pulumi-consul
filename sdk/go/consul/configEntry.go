@@ -4,6 +4,7 @@
 package consul
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -276,4 +277,43 @@ type ConfigEntryArgs struct {
 
 func (ConfigEntryArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*configEntryArgs)(nil)).Elem()
+}
+
+type ConfigEntryInput interface {
+	pulumi.Input
+
+	ToConfigEntryOutput() ConfigEntryOutput
+	ToConfigEntryOutputWithContext(ctx context.Context) ConfigEntryOutput
+}
+
+func (ConfigEntry) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntry)(nil)).Elem()
+}
+
+func (i ConfigEntry) ToConfigEntryOutput() ConfigEntryOutput {
+	return i.ToConfigEntryOutputWithContext(context.Background())
+}
+
+func (i ConfigEntry) ToConfigEntryOutputWithContext(ctx context.Context) ConfigEntryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryOutput)
+}
+
+type ConfigEntryOutput struct {
+	*pulumi.OutputState
+}
+
+func (ConfigEntryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryOutput)(nil)).Elem()
+}
+
+func (o ConfigEntryOutput) ToConfigEntryOutput() ConfigEntryOutput {
+	return o
+}
+
+func (o ConfigEntryOutput) ToConfigEntryOutputWithContext(ctx context.Context) ConfigEntryOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ConfigEntryOutput{})
 }

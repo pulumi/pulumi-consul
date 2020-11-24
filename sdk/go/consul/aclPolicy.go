@@ -4,6 +4,7 @@
 package consul
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -38,6 +39,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// `consul_acl_policy` can be imported
+//
+// ```sh
+//  $ pulumi import consul:index/aclPolicy:AclPolicy my-policy 1c90ef03-a6dd-6a8c-ac49-042ad3752896
 // ```
 type AclPolicy struct {
 	pulumi.CustomResourceState
@@ -143,4 +152,43 @@ type AclPolicyArgs struct {
 
 func (AclPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*aclPolicyArgs)(nil)).Elem()
+}
+
+type AclPolicyInput interface {
+	pulumi.Input
+
+	ToAclPolicyOutput() AclPolicyOutput
+	ToAclPolicyOutputWithContext(ctx context.Context) AclPolicyOutput
+}
+
+func (AclPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*AclPolicy)(nil)).Elem()
+}
+
+func (i AclPolicy) ToAclPolicyOutput() AclPolicyOutput {
+	return i.ToAclPolicyOutputWithContext(context.Background())
+}
+
+func (i AclPolicy) ToAclPolicyOutputWithContext(ctx context.Context) AclPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AclPolicyOutput)
+}
+
+type AclPolicyOutput struct {
+	*pulumi.OutputState
+}
+
+func (AclPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AclPolicyOutput)(nil)).Elem()
+}
+
+func (o AclPolicyOutput) ToAclPolicyOutput() AclPolicyOutput {
+	return o
+}
+
+func (o AclPolicyOutput) ToAclPolicyOutputWithContext(ctx context.Context) AclPolicyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AclPolicyOutput{})
 }

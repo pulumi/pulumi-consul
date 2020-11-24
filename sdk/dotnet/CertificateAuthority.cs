@@ -88,6 +88,14 @@ namespace Pulumi.Consul
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// `certificate_authority` can be imported
+    /// 
+    /// ```sh
+    ///  $ pulumi import consul:index/certificateAuthority:CertificateAuthority connect connect-ca
+    /// ```
     /// </summary>
     public partial class CertificateAuthority : Pulumi.CustomResource
     {

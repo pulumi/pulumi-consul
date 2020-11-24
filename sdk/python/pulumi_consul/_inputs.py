@@ -288,7 +288,7 @@ class KeysKeyArgs:
         if flags is not None:
             pulumi.set(__self__, "flags", flags)
         if name is not None:
-            warnings.warn("Using consul_keys resource to *read* is deprecated; please use consul_keys data source instead", DeprecationWarning)
+            warnings.warn("""Using consul_keys resource to *read* is deprecated; please use consul_keys data source instead""", DeprecationWarning)
             pulumi.log.warn("name is deprecated: Using consul_keys resource to *read* is deprecated; please use consul_keys data source instead")
         if name is not None:
             pulumi.set(__self__, "name", name)
