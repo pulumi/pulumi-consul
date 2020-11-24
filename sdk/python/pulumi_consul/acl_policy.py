@@ -41,6 +41,14 @@ class AclPolicy(pulumi.CustomResource):
         \"\"\")
         ```
 
+        ## Import
+
+        `consul_acl_policy` can be imported
+
+        ```sh
+         $ pulumi import consul:index/aclPolicy:AclPolicy my-policy 1c90ef03-a6dd-6a8c-ac49-042ad3752896
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] datacenters: The datacenters of the policy.

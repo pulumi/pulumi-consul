@@ -9,6 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Consul
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// `consul_key_prefix` can be imported. This is useful when the path already and you know all keys in path must be removed.
+    /// 
+    /// ```sh
+    ///  $ pulumi import consul:index/keyPrefix:KeyPrefix myapp_config myapp/config/
+    /// ```
+    /// </summary>
     public partial class KeyPrefix : Pulumi.CustomResource
     {
         /// <summary>

@@ -4,6 +4,7 @@
 package consul
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -193,4 +194,43 @@ type AclBindingRuleArgs struct {
 
 func (AclBindingRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*aclBindingRuleArgs)(nil)).Elem()
+}
+
+type AclBindingRuleInput interface {
+	pulumi.Input
+
+	ToAclBindingRuleOutput() AclBindingRuleOutput
+	ToAclBindingRuleOutputWithContext(ctx context.Context) AclBindingRuleOutput
+}
+
+func (AclBindingRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*AclBindingRule)(nil)).Elem()
+}
+
+func (i AclBindingRule) ToAclBindingRuleOutput() AclBindingRuleOutput {
+	return i.ToAclBindingRuleOutputWithContext(context.Background())
+}
+
+func (i AclBindingRule) ToAclBindingRuleOutputWithContext(ctx context.Context) AclBindingRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AclBindingRuleOutput)
+}
+
+type AclBindingRuleOutput struct {
+	*pulumi.OutputState
+}
+
+func (AclBindingRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AclBindingRuleOutput)(nil)).Elem()
+}
+
+func (o AclBindingRuleOutput) ToAclBindingRuleOutput() AclBindingRuleOutput {
+	return o
+}
+
+func (o AclBindingRuleOutput) ToAclBindingRuleOutputWithContext(ctx context.Context) AclBindingRuleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AclBindingRuleOutput{})
 }

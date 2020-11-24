@@ -24,7 +24,7 @@ class GetAclAuthMethodResult:
         if config and not isinstance(config, dict):
             raise TypeError("Expected argument 'config' to be a dict")
         if config is not None:
-            warnings.warn("The config attribute is deprecated, please use config_json instead.", DeprecationWarning)
+            warnings.warn("""The config attribute is deprecated, please use config_json instead.""", DeprecationWarning)
             pulumi.log.warn("config is deprecated: The config attribute is deprecated, please use config_json instead.")
 
         pulumi.set(__self__, "config", config)

@@ -9,6 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Consul
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// `consul_prepared_query` can be imported with the query's ID in the Consul HTTP API.
+    /// 
+    /// ```sh
+    ///  $ pulumi import consul:index/preparedQuery:PreparedQuery my_service 71ecfb82-717a-4258-b4b6-2fb75144d856
+    /// ```
+    /// </summary>
     public partial class PreparedQuery : Pulumi.CustomResource
     {
         /// <summary>

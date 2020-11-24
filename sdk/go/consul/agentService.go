@@ -4,6 +4,7 @@
 package consul
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -145,4 +146,43 @@ type AgentServiceArgs struct {
 
 func (AgentServiceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*agentServiceArgs)(nil)).Elem()
+}
+
+type AgentServiceInput interface {
+	pulumi.Input
+
+	ToAgentServiceOutput() AgentServiceOutput
+	ToAgentServiceOutputWithContext(ctx context.Context) AgentServiceOutput
+}
+
+func (AgentService) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentService)(nil)).Elem()
+}
+
+func (i AgentService) ToAgentServiceOutput() AgentServiceOutput {
+	return i.ToAgentServiceOutputWithContext(context.Background())
+}
+
+func (i AgentService) ToAgentServiceOutputWithContext(ctx context.Context) AgentServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentServiceOutput)
+}
+
+type AgentServiceOutput struct {
+	*pulumi.OutputState
+}
+
+func (AgentServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentServiceOutput)(nil)).Elem()
+}
+
+func (o AgentServiceOutput) ToAgentServiceOutput() AgentServiceOutput {
+	return o
+}
+
+func (o AgentServiceOutput) ToAgentServiceOutputWithContext(ctx context.Context) AgentServiceOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AgentServiceOutput{})
 }

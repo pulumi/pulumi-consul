@@ -4,6 +4,7 @@
 package consul
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -74,6 +75,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// `consul_intention` can be imported
+//
+// ```sh
+//  $ pulumi import consul:index/intention:Intention database 657a57d6-0d56-57e2-31cb-e9f1ed3c18dd
 // ```
 type Intention struct {
 	pulumi.CustomResourceState
@@ -250,4 +259,43 @@ type IntentionArgs struct {
 
 func (IntentionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*intentionArgs)(nil)).Elem()
+}
+
+type IntentionInput interface {
+	pulumi.Input
+
+	ToIntentionOutput() IntentionOutput
+	ToIntentionOutputWithContext(ctx context.Context) IntentionOutput
+}
+
+func (Intention) ElementType() reflect.Type {
+	return reflect.TypeOf((*Intention)(nil)).Elem()
+}
+
+func (i Intention) ToIntentionOutput() IntentionOutput {
+	return i.ToIntentionOutputWithContext(context.Background())
+}
+
+func (i Intention) ToIntentionOutputWithContext(ctx context.Context) IntentionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntentionOutput)
+}
+
+type IntentionOutput struct {
+	*pulumi.OutputState
+}
+
+func (IntentionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntentionOutput)(nil)).Elem()
+}
+
+func (o IntentionOutput) ToIntentionOutput() IntentionOutput {
+	return o
+}
+
+func (o IntentionOutput) ToIntentionOutputWithContext(ctx context.Context) IntentionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(IntentionOutput{})
 }

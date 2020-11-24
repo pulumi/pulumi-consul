@@ -70,6 +70,14 @@ class CertificateAuthority(pulumi.CustomResource):
             connect_provider="aws-pca")
         ```
 
+        ## Import
+
+        `certificate_authority` can be imported
+
+        ```sh
+         $ pulumi import consul:index/certificateAuthority:CertificateAuthority connect connect-ca
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config: The raw configuration to use for the chosen provider.

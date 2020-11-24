@@ -4,6 +4,7 @@
 package consul
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -280,4 +281,43 @@ type AclAuthMethodArgs struct {
 
 func (AclAuthMethodArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*aclAuthMethodArgs)(nil)).Elem()
+}
+
+type AclAuthMethodInput interface {
+	pulumi.Input
+
+	ToAclAuthMethodOutput() AclAuthMethodOutput
+	ToAclAuthMethodOutputWithContext(ctx context.Context) AclAuthMethodOutput
+}
+
+func (AclAuthMethod) ElementType() reflect.Type {
+	return reflect.TypeOf((*AclAuthMethod)(nil)).Elem()
+}
+
+func (i AclAuthMethod) ToAclAuthMethodOutput() AclAuthMethodOutput {
+	return i.ToAclAuthMethodOutputWithContext(context.Background())
+}
+
+func (i AclAuthMethod) ToAclAuthMethodOutputWithContext(ctx context.Context) AclAuthMethodOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AclAuthMethodOutput)
+}
+
+type AclAuthMethodOutput struct {
+	*pulumi.OutputState
+}
+
+func (AclAuthMethodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AclAuthMethodOutput)(nil)).Elem()
+}
+
+func (o AclAuthMethodOutput) ToAclAuthMethodOutput() AclAuthMethodOutput {
+	return o
+}
+
+func (o AclAuthMethodOutput) ToAclAuthMethodOutputWithContext(ctx context.Context) AclAuthMethodOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AclAuthMethodOutput{})
 }

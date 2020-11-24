@@ -21,7 +21,18 @@ class AclTokenPolicyAttachment(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a AclTokenPolicyAttachment resource with the given unique name, props, and options.
+        ## Import
+
+        `consul_acl_token_policy_attachment` can be imported. This is especially useful to manage the policies attached to the anonymous and the master tokens with Terraform
+
+        ```sh
+         $ pulumi import consul:index/aclTokenPolicyAttachment:AclTokenPolicyAttachment anonymous 00000000-0000-0000-0000-000000000002:policy_name
+        ```
+
+        ```sh
+         $ pulumi import consul:index/aclTokenPolicyAttachment:AclTokenPolicyAttachment master-token 624d94ca-bc5c-f960-4e83-0a609cf588be:policy_name
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] policy: The name of the policy attached to the token.

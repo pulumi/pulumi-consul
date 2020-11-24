@@ -2,10 +2,18 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "./types/input";
-import * as outputs from "./types/output";
+import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
+/**
+ * ## Import
+ *
+ * `consul_prepared_query` can be imported with the query's ID in the Consul HTTP API.
+ *
+ * ```sh
+ *  $ pulumi import consul:index/preparedQuery:PreparedQuery my_service 71ecfb82-717a-4258-b4b6-2fb75144d856
+ * ```
+ */
 export class PreparedQuery extends pulumi.CustomResource {
     /**
      * Get an existing PreparedQuery resource's state with the given name, ID, and optional extra

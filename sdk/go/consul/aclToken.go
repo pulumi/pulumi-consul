@@ -4,6 +4,7 @@
 package consul
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -45,6 +46,18 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// `consul_acl_token` can be imported. This is especially useful to manage the anonymous and the master token with Terraform
+//
+// ```sh
+//  $ pulumi import consul:index/aclToken:AclToken anonymous 00000000-0000-0000-0000-000000000002
+// ```
+//
+// ```sh
+//  $ pulumi import consul:index/aclToken:AclToken master-token 624d94ca-bc5c-f960-4e83-0a609cf588be
 // ```
 type AclToken struct {
 	pulumi.CustomResourceState
@@ -162,4 +175,43 @@ type AclTokenArgs struct {
 
 func (AclTokenArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*aclTokenArgs)(nil)).Elem()
+}
+
+type AclTokenInput interface {
+	pulumi.Input
+
+	ToAclTokenOutput() AclTokenOutput
+	ToAclTokenOutputWithContext(ctx context.Context) AclTokenOutput
+}
+
+func (AclToken) ElementType() reflect.Type {
+	return reflect.TypeOf((*AclToken)(nil)).Elem()
+}
+
+func (i AclToken) ToAclTokenOutput() AclTokenOutput {
+	return i.ToAclTokenOutputWithContext(context.Background())
+}
+
+func (i AclToken) ToAclTokenOutputWithContext(ctx context.Context) AclTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AclTokenOutput)
+}
+
+type AclTokenOutput struct {
+	*pulumi.OutputState
+}
+
+func (AclTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AclTokenOutput)(nil)).Elem()
+}
+
+func (o AclTokenOutput) ToAclTokenOutput() AclTokenOutput {
+	return o
+}
+
+func (o AclTokenOutput) ToAclTokenOutputWithContext(ctx context.Context) AclTokenOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AclTokenOutput{})
 }

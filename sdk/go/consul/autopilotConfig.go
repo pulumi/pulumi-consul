@@ -4,6 +4,7 @@
 package consul
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -220,4 +221,43 @@ type AutopilotConfigArgs struct {
 
 func (AutopilotConfigArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*autopilotConfigArgs)(nil)).Elem()
+}
+
+type AutopilotConfigInput interface {
+	pulumi.Input
+
+	ToAutopilotConfigOutput() AutopilotConfigOutput
+	ToAutopilotConfigOutputWithContext(ctx context.Context) AutopilotConfigOutput
+}
+
+func (AutopilotConfig) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutopilotConfig)(nil)).Elem()
+}
+
+func (i AutopilotConfig) ToAutopilotConfigOutput() AutopilotConfigOutput {
+	return i.ToAutopilotConfigOutputWithContext(context.Background())
+}
+
+func (i AutopilotConfig) ToAutopilotConfigOutputWithContext(ctx context.Context) AutopilotConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutopilotConfigOutput)
+}
+
+type AutopilotConfigOutput struct {
+	*pulumi.OutputState
+}
+
+func (AutopilotConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutopilotConfigOutput)(nil)).Elem()
+}
+
+func (o AutopilotConfigOutput) ToAutopilotConfigOutput() AutopilotConfigOutput {
+	return o
+}
+
+func (o AutopilotConfigOutput) ToAutopilotConfigOutputWithContext(ctx context.Context) AutopilotConfigOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AutopilotConfigOutput{})
 }

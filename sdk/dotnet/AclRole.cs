@@ -49,6 +49,14 @@ namespace Pulumi.Consul
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// `consul_acl_role` can be imported
+    /// 
+    /// ```sh
+    ///  $ pulumi import consul:index/aclRole:AclRole read 816a195f-6cb1-2e8d-92af-3011ae706318
+    /// ```
     /// </summary>
     public partial class AclRole : Pulumi.CustomResource
     {

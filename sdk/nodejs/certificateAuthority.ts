@@ -56,6 +56,14 @@ import * as utilities from "./utilities";
  *     connectProvider: "aws-pca",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * `certificate_authority` can be imported
+ *
+ * ```sh
+ *  $ pulumi import consul:index/certificateAuthority:CertificateAuthority connect connect-ca
+ * ```
  */
 export class CertificateAuthority extends pulumi.CustomResource {
     /**

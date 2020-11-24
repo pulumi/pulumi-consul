@@ -4,6 +4,7 @@
 package consul
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -179,4 +180,43 @@ type CatalogEntryArgs struct {
 
 func (CatalogEntryArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*catalogEntryArgs)(nil)).Elem()
+}
+
+type CatalogEntryInput interface {
+	pulumi.Input
+
+	ToCatalogEntryOutput() CatalogEntryOutput
+	ToCatalogEntryOutputWithContext(ctx context.Context) CatalogEntryOutput
+}
+
+func (CatalogEntry) ElementType() reflect.Type {
+	return reflect.TypeOf((*CatalogEntry)(nil)).Elem()
+}
+
+func (i CatalogEntry) ToCatalogEntryOutput() CatalogEntryOutput {
+	return i.ToCatalogEntryOutputWithContext(context.Background())
+}
+
+func (i CatalogEntry) ToCatalogEntryOutputWithContext(ctx context.Context) CatalogEntryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CatalogEntryOutput)
+}
+
+type CatalogEntryOutput struct {
+	*pulumi.OutputState
+}
+
+func (CatalogEntryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CatalogEntryOutput)(nil)).Elem()
+}
+
+func (o CatalogEntryOutput) ToCatalogEntryOutput() CatalogEntryOutput {
+	return o
+}
+
+func (o CatalogEntryOutput) ToCatalogEntryOutputWithContext(ctx context.Context) CatalogEntryOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(CatalogEntryOutput{})
 }
