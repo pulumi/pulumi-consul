@@ -78,17 +78,18 @@ type AclBindingRule struct {
 // NewAclBindingRule registers a new resource with the given unique name, arguments, and options.
 func NewAclBindingRule(ctx *pulumi.Context,
 	name string, args *AclBindingRuleArgs, opts ...pulumi.ResourceOption) (*AclBindingRule, error) {
-	if args == nil || args.AuthMethod == nil {
-		return nil, errors.New("missing required argument 'AuthMethod'")
-	}
-	if args == nil || args.BindName == nil {
-		return nil, errors.New("missing required argument 'BindName'")
-	}
-	if args == nil || args.BindType == nil {
-		return nil, errors.New("missing required argument 'BindType'")
-	}
 	if args == nil {
-		args = &AclBindingRuleArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AuthMethod == nil {
+		return nil, errors.New("invalid value for required argument 'AuthMethod'")
+	}
+	if args.BindName == nil {
+		return nil, errors.New("invalid value for required argument 'BindName'")
+	}
+	if args.BindType == nil {
+		return nil, errors.New("invalid value for required argument 'BindType'")
 	}
 	var resource AclBindingRule
 	err := ctx.RegisterResource("consul:index/aclBindingRule:AclBindingRule", name, args, &resource, opts...)

@@ -118,7 +118,7 @@ class PreparedQuery(pulumi.CustomResource):
             __props__['near'] = near
             __props__['node_meta'] = node_meta
             __props__['only_passing'] = only_passing
-            if service is None:
+            if service is None and not opts.urn:
                 raise TypeError("Missing required property 'service'")
             __props__['service'] = service
             __props__['service_meta'] = service_meta

@@ -70,11 +70,12 @@ type NetworkArea struct {
 // NewNetworkArea registers a new resource with the given unique name, arguments, and options.
 func NewNetworkArea(ctx *pulumi.Context,
 	name string, args *NetworkAreaArgs, opts ...pulumi.ResourceOption) (*NetworkArea, error) {
-	if args == nil || args.PeerDatacenter == nil {
-		return nil, errors.New("missing required argument 'PeerDatacenter'")
-	}
 	if args == nil {
-		args = &NetworkAreaArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.PeerDatacenter == nil {
+		return nil, errors.New("invalid value for required argument 'PeerDatacenter'")
 	}
 	var resource NetworkArea
 	err := ctx.RegisterResource("consul:index/networkArea:NetworkArea", name, args, &resource, opts...)

@@ -24,6 +24,7 @@ func NewProvider(ctx *pulumi.Context,
 	if args == nil {
 		args = &ProviderArgs{}
 	}
+
 	if args.Address == nil {
 		args.Address = pulumi.StringPtr(getEnvOrDefault("localhost:8500", nil, "CONSUL_ADDRESS", "CONSUL_HTTP_ADDR").(string))
 	}

@@ -71,7 +71,7 @@ class KeyPrefix(pulumi.CustomResource):
 
             __props__['datacenter'] = datacenter
             __props__['namespace'] = namespace
-            if path_prefix is None:
+            if path_prefix is None and not opts.urn:
                 raise TypeError("Missing required property 'path_prefix'")
             __props__['path_prefix'] = path_prefix
             __props__['subkey_collection'] = subkey_collection

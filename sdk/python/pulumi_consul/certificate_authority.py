@@ -100,10 +100,10 @@ class CertificateAuthority(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if config is None:
+            if config is None and not opts.urn:
                 raise TypeError("Missing required property 'config'")
             __props__['config'] = config
-            if connect_provider is None:
+            if connect_provider is None and not opts.urn:
                 raise TypeError("Missing required property 'connect_provider'")
             __props__['connect_provider'] = connect_provider
         super(CertificateAuthority, __self__).__init__(

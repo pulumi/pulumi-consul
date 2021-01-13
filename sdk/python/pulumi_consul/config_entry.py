@@ -139,7 +139,7 @@ class ConfigEntry(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['config_json'] = config_json
-            if kind is None:
+            if kind is None and not opts.urn:
                 raise TypeError("Missing required property 'kind'")
             __props__['kind'] = kind
             __props__['name'] = name

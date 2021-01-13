@@ -95,7 +95,7 @@ export class KeyPrefix extends pulumi.CustomResource {
             inputs["token"] = state ? state.token : undefined;
         } else {
             const args = argsOrState as KeyPrefixArgs | undefined;
-            if (!args || args.pathPrefix === undefined) {
+            if ((!args || args.pathPrefix === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'pathPrefix'");
             }
             inputs["datacenter"] = args ? args.datacenter : undefined;

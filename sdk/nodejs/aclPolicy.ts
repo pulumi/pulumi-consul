@@ -98,7 +98,7 @@ export class AclPolicy extends pulumi.CustomResource {
             inputs["rules"] = state ? state.rules : undefined;
         } else {
             const args = argsOrState as AclPolicyArgs | undefined;
-            if (!args || args.rules === undefined) {
+            if ((!args || args.rules === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'rules'");
             }
             inputs["datacenters"] = args ? args.datacenters : undefined;

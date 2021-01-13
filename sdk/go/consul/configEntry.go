@@ -207,11 +207,12 @@ type ConfigEntry struct {
 // NewConfigEntry registers a new resource with the given unique name, arguments, and options.
 func NewConfigEntry(ctx *pulumi.Context,
 	name string, args *ConfigEntryArgs, opts ...pulumi.ResourceOption) (*ConfigEntry, error) {
-	if args == nil || args.Kind == nil {
-		return nil, errors.New("missing required argument 'Kind'")
-	}
 	if args == nil {
-		args = &ConfigEntryArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Kind == nil {
+		return nil, errors.New("invalid value for required argument 'Kind'")
 	}
 	var resource ConfigEntry
 	err := ctx.RegisterResource("consul:index/configEntry:ConfigEntry", name, args, &resource, opts...)

@@ -108,7 +108,7 @@ class AclAuthMethod(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if config is not None:
+            if config is not None and not opts.urn:
                 warnings.warn("""The config attribute is deprecated, please use config_json instead.""", DeprecationWarning)
                 pulumi.log.warn("config is deprecated: The config attribute is deprecated, please use config_json instead.")
             __props__['config'] = config
@@ -120,7 +120,7 @@ class AclAuthMethod(pulumi.CustomResource):
             __props__['namespace'] = namespace
             __props__['namespace_rules'] = namespace_rules
             __props__['token_locality'] = token_locality
-            if type is None:
+            if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__['type'] = type
         super(AclAuthMethod, __self__).__init__(

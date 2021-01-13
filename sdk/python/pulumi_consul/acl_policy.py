@@ -78,7 +78,7 @@ class AclPolicy(pulumi.CustomResource):
             __props__['description'] = description
             __props__['name'] = name
             __props__['namespace'] = namespace
-            if rules is None:
+            if rules is None and not opts.urn:
                 raise TypeError("Missing required property 'rules'")
             __props__['rules'] = rules
         super(AclPolicy, __self__).__init__(

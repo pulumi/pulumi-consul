@@ -81,6 +81,7 @@ func NewAclRole(ctx *pulumi.Context,
 	if args == nil {
 		args = &AclRoleArgs{}
 	}
+
 	var resource AclRole
 	err := ctx.RegisterResource("consul:index/aclRole:AclRole", name, args, &resource, opts...)
 	if err != nil {

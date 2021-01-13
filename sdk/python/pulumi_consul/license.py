@@ -60,7 +60,7 @@ class License(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['datacenter'] = datacenter
-            if license is None:
+            if license is None and not opts.urn:
                 raise TypeError("Missing required property 'license'")
             __props__['license'] = license
             __props__['customer_id'] = None

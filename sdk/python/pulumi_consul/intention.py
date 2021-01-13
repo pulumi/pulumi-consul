@@ -105,17 +105,17 @@ class Intention(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if action is None:
+            if action is None and not opts.urn:
                 raise TypeError("Missing required property 'action'")
             __props__['action'] = action
             __props__['datacenter'] = datacenter
             __props__['description'] = description
-            if destination_name is None:
+            if destination_name is None and not opts.urn:
                 raise TypeError("Missing required property 'destination_name'")
             __props__['destination_name'] = destination_name
             __props__['destination_namespace'] = destination_namespace
             __props__['meta'] = meta
-            if source_name is None:
+            if source_name is None and not opts.urn:
                 raise TypeError("Missing required property 'source_name'")
             __props__['source_name'] = source_name
             __props__['source_namespace'] = source_namespace

@@ -107,10 +107,10 @@ export class CatalogEntry extends pulumi.CustomResource {
             inputs["token"] = state ? state.token : undefined;
         } else {
             const args = argsOrState as CatalogEntryArgs | undefined;
-            if (!args || args.address === undefined) {
+            if ((!args || args.address === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'address'");
             }
-            if (!args || args.node === undefined) {
+            if ((!args || args.node === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'node'");
             }
             inputs["address"] = args ? args.address : undefined;

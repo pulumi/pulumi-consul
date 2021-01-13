@@ -33,6 +33,7 @@ func NewKeys(ctx *pulumi.Context,
 	if args == nil {
 		args = &KeysArgs{}
 	}
+
 	var resource Keys
 	err := ctx.RegisterResource("consul:index/keys:Keys", name, args, &resource, opts...)
 	if err != nil {

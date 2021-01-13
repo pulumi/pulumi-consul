@@ -77,7 +77,7 @@ class NetworkArea(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['datacenter'] = datacenter
-            if peer_datacenter is None:
+            if peer_datacenter is None and not opts.urn:
                 raise TypeError("Missing required property 'peer_datacenter'")
             __props__['peer_datacenter'] = peer_datacenter
             __props__['retry_joins'] = retry_joins
