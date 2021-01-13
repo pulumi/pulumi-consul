@@ -163,7 +163,7 @@ export class ConfigEntry extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as ConfigEntryArgs | undefined;
-            if (!args || args.kind === undefined) {
+            if ((!args || args.kind === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'kind'");
             }
             inputs["configJson"] = args ? args.configJson : undefined;

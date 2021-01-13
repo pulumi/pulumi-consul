@@ -111,13 +111,13 @@ export class AclBindingRule extends pulumi.CustomResource {
             inputs["selector"] = state ? state.selector : undefined;
         } else {
             const args = argsOrState as AclBindingRuleArgs | undefined;
-            if (!args || args.authMethod === undefined) {
+            if ((!args || args.authMethod === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'authMethod'");
             }
-            if (!args || args.bindName === undefined) {
+            if ((!args || args.bindName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'bindName'");
             }
-            if (!args || args.bindType === undefined) {
+            if ((!args || args.bindType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'bindType'");
             }
             inputs["authMethod"] = args ? args.authMethod : undefined;

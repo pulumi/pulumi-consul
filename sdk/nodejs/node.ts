@@ -87,7 +87,7 @@ export class Node extends pulumi.CustomResource {
             inputs["token"] = state ? state.token : undefined;
         } else {
             const args = argsOrState as NodeArgs | undefined;
-            if (!args || args.address === undefined) {
+            if ((!args || args.address === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'address'");
             }
             inputs["address"] = args ? args.address : undefined;

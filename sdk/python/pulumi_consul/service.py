@@ -140,14 +140,14 @@ class Service(pulumi.CustomResource):
             __props__['checks'] = checks
             __props__['datacenter'] = datacenter
             __props__['enable_tag_override'] = enable_tag_override
-            if external is not None:
+            if external is not None and not opts.urn:
                 warnings.warn("""The external field has been deprecated and does nothing.""", DeprecationWarning)
                 pulumi.log.warn("external is deprecated: The external field has been deprecated and does nothing.")
             __props__['external'] = external
             __props__['meta'] = meta
             __props__['name'] = name
             __props__['namespace'] = namespace
-            if node is None:
+            if node is None and not opts.urn:
                 raise TypeError("Missing required property 'node'")
             __props__['node'] = node
             __props__['port'] = port

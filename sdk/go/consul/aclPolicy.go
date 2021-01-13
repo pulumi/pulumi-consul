@@ -66,11 +66,12 @@ type AclPolicy struct {
 // NewAclPolicy registers a new resource with the given unique name, arguments, and options.
 func NewAclPolicy(ctx *pulumi.Context,
 	name string, args *AclPolicyArgs, opts ...pulumi.ResourceOption) (*AclPolicy, error) {
-	if args == nil || args.Rules == nil {
-		return nil, errors.New("missing required argument 'Rules'")
-	}
 	if args == nil {
-		args = &AclPolicyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Rules == nil {
+		return nil, errors.New("invalid value for required argument 'Rules'")
 	}
 	var resource AclPolicy
 	err := ctx.RegisterResource("consul:index/aclPolicy:AclPolicy", name, args, &resource, opts...)

@@ -101,7 +101,7 @@ export class NetworkArea extends pulumi.CustomResource {
             inputs["useTls"] = state ? state.useTls : undefined;
         } else {
             const args = argsOrState as NetworkAreaArgs | undefined;
-            if (!args || args.peerDatacenter === undefined) {
+            if ((!args || args.peerDatacenter === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'peerDatacenter'");
             }
             inputs["datacenter"] = args ? args.datacenter : undefined;

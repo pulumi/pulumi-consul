@@ -184,7 +184,7 @@ export class Service extends pulumi.CustomResource {
             inputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as ServiceArgs | undefined;
-            if (!args || args.node === undefined) {
+            if ((!args || args.node === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'node'");
             }
             inputs["address"] = args ? args.address : undefined;

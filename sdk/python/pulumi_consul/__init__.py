@@ -50,3 +50,98 @@ from . import outputs
 from . import (
     config,
 )
+
+def _register_module():
+    import pulumi
+    from . import _utilities
+
+
+    class Module(pulumi.runtime.ResourceModule):
+        _version = _utilities.get_semver_version()
+
+        def version(self):
+            return Module._version
+
+        def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
+            if typ == "consul:index/aclAuthMethod:AclAuthMethod":
+                return AclAuthMethod(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "consul:index/aclBindingRule:AclBindingRule":
+                return AclBindingRule(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "consul:index/aclPolicy:AclPolicy":
+                return AclPolicy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "consul:index/aclRole:AclRole":
+                return AclRole(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "consul:index/aclToken:AclToken":
+                return AclToken(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "consul:index/aclTokenPolicyAttachment:AclTokenPolicyAttachment":
+                return AclTokenPolicyAttachment(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "consul:index/agentService:AgentService":
+                return AgentService(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "consul:index/autopilotConfig:AutopilotConfig":
+                return AutopilotConfig(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "consul:index/catalogEntry:CatalogEntry":
+                return CatalogEntry(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "consul:index/certificateAuthority:CertificateAuthority":
+                return CertificateAuthority(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "consul:index/configEntry:ConfigEntry":
+                return ConfigEntry(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "consul:index/intention:Intention":
+                return Intention(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "consul:index/keyPrefix:KeyPrefix":
+                return KeyPrefix(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "consul:index/keys:Keys":
+                return Keys(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "consul:index/license:License":
+                return License(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "consul:index/namespace:Namespace":
+                return Namespace(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "consul:index/networkArea:NetworkArea":
+                return NetworkArea(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "consul:index/node:Node":
+                return Node(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "consul:index/preparedQuery:PreparedQuery":
+                return PreparedQuery(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "consul:index/service:Service":
+                return Service(name, pulumi.ResourceOptions(urn=urn))
+            else:
+                raise Exception(f"unknown resource type {typ}")
+
+
+    _module_instance = Module()
+    pulumi.runtime.register_resource_module("consul", "index/aclAuthMethod", _module_instance)
+    pulumi.runtime.register_resource_module("consul", "index/aclBindingRule", _module_instance)
+    pulumi.runtime.register_resource_module("consul", "index/aclPolicy", _module_instance)
+    pulumi.runtime.register_resource_module("consul", "index/aclRole", _module_instance)
+    pulumi.runtime.register_resource_module("consul", "index/aclToken", _module_instance)
+    pulumi.runtime.register_resource_module("consul", "index/aclTokenPolicyAttachment", _module_instance)
+    pulumi.runtime.register_resource_module("consul", "index/agentService", _module_instance)
+    pulumi.runtime.register_resource_module("consul", "index/autopilotConfig", _module_instance)
+    pulumi.runtime.register_resource_module("consul", "index/catalogEntry", _module_instance)
+    pulumi.runtime.register_resource_module("consul", "index/certificateAuthority", _module_instance)
+    pulumi.runtime.register_resource_module("consul", "index/configEntry", _module_instance)
+    pulumi.runtime.register_resource_module("consul", "index/intention", _module_instance)
+    pulumi.runtime.register_resource_module("consul", "index/keyPrefix", _module_instance)
+    pulumi.runtime.register_resource_module("consul", "index/keys", _module_instance)
+    pulumi.runtime.register_resource_module("consul", "index/license", _module_instance)
+    pulumi.runtime.register_resource_module("consul", "index/namespace", _module_instance)
+    pulumi.runtime.register_resource_module("consul", "index/networkArea", _module_instance)
+    pulumi.runtime.register_resource_module("consul", "index/node", _module_instance)
+    pulumi.runtime.register_resource_module("consul", "index/preparedQuery", _module_instance)
+    pulumi.runtime.register_resource_module("consul", "index/service", _module_instance)
+
+
+    class Package(pulumi.runtime.ResourcePackage):
+        _version = _utilities.get_semver_version()
+
+        def version(self):
+            return Package._version
+
+        def construct_provider(self, name: str, typ: str, urn: str) -> pulumi.ProviderResource:
+            if typ != "pulumi:providers:consul":
+                raise Exception(f"unknown provider type {typ}")
+            return Provider(name, pulumi.ResourceOptions(urn=urn))
+
+
+    pulumi.runtime.register_resource_package("consul", Package())
+
+_register_module()

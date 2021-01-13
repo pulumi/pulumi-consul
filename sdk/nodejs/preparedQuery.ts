@@ -165,7 +165,7 @@ export class PreparedQuery extends pulumi.CustomResource {
             inputs["token"] = state ? state.token : undefined;
         } else {
             const args = argsOrState as PreparedQueryArgs | undefined;
-            if (!args || args.service === undefined) {
+            if ((!args || args.service === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'service'");
             }
             inputs["connect"] = args ? args.connect : undefined;

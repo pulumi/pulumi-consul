@@ -83,6 +83,7 @@ func NewAclToken(ctx *pulumi.Context,
 	if args == nil {
 		args = &AclTokenArgs{}
 	}
+
 	var resource AclToken
 	err := ctx.RegisterResource("consul:index/aclToken:AclToken", name, args, &resource, opts...)
 	if err != nil {

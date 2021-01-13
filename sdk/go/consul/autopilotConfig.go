@@ -77,6 +77,7 @@ func NewAutopilotConfig(ctx *pulumi.Context,
 	if args == nil {
 		args = &AutopilotConfigArgs{}
 	}
+
 	var resource AutopilotConfig
 	err := ctx.RegisterResource("consul:index/autopilotConfig:AutopilotConfig", name, args, &resource, opts...)
 	if err != nil {

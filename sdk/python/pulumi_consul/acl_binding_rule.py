@@ -83,13 +83,13 @@ class AclBindingRule(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if auth_method is None:
+            if auth_method is None and not opts.urn:
                 raise TypeError("Missing required property 'auth_method'")
             __props__['auth_method'] = auth_method
-            if bind_name is None:
+            if bind_name is None and not opts.urn:
                 raise TypeError("Missing required property 'bind_name'")
             __props__['bind_name'] = bind_name
-            if bind_type is None:
+            if bind_type is None and not opts.urn:
                 raise TypeError("Missing required property 'bind_type'")
             __props__['bind_type'] = bind_type
             __props__['description'] = description

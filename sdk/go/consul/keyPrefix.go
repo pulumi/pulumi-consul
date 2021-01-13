@@ -46,11 +46,12 @@ type KeyPrefix struct {
 // NewKeyPrefix registers a new resource with the given unique name, arguments, and options.
 func NewKeyPrefix(ctx *pulumi.Context,
 	name string, args *KeyPrefixArgs, opts ...pulumi.ResourceOption) (*KeyPrefix, error) {
-	if args == nil || args.PathPrefix == nil {
-		return nil, errors.New("missing required argument 'PathPrefix'")
-	}
 	if args == nil {
-		args = &KeyPrefixArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.PathPrefix == nil {
+		return nil, errors.New("invalid value for required argument 'PathPrefix'")
 	}
 	var resource KeyPrefix
 	err := ctx.RegisterResource("consul:index/keyPrefix:KeyPrefix", name, args, &resource, opts...)

@@ -75,14 +75,15 @@ type CatalogEntry struct {
 // NewCatalogEntry registers a new resource with the given unique name, arguments, and options.
 func NewCatalogEntry(ctx *pulumi.Context,
 	name string, args *CatalogEntryArgs, opts ...pulumi.ResourceOption) (*CatalogEntry, error) {
-	if args == nil || args.Address == nil {
-		return nil, errors.New("missing required argument 'Address'")
-	}
-	if args == nil || args.Node == nil {
-		return nil, errors.New("missing required argument 'Node'")
-	}
 	if args == nil {
-		args = &CatalogEntryArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Address == nil {
+		return nil, errors.New("invalid value for required argument 'Address'")
+	}
+	if args.Node == nil {
+		return nil, errors.New("invalid value for required argument 'Node'")
 	}
 	var resource CatalogEntry
 	err := ctx.RegisterResource("consul:index/catalogEntry:CatalogEntry", name, args, &resource, opts...)

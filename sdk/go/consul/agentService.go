@@ -66,6 +66,7 @@ func NewAgentService(ctx *pulumi.Context,
 	if args == nil {
 		args = &AgentServiceArgs{}
 	}
+
 	var resource AgentService
 	err := ctx.RegisterResource("consul:index/agentService:AgentService", name, args, &resource, opts...)
 	if err != nil {

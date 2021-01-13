@@ -123,11 +123,12 @@ type AclAuthMethod struct {
 // NewAclAuthMethod registers a new resource with the given unique name, arguments, and options.
 func NewAclAuthMethod(ctx *pulumi.Context,
 	name string, args *AclAuthMethodArgs, opts ...pulumi.ResourceOption) (*AclAuthMethod, error) {
-	if args == nil || args.Type == nil {
-		return nil, errors.New("missing required argument 'Type'")
-	}
 	if args == nil {
-		args = &AclAuthMethodArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Type == nil {
+		return nil, errors.New("invalid value for required argument 'Type'")
 	}
 	var resource AclAuthMethod
 	err := ctx.RegisterResource("consul:index/aclAuthMethod:AclAuthMethod", name, args, &resource, opts...)

@@ -34,14 +34,15 @@ type AclTokenPolicyAttachment struct {
 // NewAclTokenPolicyAttachment registers a new resource with the given unique name, arguments, and options.
 func NewAclTokenPolicyAttachment(ctx *pulumi.Context,
 	name string, args *AclTokenPolicyAttachmentArgs, opts ...pulumi.ResourceOption) (*AclTokenPolicyAttachment, error) {
-	if args == nil || args.Policy == nil {
-		return nil, errors.New("missing required argument 'Policy'")
-	}
-	if args == nil || args.TokenId == nil {
-		return nil, errors.New("missing required argument 'TokenId'")
-	}
 	if args == nil {
-		args = &AclTokenPolicyAttachmentArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Policy == nil {
+		return nil, errors.New("invalid value for required argument 'Policy'")
+	}
+	if args.TokenId == nil {
+		return nil, errors.New("invalid value for required argument 'TokenId'")
 	}
 	var resource AclTokenPolicyAttachment
 	err := ctx.RegisterResource("consul:index/aclTokenPolicyAttachment:AclTokenPolicyAttachment", name, args, &resource, opts...)

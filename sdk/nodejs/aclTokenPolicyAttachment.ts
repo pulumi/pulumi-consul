@@ -70,10 +70,10 @@ export class AclTokenPolicyAttachment extends pulumi.CustomResource {
             inputs["tokenId"] = state ? state.tokenId : undefined;
         } else {
             const args = argsOrState as AclTokenPolicyAttachmentArgs | undefined;
-            if (!args || args.policy === undefined) {
+            if ((!args || args.policy === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'policy'");
             }
-            if (!args || args.tokenId === undefined) {
+            if ((!args || args.tokenId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'tokenId'");
             }
             inputs["policy"] = args ? args.policy : undefined;

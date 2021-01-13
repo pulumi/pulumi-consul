@@ -118,10 +118,10 @@ export class CertificateAuthority extends pulumi.CustomResource {
             inputs["connectProvider"] = state ? state.connectProvider : undefined;
         } else {
             const args = argsOrState as CertificateAuthorityArgs | undefined;
-            if (!args || args.config === undefined) {
+            if ((!args || args.config === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'config'");
             }
-            if (!args || args.connectProvider === undefined) {
+            if ((!args || args.connectProvider === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'connectProvider'");
             }
             inputs["config"] = args ? args.config : undefined;

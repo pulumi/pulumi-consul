@@ -86,11 +86,12 @@ type PreparedQuery struct {
 // NewPreparedQuery registers a new resource with the given unique name, arguments, and options.
 func NewPreparedQuery(ctx *pulumi.Context,
 	name string, args *PreparedQueryArgs, opts ...pulumi.ResourceOption) (*PreparedQuery, error) {
-	if args == nil || args.Service == nil {
-		return nil, errors.New("missing required argument 'Service'")
-	}
 	if args == nil {
-		args = &PreparedQueryArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Service == nil {
+		return nil, errors.New("invalid value for required argument 'Service'")
 	}
 	var resource PreparedQuery
 	err := ctx.RegisterResource("consul:index/preparedQuery:PreparedQuery", name, args, &resource, opts...)

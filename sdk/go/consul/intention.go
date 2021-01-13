@@ -115,17 +115,18 @@ type Intention struct {
 // NewIntention registers a new resource with the given unique name, arguments, and options.
 func NewIntention(ctx *pulumi.Context,
 	name string, args *IntentionArgs, opts ...pulumi.ResourceOption) (*Intention, error) {
-	if args == nil || args.Action == nil {
-		return nil, errors.New("missing required argument 'Action'")
-	}
-	if args == nil || args.DestinationName == nil {
-		return nil, errors.New("missing required argument 'DestinationName'")
-	}
-	if args == nil || args.SourceName == nil {
-		return nil, errors.New("missing required argument 'SourceName'")
-	}
 	if args == nil {
-		args = &IntentionArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Action == nil {
+		return nil, errors.New("invalid value for required argument 'Action'")
+	}
+	if args.DestinationName == nil {
+		return nil, errors.New("invalid value for required argument 'DestinationName'")
+	}
+	if args.SourceName == nil {
+		return nil, errors.New("invalid value for required argument 'SourceName'")
 	}
 	var resource Intention
 	err := ctx.RegisterResource("consul:index/intention:Intention", name, args, &resource, opts...)

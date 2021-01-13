@@ -63,6 +63,7 @@ func NewNamespace(ctx *pulumi.Context,
 	if args == nil {
 		args = &NamespaceArgs{}
 	}
+
 	var resource Namespace
 	err := ctx.RegisterResource("consul:index/namespace:Namespace", name, args, &resource, opts...)
 	if err != nil {

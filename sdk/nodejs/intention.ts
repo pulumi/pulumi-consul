@@ -142,13 +142,13 @@ export class Intention extends pulumi.CustomResource {
             inputs["sourceNamespace"] = state ? state.sourceNamespace : undefined;
         } else {
             const args = argsOrState as IntentionArgs | undefined;
-            if (!args || args.action === undefined) {
+            if ((!args || args.action === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'action'");
             }
-            if (!args || args.destinationName === undefined) {
+            if ((!args || args.destinationName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'destinationName'");
             }
-            if (!args || args.sourceName === undefined) {
+            if ((!args || args.sourceName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'sourceName'");
             }
             inputs["action"] = args ? args.action : undefined;

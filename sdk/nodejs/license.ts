@@ -125,7 +125,7 @@ export class License extends pulumi.CustomResource {
             inputs["warnings"] = state ? state.warnings : undefined;
         } else {
             const args = argsOrState as LicenseArgs | undefined;
-            if (!args || args.license === undefined) {
+            if ((!args || args.license === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'license'");
             }
             inputs["datacenter"] = args ? args.datacenter : undefined;
