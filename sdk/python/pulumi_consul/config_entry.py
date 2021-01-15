@@ -114,6 +114,84 @@ class ConfigEntry(pulumi.CustomResource):
                 }],
             }))
         ```
+        ### `service-intentions` config entry
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_consul as consul
+
+        service_intentions = consul.ConfigEntry("serviceIntentions",
+            kind="service-intentions",
+            config_json=json.dumps({
+                "Sources": [
+                    {
+                        "Action": "allow",
+                        "Name": "frontend-webapp",
+                        "Precedence": 9,
+                        "Type": "consul",
+                    },
+                    {
+                        "Action": "allow",
+                        "Name": "nightly-cronjob",
+                        "Precedence": 9,
+                        "Type": "consul",
+                    },
+                ],
+            }))
+        ```
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_consul as consul
+
+        sd = consul.ConfigEntry("sd",
+            kind="service-defaults",
+            config_json=json.dumps({
+                "Protocol": "http",
+            }))
+        service_intentions = consul.ConfigEntry("serviceIntentions",
+            kind="service-intentions",
+            config_json=json.dumps({
+                "Sources": [
+                    {
+                        "Name": "contractor-webapp",
+                        "Permissions": [{
+                            "Action": "allow",
+                            "HTTP": {
+                                "Methods": [
+                                    "GET",
+                                    "HEAD",
+                                ],
+                                "PathExact": "/healtz",
+                            },
+                        }],
+                        "Precedence": 9,
+                        "Type": "consul",
+                    },
+                    {
+                        "Name": "admin-dashboard-webapp",
+                        "Permissions": [
+                            {
+                                "Action": "deny",
+                                "HTTP": {
+                                    "PathPrefix": "/debugz",
+                                },
+                            },
+                            {
+                                "Action": "allow",
+                                "HTTP": {
+                                    "PathPrefix": "/",
+                                },
+                            },
+                        ],
+                        "Precedence": 9,
+                        "Type": "consul",
+                    },
+                ],
+            }))
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

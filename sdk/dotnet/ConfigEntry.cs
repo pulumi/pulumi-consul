@@ -166,6 +166,131 @@ namespace Pulumi.Consul
     /// 
     /// }
     /// ```
+    /// ### `service-intentions` config entry
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using Consul = Pulumi.Consul;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var serviceIntentions = new Consul.ConfigEntry("serviceIntentions", new Consul.ConfigEntryArgs
+    ///         {
+    ///             Kind = "service-intentions",
+    ///             ConfigJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 { "Sources", new[]
+    ///                     {
+    ///                         new Dictionary&lt;string, object?&gt;
+    ///                         {
+    ///                             { "Action", "allow" },
+    ///                             { "Name", "frontend-webapp" },
+    ///                             { "Precedence", 9 },
+    ///                             { "Type", "consul" },
+    ///                         },
+    ///                         new Dictionary&lt;string, object?&gt;
+    ///                         {
+    ///                             { "Action", "allow" },
+    ///                             { "Name", "nightly-cronjob" },
+    ///                             { "Precedence", 9 },
+    ///                             { "Type", "consul" },
+    ///                         },
+    ///                     }
+    ///                  },
+    ///             }),
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using Consul = Pulumi.Consul;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var sd = new Consul.ConfigEntry("sd", new Consul.ConfigEntryArgs
+    ///         {
+    ///             Kind = "service-defaults",
+    ///             ConfigJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 { "Protocol", "http" },
+    ///             }),
+    ///         });
+    ///         var serviceIntentions = new Consul.ConfigEntry("serviceIntentions", new Consul.ConfigEntryArgs
+    ///         {
+    ///             Kind = "service-intentions",
+    ///             ConfigJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 { "Sources", new[]
+    ///                     {
+    ///                         new Dictionary&lt;string, object?&gt;
+    ///                         {
+    ///                             { "Name", "contractor-webapp" },
+    ///                             { "Permissions", new[]
+    ///                                 {
+    ///                                     new Dictionary&lt;string, object?&gt;
+    ///                                     {
+    ///                                         { "Action", "allow" },
+    ///                                         { "HTTP", new Dictionary&lt;string, object?&gt;
+    ///                                         {
+    ///                                             { "Methods", new[]
+    ///                                                 {
+    ///                                                     "GET",
+    ///                                                     "HEAD",
+    ///                                                 }
+    ///                                              },
+    ///                                             { "PathExact", "/healtz" },
+    ///                                         } },
+    ///                                     },
+    ///                                 }
+    ///                              },
+    ///                             { "Precedence", 9 },
+    ///                             { "Type", "consul" },
+    ///                         },
+    ///                         new Dictionary&lt;string, object?&gt;
+    ///                         {
+    ///                             { "Name", "admin-dashboard-webapp" },
+    ///                             { "Permissions", new[]
+    ///                                 {
+    ///                                     new Dictionary&lt;string, object?&gt;
+    ///                                     {
+    ///                                         { "Action", "deny" },
+    ///                                         { "HTTP", new Dictionary&lt;string, object?&gt;
+    ///                                         {
+    ///                                             { "PathPrefix", "/debugz" },
+    ///                                         } },
+    ///                                     },
+    ///                                     new Dictionary&lt;string, object?&gt;
+    ///                                     {
+    ///                                         { "Action", "allow" },
+    ///                                         { "HTTP", new Dictionary&lt;string, object?&gt;
+    ///                                         {
+    ///                                             { "PathPrefix", "/" },
+    ///                                         } },
+    ///                                     },
+    ///                                 }
+    ///                              },
+    ///                             { "Precedence", 9 },
+    ///                             { "Type", "consul" },
+    ///                         },
+    ///                     }
+    ///                  },
+    ///             }),
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class ConfigEntry : Pulumi.CustomResource
     {

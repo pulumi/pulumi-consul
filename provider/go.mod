@@ -4,10 +4,9 @@ go 1.14
 
 require (
 	github.com/hashicorp/terraform-plugin-sdk v1.12.0
-	github.com/hashicorp/terraform-provider-consul v1.1.1-0.20201022200600-69a50fb4c3fb
+	github.com/hashicorp/terraform-provider-consul v1.1.1-0.20210114144241-fe7216563490
 	github.com/pulumi/pulumi-terraform-bridge/v2 v2.17.0
 	github.com/pulumi/pulumi/sdk/v2 v2.17.0
-	github.com/satori/go.uuid v1.2.0 // indirect
 )
 
 replace (
