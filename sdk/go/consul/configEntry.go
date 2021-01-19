@@ -193,6 +193,133 @@ import (
 // 	})
 // }
 // ```
+// ### `service-intentions` config entry
+//
+// ```go
+// package main
+//
+// import (
+// 	"encoding/json"
+//
+// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
+// 			"Sources": []map[string]interface{}{
+// 				map[string]interface{}{
+// 					"Action":     "allow",
+// 					"Name":       "frontend-webapp",
+// 					"Precedence": 9,
+// 					"Type":       "consul",
+// 				},
+// 				map[string]interface{}{
+// 					"Action":     "allow",
+// 					"Name":       "nightly-cronjob",
+// 					"Precedence": 9,
+// 					"Type":       "consul",
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		json0 := string(tmpJSON0)
+// 		_, err := consul.NewConfigEntry(ctx, "serviceIntentions", &consul.ConfigEntryArgs{
+// 			Kind:       pulumi.String("service-intentions"),
+// 			ConfigJson: pulumi.String(json0),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ```go
+// package main
+//
+// import (
+// 	"encoding/json"
+//
+// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
+// 			"Protocol": "http",
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		json0 := string(tmpJSON0)
+// 		_, err := consul.NewConfigEntry(ctx, "sd", &consul.ConfigEntryArgs{
+// 			Kind:       pulumi.String("service-defaults"),
+// 			ConfigJson: pulumi.String(json0),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		tmpJSON1, err := json.Marshal(map[string]interface{}{
+// 			"Sources": []interface{}{
+// 				map[string]interface{}{
+// 					"Name": "contractor-webapp",
+// 					"Permissions": []map[string]interface{}{
+// 						map[string]interface{}{
+// 							"Action": "allow",
+// 							"HTTP": map[string]interface{}{
+// 								"Methods": []string{
+// 									"GET",
+// 									"HEAD",
+// 								},
+// 								"PathExact": "/healtz",
+// 							},
+// 						},
+// 					},
+// 					"Precedence": 9,
+// 					"Type":       "consul",
+// 				},
+// 				map[string]interface{}{
+// 					"Name": "admin-dashboard-webapp",
+// 					"Permissions": []map[string]interface{}{
+// 						map[string]interface{}{
+// 							"Action": "deny",
+// 							"HTTP": map[string]interface{}{
+// 								"PathPrefix": "/debugz",
+// 							},
+// 						},
+// 						map[string]interface{}{
+// 							"Action": "allow",
+// 							"HTTP": map[string]interface{}{
+// 								"PathPrefix": "/",
+// 							},
+// 						},
+// 					},
+// 					"Precedence": 9,
+// 					"Type":       "consul",
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		json1 := string(tmpJSON1)
+// 		_, err = consul.NewConfigEntry(ctx, "serviceIntentions", &consul.ConfigEntryArgs{
+// 			Kind:       pulumi.String("service-intentions"),
+// 			ConfigJson: pulumi.String(json1),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type ConfigEntry struct {
 	pulumi.CustomResourceState
 

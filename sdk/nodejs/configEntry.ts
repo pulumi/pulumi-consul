@@ -104,6 +104,85 @@ import * as utilities from "./utilities";
  *     }),
  * });
  * ```
+ * ### `service-intentions` config entry
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ *
+ * const serviceIntentions = new consul.ConfigEntry("serviceIntentions", {
+ *     kind: "service-intentions",
+ *     configJson: JSON.stringify({
+ *         Sources: [
+ *             {
+ *                 Action: "allow",
+ *                 Name: "frontend-webapp",
+ *                 Precedence: 9,
+ *                 Type: "consul",
+ *             },
+ *             {
+ *                 Action: "allow",
+ *                 Name: "nightly-cronjob",
+ *                 Precedence: 9,
+ *                 Type: "consul",
+ *             },
+ *         ],
+ *     }),
+ * });
+ * ```
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ *
+ * const sd = new consul.ConfigEntry("sd", {
+ *     kind: "service-defaults",
+ *     configJson: JSON.stringify({
+ *         Protocol: "http",
+ *     }),
+ * });
+ * const serviceIntentions = new consul.ConfigEntry("serviceIntentions", {
+ *     kind: "service-intentions",
+ *     configJson: JSON.stringify({
+ *         Sources: [
+ *             {
+ *                 Name: "contractor-webapp",
+ *                 Permissions: [{
+ *                     Action: "allow",
+ *                     HTTP: {
+ *                         Methods: [
+ *                             "GET",
+ *                             "HEAD",
+ *                         ],
+ *                         PathExact: "/healtz",
+ *                     },
+ *                 }],
+ *                 Precedence: 9,
+ *                 Type: "consul",
+ *             },
+ *             {
+ *                 Name: "admin-dashboard-webapp",
+ *                 Permissions: [
+ *                     {
+ *                         Action: "deny",
+ *                         HTTP: {
+ *                             PathPrefix: "/debugz",
+ *                         },
+ *                     },
+ *                     {
+ *                         Action: "allow",
+ *                         HTTP: {
+ *                             PathPrefix: "/",
+ *                         },
+ *                     },
+ *                 ],
+ *                 Precedence: 9,
+ *                 Type: "consul",
+ *             },
+ *         ],
+ *     }),
+ * });
+ * ```
  */
 export class ConfigEntry extends pulumi.CustomResource {
     /**
