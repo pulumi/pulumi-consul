@@ -23,7 +23,7 @@ import (
 // import (
 // 	"encoding/json"
 //
-// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul"
+// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -58,7 +58,7 @@ import (
 // import (
 // 	"encoding/json"
 //
-// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul"
+// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -291,15 +291,15 @@ type AclAuthMethodInput interface {
 	ToAclAuthMethodOutputWithContext(ctx context.Context) AclAuthMethodOutput
 }
 
-func (AclAuthMethod) ElementType() reflect.Type {
-	return reflect.TypeOf((*AclAuthMethod)(nil)).Elem()
+func (*AclAuthMethod) ElementType() reflect.Type {
+	return reflect.TypeOf((*AclAuthMethod)(nil))
 }
 
-func (i AclAuthMethod) ToAclAuthMethodOutput() AclAuthMethodOutput {
+func (i *AclAuthMethod) ToAclAuthMethodOutput() AclAuthMethodOutput {
 	return i.ToAclAuthMethodOutputWithContext(context.Background())
 }
 
-func (i AclAuthMethod) ToAclAuthMethodOutputWithContext(ctx context.Context) AclAuthMethodOutput {
+func (i *AclAuthMethod) ToAclAuthMethodOutputWithContext(ctx context.Context) AclAuthMethodOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AclAuthMethodOutput)
 }
 
@@ -308,7 +308,7 @@ type AclAuthMethodOutput struct {
 }
 
 func (AclAuthMethodOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AclAuthMethodOutput)(nil)).Elem()
+	return reflect.TypeOf((*AclAuthMethod)(nil))
 }
 
 func (o AclAuthMethodOutput) ToAclAuthMethodOutput() AclAuthMethodOutput {

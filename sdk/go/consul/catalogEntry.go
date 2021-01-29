@@ -25,6 +25,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul"
+// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -190,15 +191,15 @@ type CatalogEntryInput interface {
 	ToCatalogEntryOutputWithContext(ctx context.Context) CatalogEntryOutput
 }
 
-func (CatalogEntry) ElementType() reflect.Type {
-	return reflect.TypeOf((*CatalogEntry)(nil)).Elem()
+func (*CatalogEntry) ElementType() reflect.Type {
+	return reflect.TypeOf((*CatalogEntry)(nil))
 }
 
-func (i CatalogEntry) ToCatalogEntryOutput() CatalogEntryOutput {
+func (i *CatalogEntry) ToCatalogEntryOutput() CatalogEntryOutput {
 	return i.ToCatalogEntryOutputWithContext(context.Background())
 }
 
-func (i CatalogEntry) ToCatalogEntryOutputWithContext(ctx context.Context) CatalogEntryOutput {
+func (i *CatalogEntry) ToCatalogEntryOutputWithContext(ctx context.Context) CatalogEntryOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CatalogEntryOutput)
 }
 
@@ -207,7 +208,7 @@ type CatalogEntryOutput struct {
 }
 
 func (CatalogEntryOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CatalogEntryOutput)(nil)).Elem()
+	return reflect.TypeOf((*CatalogEntry)(nil))
 }
 
 func (o CatalogEntryOutput) ToCatalogEntryOutput() CatalogEntryOutput {

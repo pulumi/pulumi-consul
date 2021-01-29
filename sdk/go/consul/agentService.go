@@ -24,7 +24,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul"
+// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -156,15 +156,15 @@ type AgentServiceInput interface {
 	ToAgentServiceOutputWithContext(ctx context.Context) AgentServiceOutput
 }
 
-func (AgentService) ElementType() reflect.Type {
-	return reflect.TypeOf((*AgentService)(nil)).Elem()
+func (*AgentService) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentService)(nil))
 }
 
-func (i AgentService) ToAgentServiceOutput() AgentServiceOutput {
+func (i *AgentService) ToAgentServiceOutput() AgentServiceOutput {
 	return i.ToAgentServiceOutputWithContext(context.Background())
 }
 
-func (i AgentService) ToAgentServiceOutputWithContext(ctx context.Context) AgentServiceOutput {
+func (i *AgentService) ToAgentServiceOutputWithContext(ctx context.Context) AgentServiceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AgentServiceOutput)
 }
 
@@ -173,7 +173,7 @@ type AgentServiceOutput struct {
 }
 
 func (AgentServiceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AgentServiceOutput)(nil)).Elem()
+	return reflect.TypeOf((*AgentService)(nil))
 }
 
 func (o AgentServiceOutput) ToAgentServiceOutput() AgentServiceOutput {

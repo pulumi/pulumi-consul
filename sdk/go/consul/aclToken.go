@@ -21,7 +21,7 @@ import (
 // import (
 // 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul"
+// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -185,15 +185,15 @@ type AclTokenInput interface {
 	ToAclTokenOutputWithContext(ctx context.Context) AclTokenOutput
 }
 
-func (AclToken) ElementType() reflect.Type {
-	return reflect.TypeOf((*AclToken)(nil)).Elem()
+func (*AclToken) ElementType() reflect.Type {
+	return reflect.TypeOf((*AclToken)(nil))
 }
 
-func (i AclToken) ToAclTokenOutput() AclTokenOutput {
+func (i *AclToken) ToAclTokenOutput() AclTokenOutput {
 	return i.ToAclTokenOutputWithContext(context.Background())
 }
 
-func (i AclToken) ToAclTokenOutputWithContext(ctx context.Context) AclTokenOutput {
+func (i *AclToken) ToAclTokenOutputWithContext(ctx context.Context) AclTokenOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AclTokenOutput)
 }
 
@@ -202,7 +202,7 @@ type AclTokenOutput struct {
 }
 
 func (AclTokenOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AclTokenOutput)(nil)).Elem()
+	return reflect.TypeOf((*AclToken)(nil))
 }
 
 func (o AclTokenOutput) ToAclTokenOutput() AclTokenOutput {

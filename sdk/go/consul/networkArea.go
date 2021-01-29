@@ -27,7 +27,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul"
+// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -186,15 +186,15 @@ type NetworkAreaInput interface {
 	ToNetworkAreaOutputWithContext(ctx context.Context) NetworkAreaOutput
 }
 
-func (NetworkArea) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkArea)(nil)).Elem()
+func (*NetworkArea) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkArea)(nil))
 }
 
-func (i NetworkArea) ToNetworkAreaOutput() NetworkAreaOutput {
+func (i *NetworkArea) ToNetworkAreaOutput() NetworkAreaOutput {
 	return i.ToNetworkAreaOutputWithContext(context.Background())
 }
 
-func (i NetworkArea) ToNetworkAreaOutputWithContext(ctx context.Context) NetworkAreaOutput {
+func (i *NetworkArea) ToNetworkAreaOutputWithContext(ctx context.Context) NetworkAreaOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkAreaOutput)
 }
 
@@ -203,7 +203,7 @@ type NetworkAreaOutput struct {
 }
 
 func (NetworkAreaOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkAreaOutput)(nil)).Elem()
+	return reflect.TypeOf((*NetworkArea)(nil))
 }
 
 func (o NetworkAreaOutput) ToNetworkAreaOutput() NetworkAreaOutput {

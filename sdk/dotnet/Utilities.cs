@@ -77,4 +77,11 @@ namespace Pulumi.Consul
             }
         }
     }
+
+    internal sealed class ConsulResourceTypeAttribute : Pulumi.ResourceTypeAttribute
+    {
+        public ConsulResourceTypeAttribute(string type) : base(type, Utilities.Version)
+        {
+        }
+    }
 }

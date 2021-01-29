@@ -129,15 +129,15 @@ type KeysInput interface {
 	ToKeysOutputWithContext(ctx context.Context) KeysOutput
 }
 
-func (Keys) ElementType() reflect.Type {
-	return reflect.TypeOf((*Keys)(nil)).Elem()
+func (*Keys) ElementType() reflect.Type {
+	return reflect.TypeOf((*Keys)(nil))
 }
 
-func (i Keys) ToKeysOutput() KeysOutput {
+func (i *Keys) ToKeysOutput() KeysOutput {
 	return i.ToKeysOutputWithContext(context.Background())
 }
 
-func (i Keys) ToKeysOutputWithContext(ctx context.Context) KeysOutput {
+func (i *Keys) ToKeysOutputWithContext(ctx context.Context) KeysOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KeysOutput)
 }
 
@@ -146,7 +146,7 @@ type KeysOutput struct {
 }
 
 func (KeysOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*KeysOutput)(nil)).Elem()
+	return reflect.TypeOf((*Keys)(nil))
 }
 
 func (o KeysOutput) ToKeysOutput() KeysOutput {

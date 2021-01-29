@@ -22,7 +22,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul"
+// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -231,15 +231,15 @@ type AutopilotConfigInput interface {
 	ToAutopilotConfigOutputWithContext(ctx context.Context) AutopilotConfigOutput
 }
 
-func (AutopilotConfig) ElementType() reflect.Type {
-	return reflect.TypeOf((*AutopilotConfig)(nil)).Elem()
+func (*AutopilotConfig) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutopilotConfig)(nil))
 }
 
-func (i AutopilotConfig) ToAutopilotConfigOutput() AutopilotConfigOutput {
+func (i *AutopilotConfig) ToAutopilotConfigOutput() AutopilotConfigOutput {
 	return i.ToAutopilotConfigOutputWithContext(context.Background())
 }
 
-func (i AutopilotConfig) ToAutopilotConfigOutputWithContext(ctx context.Context) AutopilotConfigOutput {
+func (i *AutopilotConfig) ToAutopilotConfigOutputWithContext(ctx context.Context) AutopilotConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AutopilotConfigOutput)
 }
 
@@ -248,7 +248,7 @@ type AutopilotConfigOutput struct {
 }
 
 func (AutopilotConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AutopilotConfigOutput)(nil)).Elem()
+	return reflect.TypeOf((*AutopilotConfig)(nil))
 }
 
 func (o AutopilotConfigOutput) ToAutopilotConfigOutput() AutopilotConfigOutput {

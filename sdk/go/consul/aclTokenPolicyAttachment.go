@@ -109,15 +109,15 @@ type AclTokenPolicyAttachmentInput interface {
 	ToAclTokenPolicyAttachmentOutputWithContext(ctx context.Context) AclTokenPolicyAttachmentOutput
 }
 
-func (AclTokenPolicyAttachment) ElementType() reflect.Type {
-	return reflect.TypeOf((*AclTokenPolicyAttachment)(nil)).Elem()
+func (*AclTokenPolicyAttachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*AclTokenPolicyAttachment)(nil))
 }
 
-func (i AclTokenPolicyAttachment) ToAclTokenPolicyAttachmentOutput() AclTokenPolicyAttachmentOutput {
+func (i *AclTokenPolicyAttachment) ToAclTokenPolicyAttachmentOutput() AclTokenPolicyAttachmentOutput {
 	return i.ToAclTokenPolicyAttachmentOutputWithContext(context.Background())
 }
 
-func (i AclTokenPolicyAttachment) ToAclTokenPolicyAttachmentOutputWithContext(ctx context.Context) AclTokenPolicyAttachmentOutput {
+func (i *AclTokenPolicyAttachment) ToAclTokenPolicyAttachmentOutputWithContext(ctx context.Context) AclTokenPolicyAttachmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AclTokenPolicyAttachmentOutput)
 }
 
@@ -126,7 +126,7 @@ type AclTokenPolicyAttachmentOutput struct {
 }
 
 func (AclTokenPolicyAttachmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AclTokenPolicyAttachmentOutput)(nil)).Elem()
+	return reflect.TypeOf((*AclTokenPolicyAttachment)(nil))
 }
 
 func (o AclTokenPolicyAttachmentOutput) ToAclTokenPolicyAttachmentOutput() AclTokenPolicyAttachmentOutput {

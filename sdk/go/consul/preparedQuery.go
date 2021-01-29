@@ -382,15 +382,15 @@ type PreparedQueryInput interface {
 	ToPreparedQueryOutputWithContext(ctx context.Context) PreparedQueryOutput
 }
 
-func (PreparedQuery) ElementType() reflect.Type {
-	return reflect.TypeOf((*PreparedQuery)(nil)).Elem()
+func (*PreparedQuery) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreparedQuery)(nil))
 }
 
-func (i PreparedQuery) ToPreparedQueryOutput() PreparedQueryOutput {
+func (i *PreparedQuery) ToPreparedQueryOutput() PreparedQueryOutput {
 	return i.ToPreparedQueryOutputWithContext(context.Background())
 }
 
-func (i PreparedQuery) ToPreparedQueryOutputWithContext(ctx context.Context) PreparedQueryOutput {
+func (i *PreparedQuery) ToPreparedQueryOutputWithContext(ctx context.Context) PreparedQueryOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PreparedQueryOutput)
 }
 
@@ -399,7 +399,7 @@ type PreparedQueryOutput struct {
 }
 
 func (PreparedQueryOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PreparedQueryOutput)(nil)).Elem()
+	return reflect.TypeOf((*PreparedQuery)(nil))
 }
 
 func (o PreparedQueryOutput) ToPreparedQueryOutput() PreparedQueryOutput {

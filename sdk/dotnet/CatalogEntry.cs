@@ -52,6 +52,7 @@ namespace Pulumi.Consul
     /// }
     /// ```
     /// </summary>
+    [ConsulResourceType("consul:index/catalogEntry:CatalogEntry")]
     public partial class CatalogEntry : Pulumi.CustomResource
     {
         /// <summary>

@@ -19,6 +19,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul"
+// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -175,15 +176,15 @@ type AclRoleInput interface {
 	ToAclRoleOutputWithContext(ctx context.Context) AclRoleOutput
 }
 
-func (AclRole) ElementType() reflect.Type {
-	return reflect.TypeOf((*AclRole)(nil)).Elem()
+func (*AclRole) ElementType() reflect.Type {
+	return reflect.TypeOf((*AclRole)(nil))
 }
 
-func (i AclRole) ToAclRoleOutput() AclRoleOutput {
+func (i *AclRole) ToAclRoleOutput() AclRoleOutput {
 	return i.ToAclRoleOutputWithContext(context.Background())
 }
 
-func (i AclRole) ToAclRoleOutputWithContext(ctx context.Context) AclRoleOutput {
+func (i *AclRole) ToAclRoleOutputWithContext(ctx context.Context) AclRoleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AclRoleOutput)
 }
 
@@ -192,7 +193,7 @@ type AclRoleOutput struct {
 }
 
 func (AclRoleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AclRoleOutput)(nil)).Elem()
+	return reflect.TypeOf((*AclRole)(nil))
 }
 
 func (o AclRoleOutput) ToAclRoleOutput() AclRoleOutput {

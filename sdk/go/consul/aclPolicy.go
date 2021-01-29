@@ -21,7 +21,7 @@ import (
 // import (
 // 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul"
+// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -162,15 +162,15 @@ type AclPolicyInput interface {
 	ToAclPolicyOutputWithContext(ctx context.Context) AclPolicyOutput
 }
 
-func (AclPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*AclPolicy)(nil)).Elem()
+func (*AclPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*AclPolicy)(nil))
 }
 
-func (i AclPolicy) ToAclPolicyOutput() AclPolicyOutput {
+func (i *AclPolicy) ToAclPolicyOutput() AclPolicyOutput {
 	return i.ToAclPolicyOutputWithContext(context.Background())
 }
 
-func (i AclPolicy) ToAclPolicyOutputWithContext(ctx context.Context) AclPolicyOutput {
+func (i *AclPolicy) ToAclPolicyOutputWithContext(ctx context.Context) AclPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AclPolicyOutput)
 }
 
@@ -179,7 +179,7 @@ type AclPolicyOutput struct {
 }
 
 func (AclPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AclPolicyOutput)(nil)).Elem()
+	return reflect.TypeOf((*AclPolicy)(nil))
 }
 
 func (o AclPolicyOutput) ToAclPolicyOutput() AclPolicyOutput {

@@ -37,6 +37,7 @@ namespace Pulumi.Consul
     /// }
     /// ```
     /// </summary>
+    [ConsulResourceType("consul:index/autopilotConfig:AutopilotConfig")]
     public partial class AutopilotConfig : Pulumi.CustomResource
     {
         /// <summary>

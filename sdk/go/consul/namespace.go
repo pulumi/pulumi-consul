@@ -20,7 +20,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul"
+// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -165,15 +165,15 @@ type NamespaceInput interface {
 	ToNamespaceOutputWithContext(ctx context.Context) NamespaceOutput
 }
 
-func (Namespace) ElementType() reflect.Type {
-	return reflect.TypeOf((*Namespace)(nil)).Elem()
+func (*Namespace) ElementType() reflect.Type {
+	return reflect.TypeOf((*Namespace)(nil))
 }
 
-func (i Namespace) ToNamespaceOutput() NamespaceOutput {
+func (i *Namespace) ToNamespaceOutput() NamespaceOutput {
 	return i.ToNamespaceOutputWithContext(context.Background())
 }
 
-func (i Namespace) ToNamespaceOutputWithContext(ctx context.Context) NamespaceOutput {
+func (i *Namespace) ToNamespaceOutputWithContext(ctx context.Context) NamespaceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NamespaceOutput)
 }
 
@@ -182,7 +182,7 @@ type NamespaceOutput struct {
 }
 
 func (NamespaceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NamespaceOutput)(nil)).Elem()
+	return reflect.TypeOf((*Namespace)(nil))
 }
 
 func (o NamespaceOutput) ToNamespaceOutput() NamespaceOutput {

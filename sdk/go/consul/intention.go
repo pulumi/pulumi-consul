@@ -27,7 +27,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul"
+// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -53,6 +53,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul"
+// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -269,15 +270,15 @@ type IntentionInput interface {
 	ToIntentionOutputWithContext(ctx context.Context) IntentionOutput
 }
 
-func (Intention) ElementType() reflect.Type {
-	return reflect.TypeOf((*Intention)(nil)).Elem()
+func (*Intention) ElementType() reflect.Type {
+	return reflect.TypeOf((*Intention)(nil))
 }
 
-func (i Intention) ToIntentionOutput() IntentionOutput {
+func (i *Intention) ToIntentionOutput() IntentionOutput {
 	return i.ToIntentionOutputWithContext(context.Background())
 }
 
-func (i Intention) ToIntentionOutputWithContext(ctx context.Context) IntentionOutput {
+func (i *Intention) ToIntentionOutputWithContext(ctx context.Context) IntentionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IntentionOutput)
 }
 
@@ -286,7 +287,7 @@ type IntentionOutput struct {
 }
 
 func (IntentionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IntentionOutput)(nil)).Elem()
+	return reflect.TypeOf((*Intention)(nil))
 }
 
 func (o IntentionOutput) ToIntentionOutput() IntentionOutput {

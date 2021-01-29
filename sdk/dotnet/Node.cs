@@ -32,6 +32,7 @@ namespace Pulumi.Consul
     /// }
     /// ```
     /// </summary>
+    [ConsulResourceType("consul:index/node:Node")]
     public partial class Node : Pulumi.CustomResource
     {
         /// <summary>

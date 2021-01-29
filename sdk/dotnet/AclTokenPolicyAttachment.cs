@@ -22,6 +22,7 @@ namespace Pulumi.Consul
     ///  $ pulumi import consul:index/aclTokenPolicyAttachment:AclTokenPolicyAttachment master-token 624d94ca-bc5c-f960-4e83-0a609cf588be:policy_name
     /// ```
     /// </summary>
+    [ConsulResourceType("consul:index/aclTokenPolicyAttachment:AclTokenPolicyAttachment")]
     public partial class AclTokenPolicyAttachment : Pulumi.CustomResource
     {
         /// <summary>

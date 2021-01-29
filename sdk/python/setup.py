@@ -48,7 +48,7 @@ setup(name='pulumi_consul',
       packages=find_packages(),
       package_data={
           'pulumi_consul': [
-              'py.typed'
+              'py.typed',
           ]
       },
       install_requires=[

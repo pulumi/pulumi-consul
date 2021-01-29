@@ -97,6 +97,7 @@ namespace Pulumi.Consul
     ///  $ pulumi import consul:index/certificateAuthority:CertificateAuthority connect connect-ca
     /// ```
     /// </summary>
+    [ConsulResourceType("consul:index/certificateAuthority:CertificateAuthority")]
     public partial class CertificateAuthority : Pulumi.CustomResource
     {
         /// <summary>

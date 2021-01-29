@@ -43,6 +43,7 @@ namespace Pulumi.Consul
     /// }
     /// ```
     /// </summary>
+    [ConsulResourceType("consul:index/agentService:AgentService")]
     public partial class AgentService : Pulumi.CustomResource
     {
         /// <summary>
