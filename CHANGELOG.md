@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to pulumi-terraform-bridge v2.18.1
+_(none)_
 
 ---
+
+## 2.8.0 (2021-01-29)
+* Upgrade to pulumi-terraform-bridge v2.18.1
 
 ## 2.7.0 (2021-01-19)
 * Upgrade to v2.11.0 of the Consul Terraform Provider
