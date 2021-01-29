@@ -23,7 +23,7 @@ import (
 // import (
 // 	"encoding/json"
 //
-// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul"
+// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -201,7 +201,7 @@ import (
 // import (
 // 	"encoding/json"
 //
-// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul"
+// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -245,7 +245,7 @@ import (
 // import (
 // 	"encoding/json"
 //
-// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul"
+// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -414,15 +414,15 @@ type ConfigEntryInput interface {
 	ToConfigEntryOutputWithContext(ctx context.Context) ConfigEntryOutput
 }
 
-func (ConfigEntry) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConfigEntry)(nil)).Elem()
+func (*ConfigEntry) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntry)(nil))
 }
 
-func (i ConfigEntry) ToConfigEntryOutput() ConfigEntryOutput {
+func (i *ConfigEntry) ToConfigEntryOutput() ConfigEntryOutput {
 	return i.ToConfigEntryOutputWithContext(context.Background())
 }
 
-func (i ConfigEntry) ToConfigEntryOutputWithContext(ctx context.Context) ConfigEntryOutput {
+func (i *ConfigEntry) ToConfigEntryOutputWithContext(ctx context.Context) ConfigEntryOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryOutput)
 }
 
@@ -431,7 +431,7 @@ type ConfigEntryOutput struct {
 }
 
 func (ConfigEntryOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConfigEntryOutput)(nil)).Elem()
+	return reflect.TypeOf((*ConfigEntry)(nil))
 }
 
 func (o ConfigEntryOutput) ToConfigEntryOutput() ConfigEntryOutput {

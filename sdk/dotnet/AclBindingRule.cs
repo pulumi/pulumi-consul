@@ -50,6 +50,7 @@ namespace Pulumi.Consul
     /// }
     /// ```
     /// </summary>
+    [ConsulResourceType("consul:index/aclBindingRule:AclBindingRule")]
     public partial class AclBindingRule : Pulumi.CustomResource
     {
         /// <summary>

@@ -36,6 +36,7 @@ namespace Pulumi.Consul
     /// }
     /// ```
     /// </summary>
+    [ConsulResourceType("consul:index/license:License")]
     public partial class License : Pulumi.CustomResource
     {
         /// <summary>

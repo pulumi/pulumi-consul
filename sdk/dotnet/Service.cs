@@ -123,6 +123,7 @@ namespace Pulumi.Consul
     /// }
     /// ```
     /// </summary>
+    [ConsulResourceType("consul:index/service:Service")]
     public partial class Service : Pulumi.CustomResource
     {
         /// <summary>

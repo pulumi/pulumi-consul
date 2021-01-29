@@ -292,6 +292,7 @@ namespace Pulumi.Consul
     /// }
     /// ```
     /// </summary>
+    [ConsulResourceType("consul:index/configEntry:ConfigEntry")]
     public partial class ConfigEntry : Pulumi.CustomResource
     {
         /// <summary>

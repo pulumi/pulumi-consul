@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Consul
 {
+    [ConsulResourceType("consul:index/keys:Keys")]
     public partial class Keys : Pulumi.CustomResource
     {
         /// <summary>

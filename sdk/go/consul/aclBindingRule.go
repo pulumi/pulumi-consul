@@ -22,7 +22,7 @@ import (
 // import (
 // 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul"
+// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -204,15 +204,15 @@ type AclBindingRuleInput interface {
 	ToAclBindingRuleOutputWithContext(ctx context.Context) AclBindingRuleOutput
 }
 
-func (AclBindingRule) ElementType() reflect.Type {
-	return reflect.TypeOf((*AclBindingRule)(nil)).Elem()
+func (*AclBindingRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*AclBindingRule)(nil))
 }
 
-func (i AclBindingRule) ToAclBindingRuleOutput() AclBindingRuleOutput {
+func (i *AclBindingRule) ToAclBindingRuleOutput() AclBindingRuleOutput {
 	return i.ToAclBindingRuleOutputWithContext(context.Background())
 }
 
-func (i AclBindingRule) ToAclBindingRuleOutputWithContext(ctx context.Context) AclBindingRuleOutput {
+func (i *AclBindingRule) ToAclBindingRuleOutputWithContext(ctx context.Context) AclBindingRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AclBindingRuleOutput)
 }
 
@@ -221,7 +221,7 @@ type AclBindingRuleOutput struct {
 }
 
 func (AclBindingRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AclBindingRuleOutput)(nil)).Elem()
+	return reflect.TypeOf((*AclBindingRule)(nil))
 }
 
 func (o AclBindingRuleOutput) ToAclBindingRuleOutput() AclBindingRuleOutput {

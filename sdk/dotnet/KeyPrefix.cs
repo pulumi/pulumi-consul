@@ -18,6 +18,7 @@ namespace Pulumi.Consul
     ///  $ pulumi import consul:index/keyPrefix:KeyPrefix myapp_config myapp/config/
     /// ```
     /// </summary>
+    [ConsulResourceType("consul:index/keyPrefix:KeyPrefix")]
     public partial class KeyPrefix : Pulumi.CustomResource
     {
         /// <summary>

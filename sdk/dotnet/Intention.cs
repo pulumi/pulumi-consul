@@ -74,6 +74,7 @@ namespace Pulumi.Consul
     ///  $ pulumi import consul:index/intention:Intention database 657a57d6-0d56-57e2-31cb-e9f1ed3c18dd
     /// ```
     /// </summary>
+    [ConsulResourceType("consul:index/intention:Intention")]
     public partial class Intention : Pulumi.CustomResource
     {
         /// <summary>

@@ -182,15 +182,15 @@ type KeyPrefixInput interface {
 	ToKeyPrefixOutputWithContext(ctx context.Context) KeyPrefixOutput
 }
 
-func (KeyPrefix) ElementType() reflect.Type {
-	return reflect.TypeOf((*KeyPrefix)(nil)).Elem()
+func (*KeyPrefix) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyPrefix)(nil))
 }
 
-func (i KeyPrefix) ToKeyPrefixOutput() KeyPrefixOutput {
+func (i *KeyPrefix) ToKeyPrefixOutput() KeyPrefixOutput {
 	return i.ToKeyPrefixOutputWithContext(context.Background())
 }
 
-func (i KeyPrefix) ToKeyPrefixOutputWithContext(ctx context.Context) KeyPrefixOutput {
+func (i *KeyPrefix) ToKeyPrefixOutputWithContext(ctx context.Context) KeyPrefixOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KeyPrefixOutput)
 }
 
@@ -199,7 +199,7 @@ type KeyPrefixOutput struct {
 }
 
 func (KeyPrefixOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*KeyPrefixOutput)(nil)).Elem()
+	return reflect.TypeOf((*KeyPrefix)(nil))
 }
 
 func (o KeyPrefixOutput) ToKeyPrefixOutput() KeyPrefixOutput {

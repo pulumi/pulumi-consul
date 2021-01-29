@@ -74,6 +74,7 @@ namespace Pulumi.Consul
     /// }
     /// ```
     /// </summary>
+    [ConsulResourceType("consul:index/aclAuthMethod:AclAuthMethod")]
     public partial class AclAuthMethod : Pulumi.CustomResource
     {
         /// <summary>

@@ -22,7 +22,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul"
+// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -50,7 +50,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul"
+// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -79,7 +79,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul"
+// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -193,15 +193,15 @@ type CertificateAuthorityInput interface {
 	ToCertificateAuthorityOutputWithContext(ctx context.Context) CertificateAuthorityOutput
 }
 
-func (CertificateAuthority) ElementType() reflect.Type {
-	return reflect.TypeOf((*CertificateAuthority)(nil)).Elem()
+func (*CertificateAuthority) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateAuthority)(nil))
 }
 
-func (i CertificateAuthority) ToCertificateAuthorityOutput() CertificateAuthorityOutput {
+func (i *CertificateAuthority) ToCertificateAuthorityOutput() CertificateAuthorityOutput {
 	return i.ToCertificateAuthorityOutputWithContext(context.Background())
 }
 
-func (i CertificateAuthority) ToCertificateAuthorityOutputWithContext(ctx context.Context) CertificateAuthorityOutput {
+func (i *CertificateAuthority) ToCertificateAuthorityOutputWithContext(ctx context.Context) CertificateAuthorityOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CertificateAuthorityOutput)
 }
 
@@ -210,7 +210,7 @@ type CertificateAuthorityOutput struct {
 }
 
 func (CertificateAuthorityOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CertificateAuthorityOutput)(nil)).Elem()
+	return reflect.TypeOf((*CertificateAuthority)(nil))
 }
 
 func (o CertificateAuthorityOutput) ToCertificateAuthorityOutput() CertificateAuthorityOutput {

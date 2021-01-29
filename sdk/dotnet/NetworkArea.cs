@@ -44,6 +44,7 @@ namespace Pulumi.Consul
     /// }
     /// ```
     /// </summary>
+    [ConsulResourceType("consul:index/networkArea:NetworkArea")]
     public partial class NetworkArea : Pulumi.CustomResource
     {
         /// <summary>
