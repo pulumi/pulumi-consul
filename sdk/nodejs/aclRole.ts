@@ -95,7 +95,8 @@ export class AclRole extends pulumi.CustomResource {
     constructor(name: string, args?: AclRoleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AclRoleArgs | AclRoleState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as AclRoleState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -110,12 +111,8 @@ export class AclRole extends pulumi.CustomResource {
             inputs["policies"] = args ? args.policies : undefined;
             inputs["serviceIdentities"] = args ? args.serviceIdentities : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(AclRole.__pulumiType, name, inputs, opts);
     }

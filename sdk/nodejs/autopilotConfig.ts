@@ -105,7 +105,8 @@ export class AutopilotConfig extends pulumi.CustomResource {
     constructor(name: string, args?: AutopilotConfigArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AutopilotConfigArgs | AutopilotConfigState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as AutopilotConfigState | undefined;
             inputs["cleanupDeadServers"] = state ? state.cleanupDeadServers : undefined;
             inputs["datacenter"] = state ? state.datacenter : undefined;
@@ -126,12 +127,8 @@ export class AutopilotConfig extends pulumi.CustomResource {
             inputs["serverStabilizationTime"] = args ? args.serverStabilizationTime : undefined;
             inputs["upgradeVersionTag"] = args ? args.upgradeVersionTag : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(AutopilotConfig.__pulumiType, name, inputs, opts);
     }

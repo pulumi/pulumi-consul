@@ -121,6 +121,85 @@ func (i *AclTokenPolicyAttachment) ToAclTokenPolicyAttachmentOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(AclTokenPolicyAttachmentOutput)
 }
 
+func (i *AclTokenPolicyAttachment) ToAclTokenPolicyAttachmentPtrOutput() AclTokenPolicyAttachmentPtrOutput {
+	return i.ToAclTokenPolicyAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (i *AclTokenPolicyAttachment) ToAclTokenPolicyAttachmentPtrOutputWithContext(ctx context.Context) AclTokenPolicyAttachmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AclTokenPolicyAttachmentPtrOutput)
+}
+
+type AclTokenPolicyAttachmentPtrInput interface {
+	pulumi.Input
+
+	ToAclTokenPolicyAttachmentPtrOutput() AclTokenPolicyAttachmentPtrOutput
+	ToAclTokenPolicyAttachmentPtrOutputWithContext(ctx context.Context) AclTokenPolicyAttachmentPtrOutput
+}
+
+type aclTokenPolicyAttachmentPtrType AclTokenPolicyAttachmentArgs
+
+func (*aclTokenPolicyAttachmentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AclTokenPolicyAttachment)(nil))
+}
+
+func (i *aclTokenPolicyAttachmentPtrType) ToAclTokenPolicyAttachmentPtrOutput() AclTokenPolicyAttachmentPtrOutput {
+	return i.ToAclTokenPolicyAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (i *aclTokenPolicyAttachmentPtrType) ToAclTokenPolicyAttachmentPtrOutputWithContext(ctx context.Context) AclTokenPolicyAttachmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AclTokenPolicyAttachmentPtrOutput)
+}
+
+// AclTokenPolicyAttachmentArrayInput is an input type that accepts AclTokenPolicyAttachmentArray and AclTokenPolicyAttachmentArrayOutput values.
+// You can construct a concrete instance of `AclTokenPolicyAttachmentArrayInput` via:
+//
+//          AclTokenPolicyAttachmentArray{ AclTokenPolicyAttachmentArgs{...} }
+type AclTokenPolicyAttachmentArrayInput interface {
+	pulumi.Input
+
+	ToAclTokenPolicyAttachmentArrayOutput() AclTokenPolicyAttachmentArrayOutput
+	ToAclTokenPolicyAttachmentArrayOutputWithContext(context.Context) AclTokenPolicyAttachmentArrayOutput
+}
+
+type AclTokenPolicyAttachmentArray []AclTokenPolicyAttachmentInput
+
+func (AclTokenPolicyAttachmentArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*AclTokenPolicyAttachment)(nil))
+}
+
+func (i AclTokenPolicyAttachmentArray) ToAclTokenPolicyAttachmentArrayOutput() AclTokenPolicyAttachmentArrayOutput {
+	return i.ToAclTokenPolicyAttachmentArrayOutputWithContext(context.Background())
+}
+
+func (i AclTokenPolicyAttachmentArray) ToAclTokenPolicyAttachmentArrayOutputWithContext(ctx context.Context) AclTokenPolicyAttachmentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AclTokenPolicyAttachmentArrayOutput)
+}
+
+// AclTokenPolicyAttachmentMapInput is an input type that accepts AclTokenPolicyAttachmentMap and AclTokenPolicyAttachmentMapOutput values.
+// You can construct a concrete instance of `AclTokenPolicyAttachmentMapInput` via:
+//
+//          AclTokenPolicyAttachmentMap{ "key": AclTokenPolicyAttachmentArgs{...} }
+type AclTokenPolicyAttachmentMapInput interface {
+	pulumi.Input
+
+	ToAclTokenPolicyAttachmentMapOutput() AclTokenPolicyAttachmentMapOutput
+	ToAclTokenPolicyAttachmentMapOutputWithContext(context.Context) AclTokenPolicyAttachmentMapOutput
+}
+
+type AclTokenPolicyAttachmentMap map[string]AclTokenPolicyAttachmentInput
+
+func (AclTokenPolicyAttachmentMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*AclTokenPolicyAttachment)(nil))
+}
+
+func (i AclTokenPolicyAttachmentMap) ToAclTokenPolicyAttachmentMapOutput() AclTokenPolicyAttachmentMapOutput {
+	return i.ToAclTokenPolicyAttachmentMapOutputWithContext(context.Background())
+}
+
+func (i AclTokenPolicyAttachmentMap) ToAclTokenPolicyAttachmentMapOutputWithContext(ctx context.Context) AclTokenPolicyAttachmentMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AclTokenPolicyAttachmentMapOutput)
+}
+
 type AclTokenPolicyAttachmentOutput struct {
 	*pulumi.OutputState
 }
@@ -137,6 +216,75 @@ func (o AclTokenPolicyAttachmentOutput) ToAclTokenPolicyAttachmentOutputWithCont
 	return o
 }
 
+func (o AclTokenPolicyAttachmentOutput) ToAclTokenPolicyAttachmentPtrOutput() AclTokenPolicyAttachmentPtrOutput {
+	return o.ToAclTokenPolicyAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (o AclTokenPolicyAttachmentOutput) ToAclTokenPolicyAttachmentPtrOutputWithContext(ctx context.Context) AclTokenPolicyAttachmentPtrOutput {
+	return o.ApplyT(func(v AclTokenPolicyAttachment) *AclTokenPolicyAttachment {
+		return &v
+	}).(AclTokenPolicyAttachmentPtrOutput)
+}
+
+type AclTokenPolicyAttachmentPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AclTokenPolicyAttachmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AclTokenPolicyAttachment)(nil))
+}
+
+func (o AclTokenPolicyAttachmentPtrOutput) ToAclTokenPolicyAttachmentPtrOutput() AclTokenPolicyAttachmentPtrOutput {
+	return o
+}
+
+func (o AclTokenPolicyAttachmentPtrOutput) ToAclTokenPolicyAttachmentPtrOutputWithContext(ctx context.Context) AclTokenPolicyAttachmentPtrOutput {
+	return o
+}
+
+type AclTokenPolicyAttachmentArrayOutput struct{ *pulumi.OutputState }
+
+func (AclTokenPolicyAttachmentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AclTokenPolicyAttachment)(nil))
+}
+
+func (o AclTokenPolicyAttachmentArrayOutput) ToAclTokenPolicyAttachmentArrayOutput() AclTokenPolicyAttachmentArrayOutput {
+	return o
+}
+
+func (o AclTokenPolicyAttachmentArrayOutput) ToAclTokenPolicyAttachmentArrayOutputWithContext(ctx context.Context) AclTokenPolicyAttachmentArrayOutput {
+	return o
+}
+
+func (o AclTokenPolicyAttachmentArrayOutput) Index(i pulumi.IntInput) AclTokenPolicyAttachmentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AclTokenPolicyAttachment {
+		return vs[0].([]AclTokenPolicyAttachment)[vs[1].(int)]
+	}).(AclTokenPolicyAttachmentOutput)
+}
+
+type AclTokenPolicyAttachmentMapOutput struct{ *pulumi.OutputState }
+
+func (AclTokenPolicyAttachmentMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AclTokenPolicyAttachment)(nil))
+}
+
+func (o AclTokenPolicyAttachmentMapOutput) ToAclTokenPolicyAttachmentMapOutput() AclTokenPolicyAttachmentMapOutput {
+	return o
+}
+
+func (o AclTokenPolicyAttachmentMapOutput) ToAclTokenPolicyAttachmentMapOutputWithContext(ctx context.Context) AclTokenPolicyAttachmentMapOutput {
+	return o
+}
+
+func (o AclTokenPolicyAttachmentMapOutput) MapIndex(k pulumi.StringInput) AclTokenPolicyAttachmentOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AclTokenPolicyAttachment {
+		return vs[0].(map[string]AclTokenPolicyAttachment)[vs[1].(string)]
+	}).(AclTokenPolicyAttachmentOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AclTokenPolicyAttachmentOutput{})
+	pulumi.RegisterOutputType(AclTokenPolicyAttachmentPtrOutput{})
+	pulumi.RegisterOutputType(AclTokenPolicyAttachmentArrayOutput{})
+	pulumi.RegisterOutputType(AclTokenPolicyAttachmentMapOutput{})
 }

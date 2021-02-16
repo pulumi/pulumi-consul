@@ -35,28 +35,25 @@ export class Provider extends pulumi.ProviderResource {
      */
     constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
         let inputs: pulumi.Inputs = {};
+        opts = opts || {};
         {
-            inputs["address"] = (args ? args.address : undefined) || (utilities.getEnv("CONSUL_ADDRESS", "CONSUL_HTTP_ADDR") || "localhost:8500");
-            inputs["caFile"] = (args ? args.caFile : undefined) || utilities.getEnv("CONSUL_CA_FILE");
-            inputs["caPath"] = (args ? args.caPath : undefined) || utilities.getEnv("CONSUL_CAPATH");
+            inputs["address"] = args ? args.address : undefined;
+            inputs["caFile"] = args ? args.caFile : undefined;
+            inputs["caPath"] = args ? args.caPath : undefined;
             inputs["caPem"] = args ? args.caPem : undefined;
-            inputs["certFile"] = (args ? args.certFile : undefined) || utilities.getEnv("CONSUL_CERT_FILE");
+            inputs["certFile"] = args ? args.certFile : undefined;
             inputs["certPem"] = args ? args.certPem : undefined;
             inputs["datacenter"] = args ? args.datacenter : undefined;
-            inputs["httpAuth"] = (args ? args.httpAuth : undefined) || utilities.getEnv("CONSUL_HTTP_AUTH");
+            inputs["httpAuth"] = args ? args.httpAuth : undefined;
             inputs["insecureHttps"] = pulumi.output(args ? args.insecureHttps : undefined).apply(JSON.stringify);
-            inputs["keyFile"] = (args ? args.keyFile : undefined) || utilities.getEnv("CONSUL_KEY_FILE");
+            inputs["keyFile"] = args ? args.keyFile : undefined;
             inputs["keyPem"] = args ? args.keyPem : undefined;
             inputs["namespace"] = args ? args.namespace : undefined;
-            inputs["scheme"] = (args ? args.scheme : undefined) || (utilities.getEnv("CONSUL_SCHEME", "CONSUL_HTTP_SCHEME") || "http");
-            inputs["token"] = (args ? args.token : undefined) || utilities.getEnv("CONSUL_TOKEN", "CONSUL_HTTP_TOKEN");
+            inputs["scheme"] = args ? args.scheme : undefined;
+            inputs["token"] = args ? args.token : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Provider.__pulumiType, name, inputs, opts);
     }

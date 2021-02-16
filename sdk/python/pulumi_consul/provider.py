@@ -58,35 +58,19 @@ class Provider(pulumi.ProviderResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if address is None:
-                address = (_utilities.get_env('CONSUL_ADDRESS', 'CONSUL_HTTP_ADDR') or 'localhost:8500')
             __props__['address'] = address
-            if ca_file is None:
-                ca_file = _utilities.get_env('CONSUL_CA_FILE')
             __props__['ca_file'] = ca_file
-            if ca_path is None:
-                ca_path = _utilities.get_env('CONSUL_CAPATH')
             __props__['ca_path'] = ca_path
             __props__['ca_pem'] = ca_pem
-            if cert_file is None:
-                cert_file = _utilities.get_env('CONSUL_CERT_FILE')
             __props__['cert_file'] = cert_file
             __props__['cert_pem'] = cert_pem
             __props__['datacenter'] = datacenter
-            if http_auth is None:
-                http_auth = _utilities.get_env('CONSUL_HTTP_AUTH')
             __props__['http_auth'] = http_auth
             __props__['insecure_https'] = pulumi.Output.from_input(insecure_https).apply(pulumi.runtime.to_json) if insecure_https is not None else None
-            if key_file is None:
-                key_file = _utilities.get_env('CONSUL_KEY_FILE')
             __props__['key_file'] = key_file
             __props__['key_pem'] = key_pem
             __props__['namespace'] = namespace
-            if scheme is None:
-                scheme = (_utilities.get_env('CONSUL_SCHEME', 'CONSUL_HTTP_SCHEME') or 'http')
             __props__['scheme'] = scheme
-            if token is None:
-                token = _utilities.get_env('CONSUL_TOKEN', 'CONSUL_HTTP_TOKEN')
             __props__['token'] = token
         super(Provider, __self__).__init__(
             'consul',

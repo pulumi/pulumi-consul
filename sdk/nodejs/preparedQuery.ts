@@ -145,7 +145,8 @@ export class PreparedQuery extends pulumi.CustomResource {
     constructor(name: string, args: PreparedQueryArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: PreparedQueryArgs | PreparedQueryState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as PreparedQueryState | undefined;
             inputs["connect"] = state ? state.connect : undefined;
             inputs["datacenter"] = state ? state.datacenter : undefined;
@@ -165,7 +166,7 @@ export class PreparedQuery extends pulumi.CustomResource {
             inputs["token"] = state ? state.token : undefined;
         } else {
             const args = argsOrState as PreparedQueryArgs | undefined;
-            if ((!args || args.service === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.service === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'service'");
             }
             inputs["connect"] = args ? args.connect : undefined;
@@ -185,12 +186,8 @@ export class PreparedQuery extends pulumi.CustomResource {
             inputs["template"] = args ? args.template : undefined;
             inputs["token"] = args ? args.token : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(PreparedQuery.__pulumiType, name, inputs, opts);
     }

@@ -98,7 +98,8 @@ export class CatalogEntry extends pulumi.CustomResource {
     constructor(name: string, args: CatalogEntryArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CatalogEntryArgs | CatalogEntryState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as CatalogEntryState | undefined;
             inputs["address"] = state ? state.address : undefined;
             inputs["datacenter"] = state ? state.datacenter : undefined;
@@ -107,10 +108,10 @@ export class CatalogEntry extends pulumi.CustomResource {
             inputs["token"] = state ? state.token : undefined;
         } else {
             const args = argsOrState as CatalogEntryArgs | undefined;
-            if ((!args || args.address === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.address === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'address'");
             }
-            if ((!args || args.node === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.node === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'node'");
             }
             inputs["address"] = args ? args.address : undefined;
@@ -119,12 +120,8 @@ export class CatalogEntry extends pulumi.CustomResource {
             inputs["services"] = args ? args.services : undefined;
             inputs["token"] = args ? args.token : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(CatalogEntry.__pulumiType, name, inputs, opts);
     }

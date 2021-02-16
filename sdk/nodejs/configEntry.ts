@@ -235,26 +235,23 @@ export class ConfigEntry extends pulumi.CustomResource {
     constructor(name: string, args: ConfigEntryArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ConfigEntryArgs | ConfigEntryState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ConfigEntryState | undefined;
             inputs["configJson"] = state ? state.configJson : undefined;
             inputs["kind"] = state ? state.kind : undefined;
             inputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as ConfigEntryArgs | undefined;
-            if ((!args || args.kind === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.kind === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'kind'");
             }
             inputs["configJson"] = args ? args.configJson : undefined;
             inputs["kind"] = args ? args.kind : undefined;
             inputs["name"] = args ? args.name : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ConfigEntry.__pulumiType, name, inputs, opts);
     }

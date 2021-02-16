@@ -85,7 +85,8 @@ export class KeyPrefix extends pulumi.CustomResource {
     constructor(name: string, args: KeyPrefixArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: KeyPrefixArgs | KeyPrefixState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as KeyPrefixState | undefined;
             inputs["datacenter"] = state ? state.datacenter : undefined;
             inputs["namespace"] = state ? state.namespace : undefined;
@@ -95,7 +96,7 @@ export class KeyPrefix extends pulumi.CustomResource {
             inputs["token"] = state ? state.token : undefined;
         } else {
             const args = argsOrState as KeyPrefixArgs | undefined;
-            if ((!args || args.pathPrefix === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.pathPrefix === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'pathPrefix'");
             }
             inputs["datacenter"] = args ? args.datacenter : undefined;
@@ -105,12 +106,8 @@ export class KeyPrefix extends pulumi.CustomResource {
             inputs["subkeys"] = args ? args.subkeys : undefined;
             inputs["token"] = args ? args.token : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(KeyPrefix.__pulumiType, name, inputs, opts);
     }

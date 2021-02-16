@@ -24,7 +24,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul/"
+// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -168,6 +168,85 @@ func (i *AgentService) ToAgentServiceOutputWithContext(ctx context.Context) Agen
 	return pulumi.ToOutputWithContext(ctx, i).(AgentServiceOutput)
 }
 
+func (i *AgentService) ToAgentServicePtrOutput() AgentServicePtrOutput {
+	return i.ToAgentServicePtrOutputWithContext(context.Background())
+}
+
+func (i *AgentService) ToAgentServicePtrOutputWithContext(ctx context.Context) AgentServicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentServicePtrOutput)
+}
+
+type AgentServicePtrInput interface {
+	pulumi.Input
+
+	ToAgentServicePtrOutput() AgentServicePtrOutput
+	ToAgentServicePtrOutputWithContext(ctx context.Context) AgentServicePtrOutput
+}
+
+type agentServicePtrType AgentServiceArgs
+
+func (*agentServicePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AgentService)(nil))
+}
+
+func (i *agentServicePtrType) ToAgentServicePtrOutput() AgentServicePtrOutput {
+	return i.ToAgentServicePtrOutputWithContext(context.Background())
+}
+
+func (i *agentServicePtrType) ToAgentServicePtrOutputWithContext(ctx context.Context) AgentServicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentServicePtrOutput)
+}
+
+// AgentServiceArrayInput is an input type that accepts AgentServiceArray and AgentServiceArrayOutput values.
+// You can construct a concrete instance of `AgentServiceArrayInput` via:
+//
+//          AgentServiceArray{ AgentServiceArgs{...} }
+type AgentServiceArrayInput interface {
+	pulumi.Input
+
+	ToAgentServiceArrayOutput() AgentServiceArrayOutput
+	ToAgentServiceArrayOutputWithContext(context.Context) AgentServiceArrayOutput
+}
+
+type AgentServiceArray []AgentServiceInput
+
+func (AgentServiceArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*AgentService)(nil))
+}
+
+func (i AgentServiceArray) ToAgentServiceArrayOutput() AgentServiceArrayOutput {
+	return i.ToAgentServiceArrayOutputWithContext(context.Background())
+}
+
+func (i AgentServiceArray) ToAgentServiceArrayOutputWithContext(ctx context.Context) AgentServiceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentServiceArrayOutput)
+}
+
+// AgentServiceMapInput is an input type that accepts AgentServiceMap and AgentServiceMapOutput values.
+// You can construct a concrete instance of `AgentServiceMapInput` via:
+//
+//          AgentServiceMap{ "key": AgentServiceArgs{...} }
+type AgentServiceMapInput interface {
+	pulumi.Input
+
+	ToAgentServiceMapOutput() AgentServiceMapOutput
+	ToAgentServiceMapOutputWithContext(context.Context) AgentServiceMapOutput
+}
+
+type AgentServiceMap map[string]AgentServiceInput
+
+func (AgentServiceMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*AgentService)(nil))
+}
+
+func (i AgentServiceMap) ToAgentServiceMapOutput() AgentServiceMapOutput {
+	return i.ToAgentServiceMapOutputWithContext(context.Background())
+}
+
+func (i AgentServiceMap) ToAgentServiceMapOutputWithContext(ctx context.Context) AgentServiceMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentServiceMapOutput)
+}
+
 type AgentServiceOutput struct {
 	*pulumi.OutputState
 }
@@ -184,6 +263,75 @@ func (o AgentServiceOutput) ToAgentServiceOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o AgentServiceOutput) ToAgentServicePtrOutput() AgentServicePtrOutput {
+	return o.ToAgentServicePtrOutputWithContext(context.Background())
+}
+
+func (o AgentServiceOutput) ToAgentServicePtrOutputWithContext(ctx context.Context) AgentServicePtrOutput {
+	return o.ApplyT(func(v AgentService) *AgentService {
+		return &v
+	}).(AgentServicePtrOutput)
+}
+
+type AgentServicePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AgentServicePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AgentService)(nil))
+}
+
+func (o AgentServicePtrOutput) ToAgentServicePtrOutput() AgentServicePtrOutput {
+	return o
+}
+
+func (o AgentServicePtrOutput) ToAgentServicePtrOutputWithContext(ctx context.Context) AgentServicePtrOutput {
+	return o
+}
+
+type AgentServiceArrayOutput struct{ *pulumi.OutputState }
+
+func (AgentServiceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AgentService)(nil))
+}
+
+func (o AgentServiceArrayOutput) ToAgentServiceArrayOutput() AgentServiceArrayOutput {
+	return o
+}
+
+func (o AgentServiceArrayOutput) ToAgentServiceArrayOutputWithContext(ctx context.Context) AgentServiceArrayOutput {
+	return o
+}
+
+func (o AgentServiceArrayOutput) Index(i pulumi.IntInput) AgentServiceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AgentService {
+		return vs[0].([]AgentService)[vs[1].(int)]
+	}).(AgentServiceOutput)
+}
+
+type AgentServiceMapOutput struct{ *pulumi.OutputState }
+
+func (AgentServiceMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AgentService)(nil))
+}
+
+func (o AgentServiceMapOutput) ToAgentServiceMapOutput() AgentServiceMapOutput {
+	return o
+}
+
+func (o AgentServiceMapOutput) ToAgentServiceMapOutputWithContext(ctx context.Context) AgentServiceMapOutput {
+	return o
+}
+
+func (o AgentServiceMapOutput) MapIndex(k pulumi.StringInput) AgentServiceOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AgentService {
+		return vs[0].(map[string]AgentService)[vs[1].(string)]
+	}).(AgentServiceOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AgentServiceOutput{})
+	pulumi.RegisterOutputType(AgentServicePtrOutput{})
+	pulumi.RegisterOutputType(AgentServiceArrayOutput{})
+	pulumi.RegisterOutputType(AgentServiceMapOutput{})
 }

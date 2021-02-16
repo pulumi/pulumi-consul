@@ -394,6 +394,85 @@ func (i *PreparedQuery) ToPreparedQueryOutputWithContext(ctx context.Context) Pr
 	return pulumi.ToOutputWithContext(ctx, i).(PreparedQueryOutput)
 }
 
+func (i *PreparedQuery) ToPreparedQueryPtrOutput() PreparedQueryPtrOutput {
+	return i.ToPreparedQueryPtrOutputWithContext(context.Background())
+}
+
+func (i *PreparedQuery) ToPreparedQueryPtrOutputWithContext(ctx context.Context) PreparedQueryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreparedQueryPtrOutput)
+}
+
+type PreparedQueryPtrInput interface {
+	pulumi.Input
+
+	ToPreparedQueryPtrOutput() PreparedQueryPtrOutput
+	ToPreparedQueryPtrOutputWithContext(ctx context.Context) PreparedQueryPtrOutput
+}
+
+type preparedQueryPtrType PreparedQueryArgs
+
+func (*preparedQueryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreparedQuery)(nil))
+}
+
+func (i *preparedQueryPtrType) ToPreparedQueryPtrOutput() PreparedQueryPtrOutput {
+	return i.ToPreparedQueryPtrOutputWithContext(context.Background())
+}
+
+func (i *preparedQueryPtrType) ToPreparedQueryPtrOutputWithContext(ctx context.Context) PreparedQueryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreparedQueryPtrOutput)
+}
+
+// PreparedQueryArrayInput is an input type that accepts PreparedQueryArray and PreparedQueryArrayOutput values.
+// You can construct a concrete instance of `PreparedQueryArrayInput` via:
+//
+//          PreparedQueryArray{ PreparedQueryArgs{...} }
+type PreparedQueryArrayInput interface {
+	pulumi.Input
+
+	ToPreparedQueryArrayOutput() PreparedQueryArrayOutput
+	ToPreparedQueryArrayOutputWithContext(context.Context) PreparedQueryArrayOutput
+}
+
+type PreparedQueryArray []PreparedQueryInput
+
+func (PreparedQueryArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*PreparedQuery)(nil))
+}
+
+func (i PreparedQueryArray) ToPreparedQueryArrayOutput() PreparedQueryArrayOutput {
+	return i.ToPreparedQueryArrayOutputWithContext(context.Background())
+}
+
+func (i PreparedQueryArray) ToPreparedQueryArrayOutputWithContext(ctx context.Context) PreparedQueryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreparedQueryArrayOutput)
+}
+
+// PreparedQueryMapInput is an input type that accepts PreparedQueryMap and PreparedQueryMapOutput values.
+// You can construct a concrete instance of `PreparedQueryMapInput` via:
+//
+//          PreparedQueryMap{ "key": PreparedQueryArgs{...} }
+type PreparedQueryMapInput interface {
+	pulumi.Input
+
+	ToPreparedQueryMapOutput() PreparedQueryMapOutput
+	ToPreparedQueryMapOutputWithContext(context.Context) PreparedQueryMapOutput
+}
+
+type PreparedQueryMap map[string]PreparedQueryInput
+
+func (PreparedQueryMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*PreparedQuery)(nil))
+}
+
+func (i PreparedQueryMap) ToPreparedQueryMapOutput() PreparedQueryMapOutput {
+	return i.ToPreparedQueryMapOutputWithContext(context.Background())
+}
+
+func (i PreparedQueryMap) ToPreparedQueryMapOutputWithContext(ctx context.Context) PreparedQueryMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreparedQueryMapOutput)
+}
+
 type PreparedQueryOutput struct {
 	*pulumi.OutputState
 }
@@ -410,6 +489,75 @@ func (o PreparedQueryOutput) ToPreparedQueryOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o PreparedQueryOutput) ToPreparedQueryPtrOutput() PreparedQueryPtrOutput {
+	return o.ToPreparedQueryPtrOutputWithContext(context.Background())
+}
+
+func (o PreparedQueryOutput) ToPreparedQueryPtrOutputWithContext(ctx context.Context) PreparedQueryPtrOutput {
+	return o.ApplyT(func(v PreparedQuery) *PreparedQuery {
+		return &v
+	}).(PreparedQueryPtrOutput)
+}
+
+type PreparedQueryPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (PreparedQueryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreparedQuery)(nil))
+}
+
+func (o PreparedQueryPtrOutput) ToPreparedQueryPtrOutput() PreparedQueryPtrOutput {
+	return o
+}
+
+func (o PreparedQueryPtrOutput) ToPreparedQueryPtrOutputWithContext(ctx context.Context) PreparedQueryPtrOutput {
+	return o
+}
+
+type PreparedQueryArrayOutput struct{ *pulumi.OutputState }
+
+func (PreparedQueryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PreparedQuery)(nil))
+}
+
+func (o PreparedQueryArrayOutput) ToPreparedQueryArrayOutput() PreparedQueryArrayOutput {
+	return o
+}
+
+func (o PreparedQueryArrayOutput) ToPreparedQueryArrayOutputWithContext(ctx context.Context) PreparedQueryArrayOutput {
+	return o
+}
+
+func (o PreparedQueryArrayOutput) Index(i pulumi.IntInput) PreparedQueryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PreparedQuery {
+		return vs[0].([]PreparedQuery)[vs[1].(int)]
+	}).(PreparedQueryOutput)
+}
+
+type PreparedQueryMapOutput struct{ *pulumi.OutputState }
+
+func (PreparedQueryMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]PreparedQuery)(nil))
+}
+
+func (o PreparedQueryMapOutput) ToPreparedQueryMapOutput() PreparedQueryMapOutput {
+	return o
+}
+
+func (o PreparedQueryMapOutput) ToPreparedQueryMapOutputWithContext(ctx context.Context) PreparedQueryMapOutput {
+	return o
+}
+
+func (o PreparedQueryMapOutput) MapIndex(k pulumi.StringInput) PreparedQueryOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) PreparedQuery {
+		return vs[0].(map[string]PreparedQuery)[vs[1].(string)]
+	}).(PreparedQueryOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(PreparedQueryOutput{})
+	pulumi.RegisterOutputType(PreparedQueryPtrOutput{})
+	pulumi.RegisterOutputType(PreparedQueryArrayOutput{})
+	pulumi.RegisterOutputType(PreparedQueryMapOutput{})
 }

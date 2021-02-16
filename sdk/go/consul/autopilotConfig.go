@@ -22,7 +22,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul/"
+// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -243,6 +243,85 @@ func (i *AutopilotConfig) ToAutopilotConfigOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(AutopilotConfigOutput)
 }
 
+func (i *AutopilotConfig) ToAutopilotConfigPtrOutput() AutopilotConfigPtrOutput {
+	return i.ToAutopilotConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *AutopilotConfig) ToAutopilotConfigPtrOutputWithContext(ctx context.Context) AutopilotConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutopilotConfigPtrOutput)
+}
+
+type AutopilotConfigPtrInput interface {
+	pulumi.Input
+
+	ToAutopilotConfigPtrOutput() AutopilotConfigPtrOutput
+	ToAutopilotConfigPtrOutputWithContext(ctx context.Context) AutopilotConfigPtrOutput
+}
+
+type autopilotConfigPtrType AutopilotConfigArgs
+
+func (*autopilotConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutopilotConfig)(nil))
+}
+
+func (i *autopilotConfigPtrType) ToAutopilotConfigPtrOutput() AutopilotConfigPtrOutput {
+	return i.ToAutopilotConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *autopilotConfigPtrType) ToAutopilotConfigPtrOutputWithContext(ctx context.Context) AutopilotConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutopilotConfigPtrOutput)
+}
+
+// AutopilotConfigArrayInput is an input type that accepts AutopilotConfigArray and AutopilotConfigArrayOutput values.
+// You can construct a concrete instance of `AutopilotConfigArrayInput` via:
+//
+//          AutopilotConfigArray{ AutopilotConfigArgs{...} }
+type AutopilotConfigArrayInput interface {
+	pulumi.Input
+
+	ToAutopilotConfigArrayOutput() AutopilotConfigArrayOutput
+	ToAutopilotConfigArrayOutputWithContext(context.Context) AutopilotConfigArrayOutput
+}
+
+type AutopilotConfigArray []AutopilotConfigInput
+
+func (AutopilotConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*AutopilotConfig)(nil))
+}
+
+func (i AutopilotConfigArray) ToAutopilotConfigArrayOutput() AutopilotConfigArrayOutput {
+	return i.ToAutopilotConfigArrayOutputWithContext(context.Background())
+}
+
+func (i AutopilotConfigArray) ToAutopilotConfigArrayOutputWithContext(ctx context.Context) AutopilotConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutopilotConfigArrayOutput)
+}
+
+// AutopilotConfigMapInput is an input type that accepts AutopilotConfigMap and AutopilotConfigMapOutput values.
+// You can construct a concrete instance of `AutopilotConfigMapInput` via:
+//
+//          AutopilotConfigMap{ "key": AutopilotConfigArgs{...} }
+type AutopilotConfigMapInput interface {
+	pulumi.Input
+
+	ToAutopilotConfigMapOutput() AutopilotConfigMapOutput
+	ToAutopilotConfigMapOutputWithContext(context.Context) AutopilotConfigMapOutput
+}
+
+type AutopilotConfigMap map[string]AutopilotConfigInput
+
+func (AutopilotConfigMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*AutopilotConfig)(nil))
+}
+
+func (i AutopilotConfigMap) ToAutopilotConfigMapOutput() AutopilotConfigMapOutput {
+	return i.ToAutopilotConfigMapOutputWithContext(context.Background())
+}
+
+func (i AutopilotConfigMap) ToAutopilotConfigMapOutputWithContext(ctx context.Context) AutopilotConfigMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutopilotConfigMapOutput)
+}
+
 type AutopilotConfigOutput struct {
 	*pulumi.OutputState
 }
@@ -259,6 +338,75 @@ func (o AutopilotConfigOutput) ToAutopilotConfigOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o AutopilotConfigOutput) ToAutopilotConfigPtrOutput() AutopilotConfigPtrOutput {
+	return o.ToAutopilotConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AutopilotConfigOutput) ToAutopilotConfigPtrOutputWithContext(ctx context.Context) AutopilotConfigPtrOutput {
+	return o.ApplyT(func(v AutopilotConfig) *AutopilotConfig {
+		return &v
+	}).(AutopilotConfigPtrOutput)
+}
+
+type AutopilotConfigPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AutopilotConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutopilotConfig)(nil))
+}
+
+func (o AutopilotConfigPtrOutput) ToAutopilotConfigPtrOutput() AutopilotConfigPtrOutput {
+	return o
+}
+
+func (o AutopilotConfigPtrOutput) ToAutopilotConfigPtrOutputWithContext(ctx context.Context) AutopilotConfigPtrOutput {
+	return o
+}
+
+type AutopilotConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (AutopilotConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AutopilotConfig)(nil))
+}
+
+func (o AutopilotConfigArrayOutput) ToAutopilotConfigArrayOutput() AutopilotConfigArrayOutput {
+	return o
+}
+
+func (o AutopilotConfigArrayOutput) ToAutopilotConfigArrayOutputWithContext(ctx context.Context) AutopilotConfigArrayOutput {
+	return o
+}
+
+func (o AutopilotConfigArrayOutput) Index(i pulumi.IntInput) AutopilotConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AutopilotConfig {
+		return vs[0].([]AutopilotConfig)[vs[1].(int)]
+	}).(AutopilotConfigOutput)
+}
+
+type AutopilotConfigMapOutput struct{ *pulumi.OutputState }
+
+func (AutopilotConfigMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AutopilotConfig)(nil))
+}
+
+func (o AutopilotConfigMapOutput) ToAutopilotConfigMapOutput() AutopilotConfigMapOutput {
+	return o
+}
+
+func (o AutopilotConfigMapOutput) ToAutopilotConfigMapOutputWithContext(ctx context.Context) AutopilotConfigMapOutput {
+	return o
+}
+
+func (o AutopilotConfigMapOutput) MapIndex(k pulumi.StringInput) AutopilotConfigOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AutopilotConfig {
+		return vs[0].(map[string]AutopilotConfig)[vs[1].(string)]
+	}).(AutopilotConfigOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AutopilotConfigOutput{})
+	pulumi.RegisterOutputType(AutopilotConfigPtrOutput{})
+	pulumi.RegisterOutputType(AutopilotConfigArrayOutput{})
+	pulumi.RegisterOutputType(AutopilotConfigMapOutput{})
 }

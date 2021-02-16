@@ -86,7 +86,8 @@ export class AgentService extends pulumi.CustomResource {
     constructor(name: string, args?: AgentServiceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AgentServiceArgs | AgentServiceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as AgentServiceState | undefined;
             inputs["address"] = state ? state.address : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -99,12 +100,8 @@ export class AgentService extends pulumi.CustomResource {
             inputs["port"] = args ? args.port : undefined;
             inputs["tags"] = args ? args.tags : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(AgentService.__pulumiType, name, inputs, opts);
     }
