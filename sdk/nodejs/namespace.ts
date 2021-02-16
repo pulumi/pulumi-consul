@@ -85,7 +85,8 @@ export class Namespace extends pulumi.CustomResource {
     constructor(name: string, args?: NamespaceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NamespaceArgs | NamespaceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as NamespaceState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["meta"] = state ? state.meta : undefined;
@@ -100,12 +101,8 @@ export class Namespace extends pulumi.CustomResource {
             inputs["policyDefaults"] = args ? args.policyDefaults : undefined;
             inputs["roleDefaults"] = args ? args.roleDefaults : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Namespace.__pulumiType, name, inputs, opts);
     }

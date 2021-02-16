@@ -64,67 +64,15 @@ func preConfigureCallback(vars resource.PropertyMap, c shim.ResourceConfig) erro
 func Provider() tfbridge.ProviderInfo {
 	p := shimv1.NewProvider(consul.Provider().(*schema.Provider))
 	prov := tfbridge.ProviderInfo{
-		P:           p,
-		Name:        "consul",
-		Description: "A Pulumi package for creating and managing consul resources.",
-		Keywords:    []string{"pulumi", "consul"},
-		License:     "Apache-2.0",
-		Homepage:    "https://pulumi.io",
-		Repository:  "https://github.com/pulumi/pulumi-consul",
-		GitHubOrg:   "hashicorp",
-		Config: map[string]*tfbridge.SchemaInfo{
-			"address": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{
-						"CONSUL_ADDRESS",
-						"CONSUL_HTTP_ADDR",
-					},
-					Value: "localhost:8500",
-				},
-			},
-			"scheme": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{
-						"CONSUL_SCHEME",
-						"CONSUL_HTTP_SCHEME",
-					},
-					Value: "http",
-				},
-			},
-			"http_auth": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"CONSUL_HTTP_AUTH"},
-				},
-			},
-			"ca_file": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"CONSUL_CA_FILE"},
-				},
-			},
-			"cert_file": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"CONSUL_CERT_FILE"},
-				},
-			},
-			"key_file": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"CONSUL_KEY_FILE"},
-				},
-			},
-			"ca_path": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"CONSUL_CAPATH"},
-				},
-			},
-			"token": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{
-						"CONSUL_TOKEN",
-						"CONSUL_HTTP_TOKEN",
-					},
-				},
-			},
-		},
+		P:                    p,
+		Name:                 "consul",
+		Description:          "A Pulumi package for creating and managing consul resources.",
+		Keywords:             []string{"pulumi", "consul"},
+		License:              "Apache-2.0",
+		Homepage:             "https://pulumi.io",
+		Repository:           "https://github.com/pulumi/pulumi-consul",
+		GitHubOrg:            "hashicorp",
+		Config:               map[string]*tfbridge.SchemaInfo{},
 		PreConfigureCallback: preConfigureCallback,
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"consul_acl_auth_method": {

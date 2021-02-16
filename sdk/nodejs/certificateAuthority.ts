@@ -112,27 +112,24 @@ export class CertificateAuthority extends pulumi.CustomResource {
     constructor(name: string, args: CertificateAuthorityArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CertificateAuthorityArgs | CertificateAuthorityState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as CertificateAuthorityState | undefined;
             inputs["config"] = state ? state.config : undefined;
             inputs["connectProvider"] = state ? state.connectProvider : undefined;
         } else {
             const args = argsOrState as CertificateAuthorityArgs | undefined;
-            if ((!args || args.config === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.config === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'config'");
             }
-            if ((!args || args.connectProvider === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.connectProvider === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'connectProvider'");
             }
             inputs["config"] = args ? args.config : undefined;
             inputs["connectProvider"] = args ? args.connectProvider : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(CertificateAuthority.__pulumiType, name, inputs, opts);
     }

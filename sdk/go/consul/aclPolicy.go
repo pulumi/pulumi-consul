@@ -21,7 +21,7 @@ import (
 // import (
 // 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul/"
+// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -174,6 +174,85 @@ func (i *AclPolicy) ToAclPolicyOutputWithContext(ctx context.Context) AclPolicyO
 	return pulumi.ToOutputWithContext(ctx, i).(AclPolicyOutput)
 }
 
+func (i *AclPolicy) ToAclPolicyPtrOutput() AclPolicyPtrOutput {
+	return i.ToAclPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *AclPolicy) ToAclPolicyPtrOutputWithContext(ctx context.Context) AclPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AclPolicyPtrOutput)
+}
+
+type AclPolicyPtrInput interface {
+	pulumi.Input
+
+	ToAclPolicyPtrOutput() AclPolicyPtrOutput
+	ToAclPolicyPtrOutputWithContext(ctx context.Context) AclPolicyPtrOutput
+}
+
+type aclPolicyPtrType AclPolicyArgs
+
+func (*aclPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AclPolicy)(nil))
+}
+
+func (i *aclPolicyPtrType) ToAclPolicyPtrOutput() AclPolicyPtrOutput {
+	return i.ToAclPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *aclPolicyPtrType) ToAclPolicyPtrOutputWithContext(ctx context.Context) AclPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AclPolicyPtrOutput)
+}
+
+// AclPolicyArrayInput is an input type that accepts AclPolicyArray and AclPolicyArrayOutput values.
+// You can construct a concrete instance of `AclPolicyArrayInput` via:
+//
+//          AclPolicyArray{ AclPolicyArgs{...} }
+type AclPolicyArrayInput interface {
+	pulumi.Input
+
+	ToAclPolicyArrayOutput() AclPolicyArrayOutput
+	ToAclPolicyArrayOutputWithContext(context.Context) AclPolicyArrayOutput
+}
+
+type AclPolicyArray []AclPolicyInput
+
+func (AclPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*AclPolicy)(nil))
+}
+
+func (i AclPolicyArray) ToAclPolicyArrayOutput() AclPolicyArrayOutput {
+	return i.ToAclPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i AclPolicyArray) ToAclPolicyArrayOutputWithContext(ctx context.Context) AclPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AclPolicyArrayOutput)
+}
+
+// AclPolicyMapInput is an input type that accepts AclPolicyMap and AclPolicyMapOutput values.
+// You can construct a concrete instance of `AclPolicyMapInput` via:
+//
+//          AclPolicyMap{ "key": AclPolicyArgs{...} }
+type AclPolicyMapInput interface {
+	pulumi.Input
+
+	ToAclPolicyMapOutput() AclPolicyMapOutput
+	ToAclPolicyMapOutputWithContext(context.Context) AclPolicyMapOutput
+}
+
+type AclPolicyMap map[string]AclPolicyInput
+
+func (AclPolicyMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*AclPolicy)(nil))
+}
+
+func (i AclPolicyMap) ToAclPolicyMapOutput() AclPolicyMapOutput {
+	return i.ToAclPolicyMapOutputWithContext(context.Background())
+}
+
+func (i AclPolicyMap) ToAclPolicyMapOutputWithContext(ctx context.Context) AclPolicyMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AclPolicyMapOutput)
+}
+
 type AclPolicyOutput struct {
 	*pulumi.OutputState
 }
@@ -190,6 +269,75 @@ func (o AclPolicyOutput) ToAclPolicyOutputWithContext(ctx context.Context) AclPo
 	return o
 }
 
+func (o AclPolicyOutput) ToAclPolicyPtrOutput() AclPolicyPtrOutput {
+	return o.ToAclPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o AclPolicyOutput) ToAclPolicyPtrOutputWithContext(ctx context.Context) AclPolicyPtrOutput {
+	return o.ApplyT(func(v AclPolicy) *AclPolicy {
+		return &v
+	}).(AclPolicyPtrOutput)
+}
+
+type AclPolicyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AclPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AclPolicy)(nil))
+}
+
+func (o AclPolicyPtrOutput) ToAclPolicyPtrOutput() AclPolicyPtrOutput {
+	return o
+}
+
+func (o AclPolicyPtrOutput) ToAclPolicyPtrOutputWithContext(ctx context.Context) AclPolicyPtrOutput {
+	return o
+}
+
+type AclPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (AclPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AclPolicy)(nil))
+}
+
+func (o AclPolicyArrayOutput) ToAclPolicyArrayOutput() AclPolicyArrayOutput {
+	return o
+}
+
+func (o AclPolicyArrayOutput) ToAclPolicyArrayOutputWithContext(ctx context.Context) AclPolicyArrayOutput {
+	return o
+}
+
+func (o AclPolicyArrayOutput) Index(i pulumi.IntInput) AclPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AclPolicy {
+		return vs[0].([]AclPolicy)[vs[1].(int)]
+	}).(AclPolicyOutput)
+}
+
+type AclPolicyMapOutput struct{ *pulumi.OutputState }
+
+func (AclPolicyMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AclPolicy)(nil))
+}
+
+func (o AclPolicyMapOutput) ToAclPolicyMapOutput() AclPolicyMapOutput {
+	return o
+}
+
+func (o AclPolicyMapOutput) ToAclPolicyMapOutputWithContext(ctx context.Context) AclPolicyMapOutput {
+	return o
+}
+
+func (o AclPolicyMapOutput) MapIndex(k pulumi.StringInput) AclPolicyOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AclPolicy {
+		return vs[0].(map[string]AclPolicy)[vs[1].(string)]
+	}).(AclPolicyOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AclPolicyOutput{})
+	pulumi.RegisterOutputType(AclPolicyPtrOutput{})
+	pulumi.RegisterOutputType(AclPolicyArrayOutput{})
+	pulumi.RegisterOutputType(AclPolicyMapOutput{})
 }

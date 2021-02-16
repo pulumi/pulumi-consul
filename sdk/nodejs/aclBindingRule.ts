@@ -101,7 +101,8 @@ export class AclBindingRule extends pulumi.CustomResource {
     constructor(name: string, args: AclBindingRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AclBindingRuleArgs | AclBindingRuleState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as AclBindingRuleState | undefined;
             inputs["authMethod"] = state ? state.authMethod : undefined;
             inputs["bindName"] = state ? state.bindName : undefined;
@@ -111,13 +112,13 @@ export class AclBindingRule extends pulumi.CustomResource {
             inputs["selector"] = state ? state.selector : undefined;
         } else {
             const args = argsOrState as AclBindingRuleArgs | undefined;
-            if ((!args || args.authMethod === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.authMethod === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'authMethod'");
             }
-            if ((!args || args.bindName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.bindName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'bindName'");
             }
-            if ((!args || args.bindType === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.bindType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'bindType'");
             }
             inputs["authMethod"] = args ? args.authMethod : undefined;
@@ -127,12 +128,8 @@ export class AclBindingRule extends pulumi.CustomResource {
             inputs["namespace"] = args ? args.namespace : undefined;
             inputs["selector"] = args ? args.selector : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(AclBindingRule.__pulumiType, name, inputs, opts);
     }

@@ -22,7 +22,7 @@ import (
 // import (
 // 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul/"
+// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -216,6 +216,85 @@ func (i *AclBindingRule) ToAclBindingRuleOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(AclBindingRuleOutput)
 }
 
+func (i *AclBindingRule) ToAclBindingRulePtrOutput() AclBindingRulePtrOutput {
+	return i.ToAclBindingRulePtrOutputWithContext(context.Background())
+}
+
+func (i *AclBindingRule) ToAclBindingRulePtrOutputWithContext(ctx context.Context) AclBindingRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AclBindingRulePtrOutput)
+}
+
+type AclBindingRulePtrInput interface {
+	pulumi.Input
+
+	ToAclBindingRulePtrOutput() AclBindingRulePtrOutput
+	ToAclBindingRulePtrOutputWithContext(ctx context.Context) AclBindingRulePtrOutput
+}
+
+type aclBindingRulePtrType AclBindingRuleArgs
+
+func (*aclBindingRulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AclBindingRule)(nil))
+}
+
+func (i *aclBindingRulePtrType) ToAclBindingRulePtrOutput() AclBindingRulePtrOutput {
+	return i.ToAclBindingRulePtrOutputWithContext(context.Background())
+}
+
+func (i *aclBindingRulePtrType) ToAclBindingRulePtrOutputWithContext(ctx context.Context) AclBindingRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AclBindingRulePtrOutput)
+}
+
+// AclBindingRuleArrayInput is an input type that accepts AclBindingRuleArray and AclBindingRuleArrayOutput values.
+// You can construct a concrete instance of `AclBindingRuleArrayInput` via:
+//
+//          AclBindingRuleArray{ AclBindingRuleArgs{...} }
+type AclBindingRuleArrayInput interface {
+	pulumi.Input
+
+	ToAclBindingRuleArrayOutput() AclBindingRuleArrayOutput
+	ToAclBindingRuleArrayOutputWithContext(context.Context) AclBindingRuleArrayOutput
+}
+
+type AclBindingRuleArray []AclBindingRuleInput
+
+func (AclBindingRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*AclBindingRule)(nil))
+}
+
+func (i AclBindingRuleArray) ToAclBindingRuleArrayOutput() AclBindingRuleArrayOutput {
+	return i.ToAclBindingRuleArrayOutputWithContext(context.Background())
+}
+
+func (i AclBindingRuleArray) ToAclBindingRuleArrayOutputWithContext(ctx context.Context) AclBindingRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AclBindingRuleArrayOutput)
+}
+
+// AclBindingRuleMapInput is an input type that accepts AclBindingRuleMap and AclBindingRuleMapOutput values.
+// You can construct a concrete instance of `AclBindingRuleMapInput` via:
+//
+//          AclBindingRuleMap{ "key": AclBindingRuleArgs{...} }
+type AclBindingRuleMapInput interface {
+	pulumi.Input
+
+	ToAclBindingRuleMapOutput() AclBindingRuleMapOutput
+	ToAclBindingRuleMapOutputWithContext(context.Context) AclBindingRuleMapOutput
+}
+
+type AclBindingRuleMap map[string]AclBindingRuleInput
+
+func (AclBindingRuleMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*AclBindingRule)(nil))
+}
+
+func (i AclBindingRuleMap) ToAclBindingRuleMapOutput() AclBindingRuleMapOutput {
+	return i.ToAclBindingRuleMapOutputWithContext(context.Background())
+}
+
+func (i AclBindingRuleMap) ToAclBindingRuleMapOutputWithContext(ctx context.Context) AclBindingRuleMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AclBindingRuleMapOutput)
+}
+
 type AclBindingRuleOutput struct {
 	*pulumi.OutputState
 }
@@ -232,6 +311,75 @@ func (o AclBindingRuleOutput) ToAclBindingRuleOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o AclBindingRuleOutput) ToAclBindingRulePtrOutput() AclBindingRulePtrOutput {
+	return o.ToAclBindingRulePtrOutputWithContext(context.Background())
+}
+
+func (o AclBindingRuleOutput) ToAclBindingRulePtrOutputWithContext(ctx context.Context) AclBindingRulePtrOutput {
+	return o.ApplyT(func(v AclBindingRule) *AclBindingRule {
+		return &v
+	}).(AclBindingRulePtrOutput)
+}
+
+type AclBindingRulePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AclBindingRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AclBindingRule)(nil))
+}
+
+func (o AclBindingRulePtrOutput) ToAclBindingRulePtrOutput() AclBindingRulePtrOutput {
+	return o
+}
+
+func (o AclBindingRulePtrOutput) ToAclBindingRulePtrOutputWithContext(ctx context.Context) AclBindingRulePtrOutput {
+	return o
+}
+
+type AclBindingRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (AclBindingRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AclBindingRule)(nil))
+}
+
+func (o AclBindingRuleArrayOutput) ToAclBindingRuleArrayOutput() AclBindingRuleArrayOutput {
+	return o
+}
+
+func (o AclBindingRuleArrayOutput) ToAclBindingRuleArrayOutputWithContext(ctx context.Context) AclBindingRuleArrayOutput {
+	return o
+}
+
+func (o AclBindingRuleArrayOutput) Index(i pulumi.IntInput) AclBindingRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AclBindingRule {
+		return vs[0].([]AclBindingRule)[vs[1].(int)]
+	}).(AclBindingRuleOutput)
+}
+
+type AclBindingRuleMapOutput struct{ *pulumi.OutputState }
+
+func (AclBindingRuleMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AclBindingRule)(nil))
+}
+
+func (o AclBindingRuleMapOutput) ToAclBindingRuleMapOutput() AclBindingRuleMapOutput {
+	return o
+}
+
+func (o AclBindingRuleMapOutput) ToAclBindingRuleMapOutputWithContext(ctx context.Context) AclBindingRuleMapOutput {
+	return o
+}
+
+func (o AclBindingRuleMapOutput) MapIndex(k pulumi.StringInput) AclBindingRuleOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AclBindingRule {
+		return vs[0].(map[string]AclBindingRule)[vs[1].(string)]
+	}).(AclBindingRuleOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AclBindingRuleOutput{})
+	pulumi.RegisterOutputType(AclBindingRulePtrOutput{})
+	pulumi.RegisterOutputType(AclBindingRuleArrayOutput{})
+	pulumi.RegisterOutputType(AclBindingRuleMapOutput{})
 }

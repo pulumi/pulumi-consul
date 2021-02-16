@@ -89,14 +89,6 @@ namespace Pulumi.Consul
 
         public ProviderArgs()
         {
-            Address = Utilities.GetEnv("CONSUL_ADDRESS", "CONSUL_HTTP_ADDR") ?? "localhost:8500";
-            CaFile = Utilities.GetEnv("CONSUL_CA_FILE");
-            CaPath = Utilities.GetEnv("CONSUL_CAPATH");
-            CertFile = Utilities.GetEnv("CONSUL_CERT_FILE");
-            HttpAuth = Utilities.GetEnv("CONSUL_HTTP_AUTH");
-            KeyFile = Utilities.GetEnv("CONSUL_KEY_FILE");
-            Scheme = Utilities.GetEnv("CONSUL_SCHEME", "CONSUL_HTTP_SCHEME") ?? "http";
-            Token = Utilities.GetEnv("CONSUL_TOKEN", "CONSUL_HTTP_TOKEN");
         }
     }
 }

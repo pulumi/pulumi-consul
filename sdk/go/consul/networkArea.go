@@ -27,7 +27,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul/"
+// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -198,6 +198,85 @@ func (i *NetworkArea) ToNetworkAreaOutputWithContext(ctx context.Context) Networ
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkAreaOutput)
 }
 
+func (i *NetworkArea) ToNetworkAreaPtrOutput() NetworkAreaPtrOutput {
+	return i.ToNetworkAreaPtrOutputWithContext(context.Background())
+}
+
+func (i *NetworkArea) ToNetworkAreaPtrOutputWithContext(ctx context.Context) NetworkAreaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkAreaPtrOutput)
+}
+
+type NetworkAreaPtrInput interface {
+	pulumi.Input
+
+	ToNetworkAreaPtrOutput() NetworkAreaPtrOutput
+	ToNetworkAreaPtrOutputWithContext(ctx context.Context) NetworkAreaPtrOutput
+}
+
+type networkAreaPtrType NetworkAreaArgs
+
+func (*networkAreaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkArea)(nil))
+}
+
+func (i *networkAreaPtrType) ToNetworkAreaPtrOutput() NetworkAreaPtrOutput {
+	return i.ToNetworkAreaPtrOutputWithContext(context.Background())
+}
+
+func (i *networkAreaPtrType) ToNetworkAreaPtrOutputWithContext(ctx context.Context) NetworkAreaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkAreaPtrOutput)
+}
+
+// NetworkAreaArrayInput is an input type that accepts NetworkAreaArray and NetworkAreaArrayOutput values.
+// You can construct a concrete instance of `NetworkAreaArrayInput` via:
+//
+//          NetworkAreaArray{ NetworkAreaArgs{...} }
+type NetworkAreaArrayInput interface {
+	pulumi.Input
+
+	ToNetworkAreaArrayOutput() NetworkAreaArrayOutput
+	ToNetworkAreaArrayOutputWithContext(context.Context) NetworkAreaArrayOutput
+}
+
+type NetworkAreaArray []NetworkAreaInput
+
+func (NetworkAreaArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*NetworkArea)(nil))
+}
+
+func (i NetworkAreaArray) ToNetworkAreaArrayOutput() NetworkAreaArrayOutput {
+	return i.ToNetworkAreaArrayOutputWithContext(context.Background())
+}
+
+func (i NetworkAreaArray) ToNetworkAreaArrayOutputWithContext(ctx context.Context) NetworkAreaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkAreaArrayOutput)
+}
+
+// NetworkAreaMapInput is an input type that accepts NetworkAreaMap and NetworkAreaMapOutput values.
+// You can construct a concrete instance of `NetworkAreaMapInput` via:
+//
+//          NetworkAreaMap{ "key": NetworkAreaArgs{...} }
+type NetworkAreaMapInput interface {
+	pulumi.Input
+
+	ToNetworkAreaMapOutput() NetworkAreaMapOutput
+	ToNetworkAreaMapOutputWithContext(context.Context) NetworkAreaMapOutput
+}
+
+type NetworkAreaMap map[string]NetworkAreaInput
+
+func (NetworkAreaMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*NetworkArea)(nil))
+}
+
+func (i NetworkAreaMap) ToNetworkAreaMapOutput() NetworkAreaMapOutput {
+	return i.ToNetworkAreaMapOutputWithContext(context.Background())
+}
+
+func (i NetworkAreaMap) ToNetworkAreaMapOutputWithContext(ctx context.Context) NetworkAreaMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkAreaMapOutput)
+}
+
 type NetworkAreaOutput struct {
 	*pulumi.OutputState
 }
@@ -214,6 +293,75 @@ func (o NetworkAreaOutput) ToNetworkAreaOutputWithContext(ctx context.Context) N
 	return o
 }
 
+func (o NetworkAreaOutput) ToNetworkAreaPtrOutput() NetworkAreaPtrOutput {
+	return o.ToNetworkAreaPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkAreaOutput) ToNetworkAreaPtrOutputWithContext(ctx context.Context) NetworkAreaPtrOutput {
+	return o.ApplyT(func(v NetworkArea) *NetworkArea {
+		return &v
+	}).(NetworkAreaPtrOutput)
+}
+
+type NetworkAreaPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (NetworkAreaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkArea)(nil))
+}
+
+func (o NetworkAreaPtrOutput) ToNetworkAreaPtrOutput() NetworkAreaPtrOutput {
+	return o
+}
+
+func (o NetworkAreaPtrOutput) ToNetworkAreaPtrOutputWithContext(ctx context.Context) NetworkAreaPtrOutput {
+	return o
+}
+
+type NetworkAreaArrayOutput struct{ *pulumi.OutputState }
+
+func (NetworkAreaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NetworkArea)(nil))
+}
+
+func (o NetworkAreaArrayOutput) ToNetworkAreaArrayOutput() NetworkAreaArrayOutput {
+	return o
+}
+
+func (o NetworkAreaArrayOutput) ToNetworkAreaArrayOutputWithContext(ctx context.Context) NetworkAreaArrayOutput {
+	return o
+}
+
+func (o NetworkAreaArrayOutput) Index(i pulumi.IntInput) NetworkAreaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkArea {
+		return vs[0].([]NetworkArea)[vs[1].(int)]
+	}).(NetworkAreaOutput)
+}
+
+type NetworkAreaMapOutput struct{ *pulumi.OutputState }
+
+func (NetworkAreaMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]NetworkArea)(nil))
+}
+
+func (o NetworkAreaMapOutput) ToNetworkAreaMapOutput() NetworkAreaMapOutput {
+	return o
+}
+
+func (o NetworkAreaMapOutput) ToNetworkAreaMapOutputWithContext(ctx context.Context) NetworkAreaMapOutput {
+	return o
+}
+
+func (o NetworkAreaMapOutput) MapIndex(k pulumi.StringInput) NetworkAreaOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) NetworkArea {
+		return vs[0].(map[string]NetworkArea)[vs[1].(string)]
+	}).(NetworkAreaOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(NetworkAreaOutput{})
+	pulumi.RegisterOutputType(NetworkAreaPtrOutput{})
+	pulumi.RegisterOutputType(NetworkAreaArrayOutput{})
+	pulumi.RegisterOutputType(NetworkAreaMapOutput{})
 }

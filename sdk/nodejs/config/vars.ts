@@ -6,17 +6,17 @@ import * as utilities from "../utilities";
 
 let __config = new pulumi.Config("consul");
 
-export let address: string | undefined = __config.get("address") || (utilities.getEnv("CONSUL_ADDRESS", "CONSUL_HTTP_ADDR") || "localhost:8500");
-export let caFile: string | undefined = __config.get("caFile") || utilities.getEnv("CONSUL_CA_FILE");
-export let caPath: string | undefined = __config.get("caPath") || utilities.getEnv("CONSUL_CAPATH");
+export let address: string | undefined = __config.get("address");
+export let caFile: string | undefined = __config.get("caFile");
+export let caPath: string | undefined = __config.get("caPath");
 export let caPem: string | undefined = __config.get("caPem");
-export let certFile: string | undefined = __config.get("certFile") || utilities.getEnv("CONSUL_CERT_FILE");
+export let certFile: string | undefined = __config.get("certFile");
 export let certPem: string | undefined = __config.get("certPem");
 export let datacenter: string | undefined = __config.get("datacenter");
-export let httpAuth: string | undefined = __config.get("httpAuth") || utilities.getEnv("CONSUL_HTTP_AUTH");
+export let httpAuth: string | undefined = __config.get("httpAuth");
 export let insecureHttps: boolean | undefined = __config.getObject<boolean>("insecureHttps");
-export let keyFile: string | undefined = __config.get("keyFile") || utilities.getEnv("CONSUL_KEY_FILE");
+export let keyFile: string | undefined = __config.get("keyFile");
 export let keyPem: string | undefined = __config.get("keyPem");
 export let namespace: string | undefined = __config.get("namespace");
-export let scheme: string | undefined = __config.get("scheme") || (utilities.getEnv("CONSUL_SCHEME", "CONSUL_HTTP_SCHEME") || "http");
-export let token: string | undefined = __config.get("token") || utilities.getEnv("CONSUL_TOKEN", "CONSUL_HTTP_TOKEN");
+export let scheme: string | undefined = __config.get("scheme");
+export let token: string | undefined = __config.get("token");

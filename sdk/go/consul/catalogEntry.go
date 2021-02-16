@@ -25,7 +25,6 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul"
-// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -203,6 +202,85 @@ func (i *CatalogEntry) ToCatalogEntryOutputWithContext(ctx context.Context) Cata
 	return pulumi.ToOutputWithContext(ctx, i).(CatalogEntryOutput)
 }
 
+func (i *CatalogEntry) ToCatalogEntryPtrOutput() CatalogEntryPtrOutput {
+	return i.ToCatalogEntryPtrOutputWithContext(context.Background())
+}
+
+func (i *CatalogEntry) ToCatalogEntryPtrOutputWithContext(ctx context.Context) CatalogEntryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CatalogEntryPtrOutput)
+}
+
+type CatalogEntryPtrInput interface {
+	pulumi.Input
+
+	ToCatalogEntryPtrOutput() CatalogEntryPtrOutput
+	ToCatalogEntryPtrOutputWithContext(ctx context.Context) CatalogEntryPtrOutput
+}
+
+type catalogEntryPtrType CatalogEntryArgs
+
+func (*catalogEntryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CatalogEntry)(nil))
+}
+
+func (i *catalogEntryPtrType) ToCatalogEntryPtrOutput() CatalogEntryPtrOutput {
+	return i.ToCatalogEntryPtrOutputWithContext(context.Background())
+}
+
+func (i *catalogEntryPtrType) ToCatalogEntryPtrOutputWithContext(ctx context.Context) CatalogEntryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CatalogEntryPtrOutput)
+}
+
+// CatalogEntryArrayInput is an input type that accepts CatalogEntryArray and CatalogEntryArrayOutput values.
+// You can construct a concrete instance of `CatalogEntryArrayInput` via:
+//
+//          CatalogEntryArray{ CatalogEntryArgs{...} }
+type CatalogEntryArrayInput interface {
+	pulumi.Input
+
+	ToCatalogEntryArrayOutput() CatalogEntryArrayOutput
+	ToCatalogEntryArrayOutputWithContext(context.Context) CatalogEntryArrayOutput
+}
+
+type CatalogEntryArray []CatalogEntryInput
+
+func (CatalogEntryArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*CatalogEntry)(nil))
+}
+
+func (i CatalogEntryArray) ToCatalogEntryArrayOutput() CatalogEntryArrayOutput {
+	return i.ToCatalogEntryArrayOutputWithContext(context.Background())
+}
+
+func (i CatalogEntryArray) ToCatalogEntryArrayOutputWithContext(ctx context.Context) CatalogEntryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CatalogEntryArrayOutput)
+}
+
+// CatalogEntryMapInput is an input type that accepts CatalogEntryMap and CatalogEntryMapOutput values.
+// You can construct a concrete instance of `CatalogEntryMapInput` via:
+//
+//          CatalogEntryMap{ "key": CatalogEntryArgs{...} }
+type CatalogEntryMapInput interface {
+	pulumi.Input
+
+	ToCatalogEntryMapOutput() CatalogEntryMapOutput
+	ToCatalogEntryMapOutputWithContext(context.Context) CatalogEntryMapOutput
+}
+
+type CatalogEntryMap map[string]CatalogEntryInput
+
+func (CatalogEntryMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*CatalogEntry)(nil))
+}
+
+func (i CatalogEntryMap) ToCatalogEntryMapOutput() CatalogEntryMapOutput {
+	return i.ToCatalogEntryMapOutputWithContext(context.Background())
+}
+
+func (i CatalogEntryMap) ToCatalogEntryMapOutputWithContext(ctx context.Context) CatalogEntryMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CatalogEntryMapOutput)
+}
+
 type CatalogEntryOutput struct {
 	*pulumi.OutputState
 }
@@ -219,6 +297,75 @@ func (o CatalogEntryOutput) ToCatalogEntryOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o CatalogEntryOutput) ToCatalogEntryPtrOutput() CatalogEntryPtrOutput {
+	return o.ToCatalogEntryPtrOutputWithContext(context.Background())
+}
+
+func (o CatalogEntryOutput) ToCatalogEntryPtrOutputWithContext(ctx context.Context) CatalogEntryPtrOutput {
+	return o.ApplyT(func(v CatalogEntry) *CatalogEntry {
+		return &v
+	}).(CatalogEntryPtrOutput)
+}
+
+type CatalogEntryPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (CatalogEntryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CatalogEntry)(nil))
+}
+
+func (o CatalogEntryPtrOutput) ToCatalogEntryPtrOutput() CatalogEntryPtrOutput {
+	return o
+}
+
+func (o CatalogEntryPtrOutput) ToCatalogEntryPtrOutputWithContext(ctx context.Context) CatalogEntryPtrOutput {
+	return o
+}
+
+type CatalogEntryArrayOutput struct{ *pulumi.OutputState }
+
+func (CatalogEntryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CatalogEntry)(nil))
+}
+
+func (o CatalogEntryArrayOutput) ToCatalogEntryArrayOutput() CatalogEntryArrayOutput {
+	return o
+}
+
+func (o CatalogEntryArrayOutput) ToCatalogEntryArrayOutputWithContext(ctx context.Context) CatalogEntryArrayOutput {
+	return o
+}
+
+func (o CatalogEntryArrayOutput) Index(i pulumi.IntInput) CatalogEntryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CatalogEntry {
+		return vs[0].([]CatalogEntry)[vs[1].(int)]
+	}).(CatalogEntryOutput)
+}
+
+type CatalogEntryMapOutput struct{ *pulumi.OutputState }
+
+func (CatalogEntryMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]CatalogEntry)(nil))
+}
+
+func (o CatalogEntryMapOutput) ToCatalogEntryMapOutput() CatalogEntryMapOutput {
+	return o
+}
+
+func (o CatalogEntryMapOutput) ToCatalogEntryMapOutputWithContext(ctx context.Context) CatalogEntryMapOutput {
+	return o
+}
+
+func (o CatalogEntryMapOutput) MapIndex(k pulumi.StringInput) CatalogEntryOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) CatalogEntry {
+		return vs[0].(map[string]CatalogEntry)[vs[1].(string)]
+	}).(CatalogEntryOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(CatalogEntryOutput{})
+	pulumi.RegisterOutputType(CatalogEntryPtrOutput{})
+	pulumi.RegisterOutputType(CatalogEntryArrayOutput{})
+	pulumi.RegisterOutputType(CatalogEntryMapOutput{})
 }

@@ -27,31 +27,31 @@ __all__ = [
 
 __config__ = pulumi.Config('consul')
 
-address = __config__.get('address') or (_utilities.get_env('CONSUL_ADDRESS', 'CONSUL_HTTP_ADDR') or 'localhost:8500')
+address = __config__.get('address')
 
-ca_file = __config__.get('caFile') or _utilities.get_env('CONSUL_CA_FILE')
+ca_file = __config__.get('caFile')
 
-ca_path = __config__.get('caPath') or _utilities.get_env('CONSUL_CAPATH')
+ca_path = __config__.get('caPath')
 
 ca_pem = __config__.get('caPem')
 
-cert_file = __config__.get('certFile') or _utilities.get_env('CONSUL_CERT_FILE')
+cert_file = __config__.get('certFile')
 
 cert_pem = __config__.get('certPem')
 
 datacenter = __config__.get('datacenter')
 
-http_auth = __config__.get('httpAuth') or _utilities.get_env('CONSUL_HTTP_AUTH')
+http_auth = __config__.get('httpAuth')
 
 insecure_https = __config__.get('insecureHttps')
 
-key_file = __config__.get('keyFile') or _utilities.get_env('CONSUL_KEY_FILE')
+key_file = __config__.get('keyFile')
 
 key_pem = __config__.get('keyPem')
 
 namespace = __config__.get('namespace')
 
-scheme = __config__.get('scheme') or (_utilities.get_env('CONSUL_SCHEME', 'CONSUL_HTTP_SCHEME') or 'http')
+scheme = __config__.get('scheme')
 
-token = __config__.get('token') or _utilities.get_env('CONSUL_TOKEN', 'CONSUL_HTTP_TOKEN')
+token = __config__.get('token')
 

@@ -9,35 +9,19 @@ import (
 )
 
 func GetAddress(ctx *pulumi.Context) string {
-	v, err := config.Try(ctx, "consul:address")
-	if err == nil {
-		return v
-	}
-	return getEnvOrDefault("localhost:8500", nil, "CONSUL_ADDRESS", "CONSUL_HTTP_ADDR").(string)
+	return config.Get(ctx, "consul:address")
 }
 func GetCaFile(ctx *pulumi.Context) string {
-	v, err := config.Try(ctx, "consul:caFile")
-	if err == nil {
-		return v
-	}
-	return getEnvOrDefault("", nil, "CONSUL_CA_FILE").(string)
+	return config.Get(ctx, "consul:caFile")
 }
 func GetCaPath(ctx *pulumi.Context) string {
-	v, err := config.Try(ctx, "consul:caPath")
-	if err == nil {
-		return v
-	}
-	return getEnvOrDefault("", nil, "CONSUL_CAPATH").(string)
+	return config.Get(ctx, "consul:caPath")
 }
 func GetCaPem(ctx *pulumi.Context) string {
 	return config.Get(ctx, "consul:caPem")
 }
 func GetCertFile(ctx *pulumi.Context) string {
-	v, err := config.Try(ctx, "consul:certFile")
-	if err == nil {
-		return v
-	}
-	return getEnvOrDefault("", nil, "CONSUL_CERT_FILE").(string)
+	return config.Get(ctx, "consul:certFile")
 }
 func GetCertPem(ctx *pulumi.Context) string {
 	return config.Get(ctx, "consul:certPem")
@@ -46,21 +30,13 @@ func GetDatacenter(ctx *pulumi.Context) string {
 	return config.Get(ctx, "consul:datacenter")
 }
 func GetHttpAuth(ctx *pulumi.Context) string {
-	v, err := config.Try(ctx, "consul:httpAuth")
-	if err == nil {
-		return v
-	}
-	return getEnvOrDefault("", nil, "CONSUL_HTTP_AUTH").(string)
+	return config.Get(ctx, "consul:httpAuth")
 }
 func GetInsecureHttps(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "consul:insecureHttps")
 }
 func GetKeyFile(ctx *pulumi.Context) string {
-	v, err := config.Try(ctx, "consul:keyFile")
-	if err == nil {
-		return v
-	}
-	return getEnvOrDefault("", nil, "CONSUL_KEY_FILE").(string)
+	return config.Get(ctx, "consul:keyFile")
 }
 func GetKeyPem(ctx *pulumi.Context) string {
 	return config.Get(ctx, "consul:keyPem")
@@ -69,16 +45,8 @@ func GetNamespace(ctx *pulumi.Context) string {
 	return config.Get(ctx, "consul:namespace")
 }
 func GetScheme(ctx *pulumi.Context) string {
-	v, err := config.Try(ctx, "consul:scheme")
-	if err == nil {
-		return v
-	}
-	return getEnvOrDefault("http", nil, "CONSUL_SCHEME", "CONSUL_HTTP_SCHEME").(string)
+	return config.Get(ctx, "consul:scheme")
 }
 func GetToken(ctx *pulumi.Context) string {
-	v, err := config.Try(ctx, "consul:token")
-	if err == nil {
-		return v
-	}
-	return getEnvOrDefault("", nil, "CONSUL_TOKEN", "CONSUL_HTTP_TOKEN").(string)
+	return config.Get(ctx, "consul:token")
 }

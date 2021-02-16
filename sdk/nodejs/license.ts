@@ -109,7 +109,8 @@ export class License extends pulumi.CustomResource {
     constructor(name: string, args: LicenseArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: LicenseArgs | LicenseState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as LicenseState | undefined;
             inputs["customerId"] = state ? state.customerId : undefined;
             inputs["datacenter"] = state ? state.datacenter : undefined;
@@ -125,7 +126,7 @@ export class License extends pulumi.CustomResource {
             inputs["warnings"] = state ? state.warnings : undefined;
         } else {
             const args = argsOrState as LicenseArgs | undefined;
-            if ((!args || args.license === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.license === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'license'");
             }
             inputs["datacenter"] = args ? args.datacenter : undefined;
@@ -141,12 +142,8 @@ export class License extends pulumi.CustomResource {
             inputs["valid"] = undefined /*out*/;
             inputs["warnings"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(License.__pulumiType, name, inputs, opts);
     }

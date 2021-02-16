@@ -194,6 +194,85 @@ func (i *KeyPrefix) ToKeyPrefixOutputWithContext(ctx context.Context) KeyPrefixO
 	return pulumi.ToOutputWithContext(ctx, i).(KeyPrefixOutput)
 }
 
+func (i *KeyPrefix) ToKeyPrefixPtrOutput() KeyPrefixPtrOutput {
+	return i.ToKeyPrefixPtrOutputWithContext(context.Background())
+}
+
+func (i *KeyPrefix) ToKeyPrefixPtrOutputWithContext(ctx context.Context) KeyPrefixPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyPrefixPtrOutput)
+}
+
+type KeyPrefixPtrInput interface {
+	pulumi.Input
+
+	ToKeyPrefixPtrOutput() KeyPrefixPtrOutput
+	ToKeyPrefixPtrOutputWithContext(ctx context.Context) KeyPrefixPtrOutput
+}
+
+type keyPrefixPtrType KeyPrefixArgs
+
+func (*keyPrefixPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeyPrefix)(nil))
+}
+
+func (i *keyPrefixPtrType) ToKeyPrefixPtrOutput() KeyPrefixPtrOutput {
+	return i.ToKeyPrefixPtrOutputWithContext(context.Background())
+}
+
+func (i *keyPrefixPtrType) ToKeyPrefixPtrOutputWithContext(ctx context.Context) KeyPrefixPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyPrefixPtrOutput)
+}
+
+// KeyPrefixArrayInput is an input type that accepts KeyPrefixArray and KeyPrefixArrayOutput values.
+// You can construct a concrete instance of `KeyPrefixArrayInput` via:
+//
+//          KeyPrefixArray{ KeyPrefixArgs{...} }
+type KeyPrefixArrayInput interface {
+	pulumi.Input
+
+	ToKeyPrefixArrayOutput() KeyPrefixArrayOutput
+	ToKeyPrefixArrayOutputWithContext(context.Context) KeyPrefixArrayOutput
+}
+
+type KeyPrefixArray []KeyPrefixInput
+
+func (KeyPrefixArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*KeyPrefix)(nil))
+}
+
+func (i KeyPrefixArray) ToKeyPrefixArrayOutput() KeyPrefixArrayOutput {
+	return i.ToKeyPrefixArrayOutputWithContext(context.Background())
+}
+
+func (i KeyPrefixArray) ToKeyPrefixArrayOutputWithContext(ctx context.Context) KeyPrefixArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyPrefixArrayOutput)
+}
+
+// KeyPrefixMapInput is an input type that accepts KeyPrefixMap and KeyPrefixMapOutput values.
+// You can construct a concrete instance of `KeyPrefixMapInput` via:
+//
+//          KeyPrefixMap{ "key": KeyPrefixArgs{...} }
+type KeyPrefixMapInput interface {
+	pulumi.Input
+
+	ToKeyPrefixMapOutput() KeyPrefixMapOutput
+	ToKeyPrefixMapOutputWithContext(context.Context) KeyPrefixMapOutput
+}
+
+type KeyPrefixMap map[string]KeyPrefixInput
+
+func (KeyPrefixMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*KeyPrefix)(nil))
+}
+
+func (i KeyPrefixMap) ToKeyPrefixMapOutput() KeyPrefixMapOutput {
+	return i.ToKeyPrefixMapOutputWithContext(context.Background())
+}
+
+func (i KeyPrefixMap) ToKeyPrefixMapOutputWithContext(ctx context.Context) KeyPrefixMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyPrefixMapOutput)
+}
+
 type KeyPrefixOutput struct {
 	*pulumi.OutputState
 }
@@ -210,6 +289,75 @@ func (o KeyPrefixOutput) ToKeyPrefixOutputWithContext(ctx context.Context) KeyPr
 	return o
 }
 
+func (o KeyPrefixOutput) ToKeyPrefixPtrOutput() KeyPrefixPtrOutput {
+	return o.ToKeyPrefixPtrOutputWithContext(context.Background())
+}
+
+func (o KeyPrefixOutput) ToKeyPrefixPtrOutputWithContext(ctx context.Context) KeyPrefixPtrOutput {
+	return o.ApplyT(func(v KeyPrefix) *KeyPrefix {
+		return &v
+	}).(KeyPrefixPtrOutput)
+}
+
+type KeyPrefixPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (KeyPrefixPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeyPrefix)(nil))
+}
+
+func (o KeyPrefixPtrOutput) ToKeyPrefixPtrOutput() KeyPrefixPtrOutput {
+	return o
+}
+
+func (o KeyPrefixPtrOutput) ToKeyPrefixPtrOutputWithContext(ctx context.Context) KeyPrefixPtrOutput {
+	return o
+}
+
+type KeyPrefixArrayOutput struct{ *pulumi.OutputState }
+
+func (KeyPrefixArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KeyPrefix)(nil))
+}
+
+func (o KeyPrefixArrayOutput) ToKeyPrefixArrayOutput() KeyPrefixArrayOutput {
+	return o
+}
+
+func (o KeyPrefixArrayOutput) ToKeyPrefixArrayOutputWithContext(ctx context.Context) KeyPrefixArrayOutput {
+	return o
+}
+
+func (o KeyPrefixArrayOutput) Index(i pulumi.IntInput) KeyPrefixOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KeyPrefix {
+		return vs[0].([]KeyPrefix)[vs[1].(int)]
+	}).(KeyPrefixOutput)
+}
+
+type KeyPrefixMapOutput struct{ *pulumi.OutputState }
+
+func (KeyPrefixMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]KeyPrefix)(nil))
+}
+
+func (o KeyPrefixMapOutput) ToKeyPrefixMapOutput() KeyPrefixMapOutput {
+	return o
+}
+
+func (o KeyPrefixMapOutput) ToKeyPrefixMapOutputWithContext(ctx context.Context) KeyPrefixMapOutput {
+	return o
+}
+
+func (o KeyPrefixMapOutput) MapIndex(k pulumi.StringInput) KeyPrefixOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) KeyPrefix {
+		return vs[0].(map[string]KeyPrefix)[vs[1].(string)]
+	}).(KeyPrefixOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(KeyPrefixOutput{})
+	pulumi.RegisterOutputType(KeyPrefixPtrOutput{})
+	pulumi.RegisterOutputType(KeyPrefixArrayOutput{})
+	pulumi.RegisterOutputType(KeyPrefixMapOutput{})
 }

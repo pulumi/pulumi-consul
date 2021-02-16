@@ -141,6 +141,85 @@ func (i *Keys) ToKeysOutputWithContext(ctx context.Context) KeysOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KeysOutput)
 }
 
+func (i *Keys) ToKeysPtrOutput() KeysPtrOutput {
+	return i.ToKeysPtrOutputWithContext(context.Background())
+}
+
+func (i *Keys) ToKeysPtrOutputWithContext(ctx context.Context) KeysPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeysPtrOutput)
+}
+
+type KeysPtrInput interface {
+	pulumi.Input
+
+	ToKeysPtrOutput() KeysPtrOutput
+	ToKeysPtrOutputWithContext(ctx context.Context) KeysPtrOutput
+}
+
+type keysPtrType KeysArgs
+
+func (*keysPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Keys)(nil))
+}
+
+func (i *keysPtrType) ToKeysPtrOutput() KeysPtrOutput {
+	return i.ToKeysPtrOutputWithContext(context.Background())
+}
+
+func (i *keysPtrType) ToKeysPtrOutputWithContext(ctx context.Context) KeysPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeysPtrOutput)
+}
+
+// KeysArrayInput is an input type that accepts KeysArray and KeysArrayOutput values.
+// You can construct a concrete instance of `KeysArrayInput` via:
+//
+//          KeysArray{ KeysArgs{...} }
+type KeysArrayInput interface {
+	pulumi.Input
+
+	ToKeysArrayOutput() KeysArrayOutput
+	ToKeysArrayOutputWithContext(context.Context) KeysArrayOutput
+}
+
+type KeysArray []KeysInput
+
+func (KeysArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*Keys)(nil))
+}
+
+func (i KeysArray) ToKeysArrayOutput() KeysArrayOutput {
+	return i.ToKeysArrayOutputWithContext(context.Background())
+}
+
+func (i KeysArray) ToKeysArrayOutputWithContext(ctx context.Context) KeysArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeysArrayOutput)
+}
+
+// KeysMapInput is an input type that accepts KeysMap and KeysMapOutput values.
+// You can construct a concrete instance of `KeysMapInput` via:
+//
+//          KeysMap{ "key": KeysArgs{...} }
+type KeysMapInput interface {
+	pulumi.Input
+
+	ToKeysMapOutput() KeysMapOutput
+	ToKeysMapOutputWithContext(context.Context) KeysMapOutput
+}
+
+type KeysMap map[string]KeysInput
+
+func (KeysMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*Keys)(nil))
+}
+
+func (i KeysMap) ToKeysMapOutput() KeysMapOutput {
+	return i.ToKeysMapOutputWithContext(context.Background())
+}
+
+func (i KeysMap) ToKeysMapOutputWithContext(ctx context.Context) KeysMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeysMapOutput)
+}
+
 type KeysOutput struct {
 	*pulumi.OutputState
 }
@@ -157,6 +236,75 @@ func (o KeysOutput) ToKeysOutputWithContext(ctx context.Context) KeysOutput {
 	return o
 }
 
+func (o KeysOutput) ToKeysPtrOutput() KeysPtrOutput {
+	return o.ToKeysPtrOutputWithContext(context.Background())
+}
+
+func (o KeysOutput) ToKeysPtrOutputWithContext(ctx context.Context) KeysPtrOutput {
+	return o.ApplyT(func(v Keys) *Keys {
+		return &v
+	}).(KeysPtrOutput)
+}
+
+type KeysPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (KeysPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Keys)(nil))
+}
+
+func (o KeysPtrOutput) ToKeysPtrOutput() KeysPtrOutput {
+	return o
+}
+
+func (o KeysPtrOutput) ToKeysPtrOutputWithContext(ctx context.Context) KeysPtrOutput {
+	return o
+}
+
+type KeysArrayOutput struct{ *pulumi.OutputState }
+
+func (KeysArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Keys)(nil))
+}
+
+func (o KeysArrayOutput) ToKeysArrayOutput() KeysArrayOutput {
+	return o
+}
+
+func (o KeysArrayOutput) ToKeysArrayOutputWithContext(ctx context.Context) KeysArrayOutput {
+	return o
+}
+
+func (o KeysArrayOutput) Index(i pulumi.IntInput) KeysOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Keys {
+		return vs[0].([]Keys)[vs[1].(int)]
+	}).(KeysOutput)
+}
+
+type KeysMapOutput struct{ *pulumi.OutputState }
+
+func (KeysMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]Keys)(nil))
+}
+
+func (o KeysMapOutput) ToKeysMapOutput() KeysMapOutput {
+	return o
+}
+
+func (o KeysMapOutput) ToKeysMapOutputWithContext(ctx context.Context) KeysMapOutput {
+	return o
+}
+
+func (o KeysMapOutput) MapIndex(k pulumi.StringInput) KeysOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Keys {
+		return vs[0].(map[string]Keys)[vs[1].(string)]
+	}).(KeysOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(KeysOutput{})
+	pulumi.RegisterOutputType(KeysPtrOutput{})
+	pulumi.RegisterOutputType(KeysArrayOutput{})
+	pulumi.RegisterOutputType(KeysMapOutput{})
 }

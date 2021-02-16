@@ -130,7 +130,8 @@ export class Intention extends pulumi.CustomResource {
     constructor(name: string, args: IntentionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: IntentionArgs | IntentionState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as IntentionState | undefined;
             inputs["action"] = state ? state.action : undefined;
             inputs["datacenter"] = state ? state.datacenter : undefined;
@@ -142,13 +143,13 @@ export class Intention extends pulumi.CustomResource {
             inputs["sourceNamespace"] = state ? state.sourceNamespace : undefined;
         } else {
             const args = argsOrState as IntentionArgs | undefined;
-            if ((!args || args.action === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.action === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'action'");
             }
-            if ((!args || args.destinationName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.destinationName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'destinationName'");
             }
-            if ((!args || args.sourceName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.sourceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sourceName'");
             }
             inputs["action"] = args ? args.action : undefined;
@@ -160,12 +161,8 @@ export class Intention extends pulumi.CustomResource {
             inputs["sourceName"] = args ? args.sourceName : undefined;
             inputs["sourceNamespace"] = args ? args.sourceNamespace : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Intention.__pulumiType, name, inputs, opts);
     }

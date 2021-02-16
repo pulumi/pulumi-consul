@@ -92,7 +92,8 @@ export class NetworkArea extends pulumi.CustomResource {
     constructor(name: string, args: NetworkAreaArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NetworkAreaArgs | NetworkAreaState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as NetworkAreaState | undefined;
             inputs["datacenter"] = state ? state.datacenter : undefined;
             inputs["peerDatacenter"] = state ? state.peerDatacenter : undefined;
@@ -101,7 +102,7 @@ export class NetworkArea extends pulumi.CustomResource {
             inputs["useTls"] = state ? state.useTls : undefined;
         } else {
             const args = argsOrState as NetworkAreaArgs | undefined;
-            if ((!args || args.peerDatacenter === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.peerDatacenter === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'peerDatacenter'");
             }
             inputs["datacenter"] = args ? args.datacenter : undefined;
@@ -110,12 +111,8 @@ export class NetworkArea extends pulumi.CustomResource {
             inputs["token"] = args ? args.token : undefined;
             inputs["useTls"] = args ? args.useTls : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(NetworkArea.__pulumiType, name, inputs, opts);
     }
