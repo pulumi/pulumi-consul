@@ -2,7 +2,7 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Rename LICENSE to LICENSE.txt to ensure no collisions with License resource
 
 ---
 
