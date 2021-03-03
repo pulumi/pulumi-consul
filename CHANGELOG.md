@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Rename LICENSE to LICENSE.txt to ensure no collisions with License resource
+_(none)_
 
 ---
+
+## 2.8.2 (2021-03-03)
+* Rename LICENSE to LICENSE.txt to ensure no collisions with License resource
 
 ## 2.8.1 (2021-02-16)
 * Upgrade to pulumi-terraform-bridge v2.19.0  
