@@ -110,7 +110,7 @@ class AclAuthMethod(pulumi.CustomResource):
 
             if config is not None and not opts.urn:
                 warnings.warn("""The config attribute is deprecated, please use config_json instead.""", DeprecationWarning)
-                pulumi.log.warn("config is deprecated: The config attribute is deprecated, please use config_json instead.")
+                pulumi.log.warn("""config is deprecated: The config attribute is deprecated, please use config_json instead.""")
             __props__['config'] = config
             __props__['config_json'] = config_json
             __props__['description'] = description
