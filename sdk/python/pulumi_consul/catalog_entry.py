@@ -5,15 +5,109 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['CatalogEntry']
+__all__ = ['CatalogEntryArgs', 'CatalogEntry']
+
+@pulumi.input_type
+class CatalogEntryArgs:
+    def __init__(__self__, *,
+                 address: pulumi.Input[str],
+                 node: pulumi.Input[str],
+                 datacenter: Optional[pulumi.Input[str]] = None,
+                 services: Optional[pulumi.Input[Sequence[pulumi.Input['CatalogEntryServiceArgs']]]] = None,
+                 token: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a CatalogEntry resource.
+        :param pulumi.Input[str] address: The address of the node being added to,
+               or referenced in the catalog.
+        :param pulumi.Input[str] node: The name of the node being added to, or
+               referenced in the catalog.
+        :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the
+               agent's default datacenter and the datacenter in the provider setup.
+        :param pulumi.Input[Sequence[pulumi.Input['CatalogEntryServiceArgs']]] services: A service to optionally associated with
+               the node. Supported values are documented below.
+        :param pulumi.Input[str] token: ACL token.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "node", node)
+        if datacenter is not None:
+            pulumi.set(__self__, "datacenter", datacenter)
+        if services is not None:
+            pulumi.set(__self__, "services", services)
+        if token is not None:
+            pulumi.set(__self__, "token", token)
+
+    @property
+    @pulumi.getter
+    def address(self) -> pulumi.Input[str]:
+        """
+        The address of the node being added to,
+        or referenced in the catalog.
+        """
+        return pulumi.get(self, "address")
+
+    @address.setter
+    def address(self, value: pulumi.Input[str]):
+        pulumi.set(self, "address", value)
+
+    @property
+    @pulumi.getter
+    def node(self) -> pulumi.Input[str]:
+        """
+        The name of the node being added to, or
+        referenced in the catalog.
+        """
+        return pulumi.get(self, "node")
+
+    @node.setter
+    def node(self, value: pulumi.Input[str]):
+        pulumi.set(self, "node", value)
+
+    @property
+    @pulumi.getter
+    def datacenter(self) -> Optional[pulumi.Input[str]]:
+        """
+        The datacenter to use. This overrides the
+        agent's default datacenter and the datacenter in the provider setup.
+        """
+        return pulumi.get(self, "datacenter")
+
+    @datacenter.setter
+    def datacenter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "datacenter", value)
+
+    @property
+    @pulumi.getter
+    def services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CatalogEntryServiceArgs']]]]:
+        """
+        A service to optionally associated with
+        the node. Supported values are documented below.
+        """
+        return pulumi.get(self, "services")
+
+    @services.setter
+    def services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CatalogEntryServiceArgs']]]]):
+        pulumi.set(self, "services", value)
+
+    @property
+    @pulumi.getter
+    def token(self) -> Optional[pulumi.Input[str]]:
+        """
+        ACL token.
+        """
+        return pulumi.get(self, "token")
+
+    @token.setter
+    def token(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "token", value)
 
 
 class CatalogEntry(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -66,6 +160,64 @@ class CatalogEntry(pulumi.CustomResource):
                the node. Supported values are documented below.
         :param pulumi.Input[str] token: ACL token.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: CatalogEntryArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        !> The `CatalogEntry` resource has been deprecated in version 2.0.0 of the provider
+        and will be removed in a future release. Please read the [upgrade guide](https://www.terraform.io/docs/providers/consul/guides/upgrading.html#deprecation-of-consul_catalog_entry)
+        for more information.
+
+        Registers a node or service with the [Consul Catalog](https://www.consul.io/docs/agent/http/catalog.html#catalog_register).
+        Currently, defining health checks is not supported.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_consul as consul
+
+        app = consul.CatalogEntry("app",
+            address="192.168.10.10",
+            node="foobar",
+            services=[consul.CatalogEntryServiceArgs(
+                address="127.0.0.1",
+                id="redis1",
+                name="redis",
+                port=8000,
+                tags=[
+                    "master",
+                    "v1",
+                ],
+            )])
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param CatalogEntryArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(CatalogEntryArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 address: Optional[pulumi.Input[str]] = None,
+                 datacenter: Optional[pulumi.Input[str]] = None,
+                 node: Optional[pulumi.Input[str]] = None,
+                 services: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CatalogEntryServiceArgs']]]]] = None,
+                 token: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

@@ -5,13 +5,51 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['AclTokenPolicyAttachment']
+__all__ = ['AclTokenPolicyAttachmentArgs', 'AclTokenPolicyAttachment']
+
+@pulumi.input_type
+class AclTokenPolicyAttachmentArgs:
+    def __init__(__self__, *,
+                 policy: pulumi.Input[str],
+                 token_id: pulumi.Input[str]):
+        """
+        The set of arguments for constructing a AclTokenPolicyAttachment resource.
+        :param pulumi.Input[str] policy: The name of the policy attached to the token.
+        :param pulumi.Input[str] token_id: The id of the token.
+        """
+        pulumi.set(__self__, "policy", policy)
+        pulumi.set(__self__, "token_id", token_id)
+
+    @property
+    @pulumi.getter
+    def policy(self) -> pulumi.Input[str]:
+        """
+        The name of the policy attached to the token.
+        """
+        return pulumi.get(self, "policy")
+
+    @policy.setter
+    def policy(self, value: pulumi.Input[str]):
+        pulumi.set(self, "policy", value)
+
+    @property
+    @pulumi.getter(name="tokenId")
+    def token_id(self) -> pulumi.Input[str]:
+        """
+        The id of the token.
+        """
+        return pulumi.get(self, "token_id")
+
+    @token_id.setter
+    def token_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "token_id", value)
 
 
 class AclTokenPolicyAttachment(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -38,6 +76,45 @@ class AclTokenPolicyAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] policy: The name of the policy attached to the token.
         :param pulumi.Input[str] token_id: The id of the token.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: AclTokenPolicyAttachmentArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## Import
+
+        `consul_acl_token_policy_attachment` can be imported. This is especially useful to manage the policies attached to the anonymous and the master tokens with Terraform
+
+        ```sh
+         $ pulumi import consul:index/aclTokenPolicyAttachment:AclTokenPolicyAttachment anonymous 00000000-0000-0000-0000-000000000002:policy_name
+        ```
+
+        ```sh
+         $ pulumi import consul:index/aclTokenPolicyAttachment:AclTokenPolicyAttachment master-token 624d94ca-bc5c-f960-4e83-0a609cf588be:policy_name
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param AclTokenPolicyAttachmentArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(AclTokenPolicyAttachmentArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 policy: Optional[pulumi.Input[str]] = None,
+                 token_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

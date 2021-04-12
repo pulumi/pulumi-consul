@@ -21,49 +21,50 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "consul:index/aclAuthMethod:AclAuthMethod":
-		r, err = NewAclAuthMethod(ctx, name, nil, pulumi.URN_(urn))
+		r = &AclAuthMethod{}
 	case "consul:index/aclBindingRule:AclBindingRule":
-		r, err = NewAclBindingRule(ctx, name, nil, pulumi.URN_(urn))
+		r = &AclBindingRule{}
 	case "consul:index/aclPolicy:AclPolicy":
-		r, err = NewAclPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &AclPolicy{}
 	case "consul:index/aclRole:AclRole":
-		r, err = NewAclRole(ctx, name, nil, pulumi.URN_(urn))
+		r = &AclRole{}
 	case "consul:index/aclToken:AclToken":
-		r, err = NewAclToken(ctx, name, nil, pulumi.URN_(urn))
+		r = &AclToken{}
 	case "consul:index/aclTokenPolicyAttachment:AclTokenPolicyAttachment":
-		r, err = NewAclTokenPolicyAttachment(ctx, name, nil, pulumi.URN_(urn))
+		r = &AclTokenPolicyAttachment{}
 	case "consul:index/agentService:AgentService":
-		r, err = NewAgentService(ctx, name, nil, pulumi.URN_(urn))
+		r = &AgentService{}
 	case "consul:index/autopilotConfig:AutopilotConfig":
-		r, err = NewAutopilotConfig(ctx, name, nil, pulumi.URN_(urn))
+		r = &AutopilotConfig{}
 	case "consul:index/catalogEntry:CatalogEntry":
-		r, err = NewCatalogEntry(ctx, name, nil, pulumi.URN_(urn))
+		r = &CatalogEntry{}
 	case "consul:index/certificateAuthority:CertificateAuthority":
-		r, err = NewCertificateAuthority(ctx, name, nil, pulumi.URN_(urn))
+		r = &CertificateAuthority{}
 	case "consul:index/configEntry:ConfigEntry":
-		r, err = NewConfigEntry(ctx, name, nil, pulumi.URN_(urn))
+		r = &ConfigEntry{}
 	case "consul:index/intention:Intention":
-		r, err = NewIntention(ctx, name, nil, pulumi.URN_(urn))
+		r = &Intention{}
 	case "consul:index/keyPrefix:KeyPrefix":
-		r, err = NewKeyPrefix(ctx, name, nil, pulumi.URN_(urn))
+		r = &KeyPrefix{}
 	case "consul:index/keys:Keys":
-		r, err = NewKeys(ctx, name, nil, pulumi.URN_(urn))
+		r = &Keys{}
 	case "consul:index/license:License":
-		r, err = NewLicense(ctx, name, nil, pulumi.URN_(urn))
+		r = &License{}
 	case "consul:index/namespace:Namespace":
-		r, err = NewNamespace(ctx, name, nil, pulumi.URN_(urn))
+		r = &Namespace{}
 	case "consul:index/networkArea:NetworkArea":
-		r, err = NewNetworkArea(ctx, name, nil, pulumi.URN_(urn))
+		r = &NetworkArea{}
 	case "consul:index/node:Node":
-		r, err = NewNode(ctx, name, nil, pulumi.URN_(urn))
+		r = &Node{}
 	case "consul:index/preparedQuery:PreparedQuery":
-		r, err = NewPreparedQuery(ctx, name, nil, pulumi.URN_(urn))
+		r = &PreparedQuery{}
 	case "consul:index/service:Service":
-		r, err = NewService(ctx, name, nil, pulumi.URN_(urn))
+		r = &Service{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 
@@ -80,7 +81,9 @@ func (p *pkg) ConstructProvider(ctx *pulumi.Context, name, typ, urn string) (pul
 		return nil, fmt.Errorf("unknown provider type: %s", typ)
 	}
 
-	return NewProvider(ctx, name, nil, pulumi.URN_(urn))
+	r := &Provider{}
+	err := ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
+	return r, err
 }
 
 func init() {
