@@ -5,13 +5,51 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['CertificateAuthority']
+__all__ = ['CertificateAuthorityArgs', 'CertificateAuthority']
+
+@pulumi.input_type
+class CertificateAuthorityArgs:
+    def __init__(__self__, *,
+                 config: pulumi.Input[Mapping[str, pulumi.Input[str]]],
+                 connect_provider: pulumi.Input[str]):
+        """
+        The set of arguments for constructing a CertificateAuthority resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config: The raw configuration to use for the chosen provider.
+        :param pulumi.Input[str] connect_provider: Specifies the CA provider type to use.
+        """
+        pulumi.set(__self__, "config", config)
+        pulumi.set(__self__, "connect_provider", connect_provider)
+
+    @property
+    @pulumi.getter
+    def config(self) -> pulumi.Input[Mapping[str, pulumi.Input[str]]]:
+        """
+        The raw configuration to use for the chosen provider.
+        """
+        return pulumi.get(self, "config")
+
+    @config.setter
+    def config(self, value: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
+        pulumi.set(self, "config", value)
+
+    @property
+    @pulumi.getter(name="connectProvider")
+    def connect_provider(self) -> pulumi.Input[str]:
+        """
+        Specifies the CA provider type to use.
+        """
+        return pulumi.get(self, "connect_provider")
+
+    @connect_provider.setter
+    def connect_provider(self, value: pulumi.Input[str]):
+        pulumi.set(self, "connect_provider", value)
 
 
 class CertificateAuthority(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -83,6 +121,90 @@ class CertificateAuthority(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config: The raw configuration to use for the chosen provider.
         :param pulumi.Input[str] connect_provider: Specifies the CA provider type to use.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: CertificateAuthorityArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        The `CertificateAuthority` resource can be used to manage the configuration of
+        the Certificate Authority used by [Consul Connect](https://www.consul.io/docs/connect/ca).
+
+        ## Example Usage
+
+        Use the built-in CA with specific TTL:
+
+        ```python
+        import pulumi
+        import pulumi_consul as consul
+
+        connect = consul.CertificateAuthority("connect",
+            config={
+                "IntermediateCertTTL": "8760h",
+                "LeafCertTTL": "24h",
+                "RotationPeriod": "2160h",
+            },
+            connect_provider="consul")
+        ```
+
+        Use Vault to manage and sign certificates:
+
+        ```python
+        import pulumi
+        import pulumi_consul as consul
+
+        connect = consul.CertificateAuthority("connect",
+            config={
+                "address": "http://localhost:8200",
+                "intermediate_pki_path": "connect-intermediate",
+                "root_pki_path": "connect-root",
+                "token": "...",
+            },
+            connect_provider="vault")
+        ```
+
+        Use the [AWS Certificate Manager Private Certificate Authority](https://aws.amazon.com/certificate-manager/private-certificate-authority/):
+
+        ```python
+        import pulumi
+        import pulumi_consul as consul
+
+        connect = consul.CertificateAuthority("connect",
+            config={
+                "existing_arn": "arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-123456789012",
+            },
+            connect_provider="aws-pca")
+        ```
+
+        ## Import
+
+        `certificate_authority` can be imported
+
+        ```sh
+         $ pulumi import consul:index/certificateAuthority:CertificateAuthority connect connect-ca
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param CertificateAuthorityArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(CertificateAuthorityArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 connect_provider: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

@@ -5,13 +5,160 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['Intention']
+__all__ = ['IntentionArgs', 'Intention']
+
+@pulumi.input_type
+class IntentionArgs:
+    def __init__(__self__, *,
+                 action: pulumi.Input[str],
+                 destination_name: pulumi.Input[str],
+                 source_name: pulumi.Input[str],
+                 datacenter: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 destination_namespace: Optional[pulumi.Input[str]] = None,
+                 meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 source_namespace: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Intention resource.
+        :param pulumi.Input[str] action: The intention action. Must be one of `allow` or `deny`.
+        :param pulumi.Input[str] destination_name: The name of the destination service for the intention. This
+               service does not have to exist.
+        :param pulumi.Input[str] source_name: The name of the source service for the intention. This
+               service does not have to exist.
+        :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the
+               agent's default datacenter and the datacenter in the provider setup.
+        :param pulumi.Input[str] description: Optional description that can be used by Consul
+               tooling, but is not used internally.
+        :param pulumi.Input[str] destination_namespace: The destination
+               namespace of the intention.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: Key/value pairs that are opaque to Consul and are associated
+               with the intention.
+        :param pulumi.Input[str] source_namespace: The source namespace of the
+               intention.
+        """
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "destination_name", destination_name)
+        pulumi.set(__self__, "source_name", source_name)
+        if datacenter is not None:
+            pulumi.set(__self__, "datacenter", datacenter)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if destination_namespace is not None:
+            pulumi.set(__self__, "destination_namespace", destination_namespace)
+        if meta is not None:
+            pulumi.set(__self__, "meta", meta)
+        if source_namespace is not None:
+            pulumi.set(__self__, "source_namespace", source_namespace)
+
+    @property
+    @pulumi.getter
+    def action(self) -> pulumi.Input[str]:
+        """
+        The intention action. Must be one of `allow` or `deny`.
+        """
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: pulumi.Input[str]):
+        pulumi.set(self, "action", value)
+
+    @property
+    @pulumi.getter(name="destinationName")
+    def destination_name(self) -> pulumi.Input[str]:
+        """
+        The name of the destination service for the intention. This
+        service does not have to exist.
+        """
+        return pulumi.get(self, "destination_name")
+
+    @destination_name.setter
+    def destination_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "destination_name", value)
+
+    @property
+    @pulumi.getter(name="sourceName")
+    def source_name(self) -> pulumi.Input[str]:
+        """
+        The name of the source service for the intention. This
+        service does not have to exist.
+        """
+        return pulumi.get(self, "source_name")
+
+    @source_name.setter
+    def source_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "source_name", value)
+
+    @property
+    @pulumi.getter
+    def datacenter(self) -> Optional[pulumi.Input[str]]:
+        """
+        The datacenter to use. This overrides the
+        agent's default datacenter and the datacenter in the provider setup.
+        """
+        return pulumi.get(self, "datacenter")
+
+    @datacenter.setter
+    def datacenter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "datacenter", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional description that can be used by Consul
+        tooling, but is not used internally.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="destinationNamespace")
+    def destination_namespace(self) -> Optional[pulumi.Input[str]]:
+        """
+        The destination
+        namespace of the intention.
+        """
+        return pulumi.get(self, "destination_namespace")
+
+    @destination_namespace.setter
+    def destination_namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "destination_namespace", value)
+
+    @property
+    @pulumi.getter
+    def meta(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Key/value pairs that are opaque to Consul and are associated
+        with the intention.
+        """
+        return pulumi.get(self, "meta")
+
+    @meta.setter
+    def meta(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "meta", value)
+
+    @property
+    @pulumi.getter(name="sourceNamespace")
+    def source_namespace(self) -> Optional[pulumi.Input[str]]:
+        """
+        The source namespace of the
+        intention.
+        """
+        return pulumi.get(self, "source_namespace")
+
+    @source_namespace.setter
+    def source_namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_namespace", value)
 
 
 class Intention(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -88,6 +235,82 @@ class Intention(pulumi.CustomResource):
         :param pulumi.Input[str] source_namespace: The source namespace of the
                intention.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: IntentionArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        [Intentions](https://www.consul.io/docs/connect/intentions.html) are used to define
+        rules for which services may connect to one another when using [Consul Connect](https://www.consul.io/docs/connect/index.html).
+
+        It is appropriate to either reference existing services or specify non-existent services
+        that will be created in the future when creating intentions. This resource can be used
+        in conjunction with the `Service` datasource when referencing services
+        registered on nodes that have a running Consul agent.
+
+        ## Example Usage
+
+        Create a simplest intention with static service names:
+
+        ```python
+        import pulumi
+        import pulumi_consul as consul
+
+        database = consul.Intention("database",
+            action="allow",
+            destination_name="db",
+            source_name="api")
+        ```
+
+        Referencing a known service via a datasource:
+
+        ```python
+        import pulumi
+        import pulumi_consul as consul
+
+        database = consul.Intention("database",
+            action="allow",
+            destination_name=consul_service["pg"]["name"],
+            source_name="api")
+        pg = consul.get_service(name="postgresql")
+        ```
+
+        ## Import
+
+        `consul_intention` can be imported
+
+        ```sh
+         $ pulumi import consul:index/intention:Intention database 657a57d6-0d56-57e2-31cb-e9f1ed3c18dd
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param IntentionArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(IntentionArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 action: Optional[pulumi.Input[str]] = None,
+                 datacenter: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 destination_name: Optional[pulumi.Input[str]] = None,
+                 destination_namespace: Optional[pulumi.Input[str]] = None,
+                 meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 source_name: Optional[pulumi.Input[str]] = None,
+                 source_namespace: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

@@ -5,13 +5,122 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['AclBindingRule']
+__all__ = ['AclBindingRuleArgs', 'AclBindingRule']
+
+@pulumi.input_type
+class AclBindingRuleArgs:
+    def __init__(__self__, *,
+                 auth_method: pulumi.Input[str],
+                 bind_name: pulumi.Input[str],
+                 bind_type: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 namespace: Optional[pulumi.Input[str]] = None,
+                 selector: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a AclBindingRule resource.
+        :param pulumi.Input[str] auth_method: The name of the ACL auth method this rule apply.
+        :param pulumi.Input[str] bind_name: The name to bind to a token at login-time.
+        :param pulumi.Input[str] bind_type: Specifies the way the binding rule affects a token
+               created at login.
+        :param pulumi.Input[str] description: A free form human readable description of the
+               binding rule.
+        :param pulumi.Input[str] namespace: The namespace to create the binding
+               rule within.
+        :param pulumi.Input[str] selector: The expression used to math this rule against valid
+               identities returned from an auth method validation.
+        """
+        pulumi.set(__self__, "auth_method", auth_method)
+        pulumi.set(__self__, "bind_name", bind_name)
+        pulumi.set(__self__, "bind_type", bind_type)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+        if selector is not None:
+            pulumi.set(__self__, "selector", selector)
+
+    @property
+    @pulumi.getter(name="authMethod")
+    def auth_method(self) -> pulumi.Input[str]:
+        """
+        The name of the ACL auth method this rule apply.
+        """
+        return pulumi.get(self, "auth_method")
+
+    @auth_method.setter
+    def auth_method(self, value: pulumi.Input[str]):
+        pulumi.set(self, "auth_method", value)
+
+    @property
+    @pulumi.getter(name="bindName")
+    def bind_name(self) -> pulumi.Input[str]:
+        """
+        The name to bind to a token at login-time.
+        """
+        return pulumi.get(self, "bind_name")
+
+    @bind_name.setter
+    def bind_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "bind_name", value)
+
+    @property
+    @pulumi.getter(name="bindType")
+    def bind_type(self) -> pulumi.Input[str]:
+        """
+        Specifies the way the binding rule affects a token
+        created at login.
+        """
+        return pulumi.get(self, "bind_type")
+
+    @bind_type.setter
+    def bind_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "bind_type", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A free form human readable description of the
+        binding rule.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[pulumi.Input[str]]:
+        """
+        The namespace to create the binding
+        rule within.
+        """
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace", value)
+
+    @property
+    @pulumi.getter
+    def selector(self) -> Optional[pulumi.Input[str]]:
+        """
+        The expression used to math this rule against valid
+        identities returned from an auth method validation.
+        """
+        return pulumi.get(self, "selector")
+
+    @selector.setter
+    def selector(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "selector", value)
 
 
 class AclBindingRule(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -66,6 +175,65 @@ class AclBindingRule(pulumi.CustomResource):
         :param pulumi.Input[str] selector: The expression used to math this rule against valid
                identities returned from an auth method validation.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: AclBindingRuleArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Starting with Consul 1.5.0, the AclBindingRule resource can be used to
+        managed Consul ACL binding rules.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_consul as consul
+
+        minikube = consul.AclAuthMethod("minikube",
+            config={
+                "CACert": \"\"\"-----BEGIN CERTIFICATE-----
+        ...-----END CERTIFICATE-----
+
+        \"\"\",
+                "Host": "https://192.0.2.42:8443",
+                "ServiceAccountJWT": "eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9...",
+            },
+            description="dev minikube cluster",
+            type="kubernetes")
+        test = consul.AclBindingRule("test",
+            auth_method=minikube.name,
+            bind_name="minikube",
+            bind_type="service",
+            description="foobar",
+            selector="serviceaccount.namespace==default")
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param AclBindingRuleArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(AclBindingRuleArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 auth_method: Optional[pulumi.Input[str]] = None,
+                 bind_name: Optional[pulumi.Input[str]] = None,
+                 bind_type: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 namespace: Optional[pulumi.Input[str]] = None,
+                 selector: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

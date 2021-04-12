@@ -5,13 +5,119 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['AclToken']
+__all__ = ['AclTokenArgs', 'AclToken']
+
+@pulumi.input_type
+class AclTokenArgs:
+    def __init__(__self__, *,
+                 accessor_id: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 local: Optional[pulumi.Input[bool]] = None,
+                 namespace: Optional[pulumi.Input[str]] = None,
+                 policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        The set of arguments for constructing a AclToken resource.
+        :param pulumi.Input[str] accessor_id: The uuid of the token. If omitted, Consul will
+               generate a random uuid.
+        :param pulumi.Input[str] description: The description of the token.
+        :param pulumi.Input[bool] local: The flag to set the token local to the current datacenter.
+        :param pulumi.Input[str] namespace: The namespace to create the token within.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] policies: The list of policies attached to the token.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: The list of roles attached to the token.
+        """
+        if accessor_id is not None:
+            pulumi.set(__self__, "accessor_id", accessor_id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if local is not None:
+            pulumi.set(__self__, "local", local)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+        if policies is not None:
+            pulumi.set(__self__, "policies", policies)
+        if roles is not None:
+            pulumi.set(__self__, "roles", roles)
+
+    @property
+    @pulumi.getter(name="accessorId")
+    def accessor_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The uuid of the token. If omitted, Consul will
+        generate a random uuid.
+        """
+        return pulumi.get(self, "accessor_id")
+
+    @accessor_id.setter
+    def accessor_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "accessor_id", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the token.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def local(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The flag to set the token local to the current datacenter.
+        """
+        return pulumi.get(self, "local")
+
+    @local.setter
+    def local(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "local", value)
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[pulumi.Input[str]]:
+        """
+        The namespace to create the token within.
+        """
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace", value)
+
+    @property
+    @pulumi.getter
+    def policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The list of policies attached to the token.
+        """
+        return pulumi.get(self, "policies")
+
+    @policies.setter
+    def policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "policies", value)
+
+    @property
+    @pulumi.getter
+    def roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The list of roles attached to the token.
+        """
+        return pulumi.get(self, "roles")
+
+    @roles.setter
+    def roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "roles", value)
 
 
 class AclToken(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -67,6 +173,69 @@ class AclToken(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] policies: The list of policies attached to the token.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: The list of roles attached to the token.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[AclTokenArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        The `AclToken` resource writes an ACL token into Consul.
+
+        ## Example Usage
+        ### Basic usage
+
+        ```python
+        import pulumi
+        import pulumi_consul as consul
+
+        agent = consul.AclPolicy("agent", rules=\"\"\"node_prefix "" {
+          policy = "read"
+        }
+
+        \"\"\")
+        test = consul.AclToken("test",
+            description="my test token",
+            local=True,
+            policies=[agent.name])
+        ```
+
+        ## Import
+
+        `consul_acl_token` can be imported. This is especially useful to manage the anonymous and the master token with Terraform
+
+        ```sh
+         $ pulumi import consul:index/aclToken:AclToken anonymous 00000000-0000-0000-0000-000000000002
+        ```
+
+        ```sh
+         $ pulumi import consul:index/aclToken:AclToken master-token 624d94ca-bc5c-f960-4e83-0a609cf588be
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param AclTokenArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(AclTokenArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 accessor_id: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 local: Optional[pulumi.Input[bool]] = None,
+                 namespace: Optional[pulumi.Input[str]] = None,
+                 policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

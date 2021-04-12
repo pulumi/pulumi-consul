@@ -5,13 +5,68 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['ConfigEntry']
+__all__ = ['ConfigEntryArgs', 'ConfigEntry']
+
+@pulumi.input_type
+class ConfigEntryArgs:
+    def __init__(__self__, *,
+                 kind: pulumi.Input[str],
+                 config_json: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a ConfigEntry resource.
+        :param pulumi.Input[str] kind: The kind of configuration entry to register.
+        :param pulumi.Input[str] config_json: An arbitrary map of configuration values.
+        :param pulumi.Input[str] name: The name of the configuration entry being registred.
+        """
+        pulumi.set(__self__, "kind", kind)
+        if config_json is not None:
+            pulumi.set(__self__, "config_json", config_json)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> pulumi.Input[str]:
+        """
+        The kind of configuration entry to register.
+        """
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: pulumi.Input[str]):
+        pulumi.set(self, "kind", value)
+
+    @property
+    @pulumi.getter(name="configJson")
+    def config_json(self) -> Optional[pulumi.Input[str]]:
+        """
+        An arbitrary map of configuration values.
+        """
+        return pulumi.get(self, "config_json")
+
+    @config_json.setter
+    def config_json(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "config_json", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the configuration entry being registred.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
 
 class ConfigEntry(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -199,6 +254,205 @@ class ConfigEntry(pulumi.CustomResource):
         :param pulumi.Input[str] kind: The kind of configuration entry to register.
         :param pulumi.Input[str] name: The name of the configuration entry being registred.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ConfigEntryArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        The [Configuration Entry](https://www.consul.io/docs/agent/config_entries.html)
+        resource can be used to provide cluster-wide defaults for various aspects of
+        Consul.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_consul as consul
+
+        proxy_defaults = consul.ConfigEntry("proxyDefaults",
+            kind="proxy-defaults",
+            config_json=json.dumps({
+                "Config": {
+                    "local_connect_timeout_ms": 1000,
+                    "handshake_timeout_ms": 10000,
+                },
+            }))
+        web = consul.ConfigEntry("web",
+            kind="service-defaults",
+            config_json=json.dumps({
+                "Protocol": "http",
+            }))
+        admin = consul.ConfigEntry("admin",
+            kind="service-defaults",
+            config_json=json.dumps({
+                "Protocol": "http",
+            }))
+        service_resolver = consul.ConfigEntry("serviceResolver",
+            kind="service-resolver",
+            config_json=json.dumps({
+                "DefaultSubset": "v1",
+                "Subsets": {
+                    "v1": {
+                        "Filter": "Service.Meta.version == v1",
+                    },
+                    "v2": {
+                        "Filter": "Service.Meta.version == v2",
+                    },
+                },
+            }))
+        service_splitter = consul.ConfigEntry("serviceSplitter",
+            kind="service-splitter",
+            config_json=json.dumps({
+                "Splits": [
+                    {
+                        "Weight": 90,
+                        "ServiceSubset": "v1",
+                    },
+                    {
+                        "Weight": 10,
+                        "ServiceSubset": "v2",
+                    },
+                ],
+            }))
+        service_router = consul.ConfigEntry("serviceRouter",
+            kind="service-router",
+            config_json=json.dumps({
+                "Routes": [{
+                    "Match": {
+                        "HTTP": {
+                            "PathPrefix": "/admin",
+                        },
+                    },
+                    "Destination": {
+                        "Service": "admin",
+                    },
+                }],
+            }))
+        ingress_gateway = consul.ConfigEntry("ingressGateway",
+            kind="ingress-gateway",
+            config_json=json.dumps({
+                "TLS": {
+                    "Enabled": True,
+                },
+                "Listeners": [{
+                    "Port": 8000,
+                    "Protocol": "http",
+                    "Services": [{
+                        "Name": "*",
+                    }],
+                }],
+            }))
+        terminating_gateway = consul.ConfigEntry("terminatingGateway",
+            kind="terminating-gateway",
+            config_json=json.dumps({
+                "Services": [{
+                    "Name": "billing",
+                }],
+            }))
+        ```
+        ### `service-intentions` config entry
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_consul as consul
+
+        service_intentions = consul.ConfigEntry("serviceIntentions",
+            kind="service-intentions",
+            config_json=json.dumps({
+                "Sources": [
+                    {
+                        "Action": "allow",
+                        "Name": "frontend-webapp",
+                        "Precedence": 9,
+                        "Type": "consul",
+                    },
+                    {
+                        "Action": "allow",
+                        "Name": "nightly-cronjob",
+                        "Precedence": 9,
+                        "Type": "consul",
+                    },
+                ],
+            }))
+        ```
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_consul as consul
+
+        sd = consul.ConfigEntry("sd",
+            kind="service-defaults",
+            config_json=json.dumps({
+                "Protocol": "http",
+            }))
+        service_intentions = consul.ConfigEntry("serviceIntentions",
+            kind="service-intentions",
+            config_json=json.dumps({
+                "Sources": [
+                    {
+                        "Name": "contractor-webapp",
+                        "Permissions": [{
+                            "Action": "allow",
+                            "HTTP": {
+                                "Methods": [
+                                    "GET",
+                                    "HEAD",
+                                ],
+                                "PathExact": "/healtz",
+                            },
+                        }],
+                        "Precedence": 9,
+                        "Type": "consul",
+                    },
+                    {
+                        "Name": "admin-dashboard-webapp",
+                        "Permissions": [
+                            {
+                                "Action": "deny",
+                                "HTTP": {
+                                    "PathPrefix": "/debugz",
+                                },
+                            },
+                            {
+                                "Action": "allow",
+                                "HTTP": {
+                                    "PathPrefix": "/",
+                                },
+                            },
+                        ],
+                        "Precedence": 9,
+                        "Type": "consul",
+                    },
+                ],
+            }))
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ConfigEntryArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ConfigEntryArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 config_json: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

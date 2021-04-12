@@ -5,13 +5,169 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['AutopilotConfig']
+__all__ = ['AutopilotConfigArgs', 'AutopilotConfig']
+
+@pulumi.input_type
+class AutopilotConfigArgs:
+    def __init__(__self__, *,
+                 cleanup_dead_servers: Optional[pulumi.Input[bool]] = None,
+                 datacenter: Optional[pulumi.Input[str]] = None,
+                 disable_upgrade_migration: Optional[pulumi.Input[bool]] = None,
+                 last_contact_threshold: Optional[pulumi.Input[str]] = None,
+                 max_trailing_logs: Optional[pulumi.Input[int]] = None,
+                 redundancy_zone_tag: Optional[pulumi.Input[str]] = None,
+                 server_stabilization_time: Optional[pulumi.Input[str]] = None,
+                 upgrade_version_tag: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a AutopilotConfig resource.
+        :param pulumi.Input[bool] cleanup_dead_servers: Whether to remove failing servers when a
+               replacement comes online. Defaults to true.
+        :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the agent's
+               default datacenter and the datacenter in the provider setup.
+        :param pulumi.Input[bool] disable_upgrade_migration: Whether to disable [upgrade migrations](https://www.consul.io/docs/guides/autopilot.html#redundancy-zones).
+               Defaults to false.
+        :param pulumi.Input[str] last_contact_threshold: The time after which a server is
+               considered as unhealthy and will be removed. Defaults to `"200ms"`.
+        :param pulumi.Input[int] max_trailing_logs: The maximum number of Raft log entries a
+               server can trail the leader. Defaults to 250.
+        :param pulumi.Input[str] redundancy_zone_tag: The [redundancy zone](https://www.consul.io/docs/guides/autopilot.html#redundancy-zones)
+               tag to use. Consul will try to keep one voting server by zone to take advantage
+               of isolated failure domains. Defaults to an empty string.
+        :param pulumi.Input[str] server_stabilization_time: The period to wait for a server to be
+               healthy and stable before being promoted to a full, voting member. Defaults to
+               `"10s"`.
+        :param pulumi.Input[str] upgrade_version_tag: The tag to override the version information
+               used during a migration. Defaults to an empty string.
+        """
+        if cleanup_dead_servers is not None:
+            pulumi.set(__self__, "cleanup_dead_servers", cleanup_dead_servers)
+        if datacenter is not None:
+            pulumi.set(__self__, "datacenter", datacenter)
+        if disable_upgrade_migration is not None:
+            pulumi.set(__self__, "disable_upgrade_migration", disable_upgrade_migration)
+        if last_contact_threshold is not None:
+            pulumi.set(__self__, "last_contact_threshold", last_contact_threshold)
+        if max_trailing_logs is not None:
+            pulumi.set(__self__, "max_trailing_logs", max_trailing_logs)
+        if redundancy_zone_tag is not None:
+            pulumi.set(__self__, "redundancy_zone_tag", redundancy_zone_tag)
+        if server_stabilization_time is not None:
+            pulumi.set(__self__, "server_stabilization_time", server_stabilization_time)
+        if upgrade_version_tag is not None:
+            pulumi.set(__self__, "upgrade_version_tag", upgrade_version_tag)
+
+    @property
+    @pulumi.getter(name="cleanupDeadServers")
+    def cleanup_dead_servers(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to remove failing servers when a
+        replacement comes online. Defaults to true.
+        """
+        return pulumi.get(self, "cleanup_dead_servers")
+
+    @cleanup_dead_servers.setter
+    def cleanup_dead_servers(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "cleanup_dead_servers", value)
+
+    @property
+    @pulumi.getter
+    def datacenter(self) -> Optional[pulumi.Input[str]]:
+        """
+        The datacenter to use. This overrides the agent's
+        default datacenter and the datacenter in the provider setup.
+        """
+        return pulumi.get(self, "datacenter")
+
+    @datacenter.setter
+    def datacenter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "datacenter", value)
+
+    @property
+    @pulumi.getter(name="disableUpgradeMigration")
+    def disable_upgrade_migration(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to disable [upgrade migrations](https://www.consul.io/docs/guides/autopilot.html#redundancy-zones).
+        Defaults to false.
+        """
+        return pulumi.get(self, "disable_upgrade_migration")
+
+    @disable_upgrade_migration.setter
+    def disable_upgrade_migration(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_upgrade_migration", value)
+
+    @property
+    @pulumi.getter(name="lastContactThreshold")
+    def last_contact_threshold(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time after which a server is
+        considered as unhealthy and will be removed. Defaults to `"200ms"`.
+        """
+        return pulumi.get(self, "last_contact_threshold")
+
+    @last_contact_threshold.setter
+    def last_contact_threshold(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "last_contact_threshold", value)
+
+    @property
+    @pulumi.getter(name="maxTrailingLogs")
+    def max_trailing_logs(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum number of Raft log entries a
+        server can trail the leader. Defaults to 250.
+        """
+        return pulumi.get(self, "max_trailing_logs")
+
+    @max_trailing_logs.setter
+    def max_trailing_logs(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_trailing_logs", value)
+
+    @property
+    @pulumi.getter(name="redundancyZoneTag")
+    def redundancy_zone_tag(self) -> Optional[pulumi.Input[str]]:
+        """
+        The [redundancy zone](https://www.consul.io/docs/guides/autopilot.html#redundancy-zones)
+        tag to use. Consul will try to keep one voting server by zone to take advantage
+        of isolated failure domains. Defaults to an empty string.
+        """
+        return pulumi.get(self, "redundancy_zone_tag")
+
+    @redundancy_zone_tag.setter
+    def redundancy_zone_tag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "redundancy_zone_tag", value)
+
+    @property
+    @pulumi.getter(name="serverStabilizationTime")
+    def server_stabilization_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The period to wait for a server to be
+        healthy and stable before being promoted to a full, voting member. Defaults to
+        `"10s"`.
+        """
+        return pulumi.get(self, "server_stabilization_time")
+
+    @server_stabilization_time.setter
+    def server_stabilization_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "server_stabilization_time", value)
+
+    @property
+    @pulumi.getter(name="upgradeVersionTag")
+    def upgrade_version_tag(self) -> Optional[pulumi.Input[str]]:
+        """
+        The tag to override the version information
+        used during a migration. Defaults to an empty string.
+        """
+        return pulumi.get(self, "upgrade_version_tag")
+
+    @upgrade_version_tag.setter
+    def upgrade_version_tag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "upgrade_version_tag", value)
 
 
 class AutopilotConfig(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -66,6 +222,57 @@ class AutopilotConfig(pulumi.CustomResource):
         :param pulumi.Input[str] upgrade_version_tag: The tag to override the version information
                used during a migration. Defaults to an empty string.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[AutopilotConfigArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides access to the [Autopilot Configuration](https://www.consul.io/docs/guides/autopilot.html)
+        of Consul to automatically manage Consul servers.
+
+        It includes to automatically cleanup dead servers, monitor the status of the Raft
+        cluster and stable server introduction.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_consul as consul
+
+        config = consul.AutopilotConfig("config",
+            cleanup_dead_servers=False,
+            last_contact_threshold="1s",
+            max_trailing_logs=500)
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param AutopilotConfigArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(AutopilotConfigArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 cleanup_dead_servers: Optional[pulumi.Input[bool]] = None,
+                 datacenter: Optional[pulumi.Input[str]] = None,
+                 disable_upgrade_migration: Optional[pulumi.Input[bool]] = None,
+                 last_contact_threshold: Optional[pulumi.Input[str]] = None,
+                 max_trailing_logs: Optional[pulumi.Input[int]] = None,
+                 redundancy_zone_tag: Optional[pulumi.Input[str]] = None,
+                 server_stabilization_time: Optional[pulumi.Input[str]] = None,
+                 upgrade_version_tag: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
