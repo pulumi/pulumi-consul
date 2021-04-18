@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -88,6 +88,126 @@ class KeyPrefixArgs:
     @namespace.setter
     def namespace(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "namespace", value)
+
+    @property
+    @pulumi.getter(name="subkeyCollection")
+    def subkey_collection(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KeyPrefixSubkeyCollectionArgs']]]]:
+        """
+        A subkey to add. Supported values documented below.
+        Multiple blocks supported.
+        """
+        return pulumi.get(self, "subkey_collection")
+
+    @subkey_collection.setter
+    def subkey_collection(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KeyPrefixSubkeyCollectionArgs']]]]):
+        pulumi.set(self, "subkey_collection", value)
+
+    @property
+    @pulumi.getter
+    def subkeys(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A mapping from subkey name (which will be appended
+        to the given `path_prefix`) to the value that should be stored at that key.
+        Use slashes, as shown in the above example, to create "sub-folders" under
+        the given path prefix.
+        """
+        return pulumi.get(self, "subkeys")
+
+    @subkeys.setter
+    def subkeys(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "subkeys", value)
+
+    @property
+    @pulumi.getter
+    def token(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ACL token to use. This overrides the
+        token that the agent provides by default.
+        """
+        return pulumi.get(self, "token")
+
+    @token.setter
+    def token(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "token", value)
+
+
+@pulumi.input_type
+class _KeyPrefixState:
+    def __init__(__self__, *,
+                 datacenter: Optional[pulumi.Input[str]] = None,
+                 namespace: Optional[pulumi.Input[str]] = None,
+                 path_prefix: Optional[pulumi.Input[str]] = None,
+                 subkey_collection: Optional[pulumi.Input[Sequence[pulumi.Input['KeyPrefixSubkeyCollectionArgs']]]] = None,
+                 subkeys: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 token: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering KeyPrefix resources.
+        :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the
+               agent's default datacenter and the datacenter in the provider setup.
+        :param pulumi.Input[str] namespace: The namespace to create the keys within.
+        :param pulumi.Input[str] path_prefix: Specifies the common prefix shared by all keys
+               that will be managed by this resource instance. In most cases this will
+               end with a slash, to manage a "folder" of keys.
+        :param pulumi.Input[Sequence[pulumi.Input['KeyPrefixSubkeyCollectionArgs']]] subkey_collection: A subkey to add. Supported values documented below.
+               Multiple blocks supported.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] subkeys: A mapping from subkey name (which will be appended
+               to the given `path_prefix`) to the value that should be stored at that key.
+               Use slashes, as shown in the above example, to create "sub-folders" under
+               the given path prefix.
+        :param pulumi.Input[str] token: The ACL token to use. This overrides the
+               token that the agent provides by default.
+        """
+        if datacenter is not None:
+            pulumi.set(__self__, "datacenter", datacenter)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+        if path_prefix is not None:
+            pulumi.set(__self__, "path_prefix", path_prefix)
+        if subkey_collection is not None:
+            pulumi.set(__self__, "subkey_collection", subkey_collection)
+        if subkeys is not None:
+            pulumi.set(__self__, "subkeys", subkeys)
+        if token is not None:
+            pulumi.set(__self__, "token", token)
+
+    @property
+    @pulumi.getter
+    def datacenter(self) -> Optional[pulumi.Input[str]]:
+        """
+        The datacenter to use. This overrides the
+        agent's default datacenter and the datacenter in the provider setup.
+        """
+        return pulumi.get(self, "datacenter")
+
+    @datacenter.setter
+    def datacenter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "datacenter", value)
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[pulumi.Input[str]]:
+        """
+        The namespace to create the keys within.
+        """
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace", value)
+
+    @property
+    @pulumi.getter(name="pathPrefix")
+    def path_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the common prefix shared by all keys
+        that will be managed by this resource instance. In most cases this will
+        end with a slash, to manage a "folder" of keys.
+        """
+        return pulumi.get(self, "path_prefix")
+
+    @path_prefix.setter
+    def path_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path_prefix", value)
 
     @property
     @pulumi.getter(name="subkeyCollection")
@@ -225,16 +345,16 @@ class KeyPrefix(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = KeyPrefixArgs.__new__(KeyPrefixArgs)
 
-            __props__['datacenter'] = datacenter
-            __props__['namespace'] = namespace
+            __props__.__dict__["datacenter"] = datacenter
+            __props__.__dict__["namespace"] = namespace
             if path_prefix is None and not opts.urn:
                 raise TypeError("Missing required property 'path_prefix'")
-            __props__['path_prefix'] = path_prefix
-            __props__['subkey_collection'] = subkey_collection
-            __props__['subkeys'] = subkeys
-            __props__['token'] = token
+            __props__.__dict__["path_prefix"] = path_prefix
+            __props__.__dict__["subkey_collection"] = subkey_collection
+            __props__.__dict__["subkeys"] = subkeys
+            __props__.__dict__["token"] = token
         super(KeyPrefix, __self__).__init__(
             'consul:index/keyPrefix:KeyPrefix',
             resource_name,
@@ -275,14 +395,14 @@ class KeyPrefix(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _KeyPrefixState.__new__(_KeyPrefixState)
 
-        __props__["datacenter"] = datacenter
-        __props__["namespace"] = namespace
-        __props__["path_prefix"] = path_prefix
-        __props__["subkey_collection"] = subkey_collection
-        __props__["subkeys"] = subkeys
-        __props__["token"] = token
+        __props__.__dict__["datacenter"] = datacenter
+        __props__.__dict__["namespace"] = namespace
+        __props__.__dict__["path_prefix"] = path_prefix
+        __props__.__dict__["subkey_collection"] = subkey_collection
+        __props__.__dict__["subkeys"] = subkeys
+        __props__.__dict__["token"] = token
         return KeyPrefix(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -340,10 +460,4 @@ class KeyPrefix(pulumi.CustomResource):
         token that the agent provides by default.
         """
         return pulumi.get(self, "token")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 from . import outputs
 
 __all__ = [
@@ -46,6 +46,23 @@ __all__ = [
 
 @pulumi.output_type
 class AclAuthMethodNamespaceRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bindNamespace":
+            suggest = "bind_namespace"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AclAuthMethodNamespaceRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AclAuthMethodNamespaceRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AclAuthMethodNamespaceRule.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  bind_namespace: str,
                  selector: Optional[str] = None):
@@ -79,12 +96,26 @@ class AclAuthMethodNamespaceRule(dict):
         """
         return pulumi.get(self, "selector")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AclRoleServiceIdentity(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceName":
+            suggest = "service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AclRoleServiceIdentity. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AclRoleServiceIdentity.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AclRoleServiceIdentity.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  service_name: str,
                  datacenters: Optional[Sequence[str]] = None):
@@ -111,9 +142,6 @@ class AclRoleServiceIdentity(dict):
         The datacenters the effective policy is valid within.
         """
         return pulumi.get(self, "datacenters")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -185,9 +213,6 @@ class CatalogEntryService(dict):
         """
         return pulumi.get(self, "tags")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class KeyPrefixSubkeyCollection(dict):
@@ -232,9 +257,6 @@ class KeyPrefixSubkeyCollection(dict):
         to attach to the key (defaults to 0).
         """
         return pulumi.get(self, "flags")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -314,9 +336,6 @@ class KeysKey(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PreparedQueryDns(dict):
@@ -336,12 +355,26 @@ class PreparedQueryDns(dict):
         """
         return pulumi.get(self, "ttl")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PreparedQueryFailover(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nearestN":
+            suggest = "nearest_n"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreparedQueryFailover. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreparedQueryFailover.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreparedQueryFailover.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  datacenters: Optional[Sequence[str]] = None,
                  nearest_n: Optional[int] = None):
@@ -371,9 +404,6 @@ class PreparedQueryFailover(dict):
         sorted in ascending order of estimated RTT.
         """
         return pulumi.get(self, "nearest_n")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -408,12 +438,30 @@ class PreparedQueryTemplate(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceCheck(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "checkId":
+            suggest = "check_id"
+        elif key == "deregisterCriticalServiceAfter":
+            suggest = "deregister_critical_service_after"
+        elif key == "tlsSkipVerify":
+            suggest = "tls_skip_verify"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceCheck. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceCheck.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceCheck.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  check_id: str,
                  interval: str,
@@ -572,9 +620,6 @@ class ServiceCheck(dict):
         """
         return pulumi.get(self, "tls_skip_verify")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceCheckHeader(dict):
@@ -603,9 +648,6 @@ class ServiceCheckHeader(dict):
         The header's list of values.
         """
         return pulumi.get(self, "values")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type

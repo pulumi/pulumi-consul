@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Starting with Consul 1.5.0, the AclAuthMethod resource can be used to
@@ -23,8 +23,8 @@ import (
 // import (
 // 	"encoding/json"
 //
-// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -58,8 +58,8 @@ import (
 // import (
 // 	"encoding/json"
 //
-// 	"github.com/pulumi/pulumi-consul/sdk/v2/go/consul"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {

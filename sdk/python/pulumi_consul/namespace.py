@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['NamespaceArgs', 'Namespace']
 
@@ -20,6 +20,100 @@ class NamespaceArgs:
                  role_defaults: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Namespace resource.
+        :param pulumi.Input[str] description: Free form namespace description.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: Specifies arbitrary KV metadata to associate with the
+               namespace.
+        :param pulumi.Input[str] name: The namespace name.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] policy_defaults: The list of default policies that should be
+               applied to all tokens created in this namespace.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] role_defaults: The list of default roles that should be applied
+               to all tokens created in this namespace.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if meta is not None:
+            pulumi.set(__self__, "meta", meta)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if policy_defaults is not None:
+            pulumi.set(__self__, "policy_defaults", policy_defaults)
+        if role_defaults is not None:
+            pulumi.set(__self__, "role_defaults", role_defaults)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Free form namespace description.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def meta(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Specifies arbitrary KV metadata to associate with the
+        namespace.
+        """
+        return pulumi.get(self, "meta")
+
+    @meta.setter
+    def meta(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "meta", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The namespace name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="policyDefaults")
+    def policy_defaults(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The list of default policies that should be
+        applied to all tokens created in this namespace.
+        """
+        return pulumi.get(self, "policy_defaults")
+
+    @policy_defaults.setter
+    def policy_defaults(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "policy_defaults", value)
+
+    @property
+    @pulumi.getter(name="roleDefaults")
+    def role_defaults(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The list of default roles that should be applied
+        to all tokens created in this namespace.
+        """
+        return pulumi.get(self, "role_defaults")
+
+    @role_defaults.setter
+    def role_defaults(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "role_defaults", value)
+
+
+@pulumi.input_type
+class _NamespaceState:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[str]] = None,
+                 meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 policy_defaults: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 role_defaults: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        Input properties used for looking up and filtering Namespace resources.
         :param pulumi.Input[str] description: Free form namespace description.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: Specifies arbitrary KV metadata to associate with the
                namespace.
@@ -208,13 +302,13 @@ class Namespace(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = NamespaceArgs.__new__(NamespaceArgs)
 
-            __props__['description'] = description
-            __props__['meta'] = meta
-            __props__['name'] = name
-            __props__['policy_defaults'] = policy_defaults
-            __props__['role_defaults'] = role_defaults
+            __props__.__dict__["description"] = description
+            __props__.__dict__["meta"] = meta
+            __props__.__dict__["name"] = name
+            __props__.__dict__["policy_defaults"] = policy_defaults
+            __props__.__dict__["role_defaults"] = role_defaults
         super(Namespace, __self__).__init__(
             'consul:index/namespace:Namespace',
             resource_name,
@@ -248,13 +342,13 @@ class Namespace(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _NamespaceState.__new__(_NamespaceState)
 
-        __props__["description"] = description
-        __props__["meta"] = meta
-        __props__["name"] = name
-        __props__["policy_defaults"] = policy_defaults
-        __props__["role_defaults"] = role_defaults
+        __props__.__dict__["description"] = description
+        __props__.__dict__["meta"] = meta
+        __props__.__dict__["name"] = name
+        __props__.__dict__["policy_defaults"] = policy_defaults
+        __props__.__dict__["role_defaults"] = role_defaults
         return Namespace(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -299,10 +393,4 @@ class Namespace(pulumi.CustomResource):
         to all tokens created in this namespace.
         """
         return pulumi.get(self, "role_defaults")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -178,6 +178,213 @@ class ServiceArgs:
     @namespace.setter
     def namespace(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "namespace", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port of the service.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter(name="serviceId")
+    def service_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        - If the service ID is not provided, it will be defaulted to the value
+        of the `name` attribute.
+        """
+        return pulumi.get(self, "service_id")
+
+    @service_id.setter
+    def service_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_id", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of values that are opaque to Consul,
+        but can be used to distinguish between services or nodes.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+
+@pulumi.input_type
+class _ServiceState:
+    def __init__(__self__, *,
+                 address: Optional[pulumi.Input[str]] = None,
+                 checks: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceCheckArgs']]]] = None,
+                 datacenter: Optional[pulumi.Input[str]] = None,
+                 enable_tag_override: Optional[pulumi.Input[bool]] = None,
+                 external: Optional[pulumi.Input[bool]] = None,
+                 meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 namespace: Optional[pulumi.Input[str]] = None,
+                 node: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
+                 service_id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        Input properties used for looking up and filtering Service resources.
+        :param pulumi.Input[str] address: The address of the service. Defaults to the
+               address of the node.
+        :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the
+               agent's default datacenter and the datacenter in the provider setup.
+        :param pulumi.Input[bool] enable_tag_override: Specifies to disable the
+               anti-entropy feature for this service's tags. Defaults to `false`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: A map of arbitrary KV metadata linked to the service
+               instance.
+        :param pulumi.Input[str] name: The name of the health-check.
+        :param pulumi.Input[str] namespace: The namespace to create the service within.
+        :param pulumi.Input[str] node: The name of the node the to register the service on.
+        :param pulumi.Input[int] port: The port of the service.
+        :param pulumi.Input[str] service_id: - If the service ID is not provided, it will be defaulted to the value
+               of the `name` attribute.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of values that are opaque to Consul,
+               but can be used to distinguish between services or nodes.
+        """
+        if address is not None:
+            pulumi.set(__self__, "address", address)
+        if checks is not None:
+            pulumi.set(__self__, "checks", checks)
+        if datacenter is not None:
+            pulumi.set(__self__, "datacenter", datacenter)
+        if enable_tag_override is not None:
+            pulumi.set(__self__, "enable_tag_override", enable_tag_override)
+        if external is not None:
+            warnings.warn("""The external field has been deprecated and does nothing.""", DeprecationWarning)
+            pulumi.log.warn("""external is deprecated: The external field has been deprecated and does nothing.""")
+        if external is not None:
+            pulumi.set(__self__, "external", external)
+        if meta is not None:
+            pulumi.set(__self__, "meta", meta)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+        if node is not None:
+            pulumi.set(__self__, "node", node)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if service_id is not None:
+            pulumi.set(__self__, "service_id", service_id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def address(self) -> Optional[pulumi.Input[str]]:
+        """
+        The address of the service. Defaults to the
+        address of the node.
+        """
+        return pulumi.get(self, "address")
+
+    @address.setter
+    def address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "address", value)
+
+    @property
+    @pulumi.getter
+    def checks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceCheckArgs']]]]:
+        return pulumi.get(self, "checks")
+
+    @checks.setter
+    def checks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceCheckArgs']]]]):
+        pulumi.set(self, "checks", value)
+
+    @property
+    @pulumi.getter
+    def datacenter(self) -> Optional[pulumi.Input[str]]:
+        """
+        The datacenter to use. This overrides the
+        agent's default datacenter and the datacenter in the provider setup.
+        """
+        return pulumi.get(self, "datacenter")
+
+    @datacenter.setter
+    def datacenter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "datacenter", value)
+
+    @property
+    @pulumi.getter(name="enableTagOverride")
+    def enable_tag_override(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies to disable the
+        anti-entropy feature for this service's tags. Defaults to `false`.
+        """
+        return pulumi.get(self, "enable_tag_override")
+
+    @enable_tag_override.setter
+    def enable_tag_override(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_tag_override", value)
+
+    @property
+    @pulumi.getter
+    def external(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "external")
+
+    @external.setter
+    def external(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "external", value)
+
+    @property
+    @pulumi.getter
+    def meta(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A map of arbitrary KV metadata linked to the service
+        instance.
+        """
+        return pulumi.get(self, "meta")
+
+    @meta.setter
+    def meta(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "meta", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the health-check.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[pulumi.Input[str]]:
+        """
+        The namespace to create the service within.
+        """
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace", value)
+
+    @property
+    @pulumi.getter
+    def node(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the node the to register the service on.
+        """
+        return pulumi.get(self, "node")
+
+    @node.setter
+    def node(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "node", value)
 
     @property
     @pulumi.getter
@@ -444,25 +651,25 @@ class Service(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ServiceArgs.__new__(ServiceArgs)
 
-            __props__['address'] = address
-            __props__['checks'] = checks
-            __props__['datacenter'] = datacenter
-            __props__['enable_tag_override'] = enable_tag_override
+            __props__.__dict__["address"] = address
+            __props__.__dict__["checks"] = checks
+            __props__.__dict__["datacenter"] = datacenter
+            __props__.__dict__["enable_tag_override"] = enable_tag_override
             if external is not None and not opts.urn:
                 warnings.warn("""The external field has been deprecated and does nothing.""", DeprecationWarning)
                 pulumi.log.warn("""external is deprecated: The external field has been deprecated and does nothing.""")
-            __props__['external'] = external
-            __props__['meta'] = meta
-            __props__['name'] = name
-            __props__['namespace'] = namespace
+            __props__.__dict__["external"] = external
+            __props__.__dict__["meta"] = meta
+            __props__.__dict__["name"] = name
+            __props__.__dict__["namespace"] = namespace
             if node is None and not opts.urn:
                 raise TypeError("Missing required property 'node'")
-            __props__['node'] = node
-            __props__['port'] = port
-            __props__['service_id'] = service_id
-            __props__['tags'] = tags
+            __props__.__dict__["node"] = node
+            __props__.__dict__["port"] = port
+            __props__.__dict__["service_id"] = service_id
+            __props__.__dict__["tags"] = tags
         super(Service, __self__).__init__(
             'consul:index/service:Service',
             resource_name,
@@ -511,20 +718,20 @@ class Service(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ServiceState.__new__(_ServiceState)
 
-        __props__["address"] = address
-        __props__["checks"] = checks
-        __props__["datacenter"] = datacenter
-        __props__["enable_tag_override"] = enable_tag_override
-        __props__["external"] = external
-        __props__["meta"] = meta
-        __props__["name"] = name
-        __props__["namespace"] = namespace
-        __props__["node"] = node
-        __props__["port"] = port
-        __props__["service_id"] = service_id
-        __props__["tags"] = tags
+        __props__.__dict__["address"] = address
+        __props__.__dict__["checks"] = checks
+        __props__.__dict__["datacenter"] = datacenter
+        __props__.__dict__["enable_tag_override"] = enable_tag_override
+        __props__.__dict__["external"] = external
+        __props__.__dict__["meta"] = meta
+        __props__.__dict__["name"] = name
+        __props__.__dict__["namespace"] = namespace
+        __props__.__dict__["node"] = node
+        __props__.__dict__["port"] = port
+        __props__.__dict__["service_id"] = service_id
+        __props__.__dict__["tags"] = tags
         return Service(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -622,10 +829,4 @@ class Service(pulumi.CustomResource):
         but can be used to distinguish between services or nodes.
         """
         return pulumi.get(self, "tags")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

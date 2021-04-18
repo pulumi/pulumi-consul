@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['AclPolicyArgs', 'AclPolicy']
 
@@ -95,6 +95,94 @@ class AclPolicyArgs:
     @namespace.setter
     def namespace(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "namespace", value)
+
+
+@pulumi.input_type
+class _AclPolicyState:
+    def __init__(__self__, *,
+                 datacenters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 namespace: Optional[pulumi.Input[str]] = None,
+                 rules: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering AclPolicy resources.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] datacenters: The datacenters of the policy.
+        :param pulumi.Input[str] description: The description of the policy.
+        :param pulumi.Input[str] name: The name of the policy.
+        :param pulumi.Input[str] namespace: The namespace to create the policy within.
+        :param pulumi.Input[str] rules: The rules of the policy.
+        """
+        if datacenters is not None:
+            pulumi.set(__self__, "datacenters", datacenters)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+
+    @property
+    @pulumi.getter
+    def datacenters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The datacenters of the policy.
+        """
+        return pulumi.get(self, "datacenters")
+
+    @datacenters.setter
+    def datacenters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "datacenters", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the policy.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the policy.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[pulumi.Input[str]]:
+        """
+        The namespace to create the policy within.
+        """
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace", value)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[str]]:
+        """
+        The rules of the policy.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "rules", value)
 
 
 class AclPolicy(pulumi.CustomResource):
@@ -214,15 +302,15 @@ class AclPolicy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = AclPolicyArgs.__new__(AclPolicyArgs)
 
-            __props__['datacenters'] = datacenters
-            __props__['description'] = description
-            __props__['name'] = name
-            __props__['namespace'] = namespace
+            __props__.__dict__["datacenters"] = datacenters
+            __props__.__dict__["description"] = description
+            __props__.__dict__["name"] = name
+            __props__.__dict__["namespace"] = namespace
             if rules is None and not opts.urn:
                 raise TypeError("Missing required property 'rules'")
-            __props__['rules'] = rules
+            __props__.__dict__["rules"] = rules
         super(AclPolicy, __self__).__init__(
             'consul:index/aclPolicy:AclPolicy',
             resource_name,
@@ -253,13 +341,13 @@ class AclPolicy(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _AclPolicyState.__new__(_AclPolicyState)
 
-        __props__["datacenters"] = datacenters
-        __props__["description"] = description
-        __props__["name"] = name
-        __props__["namespace"] = namespace
-        __props__["rules"] = rules
+        __props__.__dict__["datacenters"] = datacenters
+        __props__.__dict__["description"] = description
+        __props__.__dict__["name"] = name
+        __props__.__dict__["namespace"] = namespace
+        __props__.__dict__["rules"] = rules
         return AclPolicy(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -301,10 +389,4 @@ class AclPolicy(pulumi.CustomResource):
         The rules of the policy.
         """
         return pulumi.get(self, "rules")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

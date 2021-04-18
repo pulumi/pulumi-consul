@@ -4,7 +4,7 @@
 package consul
 
 import (
-	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The `getServices` data source returns a list of Consul services that

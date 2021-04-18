@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -22,6 +22,96 @@ class AclRoleArgs:
                  service_identities: Optional[pulumi.Input[Sequence[pulumi.Input['AclRoleServiceIdentityArgs']]]] = None):
         """
         The set of arguments for constructing a AclRole resource.
+        :param pulumi.Input[str] description: A free form human readable description of the role.
+        :param pulumi.Input[str] name: The name of the ACL role.
+        :param pulumi.Input[str] namespace: The namespace to create the role within.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] policies: The list of policies that should be applied to the role.
+        :param pulumi.Input[Sequence[pulumi.Input['AclRoleServiceIdentityArgs']]] service_identities: The list of service identities that should
+               be applied to the role.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+        if policies is not None:
+            pulumi.set(__self__, "policies", policies)
+        if service_identities is not None:
+            pulumi.set(__self__, "service_identities", service_identities)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A free form human readable description of the role.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the ACL role.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[pulumi.Input[str]]:
+        """
+        The namespace to create the role within.
+        """
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace", value)
+
+    @property
+    @pulumi.getter
+    def policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The list of policies that should be applied to the role.
+        """
+        return pulumi.get(self, "policies")
+
+    @policies.setter
+    def policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "policies", value)
+
+    @property
+    @pulumi.getter(name="serviceIdentities")
+    def service_identities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AclRoleServiceIdentityArgs']]]]:
+        """
+        The list of service identities that should
+        be applied to the role.
+        """
+        return pulumi.get(self, "service_identities")
+
+    @service_identities.setter
+    def service_identities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AclRoleServiceIdentityArgs']]]]):
+        pulumi.set(self, "service_identities", value)
+
+
+@pulumi.input_type
+class _AclRoleState:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 namespace: Optional[pulumi.Input[str]] = None,
+                 policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 service_identities: Optional[pulumi.Input[Sequence[pulumi.Input['AclRoleServiceIdentityArgs']]]] = None):
+        """
+        Input properties used for looking up and filtering AclRole resources.
         :param pulumi.Input[str] description: A free form human readable description of the role.
         :param pulumi.Input[str] name: The name of the ACL role.
         :param pulumi.Input[str] namespace: The namespace to create the role within.
@@ -224,13 +314,13 @@ class AclRole(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = AclRoleArgs.__new__(AclRoleArgs)
 
-            __props__['description'] = description
-            __props__['name'] = name
-            __props__['namespace'] = namespace
-            __props__['policies'] = policies
-            __props__['service_identities'] = service_identities
+            __props__.__dict__["description"] = description
+            __props__.__dict__["name"] = name
+            __props__.__dict__["namespace"] = namespace
+            __props__.__dict__["policies"] = policies
+            __props__.__dict__["service_identities"] = service_identities
         super(AclRole, __self__).__init__(
             'consul:index/aclRole:AclRole',
             resource_name,
@@ -262,13 +352,13 @@ class AclRole(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _AclRoleState.__new__(_AclRoleState)
 
-        __props__["description"] = description
-        __props__["name"] = name
-        __props__["namespace"] = namespace
-        __props__["policies"] = policies
-        __props__["service_identities"] = service_identities
+        __props__.__dict__["description"] = description
+        __props__.__dict__["name"] = name
+        __props__.__dict__["namespace"] = namespace
+        __props__.__dict__["policies"] = policies
+        __props__.__dict__["service_identities"] = service_identities
         return AclRole(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -311,10 +401,4 @@ class AclRole(pulumi.CustomResource):
         be applied to the role.
         """
         return pulumi.get(self, "service_identities")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 
