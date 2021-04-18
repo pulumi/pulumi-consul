@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['ProviderArgs', 'Provider']
 
@@ -276,31 +276,25 @@ class Provider(pulumi.ProviderResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ProviderArgs.__new__(ProviderArgs)
 
-            __props__['address'] = address
-            __props__['ca_file'] = ca_file
-            __props__['ca_path'] = ca_path
-            __props__['ca_pem'] = ca_pem
-            __props__['cert_file'] = cert_file
-            __props__['cert_pem'] = cert_pem
-            __props__['datacenter'] = datacenter
-            __props__['http_auth'] = http_auth
-            __props__['insecure_https'] = pulumi.Output.from_input(insecure_https).apply(pulumi.runtime.to_json) if insecure_https is not None else None
-            __props__['key_file'] = key_file
-            __props__['key_pem'] = key_pem
-            __props__['namespace'] = namespace
-            __props__['scheme'] = scheme
-            __props__['token'] = token
+            __props__.__dict__["address"] = address
+            __props__.__dict__["ca_file"] = ca_file
+            __props__.__dict__["ca_path"] = ca_path
+            __props__.__dict__["ca_pem"] = ca_pem
+            __props__.__dict__["cert_file"] = cert_file
+            __props__.__dict__["cert_pem"] = cert_pem
+            __props__.__dict__["datacenter"] = datacenter
+            __props__.__dict__["http_auth"] = http_auth
+            __props__.__dict__["insecure_https"] = pulumi.Output.from_input(insecure_https).apply(pulumi.runtime.to_json) if insecure_https is not None else None
+            __props__.__dict__["key_file"] = key_file
+            __props__.__dict__["key_pem"] = key_pem
+            __props__.__dict__["namespace"] = namespace
+            __props__.__dict__["scheme"] = scheme
+            __props__.__dict__["token"] = token
         super(Provider, __self__).__init__(
             'consul',
             resource_name,
             __props__,
             opts)
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

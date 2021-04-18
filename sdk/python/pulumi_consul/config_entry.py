@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['ConfigEntryArgs', 'ConfigEntry']
 
@@ -51,6 +51,62 @@ class ConfigEntryArgs:
     @config_json.setter
     def config_json(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "config_json", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the configuration entry being registred.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class _ConfigEntryState:
+    def __init__(__self__, *,
+                 config_json: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering ConfigEntry resources.
+        :param pulumi.Input[str] config_json: An arbitrary map of configuration values.
+        :param pulumi.Input[str] kind: The kind of configuration entry to register.
+        :param pulumi.Input[str] name: The name of the configuration entry being registred.
+        """
+        if config_json is not None:
+            pulumi.set(__self__, "config_json", config_json)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="configJson")
+    def config_json(self) -> Optional[pulumi.Input[str]]:
+        """
+        An arbitrary map of configuration values.
+        """
+        return pulumi.get(self, "config_json")
+
+    @config_json.setter
+    def config_json(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "config_json", value)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[pulumi.Input[str]]:
+        """
+        The kind of configuration entry to register.
+        """
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kind", value)
 
     @property
     @pulumi.getter
@@ -468,13 +524,13 @@ class ConfigEntry(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ConfigEntryArgs.__new__(ConfigEntryArgs)
 
-            __props__['config_json'] = config_json
+            __props__.__dict__["config_json"] = config_json
             if kind is None and not opts.urn:
                 raise TypeError("Missing required property 'kind'")
-            __props__['kind'] = kind
-            __props__['name'] = name
+            __props__.__dict__["kind"] = kind
+            __props__.__dict__["name"] = name
         super(ConfigEntry, __self__).__init__(
             'consul:index/configEntry:ConfigEntry',
             resource_name,
@@ -501,11 +557,11 @@ class ConfigEntry(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ConfigEntryState.__new__(_ConfigEntryState)
 
-        __props__["config_json"] = config_json
-        __props__["kind"] = kind
-        __props__["name"] = name
+        __props__.__dict__["config_json"] = config_json
+        __props__.__dict__["kind"] = kind
+        __props__.__dict__["name"] = name
         return ConfigEntry(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -531,10 +587,4 @@ class ConfigEntry(pulumi.CustomResource):
         The name of the configuration entry being registred.
         """
         return pulumi.get(self, "name")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

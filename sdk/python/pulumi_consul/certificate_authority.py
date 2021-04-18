@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['CertificateAuthorityArgs', 'CertificateAuthority']
 
@@ -45,6 +45,46 @@ class CertificateAuthorityArgs:
 
     @connect_provider.setter
     def connect_provider(self, value: pulumi.Input[str]):
+        pulumi.set(self, "connect_provider", value)
+
+
+@pulumi.input_type
+class _CertificateAuthorityState:
+    def __init__(__self__, *,
+                 config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 connect_provider: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering CertificateAuthority resources.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config: The raw configuration to use for the chosen provider.
+        :param pulumi.Input[str] connect_provider: Specifies the CA provider type to use.
+        """
+        if config is not None:
+            pulumi.set(__self__, "config", config)
+        if connect_provider is not None:
+            pulumi.set(__self__, "connect_provider", connect_provider)
+
+    @property
+    @pulumi.getter
+    def config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The raw configuration to use for the chosen provider.
+        """
+        return pulumi.get(self, "config")
+
+    @config.setter
+    def config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "config", value)
+
+    @property
+    @pulumi.getter(name="connectProvider")
+    def connect_provider(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the CA provider type to use.
+        """
+        return pulumi.get(self, "connect_provider")
+
+    @connect_provider.setter
+    def connect_provider(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "connect_provider", value)
 
 
@@ -220,14 +260,14 @@ class CertificateAuthority(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = CertificateAuthorityArgs.__new__(CertificateAuthorityArgs)
 
             if config is None and not opts.urn:
                 raise TypeError("Missing required property 'config'")
-            __props__['config'] = config
+            __props__.__dict__["config"] = config
             if connect_provider is None and not opts.urn:
                 raise TypeError("Missing required property 'connect_provider'")
-            __props__['connect_provider'] = connect_provider
+            __props__.__dict__["connect_provider"] = connect_provider
         super(CertificateAuthority, __self__).__init__(
             'consul:index/certificateAuthority:CertificateAuthority',
             resource_name,
@@ -252,10 +292,10 @@ class CertificateAuthority(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _CertificateAuthorityState.__new__(_CertificateAuthorityState)
 
-        __props__["config"] = config
-        __props__["connect_provider"] = connect_provider
+        __props__.__dict__["config"] = config
+        __props__.__dict__["connect_provider"] = connect_provider
         return CertificateAuthority(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -273,10 +313,4 @@ class CertificateAuthority(pulumi.CustomResource):
         Specifies the CA provider type to use.
         """
         return pulumi.get(self, "connect_provider")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['NetworkAreaArgs', 'NetworkArea']
 
@@ -66,6 +66,104 @@ class NetworkAreaArgs:
     @datacenter.setter
     def datacenter(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "datacenter", value)
+
+    @property
+    @pulumi.getter(name="retryJoins")
+    def retry_joins(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Specifies a list of Consul servers to attempt to
+        join. Servers can be given as `IP`, `IP:port`, `hostname`, or `hostname:port`.
+        """
+        return pulumi.get(self, "retry_joins")
+
+    @retry_joins.setter
+    def retry_joins(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "retry_joins", value)
+
+    @property
+    @pulumi.getter
+    def token(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ACL token to use. This overrides the
+        token that the agent provides by default.
+        """
+        return pulumi.get(self, "token")
+
+    @token.setter
+    def token(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "token", value)
+
+    @property
+    @pulumi.getter(name="useTls")
+    def use_tls(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether gossip over this area should be
+        encrypted with TLS if possible. Defaults to `false`.
+        """
+        return pulumi.get(self, "use_tls")
+
+    @use_tls.setter
+    def use_tls(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_tls", value)
+
+
+@pulumi.input_type
+class _NetworkAreaState:
+    def __init__(__self__, *,
+                 datacenter: Optional[pulumi.Input[str]] = None,
+                 peer_datacenter: Optional[pulumi.Input[str]] = None,
+                 retry_joins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 token: Optional[pulumi.Input[str]] = None,
+                 use_tls: Optional[pulumi.Input[bool]] = None):
+        """
+        Input properties used for looking up and filtering NetworkArea resources.
+        :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the
+               agent's default datacenter and the datacenter in the provider setup.
+        :param pulumi.Input[str] peer_datacenter: The name of the Consul datacenter that will be
+               joined to form the area.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] retry_joins: Specifies a list of Consul servers to attempt to
+               join. Servers can be given as `IP`, `IP:port`, `hostname`, or `hostname:port`.
+        :param pulumi.Input[str] token: The ACL token to use. This overrides the
+               token that the agent provides by default.
+        :param pulumi.Input[bool] use_tls: Specifies whether gossip over this area should be
+               encrypted with TLS if possible. Defaults to `false`.
+        """
+        if datacenter is not None:
+            pulumi.set(__self__, "datacenter", datacenter)
+        if peer_datacenter is not None:
+            pulumi.set(__self__, "peer_datacenter", peer_datacenter)
+        if retry_joins is not None:
+            pulumi.set(__self__, "retry_joins", retry_joins)
+        if token is not None:
+            pulumi.set(__self__, "token", token)
+        if use_tls is not None:
+            pulumi.set(__self__, "use_tls", use_tls)
+
+    @property
+    @pulumi.getter
+    def datacenter(self) -> Optional[pulumi.Input[str]]:
+        """
+        The datacenter to use. This overrides the
+        agent's default datacenter and the datacenter in the provider setup.
+        """
+        return pulumi.get(self, "datacenter")
+
+    @datacenter.setter
+    def datacenter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "datacenter", value)
+
+    @property
+    @pulumi.getter(name="peerDatacenter")
+    def peer_datacenter(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the Consul datacenter that will be
+        joined to form the area.
+        """
+        return pulumi.get(self, "peer_datacenter")
+
+    @peer_datacenter.setter
+    def peer_datacenter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "peer_datacenter", value)
 
     @property
     @pulumi.getter(name="retryJoins")
@@ -223,15 +321,15 @@ class NetworkArea(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = NetworkAreaArgs.__new__(NetworkAreaArgs)
 
-            __props__['datacenter'] = datacenter
+            __props__.__dict__["datacenter"] = datacenter
             if peer_datacenter is None and not opts.urn:
                 raise TypeError("Missing required property 'peer_datacenter'")
-            __props__['peer_datacenter'] = peer_datacenter
-            __props__['retry_joins'] = retry_joins
-            __props__['token'] = token
-            __props__['use_tls'] = use_tls
+            __props__.__dict__["peer_datacenter"] = peer_datacenter
+            __props__.__dict__["retry_joins"] = retry_joins
+            __props__.__dict__["token"] = token
+            __props__.__dict__["use_tls"] = use_tls
         super(NetworkArea, __self__).__init__(
             'consul:index/networkArea:NetworkArea',
             resource_name,
@@ -267,13 +365,13 @@ class NetworkArea(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _NetworkAreaState.__new__(_NetworkAreaState)
 
-        __props__["datacenter"] = datacenter
-        __props__["peer_datacenter"] = peer_datacenter
-        __props__["retry_joins"] = retry_joins
-        __props__["token"] = token
-        __props__["use_tls"] = use_tls
+        __props__.__dict__["datacenter"] = datacenter
+        __props__.__dict__["peer_datacenter"] = peer_datacenter
+        __props__.__dict__["retry_joins"] = retry_joins
+        __props__.__dict__["token"] = token
+        __props__.__dict__["use_tls"] = use_tls
         return NetworkArea(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -320,10 +418,4 @@ class NetworkArea(pulumi.CustomResource):
         encrypted with TLS if possible. Defaults to `false`.
         """
         return pulumi.get(self, "use_tls")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

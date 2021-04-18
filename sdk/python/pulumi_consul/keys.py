@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -90,6 +90,96 @@ class KeysArgs:
         pulumi.set(self, "token", value)
 
 
+@pulumi.input_type
+class _KeysState:
+    def __init__(__self__, *,
+                 datacenter: Optional[pulumi.Input[str]] = None,
+                 keys: Optional[pulumi.Input[Sequence[pulumi.Input['KeysKeyArgs']]]] = None,
+                 namespace: Optional[pulumi.Input[str]] = None,
+                 token: Optional[pulumi.Input[str]] = None,
+                 var: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        Input properties used for looking up and filtering Keys resources.
+        :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the
+               agent's default datacenter and the datacenter in the provider setup.
+        :param pulumi.Input[Sequence[pulumi.Input['KeysKeyArgs']]] keys: Specifies a key in Consul to be written.
+               Supported values documented below.
+        :param pulumi.Input[str] namespace: The namespace to create the keys within.
+        :param pulumi.Input[str] token: The ACL token to use. This overrides the
+               token that the agent provides by default.
+        """
+        if datacenter is not None:
+            pulumi.set(__self__, "datacenter", datacenter)
+        if keys is not None:
+            pulumi.set(__self__, "keys", keys)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+        if token is not None:
+            pulumi.set(__self__, "token", token)
+        if var is not None:
+            pulumi.set(__self__, "var", var)
+
+    @property
+    @pulumi.getter
+    def datacenter(self) -> Optional[pulumi.Input[str]]:
+        """
+        The datacenter to use. This overrides the
+        agent's default datacenter and the datacenter in the provider setup.
+        """
+        return pulumi.get(self, "datacenter")
+
+    @datacenter.setter
+    def datacenter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "datacenter", value)
+
+    @property
+    @pulumi.getter
+    def keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KeysKeyArgs']]]]:
+        """
+        Specifies a key in Consul to be written.
+        Supported values documented below.
+        """
+        return pulumi.get(self, "keys")
+
+    @keys.setter
+    def keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KeysKeyArgs']]]]):
+        pulumi.set(self, "keys", value)
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[pulumi.Input[str]]:
+        """
+        The namespace to create the keys within.
+        """
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace", value)
+
+    @property
+    @pulumi.getter
+    def token(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ACL token to use. This overrides the
+        token that the agent provides by default.
+        """
+        return pulumi.get(self, "token")
+
+    @token.setter
+    def token(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "token", value)
+
+    @property
+    @pulumi.getter
+    def var(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        return pulumi.get(self, "var")
+
+    @var.setter
+    def var(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "var", value)
+
+
 class Keys(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -159,13 +249,13 @@ class Keys(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = KeysArgs.__new__(KeysArgs)
 
-            __props__['datacenter'] = datacenter
-            __props__['keys'] = keys
-            __props__['namespace'] = namespace
-            __props__['token'] = token
-            __props__['var'] = None
+            __props__.__dict__["datacenter"] = datacenter
+            __props__.__dict__["keys"] = keys
+            __props__.__dict__["namespace"] = namespace
+            __props__.__dict__["token"] = token
+            __props__.__dict__["var"] = None
         super(Keys, __self__).__init__(
             'consul:index/keys:Keys',
             resource_name,
@@ -198,13 +288,13 @@ class Keys(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _KeysState.__new__(_KeysState)
 
-        __props__["datacenter"] = datacenter
-        __props__["keys"] = keys
-        __props__["namespace"] = namespace
-        __props__["token"] = token
-        __props__["var"] = var
+        __props__.__dict__["datacenter"] = datacenter
+        __props__.__dict__["keys"] = keys
+        __props__.__dict__["namespace"] = namespace
+        __props__.__dict__["token"] = token
+        __props__.__dict__["var"] = var
         return Keys(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -246,10 +336,4 @@ class Keys(pulumi.CustomResource):
     @pulumi.getter
     def var(self) -> pulumi.Output[Mapping[str, str]]:
         return pulumi.get(self, "var")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 
