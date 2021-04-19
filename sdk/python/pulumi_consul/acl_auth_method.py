@@ -392,9 +392,7 @@ class AclAuthMethod(pulumi.CustomResource):
                  namespace_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclAuthMethodNamespaceRuleArgs']]]]] = None,
                  token_locality: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Starting with Consul 1.5.0, the AclAuthMethod resource can be used to
         managed [Consul ACL auth methods](https://www.consul.io/docs/acl/auth-methods).
@@ -529,15 +527,7 @@ class AclAuthMethod(pulumi.CustomResource):
                  namespace_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclAuthMethodNamespaceRuleArgs']]]]] = None,
                  token_locality: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
