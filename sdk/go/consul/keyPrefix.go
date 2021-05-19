@@ -13,7 +13,7 @@ import (
 
 // ## Import
 //
-// `consul_key_prefix` can be imported. This is useful when the path already and you know all keys in path must be removed.
+// `consul_key_prefix` can be imported. This is useful when the path already exists and you know all keys in path should be managed by Terraform.
 //
 // ```sh
 //  $ pulumi import consul:index/keyPrefix:KeyPrefix myapp_config myapp/config/

@@ -96,6 +96,7 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"consul_acl_token":                   {Tok: makeResource(mainMod, "AclToken")},
 			"consul_acl_token_policy_attachment": {Tok: makeResource(mainMod, "AclTokenPolicyAttachment")},
+			"consul_acl_token_role_attachment":   {Tok: makeResource(mainMod, "AclTokenRoleAttachment")},
 			"consul_agent_service":               {Tok: makeResource(mainMod, "AgentService")},
 			"consul_autopilot_config":            {Tok: makeResource(mainMod, "AutopilotConfig")},
 			"consul_catalog_entry":               {Tok: makeResource(mainMod, "CatalogEntry")},
@@ -172,7 +173,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{
-				"@pulumi/pulumi": "^3.0.0-alpha.0",
+				"@pulumi/pulumi": "^3.0.0",
 			},
 			DevDependencies: map[string]string{
 				"@types/node": "^10.0.0", // so we can access strongly typed node definitions.
@@ -191,12 +192,12 @@ func Provider() tfbridge.ProviderInfo {
 
 		Python: &tfbridge.PythonInfo{
 			Requires: map[string]string{
-				"pulumi": ">=3.0.0a1,<4.0.0",
+				"pulumi": ">=3.0.0,<4.0.0",
 			},
 		},
 		CSharp: &tfbridge.CSharpInfo{
 			PackageReferences: map[string]string{
-				"Pulumi":                       "3.*-*",
+				"Pulumi":                       "3.*",
 				"System.Collections.Immutable": "1.6.0",
 			},
 			Namespaces: map[string]string{

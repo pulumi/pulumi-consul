@@ -224,6 +224,10 @@ export class ConfigEntry extends pulumi.CustomResource {
      * The name of the configuration entry being registred.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The namespace to create the config entry within.
+     */
+    public readonly namespace!: pulumi.Output<string | undefined>;
 
     /**
      * Create a ConfigEntry resource with the given unique name, arguments, and options.
@@ -241,6 +245,7 @@ export class ConfigEntry extends pulumi.CustomResource {
             inputs["configJson"] = state ? state.configJson : undefined;
             inputs["kind"] = state ? state.kind : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["namespace"] = state ? state.namespace : undefined;
         } else {
             const args = argsOrState as ConfigEntryArgs | undefined;
             if ((!args || args.kind === undefined) && !opts.urn) {
@@ -249,6 +254,7 @@ export class ConfigEntry extends pulumi.CustomResource {
             inputs["configJson"] = args ? args.configJson : undefined;
             inputs["kind"] = args ? args.kind : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["namespace"] = args ? args.namespace : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -273,6 +279,10 @@ export interface ConfigEntryState {
      * The name of the configuration entry being registred.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The namespace to create the config entry within.
+     */
+    readonly namespace?: pulumi.Input<string>;
 }
 
 /**
@@ -291,4 +301,8 @@ export interface ConfigEntryArgs {
      * The name of the configuration entry being registred.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The namespace to create the config entry within.
+     */
+    readonly namespace?: pulumi.Input<string>;
 }

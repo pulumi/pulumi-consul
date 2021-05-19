@@ -329,6 +329,8 @@ type ConfigEntry struct {
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// The name of the configuration entry being registred.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The namespace to create the config entry within.
+	Namespace pulumi.StringPtrOutput `pulumi:"namespace"`
 }
 
 // NewConfigEntry registers a new resource with the given unique name, arguments, and options.
@@ -369,6 +371,8 @@ type configEntryState struct {
 	Kind *string `pulumi:"kind"`
 	// The name of the configuration entry being registred.
 	Name *string `pulumi:"name"`
+	// The namespace to create the config entry within.
+	Namespace *string `pulumi:"namespace"`
 }
 
 type ConfigEntryState struct {
@@ -378,6 +382,8 @@ type ConfigEntryState struct {
 	Kind pulumi.StringPtrInput
 	// The name of the configuration entry being registred.
 	Name pulumi.StringPtrInput
+	// The namespace to create the config entry within.
+	Namespace pulumi.StringPtrInput
 }
 
 func (ConfigEntryState) ElementType() reflect.Type {
@@ -391,6 +397,8 @@ type configEntryArgs struct {
 	Kind string `pulumi:"kind"`
 	// The name of the configuration entry being registred.
 	Name *string `pulumi:"name"`
+	// The namespace to create the config entry within.
+	Namespace *string `pulumi:"namespace"`
 }
 
 // The set of arguments for constructing a ConfigEntry resource.
@@ -401,6 +409,8 @@ type ConfigEntryArgs struct {
 	Kind pulumi.StringInput
 	// The name of the configuration entry being registred.
 	Name pulumi.StringPtrInput
+	// The namespace to create the config entry within.
+	Namespace pulumi.StringPtrInput
 }
 
 func (ConfigEntryArgs) ElementType() reflect.Type {

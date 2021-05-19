@@ -19,6 +19,7 @@
         "aclRole.ts",
         "aclToken.ts",
         "aclTokenPolicyAttachment.ts",
+        "aclTokenRoleAttachment.ts",
         "agentService.ts",
         "autopilotConfig.ts",
         "catalogEntry.ts",

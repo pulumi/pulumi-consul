@@ -9,6 +9,7 @@ from .acl_policy import *
 from .acl_role import *
 from .acl_token import *
 from .acl_token_policy_attachment import *
+from .acl_token_role_attachment import *
 from .agent_service import *
 from .autopilot_config import *
 from .catalog_entry import *
@@ -75,6 +76,8 @@ def _register_module():
                 return AclToken(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "consul:index/aclTokenPolicyAttachment:AclTokenPolicyAttachment":
                 return AclTokenPolicyAttachment(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "consul:index/aclTokenRoleAttachment:AclTokenRoleAttachment":
+                return AclTokenRoleAttachment(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "consul:index/agentService:AgentService":
                 return AgentService(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "consul:index/autopilotConfig:AutopilotConfig":
@@ -114,6 +117,7 @@ def _register_module():
     pulumi.runtime.register_resource_module("consul", "index/aclRole", _module_instance)
     pulumi.runtime.register_resource_module("consul", "index/aclToken", _module_instance)
     pulumi.runtime.register_resource_module("consul", "index/aclTokenPolicyAttachment", _module_instance)
+    pulumi.runtime.register_resource_module("consul", "index/aclTokenRoleAttachment", _module_instance)
     pulumi.runtime.register_resource_module("consul", "index/agentService", _module_instance)
     pulumi.runtime.register_resource_module("consul", "index/autopilotConfig", _module_instance)
     pulumi.runtime.register_resource_module("consul", "index/catalogEntry", _module_instance)

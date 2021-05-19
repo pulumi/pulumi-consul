@@ -2805,6 +2805,51 @@
                 "type": "object"
             }
         },
+        "consul:index/aclTokenRoleAttachment:AclTokenRoleAttachment": {
+            "description": "\n\n\n## Import\n\n`consul_acl_token_role_attachment` can be imported. This is especially useful to manage the policies attached to the anonymous and the master tokens with Terraform\n\n```sh\n $ pulumi import consul:index/aclTokenRoleAttachment:AclTokenRoleAttachment anonymous token_id:role_id\n```\n\n ",
+            "properties": {
+                "role": {
+                    "type": "string",
+                    "description": "The role name.\n"
+                },
+                "tokenId": {
+                    "type": "string",
+                    "description": "The id of the token.\n"
+                }
+            },
+            "required": [
+                "role",
+                "tokenId"
+            ],
+            "inputProperties": {
+                "role": {
+                    "type": "string",
+                    "description": "The role name.\n"
+                },
+                "tokenId": {
+                    "type": "string",
+                    "description": "The id of the token.\n"
+                }
+            },
+            "requiredInputs": [
+                "role",
+                "tokenId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering AclTokenRoleAttachment resources.\n",
+                "properties": {
+                    "role": {
+                        "type": "string",
+                        "description": "The role name.\n"
+                    },
+                    "tokenId": {
+                        "type": "string",
+                        "description": "The id of the token.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "consul:index/agentService:AgentService": {
             "description": "!\u003e The `consul.AgentService` resource has been deprecated in version 2.0.0 of the provider\nand will be removed in a future release. Please read the [upgrade guide](https://www.terraform.io/docs/providers/consul/guides/upgrading.html#deprecation-of-consul_agent_service)\nfor more information.\n\nProvides access to the agent service data in Consul. This can be used to\ndefine a service associated with a particular agent. Currently, defining\nhealth checks for an agent service is not supported.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as consul from \"@pulumi/consul\";\n\nconst app = new consul.AgentService(\"app\", {\n    address: \"www.google.com\",\n    port: 80,\n    tags: [\n        \"tag0\",\n        \"tag1\",\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_consul as consul\n\napp = consul.AgentService(\"app\",\n    address=\"www.google.com\",\n    port=80,\n    tags=[\n        \"tag0\",\n        \"tag1\",\n    ])\n```\n```csharp\nusing Pulumi;\nusing Consul = Pulumi.Consul;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var app = new Consul.AgentService(\"app\", new Consul.AgentServiceArgs\n        {\n            Address = \"www.google.com\",\n            Port = 80,\n            Tags = \n            {\n                \"tag0\",\n                \"tag1\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-consul/sdk/v3/go/consul\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := consul.NewAgentService(ctx, \"app\", \u0026consul.AgentServiceArgs{\n\t\t\tAddress: pulumi.String(\"www.google.com\"),\n\t\t\tPort:    pulumi.Int(80),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"tag0\"),\n\t\t\t\tpulumi.String(\"tag1\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
@@ -3147,6 +3192,10 @@
                 "name": {
                     "type": "string",
                     "description": "The name of the configuration entry being registred.\n"
+                },
+                "namespace": {
+                    "type": "string",
+                    "description": "The namespace to create the config entry within.\n"
                 }
             },
             "required": [
@@ -3165,6 +3214,10 @@
                 "name": {
                     "type": "string",
                     "description": "The name of the configuration entry being registred.\n"
+                },
+                "namespace": {
+                    "type": "string",
+                    "description": "The namespace to create the config entry within.\n"
                 }
             },
             "requiredInputs": [
@@ -3184,6 +3237,10 @@
                     "name": {
                         "type": "string",
                         "description": "The name of the configuration entry being registred.\n"
+                    },
+                    "namespace": {
+                        "type": "string",
+                        "description": "The namespace to create the config entry within.\n"
                     }
                 },
                 "type": "object"
@@ -3319,7 +3376,7 @@
             }
         },
         "consul:index/keyPrefix:KeyPrefix": {
-            "description": "\n\n\n## Import\n\n`consul_key_prefix` can be imported. This is useful when the path already and you know all keys in path must be removed.\n\n```sh\n $ pulumi import consul:index/keyPrefix:KeyPrefix myapp_config myapp/config/\n```\n\n ",
+            "description": "\n\n\n## Import\n\n`consul_key_prefix` can be imported. This is useful when the path already exists and you know all keys in path should be managed by Terraform.\n\n```sh\n $ pulumi import consul:index/keyPrefix:KeyPrefix myapp_config myapp/config/\n```\n\n ",
             "properties": {
                 "datacenter": {
                     "type": "string",
@@ -4719,6 +4776,10 @@
                         "type": "string",
                         "description": "The accessor ID of the ACL token.\n"
                     },
+                    "namespace": {
+                        "type": "string",
+                        "description": "The namespace to lookup the token.\n"
+                    },
                     "pgpKey": {
                         "type": "string"
                     }
@@ -4740,6 +4801,9 @@
                     "id": {
                         "type": "string",
                         "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "namespace": {
+                        "type": "string"
                     },
                     "pgpKey": {
                         "type": "string"
@@ -5459,7 +5523,7 @@
             }
         },
         "consul:index/getKeys:getKeys": {
-            "description": "The `consul.Keys` resource reads values from the Consul key/value store.\nThis is a powerful way dynamically set values in templates.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aws from \"@pulumi/aws\";\nimport * as consul from \"@pulumi/consul\";\n\nconst appKeys = pulumi.output(consul.getKeys({\n    datacenter: \"nyc1\",\n    // Read the launch AMI from Consul\n    keys: [{\n        default: \"ami-1234\",\n        name: \"ami\",\n        path: \"service/app/launch_ami\",\n    }],\n    token: \"abcd\",\n}, { async: true }));\n// Start our instance with the dynamic ami value\nconst appInstance = new aws.ec2.Instance(\"app\", {\n    ami: appKeys.var.ami,\n});\n```\n```python\nimport pulumi\nimport pulumi_aws as aws\nimport pulumi_consul as consul\n\napp_keys = consul.get_keys(datacenter=\"nyc1\",\n    keys=[consul.GetKeysKeyArgs(\n        default=\"ami-1234\",\n        name=\"ami\",\n        path=\"service/app/launch_ami\",\n    )],\n    token=\"abcd\")\n# Start our instance with the dynamic ami value\napp_instance = aws.ec2.Instance(\"appInstance\", ami=app_keys.var[\"ami\"])\n```\n```csharp\nusing Pulumi;\nusing Aws = Pulumi.Aws;\nusing Consul = Pulumi.Consul;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var appKeys = Output.Create(Consul.GetKeys.InvokeAsync(new Consul.GetKeysArgs\n        {\n            Datacenter = \"nyc1\",\n            Keys = \n            {\n                new Consul.Inputs.GetKeysKeyArgs\n                {\n                    Default = \"ami-1234\",\n                    Name = \"ami\",\n                    Path = \"service/app/launch_ami\",\n                },\n            },\n            Token = \"abcd\",\n        }));\n        // Start our instance with the dynamic ami value\n        var appInstance = new Aws.Ec2.Instance(\"appInstance\", new Aws.Ec2.InstanceArgs\n        {\n            Ami = appKeys.Apply(appKeys =\u003e appKeys.Var.Ami),\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aws/sdk/v3/go/aws/ec2\"\n\t\"github.com/pulumi/pulumi-consul/sdk/v3/go/consul\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := \"nyc1\"\n\t\topt1 := \"abcd\"\n\t\tappKeys, err := consul.LookupKeys(ctx, \u0026consul.LookupKeysArgs{\n\t\t\tDatacenter: \u0026opt0,\n\t\t\tKeys: []consul.GetKeysKey{\n\t\t\t\tconsul.GetKeysKey{\n\t\t\t\t\tDefault: \"ami-1234\",\n\t\t\t\t\tName:    \"ami\",\n\t\t\t\t\tPath:    \"service/app/launch_ami\",\n\t\t\t\t},\n\t\t\t},\n\t\t\tToken: \u0026opt1,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = ec2.NewInstance(ctx, \"appInstance\", \u0026ec2.InstanceArgs{\n\t\t\tAmi: pulumi.String(appKeys.Var.Ami),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "The `consul.Keys` resource reads values from the Consul key/value store.\nThis is a powerful way dynamically set values in templates.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aws from \"@pulumi/aws\";\nimport * as consul from \"@pulumi/consul\";\n\nconst appKeys = pulumi.output(consul.getKeys({\n    datacenter: \"nyc1\",\n    // Read the launch AMI from Consul\n    keys: [{\n        default: \"ami-1234\",\n        name: \"ami\",\n        path: \"service/app/launch_ami\",\n    }],\n    token: \"abcd\",\n}, { async: true }));\n// Start our instance with the dynamic ami value\nconst appInstance = new aws.ec2.Instance(\"app\", {\n    ami: appKeys.var.ami,\n});\n```\n```python\nimport pulumi\nimport pulumi_aws as aws\nimport pulumi_consul as consul\n\napp_keys = consul.get_keys(datacenter=\"nyc1\",\n    keys=[consul.GetKeysKeyArgs(\n        default=\"ami-1234\",\n        name=\"ami\",\n        path=\"service/app/launch_ami\",\n    )],\n    token=\"abcd\")\n# Start our instance with the dynamic ami value\napp_instance = aws.ec2.Instance(\"appInstance\", ami=app_keys.var[\"ami\"])\n```\n```csharp\nusing Pulumi;\nusing Aws = Pulumi.Aws;\nusing Consul = Pulumi.Consul;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var appKeys = Output.Create(Consul.GetKeys.InvokeAsync(new Consul.GetKeysArgs\n        {\n            Datacenter = \"nyc1\",\n            Keys = \n            {\n                new Consul.Inputs.GetKeysKeyArgs\n                {\n                    Default = \"ami-1234\",\n                    Name = \"ami\",\n                    Path = \"service/app/launch_ami\",\n                },\n            },\n            Token = \"abcd\",\n        }));\n        // Start our instance with the dynamic ami value\n        var appInstance = new Aws.Ec2.Instance(\"appInstance\", new Aws.Ec2.InstanceArgs\n        {\n            Ami = appKeys.Apply(appKeys =\u003e appKeys.Var.Ami),\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aws/sdk/v4/go/aws/ec2\"\n\t\"github.com/pulumi/pulumi-consul/sdk/v3/go/consul\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := \"nyc1\"\n\t\topt1 := \"abcd\"\n\t\tappKeys, err := consul.LookupKeys(ctx, \u0026consul.LookupKeysArgs{\n\t\t\tDatacenter: \u0026opt0,\n\t\t\tKeys: []consul.GetKeysKey{\n\t\t\t\tconsul.GetKeysKey{\n\t\t\t\t\tDefault: \"ami-1234\",\n\t\t\t\t\tName:    \"ami\",\n\t\t\t\t\tPath:    \"service/app/launch_ami\",\n\t\t\t\t},\n\t\t\t},\n\t\t\tToken: \u0026opt1,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = ec2.NewInstance(ctx, \"appInstance\", \u0026ec2.InstanceArgs{\n\t\t\tAmi: pulumi.String(appKeys.Var.Ami),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getKeys.\n",
                 "properties": {
@@ -5932,7 +5996,7 @@
                 "consul": "Consul"
             },
             "packageReferences": {
-                "Pulumi": "3.*-*",
+                "Pulumi": "3.*",
                 "System.Collections.Immutable": "1.6.0"
             }
         },
@@ -5943,7 +6007,7 @@
         "nodejs": {
             "compatibility": "tfbridge20",
             "dependencies": {
-                "@pulumi/pulumi": "^3.0.0-alpha.0"
+                "@pulumi/pulumi": "^3.0.0"
             },
             "devDependencies": {
                 "@types/mime": "^2.0.0",
@@ -5959,7 +6023,7 @@
             "compatibility": "tfbridge20",
             "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/hashicorp/terraform-provider-consul)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-consul` repo](https://github.com/pulumi/pulumi-consul/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`hashicorp/terraform-provider-consul` repo](https://github.com/hashicorp/terraform-provider-consul/issues).",
             "requires": {
-                "pulumi": "\u003e=3.0.0a1,\u003c4.0.0"
+                "pulumi": "\u003e=3.0.0,\u003c4.0.0"
             }
         }
     }

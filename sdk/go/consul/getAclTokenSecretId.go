@@ -19,8 +19,10 @@ func GetAclTokenSecretId(ctx *pulumi.Context, args *GetAclTokenSecretIdArgs, opt
 // A collection of arguments for invoking getAclTokenSecretId.
 type GetAclTokenSecretIdArgs struct {
 	// The accessor ID of the ACL token.
-	AccessorId string  `pulumi:"accessorId"`
-	PgpKey     *string `pulumi:"pgpKey"`
+	AccessorId string `pulumi:"accessorId"`
+	// The namespace to lookup the token.
+	Namespace *string `pulumi:"namespace"`
+	PgpKey    *string `pulumi:"pgpKey"`
 }
 
 // A collection of values returned by getAclTokenSecretId.
@@ -28,8 +30,9 @@ type GetAclTokenSecretIdResult struct {
 	AccessorId        string `pulumi:"accessorId"`
 	EncryptedSecretId string `pulumi:"encryptedSecretId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id     string  `pulumi:"id"`
-	PgpKey *string `pulumi:"pgpKey"`
+	Id        string  `pulumi:"id"`
+	Namespace *string `pulumi:"namespace"`
+	PgpKey    *string `pulumi:"pgpKey"`
 	// The secret ID of the ACL token if `pgpKey` has not been set.
 	SecretId string `pulumi:"secretId"`
 }
