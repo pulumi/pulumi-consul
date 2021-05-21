@@ -24,6 +24,12 @@ namespace Pulumi.Consul
         [Input("accessorId", required: true)]
         public string AccessorId { get; set; } = null!;
 
+        /// <summary>
+        /// The namespace to lookup the token.
+        /// </summary>
+        [Input("namespace")]
+        public string? Namespace { get; set; }
+
         [Input("pgpKey")]
         public string? PgpKey { get; set; }
 
@@ -42,6 +48,7 @@ namespace Pulumi.Consul
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly string? Namespace;
         public readonly string? PgpKey;
         /// <summary>
         /// The secret ID of the ACL token if `pgp_key` has not been set.
@@ -56,6 +63,8 @@ namespace Pulumi.Consul
 
             string id,
 
+            string? @namespace,
+
             string? pgpKey,
 
             string secretId)
@@ -63,6 +72,7 @@ namespace Pulumi.Consul
             AccessorId = accessorId;
             EncryptedSecretId = encryptedSecretId;
             Id = id;
+            Namespace = @namespace;
             PgpKey = pgpKey;
             SecretId = secretId;
         }

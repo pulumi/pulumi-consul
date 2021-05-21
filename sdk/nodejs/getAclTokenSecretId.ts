@@ -15,6 +15,7 @@ export function getAclTokenSecretId(args: GetAclTokenSecretIdArgs, opts?: pulumi
     }
     return pulumi.runtime.invoke("consul:index/getAclTokenSecretId:getAclTokenSecretId", {
         "accessorId": args.accessorId,
+        "namespace": args.namespace,
         "pgpKey": args.pgpKey,
     }, opts);
 }
@@ -27,6 +28,10 @@ export interface GetAclTokenSecretIdArgs {
      * The accessor ID of the ACL token.
      */
     readonly accessorId: string;
+    /**
+     * The namespace to lookup the token.
+     */
+    readonly namespace?: string;
     readonly pgpKey?: string;
 }
 
@@ -40,6 +45,7 @@ export interface GetAclTokenSecretIdResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly namespace?: string;
     readonly pgpKey?: string;
     /**
      * The secret ID of the ACL token if `pgpKey` has not been set.

@@ -313,6 +313,12 @@ namespace Pulumi.Consul
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The namespace to create the config entry within.
+        /// </summary>
+        [Output("namespace")]
+        public Output<string?> Namespace { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a ConfigEntry resource with the given unique name, arguments, and options.
@@ -377,6 +383,12 @@ namespace Pulumi.Consul
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The namespace to create the config entry within.
+        /// </summary>
+        [Input("namespace")]
+        public Input<string>? Namespace { get; set; }
+
         public ConfigEntryArgs()
         {
         }
@@ -401,6 +413,12 @@ namespace Pulumi.Consul
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The namespace to create the config entry within.
+        /// </summary>
+        [Input("namespace")]
+        public Input<string>? Namespace { get; set; }
 
         public ConfigEntryState()
         {

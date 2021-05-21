@@ -11,6 +11,7 @@ export * from "./aclPolicy";
 export * from "./aclRole";
 export * from "./aclToken";
 export * from "./aclTokenPolicyAttachment";
+export * from "./aclTokenRoleAttachment";
 export * from "./agentService";
 export * from "./autopilotConfig";
 export * from "./catalogEntry";
@@ -62,6 +63,7 @@ import { AclPolicy } from "./aclPolicy";
 import { AclRole } from "./aclRole";
 import { AclToken } from "./aclToken";
 import { AclTokenPolicyAttachment } from "./aclTokenPolicyAttachment";
+import { AclTokenRoleAttachment } from "./aclTokenRoleAttachment";
 import { AgentService } from "./agentService";
 import { AutopilotConfig } from "./autopilotConfig";
 import { CatalogEntry } from "./catalogEntry";
@@ -93,6 +95,8 @@ const _module = {
                 return new AclToken(name, <any>undefined, { urn })
             case "consul:index/aclTokenPolicyAttachment:AclTokenPolicyAttachment":
                 return new AclTokenPolicyAttachment(name, <any>undefined, { urn })
+            case "consul:index/aclTokenRoleAttachment:AclTokenRoleAttachment":
+                return new AclTokenRoleAttachment(name, <any>undefined, { urn })
             case "consul:index/agentService:AgentService":
                 return new AgentService(name, <any>undefined, { urn })
             case "consul:index/autopilotConfig:AutopilotConfig":
@@ -132,6 +136,7 @@ pulumi.runtime.registerResourceModule("consul", "index/aclPolicy", _module)
 pulumi.runtime.registerResourceModule("consul", "index/aclRole", _module)
 pulumi.runtime.registerResourceModule("consul", "index/aclToken", _module)
 pulumi.runtime.registerResourceModule("consul", "index/aclTokenPolicyAttachment", _module)
+pulumi.runtime.registerResourceModule("consul", "index/aclTokenRoleAttachment", _module)
 pulumi.runtime.registerResourceModule("consul", "index/agentService", _module)
 pulumi.runtime.registerResourceModule("consul", "index/autopilotConfig", _module)
 pulumi.runtime.registerResourceModule("consul", "index/catalogEntry", _module)
