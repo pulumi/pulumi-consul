@@ -24,7 +24,7 @@ import * as utilities from "./utilities";
  * const vaultServiceHealth = pulumi.output(consul.getServiceHealth({
  *     passing: true,
  *     service: "vault",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getServiceHealth(args: GetServiceHealthArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceHealthResult> {
@@ -54,37 +54,37 @@ export interface GetServiceHealthArgs {
     /**
      * The Consul datacenter to query.
      */
-    readonly datacenter?: string;
+    datacenter?: string;
     /**
      * A filter expression to refine the list of results, see
      * https://www.consul.io/api-docs/features/filtering and https://www.consul.io/api-docs/health#filtering-2.
      */
-    readonly filter?: string;
+    filter?: string;
     /**
      * The service name to select.
      */
-    readonly name: string;
+    name: string;
     /**
      * Specifies a node name to sort the node list in ascending order
      * based on the estimated round trip time from that node.
      */
-    readonly near?: string;
+    near?: string;
     /**
      * Filter the results to nodes with the specified key/value
      * pairs.
      */
-    readonly nodeMeta?: {[key: string]: string};
+    nodeMeta?: {[key: string]: string};
     /**
      * Whether to return only nodes with all checks in the
      * passing state. Defaults to `true`.
      */
-    readonly passing?: boolean;
+    passing?: boolean;
     /**
      * A single tag that can be used to filter the list to return
      * based on a single matching tag.
      */
-    readonly tag?: string;
-    readonly waitFor?: string;
+    tag?: string;
+    waitFor?: string;
 }
 
 /**

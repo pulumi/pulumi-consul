@@ -288,3 +288,68 @@ class Provider(pulumi.ProviderResource):
             __props__,
             opts)
 
+    @property
+    @pulumi.getter
+    def address(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter(name="caFile")
+    def ca_file(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "ca_file")
+
+    @property
+    @pulumi.getter(name="caPath")
+    def ca_path(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "ca_path")
+
+    @property
+    @pulumi.getter(name="caPem")
+    def ca_pem(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "ca_pem")
+
+    @property
+    @pulumi.getter(name="certFile")
+    def cert_file(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "cert_file")
+
+    @property
+    @pulumi.getter(name="certPem")
+    def cert_pem(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "cert_pem")
+
+    @property
+    @pulumi.getter
+    def datacenter(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "datacenter")
+
+    @property
+    @pulumi.getter(name="httpAuth")
+    def http_auth(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "http_auth")
+
+    @property
+    @pulumi.getter(name="keyFile")
+    def key_file(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "key_file")
+
+    @property
+    @pulumi.getter(name="keyPem")
+    def key_pem(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "key_pem")
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "namespace")
+
+    @property
+    @pulumi.getter
+    def scheme(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "scheme")
+
+    @property
+    @pulumi.getter
+    def token(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "token")
+

@@ -142,11 +142,11 @@ export interface CertificateAuthorityState {
     /**
      * The raw configuration to use for the chosen provider.
      */
-    readonly config?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    config?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Specifies the CA provider type to use.
      */
-    readonly connectProvider?: pulumi.Input<string>;
+    connectProvider?: pulumi.Input<string>;
 }
 
 /**
@@ -156,9 +156,9 @@ export interface CertificateAuthorityArgs {
     /**
      * The raw configuration to use for the chosen provider.
      */
-    readonly config: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    config: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Specifies the CA provider type to use.
      */
-    readonly connectProvider: pulumi.Input<string>;
+    connectProvider: pulumi.Input<string>;
 }

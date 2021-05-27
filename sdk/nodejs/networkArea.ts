@@ -126,27 +126,27 @@ export interface NetworkAreaState {
      * The datacenter to use. This overrides the
      * agent's default datacenter and the datacenter in the provider setup.
      */
-    readonly datacenter?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string>;
     /**
      * The name of the Consul datacenter that will be
      * joined to form the area.
      */
-    readonly peerDatacenter?: pulumi.Input<string>;
+    peerDatacenter?: pulumi.Input<string>;
     /**
      * Specifies a list of Consul servers to attempt to
      * join. Servers can be given as `IP`, `IP:port`, `hostname`, or `hostname:port`.
      */
-    readonly retryJoins?: pulumi.Input<pulumi.Input<string>[]>;
+    retryJoins?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ACL token to use. This overrides the
      * token that the agent provides by default.
      */
-    readonly token?: pulumi.Input<string>;
+    token?: pulumi.Input<string>;
     /**
      * Specifies whether gossip over this area should be
      * encrypted with TLS if possible. Defaults to `false`.
      */
-    readonly useTls?: pulumi.Input<boolean>;
+    useTls?: pulumi.Input<boolean>;
 }
 
 /**
@@ -157,25 +157,25 @@ export interface NetworkAreaArgs {
      * The datacenter to use. This overrides the
      * agent's default datacenter and the datacenter in the provider setup.
      */
-    readonly datacenter?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string>;
     /**
      * The name of the Consul datacenter that will be
      * joined to form the area.
      */
-    readonly peerDatacenter: pulumi.Input<string>;
+    peerDatacenter: pulumi.Input<string>;
     /**
      * Specifies a list of Consul servers to attempt to
      * join. Servers can be given as `IP`, `IP:port`, `hostname`, or `hostname:port`.
      */
-    readonly retryJoins?: pulumi.Input<pulumi.Input<string>[]>;
+    retryJoins?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ACL token to use. This overrides the
      * token that the agent provides by default.
      */
-    readonly token?: pulumi.Input<string>;
+    token?: pulumi.Input<string>;
     /**
      * Specifies whether gossip over this area should be
      * encrypted with TLS if possible. Defaults to `false`.
      */
-    readonly useTls?: pulumi.Input<boolean>;
+    useTls?: pulumi.Input<boolean>;
 }

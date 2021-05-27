@@ -142,31 +142,31 @@ export interface AclBindingRuleState {
     /**
      * The name of the ACL auth method this rule apply.
      */
-    readonly authMethod?: pulumi.Input<string>;
+    authMethod?: pulumi.Input<string>;
     /**
      * The name to bind to a token at login-time.
      */
-    readonly bindName?: pulumi.Input<string>;
+    bindName?: pulumi.Input<string>;
     /**
      * Specifies the way the binding rule affects a token
      * created at login.
      */
-    readonly bindType?: pulumi.Input<string>;
+    bindType?: pulumi.Input<string>;
     /**
      * A free form human readable description of the
      * binding rule.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The namespace to create the binding
      * rule within.
      */
-    readonly namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string>;
     /**
      * The expression used to math this rule against valid
      * identities returned from an auth method validation.
      */
-    readonly selector?: pulumi.Input<string>;
+    selector?: pulumi.Input<string>;
 }
 
 /**
@@ -176,29 +176,29 @@ export interface AclBindingRuleArgs {
     /**
      * The name of the ACL auth method this rule apply.
      */
-    readonly authMethod: pulumi.Input<string>;
+    authMethod: pulumi.Input<string>;
     /**
      * The name to bind to a token at login-time.
      */
-    readonly bindName: pulumi.Input<string>;
+    bindName: pulumi.Input<string>;
     /**
      * Specifies the way the binding rule affects a token
      * created at login.
      */
-    readonly bindType: pulumi.Input<string>;
+    bindType: pulumi.Input<string>;
     /**
      * A free form human readable description of the
      * binding rule.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The namespace to create the binding
      * rule within.
      */
-    readonly namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string>;
     /**
      * The expression used to math this rule against valid
      * identities returned from an auth method validation.
      */
-    readonly selector?: pulumi.Input<string>;
+    selector?: pulumi.Input<string>;
 }

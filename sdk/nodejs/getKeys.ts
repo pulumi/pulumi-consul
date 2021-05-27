@@ -25,7 +25,7 @@ import * as utilities from "./utilities";
  *         path: "service/app/launch_ami",
  *     }],
  *     token: "abcd",
- * }, { async: true }));
+ * }));
  * // Start our instance with the dynamic ami value
  * const appInstance = new aws.ec2.Instance("app", {
  *     ami: appKeys.var.ami,
@@ -57,21 +57,21 @@ export interface GetKeysArgs {
      * The datacenter to use. This overrides the
      * agent's default datacenter and the datacenter in the provider setup.
      */
-    readonly datacenter?: string;
+    datacenter?: string;
     /**
      * Specifies a key in Consul to be read. Supported
      * values documented below. Multiple blocks supported.
      */
-    readonly keys?: inputs.GetKeysKey[];
+    keys?: inputs.GetKeysKey[];
     /**
      * The namespace to lookup the keys.
      */
-    readonly namespace?: string;
+    namespace?: string;
     /**
      * The ACL token to use. This overrides the
      * token that the agent provides by default.
      */
-    readonly token?: string;
+    token?: string;
 }
 
 /**

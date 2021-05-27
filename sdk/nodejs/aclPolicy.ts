@@ -122,23 +122,23 @@ export interface AclPolicyState {
     /**
      * The datacenters of the policy.
      */
-    readonly datacenters?: pulumi.Input<pulumi.Input<string>[]>;
+    datacenters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The description of the policy.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The name of the policy.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The namespace to create the policy within.
      */
-    readonly namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string>;
     /**
      * The rules of the policy.
      */
-    readonly rules?: pulumi.Input<string>;
+    rules?: pulumi.Input<string>;
 }
 
 /**
@@ -148,21 +148,21 @@ export interface AclPolicyArgs {
     /**
      * The datacenters of the policy.
      */
-    readonly datacenters?: pulumi.Input<pulumi.Input<string>[]>;
+    datacenters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The description of the policy.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The name of the policy.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The namespace to create the policy within.
      */
-    readonly namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string>;
     /**
      * The rules of the policy.
      */
-    readonly rules: pulumi.Input<string>;
+    rules: pulumi.Input<string>;
 }

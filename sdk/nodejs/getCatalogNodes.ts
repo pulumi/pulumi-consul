@@ -23,7 +23,7 @@ export function getCatalogNodes(args?: GetCatalogNodesArgs, opts?: pulumi.Invoke
  * A collection of arguments for invoking getCatalogNodes.
  */
 export interface GetCatalogNodesArgs {
-    readonly queryOptions?: inputs.GetCatalogNodesQueryOption[];
+    queryOptions?: inputs.GetCatalogNodesQueryOption[];
 }
 
 /**

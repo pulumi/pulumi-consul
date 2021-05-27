@@ -270,19 +270,19 @@ export interface ConfigEntryState {
     /**
      * An arbitrary map of configuration values.
      */
-    readonly configJson?: pulumi.Input<string>;
+    configJson?: pulumi.Input<string>;
     /**
      * The kind of configuration entry to register.
      */
-    readonly kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string>;
     /**
      * The name of the configuration entry being registred.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The namespace to create the config entry within.
      */
-    readonly namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string>;
 }
 
 /**
@@ -292,17 +292,17 @@ export interface ConfigEntryArgs {
     /**
      * An arbitrary map of configuration values.
      */
-    readonly configJson?: pulumi.Input<string>;
+    configJson?: pulumi.Input<string>;
     /**
      * The kind of configuration entry to register.
      */
-    readonly kind: pulumi.Input<string>;
+    kind: pulumi.Input<string>;
     /**
      * The name of the configuration entry being registred.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The namespace to create the config entry within.
      */
-    readonly namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string>;
 }

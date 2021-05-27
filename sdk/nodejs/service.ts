@@ -216,53 +216,53 @@ export interface ServiceState {
      * The address of the service. Defaults to the
      * address of the node.
      */
-    readonly address?: pulumi.Input<string>;
-    readonly checks?: pulumi.Input<pulumi.Input<inputs.ServiceCheck>[]>;
+    address?: pulumi.Input<string>;
+    checks?: pulumi.Input<pulumi.Input<inputs.ServiceCheck>[]>;
     /**
      * The datacenter to use. This overrides the
      * agent's default datacenter and the datacenter in the provider setup.
      */
-    readonly datacenter?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string>;
     /**
      * Specifies to disable the
      * anti-entropy feature for this service's tags. Defaults to `false`.
      */
-    readonly enableTagOverride?: pulumi.Input<boolean>;
+    enableTagOverride?: pulumi.Input<boolean>;
     /**
      * @deprecated The external field has been deprecated and does nothing.
      */
-    readonly external?: pulumi.Input<boolean>;
+    external?: pulumi.Input<boolean>;
     /**
      * A map of arbitrary KV metadata linked to the service
      * instance.
      */
-    readonly meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the health-check.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The namespace to create the service within.
      */
-    readonly namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string>;
     /**
      * The name of the node the to register the service on.
      */
-    readonly node?: pulumi.Input<string>;
+    node?: pulumi.Input<string>;
     /**
      * The port of the service.
      */
-    readonly port?: pulumi.Input<number>;
+    port?: pulumi.Input<number>;
     /**
      * - If the service ID is not provided, it will be defaulted to the value
      * of the `name` attribute.
      */
-    readonly serviceId?: pulumi.Input<string>;
+    serviceId?: pulumi.Input<string>;
     /**
      * A list of values that are opaque to Consul,
      * but can be used to distinguish between services or nodes.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -273,51 +273,51 @@ export interface ServiceArgs {
      * The address of the service. Defaults to the
      * address of the node.
      */
-    readonly address?: pulumi.Input<string>;
-    readonly checks?: pulumi.Input<pulumi.Input<inputs.ServiceCheck>[]>;
+    address?: pulumi.Input<string>;
+    checks?: pulumi.Input<pulumi.Input<inputs.ServiceCheck>[]>;
     /**
      * The datacenter to use. This overrides the
      * agent's default datacenter and the datacenter in the provider setup.
      */
-    readonly datacenter?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string>;
     /**
      * Specifies to disable the
      * anti-entropy feature for this service's tags. Defaults to `false`.
      */
-    readonly enableTagOverride?: pulumi.Input<boolean>;
+    enableTagOverride?: pulumi.Input<boolean>;
     /**
      * @deprecated The external field has been deprecated and does nothing.
      */
-    readonly external?: pulumi.Input<boolean>;
+    external?: pulumi.Input<boolean>;
     /**
      * A map of arbitrary KV metadata linked to the service
      * instance.
      */
-    readonly meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the health-check.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The namespace to create the service within.
      */
-    readonly namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string>;
     /**
      * The name of the node the to register the service on.
      */
-    readonly node: pulumi.Input<string>;
+    node: pulumi.Input<string>;
     /**
      * The port of the service.
      */
-    readonly port?: pulumi.Input<number>;
+    port?: pulumi.Input<number>;
     /**
      * - If the service ID is not provided, it will be defaulted to the value
      * of the `name` attribute.
      */
-    readonly serviceId?: pulumi.Input<string>;
+    serviceId?: pulumi.Input<string>;
     /**
      * A list of values that are opaque to Consul,
      * but can be used to distinguish between services or nodes.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
 }

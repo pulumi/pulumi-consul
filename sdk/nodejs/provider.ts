@@ -25,6 +25,19 @@ export class Provider extends pulumi.ProviderResource {
         return obj['__pulumiType'] === Provider.__pulumiType;
     }
 
+    public readonly address!: pulumi.Output<string | undefined>;
+    public readonly caFile!: pulumi.Output<string | undefined>;
+    public readonly caPath!: pulumi.Output<string | undefined>;
+    public readonly caPem!: pulumi.Output<string | undefined>;
+    public readonly certFile!: pulumi.Output<string | undefined>;
+    public readonly certPem!: pulumi.Output<string | undefined>;
+    public readonly datacenter!: pulumi.Output<string | undefined>;
+    public readonly httpAuth!: pulumi.Output<string | undefined>;
+    public readonly keyFile!: pulumi.Output<string | undefined>;
+    public readonly keyPem!: pulumi.Output<string | undefined>;
+    public readonly namespace!: pulumi.Output<string | undefined>;
+    public readonly scheme!: pulumi.Output<string | undefined>;
+    public readonly token!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -63,18 +76,18 @@ export class Provider extends pulumi.ProviderResource {
  * The set of arguments for constructing a Provider resource.
  */
 export interface ProviderArgs {
-    readonly address?: pulumi.Input<string>;
-    readonly caFile?: pulumi.Input<string>;
-    readonly caPath?: pulumi.Input<string>;
-    readonly caPem?: pulumi.Input<string>;
-    readonly certFile?: pulumi.Input<string>;
-    readonly certPem?: pulumi.Input<string>;
-    readonly datacenter?: pulumi.Input<string>;
-    readonly httpAuth?: pulumi.Input<string>;
-    readonly insecureHttps?: pulumi.Input<boolean>;
-    readonly keyFile?: pulumi.Input<string>;
-    readonly keyPem?: pulumi.Input<string>;
-    readonly namespace?: pulumi.Input<string>;
-    readonly scheme?: pulumi.Input<string>;
-    readonly token?: pulumi.Input<string>;
+    address?: pulumi.Input<string>;
+    caFile?: pulumi.Input<string>;
+    caPath?: pulumi.Input<string>;
+    caPem?: pulumi.Input<string>;
+    certFile?: pulumi.Input<string>;
+    certPem?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string>;
+    httpAuth?: pulumi.Input<string>;
+    insecureHttps?: pulumi.Input<boolean>;
+    keyFile?: pulumi.Input<string>;
+    keyPem?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string>;
+    scheme?: pulumi.Input<string>;
+    token?: pulumi.Input<string>;
 }

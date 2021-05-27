@@ -26,11 +26,11 @@ export function getCatalogService(args: GetCatalogServiceArgs, opts?: pulumi.Inv
  * A collection of arguments for invoking getCatalogService.
  */
 export interface GetCatalogServiceArgs {
-    readonly datacenter?: string;
-    readonly filter?: string;
-    readonly name: string;
-    readonly queryOptions?: inputs.GetCatalogServiceQueryOption[];
-    readonly tag?: string;
+    datacenter?: string;
+    filter?: string;
+    name: string;
+    queryOptions?: inputs.GetCatalogServiceQueryOption[];
+    tag?: string;
 }
 
 /**

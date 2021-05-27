@@ -45,23 +45,23 @@ export interface GetAclPolicyArgs {
     /**
      * The datacenters associated with the ACL Policy.
      */
-    readonly datacenters?: string[];
+    datacenters?: string[];
     /**
      * The description of the ACL Policy.
      */
-    readonly description?: string;
+    description?: string;
     /**
      * The name of the ACL Policy.
      */
-    readonly name: string;
+    name: string;
     /**
      * The namespace to lookup the policy.
      */
-    readonly namespace?: string;
+    namespace?: string;
     /**
      * The rules associated with the ACL Policy.
      */
-    readonly rules?: string;
+    rules?: string;
 }
 
 /**

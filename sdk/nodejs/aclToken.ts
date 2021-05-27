@@ -136,27 +136,27 @@ export interface AclTokenState {
      * The uuid of the token. If omitted, Consul will
      * generate a random uuid.
      */
-    readonly accessorId?: pulumi.Input<string>;
+    accessorId?: pulumi.Input<string>;
     /**
      * The description of the token.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The flag to set the token local to the current datacenter.
      */
-    readonly local?: pulumi.Input<boolean>;
+    local?: pulumi.Input<boolean>;
     /**
      * The namespace to create the token within.
      */
-    readonly namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string>;
     /**
      * The list of policies attached to the token.
      */
-    readonly policies?: pulumi.Input<pulumi.Input<string>[]>;
+    policies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The list of roles attached to the token.
      */
-    readonly roles?: pulumi.Input<pulumi.Input<string>[]>;
+    roles?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -167,25 +167,25 @@ export interface AclTokenArgs {
      * The uuid of the token. If omitted, Consul will
      * generate a random uuid.
      */
-    readonly accessorId?: pulumi.Input<string>;
+    accessorId?: pulumi.Input<string>;
     /**
      * The description of the token.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The flag to set the token local to the current datacenter.
      */
-    readonly local?: pulumi.Input<boolean>;
+    local?: pulumi.Input<boolean>;
     /**
      * The namespace to create the token within.
      */
-    readonly namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string>;
     /**
      * The list of policies attached to the token.
      */
-    readonly policies?: pulumi.Input<pulumi.Input<string>[]>;
+    policies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The list of roles attached to the token.
      */
-    readonly roles?: pulumi.Input<pulumi.Input<string>[]>;
+    roles?: pulumi.Input<pulumi.Input<string>[]>;
 }

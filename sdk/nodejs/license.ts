@@ -156,52 +156,52 @@ export interface LicenseState {
     /**
      * The ID of the customer the license is attached to.
      */
-    readonly customerId?: pulumi.Input<string>;
+    customerId?: pulumi.Input<string>;
     /**
      * The datacenter to use. This overrides the
      * agent's default datacenter and the datacenter in the provider setup.
      */
-    readonly datacenter?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string>;
     /**
      * The expiration time of the license.
      */
-    readonly expirationTime?: pulumi.Input<string>;
+    expirationTime?: pulumi.Input<string>;
     /**
      * The features for which the license is valid.
      */
-    readonly features?: pulumi.Input<pulumi.Input<string>[]>;
+    features?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the current installation.
      */
-    readonly installationId?: pulumi.Input<string>;
+    installationId?: pulumi.Input<string>;
     /**
      * The date the license was issued.
      */
-    readonly issueTime?: pulumi.Input<string>;
+    issueTime?: pulumi.Input<string>;
     /**
      * The Consul license to use.
      */
-    readonly license?: pulumi.Input<string>;
+    license?: pulumi.Input<string>;
     /**
      * The ID of the license used.
      */
-    readonly licenseId?: pulumi.Input<string>;
+    licenseId?: pulumi.Input<string>;
     /**
      * The product for which the license is valid.
      */
-    readonly product?: pulumi.Input<string>;
+    product?: pulumi.Input<string>;
     /**
      * The start time of the license.
      */
-    readonly startTime?: pulumi.Input<string>;
+    startTime?: pulumi.Input<string>;
     /**
      * Whether the license is valid.
      */
-    readonly valid?: pulumi.Input<boolean>;
+    valid?: pulumi.Input<boolean>;
     /**
      * A list of warning messages regarding the license validity.
      */
-    readonly warnings?: pulumi.Input<pulumi.Input<string>[]>;
+    warnings?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -212,9 +212,9 @@ export interface LicenseArgs {
      * The datacenter to use. This overrides the
      * agent's default datacenter and the datacenter in the provider setup.
      */
-    readonly datacenter?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string>;
     /**
      * The Consul license to use.
      */
-    readonly license: pulumi.Input<string>;
+    license: pulumi.Input<string>;
 }

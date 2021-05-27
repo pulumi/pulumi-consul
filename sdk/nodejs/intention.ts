@@ -41,7 +41,7 @@ import * as utilities from "./utilities";
  * });
  * const pg = pulumi.output(consul.getService({
  *     name: "postgresql",
- * }, { async: true }));
+ * }));
  * ```
  *
  * ## Import
@@ -175,42 +175,42 @@ export interface IntentionState {
     /**
      * The intention action. Must be one of `allow` or `deny`.
      */
-    readonly action?: pulumi.Input<string>;
+    action?: pulumi.Input<string>;
     /**
      * The datacenter to use. This overrides the
      * agent's default datacenter and the datacenter in the provider setup.
      */
-    readonly datacenter?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string>;
     /**
      * Optional description that can be used by Consul
      * tooling, but is not used internally.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The name of the destination service for the intention. This
      * service does not have to exist.
      */
-    readonly destinationName?: pulumi.Input<string>;
+    destinationName?: pulumi.Input<string>;
     /**
      * The destination
      * namespace of the intention.
      */
-    readonly destinationNamespace?: pulumi.Input<string>;
+    destinationNamespace?: pulumi.Input<string>;
     /**
      * Key/value pairs that are opaque to Consul and are associated
      * with the intention.
      */
-    readonly meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the source service for the intention. This
      * service does not have to exist.
      */
-    readonly sourceName?: pulumi.Input<string>;
+    sourceName?: pulumi.Input<string>;
     /**
      * The source namespace of the
      * intention.
      */
-    readonly sourceNamespace?: pulumi.Input<string>;
+    sourceNamespace?: pulumi.Input<string>;
 }
 
 /**
@@ -220,40 +220,40 @@ export interface IntentionArgs {
     /**
      * The intention action. Must be one of `allow` or `deny`.
      */
-    readonly action: pulumi.Input<string>;
+    action: pulumi.Input<string>;
     /**
      * The datacenter to use. This overrides the
      * agent's default datacenter and the datacenter in the provider setup.
      */
-    readonly datacenter?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string>;
     /**
      * Optional description that can be used by Consul
      * tooling, but is not used internally.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The name of the destination service for the intention. This
      * service does not have to exist.
      */
-    readonly destinationName: pulumi.Input<string>;
+    destinationName: pulumi.Input<string>;
     /**
      * The destination
      * namespace of the intention.
      */
-    readonly destinationNamespace?: pulumi.Input<string>;
+    destinationNamespace?: pulumi.Input<string>;
     /**
      * Key/value pairs that are opaque to Consul and are associated
      * with the intention.
      */
-    readonly meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the source service for the intention. This
      * service does not have to exist.
      */
-    readonly sourceName: pulumi.Input<string>;
+    sourceName: pulumi.Input<string>;
     /**
      * The source namespace of the
      * intention.
      */
-    readonly sourceNamespace?: pulumi.Input<string>;
+    sourceNamespace?: pulumi.Input<string>;
 }

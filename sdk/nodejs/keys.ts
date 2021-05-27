@@ -95,22 +95,22 @@ export interface KeysState {
      * The datacenter to use. This overrides the
      * agent's default datacenter and the datacenter in the provider setup.
      */
-    readonly datacenter?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string>;
     /**
      * Specifies a key in Consul to be written.
      * Supported values documented below.
      */
-    readonly keys?: pulumi.Input<pulumi.Input<inputs.KeysKey>[]>;
+    keys?: pulumi.Input<pulumi.Input<inputs.KeysKey>[]>;
     /**
      * The namespace to create the keys within.
      */
-    readonly namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string>;
     /**
      * The ACL token to use. This overrides the
      * token that the agent provides by default.
      */
-    readonly token?: pulumi.Input<string>;
-    readonly var?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    token?: pulumi.Input<string>;
+    var?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -121,19 +121,19 @@ export interface KeysArgs {
      * The datacenter to use. This overrides the
      * agent's default datacenter and the datacenter in the provider setup.
      */
-    readonly datacenter?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string>;
     /**
      * Specifies a key in Consul to be written.
      * Supported values documented below.
      */
-    readonly keys?: pulumi.Input<pulumi.Input<inputs.KeysKey>[]>;
+    keys?: pulumi.Input<pulumi.Input<inputs.KeysKey>[]>;
     /**
      * The namespace to create the keys within.
      */
-    readonly namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string>;
     /**
      * The ACL token to use. This overrides the
      * token that the agent provides by default.
      */
-    readonly token?: pulumi.Input<string>;
+    token?: pulumi.Input<string>;
 }
