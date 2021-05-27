@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  *
  * const test = pulumi.output(consul.getAclToken({
  *     accessorId: "00000000-0000-0000-0000-000000000002",
- * }, { async: true }));
+ * }));
  *
  * export const consulAclPolicies = test.policies!;
  * ```
@@ -49,24 +49,24 @@ export interface GetAclTokenArgs {
     /**
      * The accessor ID of the ACL token.
      */
-    readonly accessorId: string;
+    accessorId: string;
     /**
      * The description of the ACL token.
      */
-    readonly description?: string;
+    description?: string;
     /**
      * Whether the ACL token is local to the datacenter it was created within.
      */
-    readonly local?: boolean;
+    local?: boolean;
     /**
      * The namespace to lookup the ACL token.
      */
-    readonly namespace?: string;
+    namespace?: string;
     /**
      * A list of policies associated with the ACL token. Each entry has
      * an `id` and a `name` attribute.
      */
-    readonly policies?: inputs.GetAclTokenPolicy[];
+    policies?: inputs.GetAclTokenPolicy[];
 }
 
 /**

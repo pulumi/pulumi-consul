@@ -51,16 +51,16 @@ export interface GetNetworkAreaMembersArgs {
      * The datacenter to use. This overrides the
      * agent's default datacenter and the datacenter in the provider setup.
      */
-    readonly datacenter?: string;
+    datacenter?: string;
     /**
      * The ACL token to use. This overrides the
      * token that the agent provides by default.
      */
-    readonly token?: string;
+    token?: string;
     /**
      * The UUID of the area to list.
      */
-    readonly uuid: string;
+    uuid: string;
 }
 
 /**

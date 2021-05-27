@@ -45,25 +45,25 @@ export interface GetAclRoleArgs {
     /**
      * The description of the ACL Role.
      */
-    readonly description?: string;
+    description?: string;
     /**
      * The name of the ACL Role.
      */
-    readonly name: string;
+    name: string;
     /**
      * The namespace to lookup the role.
      */
-    readonly namespace?: string;
+    namespace?: string;
     /**
      * The list of policies associated with the ACL Role. Each entry has
      * an `id` and a `name` attribute.
      */
-    readonly policies?: inputs.GetAclRolePolicy[];
+    policies?: inputs.GetAclRolePolicy[];
     /**
      * The list of service identities associated with the ACL
      * Role. Each entry has a `serviceName` attribute and a list of `datacenters`.
      */
-    readonly serviceIdentities?: inputs.GetAclRoleServiceIdentity[];
+    serviceIdentities?: inputs.GetAclRoleServiceIdentity[];
 }
 
 /**

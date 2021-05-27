@@ -23,7 +23,7 @@ export function getCatalogServices(args?: GetCatalogServicesArgs, opts?: pulumi.
  * A collection of arguments for invoking getCatalogServices.
  */
 export interface GetCatalogServicesArgs {
-    readonly queryOptions?: inputs.GetCatalogServicesQueryOption[];
+    queryOptions?: inputs.GetCatalogServicesQueryOption[];
 }
 
 /**

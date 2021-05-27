@@ -142,44 +142,44 @@ export interface AutopilotConfigState {
      * Whether to remove failing servers when a
      * replacement comes online. Defaults to true.
      */
-    readonly cleanupDeadServers?: pulumi.Input<boolean>;
+    cleanupDeadServers?: pulumi.Input<boolean>;
     /**
      * The datacenter to use. This overrides the agent's
      * default datacenter and the datacenter in the provider setup.
      */
-    readonly datacenter?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string>;
     /**
      * Whether to disable [upgrade migrations](https://www.consul.io/docs/guides/autopilot.html#redundancy-zones).
      * Defaults to false.
      */
-    readonly disableUpgradeMigration?: pulumi.Input<boolean>;
+    disableUpgradeMigration?: pulumi.Input<boolean>;
     /**
      * The time after which a server is
      * considered as unhealthy and will be removed. Defaults to `"200ms"`.
      */
-    readonly lastContactThreshold?: pulumi.Input<string>;
+    lastContactThreshold?: pulumi.Input<string>;
     /**
      * The maximum number of Raft log entries a
      * server can trail the leader. Defaults to 250.
      */
-    readonly maxTrailingLogs?: pulumi.Input<number>;
+    maxTrailingLogs?: pulumi.Input<number>;
     /**
      * The [redundancy zone](https://www.consul.io/docs/guides/autopilot.html#redundancy-zones)
      * tag to use. Consul will try to keep one voting server by zone to take advantage
      * of isolated failure domains. Defaults to an empty string.
      */
-    readonly redundancyZoneTag?: pulumi.Input<string>;
+    redundancyZoneTag?: pulumi.Input<string>;
     /**
      * The period to wait for a server to be
      * healthy and stable before being promoted to a full, voting member. Defaults to
      * `"10s"`.
      */
-    readonly serverStabilizationTime?: pulumi.Input<string>;
+    serverStabilizationTime?: pulumi.Input<string>;
     /**
      * The tag to override the version information
      * used during a migration. Defaults to an empty string.
      */
-    readonly upgradeVersionTag?: pulumi.Input<string>;
+    upgradeVersionTag?: pulumi.Input<string>;
 }
 
 /**
@@ -190,42 +190,42 @@ export interface AutopilotConfigArgs {
      * Whether to remove failing servers when a
      * replacement comes online. Defaults to true.
      */
-    readonly cleanupDeadServers?: pulumi.Input<boolean>;
+    cleanupDeadServers?: pulumi.Input<boolean>;
     /**
      * The datacenter to use. This overrides the agent's
      * default datacenter and the datacenter in the provider setup.
      */
-    readonly datacenter?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string>;
     /**
      * Whether to disable [upgrade migrations](https://www.consul.io/docs/guides/autopilot.html#redundancy-zones).
      * Defaults to false.
      */
-    readonly disableUpgradeMigration?: pulumi.Input<boolean>;
+    disableUpgradeMigration?: pulumi.Input<boolean>;
     /**
      * The time after which a server is
      * considered as unhealthy and will be removed. Defaults to `"200ms"`.
      */
-    readonly lastContactThreshold?: pulumi.Input<string>;
+    lastContactThreshold?: pulumi.Input<string>;
     /**
      * The maximum number of Raft log entries a
      * server can trail the leader. Defaults to 250.
      */
-    readonly maxTrailingLogs?: pulumi.Input<number>;
+    maxTrailingLogs?: pulumi.Input<number>;
     /**
      * The [redundancy zone](https://www.consul.io/docs/guides/autopilot.html#redundancy-zones)
      * tag to use. Consul will try to keep one voting server by zone to take advantage
      * of isolated failure domains. Defaults to an empty string.
      */
-    readonly redundancyZoneTag?: pulumi.Input<string>;
+    redundancyZoneTag?: pulumi.Input<string>;
     /**
      * The period to wait for a server to be
      * healthy and stable before being promoted to a full, voting member. Defaults to
      * `"10s"`.
      */
-    readonly serverStabilizationTime?: pulumi.Input<string>;
+    serverStabilizationTime?: pulumi.Input<string>;
     /**
      * The tag to override the version information
      * used during a migration. Defaults to an empty string.
      */
-    readonly upgradeVersionTag?: pulumi.Input<string>;
+    upgradeVersionTag?: pulumi.Input<string>;
 }

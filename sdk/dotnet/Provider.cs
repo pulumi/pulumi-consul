@@ -18,6 +18,46 @@ namespace Pulumi.Consul
     [ConsulResourceType("pulumi:providers:consul")]
     public partial class Provider : Pulumi.ProviderResource
     {
+        [Output("address")]
+        public Output<string?> Address { get; private set; } = null!;
+
+        [Output("caFile")]
+        public Output<string?> CaFile { get; private set; } = null!;
+
+        [Output("caPath")]
+        public Output<string?> CaPath { get; private set; } = null!;
+
+        [Output("caPem")]
+        public Output<string?> CaPem { get; private set; } = null!;
+
+        [Output("certFile")]
+        public Output<string?> CertFile { get; private set; } = null!;
+
+        [Output("certPem")]
+        public Output<string?> CertPem { get; private set; } = null!;
+
+        [Output("datacenter")]
+        public Output<string?> Datacenter { get; private set; } = null!;
+
+        [Output("httpAuth")]
+        public Output<string?> HttpAuth { get; private set; } = null!;
+
+        [Output("keyFile")]
+        public Output<string?> KeyFile { get; private set; } = null!;
+
+        [Output("keyPem")]
+        public Output<string?> KeyPem { get; private set; } = null!;
+
+        [Output("namespace")]
+        public Output<string?> Namespace { get; private set; } = null!;
+
+        [Output("scheme")]
+        public Output<string?> Scheme { get; private set; } = null!;
+
+        [Output("token")]
+        public Output<string?> Token { get; private set; } = null!;
+
+
         /// <summary>
         /// Create a Provider resource with the given unique name, arguments, and options.
         /// </summary>

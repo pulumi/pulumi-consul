@@ -112,22 +112,22 @@ export interface NodeState {
      * The address of the node being added to,
      * or referenced in the catalog.
      */
-    readonly address?: pulumi.Input<string>;
+    address?: pulumi.Input<string>;
     /**
      * The datacenter to use. This overrides the agent's
      * default datacenter and the datacenter in the provider setup.
      */
-    readonly datacenter?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string>;
     /**
      * Key/value pairs that are associated with the node.
      */
-    readonly meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the node being added to, or
      * referenced in the catalog.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly token?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    token?: pulumi.Input<string>;
 }
 
 /**
@@ -138,20 +138,20 @@ export interface NodeArgs {
      * The address of the node being added to,
      * or referenced in the catalog.
      */
-    readonly address: pulumi.Input<string>;
+    address: pulumi.Input<string>;
     /**
      * The datacenter to use. This overrides the agent's
      * default datacenter and the datacenter in the provider setup.
      */
-    readonly datacenter?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string>;
     /**
      * Key/value pairs that are associated with the node.
      */
-    readonly meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the node being added to, or
      * referenced in the catalog.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly token?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    token?: pulumi.Input<string>;
 }

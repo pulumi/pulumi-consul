@@ -202,21 +202,21 @@ export interface PreparedQueryState {
      * proxy services for a queried service.  Conditions such as `tags` in the
      * prepared query will be matched against the proxy service. Defaults to false.
      */
-    readonly connect?: pulumi.Input<boolean>;
+    connect?: pulumi.Input<boolean>;
     /**
      * The datacenter to use. This overrides the
      * agent's default datacenter and the datacenter in the provider setup.
      */
-    readonly datacenter?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string>;
     /**
      * Settings for controlling the DNS response details.
      */
-    readonly dns?: pulumi.Input<inputs.PreparedQueryDns>;
+    dns?: pulumi.Input<inputs.PreparedQueryDns>;
     /**
      * Options for controlling behavior when no healthy
      * nodes are available in the local DC.
      */
-    readonly failover?: pulumi.Input<inputs.PreparedQueryFailover>;
+    failover?: pulumi.Input<inputs.PreparedQueryFailover>;
     /**
      * Specifies a list of check IDs that should be
      * ignored when filtering unhealthy instances. This is mostly useful in an
@@ -225,41 +225,41 @@ export interface PreparedQueryState {
      * simpler than de-registering the check as an interim solution until the check
      * can be fixed.
      */
-    readonly ignoreCheckIds?: pulumi.Input<pulumi.Input<string>[]>;
+    ignoreCheckIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The name of the prepared query. Used to identify
      * the prepared query during requests. Can be specified as an empty string
      * to configure the query as a catch-all.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Allows specifying the name of a node to sort results
      * near using Consul's distance sorting and network coordinates. The magic
      * `_agent` value can be used to always sort nearest the node servicing the
      * request.
      */
-    readonly near?: pulumi.Input<string>;
+    near?: pulumi.Input<string>;
     /**
      * Specifies a list of user-defined key/value pairs that
      * will be used for filtering the query results to nodes with the given metadata
      * values present.
      */
-    readonly nodeMeta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    nodeMeta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * When `true`, the prepared query will only
      * return nodes with passing health checks in the result.
      */
-    readonly onlyPassing?: pulumi.Input<boolean>;
+    onlyPassing?: pulumi.Input<boolean>;
     /**
      * The name of the service to query.
      */
-    readonly service?: pulumi.Input<string>;
+    service?: pulumi.Input<string>;
     /**
      * Specifies a list of user-defined key/value pairs
      * that will be used for filtering the query results to services with the given
      * metadata values present.
      */
-    readonly serviceMeta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    serviceMeta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the Consul session to tie this query's
      * lifetime to.  This is an advanced parameter that should not be used without a
@@ -267,28 +267,28 @@ export interface PreparedQueryState {
      * (it is recommended to leave this blank in nearly all cases).  If this
      * parameter is omitted the query will not expire.
      */
-    readonly session?: pulumi.Input<string>;
+    session?: pulumi.Input<string>;
     /**
      * The ACL token to store with the prepared
      * query. This token will be used by default whenever the query is executed.
      */
-    readonly storedToken?: pulumi.Input<string>;
+    storedToken?: pulumi.Input<string>;
     /**
      * The list of required and/or disallowed tags.  If a tag is
      * in this list it must be present.  If the tag is preceded with a "!" then it is
      * disallowed.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Query templating options. This is used to make a
      * single prepared query respond to many different requests.
      */
-    readonly template?: pulumi.Input<inputs.PreparedQueryTemplate>;
+    template?: pulumi.Input<inputs.PreparedQueryTemplate>;
     /**
      * The ACL token to use when saving the prepared query.
      * This overrides the token that the agent provides by default.
      */
-    readonly token?: pulumi.Input<string>;
+    token?: pulumi.Input<string>;
 }
 
 /**
@@ -300,21 +300,21 @@ export interface PreparedQueryArgs {
      * proxy services for a queried service.  Conditions such as `tags` in the
      * prepared query will be matched against the proxy service. Defaults to false.
      */
-    readonly connect?: pulumi.Input<boolean>;
+    connect?: pulumi.Input<boolean>;
     /**
      * The datacenter to use. This overrides the
      * agent's default datacenter and the datacenter in the provider setup.
      */
-    readonly datacenter?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string>;
     /**
      * Settings for controlling the DNS response details.
      */
-    readonly dns?: pulumi.Input<inputs.PreparedQueryDns>;
+    dns?: pulumi.Input<inputs.PreparedQueryDns>;
     /**
      * Options for controlling behavior when no healthy
      * nodes are available in the local DC.
      */
-    readonly failover?: pulumi.Input<inputs.PreparedQueryFailover>;
+    failover?: pulumi.Input<inputs.PreparedQueryFailover>;
     /**
      * Specifies a list of check IDs that should be
      * ignored when filtering unhealthy instances. This is mostly useful in an
@@ -323,41 +323,41 @@ export interface PreparedQueryArgs {
      * simpler than de-registering the check as an interim solution until the check
      * can be fixed.
      */
-    readonly ignoreCheckIds?: pulumi.Input<pulumi.Input<string>[]>;
+    ignoreCheckIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The name of the prepared query. Used to identify
      * the prepared query during requests. Can be specified as an empty string
      * to configure the query as a catch-all.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Allows specifying the name of a node to sort results
      * near using Consul's distance sorting and network coordinates. The magic
      * `_agent` value can be used to always sort nearest the node servicing the
      * request.
      */
-    readonly near?: pulumi.Input<string>;
+    near?: pulumi.Input<string>;
     /**
      * Specifies a list of user-defined key/value pairs that
      * will be used for filtering the query results to nodes with the given metadata
      * values present.
      */
-    readonly nodeMeta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    nodeMeta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * When `true`, the prepared query will only
      * return nodes with passing health checks in the result.
      */
-    readonly onlyPassing?: pulumi.Input<boolean>;
+    onlyPassing?: pulumi.Input<boolean>;
     /**
      * The name of the service to query.
      */
-    readonly service: pulumi.Input<string>;
+    service: pulumi.Input<string>;
     /**
      * Specifies a list of user-defined key/value pairs
      * that will be used for filtering the query results to services with the given
      * metadata values present.
      */
-    readonly serviceMeta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    serviceMeta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the Consul session to tie this query's
      * lifetime to.  This is an advanced parameter that should not be used without a
@@ -365,26 +365,26 @@ export interface PreparedQueryArgs {
      * (it is recommended to leave this blank in nearly all cases).  If this
      * parameter is omitted the query will not expire.
      */
-    readonly session?: pulumi.Input<string>;
+    session?: pulumi.Input<string>;
     /**
      * The ACL token to store with the prepared
      * query. This token will be used by default whenever the query is executed.
      */
-    readonly storedToken?: pulumi.Input<string>;
+    storedToken?: pulumi.Input<string>;
     /**
      * The list of required and/or disallowed tags.  If a tag is
      * in this list it must be present.  If the tag is preceded with a "!" then it is
      * disallowed.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Query templating options. This is used to make a
      * single prepared query respond to many different requests.
      */
-    readonly template?: pulumi.Input<inputs.PreparedQueryTemplate>;
+    template?: pulumi.Input<inputs.PreparedQueryTemplate>;
     /**
      * The ACL token to use when saving the prepared query.
      * This overrides the token that the agent provides by default.
      */
-    readonly token?: pulumi.Input<string>;
+    token?: pulumi.Input<string>;
 }

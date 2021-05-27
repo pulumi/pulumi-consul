@@ -90,11 +90,11 @@ export interface AclTokenRoleAttachmentState {
     /**
      * The role name.
      */
-    readonly role?: pulumi.Input<string>;
+    role?: pulumi.Input<string>;
     /**
      * The id of the token.
      */
-    readonly tokenId?: pulumi.Input<string>;
+    tokenId?: pulumi.Input<string>;
 }
 
 /**
@@ -104,9 +104,9 @@ export interface AclTokenRoleAttachmentArgs {
     /**
      * The role name.
      */
-    readonly role: pulumi.Input<string>;
+    role: pulumi.Input<string>;
     /**
      * The id of the token.
      */
-    readonly tokenId: pulumi.Input<string>;
+    tokenId: pulumi.Input<string>;
 }

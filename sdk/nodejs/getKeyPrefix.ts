@@ -30,27 +30,27 @@ export interface GetKeyPrefixArgs {
      * The datacenter to use. This overrides the
      * agent's default datacenter and the datacenter in the provider setup.
      */
-    readonly datacenter?: string;
+    datacenter?: string;
     /**
      * The namespace to create the keys within.
      */
-    readonly namespace?: string;
+    namespace?: string;
     /**
      * Specifies the common prefix shared by all keys
      * that will be read by this data source instance. In most cases, this will
      * end with a slash to read a "folder" of subkeys.
      */
-    readonly pathPrefix: string;
+    pathPrefix: string;
     /**
      * Specifies a subkey in Consul to be read. Supported
      * values documented below. Multiple blocks supported.
      */
-    readonly subkeyCollection?: inputs.GetKeyPrefixSubkeyCollection[];
+    subkeyCollection?: inputs.GetKeyPrefixSubkeyCollection[];
     /**
      * The ACL token to use. This overrides the
      * token that the agent provides by default.
      */
-    readonly token?: string;
+    token?: string;
 }
 
 /**

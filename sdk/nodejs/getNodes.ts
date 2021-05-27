@@ -32,7 +32,7 @@ export interface GetNodesArgs {
     /**
      * See below.
      */
-    readonly queryOptions?: inputs.GetNodesQueryOption[];
+    queryOptions?: inputs.GetNodesQueryOption[];
 }
 
 /**

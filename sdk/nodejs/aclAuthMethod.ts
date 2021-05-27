@@ -181,47 +181,47 @@ export interface AclAuthMethodState {
      *
      * @deprecated The config attribute is deprecated, please use config_json instead.
      */
-    readonly config?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    config?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The raw configuration for this ACL auth method.
      */
-    readonly configJson?: pulumi.Input<string>;
+    configJson?: pulumi.Input<string>;
     /**
      * A free form human readable description of the auth method.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * An optional name to use instead of the name
      * attribute when displaying information about this auth method.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * The maximum life of any token created by this
      * auth method.
      */
-    readonly maxTokenTtl?: pulumi.Input<string>;
+    maxTokenTtl?: pulumi.Input<string>;
     /**
      * The name of the ACL auth method.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The namespace to create the policy within.
      */
-    readonly namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string>;
     /**
      * A set of rules that control
      * which namespace tokens created via this auth method will be created within.
      */
-    readonly namespaceRules?: pulumi.Input<pulumi.Input<inputs.AclAuthMethodNamespaceRule>[]>;
+    namespaceRules?: pulumi.Input<pulumi.Input<inputs.AclAuthMethodNamespaceRule>[]>;
     /**
      * The kind of token that this auth method
      * produces. This can be either 'local' or 'global'.
      */
-    readonly tokenLocality?: pulumi.Input<string>;
+    tokenLocality?: pulumi.Input<string>;
     /**
      * The type of the ACL auth method.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
 }
 
 /**
@@ -235,45 +235,45 @@ export interface AclAuthMethodArgs {
      *
      * @deprecated The config attribute is deprecated, please use config_json instead.
      */
-    readonly config?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    config?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The raw configuration for this ACL auth method.
      */
-    readonly configJson?: pulumi.Input<string>;
+    configJson?: pulumi.Input<string>;
     /**
      * A free form human readable description of the auth method.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * An optional name to use instead of the name
      * attribute when displaying information about this auth method.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * The maximum life of any token created by this
      * auth method.
      */
-    readonly maxTokenTtl?: pulumi.Input<string>;
+    maxTokenTtl?: pulumi.Input<string>;
     /**
      * The name of the ACL auth method.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The namespace to create the policy within.
      */
-    readonly namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string>;
     /**
      * A set of rules that control
      * which namespace tokens created via this auth method will be created within.
      */
-    readonly namespaceRules?: pulumi.Input<pulumi.Input<inputs.AclAuthMethodNamespaceRule>[]>;
+    namespaceRules?: pulumi.Input<pulumi.Input<inputs.AclAuthMethodNamespaceRule>[]>;
     /**
      * The kind of token that this auth method
      * produces. This can be either 'local' or 'global'.
      */
-    readonly tokenLocality?: pulumi.Input<string>;
+    tokenLocality?: pulumi.Input<string>;
     /**
      * The type of the ACL auth method.
      */
-    readonly type: pulumi.Input<string>;
+    type: pulumi.Input<string>;
 }

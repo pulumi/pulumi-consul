@@ -125,24 +125,24 @@ export interface AclRoleState {
     /**
      * A free form human readable description of the role.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The name of the ACL role.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The namespace to create the role within.
      */
-    readonly namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string>;
     /**
      * The list of policies that should be applied to the role.
      */
-    readonly policies?: pulumi.Input<pulumi.Input<string>[]>;
+    policies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The list of service identities that should
      * be applied to the role.
      */
-    readonly serviceIdentities?: pulumi.Input<pulumi.Input<inputs.AclRoleServiceIdentity>[]>;
+    serviceIdentities?: pulumi.Input<pulumi.Input<inputs.AclRoleServiceIdentity>[]>;
 }
 
 /**
@@ -152,22 +152,22 @@ export interface AclRoleArgs {
     /**
      * A free form human readable description of the role.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The name of the ACL role.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The namespace to create the role within.
      */
-    readonly namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string>;
     /**
      * The list of policies that should be applied to the role.
      */
-    readonly policies?: pulumi.Input<pulumi.Input<string>[]>;
+    policies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The list of service identities that should
      * be applied to the role.
      */
-    readonly serviceIdentities?: pulumi.Input<pulumi.Input<inputs.AclRoleServiceIdentity>[]>;
+    serviceIdentities?: pulumi.Input<pulumi.Input<inputs.AclRoleServiceIdentity>[]>;
 }

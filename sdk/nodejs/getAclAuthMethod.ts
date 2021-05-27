@@ -42,11 +42,11 @@ export interface GetAclAuthMethodArgs {
     /**
      * The name of the ACL Auth Method.
      */
-    readonly name: string;
+    name: string;
     /**
      * The namespace to lookup the auth method.
      */
-    readonly namespace?: string;
+    namespace?: string;
 }
 
 /**

@@ -27,12 +27,12 @@ export interface GetAclTokenSecretIdArgs {
     /**
      * The accessor ID of the ACL token.
      */
-    readonly accessorId: string;
+    accessorId: string;
     /**
      * The namespace to lookup the token.
      */
-    readonly namespace?: string;
-    readonly pgpKey?: string;
+    namespace?: string;
+    pgpKey?: string;
 }
 
 /**

@@ -94,11 +94,11 @@ export interface AclTokenPolicyAttachmentState {
     /**
      * The name of the policy attached to the token.
      */
-    readonly policy?: pulumi.Input<string>;
+    policy?: pulumi.Input<string>;
     /**
      * The id of the token.
      */
-    readonly tokenId?: pulumi.Input<string>;
+    tokenId?: pulumi.Input<string>;
 }
 
 /**
@@ -108,9 +108,9 @@ export interface AclTokenPolicyAttachmentArgs {
     /**
      * The name of the policy attached to the token.
      */
-    readonly policy: pulumi.Input<string>;
+    policy: pulumi.Input<string>;
     /**
      * The id of the token.
      */
-    readonly tokenId: pulumi.Input<string>;
+    tokenId: pulumi.Input<string>;
 }

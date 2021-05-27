@@ -115,26 +115,26 @@ export interface NamespaceState {
     /**
      * Free form namespace description.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Specifies arbitrary KV metadata to associate with the
      * namespace.
      */
-    readonly meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The namespace name.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The list of default policies that should be
      * applied to all tokens created in this namespace.
      */
-    readonly policyDefaults?: pulumi.Input<pulumi.Input<string>[]>;
+    policyDefaults?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The list of default roles that should be applied
      * to all tokens created in this namespace.
      */
-    readonly roleDefaults?: pulumi.Input<pulumi.Input<string>[]>;
+    roleDefaults?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -144,24 +144,24 @@ export interface NamespaceArgs {
     /**
      * Free form namespace description.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Specifies arbitrary KV metadata to associate with the
      * namespace.
      */
-    readonly meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The namespace name.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The list of default policies that should be
      * applied to all tokens created in this namespace.
      */
-    readonly policyDefaults?: pulumi.Input<pulumi.Input<string>[]>;
+    policyDefaults?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The list of default roles that should be applied
      * to all tokens created in this namespace.
      */
-    readonly roleDefaults?: pulumi.Input<pulumi.Input<string>[]>;
+    roleDefaults?: pulumi.Input<pulumi.Input<string>[]>;
 }

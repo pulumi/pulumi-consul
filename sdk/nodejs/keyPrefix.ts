@@ -121,34 +121,34 @@ export interface KeyPrefixState {
      * The datacenter to use. This overrides the
      * agent's default datacenter and the datacenter in the provider setup.
      */
-    readonly datacenter?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string>;
     /**
      * The namespace to create the keys within.
      */
-    readonly namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string>;
     /**
      * Specifies the common prefix shared by all keys
      * that will be managed by this resource instance. In most cases this will
      * end with a slash, to manage a "folder" of keys.
      */
-    readonly pathPrefix?: pulumi.Input<string>;
+    pathPrefix?: pulumi.Input<string>;
     /**
      * A subkey to add. Supported values documented below.
      * Multiple blocks supported.
      */
-    readonly subkeyCollection?: pulumi.Input<pulumi.Input<inputs.KeyPrefixSubkeyCollection>[]>;
+    subkeyCollection?: pulumi.Input<pulumi.Input<inputs.KeyPrefixSubkeyCollection>[]>;
     /**
      * A mapping from subkey name (which will be appended
      * to the given `pathPrefix`) to the value that should be stored at that key.
      * Use slashes, as shown in the above example, to create "sub-folders" under
      * the given path prefix.
      */
-    readonly subkeys?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    subkeys?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ACL token to use. This overrides the
      * token that the agent provides by default.
      */
-    readonly token?: pulumi.Input<string>;
+    token?: pulumi.Input<string>;
 }
 
 /**
@@ -159,32 +159,32 @@ export interface KeyPrefixArgs {
      * The datacenter to use. This overrides the
      * agent's default datacenter and the datacenter in the provider setup.
      */
-    readonly datacenter?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string>;
     /**
      * The namespace to create the keys within.
      */
-    readonly namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string>;
     /**
      * Specifies the common prefix shared by all keys
      * that will be managed by this resource instance. In most cases this will
      * end with a slash, to manage a "folder" of keys.
      */
-    readonly pathPrefix: pulumi.Input<string>;
+    pathPrefix: pulumi.Input<string>;
     /**
      * A subkey to add. Supported values documented below.
      * Multiple blocks supported.
      */
-    readonly subkeyCollection?: pulumi.Input<pulumi.Input<inputs.KeyPrefixSubkeyCollection>[]>;
+    subkeyCollection?: pulumi.Input<pulumi.Input<inputs.KeyPrefixSubkeyCollection>[]>;
     /**
      * A mapping from subkey name (which will be appended
      * to the given `pathPrefix`) to the value that should be stored at that key.
      * Use slashes, as shown in the above example, to create "sub-folders" under
      * the given path prefix.
      */
-    readonly subkeys?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    subkeys?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ACL token to use. This overrides the
      * token that the agent provides by default.
      */
-    readonly token?: pulumi.Input<string>;
+    token?: pulumi.Input<string>;
 }

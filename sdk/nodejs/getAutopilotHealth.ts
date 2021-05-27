@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
  *
- * const read = pulumi.output(consul.getAutopilotHealth({ async: true }));
+ * const read = pulumi.output(consul.getAutopilotHealth());
  *
  * export const health = read.healthy;
  * ```
@@ -43,7 +43,7 @@ export interface GetAutopilotHealthArgs {
      * The datacenter to use. This overrides the agent's
      * default datacenter and the datacenter in the provider setup.
      */
-    readonly datacenter?: string;
+    datacenter?: string;
 }
 
 /**

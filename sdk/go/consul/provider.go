@@ -16,6 +16,20 @@ import (
 // [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
 type Provider struct {
 	pulumi.ProviderResourceState
+
+	Address    pulumi.StringPtrOutput `pulumi:"address"`
+	CaFile     pulumi.StringPtrOutput `pulumi:"caFile"`
+	CaPath     pulumi.StringPtrOutput `pulumi:"caPath"`
+	CaPem      pulumi.StringPtrOutput `pulumi:"caPem"`
+	CertFile   pulumi.StringPtrOutput `pulumi:"certFile"`
+	CertPem    pulumi.StringPtrOutput `pulumi:"certPem"`
+	Datacenter pulumi.StringPtrOutput `pulumi:"datacenter"`
+	HttpAuth   pulumi.StringPtrOutput `pulumi:"httpAuth"`
+	KeyFile    pulumi.StringPtrOutput `pulumi:"keyFile"`
+	KeyPem     pulumi.StringPtrOutput `pulumi:"keyPem"`
+	Namespace  pulumi.StringPtrOutput `pulumi:"namespace"`
+	Scheme     pulumi.StringPtrOutput `pulumi:"scheme"`
+	Token      pulumi.StringPtrOutput `pulumi:"token"`
 }
 
 // NewProvider registers a new resource with the given unique name, arguments, and options.

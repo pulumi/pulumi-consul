@@ -35,7 +35,7 @@ export interface GetServicesArgs {
     /**
      * See below.
      */
-    readonly queryOptions?: inputs.GetServicesQueryOption[];
+    queryOptions?: inputs.GetServicesQueryOption[];
 }
 
 /**

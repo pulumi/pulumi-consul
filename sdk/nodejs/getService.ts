@@ -42,25 +42,25 @@ export interface GetServiceArgs {
      * empty, the `datacenter` value found in the Consul agent that this provider is
      * configured to talk to.
      */
-    readonly datacenter?: string;
+    datacenter?: string;
     /**
      * A filter expression to refine the query, see https://www.consul.io/api-docs/features/filtering
      * and https://www.consul.io/api-docs/catalog#filtering-1.
      */
-    readonly filter?: string;
+    filter?: string;
     /**
      * The service name to select.
      */
-    readonly name: string;
+    name: string;
     /**
      * See below.
      */
-    readonly queryOptions?: inputs.GetServiceQueryOption[];
+    queryOptions?: inputs.GetServiceQueryOption[];
     /**
      * A single tag that can be used to filter the list of nodes
      * to return based on a single matching tag..
      */
-    readonly tag?: string;
+    tag?: string;
 }
 
 /**

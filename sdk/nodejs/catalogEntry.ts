@@ -135,26 +135,26 @@ export interface CatalogEntryState {
      * The address of the node being added to,
      * or referenced in the catalog.
      */
-    readonly address?: pulumi.Input<string>;
+    address?: pulumi.Input<string>;
     /**
      * The datacenter to use. This overrides the
      * agent's default datacenter and the datacenter in the provider setup.
      */
-    readonly datacenter?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string>;
     /**
      * The name of the node being added to, or
      * referenced in the catalog.
      */
-    readonly node?: pulumi.Input<string>;
+    node?: pulumi.Input<string>;
     /**
      * A service to optionally associated with
      * the node. Supported values are documented below.
      */
-    readonly services?: pulumi.Input<pulumi.Input<inputs.CatalogEntryService>[]>;
+    services?: pulumi.Input<pulumi.Input<inputs.CatalogEntryService>[]>;
     /**
      * ACL token.
      */
-    readonly token?: pulumi.Input<string>;
+    token?: pulumi.Input<string>;
 }
 
 /**
@@ -165,24 +165,24 @@ export interface CatalogEntryArgs {
      * The address of the node being added to,
      * or referenced in the catalog.
      */
-    readonly address: pulumi.Input<string>;
+    address: pulumi.Input<string>;
     /**
      * The datacenter to use. This overrides the
      * agent's default datacenter and the datacenter in the provider setup.
      */
-    readonly datacenter?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string>;
     /**
      * The name of the node being added to, or
      * referenced in the catalog.
      */
-    readonly node: pulumi.Input<string>;
+    node: pulumi.Input<string>;
     /**
      * A service to optionally associated with
      * the node. Supported values are documented below.
      */
-    readonly services?: pulumi.Input<pulumi.Input<inputs.CatalogEntryService>[]>;
+    services?: pulumi.Input<pulumi.Input<inputs.CatalogEntryService>[]>;
     /**
      * ACL token.
      */
-    readonly token?: pulumi.Input<string>;
+    token?: pulumi.Input<string>;
 }
