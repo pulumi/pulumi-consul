@@ -106,6 +106,18 @@ namespace Pulumi.Consul
         [Input("datacenter")]
         public Input<string>? Datacenter { get; set; }
 
+        [Input("headers", json: true)]
+        private InputList<Inputs.ProviderHeaderArgs>? _headers;
+
+        /// <summary>
+        /// Additional headers to send with each Consul request.
+        /// </summary>
+        public InputList<Inputs.ProviderHeaderArgs> Headers
+        {
+            get => _headers ?? (_headers = new InputList<Inputs.ProviderHeaderArgs>());
+            set => _headers = value;
+        }
+
         [Input("httpAuth")]
         public Input<string>? HttpAuth { get; set; }
 

@@ -106,7 +106,7 @@ export class AclAuthMethod extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The namespace to create the policy within.
+     * The namespace in which to create the auth method.
      */
     public readonly namespace!: pulumi.Output<string | undefined>;
     /**
@@ -205,7 +205,7 @@ export interface AclAuthMethodState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The namespace to create the policy within.
+     * The namespace in which to create the auth method.
      */
     namespace?: pulumi.Input<string>;
     /**
@@ -259,7 +259,7 @@ export interface AclAuthMethodArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The namespace to create the policy within.
+     * The namespace in which to create the auth method.
      */
     namespace?: pulumi.Input<string>;
     /**

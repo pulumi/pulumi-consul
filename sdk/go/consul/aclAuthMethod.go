@@ -108,7 +108,7 @@ type AclAuthMethod struct {
 	MaxTokenTtl pulumi.StringPtrOutput `pulumi:"maxTokenTtl"`
 	// The name of the ACL auth method.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The namespace to create the policy within.
+	// The namespace in which to create the auth method.
 	Namespace pulumi.StringPtrOutput `pulumi:"namespace"`
 	// A set of rules that control
 	// which namespace tokens created via this auth method will be created within.
@@ -170,7 +170,7 @@ type aclAuthMethodState struct {
 	MaxTokenTtl *string `pulumi:"maxTokenTtl"`
 	// The name of the ACL auth method.
 	Name *string `pulumi:"name"`
-	// The namespace to create the policy within.
+	// The namespace in which to create the auth method.
 	Namespace *string `pulumi:"namespace"`
 	// A set of rules that control
 	// which namespace tokens created via this auth method will be created within.
@@ -201,7 +201,7 @@ type AclAuthMethodState struct {
 	MaxTokenTtl pulumi.StringPtrInput
 	// The name of the ACL auth method.
 	Name pulumi.StringPtrInput
-	// The namespace to create the policy within.
+	// The namespace in which to create the auth method.
 	Namespace pulumi.StringPtrInput
 	// A set of rules that control
 	// which namespace tokens created via this auth method will be created within.
@@ -236,7 +236,7 @@ type aclAuthMethodArgs struct {
 	MaxTokenTtl *string `pulumi:"maxTokenTtl"`
 	// The name of the ACL auth method.
 	Name *string `pulumi:"name"`
-	// The namespace to create the policy within.
+	// The namespace in which to create the auth method.
 	Namespace *string `pulumi:"namespace"`
 	// A set of rules that control
 	// which namespace tokens created via this auth method will be created within.
@@ -268,7 +268,7 @@ type AclAuthMethodArgs struct {
 	MaxTokenTtl pulumi.StringPtrInput
 	// The name of the ACL auth method.
 	Name pulumi.StringPtrInput
-	// The namespace to create the policy within.
+	// The namespace in which to create the auth method.
 	Namespace pulumi.StringPtrInput
 	// A set of rules that control
 	// which namespace tokens created via this auth method will be created within.

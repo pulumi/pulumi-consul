@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -57,6 +58,7 @@ export class Provider extends pulumi.ProviderResource {
             inputs["certFile"] = args ? args.certFile : undefined;
             inputs["certPem"] = args ? args.certPem : undefined;
             inputs["datacenter"] = args ? args.datacenter : undefined;
+            inputs["headers"] = pulumi.output(args ? args.headers : undefined).apply(JSON.stringify);
             inputs["httpAuth"] = args ? args.httpAuth : undefined;
             inputs["insecureHttps"] = pulumi.output(args ? args.insecureHttps : undefined).apply(JSON.stringify);
             inputs["keyFile"] = args ? args.keyFile : undefined;
@@ -83,6 +85,10 @@ export interface ProviderArgs {
     certFile?: pulumi.Input<string>;
     certPem?: pulumi.Input<string>;
     datacenter?: pulumi.Input<string>;
+    /**
+     * Additional headers to send with each Consul request.
+     */
+    headers?: pulumi.Input<pulumi.Input<inputs.ProviderHeader>[]>;
     httpAuth?: pulumi.Input<string>;
     insecureHttps?: pulumi.Input<boolean>;
     keyFile?: pulumi.Input<string>;

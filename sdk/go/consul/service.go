@@ -18,7 +18,7 @@ import (
 //
 // > **NOTE:** If a Consul agent is running on the node where this service is
 // registered, it is not recommended to use this resource as the service will be
-// removed during the next [anti-entropy synchronisation](https://www.consul.io/docs/architecture/anti-entropy).
+// removed during the next [anti-entropy synchronization](https://www.consul.io/docs/architecture/anti-entropy).
 //
 // ## Example Usage
 //

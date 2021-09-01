@@ -50,13 +50,13 @@ namespace Pulumi.Consul.Inputs
         /// <summary>
         /// Specify the Consul ACL token to use when performing the
         /// request.  This defaults to the same API token configured by the `consul`
-        /// provider but may be overriden if necessary.
+        /// provider but may be overridden if necessary.
         /// </summary>
         [Input("token")]
         public string? Token { get; set; }
 
         /// <summary>
-        /// Index number used to enable blocking quereis.
+        /// Index number used to enable blocking queries.
         /// </summary>
         [Input("waitIndex")]
         public int? WaitIndex { get; set; }

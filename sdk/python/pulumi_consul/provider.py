@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
+from ._inputs import *
 
 __all__ = ['ProviderArgs', 'Provider']
 
@@ -20,6 +21,7 @@ class ProviderArgs:
                  cert_file: Optional[pulumi.Input[str]] = None,
                  cert_pem: Optional[pulumi.Input[str]] = None,
                  datacenter: Optional[pulumi.Input[str]] = None,
+                 headers: Optional[pulumi.Input[Sequence[pulumi.Input['ProviderHeaderArgs']]]] = None,
                  http_auth: Optional[pulumi.Input[str]] = None,
                  insecure_https: Optional[pulumi.Input[bool]] = None,
                  key_file: Optional[pulumi.Input[str]] = None,
@@ -29,6 +31,7 @@ class ProviderArgs:
                  token: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Provider resource.
+        :param pulumi.Input[Sequence[pulumi.Input['ProviderHeaderArgs']]] headers: Additional headers to send with each Consul request.
         """
         if address is not None:
             pulumi.set(__self__, "address", address)
@@ -44,6 +47,8 @@ class ProviderArgs:
             pulumi.set(__self__, "cert_pem", cert_pem)
         if datacenter is not None:
             pulumi.set(__self__, "datacenter", datacenter)
+        if headers is not None:
+            pulumi.set(__self__, "headers", headers)
         if http_auth is not None:
             pulumi.set(__self__, "http_auth", http_auth)
         if insecure_https is not None:
@@ -123,6 +128,18 @@ class ProviderArgs:
         pulumi.set(self, "datacenter", value)
 
     @property
+    @pulumi.getter
+    def headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ProviderHeaderArgs']]]]:
+        """
+        Additional headers to send with each Consul request.
+        """
+        return pulumi.get(self, "headers")
+
+    @headers.setter
+    def headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ProviderHeaderArgs']]]]):
+        pulumi.set(self, "headers", value)
+
+    @property
     @pulumi.getter(name="httpAuth")
     def http_auth(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "http_auth")
@@ -198,6 +215,7 @@ class Provider(pulumi.ProviderResource):
                  cert_file: Optional[pulumi.Input[str]] = None,
                  cert_pem: Optional[pulumi.Input[str]] = None,
                  datacenter: Optional[pulumi.Input[str]] = None,
+                 headers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProviderHeaderArgs']]]]] = None,
                  http_auth: Optional[pulumi.Input[str]] = None,
                  insecure_https: Optional[pulumi.Input[bool]] = None,
                  key_file: Optional[pulumi.Input[str]] = None,
@@ -214,6 +232,7 @@ class Provider(pulumi.ProviderResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProviderHeaderArgs']]]] headers: Additional headers to send with each Consul request.
         """
         ...
     @overload
@@ -249,6 +268,7 @@ class Provider(pulumi.ProviderResource):
                  cert_file: Optional[pulumi.Input[str]] = None,
                  cert_pem: Optional[pulumi.Input[str]] = None,
                  datacenter: Optional[pulumi.Input[str]] = None,
+                 headers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProviderHeaderArgs']]]]] = None,
                  http_auth: Optional[pulumi.Input[str]] = None,
                  insecure_https: Optional[pulumi.Input[bool]] = None,
                  key_file: Optional[pulumi.Input[str]] = None,
@@ -275,6 +295,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["cert_file"] = cert_file
             __props__.__dict__["cert_pem"] = cert_pem
             __props__.__dict__["datacenter"] = datacenter
+            __props__.__dict__["headers"] = pulumi.Output.from_input(headers).apply(pulumi.runtime.to_json) if headers is not None else None
             __props__.__dict__["http_auth"] = http_auth
             __props__.__dict__["insecure_https"] = pulumi.Output.from_input(insecure_https).apply(pulumi.runtime.to_json) if insecure_https is not None else None
             __props__.__dict__["key_file"] = key_file

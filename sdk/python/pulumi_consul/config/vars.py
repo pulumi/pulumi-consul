@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
 
 __all__ = [
     'address',
@@ -16,6 +17,7 @@ __all__ = [
     'cert_file',
     'cert_pem',
     'datacenter',
+    'headers',
     'http_auth',
     'insecure_https',
     'key_file',
@@ -40,6 +42,11 @@ cert_file = __config__.get('certFile')
 cert_pem = __config__.get('certPem')
 
 datacenter = __config__.get('datacenter')
+
+headers = __config__.get('headers')
+"""
+Additional headers to send with each Consul request.
+"""
 
 http_auth = __config__.get('httpAuth')
 

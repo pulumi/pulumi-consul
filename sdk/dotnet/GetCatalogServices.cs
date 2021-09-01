@@ -43,6 +43,7 @@ namespace Pulumi.Consul
         public readonly ImmutableArray<string> Names;
         public readonly ImmutableArray<Outputs.GetCatalogServicesQueryOptionResult> QueryOptions;
         public readonly ImmutableDictionary<string, string> Services;
+        public readonly ImmutableDictionary<string, string> Tags;
 
         [OutputConstructor]
         private GetCatalogServicesResult(
@@ -54,13 +55,16 @@ namespace Pulumi.Consul
 
             ImmutableArray<Outputs.GetCatalogServicesQueryOptionResult> queryOptions,
 
-            ImmutableDictionary<string, string> services)
+            ImmutableDictionary<string, string> services,
+
+            ImmutableDictionary<string, string> tags)
         {
             Datacenter = datacenter;
             Id = id;
             Names = names;
             QueryOptions = queryOptions;
             Services = services;
+            Tags = tags;
         }
     }
 }

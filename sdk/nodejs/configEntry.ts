@@ -221,7 +221,7 @@ export class ConfigEntry extends pulumi.CustomResource {
      */
     public readonly kind!: pulumi.Output<string>;
     /**
-     * The name of the configuration entry being registred.
+     * The name of the configuration entry being registered.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -276,7 +276,7 @@ export interface ConfigEntryState {
      */
     kind?: pulumi.Input<string>;
     /**
-     * The name of the configuration entry being registred.
+     * The name of the configuration entry being registered.
      */
     name?: pulumi.Input<string>;
     /**
@@ -298,7 +298,7 @@ export interface ConfigEntryArgs {
      */
     kind: pulumi.Input<string>;
     /**
-     * The name of the configuration entry being registred.
+     * The name of the configuration entry being registered.
      */
     name?: pulumi.Input<string>;
     /**

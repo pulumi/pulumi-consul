@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 let __config = new pulumi.Config("consul");
@@ -13,6 +14,10 @@ export let caPem: string | undefined = __config.get("caPem");
 export let certFile: string | undefined = __config.get("certFile");
 export let certPem: string | undefined = __config.get("certPem");
 export let datacenter: string | undefined = __config.get("datacenter");
+/**
+ * Additional headers to send with each Consul request.
+ */
+export let headers: outputs.config.Headers[] | undefined = __config.getObject<outputs.config.Headers[]>("headers");
 export let httpAuth: string | undefined = __config.get("httpAuth");
 export let insecureHttps: boolean | undefined = __config.getObject<boolean>("insecureHttps");
 export let keyFile: string | undefined = __config.get("keyFile");

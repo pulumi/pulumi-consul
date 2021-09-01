@@ -41,6 +41,8 @@ from .key_prefix import *
 from .keys import *
 from .license import *
 from .namespace import *
+from .namespace_policy_attachment import *
+from .namespace_role_attachment import *
 from .network_area import *
 from .node import *
 from .prepared_query import *
@@ -192,6 +194,22 @@ _utilities.register(
   "fqn": "pulumi_consul",
   "classes": {
    "consul:index/namespace:Namespace": "Namespace"
+  }
+ },
+ {
+  "pkg": "consul",
+  "mod": "index/namespacePolicyAttachment",
+  "fqn": "pulumi_consul",
+  "classes": {
+   "consul:index/namespacePolicyAttachment:NamespacePolicyAttachment": "NamespacePolicyAttachment"
+  }
+ },
+ {
+  "pkg": "consul",
+  "mod": "index/namespaceRoleAttachment",
+  "fqn": "pulumi_consul",
+  "classes": {
+   "consul:index/namespaceRoleAttachment:NamespaceRoleAttachment": "NamespaceRoleAttachment"
   }
  },
  {

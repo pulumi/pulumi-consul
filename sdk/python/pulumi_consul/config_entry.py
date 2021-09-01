@@ -21,7 +21,7 @@ class ConfigEntryArgs:
         The set of arguments for constructing a ConfigEntry resource.
         :param pulumi.Input[str] kind: The kind of configuration entry to register.
         :param pulumi.Input[str] config_json: An arbitrary map of configuration values.
-        :param pulumi.Input[str] name: The name of the configuration entry being registred.
+        :param pulumi.Input[str] name: The name of the configuration entry being registered.
         :param pulumi.Input[str] namespace: The namespace to create the config entry within.
         """
         pulumi.set(__self__, "kind", kind)
@@ -60,7 +60,7 @@ class ConfigEntryArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the configuration entry being registred.
+        The name of the configuration entry being registered.
         """
         return pulumi.get(self, "name")
 
@@ -92,7 +92,7 @@ class _ConfigEntryState:
         Input properties used for looking up and filtering ConfigEntry resources.
         :param pulumi.Input[str] config_json: An arbitrary map of configuration values.
         :param pulumi.Input[str] kind: The kind of configuration entry to register.
-        :param pulumi.Input[str] name: The name of the configuration entry being registred.
+        :param pulumi.Input[str] name: The name of the configuration entry being registered.
         :param pulumi.Input[str] namespace: The namespace to create the config entry within.
         """
         if config_json is not None:
@@ -132,7 +132,7 @@ class _ConfigEntryState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the configuration entry being registred.
+        The name of the configuration entry being registered.
         """
         return pulumi.get(self, "name")
 
@@ -339,7 +339,7 @@ class ConfigEntry(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] config_json: An arbitrary map of configuration values.
         :param pulumi.Input[str] kind: The kind of configuration entry to register.
-        :param pulumi.Input[str] name: The name of the configuration entry being registred.
+        :param pulumi.Input[str] name: The name of the configuration entry being registered.
         :param pulumi.Input[str] namespace: The namespace to create the config entry within.
         """
         ...
@@ -580,7 +580,7 @@ class ConfigEntry(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] config_json: An arbitrary map of configuration values.
         :param pulumi.Input[str] kind: The kind of configuration entry to register.
-        :param pulumi.Input[str] name: The name of the configuration entry being registred.
+        :param pulumi.Input[str] name: The name of the configuration entry being registered.
         :param pulumi.Input[str] namespace: The namespace to create the config entry within.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -613,7 +613,7 @@ class ConfigEntry(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the configuration entry being registred.
+        The name of the configuration entry being registered.
         """
         return pulumi.get(self, "name")
 

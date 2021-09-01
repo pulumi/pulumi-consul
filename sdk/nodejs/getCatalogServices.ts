@@ -38,4 +38,5 @@ export interface GetCatalogServicesResult {
     readonly names: string[];
     readonly queryOptions?: outputs.GetCatalogServicesQueryOption[];
     readonly services: {[key: string]: string};
+    readonly tags: {[key: string]: string};
 }

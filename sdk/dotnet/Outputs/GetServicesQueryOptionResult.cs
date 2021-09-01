@@ -40,11 +40,11 @@ namespace Pulumi.Consul.Outputs
         /// <summary>
         /// Specify the Consul ACL token to use when performing the
         /// request.  This defaults to the same API token configured by the `consul`
-        /// provider but may be overriden if necessary.
+        /// provider but may be overridden if necessary.
         /// </summary>
         public readonly string? Token;
         /// <summary>
-        /// Index number used to enable blocking quereis.
+        /// Index number used to enable blocking queries.
         /// </summary>
         public readonly int? WaitIndex;
         /// <summary>

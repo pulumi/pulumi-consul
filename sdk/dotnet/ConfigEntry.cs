@@ -308,7 +308,7 @@ namespace Pulumi.Consul
         public Output<string> Kind { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the configuration entry being registred.
+        /// The name of the configuration entry being registered.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -378,7 +378,7 @@ namespace Pulumi.Consul
         public Input<string> Kind { get; set; } = null!;
 
         /// <summary>
-        /// The name of the configuration entry being registred.
+        /// The name of the configuration entry being registered.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -409,7 +409,7 @@ namespace Pulumi.Consul
         public Input<string>? Kind { get; set; }
 
         /// <summary>
-        /// The name of the configuration entry being registred.
+        /// The name of the configuration entry being registered.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

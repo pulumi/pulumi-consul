@@ -139,9 +139,11 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"consul_namespace":             {Tok: makeResource(mainMod, "Namespace")},
-			"consul_network_area":          {Tok: makeResource(mainMod, "NetworkArea")},
-			"consul_certificate_authority": {Tok: makeResource(mainMod, "CertificateAuthority")},
+			"consul_namespace":                   {Tok: makeResource(mainMod, "Namespace")},
+			"consul_namespace_policy_attachment": {Tok: makeResource(mainMod, "NamespacePolicyAttachment")},
+			"consul_namespace_role_attachment":   {Tok: makeResource(mainMod, "NamespaceRoleAttachment")},
+			"consul_network_area":                {Tok: makeResource(mainMod, "NetworkArea")},
+			"consul_certificate_authority":       {Tok: makeResource(mainMod, "CertificateAuthority")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"consul_acl_auth_method":     {Tok: makeDataSource(mainMod, "getAclAuthMethod")},
@@ -197,8 +199,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		CSharp: &tfbridge.CSharpInfo{
 			PackageReferences: map[string]string{
-				"Pulumi":                       "3.*",
-				"System.Collections.Immutable": "1.6.0",
+				"Pulumi": "3.*",
 			},
 			Namespaces: map[string]string{
 				mainPkg: "Consul",

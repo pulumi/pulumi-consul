@@ -48,31 +48,35 @@ func NewProvider(ctx *pulumi.Context,
 }
 
 type providerArgs struct {
-	Address       *string `pulumi:"address"`
-	CaFile        *string `pulumi:"caFile"`
-	CaPath        *string `pulumi:"caPath"`
-	CaPem         *string `pulumi:"caPem"`
-	CertFile      *string `pulumi:"certFile"`
-	CertPem       *string `pulumi:"certPem"`
-	Datacenter    *string `pulumi:"datacenter"`
-	HttpAuth      *string `pulumi:"httpAuth"`
-	InsecureHttps *bool   `pulumi:"insecureHttps"`
-	KeyFile       *string `pulumi:"keyFile"`
-	KeyPem        *string `pulumi:"keyPem"`
-	Namespace     *string `pulumi:"namespace"`
-	Scheme        *string `pulumi:"scheme"`
-	Token         *string `pulumi:"token"`
+	Address    *string `pulumi:"address"`
+	CaFile     *string `pulumi:"caFile"`
+	CaPath     *string `pulumi:"caPath"`
+	CaPem      *string `pulumi:"caPem"`
+	CertFile   *string `pulumi:"certFile"`
+	CertPem    *string `pulumi:"certPem"`
+	Datacenter *string `pulumi:"datacenter"`
+	// Additional headers to send with each Consul request.
+	Headers       []ProviderHeader `pulumi:"headers"`
+	HttpAuth      *string          `pulumi:"httpAuth"`
+	InsecureHttps *bool            `pulumi:"insecureHttps"`
+	KeyFile       *string          `pulumi:"keyFile"`
+	KeyPem        *string          `pulumi:"keyPem"`
+	Namespace     *string          `pulumi:"namespace"`
+	Scheme        *string          `pulumi:"scheme"`
+	Token         *string          `pulumi:"token"`
 }
 
 // The set of arguments for constructing a Provider resource.
 type ProviderArgs struct {
-	Address       pulumi.StringPtrInput
-	CaFile        pulumi.StringPtrInput
-	CaPath        pulumi.StringPtrInput
-	CaPem         pulumi.StringPtrInput
-	CertFile      pulumi.StringPtrInput
-	CertPem       pulumi.StringPtrInput
-	Datacenter    pulumi.StringPtrInput
+	Address    pulumi.StringPtrInput
+	CaFile     pulumi.StringPtrInput
+	CaPath     pulumi.StringPtrInput
+	CaPem      pulumi.StringPtrInput
+	CertFile   pulumi.StringPtrInput
+	CertPem    pulumi.StringPtrInput
+	Datacenter pulumi.StringPtrInput
+	// Additional headers to send with each Consul request.
+	Headers       ProviderHeaderArrayInput
 	HttpAuth      pulumi.StringPtrInput
 	InsecureHttps pulumi.BoolPtrInput
 	KeyFile       pulumi.StringPtrInput

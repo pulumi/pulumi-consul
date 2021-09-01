@@ -54,6 +54,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &License{}
 	case "consul:index/namespace:Namespace":
 		r = &Namespace{}
+	case "consul:index/namespacePolicyAttachment:NamespacePolicyAttachment":
+		r = &NamespacePolicyAttachment{}
+	case "consul:index/namespaceRoleAttachment:NamespaceRoleAttachment":
+		r = &NamespaceRoleAttachment{}
 	case "consul:index/networkArea:NetworkArea":
 		r = &NetworkArea{}
 	case "consul:index/node:Node":
@@ -176,6 +180,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"consul",
 		"index/namespace",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"consul",
+		"index/namespacePolicyAttachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"consul",
+		"index/namespaceRoleAttachment",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

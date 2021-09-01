@@ -53,4 +53,11 @@ export interface GetServicesResult {
     readonly names: string[];
     readonly queryOptions?: outputs.GetServicesQueryOption[];
     readonly services: {[key: string]: string};
+    /**
+     * A map of the tags found for each service.  If more than one service
+     * shares the same tag, unique service names will be joined by whitespace (this
+     * is the inverse of `services` and can be used to lookup the services that match
+     * a single tag).
+     */
+    readonly tags: {[key: string]: string};
 }
