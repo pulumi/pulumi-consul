@@ -22,6 +22,11 @@ namespace Pulumi.Consul
 
         public static string? Datacenter { get; set; } = __config.Get("datacenter");
 
+        /// <summary>
+        /// Additional headers to send with each Consul request.
+        /// </summary>
+        public static ImmutableArray<Pulumi.Consul.Config.Types.Headers> Headers { get; set; } = __config.GetObject<ImmutableArray<Pulumi.Consul.Config.Types.Headers>>("headers");
+
         public static string? HttpAuth { get; set; } = __config.Get("httpAuth");
 
         public static bool? InsecureHttps { get; set; } = __config.GetBoolean("insecureHttps");
@@ -36,5 +41,14 @@ namespace Pulumi.Consul
 
         public static string? Token { get; set; } = __config.Get("token");
 
+        public static class Types
+        {
+
+             public class Headers
+             {
+                public string Name { get; set; }
+                public string Value { get; set; }
+            }
+        }
     }
 }

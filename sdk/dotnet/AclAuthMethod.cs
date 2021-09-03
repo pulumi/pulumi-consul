@@ -118,7 +118,7 @@ namespace Pulumi.Consul
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The namespace to create the policy within.
+        /// The namespace in which to create the auth method.
         /// </summary>
         [Output("namespace")]
         public Output<string?> Namespace { get; private set; } = null!;
@@ -237,7 +237,7 @@ namespace Pulumi.Consul
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The namespace to create the policy within.
+        /// The namespace in which to create the auth method.
         /// </summary>
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }
@@ -323,7 +323,7 @@ namespace Pulumi.Consul
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The namespace to create the policy within.
+        /// The namespace in which to create the auth method.
         /// </summary>
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }

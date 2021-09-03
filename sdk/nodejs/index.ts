@@ -41,6 +41,8 @@ export * from "./keyPrefix";
 export * from "./keys";
 export * from "./license";
 export * from "./namespace";
+export * from "./namespacePolicyAttachment";
+export * from "./namespaceRoleAttachment";
 export * from "./networkArea";
 export * from "./node";
 export * from "./preparedQuery";
@@ -74,6 +76,8 @@ import { KeyPrefix } from "./keyPrefix";
 import { Keys } from "./keys";
 import { License } from "./license";
 import { Namespace } from "./namespace";
+import { NamespacePolicyAttachment } from "./namespacePolicyAttachment";
+import { NamespaceRoleAttachment } from "./namespaceRoleAttachment";
 import { NetworkArea } from "./networkArea";
 import { Node } from "./node";
 import { PreparedQuery } from "./preparedQuery";
@@ -117,6 +121,10 @@ const _module = {
                 return new License(name, <any>undefined, { urn })
             case "consul:index/namespace:Namespace":
                 return new Namespace(name, <any>undefined, { urn })
+            case "consul:index/namespacePolicyAttachment:NamespacePolicyAttachment":
+                return new NamespacePolicyAttachment(name, <any>undefined, { urn })
+            case "consul:index/namespaceRoleAttachment:NamespaceRoleAttachment":
+                return new NamespaceRoleAttachment(name, <any>undefined, { urn })
             case "consul:index/networkArea:NetworkArea":
                 return new NetworkArea(name, <any>undefined, { urn })
             case "consul:index/node:Node":
@@ -147,6 +155,8 @@ pulumi.runtime.registerResourceModule("consul", "index/keyPrefix", _module)
 pulumi.runtime.registerResourceModule("consul", "index/keys", _module)
 pulumi.runtime.registerResourceModule("consul", "index/license", _module)
 pulumi.runtime.registerResourceModule("consul", "index/namespace", _module)
+pulumi.runtime.registerResourceModule("consul", "index/namespacePolicyAttachment", _module)
+pulumi.runtime.registerResourceModule("consul", "index/namespaceRoleAttachment", _module)
 pulumi.runtime.registerResourceModule("consul", "index/networkArea", _module)
 pulumi.runtime.registerResourceModule("consul", "index/node", _module)
 pulumi.runtime.registerResourceModule("consul", "index/preparedQuery", _module)

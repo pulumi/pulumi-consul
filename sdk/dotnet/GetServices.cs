@@ -59,6 +59,13 @@ namespace Pulumi.Consul
         public readonly ImmutableArray<string> Names;
         public readonly ImmutableArray<Outputs.GetServicesQueryOptionResult> QueryOptions;
         public readonly ImmutableDictionary<string, string> Services;
+        /// <summary>
+        /// A map of the tags found for each service.  If more than one service
+        /// shares the same tag, unique service names will be joined by whitespace (this
+        /// is the inverse of `services` and can be used to lookup the services that match
+        /// a single tag).
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> Tags;
 
         [OutputConstructor]
         private GetServicesResult(
@@ -70,13 +77,16 @@ namespace Pulumi.Consul
 
             ImmutableArray<Outputs.GetServicesQueryOptionResult> queryOptions,
 
-            ImmutableDictionary<string, string> services)
+            ImmutableDictionary<string, string> services,
+
+            ImmutableDictionary<string, string> tags)
         {
             Datacenter = datacenter;
             Id = id;
             Names = names;
             QueryOptions = queryOptions;
             Services = services;
+            Tags = tags;
         }
     }
 }

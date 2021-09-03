@@ -327,7 +327,7 @@ type ConfigEntry struct {
 	ConfigJson pulumi.StringPtrOutput `pulumi:"configJson"`
 	// The kind of configuration entry to register.
 	Kind pulumi.StringOutput `pulumi:"kind"`
-	// The name of the configuration entry being registred.
+	// The name of the configuration entry being registered.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The namespace to create the config entry within.
 	Namespace pulumi.StringPtrOutput `pulumi:"namespace"`
@@ -369,7 +369,7 @@ type configEntryState struct {
 	ConfigJson *string `pulumi:"configJson"`
 	// The kind of configuration entry to register.
 	Kind *string `pulumi:"kind"`
-	// The name of the configuration entry being registred.
+	// The name of the configuration entry being registered.
 	Name *string `pulumi:"name"`
 	// The namespace to create the config entry within.
 	Namespace *string `pulumi:"namespace"`
@@ -380,7 +380,7 @@ type ConfigEntryState struct {
 	ConfigJson pulumi.StringPtrInput
 	// The kind of configuration entry to register.
 	Kind pulumi.StringPtrInput
-	// The name of the configuration entry being registred.
+	// The name of the configuration entry being registered.
 	Name pulumi.StringPtrInput
 	// The namespace to create the config entry within.
 	Namespace pulumi.StringPtrInput
@@ -395,7 +395,7 @@ type configEntryArgs struct {
 	ConfigJson *string `pulumi:"configJson"`
 	// The kind of configuration entry to register.
 	Kind string `pulumi:"kind"`
-	// The name of the configuration entry being registred.
+	// The name of the configuration entry being registered.
 	Name *string `pulumi:"name"`
 	// The namespace to create the config entry within.
 	Namespace *string `pulumi:"namespace"`
@@ -407,7 +407,7 @@ type ConfigEntryArgs struct {
 	ConfigJson pulumi.StringPtrInput
 	// The kind of configuration entry to register.
 	Kind pulumi.StringInput
-	// The name of the configuration entry being registred.
+	// The name of the configuration entry being registered.
 	Name pulumi.StringPtrInput
 	// The namespace to create the config entry within.
 	Namespace pulumi.StringPtrInput

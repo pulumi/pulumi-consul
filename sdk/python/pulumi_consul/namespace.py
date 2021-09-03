@@ -227,6 +227,14 @@ class Namespace(pulumi.CustomResource):
             })
         ```
 
+        ## Import
+
+        `consul_namespace` can be imported. This is useful to manage attributes of the default namespace that is created automatically
+
+        ```sh
+         $ pulumi import consul:index/namespace:Namespace default default
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Free form namespace description.
@@ -260,6 +268,14 @@ class Namespace(pulumi.CustomResource):
             meta={
                 "foo": "bar",
             })
+        ```
+
+        ## Import
+
+        `consul_namespace` can be imported. This is useful to manage attributes of the default namespace that is created automatically
+
+        ```sh
+         $ pulumi import consul:index/namespace:Namespace default default
         ```
 
         :param str resource_name: The name of the resource.

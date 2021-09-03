@@ -29,4 +29,5 @@ type GetCatalogServicesResult struct {
 	Names        []string                        `pulumi:"names"`
 	QueryOptions []GetCatalogServicesQueryOption `pulumi:"queryOptions"`
 	Services     map[string]string               `pulumi:"services"`
+	Tags         map[string]string               `pulumi:"tags"`
 }

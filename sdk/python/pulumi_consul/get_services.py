@@ -21,7 +21,7 @@ class GetServicesResult:
     """
     A collection of values returned by getServices.
     """
-    def __init__(__self__, datacenter=None, id=None, names=None, query_options=None, services=None):
+    def __init__(__self__, datacenter=None, id=None, names=None, query_options=None, services=None, tags=None):
         if datacenter and not isinstance(datacenter, str):
             raise TypeError("Expected argument 'datacenter' to be a str")
         pulumi.set(__self__, "datacenter", datacenter)
@@ -37,6 +37,9 @@ class GetServicesResult:
         if services and not isinstance(services, dict):
             raise TypeError("Expected argument 'services' to be a dict")
         pulumi.set(__self__, "services", services)
+        if tags and not isinstance(tags, dict):
+            raise TypeError("Expected argument 'tags' to be a dict")
+        pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter
@@ -69,6 +72,17 @@ class GetServicesResult:
     def services(self) -> Mapping[str, str]:
         return pulumi.get(self, "services")
 
+    @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, str]:
+        """
+        A map of the tags found for each service.  If more than one service
+        shares the same tag, unique service names will be joined by whitespace (this
+        is the inverse of `services` and can be used to lookup the services that match
+        a single tag).
+        """
+        return pulumi.get(self, "tags")
+
 
 class AwaitableGetServicesResult(GetServicesResult):
     # pylint: disable=using-constant-test
@@ -80,7 +94,8 @@ class AwaitableGetServicesResult(GetServicesResult):
             id=self.id,
             names=self.names,
             query_options=self.query_options,
-            services=self.services)
+            services=self.services,
+            tags=self.tags)
 
 
 def get_services(query_options: Optional[Sequence[pulumi.InputType['GetServicesQueryOptionArgs']]] = None,
@@ -110,4 +125,5 @@ def get_services(query_options: Optional[Sequence[pulumi.InputType['GetServicesQ
         id=__ret__.id,
         names=__ret__.names,
         query_options=__ret__.query_options,
-        services=__ret__.services)
+        services=__ret__.services,
+        tags=__ret__.tags)

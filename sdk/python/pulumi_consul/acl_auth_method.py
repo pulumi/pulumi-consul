@@ -38,7 +38,7 @@ class AclAuthMethodArgs:
         :param pulumi.Input[str] max_token_ttl: The maximum life of any token created by this
                auth method.
         :param pulumi.Input[str] name: The name of the ACL auth method.
-        :param pulumi.Input[str] namespace: The namespace to create the policy within.
+        :param pulumi.Input[str] namespace: The namespace in which to create the auth method.
         :param pulumi.Input[Sequence[pulumi.Input['AclAuthMethodNamespaceRuleArgs']]] namespace_rules: A set of rules that control
                which namespace tokens created via this auth method will be created within.
         :param pulumi.Input[str] token_locality: The kind of token that this auth method
@@ -159,7 +159,7 @@ class AclAuthMethodArgs:
     @pulumi.getter
     def namespace(self) -> Optional[pulumi.Input[str]]:
         """
-        The namespace to create the policy within.
+        The namespace in which to create the auth method.
         """
         return pulumi.get(self, "namespace")
 
@@ -219,7 +219,7 @@ class _AclAuthMethodState:
         :param pulumi.Input[str] max_token_ttl: The maximum life of any token created by this
                auth method.
         :param pulumi.Input[str] name: The name of the ACL auth method.
-        :param pulumi.Input[str] namespace: The namespace to create the policy within.
+        :param pulumi.Input[str] namespace: The namespace in which to create the auth method.
         :param pulumi.Input[Sequence[pulumi.Input['AclAuthMethodNamespaceRuleArgs']]] namespace_rules: A set of rules that control
                which namespace tokens created via this auth method will be created within.
         :param pulumi.Input[str] token_locality: The kind of token that this auth method
@@ -330,7 +330,7 @@ class _AclAuthMethodState:
     @pulumi.getter
     def namespace(self) -> Optional[pulumi.Input[str]]:
         """
-        The namespace to create the policy within.
+        The namespace in which to create the auth method.
         """
         return pulumi.get(self, "namespace")
 
@@ -447,7 +447,7 @@ class AclAuthMethod(pulumi.CustomResource):
         :param pulumi.Input[str] max_token_ttl: The maximum life of any token created by this
                auth method.
         :param pulumi.Input[str] name: The name of the ACL auth method.
-        :param pulumi.Input[str] namespace: The namespace to create the policy within.
+        :param pulumi.Input[str] namespace: The namespace in which to create the auth method.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclAuthMethodNamespaceRuleArgs']]]] namespace_rules: A set of rules that control
                which namespace tokens created via this auth method will be created within.
         :param pulumi.Input[str] token_locality: The kind of token that this auth method
@@ -591,7 +591,7 @@ class AclAuthMethod(pulumi.CustomResource):
         :param pulumi.Input[str] max_token_ttl: The maximum life of any token created by this
                auth method.
         :param pulumi.Input[str] name: The name of the ACL auth method.
-        :param pulumi.Input[str] namespace: The namespace to create the policy within.
+        :param pulumi.Input[str] namespace: The namespace in which to create the auth method.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclAuthMethodNamespaceRuleArgs']]]] namespace_rules: A set of rules that control
                which namespace tokens created via this auth method will be created within.
         :param pulumi.Input[str] token_locality: The kind of token that this auth method
@@ -670,7 +670,7 @@ class AclAuthMethod(pulumi.CustomResource):
     @pulumi.getter
     def namespace(self) -> pulumi.Output[Optional[str]]:
         """
-        The namespace to create the policy within.
+        The namespace in which to create the auth method.
         """
         return pulumi.get(self, "namespace")
 

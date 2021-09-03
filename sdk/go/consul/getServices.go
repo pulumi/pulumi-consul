@@ -38,4 +38,9 @@ type GetServicesResult struct {
 	Names        []string                 `pulumi:"names"`
 	QueryOptions []GetServicesQueryOption `pulumi:"queryOptions"`
 	Services     map[string]string        `pulumi:"services"`
+	// A map of the tags found for each service.  If more than one service
+	// shares the same tag, unique service names will be joined by whitespace (this
+	// is the inverse of `services` and can be used to lookup the services that match
+	// a single tag).
+	Tags map[string]string `pulumi:"tags"`
 }

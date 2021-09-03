@@ -52,6 +52,8 @@
         "keys.ts",
         "license.ts",
         "namespace.ts",
+        "namespacePolicyAttachment.ts",
+        "namespaceRoleAttachment.ts",
         "networkArea.ts",
         "node.ts",
         "preparedQuery.ts",

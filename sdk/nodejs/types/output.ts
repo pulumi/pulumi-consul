@@ -323,11 +323,11 @@ export interface GetNodesQueryOption {
     /**
      * Specify the Consul ACL token to use when performing the
      * request.  This defaults to the same API token configured by the `consul`
-     * provider but may be overriden if necessary.
+     * provider but may be overridden if necessary.
      */
     token?: string;
     /**
-     * Index number used to enable blocking quereis.
+     * Index number used to enable blocking queries.
      */
     waitIndex?: number;
     /**
@@ -464,11 +464,11 @@ export interface GetServiceQueryOption {
     /**
      * Specify the Consul ACL token to use when performing the
      * request.  This defaults to the same API token configured by the `consul`
-     * provider but may be overriden if necessary.
+     * provider but may be overridden if necessary.
      */
     token?: string;
     /**
-     * Index number used to enable blocking quereis.
+     * Index number used to enable blocking queries.
      */
     waitIndex?: number;
     /**
@@ -551,11 +551,11 @@ export interface GetServicesQueryOption {
     /**
      * Specify the Consul ACL token to use when performing the
      * request.  This defaults to the same API token configured by the `consul`
-     * provider but may be overriden if necessary.
+     * provider but may be overridden if necessary.
      */
     token?: string;
     /**
-     * Index number used to enable blocking quereis.
+     * Index number used to enable blocking queries.
      */
     waitIndex?: number;
     /**
@@ -642,6 +642,11 @@ export interface PreparedQueryTemplate {
     type: string;
 }
 
+export interface ProviderHeader {
+    name?: string;
+    value?: string;
+}
+
 export interface ServiceCheck {
     /**
      * An ID, *unique per agent*. Will default to *name*
@@ -709,4 +714,10 @@ export interface ServiceCheckHeader {
      * The header's list of values.
      */
     values: string[];
+}
+export namespace config {
+    export interface Headers {
+        name: string;
+        value: string;
+    }
 }

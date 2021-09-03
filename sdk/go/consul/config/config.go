@@ -29,6 +29,11 @@ func GetCertPem(ctx *pulumi.Context) string {
 func GetDatacenter(ctx *pulumi.Context) string {
 	return config.Get(ctx, "consul:datacenter")
 }
+
+// Additional headers to send with each Consul request.
+func GetHeaders(ctx *pulumi.Context) string {
+	return config.Get(ctx, "consul:headers")
+}
 func GetHttpAuth(ctx *pulumi.Context) string {
 	return config.Get(ctx, "consul:httpAuth")
 }

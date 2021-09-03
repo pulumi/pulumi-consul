@@ -325,7 +325,13 @@ class Intention(pulumi.CustomResource):
         [Intentions](https://www.consul.io/docs/connect/intentions.html) are used to define
         rules for which services may connect to one another when using [Consul Connect](https://www.consul.io/docs/connect/index.html).
 
-        It is appropriate to either reference existing services or specify non-existent services
+        > **NOTE:** This resource is appropriate for managing legacy intentions in
+        Consul version 1.8 and earlier. As of Consul 1.9, intentions should be managed
+        using the [`service-intentions`](https://www.consul.io/docs/connect/intentions)
+        configuration entry. It is recommended to migrate from the `Intention`
+        resource to `ConfigEntry` when running Consul 1.9 and later.
+
+        It is appropriate to either reference existing services, or specify non-existent services
         that will be created in the future when creating intentions. This resource can be used
         in conjunction with the `Service` datasource when referencing services
         registered on nodes that have a running Consul agent.
@@ -393,7 +399,13 @@ class Intention(pulumi.CustomResource):
         [Intentions](https://www.consul.io/docs/connect/intentions.html) are used to define
         rules for which services may connect to one another when using [Consul Connect](https://www.consul.io/docs/connect/index.html).
 
-        It is appropriate to either reference existing services or specify non-existent services
+        > **NOTE:** This resource is appropriate for managing legacy intentions in
+        Consul version 1.8 and earlier. As of Consul 1.9, intentions should be managed
+        using the [`service-intentions`](https://www.consul.io/docs/connect/intentions)
+        configuration entry. It is recommended to migrate from the `Intention`
+        resource to `ConfigEntry` when running Consul 1.9 and later.
+
+        It is appropriate to either reference existing services, or specify non-existent services
         that will be created in the future when creating intentions. This resource can be used
         in conjunction with the `Service` datasource when referencing services
         registered on nodes that have a running Consul agent.

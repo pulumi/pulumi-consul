@@ -17,6 +17,7 @@ __all__ = [
     'PreparedQueryDnsArgs',
     'PreparedQueryFailoverArgs',
     'PreparedQueryTemplateArgs',
+    'ProviderHeaderArgs',
     'ServiceCheckArgs',
     'ServiceCheckHeaderArgs',
     'GetAclRolePolicyArgs',
@@ -469,6 +470,33 @@ class PreparedQueryTemplateArgs:
     @type.setter
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class ProviderHeaderArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 value: pulumi.Input[str]):
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
 
 
 @pulumi.input_type
@@ -1280,8 +1308,8 @@ class GetNodesQueryOptionArgs:
                to `false`.
         :param str token: Specify the Consul ACL token to use when performing the
                request.  This defaults to the same API token configured by the `consul`
-               provider but may be overriden if necessary.
-        :param int wait_index: Index number used to enable blocking quereis.
+               provider but may be overridden if necessary.
+        :param int wait_index: Index number used to enable blocking queries.
         :param str wait_time: Max time the client should wait for a blocking query
                to return.
         """
@@ -1368,7 +1396,7 @@ class GetNodesQueryOptionArgs:
         """
         Specify the Consul ACL token to use when performing the
         request.  This defaults to the same API token configured by the `consul`
-        provider but may be overriden if necessary.
+        provider but may be overridden if necessary.
         """
         return pulumi.get(self, "token")
 
@@ -1380,7 +1408,7 @@ class GetNodesQueryOptionArgs:
     @pulumi.getter(name="waitIndex")
     def wait_index(self) -> Optional[int]:
         """
-        Index number used to enable blocking quereis.
+        Index number used to enable blocking queries.
         """
         return pulumi.get(self, "wait_index")
 
@@ -1427,8 +1455,8 @@ class GetServiceQueryOptionArgs:
                to `false`.
         :param str token: Specify the Consul ACL token to use when performing the
                request.  This defaults to the same API token configured by the `consul`
-               provider but may be overriden if necessary.
-        :param int wait_index: Index number used to enable blocking quereis.
+               provider but may be overridden if necessary.
+        :param int wait_index: Index number used to enable blocking queries.
         :param str wait_time: Max time the client should wait for a blocking query
                to return.
         """
@@ -1529,7 +1557,7 @@ class GetServiceQueryOptionArgs:
         """
         Specify the Consul ACL token to use when performing the
         request.  This defaults to the same API token configured by the `consul`
-        provider but may be overriden if necessary.
+        provider but may be overridden if necessary.
         """
         return pulumi.get(self, "token")
 
@@ -1541,7 +1569,7 @@ class GetServiceQueryOptionArgs:
     @pulumi.getter(name="waitIndex")
     def wait_index(self) -> Optional[int]:
         """
-        Index number used to enable blocking quereis.
+        Index number used to enable blocking queries.
         """
         return pulumi.get(self, "wait_index")
 
@@ -1588,8 +1616,8 @@ class GetServicesQueryOptionArgs:
                to `false`.
         :param str token: Specify the Consul ACL token to use when performing the
                request.  This defaults to the same API token configured by the `consul`
-               provider but may be overriden if necessary.
-        :param int wait_index: Index number used to enable blocking quereis.
+               provider but may be overridden if necessary.
+        :param int wait_index: Index number used to enable blocking queries.
         :param str wait_time: Max time the client should wait for a blocking query
                to return.
         """
@@ -1690,7 +1718,7 @@ class GetServicesQueryOptionArgs:
         """
         Specify the Consul ACL token to use when performing the
         request.  This defaults to the same API token configured by the `consul`
-        provider but may be overriden if necessary.
+        provider but may be overridden if necessary.
         """
         return pulumi.get(self, "token")
 
@@ -1702,7 +1730,7 @@ class GetServicesQueryOptionArgs:
     @pulumi.getter(name="waitIndex")
     def wait_index(self) -> Optional[int]:
         """
-        Index number used to enable blocking quereis.
+        Index number used to enable blocking queries.
         """
         return pulumi.get(self, "wait_index")
 

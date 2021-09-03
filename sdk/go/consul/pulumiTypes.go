@@ -1085,6 +1085,106 @@ func (o PreparedQueryTemplatePtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type ProviderHeader struct {
+	Name  string `pulumi:"name"`
+	Value string `pulumi:"value"`
+}
+
+// ProviderHeaderInput is an input type that accepts ProviderHeaderArgs and ProviderHeaderOutput values.
+// You can construct a concrete instance of `ProviderHeaderInput` via:
+//
+//          ProviderHeaderArgs{...}
+type ProviderHeaderInput interface {
+	pulumi.Input
+
+	ToProviderHeaderOutput() ProviderHeaderOutput
+	ToProviderHeaderOutputWithContext(context.Context) ProviderHeaderOutput
+}
+
+type ProviderHeaderArgs struct {
+	Name  pulumi.StringInput `pulumi:"name"`
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (ProviderHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProviderHeader)(nil)).Elem()
+}
+
+func (i ProviderHeaderArgs) ToProviderHeaderOutput() ProviderHeaderOutput {
+	return i.ToProviderHeaderOutputWithContext(context.Background())
+}
+
+func (i ProviderHeaderArgs) ToProviderHeaderOutputWithContext(ctx context.Context) ProviderHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderHeaderOutput)
+}
+
+// ProviderHeaderArrayInput is an input type that accepts ProviderHeaderArray and ProviderHeaderArrayOutput values.
+// You can construct a concrete instance of `ProviderHeaderArrayInput` via:
+//
+//          ProviderHeaderArray{ ProviderHeaderArgs{...} }
+type ProviderHeaderArrayInput interface {
+	pulumi.Input
+
+	ToProviderHeaderArrayOutput() ProviderHeaderArrayOutput
+	ToProviderHeaderArrayOutputWithContext(context.Context) ProviderHeaderArrayOutput
+}
+
+type ProviderHeaderArray []ProviderHeaderInput
+
+func (ProviderHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ProviderHeader)(nil)).Elem()
+}
+
+func (i ProviderHeaderArray) ToProviderHeaderArrayOutput() ProviderHeaderArrayOutput {
+	return i.ToProviderHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i ProviderHeaderArray) ToProviderHeaderArrayOutputWithContext(ctx context.Context) ProviderHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderHeaderArrayOutput)
+}
+
+type ProviderHeaderOutput struct{ *pulumi.OutputState }
+
+func (ProviderHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProviderHeader)(nil)).Elem()
+}
+
+func (o ProviderHeaderOutput) ToProviderHeaderOutput() ProviderHeaderOutput {
+	return o
+}
+
+func (o ProviderHeaderOutput) ToProviderHeaderOutputWithContext(ctx context.Context) ProviderHeaderOutput {
+	return o
+}
+
+func (o ProviderHeaderOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ProviderHeader) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ProviderHeaderOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v ProviderHeader) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type ProviderHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (ProviderHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ProviderHeader)(nil)).Elem()
+}
+
+func (o ProviderHeaderArrayOutput) ToProviderHeaderArrayOutput() ProviderHeaderArrayOutput {
+	return o
+}
+
+func (o ProviderHeaderArrayOutput) ToProviderHeaderArrayOutputWithContext(ctx context.Context) ProviderHeaderArrayOutput {
+	return o
+}
+
+func (o ProviderHeaderArrayOutput) Index(i pulumi.IntInput) ProviderHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProviderHeader {
+		return vs[0].([]ProviderHeader)[vs[1].(int)]
+	}).(ProviderHeaderOutput)
+}
+
 type ServiceCheck struct {
 	// An ID, *unique per agent*. Will default to *name*
 	// if not set.
@@ -3344,9 +3444,9 @@ type GetNodesQueryOption struct {
 	RequireConsistent *bool `pulumi:"requireConsistent"`
 	// Specify the Consul ACL token to use when performing the
 	// request.  This defaults to the same API token configured by the `consul`
-	// provider but may be overriden if necessary.
+	// provider but may be overridden if necessary.
 	Token *string `pulumi:"token"`
-	// Index number used to enable blocking quereis.
+	// Index number used to enable blocking queries.
 	WaitIndex *int `pulumi:"waitIndex"`
 	// Max time the client should wait for a blocking query
 	// to return.
@@ -3381,9 +3481,9 @@ type GetNodesQueryOptionArgs struct {
 	RequireConsistent pulumi.BoolPtrInput `pulumi:"requireConsistent"`
 	// Specify the Consul ACL token to use when performing the
 	// request.  This defaults to the same API token configured by the `consul`
-	// provider but may be overriden if necessary.
+	// provider but may be overridden if necessary.
 	Token pulumi.StringPtrInput `pulumi:"token"`
-	// Index number used to enable blocking quereis.
+	// Index number used to enable blocking queries.
 	WaitIndex pulumi.IntPtrInput `pulumi:"waitIndex"`
 	// Max time the client should wait for a blocking query
 	// to return.
@@ -3472,12 +3572,12 @@ func (o GetNodesQueryOptionOutput) RequireConsistent() pulumi.BoolPtrOutput {
 
 // Specify the Consul ACL token to use when performing the
 // request.  This defaults to the same API token configured by the `consul`
-// provider but may be overriden if necessary.
+// provider but may be overridden if necessary.
 func (o GetNodesQueryOptionOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNodesQueryOption) *string { return v.Token }).(pulumi.StringPtrOutput)
 }
 
-// Index number used to enable blocking quereis.
+// Index number used to enable blocking queries.
 func (o GetNodesQueryOptionOutput) WaitIndex() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetNodesQueryOption) *int { return v.WaitIndex }).(pulumi.IntPtrOutput)
 }
@@ -4086,9 +4186,9 @@ type GetServiceQueryOption struct {
 	RequireConsistent *bool `pulumi:"requireConsistent"`
 	// Specify the Consul ACL token to use when performing the
 	// request.  This defaults to the same API token configured by the `consul`
-	// provider but may be overriden if necessary.
+	// provider but may be overridden if necessary.
 	Token *string `pulumi:"token"`
-	// Index number used to enable blocking quereis.
+	// Index number used to enable blocking queries.
 	WaitIndex *int `pulumi:"waitIndex"`
 	// Max time the client should wait for a blocking query
 	// to return.
@@ -4125,9 +4225,9 @@ type GetServiceQueryOptionArgs struct {
 	RequireConsistent pulumi.BoolPtrInput `pulumi:"requireConsistent"`
 	// Specify the Consul ACL token to use when performing the
 	// request.  This defaults to the same API token configured by the `consul`
-	// provider but may be overriden if necessary.
+	// provider but may be overridden if necessary.
 	Token pulumi.StringPtrInput `pulumi:"token"`
-	// Index number used to enable blocking quereis.
+	// Index number used to enable blocking queries.
 	WaitIndex pulumi.IntPtrInput `pulumi:"waitIndex"`
 	// Max time the client should wait for a blocking query
 	// to return.
@@ -4221,12 +4321,12 @@ func (o GetServiceQueryOptionOutput) RequireConsistent() pulumi.BoolPtrOutput {
 
 // Specify the Consul ACL token to use when performing the
 // request.  This defaults to the same API token configured by the `consul`
-// provider but may be overriden if necessary.
+// provider but may be overridden if necessary.
 func (o GetServiceQueryOptionOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceQueryOption) *string { return v.Token }).(pulumi.StringPtrOutput)
 }
 
-// Index number used to enable blocking quereis.
+// Index number used to enable blocking queries.
 func (o GetServiceQueryOptionOutput) WaitIndex() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetServiceQueryOption) *int { return v.WaitIndex }).(pulumi.IntPtrOutput)
 }
@@ -4520,9 +4620,9 @@ type GetServicesQueryOption struct {
 	RequireConsistent *bool `pulumi:"requireConsistent"`
 	// Specify the Consul ACL token to use when performing the
 	// request.  This defaults to the same API token configured by the `consul`
-	// provider but may be overriden if necessary.
+	// provider but may be overridden if necessary.
 	Token *string `pulumi:"token"`
-	// Index number used to enable blocking quereis.
+	// Index number used to enable blocking queries.
 	WaitIndex *int `pulumi:"waitIndex"`
 	// Max time the client should wait for a blocking query
 	// to return.
@@ -4559,9 +4659,9 @@ type GetServicesQueryOptionArgs struct {
 	RequireConsistent pulumi.BoolPtrInput `pulumi:"requireConsistent"`
 	// Specify the Consul ACL token to use when performing the
 	// request.  This defaults to the same API token configured by the `consul`
-	// provider but may be overriden if necessary.
+	// provider but may be overridden if necessary.
 	Token pulumi.StringPtrInput `pulumi:"token"`
-	// Index number used to enable blocking quereis.
+	// Index number used to enable blocking queries.
 	WaitIndex pulumi.IntPtrInput `pulumi:"waitIndex"`
 	// Max time the client should wait for a blocking query
 	// to return.
@@ -4655,12 +4755,12 @@ func (o GetServicesQueryOptionOutput) RequireConsistent() pulumi.BoolPtrOutput {
 
 // Specify the Consul ACL token to use when performing the
 // request.  This defaults to the same API token configured by the `consul`
-// provider but may be overriden if necessary.
+// provider but may be overridden if necessary.
 func (o GetServicesQueryOptionOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServicesQueryOption) *string { return v.Token }).(pulumi.StringPtrOutput)
 }
 
-// Index number used to enable blocking quereis.
+// Index number used to enable blocking queries.
 func (o GetServicesQueryOptionOutput) WaitIndex() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetServicesQueryOption) *int { return v.WaitIndex }).(pulumi.IntPtrOutput)
 }
@@ -4708,6 +4808,8 @@ func init() {
 	pulumi.RegisterOutputType(PreparedQueryFailoverPtrOutput{})
 	pulumi.RegisterOutputType(PreparedQueryTemplateOutput{})
 	pulumi.RegisterOutputType(PreparedQueryTemplatePtrOutput{})
+	pulumi.RegisterOutputType(ProviderHeaderOutput{})
+	pulumi.RegisterOutputType(ProviderHeaderArrayOutput{})
 	pulumi.RegisterOutputType(ServiceCheckOutput{})
 	pulumi.RegisterOutputType(ServiceCheckArrayOutput{})
 	pulumi.RegisterOutputType(ServiceCheckHeaderOutput{})

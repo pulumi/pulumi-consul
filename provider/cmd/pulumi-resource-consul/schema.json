@@ -35,6 +35,13 @@
             "datacenter": {
                 "type": "string"
             },
+            "headers": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/types/consul:config/headers:headers"
+                },
+                "description": "Additional headers to send with each Consul request.\n"
+            },
             "httpAuth": {
                 "type": "string"
             },
@@ -59,6 +66,26 @@
         }
     },
     "types": {
+        "consul:config/headers:headers": {
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "value"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "consul:index/AclAuthMethodNamespaceRule:AclAuthMethodNamespaceRule": {
             "properties": {
                 "bindNamespace": {
@@ -349,6 +376,36 @@
                 "regexp",
                 "type"
             ]
+        },
+        "consul:index/ProviderHeader:ProviderHeader": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "value"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": []
+                }
+            }
         },
         "consul:index/ServiceCheck:ServiceCheck": {
             "properties": {
@@ -1503,7 +1560,7 @@
                 },
                 "token": {
                     "type": "string",
-                    "description": "Specify the Consul ACL token to use when performing the\nrequest.  This defaults to the same API token configured by the `consul`\nprovider but may be overriden if necessary.\n",
+                    "description": "Specify the Consul ACL token to use when performing the\nrequest.  This defaults to the same API token configured by the `consul`\nprovider but may be overridden if necessary.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1512,7 +1569,7 @@
                 },
                 "waitIndex": {
                     "type": "integer",
-                    "description": "Index number used to enable blocking quereis.\n",
+                    "description": "Index number used to enable blocking queries.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1899,7 +1956,7 @@
                 },
                 "token": {
                     "type": "string",
-                    "description": "Specify the Consul ACL token to use when performing the\nrequest.  This defaults to the same API token configured by the `consul`\nprovider but may be overriden if necessary.\n",
+                    "description": "Specify the Consul ACL token to use when performing the\nrequest.  This defaults to the same API token configured by the `consul`\nprovider but may be overridden if necessary.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1908,7 +1965,7 @@
                 },
                 "waitIndex": {
                     "type": "integer",
-                    "description": "Index number used to enable blocking quereis.\n",
+                    "description": "Index number used to enable blocking queries.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2138,7 +2195,7 @@
                 },
                 "token": {
                     "type": "string",
-                    "description": "Specify the Consul ACL token to use when performing the\nrequest.  This defaults to the same API token configured by the `consul`\nprovider but may be overriden if necessary.\n",
+                    "description": "Specify the Consul ACL token to use when performing the\nrequest.  This defaults to the same API token configured by the `consul`\nprovider but may be overridden if necessary.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2147,7 +2204,7 @@
                 },
                 "waitIndex": {
                     "type": "integer",
-                    "description": "Index number used to enable blocking quereis.\n",
+                    "description": "Index number used to enable blocking queries.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2190,6 +2247,13 @@
             },
             "datacenter": {
                 "type": "string"
+            },
+            "headers": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/types/consul:index/ProviderHeader:ProviderHeader"
+                },
+                "description": "Additional headers to send with each Consul request.\n"
             },
             "httpAuth": {
                 "type": "string"
@@ -2234,6 +2298,13 @@
             },
             "datacenter": {
                 "type": "string"
+            },
+            "headers": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/types/consul:index/ProviderHeader:ProviderHeader"
+                },
+                "description": "Additional headers to send with each Consul request.\n"
             },
             "httpAuth": {
                 "type": "string"
@@ -2292,7 +2363,7 @@
                 },
                 "namespace": {
                     "type": "string",
-                    "description": "The namespace to create the policy within.\n"
+                    "description": "The namespace in which to create the auth method.\n"
                 },
                 "namespaceRules": {
                     "type": "array",
@@ -2345,7 +2416,7 @@
                 },
                 "namespace": {
                     "type": "string",
-                    "description": "The namespace to create the policy within.\n"
+                    "description": "The namespace in which to create the auth method.\n"
                 },
                 "namespaceRules": {
                     "type": "array",
@@ -2399,7 +2470,7 @@
                     },
                     "namespace": {
                         "type": "string",
-                        "description": "The namespace to create the policy within.\n"
+                        "description": "The namespace in which to create the auth method.\n"
                     },
                     "namespaceRules": {
                         "type": "array",
@@ -3235,7 +3306,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the configuration entry being registred.\n"
+                    "description": "The name of the configuration entry being registered.\n"
                 },
                 "namespace": {
                     "type": "string",
@@ -3257,7 +3328,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the configuration entry being registred.\n"
+                    "description": "The name of the configuration entry being registered.\n"
                 },
                 "namespace": {
                     "type": "string",
@@ -3280,7 +3351,7 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "The name of the configuration entry being registred.\n"
+                        "description": "The name of the configuration entry being registered.\n"
                     },
                     "namespace": {
                         "type": "string",
@@ -3291,7 +3362,7 @@
             }
         },
         "consul:index/intention:Intention": {
-            "description": "[Intentions](https://www.consul.io/docs/connect/intentions.html) are used to define\nrules for which services may connect to one another when using [Consul Connect](https://www.consul.io/docs/connect/index.html).\n\nIt is appropriate to either reference existing services or specify non-existent services\nthat will be created in the future when creating intentions. This resource can be used\nin conjunction with the `consul.Service` datasource when referencing services\nregistered on nodes that have a running Consul agent.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nCreate a simplest intention with static service names:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as consul from \"@pulumi/consul\";\n\nconst database = new consul.Intention(\"database\", {\n    action: \"allow\",\n    destinationName: \"db\",\n    sourceName: \"api\",\n});\n```\n```python\nimport pulumi\nimport pulumi_consul as consul\n\ndatabase = consul.Intention(\"database\",\n    action=\"allow\",\n    destination_name=\"db\",\n    source_name=\"api\")\n```\n```csharp\nusing Pulumi;\nusing Consul = Pulumi.Consul;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var database = new Consul.Intention(\"database\", new Consul.IntentionArgs\n        {\n            Action = \"allow\",\n            DestinationName = \"db\",\n            SourceName = \"api\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-consul/sdk/v3/go/consul\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := consul.NewIntention(ctx, \"database\", \u0026consul.IntentionArgs{\n\t\t\tAction:          pulumi.String(\"allow\"),\n\t\t\tDestinationName: pulumi.String(\"db\"),\n\t\t\tSourceName:      pulumi.String(\"api\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\nReferencing a known service via a datasource:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as consul from \"@pulumi/consul\";\n\nconst database = new consul.Intention(\"database\", {\n    action: \"allow\",\n    destinationName: consul_service_pg.name,\n    sourceName: \"api\",\n});\nconst pg = pulumi.output(consul.getService({\n    name: \"postgresql\",\n}));\n```\n```python\nimport pulumi\nimport pulumi_consul as consul\n\ndatabase = consul.Intention(\"database\",\n    action=\"allow\",\n    destination_name=consul_service[\"pg\"][\"name\"],\n    source_name=\"api\")\npg = consul.get_service(name=\"postgresql\")\n```\n```csharp\nusing Pulumi;\nusing Consul = Pulumi.Consul;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var database = new Consul.Intention(\"database\", new Consul.IntentionArgs\n        {\n            Action = \"allow\",\n            DestinationName = consul_service.Pg.Name,\n            SourceName = \"api\",\n        });\n        var pg = Output.Create(Consul.GetService.InvokeAsync(new Consul.GetServiceArgs\n        {\n            Name = \"postgresql\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-consul/sdk/v3/go/consul\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := consul.NewIntention(ctx, \"database\", \u0026consul.IntentionArgs{\n\t\t\tAction:          pulumi.String(\"allow\"),\n\t\t\tDestinationName: pulumi.Any(consul_service.Pg.Name),\n\t\t\tSourceName:      pulumi.String(\"api\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = consul.LookupService(ctx, \u0026consul.LookupServiceArgs{\n\t\t\tName: \"postgresql\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n`consul_intention` can be imported\n\n```sh\n $ pulumi import consul:index/intention:Intention database 657a57d6-0d56-57e2-31cb-e9f1ed3c18dd\n```\n\n ",
+            "description": "[Intentions](https://www.consul.io/docs/connect/intentions.html) are used to define\nrules for which services may connect to one another when using [Consul Connect](https://www.consul.io/docs/connect/index.html).\n\n\u003e **NOTE:** This resource is appropriate for managing legacy intentions in\nConsul version 1.8 and earlier. As of Consul 1.9, intentions should be managed\nusing the [`service-intentions`](https://www.consul.io/docs/connect/intentions)\nconfiguration entry. It is recommended to migrate from the `consul.Intention`\nresource to `consul.ConfigEntry` when running Consul 1.9 and later.\n\nIt is appropriate to either reference existing services, or specify non-existent services\nthat will be created in the future when creating intentions. This resource can be used\nin conjunction with the `consul.Service` datasource when referencing services\nregistered on nodes that have a running Consul agent.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nCreate a simplest intention with static service names:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as consul from \"@pulumi/consul\";\n\nconst database = new consul.Intention(\"database\", {\n    action: \"allow\",\n    destinationName: \"db\",\n    sourceName: \"api\",\n});\n```\n```python\nimport pulumi\nimport pulumi_consul as consul\n\ndatabase = consul.Intention(\"database\",\n    action=\"allow\",\n    destination_name=\"db\",\n    source_name=\"api\")\n```\n```csharp\nusing Pulumi;\nusing Consul = Pulumi.Consul;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var database = new Consul.Intention(\"database\", new Consul.IntentionArgs\n        {\n            Action = \"allow\",\n            DestinationName = \"db\",\n            SourceName = \"api\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-consul/sdk/v3/go/consul\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := consul.NewIntention(ctx, \"database\", \u0026consul.IntentionArgs{\n\t\t\tAction:          pulumi.String(\"allow\"),\n\t\t\tDestinationName: pulumi.String(\"db\"),\n\t\t\tSourceName:      pulumi.String(\"api\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\nReferencing a known service via a datasource:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as consul from \"@pulumi/consul\";\n\nconst database = new consul.Intention(\"database\", {\n    action: \"allow\",\n    destinationName: consul_service_pg.name,\n    sourceName: \"api\",\n});\nconst pg = pulumi.output(consul.getService({\n    name: \"postgresql\",\n}));\n```\n```python\nimport pulumi\nimport pulumi_consul as consul\n\ndatabase = consul.Intention(\"database\",\n    action=\"allow\",\n    destination_name=consul_service[\"pg\"][\"name\"],\n    source_name=\"api\")\npg = consul.get_service(name=\"postgresql\")\n```\n```csharp\nusing Pulumi;\nusing Consul = Pulumi.Consul;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var database = new Consul.Intention(\"database\", new Consul.IntentionArgs\n        {\n            Action = \"allow\",\n            DestinationName = consul_service.Pg.Name,\n            SourceName = \"api\",\n        });\n        var pg = Output.Create(Consul.GetService.InvokeAsync(new Consul.GetServiceArgs\n        {\n            Name = \"postgresql\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-consul/sdk/v3/go/consul\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := consul.NewIntention(ctx, \"database\", \u0026consul.IntentionArgs{\n\t\t\tAction:          pulumi.String(\"allow\"),\n\t\t\tDestinationName: pulumi.Any(consul_service.Pg.Name),\n\t\t\tSourceName:      pulumi.String(\"api\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = consul.LookupService(ctx, \u0026consul.LookupServiceArgs{\n\t\t\tName: \"postgresql\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n`consul_intention` can be imported\n\n```sh\n $ pulumi import consul:index/intention:Intention database 657a57d6-0d56-57e2-31cb-e9f1ed3c18dd\n```\n\n ",
             "properties": {
                 "action": {
                     "type": "string",
@@ -3790,7 +3861,7 @@
             }
         },
         "consul:index/namespace:Namespace": {
-            "description": "\u003e **NOTE:** This feature requires Consul Enterprise.\n\nThe `consul.Namespace` resource provides isolated [Consul Enterprise Namespaces](https://www.consul.io/docs/enterprise/namespaces/index.html).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as consul from \"@pulumi/consul\";\n\nconst production = new consul.Namespace(\"production\", {\n    description: \"Production namespace\",\n    meta: {\n        foo: \"bar\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_consul as consul\n\nproduction = consul.Namespace(\"production\",\n    description=\"Production namespace\",\n    meta={\n        \"foo\": \"bar\",\n    })\n```\n```csharp\nusing Pulumi;\nusing Consul = Pulumi.Consul;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var production = new Consul.Namespace(\"production\", new Consul.NamespaceArgs\n        {\n            Description = \"Production namespace\",\n            Meta = \n            {\n                { \"foo\", \"bar\" },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-consul/sdk/v3/go/consul\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := consul.NewNamespace(ctx, \"production\", \u0026consul.NamespaceArgs{\n\t\t\tDescription: pulumi.String(\"Production namespace\"),\n\t\t\tMeta: pulumi.StringMap{\n\t\t\t\t\"foo\": pulumi.String(\"bar\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "\u003e **NOTE:** This feature requires Consul Enterprise.\n\nThe `consul.Namespace` resource provides isolated [Consul Enterprise Namespaces](https://www.consul.io/docs/enterprise/namespaces/index.html).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as consul from \"@pulumi/consul\";\n\nconst production = new consul.Namespace(\"production\", {\n    description: \"Production namespace\",\n    meta: {\n        foo: \"bar\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_consul as consul\n\nproduction = consul.Namespace(\"production\",\n    description=\"Production namespace\",\n    meta={\n        \"foo\": \"bar\",\n    })\n```\n```csharp\nusing Pulumi;\nusing Consul = Pulumi.Consul;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var production = new Consul.Namespace(\"production\", new Consul.NamespaceArgs\n        {\n            Description = \"Production namespace\",\n            Meta = \n            {\n                { \"foo\", \"bar\" },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-consul/sdk/v3/go/consul\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := consul.NewNamespace(ctx, \"production\", \u0026consul.NamespaceArgs{\n\t\t\tDescription: pulumi.String(\"Production namespace\"),\n\t\t\tMeta: pulumi.StringMap{\n\t\t\t\t\"foo\": pulumi.String(\"bar\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n`consul_namespace` can be imported. This is useful to manage attributes of the default namespace that is created automatically\n\n```sh\n $ pulumi import consul:index/namespace:Namespace default default\n```\n\n ",
             "properties": {
                 "description": {
                     "type": "string",
@@ -3887,6 +3958,96 @@
                             "type": "string"
                         },
                         "description": "The list of default roles that should be applied\nto all tokens created in this namespace.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "consul:index/namespacePolicyAttachment:NamespacePolicyAttachment": {
+            "description": "\n\n\n## Import\n\n`consul_namespace_policy_attachment` can be imported. This is especially useful to manage the policies attached to the `default` namespace\n\n```sh\n $ pulumi import consul:index/namespacePolicyAttachment:NamespacePolicyAttachment default default:policy_name\n```\n\n ",
+            "properties": {
+                "namespace": {
+                    "type": "string",
+                    "description": "The namespace to attach the policy to.\n"
+                },
+                "policy": {
+                    "type": "string",
+                    "description": "The name of the policy attached to the namespace.\n"
+                }
+            },
+            "required": [
+                "namespace",
+                "policy"
+            ],
+            "inputProperties": {
+                "namespace": {
+                    "type": "string",
+                    "description": "The namespace to attach the policy to.\n"
+                },
+                "policy": {
+                    "type": "string",
+                    "description": "The name of the policy attached to the namespace.\n"
+                }
+            },
+            "requiredInputs": [
+                "namespace",
+                "policy"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering NamespacePolicyAttachment resources.\n",
+                "properties": {
+                    "namespace": {
+                        "type": "string",
+                        "description": "The namespace to attach the policy to.\n"
+                    },
+                    "policy": {
+                        "type": "string",
+                        "description": "The name of the policy attached to the namespace.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "consul:index/namespaceRoleAttachment:NamespaceRoleAttachment": {
+            "description": "\n\n\n## Import\n\n`consul_namespace_role_attachment` can be imported. This is especially useful to manage the policies attached to the `default` namespace\n\n```sh\n $ pulumi import consul:index/namespaceRoleAttachment:NamespaceRoleAttachment default default:role_name\n```\n\n ",
+            "properties": {
+                "namespace": {
+                    "type": "string",
+                    "description": "The namespace to attach the role to.\n"
+                },
+                "role": {
+                    "type": "string",
+                    "description": "The name of the role attached to the namespace.\n"
+                }
+            },
+            "required": [
+                "namespace",
+                "role"
+            ],
+            "inputProperties": {
+                "namespace": {
+                    "type": "string",
+                    "description": "The namespace to attach the role to.\n"
+                },
+                "role": {
+                    "type": "string",
+                    "description": "The name of the role attached to the namespace.\n"
+                }
+            },
+            "requiredInputs": [
+                "namespace",
+                "role"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering NamespaceRoleAttachment resources.\n",
+                "properties": {
+                    "namespace": {
+                        "type": "string",
+                        "description": "The namespace to attach the role to.\n"
+                    },
+                    "role": {
+                        "type": "string",
+                        "description": "The name of the role attached to the namespace.\n"
                     }
                 },
                 "type": "object"
@@ -4317,7 +4478,7 @@
             }
         },
         "consul:index/service:Service": {
-            "description": "A high-level resource for creating a Service in Consul in the Consul catalog. This\nis appropriate for registering [external services](https://www.consul.io/docs/guides/external.html) and\ncan be used to create services addressable by Consul that cannot be registered\nwith a [local agent](https://www.consul.io/docs/agent/basics.html).\n\n\u003e **NOTE:** If a Consul agent is running on the node where this service is\nregistered, it is not recommended to use this resource as the service will be\nremoved during the next [anti-entropy synchronisation](https://www.consul.io/docs/architecture/anti-entropy).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nCreating a new node with the service:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as consul from \"@pulumi/consul\";\n\nconst compute = new consul.Node(\"compute\", {\n    address: \"www.google.com\",\n});\nconst google = new consul.Service(\"google\", {\n    node: compute.name,\n    port: 80,\n    tags: [\"tag0\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_consul as consul\n\ncompute = consul.Node(\"compute\", address=\"www.google.com\")\ngoogle = consul.Service(\"google\",\n    node=compute.name,\n    port=80,\n    tags=[\"tag0\"])\n```\n```csharp\nusing Pulumi;\nusing Consul = Pulumi.Consul;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var compute = new Consul.Node(\"compute\", new Consul.NodeArgs\n        {\n            Address = \"www.google.com\",\n        });\n        var google = new Consul.Service(\"google\", new Consul.ServiceArgs\n        {\n            Node = compute.Name,\n            Port = 80,\n            Tags = \n            {\n                \"tag0\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-consul/sdk/v3/go/consul\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tcompute, err := consul.NewNode(ctx, \"compute\", \u0026consul.NodeArgs{\n\t\t\tAddress: pulumi.String(\"www.google.com\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = consul.NewService(ctx, \"google\", \u0026consul.ServiceArgs{\n\t\t\tNode: compute.Name,\n\t\t\tPort: pulumi.Int(80),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"tag0\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\nUtilizing an existing known node:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as consul from \"@pulumi/consul\";\n\nconst google = new consul.Service(\"google\", {\n    node: \"google\",\n    port: 443,\n});\n```\n```python\nimport pulumi\nimport pulumi_consul as consul\n\ngoogle = consul.Service(\"google\",\n    node=\"google\",\n    port=443)\n```\n```csharp\nusing Pulumi;\nusing Consul = Pulumi.Consul;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var google = new Consul.Service(\"google\", new Consul.ServiceArgs\n        {\n            Node = \"google\",\n            Port = 443,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-consul/sdk/v3/go/consul\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := consul.NewService(ctx, \"google\", \u0026consul.ServiceArgs{\n\t\t\tNode: pulumi.String(\"google\"),\n\t\t\tPort: pulumi.Int(443),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\nRegister a health-check:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as consul from \"@pulumi/consul\";\n\nconst redis = new consul.Service(\"redis\", {\n    checks: [{\n        checkId: \"service:redis1\",\n        deregisterCriticalServiceAfter: \"30s\",\n        headers: [\n            {\n                name: \"foo\",\n                values: [\"test\"],\n            },\n            {\n                name: \"bar\",\n                values: [\"test\"],\n            },\n        ],\n        http: \"https://www.hashicorptest.com\",\n        interval: \"5s\",\n        method: \"PUT\",\n        name: \"Redis health check\",\n        status: \"passing\",\n        timeout: \"1s\",\n        tlsSkipVerify: false,\n    }],\n    node: \"redis\",\n    port: 6379,\n});\n```\n```python\nimport pulumi\nimport pulumi_consul as consul\n\nredis = consul.Service(\"redis\",\n    checks=[consul.ServiceCheckArgs(\n        check_id=\"service:redis1\",\n        deregister_critical_service_after=\"30s\",\n        headers=[\n            consul.ServiceCheckHeaderArgs(\n                name=\"foo\",\n                value=[\"test\"],\n            ),\n            consul.ServiceCheckHeaderArgs(\n                name=\"bar\",\n                value=[\"test\"],\n            ),\n        ],\n        http=\"https://www.hashicorptest.com\",\n        interval=\"5s\",\n        method=\"PUT\",\n        name=\"Redis health check\",\n        status=\"passing\",\n        timeout=\"1s\",\n        tls_skip_verify=False,\n    )],\n    node=\"redis\",\n    port=6379)\n```\n```csharp\nusing Pulumi;\nusing Consul = Pulumi.Consul;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var redis = new Consul.Service(\"redis\", new Consul.ServiceArgs\n        {\n            Checks = \n            {\n                new Consul.Inputs.ServiceCheckArgs\n                {\n                    CheckId = \"service:redis1\",\n                    DeregisterCriticalServiceAfter = \"30s\",\n                    Headers = \n                    {\n                        new Consul.Inputs.ServiceCheckHeaderArgs\n                        {\n                            Name = \"foo\",\n                            Value = \n                            {\n                                \"test\",\n                            },\n                        },\n                        new Consul.Inputs.ServiceCheckHeaderArgs\n                        {\n                            Name = \"bar\",\n                            Value = \n                            {\n                                \"test\",\n                            },\n                        },\n                    },\n                    Http = \"https://www.hashicorptest.com\",\n                    Interval = \"5s\",\n                    Method = \"PUT\",\n                    Name = \"Redis health check\",\n                    Status = \"passing\",\n                    Timeout = \"1s\",\n                    TlsSkipVerify = false,\n                },\n            },\n            Node = \"redis\",\n            Port = 6379,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-consul/sdk/v3/go/consul\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := consul.NewService(ctx, \"redis\", \u0026consul.ServiceArgs{\n\t\t\tChecks: consul.ServiceCheckArray{\n\t\t\t\t\u0026consul.ServiceCheckArgs{\n\t\t\t\t\tCheckId:                        pulumi.String(\"service:redis1\"),\n\t\t\t\t\tDeregisterCriticalServiceAfter: pulumi.String(\"30s\"),\n\t\t\t\t\tHeaders: consul.ServiceCheckHeaderArray{\n\t\t\t\t\t\t\u0026consul.ServiceCheckHeaderArgs{\n\t\t\t\t\t\t\tName: pulumi.String(\"foo\"),\n\t\t\t\t\t\t\tValue: pulumi.StringArray{\n\t\t\t\t\t\t\t\tpulumi.String(\"test\"),\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\u0026consul.ServiceCheckHeaderArgs{\n\t\t\t\t\t\t\tName: pulumi.String(\"bar\"),\n\t\t\t\t\t\t\tValue: pulumi.StringArray{\n\t\t\t\t\t\t\t\tpulumi.String(\"test\"),\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tHttp:          pulumi.String(\"https://www.hashicorptest.com\"),\n\t\t\t\t\tInterval:      pulumi.String(\"5s\"),\n\t\t\t\t\tMethod:        pulumi.String(\"PUT\"),\n\t\t\t\t\tName:          pulumi.String(\"Redis health check\"),\n\t\t\t\t\tStatus:        pulumi.String(\"passing\"),\n\t\t\t\t\tTimeout:       pulumi.String(\"1s\"),\n\t\t\t\t\tTlsSkipVerify: pulumi.Bool(false),\n\t\t\t\t},\n\t\t\t},\n\t\t\tNode: pulumi.String(\"redis\"),\n\t\t\tPort: pulumi.Int(6379),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "A high-level resource for creating a Service in Consul in the Consul catalog. This\nis appropriate for registering [external services](https://www.consul.io/docs/guides/external.html) and\ncan be used to create services addressable by Consul that cannot be registered\nwith a [local agent](https://www.consul.io/docs/agent/basics.html).\n\n\u003e **NOTE:** If a Consul agent is running on the node where this service is\nregistered, it is not recommended to use this resource as the service will be\nremoved during the next [anti-entropy synchronization](https://www.consul.io/docs/architecture/anti-entropy).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nCreating a new node with the service:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as consul from \"@pulumi/consul\";\n\nconst compute = new consul.Node(\"compute\", {\n    address: \"www.google.com\",\n});\nconst google = new consul.Service(\"google\", {\n    node: compute.name,\n    port: 80,\n    tags: [\"tag0\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_consul as consul\n\ncompute = consul.Node(\"compute\", address=\"www.google.com\")\ngoogle = consul.Service(\"google\",\n    node=compute.name,\n    port=80,\n    tags=[\"tag0\"])\n```\n```csharp\nusing Pulumi;\nusing Consul = Pulumi.Consul;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var compute = new Consul.Node(\"compute\", new Consul.NodeArgs\n        {\n            Address = \"www.google.com\",\n        });\n        var google = new Consul.Service(\"google\", new Consul.ServiceArgs\n        {\n            Node = compute.Name,\n            Port = 80,\n            Tags = \n            {\n                \"tag0\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-consul/sdk/v3/go/consul\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tcompute, err := consul.NewNode(ctx, \"compute\", \u0026consul.NodeArgs{\n\t\t\tAddress: pulumi.String(\"www.google.com\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = consul.NewService(ctx, \"google\", \u0026consul.ServiceArgs{\n\t\t\tNode: compute.Name,\n\t\t\tPort: pulumi.Int(80),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"tag0\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\nUtilizing an existing known node:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as consul from \"@pulumi/consul\";\n\nconst google = new consul.Service(\"google\", {\n    node: \"google\",\n    port: 443,\n});\n```\n```python\nimport pulumi\nimport pulumi_consul as consul\n\ngoogle = consul.Service(\"google\",\n    node=\"google\",\n    port=443)\n```\n```csharp\nusing Pulumi;\nusing Consul = Pulumi.Consul;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var google = new Consul.Service(\"google\", new Consul.ServiceArgs\n        {\n            Node = \"google\",\n            Port = 443,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-consul/sdk/v3/go/consul\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := consul.NewService(ctx, \"google\", \u0026consul.ServiceArgs{\n\t\t\tNode: pulumi.String(\"google\"),\n\t\t\tPort: pulumi.Int(443),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\nRegister a health-check:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as consul from \"@pulumi/consul\";\n\nconst redis = new consul.Service(\"redis\", {\n    checks: [{\n        checkId: \"service:redis1\",\n        deregisterCriticalServiceAfter: \"30s\",\n        headers: [\n            {\n                name: \"foo\",\n                values: [\"test\"],\n            },\n            {\n                name: \"bar\",\n                values: [\"test\"],\n            },\n        ],\n        http: \"https://www.hashicorptest.com\",\n        interval: \"5s\",\n        method: \"PUT\",\n        name: \"Redis health check\",\n        status: \"passing\",\n        timeout: \"1s\",\n        tlsSkipVerify: false,\n    }],\n    node: \"redis\",\n    port: 6379,\n});\n```\n```python\nimport pulumi\nimport pulumi_consul as consul\n\nredis = consul.Service(\"redis\",\n    checks=[consul.ServiceCheckArgs(\n        check_id=\"service:redis1\",\n        deregister_critical_service_after=\"30s\",\n        headers=[\n            consul.ServiceCheckHeaderArgs(\n                name=\"foo\",\n                value=[\"test\"],\n            ),\n            consul.ServiceCheckHeaderArgs(\n                name=\"bar\",\n                value=[\"test\"],\n            ),\n        ],\n        http=\"https://www.hashicorptest.com\",\n        interval=\"5s\",\n        method=\"PUT\",\n        name=\"Redis health check\",\n        status=\"passing\",\n        timeout=\"1s\",\n        tls_skip_verify=False,\n    )],\n    node=\"redis\",\n    port=6379)\n```\n```csharp\nusing Pulumi;\nusing Consul = Pulumi.Consul;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var redis = new Consul.Service(\"redis\", new Consul.ServiceArgs\n        {\n            Checks = \n            {\n                new Consul.Inputs.ServiceCheckArgs\n                {\n                    CheckId = \"service:redis1\",\n                    DeregisterCriticalServiceAfter = \"30s\",\n                    Headers = \n                    {\n                        new Consul.Inputs.ServiceCheckHeaderArgs\n                        {\n                            Name = \"foo\",\n                            Value = \n                            {\n                                \"test\",\n                            },\n                        },\n                        new Consul.Inputs.ServiceCheckHeaderArgs\n                        {\n                            Name = \"bar\",\n                            Value = \n                            {\n                                \"test\",\n                            },\n                        },\n                    },\n                    Http = \"https://www.hashicorptest.com\",\n                    Interval = \"5s\",\n                    Method = \"PUT\",\n                    Name = \"Redis health check\",\n                    Status = \"passing\",\n                    Timeout = \"1s\",\n                    TlsSkipVerify = false,\n                },\n            },\n            Node = \"redis\",\n            Port = 6379,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-consul/sdk/v3/go/consul\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := consul.NewService(ctx, \"redis\", \u0026consul.ServiceArgs{\n\t\t\tChecks: consul.ServiceCheckArray{\n\t\t\t\t\u0026consul.ServiceCheckArgs{\n\t\t\t\t\tCheckId:                        pulumi.String(\"service:redis1\"),\n\t\t\t\t\tDeregisterCriticalServiceAfter: pulumi.String(\"30s\"),\n\t\t\t\t\tHeaders: consul.ServiceCheckHeaderArray{\n\t\t\t\t\t\t\u0026consul.ServiceCheckHeaderArgs{\n\t\t\t\t\t\t\tName: pulumi.String(\"foo\"),\n\t\t\t\t\t\t\tValue: pulumi.StringArray{\n\t\t\t\t\t\t\t\tpulumi.String(\"test\"),\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\u0026consul.ServiceCheckHeaderArgs{\n\t\t\t\t\t\t\tName: pulumi.String(\"bar\"),\n\t\t\t\t\t\t\tValue: pulumi.StringArray{\n\t\t\t\t\t\t\t\tpulumi.String(\"test\"),\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tHttp:          pulumi.String(\"https://www.hashicorptest.com\"),\n\t\t\t\t\tInterval:      pulumi.String(\"5s\"),\n\t\t\t\t\tMethod:        pulumi.String(\"PUT\"),\n\t\t\t\t\tName:          pulumi.String(\"Redis health check\"),\n\t\t\t\t\tStatus:        pulumi.String(\"passing\"),\n\t\t\t\t\tTimeout:       pulumi.String(\"1s\"),\n\t\t\t\t\tTlsSkipVerify: pulumi.Bool(false),\n\t\t\t\t},\n\t\t\t},\n\t\t\tNode: pulumi.String(\"redis\"),\n\t\t\tPort: pulumi.Int(6379),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "address": {
                     "type": "string",
@@ -5471,6 +5632,12 @@
                         "additionalProperties": {
                             "type": "string"
                         }
+                    },
+                    "tags": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
                     }
                 },
                 "type": "object",
@@ -5478,6 +5645,7 @@
                     "datacenter",
                     "names",
                     "services",
+                    "tags",
                     "id"
                 ]
             }
@@ -6021,6 +6189,13 @@
                         "additionalProperties": {
                             "type": "string"
                         }
+                    },
+                    "tags": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "A map of the tags found for each service.  If more than one service\nshares the same tag, unique service names will be joined by whitespace (this\nis the inverse of `services` and can be used to lookup the services that match\na single tag).\n"
                     }
                 },
                 "type": "object",
@@ -6028,6 +6203,7 @@
                     "datacenter",
                     "names",
                     "services",
+                    "tags",
                     "id"
                 ]
             }
@@ -6040,8 +6216,7 @@
                 "consul": "Consul"
             },
             "packageReferences": {
-                "Pulumi": "3.*",
-                "System.Collections.Immutable": "1.6.0"
+                "Pulumi": "3.*"
             }
         },
         "go": {
