@@ -125,6 +125,112 @@ func (o AclAuthMethodNamespaceRuleArrayOutput) Index(i pulumi.IntInput) AclAuthM
 	}).(AclAuthMethodNamespaceRuleOutput)
 }
 
+type AclRoleNodeIdentity struct {
+	// The datacenter of the node.
+	Datacenter string `pulumi:"datacenter"`
+	// The name of the node.
+	NodeName string `pulumi:"nodeName"`
+}
+
+// AclRoleNodeIdentityInput is an input type that accepts AclRoleNodeIdentityArgs and AclRoleNodeIdentityOutput values.
+// You can construct a concrete instance of `AclRoleNodeIdentityInput` via:
+//
+//          AclRoleNodeIdentityArgs{...}
+type AclRoleNodeIdentityInput interface {
+	pulumi.Input
+
+	ToAclRoleNodeIdentityOutput() AclRoleNodeIdentityOutput
+	ToAclRoleNodeIdentityOutputWithContext(context.Context) AclRoleNodeIdentityOutput
+}
+
+type AclRoleNodeIdentityArgs struct {
+	// The datacenter of the node.
+	Datacenter pulumi.StringInput `pulumi:"datacenter"`
+	// The name of the node.
+	NodeName pulumi.StringInput `pulumi:"nodeName"`
+}
+
+func (AclRoleNodeIdentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AclRoleNodeIdentity)(nil)).Elem()
+}
+
+func (i AclRoleNodeIdentityArgs) ToAclRoleNodeIdentityOutput() AclRoleNodeIdentityOutput {
+	return i.ToAclRoleNodeIdentityOutputWithContext(context.Background())
+}
+
+func (i AclRoleNodeIdentityArgs) ToAclRoleNodeIdentityOutputWithContext(ctx context.Context) AclRoleNodeIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AclRoleNodeIdentityOutput)
+}
+
+// AclRoleNodeIdentityArrayInput is an input type that accepts AclRoleNodeIdentityArray and AclRoleNodeIdentityArrayOutput values.
+// You can construct a concrete instance of `AclRoleNodeIdentityArrayInput` via:
+//
+//          AclRoleNodeIdentityArray{ AclRoleNodeIdentityArgs{...} }
+type AclRoleNodeIdentityArrayInput interface {
+	pulumi.Input
+
+	ToAclRoleNodeIdentityArrayOutput() AclRoleNodeIdentityArrayOutput
+	ToAclRoleNodeIdentityArrayOutputWithContext(context.Context) AclRoleNodeIdentityArrayOutput
+}
+
+type AclRoleNodeIdentityArray []AclRoleNodeIdentityInput
+
+func (AclRoleNodeIdentityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AclRoleNodeIdentity)(nil)).Elem()
+}
+
+func (i AclRoleNodeIdentityArray) ToAclRoleNodeIdentityArrayOutput() AclRoleNodeIdentityArrayOutput {
+	return i.ToAclRoleNodeIdentityArrayOutputWithContext(context.Background())
+}
+
+func (i AclRoleNodeIdentityArray) ToAclRoleNodeIdentityArrayOutputWithContext(ctx context.Context) AclRoleNodeIdentityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AclRoleNodeIdentityArrayOutput)
+}
+
+type AclRoleNodeIdentityOutput struct{ *pulumi.OutputState }
+
+func (AclRoleNodeIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AclRoleNodeIdentity)(nil)).Elem()
+}
+
+func (o AclRoleNodeIdentityOutput) ToAclRoleNodeIdentityOutput() AclRoleNodeIdentityOutput {
+	return o
+}
+
+func (o AclRoleNodeIdentityOutput) ToAclRoleNodeIdentityOutputWithContext(ctx context.Context) AclRoleNodeIdentityOutput {
+	return o
+}
+
+// The datacenter of the node.
+func (o AclRoleNodeIdentityOutput) Datacenter() pulumi.StringOutput {
+	return o.ApplyT(func(v AclRoleNodeIdentity) string { return v.Datacenter }).(pulumi.StringOutput)
+}
+
+// The name of the node.
+func (o AclRoleNodeIdentityOutput) NodeName() pulumi.StringOutput {
+	return o.ApplyT(func(v AclRoleNodeIdentity) string { return v.NodeName }).(pulumi.StringOutput)
+}
+
+type AclRoleNodeIdentityArrayOutput struct{ *pulumi.OutputState }
+
+func (AclRoleNodeIdentityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AclRoleNodeIdentity)(nil)).Elem()
+}
+
+func (o AclRoleNodeIdentityArrayOutput) ToAclRoleNodeIdentityArrayOutput() AclRoleNodeIdentityArrayOutput {
+	return o
+}
+
+func (o AclRoleNodeIdentityArrayOutput) ToAclRoleNodeIdentityArrayOutputWithContext(ctx context.Context) AclRoleNodeIdentityArrayOutput {
+	return o
+}
+
+func (o AclRoleNodeIdentityArrayOutput) Index(i pulumi.IntInput) AclRoleNodeIdentityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AclRoleNodeIdentity {
+		return vs[0].([]AclRoleNodeIdentity)[vs[1].(int)]
+	}).(AclRoleNodeIdentityOutput)
+}
+
 type AclRoleServiceIdentity struct {
 	// The datacenters the effective policy is valid within.
 	Datacenters []string `pulumi:"datacenters"`
@@ -229,6 +335,218 @@ func (o AclRoleServiceIdentityArrayOutput) Index(i pulumi.IntInput) AclRoleServi
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AclRoleServiceIdentity {
 		return vs[0].([]AclRoleServiceIdentity)[vs[1].(int)]
 	}).(AclRoleServiceIdentityOutput)
+}
+
+type AclTokenNodeIdentity struct {
+	// The datacenter of the node.
+	Datacenter string `pulumi:"datacenter"`
+	// The name of the node.
+	NodeName string `pulumi:"nodeName"`
+}
+
+// AclTokenNodeIdentityInput is an input type that accepts AclTokenNodeIdentityArgs and AclTokenNodeIdentityOutput values.
+// You can construct a concrete instance of `AclTokenNodeIdentityInput` via:
+//
+//          AclTokenNodeIdentityArgs{...}
+type AclTokenNodeIdentityInput interface {
+	pulumi.Input
+
+	ToAclTokenNodeIdentityOutput() AclTokenNodeIdentityOutput
+	ToAclTokenNodeIdentityOutputWithContext(context.Context) AclTokenNodeIdentityOutput
+}
+
+type AclTokenNodeIdentityArgs struct {
+	// The datacenter of the node.
+	Datacenter pulumi.StringInput `pulumi:"datacenter"`
+	// The name of the node.
+	NodeName pulumi.StringInput `pulumi:"nodeName"`
+}
+
+func (AclTokenNodeIdentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AclTokenNodeIdentity)(nil)).Elem()
+}
+
+func (i AclTokenNodeIdentityArgs) ToAclTokenNodeIdentityOutput() AclTokenNodeIdentityOutput {
+	return i.ToAclTokenNodeIdentityOutputWithContext(context.Background())
+}
+
+func (i AclTokenNodeIdentityArgs) ToAclTokenNodeIdentityOutputWithContext(ctx context.Context) AclTokenNodeIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AclTokenNodeIdentityOutput)
+}
+
+// AclTokenNodeIdentityArrayInput is an input type that accepts AclTokenNodeIdentityArray and AclTokenNodeIdentityArrayOutput values.
+// You can construct a concrete instance of `AclTokenNodeIdentityArrayInput` via:
+//
+//          AclTokenNodeIdentityArray{ AclTokenNodeIdentityArgs{...} }
+type AclTokenNodeIdentityArrayInput interface {
+	pulumi.Input
+
+	ToAclTokenNodeIdentityArrayOutput() AclTokenNodeIdentityArrayOutput
+	ToAclTokenNodeIdentityArrayOutputWithContext(context.Context) AclTokenNodeIdentityArrayOutput
+}
+
+type AclTokenNodeIdentityArray []AclTokenNodeIdentityInput
+
+func (AclTokenNodeIdentityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AclTokenNodeIdentity)(nil)).Elem()
+}
+
+func (i AclTokenNodeIdentityArray) ToAclTokenNodeIdentityArrayOutput() AclTokenNodeIdentityArrayOutput {
+	return i.ToAclTokenNodeIdentityArrayOutputWithContext(context.Background())
+}
+
+func (i AclTokenNodeIdentityArray) ToAclTokenNodeIdentityArrayOutputWithContext(ctx context.Context) AclTokenNodeIdentityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AclTokenNodeIdentityArrayOutput)
+}
+
+type AclTokenNodeIdentityOutput struct{ *pulumi.OutputState }
+
+func (AclTokenNodeIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AclTokenNodeIdentity)(nil)).Elem()
+}
+
+func (o AclTokenNodeIdentityOutput) ToAclTokenNodeIdentityOutput() AclTokenNodeIdentityOutput {
+	return o
+}
+
+func (o AclTokenNodeIdentityOutput) ToAclTokenNodeIdentityOutputWithContext(ctx context.Context) AclTokenNodeIdentityOutput {
+	return o
+}
+
+// The datacenter of the node.
+func (o AclTokenNodeIdentityOutput) Datacenter() pulumi.StringOutput {
+	return o.ApplyT(func(v AclTokenNodeIdentity) string { return v.Datacenter }).(pulumi.StringOutput)
+}
+
+// The name of the node.
+func (o AclTokenNodeIdentityOutput) NodeName() pulumi.StringOutput {
+	return o.ApplyT(func(v AclTokenNodeIdentity) string { return v.NodeName }).(pulumi.StringOutput)
+}
+
+type AclTokenNodeIdentityArrayOutput struct{ *pulumi.OutputState }
+
+func (AclTokenNodeIdentityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AclTokenNodeIdentity)(nil)).Elem()
+}
+
+func (o AclTokenNodeIdentityArrayOutput) ToAclTokenNodeIdentityArrayOutput() AclTokenNodeIdentityArrayOutput {
+	return o
+}
+
+func (o AclTokenNodeIdentityArrayOutput) ToAclTokenNodeIdentityArrayOutputWithContext(ctx context.Context) AclTokenNodeIdentityArrayOutput {
+	return o
+}
+
+func (o AclTokenNodeIdentityArrayOutput) Index(i pulumi.IntInput) AclTokenNodeIdentityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AclTokenNodeIdentity {
+		return vs[0].([]AclTokenNodeIdentity)[vs[1].(int)]
+	}).(AclTokenNodeIdentityOutput)
+}
+
+type AclTokenServiceIdentity struct {
+	// The list of datacenters the policy is valid within.
+	Datacenters []string `pulumi:"datacenters"`
+	// The name of the service.
+	ServiceName string `pulumi:"serviceName"`
+}
+
+// AclTokenServiceIdentityInput is an input type that accepts AclTokenServiceIdentityArgs and AclTokenServiceIdentityOutput values.
+// You can construct a concrete instance of `AclTokenServiceIdentityInput` via:
+//
+//          AclTokenServiceIdentityArgs{...}
+type AclTokenServiceIdentityInput interface {
+	pulumi.Input
+
+	ToAclTokenServiceIdentityOutput() AclTokenServiceIdentityOutput
+	ToAclTokenServiceIdentityOutputWithContext(context.Context) AclTokenServiceIdentityOutput
+}
+
+type AclTokenServiceIdentityArgs struct {
+	// The list of datacenters the policy is valid within.
+	Datacenters pulumi.StringArrayInput `pulumi:"datacenters"`
+	// The name of the service.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+}
+
+func (AclTokenServiceIdentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AclTokenServiceIdentity)(nil)).Elem()
+}
+
+func (i AclTokenServiceIdentityArgs) ToAclTokenServiceIdentityOutput() AclTokenServiceIdentityOutput {
+	return i.ToAclTokenServiceIdentityOutputWithContext(context.Background())
+}
+
+func (i AclTokenServiceIdentityArgs) ToAclTokenServiceIdentityOutputWithContext(ctx context.Context) AclTokenServiceIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AclTokenServiceIdentityOutput)
+}
+
+// AclTokenServiceIdentityArrayInput is an input type that accepts AclTokenServiceIdentityArray and AclTokenServiceIdentityArrayOutput values.
+// You can construct a concrete instance of `AclTokenServiceIdentityArrayInput` via:
+//
+//          AclTokenServiceIdentityArray{ AclTokenServiceIdentityArgs{...} }
+type AclTokenServiceIdentityArrayInput interface {
+	pulumi.Input
+
+	ToAclTokenServiceIdentityArrayOutput() AclTokenServiceIdentityArrayOutput
+	ToAclTokenServiceIdentityArrayOutputWithContext(context.Context) AclTokenServiceIdentityArrayOutput
+}
+
+type AclTokenServiceIdentityArray []AclTokenServiceIdentityInput
+
+func (AclTokenServiceIdentityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AclTokenServiceIdentity)(nil)).Elem()
+}
+
+func (i AclTokenServiceIdentityArray) ToAclTokenServiceIdentityArrayOutput() AclTokenServiceIdentityArrayOutput {
+	return i.ToAclTokenServiceIdentityArrayOutputWithContext(context.Background())
+}
+
+func (i AclTokenServiceIdentityArray) ToAclTokenServiceIdentityArrayOutputWithContext(ctx context.Context) AclTokenServiceIdentityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AclTokenServiceIdentityArrayOutput)
+}
+
+type AclTokenServiceIdentityOutput struct{ *pulumi.OutputState }
+
+func (AclTokenServiceIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AclTokenServiceIdentity)(nil)).Elem()
+}
+
+func (o AclTokenServiceIdentityOutput) ToAclTokenServiceIdentityOutput() AclTokenServiceIdentityOutput {
+	return o
+}
+
+func (o AclTokenServiceIdentityOutput) ToAclTokenServiceIdentityOutputWithContext(ctx context.Context) AclTokenServiceIdentityOutput {
+	return o
+}
+
+// The list of datacenters the policy is valid within.
+func (o AclTokenServiceIdentityOutput) Datacenters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AclTokenServiceIdentity) []string { return v.Datacenters }).(pulumi.StringArrayOutput)
+}
+
+// The name of the service.
+func (o AclTokenServiceIdentityOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v AclTokenServiceIdentity) string { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+type AclTokenServiceIdentityArrayOutput struct{ *pulumi.OutputState }
+
+func (AclTokenServiceIdentityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AclTokenServiceIdentity)(nil)).Elem()
+}
+
+func (o AclTokenServiceIdentityArrayOutput) ToAclTokenServiceIdentityArrayOutput() AclTokenServiceIdentityArrayOutput {
+	return o
+}
+
+func (o AclTokenServiceIdentityArrayOutput) ToAclTokenServiceIdentityArrayOutputWithContext(ctx context.Context) AclTokenServiceIdentityArrayOutput {
+	return o
+}
+
+func (o AclTokenServiceIdentityArrayOutput) Index(i pulumi.IntInput) AclTokenServiceIdentityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AclTokenServiceIdentity {
+		return vs[0].([]AclTokenServiceIdentity)[vs[1].(int)]
+	}).(AclTokenServiceIdentityOutput)
 }
 
 type CatalogEntryService struct {
@@ -1608,6 +1926,106 @@ func (o GetAclAuthMethodNamespaceRuleArrayOutput) Index(i pulumi.IntInput) GetAc
 	}).(GetAclAuthMethodNamespaceRuleOutput)
 }
 
+type GetAclRoleNodeIdentity struct {
+	Datacenter string `pulumi:"datacenter"`
+	NodeName   string `pulumi:"nodeName"`
+}
+
+// GetAclRoleNodeIdentityInput is an input type that accepts GetAclRoleNodeIdentityArgs and GetAclRoleNodeIdentityOutput values.
+// You can construct a concrete instance of `GetAclRoleNodeIdentityInput` via:
+//
+//          GetAclRoleNodeIdentityArgs{...}
+type GetAclRoleNodeIdentityInput interface {
+	pulumi.Input
+
+	ToGetAclRoleNodeIdentityOutput() GetAclRoleNodeIdentityOutput
+	ToGetAclRoleNodeIdentityOutputWithContext(context.Context) GetAclRoleNodeIdentityOutput
+}
+
+type GetAclRoleNodeIdentityArgs struct {
+	Datacenter pulumi.StringInput `pulumi:"datacenter"`
+	NodeName   pulumi.StringInput `pulumi:"nodeName"`
+}
+
+func (GetAclRoleNodeIdentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAclRoleNodeIdentity)(nil)).Elem()
+}
+
+func (i GetAclRoleNodeIdentityArgs) ToGetAclRoleNodeIdentityOutput() GetAclRoleNodeIdentityOutput {
+	return i.ToGetAclRoleNodeIdentityOutputWithContext(context.Background())
+}
+
+func (i GetAclRoleNodeIdentityArgs) ToGetAclRoleNodeIdentityOutputWithContext(ctx context.Context) GetAclRoleNodeIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAclRoleNodeIdentityOutput)
+}
+
+// GetAclRoleNodeIdentityArrayInput is an input type that accepts GetAclRoleNodeIdentityArray and GetAclRoleNodeIdentityArrayOutput values.
+// You can construct a concrete instance of `GetAclRoleNodeIdentityArrayInput` via:
+//
+//          GetAclRoleNodeIdentityArray{ GetAclRoleNodeIdentityArgs{...} }
+type GetAclRoleNodeIdentityArrayInput interface {
+	pulumi.Input
+
+	ToGetAclRoleNodeIdentityArrayOutput() GetAclRoleNodeIdentityArrayOutput
+	ToGetAclRoleNodeIdentityArrayOutputWithContext(context.Context) GetAclRoleNodeIdentityArrayOutput
+}
+
+type GetAclRoleNodeIdentityArray []GetAclRoleNodeIdentityInput
+
+func (GetAclRoleNodeIdentityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAclRoleNodeIdentity)(nil)).Elem()
+}
+
+func (i GetAclRoleNodeIdentityArray) ToGetAclRoleNodeIdentityArrayOutput() GetAclRoleNodeIdentityArrayOutput {
+	return i.ToGetAclRoleNodeIdentityArrayOutputWithContext(context.Background())
+}
+
+func (i GetAclRoleNodeIdentityArray) ToGetAclRoleNodeIdentityArrayOutputWithContext(ctx context.Context) GetAclRoleNodeIdentityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAclRoleNodeIdentityArrayOutput)
+}
+
+type GetAclRoleNodeIdentityOutput struct{ *pulumi.OutputState }
+
+func (GetAclRoleNodeIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAclRoleNodeIdentity)(nil)).Elem()
+}
+
+func (o GetAclRoleNodeIdentityOutput) ToGetAclRoleNodeIdentityOutput() GetAclRoleNodeIdentityOutput {
+	return o
+}
+
+func (o GetAclRoleNodeIdentityOutput) ToGetAclRoleNodeIdentityOutputWithContext(ctx context.Context) GetAclRoleNodeIdentityOutput {
+	return o
+}
+
+func (o GetAclRoleNodeIdentityOutput) Datacenter() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAclRoleNodeIdentity) string { return v.Datacenter }).(pulumi.StringOutput)
+}
+
+func (o GetAclRoleNodeIdentityOutput) NodeName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAclRoleNodeIdentity) string { return v.NodeName }).(pulumi.StringOutput)
+}
+
+type GetAclRoleNodeIdentityArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAclRoleNodeIdentityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAclRoleNodeIdentity)(nil)).Elem()
+}
+
+func (o GetAclRoleNodeIdentityArrayOutput) ToGetAclRoleNodeIdentityArrayOutput() GetAclRoleNodeIdentityArrayOutput {
+	return o
+}
+
+func (o GetAclRoleNodeIdentityArrayOutput) ToGetAclRoleNodeIdentityArrayOutputWithContext(ctx context.Context) GetAclRoleNodeIdentityArrayOutput {
+	return o
+}
+
+func (o GetAclRoleNodeIdentityArrayOutput) Index(i pulumi.IntInput) GetAclRoleNodeIdentityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAclRoleNodeIdentity {
+		return vs[0].([]GetAclRoleNodeIdentity)[vs[1].(int)]
+	}).(GetAclRoleNodeIdentityOutput)
+}
+
 type GetAclRolePolicy struct {
 	Id string `pulumi:"id"`
 	// The name of the ACL Role.
@@ -1811,6 +2229,106 @@ func (o GetAclRoleServiceIdentityArrayOutput) Index(i pulumi.IntInput) GetAclRol
 	}).(GetAclRoleServiceIdentityOutput)
 }
 
+type GetAclTokenNodeIdentity struct {
+	Datacenter string `pulumi:"datacenter"`
+	NodeName   string `pulumi:"nodeName"`
+}
+
+// GetAclTokenNodeIdentityInput is an input type that accepts GetAclTokenNodeIdentityArgs and GetAclTokenNodeIdentityOutput values.
+// You can construct a concrete instance of `GetAclTokenNodeIdentityInput` via:
+//
+//          GetAclTokenNodeIdentityArgs{...}
+type GetAclTokenNodeIdentityInput interface {
+	pulumi.Input
+
+	ToGetAclTokenNodeIdentityOutput() GetAclTokenNodeIdentityOutput
+	ToGetAclTokenNodeIdentityOutputWithContext(context.Context) GetAclTokenNodeIdentityOutput
+}
+
+type GetAclTokenNodeIdentityArgs struct {
+	Datacenter pulumi.StringInput `pulumi:"datacenter"`
+	NodeName   pulumi.StringInput `pulumi:"nodeName"`
+}
+
+func (GetAclTokenNodeIdentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAclTokenNodeIdentity)(nil)).Elem()
+}
+
+func (i GetAclTokenNodeIdentityArgs) ToGetAclTokenNodeIdentityOutput() GetAclTokenNodeIdentityOutput {
+	return i.ToGetAclTokenNodeIdentityOutputWithContext(context.Background())
+}
+
+func (i GetAclTokenNodeIdentityArgs) ToGetAclTokenNodeIdentityOutputWithContext(ctx context.Context) GetAclTokenNodeIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAclTokenNodeIdentityOutput)
+}
+
+// GetAclTokenNodeIdentityArrayInput is an input type that accepts GetAclTokenNodeIdentityArray and GetAclTokenNodeIdentityArrayOutput values.
+// You can construct a concrete instance of `GetAclTokenNodeIdentityArrayInput` via:
+//
+//          GetAclTokenNodeIdentityArray{ GetAclTokenNodeIdentityArgs{...} }
+type GetAclTokenNodeIdentityArrayInput interface {
+	pulumi.Input
+
+	ToGetAclTokenNodeIdentityArrayOutput() GetAclTokenNodeIdentityArrayOutput
+	ToGetAclTokenNodeIdentityArrayOutputWithContext(context.Context) GetAclTokenNodeIdentityArrayOutput
+}
+
+type GetAclTokenNodeIdentityArray []GetAclTokenNodeIdentityInput
+
+func (GetAclTokenNodeIdentityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAclTokenNodeIdentity)(nil)).Elem()
+}
+
+func (i GetAclTokenNodeIdentityArray) ToGetAclTokenNodeIdentityArrayOutput() GetAclTokenNodeIdentityArrayOutput {
+	return i.ToGetAclTokenNodeIdentityArrayOutputWithContext(context.Background())
+}
+
+func (i GetAclTokenNodeIdentityArray) ToGetAclTokenNodeIdentityArrayOutputWithContext(ctx context.Context) GetAclTokenNodeIdentityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAclTokenNodeIdentityArrayOutput)
+}
+
+type GetAclTokenNodeIdentityOutput struct{ *pulumi.OutputState }
+
+func (GetAclTokenNodeIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAclTokenNodeIdentity)(nil)).Elem()
+}
+
+func (o GetAclTokenNodeIdentityOutput) ToGetAclTokenNodeIdentityOutput() GetAclTokenNodeIdentityOutput {
+	return o
+}
+
+func (o GetAclTokenNodeIdentityOutput) ToGetAclTokenNodeIdentityOutputWithContext(ctx context.Context) GetAclTokenNodeIdentityOutput {
+	return o
+}
+
+func (o GetAclTokenNodeIdentityOutput) Datacenter() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAclTokenNodeIdentity) string { return v.Datacenter }).(pulumi.StringOutput)
+}
+
+func (o GetAclTokenNodeIdentityOutput) NodeName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAclTokenNodeIdentity) string { return v.NodeName }).(pulumi.StringOutput)
+}
+
+type GetAclTokenNodeIdentityArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAclTokenNodeIdentityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAclTokenNodeIdentity)(nil)).Elem()
+}
+
+func (o GetAclTokenNodeIdentityArrayOutput) ToGetAclTokenNodeIdentityArrayOutput() GetAclTokenNodeIdentityArrayOutput {
+	return o
+}
+
+func (o GetAclTokenNodeIdentityArrayOutput) ToGetAclTokenNodeIdentityArrayOutputWithContext(ctx context.Context) GetAclTokenNodeIdentityArrayOutput {
+	return o
+}
+
+func (o GetAclTokenNodeIdentityArrayOutput) Index(i pulumi.IntInput) GetAclTokenNodeIdentityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAclTokenNodeIdentity {
+		return vs[0].([]GetAclTokenNodeIdentity)[vs[1].(int)]
+	}).(GetAclTokenNodeIdentityOutput)
+}
+
 type GetAclTokenPolicy struct {
 	Id   string `pulumi:"id"`
 	Name string `pulumi:"name"`
@@ -1909,6 +2427,206 @@ func (o GetAclTokenPolicyArrayOutput) Index(i pulumi.IntInput) GetAclTokenPolicy
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAclTokenPolicy {
 		return vs[0].([]GetAclTokenPolicy)[vs[1].(int)]
 	}).(GetAclTokenPolicyOutput)
+}
+
+type GetAclTokenRole struct {
+	Id   string `pulumi:"id"`
+	Name string `pulumi:"name"`
+}
+
+// GetAclTokenRoleInput is an input type that accepts GetAclTokenRoleArgs and GetAclTokenRoleOutput values.
+// You can construct a concrete instance of `GetAclTokenRoleInput` via:
+//
+//          GetAclTokenRoleArgs{...}
+type GetAclTokenRoleInput interface {
+	pulumi.Input
+
+	ToGetAclTokenRoleOutput() GetAclTokenRoleOutput
+	ToGetAclTokenRoleOutputWithContext(context.Context) GetAclTokenRoleOutput
+}
+
+type GetAclTokenRoleArgs struct {
+	Id   pulumi.StringInput `pulumi:"id"`
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetAclTokenRoleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAclTokenRole)(nil)).Elem()
+}
+
+func (i GetAclTokenRoleArgs) ToGetAclTokenRoleOutput() GetAclTokenRoleOutput {
+	return i.ToGetAclTokenRoleOutputWithContext(context.Background())
+}
+
+func (i GetAclTokenRoleArgs) ToGetAclTokenRoleOutputWithContext(ctx context.Context) GetAclTokenRoleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAclTokenRoleOutput)
+}
+
+// GetAclTokenRoleArrayInput is an input type that accepts GetAclTokenRoleArray and GetAclTokenRoleArrayOutput values.
+// You can construct a concrete instance of `GetAclTokenRoleArrayInput` via:
+//
+//          GetAclTokenRoleArray{ GetAclTokenRoleArgs{...} }
+type GetAclTokenRoleArrayInput interface {
+	pulumi.Input
+
+	ToGetAclTokenRoleArrayOutput() GetAclTokenRoleArrayOutput
+	ToGetAclTokenRoleArrayOutputWithContext(context.Context) GetAclTokenRoleArrayOutput
+}
+
+type GetAclTokenRoleArray []GetAclTokenRoleInput
+
+func (GetAclTokenRoleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAclTokenRole)(nil)).Elem()
+}
+
+func (i GetAclTokenRoleArray) ToGetAclTokenRoleArrayOutput() GetAclTokenRoleArrayOutput {
+	return i.ToGetAclTokenRoleArrayOutputWithContext(context.Background())
+}
+
+func (i GetAclTokenRoleArray) ToGetAclTokenRoleArrayOutputWithContext(ctx context.Context) GetAclTokenRoleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAclTokenRoleArrayOutput)
+}
+
+type GetAclTokenRoleOutput struct{ *pulumi.OutputState }
+
+func (GetAclTokenRoleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAclTokenRole)(nil)).Elem()
+}
+
+func (o GetAclTokenRoleOutput) ToGetAclTokenRoleOutput() GetAclTokenRoleOutput {
+	return o
+}
+
+func (o GetAclTokenRoleOutput) ToGetAclTokenRoleOutputWithContext(ctx context.Context) GetAclTokenRoleOutput {
+	return o
+}
+
+func (o GetAclTokenRoleOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAclTokenRole) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetAclTokenRoleOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAclTokenRole) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetAclTokenRoleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAclTokenRoleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAclTokenRole)(nil)).Elem()
+}
+
+func (o GetAclTokenRoleArrayOutput) ToGetAclTokenRoleArrayOutput() GetAclTokenRoleArrayOutput {
+	return o
+}
+
+func (o GetAclTokenRoleArrayOutput) ToGetAclTokenRoleArrayOutputWithContext(ctx context.Context) GetAclTokenRoleArrayOutput {
+	return o
+}
+
+func (o GetAclTokenRoleArrayOutput) Index(i pulumi.IntInput) GetAclTokenRoleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAclTokenRole {
+		return vs[0].([]GetAclTokenRole)[vs[1].(int)]
+	}).(GetAclTokenRoleOutput)
+}
+
+type GetAclTokenServiceIdentity struct {
+	Datacenters []string `pulumi:"datacenters"`
+	ServiceName string   `pulumi:"serviceName"`
+}
+
+// GetAclTokenServiceIdentityInput is an input type that accepts GetAclTokenServiceIdentityArgs and GetAclTokenServiceIdentityOutput values.
+// You can construct a concrete instance of `GetAclTokenServiceIdentityInput` via:
+//
+//          GetAclTokenServiceIdentityArgs{...}
+type GetAclTokenServiceIdentityInput interface {
+	pulumi.Input
+
+	ToGetAclTokenServiceIdentityOutput() GetAclTokenServiceIdentityOutput
+	ToGetAclTokenServiceIdentityOutputWithContext(context.Context) GetAclTokenServiceIdentityOutput
+}
+
+type GetAclTokenServiceIdentityArgs struct {
+	Datacenters pulumi.StringArrayInput `pulumi:"datacenters"`
+	ServiceName pulumi.StringInput      `pulumi:"serviceName"`
+}
+
+func (GetAclTokenServiceIdentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAclTokenServiceIdentity)(nil)).Elem()
+}
+
+func (i GetAclTokenServiceIdentityArgs) ToGetAclTokenServiceIdentityOutput() GetAclTokenServiceIdentityOutput {
+	return i.ToGetAclTokenServiceIdentityOutputWithContext(context.Background())
+}
+
+func (i GetAclTokenServiceIdentityArgs) ToGetAclTokenServiceIdentityOutputWithContext(ctx context.Context) GetAclTokenServiceIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAclTokenServiceIdentityOutput)
+}
+
+// GetAclTokenServiceIdentityArrayInput is an input type that accepts GetAclTokenServiceIdentityArray and GetAclTokenServiceIdentityArrayOutput values.
+// You can construct a concrete instance of `GetAclTokenServiceIdentityArrayInput` via:
+//
+//          GetAclTokenServiceIdentityArray{ GetAclTokenServiceIdentityArgs{...} }
+type GetAclTokenServiceIdentityArrayInput interface {
+	pulumi.Input
+
+	ToGetAclTokenServiceIdentityArrayOutput() GetAclTokenServiceIdentityArrayOutput
+	ToGetAclTokenServiceIdentityArrayOutputWithContext(context.Context) GetAclTokenServiceIdentityArrayOutput
+}
+
+type GetAclTokenServiceIdentityArray []GetAclTokenServiceIdentityInput
+
+func (GetAclTokenServiceIdentityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAclTokenServiceIdentity)(nil)).Elem()
+}
+
+func (i GetAclTokenServiceIdentityArray) ToGetAclTokenServiceIdentityArrayOutput() GetAclTokenServiceIdentityArrayOutput {
+	return i.ToGetAclTokenServiceIdentityArrayOutputWithContext(context.Background())
+}
+
+func (i GetAclTokenServiceIdentityArray) ToGetAclTokenServiceIdentityArrayOutputWithContext(ctx context.Context) GetAclTokenServiceIdentityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAclTokenServiceIdentityArrayOutput)
+}
+
+type GetAclTokenServiceIdentityOutput struct{ *pulumi.OutputState }
+
+func (GetAclTokenServiceIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAclTokenServiceIdentity)(nil)).Elem()
+}
+
+func (o GetAclTokenServiceIdentityOutput) ToGetAclTokenServiceIdentityOutput() GetAclTokenServiceIdentityOutput {
+	return o
+}
+
+func (o GetAclTokenServiceIdentityOutput) ToGetAclTokenServiceIdentityOutputWithContext(ctx context.Context) GetAclTokenServiceIdentityOutput {
+	return o
+}
+
+func (o GetAclTokenServiceIdentityOutput) Datacenters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAclTokenServiceIdentity) []string { return v.Datacenters }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAclTokenServiceIdentityOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAclTokenServiceIdentity) string { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+type GetAclTokenServiceIdentityArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAclTokenServiceIdentityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAclTokenServiceIdentity)(nil)).Elem()
+}
+
+func (o GetAclTokenServiceIdentityArrayOutput) ToGetAclTokenServiceIdentityArrayOutput() GetAclTokenServiceIdentityArrayOutput {
+	return o
+}
+
+func (o GetAclTokenServiceIdentityArrayOutput) ToGetAclTokenServiceIdentityArrayOutputWithContext(ctx context.Context) GetAclTokenServiceIdentityArrayOutput {
+	return o
+}
+
+func (o GetAclTokenServiceIdentityArrayOutput) Index(i pulumi.IntInput) GetAclTokenServiceIdentityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAclTokenServiceIdentity {
+		return vs[0].([]GetAclTokenServiceIdentity)[vs[1].(int)]
+	}).(GetAclTokenServiceIdentityOutput)
 }
 
 type GetAutopilotHealthServer struct {
@@ -4794,8 +5512,14 @@ func (o GetServicesQueryOptionArrayOutput) Index(i pulumi.IntInput) GetServicesQ
 func init() {
 	pulumi.RegisterOutputType(AclAuthMethodNamespaceRuleOutput{})
 	pulumi.RegisterOutputType(AclAuthMethodNamespaceRuleArrayOutput{})
+	pulumi.RegisterOutputType(AclRoleNodeIdentityOutput{})
+	pulumi.RegisterOutputType(AclRoleNodeIdentityArrayOutput{})
 	pulumi.RegisterOutputType(AclRoleServiceIdentityOutput{})
 	pulumi.RegisterOutputType(AclRoleServiceIdentityArrayOutput{})
+	pulumi.RegisterOutputType(AclTokenNodeIdentityOutput{})
+	pulumi.RegisterOutputType(AclTokenNodeIdentityArrayOutput{})
+	pulumi.RegisterOutputType(AclTokenServiceIdentityOutput{})
+	pulumi.RegisterOutputType(AclTokenServiceIdentityArrayOutput{})
 	pulumi.RegisterOutputType(CatalogEntryServiceOutput{})
 	pulumi.RegisterOutputType(CatalogEntryServiceArrayOutput{})
 	pulumi.RegisterOutputType(KeyPrefixSubkeyCollectionOutput{})
@@ -4816,12 +5540,20 @@ func init() {
 	pulumi.RegisterOutputType(ServiceCheckHeaderArrayOutput{})
 	pulumi.RegisterOutputType(GetAclAuthMethodNamespaceRuleOutput{})
 	pulumi.RegisterOutputType(GetAclAuthMethodNamespaceRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetAclRoleNodeIdentityOutput{})
+	pulumi.RegisterOutputType(GetAclRoleNodeIdentityArrayOutput{})
 	pulumi.RegisterOutputType(GetAclRolePolicyOutput{})
 	pulumi.RegisterOutputType(GetAclRolePolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetAclRoleServiceIdentityOutput{})
 	pulumi.RegisterOutputType(GetAclRoleServiceIdentityArrayOutput{})
+	pulumi.RegisterOutputType(GetAclTokenNodeIdentityOutput{})
+	pulumi.RegisterOutputType(GetAclTokenNodeIdentityArrayOutput{})
 	pulumi.RegisterOutputType(GetAclTokenPolicyOutput{})
 	pulumi.RegisterOutputType(GetAclTokenPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetAclTokenRoleOutput{})
+	pulumi.RegisterOutputType(GetAclTokenRoleArrayOutput{})
+	pulumi.RegisterOutputType(GetAclTokenServiceIdentityOutput{})
+	pulumi.RegisterOutputType(GetAclTokenServiceIdentityArrayOutput{})
 	pulumi.RegisterOutputType(GetAutopilotHealthServerOutput{})
 	pulumi.RegisterOutputType(GetAutopilotHealthServerArrayOutput{})
 	pulumi.RegisterOutputType(GetCatalogNodesNodeOutput{})

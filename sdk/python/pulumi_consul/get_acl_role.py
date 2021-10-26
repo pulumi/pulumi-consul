@@ -8,7 +8,6 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
-from ._inputs import *
 
 __all__ = [
     'GetAclRoleResult',
@@ -21,7 +20,7 @@ class GetAclRoleResult:
     """
     A collection of values returned by getAclRole.
     """
-    def __init__(__self__, description=None, id=None, name=None, namespace=None, policies=None, service_identities=None):
+    def __init__(__self__, description=None, id=None, name=None, namespace=None, node_identities=None, policies=None, service_identities=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -34,6 +33,9 @@ class GetAclRoleResult:
         if namespace and not isinstance(namespace, str):
             raise TypeError("Expected argument 'namespace' to be a str")
         pulumi.set(__self__, "namespace", namespace)
+        if node_identities and not isinstance(node_identities, list):
+            raise TypeError("Expected argument 'node_identities' to be a list")
+        pulumi.set(__self__, "node_identities", node_identities)
         if policies and not isinstance(policies, list):
             raise TypeError("Expected argument 'policies' to be a list")
         pulumi.set(__self__, "policies", policies)
@@ -43,7 +45,7 @@ class GetAclRoleResult:
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> str:
         """
         The description of the ACL Role.
         """
@@ -60,28 +62,40 @@ class GetAclRoleResult:
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The name of the ACL Role.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def namespace(self) -> Optional[str]:
+        """
+        The namespace to lookup the role.
+        """
         return pulumi.get(self, "namespace")
 
     @property
-    @pulumi.getter
-    def policies(self) -> Optional[Sequence['outputs.GetAclRolePolicyResult']]:
+    @pulumi.getter(name="nodeIdentities")
+    def node_identities(self) -> Sequence['outputs.GetAclRoleNodeIdentityResult']:
         """
-        The list of policies associated with the ACL Role. Each entry has
-        an `id` and a `name` attribute.
+        The list of node identities associated with the ACL Role. Each entry has a `node_name` and a `datacenter` attributes.
+        """
+        return pulumi.get(self, "node_identities")
+
+    @property
+    @pulumi.getter
+    def policies(self) -> Sequence['outputs.GetAclRolePolicyResult']:
+        """
+        The list of policies associated with the ACL Role. Each entry has an `id` and a `name` attribute.
         """
         return pulumi.get(self, "policies")
 
     @property
     @pulumi.getter(name="serviceIdentities")
-    def service_identities(self) -> Optional[Sequence['outputs.GetAclRoleServiceIdentityResult']]:
+    def service_identities(self) -> Sequence['outputs.GetAclRoleServiceIdentityResult']:
         """
-        The list of service identities associated with the ACL
-        Role. Each entry has a `service_name` attribute and a list of `datacenters`.
+        The list of service identities associated with the ACL Role. Each entry has a `service_name` attribute and a list of `datacenters`.
         """
         return pulumi.get(self, "service_identities")
 
@@ -96,15 +110,13 @@ class AwaitableGetAclRoleResult(GetAclRoleResult):
             id=self.id,
             name=self.name,
             namespace=self.namespace,
+            node_identities=self.node_identities,
             policies=self.policies,
             service_identities=self.service_identities)
 
 
-def get_acl_role(description: Optional[str] = None,
-                 name: Optional[str] = None,
+def get_acl_role(name: Optional[str] = None,
                  namespace: Optional[str] = None,
-                 policies: Optional[Sequence[pulumi.InputType['GetAclRolePolicyArgs']]] = None,
-                 service_identities: Optional[Sequence[pulumi.InputType['GetAclRoleServiceIdentityArgs']]] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAclRoleResult:
     """
     The `AclRole` data source returns the information related to a
@@ -121,20 +133,12 @@ def get_acl_role(description: Optional[str] = None,
     ```
 
 
-    :param str description: The description of the ACL Role.
     :param str name: The name of the ACL Role.
     :param str namespace: The namespace to lookup the role.
-    :param Sequence[pulumi.InputType['GetAclRolePolicyArgs']] policies: The list of policies associated with the ACL Role. Each entry has
-           an `id` and a `name` attribute.
-    :param Sequence[pulumi.InputType['GetAclRoleServiceIdentityArgs']] service_identities: The list of service identities associated with the ACL
-           Role. Each entry has a `service_name` attribute and a list of `datacenters`.
     """
     __args__ = dict()
-    __args__['description'] = description
     __args__['name'] = name
     __args__['namespace'] = namespace
-    __args__['policies'] = policies
-    __args__['serviceIdentities'] = service_identities
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
@@ -146,5 +150,6 @@ def get_acl_role(description: Optional[str] = None,
         id=__ret__.id,
         name=__ret__.name,
         namespace=__ret__.namespace,
+        node_identities=__ret__.node_identities,
         policies=__ret__.policies,
         service_identities=__ret__.service_identities)

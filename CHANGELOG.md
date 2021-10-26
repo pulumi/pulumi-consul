@@ -2,7 +2,11 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Upgrade to v2.14.0 of the Consul Terraform Provider
+* Please note the following breaking changes to some inputs:
+  * `consul.index.getAcl` no longer has the following inputs: `description`, `policies`, `serviceIdentities`.
+  * `consul.index.getAclToken` no longer has the following inputs: `description`, `local`, `policies`.
+
 
 ---
 

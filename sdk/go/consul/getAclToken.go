@@ -49,28 +49,28 @@ func LookupAclToken(ctx *pulumi.Context, args *LookupAclTokenArgs, opts ...pulum
 type LookupAclTokenArgs struct {
 	// The accessor ID of the ACL token.
 	AccessorId string `pulumi:"accessorId"`
-	// The description of the ACL token.
-	Description *string `pulumi:"description"`
-	// Whether the ACL token is local to the datacenter it was created within.
-	Local *bool `pulumi:"local"`
 	// The namespace to lookup the ACL token.
 	Namespace *string `pulumi:"namespace"`
-	// A list of policies associated with the ACL token. Each entry has
-	// an `id` and a `name` attribute.
-	Policies []GetAclTokenPolicy `pulumi:"policies"`
 }
 
 // A collection of values returned by getAclToken.
 type LookupAclTokenResult struct {
 	AccessorId string `pulumi:"accessorId"`
 	// The description of the ACL token.
-	Description *string `pulumi:"description"`
+	Description string `pulumi:"description"`
+	// If set this represents the point after which a token should be considered revoked and is eligible for destruction.
+	ExpirationTime string `pulumi:"expirationTime"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Whether the ACL token is local to the datacenter it was created within.
-	Local     *bool   `pulumi:"local"`
+	Local     bool    `pulumi:"local"`
 	Namespace *string `pulumi:"namespace"`
-	// A list of policies associated with the ACL token. Each entry has
-	// an `id` and a `name` attribute.
+	// The list of node identities attached to the token. Each entry has a `nodeName` and a `datacenter` attributes.
+	NodeIdentities []GetAclTokenNodeIdentity `pulumi:"nodeIdentities"`
+	// A list of policies associated with the ACL token. Each entry has an `id` and a `name` attribute.
 	Policies []GetAclTokenPolicy `pulumi:"policies"`
+	// The list of roles attached to the token.
+	Roles []GetAclTokenRole `pulumi:"roles"`
+	// The list of service identities attached to the token. Each entry has a `serviceName` and a `datacenters` attribute.
+	ServiceIdentities []GetAclTokenServiceIdentity `pulumi:"serviceIdentities"`
 }

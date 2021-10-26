@@ -74,6 +74,12 @@ namespace Pulumi.Consul
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// If set this represents the point after which a token should be considered revoked and is eligible for destruction.
+        /// </summary>
+        [Output("expirationTime")]
+        public Output<string?> ExpirationTime { get; private set; } = null!;
+
+        /// <summary>
         /// The flag to set the token local to the current datacenter.
         /// </summary>
         [Output("local")]
@@ -86,6 +92,12 @@ namespace Pulumi.Consul
         public Output<string?> Namespace { get; private set; } = null!;
 
         /// <summary>
+        /// The list of node identities that should be applied to the token.
+        /// </summary>
+        [Output("nodeIdentities")]
+        public Output<ImmutableArray<Outputs.AclTokenNodeIdentity>> NodeIdentities { get; private set; } = null!;
+
+        /// <summary>
         /// The list of policies attached to the token.
         /// </summary>
         [Output("policies")]
@@ -96,6 +108,12 @@ namespace Pulumi.Consul
         /// </summary>
         [Output("roles")]
         public Output<ImmutableArray<string>> Roles { get; private set; } = null!;
+
+        /// <summary>
+        /// The list of service identities that should be applied to the token.
+        /// </summary>
+        [Output("serviceIdentities")]
+        public Output<ImmutableArray<Outputs.AclTokenServiceIdentity>> ServiceIdentities { get; private set; } = null!;
 
 
         /// <summary>
@@ -157,6 +175,12 @@ namespace Pulumi.Consul
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// If set this represents the point after which a token should be considered revoked and is eligible for destruction.
+        /// </summary>
+        [Input("expirationTime")]
+        public Input<string>? ExpirationTime { get; set; }
+
+        /// <summary>
         /// The flag to set the token local to the current datacenter.
         /// </summary>
         [Input("local")]
@@ -167,6 +191,18 @@ namespace Pulumi.Consul
         /// </summary>
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }
+
+        [Input("nodeIdentities")]
+        private InputList<Inputs.AclTokenNodeIdentityArgs>? _nodeIdentities;
+
+        /// <summary>
+        /// The list of node identities that should be applied to the token.
+        /// </summary>
+        public InputList<Inputs.AclTokenNodeIdentityArgs> NodeIdentities
+        {
+            get => _nodeIdentities ?? (_nodeIdentities = new InputList<Inputs.AclTokenNodeIdentityArgs>());
+            set => _nodeIdentities = value;
+        }
 
         [Input("policies")]
         private InputList<string>? _policies;
@@ -190,6 +226,18 @@ namespace Pulumi.Consul
         {
             get => _roles ?? (_roles = new InputList<string>());
             set => _roles = value;
+        }
+
+        [Input("serviceIdentities")]
+        private InputList<Inputs.AclTokenServiceIdentityArgs>? _serviceIdentities;
+
+        /// <summary>
+        /// The list of service identities that should be applied to the token.
+        /// </summary>
+        public InputList<Inputs.AclTokenServiceIdentityArgs> ServiceIdentities
+        {
+            get => _serviceIdentities ?? (_serviceIdentities = new InputList<Inputs.AclTokenServiceIdentityArgs>());
+            set => _serviceIdentities = value;
         }
 
         public AclTokenArgs()
@@ -213,6 +261,12 @@ namespace Pulumi.Consul
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// If set this represents the point after which a token should be considered revoked and is eligible for destruction.
+        /// </summary>
+        [Input("expirationTime")]
+        public Input<string>? ExpirationTime { get; set; }
+
+        /// <summary>
         /// The flag to set the token local to the current datacenter.
         /// </summary>
         [Input("local")]
@@ -223,6 +277,18 @@ namespace Pulumi.Consul
         /// </summary>
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }
+
+        [Input("nodeIdentities")]
+        private InputList<Inputs.AclTokenNodeIdentityGetArgs>? _nodeIdentities;
+
+        /// <summary>
+        /// The list of node identities that should be applied to the token.
+        /// </summary>
+        public InputList<Inputs.AclTokenNodeIdentityGetArgs> NodeIdentities
+        {
+            get => _nodeIdentities ?? (_nodeIdentities = new InputList<Inputs.AclTokenNodeIdentityGetArgs>());
+            set => _nodeIdentities = value;
+        }
 
         [Input("policies")]
         private InputList<string>? _policies;
@@ -246,6 +312,18 @@ namespace Pulumi.Consul
         {
             get => _roles ?? (_roles = new InputList<string>());
             set => _roles = value;
+        }
+
+        [Input("serviceIdentities")]
+        private InputList<Inputs.AclTokenServiceIdentityGetArgs>? _serviceIdentities;
+
+        /// <summary>
+        /// The list of service identities that should be applied to the token.
+        /// </summary>
+        public InputList<Inputs.AclTokenServiceIdentityGetArgs> ServiceIdentities
+        {
+            get => _serviceIdentities ?? (_serviceIdentities = new InputList<Inputs.AclTokenServiceIdentityGetArgs>());
+            set => _serviceIdentities = value;
         }
 
         public AclTokenState()

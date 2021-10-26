@@ -18,9 +18,42 @@ export interface AclAuthMethodNamespaceRule {
     selector?: pulumi.Input<string>;
 }
 
+export interface AclRoleNodeIdentity {
+    /**
+     * The datacenter of the node.
+     */
+    datacenter: pulumi.Input<string>;
+    /**
+     * The name of the node.
+     */
+    nodeName: pulumi.Input<string>;
+}
+
 export interface AclRoleServiceIdentity {
     /**
      * The datacenters the effective policy is valid within.
+     */
+    datacenters?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The name of the service.
+     */
+    serviceName: pulumi.Input<string>;
+}
+
+export interface AclTokenNodeIdentity {
+    /**
+     * The datacenter of the node.
+     */
+    datacenter: pulumi.Input<string>;
+    /**
+     * The name of the node.
+     */
+    nodeName: pulumi.Input<string>;
+}
+
+export interface AclTokenServiceIdentity {
+    /**
+     * The list of datacenters the policy is valid within.
      */
     datacenters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -52,24 +85,6 @@ export interface CatalogEntryService {
      * but can be used to distinguish between services or nodes.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
-}
-
-export interface GetAclRolePolicy {
-    id?: string;
-    /**
-     * The name of the ACL Role.
-     */
-    name?: string;
-}
-
-export interface GetAclRoleServiceIdentity {
-    datacenters?: string[];
-    serviceName?: string;
-}
-
-export interface GetAclTokenPolicy {
-    id?: string;
-    name?: string;
 }
 
 export interface GetCatalogNodesQueryOption {

@@ -80,14 +80,19 @@ namespace Pulumi.Consul
         public Output<string?> Namespace { get; private set; } = null!;
 
         /// <summary>
+        /// The list of node identities that should be applied to the role.
+        /// </summary>
+        [Output("nodeIdentities")]
+        public Output<ImmutableArray<Outputs.AclRoleNodeIdentity>> NodeIdentities { get; private set; } = null!;
+
+        /// <summary>
         /// The list of policies that should be applied to the role.
         /// </summary>
         [Output("policies")]
         public Output<ImmutableArray<string>> Policies { get; private set; } = null!;
 
         /// <summary>
-        /// The list of service identities that should
-        /// be applied to the role.
+        /// The list of service identities that should be applied to the role.
         /// </summary>
         [Output("serviceIdentities")]
         public Output<ImmutableArray<Outputs.AclRoleServiceIdentity>> ServiceIdentities { get; private set; } = null!;
@@ -156,6 +161,18 @@ namespace Pulumi.Consul
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }
 
+        [Input("nodeIdentities")]
+        private InputList<Inputs.AclRoleNodeIdentityArgs>? _nodeIdentities;
+
+        /// <summary>
+        /// The list of node identities that should be applied to the role.
+        /// </summary>
+        public InputList<Inputs.AclRoleNodeIdentityArgs> NodeIdentities
+        {
+            get => _nodeIdentities ?? (_nodeIdentities = new InputList<Inputs.AclRoleNodeIdentityArgs>());
+            set => _nodeIdentities = value;
+        }
+
         [Input("policies")]
         private InputList<string>? _policies;
 
@@ -172,8 +189,7 @@ namespace Pulumi.Consul
         private InputList<Inputs.AclRoleServiceIdentityArgs>? _serviceIdentities;
 
         /// <summary>
-        /// The list of service identities that should
-        /// be applied to the role.
+        /// The list of service identities that should be applied to the role.
         /// </summary>
         public InputList<Inputs.AclRoleServiceIdentityArgs> ServiceIdentities
         {
@@ -206,6 +222,18 @@ namespace Pulumi.Consul
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }
 
+        [Input("nodeIdentities")]
+        private InputList<Inputs.AclRoleNodeIdentityGetArgs>? _nodeIdentities;
+
+        /// <summary>
+        /// The list of node identities that should be applied to the role.
+        /// </summary>
+        public InputList<Inputs.AclRoleNodeIdentityGetArgs> NodeIdentities
+        {
+            get => _nodeIdentities ?? (_nodeIdentities = new InputList<Inputs.AclRoleNodeIdentityGetArgs>());
+            set => _nodeIdentities = value;
+        }
+
         [Input("policies")]
         private InputList<string>? _policies;
 
@@ -222,8 +250,7 @@ namespace Pulumi.Consul
         private InputList<Inputs.AclRoleServiceIdentityGetArgs>? _serviceIdentities;
 
         /// <summary>
-        /// The list of service identities that should
-        /// be applied to the role.
+        /// The list of service identities that should be applied to the role.
         /// </summary>
         public InputList<Inputs.AclRoleServiceIdentityGetArgs> ServiceIdentities
         {

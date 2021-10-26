@@ -67,14 +67,20 @@ type AclToken struct {
 	AccessorId pulumi.StringOutput `pulumi:"accessorId"`
 	// The description of the token.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// If set this represents the point after which a token should be considered revoked and is eligible for destruction.
+	ExpirationTime pulumi.StringPtrOutput `pulumi:"expirationTime"`
 	// The flag to set the token local to the current datacenter.
 	Local pulumi.BoolPtrOutput `pulumi:"local"`
 	// The namespace to create the token within.
 	Namespace pulumi.StringPtrOutput `pulumi:"namespace"`
+	// The list of node identities that should be applied to the token.
+	NodeIdentities AclTokenNodeIdentityArrayOutput `pulumi:"nodeIdentities"`
 	// The list of policies attached to the token.
 	Policies pulumi.StringArrayOutput `pulumi:"policies"`
 	// The list of roles attached to the token.
 	Roles pulumi.StringArrayOutput `pulumi:"roles"`
+	// The list of service identities that should be applied to the token.
+	ServiceIdentities AclTokenServiceIdentityArrayOutput `pulumi:"serviceIdentities"`
 }
 
 // NewAclToken registers a new resource with the given unique name, arguments, and options.
@@ -111,14 +117,20 @@ type aclTokenState struct {
 	AccessorId *string `pulumi:"accessorId"`
 	// The description of the token.
 	Description *string `pulumi:"description"`
+	// If set this represents the point after which a token should be considered revoked and is eligible for destruction.
+	ExpirationTime *string `pulumi:"expirationTime"`
 	// The flag to set the token local to the current datacenter.
 	Local *bool `pulumi:"local"`
 	// The namespace to create the token within.
 	Namespace *string `pulumi:"namespace"`
+	// The list of node identities that should be applied to the token.
+	NodeIdentities []AclTokenNodeIdentity `pulumi:"nodeIdentities"`
 	// The list of policies attached to the token.
 	Policies []string `pulumi:"policies"`
 	// The list of roles attached to the token.
 	Roles []string `pulumi:"roles"`
+	// The list of service identities that should be applied to the token.
+	ServiceIdentities []AclTokenServiceIdentity `pulumi:"serviceIdentities"`
 }
 
 type AclTokenState struct {
@@ -127,14 +139,20 @@ type AclTokenState struct {
 	AccessorId pulumi.StringPtrInput
 	// The description of the token.
 	Description pulumi.StringPtrInput
+	// If set this represents the point after which a token should be considered revoked and is eligible for destruction.
+	ExpirationTime pulumi.StringPtrInput
 	// The flag to set the token local to the current datacenter.
 	Local pulumi.BoolPtrInput
 	// The namespace to create the token within.
 	Namespace pulumi.StringPtrInput
+	// The list of node identities that should be applied to the token.
+	NodeIdentities AclTokenNodeIdentityArrayInput
 	// The list of policies attached to the token.
 	Policies pulumi.StringArrayInput
 	// The list of roles attached to the token.
 	Roles pulumi.StringArrayInput
+	// The list of service identities that should be applied to the token.
+	ServiceIdentities AclTokenServiceIdentityArrayInput
 }
 
 func (AclTokenState) ElementType() reflect.Type {
@@ -147,14 +165,20 @@ type aclTokenArgs struct {
 	AccessorId *string `pulumi:"accessorId"`
 	// The description of the token.
 	Description *string `pulumi:"description"`
+	// If set this represents the point after which a token should be considered revoked and is eligible for destruction.
+	ExpirationTime *string `pulumi:"expirationTime"`
 	// The flag to set the token local to the current datacenter.
 	Local *bool `pulumi:"local"`
 	// The namespace to create the token within.
 	Namespace *string `pulumi:"namespace"`
+	// The list of node identities that should be applied to the token.
+	NodeIdentities []AclTokenNodeIdentity `pulumi:"nodeIdentities"`
 	// The list of policies attached to the token.
 	Policies []string `pulumi:"policies"`
 	// The list of roles attached to the token.
 	Roles []string `pulumi:"roles"`
+	// The list of service identities that should be applied to the token.
+	ServiceIdentities []AclTokenServiceIdentity `pulumi:"serviceIdentities"`
 }
 
 // The set of arguments for constructing a AclToken resource.
@@ -164,14 +188,20 @@ type AclTokenArgs struct {
 	AccessorId pulumi.StringPtrInput
 	// The description of the token.
 	Description pulumi.StringPtrInput
+	// If set this represents the point after which a token should be considered revoked and is eligible for destruction.
+	ExpirationTime pulumi.StringPtrInput
 	// The flag to set the token local to the current datacenter.
 	Local pulumi.BoolPtrInput
 	// The namespace to create the token within.
 	Namespace pulumi.StringPtrInput
+	// The list of node identities that should be applied to the token.
+	NodeIdentities AclTokenNodeIdentityArrayInput
 	// The list of policies attached to the token.
 	Policies pulumi.StringArrayInput
 	// The list of roles attached to the token.
 	Roles pulumi.StringArrayInput
+	// The list of service identities that should be applied to the token.
+	ServiceIdentities AclTokenServiceIdentityArrayInput
 }
 
 func (AclTokenArgs) ElementType() reflect.Type {

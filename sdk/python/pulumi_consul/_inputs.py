@@ -10,7 +10,10 @@ from . import _utilities
 
 __all__ = [
     'AclAuthMethodNamespaceRuleArgs',
+    'AclRoleNodeIdentityArgs',
     'AclRoleServiceIdentityArgs',
+    'AclTokenNodeIdentityArgs',
+    'AclTokenServiceIdentityArgs',
     'CatalogEntryServiceArgs',
     'KeyPrefixSubkeyCollectionArgs',
     'KeysKeyArgs',
@@ -20,9 +23,6 @@ __all__ = [
     'ProviderHeaderArgs',
     'ServiceCheckArgs',
     'ServiceCheckHeaderArgs',
-    'GetAclRolePolicyArgs',
-    'GetAclRoleServiceIdentityArgs',
-    'GetAclTokenPolicyArgs',
     'GetCatalogNodesQueryOptionArgs',
     'GetCatalogServiceQueryOptionArgs',
     'GetCatalogServicesQueryOptionArgs',
@@ -78,6 +78,43 @@ class AclAuthMethodNamespaceRuleArgs:
 
 
 @pulumi.input_type
+class AclRoleNodeIdentityArgs:
+    def __init__(__self__, *,
+                 datacenter: pulumi.Input[str],
+                 node_name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] datacenter: The datacenter of the node.
+        :param pulumi.Input[str] node_name: The name of the node.
+        """
+        pulumi.set(__self__, "datacenter", datacenter)
+        pulumi.set(__self__, "node_name", node_name)
+
+    @property
+    @pulumi.getter
+    def datacenter(self) -> pulumi.Input[str]:
+        """
+        The datacenter of the node.
+        """
+        return pulumi.get(self, "datacenter")
+
+    @datacenter.setter
+    def datacenter(self, value: pulumi.Input[str]):
+        pulumi.set(self, "datacenter", value)
+
+    @property
+    @pulumi.getter(name="nodeName")
+    def node_name(self) -> pulumi.Input[str]:
+        """
+        The name of the node.
+        """
+        return pulumi.get(self, "node_name")
+
+    @node_name.setter
+    def node_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "node_name", value)
+
+
+@pulumi.input_type
 class AclRoleServiceIdentityArgs:
     def __init__(__self__, *,
                  service_name: pulumi.Input[str],
@@ -107,6 +144,81 @@ class AclRoleServiceIdentityArgs:
     def datacenters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The datacenters the effective policy is valid within.
+        """
+        return pulumi.get(self, "datacenters")
+
+    @datacenters.setter
+    def datacenters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "datacenters", value)
+
+
+@pulumi.input_type
+class AclTokenNodeIdentityArgs:
+    def __init__(__self__, *,
+                 datacenter: pulumi.Input[str],
+                 node_name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] datacenter: The datacenter of the node.
+        :param pulumi.Input[str] node_name: The name of the node.
+        """
+        pulumi.set(__self__, "datacenter", datacenter)
+        pulumi.set(__self__, "node_name", node_name)
+
+    @property
+    @pulumi.getter
+    def datacenter(self) -> pulumi.Input[str]:
+        """
+        The datacenter of the node.
+        """
+        return pulumi.get(self, "datacenter")
+
+    @datacenter.setter
+    def datacenter(self, value: pulumi.Input[str]):
+        pulumi.set(self, "datacenter", value)
+
+    @property
+    @pulumi.getter(name="nodeName")
+    def node_name(self) -> pulumi.Input[str]:
+        """
+        The name of the node.
+        """
+        return pulumi.get(self, "node_name")
+
+    @node_name.setter
+    def node_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "node_name", value)
+
+
+@pulumi.input_type
+class AclTokenServiceIdentityArgs:
+    def __init__(__self__, *,
+                 service_name: pulumi.Input[str],
+                 datacenters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] service_name: The name of the service.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] datacenters: The list of datacenters the policy is valid within.
+        """
+        pulumi.set(__self__, "service_name", service_name)
+        if datacenters is not None:
+            pulumi.set(__self__, "datacenters", datacenters)
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> pulumi.Input[str]:
+        """
+        The name of the service.
+        """
+        return pulumi.get(self, "service_name")
+
+    @service_name.setter
+    def service_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service_name", value)
+
+    @property
+    @pulumi.getter
+    def datacenters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The list of datacenters the policy is valid within.
         """
         return pulumi.get(self, "datacenters")
 
@@ -743,95 +855,6 @@ class ServiceCheckHeaderArgs:
     @values.setter
     def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
-
-
-@pulumi.input_type
-class GetAclRolePolicyArgs:
-    def __init__(__self__, *,
-                 id: str,
-                 name: str):
-        """
-        :param str name: The name of the ACL Role.
-        """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "name", name)
-
-    @property
-    @pulumi.getter
-    def id(self) -> str:
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: str):
-        pulumi.set(self, "id", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> str:
-        """
-        The name of the ACL Role.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: str):
-        pulumi.set(self, "name", value)
-
-
-@pulumi.input_type
-class GetAclRoleServiceIdentityArgs:
-    def __init__(__self__, *,
-                 datacenters: Optional[Sequence[str]] = None,
-                 service_name: Optional[str] = None):
-        if datacenters is not None:
-            pulumi.set(__self__, "datacenters", datacenters)
-        if service_name is not None:
-            pulumi.set(__self__, "service_name", service_name)
-
-    @property
-    @pulumi.getter
-    def datacenters(self) -> Optional[Sequence[str]]:
-        return pulumi.get(self, "datacenters")
-
-    @datacenters.setter
-    def datacenters(self, value: Optional[Sequence[str]]):
-        pulumi.set(self, "datacenters", value)
-
-    @property
-    @pulumi.getter(name="serviceName")
-    def service_name(self) -> Optional[str]:
-        return pulumi.get(self, "service_name")
-
-    @service_name.setter
-    def service_name(self, value: Optional[str]):
-        pulumi.set(self, "service_name", value)
-
-
-@pulumi.input_type
-class GetAclTokenPolicyArgs:
-    def __init__(__self__, *,
-                 id: str,
-                 name: str):
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "name", name)
-
-    @property
-    @pulumi.getter
-    def id(self) -> str:
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: str):
-        pulumi.set(self, "id", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> str:
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: str):
-        pulumi.set(self, "name", value)
 
 
 @pulumi.input_type

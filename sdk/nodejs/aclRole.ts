@@ -76,12 +76,15 @@ export class AclRole extends pulumi.CustomResource {
      */
     public readonly namespace!: pulumi.Output<string | undefined>;
     /**
+     * The list of node identities that should be applied to the role.
+     */
+    public readonly nodeIdentities!: pulumi.Output<outputs.AclRoleNodeIdentity[] | undefined>;
+    /**
      * The list of policies that should be applied to the role.
      */
     public readonly policies!: pulumi.Output<string[] | undefined>;
     /**
-     * The list of service identities that should
-     * be applied to the role.
+     * The list of service identities that should be applied to the role.
      */
     public readonly serviceIdentities!: pulumi.Output<outputs.AclRoleServiceIdentity[] | undefined>;
 
@@ -101,6 +104,7 @@ export class AclRole extends pulumi.CustomResource {
             inputs["description"] = state ? state.description : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["namespace"] = state ? state.namespace : undefined;
+            inputs["nodeIdentities"] = state ? state.nodeIdentities : undefined;
             inputs["policies"] = state ? state.policies : undefined;
             inputs["serviceIdentities"] = state ? state.serviceIdentities : undefined;
         } else {
@@ -108,6 +112,7 @@ export class AclRole extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["namespace"] = args ? args.namespace : undefined;
+            inputs["nodeIdentities"] = args ? args.nodeIdentities : undefined;
             inputs["policies"] = args ? args.policies : undefined;
             inputs["serviceIdentities"] = args ? args.serviceIdentities : undefined;
         }
@@ -135,12 +140,15 @@ export interface AclRoleState {
      */
     namespace?: pulumi.Input<string>;
     /**
+     * The list of node identities that should be applied to the role.
+     */
+    nodeIdentities?: pulumi.Input<pulumi.Input<inputs.AclRoleNodeIdentity>[]>;
+    /**
      * The list of policies that should be applied to the role.
      */
     policies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The list of service identities that should
-     * be applied to the role.
+     * The list of service identities that should be applied to the role.
      */
     serviceIdentities?: pulumi.Input<pulumi.Input<inputs.AclRoleServiceIdentity>[]>;
 }
@@ -162,12 +170,15 @@ export interface AclRoleArgs {
      */
     namespace?: pulumi.Input<string>;
     /**
+     * The list of node identities that should be applied to the role.
+     */
+    nodeIdentities?: pulumi.Input<pulumi.Input<inputs.AclRoleNodeIdentity>[]>;
+    /**
      * The list of policies that should be applied to the role.
      */
     policies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The list of service identities that should
-     * be applied to the role.
+     * The list of service identities that should be applied to the role.
      */
     serviceIdentities?: pulumi.Input<pulumi.Input<inputs.AclRoleServiceIdentity>[]>;
 }

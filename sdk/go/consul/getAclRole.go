@@ -44,32 +44,26 @@ func LookupAclRole(ctx *pulumi.Context, args *LookupAclRoleArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getAclRole.
 type LookupAclRoleArgs struct {
-	// The description of the ACL Role.
-	Description *string `pulumi:"description"`
 	// The name of the ACL Role.
 	Name string `pulumi:"name"`
 	// The namespace to lookup the role.
 	Namespace *string `pulumi:"namespace"`
-	// The list of policies associated with the ACL Role. Each entry has
-	// an `id` and a `name` attribute.
-	Policies []GetAclRolePolicy `pulumi:"policies"`
-	// The list of service identities associated with the ACL
-	// Role. Each entry has a `serviceName` attribute and a list of `datacenters`.
-	ServiceIdentities []GetAclRoleServiceIdentity `pulumi:"serviceIdentities"`
 }
 
 // A collection of values returned by getAclRole.
 type LookupAclRoleResult struct {
 	// The description of the ACL Role.
-	Description *string `pulumi:"description"`
+	Description string `pulumi:"description"`
 	// The provider-assigned unique ID for this managed resource.
-	Id        string  `pulumi:"id"`
-	Name      string  `pulumi:"name"`
+	Id string `pulumi:"id"`
+	// The name of the ACL Role.
+	Name string `pulumi:"name"`
+	// The namespace to lookup the role.
 	Namespace *string `pulumi:"namespace"`
-	// The list of policies associated with the ACL Role. Each entry has
-	// an `id` and a `name` attribute.
+	// The list of node identities associated with the ACL Role. Each entry has a `nodeName` and a `datacenter` attributes.
+	NodeIdentities []GetAclRoleNodeIdentity `pulumi:"nodeIdentities"`
+	// The list of policies associated with the ACL Role. Each entry has an `id` and a `name` attribute.
 	Policies []GetAclRolePolicy `pulumi:"policies"`
-	// The list of service identities associated with the ACL
-	// Role. Each entry has a `serviceName` attribute and a list of `datacenters`.
+	// The list of service identities associated with the ACL Role. Each entry has a `serviceName` attribute and a list of `datacenters`.
 	ServiceIdentities []GetAclRoleServiceIdentity `pulumi:"serviceIdentities"`
 }

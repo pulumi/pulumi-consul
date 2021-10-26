@@ -30,11 +30,8 @@ export function getAclRole(args: GetAclRoleArgs, opts?: pulumi.InvokeOptions): P
         opts.version = utilities.getVersion();
     }
     return pulumi.runtime.invoke("consul:index/getAclRole:getAclRole", {
-        "description": args.description,
         "name": args.name,
         "namespace": args.namespace,
-        "policies": args.policies,
-        "serviceIdentities": args.serviceIdentities,
     }, opts);
 }
 
@@ -43,10 +40,6 @@ export function getAclRole(args: GetAclRoleArgs, opts?: pulumi.InvokeOptions): P
  */
 export interface GetAclRoleArgs {
     /**
-     * The description of the ACL Role.
-     */
-    description?: string;
-    /**
      * The name of the ACL Role.
      */
     name: string;
@@ -54,16 +47,6 @@ export interface GetAclRoleArgs {
      * The namespace to lookup the role.
      */
     namespace?: string;
-    /**
-     * The list of policies associated with the ACL Role. Each entry has
-     * an `id` and a `name` attribute.
-     */
-    policies?: inputs.GetAclRolePolicy[];
-    /**
-     * The list of service identities associated with the ACL
-     * Role. Each entry has a `serviceName` attribute and a list of `datacenters`.
-     */
-    serviceIdentities?: inputs.GetAclRoleServiceIdentity[];
 }
 
 /**
@@ -73,21 +56,29 @@ export interface GetAclRoleResult {
     /**
      * The description of the ACL Role.
      */
-    readonly description?: string;
+    readonly description: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The name of the ACL Role.
+     */
     readonly name: string;
+    /**
+     * The namespace to lookup the role.
+     */
     readonly namespace?: string;
     /**
-     * The list of policies associated with the ACL Role. Each entry has
-     * an `id` and a `name` attribute.
+     * The list of node identities associated with the ACL Role. Each entry has a `nodeName` and a `datacenter` attributes.
      */
-    readonly policies?: outputs.GetAclRolePolicy[];
+    readonly nodeIdentities: outputs.GetAclRoleNodeIdentity[];
     /**
-     * The list of service identities associated with the ACL
-     * Role. Each entry has a `serviceName` attribute and a list of `datacenters`.
+     * The list of policies associated with the ACL Role. Each entry has an `id` and a `name` attribute.
      */
-    readonly serviceIdentities?: outputs.GetAclRoleServiceIdentity[];
+    readonly policies: outputs.GetAclRolePolicy[];
+    /**
+     * The list of service identities associated with the ACL Role. Each entry has a `serviceName` attribute and a list of `datacenters`.
+     */
+    readonly serviceIdentities: outputs.GetAclRoleServiceIdentity[];
 }

@@ -11,7 +11,10 @@ from . import outputs
 
 __all__ = [
     'AclAuthMethodNamespaceRule',
+    'AclRoleNodeIdentity',
     'AclRoleServiceIdentity',
+    'AclTokenNodeIdentity',
+    'AclTokenServiceIdentity',
     'CatalogEntryService',
     'KeyPrefixSubkeyCollection',
     'KeysKey',
@@ -22,9 +25,13 @@ __all__ = [
     'ServiceCheck',
     'ServiceCheckHeader',
     'GetAclAuthMethodNamespaceRuleResult',
+    'GetAclRoleNodeIdentityResult',
     'GetAclRolePolicyResult',
     'GetAclRoleServiceIdentityResult',
+    'GetAclTokenNodeIdentityResult',
     'GetAclTokenPolicyResult',
+    'GetAclTokenRoleResult',
+    'GetAclTokenServiceIdentityResult',
     'GetAutopilotHealthServerResult',
     'GetCatalogNodesNodeResult',
     'GetCatalogNodesQueryOptionResult',
@@ -99,6 +106,52 @@ class AclAuthMethodNamespaceRule(dict):
 
 
 @pulumi.output_type
+class AclRoleNodeIdentity(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nodeName":
+            suggest = "node_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AclRoleNodeIdentity. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AclRoleNodeIdentity.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AclRoleNodeIdentity.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 datacenter: str,
+                 node_name: str):
+        """
+        :param str datacenter: The datacenter of the node.
+        :param str node_name: The name of the node.
+        """
+        pulumi.set(__self__, "datacenter", datacenter)
+        pulumi.set(__self__, "node_name", node_name)
+
+    @property
+    @pulumi.getter
+    def datacenter(self) -> str:
+        """
+        The datacenter of the node.
+        """
+        return pulumi.get(self, "datacenter")
+
+    @property
+    @pulumi.getter(name="nodeName")
+    def node_name(self) -> str:
+        """
+        The name of the node.
+        """
+        return pulumi.get(self, "node_name")
+
+
+@pulumi.output_type
 class AclRoleServiceIdentity(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -141,6 +194,99 @@ class AclRoleServiceIdentity(dict):
     def datacenters(self) -> Optional[Sequence[str]]:
         """
         The datacenters the effective policy is valid within.
+        """
+        return pulumi.get(self, "datacenters")
+
+
+@pulumi.output_type
+class AclTokenNodeIdentity(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nodeName":
+            suggest = "node_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AclTokenNodeIdentity. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AclTokenNodeIdentity.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AclTokenNodeIdentity.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 datacenter: str,
+                 node_name: str):
+        """
+        :param str datacenter: The datacenter of the node.
+        :param str node_name: The name of the node.
+        """
+        pulumi.set(__self__, "datacenter", datacenter)
+        pulumi.set(__self__, "node_name", node_name)
+
+    @property
+    @pulumi.getter
+    def datacenter(self) -> str:
+        """
+        The datacenter of the node.
+        """
+        return pulumi.get(self, "datacenter")
+
+    @property
+    @pulumi.getter(name="nodeName")
+    def node_name(self) -> str:
+        """
+        The name of the node.
+        """
+        return pulumi.get(self, "node_name")
+
+
+@pulumi.output_type
+class AclTokenServiceIdentity(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceName":
+            suggest = "service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AclTokenServiceIdentity. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AclTokenServiceIdentity.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AclTokenServiceIdentity.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 service_name: str,
+                 datacenters: Optional[Sequence[str]] = None):
+        """
+        :param str service_name: The name of the service.
+        :param Sequence[str] datacenters: The list of datacenters the policy is valid within.
+        """
+        pulumi.set(__self__, "service_name", service_name)
+        if datacenters is not None:
+            pulumi.set(__self__, "datacenters", datacenters)
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> str:
+        """
+        The name of the service.
+        """
+        return pulumi.get(self, "service_name")
+
+    @property
+    @pulumi.getter
+    def datacenters(self) -> Optional[Sequence[str]]:
+        """
+        The list of datacenters the policy is valid within.
         """
         return pulumi.get(self, "datacenters")
 
@@ -690,6 +836,25 @@ class GetAclAuthMethodNamespaceRuleResult(dict):
 
 
 @pulumi.output_type
+class GetAclRoleNodeIdentityResult(dict):
+    def __init__(__self__, *,
+                 datacenter: str,
+                 node_name: str):
+        pulumi.set(__self__, "datacenter", datacenter)
+        pulumi.set(__self__, "node_name", node_name)
+
+    @property
+    @pulumi.getter
+    def datacenter(self) -> str:
+        return pulumi.get(self, "datacenter")
+
+    @property
+    @pulumi.getter(name="nodeName")
+    def node_name(self) -> str:
+        return pulumi.get(self, "node_name")
+
+
+@pulumi.output_type
 class GetAclRolePolicyResult(dict):
     def __init__(__self__, *,
                  id: str,
@@ -736,6 +901,25 @@ class GetAclRoleServiceIdentityResult(dict):
 
 
 @pulumi.output_type
+class GetAclTokenNodeIdentityResult(dict):
+    def __init__(__self__, *,
+                 datacenter: str,
+                 node_name: str):
+        pulumi.set(__self__, "datacenter", datacenter)
+        pulumi.set(__self__, "node_name", node_name)
+
+    @property
+    @pulumi.getter
+    def datacenter(self) -> str:
+        return pulumi.get(self, "datacenter")
+
+    @property
+    @pulumi.getter(name="nodeName")
+    def node_name(self) -> str:
+        return pulumi.get(self, "node_name")
+
+
+@pulumi.output_type
 class GetAclTokenPolicyResult(dict):
     def __init__(__self__, *,
                  id: str,
@@ -752,6 +936,44 @@ class GetAclTokenPolicyResult(dict):
     @pulumi.getter
     def name(self) -> str:
         return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetAclTokenRoleResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 name: str):
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetAclTokenServiceIdentityResult(dict):
+    def __init__(__self__, *,
+                 datacenters: Sequence[str],
+                 service_name: str):
+        pulumi.set(__self__, "datacenters", datacenters)
+        pulumi.set(__self__, "service_name", service_name)
+
+    @property
+    @pulumi.getter
+    def datacenters(self) -> Sequence[str]:
+        return pulumi.get(self, "datacenters")
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> str:
+        return pulumi.get(self, "service_name")
 
 
 @pulumi.output_type

@@ -68,10 +68,11 @@ type AclRole struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The namespace to create the role within.
 	Namespace pulumi.StringPtrOutput `pulumi:"namespace"`
+	// The list of node identities that should be applied to the role.
+	NodeIdentities AclRoleNodeIdentityArrayOutput `pulumi:"nodeIdentities"`
 	// The list of policies that should be applied to the role.
 	Policies pulumi.StringArrayOutput `pulumi:"policies"`
-	// The list of service identities that should
-	// be applied to the role.
+	// The list of service identities that should be applied to the role.
 	ServiceIdentities AclRoleServiceIdentityArrayOutput `pulumi:"serviceIdentities"`
 }
 
@@ -110,10 +111,11 @@ type aclRoleState struct {
 	Name *string `pulumi:"name"`
 	// The namespace to create the role within.
 	Namespace *string `pulumi:"namespace"`
+	// The list of node identities that should be applied to the role.
+	NodeIdentities []AclRoleNodeIdentity `pulumi:"nodeIdentities"`
 	// The list of policies that should be applied to the role.
 	Policies []string `pulumi:"policies"`
-	// The list of service identities that should
-	// be applied to the role.
+	// The list of service identities that should be applied to the role.
 	ServiceIdentities []AclRoleServiceIdentity `pulumi:"serviceIdentities"`
 }
 
@@ -124,10 +126,11 @@ type AclRoleState struct {
 	Name pulumi.StringPtrInput
 	// The namespace to create the role within.
 	Namespace pulumi.StringPtrInput
+	// The list of node identities that should be applied to the role.
+	NodeIdentities AclRoleNodeIdentityArrayInput
 	// The list of policies that should be applied to the role.
 	Policies pulumi.StringArrayInput
-	// The list of service identities that should
-	// be applied to the role.
+	// The list of service identities that should be applied to the role.
 	ServiceIdentities AclRoleServiceIdentityArrayInput
 }
 
@@ -142,10 +145,11 @@ type aclRoleArgs struct {
 	Name *string `pulumi:"name"`
 	// The namespace to create the role within.
 	Namespace *string `pulumi:"namespace"`
+	// The list of node identities that should be applied to the role.
+	NodeIdentities []AclRoleNodeIdentity `pulumi:"nodeIdentities"`
 	// The list of policies that should be applied to the role.
 	Policies []string `pulumi:"policies"`
-	// The list of service identities that should
-	// be applied to the role.
+	// The list of service identities that should be applied to the role.
 	ServiceIdentities []AclRoleServiceIdentity `pulumi:"serviceIdentities"`
 }
 
@@ -157,10 +161,11 @@ type AclRoleArgs struct {
 	Name pulumi.StringPtrInput
 	// The namespace to create the role within.
 	Namespace pulumi.StringPtrInput
+	// The list of node identities that should be applied to the role.
+	NodeIdentities AclRoleNodeIdentityArrayInput
 	// The list of policies that should be applied to the role.
 	Policies pulumi.StringArrayInput
-	// The list of service identities that should
-	// be applied to the role.
+	// The list of service identities that should be applied to the role.
 	ServiceIdentities AclRoleServiceIdentityArrayInput
 }
 

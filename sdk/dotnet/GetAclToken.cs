@@ -58,35 +58,10 @@ namespace Pulumi.Consul
         public string AccessorId { get; set; } = null!;
 
         /// <summary>
-        /// The description of the ACL token.
-        /// </summary>
-        [Input("description")]
-        public string? Description { get; set; }
-
-        /// <summary>
-        /// Whether the ACL token is local to the datacenter it was created within.
-        /// </summary>
-        [Input("local")]
-        public bool? Local { get; set; }
-
-        /// <summary>
         /// The namespace to lookup the ACL token.
         /// </summary>
         [Input("namespace")]
         public string? Namespace { get; set; }
-
-        [Input("policies")]
-        private List<Inputs.GetAclTokenPolicyArgs>? _policies;
-
-        /// <summary>
-        /// A list of policies associated with the ACL token. Each entry has
-        /// an `id` and a `name` attribute.
-        /// </summary>
-        public List<Inputs.GetAclTokenPolicyArgs> Policies
-        {
-            get => _policies ?? (_policies = new List<Inputs.GetAclTokenPolicyArgs>());
-            set => _policies = value;
-        }
 
         public GetAclTokenArgs()
         {
@@ -101,7 +76,11 @@ namespace Pulumi.Consul
         /// <summary>
         /// The description of the ACL token.
         /// </summary>
-        public readonly string? Description;
+        public readonly string Description;
+        /// <summary>
+        /// If set this represents the point after which a token should be considered revoked and is eligible for destruction.
+        /// </summary>
+        public readonly string ExpirationTime;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -109,34 +88,57 @@ namespace Pulumi.Consul
         /// <summary>
         /// Whether the ACL token is local to the datacenter it was created within.
         /// </summary>
-        public readonly bool? Local;
+        public readonly bool Local;
         public readonly string? Namespace;
         /// <summary>
-        /// A list of policies associated with the ACL token. Each entry has
-        /// an `id` and a `name` attribute.
+        /// The list of node identities attached to the token. Each entry has a `node_name` and a `datacenter` attributes.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetAclTokenNodeIdentityResult> NodeIdentities;
+        /// <summary>
+        /// A list of policies associated with the ACL token. Each entry has an `id` and a `name` attribute.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAclTokenPolicyResult> Policies;
+        /// <summary>
+        /// The list of roles attached to the token.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetAclTokenRoleResult> Roles;
+        /// <summary>
+        /// The list of service identities attached to the token. Each entry has a `service_name` and a `datacenters` attribute.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetAclTokenServiceIdentityResult> ServiceIdentities;
 
         [OutputConstructor]
         private GetAclTokenResult(
             string accessorId,
 
-            string? description,
+            string description,
+
+            string expirationTime,
 
             string id,
 
-            bool? local,
+            bool local,
 
             string? @namespace,
 
-            ImmutableArray<Outputs.GetAclTokenPolicyResult> policies)
+            ImmutableArray<Outputs.GetAclTokenNodeIdentityResult> nodeIdentities,
+
+            ImmutableArray<Outputs.GetAclTokenPolicyResult> policies,
+
+            ImmutableArray<Outputs.GetAclTokenRoleResult> roles,
+
+            ImmutableArray<Outputs.GetAclTokenServiceIdentityResult> serviceIdentities)
         {
             AccessorId = accessorId;
             Description = description;
+            ExpirationTime = expirationTime;
             Id = id;
             Local = local;
             Namespace = @namespace;
+            NodeIdentities = nodeIdentities;
             Policies = policies;
+            Roles = roles;
+            ServiceIdentities = serviceIdentities;
         }
     }
 }
