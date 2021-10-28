@@ -18,9 +18,42 @@ export interface AclAuthMethodNamespaceRule {
     selector?: string;
 }
 
+export interface AclRoleNodeIdentity {
+    /**
+     * The datacenter of the node.
+     */
+    datacenter: string;
+    /**
+     * The name of the node.
+     */
+    nodeName: string;
+}
+
 export interface AclRoleServiceIdentity {
     /**
      * The datacenters the effective policy is valid within.
+     */
+    datacenters?: string[];
+    /**
+     * The name of the service.
+     */
+    serviceName: string;
+}
+
+export interface AclTokenNodeIdentity {
+    /**
+     * The datacenter of the node.
+     */
+    datacenter: string;
+    /**
+     * The name of the node.
+     */
+    nodeName: string;
+}
+
+export interface AclTokenServiceIdentity {
+    /**
+     * The list of datacenters the policy is valid within.
      */
     datacenters?: string[];
     /**
@@ -59,6 +92,11 @@ export interface GetAclAuthMethodNamespaceRule {
     selector: string;
 }
 
+export interface GetAclRoleNodeIdentity {
+    datacenter: string;
+    nodeName: string;
+}
+
 export interface GetAclRolePolicy {
     id: string;
     /**
@@ -72,9 +110,24 @@ export interface GetAclRoleServiceIdentity {
     serviceName?: string;
 }
 
+export interface GetAclTokenNodeIdentity {
+    datacenter: string;
+    nodeName: string;
+}
+
 export interface GetAclTokenPolicy {
     id: string;
     name: string;
+}
+
+export interface GetAclTokenRole {
+    id: string;
+    name: string;
+}
+
+export interface GetAclTokenServiceIdentity {
+    datacenters: string[];
+    serviceName: string;
 }
 
 export interface GetAutopilotHealthServer {

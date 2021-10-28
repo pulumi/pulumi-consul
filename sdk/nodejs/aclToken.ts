@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -77,6 +78,10 @@ export class AclToken extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * If set this represents the point after which a token should be considered revoked and is eligible for destruction.
+     */
+    public readonly expirationTime!: pulumi.Output<string | undefined>;
+    /**
      * The flag to set the token local to the current datacenter.
      */
     public readonly local!: pulumi.Output<boolean | undefined>;
@@ -85,6 +90,10 @@ export class AclToken extends pulumi.CustomResource {
      */
     public readonly namespace!: pulumi.Output<string | undefined>;
     /**
+     * The list of node identities that should be applied to the token.
+     */
+    public readonly nodeIdentities!: pulumi.Output<outputs.AclTokenNodeIdentity[] | undefined>;
+    /**
      * The list of policies attached to the token.
      */
     public readonly policies!: pulumi.Output<string[] | undefined>;
@@ -92,6 +101,10 @@ export class AclToken extends pulumi.CustomResource {
      * The list of roles attached to the token.
      */
     public readonly roles!: pulumi.Output<string[] | undefined>;
+    /**
+     * The list of service identities that should be applied to the token.
+     */
+    public readonly serviceIdentities!: pulumi.Output<outputs.AclTokenServiceIdentity[] | undefined>;
 
     /**
      * Create a AclToken resource with the given unique name, arguments, and options.
@@ -108,18 +121,24 @@ export class AclToken extends pulumi.CustomResource {
             const state = argsOrState as AclTokenState | undefined;
             inputs["accessorId"] = state ? state.accessorId : undefined;
             inputs["description"] = state ? state.description : undefined;
+            inputs["expirationTime"] = state ? state.expirationTime : undefined;
             inputs["local"] = state ? state.local : undefined;
             inputs["namespace"] = state ? state.namespace : undefined;
+            inputs["nodeIdentities"] = state ? state.nodeIdentities : undefined;
             inputs["policies"] = state ? state.policies : undefined;
             inputs["roles"] = state ? state.roles : undefined;
+            inputs["serviceIdentities"] = state ? state.serviceIdentities : undefined;
         } else {
             const args = argsOrState as AclTokenArgs | undefined;
             inputs["accessorId"] = args ? args.accessorId : undefined;
             inputs["description"] = args ? args.description : undefined;
+            inputs["expirationTime"] = args ? args.expirationTime : undefined;
             inputs["local"] = args ? args.local : undefined;
             inputs["namespace"] = args ? args.namespace : undefined;
+            inputs["nodeIdentities"] = args ? args.nodeIdentities : undefined;
             inputs["policies"] = args ? args.policies : undefined;
             inputs["roles"] = args ? args.roles : undefined;
+            inputs["serviceIdentities"] = args ? args.serviceIdentities : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -142,6 +161,10 @@ export interface AclTokenState {
      */
     description?: pulumi.Input<string>;
     /**
+     * If set this represents the point after which a token should be considered revoked and is eligible for destruction.
+     */
+    expirationTime?: pulumi.Input<string>;
+    /**
      * The flag to set the token local to the current datacenter.
      */
     local?: pulumi.Input<boolean>;
@@ -150,6 +173,10 @@ export interface AclTokenState {
      */
     namespace?: pulumi.Input<string>;
     /**
+     * The list of node identities that should be applied to the token.
+     */
+    nodeIdentities?: pulumi.Input<pulumi.Input<inputs.AclTokenNodeIdentity>[]>;
+    /**
      * The list of policies attached to the token.
      */
     policies?: pulumi.Input<pulumi.Input<string>[]>;
@@ -157,6 +184,10 @@ export interface AclTokenState {
      * The list of roles attached to the token.
      */
     roles?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The list of service identities that should be applied to the token.
+     */
+    serviceIdentities?: pulumi.Input<pulumi.Input<inputs.AclTokenServiceIdentity>[]>;
 }
 
 /**
@@ -173,6 +204,10 @@ export interface AclTokenArgs {
      */
     description?: pulumi.Input<string>;
     /**
+     * If set this represents the point after which a token should be considered revoked and is eligible for destruction.
+     */
+    expirationTime?: pulumi.Input<string>;
+    /**
      * The flag to set the token local to the current datacenter.
      */
     local?: pulumi.Input<boolean>;
@@ -181,6 +216,10 @@ export interface AclTokenArgs {
      */
     namespace?: pulumi.Input<string>;
     /**
+     * The list of node identities that should be applied to the token.
+     */
+    nodeIdentities?: pulumi.Input<pulumi.Input<inputs.AclTokenNodeIdentity>[]>;
+    /**
      * The list of policies attached to the token.
      */
     policies?: pulumi.Input<pulumi.Input<string>[]>;
@@ -188,4 +227,8 @@ export interface AclTokenArgs {
      * The list of roles attached to the token.
      */
     roles?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The list of service identities that should be applied to the token.
+     */
+    serviceIdentities?: pulumi.Input<pulumi.Input<inputs.AclTokenServiceIdentity>[]>;
 }

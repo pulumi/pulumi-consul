@@ -8,7 +8,6 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
-from ._inputs import *
 
 __all__ = [
     'GetAclTokenResult',
@@ -21,13 +20,16 @@ class GetAclTokenResult:
     """
     A collection of values returned by getAclToken.
     """
-    def __init__(__self__, accessor_id=None, description=None, id=None, local=None, namespace=None, policies=None):
+    def __init__(__self__, accessor_id=None, description=None, expiration_time=None, id=None, local=None, namespace=None, node_identities=None, policies=None, roles=None, service_identities=None):
         if accessor_id and not isinstance(accessor_id, str):
             raise TypeError("Expected argument 'accessor_id' to be a str")
         pulumi.set(__self__, "accessor_id", accessor_id)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if expiration_time and not isinstance(expiration_time, str):
+            raise TypeError("Expected argument 'expiration_time' to be a str")
+        pulumi.set(__self__, "expiration_time", expiration_time)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -37,9 +39,18 @@ class GetAclTokenResult:
         if namespace and not isinstance(namespace, str):
             raise TypeError("Expected argument 'namespace' to be a str")
         pulumi.set(__self__, "namespace", namespace)
+        if node_identities and not isinstance(node_identities, list):
+            raise TypeError("Expected argument 'node_identities' to be a list")
+        pulumi.set(__self__, "node_identities", node_identities)
         if policies and not isinstance(policies, list):
             raise TypeError("Expected argument 'policies' to be a list")
         pulumi.set(__self__, "policies", policies)
+        if roles and not isinstance(roles, list):
+            raise TypeError("Expected argument 'roles' to be a list")
+        pulumi.set(__self__, "roles", roles)
+        if service_identities and not isinstance(service_identities, list):
+            raise TypeError("Expected argument 'service_identities' to be a list")
+        pulumi.set(__self__, "service_identities", service_identities)
 
     @property
     @pulumi.getter(name="accessorId")
@@ -48,11 +59,19 @@ class GetAclTokenResult:
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> str:
         """
         The description of the ACL token.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="expirationTime")
+    def expiration_time(self) -> str:
+        """
+        If set this represents the point after which a token should be considered revoked and is eligible for destruction.
+        """
+        return pulumi.get(self, "expiration_time")
 
     @property
     @pulumi.getter
@@ -64,7 +83,7 @@ class GetAclTokenResult:
 
     @property
     @pulumi.getter
-    def local(self) -> Optional[bool]:
+    def local(self) -> bool:
         """
         Whether the ACL token is local to the datacenter it was created within.
         """
@@ -76,13 +95,36 @@ class GetAclTokenResult:
         return pulumi.get(self, "namespace")
 
     @property
-    @pulumi.getter
-    def policies(self) -> Optional[Sequence['outputs.GetAclTokenPolicyResult']]:
+    @pulumi.getter(name="nodeIdentities")
+    def node_identities(self) -> Sequence['outputs.GetAclTokenNodeIdentityResult']:
         """
-        A list of policies associated with the ACL token. Each entry has
-        an `id` and a `name` attribute.
+        The list of node identities attached to the token. Each entry has a `node_name` and a `datacenter` attributes.
+        """
+        return pulumi.get(self, "node_identities")
+
+    @property
+    @pulumi.getter
+    def policies(self) -> Sequence['outputs.GetAclTokenPolicyResult']:
+        """
+        A list of policies associated with the ACL token. Each entry has an `id` and a `name` attribute.
         """
         return pulumi.get(self, "policies")
+
+    @property
+    @pulumi.getter
+    def roles(self) -> Sequence['outputs.GetAclTokenRoleResult']:
+        """
+        The list of roles attached to the token.
+        """
+        return pulumi.get(self, "roles")
+
+    @property
+    @pulumi.getter(name="serviceIdentities")
+    def service_identities(self) -> Sequence['outputs.GetAclTokenServiceIdentityResult']:
+        """
+        The list of service identities attached to the token. Each entry has a `service_name` and a `datacenters` attribute.
+        """
+        return pulumi.get(self, "service_identities")
 
 
 class AwaitableGetAclTokenResult(GetAclTokenResult):
@@ -93,17 +135,18 @@ class AwaitableGetAclTokenResult(GetAclTokenResult):
         return GetAclTokenResult(
             accessor_id=self.accessor_id,
             description=self.description,
+            expiration_time=self.expiration_time,
             id=self.id,
             local=self.local,
             namespace=self.namespace,
-            policies=self.policies)
+            node_identities=self.node_identities,
+            policies=self.policies,
+            roles=self.roles,
+            service_identities=self.service_identities)
 
 
 def get_acl_token(accessor_id: Optional[str] = None,
-                  description: Optional[str] = None,
-                  local: Optional[bool] = None,
                   namespace: Optional[str] = None,
-                  policies: Optional[Sequence[pulumi.InputType['GetAclTokenPolicyArgs']]] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAclTokenResult:
     """
     The `AclToken` data source returns the information related to the
@@ -124,18 +167,11 @@ def get_acl_token(accessor_id: Optional[str] = None,
 
 
     :param str accessor_id: The accessor ID of the ACL token.
-    :param str description: The description of the ACL token.
-    :param bool local: Whether the ACL token is local to the datacenter it was created within.
     :param str namespace: The namespace to lookup the ACL token.
-    :param Sequence[pulumi.InputType['GetAclTokenPolicyArgs']] policies: A list of policies associated with the ACL token. Each entry has
-           an `id` and a `name` attribute.
     """
     __args__ = dict()
     __args__['accessorId'] = accessor_id
-    __args__['description'] = description
-    __args__['local'] = local
     __args__['namespace'] = namespace
-    __args__['policies'] = policies
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
@@ -145,7 +181,11 @@ def get_acl_token(accessor_id: Optional[str] = None,
     return AwaitableGetAclTokenResult(
         accessor_id=__ret__.accessor_id,
         description=__ret__.description,
+        expiration_time=__ret__.expiration_time,
         id=__ret__.id,
         local=__ret__.local,
         namespace=__ret__.namespace,
-        policies=__ret__.policies)
+        node_identities=__ret__.node_identities,
+        policies=__ret__.policies,
+        roles=__ret__.roles,
+        service_identities=__ret__.service_identities)

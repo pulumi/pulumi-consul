@@ -22,7 +22,7 @@ import * as utilities from "./utilities";
  *     accessorId: "00000000-0000-0000-0000-000000000002",
  * }));
  *
- * export const consulAclPolicies = test.policies!;
+ * export const consulAclPolicies = test.policies;
  * ```
  */
 export function getAclToken(args: GetAclTokenArgs, opts?: pulumi.InvokeOptions): Promise<GetAclTokenResult> {
@@ -35,10 +35,7 @@ export function getAclToken(args: GetAclTokenArgs, opts?: pulumi.InvokeOptions):
     }
     return pulumi.runtime.invoke("consul:index/getAclToken:getAclToken", {
         "accessorId": args.accessorId,
-        "description": args.description,
-        "local": args.local,
         "namespace": args.namespace,
-        "policies": args.policies,
     }, opts);
 }
 
@@ -51,22 +48,9 @@ export interface GetAclTokenArgs {
      */
     accessorId: string;
     /**
-     * The description of the ACL token.
-     */
-    description?: string;
-    /**
-     * Whether the ACL token is local to the datacenter it was created within.
-     */
-    local?: boolean;
-    /**
      * The namespace to lookup the ACL token.
      */
     namespace?: string;
-    /**
-     * A list of policies associated with the ACL token. Each entry has
-     * an `id` and a `name` attribute.
-     */
-    policies?: inputs.GetAclTokenPolicy[];
 }
 
 /**
@@ -77,7 +61,11 @@ export interface GetAclTokenResult {
     /**
      * The description of the ACL token.
      */
-    readonly description?: string;
+    readonly description: string;
+    /**
+     * If set this represents the point after which a token should be considered revoked and is eligible for destruction.
+     */
+    readonly expirationTime: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -85,11 +73,22 @@ export interface GetAclTokenResult {
     /**
      * Whether the ACL token is local to the datacenter it was created within.
      */
-    readonly local?: boolean;
+    readonly local: boolean;
     readonly namespace?: string;
     /**
-     * A list of policies associated with the ACL token. Each entry has
-     * an `id` and a `name` attribute.
+     * The list of node identities attached to the token. Each entry has a `nodeName` and a `datacenter` attributes.
      */
-    readonly policies?: outputs.GetAclTokenPolicy[];
+    readonly nodeIdentities: outputs.GetAclTokenNodeIdentity[];
+    /**
+     * A list of policies associated with the ACL token. Each entry has an `id` and a `name` attribute.
+     */
+    readonly policies: outputs.GetAclTokenPolicy[];
+    /**
+     * The list of roles attached to the token.
+     */
+    readonly roles: outputs.GetAclTokenRole[];
+    /**
+     * The list of service identities attached to the token. Each entry has a `serviceName` and a `datacenters` attribute.
+     */
+    readonly serviceIdentities: outputs.GetAclTokenServiceIdentity[];
 }

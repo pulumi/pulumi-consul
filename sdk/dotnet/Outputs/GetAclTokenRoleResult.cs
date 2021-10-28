@@ -7,19 +7,23 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Consul.Inputs
+namespace Pulumi.Consul.Outputs
 {
 
-    public sealed class GetAclTokenPolicyArgs : Pulumi.InvokeArgs
+    [OutputType]
+    public sealed class GetAclTokenRoleResult
     {
-        [Input("id", required: true)]
-        public string Id { get; set; } = null!;
+        public readonly string Id;
+        public readonly string Name;
 
-        [Input("name", required: true)]
-        public string Name { get; set; } = null!;
+        [OutputConstructor]
+        private GetAclTokenRoleResult(
+            string id,
 
-        public GetAclTokenPolicyArgs()
+            string name)
         {
+            Id = id;
+            Name = name;
         }
     }
 }

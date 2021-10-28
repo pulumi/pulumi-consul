@@ -7,6 +7,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['AclTokenArgs', 'AclToken']
 
@@ -15,32 +17,44 @@ class AclTokenArgs:
     def __init__(__self__, *,
                  accessor_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 expiration_time: Optional[pulumi.Input[str]] = None,
                  local: Optional[pulumi.Input[bool]] = None,
                  namespace: Optional[pulumi.Input[str]] = None,
+                 node_identities: Optional[pulumi.Input[Sequence[pulumi.Input['AclTokenNodeIdentityArgs']]]] = None,
                  policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 service_identities: Optional[pulumi.Input[Sequence[pulumi.Input['AclTokenServiceIdentityArgs']]]] = None):
         """
         The set of arguments for constructing a AclToken resource.
         :param pulumi.Input[str] accessor_id: The uuid of the token. If omitted, Consul will
                generate a random uuid.
         :param pulumi.Input[str] description: The description of the token.
+        :param pulumi.Input[str] expiration_time: If set this represents the point after which a token should be considered revoked and is eligible for destruction.
         :param pulumi.Input[bool] local: The flag to set the token local to the current datacenter.
         :param pulumi.Input[str] namespace: The namespace to create the token within.
+        :param pulumi.Input[Sequence[pulumi.Input['AclTokenNodeIdentityArgs']]] node_identities: The list of node identities that should be applied to the token.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] policies: The list of policies attached to the token.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: The list of roles attached to the token.
+        :param pulumi.Input[Sequence[pulumi.Input['AclTokenServiceIdentityArgs']]] service_identities: The list of service identities that should be applied to the token.
         """
         if accessor_id is not None:
             pulumi.set(__self__, "accessor_id", accessor_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if expiration_time is not None:
+            pulumi.set(__self__, "expiration_time", expiration_time)
         if local is not None:
             pulumi.set(__self__, "local", local)
         if namespace is not None:
             pulumi.set(__self__, "namespace", namespace)
+        if node_identities is not None:
+            pulumi.set(__self__, "node_identities", node_identities)
         if policies is not None:
             pulumi.set(__self__, "policies", policies)
         if roles is not None:
             pulumi.set(__self__, "roles", roles)
+        if service_identities is not None:
+            pulumi.set(__self__, "service_identities", service_identities)
 
     @property
     @pulumi.getter(name="accessorId")
@@ -68,6 +82,18 @@ class AclTokenArgs:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="expirationTime")
+    def expiration_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        If set this represents the point after which a token should be considered revoked and is eligible for destruction.
+        """
+        return pulumi.get(self, "expiration_time")
+
+    @expiration_time.setter
+    def expiration_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expiration_time", value)
+
+    @property
     @pulumi.getter
     def local(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -92,6 +118,18 @@ class AclTokenArgs:
         pulumi.set(self, "namespace", value)
 
     @property
+    @pulumi.getter(name="nodeIdentities")
+    def node_identities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AclTokenNodeIdentityArgs']]]]:
+        """
+        The list of node identities that should be applied to the token.
+        """
+        return pulumi.get(self, "node_identities")
+
+    @node_identities.setter
+    def node_identities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AclTokenNodeIdentityArgs']]]]):
+        pulumi.set(self, "node_identities", value)
+
+    @property
     @pulumi.getter
     def policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -114,6 +152,18 @@ class AclTokenArgs:
     @roles.setter
     def roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "roles", value)
+
+    @property
+    @pulumi.getter(name="serviceIdentities")
+    def service_identities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AclTokenServiceIdentityArgs']]]]:
+        """
+        The list of service identities that should be applied to the token.
+        """
+        return pulumi.get(self, "service_identities")
+
+    @service_identities.setter
+    def service_identities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AclTokenServiceIdentityArgs']]]]):
+        pulumi.set(self, "service_identities", value)
 
 
 @pulumi.input_type
@@ -121,32 +171,44 @@ class _AclTokenState:
     def __init__(__self__, *,
                  accessor_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 expiration_time: Optional[pulumi.Input[str]] = None,
                  local: Optional[pulumi.Input[bool]] = None,
                  namespace: Optional[pulumi.Input[str]] = None,
+                 node_identities: Optional[pulumi.Input[Sequence[pulumi.Input['AclTokenNodeIdentityArgs']]]] = None,
                  policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 service_identities: Optional[pulumi.Input[Sequence[pulumi.Input['AclTokenServiceIdentityArgs']]]] = None):
         """
         Input properties used for looking up and filtering AclToken resources.
         :param pulumi.Input[str] accessor_id: The uuid of the token. If omitted, Consul will
                generate a random uuid.
         :param pulumi.Input[str] description: The description of the token.
+        :param pulumi.Input[str] expiration_time: If set this represents the point after which a token should be considered revoked and is eligible for destruction.
         :param pulumi.Input[bool] local: The flag to set the token local to the current datacenter.
         :param pulumi.Input[str] namespace: The namespace to create the token within.
+        :param pulumi.Input[Sequence[pulumi.Input['AclTokenNodeIdentityArgs']]] node_identities: The list of node identities that should be applied to the token.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] policies: The list of policies attached to the token.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: The list of roles attached to the token.
+        :param pulumi.Input[Sequence[pulumi.Input['AclTokenServiceIdentityArgs']]] service_identities: The list of service identities that should be applied to the token.
         """
         if accessor_id is not None:
             pulumi.set(__self__, "accessor_id", accessor_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if expiration_time is not None:
+            pulumi.set(__self__, "expiration_time", expiration_time)
         if local is not None:
             pulumi.set(__self__, "local", local)
         if namespace is not None:
             pulumi.set(__self__, "namespace", namespace)
+        if node_identities is not None:
+            pulumi.set(__self__, "node_identities", node_identities)
         if policies is not None:
             pulumi.set(__self__, "policies", policies)
         if roles is not None:
             pulumi.set(__self__, "roles", roles)
+        if service_identities is not None:
+            pulumi.set(__self__, "service_identities", service_identities)
 
     @property
     @pulumi.getter(name="accessorId")
@@ -174,6 +236,18 @@ class _AclTokenState:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="expirationTime")
+    def expiration_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        If set this represents the point after which a token should be considered revoked and is eligible for destruction.
+        """
+        return pulumi.get(self, "expiration_time")
+
+    @expiration_time.setter
+    def expiration_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expiration_time", value)
+
+    @property
     @pulumi.getter
     def local(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -198,6 +272,18 @@ class _AclTokenState:
         pulumi.set(self, "namespace", value)
 
     @property
+    @pulumi.getter(name="nodeIdentities")
+    def node_identities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AclTokenNodeIdentityArgs']]]]:
+        """
+        The list of node identities that should be applied to the token.
+        """
+        return pulumi.get(self, "node_identities")
+
+    @node_identities.setter
+    def node_identities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AclTokenNodeIdentityArgs']]]]):
+        pulumi.set(self, "node_identities", value)
+
+    @property
     @pulumi.getter
     def policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -220,6 +306,18 @@ class _AclTokenState:
     @roles.setter
     def roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "roles", value)
+
+    @property
+    @pulumi.getter(name="serviceIdentities")
+    def service_identities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AclTokenServiceIdentityArgs']]]]:
+        """
+        The list of service identities that should be applied to the token.
+        """
+        return pulumi.get(self, "service_identities")
+
+    @service_identities.setter
+    def service_identities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AclTokenServiceIdentityArgs']]]]):
+        pulumi.set(self, "service_identities", value)
 
 
 class AclToken(pulumi.CustomResource):
@@ -229,10 +327,13 @@ class AclToken(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  accessor_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 expiration_time: Optional[pulumi.Input[str]] = None,
                  local: Optional[pulumi.Input[bool]] = None,
                  namespace: Optional[pulumi.Input[str]] = None,
+                 node_identities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclTokenNodeIdentityArgs']]]]] = None,
                  policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 service_identities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclTokenServiceIdentityArgs']]]]] = None,
                  __props__=None):
         """
         The `AclToken` resource writes an ACL token into Consul.
@@ -272,10 +373,13 @@ class AclToken(pulumi.CustomResource):
         :param pulumi.Input[str] accessor_id: The uuid of the token. If omitted, Consul will
                generate a random uuid.
         :param pulumi.Input[str] description: The description of the token.
+        :param pulumi.Input[str] expiration_time: If set this represents the point after which a token should be considered revoked and is eligible for destruction.
         :param pulumi.Input[bool] local: The flag to set the token local to the current datacenter.
         :param pulumi.Input[str] namespace: The namespace to create the token within.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclTokenNodeIdentityArgs']]]] node_identities: The list of node identities that should be applied to the token.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] policies: The list of policies attached to the token.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: The list of roles attached to the token.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclTokenServiceIdentityArgs']]]] service_identities: The list of service identities that should be applied to the token.
         """
         ...
     @overload
@@ -333,10 +437,13 @@ class AclToken(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  accessor_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 expiration_time: Optional[pulumi.Input[str]] = None,
                  local: Optional[pulumi.Input[bool]] = None,
                  namespace: Optional[pulumi.Input[str]] = None,
+                 node_identities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclTokenNodeIdentityArgs']]]]] = None,
                  policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 service_identities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclTokenServiceIdentityArgs']]]]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -351,10 +458,13 @@ class AclToken(pulumi.CustomResource):
 
             __props__.__dict__["accessor_id"] = accessor_id
             __props__.__dict__["description"] = description
+            __props__.__dict__["expiration_time"] = expiration_time
             __props__.__dict__["local"] = local
             __props__.__dict__["namespace"] = namespace
+            __props__.__dict__["node_identities"] = node_identities
             __props__.__dict__["policies"] = policies
             __props__.__dict__["roles"] = roles
+            __props__.__dict__["service_identities"] = service_identities
         super(AclToken, __self__).__init__(
             'consul:index/aclToken:AclToken',
             resource_name,
@@ -367,10 +477,13 @@ class AclToken(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             accessor_id: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            expiration_time: Optional[pulumi.Input[str]] = None,
             local: Optional[pulumi.Input[bool]] = None,
             namespace: Optional[pulumi.Input[str]] = None,
+            node_identities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclTokenNodeIdentityArgs']]]]] = None,
             policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'AclToken':
+            roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            service_identities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclTokenServiceIdentityArgs']]]]] = None) -> 'AclToken':
         """
         Get an existing AclToken resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -381,10 +494,13 @@ class AclToken(pulumi.CustomResource):
         :param pulumi.Input[str] accessor_id: The uuid of the token. If omitted, Consul will
                generate a random uuid.
         :param pulumi.Input[str] description: The description of the token.
+        :param pulumi.Input[str] expiration_time: If set this represents the point after which a token should be considered revoked and is eligible for destruction.
         :param pulumi.Input[bool] local: The flag to set the token local to the current datacenter.
         :param pulumi.Input[str] namespace: The namespace to create the token within.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclTokenNodeIdentityArgs']]]] node_identities: The list of node identities that should be applied to the token.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] policies: The list of policies attached to the token.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: The list of roles attached to the token.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclTokenServiceIdentityArgs']]]] service_identities: The list of service identities that should be applied to the token.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -392,10 +508,13 @@ class AclToken(pulumi.CustomResource):
 
         __props__.__dict__["accessor_id"] = accessor_id
         __props__.__dict__["description"] = description
+        __props__.__dict__["expiration_time"] = expiration_time
         __props__.__dict__["local"] = local
         __props__.__dict__["namespace"] = namespace
+        __props__.__dict__["node_identities"] = node_identities
         __props__.__dict__["policies"] = policies
         __props__.__dict__["roles"] = roles
+        __props__.__dict__["service_identities"] = service_identities
         return AclToken(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -416,6 +535,14 @@ class AclToken(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="expirationTime")
+    def expiration_time(self) -> pulumi.Output[Optional[str]]:
+        """
+        If set this represents the point after which a token should be considered revoked and is eligible for destruction.
+        """
+        return pulumi.get(self, "expiration_time")
+
+    @property
     @pulumi.getter
     def local(self) -> pulumi.Output[Optional[bool]]:
         """
@@ -432,6 +559,14 @@ class AclToken(pulumi.CustomResource):
         return pulumi.get(self, "namespace")
 
     @property
+    @pulumi.getter(name="nodeIdentities")
+    def node_identities(self) -> pulumi.Output[Optional[Sequence['outputs.AclTokenNodeIdentity']]]:
+        """
+        The list of node identities that should be applied to the token.
+        """
+        return pulumi.get(self, "node_identities")
+
+    @property
     @pulumi.getter
     def policies(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
@@ -446,4 +581,12 @@ class AclToken(pulumi.CustomResource):
         The list of roles attached to the token.
         """
         return pulumi.get(self, "roles")
+
+    @property
+    @pulumi.getter(name="serviceIdentities")
+    def service_identities(self) -> pulumi.Output[Optional[Sequence['outputs.AclTokenServiceIdentity']]]:
+        """
+        The list of service identities that should be applied to the token.
+        """
+        return pulumi.get(self, "service_identities")
 
