@@ -106,7 +106,7 @@ type NamespaceRoleAttachmentInput interface {
 }
 
 func (*NamespaceRoleAttachment) ElementType() reflect.Type {
-	return reflect.TypeOf((*NamespaceRoleAttachment)(nil))
+	return reflect.TypeOf((**NamespaceRoleAttachment)(nil)).Elem()
 }
 
 func (i *NamespaceRoleAttachment) ToNamespaceRoleAttachmentOutput() NamespaceRoleAttachmentOutput {
@@ -115,35 +115,6 @@ func (i *NamespaceRoleAttachment) ToNamespaceRoleAttachmentOutput() NamespaceRol
 
 func (i *NamespaceRoleAttachment) ToNamespaceRoleAttachmentOutputWithContext(ctx context.Context) NamespaceRoleAttachmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NamespaceRoleAttachmentOutput)
-}
-
-func (i *NamespaceRoleAttachment) ToNamespaceRoleAttachmentPtrOutput() NamespaceRoleAttachmentPtrOutput {
-	return i.ToNamespaceRoleAttachmentPtrOutputWithContext(context.Background())
-}
-
-func (i *NamespaceRoleAttachment) ToNamespaceRoleAttachmentPtrOutputWithContext(ctx context.Context) NamespaceRoleAttachmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NamespaceRoleAttachmentPtrOutput)
-}
-
-type NamespaceRoleAttachmentPtrInput interface {
-	pulumi.Input
-
-	ToNamespaceRoleAttachmentPtrOutput() NamespaceRoleAttachmentPtrOutput
-	ToNamespaceRoleAttachmentPtrOutputWithContext(ctx context.Context) NamespaceRoleAttachmentPtrOutput
-}
-
-type namespaceRoleAttachmentPtrType NamespaceRoleAttachmentArgs
-
-func (*namespaceRoleAttachmentPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**NamespaceRoleAttachment)(nil))
-}
-
-func (i *namespaceRoleAttachmentPtrType) ToNamespaceRoleAttachmentPtrOutput() NamespaceRoleAttachmentPtrOutput {
-	return i.ToNamespaceRoleAttachmentPtrOutputWithContext(context.Background())
-}
-
-func (i *namespaceRoleAttachmentPtrType) ToNamespaceRoleAttachmentPtrOutputWithContext(ctx context.Context) NamespaceRoleAttachmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NamespaceRoleAttachmentPtrOutput)
 }
 
 // NamespaceRoleAttachmentArrayInput is an input type that accepts NamespaceRoleAttachmentArray and NamespaceRoleAttachmentArrayOutput values.
@@ -160,7 +131,7 @@ type NamespaceRoleAttachmentArrayInput interface {
 type NamespaceRoleAttachmentArray []NamespaceRoleAttachmentInput
 
 func (NamespaceRoleAttachmentArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*NamespaceRoleAttachment)(nil))
+	return reflect.TypeOf((*[]*NamespaceRoleAttachment)(nil)).Elem()
 }
 
 func (i NamespaceRoleAttachmentArray) ToNamespaceRoleAttachmentArrayOutput() NamespaceRoleAttachmentArrayOutput {
@@ -185,7 +156,7 @@ type NamespaceRoleAttachmentMapInput interface {
 type NamespaceRoleAttachmentMap map[string]NamespaceRoleAttachmentInput
 
 func (NamespaceRoleAttachmentMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*NamespaceRoleAttachment)(nil))
+	return reflect.TypeOf((*map[string]*NamespaceRoleAttachment)(nil)).Elem()
 }
 
 func (i NamespaceRoleAttachmentMap) ToNamespaceRoleAttachmentMapOutput() NamespaceRoleAttachmentMapOutput {
@@ -196,12 +167,10 @@ func (i NamespaceRoleAttachmentMap) ToNamespaceRoleAttachmentMapOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(NamespaceRoleAttachmentMapOutput)
 }
 
-type NamespaceRoleAttachmentOutput struct {
-	*pulumi.OutputState
-}
+type NamespaceRoleAttachmentOutput struct{ *pulumi.OutputState }
 
 func (NamespaceRoleAttachmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NamespaceRoleAttachment)(nil))
+	return reflect.TypeOf((**NamespaceRoleAttachment)(nil)).Elem()
 }
 
 func (o NamespaceRoleAttachmentOutput) ToNamespaceRoleAttachmentOutput() NamespaceRoleAttachmentOutput {
@@ -212,36 +181,10 @@ func (o NamespaceRoleAttachmentOutput) ToNamespaceRoleAttachmentOutputWithContex
 	return o
 }
 
-func (o NamespaceRoleAttachmentOutput) ToNamespaceRoleAttachmentPtrOutput() NamespaceRoleAttachmentPtrOutput {
-	return o.ToNamespaceRoleAttachmentPtrOutputWithContext(context.Background())
-}
-
-func (o NamespaceRoleAttachmentOutput) ToNamespaceRoleAttachmentPtrOutputWithContext(ctx context.Context) NamespaceRoleAttachmentPtrOutput {
-	return o.ApplyT(func(v NamespaceRoleAttachment) *NamespaceRoleAttachment {
-		return &v
-	}).(NamespaceRoleAttachmentPtrOutput)
-}
-
-type NamespaceRoleAttachmentPtrOutput struct {
-	*pulumi.OutputState
-}
-
-func (NamespaceRoleAttachmentPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**NamespaceRoleAttachment)(nil))
-}
-
-func (o NamespaceRoleAttachmentPtrOutput) ToNamespaceRoleAttachmentPtrOutput() NamespaceRoleAttachmentPtrOutput {
-	return o
-}
-
-func (o NamespaceRoleAttachmentPtrOutput) ToNamespaceRoleAttachmentPtrOutputWithContext(ctx context.Context) NamespaceRoleAttachmentPtrOutput {
-	return o
-}
-
 type NamespaceRoleAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (NamespaceRoleAttachmentArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]NamespaceRoleAttachment)(nil))
+	return reflect.TypeOf((*[]*NamespaceRoleAttachment)(nil)).Elem()
 }
 
 func (o NamespaceRoleAttachmentArrayOutput) ToNamespaceRoleAttachmentArrayOutput() NamespaceRoleAttachmentArrayOutput {
@@ -253,15 +196,15 @@ func (o NamespaceRoleAttachmentArrayOutput) ToNamespaceRoleAttachmentArrayOutput
 }
 
 func (o NamespaceRoleAttachmentArrayOutput) Index(i pulumi.IntInput) NamespaceRoleAttachmentOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NamespaceRoleAttachment {
-		return vs[0].([]NamespaceRoleAttachment)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NamespaceRoleAttachment {
+		return vs[0].([]*NamespaceRoleAttachment)[vs[1].(int)]
 	}).(NamespaceRoleAttachmentOutput)
 }
 
 type NamespaceRoleAttachmentMapOutput struct{ *pulumi.OutputState }
 
 func (NamespaceRoleAttachmentMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]NamespaceRoleAttachment)(nil))
+	return reflect.TypeOf((*map[string]*NamespaceRoleAttachment)(nil)).Elem()
 }
 
 func (o NamespaceRoleAttachmentMapOutput) ToNamespaceRoleAttachmentMapOutput() NamespaceRoleAttachmentMapOutput {
@@ -273,14 +216,16 @@ func (o NamespaceRoleAttachmentMapOutput) ToNamespaceRoleAttachmentMapOutputWith
 }
 
 func (o NamespaceRoleAttachmentMapOutput) MapIndex(k pulumi.StringInput) NamespaceRoleAttachmentOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) NamespaceRoleAttachment {
-		return vs[0].(map[string]NamespaceRoleAttachment)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *NamespaceRoleAttachment {
+		return vs[0].(map[string]*NamespaceRoleAttachment)[vs[1].(string)]
 	}).(NamespaceRoleAttachmentOutput)
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceRoleAttachmentInput)(nil)).Elem(), &NamespaceRoleAttachment{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceRoleAttachmentArrayInput)(nil)).Elem(), NamespaceRoleAttachmentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceRoleAttachmentMapInput)(nil)).Elem(), NamespaceRoleAttachmentMap{})
 	pulumi.RegisterOutputType(NamespaceRoleAttachmentOutput{})
-	pulumi.RegisterOutputType(NamespaceRoleAttachmentPtrOutput{})
 	pulumi.RegisterOutputType(NamespaceRoleAttachmentArrayOutput{})
 	pulumi.RegisterOutputType(NamespaceRoleAttachmentMapOutput{})
 }

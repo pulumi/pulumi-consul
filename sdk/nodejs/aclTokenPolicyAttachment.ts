@@ -63,12 +63,12 @@ export class AclTokenPolicyAttachment extends pulumi.CustomResource {
      */
     constructor(name: string, args: AclTokenPolicyAttachmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AclTokenPolicyAttachmentArgs | AclTokenPolicyAttachmentState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AclTokenPolicyAttachmentState | undefined;
-            inputs["policy"] = state ? state.policy : undefined;
-            inputs["tokenId"] = state ? state.tokenId : undefined;
+            resourceInputs["policy"] = state ? state.policy : undefined;
+            resourceInputs["tokenId"] = state ? state.tokenId : undefined;
         } else {
             const args = argsOrState as AclTokenPolicyAttachmentArgs | undefined;
             if ((!args || args.policy === undefined) && !opts.urn) {
@@ -77,13 +77,13 @@ export class AclTokenPolicyAttachment extends pulumi.CustomResource {
             if ((!args || args.tokenId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tokenId'");
             }
-            inputs["policy"] = args ? args.policy : undefined;
-            inputs["tokenId"] = args ? args.tokenId : undefined;
+            resourceInputs["policy"] = args ? args.policy : undefined;
+            resourceInputs["tokenId"] = args ? args.tokenId : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(AclTokenPolicyAttachment.__pulumiType, name, inputs, opts);
+        super(AclTokenPolicyAttachment.__pulumiType, name, resourceInputs, opts);
     }
 }
 

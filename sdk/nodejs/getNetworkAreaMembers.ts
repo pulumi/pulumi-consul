@@ -22,10 +22,10 @@ import * as utilities from "./utilities";
  *     retryJoins: ["1.2.3.4"],
  *     useTls: true,
  * });
- * const dc2NetworkAreaMembers = dc2NetworkArea.id.apply(id => consul.getNetworkAreaMembers({
- *     uuid: id,
- * }));
- * export const members = dc2NetworkAreaMembers.members;
+ * const dc2NetworkAreaMembers = consul.getNetworkAreaMembersOutput({
+ *     uuid: dc2NetworkArea.id,
+ * });
+ * export const members = dc2NetworkAreaMembers.apply(dc2NetworkAreaMembers => dc2NetworkAreaMembers.members);
  * ```
  */
 export function getNetworkAreaMembers(args: GetNetworkAreaMembersArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkAreaMembersResult> {
@@ -84,4 +84,28 @@ export interface GetNetworkAreaMembersResult {
      * The UUID of the Network Area being queried.
      */
     readonly uuid: string;
+}
+
+export function getNetworkAreaMembersOutput(args: GetNetworkAreaMembersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkAreaMembersResult> {
+    return pulumi.output(args).apply(a => getNetworkAreaMembers(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getNetworkAreaMembers.
+ */
+export interface GetNetworkAreaMembersOutputArgs {
+    /**
+     * The datacenter to use. This overrides the
+     * agent's default datacenter and the datacenter in the provider setup.
+     */
+    datacenter?: pulumi.Input<string>;
+    /**
+     * The ACL token to use. This overrides the
+     * token that the agent provides by default.
+     */
+    token?: pulumi.Input<string>;
+    /**
+     * The UUID of the area to list.
+     */
+    uuid: pulumi.Input<string>;
 }

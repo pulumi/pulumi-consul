@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Consul
 {
@@ -43,6 +44,39 @@ namespace Pulumi.Consul
         /// </summary>
         public static Task<GetAclAuthMethodResult> InvokeAsync(GetAclAuthMethodArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAclAuthMethodResult>("consul:index/getAclAuthMethod:getAclAuthMethod", args ?? new GetAclAuthMethodArgs(), options.WithVersion());
+
+        /// <summary>
+        /// The `consul.AclAuthMethod` data source returns the information related to a
+        /// [Consul Auth Method](https://www.consul.io/docs/acl/acl-auth-methods.html).
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Consul = Pulumi.Consul;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var test = Output.Create(Consul.GetAclAuthMethod.InvokeAsync(new Consul.GetAclAuthMethodArgs
+        ///         {
+        ///             Name = "minikube",
+        ///         }));
+        ///         this.ConsulAclAuthMethod = test.Apply(test =&gt; test.Config);
+        ///     }
+        /// 
+        ///     [Output("consulAclAuthMethod")]
+        ///     public Output&lt;string&gt; ConsulAclAuthMethod { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetAclAuthMethodResult> Invoke(GetAclAuthMethodInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAclAuthMethodResult>("consul:index/getAclAuthMethod:getAclAuthMethod", args ?? new GetAclAuthMethodInvokeArgs(), options.WithVersion());
     }
 
 
@@ -61,6 +95,25 @@ namespace Pulumi.Consul
         public string? Namespace { get; set; }
 
         public GetAclAuthMethodArgs()
+        {
+        }
+    }
+
+    public sealed class GetAclAuthMethodInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The name of the ACL Auth Method.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The namespace to lookup the auth method.
+        /// </summary>
+        [Input("namespace")]
+        public Input<string>? Namespace { get; set; }
+
+        public GetAclAuthMethodInvokeArgs()
         {
         }
     }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Consul
 {
@@ -23,6 +24,19 @@ namespace Pulumi.Consul
         /// </summary>
         public static Task<GetServiceResult> InvokeAsync(GetServiceArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetServiceResult>("consul:index/getService:getService", args ?? new GetServiceArgs(), options.WithVersion());
+
+        /// <summary>
+        /// `consul.Service` provides details about a specific Consul service in a
+        /// given datacenter.  The results include a list of nodes advertising the specified
+        /// service, the node's IP address, port number, node ID, etc.  By specifying a
+        /// different datacenter in the `query_options` it is possible to retrieve a list of
+        /// services from a different WAN-attached Consul datacenter.
+        /// 
+        /// This data source is different from the `consul.getServices` (plural) data
+        /// source, which provides a summary of the current Consul services.
+        /// </summary>
+        public static Output<GetServiceResult> Invoke(GetServiceInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetServiceResult>("consul:index/getService:getService", args ?? new GetServiceInvokeArgs(), options.WithVersion());
     }
 
 
@@ -70,6 +84,54 @@ namespace Pulumi.Consul
         public string? Tag { get; set; }
 
         public GetServiceArgs()
+        {
+        }
+    }
+
+    public sealed class GetServiceInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The Consul datacenter to query.  Defaults to the
+        /// same value found in `query_options` parameter specified below, or if that is
+        /// empty, the `datacenter` value found in the Consul agent that this provider is
+        /// configured to talk to.
+        /// </summary>
+        [Input("datacenter")]
+        public Input<string>? Datacenter { get; set; }
+
+        /// <summary>
+        /// A filter expression to refine the query, see https://www.consul.io/api-docs/features/filtering
+        /// and https://www.consul.io/api-docs/catalog#filtering-1.
+        /// </summary>
+        [Input("filter")]
+        public Input<string>? Filter { get; set; }
+
+        /// <summary>
+        /// The service name to select.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        [Input("queryOptions")]
+        private InputList<Inputs.GetServiceQueryOptionInputArgs>? _queryOptions;
+
+        /// <summary>
+        /// See below.
+        /// </summary>
+        public InputList<Inputs.GetServiceQueryOptionInputArgs> QueryOptions
+        {
+            get => _queryOptions ?? (_queryOptions = new InputList<Inputs.GetServiceQueryOptionInputArgs>());
+            set => _queryOptions = value;
+        }
+
+        /// <summary>
+        /// A single tag that can be used to filter the list of nodes
+        /// to return based on a single matching tag..
+        /// </summary>
+        [Input("tag")]
+        public Input<string>? Tag { get; set; }
+
+        public GetServiceInvokeArgs()
         {
         }
     }

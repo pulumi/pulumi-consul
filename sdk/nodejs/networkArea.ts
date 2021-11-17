@@ -91,30 +91,30 @@ export class NetworkArea extends pulumi.CustomResource {
      */
     constructor(name: string, args: NetworkAreaArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NetworkAreaArgs | NetworkAreaState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NetworkAreaState | undefined;
-            inputs["datacenter"] = state ? state.datacenter : undefined;
-            inputs["peerDatacenter"] = state ? state.peerDatacenter : undefined;
-            inputs["retryJoins"] = state ? state.retryJoins : undefined;
-            inputs["token"] = state ? state.token : undefined;
-            inputs["useTls"] = state ? state.useTls : undefined;
+            resourceInputs["datacenter"] = state ? state.datacenter : undefined;
+            resourceInputs["peerDatacenter"] = state ? state.peerDatacenter : undefined;
+            resourceInputs["retryJoins"] = state ? state.retryJoins : undefined;
+            resourceInputs["token"] = state ? state.token : undefined;
+            resourceInputs["useTls"] = state ? state.useTls : undefined;
         } else {
             const args = argsOrState as NetworkAreaArgs | undefined;
             if ((!args || args.peerDatacenter === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'peerDatacenter'");
             }
-            inputs["datacenter"] = args ? args.datacenter : undefined;
-            inputs["peerDatacenter"] = args ? args.peerDatacenter : undefined;
-            inputs["retryJoins"] = args ? args.retryJoins : undefined;
-            inputs["token"] = args ? args.token : undefined;
-            inputs["useTls"] = args ? args.useTls : undefined;
+            resourceInputs["datacenter"] = args ? args.datacenter : undefined;
+            resourceInputs["peerDatacenter"] = args ? args.peerDatacenter : undefined;
+            resourceInputs["retryJoins"] = args ? args.retryJoins : undefined;
+            resourceInputs["token"] = args ? args.token : undefined;
+            resourceInputs["useTls"] = args ? args.useTls : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(NetworkArea.__pulumiType, name, inputs, opts);
+        super(NetworkArea.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -40,3 +40,14 @@ export interface GetCatalogServicesResult {
     readonly services: {[key: string]: string};
     readonly tags: {[key: string]: string};
 }
+
+export function getCatalogServicesOutput(args?: GetCatalogServicesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCatalogServicesResult> {
+    return pulumi.output(args).apply(a => getCatalogServices(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getCatalogServices.
+ */
+export interface GetCatalogServicesOutputArgs {
+    queryOptions?: pulumi.Input<pulumi.Input<inputs.GetCatalogServicesQueryOptionArgs>[]>;
+}

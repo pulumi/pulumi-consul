@@ -4,6 +4,9 @@
 package consul
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -25,7 +28,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		test, err := consul.LookupAclToken(ctx, &consul.LookupAclTokenArgs{
+// 		test, err := consul.LookupAclToken(ctx, &GetAclTokenArgs{
 // 			AccessorId: "00000000-0000-0000-0000-000000000002",
 // 		}, nil)
 // 		if err != nil {
@@ -73,4 +76,92 @@ type LookupAclTokenResult struct {
 	Roles []GetAclTokenRole `pulumi:"roles"`
 	// The list of service identities attached to the token. Each entry has a `serviceName` and a `datacenters` attribute.
 	ServiceIdentities []GetAclTokenServiceIdentity `pulumi:"serviceIdentities"`
+}
+
+func LookupAclTokenOutput(ctx *pulumi.Context, args LookupAclTokenOutputArgs, opts ...pulumi.InvokeOption) LookupAclTokenResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupAclTokenResult, error) {
+			args := v.(LookupAclTokenArgs)
+			r, err := LookupAclToken(ctx, &args, opts...)
+			return *r, err
+		}).(LookupAclTokenResultOutput)
+}
+
+// A collection of arguments for invoking getAclToken.
+type LookupAclTokenOutputArgs struct {
+	// The accessor ID of the ACL token.
+	AccessorId pulumi.StringInput `pulumi:"accessorId"`
+	// The namespace to lookup the ACL token.
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+}
+
+func (LookupAclTokenOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAclTokenArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getAclToken.
+type LookupAclTokenResultOutput struct{ *pulumi.OutputState }
+
+func (LookupAclTokenResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAclTokenResult)(nil)).Elem()
+}
+
+func (o LookupAclTokenResultOutput) ToLookupAclTokenResultOutput() LookupAclTokenResultOutput {
+	return o
+}
+
+func (o LookupAclTokenResultOutput) ToLookupAclTokenResultOutputWithContext(ctx context.Context) LookupAclTokenResultOutput {
+	return o
+}
+
+func (o LookupAclTokenResultOutput) AccessorId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAclTokenResult) string { return v.AccessorId }).(pulumi.StringOutput)
+}
+
+// The description of the ACL token.
+func (o LookupAclTokenResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAclTokenResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// If set this represents the point after which a token should be considered revoked and is eligible for destruction.
+func (o LookupAclTokenResultOutput) ExpirationTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAclTokenResult) string { return v.ExpirationTime }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupAclTokenResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAclTokenResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Whether the ACL token is local to the datacenter it was created within.
+func (o LookupAclTokenResultOutput) Local() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupAclTokenResult) bool { return v.Local }).(pulumi.BoolOutput)
+}
+
+func (o LookupAclTokenResultOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAclTokenResult) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+// The list of node identities attached to the token. Each entry has a `nodeName` and a `datacenter` attributes.
+func (o LookupAclTokenResultOutput) NodeIdentities() GetAclTokenNodeIdentityArrayOutput {
+	return o.ApplyT(func(v LookupAclTokenResult) []GetAclTokenNodeIdentity { return v.NodeIdentities }).(GetAclTokenNodeIdentityArrayOutput)
+}
+
+// A list of policies associated with the ACL token. Each entry has an `id` and a `name` attribute.
+func (o LookupAclTokenResultOutput) Policies() GetAclTokenPolicyArrayOutput {
+	return o.ApplyT(func(v LookupAclTokenResult) []GetAclTokenPolicy { return v.Policies }).(GetAclTokenPolicyArrayOutput)
+}
+
+// The list of roles attached to the token.
+func (o LookupAclTokenResultOutput) Roles() GetAclTokenRoleArrayOutput {
+	return o.ApplyT(func(v LookupAclTokenResult) []GetAclTokenRole { return v.Roles }).(GetAclTokenRoleArrayOutput)
+}
+
+// The list of service identities attached to the token. Each entry has a `serviceName` and a `datacenters` attribute.
+func (o LookupAclTokenResultOutput) ServiceIdentities() GetAclTokenServiceIdentityArrayOutput {
+	return o.ApplyT(func(v LookupAclTokenResult) []GetAclTokenServiceIdentity { return v.ServiceIdentities }).(GetAclTokenServiceIdentityArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupAclTokenResultOutput{})
 }

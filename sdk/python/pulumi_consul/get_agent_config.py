@@ -116,11 +116,11 @@ class AwaitableGetAgentConfigResult(GetAgentConfigResult):
 
 def get_agent_config(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAgentConfigResult:
     """
-    > **Note:** The `getAgentConfig` resource differs from [`getAgentSelf`](https://www.terraform.io/docs/providers/consul/d/agent_self.html),
-    providing less information but utilizing stable APIs. `getAgentSelf` will be
+    > **Note:** The `get_agent_config` resource differs from [`get_agent_self`](https://www.terraform.io/docs/providers/consul/d/agent_self.html),
+    providing less information but utilizing stable APIs. `get_agent_self` will be
     deprecated in a future release.
 
-    The `getAgentConfig` data source returns
+    The `get_agent_config` data source returns
     [configuration data](https://www.consul.io/api/agent.html#read-configuration)
     from the agent specified in the `provider`.
 

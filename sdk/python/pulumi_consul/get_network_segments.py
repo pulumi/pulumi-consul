@@ -12,6 +12,7 @@ __all__ = [
     'GetNetworkSegmentsResult',
     'AwaitableGetNetworkSegmentsResult',
     'get_network_segments',
+    'get_network_segments_output',
 ]
 
 @pulumi.output_type
@@ -114,3 +115,32 @@ def get_network_segments(datacenter: Optional[str] = None,
         id=__ret__.id,
         segments=__ret__.segments,
         token=__ret__.token)
+
+
+@_utilities.lift_output_func(get_network_segments)
+def get_network_segments_output(datacenter: Optional[pulumi.Input[Optional[str]]] = None,
+                                token: Optional[pulumi.Input[Optional[str]]] = None,
+                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNetworkSegmentsResult]:
+    """
+    > **NOTE:** This feature requires [Consul Enterprise](https://www.consul.io/docs/enterprise/index.html).
+
+    The `consul_network_segment` data source can be used to retrieve the network
+    segments defined in the configuration.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_consul as consul
+
+    segments_network_segments = consul.get_network_segments()
+    pulumi.export("segments", segments_network_segments.segments)
+    ```
+
+
+    :param str datacenter: The datacenter to use. This overrides the
+           agent's default datacenter and the datacenter in the provider setup.
+    :param str token: The ACL token to use. This overrides the
+           token that the agent provides by default.
+    """
+    ...

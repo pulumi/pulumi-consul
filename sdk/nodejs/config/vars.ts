@@ -5,23 +5,129 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
-let __config = new pulumi.Config("consul");
+declare var exports: any;
+const __config = new pulumi.Config("consul");
 
-export let address: string | undefined = __config.get("address");
-export let caFile: string | undefined = __config.get("caFile");
-export let caPath: string | undefined = __config.get("caPath");
-export let caPem: string | undefined = __config.get("caPem");
-export let certFile: string | undefined = __config.get("certFile");
-export let certPem: string | undefined = __config.get("certPem");
-export let datacenter: string | undefined = __config.get("datacenter");
+export declare const address: string | undefined;
+Object.defineProperty(exports, "address", {
+    get() {
+        return __config.get("address");
+    },
+    enumerable: true,
+});
+
+export declare const caFile: string | undefined;
+Object.defineProperty(exports, "caFile", {
+    get() {
+        return __config.get("caFile");
+    },
+    enumerable: true,
+});
+
+export declare const caPath: string | undefined;
+Object.defineProperty(exports, "caPath", {
+    get() {
+        return __config.get("caPath");
+    },
+    enumerable: true,
+});
+
+export declare const caPem: string | undefined;
+Object.defineProperty(exports, "caPem", {
+    get() {
+        return __config.get("caPem");
+    },
+    enumerable: true,
+});
+
+export declare const certFile: string | undefined;
+Object.defineProperty(exports, "certFile", {
+    get() {
+        return __config.get("certFile");
+    },
+    enumerable: true,
+});
+
+export declare const certPem: string | undefined;
+Object.defineProperty(exports, "certPem", {
+    get() {
+        return __config.get("certPem");
+    },
+    enumerable: true,
+});
+
+export declare const datacenter: string | undefined;
+Object.defineProperty(exports, "datacenter", {
+    get() {
+        return __config.get("datacenter");
+    },
+    enumerable: true,
+});
+
 /**
  * Additional headers to send with each Consul request.
  */
-export let headers: outputs.config.Headers[] | undefined = __config.getObject<outputs.config.Headers[]>("headers");
-export let httpAuth: string | undefined = __config.get("httpAuth");
-export let insecureHttps: boolean | undefined = __config.getObject<boolean>("insecureHttps");
-export let keyFile: string | undefined = __config.get("keyFile");
-export let keyPem: string | undefined = __config.get("keyPem");
-export let namespace: string | undefined = __config.get("namespace");
-export let scheme: string | undefined = __config.get("scheme");
-export let token: string | undefined = __config.get("token");
+export declare const headers: outputs.config.Headers[] | undefined;
+Object.defineProperty(exports, "headers", {
+    get() {
+        return __config.getObject<outputs.config.Headers[]>("headers");
+    },
+    enumerable: true,
+});
+
+export declare const httpAuth: string | undefined;
+Object.defineProperty(exports, "httpAuth", {
+    get() {
+        return __config.get("httpAuth");
+    },
+    enumerable: true,
+});
+
+export declare const insecureHttps: boolean | undefined;
+Object.defineProperty(exports, "insecureHttps", {
+    get() {
+        return __config.getObject<boolean>("insecureHttps");
+    },
+    enumerable: true,
+});
+
+export declare const keyFile: string | undefined;
+Object.defineProperty(exports, "keyFile", {
+    get() {
+        return __config.get("keyFile");
+    },
+    enumerable: true,
+});
+
+export declare const keyPem: string | undefined;
+Object.defineProperty(exports, "keyPem", {
+    get() {
+        return __config.get("keyPem");
+    },
+    enumerable: true,
+});
+
+export declare const namespace: string | undefined;
+Object.defineProperty(exports, "namespace", {
+    get() {
+        return __config.get("namespace");
+    },
+    enumerable: true,
+});
+
+export declare const scheme: string | undefined;
+Object.defineProperty(exports, "scheme", {
+    get() {
+        return __config.get("scheme");
+    },
+    enumerable: true,
+});
+
+export declare const token: string | undefined;
+Object.defineProperty(exports, "token", {
+    get() {
+        return __config.get("token");
+    },
+    enumerable: true,
+});
+

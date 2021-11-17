@@ -58,28 +58,28 @@ export class ConfigEntry extends pulumi.CustomResource {
      */
     constructor(name: string, args: ConfigEntryArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ConfigEntryArgs | ConfigEntryState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConfigEntryState | undefined;
-            inputs["configJson"] = state ? state.configJson : undefined;
-            inputs["kind"] = state ? state.kind : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["namespace"] = state ? state.namespace : undefined;
+            resourceInputs["configJson"] = state ? state.configJson : undefined;
+            resourceInputs["kind"] = state ? state.kind : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["namespace"] = state ? state.namespace : undefined;
         } else {
             const args = argsOrState as ConfigEntryArgs | undefined;
             if ((!args || args.kind === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'kind'");
             }
-            inputs["configJson"] = args ? args.configJson : undefined;
-            inputs["kind"] = args ? args.kind : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["namespace"] = args ? args.namespace : undefined;
+            resourceInputs["configJson"] = args ? args.configJson : undefined;
+            resourceInputs["kind"] = args ? args.kind : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["namespace"] = args ? args.namespace : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(ConfigEntry.__pulumiType, name, inputs, opts);
+        super(ConfigEntry.__pulumiType, name, resourceInputs, opts);
     }
 }
 

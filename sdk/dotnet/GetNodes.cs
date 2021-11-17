@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Consul
 {
@@ -19,6 +20,15 @@ namespace Pulumi.Consul
         /// </summary>
         public static Task<GetNodesResult> InvokeAsync(GetNodesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNodesResult>("consul:index/getNodes:getNodes", args ?? new GetNodesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// The `consul.getNodes` data source returns a list of Consul nodes that have
+        /// been registered with the Consul cluster in a given datacenter.  By specifying a
+        /// different datacenter in the `query_options` it is possible to retrieve a list of
+        /// nodes from a different WAN-attached Consul datacenter.
+        /// </summary>
+        public static Output<GetNodesResult> Invoke(GetNodesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetNodesResult>("consul:index/getNodes:getNodes", args ?? new GetNodesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -37,6 +47,25 @@ namespace Pulumi.Consul
         }
 
         public GetNodesArgs()
+        {
+        }
+    }
+
+    public sealed class GetNodesInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("queryOptions")]
+        private InputList<Inputs.GetNodesQueryOptionInputArgs>? _queryOptions;
+
+        /// <summary>
+        /// See below.
+        /// </summary>
+        public InputList<Inputs.GetNodesQueryOptionInputArgs> QueryOptions
+        {
+            get => _queryOptions ?? (_queryOptions = new InputList<Inputs.GetNodesQueryOptionInputArgs>());
+            set => _queryOptions = value;
+        }
+
+        public GetNodesInvokeArgs()
         {
         }
     }

@@ -13,6 +13,7 @@ __all__ = [
     'GetAutopilotHealthResult',
     'AwaitableGetAutopilotHealthResult',
     'get_autopilot_health',
+    'get_autopilot_health_output',
 ]
 
 @pulumi.output_type
@@ -94,7 +95,7 @@ class AwaitableGetAutopilotHealthResult(GetAutopilotHealthResult):
 def get_autopilot_health(datacenter: Optional[str] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAutopilotHealthResult:
     """
-    The `getAutopilotHealth` data source returns
+    The `get_autopilot_health` data source returns
     [autopilot health information](https://www.consul.io/api/operator/autopilot.html#read-health)
     about the current Consul cluster.
 
@@ -126,3 +127,28 @@ def get_autopilot_health(datacenter: Optional[str] = None,
         healthy=__ret__.healthy,
         id=__ret__.id,
         servers=__ret__.servers)
+
+
+@_utilities.lift_output_func(get_autopilot_health)
+def get_autopilot_health_output(datacenter: Optional[pulumi.Input[Optional[str]]] = None,
+                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAutopilotHealthResult]:
+    """
+    The `get_autopilot_health` data source returns
+    [autopilot health information](https://www.consul.io/api/operator/autopilot.html#read-health)
+    about the current Consul cluster.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_consul as consul
+
+    read = consul.get_autopilot_health()
+    pulumi.export("health", read.healthy)
+    ```
+
+
+    :param str datacenter: The datacenter to use. This overrides the agent's
+           default datacenter and the datacenter in the provider setup.
+    """
+    ...

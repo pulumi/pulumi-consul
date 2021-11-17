@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Consul
 {
@@ -45,7 +46,7 @@ namespace Pulumi.Consul
         ///         // Start our instance with the dynamic ami value
         ///         var appInstance = new Aws.Ec2.Instance("appInstance", new Aws.Ec2.InstanceArgs
         ///         {
-        ///             Ami = appKeys.Apply(appKeys =&gt; appKeys.Var.Ami),
+        ///             Ami = appKeys.Apply(appKeys =&gt; appKeys.Var?.Ami),
         ///         });
         ///     }
         /// 
@@ -56,6 +57,52 @@ namespace Pulumi.Consul
         /// </summary>
         public static Task<GetKeysResult> InvokeAsync(GetKeysArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKeysResult>("consul:index/getKeys:getKeys", args ?? new GetKeysArgs(), options.WithVersion());
+
+        /// <summary>
+        /// The `consul.Keys` resource reads values from the Consul key/value store.
+        /// This is a powerful way dynamically set values in templates.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Aws = Pulumi.Aws;
+        /// using Consul = Pulumi.Consul;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var appKeys = Output.Create(Consul.GetKeys.InvokeAsync(new Consul.GetKeysArgs
+        ///         {
+        ///             Datacenter = "nyc1",
+        ///             Keys = 
+        ///             {
+        ///                 new Consul.Inputs.GetKeysKeyArgs
+        ///                 {
+        ///                     Default = "ami-1234",
+        ///                     Name = "ami",
+        ///                     Path = "service/app/launch_ami",
+        ///                 },
+        ///             },
+        ///             Token = "abcd",
+        ///         }));
+        ///         // Start our instance with the dynamic ami value
+        ///         var appInstance = new Aws.Ec2.Instance("appInstance", new Aws.Ec2.InstanceArgs
+        ///         {
+        ///             Ami = appKeys.Apply(appKeys =&gt; appKeys.Var?.Ami),
+        ///         });
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetKeysResult> Invoke(GetKeysInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetKeysResult>("consul:index/getKeys:getKeys", args ?? new GetKeysInvokeArgs(), options.WithVersion());
     }
 
 
@@ -95,6 +142,46 @@ namespace Pulumi.Consul
         public string? Token { get; set; }
 
         public GetKeysArgs()
+        {
+        }
+    }
+
+    public sealed class GetKeysInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The datacenter to use. This overrides the
+        /// agent's default datacenter and the datacenter in the provider setup.
+        /// </summary>
+        [Input("datacenter")]
+        public Input<string>? Datacenter { get; set; }
+
+        [Input("keys")]
+        private InputList<Inputs.GetKeysKeyInputArgs>? _keys;
+
+        /// <summary>
+        /// Specifies a key in Consul to be read. Supported
+        /// values documented below. Multiple blocks supported.
+        /// </summary>
+        public InputList<Inputs.GetKeysKeyInputArgs> Keys
+        {
+            get => _keys ?? (_keys = new InputList<Inputs.GetKeysKeyInputArgs>());
+            set => _keys = value;
+        }
+
+        /// <summary>
+        /// The namespace to lookup the keys.
+        /// </summary>
+        [Input("namespace")]
+        public Input<string>? Namespace { get; set; }
+
+        /// <summary>
+        /// The ACL token to use. This overrides the
+        /// token that the agent provides by default.
+        /// </summary>
+        [Input("token")]
+        public Input<string>? Token { get; set; }
+
+        public GetKeysInvokeArgs()
         {
         }
     }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Consul
 {
@@ -19,9 +20,69 @@ namespace Pulumi.Consul
         /// 
         /// This resource is likely to change as frequently as the health-checks are being
         /// updated, you should expect different results in a frequent basis.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Consul = Pulumi.Consul;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var vaultServiceHealth = Output.Create(Consul.GetServiceHealth.InvokeAsync(new Consul.GetServiceHealthArgs
+        ///         {
+        ///             Passing = true,
+        ///             Service = "vault",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetServiceHealthResult> InvokeAsync(GetServiceHealthArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetServiceHealthResult>("consul:index/getServiceHealth:getServiceHealth", args ?? new GetServiceHealthArgs(), options.WithVersion());
+
+        /// <summary>
+        /// `consul.getServiceHealth` can be used to get the list of the instances that
+        /// are currently healthy, according to their associated  health-checks.
+        /// The result includes the list of service instances, the node associated to each
+        /// instance and its health-checks.
+        /// 
+        /// This resource is likely to change as frequently as the health-checks are being
+        /// updated, you should expect different results in a frequent basis.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Consul = Pulumi.Consul;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var vaultServiceHealth = Output.Create(Consul.GetServiceHealth.InvokeAsync(new Consul.GetServiceHealthArgs
+        ///         {
+        ///             Passing = true,
+        ///             Service = "vault",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetServiceHealthResult> Invoke(GetServiceHealthInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetServiceHealthResult>("consul:index/getServiceHealth:getServiceHealth", args ?? new GetServiceHealthInvokeArgs(), options.WithVersion());
     }
 
 
@@ -84,6 +145,69 @@ namespace Pulumi.Consul
         public string? WaitFor { get; set; }
 
         public GetServiceHealthArgs()
+        {
+        }
+    }
+
+    public sealed class GetServiceHealthInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The Consul datacenter to query.
+        /// </summary>
+        [Input("datacenter")]
+        public Input<string>? Datacenter { get; set; }
+
+        /// <summary>
+        /// A filter expression to refine the list of results, see
+        /// https://www.consul.io/api-docs/features/filtering and https://www.consul.io/api-docs/health#filtering-2.
+        /// </summary>
+        [Input("filter")]
+        public Input<string>? Filter { get; set; }
+
+        /// <summary>
+        /// The service name to select.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// Specifies a node name to sort the node list in ascending order
+        /// based on the estimated round trip time from that node.
+        /// </summary>
+        [Input("near")]
+        public Input<string>? Near { get; set; }
+
+        [Input("nodeMeta")]
+        private InputMap<string>? _nodeMeta;
+
+        /// <summary>
+        /// Filter the results to nodes with the specified key/value
+        /// pairs.
+        /// </summary>
+        public InputMap<string> NodeMeta
+        {
+            get => _nodeMeta ?? (_nodeMeta = new InputMap<string>());
+            set => _nodeMeta = value;
+        }
+
+        /// <summary>
+        /// Whether to return only nodes with all checks in the
+        /// passing state. Defaults to `true`.
+        /// </summary>
+        [Input("passing")]
+        public Input<bool>? Passing { get; set; }
+
+        /// <summary>
+        /// A single tag that can be used to filter the list to return
+        /// based on a single matching tag.
+        /// </summary>
+        [Input("tag")]
+        public Input<string>? Tag { get; set; }
+
+        [Input("waitFor")]
+        public Input<string>? WaitFor { get; set; }
+
+        public GetServiceHealthInvokeArgs()
         {
         }
     }

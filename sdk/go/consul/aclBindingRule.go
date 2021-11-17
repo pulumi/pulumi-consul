@@ -205,7 +205,7 @@ type AclBindingRuleInput interface {
 }
 
 func (*AclBindingRule) ElementType() reflect.Type {
-	return reflect.TypeOf((*AclBindingRule)(nil))
+	return reflect.TypeOf((**AclBindingRule)(nil)).Elem()
 }
 
 func (i *AclBindingRule) ToAclBindingRuleOutput() AclBindingRuleOutput {
@@ -214,35 +214,6 @@ func (i *AclBindingRule) ToAclBindingRuleOutput() AclBindingRuleOutput {
 
 func (i *AclBindingRule) ToAclBindingRuleOutputWithContext(ctx context.Context) AclBindingRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AclBindingRuleOutput)
-}
-
-func (i *AclBindingRule) ToAclBindingRulePtrOutput() AclBindingRulePtrOutput {
-	return i.ToAclBindingRulePtrOutputWithContext(context.Background())
-}
-
-func (i *AclBindingRule) ToAclBindingRulePtrOutputWithContext(ctx context.Context) AclBindingRulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AclBindingRulePtrOutput)
-}
-
-type AclBindingRulePtrInput interface {
-	pulumi.Input
-
-	ToAclBindingRulePtrOutput() AclBindingRulePtrOutput
-	ToAclBindingRulePtrOutputWithContext(ctx context.Context) AclBindingRulePtrOutput
-}
-
-type aclBindingRulePtrType AclBindingRuleArgs
-
-func (*aclBindingRulePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AclBindingRule)(nil))
-}
-
-func (i *aclBindingRulePtrType) ToAclBindingRulePtrOutput() AclBindingRulePtrOutput {
-	return i.ToAclBindingRulePtrOutputWithContext(context.Background())
-}
-
-func (i *aclBindingRulePtrType) ToAclBindingRulePtrOutputWithContext(ctx context.Context) AclBindingRulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AclBindingRulePtrOutput)
 }
 
 // AclBindingRuleArrayInput is an input type that accepts AclBindingRuleArray and AclBindingRuleArrayOutput values.
@@ -259,7 +230,7 @@ type AclBindingRuleArrayInput interface {
 type AclBindingRuleArray []AclBindingRuleInput
 
 func (AclBindingRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*AclBindingRule)(nil))
+	return reflect.TypeOf((*[]*AclBindingRule)(nil)).Elem()
 }
 
 func (i AclBindingRuleArray) ToAclBindingRuleArrayOutput() AclBindingRuleArrayOutput {
@@ -284,7 +255,7 @@ type AclBindingRuleMapInput interface {
 type AclBindingRuleMap map[string]AclBindingRuleInput
 
 func (AclBindingRuleMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*AclBindingRule)(nil))
+	return reflect.TypeOf((*map[string]*AclBindingRule)(nil)).Elem()
 }
 
 func (i AclBindingRuleMap) ToAclBindingRuleMapOutput() AclBindingRuleMapOutput {
@@ -295,12 +266,10 @@ func (i AclBindingRuleMap) ToAclBindingRuleMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(AclBindingRuleMapOutput)
 }
 
-type AclBindingRuleOutput struct {
-	*pulumi.OutputState
-}
+type AclBindingRuleOutput struct{ *pulumi.OutputState }
 
 func (AclBindingRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AclBindingRule)(nil))
+	return reflect.TypeOf((**AclBindingRule)(nil)).Elem()
 }
 
 func (o AclBindingRuleOutput) ToAclBindingRuleOutput() AclBindingRuleOutput {
@@ -311,36 +280,10 @@ func (o AclBindingRuleOutput) ToAclBindingRuleOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o AclBindingRuleOutput) ToAclBindingRulePtrOutput() AclBindingRulePtrOutput {
-	return o.ToAclBindingRulePtrOutputWithContext(context.Background())
-}
-
-func (o AclBindingRuleOutput) ToAclBindingRulePtrOutputWithContext(ctx context.Context) AclBindingRulePtrOutput {
-	return o.ApplyT(func(v AclBindingRule) *AclBindingRule {
-		return &v
-	}).(AclBindingRulePtrOutput)
-}
-
-type AclBindingRulePtrOutput struct {
-	*pulumi.OutputState
-}
-
-func (AclBindingRulePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AclBindingRule)(nil))
-}
-
-func (o AclBindingRulePtrOutput) ToAclBindingRulePtrOutput() AclBindingRulePtrOutput {
-	return o
-}
-
-func (o AclBindingRulePtrOutput) ToAclBindingRulePtrOutputWithContext(ctx context.Context) AclBindingRulePtrOutput {
-	return o
-}
-
 type AclBindingRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (AclBindingRuleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AclBindingRule)(nil))
+	return reflect.TypeOf((*[]*AclBindingRule)(nil)).Elem()
 }
 
 func (o AclBindingRuleArrayOutput) ToAclBindingRuleArrayOutput() AclBindingRuleArrayOutput {
@@ -352,15 +295,15 @@ func (o AclBindingRuleArrayOutput) ToAclBindingRuleArrayOutputWithContext(ctx co
 }
 
 func (o AclBindingRuleArrayOutput) Index(i pulumi.IntInput) AclBindingRuleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AclBindingRule {
-		return vs[0].([]AclBindingRule)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AclBindingRule {
+		return vs[0].([]*AclBindingRule)[vs[1].(int)]
 	}).(AclBindingRuleOutput)
 }
 
 type AclBindingRuleMapOutput struct{ *pulumi.OutputState }
 
 func (AclBindingRuleMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]AclBindingRule)(nil))
+	return reflect.TypeOf((*map[string]*AclBindingRule)(nil)).Elem()
 }
 
 func (o AclBindingRuleMapOutput) ToAclBindingRuleMapOutput() AclBindingRuleMapOutput {
@@ -372,14 +315,16 @@ func (o AclBindingRuleMapOutput) ToAclBindingRuleMapOutputWithContext(ctx contex
 }
 
 func (o AclBindingRuleMapOutput) MapIndex(k pulumi.StringInput) AclBindingRuleOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AclBindingRule {
-		return vs[0].(map[string]AclBindingRule)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *AclBindingRule {
+		return vs[0].(map[string]*AclBindingRule)[vs[1].(string)]
 	}).(AclBindingRuleOutput)
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AclBindingRuleInput)(nil)).Elem(), &AclBindingRule{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AclBindingRuleArrayInput)(nil)).Elem(), AclBindingRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AclBindingRuleMapInput)(nil)).Elem(), AclBindingRuleMap{})
 	pulumi.RegisterOutputType(AclBindingRuleOutput{})
-	pulumi.RegisterOutputType(AclBindingRulePtrOutput{})
 	pulumi.RegisterOutputType(AclBindingRuleArrayOutput{})
 	pulumi.RegisterOutputType(AclBindingRuleMapOutput{})
 }

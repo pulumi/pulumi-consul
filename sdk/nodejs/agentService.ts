@@ -85,25 +85,25 @@ export class AgentService extends pulumi.CustomResource {
      */
     constructor(name: string, args?: AgentServiceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AgentServiceArgs | AgentServiceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AgentServiceState | undefined;
-            inputs["address"] = state ? state.address : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["port"] = state ? state.port : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["address"] = state ? state.address : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["port"] = state ? state.port : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as AgentServiceArgs | undefined;
-            inputs["address"] = args ? args.address : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["port"] = args ? args.port : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["address"] = args ? args.address : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["port"] = args ? args.port : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(AgentService.__pulumiType, name, inputs, opts);
+        super(AgentService.__pulumiType, name, resourceInputs, opts);
     }
 }
 

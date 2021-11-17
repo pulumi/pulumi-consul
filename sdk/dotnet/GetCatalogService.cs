@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Consul
 {
@@ -13,6 +14,9 @@ namespace Pulumi.Consul
     {
         public static Task<GetCatalogServiceResult> InvokeAsync(GetCatalogServiceArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCatalogServiceResult>("consul:index/getCatalogService:getCatalogService", args ?? new GetCatalogServiceArgs(), options.WithVersion());
+
+        public static Output<GetCatalogServiceResult> Invoke(GetCatalogServiceInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetCatalogServiceResult>("consul:index/getCatalogService:getCatalogService", args ?? new GetCatalogServiceInvokeArgs(), options.WithVersion());
     }
 
 
@@ -39,6 +43,33 @@ namespace Pulumi.Consul
         public string? Tag { get; set; }
 
         public GetCatalogServiceArgs()
+        {
+        }
+    }
+
+    public sealed class GetCatalogServiceInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("datacenter")]
+        public Input<string>? Datacenter { get; set; }
+
+        [Input("filter")]
+        public Input<string>? Filter { get; set; }
+
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        [Input("queryOptions")]
+        private InputList<Inputs.GetCatalogServiceQueryOptionInputArgs>? _queryOptions;
+        public InputList<Inputs.GetCatalogServiceQueryOptionInputArgs> QueryOptions
+        {
+            get => _queryOptions ?? (_queryOptions = new InputList<Inputs.GetCatalogServiceQueryOptionInputArgs>());
+            set => _queryOptions = value;
+        }
+
+        [Input("tag")]
+        public Input<string>? Tag { get; set; }
+
+        public GetCatalogServiceInvokeArgs()
         {
         }
     }

@@ -100,16 +100,16 @@ export class AclBindingRule extends pulumi.CustomResource {
      */
     constructor(name: string, args: AclBindingRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AclBindingRuleArgs | AclBindingRuleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AclBindingRuleState | undefined;
-            inputs["authMethod"] = state ? state.authMethod : undefined;
-            inputs["bindName"] = state ? state.bindName : undefined;
-            inputs["bindType"] = state ? state.bindType : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["namespace"] = state ? state.namespace : undefined;
-            inputs["selector"] = state ? state.selector : undefined;
+            resourceInputs["authMethod"] = state ? state.authMethod : undefined;
+            resourceInputs["bindName"] = state ? state.bindName : undefined;
+            resourceInputs["bindType"] = state ? state.bindType : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["namespace"] = state ? state.namespace : undefined;
+            resourceInputs["selector"] = state ? state.selector : undefined;
         } else {
             const args = argsOrState as AclBindingRuleArgs | undefined;
             if ((!args || args.authMethod === undefined) && !opts.urn) {
@@ -121,17 +121,17 @@ export class AclBindingRule extends pulumi.CustomResource {
             if ((!args || args.bindType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'bindType'");
             }
-            inputs["authMethod"] = args ? args.authMethod : undefined;
-            inputs["bindName"] = args ? args.bindName : undefined;
-            inputs["bindType"] = args ? args.bindType : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["namespace"] = args ? args.namespace : undefined;
-            inputs["selector"] = args ? args.selector : undefined;
+            resourceInputs["authMethod"] = args ? args.authMethod : undefined;
+            resourceInputs["bindName"] = args ? args.bindName : undefined;
+            resourceInputs["bindType"] = args ? args.bindType : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["namespace"] = args ? args.namespace : undefined;
+            resourceInputs["selector"] = args ? args.selector : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(AclBindingRule.__pulumiType, name, inputs, opts);
+        super(AclBindingRule.__pulumiType, name, resourceInputs, opts);
     }
 }
 

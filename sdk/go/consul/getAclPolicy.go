@@ -4,6 +4,9 @@
 package consul
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -22,7 +25,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		agent, err := consul.LookupAclPolicy(ctx, &consul.LookupAclPolicyArgs{
+// 		agent, err := consul.LookupAclPolicy(ctx, &GetAclPolicyArgs{
 // 			Name: "agent",
 // 		}, nil)
 // 		if err != nil {
@@ -68,4 +71,78 @@ type LookupAclPolicyResult struct {
 	Namespace *string `pulumi:"namespace"`
 	// The rules associated with the ACL Policy.
 	Rules *string `pulumi:"rules"`
+}
+
+func LookupAclPolicyOutput(ctx *pulumi.Context, args LookupAclPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupAclPolicyResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupAclPolicyResult, error) {
+			args := v.(LookupAclPolicyArgs)
+			r, err := LookupAclPolicy(ctx, &args, opts...)
+			return *r, err
+		}).(LookupAclPolicyResultOutput)
+}
+
+// A collection of arguments for invoking getAclPolicy.
+type LookupAclPolicyOutputArgs struct {
+	// The datacenters associated with the ACL Policy.
+	Datacenters pulumi.StringArrayInput `pulumi:"datacenters"`
+	// The description of the ACL Policy.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The name of the ACL Policy.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The namespace to lookup the policy.
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	// The rules associated with the ACL Policy.
+	Rules pulumi.StringPtrInput `pulumi:"rules"`
+}
+
+func (LookupAclPolicyOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAclPolicyArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getAclPolicy.
+type LookupAclPolicyResultOutput struct{ *pulumi.OutputState }
+
+func (LookupAclPolicyResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAclPolicyResult)(nil)).Elem()
+}
+
+func (o LookupAclPolicyResultOutput) ToLookupAclPolicyResultOutput() LookupAclPolicyResultOutput {
+	return o
+}
+
+func (o LookupAclPolicyResultOutput) ToLookupAclPolicyResultOutputWithContext(ctx context.Context) LookupAclPolicyResultOutput {
+	return o
+}
+
+// The datacenters associated with the ACL Policy.
+func (o LookupAclPolicyResultOutput) Datacenters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupAclPolicyResult) []string { return v.Datacenters }).(pulumi.StringArrayOutput)
+}
+
+// The description of the ACL Policy.
+func (o LookupAclPolicyResultOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAclPolicyResult) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupAclPolicyResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAclPolicyResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupAclPolicyResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAclPolicyResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupAclPolicyResultOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAclPolicyResult) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+// The rules associated with the ACL Policy.
+func (o LookupAclPolicyResultOutput) Rules() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAclPolicyResult) *string { return v.Rules }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupAclPolicyResultOutput{})
 }

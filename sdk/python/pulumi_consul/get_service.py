@@ -14,6 +14,7 @@ __all__ = [
     'GetServiceResult',
     'AwaitableGetServiceResult',
     'get_service',
+    'get_service_output',
 ]
 
 @pulumi.output_type
@@ -125,7 +126,7 @@ def get_service(datacenter: Optional[str] = None,
     different datacenter in the `query_options` it is possible to retrieve a list of
     services from a different WAN-attached Consul datacenter.
 
-    This data source is different from the `getServices` (plural) data
+    This data source is different from the `get_services` (plural) data
     source, which provides a summary of the current Consul services.
 
 
@@ -160,3 +161,35 @@ def get_service(datacenter: Optional[str] = None,
         query_options=__ret__.query_options,
         services=__ret__.services,
         tag=__ret__.tag)
+
+
+@_utilities.lift_output_func(get_service)
+def get_service_output(datacenter: Optional[pulumi.Input[Optional[str]]] = None,
+                       filter: Optional[pulumi.Input[Optional[str]]] = None,
+                       name: Optional[pulumi.Input[str]] = None,
+                       query_options: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetServiceQueryOptionArgs']]]]] = None,
+                       tag: Optional[pulumi.Input[Optional[str]]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceResult]:
+    """
+    `Service` provides details about a specific Consul service in a
+    given datacenter.  The results include a list of nodes advertising the specified
+    service, the node's IP address, port number, node ID, etc.  By specifying a
+    different datacenter in the `query_options` it is possible to retrieve a list of
+    services from a different WAN-attached Consul datacenter.
+
+    This data source is different from the `get_services` (plural) data
+    source, which provides a summary of the current Consul services.
+
+
+    :param str datacenter: The Consul datacenter to query.  Defaults to the
+           same value found in `query_options` parameter specified below, or if that is
+           empty, the `datacenter` value found in the Consul agent that this provider is
+           configured to talk to.
+    :param str filter: A filter expression to refine the query, see https://www.consul.io/api-docs/features/filtering
+           and https://www.consul.io/api-docs/catalog#filtering-1.
+    :param str name: The service name to select.
+    :param Sequence[pulumi.InputType['GetServiceQueryOptionArgs']] query_options: See below.
+    :param str tag: A single tag that can be used to filter the list of nodes
+           to return based on a single matching tag..
+    """
+    ...

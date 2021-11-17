@@ -216,7 +216,7 @@ type AclTokenInput interface {
 }
 
 func (*AclToken) ElementType() reflect.Type {
-	return reflect.TypeOf((*AclToken)(nil))
+	return reflect.TypeOf((**AclToken)(nil)).Elem()
 }
 
 func (i *AclToken) ToAclTokenOutput() AclTokenOutput {
@@ -225,35 +225,6 @@ func (i *AclToken) ToAclTokenOutput() AclTokenOutput {
 
 func (i *AclToken) ToAclTokenOutputWithContext(ctx context.Context) AclTokenOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AclTokenOutput)
-}
-
-func (i *AclToken) ToAclTokenPtrOutput() AclTokenPtrOutput {
-	return i.ToAclTokenPtrOutputWithContext(context.Background())
-}
-
-func (i *AclToken) ToAclTokenPtrOutputWithContext(ctx context.Context) AclTokenPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AclTokenPtrOutput)
-}
-
-type AclTokenPtrInput interface {
-	pulumi.Input
-
-	ToAclTokenPtrOutput() AclTokenPtrOutput
-	ToAclTokenPtrOutputWithContext(ctx context.Context) AclTokenPtrOutput
-}
-
-type aclTokenPtrType AclTokenArgs
-
-func (*aclTokenPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AclToken)(nil))
-}
-
-func (i *aclTokenPtrType) ToAclTokenPtrOutput() AclTokenPtrOutput {
-	return i.ToAclTokenPtrOutputWithContext(context.Background())
-}
-
-func (i *aclTokenPtrType) ToAclTokenPtrOutputWithContext(ctx context.Context) AclTokenPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AclTokenPtrOutput)
 }
 
 // AclTokenArrayInput is an input type that accepts AclTokenArray and AclTokenArrayOutput values.
@@ -270,7 +241,7 @@ type AclTokenArrayInput interface {
 type AclTokenArray []AclTokenInput
 
 func (AclTokenArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*AclToken)(nil))
+	return reflect.TypeOf((*[]*AclToken)(nil)).Elem()
 }
 
 func (i AclTokenArray) ToAclTokenArrayOutput() AclTokenArrayOutput {
@@ -295,7 +266,7 @@ type AclTokenMapInput interface {
 type AclTokenMap map[string]AclTokenInput
 
 func (AclTokenMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*AclToken)(nil))
+	return reflect.TypeOf((*map[string]*AclToken)(nil)).Elem()
 }
 
 func (i AclTokenMap) ToAclTokenMapOutput() AclTokenMapOutput {
@@ -306,12 +277,10 @@ func (i AclTokenMap) ToAclTokenMapOutputWithContext(ctx context.Context) AclToke
 	return pulumi.ToOutputWithContext(ctx, i).(AclTokenMapOutput)
 }
 
-type AclTokenOutput struct {
-	*pulumi.OutputState
-}
+type AclTokenOutput struct{ *pulumi.OutputState }
 
 func (AclTokenOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AclToken)(nil))
+	return reflect.TypeOf((**AclToken)(nil)).Elem()
 }
 
 func (o AclTokenOutput) ToAclTokenOutput() AclTokenOutput {
@@ -322,36 +291,10 @@ func (o AclTokenOutput) ToAclTokenOutputWithContext(ctx context.Context) AclToke
 	return o
 }
 
-func (o AclTokenOutput) ToAclTokenPtrOutput() AclTokenPtrOutput {
-	return o.ToAclTokenPtrOutputWithContext(context.Background())
-}
-
-func (o AclTokenOutput) ToAclTokenPtrOutputWithContext(ctx context.Context) AclTokenPtrOutput {
-	return o.ApplyT(func(v AclToken) *AclToken {
-		return &v
-	}).(AclTokenPtrOutput)
-}
-
-type AclTokenPtrOutput struct {
-	*pulumi.OutputState
-}
-
-func (AclTokenPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AclToken)(nil))
-}
-
-func (o AclTokenPtrOutput) ToAclTokenPtrOutput() AclTokenPtrOutput {
-	return o
-}
-
-func (o AclTokenPtrOutput) ToAclTokenPtrOutputWithContext(ctx context.Context) AclTokenPtrOutput {
-	return o
-}
-
 type AclTokenArrayOutput struct{ *pulumi.OutputState }
 
 func (AclTokenArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AclToken)(nil))
+	return reflect.TypeOf((*[]*AclToken)(nil)).Elem()
 }
 
 func (o AclTokenArrayOutput) ToAclTokenArrayOutput() AclTokenArrayOutput {
@@ -363,15 +306,15 @@ func (o AclTokenArrayOutput) ToAclTokenArrayOutputWithContext(ctx context.Contex
 }
 
 func (o AclTokenArrayOutput) Index(i pulumi.IntInput) AclTokenOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AclToken {
-		return vs[0].([]AclToken)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AclToken {
+		return vs[0].([]*AclToken)[vs[1].(int)]
 	}).(AclTokenOutput)
 }
 
 type AclTokenMapOutput struct{ *pulumi.OutputState }
 
 func (AclTokenMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]AclToken)(nil))
+	return reflect.TypeOf((*map[string]*AclToken)(nil)).Elem()
 }
 
 func (o AclTokenMapOutput) ToAclTokenMapOutput() AclTokenMapOutput {
@@ -383,14 +326,16 @@ func (o AclTokenMapOutput) ToAclTokenMapOutputWithContext(ctx context.Context) A
 }
 
 func (o AclTokenMapOutput) MapIndex(k pulumi.StringInput) AclTokenOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AclToken {
-		return vs[0].(map[string]AclToken)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *AclToken {
+		return vs[0].(map[string]*AclToken)[vs[1].(string)]
 	}).(AclTokenOutput)
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AclTokenInput)(nil)).Elem(), &AclToken{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AclTokenArrayInput)(nil)).Elem(), AclTokenArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AclTokenMapInput)(nil)).Elem(), AclTokenMap{})
 	pulumi.RegisterOutputType(AclTokenOutput{})
-	pulumi.RegisterOutputType(AclTokenPtrOutput{})
 	pulumi.RegisterOutputType(AclTokenArrayOutput{})
 	pulumi.RegisterOutputType(AclTokenMapOutput{})
 }

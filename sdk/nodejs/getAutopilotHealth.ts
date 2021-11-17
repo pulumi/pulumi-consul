@@ -71,3 +71,18 @@ export interface GetAutopilotHealthResult {
      */
     readonly servers: outputs.GetAutopilotHealthServer[];
 }
+
+export function getAutopilotHealthOutput(args?: GetAutopilotHealthOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAutopilotHealthResult> {
+    return pulumi.output(args).apply(a => getAutopilotHealth(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAutopilotHealth.
+ */
+export interface GetAutopilotHealthOutputArgs {
+    /**
+     * The datacenter to use. This overrides the agent's
+     * default datacenter and the datacenter in the provider setup.
+     */
+    datacenter?: pulumi.Input<string>;
+}

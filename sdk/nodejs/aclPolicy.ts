@@ -88,30 +88,30 @@ export class AclPolicy extends pulumi.CustomResource {
      */
     constructor(name: string, args: AclPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AclPolicyArgs | AclPolicyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AclPolicyState | undefined;
-            inputs["datacenters"] = state ? state.datacenters : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["namespace"] = state ? state.namespace : undefined;
-            inputs["rules"] = state ? state.rules : undefined;
+            resourceInputs["datacenters"] = state ? state.datacenters : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["namespace"] = state ? state.namespace : undefined;
+            resourceInputs["rules"] = state ? state.rules : undefined;
         } else {
             const args = argsOrState as AclPolicyArgs | undefined;
             if ((!args || args.rules === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'rules'");
             }
-            inputs["datacenters"] = args ? args.datacenters : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["namespace"] = args ? args.namespace : undefined;
-            inputs["rules"] = args ? args.rules : undefined;
+            resourceInputs["datacenters"] = args ? args.datacenters : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["namespace"] = args ? args.namespace : undefined;
+            resourceInputs["rules"] = args ? args.rules : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(AclPolicy.__pulumiType, name, inputs, opts);
+        super(AclPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

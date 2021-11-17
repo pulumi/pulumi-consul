@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Consul
 {
@@ -22,6 +23,18 @@ namespace Pulumi.Consul
         /// </summary>
         public static Task<GetServicesResult> InvokeAsync(GetServicesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetServicesResult>("consul:index/getServices:getServices", args ?? new GetServicesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// The `consul.getServices` data source returns a list of Consul services that
+        /// have been registered with the Consul cluster in a given datacenter.  By
+        /// specifying a different datacenter in the `query_options` it is possible to
+        /// retrieve a list of services from a different WAN-attached Consul datacenter.
+        /// 
+        /// This data source is different from the `consul.Service` (singular) data
+        /// source, which provides a detailed response about a specific Consul service.
+        /// </summary>
+        public static Output<GetServicesResult> Invoke(GetServicesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetServicesResult>("consul:index/getServices:getServices", args ?? new GetServicesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -40,6 +53,25 @@ namespace Pulumi.Consul
         }
 
         public GetServicesArgs()
+        {
+        }
+    }
+
+    public sealed class GetServicesInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("queryOptions")]
+        private InputList<Inputs.GetServicesQueryOptionInputArgs>? _queryOptions;
+
+        /// <summary>
+        /// See below.
+        /// </summary>
+        public InputList<Inputs.GetServicesQueryOptionInputArgs> QueryOptions
+        {
+            get => _queryOptions ?? (_queryOptions = new InputList<Inputs.GetServicesQueryOptionInputArgs>());
+            set => _queryOptions = value;
+        }
+
+        public GetServicesInvokeArgs()
         {
         }
     }

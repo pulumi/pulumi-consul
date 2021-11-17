@@ -100,3 +100,21 @@ export interface GetAclAuthMethodResult {
      */
     readonly type: string;
 }
+
+export function getAclAuthMethodOutput(args: GetAclAuthMethodOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAclAuthMethodResult> {
+    return pulumi.output(args).apply(a => getAclAuthMethod(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAclAuthMethod.
+ */
+export interface GetAclAuthMethodOutputArgs {
+    /**
+     * The name of the ACL Auth Method.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The namespace to lookup the auth method.
+     */
+    namespace?: pulumi.Input<string>;
+}

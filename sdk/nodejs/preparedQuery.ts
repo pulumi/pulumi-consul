@@ -144,52 +144,52 @@ export class PreparedQuery extends pulumi.CustomResource {
      */
     constructor(name: string, args: PreparedQueryArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: PreparedQueryArgs | PreparedQueryState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PreparedQueryState | undefined;
-            inputs["connect"] = state ? state.connect : undefined;
-            inputs["datacenter"] = state ? state.datacenter : undefined;
-            inputs["dns"] = state ? state.dns : undefined;
-            inputs["failover"] = state ? state.failover : undefined;
-            inputs["ignoreCheckIds"] = state ? state.ignoreCheckIds : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["near"] = state ? state.near : undefined;
-            inputs["nodeMeta"] = state ? state.nodeMeta : undefined;
-            inputs["onlyPassing"] = state ? state.onlyPassing : undefined;
-            inputs["service"] = state ? state.service : undefined;
-            inputs["serviceMeta"] = state ? state.serviceMeta : undefined;
-            inputs["session"] = state ? state.session : undefined;
-            inputs["storedToken"] = state ? state.storedToken : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["template"] = state ? state.template : undefined;
-            inputs["token"] = state ? state.token : undefined;
+            resourceInputs["connect"] = state ? state.connect : undefined;
+            resourceInputs["datacenter"] = state ? state.datacenter : undefined;
+            resourceInputs["dns"] = state ? state.dns : undefined;
+            resourceInputs["failover"] = state ? state.failover : undefined;
+            resourceInputs["ignoreCheckIds"] = state ? state.ignoreCheckIds : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["near"] = state ? state.near : undefined;
+            resourceInputs["nodeMeta"] = state ? state.nodeMeta : undefined;
+            resourceInputs["onlyPassing"] = state ? state.onlyPassing : undefined;
+            resourceInputs["service"] = state ? state.service : undefined;
+            resourceInputs["serviceMeta"] = state ? state.serviceMeta : undefined;
+            resourceInputs["session"] = state ? state.session : undefined;
+            resourceInputs["storedToken"] = state ? state.storedToken : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["template"] = state ? state.template : undefined;
+            resourceInputs["token"] = state ? state.token : undefined;
         } else {
             const args = argsOrState as PreparedQueryArgs | undefined;
             if ((!args || args.service === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'service'");
             }
-            inputs["connect"] = args ? args.connect : undefined;
-            inputs["datacenter"] = args ? args.datacenter : undefined;
-            inputs["dns"] = args ? args.dns : undefined;
-            inputs["failover"] = args ? args.failover : undefined;
-            inputs["ignoreCheckIds"] = args ? args.ignoreCheckIds : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["near"] = args ? args.near : undefined;
-            inputs["nodeMeta"] = args ? args.nodeMeta : undefined;
-            inputs["onlyPassing"] = args ? args.onlyPassing : undefined;
-            inputs["service"] = args ? args.service : undefined;
-            inputs["serviceMeta"] = args ? args.serviceMeta : undefined;
-            inputs["session"] = args ? args.session : undefined;
-            inputs["storedToken"] = args ? args.storedToken : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["template"] = args ? args.template : undefined;
-            inputs["token"] = args ? args.token : undefined;
+            resourceInputs["connect"] = args ? args.connect : undefined;
+            resourceInputs["datacenter"] = args ? args.datacenter : undefined;
+            resourceInputs["dns"] = args ? args.dns : undefined;
+            resourceInputs["failover"] = args ? args.failover : undefined;
+            resourceInputs["ignoreCheckIds"] = args ? args.ignoreCheckIds : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["near"] = args ? args.near : undefined;
+            resourceInputs["nodeMeta"] = args ? args.nodeMeta : undefined;
+            resourceInputs["onlyPassing"] = args ? args.onlyPassing : undefined;
+            resourceInputs["service"] = args ? args.service : undefined;
+            resourceInputs["serviceMeta"] = args ? args.serviceMeta : undefined;
+            resourceInputs["session"] = args ? args.session : undefined;
+            resourceInputs["storedToken"] = args ? args.storedToken : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["template"] = args ? args.template : undefined;
+            resourceInputs["token"] = args ? args.token : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(PreparedQuery.__pulumiType, name, inputs, opts);
+        super(PreparedQuery.__pulumiType, name, resourceInputs, opts);
     }
 }
 

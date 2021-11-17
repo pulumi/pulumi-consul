@@ -10,14 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.Consul.Inputs
 {
 
-    public sealed class GetKeyPrefixSubkeyCollectionArgs : Pulumi.InvokeArgs
+    public sealed class GetKeyPrefixSubkeyCollectionInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// This is the default value to set for `var.&lt;name&gt;`
         /// if the key does not exist in Consul. Defaults to an empty string.
         /// </summary>
         [Input("default")]
-        public string? Default { get; set; }
+        public Input<string>? Default { get; set; }
 
         /// <summary>
         /// This is the name of the key. This value of the
@@ -25,7 +25,7 @@ namespace Pulumi.Consul.Inputs
         /// in Consul.
         /// </summary>
         [Input("name", required: true)]
-        public string Name { get; set; } = null!;
+        public Input<string> Name { get; set; } = null!;
 
         /// <summary>
         /// This is the subkey path in Consul (which will be appended
@@ -33,9 +33,9 @@ namespace Pulumi.Consul.Inputs
         /// to read the value.
         /// </summary>
         [Input("path", required: true)]
-        public string Path { get; set; } = null!;
+        public Input<string> Path { get; set; } = null!;
 
-        public GetKeyPrefixSubkeyCollectionArgs()
+        public GetKeyPrefixSubkeyCollectionInputArgs()
         {
         }
     }

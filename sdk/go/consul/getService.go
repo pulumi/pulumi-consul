@@ -4,6 +4,9 @@
 package consul
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -59,4 +62,90 @@ type LookupServiceResult struct {
 	Services []GetServiceService `pulumi:"services"`
 	// The name of the tag used to filter the list of nodes in `service`.
 	Tag *string `pulumi:"tag"`
+}
+
+func LookupServiceOutput(ctx *pulumi.Context, args LookupServiceOutputArgs, opts ...pulumi.InvokeOption) LookupServiceResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupServiceResult, error) {
+			args := v.(LookupServiceArgs)
+			r, err := LookupService(ctx, &args, opts...)
+			return *r, err
+		}).(LookupServiceResultOutput)
+}
+
+// A collection of arguments for invoking getService.
+type LookupServiceOutputArgs struct {
+	// The Consul datacenter to query.  Defaults to the
+	// same value found in `queryOptions` parameter specified below, or if that is
+	// empty, the `datacenter` value found in the Consul agent that this provider is
+	// configured to talk to.
+	Datacenter pulumi.StringPtrInput `pulumi:"datacenter"`
+	// A filter expression to refine the query, see https://www.consul.io/api-docs/features/filtering
+	// and https://www.consul.io/api-docs/catalog#filtering-1.
+	Filter pulumi.StringPtrInput `pulumi:"filter"`
+	// The service name to select.
+	Name pulumi.StringInput `pulumi:"name"`
+	// See below.
+	QueryOptions GetServiceQueryOptionArrayInput `pulumi:"queryOptions"`
+	// A single tag that can be used to filter the list of nodes
+	// to return based on a single matching tag..
+	Tag pulumi.StringPtrInput `pulumi:"tag"`
+}
+
+func (LookupServiceOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupServiceArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getService.
+type LookupServiceResultOutput struct{ *pulumi.OutputState }
+
+func (LookupServiceResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupServiceResult)(nil)).Elem()
+}
+
+func (o LookupServiceResultOutput) ToLookupServiceResultOutput() LookupServiceResultOutput {
+	return o
+}
+
+func (o LookupServiceResultOutput) ToLookupServiceResultOutputWithContext(ctx context.Context) LookupServiceResultOutput {
+	return o
+}
+
+// The datacenter the keys are being read from to.
+func (o LookupServiceResultOutput) Datacenter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupServiceResult) *string { return v.Datacenter }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupServiceResultOutput) Filter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupServiceResult) *string { return v.Filter }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupServiceResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the service
+func (o LookupServiceResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupServiceResultOutput) QueryOptions() GetServiceQueryOptionArrayOutput {
+	return o.ApplyT(func(v LookupServiceResult) []GetServiceQueryOption { return v.QueryOptions }).(GetServiceQueryOptionArrayOutput)
+}
+
+// A list of nodes and details about each endpoint advertising a
+// service.  Each element in the list is a map of attributes that correspond to
+// each individual node.  The list of per-node attributes is detailed below.
+func (o LookupServiceResultOutput) Services() GetServiceServiceArrayOutput {
+	return o.ApplyT(func(v LookupServiceResult) []GetServiceService { return v.Services }).(GetServiceServiceArrayOutput)
+}
+
+// The name of the tag used to filter the list of nodes in `service`.
+func (o LookupServiceResultOutput) Tag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupServiceResult) *string { return v.Tag }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupServiceResultOutput{})
 }

@@ -5,12 +5,12 @@ go 1.16
 require (
 	github.com/hashicorp/terraform-plugin-sdk v1.12.0
 	github.com/hashicorp/terraform-provider-consul v1.1.1-0.20211001010434-b56b18d72445
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.2.1
-	github.com/pulumi/pulumi/sdk/v3 v3.3.2-0.20210526172205-85142462c7ed
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.13.0
+	github.com/pulumi/pulumi/sdk/v3 v3.19.0
 )
 
 replace (
 	github.com/hashicorp/consul => github.com/hashicorp/consul v1.5.0
-	github.com/hashicorp/go-getter v1.5.0 => github.com/hashicorp/go-getter v1.4.0
+	github.com/hashicorp/go-getter => github.com/hashicorp/go-getter v1.4.0
 	github.com/hashicorp/vault => github.com/hashicorp/vault v1.2.0
 )

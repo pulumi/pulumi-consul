@@ -1053,7 +1053,7 @@ func (o PreparedQueryDnsOutput) ToPreparedQueryDnsPtrOutput() PreparedQueryDnsPt
 }
 
 func (o PreparedQueryDnsOutput) ToPreparedQueryDnsPtrOutputWithContext(ctx context.Context) PreparedQueryDnsPtrOutput {
-	return o.ApplyT(func(v PreparedQueryDns) *PreparedQueryDns {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreparedQueryDns) *PreparedQueryDns {
 		return &v
 	}).(PreparedQueryDnsPtrOutput)
 }
@@ -1078,7 +1078,13 @@ func (o PreparedQueryDnsPtrOutput) ToPreparedQueryDnsPtrOutputWithContext(ctx co
 }
 
 func (o PreparedQueryDnsPtrOutput) Elem() PreparedQueryDnsOutput {
-	return o.ApplyT(func(v *PreparedQueryDns) PreparedQueryDns { return *v }).(PreparedQueryDnsOutput)
+	return o.ApplyT(func(v *PreparedQueryDns) PreparedQueryDns {
+		if v != nil {
+			return *v
+		}
+		var ret PreparedQueryDns
+		return ret
+	}).(PreparedQueryDnsOutput)
 }
 
 // The TTL to send when returning DNS results.
@@ -1190,7 +1196,7 @@ func (o PreparedQueryFailoverOutput) ToPreparedQueryFailoverPtrOutput() Prepared
 }
 
 func (o PreparedQueryFailoverOutput) ToPreparedQueryFailoverPtrOutputWithContext(ctx context.Context) PreparedQueryFailoverPtrOutput {
-	return o.ApplyT(func(v PreparedQueryFailover) *PreparedQueryFailover {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreparedQueryFailover) *PreparedQueryFailover {
 		return &v
 	}).(PreparedQueryFailoverPtrOutput)
 }
@@ -1221,7 +1227,13 @@ func (o PreparedQueryFailoverPtrOutput) ToPreparedQueryFailoverPtrOutputWithCont
 }
 
 func (o PreparedQueryFailoverPtrOutput) Elem() PreparedQueryFailoverOutput {
-	return o.ApplyT(func(v *PreparedQueryFailover) PreparedQueryFailover { return *v }).(PreparedQueryFailoverOutput)
+	return o.ApplyT(func(v *PreparedQueryFailover) PreparedQueryFailover {
+		if v != nil {
+			return *v
+		}
+		var ret PreparedQueryFailover
+		return ret
+	}).(PreparedQueryFailoverOutput)
 }
 
 // Remote datacenters to return results from.
@@ -1346,7 +1358,7 @@ func (o PreparedQueryTemplateOutput) ToPreparedQueryTemplatePtrOutput() Prepared
 }
 
 func (o PreparedQueryTemplateOutput) ToPreparedQueryTemplatePtrOutputWithContext(ctx context.Context) PreparedQueryTemplatePtrOutput {
-	return o.ApplyT(func(v PreparedQueryTemplate) *PreparedQueryTemplate {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreparedQueryTemplate) *PreparedQueryTemplate {
 		return &v
 	}).(PreparedQueryTemplatePtrOutput)
 }
@@ -1378,7 +1390,13 @@ func (o PreparedQueryTemplatePtrOutput) ToPreparedQueryTemplatePtrOutputWithCont
 }
 
 func (o PreparedQueryTemplatePtrOutput) Elem() PreparedQueryTemplateOutput {
-	return o.ApplyT(func(v *PreparedQueryTemplate) PreparedQueryTemplate { return *v }).(PreparedQueryTemplateOutput)
+	return o.ApplyT(func(v *PreparedQueryTemplate) PreparedQueryTemplate {
+		if v != nil {
+			return *v
+		}
+		var ret PreparedQueryTemplate
+		return ret
+	}).(PreparedQueryTemplateOutput)
 }
 
 // The regular expression to match with. When using
@@ -4326,113 +4344,113 @@ func (o GetNodesQueryOptionArrayOutput) Index(i pulumi.IntInput) GetNodesQueryOp
 	}).(GetNodesQueryOptionOutput)
 }
 
-type GetServiceHealthResultType struct {
+type GetServiceHealthResult struct {
 	Checks []GetServiceHealthResultCheck `pulumi:"checks"`
 	// The name of the node associated with this health-check.
 	Nodes    []GetServiceHealthResultNode    `pulumi:"nodes"`
 	Services []GetServiceHealthResultService `pulumi:"services"`
 }
 
-// GetServiceHealthResultTypeInput is an input type that accepts GetServiceHealthResultTypeArgs and GetServiceHealthResultTypeOutput values.
-// You can construct a concrete instance of `GetServiceHealthResultTypeInput` via:
+// GetServiceHealthResultInput is an input type that accepts GetServiceHealthResultArgs and GetServiceHealthResultOutput values.
+// You can construct a concrete instance of `GetServiceHealthResultInput` via:
 //
-//          GetServiceHealthResultTypeArgs{...}
-type GetServiceHealthResultTypeInput interface {
+//          GetServiceHealthResultArgs{...}
+type GetServiceHealthResultInput interface {
 	pulumi.Input
 
-	ToGetServiceHealthResultTypeOutput() GetServiceHealthResultTypeOutput
-	ToGetServiceHealthResultTypeOutputWithContext(context.Context) GetServiceHealthResultTypeOutput
+	ToGetServiceHealthResultOutput() GetServiceHealthResultOutput
+	ToGetServiceHealthResultOutputWithContext(context.Context) GetServiceHealthResultOutput
 }
 
-type GetServiceHealthResultTypeArgs struct {
+type GetServiceHealthResultArgs struct {
 	Checks GetServiceHealthResultCheckArrayInput `pulumi:"checks"`
 	// The name of the node associated with this health-check.
 	Nodes    GetServiceHealthResultNodeArrayInput    `pulumi:"nodes"`
 	Services GetServiceHealthResultServiceArrayInput `pulumi:"services"`
 }
 
-func (GetServiceHealthResultTypeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceHealthResultType)(nil)).Elem()
+func (GetServiceHealthResultArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceHealthResult)(nil)).Elem()
 }
 
-func (i GetServiceHealthResultTypeArgs) ToGetServiceHealthResultTypeOutput() GetServiceHealthResultTypeOutput {
-	return i.ToGetServiceHealthResultTypeOutputWithContext(context.Background())
+func (i GetServiceHealthResultArgs) ToGetServiceHealthResultOutput() GetServiceHealthResultOutput {
+	return i.ToGetServiceHealthResultOutputWithContext(context.Background())
 }
 
-func (i GetServiceHealthResultTypeArgs) ToGetServiceHealthResultTypeOutputWithContext(ctx context.Context) GetServiceHealthResultTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceHealthResultTypeOutput)
+func (i GetServiceHealthResultArgs) ToGetServiceHealthResultOutputWithContext(ctx context.Context) GetServiceHealthResultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceHealthResultOutput)
 }
 
-// GetServiceHealthResultTypeArrayInput is an input type that accepts GetServiceHealthResultTypeArray and GetServiceHealthResultTypeArrayOutput values.
-// You can construct a concrete instance of `GetServiceHealthResultTypeArrayInput` via:
+// GetServiceHealthResultArrayInput is an input type that accepts GetServiceHealthResultArray and GetServiceHealthResultArrayOutput values.
+// You can construct a concrete instance of `GetServiceHealthResultArrayInput` via:
 //
-//          GetServiceHealthResultTypeArray{ GetServiceHealthResultTypeArgs{...} }
-type GetServiceHealthResultTypeArrayInput interface {
+//          GetServiceHealthResultArray{ GetServiceHealthResultArgs{...} }
+type GetServiceHealthResultArrayInput interface {
 	pulumi.Input
 
-	ToGetServiceHealthResultTypeArrayOutput() GetServiceHealthResultTypeArrayOutput
-	ToGetServiceHealthResultTypeArrayOutputWithContext(context.Context) GetServiceHealthResultTypeArrayOutput
+	ToGetServiceHealthResultArrayOutput() GetServiceHealthResultArrayOutput
+	ToGetServiceHealthResultArrayOutputWithContext(context.Context) GetServiceHealthResultArrayOutput
 }
 
-type GetServiceHealthResultTypeArray []GetServiceHealthResultTypeInput
+type GetServiceHealthResultArray []GetServiceHealthResultInput
 
-func (GetServiceHealthResultTypeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceHealthResultType)(nil)).Elem()
+func (GetServiceHealthResultArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceHealthResult)(nil)).Elem()
 }
 
-func (i GetServiceHealthResultTypeArray) ToGetServiceHealthResultTypeArrayOutput() GetServiceHealthResultTypeArrayOutput {
-	return i.ToGetServiceHealthResultTypeArrayOutputWithContext(context.Background())
+func (i GetServiceHealthResultArray) ToGetServiceHealthResultArrayOutput() GetServiceHealthResultArrayOutput {
+	return i.ToGetServiceHealthResultArrayOutputWithContext(context.Background())
 }
 
-func (i GetServiceHealthResultTypeArray) ToGetServiceHealthResultTypeArrayOutputWithContext(ctx context.Context) GetServiceHealthResultTypeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServiceHealthResultTypeArrayOutput)
+func (i GetServiceHealthResultArray) ToGetServiceHealthResultArrayOutputWithContext(ctx context.Context) GetServiceHealthResultArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceHealthResultArrayOutput)
 }
 
-type GetServiceHealthResultTypeOutput struct{ *pulumi.OutputState }
+type GetServiceHealthResultOutput struct{ *pulumi.OutputState }
 
-func (GetServiceHealthResultTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServiceHealthResultType)(nil)).Elem()
+func (GetServiceHealthResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceHealthResult)(nil)).Elem()
 }
 
-func (o GetServiceHealthResultTypeOutput) ToGetServiceHealthResultTypeOutput() GetServiceHealthResultTypeOutput {
+func (o GetServiceHealthResultOutput) ToGetServiceHealthResultOutput() GetServiceHealthResultOutput {
 	return o
 }
 
-func (o GetServiceHealthResultTypeOutput) ToGetServiceHealthResultTypeOutputWithContext(ctx context.Context) GetServiceHealthResultTypeOutput {
+func (o GetServiceHealthResultOutput) ToGetServiceHealthResultOutputWithContext(ctx context.Context) GetServiceHealthResultOutput {
 	return o
 }
 
-func (o GetServiceHealthResultTypeOutput) Checks() GetServiceHealthResultCheckArrayOutput {
-	return o.ApplyT(func(v GetServiceHealthResultType) []GetServiceHealthResultCheck { return v.Checks }).(GetServiceHealthResultCheckArrayOutput)
+func (o GetServiceHealthResultOutput) Checks() GetServiceHealthResultCheckArrayOutput {
+	return o.ApplyT(func(v GetServiceHealthResult) []GetServiceHealthResultCheck { return v.Checks }).(GetServiceHealthResultCheckArrayOutput)
 }
 
 // The name of the node associated with this health-check.
-func (o GetServiceHealthResultTypeOutput) Nodes() GetServiceHealthResultNodeArrayOutput {
-	return o.ApplyT(func(v GetServiceHealthResultType) []GetServiceHealthResultNode { return v.Nodes }).(GetServiceHealthResultNodeArrayOutput)
+func (o GetServiceHealthResultOutput) Nodes() GetServiceHealthResultNodeArrayOutput {
+	return o.ApplyT(func(v GetServiceHealthResult) []GetServiceHealthResultNode { return v.Nodes }).(GetServiceHealthResultNodeArrayOutput)
 }
 
-func (o GetServiceHealthResultTypeOutput) Services() GetServiceHealthResultServiceArrayOutput {
-	return o.ApplyT(func(v GetServiceHealthResultType) []GetServiceHealthResultService { return v.Services }).(GetServiceHealthResultServiceArrayOutput)
+func (o GetServiceHealthResultOutput) Services() GetServiceHealthResultServiceArrayOutput {
+	return o.ApplyT(func(v GetServiceHealthResult) []GetServiceHealthResultService { return v.Services }).(GetServiceHealthResultServiceArrayOutput)
 }
 
-type GetServiceHealthResultTypeArrayOutput struct{ *pulumi.OutputState }
+type GetServiceHealthResultArrayOutput struct{ *pulumi.OutputState }
 
-func (GetServiceHealthResultTypeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServiceHealthResultType)(nil)).Elem()
+func (GetServiceHealthResultArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceHealthResult)(nil)).Elem()
 }
 
-func (o GetServiceHealthResultTypeArrayOutput) ToGetServiceHealthResultTypeArrayOutput() GetServiceHealthResultTypeArrayOutput {
+func (o GetServiceHealthResultArrayOutput) ToGetServiceHealthResultArrayOutput() GetServiceHealthResultArrayOutput {
 	return o
 }
 
-func (o GetServiceHealthResultTypeArrayOutput) ToGetServiceHealthResultTypeArrayOutputWithContext(ctx context.Context) GetServiceHealthResultTypeArrayOutput {
+func (o GetServiceHealthResultArrayOutput) ToGetServiceHealthResultArrayOutputWithContext(ctx context.Context) GetServiceHealthResultArrayOutput {
 	return o
 }
 
-func (o GetServiceHealthResultTypeArrayOutput) Index(i pulumi.IntInput) GetServiceHealthResultTypeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceHealthResultType {
-		return vs[0].([]GetServiceHealthResultType)[vs[1].(int)]
-	}).(GetServiceHealthResultTypeOutput)
+func (o GetServiceHealthResultArrayOutput) Index(i pulumi.IntInput) GetServiceHealthResultOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceHealthResult {
+		return vs[0].([]GetServiceHealthResult)[vs[1].(int)]
+	}).(GetServiceHealthResultOutput)
 }
 
 type GetServiceHealthResultCheck struct {
@@ -5510,6 +5528,86 @@ func (o GetServicesQueryOptionArrayOutput) Index(i pulumi.IntInput) GetServicesQ
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AclAuthMethodNamespaceRuleInput)(nil)).Elem(), AclAuthMethodNamespaceRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AclAuthMethodNamespaceRuleArrayInput)(nil)).Elem(), AclAuthMethodNamespaceRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AclRoleNodeIdentityInput)(nil)).Elem(), AclRoleNodeIdentityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AclRoleNodeIdentityArrayInput)(nil)).Elem(), AclRoleNodeIdentityArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AclRoleServiceIdentityInput)(nil)).Elem(), AclRoleServiceIdentityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AclRoleServiceIdentityArrayInput)(nil)).Elem(), AclRoleServiceIdentityArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AclTokenNodeIdentityInput)(nil)).Elem(), AclTokenNodeIdentityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AclTokenNodeIdentityArrayInput)(nil)).Elem(), AclTokenNodeIdentityArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AclTokenServiceIdentityInput)(nil)).Elem(), AclTokenServiceIdentityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AclTokenServiceIdentityArrayInput)(nil)).Elem(), AclTokenServiceIdentityArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CatalogEntryServiceInput)(nil)).Elem(), CatalogEntryServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CatalogEntryServiceArrayInput)(nil)).Elem(), CatalogEntryServiceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyPrefixSubkeyCollectionInput)(nil)).Elem(), KeyPrefixSubkeyCollectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyPrefixSubkeyCollectionArrayInput)(nil)).Elem(), KeyPrefixSubkeyCollectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeysKeyInput)(nil)).Elem(), KeysKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeysKeyArrayInput)(nil)).Elem(), KeysKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreparedQueryDnsInput)(nil)).Elem(), PreparedQueryDnsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreparedQueryDnsPtrInput)(nil)).Elem(), PreparedQueryDnsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreparedQueryFailoverInput)(nil)).Elem(), PreparedQueryFailoverArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreparedQueryFailoverPtrInput)(nil)).Elem(), PreparedQueryFailoverArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreparedQueryTemplateInput)(nil)).Elem(), PreparedQueryTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreparedQueryTemplatePtrInput)(nil)).Elem(), PreparedQueryTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProviderHeaderInput)(nil)).Elem(), ProviderHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProviderHeaderArrayInput)(nil)).Elem(), ProviderHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceCheckInput)(nil)).Elem(), ServiceCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceCheckArrayInput)(nil)).Elem(), ServiceCheckArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceCheckHeaderInput)(nil)).Elem(), ServiceCheckHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceCheckHeaderArrayInput)(nil)).Elem(), ServiceCheckHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAclAuthMethodNamespaceRuleInput)(nil)).Elem(), GetAclAuthMethodNamespaceRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAclAuthMethodNamespaceRuleArrayInput)(nil)).Elem(), GetAclAuthMethodNamespaceRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAclRoleNodeIdentityInput)(nil)).Elem(), GetAclRoleNodeIdentityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAclRoleNodeIdentityArrayInput)(nil)).Elem(), GetAclRoleNodeIdentityArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAclRolePolicyInput)(nil)).Elem(), GetAclRolePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAclRolePolicyArrayInput)(nil)).Elem(), GetAclRolePolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAclRoleServiceIdentityInput)(nil)).Elem(), GetAclRoleServiceIdentityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAclRoleServiceIdentityArrayInput)(nil)).Elem(), GetAclRoleServiceIdentityArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAclTokenNodeIdentityInput)(nil)).Elem(), GetAclTokenNodeIdentityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAclTokenNodeIdentityArrayInput)(nil)).Elem(), GetAclTokenNodeIdentityArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAclTokenPolicyInput)(nil)).Elem(), GetAclTokenPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAclTokenPolicyArrayInput)(nil)).Elem(), GetAclTokenPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAclTokenRoleInput)(nil)).Elem(), GetAclTokenRoleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAclTokenRoleArrayInput)(nil)).Elem(), GetAclTokenRoleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAclTokenServiceIdentityInput)(nil)).Elem(), GetAclTokenServiceIdentityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAclTokenServiceIdentityArrayInput)(nil)).Elem(), GetAclTokenServiceIdentityArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAutopilotHealthServerInput)(nil)).Elem(), GetAutopilotHealthServerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAutopilotHealthServerArrayInput)(nil)).Elem(), GetAutopilotHealthServerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCatalogNodesNodeInput)(nil)).Elem(), GetCatalogNodesNodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCatalogNodesNodeArrayInput)(nil)).Elem(), GetCatalogNodesNodeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCatalogNodesQueryOptionInput)(nil)).Elem(), GetCatalogNodesQueryOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCatalogNodesQueryOptionArrayInput)(nil)).Elem(), GetCatalogNodesQueryOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCatalogServiceQueryOptionInput)(nil)).Elem(), GetCatalogServiceQueryOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCatalogServiceQueryOptionArrayInput)(nil)).Elem(), GetCatalogServiceQueryOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCatalogServiceServiceInput)(nil)).Elem(), GetCatalogServiceServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCatalogServiceServiceArrayInput)(nil)).Elem(), GetCatalogServiceServiceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCatalogServicesQueryOptionInput)(nil)).Elem(), GetCatalogServicesQueryOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCatalogServicesQueryOptionArrayInput)(nil)).Elem(), GetCatalogServicesQueryOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKeyPrefixSubkeyCollectionInput)(nil)).Elem(), GetKeyPrefixSubkeyCollectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKeyPrefixSubkeyCollectionArrayInput)(nil)).Elem(), GetKeyPrefixSubkeyCollectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKeysKeyInput)(nil)).Elem(), GetKeysKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKeysKeyArrayInput)(nil)).Elem(), GetKeysKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkAreaMembersMemberInput)(nil)).Elem(), GetNetworkAreaMembersMemberArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkAreaMembersMemberArrayInput)(nil)).Elem(), GetNetworkAreaMembersMemberArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNodesNodeInput)(nil)).Elem(), GetNodesNodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNodesNodeArrayInput)(nil)).Elem(), GetNodesNodeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNodesQueryOptionInput)(nil)).Elem(), GetNodesQueryOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNodesQueryOptionArrayInput)(nil)).Elem(), GetNodesQueryOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceHealthResultInput)(nil)).Elem(), GetServiceHealthResultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceHealthResultArrayInput)(nil)).Elem(), GetServiceHealthResultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceHealthResultCheckInput)(nil)).Elem(), GetServiceHealthResultCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceHealthResultCheckArrayInput)(nil)).Elem(), GetServiceHealthResultCheckArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceHealthResultNodeInput)(nil)).Elem(), GetServiceHealthResultNodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceHealthResultNodeArrayInput)(nil)).Elem(), GetServiceHealthResultNodeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceHealthResultServiceInput)(nil)).Elem(), GetServiceHealthResultServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceHealthResultServiceArrayInput)(nil)).Elem(), GetServiceHealthResultServiceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceQueryOptionInput)(nil)).Elem(), GetServiceQueryOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceQueryOptionArrayInput)(nil)).Elem(), GetServiceQueryOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceServiceInput)(nil)).Elem(), GetServiceServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceServiceArrayInput)(nil)).Elem(), GetServiceServiceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServicesQueryOptionInput)(nil)).Elem(), GetServicesQueryOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServicesQueryOptionArrayInput)(nil)).Elem(), GetServicesQueryOptionArray{})
 	pulumi.RegisterOutputType(AclAuthMethodNamespaceRuleOutput{})
 	pulumi.RegisterOutputType(AclAuthMethodNamespaceRuleArrayOutput{})
 	pulumi.RegisterOutputType(AclRoleNodeIdentityOutput{})
@@ -5576,8 +5674,8 @@ func init() {
 	pulumi.RegisterOutputType(GetNodesNodeArrayOutput{})
 	pulumi.RegisterOutputType(GetNodesQueryOptionOutput{})
 	pulumi.RegisterOutputType(GetNodesQueryOptionArrayOutput{})
-	pulumi.RegisterOutputType(GetServiceHealthResultTypeOutput{})
-	pulumi.RegisterOutputType(GetServiceHealthResultTypeArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceHealthResultOutput{})
+	pulumi.RegisterOutputType(GetServiceHealthResultArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceHealthResultCheckOutput{})
 	pulumi.RegisterOutputType(GetServiceHealthResultCheckArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceHealthResultNodeOutput{})

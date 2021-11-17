@@ -4,6 +4,9 @@
 package consul
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,4 +38,71 @@ type GetAclTokenSecretIdResult struct {
 	PgpKey    *string `pulumi:"pgpKey"`
 	// The secret ID of the ACL token if `pgpKey` has not been set.
 	SecretId string `pulumi:"secretId"`
+}
+
+func GetAclTokenSecretIdOutput(ctx *pulumi.Context, args GetAclTokenSecretIdOutputArgs, opts ...pulumi.InvokeOption) GetAclTokenSecretIdResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetAclTokenSecretIdResult, error) {
+			args := v.(GetAclTokenSecretIdArgs)
+			r, err := GetAclTokenSecretId(ctx, &args, opts...)
+			return *r, err
+		}).(GetAclTokenSecretIdResultOutput)
+}
+
+// A collection of arguments for invoking getAclTokenSecretId.
+type GetAclTokenSecretIdOutputArgs struct {
+	// The accessor ID of the ACL token.
+	AccessorId pulumi.StringInput `pulumi:"accessorId"`
+	// The namespace to lookup the token.
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	PgpKey    pulumi.StringPtrInput `pulumi:"pgpKey"`
+}
+
+func (GetAclTokenSecretIdOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAclTokenSecretIdArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getAclTokenSecretId.
+type GetAclTokenSecretIdResultOutput struct{ *pulumi.OutputState }
+
+func (GetAclTokenSecretIdResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAclTokenSecretIdResult)(nil)).Elem()
+}
+
+func (o GetAclTokenSecretIdResultOutput) ToGetAclTokenSecretIdResultOutput() GetAclTokenSecretIdResultOutput {
+	return o
+}
+
+func (o GetAclTokenSecretIdResultOutput) ToGetAclTokenSecretIdResultOutputWithContext(ctx context.Context) GetAclTokenSecretIdResultOutput {
+	return o
+}
+
+func (o GetAclTokenSecretIdResultOutput) AccessorId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAclTokenSecretIdResult) string { return v.AccessorId }).(pulumi.StringOutput)
+}
+
+func (o GetAclTokenSecretIdResultOutput) EncryptedSecretId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAclTokenSecretIdResult) string { return v.EncryptedSecretId }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetAclTokenSecretIdResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAclTokenSecretIdResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetAclTokenSecretIdResultOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAclTokenSecretIdResult) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAclTokenSecretIdResultOutput) PgpKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAclTokenSecretIdResult) *string { return v.PgpKey }).(pulumi.StringPtrOutput)
+}
+
+// The secret ID of the ACL token if `pgpKey` has not been set.
+func (o GetAclTokenSecretIdResultOutput) SecretId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAclTokenSecretIdResult) string { return v.SecretId }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetAclTokenSecretIdResultOutput{})
 }

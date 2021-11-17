@@ -106,7 +106,7 @@ type NamespacePolicyAttachmentInput interface {
 }
 
 func (*NamespacePolicyAttachment) ElementType() reflect.Type {
-	return reflect.TypeOf((*NamespacePolicyAttachment)(nil))
+	return reflect.TypeOf((**NamespacePolicyAttachment)(nil)).Elem()
 }
 
 func (i *NamespacePolicyAttachment) ToNamespacePolicyAttachmentOutput() NamespacePolicyAttachmentOutput {
@@ -115,35 +115,6 @@ func (i *NamespacePolicyAttachment) ToNamespacePolicyAttachmentOutput() Namespac
 
 func (i *NamespacePolicyAttachment) ToNamespacePolicyAttachmentOutputWithContext(ctx context.Context) NamespacePolicyAttachmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NamespacePolicyAttachmentOutput)
-}
-
-func (i *NamespacePolicyAttachment) ToNamespacePolicyAttachmentPtrOutput() NamespacePolicyAttachmentPtrOutput {
-	return i.ToNamespacePolicyAttachmentPtrOutputWithContext(context.Background())
-}
-
-func (i *NamespacePolicyAttachment) ToNamespacePolicyAttachmentPtrOutputWithContext(ctx context.Context) NamespacePolicyAttachmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NamespacePolicyAttachmentPtrOutput)
-}
-
-type NamespacePolicyAttachmentPtrInput interface {
-	pulumi.Input
-
-	ToNamespacePolicyAttachmentPtrOutput() NamespacePolicyAttachmentPtrOutput
-	ToNamespacePolicyAttachmentPtrOutputWithContext(ctx context.Context) NamespacePolicyAttachmentPtrOutput
-}
-
-type namespacePolicyAttachmentPtrType NamespacePolicyAttachmentArgs
-
-func (*namespacePolicyAttachmentPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**NamespacePolicyAttachment)(nil))
-}
-
-func (i *namespacePolicyAttachmentPtrType) ToNamespacePolicyAttachmentPtrOutput() NamespacePolicyAttachmentPtrOutput {
-	return i.ToNamespacePolicyAttachmentPtrOutputWithContext(context.Background())
-}
-
-func (i *namespacePolicyAttachmentPtrType) ToNamespacePolicyAttachmentPtrOutputWithContext(ctx context.Context) NamespacePolicyAttachmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NamespacePolicyAttachmentPtrOutput)
 }
 
 // NamespacePolicyAttachmentArrayInput is an input type that accepts NamespacePolicyAttachmentArray and NamespacePolicyAttachmentArrayOutput values.
@@ -160,7 +131,7 @@ type NamespacePolicyAttachmentArrayInput interface {
 type NamespacePolicyAttachmentArray []NamespacePolicyAttachmentInput
 
 func (NamespacePolicyAttachmentArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*NamespacePolicyAttachment)(nil))
+	return reflect.TypeOf((*[]*NamespacePolicyAttachment)(nil)).Elem()
 }
 
 func (i NamespacePolicyAttachmentArray) ToNamespacePolicyAttachmentArrayOutput() NamespacePolicyAttachmentArrayOutput {
@@ -185,7 +156,7 @@ type NamespacePolicyAttachmentMapInput interface {
 type NamespacePolicyAttachmentMap map[string]NamespacePolicyAttachmentInput
 
 func (NamespacePolicyAttachmentMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*NamespacePolicyAttachment)(nil))
+	return reflect.TypeOf((*map[string]*NamespacePolicyAttachment)(nil)).Elem()
 }
 
 func (i NamespacePolicyAttachmentMap) ToNamespacePolicyAttachmentMapOutput() NamespacePolicyAttachmentMapOutput {
@@ -196,12 +167,10 @@ func (i NamespacePolicyAttachmentMap) ToNamespacePolicyAttachmentMapOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(NamespacePolicyAttachmentMapOutput)
 }
 
-type NamespacePolicyAttachmentOutput struct {
-	*pulumi.OutputState
-}
+type NamespacePolicyAttachmentOutput struct{ *pulumi.OutputState }
 
 func (NamespacePolicyAttachmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NamespacePolicyAttachment)(nil))
+	return reflect.TypeOf((**NamespacePolicyAttachment)(nil)).Elem()
 }
 
 func (o NamespacePolicyAttachmentOutput) ToNamespacePolicyAttachmentOutput() NamespacePolicyAttachmentOutput {
@@ -212,36 +181,10 @@ func (o NamespacePolicyAttachmentOutput) ToNamespacePolicyAttachmentOutputWithCo
 	return o
 }
 
-func (o NamespacePolicyAttachmentOutput) ToNamespacePolicyAttachmentPtrOutput() NamespacePolicyAttachmentPtrOutput {
-	return o.ToNamespacePolicyAttachmentPtrOutputWithContext(context.Background())
-}
-
-func (o NamespacePolicyAttachmentOutput) ToNamespacePolicyAttachmentPtrOutputWithContext(ctx context.Context) NamespacePolicyAttachmentPtrOutput {
-	return o.ApplyT(func(v NamespacePolicyAttachment) *NamespacePolicyAttachment {
-		return &v
-	}).(NamespacePolicyAttachmentPtrOutput)
-}
-
-type NamespacePolicyAttachmentPtrOutput struct {
-	*pulumi.OutputState
-}
-
-func (NamespacePolicyAttachmentPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**NamespacePolicyAttachment)(nil))
-}
-
-func (o NamespacePolicyAttachmentPtrOutput) ToNamespacePolicyAttachmentPtrOutput() NamespacePolicyAttachmentPtrOutput {
-	return o
-}
-
-func (o NamespacePolicyAttachmentPtrOutput) ToNamespacePolicyAttachmentPtrOutputWithContext(ctx context.Context) NamespacePolicyAttachmentPtrOutput {
-	return o
-}
-
 type NamespacePolicyAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (NamespacePolicyAttachmentArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]NamespacePolicyAttachment)(nil))
+	return reflect.TypeOf((*[]*NamespacePolicyAttachment)(nil)).Elem()
 }
 
 func (o NamespacePolicyAttachmentArrayOutput) ToNamespacePolicyAttachmentArrayOutput() NamespacePolicyAttachmentArrayOutput {
@@ -253,15 +196,15 @@ func (o NamespacePolicyAttachmentArrayOutput) ToNamespacePolicyAttachmentArrayOu
 }
 
 func (o NamespacePolicyAttachmentArrayOutput) Index(i pulumi.IntInput) NamespacePolicyAttachmentOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NamespacePolicyAttachment {
-		return vs[0].([]NamespacePolicyAttachment)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NamespacePolicyAttachment {
+		return vs[0].([]*NamespacePolicyAttachment)[vs[1].(int)]
 	}).(NamespacePolicyAttachmentOutput)
 }
 
 type NamespacePolicyAttachmentMapOutput struct{ *pulumi.OutputState }
 
 func (NamespacePolicyAttachmentMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]NamespacePolicyAttachment)(nil))
+	return reflect.TypeOf((*map[string]*NamespacePolicyAttachment)(nil)).Elem()
 }
 
 func (o NamespacePolicyAttachmentMapOutput) ToNamespacePolicyAttachmentMapOutput() NamespacePolicyAttachmentMapOutput {
@@ -273,14 +216,16 @@ func (o NamespacePolicyAttachmentMapOutput) ToNamespacePolicyAttachmentMapOutput
 }
 
 func (o NamespacePolicyAttachmentMapOutput) MapIndex(k pulumi.StringInput) NamespacePolicyAttachmentOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) NamespacePolicyAttachment {
-		return vs[0].(map[string]NamespacePolicyAttachment)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *NamespacePolicyAttachment {
+		return vs[0].(map[string]*NamespacePolicyAttachment)[vs[1].(string)]
 	}).(NamespacePolicyAttachmentOutput)
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*NamespacePolicyAttachmentInput)(nil)).Elem(), &NamespacePolicyAttachment{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NamespacePolicyAttachmentArrayInput)(nil)).Elem(), NamespacePolicyAttachmentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NamespacePolicyAttachmentMapInput)(nil)).Elem(), NamespacePolicyAttachmentMap{})
 	pulumi.RegisterOutputType(NamespacePolicyAttachmentOutput{})
-	pulumi.RegisterOutputType(NamespacePolicyAttachmentPtrOutput{})
 	pulumi.RegisterOutputType(NamespacePolicyAttachmentArrayOutput{})
 	pulumi.RegisterOutputType(NamespacePolicyAttachmentMapOutput{})
 }

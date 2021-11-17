@@ -4,6 +4,9 @@
 package consul
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -62,4 +65,70 @@ type GetAutopilotHealthResult struct {
 	// A list of server health information. See below for details on the
 	// available information.
 	Servers []GetAutopilotHealthServer `pulumi:"servers"`
+}
+
+func GetAutopilotHealthOutput(ctx *pulumi.Context, args GetAutopilotHealthOutputArgs, opts ...pulumi.InvokeOption) GetAutopilotHealthResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetAutopilotHealthResult, error) {
+			args := v.(GetAutopilotHealthArgs)
+			r, err := GetAutopilotHealth(ctx, &args, opts...)
+			return *r, err
+		}).(GetAutopilotHealthResultOutput)
+}
+
+// A collection of arguments for invoking getAutopilotHealth.
+type GetAutopilotHealthOutputArgs struct {
+	// The datacenter to use. This overrides the agent's
+	// default datacenter and the datacenter in the provider setup.
+	Datacenter pulumi.StringPtrInput `pulumi:"datacenter"`
+}
+
+func (GetAutopilotHealthOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAutopilotHealthArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getAutopilotHealth.
+type GetAutopilotHealthResultOutput struct{ *pulumi.OutputState }
+
+func (GetAutopilotHealthResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAutopilotHealthResult)(nil)).Elem()
+}
+
+func (o GetAutopilotHealthResultOutput) ToGetAutopilotHealthResultOutput() GetAutopilotHealthResultOutput {
+	return o
+}
+
+func (o GetAutopilotHealthResultOutput) ToGetAutopilotHealthResultOutputWithContext(ctx context.Context) GetAutopilotHealthResultOutput {
+	return o
+}
+
+func (o GetAutopilotHealthResultOutput) Datacenter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAutopilotHealthResult) *string { return v.Datacenter }).(pulumi.StringPtrOutput)
+}
+
+// The number of redundant healthy servers that could fail
+// without causing an outage
+func (o GetAutopilotHealthResultOutput) FailureTolerance() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAutopilotHealthResult) int { return v.FailureTolerance }).(pulumi.IntOutput)
+}
+
+// Whether the server is healthy according to the current Autopilot
+// configuration
+func (o GetAutopilotHealthResultOutput) Healthy() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAutopilotHealthResult) bool { return v.Healthy }).(pulumi.BoolOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetAutopilotHealthResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAutopilotHealthResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of server health information. See below for details on the
+// available information.
+func (o GetAutopilotHealthResultOutput) Servers() GetAutopilotHealthServerArrayOutput {
+	return o.ApplyT(func(v GetAutopilotHealthResult) []GetAutopilotHealthServer { return v.Servers }).(GetAutopilotHealthServerArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetAutopilotHealthResultOutput{})
 }

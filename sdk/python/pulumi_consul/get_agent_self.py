@@ -745,10 +745,10 @@ class AwaitableGetAgentSelfResult(GetAgentSelfResult):
 
 def get_agent_self(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAgentSelfResult:
     """
-    > **Warning:** The `getAgentSelf` resource has been deprecated and will be removed
+    > **Warning:** The `get_agent_self` resource has been deprecated and will be removed
     from a future release of the provider. Read the [upgrade instructions](https://www.terraform.io/docs/providers/consul/guides/upgrading.html#deprecation-of-consul_agent_self) for more information.
 
-    The `getAgentSelf` data source returns
+    The `get_agent_self` data source returns
     [configuration and status data](https://www.consul.io/docs/agent/http/agent.html#agent_self)
     from the agent specified in the `provider`.
     """

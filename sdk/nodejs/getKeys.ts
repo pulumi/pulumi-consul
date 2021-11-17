@@ -93,3 +93,32 @@ export interface GetKeysResult {
     readonly token?: string;
     readonly var: {[key: string]: string};
 }
+
+export function getKeysOutput(args?: GetKeysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeysResult> {
+    return pulumi.output(args).apply(a => getKeys(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getKeys.
+ */
+export interface GetKeysOutputArgs {
+    /**
+     * The datacenter to use. This overrides the
+     * agent's default datacenter and the datacenter in the provider setup.
+     */
+    datacenter?: pulumi.Input<string>;
+    /**
+     * Specifies a key in Consul to be read. Supported
+     * values documented below. Multiple blocks supported.
+     */
+    keys?: pulumi.Input<pulumi.Input<inputs.GetKeysKeyArgs>[]>;
+    /**
+     * The namespace to lookup the keys.
+     */
+    namespace?: pulumi.Input<string>;
+    /**
+     * The ACL token to use. This overrides the
+     * token that the agent provides by default.
+     */
+    token?: pulumi.Input<string>;
+}

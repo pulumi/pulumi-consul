@@ -10,41 +10,41 @@ using Pulumi.Serialization;
 namespace Pulumi.Consul.Inputs
 {
 
-    public sealed class GetCatalogServiceQueryOptionArgs : Pulumi.InvokeArgs
+    public sealed class GetCatalogServiceQueryOptionInputArgs : Pulumi.ResourceArgs
     {
         [Input("allowStale")]
-        public bool? AllowStale { get; set; }
+        public Input<bool>? AllowStale { get; set; }
 
         [Input("datacenter")]
-        public string? Datacenter { get; set; }
+        public Input<string>? Datacenter { get; set; }
 
         [Input("namespace")]
-        public string? Namespace { get; set; }
+        public Input<string>? Namespace { get; set; }
 
         [Input("near")]
-        public string? Near { get; set; }
+        public Input<string>? Near { get; set; }
 
         [Input("nodeMeta")]
-        private Dictionary<string, string>? _nodeMeta;
-        public Dictionary<string, string> NodeMeta
+        private InputMap<string>? _nodeMeta;
+        public InputMap<string> NodeMeta
         {
-            get => _nodeMeta ?? (_nodeMeta = new Dictionary<string, string>());
+            get => _nodeMeta ?? (_nodeMeta = new InputMap<string>());
             set => _nodeMeta = value;
         }
 
         [Input("requireConsistent")]
-        public bool? RequireConsistent { get; set; }
+        public Input<bool>? RequireConsistent { get; set; }
 
         [Input("token")]
-        public string? Token { get; set; }
+        public Input<string>? Token { get; set; }
 
         [Input("waitIndex")]
-        public int? WaitIndex { get; set; }
+        public Input<int>? WaitIndex { get; set; }
 
         [Input("waitTime")]
-        public string? WaitTime { get; set; }
+        public Input<string>? WaitTime { get; set; }
 
-        public GetCatalogServiceQueryOptionArgs()
+        public GetCatalogServiceQueryOptionInputArgs()
         {
         }
     }

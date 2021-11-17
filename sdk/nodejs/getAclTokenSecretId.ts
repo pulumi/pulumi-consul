@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 export function getAclTokenSecretId(args: GetAclTokenSecretIdArgs, opts?: pulumi.InvokeOptions): Promise<GetAclTokenSecretIdResult> {
@@ -51,4 +50,23 @@ export interface GetAclTokenSecretIdResult {
      * The secret ID of the ACL token if `pgpKey` has not been set.
      */
     readonly secretId: string;
+}
+
+export function getAclTokenSecretIdOutput(args: GetAclTokenSecretIdOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAclTokenSecretIdResult> {
+    return pulumi.output(args).apply(a => getAclTokenSecretId(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAclTokenSecretId.
+ */
+export interface GetAclTokenSecretIdOutputArgs {
+    /**
+     * The accessor ID of the ACL token.
+     */
+    accessorId: pulumi.Input<string>;
+    /**
+     * The namespace to lookup the token.
+     */
+    namespace?: pulumi.Input<string>;
+    pgpKey?: pulumi.Input<string>;
 }

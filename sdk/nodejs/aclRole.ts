@@ -97,29 +97,29 @@ export class AclRole extends pulumi.CustomResource {
      */
     constructor(name: string, args?: AclRoleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AclRoleArgs | AclRoleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AclRoleState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["namespace"] = state ? state.namespace : undefined;
-            inputs["nodeIdentities"] = state ? state.nodeIdentities : undefined;
-            inputs["policies"] = state ? state.policies : undefined;
-            inputs["serviceIdentities"] = state ? state.serviceIdentities : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["namespace"] = state ? state.namespace : undefined;
+            resourceInputs["nodeIdentities"] = state ? state.nodeIdentities : undefined;
+            resourceInputs["policies"] = state ? state.policies : undefined;
+            resourceInputs["serviceIdentities"] = state ? state.serviceIdentities : undefined;
         } else {
             const args = argsOrState as AclRoleArgs | undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["namespace"] = args ? args.namespace : undefined;
-            inputs["nodeIdentities"] = args ? args.nodeIdentities : undefined;
-            inputs["policies"] = args ? args.policies : undefined;
-            inputs["serviceIdentities"] = args ? args.serviceIdentities : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["namespace"] = args ? args.namespace : undefined;
+            resourceInputs["nodeIdentities"] = args ? args.nodeIdentities : undefined;
+            resourceInputs["policies"] = args ? args.policies : undefined;
+            resourceInputs["serviceIdentities"] = args ? args.serviceIdentities : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(AclRole.__pulumiType, name, inputs, opts);
+        super(AclRole.__pulumiType, name, resourceInputs, opts);
     }
 }
 

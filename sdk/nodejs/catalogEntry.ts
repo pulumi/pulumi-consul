@@ -97,15 +97,15 @@ export class CatalogEntry extends pulumi.CustomResource {
      */
     constructor(name: string, args: CatalogEntryArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CatalogEntryArgs | CatalogEntryState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CatalogEntryState | undefined;
-            inputs["address"] = state ? state.address : undefined;
-            inputs["datacenter"] = state ? state.datacenter : undefined;
-            inputs["node"] = state ? state.node : undefined;
-            inputs["services"] = state ? state.services : undefined;
-            inputs["token"] = state ? state.token : undefined;
+            resourceInputs["address"] = state ? state.address : undefined;
+            resourceInputs["datacenter"] = state ? state.datacenter : undefined;
+            resourceInputs["node"] = state ? state.node : undefined;
+            resourceInputs["services"] = state ? state.services : undefined;
+            resourceInputs["token"] = state ? state.token : undefined;
         } else {
             const args = argsOrState as CatalogEntryArgs | undefined;
             if ((!args || args.address === undefined) && !opts.urn) {
@@ -114,16 +114,16 @@ export class CatalogEntry extends pulumi.CustomResource {
             if ((!args || args.node === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'node'");
             }
-            inputs["address"] = args ? args.address : undefined;
-            inputs["datacenter"] = args ? args.datacenter : undefined;
-            inputs["node"] = args ? args.node : undefined;
-            inputs["services"] = args ? args.services : undefined;
-            inputs["token"] = args ? args.token : undefined;
+            resourceInputs["address"] = args ? args.address : undefined;
+            resourceInputs["datacenter"] = args ? args.datacenter : undefined;
+            resourceInputs["node"] = args ? args.node : undefined;
+            resourceInputs["services"] = args ? args.services : undefined;
+            resourceInputs["token"] = args ? args.token : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(CatalogEntry.__pulumiType, name, inputs, opts);
+        super(CatalogEntry.__pulumiType, name, resourceInputs, opts);
     }
 }
 

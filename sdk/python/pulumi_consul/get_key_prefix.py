@@ -14,6 +14,7 @@ __all__ = [
     'GetKeyPrefixResult',
     'AwaitableGetKeyPrefixResult',
     'get_key_prefix',
+    'get_key_prefix_output',
 ]
 
 @pulumi.output_type
@@ -160,3 +161,27 @@ def get_key_prefix(datacenter: Optional[str] = None,
         subkeys=__ret__.subkeys,
         token=__ret__.token,
         var=__ret__.var)
+
+
+@_utilities.lift_output_func(get_key_prefix)
+def get_key_prefix_output(datacenter: Optional[pulumi.Input[Optional[str]]] = None,
+                          namespace: Optional[pulumi.Input[Optional[str]]] = None,
+                          path_prefix: Optional[pulumi.Input[str]] = None,
+                          subkey_collection: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetKeyPrefixSubkeyCollectionArgs']]]]] = None,
+                          token: Optional[pulumi.Input[Optional[str]]] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKeyPrefixResult]:
+    """
+    Use this data source to access information about an existing resource.
+
+    :param str datacenter: The datacenter to use. This overrides the
+           agent's default datacenter and the datacenter in the provider setup.
+    :param str namespace: The namespace to create the keys within.
+    :param str path_prefix: Specifies the common prefix shared by all keys
+           that will be read by this data source instance. In most cases, this will
+           end with a slash to read a "folder" of subkeys.
+    :param Sequence[pulumi.InputType['GetKeyPrefixSubkeyCollectionArgs']] subkey_collection: Specifies a subkey in Consul to be read. Supported
+           values documented below. Multiple blocks supported.
+    :param str token: The ACL token to use. This overrides the
+           token that the agent provides by default.
+    """
+    ...

@@ -81,3 +81,38 @@ export interface GetKeyPrefixResult {
     readonly token?: string;
     readonly var: {[key: string]: string};
 }
+
+export function getKeyPrefixOutput(args: GetKeyPrefixOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeyPrefixResult> {
+    return pulumi.output(args).apply(a => getKeyPrefix(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getKeyPrefix.
+ */
+export interface GetKeyPrefixOutputArgs {
+    /**
+     * The datacenter to use. This overrides the
+     * agent's default datacenter and the datacenter in the provider setup.
+     */
+    datacenter?: pulumi.Input<string>;
+    /**
+     * The namespace to create the keys within.
+     */
+    namespace?: pulumi.Input<string>;
+    /**
+     * Specifies the common prefix shared by all keys
+     * that will be read by this data source instance. In most cases, this will
+     * end with a slash to read a "folder" of subkeys.
+     */
+    pathPrefix: pulumi.Input<string>;
+    /**
+     * Specifies a subkey in Consul to be read. Supported
+     * values documented below. Multiple blocks supported.
+     */
+    subkeyCollection?: pulumi.Input<pulumi.Input<inputs.GetKeyPrefixSubkeyCollectionArgs>[]>;
+    /**
+     * The ACL token to use. This overrides the
+     * token that the agent provides by default.
+     */
+    token?: pulumi.Input<string>;
+}

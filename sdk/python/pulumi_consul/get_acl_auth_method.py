@@ -13,6 +13,7 @@ __all__ = [
     'GetAclAuthMethodResult',
     'AwaitableGetAclAuthMethodResult',
     'get_acl_auth_method',
+    'get_acl_auth_method_output',
 ]
 
 @pulumi.output_type
@@ -209,3 +210,28 @@ def get_acl_auth_method(name: Optional[str] = None,
         namespace_rules=__ret__.namespace_rules,
         token_locality=__ret__.token_locality,
         type=__ret__.type)
+
+
+@_utilities.lift_output_func(get_acl_auth_method)
+def get_acl_auth_method_output(name: Optional[pulumi.Input[str]] = None,
+                               namespace: Optional[pulumi.Input[Optional[str]]] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAclAuthMethodResult]:
+    """
+    The `AclAuthMethod` data source returns the information related to a
+    [Consul Auth Method](https://www.consul.io/docs/acl/acl-auth-methods.html).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_consul as consul
+
+    test = consul.get_acl_auth_method(name="minikube")
+    pulumi.export("consulAclAuthMethod", test.config)
+    ```
+
+
+    :param str name: The name of the ACL Auth Method.
+    :param str namespace: The namespace to lookup the auth method.
+    """
+    ...

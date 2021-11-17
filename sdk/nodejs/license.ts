@@ -108,44 +108,44 @@ export class License extends pulumi.CustomResource {
      */
     constructor(name: string, args: LicenseArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: LicenseArgs | LicenseState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LicenseState | undefined;
-            inputs["customerId"] = state ? state.customerId : undefined;
-            inputs["datacenter"] = state ? state.datacenter : undefined;
-            inputs["expirationTime"] = state ? state.expirationTime : undefined;
-            inputs["features"] = state ? state.features : undefined;
-            inputs["installationId"] = state ? state.installationId : undefined;
-            inputs["issueTime"] = state ? state.issueTime : undefined;
-            inputs["license"] = state ? state.license : undefined;
-            inputs["licenseId"] = state ? state.licenseId : undefined;
-            inputs["product"] = state ? state.product : undefined;
-            inputs["startTime"] = state ? state.startTime : undefined;
-            inputs["valid"] = state ? state.valid : undefined;
-            inputs["warnings"] = state ? state.warnings : undefined;
+            resourceInputs["customerId"] = state ? state.customerId : undefined;
+            resourceInputs["datacenter"] = state ? state.datacenter : undefined;
+            resourceInputs["expirationTime"] = state ? state.expirationTime : undefined;
+            resourceInputs["features"] = state ? state.features : undefined;
+            resourceInputs["installationId"] = state ? state.installationId : undefined;
+            resourceInputs["issueTime"] = state ? state.issueTime : undefined;
+            resourceInputs["license"] = state ? state.license : undefined;
+            resourceInputs["licenseId"] = state ? state.licenseId : undefined;
+            resourceInputs["product"] = state ? state.product : undefined;
+            resourceInputs["startTime"] = state ? state.startTime : undefined;
+            resourceInputs["valid"] = state ? state.valid : undefined;
+            resourceInputs["warnings"] = state ? state.warnings : undefined;
         } else {
             const args = argsOrState as LicenseArgs | undefined;
             if ((!args || args.license === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'license'");
             }
-            inputs["datacenter"] = args ? args.datacenter : undefined;
-            inputs["license"] = args ? args.license : undefined;
-            inputs["customerId"] = undefined /*out*/;
-            inputs["expirationTime"] = undefined /*out*/;
-            inputs["features"] = undefined /*out*/;
-            inputs["installationId"] = undefined /*out*/;
-            inputs["issueTime"] = undefined /*out*/;
-            inputs["licenseId"] = undefined /*out*/;
-            inputs["product"] = undefined /*out*/;
-            inputs["startTime"] = undefined /*out*/;
-            inputs["valid"] = undefined /*out*/;
-            inputs["warnings"] = undefined /*out*/;
+            resourceInputs["datacenter"] = args ? args.datacenter : undefined;
+            resourceInputs["license"] = args ? args.license : undefined;
+            resourceInputs["customerId"] = undefined /*out*/;
+            resourceInputs["expirationTime"] = undefined /*out*/;
+            resourceInputs["features"] = undefined /*out*/;
+            resourceInputs["installationId"] = undefined /*out*/;
+            resourceInputs["issueTime"] = undefined /*out*/;
+            resourceInputs["licenseId"] = undefined /*out*/;
+            resourceInputs["product"] = undefined /*out*/;
+            resourceInputs["startTime"] = undefined /*out*/;
+            resourceInputs["valid"] = undefined /*out*/;
+            resourceInputs["warnings"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(License.__pulumiType, name, inputs, opts);
+        super(License.__pulumiType, name, resourceInputs, opts);
     }
 }
 

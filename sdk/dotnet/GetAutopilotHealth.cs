@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Consul
 {
@@ -41,6 +42,37 @@ namespace Pulumi.Consul
         /// </summary>
         public static Task<GetAutopilotHealthResult> InvokeAsync(GetAutopilotHealthArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAutopilotHealthResult>("consul:index/getAutopilotHealth:getAutopilotHealth", args ?? new GetAutopilotHealthArgs(), options.WithVersion());
+
+        /// <summary>
+        /// The `consul.getAutopilotHealth` data source returns
+        /// [autopilot health information](https://www.consul.io/api/operator/autopilot.html#read-health)
+        /// about the current Consul cluster.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Consul = Pulumi.Consul;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var read = Output.Create(Consul.GetAutopilotHealth.InvokeAsync());
+        ///         this.Health = read.Apply(read =&gt; read.Healthy);
+        ///     }
+        /// 
+        ///     [Output("health")]
+        ///     public Output&lt;string&gt; Health { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetAutopilotHealthResult> Invoke(GetAutopilotHealthInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAutopilotHealthResult>("consul:index/getAutopilotHealth:getAutopilotHealth", args ?? new GetAutopilotHealthInvokeArgs(), options.WithVersion());
     }
 
 
@@ -54,6 +86,20 @@ namespace Pulumi.Consul
         public string? Datacenter { get; set; }
 
         public GetAutopilotHealthArgs()
+        {
+        }
+    }
+
+    public sealed class GetAutopilotHealthInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The datacenter to use. This overrides the agent's
+        /// default datacenter and the datacenter in the provider setup.
+        /// </summary>
+        [Input("datacenter")]
+        public Input<string>? Datacenter { get; set; }
+
+        public GetAutopilotHealthInvokeArgs()
         {
         }
     }
