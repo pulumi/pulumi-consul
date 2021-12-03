@@ -135,18 +135,18 @@ export class Intention extends pulumi.CustomResource {
      */
     constructor(name: string, args: IntentionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: IntentionArgs | IntentionState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IntentionState | undefined;
-            inputs["action"] = state ? state.action : undefined;
-            inputs["datacenter"] = state ? state.datacenter : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["destinationName"] = state ? state.destinationName : undefined;
-            inputs["destinationNamespace"] = state ? state.destinationNamespace : undefined;
-            inputs["meta"] = state ? state.meta : undefined;
-            inputs["sourceName"] = state ? state.sourceName : undefined;
-            inputs["sourceNamespace"] = state ? state.sourceNamespace : undefined;
+            resourceInputs["action"] = state ? state.action : undefined;
+            resourceInputs["datacenter"] = state ? state.datacenter : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["destinationName"] = state ? state.destinationName : undefined;
+            resourceInputs["destinationNamespace"] = state ? state.destinationNamespace : undefined;
+            resourceInputs["meta"] = state ? state.meta : undefined;
+            resourceInputs["sourceName"] = state ? state.sourceName : undefined;
+            resourceInputs["sourceNamespace"] = state ? state.sourceNamespace : undefined;
         } else {
             const args = argsOrState as IntentionArgs | undefined;
             if ((!args || args.action === undefined) && !opts.urn) {
@@ -158,19 +158,19 @@ export class Intention extends pulumi.CustomResource {
             if ((!args || args.sourceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sourceName'");
             }
-            inputs["action"] = args ? args.action : undefined;
-            inputs["datacenter"] = args ? args.datacenter : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["destinationName"] = args ? args.destinationName : undefined;
-            inputs["destinationNamespace"] = args ? args.destinationNamespace : undefined;
-            inputs["meta"] = args ? args.meta : undefined;
-            inputs["sourceName"] = args ? args.sourceName : undefined;
-            inputs["sourceNamespace"] = args ? args.sourceNamespace : undefined;
+            resourceInputs["action"] = args ? args.action : undefined;
+            resourceInputs["datacenter"] = args ? args.datacenter : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["destinationName"] = args ? args.destinationName : undefined;
+            resourceInputs["destinationNamespace"] = args ? args.destinationNamespace : undefined;
+            resourceInputs["meta"] = args ? args.meta : undefined;
+            resourceInputs["sourceName"] = args ? args.sourceName : undefined;
+            resourceInputs["sourceNamespace"] = args ? args.sourceNamespace : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Intention.__pulumiType, name, inputs, opts);
+        super(Intention.__pulumiType, name, resourceInputs, opts);
     }
 }
 

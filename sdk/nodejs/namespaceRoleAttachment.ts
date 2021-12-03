@@ -59,12 +59,12 @@ export class NamespaceRoleAttachment extends pulumi.CustomResource {
      */
     constructor(name: string, args: NamespaceRoleAttachmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NamespaceRoleAttachmentArgs | NamespaceRoleAttachmentState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NamespaceRoleAttachmentState | undefined;
-            inputs["namespace"] = state ? state.namespace : undefined;
-            inputs["role"] = state ? state.role : undefined;
+            resourceInputs["namespace"] = state ? state.namespace : undefined;
+            resourceInputs["role"] = state ? state.role : undefined;
         } else {
             const args = argsOrState as NamespaceRoleAttachmentArgs | undefined;
             if ((!args || args.namespace === undefined) && !opts.urn) {
@@ -73,13 +73,13 @@ export class NamespaceRoleAttachment extends pulumi.CustomResource {
             if ((!args || args.role === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            inputs["namespace"] = args ? args.namespace : undefined;
-            inputs["role"] = args ? args.role : undefined;
+            resourceInputs["namespace"] = args ? args.namespace : undefined;
+            resourceInputs["role"] = args ? args.role : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(NamespaceRoleAttachment.__pulumiType, name, inputs, opts);
+        super(NamespaceRoleAttachment.__pulumiType, name, resourceInputs, opts);
     }
 }
 

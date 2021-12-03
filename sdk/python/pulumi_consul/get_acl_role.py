@@ -13,6 +13,7 @@ __all__ = [
     'GetAclRoleResult',
     'AwaitableGetAclRoleResult',
     'get_acl_role',
+    'get_acl_role_output',
 ]
 
 @pulumi.output_type
@@ -153,3 +154,28 @@ def get_acl_role(name: Optional[str] = None,
         node_identities=__ret__.node_identities,
         policies=__ret__.policies,
         service_identities=__ret__.service_identities)
+
+
+@_utilities.lift_output_func(get_acl_role)
+def get_acl_role_output(name: Optional[pulumi.Input[str]] = None,
+                        namespace: Optional[pulumi.Input[Optional[str]]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAclRoleResult]:
+    """
+    The `AclRole` data source returns the information related to a
+    [Consul ACL Role](https://www.consul.io/api/acl/roles.html).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_consul as consul
+
+    test = consul.get_acl_role(name="example-role")
+    pulumi.export("consulAclRole", test.id)
+    ```
+
+
+    :param str name: The name of the ACL Role.
+    :param str namespace: The namespace to lookup the role.
+    """
+    ...

@@ -92,3 +92,21 @@ export interface GetAclTokenResult {
      */
     readonly serviceIdentities: outputs.GetAclTokenServiceIdentity[];
 }
+
+export function getAclTokenOutput(args: GetAclTokenOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAclTokenResult> {
+    return pulumi.output(args).apply(a => getAclToken(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAclToken.
+ */
+export interface GetAclTokenOutputArgs {
+    /**
+     * The accessor ID of the ACL token.
+     */
+    accessorId: pulumi.Input<string>;
+    /**
+     * The namespace to lookup the ACL token.
+     */
+    namespace?: pulumi.Input<string>;
+}

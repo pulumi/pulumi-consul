@@ -104,33 +104,33 @@ export class AutopilotConfig extends pulumi.CustomResource {
      */
     constructor(name: string, args?: AutopilotConfigArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AutopilotConfigArgs | AutopilotConfigState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AutopilotConfigState | undefined;
-            inputs["cleanupDeadServers"] = state ? state.cleanupDeadServers : undefined;
-            inputs["datacenter"] = state ? state.datacenter : undefined;
-            inputs["disableUpgradeMigration"] = state ? state.disableUpgradeMigration : undefined;
-            inputs["lastContactThreshold"] = state ? state.lastContactThreshold : undefined;
-            inputs["maxTrailingLogs"] = state ? state.maxTrailingLogs : undefined;
-            inputs["redundancyZoneTag"] = state ? state.redundancyZoneTag : undefined;
-            inputs["serverStabilizationTime"] = state ? state.serverStabilizationTime : undefined;
-            inputs["upgradeVersionTag"] = state ? state.upgradeVersionTag : undefined;
+            resourceInputs["cleanupDeadServers"] = state ? state.cleanupDeadServers : undefined;
+            resourceInputs["datacenter"] = state ? state.datacenter : undefined;
+            resourceInputs["disableUpgradeMigration"] = state ? state.disableUpgradeMigration : undefined;
+            resourceInputs["lastContactThreshold"] = state ? state.lastContactThreshold : undefined;
+            resourceInputs["maxTrailingLogs"] = state ? state.maxTrailingLogs : undefined;
+            resourceInputs["redundancyZoneTag"] = state ? state.redundancyZoneTag : undefined;
+            resourceInputs["serverStabilizationTime"] = state ? state.serverStabilizationTime : undefined;
+            resourceInputs["upgradeVersionTag"] = state ? state.upgradeVersionTag : undefined;
         } else {
             const args = argsOrState as AutopilotConfigArgs | undefined;
-            inputs["cleanupDeadServers"] = args ? args.cleanupDeadServers : undefined;
-            inputs["datacenter"] = args ? args.datacenter : undefined;
-            inputs["disableUpgradeMigration"] = args ? args.disableUpgradeMigration : undefined;
-            inputs["lastContactThreshold"] = args ? args.lastContactThreshold : undefined;
-            inputs["maxTrailingLogs"] = args ? args.maxTrailingLogs : undefined;
-            inputs["redundancyZoneTag"] = args ? args.redundancyZoneTag : undefined;
-            inputs["serverStabilizationTime"] = args ? args.serverStabilizationTime : undefined;
-            inputs["upgradeVersionTag"] = args ? args.upgradeVersionTag : undefined;
+            resourceInputs["cleanupDeadServers"] = args ? args.cleanupDeadServers : undefined;
+            resourceInputs["datacenter"] = args ? args.datacenter : undefined;
+            resourceInputs["disableUpgradeMigration"] = args ? args.disableUpgradeMigration : undefined;
+            resourceInputs["lastContactThreshold"] = args ? args.lastContactThreshold : undefined;
+            resourceInputs["maxTrailingLogs"] = args ? args.maxTrailingLogs : undefined;
+            resourceInputs["redundancyZoneTag"] = args ? args.redundancyZoneTag : undefined;
+            resourceInputs["serverStabilizationTime"] = args ? args.serverStabilizationTime : undefined;
+            resourceInputs["upgradeVersionTag"] = args ? args.upgradeVersionTag : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(AutopilotConfig.__pulumiType, name, inputs, opts);
+        super(AutopilotConfig.__pulumiType, name, resourceInputs, opts);
     }
 }
 

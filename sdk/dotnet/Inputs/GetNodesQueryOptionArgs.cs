@@ -10,14 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.Consul.Inputs
 {
 
-    public sealed class GetNodesQueryOptionArgs : Pulumi.InvokeArgs
+    public sealed class GetNodesQueryOptionInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// When `true`, the default, allow responses from
         /// Consul servers that are followers.
         /// </summary>
         [Input("allowStale")]
-        public bool? AllowStale { get; set; }
+        public Input<bool>? AllowStale { get; set; }
 
         /// <summary>
         /// The Consul datacenter to query.  Defaults to the
@@ -26,16 +26,16 @@ namespace Pulumi.Consul.Inputs
         /// configured to talk to then the datacenter in the provider setup.
         /// </summary>
         [Input("datacenter")]
-        public string? Datacenter { get; set; }
+        public Input<string>? Datacenter { get; set; }
 
         [Input("near")]
-        public string? Near { get; set; }
+        public Input<string>? Near { get; set; }
 
         [Input("nodeMeta")]
-        private Dictionary<string, string>? _nodeMeta;
-        public Dictionary<string, string> NodeMeta
+        private InputMap<string>? _nodeMeta;
+        public InputMap<string> NodeMeta
         {
-            get => _nodeMeta ?? (_nodeMeta = new Dictionary<string, string>());
+            get => _nodeMeta ?? (_nodeMeta = new InputMap<string>());
             set => _nodeMeta = value;
         }
 
@@ -45,7 +45,7 @@ namespace Pulumi.Consul.Inputs
         /// to `false`.
         /// </summary>
         [Input("requireConsistent")]
-        public bool? RequireConsistent { get; set; }
+        public Input<bool>? RequireConsistent { get; set; }
 
         /// <summary>
         /// Specify the Consul ACL token to use when performing the
@@ -53,22 +53,22 @@ namespace Pulumi.Consul.Inputs
         /// provider but may be overridden if necessary.
         /// </summary>
         [Input("token")]
-        public string? Token { get; set; }
+        public Input<string>? Token { get; set; }
 
         /// <summary>
         /// Index number used to enable blocking queries.
         /// </summary>
         [Input("waitIndex")]
-        public int? WaitIndex { get; set; }
+        public Input<int>? WaitIndex { get; set; }
 
         /// <summary>
         /// Max time the client should wait for a blocking query
         /// to return.
         /// </summary>
         [Input("waitTime")]
-        public string? WaitTime { get; set; }
+        public Input<string>? WaitTime { get; set; }
 
-        public GetNodesQueryOptionArgs()
+        public GetNodesQueryOptionInputArgs()
         {
         }
     }

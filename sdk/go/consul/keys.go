@@ -130,7 +130,7 @@ type KeysInput interface {
 }
 
 func (*Keys) ElementType() reflect.Type {
-	return reflect.TypeOf((*Keys)(nil))
+	return reflect.TypeOf((**Keys)(nil)).Elem()
 }
 
 func (i *Keys) ToKeysOutput() KeysOutput {
@@ -139,35 +139,6 @@ func (i *Keys) ToKeysOutput() KeysOutput {
 
 func (i *Keys) ToKeysOutputWithContext(ctx context.Context) KeysOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KeysOutput)
-}
-
-func (i *Keys) ToKeysPtrOutput() KeysPtrOutput {
-	return i.ToKeysPtrOutputWithContext(context.Background())
-}
-
-func (i *Keys) ToKeysPtrOutputWithContext(ctx context.Context) KeysPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KeysPtrOutput)
-}
-
-type KeysPtrInput interface {
-	pulumi.Input
-
-	ToKeysPtrOutput() KeysPtrOutput
-	ToKeysPtrOutputWithContext(ctx context.Context) KeysPtrOutput
-}
-
-type keysPtrType KeysArgs
-
-func (*keysPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Keys)(nil))
-}
-
-func (i *keysPtrType) ToKeysPtrOutput() KeysPtrOutput {
-	return i.ToKeysPtrOutputWithContext(context.Background())
-}
-
-func (i *keysPtrType) ToKeysPtrOutputWithContext(ctx context.Context) KeysPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KeysPtrOutput)
 }
 
 // KeysArrayInput is an input type that accepts KeysArray and KeysArrayOutput values.
@@ -184,7 +155,7 @@ type KeysArrayInput interface {
 type KeysArray []KeysInput
 
 func (KeysArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Keys)(nil))
+	return reflect.TypeOf((*[]*Keys)(nil)).Elem()
 }
 
 func (i KeysArray) ToKeysArrayOutput() KeysArrayOutput {
@@ -209,7 +180,7 @@ type KeysMapInput interface {
 type KeysMap map[string]KeysInput
 
 func (KeysMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Keys)(nil))
+	return reflect.TypeOf((*map[string]*Keys)(nil)).Elem()
 }
 
 func (i KeysMap) ToKeysMapOutput() KeysMapOutput {
@@ -220,12 +191,10 @@ func (i KeysMap) ToKeysMapOutputWithContext(ctx context.Context) KeysMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KeysMapOutput)
 }
 
-type KeysOutput struct {
-	*pulumi.OutputState
-}
+type KeysOutput struct{ *pulumi.OutputState }
 
 func (KeysOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Keys)(nil))
+	return reflect.TypeOf((**Keys)(nil)).Elem()
 }
 
 func (o KeysOutput) ToKeysOutput() KeysOutput {
@@ -236,36 +205,10 @@ func (o KeysOutput) ToKeysOutputWithContext(ctx context.Context) KeysOutput {
 	return o
 }
 
-func (o KeysOutput) ToKeysPtrOutput() KeysPtrOutput {
-	return o.ToKeysPtrOutputWithContext(context.Background())
-}
-
-func (o KeysOutput) ToKeysPtrOutputWithContext(ctx context.Context) KeysPtrOutput {
-	return o.ApplyT(func(v Keys) *Keys {
-		return &v
-	}).(KeysPtrOutput)
-}
-
-type KeysPtrOutput struct {
-	*pulumi.OutputState
-}
-
-func (KeysPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Keys)(nil))
-}
-
-func (o KeysPtrOutput) ToKeysPtrOutput() KeysPtrOutput {
-	return o
-}
-
-func (o KeysPtrOutput) ToKeysPtrOutputWithContext(ctx context.Context) KeysPtrOutput {
-	return o
-}
-
 type KeysArrayOutput struct{ *pulumi.OutputState }
 
 func (KeysArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Keys)(nil))
+	return reflect.TypeOf((*[]*Keys)(nil)).Elem()
 }
 
 func (o KeysArrayOutput) ToKeysArrayOutput() KeysArrayOutput {
@@ -277,15 +220,15 @@ func (o KeysArrayOutput) ToKeysArrayOutputWithContext(ctx context.Context) KeysA
 }
 
 func (o KeysArrayOutput) Index(i pulumi.IntInput) KeysOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Keys {
-		return vs[0].([]Keys)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Keys {
+		return vs[0].([]*Keys)[vs[1].(int)]
 	}).(KeysOutput)
 }
 
 type KeysMapOutput struct{ *pulumi.OutputState }
 
 func (KeysMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]Keys)(nil))
+	return reflect.TypeOf((*map[string]*Keys)(nil)).Elem()
 }
 
 func (o KeysMapOutput) ToKeysMapOutput() KeysMapOutput {
@@ -297,14 +240,16 @@ func (o KeysMapOutput) ToKeysMapOutputWithContext(ctx context.Context) KeysMapOu
 }
 
 func (o KeysMapOutput) MapIndex(k pulumi.StringInput) KeysOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Keys {
-		return vs[0].(map[string]Keys)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Keys {
+		return vs[0].(map[string]*Keys)[vs[1].(string)]
 	}).(KeysOutput)
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*KeysInput)(nil)).Elem(), &Keys{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeysArrayInput)(nil)).Elem(), KeysArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeysMapInput)(nil)).Elem(), KeysMap{})
 	pulumi.RegisterOutputType(KeysOutput{})
-	pulumi.RegisterOutputType(KeysPtrOutput{})
 	pulumi.RegisterOutputType(KeysArrayOutput{})
 	pulumi.RegisterOutputType(KeysMapOutput{})
 }

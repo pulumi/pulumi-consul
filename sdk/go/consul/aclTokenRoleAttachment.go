@@ -106,7 +106,7 @@ type AclTokenRoleAttachmentInput interface {
 }
 
 func (*AclTokenRoleAttachment) ElementType() reflect.Type {
-	return reflect.TypeOf((*AclTokenRoleAttachment)(nil))
+	return reflect.TypeOf((**AclTokenRoleAttachment)(nil)).Elem()
 }
 
 func (i *AclTokenRoleAttachment) ToAclTokenRoleAttachmentOutput() AclTokenRoleAttachmentOutput {
@@ -115,35 +115,6 @@ func (i *AclTokenRoleAttachment) ToAclTokenRoleAttachmentOutput() AclTokenRoleAt
 
 func (i *AclTokenRoleAttachment) ToAclTokenRoleAttachmentOutputWithContext(ctx context.Context) AclTokenRoleAttachmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AclTokenRoleAttachmentOutput)
-}
-
-func (i *AclTokenRoleAttachment) ToAclTokenRoleAttachmentPtrOutput() AclTokenRoleAttachmentPtrOutput {
-	return i.ToAclTokenRoleAttachmentPtrOutputWithContext(context.Background())
-}
-
-func (i *AclTokenRoleAttachment) ToAclTokenRoleAttachmentPtrOutputWithContext(ctx context.Context) AclTokenRoleAttachmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AclTokenRoleAttachmentPtrOutput)
-}
-
-type AclTokenRoleAttachmentPtrInput interface {
-	pulumi.Input
-
-	ToAclTokenRoleAttachmentPtrOutput() AclTokenRoleAttachmentPtrOutput
-	ToAclTokenRoleAttachmentPtrOutputWithContext(ctx context.Context) AclTokenRoleAttachmentPtrOutput
-}
-
-type aclTokenRoleAttachmentPtrType AclTokenRoleAttachmentArgs
-
-func (*aclTokenRoleAttachmentPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AclTokenRoleAttachment)(nil))
-}
-
-func (i *aclTokenRoleAttachmentPtrType) ToAclTokenRoleAttachmentPtrOutput() AclTokenRoleAttachmentPtrOutput {
-	return i.ToAclTokenRoleAttachmentPtrOutputWithContext(context.Background())
-}
-
-func (i *aclTokenRoleAttachmentPtrType) ToAclTokenRoleAttachmentPtrOutputWithContext(ctx context.Context) AclTokenRoleAttachmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AclTokenRoleAttachmentPtrOutput)
 }
 
 // AclTokenRoleAttachmentArrayInput is an input type that accepts AclTokenRoleAttachmentArray and AclTokenRoleAttachmentArrayOutput values.
@@ -160,7 +131,7 @@ type AclTokenRoleAttachmentArrayInput interface {
 type AclTokenRoleAttachmentArray []AclTokenRoleAttachmentInput
 
 func (AclTokenRoleAttachmentArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*AclTokenRoleAttachment)(nil))
+	return reflect.TypeOf((*[]*AclTokenRoleAttachment)(nil)).Elem()
 }
 
 func (i AclTokenRoleAttachmentArray) ToAclTokenRoleAttachmentArrayOutput() AclTokenRoleAttachmentArrayOutput {
@@ -185,7 +156,7 @@ type AclTokenRoleAttachmentMapInput interface {
 type AclTokenRoleAttachmentMap map[string]AclTokenRoleAttachmentInput
 
 func (AclTokenRoleAttachmentMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*AclTokenRoleAttachment)(nil))
+	return reflect.TypeOf((*map[string]*AclTokenRoleAttachment)(nil)).Elem()
 }
 
 func (i AclTokenRoleAttachmentMap) ToAclTokenRoleAttachmentMapOutput() AclTokenRoleAttachmentMapOutput {
@@ -196,12 +167,10 @@ func (i AclTokenRoleAttachmentMap) ToAclTokenRoleAttachmentMapOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(AclTokenRoleAttachmentMapOutput)
 }
 
-type AclTokenRoleAttachmentOutput struct {
-	*pulumi.OutputState
-}
+type AclTokenRoleAttachmentOutput struct{ *pulumi.OutputState }
 
 func (AclTokenRoleAttachmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AclTokenRoleAttachment)(nil))
+	return reflect.TypeOf((**AclTokenRoleAttachment)(nil)).Elem()
 }
 
 func (o AclTokenRoleAttachmentOutput) ToAclTokenRoleAttachmentOutput() AclTokenRoleAttachmentOutput {
@@ -212,36 +181,10 @@ func (o AclTokenRoleAttachmentOutput) ToAclTokenRoleAttachmentOutputWithContext(
 	return o
 }
 
-func (o AclTokenRoleAttachmentOutput) ToAclTokenRoleAttachmentPtrOutput() AclTokenRoleAttachmentPtrOutput {
-	return o.ToAclTokenRoleAttachmentPtrOutputWithContext(context.Background())
-}
-
-func (o AclTokenRoleAttachmentOutput) ToAclTokenRoleAttachmentPtrOutputWithContext(ctx context.Context) AclTokenRoleAttachmentPtrOutput {
-	return o.ApplyT(func(v AclTokenRoleAttachment) *AclTokenRoleAttachment {
-		return &v
-	}).(AclTokenRoleAttachmentPtrOutput)
-}
-
-type AclTokenRoleAttachmentPtrOutput struct {
-	*pulumi.OutputState
-}
-
-func (AclTokenRoleAttachmentPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AclTokenRoleAttachment)(nil))
-}
-
-func (o AclTokenRoleAttachmentPtrOutput) ToAclTokenRoleAttachmentPtrOutput() AclTokenRoleAttachmentPtrOutput {
-	return o
-}
-
-func (o AclTokenRoleAttachmentPtrOutput) ToAclTokenRoleAttachmentPtrOutputWithContext(ctx context.Context) AclTokenRoleAttachmentPtrOutput {
-	return o
-}
-
 type AclTokenRoleAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (AclTokenRoleAttachmentArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AclTokenRoleAttachment)(nil))
+	return reflect.TypeOf((*[]*AclTokenRoleAttachment)(nil)).Elem()
 }
 
 func (o AclTokenRoleAttachmentArrayOutput) ToAclTokenRoleAttachmentArrayOutput() AclTokenRoleAttachmentArrayOutput {
@@ -253,15 +196,15 @@ func (o AclTokenRoleAttachmentArrayOutput) ToAclTokenRoleAttachmentArrayOutputWi
 }
 
 func (o AclTokenRoleAttachmentArrayOutput) Index(i pulumi.IntInput) AclTokenRoleAttachmentOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AclTokenRoleAttachment {
-		return vs[0].([]AclTokenRoleAttachment)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AclTokenRoleAttachment {
+		return vs[0].([]*AclTokenRoleAttachment)[vs[1].(int)]
 	}).(AclTokenRoleAttachmentOutput)
 }
 
 type AclTokenRoleAttachmentMapOutput struct{ *pulumi.OutputState }
 
 func (AclTokenRoleAttachmentMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]AclTokenRoleAttachment)(nil))
+	return reflect.TypeOf((*map[string]*AclTokenRoleAttachment)(nil)).Elem()
 }
 
 func (o AclTokenRoleAttachmentMapOutput) ToAclTokenRoleAttachmentMapOutput() AclTokenRoleAttachmentMapOutput {
@@ -273,14 +216,16 @@ func (o AclTokenRoleAttachmentMapOutput) ToAclTokenRoleAttachmentMapOutputWithCo
 }
 
 func (o AclTokenRoleAttachmentMapOutput) MapIndex(k pulumi.StringInput) AclTokenRoleAttachmentOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AclTokenRoleAttachment {
-		return vs[0].(map[string]AclTokenRoleAttachment)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *AclTokenRoleAttachment {
+		return vs[0].(map[string]*AclTokenRoleAttachment)[vs[1].(string)]
 	}).(AclTokenRoleAttachmentOutput)
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AclTokenRoleAttachmentInput)(nil)).Elem(), &AclTokenRoleAttachment{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AclTokenRoleAttachmentArrayInput)(nil)).Elem(), AclTokenRoleAttachmentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AclTokenRoleAttachmentMapInput)(nil)).Elem(), AclTokenRoleAttachmentMap{})
 	pulumi.RegisterOutputType(AclTokenRoleAttachmentOutput{})
-	pulumi.RegisterOutputType(AclTokenRoleAttachmentPtrOutput{})
 	pulumi.RegisterOutputType(AclTokenRoleAttachmentArrayOutput{})
 	pulumi.RegisterOutputType(AclTokenRoleAttachmentMapOutput{})
 }

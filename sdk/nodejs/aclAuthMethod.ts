@@ -133,40 +133,40 @@ export class AclAuthMethod extends pulumi.CustomResource {
      */
     constructor(name: string, args: AclAuthMethodArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AclAuthMethodArgs | AclAuthMethodState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AclAuthMethodState | undefined;
-            inputs["config"] = state ? state.config : undefined;
-            inputs["configJson"] = state ? state.configJson : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["maxTokenTtl"] = state ? state.maxTokenTtl : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["namespace"] = state ? state.namespace : undefined;
-            inputs["namespaceRules"] = state ? state.namespaceRules : undefined;
-            inputs["tokenLocality"] = state ? state.tokenLocality : undefined;
-            inputs["type"] = state ? state.type : undefined;
+            resourceInputs["config"] = state ? state.config : undefined;
+            resourceInputs["configJson"] = state ? state.configJson : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["maxTokenTtl"] = state ? state.maxTokenTtl : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["namespace"] = state ? state.namespace : undefined;
+            resourceInputs["namespaceRules"] = state ? state.namespaceRules : undefined;
+            resourceInputs["tokenLocality"] = state ? state.tokenLocality : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as AclAuthMethodArgs | undefined;
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            inputs["config"] = args ? args.config : undefined;
-            inputs["configJson"] = args ? args.configJson : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["maxTokenTtl"] = args ? args.maxTokenTtl : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["namespace"] = args ? args.namespace : undefined;
-            inputs["namespaceRules"] = args ? args.namespaceRules : undefined;
-            inputs["tokenLocality"] = args ? args.tokenLocality : undefined;
-            inputs["type"] = args ? args.type : undefined;
+            resourceInputs["config"] = args ? args.config : undefined;
+            resourceInputs["configJson"] = args ? args.configJson : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["maxTokenTtl"] = args ? args.maxTokenTtl : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["namespace"] = args ? args.namespace : undefined;
+            resourceInputs["namespaceRules"] = args ? args.namespaceRules : undefined;
+            resourceInputs["tokenLocality"] = args ? args.tokenLocality : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(AclAuthMethod.__pulumiType, name, inputs, opts);
+        super(AclAuthMethod.__pulumiType, name, resourceInputs, opts);
     }
 }
 

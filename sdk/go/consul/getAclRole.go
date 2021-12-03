@@ -4,6 +4,9 @@
 package consul
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -22,7 +25,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		test, err := consul.LookupAclRole(ctx, &consul.LookupAclRoleArgs{
+// 		test, err := consul.LookupAclRole(ctx, &GetAclRoleArgs{
 // 			Name: "example-role",
 // 		}, nil)
 // 		if err != nil {
@@ -66,4 +69,79 @@ type LookupAclRoleResult struct {
 	Policies []GetAclRolePolicy `pulumi:"policies"`
 	// The list of service identities associated with the ACL Role. Each entry has a `serviceName` attribute and a list of `datacenters`.
 	ServiceIdentities []GetAclRoleServiceIdentity `pulumi:"serviceIdentities"`
+}
+
+func LookupAclRoleOutput(ctx *pulumi.Context, args LookupAclRoleOutputArgs, opts ...pulumi.InvokeOption) LookupAclRoleResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupAclRoleResult, error) {
+			args := v.(LookupAclRoleArgs)
+			r, err := LookupAclRole(ctx, &args, opts...)
+			return *r, err
+		}).(LookupAclRoleResultOutput)
+}
+
+// A collection of arguments for invoking getAclRole.
+type LookupAclRoleOutputArgs struct {
+	// The name of the ACL Role.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The namespace to lookup the role.
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+}
+
+func (LookupAclRoleOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAclRoleArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getAclRole.
+type LookupAclRoleResultOutput struct{ *pulumi.OutputState }
+
+func (LookupAclRoleResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAclRoleResult)(nil)).Elem()
+}
+
+func (o LookupAclRoleResultOutput) ToLookupAclRoleResultOutput() LookupAclRoleResultOutput {
+	return o
+}
+
+func (o LookupAclRoleResultOutput) ToLookupAclRoleResultOutputWithContext(ctx context.Context) LookupAclRoleResultOutput {
+	return o
+}
+
+// The description of the ACL Role.
+func (o LookupAclRoleResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAclRoleResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupAclRoleResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAclRoleResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the ACL Role.
+func (o LookupAclRoleResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAclRoleResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The namespace to lookup the role.
+func (o LookupAclRoleResultOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAclRoleResult) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+// The list of node identities associated with the ACL Role. Each entry has a `nodeName` and a `datacenter` attributes.
+func (o LookupAclRoleResultOutput) NodeIdentities() GetAclRoleNodeIdentityArrayOutput {
+	return o.ApplyT(func(v LookupAclRoleResult) []GetAclRoleNodeIdentity { return v.NodeIdentities }).(GetAclRoleNodeIdentityArrayOutput)
+}
+
+// The list of policies associated with the ACL Role. Each entry has an `id` and a `name` attribute.
+func (o LookupAclRoleResultOutput) Policies() GetAclRolePolicyArrayOutput {
+	return o.ApplyT(func(v LookupAclRoleResult) []GetAclRolePolicy { return v.Policies }).(GetAclRolePolicyArrayOutput)
+}
+
+// The list of service identities associated with the ACL Role. Each entry has a `serviceName` attribute and a list of `datacenters`.
+func (o LookupAclRoleResultOutput) ServiceIdentities() GetAclRoleServiceIdentityArrayOutput {
+	return o.ApplyT(func(v LookupAclRoleResult) []GetAclRoleServiceIdentity { return v.ServiceIdentities }).(GetAclRoleServiceIdentityArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupAclRoleResultOutput{})
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Consul
 {
@@ -13,6 +14,9 @@ namespace Pulumi.Consul
     {
         public static Task<GetAclTokenSecretIdResult> InvokeAsync(GetAclTokenSecretIdArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAclTokenSecretIdResult>("consul:index/getAclTokenSecretId:getAclTokenSecretId", args ?? new GetAclTokenSecretIdArgs(), options.WithVersion());
+
+        public static Output<GetAclTokenSecretIdResult> Invoke(GetAclTokenSecretIdInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAclTokenSecretIdResult>("consul:index/getAclTokenSecretId:getAclTokenSecretId", args ?? new GetAclTokenSecretIdInvokeArgs(), options.WithVersion());
     }
 
 
@@ -34,6 +38,28 @@ namespace Pulumi.Consul
         public string? PgpKey { get; set; }
 
         public GetAclTokenSecretIdArgs()
+        {
+        }
+    }
+
+    public sealed class GetAclTokenSecretIdInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The accessor ID of the ACL token.
+        /// </summary>
+        [Input("accessorId", required: true)]
+        public Input<string> AccessorId { get; set; } = null!;
+
+        /// <summary>
+        /// The namespace to lookup the token.
+        /// </summary>
+        [Input("namespace")]
+        public Input<string>? Namespace { get; set; }
+
+        [Input("pgpKey")]
+        public Input<string>? PgpKey { get; set; }
+
+        public GetAclTokenSecretIdInvokeArgs()
         {
         }
     }

@@ -13,6 +13,7 @@ __all__ = [
     'GetNetworkAreaMembersResult',
     'AwaitableGetNetworkAreaMembersResult',
     'get_network_area_members',
+    'get_network_area_members_output',
 ]
 
 @pulumi.output_type
@@ -95,7 +96,7 @@ def get_network_area_members(datacenter: Optional[str] = None,
     """
     > **NOTE:** This feature requires [Consul Enterprise](https://www.consul.io/docs/enterprise/index.html).
 
-    The `getNetworkAreaMembers` data source provides a list of the Consul
+    The `get_network_area_members` data source provides a list of the Consul
     servers present in a specific network area.
 
     ## Example Usage
@@ -108,7 +109,7 @@ def get_network_area_members(datacenter: Optional[str] = None,
         peer_datacenter="dc2",
         retry_joins=["1.2.3.4"],
         use_tls=True)
-    dc2_network_area_members = dc2_network_area.id.apply(lambda id: consul.get_network_area_members(uuid=id))
+    dc2_network_area_members = consul.get_network_area_members_output(uuid=dc2_network_area.id)
     pulumi.export("members", dc2_network_area_members.members)
     ```
 
@@ -135,3 +136,38 @@ def get_network_area_members(datacenter: Optional[str] = None,
         members=__ret__.members,
         token=__ret__.token,
         uuid=__ret__.uuid)
+
+
+@_utilities.lift_output_func(get_network_area_members)
+def get_network_area_members_output(datacenter: Optional[pulumi.Input[Optional[str]]] = None,
+                                    token: Optional[pulumi.Input[Optional[str]]] = None,
+                                    uuid: Optional[pulumi.Input[str]] = None,
+                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNetworkAreaMembersResult]:
+    """
+    > **NOTE:** This feature requires [Consul Enterprise](https://www.consul.io/docs/enterprise/index.html).
+
+    The `get_network_area_members` data source provides a list of the Consul
+    servers present in a specific network area.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_consul as consul
+
+    dc2_network_area = consul.NetworkArea("dc2NetworkArea",
+        peer_datacenter="dc2",
+        retry_joins=["1.2.3.4"],
+        use_tls=True)
+    dc2_network_area_members = consul.get_network_area_members_output(uuid=dc2_network_area.id)
+    pulumi.export("members", dc2_network_area_members.members)
+    ```
+
+
+    :param str datacenter: The datacenter to use. This overrides the
+           agent's default datacenter and the datacenter in the provider setup.
+    :param str token: The ACL token to use. This overrides the
+           token that the agent provides by default.
+    :param str uuid: The UUID of the area to list.
+    """
+    ...

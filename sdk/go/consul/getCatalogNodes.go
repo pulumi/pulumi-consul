@@ -4,6 +4,9 @@
 package consul
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -30,4 +33,66 @@ type GetCatalogNodesResult struct {
 	NodeNames    []string                     `pulumi:"nodeNames"`
 	Nodes        []GetCatalogNodesNode        `pulumi:"nodes"`
 	QueryOptions []GetCatalogNodesQueryOption `pulumi:"queryOptions"`
+}
+
+func GetCatalogNodesOutput(ctx *pulumi.Context, args GetCatalogNodesOutputArgs, opts ...pulumi.InvokeOption) GetCatalogNodesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetCatalogNodesResult, error) {
+			args := v.(GetCatalogNodesArgs)
+			r, err := GetCatalogNodes(ctx, &args, opts...)
+			return *r, err
+		}).(GetCatalogNodesResultOutput)
+}
+
+// A collection of arguments for invoking getCatalogNodes.
+type GetCatalogNodesOutputArgs struct {
+	QueryOptions GetCatalogNodesQueryOptionArrayInput `pulumi:"queryOptions"`
+}
+
+func (GetCatalogNodesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCatalogNodesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getCatalogNodes.
+type GetCatalogNodesResultOutput struct{ *pulumi.OutputState }
+
+func (GetCatalogNodesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCatalogNodesResult)(nil)).Elem()
+}
+
+func (o GetCatalogNodesResultOutput) ToGetCatalogNodesResultOutput() GetCatalogNodesResultOutput {
+	return o
+}
+
+func (o GetCatalogNodesResultOutput) ToGetCatalogNodesResultOutputWithContext(ctx context.Context) GetCatalogNodesResultOutput {
+	return o
+}
+
+func (o GetCatalogNodesResultOutput) Datacenter() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCatalogNodesResult) string { return v.Datacenter }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetCatalogNodesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCatalogNodesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetCatalogNodesResultOutput) NodeIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCatalogNodesResult) []string { return v.NodeIds }).(pulumi.StringArrayOutput)
+}
+
+func (o GetCatalogNodesResultOutput) NodeNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCatalogNodesResult) []string { return v.NodeNames }).(pulumi.StringArrayOutput)
+}
+
+func (o GetCatalogNodesResultOutput) Nodes() GetCatalogNodesNodeArrayOutput {
+	return o.ApplyT(func(v GetCatalogNodesResult) []GetCatalogNodesNode { return v.Nodes }).(GetCatalogNodesNodeArrayOutput)
+}
+
+func (o GetCatalogNodesResultOutput) QueryOptions() GetCatalogNodesQueryOptionArrayOutput {
+	return o.ApplyT(func(v GetCatalogNodesResult) []GetCatalogNodesQueryOption { return v.QueryOptions }).(GetCatalogNodesQueryOptionArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetCatalogNodesResultOutput{})
 }

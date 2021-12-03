@@ -4,6 +4,9 @@
 package consul
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -43,4 +46,72 @@ type GetNetworkAreaMembersResult struct {
 	Token   *string                       `pulumi:"token"`
 	// The UUID of the Network Area being queried.
 	Uuid string `pulumi:"uuid"`
+}
+
+func GetNetworkAreaMembersOutput(ctx *pulumi.Context, args GetNetworkAreaMembersOutputArgs, opts ...pulumi.InvokeOption) GetNetworkAreaMembersResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetNetworkAreaMembersResult, error) {
+			args := v.(GetNetworkAreaMembersArgs)
+			r, err := GetNetworkAreaMembers(ctx, &args, opts...)
+			return *r, err
+		}).(GetNetworkAreaMembersResultOutput)
+}
+
+// A collection of arguments for invoking getNetworkAreaMembers.
+type GetNetworkAreaMembersOutputArgs struct {
+	// The datacenter to use. This overrides the
+	// agent's default datacenter and the datacenter in the provider setup.
+	Datacenter pulumi.StringPtrInput `pulumi:"datacenter"`
+	// The ACL token to use. This overrides the
+	// token that the agent provides by default.
+	Token pulumi.StringPtrInput `pulumi:"token"`
+	// The UUID of the area to list.
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (GetNetworkAreaMembersOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkAreaMembersArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getNetworkAreaMembers.
+type GetNetworkAreaMembersResultOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkAreaMembersResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkAreaMembersResult)(nil)).Elem()
+}
+
+func (o GetNetworkAreaMembersResultOutput) ToGetNetworkAreaMembersResultOutput() GetNetworkAreaMembersResultOutput {
+	return o
+}
+
+func (o GetNetworkAreaMembersResultOutput) ToGetNetworkAreaMembersResultOutputWithContext(ctx context.Context) GetNetworkAreaMembersResultOutput {
+	return o
+}
+
+// The node's Consul datacenter.
+func (o GetNetworkAreaMembersResultOutput) Datacenter() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkAreaMembersResult) string { return v.Datacenter }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetNetworkAreaMembersResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkAreaMembersResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The list of Consul servers in this network area
+func (o GetNetworkAreaMembersResultOutput) Members() GetNetworkAreaMembersMemberArrayOutput {
+	return o.ApplyT(func(v GetNetworkAreaMembersResult) []GetNetworkAreaMembersMember { return v.Members }).(GetNetworkAreaMembersMemberArrayOutput)
+}
+
+func (o GetNetworkAreaMembersResultOutput) Token() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNetworkAreaMembersResult) *string { return v.Token }).(pulumi.StringPtrOutput)
+}
+
+// The UUID of the Network Area being queried.
+func (o GetNetworkAreaMembersResultOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkAreaMembersResult) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetNetworkAreaMembersResultOutput{})
 }

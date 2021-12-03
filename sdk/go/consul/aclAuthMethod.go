@@ -292,7 +292,7 @@ type AclAuthMethodInput interface {
 }
 
 func (*AclAuthMethod) ElementType() reflect.Type {
-	return reflect.TypeOf((*AclAuthMethod)(nil))
+	return reflect.TypeOf((**AclAuthMethod)(nil)).Elem()
 }
 
 func (i *AclAuthMethod) ToAclAuthMethodOutput() AclAuthMethodOutput {
@@ -301,35 +301,6 @@ func (i *AclAuthMethod) ToAclAuthMethodOutput() AclAuthMethodOutput {
 
 func (i *AclAuthMethod) ToAclAuthMethodOutputWithContext(ctx context.Context) AclAuthMethodOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AclAuthMethodOutput)
-}
-
-func (i *AclAuthMethod) ToAclAuthMethodPtrOutput() AclAuthMethodPtrOutput {
-	return i.ToAclAuthMethodPtrOutputWithContext(context.Background())
-}
-
-func (i *AclAuthMethod) ToAclAuthMethodPtrOutputWithContext(ctx context.Context) AclAuthMethodPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AclAuthMethodPtrOutput)
-}
-
-type AclAuthMethodPtrInput interface {
-	pulumi.Input
-
-	ToAclAuthMethodPtrOutput() AclAuthMethodPtrOutput
-	ToAclAuthMethodPtrOutputWithContext(ctx context.Context) AclAuthMethodPtrOutput
-}
-
-type aclAuthMethodPtrType AclAuthMethodArgs
-
-func (*aclAuthMethodPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AclAuthMethod)(nil))
-}
-
-func (i *aclAuthMethodPtrType) ToAclAuthMethodPtrOutput() AclAuthMethodPtrOutput {
-	return i.ToAclAuthMethodPtrOutputWithContext(context.Background())
-}
-
-func (i *aclAuthMethodPtrType) ToAclAuthMethodPtrOutputWithContext(ctx context.Context) AclAuthMethodPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AclAuthMethodPtrOutput)
 }
 
 // AclAuthMethodArrayInput is an input type that accepts AclAuthMethodArray and AclAuthMethodArrayOutput values.
@@ -346,7 +317,7 @@ type AclAuthMethodArrayInput interface {
 type AclAuthMethodArray []AclAuthMethodInput
 
 func (AclAuthMethodArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*AclAuthMethod)(nil))
+	return reflect.TypeOf((*[]*AclAuthMethod)(nil)).Elem()
 }
 
 func (i AclAuthMethodArray) ToAclAuthMethodArrayOutput() AclAuthMethodArrayOutput {
@@ -371,7 +342,7 @@ type AclAuthMethodMapInput interface {
 type AclAuthMethodMap map[string]AclAuthMethodInput
 
 func (AclAuthMethodMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*AclAuthMethod)(nil))
+	return reflect.TypeOf((*map[string]*AclAuthMethod)(nil)).Elem()
 }
 
 func (i AclAuthMethodMap) ToAclAuthMethodMapOutput() AclAuthMethodMapOutput {
@@ -382,12 +353,10 @@ func (i AclAuthMethodMap) ToAclAuthMethodMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(AclAuthMethodMapOutput)
 }
 
-type AclAuthMethodOutput struct {
-	*pulumi.OutputState
-}
+type AclAuthMethodOutput struct{ *pulumi.OutputState }
 
 func (AclAuthMethodOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AclAuthMethod)(nil))
+	return reflect.TypeOf((**AclAuthMethod)(nil)).Elem()
 }
 
 func (o AclAuthMethodOutput) ToAclAuthMethodOutput() AclAuthMethodOutput {
@@ -398,36 +367,10 @@ func (o AclAuthMethodOutput) ToAclAuthMethodOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o AclAuthMethodOutput) ToAclAuthMethodPtrOutput() AclAuthMethodPtrOutput {
-	return o.ToAclAuthMethodPtrOutputWithContext(context.Background())
-}
-
-func (o AclAuthMethodOutput) ToAclAuthMethodPtrOutputWithContext(ctx context.Context) AclAuthMethodPtrOutput {
-	return o.ApplyT(func(v AclAuthMethod) *AclAuthMethod {
-		return &v
-	}).(AclAuthMethodPtrOutput)
-}
-
-type AclAuthMethodPtrOutput struct {
-	*pulumi.OutputState
-}
-
-func (AclAuthMethodPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AclAuthMethod)(nil))
-}
-
-func (o AclAuthMethodPtrOutput) ToAclAuthMethodPtrOutput() AclAuthMethodPtrOutput {
-	return o
-}
-
-func (o AclAuthMethodPtrOutput) ToAclAuthMethodPtrOutputWithContext(ctx context.Context) AclAuthMethodPtrOutput {
-	return o
-}
-
 type AclAuthMethodArrayOutput struct{ *pulumi.OutputState }
 
 func (AclAuthMethodArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AclAuthMethod)(nil))
+	return reflect.TypeOf((*[]*AclAuthMethod)(nil)).Elem()
 }
 
 func (o AclAuthMethodArrayOutput) ToAclAuthMethodArrayOutput() AclAuthMethodArrayOutput {
@@ -439,15 +382,15 @@ func (o AclAuthMethodArrayOutput) ToAclAuthMethodArrayOutputWithContext(ctx cont
 }
 
 func (o AclAuthMethodArrayOutput) Index(i pulumi.IntInput) AclAuthMethodOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AclAuthMethod {
-		return vs[0].([]AclAuthMethod)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AclAuthMethod {
+		return vs[0].([]*AclAuthMethod)[vs[1].(int)]
 	}).(AclAuthMethodOutput)
 }
 
 type AclAuthMethodMapOutput struct{ *pulumi.OutputState }
 
 func (AclAuthMethodMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]AclAuthMethod)(nil))
+	return reflect.TypeOf((*map[string]*AclAuthMethod)(nil)).Elem()
 }
 
 func (o AclAuthMethodMapOutput) ToAclAuthMethodMapOutput() AclAuthMethodMapOutput {
@@ -459,14 +402,16 @@ func (o AclAuthMethodMapOutput) ToAclAuthMethodMapOutputWithContext(ctx context.
 }
 
 func (o AclAuthMethodMapOutput) MapIndex(k pulumi.StringInput) AclAuthMethodOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AclAuthMethod {
-		return vs[0].(map[string]AclAuthMethod)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *AclAuthMethod {
+		return vs[0].(map[string]*AclAuthMethod)[vs[1].(string)]
 	}).(AclAuthMethodOutput)
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AclAuthMethodInput)(nil)).Elem(), &AclAuthMethod{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AclAuthMethodArrayInput)(nil)).Elem(), AclAuthMethodArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AclAuthMethodMapInput)(nil)).Elem(), AclAuthMethodMap{})
 	pulumi.RegisterOutputType(AclAuthMethodOutput{})
-	pulumi.RegisterOutputType(AclAuthMethodPtrOutput{})
 	pulumi.RegisterOutputType(AclAuthMethodArrayOutput{})
 	pulumi.RegisterOutputType(AclAuthMethodMapOutput{})
 }

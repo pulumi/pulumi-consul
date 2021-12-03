@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Consul
 {
@@ -38,10 +39,10 @@ namespace Pulumi.Consul
         ///             },
         ///             UseTls = true,
         ///         });
-        ///         var dc2NetworkAreaMembers = dc2NetworkArea.Id.Apply(id =&gt; Consul.GetNetworkAreaMembers.InvokeAsync(new Consul.GetNetworkAreaMembersArgs
+        ///         var dc2NetworkAreaMembers = Consul.GetNetworkAreaMembers.Invoke(new Consul.GetNetworkAreaMembersInvokeArgs
         ///         {
-        ///             Uuid = id,
-        ///         }));
+        ///             Uuid = dc2NetworkArea.Id,
+        ///         });
         ///         this.Members = dc2NetworkAreaMembers.Apply(dc2NetworkAreaMembers =&gt; dc2NetworkAreaMembers.Members);
         ///     }
         /// 
@@ -54,6 +55,50 @@ namespace Pulumi.Consul
         /// </summary>
         public static Task<GetNetworkAreaMembersResult> InvokeAsync(GetNetworkAreaMembersArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNetworkAreaMembersResult>("consul:index/getNetworkAreaMembers:getNetworkAreaMembers", args ?? new GetNetworkAreaMembersArgs(), options.WithVersion());
+
+        /// <summary>
+        /// &gt; **NOTE:** This feature requires [Consul Enterprise](https://www.consul.io/docs/enterprise/index.html).
+        /// 
+        /// The `consul.getNetworkAreaMembers` data source provides a list of the Consul
+        /// servers present in a specific network area.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Consul = Pulumi.Consul;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var dc2NetworkArea = new Consul.NetworkArea("dc2NetworkArea", new Consul.NetworkAreaArgs
+        ///         {
+        ///             PeerDatacenter = "dc2",
+        ///             RetryJoins = 
+        ///             {
+        ///                 "1.2.3.4",
+        ///             },
+        ///             UseTls = true,
+        ///         });
+        ///         var dc2NetworkAreaMembers = Consul.GetNetworkAreaMembers.Invoke(new Consul.GetNetworkAreaMembersInvokeArgs
+        ///         {
+        ///             Uuid = dc2NetworkArea.Id,
+        ///         });
+        ///         this.Members = dc2NetworkAreaMembers.Apply(dc2NetworkAreaMembers =&gt; dc2NetworkAreaMembers.Members);
+        ///     }
+        /// 
+        ///     [Output("members")]
+        ///     public Output&lt;string&gt; Members { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetNetworkAreaMembersResult> Invoke(GetNetworkAreaMembersInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetNetworkAreaMembersResult>("consul:index/getNetworkAreaMembers:getNetworkAreaMembers", args ?? new GetNetworkAreaMembersInvokeArgs(), options.WithVersion());
     }
 
 
@@ -80,6 +125,33 @@ namespace Pulumi.Consul
         public string Uuid { get; set; } = null!;
 
         public GetNetworkAreaMembersArgs()
+        {
+        }
+    }
+
+    public sealed class GetNetworkAreaMembersInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The datacenter to use. This overrides the
+        /// agent's default datacenter and the datacenter in the provider setup.
+        /// </summary>
+        [Input("datacenter")]
+        public Input<string>? Datacenter { get; set; }
+
+        /// <summary>
+        /// The ACL token to use. This overrides the
+        /// token that the agent provides by default.
+        /// </summary>
+        [Input("token")]
+        public Input<string>? Token { get; set; }
+
+        /// <summary>
+        /// The UUID of the area to list.
+        /// </summary>
+        [Input("uuid", required: true)]
+        public Input<string> Uuid { get; set; } = null!;
+
+        public GetNetworkAreaMembersInvokeArgs()
         {
         }
     }

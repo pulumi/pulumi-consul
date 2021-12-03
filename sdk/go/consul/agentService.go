@@ -157,7 +157,7 @@ type AgentServiceInput interface {
 }
 
 func (*AgentService) ElementType() reflect.Type {
-	return reflect.TypeOf((*AgentService)(nil))
+	return reflect.TypeOf((**AgentService)(nil)).Elem()
 }
 
 func (i *AgentService) ToAgentServiceOutput() AgentServiceOutput {
@@ -166,35 +166,6 @@ func (i *AgentService) ToAgentServiceOutput() AgentServiceOutput {
 
 func (i *AgentService) ToAgentServiceOutputWithContext(ctx context.Context) AgentServiceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AgentServiceOutput)
-}
-
-func (i *AgentService) ToAgentServicePtrOutput() AgentServicePtrOutput {
-	return i.ToAgentServicePtrOutputWithContext(context.Background())
-}
-
-func (i *AgentService) ToAgentServicePtrOutputWithContext(ctx context.Context) AgentServicePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AgentServicePtrOutput)
-}
-
-type AgentServicePtrInput interface {
-	pulumi.Input
-
-	ToAgentServicePtrOutput() AgentServicePtrOutput
-	ToAgentServicePtrOutputWithContext(ctx context.Context) AgentServicePtrOutput
-}
-
-type agentServicePtrType AgentServiceArgs
-
-func (*agentServicePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AgentService)(nil))
-}
-
-func (i *agentServicePtrType) ToAgentServicePtrOutput() AgentServicePtrOutput {
-	return i.ToAgentServicePtrOutputWithContext(context.Background())
-}
-
-func (i *agentServicePtrType) ToAgentServicePtrOutputWithContext(ctx context.Context) AgentServicePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AgentServicePtrOutput)
 }
 
 // AgentServiceArrayInput is an input type that accepts AgentServiceArray and AgentServiceArrayOutput values.
@@ -211,7 +182,7 @@ type AgentServiceArrayInput interface {
 type AgentServiceArray []AgentServiceInput
 
 func (AgentServiceArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*AgentService)(nil))
+	return reflect.TypeOf((*[]*AgentService)(nil)).Elem()
 }
 
 func (i AgentServiceArray) ToAgentServiceArrayOutput() AgentServiceArrayOutput {
@@ -236,7 +207,7 @@ type AgentServiceMapInput interface {
 type AgentServiceMap map[string]AgentServiceInput
 
 func (AgentServiceMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*AgentService)(nil))
+	return reflect.TypeOf((*map[string]*AgentService)(nil)).Elem()
 }
 
 func (i AgentServiceMap) ToAgentServiceMapOutput() AgentServiceMapOutput {
@@ -247,12 +218,10 @@ func (i AgentServiceMap) ToAgentServiceMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(AgentServiceMapOutput)
 }
 
-type AgentServiceOutput struct {
-	*pulumi.OutputState
-}
+type AgentServiceOutput struct{ *pulumi.OutputState }
 
 func (AgentServiceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AgentService)(nil))
+	return reflect.TypeOf((**AgentService)(nil)).Elem()
 }
 
 func (o AgentServiceOutput) ToAgentServiceOutput() AgentServiceOutput {
@@ -263,36 +232,10 @@ func (o AgentServiceOutput) ToAgentServiceOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o AgentServiceOutput) ToAgentServicePtrOutput() AgentServicePtrOutput {
-	return o.ToAgentServicePtrOutputWithContext(context.Background())
-}
-
-func (o AgentServiceOutput) ToAgentServicePtrOutputWithContext(ctx context.Context) AgentServicePtrOutput {
-	return o.ApplyT(func(v AgentService) *AgentService {
-		return &v
-	}).(AgentServicePtrOutput)
-}
-
-type AgentServicePtrOutput struct {
-	*pulumi.OutputState
-}
-
-func (AgentServicePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AgentService)(nil))
-}
-
-func (o AgentServicePtrOutput) ToAgentServicePtrOutput() AgentServicePtrOutput {
-	return o
-}
-
-func (o AgentServicePtrOutput) ToAgentServicePtrOutputWithContext(ctx context.Context) AgentServicePtrOutput {
-	return o
-}
-
 type AgentServiceArrayOutput struct{ *pulumi.OutputState }
 
 func (AgentServiceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AgentService)(nil))
+	return reflect.TypeOf((*[]*AgentService)(nil)).Elem()
 }
 
 func (o AgentServiceArrayOutput) ToAgentServiceArrayOutput() AgentServiceArrayOutput {
@@ -304,15 +247,15 @@ func (o AgentServiceArrayOutput) ToAgentServiceArrayOutputWithContext(ctx contex
 }
 
 func (o AgentServiceArrayOutput) Index(i pulumi.IntInput) AgentServiceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AgentService {
-		return vs[0].([]AgentService)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AgentService {
+		return vs[0].([]*AgentService)[vs[1].(int)]
 	}).(AgentServiceOutput)
 }
 
 type AgentServiceMapOutput struct{ *pulumi.OutputState }
 
 func (AgentServiceMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]AgentService)(nil))
+	return reflect.TypeOf((*map[string]*AgentService)(nil)).Elem()
 }
 
 func (o AgentServiceMapOutput) ToAgentServiceMapOutput() AgentServiceMapOutput {
@@ -324,14 +267,16 @@ func (o AgentServiceMapOutput) ToAgentServiceMapOutputWithContext(ctx context.Co
 }
 
 func (o AgentServiceMapOutput) MapIndex(k pulumi.StringInput) AgentServiceOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AgentService {
-		return vs[0].(map[string]AgentService)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *AgentService {
+		return vs[0].(map[string]*AgentService)[vs[1].(string)]
 	}).(AgentServiceOutput)
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentServiceInput)(nil)).Elem(), &AgentService{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentServiceArrayInput)(nil)).Elem(), AgentServiceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentServiceMapInput)(nil)).Elem(), AgentServiceMap{})
 	pulumi.RegisterOutputType(AgentServiceOutput{})
-	pulumi.RegisterOutputType(AgentServicePtrOutput{})
 	pulumi.RegisterOutputType(AgentServiceArrayOutput{})
 	pulumi.RegisterOutputType(AgentServiceMapOutput{})
 }

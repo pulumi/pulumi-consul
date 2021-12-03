@@ -84,32 +84,32 @@ export class KeyPrefix extends pulumi.CustomResource {
      */
     constructor(name: string, args: KeyPrefixArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: KeyPrefixArgs | KeyPrefixState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KeyPrefixState | undefined;
-            inputs["datacenter"] = state ? state.datacenter : undefined;
-            inputs["namespace"] = state ? state.namespace : undefined;
-            inputs["pathPrefix"] = state ? state.pathPrefix : undefined;
-            inputs["subkeyCollection"] = state ? state.subkeyCollection : undefined;
-            inputs["subkeys"] = state ? state.subkeys : undefined;
-            inputs["token"] = state ? state.token : undefined;
+            resourceInputs["datacenter"] = state ? state.datacenter : undefined;
+            resourceInputs["namespace"] = state ? state.namespace : undefined;
+            resourceInputs["pathPrefix"] = state ? state.pathPrefix : undefined;
+            resourceInputs["subkeyCollection"] = state ? state.subkeyCollection : undefined;
+            resourceInputs["subkeys"] = state ? state.subkeys : undefined;
+            resourceInputs["token"] = state ? state.token : undefined;
         } else {
             const args = argsOrState as KeyPrefixArgs | undefined;
             if ((!args || args.pathPrefix === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'pathPrefix'");
             }
-            inputs["datacenter"] = args ? args.datacenter : undefined;
-            inputs["namespace"] = args ? args.namespace : undefined;
-            inputs["pathPrefix"] = args ? args.pathPrefix : undefined;
-            inputs["subkeyCollection"] = args ? args.subkeyCollection : undefined;
-            inputs["subkeys"] = args ? args.subkeys : undefined;
-            inputs["token"] = args ? args.token : undefined;
+            resourceInputs["datacenter"] = args ? args.datacenter : undefined;
+            resourceInputs["namespace"] = args ? args.namespace : undefined;
+            resourceInputs["pathPrefix"] = args ? args.pathPrefix : undefined;
+            resourceInputs["subkeyCollection"] = args ? args.subkeyCollection : undefined;
+            resourceInputs["subkeys"] = args ? args.subkeys : undefined;
+            resourceInputs["token"] = args ? args.token : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(KeyPrefix.__pulumiType, name, inputs, opts);
+        super(KeyPrefix.__pulumiType, name, resourceInputs, opts);
     }
 }
 

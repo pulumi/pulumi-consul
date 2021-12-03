@@ -61,3 +61,17 @@ export interface GetServicesResult {
      */
     readonly tags: {[key: string]: string};
 }
+
+export function getServicesOutput(args?: GetServicesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServicesResult> {
+    return pulumi.output(args).apply(a => getServices(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getServices.
+ */
+export interface GetServicesOutputArgs {
+    /**
+     * See below.
+     */
+    queryOptions?: pulumi.Input<pulumi.Input<inputs.GetServicesQueryOptionArgs>[]>;
+}

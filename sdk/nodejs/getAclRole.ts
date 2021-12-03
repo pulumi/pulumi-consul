@@ -82,3 +82,21 @@ export interface GetAclRoleResult {
      */
     readonly serviceIdentities: outputs.GetAclRoleServiceIdentity[];
 }
+
+export function getAclRoleOutput(args: GetAclRoleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAclRoleResult> {
+    return pulumi.output(args).apply(a => getAclRole(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAclRole.
+ */
+export interface GetAclRoleOutputArgs {
+    /**
+     * The name of the ACL Role.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The namespace to lookup the role.
+     */
+    namespace?: pulumi.Input<string>;
+}

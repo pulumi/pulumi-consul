@@ -695,11 +695,6 @@ export interface PreparedQueryTemplate {
     type: string;
 }
 
-export interface ProviderHeader {
-    name?: string;
-    value?: string;
-}
-
 export interface ServiceCheck {
     /**
      * An ID, *unique per agent*. Will default to *name*
@@ -773,4 +768,5 @@ export namespace config {
         name: string;
         value: string;
     }
+
 }

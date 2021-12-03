@@ -77,30 +77,30 @@ export class Node extends pulumi.CustomResource {
      */
     constructor(name: string, args: NodeArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NodeArgs | NodeState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NodeState | undefined;
-            inputs["address"] = state ? state.address : undefined;
-            inputs["datacenter"] = state ? state.datacenter : undefined;
-            inputs["meta"] = state ? state.meta : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["token"] = state ? state.token : undefined;
+            resourceInputs["address"] = state ? state.address : undefined;
+            resourceInputs["datacenter"] = state ? state.datacenter : undefined;
+            resourceInputs["meta"] = state ? state.meta : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["token"] = state ? state.token : undefined;
         } else {
             const args = argsOrState as NodeArgs | undefined;
             if ((!args || args.address === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'address'");
             }
-            inputs["address"] = args ? args.address : undefined;
-            inputs["datacenter"] = args ? args.datacenter : undefined;
-            inputs["meta"] = args ? args.meta : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["token"] = args ? args.token : undefined;
+            resourceInputs["address"] = args ? args.address : undefined;
+            resourceInputs["datacenter"] = args ? args.datacenter : undefined;
+            resourceInputs["meta"] = args ? args.meta : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["token"] = args ? args.token : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Node.__pulumiType, name, inputs, opts);
+        super(Node.__pulumiType, name, resourceInputs, opts);
     }
 }
 

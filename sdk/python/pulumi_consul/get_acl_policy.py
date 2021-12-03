@@ -12,6 +12,7 @@ __all__ = [
     'GetAclPolicyResult',
     'AwaitableGetAclPolicyResult',
     'get_acl_policy',
+    'get_acl_policy_output',
 ]
 
 @pulumi.output_type
@@ -142,3 +143,34 @@ def get_acl_policy(datacenters: Optional[Sequence[str]] = None,
         name=__ret__.name,
         namespace=__ret__.namespace,
         rules=__ret__.rules)
+
+
+@_utilities.lift_output_func(get_acl_policy)
+def get_acl_policy_output(datacenters: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                          description: Optional[pulumi.Input[Optional[str]]] = None,
+                          name: Optional[pulumi.Input[str]] = None,
+                          namespace: Optional[pulumi.Input[Optional[str]]] = None,
+                          rules: Optional[pulumi.Input[Optional[str]]] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAclPolicyResult]:
+    """
+    The `AclPolicy` data source returns the information related to a
+    [Consul ACL Policy](https://www.consul.io/docs/acl/acl-system.html#acl-policies).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_consul as consul
+
+    agent = consul.get_acl_policy(name="agent")
+    pulumi.export("consulAclPolicy", agent.rules)
+    ```
+
+
+    :param Sequence[str] datacenters: The datacenters associated with the ACL Policy.
+    :param str description: The description of the ACL Policy.
+    :param str name: The name of the ACL Policy.
+    :param str namespace: The namespace to lookup the policy.
+    :param str rules: The rules associated with the ACL Policy.
+    """
+    ...

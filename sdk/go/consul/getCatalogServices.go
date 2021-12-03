@@ -4,6 +4,9 @@
 package consul
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -30,4 +33,66 @@ type GetCatalogServicesResult struct {
 	QueryOptions []GetCatalogServicesQueryOption `pulumi:"queryOptions"`
 	Services     map[string]string               `pulumi:"services"`
 	Tags         map[string]string               `pulumi:"tags"`
+}
+
+func GetCatalogServicesOutput(ctx *pulumi.Context, args GetCatalogServicesOutputArgs, opts ...pulumi.InvokeOption) GetCatalogServicesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetCatalogServicesResult, error) {
+			args := v.(GetCatalogServicesArgs)
+			r, err := GetCatalogServices(ctx, &args, opts...)
+			return *r, err
+		}).(GetCatalogServicesResultOutput)
+}
+
+// A collection of arguments for invoking getCatalogServices.
+type GetCatalogServicesOutputArgs struct {
+	QueryOptions GetCatalogServicesQueryOptionArrayInput `pulumi:"queryOptions"`
+}
+
+func (GetCatalogServicesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCatalogServicesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getCatalogServices.
+type GetCatalogServicesResultOutput struct{ *pulumi.OutputState }
+
+func (GetCatalogServicesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCatalogServicesResult)(nil)).Elem()
+}
+
+func (o GetCatalogServicesResultOutput) ToGetCatalogServicesResultOutput() GetCatalogServicesResultOutput {
+	return o
+}
+
+func (o GetCatalogServicesResultOutput) ToGetCatalogServicesResultOutputWithContext(ctx context.Context) GetCatalogServicesResultOutput {
+	return o
+}
+
+func (o GetCatalogServicesResultOutput) Datacenter() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCatalogServicesResult) string { return v.Datacenter }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetCatalogServicesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCatalogServicesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetCatalogServicesResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCatalogServicesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetCatalogServicesResultOutput) QueryOptions() GetCatalogServicesQueryOptionArrayOutput {
+	return o.ApplyT(func(v GetCatalogServicesResult) []GetCatalogServicesQueryOption { return v.QueryOptions }).(GetCatalogServicesQueryOptionArrayOutput)
+}
+
+func (o GetCatalogServicesResultOutput) Services() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetCatalogServicesResult) map[string]string { return v.Services }).(pulumi.StringMapOutput)
+}
+
+func (o GetCatalogServicesResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetCatalogServicesResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetCatalogServicesResultOutput{})
 }

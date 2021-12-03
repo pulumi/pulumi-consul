@@ -13,6 +13,7 @@ __all__ = [
     'GetServiceHealthResult',
     'AwaitableGetServiceHealthResult',
     'get_service_health',
+    'get_service_health_output',
 ]
 
 @pulumi.output_type
@@ -160,13 +161,23 @@ def get_service_health(datacenter: Optional[str] = None,
                        wait_for: Optional[str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServiceHealthResult:
     """
-    `getServiceHealth` can be used to get the list of the instances that
+    `get_service_health` can be used to get the list of the instances that
     are currently healthy, according to their associated  health-checks.
     The result includes the list of service instances, the node associated to each
     instance and its health-checks.
 
     This resource is likely to change as frequently as the health-checks are being
     updated, you should expect different results in a frequent basis.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_consul as consul
+
+    vault_service_health = consul.get_service_health(passing=True,
+        service="vault")
+    ```
 
 
     :param str datacenter: The Consul datacenter to query.
@@ -208,3 +219,49 @@ def get_service_health(datacenter: Optional[str] = None,
         results=__ret__.results,
         tag=__ret__.tag,
         wait_for=__ret__.wait_for)
+
+
+@_utilities.lift_output_func(get_service_health)
+def get_service_health_output(datacenter: Optional[pulumi.Input[Optional[str]]] = None,
+                              filter: Optional[pulumi.Input[Optional[str]]] = None,
+                              name: Optional[pulumi.Input[str]] = None,
+                              near: Optional[pulumi.Input[Optional[str]]] = None,
+                              node_meta: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
+                              passing: Optional[pulumi.Input[Optional[bool]]] = None,
+                              tag: Optional[pulumi.Input[Optional[str]]] = None,
+                              wait_for: Optional[pulumi.Input[Optional[str]]] = None,
+                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceHealthResult]:
+    """
+    `get_service_health` can be used to get the list of the instances that
+    are currently healthy, according to their associated  health-checks.
+    The result includes the list of service instances, the node associated to each
+    instance and its health-checks.
+
+    This resource is likely to change as frequently as the health-checks are being
+    updated, you should expect different results in a frequent basis.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_consul as consul
+
+    vault_service_health = consul.get_service_health(passing=True,
+        service="vault")
+    ```
+
+
+    :param str datacenter: The Consul datacenter to query.
+    :param str filter: A filter expression to refine the list of results, see
+           https://www.consul.io/api-docs/features/filtering and https://www.consul.io/api-docs/health#filtering-2.
+    :param str name: The service name to select.
+    :param str near: Specifies a node name to sort the node list in ascending order
+           based on the estimated round trip time from that node.
+    :param Mapping[str, str] node_meta: Filter the results to nodes with the specified key/value
+           pairs.
+    :param bool passing: Whether to return only nodes with all checks in the
+           passing state. Defaults to `true`.
+    :param str tag: A single tag that can be used to filter the list to return
+           based on a single matching tag.
+    """
+    ...

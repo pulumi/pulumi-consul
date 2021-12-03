@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Consul
 {
@@ -13,6 +14,9 @@ namespace Pulumi.Consul
     {
         public static Task<GetKeyPrefixResult> InvokeAsync(GetKeyPrefixArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKeyPrefixResult>("consul:index/getKeyPrefix:getKeyPrefix", args ?? new GetKeyPrefixArgs(), options.WithVersion());
+
+        public static Output<GetKeyPrefixResult> Invoke(GetKeyPrefixInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetKeyPrefixResult>("consul:index/getKeyPrefix:getKeyPrefix", args ?? new GetKeyPrefixInvokeArgs(), options.WithVersion());
     }
 
 
@@ -60,6 +64,54 @@ namespace Pulumi.Consul
         public string? Token { get; set; }
 
         public GetKeyPrefixArgs()
+        {
+        }
+    }
+
+    public sealed class GetKeyPrefixInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The datacenter to use. This overrides the
+        /// agent's default datacenter and the datacenter in the provider setup.
+        /// </summary>
+        [Input("datacenter")]
+        public Input<string>? Datacenter { get; set; }
+
+        /// <summary>
+        /// The namespace to create the keys within.
+        /// </summary>
+        [Input("namespace")]
+        public Input<string>? Namespace { get; set; }
+
+        /// <summary>
+        /// Specifies the common prefix shared by all keys
+        /// that will be read by this data source instance. In most cases, this will
+        /// end with a slash to read a "folder" of subkeys.
+        /// </summary>
+        [Input("pathPrefix", required: true)]
+        public Input<string> PathPrefix { get; set; } = null!;
+
+        [Input("subkeyCollection")]
+        private InputList<Inputs.GetKeyPrefixSubkeyCollectionInputArgs>? _subkeyCollection;
+
+        /// <summary>
+        /// Specifies a subkey in Consul to be read. Supported
+        /// values documented below. Multiple blocks supported.
+        /// </summary>
+        public InputList<Inputs.GetKeyPrefixSubkeyCollectionInputArgs> SubkeyCollection
+        {
+            get => _subkeyCollection ?? (_subkeyCollection = new InputList<Inputs.GetKeyPrefixSubkeyCollectionInputArgs>());
+            set => _subkeyCollection = value;
+        }
+
+        /// <summary>
+        /// The ACL token to use. This overrides the
+        /// token that the agent provides by default.
+        /// </summary>
+        [Input("token")]
+        public Input<string>? Token { get; set; }
+
+        public GetKeyPrefixInvokeArgs()
         {
         }
     }

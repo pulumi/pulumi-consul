@@ -62,3 +62,17 @@ export interface GetNodesResult {
     readonly nodes: outputs.GetNodesNode[];
     readonly queryOptions?: outputs.GetNodesQueryOption[];
 }
+
+export function getNodesOutput(args?: GetNodesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNodesResult> {
+    return pulumi.output(args).apply(a => getNodes(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getNodes.
+ */
+export interface GetNodesOutputArgs {
+    /**
+     * See below.
+     */
+    queryOptions?: pulumi.Input<pulumi.Input<inputs.GetNodesQueryOptionArgs>[]>;
+}

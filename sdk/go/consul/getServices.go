@@ -4,6 +4,9 @@
 package consul
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -43,4 +46,72 @@ type GetServicesResult struct {
 	// is the inverse of `services` and can be used to lookup the services that match
 	// a single tag).
 	Tags map[string]string `pulumi:"tags"`
+}
+
+func GetServicesOutput(ctx *pulumi.Context, args GetServicesOutputArgs, opts ...pulumi.InvokeOption) GetServicesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetServicesResult, error) {
+			args := v.(GetServicesArgs)
+			r, err := GetServices(ctx, &args, opts...)
+			return *r, err
+		}).(GetServicesResultOutput)
+}
+
+// A collection of arguments for invoking getServices.
+type GetServicesOutputArgs struct {
+	// See below.
+	QueryOptions GetServicesQueryOptionArrayInput `pulumi:"queryOptions"`
+}
+
+func (GetServicesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServicesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getServices.
+type GetServicesResultOutput struct{ *pulumi.OutputState }
+
+func (GetServicesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServicesResult)(nil)).Elem()
+}
+
+func (o GetServicesResultOutput) ToGetServicesResultOutput() GetServicesResultOutput {
+	return o
+}
+
+func (o GetServicesResultOutput) ToGetServicesResultOutputWithContext(ctx context.Context) GetServicesResultOutput {
+	return o
+}
+
+// The datacenter the keys are being read from to.
+func (o GetServicesResultOutput) Datacenter() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicesResult) string { return v.Datacenter }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetServicesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetServicesResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServicesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetServicesResultOutput) QueryOptions() GetServicesQueryOptionArrayOutput {
+	return o.ApplyT(func(v GetServicesResult) []GetServicesQueryOption { return v.QueryOptions }).(GetServicesQueryOptionArrayOutput)
+}
+
+func (o GetServicesResultOutput) Services() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetServicesResult) map[string]string { return v.Services }).(pulumi.StringMapOutput)
+}
+
+// A map of the tags found for each service.  If more than one service
+// shares the same tag, unique service names will be joined by whitespace (this
+// is the inverse of `services` and can be used to lookup the services that match
+// a single tag).
+func (o GetServicesResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetServicesResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetServicesResultOutput{})
 }

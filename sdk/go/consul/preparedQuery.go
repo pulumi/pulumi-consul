@@ -383,7 +383,7 @@ type PreparedQueryInput interface {
 }
 
 func (*PreparedQuery) ElementType() reflect.Type {
-	return reflect.TypeOf((*PreparedQuery)(nil))
+	return reflect.TypeOf((**PreparedQuery)(nil)).Elem()
 }
 
 func (i *PreparedQuery) ToPreparedQueryOutput() PreparedQueryOutput {
@@ -392,35 +392,6 @@ func (i *PreparedQuery) ToPreparedQueryOutput() PreparedQueryOutput {
 
 func (i *PreparedQuery) ToPreparedQueryOutputWithContext(ctx context.Context) PreparedQueryOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PreparedQueryOutput)
-}
-
-func (i *PreparedQuery) ToPreparedQueryPtrOutput() PreparedQueryPtrOutput {
-	return i.ToPreparedQueryPtrOutputWithContext(context.Background())
-}
-
-func (i *PreparedQuery) ToPreparedQueryPtrOutputWithContext(ctx context.Context) PreparedQueryPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PreparedQueryPtrOutput)
-}
-
-type PreparedQueryPtrInput interface {
-	pulumi.Input
-
-	ToPreparedQueryPtrOutput() PreparedQueryPtrOutput
-	ToPreparedQueryPtrOutputWithContext(ctx context.Context) PreparedQueryPtrOutput
-}
-
-type preparedQueryPtrType PreparedQueryArgs
-
-func (*preparedQueryPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PreparedQuery)(nil))
-}
-
-func (i *preparedQueryPtrType) ToPreparedQueryPtrOutput() PreparedQueryPtrOutput {
-	return i.ToPreparedQueryPtrOutputWithContext(context.Background())
-}
-
-func (i *preparedQueryPtrType) ToPreparedQueryPtrOutputWithContext(ctx context.Context) PreparedQueryPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PreparedQueryPtrOutput)
 }
 
 // PreparedQueryArrayInput is an input type that accepts PreparedQueryArray and PreparedQueryArrayOutput values.
@@ -437,7 +408,7 @@ type PreparedQueryArrayInput interface {
 type PreparedQueryArray []PreparedQueryInput
 
 func (PreparedQueryArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*PreparedQuery)(nil))
+	return reflect.TypeOf((*[]*PreparedQuery)(nil)).Elem()
 }
 
 func (i PreparedQueryArray) ToPreparedQueryArrayOutput() PreparedQueryArrayOutput {
@@ -462,7 +433,7 @@ type PreparedQueryMapInput interface {
 type PreparedQueryMap map[string]PreparedQueryInput
 
 func (PreparedQueryMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*PreparedQuery)(nil))
+	return reflect.TypeOf((*map[string]*PreparedQuery)(nil)).Elem()
 }
 
 func (i PreparedQueryMap) ToPreparedQueryMapOutput() PreparedQueryMapOutput {
@@ -473,12 +444,10 @@ func (i PreparedQueryMap) ToPreparedQueryMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(PreparedQueryMapOutput)
 }
 
-type PreparedQueryOutput struct {
-	*pulumi.OutputState
-}
+type PreparedQueryOutput struct{ *pulumi.OutputState }
 
 func (PreparedQueryOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PreparedQuery)(nil))
+	return reflect.TypeOf((**PreparedQuery)(nil)).Elem()
 }
 
 func (o PreparedQueryOutput) ToPreparedQueryOutput() PreparedQueryOutput {
@@ -489,36 +458,10 @@ func (o PreparedQueryOutput) ToPreparedQueryOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o PreparedQueryOutput) ToPreparedQueryPtrOutput() PreparedQueryPtrOutput {
-	return o.ToPreparedQueryPtrOutputWithContext(context.Background())
-}
-
-func (o PreparedQueryOutput) ToPreparedQueryPtrOutputWithContext(ctx context.Context) PreparedQueryPtrOutput {
-	return o.ApplyT(func(v PreparedQuery) *PreparedQuery {
-		return &v
-	}).(PreparedQueryPtrOutput)
-}
-
-type PreparedQueryPtrOutput struct {
-	*pulumi.OutputState
-}
-
-func (PreparedQueryPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PreparedQuery)(nil))
-}
-
-func (o PreparedQueryPtrOutput) ToPreparedQueryPtrOutput() PreparedQueryPtrOutput {
-	return o
-}
-
-func (o PreparedQueryPtrOutput) ToPreparedQueryPtrOutputWithContext(ctx context.Context) PreparedQueryPtrOutput {
-	return o
-}
-
 type PreparedQueryArrayOutput struct{ *pulumi.OutputState }
 
 func (PreparedQueryArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PreparedQuery)(nil))
+	return reflect.TypeOf((*[]*PreparedQuery)(nil)).Elem()
 }
 
 func (o PreparedQueryArrayOutput) ToPreparedQueryArrayOutput() PreparedQueryArrayOutput {
@@ -530,15 +473,15 @@ func (o PreparedQueryArrayOutput) ToPreparedQueryArrayOutputWithContext(ctx cont
 }
 
 func (o PreparedQueryArrayOutput) Index(i pulumi.IntInput) PreparedQueryOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PreparedQuery {
-		return vs[0].([]PreparedQuery)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PreparedQuery {
+		return vs[0].([]*PreparedQuery)[vs[1].(int)]
 	}).(PreparedQueryOutput)
 }
 
 type PreparedQueryMapOutput struct{ *pulumi.OutputState }
 
 func (PreparedQueryMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]PreparedQuery)(nil))
+	return reflect.TypeOf((*map[string]*PreparedQuery)(nil)).Elem()
 }
 
 func (o PreparedQueryMapOutput) ToPreparedQueryMapOutput() PreparedQueryMapOutput {
@@ -550,14 +493,16 @@ func (o PreparedQueryMapOutput) ToPreparedQueryMapOutputWithContext(ctx context.
 }
 
 func (o PreparedQueryMapOutput) MapIndex(k pulumi.StringInput) PreparedQueryOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) PreparedQuery {
-		return vs[0].(map[string]PreparedQuery)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *PreparedQuery {
+		return vs[0].(map[string]*PreparedQuery)[vs[1].(string)]
 	}).(PreparedQueryOutput)
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*PreparedQueryInput)(nil)).Elem(), &PreparedQuery{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreparedQueryArrayInput)(nil)).Elem(), PreparedQueryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreparedQueryMapInput)(nil)).Elem(), PreparedQueryMap{})
 	pulumi.RegisterOutputType(PreparedQueryOutput{})
-	pulumi.RegisterOutputType(PreparedQueryPtrOutput{})
 	pulumi.RegisterOutputType(PreparedQueryArrayOutput{})
 	pulumi.RegisterOutputType(PreparedQueryMapOutput{})
 }

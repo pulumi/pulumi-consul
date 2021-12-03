@@ -4,6 +4,9 @@
 package consul
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -25,10 +28,10 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "nyc1"
 // 		opt1 := "abcd"
-// 		appKeys, err := consul.LookupKeys(ctx, &consul.LookupKeysArgs{
+// 		appKeys, err := consul.LookupKeys(ctx, &GetKeysArgs{
 // 			Datacenter: &opt0,
-// 			Keys: []consul.GetKeysKey{
-// 				consul.GetKeysKey{
+// 			Keys: []GetKeysKey{
+// 				GetKeysKey{
 // 					Default: "ami-1234",
 // 					Name:    "ami",
 // 					Path:    "service/app/launch_ami",
@@ -85,4 +88,79 @@ type LookupKeysResult struct {
 	Namespace *string           `pulumi:"namespace"`
 	Token     *string           `pulumi:"token"`
 	Var       map[string]string `pulumi:"var"`
+}
+
+func LookupKeysOutput(ctx *pulumi.Context, args LookupKeysOutputArgs, opts ...pulumi.InvokeOption) LookupKeysResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupKeysResult, error) {
+			args := v.(LookupKeysArgs)
+			r, err := LookupKeys(ctx, &args, opts...)
+			return *r, err
+		}).(LookupKeysResultOutput)
+}
+
+// A collection of arguments for invoking getKeys.
+type LookupKeysOutputArgs struct {
+	// The datacenter to use. This overrides the
+	// agent's default datacenter and the datacenter in the provider setup.
+	Datacenter pulumi.StringPtrInput `pulumi:"datacenter"`
+	// Specifies a key in Consul to be read. Supported
+	// values documented below. Multiple blocks supported.
+	Keys GetKeysKeyArrayInput `pulumi:"keys"`
+	// The namespace to lookup the keys.
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	// The ACL token to use. This overrides the
+	// token that the agent provides by default.
+	Token pulumi.StringPtrInput `pulumi:"token"`
+}
+
+func (LookupKeysOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupKeysArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getKeys.
+type LookupKeysResultOutput struct{ *pulumi.OutputState }
+
+func (LookupKeysResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupKeysResult)(nil)).Elem()
+}
+
+func (o LookupKeysResultOutput) ToLookupKeysResultOutput() LookupKeysResultOutput {
+	return o
+}
+
+func (o LookupKeysResultOutput) ToLookupKeysResultOutputWithContext(ctx context.Context) LookupKeysResultOutput {
+	return o
+}
+
+// The datacenter the keys are being read from.
+// * `var.<name>` - For each name given, the corresponding attribute
+//   has the value of the key.
+func (o LookupKeysResultOutput) Datacenter() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKeysResult) string { return v.Datacenter }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupKeysResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKeysResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupKeysResultOutput) Keys() GetKeysKeyArrayOutput {
+	return o.ApplyT(func(v LookupKeysResult) []GetKeysKey { return v.Keys }).(GetKeysKeyArrayOutput)
+}
+
+func (o LookupKeysResultOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupKeysResult) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupKeysResultOutput) Token() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupKeysResult) *string { return v.Token }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupKeysResultOutput) Var() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupKeysResult) map[string]string { return v.Var }).(pulumi.StringMapOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupKeysResultOutput{})
 }

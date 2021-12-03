@@ -59,12 +59,12 @@ export class NamespacePolicyAttachment extends pulumi.CustomResource {
      */
     constructor(name: string, args: NamespacePolicyAttachmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NamespacePolicyAttachmentArgs | NamespacePolicyAttachmentState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NamespacePolicyAttachmentState | undefined;
-            inputs["namespace"] = state ? state.namespace : undefined;
-            inputs["policy"] = state ? state.policy : undefined;
+            resourceInputs["namespace"] = state ? state.namespace : undefined;
+            resourceInputs["policy"] = state ? state.policy : undefined;
         } else {
             const args = argsOrState as NamespacePolicyAttachmentArgs | undefined;
             if ((!args || args.namespace === undefined) && !opts.urn) {
@@ -73,13 +73,13 @@ export class NamespacePolicyAttachment extends pulumi.CustomResource {
             if ((!args || args.policy === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policy'");
             }
-            inputs["namespace"] = args ? args.namespace : undefined;
-            inputs["policy"] = args ? args.policy : undefined;
+            resourceInputs["namespace"] = args ? args.namespace : undefined;
+            resourceInputs["policy"] = args ? args.policy : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(NamespacePolicyAttachment.__pulumiType, name, inputs, opts);
+        super(NamespacePolicyAttachment.__pulumiType, name, resourceInputs, opts);
     }
 }
 

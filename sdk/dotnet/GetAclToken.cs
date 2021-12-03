@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Consul
 {
@@ -46,6 +47,42 @@ namespace Pulumi.Consul
         /// </summary>
         public static Task<GetAclTokenResult> InvokeAsync(GetAclTokenArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAclTokenResult>("consul:index/getAclToken:getAclToken", args ?? new GetAclTokenArgs(), options.WithVersion());
+
+        /// <summary>
+        /// The `consul.AclToken` data source returns the information related to the
+        /// `consul.AclToken` resource with the exception of its secret ID.
+        /// 
+        /// If you want to get the secret ID associated with a token, use the
+        /// [`consul.getAclTokenSecretId` data source](https://www.terraform.io/docs/providers/consul/d/acl_token_secret_id.html).
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Consul = Pulumi.Consul;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var test = Output.Create(Consul.GetAclToken.InvokeAsync(new Consul.GetAclTokenArgs
+        ///         {
+        ///             AccessorId = "00000000-0000-0000-0000-000000000002",
+        ///         }));
+        ///         this.ConsulAclPolicies = test.Apply(test =&gt; test.Policies);
+        ///     }
+        /// 
+        ///     [Output("consulAclPolicies")]
+        ///     public Output&lt;string&gt; ConsulAclPolicies { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetAclTokenResult> Invoke(GetAclTokenInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAclTokenResult>("consul:index/getAclToken:getAclToken", args ?? new GetAclTokenInvokeArgs(), options.WithVersion());
     }
 
 
@@ -64,6 +101,25 @@ namespace Pulumi.Consul
         public string? Namespace { get; set; }
 
         public GetAclTokenArgs()
+        {
+        }
+    }
+
+    public sealed class GetAclTokenInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The accessor ID of the ACL token.
+        /// </summary>
+        [Input("accessorId", required: true)]
+        public Input<string> AccessorId { get; set; } = null!;
+
+        /// <summary>
+        /// The namespace to lookup the ACL token.
+        /// </summary>
+        [Input("namespace")]
+        public Input<string>? Namespace { get; set; }
+
+        public GetAclTokenInvokeArgs()
         {
         }
     }

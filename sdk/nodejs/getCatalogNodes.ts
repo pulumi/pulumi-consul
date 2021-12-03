@@ -40,3 +40,14 @@ export interface GetCatalogNodesResult {
     readonly nodes: outputs.GetCatalogNodesNode[];
     readonly queryOptions?: outputs.GetCatalogNodesQueryOption[];
 }
+
+export function getCatalogNodesOutput(args?: GetCatalogNodesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCatalogNodesResult> {
+    return pulumi.output(args).apply(a => getCatalogNodes(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getCatalogNodes.
+ */
+export interface GetCatalogNodesOutputArgs {
+    queryOptions?: pulumi.Input<pulumi.Input<inputs.GetCatalogNodesQueryOptionArgs>[]>;
+}

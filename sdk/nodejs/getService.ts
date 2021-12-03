@@ -92,3 +92,38 @@ export interface GetServiceResult {
      */
     readonly tag?: string;
 }
+
+export function getServiceOutput(args: GetServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceResult> {
+    return pulumi.output(args).apply(a => getService(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getService.
+ */
+export interface GetServiceOutputArgs {
+    /**
+     * The Consul datacenter to query.  Defaults to the
+     * same value found in `queryOptions` parameter specified below, or if that is
+     * empty, the `datacenter` value found in the Consul agent that this provider is
+     * configured to talk to.
+     */
+    datacenter?: pulumi.Input<string>;
+    /**
+     * A filter expression to refine the query, see https://www.consul.io/api-docs/features/filtering
+     * and https://www.consul.io/api-docs/catalog#filtering-1.
+     */
+    filter?: pulumi.Input<string>;
+    /**
+     * The service name to select.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * See below.
+     */
+    queryOptions?: pulumi.Input<pulumi.Input<inputs.GetServiceQueryOptionArgs>[]>;
+    /**
+     * A single tag that can be used to filter the list of nodes
+     * to return based on a single matching tag..
+     */
+    tag?: pulumi.Input<string>;
+}

@@ -72,7 +72,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = consul.LookupService(ctx, &consul.LookupServiceArgs{
+// 		_, err = consul.LookupService(ctx, &GetServiceArgs{
 // 			Name: "postgresql",
 // 		}, nil)
 // 		if err != nil {
@@ -276,7 +276,7 @@ type IntentionInput interface {
 }
 
 func (*Intention) ElementType() reflect.Type {
-	return reflect.TypeOf((*Intention)(nil))
+	return reflect.TypeOf((**Intention)(nil)).Elem()
 }
 
 func (i *Intention) ToIntentionOutput() IntentionOutput {
@@ -285,35 +285,6 @@ func (i *Intention) ToIntentionOutput() IntentionOutput {
 
 func (i *Intention) ToIntentionOutputWithContext(ctx context.Context) IntentionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IntentionOutput)
-}
-
-func (i *Intention) ToIntentionPtrOutput() IntentionPtrOutput {
-	return i.ToIntentionPtrOutputWithContext(context.Background())
-}
-
-func (i *Intention) ToIntentionPtrOutputWithContext(ctx context.Context) IntentionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IntentionPtrOutput)
-}
-
-type IntentionPtrInput interface {
-	pulumi.Input
-
-	ToIntentionPtrOutput() IntentionPtrOutput
-	ToIntentionPtrOutputWithContext(ctx context.Context) IntentionPtrOutput
-}
-
-type intentionPtrType IntentionArgs
-
-func (*intentionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Intention)(nil))
-}
-
-func (i *intentionPtrType) ToIntentionPtrOutput() IntentionPtrOutput {
-	return i.ToIntentionPtrOutputWithContext(context.Background())
-}
-
-func (i *intentionPtrType) ToIntentionPtrOutputWithContext(ctx context.Context) IntentionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IntentionPtrOutput)
 }
 
 // IntentionArrayInput is an input type that accepts IntentionArray and IntentionArrayOutput values.
@@ -330,7 +301,7 @@ type IntentionArrayInput interface {
 type IntentionArray []IntentionInput
 
 func (IntentionArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Intention)(nil))
+	return reflect.TypeOf((*[]*Intention)(nil)).Elem()
 }
 
 func (i IntentionArray) ToIntentionArrayOutput() IntentionArrayOutput {
@@ -355,7 +326,7 @@ type IntentionMapInput interface {
 type IntentionMap map[string]IntentionInput
 
 func (IntentionMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Intention)(nil))
+	return reflect.TypeOf((*map[string]*Intention)(nil)).Elem()
 }
 
 func (i IntentionMap) ToIntentionMapOutput() IntentionMapOutput {
@@ -366,12 +337,10 @@ func (i IntentionMap) ToIntentionMapOutputWithContext(ctx context.Context) Inten
 	return pulumi.ToOutputWithContext(ctx, i).(IntentionMapOutput)
 }
 
-type IntentionOutput struct {
-	*pulumi.OutputState
-}
+type IntentionOutput struct{ *pulumi.OutputState }
 
 func (IntentionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Intention)(nil))
+	return reflect.TypeOf((**Intention)(nil)).Elem()
 }
 
 func (o IntentionOutput) ToIntentionOutput() IntentionOutput {
@@ -382,36 +351,10 @@ func (o IntentionOutput) ToIntentionOutputWithContext(ctx context.Context) Inten
 	return o
 }
 
-func (o IntentionOutput) ToIntentionPtrOutput() IntentionPtrOutput {
-	return o.ToIntentionPtrOutputWithContext(context.Background())
-}
-
-func (o IntentionOutput) ToIntentionPtrOutputWithContext(ctx context.Context) IntentionPtrOutput {
-	return o.ApplyT(func(v Intention) *Intention {
-		return &v
-	}).(IntentionPtrOutput)
-}
-
-type IntentionPtrOutput struct {
-	*pulumi.OutputState
-}
-
-func (IntentionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Intention)(nil))
-}
-
-func (o IntentionPtrOutput) ToIntentionPtrOutput() IntentionPtrOutput {
-	return o
-}
-
-func (o IntentionPtrOutput) ToIntentionPtrOutputWithContext(ctx context.Context) IntentionPtrOutput {
-	return o
-}
-
 type IntentionArrayOutput struct{ *pulumi.OutputState }
 
 func (IntentionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Intention)(nil))
+	return reflect.TypeOf((*[]*Intention)(nil)).Elem()
 }
 
 func (o IntentionArrayOutput) ToIntentionArrayOutput() IntentionArrayOutput {
@@ -423,15 +366,15 @@ func (o IntentionArrayOutput) ToIntentionArrayOutputWithContext(ctx context.Cont
 }
 
 func (o IntentionArrayOutput) Index(i pulumi.IntInput) IntentionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Intention {
-		return vs[0].([]Intention)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Intention {
+		return vs[0].([]*Intention)[vs[1].(int)]
 	}).(IntentionOutput)
 }
 
 type IntentionMapOutput struct{ *pulumi.OutputState }
 
 func (IntentionMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]Intention)(nil))
+	return reflect.TypeOf((*map[string]*Intention)(nil)).Elem()
 }
 
 func (o IntentionMapOutput) ToIntentionMapOutput() IntentionMapOutput {
@@ -443,14 +386,16 @@ func (o IntentionMapOutput) ToIntentionMapOutputWithContext(ctx context.Context)
 }
 
 func (o IntentionMapOutput) MapIndex(k pulumi.StringInput) IntentionOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Intention {
-		return vs[0].(map[string]Intention)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Intention {
+		return vs[0].(map[string]*Intention)[vs[1].(string)]
 	}).(IntentionOutput)
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*IntentionInput)(nil)).Elem(), &Intention{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IntentionArrayInput)(nil)).Elem(), IntentionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IntentionMapInput)(nil)).Elem(), IntentionMap{})
 	pulumi.RegisterOutputType(IntentionOutput{})
-	pulumi.RegisterOutputType(IntentionPtrOutput{})
 	pulumi.RegisterOutputType(IntentionArrayOutput{})
 	pulumi.RegisterOutputType(IntentionMapOutput{})
 }

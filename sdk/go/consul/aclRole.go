@@ -24,7 +24,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := consul.NewAclPolicy(ctx, "read_policy", &consul.AclPolicyArgs{
+// 		_, err := consul.NewAclPolicy(ctx, "read-policy", &consul.AclPolicyArgs{
 // 			Datacenters: pulumi.StringArray{
 // 				pulumi.String("dc1"),
 // 			},
@@ -38,8 +38,8 @@ import (
 // 			Policies: pulumi.StringArray{
 // 				read_policy.ID(),
 // 			},
-// 			ServiceIdentities: consul.AclRoleServiceIdentityArray{
-// 				&consul.AclRoleServiceIdentityArgs{
+// 			ServiceIdentities: AclRoleServiceIdentityArray{
+// 				&AclRoleServiceIdentityArgs{
 // 					ServiceName: pulumi.String("foo"),
 // 				},
 // 			},
@@ -181,7 +181,7 @@ type AclRoleInput interface {
 }
 
 func (*AclRole) ElementType() reflect.Type {
-	return reflect.TypeOf((*AclRole)(nil))
+	return reflect.TypeOf((**AclRole)(nil)).Elem()
 }
 
 func (i *AclRole) ToAclRoleOutput() AclRoleOutput {
@@ -190,35 +190,6 @@ func (i *AclRole) ToAclRoleOutput() AclRoleOutput {
 
 func (i *AclRole) ToAclRoleOutputWithContext(ctx context.Context) AclRoleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AclRoleOutput)
-}
-
-func (i *AclRole) ToAclRolePtrOutput() AclRolePtrOutput {
-	return i.ToAclRolePtrOutputWithContext(context.Background())
-}
-
-func (i *AclRole) ToAclRolePtrOutputWithContext(ctx context.Context) AclRolePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AclRolePtrOutput)
-}
-
-type AclRolePtrInput interface {
-	pulumi.Input
-
-	ToAclRolePtrOutput() AclRolePtrOutput
-	ToAclRolePtrOutputWithContext(ctx context.Context) AclRolePtrOutput
-}
-
-type aclRolePtrType AclRoleArgs
-
-func (*aclRolePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AclRole)(nil))
-}
-
-func (i *aclRolePtrType) ToAclRolePtrOutput() AclRolePtrOutput {
-	return i.ToAclRolePtrOutputWithContext(context.Background())
-}
-
-func (i *aclRolePtrType) ToAclRolePtrOutputWithContext(ctx context.Context) AclRolePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AclRolePtrOutput)
 }
 
 // AclRoleArrayInput is an input type that accepts AclRoleArray and AclRoleArrayOutput values.
@@ -235,7 +206,7 @@ type AclRoleArrayInput interface {
 type AclRoleArray []AclRoleInput
 
 func (AclRoleArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*AclRole)(nil))
+	return reflect.TypeOf((*[]*AclRole)(nil)).Elem()
 }
 
 func (i AclRoleArray) ToAclRoleArrayOutput() AclRoleArrayOutput {
@@ -260,7 +231,7 @@ type AclRoleMapInput interface {
 type AclRoleMap map[string]AclRoleInput
 
 func (AclRoleMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*AclRole)(nil))
+	return reflect.TypeOf((*map[string]*AclRole)(nil)).Elem()
 }
 
 func (i AclRoleMap) ToAclRoleMapOutput() AclRoleMapOutput {
@@ -271,12 +242,10 @@ func (i AclRoleMap) ToAclRoleMapOutputWithContext(ctx context.Context) AclRoleMa
 	return pulumi.ToOutputWithContext(ctx, i).(AclRoleMapOutput)
 }
 
-type AclRoleOutput struct {
-	*pulumi.OutputState
-}
+type AclRoleOutput struct{ *pulumi.OutputState }
 
 func (AclRoleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AclRole)(nil))
+	return reflect.TypeOf((**AclRole)(nil)).Elem()
 }
 
 func (o AclRoleOutput) ToAclRoleOutput() AclRoleOutput {
@@ -287,36 +256,10 @@ func (o AclRoleOutput) ToAclRoleOutputWithContext(ctx context.Context) AclRoleOu
 	return o
 }
 
-func (o AclRoleOutput) ToAclRolePtrOutput() AclRolePtrOutput {
-	return o.ToAclRolePtrOutputWithContext(context.Background())
-}
-
-func (o AclRoleOutput) ToAclRolePtrOutputWithContext(ctx context.Context) AclRolePtrOutput {
-	return o.ApplyT(func(v AclRole) *AclRole {
-		return &v
-	}).(AclRolePtrOutput)
-}
-
-type AclRolePtrOutput struct {
-	*pulumi.OutputState
-}
-
-func (AclRolePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AclRole)(nil))
-}
-
-func (o AclRolePtrOutput) ToAclRolePtrOutput() AclRolePtrOutput {
-	return o
-}
-
-func (o AclRolePtrOutput) ToAclRolePtrOutputWithContext(ctx context.Context) AclRolePtrOutput {
-	return o
-}
-
 type AclRoleArrayOutput struct{ *pulumi.OutputState }
 
 func (AclRoleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AclRole)(nil))
+	return reflect.TypeOf((*[]*AclRole)(nil)).Elem()
 }
 
 func (o AclRoleArrayOutput) ToAclRoleArrayOutput() AclRoleArrayOutput {
@@ -328,15 +271,15 @@ func (o AclRoleArrayOutput) ToAclRoleArrayOutputWithContext(ctx context.Context)
 }
 
 func (o AclRoleArrayOutput) Index(i pulumi.IntInput) AclRoleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AclRole {
-		return vs[0].([]AclRole)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AclRole {
+		return vs[0].([]*AclRole)[vs[1].(int)]
 	}).(AclRoleOutput)
 }
 
 type AclRoleMapOutput struct{ *pulumi.OutputState }
 
 func (AclRoleMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]AclRole)(nil))
+	return reflect.TypeOf((*map[string]*AclRole)(nil)).Elem()
 }
 
 func (o AclRoleMapOutput) ToAclRoleMapOutput() AclRoleMapOutput {
@@ -348,14 +291,16 @@ func (o AclRoleMapOutput) ToAclRoleMapOutputWithContext(ctx context.Context) Acl
 }
 
 func (o AclRoleMapOutput) MapIndex(k pulumi.StringInput) AclRoleOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AclRole {
-		return vs[0].(map[string]AclRole)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *AclRole {
+		return vs[0].(map[string]*AclRole)[vs[1].(string)]
 	}).(AclRoleOutput)
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AclRoleInput)(nil)).Elem(), &AclRole{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AclRoleArrayInput)(nil)).Elem(), AclRoleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AclRoleMapInput)(nil)).Elem(), AclRoleMap{})
 	pulumi.RegisterOutputType(AclRoleOutput{})
-	pulumi.RegisterOutputType(AclRolePtrOutput{})
 	pulumi.RegisterOutputType(AclRoleArrayOutput{})
 	pulumi.RegisterOutputType(AclRoleMapOutput{})
 }

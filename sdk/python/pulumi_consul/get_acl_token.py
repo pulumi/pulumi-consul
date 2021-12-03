@@ -13,6 +13,7 @@ __all__ = [
     'GetAclTokenResult',
     'AwaitableGetAclTokenResult',
     'get_acl_token',
+    'get_acl_token_output',
 ]
 
 @pulumi.output_type
@@ -153,7 +154,7 @@ def get_acl_token(accessor_id: Optional[str] = None,
     `AclToken` resource with the exception of its secret ID.
 
     If you want to get the secret ID associated with a token, use the
-    [`getAclTokenSecretId` data source](https://www.terraform.io/docs/providers/consul/d/acl_token_secret_id.html).
+    [`get_acl_token_secret_id` data source](https://www.terraform.io/docs/providers/consul/d/acl_token_secret_id.html).
 
     ## Example Usage
 
@@ -189,3 +190,31 @@ def get_acl_token(accessor_id: Optional[str] = None,
         policies=__ret__.policies,
         roles=__ret__.roles,
         service_identities=__ret__.service_identities)
+
+
+@_utilities.lift_output_func(get_acl_token)
+def get_acl_token_output(accessor_id: Optional[pulumi.Input[str]] = None,
+                         namespace: Optional[pulumi.Input[Optional[str]]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAclTokenResult]:
+    """
+    The `AclToken` data source returns the information related to the
+    `AclToken` resource with the exception of its secret ID.
+
+    If you want to get the secret ID associated with a token, use the
+    [`get_acl_token_secret_id` data source](https://www.terraform.io/docs/providers/consul/d/acl_token_secret_id.html).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_consul as consul
+
+    test = consul.get_acl_token(accessor_id="00000000-0000-0000-0000-000000000002")
+    pulumi.export("consulAclPolicies", test.policies)
+    ```
+
+
+    :param str accessor_id: The accessor ID of the ACL token.
+    :param str namespace: The namespace to lookup the ACL token.
+    """
+    ...

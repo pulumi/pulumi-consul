@@ -14,6 +14,7 @@ __all__ = [
     'GetServicesResult',
     'AwaitableGetServicesResult',
     'get_services',
+    'get_services_output',
 ]
 
 @pulumi.output_type
@@ -101,7 +102,7 @@ class AwaitableGetServicesResult(GetServicesResult):
 def get_services(query_options: Optional[Sequence[pulumi.InputType['GetServicesQueryOptionArgs']]] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServicesResult:
     """
-    The `getServices` data source returns a list of Consul services that
+    The `get_services` data source returns a list of Consul services that
     have been registered with the Consul cluster in a given datacenter.  By
     specifying a different datacenter in the `query_options` it is possible to
     retrieve a list of services from a different WAN-attached Consul datacenter.
@@ -127,3 +128,21 @@ def get_services(query_options: Optional[Sequence[pulumi.InputType['GetServicesQ
         query_options=__ret__.query_options,
         services=__ret__.services,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_services)
+def get_services_output(query_options: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetServicesQueryOptionArgs']]]]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServicesResult]:
+    """
+    The `get_services` data source returns a list of Consul services that
+    have been registered with the Consul cluster in a given datacenter.  By
+    specifying a different datacenter in the `query_options` it is possible to
+    retrieve a list of services from a different WAN-attached Consul datacenter.
+
+    This data source is different from the `Service` (singular) data
+    source, which provides a detailed response about a specific Consul service.
+
+
+    :param Sequence[pulumi.InputType['GetServicesQueryOptionArgs']] query_options: See below.
+    """
+    ...

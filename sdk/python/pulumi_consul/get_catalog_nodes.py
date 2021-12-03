@@ -14,6 +14,7 @@ __all__ = [
     'GetCatalogNodesResult',
     'AwaitableGetCatalogNodesResult',
     'get_catalog_nodes',
+    'get_catalog_nodes_output',
 ]
 
 @pulumi.output_type
@@ -109,3 +110,12 @@ def get_catalog_nodes(query_options: Optional[Sequence[pulumi.InputType['GetCata
         node_names=__ret__.node_names,
         nodes=__ret__.nodes,
         query_options=__ret__.query_options)
+
+
+@_utilities.lift_output_func(get_catalog_nodes)
+def get_catalog_nodes_output(query_options: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetCatalogNodesQueryOptionArgs']]]]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCatalogNodesResult]:
+    """
+    Use this data source to access information about an existing resource.
+    """
+    ...

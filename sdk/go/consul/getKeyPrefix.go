@@ -4,6 +4,9 @@
 package consul
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -52,4 +55,94 @@ type LookupKeyPrefixResult struct {
 	Subkeys map[string]string `pulumi:"subkeys"`
 	Token   *string           `pulumi:"token"`
 	Var     map[string]string `pulumi:"var"`
+}
+
+func LookupKeyPrefixOutput(ctx *pulumi.Context, args LookupKeyPrefixOutputArgs, opts ...pulumi.InvokeOption) LookupKeyPrefixResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupKeyPrefixResult, error) {
+			args := v.(LookupKeyPrefixArgs)
+			r, err := LookupKeyPrefix(ctx, &args, opts...)
+			return *r, err
+		}).(LookupKeyPrefixResultOutput)
+}
+
+// A collection of arguments for invoking getKeyPrefix.
+type LookupKeyPrefixOutputArgs struct {
+	// The datacenter to use. This overrides the
+	// agent's default datacenter and the datacenter in the provider setup.
+	Datacenter pulumi.StringPtrInput `pulumi:"datacenter"`
+	// The namespace to create the keys within.
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	// Specifies the common prefix shared by all keys
+	// that will be read by this data source instance. In most cases, this will
+	// end with a slash to read a "folder" of subkeys.
+	PathPrefix pulumi.StringInput `pulumi:"pathPrefix"`
+	// Specifies a subkey in Consul to be read. Supported
+	// values documented below. Multiple blocks supported.
+	SubkeyCollection GetKeyPrefixSubkeyCollectionArrayInput `pulumi:"subkeyCollection"`
+	// The ACL token to use. This overrides the
+	// token that the agent provides by default.
+	Token pulumi.StringPtrInput `pulumi:"token"`
+}
+
+func (LookupKeyPrefixOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupKeyPrefixArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getKeyPrefix.
+type LookupKeyPrefixResultOutput struct{ *pulumi.OutputState }
+
+func (LookupKeyPrefixResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupKeyPrefixResult)(nil)).Elem()
+}
+
+func (o LookupKeyPrefixResultOutput) ToLookupKeyPrefixResultOutput() LookupKeyPrefixResultOutput {
+	return o
+}
+
+func (o LookupKeyPrefixResultOutput) ToLookupKeyPrefixResultOutputWithContext(ctx context.Context) LookupKeyPrefixResultOutput {
+	return o
+}
+
+// The datacenter the keys are being read from.
+func (o LookupKeyPrefixResultOutput) Datacenter() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKeyPrefixResult) string { return v.Datacenter }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupKeyPrefixResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKeyPrefixResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupKeyPrefixResultOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupKeyPrefixResult) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+// the common prefix shared by all keys being read.
+// * `var.<name>` - For each name given, the corresponding attribute
+//   has the value of the key.
+func (o LookupKeyPrefixResultOutput) PathPrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKeyPrefixResult) string { return v.PathPrefix }).(pulumi.StringOutput)
+}
+
+func (o LookupKeyPrefixResultOutput) SubkeyCollection() GetKeyPrefixSubkeyCollectionArrayOutput {
+	return o.ApplyT(func(v LookupKeyPrefixResult) []GetKeyPrefixSubkeyCollection { return v.SubkeyCollection }).(GetKeyPrefixSubkeyCollectionArrayOutput)
+}
+
+// A map of the subkeys and values is set if no `subkey`
+// block is provided.
+func (o LookupKeyPrefixResultOutput) Subkeys() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupKeyPrefixResult) map[string]string { return v.Subkeys }).(pulumi.StringMapOutput)
+}
+
+func (o LookupKeyPrefixResultOutput) Token() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupKeyPrefixResult) *string { return v.Token }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupKeyPrefixResultOutput) Var() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupKeyPrefixResult) map[string]string { return v.Var }).(pulumi.StringMapOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupKeyPrefixResultOutput{})
 }

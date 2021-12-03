@@ -14,6 +14,7 @@ __all__ = [
     'GetCatalogServicesResult',
     'AwaitableGetCatalogServicesResult',
     'get_catalog_services',
+    'get_catalog_services_output',
 ]
 
 @pulumi.output_type
@@ -109,3 +110,12 @@ def get_catalog_services(query_options: Optional[Sequence[pulumi.InputType['GetC
         query_options=__ret__.query_options,
         services=__ret__.services,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_catalog_services)
+def get_catalog_services_output(query_options: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetCatalogServicesQueryOptionArgs']]]]] = None,
+                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCatalogServicesResult]:
+    """
+    Use this data source to access information about an existing resource.
+    """
+    ...

@@ -9,56 +9,72 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
-__all__ = [
-    'address',
-    'ca_file',
-    'ca_path',
-    'ca_pem',
-    'cert_file',
-    'cert_pem',
-    'datacenter',
-    'headers',
-    'http_auth',
-    'insecure_https',
-    'key_file',
-    'key_pem',
-    'namespace',
-    'scheme',
-    'token',
-]
+import types
 
 __config__ = pulumi.Config('consul')
 
-address = __config__.get('address')
 
-ca_file = __config__.get('caFile')
+class _ExportableConfig(types.ModuleType):
+    @property
+    def address(self) -> Optional[str]:
+        return __config__.get('address')
 
-ca_path = __config__.get('caPath')
+    @property
+    def ca_file(self) -> Optional[str]:
+        return __config__.get('caFile')
 
-ca_pem = __config__.get('caPem')
+    @property
+    def ca_path(self) -> Optional[str]:
+        return __config__.get('caPath')
 
-cert_file = __config__.get('certFile')
+    @property
+    def ca_pem(self) -> Optional[str]:
+        return __config__.get('caPem')
 
-cert_pem = __config__.get('certPem')
+    @property
+    def cert_file(self) -> Optional[str]:
+        return __config__.get('certFile')
 
-datacenter = __config__.get('datacenter')
+    @property
+    def cert_pem(self) -> Optional[str]:
+        return __config__.get('certPem')
 
-headers = __config__.get('headers')
-"""
-Additional headers to send with each Consul request.
-"""
+    @property
+    def datacenter(self) -> Optional[str]:
+        return __config__.get('datacenter')
 
-http_auth = __config__.get('httpAuth')
+    @property
+    def headers(self) -> Optional[str]:
+        """
+        Additional headers to send with each Consul request.
+        """
+        return __config__.get('headers')
 
-insecure_https = __config__.get('insecureHttps')
+    @property
+    def http_auth(self) -> Optional[str]:
+        return __config__.get('httpAuth')
 
-key_file = __config__.get('keyFile')
+    @property
+    def insecure_https(self) -> Optional[bool]:
+        return __config__.get_bool('insecureHttps')
 
-key_pem = __config__.get('keyPem')
+    @property
+    def key_file(self) -> Optional[str]:
+        return __config__.get('keyFile')
 
-namespace = __config__.get('namespace')
+    @property
+    def key_pem(self) -> Optional[str]:
+        return __config__.get('keyPem')
 
-scheme = __config__.get('scheme')
+    @property
+    def namespace(self) -> Optional[str]:
+        return __config__.get('namespace')
 
-token = __config__.get('token')
+    @property
+    def scheme(self) -> Optional[str]:
+        return __config__.get('scheme')
+
+    @property
+    def token(self) -> Optional[str]:
+        return __config__.get('token')
 

@@ -48,3 +48,18 @@ export interface GetCatalogServiceResult {
     readonly services: outputs.GetCatalogServiceService[];
     readonly tag?: string;
 }
+
+export function getCatalogServiceOutput(args: GetCatalogServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCatalogServiceResult> {
+    return pulumi.output(args).apply(a => getCatalogService(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getCatalogService.
+ */
+export interface GetCatalogServiceOutputArgs {
+    datacenter?: pulumi.Input<string>;
+    filter?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
+    queryOptions?: pulumi.Input<pulumi.Input<inputs.GetCatalogServiceQueryOptionArgs>[]>;
+    tag?: pulumi.Input<string>;
+}

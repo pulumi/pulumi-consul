@@ -59,12 +59,12 @@ export class AclTokenRoleAttachment extends pulumi.CustomResource {
      */
     constructor(name: string, args: AclTokenRoleAttachmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AclTokenRoleAttachmentArgs | AclTokenRoleAttachmentState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AclTokenRoleAttachmentState | undefined;
-            inputs["role"] = state ? state.role : undefined;
-            inputs["tokenId"] = state ? state.tokenId : undefined;
+            resourceInputs["role"] = state ? state.role : undefined;
+            resourceInputs["tokenId"] = state ? state.tokenId : undefined;
         } else {
             const args = argsOrState as AclTokenRoleAttachmentArgs | undefined;
             if ((!args || args.role === undefined) && !opts.urn) {
@@ -73,13 +73,13 @@ export class AclTokenRoleAttachment extends pulumi.CustomResource {
             if ((!args || args.tokenId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tokenId'");
             }
-            inputs["role"] = args ? args.role : undefined;
-            inputs["tokenId"] = args ? args.tokenId : undefined;
+            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["tokenId"] = args ? args.tokenId : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(AclTokenRoleAttachment.__pulumiType, name, inputs, opts);
+        super(AclTokenRoleAttachment.__pulumiType, name, resourceInputs, opts);
     }
 }
 

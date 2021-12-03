@@ -63,27 +63,27 @@ export class Keys extends pulumi.CustomResource {
      */
     constructor(name: string, args?: KeysArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: KeysArgs | KeysState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KeysState | undefined;
-            inputs["datacenter"] = state ? state.datacenter : undefined;
-            inputs["keys"] = state ? state.keys : undefined;
-            inputs["namespace"] = state ? state.namespace : undefined;
-            inputs["token"] = state ? state.token : undefined;
-            inputs["var"] = state ? state.var : undefined;
+            resourceInputs["datacenter"] = state ? state.datacenter : undefined;
+            resourceInputs["keys"] = state ? state.keys : undefined;
+            resourceInputs["namespace"] = state ? state.namespace : undefined;
+            resourceInputs["token"] = state ? state.token : undefined;
+            resourceInputs["var"] = state ? state.var : undefined;
         } else {
             const args = argsOrState as KeysArgs | undefined;
-            inputs["datacenter"] = args ? args.datacenter : undefined;
-            inputs["keys"] = args ? args.keys : undefined;
-            inputs["namespace"] = args ? args.namespace : undefined;
-            inputs["token"] = args ? args.token : undefined;
-            inputs["var"] = undefined /*out*/;
+            resourceInputs["datacenter"] = args ? args.datacenter : undefined;
+            resourceInputs["keys"] = args ? args.keys : undefined;
+            resourceInputs["namespace"] = args ? args.namespace : undefined;
+            resourceInputs["token"] = args ? args.token : undefined;
+            resourceInputs["var"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Keys.__pulumiType, name, inputs, opts);
+        super(Keys.__pulumiType, name, resourceInputs, opts);
     }
 }
 

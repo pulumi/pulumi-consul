@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Consul
 {
@@ -44,6 +45,40 @@ namespace Pulumi.Consul
         /// </summary>
         public static Task<GetAclPolicyResult> InvokeAsync(GetAclPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAclPolicyResult>("consul:index/getAclPolicy:getAclPolicy", args ?? new GetAclPolicyArgs(), options.WithVersion());
+
+        /// <summary>
+        /// The `consul.AclPolicy` data source returns the information related to a
+        /// [Consul ACL Policy](https://www.consul.io/docs/acl/acl-system.html#acl-policies).
+        /// 
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Consul = Pulumi.Consul;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var agent = Output.Create(Consul.GetAclPolicy.InvokeAsync(new Consul.GetAclPolicyArgs
+        ///         {
+        ///             Name = "agent",
+        ///         }));
+        ///         this.ConsulAclPolicy = agent.Apply(agent =&gt; agent.Rules);
+        ///     }
+        /// 
+        ///     [Output("consulAclPolicy")]
+        ///     public Output&lt;string&gt; ConsulAclPolicy { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetAclPolicyResult> Invoke(GetAclPolicyInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAclPolicyResult>("consul:index/getAclPolicy:getAclPolicy", args ?? new GetAclPolicyInvokeArgs(), options.WithVersion());
     }
 
 
@@ -86,6 +121,49 @@ namespace Pulumi.Consul
         public string? Rules { get; set; }
 
         public GetAclPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetAclPolicyInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("datacenters")]
+        private InputList<string>? _datacenters;
+
+        /// <summary>
+        /// The datacenters associated with the ACL Policy.
+        /// </summary>
+        public InputList<string> Datacenters
+        {
+            get => _datacenters ?? (_datacenters = new InputList<string>());
+            set => _datacenters = value;
+        }
+
+        /// <summary>
+        /// The description of the ACL Policy.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The name of the ACL Policy.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The namespace to lookup the policy.
+        /// </summary>
+        [Input("namespace")]
+        public Input<string>? Namespace { get; set; }
+
+        /// <summary>
+        /// The rules associated with the ACL Policy.
+        /// </summary>
+        [Input("rules")]
+        public Input<string>? Rules { get; set; }
+
+        public GetAclPolicyInvokeArgs()
         {
         }
     }

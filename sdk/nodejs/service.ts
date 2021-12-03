@@ -167,44 +167,44 @@ export class Service extends pulumi.CustomResource {
      */
     constructor(name: string, args: ServiceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ServiceArgs | ServiceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceState | undefined;
-            inputs["address"] = state ? state.address : undefined;
-            inputs["checks"] = state ? state.checks : undefined;
-            inputs["datacenter"] = state ? state.datacenter : undefined;
-            inputs["enableTagOverride"] = state ? state.enableTagOverride : undefined;
-            inputs["external"] = state ? state.external : undefined;
-            inputs["meta"] = state ? state.meta : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["namespace"] = state ? state.namespace : undefined;
-            inputs["node"] = state ? state.node : undefined;
-            inputs["port"] = state ? state.port : undefined;
-            inputs["serviceId"] = state ? state.serviceId : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["address"] = state ? state.address : undefined;
+            resourceInputs["checks"] = state ? state.checks : undefined;
+            resourceInputs["datacenter"] = state ? state.datacenter : undefined;
+            resourceInputs["enableTagOverride"] = state ? state.enableTagOverride : undefined;
+            resourceInputs["external"] = state ? state.external : undefined;
+            resourceInputs["meta"] = state ? state.meta : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["namespace"] = state ? state.namespace : undefined;
+            resourceInputs["node"] = state ? state.node : undefined;
+            resourceInputs["port"] = state ? state.port : undefined;
+            resourceInputs["serviceId"] = state ? state.serviceId : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as ServiceArgs | undefined;
             if ((!args || args.node === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'node'");
             }
-            inputs["address"] = args ? args.address : undefined;
-            inputs["checks"] = args ? args.checks : undefined;
-            inputs["datacenter"] = args ? args.datacenter : undefined;
-            inputs["enableTagOverride"] = args ? args.enableTagOverride : undefined;
-            inputs["external"] = args ? args.external : undefined;
-            inputs["meta"] = args ? args.meta : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["namespace"] = args ? args.namespace : undefined;
-            inputs["node"] = args ? args.node : undefined;
-            inputs["port"] = args ? args.port : undefined;
-            inputs["serviceId"] = args ? args.serviceId : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["address"] = args ? args.address : undefined;
+            resourceInputs["checks"] = args ? args.checks : undefined;
+            resourceInputs["datacenter"] = args ? args.datacenter : undefined;
+            resourceInputs["enableTagOverride"] = args ? args.enableTagOverride : undefined;
+            resourceInputs["external"] = args ? args.external : undefined;
+            resourceInputs["meta"] = args ? args.meta : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["namespace"] = args ? args.namespace : undefined;
+            resourceInputs["node"] = args ? args.node : undefined;
+            resourceInputs["port"] = args ? args.port : undefined;
+            resourceInputs["serviceId"] = args ? args.serviceId : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Service.__pulumiType, name, inputs, opts);
+        super(Service.__pulumiType, name, resourceInputs, opts);
     }
 }
 

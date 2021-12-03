@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -69,4 +68,24 @@ export interface GetNetworkSegmentsResult {
      */
     readonly segments: string[];
     readonly token?: string;
+}
+
+export function getNetworkSegmentsOutput(args?: GetNetworkSegmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkSegmentsResult> {
+    return pulumi.output(args).apply(a => getNetworkSegments(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getNetworkSegments.
+ */
+export interface GetNetworkSegmentsOutputArgs {
+    /**
+     * The datacenter to use. This overrides the
+     * agent's default datacenter and the datacenter in the provider setup.
+     */
+    datacenter?: pulumi.Input<string>;
+    /**
+     * The ACL token to use. This overrides the
+     * token that the agent provides by default.
+     */
+    token?: pulumi.Input<string>;
 }

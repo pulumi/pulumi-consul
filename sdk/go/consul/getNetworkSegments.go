@@ -4,6 +4,9 @@
 package consul
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -61,4 +64,65 @@ type GetNetworkSegmentsResult struct {
 	// The list of network segments.
 	Segments []string `pulumi:"segments"`
 	Token    *string  `pulumi:"token"`
+}
+
+func GetNetworkSegmentsOutput(ctx *pulumi.Context, args GetNetworkSegmentsOutputArgs, opts ...pulumi.InvokeOption) GetNetworkSegmentsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetNetworkSegmentsResult, error) {
+			args := v.(GetNetworkSegmentsArgs)
+			r, err := GetNetworkSegments(ctx, &args, opts...)
+			return *r, err
+		}).(GetNetworkSegmentsResultOutput)
+}
+
+// A collection of arguments for invoking getNetworkSegments.
+type GetNetworkSegmentsOutputArgs struct {
+	// The datacenter to use. This overrides the
+	// agent's default datacenter and the datacenter in the provider setup.
+	Datacenter pulumi.StringPtrInput `pulumi:"datacenter"`
+	// The ACL token to use. This overrides the
+	// token that the agent provides by default.
+	Token pulumi.StringPtrInput `pulumi:"token"`
+}
+
+func (GetNetworkSegmentsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkSegmentsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getNetworkSegments.
+type GetNetworkSegmentsResultOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkSegmentsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkSegmentsResult)(nil)).Elem()
+}
+
+func (o GetNetworkSegmentsResultOutput) ToGetNetworkSegmentsResultOutput() GetNetworkSegmentsResultOutput {
+	return o
+}
+
+func (o GetNetworkSegmentsResultOutput) ToGetNetworkSegmentsResultOutputWithContext(ctx context.Context) GetNetworkSegmentsResultOutput {
+	return o
+}
+
+// The datacenter the segments are being read from.
+func (o GetNetworkSegmentsResultOutput) Datacenter() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkSegmentsResult) string { return v.Datacenter }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetNetworkSegmentsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkSegmentsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The list of network segments.
+func (o GetNetworkSegmentsResultOutput) Segments() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworkSegmentsResult) []string { return v.Segments }).(pulumi.StringArrayOutput)
+}
+
+func (o GetNetworkSegmentsResultOutput) Token() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNetworkSegmentsResult) *string { return v.Token }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetNetworkSegmentsResultOutput{})
 }

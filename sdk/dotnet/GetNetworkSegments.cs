@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Consul
 {
@@ -42,6 +43,38 @@ namespace Pulumi.Consul
         /// </summary>
         public static Task<GetNetworkSegmentsResult> InvokeAsync(GetNetworkSegmentsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNetworkSegmentsResult>("consul:index/getNetworkSegments:getNetworkSegments", args ?? new GetNetworkSegmentsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// &gt; **NOTE:** This feature requires [Consul Enterprise](https://www.consul.io/docs/enterprise/index.html).
+        /// 
+        /// The `consul_network_segment` data source can be used to retrieve the network
+        /// segments defined in the configuration.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Consul = Pulumi.Consul;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var segmentsNetworkSegments = Output.Create(Consul.GetNetworkSegments.InvokeAsync());
+        ///         this.Segments = segmentsNetworkSegments.Apply(segmentsNetworkSegments =&gt; segmentsNetworkSegments.Segments);
+        ///     }
+        /// 
+        ///     [Output("segments")]
+        ///     public Output&lt;string&gt; Segments { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetNetworkSegmentsResult> Invoke(GetNetworkSegmentsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetNetworkSegmentsResult>("consul:index/getNetworkSegments:getNetworkSegments", args ?? new GetNetworkSegmentsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -62,6 +95,27 @@ namespace Pulumi.Consul
         public string? Token { get; set; }
 
         public GetNetworkSegmentsArgs()
+        {
+        }
+    }
+
+    public sealed class GetNetworkSegmentsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The datacenter to use. This overrides the
+        /// agent's default datacenter and the datacenter in the provider setup.
+        /// </summary>
+        [Input("datacenter")]
+        public Input<string>? Datacenter { get; set; }
+
+        /// <summary>
+        /// The ACL token to use. This overrides the
+        /// token that the agent provides by default.
+        /// </summary>
+        [Input("token")]
+        public Input<string>? Token { get; set; }
+
+        public GetNetworkSegmentsInvokeArgs()
         {
         }
     }

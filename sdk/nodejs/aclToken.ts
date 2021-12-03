@@ -115,35 +115,35 @@ export class AclToken extends pulumi.CustomResource {
      */
     constructor(name: string, args?: AclTokenArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AclTokenArgs | AclTokenState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AclTokenState | undefined;
-            inputs["accessorId"] = state ? state.accessorId : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["expirationTime"] = state ? state.expirationTime : undefined;
-            inputs["local"] = state ? state.local : undefined;
-            inputs["namespace"] = state ? state.namespace : undefined;
-            inputs["nodeIdentities"] = state ? state.nodeIdentities : undefined;
-            inputs["policies"] = state ? state.policies : undefined;
-            inputs["roles"] = state ? state.roles : undefined;
-            inputs["serviceIdentities"] = state ? state.serviceIdentities : undefined;
+            resourceInputs["accessorId"] = state ? state.accessorId : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["expirationTime"] = state ? state.expirationTime : undefined;
+            resourceInputs["local"] = state ? state.local : undefined;
+            resourceInputs["namespace"] = state ? state.namespace : undefined;
+            resourceInputs["nodeIdentities"] = state ? state.nodeIdentities : undefined;
+            resourceInputs["policies"] = state ? state.policies : undefined;
+            resourceInputs["roles"] = state ? state.roles : undefined;
+            resourceInputs["serviceIdentities"] = state ? state.serviceIdentities : undefined;
         } else {
             const args = argsOrState as AclTokenArgs | undefined;
-            inputs["accessorId"] = args ? args.accessorId : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["expirationTime"] = args ? args.expirationTime : undefined;
-            inputs["local"] = args ? args.local : undefined;
-            inputs["namespace"] = args ? args.namespace : undefined;
-            inputs["nodeIdentities"] = args ? args.nodeIdentities : undefined;
-            inputs["policies"] = args ? args.policies : undefined;
-            inputs["roles"] = args ? args.roles : undefined;
-            inputs["serviceIdentities"] = args ? args.serviceIdentities : undefined;
+            resourceInputs["accessorId"] = args ? args.accessorId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["expirationTime"] = args ? args.expirationTime : undefined;
+            resourceInputs["local"] = args ? args.local : undefined;
+            resourceInputs["namespace"] = args ? args.namespace : undefined;
+            resourceInputs["nodeIdentities"] = args ? args.nodeIdentities : undefined;
+            resourceInputs["policies"] = args ? args.policies : undefined;
+            resourceInputs["roles"] = args ? args.roles : undefined;
+            resourceInputs["serviceIdentities"] = args ? args.serviceIdentities : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(AclToken.__pulumiType, name, inputs, opts);
+        super(AclToken.__pulumiType, name, resourceInputs, opts);
     }
 }
 

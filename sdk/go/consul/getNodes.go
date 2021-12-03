@@ -4,6 +4,9 @@
 package consul
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,4 +43,72 @@ type GetNodesResult struct {
 	// per-node attributes is detailed below.
 	Nodes        []GetNodesNode        `pulumi:"nodes"`
 	QueryOptions []GetNodesQueryOption `pulumi:"queryOptions"`
+}
+
+func GetNodesOutput(ctx *pulumi.Context, args GetNodesOutputArgs, opts ...pulumi.InvokeOption) GetNodesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetNodesResult, error) {
+			args := v.(GetNodesArgs)
+			r, err := GetNodes(ctx, &args, opts...)
+			return *r, err
+		}).(GetNodesResultOutput)
+}
+
+// A collection of arguments for invoking getNodes.
+type GetNodesOutputArgs struct {
+	// See below.
+	QueryOptions GetNodesQueryOptionArrayInput `pulumi:"queryOptions"`
+}
+
+func (GetNodesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNodesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getNodes.
+type GetNodesResultOutput struct{ *pulumi.OutputState }
+
+func (GetNodesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNodesResult)(nil)).Elem()
+}
+
+func (o GetNodesResultOutput) ToGetNodesResultOutput() GetNodesResultOutput {
+	return o
+}
+
+func (o GetNodesResultOutput) ToGetNodesResultOutputWithContext(ctx context.Context) GetNodesResultOutput {
+	return o
+}
+
+// The datacenter the keys are being read from to.
+func (o GetNodesResultOutput) Datacenter() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodesResult) string { return v.Datacenter }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetNodesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of the Consul node IDs.
+func (o GetNodesResultOutput) NodeIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNodesResult) []string { return v.NodeIds }).(pulumi.StringArrayOutput)
+}
+
+// A list of the Consul node names.
+func (o GetNodesResultOutput) NodeNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNodesResult) []string { return v.NodeNames }).(pulumi.StringArrayOutput)
+}
+
+// A list of nodes and details about each Consul agent.  The list of
+// per-node attributes is detailed below.
+func (o GetNodesResultOutput) Nodes() GetNodesNodeArrayOutput {
+	return o.ApplyT(func(v GetNodesResult) []GetNodesNode { return v.Nodes }).(GetNodesNodeArrayOutput)
+}
+
+func (o GetNodesResultOutput) QueryOptions() GetNodesQueryOptionArrayOutput {
+	return o.ApplyT(func(v GetNodesResult) []GetNodesQueryOption { return v.QueryOptions }).(GetNodesQueryOptionArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetNodesResultOutput{})
 }

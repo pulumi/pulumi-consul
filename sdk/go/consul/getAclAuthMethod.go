@@ -4,6 +4,9 @@
 package consul
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -22,7 +25,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		test, err := consul.LookupAclAuthMethod(ctx, &consul.LookupAclAuthMethodArgs{
+// 		test, err := consul.LookupAclAuthMethod(ctx, &GetAclAuthMethodArgs{
 // 			Name: "minikube",
 // 		}, nil)
 // 		if err != nil {
@@ -80,4 +83,105 @@ type LookupAclAuthMethodResult struct {
 	TokenLocality string `pulumi:"tokenLocality"`
 	// The type of the ACL Auth Method.
 	Type string `pulumi:"type"`
+}
+
+func LookupAclAuthMethodOutput(ctx *pulumi.Context, args LookupAclAuthMethodOutputArgs, opts ...pulumi.InvokeOption) LookupAclAuthMethodResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupAclAuthMethodResult, error) {
+			args := v.(LookupAclAuthMethodArgs)
+			r, err := LookupAclAuthMethod(ctx, &args, opts...)
+			return *r, err
+		}).(LookupAclAuthMethodResultOutput)
+}
+
+// A collection of arguments for invoking getAclAuthMethod.
+type LookupAclAuthMethodOutputArgs struct {
+	// The name of the ACL Auth Method.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The namespace to lookup the auth method.
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+}
+
+func (LookupAclAuthMethodOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAclAuthMethodArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getAclAuthMethod.
+type LookupAclAuthMethodResultOutput struct{ *pulumi.OutputState }
+
+func (LookupAclAuthMethodResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAclAuthMethodResult)(nil)).Elem()
+}
+
+func (o LookupAclAuthMethodResultOutput) ToLookupAclAuthMethodResultOutput() LookupAclAuthMethodResultOutput {
+	return o
+}
+
+func (o LookupAclAuthMethodResultOutput) ToLookupAclAuthMethodResultOutputWithContext(ctx context.Context) LookupAclAuthMethodResultOutput {
+	return o
+}
+
+// The configuration options of the ACL Auth Method. This attribute is
+// deprecated and will be removed in a future version. If the configuration is
+// too complex to be represented as a map of strings, it will be blank.
+// `configJson` should be used instead.
+//
+// Deprecated: The config attribute is deprecated, please use config_json instead.
+func (o LookupAclAuthMethodResultOutput) Config() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupAclAuthMethodResult) map[string]string { return v.Config }).(pulumi.StringMapOutput)
+}
+
+// The configuration options of the ACL Auth Method.
+func (o LookupAclAuthMethodResultOutput) ConfigJson() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAclAuthMethodResult) string { return v.ConfigJson }).(pulumi.StringOutput)
+}
+
+// The description of the ACL Auth Method.
+func (o LookupAclAuthMethodResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAclAuthMethodResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// An optional name to use instead of the name attribute when
+// displaying information about this auth method.
+func (o LookupAclAuthMethodResultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAclAuthMethodResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupAclAuthMethodResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAclAuthMethodResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The maximum life of any token created by this auth method.
+func (o LookupAclAuthMethodResultOutput) MaxTokenTtl() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAclAuthMethodResult) string { return v.MaxTokenTtl }).(pulumi.StringOutput)
+}
+
+func (o LookupAclAuthMethodResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAclAuthMethodResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupAclAuthMethodResultOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAclAuthMethodResult) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+// (Enterprise Only) A set of rules that control which
+// namespace tokens created via this auth method will be created within
+func (o LookupAclAuthMethodResultOutput) NamespaceRules() GetAclAuthMethodNamespaceRuleArrayOutput {
+	return o.ApplyT(func(v LookupAclAuthMethodResult) []GetAclAuthMethodNamespaceRule { return v.NamespaceRules }).(GetAclAuthMethodNamespaceRuleArrayOutput)
+}
+
+// The kind of token that this auth method produces. This can
+// be either 'local' or 'global'.
+func (o LookupAclAuthMethodResultOutput) TokenLocality() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAclAuthMethodResult) string { return v.TokenLocality }).(pulumi.StringOutput)
+}
+
+// The type of the ACL Auth Method.
+func (o LookupAclAuthMethodResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAclAuthMethodResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupAclAuthMethodResultOutput{})
 }

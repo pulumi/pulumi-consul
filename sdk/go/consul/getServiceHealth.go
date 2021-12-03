@@ -4,6 +4,9 @@
 package consul
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -14,8 +17,33 @@ import (
 //
 // This resource is likely to change as frequently as the health-checks are being
 // updated, you should expect different results in a frequent basis.
-func GetServiceHealth(ctx *pulumi.Context, args *GetServiceHealthArgs, opts ...pulumi.InvokeOption) (*GetServiceHealthResult, error) {
-	var rv GetServiceHealthResult
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := true
+// 		_, err := consul.LookupServiceHealth(ctx, &GetServiceHealthArgs{
+// 			Passing: &opt0,
+// 			Service: "vault",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+func LookupServiceHealth(ctx *pulumi.Context, args *LookupServiceHealthArgs, opts ...pulumi.InvokeOption) (*LookupServiceHealthResult, error) {
+	var rv LookupServiceHealthResult
 	err := ctx.Invoke("consul:index/getServiceHealth:getServiceHealth", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -24,7 +52,7 @@ func GetServiceHealth(ctx *pulumi.Context, args *GetServiceHealthArgs, opts ...p
 }
 
 // A collection of arguments for invoking getServiceHealth.
-type GetServiceHealthArgs struct {
+type LookupServiceHealthArgs struct {
 	// The Consul datacenter to query.
 	Datacenter *string `pulumi:"datacenter"`
 	// A filter expression to refine the list of results, see
@@ -48,7 +76,7 @@ type GetServiceHealthArgs struct {
 }
 
 // A collection of values returned by getServiceHealth.
-type GetServiceHealthResult struct {
+type LookupServiceHealthResult struct {
 	// The datacenter in which the node is running.
 	// * [`taggedAddresses`](https://www.consul.io/docs/agent/http/catalog.html#TaggedAddresses) -
 	//   List of explicit LAN and WAN IP addresses for the agent.
@@ -68,8 +96,117 @@ type GetServiceHealthResult struct {
 	// A list of entries and details about each endpoint advertising a
 	// service.  Each element in the list has three attributes: `node`, `service` and
 	// `checks`.  The list of the attributes of each one is detailed below.
-	Results []GetServiceHealthResultType `pulumi:"results"`
+	Results []GetServiceHealthResult `pulumi:"results"`
 	// The name of the tag used to filter the list.
 	Tag     *string `pulumi:"tag"`
 	WaitFor *string `pulumi:"waitFor"`
+}
+
+func LookupServiceHealthOutput(ctx *pulumi.Context, args LookupServiceHealthOutputArgs, opts ...pulumi.InvokeOption) LookupServiceHealthResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupServiceHealthResult, error) {
+			args := v.(LookupServiceHealthArgs)
+			r, err := LookupServiceHealth(ctx, &args, opts...)
+			return *r, err
+		}).(LookupServiceHealthResultOutput)
+}
+
+// A collection of arguments for invoking getServiceHealth.
+type LookupServiceHealthOutputArgs struct {
+	// The Consul datacenter to query.
+	Datacenter pulumi.StringPtrInput `pulumi:"datacenter"`
+	// A filter expression to refine the list of results, see
+	// https://www.consul.io/api-docs/features/filtering and https://www.consul.io/api-docs/health#filtering-2.
+	Filter pulumi.StringPtrInput `pulumi:"filter"`
+	// The service name to select.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Specifies a node name to sort the node list in ascending order
+	// based on the estimated round trip time from that node.
+	Near pulumi.StringPtrInput `pulumi:"near"`
+	// Filter the results to nodes with the specified key/value
+	// pairs.
+	NodeMeta pulumi.StringMapInput `pulumi:"nodeMeta"`
+	// Whether to return only nodes with all checks in the
+	// passing state. Defaults to `true`.
+	Passing pulumi.BoolPtrInput `pulumi:"passing"`
+	// A single tag that can be used to filter the list to return
+	// based on a single matching tag.
+	Tag     pulumi.StringPtrInput `pulumi:"tag"`
+	WaitFor pulumi.StringPtrInput `pulumi:"waitFor"`
+}
+
+func (LookupServiceHealthOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupServiceHealthArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getServiceHealth.
+type LookupServiceHealthResultOutput struct{ *pulumi.OutputState }
+
+func (LookupServiceHealthResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupServiceHealthResult)(nil)).Elem()
+}
+
+func (o LookupServiceHealthResultOutput) ToLookupServiceHealthResultOutput() LookupServiceHealthResultOutput {
+	return o
+}
+
+func (o LookupServiceHealthResultOutput) ToLookupServiceHealthResultOutputWithContext(ctx context.Context) LookupServiceHealthResultOutput {
+	return o
+}
+
+// The datacenter in which the node is running.
+// * [`taggedAddresses`](https://www.consul.io/docs/agent/http/catalog.html#TaggedAddresses) -
+//   List of explicit LAN and WAN IP addresses for the agent.
+func (o LookupServiceHealthResultOutput) Datacenter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupServiceHealthResult) *string { return v.Datacenter }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupServiceHealthResultOutput) Filter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupServiceHealthResult) *string { return v.Filter }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupServiceHealthResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceHealthResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of this health-check.
+func (o LookupServiceHealthResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceHealthResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The node to which the result must be sorted to.
+func (o LookupServiceHealthResultOutput) Near() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupServiceHealthResult) *string { return v.Near }).(pulumi.StringPtrOutput)
+}
+
+// The list of metadata to filter the nodes.
+func (o LookupServiceHealthResultOutput) NodeMeta() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupServiceHealthResult) map[string]string { return v.NodeMeta }).(pulumi.StringMapOutput)
+}
+
+// Whether to return only nodes with all checks in the
+// passing state.
+func (o LookupServiceHealthResultOutput) Passing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupServiceHealthResult) *bool { return v.Passing }).(pulumi.BoolPtrOutput)
+}
+
+// A list of entries and details about each endpoint advertising a
+// service.  Each element in the list has three attributes: `node`, `service` and
+// `checks`.  The list of the attributes of each one is detailed below.
+func (o LookupServiceHealthResultOutput) Results() GetServiceHealthResultArrayOutput {
+	return o.ApplyT(func(v LookupServiceHealthResult) []GetServiceHealthResult { return v.Results }).(GetServiceHealthResultArrayOutput)
+}
+
+// The name of the tag used to filter the list.
+func (o LookupServiceHealthResultOutput) Tag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupServiceHealthResult) *string { return v.Tag }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupServiceHealthResultOutput) WaitFor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupServiceHealthResult) *string { return v.WaitFor }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupServiceHealthResultOutput{})
 }

@@ -12,6 +12,7 @@ __all__ = [
     'GetAclTokenSecretIdResult',
     'AwaitableGetAclTokenSecretIdResult',
     'get_acl_token_secret_id',
+    'get_acl_token_secret_id_output',
 ]
 
 @pulumi.output_type
@@ -117,3 +118,17 @@ def get_acl_token_secret_id(accessor_id: Optional[str] = None,
         namespace=__ret__.namespace,
         pgp_key=__ret__.pgp_key,
         secret_id=__ret__.secret_id)
+
+
+@_utilities.lift_output_func(get_acl_token_secret_id)
+def get_acl_token_secret_id_output(accessor_id: Optional[pulumi.Input[str]] = None,
+                                   namespace: Optional[pulumi.Input[Optional[str]]] = None,
+                                   pgp_key: Optional[pulumi.Input[Optional[str]]] = None,
+                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAclTokenSecretIdResult]:
+    """
+    Use this data source to access information about an existing resource.
+
+    :param str accessor_id: The accessor ID of the ACL token.
+    :param str namespace: The namespace to lookup the token.
+    """
+    ...
