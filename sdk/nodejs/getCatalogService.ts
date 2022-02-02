@@ -10,9 +10,7 @@ export function getCatalogService(args: GetCatalogServiceArgs, opts?: pulumi.Inv
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("consul:index/getCatalogService:getCatalogService", {
         "datacenter": args.datacenter,
         "filter": args.filter,

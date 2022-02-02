@@ -116,9 +116,7 @@ export class AclRole extends pulumi.CustomResource {
             resourceInputs["policies"] = args ? args.policies : undefined;
             resourceInputs["serviceIdentities"] = args ? args.serviceIdentities : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AclRole.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Consul
 {
@@ -42,7 +41,7 @@ namespace Pulumi.Consul
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetNetworkSegmentsResult> InvokeAsync(GetNetworkSegmentsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNetworkSegmentsResult>("consul:index/getNetworkSegments:getNetworkSegments", args ?? new GetNetworkSegmentsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetNetworkSegmentsResult>("consul:index/getNetworkSegments:getNetworkSegments", args ?? new GetNetworkSegmentsArgs(), options.WithDefaults());
 
         /// <summary>
         /// &gt; **NOTE:** This feature requires [Consul Enterprise](https://www.consul.io/docs/enterprise/index.html).
@@ -74,7 +73,7 @@ namespace Pulumi.Consul
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetNetworkSegmentsResult> Invoke(GetNetworkSegmentsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetNetworkSegmentsResult>("consul:index/getNetworkSegments:getNetworkSegments", args ?? new GetNetworkSegmentsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetNetworkSegmentsResult>("consul:index/getNetworkSegments:getNetworkSegments", args ?? new GetNetworkSegmentsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -32,9 +32,7 @@ export function getServiceHealth(args: GetServiceHealthArgs, opts?: pulumi.Invok
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("consul:index/getServiceHealth:getServiceHealth", {
         "datacenter": args.datacenter,
         "filter": args.filter,

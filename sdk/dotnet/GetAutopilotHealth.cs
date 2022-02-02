@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Consul
 {
@@ -41,7 +40,7 @@ namespace Pulumi.Consul
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAutopilotHealthResult> InvokeAsync(GetAutopilotHealthArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAutopilotHealthResult>("consul:index/getAutopilotHealth:getAutopilotHealth", args ?? new GetAutopilotHealthArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAutopilotHealthResult>("consul:index/getAutopilotHealth:getAutopilotHealth", args ?? new GetAutopilotHealthArgs(), options.WithDefaults());
 
         /// <summary>
         /// The `consul.getAutopilotHealth` data source returns
@@ -72,7 +71,7 @@ namespace Pulumi.Consul
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAutopilotHealthResult> Invoke(GetAutopilotHealthInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAutopilotHealthResult>("consul:index/getAutopilotHealth:getAutopilotHealth", args ?? new GetAutopilotHealthInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetAutopilotHealthResult>("consul:index/getAutopilotHealth:getAutopilotHealth", args ?? new GetAutopilotHealthInvokeArgs(), options.WithDefaults());
     }
 
 

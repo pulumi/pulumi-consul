@@ -9,9 +9,7 @@ export function getAclTokenSecretId(args: GetAclTokenSecretIdArgs, opts?: pulumi
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("consul:index/getAclTokenSecretId:getAclTokenSecretId", {
         "accessorId": args.accessorId,
         "namespace": args.namespace,

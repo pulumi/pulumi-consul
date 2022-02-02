@@ -108,9 +108,7 @@ export class AclPolicy extends pulumi.CustomResource {
             resourceInputs["namespace"] = args ? args.namespace : undefined;
             resourceInputs["rules"] = args ? args.rules : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AclPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -6,17 +6,16 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Consul
 {
     public static class GetCatalogNodes
     {
         public static Task<GetCatalogNodesResult> InvokeAsync(GetCatalogNodesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCatalogNodesResult>("consul:index/getCatalogNodes:getCatalogNodes", args ?? new GetCatalogNodesArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetCatalogNodesResult>("consul:index/getCatalogNodes:getCatalogNodes", args ?? new GetCatalogNodesArgs(), options.WithDefaults());
 
         public static Output<GetCatalogNodesResult> Invoke(GetCatalogNodesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetCatalogNodesResult>("consul:index/getCatalogNodes:getCatalogNodes", args ?? new GetCatalogNodesInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetCatalogNodesResult>("consul:index/getCatalogNodes:getCatalogNodes", args ?? new GetCatalogNodesInvokeArgs(), options.WithDefaults());
     }
 
 

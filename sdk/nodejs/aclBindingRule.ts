@@ -128,9 +128,7 @@ export class AclBindingRule extends pulumi.CustomResource {
             resourceInputs["namespace"] = args ? args.namespace : undefined;
             resourceInputs["selector"] = args ? args.selector : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AclBindingRule.__pulumiType, name, resourceInputs, opts);
     }
 }

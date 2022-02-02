@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Consul
 {
@@ -46,7 +45,7 @@ namespace Pulumi.Consul
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetServiceHealthResult> InvokeAsync(GetServiceHealthArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServiceHealthResult>("consul:index/getServiceHealth:getServiceHealth", args ?? new GetServiceHealthArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetServiceHealthResult>("consul:index/getServiceHealth:getServiceHealth", args ?? new GetServiceHealthArgs(), options.WithDefaults());
 
         /// <summary>
         /// `consul.getServiceHealth` can be used to get the list of the instances that
@@ -82,7 +81,7 @@ namespace Pulumi.Consul
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetServiceHealthResult> Invoke(GetServiceHealthInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetServiceHealthResult>("consul:index/getServiceHealth:getServiceHealth", args ?? new GetServiceHealthInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetServiceHealthResult>("consul:index/getServiceHealth:getServiceHealth", args ?? new GetServiceHealthInvokeArgs(), options.WithDefaults());
     }
 
 

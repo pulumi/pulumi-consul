@@ -120,9 +120,7 @@ export class CatalogEntry extends pulumi.CustomResource {
             resourceInputs["services"] = args ? args.services : undefined;
             resourceInputs["token"] = args ? args.token : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(CatalogEntry.__pulumiType, name, resourceInputs, opts);
     }
 }

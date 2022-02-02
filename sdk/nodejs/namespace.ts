@@ -109,9 +109,7 @@ export class Namespace extends pulumi.CustomResource {
             resourceInputs["policyDefaults"] = args ? args.policyDefaults : undefined;
             resourceInputs["roleDefaults"] = args ? args.roleDefaults : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Namespace.__pulumiType, name, resourceInputs, opts);
     }
 }

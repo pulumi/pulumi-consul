@@ -29,9 +29,7 @@ export function getAgentConfig(opts?: pulumi.InvokeOptions): Promise<GetAgentCon
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("consul:index/getAgentConfig:getAgentConfig", {
     }, opts);
 }

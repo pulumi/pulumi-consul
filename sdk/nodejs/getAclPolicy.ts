@@ -25,9 +25,7 @@ export function getAclPolicy(args: GetAclPolicyArgs, opts?: pulumi.InvokeOptions
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("consul:index/getAclPolicy:getAclPolicy", {
         "datacenters": args.datacenters,
         "description": args.description,

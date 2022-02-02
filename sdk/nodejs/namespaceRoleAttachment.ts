@@ -76,9 +76,7 @@ export class NamespaceRoleAttachment extends pulumi.CustomResource {
             resourceInputs["namespace"] = args ? args.namespace : undefined;
             resourceInputs["role"] = args ? args.role : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(NamespaceRoleAttachment.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -163,9 +163,7 @@ export class AclAuthMethod extends pulumi.CustomResource {
             resourceInputs["tokenLocality"] = args ? args.tokenLocality : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AclAuthMethod.__pulumiType, name, resourceInputs, opts);
     }
 }

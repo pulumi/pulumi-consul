@@ -80,9 +80,7 @@ export class AclTokenPolicyAttachment extends pulumi.CustomResource {
             resourceInputs["policy"] = args ? args.policy : undefined;
             resourceInputs["tokenId"] = args ? args.tokenId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AclTokenPolicyAttachment.__pulumiType, name, resourceInputs, opts);
     }
 }

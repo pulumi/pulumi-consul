@@ -55,6 +55,7 @@ setup(name='pulumi_consul',
       package_data={
           'pulumi_consul': [
               'py.typed',
+              'pulumi-plugin.json',
           ]
       },
       install_requires=[

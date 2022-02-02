@@ -80,9 +80,7 @@ export class Keys extends pulumi.CustomResource {
             resourceInputs["token"] = args ? args.token : undefined;
             resourceInputs["var"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Keys.__pulumiType, name, resourceInputs, opts);
     }
 }

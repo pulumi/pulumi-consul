@@ -186,9 +186,7 @@ export class PreparedQuery extends pulumi.CustomResource {
             resourceInputs["template"] = args ? args.template : undefined;
             resourceInputs["token"] = args ? args.token : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(PreparedQuery.__pulumiType, name, resourceInputs, opts);
     }
 }

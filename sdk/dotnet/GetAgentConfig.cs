@@ -44,7 +44,7 @@ namespace Pulumi.Consul
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAgentConfigResult> InvokeAsync(InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAgentConfigResult>("consul:index/getAgentConfig:getAgentConfig", InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAgentConfigResult>("consul:index/getAgentConfig:getAgentConfig", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

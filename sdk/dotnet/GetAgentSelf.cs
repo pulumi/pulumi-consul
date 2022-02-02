@@ -21,7 +21,7 @@ namespace Pulumi.Consul
         /// from the agent specified in the `provider`.
         /// </summary>
         public static Task<GetAgentSelfResult> InvokeAsync(InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAgentSelfResult>("consul:index/getAgentSelf:getAgentSelf", InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAgentSelfResult>("consul:index/getAgentSelf:getAgentSelf", InvokeArgs.Empty, options.WithDefaults());
     }
 
 
