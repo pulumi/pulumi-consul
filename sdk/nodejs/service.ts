@@ -201,9 +201,7 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["serviceId"] = args ? args.serviceId : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Service.__pulumiType, name, resourceInputs, opts);
     }
 }

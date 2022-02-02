@@ -20,9 +20,7 @@ export function getService(args: GetServiceArgs, opts?: pulumi.InvokeOptions): P
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("consul:index/getService:getService", {
         "datacenter": args.datacenter,
         "filter": args.filter,

@@ -76,9 +76,7 @@ export class NamespacePolicyAttachment extends pulumi.CustomResource {
             resourceInputs["namespace"] = args ? args.namespace : undefined;
             resourceInputs["policy"] = args ? args.policy : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(NamespacePolicyAttachment.__pulumiType, name, resourceInputs, opts);
     }
 }

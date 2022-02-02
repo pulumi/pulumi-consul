@@ -76,9 +76,7 @@ export class AclTokenRoleAttachment extends pulumi.CustomResource {
             resourceInputs["role"] = args ? args.role : undefined;
             resourceInputs["tokenId"] = args ? args.tokenId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AclTokenRoleAttachment.__pulumiType, name, resourceInputs, opts);
     }
 }

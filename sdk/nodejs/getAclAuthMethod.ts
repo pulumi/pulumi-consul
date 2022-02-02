@@ -26,9 +26,7 @@ export function getAclAuthMethod(args: GetAclAuthMethodArgs, opts?: pulumi.Invok
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("consul:index/getAclAuthMethod:getAclAuthMethod", {
         "name": args.name,
         "namespace": args.namespace,

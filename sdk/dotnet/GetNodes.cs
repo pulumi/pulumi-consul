@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Consul
 {
@@ -19,7 +18,7 @@ namespace Pulumi.Consul
         /// nodes from a different WAN-attached Consul datacenter.
         /// </summary>
         public static Task<GetNodesResult> InvokeAsync(GetNodesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNodesResult>("consul:index/getNodes:getNodes", args ?? new GetNodesArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetNodesResult>("consul:index/getNodes:getNodes", args ?? new GetNodesArgs(), options.WithDefaults());
 
         /// <summary>
         /// The `consul.getNodes` data source returns a list of Consul nodes that have
@@ -28,7 +27,7 @@ namespace Pulumi.Consul
         /// nodes from a different WAN-attached Consul datacenter.
         /// </summary>
         public static Output<GetNodesResult> Invoke(GetNodesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetNodesResult>("consul:index/getNodes:getNodes", args ?? new GetNodesInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetNodesResult>("consul:index/getNodes:getNodes", args ?? new GetNodesInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Consul
 {
@@ -43,7 +42,7 @@ namespace Pulumi.Consul
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAclRoleResult> InvokeAsync(GetAclRoleArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAclRoleResult>("consul:index/getAclRole:getAclRole", args ?? new GetAclRoleArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAclRoleResult>("consul:index/getAclRole:getAclRole", args ?? new GetAclRoleArgs(), options.WithDefaults());
 
         /// <summary>
         /// The `consul.AclRole` data source returns the information related to a
@@ -76,7 +75,7 @@ namespace Pulumi.Consul
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAclRoleResult> Invoke(GetAclRoleInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAclRoleResult>("consul:index/getAclRole:getAclRole", args ?? new GetAclRoleInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetAclRoleResult>("consul:index/getAclRole:getAclRole", args ?? new GetAclRoleInvokeArgs(), options.WithDefaults());
     }
 
 

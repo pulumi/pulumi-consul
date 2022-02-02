@@ -6,17 +6,16 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Consul
 {
     public static class GetCatalogService
     {
         public static Task<GetCatalogServiceResult> InvokeAsync(GetCatalogServiceArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCatalogServiceResult>("consul:index/getCatalogService:getCatalogService", args ?? new GetCatalogServiceArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetCatalogServiceResult>("consul:index/getCatalogService:getCatalogService", args ?? new GetCatalogServiceArgs(), options.WithDefaults());
 
         public static Output<GetCatalogServiceResult> Invoke(GetCatalogServiceInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetCatalogServiceResult>("consul:index/getCatalogService:getCatalogService", args ?? new GetCatalogServiceInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetCatalogServiceResult>("consul:index/getCatalogService:getCatalogService", args ?? new GetCatalogServiceInvokeArgs(), options.WithDefaults());
     }
 
 

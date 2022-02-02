@@ -26,9 +26,7 @@ export function getNetworkSegments(args?: GetNetworkSegmentsArgs, opts?: pulumi.
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("consul:index/getNetworkSegments:getNetworkSegments", {
         "datacenter": args.datacenter,
         "token": args.token,

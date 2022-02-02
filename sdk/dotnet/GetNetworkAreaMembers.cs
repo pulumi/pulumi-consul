@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Consul
 {
@@ -54,7 +53,7 @@ namespace Pulumi.Consul
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetNetworkAreaMembersResult> InvokeAsync(GetNetworkAreaMembersArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNetworkAreaMembersResult>("consul:index/getNetworkAreaMembers:getNetworkAreaMembers", args ?? new GetNetworkAreaMembersArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetNetworkAreaMembersResult>("consul:index/getNetworkAreaMembers:getNetworkAreaMembers", args ?? new GetNetworkAreaMembersArgs(), options.WithDefaults());
 
         /// <summary>
         /// &gt; **NOTE:** This feature requires [Consul Enterprise](https://www.consul.io/docs/enterprise/index.html).
@@ -98,7 +97,7 @@ namespace Pulumi.Consul
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetNetworkAreaMembersResult> Invoke(GetNetworkAreaMembersInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetNetworkAreaMembersResult>("consul:index/getNetworkAreaMembers:getNetworkAreaMembers", args ?? new GetNetworkAreaMembersInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetNetworkAreaMembersResult>("consul:index/getNetworkAreaMembers:getNetworkAreaMembers", args ?? new GetNetworkAreaMembersInvokeArgs(), options.WithDefaults());
     }
 
 

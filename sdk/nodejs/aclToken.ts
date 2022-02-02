@@ -140,9 +140,7 @@ export class AclToken extends pulumi.CustomResource {
             resourceInputs["roles"] = args ? args.roles : undefined;
             resourceInputs["serviceIdentities"] = args ? args.serviceIdentities : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AclToken.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -111,9 +111,7 @@ export class NetworkArea extends pulumi.CustomResource {
             resourceInputs["token"] = args ? args.token : undefined;
             resourceInputs["useTls"] = args ? args.useTls : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(NetworkArea.__pulumiType, name, resourceInputs, opts);
     }
 }

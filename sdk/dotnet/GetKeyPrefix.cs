@@ -6,17 +6,16 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Consul
 {
     public static class GetKeyPrefix
     {
         public static Task<GetKeyPrefixResult> InvokeAsync(GetKeyPrefixArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKeyPrefixResult>("consul:index/getKeyPrefix:getKeyPrefix", args ?? new GetKeyPrefixArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetKeyPrefixResult>("consul:index/getKeyPrefix:getKeyPrefix", args ?? new GetKeyPrefixArgs(), options.WithDefaults());
 
         public static Output<GetKeyPrefixResult> Invoke(GetKeyPrefixInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetKeyPrefixResult>("consul:index/getKeyPrefix:getKeyPrefix", args ?? new GetKeyPrefixInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetKeyPrefixResult>("consul:index/getKeyPrefix:getKeyPrefix", args ?? new GetKeyPrefixInvokeArgs(), options.WithDefaults());
     }
 
 

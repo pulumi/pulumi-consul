@@ -11,9 +11,7 @@ export function getCatalogNodes(args?: GetCatalogNodesArgs, opts?: pulumi.Invoke
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("consul:index/getCatalogNodes:getCatalogNodes", {
         "queryOptions": args.queryOptions,
     }, opts);

@@ -11,9 +11,7 @@ export function getCatalogServices(args?: GetCatalogServicesArgs, opts?: pulumi.
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("consul:index/getCatalogServices:getCatalogServices", {
         "queryOptions": args.queryOptions,
     }, opts);

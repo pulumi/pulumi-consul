@@ -17,9 +17,7 @@ export function getAgentSelf(opts?: pulumi.InvokeOptions): Promise<GetAgentSelfR
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("consul:index/getAgentSelf:getAgentSelf", {
     }, opts);
 }

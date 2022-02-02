@@ -106,9 +106,7 @@ export class KeyPrefix extends pulumi.CustomResource {
             resourceInputs["subkeys"] = args ? args.subkeys : undefined;
             resourceInputs["token"] = args ? args.token : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(KeyPrefix.__pulumiType, name, resourceInputs, opts);
     }
 }

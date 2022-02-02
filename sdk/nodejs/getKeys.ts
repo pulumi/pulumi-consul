@@ -38,9 +38,7 @@ export function getKeys(args?: GetKeysArgs, opts?: pulumi.InvokeOptions): Promis
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("consul:index/getKeys:getKeys", {
         "datacenter": args.datacenter,
         "keys": args.keys,

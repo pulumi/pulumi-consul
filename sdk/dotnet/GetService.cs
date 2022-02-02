@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Consul
 {
@@ -23,7 +22,7 @@ namespace Pulumi.Consul
         /// source, which provides a summary of the current Consul services.
         /// </summary>
         public static Task<GetServiceResult> InvokeAsync(GetServiceArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServiceResult>("consul:index/getService:getService", args ?? new GetServiceArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetServiceResult>("consul:index/getService:getService", args ?? new GetServiceArgs(), options.WithDefaults());
 
         /// <summary>
         /// `consul.Service` provides details about a specific Consul service in a
@@ -36,7 +35,7 @@ namespace Pulumi.Consul
         /// source, which provides a summary of the current Consul services.
         /// </summary>
         public static Output<GetServiceResult> Invoke(GetServiceInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetServiceResult>("consul:index/getService:getService", args ?? new GetServiceInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetServiceResult>("consul:index/getService:getService", args ?? new GetServiceInvokeArgs(), options.WithDefaults());
     }
 
 

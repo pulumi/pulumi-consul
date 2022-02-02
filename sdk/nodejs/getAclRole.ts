@@ -26,9 +26,7 @@ export function getAclRole(args: GetAclRoleArgs, opts?: pulumi.InvokeOptions): P
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("consul:index/getAclRole:getAclRole", {
         "name": args.name,
         "namespace": args.namespace,

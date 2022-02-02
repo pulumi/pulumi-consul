@@ -128,9 +128,7 @@ export class CertificateAuthority extends pulumi.CustomResource {
             resourceInputs["config"] = args ? args.config : undefined;
             resourceInputs["connectProvider"] = args ? args.connectProvider : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(CertificateAuthority.__pulumiType, name, resourceInputs, opts);
     }
 }

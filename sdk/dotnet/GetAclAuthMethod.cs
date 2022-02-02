@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Consul
 {
@@ -43,7 +42,7 @@ namespace Pulumi.Consul
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAclAuthMethodResult> InvokeAsync(GetAclAuthMethodArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAclAuthMethodResult>("consul:index/getAclAuthMethod:getAclAuthMethod", args ?? new GetAclAuthMethodArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAclAuthMethodResult>("consul:index/getAclAuthMethod:getAclAuthMethod", args ?? new GetAclAuthMethodArgs(), options.WithDefaults());
 
         /// <summary>
         /// The `consul.AclAuthMethod` data source returns the information related to a
@@ -76,7 +75,7 @@ namespace Pulumi.Consul
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAclAuthMethodResult> Invoke(GetAclAuthMethodInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAclAuthMethodResult>("consul:index/getAclAuthMethod:getAclAuthMethod", args ?? new GetAclAuthMethodInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetAclAuthMethodResult>("consul:index/getAclAuthMethod:getAclAuthMethod", args ?? new GetAclAuthMethodInvokeArgs(), options.WithDefaults());
     }
 
 

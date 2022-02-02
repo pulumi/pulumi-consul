@@ -6,17 +6,16 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Consul
 {
     public static class GetAclTokenSecretId
     {
         public static Task<GetAclTokenSecretIdResult> InvokeAsync(GetAclTokenSecretIdArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAclTokenSecretIdResult>("consul:index/getAclTokenSecretId:getAclTokenSecretId", args ?? new GetAclTokenSecretIdArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAclTokenSecretIdResult>("consul:index/getAclTokenSecretId:getAclTokenSecretId", args ?? new GetAclTokenSecretIdArgs(), options.WithDefaults());
 
         public static Output<GetAclTokenSecretIdResult> Invoke(GetAclTokenSecretIdInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAclTokenSecretIdResult>("consul:index/getAclTokenSecretId:getAclTokenSecretId", args ?? new GetAclTokenSecretIdInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetAclTokenSecretIdResult>("consul:index/getAclTokenSecretId:getAclTokenSecretId", args ?? new GetAclTokenSecretIdInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -167,9 +167,7 @@ export class Intention extends pulumi.CustomResource {
             resourceInputs["sourceName"] = args ? args.sourceName : undefined;
             resourceInputs["sourceNamespace"] = args ? args.sourceNamespace : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Intention.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -6512,6 +6512,7 @@
             }
         },
         "go": {
+            "generateExtraInputTypes": true,
             "generateResourceContainerTypes": true,
             "importBasePath": "github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
         },

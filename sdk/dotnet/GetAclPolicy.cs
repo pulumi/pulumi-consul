@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Consul
 {
@@ -44,7 +43,7 @@ namespace Pulumi.Consul
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAclPolicyResult> InvokeAsync(GetAclPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAclPolicyResult>("consul:index/getAclPolicy:getAclPolicy", args ?? new GetAclPolicyArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAclPolicyResult>("consul:index/getAclPolicy:getAclPolicy", args ?? new GetAclPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// The `consul.AclPolicy` data source returns the information related to a
@@ -78,7 +77,7 @@ namespace Pulumi.Consul
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAclPolicyResult> Invoke(GetAclPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAclPolicyResult>("consul:index/getAclPolicy:getAclPolicy", args ?? new GetAclPolicyInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetAclPolicyResult>("consul:index/getAclPolicy:getAclPolicy", args ?? new GetAclPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -30,9 +30,7 @@ export function getAclToken(args: GetAclTokenArgs, opts?: pulumi.InvokeOptions):
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("consul:index/getAclToken:getAclToken", {
         "accessorId": args.accessorId,
         "namespace": args.namespace,
