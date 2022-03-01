@@ -5,6 +5,49 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aws from "@pulumi/aws";
+ * import * as consul from "@pulumi/consul";
+ *
+ * const appKeyPrefix = pulumi.output(consul.getKeyPrefix({
+ *     datacenter: "nyc1",
+ *     // Prefix to add to prepend to all of the subkey names below.
+ *     pathPrefix: "myapp/config/",
+ *     // Read the ami subkey
+ *     subkeyCollection: [{
+ *         default: "ami-1234",
+ *         name: "ami",
+ *         path: "app/launch_ami",
+ *     }],
+ *     token: "abcd",
+ * }));
+ * // Start our instance with the dynamic ami value
+ * const appInstance = new aws.ec2.Instance("app", {
+ *     ami: appKeyPrefix.var.ami,
+ * });
+ * ```
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aws from "@pulumi/aws";
+ * import * as consul from "@pulumi/consul";
+ *
+ * const webKeyPrefix = pulumi.output(consul.getKeyPrefix({
+ *     datacenter: "nyc1",
+ *     // Prefix to add to prepend to all of the subkey names below.
+ *     pathPrefix: "myapp/config/",
+ *     token: "efgh",
+ * }));
+ * // Start our instance with the dynamic ami value
+ * const webInstance = new aws.ec2.Instance("web", {
+ *     ami: webKeyPrefix.apply(webKeyPrefix => webKeyPrefix.subkeys["app/launch_ami"]),
+ * });
+ * ```
+ */
 export function getKeyPrefix(args: GetKeyPrefixArgs, opts?: pulumi.InvokeOptions): Promise<GetKeyPrefixResult> {
     if (!opts) {
         opts = {}
