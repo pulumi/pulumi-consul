@@ -5,6 +5,24 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ *
+ * const app = new consul.Keys("app", {
+ *     datacenter: "nyc1",
+ *     // Set the CNAME of our load balancer as a key
+ *     keys: [{
+ *         path: "service/app/elb_address",
+ *         value: aws_elb_app.dnsName,
+ *     }],
+ *     token: "abcd",
+ * });
+ * ```
+ */
 export class Keys extends pulumi.CustomResource {
     /**
      * Get an existing Keys resource's state with the given name, ID, and optional extra

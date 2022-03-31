@@ -10,6 +10,35 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := consul.NewKeys(ctx, "app", &consul.KeysArgs{
+// 			Datacenter: pulumi.String("nyc1"),
+// 			Keys: KeysKeyArray{
+// 				&KeysKeyArgs{
+// 					Path:  pulumi.String("service/app/elb_address"),
+// 					Value: pulumi.Any(aws_elb.App.Dns_name),
+// 				},
+// 			},
+// 			Token: pulumi.String("abcd"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Keys struct {
 	pulumi.CustomResourceState
 

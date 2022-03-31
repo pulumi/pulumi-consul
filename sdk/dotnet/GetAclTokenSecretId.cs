@@ -11,9 +11,99 @@ namespace Pulumi.Consul
 {
     public static class GetAclTokenSecretId
     {
+        /// <summary>
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Consul = Pulumi.Consul;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var testAclPolicy = new Consul.AclPolicy("testAclPolicy", new Consul.AclPolicyArgs
+        ///         {
+        ///             Rules = "node \"\" { policy = \"read\" }",
+        ///             Datacenters = 
+        ///             {
+        ///                 "dc1",
+        ///             },
+        ///         });
+        ///         var testAclToken = new Consul.AclToken("testAclToken", new Consul.AclTokenArgs
+        ///         {
+        ///             Description = "test",
+        ///             Policies = 
+        ///             {
+        ///                 testAclPolicy.Name,
+        ///             },
+        ///             Local = true,
+        ///         });
+        ///         var read = Consul.GetAclTokenSecretId.Invoke(new Consul.GetAclTokenSecretIdInvokeArgs
+        ///         {
+        ///             AccessorId = testAclToken.Id,
+        ///             PgpKey = "keybase:my_username",
+        ///         });
+        ///         this.ConsulAclTokenSecretId = read.Apply(read =&gt; read.EncryptedSecretId);
+        ///     }
+        /// 
+        ///     [Output("consulAclTokenSecretId")]
+        ///     public Output&lt;string&gt; ConsulAclTokenSecretId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetAclTokenSecretIdResult> InvokeAsync(GetAclTokenSecretIdArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAclTokenSecretIdResult>("consul:index/getAclTokenSecretId:getAclTokenSecretId", args ?? new GetAclTokenSecretIdArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Consul = Pulumi.Consul;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var testAclPolicy = new Consul.AclPolicy("testAclPolicy", new Consul.AclPolicyArgs
+        ///         {
+        ///             Rules = "node \"\" { policy = \"read\" }",
+        ///             Datacenters = 
+        ///             {
+        ///                 "dc1",
+        ///             },
+        ///         });
+        ///         var testAclToken = new Consul.AclToken("testAclToken", new Consul.AclTokenArgs
+        ///         {
+        ///             Description = "test",
+        ///             Policies = 
+        ///             {
+        ///                 testAclPolicy.Name,
+        ///             },
+        ///             Local = true,
+        ///         });
+        ///         var read = Consul.GetAclTokenSecretId.Invoke(new Consul.GetAclTokenSecretIdInvokeArgs
+        ///         {
+        ///             AccessorId = testAclToken.Id,
+        ///             PgpKey = "keybase:my_username",
+        ///         });
+        ///         this.ConsulAclTokenSecretId = read.Apply(read =&gt; read.EncryptedSecretId);
+        ///     }
+        /// 
+        ///     [Output("consulAclTokenSecretId")]
+        ///     public Output&lt;string&gt; ConsulAclTokenSecretId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Output<GetAclTokenSecretIdResult> Invoke(GetAclTokenSecretIdInvokeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetAclTokenSecretIdResult>("consul:index/getAclTokenSecretId:getAclTokenSecretId", args ?? new GetAclTokenSecretIdInvokeArgs(), options.WithDefaults());
     }
