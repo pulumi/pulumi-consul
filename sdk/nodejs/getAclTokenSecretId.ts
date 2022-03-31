@@ -4,6 +4,29 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ *
+ * const testAclPolicy = new consul.AclPolicy("testAclPolicy", {
+ *     rules: "node \"\" { policy = \"read\" }",
+ *     datacenters: ["dc1"],
+ * });
+ * const testAclToken = new consul.AclToken("testAclToken", {
+ *     description: "test",
+ *     policies: [testAclPolicy.name],
+ *     local: true,
+ * });
+ * const read = consul.getAclTokenSecretIdOutput({
+ *     accessorId: testAclToken.id,
+ *     pgpKey: "keybase:my_username",
+ * });
+ * export const consulAclTokenSecretId = read.apply(read => read.encryptedSecretId);
+ * ```
+ */
 export function getAclTokenSecretId(args: GetAclTokenSecretIdArgs, opts?: pulumi.InvokeOptions): Promise<GetAclTokenSecretIdResult> {
     if (!opts) {
         opts = {}

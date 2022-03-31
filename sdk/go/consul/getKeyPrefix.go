@@ -10,6 +10,74 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aws/sdk/v4/go/aws/ec2"
+// 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		appKeyPrefix, err := consul.LookupKeyPrefix(ctx, &GetKeyPrefixArgs{
+// 			Datacenter: pulumi.StringRef("nyc1"),
+// 			PathPrefix: "myapp/config/",
+// 			SubkeyCollection: []GetKeyPrefixSubkeyCollection{
+// 				GetKeyPrefixSubkeyCollection{
+// 					Default: pulumi.StringRef("ami-1234"),
+// 					Name:    "ami",
+// 					Path:    "app/launch_ami",
+// 				},
+// 			},
+// 			Token: pulumi.StringRef("abcd"),
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = ec2.NewInstance(ctx, "appInstance", &ec2.InstanceArgs{
+// 			Ami: pulumi.String(appKeyPrefix.Var.Ami),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aws/sdk/v4/go/aws/ec2"
+// 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		webKeyPrefix, err := consul.LookupKeyPrefix(ctx, &GetKeyPrefixArgs{
+// 			Datacenter: pulumi.StringRef("nyc1"),
+// 			PathPrefix: "myapp/config/",
+// 			Token:      pulumi.StringRef("efgh"),
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = ec2.NewInstance(ctx, "webInstance", &ec2.InstanceArgs{
+// 			Ami: pulumi.String(webKeyPrefix.Subkeys.App / launch_ami),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupKeyPrefix(ctx *pulumi.Context, args *LookupKeyPrefixArgs, opts ...pulumi.InvokeOption) (*LookupKeyPrefixResult, error) {
 	var rv LookupKeyPrefixResult
 	err := ctx.Invoke("consul:index/getKeyPrefix:getKeyPrefix", args, &rv, opts...)

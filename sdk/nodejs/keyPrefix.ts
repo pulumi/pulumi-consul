@@ -6,6 +6,33 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ *
+ * const myappConfig = new consul.KeyPrefix("myapp_config", {
+ *     datacenter: "nyc1",
+ *     // Prefix to add to prepend to all of the subkey names below.
+ *     pathPrefix: "myapp/config/",
+ *     subkeyCollection: [{
+ *         flags: 2,
+ *         path: "database/password",
+ *         value: aws_db_instance_app.password,
+ *     }],
+ *     subkeys: {
+ *         "database/hostname": aws_db_instance_app.address,
+ *         "database/name": aws_db_instance_app.name,
+ *         "database/port": aws_db_instance_app.port,
+ *         "database/username": aws_db_instance_app.username,
+ *         elb_cname: aws_elb_app.dnsName,
+ *         s3_bucket_name: aws_s3_bucket_app.bucket,
+ *     },
+ *     token: "abcd",
+ * });
+ * ```
+ *
  * ## Import
  *
  * `consul_key_prefix` can be imported. This is useful when the path already exists and you know all keys in path should be managed by Terraform.

@@ -26,18 +26,16 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "nyc1"
-// 		opt1 := "abcd"
 // 		appKeys, err := consul.LookupKeys(ctx, &GetKeysArgs{
-// 			Datacenter: &opt0,
+// 			Datacenter: pulumi.StringRef("nyc1"),
 // 			Keys: []GetKeysKey{
 // 				GetKeysKey{
-// 					Default: "ami-1234",
+// 					Default: pulumi.StringRef("ami-1234"),
 // 					Name:    "ami",
 // 					Path:    "service/app/launch_ami",
 // 				},
 // 			},
-// 			Token: &opt1,
+// 			Token: pulumi.StringRef("abcd"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
