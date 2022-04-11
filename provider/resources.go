@@ -173,7 +173,7 @@ func Provider() tfbridge.ProviderInfo {
 			"consul_services":             {Tok: makeDataSource(mainMod, "getServices")},
 			"consul_network_area_members": {Tok: makeDataSource(mainMod, "getNetworkAreaMembers")},
 			"consul_network_segments":     {Tok: makeDataSource(mainMod, "getNetworkSegments")},
-			"consul_datacenters":		   {Tok: makeDataSource(mainMod, "getDatacenters")},
+			"consul_datacenters":          {Tok: makeDataSource(mainMod, "getDatacenters")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{
