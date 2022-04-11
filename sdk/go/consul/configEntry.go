@@ -373,7 +373,6 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		tmpJSON0, err := json.Marshal(map[string]interface{}{
-// 			"Partition": "default",
 // 			"TransparentProxy": map[string]interface{}{
 // 				"MeshDestinationsOnly": true,
 // 			},
@@ -384,6 +383,7 @@ import (
 // 		json0 := string(tmpJSON0)
 // 		_, err := consul.NewConfigEntry(ctx, "mesh", &consul.ConfigEntryArgs{
 // 			Kind:       pulumi.String("mesh"),
+// 			Partition:  pulumi.String("default"),
 // 			ConfigJson: pulumi.String(json0),
 // 		})
 // 		if err != nil {
@@ -404,6 +404,8 @@ type ConfigEntry struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The namespace to create the config entry within.
 	Namespace pulumi.StringPtrOutput `pulumi:"namespace"`
+	// The partition the config entry is associated with.
+	Partition pulumi.StringPtrOutput `pulumi:"partition"`
 }
 
 // NewConfigEntry registers a new resource with the given unique name, arguments, and options.
@@ -446,6 +448,8 @@ type configEntryState struct {
 	Name *string `pulumi:"name"`
 	// The namespace to create the config entry within.
 	Namespace *string `pulumi:"namespace"`
+	// The partition the config entry is associated with.
+	Partition *string `pulumi:"partition"`
 }
 
 type ConfigEntryState struct {
@@ -457,6 +461,8 @@ type ConfigEntryState struct {
 	Name pulumi.StringPtrInput
 	// The namespace to create the config entry within.
 	Namespace pulumi.StringPtrInput
+	// The partition the config entry is associated with.
+	Partition pulumi.StringPtrInput
 }
 
 func (ConfigEntryState) ElementType() reflect.Type {
@@ -472,6 +478,8 @@ type configEntryArgs struct {
 	Name *string `pulumi:"name"`
 	// The namespace to create the config entry within.
 	Namespace *string `pulumi:"namespace"`
+	// The partition the config entry is associated with.
+	Partition *string `pulumi:"partition"`
 }
 
 // The set of arguments for constructing a ConfigEntry resource.
@@ -484,6 +492,8 @@ type ConfigEntryArgs struct {
 	Name pulumi.StringPtrInput
 	// The namespace to create the config entry within.
 	Namespace pulumi.StringPtrInput
+	// The partition the config entry is associated with.
+	Partition pulumi.StringPtrInput
 }
 
 func (ConfigEntryArgs) ElementType() reflect.Type {
