@@ -1148,6 +1148,7 @@ class GetCatalogNodesQueryOptionResult(dict):
                  datacenter: Optional[str] = None,
                  near: Optional[str] = None,
                  node_meta: Optional[Mapping[str, str]] = None,
+                 partition: Optional[str] = None,
                  require_consistent: Optional[bool] = None,
                  token: Optional[str] = None,
                  wait_index: Optional[int] = None,
@@ -1160,6 +1161,8 @@ class GetCatalogNodesQueryOptionResult(dict):
             pulumi.set(__self__, "near", near)
         if node_meta is not None:
             pulumi.set(__self__, "node_meta", node_meta)
+        if partition is not None:
+            pulumi.set(__self__, "partition", partition)
         if require_consistent is not None:
             pulumi.set(__self__, "require_consistent", require_consistent)
         if token is not None:
@@ -1190,6 +1193,11 @@ class GetCatalogNodesQueryOptionResult(dict):
         return pulumi.get(self, "node_meta")
 
     @property
+    @pulumi.getter
+    def partition(self) -> Optional[str]:
+        return pulumi.get(self, "partition")
+
+    @property
     @pulumi.getter(name="requireConsistent")
     def require_consistent(self) -> Optional[bool]:
         return pulumi.get(self, "require_consistent")
@@ -1218,6 +1226,7 @@ class GetCatalogServiceQueryOptionResult(dict):
                  namespace: Optional[str] = None,
                  near: Optional[str] = None,
                  node_meta: Optional[Mapping[str, str]] = None,
+                 partition: Optional[str] = None,
                  require_consistent: Optional[bool] = None,
                  token: Optional[str] = None,
                  wait_index: Optional[int] = None,
@@ -1232,6 +1241,8 @@ class GetCatalogServiceQueryOptionResult(dict):
             pulumi.set(__self__, "near", near)
         if node_meta is not None:
             pulumi.set(__self__, "node_meta", node_meta)
+        if partition is not None:
+            pulumi.set(__self__, "partition", partition)
         if require_consistent is not None:
             pulumi.set(__self__, "require_consistent", require_consistent)
         if token is not None:
@@ -1265,6 +1276,11 @@ class GetCatalogServiceQueryOptionResult(dict):
     @pulumi.getter(name="nodeMeta")
     def node_meta(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "node_meta")
+
+    @property
+    @pulumi.getter
+    def partition(self) -> Optional[str]:
+        return pulumi.get(self, "partition")
 
     @property
     @pulumi.getter(name="requireConsistent")
@@ -1398,6 +1414,7 @@ class GetCatalogServicesQueryOptionResult(dict):
                  namespace: Optional[str] = None,
                  near: Optional[str] = None,
                  node_meta: Optional[Mapping[str, str]] = None,
+                 partition: Optional[str] = None,
                  require_consistent: Optional[bool] = None,
                  token: Optional[str] = None,
                  wait_index: Optional[int] = None,
@@ -1412,6 +1429,8 @@ class GetCatalogServicesQueryOptionResult(dict):
             pulumi.set(__self__, "near", near)
         if node_meta is not None:
             pulumi.set(__self__, "node_meta", node_meta)
+        if partition is not None:
+            pulumi.set(__self__, "partition", partition)
         if require_consistent is not None:
             pulumi.set(__self__, "require_consistent", require_consistent)
         if token is not None:
@@ -1445,6 +1464,11 @@ class GetCatalogServicesQueryOptionResult(dict):
     @pulumi.getter(name="nodeMeta")
     def node_meta(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "node_meta")
+
+    @property
+    @pulumi.getter
+    def partition(self) -> Optional[str]:
+        return pulumi.get(self, "partition")
 
     @property
     @pulumi.getter(name="requireConsistent")
@@ -1767,6 +1791,7 @@ class GetNodesQueryOptionResult(dict):
                  datacenter: Optional[str] = None,
                  near: Optional[str] = None,
                  node_meta: Optional[Mapping[str, str]] = None,
+                 partition: Optional[str] = None,
                  require_consistent: Optional[bool] = None,
                  token: Optional[str] = None,
                  wait_index: Optional[int] = None,
@@ -1796,6 +1821,8 @@ class GetNodesQueryOptionResult(dict):
             pulumi.set(__self__, "near", near)
         if node_meta is not None:
             pulumi.set(__self__, "node_meta", node_meta)
+        if partition is not None:
+            pulumi.set(__self__, "partition", partition)
         if require_consistent is not None:
             pulumi.set(__self__, "require_consistent", require_consistent)
         if token is not None:
@@ -1834,6 +1861,11 @@ class GetNodesQueryOptionResult(dict):
     @pulumi.getter(name="nodeMeta")
     def node_meta(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "node_meta")
+
+    @property
+    @pulumi.getter
+    def partition(self) -> Optional[str]:
+        return pulumi.get(self, "partition")
 
     @property
     @pulumi.getter(name="requireConsistent")
@@ -2161,6 +2193,7 @@ class GetServiceQueryOptionResult(dict):
                  namespace: Optional[str] = None,
                  near: Optional[str] = None,
                  node_meta: Optional[Mapping[str, str]] = None,
+                 partition: Optional[str] = None,
                  require_consistent: Optional[bool] = None,
                  token: Optional[str] = None,
                  wait_index: Optional[int] = None,
@@ -2193,6 +2226,8 @@ class GetServiceQueryOptionResult(dict):
             pulumi.set(__self__, "near", near)
         if node_meta is not None:
             pulumi.set(__self__, "node_meta", node_meta)
+        if partition is not None:
+            pulumi.set(__self__, "partition", partition)
         if require_consistent is not None:
             pulumi.set(__self__, "require_consistent", require_consistent)
         if token is not None:
@@ -2239,6 +2274,11 @@ class GetServiceQueryOptionResult(dict):
     @pulumi.getter(name="nodeMeta")
     def node_meta(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "node_meta")
+
+    @property
+    @pulumi.getter
+    def partition(self) -> Optional[str]:
+        return pulumi.get(self, "partition")
 
     @property
     @pulumi.getter(name="requireConsistent")
@@ -2443,6 +2483,7 @@ class GetServicesQueryOptionResult(dict):
                  namespace: Optional[str] = None,
                  near: Optional[str] = None,
                  node_meta: Optional[Mapping[str, str]] = None,
+                 partition: Optional[str] = None,
                  require_consistent: Optional[bool] = None,
                  token: Optional[str] = None,
                  wait_index: Optional[int] = None,
@@ -2475,6 +2516,8 @@ class GetServicesQueryOptionResult(dict):
             pulumi.set(__self__, "near", near)
         if node_meta is not None:
             pulumi.set(__self__, "node_meta", node_meta)
+        if partition is not None:
+            pulumi.set(__self__, "partition", partition)
         if require_consistent is not None:
             pulumi.set(__self__, "require_consistent", require_consistent)
         if token is not None:
@@ -2521,6 +2564,11 @@ class GetServicesQueryOptionResult(dict):
     @pulumi.getter(name="nodeMeta")
     def node_meta(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "node_meta")
+
+    @property
+    @pulumi.getter
+    def partition(self) -> Optional[str]:
+        return pulumi.get(self, "partition")
 
     @property
     @pulumi.getter(name="requireConsistent")

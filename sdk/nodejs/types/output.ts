@@ -197,6 +197,7 @@ export interface GetCatalogNodesQueryOption {
     datacenter?: string;
     near?: string;
     nodeMeta?: {[key: string]: string};
+    partition?: string;
     requireConsistent?: boolean;
     token?: string;
     waitIndex?: number;
@@ -209,6 +210,7 @@ export interface GetCatalogServiceQueryOption {
     namespace?: string;
     near?: string;
     nodeMeta?: {[key: string]: string};
+    partition?: string;
     requireConsistent?: boolean;
     token?: string;
     waitIndex?: number;
@@ -238,6 +240,7 @@ export interface GetCatalogServicesQueryOption {
     namespace?: string;
     near?: string;
     nodeMeta?: {[key: string]: string};
+    partition?: string;
     requireConsistent?: boolean;
     token?: string;
     waitIndex?: number;
@@ -367,6 +370,7 @@ export interface GetNodesQueryOption {
     datacenter?: string;
     near?: string;
     nodeMeta?: {[key: string]: string};
+    partition?: string;
     /**
      * When `true` force the client to perform a
      * read on at least quorum servers and verify the result is the same.  Defaults
@@ -508,6 +512,7 @@ export interface GetServiceQueryOption {
     namespace?: string;
     near?: string;
     nodeMeta?: {[key: string]: string};
+    partition?: string;
     /**
      * When `true` force the client to perform a
      * read on at least quorum servers and verify the result is the same.  Defaults
@@ -595,6 +600,7 @@ export interface GetServicesQueryOption {
     namespace?: string;
     near?: string;
     nodeMeta?: {[key: string]: string};
+    partition?: string;
     /**
      * When `true` force the client to perform a
      * read on at least quorum servers and verify the result is the same.  Defaults

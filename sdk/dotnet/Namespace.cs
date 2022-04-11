@@ -55,8 +55,7 @@ namespace Pulumi.Consul
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies arbitrary KV metadata to associate with the
-        /// namespace.
+        /// Specifies arbitrary KV metadata to associate with the namespace.
         /// </summary>
         [Output("meta")]
         public Output<ImmutableDictionary<string, string>?> Meta { get; private set; } = null!;
@@ -68,15 +67,19 @@ namespace Pulumi.Consul
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The list of default policies that should be
-        /// applied to all tokens created in this namespace.
+        /// The partition to create the namespace within.
+        /// </summary>
+        [Output("partition")]
+        public Output<string?> Partition { get; private set; } = null!;
+
+        /// <summary>
+        /// The list of default policies that should be applied to all tokens created in this namespace.
         /// </summary>
         [Output("policyDefaults")]
         public Output<ImmutableArray<string>> PolicyDefaults { get; private set; } = null!;
 
         /// <summary>
-        /// The list of default roles that should be applied
-        /// to all tokens created in this namespace.
+        /// The list of default roles that should be applied to all tokens created in this namespace.
         /// </summary>
         [Output("roleDefaults")]
         public Output<ImmutableArray<string>> RoleDefaults { get; private set; } = null!;
@@ -137,8 +140,7 @@ namespace Pulumi.Consul
         private InputMap<string>? _meta;
 
         /// <summary>
-        /// Specifies arbitrary KV metadata to associate with the
-        /// namespace.
+        /// Specifies arbitrary KV metadata to associate with the namespace.
         /// </summary>
         public InputMap<string> Meta
         {
@@ -152,12 +154,17 @@ namespace Pulumi.Consul
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The partition to create the namespace within.
+        /// </summary>
+        [Input("partition")]
+        public Input<string>? Partition { get; set; }
+
         [Input("policyDefaults")]
         private InputList<string>? _policyDefaults;
 
         /// <summary>
-        /// The list of default policies that should be
-        /// applied to all tokens created in this namespace.
+        /// The list of default policies that should be applied to all tokens created in this namespace.
         /// </summary>
         public InputList<string> PolicyDefaults
         {
@@ -169,8 +176,7 @@ namespace Pulumi.Consul
         private InputList<string>? _roleDefaults;
 
         /// <summary>
-        /// The list of default roles that should be applied
-        /// to all tokens created in this namespace.
+        /// The list of default roles that should be applied to all tokens created in this namespace.
         /// </summary>
         public InputList<string> RoleDefaults
         {
@@ -195,8 +201,7 @@ namespace Pulumi.Consul
         private InputMap<string>? _meta;
 
         /// <summary>
-        /// Specifies arbitrary KV metadata to associate with the
-        /// namespace.
+        /// Specifies arbitrary KV metadata to associate with the namespace.
         /// </summary>
         public InputMap<string> Meta
         {
@@ -210,12 +215,17 @@ namespace Pulumi.Consul
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The partition to create the namespace within.
+        /// </summary>
+        [Input("partition")]
+        public Input<string>? Partition { get; set; }
+
         [Input("policyDefaults")]
         private InputList<string>? _policyDefaults;
 
         /// <summary>
-        /// The list of default policies that should be
-        /// applied to all tokens created in this namespace.
+        /// The list of default policies that should be applied to all tokens created in this namespace.
         /// </summary>
         public InputList<string> PolicyDefaults
         {
@@ -227,8 +237,7 @@ namespace Pulumi.Consul
         private InputList<string>? _roleDefaults;
 
         /// <summary>
-        /// The list of default roles that should be applied
-        /// to all tokens created in this namespace.
+        /// The list of default roles that should be applied to all tokens created in this namespace.
         /// </summary>
         public InputList<string> RoleDefaults
         {

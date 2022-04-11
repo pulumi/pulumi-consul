@@ -24,6 +24,7 @@ class AclAuthMethodArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  namespace: Optional[pulumi.Input[str]] = None,
                  namespace_rules: Optional[pulumi.Input[Sequence[pulumi.Input['AclAuthMethodNamespaceRuleArgs']]]] = None,
+                 partition: Optional[pulumi.Input[str]] = None,
                  token_locality: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AclAuthMethod resource.
@@ -41,6 +42,7 @@ class AclAuthMethodArgs:
         :param pulumi.Input[str] namespace: The namespace in which to create the auth method.
         :param pulumi.Input[Sequence[pulumi.Input['AclAuthMethodNamespaceRuleArgs']]] namespace_rules: A set of rules that control
                which namespace tokens created via this auth method will be created within.
+        :param pulumi.Input[str] partition: The partition the ACL auth method is associated with.
         :param pulumi.Input[str] token_locality: The kind of token that this auth method
                produces. This can be either 'local' or 'global'.
         """
@@ -64,6 +66,8 @@ class AclAuthMethodArgs:
             pulumi.set(__self__, "namespace", namespace)
         if namespace_rules is not None:
             pulumi.set(__self__, "namespace_rules", namespace_rules)
+        if partition is not None:
+            pulumi.set(__self__, "partition", partition)
         if token_locality is not None:
             pulumi.set(__self__, "token_locality", token_locality)
 
@@ -181,6 +185,18 @@ class AclAuthMethodArgs:
         pulumi.set(self, "namespace_rules", value)
 
     @property
+    @pulumi.getter
+    def partition(self) -> Optional[pulumi.Input[str]]:
+        """
+        The partition the ACL auth method is associated with.
+        """
+        return pulumi.get(self, "partition")
+
+    @partition.setter
+    def partition(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "partition", value)
+
+    @property
     @pulumi.getter(name="tokenLocality")
     def token_locality(self) -> Optional[pulumi.Input[str]]:
         """
@@ -205,6 +221,7 @@ class _AclAuthMethodState:
                  name: Optional[pulumi.Input[str]] = None,
                  namespace: Optional[pulumi.Input[str]] = None,
                  namespace_rules: Optional[pulumi.Input[Sequence[pulumi.Input['AclAuthMethodNamespaceRuleArgs']]]] = None,
+                 partition: Optional[pulumi.Input[str]] = None,
                  token_locality: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
@@ -222,6 +239,7 @@ class _AclAuthMethodState:
         :param pulumi.Input[str] namespace: The namespace in which to create the auth method.
         :param pulumi.Input[Sequence[pulumi.Input['AclAuthMethodNamespaceRuleArgs']]] namespace_rules: A set of rules that control
                which namespace tokens created via this auth method will be created within.
+        :param pulumi.Input[str] partition: The partition the ACL auth method is associated with.
         :param pulumi.Input[str] token_locality: The kind of token that this auth method
                produces. This can be either 'local' or 'global'.
         :param pulumi.Input[str] type: The type of the ACL auth method.
@@ -245,6 +263,8 @@ class _AclAuthMethodState:
             pulumi.set(__self__, "namespace", namespace)
         if namespace_rules is not None:
             pulumi.set(__self__, "namespace_rules", namespace_rules)
+        if partition is not None:
+            pulumi.set(__self__, "partition", partition)
         if token_locality is not None:
             pulumi.set(__self__, "token_locality", token_locality)
         if type is not None:
@@ -352,6 +372,18 @@ class _AclAuthMethodState:
         pulumi.set(self, "namespace_rules", value)
 
     @property
+    @pulumi.getter
+    def partition(self) -> Optional[pulumi.Input[str]]:
+        """
+        The partition the ACL auth method is associated with.
+        """
+        return pulumi.get(self, "partition")
+
+    @partition.setter
+    def partition(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "partition", value)
+
+    @property
     @pulumi.getter(name="tokenLocality")
     def token_locality(self) -> Optional[pulumi.Input[str]]:
         """
@@ -390,6 +422,7 @@ class AclAuthMethod(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  namespace: Optional[pulumi.Input[str]] = None,
                  namespace_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclAuthMethodNamespaceRuleArgs']]]]] = None,
+                 partition: Optional[pulumi.Input[str]] = None,
                  token_locality: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -450,6 +483,7 @@ class AclAuthMethod(pulumi.CustomResource):
         :param pulumi.Input[str] namespace: The namespace in which to create the auth method.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclAuthMethodNamespaceRuleArgs']]]] namespace_rules: A set of rules that control
                which namespace tokens created via this auth method will be created within.
+        :param pulumi.Input[str] partition: The partition the ACL auth method is associated with.
         :param pulumi.Input[str] token_locality: The kind of token that this auth method
                produces. This can be either 'local' or 'global'.
         :param pulumi.Input[str] type: The type of the ACL auth method.
@@ -525,6 +559,7 @@ class AclAuthMethod(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  namespace: Optional[pulumi.Input[str]] = None,
                  namespace_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclAuthMethodNamespaceRuleArgs']]]]] = None,
+                 partition: Optional[pulumi.Input[str]] = None,
                  token_locality: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -550,6 +585,7 @@ class AclAuthMethod(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["namespace"] = namespace
             __props__.__dict__["namespace_rules"] = namespace_rules
+            __props__.__dict__["partition"] = partition
             __props__.__dict__["token_locality"] = token_locality
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
@@ -572,6 +608,7 @@ class AclAuthMethod(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             namespace: Optional[pulumi.Input[str]] = None,
             namespace_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclAuthMethodNamespaceRuleArgs']]]]] = None,
+            partition: Optional[pulumi.Input[str]] = None,
             token_locality: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'AclAuthMethod':
         """
@@ -594,6 +631,7 @@ class AclAuthMethod(pulumi.CustomResource):
         :param pulumi.Input[str] namespace: The namespace in which to create the auth method.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclAuthMethodNamespaceRuleArgs']]]] namespace_rules: A set of rules that control
                which namespace tokens created via this auth method will be created within.
+        :param pulumi.Input[str] partition: The partition the ACL auth method is associated with.
         :param pulumi.Input[str] token_locality: The kind of token that this auth method
                produces. This can be either 'local' or 'global'.
         :param pulumi.Input[str] type: The type of the ACL auth method.
@@ -610,6 +648,7 @@ class AclAuthMethod(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["namespace"] = namespace
         __props__.__dict__["namespace_rules"] = namespace_rules
+        __props__.__dict__["partition"] = partition
         __props__.__dict__["token_locality"] = token_locality
         __props__.__dict__["type"] = type
         return AclAuthMethod(resource_name, opts=opts, __props__=__props__)
@@ -682,6 +721,14 @@ class AclAuthMethod(pulumi.CustomResource):
         which namespace tokens created via this auth method will be created within.
         """
         return pulumi.get(self, "namespace_rules")
+
+    @property
+    @pulumi.getter
+    def partition(self) -> pulumi.Output[Optional[str]]:
+        """
+        The partition the ACL auth method is associated with.
+        """
+        return pulumi.get(self, "partition")
 
     @property
     @pulumi.getter(name="tokenLocality")

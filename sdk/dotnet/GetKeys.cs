@@ -134,6 +134,12 @@ namespace Pulumi.Consul
         public string? Namespace { get; set; }
 
         /// <summary>
+        /// The partition to lookup the keys.
+        /// </summary>
+        [Input("partition")]
+        public string? Partition { get; set; }
+
+        /// <summary>
         /// The ACL token to use. This overrides the
         /// token that the agent provides by default.
         /// </summary>
@@ -174,6 +180,12 @@ namespace Pulumi.Consul
         public Input<string>? Namespace { get; set; }
 
         /// <summary>
+        /// The partition to lookup the keys.
+        /// </summary>
+        [Input("partition")]
+        public Input<string>? Partition { get; set; }
+
+        /// <summary>
         /// The ACL token to use. This overrides the
         /// token that the agent provides by default.
         /// </summary>
@@ -201,6 +213,7 @@ namespace Pulumi.Consul
         public readonly string Id;
         public readonly ImmutableArray<Outputs.GetKeysKeyResult> Keys;
         public readonly string? Namespace;
+        public readonly string? Partition;
         public readonly string? Token;
         public readonly ImmutableDictionary<string, string> Var;
 
@@ -214,6 +227,8 @@ namespace Pulumi.Consul
 
             string? @namespace,
 
+            string? partition,
+
             string? token,
 
             ImmutableDictionary<string, string> var)
@@ -222,6 +237,7 @@ namespace Pulumi.Consul
             Id = id;
             Keys = keys;
             Namespace = @namespace;
+            Partition = partition;
             Token = token;
             Var = var;
         }

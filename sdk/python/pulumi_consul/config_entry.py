@@ -330,6 +330,41 @@ class ConfigEntry(pulumi.CustomResource):
                 ],
             }))
         ```
+        ### `exported-services` config entry
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_consul as consul
+
+        exported_services = consul.ConfigEntry("exportedServices",
+            kind="exported-services",
+            config_json=json.dumps({
+                "Services": [{
+                    "Name": "test",
+                    "Namespace": "default",
+                    "Consumers": [{
+                        "Partition": "default",
+                    }],
+                }],
+            }))
+        ```
+        ### `mesh` config entry
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_consul as consul
+
+        mesh = consul.ConfigEntry("mesh",
+            kind="mesh",
+            config_json=json.dumps({
+                "Partition": "default",
+                "TransparentProxy": {
+                    "MeshDestinationsOnly": True,
+                },
+            }))
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -509,6 +544,41 @@ class ConfigEntry(pulumi.CustomResource):
                         "Type": "consul",
                     },
                 ],
+            }))
+        ```
+        ### `exported-services` config entry
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_consul as consul
+
+        exported_services = consul.ConfigEntry("exportedServices",
+            kind="exported-services",
+            config_json=json.dumps({
+                "Services": [{
+                    "Name": "test",
+                    "Namespace": "default",
+                    "Consumers": [{
+                        "Partition": "default",
+                    }],
+                }],
+            }))
+        ```
+        ### `mesh` config entry
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_consul as consul
+
+        mesh = consul.ConfigEntry("mesh",
+            kind="mesh",
+            config_json=json.dumps({
+                "Partition": "default",
+                "TransparentProxy": {
+                    "MeshDestinationsOnly": True,
+                },
             }))
         ```
 

@@ -29,6 +29,9 @@ namespace Pulumi.Consul.Inputs
             set => _nodeMeta = value;
         }
 
+        [Input("partition")]
+        public string? Partition { get; set; }
+
         [Input("requireConsistent")]
         public bool? RequireConsistent { get; set; }
 

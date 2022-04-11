@@ -20,7 +20,7 @@ class GetAclPolicyResult:
     """
     A collection of values returned by getAclPolicy.
     """
-    def __init__(__self__, datacenters=None, description=None, id=None, name=None, namespace=None, rules=None):
+    def __init__(__self__, datacenters=None, description=None, id=None, name=None, namespace=None, partition=None, rules=None):
         if datacenters and not isinstance(datacenters, list):
             raise TypeError("Expected argument 'datacenters' to be a list")
         pulumi.set(__self__, "datacenters", datacenters)
@@ -36,13 +36,16 @@ class GetAclPolicyResult:
         if namespace and not isinstance(namespace, str):
             raise TypeError("Expected argument 'namespace' to be a str")
         pulumi.set(__self__, "namespace", namespace)
+        if partition and not isinstance(partition, str):
+            raise TypeError("Expected argument 'partition' to be a str")
+        pulumi.set(__self__, "partition", partition)
         if rules and not isinstance(rules, str):
             raise TypeError("Expected argument 'rules' to be a str")
         pulumi.set(__self__, "rules", rules)
 
     @property
     @pulumi.getter
-    def datacenters(self) -> Optional[Sequence[str]]:
+    def datacenters(self) -> Sequence[str]:
         """
         The datacenters associated with the ACL Policy.
         """
@@ -50,7 +53,7 @@ class GetAclPolicyResult:
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> str:
         """
         The description of the ACL Policy.
         """
@@ -76,7 +79,12 @@ class GetAclPolicyResult:
 
     @property
     @pulumi.getter
-    def rules(self) -> Optional[str]:
+    def partition(self) -> Optional[str]:
+        return pulumi.get(self, "partition")
+
+    @property
+    @pulumi.getter
+    def rules(self) -> str:
         """
         The rules associated with the ACL Policy.
         """
@@ -94,14 +102,13 @@ class AwaitableGetAclPolicyResult(GetAclPolicyResult):
             id=self.id,
             name=self.name,
             namespace=self.namespace,
+            partition=self.partition,
             rules=self.rules)
 
 
-def get_acl_policy(datacenters: Optional[Sequence[str]] = None,
-                   description: Optional[str] = None,
-                   name: Optional[str] = None,
+def get_acl_policy(name: Optional[str] = None,
                    namespace: Optional[str] = None,
-                   rules: Optional[str] = None,
+                   partition: Optional[str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAclPolicyResult:
     """
     The `AclPolicy` data source returns the information related to a
@@ -118,18 +125,14 @@ def get_acl_policy(datacenters: Optional[Sequence[str]] = None,
     ```
 
 
-    :param Sequence[str] datacenters: The datacenters associated with the ACL Policy.
-    :param str description: The description of the ACL Policy.
     :param str name: The name of the ACL Policy.
     :param str namespace: The namespace to lookup the policy.
-    :param str rules: The rules associated with the ACL Policy.
+    :param str partition: The partition to lookup the policy.
     """
     __args__ = dict()
-    __args__['datacenters'] = datacenters
-    __args__['description'] = description
     __args__['name'] = name
     __args__['namespace'] = namespace
-    __args__['rules'] = rules
+    __args__['partition'] = partition
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
@@ -142,15 +145,14 @@ def get_acl_policy(datacenters: Optional[Sequence[str]] = None,
         id=__ret__.id,
         name=__ret__.name,
         namespace=__ret__.namespace,
+        partition=__ret__.partition,
         rules=__ret__.rules)
 
 
 @_utilities.lift_output_func(get_acl_policy)
-def get_acl_policy_output(datacenters: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
-                          description: Optional[pulumi.Input[Optional[str]]] = None,
-                          name: Optional[pulumi.Input[str]] = None,
+def get_acl_policy_output(name: Optional[pulumi.Input[str]] = None,
                           namespace: Optional[pulumi.Input[Optional[str]]] = None,
-                          rules: Optional[pulumi.Input[Optional[str]]] = None,
+                          partition: Optional[pulumi.Input[Optional[str]]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAclPolicyResult]:
     """
     The `AclPolicy` data source returns the information related to a
@@ -167,10 +169,8 @@ def get_acl_policy_output(datacenters: Optional[pulumi.Input[Optional[Sequence[s
     ```
 
 
-    :param Sequence[str] datacenters: The datacenters associated with the ACL Policy.
-    :param str description: The description of the ACL Policy.
     :param str name: The name of the ACL Policy.
     :param str namespace: The namespace to lookup the policy.
-    :param str rules: The rules associated with the ACL Policy.
+    :param str partition: The partition to lookup the policy.
     """
     ...

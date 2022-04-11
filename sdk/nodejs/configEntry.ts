@@ -179,6 +179,41 @@ import * as utilities from "./utilities";
  *     }),
  * });
  * ```
+ * ### `exported-services` config entry
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ *
+ * const exportedServices = new consul.ConfigEntry("exportedServices", {
+ *     kind: "exported-services",
+ *     configJson: JSON.stringify({
+ *         Services: [{
+ *             Name: "test",
+ *             Namespace: "default",
+ *             Consumers: [{
+ *                 Partition: "default",
+ *             }],
+ *         }],
+ *     }),
+ * });
+ * ```
+ * ### `mesh` config entry
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ *
+ * const mesh = new consul.ConfigEntry("mesh", {
+ *     kind: "mesh",
+ *     configJson: JSON.stringify({
+ *         Partition: "default",
+ *         TransparentProxy: {
+ *             MeshDestinationsOnly: true,
+ *         },
+ *     }),
+ * });
+ * ```
  */
 export class ConfigEntry extends pulumi.CustomResource {
     /**

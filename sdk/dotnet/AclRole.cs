@@ -86,6 +86,12 @@ namespace Pulumi.Consul
         public Output<ImmutableArray<Outputs.AclRoleNodeIdentity>> NodeIdentities { get; private set; } = null!;
 
         /// <summary>
+        /// The partition the ACL role is associated with.
+        /// </summary>
+        [Output("partition")]
+        public Output<string?> Partition { get; private set; } = null!;
+
+        /// <summary>
         /// The list of policies that should be applied to the role.
         /// </summary>
         [Output("policies")]
@@ -173,6 +179,12 @@ namespace Pulumi.Consul
             set => _nodeIdentities = value;
         }
 
+        /// <summary>
+        /// The partition the ACL role is associated with.
+        /// </summary>
+        [Input("partition")]
+        public Input<string>? Partition { get; set; }
+
         [Input("policies")]
         private InputList<string>? _policies;
 
@@ -233,6 +245,12 @@ namespace Pulumi.Consul
             get => _nodeIdentities ?? (_nodeIdentities = new InputList<Inputs.AclRoleNodeIdentityGetArgs>());
             set => _nodeIdentities = value;
         }
+
+        /// <summary>
+        /// The partition the ACL role is associated with.
+        /// </summary>
+        [Input("partition")]
+        public Input<string>? Partition { get; set; }
 
         [Input("policies")]
         private InputList<string>? _policies;

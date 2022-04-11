@@ -21,7 +21,7 @@ class GetAclRoleResult:
     """
     A collection of values returned by getAclRole.
     """
-    def __init__(__self__, description=None, id=None, name=None, namespace=None, node_identities=None, policies=None, service_identities=None):
+    def __init__(__self__, description=None, id=None, name=None, namespace=None, node_identities=None, partition=None, policies=None, service_identities=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -37,6 +37,9 @@ class GetAclRoleResult:
         if node_identities and not isinstance(node_identities, list):
             raise TypeError("Expected argument 'node_identities' to be a list")
         pulumi.set(__self__, "node_identities", node_identities)
+        if partition and not isinstance(partition, str):
+            raise TypeError("Expected argument 'partition' to be a str")
+        pulumi.set(__self__, "partition", partition)
         if policies and not isinstance(policies, list):
             raise TypeError("Expected argument 'policies' to be a list")
         pulumi.set(__self__, "policies", policies)
@@ -86,6 +89,11 @@ class GetAclRoleResult:
 
     @property
     @pulumi.getter
+    def partition(self) -> Optional[str]:
+        return pulumi.get(self, "partition")
+
+    @property
+    @pulumi.getter
     def policies(self) -> Sequence['outputs.GetAclRolePolicyResult']:
         """
         The list of policies associated with the ACL Role. Each entry has an `id` and a `name` attribute.
@@ -112,12 +120,14 @@ class AwaitableGetAclRoleResult(GetAclRoleResult):
             name=self.name,
             namespace=self.namespace,
             node_identities=self.node_identities,
+            partition=self.partition,
             policies=self.policies,
             service_identities=self.service_identities)
 
 
 def get_acl_role(name: Optional[str] = None,
                  namespace: Optional[str] = None,
+                 partition: Optional[str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAclRoleResult:
     """
     The `AclRole` data source returns the information related to a
@@ -136,10 +146,12 @@ def get_acl_role(name: Optional[str] = None,
 
     :param str name: The name of the ACL Role.
     :param str namespace: The namespace to lookup the role.
+    :param str partition: The partition to lookup the role.
     """
     __args__ = dict()
     __args__['name'] = name
     __args__['namespace'] = namespace
+    __args__['partition'] = partition
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
@@ -152,6 +164,7 @@ def get_acl_role(name: Optional[str] = None,
         name=__ret__.name,
         namespace=__ret__.namespace,
         node_identities=__ret__.node_identities,
+        partition=__ret__.partition,
         policies=__ret__.policies,
         service_identities=__ret__.service_identities)
 
@@ -159,6 +172,7 @@ def get_acl_role(name: Optional[str] = None,
 @_utilities.lift_output_func(get_acl_role)
 def get_acl_role_output(name: Optional[pulumi.Input[str]] = None,
                         namespace: Optional[pulumi.Input[Optional[str]]] = None,
+                        partition: Optional[pulumi.Input[Optional[str]]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAclRoleResult]:
     """
     The `AclRole` data source returns the information related to a
@@ -177,5 +191,6 @@ def get_acl_role_output(name: Optional[pulumi.Input[str]] = None,
 
     :param str name: The name of the ACL Role.
     :param str namespace: The namespace to lookup the role.
+    :param str partition: The partition to lookup the role.
     """
     ...

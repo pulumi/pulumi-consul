@@ -316,6 +316,83 @@ import (
 // 	})
 // }
 // ```
+// ### `exported-services` config entry
+//
+// ```go
+// package main
+//
+// import (
+// 	"encoding/json"
+//
+// 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
+// 			"Services": []map[string]interface{}{
+// 				map[string]interface{}{
+// 					"Name":      "test",
+// 					"Namespace": "default",
+// 					"Consumers": []map[string]interface{}{
+// 						map[string]interface{}{
+// 							"Partition": "default",
+// 						},
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		json0 := string(tmpJSON0)
+// 		_, err := consul.NewConfigEntry(ctx, "exportedServices", &consul.ConfigEntryArgs{
+// 			Kind:       pulumi.String("exported-services"),
+// 			ConfigJson: pulumi.String(json0),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### `mesh` config entry
+//
+// ```go
+// package main
+//
+// import (
+// 	"encoding/json"
+//
+// 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
+// 			"Partition": "default",
+// 			"TransparentProxy": map[string]interface{}{
+// 				"MeshDestinationsOnly": true,
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		json0 := string(tmpJSON0)
+// 		_, err := consul.NewConfigEntry(ctx, "mesh", &consul.ConfigEntryArgs{
+// 			Kind:       pulumi.String("mesh"),
+// 			ConfigJson: pulumi.String(json0),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type ConfigEntry struct {
 	pulumi.CustomResourceState
 

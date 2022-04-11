@@ -66,6 +66,10 @@ export class Keys extends pulumi.CustomResource {
      */
     public readonly namespace!: pulumi.Output<string | undefined>;
     /**
+     * The partition to create the keys within.
+     */
+    public readonly partition!: pulumi.Output<string | undefined>;
+    /**
      * The ACL token to use. This overrides the
      * token that the agent provides by default.
      */
@@ -88,6 +92,7 @@ export class Keys extends pulumi.CustomResource {
             resourceInputs["datacenter"] = state ? state.datacenter : undefined;
             resourceInputs["keys"] = state ? state.keys : undefined;
             resourceInputs["namespace"] = state ? state.namespace : undefined;
+            resourceInputs["partition"] = state ? state.partition : undefined;
             resourceInputs["token"] = state ? state.token : undefined;
             resourceInputs["var"] = state ? state.var : undefined;
         } else {
@@ -95,6 +100,7 @@ export class Keys extends pulumi.CustomResource {
             resourceInputs["datacenter"] = args ? args.datacenter : undefined;
             resourceInputs["keys"] = args ? args.keys : undefined;
             resourceInputs["namespace"] = args ? args.namespace : undefined;
+            resourceInputs["partition"] = args ? args.partition : undefined;
             resourceInputs["token"] = args ? args.token : undefined;
             resourceInputs["var"] = undefined /*out*/;
         }
@@ -122,6 +128,10 @@ export interface KeysState {
      */
     namespace?: pulumi.Input<string>;
     /**
+     * The partition to create the keys within.
+     */
+    partition?: pulumi.Input<string>;
+    /**
      * The ACL token to use. This overrides the
      * token that the agent provides by default.
      */
@@ -147,6 +157,10 @@ export interface KeysArgs {
      * The namespace to create the keys within.
      */
     namespace?: pulumi.Input<string>;
+    /**
+     * The partition to create the keys within.
+     */
+    partition?: pulumi.Input<string>;
     /**
      * The ACL token to use. This overrides the
      * token that the agent provides by default.

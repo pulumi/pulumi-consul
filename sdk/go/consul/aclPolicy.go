@@ -59,6 +59,8 @@ type AclPolicy struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The namespace to create the policy within.
 	Namespace pulumi.StringPtrOutput `pulumi:"namespace"`
+	// The partition the ACL policy is associated with.
+	Partition pulumi.StringPtrOutput `pulumi:"partition"`
 	// The rules of the policy.
 	Rules pulumi.StringOutput `pulumi:"rules"`
 }
@@ -103,6 +105,8 @@ type aclPolicyState struct {
 	Name *string `pulumi:"name"`
 	// The namespace to create the policy within.
 	Namespace *string `pulumi:"namespace"`
+	// The partition the ACL policy is associated with.
+	Partition *string `pulumi:"partition"`
 	// The rules of the policy.
 	Rules *string `pulumi:"rules"`
 }
@@ -116,6 +120,8 @@ type AclPolicyState struct {
 	Name pulumi.StringPtrInput
 	// The namespace to create the policy within.
 	Namespace pulumi.StringPtrInput
+	// The partition the ACL policy is associated with.
+	Partition pulumi.StringPtrInput
 	// The rules of the policy.
 	Rules pulumi.StringPtrInput
 }
@@ -133,6 +139,8 @@ type aclPolicyArgs struct {
 	Name *string `pulumi:"name"`
 	// The namespace to create the policy within.
 	Namespace *string `pulumi:"namespace"`
+	// The partition the ACL policy is associated with.
+	Partition *string `pulumi:"partition"`
 	// The rules of the policy.
 	Rules string `pulumi:"rules"`
 }
@@ -147,6 +155,8 @@ type AclPolicyArgs struct {
 	Name pulumi.StringPtrInput
 	// The namespace to create the policy within.
 	Namespace pulumi.StringPtrInput
+	// The partition the ACL policy is associated with.
+	Partition pulumi.StringPtrInput
 	// The rules of the policy.
 	Rules pulumi.StringInput
 }

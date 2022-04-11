@@ -66,29 +66,31 @@ namespace Pulumi.Consul
         public Output<string> BindName { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the way the binding rule affects a token
-        /// created at login.
+        /// Specifies the way the binding rule affects a token created at login.
         /// </summary>
         [Output("bindType")]
         public Output<string> BindType { get; private set; } = null!;
 
         /// <summary>
-        /// A free form human readable description of the
-        /// binding rule.
+        /// A free form human readable description of the binding rule.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The namespace to create the binding
-        /// rule within.
+        /// The namespace to create the binding rule within.
         /// </summary>
         [Output("namespace")]
         public Output<string?> Namespace { get; private set; } = null!;
 
         /// <summary>
-        /// The expression used to math this rule against valid
-        /// identities returned from an auth method validation.
+        /// The partition the ACL binding rule is associated with.
+        /// </summary>
+        [Output("partition")]
+        public Output<string?> Partition { get; private set; } = null!;
+
+        /// <summary>
+        /// The expression used to math this rule against valid identities returned from an auth method validation.
         /// </summary>
         [Output("selector")]
         public Output<string?> Selector { get; private set; } = null!;
@@ -152,29 +154,31 @@ namespace Pulumi.Consul
         public Input<string> BindName { get; set; } = null!;
 
         /// <summary>
-        /// Specifies the way the binding rule affects a token
-        /// created at login.
+        /// Specifies the way the binding rule affects a token created at login.
         /// </summary>
         [Input("bindType", required: true)]
         public Input<string> BindType { get; set; } = null!;
 
         /// <summary>
-        /// A free form human readable description of the
-        /// binding rule.
+        /// A free form human readable description of the binding rule.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The namespace to create the binding
-        /// rule within.
+        /// The namespace to create the binding rule within.
         /// </summary>
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }
 
         /// <summary>
-        /// The expression used to math this rule against valid
-        /// identities returned from an auth method validation.
+        /// The partition the ACL binding rule is associated with.
+        /// </summary>
+        [Input("partition")]
+        public Input<string>? Partition { get; set; }
+
+        /// <summary>
+        /// The expression used to math this rule against valid identities returned from an auth method validation.
         /// </summary>
         [Input("selector")]
         public Input<string>? Selector { get; set; }
@@ -199,29 +203,31 @@ namespace Pulumi.Consul
         public Input<string>? BindName { get; set; }
 
         /// <summary>
-        /// Specifies the way the binding rule affects a token
-        /// created at login.
+        /// Specifies the way the binding rule affects a token created at login.
         /// </summary>
         [Input("bindType")]
         public Input<string>? BindType { get; set; }
 
         /// <summary>
-        /// A free form human readable description of the
-        /// binding rule.
+        /// A free form human readable description of the binding rule.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The namespace to create the binding
-        /// rule within.
+        /// The namespace to create the binding rule within.
         /// </summary>
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }
 
         /// <summary>
-        /// The expression used to math this rule against valid
-        /// identities returned from an auth method validation.
+        /// The partition the ACL binding rule is associated with.
+        /// </summary>
+        [Input("partition")]
+        public Input<string>? Partition { get; set; }
+
+        /// <summary>
+        /// The expression used to math this rule against valid identities returned from an auth method validation.
         /// </summary>
         [Input("selector")]
         public Input<string>? Selector { get; set; }

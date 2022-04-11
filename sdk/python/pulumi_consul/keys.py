@@ -18,6 +18,7 @@ class KeysArgs:
                  datacenter: Optional[pulumi.Input[str]] = None,
                  keys: Optional[pulumi.Input[Sequence[pulumi.Input['KeysKeyArgs']]]] = None,
                  namespace: Optional[pulumi.Input[str]] = None,
+                 partition: Optional[pulumi.Input[str]] = None,
                  token: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Keys resource.
@@ -26,6 +27,7 @@ class KeysArgs:
         :param pulumi.Input[Sequence[pulumi.Input['KeysKeyArgs']]] keys: Specifies a key in Consul to be written.
                Supported values documented below.
         :param pulumi.Input[str] namespace: The namespace to create the keys within.
+        :param pulumi.Input[str] partition: The partition to create the keys within.
         :param pulumi.Input[str] token: The ACL token to use. This overrides the
                token that the agent provides by default.
         """
@@ -35,6 +37,8 @@ class KeysArgs:
             pulumi.set(__self__, "keys", keys)
         if namespace is not None:
             pulumi.set(__self__, "namespace", namespace)
+        if partition is not None:
+            pulumi.set(__self__, "partition", partition)
         if token is not None:
             pulumi.set(__self__, "token", token)
 
@@ -78,6 +82,18 @@ class KeysArgs:
 
     @property
     @pulumi.getter
+    def partition(self) -> Optional[pulumi.Input[str]]:
+        """
+        The partition to create the keys within.
+        """
+        return pulumi.get(self, "partition")
+
+    @partition.setter
+    def partition(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "partition", value)
+
+    @property
+    @pulumi.getter
     def token(self) -> Optional[pulumi.Input[str]]:
         """
         The ACL token to use. This overrides the
@@ -96,6 +112,7 @@ class _KeysState:
                  datacenter: Optional[pulumi.Input[str]] = None,
                  keys: Optional[pulumi.Input[Sequence[pulumi.Input['KeysKeyArgs']]]] = None,
                  namespace: Optional[pulumi.Input[str]] = None,
+                 partition: Optional[pulumi.Input[str]] = None,
                  token: Optional[pulumi.Input[str]] = None,
                  var: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
@@ -105,6 +122,7 @@ class _KeysState:
         :param pulumi.Input[Sequence[pulumi.Input['KeysKeyArgs']]] keys: Specifies a key in Consul to be written.
                Supported values documented below.
         :param pulumi.Input[str] namespace: The namespace to create the keys within.
+        :param pulumi.Input[str] partition: The partition to create the keys within.
         :param pulumi.Input[str] token: The ACL token to use. This overrides the
                token that the agent provides by default.
         """
@@ -114,6 +132,8 @@ class _KeysState:
             pulumi.set(__self__, "keys", keys)
         if namespace is not None:
             pulumi.set(__self__, "namespace", namespace)
+        if partition is not None:
+            pulumi.set(__self__, "partition", partition)
         if token is not None:
             pulumi.set(__self__, "token", token)
         if var is not None:
@@ -159,6 +179,18 @@ class _KeysState:
 
     @property
     @pulumi.getter
+    def partition(self) -> Optional[pulumi.Input[str]]:
+        """
+        The partition to create the keys within.
+        """
+        return pulumi.get(self, "partition")
+
+    @partition.setter
+    def partition(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "partition", value)
+
+    @property
+    @pulumi.getter
     def token(self) -> Optional[pulumi.Input[str]]:
         """
         The ACL token to use. This overrides the
@@ -188,6 +220,7 @@ class Keys(pulumi.CustomResource):
                  datacenter: Optional[pulumi.Input[str]] = None,
                  keys: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KeysKeyArgs']]]]] = None,
                  namespace: Optional[pulumi.Input[str]] = None,
+                 partition: Optional[pulumi.Input[str]] = None,
                  token: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -213,6 +246,7 @@ class Keys(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KeysKeyArgs']]]] keys: Specifies a key in Consul to be written.
                Supported values documented below.
         :param pulumi.Input[str] namespace: The namespace to create the keys within.
+        :param pulumi.Input[str] partition: The partition to create the keys within.
         :param pulumi.Input[str] token: The ACL token to use. This overrides the
                token that the agent provides by default.
         """
@@ -256,6 +290,7 @@ class Keys(pulumi.CustomResource):
                  datacenter: Optional[pulumi.Input[str]] = None,
                  keys: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KeysKeyArgs']]]]] = None,
                  namespace: Optional[pulumi.Input[str]] = None,
+                 partition: Optional[pulumi.Input[str]] = None,
                  token: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -272,6 +307,7 @@ class Keys(pulumi.CustomResource):
             __props__.__dict__["datacenter"] = datacenter
             __props__.__dict__["keys"] = keys
             __props__.__dict__["namespace"] = namespace
+            __props__.__dict__["partition"] = partition
             __props__.__dict__["token"] = token
             __props__.__dict__["var"] = None
         super(Keys, __self__).__init__(
@@ -287,6 +323,7 @@ class Keys(pulumi.CustomResource):
             datacenter: Optional[pulumi.Input[str]] = None,
             keys: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KeysKeyArgs']]]]] = None,
             namespace: Optional[pulumi.Input[str]] = None,
+            partition: Optional[pulumi.Input[str]] = None,
             token: Optional[pulumi.Input[str]] = None,
             var: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'Keys':
         """
@@ -301,6 +338,7 @@ class Keys(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KeysKeyArgs']]]] keys: Specifies a key in Consul to be written.
                Supported values documented below.
         :param pulumi.Input[str] namespace: The namespace to create the keys within.
+        :param pulumi.Input[str] partition: The partition to create the keys within.
         :param pulumi.Input[str] token: The ACL token to use. This overrides the
                token that the agent provides by default.
         """
@@ -311,6 +349,7 @@ class Keys(pulumi.CustomResource):
         __props__.__dict__["datacenter"] = datacenter
         __props__.__dict__["keys"] = keys
         __props__.__dict__["namespace"] = namespace
+        __props__.__dict__["partition"] = partition
         __props__.__dict__["token"] = token
         __props__.__dict__["var"] = var
         return Keys(resource_name, opts=opts, __props__=__props__)
@@ -340,6 +379,14 @@ class Keys(pulumi.CustomResource):
         The namespace to create the keys within.
         """
         return pulumi.get(self, "namespace")
+
+    @property
+    @pulumi.getter
+    def partition(self) -> pulumi.Output[Optional[str]]:
+        """
+        The partition to create the keys within.
+        """
+        return pulumi.get(self, "partition")
 
     @property
     @pulumi.getter

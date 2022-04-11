@@ -30,6 +30,7 @@ export function getAclRole(args: GetAclRoleArgs, opts?: pulumi.InvokeOptions): P
     return pulumi.runtime.invoke("consul:index/getAclRole:getAclRole", {
         "name": args.name,
         "namespace": args.namespace,
+        "partition": args.partition,
     }, opts);
 }
 
@@ -45,6 +46,10 @@ export interface GetAclRoleArgs {
      * The namespace to lookup the role.
      */
     namespace?: string;
+    /**
+     * The partition to lookup the role.
+     */
+    partition?: string;
 }
 
 /**
@@ -71,6 +76,7 @@ export interface GetAclRoleResult {
      * The list of node identities associated with the ACL Role. Each entry has a `nodeName` and a `datacenter` attributes.
      */
     readonly nodeIdentities: outputs.GetAclRoleNodeIdentity[];
+    readonly partition?: string;
     /**
      * The list of policies associated with the ACL Role. Each entry has an `id` and a `name` attribute.
      */
@@ -97,4 +103,8 @@ export interface GetAclRoleOutputArgs {
      * The namespace to lookup the role.
      */
     namespace?: pulumi.Input<string>;
+    /**
+     * The partition to lookup the role.
+     */
+    partition?: pulumi.Input<string>;
 }

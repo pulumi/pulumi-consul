@@ -75,6 +75,8 @@ type AclToken struct {
 	Namespace pulumi.StringPtrOutput `pulumi:"namespace"`
 	// The list of node identities that should be applied to the token.
 	NodeIdentities AclTokenNodeIdentityArrayOutput `pulumi:"nodeIdentities"`
+	// The partition the ACL token is associated with.
+	Partition pulumi.StringPtrOutput `pulumi:"partition"`
 	// The list of policies attached to the token.
 	Policies pulumi.StringArrayOutput `pulumi:"policies"`
 	// The list of roles attached to the token.
@@ -125,6 +127,8 @@ type aclTokenState struct {
 	Namespace *string `pulumi:"namespace"`
 	// The list of node identities that should be applied to the token.
 	NodeIdentities []AclTokenNodeIdentity `pulumi:"nodeIdentities"`
+	// The partition the ACL token is associated with.
+	Partition *string `pulumi:"partition"`
 	// The list of policies attached to the token.
 	Policies []string `pulumi:"policies"`
 	// The list of roles attached to the token.
@@ -147,6 +151,8 @@ type AclTokenState struct {
 	Namespace pulumi.StringPtrInput
 	// The list of node identities that should be applied to the token.
 	NodeIdentities AclTokenNodeIdentityArrayInput
+	// The partition the ACL token is associated with.
+	Partition pulumi.StringPtrInput
 	// The list of policies attached to the token.
 	Policies pulumi.StringArrayInput
 	// The list of roles attached to the token.
@@ -173,6 +179,8 @@ type aclTokenArgs struct {
 	Namespace *string `pulumi:"namespace"`
 	// The list of node identities that should be applied to the token.
 	NodeIdentities []AclTokenNodeIdentity `pulumi:"nodeIdentities"`
+	// The partition the ACL token is associated with.
+	Partition *string `pulumi:"partition"`
 	// The list of policies attached to the token.
 	Policies []string `pulumi:"policies"`
 	// The list of roles attached to the token.
@@ -196,6 +204,8 @@ type AclTokenArgs struct {
 	Namespace pulumi.StringPtrInput
 	// The list of node identities that should be applied to the token.
 	NodeIdentities AclTokenNodeIdentityArrayInput
+	// The partition the ACL token is associated with.
+	Partition pulumi.StringPtrInput
 	// The list of policies attached to the token.
 	Policies pulumi.StringArrayInput
 	// The list of roles attached to the token.

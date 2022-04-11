@@ -64,8 +64,7 @@ export class Namespace extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Specifies arbitrary KV metadata to associate with the
-     * namespace.
+     * Specifies arbitrary KV metadata to associate with the namespace.
      */
     public readonly meta!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -73,13 +72,15 @@ export class Namespace extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The list of default policies that should be
-     * applied to all tokens created in this namespace.
+     * The partition to create the namespace within.
+     */
+    public readonly partition!: pulumi.Output<string | undefined>;
+    /**
+     * The list of default policies that should be applied to all tokens created in this namespace.
      */
     public readonly policyDefaults!: pulumi.Output<string[] | undefined>;
     /**
-     * The list of default roles that should be applied
-     * to all tokens created in this namespace.
+     * The list of default roles that should be applied to all tokens created in this namespace.
      */
     public readonly roleDefaults!: pulumi.Output<string[] | undefined>;
 
@@ -99,6 +100,7 @@ export class Namespace extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["meta"] = state ? state.meta : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["partition"] = state ? state.partition : undefined;
             resourceInputs["policyDefaults"] = state ? state.policyDefaults : undefined;
             resourceInputs["roleDefaults"] = state ? state.roleDefaults : undefined;
         } else {
@@ -106,6 +108,7 @@ export class Namespace extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["meta"] = args ? args.meta : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["partition"] = args ? args.partition : undefined;
             resourceInputs["policyDefaults"] = args ? args.policyDefaults : undefined;
             resourceInputs["roleDefaults"] = args ? args.roleDefaults : undefined;
         }
@@ -123,8 +126,7 @@ export interface NamespaceState {
      */
     description?: pulumi.Input<string>;
     /**
-     * Specifies arbitrary KV metadata to associate with the
-     * namespace.
+     * Specifies arbitrary KV metadata to associate with the namespace.
      */
     meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -132,13 +134,15 @@ export interface NamespaceState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The list of default policies that should be
-     * applied to all tokens created in this namespace.
+     * The partition to create the namespace within.
+     */
+    partition?: pulumi.Input<string>;
+    /**
+     * The list of default policies that should be applied to all tokens created in this namespace.
      */
     policyDefaults?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The list of default roles that should be applied
-     * to all tokens created in this namespace.
+     * The list of default roles that should be applied to all tokens created in this namespace.
      */
     roleDefaults?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -152,8 +156,7 @@ export interface NamespaceArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Specifies arbitrary KV metadata to associate with the
-     * namespace.
+     * Specifies arbitrary KV metadata to associate with the namespace.
      */
     meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -161,13 +164,15 @@ export interface NamespaceArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The list of default policies that should be
-     * applied to all tokens created in this namespace.
+     * The partition to create the namespace within.
+     */
+    partition?: pulumi.Input<string>;
+    /**
+     * The list of default policies that should be applied to all tokens created in this namespace.
      */
     policyDefaults?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The list of default roles that should be applied
-     * to all tokens created in this namespace.
+     * The list of default roles that should be applied to all tokens created in this namespace.
      */
     roleDefaults?: pulumi.Input<pulumi.Input<string>[]>;
 }

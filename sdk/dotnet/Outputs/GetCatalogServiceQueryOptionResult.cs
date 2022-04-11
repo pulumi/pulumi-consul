@@ -18,6 +18,7 @@ namespace Pulumi.Consul.Outputs
         public readonly string? Namespace;
         public readonly string? Near;
         public readonly ImmutableDictionary<string, string>? NodeMeta;
+        public readonly string? Partition;
         public readonly bool? RequireConsistent;
         public readonly string? Token;
         public readonly int? WaitIndex;
@@ -35,6 +36,8 @@ namespace Pulumi.Consul.Outputs
 
             ImmutableDictionary<string, string>? nodeMeta,
 
+            string? partition,
+
             bool? requireConsistent,
 
             string? token,
@@ -48,6 +51,7 @@ namespace Pulumi.Consul.Outputs
             Namespace = @namespace;
             Near = near;
             NodeMeta = nodeMeta;
+            Partition = partition;
             RequireConsistent = requireConsistent;
             Token = token;
             WaitIndex = waitIndex;

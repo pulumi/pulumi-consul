@@ -161,10 +161,16 @@ namespace Pulumi.Consul
         public string? Datacenter { get; set; }
 
         /// <summary>
-        /// The namespace to create the keys within.
+        /// The namespace to lookup the keys within.
         /// </summary>
         [Input("namespace")]
         public string? Namespace { get; set; }
+
+        /// <summary>
+        /// The namespace to lookup the keys within.
+        /// </summary>
+        [Input("partition")]
+        public string? Partition { get; set; }
 
         /// <summary>
         /// Specifies the common prefix shared by all keys
@@ -209,10 +215,16 @@ namespace Pulumi.Consul
         public Input<string>? Datacenter { get; set; }
 
         /// <summary>
-        /// The namespace to create the keys within.
+        /// The namespace to lookup the keys within.
         /// </summary>
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }
+
+        /// <summary>
+        /// The namespace to lookup the keys within.
+        /// </summary>
+        [Input("partition")]
+        public Input<string>? Partition { get; set; }
 
         /// <summary>
         /// Specifies the common prefix shared by all keys
@@ -260,6 +272,7 @@ namespace Pulumi.Consul
         /// </summary>
         public readonly string Id;
         public readonly string? Namespace;
+        public readonly string? Partition;
         /// <summary>
         /// the common prefix shared by all keys being read.
         /// * `var.&lt;name&gt;` - For each name given, the corresponding attribute
@@ -283,6 +296,8 @@ namespace Pulumi.Consul
 
             string? @namespace,
 
+            string? partition,
+
             string pathPrefix,
 
             ImmutableArray<Outputs.GetKeyPrefixSubkeyCollectionResult> subkeyCollection,
@@ -296,6 +311,7 @@ namespace Pulumi.Consul
             Datacenter = datacenter;
             Id = id;
             Namespace = @namespace;
+            Partition = partition;
             PathPrefix = pathPrefix;
             SubkeyCollection = subkeyCollection;
             Subkeys = subkeys;

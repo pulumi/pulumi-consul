@@ -34,6 +34,7 @@ export function getAclToken(args: GetAclTokenArgs, opts?: pulumi.InvokeOptions):
     return pulumi.runtime.invoke("consul:index/getAclToken:getAclToken", {
         "accessorId": args.accessorId,
         "namespace": args.namespace,
+        "partition": args.partition,
     }, opts);
 }
 
@@ -49,6 +50,10 @@ export interface GetAclTokenArgs {
      * The namespace to lookup the ACL token.
      */
     namespace?: string;
+    /**
+     * The partition to lookup the ACL token.
+     */
+    partition?: string;
 }
 
 /**
@@ -77,6 +82,7 @@ export interface GetAclTokenResult {
      * The list of node identities attached to the token. Each entry has a `nodeName` and a `datacenter` attributes.
      */
     readonly nodeIdentities: outputs.GetAclTokenNodeIdentity[];
+    readonly partition?: string;
     /**
      * A list of policies associated with the ACL token. Each entry has an `id` and a `name` attribute.
      */
@@ -107,4 +113,8 @@ export interface GetAclTokenOutputArgs {
      * The namespace to lookup the ACL token.
      */
     namespace?: pulumi.Input<string>;
+    /**
+     * The partition to lookup the ACL token.
+     */
+    partition?: pulumi.Input<string>;
 }

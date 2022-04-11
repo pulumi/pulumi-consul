@@ -80,6 +80,10 @@ export class AclRole extends pulumi.CustomResource {
      */
     public readonly nodeIdentities!: pulumi.Output<outputs.AclRoleNodeIdentity[] | undefined>;
     /**
+     * The partition the ACL role is associated with.
+     */
+    public readonly partition!: pulumi.Output<string | undefined>;
+    /**
      * The list of policies that should be applied to the role.
      */
     public readonly policies!: pulumi.Output<string[] | undefined>;
@@ -105,6 +109,7 @@ export class AclRole extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["namespace"] = state ? state.namespace : undefined;
             resourceInputs["nodeIdentities"] = state ? state.nodeIdentities : undefined;
+            resourceInputs["partition"] = state ? state.partition : undefined;
             resourceInputs["policies"] = state ? state.policies : undefined;
             resourceInputs["serviceIdentities"] = state ? state.serviceIdentities : undefined;
         } else {
@@ -113,6 +118,7 @@ export class AclRole extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["namespace"] = args ? args.namespace : undefined;
             resourceInputs["nodeIdentities"] = args ? args.nodeIdentities : undefined;
+            resourceInputs["partition"] = args ? args.partition : undefined;
             resourceInputs["policies"] = args ? args.policies : undefined;
             resourceInputs["serviceIdentities"] = args ? args.serviceIdentities : undefined;
         }
@@ -141,6 +147,10 @@ export interface AclRoleState {
      * The list of node identities that should be applied to the role.
      */
     nodeIdentities?: pulumi.Input<pulumi.Input<inputs.AclRoleNodeIdentity>[]>;
+    /**
+     * The partition the ACL role is associated with.
+     */
+    partition?: pulumi.Input<string>;
     /**
      * The list of policies that should be applied to the role.
      */
@@ -171,6 +181,10 @@ export interface AclRoleArgs {
      * The list of node identities that should be applied to the role.
      */
     nodeIdentities?: pulumi.Input<pulumi.Input<inputs.AclRoleNodeIdentity>[]>;
+    /**
+     * The partition the ACL role is associated with.
+     */
+    partition?: pulumi.Input<string>;
     /**
      * The list of policies that should be applied to the role.
      */

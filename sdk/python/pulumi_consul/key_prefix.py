@@ -18,6 +18,7 @@ class KeyPrefixArgs:
                  path_prefix: pulumi.Input[str],
                  datacenter: Optional[pulumi.Input[str]] = None,
                  namespace: Optional[pulumi.Input[str]] = None,
+                 partition: Optional[pulumi.Input[str]] = None,
                  subkey_collection: Optional[pulumi.Input[Sequence[pulumi.Input['KeyPrefixSubkeyCollectionArgs']]]] = None,
                  subkeys: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  token: Optional[pulumi.Input[str]] = None):
@@ -29,6 +30,7 @@ class KeyPrefixArgs:
         :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the
                agent's default datacenter and the datacenter in the provider setup.
         :param pulumi.Input[str] namespace: The namespace to create the keys within.
+        :param pulumi.Input[str] partition: The admin partition to create the keys within.
         :param pulumi.Input[Sequence[pulumi.Input['KeyPrefixSubkeyCollectionArgs']]] subkey_collection: A subkey to add. Supported values documented below.
                Multiple blocks supported.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] subkeys: A mapping from subkey name (which will be appended
@@ -43,6 +45,8 @@ class KeyPrefixArgs:
             pulumi.set(__self__, "datacenter", datacenter)
         if namespace is not None:
             pulumi.set(__self__, "namespace", namespace)
+        if partition is not None:
+            pulumi.set(__self__, "partition", partition)
         if subkey_collection is not None:
             pulumi.set(__self__, "subkey_collection", subkey_collection)
         if subkeys is not None:
@@ -88,6 +92,18 @@ class KeyPrefixArgs:
     @namespace.setter
     def namespace(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "namespace", value)
+
+    @property
+    @pulumi.getter
+    def partition(self) -> Optional[pulumi.Input[str]]:
+        """
+        The admin partition to create the keys within.
+        """
+        return pulumi.get(self, "partition")
+
+    @partition.setter
+    def partition(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "partition", value)
 
     @property
     @pulumi.getter(name="subkeyCollection")
@@ -136,6 +152,7 @@ class _KeyPrefixState:
     def __init__(__self__, *,
                  datacenter: Optional[pulumi.Input[str]] = None,
                  namespace: Optional[pulumi.Input[str]] = None,
+                 partition: Optional[pulumi.Input[str]] = None,
                  path_prefix: Optional[pulumi.Input[str]] = None,
                  subkey_collection: Optional[pulumi.Input[Sequence[pulumi.Input['KeyPrefixSubkeyCollectionArgs']]]] = None,
                  subkeys: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -145,6 +162,7 @@ class _KeyPrefixState:
         :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the
                agent's default datacenter and the datacenter in the provider setup.
         :param pulumi.Input[str] namespace: The namespace to create the keys within.
+        :param pulumi.Input[str] partition: The admin partition to create the keys within.
         :param pulumi.Input[str] path_prefix: Specifies the common prefix shared by all keys
                that will be managed by this resource instance. In most cases this will
                end with a slash, to manage a "folder" of keys.
@@ -161,6 +179,8 @@ class _KeyPrefixState:
             pulumi.set(__self__, "datacenter", datacenter)
         if namespace is not None:
             pulumi.set(__self__, "namespace", namespace)
+        if partition is not None:
+            pulumi.set(__self__, "partition", partition)
         if path_prefix is not None:
             pulumi.set(__self__, "path_prefix", path_prefix)
         if subkey_collection is not None:
@@ -194,6 +214,18 @@ class _KeyPrefixState:
     @namespace.setter
     def namespace(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "namespace", value)
+
+    @property
+    @pulumi.getter
+    def partition(self) -> Optional[pulumi.Input[str]]:
+        """
+        The admin partition to create the keys within.
+        """
+        return pulumi.get(self, "partition")
+
+    @partition.setter
+    def partition(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "partition", value)
 
     @property
     @pulumi.getter(name="pathPrefix")
@@ -258,6 +290,7 @@ class KeyPrefix(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  datacenter: Optional[pulumi.Input[str]] = None,
                  namespace: Optional[pulumi.Input[str]] = None,
+                 partition: Optional[pulumi.Input[str]] = None,
                  path_prefix: Optional[pulumi.Input[str]] = None,
                  subkey_collection: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KeyPrefixSubkeyCollectionArgs']]]]] = None,
                  subkeys: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -302,6 +335,7 @@ class KeyPrefix(pulumi.CustomResource):
         :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the
                agent's default datacenter and the datacenter in the provider setup.
         :param pulumi.Input[str] namespace: The namespace to create the keys within.
+        :param pulumi.Input[str] partition: The admin partition to create the keys within.
         :param pulumi.Input[str] path_prefix: Specifies the common prefix shared by all keys
                that will be managed by this resource instance. In most cases this will
                end with a slash, to manage a "folder" of keys.
@@ -371,6 +405,7 @@ class KeyPrefix(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  datacenter: Optional[pulumi.Input[str]] = None,
                  namespace: Optional[pulumi.Input[str]] = None,
+                 partition: Optional[pulumi.Input[str]] = None,
                  path_prefix: Optional[pulumi.Input[str]] = None,
                  subkey_collection: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KeyPrefixSubkeyCollectionArgs']]]]] = None,
                  subkeys: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -389,6 +424,7 @@ class KeyPrefix(pulumi.CustomResource):
 
             __props__.__dict__["datacenter"] = datacenter
             __props__.__dict__["namespace"] = namespace
+            __props__.__dict__["partition"] = partition
             if path_prefix is None and not opts.urn:
                 raise TypeError("Missing required property 'path_prefix'")
             __props__.__dict__["path_prefix"] = path_prefix
@@ -407,6 +443,7 @@ class KeyPrefix(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             datacenter: Optional[pulumi.Input[str]] = None,
             namespace: Optional[pulumi.Input[str]] = None,
+            partition: Optional[pulumi.Input[str]] = None,
             path_prefix: Optional[pulumi.Input[str]] = None,
             subkey_collection: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KeyPrefixSubkeyCollectionArgs']]]]] = None,
             subkeys: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -421,6 +458,7 @@ class KeyPrefix(pulumi.CustomResource):
         :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the
                agent's default datacenter and the datacenter in the provider setup.
         :param pulumi.Input[str] namespace: The namespace to create the keys within.
+        :param pulumi.Input[str] partition: The admin partition to create the keys within.
         :param pulumi.Input[str] path_prefix: Specifies the common prefix shared by all keys
                that will be managed by this resource instance. In most cases this will
                end with a slash, to manage a "folder" of keys.
@@ -439,6 +477,7 @@ class KeyPrefix(pulumi.CustomResource):
 
         __props__.__dict__["datacenter"] = datacenter
         __props__.__dict__["namespace"] = namespace
+        __props__.__dict__["partition"] = partition
         __props__.__dict__["path_prefix"] = path_prefix
         __props__.__dict__["subkey_collection"] = subkey_collection
         __props__.__dict__["subkeys"] = subkeys
@@ -461,6 +500,14 @@ class KeyPrefix(pulumi.CustomResource):
         The namespace to create the keys within.
         """
         return pulumi.get(self, "namespace")
+
+    @property
+    @pulumi.getter
+    def partition(self) -> pulumi.Output[Optional[str]]:
+        """
+        The admin partition to create the keys within.
+        """
+        return pulumi.get(self, "partition")
 
     @property
     @pulumi.getter(name="pathPrefix")

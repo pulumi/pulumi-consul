@@ -131,6 +131,12 @@ namespace Pulumi.Consul
         public Output<ImmutableArray<Outputs.AclAuthMethodNamespaceRule>> NamespaceRules { get; private set; } = null!;
 
         /// <summary>
+        /// The partition the ACL auth method is associated with.
+        /// </summary>
+        [Output("partition")]
+        public Output<string?> Partition { get; private set; } = null!;
+
+        /// <summary>
         /// The kind of token that this auth method
         /// produces. This can be either 'local' or 'global'.
         /// </summary>
@@ -256,6 +262,12 @@ namespace Pulumi.Consul
         }
 
         /// <summary>
+        /// The partition the ACL auth method is associated with.
+        /// </summary>
+        [Input("partition")]
+        public Input<string>? Partition { get; set; }
+
+        /// <summary>
         /// The kind of token that this auth method
         /// produces. This can be either 'local' or 'global'.
         /// </summary>
@@ -340,6 +352,12 @@ namespace Pulumi.Consul
             get => _namespaceRules ?? (_namespaceRules = new InputList<Inputs.AclAuthMethodNamespaceRuleGetArgs>());
             set => _namespaceRules = value;
         }
+
+        /// <summary>
+        /// The partition the ACL auth method is associated with.
+        /// </summary>
+        [Input("partition")]
+        public Input<string>? Partition { get; set; }
 
         /// <summary>
         /// The kind of token that this auth method

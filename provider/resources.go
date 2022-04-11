@@ -144,6 +144,7 @@ func Provider() tfbridge.ProviderInfo {
 			"consul_namespace_role_attachment":   {Tok: makeResource(mainMod, "NamespaceRoleAttachment")},
 			"consul_network_area":                {Tok: makeResource(mainMod, "NetworkArea")},
 			"consul_certificate_authority":       {Tok: makeResource(mainMod, "CertificateAuthority")},
+			"consul_admin_partition":             {Tok: makeResource(mainMod, "AdminPartition")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"consul_acl_auth_method":     {Tok: makeDataSource(mainMod, "getAclAuthMethod")},
@@ -172,6 +173,7 @@ func Provider() tfbridge.ProviderInfo {
 			"consul_services":             {Tok: makeDataSource(mainMod, "getServices")},
 			"consul_network_area_members": {Tok: makeDataSource(mainMod, "getNetworkAreaMembers")},
 			"consul_network_segments":     {Tok: makeDataSource(mainMod, "getNetworkSegments")},
+			"consul_datacenters":		   {Tok: makeDataSource(mainMod, "getDatacenters")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{

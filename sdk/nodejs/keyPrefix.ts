@@ -79,6 +79,10 @@ export class KeyPrefix extends pulumi.CustomResource {
      */
     public readonly namespace!: pulumi.Output<string | undefined>;
     /**
+     * The admin partition to create the keys within.
+     */
+    public readonly partition!: pulumi.Output<string | undefined>;
+    /**
      * Specifies the common prefix shared by all keys
      * that will be managed by this resource instance. In most cases this will
      * end with a slash, to manage a "folder" of keys.
@@ -117,6 +121,7 @@ export class KeyPrefix extends pulumi.CustomResource {
             const state = argsOrState as KeyPrefixState | undefined;
             resourceInputs["datacenter"] = state ? state.datacenter : undefined;
             resourceInputs["namespace"] = state ? state.namespace : undefined;
+            resourceInputs["partition"] = state ? state.partition : undefined;
             resourceInputs["pathPrefix"] = state ? state.pathPrefix : undefined;
             resourceInputs["subkeyCollection"] = state ? state.subkeyCollection : undefined;
             resourceInputs["subkeys"] = state ? state.subkeys : undefined;
@@ -128,6 +133,7 @@ export class KeyPrefix extends pulumi.CustomResource {
             }
             resourceInputs["datacenter"] = args ? args.datacenter : undefined;
             resourceInputs["namespace"] = args ? args.namespace : undefined;
+            resourceInputs["partition"] = args ? args.partition : undefined;
             resourceInputs["pathPrefix"] = args ? args.pathPrefix : undefined;
             resourceInputs["subkeyCollection"] = args ? args.subkeyCollection : undefined;
             resourceInputs["subkeys"] = args ? args.subkeys : undefined;
@@ -151,6 +157,10 @@ export interface KeyPrefixState {
      * The namespace to create the keys within.
      */
     namespace?: pulumi.Input<string>;
+    /**
+     * The admin partition to create the keys within.
+     */
+    partition?: pulumi.Input<string>;
     /**
      * Specifies the common prefix shared by all keys
      * that will be managed by this resource instance. In most cases this will
@@ -189,6 +199,10 @@ export interface KeyPrefixArgs {
      * The namespace to create the keys within.
      */
     namespace?: pulumi.Input<string>;
+    /**
+     * The admin partition to create the keys within.
+     */
+    partition?: pulumi.Input<string>;
     /**
      * Specifies the common prefix shared by all keys
      * that will be managed by this resource instance. In most cases this will

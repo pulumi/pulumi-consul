@@ -27,11 +27,9 @@ export function getAclPolicy(args: GetAclPolicyArgs, opts?: pulumi.InvokeOptions
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("consul:index/getAclPolicy:getAclPolicy", {
-        "datacenters": args.datacenters,
-        "description": args.description,
         "name": args.name,
         "namespace": args.namespace,
-        "rules": args.rules,
+        "partition": args.partition,
     }, opts);
 }
 
@@ -39,14 +37,6 @@ export function getAclPolicy(args: GetAclPolicyArgs, opts?: pulumi.InvokeOptions
  * A collection of arguments for invoking getAclPolicy.
  */
 export interface GetAclPolicyArgs {
-    /**
-     * The datacenters associated with the ACL Policy.
-     */
-    datacenters?: string[];
-    /**
-     * The description of the ACL Policy.
-     */
-    description?: string;
     /**
      * The name of the ACL Policy.
      */
@@ -56,9 +46,9 @@ export interface GetAclPolicyArgs {
      */
     namespace?: string;
     /**
-     * The rules associated with the ACL Policy.
+     * The partition to lookup the policy.
      */
-    rules?: string;
+    partition?: string;
 }
 
 /**
@@ -68,21 +58,22 @@ export interface GetAclPolicyResult {
     /**
      * The datacenters associated with the ACL Policy.
      */
-    readonly datacenters?: string[];
+    readonly datacenters: string[];
     /**
      * The description of the ACL Policy.
      */
-    readonly description?: string;
+    readonly description: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly name: string;
     readonly namespace?: string;
+    readonly partition?: string;
     /**
      * The rules associated with the ACL Policy.
      */
-    readonly rules?: string;
+    readonly rules: string;
 }
 
 export function getAclPolicyOutput(args: GetAclPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAclPolicyResult> {
@@ -94,14 +85,6 @@ export function getAclPolicyOutput(args: GetAclPolicyOutputArgs, opts?: pulumi.I
  */
 export interface GetAclPolicyOutputArgs {
     /**
-     * The datacenters associated with the ACL Policy.
-     */
-    datacenters?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The description of the ACL Policy.
-     */
-    description?: pulumi.Input<string>;
-    /**
      * The name of the ACL Policy.
      */
     name: pulumi.Input<string>;
@@ -110,7 +93,7 @@ export interface GetAclPolicyOutputArgs {
      */
     namespace?: pulumi.Input<string>;
     /**
-     * The rules associated with the ACL Policy.
+     * The partition to lookup the policy.
      */
-    rules?: pulumi.Input<string>;
+    partition?: pulumi.Input<string>;
 }

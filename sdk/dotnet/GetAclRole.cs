@@ -93,6 +93,12 @@ namespace Pulumi.Consul
         [Input("namespace")]
         public string? Namespace { get; set; }
 
+        /// <summary>
+        /// The partition to lookup the role.
+        /// </summary>
+        [Input("partition")]
+        public string? Partition { get; set; }
+
         public GetAclRoleArgs()
         {
         }
@@ -111,6 +117,12 @@ namespace Pulumi.Consul
         /// </summary>
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }
+
+        /// <summary>
+        /// The partition to lookup the role.
+        /// </summary>
+        [Input("partition")]
+        public Input<string>? Partition { get; set; }
 
         public GetAclRoleInvokeArgs()
         {
@@ -141,6 +153,7 @@ namespace Pulumi.Consul
         /// The list of node identities associated with the ACL Role. Each entry has a `node_name` and a `datacenter` attributes.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAclRoleNodeIdentityResult> NodeIdentities;
+        public readonly string? Partition;
         /// <summary>
         /// The list of policies associated with the ACL Role. Each entry has an `id` and a `name` attribute.
         /// </summary>
@@ -162,6 +175,8 @@ namespace Pulumi.Consul
 
             ImmutableArray<Outputs.GetAclRoleNodeIdentityResult> nodeIdentities,
 
+            string? partition,
+
             ImmutableArray<Outputs.GetAclRolePolicyResult> policies,
 
             ImmutableArray<Outputs.GetAclRoleServiceIdentityResult> serviceIdentities)
@@ -171,6 +186,7 @@ namespace Pulumi.Consul
             Name = name;
             Namespace = @namespace;
             NodeIdentities = nodeIdentities;
+            Partition = partition;
             Policies = policies;
             ServiceIdentities = serviceIdentities;
         }

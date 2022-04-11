@@ -83,24 +83,6 @@ namespace Pulumi.Consul
 
     public sealed class GetAclPolicyArgs : Pulumi.InvokeArgs
     {
-        [Input("datacenters")]
-        private List<string>? _datacenters;
-
-        /// <summary>
-        /// The datacenters associated with the ACL Policy.
-        /// </summary>
-        public List<string> Datacenters
-        {
-            get => _datacenters ?? (_datacenters = new List<string>());
-            set => _datacenters = value;
-        }
-
-        /// <summary>
-        /// The description of the ACL Policy.
-        /// </summary>
-        [Input("description")]
-        public string? Description { get; set; }
-
         /// <summary>
         /// The name of the ACL Policy.
         /// </summary>
@@ -114,10 +96,10 @@ namespace Pulumi.Consul
         public string? Namespace { get; set; }
 
         /// <summary>
-        /// The rules associated with the ACL Policy.
+        /// The partition to lookup the policy.
         /// </summary>
-        [Input("rules")]
-        public string? Rules { get; set; }
+        [Input("partition")]
+        public string? Partition { get; set; }
 
         public GetAclPolicyArgs()
         {
@@ -126,24 +108,6 @@ namespace Pulumi.Consul
 
     public sealed class GetAclPolicyInvokeArgs : Pulumi.InvokeArgs
     {
-        [Input("datacenters")]
-        private InputList<string>? _datacenters;
-
-        /// <summary>
-        /// The datacenters associated with the ACL Policy.
-        /// </summary>
-        public InputList<string> Datacenters
-        {
-            get => _datacenters ?? (_datacenters = new InputList<string>());
-            set => _datacenters = value;
-        }
-
-        /// <summary>
-        /// The description of the ACL Policy.
-        /// </summary>
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
         /// <summary>
         /// The name of the ACL Policy.
         /// </summary>
@@ -157,10 +121,10 @@ namespace Pulumi.Consul
         public Input<string>? Namespace { get; set; }
 
         /// <summary>
-        /// The rules associated with the ACL Policy.
+        /// The partition to lookup the policy.
         /// </summary>
-        [Input("rules")]
-        public Input<string>? Rules { get; set; }
+        [Input("partition")]
+        public Input<string>? Partition { get; set; }
 
         public GetAclPolicyInvokeArgs()
         {
@@ -178,23 +142,24 @@ namespace Pulumi.Consul
         /// <summary>
         /// The description of the ACL Policy.
         /// </summary>
-        public readonly string? Description;
+        public readonly string Description;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly string Name;
         public readonly string? Namespace;
+        public readonly string? Partition;
         /// <summary>
         /// The rules associated with the ACL Policy.
         /// </summary>
-        public readonly string? Rules;
+        public readonly string Rules;
 
         [OutputConstructor]
         private GetAclPolicyResult(
             ImmutableArray<string> datacenters,
 
-            string? description,
+            string description,
 
             string id,
 
@@ -202,13 +167,16 @@ namespace Pulumi.Consul
 
             string? @namespace,
 
-            string? rules)
+            string? partition,
+
+            string rules)
         {
             Datacenters = datacenters;
             Description = description;
             Id = id;
             Name = name;
             Namespace = @namespace;
+            Partition = partition;
             Rules = rules;
         }
     }

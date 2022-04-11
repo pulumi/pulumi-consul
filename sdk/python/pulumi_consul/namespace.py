@@ -16,18 +16,17 @@ class NamespaceArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 partition: Optional[pulumi.Input[str]] = None,
                  policy_defaults: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  role_defaults: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Namespace resource.
         :param pulumi.Input[str] description: Free form namespace description.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: Specifies arbitrary KV metadata to associate with the
-               namespace.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: Specifies arbitrary KV metadata to associate with the namespace.
         :param pulumi.Input[str] name: The namespace name.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] policy_defaults: The list of default policies that should be
-               applied to all tokens created in this namespace.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] role_defaults: The list of default roles that should be applied
-               to all tokens created in this namespace.
+        :param pulumi.Input[str] partition: The partition to create the namespace within.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] policy_defaults: The list of default policies that should be applied to all tokens created in this namespace.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] role_defaults: The list of default roles that should be applied to all tokens created in this namespace.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -35,6 +34,8 @@ class NamespaceArgs:
             pulumi.set(__self__, "meta", meta)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if partition is not None:
+            pulumi.set(__self__, "partition", partition)
         if policy_defaults is not None:
             pulumi.set(__self__, "policy_defaults", policy_defaults)
         if role_defaults is not None:
@@ -56,8 +57,7 @@ class NamespaceArgs:
     @pulumi.getter
     def meta(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Specifies arbitrary KV metadata to associate with the
-        namespace.
+        Specifies arbitrary KV metadata to associate with the namespace.
         """
         return pulumi.get(self, "meta")
 
@@ -78,11 +78,22 @@ class NamespaceArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter
+    def partition(self) -> Optional[pulumi.Input[str]]:
+        """
+        The partition to create the namespace within.
+        """
+        return pulumi.get(self, "partition")
+
+    @partition.setter
+    def partition(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "partition", value)
+
+    @property
     @pulumi.getter(name="policyDefaults")
     def policy_defaults(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The list of default policies that should be
-        applied to all tokens created in this namespace.
+        The list of default policies that should be applied to all tokens created in this namespace.
         """
         return pulumi.get(self, "policy_defaults")
 
@@ -94,8 +105,7 @@ class NamespaceArgs:
     @pulumi.getter(name="roleDefaults")
     def role_defaults(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The list of default roles that should be applied
-        to all tokens created in this namespace.
+        The list of default roles that should be applied to all tokens created in this namespace.
         """
         return pulumi.get(self, "role_defaults")
 
@@ -110,18 +120,17 @@ class _NamespaceState:
                  description: Optional[pulumi.Input[str]] = None,
                  meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 partition: Optional[pulumi.Input[str]] = None,
                  policy_defaults: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  role_defaults: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Namespace resources.
         :param pulumi.Input[str] description: Free form namespace description.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: Specifies arbitrary KV metadata to associate with the
-               namespace.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: Specifies arbitrary KV metadata to associate with the namespace.
         :param pulumi.Input[str] name: The namespace name.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] policy_defaults: The list of default policies that should be
-               applied to all tokens created in this namespace.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] role_defaults: The list of default roles that should be applied
-               to all tokens created in this namespace.
+        :param pulumi.Input[str] partition: The partition to create the namespace within.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] policy_defaults: The list of default policies that should be applied to all tokens created in this namespace.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] role_defaults: The list of default roles that should be applied to all tokens created in this namespace.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -129,6 +138,8 @@ class _NamespaceState:
             pulumi.set(__self__, "meta", meta)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if partition is not None:
+            pulumi.set(__self__, "partition", partition)
         if policy_defaults is not None:
             pulumi.set(__self__, "policy_defaults", policy_defaults)
         if role_defaults is not None:
@@ -150,8 +161,7 @@ class _NamespaceState:
     @pulumi.getter
     def meta(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Specifies arbitrary KV metadata to associate with the
-        namespace.
+        Specifies arbitrary KV metadata to associate with the namespace.
         """
         return pulumi.get(self, "meta")
 
@@ -172,11 +182,22 @@ class _NamespaceState:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter
+    def partition(self) -> Optional[pulumi.Input[str]]:
+        """
+        The partition to create the namespace within.
+        """
+        return pulumi.get(self, "partition")
+
+    @partition.setter
+    def partition(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "partition", value)
+
+    @property
     @pulumi.getter(name="policyDefaults")
     def policy_defaults(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The list of default policies that should be
-        applied to all tokens created in this namespace.
+        The list of default policies that should be applied to all tokens created in this namespace.
         """
         return pulumi.get(self, "policy_defaults")
 
@@ -188,8 +209,7 @@ class _NamespaceState:
     @pulumi.getter(name="roleDefaults")
     def role_defaults(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The list of default roles that should be applied
-        to all tokens created in this namespace.
+        The list of default roles that should be applied to all tokens created in this namespace.
         """
         return pulumi.get(self, "role_defaults")
 
@@ -206,6 +226,7 @@ class Namespace(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 partition: Optional[pulumi.Input[str]] = None,
                  policy_defaults: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  role_defaults: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
@@ -238,13 +259,11 @@ class Namespace(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Free form namespace description.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: Specifies arbitrary KV metadata to associate with the
-               namespace.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: Specifies arbitrary KV metadata to associate with the namespace.
         :param pulumi.Input[str] name: The namespace name.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] policy_defaults: The list of default policies that should be
-               applied to all tokens created in this namespace.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] role_defaults: The list of default roles that should be applied
-               to all tokens created in this namespace.
+        :param pulumi.Input[str] partition: The partition to create the namespace within.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] policy_defaults: The list of default policies that should be applied to all tokens created in this namespace.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] role_defaults: The list of default roles that should be applied to all tokens created in this namespace.
         """
         ...
     @overload
@@ -296,6 +315,7 @@ class Namespace(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 partition: Optional[pulumi.Input[str]] = None,
                  policy_defaults: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  role_defaults: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
@@ -313,6 +333,7 @@ class Namespace(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["meta"] = meta
             __props__.__dict__["name"] = name
+            __props__.__dict__["partition"] = partition
             __props__.__dict__["policy_defaults"] = policy_defaults
             __props__.__dict__["role_defaults"] = role_defaults
         super(Namespace, __self__).__init__(
@@ -328,6 +349,7 @@ class Namespace(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            partition: Optional[pulumi.Input[str]] = None,
             policy_defaults: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             role_defaults: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'Namespace':
         """
@@ -338,13 +360,11 @@ class Namespace(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Free form namespace description.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: Specifies arbitrary KV metadata to associate with the
-               namespace.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: Specifies arbitrary KV metadata to associate with the namespace.
         :param pulumi.Input[str] name: The namespace name.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] policy_defaults: The list of default policies that should be
-               applied to all tokens created in this namespace.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] role_defaults: The list of default roles that should be applied
-               to all tokens created in this namespace.
+        :param pulumi.Input[str] partition: The partition to create the namespace within.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] policy_defaults: The list of default policies that should be applied to all tokens created in this namespace.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] role_defaults: The list of default roles that should be applied to all tokens created in this namespace.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -353,6 +373,7 @@ class Namespace(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["meta"] = meta
         __props__.__dict__["name"] = name
+        __props__.__dict__["partition"] = partition
         __props__.__dict__["policy_defaults"] = policy_defaults
         __props__.__dict__["role_defaults"] = role_defaults
         return Namespace(resource_name, opts=opts, __props__=__props__)
@@ -369,8 +390,7 @@ class Namespace(pulumi.CustomResource):
     @pulumi.getter
     def meta(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        Specifies arbitrary KV metadata to associate with the
-        namespace.
+        Specifies arbitrary KV metadata to associate with the namespace.
         """
         return pulumi.get(self, "meta")
 
@@ -383,11 +403,18 @@ class Namespace(pulumi.CustomResource):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter
+    def partition(self) -> pulumi.Output[Optional[str]]:
+        """
+        The partition to create the namespace within.
+        """
+        return pulumi.get(self, "partition")
+
+    @property
     @pulumi.getter(name="policyDefaults")
     def policy_defaults(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        The list of default policies that should be
-        applied to all tokens created in this namespace.
+        The list of default policies that should be applied to all tokens created in this namespace.
         """
         return pulumi.get(self, "policy_defaults")
 
@@ -395,8 +422,7 @@ class Namespace(pulumi.CustomResource):
     @pulumi.getter(name="roleDefaults")
     def role_defaults(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        The list of default roles that should be applied
-        to all tokens created in this namespace.
+        The list of default roles that should be applied to all tokens created in this namespace.
         """
         return pulumi.get(self, "role_defaults")
 

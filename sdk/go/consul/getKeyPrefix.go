@@ -92,8 +92,10 @@ type LookupKeyPrefixArgs struct {
 	// The datacenter to use. This overrides the
 	// agent's default datacenter and the datacenter in the provider setup.
 	Datacenter *string `pulumi:"datacenter"`
-	// The namespace to create the keys within.
+	// The namespace to lookup the keys within.
 	Namespace *string `pulumi:"namespace"`
+	// The namespace to lookup the keys within.
+	Partition *string `pulumi:"partition"`
 	// Specifies the common prefix shared by all keys
 	// that will be read by this data source instance. In most cases, this will
 	// end with a slash to read a "folder" of subkeys.
@@ -113,6 +115,7 @@ type LookupKeyPrefixResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id        string  `pulumi:"id"`
 	Namespace *string `pulumi:"namespace"`
+	Partition *string `pulumi:"partition"`
 	// the common prefix shared by all keys being read.
 	// * `var.<name>` - For each name given, the corresponding attribute
 	//   has the value of the key.
@@ -139,8 +142,10 @@ type LookupKeyPrefixOutputArgs struct {
 	// The datacenter to use. This overrides the
 	// agent's default datacenter and the datacenter in the provider setup.
 	Datacenter pulumi.StringPtrInput `pulumi:"datacenter"`
-	// The namespace to create the keys within.
+	// The namespace to lookup the keys within.
 	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	// The namespace to lookup the keys within.
+	Partition pulumi.StringPtrInput `pulumi:"partition"`
 	// Specifies the common prefix shared by all keys
 	// that will be read by this data source instance. In most cases, this will
 	// end with a slash to read a "folder" of subkeys.
@@ -184,6 +189,10 @@ func (o LookupKeyPrefixResultOutput) Id() pulumi.StringOutput {
 
 func (o LookupKeyPrefixResultOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupKeyPrefixResult) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupKeyPrefixResultOutput) Partition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupKeyPrefixResult) *string { return v.Partition }).(pulumi.StringPtrOutput)
 }
 
 // the common prefix shared by all keys being read.

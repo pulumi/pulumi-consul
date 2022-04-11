@@ -66,6 +66,8 @@ type KeyPrefix struct {
 	Datacenter pulumi.StringOutput `pulumi:"datacenter"`
 	// The namespace to create the keys within.
 	Namespace pulumi.StringPtrOutput `pulumi:"namespace"`
+	// The admin partition to create the keys within.
+	Partition pulumi.StringPtrOutput `pulumi:"partition"`
 	// Specifies the common prefix shared by all keys
 	// that will be managed by this resource instance. In most cases this will
 	// end with a slash, to manage a "folder" of keys.
@@ -120,6 +122,8 @@ type keyPrefixState struct {
 	Datacenter *string `pulumi:"datacenter"`
 	// The namespace to create the keys within.
 	Namespace *string `pulumi:"namespace"`
+	// The admin partition to create the keys within.
+	Partition *string `pulumi:"partition"`
 	// Specifies the common prefix shared by all keys
 	// that will be managed by this resource instance. In most cases this will
 	// end with a slash, to manage a "folder" of keys.
@@ -143,6 +147,8 @@ type KeyPrefixState struct {
 	Datacenter pulumi.StringPtrInput
 	// The namespace to create the keys within.
 	Namespace pulumi.StringPtrInput
+	// The admin partition to create the keys within.
+	Partition pulumi.StringPtrInput
 	// Specifies the common prefix shared by all keys
 	// that will be managed by this resource instance. In most cases this will
 	// end with a slash, to manage a "folder" of keys.
@@ -170,6 +176,8 @@ type keyPrefixArgs struct {
 	Datacenter *string `pulumi:"datacenter"`
 	// The namespace to create the keys within.
 	Namespace *string `pulumi:"namespace"`
+	// The admin partition to create the keys within.
+	Partition *string `pulumi:"partition"`
 	// Specifies the common prefix shared by all keys
 	// that will be managed by this resource instance. In most cases this will
 	// end with a slash, to manage a "folder" of keys.
@@ -194,6 +202,8 @@ type KeyPrefixArgs struct {
 	Datacenter pulumi.StringPtrInput
 	// The namespace to create the keys within.
 	Namespace pulumi.StringPtrInput
+	// The admin partition to create the keys within.
+	Partition pulumi.StringPtrInput
 	// Specifies the common prefix shared by all keys
 	// that will be managed by this resource instance. In most cases this will
 	// end with a slash, to manage a "folder" of keys.

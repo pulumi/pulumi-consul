@@ -2975,6 +2975,7 @@ type GetCatalogNodesQueryOption struct {
 	Datacenter        *string           `pulumi:"datacenter"`
 	Near              *string           `pulumi:"near"`
 	NodeMeta          map[string]string `pulumi:"nodeMeta"`
+	Partition         *string           `pulumi:"partition"`
 	RequireConsistent *bool             `pulumi:"requireConsistent"`
 	Token             *string           `pulumi:"token"`
 	WaitIndex         *int              `pulumi:"waitIndex"`
@@ -2997,6 +2998,7 @@ type GetCatalogNodesQueryOptionArgs struct {
 	Datacenter        pulumi.StringPtrInput `pulumi:"datacenter"`
 	Near              pulumi.StringPtrInput `pulumi:"near"`
 	NodeMeta          pulumi.StringMapInput `pulumi:"nodeMeta"`
+	Partition         pulumi.StringPtrInput `pulumi:"partition"`
 	RequireConsistent pulumi.BoolPtrInput   `pulumi:"requireConsistent"`
 	Token             pulumi.StringPtrInput `pulumi:"token"`
 	WaitIndex         pulumi.IntPtrInput    `pulumi:"waitIndex"`
@@ -3070,6 +3072,10 @@ func (o GetCatalogNodesQueryOptionOutput) NodeMeta() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetCatalogNodesQueryOption) map[string]string { return v.NodeMeta }).(pulumi.StringMapOutput)
 }
 
+func (o GetCatalogNodesQueryOptionOutput) Partition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCatalogNodesQueryOption) *string { return v.Partition }).(pulumi.StringPtrOutput)
+}
+
 func (o GetCatalogNodesQueryOptionOutput) RequireConsistent() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetCatalogNodesQueryOption) *bool { return v.RequireConsistent }).(pulumi.BoolPtrOutput)
 }
@@ -3112,6 +3118,7 @@ type GetCatalogServiceQueryOption struct {
 	Namespace         *string           `pulumi:"namespace"`
 	Near              *string           `pulumi:"near"`
 	NodeMeta          map[string]string `pulumi:"nodeMeta"`
+	Partition         *string           `pulumi:"partition"`
 	RequireConsistent *bool             `pulumi:"requireConsistent"`
 	Token             *string           `pulumi:"token"`
 	WaitIndex         *int              `pulumi:"waitIndex"`
@@ -3135,6 +3142,7 @@ type GetCatalogServiceQueryOptionArgs struct {
 	Namespace         pulumi.StringPtrInput `pulumi:"namespace"`
 	Near              pulumi.StringPtrInput `pulumi:"near"`
 	NodeMeta          pulumi.StringMapInput `pulumi:"nodeMeta"`
+	Partition         pulumi.StringPtrInput `pulumi:"partition"`
 	RequireConsistent pulumi.BoolPtrInput   `pulumi:"requireConsistent"`
 	Token             pulumi.StringPtrInput `pulumi:"token"`
 	WaitIndex         pulumi.IntPtrInput    `pulumi:"waitIndex"`
@@ -3210,6 +3218,10 @@ func (o GetCatalogServiceQueryOptionOutput) Near() pulumi.StringPtrOutput {
 
 func (o GetCatalogServiceQueryOptionOutput) NodeMeta() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetCatalogServiceQueryOption) map[string]string { return v.NodeMeta }).(pulumi.StringMapOutput)
+}
+
+func (o GetCatalogServiceQueryOptionOutput) Partition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCatalogServiceQueryOption) *string { return v.Partition }).(pulumi.StringPtrOutput)
 }
 
 func (o GetCatalogServiceQueryOptionOutput) RequireConsistent() pulumi.BoolPtrOutput {
@@ -3426,6 +3438,7 @@ type GetCatalogServicesQueryOption struct {
 	Namespace         *string           `pulumi:"namespace"`
 	Near              *string           `pulumi:"near"`
 	NodeMeta          map[string]string `pulumi:"nodeMeta"`
+	Partition         *string           `pulumi:"partition"`
 	RequireConsistent *bool             `pulumi:"requireConsistent"`
 	Token             *string           `pulumi:"token"`
 	WaitIndex         *int              `pulumi:"waitIndex"`
@@ -3449,6 +3462,7 @@ type GetCatalogServicesQueryOptionArgs struct {
 	Namespace         pulumi.StringPtrInput `pulumi:"namespace"`
 	Near              pulumi.StringPtrInput `pulumi:"near"`
 	NodeMeta          pulumi.StringMapInput `pulumi:"nodeMeta"`
+	Partition         pulumi.StringPtrInput `pulumi:"partition"`
 	RequireConsistent pulumi.BoolPtrInput   `pulumi:"requireConsistent"`
 	Token             pulumi.StringPtrInput `pulumi:"token"`
 	WaitIndex         pulumi.IntPtrInput    `pulumi:"waitIndex"`
@@ -3524,6 +3538,10 @@ func (o GetCatalogServicesQueryOptionOutput) Near() pulumi.StringPtrOutput {
 
 func (o GetCatalogServicesQueryOptionOutput) NodeMeta() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetCatalogServicesQueryOption) map[string]string { return v.NodeMeta }).(pulumi.StringMapOutput)
+}
+
+func (o GetCatalogServicesQueryOptionOutput) Partition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCatalogServicesQueryOption) *string { return v.Partition }).(pulumi.StringPtrOutput)
 }
 
 func (o GetCatalogServicesQueryOptionOutput) RequireConsistent() pulumi.BoolPtrOutput {
@@ -4174,6 +4192,7 @@ type GetNodesQueryOption struct {
 	Datacenter *string           `pulumi:"datacenter"`
 	Near       *string           `pulumi:"near"`
 	NodeMeta   map[string]string `pulumi:"nodeMeta"`
+	Partition  *string           `pulumi:"partition"`
 	// When `true` force the client to perform a
 	// read on at least quorum servers and verify the result is the same.  Defaults
 	// to `false`.
@@ -4211,6 +4230,7 @@ type GetNodesQueryOptionArgs struct {
 	Datacenter pulumi.StringPtrInput `pulumi:"datacenter"`
 	Near       pulumi.StringPtrInput `pulumi:"near"`
 	NodeMeta   pulumi.StringMapInput `pulumi:"nodeMeta"`
+	Partition  pulumi.StringPtrInput `pulumi:"partition"`
 	// When `true` force the client to perform a
 	// read on at least quorum servers and verify the result is the same.  Defaults
 	// to `false`.
@@ -4297,6 +4317,10 @@ func (o GetNodesQueryOptionOutput) Near() pulumi.StringPtrOutput {
 
 func (o GetNodesQueryOptionOutput) NodeMeta() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetNodesQueryOption) map[string]string { return v.NodeMeta }).(pulumi.StringMapOutput)
+}
+
+func (o GetNodesQueryOptionOutput) Partition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNodesQueryOption) *string { return v.Partition }).(pulumi.StringPtrOutput)
 }
 
 // When `true` force the client to perform a
@@ -4916,6 +4940,7 @@ type GetServiceQueryOption struct {
 	Namespace *string           `pulumi:"namespace"`
 	Near      *string           `pulumi:"near"`
 	NodeMeta  map[string]string `pulumi:"nodeMeta"`
+	Partition *string           `pulumi:"partition"`
 	// When `true` force the client to perform a
 	// read on at least quorum servers and verify the result is the same.  Defaults
 	// to `false`.
@@ -4955,6 +4980,7 @@ type GetServiceQueryOptionArgs struct {
 	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
 	Near      pulumi.StringPtrInput `pulumi:"near"`
 	NodeMeta  pulumi.StringMapInput `pulumi:"nodeMeta"`
+	Partition pulumi.StringPtrInput `pulumi:"partition"`
 	// When `true` force the client to perform a
 	// read on at least quorum servers and verify the result is the same.  Defaults
 	// to `false`.
@@ -5046,6 +5072,10 @@ func (o GetServiceQueryOptionOutput) Near() pulumi.StringPtrOutput {
 
 func (o GetServiceQueryOptionOutput) NodeMeta() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetServiceQueryOption) map[string]string { return v.NodeMeta }).(pulumi.StringMapOutput)
+}
+
+func (o GetServiceQueryOptionOutput) Partition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceQueryOption) *string { return v.Partition }).(pulumi.StringPtrOutput)
 }
 
 // When `true` force the client to perform a
@@ -5350,6 +5380,7 @@ type GetServicesQueryOption struct {
 	Namespace *string           `pulumi:"namespace"`
 	Near      *string           `pulumi:"near"`
 	NodeMeta  map[string]string `pulumi:"nodeMeta"`
+	Partition *string           `pulumi:"partition"`
 	// When `true` force the client to perform a
 	// read on at least quorum servers and verify the result is the same.  Defaults
 	// to `false`.
@@ -5389,6 +5420,7 @@ type GetServicesQueryOptionArgs struct {
 	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
 	Near      pulumi.StringPtrInput `pulumi:"near"`
 	NodeMeta  pulumi.StringMapInput `pulumi:"nodeMeta"`
+	Partition pulumi.StringPtrInput `pulumi:"partition"`
 	// When `true` force the client to perform a
 	// read on at least quorum servers and verify the result is the same.  Defaults
 	// to `false`.
@@ -5480,6 +5512,10 @@ func (o GetServicesQueryOptionOutput) Near() pulumi.StringPtrOutput {
 
 func (o GetServicesQueryOptionOutput) NodeMeta() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetServicesQueryOption) map[string]string { return v.NodeMeta }).(pulumi.StringMapOutput)
+}
+
+func (o GetServicesQueryOptionOutput) Partition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicesQueryOption) *string { return v.Partition }).(pulumi.StringPtrOutput)
 }
 
 // When `true` force the client to perform a

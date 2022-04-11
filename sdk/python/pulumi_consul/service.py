@@ -24,6 +24,7 @@ class ServiceArgs:
                  meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  namespace: Optional[pulumi.Input[str]] = None,
+                 partition: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -40,6 +41,7 @@ class ServiceArgs:
                instance.
         :param pulumi.Input[str] name: The name of the health-check.
         :param pulumi.Input[str] namespace: The namespace to create the service within.
+        :param pulumi.Input[str] partition: The partition the service is associated with.
         :param pulumi.Input[int] port: The port of the service.
         :param pulumi.Input[str] service_id: - If the service ID is not provided, it will be defaulted to the value
                of the `name` attribute.
@@ -66,6 +68,8 @@ class ServiceArgs:
             pulumi.set(__self__, "name", name)
         if namespace is not None:
             pulumi.set(__self__, "namespace", namespace)
+        if partition is not None:
+            pulumi.set(__self__, "partition", partition)
         if port is not None:
             pulumi.set(__self__, "port", port)
         if service_id is not None:
@@ -181,6 +185,18 @@ class ServiceArgs:
 
     @property
     @pulumi.getter
+    def partition(self) -> Optional[pulumi.Input[str]]:
+        """
+        The partition the service is associated with.
+        """
+        return pulumi.get(self, "partition")
+
+    @partition.setter
+    def partition(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "partition", value)
+
+    @property
+    @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
         """
         The port of the service.
@@ -230,6 +246,7 @@ class _ServiceState:
                  name: Optional[pulumi.Input[str]] = None,
                  namespace: Optional[pulumi.Input[str]] = None,
                  node: Optional[pulumi.Input[str]] = None,
+                 partition: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -246,6 +263,7 @@ class _ServiceState:
         :param pulumi.Input[str] name: The name of the health-check.
         :param pulumi.Input[str] namespace: The namespace to create the service within.
         :param pulumi.Input[str] node: The name of the node the to register the service on.
+        :param pulumi.Input[str] partition: The partition the service is associated with.
         :param pulumi.Input[int] port: The port of the service.
         :param pulumi.Input[str] service_id: - If the service ID is not provided, it will be defaulted to the value
                of the `name` attribute.
@@ -273,6 +291,8 @@ class _ServiceState:
             pulumi.set(__self__, "namespace", namespace)
         if node is not None:
             pulumi.set(__self__, "node", node)
+        if partition is not None:
+            pulumi.set(__self__, "partition", partition)
         if port is not None:
             pulumi.set(__self__, "port", port)
         if service_id is not None:
@@ -388,6 +408,18 @@ class _ServiceState:
 
     @property
     @pulumi.getter
+    def partition(self) -> Optional[pulumi.Input[str]]:
+        """
+        The partition the service is associated with.
+        """
+        return pulumi.get(self, "partition")
+
+    @partition.setter
+    def partition(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "partition", value)
+
+    @property
+    @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
         """
         The port of the service.
@@ -439,6 +471,7 @@ class Service(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  namespace: Optional[pulumi.Input[str]] = None,
                  node: Optional[pulumi.Input[str]] = None,
+                 partition: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -524,6 +557,7 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the health-check.
         :param pulumi.Input[str] namespace: The namespace to create the service within.
         :param pulumi.Input[str] node: The name of the node the to register the service on.
+        :param pulumi.Input[str] partition: The partition the service is associated with.
         :param pulumi.Input[int] port: The port of the service.
         :param pulumi.Input[str] service_id: - If the service ID is not provided, it will be defaulted to the value
                of the `name` attribute.
@@ -628,6 +662,7 @@ class Service(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  namespace: Optional[pulumi.Input[str]] = None,
                  node: Optional[pulumi.Input[str]] = None,
+                 partition: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -657,6 +692,7 @@ class Service(pulumi.CustomResource):
             if node is None and not opts.urn:
                 raise TypeError("Missing required property 'node'")
             __props__.__dict__["node"] = node
+            __props__.__dict__["partition"] = partition
             __props__.__dict__["port"] = port
             __props__.__dict__["service_id"] = service_id
             __props__.__dict__["tags"] = tags
@@ -679,6 +715,7 @@ class Service(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             namespace: Optional[pulumi.Input[str]] = None,
             node: Optional[pulumi.Input[str]] = None,
+            partition: Optional[pulumi.Input[str]] = None,
             port: Optional[pulumi.Input[int]] = None,
             service_id: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'Service':
@@ -700,6 +737,7 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the health-check.
         :param pulumi.Input[str] namespace: The namespace to create the service within.
         :param pulumi.Input[str] node: The name of the node the to register the service on.
+        :param pulumi.Input[str] partition: The partition the service is associated with.
         :param pulumi.Input[int] port: The port of the service.
         :param pulumi.Input[str] service_id: - If the service ID is not provided, it will be defaulted to the value
                of the `name` attribute.
@@ -719,6 +757,7 @@ class Service(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["namespace"] = namespace
         __props__.__dict__["node"] = node
+        __props__.__dict__["partition"] = partition
         __props__.__dict__["port"] = port
         __props__.__dict__["service_id"] = service_id
         __props__.__dict__["tags"] = tags
@@ -793,6 +832,14 @@ class Service(pulumi.CustomResource):
         The name of the node the to register the service on.
         """
         return pulumi.get(self, "node")
+
+    @property
+    @pulumi.getter
+    def partition(self) -> pulumi.Output[Optional[str]]:
+        """
+        The partition the service is associated with.
+        """
+        return pulumi.get(self, "partition")
 
     @property
     @pulumi.getter
