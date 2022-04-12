@@ -99,6 +99,12 @@ namespace Pulumi.Consul
         [Input("namespace")]
         public string? Namespace { get; set; }
 
+        /// <summary>
+        /// The partition to lookup the ACL token.
+        /// </summary>
+        [Input("partition")]
+        public string? Partition { get; set; }
+
         public GetAclTokenArgs()
         {
         }
@@ -117,6 +123,12 @@ namespace Pulumi.Consul
         /// </summary>
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }
+
+        /// <summary>
+        /// The partition to lookup the ACL token.
+        /// </summary>
+        [Input("partition")]
+        public Input<string>? Partition { get; set; }
 
         public GetAclTokenInvokeArgs()
         {
@@ -149,6 +161,7 @@ namespace Pulumi.Consul
         /// The list of node identities attached to the token. Each entry has a `node_name` and a `datacenter` attributes.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAclTokenNodeIdentityResult> NodeIdentities;
+        public readonly string? Partition;
         /// <summary>
         /// A list of policies associated with the ACL token. Each entry has an `id` and a `name` attribute.
         /// </summary>
@@ -178,6 +191,8 @@ namespace Pulumi.Consul
 
             ImmutableArray<Outputs.GetAclTokenNodeIdentityResult> nodeIdentities,
 
+            string? partition,
+
             ImmutableArray<Outputs.GetAclTokenPolicyResult> policies,
 
             ImmutableArray<Outputs.GetAclTokenRoleResult> roles,
@@ -191,6 +206,7 @@ namespace Pulumi.Consul
             Local = local;
             Namespace = @namespace;
             NodeIdentities = nodeIdentities;
+            Partition = partition;
             Policies = policies;
             Roles = roles;
             ServiceIdentities = serviceIdentities;

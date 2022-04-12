@@ -57,6 +57,7 @@ export function getKeyPrefix(args: GetKeyPrefixArgs, opts?: pulumi.InvokeOptions
     return pulumi.runtime.invoke("consul:index/getKeyPrefix:getKeyPrefix", {
         "datacenter": args.datacenter,
         "namespace": args.namespace,
+        "partition": args.partition,
         "pathPrefix": args.pathPrefix,
         "subkeyCollection": args.subkeyCollection,
         "token": args.token,
@@ -73,9 +74,13 @@ export interface GetKeyPrefixArgs {
      */
     datacenter?: string;
     /**
-     * The namespace to create the keys within.
+     * The namespace to lookup the keys within.
      */
     namespace?: string;
+    /**
+     * The namespace to lookup the keys within.
+     */
+    partition?: string;
     /**
      * Specifies the common prefix shared by all keys
      * that will be read by this data source instance. In most cases, this will
@@ -107,6 +112,7 @@ export interface GetKeyPrefixResult {
      */
     readonly id: string;
     readonly namespace?: string;
+    readonly partition?: string;
     /**
      * the common prefix shared by all keys being read.
      * * `var.<name>` - For each name given, the corresponding attribute
@@ -137,9 +143,13 @@ export interface GetKeyPrefixOutputArgs {
      */
     datacenter?: pulumi.Input<string>;
     /**
-     * The namespace to create the keys within.
+     * The namespace to lookup the keys within.
      */
     namespace?: pulumi.Input<string>;
+    /**
+     * The namespace to lookup the keys within.
+     */
+    partition?: pulumi.Input<string>;
     /**
      * Specifies the common prefix shared by all keys
      * that will be read by this data source instance. In most cases, this will

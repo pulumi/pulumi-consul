@@ -50,6 +50,8 @@ type Keys struct {
 	Keys KeysKeyArrayOutput `pulumi:"keys"`
 	// The namespace to create the keys within.
 	Namespace pulumi.StringPtrOutput `pulumi:"namespace"`
+	// The partition to create the keys within.
+	Partition pulumi.StringPtrOutput `pulumi:"partition"`
 	// The ACL token to use. This overrides the
 	// token that the agent provides by default.
 	Token pulumi.StringPtrOutput `pulumi:"token"`
@@ -93,6 +95,8 @@ type keysState struct {
 	Keys []KeysKey `pulumi:"keys"`
 	// The namespace to create the keys within.
 	Namespace *string `pulumi:"namespace"`
+	// The partition to create the keys within.
+	Partition *string `pulumi:"partition"`
 	// The ACL token to use. This overrides the
 	// token that the agent provides by default.
 	Token *string           `pulumi:"token"`
@@ -108,6 +112,8 @@ type KeysState struct {
 	Keys KeysKeyArrayInput
 	// The namespace to create the keys within.
 	Namespace pulumi.StringPtrInput
+	// The partition to create the keys within.
+	Partition pulumi.StringPtrInput
 	// The ACL token to use. This overrides the
 	// token that the agent provides by default.
 	Token pulumi.StringPtrInput
@@ -127,6 +133,8 @@ type keysArgs struct {
 	Keys []KeysKey `pulumi:"keys"`
 	// The namespace to create the keys within.
 	Namespace *string `pulumi:"namespace"`
+	// The partition to create the keys within.
+	Partition *string `pulumi:"partition"`
 	// The ACL token to use. This overrides the
 	// token that the agent provides by default.
 	Token *string `pulumi:"token"`
@@ -142,6 +150,8 @@ type KeysArgs struct {
 	Keys KeysKeyArrayInput
 	// The namespace to create the keys within.
 	Namespace pulumi.StringPtrInput
+	// The partition to create the keys within.
+	Partition pulumi.StringPtrInput
 	// The ACL token to use. This overrides the
 	// token that the agent provides by default.
 	Token pulumi.StringPtrInput

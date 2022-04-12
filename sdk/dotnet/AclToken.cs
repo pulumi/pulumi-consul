@@ -98,6 +98,12 @@ namespace Pulumi.Consul
         public Output<ImmutableArray<Outputs.AclTokenNodeIdentity>> NodeIdentities { get; private set; } = null!;
 
         /// <summary>
+        /// The partition the ACL token is associated with.
+        /// </summary>
+        [Output("partition")]
+        public Output<string?> Partition { get; private set; } = null!;
+
+        /// <summary>
         /// The list of policies attached to the token.
         /// </summary>
         [Output("policies")]
@@ -204,6 +210,12 @@ namespace Pulumi.Consul
             set => _nodeIdentities = value;
         }
 
+        /// <summary>
+        /// The partition the ACL token is associated with.
+        /// </summary>
+        [Input("partition")]
+        public Input<string>? Partition { get; set; }
+
         [Input("policies")]
         private InputList<string>? _policies;
 
@@ -289,6 +301,12 @@ namespace Pulumi.Consul
             get => _nodeIdentities ?? (_nodeIdentities = new InputList<Inputs.AclTokenNodeIdentityGetArgs>());
             set => _nodeIdentities = value;
         }
+
+        /// <summary>
+        /// The partition the ACL token is associated with.
+        /// </summary>
+        [Input("partition")]
+        public Input<string>? Partition { get; set; }
 
         [Input("policies")]
         private InputList<string>? _policies;

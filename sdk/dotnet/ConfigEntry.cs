@@ -287,6 +287,74 @@ namespace Pulumi.Consul
     /// 
     /// }
     /// ```
+    /// ### `exported-services` config entry
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using Consul = Pulumi.Consul;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var exportedServices = new Consul.ConfigEntry("exportedServices", new Consul.ConfigEntryArgs
+    ///         {
+    ///             Kind = "exported-services",
+    ///             ConfigJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 { "Services", new[]
+    ///                     {
+    ///                         new Dictionary&lt;string, object?&gt;
+    ///                         {
+    ///                             { "Name", "test" },
+    ///                             { "Namespace", "default" },
+    ///                             { "Consumers", new[]
+    ///                                 {
+    ///                                     new Dictionary&lt;string, object?&gt;
+    ///                                     {
+    ///                                         { "Partition", "default" },
+    ///                                     },
+    ///                                 }
+    ///                              },
+    ///                         },
+    ///                     }
+    ///                  },
+    ///             }),
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### `mesh` config entry
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using Consul = Pulumi.Consul;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var mesh = new Consul.ConfigEntry("mesh", new Consul.ConfigEntryArgs
+    ///         {
+    ///             Kind = "mesh",
+    ///             Partition = "default",
+    ///             ConfigJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 { "TransparentProxy", new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     { "MeshDestinationsOnly", true },
+    ///                 } },
+    ///             }),
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     [ConsulResourceType("consul:index/configEntry:ConfigEntry")]
     public partial class ConfigEntry : Pulumi.CustomResource
@@ -314,6 +382,12 @@ namespace Pulumi.Consul
         /// </summary>
         [Output("namespace")]
         public Output<string?> Namespace { get; private set; } = null!;
+
+        /// <summary>
+        /// The partition the config entry is associated with.
+        /// </summary>
+        [Output("partition")]
+        public Output<string?> Partition { get; private set; } = null!;
 
 
         /// <summary>
@@ -385,6 +459,12 @@ namespace Pulumi.Consul
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }
 
+        /// <summary>
+        /// The partition the config entry is associated with.
+        /// </summary>
+        [Input("partition")]
+        public Input<string>? Partition { get; set; }
+
         public ConfigEntryArgs()
         {
         }
@@ -415,6 +495,12 @@ namespace Pulumi.Consul
         /// </summary>
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }
+
+        /// <summary>
+        /// The partition the config entry is associated with.
+        /// </summary>
+        [Input("partition")]
+        public Input<string>? Partition { get; set; }
 
         public ConfigEntryState()
         {

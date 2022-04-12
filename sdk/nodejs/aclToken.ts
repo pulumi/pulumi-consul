@@ -94,6 +94,10 @@ export class AclToken extends pulumi.CustomResource {
      */
     public readonly nodeIdentities!: pulumi.Output<outputs.AclTokenNodeIdentity[] | undefined>;
     /**
+     * The partition the ACL token is associated with.
+     */
+    public readonly partition!: pulumi.Output<string | undefined>;
+    /**
      * The list of policies attached to the token.
      */
     public readonly policies!: pulumi.Output<string[] | undefined>;
@@ -125,6 +129,7 @@ export class AclToken extends pulumi.CustomResource {
             resourceInputs["local"] = state ? state.local : undefined;
             resourceInputs["namespace"] = state ? state.namespace : undefined;
             resourceInputs["nodeIdentities"] = state ? state.nodeIdentities : undefined;
+            resourceInputs["partition"] = state ? state.partition : undefined;
             resourceInputs["policies"] = state ? state.policies : undefined;
             resourceInputs["roles"] = state ? state.roles : undefined;
             resourceInputs["serviceIdentities"] = state ? state.serviceIdentities : undefined;
@@ -136,6 +141,7 @@ export class AclToken extends pulumi.CustomResource {
             resourceInputs["local"] = args ? args.local : undefined;
             resourceInputs["namespace"] = args ? args.namespace : undefined;
             resourceInputs["nodeIdentities"] = args ? args.nodeIdentities : undefined;
+            resourceInputs["partition"] = args ? args.partition : undefined;
             resourceInputs["policies"] = args ? args.policies : undefined;
             resourceInputs["roles"] = args ? args.roles : undefined;
             resourceInputs["serviceIdentities"] = args ? args.serviceIdentities : undefined;
@@ -174,6 +180,10 @@ export interface AclTokenState {
      * The list of node identities that should be applied to the token.
      */
     nodeIdentities?: pulumi.Input<pulumi.Input<inputs.AclTokenNodeIdentity>[]>;
+    /**
+     * The partition the ACL token is associated with.
+     */
+    partition?: pulumi.Input<string>;
     /**
      * The list of policies attached to the token.
      */
@@ -217,6 +227,10 @@ export interface AclTokenArgs {
      * The list of node identities that should be applied to the token.
      */
     nodeIdentities?: pulumi.Input<pulumi.Input<inputs.AclTokenNodeIdentity>[]>;
+    /**
+     * The partition the ACL token is associated with.
+     */
+    partition?: pulumi.Input<string>;
     /**
      * The list of policies attached to the token.
      */

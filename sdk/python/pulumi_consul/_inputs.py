@@ -864,6 +864,7 @@ class GetCatalogNodesQueryOptionArgs:
                  datacenter: Optional[str] = None,
                  near: Optional[str] = None,
                  node_meta: Optional[Mapping[str, str]] = None,
+                 partition: Optional[str] = None,
                  require_consistent: Optional[bool] = None,
                  token: Optional[str] = None,
                  wait_index: Optional[int] = None,
@@ -876,6 +877,8 @@ class GetCatalogNodesQueryOptionArgs:
             pulumi.set(__self__, "near", near)
         if node_meta is not None:
             pulumi.set(__self__, "node_meta", node_meta)
+        if partition is not None:
+            pulumi.set(__self__, "partition", partition)
         if require_consistent is not None:
             pulumi.set(__self__, "require_consistent", require_consistent)
         if token is not None:
@@ -920,6 +923,15 @@ class GetCatalogNodesQueryOptionArgs:
     @node_meta.setter
     def node_meta(self, value: Optional[Mapping[str, str]]):
         pulumi.set(self, "node_meta", value)
+
+    @property
+    @pulumi.getter
+    def partition(self) -> Optional[str]:
+        return pulumi.get(self, "partition")
+
+    @partition.setter
+    def partition(self, value: Optional[str]):
+        pulumi.set(self, "partition", value)
 
     @property
     @pulumi.getter(name="requireConsistent")
@@ -966,6 +978,7 @@ class GetCatalogServiceQueryOptionArgs:
                  namespace: Optional[str] = None,
                  near: Optional[str] = None,
                  node_meta: Optional[Mapping[str, str]] = None,
+                 partition: Optional[str] = None,
                  require_consistent: Optional[bool] = None,
                  token: Optional[str] = None,
                  wait_index: Optional[int] = None,
@@ -980,6 +993,8 @@ class GetCatalogServiceQueryOptionArgs:
             pulumi.set(__self__, "near", near)
         if node_meta is not None:
             pulumi.set(__self__, "node_meta", node_meta)
+        if partition is not None:
+            pulumi.set(__self__, "partition", partition)
         if require_consistent is not None:
             pulumi.set(__self__, "require_consistent", require_consistent)
         if token is not None:
@@ -1033,6 +1048,15 @@ class GetCatalogServiceQueryOptionArgs:
     @node_meta.setter
     def node_meta(self, value: Optional[Mapping[str, str]]):
         pulumi.set(self, "node_meta", value)
+
+    @property
+    @pulumi.getter
+    def partition(self) -> Optional[str]:
+        return pulumi.get(self, "partition")
+
+    @partition.setter
+    def partition(self, value: Optional[str]):
+        pulumi.set(self, "partition", value)
 
     @property
     @pulumi.getter(name="requireConsistent")
@@ -1079,6 +1103,7 @@ class GetCatalogServicesQueryOptionArgs:
                  namespace: Optional[str] = None,
                  near: Optional[str] = None,
                  node_meta: Optional[Mapping[str, str]] = None,
+                 partition: Optional[str] = None,
                  require_consistent: Optional[bool] = None,
                  token: Optional[str] = None,
                  wait_index: Optional[int] = None,
@@ -1093,6 +1118,8 @@ class GetCatalogServicesQueryOptionArgs:
             pulumi.set(__self__, "near", near)
         if node_meta is not None:
             pulumi.set(__self__, "node_meta", node_meta)
+        if partition is not None:
+            pulumi.set(__self__, "partition", partition)
         if require_consistent is not None:
             pulumi.set(__self__, "require_consistent", require_consistent)
         if token is not None:
@@ -1146,6 +1173,15 @@ class GetCatalogServicesQueryOptionArgs:
     @node_meta.setter
     def node_meta(self, value: Optional[Mapping[str, str]]):
         pulumi.set(self, "node_meta", value)
+
+    @property
+    @pulumi.getter
+    def partition(self) -> Optional[str]:
+        return pulumi.get(self, "partition")
+
+    @partition.setter
+    def partition(self, value: Optional[str]):
+        pulumi.set(self, "partition", value)
 
     @property
     @pulumi.getter(name="requireConsistent")
@@ -1315,6 +1351,7 @@ class GetNodesQueryOptionArgs:
                  datacenter: Optional[str] = None,
                  near: Optional[str] = None,
                  node_meta: Optional[Mapping[str, str]] = None,
+                 partition: Optional[str] = None,
                  require_consistent: Optional[bool] = None,
                  token: Optional[str] = None,
                  wait_index: Optional[int] = None,
@@ -1344,6 +1381,8 @@ class GetNodesQueryOptionArgs:
             pulumi.set(__self__, "near", near)
         if node_meta is not None:
             pulumi.set(__self__, "node_meta", node_meta)
+        if partition is not None:
+            pulumi.set(__self__, "partition", partition)
         if require_consistent is not None:
             pulumi.set(__self__, "require_consistent", require_consistent)
         if token is not None:
@@ -1398,6 +1437,15 @@ class GetNodesQueryOptionArgs:
     @node_meta.setter
     def node_meta(self, value: Optional[Mapping[str, str]]):
         pulumi.set(self, "node_meta", value)
+
+    @property
+    @pulumi.getter
+    def partition(self) -> Optional[str]:
+        return pulumi.get(self, "partition")
+
+    @partition.setter
+    def partition(self, value: Optional[str]):
+        pulumi.set(self, "partition", value)
 
     @property
     @pulumi.getter(name="requireConsistent")
@@ -1461,6 +1509,7 @@ class GetServiceQueryOptionArgs:
                  namespace: Optional[str] = None,
                  near: Optional[str] = None,
                  node_meta: Optional[Mapping[str, str]] = None,
+                 partition: Optional[str] = None,
                  require_consistent: Optional[bool] = None,
                  token: Optional[str] = None,
                  wait_index: Optional[int] = None,
@@ -1493,6 +1542,8 @@ class GetServiceQueryOptionArgs:
             pulumi.set(__self__, "near", near)
         if node_meta is not None:
             pulumi.set(__self__, "node_meta", node_meta)
+        if partition is not None:
+            pulumi.set(__self__, "partition", partition)
         if require_consistent is not None:
             pulumi.set(__self__, "require_consistent", require_consistent)
         if token is not None:
@@ -1561,6 +1612,15 @@ class GetServiceQueryOptionArgs:
         pulumi.set(self, "node_meta", value)
 
     @property
+    @pulumi.getter
+    def partition(self) -> Optional[str]:
+        return pulumi.get(self, "partition")
+
+    @partition.setter
+    def partition(self, value: Optional[str]):
+        pulumi.set(self, "partition", value)
+
+    @property
     @pulumi.getter(name="requireConsistent")
     def require_consistent(self) -> Optional[bool]:
         """
@@ -1622,6 +1682,7 @@ class GetServicesQueryOptionArgs:
                  namespace: Optional[str] = None,
                  near: Optional[str] = None,
                  node_meta: Optional[Mapping[str, str]] = None,
+                 partition: Optional[str] = None,
                  require_consistent: Optional[bool] = None,
                  token: Optional[str] = None,
                  wait_index: Optional[int] = None,
@@ -1654,6 +1715,8 @@ class GetServicesQueryOptionArgs:
             pulumi.set(__self__, "near", near)
         if node_meta is not None:
             pulumi.set(__self__, "node_meta", node_meta)
+        if partition is not None:
+            pulumi.set(__self__, "partition", partition)
         if require_consistent is not None:
             pulumi.set(__self__, "require_consistent", require_consistent)
         if token is not None:
@@ -1720,6 +1783,15 @@ class GetServicesQueryOptionArgs:
     @node_meta.setter
     def node_meta(self, value: Optional[Mapping[str, str]]):
         pulumi.set(self, "node_meta", value)
+
+    @property
+    @pulumi.getter
+    def partition(self) -> Optional[str]:
+        return pulumi.get(self, "partition")
+
+    @partition.setter
+    def partition(self, value: Optional[str]):
+        pulumi.set(self, "partition", value)
 
     @property
     @pulumi.getter(name="requireConsistent")

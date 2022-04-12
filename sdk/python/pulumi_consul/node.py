@@ -17,16 +17,15 @@ class NodeArgs:
                  datacenter: Optional[pulumi.Input[str]] = None,
                  meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 partition: Optional[pulumi.Input[str]] = None,
                  token: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Node resource.
-        :param pulumi.Input[str] address: The address of the node being added to,
-               or referenced in the catalog.
-        :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the agent's
-               default datacenter and the datacenter in the provider setup.
+        :param pulumi.Input[str] address: The address of the node being added to, or referenced in the catalog.
+        :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: Key/value pairs that are associated with the node.
-        :param pulumi.Input[str] name: The name of the node being added to, or
-               referenced in the catalog.
+        :param pulumi.Input[str] name: The name of the node being added to, or referenced in the catalog.
+        :param pulumi.Input[str] partition: The partition the node is associated with.
         """
         pulumi.set(__self__, "address", address)
         if datacenter is not None:
@@ -35,6 +34,8 @@ class NodeArgs:
             pulumi.set(__self__, "meta", meta)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if partition is not None:
+            pulumi.set(__self__, "partition", partition)
         if token is not None:
             pulumi.set(__self__, "token", token)
 
@@ -42,8 +43,7 @@ class NodeArgs:
     @pulumi.getter
     def address(self) -> pulumi.Input[str]:
         """
-        The address of the node being added to,
-        or referenced in the catalog.
+        The address of the node being added to, or referenced in the catalog.
         """
         return pulumi.get(self, "address")
 
@@ -55,8 +55,7 @@ class NodeArgs:
     @pulumi.getter
     def datacenter(self) -> Optional[pulumi.Input[str]]:
         """
-        The datacenter to use. This overrides the agent's
-        default datacenter and the datacenter in the provider setup.
+        The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
         """
         return pulumi.get(self, "datacenter")
 
@@ -80,14 +79,25 @@ class NodeArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the node being added to, or
-        referenced in the catalog.
+        The name of the node being added to, or referenced in the catalog.
         """
         return pulumi.get(self, "name")
 
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def partition(self) -> Optional[pulumi.Input[str]]:
+        """
+        The partition the node is associated with.
+        """
+        return pulumi.get(self, "partition")
+
+    @partition.setter
+    def partition(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "partition", value)
 
     @property
     @pulumi.getter
@@ -106,16 +116,15 @@ class _NodeState:
                  datacenter: Optional[pulumi.Input[str]] = None,
                  meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 partition: Optional[pulumi.Input[str]] = None,
                  token: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Node resources.
-        :param pulumi.Input[str] address: The address of the node being added to,
-               or referenced in the catalog.
-        :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the agent's
-               default datacenter and the datacenter in the provider setup.
+        :param pulumi.Input[str] address: The address of the node being added to, or referenced in the catalog.
+        :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: Key/value pairs that are associated with the node.
-        :param pulumi.Input[str] name: The name of the node being added to, or
-               referenced in the catalog.
+        :param pulumi.Input[str] name: The name of the node being added to, or referenced in the catalog.
+        :param pulumi.Input[str] partition: The partition the node is associated with.
         """
         if address is not None:
             pulumi.set(__self__, "address", address)
@@ -125,6 +134,8 @@ class _NodeState:
             pulumi.set(__self__, "meta", meta)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if partition is not None:
+            pulumi.set(__self__, "partition", partition)
         if token is not None:
             pulumi.set(__self__, "token", token)
 
@@ -132,8 +143,7 @@ class _NodeState:
     @pulumi.getter
     def address(self) -> Optional[pulumi.Input[str]]:
         """
-        The address of the node being added to,
-        or referenced in the catalog.
+        The address of the node being added to, or referenced in the catalog.
         """
         return pulumi.get(self, "address")
 
@@ -145,8 +155,7 @@ class _NodeState:
     @pulumi.getter
     def datacenter(self) -> Optional[pulumi.Input[str]]:
         """
-        The datacenter to use. This overrides the agent's
-        default datacenter and the datacenter in the provider setup.
+        The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
         """
         return pulumi.get(self, "datacenter")
 
@@ -170,14 +179,25 @@ class _NodeState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the node being added to, or
-        referenced in the catalog.
+        The name of the node being added to, or referenced in the catalog.
         """
         return pulumi.get(self, "name")
 
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def partition(self) -> Optional[pulumi.Input[str]]:
+        """
+        The partition the node is associated with.
+        """
+        return pulumi.get(self, "partition")
+
+    @partition.setter
+    def partition(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "partition", value)
 
     @property
     @pulumi.getter
@@ -198,6 +218,7 @@ class Node(pulumi.CustomResource):
                  datacenter: Optional[pulumi.Input[str]] = None,
                  meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 partition: Optional[pulumi.Input[str]] = None,
                  token: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -215,13 +236,11 @@ class Node(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] address: The address of the node being added to,
-               or referenced in the catalog.
-        :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the agent's
-               default datacenter and the datacenter in the provider setup.
+        :param pulumi.Input[str] address: The address of the node being added to, or referenced in the catalog.
+        :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: Key/value pairs that are associated with the node.
-        :param pulumi.Input[str] name: The name of the node being added to, or
-               referenced in the catalog.
+        :param pulumi.Input[str] name: The name of the node being added to, or referenced in the catalog.
+        :param pulumi.Input[str] partition: The partition the node is associated with.
         """
         ...
     @overload
@@ -261,6 +280,7 @@ class Node(pulumi.CustomResource):
                  datacenter: Optional[pulumi.Input[str]] = None,
                  meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 partition: Optional[pulumi.Input[str]] = None,
                  token: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -280,6 +300,7 @@ class Node(pulumi.CustomResource):
             __props__.__dict__["datacenter"] = datacenter
             __props__.__dict__["meta"] = meta
             __props__.__dict__["name"] = name
+            __props__.__dict__["partition"] = partition
             __props__.__dict__["token"] = token
         super(Node, __self__).__init__(
             'consul:index/node:Node',
@@ -295,6 +316,7 @@ class Node(pulumi.CustomResource):
             datacenter: Optional[pulumi.Input[str]] = None,
             meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            partition: Optional[pulumi.Input[str]] = None,
             token: Optional[pulumi.Input[str]] = None) -> 'Node':
         """
         Get an existing Node resource's state with the given name, id, and optional extra
@@ -303,13 +325,11 @@ class Node(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] address: The address of the node being added to,
-               or referenced in the catalog.
-        :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the agent's
-               default datacenter and the datacenter in the provider setup.
+        :param pulumi.Input[str] address: The address of the node being added to, or referenced in the catalog.
+        :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: Key/value pairs that are associated with the node.
-        :param pulumi.Input[str] name: The name of the node being added to, or
-               referenced in the catalog.
+        :param pulumi.Input[str] name: The name of the node being added to, or referenced in the catalog.
+        :param pulumi.Input[str] partition: The partition the node is associated with.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -319,6 +339,7 @@ class Node(pulumi.CustomResource):
         __props__.__dict__["datacenter"] = datacenter
         __props__.__dict__["meta"] = meta
         __props__.__dict__["name"] = name
+        __props__.__dict__["partition"] = partition
         __props__.__dict__["token"] = token
         return Node(resource_name, opts=opts, __props__=__props__)
 
@@ -326,8 +347,7 @@ class Node(pulumi.CustomResource):
     @pulumi.getter
     def address(self) -> pulumi.Output[str]:
         """
-        The address of the node being added to,
-        or referenced in the catalog.
+        The address of the node being added to, or referenced in the catalog.
         """
         return pulumi.get(self, "address")
 
@@ -335,8 +355,7 @@ class Node(pulumi.CustomResource):
     @pulumi.getter
     def datacenter(self) -> pulumi.Output[str]:
         """
-        The datacenter to use. This overrides the agent's
-        default datacenter and the datacenter in the provider setup.
+        The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
         """
         return pulumi.get(self, "datacenter")
 
@@ -352,10 +371,17 @@ class Node(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the node being added to, or
-        referenced in the catalog.
+        The name of the node being added to, or referenced in the catalog.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def partition(self) -> pulumi.Output[Optional[str]]:
+        """
+        The partition the node is associated with.
+        """
+        return pulumi.get(self, "partition")
 
     @property
     @pulumi.getter

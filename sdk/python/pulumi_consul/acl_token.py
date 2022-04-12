@@ -21,6 +21,7 @@ class AclTokenArgs:
                  local: Optional[pulumi.Input[bool]] = None,
                  namespace: Optional[pulumi.Input[str]] = None,
                  node_identities: Optional[pulumi.Input[Sequence[pulumi.Input['AclTokenNodeIdentityArgs']]]] = None,
+                 partition: Optional[pulumi.Input[str]] = None,
                  policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_identities: Optional[pulumi.Input[Sequence[pulumi.Input['AclTokenServiceIdentityArgs']]]] = None):
@@ -33,6 +34,7 @@ class AclTokenArgs:
         :param pulumi.Input[bool] local: The flag to set the token local to the current datacenter.
         :param pulumi.Input[str] namespace: The namespace to create the token within.
         :param pulumi.Input[Sequence[pulumi.Input['AclTokenNodeIdentityArgs']]] node_identities: The list of node identities that should be applied to the token.
+        :param pulumi.Input[str] partition: The partition the ACL token is associated with.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] policies: The list of policies attached to the token.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: The list of roles attached to the token.
         :param pulumi.Input[Sequence[pulumi.Input['AclTokenServiceIdentityArgs']]] service_identities: The list of service identities that should be applied to the token.
@@ -49,6 +51,8 @@ class AclTokenArgs:
             pulumi.set(__self__, "namespace", namespace)
         if node_identities is not None:
             pulumi.set(__self__, "node_identities", node_identities)
+        if partition is not None:
+            pulumi.set(__self__, "partition", partition)
         if policies is not None:
             pulumi.set(__self__, "policies", policies)
         if roles is not None:
@@ -128,6 +132,18 @@ class AclTokenArgs:
     @node_identities.setter
     def node_identities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AclTokenNodeIdentityArgs']]]]):
         pulumi.set(self, "node_identities", value)
+
+    @property
+    @pulumi.getter
+    def partition(self) -> Optional[pulumi.Input[str]]:
+        """
+        The partition the ACL token is associated with.
+        """
+        return pulumi.get(self, "partition")
+
+    @partition.setter
+    def partition(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "partition", value)
 
     @property
     @pulumi.getter
@@ -175,6 +191,7 @@ class _AclTokenState:
                  local: Optional[pulumi.Input[bool]] = None,
                  namespace: Optional[pulumi.Input[str]] = None,
                  node_identities: Optional[pulumi.Input[Sequence[pulumi.Input['AclTokenNodeIdentityArgs']]]] = None,
+                 partition: Optional[pulumi.Input[str]] = None,
                  policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_identities: Optional[pulumi.Input[Sequence[pulumi.Input['AclTokenServiceIdentityArgs']]]] = None):
@@ -187,6 +204,7 @@ class _AclTokenState:
         :param pulumi.Input[bool] local: The flag to set the token local to the current datacenter.
         :param pulumi.Input[str] namespace: The namespace to create the token within.
         :param pulumi.Input[Sequence[pulumi.Input['AclTokenNodeIdentityArgs']]] node_identities: The list of node identities that should be applied to the token.
+        :param pulumi.Input[str] partition: The partition the ACL token is associated with.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] policies: The list of policies attached to the token.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: The list of roles attached to the token.
         :param pulumi.Input[Sequence[pulumi.Input['AclTokenServiceIdentityArgs']]] service_identities: The list of service identities that should be applied to the token.
@@ -203,6 +221,8 @@ class _AclTokenState:
             pulumi.set(__self__, "namespace", namespace)
         if node_identities is not None:
             pulumi.set(__self__, "node_identities", node_identities)
+        if partition is not None:
+            pulumi.set(__self__, "partition", partition)
         if policies is not None:
             pulumi.set(__self__, "policies", policies)
         if roles is not None:
@@ -282,6 +302,18 @@ class _AclTokenState:
     @node_identities.setter
     def node_identities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AclTokenNodeIdentityArgs']]]]):
         pulumi.set(self, "node_identities", value)
+
+    @property
+    @pulumi.getter
+    def partition(self) -> Optional[pulumi.Input[str]]:
+        """
+        The partition the ACL token is associated with.
+        """
+        return pulumi.get(self, "partition")
+
+    @partition.setter
+    def partition(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "partition", value)
 
     @property
     @pulumi.getter
@@ -331,6 +363,7 @@ class AclToken(pulumi.CustomResource):
                  local: Optional[pulumi.Input[bool]] = None,
                  namespace: Optional[pulumi.Input[str]] = None,
                  node_identities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclTokenNodeIdentityArgs']]]]] = None,
+                 partition: Optional[pulumi.Input[str]] = None,
                  policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_identities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclTokenServiceIdentityArgs']]]]] = None,
@@ -377,6 +410,7 @@ class AclToken(pulumi.CustomResource):
         :param pulumi.Input[bool] local: The flag to set the token local to the current datacenter.
         :param pulumi.Input[str] namespace: The namespace to create the token within.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclTokenNodeIdentityArgs']]]] node_identities: The list of node identities that should be applied to the token.
+        :param pulumi.Input[str] partition: The partition the ACL token is associated with.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] policies: The list of policies attached to the token.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: The list of roles attached to the token.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclTokenServiceIdentityArgs']]]] service_identities: The list of service identities that should be applied to the token.
@@ -441,6 +475,7 @@ class AclToken(pulumi.CustomResource):
                  local: Optional[pulumi.Input[bool]] = None,
                  namespace: Optional[pulumi.Input[str]] = None,
                  node_identities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclTokenNodeIdentityArgs']]]]] = None,
+                 partition: Optional[pulumi.Input[str]] = None,
                  policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_identities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclTokenServiceIdentityArgs']]]]] = None,
@@ -462,6 +497,7 @@ class AclToken(pulumi.CustomResource):
             __props__.__dict__["local"] = local
             __props__.__dict__["namespace"] = namespace
             __props__.__dict__["node_identities"] = node_identities
+            __props__.__dict__["partition"] = partition
             __props__.__dict__["policies"] = policies
             __props__.__dict__["roles"] = roles
             __props__.__dict__["service_identities"] = service_identities
@@ -481,6 +517,7 @@ class AclToken(pulumi.CustomResource):
             local: Optional[pulumi.Input[bool]] = None,
             namespace: Optional[pulumi.Input[str]] = None,
             node_identities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclTokenNodeIdentityArgs']]]]] = None,
+            partition: Optional[pulumi.Input[str]] = None,
             policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             service_identities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclTokenServiceIdentityArgs']]]]] = None) -> 'AclToken':
@@ -498,6 +535,7 @@ class AclToken(pulumi.CustomResource):
         :param pulumi.Input[bool] local: The flag to set the token local to the current datacenter.
         :param pulumi.Input[str] namespace: The namespace to create the token within.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclTokenNodeIdentityArgs']]]] node_identities: The list of node identities that should be applied to the token.
+        :param pulumi.Input[str] partition: The partition the ACL token is associated with.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] policies: The list of policies attached to the token.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: The list of roles attached to the token.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclTokenServiceIdentityArgs']]]] service_identities: The list of service identities that should be applied to the token.
@@ -512,6 +550,7 @@ class AclToken(pulumi.CustomResource):
         __props__.__dict__["local"] = local
         __props__.__dict__["namespace"] = namespace
         __props__.__dict__["node_identities"] = node_identities
+        __props__.__dict__["partition"] = partition
         __props__.__dict__["policies"] = policies
         __props__.__dict__["roles"] = roles
         __props__.__dict__["service_identities"] = service_identities
@@ -565,6 +604,14 @@ class AclToken(pulumi.CustomResource):
         The list of node identities that should be applied to the token.
         """
         return pulumi.get(self, "node_identities")
+
+    @property
+    @pulumi.getter
+    def partition(self) -> pulumi.Output[Optional[str]]:
+        """
+        The partition the ACL token is associated with.
+        """
+        return pulumi.get(self, "partition")
 
     @property
     @pulumi.getter

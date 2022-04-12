@@ -1123,6 +1123,14 @@
                         }
                     }
                 },
+                "partition": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "requireConsistent": {
                     "type": "boolean",
                     "language": {
@@ -1197,6 +1205,14 @@
                     "additionalProperties": {
                         "type": "string"
                     },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "partition": {
+                    "type": "string",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1427,6 +1443,14 @@
                     "additionalProperties": {
                         "type": "string"
                     },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "partition": {
+                    "type": "string",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1749,6 +1773,14 @@
                     "additionalProperties": {
                         "type": "string"
                     },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "partition": {
+                    "type": "string",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2151,6 +2183,14 @@
                         }
                     }
                 },
+                "partition": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "requireConsistent": {
                     "type": "boolean",
                     "description": "When `true` force the client to perform a\nread on at least quorum servers and verify the result is the same.  Defaults\nto `false`.\n",
@@ -2390,6 +2430,14 @@
                         }
                     }
                 },
+                "partition": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "requireConsistent": {
                     "type": "boolean",
                     "description": "When `true` force the client to perform a\nread on at least quorum servers and verify the result is the same.  Defaults\nto `false`.\n",
@@ -2578,6 +2626,10 @@
                     },
                     "description": "A set of rules that control\nwhich namespace tokens created via this auth method will be created within.\n"
                 },
+                "partition": {
+                    "type": "string",
+                    "description": "The partition the ACL auth method is associated with.\n"
+                },
                 "tokenLocality": {
                     "type": "string",
                     "description": "The kind of token that this auth method\nproduces. This can be either 'local' or 'global'.\n"
@@ -2630,6 +2682,10 @@
                         "$ref": "#/types/consul:index/AclAuthMethodNamespaceRule:AclAuthMethodNamespaceRule"
                     },
                     "description": "A set of rules that control\nwhich namespace tokens created via this auth method will be created within.\n"
+                },
+                "partition": {
+                    "type": "string",
+                    "description": "The partition the ACL auth method is associated with.\n"
                 },
                 "tokenLocality": {
                     "type": "string",
@@ -2685,6 +2741,10 @@
                         },
                         "description": "A set of rules that control\nwhich namespace tokens created via this auth method will be created within.\n"
                     },
+                    "partition": {
+                        "type": "string",
+                        "description": "The partition the ACL auth method is associated with.\n"
+                    },
                     "tokenLocality": {
                         "type": "string",
                         "description": "The kind of token that this auth method\nproduces. This can be either 'local' or 'global'.\n"
@@ -2710,19 +2770,23 @@
                 },
                 "bindType": {
                     "type": "string",
-                    "description": "Specifies the way the binding rule affects a token\ncreated at login.\n"
+                    "description": "Specifies the way the binding rule affects a token created at login.\n"
                 },
                 "description": {
                     "type": "string",
-                    "description": "A free form human readable description of the\nbinding rule.\n"
+                    "description": "A free form human readable description of the binding rule.\n"
                 },
                 "namespace": {
                     "type": "string",
-                    "description": "The namespace to create the binding\nrule within.\n"
+                    "description": "The namespace to create the binding rule within.\n"
+                },
+                "partition": {
+                    "type": "string",
+                    "description": "The partition the ACL binding rule is associated with.\n"
                 },
                 "selector": {
                     "type": "string",
-                    "description": "The expression used to math this rule against valid\nidentities returned from an auth method validation.\n"
+                    "description": "The expression used to math this rule against valid identities returned from an auth method validation.\n"
                 }
             },
             "required": [
@@ -2741,19 +2805,23 @@
                 },
                 "bindType": {
                     "type": "string",
-                    "description": "Specifies the way the binding rule affects a token\ncreated at login.\n"
+                    "description": "Specifies the way the binding rule affects a token created at login.\n"
                 },
                 "description": {
                     "type": "string",
-                    "description": "A free form human readable description of the\nbinding rule.\n"
+                    "description": "A free form human readable description of the binding rule.\n"
                 },
                 "namespace": {
                     "type": "string",
-                    "description": "The namespace to create the binding\nrule within.\n"
+                    "description": "The namespace to create the binding rule within.\n"
+                },
+                "partition": {
+                    "type": "string",
+                    "description": "The partition the ACL binding rule is associated with.\n"
                 },
                 "selector": {
                     "type": "string",
-                    "description": "The expression used to math this rule against valid\nidentities returned from an auth method validation.\n"
+                    "description": "The expression used to math this rule against valid identities returned from an auth method validation.\n"
                 }
             },
             "requiredInputs": [
@@ -2774,19 +2842,23 @@
                     },
                     "bindType": {
                         "type": "string",
-                        "description": "Specifies the way the binding rule affects a token\ncreated at login.\n"
+                        "description": "Specifies the way the binding rule affects a token created at login.\n"
                     },
                     "description": {
                         "type": "string",
-                        "description": "A free form human readable description of the\nbinding rule.\n"
+                        "description": "A free form human readable description of the binding rule.\n"
                     },
                     "namespace": {
                         "type": "string",
-                        "description": "The namespace to create the binding\nrule within.\n"
+                        "description": "The namespace to create the binding rule within.\n"
+                    },
+                    "partition": {
+                        "type": "string",
+                        "description": "The partition the ACL binding rule is associated with.\n"
                     },
                     "selector": {
                         "type": "string",
-                        "description": "The expression used to math this rule against valid\nidentities returned from an auth method validation.\n"
+                        "description": "The expression used to math this rule against valid identities returned from an auth method validation.\n"
                     }
                 },
                 "type": "object"
@@ -2813,6 +2885,10 @@
                 "namespace": {
                     "type": "string",
                     "description": "The namespace to create the policy within.\n"
+                },
+                "partition": {
+                    "type": "string",
+                    "description": "The partition the ACL policy is associated with.\n"
                 },
                 "rules": {
                     "type": "string",
@@ -2842,6 +2918,10 @@
                 "namespace": {
                     "type": "string",
                     "description": "The namespace to create the policy within.\n"
+                },
+                "partition": {
+                    "type": "string",
+                    "description": "The partition the ACL policy is associated with.\n"
                 },
                 "rules": {
                     "type": "string",
@@ -2873,6 +2953,10 @@
                         "type": "string",
                         "description": "The namespace to create the policy within.\n"
                     },
+                    "partition": {
+                        "type": "string",
+                        "description": "The partition the ACL policy is associated with.\n"
+                    },
                     "rules": {
                         "type": "string",
                         "description": "The rules of the policy.\n"
@@ -2902,6 +2986,10 @@
                         "$ref": "#/types/consul:index/AclRoleNodeIdentity:AclRoleNodeIdentity"
                     },
                     "description": "The list of node identities that should be applied to the role.\n"
+                },
+                "partition": {
+                    "type": "string",
+                    "description": "The partition the ACL role is associated with.\n"
                 },
                 "policies": {
                     "type": "array",
@@ -2941,6 +3029,10 @@
                     },
                     "description": "The list of node identities that should be applied to the role.\n"
                 },
+                "partition": {
+                    "type": "string",
+                    "description": "The partition the ACL role is associated with.\n"
+                },
                 "policies": {
                     "type": "array",
                     "items": {
@@ -2977,6 +3069,10 @@
                             "$ref": "#/types/consul:index/AclRoleNodeIdentity:AclRoleNodeIdentity"
                         },
                         "description": "The list of node identities that should be applied to the role.\n"
+                    },
+                    "partition": {
+                        "type": "string",
+                        "description": "The partition the ACL role is associated with.\n"
                     },
                     "policies": {
                         "type": "array",
@@ -3025,6 +3121,10 @@
                         "$ref": "#/types/consul:index/AclTokenNodeIdentity:AclTokenNodeIdentity"
                     },
                     "description": "The list of node identities that should be applied to the token.\n"
+                },
+                "partition": {
+                    "type": "string",
+                    "description": "The partition the ACL token is associated with.\n"
                 },
                 "policies": {
                     "type": "array",
@@ -3079,6 +3179,10 @@
                     },
                     "description": "The list of node identities that should be applied to the token.\n"
                 },
+                "partition": {
+                    "type": "string",
+                    "description": "The partition the ACL token is associated with.\n"
+                },
                 "policies": {
                     "type": "array",
                     "items": {
@@ -3130,6 +3234,10 @@
                             "$ref": "#/types/consul:index/AclTokenNodeIdentity:AclTokenNodeIdentity"
                         },
                         "description": "The list of node identities that should be applied to the token.\n"
+                    },
+                    "partition": {
+                        "type": "string",
+                        "description": "The partition the ACL token is associated with.\n"
                     },
                     "policies": {
                         "type": "array",
@@ -3241,6 +3349,46 @@
                     "tokenId": {
                         "type": "string",
                         "description": "The id of the token.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "consul:index/adminPartition:AdminPartition": {
+            "description": "\u003e **NOTE:** This feature requires Consul Enterprise.\n\nThe `consul.AdminPartition` resource manages [Consul Enterprise Admin Partitions](https://www.consul.io/docs/enterprise/admin-partitions).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as consul from \"@pulumi/consul\";\n\nconst naWest = new consul.AdminPartition(\"na_west\", {\n    description: \"Partition for North America West\",\n});\n```\n```python\nimport pulumi\nimport pulumi_consul as consul\n\nna_west = consul.AdminPartition(\"naWest\", description=\"Partition for North America West\")\n```\n```csharp\nusing Pulumi;\nusing Consul = Pulumi.Consul;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var naWest = new Consul.AdminPartition(\"naWest\", new Consul.AdminPartitionArgs\n        {\n            Description = \"Partition for North America West\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-consul/sdk/v3/go/consul\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := consul.NewAdminPartition(ctx, \"naWest\", \u0026consul.AdminPartitionArgs{\n\t\t\tDescription: pulumi.String(\"Partition for North America West\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n`consul_admin_partition` can be imported\n\n```sh\n $ pulumi import consul:index/adminPartition:AdminPartition na_west na-west\n```\n\n ",
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "Free form partition description.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The partition name. This must be a valid DNS hostname label.\n"
+                }
+            },
+            "required": [
+                "name"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "Free form partition description.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The partition name. This must be a valid DNS hostname label.\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering AdminPartition resources.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "Free form partition description.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The partition name. This must be a valid DNS hostname label.\n"
                     }
                 },
                 "type": "object"
@@ -3575,7 +3723,7 @@
             }
         },
         "consul:index/configEntry:ConfigEntry": {
-            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as consul from \"@pulumi/consul\";\n\nconst proxyDefaults = new consul.ConfigEntry(\"proxyDefaults\", {\n    kind: \"proxy-defaults\",\n    configJson: JSON.stringify({\n        Config: {\n            local_connect_timeout_ms: 1000,\n            handshake_timeout_ms: 10000,\n        },\n    }),\n});\nconst web = new consul.ConfigEntry(\"web\", {\n    kind: \"service-defaults\",\n    configJson: JSON.stringify({\n        Protocol: \"http\",\n    }),\n});\nconst admin = new consul.ConfigEntry(\"admin\", {\n    kind: \"service-defaults\",\n    configJson: JSON.stringify({\n        Protocol: \"http\",\n    }),\n});\nconst serviceResolver = new consul.ConfigEntry(\"serviceResolver\", {\n    kind: \"service-resolver\",\n    configJson: JSON.stringify({\n        DefaultSubset: \"v1\",\n        Subsets: {\n            v1: {\n                Filter: \"Service.Meta.version == v1\",\n            },\n            v2: {\n                Filter: \"Service.Meta.version == v2\",\n            },\n        },\n    }),\n});\nconst serviceSplitter = new consul.ConfigEntry(\"serviceSplitter\", {\n    kind: \"service-splitter\",\n    configJson: JSON.stringify({\n        Splits: [\n            {\n                Weight: 90,\n                ServiceSubset: \"v1\",\n            },\n            {\n                Weight: 10,\n                ServiceSubset: \"v2\",\n            },\n        ],\n    }),\n});\nconst serviceRouter = new consul.ConfigEntry(\"serviceRouter\", {\n    kind: \"service-router\",\n    configJson: JSON.stringify({\n        Routes: [{\n            Match: {\n                HTTP: {\n                    PathPrefix: \"/admin\",\n                },\n            },\n            Destination: {\n                Service: \"admin\",\n            },\n        }],\n    }),\n});\nconst ingressGateway = new consul.ConfigEntry(\"ingressGateway\", {\n    kind: \"ingress-gateway\",\n    configJson: JSON.stringify({\n        TLS: {\n            Enabled: true,\n        },\n        Listeners: [{\n            Port: 8000,\n            Protocol: \"http\",\n            Services: [{\n                Name: \"*\",\n            }],\n        }],\n    }),\n});\nconst terminatingGateway = new consul.ConfigEntry(\"terminatingGateway\", {\n    kind: \"terminating-gateway\",\n    configJson: JSON.stringify({\n        Services: [{\n            Name: \"billing\",\n        }],\n    }),\n});\n```\n```python\nimport pulumi\nimport json\nimport pulumi_consul as consul\n\nproxy_defaults = consul.ConfigEntry(\"proxyDefaults\",\n    kind=\"proxy-defaults\",\n    config_json=json.dumps({\n        \"Config\": {\n            \"local_connect_timeout_ms\": 1000,\n            \"handshake_timeout_ms\": 10000,\n        },\n    }))\nweb = consul.ConfigEntry(\"web\",\n    kind=\"service-defaults\",\n    config_json=json.dumps({\n        \"Protocol\": \"http\",\n    }))\nadmin = consul.ConfigEntry(\"admin\",\n    kind=\"service-defaults\",\n    config_json=json.dumps({\n        \"Protocol\": \"http\",\n    }))\nservice_resolver = consul.ConfigEntry(\"serviceResolver\",\n    kind=\"service-resolver\",\n    config_json=json.dumps({\n        \"DefaultSubset\": \"v1\",\n        \"Subsets\": {\n            \"v1\": {\n                \"Filter\": \"Service.Meta.version == v1\",\n            },\n            \"v2\": {\n                \"Filter\": \"Service.Meta.version == v2\",\n            },\n        },\n    }))\nservice_splitter = consul.ConfigEntry(\"serviceSplitter\",\n    kind=\"service-splitter\",\n    config_json=json.dumps({\n        \"Splits\": [\n            {\n                \"Weight\": 90,\n                \"ServiceSubset\": \"v1\",\n            },\n            {\n                \"Weight\": 10,\n                \"ServiceSubset\": \"v2\",\n            },\n        ],\n    }))\nservice_router = consul.ConfigEntry(\"serviceRouter\",\n    kind=\"service-router\",\n    config_json=json.dumps({\n        \"Routes\": [{\n            \"Match\": {\n                \"HTTP\": {\n                    \"PathPrefix\": \"/admin\",\n                },\n            },\n            \"Destination\": {\n                \"Service\": \"admin\",\n            },\n        }],\n    }))\ningress_gateway = consul.ConfigEntry(\"ingressGateway\",\n    kind=\"ingress-gateway\",\n    config_json=json.dumps({\n        \"TLS\": {\n            \"Enabled\": True,\n        },\n        \"Listeners\": [{\n            \"Port\": 8000,\n            \"Protocol\": \"http\",\n            \"Services\": [{\n                \"Name\": \"*\",\n            }],\n        }],\n    }))\nterminating_gateway = consul.ConfigEntry(\"terminatingGateway\",\n    kind=\"terminating-gateway\",\n    config_json=json.dumps({\n        \"Services\": [{\n            \"Name\": \"billing\",\n        }],\n    }))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Text.Json;\nusing Pulumi;\nusing Consul = Pulumi.Consul;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var proxyDefaults = new Consul.ConfigEntry(\"proxyDefaults\", new Consul.ConfigEntryArgs\n        {\n            Kind = \"proxy-defaults\",\n            ConfigJson = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n            {\n                { \"Config\", new Dictionary\u003cstring, object?\u003e\n                {\n                    { \"local_connect_timeout_ms\", 1000 },\n                    { \"handshake_timeout_ms\", 10000 },\n                } },\n            }),\n        });\n        var web = new Consul.ConfigEntry(\"web\", new Consul.ConfigEntryArgs\n        {\n            Kind = \"service-defaults\",\n            ConfigJson = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n            {\n                { \"Protocol\", \"http\" },\n            }),\n        });\n        var admin = new Consul.ConfigEntry(\"admin\", new Consul.ConfigEntryArgs\n        {\n            Kind = \"service-defaults\",\n            ConfigJson = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n            {\n                { \"Protocol\", \"http\" },\n            }),\n        });\n        var serviceResolver = new Consul.ConfigEntry(\"serviceResolver\", new Consul.ConfigEntryArgs\n        {\n            Kind = \"service-resolver\",\n            ConfigJson = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n            {\n                { \"DefaultSubset\", \"v1\" },\n                { \"Subsets\", new Dictionary\u003cstring, object?\u003e\n                {\n                    { \"v1\", new Dictionary\u003cstring, object?\u003e\n                    {\n                        { \"Filter\", \"Service.Meta.version == v1\" },\n                    } },\n                    { \"v2\", new Dictionary\u003cstring, object?\u003e\n                    {\n                        { \"Filter\", \"Service.Meta.version == v2\" },\n                    } },\n                } },\n            }),\n        });\n        var serviceSplitter = new Consul.ConfigEntry(\"serviceSplitter\", new Consul.ConfigEntryArgs\n        {\n            Kind = \"service-splitter\",\n            ConfigJson = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n            {\n                { \"Splits\", new[]\n                    {\n                        new Dictionary\u003cstring, object?\u003e\n                        {\n                            { \"Weight\", 90 },\n                            { \"ServiceSubset\", \"v1\" },\n                        },\n                        new Dictionary\u003cstring, object?\u003e\n                        {\n                            { \"Weight\", 10 },\n                            { \"ServiceSubset\", \"v2\" },\n                        },\n                    }\n                 },\n            }),\n        });\n        var serviceRouter = new Consul.ConfigEntry(\"serviceRouter\", new Consul.ConfigEntryArgs\n        {\n            Kind = \"service-router\",\n            ConfigJson = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n            {\n                { \"Routes\", new[]\n                    {\n                        new Dictionary\u003cstring, object?\u003e\n                        {\n                            { \"Match\", new Dictionary\u003cstring, object?\u003e\n                            {\n                                { \"HTTP\", new Dictionary\u003cstring, object?\u003e\n                                {\n                                    { \"PathPrefix\", \"/admin\" },\n                                } },\n                            } },\n                            { \"Destination\", new Dictionary\u003cstring, object?\u003e\n                            {\n                                { \"Service\", \"admin\" },\n                            } },\n                        },\n                    }\n                 },\n            }),\n        });\n        var ingressGateway = new Consul.ConfigEntry(\"ingressGateway\", new Consul.ConfigEntryArgs\n        {\n            Kind = \"ingress-gateway\",\n            ConfigJson = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n            {\n                { \"TLS\", new Dictionary\u003cstring, object?\u003e\n                {\n                    { \"Enabled\", true },\n                } },\n                { \"Listeners\", new[]\n                    {\n                        new Dictionary\u003cstring, object?\u003e\n                        {\n                            { \"Port\", 8000 },\n                            { \"Protocol\", \"http\" },\n                            { \"Services\", new[]\n                                {\n                                    new Dictionary\u003cstring, object?\u003e\n                                    {\n                                        { \"Name\", \"*\" },\n                                    },\n                                }\n                             },\n                        },\n                    }\n                 },\n            }),\n        });\n        var terminatingGateway = new Consul.ConfigEntry(\"terminatingGateway\", new Consul.ConfigEntryArgs\n        {\n            Kind = \"terminating-gateway\",\n            ConfigJson = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n            {\n                { \"Services\", new[]\n                    {\n                        new Dictionary\u003cstring, object?\u003e\n                        {\n                            { \"Name\", \"billing\" },\n                        },\n                    }\n                 },\n            }),\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"encoding/json\"\n\n\t\"github.com/pulumi/pulumi-consul/sdk/v3/go/consul\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\ttmpJSON0, err := json.Marshal(map[string]interface{}{\n\t\t\t\"Config\": map[string]interface{}{\n\t\t\t\t\"local_connect_timeout_ms\": 1000,\n\t\t\t\t\"handshake_timeout_ms\":     10000,\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson0 := string(tmpJSON0)\n\t\t_, err := consul.NewConfigEntry(ctx, \"proxyDefaults\", \u0026consul.ConfigEntryArgs{\n\t\t\tKind:       pulumi.String(\"proxy-defaults\"),\n\t\t\tConfigJson: pulumi.String(json0),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttmpJSON1, err := json.Marshal(map[string]interface{}{\n\t\t\t\"Protocol\": \"http\",\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson1 := string(tmpJSON1)\n\t\t_, err = consul.NewConfigEntry(ctx, \"web\", \u0026consul.ConfigEntryArgs{\n\t\t\tKind:       pulumi.String(\"service-defaults\"),\n\t\t\tConfigJson: pulumi.String(json1),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttmpJSON2, err := json.Marshal(map[string]interface{}{\n\t\t\t\"Protocol\": \"http\",\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson2 := string(tmpJSON2)\n\t\t_, err = consul.NewConfigEntry(ctx, \"admin\", \u0026consul.ConfigEntryArgs{\n\t\t\tKind:       pulumi.String(\"service-defaults\"),\n\t\t\tConfigJson: pulumi.String(json2),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttmpJSON3, err := json.Marshal(map[string]interface{}{\n\t\t\t\"DefaultSubset\": \"v1\",\n\t\t\t\"Subsets\": map[string]interface{}{\n\t\t\t\t\"v1\": map[string]interface{}{\n\t\t\t\t\t\"Filter\": \"Service.Meta.version == v1\",\n\t\t\t\t},\n\t\t\t\t\"v2\": map[string]interface{}{\n\t\t\t\t\t\"Filter\": \"Service.Meta.version == v2\",\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson3 := string(tmpJSON3)\n\t\t_, err = consul.NewConfigEntry(ctx, \"serviceResolver\", \u0026consul.ConfigEntryArgs{\n\t\t\tKind:       pulumi.String(\"service-resolver\"),\n\t\t\tConfigJson: pulumi.String(json3),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttmpJSON4, err := json.Marshal(map[string]interface{}{\n\t\t\t\"Splits\": []interface{}{\n\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\"Weight\":        90,\n\t\t\t\t\t\"ServiceSubset\": \"v1\",\n\t\t\t\t},\n\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\"Weight\":        10,\n\t\t\t\t\t\"ServiceSubset\": \"v2\",\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson4 := string(tmpJSON4)\n\t\t_, err = consul.NewConfigEntry(ctx, \"serviceSplitter\", \u0026consul.ConfigEntryArgs{\n\t\t\tKind:       pulumi.String(\"service-splitter\"),\n\t\t\tConfigJson: pulumi.String(json4),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttmpJSON5, err := json.Marshal(map[string]interface{}{\n\t\t\t\"Routes\": []map[string]interface{}{\n\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\"Match\": map[string]interface{}{\n\t\t\t\t\t\t\"HTTP\": map[string]interface{}{\n\t\t\t\t\t\t\t\"PathPrefix\": \"/admin\",\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\t\"Destination\": map[string]interface{}{\n\t\t\t\t\t\t\"Service\": \"admin\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson5 := string(tmpJSON5)\n\t\t_, err = consul.NewConfigEntry(ctx, \"serviceRouter\", \u0026consul.ConfigEntryArgs{\n\t\t\tKind:       pulumi.String(\"service-router\"),\n\t\t\tConfigJson: pulumi.String(json5),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttmpJSON6, err := json.Marshal(map[string]interface{}{\n\t\t\t\"TLS\": map[string]interface{}{\n\t\t\t\t\"Enabled\": true,\n\t\t\t},\n\t\t\t\"Listeners\": []map[string]interface{}{\n\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\"Port\":     8000,\n\t\t\t\t\t\"Protocol\": \"http\",\n\t\t\t\t\t\"Services\": []map[string]interface{}{\n\t\t\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\t\t\"Name\": \"*\",\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson6 := string(tmpJSON6)\n\t\t_, err = consul.NewConfigEntry(ctx, \"ingressGateway\", \u0026consul.ConfigEntryArgs{\n\t\t\tKind:       pulumi.String(\"ingress-gateway\"),\n\t\t\tConfigJson: pulumi.String(json6),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttmpJSON7, err := json.Marshal(map[string]interface{}{\n\t\t\t\"Services\": []map[string]interface{}{\n\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\"Name\": \"billing\",\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson7 := string(tmpJSON7)\n\t\t_, err = consul.NewConfigEntry(ctx, \"terminatingGateway\", \u0026consul.ConfigEntryArgs{\n\t\t\tKind:       pulumi.String(\"terminating-gateway\"),\n\t\t\tConfigJson: pulumi.String(json7),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### `service-intentions` config entry\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as consul from \"@pulumi/consul\";\n\nconst serviceIntentions = new consul.ConfigEntry(\"serviceIntentions\", {\n    kind: \"service-intentions\",\n    configJson: JSON.stringify({\n        Sources: [\n            {\n                Action: \"allow\",\n                Name: \"frontend-webapp\",\n                Precedence: 9,\n                Type: \"consul\",\n            },\n            {\n                Action: \"allow\",\n                Name: \"nightly-cronjob\",\n                Precedence: 9,\n                Type: \"consul\",\n            },\n        ],\n    }),\n});\n```\n```python\nimport pulumi\nimport json\nimport pulumi_consul as consul\n\nservice_intentions = consul.ConfigEntry(\"serviceIntentions\",\n    kind=\"service-intentions\",\n    config_json=json.dumps({\n        \"Sources\": [\n            {\n                \"Action\": \"allow\",\n                \"Name\": \"frontend-webapp\",\n                \"Precedence\": 9,\n                \"Type\": \"consul\",\n            },\n            {\n                \"Action\": \"allow\",\n                \"Name\": \"nightly-cronjob\",\n                \"Precedence\": 9,\n                \"Type\": \"consul\",\n            },\n        ],\n    }))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Text.Json;\nusing Pulumi;\nusing Consul = Pulumi.Consul;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var serviceIntentions = new Consul.ConfigEntry(\"serviceIntentions\", new Consul.ConfigEntryArgs\n        {\n            Kind = \"service-intentions\",\n            ConfigJson = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n            {\n                { \"Sources\", new[]\n                    {\n                        new Dictionary\u003cstring, object?\u003e\n                        {\n                            { \"Action\", \"allow\" },\n                            { \"Name\", \"frontend-webapp\" },\n                            { \"Precedence\", 9 },\n                            { \"Type\", \"consul\" },\n                        },\n                        new Dictionary\u003cstring, object?\u003e\n                        {\n                            { \"Action\", \"allow\" },\n                            { \"Name\", \"nightly-cronjob\" },\n                            { \"Precedence\", 9 },\n                            { \"Type\", \"consul\" },\n                        },\n                    }\n                 },\n            }),\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"encoding/json\"\n\n\t\"github.com/pulumi/pulumi-consul/sdk/v3/go/consul\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\ttmpJSON0, err := json.Marshal(map[string]interface{}{\n\t\t\t\"Sources\": []map[string]interface{}{\n\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\"Action\":     \"allow\",\n\t\t\t\t\t\"Name\":       \"frontend-webapp\",\n\t\t\t\t\t\"Precedence\": 9,\n\t\t\t\t\t\"Type\":       \"consul\",\n\t\t\t\t},\n\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\"Action\":     \"allow\",\n\t\t\t\t\t\"Name\":       \"nightly-cronjob\",\n\t\t\t\t\t\"Precedence\": 9,\n\t\t\t\t\t\"Type\":       \"consul\",\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson0 := string(tmpJSON0)\n\t\t_, err := consul.NewConfigEntry(ctx, \"serviceIntentions\", \u0026consul.ConfigEntryArgs{\n\t\t\tKind:       pulumi.String(\"service-intentions\"),\n\t\t\tConfigJson: pulumi.String(json0),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as consul from \"@pulumi/consul\";\n\nconst sd = new consul.ConfigEntry(\"sd\", {\n    kind: \"service-defaults\",\n    configJson: JSON.stringify({\n        Protocol: \"http\",\n    }),\n});\nconst serviceIntentions = new consul.ConfigEntry(\"serviceIntentions\", {\n    kind: \"service-intentions\",\n    configJson: JSON.stringify({\n        Sources: [\n            {\n                Name: \"contractor-webapp\",\n                Permissions: [{\n                    Action: \"allow\",\n                    HTTP: {\n                        Methods: [\n                            \"GET\",\n                            \"HEAD\",\n                        ],\n                        PathExact: \"/healtz\",\n                    },\n                }],\n                Precedence: 9,\n                Type: \"consul\",\n            },\n            {\n                Name: \"admin-dashboard-webapp\",\n                Permissions: [\n                    {\n                        Action: \"deny\",\n                        HTTP: {\n                            PathPrefix: \"/debugz\",\n                        },\n                    },\n                    {\n                        Action: \"allow\",\n                        HTTP: {\n                            PathPrefix: \"/\",\n                        },\n                    },\n                ],\n                Precedence: 9,\n                Type: \"consul\",\n            },\n        ],\n    }),\n});\n```\n```python\nimport pulumi\nimport json\nimport pulumi_consul as consul\n\nsd = consul.ConfigEntry(\"sd\",\n    kind=\"service-defaults\",\n    config_json=json.dumps({\n        \"Protocol\": \"http\",\n    }))\nservice_intentions = consul.ConfigEntry(\"serviceIntentions\",\n    kind=\"service-intentions\",\n    config_json=json.dumps({\n        \"Sources\": [\n            {\n                \"Name\": \"contractor-webapp\",\n                \"Permissions\": [{\n                    \"Action\": \"allow\",\n                    \"HTTP\": {\n                        \"Methods\": [\n                            \"GET\",\n                            \"HEAD\",\n                        ],\n                        \"PathExact\": \"/healtz\",\n                    },\n                }],\n                \"Precedence\": 9,\n                \"Type\": \"consul\",\n            },\n            {\n                \"Name\": \"admin-dashboard-webapp\",\n                \"Permissions\": [\n                    {\n                        \"Action\": \"deny\",\n                        \"HTTP\": {\n                            \"PathPrefix\": \"/debugz\",\n                        },\n                    },\n                    {\n                        \"Action\": \"allow\",\n                        \"HTTP\": {\n                            \"PathPrefix\": \"/\",\n                        },\n                    },\n                ],\n                \"Precedence\": 9,\n                \"Type\": \"consul\",\n            },\n        ],\n    }))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Text.Json;\nusing Pulumi;\nusing Consul = Pulumi.Consul;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var sd = new Consul.ConfigEntry(\"sd\", new Consul.ConfigEntryArgs\n        {\n            Kind = \"service-defaults\",\n            ConfigJson = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n            {\n                { \"Protocol\", \"http\" },\n            }),\n        });\n        var serviceIntentions = new Consul.ConfigEntry(\"serviceIntentions\", new Consul.ConfigEntryArgs\n        {\n            Kind = \"service-intentions\",\n            ConfigJson = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n            {\n                { \"Sources\", new[]\n                    {\n                        new Dictionary\u003cstring, object?\u003e\n                        {\n                            { \"Name\", \"contractor-webapp\" },\n                            { \"Permissions\", new[]\n                                {\n                                    new Dictionary\u003cstring, object?\u003e\n                                    {\n                                        { \"Action\", \"allow\" },\n                                        { \"HTTP\", new Dictionary\u003cstring, object?\u003e\n                                        {\n                                            { \"Methods\", new[]\n                                                {\n                                                    \"GET\",\n                                                    \"HEAD\",\n                                                }\n                                             },\n                                            { \"PathExact\", \"/healtz\" },\n                                        } },\n                                    },\n                                }\n                             },\n                            { \"Precedence\", 9 },\n                            { \"Type\", \"consul\" },\n                        },\n                        new Dictionary\u003cstring, object?\u003e\n                        {\n                            { \"Name\", \"admin-dashboard-webapp\" },\n                            { \"Permissions\", new[]\n                                {\n                                    new Dictionary\u003cstring, object?\u003e\n                                    {\n                                        { \"Action\", \"deny\" },\n                                        { \"HTTP\", new Dictionary\u003cstring, object?\u003e\n                                        {\n                                            { \"PathPrefix\", \"/debugz\" },\n                                        } },\n                                    },\n                                    new Dictionary\u003cstring, object?\u003e\n                                    {\n                                        { \"Action\", \"allow\" },\n                                        { \"HTTP\", new Dictionary\u003cstring, object?\u003e\n                                        {\n                                            { \"PathPrefix\", \"/\" },\n                                        } },\n                                    },\n                                }\n                             },\n                            { \"Precedence\", 9 },\n                            { \"Type\", \"consul\" },\n                        },\n                    }\n                 },\n            }),\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"encoding/json\"\n\n\t\"github.com/pulumi/pulumi-consul/sdk/v3/go/consul\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\ttmpJSON0, err := json.Marshal(map[string]interface{}{\n\t\t\t\"Protocol\": \"http\",\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson0 := string(tmpJSON0)\n\t\t_, err := consul.NewConfigEntry(ctx, \"sd\", \u0026consul.ConfigEntryArgs{\n\t\t\tKind:       pulumi.String(\"service-defaults\"),\n\t\t\tConfigJson: pulumi.String(json0),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttmpJSON1, err := json.Marshal(map[string]interface{}{\n\t\t\t\"Sources\": []interface{}{\n\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\"Name\": \"contractor-webapp\",\n\t\t\t\t\t\"Permissions\": []map[string]interface{}{\n\t\t\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\t\t\"Action\": \"allow\",\n\t\t\t\t\t\t\t\"HTTP\": map[string]interface{}{\n\t\t\t\t\t\t\t\t\"Methods\": []string{\n\t\t\t\t\t\t\t\t\t\"GET\",\n\t\t\t\t\t\t\t\t\t\"HEAD\",\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t\"PathExact\": \"/healtz\",\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\t\"Precedence\": 9,\n\t\t\t\t\t\"Type\":       \"consul\",\n\t\t\t\t},\n\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\"Name\": \"admin-dashboard-webapp\",\n\t\t\t\t\t\"Permissions\": []map[string]interface{}{\n\t\t\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\t\t\"Action\": \"deny\",\n\t\t\t\t\t\t\t\"HTTP\": map[string]interface{}{\n\t\t\t\t\t\t\t\t\"PathPrefix\": \"/debugz\",\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\t\t\"Action\": \"allow\",\n\t\t\t\t\t\t\t\"HTTP\": map[string]interface{}{\n\t\t\t\t\t\t\t\t\"PathPrefix\": \"/\",\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\t\"Precedence\": 9,\n\t\t\t\t\t\"Type\":       \"consul\",\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson1 := string(tmpJSON1)\n\t\t_, err = consul.NewConfigEntry(ctx, \"serviceIntentions\", \u0026consul.ConfigEntryArgs{\n\t\t\tKind:       pulumi.String(\"service-intentions\"),\n\t\t\tConfigJson: pulumi.String(json1),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as consul from \"@pulumi/consul\";\n\nconst proxyDefaults = new consul.ConfigEntry(\"proxyDefaults\", {\n    kind: \"proxy-defaults\",\n    configJson: JSON.stringify({\n        Config: {\n            local_connect_timeout_ms: 1000,\n            handshake_timeout_ms: 10000,\n        },\n    }),\n});\nconst web = new consul.ConfigEntry(\"web\", {\n    kind: \"service-defaults\",\n    configJson: JSON.stringify({\n        Protocol: \"http\",\n    }),\n});\nconst admin = new consul.ConfigEntry(\"admin\", {\n    kind: \"service-defaults\",\n    configJson: JSON.stringify({\n        Protocol: \"http\",\n    }),\n});\nconst serviceResolver = new consul.ConfigEntry(\"serviceResolver\", {\n    kind: \"service-resolver\",\n    configJson: JSON.stringify({\n        DefaultSubset: \"v1\",\n        Subsets: {\n            v1: {\n                Filter: \"Service.Meta.version == v1\",\n            },\n            v2: {\n                Filter: \"Service.Meta.version == v2\",\n            },\n        },\n    }),\n});\nconst serviceSplitter = new consul.ConfigEntry(\"serviceSplitter\", {\n    kind: \"service-splitter\",\n    configJson: JSON.stringify({\n        Splits: [\n            {\n                Weight: 90,\n                ServiceSubset: \"v1\",\n            },\n            {\n                Weight: 10,\n                ServiceSubset: \"v2\",\n            },\n        ],\n    }),\n});\nconst serviceRouter = new consul.ConfigEntry(\"serviceRouter\", {\n    kind: \"service-router\",\n    configJson: JSON.stringify({\n        Routes: [{\n            Match: {\n                HTTP: {\n                    PathPrefix: \"/admin\",\n                },\n            },\n            Destination: {\n                Service: \"admin\",\n            },\n        }],\n    }),\n});\nconst ingressGateway = new consul.ConfigEntry(\"ingressGateway\", {\n    kind: \"ingress-gateway\",\n    configJson: JSON.stringify({\n        TLS: {\n            Enabled: true,\n        },\n        Listeners: [{\n            Port: 8000,\n            Protocol: \"http\",\n            Services: [{\n                Name: \"*\",\n            }],\n        }],\n    }),\n});\nconst terminatingGateway = new consul.ConfigEntry(\"terminatingGateway\", {\n    kind: \"terminating-gateway\",\n    configJson: JSON.stringify({\n        Services: [{\n            Name: \"billing\",\n        }],\n    }),\n});\n```\n```python\nimport pulumi\nimport json\nimport pulumi_consul as consul\n\nproxy_defaults = consul.ConfigEntry(\"proxyDefaults\",\n    kind=\"proxy-defaults\",\n    config_json=json.dumps({\n        \"Config\": {\n            \"local_connect_timeout_ms\": 1000,\n            \"handshake_timeout_ms\": 10000,\n        },\n    }))\nweb = consul.ConfigEntry(\"web\",\n    kind=\"service-defaults\",\n    config_json=json.dumps({\n        \"Protocol\": \"http\",\n    }))\nadmin = consul.ConfigEntry(\"admin\",\n    kind=\"service-defaults\",\n    config_json=json.dumps({\n        \"Protocol\": \"http\",\n    }))\nservice_resolver = consul.ConfigEntry(\"serviceResolver\",\n    kind=\"service-resolver\",\n    config_json=json.dumps({\n        \"DefaultSubset\": \"v1\",\n        \"Subsets\": {\n            \"v1\": {\n                \"Filter\": \"Service.Meta.version == v1\",\n            },\n            \"v2\": {\n                \"Filter\": \"Service.Meta.version == v2\",\n            },\n        },\n    }))\nservice_splitter = consul.ConfigEntry(\"serviceSplitter\",\n    kind=\"service-splitter\",\n    config_json=json.dumps({\n        \"Splits\": [\n            {\n                \"Weight\": 90,\n                \"ServiceSubset\": \"v1\",\n            },\n            {\n                \"Weight\": 10,\n                \"ServiceSubset\": \"v2\",\n            },\n        ],\n    }))\nservice_router = consul.ConfigEntry(\"serviceRouter\",\n    kind=\"service-router\",\n    config_json=json.dumps({\n        \"Routes\": [{\n            \"Match\": {\n                \"HTTP\": {\n                    \"PathPrefix\": \"/admin\",\n                },\n            },\n            \"Destination\": {\n                \"Service\": \"admin\",\n            },\n        }],\n    }))\ningress_gateway = consul.ConfigEntry(\"ingressGateway\",\n    kind=\"ingress-gateway\",\n    config_json=json.dumps({\n        \"TLS\": {\n            \"Enabled\": True,\n        },\n        \"Listeners\": [{\n            \"Port\": 8000,\n            \"Protocol\": \"http\",\n            \"Services\": [{\n                \"Name\": \"*\",\n            }],\n        }],\n    }))\nterminating_gateway = consul.ConfigEntry(\"terminatingGateway\",\n    kind=\"terminating-gateway\",\n    config_json=json.dumps({\n        \"Services\": [{\n            \"Name\": \"billing\",\n        }],\n    }))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Text.Json;\nusing Pulumi;\nusing Consul = Pulumi.Consul;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var proxyDefaults = new Consul.ConfigEntry(\"proxyDefaults\", new Consul.ConfigEntryArgs\n        {\n            Kind = \"proxy-defaults\",\n            ConfigJson = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n            {\n                { \"Config\", new Dictionary\u003cstring, object?\u003e\n                {\n                    { \"local_connect_timeout_ms\", 1000 },\n                    { \"handshake_timeout_ms\", 10000 },\n                } },\n            }),\n        });\n        var web = new Consul.ConfigEntry(\"web\", new Consul.ConfigEntryArgs\n        {\n            Kind = \"service-defaults\",\n            ConfigJson = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n            {\n                { \"Protocol\", \"http\" },\n            }),\n        });\n        var admin = new Consul.ConfigEntry(\"admin\", new Consul.ConfigEntryArgs\n        {\n            Kind = \"service-defaults\",\n            ConfigJson = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n            {\n                { \"Protocol\", \"http\" },\n            }),\n        });\n        var serviceResolver = new Consul.ConfigEntry(\"serviceResolver\", new Consul.ConfigEntryArgs\n        {\n            Kind = \"service-resolver\",\n            ConfigJson = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n            {\n                { \"DefaultSubset\", \"v1\" },\n                { \"Subsets\", new Dictionary\u003cstring, object?\u003e\n                {\n                    { \"v1\", new Dictionary\u003cstring, object?\u003e\n                    {\n                        { \"Filter\", \"Service.Meta.version == v1\" },\n                    } },\n                    { \"v2\", new Dictionary\u003cstring, object?\u003e\n                    {\n                        { \"Filter\", \"Service.Meta.version == v2\" },\n                    } },\n                } },\n            }),\n        });\n        var serviceSplitter = new Consul.ConfigEntry(\"serviceSplitter\", new Consul.ConfigEntryArgs\n        {\n            Kind = \"service-splitter\",\n            ConfigJson = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n            {\n                { \"Splits\", new[]\n                    {\n                        new Dictionary\u003cstring, object?\u003e\n                        {\n                            { \"Weight\", 90 },\n                            { \"ServiceSubset\", \"v1\" },\n                        },\n                        new Dictionary\u003cstring, object?\u003e\n                        {\n                            { \"Weight\", 10 },\n                            { \"ServiceSubset\", \"v2\" },\n                        },\n                    }\n                 },\n            }),\n        });\n        var serviceRouter = new Consul.ConfigEntry(\"serviceRouter\", new Consul.ConfigEntryArgs\n        {\n            Kind = \"service-router\",\n            ConfigJson = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n            {\n                { \"Routes\", new[]\n                    {\n                        new Dictionary\u003cstring, object?\u003e\n                        {\n                            { \"Match\", new Dictionary\u003cstring, object?\u003e\n                            {\n                                { \"HTTP\", new Dictionary\u003cstring, object?\u003e\n                                {\n                                    { \"PathPrefix\", \"/admin\" },\n                                } },\n                            } },\n                            { \"Destination\", new Dictionary\u003cstring, object?\u003e\n                            {\n                                { \"Service\", \"admin\" },\n                            } },\n                        },\n                    }\n                 },\n            }),\n        });\n        var ingressGateway = new Consul.ConfigEntry(\"ingressGateway\", new Consul.ConfigEntryArgs\n        {\n            Kind = \"ingress-gateway\",\n            ConfigJson = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n            {\n                { \"TLS\", new Dictionary\u003cstring, object?\u003e\n                {\n                    { \"Enabled\", true },\n                } },\n                { \"Listeners\", new[]\n                    {\n                        new Dictionary\u003cstring, object?\u003e\n                        {\n                            { \"Port\", 8000 },\n                            { \"Protocol\", \"http\" },\n                            { \"Services\", new[]\n                                {\n                                    new Dictionary\u003cstring, object?\u003e\n                                    {\n                                        { \"Name\", \"*\" },\n                                    },\n                                }\n                             },\n                        },\n                    }\n                 },\n            }),\n        });\n        var terminatingGateway = new Consul.ConfigEntry(\"terminatingGateway\", new Consul.ConfigEntryArgs\n        {\n            Kind = \"terminating-gateway\",\n            ConfigJson = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n            {\n                { \"Services\", new[]\n                    {\n                        new Dictionary\u003cstring, object?\u003e\n                        {\n                            { \"Name\", \"billing\" },\n                        },\n                    }\n                 },\n            }),\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"encoding/json\"\n\n\t\"github.com/pulumi/pulumi-consul/sdk/v3/go/consul\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\ttmpJSON0, err := json.Marshal(map[string]interface{}{\n\t\t\t\"Config\": map[string]interface{}{\n\t\t\t\t\"local_connect_timeout_ms\": 1000,\n\t\t\t\t\"handshake_timeout_ms\":     10000,\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson0 := string(tmpJSON0)\n\t\t_, err := consul.NewConfigEntry(ctx, \"proxyDefaults\", \u0026consul.ConfigEntryArgs{\n\t\t\tKind:       pulumi.String(\"proxy-defaults\"),\n\t\t\tConfigJson: pulumi.String(json0),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttmpJSON1, err := json.Marshal(map[string]interface{}{\n\t\t\t\"Protocol\": \"http\",\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson1 := string(tmpJSON1)\n\t\t_, err = consul.NewConfigEntry(ctx, \"web\", \u0026consul.ConfigEntryArgs{\n\t\t\tKind:       pulumi.String(\"service-defaults\"),\n\t\t\tConfigJson: pulumi.String(json1),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttmpJSON2, err := json.Marshal(map[string]interface{}{\n\t\t\t\"Protocol\": \"http\",\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson2 := string(tmpJSON2)\n\t\t_, err = consul.NewConfigEntry(ctx, \"admin\", \u0026consul.ConfigEntryArgs{\n\t\t\tKind:       pulumi.String(\"service-defaults\"),\n\t\t\tConfigJson: pulumi.String(json2),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttmpJSON3, err := json.Marshal(map[string]interface{}{\n\t\t\t\"DefaultSubset\": \"v1\",\n\t\t\t\"Subsets\": map[string]interface{}{\n\t\t\t\t\"v1\": map[string]interface{}{\n\t\t\t\t\t\"Filter\": \"Service.Meta.version == v1\",\n\t\t\t\t},\n\t\t\t\t\"v2\": map[string]interface{}{\n\t\t\t\t\t\"Filter\": \"Service.Meta.version == v2\",\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson3 := string(tmpJSON3)\n\t\t_, err = consul.NewConfigEntry(ctx, \"serviceResolver\", \u0026consul.ConfigEntryArgs{\n\t\t\tKind:       pulumi.String(\"service-resolver\"),\n\t\t\tConfigJson: pulumi.String(json3),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttmpJSON4, err := json.Marshal(map[string]interface{}{\n\t\t\t\"Splits\": []interface{}{\n\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\"Weight\":        90,\n\t\t\t\t\t\"ServiceSubset\": \"v1\",\n\t\t\t\t},\n\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\"Weight\":        10,\n\t\t\t\t\t\"ServiceSubset\": \"v2\",\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson4 := string(tmpJSON4)\n\t\t_, err = consul.NewConfigEntry(ctx, \"serviceSplitter\", \u0026consul.ConfigEntryArgs{\n\t\t\tKind:       pulumi.String(\"service-splitter\"),\n\t\t\tConfigJson: pulumi.String(json4),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttmpJSON5, err := json.Marshal(map[string]interface{}{\n\t\t\t\"Routes\": []map[string]interface{}{\n\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\"Match\": map[string]interface{}{\n\t\t\t\t\t\t\"HTTP\": map[string]interface{}{\n\t\t\t\t\t\t\t\"PathPrefix\": \"/admin\",\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\t\"Destination\": map[string]interface{}{\n\t\t\t\t\t\t\"Service\": \"admin\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson5 := string(tmpJSON5)\n\t\t_, err = consul.NewConfigEntry(ctx, \"serviceRouter\", \u0026consul.ConfigEntryArgs{\n\t\t\tKind:       pulumi.String(\"service-router\"),\n\t\t\tConfigJson: pulumi.String(json5),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttmpJSON6, err := json.Marshal(map[string]interface{}{\n\t\t\t\"TLS\": map[string]interface{}{\n\t\t\t\t\"Enabled\": true,\n\t\t\t},\n\t\t\t\"Listeners\": []map[string]interface{}{\n\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\"Port\":     8000,\n\t\t\t\t\t\"Protocol\": \"http\",\n\t\t\t\t\t\"Services\": []map[string]interface{}{\n\t\t\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\t\t\"Name\": \"*\",\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson6 := string(tmpJSON6)\n\t\t_, err = consul.NewConfigEntry(ctx, \"ingressGateway\", \u0026consul.ConfigEntryArgs{\n\t\t\tKind:       pulumi.String(\"ingress-gateway\"),\n\t\t\tConfigJson: pulumi.String(json6),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttmpJSON7, err := json.Marshal(map[string]interface{}{\n\t\t\t\"Services\": []map[string]interface{}{\n\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\"Name\": \"billing\",\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson7 := string(tmpJSON7)\n\t\t_, err = consul.NewConfigEntry(ctx, \"terminatingGateway\", \u0026consul.ConfigEntryArgs{\n\t\t\tKind:       pulumi.String(\"terminating-gateway\"),\n\t\t\tConfigJson: pulumi.String(json7),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### `service-intentions` config entry\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as consul from \"@pulumi/consul\";\n\nconst serviceIntentions = new consul.ConfigEntry(\"serviceIntentions\", {\n    kind: \"service-intentions\",\n    configJson: JSON.stringify({\n        Sources: [\n            {\n                Action: \"allow\",\n                Name: \"frontend-webapp\",\n                Precedence: 9,\n                Type: \"consul\",\n            },\n            {\n                Action: \"allow\",\n                Name: \"nightly-cronjob\",\n                Precedence: 9,\n                Type: \"consul\",\n            },\n        ],\n    }),\n});\n```\n```python\nimport pulumi\nimport json\nimport pulumi_consul as consul\n\nservice_intentions = consul.ConfigEntry(\"serviceIntentions\",\n    kind=\"service-intentions\",\n    config_json=json.dumps({\n        \"Sources\": [\n            {\n                \"Action\": \"allow\",\n                \"Name\": \"frontend-webapp\",\n                \"Precedence\": 9,\n                \"Type\": \"consul\",\n            },\n            {\n                \"Action\": \"allow\",\n                \"Name\": \"nightly-cronjob\",\n                \"Precedence\": 9,\n                \"Type\": \"consul\",\n            },\n        ],\n    }))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Text.Json;\nusing Pulumi;\nusing Consul = Pulumi.Consul;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var serviceIntentions = new Consul.ConfigEntry(\"serviceIntentions\", new Consul.ConfigEntryArgs\n        {\n            Kind = \"service-intentions\",\n            ConfigJson = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n            {\n                { \"Sources\", new[]\n                    {\n                        new Dictionary\u003cstring, object?\u003e\n                        {\n                            { \"Action\", \"allow\" },\n                            { \"Name\", \"frontend-webapp\" },\n                            { \"Precedence\", 9 },\n                            { \"Type\", \"consul\" },\n                        },\n                        new Dictionary\u003cstring, object?\u003e\n                        {\n                            { \"Action\", \"allow\" },\n                            { \"Name\", \"nightly-cronjob\" },\n                            { \"Precedence\", 9 },\n                            { \"Type\", \"consul\" },\n                        },\n                    }\n                 },\n            }),\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"encoding/json\"\n\n\t\"github.com/pulumi/pulumi-consul/sdk/v3/go/consul\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\ttmpJSON0, err := json.Marshal(map[string]interface{}{\n\t\t\t\"Sources\": []map[string]interface{}{\n\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\"Action\":     \"allow\",\n\t\t\t\t\t\"Name\":       \"frontend-webapp\",\n\t\t\t\t\t\"Precedence\": 9,\n\t\t\t\t\t\"Type\":       \"consul\",\n\t\t\t\t},\n\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\"Action\":     \"allow\",\n\t\t\t\t\t\"Name\":       \"nightly-cronjob\",\n\t\t\t\t\t\"Precedence\": 9,\n\t\t\t\t\t\"Type\":       \"consul\",\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson0 := string(tmpJSON0)\n\t\t_, err := consul.NewConfigEntry(ctx, \"serviceIntentions\", \u0026consul.ConfigEntryArgs{\n\t\t\tKind:       pulumi.String(\"service-intentions\"),\n\t\t\tConfigJson: pulumi.String(json0),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as consul from \"@pulumi/consul\";\n\nconst sd = new consul.ConfigEntry(\"sd\", {\n    kind: \"service-defaults\",\n    configJson: JSON.stringify({\n        Protocol: \"http\",\n    }),\n});\nconst serviceIntentions = new consul.ConfigEntry(\"serviceIntentions\", {\n    kind: \"service-intentions\",\n    configJson: JSON.stringify({\n        Sources: [\n            {\n                Name: \"contractor-webapp\",\n                Permissions: [{\n                    Action: \"allow\",\n                    HTTP: {\n                        Methods: [\n                            \"GET\",\n                            \"HEAD\",\n                        ],\n                        PathExact: \"/healtz\",\n                    },\n                }],\n                Precedence: 9,\n                Type: \"consul\",\n            },\n            {\n                Name: \"admin-dashboard-webapp\",\n                Permissions: [\n                    {\n                        Action: \"deny\",\n                        HTTP: {\n                            PathPrefix: \"/debugz\",\n                        },\n                    },\n                    {\n                        Action: \"allow\",\n                        HTTP: {\n                            PathPrefix: \"/\",\n                        },\n                    },\n                ],\n                Precedence: 9,\n                Type: \"consul\",\n            },\n        ],\n    }),\n});\n```\n```python\nimport pulumi\nimport json\nimport pulumi_consul as consul\n\nsd = consul.ConfigEntry(\"sd\",\n    kind=\"service-defaults\",\n    config_json=json.dumps({\n        \"Protocol\": \"http\",\n    }))\nservice_intentions = consul.ConfigEntry(\"serviceIntentions\",\n    kind=\"service-intentions\",\n    config_json=json.dumps({\n        \"Sources\": [\n            {\n                \"Name\": \"contractor-webapp\",\n                \"Permissions\": [{\n                    \"Action\": \"allow\",\n                    \"HTTP\": {\n                        \"Methods\": [\n                            \"GET\",\n                            \"HEAD\",\n                        ],\n                        \"PathExact\": \"/healtz\",\n                    },\n                }],\n                \"Precedence\": 9,\n                \"Type\": \"consul\",\n            },\n            {\n                \"Name\": \"admin-dashboard-webapp\",\n                \"Permissions\": [\n                    {\n                        \"Action\": \"deny\",\n                        \"HTTP\": {\n                            \"PathPrefix\": \"/debugz\",\n                        },\n                    },\n                    {\n                        \"Action\": \"allow\",\n                        \"HTTP\": {\n                            \"PathPrefix\": \"/\",\n                        },\n                    },\n                ],\n                \"Precedence\": 9,\n                \"Type\": \"consul\",\n            },\n        ],\n    }))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Text.Json;\nusing Pulumi;\nusing Consul = Pulumi.Consul;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var sd = new Consul.ConfigEntry(\"sd\", new Consul.ConfigEntryArgs\n        {\n            Kind = \"service-defaults\",\n            ConfigJson = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n            {\n                { \"Protocol\", \"http\" },\n            }),\n        });\n        var serviceIntentions = new Consul.ConfigEntry(\"serviceIntentions\", new Consul.ConfigEntryArgs\n        {\n            Kind = \"service-intentions\",\n            ConfigJson = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n            {\n                { \"Sources\", new[]\n                    {\n                        new Dictionary\u003cstring, object?\u003e\n                        {\n                            { \"Name\", \"contractor-webapp\" },\n                            { \"Permissions\", new[]\n                                {\n                                    new Dictionary\u003cstring, object?\u003e\n                                    {\n                                        { \"Action\", \"allow\" },\n                                        { \"HTTP\", new Dictionary\u003cstring, object?\u003e\n                                        {\n                                            { \"Methods\", new[]\n                                                {\n                                                    \"GET\",\n                                                    \"HEAD\",\n                                                }\n                                             },\n                                            { \"PathExact\", \"/healtz\" },\n                                        } },\n                                    },\n                                }\n                             },\n                            { \"Precedence\", 9 },\n                            { \"Type\", \"consul\" },\n                        },\n                        new Dictionary\u003cstring, object?\u003e\n                        {\n                            { \"Name\", \"admin-dashboard-webapp\" },\n                            { \"Permissions\", new[]\n                                {\n                                    new Dictionary\u003cstring, object?\u003e\n                                    {\n                                        { \"Action\", \"deny\" },\n                                        { \"HTTP\", new Dictionary\u003cstring, object?\u003e\n                                        {\n                                            { \"PathPrefix\", \"/debugz\" },\n                                        } },\n                                    },\n                                    new Dictionary\u003cstring, object?\u003e\n                                    {\n                                        { \"Action\", \"allow\" },\n                                        { \"HTTP\", new Dictionary\u003cstring, object?\u003e\n                                        {\n                                            { \"PathPrefix\", \"/\" },\n                                        } },\n                                    },\n                                }\n                             },\n                            { \"Precedence\", 9 },\n                            { \"Type\", \"consul\" },\n                        },\n                    }\n                 },\n            }),\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"encoding/json\"\n\n\t\"github.com/pulumi/pulumi-consul/sdk/v3/go/consul\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\ttmpJSON0, err := json.Marshal(map[string]interface{}{\n\t\t\t\"Protocol\": \"http\",\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson0 := string(tmpJSON0)\n\t\t_, err := consul.NewConfigEntry(ctx, \"sd\", \u0026consul.ConfigEntryArgs{\n\t\t\tKind:       pulumi.String(\"service-defaults\"),\n\t\t\tConfigJson: pulumi.String(json0),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttmpJSON1, err := json.Marshal(map[string]interface{}{\n\t\t\t\"Sources\": []interface{}{\n\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\"Name\": \"contractor-webapp\",\n\t\t\t\t\t\"Permissions\": []map[string]interface{}{\n\t\t\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\t\t\"Action\": \"allow\",\n\t\t\t\t\t\t\t\"HTTP\": map[string]interface{}{\n\t\t\t\t\t\t\t\t\"Methods\": []string{\n\t\t\t\t\t\t\t\t\t\"GET\",\n\t\t\t\t\t\t\t\t\t\"HEAD\",\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t\"PathExact\": \"/healtz\",\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\t\"Precedence\": 9,\n\t\t\t\t\t\"Type\":       \"consul\",\n\t\t\t\t},\n\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\"Name\": \"admin-dashboard-webapp\",\n\t\t\t\t\t\"Permissions\": []map[string]interface{}{\n\t\t\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\t\t\"Action\": \"deny\",\n\t\t\t\t\t\t\t\"HTTP\": map[string]interface{}{\n\t\t\t\t\t\t\t\t\"PathPrefix\": \"/debugz\",\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\t\t\"Action\": \"allow\",\n\t\t\t\t\t\t\t\"HTTP\": map[string]interface{}{\n\t\t\t\t\t\t\t\t\"PathPrefix\": \"/\",\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\t\"Precedence\": 9,\n\t\t\t\t\t\"Type\":       \"consul\",\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson1 := string(tmpJSON1)\n\t\t_, err = consul.NewConfigEntry(ctx, \"serviceIntentions\", \u0026consul.ConfigEntryArgs{\n\t\t\tKind:       pulumi.String(\"service-intentions\"),\n\t\t\tConfigJson: pulumi.String(json1),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### `exported-services` config entry\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as consul from \"@pulumi/consul\";\n\nconst exportedServices = new consul.ConfigEntry(\"exportedServices\", {\n    kind: \"exported-services\",\n    configJson: JSON.stringify({\n        Services: [{\n            Name: \"test\",\n            Namespace: \"default\",\n            Consumers: [{\n                Partition: \"default\",\n            }],\n        }],\n    }),\n});\n```\n```python\nimport pulumi\nimport json\nimport pulumi_consul as consul\n\nexported_services = consul.ConfigEntry(\"exportedServices\",\n    kind=\"exported-services\",\n    config_json=json.dumps({\n        \"Services\": [{\n            \"Name\": \"test\",\n            \"Namespace\": \"default\",\n            \"Consumers\": [{\n                \"Partition\": \"default\",\n            }],\n        }],\n    }))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Text.Json;\nusing Pulumi;\nusing Consul = Pulumi.Consul;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var exportedServices = new Consul.ConfigEntry(\"exportedServices\", new Consul.ConfigEntryArgs\n        {\n            Kind = \"exported-services\",\n            ConfigJson = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n            {\n                { \"Services\", new[]\n                    {\n                        new Dictionary\u003cstring, object?\u003e\n                        {\n                            { \"Name\", \"test\" },\n                            { \"Namespace\", \"default\" },\n                            { \"Consumers\", new[]\n                                {\n                                    new Dictionary\u003cstring, object?\u003e\n                                    {\n                                        { \"Partition\", \"default\" },\n                                    },\n                                }\n                             },\n                        },\n                    }\n                 },\n            }),\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"encoding/json\"\n\n\t\"github.com/pulumi/pulumi-consul/sdk/v3/go/consul\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\ttmpJSON0, err := json.Marshal(map[string]interface{}{\n\t\t\t\"Services\": []map[string]interface{}{\n\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\"Name\":      \"test\",\n\t\t\t\t\t\"Namespace\": \"default\",\n\t\t\t\t\t\"Consumers\": []map[string]interface{}{\n\t\t\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\t\t\"Partition\": \"default\",\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson0 := string(tmpJSON0)\n\t\t_, err := consul.NewConfigEntry(ctx, \"exportedServices\", \u0026consul.ConfigEntryArgs{\n\t\t\tKind:       pulumi.String(\"exported-services\"),\n\t\t\tConfigJson: pulumi.String(json0),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### `mesh` config entry\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as consul from \"@pulumi/consul\";\n\nconst mesh = new consul.ConfigEntry(\"mesh\", {\n    kind: \"mesh\",\n    partition: \"default\",\n    configJson: JSON.stringify({\n        TransparentProxy: {\n            MeshDestinationsOnly: true,\n        },\n    }),\n});\n```\n```python\nimport pulumi\nimport json\nimport pulumi_consul as consul\n\nmesh = consul.ConfigEntry(\"mesh\",\n    kind=\"mesh\",\n    partition=\"default\",\n    config_json=json.dumps({\n        \"TransparentProxy\": {\n            \"MeshDestinationsOnly\": True,\n        },\n    }))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Text.Json;\nusing Pulumi;\nusing Consul = Pulumi.Consul;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var mesh = new Consul.ConfigEntry(\"mesh\", new Consul.ConfigEntryArgs\n        {\n            Kind = \"mesh\",\n            Partition = \"default\",\n            ConfigJson = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n            {\n                { \"TransparentProxy\", new Dictionary\u003cstring, object?\u003e\n                {\n                    { \"MeshDestinationsOnly\", true },\n                } },\n            }),\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"encoding/json\"\n\n\t\"github.com/pulumi/pulumi-consul/sdk/v3/go/consul\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\ttmpJSON0, err := json.Marshal(map[string]interface{}{\n\t\t\t\"TransparentProxy\": map[string]interface{}{\n\t\t\t\t\"MeshDestinationsOnly\": true,\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson0 := string(tmpJSON0)\n\t\t_, err := consul.NewConfigEntry(ctx, \"mesh\", \u0026consul.ConfigEntryArgs{\n\t\t\tKind:       pulumi.String(\"mesh\"),\n\t\t\tPartition:  pulumi.String(\"default\"),\n\t\t\tConfigJson: pulumi.String(json0),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "configJson": {
                     "type": "string",
@@ -3592,6 +3740,10 @@
                 "namespace": {
                     "type": "string",
                     "description": "The namespace to create the config entry within.\n"
+                },
+                "partition": {
+                    "type": "string",
+                    "description": "The partition the config entry is associated with.\n"
                 }
             },
             "required": [
@@ -3614,6 +3766,10 @@
                 "namespace": {
                     "type": "string",
                     "description": "The namespace to create the config entry within.\n"
+                },
+                "partition": {
+                    "type": "string",
+                    "description": "The partition the config entry is associated with.\n"
                 }
             },
             "requiredInputs": [
@@ -3637,6 +3793,10 @@
                     "namespace": {
                         "type": "string",
                         "description": "The namespace to create the config entry within.\n"
+                    },
+                    "partition": {
+                        "type": "string",
+                        "description": "The partition the config entry is associated with.\n"
                     }
                 },
                 "type": "object"
@@ -3782,6 +3942,10 @@
                     "type": "string",
                     "description": "The namespace to create the keys within.\n"
                 },
+                "partition": {
+                    "type": "string",
+                    "description": "The admin partition to create the keys within.\n"
+                },
                 "pathPrefix": {
                     "type": "string",
                     "description": "Specifies the common prefix shared by all keys\nthat will be managed by this resource instance. In most cases this will\nend with a slash, to manage a \"folder\" of keys.\n"
@@ -3817,6 +3981,10 @@
                 "namespace": {
                     "type": "string",
                     "description": "The namespace to create the keys within.\n"
+                },
+                "partition": {
+                    "type": "string",
+                    "description": "The admin partition to create the keys within.\n"
                 },
                 "pathPrefix": {
                     "type": "string",
@@ -3854,6 +4022,10 @@
                     "namespace": {
                         "type": "string",
                         "description": "The namespace to create the keys within.\n"
+                    },
+                    "partition": {
+                        "type": "string",
+                        "description": "The admin partition to create the keys within.\n"
                     },
                     "pathPrefix": {
                         "type": "string",
@@ -3904,6 +4076,10 @@
                     "type": "string",
                     "description": "The namespace to create the keys within.\n"
                 },
+                "partition": {
+                    "type": "string",
+                    "description": "The partition to create the keys within.\n"
+                },
                 "token": {
                     "type": "string",
                     "description": "The ACL token to use. This overrides the\ntoken that the agent provides by default.\n"
@@ -3940,6 +4116,10 @@
                     "type": "string",
                     "description": "The namespace to create the keys within.\n"
                 },
+                "partition": {
+                    "type": "string",
+                    "description": "The partition to create the keys within.\n"
+                },
                 "token": {
                     "type": "string",
                     "description": "The ACL token to use. This overrides the\ntoken that the agent provides by default.\n"
@@ -3967,6 +4147,10 @@
                     "namespace": {
                         "type": "string",
                         "description": "The namespace to create the keys within.\n"
+                    },
+                    "partition": {
+                        "type": "string",
+                        "description": "The partition to create the keys within.\n"
                     },
                     "token": {
                         "type": "string",
@@ -4154,25 +4338,29 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Specifies arbitrary KV metadata to associate with the\nnamespace.\n"
+                    "description": "Specifies arbitrary KV metadata to associate with the namespace.\n"
                 },
                 "name": {
                     "type": "string",
                     "description": "The namespace name.\n"
+                },
+                "partition": {
+                    "type": "string",
+                    "description": "The partition to create the namespace within.\n"
                 },
                 "policyDefaults": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "The list of default policies that should be\napplied to all tokens created in this namespace.\n"
+                    "description": "The list of default policies that should be applied to all tokens created in this namespace.\n"
                 },
                 "roleDefaults": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "The list of default roles that should be applied\nto all tokens created in this namespace.\n"
+                    "description": "The list of default roles that should be applied to all tokens created in this namespace.\n"
                 }
             },
             "required": [
@@ -4188,25 +4376,29 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Specifies arbitrary KV metadata to associate with the\nnamespace.\n"
+                    "description": "Specifies arbitrary KV metadata to associate with the namespace.\n"
                 },
                 "name": {
                     "type": "string",
                     "description": "The namespace name.\n"
+                },
+                "partition": {
+                    "type": "string",
+                    "description": "The partition to create the namespace within.\n"
                 },
                 "policyDefaults": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "The list of default policies that should be\napplied to all tokens created in this namespace.\n"
+                    "description": "The list of default policies that should be applied to all tokens created in this namespace.\n"
                 },
                 "roleDefaults": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "The list of default roles that should be applied\nto all tokens created in this namespace.\n"
+                    "description": "The list of default roles that should be applied to all tokens created in this namespace.\n"
                 }
             },
             "stateInputs": {
@@ -4221,25 +4413,29 @@
                         "additionalProperties": {
                             "type": "string"
                         },
-                        "description": "Specifies arbitrary KV metadata to associate with the\nnamespace.\n"
+                        "description": "Specifies arbitrary KV metadata to associate with the namespace.\n"
                     },
                     "name": {
                         "type": "string",
                         "description": "The namespace name.\n"
+                    },
+                    "partition": {
+                        "type": "string",
+                        "description": "The partition to create the namespace within.\n"
                     },
                     "policyDefaults": {
                         "type": "array",
                         "items": {
                             "type": "string"
                         },
-                        "description": "The list of default policies that should be\napplied to all tokens created in this namespace.\n"
+                        "description": "The list of default policies that should be applied to all tokens created in this namespace.\n"
                     },
                     "roleDefaults": {
                         "type": "array",
                         "items": {
                             "type": "string"
                         },
-                        "description": "The list of default roles that should be applied\nto all tokens created in this namespace.\n"
+                        "description": "The list of default roles that should be applied to all tokens created in this namespace.\n"
                     }
                 },
                 "type": "object"
@@ -4429,11 +4625,11 @@
             "properties": {
                 "address": {
                     "type": "string",
-                    "description": "The address of the node being added to,\nor referenced in the catalog.\n"
+                    "description": "The address of the node being added to, or referenced in the catalog.\n"
                 },
                 "datacenter": {
                     "type": "string",
-                    "description": "The datacenter to use. This overrides the agent's\ndefault datacenter and the datacenter in the provider setup.\n"
+                    "description": "The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.\n"
                 },
                 "meta": {
                     "type": "object",
@@ -4444,7 +4640,11 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the node being added to, or\nreferenced in the catalog.\n"
+                    "description": "The name of the node being added to, or referenced in the catalog.\n"
+                },
+                "partition": {
+                    "type": "string",
+                    "description": "The partition the node is associated with.\n"
                 },
                 "token": {
                     "type": "string"
@@ -4458,11 +4658,11 @@
             "inputProperties": {
                 "address": {
                     "type": "string",
-                    "description": "The address of the node being added to,\nor referenced in the catalog.\n"
+                    "description": "The address of the node being added to, or referenced in the catalog.\n"
                 },
                 "datacenter": {
                     "type": "string",
-                    "description": "The datacenter to use. This overrides the agent's\ndefault datacenter and the datacenter in the provider setup.\n"
+                    "description": "The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.\n"
                 },
                 "meta": {
                     "type": "object",
@@ -4473,7 +4673,11 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the node being added to, or\nreferenced in the catalog.\n"
+                    "description": "The name of the node being added to, or referenced in the catalog.\n"
+                },
+                "partition": {
+                    "type": "string",
+                    "description": "The partition the node is associated with.\n"
                 },
                 "token": {
                     "type": "string"
@@ -4487,11 +4691,11 @@
                 "properties": {
                     "address": {
                         "type": "string",
-                        "description": "The address of the node being added to,\nor referenced in the catalog.\n"
+                        "description": "The address of the node being added to, or referenced in the catalog.\n"
                     },
                     "datacenter": {
                         "type": "string",
-                        "description": "The datacenter to use. This overrides the agent's\ndefault datacenter and the datacenter in the provider setup.\n"
+                        "description": "The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.\n"
                     },
                     "meta": {
                         "type": "object",
@@ -4502,7 +4706,11 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "The name of the node being added to, or\nreferenced in the catalog.\n"
+                        "description": "The name of the node being added to, or referenced in the catalog.\n"
+                    },
+                    "partition": {
+                        "type": "string",
+                        "description": "The partition the node is associated with.\n"
                     },
                     "token": {
                         "type": "string"
@@ -4803,6 +5011,10 @@
                     "type": "string",
                     "description": "The name of the node the to register the service on.\n"
                 },
+                "partition": {
+                    "type": "string",
+                    "description": "The partition the service is associated with.\n"
+                },
                 "port": {
                     "type": "integer",
                     "description": "The port of the service.\n"
@@ -4868,6 +5080,10 @@
                     "type": "string",
                     "description": "The name of the node the to register the service on.\n"
                 },
+                "partition": {
+                    "type": "string",
+                    "description": "The partition the service is associated with.\n"
+                },
                 "port": {
                     "type": "integer",
                     "description": "The port of the service.\n"
@@ -4931,6 +5147,10 @@
                         "type": "string",
                         "description": "The name of the node the to register the service on.\n"
                     },
+                    "partition": {
+                        "type": "string",
+                        "description": "The partition the service is associated with.\n"
+                    },
                     "port": {
                         "type": "integer",
                         "description": "The port of the service.\n"
@@ -4964,6 +5184,10 @@
                     "namespace": {
                         "type": "string",
                         "description": "The namespace to lookup the auth method.\n"
+                    },
+                    "partition": {
+                        "type": "string",
+                        "description": "The partition to lookup the auth method.\n"
                     }
                 },
                 "type": "object",
@@ -5015,6 +5239,9 @@
                         },
                         "description": "(Enterprise Only) A set of rules that control which\nnamespace tokens created via this auth method will be created within\n"
                     },
+                    "partition": {
+                        "type": "string"
+                    },
                     "tokenLocality": {
                         "type": "string",
                         "description": "The kind of token that this auth method produces. This can\nbe either 'local' or 'global'.\n"
@@ -5044,17 +5271,6 @@
             "inputs": {
                 "description": "A collection of arguments for invoking getAclPolicy.\n",
                 "properties": {
-                    "datacenters": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "description": "The datacenters associated with the ACL Policy.\n"
-                    },
-                    "description": {
-                        "type": "string",
-                        "description": "The description of the ACL Policy.\n"
-                    },
                     "name": {
                         "type": "string",
                         "description": "The name of the ACL Policy.\n"
@@ -5063,9 +5279,9 @@
                         "type": "string",
                         "description": "The namespace to lookup the policy.\n"
                     },
-                    "rules": {
+                    "partition": {
                         "type": "string",
-                        "description": "The rules associated with the ACL Policy.\n"
+                        "description": "The partition to lookup the policy.\n"
                     }
                 },
                 "type": "object",
@@ -5097,6 +5313,9 @@
                     "namespace": {
                         "type": "string"
                     },
+                    "partition": {
+                        "type": "string"
+                    },
                     "rules": {
                         "type": "string",
                         "description": "The rules associated with the ACL Policy.\n"
@@ -5104,7 +5323,10 @@
                 },
                 "type": "object",
                 "required": [
+                    "datacenters",
+                    "description",
                     "name",
+                    "rules",
                     "id"
                 ]
             }
@@ -5121,6 +5343,10 @@
                     "namespace": {
                         "type": "string",
                         "description": "The namespace to lookup the role.\n"
+                    },
+                    "partition": {
+                        "type": "string",
+                        "description": "The partition to lookup the role.\n"
                     }
                 },
                 "type": "object",
@@ -5153,6 +5379,9 @@
                             "$ref": "#/types/consul:index/getAclRoleNodeIdentity:getAclRoleNodeIdentity"
                         },
                         "description": "The list of node identities associated with the ACL Role. Each entry has a `node_name` and a `datacenter` attributes.\n"
+                    },
+                    "partition": {
+                        "type": "string"
                     },
                     "policies": {
                         "type": "array",
@@ -5192,6 +5421,10 @@
                     "namespace": {
                         "type": "string",
                         "description": "The namespace to lookup the ACL token.\n"
+                    },
+                    "partition": {
+                        "type": "string",
+                        "description": "The partition to lookup the ACL token.\n"
                     }
                 },
                 "type": "object",
@@ -5230,6 +5463,9 @@
                             "$ref": "#/types/consul:index/getAclTokenNodeIdentity:getAclTokenNodeIdentity"
                         },
                         "description": "The list of node identities attached to the token. Each entry has a `node_name` and a `datacenter` attributes.\n"
+                    },
+                    "partition": {
+                        "type": "string"
                     },
                     "policies": {
                         "type": "array",
@@ -5945,6 +6181,30 @@
                 ]
             }
         },
+        "consul:index/getDatacenters:getDatacenters": {
+            "description": "The `consul.getDatacenters` data source returns the list of all knwown Consul\ndatacenters.\n",
+            "outputs": {
+                "description": "A collection of values returned by getDatacenters.\n",
+                "properties": {
+                    "datacenters": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The list of datacenters known. The datacenters will be sorted\nin ascending order based on the estimated median round trip time from the server\nto the servers in that datacenter.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "datacenters",
+                    "id"
+                ]
+            }
+        },
         "consul:index/getKeyPrefix:getKeyPrefix": {
             "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aws from \"@pulumi/aws\";\nimport * as consul from \"@pulumi/consul\";\n\nconst appKeyPrefix = pulumi.output(consul.getKeyPrefix({\n    datacenter: \"nyc1\",\n    // Prefix to add to prepend to all of the subkey names below.\n    pathPrefix: \"myapp/config/\",\n    // Read the ami subkey\n    subkeyCollection: [{\n        default: \"ami-1234\",\n        name: \"ami\",\n        path: \"app/launch_ami\",\n    }],\n    token: \"abcd\",\n}));\n// Start our instance with the dynamic ami value\nconst appInstance = new aws.ec2.Instance(\"app\", {\n    ami: appKeyPrefix.var.ami,\n});\n```\n```python\nimport pulumi\nimport pulumi_aws as aws\nimport pulumi_consul as consul\n\napp_key_prefix = consul.get_key_prefix(datacenter=\"nyc1\",\n    path_prefix=\"myapp/config/\",\n    subkey_collection=[consul.GetKeyPrefixSubkeyCollectionArgs(\n        default=\"ami-1234\",\n        name=\"ami\",\n        path=\"app/launch_ami\",\n    )],\n    token=\"abcd\")\n# Start our instance with the dynamic ami value\napp_instance = aws.ec2.Instance(\"appInstance\", ami=app_key_prefix.var[\"ami\"])\n```\n```csharp\nusing Pulumi;\nusing Aws = Pulumi.Aws;\nusing Consul = Pulumi.Consul;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var appKeyPrefix = Output.Create(Consul.GetKeyPrefix.InvokeAsync(new Consul.GetKeyPrefixArgs\n        {\n            Datacenter = \"nyc1\",\n            PathPrefix = \"myapp/config/\",\n            SubkeyCollection = \n            {\n                new Consul.Inputs.GetKeyPrefixSubkeyCollectionArgs\n                {\n                    Default = \"ami-1234\",\n                    Name = \"ami\",\n                    Path = \"app/launch_ami\",\n                },\n            },\n            Token = \"abcd\",\n        }));\n        // Start our instance with the dynamic ami value\n        var appInstance = new Aws.Ec2.Instance(\"appInstance\", new Aws.Ec2.InstanceArgs\n        {\n            Ami = appKeyPrefix.Apply(appKeyPrefix =\u003e appKeyPrefix.Var?.Ami),\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aws/sdk/v4/go/aws/ec2\"\n\t\"github.com/pulumi/pulumi-consul/sdk/v3/go/consul\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tappKeyPrefix, err := consul.LookupKeyPrefix(ctx, \u0026GetKeyPrefixArgs{\n\t\t\tDatacenter: pulumi.StringRef(\"nyc1\"),\n\t\t\tPathPrefix: \"myapp/config/\",\n\t\t\tSubkeyCollection: []GetKeyPrefixSubkeyCollection{\n\t\t\t\tGetKeyPrefixSubkeyCollection{\n\t\t\t\t\tDefault: pulumi.StringRef(\"ami-1234\"),\n\t\t\t\t\tName:    \"ami\",\n\t\t\t\t\tPath:    \"app/launch_ami\",\n\t\t\t\t},\n\t\t\t},\n\t\t\tToken: pulumi.StringRef(\"abcd\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = ec2.NewInstance(ctx, \"appInstance\", \u0026ec2.InstanceArgs{\n\t\t\tAmi: pulumi.String(appKeyPrefix.Var.Ami),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aws from \"@pulumi/aws\";\nimport * as consul from \"@pulumi/consul\";\n\nconst webKeyPrefix = pulumi.output(consul.getKeyPrefix({\n    datacenter: \"nyc1\",\n    // Prefix to add to prepend to all of the subkey names below.\n    pathPrefix: \"myapp/config/\",\n    token: \"efgh\",\n}));\n// Start our instance with the dynamic ami value\nconst webInstance = new aws.ec2.Instance(\"web\", {\n    ami: webKeyPrefix.apply(webKeyPrefix =\u003e webKeyPrefix.subkeys[\"app/launch_ami\"]),\n});\n```\n```python\nimport pulumi\nimport pulumi_aws as aws\nimport pulumi_consul as consul\n\nweb_key_prefix = consul.get_key_prefix(datacenter=\"nyc1\",\n    path_prefix=\"myapp/config/\",\n    token=\"efgh\")\n# Start our instance with the dynamic ami value\nweb_instance = aws.ec2.Instance(\"webInstance\", ami=web_key_prefix.subkeys[\"app/launch_ami\"])\n```\n```csharp\nusing Pulumi;\nusing Aws = Pulumi.Aws;\nusing Consul = Pulumi.Consul;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var webKeyPrefix = Output.Create(Consul.GetKeyPrefix.InvokeAsync(new Consul.GetKeyPrefixArgs\n        {\n            Datacenter = \"nyc1\",\n            PathPrefix = \"myapp/config/\",\n            Token = \"efgh\",\n        }));\n        // Start our instance with the dynamic ami value\n        var webInstance = new Aws.Ec2.Instance(\"webInstance\", new Aws.Ec2.InstanceArgs\n        {\n            Ami = webKeyPrefix.Apply(webKeyPrefix =\u003e webKeyPrefix.Subkeys?.App_launch_ami),\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aws/sdk/v4/go/aws/ec2\"\n\t\"github.com/pulumi/pulumi-consul/sdk/v3/go/consul\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\twebKeyPrefix, err := consul.LookupKeyPrefix(ctx, \u0026GetKeyPrefixArgs{\n\t\t\tDatacenter: pulumi.StringRef(\"nyc1\"),\n\t\t\tPathPrefix: \"myapp/config/\",\n\t\t\tToken:      pulumi.StringRef(\"efgh\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = ec2.NewInstance(ctx, \"webInstance\", \u0026ec2.InstanceArgs{\n\t\t\tAmi: pulumi.String(webKeyPrefix.Subkeys.App / launch_ami),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
@@ -5956,7 +6216,11 @@
                     },
                     "namespace": {
                         "type": "string",
-                        "description": "The namespace to create the keys within.\n"
+                        "description": "The namespace to lookup the keys within.\n"
+                    },
+                    "partition": {
+                        "type": "string",
+                        "description": "The namespace to lookup the keys within.\n"
                     },
                     "pathPrefix": {
                         "type": "string",
@@ -5991,6 +6255,9 @@
                         "description": "The provider-assigned unique ID for this managed resource.\n"
                     },
                     "namespace": {
+                        "type": "string"
+                    },
+                    "partition": {
                         "type": "string"
                     },
                     "pathPrefix": {
@@ -6050,6 +6317,10 @@
                         "type": "string",
                         "description": "The namespace to lookup the keys.\n"
                     },
+                    "partition": {
+                        "type": "string",
+                        "description": "The partition to lookup the keys.\n"
+                    },
                     "token": {
                         "type": "string",
                         "description": "The ACL token to use. This overrides the\ntoken that the agent provides by default.\n"
@@ -6075,6 +6346,9 @@
                         }
                     },
                     "namespace": {
+                        "type": "string"
+                    },
+                    "partition": {
                         "type": "string"
                     },
                     "token": {

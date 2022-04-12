@@ -69,6 +69,8 @@ type LookupKeysArgs struct {
 	Keys []GetKeysKey `pulumi:"keys"`
 	// The namespace to lookup the keys.
 	Namespace *string `pulumi:"namespace"`
+	// The partition to lookup the keys.
+	Partition *string `pulumi:"partition"`
 	// The ACL token to use. This overrides the
 	// token that the agent provides by default.
 	Token *string `pulumi:"token"`
@@ -84,6 +86,7 @@ type LookupKeysResult struct {
 	Id        string            `pulumi:"id"`
 	Keys      []GetKeysKey      `pulumi:"keys"`
 	Namespace *string           `pulumi:"namespace"`
+	Partition *string           `pulumi:"partition"`
 	Token     *string           `pulumi:"token"`
 	Var       map[string]string `pulumi:"var"`
 }
@@ -107,6 +110,8 @@ type LookupKeysOutputArgs struct {
 	Keys GetKeysKeyArrayInput `pulumi:"keys"`
 	// The namespace to lookup the keys.
 	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	// The partition to lookup the keys.
+	Partition pulumi.StringPtrInput `pulumi:"partition"`
 	// The ACL token to use. This overrides the
 	// token that the agent provides by default.
 	Token pulumi.StringPtrInput `pulumi:"token"`
@@ -149,6 +154,10 @@ func (o LookupKeysResultOutput) Keys() GetKeysKeyArrayOutput {
 
 func (o LookupKeysResultOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupKeysResult) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupKeysResultOutput) Partition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupKeysResult) *string { return v.Partition }).(pulumi.StringPtrOutput)
 }
 
 func (o LookupKeysResultOutput) Token() pulumi.StringPtrOutput {

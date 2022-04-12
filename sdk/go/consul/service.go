@@ -153,6 +153,8 @@ type Service struct {
 	Namespace pulumi.StringPtrOutput `pulumi:"namespace"`
 	// The name of the node the to register the service on.
 	Node pulumi.StringOutput `pulumi:"node"`
+	// The partition the service is associated with.
+	Partition pulumi.StringPtrOutput `pulumi:"partition"`
 	// The port of the service.
 	Port pulumi.IntPtrOutput `pulumi:"port"`
 	// - If the service ID is not provided, it will be defaulted to the value
@@ -216,6 +218,8 @@ type serviceState struct {
 	Namespace *string `pulumi:"namespace"`
 	// The name of the node the to register the service on.
 	Node *string `pulumi:"node"`
+	// The partition the service is associated with.
+	Partition *string `pulumi:"partition"`
 	// The port of the service.
 	Port *int `pulumi:"port"`
 	// - If the service ID is not provided, it will be defaulted to the value
@@ -248,6 +252,8 @@ type ServiceState struct {
 	Namespace pulumi.StringPtrInput
 	// The name of the node the to register the service on.
 	Node pulumi.StringPtrInput
+	// The partition the service is associated with.
+	Partition pulumi.StringPtrInput
 	// The port of the service.
 	Port pulumi.IntPtrInput
 	// - If the service ID is not provided, it will be defaulted to the value
@@ -284,6 +290,8 @@ type serviceArgs struct {
 	Namespace *string `pulumi:"namespace"`
 	// The name of the node the to register the service on.
 	Node string `pulumi:"node"`
+	// The partition the service is associated with.
+	Partition *string `pulumi:"partition"`
 	// The port of the service.
 	Port *int `pulumi:"port"`
 	// - If the service ID is not provided, it will be defaulted to the value
@@ -317,6 +325,8 @@ type ServiceArgs struct {
 	Namespace pulumi.StringPtrInput
 	// The name of the node the to register the service on.
 	Node pulumi.StringInput
+	// The partition the service is associated with.
+	Partition pulumi.StringPtrInput
 	// The port of the service.
 	Port pulumi.IntPtrInput
 	// - If the service ID is not provided, it will be defaulted to the value

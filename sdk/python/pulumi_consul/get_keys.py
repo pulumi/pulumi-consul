@@ -22,7 +22,7 @@ class GetKeysResult:
     """
     A collection of values returned by getKeys.
     """
-    def __init__(__self__, datacenter=None, id=None, keys=None, namespace=None, token=None, var=None):
+    def __init__(__self__, datacenter=None, id=None, keys=None, namespace=None, partition=None, token=None, var=None):
         if datacenter and not isinstance(datacenter, str):
             raise TypeError("Expected argument 'datacenter' to be a str")
         pulumi.set(__self__, "datacenter", datacenter)
@@ -35,6 +35,9 @@ class GetKeysResult:
         if namespace and not isinstance(namespace, str):
             raise TypeError("Expected argument 'namespace' to be a str")
         pulumi.set(__self__, "namespace", namespace)
+        if partition and not isinstance(partition, str):
+            raise TypeError("Expected argument 'partition' to be a str")
+        pulumi.set(__self__, "partition", partition)
         if token and not isinstance(token, str):
             raise TypeError("Expected argument 'token' to be a str")
         pulumi.set(__self__, "token", token)
@@ -72,6 +75,11 @@ class GetKeysResult:
 
     @property
     @pulumi.getter
+    def partition(self) -> Optional[str]:
+        return pulumi.get(self, "partition")
+
+    @property
+    @pulumi.getter
     def token(self) -> Optional[str]:
         return pulumi.get(self, "token")
 
@@ -91,6 +99,7 @@ class AwaitableGetKeysResult(GetKeysResult):
             id=self.id,
             keys=self.keys,
             namespace=self.namespace,
+            partition=self.partition,
             token=self.token,
             var=self.var)
 
@@ -98,6 +107,7 @@ class AwaitableGetKeysResult(GetKeysResult):
 def get_keys(datacenter: Optional[str] = None,
              keys: Optional[Sequence[pulumi.InputType['GetKeysKeyArgs']]] = None,
              namespace: Optional[str] = None,
+             partition: Optional[str] = None,
              token: Optional[str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKeysResult:
     """
@@ -128,6 +138,7 @@ def get_keys(datacenter: Optional[str] = None,
     :param Sequence[pulumi.InputType['GetKeysKeyArgs']] keys: Specifies a key in Consul to be read. Supported
            values documented below. Multiple blocks supported.
     :param str namespace: The namespace to lookup the keys.
+    :param str partition: The partition to lookup the keys.
     :param str token: The ACL token to use. This overrides the
            token that the agent provides by default.
     """
@@ -135,6 +146,7 @@ def get_keys(datacenter: Optional[str] = None,
     __args__['datacenter'] = datacenter
     __args__['keys'] = keys
     __args__['namespace'] = namespace
+    __args__['partition'] = partition
     __args__['token'] = token
     if opts is None:
         opts = pulumi.InvokeOptions()
@@ -147,6 +159,7 @@ def get_keys(datacenter: Optional[str] = None,
         id=__ret__.id,
         keys=__ret__.keys,
         namespace=__ret__.namespace,
+        partition=__ret__.partition,
         token=__ret__.token,
         var=__ret__.var)
 
@@ -155,6 +168,7 @@ def get_keys(datacenter: Optional[str] = None,
 def get_keys_output(datacenter: Optional[pulumi.Input[Optional[str]]] = None,
                     keys: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetKeysKeyArgs']]]]] = None,
                     namespace: Optional[pulumi.Input[Optional[str]]] = None,
+                    partition: Optional[pulumi.Input[Optional[str]]] = None,
                     token: Optional[pulumi.Input[Optional[str]]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKeysResult]:
     """
@@ -185,6 +199,7 @@ def get_keys_output(datacenter: Optional[pulumi.Input[Optional[str]]] = None,
     :param Sequence[pulumi.InputType['GetKeysKeyArgs']] keys: Specifies a key in Consul to be read. Supported
            values documented below. Multiple blocks supported.
     :param str namespace: The namespace to lookup the keys.
+    :param str partition: The partition to lookup the keys.
     :param str token: The ACL token to use. This overrides the
            token that the agent provides by default.
     """

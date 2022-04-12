@@ -52,16 +52,15 @@ type Namespace struct {
 
 	// Free form namespace description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Specifies arbitrary KV metadata to associate with the
-	// namespace.
+	// Specifies arbitrary KV metadata to associate with the namespace.
 	Meta pulumi.StringMapOutput `pulumi:"meta"`
 	// The namespace name.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The list of default policies that should be
-	// applied to all tokens created in this namespace.
+	// The partition to create the namespace within.
+	Partition pulumi.StringPtrOutput `pulumi:"partition"`
+	// The list of default policies that should be applied to all tokens created in this namespace.
 	PolicyDefaults pulumi.StringArrayOutput `pulumi:"policyDefaults"`
-	// The list of default roles that should be applied
-	// to all tokens created in this namespace.
+	// The list of default roles that should be applied to all tokens created in this namespace.
 	RoleDefaults pulumi.StringArrayOutput `pulumi:"roleDefaults"`
 }
 
@@ -96,32 +95,30 @@ func GetNamespace(ctx *pulumi.Context,
 type namespaceState struct {
 	// Free form namespace description.
 	Description *string `pulumi:"description"`
-	// Specifies arbitrary KV metadata to associate with the
-	// namespace.
+	// Specifies arbitrary KV metadata to associate with the namespace.
 	Meta map[string]string `pulumi:"meta"`
 	// The namespace name.
 	Name *string `pulumi:"name"`
-	// The list of default policies that should be
-	// applied to all tokens created in this namespace.
+	// The partition to create the namespace within.
+	Partition *string `pulumi:"partition"`
+	// The list of default policies that should be applied to all tokens created in this namespace.
 	PolicyDefaults []string `pulumi:"policyDefaults"`
-	// The list of default roles that should be applied
-	// to all tokens created in this namespace.
+	// The list of default roles that should be applied to all tokens created in this namespace.
 	RoleDefaults []string `pulumi:"roleDefaults"`
 }
 
 type NamespaceState struct {
 	// Free form namespace description.
 	Description pulumi.StringPtrInput
-	// Specifies arbitrary KV metadata to associate with the
-	// namespace.
+	// Specifies arbitrary KV metadata to associate with the namespace.
 	Meta pulumi.StringMapInput
 	// The namespace name.
 	Name pulumi.StringPtrInput
-	// The list of default policies that should be
-	// applied to all tokens created in this namespace.
+	// The partition to create the namespace within.
+	Partition pulumi.StringPtrInput
+	// The list of default policies that should be applied to all tokens created in this namespace.
 	PolicyDefaults pulumi.StringArrayInput
-	// The list of default roles that should be applied
-	// to all tokens created in this namespace.
+	// The list of default roles that should be applied to all tokens created in this namespace.
 	RoleDefaults pulumi.StringArrayInput
 }
 
@@ -132,16 +129,15 @@ func (NamespaceState) ElementType() reflect.Type {
 type namespaceArgs struct {
 	// Free form namespace description.
 	Description *string `pulumi:"description"`
-	// Specifies arbitrary KV metadata to associate with the
-	// namespace.
+	// Specifies arbitrary KV metadata to associate with the namespace.
 	Meta map[string]string `pulumi:"meta"`
 	// The namespace name.
 	Name *string `pulumi:"name"`
-	// The list of default policies that should be
-	// applied to all tokens created in this namespace.
+	// The partition to create the namespace within.
+	Partition *string `pulumi:"partition"`
+	// The list of default policies that should be applied to all tokens created in this namespace.
 	PolicyDefaults []string `pulumi:"policyDefaults"`
-	// The list of default roles that should be applied
-	// to all tokens created in this namespace.
+	// The list of default roles that should be applied to all tokens created in this namespace.
 	RoleDefaults []string `pulumi:"roleDefaults"`
 }
 
@@ -149,16 +145,15 @@ type namespaceArgs struct {
 type NamespaceArgs struct {
 	// Free form namespace description.
 	Description pulumi.StringPtrInput
-	// Specifies arbitrary KV metadata to associate with the
-	// namespace.
+	// Specifies arbitrary KV metadata to associate with the namespace.
 	Meta pulumi.StringMapInput
 	// The namespace name.
 	Name pulumi.StringPtrInput
-	// The list of default policies that should be
-	// applied to all tokens created in this namespace.
+	// The partition to create the namespace within.
+	Partition pulumi.StringPtrInput
+	// The list of default policies that should be applied to all tokens created in this namespace.
 	PolicyDefaults pulumi.StringArrayInput
-	// The list of default roles that should be applied
-	// to all tokens created in this namespace.
+	// The list of default roles that should be applied to all tokens created in this namespace.
 	RoleDefaults pulumi.StringArrayInput
 }
 

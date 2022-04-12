@@ -19,6 +19,7 @@ class AclRoleArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  namespace: Optional[pulumi.Input[str]] = None,
                  node_identities: Optional[pulumi.Input[Sequence[pulumi.Input['AclRoleNodeIdentityArgs']]]] = None,
+                 partition: Optional[pulumi.Input[str]] = None,
                  policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_identities: Optional[pulumi.Input[Sequence[pulumi.Input['AclRoleServiceIdentityArgs']]]] = None):
         """
@@ -27,6 +28,7 @@ class AclRoleArgs:
         :param pulumi.Input[str] name: The name of the ACL role.
         :param pulumi.Input[str] namespace: The namespace to create the role within.
         :param pulumi.Input[Sequence[pulumi.Input['AclRoleNodeIdentityArgs']]] node_identities: The list of node identities that should be applied to the role.
+        :param pulumi.Input[str] partition: The partition the ACL role is associated with.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] policies: The list of policies that should be applied to the role.
         :param pulumi.Input[Sequence[pulumi.Input['AclRoleServiceIdentityArgs']]] service_identities: The list of service identities that should be applied to the role.
         """
@@ -38,6 +40,8 @@ class AclRoleArgs:
             pulumi.set(__self__, "namespace", namespace)
         if node_identities is not None:
             pulumi.set(__self__, "node_identities", node_identities)
+        if partition is not None:
+            pulumi.set(__self__, "partition", partition)
         if policies is not None:
             pulumi.set(__self__, "policies", policies)
         if service_identities is not None:
@@ -90,6 +94,18 @@ class AclRoleArgs:
     @node_identities.setter
     def node_identities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AclRoleNodeIdentityArgs']]]]):
         pulumi.set(self, "node_identities", value)
+
+    @property
+    @pulumi.getter
+    def partition(self) -> Optional[pulumi.Input[str]]:
+        """
+        The partition the ACL role is associated with.
+        """
+        return pulumi.get(self, "partition")
+
+    @partition.setter
+    def partition(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "partition", value)
 
     @property
     @pulumi.getter
@@ -123,6 +139,7 @@ class _AclRoleState:
                  name: Optional[pulumi.Input[str]] = None,
                  namespace: Optional[pulumi.Input[str]] = None,
                  node_identities: Optional[pulumi.Input[Sequence[pulumi.Input['AclRoleNodeIdentityArgs']]]] = None,
+                 partition: Optional[pulumi.Input[str]] = None,
                  policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_identities: Optional[pulumi.Input[Sequence[pulumi.Input['AclRoleServiceIdentityArgs']]]] = None):
         """
@@ -131,6 +148,7 @@ class _AclRoleState:
         :param pulumi.Input[str] name: The name of the ACL role.
         :param pulumi.Input[str] namespace: The namespace to create the role within.
         :param pulumi.Input[Sequence[pulumi.Input['AclRoleNodeIdentityArgs']]] node_identities: The list of node identities that should be applied to the role.
+        :param pulumi.Input[str] partition: The partition the ACL role is associated with.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] policies: The list of policies that should be applied to the role.
         :param pulumi.Input[Sequence[pulumi.Input['AclRoleServiceIdentityArgs']]] service_identities: The list of service identities that should be applied to the role.
         """
@@ -142,6 +160,8 @@ class _AclRoleState:
             pulumi.set(__self__, "namespace", namespace)
         if node_identities is not None:
             pulumi.set(__self__, "node_identities", node_identities)
+        if partition is not None:
+            pulumi.set(__self__, "partition", partition)
         if policies is not None:
             pulumi.set(__self__, "policies", policies)
         if service_identities is not None:
@@ -194,6 +214,18 @@ class _AclRoleState:
     @node_identities.setter
     def node_identities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AclRoleNodeIdentityArgs']]]]):
         pulumi.set(self, "node_identities", value)
+
+    @property
+    @pulumi.getter
+    def partition(self) -> Optional[pulumi.Input[str]]:
+        """
+        The partition the ACL role is associated with.
+        """
+        return pulumi.get(self, "partition")
+
+    @partition.setter
+    def partition(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "partition", value)
 
     @property
     @pulumi.getter
@@ -229,6 +261,7 @@ class AclRole(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  namespace: Optional[pulumi.Input[str]] = None,
                  node_identities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclRoleNodeIdentityArgs']]]]] = None,
+                 partition: Optional[pulumi.Input[str]] = None,
                  policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_identities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclRoleServiceIdentityArgs']]]]] = None,
                  __props__=None):
@@ -266,6 +299,7 @@ class AclRole(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the ACL role.
         :param pulumi.Input[str] namespace: The namespace to create the role within.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclRoleNodeIdentityArgs']]]] node_identities: The list of node identities that should be applied to the role.
+        :param pulumi.Input[str] partition: The partition the ACL role is associated with.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] policies: The list of policies that should be applied to the role.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclRoleServiceIdentityArgs']]]] service_identities: The list of service identities that should be applied to the role.
         """
@@ -322,6 +356,7 @@ class AclRole(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  namespace: Optional[pulumi.Input[str]] = None,
                  node_identities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclRoleNodeIdentityArgs']]]]] = None,
+                 partition: Optional[pulumi.Input[str]] = None,
                  policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_identities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclRoleServiceIdentityArgs']]]]] = None,
                  __props__=None):
@@ -340,6 +375,7 @@ class AclRole(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["namespace"] = namespace
             __props__.__dict__["node_identities"] = node_identities
+            __props__.__dict__["partition"] = partition
             __props__.__dict__["policies"] = policies
             __props__.__dict__["service_identities"] = service_identities
         super(AclRole, __self__).__init__(
@@ -356,6 +392,7 @@ class AclRole(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             namespace: Optional[pulumi.Input[str]] = None,
             node_identities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclRoleNodeIdentityArgs']]]]] = None,
+            partition: Optional[pulumi.Input[str]] = None,
             policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             service_identities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclRoleServiceIdentityArgs']]]]] = None) -> 'AclRole':
         """
@@ -369,6 +406,7 @@ class AclRole(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the ACL role.
         :param pulumi.Input[str] namespace: The namespace to create the role within.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclRoleNodeIdentityArgs']]]] node_identities: The list of node identities that should be applied to the role.
+        :param pulumi.Input[str] partition: The partition the ACL role is associated with.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] policies: The list of policies that should be applied to the role.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclRoleServiceIdentityArgs']]]] service_identities: The list of service identities that should be applied to the role.
         """
@@ -380,6 +418,7 @@ class AclRole(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["namespace"] = namespace
         __props__.__dict__["node_identities"] = node_identities
+        __props__.__dict__["partition"] = partition
         __props__.__dict__["policies"] = policies
         __props__.__dict__["service_identities"] = service_identities
         return AclRole(resource_name, opts=opts, __props__=__props__)
@@ -415,6 +454,14 @@ class AclRole(pulumi.CustomResource):
         The list of node identities that should be applied to the role.
         """
         return pulumi.get(self, "node_identities")
+
+    @property
+    @pulumi.getter
+    def partition(self) -> pulumi.Output[Optional[str]]:
+        """
+        The partition the ACL role is associated with.
+        """
+        return pulumi.get(self, "partition")
 
     @property
     @pulumi.getter

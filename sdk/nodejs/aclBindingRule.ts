@@ -71,23 +71,23 @@ export class AclBindingRule extends pulumi.CustomResource {
      */
     public readonly bindName!: pulumi.Output<string>;
     /**
-     * Specifies the way the binding rule affects a token
-     * created at login.
+     * Specifies the way the binding rule affects a token created at login.
      */
     public readonly bindType!: pulumi.Output<string>;
     /**
-     * A free form human readable description of the
-     * binding rule.
+     * A free form human readable description of the binding rule.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The namespace to create the binding
-     * rule within.
+     * The namespace to create the binding rule within.
      */
     public readonly namespace!: pulumi.Output<string | undefined>;
     /**
-     * The expression used to math this rule against valid
-     * identities returned from an auth method validation.
+     * The partition the ACL binding rule is associated with.
+     */
+    public readonly partition!: pulumi.Output<string | undefined>;
+    /**
+     * The expression used to math this rule against valid identities returned from an auth method validation.
      */
     public readonly selector!: pulumi.Output<string | undefined>;
 
@@ -109,6 +109,7 @@ export class AclBindingRule extends pulumi.CustomResource {
             resourceInputs["bindType"] = state ? state.bindType : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["namespace"] = state ? state.namespace : undefined;
+            resourceInputs["partition"] = state ? state.partition : undefined;
             resourceInputs["selector"] = state ? state.selector : undefined;
         } else {
             const args = argsOrState as AclBindingRuleArgs | undefined;
@@ -126,6 +127,7 @@ export class AclBindingRule extends pulumi.CustomResource {
             resourceInputs["bindType"] = args ? args.bindType : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["namespace"] = args ? args.namespace : undefined;
+            resourceInputs["partition"] = args ? args.partition : undefined;
             resourceInputs["selector"] = args ? args.selector : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -146,23 +148,23 @@ export interface AclBindingRuleState {
      */
     bindName?: pulumi.Input<string>;
     /**
-     * Specifies the way the binding rule affects a token
-     * created at login.
+     * Specifies the way the binding rule affects a token created at login.
      */
     bindType?: pulumi.Input<string>;
     /**
-     * A free form human readable description of the
-     * binding rule.
+     * A free form human readable description of the binding rule.
      */
     description?: pulumi.Input<string>;
     /**
-     * The namespace to create the binding
-     * rule within.
+     * The namespace to create the binding rule within.
      */
     namespace?: pulumi.Input<string>;
     /**
-     * The expression used to math this rule against valid
-     * identities returned from an auth method validation.
+     * The partition the ACL binding rule is associated with.
+     */
+    partition?: pulumi.Input<string>;
+    /**
+     * The expression used to math this rule against valid identities returned from an auth method validation.
      */
     selector?: pulumi.Input<string>;
 }
@@ -180,23 +182,23 @@ export interface AclBindingRuleArgs {
      */
     bindName: pulumi.Input<string>;
     /**
-     * Specifies the way the binding rule affects a token
-     * created at login.
+     * Specifies the way the binding rule affects a token created at login.
      */
     bindType: pulumi.Input<string>;
     /**
-     * A free form human readable description of the
-     * binding rule.
+     * A free form human readable description of the binding rule.
      */
     description?: pulumi.Input<string>;
     /**
-     * The namespace to create the binding
-     * rule within.
+     * The namespace to create the binding rule within.
      */
     namespace?: pulumi.Input<string>;
     /**
-     * The expression used to math this rule against valid
-     * identities returned from an auth method validation.
+     * The partition the ACL binding rule is associated with.
+     */
+    partition?: pulumi.Input<string>;
+    /**
+     * The expression used to math this rule against valid identities returned from an auth method validation.
      */
     selector?: pulumi.Input<string>;
 }

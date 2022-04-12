@@ -51,6 +51,8 @@ type LookupAclRoleArgs struct {
 	Name string `pulumi:"name"`
 	// The namespace to lookup the role.
 	Namespace *string `pulumi:"namespace"`
+	// The partition to lookup the role.
+	Partition *string `pulumi:"partition"`
 }
 
 // A collection of values returned by getAclRole.
@@ -65,6 +67,7 @@ type LookupAclRoleResult struct {
 	Namespace *string `pulumi:"namespace"`
 	// The list of node identities associated with the ACL Role. Each entry has a `nodeName` and a `datacenter` attributes.
 	NodeIdentities []GetAclRoleNodeIdentity `pulumi:"nodeIdentities"`
+	Partition      *string                  `pulumi:"partition"`
 	// The list of policies associated with the ACL Role. Each entry has an `id` and a `name` attribute.
 	Policies []GetAclRolePolicy `pulumi:"policies"`
 	// The list of service identities associated with the ACL Role. Each entry has a `serviceName` attribute and a list of `datacenters`.
@@ -86,6 +89,8 @@ type LookupAclRoleOutputArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// The namespace to lookup the role.
 	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	// The partition to lookup the role.
+	Partition pulumi.StringPtrInput `pulumi:"partition"`
 }
 
 func (LookupAclRoleOutputArgs) ElementType() reflect.Type {
@@ -130,6 +135,10 @@ func (o LookupAclRoleResultOutput) Namespace() pulumi.StringPtrOutput {
 // The list of node identities associated with the ACL Role. Each entry has a `nodeName` and a `datacenter` attributes.
 func (o LookupAclRoleResultOutput) NodeIdentities() GetAclRoleNodeIdentityArrayOutput {
 	return o.ApplyT(func(v LookupAclRoleResult) []GetAclRoleNodeIdentity { return v.NodeIdentities }).(GetAclRoleNodeIdentityArrayOutput)
+}
+
+func (o LookupAclRoleResultOutput) Partition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAclRoleResult) *string { return v.Partition }).(pulumi.StringPtrOutput)
 }
 
 // The list of policies associated with the ACL Role. Each entry has an `id` and a `name` attribute.

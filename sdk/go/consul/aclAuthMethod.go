@@ -113,6 +113,8 @@ type AclAuthMethod struct {
 	// A set of rules that control
 	// which namespace tokens created via this auth method will be created within.
 	NamespaceRules AclAuthMethodNamespaceRuleArrayOutput `pulumi:"namespaceRules"`
+	// The partition the ACL auth method is associated with.
+	Partition pulumi.StringPtrOutput `pulumi:"partition"`
 	// The kind of token that this auth method
 	// produces. This can be either 'local' or 'global'.
 	TokenLocality pulumi.StringPtrOutput `pulumi:"tokenLocality"`
@@ -175,6 +177,8 @@ type aclAuthMethodState struct {
 	// A set of rules that control
 	// which namespace tokens created via this auth method will be created within.
 	NamespaceRules []AclAuthMethodNamespaceRule `pulumi:"namespaceRules"`
+	// The partition the ACL auth method is associated with.
+	Partition *string `pulumi:"partition"`
 	// The kind of token that this auth method
 	// produces. This can be either 'local' or 'global'.
 	TokenLocality *string `pulumi:"tokenLocality"`
@@ -206,6 +210,8 @@ type AclAuthMethodState struct {
 	// A set of rules that control
 	// which namespace tokens created via this auth method will be created within.
 	NamespaceRules AclAuthMethodNamespaceRuleArrayInput
+	// The partition the ACL auth method is associated with.
+	Partition pulumi.StringPtrInput
 	// The kind of token that this auth method
 	// produces. This can be either 'local' or 'global'.
 	TokenLocality pulumi.StringPtrInput
@@ -241,6 +247,8 @@ type aclAuthMethodArgs struct {
 	// A set of rules that control
 	// which namespace tokens created via this auth method will be created within.
 	NamespaceRules []AclAuthMethodNamespaceRule `pulumi:"namespaceRules"`
+	// The partition the ACL auth method is associated with.
+	Partition *string `pulumi:"partition"`
 	// The kind of token that this auth method
 	// produces. This can be either 'local' or 'global'.
 	TokenLocality *string `pulumi:"tokenLocality"`
@@ -273,6 +281,8 @@ type AclAuthMethodArgs struct {
 	// A set of rules that control
 	// which namespace tokens created via this auth method will be created within.
 	NamespaceRules AclAuthMethodNamespaceRuleArrayInput
+	// The partition the ACL auth method is associated with.
+	Partition pulumi.StringPtrInput
 	// The kind of token that this auth method
 	// produces. This can be either 'local' or 'global'.
 	TokenLocality pulumi.StringPtrInput

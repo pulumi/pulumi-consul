@@ -75,6 +75,12 @@ namespace Pulumi.Consul
         public Output<string?> Namespace { get; private set; } = null!;
 
         /// <summary>
+        /// The partition the ACL policy is associated with.
+        /// </summary>
+        [Output("partition")]
+        public Output<string?> Partition { get; private set; } = null!;
+
+        /// <summary>
         /// The rules of the policy.
         /// </summary>
         [Output("rules")]
@@ -157,6 +163,12 @@ namespace Pulumi.Consul
         public Input<string>? Namespace { get; set; }
 
         /// <summary>
+        /// The partition the ACL policy is associated with.
+        /// </summary>
+        [Input("partition")]
+        public Input<string>? Partition { get; set; }
+
+        /// <summary>
         /// The rules of the policy.
         /// </summary>
         [Input("rules", required: true)]
@@ -198,6 +210,12 @@ namespace Pulumi.Consul
         /// </summary>
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }
+
+        /// <summary>
+        /// The partition the ACL policy is associated with.
+        /// </summary>
+        [Input("partition")]
+        public Input<string>? Partition { get; set; }
 
         /// <summary>
         /// The rules of the policy.

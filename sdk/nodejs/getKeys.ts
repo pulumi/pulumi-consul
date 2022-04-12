@@ -43,6 +43,7 @@ export function getKeys(args?: GetKeysArgs, opts?: pulumi.InvokeOptions): Promis
         "datacenter": args.datacenter,
         "keys": args.keys,
         "namespace": args.namespace,
+        "partition": args.partition,
         "token": args.token,
     }, opts);
 }
@@ -66,6 +67,10 @@ export interface GetKeysArgs {
      */
     namespace?: string;
     /**
+     * The partition to lookup the keys.
+     */
+    partition?: string;
+    /**
      * The ACL token to use. This overrides the
      * token that the agent provides by default.
      */
@@ -88,6 +93,7 @@ export interface GetKeysResult {
     readonly id: string;
     readonly keys?: outputs.GetKeysKey[];
     readonly namespace?: string;
+    readonly partition?: string;
     readonly token?: string;
     readonly var: {[key: string]: string};
 }
@@ -114,6 +120,10 @@ export interface GetKeysOutputArgs {
      * The namespace to lookup the keys.
      */
     namespace?: pulumi.Input<string>;
+    /**
+     * The partition to lookup the keys.
+     */
+    partition?: pulumi.Input<string>;
     /**
      * The ACL token to use. This overrides the
      * token that the agent provides by default.

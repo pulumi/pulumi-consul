@@ -70,6 +70,8 @@ type AclRole struct {
 	Namespace pulumi.StringPtrOutput `pulumi:"namespace"`
 	// The list of node identities that should be applied to the role.
 	NodeIdentities AclRoleNodeIdentityArrayOutput `pulumi:"nodeIdentities"`
+	// The partition the ACL role is associated with.
+	Partition pulumi.StringPtrOutput `pulumi:"partition"`
 	// The list of policies that should be applied to the role.
 	Policies pulumi.StringArrayOutput `pulumi:"policies"`
 	// The list of service identities that should be applied to the role.
@@ -113,6 +115,8 @@ type aclRoleState struct {
 	Namespace *string `pulumi:"namespace"`
 	// The list of node identities that should be applied to the role.
 	NodeIdentities []AclRoleNodeIdentity `pulumi:"nodeIdentities"`
+	// The partition the ACL role is associated with.
+	Partition *string `pulumi:"partition"`
 	// The list of policies that should be applied to the role.
 	Policies []string `pulumi:"policies"`
 	// The list of service identities that should be applied to the role.
@@ -128,6 +132,8 @@ type AclRoleState struct {
 	Namespace pulumi.StringPtrInput
 	// The list of node identities that should be applied to the role.
 	NodeIdentities AclRoleNodeIdentityArrayInput
+	// The partition the ACL role is associated with.
+	Partition pulumi.StringPtrInput
 	// The list of policies that should be applied to the role.
 	Policies pulumi.StringArrayInput
 	// The list of service identities that should be applied to the role.
@@ -147,6 +153,8 @@ type aclRoleArgs struct {
 	Namespace *string `pulumi:"namespace"`
 	// The list of node identities that should be applied to the role.
 	NodeIdentities []AclRoleNodeIdentity `pulumi:"nodeIdentities"`
+	// The partition the ACL role is associated with.
+	Partition *string `pulumi:"partition"`
 	// The list of policies that should be applied to the role.
 	Policies []string `pulumi:"policies"`
 	// The list of service identities that should be applied to the role.
@@ -163,6 +171,8 @@ type AclRoleArgs struct {
 	Namespace pulumi.StringPtrInput
 	// The list of node identities that should be applied to the role.
 	NodeIdentities AclRoleNodeIdentityArrayInput
+	// The partition the ACL role is associated with.
+	Partition pulumi.StringPtrInput
 	// The list of policies that should be applied to the role.
 	Policies pulumi.StringArrayInput
 	// The list of service identities that should be applied to the role.

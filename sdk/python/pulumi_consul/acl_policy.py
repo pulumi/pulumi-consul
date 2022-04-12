@@ -17,7 +17,8 @@ class AclPolicyArgs:
                  datacenters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 namespace: Optional[pulumi.Input[str]] = None):
+                 namespace: Optional[pulumi.Input[str]] = None,
+                 partition: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AclPolicy resource.
         :param pulumi.Input[str] rules: The rules of the policy.
@@ -25,6 +26,7 @@ class AclPolicyArgs:
         :param pulumi.Input[str] description: The description of the policy.
         :param pulumi.Input[str] name: The name of the policy.
         :param pulumi.Input[str] namespace: The namespace to create the policy within.
+        :param pulumi.Input[str] partition: The partition the ACL policy is associated with.
         """
         pulumi.set(__self__, "rules", rules)
         if datacenters is not None:
@@ -35,6 +37,8 @@ class AclPolicyArgs:
             pulumi.set(__self__, "name", name)
         if namespace is not None:
             pulumi.set(__self__, "namespace", namespace)
+        if partition is not None:
+            pulumi.set(__self__, "partition", partition)
 
     @property
     @pulumi.getter
@@ -96,6 +100,18 @@ class AclPolicyArgs:
     def namespace(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "namespace", value)
 
+    @property
+    @pulumi.getter
+    def partition(self) -> Optional[pulumi.Input[str]]:
+        """
+        The partition the ACL policy is associated with.
+        """
+        return pulumi.get(self, "partition")
+
+    @partition.setter
+    def partition(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "partition", value)
+
 
 @pulumi.input_type
 class _AclPolicyState:
@@ -104,6 +120,7 @@ class _AclPolicyState:
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  namespace: Optional[pulumi.Input[str]] = None,
+                 partition: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AclPolicy resources.
@@ -111,6 +128,7 @@ class _AclPolicyState:
         :param pulumi.Input[str] description: The description of the policy.
         :param pulumi.Input[str] name: The name of the policy.
         :param pulumi.Input[str] namespace: The namespace to create the policy within.
+        :param pulumi.Input[str] partition: The partition the ACL policy is associated with.
         :param pulumi.Input[str] rules: The rules of the policy.
         """
         if datacenters is not None:
@@ -121,6 +139,8 @@ class _AclPolicyState:
             pulumi.set(__self__, "name", name)
         if namespace is not None:
             pulumi.set(__self__, "namespace", namespace)
+        if partition is not None:
+            pulumi.set(__self__, "partition", partition)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
 
@@ -174,6 +194,18 @@ class _AclPolicyState:
 
     @property
     @pulumi.getter
+    def partition(self) -> Optional[pulumi.Input[str]]:
+        """
+        The partition the ACL policy is associated with.
+        """
+        return pulumi.get(self, "partition")
+
+    @partition.setter
+    def partition(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "partition", value)
+
+    @property
+    @pulumi.getter
     def rules(self) -> Optional[pulumi.Input[str]]:
         """
         The rules of the policy.
@@ -194,6 +226,7 @@ class AclPolicy(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  namespace: Optional[pulumi.Input[str]] = None,
+                 partition: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -228,6 +261,7 @@ class AclPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the policy.
         :param pulumi.Input[str] name: The name of the policy.
         :param pulumi.Input[str] namespace: The namespace to create the policy within.
+        :param pulumi.Input[str] partition: The partition the ACL policy is associated with.
         :param pulumi.Input[str] rules: The rules of the policy.
         """
         ...
@@ -281,6 +315,7 @@ class AclPolicy(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  namespace: Optional[pulumi.Input[str]] = None,
+                 partition: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -298,6 +333,7 @@ class AclPolicy(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
             __props__.__dict__["namespace"] = namespace
+            __props__.__dict__["partition"] = partition
             if rules is None and not opts.urn:
                 raise TypeError("Missing required property 'rules'")
             __props__.__dict__["rules"] = rules
@@ -315,6 +351,7 @@ class AclPolicy(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             namespace: Optional[pulumi.Input[str]] = None,
+            partition: Optional[pulumi.Input[str]] = None,
             rules: Optional[pulumi.Input[str]] = None) -> 'AclPolicy':
         """
         Get an existing AclPolicy resource's state with the given name, id, and optional extra
@@ -327,6 +364,7 @@ class AclPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the policy.
         :param pulumi.Input[str] name: The name of the policy.
         :param pulumi.Input[str] namespace: The namespace to create the policy within.
+        :param pulumi.Input[str] partition: The partition the ACL policy is associated with.
         :param pulumi.Input[str] rules: The rules of the policy.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -337,6 +375,7 @@ class AclPolicy(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["name"] = name
         __props__.__dict__["namespace"] = namespace
+        __props__.__dict__["partition"] = partition
         __props__.__dict__["rules"] = rules
         return AclPolicy(resource_name, opts=opts, __props__=__props__)
 
@@ -371,6 +410,14 @@ class AclPolicy(pulumi.CustomResource):
         The namespace to create the policy within.
         """
         return pulumi.get(self, "namespace")
+
+    @property
+    @pulumi.getter
+    def partition(self) -> pulumi.Output[Optional[str]]:
+        """
+        The partition the ACL policy is associated with.
+        """
+        return pulumi.get(self, "partition")
 
     @property
     @pulumi.getter

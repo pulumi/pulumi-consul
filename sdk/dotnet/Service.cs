@@ -179,6 +179,12 @@ namespace Pulumi.Consul
         public Output<string> Node { get; private set; } = null!;
 
         /// <summary>
+        /// The partition the service is associated with.
+        /// </summary>
+        [Output("partition")]
+        public Output<string?> Partition { get; private set; } = null!;
+
+        /// <summary>
         /// The port of the service.
         /// </summary>
         [Output("port")]
@@ -308,6 +314,12 @@ namespace Pulumi.Consul
         public Input<string> Node { get; set; } = null!;
 
         /// <summary>
+        /// The partition the service is associated with.
+        /// </summary>
+        [Input("partition")]
+        public Input<string>? Partition { get; set; }
+
+        /// <summary>
         /// The port of the service.
         /// </summary>
         [Input("port")]
@@ -402,6 +414,12 @@ namespace Pulumi.Consul
         /// </summary>
         [Input("node")]
         public Input<string>? Node { get; set; }
+
+        /// <summary>
+        /// The partition the service is associated with.
+        /// </summary>
+        [Input("partition")]
+        public Input<string>? Partition { get; set; }
 
         /// <summary>
         /// The port of the service.

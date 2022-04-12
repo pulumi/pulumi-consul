@@ -16,13 +16,15 @@ class ConfigEntryArgs:
                  kind: pulumi.Input[str],
                  config_json: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 namespace: Optional[pulumi.Input[str]] = None):
+                 namespace: Optional[pulumi.Input[str]] = None,
+                 partition: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ConfigEntry resource.
         :param pulumi.Input[str] kind: The kind of configuration entry to register.
         :param pulumi.Input[str] config_json: An arbitrary map of configuration values.
         :param pulumi.Input[str] name: The name of the configuration entry being registered.
         :param pulumi.Input[str] namespace: The namespace to create the config entry within.
+        :param pulumi.Input[str] partition: The partition the config entry is associated with.
         """
         pulumi.set(__self__, "kind", kind)
         if config_json is not None:
@@ -31,6 +33,8 @@ class ConfigEntryArgs:
             pulumi.set(__self__, "name", name)
         if namespace is not None:
             pulumi.set(__self__, "namespace", namespace)
+        if partition is not None:
+            pulumi.set(__self__, "partition", partition)
 
     @property
     @pulumi.getter
@@ -80,6 +84,18 @@ class ConfigEntryArgs:
     def namespace(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "namespace", value)
 
+    @property
+    @pulumi.getter
+    def partition(self) -> Optional[pulumi.Input[str]]:
+        """
+        The partition the config entry is associated with.
+        """
+        return pulumi.get(self, "partition")
+
+    @partition.setter
+    def partition(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "partition", value)
+
 
 @pulumi.input_type
 class _ConfigEntryState:
@@ -87,13 +103,15 @@ class _ConfigEntryState:
                  config_json: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 namespace: Optional[pulumi.Input[str]] = None):
+                 namespace: Optional[pulumi.Input[str]] = None,
+                 partition: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ConfigEntry resources.
         :param pulumi.Input[str] config_json: An arbitrary map of configuration values.
         :param pulumi.Input[str] kind: The kind of configuration entry to register.
         :param pulumi.Input[str] name: The name of the configuration entry being registered.
         :param pulumi.Input[str] namespace: The namespace to create the config entry within.
+        :param pulumi.Input[str] partition: The partition the config entry is associated with.
         """
         if config_json is not None:
             pulumi.set(__self__, "config_json", config_json)
@@ -103,6 +121,8 @@ class _ConfigEntryState:
             pulumi.set(__self__, "name", name)
         if namespace is not None:
             pulumi.set(__self__, "namespace", namespace)
+        if partition is not None:
+            pulumi.set(__self__, "partition", partition)
 
     @property
     @pulumi.getter(name="configJson")
@@ -152,6 +172,18 @@ class _ConfigEntryState:
     def namespace(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "namespace", value)
 
+    @property
+    @pulumi.getter
+    def partition(self) -> Optional[pulumi.Input[str]]:
+        """
+        The partition the config entry is associated with.
+        """
+        return pulumi.get(self, "partition")
+
+    @partition.setter
+    def partition(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "partition", value)
+
 
 class ConfigEntry(pulumi.CustomResource):
     @overload
@@ -162,6 +194,7 @@ class ConfigEntry(pulumi.CustomResource):
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  namespace: Optional[pulumi.Input[str]] = None,
+                 partition: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -330,6 +363,41 @@ class ConfigEntry(pulumi.CustomResource):
                 ],
             }))
         ```
+        ### `exported-services` config entry
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_consul as consul
+
+        exported_services = consul.ConfigEntry("exportedServices",
+            kind="exported-services",
+            config_json=json.dumps({
+                "Services": [{
+                    "Name": "test",
+                    "Namespace": "default",
+                    "Consumers": [{
+                        "Partition": "default",
+                    }],
+                }],
+            }))
+        ```
+        ### `mesh` config entry
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_consul as consul
+
+        mesh = consul.ConfigEntry("mesh",
+            kind="mesh",
+            partition="default",
+            config_json=json.dumps({
+                "TransparentProxy": {
+                    "MeshDestinationsOnly": True,
+                },
+            }))
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -337,6 +405,7 @@ class ConfigEntry(pulumi.CustomResource):
         :param pulumi.Input[str] kind: The kind of configuration entry to register.
         :param pulumi.Input[str] name: The name of the configuration entry being registered.
         :param pulumi.Input[str] namespace: The namespace to create the config entry within.
+        :param pulumi.Input[str] partition: The partition the config entry is associated with.
         """
         ...
     @overload
@@ -511,6 +580,41 @@ class ConfigEntry(pulumi.CustomResource):
                 ],
             }))
         ```
+        ### `exported-services` config entry
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_consul as consul
+
+        exported_services = consul.ConfigEntry("exportedServices",
+            kind="exported-services",
+            config_json=json.dumps({
+                "Services": [{
+                    "Name": "test",
+                    "Namespace": "default",
+                    "Consumers": [{
+                        "Partition": "default",
+                    }],
+                }],
+            }))
+        ```
+        ### `mesh` config entry
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_consul as consul
+
+        mesh = consul.ConfigEntry("mesh",
+            kind="mesh",
+            partition="default",
+            config_json=json.dumps({
+                "TransparentProxy": {
+                    "MeshDestinationsOnly": True,
+                },
+            }))
+        ```
 
         :param str resource_name: The name of the resource.
         :param ConfigEntryArgs args: The arguments to use to populate this resource's properties.
@@ -531,6 +635,7 @@ class ConfigEntry(pulumi.CustomResource):
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  namespace: Optional[pulumi.Input[str]] = None,
+                 partition: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -549,6 +654,7 @@ class ConfigEntry(pulumi.CustomResource):
             __props__.__dict__["kind"] = kind
             __props__.__dict__["name"] = name
             __props__.__dict__["namespace"] = namespace
+            __props__.__dict__["partition"] = partition
         super(ConfigEntry, __self__).__init__(
             'consul:index/configEntry:ConfigEntry',
             resource_name,
@@ -562,7 +668,8 @@ class ConfigEntry(pulumi.CustomResource):
             config_json: Optional[pulumi.Input[str]] = None,
             kind: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            namespace: Optional[pulumi.Input[str]] = None) -> 'ConfigEntry':
+            namespace: Optional[pulumi.Input[str]] = None,
+            partition: Optional[pulumi.Input[str]] = None) -> 'ConfigEntry':
         """
         Get an existing ConfigEntry resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -574,6 +681,7 @@ class ConfigEntry(pulumi.CustomResource):
         :param pulumi.Input[str] kind: The kind of configuration entry to register.
         :param pulumi.Input[str] name: The name of the configuration entry being registered.
         :param pulumi.Input[str] namespace: The namespace to create the config entry within.
+        :param pulumi.Input[str] partition: The partition the config entry is associated with.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -583,6 +691,7 @@ class ConfigEntry(pulumi.CustomResource):
         __props__.__dict__["kind"] = kind
         __props__.__dict__["name"] = name
         __props__.__dict__["namespace"] = namespace
+        __props__.__dict__["partition"] = partition
         return ConfigEntry(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -616,4 +725,12 @@ class ConfigEntry(pulumi.CustomResource):
         The namespace to create the config entry within.
         """
         return pulumi.get(self, "namespace")
+
+    @property
+    @pulumi.getter
+    def partition(self) -> pulumi.Output[Optional[str]]:
+        """
+        The partition the config entry is associated with.
+        """
+        return pulumi.get(self, "partition")
 

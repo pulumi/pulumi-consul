@@ -54,6 +54,8 @@ type LookupAclTokenArgs struct {
 	AccessorId string `pulumi:"accessorId"`
 	// The namespace to lookup the ACL token.
 	Namespace *string `pulumi:"namespace"`
+	// The partition to lookup the ACL token.
+	Partition *string `pulumi:"partition"`
 }
 
 // A collection of values returned by getAclToken.
@@ -70,6 +72,7 @@ type LookupAclTokenResult struct {
 	Namespace *string `pulumi:"namespace"`
 	// The list of node identities attached to the token. Each entry has a `nodeName` and a `datacenter` attributes.
 	NodeIdentities []GetAclTokenNodeIdentity `pulumi:"nodeIdentities"`
+	Partition      *string                   `pulumi:"partition"`
 	// A list of policies associated with the ACL token. Each entry has an `id` and a `name` attribute.
 	Policies []GetAclTokenPolicy `pulumi:"policies"`
 	// The list of roles attached to the token.
@@ -93,6 +96,8 @@ type LookupAclTokenOutputArgs struct {
 	AccessorId pulumi.StringInput `pulumi:"accessorId"`
 	// The namespace to lookup the ACL token.
 	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	// The partition to lookup the ACL token.
+	Partition pulumi.StringPtrInput `pulumi:"partition"`
 }
 
 func (LookupAclTokenOutputArgs) ElementType() reflect.Type {
@@ -145,6 +150,10 @@ func (o LookupAclTokenResultOutput) Namespace() pulumi.StringPtrOutput {
 // The list of node identities attached to the token. Each entry has a `nodeName` and a `datacenter` attributes.
 func (o LookupAclTokenResultOutput) NodeIdentities() GetAclTokenNodeIdentityArrayOutput {
 	return o.ApplyT(func(v LookupAclTokenResult) []GetAclTokenNodeIdentity { return v.NodeIdentities }).(GetAclTokenNodeIdentityArrayOutput)
+}
+
+func (o LookupAclTokenResultOutput) Partition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAclTokenResult) *string { return v.Partition }).(pulumi.StringPtrOutput)
 }
 
 // A list of policies associated with the ACL token. Each entry has an `id` and a `name` attribute.

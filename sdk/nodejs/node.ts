@@ -48,13 +48,11 @@ export class Node extends pulumi.CustomResource {
     }
 
     /**
-     * The address of the node being added to,
-     * or referenced in the catalog.
+     * The address of the node being added to, or referenced in the catalog.
      */
     public readonly address!: pulumi.Output<string>;
     /**
-     * The datacenter to use. This overrides the agent's
-     * default datacenter and the datacenter in the provider setup.
+     * The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
      */
     public readonly datacenter!: pulumi.Output<string>;
     /**
@@ -62,10 +60,13 @@ export class Node extends pulumi.CustomResource {
      */
     public readonly meta!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The name of the node being added to, or
-     * referenced in the catalog.
+     * The name of the node being added to, or referenced in the catalog.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The partition the node is associated with.
+     */
+    public readonly partition!: pulumi.Output<string | undefined>;
     public readonly token!: pulumi.Output<string | undefined>;
 
     /**
@@ -85,6 +86,7 @@ export class Node extends pulumi.CustomResource {
             resourceInputs["datacenter"] = state ? state.datacenter : undefined;
             resourceInputs["meta"] = state ? state.meta : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["partition"] = state ? state.partition : undefined;
             resourceInputs["token"] = state ? state.token : undefined;
         } else {
             const args = argsOrState as NodeArgs | undefined;
@@ -95,6 +97,7 @@ export class Node extends pulumi.CustomResource {
             resourceInputs["datacenter"] = args ? args.datacenter : undefined;
             resourceInputs["meta"] = args ? args.meta : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["partition"] = args ? args.partition : undefined;
             resourceInputs["token"] = args ? args.token : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -107,13 +110,11 @@ export class Node extends pulumi.CustomResource {
  */
 export interface NodeState {
     /**
-     * The address of the node being added to,
-     * or referenced in the catalog.
+     * The address of the node being added to, or referenced in the catalog.
      */
     address?: pulumi.Input<string>;
     /**
-     * The datacenter to use. This overrides the agent's
-     * default datacenter and the datacenter in the provider setup.
+     * The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
      */
     datacenter?: pulumi.Input<string>;
     /**
@@ -121,10 +122,13 @@ export interface NodeState {
      */
     meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The name of the node being added to, or
-     * referenced in the catalog.
+     * The name of the node being added to, or referenced in the catalog.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The partition the node is associated with.
+     */
+    partition?: pulumi.Input<string>;
     token?: pulumi.Input<string>;
 }
 
@@ -133,13 +137,11 @@ export interface NodeState {
  */
 export interface NodeArgs {
     /**
-     * The address of the node being added to,
-     * or referenced in the catalog.
+     * The address of the node being added to, or referenced in the catalog.
      */
     address: pulumi.Input<string>;
     /**
-     * The datacenter to use. This overrides the agent's
-     * default datacenter and the datacenter in the provider setup.
+     * The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
      */
     datacenter?: pulumi.Input<string>;
     /**
@@ -147,9 +149,12 @@ export interface NodeArgs {
      */
     meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The name of the node being added to, or
-     * referenced in the catalog.
+     * The name of the node being added to, or referenced in the catalog.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The partition the node is associated with.
+     */
+    partition?: pulumi.Input<string>;
     token?: pulumi.Input<string>;
 }

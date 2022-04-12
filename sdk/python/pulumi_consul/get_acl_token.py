@@ -21,7 +21,7 @@ class GetAclTokenResult:
     """
     A collection of values returned by getAclToken.
     """
-    def __init__(__self__, accessor_id=None, description=None, expiration_time=None, id=None, local=None, namespace=None, node_identities=None, policies=None, roles=None, service_identities=None):
+    def __init__(__self__, accessor_id=None, description=None, expiration_time=None, id=None, local=None, namespace=None, node_identities=None, partition=None, policies=None, roles=None, service_identities=None):
         if accessor_id and not isinstance(accessor_id, str):
             raise TypeError("Expected argument 'accessor_id' to be a str")
         pulumi.set(__self__, "accessor_id", accessor_id)
@@ -43,6 +43,9 @@ class GetAclTokenResult:
         if node_identities and not isinstance(node_identities, list):
             raise TypeError("Expected argument 'node_identities' to be a list")
         pulumi.set(__self__, "node_identities", node_identities)
+        if partition and not isinstance(partition, str):
+            raise TypeError("Expected argument 'partition' to be a str")
+        pulumi.set(__self__, "partition", partition)
         if policies and not isinstance(policies, list):
             raise TypeError("Expected argument 'policies' to be a list")
         pulumi.set(__self__, "policies", policies)
@@ -105,6 +108,11 @@ class GetAclTokenResult:
 
     @property
     @pulumi.getter
+    def partition(self) -> Optional[str]:
+        return pulumi.get(self, "partition")
+
+    @property
+    @pulumi.getter
     def policies(self) -> Sequence['outputs.GetAclTokenPolicyResult']:
         """
         A list of policies associated with the ACL token. Each entry has an `id` and a `name` attribute.
@@ -141,6 +149,7 @@ class AwaitableGetAclTokenResult(GetAclTokenResult):
             local=self.local,
             namespace=self.namespace,
             node_identities=self.node_identities,
+            partition=self.partition,
             policies=self.policies,
             roles=self.roles,
             service_identities=self.service_identities)
@@ -148,6 +157,7 @@ class AwaitableGetAclTokenResult(GetAclTokenResult):
 
 def get_acl_token(accessor_id: Optional[str] = None,
                   namespace: Optional[str] = None,
+                  partition: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAclTokenResult:
     """
     The `AclToken` data source returns the information related to the
@@ -169,10 +179,12 @@ def get_acl_token(accessor_id: Optional[str] = None,
 
     :param str accessor_id: The accessor ID of the ACL token.
     :param str namespace: The namespace to lookup the ACL token.
+    :param str partition: The partition to lookup the ACL token.
     """
     __args__ = dict()
     __args__['accessorId'] = accessor_id
     __args__['namespace'] = namespace
+    __args__['partition'] = partition
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
@@ -187,6 +199,7 @@ def get_acl_token(accessor_id: Optional[str] = None,
         local=__ret__.local,
         namespace=__ret__.namespace,
         node_identities=__ret__.node_identities,
+        partition=__ret__.partition,
         policies=__ret__.policies,
         roles=__ret__.roles,
         service_identities=__ret__.service_identities)
@@ -195,6 +208,7 @@ def get_acl_token(accessor_id: Optional[str] = None,
 @_utilities.lift_output_func(get_acl_token)
 def get_acl_token_output(accessor_id: Optional[pulumi.Input[str]] = None,
                          namespace: Optional[pulumi.Input[Optional[str]]] = None,
+                         partition: Optional[pulumi.Input[Optional[str]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAclTokenResult]:
     """
     The `AclToken` data source returns the information related to the
@@ -216,5 +230,6 @@ def get_acl_token_output(accessor_id: Optional[pulumi.Input[str]] = None,
 
     :param str accessor_id: The accessor ID of the ACL token.
     :param str namespace: The namespace to lookup the ACL token.
+    :param str partition: The partition to lookup the ACL token.
     """
     ...

@@ -12,6 +12,7 @@ from .acl_role import *
 from .acl_token import *
 from .acl_token_policy_attachment import *
 from .acl_token_role_attachment import *
+from .admin_partition import *
 from .agent_service import *
 from .autopilot_config import *
 from .catalog_entry import *
@@ -28,6 +29,7 @@ from .get_autopilot_health import *
 from .get_catalog_nodes import *
 from .get_catalog_service import *
 from .get_catalog_services import *
+from .get_datacenters import *
 from .get_key_prefix import *
 from .get_keys import *
 from .get_network_area_members import *
@@ -115,6 +117,14 @@ _utilities.register(
   "fqn": "pulumi_consul",
   "classes": {
    "consul:index/aclTokenRoleAttachment:AclTokenRoleAttachment": "AclTokenRoleAttachment"
+  }
+ },
+ {
+  "pkg": "consul",
+  "mod": "index/adminPartition",
+  "fqn": "pulumi_consul",
+  "classes": {
+   "consul:index/adminPartition:AdminPartition": "AdminPartition"
   }
  },
  {

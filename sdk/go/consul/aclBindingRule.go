@@ -61,17 +61,15 @@ type AclBindingRule struct {
 	AuthMethod pulumi.StringOutput `pulumi:"authMethod"`
 	// The name to bind to a token at login-time.
 	BindName pulumi.StringOutput `pulumi:"bindName"`
-	// Specifies the way the binding rule affects a token
-	// created at login.
+	// Specifies the way the binding rule affects a token created at login.
 	BindType pulumi.StringOutput `pulumi:"bindType"`
-	// A free form human readable description of the
-	// binding rule.
+	// A free form human readable description of the binding rule.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The namespace to create the binding
-	// rule within.
+	// The namespace to create the binding rule within.
 	Namespace pulumi.StringPtrOutput `pulumi:"namespace"`
-	// The expression used to math this rule against valid
-	// identities returned from an auth method validation.
+	// The partition the ACL binding rule is associated with.
+	Partition pulumi.StringPtrOutput `pulumi:"partition"`
+	// The expression used to math this rule against valid identities returned from an auth method validation.
 	Selector pulumi.StringPtrOutput `pulumi:"selector"`
 }
 
@@ -117,17 +115,15 @@ type aclBindingRuleState struct {
 	AuthMethod *string `pulumi:"authMethod"`
 	// The name to bind to a token at login-time.
 	BindName *string `pulumi:"bindName"`
-	// Specifies the way the binding rule affects a token
-	// created at login.
+	// Specifies the way the binding rule affects a token created at login.
 	BindType *string `pulumi:"bindType"`
-	// A free form human readable description of the
-	// binding rule.
+	// A free form human readable description of the binding rule.
 	Description *string `pulumi:"description"`
-	// The namespace to create the binding
-	// rule within.
+	// The namespace to create the binding rule within.
 	Namespace *string `pulumi:"namespace"`
-	// The expression used to math this rule against valid
-	// identities returned from an auth method validation.
+	// The partition the ACL binding rule is associated with.
+	Partition *string `pulumi:"partition"`
+	// The expression used to math this rule against valid identities returned from an auth method validation.
 	Selector *string `pulumi:"selector"`
 }
 
@@ -136,17 +132,15 @@ type AclBindingRuleState struct {
 	AuthMethod pulumi.StringPtrInput
 	// The name to bind to a token at login-time.
 	BindName pulumi.StringPtrInput
-	// Specifies the way the binding rule affects a token
-	// created at login.
+	// Specifies the way the binding rule affects a token created at login.
 	BindType pulumi.StringPtrInput
-	// A free form human readable description of the
-	// binding rule.
+	// A free form human readable description of the binding rule.
 	Description pulumi.StringPtrInput
-	// The namespace to create the binding
-	// rule within.
+	// The namespace to create the binding rule within.
 	Namespace pulumi.StringPtrInput
-	// The expression used to math this rule against valid
-	// identities returned from an auth method validation.
+	// The partition the ACL binding rule is associated with.
+	Partition pulumi.StringPtrInput
+	// The expression used to math this rule against valid identities returned from an auth method validation.
 	Selector pulumi.StringPtrInput
 }
 
@@ -159,17 +153,15 @@ type aclBindingRuleArgs struct {
 	AuthMethod string `pulumi:"authMethod"`
 	// The name to bind to a token at login-time.
 	BindName string `pulumi:"bindName"`
-	// Specifies the way the binding rule affects a token
-	// created at login.
+	// Specifies the way the binding rule affects a token created at login.
 	BindType string `pulumi:"bindType"`
-	// A free form human readable description of the
-	// binding rule.
+	// A free form human readable description of the binding rule.
 	Description *string `pulumi:"description"`
-	// The namespace to create the binding
-	// rule within.
+	// The namespace to create the binding rule within.
 	Namespace *string `pulumi:"namespace"`
-	// The expression used to math this rule against valid
-	// identities returned from an auth method validation.
+	// The partition the ACL binding rule is associated with.
+	Partition *string `pulumi:"partition"`
+	// The expression used to math this rule against valid identities returned from an auth method validation.
 	Selector *string `pulumi:"selector"`
 }
 
@@ -179,17 +171,15 @@ type AclBindingRuleArgs struct {
 	AuthMethod pulumi.StringInput
 	// The name to bind to a token at login-time.
 	BindName pulumi.StringInput
-	// Specifies the way the binding rule affects a token
-	// created at login.
+	// Specifies the way the binding rule affects a token created at login.
 	BindType pulumi.StringInput
-	// A free form human readable description of the
-	// binding rule.
+	// A free form human readable description of the binding rule.
 	Description pulumi.StringPtrInput
-	// The namespace to create the binding
-	// rule within.
+	// The namespace to create the binding rule within.
 	Namespace pulumi.StringPtrInput
-	// The expression used to math this rule against valid
-	// identities returned from an auth method validation.
+	// The partition the ACL binding rule is associated with.
+	Partition pulumi.StringPtrInput
+	// The expression used to math this rule against valid identities returned from an auth method validation.
 	Selector pulumi.StringPtrInput
 }
 

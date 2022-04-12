@@ -92,6 +92,7 @@ export interface GetCatalogNodesQueryOptionArgs {
     datacenter?: pulumi.Input<string>;
     near?: pulumi.Input<string>;
     nodeMeta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    partition?: pulumi.Input<string>;
     requireConsistent?: pulumi.Input<boolean>;
     token?: pulumi.Input<string>;
     waitIndex?: pulumi.Input<number>;
@@ -103,6 +104,7 @@ export interface GetCatalogNodesQueryOption {
     datacenter?: string;
     near?: string;
     nodeMeta?: {[key: string]: string};
+    partition?: string;
     requireConsistent?: boolean;
     token?: string;
     waitIndex?: number;
@@ -115,6 +117,7 @@ export interface GetCatalogServiceQueryOptionArgs {
     namespace?: pulumi.Input<string>;
     near?: pulumi.Input<string>;
     nodeMeta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    partition?: pulumi.Input<string>;
     requireConsistent?: pulumi.Input<boolean>;
     token?: pulumi.Input<string>;
     waitIndex?: pulumi.Input<number>;
@@ -127,6 +130,7 @@ export interface GetCatalogServiceQueryOption {
     namespace?: string;
     near?: string;
     nodeMeta?: {[key: string]: string};
+    partition?: string;
     requireConsistent?: boolean;
     token?: string;
     waitIndex?: number;
@@ -139,6 +143,7 @@ export interface GetCatalogServicesQueryOption {
     namespace?: string;
     near?: string;
     nodeMeta?: {[key: string]: string};
+    partition?: string;
     requireConsistent?: boolean;
     token?: string;
     waitIndex?: number;
@@ -151,6 +156,7 @@ export interface GetCatalogServicesQueryOptionArgs {
     namespace?: pulumi.Input<string>;
     near?: pulumi.Input<string>;
     nodeMeta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    partition?: pulumi.Input<string>;
     requireConsistent?: pulumi.Input<boolean>;
     token?: pulumi.Input<string>;
     waitIndex?: pulumi.Input<number>;
@@ -250,6 +256,7 @@ export interface GetNodesQueryOptionArgs {
     datacenter?: pulumi.Input<string>;
     near?: pulumi.Input<string>;
     nodeMeta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    partition?: pulumi.Input<string>;
     /**
      * When `true` force the client to perform a
      * read on at least quorum servers and verify the result is the same.  Defaults
@@ -288,6 +295,7 @@ export interface GetNodesQueryOption {
     datacenter?: string;
     near?: string;
     nodeMeta?: {[key: string]: string};
+    partition?: string;
     /**
      * When `true` force the client to perform a
      * read on at least quorum servers and verify the result is the same.  Defaults
@@ -330,6 +338,7 @@ export interface GetServiceQueryOption {
     namespace?: string;
     near?: string;
     nodeMeta?: {[key: string]: string};
+    partition?: string;
     /**
      * When `true` force the client to perform a
      * read on at least quorum servers and verify the result is the same.  Defaults
@@ -372,6 +381,7 @@ export interface GetServiceQueryOptionArgs {
     namespace?: pulumi.Input<string>;
     near?: pulumi.Input<string>;
     nodeMeta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    partition?: pulumi.Input<string>;
     /**
      * When `true` force the client to perform a
      * read on at least quorum servers and verify the result is the same.  Defaults
@@ -414,6 +424,7 @@ export interface GetServicesQueryOptionArgs {
     namespace?: pulumi.Input<string>;
     near?: pulumi.Input<string>;
     nodeMeta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    partition?: pulumi.Input<string>;
     /**
      * When `true` force the client to perform a
      * read on at least quorum servers and verify the result is the same.  Defaults
@@ -456,6 +467,7 @@ export interface GetServicesQueryOption {
     namespace?: string;
     near?: string;
     nodeMeta?: {[key: string]: string};
+    partition?: string;
     /**
      * When `true` force the client to perform a
      * read on at least quorum servers and verify the result is the same.  Defaults

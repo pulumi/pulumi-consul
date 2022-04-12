@@ -179,6 +179,41 @@ import * as utilities from "./utilities";
  *     }),
  * });
  * ```
+ * ### `exported-services` config entry
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ *
+ * const exportedServices = new consul.ConfigEntry("exportedServices", {
+ *     kind: "exported-services",
+ *     configJson: JSON.stringify({
+ *         Services: [{
+ *             Name: "test",
+ *             Namespace: "default",
+ *             Consumers: [{
+ *                 Partition: "default",
+ *             }],
+ *         }],
+ *     }),
+ * });
+ * ```
+ * ### `mesh` config entry
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ *
+ * const mesh = new consul.ConfigEntry("mesh", {
+ *     kind: "mesh",
+ *     partition: "default",
+ *     configJson: JSON.stringify({
+ *         TransparentProxy: {
+ *             MeshDestinationsOnly: true,
+ *         },
+ *     }),
+ * });
+ * ```
  */
 export class ConfigEntry extends pulumi.CustomResource {
     /**
@@ -224,6 +259,10 @@ export class ConfigEntry extends pulumi.CustomResource {
      * The namespace to create the config entry within.
      */
     public readonly namespace!: pulumi.Output<string | undefined>;
+    /**
+     * The partition the config entry is associated with.
+     */
+    public readonly partition!: pulumi.Output<string | undefined>;
 
     /**
      * Create a ConfigEntry resource with the given unique name, arguments, and options.
@@ -242,6 +281,7 @@ export class ConfigEntry extends pulumi.CustomResource {
             resourceInputs["kind"] = state ? state.kind : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["namespace"] = state ? state.namespace : undefined;
+            resourceInputs["partition"] = state ? state.partition : undefined;
         } else {
             const args = argsOrState as ConfigEntryArgs | undefined;
             if ((!args || args.kind === undefined) && !opts.urn) {
@@ -251,6 +291,7 @@ export class ConfigEntry extends pulumi.CustomResource {
             resourceInputs["kind"] = args ? args.kind : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["namespace"] = args ? args.namespace : undefined;
+            resourceInputs["partition"] = args ? args.partition : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ConfigEntry.__pulumiType, name, resourceInputs, opts);
@@ -277,6 +318,10 @@ export interface ConfigEntryState {
      * The namespace to create the config entry within.
      */
     namespace?: pulumi.Input<string>;
+    /**
+     * The partition the config entry is associated with.
+     */
+    partition?: pulumi.Input<string>;
 }
 
 /**
@@ -299,4 +344,8 @@ export interface ConfigEntryArgs {
      * The namespace to create the config entry within.
      */
     namespace?: pulumi.Input<string>;
+    /**
+     * The partition the config entry is associated with.
+     */
+    partition?: pulumi.Input<string>;
 }

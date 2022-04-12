@@ -36,15 +36,13 @@ namespace Pulumi.Consul
     public partial class Node : Pulumi.CustomResource
     {
         /// <summary>
-        /// The address of the node being added to,
-        /// or referenced in the catalog.
+        /// The address of the node being added to, or referenced in the catalog.
         /// </summary>
         [Output("address")]
         public Output<string> Address { get; private set; } = null!;
 
         /// <summary>
-        /// The datacenter to use. This overrides the agent's
-        /// default datacenter and the datacenter in the provider setup.
+        /// The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
         /// </summary>
         [Output("datacenter")]
         public Output<string> Datacenter { get; private set; } = null!;
@@ -56,11 +54,16 @@ namespace Pulumi.Consul
         public Output<ImmutableDictionary<string, string>?> Meta { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the node being added to, or
-        /// referenced in the catalog.
+        /// The name of the node being added to, or referenced in the catalog.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The partition the node is associated with.
+        /// </summary>
+        [Output("partition")]
+        public Output<string?> Partition { get; private set; } = null!;
 
         [Output("token")]
         public Output<string?> Token { get; private set; } = null!;
@@ -112,15 +115,13 @@ namespace Pulumi.Consul
     public sealed class NodeArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The address of the node being added to,
-        /// or referenced in the catalog.
+        /// The address of the node being added to, or referenced in the catalog.
         /// </summary>
         [Input("address", required: true)]
         public Input<string> Address { get; set; } = null!;
 
         /// <summary>
-        /// The datacenter to use. This overrides the agent's
-        /// default datacenter and the datacenter in the provider setup.
+        /// The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
         /// </summary>
         [Input("datacenter")]
         public Input<string>? Datacenter { get; set; }
@@ -138,11 +139,16 @@ namespace Pulumi.Consul
         }
 
         /// <summary>
-        /// The name of the node being added to, or
-        /// referenced in the catalog.
+        /// The name of the node being added to, or referenced in the catalog.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The partition the node is associated with.
+        /// </summary>
+        [Input("partition")]
+        public Input<string>? Partition { get; set; }
 
         [Input("token")]
         public Input<string>? Token { get; set; }
@@ -155,15 +161,13 @@ namespace Pulumi.Consul
     public sealed class NodeState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The address of the node being added to,
-        /// or referenced in the catalog.
+        /// The address of the node being added to, or referenced in the catalog.
         /// </summary>
         [Input("address")]
         public Input<string>? Address { get; set; }
 
         /// <summary>
-        /// The datacenter to use. This overrides the agent's
-        /// default datacenter and the datacenter in the provider setup.
+        /// The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
         /// </summary>
         [Input("datacenter")]
         public Input<string>? Datacenter { get; set; }
@@ -181,11 +185,16 @@ namespace Pulumi.Consul
         }
 
         /// <summary>
-        /// The name of the node being added to, or
-        /// referenced in the catalog.
+        /// The name of the node being added to, or referenced in the catalog.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The partition the node is associated with.
+        /// </summary>
+        [Input("partition")]
+        public Input<string>? Partition { get; set; }
 
         [Input("token")]
         public Input<string>? Token { get; set; }

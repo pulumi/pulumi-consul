@@ -93,6 +93,12 @@ namespace Pulumi.Consul
         [Input("namespace")]
         public string? Namespace { get; set; }
 
+        /// <summary>
+        /// The partition to lookup the auth method.
+        /// </summary>
+        [Input("partition")]
+        public string? Partition { get; set; }
+
         public GetAclAuthMethodArgs()
         {
         }
@@ -111,6 +117,12 @@ namespace Pulumi.Consul
         /// </summary>
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }
+
+        /// <summary>
+        /// The partition to lookup the auth method.
+        /// </summary>
+        [Input("partition")]
+        public Input<string>? Partition { get; set; }
 
         public GetAclAuthMethodInvokeArgs()
         {
@@ -156,6 +168,7 @@ namespace Pulumi.Consul
         /// namespace tokens created via this auth method will be created within
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAclAuthMethodNamespaceRuleResult> NamespaceRules;
+        public readonly string? Partition;
         /// <summary>
         /// The kind of token that this auth method produces. This can
         /// be either 'local' or 'global'.
@@ -186,6 +199,8 @@ namespace Pulumi.Consul
 
             ImmutableArray<Outputs.GetAclAuthMethodNamespaceRuleResult> namespaceRules,
 
+            string? partition,
+
             string tokenLocality,
 
             string type)
@@ -199,6 +214,7 @@ namespace Pulumi.Consul
             Name = name;
             Namespace = @namespace;
             NamespaceRules = namespaceRules;
+            Partition = partition;
             TokenLocality = tokenLocality;
             Type = type;
         }

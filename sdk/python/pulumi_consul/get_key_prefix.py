@@ -22,7 +22,7 @@ class GetKeyPrefixResult:
     """
     A collection of values returned by getKeyPrefix.
     """
-    def __init__(__self__, datacenter=None, id=None, namespace=None, path_prefix=None, subkey_collection=None, subkeys=None, token=None, var=None):
+    def __init__(__self__, datacenter=None, id=None, namespace=None, partition=None, path_prefix=None, subkey_collection=None, subkeys=None, token=None, var=None):
         if datacenter and not isinstance(datacenter, str):
             raise TypeError("Expected argument 'datacenter' to be a str")
         pulumi.set(__self__, "datacenter", datacenter)
@@ -32,6 +32,9 @@ class GetKeyPrefixResult:
         if namespace and not isinstance(namespace, str):
             raise TypeError("Expected argument 'namespace' to be a str")
         pulumi.set(__self__, "namespace", namespace)
+        if partition and not isinstance(partition, str):
+            raise TypeError("Expected argument 'partition' to be a str")
+        pulumi.set(__self__, "partition", partition)
         if path_prefix and not isinstance(path_prefix, str):
             raise TypeError("Expected argument 'path_prefix' to be a str")
         pulumi.set(__self__, "path_prefix", path_prefix)
@@ -68,6 +71,11 @@ class GetKeyPrefixResult:
     @pulumi.getter
     def namespace(self) -> Optional[str]:
         return pulumi.get(self, "namespace")
+
+    @property
+    @pulumi.getter
+    def partition(self) -> Optional[str]:
+        return pulumi.get(self, "partition")
 
     @property
     @pulumi.getter(name="pathPrefix")
@@ -113,6 +121,7 @@ class AwaitableGetKeyPrefixResult(GetKeyPrefixResult):
             datacenter=self.datacenter,
             id=self.id,
             namespace=self.namespace,
+            partition=self.partition,
             path_prefix=self.path_prefix,
             subkey_collection=self.subkey_collection,
             subkeys=self.subkeys,
@@ -122,6 +131,7 @@ class AwaitableGetKeyPrefixResult(GetKeyPrefixResult):
 
 def get_key_prefix(datacenter: Optional[str] = None,
                    namespace: Optional[str] = None,
+                   partition: Optional[str] = None,
                    path_prefix: Optional[str] = None,
                    subkey_collection: Optional[Sequence[pulumi.InputType['GetKeyPrefixSubkeyCollectionArgs']]] = None,
                    token: Optional[str] = None,
@@ -161,7 +171,8 @@ def get_key_prefix(datacenter: Optional[str] = None,
 
     :param str datacenter: The datacenter to use. This overrides the
            agent's default datacenter and the datacenter in the provider setup.
-    :param str namespace: The namespace to create the keys within.
+    :param str namespace: The namespace to lookup the keys within.
+    :param str partition: The namespace to lookup the keys within.
     :param str path_prefix: Specifies the common prefix shared by all keys
            that will be read by this data source instance. In most cases, this will
            end with a slash to read a "folder" of subkeys.
@@ -173,6 +184,7 @@ def get_key_prefix(datacenter: Optional[str] = None,
     __args__ = dict()
     __args__['datacenter'] = datacenter
     __args__['namespace'] = namespace
+    __args__['partition'] = partition
     __args__['pathPrefix'] = path_prefix
     __args__['subkeyCollection'] = subkey_collection
     __args__['token'] = token
@@ -186,6 +198,7 @@ def get_key_prefix(datacenter: Optional[str] = None,
         datacenter=__ret__.datacenter,
         id=__ret__.id,
         namespace=__ret__.namespace,
+        partition=__ret__.partition,
         path_prefix=__ret__.path_prefix,
         subkey_collection=__ret__.subkey_collection,
         subkeys=__ret__.subkeys,
@@ -196,6 +209,7 @@ def get_key_prefix(datacenter: Optional[str] = None,
 @_utilities.lift_output_func(get_key_prefix)
 def get_key_prefix_output(datacenter: Optional[pulumi.Input[Optional[str]]] = None,
                           namespace: Optional[pulumi.Input[Optional[str]]] = None,
+                          partition: Optional[pulumi.Input[Optional[str]]] = None,
                           path_prefix: Optional[pulumi.Input[str]] = None,
                           subkey_collection: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetKeyPrefixSubkeyCollectionArgs']]]]] = None,
                           token: Optional[pulumi.Input[Optional[str]]] = None,
@@ -235,7 +249,8 @@ def get_key_prefix_output(datacenter: Optional[pulumi.Input[Optional[str]]] = No
 
     :param str datacenter: The datacenter to use. This overrides the
            agent's default datacenter and the datacenter in the provider setup.
-    :param str namespace: The namespace to create the keys within.
+    :param str namespace: The namespace to lookup the keys within.
+    :param str partition: The namespace to lookup the keys within.
     :param str path_prefix: Specifies the common prefix shared by all keys
            that will be read by this data source instance. In most cases, this will
            end with a slash to read a "folder" of subkeys.

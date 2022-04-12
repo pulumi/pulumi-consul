@@ -74,6 +74,12 @@ namespace Pulumi.Consul
         public Output<string?> Namespace { get; private set; } = null!;
 
         /// <summary>
+        /// The admin partition to create the keys within.
+        /// </summary>
+        [Output("partition")]
+        public Output<string?> Partition { get; private set; } = null!;
+
+        /// <summary>
         /// Specifies the common prefix shared by all keys
         /// that will be managed by this resource instance. In most cases this will
         /// end with a slash, to manage a "folder" of keys.
@@ -164,6 +170,12 @@ namespace Pulumi.Consul
         public Input<string>? Namespace { get; set; }
 
         /// <summary>
+        /// The admin partition to create the keys within.
+        /// </summary>
+        [Input("partition")]
+        public Input<string>? Partition { get; set; }
+
+        /// <summary>
         /// Specifies the common prefix shared by all keys
         /// that will be managed by this resource instance. In most cases this will
         /// end with a slash, to manage a "folder" of keys.
@@ -225,6 +237,12 @@ namespace Pulumi.Consul
         /// </summary>
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }
+
+        /// <summary>
+        /// The admin partition to create the keys within.
+        /// </summary>
+        [Input("partition")]
+        public Input<string>? Partition { get; set; }
 
         /// <summary>
         /// Specifies the common prefix shared by all keys

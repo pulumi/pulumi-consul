@@ -115,6 +115,10 @@ export class AclAuthMethod extends pulumi.CustomResource {
      */
     public readonly namespaceRules!: pulumi.Output<outputs.AclAuthMethodNamespaceRule[] | undefined>;
     /**
+     * The partition the ACL auth method is associated with.
+     */
+    public readonly partition!: pulumi.Output<string | undefined>;
+    /**
      * The kind of token that this auth method
      * produces. This can be either 'local' or 'global'.
      */
@@ -145,6 +149,7 @@ export class AclAuthMethod extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["namespace"] = state ? state.namespace : undefined;
             resourceInputs["namespaceRules"] = state ? state.namespaceRules : undefined;
+            resourceInputs["partition"] = state ? state.partition : undefined;
             resourceInputs["tokenLocality"] = state ? state.tokenLocality : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
         } else {
@@ -160,6 +165,7 @@ export class AclAuthMethod extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["namespace"] = args ? args.namespace : undefined;
             resourceInputs["namespaceRules"] = args ? args.namespaceRules : undefined;
+            resourceInputs["partition"] = args ? args.partition : undefined;
             resourceInputs["tokenLocality"] = args ? args.tokenLocality : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
         }
@@ -211,6 +217,10 @@ export interface AclAuthMethodState {
      * which namespace tokens created via this auth method will be created within.
      */
     namespaceRules?: pulumi.Input<pulumi.Input<inputs.AclAuthMethodNamespaceRule>[]>;
+    /**
+     * The partition the ACL auth method is associated with.
+     */
+    partition?: pulumi.Input<string>;
     /**
      * The kind of token that this auth method
      * produces. This can be either 'local' or 'global'.
@@ -265,6 +275,10 @@ export interface AclAuthMethodArgs {
      * which namespace tokens created via this auth method will be created within.
      */
     namespaceRules?: pulumi.Input<pulumi.Input<inputs.AclAuthMethodNamespaceRule>[]>;
+    /**
+     * The partition the ACL auth method is associated with.
+     */
+    partition?: pulumi.Input<string>;
     /**
      * The kind of token that this auth method
      * produces. This can be either 'local' or 'global'.

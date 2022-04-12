@@ -75,6 +75,10 @@ export class AclPolicy extends pulumi.CustomResource {
      */
     public readonly namespace!: pulumi.Output<string | undefined>;
     /**
+     * The partition the ACL policy is associated with.
+     */
+    public readonly partition!: pulumi.Output<string | undefined>;
+    /**
      * The rules of the policy.
      */
     public readonly rules!: pulumi.Output<string>;
@@ -96,6 +100,7 @@ export class AclPolicy extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["namespace"] = state ? state.namespace : undefined;
+            resourceInputs["partition"] = state ? state.partition : undefined;
             resourceInputs["rules"] = state ? state.rules : undefined;
         } else {
             const args = argsOrState as AclPolicyArgs | undefined;
@@ -106,6 +111,7 @@ export class AclPolicy extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["namespace"] = args ? args.namespace : undefined;
+            resourceInputs["partition"] = args ? args.partition : undefined;
             resourceInputs["rules"] = args ? args.rules : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -134,6 +140,10 @@ export interface AclPolicyState {
      */
     namespace?: pulumi.Input<string>;
     /**
+     * The partition the ACL policy is associated with.
+     */
+    partition?: pulumi.Input<string>;
+    /**
      * The rules of the policy.
      */
     rules?: pulumi.Input<string>;
@@ -159,6 +169,10 @@ export interface AclPolicyArgs {
      * The namespace to create the policy within.
      */
     namespace?: pulumi.Input<string>;
+    /**
+     * The partition the ACL policy is associated with.
+     */
+    partition?: pulumi.Input<string>;
     /**
      * The rules of the policy.
      */

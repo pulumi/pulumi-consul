@@ -45,6 +45,9 @@ namespace Pulumi.Consul.Inputs
             set => _nodeMeta = value;
         }
 
+        [Input("partition")]
+        public string? Partition { get; set; }
+
         /// <summary>
         /// When `true` force the client to perform a
         /// read on at least quorum servers and verify the result is the same.  Defaults

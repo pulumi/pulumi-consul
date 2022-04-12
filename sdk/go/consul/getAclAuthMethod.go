@@ -51,6 +51,8 @@ type LookupAclAuthMethodArgs struct {
 	Name string `pulumi:"name"`
 	// The namespace to lookup the auth method.
 	Namespace *string `pulumi:"namespace"`
+	// The partition to lookup the auth method.
+	Partition *string `pulumi:"partition"`
 }
 
 // A collection of values returned by getAclAuthMethod.
@@ -78,6 +80,7 @@ type LookupAclAuthMethodResult struct {
 	// (Enterprise Only) A set of rules that control which
 	// namespace tokens created via this auth method will be created within
 	NamespaceRules []GetAclAuthMethodNamespaceRule `pulumi:"namespaceRules"`
+	Partition      *string                         `pulumi:"partition"`
 	// The kind of token that this auth method produces. This can
 	// be either 'local' or 'global'.
 	TokenLocality string `pulumi:"tokenLocality"`
@@ -100,6 +103,8 @@ type LookupAclAuthMethodOutputArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// The namespace to lookup the auth method.
 	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	// The partition to lookup the auth method.
+	Partition pulumi.StringPtrInput `pulumi:"partition"`
 }
 
 func (LookupAclAuthMethodOutputArgs) ElementType() reflect.Type {
@@ -169,6 +174,10 @@ func (o LookupAclAuthMethodResultOutput) Namespace() pulumi.StringPtrOutput {
 // namespace tokens created via this auth method will be created within
 func (o LookupAclAuthMethodResultOutput) NamespaceRules() GetAclAuthMethodNamespaceRuleArrayOutput {
 	return o.ApplyT(func(v LookupAclAuthMethodResult) []GetAclAuthMethodNamespaceRule { return v.NamespaceRules }).(GetAclAuthMethodNamespaceRuleArrayOutput)
+}
+
+func (o LookupAclAuthMethodResultOutput) Partition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAclAuthMethodResult) *string { return v.Partition }).(pulumi.StringPtrOutput)
 }
 
 // The kind of token that this auth method produces. This can

@@ -21,7 +21,7 @@ class GetAclAuthMethodResult:
     """
     A collection of values returned by getAclAuthMethod.
     """
-    def __init__(__self__, config=None, config_json=None, description=None, display_name=None, id=None, max_token_ttl=None, name=None, namespace=None, namespace_rules=None, token_locality=None, type=None):
+    def __init__(__self__, config=None, config_json=None, description=None, display_name=None, id=None, max_token_ttl=None, name=None, namespace=None, namespace_rules=None, partition=None, token_locality=None, type=None):
         if config and not isinstance(config, dict):
             raise TypeError("Expected argument 'config' to be a dict")
         if config is not None:
@@ -53,6 +53,9 @@ class GetAclAuthMethodResult:
         if namespace_rules and not isinstance(namespace_rules, list):
             raise TypeError("Expected argument 'namespace_rules' to be a list")
         pulumi.set(__self__, "namespace_rules", namespace_rules)
+        if partition and not isinstance(partition, str):
+            raise TypeError("Expected argument 'partition' to be a str")
+        pulumi.set(__self__, "partition", partition)
         if token_locality and not isinstance(token_locality, str):
             raise TypeError("Expected argument 'token_locality' to be a str")
         pulumi.set(__self__, "token_locality", token_locality)
@@ -132,6 +135,11 @@ class GetAclAuthMethodResult:
         return pulumi.get(self, "namespace_rules")
 
     @property
+    @pulumi.getter
+    def partition(self) -> Optional[str]:
+        return pulumi.get(self, "partition")
+
+    @property
     @pulumi.getter(name="tokenLocality")
     def token_locality(self) -> str:
         """
@@ -164,12 +172,14 @@ class AwaitableGetAclAuthMethodResult(GetAclAuthMethodResult):
             name=self.name,
             namespace=self.namespace,
             namespace_rules=self.namespace_rules,
+            partition=self.partition,
             token_locality=self.token_locality,
             type=self.type)
 
 
 def get_acl_auth_method(name: Optional[str] = None,
                         namespace: Optional[str] = None,
+                        partition: Optional[str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAclAuthMethodResult:
     """
     The `AclAuthMethod` data source returns the information related to a
@@ -188,10 +198,12 @@ def get_acl_auth_method(name: Optional[str] = None,
 
     :param str name: The name of the ACL Auth Method.
     :param str namespace: The namespace to lookup the auth method.
+    :param str partition: The partition to lookup the auth method.
     """
     __args__ = dict()
     __args__['name'] = name
     __args__['namespace'] = namespace
+    __args__['partition'] = partition
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
@@ -208,6 +220,7 @@ def get_acl_auth_method(name: Optional[str] = None,
         name=__ret__.name,
         namespace=__ret__.namespace,
         namespace_rules=__ret__.namespace_rules,
+        partition=__ret__.partition,
         token_locality=__ret__.token_locality,
         type=__ret__.type)
 
@@ -215,6 +228,7 @@ def get_acl_auth_method(name: Optional[str] = None,
 @_utilities.lift_output_func(get_acl_auth_method)
 def get_acl_auth_method_output(name: Optional[pulumi.Input[str]] = None,
                                namespace: Optional[pulumi.Input[Optional[str]]] = None,
+                               partition: Optional[pulumi.Input[Optional[str]]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAclAuthMethodResult]:
     """
     The `AclAuthMethod` data source returns the information related to a
@@ -233,5 +247,6 @@ def get_acl_auth_method_output(name: Optional[pulumi.Input[str]] = None,
 
     :param str name: The name of the ACL Auth Method.
     :param str namespace: The namespace to lookup the auth method.
+    :param str partition: The partition to lookup the auth method.
     """
     ...

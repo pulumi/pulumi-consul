@@ -39,18 +39,17 @@ import (
 type Node struct {
 	pulumi.CustomResourceState
 
-	// The address of the node being added to,
-	// or referenced in the catalog.
+	// The address of the node being added to, or referenced in the catalog.
 	Address pulumi.StringOutput `pulumi:"address"`
-	// The datacenter to use. This overrides the agent's
-	// default datacenter and the datacenter in the provider setup.
+	// The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
 	Datacenter pulumi.StringOutput `pulumi:"datacenter"`
 	// Key/value pairs that are associated with the node.
 	Meta pulumi.StringMapOutput `pulumi:"meta"`
-	// The name of the node being added to, or
-	// referenced in the catalog.
-	Name  pulumi.StringOutput    `pulumi:"name"`
-	Token pulumi.StringPtrOutput `pulumi:"token"`
+	// The name of the node being added to, or referenced in the catalog.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The partition the node is associated with.
+	Partition pulumi.StringPtrOutput `pulumi:"partition"`
+	Token     pulumi.StringPtrOutput `pulumi:"token"`
 }
 
 // NewNode registers a new resource with the given unique name, arguments, and options.
@@ -85,33 +84,31 @@ func GetNode(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Node resources.
 type nodeState struct {
-	// The address of the node being added to,
-	// or referenced in the catalog.
+	// The address of the node being added to, or referenced in the catalog.
 	Address *string `pulumi:"address"`
-	// The datacenter to use. This overrides the agent's
-	// default datacenter and the datacenter in the provider setup.
+	// The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
 	Datacenter *string `pulumi:"datacenter"`
 	// Key/value pairs that are associated with the node.
 	Meta map[string]string `pulumi:"meta"`
-	// The name of the node being added to, or
-	// referenced in the catalog.
-	Name  *string `pulumi:"name"`
-	Token *string `pulumi:"token"`
+	// The name of the node being added to, or referenced in the catalog.
+	Name *string `pulumi:"name"`
+	// The partition the node is associated with.
+	Partition *string `pulumi:"partition"`
+	Token     *string `pulumi:"token"`
 }
 
 type NodeState struct {
-	// The address of the node being added to,
-	// or referenced in the catalog.
+	// The address of the node being added to, or referenced in the catalog.
 	Address pulumi.StringPtrInput
-	// The datacenter to use. This overrides the agent's
-	// default datacenter and the datacenter in the provider setup.
+	// The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
 	Datacenter pulumi.StringPtrInput
 	// Key/value pairs that are associated with the node.
 	Meta pulumi.StringMapInput
-	// The name of the node being added to, or
-	// referenced in the catalog.
-	Name  pulumi.StringPtrInput
-	Token pulumi.StringPtrInput
+	// The name of the node being added to, or referenced in the catalog.
+	Name pulumi.StringPtrInput
+	// The partition the node is associated with.
+	Partition pulumi.StringPtrInput
+	Token     pulumi.StringPtrInput
 }
 
 func (NodeState) ElementType() reflect.Type {
@@ -119,34 +116,32 @@ func (NodeState) ElementType() reflect.Type {
 }
 
 type nodeArgs struct {
-	// The address of the node being added to,
-	// or referenced in the catalog.
+	// The address of the node being added to, or referenced in the catalog.
 	Address string `pulumi:"address"`
-	// The datacenter to use. This overrides the agent's
-	// default datacenter and the datacenter in the provider setup.
+	// The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
 	Datacenter *string `pulumi:"datacenter"`
 	// Key/value pairs that are associated with the node.
 	Meta map[string]string `pulumi:"meta"`
-	// The name of the node being added to, or
-	// referenced in the catalog.
-	Name  *string `pulumi:"name"`
-	Token *string `pulumi:"token"`
+	// The name of the node being added to, or referenced in the catalog.
+	Name *string `pulumi:"name"`
+	// The partition the node is associated with.
+	Partition *string `pulumi:"partition"`
+	Token     *string `pulumi:"token"`
 }
 
 // The set of arguments for constructing a Node resource.
 type NodeArgs struct {
-	// The address of the node being added to,
-	// or referenced in the catalog.
+	// The address of the node being added to, or referenced in the catalog.
 	Address pulumi.StringInput
-	// The datacenter to use. This overrides the agent's
-	// default datacenter and the datacenter in the provider setup.
+	// The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
 	Datacenter pulumi.StringPtrInput
 	// Key/value pairs that are associated with the node.
 	Meta pulumi.StringMapInput
-	// The name of the node being added to, or
-	// referenced in the catalog.
-	Name  pulumi.StringPtrInput
-	Token pulumi.StringPtrInput
+	// The name of the node being added to, or referenced in the catalog.
+	Name pulumi.StringPtrInput
+	// The partition the node is associated with.
+	Partition pulumi.StringPtrInput
+	Token     pulumi.StringPtrInput
 }
 
 func (NodeArgs) ElementType() reflect.Type {

@@ -34,6 +34,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AclTokenPolicyAttachment{}
 	case "consul:index/aclTokenRoleAttachment:AclTokenRoleAttachment":
 		r = &AclTokenRoleAttachment{}
+	case "consul:index/adminPartition:AdminPartition":
+		r = &AdminPartition{}
 	case "consul:index/agentService:AgentService":
 		r = &AgentService{}
 	case "consul:index/autopilotConfig:AutopilotConfig":
@@ -130,6 +132,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"consul",
 		"index/aclTokenRoleAttachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"consul",
+		"index/adminPartition",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

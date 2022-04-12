@@ -30,6 +30,7 @@ export function getAclAuthMethod(args: GetAclAuthMethodArgs, opts?: pulumi.Invok
     return pulumi.runtime.invoke("consul:index/getAclAuthMethod:getAclAuthMethod", {
         "name": args.name,
         "namespace": args.namespace,
+        "partition": args.partition,
     }, opts);
 }
 
@@ -45,6 +46,10 @@ export interface GetAclAuthMethodArgs {
      * The namespace to lookup the auth method.
      */
     namespace?: string;
+    /**
+     * The partition to lookup the auth method.
+     */
+    partition?: string;
 }
 
 /**
@@ -88,6 +93,7 @@ export interface GetAclAuthMethodResult {
      * namespace tokens created via this auth method will be created within
      */
     readonly namespaceRules: outputs.GetAclAuthMethodNamespaceRule[];
+    readonly partition?: string;
     /**
      * The kind of token that this auth method produces. This can
      * be either 'local' or 'global'.
@@ -115,4 +121,8 @@ export interface GetAclAuthMethodOutputArgs {
      * The namespace to lookup the auth method.
      */
     namespace?: pulumi.Input<string>;
+    /**
+     * The partition to lookup the auth method.
+     */
+    partition?: pulumi.Input<string>;
 }

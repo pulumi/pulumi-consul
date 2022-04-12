@@ -31,6 +31,7 @@ namespace Pulumi.Consul.Outputs
         public readonly string? Namespace;
         public readonly string? Near;
         public readonly ImmutableDictionary<string, string>? NodeMeta;
+        public readonly string? Partition;
         /// <summary>
         /// When `true` force the client to perform a
         /// read on at least quorum servers and verify the result is the same.  Defaults
@@ -65,6 +66,8 @@ namespace Pulumi.Consul.Outputs
 
             ImmutableDictionary<string, string>? nodeMeta,
 
+            string? partition,
+
             bool? requireConsistent,
 
             string? token,
@@ -78,6 +81,7 @@ namespace Pulumi.Consul.Outputs
             Namespace = @namespace;
             Near = near;
             NodeMeta = nodeMeta;
+            Partition = partition;
             RequireConsistent = requireConsistent;
             Token = token;
             WaitIndex = waitIndex;

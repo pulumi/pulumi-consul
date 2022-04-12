@@ -144,6 +144,10 @@ export class Service extends pulumi.CustomResource {
      */
     public readonly node!: pulumi.Output<string>;
     /**
+     * The partition the service is associated with.
+     */
+    public readonly partition!: pulumi.Output<string | undefined>;
+    /**
      * The port of the service.
      */
     public readonly port!: pulumi.Output<number | undefined>;
@@ -180,6 +184,7 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["namespace"] = state ? state.namespace : undefined;
             resourceInputs["node"] = state ? state.node : undefined;
+            resourceInputs["partition"] = state ? state.partition : undefined;
             resourceInputs["port"] = state ? state.port : undefined;
             resourceInputs["serviceId"] = state ? state.serviceId : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
@@ -197,6 +202,7 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["namespace"] = args ? args.namespace : undefined;
             resourceInputs["node"] = args ? args.node : undefined;
+            resourceInputs["partition"] = args ? args.partition : undefined;
             resourceInputs["port"] = args ? args.port : undefined;
             resourceInputs["serviceId"] = args ? args.serviceId : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
@@ -247,6 +253,10 @@ export interface ServiceState {
      * The name of the node the to register the service on.
      */
     node?: pulumi.Input<string>;
+    /**
+     * The partition the service is associated with.
+     */
+    partition?: pulumi.Input<string>;
     /**
      * The port of the service.
      */
@@ -304,6 +314,10 @@ export interface ServiceArgs {
      * The name of the node the to register the service on.
      */
     node: pulumi.Input<string>;
+    /**
+     * The partition the service is associated with.
+     */
+    partition?: pulumi.Input<string>;
     /**
      * The port of the service.
      */
