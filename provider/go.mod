@@ -4,8 +4,7 @@ go 1.16
 
 require (
 	github.com/hashicorp/terraform-plugin-sdk v1.17.2
-	github.com/hashicorp/terraform-plugin-test v1.3.0 // indirect
 	github.com/hashicorp/terraform-provider-consul v1.1.1-0.20220411140211-2a89e0cba97c
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.20.0
-	github.com/pulumi/pulumi/sdk/v3 v3.27.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.21.0
+	github.com/pulumi/pulumi/sdk/v3 v3.30.0
 )
