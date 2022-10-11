@@ -19,22 +19,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		agent, err := consul.LookupAclPolicy(ctx, &GetAclPolicyArgs{
-// 			Name: "agent",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("consulAclPolicy", agent.Rules)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			agent, err := consul.LookupAclPolicy(ctx, &GetAclPolicyArgs{
+//				Name: "agent",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("consulAclPolicy", agent.Rules)
+//			return nil
+//		})
+//	}
+//
 // ```
 func LookupAclPolicy(ctx *pulumi.Context, args *LookupAclPolicyArgs, opts ...pulumi.InvokeOption) (*LookupAclPolicyResult, error) {
 	var rv LookupAclPolicyResult

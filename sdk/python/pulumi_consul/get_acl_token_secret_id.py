@@ -20,7 +20,7 @@ class GetAclTokenSecretIdResult:
     """
     A collection of values returned by getAclTokenSecretId.
     """
-    def __init__(__self__, accessor_id=None, encrypted_secret_id=None, id=None, namespace=None, pgp_key=None, secret_id=None):
+    def __init__(__self__, accessor_id=None, encrypted_secret_id=None, id=None, namespace=None, partition=None, pgp_key=None, secret_id=None):
         if accessor_id and not isinstance(accessor_id, str):
             raise TypeError("Expected argument 'accessor_id' to be a str")
         pulumi.set(__self__, "accessor_id", accessor_id)
@@ -33,6 +33,9 @@ class GetAclTokenSecretIdResult:
         if namespace and not isinstance(namespace, str):
             raise TypeError("Expected argument 'namespace' to be a str")
         pulumi.set(__self__, "namespace", namespace)
+        if partition and not isinstance(partition, str):
+            raise TypeError("Expected argument 'partition' to be a str")
+        pulumi.set(__self__, "partition", partition)
         if pgp_key and not isinstance(pgp_key, str):
             raise TypeError("Expected argument 'pgp_key' to be a str")
         pulumi.set(__self__, "pgp_key", pgp_key)
@@ -64,6 +67,11 @@ class GetAclTokenSecretIdResult:
         return pulumi.get(self, "namespace")
 
     @property
+    @pulumi.getter
+    def partition(self) -> Optional[str]:
+        return pulumi.get(self, "partition")
+
+    @property
     @pulumi.getter(name="pgpKey")
     def pgp_key(self) -> Optional[str]:
         return pulumi.get(self, "pgp_key")
@@ -87,12 +95,14 @@ class AwaitableGetAclTokenSecretIdResult(GetAclTokenSecretIdResult):
             encrypted_secret_id=self.encrypted_secret_id,
             id=self.id,
             namespace=self.namespace,
+            partition=self.partition,
             pgp_key=self.pgp_key,
             secret_id=self.secret_id)
 
 
 def get_acl_token_secret_id(accessor_id: Optional[str] = None,
                             namespace: Optional[str] = None,
+                            partition: Optional[str] = None,
                             pgp_key: Optional[str] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAclTokenSecretIdResult:
     """
@@ -117,10 +127,12 @@ def get_acl_token_secret_id(accessor_id: Optional[str] = None,
 
     :param str accessor_id: The accessor ID of the ACL token.
     :param str namespace: The namespace to lookup the token.
+    :param str partition: The partition to lookup the token.
     """
     __args__ = dict()
     __args__['accessorId'] = accessor_id
     __args__['namespace'] = namespace
+    __args__['partition'] = partition
     __args__['pgpKey'] = pgp_key
     if opts is None:
         opts = pulumi.InvokeOptions()
@@ -133,6 +145,7 @@ def get_acl_token_secret_id(accessor_id: Optional[str] = None,
         encrypted_secret_id=__ret__.encrypted_secret_id,
         id=__ret__.id,
         namespace=__ret__.namespace,
+        partition=__ret__.partition,
         pgp_key=__ret__.pgp_key,
         secret_id=__ret__.secret_id)
 
@@ -140,6 +153,7 @@ def get_acl_token_secret_id(accessor_id: Optional[str] = None,
 @_utilities.lift_output_func(get_acl_token_secret_id)
 def get_acl_token_secret_id_output(accessor_id: Optional[pulumi.Input[str]] = None,
                                    namespace: Optional[pulumi.Input[Optional[str]]] = None,
+                                   partition: Optional[pulumi.Input[Optional[str]]] = None,
                                    pgp_key: Optional[pulumi.Input[Optional[str]]] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAclTokenSecretIdResult]:
     """
@@ -164,5 +178,6 @@ def get_acl_token_secret_id_output(accessor_id: Optional[pulumi.Input[str]] = No
 
     :param str accessor_id: The accessor ID of the ACL token.
     :param str namespace: The namespace to lookup the token.
+    :param str partition: The partition to lookup the token.
     """
     ...

@@ -16,7 +16,9 @@ import (
 // `consul_acl_token_role_attachment` can be imported. This is especially useful to manage the policies attached to the anonymous and the master tokens with Terraform
 //
 // ```sh
-//  $ pulumi import consul:index/aclTokenRoleAttachment:AclTokenRoleAttachment anonymous token_id:role_id
+//
+//	$ pulumi import consul:index/aclTokenRoleAttachment:AclTokenRoleAttachment anonymous token_id:role_id
+//
 // ```
 type AclTokenRoleAttachment struct {
 	pulumi.CustomResourceState
@@ -120,7 +122,7 @@ func (i *AclTokenRoleAttachment) ToAclTokenRoleAttachmentOutputWithContext(ctx c
 // AclTokenRoleAttachmentArrayInput is an input type that accepts AclTokenRoleAttachmentArray and AclTokenRoleAttachmentArrayOutput values.
 // You can construct a concrete instance of `AclTokenRoleAttachmentArrayInput` via:
 //
-//          AclTokenRoleAttachmentArray{ AclTokenRoleAttachmentArgs{...} }
+//	AclTokenRoleAttachmentArray{ AclTokenRoleAttachmentArgs{...} }
 type AclTokenRoleAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -145,7 +147,7 @@ func (i AclTokenRoleAttachmentArray) ToAclTokenRoleAttachmentArrayOutputWithCont
 // AclTokenRoleAttachmentMapInput is an input type that accepts AclTokenRoleAttachmentMap and AclTokenRoleAttachmentMapOutput values.
 // You can construct a concrete instance of `AclTokenRoleAttachmentMapInput` via:
 //
-//          AclTokenRoleAttachmentMap{ "key": AclTokenRoleAttachmentArgs{...} }
+//	AclTokenRoleAttachmentMap{ "key": AclTokenRoleAttachmentArgs{...} }
 type AclTokenRoleAttachmentMapInput interface {
 	pulumi.Input
 

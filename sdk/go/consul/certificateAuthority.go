@@ -22,26 +22,29 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := consul.NewCertificateAuthority(ctx, "connect", &consul.CertificateAuthorityArgs{
-// 			Config: pulumi.StringMap{
-// 				"IntermediateCertTTL": pulumi.String("8760h"),
-// 				"LeafCertTTL":         pulumi.String("24h"),
-// 				"RotationPeriod":      pulumi.String("2160h"),
-// 			},
-// 			ConnectProvider: pulumi.String("consul"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := consul.NewCertificateAuthority(ctx, "connect", &consul.CertificateAuthorityArgs{
+//				Config: pulumi.StringMap{
+//					"IntermediateCertTTL": pulumi.String("8760h"),
+//					"LeafCertTTL":         pulumi.String("24h"),
+//					"RotationPeriod":      pulumi.String("2160h"),
+//				},
+//				ConnectProvider: pulumi.String("consul"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // Use Vault to manage and sign certificates:
@@ -50,27 +53,30 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := consul.NewCertificateAuthority(ctx, "connect", &consul.CertificateAuthorityArgs{
-// 			Config: pulumi.StringMap{
-// 				"address":               pulumi.String("http://localhost:8200"),
-// 				"intermediate_pki_path": pulumi.String("connect-intermediate"),
-// 				"root_pki_path":         pulumi.String("connect-root"),
-// 				"token":                 pulumi.String("..."),
-// 			},
-// 			ConnectProvider: pulumi.String("vault"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := consul.NewCertificateAuthority(ctx, "connect", &consul.CertificateAuthorityArgs{
+//				Config: pulumi.StringMap{
+//					"address":               pulumi.String("http://localhost:8200"),
+//					"intermediate_pki_path": pulumi.String("connect-intermediate"),
+//					"root_pki_path":         pulumi.String("connect-root"),
+//					"token":                 pulumi.String("..."),
+//				},
+//				ConnectProvider: pulumi.String("vault"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // Use the [AWS Certificate Manager Private Certificate Authority](https://aws.amazon.com/certificate-manager/private-certificate-authority/):
@@ -79,24 +85,27 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := consul.NewCertificateAuthority(ctx, "connect", &consul.CertificateAuthorityArgs{
-// 			Config: pulumi.StringMap{
-// 				"existing_arn": pulumi.String("arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-123456789012"),
-// 			},
-// 			ConnectProvider: pulumi.String("aws-pca"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := consul.NewCertificateAuthority(ctx, "connect", &consul.CertificateAuthorityArgs{
+//				Config: pulumi.StringMap{
+//					"existing_arn": pulumi.String("arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-123456789012"),
+//				},
+//				ConnectProvider: pulumi.String("aws-pca"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -104,7 +113,9 @@ import (
 // `certificate_authority` can be imported
 //
 // ```sh
-//  $ pulumi import consul:index/certificateAuthority:CertificateAuthority connect connect-ca
+//
+//	$ pulumi import consul:index/certificateAuthority:CertificateAuthority connect connect-ca
+//
 // ```
 type CertificateAuthority struct {
 	pulumi.CustomResourceState
@@ -208,7 +219,7 @@ func (i *CertificateAuthority) ToCertificateAuthorityOutputWithContext(ctx conte
 // CertificateAuthorityArrayInput is an input type that accepts CertificateAuthorityArray and CertificateAuthorityArrayOutput values.
 // You can construct a concrete instance of `CertificateAuthorityArrayInput` via:
 //
-//          CertificateAuthorityArray{ CertificateAuthorityArgs{...} }
+//	CertificateAuthorityArray{ CertificateAuthorityArgs{...} }
 type CertificateAuthorityArrayInput interface {
 	pulumi.Input
 
@@ -233,7 +244,7 @@ func (i CertificateAuthorityArray) ToCertificateAuthorityArrayOutputWithContext(
 // CertificateAuthorityMapInput is an input type that accepts CertificateAuthorityMap and CertificateAuthorityMapOutput values.
 // You can construct a concrete instance of `CertificateAuthorityMapInput` via:
 //
-//          CertificateAuthorityMap{ "key": CertificateAuthorityArgs{...} }
+//	CertificateAuthorityMap{ "key": CertificateAuthorityArgs{...} }
 type CertificateAuthorityMapInput interface {
 	pulumi.Input
 

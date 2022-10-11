@@ -19,36 +19,39 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v4/go/aws/ec2"
-// 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-aws/sdk/v4/go/aws/ec2"
+//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		appKeys, err := consul.LookupKeys(ctx, &GetKeysArgs{
-// 			Datacenter: pulumi.StringRef("nyc1"),
-// 			Keys: []GetKeysKey{
-// 				GetKeysKey{
-// 					Default: pulumi.StringRef("ami-1234"),
-// 					Name:    "ami",
-// 					Path:    "service/app/launch_ami",
-// 				},
-// 			},
-// 			Token: pulumi.StringRef("abcd"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = ec2.NewInstance(ctx, "appInstance", &ec2.InstanceArgs{
-// 			Ami: pulumi.String(appKeys.Var.Ami),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			appKeys, err := consul.LookupKeys(ctx, &GetKeysArgs{
+//				Datacenter: pulumi.StringRef("nyc1"),
+//				Keys: []GetKeysKey{
+//					GetKeysKey{
+//						Default: pulumi.StringRef("ami-1234"),
+//						Name:    "ami",
+//						Path:    "service/app/launch_ami",
+//					},
+//				},
+//				Token: pulumi.StringRef("abcd"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ec2.NewInstance(ctx, "appInstance", &ec2.InstanceArgs{
+//				Ami: pulumi.String(appKeys.Var.Ami),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func LookupKeys(ctx *pulumi.Context, args *LookupKeysArgs, opts ...pulumi.InvokeOption) (*LookupKeysResult, error) {
 	var rv LookupKeysResult
@@ -141,8 +144,8 @@ func (o LookupKeysResultOutput) ToLookupKeysResultOutputWithContext(ctx context.
 }
 
 // The datacenter the keys are being read from.
-// * `var.<name>` - For each name given, the corresponding attribute
-//   has the value of the key.
+//   - `var.<name>` - For each name given, the corresponding attribute
+//     has the value of the key.
 func (o LookupKeysResultOutput) Datacenter() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKeysResult) string { return v.Datacenter }).(pulumi.StringOutput)
 }

@@ -19,22 +19,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		test, err := consul.LookupAclRole(ctx, &GetAclRoleArgs{
-// 			Name: "example-role",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("consulAclRole", test.Id)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			test, err := consul.LookupAclRole(ctx, &GetAclRoleArgs{
+//				Name: "example-role",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("consulAclRole", test.Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func LookupAclRole(ctx *pulumi.Context, args *LookupAclRoleArgs, opts ...pulumi.InvokeOption) (*LookupAclRoleResult, error) {
 	var rv LookupAclRoleResult

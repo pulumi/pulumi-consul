@@ -24,34 +24,37 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := consul.NewCatalogEntry(ctx, "app", &consul.CatalogEntryArgs{
-// 			Address: pulumi.String("192.168.10.10"),
-// 			Node:    pulumi.String("foobar"),
-// 			Services: CatalogEntryServiceArray{
-// 				&CatalogEntryServiceArgs{
-// 					Address: pulumi.String("127.0.0.1"),
-// 					Id:      pulumi.String("redis1"),
-// 					Name:    pulumi.String("redis"),
-// 					Port:    pulumi.Int(8000),
-// 					Tags: pulumi.StringArray{
-// 						pulumi.String("master"),
-// 						pulumi.String("v1"),
-// 					},
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := consul.NewCatalogEntry(ctx, "app", &consul.CatalogEntryArgs{
+//				Address: pulumi.String("192.168.10.10"),
+//				Node:    pulumi.String("foobar"),
+//				Services: CatalogEntryServiceArray{
+//					&CatalogEntryServiceArgs{
+//						Address: pulumi.String("127.0.0.1"),
+//						Id:      pulumi.String("redis1"),
+//						Name:    pulumi.String("redis"),
+//						Port:    pulumi.Int(8000),
+//						Tags: pulumi.StringArray{
+//							pulumi.String("master"),
+//							pulumi.String("v1"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type CatalogEntry struct {
 	pulumi.CustomResourceState
@@ -205,7 +208,7 @@ func (i *CatalogEntry) ToCatalogEntryOutputWithContext(ctx context.Context) Cata
 // CatalogEntryArrayInput is an input type that accepts CatalogEntryArray and CatalogEntryArrayOutput values.
 // You can construct a concrete instance of `CatalogEntryArrayInput` via:
 //
-//          CatalogEntryArray{ CatalogEntryArgs{...} }
+//	CatalogEntryArray{ CatalogEntryArgs{...} }
 type CatalogEntryArrayInput interface {
 	pulumi.Input
 
@@ -230,7 +233,7 @@ func (i CatalogEntryArray) ToCatalogEntryArrayOutputWithContext(ctx context.Cont
 // CatalogEntryMapInput is an input type that accepts CatalogEntryMap and CatalogEntryMapOutput values.
 // You can construct a concrete instance of `CatalogEntryMapInput` via:
 //
-//          CatalogEntryMap{ "key": CatalogEntryArgs{...} }
+//	CatalogEntryMap{ "key": CatalogEntryArgs{...} }
 type CatalogEntryMapInput interface {
 	pulumi.Input
 

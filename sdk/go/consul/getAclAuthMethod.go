@@ -19,22 +19,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		test, err := consul.LookupAclAuthMethod(ctx, &GetAclAuthMethodArgs{
-// 			Name: "minikube",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("consulAclAuthMethod", test.Config)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			test, err := consul.LookupAclAuthMethod(ctx, &GetAclAuthMethodArgs{
+//				Name: "minikube",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("consulAclAuthMethod", test.Config)
+//			return nil
+//		})
+//	}
+//
 // ```
 func LookupAclAuthMethod(ctx *pulumi.Context, args *LookupAclAuthMethodArgs, opts ...pulumi.InvokeOption) (*LookupAclAuthMethodResult, error) {
 	var rv LookupAclAuthMethodResult

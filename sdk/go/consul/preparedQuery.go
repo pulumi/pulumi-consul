@@ -16,7 +16,9 @@ import (
 // `consul_prepared_query` can be imported with the query's ID in the Consul HTTP API.
 //
 // ```sh
-//  $ pulumi import consul:index/preparedQuery:PreparedQuery my_service 71ecfb82-717a-4258-b4b6-2fb75144d856
+//
+//	$ pulumi import consul:index/preparedQuery:PreparedQuery my_service 71ecfb82-717a-4258-b4b6-2fb75144d856
+//
 // ```
 type PreparedQuery struct {
 	pulumi.CustomResourceState
@@ -397,7 +399,7 @@ func (i *PreparedQuery) ToPreparedQueryOutputWithContext(ctx context.Context) Pr
 // PreparedQueryArrayInput is an input type that accepts PreparedQueryArray and PreparedQueryArrayOutput values.
 // You can construct a concrete instance of `PreparedQueryArrayInput` via:
 //
-//          PreparedQueryArray{ PreparedQueryArgs{...} }
+//	PreparedQueryArray{ PreparedQueryArgs{...} }
 type PreparedQueryArrayInput interface {
 	pulumi.Input
 
@@ -422,7 +424,7 @@ func (i PreparedQueryArray) ToPreparedQueryArrayOutputWithContext(ctx context.Co
 // PreparedQueryMapInput is an input type that accepts PreparedQueryMap and PreparedQueryMapOutput values.
 // You can construct a concrete instance of `PreparedQueryMapInput` via:
 //
-//          PreparedQueryMap{ "key": PreparedQueryArgs{...} }
+//	PreparedQueryMap{ "key": PreparedQueryArgs{...} }
 type PreparedQueryMapInput interface {
 	pulumi.Input
 

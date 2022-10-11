@@ -20,39 +20,42 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		minikube, err := consul.NewAclAuthMethod(ctx, "minikube", &consul.AclAuthMethodArgs{
-// 			Config: pulumi.StringMap{
-// 				"CACert":            pulumi.String(fmt.Sprintf("%v%v%v", "-----BEGIN CERTIFICATE-----\n", "...-----END CERTIFICATE-----\n", "\n")),
-// 				"Host":              pulumi.String("https://192.0.2.42:8443"),
-// 				"ServiceAccountJWT": pulumi.String("eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9..."),
-// 			},
-// 			Description: pulumi.String("dev minikube cluster"),
-// 			Type:        pulumi.String("kubernetes"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = consul.NewAclBindingRule(ctx, "test", &consul.AclBindingRuleArgs{
-// 			AuthMethod:  minikube.Name,
-// 			BindName:    pulumi.String("minikube"),
-// 			BindType:    pulumi.String("service"),
-// 			Description: pulumi.String("foobar"),
-// 			Selector:    pulumi.String("serviceaccount.namespace==default"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			minikube, err := consul.NewAclAuthMethod(ctx, "minikube", &consul.AclAuthMethodArgs{
+//				Config: pulumi.StringMap{
+//					"CACert":            pulumi.String(fmt.Sprintf("%v%v%v", "-----BEGIN CERTIFICATE-----\n", "...-----END CERTIFICATE-----\n", "\n")),
+//					"Host":              pulumi.String("https://192.0.2.42:8443"),
+//					"ServiceAccountJWT": pulumi.String("eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9..."),
+//				},
+//				Description: pulumi.String("dev minikube cluster"),
+//				Type:        pulumi.String("kubernetes"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = consul.NewAclBindingRule(ctx, "test", &consul.AclBindingRuleArgs{
+//				AuthMethod:  minikube.Name,
+//				BindName:    pulumi.String("minikube"),
+//				BindType:    pulumi.String("service"),
+//				Description: pulumi.String("foobar"),
+//				Selector:    pulumi.String("serviceaccount.namespace==default"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type AclBindingRule struct {
 	pulumi.CustomResourceState
@@ -209,7 +212,7 @@ func (i *AclBindingRule) ToAclBindingRuleOutputWithContext(ctx context.Context) 
 // AclBindingRuleArrayInput is an input type that accepts AclBindingRuleArray and AclBindingRuleArrayOutput values.
 // You can construct a concrete instance of `AclBindingRuleArrayInput` via:
 //
-//          AclBindingRuleArray{ AclBindingRuleArgs{...} }
+//	AclBindingRuleArray{ AclBindingRuleArgs{...} }
 type AclBindingRuleArrayInput interface {
 	pulumi.Input
 
@@ -234,7 +237,7 @@ func (i AclBindingRuleArray) ToAclBindingRuleArrayOutputWithContext(ctx context.
 // AclBindingRuleMapInput is an input type that accepts AclBindingRuleMap and AclBindingRuleMapOutput values.
 // You can construct a concrete instance of `AclBindingRuleMapInput` via:
 //
-//          AclBindingRuleMap{ "key": AclBindingRuleArgs{...} }
+//	AclBindingRuleMap{ "key": AclBindingRuleArgs{...} }
 type AclBindingRuleMapInput interface {
 	pulumi.Input
 

@@ -28,31 +28,34 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		compute, err := consul.NewNode(ctx, "compute", &consul.NodeArgs{
-// 			Address: pulumi.String("www.google.com"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = consul.NewService(ctx, "google", &consul.ServiceArgs{
-// 			Node: compute.Name,
-// 			Port: pulumi.Int(80),
-// 			Tags: pulumi.StringArray{
-// 				pulumi.String("tag0"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			compute, err := consul.NewNode(ctx, "compute", &consul.NodeArgs{
+//				Address: pulumi.String("www.google.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = consul.NewService(ctx, "google", &consul.ServiceArgs{
+//				Node: compute.Name,
+//				Port: pulumi.Int(80),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("tag0"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // Utilizing an existing known node:
@@ -61,22 +64,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := consul.NewService(ctx, "google", &consul.ServiceArgs{
-// 			Node: pulumi.String("google"),
-// 			Port: pulumi.Int(443),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := consul.NewService(ctx, "google", &consul.ServiceArgs{
+//				Node: pulumi.String("google"),
+//				Port: pulumi.Int(443),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // Register a health-check:
@@ -85,49 +91,52 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := consul.NewService(ctx, "redis", &consul.ServiceArgs{
-// 			Checks: ServiceCheckArray{
-// 				&ServiceCheckArgs{
-// 					CheckId:                        pulumi.String("service:redis1"),
-// 					DeregisterCriticalServiceAfter: pulumi.String("30s"),
-// 					Headers: ServiceCheckHeaderArray{
-// 						&ServiceCheckHeaderArgs{
-// 							Name: pulumi.String("foo"),
-// 							Value: []string{
-// 								"test",
-// 							},
-// 						},
-// 						&ServiceCheckHeaderArgs{
-// 							Name: pulumi.String("bar"),
-// 							Value: []string{
-// 								"test",
-// 							},
-// 						},
-// 					},
-// 					Http:          pulumi.String("https://www.hashicorptest.com"),
-// 					Interval:      pulumi.String("5s"),
-// 					Method:        pulumi.String("PUT"),
-// 					Name:          pulumi.String("Redis health check"),
-// 					Status:        pulumi.String("passing"),
-// 					Timeout:       pulumi.String("1s"),
-// 					TlsSkipVerify: pulumi.Bool(false),
-// 				},
-// 			},
-// 			Node: pulumi.String("redis"),
-// 			Port: pulumi.Int(6379),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := consul.NewService(ctx, "redis", &consul.ServiceArgs{
+//				Checks: ServiceCheckArray{
+//					&ServiceCheckArgs{
+//						CheckId:                        pulumi.String("service:redis1"),
+//						DeregisterCriticalServiceAfter: pulumi.String("30s"),
+//						Headers: ServiceCheckHeaderArray{
+//							&ServiceCheckHeaderArgs{
+//								Name: pulumi.String("foo"),
+//								Value: []string{
+//									"test",
+//								},
+//							},
+//							&ServiceCheckHeaderArgs{
+//								Name: pulumi.String("bar"),
+//								Value: []string{
+//									"test",
+//								},
+//							},
+//						},
+//						Http:          pulumi.String("https://www.hashicorptest.com"),
+//						Interval:      pulumi.String("5s"),
+//						Method:        pulumi.String("PUT"),
+//						Name:          pulumi.String("Redis health check"),
+//						Status:        pulumi.String("passing"),
+//						Timeout:       pulumi.String("1s"),
+//						TlsSkipVerify: pulumi.Bool(false),
+//					},
+//				},
+//				Node: pulumi.String("redis"),
+//				Port: pulumi.Int(6379),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type Service struct {
 	pulumi.CustomResourceState
@@ -363,7 +372,7 @@ func (i *Service) ToServiceOutputWithContext(ctx context.Context) ServiceOutput 
 // ServiceArrayInput is an input type that accepts ServiceArray and ServiceArrayOutput values.
 // You can construct a concrete instance of `ServiceArrayInput` via:
 //
-//          ServiceArray{ ServiceArgs{...} }
+//	ServiceArray{ ServiceArgs{...} }
 type ServiceArrayInput interface {
 	pulumi.Input
 
@@ -388,7 +397,7 @@ func (i ServiceArray) ToServiceArrayOutputWithContext(ctx context.Context) Servi
 // ServiceMapInput is an input type that accepts ServiceMap and ServiceMapOutput values.
 // You can construct a concrete instance of `ServiceMapInput` via:
 //
-//          ServiceMap{ "key": ServiceArgs{...} }
+//	ServiceMap{ "key": ServiceArgs{...} }
 type ServiceMapInput interface {
 	pulumi.Input
 

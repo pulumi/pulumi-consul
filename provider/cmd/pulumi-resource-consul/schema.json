@@ -5516,6 +5516,10 @@
                         "type": "string",
                         "description": "The namespace to lookup the token.\n"
                     },
+                    "partition": {
+                        "type": "string",
+                        "description": "The partition to lookup the token.\n"
+                    },
                     "pgpKey": {
                         "type": "string"
                     }
@@ -5539,6 +5543,9 @@
                         "description": "The provider-assigned unique ID for this managed resource.\n"
                     },
                     "namespace": {
+                        "type": "string"
+                    },
+                    "partition": {
                         "type": "string"
                     },
                     "pgpKey": {

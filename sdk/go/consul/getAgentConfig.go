@@ -21,20 +21,23 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		remoteAgent, err := consul.GetAgentConfig(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("consulVersion", remoteAgent.Version)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			remoteAgent, err := consul.GetAgentConfig(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("consulVersion", remoteAgent.Version)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetAgentConfig(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetAgentConfigResult, error) {
 	var rv GetAgentConfigResult

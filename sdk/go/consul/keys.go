@@ -16,28 +16,31 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := consul.NewKeys(ctx, "app", &consul.KeysArgs{
-// 			Datacenter: pulumi.String("nyc1"),
-// 			Keys: KeysKeyArray{
-// 				&KeysKeyArgs{
-// 					Path:  pulumi.String("service/app/elb_address"),
-// 					Value: pulumi.Any(aws_elb.App.Dns_name),
-// 				},
-// 			},
-// 			Token: pulumi.String("abcd"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := consul.NewKeys(ctx, "app", &consul.KeysArgs{
+//				Datacenter: pulumi.String("nyc1"),
+//				Keys: KeysKeyArray{
+//					&KeysKeyArgs{
+//						Path:  pulumi.String("service/app/elb_address"),
+//						Value: pulumi.Any(aws_elb.App.Dns_name),
+//					},
+//				},
+//				Token: pulumi.String("abcd"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type Keys struct {
 	pulumi.CustomResourceState
@@ -183,7 +186,7 @@ func (i *Keys) ToKeysOutputWithContext(ctx context.Context) KeysOutput {
 // KeysArrayInput is an input type that accepts KeysArray and KeysArrayOutput values.
 // You can construct a concrete instance of `KeysArrayInput` via:
 //
-//          KeysArray{ KeysArgs{...} }
+//	KeysArray{ KeysArgs{...} }
 type KeysArrayInput interface {
 	pulumi.Input
 
@@ -208,7 +211,7 @@ func (i KeysArray) ToKeysArrayOutputWithContext(ctx context.Context) KeysArrayOu
 // KeysMapInput is an input type that accepts KeysMap and KeysMapOutput values.
 // You can construct a concrete instance of `KeysMapInput` via:
 //
-//          KeysMap{ "key": KeysArgs{...} }
+//	KeysMap{ "key": KeysArgs{...} }
 type KeysMapInput interface {
 	pulumi.Input
 

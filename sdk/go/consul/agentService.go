@@ -24,26 +24,29 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := consul.NewAgentService(ctx, "app", &consul.AgentServiceArgs{
-// 			Address: pulumi.String("www.google.com"),
-// 			Port:    pulumi.Int(80),
-// 			Tags: pulumi.StringArray{
-// 				pulumi.String("tag0"),
-// 				pulumi.String("tag1"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := consul.NewAgentService(ctx, "app", &consul.AgentServiceArgs{
+//				Address: pulumi.String("www.google.com"),
+//				Port:    pulumi.Int(80),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("tag0"),
+//					pulumi.String("tag1"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type AgentService struct {
 	pulumi.CustomResourceState
@@ -171,7 +174,7 @@ func (i *AgentService) ToAgentServiceOutputWithContext(ctx context.Context) Agen
 // AgentServiceArrayInput is an input type that accepts AgentServiceArray and AgentServiceArrayOutput values.
 // You can construct a concrete instance of `AgentServiceArrayInput` via:
 //
-//          AgentServiceArray{ AgentServiceArgs{...} }
+//	AgentServiceArray{ AgentServiceArgs{...} }
 type AgentServiceArrayInput interface {
 	pulumi.Input
 
@@ -196,7 +199,7 @@ func (i AgentServiceArray) ToAgentServiceArrayOutputWithContext(ctx context.Cont
 // AgentServiceMapInput is an input type that accepts AgentServiceMap and AgentServiceMapOutput values.
 // You can construct a concrete instance of `AgentServiceMapInput` via:
 //
-//          AgentServiceMap{ "key": AgentServiceArgs{...} }
+//	AgentServiceMap{ "key": AgentServiceArgs{...} }
 type AgentServiceMapInput interface {
 	pulumi.Input
 
