@@ -19,26 +19,29 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := consul.NewAclPolicy(ctx, "test", &consul.AclPolicyArgs{
-// 			Datacenters: pulumi.StringArray{
-// 				pulumi.String("dc1"),
-// 			},
-// 			Rules: pulumi.String(fmt.Sprintf("%v%v%v%v", "node_prefix \"\" {\n", "  policy = \"read\"\n", "}\n", "\n")),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := consul.NewAclPolicy(ctx, "test", &consul.AclPolicyArgs{
+//				Datacenters: pulumi.StringArray{
+//					pulumi.String("dc1"),
+//				},
+//				Rules: pulumi.String(fmt.Sprintf("%v%v%v%v", "node_prefix \"\" {\n", "  policy = \"read\"\n", "}\n", "\n")),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -46,7 +49,9 @@ import (
 // `consul_acl_policy` can be imported
 //
 // ```sh
-//  $ pulumi import consul:index/aclPolicy:AclPolicy my-policy 1c90ef03-a6dd-6a8c-ac49-042ad3752896
+//
+//	$ pulumi import consul:index/aclPolicy:AclPolicy my-policy 1c90ef03-a6dd-6a8c-ac49-042ad3752896
+//
 // ```
 type AclPolicy struct {
 	pulumi.CustomResourceState
@@ -187,7 +192,7 @@ func (i *AclPolicy) ToAclPolicyOutputWithContext(ctx context.Context) AclPolicyO
 // AclPolicyArrayInput is an input type that accepts AclPolicyArray and AclPolicyArrayOutput values.
 // You can construct a concrete instance of `AclPolicyArrayInput` via:
 //
-//          AclPolicyArray{ AclPolicyArgs{...} }
+//	AclPolicyArray{ AclPolicyArgs{...} }
 type AclPolicyArrayInput interface {
 	pulumi.Input
 
@@ -212,7 +217,7 @@ func (i AclPolicyArray) ToAclPolicyArrayOutputWithContext(ctx context.Context) A
 // AclPolicyMapInput is an input type that accepts AclPolicyMap and AclPolicyMapOutput values.
 // You can construct a concrete instance of `AclPolicyMapInput` via:
 //
-//          AclPolicyMap{ "key": AclPolicyArgs{...} }
+//	AclPolicyMap{ "key": AclPolicyArgs{...} }
 type AclPolicyMapInput interface {
 	pulumi.Input
 

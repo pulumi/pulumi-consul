@@ -18,38 +18,41 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := consul.NewAclPolicy(ctx, "read-policy", &consul.AclPolicyArgs{
-// 			Datacenters: pulumi.StringArray{
-// 				pulumi.String("dc1"),
-// 			},
-// 			Rules: pulumi.String("node \"\" { policy = \"read\" }"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = consul.NewAclRole(ctx, "read", &consul.AclRoleArgs{
-// 			Description: pulumi.String("bar"),
-// 			Policies: pulumi.StringArray{
-// 				read_policy.ID(),
-// 			},
-// 			ServiceIdentities: AclRoleServiceIdentityArray{
-// 				&AclRoleServiceIdentityArgs{
-// 					ServiceName: pulumi.String("foo"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := consul.NewAclPolicy(ctx, "read-policy", &consul.AclPolicyArgs{
+//				Datacenters: pulumi.StringArray{
+//					pulumi.String("dc1"),
+//				},
+//				Rules: pulumi.String("node \"\" { policy = \"read\" }"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = consul.NewAclRole(ctx, "read", &consul.AclRoleArgs{
+//				Description: pulumi.String("bar"),
+//				Policies: pulumi.StringArray{
+//					read_policy.ID(),
+//				},
+//				ServiceIdentities: AclRoleServiceIdentityArray{
+//					&AclRoleServiceIdentityArgs{
+//						ServiceName: pulumi.String("foo"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -57,7 +60,9 @@ import (
 // `consul_acl_role` can be imported
 //
 // ```sh
-//  $ pulumi import consul:index/aclRole:AclRole read 816a195f-6cb1-2e8d-92af-3011ae706318
+//
+//	$ pulumi import consul:index/aclRole:AclRole read 816a195f-6cb1-2e8d-92af-3011ae706318
+//
 // ```
 type AclRole struct {
 	pulumi.CustomResourceState
@@ -205,7 +210,7 @@ func (i *AclRole) ToAclRoleOutputWithContext(ctx context.Context) AclRoleOutput 
 // AclRoleArrayInput is an input type that accepts AclRoleArray and AclRoleArrayOutput values.
 // You can construct a concrete instance of `AclRoleArrayInput` via:
 //
-//          AclRoleArray{ AclRoleArgs{...} }
+//	AclRoleArray{ AclRoleArgs{...} }
 type AclRoleArrayInput interface {
 	pulumi.Input
 
@@ -230,7 +235,7 @@ func (i AclRoleArray) ToAclRoleArrayOutputWithContext(ctx context.Context) AclRo
 // AclRoleMapInput is an input type that accepts AclRoleMap and AclRoleMapOutput values.
 // You can construct a concrete instance of `AclRoleMapInput` via:
 //
-//          AclRoleMap{ "key": AclRoleArgs{...} }
+//	AclRoleMap{ "key": AclRoleArgs{...} }
 type AclRoleMapInput interface {
 	pulumi.Input
 

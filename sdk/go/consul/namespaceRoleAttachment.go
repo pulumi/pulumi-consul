@@ -16,7 +16,9 @@ import (
 // `consul_namespace_role_attachment` can be imported. This is especially useful to manage the policies attached to the `default` namespace
 //
 // ```sh
-//  $ pulumi import consul:index/namespaceRoleAttachment:NamespaceRoleAttachment default default:role_name
+//
+//	$ pulumi import consul:index/namespaceRoleAttachment:NamespaceRoleAttachment default default:role_name
+//
 // ```
 type NamespaceRoleAttachment struct {
 	pulumi.CustomResourceState
@@ -120,7 +122,7 @@ func (i *NamespaceRoleAttachment) ToNamespaceRoleAttachmentOutputWithContext(ctx
 // NamespaceRoleAttachmentArrayInput is an input type that accepts NamespaceRoleAttachmentArray and NamespaceRoleAttachmentArrayOutput values.
 // You can construct a concrete instance of `NamespaceRoleAttachmentArrayInput` via:
 //
-//          NamespaceRoleAttachmentArray{ NamespaceRoleAttachmentArgs{...} }
+//	NamespaceRoleAttachmentArray{ NamespaceRoleAttachmentArgs{...} }
 type NamespaceRoleAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -145,7 +147,7 @@ func (i NamespaceRoleAttachmentArray) ToNamespaceRoleAttachmentArrayOutputWithCo
 // NamespaceRoleAttachmentMapInput is an input type that accepts NamespaceRoleAttachmentMap and NamespaceRoleAttachmentMapOutput values.
 // You can construct a concrete instance of `NamespaceRoleAttachmentMapInput` via:
 //
-//          NamespaceRoleAttachmentMap{ "key": NamespaceRoleAttachmentArgs{...} }
+//	NamespaceRoleAttachmentMap{ "key": NamespaceRoleAttachmentArgs{...} }
 type NamespaceRoleAttachmentMapInput interface {
 	pulumi.Input
 

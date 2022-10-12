@@ -22,23 +22,26 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := consul.NewAutopilotConfig(ctx, "config", &consul.AutopilotConfigArgs{
-// 			CleanupDeadServers:   pulumi.Bool(false),
-// 			LastContactThreshold: pulumi.String("1s"),
-// 			MaxTrailingLogs:      pulumi.Int(500),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := consul.NewAutopilotConfig(ctx, "config", &consul.AutopilotConfigArgs{
+//				CleanupDeadServers:   pulumi.Bool(false),
+//				LastContactThreshold: pulumi.String("1s"),
+//				MaxTrailingLogs:      pulumi.Int(500),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type AutopilotConfig struct {
 	pulumi.CustomResourceState
@@ -246,7 +249,7 @@ func (i *AutopilotConfig) ToAutopilotConfigOutputWithContext(ctx context.Context
 // AutopilotConfigArrayInput is an input type that accepts AutopilotConfigArray and AutopilotConfigArrayOutput values.
 // You can construct a concrete instance of `AutopilotConfigArrayInput` via:
 //
-//          AutopilotConfigArray{ AutopilotConfigArgs{...} }
+//	AutopilotConfigArray{ AutopilotConfigArgs{...} }
 type AutopilotConfigArrayInput interface {
 	pulumi.Input
 
@@ -271,7 +274,7 @@ func (i AutopilotConfigArray) ToAutopilotConfigArrayOutputWithContext(ctx contex
 // AutopilotConfigMapInput is an input type that accepts AutopilotConfigMap and AutopilotConfigMapOutput values.
 // You can construct a concrete instance of `AutopilotConfigMapInput` via:
 //
-//          AutopilotConfigMap{ "key": AutopilotConfigArgs{...} }
+//	AutopilotConfigMap{ "key": AutopilotConfigArgs{...} }
 type AutopilotConfigMapInput interface {
 	pulumi.Input
 

@@ -24,22 +24,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := consul.LookupServiceHealth(ctx, &GetServiceHealthArgs{
-// 			Passing: pulumi.BoolRef(true),
-// 			Service: "vault",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := consul.LookupServiceHealth(ctx, &GetServiceHealthArgs{
+//				Passing: pulumi.BoolRef(true),
+//				Service: "vault",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func LookupServiceHealth(ctx *pulumi.Context, args *LookupServiceHealthArgs, opts ...pulumi.InvokeOption) (*LookupServiceHealthResult, error) {
 	var rv LookupServiceHealthResult
@@ -158,8 +161,8 @@ func (o LookupServiceHealthResultOutput) ToLookupServiceHealthResultOutputWithCo
 }
 
 // The datacenter in which the node is running.
-// * [`taggedAddresses`](https://www.consul.io/docs/agent/http/catalog.html#TaggedAddresses) -
-//   List of explicit LAN and WAN IP addresses for the agent.
+//   - [`taggedAddresses`](https://www.consul.io/docs/agent/http/catalog.html#TaggedAddresses) -
+//     List of explicit LAN and WAN IP addresses for the agent.
 func (o LookupServiceHealthResultOutput) Datacenter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServiceHealthResult) *string { return v.Datacenter }).(pulumi.StringPtrOutput)
 }

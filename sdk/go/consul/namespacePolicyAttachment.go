@@ -16,7 +16,9 @@ import (
 // `consul_namespace_policy_attachment` can be imported. This is especially useful to manage the policies attached to the `default` namespace
 //
 // ```sh
-//  $ pulumi import consul:index/namespacePolicyAttachment:NamespacePolicyAttachment default default:policy_name
+//
+//	$ pulumi import consul:index/namespacePolicyAttachment:NamespacePolicyAttachment default default:policy_name
+//
 // ```
 type NamespacePolicyAttachment struct {
 	pulumi.CustomResourceState
@@ -120,7 +122,7 @@ func (i *NamespacePolicyAttachment) ToNamespacePolicyAttachmentOutputWithContext
 // NamespacePolicyAttachmentArrayInput is an input type that accepts NamespacePolicyAttachmentArray and NamespacePolicyAttachmentArrayOutput values.
 // You can construct a concrete instance of `NamespacePolicyAttachmentArrayInput` via:
 //
-//          NamespacePolicyAttachmentArray{ NamespacePolicyAttachmentArgs{...} }
+//	NamespacePolicyAttachmentArray{ NamespacePolicyAttachmentArgs{...} }
 type NamespacePolicyAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -145,7 +147,7 @@ func (i NamespacePolicyAttachmentArray) ToNamespacePolicyAttachmentArrayOutputWi
 // NamespacePolicyAttachmentMapInput is an input type that accepts NamespacePolicyAttachmentMap and NamespacePolicyAttachmentMapOutput values.
 // You can construct a concrete instance of `NamespacePolicyAttachmentMapInput` via:
 //
-//          NamespacePolicyAttachmentMap{ "key": NamespacePolicyAttachmentArgs{...} }
+//	NamespacePolicyAttachmentMap{ "key": NamespacePolicyAttachmentArgs{...} }
 type NamespacePolicyAttachmentMapInput interface {
 	pulumi.Input
 

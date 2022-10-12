@@ -20,21 +20,24 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := consul.NewAdminPartition(ctx, "naWest", &consul.AdminPartitionArgs{
-// 			Description: pulumi.String("Partition for North America West"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := consul.NewAdminPartition(ctx, "naWest", &consul.AdminPartitionArgs{
+//				Description: pulumi.String("Partition for North America West"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -42,7 +45,9 @@ import (
 // `consul_admin_partition` can be imported
 //
 // ```sh
-//  $ pulumi import consul:index/adminPartition:AdminPartition na_west na-west
+//
+//	$ pulumi import consul:index/adminPartition:AdminPartition na_west na-west
+//
 // ```
 type AdminPartition struct {
 	pulumi.CustomResourceState
@@ -140,7 +145,7 @@ func (i *AdminPartition) ToAdminPartitionOutputWithContext(ctx context.Context) 
 // AdminPartitionArrayInput is an input type that accepts AdminPartitionArray and AdminPartitionArrayOutput values.
 // You can construct a concrete instance of `AdminPartitionArrayInput` via:
 //
-//          AdminPartitionArray{ AdminPartitionArgs{...} }
+//	AdminPartitionArray{ AdminPartitionArgs{...} }
 type AdminPartitionArrayInput interface {
 	pulumi.Input
 
@@ -165,7 +170,7 @@ func (i AdminPartitionArray) ToAdminPartitionArrayOutputWithContext(ctx context.
 // AdminPartitionMapInput is an input type that accepts AdminPartitionMap and AdminPartitionMapOutput values.
 // You can construct a concrete instance of `AdminPartitionMapInput` via:
 //
-//          AdminPartitionMap{ "key": AdminPartitionArgs{...} }
+//	AdminPartitionMap{ "key": AdminPartitionArgs{...} }
 type AdminPartitionMapInput interface {
 	pulumi.Input
 

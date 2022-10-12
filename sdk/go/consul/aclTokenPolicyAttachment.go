@@ -16,11 +16,15 @@ import (
 // `consul_acl_token_policy_attachment` can be imported. This is especially useful to manage the policies attached to the anonymous and the master tokens with Terraform
 //
 // ```sh
-//  $ pulumi import consul:index/aclTokenPolicyAttachment:AclTokenPolicyAttachment anonymous 00000000-0000-0000-0000-000000000002:policy_name
+//
+//	$ pulumi import consul:index/aclTokenPolicyAttachment:AclTokenPolicyAttachment anonymous 00000000-0000-0000-0000-000000000002:policy_name
+//
 // ```
 //
 // ```sh
-//  $ pulumi import consul:index/aclTokenPolicyAttachment:AclTokenPolicyAttachment master-token 624d94ca-bc5c-f960-4e83-0a609cf588be:policy_name
+//
+//	$ pulumi import consul:index/aclTokenPolicyAttachment:AclTokenPolicyAttachment master-token 624d94ca-bc5c-f960-4e83-0a609cf588be:policy_name
+//
 // ```
 type AclTokenPolicyAttachment struct {
 	pulumi.CustomResourceState
@@ -124,7 +128,7 @@ func (i *AclTokenPolicyAttachment) ToAclTokenPolicyAttachmentOutputWithContext(c
 // AclTokenPolicyAttachmentArrayInput is an input type that accepts AclTokenPolicyAttachmentArray and AclTokenPolicyAttachmentArrayOutput values.
 // You can construct a concrete instance of `AclTokenPolicyAttachmentArrayInput` via:
 //
-//          AclTokenPolicyAttachmentArray{ AclTokenPolicyAttachmentArgs{...} }
+//	AclTokenPolicyAttachmentArray{ AclTokenPolicyAttachmentArgs{...} }
 type AclTokenPolicyAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -149,7 +153,7 @@ func (i AclTokenPolicyAttachmentArray) ToAclTokenPolicyAttachmentArrayOutputWith
 // AclTokenPolicyAttachmentMapInput is an input type that accepts AclTokenPolicyAttachmentMap and AclTokenPolicyAttachmentMapOutput values.
 // You can construct a concrete instance of `AclTokenPolicyAttachmentMapInput` via:
 //
-//          AclTokenPolicyAttachmentMap{ "key": AclTokenPolicyAttachmentArgs{...} }
+//	AclTokenPolicyAttachmentMap{ "key": AclTokenPolicyAttachmentArgs{...} }
 type AclTokenPolicyAttachmentMapInput interface {
 	pulumi.Input
 

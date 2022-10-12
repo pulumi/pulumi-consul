@@ -33,23 +33,26 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := consul.NewIntention(ctx, "database", &consul.IntentionArgs{
-// 			Action:          pulumi.String("allow"),
-// 			DestinationName: pulumi.String("db"),
-// 			SourceName:      pulumi.String("api"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := consul.NewIntention(ctx, "database", &consul.IntentionArgs{
+//				Action:          pulumi.String("allow"),
+//				DestinationName: pulumi.String("db"),
+//				SourceName:      pulumi.String("api"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // Referencing a known service via a datasource:
@@ -58,29 +61,32 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := consul.NewIntention(ctx, "database", &consul.IntentionArgs{
-// 			Action:          pulumi.String("allow"),
-// 			DestinationName: pulumi.Any(consul_service.Pg.Name),
-// 			SourceName:      pulumi.String("api"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = consul.LookupService(ctx, &GetServiceArgs{
-// 			Name: "postgresql",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := consul.NewIntention(ctx, "database", &consul.IntentionArgs{
+//				Action:          pulumi.String("allow"),
+//				DestinationName: pulumi.Any(consul_service.Pg.Name),
+//				SourceName:      pulumi.String("api"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = consul.LookupService(ctx, &GetServiceArgs{
+//				Name: "postgresql",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -88,7 +94,9 @@ import (
 // `consul_intention` can be imported
 //
 // ```sh
-//  $ pulumi import consul:index/intention:Intention database 657a57d6-0d56-57e2-31cb-e9f1ed3c18dd
+//
+//	$ pulumi import consul:index/intention:Intention database 657a57d6-0d56-57e2-31cb-e9f1ed3c18dd
+//
 // ```
 type Intention struct {
 	pulumi.CustomResourceState
@@ -290,7 +298,7 @@ func (i *Intention) ToIntentionOutputWithContext(ctx context.Context) IntentionO
 // IntentionArrayInput is an input type that accepts IntentionArray and IntentionArrayOutput values.
 // You can construct a concrete instance of `IntentionArrayInput` via:
 //
-//          IntentionArray{ IntentionArgs{...} }
+//	IntentionArray{ IntentionArgs{...} }
 type IntentionArrayInput interface {
 	pulumi.Input
 
@@ -315,7 +323,7 @@ func (i IntentionArray) ToIntentionArrayOutputWithContext(ctx context.Context) I
 // IntentionMapInput is an input type that accepts IntentionMap and IntentionMapOutput values.
 // You can construct a concrete instance of `IntentionMapInput` via:
 //
-//          IntentionMap{ "key": IntentionArgs{...} }
+//	IntentionMap{ "key": IntentionArgs{...} }
 type IntentionMapInput interface {
 	pulumi.Input
 

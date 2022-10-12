@@ -20,21 +20,24 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := consul.NewNode(ctx, "foobar", &consul.NodeArgs{
-// 			Address: pulumi.String("192.168.10.10"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := consul.NewNode(ctx, "foobar", &consul.NodeArgs{
+//				Address: pulumi.String("192.168.10.10"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type Node struct {
 	pulumi.CustomResourceState
@@ -170,7 +173,7 @@ func (i *Node) ToNodeOutputWithContext(ctx context.Context) NodeOutput {
 // NodeArrayInput is an input type that accepts NodeArray and NodeArrayOutput values.
 // You can construct a concrete instance of `NodeArrayInput` via:
 //
-//          NodeArray{ NodeArgs{...} }
+//	NodeArray{ NodeArgs{...} }
 type NodeArrayInput interface {
 	pulumi.Input
 
@@ -195,7 +198,7 @@ func (i NodeArray) ToNodeArrayOutputWithContext(ctx context.Context) NodeArrayOu
 // NodeMapInput is an input type that accepts NodeMap and NodeMapOutput values.
 // You can construct a concrete instance of `NodeMapInput` via:
 //
-//          NodeMap{ "key": NodeArgs{...} }
+//	NodeMap{ "key": NodeArgs{...} }
 type NodeMapInput interface {
 	pulumi.Input
 

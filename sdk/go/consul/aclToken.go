@@ -19,33 +19,36 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		agent, err := consul.NewAclPolicy(ctx, "agent", &consul.AclPolicyArgs{
-// 			Rules: pulumi.String(fmt.Sprintf("%v%v%v%v", "node_prefix \"\" {\n", "  policy = \"read\"\n", "}\n", "\n")),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = consul.NewAclToken(ctx, "test", &consul.AclTokenArgs{
-// 			Description: pulumi.String("my test token"),
-// 			Local:       pulumi.Bool(true),
-// 			Policies: pulumi.StringArray{
-// 				agent.Name,
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			agent, err := consul.NewAclPolicy(ctx, "agent", &consul.AclPolicyArgs{
+//				Rules: pulumi.String(fmt.Sprintf("%v%v%v%v", "node_prefix \"\" {\n", "  policy = \"read\"\n", "}\n", "\n")),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = consul.NewAclToken(ctx, "test", &consul.AclTokenArgs{
+//				Description: pulumi.String("my test token"),
+//				Local:       pulumi.Bool(true),
+//				Policies: pulumi.StringArray{
+//					agent.Name,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -53,11 +56,15 @@ import (
 // `consul_acl_token` can be imported. This is especially useful to manage the anonymous and the master token with Terraform
 //
 // ```sh
-//  $ pulumi import consul:index/aclToken:AclToken anonymous 00000000-0000-0000-0000-000000000002
+//
+//	$ pulumi import consul:index/aclToken:AclToken anonymous 00000000-0000-0000-0000-000000000002
+//
 // ```
 //
 // ```sh
-//  $ pulumi import consul:index/aclToken:AclToken master-token 624d94ca-bc5c-f960-4e83-0a609cf588be
+//
+//	$ pulumi import consul:index/aclToken:AclToken master-token 624d94ca-bc5c-f960-4e83-0a609cf588be
+//
 // ```
 type AclToken struct {
 	pulumi.CustomResourceState
@@ -240,7 +247,7 @@ func (i *AclToken) ToAclTokenOutputWithContext(ctx context.Context) AclTokenOutp
 // AclTokenArrayInput is an input type that accepts AclTokenArray and AclTokenArrayOutput values.
 // You can construct a concrete instance of `AclTokenArrayInput` via:
 //
-//          AclTokenArray{ AclTokenArgs{...} }
+//	AclTokenArray{ AclTokenArgs{...} }
 type AclTokenArrayInput interface {
 	pulumi.Input
 
@@ -265,7 +272,7 @@ func (i AclTokenArray) ToAclTokenArrayOutputWithContext(ctx context.Context) Acl
 // AclTokenMapInput is an input type that accepts AclTokenMap and AclTokenMapOutput values.
 // You can construct a concrete instance of `AclTokenMapInput` via:
 //
-//          AclTokenMap{ "key": AclTokenArgs{...} }
+//	AclTokenMap{ "key": AclTokenArgs{...} }
 type AclTokenMapInput interface {
 	pulumi.Input
 

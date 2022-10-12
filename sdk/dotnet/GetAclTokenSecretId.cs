@@ -123,6 +123,12 @@ namespace Pulumi.Consul
         [Input("namespace")]
         public string? Namespace { get; set; }
 
+        /// <summary>
+        /// The partition to lookup the token.
+        /// </summary>
+        [Input("partition")]
+        public string? Partition { get; set; }
+
         [Input("pgpKey")]
         public string? PgpKey { get; set; }
 
@@ -145,6 +151,12 @@ namespace Pulumi.Consul
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }
 
+        /// <summary>
+        /// The partition to lookup the token.
+        /// </summary>
+        [Input("partition")]
+        public Input<string>? Partition { get; set; }
+
         [Input("pgpKey")]
         public Input<string>? PgpKey { get; set; }
 
@@ -164,6 +176,7 @@ namespace Pulumi.Consul
         /// </summary>
         public readonly string Id;
         public readonly string? Namespace;
+        public readonly string? Partition;
         public readonly string? PgpKey;
         /// <summary>
         /// The secret ID of the ACL token if `pgp_key` has not been set.
@@ -180,6 +193,8 @@ namespace Pulumi.Consul
 
             string? @namespace,
 
+            string? partition,
+
             string? pgpKey,
 
             string secretId)
@@ -188,6 +203,7 @@ namespace Pulumi.Consul
             EncryptedSecretId = encryptedSecretId;
             Id = id;
             Namespace = @namespace;
+            Partition = partition;
             PgpKey = pgpKey;
             SecretId = secretId;
         }

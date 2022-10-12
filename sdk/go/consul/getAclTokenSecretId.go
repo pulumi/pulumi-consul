@@ -16,41 +16,44 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		testAclPolicy, err := consul.NewAclPolicy(ctx, "testAclPolicy", &consul.AclPolicyArgs{
-// 			Rules: pulumi.String("node \"\" { policy = \"read\" }"),
-// 			Datacenters: pulumi.StringArray{
-// 				pulumi.String("dc1"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		testAclToken, err := consul.NewAclToken(ctx, "testAclToken", &consul.AclTokenArgs{
-// 			Description: pulumi.String("test"),
-// 			Policies: pulumi.StringArray{
-// 				testAclPolicy.Name,
-// 			},
-// 			Local: pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		read := consul.GetAclTokenSecretIdOutput(ctx, GetAclTokenSecretIdOutputArgs{
-// 			AccessorId: testAclToken.ID(),
-// 			PgpKey:     pulumi.String("keybase:my_username"),
-// 		}, nil)
-// 		ctx.Export("consulAclTokenSecretId", read.ApplyT(func(read GetAclTokenSecretIdResult) (string, error) {
-// 			return read.EncryptedSecretId, nil
-// 		}).(pulumi.StringOutput))
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			testAclPolicy, err := consul.NewAclPolicy(ctx, "testAclPolicy", &consul.AclPolicyArgs{
+//				Rules: pulumi.String("node \"\" { policy = \"read\" }"),
+//				Datacenters: pulumi.StringArray{
+//					pulumi.String("dc1"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			testAclToken, err := consul.NewAclToken(ctx, "testAclToken", &consul.AclTokenArgs{
+//				Description: pulumi.String("test"),
+//				Policies: pulumi.StringArray{
+//					testAclPolicy.Name,
+//				},
+//				Local: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			read := consul.GetAclTokenSecretIdOutput(ctx, GetAclTokenSecretIdOutputArgs{
+//				AccessorId: testAclToken.ID(),
+//				PgpKey:     pulumi.String("keybase:my_username"),
+//			}, nil)
+//			ctx.Export("consulAclTokenSecretId", read.ApplyT(func(read GetAclTokenSecretIdResult) (string, error) {
+//				return read.EncryptedSecretId, nil
+//			}).(pulumi.StringOutput))
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetAclTokenSecretId(ctx *pulumi.Context, args *GetAclTokenSecretIdArgs, opts ...pulumi.InvokeOption) (*GetAclTokenSecretIdResult, error) {
 	var rv GetAclTokenSecretIdResult
@@ -67,6 +70,8 @@ type GetAclTokenSecretIdArgs struct {
 	AccessorId string `pulumi:"accessorId"`
 	// The namespace to lookup the token.
 	Namespace *string `pulumi:"namespace"`
+	// The partition to lookup the token.
+	Partition *string `pulumi:"partition"`
 	PgpKey    *string `pulumi:"pgpKey"`
 }
 
@@ -77,6 +82,7 @@ type GetAclTokenSecretIdResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id        string  `pulumi:"id"`
 	Namespace *string `pulumi:"namespace"`
+	Partition *string `pulumi:"partition"`
 	PgpKey    *string `pulumi:"pgpKey"`
 	// The secret ID of the ACL token if `pgpKey` has not been set.
 	SecretId string `pulumi:"secretId"`
@@ -101,6 +107,8 @@ type GetAclTokenSecretIdOutputArgs struct {
 	AccessorId pulumi.StringInput `pulumi:"accessorId"`
 	// The namespace to lookup the token.
 	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	// The partition to lookup the token.
+	Partition pulumi.StringPtrInput `pulumi:"partition"`
 	PgpKey    pulumi.StringPtrInput `pulumi:"pgpKey"`
 }
 
@@ -138,6 +146,10 @@ func (o GetAclTokenSecretIdResultOutput) Id() pulumi.StringOutput {
 
 func (o GetAclTokenSecretIdResultOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAclTokenSecretIdResult) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAclTokenSecretIdResultOutput) Partition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAclTokenSecretIdResult) *string { return v.Partition }).(pulumi.StringPtrOutput)
 }
 
 func (o GetAclTokenSecretIdResultOutput) PgpKey() pulumi.StringPtrOutput {

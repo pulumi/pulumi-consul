@@ -36,6 +36,7 @@ export function getAclTokenSecretId(args: GetAclTokenSecretIdArgs, opts?: pulumi
     return pulumi.runtime.invoke("consul:index/getAclTokenSecretId:getAclTokenSecretId", {
         "accessorId": args.accessorId,
         "namespace": args.namespace,
+        "partition": args.partition,
         "pgpKey": args.pgpKey,
     }, opts);
 }
@@ -52,6 +53,10 @@ export interface GetAclTokenSecretIdArgs {
      * The namespace to lookup the token.
      */
     namespace?: string;
+    /**
+     * The partition to lookup the token.
+     */
+    partition?: string;
     pgpKey?: string;
 }
 
@@ -66,6 +71,7 @@ export interface GetAclTokenSecretIdResult {
      */
     readonly id: string;
     readonly namespace?: string;
+    readonly partition?: string;
     readonly pgpKey?: string;
     /**
      * The secret ID of the ACL token if `pgpKey` has not been set.
@@ -89,5 +95,9 @@ export interface GetAclTokenSecretIdOutputArgs {
      * The namespace to lookup the token.
      */
     namespace?: pulumi.Input<string>;
+    /**
+     * The partition to lookup the token.
+     */
+    partition?: pulumi.Input<string>;
     pgpKey?: pulumi.Input<string>;
 }

@@ -27,25 +27,28 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := consul.NewNetworkArea(ctx, "dc2", &consul.NetworkAreaArgs{
-// 			PeerDatacenter: pulumi.String("dc2"),
-// 			RetryJoins: pulumi.StringArray{
-// 				pulumi.String("1.2.3.4"),
-// 			},
-// 			UseTls: pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := consul.NewNetworkArea(ctx, "dc2", &consul.NetworkAreaArgs{
+//				PeerDatacenter: pulumi.String("dc2"),
+//				RetryJoins: pulumi.StringArray{
+//					pulumi.String("1.2.3.4"),
+//				},
+//				UseTls: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type NetworkArea struct {
 	pulumi.CustomResourceState
@@ -201,7 +204,7 @@ func (i *NetworkArea) ToNetworkAreaOutputWithContext(ctx context.Context) Networ
 // NetworkAreaArrayInput is an input type that accepts NetworkAreaArray and NetworkAreaArrayOutput values.
 // You can construct a concrete instance of `NetworkAreaArrayInput` via:
 //
-//          NetworkAreaArray{ NetworkAreaArgs{...} }
+//	NetworkAreaArray{ NetworkAreaArgs{...} }
 type NetworkAreaArrayInput interface {
 	pulumi.Input
 
@@ -226,7 +229,7 @@ func (i NetworkAreaArray) ToNetworkAreaArrayOutputWithContext(ctx context.Contex
 // NetworkAreaMapInput is an input type that accepts NetworkAreaMap and NetworkAreaMapOutput values.
 // You can construct a concrete instance of `NetworkAreaMapInput` via:
 //
-//          NetworkAreaMap{ "key": NetworkAreaArgs{...} }
+//	NetworkAreaMap{ "key": NetworkAreaArgs{...} }
 type NetworkAreaMapInput interface {
 	pulumi.Input
 

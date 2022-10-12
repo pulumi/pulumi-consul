@@ -23,7 +23,7 @@ type AclAuthMethodNamespaceRule struct {
 // AclAuthMethodNamespaceRuleInput is an input type that accepts AclAuthMethodNamespaceRuleArgs and AclAuthMethodNamespaceRuleOutput values.
 // You can construct a concrete instance of `AclAuthMethodNamespaceRuleInput` via:
 //
-//          AclAuthMethodNamespaceRuleArgs{...}
+//	AclAuthMethodNamespaceRuleArgs{...}
 type AclAuthMethodNamespaceRuleInput interface {
 	pulumi.Input
 
@@ -56,7 +56,7 @@ func (i AclAuthMethodNamespaceRuleArgs) ToAclAuthMethodNamespaceRuleOutputWithCo
 // AclAuthMethodNamespaceRuleArrayInput is an input type that accepts AclAuthMethodNamespaceRuleArray and AclAuthMethodNamespaceRuleArrayOutput values.
 // You can construct a concrete instance of `AclAuthMethodNamespaceRuleArrayInput` via:
 //
-//          AclAuthMethodNamespaceRuleArray{ AclAuthMethodNamespaceRuleArgs{...} }
+//	AclAuthMethodNamespaceRuleArray{ AclAuthMethodNamespaceRuleArgs{...} }
 type AclAuthMethodNamespaceRuleArrayInput interface {
 	pulumi.Input
 
@@ -135,7 +135,7 @@ type AclRoleNodeIdentity struct {
 // AclRoleNodeIdentityInput is an input type that accepts AclRoleNodeIdentityArgs and AclRoleNodeIdentityOutput values.
 // You can construct a concrete instance of `AclRoleNodeIdentityInput` via:
 //
-//          AclRoleNodeIdentityArgs{...}
+//	AclRoleNodeIdentityArgs{...}
 type AclRoleNodeIdentityInput interface {
 	pulumi.Input
 
@@ -165,7 +165,7 @@ func (i AclRoleNodeIdentityArgs) ToAclRoleNodeIdentityOutputWithContext(ctx cont
 // AclRoleNodeIdentityArrayInput is an input type that accepts AclRoleNodeIdentityArray and AclRoleNodeIdentityArrayOutput values.
 // You can construct a concrete instance of `AclRoleNodeIdentityArrayInput` via:
 //
-//          AclRoleNodeIdentityArray{ AclRoleNodeIdentityArgs{...} }
+//	AclRoleNodeIdentityArray{ AclRoleNodeIdentityArgs{...} }
 type AclRoleNodeIdentityArrayInput interface {
 	pulumi.Input
 
@@ -241,7 +241,7 @@ type AclRoleServiceIdentity struct {
 // AclRoleServiceIdentityInput is an input type that accepts AclRoleServiceIdentityArgs and AclRoleServiceIdentityOutput values.
 // You can construct a concrete instance of `AclRoleServiceIdentityInput` via:
 //
-//          AclRoleServiceIdentityArgs{...}
+//	AclRoleServiceIdentityArgs{...}
 type AclRoleServiceIdentityInput interface {
 	pulumi.Input
 
@@ -271,7 +271,7 @@ func (i AclRoleServiceIdentityArgs) ToAclRoleServiceIdentityOutputWithContext(ct
 // AclRoleServiceIdentityArrayInput is an input type that accepts AclRoleServiceIdentityArray and AclRoleServiceIdentityArrayOutput values.
 // You can construct a concrete instance of `AclRoleServiceIdentityArrayInput` via:
 //
-//          AclRoleServiceIdentityArray{ AclRoleServiceIdentityArgs{...} }
+//	AclRoleServiceIdentityArray{ AclRoleServiceIdentityArgs{...} }
 type AclRoleServiceIdentityArrayInput interface {
 	pulumi.Input
 
@@ -347,7 +347,7 @@ type AclTokenNodeIdentity struct {
 // AclTokenNodeIdentityInput is an input type that accepts AclTokenNodeIdentityArgs and AclTokenNodeIdentityOutput values.
 // You can construct a concrete instance of `AclTokenNodeIdentityInput` via:
 //
-//          AclTokenNodeIdentityArgs{...}
+//	AclTokenNodeIdentityArgs{...}
 type AclTokenNodeIdentityInput interface {
 	pulumi.Input
 
@@ -377,7 +377,7 @@ func (i AclTokenNodeIdentityArgs) ToAclTokenNodeIdentityOutputWithContext(ctx co
 // AclTokenNodeIdentityArrayInput is an input type that accepts AclTokenNodeIdentityArray and AclTokenNodeIdentityArrayOutput values.
 // You can construct a concrete instance of `AclTokenNodeIdentityArrayInput` via:
 //
-//          AclTokenNodeIdentityArray{ AclTokenNodeIdentityArgs{...} }
+//	AclTokenNodeIdentityArray{ AclTokenNodeIdentityArgs{...} }
 type AclTokenNodeIdentityArrayInput interface {
 	pulumi.Input
 
@@ -453,7 +453,7 @@ type AclTokenServiceIdentity struct {
 // AclTokenServiceIdentityInput is an input type that accepts AclTokenServiceIdentityArgs and AclTokenServiceIdentityOutput values.
 // You can construct a concrete instance of `AclTokenServiceIdentityInput` via:
 //
-//          AclTokenServiceIdentityArgs{...}
+//	AclTokenServiceIdentityArgs{...}
 type AclTokenServiceIdentityInput interface {
 	pulumi.Input
 
@@ -483,7 +483,7 @@ func (i AclTokenServiceIdentityArgs) ToAclTokenServiceIdentityOutputWithContext(
 // AclTokenServiceIdentityArrayInput is an input type that accepts AclTokenServiceIdentityArray and AclTokenServiceIdentityArrayOutput values.
 // You can construct a concrete instance of `AclTokenServiceIdentityArrayInput` via:
 //
-//          AclTokenServiceIdentityArray{ AclTokenServiceIdentityArgs{...} }
+//	AclTokenServiceIdentityArray{ AclTokenServiceIdentityArgs{...} }
 type AclTokenServiceIdentityArrayInput interface {
 	pulumi.Input
 
@@ -567,7 +567,7 @@ type CatalogEntryService struct {
 // CatalogEntryServiceInput is an input type that accepts CatalogEntryServiceArgs and CatalogEntryServiceOutput values.
 // You can construct a concrete instance of `CatalogEntryServiceInput` via:
 //
-//          CatalogEntryServiceArgs{...}
+//	CatalogEntryServiceArgs{...}
 type CatalogEntryServiceInput interface {
 	pulumi.Input
 
@@ -605,7 +605,7 @@ func (i CatalogEntryServiceArgs) ToCatalogEntryServiceOutputWithContext(ctx cont
 // CatalogEntryServiceArrayInput is an input type that accepts CatalogEntryServiceArray and CatalogEntryServiceArrayOutput values.
 // You can construct a concrete instance of `CatalogEntryServiceArrayInput` via:
 //
-//          CatalogEntryServiceArray{ CatalogEntryServiceArgs{...} }
+//	CatalogEntryServiceArray{ CatalogEntryServiceArgs{...} }
 type CatalogEntryServiceArrayInput interface {
 	pulumi.Input
 
@@ -702,7 +702,7 @@ type KeyPrefixSubkeyCollection struct {
 // KeyPrefixSubkeyCollectionInput is an input type that accepts KeyPrefixSubkeyCollectionArgs and KeyPrefixSubkeyCollectionOutput values.
 // You can construct a concrete instance of `KeyPrefixSubkeyCollectionInput` via:
 //
-//          KeyPrefixSubkeyCollectionArgs{...}
+//	KeyPrefixSubkeyCollectionArgs{...}
 type KeyPrefixSubkeyCollectionInput interface {
 	pulumi.Input
 
@@ -736,7 +736,7 @@ func (i KeyPrefixSubkeyCollectionArgs) ToKeyPrefixSubkeyCollectionOutputWithCont
 // KeyPrefixSubkeyCollectionArrayInput is an input type that accepts KeyPrefixSubkeyCollectionArray and KeyPrefixSubkeyCollectionArrayOutput values.
 // You can construct a concrete instance of `KeyPrefixSubkeyCollectionArrayInput` via:
 //
-//          KeyPrefixSubkeyCollectionArray{ KeyPrefixSubkeyCollectionArgs{...} }
+//	KeyPrefixSubkeyCollectionArray{ KeyPrefixSubkeyCollectionArgs{...} }
 type KeyPrefixSubkeyCollectionArrayInput interface {
 	pulumi.Input
 
@@ -830,7 +830,7 @@ type KeysKey struct {
 // KeysKeyInput is an input type that accepts KeysKeyArgs and KeysKeyOutput values.
 // You can construct a concrete instance of `KeysKeyInput` via:
 //
-//          KeysKeyArgs{...}
+//	KeysKeyArgs{...}
 type KeysKeyInput interface {
 	pulumi.Input
 
@@ -871,7 +871,7 @@ func (i KeysKeyArgs) ToKeysKeyOutputWithContext(ctx context.Context) KeysKeyOutp
 // KeysKeyArrayInput is an input type that accepts KeysKeyArray and KeysKeyArrayOutput values.
 // You can construct a concrete instance of `KeysKeyArrayInput` via:
 //
-//          KeysKeyArray{ KeysKeyArgs{...} }
+//	KeysKeyArray{ KeysKeyArgs{...} }
 type KeysKeyArrayInput interface {
 	pulumi.Input
 
@@ -968,7 +968,7 @@ type PreparedQueryDns struct {
 // PreparedQueryDnsInput is an input type that accepts PreparedQueryDnsArgs and PreparedQueryDnsOutput values.
 // You can construct a concrete instance of `PreparedQueryDnsInput` via:
 //
-//          PreparedQueryDnsArgs{...}
+//	PreparedQueryDnsArgs{...}
 type PreparedQueryDnsInput interface {
 	pulumi.Input
 
@@ -1004,11 +1004,11 @@ func (i PreparedQueryDnsArgs) ToPreparedQueryDnsPtrOutputWithContext(ctx context
 // PreparedQueryDnsPtrInput is an input type that accepts PreparedQueryDnsArgs, PreparedQueryDnsPtr and PreparedQueryDnsPtrOutput values.
 // You can construct a concrete instance of `PreparedQueryDnsPtrInput` via:
 //
-//          PreparedQueryDnsArgs{...}
+//	        PreparedQueryDnsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PreparedQueryDnsPtrInput interface {
 	pulumi.Input
 
@@ -1108,7 +1108,7 @@ type PreparedQueryFailover struct {
 // PreparedQueryFailoverInput is an input type that accepts PreparedQueryFailoverArgs and PreparedQueryFailoverOutput values.
 // You can construct a concrete instance of `PreparedQueryFailoverInput` via:
 //
-//          PreparedQueryFailoverArgs{...}
+//	PreparedQueryFailoverArgs{...}
 type PreparedQueryFailoverInput interface {
 	pulumi.Input
 
@@ -1147,11 +1147,11 @@ func (i PreparedQueryFailoverArgs) ToPreparedQueryFailoverPtrOutputWithContext(c
 // PreparedQueryFailoverPtrInput is an input type that accepts PreparedQueryFailoverArgs, PreparedQueryFailoverPtr and PreparedQueryFailoverPtrOutput values.
 // You can construct a concrete instance of `PreparedQueryFailoverPtrInput` via:
 //
-//          PreparedQueryFailoverArgs{...}
+//	        PreparedQueryFailoverArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PreparedQueryFailoverPtrInput interface {
 	pulumi.Input
 
@@ -1269,7 +1269,7 @@ type PreparedQueryTemplate struct {
 // PreparedQueryTemplateInput is an input type that accepts PreparedQueryTemplateArgs and PreparedQueryTemplateOutput values.
 // You can construct a concrete instance of `PreparedQueryTemplateInput` via:
 //
-//          PreparedQueryTemplateArgs{...}
+//	PreparedQueryTemplateArgs{...}
 type PreparedQueryTemplateInput interface {
 	pulumi.Input
 
@@ -1309,11 +1309,11 @@ func (i PreparedQueryTemplateArgs) ToPreparedQueryTemplatePtrOutputWithContext(c
 // PreparedQueryTemplatePtrInput is an input type that accepts PreparedQueryTemplateArgs, PreparedQueryTemplatePtr and PreparedQueryTemplatePtrOutput values.
 // You can construct a concrete instance of `PreparedQueryTemplatePtrInput` via:
 //
-//          PreparedQueryTemplateArgs{...}
+//	        PreparedQueryTemplateArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PreparedQueryTemplatePtrInput interface {
 	pulumi.Input
 
@@ -1429,7 +1429,7 @@ type ProviderHeader struct {
 // ProviderHeaderInput is an input type that accepts ProviderHeaderArgs and ProviderHeaderOutput values.
 // You can construct a concrete instance of `ProviderHeaderInput` via:
 //
-//          ProviderHeaderArgs{...}
+//	ProviderHeaderArgs{...}
 type ProviderHeaderInput interface {
 	pulumi.Input
 
@@ -1457,7 +1457,7 @@ func (i ProviderHeaderArgs) ToProviderHeaderOutputWithContext(ctx context.Contex
 // ProviderHeaderArrayInput is an input type that accepts ProviderHeaderArray and ProviderHeaderArrayOutput values.
 // You can construct a concrete instance of `ProviderHeaderArrayInput` via:
 //
-//          ProviderHeaderArray{ ProviderHeaderArgs{...} }
+//	ProviderHeaderArray{ ProviderHeaderArgs{...} }
 type ProviderHeaderArrayInput interface {
 	pulumi.Input
 
@@ -1558,7 +1558,7 @@ type ServiceCheck struct {
 // ServiceCheckInput is an input type that accepts ServiceCheckArgs and ServiceCheckOutput values.
 // You can construct a concrete instance of `ServiceCheckInput` via:
 //
-//          ServiceCheckArgs{...}
+//	ServiceCheckArgs{...}
 type ServiceCheckInput interface {
 	pulumi.Input
 
@@ -1615,7 +1615,7 @@ func (i ServiceCheckArgs) ToServiceCheckOutputWithContext(ctx context.Context) S
 // ServiceCheckArrayInput is an input type that accepts ServiceCheckArray and ServiceCheckArrayOutput values.
 // You can construct a concrete instance of `ServiceCheckArrayInput` via:
 //
-//          ServiceCheckArray{ ServiceCheckArgs{...} }
+//	ServiceCheckArray{ ServiceCheckArgs{...} }
 type ServiceCheckArrayInput interface {
 	pulumi.Input
 
@@ -1748,7 +1748,7 @@ type ServiceCheckHeader struct {
 // ServiceCheckHeaderInput is an input type that accepts ServiceCheckHeaderArgs and ServiceCheckHeaderOutput values.
 // You can construct a concrete instance of `ServiceCheckHeaderInput` via:
 //
-//          ServiceCheckHeaderArgs{...}
+//	ServiceCheckHeaderArgs{...}
 type ServiceCheckHeaderInput interface {
 	pulumi.Input
 
@@ -1778,7 +1778,7 @@ func (i ServiceCheckHeaderArgs) ToServiceCheckHeaderOutputWithContext(ctx contex
 // ServiceCheckHeaderArrayInput is an input type that accepts ServiceCheckHeaderArray and ServiceCheckHeaderArrayOutput values.
 // You can construct a concrete instance of `ServiceCheckHeaderArrayInput` via:
 //
-//          ServiceCheckHeaderArray{ ServiceCheckHeaderArgs{...} }
+//	ServiceCheckHeaderArray{ ServiceCheckHeaderArgs{...} }
 type ServiceCheckHeaderArrayInput interface {
 	pulumi.Input
 
@@ -1852,7 +1852,7 @@ type GetAclAuthMethodNamespaceRule struct {
 // GetAclAuthMethodNamespaceRuleInput is an input type that accepts GetAclAuthMethodNamespaceRuleArgs and GetAclAuthMethodNamespaceRuleOutput values.
 // You can construct a concrete instance of `GetAclAuthMethodNamespaceRuleInput` via:
 //
-//          GetAclAuthMethodNamespaceRuleArgs{...}
+//	GetAclAuthMethodNamespaceRuleArgs{...}
 type GetAclAuthMethodNamespaceRuleInput interface {
 	pulumi.Input
 
@@ -1880,7 +1880,7 @@ func (i GetAclAuthMethodNamespaceRuleArgs) ToGetAclAuthMethodNamespaceRuleOutput
 // GetAclAuthMethodNamespaceRuleArrayInput is an input type that accepts GetAclAuthMethodNamespaceRuleArray and GetAclAuthMethodNamespaceRuleArrayOutput values.
 // You can construct a concrete instance of `GetAclAuthMethodNamespaceRuleArrayInput` via:
 //
-//          GetAclAuthMethodNamespaceRuleArray{ GetAclAuthMethodNamespaceRuleArgs{...} }
+//	GetAclAuthMethodNamespaceRuleArray{ GetAclAuthMethodNamespaceRuleArgs{...} }
 type GetAclAuthMethodNamespaceRuleArrayInput interface {
 	pulumi.Input
 
@@ -1952,7 +1952,7 @@ type GetAclRoleNodeIdentity struct {
 // GetAclRoleNodeIdentityInput is an input type that accepts GetAclRoleNodeIdentityArgs and GetAclRoleNodeIdentityOutput values.
 // You can construct a concrete instance of `GetAclRoleNodeIdentityInput` via:
 //
-//          GetAclRoleNodeIdentityArgs{...}
+//	GetAclRoleNodeIdentityArgs{...}
 type GetAclRoleNodeIdentityInput interface {
 	pulumi.Input
 
@@ -1980,7 +1980,7 @@ func (i GetAclRoleNodeIdentityArgs) ToGetAclRoleNodeIdentityOutputWithContext(ct
 // GetAclRoleNodeIdentityArrayInput is an input type that accepts GetAclRoleNodeIdentityArray and GetAclRoleNodeIdentityArrayOutput values.
 // You can construct a concrete instance of `GetAclRoleNodeIdentityArrayInput` via:
 //
-//          GetAclRoleNodeIdentityArray{ GetAclRoleNodeIdentityArgs{...} }
+//	GetAclRoleNodeIdentityArray{ GetAclRoleNodeIdentityArgs{...} }
 type GetAclRoleNodeIdentityArrayInput interface {
 	pulumi.Input
 
@@ -2053,7 +2053,7 @@ type GetAclRolePolicy struct {
 // GetAclRolePolicyInput is an input type that accepts GetAclRolePolicyArgs and GetAclRolePolicyOutput values.
 // You can construct a concrete instance of `GetAclRolePolicyInput` via:
 //
-//          GetAclRolePolicyArgs{...}
+//	GetAclRolePolicyArgs{...}
 type GetAclRolePolicyInput interface {
 	pulumi.Input
 
@@ -2082,7 +2082,7 @@ func (i GetAclRolePolicyArgs) ToGetAclRolePolicyOutputWithContext(ctx context.Co
 // GetAclRolePolicyArrayInput is an input type that accepts GetAclRolePolicyArray and GetAclRolePolicyArrayOutput values.
 // You can construct a concrete instance of `GetAclRolePolicyArrayInput` via:
 //
-//          GetAclRolePolicyArray{ GetAclRolePolicyArgs{...} }
+//	GetAclRolePolicyArray{ GetAclRolePolicyArgs{...} }
 type GetAclRolePolicyArrayInput interface {
 	pulumi.Input
 
@@ -2155,7 +2155,7 @@ type GetAclRoleServiceIdentity struct {
 // GetAclRoleServiceIdentityInput is an input type that accepts GetAclRoleServiceIdentityArgs and GetAclRoleServiceIdentityOutput values.
 // You can construct a concrete instance of `GetAclRoleServiceIdentityInput` via:
 //
-//          GetAclRoleServiceIdentityArgs{...}
+//	GetAclRoleServiceIdentityArgs{...}
 type GetAclRoleServiceIdentityInput interface {
 	pulumi.Input
 
@@ -2183,7 +2183,7 @@ func (i GetAclRoleServiceIdentityArgs) ToGetAclRoleServiceIdentityOutputWithCont
 // GetAclRoleServiceIdentityArrayInput is an input type that accepts GetAclRoleServiceIdentityArray and GetAclRoleServiceIdentityArrayOutput values.
 // You can construct a concrete instance of `GetAclRoleServiceIdentityArrayInput` via:
 //
-//          GetAclRoleServiceIdentityArray{ GetAclRoleServiceIdentityArgs{...} }
+//	GetAclRoleServiceIdentityArray{ GetAclRoleServiceIdentityArgs{...} }
 type GetAclRoleServiceIdentityArrayInput interface {
 	pulumi.Input
 
@@ -2255,7 +2255,7 @@ type GetAclTokenNodeIdentity struct {
 // GetAclTokenNodeIdentityInput is an input type that accepts GetAclTokenNodeIdentityArgs and GetAclTokenNodeIdentityOutput values.
 // You can construct a concrete instance of `GetAclTokenNodeIdentityInput` via:
 //
-//          GetAclTokenNodeIdentityArgs{...}
+//	GetAclTokenNodeIdentityArgs{...}
 type GetAclTokenNodeIdentityInput interface {
 	pulumi.Input
 
@@ -2283,7 +2283,7 @@ func (i GetAclTokenNodeIdentityArgs) ToGetAclTokenNodeIdentityOutputWithContext(
 // GetAclTokenNodeIdentityArrayInput is an input type that accepts GetAclTokenNodeIdentityArray and GetAclTokenNodeIdentityArrayOutput values.
 // You can construct a concrete instance of `GetAclTokenNodeIdentityArrayInput` via:
 //
-//          GetAclTokenNodeIdentityArray{ GetAclTokenNodeIdentityArgs{...} }
+//	GetAclTokenNodeIdentityArray{ GetAclTokenNodeIdentityArgs{...} }
 type GetAclTokenNodeIdentityArrayInput interface {
 	pulumi.Input
 
@@ -2355,7 +2355,7 @@ type GetAclTokenPolicy struct {
 // GetAclTokenPolicyInput is an input type that accepts GetAclTokenPolicyArgs and GetAclTokenPolicyOutput values.
 // You can construct a concrete instance of `GetAclTokenPolicyInput` via:
 //
-//          GetAclTokenPolicyArgs{...}
+//	GetAclTokenPolicyArgs{...}
 type GetAclTokenPolicyInput interface {
 	pulumi.Input
 
@@ -2383,7 +2383,7 @@ func (i GetAclTokenPolicyArgs) ToGetAclTokenPolicyOutputWithContext(ctx context.
 // GetAclTokenPolicyArrayInput is an input type that accepts GetAclTokenPolicyArray and GetAclTokenPolicyArrayOutput values.
 // You can construct a concrete instance of `GetAclTokenPolicyArrayInput` via:
 //
-//          GetAclTokenPolicyArray{ GetAclTokenPolicyArgs{...} }
+//	GetAclTokenPolicyArray{ GetAclTokenPolicyArgs{...} }
 type GetAclTokenPolicyArrayInput interface {
 	pulumi.Input
 
@@ -2455,7 +2455,7 @@ type GetAclTokenRole struct {
 // GetAclTokenRoleInput is an input type that accepts GetAclTokenRoleArgs and GetAclTokenRoleOutput values.
 // You can construct a concrete instance of `GetAclTokenRoleInput` via:
 //
-//          GetAclTokenRoleArgs{...}
+//	GetAclTokenRoleArgs{...}
 type GetAclTokenRoleInput interface {
 	pulumi.Input
 
@@ -2483,7 +2483,7 @@ func (i GetAclTokenRoleArgs) ToGetAclTokenRoleOutputWithContext(ctx context.Cont
 // GetAclTokenRoleArrayInput is an input type that accepts GetAclTokenRoleArray and GetAclTokenRoleArrayOutput values.
 // You can construct a concrete instance of `GetAclTokenRoleArrayInput` via:
 //
-//          GetAclTokenRoleArray{ GetAclTokenRoleArgs{...} }
+//	GetAclTokenRoleArray{ GetAclTokenRoleArgs{...} }
 type GetAclTokenRoleArrayInput interface {
 	pulumi.Input
 
@@ -2555,7 +2555,7 @@ type GetAclTokenServiceIdentity struct {
 // GetAclTokenServiceIdentityInput is an input type that accepts GetAclTokenServiceIdentityArgs and GetAclTokenServiceIdentityOutput values.
 // You can construct a concrete instance of `GetAclTokenServiceIdentityInput` via:
 //
-//          GetAclTokenServiceIdentityArgs{...}
+//	GetAclTokenServiceIdentityArgs{...}
 type GetAclTokenServiceIdentityInput interface {
 	pulumi.Input
 
@@ -2583,7 +2583,7 @@ func (i GetAclTokenServiceIdentityArgs) ToGetAclTokenServiceIdentityOutputWithCo
 // GetAclTokenServiceIdentityArrayInput is an input type that accepts GetAclTokenServiceIdentityArray and GetAclTokenServiceIdentityArrayOutput values.
 // You can construct a concrete instance of `GetAclTokenServiceIdentityArrayInput` via:
 //
-//          GetAclTokenServiceIdentityArray{ GetAclTokenServiceIdentityArgs{...} }
+//	GetAclTokenServiceIdentityArray{ GetAclTokenServiceIdentityArgs{...} }
 type GetAclTokenServiceIdentityArrayInput interface {
 	pulumi.Input
 
@@ -2680,7 +2680,7 @@ type GetAutopilotHealthServer struct {
 // GetAutopilotHealthServerInput is an input type that accepts GetAutopilotHealthServerArgs and GetAutopilotHealthServerOutput values.
 // You can construct a concrete instance of `GetAutopilotHealthServerInput` via:
 //
-//          GetAutopilotHealthServerArgs{...}
+//	GetAutopilotHealthServerArgs{...}
 type GetAutopilotHealthServerInput interface {
 	pulumi.Input
 
@@ -2733,7 +2733,7 @@ func (i GetAutopilotHealthServerArgs) ToGetAutopilotHealthServerOutputWithContex
 // GetAutopilotHealthServerArrayInput is an input type that accepts GetAutopilotHealthServerArray and GetAutopilotHealthServerArrayOutput values.
 // You can construct a concrete instance of `GetAutopilotHealthServerArrayInput` via:
 //
-//          GetAutopilotHealthServerArray{ GetAutopilotHealthServerArgs{...} }
+//	GetAutopilotHealthServerArray{ GetAutopilotHealthServerArgs{...} }
 type GetAutopilotHealthServerArrayInput interface {
 	pulumi.Input
 
@@ -2816,7 +2816,7 @@ func (o GetAutopilotHealthServerOutput) SerfStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAutopilotHealthServer) string { return v.SerfStatus }).(pulumi.StringOutput)
 }
 
-// The time this server has been in its current ``Healthy``
+// The time this server has been in its current “Healthy“
 // state
 func (o GetAutopilotHealthServerOutput) StableSince() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAutopilotHealthServer) string { return v.StableSince }).(pulumi.StringOutput)
@@ -2863,7 +2863,7 @@ type GetCatalogNodesNode struct {
 // GetCatalogNodesNodeInput is an input type that accepts GetCatalogNodesNodeArgs and GetCatalogNodesNodeOutput values.
 // You can construct a concrete instance of `GetCatalogNodesNodeInput` via:
 //
-//          GetCatalogNodesNodeArgs{...}
+//	GetCatalogNodesNodeArgs{...}
 type GetCatalogNodesNodeInput interface {
 	pulumi.Input
 
@@ -2894,7 +2894,7 @@ func (i GetCatalogNodesNodeArgs) ToGetCatalogNodesNodeOutputWithContext(ctx cont
 // GetCatalogNodesNodeArrayInput is an input type that accepts GetCatalogNodesNodeArray and GetCatalogNodesNodeArrayOutput values.
 // You can construct a concrete instance of `GetCatalogNodesNodeArrayInput` via:
 //
-//          GetCatalogNodesNodeArray{ GetCatalogNodesNodeArgs{...} }
+//	GetCatalogNodesNodeArray{ GetCatalogNodesNodeArgs{...} }
 type GetCatalogNodesNodeArrayInput interface {
 	pulumi.Input
 
@@ -2985,7 +2985,7 @@ type GetCatalogNodesQueryOption struct {
 // GetCatalogNodesQueryOptionInput is an input type that accepts GetCatalogNodesQueryOptionArgs and GetCatalogNodesQueryOptionOutput values.
 // You can construct a concrete instance of `GetCatalogNodesQueryOptionInput` via:
 //
-//          GetCatalogNodesQueryOptionArgs{...}
+//	GetCatalogNodesQueryOptionArgs{...}
 type GetCatalogNodesQueryOptionInput interface {
 	pulumi.Input
 
@@ -3020,7 +3020,7 @@ func (i GetCatalogNodesQueryOptionArgs) ToGetCatalogNodesQueryOptionOutputWithCo
 // GetCatalogNodesQueryOptionArrayInput is an input type that accepts GetCatalogNodesQueryOptionArray and GetCatalogNodesQueryOptionArrayOutput values.
 // You can construct a concrete instance of `GetCatalogNodesQueryOptionArrayInput` via:
 //
-//          GetCatalogNodesQueryOptionArray{ GetCatalogNodesQueryOptionArgs{...} }
+//	GetCatalogNodesQueryOptionArray{ GetCatalogNodesQueryOptionArgs{...} }
 type GetCatalogNodesQueryOptionArrayInput interface {
 	pulumi.Input
 
@@ -3128,7 +3128,7 @@ type GetCatalogServiceQueryOption struct {
 // GetCatalogServiceQueryOptionInput is an input type that accepts GetCatalogServiceQueryOptionArgs and GetCatalogServiceQueryOptionOutput values.
 // You can construct a concrete instance of `GetCatalogServiceQueryOptionInput` via:
 //
-//          GetCatalogServiceQueryOptionArgs{...}
+//	GetCatalogServiceQueryOptionArgs{...}
 type GetCatalogServiceQueryOptionInput interface {
 	pulumi.Input
 
@@ -3164,7 +3164,7 @@ func (i GetCatalogServiceQueryOptionArgs) ToGetCatalogServiceQueryOptionOutputWi
 // GetCatalogServiceQueryOptionArrayInput is an input type that accepts GetCatalogServiceQueryOptionArray and GetCatalogServiceQueryOptionArrayOutput values.
 // You can construct a concrete instance of `GetCatalogServiceQueryOptionArrayInput` via:
 //
-//          GetCatalogServiceQueryOptionArray{ GetCatalogServiceQueryOptionArgs{...} }
+//	GetCatalogServiceQueryOptionArray{ GetCatalogServiceQueryOptionArgs{...} }
 type GetCatalogServiceQueryOptionArrayInput interface {
 	pulumi.Input
 
@@ -3280,7 +3280,7 @@ type GetCatalogServiceService struct {
 // GetCatalogServiceServiceInput is an input type that accepts GetCatalogServiceServiceArgs and GetCatalogServiceServiceOutput values.
 // You can construct a concrete instance of `GetCatalogServiceServiceInput` via:
 //
-//          GetCatalogServiceServiceArgs{...}
+//	GetCatalogServiceServiceArgs{...}
 type GetCatalogServiceServiceInput interface {
 	pulumi.Input
 
@@ -3320,7 +3320,7 @@ func (i GetCatalogServiceServiceArgs) ToGetCatalogServiceServiceOutputWithContex
 // GetCatalogServiceServiceArrayInput is an input type that accepts GetCatalogServiceServiceArray and GetCatalogServiceServiceArrayOutput values.
 // You can construct a concrete instance of `GetCatalogServiceServiceArrayInput` via:
 //
-//          GetCatalogServiceServiceArray{ GetCatalogServiceServiceArgs{...} }
+//	GetCatalogServiceServiceArray{ GetCatalogServiceServiceArgs{...} }
 type GetCatalogServiceServiceArrayInput interface {
 	pulumi.Input
 
@@ -3448,7 +3448,7 @@ type GetCatalogServicesQueryOption struct {
 // GetCatalogServicesQueryOptionInput is an input type that accepts GetCatalogServicesQueryOptionArgs and GetCatalogServicesQueryOptionOutput values.
 // You can construct a concrete instance of `GetCatalogServicesQueryOptionInput` via:
 //
-//          GetCatalogServicesQueryOptionArgs{...}
+//	GetCatalogServicesQueryOptionArgs{...}
 type GetCatalogServicesQueryOptionInput interface {
 	pulumi.Input
 
@@ -3484,7 +3484,7 @@ func (i GetCatalogServicesQueryOptionArgs) ToGetCatalogServicesQueryOptionOutput
 // GetCatalogServicesQueryOptionArrayInput is an input type that accepts GetCatalogServicesQueryOptionArray and GetCatalogServicesQueryOptionArrayOutput values.
 // You can construct a concrete instance of `GetCatalogServicesQueryOptionArrayInput` via:
 //
-//          GetCatalogServicesQueryOptionArray{ GetCatalogServicesQueryOptionArgs{...} }
+//	GetCatalogServicesQueryOptionArray{ GetCatalogServicesQueryOptionArgs{...} }
 type GetCatalogServicesQueryOptionArrayInput interface {
 	pulumi.Input
 
@@ -3597,7 +3597,7 @@ type GetKeyPrefixSubkeyCollection struct {
 // GetKeyPrefixSubkeyCollectionInput is an input type that accepts GetKeyPrefixSubkeyCollectionArgs and GetKeyPrefixSubkeyCollectionOutput values.
 // You can construct a concrete instance of `GetKeyPrefixSubkeyCollectionInput` via:
 //
-//          GetKeyPrefixSubkeyCollectionArgs{...}
+//	GetKeyPrefixSubkeyCollectionArgs{...}
 type GetKeyPrefixSubkeyCollectionInput interface {
 	pulumi.Input
 
@@ -3634,7 +3634,7 @@ func (i GetKeyPrefixSubkeyCollectionArgs) ToGetKeyPrefixSubkeyCollectionOutputWi
 // GetKeyPrefixSubkeyCollectionArrayInput is an input type that accepts GetKeyPrefixSubkeyCollectionArray and GetKeyPrefixSubkeyCollectionArrayOutput values.
 // You can construct a concrete instance of `GetKeyPrefixSubkeyCollectionArrayInput` via:
 //
-//          GetKeyPrefixSubkeyCollectionArray{ GetKeyPrefixSubkeyCollectionArgs{...} }
+//	GetKeyPrefixSubkeyCollectionArray{ GetKeyPrefixSubkeyCollectionArgs{...} }
 type GetKeyPrefixSubkeyCollectionArrayInput interface {
 	pulumi.Input
 
@@ -3726,7 +3726,7 @@ type GetKeysKey struct {
 // GetKeysKeyInput is an input type that accepts GetKeysKeyArgs and GetKeysKeyOutput values.
 // You can construct a concrete instance of `GetKeysKeyInput` via:
 //
-//          GetKeysKeyArgs{...}
+//	GetKeysKeyArgs{...}
 type GetKeysKeyInput interface {
 	pulumi.Input
 
@@ -3762,7 +3762,7 @@ func (i GetKeysKeyArgs) ToGetKeysKeyOutputWithContext(ctx context.Context) GetKe
 // GetKeysKeyArrayInput is an input type that accepts GetKeysKeyArray and GetKeysKeyArrayOutput values.
 // You can construct a concrete instance of `GetKeysKeyArrayInput` via:
 //
-//          GetKeysKeyArray{ GetKeysKeyArgs{...} }
+//	GetKeysKeyArray{ GetKeysKeyArgs{...} }
 type GetKeysKeyArrayInput interface {
 	pulumi.Input
 
@@ -3870,7 +3870,7 @@ type GetNetworkAreaMembersMember struct {
 // GetNetworkAreaMembersMemberInput is an input type that accepts GetNetworkAreaMembersMemberArgs and GetNetworkAreaMembersMemberOutput values.
 // You can construct a concrete instance of `GetNetworkAreaMembersMemberInput` via:
 //
-//          GetNetworkAreaMembersMemberArgs{...}
+//	GetNetworkAreaMembersMemberArgs{...}
 type GetNetworkAreaMembersMemberInput interface {
 	pulumi.Input
 
@@ -3923,7 +3923,7 @@ func (i GetNetworkAreaMembersMemberArgs) ToGetNetworkAreaMembersMemberOutputWith
 // GetNetworkAreaMembersMemberArrayInput is an input type that accepts GetNetworkAreaMembersMemberArray and GetNetworkAreaMembersMemberArrayOutput values.
 // You can construct a concrete instance of `GetNetworkAreaMembersMemberArrayInput` via:
 //
-//          GetNetworkAreaMembersMemberArray{ GetNetworkAreaMembersMemberArgs{...} }
+//	GetNetworkAreaMembersMemberArray{ GetNetworkAreaMembersMemberArgs{...} }
 type GetNetworkAreaMembersMemberArrayInput interface {
 	pulumi.Input
 
@@ -4056,7 +4056,7 @@ type GetNodesNode struct {
 // GetNodesNodeInput is an input type that accepts GetNodesNodeArgs and GetNodesNodeOutput values.
 // You can construct a concrete instance of `GetNodesNodeInput` via:
 //
-//          GetNodesNodeArgs{...}
+//	GetNodesNodeArgs{...}
 type GetNodesNodeInput interface {
 	pulumi.Input
 
@@ -4096,7 +4096,7 @@ func (i GetNodesNodeArgs) ToGetNodesNodeOutputWithContext(ctx context.Context) G
 // GetNodesNodeArrayInput is an input type that accepts GetNodesNodeArray and GetNodesNodeArrayOutput values.
 // You can construct a concrete instance of `GetNodesNodeArrayInput` via:
 //
-//          GetNodesNodeArray{ GetNodesNodeArgs{...} }
+//	GetNodesNodeArray{ GetNodesNodeArgs{...} }
 type GetNodesNodeArrayInput interface {
 	pulumi.Input
 
@@ -4137,14 +4137,14 @@ func (o GetNodesNodeOutput) Address() pulumi.StringOutput {
 }
 
 // The Node ID of the Consul agent.
-// * [`meta`](https://www.consul.io/docs/agent/http/catalog.html#Meta) - Node meta
-//   data tag information, if any.
-// * [`name`](https://www.consul.io/docs/agent/http/catalog.html#Node) - The name
-//   of the Consul node.
-// * [`address`](https://www.consul.io/docs/agent/http/catalog.html#Address) - The
-//   IP address the node is advertising to the Consul cluster.
-// * [`taggedAddresses`](https://www.consul.io/docs/agent/http/catalog.html#TaggedAddresses) -
-//   List of explicit LAN and WAN IP addresses for the agent.
+//   - [`meta`](https://www.consul.io/docs/agent/http/catalog.html#Meta) - Node meta
+//     data tag information, if any.
+//   - [`name`](https://www.consul.io/docs/agent/http/catalog.html#Node) - The name
+//     of the Consul node.
+//   - [`address`](https://www.consul.io/docs/agent/http/catalog.html#Address) - The
+//     IP address the node is advertising to the Consul cluster.
+//   - [`taggedAddresses`](https://www.consul.io/docs/agent/http/catalog.html#TaggedAddresses) -
+//     List of explicit LAN and WAN IP addresses for the agent.
 func (o GetNodesNodeOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNodesNode) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -4211,7 +4211,7 @@ type GetNodesQueryOption struct {
 // GetNodesQueryOptionInput is an input type that accepts GetNodesQueryOptionArgs and GetNodesQueryOptionOutput values.
 // You can construct a concrete instance of `GetNodesQueryOptionInput` via:
 //
-//          GetNodesQueryOptionArgs{...}
+//	GetNodesQueryOptionArgs{...}
 type GetNodesQueryOptionInput interface {
 	pulumi.Input
 
@@ -4261,7 +4261,7 @@ func (i GetNodesQueryOptionArgs) ToGetNodesQueryOptionOutputWithContext(ctx cont
 // GetNodesQueryOptionArrayInput is an input type that accepts GetNodesQueryOptionArray and GetNodesQueryOptionArrayOutput values.
 // You can construct a concrete instance of `GetNodesQueryOptionArrayInput` via:
 //
-//          GetNodesQueryOptionArray{ GetNodesQueryOptionArgs{...} }
+//	GetNodesQueryOptionArray{ GetNodesQueryOptionArgs{...} }
 type GetNodesQueryOptionArrayInput interface {
 	pulumi.Input
 
@@ -4378,7 +4378,7 @@ type GetServiceHealthResult struct {
 // GetServiceHealthResultInput is an input type that accepts GetServiceHealthResultArgs and GetServiceHealthResultOutput values.
 // You can construct a concrete instance of `GetServiceHealthResultInput` via:
 //
-//          GetServiceHealthResultArgs{...}
+//	GetServiceHealthResultArgs{...}
 type GetServiceHealthResultInput interface {
 	pulumi.Input
 
@@ -4408,7 +4408,7 @@ func (i GetServiceHealthResultArgs) ToGetServiceHealthResultOutputWithContext(ct
 // GetServiceHealthResultArrayInput is an input type that accepts GetServiceHealthResultArray and GetServiceHealthResultArrayOutput values.
 // You can construct a concrete instance of `GetServiceHealthResultArrayInput` via:
 //
-//          GetServiceHealthResultArray{ GetServiceHealthResultArgs{...} }
+//	GetServiceHealthResultArray{ GetServiceHealthResultArgs{...} }
 type GetServiceHealthResultArrayInput interface {
 	pulumi.Input
 
@@ -4501,7 +4501,7 @@ type GetServiceHealthResultCheck struct {
 // GetServiceHealthResultCheckInput is an input type that accepts GetServiceHealthResultCheckArgs and GetServiceHealthResultCheckOutput values.
 // You can construct a concrete instance of `GetServiceHealthResultCheckInput` via:
 //
-//          GetServiceHealthResultCheckArgs{...}
+//	GetServiceHealthResultCheckArgs{...}
 type GetServiceHealthResultCheckInput interface {
 	pulumi.Input
 
@@ -4545,7 +4545,7 @@ func (i GetServiceHealthResultCheckArgs) ToGetServiceHealthResultCheckOutputWith
 // GetServiceHealthResultCheckArrayInput is an input type that accepts GetServiceHealthResultCheckArray and GetServiceHealthResultCheckArrayOutput values.
 // You can construct a concrete instance of `GetServiceHealthResultCheckArrayInput` via:
 //
-//          GetServiceHealthResultCheckArray{ GetServiceHealthResultCheckArgs{...} }
+//	GetServiceHealthResultCheckArray{ GetServiceHealthResultCheckArgs{...} }
 type GetServiceHealthResultCheckArrayInput interface {
 	pulumi.Input
 
@@ -4663,7 +4663,7 @@ type GetServiceHealthResultNode struct {
 // GetServiceHealthResultNodeInput is an input type that accepts GetServiceHealthResultNodeArgs and GetServiceHealthResultNodeOutput values.
 // You can construct a concrete instance of `GetServiceHealthResultNodeInput` via:
 //
-//          GetServiceHealthResultNodeArgs{...}
+//	GetServiceHealthResultNodeArgs{...}
 type GetServiceHealthResultNodeInput interface {
 	pulumi.Input
 
@@ -4700,7 +4700,7 @@ func (i GetServiceHealthResultNodeArgs) ToGetServiceHealthResultNodeOutputWithCo
 // GetServiceHealthResultNodeArrayInput is an input type that accepts GetServiceHealthResultNodeArray and GetServiceHealthResultNodeArrayOutput values.
 // You can construct a concrete instance of `GetServiceHealthResultNodeArrayInput` via:
 //
-//          GetServiceHealthResultNodeArray{ GetServiceHealthResultNodeArgs{...} }
+//	GetServiceHealthResultNodeArray{ GetServiceHealthResultNodeArgs{...} }
 type GetServiceHealthResultNodeArrayInput interface {
 	pulumi.Input
 
@@ -4803,7 +4803,7 @@ type GetServiceHealthResultService struct {
 // GetServiceHealthResultServiceInput is an input type that accepts GetServiceHealthResultServiceArgs and GetServiceHealthResultServiceOutput values.
 // You can construct a concrete instance of `GetServiceHealthResultServiceInput` via:
 //
-//          GetServiceHealthResultServiceArgs{...}
+//	GetServiceHealthResultServiceArgs{...}
 type GetServiceHealthResultServiceInput interface {
 	pulumi.Input
 
@@ -4841,7 +4841,7 @@ func (i GetServiceHealthResultServiceArgs) ToGetServiceHealthResultServiceOutput
 // GetServiceHealthResultServiceArrayInput is an input type that accepts GetServiceHealthResultServiceArray and GetServiceHealthResultServiceArrayOutput values.
 // You can construct a concrete instance of `GetServiceHealthResultServiceArrayInput` via:
 //
-//          GetServiceHealthResultServiceArray{ GetServiceHealthResultServiceArgs{...} }
+//	GetServiceHealthResultServiceArray{ GetServiceHealthResultServiceArgs{...} }
 type GetServiceHealthResultServiceArrayInput interface {
 	pulumi.Input
 
@@ -4959,7 +4959,7 @@ type GetServiceQueryOption struct {
 // GetServiceQueryOptionInput is an input type that accepts GetServiceQueryOptionArgs and GetServiceQueryOptionOutput values.
 // You can construct a concrete instance of `GetServiceQueryOptionInput` via:
 //
-//          GetServiceQueryOptionArgs{...}
+//	GetServiceQueryOptionArgs{...}
 type GetServiceQueryOptionInput interface {
 	pulumi.Input
 
@@ -5011,7 +5011,7 @@ func (i GetServiceQueryOptionArgs) ToGetServiceQueryOptionOutputWithContext(ctx 
 // GetServiceQueryOptionArrayInput is an input type that accepts GetServiceQueryOptionArray and GetServiceQueryOptionArrayOutput values.
 // You can construct a concrete instance of `GetServiceQueryOptionArrayInput` via:
 //
-//          GetServiceQueryOptionArray{ GetServiceQueryOptionArgs{...} }
+//	GetServiceQueryOptionArray{ GetServiceQueryOptionArgs{...} }
 type GetServiceQueryOptionArrayInput interface {
 	pulumi.Input
 
@@ -5167,7 +5167,7 @@ type GetServiceService struct {
 // GetServiceServiceInput is an input type that accepts GetServiceServiceArgs and GetServiceServiceOutput values.
 // You can construct a concrete instance of `GetServiceServiceInput` via:
 //
-//          GetServiceServiceArgs{...}
+//	GetServiceServiceArgs{...}
 type GetServiceServiceInput interface {
 	pulumi.Input
 
@@ -5231,7 +5231,7 @@ func (i GetServiceServiceArgs) ToGetServiceServiceOutputWithContext(ctx context.
 // GetServiceServiceArrayInput is an input type that accepts GetServiceServiceArray and GetServiceServiceArrayOutput values.
 // You can construct a concrete instance of `GetServiceServiceArrayInput` via:
 //
-//          GetServiceServiceArray{ GetServiceServiceArgs{...} }
+//	GetServiceServiceArray{ GetServiceServiceArgs{...} }
 type GetServiceServiceArrayInput interface {
 	pulumi.Input
 
@@ -5301,28 +5301,28 @@ func (o GetServiceServiceOutput) NodeAddress() pulumi.StringOutput {
 }
 
 // The Node ID of the Consul agent advertising the service.
-// * [`nodeMeta`](https://www.consul.io/docs/agent/http/catalog.html#Meta) - Node
-//   meta data tag information, if any.
-// * [`nodeName`](https://www.consul.io/docs/agent/http/catalog.html#Node) - The
-//   name of the Consul node.
-// * [`address`](https://www.consul.io/docs/agent/http/catalog.html#ServiceAddress) -
-//   The IP address of the service.  If the `ServiceAddress` in the Consul catalog
-//   is empty, this value is automatically populated with the `nodeAddress` (the
-//   `Address` in the Consul Catalog).
-// * [`enableTagOverride`](https://www.consul.io/docs/agent/http/catalog.html#ServiceEnableTagOverride) -
-//   Whether service tags can be overridden on this service.
-// * [`id`](https://www.consul.io/docs/agent/http/catalog.html#ServiceID) - A
-//   unique service instance identifier.
-// * [`name`](https://www.consul.io/docs/agent/http/catalog.html#ServiceName) - The
-//   name of the service.
-// * [`port`](https://www.consul.io/docs/agent/http/catalog.html#ServicePort) -
-//   Port number of the service.
-// * [`taggedAddresses`](https://www.consul.io/docs/agent/http/catalog.html#TaggedAddresses) -
-//   List of explicit LAN and WAN IP addresses for the agent.
-// * [`tags`](https://www.consul.io/docs/agent/http/catalog.html#ServiceTags) -
-//   List of tags for the service.
-// * [`meta`](https://www.consul.io/docs/agent/http/catalog.html#Meta) - Service meta
-//   data tag information, if any.
+//   - [`nodeMeta`](https://www.consul.io/docs/agent/http/catalog.html#Meta) - Node
+//     meta data tag information, if any.
+//   - [`nodeName`](https://www.consul.io/docs/agent/http/catalog.html#Node) - The
+//     name of the Consul node.
+//   - [`address`](https://www.consul.io/docs/agent/http/catalog.html#ServiceAddress) -
+//     The IP address of the service.  If the `ServiceAddress` in the Consul catalog
+//     is empty, this value is automatically populated with the `nodeAddress` (the
+//     `Address` in the Consul Catalog).
+//   - [`enableTagOverride`](https://www.consul.io/docs/agent/http/catalog.html#ServiceEnableTagOverride) -
+//     Whether service tags can be overridden on this service.
+//   - [`id`](https://www.consul.io/docs/agent/http/catalog.html#ServiceID) - A
+//     unique service instance identifier.
+//   - [`name`](https://www.consul.io/docs/agent/http/catalog.html#ServiceName) - The
+//     name of the service.
+//   - [`port`](https://www.consul.io/docs/agent/http/catalog.html#ServicePort) -
+//     Port number of the service.
+//   - [`taggedAddresses`](https://www.consul.io/docs/agent/http/catalog.html#TaggedAddresses) -
+//     List of explicit LAN and WAN IP addresses for the agent.
+//   - [`tags`](https://www.consul.io/docs/agent/http/catalog.html#ServiceTags) -
+//     List of tags for the service.
+//   - [`meta`](https://www.consul.io/docs/agent/http/catalog.html#Meta) - Service meta
+//     data tag information, if any.
 func (o GetServiceServiceOutput) NodeId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceService) string { return v.NodeId }).(pulumi.StringOutput)
 }
@@ -5399,7 +5399,7 @@ type GetServicesQueryOption struct {
 // GetServicesQueryOptionInput is an input type that accepts GetServicesQueryOptionArgs and GetServicesQueryOptionOutput values.
 // You can construct a concrete instance of `GetServicesQueryOptionInput` via:
 //
-//          GetServicesQueryOptionArgs{...}
+//	GetServicesQueryOptionArgs{...}
 type GetServicesQueryOptionInput interface {
 	pulumi.Input
 
@@ -5451,7 +5451,7 @@ func (i GetServicesQueryOptionArgs) ToGetServicesQueryOptionOutputWithContext(ct
 // GetServicesQueryOptionArrayInput is an input type that accepts GetServicesQueryOptionArray and GetServicesQueryOptionArrayOutput values.
 // You can construct a concrete instance of `GetServicesQueryOptionArrayInput` via:
 //
-//          GetServicesQueryOptionArray{ GetServicesQueryOptionArgs{...} }
+//	GetServicesQueryOptionArray{ GetServicesQueryOptionArgs{...} }
 type GetServicesQueryOptionArrayInput interface {
 	pulumi.Input
 
