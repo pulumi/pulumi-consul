@@ -145,6 +145,8 @@ func Provider() tfbridge.ProviderInfo {
 			"consul_network_area":                {Tok: makeResource(mainMod, "NetworkArea")},
 			"consul_certificate_authority":       {Tok: makeResource(mainMod, "CertificateAuthority")},
 			"consul_admin_partition":             {Tok: makeResource(mainMod, "AdminPartition")},
+			"consul_peering":                     {Tok: makeResource(mainMod, "Peering")},
+			"consul_peering_token":               {Tok: makeResource(mainMod, "PeeringToken")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"consul_acl_auth_method":     {Tok: makeDataSource(mainMod, "getAclAuthMethod")},
@@ -158,6 +160,7 @@ func Provider() tfbridge.ProviderInfo {
 			"consul_catalog_nodes":       {Tok: makeDataSource(mainMod, "getCatalogNodes")},
 			"consul_catalog_service":     {Tok: makeDataSource(mainMod, "getCatalogService")},
 			"consul_catalog_services":    {Tok: makeDataSource(mainMod, "getCatalogServices")},
+			"consul_config_entry":        {Tok: makeDataSource(mainMod, "getConfigEntry")},
 			"consul_key_prefix": {
 				Tok: makeDataSource(mainMod, "getKeyPrefix"),
 				Fields: map[string]*tfbridge.SchemaInfo{
@@ -174,6 +177,8 @@ func Provider() tfbridge.ProviderInfo {
 			"consul_network_area_members": {Tok: makeDataSource(mainMod, "getNetworkAreaMembers")},
 			"consul_network_segments":     {Tok: makeDataSource(mainMod, "getNetworkSegments")},
 			"consul_datacenters":          {Tok: makeDataSource(mainMod, "getDatacenters")},
+			"consul_peering":              {Tok: makeDataSource(mainMod, "getPeering")},
+			"consul_peerings":             {Tok: makeDataSource(mainMod, "getPeerings")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{
