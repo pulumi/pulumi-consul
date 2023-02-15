@@ -37,6 +37,11 @@ class NodeArgs:
         if partition is not None:
             pulumi.set(__self__, "partition", partition)
         if token is not None:
+            warnings.warn("""The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration""", DeprecationWarning)
+            pulumi.log.warn("""token is deprecated: The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration""")
+        if token is not None:
             pulumi.set(__self__, "token", token)
 
     @property
@@ -137,6 +142,11 @@ class _NodeState:
         if partition is not None:
             pulumi.set(__self__, "partition", partition)
         if token is not None:
+            warnings.warn("""The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration""", DeprecationWarning)
+            pulumi.log.warn("""token is deprecated: The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration""")
+        if token is not None:
             pulumi.set(__self__, "token", token)
 
     @property
@@ -234,6 +244,14 @@ class Node(pulumi.CustomResource):
         foobar = consul.Node("foobar", address="192.168.10.10")
         ```
 
+        ## Import
+
+        The `consul_node` resource can be imported
+
+        ```sh
+         $ pulumi import consul:index/node:Node example node-name
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address: The address of the node being added to, or referenced in the catalog.
@@ -259,6 +277,14 @@ class Node(pulumi.CustomResource):
         import pulumi_consul as consul
 
         foobar = consul.Node("foobar", address="192.168.10.10")
+        ```
+
+        ## Import
+
+        The `consul_node` resource can be imported
+
+        ```sh
+         $ pulumi import consul:index/node:Node example node-name
         ```
 
         :param str resource_name: The name of the resource.
@@ -301,6 +327,11 @@ class Node(pulumi.CustomResource):
             __props__.__dict__["meta"] = meta
             __props__.__dict__["name"] = name
             __props__.__dict__["partition"] = partition
+            if token is not None and not opts.urn:
+                warnings.warn("""The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration""", DeprecationWarning)
+                pulumi.log.warn("""token is deprecated: The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration""")
             __props__.__dict__["token"] = token
         super(Node, __self__).__init__(
             'consul:index/node:Node',

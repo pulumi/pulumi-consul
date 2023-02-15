@@ -1548,7 +1548,8 @@ type ServiceCheck struct {
 	Status *string `pulumi:"status"`
 	// The TCP address and port to connect to for a TCP check.
 	Tcp *string `pulumi:"tcp"`
-	// The timeout value for HTTP checks.
+	// Specifies a timeout for outgoing connections in
+	// the case of a HTTP or TCP check.
 	Timeout string `pulumi:"timeout"`
 	// Whether to deactivate certificate
 	// verification for HTTP health-checks. Defaults to `false`.
@@ -1593,7 +1594,8 @@ type ServiceCheckArgs struct {
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// The TCP address and port to connect to for a TCP check.
 	Tcp pulumi.StringPtrInput `pulumi:"tcp"`
-	// The timeout value for HTTP checks.
+	// Specifies a timeout for outgoing connections in
+	// the case of a HTTP or TCP check.
 	Timeout pulumi.StringInput `pulumi:"timeout"`
 	// Whether to deactivate certificate
 	// verification for HTTP health-checks. Defaults to `false`.
@@ -1707,7 +1709,8 @@ func (o ServiceCheckOutput) Tcp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceCheck) *string { return v.Tcp }).(pulumi.StringPtrOutput)
 }
 
-// The timeout value for HTTP checks.
+// Specifies a timeout for outgoing connections in
+// the case of a HTTP or TCP check.
 func (o ServiceCheckOutput) Timeout() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceCheck) string { return v.Timeout }).(pulumi.StringOutput)
 }
@@ -4368,6 +4371,154 @@ func (o GetNodesQueryOptionArrayOutput) Index(i pulumi.IntInput) GetNodesQueryOp
 	}).(GetNodesQueryOptionOutput)
 }
 
+type GetPeeringsPeer struct {
+	DeletedAt           string            `pulumi:"deletedAt"`
+	Id                  string            `pulumi:"id"`
+	Meta                map[string]string `pulumi:"meta"`
+	Name                string            `pulumi:"name"`
+	Partition           string            `pulumi:"partition"`
+	PeerCaPems          []string          `pulumi:"peerCaPems"`
+	PeerId              string            `pulumi:"peerId"`
+	PeerServerAddresses []string          `pulumi:"peerServerAddresses"`
+	PeerServerName      string            `pulumi:"peerServerName"`
+	State               string            `pulumi:"state"`
+}
+
+// GetPeeringsPeerInput is an input type that accepts GetPeeringsPeerArgs and GetPeeringsPeerOutput values.
+// You can construct a concrete instance of `GetPeeringsPeerInput` via:
+//
+//	GetPeeringsPeerArgs{...}
+type GetPeeringsPeerInput interface {
+	pulumi.Input
+
+	ToGetPeeringsPeerOutput() GetPeeringsPeerOutput
+	ToGetPeeringsPeerOutputWithContext(context.Context) GetPeeringsPeerOutput
+}
+
+type GetPeeringsPeerArgs struct {
+	DeletedAt           pulumi.StringInput      `pulumi:"deletedAt"`
+	Id                  pulumi.StringInput      `pulumi:"id"`
+	Meta                pulumi.StringMapInput   `pulumi:"meta"`
+	Name                pulumi.StringInput      `pulumi:"name"`
+	Partition           pulumi.StringInput      `pulumi:"partition"`
+	PeerCaPems          pulumi.StringArrayInput `pulumi:"peerCaPems"`
+	PeerId              pulumi.StringInput      `pulumi:"peerId"`
+	PeerServerAddresses pulumi.StringArrayInput `pulumi:"peerServerAddresses"`
+	PeerServerName      pulumi.StringInput      `pulumi:"peerServerName"`
+	State               pulumi.StringInput      `pulumi:"state"`
+}
+
+func (GetPeeringsPeerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPeeringsPeer)(nil)).Elem()
+}
+
+func (i GetPeeringsPeerArgs) ToGetPeeringsPeerOutput() GetPeeringsPeerOutput {
+	return i.ToGetPeeringsPeerOutputWithContext(context.Background())
+}
+
+func (i GetPeeringsPeerArgs) ToGetPeeringsPeerOutputWithContext(ctx context.Context) GetPeeringsPeerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPeeringsPeerOutput)
+}
+
+// GetPeeringsPeerArrayInput is an input type that accepts GetPeeringsPeerArray and GetPeeringsPeerArrayOutput values.
+// You can construct a concrete instance of `GetPeeringsPeerArrayInput` via:
+//
+//	GetPeeringsPeerArray{ GetPeeringsPeerArgs{...} }
+type GetPeeringsPeerArrayInput interface {
+	pulumi.Input
+
+	ToGetPeeringsPeerArrayOutput() GetPeeringsPeerArrayOutput
+	ToGetPeeringsPeerArrayOutputWithContext(context.Context) GetPeeringsPeerArrayOutput
+}
+
+type GetPeeringsPeerArray []GetPeeringsPeerInput
+
+func (GetPeeringsPeerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPeeringsPeer)(nil)).Elem()
+}
+
+func (i GetPeeringsPeerArray) ToGetPeeringsPeerArrayOutput() GetPeeringsPeerArrayOutput {
+	return i.ToGetPeeringsPeerArrayOutputWithContext(context.Background())
+}
+
+func (i GetPeeringsPeerArray) ToGetPeeringsPeerArrayOutputWithContext(ctx context.Context) GetPeeringsPeerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPeeringsPeerArrayOutput)
+}
+
+type GetPeeringsPeerOutput struct{ *pulumi.OutputState }
+
+func (GetPeeringsPeerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPeeringsPeer)(nil)).Elem()
+}
+
+func (o GetPeeringsPeerOutput) ToGetPeeringsPeerOutput() GetPeeringsPeerOutput {
+	return o
+}
+
+func (o GetPeeringsPeerOutput) ToGetPeeringsPeerOutputWithContext(ctx context.Context) GetPeeringsPeerOutput {
+	return o
+}
+
+func (o GetPeeringsPeerOutput) DeletedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPeeringsPeer) string { return v.DeletedAt }).(pulumi.StringOutput)
+}
+
+func (o GetPeeringsPeerOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPeeringsPeer) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetPeeringsPeerOutput) Meta() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetPeeringsPeer) map[string]string { return v.Meta }).(pulumi.StringMapOutput)
+}
+
+func (o GetPeeringsPeerOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPeeringsPeer) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetPeeringsPeerOutput) Partition() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPeeringsPeer) string { return v.Partition }).(pulumi.StringOutput)
+}
+
+func (o GetPeeringsPeerOutput) PeerCaPems() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPeeringsPeer) []string { return v.PeerCaPems }).(pulumi.StringArrayOutput)
+}
+
+func (o GetPeeringsPeerOutput) PeerId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPeeringsPeer) string { return v.PeerId }).(pulumi.StringOutput)
+}
+
+func (o GetPeeringsPeerOutput) PeerServerAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPeeringsPeer) []string { return v.PeerServerAddresses }).(pulumi.StringArrayOutput)
+}
+
+func (o GetPeeringsPeerOutput) PeerServerName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPeeringsPeer) string { return v.PeerServerName }).(pulumi.StringOutput)
+}
+
+func (o GetPeeringsPeerOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPeeringsPeer) string { return v.State }).(pulumi.StringOutput)
+}
+
+type GetPeeringsPeerArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPeeringsPeerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPeeringsPeer)(nil)).Elem()
+}
+
+func (o GetPeeringsPeerArrayOutput) ToGetPeeringsPeerArrayOutput() GetPeeringsPeerArrayOutput {
+	return o
+}
+
+func (o GetPeeringsPeerArrayOutput) ToGetPeeringsPeerArrayOutputWithContext(ctx context.Context) GetPeeringsPeerArrayOutput {
+	return o
+}
+
+func (o GetPeeringsPeerArrayOutput) Index(i pulumi.IntInput) GetPeeringsPeerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPeeringsPeer {
+		return vs[0].([]GetPeeringsPeer)[vs[1].(int)]
+	}).(GetPeeringsPeerOutput)
+}
+
 type GetServiceHealthResult struct {
 	Checks []GetServiceHealthResultCheck `pulumi:"checks"`
 	// The name of the node associated with this health-check.
@@ -5630,6 +5781,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodesNodeArrayInput)(nil)).Elem(), GetNodesNodeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodesQueryOptionInput)(nil)).Elem(), GetNodesQueryOptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodesQueryOptionArrayInput)(nil)).Elem(), GetNodesQueryOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPeeringsPeerInput)(nil)).Elem(), GetPeeringsPeerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPeeringsPeerArrayInput)(nil)).Elem(), GetPeeringsPeerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceHealthResultInput)(nil)).Elem(), GetServiceHealthResultArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceHealthResultArrayInput)(nil)).Elem(), GetServiceHealthResultArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceHealthResultCheckInput)(nil)).Elem(), GetServiceHealthResultCheckArgs{})
@@ -5710,6 +5863,8 @@ func init() {
 	pulumi.RegisterOutputType(GetNodesNodeArrayOutput{})
 	pulumi.RegisterOutputType(GetNodesQueryOptionOutput{})
 	pulumi.RegisterOutputType(GetNodesQueryOptionArrayOutput{})
+	pulumi.RegisterOutputType(GetPeeringsPeerOutput{})
+	pulumi.RegisterOutputType(GetPeeringsPeerArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceHealthResultOutput{})
 	pulumi.RegisterOutputType(GetServiceHealthResultArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceHealthResultCheckOutput{})

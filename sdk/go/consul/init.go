@@ -64,6 +64,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &NetworkArea{}
 	case "consul:index/node:Node":
 		r = &Node{}
+	case "consul:index/peering:Peering":
+		r = &Peering{}
+	case "consul:index/peeringToken:PeeringToken":
+		r = &PeeringToken{}
 	case "consul:index/preparedQuery:PreparedQuery":
 		r = &PreparedQuery{}
 	case "consul:index/service:Service":
@@ -204,6 +208,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"consul",
 		"index/node",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"consul",
+		"index/peering",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"consul",
+		"index/peeringToken",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

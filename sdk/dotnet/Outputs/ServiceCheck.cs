@@ -60,7 +60,8 @@ namespace Pulumi.Consul.Outputs
         /// </summary>
         public readonly string? Tcp;
         /// <summary>
-        /// The timeout value for HTTP checks.
+        /// Specifies a timeout for outgoing connections in
+        /// the case of a HTTP or TCP check.
         /// </summary>
         public readonly string Timeout;
         /// <summary>

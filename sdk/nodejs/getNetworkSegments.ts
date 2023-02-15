@@ -45,6 +45,9 @@ export interface GetNetworkSegmentsArgs {
     /**
      * The ACL token to use. This overrides the
      * token that the agent provides by default.
+     *
+     * @deprecated The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration
      */
     token?: string;
 }
@@ -65,6 +68,10 @@ export interface GetNetworkSegmentsResult {
      * The list of network segments.
      */
     readonly segments: string[];
+    /**
+     * @deprecated The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration
+     */
     readonly token?: string;
 }
 
@@ -84,6 +91,9 @@ export interface GetNetworkSegmentsOutputArgs {
     /**
      * The ACL token to use. This overrides the
      * token that the agent provides by default.
+     *
+     * @deprecated The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration
      */
     token?: pulumi.Input<string>;
 }

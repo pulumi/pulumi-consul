@@ -37,6 +37,11 @@ class NetworkAreaArgs:
         if retry_joins is not None:
             pulumi.set(__self__, "retry_joins", retry_joins)
         if token is not None:
+            warnings.warn("""The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration""", DeprecationWarning)
+            pulumi.log.warn("""token is deprecated: The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration""")
+        if token is not None:
             pulumi.set(__self__, "token", token)
         if use_tls is not None:
             pulumi.set(__self__, "use_tls", use_tls)
@@ -134,6 +139,11 @@ class _NetworkAreaState:
             pulumi.set(__self__, "peer_datacenter", peer_datacenter)
         if retry_joins is not None:
             pulumi.set(__self__, "retry_joins", retry_joins)
+        if token is not None:
+            warnings.warn("""The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration""", DeprecationWarning)
+            pulumi.log.warn("""token is deprecated: The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration""")
         if token is not None:
             pulumi.set(__self__, "token", token)
         if use_tls is not None:
@@ -318,6 +328,11 @@ class NetworkArea(pulumi.CustomResource):
                 raise TypeError("Missing required property 'peer_datacenter'")
             __props__.__dict__["peer_datacenter"] = peer_datacenter
             __props__.__dict__["retry_joins"] = retry_joins
+            if token is not None and not opts.urn:
+                warnings.warn("""The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration""", DeprecationWarning)
+                pulumi.log.warn("""token is deprecated: The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration""")
             __props__.__dict__["token"] = token
             __props__.__dict__["use_tls"] = use_tls
         super(NetworkArea, __self__).__init__(

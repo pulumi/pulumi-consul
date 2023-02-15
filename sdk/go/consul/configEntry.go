@@ -408,6 +408,16 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// `consul_config_entry` can be imported using the syntax `<kind>/<name>` if the config entry is in the default partition and default namespace, or `<partition>/<namespace>/<kind>/<name>` for config entries in a non-default partition or namespace
+//
+// ```sh
+//
+//	$ pulumi import consul:index/configEntry:ConfigEntry service_splitter 816a195f-6cb1-2e8d-92af-3011ae706318
+//
+// ```
 type ConfigEntry struct {
 	pulumi.CustomResourceState
 

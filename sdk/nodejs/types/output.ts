@@ -394,6 +394,19 @@ export interface GetNodesQueryOption {
     waitTime?: string;
 }
 
+export interface GetPeeringsPeer {
+    deletedAt: string;
+    id: string;
+    meta: {[key: string]: string};
+    name: string;
+    partition: string;
+    peerCaPems: string[];
+    peerId: string;
+    peerServerAddresses: string[];
+    peerServerName: string;
+    state: string;
+}
+
 export interface GetServiceHealthResult {
     checks: outputs.GetServiceHealthResultCheck[];
     /**
@@ -749,7 +762,8 @@ export interface ServiceCheck {
      */
     tcp?: string;
     /**
-     * The timeout value for HTTP checks.
+     * Specifies a timeout for outgoing connections in
+     * the case of a HTTP or TCP check.
      */
     timeout: string;
     /**

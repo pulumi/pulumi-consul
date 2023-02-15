@@ -74,6 +74,9 @@ export class NetworkArea extends pulumi.CustomResource {
     /**
      * The ACL token to use. This overrides the
      * token that the agent provides by default.
+     *
+     * @deprecated The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration
      */
     public readonly token!: pulumi.Output<string | undefined>;
     /**
@@ -138,6 +141,9 @@ export interface NetworkAreaState {
     /**
      * The ACL token to use. This overrides the
      * token that the agent provides by default.
+     *
+     * @deprecated The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration
      */
     token?: pulumi.Input<string>;
     /**
@@ -169,6 +175,9 @@ export interface NetworkAreaArgs {
     /**
      * The ACL token to use. This overrides the
      * token that the agent provides by default.
+     *
+     * @deprecated The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration
      */
     token?: pulumi.Input<string>;
     /**

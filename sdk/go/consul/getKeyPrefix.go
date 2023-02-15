@@ -111,6 +111,9 @@ type LookupKeyPrefixArgs struct {
 	SubkeyCollection []GetKeyPrefixSubkeyCollection `pulumi:"subkeyCollection"`
 	// The ACL token to use. This overrides the
 	// token that the agent provides by default.
+	//
+	// Deprecated: The token argument has been deprecated and will be removed in a future release.
+	// Please use the token argument in the provider configuration
 	Token *string `pulumi:"token"`
 }
 
@@ -130,8 +133,10 @@ type LookupKeyPrefixResult struct {
 	// A map of the subkeys and values is set if no `subkey`
 	// block is provided.
 	Subkeys map[string]string `pulumi:"subkeys"`
-	Token   *string           `pulumi:"token"`
-	Var     map[string]string `pulumi:"var"`
+	// Deprecated: The token argument has been deprecated and will be removed in a future release.
+	// Please use the token argument in the provider configuration
+	Token *string           `pulumi:"token"`
+	Var   map[string]string `pulumi:"var"`
 }
 
 func LookupKeyPrefixOutput(ctx *pulumi.Context, args LookupKeyPrefixOutputArgs, opts ...pulumi.InvokeOption) LookupKeyPrefixResultOutput {
@@ -165,6 +170,9 @@ type LookupKeyPrefixOutputArgs struct {
 	SubkeyCollection GetKeyPrefixSubkeyCollectionArrayInput `pulumi:"subkeyCollection"`
 	// The ACL token to use. This overrides the
 	// token that the agent provides by default.
+	//
+	// Deprecated: The token argument has been deprecated and will be removed in a future release.
+	// Please use the token argument in the provider configuration
 	Token pulumi.StringPtrInput `pulumi:"token"`
 }
 
@@ -222,6 +230,8 @@ func (o LookupKeyPrefixResultOutput) Subkeys() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupKeyPrefixResult) map[string]string { return v.Subkeys }).(pulumi.StringMapOutput)
 }
 
+// Deprecated: The token argument has been deprecated and will be removed in a future release.
+// Please use the token argument in the provider configuration
 func (o LookupKeyPrefixResultOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupKeyPrefixResult) *string { return v.Token }).(pulumi.StringPtrOutput)
 }

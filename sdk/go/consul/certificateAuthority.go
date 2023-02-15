@@ -14,9 +14,10 @@ import (
 // The `CertificateAuthority` resource can be used to manage the configuration of
 // the Certificate Authority used by [Consul Connect](https://www.consul.io/docs/connect/ca).
 //
-// ## Example Usage
+// > **Note:** The keys in the `config` argument must be using Camel case.
 //
-// Use the built-in CA with specific TTL:
+// ## Example Usage
+// ### Using the built-in CA with specific TTL
 //
 // ```go
 // package main
@@ -46,8 +47,7 @@ import (
 //	}
 //
 // ```
-//
-// Use Vault to manage and sign certificates:
+// ### Using Vault to manage and sign certificates
 //
 // ```go
 // package main
@@ -63,10 +63,10 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := consul.NewCertificateAuthority(ctx, "connect", &consul.CertificateAuthorityArgs{
 //				Config: pulumi.StringMap{
-//					"address":               pulumi.String("http://localhost:8200"),
-//					"intermediate_pki_path": pulumi.String("connect-intermediate"),
-//					"root_pki_path":         pulumi.String("connect-root"),
-//					"token":                 pulumi.String("..."),
+//					"Address":             pulumi.String("http://localhost:8200"),
+//					"IntermediatePKIPath": pulumi.String("connect-intermediate"),
+//					"RootPKIPath":         pulumi.String("connect-root"),
+//					"Token":               pulumi.String("..."),
 //				},
 //				ConnectProvider: pulumi.String("vault"),
 //			})
@@ -78,8 +78,7 @@ import (
 //	}
 //
 // ```
-//
-// Use the [AWS Certificate Manager Private Certificate Authority](https://aws.amazon.com/certificate-manager/private-certificate-authority/):
+// ### Using the [AWS Certificate Manager Private Certificate Authority](https://aws.amazon.com/certificate-manager/private-certificate-authority/)
 //
 // ```go
 // package main
@@ -95,7 +94,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := consul.NewCertificateAuthority(ctx, "connect", &consul.CertificateAuthorityArgs{
 //				Config: pulumi.StringMap{
-//					"existing_arn": pulumi.String("arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-123456789012"),
+//					"ExistingARN": pulumi.String("arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-123456789012"),
 //				},
 //				ConnectProvider: pulumi.String("aws-pca"),
 //			})

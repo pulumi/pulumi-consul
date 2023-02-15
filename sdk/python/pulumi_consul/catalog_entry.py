@@ -39,6 +39,11 @@ class CatalogEntryArgs:
         if services is not None:
             pulumi.set(__self__, "services", services)
         if token is not None:
+            warnings.warn("""The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration""", DeprecationWarning)
+            pulumi.log.warn("""token is deprecated: The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration""")
+        if token is not None:
             pulumi.set(__self__, "token", token)
 
     @property
@@ -134,6 +139,11 @@ class _CatalogEntryState:
             pulumi.set(__self__, "node", node)
         if services is not None:
             pulumi.set(__self__, "services", services)
+        if token is not None:
+            warnings.warn("""The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration""", DeprecationWarning)
+            pulumi.log.warn("""token is deprecated: The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration""")
         if token is not None:
             pulumi.set(__self__, "token", token)
 
@@ -329,6 +339,11 @@ class CatalogEntry(pulumi.CustomResource):
                 raise TypeError("Missing required property 'node'")
             __props__.__dict__["node"] = node
             __props__.__dict__["services"] = services
+            if token is not None and not opts.urn:
+                warnings.warn("""The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration""", DeprecationWarning)
+                pulumi.log.warn("""token is deprecated: The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration""")
             __props__.__dict__["token"] = token
         super(CatalogEntry, __self__).__init__(
             'consul:index/catalogEntry:CatalogEntry',

@@ -399,6 +399,14 @@ class ConfigEntry(pulumi.CustomResource):
             }))
         ```
 
+        ## Import
+
+        `consul_config_entry` can be imported using the syntax `<kind>/<name>` if the config entry is in the default partition and default namespace, or `<partition>/<namespace>/<kind>/<name>` for config entries in a non-default partition or namespace
+
+        ```sh
+         $ pulumi import consul:index/configEntry:ConfigEntry service_splitter 816a195f-6cb1-2e8d-92af-3011ae706318
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] config_json: An arbitrary map of configuration values.
@@ -614,6 +622,14 @@ class ConfigEntry(pulumi.CustomResource):
                     "MeshDestinationsOnly": True,
                 },
             }))
+        ```
+
+        ## Import
+
+        `consul_config_entry` can be imported using the syntax `<kind>/<name>` if the config entry is in the default partition and default namespace, or `<partition>/<namespace>/<kind>/<name>` for config entries in a non-default partition or namespace
+
+        ```sh
+         $ pulumi import consul:index/configEntry:ConfigEntry service_splitter 816a195f-6cb1-2e8d-92af-3011ae706318
         ```
 
         :param str resource_name: The name of the resource.

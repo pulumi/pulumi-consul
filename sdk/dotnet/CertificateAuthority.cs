@@ -13,9 +13,10 @@ namespace Pulumi.Consul
     /// The `consul.CertificateAuthority` resource can be used to manage the configuration of
     /// the Certificate Authority used by [Consul Connect](https://www.consul.io/docs/connect/ca).
     /// 
-    /// ## Example Usage
+    /// &gt; **Note:** The keys in the `config` argument must be using Camel case.
     /// 
-    /// Use the built-in CA with specific TTL:
+    /// ## Example Usage
+    /// ### Using the built-in CA with specific TTL
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -39,8 +40,7 @@ namespace Pulumi.Consul
     /// 
     /// }
     /// ```
-    /// 
-    /// Use Vault to manage and sign certificates:
+    /// ### Using Vault to manage and sign certificates
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -54,10 +54,10 @@ namespace Pulumi.Consul
     ///         {
     ///             Config = 
     ///             {
-    ///                 { "address", "http://localhost:8200" },
-    ///                 { "intermediate_pki_path", "connect-intermediate" },
-    ///                 { "root_pki_path", "connect-root" },
-    ///                 { "token", "..." },
+    ///                 { "Address", "http://localhost:8200" },
+    ///                 { "IntermediatePKIPath", "connect-intermediate" },
+    ///                 { "RootPKIPath", "connect-root" },
+    ///                 { "Token", "..." },
     ///             },
     ///             ConnectProvider = "vault",
     ///         });
@@ -65,8 +65,7 @@ namespace Pulumi.Consul
     /// 
     /// }
     /// ```
-    /// 
-    /// Use the [AWS Certificate Manager Private Certificate Authority](https://aws.amazon.com/certificate-manager/private-certificate-authority/):
+    /// ### Using the [AWS Certificate Manager Private Certificate Authority](https://aws.amazon.com/certificate-manager/private-certificate-authority/)
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -80,7 +79,7 @@ namespace Pulumi.Consul
     ///         {
     ///             Config = 
     ///             {
-    ///                 { "existing_arn", "arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-123456789012" },
+    ///                 { "ExistingARN", "arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-123456789012" },
     ///             },
     ///             ConnectProvider = "aws-pca",
     ///         });

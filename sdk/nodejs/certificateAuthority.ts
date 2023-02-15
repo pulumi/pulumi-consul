@@ -8,9 +8,10 @@ import * as utilities from "./utilities";
  * The `consul.CertificateAuthority` resource can be used to manage the configuration of
  * the Certificate Authority used by [Consul Connect](https://www.consul.io/docs/connect/ca).
  *
- * ## Example Usage
+ * > **Note:** The keys in the `config` argument must be using Camel case.
  *
- * Use the built-in CA with specific TTL:
+ * ## Example Usage
+ * ### Using the built-in CA with specific TTL
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -25,8 +26,7 @@ import * as utilities from "./utilities";
  *     connectProvider: "consul",
  * });
  * ```
- *
- * Use Vault to manage and sign certificates:
+ * ### Using Vault to manage and sign certificates
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -34,16 +34,15 @@ import * as utilities from "./utilities";
  *
  * const connect = new consul.CertificateAuthority("connect", {
  *     config: {
- *         address: "http://localhost:8200",
- *         intermediate_pki_path: "connect-intermediate",
- *         root_pki_path: "connect-root",
- *         token: "...",
+ *         Address: "http://localhost:8200",
+ *         IntermediatePKIPath: "connect-intermediate",
+ *         RootPKIPath: "connect-root",
+ *         Token: "...",
  *     },
  *     connectProvider: "vault",
  * });
  * ```
- *
- * Use the [AWS Certificate Manager Private Certificate Authority](https://aws.amazon.com/certificate-manager/private-certificate-authority/):
+ * ### Using the [AWS Certificate Manager Private Certificate Authority](https://aws.amazon.com/certificate-manager/private-certificate-authority/)
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -51,7 +50,7 @@ import * as utilities from "./utilities";
  *
  * const connect = new consul.CertificateAuthority("connect", {
  *     config: {
- *         existing_arn: "arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-123456789012",
+ *         ExistingARN: "arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-123456789012",
  *     },
  *     connectProvider: "aws-pca",
  * });
