@@ -146,7 +146,14 @@ func Provider() tfbridge.ProviderInfo {
 			"consul_certificate_authority":       {Tok: makeResource(mainMod, "CertificateAuthority")},
 			"consul_admin_partition":             {Tok: makeResource(mainMod, "AdminPartition")},
 			"consul_peering":                     {Tok: makeResource(mainMod, "Peering")},
-			"consul_peering_token":               {Tok: makeResource(mainMod, "PeeringToken")},
+			"consul_peering_token": {
+				Tok: makeResource(mainMod, "PeeringToken"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"peering_token": {
+						CSharpName: "Token",
+					},
+				},
+			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"consul_acl_auth_method":     {Tok: makeDataSource(mainMod, "getAclAuthMethod")},
