@@ -85,6 +85,9 @@ export class CatalogEntry extends pulumi.CustomResource {
     public readonly services!: pulumi.Output<outputs.CatalogEntryService[] | undefined>;
     /**
      * ACL token.
+     *
+     * @deprecated The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration
      */
     public readonly token!: pulumi.Output<string | undefined>;
 
@@ -151,6 +154,9 @@ export interface CatalogEntryState {
     services?: pulumi.Input<pulumi.Input<inputs.CatalogEntryService>[]>;
     /**
      * ACL token.
+     *
+     * @deprecated The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration
      */
     token?: pulumi.Input<string>;
 }
@@ -181,6 +187,9 @@ export interface CatalogEntryArgs {
     services?: pulumi.Input<pulumi.Input<inputs.CatalogEntryService>[]>;
     /**
      * ACL token.
+     *
+     * @deprecated The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration
      */
     token?: pulumi.Input<string>;
 }

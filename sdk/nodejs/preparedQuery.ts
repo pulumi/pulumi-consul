@@ -193,6 +193,9 @@ export class PreparedQuery extends pulumi.CustomResource {
     /**
      * The ACL token to use when saving the prepared query.
      * This overrides the token that the agent provides by default.
+     *
+     * @deprecated The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration
      */
     public readonly token!: pulumi.Output<string | undefined>;
 
@@ -346,6 +349,9 @@ export interface PreparedQueryState {
     /**
      * The ACL token to use when saving the prepared query.
      * This overrides the token that the agent provides by default.
+     *
+     * @deprecated The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration
      */
     token?: pulumi.Input<string>;
 }
@@ -444,6 +450,9 @@ export interface PreparedQueryArgs {
     /**
      * The ACL token to use when saving the prepared query.
      * This overrides the token that the agent provides by default.
+     *
+     * @deprecated The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration
      */
     token?: pulumi.Input<string>;
 }

@@ -40,6 +40,11 @@ class KeysArgs:
         if partition is not None:
             pulumi.set(__self__, "partition", partition)
         if token is not None:
+            warnings.warn("""The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration""", DeprecationWarning)
+            pulumi.log.warn("""token is deprecated: The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration""")
+        if token is not None:
             pulumi.set(__self__, "token", token)
 
     @property
@@ -134,6 +139,11 @@ class _KeysState:
             pulumi.set(__self__, "namespace", namespace)
         if partition is not None:
             pulumi.set(__self__, "partition", partition)
+        if token is not None:
+            warnings.warn("""The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration""", DeprecationWarning)
+            pulumi.log.warn("""token is deprecated: The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration""")
         if token is not None:
             pulumi.set(__self__, "token", token)
         if var is not None:
@@ -308,6 +318,11 @@ class Keys(pulumi.CustomResource):
             __props__.__dict__["keys"] = keys
             __props__.__dict__["namespace"] = namespace
             __props__.__dict__["partition"] = partition
+            if token is not None and not opts.urn:
+                warnings.warn("""The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration""", DeprecationWarning)
+                pulumi.log.warn("""token is deprecated: The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration""")
             __props__.__dict__["token"] = token
             __props__.__dict__["var"] = None
         super(Keys, __self__).__init__(

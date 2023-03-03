@@ -31,6 +31,14 @@ namespace Pulumi.Consul
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// The `consul_node` resource can be imported
+    /// 
+    /// ```sh
+    ///  $ pulumi import consul:index/node:Node example node-name
+    /// ```
     /// </summary>
     [ConsulResourceType("consul:index/node:Node")]
     public partial class Node : Pulumi.CustomResource

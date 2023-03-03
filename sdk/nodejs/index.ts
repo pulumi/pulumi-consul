@@ -29,12 +29,15 @@ export * from "./getAutopilotHealth";
 export * from "./getCatalogNodes";
 export * from "./getCatalogService";
 export * from "./getCatalogServices";
+export * from "./getConfigEntry";
 export * from "./getDatacenters";
 export * from "./getKeyPrefix";
 export * from "./getKeys";
 export * from "./getNetworkAreaMembers";
 export * from "./getNetworkSegments";
 export * from "./getNodes";
+export * from "./getPeering";
+export * from "./getPeerings";
 export * from "./getService";
 export * from "./getServiceHealth";
 export * from "./getServices";
@@ -47,6 +50,8 @@ export * from "./namespacePolicyAttachment";
 export * from "./namespaceRoleAttachment";
 export * from "./networkArea";
 export * from "./node";
+export * from "./peering";
+export * from "./peeringToken";
 export * from "./preparedQuery";
 export * from "./provider";
 export * from "./service";
@@ -83,6 +88,8 @@ import { NamespacePolicyAttachment } from "./namespacePolicyAttachment";
 import { NamespaceRoleAttachment } from "./namespaceRoleAttachment";
 import { NetworkArea } from "./networkArea";
 import { Node } from "./node";
+import { Peering } from "./peering";
+import { PeeringToken } from "./peeringToken";
 import { PreparedQuery } from "./preparedQuery";
 import { Service } from "./service";
 
@@ -134,6 +141,10 @@ const _module = {
                 return new NetworkArea(name, <any>undefined, { urn })
             case "consul:index/node:Node":
                 return new Node(name, <any>undefined, { urn })
+            case "consul:index/peering:Peering":
+                return new Peering(name, <any>undefined, { urn })
+            case "consul:index/peeringToken:PeeringToken":
+                return new PeeringToken(name, <any>undefined, { urn })
             case "consul:index/preparedQuery:PreparedQuery":
                 return new PreparedQuery(name, <any>undefined, { urn })
             case "consul:index/service:Service":
@@ -165,6 +176,8 @@ pulumi.runtime.registerResourceModule("consul", "index/namespacePolicyAttachment
 pulumi.runtime.registerResourceModule("consul", "index/namespaceRoleAttachment", _module)
 pulumi.runtime.registerResourceModule("consul", "index/networkArea", _module)
 pulumi.runtime.registerResourceModule("consul", "index/node", _module)
+pulumi.runtime.registerResourceModule("consul", "index/peering", _module)
+pulumi.runtime.registerResourceModule("consul", "index/peeringToken", _module)
 pulumi.runtime.registerResourceModule("consul", "index/preparedQuery", _module)
 pulumi.runtime.registerResourceModule("consul", "index/service", _module)
 

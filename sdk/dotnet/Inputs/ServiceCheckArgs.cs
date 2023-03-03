@@ -85,7 +85,8 @@ namespace Pulumi.Consul.Inputs
         public Input<string>? Tcp { get; set; }
 
         /// <summary>
-        /// The timeout value for HTTP checks.
+        /// Specifies a timeout for outgoing connections in
+        /// the case of a HTTP or TCP check.
         /// </summary>
         [Input("timeout", required: true)]
         public Input<string> Timeout { get; set; } = null!;

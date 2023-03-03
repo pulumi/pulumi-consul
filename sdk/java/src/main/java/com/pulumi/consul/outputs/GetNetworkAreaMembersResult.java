@@ -28,6 +28,14 @@ public final class GetNetworkAreaMembersResult {
      * 
      */
     private List<GetNetworkAreaMembersMember> members;
+    /**
+     * @deprecated
+     * The token argument has been deprecated and will be removed in a future release.
+     * Please use the token argument in the provider configuration
+     * 
+     */
+    @Deprecated /* The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration */
     private @Nullable String token;
     /**
      * @return The UUID of the Network Area being queried.
@@ -57,6 +65,14 @@ public final class GetNetworkAreaMembersResult {
     public List<GetNetworkAreaMembersMember> members() {
         return this.members;
     }
+    /**
+     * @deprecated
+     * The token argument has been deprecated and will be removed in a future release.
+     * Please use the token argument in the provider configuration
+     * 
+     */
+    @Deprecated /* The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration */
     public Optional<String> token() {
         return Optional.ofNullable(this.token);
     }

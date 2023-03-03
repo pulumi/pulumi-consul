@@ -40,6 +40,12 @@ class GetKeysResult:
         pulumi.set(__self__, "partition", partition)
         if token and not isinstance(token, str):
             raise TypeError("Expected argument 'token' to be a str")
+        if token is not None:
+            warnings.warn("""The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration""", DeprecationWarning)
+            pulumi.log.warn("""token is deprecated: The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration""")
+
         pulumi.set(__self__, "token", token)
         if var and not isinstance(var, dict):
             raise TypeError("Expected argument 'var' to be a dict")

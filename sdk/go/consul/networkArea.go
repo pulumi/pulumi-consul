@@ -64,6 +64,9 @@ type NetworkArea struct {
 	RetryJoins pulumi.StringArrayOutput `pulumi:"retryJoins"`
 	// The ACL token to use. This overrides the
 	// token that the agent provides by default.
+	//
+	// Deprecated: The token argument has been deprecated and will be removed in a future release.
+	// Please use the token argument in the provider configuration
 	Token pulumi.StringPtrOutput `pulumi:"token"`
 	// Specifies whether gossip over this area should be
 	// encrypted with TLS if possible. Defaults to `false`.
@@ -113,6 +116,9 @@ type networkAreaState struct {
 	RetryJoins []string `pulumi:"retryJoins"`
 	// The ACL token to use. This overrides the
 	// token that the agent provides by default.
+	//
+	// Deprecated: The token argument has been deprecated and will be removed in a future release.
+	// Please use the token argument in the provider configuration
 	Token *string `pulumi:"token"`
 	// Specifies whether gossip over this area should be
 	// encrypted with TLS if possible. Defaults to `false`.
@@ -131,6 +137,9 @@ type NetworkAreaState struct {
 	RetryJoins pulumi.StringArrayInput
 	// The ACL token to use. This overrides the
 	// token that the agent provides by default.
+	//
+	// Deprecated: The token argument has been deprecated and will be removed in a future release.
+	// Please use the token argument in the provider configuration
 	Token pulumi.StringPtrInput
 	// Specifies whether gossip over this area should be
 	// encrypted with TLS if possible. Defaults to `false`.
@@ -153,6 +162,9 @@ type networkAreaArgs struct {
 	RetryJoins []string `pulumi:"retryJoins"`
 	// The ACL token to use. This overrides the
 	// token that the agent provides by default.
+	//
+	// Deprecated: The token argument has been deprecated and will be removed in a future release.
+	// Please use the token argument in the provider configuration
 	Token *string `pulumi:"token"`
 	// Specifies whether gossip over this area should be
 	// encrypted with TLS if possible. Defaults to `false`.
@@ -172,6 +184,9 @@ type NetworkAreaArgs struct {
 	RetryJoins pulumi.StringArrayInput
 	// The ACL token to use. This overrides the
 	// token that the agent provides by default.
+	//
+	// Deprecated: The token argument has been deprecated and will be removed in a future release.
+	// Please use the token argument in the provider configuration
 	Token pulumi.StringPtrInput
 	// Specifies whether gossip over this area should be
 	// encrypted with TLS if possible. Defaults to `false`.

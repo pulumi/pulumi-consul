@@ -18,6 +18,14 @@ import * as utilities from "./utilities";
  *     address: "192.168.10.10",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * The `consul_node` resource can be imported
+ *
+ * ```sh
+ *  $ pulumi import consul:index/node:Node example node-name
+ * ```
  */
 export class Node extends pulumi.CustomResource {
     /**
@@ -67,6 +75,10 @@ export class Node extends pulumi.CustomResource {
      * The partition the node is associated with.
      */
     public readonly partition!: pulumi.Output<string | undefined>;
+    /**
+     * @deprecated The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration
+     */
     public readonly token!: pulumi.Output<string | undefined>;
 
     /**
@@ -129,6 +141,10 @@ export interface NodeState {
      * The partition the node is associated with.
      */
     partition?: pulumi.Input<string>;
+    /**
+     * @deprecated The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration
+     */
     token?: pulumi.Input<string>;
 }
 
@@ -156,5 +172,9 @@ export interface NodeArgs {
      * The partition the node is associated with.
      */
     partition?: pulumi.Input<string>;
+    /**
+     * @deprecated The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration
+     */
     token?: pulumi.Input<string>;
 }

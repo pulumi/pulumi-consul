@@ -35,7 +35,13 @@ public final class GetNetworkAreaMembersPlainArgs extends com.pulumi.resources.I
      * The ACL token to use. This overrides the
      * token that the agent provides by default.
      * 
+     * @deprecated
+     * The token argument has been deprecated and will be removed in a future release.
+     * Please use the token argument in the provider configuration
+     * 
      */
+    @Deprecated /* The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration */
     @Import(name="token")
     private @Nullable String token;
 
@@ -43,7 +49,13 @@ public final class GetNetworkAreaMembersPlainArgs extends com.pulumi.resources.I
      * @return The ACL token to use. This overrides the
      * token that the agent provides by default.
      * 
+     * @deprecated
+     * The token argument has been deprecated and will be removed in a future release.
+     * Please use the token argument in the provider configuration
+     * 
      */
+    @Deprecated /* The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration */
     public Optional<String> token() {
         return Optional.ofNullable(this.token);
     }
@@ -107,7 +119,13 @@ public final class GetNetworkAreaMembersPlainArgs extends com.pulumi.resources.I
          * 
          * @return builder
          * 
+         * @deprecated
+         * The token argument has been deprecated and will be removed in a future release.
+         * Please use the token argument in the provider configuration
+         * 
          */
+        @Deprecated /* The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration */
         public Builder token(@Nullable String token) {
             $.token = token;
             return this;

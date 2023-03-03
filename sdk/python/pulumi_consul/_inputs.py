@@ -632,7 +632,8 @@ class ServiceCheckArgs:
         :param pulumi.Input[str] interval: The interval to wait between each health-check
                invocation.
         :param pulumi.Input[str] name: The name of the health-check.
-        :param pulumi.Input[str] timeout: The timeout value for HTTP checks.
+        :param pulumi.Input[str] timeout: Specifies a timeout for outgoing connections in
+               the case of a HTTP or TCP check.
         :param pulumi.Input[str] deregister_critical_service_after: The time after which
                the service is automatically deregistered when in the `critical` state.
                Defaults to `30s`.
@@ -710,7 +711,8 @@ class ServiceCheckArgs:
     @pulumi.getter
     def timeout(self) -> pulumi.Input[str]:
         """
-        The timeout value for HTTP checks.
+        Specifies a timeout for outgoing connections in
+        the case of a HTTP or TCP check.
         """
         return pulumi.get(self, "timeout")
 

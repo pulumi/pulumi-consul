@@ -319,49 +319,6 @@ export interface GetNodesQueryOption {
     waitTime?: string;
 }
 
-export interface GetServiceQueryOptionArgs {
-    /**
-     * When `true`, the default, allow responses from
-     * Consul servers that are followers.
-     */
-    allowStale?: pulumi.Input<boolean>;
-    /**
-     * The Consul datacenter to query.  Defaults to the
-     * same value found in `queryOptions` parameter specified below, or if that is
-     * empty, the `datacenter` value found in the Consul agent that this provider is
-     * configured to talk to.
-     */
-    datacenter?: pulumi.Input<string>;
-    /**
-     * The namespace to lookup the service.
-     */
-    namespace?: pulumi.Input<string>;
-    near?: pulumi.Input<string>;
-    nodeMeta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    partition?: pulumi.Input<string>;
-    /**
-     * When `true` force the client to perform a
-     * read on at least quorum servers and verify the result is the same.  Defaults
-     * to `false`.
-     */
-    requireConsistent?: pulumi.Input<boolean>;
-    /**
-     * Specify the Consul ACL token to use when performing the
-     * request.  This defaults to the same API token configured by the `consul`
-     * provider but may be overridden if necessary.
-     */
-    token?: pulumi.Input<string>;
-    /**
-     * Index number used to enable blocking queries.
-     */
-    waitIndex?: pulumi.Input<number>;
-    /**
-     * Max time the client should wait for a blocking query
-     * to return.
-     */
-    waitTime?: pulumi.Input<string>;
-}
-
 export interface GetServiceQueryOption {
     /**
      * When `true`, the default, allow responses from
@@ -403,6 +360,49 @@ export interface GetServiceQueryOption {
      * to return.
      */
     waitTime?: string;
+}
+
+export interface GetServiceQueryOptionArgs {
+    /**
+     * When `true`, the default, allow responses from
+     * Consul servers that are followers.
+     */
+    allowStale?: pulumi.Input<boolean>;
+    /**
+     * The Consul datacenter to query.  Defaults to the
+     * same value found in `queryOptions` parameter specified below, or if that is
+     * empty, the `datacenter` value found in the Consul agent that this provider is
+     * configured to talk to.
+     */
+    datacenter?: pulumi.Input<string>;
+    /**
+     * The namespace to lookup the service.
+     */
+    namespace?: pulumi.Input<string>;
+    near?: pulumi.Input<string>;
+    nodeMeta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    partition?: pulumi.Input<string>;
+    /**
+     * When `true` force the client to perform a
+     * read on at least quorum servers and verify the result is the same.  Defaults
+     * to `false`.
+     */
+    requireConsistent?: pulumi.Input<boolean>;
+    /**
+     * Specify the Consul ACL token to use when performing the
+     * request.  This defaults to the same API token configured by the `consul`
+     * provider but may be overridden if necessary.
+     */
+    token?: pulumi.Input<string>;
+    /**
+     * Index number used to enable blocking queries.
+     */
+    waitIndex?: pulumi.Input<number>;
+    /**
+     * Max time the client should wait for a blocking query
+     * to return.
+     */
+    waitTime?: pulumi.Input<string>;
 }
 
 export interface GetServicesQueryOptionArgs {
@@ -621,7 +621,8 @@ export interface ServiceCheck {
      */
     tcp?: pulumi.Input<string>;
     /**
-     * The timeout value for HTTP checks.
+     * Specifies a timeout for outgoing connections in
+     * the case of a HTTP or TCP check.
      */
     timeout: pulumi.Input<string>;
     /**

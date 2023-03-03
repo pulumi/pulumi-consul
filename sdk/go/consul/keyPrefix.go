@@ -87,6 +87,9 @@ type KeyPrefix struct {
 	Subkeys pulumi.StringMapOutput `pulumi:"subkeys"`
 	// The ACL token to use. This overrides the
 	// token that the agent provides by default.
+	//
+	// Deprecated: The token argument has been deprecated and will be removed in a future release.
+	// Please use the token argument in the provider configuration
 	Token pulumi.StringPtrOutput `pulumi:"token"`
 }
 
@@ -143,6 +146,9 @@ type keyPrefixState struct {
 	Subkeys map[string]string `pulumi:"subkeys"`
 	// The ACL token to use. This overrides the
 	// token that the agent provides by default.
+	//
+	// Deprecated: The token argument has been deprecated and will be removed in a future release.
+	// Please use the token argument in the provider configuration
 	Token *string `pulumi:"token"`
 }
 
@@ -168,6 +174,9 @@ type KeyPrefixState struct {
 	Subkeys pulumi.StringMapInput
 	// The ACL token to use. This overrides the
 	// token that the agent provides by default.
+	//
+	// Deprecated: The token argument has been deprecated and will be removed in a future release.
+	// Please use the token argument in the provider configuration
 	Token pulumi.StringPtrInput
 }
 
@@ -197,6 +206,9 @@ type keyPrefixArgs struct {
 	Subkeys map[string]string `pulumi:"subkeys"`
 	// The ACL token to use. This overrides the
 	// token that the agent provides by default.
+	//
+	// Deprecated: The token argument has been deprecated and will be removed in a future release.
+	// Please use the token argument in the provider configuration
 	Token *string `pulumi:"token"`
 }
 
@@ -223,6 +235,9 @@ type KeyPrefixArgs struct {
 	Subkeys pulumi.StringMapInput
 	// The ACL token to use. This overrides the
 	// token that the agent provides by default.
+	//
+	// Deprecated: The token argument has been deprecated and will be removed in a future release.
+	// Please use the token argument in the provider configuration
 	Token pulumi.StringPtrInput
 }
 

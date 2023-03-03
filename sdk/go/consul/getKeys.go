@@ -76,6 +76,9 @@ type LookupKeysArgs struct {
 	Partition *string `pulumi:"partition"`
 	// The ACL token to use. This overrides the
 	// token that the agent provides by default.
+	//
+	// Deprecated: The token argument has been deprecated and will be removed in a future release.
+	// Please use the token argument in the provider configuration
 	Token *string `pulumi:"token"`
 }
 
@@ -86,12 +89,14 @@ type LookupKeysResult struct {
 	//   has the value of the key.
 	Datacenter string `pulumi:"datacenter"`
 	// The provider-assigned unique ID for this managed resource.
-	Id        string            `pulumi:"id"`
-	Keys      []GetKeysKey      `pulumi:"keys"`
-	Namespace *string           `pulumi:"namespace"`
-	Partition *string           `pulumi:"partition"`
-	Token     *string           `pulumi:"token"`
-	Var       map[string]string `pulumi:"var"`
+	Id        string       `pulumi:"id"`
+	Keys      []GetKeysKey `pulumi:"keys"`
+	Namespace *string      `pulumi:"namespace"`
+	Partition *string      `pulumi:"partition"`
+	// Deprecated: The token argument has been deprecated and will be removed in a future release.
+	// Please use the token argument in the provider configuration
+	Token *string           `pulumi:"token"`
+	Var   map[string]string `pulumi:"var"`
 }
 
 func LookupKeysOutput(ctx *pulumi.Context, args LookupKeysOutputArgs, opts ...pulumi.InvokeOption) LookupKeysResultOutput {
@@ -121,6 +126,9 @@ type LookupKeysOutputArgs struct {
 	Partition pulumi.StringPtrInput `pulumi:"partition"`
 	// The ACL token to use. This overrides the
 	// token that the agent provides by default.
+	//
+	// Deprecated: The token argument has been deprecated and will be removed in a future release.
+	// Please use the token argument in the provider configuration
 	Token pulumi.StringPtrInput `pulumi:"token"`
 }
 
@@ -167,6 +175,8 @@ func (o LookupKeysResultOutput) Partition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupKeysResult) *string { return v.Partition }).(pulumi.StringPtrOutput)
 }
 
+// Deprecated: The token argument has been deprecated and will be removed in a future release.
+// Please use the token argument in the provider configuration
 func (o LookupKeysResultOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupKeysResult) *string { return v.Token }).(pulumi.StringPtrOutput)
 }

@@ -42,6 +42,7 @@ __all__ = [
     'GetNetworkAreaMembersMemberResult',
     'GetNodesNodeResult',
     'GetNodesQueryOptionResult',
+    'GetPeeringsPeerResult',
     'GetServiceHealthResultResult',
     'GetServiceHealthResultCheckResult',
     'GetServiceHealthResultNodeResult',
@@ -627,7 +628,8 @@ class ServiceCheck(dict):
         :param str interval: The interval to wait between each health-check
                invocation.
         :param str name: The name of the health-check.
-        :param str timeout: The timeout value for HTTP checks.
+        :param str timeout: Specifies a timeout for outgoing connections in
+               the case of a HTTP or TCP check.
         :param str deregister_critical_service_after: The time after which
                the service is automatically deregistered when in the `critical` state.
                Defaults to `30s`.
@@ -693,7 +695,8 @@ class ServiceCheck(dict):
     @pulumi.getter
     def timeout(self) -> str:
         """
-        The timeout value for HTTP checks.
+        Specifies a timeout for outgoing connections in
+        the case of a HTTP or TCP check.
         """
         return pulumi.get(self, "timeout")
 
@@ -1903,6 +1906,81 @@ class GetNodesQueryOptionResult(dict):
         to return.
         """
         return pulumi.get(self, "wait_time")
+
+
+@pulumi.output_type
+class GetPeeringsPeerResult(dict):
+    def __init__(__self__, *,
+                 deleted_at: str,
+                 id: str,
+                 meta: Mapping[str, str],
+                 name: str,
+                 partition: str,
+                 peer_ca_pems: Sequence[str],
+                 peer_id: str,
+                 peer_server_addresses: Sequence[str],
+                 peer_server_name: str,
+                 state: str):
+        pulumi.set(__self__, "deleted_at", deleted_at)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "meta", meta)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "partition", partition)
+        pulumi.set(__self__, "peer_ca_pems", peer_ca_pems)
+        pulumi.set(__self__, "peer_id", peer_id)
+        pulumi.set(__self__, "peer_server_addresses", peer_server_addresses)
+        pulumi.set(__self__, "peer_server_name", peer_server_name)
+        pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter(name="deletedAt")
+    def deleted_at(self) -> str:
+        return pulumi.get(self, "deleted_at")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def meta(self) -> Mapping[str, str]:
+        return pulumi.get(self, "meta")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def partition(self) -> str:
+        return pulumi.get(self, "partition")
+
+    @property
+    @pulumi.getter(name="peerCaPems")
+    def peer_ca_pems(self) -> Sequence[str]:
+        return pulumi.get(self, "peer_ca_pems")
+
+    @property
+    @pulumi.getter(name="peerId")
+    def peer_id(self) -> str:
+        return pulumi.get(self, "peer_id")
+
+    @property
+    @pulumi.getter(name="peerServerAddresses")
+    def peer_server_addresses(self) -> Sequence[str]:
+        return pulumi.get(self, "peer_server_addresses")
+
+    @property
+    @pulumi.getter(name="peerServerName")
+    def peer_server_name(self) -> str:
+        return pulumi.get(self, "peer_server_name")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        return pulumi.get(self, "state")
 
 
 @pulumi.output_type

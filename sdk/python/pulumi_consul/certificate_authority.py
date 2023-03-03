@@ -100,9 +100,10 @@ class CertificateAuthority(pulumi.CustomResource):
         The `CertificateAuthority` resource can be used to manage the configuration of
         the Certificate Authority used by [Consul Connect](https://www.consul.io/docs/connect/ca).
 
-        ## Example Usage
+        > **Note:** The keys in the `config` argument must be using Camel case.
 
-        Use the built-in CA with specific TTL:
+        ## Example Usage
+        ### Using the built-in CA with specific TTL
 
         ```python
         import pulumi
@@ -116,8 +117,7 @@ class CertificateAuthority(pulumi.CustomResource):
             },
             connect_provider="consul")
         ```
-
-        Use Vault to manage and sign certificates:
+        ### Using Vault to manage and sign certificates
 
         ```python
         import pulumi
@@ -125,15 +125,14 @@ class CertificateAuthority(pulumi.CustomResource):
 
         connect = consul.CertificateAuthority("connect",
             config={
-                "address": "http://localhost:8200",
-                "intermediate_pki_path": "connect-intermediate",
-                "root_pki_path": "connect-root",
-                "token": "...",
+                "Address": "http://localhost:8200",
+                "IntermediatePKIPath": "connect-intermediate",
+                "RootPKIPath": "connect-root",
+                "Token": "...",
             },
             connect_provider="vault")
         ```
-
-        Use the [AWS Certificate Manager Private Certificate Authority](https://aws.amazon.com/certificate-manager/private-certificate-authority/):
+        ### Using the [AWS Certificate Manager Private Certificate Authority](https://aws.amazon.com/certificate-manager/private-certificate-authority/)
 
         ```python
         import pulumi
@@ -141,7 +140,7 @@ class CertificateAuthority(pulumi.CustomResource):
 
         connect = consul.CertificateAuthority("connect",
             config={
-                "existing_arn": "arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-123456789012",
+                "ExistingARN": "arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-123456789012",
             },
             connect_provider="aws-pca")
         ```
@@ -169,9 +168,10 @@ class CertificateAuthority(pulumi.CustomResource):
         The `CertificateAuthority` resource can be used to manage the configuration of
         the Certificate Authority used by [Consul Connect](https://www.consul.io/docs/connect/ca).
 
-        ## Example Usage
+        > **Note:** The keys in the `config` argument must be using Camel case.
 
-        Use the built-in CA with specific TTL:
+        ## Example Usage
+        ### Using the built-in CA with specific TTL
 
         ```python
         import pulumi
@@ -185,8 +185,7 @@ class CertificateAuthority(pulumi.CustomResource):
             },
             connect_provider="consul")
         ```
-
-        Use Vault to manage and sign certificates:
+        ### Using Vault to manage and sign certificates
 
         ```python
         import pulumi
@@ -194,15 +193,14 @@ class CertificateAuthority(pulumi.CustomResource):
 
         connect = consul.CertificateAuthority("connect",
             config={
-                "address": "http://localhost:8200",
-                "intermediate_pki_path": "connect-intermediate",
-                "root_pki_path": "connect-root",
-                "token": "...",
+                "Address": "http://localhost:8200",
+                "IntermediatePKIPath": "connect-intermediate",
+                "RootPKIPath": "connect-root",
+                "Token": "...",
             },
             connect_provider="vault")
         ```
-
-        Use the [AWS Certificate Manager Private Certificate Authority](https://aws.amazon.com/certificate-manager/private-certificate-authority/):
+        ### Using the [AWS Certificate Manager Private Certificate Authority](https://aws.amazon.com/certificate-manager/private-certificate-authority/)
 
         ```python
         import pulumi
@@ -210,7 +208,7 @@ class CertificateAuthority(pulumi.CustomResource):
 
         connect = consul.CertificateAuthority("connect",
             config={
-                "existing_arn": "arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-123456789012",
+                "ExistingARN": "arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-123456789012",
             },
             connect_provider="aws-pca")
         ```

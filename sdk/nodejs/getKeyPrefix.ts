@@ -95,6 +95,9 @@ export interface GetKeyPrefixArgs {
     /**
      * The ACL token to use. This overrides the
      * token that the agent provides by default.
+     *
+     * @deprecated The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration
      */
     token?: string;
 }
@@ -125,6 +128,10 @@ export interface GetKeyPrefixResult {
      * block is provided.
      */
     readonly subkeys: {[key: string]: string};
+    /**
+     * @deprecated The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration
+     */
     readonly token?: string;
     readonly var: {[key: string]: string};
 }
@@ -164,6 +171,9 @@ export interface GetKeyPrefixOutputArgs {
     /**
      * The ACL token to use. This overrides the
      * token that the agent provides by default.
+     *
+     * @deprecated The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration
      */
     token?: pulumi.Input<string>;
 }

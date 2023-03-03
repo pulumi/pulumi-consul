@@ -30,6 +30,9 @@ type GetNetworkAreaMembersArgs struct {
 	Datacenter *string `pulumi:"datacenter"`
 	// The ACL token to use. This overrides the
 	// token that the agent provides by default.
+	//
+	// Deprecated: The token argument has been deprecated and will be removed in a future release.
+	// Please use the token argument in the provider configuration
 	Token *string `pulumi:"token"`
 	// The UUID of the area to list.
 	Uuid string `pulumi:"uuid"`
@@ -43,7 +46,9 @@ type GetNetworkAreaMembersResult struct {
 	Id string `pulumi:"id"`
 	// The list of Consul servers in this network area
 	Members []GetNetworkAreaMembersMember `pulumi:"members"`
-	Token   *string                       `pulumi:"token"`
+	// Deprecated: The token argument has been deprecated and will be removed in a future release.
+	// Please use the token argument in the provider configuration
+	Token *string `pulumi:"token"`
 	// The UUID of the Network Area being queried.
 	Uuid string `pulumi:"uuid"`
 }
@@ -68,6 +73,9 @@ type GetNetworkAreaMembersOutputArgs struct {
 	Datacenter pulumi.StringPtrInput `pulumi:"datacenter"`
 	// The ACL token to use. This overrides the
 	// token that the agent provides by default.
+	//
+	// Deprecated: The token argument has been deprecated and will be removed in a future release.
+	// Please use the token argument in the provider configuration
 	Token pulumi.StringPtrInput `pulumi:"token"`
 	// The UUID of the area to list.
 	Uuid pulumi.StringInput `pulumi:"uuid"`
@@ -107,6 +115,8 @@ func (o GetNetworkAreaMembersResultOutput) Members() GetNetworkAreaMembersMember
 	return o.ApplyT(func(v GetNetworkAreaMembersResult) []GetNetworkAreaMembersMember { return v.Members }).(GetNetworkAreaMembersMemberArrayOutput)
 }
 
+// Deprecated: The token argument has been deprecated and will be removed in a future release.
+// Please use the token argument in the provider configuration
 func (o GetNetworkAreaMembersResultOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNetworkAreaMembersResult) *string { return v.Token }).(pulumi.StringPtrOutput)
 }

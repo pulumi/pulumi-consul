@@ -72,6 +72,9 @@ export class Keys extends pulumi.CustomResource {
     /**
      * The ACL token to use. This overrides the
      * token that the agent provides by default.
+     *
+     * @deprecated The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration
      */
     public readonly token!: pulumi.Output<string | undefined>;
     public /*out*/ readonly var!: pulumi.Output<{[key: string]: string}>;
@@ -134,6 +137,9 @@ export interface KeysState {
     /**
      * The ACL token to use. This overrides the
      * token that the agent provides by default.
+     *
+     * @deprecated The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration
      */
     token?: pulumi.Input<string>;
     var?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -164,6 +170,9 @@ export interface KeysArgs {
     /**
      * The ACL token to use. This overrides the
      * token that the agent provides by default.
+     *
+     * @deprecated The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration
      */
     token?: pulumi.Input<string>;
 }

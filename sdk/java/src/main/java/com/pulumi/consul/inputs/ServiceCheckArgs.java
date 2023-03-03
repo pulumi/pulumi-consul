@@ -181,14 +181,16 @@ public final class ServiceCheckArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The timeout value for HTTP checks.
+     * Specifies a timeout for outgoing connections in
+     * the case of a HTTP or TCP check.
      * 
      */
     @Import(name="timeout", required=true)
     private Output<String> timeout;
 
     /**
-     * @return The timeout value for HTTP checks.
+     * @return Specifies a timeout for outgoing connections in
+     * the case of a HTTP or TCP check.
      * 
      */
     public Output<String> timeout() {
@@ -481,7 +483,8 @@ public final class ServiceCheckArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param timeout The timeout value for HTTP checks.
+         * @param timeout Specifies a timeout for outgoing connections in
+         * the case of a HTTP or TCP check.
          * 
          * @return builder
          * 
@@ -492,7 +495,8 @@ public final class ServiceCheckArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param timeout The timeout value for HTTP checks.
+         * @param timeout Specifies a timeout for outgoing connections in
+         * the case of a HTTP or TCP check.
          * 
          * @return builder
          * 

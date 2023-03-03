@@ -29,12 +29,15 @@ from .get_autopilot_health import *
 from .get_catalog_nodes import *
 from .get_catalog_service import *
 from .get_catalog_services import *
+from .get_config_entry import *
 from .get_datacenters import *
 from .get_key_prefix import *
 from .get_keys import *
 from .get_network_area_members import *
 from .get_network_segments import *
 from .get_nodes import *
+from .get_peering import *
+from .get_peerings import *
 from .get_service import *
 from .get_service_health import *
 from .get_services import *
@@ -47,6 +50,8 @@ from .namespace_policy_attachment import *
 from .namespace_role_attachment import *
 from .network_area import *
 from .node import *
+from .peering import *
+from .peering_token import *
 from .prepared_query import *
 from .provider import *
 from .service import *
@@ -237,6 +242,22 @@ _utilities.register(
   "fqn": "pulumi_consul",
   "classes": {
    "consul:index/node:Node": "Node"
+  }
+ },
+ {
+  "pkg": "consul",
+  "mod": "index/peering",
+  "fqn": "pulumi_consul",
+  "classes": {
+   "consul:index/peering:Peering": "Peering"
+  }
+ },
+ {
+  "pkg": "consul",
+  "mod": "index/peeringToken",
+  "fqn": "pulumi_consul",
+  "classes": {
+   "consul:index/peeringToken:PeeringToken": "PeeringToken"
   }
  },
  {

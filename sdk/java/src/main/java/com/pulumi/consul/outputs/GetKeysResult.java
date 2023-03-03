@@ -29,6 +29,14 @@ public final class GetKeysResult {
     private @Nullable List<GetKeysKey> keys;
     private @Nullable String namespace;
     private @Nullable String partition;
+    /**
+     * @deprecated
+     * The token argument has been deprecated and will be removed in a future release.
+     * Please use the token argument in the provider configuration
+     * 
+     */
+    @Deprecated /* The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration */
     private @Nullable String token;
     private Map<String,String> var_;
 
@@ -58,6 +66,14 @@ public final class GetKeysResult {
     public Optional<String> partition() {
         return Optional.ofNullable(this.partition);
     }
+    /**
+     * @deprecated
+     * The token argument has been deprecated and will be removed in a future release.
+     * Please use the token argument in the provider configuration
+     * 
+     */
+    @Deprecated /* The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration */
     public Optional<String> token() {
         return Optional.ofNullable(this.token);
     }

@@ -82,6 +82,9 @@ type PreparedQuery struct {
 	Template PreparedQueryTemplatePtrOutput `pulumi:"template"`
 	// The ACL token to use when saving the prepared query.
 	// This overrides the token that the agent provides by default.
+	//
+	// Deprecated: The token argument has been deprecated and will be removed in a future release.
+	// Please use the token argument in the provider configuration
 	Token pulumi.StringPtrOutput `pulumi:"token"`
 }
 
@@ -176,6 +179,9 @@ type preparedQueryState struct {
 	Template *PreparedQueryTemplate `pulumi:"template"`
 	// The ACL token to use when saving the prepared query.
 	// This overrides the token that the agent provides by default.
+	//
+	// Deprecated: The token argument has been deprecated and will be removed in a future release.
+	// Please use the token argument in the provider configuration
 	Token *string `pulumi:"token"`
 }
 
@@ -239,6 +245,9 @@ type PreparedQueryState struct {
 	Template PreparedQueryTemplatePtrInput
 	// The ACL token to use when saving the prepared query.
 	// This overrides the token that the agent provides by default.
+	//
+	// Deprecated: The token argument has been deprecated and will be removed in a future release.
+	// Please use the token argument in the provider configuration
 	Token pulumi.StringPtrInput
 }
 
@@ -306,6 +315,9 @@ type preparedQueryArgs struct {
 	Template *PreparedQueryTemplate `pulumi:"template"`
 	// The ACL token to use when saving the prepared query.
 	// This overrides the token that the agent provides by default.
+	//
+	// Deprecated: The token argument has been deprecated and will be removed in a future release.
+	// Please use the token argument in the provider configuration
 	Token *string `pulumi:"token"`
 }
 
@@ -370,6 +382,9 @@ type PreparedQueryArgs struct {
 	Template PreparedQueryTemplatePtrInput
 	// The ACL token to use when saving the prepared query.
 	// This overrides the token that the agent provides by default.
+	//
+	// Deprecated: The token argument has been deprecated and will be removed in a future release.
+	// Please use the token argument in the provider configuration
 	Token pulumi.StringPtrInput
 }
 

@@ -587,7 +587,7 @@
                 },
                 "timeout": {
                     "type": "string",
-                    "description": "The timeout value for HTTP checks.\n",
+                    "description": "Specifies a timeout for outgoing connections in\nthe case of a HTTP or TCP check.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1825,6 +1825,117 @@
                 }
             },
             "type": "object"
+        },
+        "consul:index/getPeeringsPeer:getPeeringsPeer": {
+            "properties": {
+                "deletedAt": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "meta": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "partition": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "peerCaPems": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "peerId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "peerServerAddresses": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "peerServerName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "state": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "deletedAt",
+                "id",
+                "meta",
+                "name",
+                "partition",
+                "peerCaPems",
+                "peerId",
+                "peerServerAddresses",
+                "peerServerName",
+                "state"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "consul:index/getServiceHealthResult:getServiceHealthResult": {
             "properties": {
@@ -3601,7 +3712,8 @@
                 },
                 "token": {
                     "type": "string",
-                    "description": "ACL token.\n"
+                    "description": "ACL token.\n",
+                    "deprecationMessage": "The token argument has been deprecated and will be removed in a future release.\nPlease use the token argument in the provider configuration"
                 }
             },
             "required": [
@@ -3631,7 +3743,8 @@
                 },
                 "token": {
                     "type": "string",
-                    "description": "ACL token.\n"
+                    "description": "ACL token.\n",
+                    "deprecationMessage": "The token argument has been deprecated and will be removed in a future release.\nPlease use the token argument in the provider configuration"
                 }
             },
             "requiredInputs": [
@@ -3662,14 +3775,15 @@
                     },
                     "token": {
                         "type": "string",
-                        "description": "ACL token.\n"
+                        "description": "ACL token.\n",
+                        "deprecationMessage": "The token argument has been deprecated and will be removed in a future release.\nPlease use the token argument in the provider configuration"
                     }
                 },
                 "type": "object"
             }
         },
         "consul:index/certificateAuthority:CertificateAuthority": {
-            "description": "The `consul.CertificateAuthority` resource can be used to manage the configuration of\nthe Certificate Authority used by [Consul Connect](https://www.consul.io/docs/connect/ca).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nUse the built-in CA with specific TTL:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as consul from \"@pulumi/consul\";\n\nconst connect = new consul.CertificateAuthority(\"connect\", {\n    config: {\n        IntermediateCertTTL: \"8760h\",\n        LeafCertTTL: \"24h\",\n        RotationPeriod: \"2160h\",\n    },\n    connectProvider: \"consul\",\n});\n```\n```python\nimport pulumi\nimport pulumi_consul as consul\n\nconnect = consul.CertificateAuthority(\"connect\",\n    config={\n        \"IntermediateCertTTL\": \"8760h\",\n        \"LeafCertTTL\": \"24h\",\n        \"RotationPeriod\": \"2160h\",\n    },\n    connect_provider=\"consul\")\n```\n```csharp\nusing Pulumi;\nusing Consul = Pulumi.Consul;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var connect = new Consul.CertificateAuthority(\"connect\", new Consul.CertificateAuthorityArgs\n        {\n            Config = \n            {\n                { \"IntermediateCertTTL\", \"8760h\" },\n                { \"LeafCertTTL\", \"24h\" },\n                { \"RotationPeriod\", \"2160h\" },\n            },\n            ConnectProvider = \"consul\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-consul/sdk/v3/go/consul\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := consul.NewCertificateAuthority(ctx, \"connect\", \u0026consul.CertificateAuthorityArgs{\n\t\t\tConfig: pulumi.StringMap{\n\t\t\t\t\"IntermediateCertTTL\": pulumi.String(\"8760h\"),\n\t\t\t\t\"LeafCertTTL\":         pulumi.String(\"24h\"),\n\t\t\t\t\"RotationPeriod\":      pulumi.String(\"2160h\"),\n\t\t\t},\n\t\t\tConnectProvider: pulumi.String(\"consul\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\nUse Vault to manage and sign certificates:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as consul from \"@pulumi/consul\";\n\nconst connect = new consul.CertificateAuthority(\"connect\", {\n    config: {\n        address: \"http://localhost:8200\",\n        intermediate_pki_path: \"connect-intermediate\",\n        root_pki_path: \"connect-root\",\n        token: \"...\",\n    },\n    connectProvider: \"vault\",\n});\n```\n```python\nimport pulumi\nimport pulumi_consul as consul\n\nconnect = consul.CertificateAuthority(\"connect\",\n    config={\n        \"address\": \"http://localhost:8200\",\n        \"intermediate_pki_path\": \"connect-intermediate\",\n        \"root_pki_path\": \"connect-root\",\n        \"token\": \"...\",\n    },\n    connect_provider=\"vault\")\n```\n```csharp\nusing Pulumi;\nusing Consul = Pulumi.Consul;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var connect = new Consul.CertificateAuthority(\"connect\", new Consul.CertificateAuthorityArgs\n        {\n            Config = \n            {\n                { \"address\", \"http://localhost:8200\" },\n                { \"intermediate_pki_path\", \"connect-intermediate\" },\n                { \"root_pki_path\", \"connect-root\" },\n                { \"token\", \"...\" },\n            },\n            ConnectProvider = \"vault\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-consul/sdk/v3/go/consul\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := consul.NewCertificateAuthority(ctx, \"connect\", \u0026consul.CertificateAuthorityArgs{\n\t\t\tConfig: pulumi.StringMap{\n\t\t\t\t\"address\":               pulumi.String(\"http://localhost:8200\"),\n\t\t\t\t\"intermediate_pki_path\": pulumi.String(\"connect-intermediate\"),\n\t\t\t\t\"root_pki_path\":         pulumi.String(\"connect-root\"),\n\t\t\t\t\"token\":                 pulumi.String(\"...\"),\n\t\t\t},\n\t\t\tConnectProvider: pulumi.String(\"vault\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\nUse the [AWS Certificate Manager Private Certificate Authority](https://aws.amazon.com/certificate-manager/private-certificate-authority/):\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as consul from \"@pulumi/consul\";\n\nconst connect = new consul.CertificateAuthority(\"connect\", {\n    config: {\n        existing_arn: \"arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-123456789012\",\n    },\n    connectProvider: \"aws-pca\",\n});\n```\n```python\nimport pulumi\nimport pulumi_consul as consul\n\nconnect = consul.CertificateAuthority(\"connect\",\n    config={\n        \"existing_arn\": \"arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-123456789012\",\n    },\n    connect_provider=\"aws-pca\")\n```\n```csharp\nusing Pulumi;\nusing Consul = Pulumi.Consul;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var connect = new Consul.CertificateAuthority(\"connect\", new Consul.CertificateAuthorityArgs\n        {\n            Config = \n            {\n                { \"existing_arn\", \"arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-123456789012\" },\n            },\n            ConnectProvider = \"aws-pca\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-consul/sdk/v3/go/consul\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := consul.NewCertificateAuthority(ctx, \"connect\", \u0026consul.CertificateAuthorityArgs{\n\t\t\tConfig: pulumi.StringMap{\n\t\t\t\t\"existing_arn\": pulumi.String(\"arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-123456789012\"),\n\t\t\t},\n\t\t\tConnectProvider: pulumi.String(\"aws-pca\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n`certificate_authority` can be imported\n\n```sh\n $ pulumi import consul:index/certificateAuthority:CertificateAuthority connect connect-ca\n```\n\n ",
+            "description": "The `consul.CertificateAuthority` resource can be used to manage the configuration of\nthe Certificate Authority used by [Consul Connect](https://www.consul.io/docs/connect/ca).\n\n\u003e **Note:** The keys in the `config` argument must be using Camel case.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### Using the built-in CA with specific TTL\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as consul from \"@pulumi/consul\";\n\nconst connect = new consul.CertificateAuthority(\"connect\", {\n    config: {\n        IntermediateCertTTL: \"8760h\",\n        LeafCertTTL: \"24h\",\n        RotationPeriod: \"2160h\",\n    },\n    connectProvider: \"consul\",\n});\n```\n```python\nimport pulumi\nimport pulumi_consul as consul\n\nconnect = consul.CertificateAuthority(\"connect\",\n    config={\n        \"IntermediateCertTTL\": \"8760h\",\n        \"LeafCertTTL\": \"24h\",\n        \"RotationPeriod\": \"2160h\",\n    },\n    connect_provider=\"consul\")\n```\n```csharp\nusing Pulumi;\nusing Consul = Pulumi.Consul;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var connect = new Consul.CertificateAuthority(\"connect\", new Consul.CertificateAuthorityArgs\n        {\n            Config = \n            {\n                { \"IntermediateCertTTL\", \"8760h\" },\n                { \"LeafCertTTL\", \"24h\" },\n                { \"RotationPeriod\", \"2160h\" },\n            },\n            ConnectProvider = \"consul\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-consul/sdk/v3/go/consul\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := consul.NewCertificateAuthority(ctx, \"connect\", \u0026consul.CertificateAuthorityArgs{\n\t\t\tConfig: pulumi.StringMap{\n\t\t\t\t\"IntermediateCertTTL\": pulumi.String(\"8760h\"),\n\t\t\t\t\"LeafCertTTL\":         pulumi.String(\"24h\"),\n\t\t\t\t\"RotationPeriod\":      pulumi.String(\"2160h\"),\n\t\t\t},\n\t\t\tConnectProvider: pulumi.String(\"consul\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### Using Vault to manage and sign certificates\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as consul from \"@pulumi/consul\";\n\nconst connect = new consul.CertificateAuthority(\"connect\", {\n    config: {\n        Address: \"http://localhost:8200\",\n        IntermediatePKIPath: \"connect-intermediate\",\n        RootPKIPath: \"connect-root\",\n        Token: \"...\",\n    },\n    connectProvider: \"vault\",\n});\n```\n```python\nimport pulumi\nimport pulumi_consul as consul\n\nconnect = consul.CertificateAuthority(\"connect\",\n    config={\n        \"Address\": \"http://localhost:8200\",\n        \"IntermediatePKIPath\": \"connect-intermediate\",\n        \"RootPKIPath\": \"connect-root\",\n        \"Token\": \"...\",\n    },\n    connect_provider=\"vault\")\n```\n```csharp\nusing Pulumi;\nusing Consul = Pulumi.Consul;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var connect = new Consul.CertificateAuthority(\"connect\", new Consul.CertificateAuthorityArgs\n        {\n            Config = \n            {\n                { \"Address\", \"http://localhost:8200\" },\n                { \"IntermediatePKIPath\", \"connect-intermediate\" },\n                { \"RootPKIPath\", \"connect-root\" },\n                { \"Token\", \"...\" },\n            },\n            ConnectProvider = \"vault\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-consul/sdk/v3/go/consul\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := consul.NewCertificateAuthority(ctx, \"connect\", \u0026consul.CertificateAuthorityArgs{\n\t\t\tConfig: pulumi.StringMap{\n\t\t\t\t\"Address\":             pulumi.String(\"http://localhost:8200\"),\n\t\t\t\t\"IntermediatePKIPath\": pulumi.String(\"connect-intermediate\"),\n\t\t\t\t\"RootPKIPath\":         pulumi.String(\"connect-root\"),\n\t\t\t\t\"Token\":               pulumi.String(\"...\"),\n\t\t\t},\n\t\t\tConnectProvider: pulumi.String(\"vault\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### Using the [AWS Certificate Manager Private Certificate Authority](https://aws.amazon.com/certificate-manager/private-certificate-authority/)\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as consul from \"@pulumi/consul\";\n\nconst connect = new consul.CertificateAuthority(\"connect\", {\n    config: {\n        ExistingARN: \"arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-123456789012\",\n    },\n    connectProvider: \"aws-pca\",\n});\n```\n```python\nimport pulumi\nimport pulumi_consul as consul\n\nconnect = consul.CertificateAuthority(\"connect\",\n    config={\n        \"ExistingARN\": \"arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-123456789012\",\n    },\n    connect_provider=\"aws-pca\")\n```\n```csharp\nusing Pulumi;\nusing Consul = Pulumi.Consul;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var connect = new Consul.CertificateAuthority(\"connect\", new Consul.CertificateAuthorityArgs\n        {\n            Config = \n            {\n                { \"ExistingARN\", \"arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-123456789012\" },\n            },\n            ConnectProvider = \"aws-pca\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-consul/sdk/v3/go/consul\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := consul.NewCertificateAuthority(ctx, \"connect\", \u0026consul.CertificateAuthorityArgs{\n\t\t\tConfig: pulumi.StringMap{\n\t\t\t\t\"ExistingARN\": pulumi.String(\"arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-123456789012\"),\n\t\t\t},\n\t\t\tConnectProvider: pulumi.String(\"aws-pca\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n`certificate_authority` can be imported\n\n```sh\n $ pulumi import consul:index/certificateAuthority:CertificateAuthority connect connect-ca\n```\n\n ",
             "properties": {
                 "config": {
                     "type": "object",
@@ -3723,7 +3837,7 @@
             }
         },
         "consul:index/configEntry:ConfigEntry": {
-            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as consul from \"@pulumi/consul\";\n\nconst proxyDefaults = new consul.ConfigEntry(\"proxyDefaults\", {\n    kind: \"proxy-defaults\",\n    configJson: JSON.stringify({\n        Config: {\n            local_connect_timeout_ms: 1000,\n            handshake_timeout_ms: 10000,\n        },\n    }),\n});\nconst web = new consul.ConfigEntry(\"web\", {\n    kind: \"service-defaults\",\n    configJson: JSON.stringify({\n        Protocol: \"http\",\n    }),\n});\nconst admin = new consul.ConfigEntry(\"admin\", {\n    kind: \"service-defaults\",\n    configJson: JSON.stringify({\n        Protocol: \"http\",\n    }),\n});\nconst serviceResolver = new consul.ConfigEntry(\"serviceResolver\", {\n    kind: \"service-resolver\",\n    configJson: JSON.stringify({\n        DefaultSubset: \"v1\",\n        Subsets: {\n            v1: {\n                Filter: \"Service.Meta.version == v1\",\n            },\n            v2: {\n                Filter: \"Service.Meta.version == v2\",\n            },\n        },\n    }),\n});\nconst serviceSplitter = new consul.ConfigEntry(\"serviceSplitter\", {\n    kind: \"service-splitter\",\n    configJson: JSON.stringify({\n        Splits: [\n            {\n                Weight: 90,\n                ServiceSubset: \"v1\",\n            },\n            {\n                Weight: 10,\n                ServiceSubset: \"v2\",\n            },\n        ],\n    }),\n});\nconst serviceRouter = new consul.ConfigEntry(\"serviceRouter\", {\n    kind: \"service-router\",\n    configJson: JSON.stringify({\n        Routes: [{\n            Match: {\n                HTTP: {\n                    PathPrefix: \"/admin\",\n                },\n            },\n            Destination: {\n                Service: \"admin\",\n            },\n        }],\n    }),\n});\nconst ingressGateway = new consul.ConfigEntry(\"ingressGateway\", {\n    kind: \"ingress-gateway\",\n    configJson: JSON.stringify({\n        TLS: {\n            Enabled: true,\n        },\n        Listeners: [{\n            Port: 8000,\n            Protocol: \"http\",\n            Services: [{\n                Name: \"*\",\n            }],\n        }],\n    }),\n});\nconst terminatingGateway = new consul.ConfigEntry(\"terminatingGateway\", {\n    kind: \"terminating-gateway\",\n    configJson: JSON.stringify({\n        Services: [{\n            Name: \"billing\",\n        }],\n    }),\n});\n```\n```python\nimport pulumi\nimport json\nimport pulumi_consul as consul\n\nproxy_defaults = consul.ConfigEntry(\"proxyDefaults\",\n    kind=\"proxy-defaults\",\n    config_json=json.dumps({\n        \"Config\": {\n            \"local_connect_timeout_ms\": 1000,\n            \"handshake_timeout_ms\": 10000,\n        },\n    }))\nweb = consul.ConfigEntry(\"web\",\n    kind=\"service-defaults\",\n    config_json=json.dumps({\n        \"Protocol\": \"http\",\n    }))\nadmin = consul.ConfigEntry(\"admin\",\n    kind=\"service-defaults\",\n    config_json=json.dumps({\n        \"Protocol\": \"http\",\n    }))\nservice_resolver = consul.ConfigEntry(\"serviceResolver\",\n    kind=\"service-resolver\",\n    config_json=json.dumps({\n        \"DefaultSubset\": \"v1\",\n        \"Subsets\": {\n            \"v1\": {\n                \"Filter\": \"Service.Meta.version == v1\",\n            },\n            \"v2\": {\n                \"Filter\": \"Service.Meta.version == v2\",\n            },\n        },\n    }))\nservice_splitter = consul.ConfigEntry(\"serviceSplitter\",\n    kind=\"service-splitter\",\n    config_json=json.dumps({\n        \"Splits\": [\n            {\n                \"Weight\": 90,\n                \"ServiceSubset\": \"v1\",\n            },\n            {\n                \"Weight\": 10,\n                \"ServiceSubset\": \"v2\",\n            },\n        ],\n    }))\nservice_router = consul.ConfigEntry(\"serviceRouter\",\n    kind=\"service-router\",\n    config_json=json.dumps({\n        \"Routes\": [{\n            \"Match\": {\n                \"HTTP\": {\n                    \"PathPrefix\": \"/admin\",\n                },\n            },\n            \"Destination\": {\n                \"Service\": \"admin\",\n            },\n        }],\n    }))\ningress_gateway = consul.ConfigEntry(\"ingressGateway\",\n    kind=\"ingress-gateway\",\n    config_json=json.dumps({\n        \"TLS\": {\n            \"Enabled\": True,\n        },\n        \"Listeners\": [{\n            \"Port\": 8000,\n            \"Protocol\": \"http\",\n            \"Services\": [{\n                \"Name\": \"*\",\n            }],\n        }],\n    }))\nterminating_gateway = consul.ConfigEntry(\"terminatingGateway\",\n    kind=\"terminating-gateway\",\n    config_json=json.dumps({\n        \"Services\": [{\n            \"Name\": \"billing\",\n        }],\n    }))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Text.Json;\nusing Pulumi;\nusing Consul = Pulumi.Consul;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var proxyDefaults = new Consul.ConfigEntry(\"proxyDefaults\", new Consul.ConfigEntryArgs\n        {\n            Kind = \"proxy-defaults\",\n            ConfigJson = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n            {\n                { \"Config\", new Dictionary\u003cstring, object?\u003e\n                {\n                    { \"local_connect_timeout_ms\", 1000 },\n                    { \"handshake_timeout_ms\", 10000 },\n                } },\n            }),\n        });\n        var web = new Consul.ConfigEntry(\"web\", new Consul.ConfigEntryArgs\n        {\n            Kind = \"service-defaults\",\n            ConfigJson = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n            {\n                { \"Protocol\", \"http\" },\n            }),\n        });\n        var admin = new Consul.ConfigEntry(\"admin\", new Consul.ConfigEntryArgs\n        {\n            Kind = \"service-defaults\",\n            ConfigJson = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n            {\n                { \"Protocol\", \"http\" },\n            }),\n        });\n        var serviceResolver = new Consul.ConfigEntry(\"serviceResolver\", new Consul.ConfigEntryArgs\n        {\n            Kind = \"service-resolver\",\n            ConfigJson = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n            {\n                { \"DefaultSubset\", \"v1\" },\n                { \"Subsets\", new Dictionary\u003cstring, object?\u003e\n                {\n                    { \"v1\", new Dictionary\u003cstring, object?\u003e\n                    {\n                        { \"Filter\", \"Service.Meta.version == v1\" },\n                    } },\n                    { \"v2\", new Dictionary\u003cstring, object?\u003e\n                    {\n                        { \"Filter\", \"Service.Meta.version == v2\" },\n                    } },\n                } },\n            }),\n        });\n        var serviceSplitter = new Consul.ConfigEntry(\"serviceSplitter\", new Consul.ConfigEntryArgs\n        {\n            Kind = \"service-splitter\",\n            ConfigJson = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n            {\n                { \"Splits\", new[]\n                    {\n                        new Dictionary\u003cstring, object?\u003e\n                        {\n                            { \"Weight\", 90 },\n                            { \"ServiceSubset\", \"v1\" },\n                        },\n                        new Dictionary\u003cstring, object?\u003e\n                        {\n                            { \"Weight\", 10 },\n                            { \"ServiceSubset\", \"v2\" },\n                        },\n                    }\n                 },\n            }),\n        });\n        var serviceRouter = new Consul.ConfigEntry(\"serviceRouter\", new Consul.ConfigEntryArgs\n        {\n            Kind = \"service-router\",\n            ConfigJson = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n            {\n                { \"Routes\", new[]\n                    {\n                        new Dictionary\u003cstring, object?\u003e\n                        {\n                            { \"Match\", new Dictionary\u003cstring, object?\u003e\n                            {\n                                { \"HTTP\", new Dictionary\u003cstring, object?\u003e\n                                {\n                                    { \"PathPrefix\", \"/admin\" },\n                                } },\n                            } },\n                            { \"Destination\", new Dictionary\u003cstring, object?\u003e\n                            {\n                                { \"Service\", \"admin\" },\n                            } },\n                        },\n                    }\n                 },\n            }),\n        });\n        var ingressGateway = new Consul.ConfigEntry(\"ingressGateway\", new Consul.ConfigEntryArgs\n        {\n            Kind = \"ingress-gateway\",\n            ConfigJson = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n            {\n                { \"TLS\", new Dictionary\u003cstring, object?\u003e\n                {\n                    { \"Enabled\", true },\n                } },\n                { \"Listeners\", new[]\n                    {\n                        new Dictionary\u003cstring, object?\u003e\n                        {\n                            { \"Port\", 8000 },\n                            { \"Protocol\", \"http\" },\n                            { \"Services\", new[]\n                                {\n                                    new Dictionary\u003cstring, object?\u003e\n                                    {\n                                        { \"Name\", \"*\" },\n                                    },\n                                }\n                             },\n                        },\n                    }\n                 },\n            }),\n        });\n        var terminatingGateway = new Consul.ConfigEntry(\"terminatingGateway\", new Consul.ConfigEntryArgs\n        {\n            Kind = \"terminating-gateway\",\n            ConfigJson = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n            {\n                { \"Services\", new[]\n                    {\n                        new Dictionary\u003cstring, object?\u003e\n                        {\n                            { \"Name\", \"billing\" },\n                        },\n                    }\n                 },\n            }),\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"encoding/json\"\n\n\t\"github.com/pulumi/pulumi-consul/sdk/v3/go/consul\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\ttmpJSON0, err := json.Marshal(map[string]interface{}{\n\t\t\t\"Config\": map[string]interface{}{\n\t\t\t\t\"local_connect_timeout_ms\": 1000,\n\t\t\t\t\"handshake_timeout_ms\":     10000,\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson0 := string(tmpJSON0)\n\t\t_, err := consul.NewConfigEntry(ctx, \"proxyDefaults\", \u0026consul.ConfigEntryArgs{\n\t\t\tKind:       pulumi.String(\"proxy-defaults\"),\n\t\t\tConfigJson: pulumi.String(json0),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttmpJSON1, err := json.Marshal(map[string]interface{}{\n\t\t\t\"Protocol\": \"http\",\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson1 := string(tmpJSON1)\n\t\t_, err = consul.NewConfigEntry(ctx, \"web\", \u0026consul.ConfigEntryArgs{\n\t\t\tKind:       pulumi.String(\"service-defaults\"),\n\t\t\tConfigJson: pulumi.String(json1),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttmpJSON2, err := json.Marshal(map[string]interface{}{\n\t\t\t\"Protocol\": \"http\",\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson2 := string(tmpJSON2)\n\t\t_, err = consul.NewConfigEntry(ctx, \"admin\", \u0026consul.ConfigEntryArgs{\n\t\t\tKind:       pulumi.String(\"service-defaults\"),\n\t\t\tConfigJson: pulumi.String(json2),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttmpJSON3, err := json.Marshal(map[string]interface{}{\n\t\t\t\"DefaultSubset\": \"v1\",\n\t\t\t\"Subsets\": map[string]interface{}{\n\t\t\t\t\"v1\": map[string]interface{}{\n\t\t\t\t\t\"Filter\": \"Service.Meta.version == v1\",\n\t\t\t\t},\n\t\t\t\t\"v2\": map[string]interface{}{\n\t\t\t\t\t\"Filter\": \"Service.Meta.version == v2\",\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson3 := string(tmpJSON3)\n\t\t_, err = consul.NewConfigEntry(ctx, \"serviceResolver\", \u0026consul.ConfigEntryArgs{\n\t\t\tKind:       pulumi.String(\"service-resolver\"),\n\t\t\tConfigJson: pulumi.String(json3),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttmpJSON4, err := json.Marshal(map[string]interface{}{\n\t\t\t\"Splits\": []interface{}{\n\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\"Weight\":        90,\n\t\t\t\t\t\"ServiceSubset\": \"v1\",\n\t\t\t\t},\n\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\"Weight\":        10,\n\t\t\t\t\t\"ServiceSubset\": \"v2\",\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson4 := string(tmpJSON4)\n\t\t_, err = consul.NewConfigEntry(ctx, \"serviceSplitter\", \u0026consul.ConfigEntryArgs{\n\t\t\tKind:       pulumi.String(\"service-splitter\"),\n\t\t\tConfigJson: pulumi.String(json4),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttmpJSON5, err := json.Marshal(map[string]interface{}{\n\t\t\t\"Routes\": []map[string]interface{}{\n\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\"Match\": map[string]interface{}{\n\t\t\t\t\t\t\"HTTP\": map[string]interface{}{\n\t\t\t\t\t\t\t\"PathPrefix\": \"/admin\",\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\t\"Destination\": map[string]interface{}{\n\t\t\t\t\t\t\"Service\": \"admin\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson5 := string(tmpJSON5)\n\t\t_, err = consul.NewConfigEntry(ctx, \"serviceRouter\", \u0026consul.ConfigEntryArgs{\n\t\t\tKind:       pulumi.String(\"service-router\"),\n\t\t\tConfigJson: pulumi.String(json5),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttmpJSON6, err := json.Marshal(map[string]interface{}{\n\t\t\t\"TLS\": map[string]interface{}{\n\t\t\t\t\"Enabled\": true,\n\t\t\t},\n\t\t\t\"Listeners\": []map[string]interface{}{\n\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\"Port\":     8000,\n\t\t\t\t\t\"Protocol\": \"http\",\n\t\t\t\t\t\"Services\": []map[string]interface{}{\n\t\t\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\t\t\"Name\": \"*\",\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson6 := string(tmpJSON6)\n\t\t_, err = consul.NewConfigEntry(ctx, \"ingressGateway\", \u0026consul.ConfigEntryArgs{\n\t\t\tKind:       pulumi.String(\"ingress-gateway\"),\n\t\t\tConfigJson: pulumi.String(json6),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttmpJSON7, err := json.Marshal(map[string]interface{}{\n\t\t\t\"Services\": []map[string]interface{}{\n\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\"Name\": \"billing\",\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson7 := string(tmpJSON7)\n\t\t_, err = consul.NewConfigEntry(ctx, \"terminatingGateway\", \u0026consul.ConfigEntryArgs{\n\t\t\tKind:       pulumi.String(\"terminating-gateway\"),\n\t\t\tConfigJson: pulumi.String(json7),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### `service-intentions` config entry\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as consul from \"@pulumi/consul\";\n\nconst serviceIntentions = new consul.ConfigEntry(\"serviceIntentions\", {\n    kind: \"service-intentions\",\n    configJson: JSON.stringify({\n        Sources: [\n            {\n                Action: \"allow\",\n                Name: \"frontend-webapp\",\n                Precedence: 9,\n                Type: \"consul\",\n            },\n            {\n                Action: \"allow\",\n                Name: \"nightly-cronjob\",\n                Precedence: 9,\n                Type: \"consul\",\n            },\n        ],\n    }),\n});\n```\n```python\nimport pulumi\nimport json\nimport pulumi_consul as consul\n\nservice_intentions = consul.ConfigEntry(\"serviceIntentions\",\n    kind=\"service-intentions\",\n    config_json=json.dumps({\n        \"Sources\": [\n            {\n                \"Action\": \"allow\",\n                \"Name\": \"frontend-webapp\",\n                \"Precedence\": 9,\n                \"Type\": \"consul\",\n            },\n            {\n                \"Action\": \"allow\",\n                \"Name\": \"nightly-cronjob\",\n                \"Precedence\": 9,\n                \"Type\": \"consul\",\n            },\n        ],\n    }))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Text.Json;\nusing Pulumi;\nusing Consul = Pulumi.Consul;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var serviceIntentions = new Consul.ConfigEntry(\"serviceIntentions\", new Consul.ConfigEntryArgs\n        {\n            Kind = \"service-intentions\",\n            ConfigJson = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n            {\n                { \"Sources\", new[]\n                    {\n                        new Dictionary\u003cstring, object?\u003e\n                        {\n                            { \"Action\", \"allow\" },\n                            { \"Name\", \"frontend-webapp\" },\n                            { \"Precedence\", 9 },\n                            { \"Type\", \"consul\" },\n                        },\n                        new Dictionary\u003cstring, object?\u003e\n                        {\n                            { \"Action\", \"allow\" },\n                            { \"Name\", \"nightly-cronjob\" },\n                            { \"Precedence\", 9 },\n                            { \"Type\", \"consul\" },\n                        },\n                    }\n                 },\n            }),\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"encoding/json\"\n\n\t\"github.com/pulumi/pulumi-consul/sdk/v3/go/consul\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\ttmpJSON0, err := json.Marshal(map[string]interface{}{\n\t\t\t\"Sources\": []map[string]interface{}{\n\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\"Action\":     \"allow\",\n\t\t\t\t\t\"Name\":       \"frontend-webapp\",\n\t\t\t\t\t\"Precedence\": 9,\n\t\t\t\t\t\"Type\":       \"consul\",\n\t\t\t\t},\n\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\"Action\":     \"allow\",\n\t\t\t\t\t\"Name\":       \"nightly-cronjob\",\n\t\t\t\t\t\"Precedence\": 9,\n\t\t\t\t\t\"Type\":       \"consul\",\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson0 := string(tmpJSON0)\n\t\t_, err := consul.NewConfigEntry(ctx, \"serviceIntentions\", \u0026consul.ConfigEntryArgs{\n\t\t\tKind:       pulumi.String(\"service-intentions\"),\n\t\t\tConfigJson: pulumi.String(json0),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as consul from \"@pulumi/consul\";\n\nconst sd = new consul.ConfigEntry(\"sd\", {\n    kind: \"service-defaults\",\n    configJson: JSON.stringify({\n        Protocol: \"http\",\n    }),\n});\nconst serviceIntentions = new consul.ConfigEntry(\"serviceIntentions\", {\n    kind: \"service-intentions\",\n    configJson: JSON.stringify({\n        Sources: [\n            {\n                Name: \"contractor-webapp\",\n                Permissions: [{\n                    Action: \"allow\",\n                    HTTP: {\n                        Methods: [\n                            \"GET\",\n                            \"HEAD\",\n                        ],\n                        PathExact: \"/healtz\",\n                    },\n                }],\n                Precedence: 9,\n                Type: \"consul\",\n            },\n            {\n                Name: \"admin-dashboard-webapp\",\n                Permissions: [\n                    {\n                        Action: \"deny\",\n                        HTTP: {\n                            PathPrefix: \"/debugz\",\n                        },\n                    },\n                    {\n                        Action: \"allow\",\n                        HTTP: {\n                            PathPrefix: \"/\",\n                        },\n                    },\n                ],\n                Precedence: 9,\n                Type: \"consul\",\n            },\n        ],\n    }),\n});\n```\n```python\nimport pulumi\nimport json\nimport pulumi_consul as consul\n\nsd = consul.ConfigEntry(\"sd\",\n    kind=\"service-defaults\",\n    config_json=json.dumps({\n        \"Protocol\": \"http\",\n    }))\nservice_intentions = consul.ConfigEntry(\"serviceIntentions\",\n    kind=\"service-intentions\",\n    config_json=json.dumps({\n        \"Sources\": [\n            {\n                \"Name\": \"contractor-webapp\",\n                \"Permissions\": [{\n                    \"Action\": \"allow\",\n                    \"HTTP\": {\n                        \"Methods\": [\n                            \"GET\",\n                            \"HEAD\",\n                        ],\n                        \"PathExact\": \"/healtz\",\n                    },\n                }],\n                \"Precedence\": 9,\n                \"Type\": \"consul\",\n            },\n            {\n                \"Name\": \"admin-dashboard-webapp\",\n                \"Permissions\": [\n                    {\n                        \"Action\": \"deny\",\n                        \"HTTP\": {\n                            \"PathPrefix\": \"/debugz\",\n                        },\n                    },\n                    {\n                        \"Action\": \"allow\",\n                        \"HTTP\": {\n                            \"PathPrefix\": \"/\",\n                        },\n                    },\n                ],\n                \"Precedence\": 9,\n                \"Type\": \"consul\",\n            },\n        ],\n    }))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Text.Json;\nusing Pulumi;\nusing Consul = Pulumi.Consul;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var sd = new Consul.ConfigEntry(\"sd\", new Consul.ConfigEntryArgs\n        {\n            Kind = \"service-defaults\",\n            ConfigJson = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n            {\n                { \"Protocol\", \"http\" },\n            }),\n        });\n        var serviceIntentions = new Consul.ConfigEntry(\"serviceIntentions\", new Consul.ConfigEntryArgs\n        {\n            Kind = \"service-intentions\",\n            ConfigJson = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n            {\n                { \"Sources\", new[]\n                    {\n                        new Dictionary\u003cstring, object?\u003e\n                        {\n                            { \"Name\", \"contractor-webapp\" },\n                            { \"Permissions\", new[]\n                                {\n                                    new Dictionary\u003cstring, object?\u003e\n                                    {\n                                        { \"Action\", \"allow\" },\n                                        { \"HTTP\", new Dictionary\u003cstring, object?\u003e\n                                        {\n                                            { \"Methods\", new[]\n                                                {\n                                                    \"GET\",\n                                                    \"HEAD\",\n                                                }\n                                             },\n                                            { \"PathExact\", \"/healtz\" },\n                                        } },\n                                    },\n                                }\n                             },\n                            { \"Precedence\", 9 },\n                            { \"Type\", \"consul\" },\n                        },\n                        new Dictionary\u003cstring, object?\u003e\n                        {\n                            { \"Name\", \"admin-dashboard-webapp\" },\n                            { \"Permissions\", new[]\n                                {\n                                    new Dictionary\u003cstring, object?\u003e\n                                    {\n                                        { \"Action\", \"deny\" },\n                                        { \"HTTP\", new Dictionary\u003cstring, object?\u003e\n                                        {\n                                            { \"PathPrefix\", \"/debugz\" },\n                                        } },\n                                    },\n                                    new Dictionary\u003cstring, object?\u003e\n                                    {\n                                        { \"Action\", \"allow\" },\n                                        { \"HTTP\", new Dictionary\u003cstring, object?\u003e\n                                        {\n                                            { \"PathPrefix\", \"/\" },\n                                        } },\n                                    },\n                                }\n                             },\n                            { \"Precedence\", 9 },\n                            { \"Type\", \"consul\" },\n                        },\n                    }\n                 },\n            }),\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"encoding/json\"\n\n\t\"github.com/pulumi/pulumi-consul/sdk/v3/go/consul\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\ttmpJSON0, err := json.Marshal(map[string]interface{}{\n\t\t\t\"Protocol\": \"http\",\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson0 := string(tmpJSON0)\n\t\t_, err := consul.NewConfigEntry(ctx, \"sd\", \u0026consul.ConfigEntryArgs{\n\t\t\tKind:       pulumi.String(\"service-defaults\"),\n\t\t\tConfigJson: pulumi.String(json0),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttmpJSON1, err := json.Marshal(map[string]interface{}{\n\t\t\t\"Sources\": []interface{}{\n\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\"Name\": \"contractor-webapp\",\n\t\t\t\t\t\"Permissions\": []map[string]interface{}{\n\t\t\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\t\t\"Action\": \"allow\",\n\t\t\t\t\t\t\t\"HTTP\": map[string]interface{}{\n\t\t\t\t\t\t\t\t\"Methods\": []string{\n\t\t\t\t\t\t\t\t\t\"GET\",\n\t\t\t\t\t\t\t\t\t\"HEAD\",\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t\"PathExact\": \"/healtz\",\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\t\"Precedence\": 9,\n\t\t\t\t\t\"Type\":       \"consul\",\n\t\t\t\t},\n\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\"Name\": \"admin-dashboard-webapp\",\n\t\t\t\t\t\"Permissions\": []map[string]interface{}{\n\t\t\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\t\t\"Action\": \"deny\",\n\t\t\t\t\t\t\t\"HTTP\": map[string]interface{}{\n\t\t\t\t\t\t\t\t\"PathPrefix\": \"/debugz\",\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\t\t\"Action\": \"allow\",\n\t\t\t\t\t\t\t\"HTTP\": map[string]interface{}{\n\t\t\t\t\t\t\t\t\"PathPrefix\": \"/\",\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\t\"Precedence\": 9,\n\t\t\t\t\t\"Type\":       \"consul\",\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson1 := string(tmpJSON1)\n\t\t_, err = consul.NewConfigEntry(ctx, \"serviceIntentions\", \u0026consul.ConfigEntryArgs{\n\t\t\tKind:       pulumi.String(\"service-intentions\"),\n\t\t\tConfigJson: pulumi.String(json1),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### `exported-services` config entry\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as consul from \"@pulumi/consul\";\n\nconst exportedServices = new consul.ConfigEntry(\"exportedServices\", {\n    kind: \"exported-services\",\n    configJson: JSON.stringify({\n        Services: [{\n            Name: \"test\",\n            Namespace: \"default\",\n            Consumers: [{\n                Partition: \"default\",\n            }],\n        }],\n    }),\n});\n```\n```python\nimport pulumi\nimport json\nimport pulumi_consul as consul\n\nexported_services = consul.ConfigEntry(\"exportedServices\",\n    kind=\"exported-services\",\n    config_json=json.dumps({\n        \"Services\": [{\n            \"Name\": \"test\",\n            \"Namespace\": \"default\",\n            \"Consumers\": [{\n                \"Partition\": \"default\",\n            }],\n        }],\n    }))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Text.Json;\nusing Pulumi;\nusing Consul = Pulumi.Consul;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var exportedServices = new Consul.ConfigEntry(\"exportedServices\", new Consul.ConfigEntryArgs\n        {\n            Kind = \"exported-services\",\n            ConfigJson = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n            {\n                { \"Services\", new[]\n                    {\n                        new Dictionary\u003cstring, object?\u003e\n                        {\n                            { \"Name\", \"test\" },\n                            { \"Namespace\", \"default\" },\n                            { \"Consumers\", new[]\n                                {\n                                    new Dictionary\u003cstring, object?\u003e\n                                    {\n                                        { \"Partition\", \"default\" },\n                                    },\n                                }\n                             },\n                        },\n                    }\n                 },\n            }),\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"encoding/json\"\n\n\t\"github.com/pulumi/pulumi-consul/sdk/v3/go/consul\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\ttmpJSON0, err := json.Marshal(map[string]interface{}{\n\t\t\t\"Services\": []map[string]interface{}{\n\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\"Name\":      \"test\",\n\t\t\t\t\t\"Namespace\": \"default\",\n\t\t\t\t\t\"Consumers\": []map[string]interface{}{\n\t\t\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\t\t\"Partition\": \"default\",\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson0 := string(tmpJSON0)\n\t\t_, err := consul.NewConfigEntry(ctx, \"exportedServices\", \u0026consul.ConfigEntryArgs{\n\t\t\tKind:       pulumi.String(\"exported-services\"),\n\t\t\tConfigJson: pulumi.String(json0),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### `mesh` config entry\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as consul from \"@pulumi/consul\";\n\nconst mesh = new consul.ConfigEntry(\"mesh\", {\n    kind: \"mesh\",\n    partition: \"default\",\n    configJson: JSON.stringify({\n        TransparentProxy: {\n            MeshDestinationsOnly: true,\n        },\n    }),\n});\n```\n```python\nimport pulumi\nimport json\nimport pulumi_consul as consul\n\nmesh = consul.ConfigEntry(\"mesh\",\n    kind=\"mesh\",\n    partition=\"default\",\n    config_json=json.dumps({\n        \"TransparentProxy\": {\n            \"MeshDestinationsOnly\": True,\n        },\n    }))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Text.Json;\nusing Pulumi;\nusing Consul = Pulumi.Consul;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var mesh = new Consul.ConfigEntry(\"mesh\", new Consul.ConfigEntryArgs\n        {\n            Kind = \"mesh\",\n            Partition = \"default\",\n            ConfigJson = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n            {\n                { \"TransparentProxy\", new Dictionary\u003cstring, object?\u003e\n                {\n                    { \"MeshDestinationsOnly\", true },\n                } },\n            }),\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"encoding/json\"\n\n\t\"github.com/pulumi/pulumi-consul/sdk/v3/go/consul\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\ttmpJSON0, err := json.Marshal(map[string]interface{}{\n\t\t\t\"TransparentProxy\": map[string]interface{}{\n\t\t\t\t\"MeshDestinationsOnly\": true,\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson0 := string(tmpJSON0)\n\t\t_, err := consul.NewConfigEntry(ctx, \"mesh\", \u0026consul.ConfigEntryArgs{\n\t\t\tKind:       pulumi.String(\"mesh\"),\n\t\t\tPartition:  pulumi.String(\"default\"),\n\t\t\tConfigJson: pulumi.String(json0),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as consul from \"@pulumi/consul\";\n\nconst proxyDefaults = new consul.ConfigEntry(\"proxyDefaults\", {\n    kind: \"proxy-defaults\",\n    configJson: JSON.stringify({\n        Config: {\n            local_connect_timeout_ms: 1000,\n            handshake_timeout_ms: 10000,\n        },\n    }),\n});\nconst web = new consul.ConfigEntry(\"web\", {\n    kind: \"service-defaults\",\n    configJson: JSON.stringify({\n        Protocol: \"http\",\n    }),\n});\nconst admin = new consul.ConfigEntry(\"admin\", {\n    kind: \"service-defaults\",\n    configJson: JSON.stringify({\n        Protocol: \"http\",\n    }),\n});\nconst serviceResolver = new consul.ConfigEntry(\"serviceResolver\", {\n    kind: \"service-resolver\",\n    configJson: JSON.stringify({\n        DefaultSubset: \"v1\",\n        Subsets: {\n            v1: {\n                Filter: \"Service.Meta.version == v1\",\n            },\n            v2: {\n                Filter: \"Service.Meta.version == v2\",\n            },\n        },\n    }),\n});\nconst serviceSplitter = new consul.ConfigEntry(\"serviceSplitter\", {\n    kind: \"service-splitter\",\n    configJson: JSON.stringify({\n        Splits: [\n            {\n                Weight: 90,\n                ServiceSubset: \"v1\",\n            },\n            {\n                Weight: 10,\n                ServiceSubset: \"v2\",\n            },\n        ],\n    }),\n});\nconst serviceRouter = new consul.ConfigEntry(\"serviceRouter\", {\n    kind: \"service-router\",\n    configJson: JSON.stringify({\n        Routes: [{\n            Match: {\n                HTTP: {\n                    PathPrefix: \"/admin\",\n                },\n            },\n            Destination: {\n                Service: \"admin\",\n            },\n        }],\n    }),\n});\nconst ingressGateway = new consul.ConfigEntry(\"ingressGateway\", {\n    kind: \"ingress-gateway\",\n    configJson: JSON.stringify({\n        TLS: {\n            Enabled: true,\n        },\n        Listeners: [{\n            Port: 8000,\n            Protocol: \"http\",\n            Services: [{\n                Name: \"*\",\n            }],\n        }],\n    }),\n});\nconst terminatingGateway = new consul.ConfigEntry(\"terminatingGateway\", {\n    kind: \"terminating-gateway\",\n    configJson: JSON.stringify({\n        Services: [{\n            Name: \"billing\",\n        }],\n    }),\n});\n```\n```python\nimport pulumi\nimport json\nimport pulumi_consul as consul\n\nproxy_defaults = consul.ConfigEntry(\"proxyDefaults\",\n    kind=\"proxy-defaults\",\n    config_json=json.dumps({\n        \"Config\": {\n            \"local_connect_timeout_ms\": 1000,\n            \"handshake_timeout_ms\": 10000,\n        },\n    }))\nweb = consul.ConfigEntry(\"web\",\n    kind=\"service-defaults\",\n    config_json=json.dumps({\n        \"Protocol\": \"http\",\n    }))\nadmin = consul.ConfigEntry(\"admin\",\n    kind=\"service-defaults\",\n    config_json=json.dumps({\n        \"Protocol\": \"http\",\n    }))\nservice_resolver = consul.ConfigEntry(\"serviceResolver\",\n    kind=\"service-resolver\",\n    config_json=json.dumps({\n        \"DefaultSubset\": \"v1\",\n        \"Subsets\": {\n            \"v1\": {\n                \"Filter\": \"Service.Meta.version == v1\",\n            },\n            \"v2\": {\n                \"Filter\": \"Service.Meta.version == v2\",\n            },\n        },\n    }))\nservice_splitter = consul.ConfigEntry(\"serviceSplitter\",\n    kind=\"service-splitter\",\n    config_json=json.dumps({\n        \"Splits\": [\n            {\n                \"Weight\": 90,\n                \"ServiceSubset\": \"v1\",\n            },\n            {\n                \"Weight\": 10,\n                \"ServiceSubset\": \"v2\",\n            },\n        ],\n    }))\nservice_router = consul.ConfigEntry(\"serviceRouter\",\n    kind=\"service-router\",\n    config_json=json.dumps({\n        \"Routes\": [{\n            \"Match\": {\n                \"HTTP\": {\n                    \"PathPrefix\": \"/admin\",\n                },\n            },\n            \"Destination\": {\n                \"Service\": \"admin\",\n            },\n        }],\n    }))\ningress_gateway = consul.ConfigEntry(\"ingressGateway\",\n    kind=\"ingress-gateway\",\n    config_json=json.dumps({\n        \"TLS\": {\n            \"Enabled\": True,\n        },\n        \"Listeners\": [{\n            \"Port\": 8000,\n            \"Protocol\": \"http\",\n            \"Services\": [{\n                \"Name\": \"*\",\n            }],\n        }],\n    }))\nterminating_gateway = consul.ConfigEntry(\"terminatingGateway\",\n    kind=\"terminating-gateway\",\n    config_json=json.dumps({\n        \"Services\": [{\n            \"Name\": \"billing\",\n        }],\n    }))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Text.Json;\nusing Pulumi;\nusing Consul = Pulumi.Consul;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var proxyDefaults = new Consul.ConfigEntry(\"proxyDefaults\", new Consul.ConfigEntryArgs\n        {\n            Kind = \"proxy-defaults\",\n            ConfigJson = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n            {\n                { \"Config\", new Dictionary\u003cstring, object?\u003e\n                {\n                    { \"local_connect_timeout_ms\", 1000 },\n                    { \"handshake_timeout_ms\", 10000 },\n                } },\n            }),\n        });\n        var web = new Consul.ConfigEntry(\"web\", new Consul.ConfigEntryArgs\n        {\n            Kind = \"service-defaults\",\n            ConfigJson = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n            {\n                { \"Protocol\", \"http\" },\n            }),\n        });\n        var admin = new Consul.ConfigEntry(\"admin\", new Consul.ConfigEntryArgs\n        {\n            Kind = \"service-defaults\",\n            ConfigJson = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n            {\n                { \"Protocol\", \"http\" },\n            }),\n        });\n        var serviceResolver = new Consul.ConfigEntry(\"serviceResolver\", new Consul.ConfigEntryArgs\n        {\n            Kind = \"service-resolver\",\n            ConfigJson = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n            {\n                { \"DefaultSubset\", \"v1\" },\n                { \"Subsets\", new Dictionary\u003cstring, object?\u003e\n                {\n                    { \"v1\", new Dictionary\u003cstring, object?\u003e\n                    {\n                        { \"Filter\", \"Service.Meta.version == v1\" },\n                    } },\n                    { \"v2\", new Dictionary\u003cstring, object?\u003e\n                    {\n                        { \"Filter\", \"Service.Meta.version == v2\" },\n                    } },\n                } },\n            }),\n        });\n        var serviceSplitter = new Consul.ConfigEntry(\"serviceSplitter\", new Consul.ConfigEntryArgs\n        {\n            Kind = \"service-splitter\",\n            ConfigJson = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n            {\n                { \"Splits\", new[]\n                    {\n                        new Dictionary\u003cstring, object?\u003e\n                        {\n                            { \"Weight\", 90 },\n                            { \"ServiceSubset\", \"v1\" },\n                        },\n                        new Dictionary\u003cstring, object?\u003e\n                        {\n                            { \"Weight\", 10 },\n                            { \"ServiceSubset\", \"v2\" },\n                        },\n                    }\n                 },\n            }),\n        });\n        var serviceRouter = new Consul.ConfigEntry(\"serviceRouter\", new Consul.ConfigEntryArgs\n        {\n            Kind = \"service-router\",\n            ConfigJson = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n            {\n                { \"Routes\", new[]\n                    {\n                        new Dictionary\u003cstring, object?\u003e\n                        {\n                            { \"Match\", new Dictionary\u003cstring, object?\u003e\n                            {\n                                { \"HTTP\", new Dictionary\u003cstring, object?\u003e\n                                {\n                                    { \"PathPrefix\", \"/admin\" },\n                                } },\n                            } },\n                            { \"Destination\", new Dictionary\u003cstring, object?\u003e\n                            {\n                                { \"Service\", \"admin\" },\n                            } },\n                        },\n                    }\n                 },\n            }),\n        });\n        var ingressGateway = new Consul.ConfigEntry(\"ingressGateway\", new Consul.ConfigEntryArgs\n        {\n            Kind = \"ingress-gateway\",\n            ConfigJson = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n            {\n                { \"TLS\", new Dictionary\u003cstring, object?\u003e\n                {\n                    { \"Enabled\", true },\n                } },\n                { \"Listeners\", new[]\n                    {\n                        new Dictionary\u003cstring, object?\u003e\n                        {\n                            { \"Port\", 8000 },\n                            { \"Protocol\", \"http\" },\n                            { \"Services\", new[]\n                                {\n                                    new Dictionary\u003cstring, object?\u003e\n                                    {\n                                        { \"Name\", \"*\" },\n                                    },\n                                }\n                             },\n                        },\n                    }\n                 },\n            }),\n        });\n        var terminatingGateway = new Consul.ConfigEntry(\"terminatingGateway\", new Consul.ConfigEntryArgs\n        {\n            Kind = \"terminating-gateway\",\n            ConfigJson = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n            {\n                { \"Services\", new[]\n                    {\n                        new Dictionary\u003cstring, object?\u003e\n                        {\n                            { \"Name\", \"billing\" },\n                        },\n                    }\n                 },\n            }),\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"encoding/json\"\n\n\t\"github.com/pulumi/pulumi-consul/sdk/v3/go/consul\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\ttmpJSON0, err := json.Marshal(map[string]interface{}{\n\t\t\t\"Config\": map[string]interface{}{\n\t\t\t\t\"local_connect_timeout_ms\": 1000,\n\t\t\t\t\"handshake_timeout_ms\":     10000,\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson0 := string(tmpJSON0)\n\t\t_, err := consul.NewConfigEntry(ctx, \"proxyDefaults\", \u0026consul.ConfigEntryArgs{\n\t\t\tKind:       pulumi.String(\"proxy-defaults\"),\n\t\t\tConfigJson: pulumi.String(json0),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttmpJSON1, err := json.Marshal(map[string]interface{}{\n\t\t\t\"Protocol\": \"http\",\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson1 := string(tmpJSON1)\n\t\t_, err = consul.NewConfigEntry(ctx, \"web\", \u0026consul.ConfigEntryArgs{\n\t\t\tKind:       pulumi.String(\"service-defaults\"),\n\t\t\tConfigJson: pulumi.String(json1),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttmpJSON2, err := json.Marshal(map[string]interface{}{\n\t\t\t\"Protocol\": \"http\",\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson2 := string(tmpJSON2)\n\t\t_, err = consul.NewConfigEntry(ctx, \"admin\", \u0026consul.ConfigEntryArgs{\n\t\t\tKind:       pulumi.String(\"service-defaults\"),\n\t\t\tConfigJson: pulumi.String(json2),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttmpJSON3, err := json.Marshal(map[string]interface{}{\n\t\t\t\"DefaultSubset\": \"v1\",\n\t\t\t\"Subsets\": map[string]interface{}{\n\t\t\t\t\"v1\": map[string]interface{}{\n\t\t\t\t\t\"Filter\": \"Service.Meta.version == v1\",\n\t\t\t\t},\n\t\t\t\t\"v2\": map[string]interface{}{\n\t\t\t\t\t\"Filter\": \"Service.Meta.version == v2\",\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson3 := string(tmpJSON3)\n\t\t_, err = consul.NewConfigEntry(ctx, \"serviceResolver\", \u0026consul.ConfigEntryArgs{\n\t\t\tKind:       pulumi.String(\"service-resolver\"),\n\t\t\tConfigJson: pulumi.String(json3),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttmpJSON4, err := json.Marshal(map[string]interface{}{\n\t\t\t\"Splits\": []interface{}{\n\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\"Weight\":        90,\n\t\t\t\t\t\"ServiceSubset\": \"v1\",\n\t\t\t\t},\n\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\"Weight\":        10,\n\t\t\t\t\t\"ServiceSubset\": \"v2\",\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson4 := string(tmpJSON4)\n\t\t_, err = consul.NewConfigEntry(ctx, \"serviceSplitter\", \u0026consul.ConfigEntryArgs{\n\t\t\tKind:       pulumi.String(\"service-splitter\"),\n\t\t\tConfigJson: pulumi.String(json4),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttmpJSON5, err := json.Marshal(map[string]interface{}{\n\t\t\t\"Routes\": []map[string]interface{}{\n\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\"Match\": map[string]interface{}{\n\t\t\t\t\t\t\"HTTP\": map[string]interface{}{\n\t\t\t\t\t\t\t\"PathPrefix\": \"/admin\",\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\t\"Destination\": map[string]interface{}{\n\t\t\t\t\t\t\"Service\": \"admin\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson5 := string(tmpJSON5)\n\t\t_, err = consul.NewConfigEntry(ctx, \"serviceRouter\", \u0026consul.ConfigEntryArgs{\n\t\t\tKind:       pulumi.String(\"service-router\"),\n\t\t\tConfigJson: pulumi.String(json5),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttmpJSON6, err := json.Marshal(map[string]interface{}{\n\t\t\t\"TLS\": map[string]interface{}{\n\t\t\t\t\"Enabled\": true,\n\t\t\t},\n\t\t\t\"Listeners\": []map[string]interface{}{\n\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\"Port\":     8000,\n\t\t\t\t\t\"Protocol\": \"http\",\n\t\t\t\t\t\"Services\": []map[string]interface{}{\n\t\t\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\t\t\"Name\": \"*\",\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson6 := string(tmpJSON6)\n\t\t_, err = consul.NewConfigEntry(ctx, \"ingressGateway\", \u0026consul.ConfigEntryArgs{\n\t\t\tKind:       pulumi.String(\"ingress-gateway\"),\n\t\t\tConfigJson: pulumi.String(json6),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttmpJSON7, err := json.Marshal(map[string]interface{}{\n\t\t\t\"Services\": []map[string]interface{}{\n\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\"Name\": \"billing\",\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson7 := string(tmpJSON7)\n\t\t_, err = consul.NewConfigEntry(ctx, \"terminatingGateway\", \u0026consul.ConfigEntryArgs{\n\t\t\tKind:       pulumi.String(\"terminating-gateway\"),\n\t\t\tConfigJson: pulumi.String(json7),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### `service-intentions` config entry\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as consul from \"@pulumi/consul\";\n\nconst serviceIntentions = new consul.ConfigEntry(\"serviceIntentions\", {\n    kind: \"service-intentions\",\n    configJson: JSON.stringify({\n        Sources: [\n            {\n                Action: \"allow\",\n                Name: \"frontend-webapp\",\n                Precedence: 9,\n                Type: \"consul\",\n            },\n            {\n                Action: \"allow\",\n                Name: \"nightly-cronjob\",\n                Precedence: 9,\n                Type: \"consul\",\n            },\n        ],\n    }),\n});\n```\n```python\nimport pulumi\nimport json\nimport pulumi_consul as consul\n\nservice_intentions = consul.ConfigEntry(\"serviceIntentions\",\n    kind=\"service-intentions\",\n    config_json=json.dumps({\n        \"Sources\": [\n            {\n                \"Action\": \"allow\",\n                \"Name\": \"frontend-webapp\",\n                \"Precedence\": 9,\n                \"Type\": \"consul\",\n            },\n            {\n                \"Action\": \"allow\",\n                \"Name\": \"nightly-cronjob\",\n                \"Precedence\": 9,\n                \"Type\": \"consul\",\n            },\n        ],\n    }))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Text.Json;\nusing Pulumi;\nusing Consul = Pulumi.Consul;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var serviceIntentions = new Consul.ConfigEntry(\"serviceIntentions\", new Consul.ConfigEntryArgs\n        {\n            Kind = \"service-intentions\",\n            ConfigJson = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n            {\n                { \"Sources\", new[]\n                    {\n                        new Dictionary\u003cstring, object?\u003e\n                        {\n                            { \"Action\", \"allow\" },\n                            { \"Name\", \"frontend-webapp\" },\n                            { \"Precedence\", 9 },\n                            { \"Type\", \"consul\" },\n                        },\n                        new Dictionary\u003cstring, object?\u003e\n                        {\n                            { \"Action\", \"allow\" },\n                            { \"Name\", \"nightly-cronjob\" },\n                            { \"Precedence\", 9 },\n                            { \"Type\", \"consul\" },\n                        },\n                    }\n                 },\n            }),\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"encoding/json\"\n\n\t\"github.com/pulumi/pulumi-consul/sdk/v3/go/consul\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\ttmpJSON0, err := json.Marshal(map[string]interface{}{\n\t\t\t\"Sources\": []map[string]interface{}{\n\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\"Action\":     \"allow\",\n\t\t\t\t\t\"Name\":       \"frontend-webapp\",\n\t\t\t\t\t\"Precedence\": 9,\n\t\t\t\t\t\"Type\":       \"consul\",\n\t\t\t\t},\n\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\"Action\":     \"allow\",\n\t\t\t\t\t\"Name\":       \"nightly-cronjob\",\n\t\t\t\t\t\"Precedence\": 9,\n\t\t\t\t\t\"Type\":       \"consul\",\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson0 := string(tmpJSON0)\n\t\t_, err := consul.NewConfigEntry(ctx, \"serviceIntentions\", \u0026consul.ConfigEntryArgs{\n\t\t\tKind:       pulumi.String(\"service-intentions\"),\n\t\t\tConfigJson: pulumi.String(json0),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as consul from \"@pulumi/consul\";\n\nconst sd = new consul.ConfigEntry(\"sd\", {\n    kind: \"service-defaults\",\n    configJson: JSON.stringify({\n        Protocol: \"http\",\n    }),\n});\nconst serviceIntentions = new consul.ConfigEntry(\"serviceIntentions\", {\n    kind: \"service-intentions\",\n    configJson: JSON.stringify({\n        Sources: [\n            {\n                Name: \"contractor-webapp\",\n                Permissions: [{\n                    Action: \"allow\",\n                    HTTP: {\n                        Methods: [\n                            \"GET\",\n                            \"HEAD\",\n                        ],\n                        PathExact: \"/healtz\",\n                    },\n                }],\n                Precedence: 9,\n                Type: \"consul\",\n            },\n            {\n                Name: \"admin-dashboard-webapp\",\n                Permissions: [\n                    {\n                        Action: \"deny\",\n                        HTTP: {\n                            PathPrefix: \"/debugz\",\n                        },\n                    },\n                    {\n                        Action: \"allow\",\n                        HTTP: {\n                            PathPrefix: \"/\",\n                        },\n                    },\n                ],\n                Precedence: 9,\n                Type: \"consul\",\n            },\n        ],\n    }),\n});\n```\n```python\nimport pulumi\nimport json\nimport pulumi_consul as consul\n\nsd = consul.ConfigEntry(\"sd\",\n    kind=\"service-defaults\",\n    config_json=json.dumps({\n        \"Protocol\": \"http\",\n    }))\nservice_intentions = consul.ConfigEntry(\"serviceIntentions\",\n    kind=\"service-intentions\",\n    config_json=json.dumps({\n        \"Sources\": [\n            {\n                \"Name\": \"contractor-webapp\",\n                \"Permissions\": [{\n                    \"Action\": \"allow\",\n                    \"HTTP\": {\n                        \"Methods\": [\n                            \"GET\",\n                            \"HEAD\",\n                        ],\n                        \"PathExact\": \"/healtz\",\n                    },\n                }],\n                \"Precedence\": 9,\n                \"Type\": \"consul\",\n            },\n            {\n                \"Name\": \"admin-dashboard-webapp\",\n                \"Permissions\": [\n                    {\n                        \"Action\": \"deny\",\n                        \"HTTP\": {\n                            \"PathPrefix\": \"/debugz\",\n                        },\n                    },\n                    {\n                        \"Action\": \"allow\",\n                        \"HTTP\": {\n                            \"PathPrefix\": \"/\",\n                        },\n                    },\n                ],\n                \"Precedence\": 9,\n                \"Type\": \"consul\",\n            },\n        ],\n    }))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Text.Json;\nusing Pulumi;\nusing Consul = Pulumi.Consul;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var sd = new Consul.ConfigEntry(\"sd\", new Consul.ConfigEntryArgs\n        {\n            Kind = \"service-defaults\",\n            ConfigJson = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n            {\n                { \"Protocol\", \"http\" },\n            }),\n        });\n        var serviceIntentions = new Consul.ConfigEntry(\"serviceIntentions\", new Consul.ConfigEntryArgs\n        {\n            Kind = \"service-intentions\",\n            ConfigJson = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n            {\n                { \"Sources\", new[]\n                    {\n                        new Dictionary\u003cstring, object?\u003e\n                        {\n                            { \"Name\", \"contractor-webapp\" },\n                            { \"Permissions\", new[]\n                                {\n                                    new Dictionary\u003cstring, object?\u003e\n                                    {\n                                        { \"Action\", \"allow\" },\n                                        { \"HTTP\", new Dictionary\u003cstring, object?\u003e\n                                        {\n                                            { \"Methods\", new[]\n                                                {\n                                                    \"GET\",\n                                                    \"HEAD\",\n                                                }\n                                             },\n                                            { \"PathExact\", \"/healtz\" },\n                                        } },\n                                    },\n                                }\n                             },\n                            { \"Precedence\", 9 },\n                            { \"Type\", \"consul\" },\n                        },\n                        new Dictionary\u003cstring, object?\u003e\n                        {\n                            { \"Name\", \"admin-dashboard-webapp\" },\n                            { \"Permissions\", new[]\n                                {\n                                    new Dictionary\u003cstring, object?\u003e\n                                    {\n                                        { \"Action\", \"deny\" },\n                                        { \"HTTP\", new Dictionary\u003cstring, object?\u003e\n                                        {\n                                            { \"PathPrefix\", \"/debugz\" },\n                                        } },\n                                    },\n                                    new Dictionary\u003cstring, object?\u003e\n                                    {\n                                        { \"Action\", \"allow\" },\n                                        { \"HTTP\", new Dictionary\u003cstring, object?\u003e\n                                        {\n                                            { \"PathPrefix\", \"/\" },\n                                        } },\n                                    },\n                                }\n                             },\n                            { \"Precedence\", 9 },\n                            { \"Type\", \"consul\" },\n                        },\n                    }\n                 },\n            }),\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"encoding/json\"\n\n\t\"github.com/pulumi/pulumi-consul/sdk/v3/go/consul\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\ttmpJSON0, err := json.Marshal(map[string]interface{}{\n\t\t\t\"Protocol\": \"http\",\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson0 := string(tmpJSON0)\n\t\t_, err := consul.NewConfigEntry(ctx, \"sd\", \u0026consul.ConfigEntryArgs{\n\t\t\tKind:       pulumi.String(\"service-defaults\"),\n\t\t\tConfigJson: pulumi.String(json0),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttmpJSON1, err := json.Marshal(map[string]interface{}{\n\t\t\t\"Sources\": []interface{}{\n\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\"Name\": \"contractor-webapp\",\n\t\t\t\t\t\"Permissions\": []map[string]interface{}{\n\t\t\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\t\t\"Action\": \"allow\",\n\t\t\t\t\t\t\t\"HTTP\": map[string]interface{}{\n\t\t\t\t\t\t\t\t\"Methods\": []string{\n\t\t\t\t\t\t\t\t\t\"GET\",\n\t\t\t\t\t\t\t\t\t\"HEAD\",\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t\"PathExact\": \"/healtz\",\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\t\"Precedence\": 9,\n\t\t\t\t\t\"Type\":       \"consul\",\n\t\t\t\t},\n\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\"Name\": \"admin-dashboard-webapp\",\n\t\t\t\t\t\"Permissions\": []map[string]interface{}{\n\t\t\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\t\t\"Action\": \"deny\",\n\t\t\t\t\t\t\t\"HTTP\": map[string]interface{}{\n\t\t\t\t\t\t\t\t\"PathPrefix\": \"/debugz\",\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\t\t\"Action\": \"allow\",\n\t\t\t\t\t\t\t\"HTTP\": map[string]interface{}{\n\t\t\t\t\t\t\t\t\"PathPrefix\": \"/\",\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\t\"Precedence\": 9,\n\t\t\t\t\t\"Type\":       \"consul\",\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson1 := string(tmpJSON1)\n\t\t_, err = consul.NewConfigEntry(ctx, \"serviceIntentions\", \u0026consul.ConfigEntryArgs{\n\t\t\tKind:       pulumi.String(\"service-intentions\"),\n\t\t\tConfigJson: pulumi.String(json1),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### `exported-services` config entry\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as consul from \"@pulumi/consul\";\n\nconst exportedServices = new consul.ConfigEntry(\"exportedServices\", {\n    kind: \"exported-services\",\n    configJson: JSON.stringify({\n        Services: [{\n            Name: \"test\",\n            Namespace: \"default\",\n            Consumers: [{\n                Partition: \"default\",\n            }],\n        }],\n    }),\n});\n```\n```python\nimport pulumi\nimport json\nimport pulumi_consul as consul\n\nexported_services = consul.ConfigEntry(\"exportedServices\",\n    kind=\"exported-services\",\n    config_json=json.dumps({\n        \"Services\": [{\n            \"Name\": \"test\",\n            \"Namespace\": \"default\",\n            \"Consumers\": [{\n                \"Partition\": \"default\",\n            }],\n        }],\n    }))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Text.Json;\nusing Pulumi;\nusing Consul = Pulumi.Consul;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var exportedServices = new Consul.ConfigEntry(\"exportedServices\", new Consul.ConfigEntryArgs\n        {\n            Kind = \"exported-services\",\n            ConfigJson = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n            {\n                { \"Services\", new[]\n                    {\n                        new Dictionary\u003cstring, object?\u003e\n                        {\n                            { \"Name\", \"test\" },\n                            { \"Namespace\", \"default\" },\n                            { \"Consumers\", new[]\n                                {\n                                    new Dictionary\u003cstring, object?\u003e\n                                    {\n                                        { \"Partition\", \"default\" },\n                                    },\n                                }\n                             },\n                        },\n                    }\n                 },\n            }),\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"encoding/json\"\n\n\t\"github.com/pulumi/pulumi-consul/sdk/v3/go/consul\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\ttmpJSON0, err := json.Marshal(map[string]interface{}{\n\t\t\t\"Services\": []map[string]interface{}{\n\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\"Name\":      \"test\",\n\t\t\t\t\t\"Namespace\": \"default\",\n\t\t\t\t\t\"Consumers\": []map[string]interface{}{\n\t\t\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\t\t\"Partition\": \"default\",\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson0 := string(tmpJSON0)\n\t\t_, err := consul.NewConfigEntry(ctx, \"exportedServices\", \u0026consul.ConfigEntryArgs{\n\t\t\tKind:       pulumi.String(\"exported-services\"),\n\t\t\tConfigJson: pulumi.String(json0),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### `mesh` config entry\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as consul from \"@pulumi/consul\";\n\nconst mesh = new consul.ConfigEntry(\"mesh\", {\n    kind: \"mesh\",\n    partition: \"default\",\n    configJson: JSON.stringify({\n        TransparentProxy: {\n            MeshDestinationsOnly: true,\n        },\n    }),\n});\n```\n```python\nimport pulumi\nimport json\nimport pulumi_consul as consul\n\nmesh = consul.ConfigEntry(\"mesh\",\n    kind=\"mesh\",\n    partition=\"default\",\n    config_json=json.dumps({\n        \"TransparentProxy\": {\n            \"MeshDestinationsOnly\": True,\n        },\n    }))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Text.Json;\nusing Pulumi;\nusing Consul = Pulumi.Consul;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var mesh = new Consul.ConfigEntry(\"mesh\", new Consul.ConfigEntryArgs\n        {\n            Kind = \"mesh\",\n            Partition = \"default\",\n            ConfigJson = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n            {\n                { \"TransparentProxy\", new Dictionary\u003cstring, object?\u003e\n                {\n                    { \"MeshDestinationsOnly\", true },\n                } },\n            }),\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"encoding/json\"\n\n\t\"github.com/pulumi/pulumi-consul/sdk/v3/go/consul\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\ttmpJSON0, err := json.Marshal(map[string]interface{}{\n\t\t\t\"TransparentProxy\": map[string]interface{}{\n\t\t\t\t\"MeshDestinationsOnly\": true,\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson0 := string(tmpJSON0)\n\t\t_, err := consul.NewConfigEntry(ctx, \"mesh\", \u0026consul.ConfigEntryArgs{\n\t\t\tKind:       pulumi.String(\"mesh\"),\n\t\t\tPartition:  pulumi.String(\"default\"),\n\t\t\tConfigJson: pulumi.String(json0),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n`consul_config_entry` can be imported using the syntax `\u003ckind\u003e/\u003cname\u003e` if the config entry is in the default partition and default namespace, or `\u003cpartition\u003e/\u003cnamespace\u003e/\u003ckind\u003e/\u003cname\u003e` for config entries in a non-default partition or namespace\n\n```sh\n $ pulumi import consul:index/configEntry:ConfigEntry service_splitter 816a195f-6cb1-2e8d-92af-3011ae706318\n```\n\n ",
             "properties": {
                 "configJson": {
                     "type": "string",
@@ -3966,7 +4080,8 @@
                 },
                 "token": {
                     "type": "string",
-                    "description": "The ACL token to use. This overrides the\ntoken that the agent provides by default.\n"
+                    "description": "The ACL token to use. This overrides the\ntoken that the agent provides by default.\n",
+                    "deprecationMessage": "The token argument has been deprecated and will be removed in a future release.\nPlease use the token argument in the provider configuration"
                 }
             },
             "required": [
@@ -4006,7 +4121,8 @@
                 },
                 "token": {
                     "type": "string",
-                    "description": "The ACL token to use. This overrides the\ntoken that the agent provides by default.\n"
+                    "description": "The ACL token to use. This overrides the\ntoken that the agent provides by default.\n",
+                    "deprecationMessage": "The token argument has been deprecated and will be removed in a future release.\nPlease use the token argument in the provider configuration"
                 }
             },
             "requiredInputs": [
@@ -4047,7 +4163,8 @@
                     },
                     "token": {
                         "type": "string",
-                        "description": "The ACL token to use. This overrides the\ntoken that the agent provides by default.\n"
+                        "description": "The ACL token to use. This overrides the\ntoken that the agent provides by default.\n",
+                        "deprecationMessage": "The token argument has been deprecated and will be removed in a future release.\nPlease use the token argument in the provider configuration"
                     }
                 },
                 "type": "object"
@@ -4082,7 +4199,8 @@
                 },
                 "token": {
                     "type": "string",
-                    "description": "The ACL token to use. This overrides the\ntoken that the agent provides by default.\n"
+                    "description": "The ACL token to use. This overrides the\ntoken that the agent provides by default.\n",
+                    "deprecationMessage": "The token argument has been deprecated and will be removed in a future release.\nPlease use the token argument in the provider configuration"
                 },
                 "var": {
                     "type": "object",
@@ -4122,7 +4240,8 @@
                 },
                 "token": {
                     "type": "string",
-                    "description": "The ACL token to use. This overrides the\ntoken that the agent provides by default.\n"
+                    "description": "The ACL token to use. This overrides the\ntoken that the agent provides by default.\n",
+                    "deprecationMessage": "The token argument has been deprecated and will be removed in a future release.\nPlease use the token argument in the provider configuration"
                 }
             },
             "stateInputs": {
@@ -4154,7 +4273,8 @@
                     },
                     "token": {
                         "type": "string",
-                        "description": "The ACL token to use. This overrides the\ntoken that the agent provides by default.\n"
+                        "description": "The ACL token to use. This overrides the\ntoken that the agent provides by default.\n",
+                        "deprecationMessage": "The token argument has been deprecated and will be removed in a future release.\nPlease use the token argument in the provider configuration"
                     },
                     "var": {
                         "type": "object",
@@ -4551,7 +4671,8 @@
                 },
                 "token": {
                     "type": "string",
-                    "description": "The ACL token to use. This overrides the\ntoken that the agent provides by default.\n"
+                    "description": "The ACL token to use. This overrides the\ntoken that the agent provides by default.\n",
+                    "deprecationMessage": "The token argument has been deprecated and will be removed in a future release.\nPlease use the token argument in the provider configuration"
                 },
                 "useTls": {
                     "type": "boolean",
@@ -4580,7 +4701,8 @@
                 },
                 "token": {
                     "type": "string",
-                    "description": "The ACL token to use. This overrides the\ntoken that the agent provides by default.\n"
+                    "description": "The ACL token to use. This overrides the\ntoken that the agent provides by default.\n",
+                    "deprecationMessage": "The token argument has been deprecated and will be removed in a future release.\nPlease use the token argument in the provider configuration"
                 },
                 "useTls": {
                     "type": "boolean",
@@ -4610,7 +4732,8 @@
                     },
                     "token": {
                         "type": "string",
-                        "description": "The ACL token to use. This overrides the\ntoken that the agent provides by default.\n"
+                        "description": "The ACL token to use. This overrides the\ntoken that the agent provides by default.\n",
+                        "deprecationMessage": "The token argument has been deprecated and will be removed in a future release.\nPlease use the token argument in the provider configuration"
                     },
                     "useTls": {
                         "type": "boolean",
@@ -4621,7 +4744,7 @@
             }
         },
         "consul:index/node:Node": {
-            "description": "Provides access to Node data in Consul. This can be used to define a\nnode. Currently, defining health checks is not supported.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as consul from \"@pulumi/consul\";\n\nconst foobar = new consul.Node(\"foobar\", {\n    address: \"192.168.10.10\",\n});\n```\n```python\nimport pulumi\nimport pulumi_consul as consul\n\nfoobar = consul.Node(\"foobar\", address=\"192.168.10.10\")\n```\n```csharp\nusing Pulumi;\nusing Consul = Pulumi.Consul;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foobar = new Consul.Node(\"foobar\", new Consul.NodeArgs\n        {\n            Address = \"192.168.10.10\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-consul/sdk/v3/go/consul\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := consul.NewNode(ctx, \"foobar\", \u0026consul.NodeArgs{\n\t\t\tAddress: pulumi.String(\"192.168.10.10\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Provides access to Node data in Consul. This can be used to define a\nnode. Currently, defining health checks is not supported.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as consul from \"@pulumi/consul\";\n\nconst foobar = new consul.Node(\"foobar\", {\n    address: \"192.168.10.10\",\n});\n```\n```python\nimport pulumi\nimport pulumi_consul as consul\n\nfoobar = consul.Node(\"foobar\", address=\"192.168.10.10\")\n```\n```csharp\nusing Pulumi;\nusing Consul = Pulumi.Consul;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foobar = new Consul.Node(\"foobar\", new Consul.NodeArgs\n        {\n            Address = \"192.168.10.10\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-consul/sdk/v3/go/consul\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := consul.NewNode(ctx, \"foobar\", \u0026consul.NodeArgs{\n\t\t\tAddress: pulumi.String(\"192.168.10.10\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nThe `consul_node` resource can be imported\n\n```sh\n $ pulumi import consul:index/node:Node example node-name\n```\n\n ",
             "properties": {
                 "address": {
                     "type": "string",
@@ -4647,7 +4770,8 @@
                     "description": "The partition the node is associated with.\n"
                 },
                 "token": {
-                    "type": "string"
+                    "type": "string",
+                    "deprecationMessage": "The token argument has been deprecated and will be removed in a future release.\nPlease use the token argument in the provider configuration"
                 }
             },
             "required": [
@@ -4680,7 +4804,8 @@
                     "description": "The partition the node is associated with.\n"
                 },
                 "token": {
-                    "type": "string"
+                    "type": "string",
+                    "deprecationMessage": "The token argument has been deprecated and will be removed in a future release.\nPlease use the token argument in the provider configuration"
                 }
             },
             "requiredInputs": [
@@ -4713,7 +4838,217 @@
                         "description": "The partition the node is associated with.\n"
                     },
                     "token": {
+                        "type": "string",
+                        "deprecationMessage": "The token argument has been deprecated and will be removed in a future release.\nPlease use the token argument in the provider configuration"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "consul:index/peering:Peering": {
+            "description": "[Cluster Peering](https://www.consul.io/docs/connect/cluster-peering) can be used to create connections between two or more independent clusters so that services deployed to different partitions or datacenters can communicate.\n\nThe `cluster_peering` resource can be used to establish the peering after a peering token has been generated.\n\n\u003e **Cluster peering is currently in technical preview:** Functionality associated with cluster peering is subject to change. You should never use the technical preview release in secure environments or production scenarios. Features in technical preview may have performance issues, scaling issues, and limited support.\n\nThe functionality described here is available only in Consul version 1.13.0 and later.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as consul from \"@pulumi/consul\";\n\n// Create a peering between the EU and US Consul clusters\nconst eu = new consul.Provider(\"eu\", {address: \"eu-cluster:8500\"});\nconst us = new consul.Provider(\"us\", {address: \"us-cluster:8500\"});\nconst eu_usPeeringToken = new consul.PeeringToken(\"eu-usPeeringToken\", {peerName: \"eu-cluster\"}, {\n    provider: consul.us,\n});\nconst eu_usPeering = new consul.Peering(\"eu-usPeering\", {\n    peerName: \"eu-cluster\",\n    peeringToken: consul_peering_token.token.peering_token,\n    meta: {\n        hello: \"world\",\n    },\n}, {\n    provider: consul.eu,\n});\n```\n```python\nimport pulumi\nimport pulumi_consul as consul\nimport pulumi_pulumi as pulumi\n\n# Create a peering between the EU and US Consul clusters\neu = pulumi.providers.Consul(\"eu\", address=\"eu-cluster:8500\")\nus = pulumi.providers.Consul(\"us\", address=\"us-cluster:8500\")\neu_us_peering_token = consul.PeeringToken(\"eu-usPeeringToken\", peer_name=\"eu-cluster\",\nopts=pulumi.ResourceOptions(provider=consul[\"us\"]))\neu_us_peering = consul.Peering(\"eu-usPeering\",\n    peer_name=\"eu-cluster\",\n    peering_token=consul_peering_token[\"token\"][\"peering_token\"],\n    meta={\n        \"hello\": \"world\",\n    },\n    opts=pulumi.ResourceOptions(provider=consul[\"eu\"]))\n```\n```csharp\nusing Pulumi;\nusing Consul = Pulumi.Consul;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a peering between the EU and US Consul clusters\n        var eu = new Consul.Provider(\"eu\", new Consul.ProviderArgs\n        {\n            Address = \"eu-cluster:8500\",\n        });\n        var us = new Consul.Provider(\"us\", new Consul.ProviderArgs\n        {\n            Address = \"us-cluster:8500\",\n        });\n        var eu_usPeeringToken = new Consul.PeeringToken(\"eu-usPeeringToken\", new Consul.PeeringTokenArgs\n        {\n            PeerName = \"eu-cluster\",\n        }, new CustomResourceOptions\n        {\n            Provider = consul.Us,\n        });\n        var eu_usPeering = new Consul.Peering(\"eu-usPeering\", new Consul.PeeringArgs\n        {\n            PeerName = \"eu-cluster\",\n            PeeringToken = consul_peering_token.Token.Peering_token,\n            Meta = \n            {\n                { \"hello\", \"world\" },\n            },\n        }, new CustomResourceOptions\n        {\n            Provider = consul.Eu,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-consul/sdk/v3/go/consul\"\n\t\"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/providers\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := providers.Newconsul(ctx, \"eu\", \u0026providers.consulArgs{\n\t\t\tAddress: \"eu-cluster:8500\",\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = providers.Newconsul(ctx, \"us\", \u0026providers.consulArgs{\n\t\t\tAddress: \"us-cluster:8500\",\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = consul.NewPeeringToken(ctx, \"eu-usPeeringToken\", \u0026consul.PeeringTokenArgs{\n\t\t\tPeerName: pulumi.String(\"eu-cluster\"),\n\t\t}, pulumi.Provider(consul.Us))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = consul.NewPeering(ctx, \"eu-usPeering\", \u0026consul.PeeringArgs{\n\t\t\tPeerName:     pulumi.String(\"eu-cluster\"),\n\t\t\tPeeringToken: pulumi.Any(consul_peering_token.Token.Peering_token),\n\t\t\tMeta: pulumi.StringMap{\n\t\t\t\t\"hello\": pulumi.String(\"world\"),\n\t\t\t},\n\t\t}, pulumi.Provider(consul.Eu))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "deletedAt": {
+                    "type": "string"
+                },
+                "meta": {
+                    "type": "object",
+                    "additionalProperties": {
                         "type": "string"
+                    },
+                    "description": "Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the\ncluster peering process.\n"
+                },
+                "partition": {
+                    "type": "string"
+                },
+                "peerCaPems": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "peerId": {
+                    "type": "string"
+                },
+                "peerName": {
+                    "type": "string",
+                    "description": "The name assigned to the peer cluster. The `peer_name` is used to reference the peer cluster in service discovery\nqueries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.\n"
+                },
+                "peerServerAddresses": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "peerServerName": {
+                    "type": "string"
+                },
+                "peeringToken": {
+                    "type": "string",
+                    "description": "The peering token fetched from the peer cluster.\n"
+                },
+                "state": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "deletedAt",
+                "peerCaPems",
+                "peerId",
+                "peerName",
+                "peerServerAddresses",
+                "peerServerName",
+                "peeringToken",
+                "state"
+            ],
+            "inputProperties": {
+                "meta": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the\ncluster peering process.\n"
+                },
+                "partition": {
+                    "type": "string"
+                },
+                "peerName": {
+                    "type": "string",
+                    "description": "The name assigned to the peer cluster. The `peer_name` is used to reference the peer cluster in service discovery\nqueries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.\n"
+                },
+                "peeringToken": {
+                    "type": "string",
+                    "description": "The peering token fetched from the peer cluster.\n"
+                }
+            },
+            "requiredInputs": [
+                "peerName",
+                "peeringToken"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Peering resources.\n",
+                "properties": {
+                    "deletedAt": {
+                        "type": "string"
+                    },
+                    "meta": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the\ncluster peering process.\n"
+                    },
+                    "partition": {
+                        "type": "string"
+                    },
+                    "peerCaPems": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "peerId": {
+                        "type": "string"
+                    },
+                    "peerName": {
+                        "type": "string",
+                        "description": "The name assigned to the peer cluster. The `peer_name` is used to reference the peer cluster in service discovery\nqueries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.\n"
+                    },
+                    "peerServerAddresses": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "peerServerName": {
+                        "type": "string"
+                    },
+                    "peeringToken": {
+                        "type": "string",
+                        "description": "The peering token fetched from the peer cluster.\n"
+                    },
+                    "state": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "consul:index/peeringToken:PeeringToken": {
+            "description": "[Cluster Peering](https://www.consul.io/docs/connect/cluster-peering) can be used to create connections between two or more independent clusters so that services deployed to different partitions or datacenters can communicate.\n\nThe `cluster_peering_token` resource can be used to generate a peering token that can later be used to establish a peering connection.\n\n\u003e **Cluster peering is currently in technical preview:** Functionality associated with cluster peering is subject to change. You should never use the technical preview release in secure environments or production scenarios. Features in technical preview may have performance issues, scaling issues, and limited support.\n\nThe functionality described here is available only in Consul version 1.13.0 and later.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as consul from \"@pulumi/consul\";\n\nconst token = new consul.PeeringToken(\"token\", {\n    peerName: \"eu-cluster\",\n});\n```\n```python\nimport pulumi\nimport pulumi_consul as consul\n\ntoken = consul.PeeringToken(\"token\", peer_name=\"eu-cluster\")\n```\n```csharp\nusing Pulumi;\nusing Consul = Pulumi.Consul;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var token = new Consul.PeeringToken(\"token\", new Consul.PeeringTokenArgs\n        {\n            PeerName = \"eu-cluster\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-consul/sdk/v3/go/consul\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := consul.NewPeeringToken(ctx, \"token\", \u0026consul.PeeringTokenArgs{\n\t\t\tPeerName: pulumi.String(\"eu-cluster\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "meta": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the\ncluster peering process.\n"
+                },
+                "partition": {
+                    "type": "string"
+                },
+                "peerName": {
+                    "type": "string",
+                    "description": "The name assigned to the peer cluster. The `peer_name` is used to reference the peer cluster in service discovery\nqueries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.\n"
+                },
+                "peeringToken": {
+                    "type": "string",
+                    "description": "The generated peering token\n",
+                    "language": {
+                        "csharp": {
+                            "name": "Token"
+                        }
+                    }
+                }
+            },
+            "required": [
+                "peerName",
+                "peeringToken"
+            ],
+            "inputProperties": {
+                "meta": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the\ncluster peering process.\n"
+                },
+                "partition": {
+                    "type": "string"
+                },
+                "peerName": {
+                    "type": "string",
+                    "description": "The name assigned to the peer cluster. The `peer_name` is used to reference the peer cluster in service discovery\nqueries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.\n"
+                }
+            },
+            "requiredInputs": [
+                "peerName"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering PeeringToken resources.\n",
+                "properties": {
+                    "meta": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the\ncluster peering process.\n"
+                    },
+                    "partition": {
+                        "type": "string"
+                    },
+                    "peerName": {
+                        "type": "string",
+                        "description": "The name assigned to the peer cluster. The `peer_name` is used to reference the peer cluster in service discovery\nqueries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.\n"
+                    },
+                    "peeringToken": {
+                        "type": "string",
+                        "description": "The generated peering token\n",
+                        "language": {
+                            "csharp": {
+                                "name": "Token"
+                            }
+                        }
                     }
                 },
                 "type": "object"
@@ -4796,7 +5131,8 @@
                 },
                 "token": {
                     "type": "string",
-                    "description": "The ACL token to use when saving the prepared query.\nThis overrides the token that the agent provides by default.\n"
+                    "description": "The ACL token to use when saving the prepared query.\nThis overrides the token that the agent provides by default.\n",
+                    "deprecationMessage": "The token argument has been deprecated and will be removed in a future release.\nPlease use the token argument in the provider configuration"
                 }
             },
             "required": [
@@ -4878,7 +5214,8 @@
                 },
                 "token": {
                     "type": "string",
-                    "description": "The ACL token to use when saving the prepared query.\nThis overrides the token that the agent provides by default.\n"
+                    "description": "The ACL token to use when saving the prepared query.\nThis overrides the token that the agent provides by default.\n",
+                    "deprecationMessage": "The token argument has been deprecated and will be removed in a future release.\nPlease use the token argument in the provider configuration"
                 }
             },
             "requiredInputs": [
@@ -4961,7 +5298,8 @@
                     },
                     "token": {
                         "type": "string",
-                        "description": "The ACL token to use when saving the prepared query.\nThis overrides the token that the agent provides by default.\n"
+                        "description": "The ACL token to use when saving the prepared query.\nThis overrides the token that the agent provides by default.\n",
+                        "deprecationMessage": "The token argument has been deprecated and will be removed in a future release.\nPlease use the token argument in the provider configuration"
                     }
                 },
                 "type": "object"
@@ -6188,6 +6526,61 @@
                 ]
             }
         },
+        "consul:index/getConfigEntry:getConfigEntry": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getConfigEntry.\n",
+                "properties": {
+                    "kind": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "namespace": {
+                        "type": "string"
+                    },
+                    "partition": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "kind",
+                    "name"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getConfigEntry.\n",
+                "properties": {
+                    "configJson": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "namespace": {
+                        "type": "string"
+                    },
+                    "partition": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "configJson",
+                    "kind",
+                    "name",
+                    "id"
+                ]
+            }
+        },
         "consul:index/getDatacenters:getDatacenters": {
             "description": "The `consul.getDatacenters` data source returns the list of all knwown Consul\ndatacenters.\n",
             "outputs": {
@@ -6242,7 +6635,8 @@
                     },
                     "token": {
                         "type": "string",
-                        "description": "The ACL token to use. This overrides the\ntoken that the agent provides by default.\n"
+                        "description": "The ACL token to use. This overrides the\ntoken that the agent provides by default.\n",
+                        "deprecationMessage": "The token argument has been deprecated and will be removed in a future release.\nPlease use the token argument in the provider configuration"
                     }
                 },
                 "type": "object",
@@ -6285,7 +6679,8 @@
                         "description": "A map of the subkeys and values is set if no `subkey`\nblock is provided.\n"
                     },
                     "token": {
-                        "type": "string"
+                        "type": "string",
+                        "deprecationMessage": "The token argument has been deprecated and will be removed in a future release.\nPlease use the token argument in the provider configuration"
                     },
                     "var": {
                         "type": "object",
@@ -6330,7 +6725,8 @@
                     },
                     "token": {
                         "type": "string",
-                        "description": "The ACL token to use. This overrides the\ntoken that the agent provides by default.\n"
+                        "description": "The ACL token to use. This overrides the\ntoken that the agent provides by default.\n",
+                        "deprecationMessage": "The token argument has been deprecated and will be removed in a future release.\nPlease use the token argument in the provider configuration"
                     }
                 },
                 "type": "object"
@@ -6359,7 +6755,8 @@
                         "type": "string"
                     },
                     "token": {
-                        "type": "string"
+                        "type": "string",
+                        "deprecationMessage": "The token argument has been deprecated and will be removed in a future release.\nPlease use the token argument in the provider configuration"
                     },
                     "var": {
                         "type": "object",
@@ -6387,7 +6784,8 @@
                     },
                     "token": {
                         "type": "string",
-                        "description": "The ACL token to use. This overrides the\ntoken that the agent provides by default.\n"
+                        "description": "The ACL token to use. This overrides the\ntoken that the agent provides by default.\n",
+                        "deprecationMessage": "The token argument has been deprecated and will be removed in a future release.\nPlease use the token argument in the provider configuration"
                     },
                     "uuid": {
                         "type": "string",
@@ -6418,7 +6816,8 @@
                         "description": "The list of Consul servers in this network area\n"
                     },
                     "token": {
-                        "type": "string"
+                        "type": "string",
+                        "deprecationMessage": "The token argument has been deprecated and will be removed in a future release.\nPlease use the token argument in the provider configuration"
                     },
                     "uuid": {
                         "type": "string",
@@ -6445,7 +6844,8 @@
                     },
                     "token": {
                         "type": "string",
-                        "description": "The ACL token to use. This overrides the\ntoken that the agent provides by default.\n"
+                        "description": "The ACL token to use. This overrides the\ntoken that the agent provides by default.\n",
+                        "deprecationMessage": "The token argument has been deprecated and will be removed in a future release.\nPlease use the token argument in the provider configuration"
                     }
                 },
                 "type": "object"
@@ -6469,7 +6869,8 @@
                         "description": "The list of network segments.\n"
                     },
                     "token": {
-                        "type": "string"
+                        "type": "string",
+                        "deprecationMessage": "The token argument has been deprecated and will be removed in a future release.\nPlease use the token argument in the provider configuration"
                     }
                 },
                 "type": "object",
@@ -6540,6 +6941,116 @@
                     "nodeIds",
                     "nodeNames",
                     "nodes",
+                    "id"
+                ]
+            }
+        },
+        "consul:index/getPeering:getPeering": {
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as consul from \"@pulumi/consul\";\n\nconst basic = pulumi.output(consul.getPeering({\n    peerName: \"peered-cluster\",\n}));\n```\n```python\nimport pulumi\nimport pulumi_consul as consul\n\nbasic = consul.get_peering(peer_name=\"peered-cluster\")\n```\n```csharp\nusing Pulumi;\nusing Consul = Pulumi.Consul;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var basic = Output.Create(Consul.GetPeering.InvokeAsync(new Consul.GetPeeringArgs\n        {\n            PeerName = \"peered-cluster\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-consul/sdk/v3/go/consul\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := consul.LookupPeering(ctx, \u0026GetPeeringArgs{\n\t\t\tPeerName: \"peered-cluster\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getPeering.\n",
+                "properties": {
+                    "partition": {
+                        "type": "string"
+                    },
+                    "peerName": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "peerName"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getPeering.\n",
+                "properties": {
+                    "deletedAt": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "meta": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    },
+                    "partition": {
+                        "type": "string"
+                    },
+                    "peerCaPems": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "peerId": {
+                        "type": "string"
+                    },
+                    "peerName": {
+                        "type": "string"
+                    },
+                    "peerServerAddresses": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "peerServerName": {
+                        "type": "string"
+                    },
+                    "state": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "deletedAt",
+                    "meta",
+                    "peerCaPems",
+                    "peerId",
+                    "peerName",
+                    "peerServerAddresses",
+                    "peerServerName",
+                    "state",
+                    "id"
+                ]
+            }
+        },
+        "consul:index/getPeerings:getPeerings": {
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as consul from \"@pulumi/consul\";\n\nconst peers = pulumi.output(consul.getPeerings());\n```\n```python\nimport pulumi\nimport pulumi_consul as consul\n\npeers = consul.get_peerings()\n```\n```csharp\nusing Pulumi;\nusing Consul = Pulumi.Consul;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var peers = Output.Create(Consul.GetPeerings.InvokeAsync());\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-consul/sdk/v3/go/consul\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := consul.GetPeerings(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getPeerings.\n",
+                "properties": {
+                    "partition": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getPeerings.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "partition": {
+                        "type": "string"
+                    },
+                    "peers": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/consul:index/getPeeringsPeer:getPeeringsPeer"
+                        }
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "peers",
                     "id"
                 ]
             }

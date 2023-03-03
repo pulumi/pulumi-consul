@@ -72,6 +72,9 @@ type CatalogEntry struct {
 	// the node. Supported values are documented below.
 	Services CatalogEntryServiceArrayOutput `pulumi:"services"`
 	// ACL token.
+	//
+	// Deprecated: The token argument has been deprecated and will be removed in a future release.
+	// Please use the token argument in the provider configuration
 	Token pulumi.StringPtrOutput `pulumi:"token"`
 }
 
@@ -123,6 +126,9 @@ type catalogEntryState struct {
 	// the node. Supported values are documented below.
 	Services []CatalogEntryService `pulumi:"services"`
 	// ACL token.
+	//
+	// Deprecated: The token argument has been deprecated and will be removed in a future release.
+	// Please use the token argument in the provider configuration
 	Token *string `pulumi:"token"`
 }
 
@@ -140,6 +146,9 @@ type CatalogEntryState struct {
 	// the node. Supported values are documented below.
 	Services CatalogEntryServiceArrayInput
 	// ACL token.
+	//
+	// Deprecated: The token argument has been deprecated and will be removed in a future release.
+	// Please use the token argument in the provider configuration
 	Token pulumi.StringPtrInput
 }
 
@@ -161,6 +170,9 @@ type catalogEntryArgs struct {
 	// the node. Supported values are documented below.
 	Services []CatalogEntryService `pulumi:"services"`
 	// ACL token.
+	//
+	// Deprecated: The token argument has been deprecated and will be removed in a future release.
+	// Please use the token argument in the provider configuration
 	Token *string `pulumi:"token"`
 }
 
@@ -179,6 +191,9 @@ type CatalogEntryArgs struct {
 	// the node. Supported values are documented below.
 	Services CatalogEntryServiceArrayInput
 	// ACL token.
+	//
+	// Deprecated: The token argument has been deprecated and will be removed in a future release.
+	// Please use the token argument in the provider configuration
 	Token pulumi.StringPtrInput
 }
 

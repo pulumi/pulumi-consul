@@ -55,6 +55,9 @@ type GetNetworkSegmentsArgs struct {
 	Datacenter *string `pulumi:"datacenter"`
 	// The ACL token to use. This overrides the
 	// token that the agent provides by default.
+	//
+	// Deprecated: The token argument has been deprecated and will be removed in a future release.
+	// Please use the token argument in the provider configuration
 	Token *string `pulumi:"token"`
 }
 
@@ -66,7 +69,9 @@ type GetNetworkSegmentsResult struct {
 	Id string `pulumi:"id"`
 	// The list of network segments.
 	Segments []string `pulumi:"segments"`
-	Token    *string  `pulumi:"token"`
+	// Deprecated: The token argument has been deprecated and will be removed in a future release.
+	// Please use the token argument in the provider configuration
+	Token *string `pulumi:"token"`
 }
 
 func GetNetworkSegmentsOutput(ctx *pulumi.Context, args GetNetworkSegmentsOutputArgs, opts ...pulumi.InvokeOption) GetNetworkSegmentsResultOutput {
@@ -89,6 +94,9 @@ type GetNetworkSegmentsOutputArgs struct {
 	Datacenter pulumi.StringPtrInput `pulumi:"datacenter"`
 	// The ACL token to use. This overrides the
 	// token that the agent provides by default.
+	//
+	// Deprecated: The token argument has been deprecated and will be removed in a future release.
+	// Please use the token argument in the provider configuration
 	Token pulumi.StringPtrInput `pulumi:"token"`
 }
 
@@ -126,6 +134,8 @@ func (o GetNetworkSegmentsResultOutput) Segments() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetNetworkSegmentsResult) []string { return v.Segments }).(pulumi.StringArrayOutput)
 }
 
+// Deprecated: The token argument has been deprecated and will be removed in a future release.
+// Please use the token argument in the provider configuration
 func (o GetNetworkSegmentsResultOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNetworkSegmentsResult) *string { return v.Token }).(pulumi.StringPtrOutput)
 }

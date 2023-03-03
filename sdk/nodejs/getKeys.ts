@@ -73,6 +73,9 @@ export interface GetKeysArgs {
     /**
      * The ACL token to use. This overrides the
      * token that the agent provides by default.
+     *
+     * @deprecated The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration
      */
     token?: string;
 }
@@ -94,6 +97,10 @@ export interface GetKeysResult {
     readonly keys?: outputs.GetKeysKey[];
     readonly namespace?: string;
     readonly partition?: string;
+    /**
+     * @deprecated The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration
+     */
     readonly token?: string;
     readonly var: {[key: string]: string};
 }
@@ -127,6 +134,9 @@ export interface GetKeysOutputArgs {
     /**
      * The ACL token to use. This overrides the
      * token that the agent provides by default.
+     *
+     * @deprecated The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration
      */
     token?: pulumi.Input<string>;
 }

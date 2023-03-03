@@ -52,6 +52,11 @@ class KeyPrefixArgs:
         if subkeys is not None:
             pulumi.set(__self__, "subkeys", subkeys)
         if token is not None:
+            warnings.warn("""The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration""", DeprecationWarning)
+            pulumi.log.warn("""token is deprecated: The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration""")
+        if token is not None:
             pulumi.set(__self__, "token", token)
 
     @property
@@ -187,6 +192,11 @@ class _KeyPrefixState:
             pulumi.set(__self__, "subkey_collection", subkey_collection)
         if subkeys is not None:
             pulumi.set(__self__, "subkeys", subkeys)
+        if token is not None:
+            warnings.warn("""The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration""", DeprecationWarning)
+            pulumi.log.warn("""token is deprecated: The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration""")
         if token is not None:
             pulumi.set(__self__, "token", token)
 
@@ -430,6 +440,11 @@ class KeyPrefix(pulumi.CustomResource):
             __props__.__dict__["path_prefix"] = path_prefix
             __props__.__dict__["subkey_collection"] = subkey_collection
             __props__.__dict__["subkeys"] = subkeys
+            if token is not None and not opts.urn:
+                warnings.warn("""The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration""", DeprecationWarning)
+                pulumi.log.warn("""token is deprecated: The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration""")
             __props__.__dict__["token"] = token
         super(KeyPrefix, __self__).__init__(
             'consul:index/keyPrefix:KeyPrefix',

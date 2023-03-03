@@ -39,6 +39,16 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// The `consul_node` resource can be imported
+//
+// ```sh
+//
+//	$ pulumi import consul:index/node:Node example node-name
+//
+// ```
 type Node struct {
 	pulumi.CustomResourceState
 
@@ -52,7 +62,9 @@ type Node struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The partition the node is associated with.
 	Partition pulumi.StringPtrOutput `pulumi:"partition"`
-	Token     pulumi.StringPtrOutput `pulumi:"token"`
+	// Deprecated: The token argument has been deprecated and will be removed in a future release.
+	// Please use the token argument in the provider configuration
+	Token pulumi.StringPtrOutput `pulumi:"token"`
 }
 
 // NewNode registers a new resource with the given unique name, arguments, and options.
@@ -97,7 +109,9 @@ type nodeState struct {
 	Name *string `pulumi:"name"`
 	// The partition the node is associated with.
 	Partition *string `pulumi:"partition"`
-	Token     *string `pulumi:"token"`
+	// Deprecated: The token argument has been deprecated and will be removed in a future release.
+	// Please use the token argument in the provider configuration
+	Token *string `pulumi:"token"`
 }
 
 type NodeState struct {
@@ -111,7 +125,9 @@ type NodeState struct {
 	Name pulumi.StringPtrInput
 	// The partition the node is associated with.
 	Partition pulumi.StringPtrInput
-	Token     pulumi.StringPtrInput
+	// Deprecated: The token argument has been deprecated and will be removed in a future release.
+	// Please use the token argument in the provider configuration
+	Token pulumi.StringPtrInput
 }
 
 func (NodeState) ElementType() reflect.Type {
@@ -129,7 +145,9 @@ type nodeArgs struct {
 	Name *string `pulumi:"name"`
 	// The partition the node is associated with.
 	Partition *string `pulumi:"partition"`
-	Token     *string `pulumi:"token"`
+	// Deprecated: The token argument has been deprecated and will be removed in a future release.
+	// Please use the token argument in the provider configuration
+	Token *string `pulumi:"token"`
 }
 
 // The set of arguments for constructing a Node resource.
@@ -144,7 +162,9 @@ type NodeArgs struct {
 	Name pulumi.StringPtrInput
 	// The partition the node is associated with.
 	Partition pulumi.StringPtrInput
-	Token     pulumi.StringPtrInput
+	// Deprecated: The token argument has been deprecated and will be removed in a future release.
+	// Please use the token argument in the provider configuration
+	Token pulumi.StringPtrInput
 }
 
 func (NodeArgs) ElementType() reflect.Type {
