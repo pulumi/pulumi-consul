@@ -21,6 +21,14 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * ## Import
+ * 
+ * The `consul_node` resource can be imported
+ * 
+ * ```sh
+ *  $ pulumi import consul:index/node:Node example node-name
+ * ```
+ * 
  */
 @ResourceType(type="consul:index/node:Node")
 public class Node extends com.pulumi.resources.CustomResource {
@@ -94,6 +102,14 @@ public class Node extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> partition() {
         return Codegen.optional(this.partition);
     }
+    /**
+     * @deprecated
+     * The token argument has been deprecated and will be removed in a future release.
+     * Please use the token argument in the provider configuration
+     * 
+     */
+    @Deprecated /* The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration */
     @Export(name="token", type=String.class, parameters={})
     private Output</* @Nullable */ String> token;
 

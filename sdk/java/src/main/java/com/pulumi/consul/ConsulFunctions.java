@@ -22,6 +22,8 @@ import com.pulumi.consul.inputs.GetCatalogServiceArgs;
 import com.pulumi.consul.inputs.GetCatalogServicePlainArgs;
 import com.pulumi.consul.inputs.GetCatalogServicesArgs;
 import com.pulumi.consul.inputs.GetCatalogServicesPlainArgs;
+import com.pulumi.consul.inputs.GetConfigEntryArgs;
+import com.pulumi.consul.inputs.GetConfigEntryPlainArgs;
 import com.pulumi.consul.inputs.GetKeyPrefixArgs;
 import com.pulumi.consul.inputs.GetKeyPrefixPlainArgs;
 import com.pulumi.consul.inputs.GetKeysArgs;
@@ -32,6 +34,10 @@ import com.pulumi.consul.inputs.GetNetworkSegmentsArgs;
 import com.pulumi.consul.inputs.GetNetworkSegmentsPlainArgs;
 import com.pulumi.consul.inputs.GetNodesArgs;
 import com.pulumi.consul.inputs.GetNodesPlainArgs;
+import com.pulumi.consul.inputs.GetPeeringArgs;
+import com.pulumi.consul.inputs.GetPeeringPlainArgs;
+import com.pulumi.consul.inputs.GetPeeringsArgs;
+import com.pulumi.consul.inputs.GetPeeringsPlainArgs;
 import com.pulumi.consul.inputs.GetServiceArgs;
 import com.pulumi.consul.inputs.GetServiceHealthArgs;
 import com.pulumi.consul.inputs.GetServiceHealthPlainArgs;
@@ -49,12 +55,15 @@ import com.pulumi.consul.outputs.GetAutopilotHealthResult;
 import com.pulumi.consul.outputs.GetCatalogNodesResult;
 import com.pulumi.consul.outputs.GetCatalogServiceResult;
 import com.pulumi.consul.outputs.GetCatalogServicesResult;
+import com.pulumi.consul.outputs.GetConfigEntryResult;
 import com.pulumi.consul.outputs.GetDatacentersResult;
 import com.pulumi.consul.outputs.GetKeyPrefixResult;
 import com.pulumi.consul.outputs.GetKeysResult;
 import com.pulumi.consul.outputs.GetNetworkAreaMembersResult;
 import com.pulumi.consul.outputs.GetNetworkSegmentsResult;
 import com.pulumi.consul.outputs.GetNodesResult;
+import com.pulumi.consul.outputs.GetPeeringResult;
+import com.pulumi.consul.outputs.GetPeeringsResult;
 import com.pulumi.consul.outputs.GetServiceHealthInvokeResult;
 import com.pulumi.consul.outputs.GetServiceResult;
 import com.pulumi.consul.outputs.GetServicesResult;
@@ -542,6 +551,18 @@ public final class ConsulFunctions {
     public static CompletableFuture<GetCatalogServicesResult> getCatalogServicesPlain(GetCatalogServicesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("consul:index/getCatalogServices:getCatalogServices", TypeShape.of(GetCatalogServicesResult.class), args, Utilities.withVersion(options));
     }
+    public static Output<GetConfigEntryResult> getConfigEntry(GetConfigEntryArgs args) {
+        return getConfigEntry(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetConfigEntryResult> getConfigEntryPlain(GetConfigEntryPlainArgs args) {
+        return getConfigEntryPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetConfigEntryResult> getConfigEntry(GetConfigEntryArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("consul:index/getConfigEntry:getConfigEntry", TypeShape.of(GetConfigEntryResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetConfigEntryResult> getConfigEntryPlain(GetConfigEntryPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("consul:index/getConfigEntry:getConfigEntry", TypeShape.of(GetConfigEntryResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * The `consul.getDatacenters` data source returns the list of all knwown Consul
      * datacenters.
@@ -857,6 +878,76 @@ public final class ConsulFunctions {
      */
     public static CompletableFuture<GetNodesResult> getNodesPlain(GetNodesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("consul:index/getNodes:getNodes", TypeShape.of(GetNodesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetPeeringResult> getPeering(GetPeeringArgs args) {
+        return getPeering(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetPeeringResult> getPeeringPlain(GetPeeringPlainArgs args) {
+        return getPeeringPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetPeeringResult> getPeering(GetPeeringArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("consul:index/getPeering:getPeering", TypeShape.of(GetPeeringResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetPeeringResult> getPeeringPlain(GetPeeringPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("consul:index/getPeering:getPeering", TypeShape.of(GetPeeringResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetPeeringsResult> getPeerings() {
+        return getPeerings(GetPeeringsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetPeeringsResult> getPeeringsPlain() {
+        return getPeeringsPlain(GetPeeringsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetPeeringsResult> getPeerings(GetPeeringsArgs args) {
+        return getPeerings(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetPeeringsResult> getPeeringsPlain(GetPeeringsPlainArgs args) {
+        return getPeeringsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetPeeringsResult> getPeerings(GetPeeringsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("consul:index/getPeerings:getPeerings", TypeShape.of(GetPeeringsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetPeeringsResult> getPeeringsPlain(GetPeeringsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("consul:index/getPeerings:getPeerings", TypeShape.of(GetPeeringsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * `consul.Service` provides details about a specific Consul service in a

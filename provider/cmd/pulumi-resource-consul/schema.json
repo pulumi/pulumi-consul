@@ -4993,7 +4993,12 @@
                 },
                 "peeringToken": {
                     "type": "string",
-                    "description": "The generated peering token\n"
+                    "description": "The generated peering token\n",
+                    "language": {
+                        "csharp": {
+                            "name": "Token"
+                        }
+                    }
                 }
             },
             "required": [
@@ -5038,7 +5043,12 @@
                     },
                     "peeringToken": {
                         "type": "string",
-                        "description": "The generated peering token\n"
+                        "description": "The generated peering token\n",
+                        "language": {
+                            "csharp": {
+                                "name": "Token"
+                            }
+                        }
                     }
                 },
                 "type": "object"

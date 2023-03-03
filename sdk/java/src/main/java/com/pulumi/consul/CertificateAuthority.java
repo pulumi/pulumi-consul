@@ -18,6 +18,8 @@ import javax.annotation.Nullable;
  * The `consul.CertificateAuthority` resource can be used to manage the configuration of
  * the Certificate Authority used by [Consul Connect](https://www.consul.io/docs/connect/ca).
  * 
+ * &gt; **Note:** The keys in the `config` argument must be using Camel case.
+ * 
  * ## Example Usage
  * 
  * ## Import

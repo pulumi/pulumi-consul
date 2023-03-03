@@ -61,7 +61,7 @@ namespace Pulumi.Consul
         /// The generated peering token
         /// </summary>
         [Output("peeringToken")]
-        public Output<string> PeeringToken { get; private set; } = null!;
+        public Output<string> Token { get; private set; } = null!;
 
 
         /// <summary>
@@ -166,7 +166,7 @@ namespace Pulumi.Consul
         /// The generated peering token
         /// </summary>
         [Input("peeringToken")]
-        public Input<string>? PeeringToken { get; set; }
+        public Input<string>? Token { get; set; }
 
         public PeeringTokenState()
         {

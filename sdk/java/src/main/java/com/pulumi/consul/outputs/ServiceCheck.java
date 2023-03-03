@@ -71,7 +71,8 @@ public final class ServiceCheck {
      */
     private @Nullable String tcp;
     /**
-     * @return The timeout value for HTTP checks.
+     * @return Specifies a timeout for outgoing connections in
+     * the case of a HTTP or TCP check.
      * 
      */
     private String timeout;
@@ -160,7 +161,8 @@ public final class ServiceCheck {
         return Optional.ofNullable(this.tcp);
     }
     /**
-     * @return The timeout value for HTTP checks.
+     * @return Specifies a timeout for outgoing connections in
+     * the case of a HTTP or TCP check.
      * 
      */
     public String timeout() {
