@@ -13,18 +13,39 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetCatalogNodesResult {
+    /**
+     * @return The datacenter the keys are being read from to.
+     * 
+     */
     private String datacenter;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    /**
+     * @return A list of the Consul node IDs.
+     * 
+     */
     private List<String> nodeIds;
+    /**
+     * @return A list of the Consul node names.
+     * 
+     */
     private List<String> nodeNames;
+    /**
+     * @return A list of nodes and details about each Consul agent.  The list of
+     * per-node attributes is detailed below.
+     * 
+     */
     private List<GetCatalogNodesNode> nodes;
     private @Nullable List<GetCatalogNodesQueryOption> queryOptions;
 
     private GetCatalogNodesResult() {}
+    /**
+     * @return The datacenter the keys are being read from to.
+     * 
+     */
     public String datacenter() {
         return this.datacenter;
     }
@@ -35,12 +56,25 @@ public final class GetCatalogNodesResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return A list of the Consul node IDs.
+     * 
+     */
     public List<String> nodeIds() {
         return this.nodeIds;
     }
+    /**
+     * @return A list of the Consul node names.
+     * 
+     */
     public List<String> nodeNames() {
         return this.nodeNames;
     }
+    /**
+     * @return A list of nodes and details about each Consul agent.  The list of
+     * per-node attributes is detailed below.
+     * 
+     */
     public List<GetCatalogNodesNode> nodes() {
         return this.nodes;
     }

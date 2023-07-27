@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -43,19 +44,20 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			read := consul.GetAclTokenSecretIdOutput(ctx, GetAclTokenSecretIdOutputArgs{
+//			read := consul.GetAclTokenSecretIdOutput(ctx, consul.GetAclTokenSecretIdOutputArgs{
 //				AccessorId: testAclToken.ID(),
 //				PgpKey:     pulumi.String("keybase:my_username"),
 //			}, nil)
-//			ctx.Export("consulAclTokenSecretId", read.ApplyT(func(read GetAclTokenSecretIdResult) (string, error) {
-//				return read.EncryptedSecretId, nil
-//			}).(pulumi.StringOutput))
+//			ctx.Export("consulAclTokenSecretId", read.ApplyT(func(read consul.GetAclTokenSecretIdResult) (*string, error) {
+//				return &read.EncryptedSecretId, nil
+//			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})
 //	}
 //
 // ```
 func GetAclTokenSecretId(ctx *pulumi.Context, args *GetAclTokenSecretIdArgs, opts ...pulumi.InvokeOption) (*GetAclTokenSecretIdResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAclTokenSecretIdResult
 	err := ctx.Invoke("consul:index/getAclTokenSecretId:getAclTokenSecretId", args, &rv, opts...)
 	if err != nil {

@@ -7,10 +7,22 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// `Service` provides details about a specific Consul service in a
+// given datacenter.  The results include a list of nodes advertising the specified
+// service, the node's IP address, port number, node ID, etc.  By specifying a
+// different datacenter in the `queryOptions` it is possible to retrieve a list of
+// services from a different WAN-attached Consul datacenter.
+//
+// This data source is different from the `getServices` (plural) data
+// source, which provides a summary of the current Consul services.
+//
+// Deprecated: getCatalogService has been deprecated in favor of getService
 func GetCatalogService(ctx *pulumi.Context, args *GetCatalogServiceArgs, opts ...pulumi.InvokeOption) (*GetCatalogServiceResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCatalogServiceResult
 	err := ctx.Invoke("consul:index/getCatalogService:getCatalogService", args, &rv, opts...)
 	if err != nil {
@@ -21,23 +33,39 @@ func GetCatalogService(ctx *pulumi.Context, args *GetCatalogServiceArgs, opts ..
 
 // A collection of arguments for invoking getCatalogService.
 type GetCatalogServiceArgs struct {
-	Datacenter   *string                        `pulumi:"datacenter"`
-	Filter       *string                        `pulumi:"filter"`
-	Name         string                         `pulumi:"name"`
+	// The Consul datacenter to query.  Defaults to the
+	// same value found in `queryOptions` parameter specified below, or if that is
+	// empty, the `datacenter` value found in the Consul agent that this provider is
+	// configured to talk to.
+	Datacenter *string `pulumi:"datacenter"`
+	// A filter expression to refine the query, see https://www.consul.io/api-docs/features/filtering
+	// and https://www.consul.io/api-docs/catalog#filtering-1.
+	Filter *string `pulumi:"filter"`
+	// The service name to select.
+	Name string `pulumi:"name"`
+	// See below.
 	QueryOptions []GetCatalogServiceQueryOption `pulumi:"queryOptions"`
-	Tag          *string                        `pulumi:"tag"`
+	// A single tag that can be used to filter the list of nodes
+	// to return based on a single matching tag..
+	Tag *string `pulumi:"tag"`
 }
 
 // A collection of values returned by getCatalogService.
 type GetCatalogServiceResult struct {
+	// The datacenter the keys are being read from to.
 	Datacenter *string `pulumi:"datacenter"`
 	Filter     *string `pulumi:"filter"`
 	// The provider-assigned unique ID for this managed resource.
-	Id           string                         `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// The name of the service
 	Name         string                         `pulumi:"name"`
 	QueryOptions []GetCatalogServiceQueryOption `pulumi:"queryOptions"`
-	Services     []GetCatalogServiceService     `pulumi:"services"`
-	Tag          *string                        `pulumi:"tag"`
+	// A list of nodes and details about each endpoint advertising a
+	// service.  Each element in the list is a map of attributes that correspond to
+	// each individual node.  The list of per-node attributes is detailed below.
+	Services []GetCatalogServiceService `pulumi:"services"`
+	// The name of the tag used to filter the list of nodes in `service`.
+	Tag *string `pulumi:"tag"`
 }
 
 func GetCatalogServiceOutput(ctx *pulumi.Context, args GetCatalogServiceOutputArgs, opts ...pulumi.InvokeOption) GetCatalogServiceResultOutput {
@@ -55,11 +83,21 @@ func GetCatalogServiceOutput(ctx *pulumi.Context, args GetCatalogServiceOutputAr
 
 // A collection of arguments for invoking getCatalogService.
 type GetCatalogServiceOutputArgs struct {
-	Datacenter   pulumi.StringPtrInput                  `pulumi:"datacenter"`
-	Filter       pulumi.StringPtrInput                  `pulumi:"filter"`
-	Name         pulumi.StringInput                     `pulumi:"name"`
+	// The Consul datacenter to query.  Defaults to the
+	// same value found in `queryOptions` parameter specified below, or if that is
+	// empty, the `datacenter` value found in the Consul agent that this provider is
+	// configured to talk to.
+	Datacenter pulumi.StringPtrInput `pulumi:"datacenter"`
+	// A filter expression to refine the query, see https://www.consul.io/api-docs/features/filtering
+	// and https://www.consul.io/api-docs/catalog#filtering-1.
+	Filter pulumi.StringPtrInput `pulumi:"filter"`
+	// The service name to select.
+	Name pulumi.StringInput `pulumi:"name"`
+	// See below.
 	QueryOptions GetCatalogServiceQueryOptionArrayInput `pulumi:"queryOptions"`
-	Tag          pulumi.StringPtrInput                  `pulumi:"tag"`
+	// A single tag that can be used to filter the list of nodes
+	// to return based on a single matching tag..
+	Tag pulumi.StringPtrInput `pulumi:"tag"`
 }
 
 func (GetCatalogServiceOutputArgs) ElementType() reflect.Type {
@@ -81,6 +119,7 @@ func (o GetCatalogServiceResultOutput) ToGetCatalogServiceResultOutputWithContex
 	return o
 }
 
+// The datacenter the keys are being read from to.
 func (o GetCatalogServiceResultOutput) Datacenter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCatalogServiceResult) *string { return v.Datacenter }).(pulumi.StringPtrOutput)
 }
@@ -94,6 +133,7 @@ func (o GetCatalogServiceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCatalogServiceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the service
 func (o GetCatalogServiceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCatalogServiceResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -102,10 +142,14 @@ func (o GetCatalogServiceResultOutput) QueryOptions() GetCatalogServiceQueryOpti
 	return o.ApplyT(func(v GetCatalogServiceResult) []GetCatalogServiceQueryOption { return v.QueryOptions }).(GetCatalogServiceQueryOptionArrayOutput)
 }
 
+// A list of nodes and details about each endpoint advertising a
+// service.  Each element in the list is a map of attributes that correspond to
+// each individual node.  The list of per-node attributes is detailed below.
 func (o GetCatalogServiceResultOutput) Services() GetCatalogServiceServiceArrayOutput {
 	return o.ApplyT(func(v GetCatalogServiceResult) []GetCatalogServiceService { return v.Services }).(GetCatalogServiceServiceArrayOutput)
 }
 
+// The name of the tag used to filter the list of nodes in `service`.
 func (o GetCatalogServiceResultOutput) Tag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCatalogServiceResult) *string { return v.Tag }).(pulumi.StringPtrOutput)
 }

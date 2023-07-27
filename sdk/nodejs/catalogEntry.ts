@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -121,9 +122,11 @@ Please use the token argument in the provider configuration
             resourceInputs["datacenter"] = args ? args.datacenter : undefined;
             resourceInputs["node"] = args ? args.node : undefined;
             resourceInputs["services"] = args ? args.services : undefined;
-            resourceInputs["token"] = args ? args.token : undefined;
+            resourceInputs["token"] = args?.token ? pulumi.secret(args.token) : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["token"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(CatalogEntry.__pulumiType, name, resourceInputs, opts);
     }
 }

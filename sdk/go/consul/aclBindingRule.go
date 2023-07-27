@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,8 +22,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -32,7 +31,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			minikube, err := consul.NewAclAuthMethod(ctx, "minikube", &consul.AclAuthMethodArgs{
 //				Config: pulumi.StringMap{
-//					"CACert":            pulumi.String(fmt.Sprintf("%v%v%v", "-----BEGIN CERTIFICATE-----\n", "...-----END CERTIFICATE-----\n", "\n")),
+//					"CACert":            pulumi.String("-----BEGIN CERTIFICATE-----\n...-----END CERTIFICATE-----\n\n"),
 //					"Host":              pulumi.String("https://192.0.2.42:8443"),
 //					"ServiceAccountJWT": pulumi.String("eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9..."),
 //				},
@@ -92,6 +91,7 @@ func NewAclBindingRule(ctx *pulumi.Context,
 	if args.BindType == nil {
 		return nil, errors.New("invalid value for required argument 'BindType'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AclBindingRule
 	err := ctx.RegisterResource("consul:index/aclBindingRule:AclBindingRule", name, args, &resource, opts...)
 	if err != nil {
@@ -271,6 +271,41 @@ func (o AclBindingRuleOutput) ToAclBindingRuleOutput() AclBindingRuleOutput {
 
 func (o AclBindingRuleOutput) ToAclBindingRuleOutputWithContext(ctx context.Context) AclBindingRuleOutput {
 	return o
+}
+
+// The name of the ACL auth method this rule apply.
+func (o AclBindingRuleOutput) AuthMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v *AclBindingRule) pulumi.StringOutput { return v.AuthMethod }).(pulumi.StringOutput)
+}
+
+// The name to bind to a token at login-time.
+func (o AclBindingRuleOutput) BindName() pulumi.StringOutput {
+	return o.ApplyT(func(v *AclBindingRule) pulumi.StringOutput { return v.BindName }).(pulumi.StringOutput)
+}
+
+// Specifies the way the binding rule affects a token created at login.
+func (o AclBindingRuleOutput) BindType() pulumi.StringOutput {
+	return o.ApplyT(func(v *AclBindingRule) pulumi.StringOutput { return v.BindType }).(pulumi.StringOutput)
+}
+
+// A free form human readable description of the binding rule.
+func (o AclBindingRuleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AclBindingRule) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The namespace to create the binding rule within.
+func (o AclBindingRuleOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AclBindingRule) pulumi.StringPtrOutput { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+// The partition the ACL binding rule is associated with.
+func (o AclBindingRuleOutput) Partition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AclBindingRule) pulumi.StringPtrOutput { return v.Partition }).(pulumi.StringPtrOutput)
+}
+
+// The expression used to math this rule against valid identities returned from an auth method validation.
+func (o AclBindingRuleOutput) Selector() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AclBindingRule) pulumi.StringPtrOutput { return v.Selector }).(pulumi.StringPtrOutput)
 }
 
 type AclBindingRuleArrayOutput struct{ *pulumi.OutputState }

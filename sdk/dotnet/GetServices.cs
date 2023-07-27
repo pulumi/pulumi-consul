@@ -21,7 +21,7 @@ namespace Pulumi.Consul
         /// source, which provides a detailed response about a specific Consul service.
         /// </summary>
         public static Task<GetServicesResult> InvokeAsync(GetServicesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServicesResult>("consul:index/getServices:getServices", args ?? new GetServicesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetServicesResult>("consul:index/getServices:getServices", args ?? new GetServicesArgs(), options.WithDefaults());
 
         /// <summary>
         /// The `consul.getServices` data source returns a list of Consul services that
@@ -33,11 +33,11 @@ namespace Pulumi.Consul
         /// source, which provides a detailed response about a specific Consul service.
         /// </summary>
         public static Output<GetServicesResult> Invoke(GetServicesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetServicesResult>("consul:index/getServices:getServices", args ?? new GetServicesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetServicesResult>("consul:index/getServices:getServices", args ?? new GetServicesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetServicesArgs : Pulumi.InvokeArgs
+    public sealed class GetServicesArgs : global::Pulumi.InvokeArgs
     {
         [Input("queryOptions")]
         private List<Inputs.GetServicesQueryOptionArgs>? _queryOptions;
@@ -54,9 +54,10 @@ namespace Pulumi.Consul
         public GetServicesArgs()
         {
         }
+        public static new GetServicesArgs Empty => new GetServicesArgs();
     }
 
-    public sealed class GetServicesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetServicesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("queryOptions")]
         private InputList<Inputs.GetServicesQueryOptionInputArgs>? _queryOptions;
@@ -73,6 +74,7 @@ namespace Pulumi.Consul
         public GetServicesInvokeArgs()
         {
         }
+        public static new GetServicesInvokeArgs Empty => new GetServicesInvokeArgs();
     }
 
 

@@ -5,60 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The `consul.CertificateAuthority` resource can be used to manage the configuration of
- * the Certificate Authority used by [Consul Connect](https://www.consul.io/docs/connect/ca).
+ * The `consul.CertificateAuthority` resource can be used to manage the configuration of the Certificate Authority used by [Consul Connect](https://www.consul.io/docs/connect/ca).
  *
  * > **Note:** The keys in the `config` argument must be using Camel case.
  *
- * ## Example Usage
- * ### Using the built-in CA with specific TTL
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as consul from "@pulumi/consul";
- *
- * const connect = new consul.CertificateAuthority("connect", {
- *     config: {
- *         IntermediateCertTTL: "8760h",
- *         LeafCertTTL: "24h",
- *         RotationPeriod: "2160h",
- *     },
- *     connectProvider: "consul",
- * });
- * ```
- * ### Using Vault to manage and sign certificates
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as consul from "@pulumi/consul";
- *
- * const connect = new consul.CertificateAuthority("connect", {
- *     config: {
- *         Address: "http://localhost:8200",
- *         IntermediatePKIPath: "connect-intermediate",
- *         RootPKIPath: "connect-root",
- *         Token: "...",
- *     },
- *     connectProvider: "vault",
- * });
- * ```
- * ### Using the [AWS Certificate Manager Private Certificate Authority](https://aws.amazon.com/certificate-manager/private-certificate-authority/)
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as consul from "@pulumi/consul";
- *
- * const connect = new consul.CertificateAuthority("connect", {
- *     config: {
- *         ExistingARN: "arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-123456789012",
- *     },
- *     connectProvider: "aws-pca",
- * });
- * ```
- *
  * ## Import
- *
- * `certificate_authority` can be imported
  *
  * ```sh
  *  $ pulumi import consul:index/certificateAuthority:CertificateAuthority connect connect-ca
@@ -93,9 +44,15 @@ export class CertificateAuthority extends pulumi.CustomResource {
     }
 
     /**
-     * The raw configuration to use for the chosen provider.
+     * The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+     *
+     * @deprecated The config attribute is deprecated, please use config_json instead.
      */
-    public readonly config!: pulumi.Output<{[key: string]: string}>;
+    public readonly config!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+     */
+    public readonly configJson!: pulumi.Output<string | undefined>;
     /**
      * Specifies the CA provider type to use.
      */
@@ -115,16 +72,15 @@ export class CertificateAuthority extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as CertificateAuthorityState | undefined;
             resourceInputs["config"] = state ? state.config : undefined;
+            resourceInputs["configJson"] = state ? state.configJson : undefined;
             resourceInputs["connectProvider"] = state ? state.connectProvider : undefined;
         } else {
             const args = argsOrState as CertificateAuthorityArgs | undefined;
-            if ((!args || args.config === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'config'");
-            }
             if ((!args || args.connectProvider === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'connectProvider'");
             }
             resourceInputs["config"] = args ? args.config : undefined;
+            resourceInputs["configJson"] = args ? args.configJson : undefined;
             resourceInputs["connectProvider"] = args ? args.connectProvider : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -137,9 +93,15 @@ export class CertificateAuthority extends pulumi.CustomResource {
  */
 export interface CertificateAuthorityState {
     /**
-     * The raw configuration to use for the chosen provider.
+     * The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+     *
+     * @deprecated The config attribute is deprecated, please use config_json instead.
      */
     config?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+     */
+    configJson?: pulumi.Input<string>;
     /**
      * Specifies the CA provider type to use.
      */
@@ -151,9 +113,15 @@ export interface CertificateAuthorityState {
  */
 export interface CertificateAuthorityArgs {
     /**
-     * The raw configuration to use for the chosen provider.
+     * The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+     *
+     * @deprecated The config attribute is deprecated, please use config_json instead.
      */
-    config: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    config?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+     */
+    configJson?: pulumi.Input<string>;
     /**
      * Specifies the CA provider type to use.
      */

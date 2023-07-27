@@ -26,6 +26,57 @@ import javax.annotation.Nullable;
  * The functionality described here is available only in Consul version 1.13.0 and later.
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.consul.Provider;
+ * import com.pulumi.consul.ProviderArgs;
+ * import com.pulumi.consul.PeeringToken;
+ * import com.pulumi.consul.PeeringTokenArgs;
+ * import com.pulumi.consul.Peering;
+ * import com.pulumi.consul.PeeringArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var eu = new Provider(&#34;eu&#34;, ProviderArgs.builder()        
+ *             .address(&#34;eu-cluster:8500&#34;)
+ *             .build());
+ * 
+ *         var us = new Provider(&#34;us&#34;, ProviderArgs.builder()        
+ *             .address(&#34;us-cluster:8500&#34;)
+ *             .build());
+ * 
+ *         var eu_usPeeringToken = new PeeringToken(&#34;eu-usPeeringToken&#34;, PeeringTokenArgs.builder()        
+ *             .peerName(&#34;eu-cluster&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(consul.us())
+ *                 .build());
+ * 
+ *         var eu_usPeering = new Peering(&#34;eu-usPeering&#34;, PeeringArgs.builder()        
+ *             .peerName(&#34;eu-cluster&#34;)
+ *             .peeringToken(consul_peering_token.token().peering_token())
+ *             .meta(Map.of(&#34;hello&#34;, &#34;world&#34;))
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(consul.eu())
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  */
 @ResourceType(type="consul:index/peering:Peering")
@@ -37,16 +88,14 @@ public class Peering extends com.pulumi.resources.CustomResource {
         return this.deletedAt;
     }
     /**
-     * Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the
-     * cluster peering process.
+     * Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the cluster peering process.
      * 
      */
     @Export(name="meta", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> meta;
 
     /**
-     * @return Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the
-     * cluster peering process.
+     * @return Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the cluster peering process.
      * 
      */
     public Output<Optional<Map<String,String>>> meta() {
@@ -71,16 +120,14 @@ public class Peering extends com.pulumi.resources.CustomResource {
         return this.peerId;
     }
     /**
-     * The name assigned to the peer cluster. The `peer_name` is used to reference the peer cluster in service discovery
-     * queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
+     * The name assigned to the peer cluster. The `peer_name` is used to reference the peer cluster in service discovery queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
      * 
      */
     @Export(name="peerName", type=String.class, parameters={})
     private Output<String> peerName;
 
     /**
-     * @return The name assigned to the peer cluster. The `peer_name` is used to reference the peer cluster in service discovery
-     * queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
+     * @return The name assigned to the peer cluster. The `peer_name` is used to reference the peer cluster in service discovery queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
      * 
      */
     public Output<String> peerName() {
@@ -151,6 +198,9 @@ public class Peering extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "peeringToken"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

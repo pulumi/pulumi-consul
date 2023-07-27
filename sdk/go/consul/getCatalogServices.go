@@ -7,10 +7,21 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The `getServices` data source returns a list of Consul services that
+// have been registered with the Consul cluster in a given datacenter.  By
+// specifying a different datacenter in the `queryOptions` it is possible to
+// retrieve a list of services from a different WAN-attached Consul datacenter.
+//
+// This data source is different from the `Service` (singular) data
+// source, which provides a detailed response about a specific Consul service.
+//
+// Deprecated: getCatalogServices has been deprecated in favor of getServices
 func GetCatalogServices(ctx *pulumi.Context, args *GetCatalogServicesArgs, opts ...pulumi.InvokeOption) (*GetCatalogServicesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCatalogServicesResult
 	err := ctx.Invoke("consul:index/getCatalogServices:getCatalogServices", args, &rv, opts...)
 	if err != nil {
@@ -21,18 +32,24 @@ func GetCatalogServices(ctx *pulumi.Context, args *GetCatalogServicesArgs, opts 
 
 // A collection of arguments for invoking getCatalogServices.
 type GetCatalogServicesArgs struct {
+	// See below.
 	QueryOptions []GetCatalogServicesQueryOption `pulumi:"queryOptions"`
 }
 
 // A collection of values returned by getCatalogServices.
 type GetCatalogServicesResult struct {
+	// The datacenter the keys are being read from to.
 	Datacenter string `pulumi:"datacenter"`
 	// The provider-assigned unique ID for this managed resource.
 	Id           string                          `pulumi:"id"`
 	Names        []string                        `pulumi:"names"`
 	QueryOptions []GetCatalogServicesQueryOption `pulumi:"queryOptions"`
 	Services     map[string]string               `pulumi:"services"`
-	Tags         map[string]string               `pulumi:"tags"`
+	// A map of the tags found for each service.  If more than one service
+	// shares the same tag, unique service names will be joined by whitespace (this
+	// is the inverse of `services` and can be used to lookup the services that match
+	// a single tag).
+	Tags map[string]string `pulumi:"tags"`
 }
 
 func GetCatalogServicesOutput(ctx *pulumi.Context, args GetCatalogServicesOutputArgs, opts ...pulumi.InvokeOption) GetCatalogServicesResultOutput {
@@ -50,6 +67,7 @@ func GetCatalogServicesOutput(ctx *pulumi.Context, args GetCatalogServicesOutput
 
 // A collection of arguments for invoking getCatalogServices.
 type GetCatalogServicesOutputArgs struct {
+	// See below.
 	QueryOptions GetCatalogServicesQueryOptionArrayInput `pulumi:"queryOptions"`
 }
 
@@ -72,6 +90,7 @@ func (o GetCatalogServicesResultOutput) ToGetCatalogServicesResultOutputWithCont
 	return o
 }
 
+// The datacenter the keys are being read from to.
 func (o GetCatalogServicesResultOutput) Datacenter() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCatalogServicesResult) string { return v.Datacenter }).(pulumi.StringOutput)
 }
@@ -93,6 +112,10 @@ func (o GetCatalogServicesResultOutput) Services() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetCatalogServicesResult) map[string]string { return v.Services }).(pulumi.StringMapOutput)
 }
 
+// A map of the tags found for each service.  If more than one service
+// shares the same tag, unique service names will be joined by whitespace (this
+// is the inverse of `services` and can be used to lookup the services that match
+// a single tag).
 func (o GetCatalogServicesResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetCatalogServicesResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }

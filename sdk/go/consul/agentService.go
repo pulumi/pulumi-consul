@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -70,6 +71,7 @@ func NewAgentService(ctx *pulumi.Context,
 		args = &AgentServiceArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AgentService
 	err := ctx.RegisterResource("consul:index/agentService:AgentService", name, args, &resource, opts...)
 	if err != nil {
@@ -233,6 +235,28 @@ func (o AgentServiceOutput) ToAgentServiceOutput() AgentServiceOutput {
 
 func (o AgentServiceOutput) ToAgentServiceOutputWithContext(ctx context.Context) AgentServiceOutput {
 	return o
+}
+
+// The address of the service. Defaults to the
+// address of the agent.
+func (o AgentServiceOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v *AgentService) pulumi.StringOutput { return v.Address }).(pulumi.StringOutput)
+}
+
+// The name of the service.
+func (o AgentServiceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *AgentService) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The port of the service.
+func (o AgentServiceOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AgentService) pulumi.IntPtrOutput { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// A list of values that are opaque to Consul,
+// but can be used to distinguish between services or nodes.
+func (o AgentServiceOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AgentService) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
 type AgentServiceArrayOutput struct{ *pulumi.OutputState }

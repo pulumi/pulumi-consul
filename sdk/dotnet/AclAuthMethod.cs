@@ -18,64 +18,60 @@ namespace Pulumi.Consul
     /// Define a `kubernetes` auth method:
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using System.Text.Json;
     /// using Pulumi;
     /// using Consul = Pulumi.Consul;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var minikube = new Consul.AclAuthMethod("minikube", new()
     ///     {
-    ///         var minikube = new Consul.AclAuthMethod("minikube", new Consul.AclAuthMethodArgs
+    ///         Type = "kubernetes",
+    ///         Description = "dev minikube cluster",
+    ///         ConfigJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///         {
-    ///             Type = "kubernetes",
-    ///             Description = "dev minikube cluster",
-    ///             ConfigJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
-    ///             {
-    ///                 { "Host", "https://192.0.2.42:8443" },
-    ///                 { "CACert", @"-----BEGIN CERTIFICATE-----
+    ///             ["Host"] = "https://192.0.2.42:8443",
+    ///             ["CACert"] = @"-----BEGIN CERTIFICATE-----
     /// ...-----END CERTIFICATE-----
-    /// " },
-    ///                 { "ServiceAccountJWT", "eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9..." },
-    ///             }),
-    ///         });
-    ///     }
+    /// ",
+    ///             ["ServiceAccountJWT"] = "eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9...",
+    ///         }),
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// Define a `jwt` auth method:
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using System.Text.Json;
     /// using Pulumi;
     /// using Consul = Pulumi.Consul;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var minikube = new Consul.AclAuthMethod("minikube", new()
     ///     {
-    ///         var minikube = new Consul.AclAuthMethod("minikube", new Consul.AclAuthMethodArgs
+    ///         Type = "jwt",
+    ///         ConfigJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///         {
-    ///             Type = "jwt",
-    ///             ConfigJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///             ["JWKSURL"] = "https://example.com/identity/oidc/.well-known/keys",
+    ///             ["JWTSupportedAlgs"] = "RS256",
+    ///             ["BoundIssuer"] = "https://example.com",
+    ///             ["ClaimMappings"] = new Dictionary&lt;string, object?&gt;
     ///             {
-    ///                 { "JWKSURL", "https://example.com/identity/oidc/.well-known/keys" },
-    ///                 { "JWTSupportedAlgs", "RS256" },
-    ///                 { "BoundIssuer", "https://example.com" },
-    ///                 { "ClaimMappings", new Dictionary&lt;string, object?&gt;
-    ///                 {
-    ///                     { "subject", "subject" },
-    ///                 } },
-    ///             }),
-    ///         });
-    ///     }
+    ///                 ["subject"] = "subject",
+    ///             },
+    ///         }),
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [ConsulResourceType("consul:index/aclAuthMethod:AclAuthMethod")]
-    public partial class AclAuthMethod : Pulumi.CustomResource
+    public partial class AclAuthMethod : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The raw configuration for this ACL auth method. This
@@ -193,7 +189,7 @@ namespace Pulumi.Consul
         }
     }
 
-    public sealed class AclAuthMethodArgs : Pulumi.ResourceArgs
+    public sealed class AclAuthMethodArgs : global::Pulumi.ResourceArgs
     {
         [Input("config")]
         private InputMap<string>? _config;
@@ -283,9 +279,10 @@ namespace Pulumi.Consul
         public AclAuthMethodArgs()
         {
         }
+        public static new AclAuthMethodArgs Empty => new AclAuthMethodArgs();
     }
 
-    public sealed class AclAuthMethodState : Pulumi.ResourceArgs
+    public sealed class AclAuthMethodState : global::Pulumi.ResourceArgs
     {
         [Input("config")]
         private InputMap<string>? _config;
@@ -375,5 +372,6 @@ namespace Pulumi.Consul
         public AclAuthMethodState()
         {
         }
+        public static new AclAuthMethodState Empty => new AclAuthMethodState();
     }
 }

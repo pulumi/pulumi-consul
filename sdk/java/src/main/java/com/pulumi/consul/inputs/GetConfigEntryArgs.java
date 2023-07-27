@@ -15,30 +15,62 @@ public final class GetConfigEntryArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetConfigEntryArgs Empty = new GetConfigEntryArgs();
 
+    /**
+     * The kind of config entry to read.
+     * 
+     */
     @Import(name="kind", required=true)
     private Output<String> kind;
 
+    /**
+     * @return The kind of config entry to read.
+     * 
+     */
     public Output<String> kind() {
         return this.kind;
     }
 
+    /**
+     * The name of the config entry to read.
+     * 
+     */
     @Import(name="name", required=true)
     private Output<String> name;
 
+    /**
+     * @return The name of the config entry to read.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
 
+    /**
+     * The namespace the config entry is associated with.
+     * 
+     */
     @Import(name="namespace")
     private @Nullable Output<String> namespace;
 
+    /**
+     * @return The namespace the config entry is associated with.
+     * 
+     */
     public Optional<Output<String>> namespace() {
         return Optional.ofNullable(this.namespace);
     }
 
+    /**
+     * The partition the config entry is associated with.
+     * 
+     */
     @Import(name="partition")
     private @Nullable Output<String> partition;
 
+    /**
+     * @return The partition the config entry is associated with.
+     * 
+     */
     public Optional<Output<String>> partition() {
         return Optional.ofNullable(this.partition);
     }
@@ -70,38 +102,86 @@ public final class GetConfigEntryArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetConfigEntryArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param kind The kind of config entry to read.
+         * 
+         * @return builder
+         * 
+         */
         public Builder kind(Output<String> kind) {
             $.kind = kind;
             return this;
         }
 
+        /**
+         * @param kind The kind of config entry to read.
+         * 
+         * @return builder
+         * 
+         */
         public Builder kind(String kind) {
             return kind(Output.of(kind));
         }
 
+        /**
+         * @param name The name of the config entry to read.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name The name of the config entry to read.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param namespace The namespace the config entry is associated with.
+         * 
+         * @return builder
+         * 
+         */
         public Builder namespace(@Nullable Output<String> namespace) {
             $.namespace = namespace;
             return this;
         }
 
+        /**
+         * @param namespace The namespace the config entry is associated with.
+         * 
+         * @return builder
+         * 
+         */
         public Builder namespace(String namespace) {
             return namespace(Output.of(namespace));
         }
 
+        /**
+         * @param partition The partition the config entry is associated with.
+         * 
+         * @return builder
+         * 
+         */
         public Builder partition(@Nullable Output<String> partition) {
             $.partition = partition;
             return this;
         }
 
+        /**
+         * @param partition The partition the config entry is associated with.
+         * 
+         * @return builder
+         * 
+         */
         public Builder partition(String partition) {
             return partition(Output.of(partition));
         }

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -76,6 +77,7 @@ func NewNamespace(ctx *pulumi.Context,
 		args = &NamespaceArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Namespace
 	err := ctx.RegisterResource("consul:index/namespace:Namespace", name, args, &resource, opts...)
 	if err != nil {
@@ -247,6 +249,36 @@ func (o NamespaceOutput) ToNamespaceOutput() NamespaceOutput {
 
 func (o NamespaceOutput) ToNamespaceOutputWithContext(ctx context.Context) NamespaceOutput {
 	return o
+}
+
+// Free form namespace description.
+func (o NamespaceOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Namespace) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Specifies arbitrary KV metadata to associate with the namespace.
+func (o NamespaceOutput) Meta() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Namespace) pulumi.StringMapOutput { return v.Meta }).(pulumi.StringMapOutput)
+}
+
+// The namespace name.
+func (o NamespaceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The partition to create the namespace within.
+func (o NamespaceOutput) Partition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Namespace) pulumi.StringPtrOutput { return v.Partition }).(pulumi.StringPtrOutput)
+}
+
+// The list of default policies that should be applied to all tokens created in this namespace.
+func (o NamespaceOutput) PolicyDefaults() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Namespace) pulumi.StringArrayOutput { return v.PolicyDefaults }).(pulumi.StringArrayOutput)
+}
+
+// The list of default roles that should be applied to all tokens created in this namespace.
+func (o NamespaceOutput) RoleDefaults() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Namespace) pulumi.StringArrayOutput { return v.RoleDefaults }).(pulumi.StringArrayOutput)
 }
 
 type NamespaceArrayOutput struct{ *pulumi.OutputState }

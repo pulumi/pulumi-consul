@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Consul.Inputs
 {
 
-    public sealed class KeyPrefixSubkeyCollectionArgs : Pulumi.ResourceArgs
+    public sealed class KeyPrefixSubkeyCollectionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An [unsigned integer value](https://www.consul.io/api/kv.html#flags-1)
@@ -35,5 +35,6 @@ namespace Pulumi.Consul.Inputs
         public KeyPrefixSubkeyCollectionArgs()
         {
         }
+        public static new KeyPrefixSubkeyCollectionArgs Empty => new KeyPrefixSubkeyCollectionArgs();
     }
 }

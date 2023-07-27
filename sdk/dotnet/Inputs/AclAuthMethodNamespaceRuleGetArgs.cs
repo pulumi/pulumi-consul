@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Consul.Inputs
 {
 
-    public sealed class AclAuthMethodNamespaceRuleGetArgs : Pulumi.ResourceArgs
+    public sealed class AclAuthMethodNamespaceRuleGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If the namespace rule's `selector` matches then
@@ -30,5 +30,6 @@ namespace Pulumi.Consul.Inputs
         public AclAuthMethodNamespaceRuleGetArgs()
         {
         }
+        public static new AclAuthMethodNamespaceRuleGetArgs Empty => new AclAuthMethodNamespaceRuleGetArgs();
     }
 }

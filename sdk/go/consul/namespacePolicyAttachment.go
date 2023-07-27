@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -42,6 +43,7 @@ func NewNamespacePolicyAttachment(ctx *pulumi.Context,
 	if args.Policy == nil {
 		return nil, errors.New("invalid value for required argument 'Policy'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource NamespacePolicyAttachment
 	err := ctx.RegisterResource("consul:index/namespacePolicyAttachment:NamespacePolicyAttachment", name, args, &resource, opts...)
 	if err != nil {
@@ -181,6 +183,16 @@ func (o NamespacePolicyAttachmentOutput) ToNamespacePolicyAttachmentOutput() Nam
 
 func (o NamespacePolicyAttachmentOutput) ToNamespacePolicyAttachmentOutputWithContext(ctx context.Context) NamespacePolicyAttachmentOutput {
 	return o
+}
+
+// The namespace to attach the policy to.
+func (o NamespacePolicyAttachmentOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v *NamespacePolicyAttachment) pulumi.StringOutput { return v.Namespace }).(pulumi.StringOutput)
+}
+
+// The name of the policy attached to the namespace.
+func (o NamespacePolicyAttachmentOutput) Policy() pulumi.StringOutput {
+	return o.ApplyT(func(v *NamespacePolicyAttachment) pulumi.StringOutput { return v.Policy }).(pulumi.StringOutput)
 }
 
 type NamespacePolicyAttachmentArrayOutput struct{ *pulumi.OutputState }

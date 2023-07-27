@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = internal.GetEnvOrDefault
 
 type AclAuthMethodNamespaceRule struct {
 	// If the namespace rule's `selector` matches then
@@ -1100,9 +1103,10 @@ func (o PreparedQueryDnsPtrOutput) Ttl() pulumi.StringPtrOutput {
 type PreparedQueryFailover struct {
 	// Remote datacenters to return results from.
 	Datacenters []string `pulumi:"datacenters"`
-	// Return results from this many datacenters,
-	// sorted in ascending order of estimated RTT.
+	// Return results from this many datacenters, sorted in ascending order of estimated RTT.
 	NearestN *int `pulumi:"nearestN"`
+	// Specifies a sequential list of remote datacenters and cluster peers to failover to if there are no healthy service instances in the local datacenter. This option cannot be used with `nearestN` or `datacenters`.
+	Targets []PreparedQueryFailoverTarget `pulumi:"targets"`
 }
 
 // PreparedQueryFailoverInput is an input type that accepts PreparedQueryFailoverArgs and PreparedQueryFailoverOutput values.
@@ -1119,9 +1123,10 @@ type PreparedQueryFailoverInput interface {
 type PreparedQueryFailoverArgs struct {
 	// Remote datacenters to return results from.
 	Datacenters pulumi.StringArrayInput `pulumi:"datacenters"`
-	// Return results from this many datacenters,
-	// sorted in ascending order of estimated RTT.
+	// Return results from this many datacenters, sorted in ascending order of estimated RTT.
 	NearestN pulumi.IntPtrInput `pulumi:"nearestN"`
+	// Specifies a sequential list of remote datacenters and cluster peers to failover to if there are no healthy service instances in the local datacenter. This option cannot be used with `nearestN` or `datacenters`.
+	Targets PreparedQueryFailoverTargetArrayInput `pulumi:"targets"`
 }
 
 func (PreparedQueryFailoverArgs) ElementType() reflect.Type {
@@ -1206,10 +1211,14 @@ func (o PreparedQueryFailoverOutput) Datacenters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PreparedQueryFailover) []string { return v.Datacenters }).(pulumi.StringArrayOutput)
 }
 
-// Return results from this many datacenters,
-// sorted in ascending order of estimated RTT.
+// Return results from this many datacenters, sorted in ascending order of estimated RTT.
 func (o PreparedQueryFailoverOutput) NearestN() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PreparedQueryFailover) *int { return v.NearestN }).(pulumi.IntPtrOutput)
+}
+
+// Specifies a sequential list of remote datacenters and cluster peers to failover to if there are no healthy service instances in the local datacenter. This option cannot be used with `nearestN` or `datacenters`.
+func (o PreparedQueryFailoverOutput) Targets() PreparedQueryFailoverTargetArrayOutput {
+	return o.ApplyT(func(v PreparedQueryFailover) []PreparedQueryFailoverTarget { return v.Targets }).(PreparedQueryFailoverTargetArrayOutput)
 }
 
 type PreparedQueryFailoverPtrOutput struct{ *pulumi.OutputState }
@@ -1246,8 +1255,7 @@ func (o PreparedQueryFailoverPtrOutput) Datacenters() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Return results from this many datacenters,
-// sorted in ascending order of estimated RTT.
+// Return results from this many datacenters, sorted in ascending order of estimated RTT.
 func (o PreparedQueryFailoverPtrOutput) NearestN() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *PreparedQueryFailover) *int {
 		if v == nil {
@@ -1257,12 +1265,125 @@ func (o PreparedQueryFailoverPtrOutput) NearestN() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Specifies a sequential list of remote datacenters and cluster peers to failover to if there are no healthy service instances in the local datacenter. This option cannot be used with `nearestN` or `datacenters`.
+func (o PreparedQueryFailoverPtrOutput) Targets() PreparedQueryFailoverTargetArrayOutput {
+	return o.ApplyT(func(v *PreparedQueryFailover) []PreparedQueryFailoverTarget {
+		if v == nil {
+			return nil
+		}
+		return v.Targets
+	}).(PreparedQueryFailoverTargetArrayOutput)
+}
+
+type PreparedQueryFailoverTarget struct {
+	// The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
+	Datacenter *string `pulumi:"datacenter"`
+	Peer       *string `pulumi:"peer"`
+}
+
+// PreparedQueryFailoverTargetInput is an input type that accepts PreparedQueryFailoverTargetArgs and PreparedQueryFailoverTargetOutput values.
+// You can construct a concrete instance of `PreparedQueryFailoverTargetInput` via:
+//
+//	PreparedQueryFailoverTargetArgs{...}
+type PreparedQueryFailoverTargetInput interface {
+	pulumi.Input
+
+	ToPreparedQueryFailoverTargetOutput() PreparedQueryFailoverTargetOutput
+	ToPreparedQueryFailoverTargetOutputWithContext(context.Context) PreparedQueryFailoverTargetOutput
+}
+
+type PreparedQueryFailoverTargetArgs struct {
+	// The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
+	Datacenter pulumi.StringPtrInput `pulumi:"datacenter"`
+	Peer       pulumi.StringPtrInput `pulumi:"peer"`
+}
+
+func (PreparedQueryFailoverTargetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreparedQueryFailoverTarget)(nil)).Elem()
+}
+
+func (i PreparedQueryFailoverTargetArgs) ToPreparedQueryFailoverTargetOutput() PreparedQueryFailoverTargetOutput {
+	return i.ToPreparedQueryFailoverTargetOutputWithContext(context.Background())
+}
+
+func (i PreparedQueryFailoverTargetArgs) ToPreparedQueryFailoverTargetOutputWithContext(ctx context.Context) PreparedQueryFailoverTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreparedQueryFailoverTargetOutput)
+}
+
+// PreparedQueryFailoverTargetArrayInput is an input type that accepts PreparedQueryFailoverTargetArray and PreparedQueryFailoverTargetArrayOutput values.
+// You can construct a concrete instance of `PreparedQueryFailoverTargetArrayInput` via:
+//
+//	PreparedQueryFailoverTargetArray{ PreparedQueryFailoverTargetArgs{...} }
+type PreparedQueryFailoverTargetArrayInput interface {
+	pulumi.Input
+
+	ToPreparedQueryFailoverTargetArrayOutput() PreparedQueryFailoverTargetArrayOutput
+	ToPreparedQueryFailoverTargetArrayOutputWithContext(context.Context) PreparedQueryFailoverTargetArrayOutput
+}
+
+type PreparedQueryFailoverTargetArray []PreparedQueryFailoverTargetInput
+
+func (PreparedQueryFailoverTargetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PreparedQueryFailoverTarget)(nil)).Elem()
+}
+
+func (i PreparedQueryFailoverTargetArray) ToPreparedQueryFailoverTargetArrayOutput() PreparedQueryFailoverTargetArrayOutput {
+	return i.ToPreparedQueryFailoverTargetArrayOutputWithContext(context.Background())
+}
+
+func (i PreparedQueryFailoverTargetArray) ToPreparedQueryFailoverTargetArrayOutputWithContext(ctx context.Context) PreparedQueryFailoverTargetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreparedQueryFailoverTargetArrayOutput)
+}
+
+type PreparedQueryFailoverTargetOutput struct{ *pulumi.OutputState }
+
+func (PreparedQueryFailoverTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreparedQueryFailoverTarget)(nil)).Elem()
+}
+
+func (o PreparedQueryFailoverTargetOutput) ToPreparedQueryFailoverTargetOutput() PreparedQueryFailoverTargetOutput {
+	return o
+}
+
+func (o PreparedQueryFailoverTargetOutput) ToPreparedQueryFailoverTargetOutputWithContext(ctx context.Context) PreparedQueryFailoverTargetOutput {
+	return o
+}
+
+// The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
+func (o PreparedQueryFailoverTargetOutput) Datacenter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreparedQueryFailoverTarget) *string { return v.Datacenter }).(pulumi.StringPtrOutput)
+}
+
+func (o PreparedQueryFailoverTargetOutput) Peer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreparedQueryFailoverTarget) *string { return v.Peer }).(pulumi.StringPtrOutput)
+}
+
+type PreparedQueryFailoverTargetArrayOutput struct{ *pulumi.OutputState }
+
+func (PreparedQueryFailoverTargetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PreparedQueryFailoverTarget)(nil)).Elem()
+}
+
+func (o PreparedQueryFailoverTargetArrayOutput) ToPreparedQueryFailoverTargetArrayOutput() PreparedQueryFailoverTargetArrayOutput {
+	return o
+}
+
+func (o PreparedQueryFailoverTargetArrayOutput) ToPreparedQueryFailoverTargetArrayOutputWithContext(ctx context.Context) PreparedQueryFailoverTargetArrayOutput {
+	return o
+}
+
+func (o PreparedQueryFailoverTargetArrayOutput) Index(i pulumi.IntInput) PreparedQueryFailoverTargetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PreparedQueryFailoverTarget {
+		return vs[0].([]PreparedQueryFailoverTarget)[vs[1].(int)]
+	}).(PreparedQueryFailoverTargetOutput)
+}
+
 type PreparedQueryTemplate struct {
-	// The regular expression to match with. When using
-	// `namePrefixMatch`, this regex is applied against the query name.
+	// The regular expression to match with. When using `namePrefixMatch`, this regex is applied against the query name.
 	Regexp string `pulumi:"regexp"`
-	// The type of template matching to perform. Currently
-	// only `namePrefixMatch` is supported.
+	// If set to true, will cause the tags list inside the service structure to be stripped of any empty strings.
+	RemoveEmptyTags *bool `pulumi:"removeEmptyTags"`
+	// The type of template matching to perform. Currently only `namePrefixMatch` is supported.
 	Type string `pulumi:"type"`
 }
 
@@ -1278,11 +1399,11 @@ type PreparedQueryTemplateInput interface {
 }
 
 type PreparedQueryTemplateArgs struct {
-	// The regular expression to match with. When using
-	// `namePrefixMatch`, this regex is applied against the query name.
+	// The regular expression to match with. When using `namePrefixMatch`, this regex is applied against the query name.
 	Regexp pulumi.StringInput `pulumi:"regexp"`
-	// The type of template matching to perform. Currently
-	// only `namePrefixMatch` is supported.
+	// If set to true, will cause the tags list inside the service structure to be stripped of any empty strings.
+	RemoveEmptyTags pulumi.BoolPtrInput `pulumi:"removeEmptyTags"`
+	// The type of template matching to perform. Currently only `namePrefixMatch` is supported.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -1363,14 +1484,17 @@ func (o PreparedQueryTemplateOutput) ToPreparedQueryTemplatePtrOutputWithContext
 	}).(PreparedQueryTemplatePtrOutput)
 }
 
-// The regular expression to match with. When using
-// `namePrefixMatch`, this regex is applied against the query name.
+// The regular expression to match with. When using `namePrefixMatch`, this regex is applied against the query name.
 func (o PreparedQueryTemplateOutput) Regexp() pulumi.StringOutput {
 	return o.ApplyT(func(v PreparedQueryTemplate) string { return v.Regexp }).(pulumi.StringOutput)
 }
 
-// The type of template matching to perform. Currently
-// only `namePrefixMatch` is supported.
+// If set to true, will cause the tags list inside the service structure to be stripped of any empty strings.
+func (o PreparedQueryTemplateOutput) RemoveEmptyTags() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PreparedQueryTemplate) *bool { return v.RemoveEmptyTags }).(pulumi.BoolPtrOutput)
+}
+
+// The type of template matching to perform. Currently only `namePrefixMatch` is supported.
 func (o PreparedQueryTemplateOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v PreparedQueryTemplate) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -1399,8 +1523,7 @@ func (o PreparedQueryTemplatePtrOutput) Elem() PreparedQueryTemplateOutput {
 	}).(PreparedQueryTemplateOutput)
 }
 
-// The regular expression to match with. When using
-// `namePrefixMatch`, this regex is applied against the query name.
+// The regular expression to match with. When using `namePrefixMatch`, this regex is applied against the query name.
 func (o PreparedQueryTemplatePtrOutput) Regexp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreparedQueryTemplate) *string {
 		if v == nil {
@@ -1410,8 +1533,17 @@ func (o PreparedQueryTemplatePtrOutput) Regexp() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The type of template matching to perform. Currently
-// only `namePrefixMatch` is supported.
+// If set to true, will cause the tags list inside the service structure to be stripped of any empty strings.
+func (o PreparedQueryTemplatePtrOutput) RemoveEmptyTags() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PreparedQueryTemplate) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RemoveEmptyTags
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The type of template matching to perform. Currently only `namePrefixMatch` is supported.
 func (o PreparedQueryTemplatePtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreparedQueryTemplate) *string {
 		if v == nil {
@@ -1419,6 +1551,184 @@ func (o PreparedQueryTemplatePtrOutput) Type() pulumi.StringPtrOutput {
 		}
 		return &v.Type
 	}).(pulumi.StringPtrOutput)
+}
+
+type ProviderAuthJwt struct {
+	AuthMethod                        string            `pulumi:"authMethod"`
+	BearerToken                       *string           `pulumi:"bearerToken"`
+	Meta                              map[string]string `pulumi:"meta"`
+	UseTerraformCloudWorkloadIdentity *bool             `pulumi:"useTerraformCloudWorkloadIdentity"`
+}
+
+// ProviderAuthJwtInput is an input type that accepts ProviderAuthJwtArgs and ProviderAuthJwtOutput values.
+// You can construct a concrete instance of `ProviderAuthJwtInput` via:
+//
+//	ProviderAuthJwtArgs{...}
+type ProviderAuthJwtInput interface {
+	pulumi.Input
+
+	ToProviderAuthJwtOutput() ProviderAuthJwtOutput
+	ToProviderAuthJwtOutputWithContext(context.Context) ProviderAuthJwtOutput
+}
+
+type ProviderAuthJwtArgs struct {
+	AuthMethod                        pulumi.StringInput    `pulumi:"authMethod"`
+	BearerToken                       pulumi.StringPtrInput `pulumi:"bearerToken"`
+	Meta                              pulumi.StringMapInput `pulumi:"meta"`
+	UseTerraformCloudWorkloadIdentity pulumi.BoolPtrInput   `pulumi:"useTerraformCloudWorkloadIdentity"`
+}
+
+func (ProviderAuthJwtArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProviderAuthJwt)(nil)).Elem()
+}
+
+func (i ProviderAuthJwtArgs) ToProviderAuthJwtOutput() ProviderAuthJwtOutput {
+	return i.ToProviderAuthJwtOutputWithContext(context.Background())
+}
+
+func (i ProviderAuthJwtArgs) ToProviderAuthJwtOutputWithContext(ctx context.Context) ProviderAuthJwtOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderAuthJwtOutput)
+}
+
+func (i ProviderAuthJwtArgs) ToProviderAuthJwtPtrOutput() ProviderAuthJwtPtrOutput {
+	return i.ToProviderAuthJwtPtrOutputWithContext(context.Background())
+}
+
+func (i ProviderAuthJwtArgs) ToProviderAuthJwtPtrOutputWithContext(ctx context.Context) ProviderAuthJwtPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderAuthJwtOutput).ToProviderAuthJwtPtrOutputWithContext(ctx)
+}
+
+// ProviderAuthJwtPtrInput is an input type that accepts ProviderAuthJwtArgs, ProviderAuthJwtPtr and ProviderAuthJwtPtrOutput values.
+// You can construct a concrete instance of `ProviderAuthJwtPtrInput` via:
+//
+//	        ProviderAuthJwtArgs{...}
+//
+//	or:
+//
+//	        nil
+type ProviderAuthJwtPtrInput interface {
+	pulumi.Input
+
+	ToProviderAuthJwtPtrOutput() ProviderAuthJwtPtrOutput
+	ToProviderAuthJwtPtrOutputWithContext(context.Context) ProviderAuthJwtPtrOutput
+}
+
+type providerAuthJwtPtrType ProviderAuthJwtArgs
+
+func ProviderAuthJwtPtr(v *ProviderAuthJwtArgs) ProviderAuthJwtPtrInput {
+	return (*providerAuthJwtPtrType)(v)
+}
+
+func (*providerAuthJwtPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProviderAuthJwt)(nil)).Elem()
+}
+
+func (i *providerAuthJwtPtrType) ToProviderAuthJwtPtrOutput() ProviderAuthJwtPtrOutput {
+	return i.ToProviderAuthJwtPtrOutputWithContext(context.Background())
+}
+
+func (i *providerAuthJwtPtrType) ToProviderAuthJwtPtrOutputWithContext(ctx context.Context) ProviderAuthJwtPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderAuthJwtPtrOutput)
+}
+
+type ProviderAuthJwtOutput struct{ *pulumi.OutputState }
+
+func (ProviderAuthJwtOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProviderAuthJwt)(nil)).Elem()
+}
+
+func (o ProviderAuthJwtOutput) ToProviderAuthJwtOutput() ProviderAuthJwtOutput {
+	return o
+}
+
+func (o ProviderAuthJwtOutput) ToProviderAuthJwtOutputWithContext(ctx context.Context) ProviderAuthJwtOutput {
+	return o
+}
+
+func (o ProviderAuthJwtOutput) ToProviderAuthJwtPtrOutput() ProviderAuthJwtPtrOutput {
+	return o.ToProviderAuthJwtPtrOutputWithContext(context.Background())
+}
+
+func (o ProviderAuthJwtOutput) ToProviderAuthJwtPtrOutputWithContext(ctx context.Context) ProviderAuthJwtPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProviderAuthJwt) *ProviderAuthJwt {
+		return &v
+	}).(ProviderAuthJwtPtrOutput)
+}
+
+func (o ProviderAuthJwtOutput) AuthMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v ProviderAuthJwt) string { return v.AuthMethod }).(pulumi.StringOutput)
+}
+
+func (o ProviderAuthJwtOutput) BearerToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderAuthJwt) *string { return v.BearerToken }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderAuthJwtOutput) Meta() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ProviderAuthJwt) map[string]string { return v.Meta }).(pulumi.StringMapOutput)
+}
+
+func (o ProviderAuthJwtOutput) UseTerraformCloudWorkloadIdentity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ProviderAuthJwt) *bool { return v.UseTerraformCloudWorkloadIdentity }).(pulumi.BoolPtrOutput)
+}
+
+type ProviderAuthJwtPtrOutput struct{ *pulumi.OutputState }
+
+func (ProviderAuthJwtPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProviderAuthJwt)(nil)).Elem()
+}
+
+func (o ProviderAuthJwtPtrOutput) ToProviderAuthJwtPtrOutput() ProviderAuthJwtPtrOutput {
+	return o
+}
+
+func (o ProviderAuthJwtPtrOutput) ToProviderAuthJwtPtrOutputWithContext(ctx context.Context) ProviderAuthJwtPtrOutput {
+	return o
+}
+
+func (o ProviderAuthJwtPtrOutput) Elem() ProviderAuthJwtOutput {
+	return o.ApplyT(func(v *ProviderAuthJwt) ProviderAuthJwt {
+		if v != nil {
+			return *v
+		}
+		var ret ProviderAuthJwt
+		return ret
+	}).(ProviderAuthJwtOutput)
+}
+
+func (o ProviderAuthJwtPtrOutput) AuthMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProviderAuthJwt) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AuthMethod
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderAuthJwtPtrOutput) BearerToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProviderAuthJwt) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BearerToken
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderAuthJwtPtrOutput) Meta() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ProviderAuthJwt) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Meta
+	}).(pulumi.StringMapOutput)
+}
+
+func (o ProviderAuthJwtPtrOutput) UseTerraformCloudWorkloadIdentity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProviderAuthJwt) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseTerraformCloudWorkloadIdentity
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ProviderHeader struct {
@@ -2856,7 +3166,16 @@ func (o GetAutopilotHealthServerArrayOutput) Index(i pulumi.IntInput) GetAutopil
 }
 
 type GetCatalogNodesNode struct {
-	Address         string            `pulumi:"address"`
+	Address string `pulumi:"address"`
+	// The Node ID of the Consul agent.
+	// * [`meta`](https://www.consul.io/docs/agent/http/catalog.html#Meta) - Node meta
+	//   data tag information, if any.
+	// * [`name`](https://www.consul.io/docs/agent/http/catalog.html#Node) - The name
+	//   of the Consul node.
+	// * [`address`](https://www.consul.io/docs/agent/http/catalog.html#Address) - The
+	//   IP address the node is advertising to the Consul cluster.
+	// * [`taggedAddresses`](https://www.consul.io/docs/agent/http/catalog.html#TaggedAddresses) -
+	//   List of explicit LAN and WAN IP addresses for the agent.
 	Id              string            `pulumi:"id"`
 	Meta            map[string]string `pulumi:"meta"`
 	Name            string            `pulumi:"name"`
@@ -2875,7 +3194,16 @@ type GetCatalogNodesNodeInput interface {
 }
 
 type GetCatalogNodesNodeArgs struct {
-	Address         pulumi.StringInput    `pulumi:"address"`
+	Address pulumi.StringInput `pulumi:"address"`
+	// The Node ID of the Consul agent.
+	// * [`meta`](https://www.consul.io/docs/agent/http/catalog.html#Meta) - Node meta
+	//   data tag information, if any.
+	// * [`name`](https://www.consul.io/docs/agent/http/catalog.html#Node) - The name
+	//   of the Consul node.
+	// * [`address`](https://www.consul.io/docs/agent/http/catalog.html#Address) - The
+	//   IP address the node is advertising to the Consul cluster.
+	// * [`taggedAddresses`](https://www.consul.io/docs/agent/http/catalog.html#TaggedAddresses) -
+	//   List of explicit LAN and WAN IP addresses for the agent.
 	Id              pulumi.StringInput    `pulumi:"id"`
 	Meta            pulumi.StringMapInput `pulumi:"meta"`
 	Name            pulumi.StringInput    `pulumi:"name"`
@@ -2937,6 +3265,15 @@ func (o GetCatalogNodesNodeOutput) Address() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCatalogNodesNode) string { return v.Address }).(pulumi.StringOutput)
 }
 
+// The Node ID of the Consul agent.
+//   - [`meta`](https://www.consul.io/docs/agent/http/catalog.html#Meta) - Node meta
+//     data tag information, if any.
+//   - [`name`](https://www.consul.io/docs/agent/http/catalog.html#Node) - The name
+//     of the Consul node.
+//   - [`address`](https://www.consul.io/docs/agent/http/catalog.html#Address) - The
+//     IP address the node is advertising to the Consul cluster.
+//   - [`taggedAddresses`](https://www.consul.io/docs/agent/http/catalog.html#TaggedAddresses) -
+//     List of explicit LAN and WAN IP addresses for the agent.
 func (o GetCatalogNodesNodeOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCatalogNodesNode) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -2974,15 +3311,30 @@ func (o GetCatalogNodesNodeArrayOutput) Index(i pulumi.IntInput) GetCatalogNodes
 }
 
 type GetCatalogNodesQueryOption struct {
-	AllowStale        *bool             `pulumi:"allowStale"`
-	Datacenter        *string           `pulumi:"datacenter"`
-	Near              *string           `pulumi:"near"`
-	NodeMeta          map[string]string `pulumi:"nodeMeta"`
-	Partition         *string           `pulumi:"partition"`
-	RequireConsistent *bool             `pulumi:"requireConsistent"`
-	Token             *string           `pulumi:"token"`
-	WaitIndex         *int              `pulumi:"waitIndex"`
-	WaitTime          *string           `pulumi:"waitTime"`
+	// When `true`, the default, allow responses from
+	// Consul servers that are followers.
+	AllowStale *bool `pulumi:"allowStale"`
+	// The Consul datacenter to query.  Defaults to the
+	// same value found in `queryOptions` parameter specified below, or if that is
+	// empty, the `datacenter` value found in the Consul agent that this provider is
+	// configured to talk to then the datacenter in the provider setup.
+	Datacenter *string           `pulumi:"datacenter"`
+	Near       *string           `pulumi:"near"`
+	NodeMeta   map[string]string `pulumi:"nodeMeta"`
+	Partition  *string           `pulumi:"partition"`
+	// When `true` force the client to perform a
+	// read on at least quorum servers and verify the result is the same.  Defaults
+	// to `false`.
+	RequireConsistent *bool `pulumi:"requireConsistent"`
+	// Specify the Consul ACL token to use when performing the
+	// request.  This defaults to the same API token configured by the `consul`
+	// provider but may be overridden if necessary.
+	Token *string `pulumi:"token"`
+	// Index number used to enable blocking queries.
+	WaitIndex *int `pulumi:"waitIndex"`
+	// Max time the client should wait for a blocking query
+	// to return.
+	WaitTime *string `pulumi:"waitTime"`
 }
 
 // GetCatalogNodesQueryOptionInput is an input type that accepts GetCatalogNodesQueryOptionArgs and GetCatalogNodesQueryOptionOutput values.
@@ -2997,15 +3349,30 @@ type GetCatalogNodesQueryOptionInput interface {
 }
 
 type GetCatalogNodesQueryOptionArgs struct {
-	AllowStale        pulumi.BoolPtrInput   `pulumi:"allowStale"`
-	Datacenter        pulumi.StringPtrInput `pulumi:"datacenter"`
-	Near              pulumi.StringPtrInput `pulumi:"near"`
-	NodeMeta          pulumi.StringMapInput `pulumi:"nodeMeta"`
-	Partition         pulumi.StringPtrInput `pulumi:"partition"`
-	RequireConsistent pulumi.BoolPtrInput   `pulumi:"requireConsistent"`
-	Token             pulumi.StringPtrInput `pulumi:"token"`
-	WaitIndex         pulumi.IntPtrInput    `pulumi:"waitIndex"`
-	WaitTime          pulumi.StringPtrInput `pulumi:"waitTime"`
+	// When `true`, the default, allow responses from
+	// Consul servers that are followers.
+	AllowStale pulumi.BoolPtrInput `pulumi:"allowStale"`
+	// The Consul datacenter to query.  Defaults to the
+	// same value found in `queryOptions` parameter specified below, or if that is
+	// empty, the `datacenter` value found in the Consul agent that this provider is
+	// configured to talk to then the datacenter in the provider setup.
+	Datacenter pulumi.StringPtrInput `pulumi:"datacenter"`
+	Near       pulumi.StringPtrInput `pulumi:"near"`
+	NodeMeta   pulumi.StringMapInput `pulumi:"nodeMeta"`
+	Partition  pulumi.StringPtrInput `pulumi:"partition"`
+	// When `true` force the client to perform a
+	// read on at least quorum servers and verify the result is the same.  Defaults
+	// to `false`.
+	RequireConsistent pulumi.BoolPtrInput `pulumi:"requireConsistent"`
+	// Specify the Consul ACL token to use when performing the
+	// request.  This defaults to the same API token configured by the `consul`
+	// provider but may be overridden if necessary.
+	Token pulumi.StringPtrInput `pulumi:"token"`
+	// Index number used to enable blocking queries.
+	WaitIndex pulumi.IntPtrInput `pulumi:"waitIndex"`
+	// Max time the client should wait for a blocking query
+	// to return.
+	WaitTime pulumi.StringPtrInput `pulumi:"waitTime"`
 }
 
 func (GetCatalogNodesQueryOptionArgs) ElementType() reflect.Type {
@@ -3059,10 +3426,16 @@ func (o GetCatalogNodesQueryOptionOutput) ToGetCatalogNodesQueryOptionOutputWith
 	return o
 }
 
+// When `true`, the default, allow responses from
+// Consul servers that are followers.
 func (o GetCatalogNodesQueryOptionOutput) AllowStale() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetCatalogNodesQueryOption) *bool { return v.AllowStale }).(pulumi.BoolPtrOutput)
 }
 
+// The Consul datacenter to query.  Defaults to the
+// same value found in `queryOptions` parameter specified below, or if that is
+// empty, the `datacenter` value found in the Consul agent that this provider is
+// configured to talk to then the datacenter in the provider setup.
 func (o GetCatalogNodesQueryOptionOutput) Datacenter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCatalogNodesQueryOption) *string { return v.Datacenter }).(pulumi.StringPtrOutput)
 }
@@ -3079,18 +3452,27 @@ func (o GetCatalogNodesQueryOptionOutput) Partition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCatalogNodesQueryOption) *string { return v.Partition }).(pulumi.StringPtrOutput)
 }
 
+// When `true` force the client to perform a
+// read on at least quorum servers and verify the result is the same.  Defaults
+// to `false`.
 func (o GetCatalogNodesQueryOptionOutput) RequireConsistent() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetCatalogNodesQueryOption) *bool { return v.RequireConsistent }).(pulumi.BoolPtrOutput)
 }
 
+// Specify the Consul ACL token to use when performing the
+// request.  This defaults to the same API token configured by the `consul`
+// provider but may be overridden if necessary.
 func (o GetCatalogNodesQueryOptionOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCatalogNodesQueryOption) *string { return v.Token }).(pulumi.StringPtrOutput)
 }
 
+// Index number used to enable blocking queries.
 func (o GetCatalogNodesQueryOptionOutput) WaitIndex() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetCatalogNodesQueryOption) *int { return v.WaitIndex }).(pulumi.IntPtrOutput)
 }
 
+// Max time the client should wait for a blocking query
+// to return.
 func (o GetCatalogNodesQueryOptionOutput) WaitTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCatalogNodesQueryOption) *string { return v.WaitTime }).(pulumi.StringPtrOutput)
 }
@@ -3116,16 +3498,32 @@ func (o GetCatalogNodesQueryOptionArrayOutput) Index(i pulumi.IntInput) GetCatal
 }
 
 type GetCatalogServiceQueryOption struct {
-	AllowStale        *bool             `pulumi:"allowStale"`
-	Datacenter        *string           `pulumi:"datacenter"`
-	Namespace         *string           `pulumi:"namespace"`
-	Near              *string           `pulumi:"near"`
-	NodeMeta          map[string]string `pulumi:"nodeMeta"`
-	Partition         *string           `pulumi:"partition"`
-	RequireConsistent *bool             `pulumi:"requireConsistent"`
-	Token             *string           `pulumi:"token"`
-	WaitIndex         *int              `pulumi:"waitIndex"`
-	WaitTime          *string           `pulumi:"waitTime"`
+	// When `true`, the default, allow responses from
+	// Consul servers that are followers.
+	AllowStale *bool `pulumi:"allowStale"`
+	// The Consul datacenter to query.  Defaults to the
+	// same value found in `queryOptions` parameter specified below, or if that is
+	// empty, the `datacenter` value found in the Consul agent that this provider is
+	// configured to talk to.
+	Datacenter *string `pulumi:"datacenter"`
+	// The namespace to lookup the service.
+	Namespace *string           `pulumi:"namespace"`
+	Near      *string           `pulumi:"near"`
+	NodeMeta  map[string]string `pulumi:"nodeMeta"`
+	Partition *string           `pulumi:"partition"`
+	// When `true` force the client to perform a
+	// read on at least quorum servers and verify the result is the same.  Defaults
+	// to `false`.
+	RequireConsistent *bool `pulumi:"requireConsistent"`
+	// Specify the Consul ACL token to use when performing the
+	// request.  This defaults to the same API token configured by the `consul`
+	// provider but may be overridden if necessary.
+	Token *string `pulumi:"token"`
+	// Index number used to enable blocking queries.
+	WaitIndex *int `pulumi:"waitIndex"`
+	// Max time the client should wait for a blocking query
+	// to return.
+	WaitTime *string `pulumi:"waitTime"`
 }
 
 // GetCatalogServiceQueryOptionInput is an input type that accepts GetCatalogServiceQueryOptionArgs and GetCatalogServiceQueryOptionOutput values.
@@ -3140,16 +3538,32 @@ type GetCatalogServiceQueryOptionInput interface {
 }
 
 type GetCatalogServiceQueryOptionArgs struct {
-	AllowStale        pulumi.BoolPtrInput   `pulumi:"allowStale"`
-	Datacenter        pulumi.StringPtrInput `pulumi:"datacenter"`
-	Namespace         pulumi.StringPtrInput `pulumi:"namespace"`
-	Near              pulumi.StringPtrInput `pulumi:"near"`
-	NodeMeta          pulumi.StringMapInput `pulumi:"nodeMeta"`
-	Partition         pulumi.StringPtrInput `pulumi:"partition"`
-	RequireConsistent pulumi.BoolPtrInput   `pulumi:"requireConsistent"`
-	Token             pulumi.StringPtrInput `pulumi:"token"`
-	WaitIndex         pulumi.IntPtrInput    `pulumi:"waitIndex"`
-	WaitTime          pulumi.StringPtrInput `pulumi:"waitTime"`
+	// When `true`, the default, allow responses from
+	// Consul servers that are followers.
+	AllowStale pulumi.BoolPtrInput `pulumi:"allowStale"`
+	// The Consul datacenter to query.  Defaults to the
+	// same value found in `queryOptions` parameter specified below, or if that is
+	// empty, the `datacenter` value found in the Consul agent that this provider is
+	// configured to talk to.
+	Datacenter pulumi.StringPtrInput `pulumi:"datacenter"`
+	// The namespace to lookup the service.
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	Near      pulumi.StringPtrInput `pulumi:"near"`
+	NodeMeta  pulumi.StringMapInput `pulumi:"nodeMeta"`
+	Partition pulumi.StringPtrInput `pulumi:"partition"`
+	// When `true` force the client to perform a
+	// read on at least quorum servers and verify the result is the same.  Defaults
+	// to `false`.
+	RequireConsistent pulumi.BoolPtrInput `pulumi:"requireConsistent"`
+	// Specify the Consul ACL token to use when performing the
+	// request.  This defaults to the same API token configured by the `consul`
+	// provider but may be overridden if necessary.
+	Token pulumi.StringPtrInput `pulumi:"token"`
+	// Index number used to enable blocking queries.
+	WaitIndex pulumi.IntPtrInput `pulumi:"waitIndex"`
+	// Max time the client should wait for a blocking query
+	// to return.
+	WaitTime pulumi.StringPtrInput `pulumi:"waitTime"`
 }
 
 func (GetCatalogServiceQueryOptionArgs) ElementType() reflect.Type {
@@ -3203,14 +3617,21 @@ func (o GetCatalogServiceQueryOptionOutput) ToGetCatalogServiceQueryOptionOutput
 	return o
 }
 
+// When `true`, the default, allow responses from
+// Consul servers that are followers.
 func (o GetCatalogServiceQueryOptionOutput) AllowStale() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetCatalogServiceQueryOption) *bool { return v.AllowStale }).(pulumi.BoolPtrOutput)
 }
 
+// The Consul datacenter to query.  Defaults to the
+// same value found in `queryOptions` parameter specified below, or if that is
+// empty, the `datacenter` value found in the Consul agent that this provider is
+// configured to talk to.
 func (o GetCatalogServiceQueryOptionOutput) Datacenter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCatalogServiceQueryOption) *string { return v.Datacenter }).(pulumi.StringPtrOutput)
 }
 
+// The namespace to lookup the service.
 func (o GetCatalogServiceQueryOptionOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCatalogServiceQueryOption) *string { return v.Namespace }).(pulumi.StringPtrOutput)
 }
@@ -3227,18 +3648,27 @@ func (o GetCatalogServiceQueryOptionOutput) Partition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCatalogServiceQueryOption) *string { return v.Partition }).(pulumi.StringPtrOutput)
 }
 
+// When `true` force the client to perform a
+// read on at least quorum servers and verify the result is the same.  Defaults
+// to `false`.
 func (o GetCatalogServiceQueryOptionOutput) RequireConsistent() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetCatalogServiceQueryOption) *bool { return v.RequireConsistent }).(pulumi.BoolPtrOutput)
 }
 
+// Specify the Consul ACL token to use when performing the
+// request.  This defaults to the same API token configured by the `consul`
+// provider but may be overridden if necessary.
 func (o GetCatalogServiceQueryOptionOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCatalogServiceQueryOption) *string { return v.Token }).(pulumi.StringPtrOutput)
 }
 
+// Index number used to enable blocking queries.
 func (o GetCatalogServiceQueryOptionOutput) WaitIndex() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetCatalogServiceQueryOption) *int { return v.WaitIndex }).(pulumi.IntPtrOutput)
 }
 
+// Max time the client should wait for a blocking query
+// to return.
 func (o GetCatalogServiceQueryOptionOutput) WaitTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCatalogServiceQueryOption) *string { return v.WaitTime }).(pulumi.StringPtrOutput)
 }
@@ -3270,14 +3700,38 @@ type GetCatalogServiceService struct {
 	Id                string            `pulumi:"id"`
 	Meta              map[string]string `pulumi:"meta"`
 	ModifyIndex       string            `pulumi:"modifyIndex"`
-	Name              string            `pulumi:"name"`
-	NodeAddress       string            `pulumi:"nodeAddress"`
-	NodeId            string            `pulumi:"nodeId"`
-	NodeMeta          map[string]string `pulumi:"nodeMeta"`
-	NodeName          string            `pulumi:"nodeName"`
-	Port              string            `pulumi:"port"`
-	TaggedAddresses   map[string]string `pulumi:"taggedAddresses"`
-	Tags              []string          `pulumi:"tags"`
+	// The service name to select.
+	Name        string `pulumi:"name"`
+	NodeAddress string `pulumi:"nodeAddress"`
+	// The Node ID of the Consul agent advertising the service.
+	// * [`nodeMeta`](https://www.consul.io/docs/agent/http/catalog.html#Meta) - Node
+	//   meta data tag information, if any.
+	// * [`nodeName`](https://www.consul.io/docs/agent/http/catalog.html#Node) - The
+	//   name of the Consul node.
+	// * [`address`](https://www.consul.io/docs/agent/http/catalog.html#ServiceAddress) -
+	//   The IP address of the service.  If the `ServiceAddress` in the Consul catalog
+	//   is empty, this value is automatically populated with the `nodeAddress` (the
+	//   `Address` in the Consul Catalog).
+	// * [`enableTagOverride`](https://www.consul.io/docs/agent/http/catalog.html#ServiceEnableTagOverride) -
+	//   Whether service tags can be overridden on this service.
+	// * [`id`](https://www.consul.io/docs/agent/http/catalog.html#ServiceID) - A
+	//   unique service instance identifier.
+	// * [`name`](https://www.consul.io/docs/agent/http/catalog.html#ServiceName) - The
+	//   name of the service.
+	// * [`port`](https://www.consul.io/docs/agent/http/catalog.html#ServicePort) -
+	//   Port number of the service.
+	// * [`taggedAddresses`](https://www.consul.io/docs/agent/http/catalog.html#TaggedAddresses) -
+	//   List of explicit LAN and WAN IP addresses for the agent.
+	// * [`tags`](https://www.consul.io/docs/agent/http/catalog.html#ServiceTags) -
+	//   List of tags for the service.
+	// * [`meta`](https://www.consul.io/docs/agent/http/catalog.html#Meta) - Service meta
+	//   data tag information, if any.
+	NodeId          string            `pulumi:"nodeId"`
+	NodeMeta        map[string]string `pulumi:"nodeMeta"`
+	NodeName        string            `pulumi:"nodeName"`
+	Port            string            `pulumi:"port"`
+	TaggedAddresses map[string]string `pulumi:"taggedAddresses"`
+	Tags            []string          `pulumi:"tags"`
 }
 
 // GetCatalogServiceServiceInput is an input type that accepts GetCatalogServiceServiceArgs and GetCatalogServiceServiceOutput values.
@@ -3292,20 +3746,44 @@ type GetCatalogServiceServiceInput interface {
 }
 
 type GetCatalogServiceServiceArgs struct {
-	Address           pulumi.StringInput      `pulumi:"address"`
-	CreateIndex       pulumi.StringInput      `pulumi:"createIndex"`
-	EnableTagOverride pulumi.StringInput      `pulumi:"enableTagOverride"`
-	Id                pulumi.StringInput      `pulumi:"id"`
-	Meta              pulumi.StringMapInput   `pulumi:"meta"`
-	ModifyIndex       pulumi.StringInput      `pulumi:"modifyIndex"`
-	Name              pulumi.StringInput      `pulumi:"name"`
-	NodeAddress       pulumi.StringInput      `pulumi:"nodeAddress"`
-	NodeId            pulumi.StringInput      `pulumi:"nodeId"`
-	NodeMeta          pulumi.StringMapInput   `pulumi:"nodeMeta"`
-	NodeName          pulumi.StringInput      `pulumi:"nodeName"`
-	Port              pulumi.StringInput      `pulumi:"port"`
-	TaggedAddresses   pulumi.StringMapInput   `pulumi:"taggedAddresses"`
-	Tags              pulumi.StringArrayInput `pulumi:"tags"`
+	Address           pulumi.StringInput    `pulumi:"address"`
+	CreateIndex       pulumi.StringInput    `pulumi:"createIndex"`
+	EnableTagOverride pulumi.StringInput    `pulumi:"enableTagOverride"`
+	Id                pulumi.StringInput    `pulumi:"id"`
+	Meta              pulumi.StringMapInput `pulumi:"meta"`
+	ModifyIndex       pulumi.StringInput    `pulumi:"modifyIndex"`
+	// The service name to select.
+	Name        pulumi.StringInput `pulumi:"name"`
+	NodeAddress pulumi.StringInput `pulumi:"nodeAddress"`
+	// The Node ID of the Consul agent advertising the service.
+	// * [`nodeMeta`](https://www.consul.io/docs/agent/http/catalog.html#Meta) - Node
+	//   meta data tag information, if any.
+	// * [`nodeName`](https://www.consul.io/docs/agent/http/catalog.html#Node) - The
+	//   name of the Consul node.
+	// * [`address`](https://www.consul.io/docs/agent/http/catalog.html#ServiceAddress) -
+	//   The IP address of the service.  If the `ServiceAddress` in the Consul catalog
+	//   is empty, this value is automatically populated with the `nodeAddress` (the
+	//   `Address` in the Consul Catalog).
+	// * [`enableTagOverride`](https://www.consul.io/docs/agent/http/catalog.html#ServiceEnableTagOverride) -
+	//   Whether service tags can be overridden on this service.
+	// * [`id`](https://www.consul.io/docs/agent/http/catalog.html#ServiceID) - A
+	//   unique service instance identifier.
+	// * [`name`](https://www.consul.io/docs/agent/http/catalog.html#ServiceName) - The
+	//   name of the service.
+	// * [`port`](https://www.consul.io/docs/agent/http/catalog.html#ServicePort) -
+	//   Port number of the service.
+	// * [`taggedAddresses`](https://www.consul.io/docs/agent/http/catalog.html#TaggedAddresses) -
+	//   List of explicit LAN and WAN IP addresses for the agent.
+	// * [`tags`](https://www.consul.io/docs/agent/http/catalog.html#ServiceTags) -
+	//   List of tags for the service.
+	// * [`meta`](https://www.consul.io/docs/agent/http/catalog.html#Meta) - Service meta
+	//   data tag information, if any.
+	NodeId          pulumi.StringInput      `pulumi:"nodeId"`
+	NodeMeta        pulumi.StringMapInput   `pulumi:"nodeMeta"`
+	NodeName        pulumi.StringInput      `pulumi:"nodeName"`
+	Port            pulumi.StringInput      `pulumi:"port"`
+	TaggedAddresses pulumi.StringMapInput   `pulumi:"taggedAddresses"`
+	Tags            pulumi.StringArrayInput `pulumi:"tags"`
 }
 
 func (GetCatalogServiceServiceArgs) ElementType() reflect.Type {
@@ -3383,6 +3861,7 @@ func (o GetCatalogServiceServiceOutput) ModifyIndex() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCatalogServiceService) string { return v.ModifyIndex }).(pulumi.StringOutput)
 }
 
+// The service name to select.
 func (o GetCatalogServiceServiceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCatalogServiceService) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -3391,6 +3870,29 @@ func (o GetCatalogServiceServiceOutput) NodeAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCatalogServiceService) string { return v.NodeAddress }).(pulumi.StringOutput)
 }
 
+// The Node ID of the Consul agent advertising the service.
+//   - [`nodeMeta`](https://www.consul.io/docs/agent/http/catalog.html#Meta) - Node
+//     meta data tag information, if any.
+//   - [`nodeName`](https://www.consul.io/docs/agent/http/catalog.html#Node) - The
+//     name of the Consul node.
+//   - [`address`](https://www.consul.io/docs/agent/http/catalog.html#ServiceAddress) -
+//     The IP address of the service.  If the `ServiceAddress` in the Consul catalog
+//     is empty, this value is automatically populated with the `nodeAddress` (the
+//     `Address` in the Consul Catalog).
+//   - [`enableTagOverride`](https://www.consul.io/docs/agent/http/catalog.html#ServiceEnableTagOverride) -
+//     Whether service tags can be overridden on this service.
+//   - [`id`](https://www.consul.io/docs/agent/http/catalog.html#ServiceID) - A
+//     unique service instance identifier.
+//   - [`name`](https://www.consul.io/docs/agent/http/catalog.html#ServiceName) - The
+//     name of the service.
+//   - [`port`](https://www.consul.io/docs/agent/http/catalog.html#ServicePort) -
+//     Port number of the service.
+//   - [`taggedAddresses`](https://www.consul.io/docs/agent/http/catalog.html#TaggedAddresses) -
+//     List of explicit LAN and WAN IP addresses for the agent.
+//   - [`tags`](https://www.consul.io/docs/agent/http/catalog.html#ServiceTags) -
+//     List of tags for the service.
+//   - [`meta`](https://www.consul.io/docs/agent/http/catalog.html#Meta) - Service meta
+//     data tag information, if any.
 func (o GetCatalogServiceServiceOutput) NodeId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCatalogServiceService) string { return v.NodeId }).(pulumi.StringOutput)
 }
@@ -3436,16 +3938,32 @@ func (o GetCatalogServiceServiceArrayOutput) Index(i pulumi.IntInput) GetCatalog
 }
 
 type GetCatalogServicesQueryOption struct {
-	AllowStale        *bool             `pulumi:"allowStale"`
-	Datacenter        *string           `pulumi:"datacenter"`
-	Namespace         *string           `pulumi:"namespace"`
-	Near              *string           `pulumi:"near"`
-	NodeMeta          map[string]string `pulumi:"nodeMeta"`
-	Partition         *string           `pulumi:"partition"`
-	RequireConsistent *bool             `pulumi:"requireConsistent"`
-	Token             *string           `pulumi:"token"`
-	WaitIndex         *int              `pulumi:"waitIndex"`
-	WaitTime          *string           `pulumi:"waitTime"`
+	// When `true`, the default, allow responses from
+	// Consul servers that are followers.
+	AllowStale *bool `pulumi:"allowStale"`
+	// The Consul datacenter to query.  Defaults to the
+	// same value found in `queryOptions` parameter specified below, or if that is
+	// empty, the `datacenter` value found in the Consul agent that this provider is
+	// configured to talk to.
+	Datacenter *string `pulumi:"datacenter"`
+	// The namespace to lookup the services.
+	Namespace *string           `pulumi:"namespace"`
+	Near      *string           `pulumi:"near"`
+	NodeMeta  map[string]string `pulumi:"nodeMeta"`
+	Partition *string           `pulumi:"partition"`
+	// When `true` force the client to perform a
+	// read on at least quorum servers and verify the result is the same.  Defaults
+	// to `false`.
+	RequireConsistent *bool `pulumi:"requireConsistent"`
+	// Specify the Consul ACL token to use when performing the
+	// request.  This defaults to the same API token configured by the `consul`
+	// provider but may be overridden if necessary.
+	Token *string `pulumi:"token"`
+	// Index number used to enable blocking queries.
+	WaitIndex *int `pulumi:"waitIndex"`
+	// Max time the client should wait for a blocking query
+	// to return.
+	WaitTime *string `pulumi:"waitTime"`
 }
 
 // GetCatalogServicesQueryOptionInput is an input type that accepts GetCatalogServicesQueryOptionArgs and GetCatalogServicesQueryOptionOutput values.
@@ -3460,16 +3978,32 @@ type GetCatalogServicesQueryOptionInput interface {
 }
 
 type GetCatalogServicesQueryOptionArgs struct {
-	AllowStale        pulumi.BoolPtrInput   `pulumi:"allowStale"`
-	Datacenter        pulumi.StringPtrInput `pulumi:"datacenter"`
-	Namespace         pulumi.StringPtrInput `pulumi:"namespace"`
-	Near              pulumi.StringPtrInput `pulumi:"near"`
-	NodeMeta          pulumi.StringMapInput `pulumi:"nodeMeta"`
-	Partition         pulumi.StringPtrInput `pulumi:"partition"`
-	RequireConsistent pulumi.BoolPtrInput   `pulumi:"requireConsistent"`
-	Token             pulumi.StringPtrInput `pulumi:"token"`
-	WaitIndex         pulumi.IntPtrInput    `pulumi:"waitIndex"`
-	WaitTime          pulumi.StringPtrInput `pulumi:"waitTime"`
+	// When `true`, the default, allow responses from
+	// Consul servers that are followers.
+	AllowStale pulumi.BoolPtrInput `pulumi:"allowStale"`
+	// The Consul datacenter to query.  Defaults to the
+	// same value found in `queryOptions` parameter specified below, or if that is
+	// empty, the `datacenter` value found in the Consul agent that this provider is
+	// configured to talk to.
+	Datacenter pulumi.StringPtrInput `pulumi:"datacenter"`
+	// The namespace to lookup the services.
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	Near      pulumi.StringPtrInput `pulumi:"near"`
+	NodeMeta  pulumi.StringMapInput `pulumi:"nodeMeta"`
+	Partition pulumi.StringPtrInput `pulumi:"partition"`
+	// When `true` force the client to perform a
+	// read on at least quorum servers and verify the result is the same.  Defaults
+	// to `false`.
+	RequireConsistent pulumi.BoolPtrInput `pulumi:"requireConsistent"`
+	// Specify the Consul ACL token to use when performing the
+	// request.  This defaults to the same API token configured by the `consul`
+	// provider but may be overridden if necessary.
+	Token pulumi.StringPtrInput `pulumi:"token"`
+	// Index number used to enable blocking queries.
+	WaitIndex pulumi.IntPtrInput `pulumi:"waitIndex"`
+	// Max time the client should wait for a blocking query
+	// to return.
+	WaitTime pulumi.StringPtrInput `pulumi:"waitTime"`
 }
 
 func (GetCatalogServicesQueryOptionArgs) ElementType() reflect.Type {
@@ -3523,14 +4057,21 @@ func (o GetCatalogServicesQueryOptionOutput) ToGetCatalogServicesQueryOptionOutp
 	return o
 }
 
+// When `true`, the default, allow responses from
+// Consul servers that are followers.
 func (o GetCatalogServicesQueryOptionOutput) AllowStale() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetCatalogServicesQueryOption) *bool { return v.AllowStale }).(pulumi.BoolPtrOutput)
 }
 
+// The Consul datacenter to query.  Defaults to the
+// same value found in `queryOptions` parameter specified below, or if that is
+// empty, the `datacenter` value found in the Consul agent that this provider is
+// configured to talk to.
 func (o GetCatalogServicesQueryOptionOutput) Datacenter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCatalogServicesQueryOption) *string { return v.Datacenter }).(pulumi.StringPtrOutput)
 }
 
+// The namespace to lookup the services.
 func (o GetCatalogServicesQueryOptionOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCatalogServicesQueryOption) *string { return v.Namespace }).(pulumi.StringPtrOutput)
 }
@@ -3547,18 +4088,27 @@ func (o GetCatalogServicesQueryOptionOutput) Partition() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v GetCatalogServicesQueryOption) *string { return v.Partition }).(pulumi.StringPtrOutput)
 }
 
+// When `true` force the client to perform a
+// read on at least quorum servers and verify the result is the same.  Defaults
+// to `false`.
 func (o GetCatalogServicesQueryOptionOutput) RequireConsistent() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetCatalogServicesQueryOption) *bool { return v.RequireConsistent }).(pulumi.BoolPtrOutput)
 }
 
+// Specify the Consul ACL token to use when performing the
+// request.  This defaults to the same API token configured by the `consul`
+// provider but may be overridden if necessary.
 func (o GetCatalogServicesQueryOptionOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCatalogServicesQueryOption) *string { return v.Token }).(pulumi.StringPtrOutput)
 }
 
+// Index number used to enable blocking queries.
 func (o GetCatalogServicesQueryOptionOutput) WaitIndex() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetCatalogServicesQueryOption) *int { return v.WaitIndex }).(pulumi.IntPtrOutput)
 }
 
+// Max time the client should wait for a blocking query
+// to return.
 func (o GetCatalogServicesQueryOptionOutput) WaitTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCatalogServicesQueryOption) *string { return v.WaitTime }).(pulumi.StringPtrOutput)
 }
@@ -4372,7 +4922,8 @@ func (o GetNodesQueryOptionArrayOutput) Index(i pulumi.IntInput) GetNodesQueryOp
 }
 
 type GetPeeringsPeer struct {
-	DeletedAt           string            `pulumi:"deletedAt"`
+	DeletedAt string `pulumi:"deletedAt"`
+	// The ID of this resource.
 	Id                  string            `pulumi:"id"`
 	Meta                map[string]string `pulumi:"meta"`
 	Name                string            `pulumi:"name"`
@@ -4396,7 +4947,8 @@ type GetPeeringsPeerInput interface {
 }
 
 type GetPeeringsPeerArgs struct {
-	DeletedAt           pulumi.StringInput      `pulumi:"deletedAt"`
+	DeletedAt pulumi.StringInput `pulumi:"deletedAt"`
+	// The ID of this resource.
 	Id                  pulumi.StringInput      `pulumi:"id"`
 	Meta                pulumi.StringMapInput   `pulumi:"meta"`
 	Name                pulumi.StringInput      `pulumi:"name"`
@@ -4463,6 +5015,7 @@ func (o GetPeeringsPeerOutput) DeletedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPeeringsPeer) string { return v.DeletedAt }).(pulumi.StringOutput)
 }
 
+// The ID of this resource.
 func (o GetPeeringsPeerOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPeeringsPeer) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -5735,8 +6288,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PreparedQueryDnsPtrInput)(nil)).Elem(), PreparedQueryDnsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreparedQueryFailoverInput)(nil)).Elem(), PreparedQueryFailoverArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreparedQueryFailoverPtrInput)(nil)).Elem(), PreparedQueryFailoverArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreparedQueryFailoverTargetInput)(nil)).Elem(), PreparedQueryFailoverTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreparedQueryFailoverTargetArrayInput)(nil)).Elem(), PreparedQueryFailoverTargetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreparedQueryTemplateInput)(nil)).Elem(), PreparedQueryTemplateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreparedQueryTemplatePtrInput)(nil)).Elem(), PreparedQueryTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProviderAuthJwtInput)(nil)).Elem(), ProviderAuthJwtArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProviderAuthJwtPtrInput)(nil)).Elem(), ProviderAuthJwtArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderHeaderInput)(nil)).Elem(), ProviderHeaderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderHeaderArrayInput)(nil)).Elem(), ProviderHeaderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceCheckInput)(nil)).Elem(), ServiceCheckArgs{})
@@ -5817,8 +6374,12 @@ func init() {
 	pulumi.RegisterOutputType(PreparedQueryDnsPtrOutput{})
 	pulumi.RegisterOutputType(PreparedQueryFailoverOutput{})
 	pulumi.RegisterOutputType(PreparedQueryFailoverPtrOutput{})
+	pulumi.RegisterOutputType(PreparedQueryFailoverTargetOutput{})
+	pulumi.RegisterOutputType(PreparedQueryFailoverTargetArrayOutput{})
 	pulumi.RegisterOutputType(PreparedQueryTemplateOutput{})
 	pulumi.RegisterOutputType(PreparedQueryTemplatePtrOutput{})
+	pulumi.RegisterOutputType(ProviderAuthJwtOutput{})
+	pulumi.RegisterOutputType(ProviderAuthJwtPtrOutput{})
 	pulumi.RegisterOutputType(ProviderHeaderOutput{})
 	pulumi.RegisterOutputType(ProviderHeaderArrayOutput{})
 	pulumi.RegisterOutputType(ServiceCheckOutput{})

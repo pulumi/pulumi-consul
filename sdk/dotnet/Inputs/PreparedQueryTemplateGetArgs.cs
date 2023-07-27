@@ -10,18 +10,22 @@ using Pulumi.Serialization;
 namespace Pulumi.Consul.Inputs
 {
 
-    public sealed class PreparedQueryTemplateGetArgs : Pulumi.ResourceArgs
+    public sealed class PreparedQueryTemplateGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The regular expression to match with. When using
-        /// `name_prefix_match`, this regex is applied against the query name.
+        /// The regular expression to match with. When using `name_prefix_match`, this regex is applied against the query name.
         /// </summary>
         [Input("regexp", required: true)]
         public Input<string> Regexp { get; set; } = null!;
 
         /// <summary>
-        /// The type of template matching to perform. Currently
-        /// only `name_prefix_match` is supported.
+        /// If set to true, will cause the tags list inside the service structure to be stripped of any empty strings.
+        /// </summary>
+        [Input("removeEmptyTags")]
+        public Input<bool>? RemoveEmptyTags { get; set; }
+
+        /// <summary>
+        /// The type of template matching to perform. Currently only `name_prefix_match` is supported.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -29,5 +33,6 @@ namespace Pulumi.Consul.Inputs
         public PreparedQueryTemplateGetArgs()
         {
         }
+        public static new PreparedQueryTemplateGetArgs Empty => new PreparedQueryTemplateGetArgs();
     }
 }

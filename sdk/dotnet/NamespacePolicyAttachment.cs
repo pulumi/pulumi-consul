@@ -19,7 +19,7 @@ namespace Pulumi.Consul
     /// ```
     /// </summary>
     [ConsulResourceType("consul:index/namespacePolicyAttachment:NamespacePolicyAttachment")]
-    public partial class NamespacePolicyAttachment : Pulumi.CustomResource
+    public partial class NamespacePolicyAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The namespace to attach the policy to.
@@ -77,7 +77,7 @@ namespace Pulumi.Consul
         }
     }
 
-    public sealed class NamespacePolicyAttachmentArgs : Pulumi.ResourceArgs
+    public sealed class NamespacePolicyAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The namespace to attach the policy to.
@@ -94,9 +94,10 @@ namespace Pulumi.Consul
         public NamespacePolicyAttachmentArgs()
         {
         }
+        public static new NamespacePolicyAttachmentArgs Empty => new NamespacePolicyAttachmentArgs();
     }
 
-    public sealed class NamespacePolicyAttachmentState : Pulumi.ResourceArgs
+    public sealed class NamespacePolicyAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The namespace to attach the policy to.
@@ -113,5 +114,6 @@ namespace Pulumi.Consul
         public NamespacePolicyAttachmentState()
         {
         }
+        public static new NamespacePolicyAttachmentState Empty => new NamespacePolicyAttachmentState();
     }
 }

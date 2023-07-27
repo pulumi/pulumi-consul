@@ -18,6 +18,7 @@ import * as utilities from "./utilities";
  *     config: {
  *         CACert: `-----BEGIN CERTIFICATE-----
  * ...-----END CERTIFICATE-----
+ *
  * `,
  *         Host: "https://192.0.2.42:8443",
  *         ServiceAccountJWT: "eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9...",

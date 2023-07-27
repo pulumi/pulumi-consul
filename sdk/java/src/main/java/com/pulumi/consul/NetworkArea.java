@@ -28,6 +28,36 @@ import javax.annotation.Nullable;
  * complex topologies among Consul datacenters like hub/spoke and more general trees.
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.consul.NetworkArea;
+ * import com.pulumi.consul.NetworkAreaArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var dc2 = new NetworkArea(&#34;dc2&#34;, NetworkAreaArgs.builder()        
+ *             .peerDatacenter(&#34;dc2&#34;)
+ *             .retryJoins(&#34;1.2.3.4&#34;)
+ *             .useTls(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  */
 @ResourceType(type="consul:index/networkArea:NetworkArea")
@@ -151,6 +181,9 @@ Please use the token argument in the provider configuration */
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "token"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

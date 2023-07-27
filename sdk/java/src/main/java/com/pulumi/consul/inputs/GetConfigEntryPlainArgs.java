@@ -14,30 +14,62 @@ public final class GetConfigEntryPlainArgs extends com.pulumi.resources.InvokeAr
 
     public static final GetConfigEntryPlainArgs Empty = new GetConfigEntryPlainArgs();
 
+    /**
+     * The kind of config entry to read.
+     * 
+     */
     @Import(name="kind", required=true)
     private String kind;
 
+    /**
+     * @return The kind of config entry to read.
+     * 
+     */
     public String kind() {
         return this.kind;
     }
 
+    /**
+     * The name of the config entry to read.
+     * 
+     */
     @Import(name="name", required=true)
     private String name;
 
+    /**
+     * @return The name of the config entry to read.
+     * 
+     */
     public String name() {
         return this.name;
     }
 
+    /**
+     * The namespace the config entry is associated with.
+     * 
+     */
     @Import(name="namespace")
     private @Nullable String namespace;
 
+    /**
+     * @return The namespace the config entry is associated with.
+     * 
+     */
     public Optional<String> namespace() {
         return Optional.ofNullable(this.namespace);
     }
 
+    /**
+     * The partition the config entry is associated with.
+     * 
+     */
     @Import(name="partition")
     private @Nullable String partition;
 
+    /**
+     * @return The partition the config entry is associated with.
+     * 
+     */
     public Optional<String> partition() {
         return Optional.ofNullable(this.partition);
     }
@@ -69,21 +101,45 @@ public final class GetConfigEntryPlainArgs extends com.pulumi.resources.InvokeAr
             $ = new GetConfigEntryPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param kind The kind of config entry to read.
+         * 
+         * @return builder
+         * 
+         */
         public Builder kind(String kind) {
             $.kind = kind;
             return this;
         }
 
+        /**
+         * @param name The name of the config entry to read.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param namespace The namespace the config entry is associated with.
+         * 
+         * @return builder
+         * 
+         */
         public Builder namespace(@Nullable String namespace) {
             $.namespace = namespace;
             return this;
         }
 
+        /**
+         * @param partition The partition the config entry is associated with.
+         * 
+         * @return builder
+         * 
+         */
         public Builder partition(@Nullable String partition) {
             $.partition = partition;
             return this;

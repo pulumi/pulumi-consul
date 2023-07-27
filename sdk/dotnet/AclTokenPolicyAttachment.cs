@@ -23,7 +23,7 @@ namespace Pulumi.Consul
     /// ```
     /// </summary>
     [ConsulResourceType("consul:index/aclTokenPolicyAttachment:AclTokenPolicyAttachment")]
-    public partial class AclTokenPolicyAttachment : Pulumi.CustomResource
+    public partial class AclTokenPolicyAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the policy attached to the token.
@@ -81,7 +81,7 @@ namespace Pulumi.Consul
         }
     }
 
-    public sealed class AclTokenPolicyAttachmentArgs : Pulumi.ResourceArgs
+    public sealed class AclTokenPolicyAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the policy attached to the token.
@@ -98,9 +98,10 @@ namespace Pulumi.Consul
         public AclTokenPolicyAttachmentArgs()
         {
         }
+        public static new AclTokenPolicyAttachmentArgs Empty => new AclTokenPolicyAttachmentArgs();
     }
 
-    public sealed class AclTokenPolicyAttachmentState : Pulumi.ResourceArgs
+    public sealed class AclTokenPolicyAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the policy attached to the token.
@@ -117,5 +118,6 @@ namespace Pulumi.Consul
         public AclTokenPolicyAttachmentState()
         {
         }
+        public static new AclTokenPolicyAttachmentState Empty => new AclTokenPolicyAttachmentState();
     }
 }

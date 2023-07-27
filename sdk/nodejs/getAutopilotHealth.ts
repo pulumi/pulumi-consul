@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -16,18 +17,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
  *
- * const read = pulumi.output(consul.getAutopilotHealth());
- *
- * export const health = read.healthy;
+ * const read = consul.getAutopilotHealth({});
+ * export const health = read.then(read => read.healthy);
  * ```
  */
 export function getAutopilotHealth(args?: GetAutopilotHealthArgs, opts?: pulumi.InvokeOptions): Promise<GetAutopilotHealthResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("consul:index/getAutopilotHealth:getAutopilotHealth", {
         "datacenter": args.datacenter,
     }, opts);
@@ -69,9 +66,23 @@ export interface GetAutopilotHealthResult {
      */
     readonly servers: outputs.GetAutopilotHealthServer[];
 }
-
+/**
+ * The `consul.getAutopilotHealth` data source returns
+ * [autopilot health information](https://www.consul.io/api/operator/autopilot.html#read-health)
+ * about the current Consul cluster.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ *
+ * const read = consul.getAutopilotHealth({});
+ * export const health = read.then(read => read.healthy);
+ * ```
+ */
 export function getAutopilotHealthOutput(args?: GetAutopilotHealthOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAutopilotHealthResult> {
-    return pulumi.output(args).apply(a => getAutopilotHealth(a, opts))
+    return pulumi.output(args).apply((a: any) => getAutopilotHealth(a, opts))
 }
 
 /**

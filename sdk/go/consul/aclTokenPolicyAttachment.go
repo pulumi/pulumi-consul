@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -48,6 +49,7 @@ func NewAclTokenPolicyAttachment(ctx *pulumi.Context,
 	if args.TokenId == nil {
 		return nil, errors.New("invalid value for required argument 'TokenId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AclTokenPolicyAttachment
 	err := ctx.RegisterResource("consul:index/aclTokenPolicyAttachment:AclTokenPolicyAttachment", name, args, &resource, opts...)
 	if err != nil {
@@ -187,6 +189,16 @@ func (o AclTokenPolicyAttachmentOutput) ToAclTokenPolicyAttachmentOutput() AclTo
 
 func (o AclTokenPolicyAttachmentOutput) ToAclTokenPolicyAttachmentOutputWithContext(ctx context.Context) AclTokenPolicyAttachmentOutput {
 	return o
+}
+
+// The name of the policy attached to the token.
+func (o AclTokenPolicyAttachmentOutput) Policy() pulumi.StringOutput {
+	return o.ApplyT(func(v *AclTokenPolicyAttachment) pulumi.StringOutput { return v.Policy }).(pulumi.StringOutput)
+}
+
+// The id of the token.
+func (o AclTokenPolicyAttachmentOutput) TokenId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AclTokenPolicyAttachment) pulumi.StringOutput { return v.TokenId }).(pulumi.StringOutput)
 }
 
 type AclTokenPolicyAttachmentArrayOutput struct{ *pulumi.OutputState }

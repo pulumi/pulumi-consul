@@ -9,83 +9,162 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Consul
 {
+    [Obsolete(@"getCatalogService has been deprecated in favor of getService")]
     public static class GetCatalogService
     {
+        /// <summary>
+        /// `consul.Service` provides details about a specific Consul service in a
+        /// given datacenter.  The results include a list of nodes advertising the specified
+        /// service, the node's IP address, port number, node ID, etc.  By specifying a
+        /// different datacenter in the `query_options` it is possible to retrieve a list of
+        /// services from a different WAN-attached Consul datacenter.
+        /// 
+        /// This data source is different from the `consul.getServices` (plural) data
+        /// source, which provides a summary of the current Consul services.
+        /// </summary>
         public static Task<GetCatalogServiceResult> InvokeAsync(GetCatalogServiceArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCatalogServiceResult>("consul:index/getCatalogService:getCatalogService", args ?? new GetCatalogServiceArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetCatalogServiceResult>("consul:index/getCatalogService:getCatalogService", args ?? new GetCatalogServiceArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// `consul.Service` provides details about a specific Consul service in a
+        /// given datacenter.  The results include a list of nodes advertising the specified
+        /// service, the node's IP address, port number, node ID, etc.  By specifying a
+        /// different datacenter in the `query_options` it is possible to retrieve a list of
+        /// services from a different WAN-attached Consul datacenter.
+        /// 
+        /// This data source is different from the `consul.getServices` (plural) data
+        /// source, which provides a summary of the current Consul services.
+        /// </summary>
         public static Output<GetCatalogServiceResult> Invoke(GetCatalogServiceInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetCatalogServiceResult>("consul:index/getCatalogService:getCatalogService", args ?? new GetCatalogServiceInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetCatalogServiceResult>("consul:index/getCatalogService:getCatalogService", args ?? new GetCatalogServiceInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetCatalogServiceArgs : Pulumi.InvokeArgs
+    public sealed class GetCatalogServiceArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The Consul datacenter to query.  Defaults to the
+        /// same value found in `query_options` parameter specified below, or if that is
+        /// empty, the `datacenter` value found in the Consul agent that this provider is
+        /// configured to talk to.
+        /// </summary>
         [Input("datacenter")]
         public string? Datacenter { get; set; }
 
+        /// <summary>
+        /// A filter expression to refine the query, see https://www.consul.io/api-docs/features/filtering
+        /// and https://www.consul.io/api-docs/catalog#filtering-1.
+        /// </summary>
         [Input("filter")]
         public string? Filter { get; set; }
 
+        /// <summary>
+        /// The service name to select.
+        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
         [Input("queryOptions")]
         private List<Inputs.GetCatalogServiceQueryOptionArgs>? _queryOptions;
+
+        /// <summary>
+        /// See below.
+        /// </summary>
         public List<Inputs.GetCatalogServiceQueryOptionArgs> QueryOptions
         {
             get => _queryOptions ?? (_queryOptions = new List<Inputs.GetCatalogServiceQueryOptionArgs>());
             set => _queryOptions = value;
         }
 
+        /// <summary>
+        /// A single tag that can be used to filter the list of nodes
+        /// to return based on a single matching tag..
+        /// </summary>
         [Input("tag")]
         public string? Tag { get; set; }
 
         public GetCatalogServiceArgs()
         {
         }
+        public static new GetCatalogServiceArgs Empty => new GetCatalogServiceArgs();
     }
 
-    public sealed class GetCatalogServiceInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetCatalogServiceInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The Consul datacenter to query.  Defaults to the
+        /// same value found in `query_options` parameter specified below, or if that is
+        /// empty, the `datacenter` value found in the Consul agent that this provider is
+        /// configured to talk to.
+        /// </summary>
         [Input("datacenter")]
         public Input<string>? Datacenter { get; set; }
 
+        /// <summary>
+        /// A filter expression to refine the query, see https://www.consul.io/api-docs/features/filtering
+        /// and https://www.consul.io/api-docs/catalog#filtering-1.
+        /// </summary>
         [Input("filter")]
         public Input<string>? Filter { get; set; }
 
+        /// <summary>
+        /// The service name to select.
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         [Input("queryOptions")]
         private InputList<Inputs.GetCatalogServiceQueryOptionInputArgs>? _queryOptions;
+
+        /// <summary>
+        /// See below.
+        /// </summary>
         public InputList<Inputs.GetCatalogServiceQueryOptionInputArgs> QueryOptions
         {
             get => _queryOptions ?? (_queryOptions = new InputList<Inputs.GetCatalogServiceQueryOptionInputArgs>());
             set => _queryOptions = value;
         }
 
+        /// <summary>
+        /// A single tag that can be used to filter the list of nodes
+        /// to return based on a single matching tag..
+        /// </summary>
         [Input("tag")]
         public Input<string>? Tag { get; set; }
 
         public GetCatalogServiceInvokeArgs()
         {
         }
+        public static new GetCatalogServiceInvokeArgs Empty => new GetCatalogServiceInvokeArgs();
     }
 
 
     [OutputType]
     public sealed class GetCatalogServiceResult
     {
+        /// <summary>
+        /// The datacenter the keys are being read from to.
+        /// </summary>
         public readonly string? Datacenter;
         public readonly string? Filter;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The name of the service
+        /// </summary>
         public readonly string Name;
         public readonly ImmutableArray<Outputs.GetCatalogServiceQueryOptionResult> QueryOptions;
+        /// <summary>
+        /// A list of nodes and details about each endpoint advertising a
+        /// service.  Each element in the list is a map of attributes that correspond to
+        /// each individual node.  The list of per-node attributes is detailed below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetCatalogServiceServiceResult> Services;
+        /// <summary>
+        /// The name of the tag used to filter the list of nodes in `service`.
+        /// </summary>
         public readonly string? Tag;
 
         [OutputConstructor]

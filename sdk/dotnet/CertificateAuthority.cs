@@ -10,100 +10,30 @@ using Pulumi.Serialization;
 namespace Pulumi.Consul
 {
     /// <summary>
-    /// The `consul.CertificateAuthority` resource can be used to manage the configuration of
-    /// the Certificate Authority used by [Consul Connect](https://www.consul.io/docs/connect/ca).
+    /// The `consul.CertificateAuthority` resource can be used to manage the configuration of the Certificate Authority used by [Consul Connect](https://www.consul.io/docs/connect/ca).
     /// 
     /// &gt; **Note:** The keys in the `config` argument must be using Camel case.
     /// 
-    /// ## Example Usage
-    /// ### Using the built-in CA with specific TTL
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Consul = Pulumi.Consul;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var connect = new Consul.CertificateAuthority("connect", new Consul.CertificateAuthorityArgs
-    ///         {
-    ///             Config = 
-    ///             {
-    ///                 { "IntermediateCertTTL", "8760h" },
-    ///                 { "LeafCertTTL", "24h" },
-    ///                 { "RotationPeriod", "2160h" },
-    ///             },
-    ///             ConnectProvider = "consul",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ### Using Vault to manage and sign certificates
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Consul = Pulumi.Consul;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var connect = new Consul.CertificateAuthority("connect", new Consul.CertificateAuthorityArgs
-    ///         {
-    ///             Config = 
-    ///             {
-    ///                 { "Address", "http://localhost:8200" },
-    ///                 { "IntermediatePKIPath", "connect-intermediate" },
-    ///                 { "RootPKIPath", "connect-root" },
-    ///                 { "Token", "..." },
-    ///             },
-    ///             ConnectProvider = "vault",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ### Using the [AWS Certificate Manager Private Certificate Authority](https://aws.amazon.com/certificate-manager/private-certificate-authority/)
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Consul = Pulumi.Consul;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var connect = new Consul.CertificateAuthority("connect", new Consul.CertificateAuthorityArgs
-    ///         {
-    ///             Config = 
-    ///             {
-    ///                 { "ExistingARN", "arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-123456789012" },
-    ///             },
-    ///             ConnectProvider = "aws-pca",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
     /// ## Import
-    /// 
-    /// `certificate_authority` can be imported
     /// 
     /// ```sh
     ///  $ pulumi import consul:index/certificateAuthority:CertificateAuthority connect connect-ca
     /// ```
     /// </summary>
     [ConsulResourceType("consul:index/certificateAuthority:CertificateAuthority")]
-    public partial class CertificateAuthority : Pulumi.CustomResource
+    public partial class CertificateAuthority : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The raw configuration to use for the chosen provider.
+        /// The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
         /// </summary>
         [Output("config")]
-        public Output<ImmutableDictionary<string, string>> Config { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Config { get; private set; } = null!;
+
+        /// <summary>
+        /// The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+        /// </summary>
+        [Output("configJson")]
+        public Output<string?> ConfigJson { get; private set; } = null!;
 
         /// <summary>
         /// Specifies the CA provider type to use.
@@ -155,19 +85,26 @@ namespace Pulumi.Consul
         }
     }
 
-    public sealed class CertificateAuthorityArgs : Pulumi.ResourceArgs
+    public sealed class CertificateAuthorityArgs : global::Pulumi.ResourceArgs
     {
-        [Input("config", required: true)]
+        [Input("config")]
         private InputMap<string>? _config;
 
         /// <summary>
-        /// The raw configuration to use for the chosen provider.
+        /// The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
         /// </summary>
+        [Obsolete(@"The config attribute is deprecated, please use config_json instead.")]
         public InputMap<string> Config
         {
             get => _config ?? (_config = new InputMap<string>());
             set => _config = value;
         }
+
+        /// <summary>
+        /// The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+        /// </summary>
+        [Input("configJson")]
+        public Input<string>? ConfigJson { get; set; }
 
         /// <summary>
         /// Specifies the CA provider type to use.
@@ -178,21 +115,29 @@ namespace Pulumi.Consul
         public CertificateAuthorityArgs()
         {
         }
+        public static new CertificateAuthorityArgs Empty => new CertificateAuthorityArgs();
     }
 
-    public sealed class CertificateAuthorityState : Pulumi.ResourceArgs
+    public sealed class CertificateAuthorityState : global::Pulumi.ResourceArgs
     {
         [Input("config")]
         private InputMap<string>? _config;
 
         /// <summary>
-        /// The raw configuration to use for the chosen provider.
+        /// The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
         /// </summary>
+        [Obsolete(@"The config attribute is deprecated, please use config_json instead.")]
         public InputMap<string> Config
         {
             get => _config ?? (_config = new InputMap<string>());
             set => _config = value;
         }
+
+        /// <summary>
+        /// The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+        /// </summary>
+        [Input("configJson")]
+        public Input<string>? ConfigJson { get; set; }
 
         /// <summary>
         /// Specifies the CA provider type to use.
@@ -203,5 +148,6 @@ namespace Pulumi.Consul
         public CertificateAuthorityState()
         {
         }
+        public static new CertificateAuthorityState Empty => new CertificateAuthorityState();
     }
 }

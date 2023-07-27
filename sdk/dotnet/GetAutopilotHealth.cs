@@ -21,26 +21,26 @@ namespace Pulumi.Consul
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Consul = Pulumi.Consul;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var read = Output.Create(Consul.GetAutopilotHealth.InvokeAsync());
-        ///         this.Health = read.Apply(read =&gt; read.Healthy);
-        ///     }
+        ///     var read = Consul.GetAutopilotHealth.Invoke();
         /// 
-        ///     [Output("health")]
-        ///     public Output&lt;string&gt; Health { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["health"] = read.Apply(getAutopilotHealthResult =&gt; getAutopilotHealthResult.Healthy),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAutopilotHealthResult> InvokeAsync(GetAutopilotHealthArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAutopilotHealthResult>("consul:index/getAutopilotHealth:getAutopilotHealth", args ?? new GetAutopilotHealthArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAutopilotHealthResult>("consul:index/getAutopilotHealth:getAutopilotHealth", args ?? new GetAutopilotHealthArgs(), options.WithDefaults());
 
         /// <summary>
         /// The `consul.getAutopilotHealth` data source returns
@@ -52,30 +52,30 @@ namespace Pulumi.Consul
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Consul = Pulumi.Consul;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var read = Output.Create(Consul.GetAutopilotHealth.InvokeAsync());
-        ///         this.Health = read.Apply(read =&gt; read.Healthy);
-        ///     }
+        ///     var read = Consul.GetAutopilotHealth.Invoke();
         /// 
-        ///     [Output("health")]
-        ///     public Output&lt;string&gt; Health { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["health"] = read.Apply(getAutopilotHealthResult =&gt; getAutopilotHealthResult.Healthy),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAutopilotHealthResult> Invoke(GetAutopilotHealthInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAutopilotHealthResult>("consul:index/getAutopilotHealth:getAutopilotHealth", args ?? new GetAutopilotHealthInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAutopilotHealthResult>("consul:index/getAutopilotHealth:getAutopilotHealth", args ?? new GetAutopilotHealthInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetAutopilotHealthArgs : Pulumi.InvokeArgs
+    public sealed class GetAutopilotHealthArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The datacenter to use. This overrides the agent's
@@ -87,9 +87,10 @@ namespace Pulumi.Consul
         public GetAutopilotHealthArgs()
         {
         }
+        public static new GetAutopilotHealthArgs Empty => new GetAutopilotHealthArgs();
     }
 
-    public sealed class GetAutopilotHealthInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAutopilotHealthInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The datacenter to use. This overrides the agent's
@@ -101,6 +102,7 @@ namespace Pulumi.Consul
         public GetAutopilotHealthInvokeArgs()
         {
         }
+        public static new GetAutopilotHealthInvokeArgs Empty => new GetAutopilotHealthInvokeArgs();
     }
 
 

@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -19,125 +20,6 @@ import (
 // > **NOTE:** If a Consul agent is running on the node where this service is
 // registered, it is not recommended to use this resource as the service will be
 // removed during the next [anti-entropy synchronization](https://www.consul.io/docs/architecture/anti-entropy).
-//
-// ## Example Usage
-//
-// Creating a new node with the service:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			compute, err := consul.NewNode(ctx, "compute", &consul.NodeArgs{
-//				Address: pulumi.String("www.google.com"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = consul.NewService(ctx, "google", &consul.ServiceArgs{
-//				Node: compute.Name,
-//				Port: pulumi.Int(80),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("tag0"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// Utilizing an existing known node:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := consul.NewService(ctx, "google", &consul.ServiceArgs{
-//				Node: pulumi.String("google"),
-//				Port: pulumi.Int(443),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// Register a health-check:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := consul.NewService(ctx, "redis", &consul.ServiceArgs{
-//				Checks: ServiceCheckArray{
-//					&ServiceCheckArgs{
-//						CheckId:                        pulumi.String("service:redis1"),
-//						DeregisterCriticalServiceAfter: pulumi.String("30s"),
-//						Headers: ServiceCheckHeaderArray{
-//							&ServiceCheckHeaderArgs{
-//								Name: pulumi.String("foo"),
-//								Value: []string{
-//									"test",
-//								},
-//							},
-//							&ServiceCheckHeaderArgs{
-//								Name: pulumi.String("bar"),
-//								Value: []string{
-//									"test",
-//								},
-//							},
-//						},
-//						Http:          pulumi.String("https://www.hashicorptest.com"),
-//						Interval:      pulumi.String("5s"),
-//						Method:        pulumi.String("PUT"),
-//						Name:          pulumi.String("Redis health check"),
-//						Status:        pulumi.String("passing"),
-//						Timeout:       pulumi.String("1s"),
-//						TlsSkipVerify: pulumi.Bool(false),
-//					},
-//				},
-//				Node: pulumi.String("redis"),
-//				Port: pulumi.Int(6379),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type Service struct {
 	pulumi.CustomResourceState
 
@@ -163,11 +45,13 @@ type Service struct {
 	// The name of the node the to register the service on.
 	Node pulumi.StringOutput `pulumi:"node"`
 	// The partition the service is associated with.
+	//
+	// The following attributes are available for each health-check:
 	Partition pulumi.StringPtrOutput `pulumi:"partition"`
 	// The port of the service.
 	Port pulumi.IntPtrOutput `pulumi:"port"`
-	// - If the service ID is not provided, it will be defaulted to the value
-	//   of the `name` attribute.
+	// If the service ID is not provided, it will be defaulted to the value
+	// of the `name` attribute.
 	ServiceId pulumi.StringOutput `pulumi:"serviceId"`
 	// A list of values that are opaque to Consul,
 	// but can be used to distinguish between services or nodes.
@@ -184,6 +68,7 @@ func NewService(ctx *pulumi.Context,
 	if args.Node == nil {
 		return nil, errors.New("invalid value for required argument 'Node'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Service
 	err := ctx.RegisterResource("consul:index/service:Service", name, args, &resource, opts...)
 	if err != nil {
@@ -228,11 +113,13 @@ type serviceState struct {
 	// The name of the node the to register the service on.
 	Node *string `pulumi:"node"`
 	// The partition the service is associated with.
+	//
+	// The following attributes are available for each health-check:
 	Partition *string `pulumi:"partition"`
 	// The port of the service.
 	Port *int `pulumi:"port"`
-	// - If the service ID is not provided, it will be defaulted to the value
-	//   of the `name` attribute.
+	// If the service ID is not provided, it will be defaulted to the value
+	// of the `name` attribute.
 	ServiceId *string `pulumi:"serviceId"`
 	// A list of values that are opaque to Consul,
 	// but can be used to distinguish between services or nodes.
@@ -262,11 +149,13 @@ type ServiceState struct {
 	// The name of the node the to register the service on.
 	Node pulumi.StringPtrInput
 	// The partition the service is associated with.
+	//
+	// The following attributes are available for each health-check:
 	Partition pulumi.StringPtrInput
 	// The port of the service.
 	Port pulumi.IntPtrInput
-	// - If the service ID is not provided, it will be defaulted to the value
-	//   of the `name` attribute.
+	// If the service ID is not provided, it will be defaulted to the value
+	// of the `name` attribute.
 	ServiceId pulumi.StringPtrInput
 	// A list of values that are opaque to Consul,
 	// but can be used to distinguish between services or nodes.
@@ -300,11 +189,13 @@ type serviceArgs struct {
 	// The name of the node the to register the service on.
 	Node string `pulumi:"node"`
 	// The partition the service is associated with.
+	//
+	// The following attributes are available for each health-check:
 	Partition *string `pulumi:"partition"`
 	// The port of the service.
 	Port *int `pulumi:"port"`
-	// - If the service ID is not provided, it will be defaulted to the value
-	//   of the `name` attribute.
+	// If the service ID is not provided, it will be defaulted to the value
+	// of the `name` attribute.
 	ServiceId *string `pulumi:"serviceId"`
 	// A list of values that are opaque to Consul,
 	// but can be used to distinguish between services or nodes.
@@ -335,11 +226,13 @@ type ServiceArgs struct {
 	// The name of the node the to register the service on.
 	Node pulumi.StringInput
 	// The partition the service is associated with.
+	//
+	// The following attributes are available for each health-check:
 	Partition pulumi.StringPtrInput
 	// The port of the service.
 	Port pulumi.IntPtrInput
-	// - If the service ID is not provided, it will be defaulted to the value
-	//   of the `name` attribute.
+	// If the service ID is not provided, it will be defaulted to the value
+	// of the `name` attribute.
 	ServiceId pulumi.StringPtrInput
 	// A list of values that are opaque to Consul,
 	// but can be used to distinguish between services or nodes.
@@ -431,6 +324,78 @@ func (o ServiceOutput) ToServiceOutput() ServiceOutput {
 
 func (o ServiceOutput) ToServiceOutputWithContext(ctx context.Context) ServiceOutput {
 	return o
+}
+
+// The address of the service. Defaults to the
+// address of the node.
+func (o ServiceOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Address }).(pulumi.StringOutput)
+}
+
+func (o ServiceOutput) Checks() ServiceCheckArrayOutput {
+	return o.ApplyT(func(v *Service) ServiceCheckArrayOutput { return v.Checks }).(ServiceCheckArrayOutput)
+}
+
+// The datacenter to use. This overrides the
+// agent's default datacenter and the datacenter in the provider setup.
+func (o ServiceOutput) Datacenter() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Datacenter }).(pulumi.StringOutput)
+}
+
+// Specifies to disable the
+// anti-entropy feature for this service's tags. Defaults to `false`.
+func (o ServiceOutput) EnableTagOverride() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Service) pulumi.BoolPtrOutput { return v.EnableTagOverride }).(pulumi.BoolPtrOutput)
+}
+
+// Deprecated: The external field has been deprecated and does nothing.
+func (o ServiceOutput) External() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Service) pulumi.BoolPtrOutput { return v.External }).(pulumi.BoolPtrOutput)
+}
+
+// A map of arbitrary KV metadata linked to the service
+// instance.
+func (o ServiceOutput) Meta() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringMapOutput { return v.Meta }).(pulumi.StringMapOutput)
+}
+
+// The name of the health-check.
+func (o ServiceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The namespace to create the service within.
+func (o ServiceOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringPtrOutput { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+// The name of the node the to register the service on.
+func (o ServiceOutput) Node() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Node }).(pulumi.StringOutput)
+}
+
+// The partition the service is associated with.
+//
+// The following attributes are available for each health-check:
+func (o ServiceOutput) Partition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringPtrOutput { return v.Partition }).(pulumi.StringPtrOutput)
+}
+
+// The port of the service.
+func (o ServiceOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Service) pulumi.IntPtrOutput { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// If the service ID is not provided, it will be defaulted to the value
+// of the `name` attribute.
+func (o ServiceOutput) ServiceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.ServiceId }).(pulumi.StringOutput)
+}
+
+// A list of values that are opaque to Consul,
+// but can be used to distinguish between services or nodes.
+func (o ServiceOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
 type ServiceArrayOutput struct{ *pulumi.OutputState }

@@ -19,17 +19,13 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
  *
- * const remoteAgent = pulumi.output(consul.getAgentConfig());
- *
- * export const consulVersion = remoteAgent.version;
+ * const remoteAgent = consul.getAgentConfig({});
+ * export const consulVersion = remoteAgent.then(remoteAgent => remoteAgent.version);
  * ```
  */
 export function getAgentConfig(opts?: pulumi.InvokeOptions): Promise<GetAgentConfigResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("consul:index/getAgentConfig:getAgentConfig", {
     }, opts);
 }

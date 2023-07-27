@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -77,6 +78,14 @@ func NewNode(ctx *pulumi.Context,
 	if args.Address == nil {
 		return nil, errors.New("invalid value for required argument 'Address'")
 	}
+	if args.Token != nil {
+		args.Token = pulumi.ToSecret(args.Token).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"token",
+	})
+	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Node
 	err := ctx.RegisterResource("consul:index/node:Node", name, args, &resource, opts...)
 	if err != nil {
@@ -252,6 +261,37 @@ func (o NodeOutput) ToNodeOutput() NodeOutput {
 
 func (o NodeOutput) ToNodeOutputWithContext(ctx context.Context) NodeOutput {
 	return o
+}
+
+// The address of the node being added to, or referenced in the catalog.
+func (o NodeOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v *Node) pulumi.StringOutput { return v.Address }).(pulumi.StringOutput)
+}
+
+// The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
+func (o NodeOutput) Datacenter() pulumi.StringOutput {
+	return o.ApplyT(func(v *Node) pulumi.StringOutput { return v.Datacenter }).(pulumi.StringOutput)
+}
+
+// Key/value pairs that are associated with the node.
+func (o NodeOutput) Meta() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Node) pulumi.StringMapOutput { return v.Meta }).(pulumi.StringMapOutput)
+}
+
+// The name of the node being added to, or referenced in the catalog.
+func (o NodeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Node) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The partition the node is associated with.
+func (o NodeOutput) Partition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Node) pulumi.StringPtrOutput { return v.Partition }).(pulumi.StringPtrOutput)
+}
+
+// Deprecated: The token argument has been deprecated and will be removed in a future release.
+// Please use the token argument in the provider configuration
+func (o NodeOutput) Token() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Node) pulumi.StringPtrOutput { return v.Token }).(pulumi.StringPtrOutput)
 }
 
 type NodeArrayOutput struct{ *pulumi.OutputState }

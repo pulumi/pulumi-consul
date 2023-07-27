@@ -17,47 +17,49 @@ namespace Pulumi.Consul
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Consul = Pulumi.Consul;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var testAclPolicy = new Consul.AclPolicy("testAclPolicy", new()
         ///     {
-        ///         var testAclPolicy = new Consul.AclPolicy("testAclPolicy", new Consul.AclPolicyArgs
+        ///         Rules = "node \"\" { policy = \"read\" }",
+        ///         Datacenters = new[]
         ///         {
-        ///             Rules = "node \"\" { policy = \"read\" }",
-        ///             Datacenters = 
-        ///             {
-        ///                 "dc1",
-        ///             },
-        ///         });
-        ///         var testAclToken = new Consul.AclToken("testAclToken", new Consul.AclTokenArgs
-        ///         {
-        ///             Description = "test",
-        ///             Policies = 
-        ///             {
-        ///                 testAclPolicy.Name,
-        ///             },
-        ///             Local = true,
-        ///         });
-        ///         var read = Consul.GetAclTokenSecretId.Invoke(new Consul.GetAclTokenSecretIdInvokeArgs
-        ///         {
-        ///             AccessorId = testAclToken.Id,
-        ///             PgpKey = "keybase:my_username",
-        ///         });
-        ///         this.ConsulAclTokenSecretId = read.Apply(read =&gt; read.EncryptedSecretId);
-        ///     }
+        ///             "dc1",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("consulAclTokenSecretId")]
-        ///     public Output&lt;string&gt; ConsulAclTokenSecretId { get; set; }
-        /// }
+        ///     var testAclToken = new Consul.AclToken("testAclToken", new()
+        ///     {
+        ///         Description = "test",
+        ///         Policies = new[]
+        ///         {
+        ///             testAclPolicy.Name,
+        ///         },
+        ///         Local = true,
+        ///     });
+        /// 
+        ///     var read = Consul.GetAclTokenSecretId.Invoke(new()
+        ///     {
+        ///         AccessorId = testAclToken.Id,
+        ///         PgpKey = "keybase:my_username",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["consulAclTokenSecretId"] = read.Apply(getAclTokenSecretIdResult =&gt; getAclTokenSecretIdResult.EncryptedSecretId),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAclTokenSecretIdResult> InvokeAsync(GetAclTokenSecretIdArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAclTokenSecretIdResult>("consul:index/getAclTokenSecretId:getAclTokenSecretId", args ?? new GetAclTokenSecretIdArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAclTokenSecretIdResult>("consul:index/getAclTokenSecretId:getAclTokenSecretId", args ?? new GetAclTokenSecretIdArgs(), options.WithDefaults());
 
         /// <summary>
         /// {{% examples %}}
@@ -65,51 +67,53 @@ namespace Pulumi.Consul
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Consul = Pulumi.Consul;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var testAclPolicy = new Consul.AclPolicy("testAclPolicy", new()
         ///     {
-        ///         var testAclPolicy = new Consul.AclPolicy("testAclPolicy", new Consul.AclPolicyArgs
+        ///         Rules = "node \"\" { policy = \"read\" }",
+        ///         Datacenters = new[]
         ///         {
-        ///             Rules = "node \"\" { policy = \"read\" }",
-        ///             Datacenters = 
-        ///             {
-        ///                 "dc1",
-        ///             },
-        ///         });
-        ///         var testAclToken = new Consul.AclToken("testAclToken", new Consul.AclTokenArgs
-        ///         {
-        ///             Description = "test",
-        ///             Policies = 
-        ///             {
-        ///                 testAclPolicy.Name,
-        ///             },
-        ///             Local = true,
-        ///         });
-        ///         var read = Consul.GetAclTokenSecretId.Invoke(new Consul.GetAclTokenSecretIdInvokeArgs
-        ///         {
-        ///             AccessorId = testAclToken.Id,
-        ///             PgpKey = "keybase:my_username",
-        ///         });
-        ///         this.ConsulAclTokenSecretId = read.Apply(read =&gt; read.EncryptedSecretId);
-        ///     }
+        ///             "dc1",
+        ///         },
+        ///     });
         /// 
-        ///     [Output("consulAclTokenSecretId")]
-        ///     public Output&lt;string&gt; ConsulAclTokenSecretId { get; set; }
-        /// }
+        ///     var testAclToken = new Consul.AclToken("testAclToken", new()
+        ///     {
+        ///         Description = "test",
+        ///         Policies = new[]
+        ///         {
+        ///             testAclPolicy.Name,
+        ///         },
+        ///         Local = true,
+        ///     });
+        /// 
+        ///     var read = Consul.GetAclTokenSecretId.Invoke(new()
+        ///     {
+        ///         AccessorId = testAclToken.Id,
+        ///         PgpKey = "keybase:my_username",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["consulAclTokenSecretId"] = read.Apply(getAclTokenSecretIdResult =&gt; getAclTokenSecretIdResult.EncryptedSecretId),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAclTokenSecretIdResult> Invoke(GetAclTokenSecretIdInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAclTokenSecretIdResult>("consul:index/getAclTokenSecretId:getAclTokenSecretId", args ?? new GetAclTokenSecretIdInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAclTokenSecretIdResult>("consul:index/getAclTokenSecretId:getAclTokenSecretId", args ?? new GetAclTokenSecretIdInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetAclTokenSecretIdArgs : Pulumi.InvokeArgs
+    public sealed class GetAclTokenSecretIdArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The accessor ID of the ACL token.
@@ -135,9 +139,10 @@ namespace Pulumi.Consul
         public GetAclTokenSecretIdArgs()
         {
         }
+        public static new GetAclTokenSecretIdArgs Empty => new GetAclTokenSecretIdArgs();
     }
 
-    public sealed class GetAclTokenSecretIdInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAclTokenSecretIdInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The accessor ID of the ACL token.
@@ -163,6 +168,7 @@ namespace Pulumi.Consul
         public GetAclTokenSecretIdInvokeArgs()
         {
         }
+        public static new GetAclTokenSecretIdInvokeArgs Empty => new GetAclTokenSecretIdInvokeArgs();
     }
 
 

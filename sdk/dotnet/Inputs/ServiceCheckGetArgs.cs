@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Consul.Inputs
 {
 
-    public sealed class ServiceCheckGetArgs : Pulumi.ResourceArgs
+    public sealed class ServiceCheckGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An ID, *unique per agent*. Will default to *name*
@@ -101,5 +101,6 @@ namespace Pulumi.Consul.Inputs
         public ServiceCheckGetArgs()
         {
         }
+        public static new ServiceCheckGetArgs Empty => new ServiceCheckGetArgs();
     }
 }

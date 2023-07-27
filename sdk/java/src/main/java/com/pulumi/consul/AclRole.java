@@ -21,6 +21,46 @@ import javax.annotation.Nullable;
  * Starting with Consul 1.5.0, the consul.AclRole can be used to managed Consul ACL roles.
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.consul.AclPolicy;
+ * import com.pulumi.consul.AclPolicyArgs;
+ * import com.pulumi.consul.AclRole;
+ * import com.pulumi.consul.AclRoleArgs;
+ * import com.pulumi.consul.inputs.AclRoleServiceIdentityArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var read_policy = new AclPolicy(&#34;read-policy&#34;, AclPolicyArgs.builder()        
+ *             .datacenters(&#34;dc1&#34;)
+ *             .rules(&#34;node \&#34;\&#34; { policy = \&#34;read\&#34; }&#34;)
+ *             .build());
+ * 
+ *         var read = new AclRole(&#34;read&#34;, AclRoleArgs.builder()        
+ *             .description(&#34;bar&#34;)
+ *             .policies(read_policy.id())
+ *             .serviceIdentities(AclRoleServiceIdentityArgs.builder()
+ *                 .serviceName(&#34;foo&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -29,11 +30,8 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getNetworkAreaMembers(args: GetNetworkAreaMembersArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkAreaMembersResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("consul:index/getNetworkAreaMembers:getNetworkAreaMembers", {
         "datacenter": args.datacenter,
         "token": args.token,
@@ -90,9 +88,31 @@ Please use the token argument in the provider configuration
      */
     readonly uuid: string;
 }
-
+/**
+ * > **NOTE:** This feature requires [Consul Enterprise](https://www.consul.io/docs/enterprise/index.html).
+ *
+ * The `consul.getNetworkAreaMembers` data source provides a list of the Consul
+ * servers present in a specific network area.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ *
+ * const dc2NetworkArea = new consul.NetworkArea("dc2NetworkArea", {
+ *     peerDatacenter: "dc2",
+ *     retryJoins: ["1.2.3.4"],
+ *     useTls: true,
+ * });
+ * const dc2NetworkAreaMembers = consul.getNetworkAreaMembersOutput({
+ *     uuid: dc2NetworkArea.id,
+ * });
+ * export const members = dc2NetworkAreaMembers.apply(dc2NetworkAreaMembers => dc2NetworkAreaMembers.members);
+ * ```
+ */
 export function getNetworkAreaMembersOutput(args: GetNetworkAreaMembersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkAreaMembersResult> {
-    return pulumi.output(args).apply(a => getNetworkAreaMembers(a, opts))
+    return pulumi.output(args).apply((a: any) => getNetworkAreaMembers(a, opts))
 }
 
 /**

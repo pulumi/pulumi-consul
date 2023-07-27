@@ -19,7 +19,7 @@ namespace Pulumi.Consul
     /// ```
     /// </summary>
     [ConsulResourceType("consul:index/namespaceRoleAttachment:NamespaceRoleAttachment")]
-    public partial class NamespaceRoleAttachment : Pulumi.CustomResource
+    public partial class NamespaceRoleAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The namespace to attach the role to.
@@ -77,7 +77,7 @@ namespace Pulumi.Consul
         }
     }
 
-    public sealed class NamespaceRoleAttachmentArgs : Pulumi.ResourceArgs
+    public sealed class NamespaceRoleAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The namespace to attach the role to.
@@ -94,9 +94,10 @@ namespace Pulumi.Consul
         public NamespaceRoleAttachmentArgs()
         {
         }
+        public static new NamespaceRoleAttachmentArgs Empty => new NamespaceRoleAttachmentArgs();
     }
 
-    public sealed class NamespaceRoleAttachmentState : Pulumi.ResourceArgs
+    public sealed class NamespaceRoleAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The namespace to attach the role to.
@@ -113,5 +114,6 @@ namespace Pulumi.Consul
         public NamespaceRoleAttachmentState()
         {
         }
+        public static new NamespaceRoleAttachmentState Empty => new NamespaceRoleAttachmentState();
     }
 }

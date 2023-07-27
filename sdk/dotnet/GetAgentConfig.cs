@@ -25,26 +25,26 @@ namespace Pulumi.Consul
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Consul = Pulumi.Consul;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var remoteAgent = Output.Create(Consul.GetAgentConfig.InvokeAsync());
-        ///         this.ConsulVersion = remoteAgent.Apply(remoteAgent =&gt; remoteAgent.Version);
-        ///     }
+        ///     var remoteAgent = Consul.GetAgentConfig.Invoke();
         /// 
-        ///     [Output("consulVersion")]
-        ///     public Output&lt;string&gt; ConsulVersion { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["consulVersion"] = remoteAgent.Apply(getAgentConfigResult =&gt; getAgentConfigResult.Version),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAgentConfigResult> InvokeAsync(InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAgentConfigResult>("consul:index/getAgentConfig:getAgentConfig", InvokeArgs.Empty, options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAgentConfigResult>("consul:index/getAgentConfig:getAgentConfig", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

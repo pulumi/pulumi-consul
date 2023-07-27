@@ -21,29 +21,29 @@ namespace Pulumi.Consul
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Consul = Pulumi.Consul;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var agent = Consul.GetAclPolicy.Invoke(new()
         ///     {
-        ///         var agent = Output.Create(Consul.GetAclPolicy.InvokeAsync(new Consul.GetAclPolicyArgs
-        ///         {
-        ///             Name = "agent",
-        ///         }));
-        ///         this.ConsulAclPolicy = agent.Apply(agent =&gt; agent.Rules);
-        ///     }
+        ///         Name = "agent",
+        ///     });
         /// 
-        ///     [Output("consulAclPolicy")]
-        ///     public Output&lt;string&gt; ConsulAclPolicy { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["consulAclPolicy"] = agent.Apply(getAclPolicyResult =&gt; getAclPolicyResult.Rules),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAclPolicyResult> InvokeAsync(GetAclPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAclPolicyResult>("consul:index/getAclPolicy:getAclPolicy", args ?? new GetAclPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAclPolicyResult>("consul:index/getAclPolicy:getAclPolicy", args ?? new GetAclPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// The `consul.AclPolicy` data source returns the information related to a
@@ -55,33 +55,33 @@ namespace Pulumi.Consul
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Consul = Pulumi.Consul;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var agent = Consul.GetAclPolicy.Invoke(new()
         ///     {
-        ///         var agent = Output.Create(Consul.GetAclPolicy.InvokeAsync(new Consul.GetAclPolicyArgs
-        ///         {
-        ///             Name = "agent",
-        ///         }));
-        ///         this.ConsulAclPolicy = agent.Apply(agent =&gt; agent.Rules);
-        ///     }
+        ///         Name = "agent",
+        ///     });
         /// 
-        ///     [Output("consulAclPolicy")]
-        ///     public Output&lt;string&gt; ConsulAclPolicy { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["consulAclPolicy"] = agent.Apply(getAclPolicyResult =&gt; getAclPolicyResult.Rules),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAclPolicyResult> Invoke(GetAclPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAclPolicyResult>("consul:index/getAclPolicy:getAclPolicy", args ?? new GetAclPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAclPolicyResult>("consul:index/getAclPolicy:getAclPolicy", args ?? new GetAclPolicyInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetAclPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetAclPolicyArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the ACL Policy.
@@ -104,9 +104,10 @@ namespace Pulumi.Consul
         public GetAclPolicyArgs()
         {
         }
+        public static new GetAclPolicyArgs Empty => new GetAclPolicyArgs();
     }
 
-    public sealed class GetAclPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAclPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the ACL Policy.
@@ -129,6 +130,7 @@ namespace Pulumi.Consul
         public GetAclPolicyInvokeArgs()
         {
         }
+        public static new GetAclPolicyInvokeArgs Empty => new GetAclPolicyInvokeArgs();
     }
 
 

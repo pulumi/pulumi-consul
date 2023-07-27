@@ -19,7 +19,7 @@ namespace Pulumi.Consul
     /// ```
     /// </summary>
     [ConsulResourceType("consul:index/aclTokenRoleAttachment:AclTokenRoleAttachment")]
-    public partial class AclTokenRoleAttachment : Pulumi.CustomResource
+    public partial class AclTokenRoleAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The role name.
@@ -77,7 +77,7 @@ namespace Pulumi.Consul
         }
     }
 
-    public sealed class AclTokenRoleAttachmentArgs : Pulumi.ResourceArgs
+    public sealed class AclTokenRoleAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The role name.
@@ -94,9 +94,10 @@ namespace Pulumi.Consul
         public AclTokenRoleAttachmentArgs()
         {
         }
+        public static new AclTokenRoleAttachmentArgs Empty => new AclTokenRoleAttachmentArgs();
     }
 
-    public sealed class AclTokenRoleAttachmentState : Pulumi.ResourceArgs
+    public sealed class AclTokenRoleAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The role name.
@@ -113,5 +114,6 @@ namespace Pulumi.Consul
         public AclTokenRoleAttachmentState()
         {
         }
+        public static new AclTokenRoleAttachmentState Empty => new AclTokenRoleAttachmentState();
     }
 }

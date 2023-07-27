@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Consul.Inputs
 {
 
-    public sealed class GetNodesQueryOptionArgs : Pulumi.InvokeArgs
+    public sealed class GetNodesQueryOptionArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// When `true`, the default, allow responses from
@@ -50,13 +50,19 @@ namespace Pulumi.Consul.Inputs
         [Input("requireConsistent")]
         public bool? RequireConsistent { get; set; }
 
+        [Input("token")]
+        private string? _token;
+
         /// <summary>
         /// Specify the Consul ACL token to use when performing the
         /// request.  This defaults to the same API token configured by the `consul`
         /// provider but may be overridden if necessary.
         /// </summary>
-        [Input("token")]
-        public string? Token { get; set; }
+        public string? Token
+        {
+            get => _token;
+            set => _token = value;
+        }
 
         /// <summary>
         /// Index number used to enable blocking queries.
@@ -74,5 +80,6 @@ namespace Pulumi.Consul.Inputs
         public GetNodesQueryOptionArgs()
         {
         }
+        public static new GetNodesQueryOptionArgs Empty => new GetNodesQueryOptionArgs();
     }
 }

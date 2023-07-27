@@ -22,6 +22,48 @@ import javax.annotation.Nullable;
  * The `consul.AclToken` resource writes an ACL token into Consul.
  * 
  * ## Example Usage
+ * ### Basic usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.consul.AclPolicy;
+ * import com.pulumi.consul.AclPolicyArgs;
+ * import com.pulumi.consul.AclToken;
+ * import com.pulumi.consul.AclTokenArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var agent = new AclPolicy(&#34;agent&#34;, AclPolicyArgs.builder()        
+ *             .rules(&#34;&#34;&#34;
+ * node_prefix &#34;&#34; {
+ *   policy = &#34;read&#34;
+ * }
+ * 
+ *             &#34;&#34;&#34;)
+ *             .build());
+ * 
+ *         var test = new AclToken(&#34;test&#34;, AclTokenArgs.builder()        
+ *             .description(&#34;my test token&#34;)
+ *             .local(true)
+ *             .policies(agent.name())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,6 +41,7 @@ import (
 //
 // ```
 func GetNetworkSegments(ctx *pulumi.Context, args *GetNetworkSegmentsArgs, opts ...pulumi.InvokeOption) (*GetNetworkSegmentsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetNetworkSegmentsResult
 	err := ctx.Invoke("consul:index/getNetworkSegments:getNetworkSegments", args, &rv, opts...)
 	if err != nil {

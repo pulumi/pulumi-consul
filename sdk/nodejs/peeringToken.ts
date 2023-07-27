@@ -19,9 +19,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
  *
- * const token = new consul.PeeringToken("token", {
- *     peerName: "eu-cluster",
- * });
+ * const token = new consul.PeeringToken("token", {peerName: "eu-cluster"});
  * ```
  */
 export class PeeringToken extends pulumi.CustomResource {
@@ -53,14 +51,12 @@ export class PeeringToken extends pulumi.CustomResource {
     }
 
     /**
-     * Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the
-     * cluster peering process.
+     * Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the cluster peering process.
      */
     public readonly meta!: pulumi.Output<{[key: string]: string} | undefined>;
     public readonly partition!: pulumi.Output<string | undefined>;
     /**
-     * The name assigned to the peer cluster. The `peer_name` is used to reference the peer cluster in service discovery
-     * queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
+     * The name assigned to the peer cluster. The `peerName` is used to reference the peer cluster in service discovery queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
      */
     public readonly peerName!: pulumi.Output<string>;
     /**
@@ -96,6 +92,8 @@ export class PeeringToken extends pulumi.CustomResource {
             resourceInputs["peeringToken"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["peeringToken"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(PeeringToken.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -105,14 +103,12 @@ export class PeeringToken extends pulumi.CustomResource {
  */
 export interface PeeringTokenState {
     /**
-     * Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the
-     * cluster peering process.
+     * Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the cluster peering process.
      */
     meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     partition?: pulumi.Input<string>;
     /**
-     * The name assigned to the peer cluster. The `peer_name` is used to reference the peer cluster in service discovery
-     * queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
+     * The name assigned to the peer cluster. The `peerName` is used to reference the peer cluster in service discovery queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
      */
     peerName?: pulumi.Input<string>;
     /**
@@ -126,14 +122,12 @@ export interface PeeringTokenState {
  */
 export interface PeeringTokenArgs {
     /**
-     * Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the
-     * cluster peering process.
+     * Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the cluster peering process.
      */
     meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     partition?: pulumi.Input<string>;
     /**
-     * The name assigned to the peer cluster. The `peer_name` is used to reference the peer cluster in service discovery
-     * queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
+     * The name assigned to the peer cluster. The `peerName` is used to reference the peer cluster in service discovery queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
      */
     peerName: pulumi.Input<string>;
 }

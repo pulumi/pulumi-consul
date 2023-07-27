@@ -12,63 +12,104 @@ namespace Pulumi.Consul
     public static class GetConfigEntry
     {
         public static Task<GetConfigEntryResult> InvokeAsync(GetConfigEntryArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetConfigEntryResult>("consul:index/getConfigEntry:getConfigEntry", args ?? new GetConfigEntryArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetConfigEntryResult>("consul:index/getConfigEntry:getConfigEntry", args ?? new GetConfigEntryArgs(), options.WithDefaults());
 
         public static Output<GetConfigEntryResult> Invoke(GetConfigEntryInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetConfigEntryResult>("consul:index/getConfigEntry:getConfigEntry", args ?? new GetConfigEntryInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetConfigEntryResult>("consul:index/getConfigEntry:getConfigEntry", args ?? new GetConfigEntryInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetConfigEntryArgs : Pulumi.InvokeArgs
+    public sealed class GetConfigEntryArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The kind of config entry to read.
+        /// </summary>
         [Input("kind", required: true)]
         public string Kind { get; set; } = null!;
 
+        /// <summary>
+        /// The name of the config entry to read.
+        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
+        /// <summary>
+        /// The namespace the config entry is associated with.
+        /// </summary>
         [Input("namespace")]
         public string? Namespace { get; set; }
 
+        /// <summary>
+        /// The partition the config entry is associated with.
+        /// </summary>
         [Input("partition")]
         public string? Partition { get; set; }
 
         public GetConfigEntryArgs()
         {
         }
+        public static new GetConfigEntryArgs Empty => new GetConfigEntryArgs();
     }
 
-    public sealed class GetConfigEntryInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetConfigEntryInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The kind of config entry to read.
+        /// </summary>
         [Input("kind", required: true)]
         public Input<string> Kind { get; set; } = null!;
 
+        /// <summary>
+        /// The name of the config entry to read.
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// The namespace the config entry is associated with.
+        /// </summary>
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }
 
+        /// <summary>
+        /// The partition the config entry is associated with.
+        /// </summary>
         [Input("partition")]
         public Input<string>? Partition { get; set; }
 
         public GetConfigEntryInvokeArgs()
         {
         }
+        public static new GetConfigEntryInvokeArgs Empty => new GetConfigEntryInvokeArgs();
     }
 
 
     [OutputType]
     public sealed class GetConfigEntryResult
     {
+        /// <summary>
+        /// The configuration of the config entry.
+        /// </summary>
         public readonly string ConfigJson;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The kind of config entry to read.
+        /// </summary>
         public readonly string Kind;
+        /// <summary>
+        /// The name of the config entry to read.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The namespace the config entry is associated with.
+        /// </summary>
         public readonly string? Namespace;
+        /// <summary>
+        /// The partition the config entry is associated with.
+        /// </summary>
         public readonly string? Partition;
 
         [OutputConstructor]

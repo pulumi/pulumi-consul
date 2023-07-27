@@ -20,29 +20,29 @@ namespace Pulumi.Consul
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Consul = Pulumi.Consul;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var test = Consul.GetAclRole.Invoke(new()
         ///     {
-        ///         var test = Output.Create(Consul.GetAclRole.InvokeAsync(new Consul.GetAclRoleArgs
-        ///         {
-        ///             Name = "example-role",
-        ///         }));
-        ///         this.ConsulAclRole = test.Apply(test =&gt; test.Id);
-        ///     }
+        ///         Name = "example-role",
+        ///     });
         /// 
-        ///     [Output("consulAclRole")]
-        ///     public Output&lt;string&gt; ConsulAclRole { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["consulAclRole"] = test.Apply(getAclRoleResult =&gt; getAclRoleResult.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAclRoleResult> InvokeAsync(GetAclRoleArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAclRoleResult>("consul:index/getAclRole:getAclRole", args ?? new GetAclRoleArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAclRoleResult>("consul:index/getAclRole:getAclRole", args ?? new GetAclRoleArgs(), options.WithDefaults());
 
         /// <summary>
         /// The `consul.AclRole` data source returns the information related to a
@@ -53,33 +53,33 @@ namespace Pulumi.Consul
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Consul = Pulumi.Consul;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var test = Consul.GetAclRole.Invoke(new()
         ///     {
-        ///         var test = Output.Create(Consul.GetAclRole.InvokeAsync(new Consul.GetAclRoleArgs
-        ///         {
-        ///             Name = "example-role",
-        ///         }));
-        ///         this.ConsulAclRole = test.Apply(test =&gt; test.Id);
-        ///     }
+        ///         Name = "example-role",
+        ///     });
         /// 
-        ///     [Output("consulAclRole")]
-        ///     public Output&lt;string&gt; ConsulAclRole { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["consulAclRole"] = test.Apply(getAclRoleResult =&gt; getAclRoleResult.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAclRoleResult> Invoke(GetAclRoleInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAclRoleResult>("consul:index/getAclRole:getAclRole", args ?? new GetAclRoleInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAclRoleResult>("consul:index/getAclRole:getAclRole", args ?? new GetAclRoleInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetAclRoleArgs : Pulumi.InvokeArgs
+    public sealed class GetAclRoleArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the ACL Role.
@@ -102,9 +102,10 @@ namespace Pulumi.Consul
         public GetAclRoleArgs()
         {
         }
+        public static new GetAclRoleArgs Empty => new GetAclRoleArgs();
     }
 
-    public sealed class GetAclRoleInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAclRoleInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the ACL Role.
@@ -127,6 +128,7 @@ namespace Pulumi.Consul
         public GetAclRoleInvokeArgs()
         {
         }
+        public static new GetAclRoleInvokeArgs Empty => new GetAclRoleInvokeArgs();
     }
 
 

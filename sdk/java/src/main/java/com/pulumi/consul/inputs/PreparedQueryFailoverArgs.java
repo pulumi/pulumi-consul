@@ -3,6 +3,7 @@
 
 package com.pulumi.consul.inputs;
 
+import com.pulumi.consul.inputs.PreparedQueryFailoverTargetArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
@@ -33,20 +34,33 @@ public final class PreparedQueryFailoverArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Return results from this many datacenters,
-     * sorted in ascending order of estimated RTT.
+     * Return results from this many datacenters, sorted in ascending order of estimated RTT.
      * 
      */
     @Import(name="nearestN")
     private @Nullable Output<Integer> nearestN;
 
     /**
-     * @return Return results from this many datacenters,
-     * sorted in ascending order of estimated RTT.
+     * @return Return results from this many datacenters, sorted in ascending order of estimated RTT.
      * 
      */
     public Optional<Output<Integer>> nearestN() {
         return Optional.ofNullable(this.nearestN);
+    }
+
+    /**
+     * Specifies a sequential list of remote datacenters and cluster peers to failover to if there are no healthy service instances in the local datacenter. This option cannot be used with `nearest_n` or `datacenters`.
+     * 
+     */
+    @Import(name="targets")
+    private @Nullable Output<List<PreparedQueryFailoverTargetArgs>> targets;
+
+    /**
+     * @return Specifies a sequential list of remote datacenters and cluster peers to failover to if there are no healthy service instances in the local datacenter. This option cannot be used with `nearest_n` or `datacenters`.
+     * 
+     */
+    public Optional<Output<List<PreparedQueryFailoverTargetArgs>>> targets() {
+        return Optional.ofNullable(this.targets);
     }
 
     private PreparedQueryFailoverArgs() {}
@@ -54,6 +68,7 @@ public final class PreparedQueryFailoverArgs extends com.pulumi.resources.Resour
     private PreparedQueryFailoverArgs(PreparedQueryFailoverArgs $) {
         this.datacenters = $.datacenters;
         this.nearestN = $.nearestN;
+        this.targets = $.targets;
     }
 
     public static Builder builder() {
@@ -106,8 +121,7 @@ public final class PreparedQueryFailoverArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param nearestN Return results from this many datacenters,
-         * sorted in ascending order of estimated RTT.
+         * @param nearestN Return results from this many datacenters, sorted in ascending order of estimated RTT.
          * 
          * @return builder
          * 
@@ -118,14 +132,44 @@ public final class PreparedQueryFailoverArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param nearestN Return results from this many datacenters,
-         * sorted in ascending order of estimated RTT.
+         * @param nearestN Return results from this many datacenters, sorted in ascending order of estimated RTT.
          * 
          * @return builder
          * 
          */
         public Builder nearestN(Integer nearestN) {
             return nearestN(Output.of(nearestN));
+        }
+
+        /**
+         * @param targets Specifies a sequential list of remote datacenters and cluster peers to failover to if there are no healthy service instances in the local datacenter. This option cannot be used with `nearest_n` or `datacenters`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targets(@Nullable Output<List<PreparedQueryFailoverTargetArgs>> targets) {
+            $.targets = targets;
+            return this;
+        }
+
+        /**
+         * @param targets Specifies a sequential list of remote datacenters and cluster peers to failover to if there are no healthy service instances in the local datacenter. This option cannot be used with `nearest_n` or `datacenters`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targets(List<PreparedQueryFailoverTargetArgs> targets) {
+            return targets(Output.of(targets));
+        }
+
+        /**
+         * @param targets Specifies a sequential list of remote datacenters and cluster peers to failover to if there are no healthy service instances in the local datacenter. This option cannot be used with `nearest_n` or `datacenters`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targets(PreparedQueryFailoverTargetArgs... targets) {
+            return targets(List.of(targets));
         }
 
         public PreparedQueryFailoverArgs build() {

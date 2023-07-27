@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -26,8 +27,8 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := consul.NewKeys(ctx, "app", &consul.KeysArgs{
 //				Datacenter: pulumi.String("nyc1"),
-//				Keys: KeysKeyArray{
-//					&KeysKeyArgs{
+//				Keys: consul.KeysKeyArray{
+//					&consul.KeysKeyArgs{
 //						Path:  pulumi.String("service/app/elb_address"),
 //						Value: pulumi.Any(aws_elb.App.Dns_name),
 //					},
@@ -71,6 +72,14 @@ func NewKeys(ctx *pulumi.Context,
 		args = &KeysArgs{}
 	}
 
+	if args.Token != nil {
+		args.Token = pulumi.ToSecret(args.Token).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"token",
+	})
+	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Keys
 	err := ctx.RegisterResource("consul:index/keys:Keys", name, args, &resource, opts...)
 	if err != nil {
@@ -260,6 +269,41 @@ func (o KeysOutput) ToKeysOutput() KeysOutput {
 
 func (o KeysOutput) ToKeysOutputWithContext(ctx context.Context) KeysOutput {
 	return o
+}
+
+// The datacenter to use. This overrides the
+// agent's default datacenter and the datacenter in the provider setup.
+func (o KeysOutput) Datacenter() pulumi.StringOutput {
+	return o.ApplyT(func(v *Keys) pulumi.StringOutput { return v.Datacenter }).(pulumi.StringOutput)
+}
+
+// Specifies a key in Consul to be written.
+// Supported values documented below.
+func (o KeysOutput) Keys() KeysKeyArrayOutput {
+	return o.ApplyT(func(v *Keys) KeysKeyArrayOutput { return v.Keys }).(KeysKeyArrayOutput)
+}
+
+// The namespace to create the keys within.
+func (o KeysOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Keys) pulumi.StringPtrOutput { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+// The partition to create the keys within.
+func (o KeysOutput) Partition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Keys) pulumi.StringPtrOutput { return v.Partition }).(pulumi.StringPtrOutput)
+}
+
+// The ACL token to use. This overrides the
+// token that the agent provides by default.
+//
+// Deprecated: The token argument has been deprecated and will be removed in a future release.
+// Please use the token argument in the provider configuration
+func (o KeysOutput) Token() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Keys) pulumi.StringPtrOutput { return v.Token }).(pulumi.StringPtrOutput)
+}
+
+func (o KeysOutput) Var() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Keys) pulumi.StringMapOutput { return v.Var }).(pulumi.StringMapOutput)
 }
 
 type KeysArrayOutput struct{ *pulumi.OutputState }

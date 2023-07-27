@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -18,19 +19,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
  *
- * const test = pulumi.output(consul.getAclToken({
+ * const test = consul.getAclToken({
  *     accessorId: "00000000-0000-0000-0000-000000000002",
- * }));
- *
- * export const consulAclPolicies = test.policies;
+ * });
+ * export const consulAclPolicies = test.then(test => test.policies);
  * ```
  */
 export function getAclToken(args: GetAclTokenArgs, opts?: pulumi.InvokeOptions): Promise<GetAclTokenResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("consul:index/getAclToken:getAclToken", {
         "accessorId": args.accessorId,
         "namespace": args.namespace,
@@ -96,9 +93,27 @@ export interface GetAclTokenResult {
      */
     readonly serviceIdentities: outputs.GetAclTokenServiceIdentity[];
 }
-
+/**
+ * The `consul.AclToken` data source returns the information related to the
+ * `consul.AclToken` resource with the exception of its secret ID.
+ *
+ * If you want to get the secret ID associated with a token, use the
+ * [`consul.getAclTokenSecretId` data source](https://www.terraform.io/docs/providers/consul/d/acl_token_secret_id.html).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ *
+ * const test = consul.getAclToken({
+ *     accessorId: "00000000-0000-0000-0000-000000000002",
+ * });
+ * export const consulAclPolicies = test.then(test => test.policies);
+ * ```
+ */
 export function getAclTokenOutput(args: GetAclTokenOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAclTokenResult> {
-    return pulumi.output(args).apply(a => getAclToken(a, opts))
+    return pulumi.output(args).apply((a: any) => getAclToken(a, opts))
 }
 
 /**

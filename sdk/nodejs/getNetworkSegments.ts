@@ -22,11 +22,8 @@ import * as utilities from "./utilities";
  */
 export function getNetworkSegments(args?: GetNetworkSegmentsArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkSegmentsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("consul:index/getNetworkSegments:getNetworkSegments", {
         "datacenter": args.datacenter,
         "token": args.token,
@@ -74,9 +71,24 @@ Please use the token argument in the provider configuration
      */
     readonly token?: string;
 }
-
+/**
+ * > **NOTE:** This feature requires [Consul Enterprise](https://www.consul.io/docs/enterprise/index.html).
+ *
+ * The `consulNetworkSegment` data source can be used to retrieve the network
+ * segments defined in the configuration.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ *
+ * const segmentsNetworkSegments = consul.getNetworkSegments({});
+ * export const segments = segmentsNetworkSegments.then(segmentsNetworkSegments => segmentsNetworkSegments.segments);
+ * ```
+ */
 export function getNetworkSegmentsOutput(args?: GetNetworkSegmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkSegmentsResult> {
-    return pulumi.output(args).apply(a => getNetworkSegments(a, opts))
+    return pulumi.output(args).apply((a: any) => getNetworkSegments(a, opts))
 }
 
 /**

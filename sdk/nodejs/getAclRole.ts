@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -22,11 +23,8 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getAclRole(args: GetAclRoleArgs, opts?: pulumi.InvokeOptions): Promise<GetAclRoleResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("consul:index/getAclRole:getAclRole", {
         "name": args.name,
         "namespace": args.namespace,
@@ -86,9 +84,24 @@ export interface GetAclRoleResult {
      */
     readonly serviceIdentities: outputs.GetAclRoleServiceIdentity[];
 }
-
+/**
+ * The `consul.AclRole` data source returns the information related to a
+ * [Consul ACL Role](https://www.consul.io/api/acl/roles.html).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ *
+ * const test = consul.getAclRole({
+ *     name: "example-role",
+ * });
+ * export const consulAclRole = test.then(test => test.id);
+ * ```
+ */
 export function getAclRoleOutput(args: GetAclRoleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAclRoleResult> {
-    return pulumi.output(args).apply(a => getAclRole(a, opts))
+    return pulumi.output(args).apply((a: any) => getAclRole(a, opts))
 }
 
 /**

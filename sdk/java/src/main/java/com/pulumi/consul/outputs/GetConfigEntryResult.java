@@ -11,18 +11,42 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetConfigEntryResult {
+    /**
+     * @return The configuration of the config entry.
+     * 
+     */
     private String configJson;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    /**
+     * @return The kind of config entry to read.
+     * 
+     */
     private String kind;
+    /**
+     * @return The name of the config entry to read.
+     * 
+     */
     private String name;
+    /**
+     * @return The namespace the config entry is associated with.
+     * 
+     */
     private @Nullable String namespace;
+    /**
+     * @return The partition the config entry is associated with.
+     * 
+     */
     private @Nullable String partition;
 
     private GetConfigEntryResult() {}
+    /**
+     * @return The configuration of the config entry.
+     * 
+     */
     public String configJson() {
         return this.configJson;
     }
@@ -33,15 +57,31 @@ public final class GetConfigEntryResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The kind of config entry to read.
+     * 
+     */
     public String kind() {
         return this.kind;
     }
+    /**
+     * @return The name of the config entry to read.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return The namespace the config entry is associated with.
+     * 
+     */
     public Optional<String> namespace() {
         return Optional.ofNullable(this.namespace);
     }
+    /**
+     * @return The partition the config entry is associated with.
+     * 
+     */
     public Optional<String> partition() {
         return Optional.ofNullable(this.partition);
     }

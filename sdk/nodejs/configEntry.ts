@@ -137,9 +137,24 @@ import * as utilities from "./utilities";
  *         Protocol: "http",
  *     }),
  * });
+ * const jwtProvider = new consul.ConfigEntry("jwtProvider", {
+ *     kind: "jwt-provider",
+ *     configJson: JSON.stringify({
+ *         Issuer: "test-issuer",
+ *         JSONWebKeySet: {
+ *             Remote: {
+ *                 URI: "https://127.0.0.1:9091",
+ *                 FetchAsynchronously: true,
+ *             },
+ *         },
+ *         Forwarding: {
+ *             HeaderName: "test-token",
+ *         },
+ *     }),
+ * });
  * const serviceIntentions = new consul.ConfigEntry("serviceIntentions", {
  *     kind: "service-intentions",
- *     configJson: JSON.stringify({
+ *     configJson: jwtProvider.name.apply(name => JSON.stringify({
  *         Sources: [
  *             {
  *                 Name: "contractor-webapp",
@@ -151,6 +166,11 @@ import * as utilities from "./utilities";
  *                             "HEAD",
  *                         ],
  *                         PathExact: "/healtz",
+ *                     },
+ *                     JWT: {
+ *                         Providers: [{
+ *                             Name: name,
+ *                         }],
  *                     },
  *                 }],
  *                 Precedence: 9,
@@ -176,7 +196,7 @@ import * as utilities from "./utilities";
  *                 Type: "consul",
  *             },
  *         ],
- *     }),
+ *     })),
  * });
  * ```
  * ### `exported-services` config entry
@@ -210,6 +230,29 @@ import * as utilities from "./utilities";
  *     configJson: JSON.stringify({
  *         TransparentProxy: {
  *             MeshDestinationsOnly: true,
+ *         },
+ *     }),
+ * });
+ * ```
+ * ### `jwt-provider` config entry
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ *
+ * const jwtProvider = new consul.ConfigEntry("jwtProvider", {
+ *     kind: "jwt-provider",
+ *     configJson: JSON.stringify({
+ *         Issuer: "https://your.issuer.com",
+ *         JSONWebKeySet: {
+ *             Remote: {
+ *                 URI: "https://your-remote.jwks.com",
+ *                 FetchAsynchronously: true,
+ *                 CacheDuration: "10s",
+ *             },
+ *         },
+ *         Forwarding: {
+ *             HeaderName: "test-token",
  *         },
  *     }),
  * });

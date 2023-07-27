@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetCatalogServiceResult {
+    /**
+     * @return The datacenter the keys are being read from to.
+     * 
+     */
     private @Nullable String datacenter;
     private @Nullable String filter;
     /**
@@ -21,12 +25,30 @@ public final class GetCatalogServiceResult {
      * 
      */
     private String id;
+    /**
+     * @return The name of the service
+     * 
+     */
     private String name;
     private @Nullable List<GetCatalogServiceQueryOption> queryOptions;
+    /**
+     * @return A list of nodes and details about each endpoint advertising a
+     * service.  Each element in the list is a map of attributes that correspond to
+     * each individual node.  The list of per-node attributes is detailed below.
+     * 
+     */
     private List<GetCatalogServiceService> services;
+    /**
+     * @return The name of the tag used to filter the list of nodes in `service`.
+     * 
+     */
     private @Nullable String tag;
 
     private GetCatalogServiceResult() {}
+    /**
+     * @return The datacenter the keys are being read from to.
+     * 
+     */
     public Optional<String> datacenter() {
         return Optional.ofNullable(this.datacenter);
     }
@@ -40,15 +62,29 @@ public final class GetCatalogServiceResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The name of the service
+     * 
+     */
     public String name() {
         return this.name;
     }
     public List<GetCatalogServiceQueryOption> queryOptions() {
         return this.queryOptions == null ? List.of() : this.queryOptions;
     }
+    /**
+     * @return A list of nodes and details about each endpoint advertising a
+     * service.  Each element in the list is a map of attributes that correspond to
+     * each individual node.  The list of per-node attributes is detailed below.
+     * 
+     */
     public List<GetCatalogServiceService> services() {
         return this.services;
     }
+    /**
+     * @return The name of the tag used to filter the list of nodes in `service`.
+     * 
+     */
     public Optional<String> tag() {
         return Optional.ofNullable(this.tag);
     }

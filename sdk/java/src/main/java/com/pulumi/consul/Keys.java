@@ -19,6 +19,40 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.consul.Keys;
+ * import com.pulumi.consul.KeysArgs;
+ * import com.pulumi.consul.inputs.KeysKeyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var app = new Keys(&#34;app&#34;, KeysArgs.builder()        
+ *             .datacenter(&#34;nyc1&#34;)
+ *             .keys(KeysKeyArgs.builder()
+ *                 .path(&#34;service/app/elb_address&#34;)
+ *                 .value(aws_elb.app().dns_name())
+ *                 .build())
+ *             .token(&#34;abcd&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  */
 @ResourceType(type="consul:index/keys:Keys")
@@ -144,6 +178,9 @@ Please use the token argument in the provider configuration */
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "token"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

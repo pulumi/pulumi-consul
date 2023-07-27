@@ -16,6 +16,401 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.consul.ConfigEntry;
+ * import com.pulumi.consul.ConfigEntryArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var proxyDefaults = new ConfigEntry(&#34;proxyDefaults&#34;, ConfigEntryArgs.builder()        
+ *             .kind(&#34;proxy-defaults&#34;)
+ *             .configJson(serializeJson(
+ *                 jsonObject(
+ *                     jsonProperty(&#34;Config&#34;, jsonObject(
+ *                         jsonProperty(&#34;local_connect_timeout_ms&#34;, 1000),
+ *                         jsonProperty(&#34;handshake_timeout_ms&#34;, 10000)
+ *                     ))
+ *                 )))
+ *             .build());
+ * 
+ *         var web = new ConfigEntry(&#34;web&#34;, ConfigEntryArgs.builder()        
+ *             .kind(&#34;service-defaults&#34;)
+ *             .configJson(serializeJson(
+ *                 jsonObject(
+ *                     jsonProperty(&#34;Protocol&#34;, &#34;http&#34;)
+ *                 )))
+ *             .build());
+ * 
+ *         var admin = new ConfigEntry(&#34;admin&#34;, ConfigEntryArgs.builder()        
+ *             .kind(&#34;service-defaults&#34;)
+ *             .configJson(serializeJson(
+ *                 jsonObject(
+ *                     jsonProperty(&#34;Protocol&#34;, &#34;http&#34;)
+ *                 )))
+ *             .build());
+ * 
+ *         var serviceResolver = new ConfigEntry(&#34;serviceResolver&#34;, ConfigEntryArgs.builder()        
+ *             .kind(&#34;service-resolver&#34;)
+ *             .configJson(serializeJson(
+ *                 jsonObject(
+ *                     jsonProperty(&#34;DefaultSubset&#34;, &#34;v1&#34;),
+ *                     jsonProperty(&#34;Subsets&#34;, jsonObject(
+ *                         jsonProperty(&#34;v1&#34;, jsonObject(
+ *                             jsonProperty(&#34;Filter&#34;, &#34;Service.Meta.version == v1&#34;)
+ *                         )),
+ *                         jsonProperty(&#34;v2&#34;, jsonObject(
+ *                             jsonProperty(&#34;Filter&#34;, &#34;Service.Meta.version == v2&#34;)
+ *                         ))
+ *                     ))
+ *                 )))
+ *             .build());
+ * 
+ *         var serviceSplitter = new ConfigEntry(&#34;serviceSplitter&#34;, ConfigEntryArgs.builder()        
+ *             .kind(&#34;service-splitter&#34;)
+ *             .configJson(serializeJson(
+ *                 jsonObject(
+ *                     jsonProperty(&#34;Splits&#34;, jsonArray(
+ *                         jsonObject(
+ *                             jsonProperty(&#34;Weight&#34;, 90),
+ *                             jsonProperty(&#34;ServiceSubset&#34;, &#34;v1&#34;)
+ *                         ), 
+ *                         jsonObject(
+ *                             jsonProperty(&#34;Weight&#34;, 10),
+ *                             jsonProperty(&#34;ServiceSubset&#34;, &#34;v2&#34;)
+ *                         )
+ *                     ))
+ *                 )))
+ *             .build());
+ * 
+ *         var serviceRouter = new ConfigEntry(&#34;serviceRouter&#34;, ConfigEntryArgs.builder()        
+ *             .kind(&#34;service-router&#34;)
+ *             .configJson(serializeJson(
+ *                 jsonObject(
+ *                     jsonProperty(&#34;Routes&#34;, jsonArray(jsonObject(
+ *                         jsonProperty(&#34;Match&#34;, jsonObject(
+ *                             jsonProperty(&#34;HTTP&#34;, jsonObject(
+ *                                 jsonProperty(&#34;PathPrefix&#34;, &#34;/admin&#34;)
+ *                             ))
+ *                         )),
+ *                         jsonProperty(&#34;Destination&#34;, jsonObject(
+ *                             jsonProperty(&#34;Service&#34;, &#34;admin&#34;)
+ *                         ))
+ *                     )))
+ *                 )))
+ *             .build());
+ * 
+ *         var ingressGateway = new ConfigEntry(&#34;ingressGateway&#34;, ConfigEntryArgs.builder()        
+ *             .kind(&#34;ingress-gateway&#34;)
+ *             .configJson(serializeJson(
+ *                 jsonObject(
+ *                     jsonProperty(&#34;TLS&#34;, jsonObject(
+ *                         jsonProperty(&#34;Enabled&#34;, true)
+ *                     )),
+ *                     jsonProperty(&#34;Listeners&#34;, jsonArray(jsonObject(
+ *                         jsonProperty(&#34;Port&#34;, 8000),
+ *                         jsonProperty(&#34;Protocol&#34;, &#34;http&#34;),
+ *                         jsonProperty(&#34;Services&#34;, jsonArray(jsonObject(
+ *                             jsonProperty(&#34;Name&#34;, &#34;*&#34;)
+ *                         )))
+ *                     )))
+ *                 )))
+ *             .build());
+ * 
+ *         var terminatingGateway = new ConfigEntry(&#34;terminatingGateway&#34;, ConfigEntryArgs.builder()        
+ *             .kind(&#34;terminating-gateway&#34;)
+ *             .configJson(serializeJson(
+ *                 jsonObject(
+ *                     jsonProperty(&#34;Services&#34;, jsonArray(jsonObject(
+ *                         jsonProperty(&#34;Name&#34;, &#34;billing&#34;)
+ *                     )))
+ *                 )))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### `service-intentions` config entry
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.consul.ConfigEntry;
+ * import com.pulumi.consul.ConfigEntryArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var serviceIntentions = new ConfigEntry(&#34;serviceIntentions&#34;, ConfigEntryArgs.builder()        
+ *             .kind(&#34;service-intentions&#34;)
+ *             .configJson(serializeJson(
+ *                 jsonObject(
+ *                     jsonProperty(&#34;Sources&#34;, jsonArray(
+ *                         jsonObject(
+ *                             jsonProperty(&#34;Action&#34;, &#34;allow&#34;),
+ *                             jsonProperty(&#34;Name&#34;, &#34;frontend-webapp&#34;),
+ *                             jsonProperty(&#34;Precedence&#34;, 9),
+ *                             jsonProperty(&#34;Type&#34;, &#34;consul&#34;)
+ *                         ), 
+ *                         jsonObject(
+ *                             jsonProperty(&#34;Action&#34;, &#34;allow&#34;),
+ *                             jsonProperty(&#34;Name&#34;, &#34;nightly-cronjob&#34;),
+ *                             jsonProperty(&#34;Precedence&#34;, 9),
+ *                             jsonProperty(&#34;Type&#34;, &#34;consul&#34;)
+ *                         )
+ *                     ))
+ *                 )))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.consul.ConfigEntry;
+ * import com.pulumi.consul.ConfigEntryArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var sd = new ConfigEntry(&#34;sd&#34;, ConfigEntryArgs.builder()        
+ *             .kind(&#34;service-defaults&#34;)
+ *             .configJson(serializeJson(
+ *                 jsonObject(
+ *                     jsonProperty(&#34;Protocol&#34;, &#34;http&#34;)
+ *                 )))
+ *             .build());
+ * 
+ *         var jwtProvider = new ConfigEntry(&#34;jwtProvider&#34;, ConfigEntryArgs.builder()        
+ *             .kind(&#34;jwt-provider&#34;)
+ *             .configJson(serializeJson(
+ *                 jsonObject(
+ *                     jsonProperty(&#34;Issuer&#34;, &#34;test-issuer&#34;),
+ *                     jsonProperty(&#34;JSONWebKeySet&#34;, jsonObject(
+ *                         jsonProperty(&#34;Remote&#34;, jsonObject(
+ *                             jsonProperty(&#34;URI&#34;, &#34;https://127.0.0.1:9091&#34;),
+ *                             jsonProperty(&#34;FetchAsynchronously&#34;, true)
+ *                         ))
+ *                     )),
+ *                     jsonProperty(&#34;Forwarding&#34;, jsonObject(
+ *                         jsonProperty(&#34;HeaderName&#34;, &#34;test-token&#34;)
+ *                     ))
+ *                 )))
+ *             .build());
+ * 
+ *         var serviceIntentions = new ConfigEntry(&#34;serviceIntentions&#34;, ConfigEntryArgs.builder()        
+ *             .kind(&#34;service-intentions&#34;)
+ *             .configJson(jwtProvider.name().applyValue(name -&gt; serializeJson(
+ *                 jsonObject(
+ *                     jsonProperty(&#34;Sources&#34;, jsonArray(
+ *                         jsonObject(
+ *                             jsonProperty(&#34;Name&#34;, &#34;contractor-webapp&#34;),
+ *                             jsonProperty(&#34;Permissions&#34;, jsonArray(jsonObject(
+ *                                 jsonProperty(&#34;Action&#34;, &#34;allow&#34;),
+ *                                 jsonProperty(&#34;HTTP&#34;, jsonObject(
+ *                                     jsonProperty(&#34;Methods&#34;, jsonArray(
+ *                                         &#34;GET&#34;, 
+ *                                         &#34;HEAD&#34;
+ *                                     )),
+ *                                     jsonProperty(&#34;PathExact&#34;, &#34;/healtz&#34;)
+ *                                 )),
+ *                                 jsonProperty(&#34;JWT&#34;, jsonObject(
+ *                                     jsonProperty(&#34;Providers&#34;, jsonArray(jsonObject(
+ *                                         jsonProperty(&#34;Name&#34;, name)
+ *                                     )))
+ *                                 ))
+ *                             ))),
+ *                             jsonProperty(&#34;Precedence&#34;, 9),
+ *                             jsonProperty(&#34;Type&#34;, &#34;consul&#34;)
+ *                         ), 
+ *                         jsonObject(
+ *                             jsonProperty(&#34;Name&#34;, &#34;admin-dashboard-webapp&#34;),
+ *                             jsonProperty(&#34;Permissions&#34;, jsonArray(
+ *                                 jsonObject(
+ *                                     jsonProperty(&#34;Action&#34;, &#34;deny&#34;),
+ *                                     jsonProperty(&#34;HTTP&#34;, jsonObject(
+ *                                         jsonProperty(&#34;PathPrefix&#34;, &#34;/debugz&#34;)
+ *                                     ))
+ *                                 ), 
+ *                                 jsonObject(
+ *                                     jsonProperty(&#34;Action&#34;, &#34;allow&#34;),
+ *                                     jsonProperty(&#34;HTTP&#34;, jsonObject(
+ *                                         jsonProperty(&#34;PathPrefix&#34;, &#34;/&#34;)
+ *                                     ))
+ *                                 )
+ *                             )),
+ *                             jsonProperty(&#34;Precedence&#34;, 9),
+ *                             jsonProperty(&#34;Type&#34;, &#34;consul&#34;)
+ *                         )
+ *                     ))
+ *                 ))))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### `exported-services` config entry
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.consul.ConfigEntry;
+ * import com.pulumi.consul.ConfigEntryArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exportedServices = new ConfigEntry(&#34;exportedServices&#34;, ConfigEntryArgs.builder()        
+ *             .kind(&#34;exported-services&#34;)
+ *             .configJson(serializeJson(
+ *                 jsonObject(
+ *                     jsonProperty(&#34;Services&#34;, jsonArray(jsonObject(
+ *                         jsonProperty(&#34;Name&#34;, &#34;test&#34;),
+ *                         jsonProperty(&#34;Namespace&#34;, &#34;default&#34;),
+ *                         jsonProperty(&#34;Consumers&#34;, jsonArray(jsonObject(
+ *                             jsonProperty(&#34;Partition&#34;, &#34;default&#34;)
+ *                         )))
+ *                     )))
+ *                 )))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### `mesh` config entry
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.consul.ConfigEntry;
+ * import com.pulumi.consul.ConfigEntryArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var mesh = new ConfigEntry(&#34;mesh&#34;, ConfigEntryArgs.builder()        
+ *             .kind(&#34;mesh&#34;)
+ *             .partition(&#34;default&#34;)
+ *             .configJson(serializeJson(
+ *                 jsonObject(
+ *                     jsonProperty(&#34;TransparentProxy&#34;, jsonObject(
+ *                         jsonProperty(&#34;MeshDestinationsOnly&#34;, true)
+ *                     ))
+ *                 )))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### `jwt-provider` config entry
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.consul.ConfigEntry;
+ * import com.pulumi.consul.ConfigEntryArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var jwtProvider = new ConfigEntry(&#34;jwtProvider&#34;, ConfigEntryArgs.builder()        
+ *             .kind(&#34;jwt-provider&#34;)
+ *             .configJson(serializeJson(
+ *                 jsonObject(
+ *                     jsonProperty(&#34;Issuer&#34;, &#34;https://your.issuer.com&#34;),
+ *                     jsonProperty(&#34;JSONWebKeySet&#34;, jsonObject(
+ *                         jsonProperty(&#34;Remote&#34;, jsonObject(
+ *                             jsonProperty(&#34;URI&#34;, &#34;https://your-remote.jwks.com&#34;),
+ *                             jsonProperty(&#34;FetchAsynchronously&#34;, true),
+ *                             jsonProperty(&#34;CacheDuration&#34;, &#34;10s&#34;)
+ *                         ))
+ *                     )),
+ *                     jsonProperty(&#34;Forwarding&#34;, jsonObject(
+ *                         jsonProperty(&#34;HeaderName&#34;, &#34;test-token&#34;)
+ *                     ))
+ *                 )))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

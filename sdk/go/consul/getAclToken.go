@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -30,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			test, err := consul.LookupAclToken(ctx, &GetAclTokenArgs{
+//			test, err := consul.LookupAclToken(ctx, &consul.LookupAclTokenArgs{
 //				AccessorId: "00000000-0000-0000-0000-000000000002",
 //			}, nil)
 //			if err != nil {
@@ -43,6 +44,7 @@ import (
 //
 // ```
 func LookupAclToken(ctx *pulumi.Context, args *LookupAclTokenArgs, opts ...pulumi.InvokeOption) (*LookupAclTokenResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAclTokenResult
 	err := ctx.Invoke("consul:index/getAclToken:getAclToken", args, &rv, opts...)
 	if err != nil {

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,6 +16,7 @@ import (
 // different datacenter in the `queryOptions` it is possible to retrieve a list of
 // nodes from a different WAN-attached Consul datacenter.
 func GetNodes(ctx *pulumi.Context, args *GetNodesArgs, opts ...pulumi.InvokeOption) (*GetNodesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetNodesResult
 	err := ctx.Invoke("consul:index/getNodes:getNodes", args, &rv, opts...)
 	if err != nil {

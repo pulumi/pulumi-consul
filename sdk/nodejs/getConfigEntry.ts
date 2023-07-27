@@ -5,11 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 export function getConfigEntry(args: GetConfigEntryArgs, opts?: pulumi.InvokeOptions): Promise<GetConfigEntryResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("consul:index/getConfigEntry:getConfigEntry", {
         "kind": args.kind,
         "name": args.name,
@@ -22,9 +19,21 @@ export function getConfigEntry(args: GetConfigEntryArgs, opts?: pulumi.InvokeOpt
  * A collection of arguments for invoking getConfigEntry.
  */
 export interface GetConfigEntryArgs {
+    /**
+     * The kind of config entry to read.
+     */
     kind: string;
+    /**
+     * The name of the config entry to read.
+     */
     name: string;
+    /**
+     * The namespace the config entry is associated with.
+     */
     namespace?: string;
+    /**
+     * The partition the config entry is associated with.
+     */
     partition?: string;
 }
 
@@ -32,27 +41,53 @@ export interface GetConfigEntryArgs {
  * A collection of values returned by getConfigEntry.
  */
 export interface GetConfigEntryResult {
+    /**
+     * The configuration of the config entry.
+     */
     readonly configJson: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The kind of config entry to read.
+     */
     readonly kind: string;
+    /**
+     * The name of the config entry to read.
+     */
     readonly name: string;
+    /**
+     * The namespace the config entry is associated with.
+     */
     readonly namespace?: string;
+    /**
+     * The partition the config entry is associated with.
+     */
     readonly partition?: string;
 }
-
 export function getConfigEntryOutput(args: GetConfigEntryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConfigEntryResult> {
-    return pulumi.output(args).apply(a => getConfigEntry(a, opts))
+    return pulumi.output(args).apply((a: any) => getConfigEntry(a, opts))
 }
 
 /**
  * A collection of arguments for invoking getConfigEntry.
  */
 export interface GetConfigEntryOutputArgs {
+    /**
+     * The kind of config entry to read.
+     */
     kind: pulumi.Input<string>;
+    /**
+     * The name of the config entry to read.
+     */
     name: pulumi.Input<string>;
+    /**
+     * The namespace the config entry is associated with.
+     */
     namespace?: pulumi.Input<string>;
+    /**
+     * The partition the config entry is associated with.
+     */
     partition?: pulumi.Input<string>;
 }

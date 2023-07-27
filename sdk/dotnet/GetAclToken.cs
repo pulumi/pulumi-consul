@@ -23,29 +23,29 @@ namespace Pulumi.Consul
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Consul = Pulumi.Consul;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var test = Consul.GetAclToken.Invoke(new()
         ///     {
-        ///         var test = Output.Create(Consul.GetAclToken.InvokeAsync(new Consul.GetAclTokenArgs
-        ///         {
-        ///             AccessorId = "00000000-0000-0000-0000-000000000002",
-        ///         }));
-        ///         this.ConsulAclPolicies = test.Apply(test =&gt; test.Policies);
-        ///     }
+        ///         AccessorId = "00000000-0000-0000-0000-000000000002",
+        ///     });
         /// 
-        ///     [Output("consulAclPolicies")]
-        ///     public Output&lt;string&gt; ConsulAclPolicies { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["consulAclPolicies"] = test.Apply(getAclTokenResult =&gt; getAclTokenResult.Policies),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAclTokenResult> InvokeAsync(GetAclTokenArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAclTokenResult>("consul:index/getAclToken:getAclToken", args ?? new GetAclTokenArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAclTokenResult>("consul:index/getAclToken:getAclToken", args ?? new GetAclTokenArgs(), options.WithDefaults());
 
         /// <summary>
         /// The `consul.AclToken` data source returns the information related to the
@@ -59,33 +59,33 @@ namespace Pulumi.Consul
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Consul = Pulumi.Consul;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var test = Consul.GetAclToken.Invoke(new()
         ///     {
-        ///         var test = Output.Create(Consul.GetAclToken.InvokeAsync(new Consul.GetAclTokenArgs
-        ///         {
-        ///             AccessorId = "00000000-0000-0000-0000-000000000002",
-        ///         }));
-        ///         this.ConsulAclPolicies = test.Apply(test =&gt; test.Policies);
-        ///     }
+        ///         AccessorId = "00000000-0000-0000-0000-000000000002",
+        ///     });
         /// 
-        ///     [Output("consulAclPolicies")]
-        ///     public Output&lt;string&gt; ConsulAclPolicies { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["consulAclPolicies"] = test.Apply(getAclTokenResult =&gt; getAclTokenResult.Policies),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAclTokenResult> Invoke(GetAclTokenInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAclTokenResult>("consul:index/getAclToken:getAclToken", args ?? new GetAclTokenInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAclTokenResult>("consul:index/getAclToken:getAclToken", args ?? new GetAclTokenInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetAclTokenArgs : Pulumi.InvokeArgs
+    public sealed class GetAclTokenArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The accessor ID of the ACL token.
@@ -108,9 +108,10 @@ namespace Pulumi.Consul
         public GetAclTokenArgs()
         {
         }
+        public static new GetAclTokenArgs Empty => new GetAclTokenArgs();
     }
 
-    public sealed class GetAclTokenInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAclTokenInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The accessor ID of the ACL token.
@@ -133,6 +134,7 @@ namespace Pulumi.Consul
         public GetAclTokenInvokeArgs()
         {
         }
+        public static new GetAclTokenInvokeArgs Empty => new GetAclTokenInvokeArgs();
     }
 
 

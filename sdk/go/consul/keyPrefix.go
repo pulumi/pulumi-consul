@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -28,8 +29,8 @@ import (
 //			_, err := consul.NewKeyPrefix(ctx, "myappConfig", &consul.KeyPrefixArgs{
 //				Datacenter: pulumi.String("nyc1"),
 //				PathPrefix: pulumi.String("myapp/config/"),
-//				SubkeyCollection: KeyPrefixSubkeyCollectionArray{
-//					&KeyPrefixSubkeyCollectionArgs{
+//				SubkeyCollection: consul.KeyPrefixSubkeyCollectionArray{
+//					&consul.KeyPrefixSubkeyCollectionArgs{
 //						Flags: pulumi.Int(2),
 //						Path:  pulumi.String("database/password"),
 //						Value: pulumi.Any(aws_db_instance.App.Password),
@@ -103,6 +104,14 @@ func NewKeyPrefix(ctx *pulumi.Context,
 	if args.PathPrefix == nil {
 		return nil, errors.New("invalid value for required argument 'PathPrefix'")
 	}
+	if args.Token != nil {
+		args.Token = pulumi.ToSecret(args.Token).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"token",
+	})
+	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource KeyPrefix
 	err := ctx.RegisterResource("consul:index/keyPrefix:KeyPrefix", name, args, &resource, opts...)
 	if err != nil {
@@ -326,6 +335,52 @@ func (o KeyPrefixOutput) ToKeyPrefixOutput() KeyPrefixOutput {
 
 func (o KeyPrefixOutput) ToKeyPrefixOutputWithContext(ctx context.Context) KeyPrefixOutput {
 	return o
+}
+
+// The datacenter to use. This overrides the
+// agent's default datacenter and the datacenter in the provider setup.
+func (o KeyPrefixOutput) Datacenter() pulumi.StringOutput {
+	return o.ApplyT(func(v *KeyPrefix) pulumi.StringOutput { return v.Datacenter }).(pulumi.StringOutput)
+}
+
+// The namespace to create the keys within.
+func (o KeyPrefixOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeyPrefix) pulumi.StringPtrOutput { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+// The admin partition to create the keys within.
+func (o KeyPrefixOutput) Partition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeyPrefix) pulumi.StringPtrOutput { return v.Partition }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the common prefix shared by all keys
+// that will be managed by this resource instance. In most cases this will
+// end with a slash, to manage a "folder" of keys.
+func (o KeyPrefixOutput) PathPrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v *KeyPrefix) pulumi.StringOutput { return v.PathPrefix }).(pulumi.StringOutput)
+}
+
+// A subkey to add. Supported values documented below.
+// Multiple blocks supported.
+func (o KeyPrefixOutput) SubkeyCollection() KeyPrefixSubkeyCollectionArrayOutput {
+	return o.ApplyT(func(v *KeyPrefix) KeyPrefixSubkeyCollectionArrayOutput { return v.SubkeyCollection }).(KeyPrefixSubkeyCollectionArrayOutput)
+}
+
+// A mapping from subkey name (which will be appended
+// to the given `pathPrefix`) to the value that should be stored at that key.
+// Use slashes, as shown in the above example, to create "sub-folders" under
+// the given path prefix.
+func (o KeyPrefixOutput) Subkeys() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *KeyPrefix) pulumi.StringMapOutput { return v.Subkeys }).(pulumi.StringMapOutput)
+}
+
+// The ACL token to use. This overrides the
+// token that the agent provides by default.
+//
+// Deprecated: The token argument has been deprecated and will be removed in a future release.
+// Please use the token argument in the provider configuration
+func (o KeyPrefixOutput) Token() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeyPrefix) pulumi.StringPtrOutput { return v.Token }).(pulumi.StringPtrOutput)
 }
 
 type KeyPrefixArrayOutput struct{ *pulumi.OutputState }

@@ -31,6 +31,128 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Creating a new node with the service:
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.consul.Node;
+ * import com.pulumi.consul.NodeArgs;
+ * import com.pulumi.consul.Service;
+ * import com.pulumi.consul.ServiceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var compute = new Node(&#34;compute&#34;, NodeArgs.builder()        
+ *             .address(&#34;www.google.com&#34;)
+ *             .build());
+ * 
+ *         var google = new Service(&#34;google&#34;, ServiceArgs.builder()        
+ *             .node(compute.name())
+ *             .port(80)
+ *             .tags(&#34;tag0&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * Utilizing an existing known node:
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.consul.Service;
+ * import com.pulumi.consul.ServiceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var google = new Service(&#34;google&#34;, ServiceArgs.builder()        
+ *             .node(&#34;google&#34;)
+ *             .port(443)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * Register a health-check:
+ * 
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.consul.Service;
+ * import com.pulumi.consul.ServiceArgs;
+ * import com.pulumi.consul.inputs.ServiceCheckArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var redis = new Service(&#34;redis&#34;, ServiceArgs.builder()        
+ *             .checks(ServiceCheckArgs.builder()
+ *                 .checkId(&#34;service:redis1&#34;)
+ *                 .deregisterCriticalServiceAfter(&#34;30s&#34;)
+ *                 .headers(                
+ *                     ServiceCheckHeaderArgs.builder()
+ *                         .name(&#34;foo&#34;)
+ *                         .value(&#34;test&#34;)
+ *                         .build(),
+ *                     ServiceCheckHeaderArgs.builder()
+ *                         .name(&#34;bar&#34;)
+ *                         .value(&#34;test&#34;)
+ *                         .build())
+ *                 .http(&#34;https://www.hashicorptest.com&#34;)
+ *                 .interval(&#34;5s&#34;)
+ *                 .method(&#34;PUT&#34;)
+ *                 .name(&#34;Redis health check&#34;)
+ *                 .status(&#34;passing&#34;)
+ *                 .timeout(&#34;1s&#34;)
+ *                 .tlsSkipVerify(false)
+ *                 .build())
+ *             .node(&#34;redis&#34;)
+ *             .port(6379)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  */
 @ResourceType(type="consul:index/service:Service")
 public class Service extends com.pulumi.resources.CustomResource {
@@ -161,12 +283,16 @@ public class Service extends com.pulumi.resources.CustomResource {
     /**
      * The partition the service is associated with.
      * 
+     * The following attributes are available for each health-check:
+     * 
      */
     @Export(name="partition", type=String.class, parameters={})
     private Output</* @Nullable */ String> partition;
 
     /**
      * @return The partition the service is associated with.
+     * 
+     * The following attributes are available for each health-check:
      * 
      */
     public Output<Optional<String>> partition() {
@@ -187,15 +313,15 @@ public class Service extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.port);
     }
     /**
-     * - If the service ID is not provided, it will be defaulted to the value
-     *   of the `name` attribute.
+     * If the service ID is not provided, it will be defaulted to the value
+     * of the `name` attribute.
      * 
      */
     @Export(name="serviceId", type=String.class, parameters={})
     private Output<String> serviceId;
 
     /**
-     * @return - If the service ID is not provided, it will be defaulted to the value
+     * @return If the service ID is not provided, it will be defaulted to the value
      * of the `name` attribute.
      * 
      */

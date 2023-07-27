@@ -17,20 +17,19 @@ namespace Pulumi.Consul
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Consul = Pulumi.Consul;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var naWest = new Consul.AdminPartition("naWest", new()
     ///     {
-    ///         var naWest = new Consul.AdminPartition("naWest", new Consul.AdminPartitionArgs
-    ///         {
-    ///             Description = "Partition for North America West",
-    ///         });
-    ///     }
+    ///         Description = "Partition for North America West",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -42,7 +41,7 @@ namespace Pulumi.Consul
     /// ```
     /// </summary>
     [ConsulResourceType("consul:index/adminPartition:AdminPartition")]
-    public partial class AdminPartition : Pulumi.CustomResource
+    public partial class AdminPartition : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Free form partition description.
@@ -100,7 +99,7 @@ namespace Pulumi.Consul
         }
     }
 
-    public sealed class AdminPartitionArgs : Pulumi.ResourceArgs
+    public sealed class AdminPartitionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Free form partition description.
@@ -117,9 +116,10 @@ namespace Pulumi.Consul
         public AdminPartitionArgs()
         {
         }
+        public static new AdminPartitionArgs Empty => new AdminPartitionArgs();
     }
 
-    public sealed class AdminPartitionState : Pulumi.ResourceArgs
+    public sealed class AdminPartitionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Free form partition description.
@@ -136,5 +136,6 @@ namespace Pulumi.Consul
         public AdminPartitionState()
         {
         }
+        public static new AdminPartitionState Empty => new AdminPartitionState();
     }
 }

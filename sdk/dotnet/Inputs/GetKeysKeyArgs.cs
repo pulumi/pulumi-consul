@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Consul.Inputs
 {
 
-    public sealed class GetKeysKeyInputArgs : Pulumi.ResourceArgs
+    public sealed class GetKeysKeyInputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// This is the default value to set for `var.&lt;name&gt;`
@@ -37,5 +37,6 @@ namespace Pulumi.Consul.Inputs
         public GetKeysKeyInputArgs()
         {
         }
+        public static new GetKeysKeyInputArgs Empty => new GetKeysKeyInputArgs();
     }
 }

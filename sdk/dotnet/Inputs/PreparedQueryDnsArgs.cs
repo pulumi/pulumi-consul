@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Consul.Inputs
 {
 
-    public sealed class PreparedQueryDnsArgs : Pulumi.ResourceArgs
+    public sealed class PreparedQueryDnsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The TTL to send when returning DNS results.
@@ -21,5 +21,6 @@ namespace Pulumi.Consul.Inputs
         public PreparedQueryDnsArgs()
         {
         }
+        public static new PreparedQueryDnsArgs Empty => new PreparedQueryDnsArgs();
     }
 }

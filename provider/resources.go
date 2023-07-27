@@ -164,10 +164,28 @@ func Provider() tfbridge.ProviderInfo {
 			"consul_agent_config":        {Tok: makeDataSource(mainMod, "getAgentConfig")},
 			"consul_agent_self":          {Tok: makeDataSource(mainMod, "getAgentSelf")},
 			"consul_autopilot_health":    {Tok: makeDataSource(mainMod, "getAutopilotHealth")},
-			"consul_catalog_nodes":       {Tok: makeDataSource(mainMod, "getCatalogNodes")},
-			"consul_catalog_service":     {Tok: makeDataSource(mainMod, "getCatalogService")},
-			"consul_catalog_services":    {Tok: makeDataSource(mainMod, "getCatalogServices")},
-			"consul_config_entry":        {Tok: makeDataSource(mainMod, "getConfigEntry")},
+			"consul_catalog_nodes": {
+				Tok: makeDataSource(mainMod, "getCatalogNodes"),
+				Docs: &tfbridge.DocInfo{
+					Source: "nodes.md",
+				},
+				DeprecationMessage: "getCatalogNodes has been deprecated in favor of getNodes",
+			},
+			"consul_catalog_service": {
+				Tok: makeDataSource(mainMod, "getCatalogService"),
+				Docs: &tfbridge.DocInfo{
+					Source: "service.md",
+				},
+				DeprecationMessage: "getCatalogService has been deprecated in favor of getService",
+			},
+			"consul_catalog_services": {
+				Tok: makeDataSource(mainMod, "getCatalogServices"),
+				Docs: &tfbridge.DocInfo{
+					Source: "services.md",
+				},
+				DeprecationMessage: "getCatalogServices has been deprecated in favor of getServices",
+			},
+			"consul_config_entry": {Tok: makeDataSource(mainMod, "getConfigEntry")},
 			"consul_key_prefix": {
 				Tok: makeDataSource(mainMod, "getKeyPrefix"),
 				Fields: map[string]*tfbridge.SchemaInfo{

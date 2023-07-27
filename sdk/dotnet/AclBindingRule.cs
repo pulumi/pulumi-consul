@@ -16,42 +16,42 @@ namespace Pulumi.Consul
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Consul = Pulumi.Consul;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var minikube = new Consul.AclAuthMethod("minikube", new()
     ///     {
-    ///         var minikube = new Consul.AclAuthMethod("minikube", new Consul.AclAuthMethodArgs
+    ///         Config = 
     ///         {
-    ///             Config = 
-    ///             {
-    ///                 { "CACert", @"-----BEGIN CERTIFICATE-----
+    ///             { "CACert", @"-----BEGIN CERTIFICATE-----
     /// ...-----END CERTIFICATE-----
     /// 
     /// " },
-    ///                 { "Host", "https://192.0.2.42:8443" },
-    ///                 { "ServiceAccountJWT", "eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9..." },
-    ///             },
-    ///             Description = "dev minikube cluster",
-    ///             Type = "kubernetes",
-    ///         });
-    ///         var test = new Consul.AclBindingRule("test", new Consul.AclBindingRuleArgs
-    ///         {
-    ///             AuthMethod = minikube.Name,
-    ///             BindName = "minikube",
-    ///             BindType = "service",
-    ///             Description = "foobar",
-    ///             Selector = "serviceaccount.namespace==default",
-    ///         });
-    ///     }
+    ///             { "Host", "https://192.0.2.42:8443" },
+    ///             { "ServiceAccountJWT", "eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9..." },
+    ///         },
+    ///         Description = "dev minikube cluster",
+    ///         Type = "kubernetes",
+    ///     });
     /// 
-    /// }
+    ///     var test = new Consul.AclBindingRule("test", new()
+    ///     {
+    ///         AuthMethod = minikube.Name,
+    ///         BindName = "minikube",
+    ///         BindType = "service",
+    ///         Description = "foobar",
+    ///         Selector = "serviceaccount.namespace==default",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// </summary>
     [ConsulResourceType("consul:index/aclBindingRule:AclBindingRule")]
-    public partial class AclBindingRule : Pulumi.CustomResource
+    public partial class AclBindingRule : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the ACL auth method this rule apply.
@@ -139,7 +139,7 @@ namespace Pulumi.Consul
         }
     }
 
-    public sealed class AclBindingRuleArgs : Pulumi.ResourceArgs
+    public sealed class AclBindingRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the ACL auth method this rule apply.
@@ -186,9 +186,10 @@ namespace Pulumi.Consul
         public AclBindingRuleArgs()
         {
         }
+        public static new AclBindingRuleArgs Empty => new AclBindingRuleArgs();
     }
 
-    public sealed class AclBindingRuleState : Pulumi.ResourceArgs
+    public sealed class AclBindingRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the ACL auth method this rule apply.
@@ -235,5 +236,6 @@ namespace Pulumi.Consul
         public AclBindingRuleState()
         {
         }
+        public static new AclBindingRuleState Empty => new AclBindingRuleState();
     }
 }

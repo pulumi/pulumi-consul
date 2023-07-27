@@ -2,16 +2,25 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * The `consul.getServices` data source returns a list of Consul services that
+ * have been registered with the Consul cluster in a given datacenter.  By
+ * specifying a different datacenter in the `queryOptions` it is possible to
+ * retrieve a list of services from a different WAN-attached Consul datacenter.
+ *
+ * This data source is different from the `consul.Service` (singular) data
+ * source, which provides a detailed response about a specific Consul service.
+ */
+/** @deprecated getCatalogServices has been deprecated in favor of getServices */
 export function getCatalogServices(args?: GetCatalogServicesArgs, opts?: pulumi.InvokeOptions): Promise<GetCatalogServicesResult> {
+    pulumi.log.warn("getCatalogServices is deprecated: getCatalogServices has been deprecated in favor of getServices")
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("consul:index/getCatalogServices:getCatalogServices", {
         "queryOptions": args.queryOptions,
     }, opts);
@@ -21,6 +30,9 @@ export function getCatalogServices(args?: GetCatalogServicesArgs, opts?: pulumi.
  * A collection of arguments for invoking getCatalogServices.
  */
 export interface GetCatalogServicesArgs {
+    /**
+     * See below.
+     */
     queryOptions?: inputs.GetCatalogServicesQueryOption[];
 }
 
@@ -28,6 +40,9 @@ export interface GetCatalogServicesArgs {
  * A collection of values returned by getCatalogServices.
  */
 export interface GetCatalogServicesResult {
+    /**
+     * The datacenter the keys are being read from to.
+     */
     readonly datacenter: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -36,16 +51,34 @@ export interface GetCatalogServicesResult {
     readonly names: string[];
     readonly queryOptions?: outputs.GetCatalogServicesQueryOption[];
     readonly services: {[key: string]: string};
+    /**
+     * A map of the tags found for each service.  If more than one service
+     * shares the same tag, unique service names will be joined by whitespace (this
+     * is the inverse of `services` and can be used to lookup the services that match
+     * a single tag).
+     */
     readonly tags: {[key: string]: string};
 }
-
+/**
+ * The `consul.getServices` data source returns a list of Consul services that
+ * have been registered with the Consul cluster in a given datacenter.  By
+ * specifying a different datacenter in the `queryOptions` it is possible to
+ * retrieve a list of services from a different WAN-attached Consul datacenter.
+ *
+ * This data source is different from the `consul.Service` (singular) data
+ * source, which provides a detailed response about a specific Consul service.
+ */
+/** @deprecated getCatalogServices has been deprecated in favor of getServices */
 export function getCatalogServicesOutput(args?: GetCatalogServicesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCatalogServicesResult> {
-    return pulumi.output(args).apply(a => getCatalogServices(a, opts))
+    return pulumi.output(args).apply((a: any) => getCatalogServices(a, opts))
 }
 
 /**
  * A collection of arguments for invoking getCatalogServices.
  */
 export interface GetCatalogServicesOutputArgs {
+    /**
+     * See below.
+     */
     queryOptions?: pulumi.Input<pulumi.Input<inputs.GetCatalogServicesQueryOptionArgs>[]>;
 }

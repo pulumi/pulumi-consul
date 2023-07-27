@@ -18,7 +18,7 @@ namespace Pulumi.Consul
         /// nodes from a different WAN-attached Consul datacenter.
         /// </summary>
         public static Task<GetNodesResult> InvokeAsync(GetNodesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNodesResult>("consul:index/getNodes:getNodes", args ?? new GetNodesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetNodesResult>("consul:index/getNodes:getNodes", args ?? new GetNodesArgs(), options.WithDefaults());
 
         /// <summary>
         /// The `consul.getNodes` data source returns a list of Consul nodes that have
@@ -27,11 +27,11 @@ namespace Pulumi.Consul
         /// nodes from a different WAN-attached Consul datacenter.
         /// </summary>
         public static Output<GetNodesResult> Invoke(GetNodesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetNodesResult>("consul:index/getNodes:getNodes", args ?? new GetNodesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetNodesResult>("consul:index/getNodes:getNodes", args ?? new GetNodesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetNodesArgs : Pulumi.InvokeArgs
+    public sealed class GetNodesArgs : global::Pulumi.InvokeArgs
     {
         [Input("queryOptions")]
         private List<Inputs.GetNodesQueryOptionArgs>? _queryOptions;
@@ -48,9 +48,10 @@ namespace Pulumi.Consul
         public GetNodesArgs()
         {
         }
+        public static new GetNodesArgs Empty => new GetNodesArgs();
     }
 
-    public sealed class GetNodesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetNodesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("queryOptions")]
         private InputList<Inputs.GetNodesQueryOptionInputArgs>? _queryOptions;
@@ -67,6 +68,7 @@ namespace Pulumi.Consul
         public GetNodesInvokeArgs()
         {
         }
+        public static new GetNodesInvokeArgs Empty => new GetNodesInvokeArgs();
     }
 
 

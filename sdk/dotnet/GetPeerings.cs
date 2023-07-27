@@ -17,23 +17,22 @@ namespace Pulumi.Consul
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Consul = Pulumi.Consul;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var peers = Output.Create(Consul.GetPeerings.InvokeAsync());
-        ///     }
+        ///     var peers = Consul.GetPeerings.Invoke();
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetPeeringsResult> InvokeAsync(GetPeeringsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPeeringsResult>("consul:index/getPeerings:getPeerings", args ?? new GetPeeringsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetPeeringsResult>("consul:index/getPeerings:getPeerings", args ?? new GetPeeringsArgs(), options.WithDefaults());
 
         /// <summary>
         /// {{% examples %}}
@@ -41,27 +40,26 @@ namespace Pulumi.Consul
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Consul = Pulumi.Consul;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var peers = Output.Create(Consul.GetPeerings.InvokeAsync());
-        ///     }
+        ///     var peers = Consul.GetPeerings.Invoke();
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetPeeringsResult> Invoke(GetPeeringsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetPeeringsResult>("consul:index/getPeerings:getPeerings", args ?? new GetPeeringsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetPeeringsResult>("consul:index/getPeerings:getPeerings", args ?? new GetPeeringsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetPeeringsArgs : Pulumi.InvokeArgs
+    public sealed class GetPeeringsArgs : global::Pulumi.InvokeArgs
     {
         [Input("partition")]
         public string? Partition { get; set; }
@@ -69,9 +67,10 @@ namespace Pulumi.Consul
         public GetPeeringsArgs()
         {
         }
+        public static new GetPeeringsArgs Empty => new GetPeeringsArgs();
     }
 
-    public sealed class GetPeeringsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetPeeringsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("partition")]
         public Input<string>? Partition { get; set; }
@@ -79,6 +78,7 @@ namespace Pulumi.Consul
         public GetPeeringsInvokeArgs()
         {
         }
+        public static new GetPeeringsInvokeArgs Empty => new GetPeeringsInvokeArgs();
     }
 
 

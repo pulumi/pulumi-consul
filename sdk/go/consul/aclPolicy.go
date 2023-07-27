@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,8 +21,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -33,7 +32,7 @@ import (
 //				Datacenters: pulumi.StringArray{
 //					pulumi.String("dc1"),
 //				},
-//				Rules: pulumi.String(fmt.Sprintf("%v%v%v%v", "node_prefix \"\" {\n", "  policy = \"read\"\n", "}\n", "\n")),
+//				Rules: pulumi.String("node_prefix \"\" {\n  policy = \"read\"\n}\n\n"),
 //			})
 //			if err != nil {
 //				return err
@@ -80,6 +79,7 @@ func NewAclPolicy(ctx *pulumi.Context,
 	if args.Rules == nil {
 		return nil, errors.New("invalid value for required argument 'Rules'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AclPolicy
 	err := ctx.RegisterResource("consul:index/aclPolicy:AclPolicy", name, args, &resource, opts...)
 	if err != nil {
@@ -251,6 +251,36 @@ func (o AclPolicyOutput) ToAclPolicyOutput() AclPolicyOutput {
 
 func (o AclPolicyOutput) ToAclPolicyOutputWithContext(ctx context.Context) AclPolicyOutput {
 	return o
+}
+
+// The datacenters of the policy.
+func (o AclPolicyOutput) Datacenters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AclPolicy) pulumi.StringArrayOutput { return v.Datacenters }).(pulumi.StringArrayOutput)
+}
+
+// The description of the policy.
+func (o AclPolicyOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AclPolicy) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The name of the policy.
+func (o AclPolicyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *AclPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The namespace to create the policy within.
+func (o AclPolicyOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AclPolicy) pulumi.StringPtrOutput { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+// The partition the ACL policy is associated with.
+func (o AclPolicyOutput) Partition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AclPolicy) pulumi.StringPtrOutput { return v.Partition }).(pulumi.StringPtrOutput)
+}
+
+// The rules of the policy.
+func (o AclPolicyOutput) Rules() pulumi.StringOutput {
+	return o.ApplyT(func(v *AclPolicy) pulumi.StringOutput { return v.Rules }).(pulumi.StringOutput)
 }
 
 type AclPolicyArrayOutput struct{ *pulumi.OutputState }

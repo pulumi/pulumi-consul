@@ -23,29 +23,28 @@ namespace Pulumi.Consul
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Consul = Pulumi.Consul;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var dc2 = new Consul.NetworkArea("dc2", new()
     ///     {
-    ///         var dc2 = new Consul.NetworkArea("dc2", new Consul.NetworkAreaArgs
+    ///         PeerDatacenter = "dc2",
+    ///         RetryJoins = new[]
     ///         {
-    ///             PeerDatacenter = "dc2",
-    ///             RetryJoins = 
-    ///             {
-    ///                 "1.2.3.4",
-    ///             },
-    ///             UseTls = true,
-    ///         });
-    ///     }
+    ///             "1.2.3.4",
+    ///         },
+    ///         UseTls = true,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [ConsulResourceType("consul:index/networkArea:NetworkArea")]
-    public partial class NetworkArea : Pulumi.CustomResource
+    public partial class NetworkArea : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The datacenter to use. This overrides the
@@ -105,6 +104,10 @@ namespace Pulumi.Consul
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "token",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -126,7 +129,7 @@ namespace Pulumi.Consul
         }
     }
 
-    public sealed class NetworkAreaArgs : Pulumi.ResourceArgs
+    public sealed class NetworkAreaArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The datacenter to use. This overrides the
@@ -155,12 +158,24 @@ namespace Pulumi.Consul
             set => _retryJoins = value;
         }
 
+        [Input("token")]
+        private Input<string>? _token;
+
         /// <summary>
         /// The ACL token to use. This overrides the
         /// token that the agent provides by default.
         /// </summary>
-        [Input("token")]
-        public Input<string>? Token { get; set; }
+        [Obsolete(@"The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration")]
+        public Input<string>? Token
+        {
+            get => _token;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _token = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Specifies whether gossip over this area should be
@@ -172,9 +187,10 @@ namespace Pulumi.Consul
         public NetworkAreaArgs()
         {
         }
+        public static new NetworkAreaArgs Empty => new NetworkAreaArgs();
     }
 
-    public sealed class NetworkAreaState : Pulumi.ResourceArgs
+    public sealed class NetworkAreaState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The datacenter to use. This overrides the
@@ -203,12 +219,24 @@ namespace Pulumi.Consul
             set => _retryJoins = value;
         }
 
+        [Input("token")]
+        private Input<string>? _token;
+
         /// <summary>
         /// The ACL token to use. This overrides the
         /// token that the agent provides by default.
         /// </summary>
-        [Input("token")]
-        public Input<string>? Token { get; set; }
+        [Obsolete(@"The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration")]
+        public Input<string>? Token
+        {
+            get => _token;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _token = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Specifies whether gossip over this area should be
@@ -220,5 +248,6 @@ namespace Pulumi.Consul
         public NetworkAreaState()
         {
         }
+        public static new NetworkAreaState Empty => new NetworkAreaState();
     }
 }

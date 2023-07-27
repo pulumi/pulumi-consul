@@ -7,10 +7,18 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The `getNodes` data source returns a list of Consul nodes that have
+// been registered with the Consul cluster in a given datacenter.  By specifying a
+// different datacenter in the `queryOptions` it is possible to retrieve a list of
+// nodes from a different WAN-attached Consul datacenter.
+//
+// Deprecated: getCatalogNodes has been deprecated in favor of getNodes
 func GetCatalogNodes(ctx *pulumi.Context, args *GetCatalogNodesArgs, opts ...pulumi.InvokeOption) (*GetCatalogNodesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCatalogNodesResult
 	err := ctx.Invoke("consul:index/getCatalogNodes:getCatalogNodes", args, &rv, opts...)
 	if err != nil {
@@ -21,16 +29,22 @@ func GetCatalogNodes(ctx *pulumi.Context, args *GetCatalogNodesArgs, opts ...pul
 
 // A collection of arguments for invoking getCatalogNodes.
 type GetCatalogNodesArgs struct {
+	// See below.
 	QueryOptions []GetCatalogNodesQueryOption `pulumi:"queryOptions"`
 }
 
 // A collection of values returned by getCatalogNodes.
 type GetCatalogNodesResult struct {
+	// The datacenter the keys are being read from to.
 	Datacenter string `pulumi:"datacenter"`
 	// The provider-assigned unique ID for this managed resource.
-	Id           string                       `pulumi:"id"`
-	NodeIds      []string                     `pulumi:"nodeIds"`
-	NodeNames    []string                     `pulumi:"nodeNames"`
+	Id string `pulumi:"id"`
+	// A list of the Consul node IDs.
+	NodeIds []string `pulumi:"nodeIds"`
+	// A list of the Consul node names.
+	NodeNames []string `pulumi:"nodeNames"`
+	// A list of nodes and details about each Consul agent.  The list of
+	// per-node attributes is detailed below.
 	Nodes        []GetCatalogNodesNode        `pulumi:"nodes"`
 	QueryOptions []GetCatalogNodesQueryOption `pulumi:"queryOptions"`
 }
@@ -50,6 +64,7 @@ func GetCatalogNodesOutput(ctx *pulumi.Context, args GetCatalogNodesOutputArgs, 
 
 // A collection of arguments for invoking getCatalogNodes.
 type GetCatalogNodesOutputArgs struct {
+	// See below.
 	QueryOptions GetCatalogNodesQueryOptionArrayInput `pulumi:"queryOptions"`
 }
 
@@ -72,6 +87,7 @@ func (o GetCatalogNodesResultOutput) ToGetCatalogNodesResultOutputWithContext(ct
 	return o
 }
 
+// The datacenter the keys are being read from to.
 func (o GetCatalogNodesResultOutput) Datacenter() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCatalogNodesResult) string { return v.Datacenter }).(pulumi.StringOutput)
 }
@@ -81,14 +97,18 @@ func (o GetCatalogNodesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCatalogNodesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// A list of the Consul node IDs.
 func (o GetCatalogNodesResultOutput) NodeIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetCatalogNodesResult) []string { return v.NodeIds }).(pulumi.StringArrayOutput)
 }
 
+// A list of the Consul node names.
 func (o GetCatalogNodesResultOutput) NodeNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetCatalogNodesResult) []string { return v.NodeNames }).(pulumi.StringArrayOutput)
 }
 
+// A list of nodes and details about each Consul agent.  The list of
+// per-node attributes is detailed below.
 func (o GetCatalogNodesResultOutput) Nodes() GetCatalogNodesNodeArrayOutput {
 	return o.ApplyT(func(v GetCatalogNodesResult) []GetCatalogNodesNode { return v.Nodes }).(GetCatalogNodesNodeArrayOutput)
 }

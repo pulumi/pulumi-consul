@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -13,11 +14,8 @@ import * as utilities from "./utilities";
  */
 export function getNodes(args?: GetNodesArgs, opts?: pulumi.InvokeOptions): Promise<GetNodesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("consul:index/getNodes:getNodes", {
         "queryOptions": args.queryOptions,
     }, opts);
@@ -60,9 +58,14 @@ export interface GetNodesResult {
     readonly nodes: outputs.GetNodesNode[];
     readonly queryOptions?: outputs.GetNodesQueryOption[];
 }
-
+/**
+ * The `consul.getNodes` data source returns a list of Consul nodes that have
+ * been registered with the Consul cluster in a given datacenter.  By specifying a
+ * different datacenter in the `queryOptions` it is possible to retrieve a list of
+ * nodes from a different WAN-attached Consul datacenter.
+ */
 export function getNodesOutput(args?: GetNodesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNodesResult> {
-    return pulumi.output(args).apply(a => getNodes(a, opts))
+    return pulumi.output(args).apply((a: any) => getNodes(a, opts))
 }
 
 /**

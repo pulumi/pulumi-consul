@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -37,7 +38,7 @@ import (
 //				return err
 //			}
 //			json0 := string(tmpJSON0)
-//			_, err := consul.NewConfigEntry(ctx, "proxyDefaults", &consul.ConfigEntryArgs{
+//			_, err = consul.NewConfigEntry(ctx, "proxyDefaults", &consul.ConfigEntryArgs{
 //				Kind:       pulumi.String("proxy-defaults"),
 //				ConfigJson: pulumi.String(json0),
 //			})
@@ -228,7 +229,7 @@ import (
 //				return err
 //			}
 //			json0 := string(tmpJSON0)
-//			_, err := consul.NewConfigEntry(ctx, "serviceIntentions", &consul.ConfigEntryArgs{
+//			_, err = consul.NewConfigEntry(ctx, "serviceIntentions", &consul.ConfigEntryArgs{
 //				Kind:       pulumi.String("service-intentions"),
 //				ConfigJson: pulumi.String(json0),
 //			})
@@ -262,7 +263,7 @@ import (
 //				return err
 //			}
 //			json0 := string(tmpJSON0)
-//			_, err := consul.NewConfigEntry(ctx, "sd", &consul.ConfigEntryArgs{
+//			_, err = consul.NewConfigEntry(ctx, "sd", &consul.ConfigEntryArgs{
 //				Kind:       pulumi.String("service-defaults"),
 //				ConfigJson: pulumi.String(json0),
 //			})
@@ -270,52 +271,85 @@ import (
 //				return err
 //			}
 //			tmpJSON1, err := json.Marshal(map[string]interface{}{
-//				"Sources": []interface{}{
-//					map[string]interface{}{
-//						"Name": "contractor-webapp",
-//						"Permissions": []map[string]interface{}{
-//							map[string]interface{}{
-//								"Action": "allow",
-//								"HTTP": map[string]interface{}{
-//									"Methods": []string{
-//										"GET",
-//										"HEAD",
-//									},
-//									"PathExact": "/healtz",
-//								},
-//							},
-//						},
-//						"Precedence": 9,
-//						"Type":       "consul",
+//				"Issuer": "test-issuer",
+//				"JSONWebKeySet": map[string]interface{}{
+//					"Remote": map[string]interface{}{
+//						"URI":                 "https://127.0.0.1:9091",
+//						"FetchAsynchronously": true,
 //					},
-//					map[string]interface{}{
-//						"Name": "admin-dashboard-webapp",
-//						"Permissions": []map[string]interface{}{
-//							map[string]interface{}{
-//								"Action": "deny",
-//								"HTTP": map[string]interface{}{
-//									"PathPrefix": "/debugz",
-//								},
-//							},
-//							map[string]interface{}{
-//								"Action": "allow",
-//								"HTTP": map[string]interface{}{
-//									"PathPrefix": "/",
-//								},
-//							},
-//						},
-//						"Precedence": 9,
-//						"Type":       "consul",
-//					},
+//				},
+//				"Forwarding": map[string]interface{}{
+//					"HeaderName": "test-token",
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			json1 := string(tmpJSON1)
-//			_, err = consul.NewConfigEntry(ctx, "serviceIntentions", &consul.ConfigEntryArgs{
-//				Kind:       pulumi.String("service-intentions"),
+//			jwtProvider, err := consul.NewConfigEntry(ctx, "jwtProvider", &consul.ConfigEntryArgs{
+//				Kind:       pulumi.String("jwt-provider"),
 //				ConfigJson: pulumi.String(json1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = consul.NewConfigEntry(ctx, "serviceIntentions", &consul.ConfigEntryArgs{
+//				Kind: pulumi.String("service-intentions"),
+//				ConfigJson: jwtProvider.Name.ApplyT(func(name string) (pulumi.String, error) {
+//					var _zero pulumi.String
+//					tmpJSON2, err := json.Marshal(map[string]interface{}{
+//						"Sources": []interface{}{
+//							map[string]interface{}{
+//								"Name": "contractor-webapp",
+//								"Permissions": []map[string]interface{}{
+//									map[string]interface{}{
+//										"Action": "allow",
+//										"HTTP": map[string]interface{}{
+//											"Methods": []string{
+//												"GET",
+//												"HEAD",
+//											},
+//											"PathExact": "/healtz",
+//										},
+//										"JWT": map[string]interface{}{
+//											"Providers": []map[string]interface{}{
+//												map[string]interface{}{
+//													"Name": name,
+//												},
+//											},
+//										},
+//									},
+//								},
+//								"Precedence": 9,
+//								"Type":       "consul",
+//							},
+//							map[string]interface{}{
+//								"Name": "admin-dashboard-webapp",
+//								"Permissions": []map[string]interface{}{
+//									map[string]interface{}{
+//										"Action": "deny",
+//										"HTTP": map[string]interface{}{
+//											"PathPrefix": "/debugz",
+//										},
+//									},
+//									map[string]interface{}{
+//										"Action": "allow",
+//										"HTTP": map[string]interface{}{
+//											"PathPrefix": "/",
+//										},
+//									},
+//								},
+//								"Precedence": 9,
+//								"Type":       "consul",
+//							},
+//						},
+//					})
+//					if err != nil {
+//						return _zero, err
+//					}
+//					json2 := string(tmpJSON2)
+//					return pulumi.String(json2), nil
+//				}).(pulumi.StringOutput),
 //			})
 //			if err != nil {
 //				return err
@@ -358,7 +392,7 @@ import (
 //				return err
 //			}
 //			json0 := string(tmpJSON0)
-//			_, err := consul.NewConfigEntry(ctx, "exportedServices", &consul.ConfigEntryArgs{
+//			_, err = consul.NewConfigEntry(ctx, "exportedServices", &consul.ConfigEntryArgs{
 //				Kind:       pulumi.String("exported-services"),
 //				ConfigJson: pulumi.String(json0),
 //			})
@@ -395,9 +429,54 @@ import (
 //				return err
 //			}
 //			json0 := string(tmpJSON0)
-//			_, err := consul.NewConfigEntry(ctx, "mesh", &consul.ConfigEntryArgs{
+//			_, err = consul.NewConfigEntry(ctx, "mesh", &consul.ConfigEntryArgs{
 //				Kind:       pulumi.String("mesh"),
 //				Partition:  pulumi.String("default"),
+//				ConfigJson: pulumi.String(json0),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### `jwt-provider` config entry
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//
+//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"Issuer": "https://your.issuer.com",
+//				"JSONWebKeySet": map[string]interface{}{
+//					"Remote": map[string]interface{}{
+//						"URI":                 "https://your-remote.jwks.com",
+//						"FetchAsynchronously": true,
+//						"CacheDuration":       "10s",
+//					},
+//				},
+//				"Forwarding": map[string]interface{}{
+//					"HeaderName": "test-token",
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			_, err = consul.NewConfigEntry(ctx, "jwtProvider", &consul.ConfigEntryArgs{
+//				Kind:       pulumi.String("jwt-provider"),
 //				ConfigJson: pulumi.String(json0),
 //			})
 //			if err != nil {
@@ -443,6 +522,7 @@ func NewConfigEntry(ctx *pulumi.Context,
 	if args.Kind == nil {
 		return nil, errors.New("invalid value for required argument 'Kind'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ConfigEntry
 	err := ctx.RegisterResource("consul:index/configEntry:ConfigEntry", name, args, &resource, opts...)
 	if err != nil {
@@ -606,6 +686,31 @@ func (o ConfigEntryOutput) ToConfigEntryOutput() ConfigEntryOutput {
 
 func (o ConfigEntryOutput) ToConfigEntryOutputWithContext(ctx context.Context) ConfigEntryOutput {
 	return o
+}
+
+// An arbitrary map of configuration values.
+func (o ConfigEntryOutput) ConfigJson() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfigEntry) pulumi.StringPtrOutput { return v.ConfigJson }).(pulumi.StringPtrOutput)
+}
+
+// The kind of configuration entry to register.
+func (o ConfigEntryOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConfigEntry) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The name of the configuration entry being registered.
+func (o ConfigEntryOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConfigEntry) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The namespace to create the config entry within.
+func (o ConfigEntryOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfigEntry) pulumi.StringPtrOutput { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+// The partition the config entry is associated with.
+func (o ConfigEntryOutput) Partition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfigEntry) pulumi.StringPtrOutput { return v.Partition }).(pulumi.StringPtrOutput)
 }
 
 type ConfigEntryArrayOutput struct{ *pulumi.OutputState }

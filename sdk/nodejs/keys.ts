@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -14,10 +15,9 @@ import * as utilities from "./utilities";
  *
  * const app = new consul.Keys("app", {
  *     datacenter: "nyc1",
- *     // Set the CNAME of our load balancer as a key
  *     keys: [{
  *         path: "service/app/elb_address",
- *         value: aws_elb_app.dnsName,
+ *         value: aws_elb.app.dns_name,
  *     }],
  *     token: "abcd",
  * });
@@ -104,10 +104,12 @@ Please use the token argument in the provider configuration
             resourceInputs["keys"] = args ? args.keys : undefined;
             resourceInputs["namespace"] = args ? args.namespace : undefined;
             resourceInputs["partition"] = args ? args.partition : undefined;
-            resourceInputs["token"] = args ? args.token : undefined;
+            resourceInputs["token"] = args?.token ? pulumi.secret(args.token) : undefined;
             resourceInputs["var"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["token"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Keys.__pulumiType, name, resourceInputs, opts);
     }
 }

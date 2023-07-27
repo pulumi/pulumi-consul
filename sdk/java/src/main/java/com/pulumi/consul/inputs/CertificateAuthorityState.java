@@ -17,18 +17,41 @@ public final class CertificateAuthorityState extends com.pulumi.resources.Resour
     public static final CertificateAuthorityState Empty = new CertificateAuthorityState();
 
     /**
-     * The raw configuration to use for the chosen provider.
+     * The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+     * 
+     * @deprecated
+     * The config attribute is deprecated, please use config_json instead.
      * 
      */
+    @Deprecated /* The config attribute is deprecated, please use config_json instead. */
     @Import(name="config")
     private @Nullable Output<Map<String,String>> config;
 
     /**
-     * @return The raw configuration to use for the chosen provider.
+     * @return The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+     * 
+     * @deprecated
+     * The config attribute is deprecated, please use config_json instead.
      * 
      */
+    @Deprecated /* The config attribute is deprecated, please use config_json instead. */
     public Optional<Output<Map<String,String>>> config() {
         return Optional.ofNullable(this.config);
+    }
+
+    /**
+     * The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+     * 
+     */
+    @Import(name="configJson")
+    private @Nullable Output<String> configJson;
+
+    /**
+     * @return The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+     * 
+     */
+    public Optional<Output<String>> configJson() {
+        return Optional.ofNullable(this.configJson);
     }
 
     /**
@@ -50,6 +73,7 @@ public final class CertificateAuthorityState extends com.pulumi.resources.Resour
 
     private CertificateAuthorityState(CertificateAuthorityState $) {
         this.config = $.config;
+        this.configJson = $.configJson;
         this.connectProvider = $.connectProvider;
     }
 
@@ -72,24 +96,53 @@ public final class CertificateAuthorityState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param config The raw configuration to use for the chosen provider.
+         * @param config The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
          * 
          * @return builder
          * 
+         * @deprecated
+         * The config attribute is deprecated, please use config_json instead.
+         * 
          */
+        @Deprecated /* The config attribute is deprecated, please use config_json instead. */
         public Builder config(@Nullable Output<Map<String,String>> config) {
             $.config = config;
             return this;
         }
 
         /**
-         * @param config The raw configuration to use for the chosen provider.
+         * @param config The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * The config attribute is deprecated, please use config_json instead.
+         * 
+         */
+        @Deprecated /* The config attribute is deprecated, please use config_json instead. */
+        public Builder config(Map<String,String> config) {
+            return config(Output.of(config));
+        }
+
+        /**
+         * @param configJson The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
          * 
          * @return builder
          * 
          */
-        public Builder config(Map<String,String> config) {
-            return config(Output.of(config));
+        public Builder configJson(@Nullable Output<String> configJson) {
+            $.configJson = configJson;
+            return this;
+        }
+
+        /**
+         * @param configJson The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder configJson(String configJson) {
+            return configJson(Output.of(configJson));
         }
 
         /**

@@ -32,6 +32,76 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Create a simplest intention with static service names:
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.consul.Intention;
+ * import com.pulumi.consul.IntentionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var database = new Intention(&#34;database&#34;, IntentionArgs.builder()        
+ *             .action(&#34;allow&#34;)
+ *             .destinationName(&#34;db&#34;)
+ *             .sourceName(&#34;api&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * Referencing a known service via a datasource:
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.consul.Intention;
+ * import com.pulumi.consul.IntentionArgs;
+ * import com.pulumi.consul.ConsulFunctions;
+ * import com.pulumi.consul.inputs.GetServiceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var database = new Intention(&#34;database&#34;, IntentionArgs.builder()        
+ *             .action(&#34;allow&#34;)
+ *             .destinationName(consul_service.pg().name())
+ *             .sourceName(&#34;api&#34;)
+ *             .build());
+ * 
+ *         final var pg = ConsulFunctions.getService(GetServiceArgs.builder()
+ *             .name(&#34;postgresql&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * `consul_intention` can be imported

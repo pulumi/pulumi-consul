@@ -20,6 +20,34 @@ import javax.annotation.Nullable;
  * The `consul.AdminPartition` resource manages [Consul Enterprise Admin Partitions](https://www.consul.io/docs/enterprise/admin-partitions).
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.consul.AdminPartition;
+ * import com.pulumi.consul.AdminPartitionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var naWest = new AdminPartition(&#34;naWest&#34;, AdminPartitionArgs.builder()        
+ *             .description(&#34;Partition for North America West&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

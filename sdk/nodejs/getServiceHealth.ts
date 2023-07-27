@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -13,26 +14,10 @@ import * as utilities from "./utilities";
  *
  * This resource is likely to change as frequently as the health-checks are being
  * updated, you should expect different results in a frequent basis.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as consul from "@pulumi/consul";
- * import * as vault from "@pulumi/vault";
- *
- * const vaultServiceHealth = pulumi.output(consul.getServiceHealth({
- *     passing: true,
- *     service: "vault",
- * }));
- * ```
  */
 export function getServiceHealth(args: GetServiceHealthArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceHealthResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("consul:index/getServiceHealth:getServiceHealth", {
         "datacenter": args.datacenter,
         "filter": args.filter,
@@ -129,9 +114,17 @@ export interface GetServiceHealthResult {
     readonly tag?: string;
     readonly waitFor?: string;
 }
-
+/**
+ * `consul.getServiceHealth` can be used to get the list of the instances that
+ * are currently healthy, according to their associated  health-checks.
+ * The result includes the list of service instances, the node associated to each
+ * instance and its health-checks.
+ *
+ * This resource is likely to change as frequently as the health-checks are being
+ * updated, you should expect different results in a frequent basis.
+ */
 export function getServiceHealthOutput(args: GetServiceHealthOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceHealthResult> {
-    return pulumi.output(args).apply(a => getServiceHealth(a, opts))
+    return pulumi.output(args).apply((a: any) => getServiceHealth(a, opts))
 }
 
 /**

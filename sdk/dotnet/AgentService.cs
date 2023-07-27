@@ -21,30 +21,29 @@ namespace Pulumi.Consul
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Consul = Pulumi.Consul;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var app = new Consul.AgentService("app", new()
     ///     {
-    ///         var app = new Consul.AgentService("app", new Consul.AgentServiceArgs
+    ///         Address = "www.google.com",
+    ///         Port = 80,
+    ///         Tags = new[]
     ///         {
-    ///             Address = "www.google.com",
-    ///             Port = 80,
-    ///             Tags = 
-    ///             {
-    ///                 "tag0",
-    ///                 "tag1",
-    ///             },
-    ///         });
-    ///     }
+    ///             "tag0",
+    ///             "tag1",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [ConsulResourceType("consul:index/agentService:AgentService")]
-    public partial class AgentService : Pulumi.CustomResource
+    public partial class AgentService : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The address of the service. Defaults to the
@@ -116,7 +115,7 @@ namespace Pulumi.Consul
         }
     }
 
-    public sealed class AgentServiceArgs : Pulumi.ResourceArgs
+    public sealed class AgentServiceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The address of the service. Defaults to the
@@ -153,9 +152,10 @@ namespace Pulumi.Consul
         public AgentServiceArgs()
         {
         }
+        public static new AgentServiceArgs Empty => new AgentServiceArgs();
     }
 
-    public sealed class AgentServiceState : Pulumi.ResourceArgs
+    public sealed class AgentServiceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The address of the service. Defaults to the
@@ -192,5 +192,6 @@ namespace Pulumi.Consul
         public AgentServiceState()
         {
         }
+        public static new AgentServiceState Empty => new AgentServiceState();
     }
 }

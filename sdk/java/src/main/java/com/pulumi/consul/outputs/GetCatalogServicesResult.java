@@ -13,6 +13,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetCatalogServicesResult {
+    /**
+     * @return The datacenter the keys are being read from to.
+     * 
+     */
     private String datacenter;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -22,9 +26,20 @@ public final class GetCatalogServicesResult {
     private List<String> names;
     private @Nullable List<GetCatalogServicesQueryOption> queryOptions;
     private Map<String,String> services;
+    /**
+     * @return A map of the tags found for each service.  If more than one service
+     * shares the same tag, unique service names will be joined by whitespace (this
+     * is the inverse of `services` and can be used to lookup the services that match
+     * a single tag).
+     * 
+     */
     private Map<String,String> tags;
 
     private GetCatalogServicesResult() {}
+    /**
+     * @return The datacenter the keys are being read from to.
+     * 
+     */
     public String datacenter() {
         return this.datacenter;
     }
@@ -44,6 +59,13 @@ public final class GetCatalogServicesResult {
     public Map<String,String> services() {
         return this.services;
     }
+    /**
+     * @return A map of the tags found for each service.  If more than one service
+     * shares the same tag, unique service names will be joined by whitespace (this
+     * is the inverse of `services` and can be used to lookup the services that match
+     * a single tag).
+     * 
+     */
     public Map<String,String> tags() {
         return this.tags;
     }

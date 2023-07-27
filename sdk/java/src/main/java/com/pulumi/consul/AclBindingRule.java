@@ -19,6 +19,54 @@ import javax.annotation.Nullable;
  * managed Consul ACL binding rules.
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.consul.AclAuthMethod;
+ * import com.pulumi.consul.AclAuthMethodArgs;
+ * import com.pulumi.consul.AclBindingRule;
+ * import com.pulumi.consul.AclBindingRuleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var minikube = new AclAuthMethod(&#34;minikube&#34;, AclAuthMethodArgs.builder()        
+ *             .config(Map.ofEntries(
+ *                 Map.entry(&#34;CACert&#34;, &#34;&#34;&#34;
+ * -----BEGIN CERTIFICATE-----
+ * ...-----END CERTIFICATE-----
+ * 
+ *                 &#34;&#34;&#34;),
+ *                 Map.entry(&#34;Host&#34;, &#34;https://192.0.2.42:8443&#34;),
+ *                 Map.entry(&#34;ServiceAccountJWT&#34;, &#34;eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9...&#34;)
+ *             ))
+ *             .description(&#34;dev minikube cluster&#34;)
+ *             .type(&#34;kubernetes&#34;)
+ *             .build());
+ * 
+ *         var test = new AclBindingRule(&#34;test&#34;, AclBindingRuleArgs.builder()        
+ *             .authMethod(minikube.name())
+ *             .bindName(&#34;minikube&#34;)
+ *             .bindType(&#34;service&#34;)
+ *             .description(&#34;foobar&#34;)
+ *             .selector(&#34;serviceaccount.namespace==default&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  */
 @ResourceType(type="consul:index/aclBindingRule:AclBindingRule")

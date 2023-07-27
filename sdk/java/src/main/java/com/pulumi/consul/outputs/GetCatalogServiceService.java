@@ -17,8 +17,38 @@ public final class GetCatalogServiceService {
     private String id;
     private Map<String,String> meta;
     private String modifyIndex;
+    /**
+     * @return The service name to select.
+     * 
+     */
     private String name;
     private String nodeAddress;
+    /**
+     * @return The Node ID of the Consul agent advertising the service.
+     * * [`node_meta`](https://www.consul.io/docs/agent/http/catalog.html#Meta) - Node
+     *   meta data tag information, if any.
+     * * [`node_name`](https://www.consul.io/docs/agent/http/catalog.html#Node) - The
+     *   name of the Consul node.
+     * * [`address`](https://www.consul.io/docs/agent/http/catalog.html#ServiceAddress) -
+     *   The IP address of the service.  If the `ServiceAddress` in the Consul catalog
+     *   is empty, this value is automatically populated with the `node_address` (the
+     *   `Address` in the Consul Catalog).
+     * * [`enable_tag_override`](https://www.consul.io/docs/agent/http/catalog.html#ServiceEnableTagOverride) -
+     *   Whether service tags can be overridden on this service.
+     * * [`id`](https://www.consul.io/docs/agent/http/catalog.html#ServiceID) - A
+     *   unique service instance identifier.
+     * * [`name`](https://www.consul.io/docs/agent/http/catalog.html#ServiceName) - The
+     *   name of the service.
+     * * [`port`](https://www.consul.io/docs/agent/http/catalog.html#ServicePort) -
+     *   Port number of the service.
+     * * [`tagged_addresses`](https://www.consul.io/docs/agent/http/catalog.html#TaggedAddresses) -
+     *   List of explicit LAN and WAN IP addresses for the agent.
+     * * [`tags`](https://www.consul.io/docs/agent/http/catalog.html#ServiceTags) -
+     *   List of tags for the service.
+     * * [`meta`](https://www.consul.io/docs/agent/http/catalog.html#Meta) - Service meta
+     *   data tag information, if any.
+     * 
+     */
     private String nodeId;
     private Map<String,String> nodeMeta;
     private String nodeName;
@@ -45,12 +75,42 @@ public final class GetCatalogServiceService {
     public String modifyIndex() {
         return this.modifyIndex;
     }
+    /**
+     * @return The service name to select.
+     * 
+     */
     public String name() {
         return this.name;
     }
     public String nodeAddress() {
         return this.nodeAddress;
     }
+    /**
+     * @return The Node ID of the Consul agent advertising the service.
+     * * [`node_meta`](https://www.consul.io/docs/agent/http/catalog.html#Meta) - Node
+     *   meta data tag information, if any.
+     * * [`node_name`](https://www.consul.io/docs/agent/http/catalog.html#Node) - The
+     *   name of the Consul node.
+     * * [`address`](https://www.consul.io/docs/agent/http/catalog.html#ServiceAddress) -
+     *   The IP address of the service.  If the `ServiceAddress` in the Consul catalog
+     *   is empty, this value is automatically populated with the `node_address` (the
+     *   `Address` in the Consul Catalog).
+     * * [`enable_tag_override`](https://www.consul.io/docs/agent/http/catalog.html#ServiceEnableTagOverride) -
+     *   Whether service tags can be overridden on this service.
+     * * [`id`](https://www.consul.io/docs/agent/http/catalog.html#ServiceID) - A
+     *   unique service instance identifier.
+     * * [`name`](https://www.consul.io/docs/agent/http/catalog.html#ServiceName) - The
+     *   name of the service.
+     * * [`port`](https://www.consul.io/docs/agent/http/catalog.html#ServicePort) -
+     *   Port number of the service.
+     * * [`tagged_addresses`](https://www.consul.io/docs/agent/http/catalog.html#TaggedAddresses) -
+     *   List of explicit LAN and WAN IP addresses for the agent.
+     * * [`tags`](https://www.consul.io/docs/agent/http/catalog.html#ServiceTags) -
+     *   List of tags for the service.
+     * * [`meta`](https://www.consul.io/docs/agent/http/catalog.html#Meta) - Service meta
+     *   data tag information, if any.
+     * 
+     */
     public String nodeId() {
         return this.nodeId;
     }

@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
- * import * from "fs";
+ * import * as fs from "fs";
  *
  * const license = new consul.License("license", {license: fs.readFileSync("license.hclic")});
  * ```
@@ -130,7 +130,7 @@ export class License extends pulumi.CustomResource {
                 throw new Error("Missing required property 'license'");
             }
             resourceInputs["datacenter"] = args ? args.datacenter : undefined;
-            resourceInputs["license"] = args ? args.license : undefined;
+            resourceInputs["license"] = args?.license ? pulumi.secret(args.license) : undefined;
             resourceInputs["customerId"] = undefined /*out*/;
             resourceInputs["expirationTime"] = undefined /*out*/;
             resourceInputs["features"] = undefined /*out*/;
@@ -143,6 +143,8 @@ export class License extends pulumi.CustomResource {
             resourceInputs["warnings"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["license"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(License.__pulumiType, name, resourceInputs, opts);
     }
 }

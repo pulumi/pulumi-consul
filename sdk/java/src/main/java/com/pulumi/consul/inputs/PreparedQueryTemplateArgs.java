@@ -5,8 +5,11 @@ package com.pulumi.consul.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class PreparedQueryTemplateArgs extends com.pulumi.resources.ResourceArgs {
@@ -14,16 +17,14 @@ public final class PreparedQueryTemplateArgs extends com.pulumi.resources.Resour
     public static final PreparedQueryTemplateArgs Empty = new PreparedQueryTemplateArgs();
 
     /**
-     * The regular expression to match with. When using
-     * `name_prefix_match`, this regex is applied against the query name.
+     * The regular expression to match with. When using `name_prefix_match`, this regex is applied against the query name.
      * 
      */
     @Import(name="regexp", required=true)
     private Output<String> regexp;
 
     /**
-     * @return The regular expression to match with. When using
-     * `name_prefix_match`, this regex is applied against the query name.
+     * @return The regular expression to match with. When using `name_prefix_match`, this regex is applied against the query name.
      * 
      */
     public Output<String> regexp() {
@@ -31,16 +32,29 @@ public final class PreparedQueryTemplateArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The type of template matching to perform. Currently
-     * only `name_prefix_match` is supported.
+     * If set to true, will cause the tags list inside the service structure to be stripped of any empty strings.
+     * 
+     */
+    @Import(name="removeEmptyTags")
+    private @Nullable Output<Boolean> removeEmptyTags;
+
+    /**
+     * @return If set to true, will cause the tags list inside the service structure to be stripped of any empty strings.
+     * 
+     */
+    public Optional<Output<Boolean>> removeEmptyTags() {
+        return Optional.ofNullable(this.removeEmptyTags);
+    }
+
+    /**
+     * The type of template matching to perform. Currently only `name_prefix_match` is supported.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return The type of template matching to perform. Currently
-     * only `name_prefix_match` is supported.
+     * @return The type of template matching to perform. Currently only `name_prefix_match` is supported.
      * 
      */
     public Output<String> type() {
@@ -51,6 +65,7 @@ public final class PreparedQueryTemplateArgs extends com.pulumi.resources.Resour
 
     private PreparedQueryTemplateArgs(PreparedQueryTemplateArgs $) {
         this.regexp = $.regexp;
+        this.removeEmptyTags = $.removeEmptyTags;
         this.type = $.type;
     }
 
@@ -73,8 +88,7 @@ public final class PreparedQueryTemplateArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param regexp The regular expression to match with. When using
-         * `name_prefix_match`, this regex is applied against the query name.
+         * @param regexp The regular expression to match with. When using `name_prefix_match`, this regex is applied against the query name.
          * 
          * @return builder
          * 
@@ -85,8 +99,7 @@ public final class PreparedQueryTemplateArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param regexp The regular expression to match with. When using
-         * `name_prefix_match`, this regex is applied against the query name.
+         * @param regexp The regular expression to match with. When using `name_prefix_match`, this regex is applied against the query name.
          * 
          * @return builder
          * 
@@ -96,8 +109,28 @@ public final class PreparedQueryTemplateArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param type The type of template matching to perform. Currently
-         * only `name_prefix_match` is supported.
+         * @param removeEmptyTags If set to true, will cause the tags list inside the service structure to be stripped of any empty strings.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder removeEmptyTags(@Nullable Output<Boolean> removeEmptyTags) {
+            $.removeEmptyTags = removeEmptyTags;
+            return this;
+        }
+
+        /**
+         * @param removeEmptyTags If set to true, will cause the tags list inside the service structure to be stripped of any empty strings.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder removeEmptyTags(Boolean removeEmptyTags) {
+            return removeEmptyTags(Output.of(removeEmptyTags));
+        }
+
+        /**
+         * @param type The type of template matching to perform. Currently only `name_prefix_match` is supported.
          * 
          * @return builder
          * 
@@ -108,8 +141,7 @@ public final class PreparedQueryTemplateArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param type The type of template matching to perform. Currently
-         * only `name_prefix_match` is supported.
+         * @param type The type of template matching to perform. Currently only `name_prefix_match` is supported.
          * 
          * @return builder
          * 

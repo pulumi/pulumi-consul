@@ -15,39 +15,39 @@ namespace Pulumi.Consul
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Consul = Pulumi.Consul;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var read_policy = new Consul.AclPolicy("read-policy", new()
     ///     {
-    ///         var read_policy = new Consul.AclPolicy("read-policy", new Consul.AclPolicyArgs
+    ///         Datacenters = new[]
     ///         {
-    ///             Datacenters = 
-    ///             {
-    ///                 "dc1",
-    ///             },
-    ///             Rules = "node \"\" { policy = \"read\" }",
-    ///         });
-    ///         var read = new Consul.AclRole("read", new Consul.AclRoleArgs
-    ///         {
-    ///             Description = "bar",
-    ///             Policies = 
-    ///             {
-    ///                 read_policy.Id,
-    ///             },
-    ///             ServiceIdentities = 
-    ///             {
-    ///                 new Consul.Inputs.AclRoleServiceIdentityArgs
-    ///                 {
-    ///                     ServiceName = "foo",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///             "dc1",
+    ///         },
+    ///         Rules = "node \"\" { policy = \"read\" }",
+    ///     });
     /// 
-    /// }
+    ///     var read = new Consul.AclRole("read", new()
+    ///     {
+    ///         Description = "bar",
+    ///         Policies = new[]
+    ///         {
+    ///             read_policy.Id,
+    ///         },
+    ///         ServiceIdentities = new[]
+    ///         {
+    ///             new Consul.Inputs.AclRoleServiceIdentityArgs
+    ///             {
+    ///                 ServiceName = "foo",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -59,7 +59,7 @@ namespace Pulumi.Consul
     /// ```
     /// </summary>
     [ConsulResourceType("consul:index/aclRole:AclRole")]
-    public partial class AclRole : Pulumi.CustomResource
+    public partial class AclRole : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A free form human readable description of the role.
@@ -147,7 +147,7 @@ namespace Pulumi.Consul
         }
     }
 
-    public sealed class AclRoleArgs : Pulumi.ResourceArgs
+    public sealed class AclRoleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A free form human readable description of the role.
@@ -212,9 +212,10 @@ namespace Pulumi.Consul
         public AclRoleArgs()
         {
         }
+        public static new AclRoleArgs Empty => new AclRoleArgs();
     }
 
-    public sealed class AclRoleState : Pulumi.ResourceArgs
+    public sealed class AclRoleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A free form human readable description of the role.
@@ -279,5 +280,6 @@ namespace Pulumi.Consul
         public AclRoleState()
         {
         }
+        public static new AclRoleState Empty => new AclRoleState();
     }
 }

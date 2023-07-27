@@ -2,15 +2,25 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * `consul.Service` provides details about a specific Consul service in a
+ * given datacenter.  The results include a list of nodes advertising the specified
+ * service, the node's IP address, port number, node ID, etc.  By specifying a
+ * different datacenter in the `queryOptions` it is possible to retrieve a list of
+ * services from a different WAN-attached Consul datacenter.
+ *
+ * This data source is different from the `consul.getServices` (plural) data
+ * source, which provides a summary of the current Consul services.
+ */
+/** @deprecated getCatalogService has been deprecated in favor of getService */
 export function getCatalogService(args: GetCatalogServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetCatalogServiceResult> {
-    if (!opts) {
-        opts = {}
-    }
+    pulumi.log.warn("getCatalogService is deprecated: getCatalogService has been deprecated in favor of getService")
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("consul:index/getCatalogService:getCatalogService", {
         "datacenter": args.datacenter,
         "filter": args.filter,
@@ -24,10 +34,30 @@ export function getCatalogService(args: GetCatalogServiceArgs, opts?: pulumi.Inv
  * A collection of arguments for invoking getCatalogService.
  */
 export interface GetCatalogServiceArgs {
+    /**
+     * The Consul datacenter to query.  Defaults to the
+     * same value found in `queryOptions` parameter specified below, or if that is
+     * empty, the `datacenter` value found in the Consul agent that this provider is
+     * configured to talk to.
+     */
     datacenter?: string;
+    /**
+     * A filter expression to refine the query, see https://www.consul.io/api-docs/features/filtering
+     * and https://www.consul.io/api-docs/catalog#filtering-1.
+     */
     filter?: string;
+    /**
+     * The service name to select.
+     */
     name: string;
+    /**
+     * See below.
+     */
     queryOptions?: inputs.GetCatalogServiceQueryOption[];
+    /**
+     * A single tag that can be used to filter the list of nodes
+     * to return based on a single matching tag..
+     */
     tag?: string;
 }
 
@@ -35,29 +65,73 @@ export interface GetCatalogServiceArgs {
  * A collection of values returned by getCatalogService.
  */
 export interface GetCatalogServiceResult {
+    /**
+     * The datacenter the keys are being read from to.
+     */
     readonly datacenter?: string;
     readonly filter?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The name of the service
+     */
     readonly name: string;
     readonly queryOptions?: outputs.GetCatalogServiceQueryOption[];
+    /**
+     * A list of nodes and details about each endpoint advertising a
+     * service.  Each element in the list is a map of attributes that correspond to
+     * each individual node.  The list of per-node attributes is detailed below.
+     */
     readonly services: outputs.GetCatalogServiceService[];
+    /**
+     * The name of the tag used to filter the list of nodes in `service`.
+     */
     readonly tag?: string;
 }
-
+/**
+ * `consul.Service` provides details about a specific Consul service in a
+ * given datacenter.  The results include a list of nodes advertising the specified
+ * service, the node's IP address, port number, node ID, etc.  By specifying a
+ * different datacenter in the `queryOptions` it is possible to retrieve a list of
+ * services from a different WAN-attached Consul datacenter.
+ *
+ * This data source is different from the `consul.getServices` (plural) data
+ * source, which provides a summary of the current Consul services.
+ */
+/** @deprecated getCatalogService has been deprecated in favor of getService */
 export function getCatalogServiceOutput(args: GetCatalogServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCatalogServiceResult> {
-    return pulumi.output(args).apply(a => getCatalogService(a, opts))
+    return pulumi.output(args).apply((a: any) => getCatalogService(a, opts))
 }
 
 /**
  * A collection of arguments for invoking getCatalogService.
  */
 export interface GetCatalogServiceOutputArgs {
+    /**
+     * The Consul datacenter to query.  Defaults to the
+     * same value found in `queryOptions` parameter specified below, or if that is
+     * empty, the `datacenter` value found in the Consul agent that this provider is
+     * configured to talk to.
+     */
     datacenter?: pulumi.Input<string>;
+    /**
+     * A filter expression to refine the query, see https://www.consul.io/api-docs/features/filtering
+     * and https://www.consul.io/api-docs/catalog#filtering-1.
+     */
     filter?: pulumi.Input<string>;
+    /**
+     * The service name to select.
+     */
     name: pulumi.Input<string>;
+    /**
+     * See below.
+     */
     queryOptions?: pulumi.Input<pulumi.Input<inputs.GetCatalogServiceQueryOptionArgs>[]>;
+    /**
+     * A single tag that can be used to filter the list of nodes
+     * to return based on a single matching tag..
+     */
     tag?: pulumi.Input<string>;
 }

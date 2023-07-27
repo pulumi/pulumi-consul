@@ -18,6 +18,7 @@ import * as utilities from "./utilities";
  *     rules: `node_prefix "" {
  *   policy = "read"
  * }
+ *
  * `,
  * });
  * ```

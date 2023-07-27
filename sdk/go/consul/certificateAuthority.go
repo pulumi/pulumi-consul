@@ -7,109 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `CertificateAuthority` resource can be used to manage the configuration of
-// the Certificate Authority used by [Consul Connect](https://www.consul.io/docs/connect/ca).
+// The `CertificateAuthority` resource can be used to manage the configuration of the Certificate Authority used by [Consul Connect](https://www.consul.io/docs/connect/ca).
 //
 // > **Note:** The keys in the `config` argument must be using Camel case.
 //
-// ## Example Usage
-// ### Using the built-in CA with specific TTL
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := consul.NewCertificateAuthority(ctx, "connect", &consul.CertificateAuthorityArgs{
-//				Config: pulumi.StringMap{
-//					"IntermediateCertTTL": pulumi.String("8760h"),
-//					"LeafCertTTL":         pulumi.String("24h"),
-//					"RotationPeriod":      pulumi.String("2160h"),
-//				},
-//				ConnectProvider: pulumi.String("consul"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// ### Using Vault to manage and sign certificates
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := consul.NewCertificateAuthority(ctx, "connect", &consul.CertificateAuthorityArgs{
-//				Config: pulumi.StringMap{
-//					"Address":             pulumi.String("http://localhost:8200"),
-//					"IntermediatePKIPath": pulumi.String("connect-intermediate"),
-//					"RootPKIPath":         pulumi.String("connect-root"),
-//					"Token":               pulumi.String("..."),
-//				},
-//				ConnectProvider: pulumi.String("vault"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// ### Using the [AWS Certificate Manager Private Certificate Authority](https://aws.amazon.com/certificate-manager/private-certificate-authority/)
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := consul.NewCertificateAuthority(ctx, "connect", &consul.CertificateAuthorityArgs{
-//				Config: pulumi.StringMap{
-//					"ExistingARN": pulumi.String("arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-123456789012"),
-//				},
-//				ConnectProvider: pulumi.String("aws-pca"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
-//
-// `certificate_authority` can be imported
 //
 // ```sh
 //
@@ -119,8 +26,12 @@ import (
 type CertificateAuthority struct {
 	pulumi.CustomResourceState
 
-	// The raw configuration to use for the chosen provider.
+	// The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+	//
+	// Deprecated: The config attribute is deprecated, please use config_json instead.
 	Config pulumi.StringMapOutput `pulumi:"config"`
+	// The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+	ConfigJson pulumi.StringPtrOutput `pulumi:"configJson"`
 	// Specifies the CA provider type to use.
 	ConnectProvider pulumi.StringOutput `pulumi:"connectProvider"`
 }
@@ -132,12 +43,10 @@ func NewCertificateAuthority(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Config == nil {
-		return nil, errors.New("invalid value for required argument 'Config'")
-	}
 	if args.ConnectProvider == nil {
 		return nil, errors.New("invalid value for required argument 'ConnectProvider'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CertificateAuthority
 	err := ctx.RegisterResource("consul:index/certificateAuthority:CertificateAuthority", name, args, &resource, opts...)
 	if err != nil {
@@ -160,15 +69,23 @@ func GetCertificateAuthority(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CertificateAuthority resources.
 type certificateAuthorityState struct {
-	// The raw configuration to use for the chosen provider.
+	// The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+	//
+	// Deprecated: The config attribute is deprecated, please use config_json instead.
 	Config map[string]string `pulumi:"config"`
+	// The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+	ConfigJson *string `pulumi:"configJson"`
 	// Specifies the CA provider type to use.
 	ConnectProvider *string `pulumi:"connectProvider"`
 }
 
 type CertificateAuthorityState struct {
-	// The raw configuration to use for the chosen provider.
+	// The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+	//
+	// Deprecated: The config attribute is deprecated, please use config_json instead.
 	Config pulumi.StringMapInput
+	// The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+	ConfigJson pulumi.StringPtrInput
 	// Specifies the CA provider type to use.
 	ConnectProvider pulumi.StringPtrInput
 }
@@ -178,16 +95,24 @@ func (CertificateAuthorityState) ElementType() reflect.Type {
 }
 
 type certificateAuthorityArgs struct {
-	// The raw configuration to use for the chosen provider.
+	// The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+	//
+	// Deprecated: The config attribute is deprecated, please use config_json instead.
 	Config map[string]string `pulumi:"config"`
+	// The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+	ConfigJson *string `pulumi:"configJson"`
 	// Specifies the CA provider type to use.
 	ConnectProvider string `pulumi:"connectProvider"`
 }
 
 // The set of arguments for constructing a CertificateAuthority resource.
 type CertificateAuthorityArgs struct {
-	// The raw configuration to use for the chosen provider.
+	// The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+	//
+	// Deprecated: The config attribute is deprecated, please use config_json instead.
 	Config pulumi.StringMapInput
+	// The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+	ConfigJson pulumi.StringPtrInput
 	// Specifies the CA provider type to use.
 	ConnectProvider pulumi.StringInput
 }
@@ -277,6 +202,23 @@ func (o CertificateAuthorityOutput) ToCertificateAuthorityOutput() CertificateAu
 
 func (o CertificateAuthorityOutput) ToCertificateAuthorityOutputWithContext(ctx context.Context) CertificateAuthorityOutput {
 	return o
+}
+
+// The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+//
+// Deprecated: The config attribute is deprecated, please use config_json instead.
+func (o CertificateAuthorityOutput) Config() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *CertificateAuthority) pulumi.StringMapOutput { return v.Config }).(pulumi.StringMapOutput)
+}
+
+// The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+func (o CertificateAuthorityOutput) ConfigJson() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertificateAuthority) pulumi.StringPtrOutput { return v.ConfigJson }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the CA provider type to use.
+func (o CertificateAuthorityOutput) ConnectProvider() pulumi.StringOutput {
+	return o.ApplyT(func(v *CertificateAuthority) pulumi.StringOutput { return v.ConnectProvider }).(pulumi.StringOutput)
 }
 
 type CertificateAuthorityArrayOutput struct{ *pulumi.OutputState }
