@@ -13,11 +13,8 @@ import * as utilities from "./utilities";
  * from the agent specified in the `provider`.
  */
 export function getAgentSelf(opts?: pulumi.InvokeOptions): Promise<GetAgentSelfResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("consul:index/getAgentSelf:getAgentSelf", {
     }, opts);
 }
@@ -28,6 +25,19 @@ export function getAgentSelf(opts?: pulumi.InvokeOptions): Promise<GetAgentSelfR
 export interface GetAgentSelfResult {
     readonly aclDatacenter: string;
     readonly aclDefaultPolicy: string;
+    /**
+     * * [`aclDownPolicy`](https://www.consul.io/docs/agent/options.html#acl_down_policy)
+     * * [`aclEnforce08Semantics`](https://www.consul.io/docs/agent/options.html#acl_enforce_version_8)
+     * * [`aclTtl`](https://www.consul.io/docs/agent/options.html#acl_ttl)
+     * * [`addresses`](https://www.consul.io/docs/agent/options.html#addresses)
+     * * [`advertiseAddr`](https://www.consul.io/docs/agent/options.html#_advertise)
+     * * [`advertiseAddrWan`](https://www.consul.io/docs/agent/options.html#_advertise-wan)
+     * * [`advertiseAddrs`](https://www.consul.io/docs/agent/options.html#advertise_addrs)
+     * * [`atlasJoin`](https://www.consul.io/docs/agent/options.html#_atlas_join)
+     * * [`bindAddr`](https://www.consul.io/docs/agent/options.html#_bind)
+     * * [`bootstrapExpect`](https://www.consul.io/docs/agent/options.html#_bootstrap_expect)
+     * * [`bootstrapMode`](https://www.consul.io/docs/agent/options.html#_bootstrap)
+     */
     readonly aclDisabledTtl: string;
     readonly aclDownPolicy: string;
     readonly aclEnforce08Semantics: boolean;
@@ -41,6 +51,10 @@ export interface GetAgentSelfResult {
     readonly bootstrapExpect: number;
     readonly bootstrapMode: boolean;
     readonly checkDeregisterIntervalMin: string;
+    /**
+     * * [`checkUpdateInterval`](https://www.consul.io/docs/agent/options.html#check_update_interval)
+     * * [`clientAddr`](https://www.consul.io/docs/agent/options.html#_client)
+     */
     readonly checkReapInterval: string;
     readonly checkUpdateInterval: string;
     readonly clientAddr: string;
@@ -57,7 +71,12 @@ export interface GetAgentSelfResult {
      * * [`devMode`](https://www.consul.io/docs/agent/options.html#_dev)
      * * [`domain`](https://www.consul.io/docs/agent/options.html#_domain)
      * * [`enableAnonymousSignature`](https://www.consul.io/docs/agent/options.html#disable_anonymous_signature)
-     * * `enableCoordinates`
+     */
+    readonly dns: {[key: string]: string};
+    readonly dnsRecursors: string[];
+    readonly domain: string;
+    readonly enableAnonymousSignature: boolean;
+    /**
      * * [`enableDebug`](https://www.consul.io/docs/agent/options.html#enable_debug)
      * * [`enableRemoteExec`](https://www.consul.io/docs/agent/options.html#disable_remote_exec)
      * * [`enableSyslog`](https://www.consul.io/docs/agent/options.html#_syslog)
@@ -107,10 +126,6 @@ export interface GetAgentSelfResult {
      * * [`uiDir`](https://www.consul.io/docs/agent/options.html#ui_dir)
      * * [`unixSockets`](https://www.consul.io/docs/agent/options.html#unix_sockets)
      */
-    readonly dns: {[key: string]: string};
-    readonly dnsRecursors: string[];
-    readonly domain: string;
-    readonly enableAnonymousSignature: boolean;
     readonly enableCoordinates: boolean;
     readonly enableDebug: boolean;
     readonly enableRemoteExec: boolean;
@@ -157,8 +172,6 @@ export interface GetAgentSelfResult {
     readonly unixSockets: {[key: string]: string};
     /**
      * The version of the Consul agent.
-     * * `versionPrerelease`
-     * * `versionRevision`
      */
     readonly version: string;
     readonly versionPrerelease: string;

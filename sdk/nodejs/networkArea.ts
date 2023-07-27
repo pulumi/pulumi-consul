@@ -111,10 +111,12 @@ Please use the token argument in the provider configuration
             resourceInputs["datacenter"] = args ? args.datacenter : undefined;
             resourceInputs["peerDatacenter"] = args ? args.peerDatacenter : undefined;
             resourceInputs["retryJoins"] = args ? args.retryJoins : undefined;
-            resourceInputs["token"] = args ? args.token : undefined;
+            resourceInputs["token"] = args?.token ? pulumi.secret(args.token) : undefined;
             resourceInputs["useTls"] = args ? args.useTls : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["token"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(NetworkArea.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -2,16 +2,14 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 export function getCatalogServices(args?: GetCatalogServicesArgs, opts?: pulumi.InvokeOptions): Promise<GetCatalogServicesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("consul:index/getCatalogServices:getCatalogServices", {
         "queryOptions": args.queryOptions,
     }, opts);
@@ -38,9 +36,8 @@ export interface GetCatalogServicesResult {
     readonly services: {[key: string]: string};
     readonly tags: {[key: string]: string};
 }
-
 export function getCatalogServicesOutput(args?: GetCatalogServicesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCatalogServicesResult> {
-    return pulumi.output(args).apply(a => getCatalogServices(a, opts))
+    return pulumi.output(args).apply((a: any) => getCatalogServices(a, opts))
 }
 
 /**

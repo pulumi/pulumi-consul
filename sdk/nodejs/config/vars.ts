@@ -2,12 +2,16 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 declare var exports: any;
 const __config = new pulumi.Config("consul");
 
+/**
+ * The HTTP(S) API address of the agent to use. Defaults to "127.0.0.1:8500".
+ */
 export declare const address: string | undefined;
 Object.defineProperty(exports, "address", {
     get() {
@@ -16,6 +20,20 @@ Object.defineProperty(exports, "address", {
     enumerable: true,
 });
 
+/**
+ * Authenticates to Consul using a JWT authentication method.
+ */
+export declare const authJwt: outputs.config.AuthJwt | undefined;
+Object.defineProperty(exports, "authJwt", {
+    get() {
+        return __config.getObject<outputs.config.AuthJwt>("authJwt");
+    },
+    enumerable: true,
+});
+
+/**
+ * A path to a PEM-encoded certificate authority used to verify the remote agent's certificate.
+ */
 export declare const caFile: string | undefined;
 Object.defineProperty(exports, "caFile", {
     get() {
@@ -24,6 +42,10 @@ Object.defineProperty(exports, "caFile", {
     enumerable: true,
 });
 
+/**
+ * A path to a directory of PEM-encoded certificate authority files to use to check the authenticity of client and server
+ * connections. Can also be specified with the `CONSUL_CAPATH` environment variable.
+ */
 export declare const caPath: string | undefined;
 Object.defineProperty(exports, "caPath", {
     get() {
@@ -32,6 +54,9 @@ Object.defineProperty(exports, "caPath", {
     enumerable: true,
 });
 
+/**
+ * PEM-encoded certificate authority used to verify the remote agent's certificate.
+ */
 export declare const caPem: string | undefined;
 Object.defineProperty(exports, "caPem", {
     get() {
@@ -40,6 +65,9 @@ Object.defineProperty(exports, "caPem", {
     enumerable: true,
 });
 
+/**
+ * A path to a PEM-encoded certificate provided to the remote agent; requires use of `key_file` or `key_pem`.
+ */
 export declare const certFile: string | undefined;
 Object.defineProperty(exports, "certFile", {
     get() {
@@ -48,6 +76,9 @@ Object.defineProperty(exports, "certFile", {
     enumerable: true,
 });
 
+/**
+ * PEM-encoded certificate provided to the remote agent; requires use of `key_file` or `key_pem`.
+ */
 export declare const certPem: string | undefined;
 Object.defineProperty(exports, "certPem", {
     get() {
@@ -56,6 +87,9 @@ Object.defineProperty(exports, "certPem", {
     enumerable: true,
 });
 
+/**
+ * The datacenter to use. Defaults to that of the agent.
+ */
 export declare const datacenter: string | undefined;
 Object.defineProperty(exports, "datacenter", {
     get() {
@@ -65,7 +99,8 @@ Object.defineProperty(exports, "datacenter", {
 });
 
 /**
- * Additional headers to send with each Consul request.
+ * A configuration block, described below, that provides additional headers to be sent along with all requests to the
+ * Consul server. This block can be specified multiple times.
  */
 export declare const headers: outputs.config.Headers[] | undefined;
 Object.defineProperty(exports, "headers", {
@@ -75,6 +110,10 @@ Object.defineProperty(exports, "headers", {
     enumerable: true,
 });
 
+/**
+ * HTTP Basic Authentication credentials to be used when communicating with Consul, in the format of either `user` or
+ * `user:pass`. This may also be specified using the `CONSUL_HTTP_AUTH` environment variable.
+ */
 export declare const httpAuth: string | undefined;
 Object.defineProperty(exports, "httpAuth", {
     get() {
@@ -83,6 +122,10 @@ Object.defineProperty(exports, "httpAuth", {
     enumerable: true,
 });
 
+/**
+ * Boolean value to disable SSL certificate verification; setting this value to true is not recommended for production use.
+ * Only use this with scheme set to "https".
+ */
 export declare const insecureHttps: boolean | undefined;
 Object.defineProperty(exports, "insecureHttps", {
     get() {
@@ -91,6 +134,9 @@ Object.defineProperty(exports, "insecureHttps", {
     enumerable: true,
 });
 
+/**
+ * A path to a PEM-encoded private key, required if `cert_file` or `cert_pem` is specified.
+ */
 export declare const keyFile: string | undefined;
 Object.defineProperty(exports, "keyFile", {
     get() {
@@ -99,6 +145,9 @@ Object.defineProperty(exports, "keyFile", {
     enumerable: true,
 });
 
+/**
+ * PEM-encoded private key, required if `cert_file` or `cert_pem` is specified.
+ */
 export declare const keyPem: string | undefined;
 Object.defineProperty(exports, "keyPem", {
     get() {
@@ -115,6 +164,9 @@ Object.defineProperty(exports, "namespace", {
     enumerable: true,
 });
 
+/**
+ * The URL scheme of the agent to use ("http" or "https"). Defaults to "http".
+ */
 export declare const scheme: string | undefined;
 Object.defineProperty(exports, "scheme", {
     get() {
@@ -123,6 +175,10 @@ Object.defineProperty(exports, "scheme", {
     enumerable: true,
 });
 
+/**
+ * The ACL token to use by default when making requests to the agent. Can also be specified with `CONSUL_HTTP_TOKEN` or
+ * `CONSUL_TOKEN` as an environment variable.
+ */
 export declare const token: string | undefined;
 Object.defineProperty(exports, "token", {
     get() {

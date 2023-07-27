@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -12,16 +13,13 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
  *
- * const peers = pulumi.output(consul.getPeerings());
+ * const peers = consul.getPeerings({});
  * ```
  */
 export function getPeerings(args?: GetPeeringsArgs, opts?: pulumi.InvokeOptions): Promise<GetPeeringsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("consul:index/getPeerings:getPeerings", {
         "partition": args.partition,
     }, opts);
@@ -45,9 +43,18 @@ export interface GetPeeringsResult {
     readonly partition?: string;
     readonly peers: outputs.GetPeeringsPeer[];
 }
-
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ *
+ * const peers = consul.getPeerings({});
+ * ```
+ */
 export function getPeeringsOutput(args?: GetPeeringsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPeeringsResult> {
-    return pulumi.output(args).apply(a => getPeerings(a, opts))
+    return pulumi.output(args).apply((a: any) => getPeerings(a, opts))
 }
 
 /**

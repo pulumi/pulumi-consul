@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -12,22 +13,21 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
  *
- * const myappConfig = new consul.KeyPrefix("myapp_config", {
+ * const myappConfig = new consul.KeyPrefix("myappConfig", {
  *     datacenter: "nyc1",
- *     // Prefix to add to prepend to all of the subkey names below.
  *     pathPrefix: "myapp/config/",
  *     subkeyCollection: [{
  *         flags: 2,
  *         path: "database/password",
- *         value: aws_db_instance_app.password,
+ *         value: aws_db_instance.app.password,
  *     }],
  *     subkeys: {
- *         "database/hostname": aws_db_instance_app.address,
- *         "database/name": aws_db_instance_app.name,
- *         "database/port": aws_db_instance_app.port,
- *         "database/username": aws_db_instance_app.username,
- *         elb_cname: aws_elb_app.dnsName,
- *         s3_bucket_name: aws_s3_bucket_app.bucket,
+ *         "database/hostname": aws_db_instance.app.address,
+ *         "database/name": aws_db_instance.app.name,
+ *         "database/port": aws_db_instance.app.port,
+ *         "database/username": aws_db_instance.app.username,
+ *         elb_cname: aws_elb.app.dns_name,
+ *         s3_bucket_name: aws_s3_bucket.app.bucket,
  *     },
  *     token: "abcd",
  * });
@@ -140,9 +140,11 @@ Please use the token argument in the provider configuration
             resourceInputs["pathPrefix"] = args ? args.pathPrefix : undefined;
             resourceInputs["subkeyCollection"] = args ? args.subkeyCollection : undefined;
             resourceInputs["subkeys"] = args ? args.subkeys : undefined;
-            resourceInputs["token"] = args ? args.token : undefined;
+            resourceInputs["token"] = args?.token ? pulumi.secret(args.token) : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["token"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(KeyPrefix.__pulumiType, name, resourceInputs, opts);
     }
 }

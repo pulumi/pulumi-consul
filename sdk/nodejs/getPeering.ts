@@ -11,17 +11,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
  *
- * const basic = pulumi.output(consul.getPeering({
+ * const basic = consul.getPeering({
  *     peerName: "peered-cluster",
- * }));
+ * });
  * ```
  */
 export function getPeering(args: GetPeeringArgs, opts?: pulumi.InvokeOptions): Promise<GetPeeringResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("consul:index/getPeering:getPeering", {
         "partition": args.partition,
         "peerName": args.peerName,
@@ -54,9 +51,20 @@ export interface GetPeeringResult {
     readonly peerServerName: string;
     readonly state: string;
 }
-
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ *
+ * const basic = consul.getPeering({
+ *     peerName: "peered-cluster",
+ * });
+ * ```
+ */
 export function getPeeringOutput(args: GetPeeringOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPeeringResult> {
-    return pulumi.output(args).apply(a => getPeering(a, opts))
+    return pulumi.output(args).apply((a: any) => getPeering(a, opts))
 }
 
 /**

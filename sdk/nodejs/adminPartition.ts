@@ -15,9 +15,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
  *
- * const naWest = new consul.AdminPartition("na_west", {
- *     description: "Partition for North America West",
- * });
+ * const naWest = new consul.AdminPartition("naWest", {description: "Partition for North America West"});
  * ```
  *
  * ## Import

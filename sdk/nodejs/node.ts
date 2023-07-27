@@ -14,9 +14,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
  *
- * const foobar = new consul.Node("foobar", {
- *     address: "192.168.10.10",
- * });
+ * const foobar = new consul.Node("foobar", {address: "192.168.10.10"});
  * ```
  *
  * ## Import
@@ -110,9 +108,11 @@ Please use the token argument in the provider configuration
             resourceInputs["meta"] = args ? args.meta : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["partition"] = args ? args.partition : undefined;
-            resourceInputs["token"] = args ? args.token : undefined;
+            resourceInputs["token"] = args?.token ? pulumi.secret(args.token) : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["token"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Node.__pulumiType, name, resourceInputs, opts);
     }
 }

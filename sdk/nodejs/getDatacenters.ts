@@ -9,11 +9,8 @@ import * as utilities from "./utilities";
  * datacenters.
  */
 export function getDatacenters(opts?: pulumi.InvokeOptions): Promise<GetDatacentersResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("consul:index/getDatacenters:getDatacenters", {
     }, opts);
 }

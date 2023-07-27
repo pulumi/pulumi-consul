@@ -42,12 +42,12 @@ import * as utilities from "./utilities";
  *
  * const database = new consul.Intention("database", {
  *     action: "allow",
- *     destinationName: consul_service_pg.name,
+ *     destinationName: consul_service.pg.name,
  *     sourceName: "api",
  * });
- * const pg = pulumi.output(consul.getService({
+ * const pg = consul.getService({
  *     name: "postgresql",
- * }));
+ * });
  * ```
  *
  * ## Import

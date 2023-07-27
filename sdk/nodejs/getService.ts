@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -16,11 +17,8 @@ import * as utilities from "./utilities";
  * source, which provides a summary of the current Consul services.
  */
 export function getService(args: GetServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("consul:index/getService:getService", {
         "datacenter": args.datacenter,
         "filter": args.filter,
@@ -90,9 +88,18 @@ export interface GetServiceResult {
      */
     readonly tag?: string;
 }
-
+/**
+ * `consul.Service` provides details about a specific Consul service in a
+ * given datacenter.  The results include a list of nodes advertising the specified
+ * service, the node's IP address, port number, node ID, etc.  By specifying a
+ * different datacenter in the `queryOptions` it is possible to retrieve a list of
+ * services from a different WAN-attached Consul datacenter.
+ *
+ * This data source is different from the `consul.getServices` (plural) data
+ * source, which provides a summary of the current Consul services.
+ */
 export function getServiceOutput(args: GetServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceResult> {
-    return pulumi.output(args).apply(a => getService(a, opts))
+    return pulumi.output(args).apply((a: any) => getService(a, opts))
 }
 
 /**

@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -14,69 +15,6 @@ import * as utilities from "./utilities";
  * > **NOTE:** If a Consul agent is running on the node where this service is
  * registered, it is not recommended to use this resource as the service will be
  * removed during the next [anti-entropy synchronization](https://www.consul.io/docs/architecture/anti-entropy).
- *
- * ## Example Usage
- *
- * Creating a new node with the service:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as consul from "@pulumi/consul";
- *
- * const compute = new consul.Node("compute", {
- *     address: "www.google.com",
- * });
- * const google = new consul.Service("google", {
- *     node: compute.name,
- *     port: 80,
- *     tags: ["tag0"],
- * });
- * ```
- *
- * Utilizing an existing known node:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as consul from "@pulumi/consul";
- *
- * const google = new consul.Service("google", {
- *     node: "google",
- *     port: 443,
- * });
- * ```
- *
- * Register a health-check:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as consul from "@pulumi/consul";
- *
- * const redis = new consul.Service("redis", {
- *     checks: [{
- *         checkId: "service:redis1",
- *         deregisterCriticalServiceAfter: "30s",
- *         headers: [
- *             {
- *                 name: "foo",
- *                 values: ["test"],
- *             },
- *             {
- *                 name: "bar",
- *                 values: ["test"],
- *             },
- *         ],
- *         http: "https://www.hashicorptest.com",
- *         interval: "5s",
- *         method: "PUT",
- *         name: "Redis health check",
- *         status: "passing",
- *         timeout: "1s",
- *         tlsSkipVerify: false,
- *     }],
- *     node: "redis",
- *     port: 6379,
- * });
- * ```
  */
 export class Service extends pulumi.CustomResource {
     /**
@@ -145,6 +83,8 @@ export class Service extends pulumi.CustomResource {
     public readonly node!: pulumi.Output<string>;
     /**
      * The partition the service is associated with.
+     *
+     * The following attributes are available for each health-check:
      */
     public readonly partition!: pulumi.Output<string | undefined>;
     /**
@@ -152,7 +92,7 @@ export class Service extends pulumi.CustomResource {
      */
     public readonly port!: pulumi.Output<number | undefined>;
     /**
-     * - If the service ID is not provided, it will be defaulted to the value
+     * If the service ID is not provided, it will be defaulted to the value
      * of the `name` attribute.
      */
     public readonly serviceId!: pulumi.Output<string>;
@@ -255,6 +195,8 @@ export interface ServiceState {
     node?: pulumi.Input<string>;
     /**
      * The partition the service is associated with.
+     *
+     * The following attributes are available for each health-check:
      */
     partition?: pulumi.Input<string>;
     /**
@@ -262,7 +204,7 @@ export interface ServiceState {
      */
     port?: pulumi.Input<number>;
     /**
-     * - If the service ID is not provided, it will be defaulted to the value
+     * If the service ID is not provided, it will be defaulted to the value
      * of the `name` attribute.
      */
     serviceId?: pulumi.Input<string>;
@@ -316,6 +258,8 @@ export interface ServiceArgs {
     node: pulumi.Input<string>;
     /**
      * The partition the service is associated with.
+     *
+     * The following attributes are available for each health-check:
      */
     partition?: pulumi.Input<string>;
     /**
@@ -323,7 +267,7 @@ export interface ServiceArgs {
      */
     port?: pulumi.Input<number>;
     /**
-     * - If the service ID is not provided, it will be defaulted to the value
+     * If the service ID is not provided, it will be defaulted to the value
      * of the `name` attribute.
      */
     serviceId?: pulumi.Input<string>;

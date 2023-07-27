@@ -2,16 +2,16 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/** @deprecated getCatalogNodes has been deprecated in favor of getNodes */
 export function getCatalogNodes(args?: GetCatalogNodesArgs, opts?: pulumi.InvokeOptions): Promise<GetCatalogNodesResult> {
+    pulumi.log.warn("getCatalogNodes is deprecated: getCatalogNodes has been deprecated in favor of getNodes")
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("consul:index/getCatalogNodes:getCatalogNodes", {
         "queryOptions": args.queryOptions,
     }, opts);
@@ -38,9 +38,9 @@ export interface GetCatalogNodesResult {
     readonly nodes: outputs.GetCatalogNodesNode[];
     readonly queryOptions?: outputs.GetCatalogNodesQueryOption[];
 }
-
+/** @deprecated getCatalogNodes has been deprecated in favor of getNodes */
 export function getCatalogNodesOutput(args?: GetCatalogNodesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCatalogNodesResult> {
-    return pulumi.output(args).apply(a => getCatalogNodes(a, opts))
+    return pulumi.output(args).apply((a: any) => getCatalogNodes(a, opts))
 }
 
 /**
