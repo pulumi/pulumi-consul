@@ -22,6 +22,35 @@ import javax.annotation.Nullable;
  * The `consul.Namespace` resource provides isolated [Consul Enterprise Namespaces](https://www.consul.io/docs/enterprise/namespaces/index.html).
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.consul.Namespace;
+ * import com.pulumi.consul.NamespaceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var production = new Namespace(&#34;production&#34;, NamespaceArgs.builder()        
+ *             .description(&#34;Production namespace&#34;)
+ *             .meta(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

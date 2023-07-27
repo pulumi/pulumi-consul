@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,8 +21,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -30,7 +29,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			agent, err := consul.NewAclPolicy(ctx, "agent", &consul.AclPolicyArgs{
-//				Rules: pulumi.String(fmt.Sprintf("%v%v%v%v", "node_prefix \"\" {\n", "  policy = \"read\"\n", "}\n", "\n")),
+//				Rules: pulumi.String("node_prefix \"\" {\n  policy = \"read\"\n}\n\n"),
 //			})
 //			if err != nil {
 //				return err
@@ -99,6 +98,7 @@ func NewAclToken(ctx *pulumi.Context,
 		args = &AclTokenArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AclToken
 	err := ctx.RegisterResource("consul:index/aclToken:AclToken", name, args, &resource, opts...)
 	if err != nil {
@@ -306,6 +306,57 @@ func (o AclTokenOutput) ToAclTokenOutput() AclTokenOutput {
 
 func (o AclTokenOutput) ToAclTokenOutputWithContext(ctx context.Context) AclTokenOutput {
 	return o
+}
+
+// The uuid of the token. If omitted, Consul will
+// generate a random uuid.
+func (o AclTokenOutput) AccessorId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AclToken) pulumi.StringOutput { return v.AccessorId }).(pulumi.StringOutput)
+}
+
+// The description of the token.
+func (o AclTokenOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AclToken) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// If set this represents the point after which a token should be considered revoked and is eligible for destruction.
+func (o AclTokenOutput) ExpirationTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AclToken) pulumi.StringPtrOutput { return v.ExpirationTime }).(pulumi.StringPtrOutput)
+}
+
+// The flag to set the token local to the current datacenter.
+func (o AclTokenOutput) Local() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AclToken) pulumi.BoolPtrOutput { return v.Local }).(pulumi.BoolPtrOutput)
+}
+
+// The namespace to create the token within.
+func (o AclTokenOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AclToken) pulumi.StringPtrOutput { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+// The list of node identities that should be applied to the token.
+func (o AclTokenOutput) NodeIdentities() AclTokenNodeIdentityArrayOutput {
+	return o.ApplyT(func(v *AclToken) AclTokenNodeIdentityArrayOutput { return v.NodeIdentities }).(AclTokenNodeIdentityArrayOutput)
+}
+
+// The partition the ACL token is associated with.
+func (o AclTokenOutput) Partition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AclToken) pulumi.StringPtrOutput { return v.Partition }).(pulumi.StringPtrOutput)
+}
+
+// The list of policies attached to the token.
+func (o AclTokenOutput) Policies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AclToken) pulumi.StringArrayOutput { return v.Policies }).(pulumi.StringArrayOutput)
+}
+
+// The list of roles attached to the token.
+func (o AclTokenOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AclToken) pulumi.StringArrayOutput { return v.Roles }).(pulumi.StringArrayOutput)
+}
+
+// The list of service identities that should be applied to the token.
+func (o AclTokenOutput) ServiceIdentities() AclTokenServiceIdentityArrayOutput {
+	return o.ApplyT(func(v *AclToken) AclTokenServiceIdentityArrayOutput { return v.ServiceIdentities }).(AclTokenServiceIdentityArrayOutput)
 }
 
 type AclTokenArrayOutput struct{ *pulumi.OutputState }

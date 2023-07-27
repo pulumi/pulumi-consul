@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -24,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := consul.LookupPeering(ctx, &GetPeeringArgs{
+//			_, err := consul.LookupPeering(ctx, &consul.LookupPeeringArgs{
 //				PeerName: "peered-cluster",
 //			}, nil)
 //			if err != nil {
@@ -36,6 +37,7 @@ import (
 //
 // ```
 func LookupPeering(ctx *pulumi.Context, args *LookupPeeringArgs, opts ...pulumi.InvokeOption) (*LookupPeeringResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupPeeringResult
 	err := ctx.Invoke("consul:index/getPeering:getPeering", args, &rv, opts...)
 	if err != nil {

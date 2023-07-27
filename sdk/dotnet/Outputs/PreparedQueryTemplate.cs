@@ -14,13 +14,15 @@ namespace Pulumi.Consul.Outputs
     public sealed class PreparedQueryTemplate
     {
         /// <summary>
-        /// The regular expression to match with. When using
-        /// `name_prefix_match`, this regex is applied against the query name.
+        /// The regular expression to match with. When using `name_prefix_match`, this regex is applied against the query name.
         /// </summary>
         public readonly string Regexp;
         /// <summary>
-        /// The type of template matching to perform. Currently
-        /// only `name_prefix_match` is supported.
+        /// If set to true, will cause the tags list inside the service structure to be stripped of any empty strings.
+        /// </summary>
+        public readonly bool? RemoveEmptyTags;
+        /// <summary>
+        /// The type of template matching to perform. Currently only `name_prefix_match` is supported.
         /// </summary>
         public readonly string Type;
 
@@ -28,9 +30,12 @@ namespace Pulumi.Consul.Outputs
         private PreparedQueryTemplate(
             string regexp,
 
+            bool? removeEmptyTags,
+
             string type)
         {
             Regexp = regexp;
+            RemoveEmptyTags = removeEmptyTags;
             Type = type;
         }
     }

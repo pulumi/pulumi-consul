@@ -9,20 +9,43 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Consul
 {
+    [Obsolete(@"getCatalogServices has been deprecated in favor of getServices")]
     public static class GetCatalogServices
     {
+        /// <summary>
+        /// The `consul.getServices` data source returns a list of Consul services that
+        /// have been registered with the Consul cluster in a given datacenter.  By
+        /// specifying a different datacenter in the `query_options` it is possible to
+        /// retrieve a list of services from a different WAN-attached Consul datacenter.
+        /// 
+        /// This data source is different from the `consul.Service` (singular) data
+        /// source, which provides a detailed response about a specific Consul service.
+        /// </summary>
         public static Task<GetCatalogServicesResult> InvokeAsync(GetCatalogServicesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCatalogServicesResult>("consul:index/getCatalogServices:getCatalogServices", args ?? new GetCatalogServicesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetCatalogServicesResult>("consul:index/getCatalogServices:getCatalogServices", args ?? new GetCatalogServicesArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// The `consul.getServices` data source returns a list of Consul services that
+        /// have been registered with the Consul cluster in a given datacenter.  By
+        /// specifying a different datacenter in the `query_options` it is possible to
+        /// retrieve a list of services from a different WAN-attached Consul datacenter.
+        /// 
+        /// This data source is different from the `consul.Service` (singular) data
+        /// source, which provides a detailed response about a specific Consul service.
+        /// </summary>
         public static Output<GetCatalogServicesResult> Invoke(GetCatalogServicesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetCatalogServicesResult>("consul:index/getCatalogServices:getCatalogServices", args ?? new GetCatalogServicesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetCatalogServicesResult>("consul:index/getCatalogServices:getCatalogServices", args ?? new GetCatalogServicesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetCatalogServicesArgs : Pulumi.InvokeArgs
+    public sealed class GetCatalogServicesArgs : global::Pulumi.InvokeArgs
     {
         [Input("queryOptions")]
         private List<Inputs.GetCatalogServicesQueryOptionArgs>? _queryOptions;
+
+        /// <summary>
+        /// See below.
+        /// </summary>
         public List<Inputs.GetCatalogServicesQueryOptionArgs> QueryOptions
         {
             get => _queryOptions ?? (_queryOptions = new List<Inputs.GetCatalogServicesQueryOptionArgs>());
@@ -32,12 +55,17 @@ namespace Pulumi.Consul
         public GetCatalogServicesArgs()
         {
         }
+        public static new GetCatalogServicesArgs Empty => new GetCatalogServicesArgs();
     }
 
-    public sealed class GetCatalogServicesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetCatalogServicesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("queryOptions")]
         private InputList<Inputs.GetCatalogServicesQueryOptionInputArgs>? _queryOptions;
+
+        /// <summary>
+        /// See below.
+        /// </summary>
         public InputList<Inputs.GetCatalogServicesQueryOptionInputArgs> QueryOptions
         {
             get => _queryOptions ?? (_queryOptions = new InputList<Inputs.GetCatalogServicesQueryOptionInputArgs>());
@@ -47,12 +75,16 @@ namespace Pulumi.Consul
         public GetCatalogServicesInvokeArgs()
         {
         }
+        public static new GetCatalogServicesInvokeArgs Empty => new GetCatalogServicesInvokeArgs();
     }
 
 
     [OutputType]
     public sealed class GetCatalogServicesResult
     {
+        /// <summary>
+        /// The datacenter the keys are being read from to.
+        /// </summary>
         public readonly string Datacenter;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -61,6 +93,12 @@ namespace Pulumi.Consul
         public readonly ImmutableArray<string> Names;
         public readonly ImmutableArray<Outputs.GetCatalogServicesQueryOptionResult> QueryOptions;
         public readonly ImmutableDictionary<string, string> Services;
+        /// <summary>
+        /// A map of the tags found for each service.  If more than one service
+        /// shares the same tag, unique service names will be joined by whitespace (this
+        /// is the inverse of `services` and can be used to lookup the services that match
+        /// a single tag).
+        /// </summary>
         public readonly ImmutableDictionary<string, string> Tags;
 
         [OutputConstructor]

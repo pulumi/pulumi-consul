@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -34,6 +35,7 @@ import (
 //
 // ```
 func GetPeerings(ctx *pulumi.Context, args *GetPeeringsArgs, opts ...pulumi.InvokeOption) (*GetPeeringsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPeeringsResult
 	err := ctx.Invoke("consul:index/getPeerings:getPeerings", args, &rv, opts...)
 	if err != nil {

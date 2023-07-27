@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Consul.Inputs
 {
 
-    public sealed class CatalogEntryServiceGetArgs : Pulumi.ResourceArgs
+    public sealed class CatalogEntryServiceGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The address of the service. Defaults to the
@@ -53,5 +53,6 @@ namespace Pulumi.Consul.Inputs
         public CatalogEntryServiceGetArgs()
         {
         }
+        public static new CatalogEntryServiceGetArgs Empty => new CatalogEntryServiceGetArgs();
     }
 }

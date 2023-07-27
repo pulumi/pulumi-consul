@@ -21,55 +21,56 @@ namespace Pulumi.Consul
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Consul = Pulumi.Consul;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a peering between the EU and US Consul clusters
+    ///     var eu = new Consul.Provider("eu", new()
     ///     {
-    ///         // Create a peering between the EU and US Consul clusters
-    ///         var eu = new Consul.Provider("eu", new Consul.ProviderArgs
-    ///         {
-    ///             Address = "eu-cluster:8500",
-    ///         });
-    ///         var us = new Consul.Provider("us", new Consul.ProviderArgs
-    ///         {
-    ///             Address = "us-cluster:8500",
-    ///         });
-    ///         var eu_usPeeringToken = new Consul.PeeringToken("eu-usPeeringToken", new Consul.PeeringTokenArgs
-    ///         {
-    ///             PeerName = "eu-cluster",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = consul.Us,
-    ///         });
-    ///         var eu_usPeering = new Consul.Peering("eu-usPeering", new Consul.PeeringArgs
-    ///         {
-    ///             PeerName = "eu-cluster",
-    ///             PeeringToken = consul_peering_token.Token.Peering_token,
-    ///             Meta = 
-    ///             {
-    ///                 { "hello", "world" },
-    ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = consul.Eu,
-    ///         });
-    ///     }
+    ///         Address = "eu-cluster:8500",
+    ///     });
     /// 
-    /// }
+    ///     var us = new Consul.Provider("us", new()
+    ///     {
+    ///         Address = "us-cluster:8500",
+    ///     });
+    /// 
+    ///     var eu_usPeeringToken = new Consul.PeeringToken("eu-usPeeringToken", new()
+    ///     {
+    ///         PeerName = "eu-cluster",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = consul.Us,
+    ///     });
+    /// 
+    ///     var eu_usPeering = new Consul.Peering("eu-usPeering", new()
+    ///     {
+    ///         PeerName = "eu-cluster",
+    ///         PeeringToken = consul_peering_token.Token.Peering_token,
+    ///         Meta = 
+    ///         {
+    ///             { "hello", "world" },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = consul.Eu,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// </summary>
     [ConsulResourceType("consul:index/peering:Peering")]
-    public partial class Peering : Pulumi.CustomResource
+    public partial class Peering : global::Pulumi.CustomResource
     {
         [Output("deletedAt")]
         public Output<string> DeletedAt { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the
-        /// cluster peering process.
+        /// Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the cluster peering process.
         /// </summary>
         [Output("meta")]
         public Output<ImmutableDictionary<string, string>?> Meta { get; private set; } = null!;
@@ -84,8 +85,7 @@ namespace Pulumi.Consul
         public Output<string> PeerId { get; private set; } = null!;
 
         /// <summary>
-        /// The name assigned to the peer cluster. The `peer_name` is used to reference the peer cluster in service discovery
-        /// queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
+        /// The name assigned to the peer cluster. The `peer_name` is used to reference the peer cluster in service discovery queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
         /// </summary>
         [Output("peerName")]
         public Output<string> PeerName { get; private set; } = null!;
@@ -128,6 +128,10 @@ namespace Pulumi.Consul
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "peeringToken",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -149,14 +153,13 @@ namespace Pulumi.Consul
         }
     }
 
-    public sealed class PeeringArgs : Pulumi.ResourceArgs
+    public sealed class PeeringArgs : global::Pulumi.ResourceArgs
     {
         [Input("meta")]
         private InputMap<string>? _meta;
 
         /// <summary>
-        /// Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the
-        /// cluster peering process.
+        /// Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the cluster peering process.
         /// </summary>
         public InputMap<string> Meta
         {
@@ -168,24 +171,34 @@ namespace Pulumi.Consul
         public Input<string>? Partition { get; set; }
 
         /// <summary>
-        /// The name assigned to the peer cluster. The `peer_name` is used to reference the peer cluster in service discovery
-        /// queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
+        /// The name assigned to the peer cluster. The `peer_name` is used to reference the peer cluster in service discovery queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
         /// </summary>
         [Input("peerName", required: true)]
         public Input<string> PeerName { get; set; } = null!;
 
+        [Input("peeringToken", required: true)]
+        private Input<string>? _peeringToken;
+
         /// <summary>
         /// The peering token fetched from the peer cluster.
         /// </summary>
-        [Input("peeringToken", required: true)]
-        public Input<string> PeeringToken { get; set; } = null!;
+        public Input<string>? PeeringToken
+        {
+            get => _peeringToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _peeringToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public PeeringArgs()
         {
         }
+        public static new PeeringArgs Empty => new PeeringArgs();
     }
 
-    public sealed class PeeringState : Pulumi.ResourceArgs
+    public sealed class PeeringState : global::Pulumi.ResourceArgs
     {
         [Input("deletedAt")]
         public Input<string>? DeletedAt { get; set; }
@@ -194,8 +207,7 @@ namespace Pulumi.Consul
         private InputMap<string>? _meta;
 
         /// <summary>
-        /// Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the
-        /// cluster peering process.
+        /// Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the cluster peering process.
         /// </summary>
         public InputMap<string> Meta
         {
@@ -218,8 +230,7 @@ namespace Pulumi.Consul
         public Input<string>? PeerId { get; set; }
 
         /// <summary>
-        /// The name assigned to the peer cluster. The `peer_name` is used to reference the peer cluster in service discovery
-        /// queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
+        /// The name assigned to the peer cluster. The `peer_name` is used to reference the peer cluster in service discovery queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
         /// </summary>
         [Input("peerName")]
         public Input<string>? PeerName { get; set; }
@@ -235,11 +246,21 @@ namespace Pulumi.Consul
         [Input("peerServerName")]
         public Input<string>? PeerServerName { get; set; }
 
+        [Input("peeringToken")]
+        private Input<string>? _peeringToken;
+
         /// <summary>
         /// The peering token fetched from the peer cluster.
         /// </summary>
-        [Input("peeringToken")]
-        public Input<string>? PeeringToken { get; set; }
+        public Input<string>? PeeringToken
+        {
+            get => _peeringToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _peeringToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("state")]
         public Input<string>? State { get; set; }
@@ -247,5 +268,6 @@ namespace Pulumi.Consul
         public PeeringState()
         {
         }
+        public static new PeeringState Empty => new PeeringState();
     }
 }

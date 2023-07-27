@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			test, err := consul.LookupAclRole(ctx, &GetAclRoleArgs{
+//			test, err := consul.LookupAclRole(ctx, &consul.LookupAclRoleArgs{
 //				Name: "example-role",
 //			}, nil)
 //			if err != nil {
@@ -40,6 +41,7 @@ import (
 //
 // ```
 func LookupAclRole(ctx *pulumi.Context, args *LookupAclRoleArgs, opts ...pulumi.InvokeOption) (*LookupAclRoleResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAclRoleResult
 	err := ctx.Invoke("consul:index/getAclRole:getAclRole", args, &rv, opts...)
 	if err != nil {

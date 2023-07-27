@@ -7,8 +7,78 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = internal.GetEnvOrDefault
+
+type AuthJwt struct {
+	AuthMethod                        string            `pulumi:"authMethod"`
+	BearerToken                       *string           `pulumi:"bearerToken"`
+	Meta                              map[string]string `pulumi:"meta"`
+	UseTerraformCloudWorkloadIdentity *bool             `pulumi:"useTerraformCloudWorkloadIdentity"`
+}
+
+// AuthJwtInput is an input type that accepts AuthJwtArgs and AuthJwtOutput values.
+// You can construct a concrete instance of `AuthJwtInput` via:
+//
+//	AuthJwtArgs{...}
+type AuthJwtInput interface {
+	pulumi.Input
+
+	ToAuthJwtOutput() AuthJwtOutput
+	ToAuthJwtOutputWithContext(context.Context) AuthJwtOutput
+}
+
+type AuthJwtArgs struct {
+	AuthMethod                        pulumi.StringInput    `pulumi:"authMethod"`
+	BearerToken                       pulumi.StringPtrInput `pulumi:"bearerToken"`
+	Meta                              pulumi.StringMapInput `pulumi:"meta"`
+	UseTerraformCloudWorkloadIdentity pulumi.BoolPtrInput   `pulumi:"useTerraformCloudWorkloadIdentity"`
+}
+
+func (AuthJwtArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthJwt)(nil)).Elem()
+}
+
+func (i AuthJwtArgs) ToAuthJwtOutput() AuthJwtOutput {
+	return i.ToAuthJwtOutputWithContext(context.Background())
+}
+
+func (i AuthJwtArgs) ToAuthJwtOutputWithContext(ctx context.Context) AuthJwtOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthJwtOutput)
+}
+
+type AuthJwtOutput struct{ *pulumi.OutputState }
+
+func (AuthJwtOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthJwt)(nil)).Elem()
+}
+
+func (o AuthJwtOutput) ToAuthJwtOutput() AuthJwtOutput {
+	return o
+}
+
+func (o AuthJwtOutput) ToAuthJwtOutputWithContext(ctx context.Context) AuthJwtOutput {
+	return o
+}
+
+func (o AuthJwtOutput) AuthMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v AuthJwt) string { return v.AuthMethod }).(pulumi.StringOutput)
+}
+
+func (o AuthJwtOutput) BearerToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthJwt) *string { return v.BearerToken }).(pulumi.StringPtrOutput)
+}
+
+func (o AuthJwtOutput) Meta() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AuthJwt) map[string]string { return v.Meta }).(pulumi.StringMapOutput)
+}
+
+func (o AuthJwtOutput) UseTerraformCloudWorkloadIdentity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AuthJwt) *bool { return v.UseTerraformCloudWorkloadIdentity }).(pulumi.BoolPtrOutput)
+}
 
 type Headers struct {
 	Name  string `pulumi:"name"`
@@ -111,8 +181,10 @@ func (o HeadersArrayOutput) Index(i pulumi.IntInput) HeadersOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthJwtInput)(nil)).Elem(), AuthJwtArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HeadersInput)(nil)).Elem(), HeadersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HeadersArrayInput)(nil)).Elem(), HeadersArray{})
+	pulumi.RegisterOutputType(AuthJwtOutput{})
 	pulumi.RegisterOutputType(HeadersOutput{})
 	pulumi.RegisterOutputType(HeadersArrayOutput{})
 }

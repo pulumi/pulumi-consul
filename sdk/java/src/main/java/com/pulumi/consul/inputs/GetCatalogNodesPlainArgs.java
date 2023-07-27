@@ -15,9 +15,17 @@ public final class GetCatalogNodesPlainArgs extends com.pulumi.resources.InvokeA
 
     public static final GetCatalogNodesPlainArgs Empty = new GetCatalogNodesPlainArgs();
 
+    /**
+     * See below.
+     * 
+     */
     @Import(name="queryOptions")
     private @Nullable List<GetCatalogNodesQueryOption> queryOptions;
 
+    /**
+     * @return See below.
+     * 
+     */
     public Optional<List<GetCatalogNodesQueryOption>> queryOptions() {
         return Optional.ofNullable(this.queryOptions);
     }
@@ -46,11 +54,23 @@ public final class GetCatalogNodesPlainArgs extends com.pulumi.resources.InvokeA
             $ = new GetCatalogNodesPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param queryOptions See below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder queryOptions(@Nullable List<GetCatalogNodesQueryOption> queryOptions) {
             $.queryOptions = queryOptions;
             return this;
         }
 
+        /**
+         * @param queryOptions See below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder queryOptions(GetCatalogNodesQueryOption... queryOptions) {
             return queryOptions(List.of(queryOptions));
         }

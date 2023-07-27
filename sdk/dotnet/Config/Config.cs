@@ -30,16 +30,32 @@ namespace Pulumi.Consul
             }
         }
 
-        private static readonly Pulumi.Config __config = new Pulumi.Config("consul");
+        private static readonly global::Pulumi.Config __config = new global::Pulumi.Config("consul");
 
         private static readonly __Value<string?> _address = new __Value<string?>(() => __config.Get("address"));
+        /// <summary>
+        /// The HTTP(S) API address of the agent to use. Defaults to "127.0.0.1:8500".
+        /// </summary>
         public static string? Address
         {
             get => _address.Get();
             set => _address.Set(value);
         }
 
+        private static readonly __Value<Pulumi.Consul.Config.Types.AuthJwt?> _authJwt = new __Value<Pulumi.Consul.Config.Types.AuthJwt?>(() => __config.GetObject<Pulumi.Consul.Config.Types.AuthJwt>("authJwt"));
+        /// <summary>
+        /// Authenticates to Consul using a JWT authentication method.
+        /// </summary>
+        public static Pulumi.Consul.Config.Types.AuthJwt? AuthJwt
+        {
+            get => _authJwt.Get();
+            set => _authJwt.Set(value);
+        }
+
         private static readonly __Value<string?> _caFile = new __Value<string?>(() => __config.Get("caFile"));
+        /// <summary>
+        /// A path to a PEM-encoded certificate authority used to verify the remote agent's certificate.
+        /// </summary>
         public static string? CaFile
         {
             get => _caFile.Get();
@@ -47,6 +63,10 @@ namespace Pulumi.Consul
         }
 
         private static readonly __Value<string?> _caPath = new __Value<string?>(() => __config.Get("caPath"));
+        /// <summary>
+        /// A path to a directory of PEM-encoded certificate authority files to use to check the authenticity of client and server
+        /// connections. Can also be specified with the `CONSUL_CAPATH` environment variable.
+        /// </summary>
         public static string? CaPath
         {
             get => _caPath.Get();
@@ -54,6 +74,9 @@ namespace Pulumi.Consul
         }
 
         private static readonly __Value<string?> _caPem = new __Value<string?>(() => __config.Get("caPem"));
+        /// <summary>
+        /// PEM-encoded certificate authority used to verify the remote agent's certificate.
+        /// </summary>
         public static string? CaPem
         {
             get => _caPem.Get();
@@ -61,6 +84,9 @@ namespace Pulumi.Consul
         }
 
         private static readonly __Value<string?> _certFile = new __Value<string?>(() => __config.Get("certFile"));
+        /// <summary>
+        /// A path to a PEM-encoded certificate provided to the remote agent; requires use of `key_file` or `key_pem`.
+        /// </summary>
         public static string? CertFile
         {
             get => _certFile.Get();
@@ -68,6 +94,9 @@ namespace Pulumi.Consul
         }
 
         private static readonly __Value<string?> _certPem = new __Value<string?>(() => __config.Get("certPem"));
+        /// <summary>
+        /// PEM-encoded certificate provided to the remote agent; requires use of `key_file` or `key_pem`.
+        /// </summary>
         public static string? CertPem
         {
             get => _certPem.Get();
@@ -75,6 +104,9 @@ namespace Pulumi.Consul
         }
 
         private static readonly __Value<string?> _datacenter = new __Value<string?>(() => __config.Get("datacenter"));
+        /// <summary>
+        /// The datacenter to use. Defaults to that of the agent.
+        /// </summary>
         public static string? Datacenter
         {
             get => _datacenter.Get();
@@ -83,7 +115,8 @@ namespace Pulumi.Consul
 
         private static readonly __Value<ImmutableArray<Pulumi.Consul.Config.Types.Headers>> _headers = new __Value<ImmutableArray<Pulumi.Consul.Config.Types.Headers>>(() => __config.GetObject<ImmutableArray<Pulumi.Consul.Config.Types.Headers>>("headers"));
         /// <summary>
-        /// Additional headers to send with each Consul request.
+        /// A configuration block, described below, that provides additional headers to be sent along with all requests to the
+        /// Consul server. This block can be specified multiple times.
         /// </summary>
         public static ImmutableArray<Pulumi.Consul.Config.Types.Headers> Headers
         {
@@ -92,6 +125,10 @@ namespace Pulumi.Consul
         }
 
         private static readonly __Value<string?> _httpAuth = new __Value<string?>(() => __config.Get("httpAuth"));
+        /// <summary>
+        /// HTTP Basic Authentication credentials to be used when communicating with Consul, in the format of either `user` or
+        /// `user:pass`. This may also be specified using the `CONSUL_HTTP_AUTH` environment variable.
+        /// </summary>
         public static string? HttpAuth
         {
             get => _httpAuth.Get();
@@ -99,6 +136,10 @@ namespace Pulumi.Consul
         }
 
         private static readonly __Value<bool?> _insecureHttps = new __Value<bool?>(() => __config.GetBoolean("insecureHttps"));
+        /// <summary>
+        /// Boolean value to disable SSL certificate verification; setting this value to true is not recommended for production use.
+        /// Only use this with scheme set to "https".
+        /// </summary>
         public static bool? InsecureHttps
         {
             get => _insecureHttps.Get();
@@ -106,6 +147,9 @@ namespace Pulumi.Consul
         }
 
         private static readonly __Value<string?> _keyFile = new __Value<string?>(() => __config.Get("keyFile"));
+        /// <summary>
+        /// A path to a PEM-encoded private key, required if `cert_file` or `cert_pem` is specified.
+        /// </summary>
         public static string? KeyFile
         {
             get => _keyFile.Get();
@@ -113,6 +157,9 @@ namespace Pulumi.Consul
         }
 
         private static readonly __Value<string?> _keyPem = new __Value<string?>(() => __config.Get("keyPem"));
+        /// <summary>
+        /// PEM-encoded private key, required if `cert_file` or `cert_pem` is specified.
+        /// </summary>
         public static string? KeyPem
         {
             get => _keyPem.Get();
@@ -127,6 +174,9 @@ namespace Pulumi.Consul
         }
 
         private static readonly __Value<string?> _scheme = new __Value<string?>(() => __config.Get("scheme"));
+        /// <summary>
+        /// The URL scheme of the agent to use ("http" or "https"). Defaults to "http".
+        /// </summary>
         public static string? Scheme
         {
             get => _scheme.Get();
@@ -134,6 +184,10 @@ namespace Pulumi.Consul
         }
 
         private static readonly __Value<string?> _token = new __Value<string?>(() => __config.Get("token"));
+        /// <summary>
+        /// The ACL token to use by default when making requests to the agent. Can also be specified with `CONSUL_HTTP_TOKEN` or
+        /// `CONSUL_TOKEN` as an environment variable.
+        /// </summary>
         public static string? Token
         {
             get => _token.Get();
@@ -142,6 +196,14 @@ namespace Pulumi.Consul
 
         public static class Types
         {
+
+             public class AuthJwt
+             {
+                public string AuthMethod { get; set; }
+                public string? BearerToken { get; set; } = null!;
+                public ImmutableDictionary<string, string>? Meta { get; set; } = null!;
+                public bool? UseTerraformCloudWorkloadIdentity { get; set; }
+            }
 
              public class Headers
              {

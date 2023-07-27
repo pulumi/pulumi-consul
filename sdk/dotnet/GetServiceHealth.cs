@@ -19,33 +19,9 @@ namespace Pulumi.Consul
         /// 
         /// This resource is likely to change as frequently as the health-checks are being
         /// updated, you should expect different results in a frequent basis.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Consul = Pulumi.Consul;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var vaultServiceHealth = Output.Create(Consul.GetServiceHealth.InvokeAsync(new Consul.GetServiceHealthArgs
-        ///         {
-        ///             Passing = true,
-        ///             Service = "vault",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetServiceHealthResult> InvokeAsync(GetServiceHealthArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServiceHealthResult>("consul:index/getServiceHealth:getServiceHealth", args ?? new GetServiceHealthArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetServiceHealthResult>("consul:index/getServiceHealth:getServiceHealth", args ?? new GetServiceHealthArgs(), options.WithDefaults());
 
         /// <summary>
         /// `consul.getServiceHealth` can be used to get the list of the instances that
@@ -55,37 +31,13 @@ namespace Pulumi.Consul
         /// 
         /// This resource is likely to change as frequently as the health-checks are being
         /// updated, you should expect different results in a frequent basis.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Consul = Pulumi.Consul;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var vaultServiceHealth = Output.Create(Consul.GetServiceHealth.InvokeAsync(new Consul.GetServiceHealthArgs
-        ///         {
-        ///             Passing = true,
-        ///             Service = "vault",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetServiceHealthResult> Invoke(GetServiceHealthInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetServiceHealthResult>("consul:index/getServiceHealth:getServiceHealth", args ?? new GetServiceHealthInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetServiceHealthResult>("consul:index/getServiceHealth:getServiceHealth", args ?? new GetServiceHealthInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetServiceHealthArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceHealthArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The Consul datacenter to query.
@@ -146,9 +98,10 @@ namespace Pulumi.Consul
         public GetServiceHealthArgs()
         {
         }
+        public static new GetServiceHealthArgs Empty => new GetServiceHealthArgs();
     }
 
-    public sealed class GetServiceHealthInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceHealthInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The Consul datacenter to query.
@@ -209,6 +162,7 @@ namespace Pulumi.Consul
         public GetServiceHealthInvokeArgs()
         {
         }
+        public static new GetServiceHealthInvokeArgs Empty => new GetServiceHealthInvokeArgs();
     }
 
 

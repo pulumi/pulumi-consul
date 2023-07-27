@@ -7,10 +7,12 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 func LookupConfigEntry(ctx *pulumi.Context, args *LookupConfigEntryArgs, opts ...pulumi.InvokeOption) (*LookupConfigEntryResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupConfigEntryResult
 	err := ctx.Invoke("consul:index/getConfigEntry:getConfigEntry", args, &rv, opts...)
 	if err != nil {
@@ -21,20 +23,29 @@ func LookupConfigEntry(ctx *pulumi.Context, args *LookupConfigEntryArgs, opts ..
 
 // A collection of arguments for invoking getConfigEntry.
 type LookupConfigEntryArgs struct {
-	Kind      string  `pulumi:"kind"`
-	Name      string  `pulumi:"name"`
+	// The kind of config entry to read.
+	Kind string `pulumi:"kind"`
+	// The name of the config entry to read.
+	Name string `pulumi:"name"`
+	// The namespace the config entry is associated with.
 	Namespace *string `pulumi:"namespace"`
+	// The partition the config entry is associated with.
 	Partition *string `pulumi:"partition"`
 }
 
 // A collection of values returned by getConfigEntry.
 type LookupConfigEntryResult struct {
+	// The configuration of the config entry.
 	ConfigJson string `pulumi:"configJson"`
 	// The provider-assigned unique ID for this managed resource.
-	Id        string  `pulumi:"id"`
-	Kind      string  `pulumi:"kind"`
-	Name      string  `pulumi:"name"`
+	Id string `pulumi:"id"`
+	// The kind of config entry to read.
+	Kind string `pulumi:"kind"`
+	// The name of the config entry to read.
+	Name string `pulumi:"name"`
+	// The namespace the config entry is associated with.
 	Namespace *string `pulumi:"namespace"`
+	// The partition the config entry is associated with.
 	Partition *string `pulumi:"partition"`
 }
 
@@ -53,9 +64,13 @@ func LookupConfigEntryOutput(ctx *pulumi.Context, args LookupConfigEntryOutputAr
 
 // A collection of arguments for invoking getConfigEntry.
 type LookupConfigEntryOutputArgs struct {
-	Kind      pulumi.StringInput    `pulumi:"kind"`
-	Name      pulumi.StringInput    `pulumi:"name"`
+	// The kind of config entry to read.
+	Kind pulumi.StringInput `pulumi:"kind"`
+	// The name of the config entry to read.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The namespace the config entry is associated with.
 	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	// The partition the config entry is associated with.
 	Partition pulumi.StringPtrInput `pulumi:"partition"`
 }
 
@@ -78,6 +93,7 @@ func (o LookupConfigEntryResultOutput) ToLookupConfigEntryResultOutputWithContex
 	return o
 }
 
+// The configuration of the config entry.
 func (o LookupConfigEntryResultOutput) ConfigJson() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigEntryResult) string { return v.ConfigJson }).(pulumi.StringOutput)
 }
@@ -87,18 +103,22 @@ func (o LookupConfigEntryResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigEntryResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The kind of config entry to read.
 func (o LookupConfigEntryResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigEntryResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// The name of the config entry to read.
 func (o LookupConfigEntryResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigEntryResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The namespace the config entry is associated with.
 func (o LookupConfigEntryResultOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupConfigEntryResult) *string { return v.Namespace }).(pulumi.StringPtrOutput)
 }
 
+// The partition the config entry is associated with.
 func (o LookupConfigEntryResultOutput) Partition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupConfigEntryResult) *string { return v.Partition }).(pulumi.StringPtrOutput)
 }

@@ -12,6 +12,10 @@ import java.util.Objects;
 @CustomType
 public final class GetPeeringsPeer {
     private String deletedAt;
+    /**
+     * @return The ID of this resource.
+     * 
+     */
     private String id;
     private Map<String,String> meta;
     private String name;
@@ -26,6 +30,10 @@ public final class GetPeeringsPeer {
     public String deletedAt() {
         return this.deletedAt;
     }
+    /**
+     * @return The ID of this resource.
+     * 
+     */
     public String id() {
         return this.id;
     }

@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,8 +36,8 @@ import (
 //			_, err := consul.NewCatalogEntry(ctx, "app", &consul.CatalogEntryArgs{
 //				Address: pulumi.String("192.168.10.10"),
 //				Node:    pulumi.String("foobar"),
-//				Services: CatalogEntryServiceArray{
-//					&CatalogEntryServiceArgs{
+//				Services: consul.CatalogEntryServiceArray{
+//					&consul.CatalogEntryServiceArgs{
 //						Address: pulumi.String("127.0.0.1"),
 //						Id:      pulumi.String("redis1"),
 //						Name:    pulumi.String("redis"),
@@ -91,6 +92,14 @@ func NewCatalogEntry(ctx *pulumi.Context,
 	if args.Node == nil {
 		return nil, errors.New("invalid value for required argument 'Node'")
 	}
+	if args.Token != nil {
+		args.Token = pulumi.ToSecret(args.Token).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"token",
+	})
+	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CatalogEntry
 	err := ctx.RegisterResource("consul:index/catalogEntry:CatalogEntry", name, args, &resource, opts...)
 	if err != nil {
@@ -282,6 +291,38 @@ func (o CatalogEntryOutput) ToCatalogEntryOutput() CatalogEntryOutput {
 
 func (o CatalogEntryOutput) ToCatalogEntryOutputWithContext(ctx context.Context) CatalogEntryOutput {
 	return o
+}
+
+// The address of the node being added to,
+// or referenced in the catalog.
+func (o CatalogEntryOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v *CatalogEntry) pulumi.StringOutput { return v.Address }).(pulumi.StringOutput)
+}
+
+// The datacenter to use. This overrides the
+// agent's default datacenter and the datacenter in the provider setup.
+func (o CatalogEntryOutput) Datacenter() pulumi.StringOutput {
+	return o.ApplyT(func(v *CatalogEntry) pulumi.StringOutput { return v.Datacenter }).(pulumi.StringOutput)
+}
+
+// The name of the node being added to, or
+// referenced in the catalog.
+func (o CatalogEntryOutput) Node() pulumi.StringOutput {
+	return o.ApplyT(func(v *CatalogEntry) pulumi.StringOutput { return v.Node }).(pulumi.StringOutput)
+}
+
+// A service to optionally associated with
+// the node. Supported values are documented below.
+func (o CatalogEntryOutput) Services() CatalogEntryServiceArrayOutput {
+	return o.ApplyT(func(v *CatalogEntry) CatalogEntryServiceArrayOutput { return v.Services }).(CatalogEntryServiceArrayOutput)
+}
+
+// ACL token.
+//
+// Deprecated: The token argument has been deprecated and will be removed in a future release.
+// Please use the token argument in the provider configuration
+func (o CatalogEntryOutput) Token() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CatalogEntry) pulumi.StringPtrOutput { return v.Token }).(pulumi.StringPtrOutput)
 }
 
 type CatalogEntryArrayOutput struct{ *pulumi.OutputState }

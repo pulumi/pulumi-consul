@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Consul.Inputs
 {
 
-    public sealed class AclTokenNodeIdentityArgs : Pulumi.ResourceArgs
+    public sealed class AclTokenNodeIdentityArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The datacenter of the node.
@@ -27,5 +27,6 @@ namespace Pulumi.Consul.Inputs
         public AclTokenNodeIdentityArgs()
         {
         }
+        public static new AclTokenNodeIdentityArgs Empty => new AclTokenNodeIdentityArgs();
     }
 }

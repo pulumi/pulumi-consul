@@ -10,11 +10,21 @@ using Pulumi.Serialization;
 namespace Pulumi.Consul.Inputs
 {
 
-    public sealed class GetCatalogNodesQueryOptionInputArgs : Pulumi.ResourceArgs
+    public sealed class GetCatalogNodesQueryOptionInputArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// When `true`, the default, allow responses from
+        /// Consul servers that are followers.
+        /// </summary>
         [Input("allowStale")]
         public Input<bool>? AllowStale { get; set; }
 
+        /// <summary>
+        /// The Consul datacenter to query.  Defaults to the
+        /// same value found in `query_options` parameter specified below, or if that is
+        /// empty, the `datacenter` value found in the Consul agent that this provider is
+        /// configured to talk to then the datacenter in the provider setup.
+        /// </summary>
         [Input("datacenter")]
         public Input<string>? Datacenter { get; set; }
 
@@ -32,20 +42,48 @@ namespace Pulumi.Consul.Inputs
         [Input("partition")]
         public Input<string>? Partition { get; set; }
 
+        /// <summary>
+        /// When `true` force the client to perform a
+        /// read on at least quorum servers and verify the result is the same.  Defaults
+        /// to `false`.
+        /// </summary>
         [Input("requireConsistent")]
         public Input<bool>? RequireConsistent { get; set; }
 
         [Input("token")]
-        public Input<string>? Token { get; set; }
+        private Input<string>? _token;
 
+        /// <summary>
+        /// Specify the Consul ACL token to use when performing the
+        /// request.  This defaults to the same API token configured by the `consul`
+        /// provider but may be overridden if necessary.
+        /// </summary>
+        public Input<string>? Token
+        {
+            get => _token;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _token = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Index number used to enable blocking queries.
+        /// </summary>
         [Input("waitIndex")]
         public Input<int>? WaitIndex { get; set; }
 
+        /// <summary>
+        /// Max time the client should wait for a blocking query
+        /// to return.
+        /// </summary>
         [Input("waitTime")]
         public Input<string>? WaitTime { get; set; }
 
         public GetCatalogNodesQueryOptionInputArgs()
         {
         }
+        public static new GetCatalogNodesQueryOptionInputArgs Empty => new GetCatalogNodesQueryOptionInputArgs();
     }
 }

@@ -4,36 +4,47 @@
 package com.pulumi.consul.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class PreparedQueryTemplate {
     /**
-     * @return The regular expression to match with. When using
-     * `name_prefix_match`, this regex is applied against the query name.
+     * @return The regular expression to match with. When using `name_prefix_match`, this regex is applied against the query name.
      * 
      */
     private String regexp;
     /**
-     * @return The type of template matching to perform. Currently
-     * only `name_prefix_match` is supported.
+     * @return If set to true, will cause the tags list inside the service structure to be stripped of any empty strings.
+     * 
+     */
+    private @Nullable Boolean removeEmptyTags;
+    /**
+     * @return The type of template matching to perform. Currently only `name_prefix_match` is supported.
      * 
      */
     private String type;
 
     private PreparedQueryTemplate() {}
     /**
-     * @return The regular expression to match with. When using
-     * `name_prefix_match`, this regex is applied against the query name.
+     * @return The regular expression to match with. When using `name_prefix_match`, this regex is applied against the query name.
      * 
      */
     public String regexp() {
         return this.regexp;
     }
     /**
-     * @return The type of template matching to perform. Currently
-     * only `name_prefix_match` is supported.
+     * @return If set to true, will cause the tags list inside the service structure to be stripped of any empty strings.
+     * 
+     */
+    public Optional<Boolean> removeEmptyTags() {
+        return Optional.ofNullable(this.removeEmptyTags);
+    }
+    /**
+     * @return The type of template matching to perform. Currently only `name_prefix_match` is supported.
      * 
      */
     public String type() {
@@ -50,17 +61,24 @@ public final class PreparedQueryTemplate {
     @CustomType.Builder
     public static final class Builder {
         private String regexp;
+        private @Nullable Boolean removeEmptyTags;
         private String type;
         public Builder() {}
         public Builder(PreparedQueryTemplate defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.regexp = defaults.regexp;
+    	      this.removeEmptyTags = defaults.removeEmptyTags;
     	      this.type = defaults.type;
         }
 
         @CustomType.Setter
         public Builder regexp(String regexp) {
             this.regexp = Objects.requireNonNull(regexp);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder removeEmptyTags(@Nullable Boolean removeEmptyTags) {
+            this.removeEmptyTags = removeEmptyTags;
             return this;
         }
         @CustomType.Setter
@@ -71,6 +89,7 @@ public final class PreparedQueryTemplate {
         public PreparedQueryTemplate build() {
             final var o = new PreparedQueryTemplate();
             o.regexp = regexp;
+            o.removeEmptyTags = removeEmptyTags;
             o.type = type;
             return o;
         }

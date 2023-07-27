@@ -16,37 +16,87 @@ public final class GetCatalogServicePlainArgs extends com.pulumi.resources.Invok
 
     public static final GetCatalogServicePlainArgs Empty = new GetCatalogServicePlainArgs();
 
+    /**
+     * The Consul datacenter to query.  Defaults to the
+     * same value found in `query_options` parameter specified below, or if that is
+     * empty, the `datacenter` value found in the Consul agent that this provider is
+     * configured to talk to.
+     * 
+     */
     @Import(name="datacenter")
     private @Nullable String datacenter;
 
+    /**
+     * @return The Consul datacenter to query.  Defaults to the
+     * same value found in `query_options` parameter specified below, or if that is
+     * empty, the `datacenter` value found in the Consul agent that this provider is
+     * configured to talk to.
+     * 
+     */
     public Optional<String> datacenter() {
         return Optional.ofNullable(this.datacenter);
     }
 
+    /**
+     * A filter expression to refine the query, see https://www.consul.io/api-docs/features/filtering
+     * and https://www.consul.io/api-docs/catalog#filtering-1.
+     * 
+     */
     @Import(name="filter")
     private @Nullable String filter;
 
+    /**
+     * @return A filter expression to refine the query, see https://www.consul.io/api-docs/features/filtering
+     * and https://www.consul.io/api-docs/catalog#filtering-1.
+     * 
+     */
     public Optional<String> filter() {
         return Optional.ofNullable(this.filter);
     }
 
+    /**
+     * The service name to select.
+     * 
+     */
     @Import(name="name", required=true)
     private String name;
 
+    /**
+     * @return The service name to select.
+     * 
+     */
     public String name() {
         return this.name;
     }
 
+    /**
+     * See below.
+     * 
+     */
     @Import(name="queryOptions")
     private @Nullable List<GetCatalogServiceQueryOption> queryOptions;
 
+    /**
+     * @return See below.
+     * 
+     */
     public Optional<List<GetCatalogServiceQueryOption>> queryOptions() {
         return Optional.ofNullable(this.queryOptions);
     }
 
+    /**
+     * A single tag that can be used to filter the list of nodes
+     * to return based on a single matching tag..
+     * 
+     */
     @Import(name="tag")
     private @Nullable String tag;
 
+    /**
+     * @return A single tag that can be used to filter the list of nodes
+     * to return based on a single matching tag..
+     * 
+     */
     public Optional<String> tag() {
         return Optional.ofNullable(this.tag);
     }
@@ -79,30 +129,71 @@ public final class GetCatalogServicePlainArgs extends com.pulumi.resources.Invok
             $ = new GetCatalogServicePlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param datacenter The Consul datacenter to query.  Defaults to the
+         * same value found in `query_options` parameter specified below, or if that is
+         * empty, the `datacenter` value found in the Consul agent that this provider is
+         * configured to talk to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder datacenter(@Nullable String datacenter) {
             $.datacenter = datacenter;
             return this;
         }
 
+        /**
+         * @param filter A filter expression to refine the query, see https://www.consul.io/api-docs/features/filtering
+         * and https://www.consul.io/api-docs/catalog#filtering-1.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filter(@Nullable String filter) {
             $.filter = filter;
             return this;
         }
 
+        /**
+         * @param name The service name to select.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param queryOptions See below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder queryOptions(@Nullable List<GetCatalogServiceQueryOption> queryOptions) {
             $.queryOptions = queryOptions;
             return this;
         }
 
+        /**
+         * @param queryOptions See below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder queryOptions(GetCatalogServiceQueryOption... queryOptions) {
             return queryOptions(List.of(queryOptions));
         }
 
+        /**
+         * @param tag A single tag that can be used to filter the list of nodes
+         * to return based on a single matching tag..
+         * 
+         * @return builder
+         * 
+         */
         public Builder tag(@Nullable String tag) {
             $.tag = tag;
             return this;

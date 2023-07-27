@@ -13,33 +13,32 @@ namespace Pulumi.Consul
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Consul = Pulumi.Consul;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var app = new Consul.Keys("app", new()
     ///     {
-    ///         var app = new Consul.Keys("app", new Consul.KeysArgs
+    ///         Datacenter = "nyc1",
+    ///         KeysCollection = new[]
     ///         {
-    ///             Datacenter = "nyc1",
-    ///             Keys = 
+    ///             new Consul.Inputs.KeysKeyArgs
     ///             {
-    ///                 new Consul.Inputs.KeysKeyArgs
-    ///                 {
-    ///                     Path = "service/app/elb_address",
-    ///                     Value = aws_elb.App.Dns_name,
-    ///                 },
+    ///                 Path = "service/app/elb_address",
+    ///                 Value = aws_elb.App.Dns_name,
     ///             },
-    ///             Token = "abcd",
-    ///         });
-    ///     }
+    ///         },
+    ///         Token = "abcd",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [ConsulResourceType("consul:index/keys:Keys")]
-    public partial class Keys : Pulumi.CustomResource
+    public partial class Keys : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The datacenter to use. This overrides the
@@ -100,6 +99,10 @@ namespace Pulumi.Consul
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "token",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -121,7 +124,7 @@ namespace Pulumi.Consul
         }
     }
 
-    public sealed class KeysArgs : Pulumi.ResourceArgs
+    public sealed class KeysArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The datacenter to use. This overrides the
@@ -155,19 +158,32 @@ namespace Pulumi.Consul
         [Input("partition")]
         public Input<string>? Partition { get; set; }
 
+        [Input("token")]
+        private Input<string>? _token;
+
         /// <summary>
         /// The ACL token to use. This overrides the
         /// token that the agent provides by default.
         /// </summary>
-        [Input("token")]
-        public Input<string>? Token { get; set; }
+        [Obsolete(@"The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration")]
+        public Input<string>? Token
+        {
+            get => _token;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _token = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public KeysArgs()
         {
         }
+        public static new KeysArgs Empty => new KeysArgs();
     }
 
-    public sealed class KeysState : Pulumi.ResourceArgs
+    public sealed class KeysState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The datacenter to use. This overrides the
@@ -201,12 +217,24 @@ namespace Pulumi.Consul
         [Input("partition")]
         public Input<string>? Partition { get; set; }
 
+        [Input("token")]
+        private Input<string>? _token;
+
         /// <summary>
         /// The ACL token to use. This overrides the
         /// token that the agent provides by default.
         /// </summary>
-        [Input("token")]
-        public Input<string>? Token { get; set; }
+        [Obsolete(@"The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration")]
+        public Input<string>? Token
+        {
+            get => _token;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _token = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("var")]
         private InputMap<string>? _var;
@@ -219,5 +247,6 @@ namespace Pulumi.Consul
         public KeysState()
         {
         }
+        public static new KeysState Empty => new KeysState();
     }
 }

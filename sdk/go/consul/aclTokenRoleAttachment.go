@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -42,6 +43,7 @@ func NewAclTokenRoleAttachment(ctx *pulumi.Context,
 	if args.TokenId == nil {
 		return nil, errors.New("invalid value for required argument 'TokenId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AclTokenRoleAttachment
 	err := ctx.RegisterResource("consul:index/aclTokenRoleAttachment:AclTokenRoleAttachment", name, args, &resource, opts...)
 	if err != nil {
@@ -181,6 +183,16 @@ func (o AclTokenRoleAttachmentOutput) ToAclTokenRoleAttachmentOutput() AclTokenR
 
 func (o AclTokenRoleAttachmentOutput) ToAclTokenRoleAttachmentOutputWithContext(ctx context.Context) AclTokenRoleAttachmentOutput {
 	return o
+}
+
+// The role name.
+func (o AclTokenRoleAttachmentOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v *AclTokenRoleAttachment) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
+}
+
+// The id of the token.
+func (o AclTokenRoleAttachmentOutput) TokenId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AclTokenRoleAttachment) pulumi.StringOutput { return v.TokenId }).(pulumi.StringOutput)
 }
 
 type AclTokenRoleAttachmentArrayOutput struct{ *pulumi.OutputState }

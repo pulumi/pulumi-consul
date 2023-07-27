@@ -6,6 +6,12 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * The `consul.getNodes` data source returns a list of Consul nodes that have
+ * been registered with the Consul cluster in a given datacenter.  By specifying a
+ * different datacenter in the `queryOptions` it is possible to retrieve a list of
+ * nodes from a different WAN-attached Consul datacenter.
+ */
 /** @deprecated getCatalogNodes has been deprecated in favor of getNodes */
 export function getCatalogNodes(args?: GetCatalogNodesArgs, opts?: pulumi.InvokeOptions): Promise<GetCatalogNodesResult> {
     pulumi.log.warn("getCatalogNodes is deprecated: getCatalogNodes has been deprecated in favor of getNodes")
@@ -21,6 +27,9 @@ export function getCatalogNodes(args?: GetCatalogNodesArgs, opts?: pulumi.Invoke
  * A collection of arguments for invoking getCatalogNodes.
  */
 export interface GetCatalogNodesArgs {
+    /**
+     * See below.
+     */
     queryOptions?: inputs.GetCatalogNodesQueryOption[];
 }
 
@@ -28,16 +37,35 @@ export interface GetCatalogNodesArgs {
  * A collection of values returned by getCatalogNodes.
  */
 export interface GetCatalogNodesResult {
+    /**
+     * The datacenter the keys are being read from to.
+     */
     readonly datacenter: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * A list of the Consul node IDs.
+     */
     readonly nodeIds: string[];
+    /**
+     * A list of the Consul node names.
+     */
     readonly nodeNames: string[];
+    /**
+     * A list of nodes and details about each Consul agent.  The list of
+     * per-node attributes is detailed below.
+     */
     readonly nodes: outputs.GetCatalogNodesNode[];
     readonly queryOptions?: outputs.GetCatalogNodesQueryOption[];
 }
+/**
+ * The `consul.getNodes` data source returns a list of Consul nodes that have
+ * been registered with the Consul cluster in a given datacenter.  By specifying a
+ * different datacenter in the `queryOptions` it is possible to retrieve a list of
+ * nodes from a different WAN-attached Consul datacenter.
+ */
 /** @deprecated getCatalogNodes has been deprecated in favor of getNodes */
 export function getCatalogNodesOutput(args?: GetCatalogNodesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCatalogNodesResult> {
     return pulumi.output(args).apply((a: any) => getCatalogNodes(a, opts))
@@ -47,5 +75,8 @@ export function getCatalogNodesOutput(args?: GetCatalogNodesOutputArgs, opts?: p
  * A collection of arguments for invoking getCatalogNodes.
  */
 export interface GetCatalogNodesOutputArgs {
+    /**
+     * See below.
+     */
     queryOptions?: pulumi.Input<pulumi.Input<inputs.GetCatalogNodesQueryOptionArgs>[]>;
 }

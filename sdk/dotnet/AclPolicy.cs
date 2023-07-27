@@ -15,28 +15,27 @@ namespace Pulumi.Consul
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Consul = Pulumi.Consul;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var test = new Consul.AclPolicy("test", new()
     ///     {
-    ///         var test = new Consul.AclPolicy("test", new Consul.AclPolicyArgs
+    ///         Datacenters = new[]
     ///         {
-    ///             Datacenters = 
-    ///             {
-    ///                 "dc1",
-    ///             },
-    ///             Rules = @"node_prefix """" {
+    ///             "dc1",
+    ///         },
+    ///         Rules = @"node_prefix """" {
     ///   policy = ""read""
     /// }
     /// 
     /// ",
-    ///         });
-    ///     }
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -48,7 +47,7 @@ namespace Pulumi.Consul
     /// ```
     /// </summary>
     [ConsulResourceType("consul:index/aclPolicy:AclPolicy")]
-    public partial class AclPolicy : Pulumi.CustomResource
+    public partial class AclPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The datacenters of the policy.
@@ -130,7 +129,7 @@ namespace Pulumi.Consul
         }
     }
 
-    public sealed class AclPolicyArgs : Pulumi.ResourceArgs
+    public sealed class AclPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("datacenters")]
         private InputList<string>? _datacenters;
@@ -177,9 +176,10 @@ namespace Pulumi.Consul
         public AclPolicyArgs()
         {
         }
+        public static new AclPolicyArgs Empty => new AclPolicyArgs();
     }
 
-    public sealed class AclPolicyState : Pulumi.ResourceArgs
+    public sealed class AclPolicyState : global::Pulumi.ResourceArgs
     {
         [Input("datacenters")]
         private InputList<string>? _datacenters;
@@ -226,5 +226,6 @@ namespace Pulumi.Consul
         public AclPolicyState()
         {
         }
+        public static new AclPolicyState Empty => new AclPolicyState();
     }
 }

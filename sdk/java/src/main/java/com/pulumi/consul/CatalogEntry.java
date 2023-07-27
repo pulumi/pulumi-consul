@@ -25,6 +25,45 @@ import javax.annotation.Nullable;
  * Currently, defining health checks is not supported.
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.consul.CatalogEntry;
+ * import com.pulumi.consul.CatalogEntryArgs;
+ * import com.pulumi.consul.inputs.CatalogEntryServiceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var app = new CatalogEntry(&#34;app&#34;, CatalogEntryArgs.builder()        
+ *             .address(&#34;192.168.10.10&#34;)
+ *             .node(&#34;foobar&#34;)
+ *             .services(CatalogEntryServiceArgs.builder()
+ *                 .address(&#34;127.0.0.1&#34;)
+ *                 .id(&#34;redis1&#34;)
+ *                 .name(&#34;redis&#34;)
+ *                 .port(8000)
+ *                 .tags(                
+ *                     &#34;master&#34;,
+ *                     &#34;v1&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  */
 @ResourceType(type="consul:index/catalogEntry:CatalogEntry")
@@ -146,6 +185,9 @@ Please use the token argument in the provider configuration */
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "token"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

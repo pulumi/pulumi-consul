@@ -22,38 +22,39 @@ namespace Pulumi.Consul
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Consul = Pulumi.Consul;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var dc2NetworkArea = new Consul.NetworkArea("dc2NetworkArea", new()
         ///     {
-        ///         var dc2NetworkArea = new Consul.NetworkArea("dc2NetworkArea", new Consul.NetworkAreaArgs
+        ///         PeerDatacenter = "dc2",
+        ///         RetryJoins = new[]
         ///         {
-        ///             PeerDatacenter = "dc2",
-        ///             RetryJoins = 
-        ///             {
-        ///                 "1.2.3.4",
-        ///             },
-        ///             UseTls = true,
-        ///         });
-        ///         var dc2NetworkAreaMembers = Consul.GetNetworkAreaMembers.Invoke(new Consul.GetNetworkAreaMembersInvokeArgs
-        ///         {
-        ///             Uuid = dc2NetworkArea.Id,
-        ///         });
-        ///         this.Members = dc2NetworkAreaMembers.Apply(dc2NetworkAreaMembers =&gt; dc2NetworkAreaMembers.Members);
-        ///     }
+        ///             "1.2.3.4",
+        ///         },
+        ///         UseTls = true,
+        ///     });
         /// 
-        ///     [Output("members")]
-        ///     public Output&lt;string&gt; Members { get; set; }
-        /// }
+        ///     var dc2NetworkAreaMembers = Consul.GetNetworkAreaMembers.Invoke(new()
+        ///     {
+        ///         Uuid = dc2NetworkArea.Id,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["members"] = dc2NetworkAreaMembers.Apply(getNetworkAreaMembersResult =&gt; getNetworkAreaMembersResult.Members),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetNetworkAreaMembersResult> InvokeAsync(GetNetworkAreaMembersArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNetworkAreaMembersResult>("consul:index/getNetworkAreaMembers:getNetworkAreaMembers", args ?? new GetNetworkAreaMembersArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetNetworkAreaMembersResult>("consul:index/getNetworkAreaMembers:getNetworkAreaMembers", args ?? new GetNetworkAreaMembersArgs(), options.WithDefaults());
 
         /// <summary>
         /// &gt; **NOTE:** This feature requires [Consul Enterprise](https://www.consul.io/docs/enterprise/index.html).
@@ -66,42 +67,43 @@ namespace Pulumi.Consul
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Consul = Pulumi.Consul;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var dc2NetworkArea = new Consul.NetworkArea("dc2NetworkArea", new()
         ///     {
-        ///         var dc2NetworkArea = new Consul.NetworkArea("dc2NetworkArea", new Consul.NetworkAreaArgs
+        ///         PeerDatacenter = "dc2",
+        ///         RetryJoins = new[]
         ///         {
-        ///             PeerDatacenter = "dc2",
-        ///             RetryJoins = 
-        ///             {
-        ///                 "1.2.3.4",
-        ///             },
-        ///             UseTls = true,
-        ///         });
-        ///         var dc2NetworkAreaMembers = Consul.GetNetworkAreaMembers.Invoke(new Consul.GetNetworkAreaMembersInvokeArgs
-        ///         {
-        ///             Uuid = dc2NetworkArea.Id,
-        ///         });
-        ///         this.Members = dc2NetworkAreaMembers.Apply(dc2NetworkAreaMembers =&gt; dc2NetworkAreaMembers.Members);
-        ///     }
+        ///             "1.2.3.4",
+        ///         },
+        ///         UseTls = true,
+        ///     });
         /// 
-        ///     [Output("members")]
-        ///     public Output&lt;string&gt; Members { get; set; }
-        /// }
+        ///     var dc2NetworkAreaMembers = Consul.GetNetworkAreaMembers.Invoke(new()
+        ///     {
+        ///         Uuid = dc2NetworkArea.Id,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["members"] = dc2NetworkAreaMembers.Apply(getNetworkAreaMembersResult =&gt; getNetworkAreaMembersResult.Members),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetNetworkAreaMembersResult> Invoke(GetNetworkAreaMembersInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetNetworkAreaMembersResult>("consul:index/getNetworkAreaMembers:getNetworkAreaMembers", args ?? new GetNetworkAreaMembersInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetNetworkAreaMembersResult>("consul:index/getNetworkAreaMembers:getNetworkAreaMembers", args ?? new GetNetworkAreaMembersInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetNetworkAreaMembersArgs : Pulumi.InvokeArgs
+    public sealed class GetNetworkAreaMembersArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The datacenter to use. This overrides the
@@ -110,12 +112,20 @@ namespace Pulumi.Consul
         [Input("datacenter")]
         public string? Datacenter { get; set; }
 
+        [Input("token")]
+        private string? _token;
+
         /// <summary>
         /// The ACL token to use. This overrides the
         /// token that the agent provides by default.
         /// </summary>
-        [Input("token")]
-        public string? Token { get; set; }
+        [Obsolete(@"The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration")]
+        public string? Token
+        {
+            get => _token;
+            set => _token = value;
+        }
 
         /// <summary>
         /// The UUID of the area to list.
@@ -126,9 +136,10 @@ namespace Pulumi.Consul
         public GetNetworkAreaMembersArgs()
         {
         }
+        public static new GetNetworkAreaMembersArgs Empty => new GetNetworkAreaMembersArgs();
     }
 
-    public sealed class GetNetworkAreaMembersInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetNetworkAreaMembersInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The datacenter to use. This overrides the
@@ -137,12 +148,24 @@ namespace Pulumi.Consul
         [Input("datacenter")]
         public Input<string>? Datacenter { get; set; }
 
+        [Input("token")]
+        private Input<string>? _token;
+
         /// <summary>
         /// The ACL token to use. This overrides the
         /// token that the agent provides by default.
         /// </summary>
-        [Input("token")]
-        public Input<string>? Token { get; set; }
+        [Obsolete(@"The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration")]
+        public Input<string>? Token
+        {
+            get => _token;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _token = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The UUID of the area to list.
@@ -153,6 +176,7 @@ namespace Pulumi.Consul
         public GetNetworkAreaMembersInvokeArgs()
         {
         }
+        public static new GetNetworkAreaMembersInvokeArgs Empty => new GetNetworkAreaMembersInvokeArgs();
     }
 
 

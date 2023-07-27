@@ -18,113 +18,9 @@ namespace Pulumi.Consul
     /// &gt; **NOTE:** If a Consul agent is running on the node where this service is
     /// registered, it is not recommended to use this resource as the service will be
     /// removed during the next [anti-entropy synchronization](https://www.consul.io/docs/architecture/anti-entropy).
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Creating a new node with the service:
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Consul = Pulumi.Consul;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var compute = new Consul.Node("compute", new Consul.NodeArgs
-    ///         {
-    ///             Address = "www.google.com",
-    ///         });
-    ///         var google = new Consul.Service("google", new Consul.ServiceArgs
-    ///         {
-    ///             Node = compute.Name,
-    ///             Port = 80,
-    ///             Tags = 
-    ///             {
-    ///                 "tag0",
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
-    /// Utilizing an existing known node:
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Consul = Pulumi.Consul;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var google = new Consul.Service("google", new Consul.ServiceArgs
-    ///         {
-    ///             Node = "google",
-    ///             Port = 443,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
-    /// Register a health-check:
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Consul = Pulumi.Consul;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var redis = new Consul.Service("redis", new Consul.ServiceArgs
-    ///         {
-    ///             Checks = 
-    ///             {
-    ///                 new Consul.Inputs.ServiceCheckArgs
-    ///                 {
-    ///                     CheckId = "service:redis1",
-    ///                     DeregisterCriticalServiceAfter = "30s",
-    ///                     Headers = 
-    ///                     {
-    ///                         new Consul.Inputs.ServiceCheckHeaderArgs
-    ///                         {
-    ///                             Name = "foo",
-    ///                             Value = 
-    ///                             {
-    ///                                 "test",
-    ///                             },
-    ///                         },
-    ///                         new Consul.Inputs.ServiceCheckHeaderArgs
-    ///                         {
-    ///                             Name = "bar",
-    ///                             Value = 
-    ///                             {
-    ///                                 "test",
-    ///                             },
-    ///                         },
-    ///                     },
-    ///                     Http = "https://www.hashicorptest.com",
-    ///                     Interval = "5s",
-    ///                     Method = "PUT",
-    ///                     Name = "Redis health check",
-    ///                     Status = "passing",
-    ///                     Timeout = "1s",
-    ///                     TlsSkipVerify = false,
-    ///                 },
-    ///             },
-    ///             Node = "redis",
-    ///             Port = 6379,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     [ConsulResourceType("consul:index/service:Service")]
-    public partial class Service : Pulumi.CustomResource
+    public partial class Service : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The address of the service. Defaults to the
@@ -180,6 +76,8 @@ namespace Pulumi.Consul
 
         /// <summary>
         /// The partition the service is associated with.
+        /// 
+        /// The following attributes are available for each health-check:
         /// </summary>
         [Output("partition")]
         public Output<string?> Partition { get; private set; } = null!;
@@ -191,7 +89,7 @@ namespace Pulumi.Consul
         public Output<int?> Port { get; private set; } = null!;
 
         /// <summary>
-        /// - If the service ID is not provided, it will be defaulted to the value
+        /// If the service ID is not provided, it will be defaulted to the value
         /// of the `name` attribute.
         /// </summary>
         [Output("serviceId")]
@@ -248,7 +146,7 @@ namespace Pulumi.Consul
         }
     }
 
-    public sealed class ServiceArgs : Pulumi.ResourceArgs
+    public sealed class ServiceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The address of the service. Defaults to the
@@ -315,6 +213,8 @@ namespace Pulumi.Consul
 
         /// <summary>
         /// The partition the service is associated with.
+        /// 
+        /// The following attributes are available for each health-check:
         /// </summary>
         [Input("partition")]
         public Input<string>? Partition { get; set; }
@@ -326,7 +226,7 @@ namespace Pulumi.Consul
         public Input<int>? Port { get; set; }
 
         /// <summary>
-        /// - If the service ID is not provided, it will be defaulted to the value
+        /// If the service ID is not provided, it will be defaulted to the value
         /// of the `name` attribute.
         /// </summary>
         [Input("serviceId")]
@@ -348,9 +248,10 @@ namespace Pulumi.Consul
         public ServiceArgs()
         {
         }
+        public static new ServiceArgs Empty => new ServiceArgs();
     }
 
-    public sealed class ServiceState : Pulumi.ResourceArgs
+    public sealed class ServiceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The address of the service. Defaults to the
@@ -417,6 +318,8 @@ namespace Pulumi.Consul
 
         /// <summary>
         /// The partition the service is associated with.
+        /// 
+        /// The following attributes are available for each health-check:
         /// </summary>
         [Input("partition")]
         public Input<string>? Partition { get; set; }
@@ -428,7 +331,7 @@ namespace Pulumi.Consul
         public Input<int>? Port { get; set; }
 
         /// <summary>
-        /// - If the service ID is not provided, it will be defaulted to the value
+        /// If the service ID is not provided, it will be defaulted to the value
         /// of the `name` attribute.
         /// </summary>
         [Input("serviceId")]
@@ -450,5 +353,6 @@ namespace Pulumi.Consul
         public ServiceState()
         {
         }
+        public static new ServiceState Empty => new ServiceState();
     }
 }

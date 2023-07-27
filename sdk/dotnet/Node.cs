@@ -16,20 +16,19 @@ namespace Pulumi.Consul
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Consul = Pulumi.Consul;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var foobar = new Consul.Node("foobar", new()
     ///     {
-    ///         var foobar = new Consul.Node("foobar", new Consul.NodeArgs
-    ///         {
-    ///             Address = "192.168.10.10",
-    ///         });
-    ///     }
+    ///         Address = "192.168.10.10",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -41,7 +40,7 @@ namespace Pulumi.Consul
     /// ```
     /// </summary>
     [ConsulResourceType("consul:index/node:Node")]
-    public partial class Node : Pulumi.CustomResource
+    public partial class Node : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The address of the node being added to, or referenced in the catalog.
@@ -99,6 +98,10 @@ namespace Pulumi.Consul
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "token",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -120,7 +123,7 @@ namespace Pulumi.Consul
         }
     }
 
-    public sealed class NodeArgs : Pulumi.ResourceArgs
+    public sealed class NodeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The address of the node being added to, or referenced in the catalog.
@@ -159,14 +162,26 @@ namespace Pulumi.Consul
         public Input<string>? Partition { get; set; }
 
         [Input("token")]
-        public Input<string>? Token { get; set; }
+        private Input<string>? _token;
+        [Obsolete(@"The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration")]
+        public Input<string>? Token
+        {
+            get => _token;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _token = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public NodeArgs()
         {
         }
+        public static new NodeArgs Empty => new NodeArgs();
     }
 
-    public sealed class NodeState : Pulumi.ResourceArgs
+    public sealed class NodeState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The address of the node being added to, or referenced in the catalog.
@@ -205,10 +220,22 @@ namespace Pulumi.Consul
         public Input<string>? Partition { get; set; }
 
         [Input("token")]
-        public Input<string>? Token { get; set; }
+        private Input<string>? _token;
+        [Obsolete(@"The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration")]
+        public Input<string>? Token
+        {
+            get => _token;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _token = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public NodeState()
         {
         }
+        public static new NodeState Empty => new NodeState();
     }
 }

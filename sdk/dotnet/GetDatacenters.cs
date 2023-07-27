@@ -16,7 +16,7 @@ namespace Pulumi.Consul
         /// datacenters.
         /// </summary>
         public static Task<GetDatacentersResult> InvokeAsync(InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDatacentersResult>("consul:index/getDatacenters:getDatacenters", InvokeArgs.Empty, options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatacentersResult>("consul:index/getDatacenters:getDatacenters", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

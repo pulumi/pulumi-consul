@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Consul.Inputs
 {
 
-    public sealed class GetServiceQueryOptionInputArgs : Pulumi.ResourceArgs
+    public sealed class GetServiceQueryOptionInputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// When `true`, the default, allow responses from
@@ -56,13 +56,23 @@ namespace Pulumi.Consul.Inputs
         [Input("requireConsistent")]
         public Input<bool>? RequireConsistent { get; set; }
 
+        [Input("token")]
+        private Input<string>? _token;
+
         /// <summary>
         /// Specify the Consul ACL token to use when performing the
         /// request.  This defaults to the same API token configured by the `consul`
         /// provider but may be overridden if necessary.
         /// </summary>
-        [Input("token")]
-        public Input<string>? Token { get; set; }
+        public Input<string>? Token
+        {
+            get => _token;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _token = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Index number used to enable blocking queries.
@@ -80,5 +90,6 @@ namespace Pulumi.Consul.Inputs
         public GetServiceQueryOptionInputArgs()
         {
         }
+        public static new GetServiceQueryOptionInputArgs Empty => new GetServiceQueryOptionInputArgs();
     }
 }

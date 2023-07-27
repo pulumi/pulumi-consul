@@ -4,6 +4,7 @@
 package consul
 
 import (
+	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,6 +41,7 @@ import (
 //
 // ```
 func GetAgentConfig(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetAgentConfigResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAgentConfigResult
 	err := ctx.Invoke("consul:index/getAgentConfig:getAgentConfig", nil, &rv, opts...)
 	if err != nil {

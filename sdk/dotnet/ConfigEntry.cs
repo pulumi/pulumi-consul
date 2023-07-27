@@ -14,346 +14,398 @@ namespace Pulumi.Consul
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using System.Text.Json;
     /// using Pulumi;
     /// using Consul = Pulumi.Consul;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var proxyDefaults = new Consul.ConfigEntry("proxyDefaults", new()
     ///     {
-    ///         var proxyDefaults = new Consul.ConfigEntry("proxyDefaults", new Consul.ConfigEntryArgs
+    ///         Kind = "proxy-defaults",
+    ///         ConfigJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///         {
-    ///             Kind = "proxy-defaults",
-    ///             ConfigJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///             ["Config"] = new Dictionary&lt;string, object?&gt;
     ///             {
-    ///                 { "Config", new Dictionary&lt;string, object?&gt;
-    ///                 {
-    ///                     { "local_connect_timeout_ms", 1000 },
-    ///                     { "handshake_timeout_ms", 10000 },
-    ///                 } },
-    ///             }),
-    ///         });
-    ///         var web = new Consul.ConfigEntry("web", new Consul.ConfigEntryArgs
-    ///         {
-    ///             Kind = "service-defaults",
-    ///             ConfigJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
-    ///             {
-    ///                 { "Protocol", "http" },
-    ///             }),
-    ///         });
-    ///         var admin = new Consul.ConfigEntry("admin", new Consul.ConfigEntryArgs
-    ///         {
-    ///             Kind = "service-defaults",
-    ///             ConfigJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
-    ///             {
-    ///                 { "Protocol", "http" },
-    ///             }),
-    ///         });
-    ///         var serviceResolver = new Consul.ConfigEntry("serviceResolver", new Consul.ConfigEntryArgs
-    ///         {
-    ///             Kind = "service-resolver",
-    ///             ConfigJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
-    ///             {
-    ///                 { "DefaultSubset", "v1" },
-    ///                 { "Subsets", new Dictionary&lt;string, object?&gt;
-    ///                 {
-    ///                     { "v1", new Dictionary&lt;string, object?&gt;
-    ///                     {
-    ///                         { "Filter", "Service.Meta.version == v1" },
-    ///                     } },
-    ///                     { "v2", new Dictionary&lt;string, object?&gt;
-    ///                     {
-    ///                         { "Filter", "Service.Meta.version == v2" },
-    ///                     } },
-    ///                 } },
-    ///             }),
-    ///         });
-    ///         var serviceSplitter = new Consul.ConfigEntry("serviceSplitter", new Consul.ConfigEntryArgs
-    ///         {
-    ///             Kind = "service-splitter",
-    ///             ConfigJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
-    ///             {
-    ///                 { "Splits", new[]
-    ///                     {
-    ///                         new Dictionary&lt;string, object?&gt;
-    ///                         {
-    ///                             { "Weight", 90 },
-    ///                             { "ServiceSubset", "v1" },
-    ///                         },
-    ///                         new Dictionary&lt;string, object?&gt;
-    ///                         {
-    ///                             { "Weight", 10 },
-    ///                             { "ServiceSubset", "v2" },
-    ///                         },
-    ///                     }
-    ///                  },
-    ///             }),
-    ///         });
-    ///         var serviceRouter = new Consul.ConfigEntry("serviceRouter", new Consul.ConfigEntryArgs
-    ///         {
-    ///             Kind = "service-router",
-    ///             ConfigJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
-    ///             {
-    ///                 { "Routes", new[]
-    ///                     {
-    ///                         new Dictionary&lt;string, object?&gt;
-    ///                         {
-    ///                             { "Match", new Dictionary&lt;string, object?&gt;
-    ///                             {
-    ///                                 { "HTTP", new Dictionary&lt;string, object?&gt;
-    ///                                 {
-    ///                                     { "PathPrefix", "/admin" },
-    ///                                 } },
-    ///                             } },
-    ///                             { "Destination", new Dictionary&lt;string, object?&gt;
-    ///                             {
-    ///                                 { "Service", "admin" },
-    ///                             } },
-    ///                         },
-    ///                     }
-    ///                  },
-    ///             }),
-    ///         });
-    ///         var ingressGateway = new Consul.ConfigEntry("ingressGateway", new Consul.ConfigEntryArgs
-    ///         {
-    ///             Kind = "ingress-gateway",
-    ///             ConfigJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
-    ///             {
-    ///                 { "TLS", new Dictionary&lt;string, object?&gt;
-    ///                 {
-    ///                     { "Enabled", true },
-    ///                 } },
-    ///                 { "Listeners", new[]
-    ///                     {
-    ///                         new Dictionary&lt;string, object?&gt;
-    ///                         {
-    ///                             { "Port", 8000 },
-    ///                             { "Protocol", "http" },
-    ///                             { "Services", new[]
-    ///                                 {
-    ///                                     new Dictionary&lt;string, object?&gt;
-    ///                                     {
-    ///                                         { "Name", "*" },
-    ///                                     },
-    ///                                 }
-    ///                              },
-    ///                         },
-    ///                     }
-    ///                  },
-    ///             }),
-    ///         });
-    ///         var terminatingGateway = new Consul.ConfigEntry("terminatingGateway", new Consul.ConfigEntryArgs
-    ///         {
-    ///             Kind = "terminating-gateway",
-    ///             ConfigJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
-    ///             {
-    ///                 { "Services", new[]
-    ///                     {
-    ///                         new Dictionary&lt;string, object?&gt;
-    ///                         {
-    ///                             { "Name", "billing" },
-    ///                         },
-    ///                     }
-    ///                  },
-    ///             }),
-    ///         });
-    ///     }
+    ///                 ["local_connect_timeout_ms"] = 1000,
+    ///                 ["handshake_timeout_ms"] = 10000,
+    ///             },
+    ///         }),
+    ///     });
     /// 
-    /// }
+    ///     var web = new Consul.ConfigEntry("web", new()
+    ///     {
+    ///         Kind = "service-defaults",
+    ///         ConfigJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///         {
+    ///             ["Protocol"] = "http",
+    ///         }),
+    ///     });
+    /// 
+    ///     var admin = new Consul.ConfigEntry("admin", new()
+    ///     {
+    ///         Kind = "service-defaults",
+    ///         ConfigJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///         {
+    ///             ["Protocol"] = "http",
+    ///         }),
+    ///     });
+    /// 
+    ///     var serviceResolver = new Consul.ConfigEntry("serviceResolver", new()
+    ///     {
+    ///         Kind = "service-resolver",
+    ///         ConfigJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///         {
+    ///             ["DefaultSubset"] = "v1",
+    ///             ["Subsets"] = new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 ["v1"] = new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["Filter"] = "Service.Meta.version == v1",
+    ///                 },
+    ///                 ["v2"] = new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["Filter"] = "Service.Meta.version == v2",
+    ///                 },
+    ///             },
+    ///         }),
+    ///     });
+    /// 
+    ///     var serviceSplitter = new Consul.ConfigEntry("serviceSplitter", new()
+    ///     {
+    ///         Kind = "service-splitter",
+    ///         ConfigJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///         {
+    ///             ["Splits"] = new[]
+    ///             {
+    ///                 new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["Weight"] = 90,
+    ///                     ["ServiceSubset"] = "v1",
+    ///                 },
+    ///                 new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["Weight"] = 10,
+    ///                     ["ServiceSubset"] = "v2",
+    ///                 },
+    ///             },
+    ///         }),
+    ///     });
+    /// 
+    ///     var serviceRouter = new Consul.ConfigEntry("serviceRouter", new()
+    ///     {
+    ///         Kind = "service-router",
+    ///         ConfigJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///         {
+    ///             ["Routes"] = new[]
+    ///             {
+    ///                 new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["Match"] = new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         ["HTTP"] = new Dictionary&lt;string, object?&gt;
+    ///                         {
+    ///                             ["PathPrefix"] = "/admin",
+    ///                         },
+    ///                     },
+    ///                     ["Destination"] = new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         ["Service"] = "admin",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         }),
+    ///     });
+    /// 
+    ///     var ingressGateway = new Consul.ConfigEntry("ingressGateway", new()
+    ///     {
+    ///         Kind = "ingress-gateway",
+    ///         ConfigJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///         {
+    ///             ["TLS"] = new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 ["Enabled"] = true,
+    ///             },
+    ///             ["Listeners"] = new[]
+    ///             {
+    ///                 new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["Port"] = 8000,
+    ///                     ["Protocol"] = "http",
+    ///                     ["Services"] = new[]
+    ///                     {
+    ///                         new Dictionary&lt;string, object?&gt;
+    ///                         {
+    ///                             ["Name"] = "*",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         }),
+    ///     });
+    /// 
+    ///     var terminatingGateway = new Consul.ConfigEntry("terminatingGateway", new()
+    ///     {
+    ///         Kind = "terminating-gateway",
+    ///         ConfigJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///         {
+    ///             ["Services"] = new[]
+    ///             {
+    ///                 new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["Name"] = "billing",
+    ///                 },
+    ///             },
+    ///         }),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### `service-intentions` config entry
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using System.Text.Json;
     /// using Pulumi;
     /// using Consul = Pulumi.Consul;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var serviceIntentions = new Consul.ConfigEntry("serviceIntentions", new()
     ///     {
-    ///         var serviceIntentions = new Consul.ConfigEntry("serviceIntentions", new Consul.ConfigEntryArgs
+    ///         Kind = "service-intentions",
+    ///         ConfigJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///         {
-    ///             Kind = "service-intentions",
-    ///             ConfigJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///             ["Sources"] = new[]
     ///             {
-    ///                 { "Sources", new[]
-    ///                     {
-    ///                         new Dictionary&lt;string, object?&gt;
-    ///                         {
-    ///                             { "Action", "allow" },
-    ///                             { "Name", "frontend-webapp" },
-    ///                             { "Precedence", 9 },
-    ///                             { "Type", "consul" },
-    ///                         },
-    ///                         new Dictionary&lt;string, object?&gt;
-    ///                         {
-    ///                             { "Action", "allow" },
-    ///                             { "Name", "nightly-cronjob" },
-    ///                             { "Precedence", 9 },
-    ///                             { "Type", "consul" },
-    ///                         },
-    ///                     }
-    ///                  },
-    ///             }),
-    ///         });
-    ///     }
+    ///                 new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["Action"] = "allow",
+    ///                     ["Name"] = "frontend-webapp",
+    ///                     ["Precedence"] = 9,
+    ///                     ["Type"] = "consul",
+    ///                 },
+    ///                 new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["Action"] = "allow",
+    ///                     ["Name"] = "nightly-cronjob",
+    ///                     ["Precedence"] = 9,
+    ///                     ["Type"] = "consul",
+    ///                 },
+    ///             },
+    ///         }),
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using System.Text.Json;
     /// using Pulumi;
     /// using Consul = Pulumi.Consul;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var sd = new Consul.ConfigEntry("sd", new()
     ///     {
-    ///         var sd = new Consul.ConfigEntry("sd", new Consul.ConfigEntryArgs
+    ///         Kind = "service-defaults",
+    ///         ConfigJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///         {
-    ///             Kind = "service-defaults",
-    ///             ConfigJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
-    ///             {
-    ///                 { "Protocol", "http" },
-    ///             }),
-    ///         });
-    ///         var serviceIntentions = new Consul.ConfigEntry("serviceIntentions", new Consul.ConfigEntryArgs
+    ///             ["Protocol"] = "http",
+    ///         }),
+    ///     });
+    /// 
+    ///     var jwtProvider = new Consul.ConfigEntry("jwtProvider", new()
+    ///     {
+    ///         Kind = "jwt-provider",
+    ///         ConfigJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///         {
-    ///             Kind = "service-intentions",
-    ///             ConfigJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///             ["Issuer"] = "test-issuer",
+    ///             ["JSONWebKeySet"] = new Dictionary&lt;string, object?&gt;
     ///             {
-    ///                 { "Sources", new[]
+    ///                 ["Remote"] = new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["URI"] = "https://127.0.0.1:9091",
+    ///                     ["FetchAsynchronously"] = true,
+    ///                 },
+    ///             },
+    ///             ["Forwarding"] = new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 ["HeaderName"] = "test-token",
+    ///             },
+    ///         }),
+    ///     });
+    /// 
+    ///     var serviceIntentions = new Consul.ConfigEntry("serviceIntentions", new()
+    ///     {
+    ///         Kind = "service-intentions",
+    ///         ConfigJson = jwtProvider.Name.Apply(name =&gt; JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///         {
+    ///             ["Sources"] = new[]
+    ///             {
+    ///                 new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["Name"] = "contractor-webapp",
+    ///                     ["Permissions"] = new[]
     ///                     {
     ///                         new Dictionary&lt;string, object?&gt;
     ///                         {
-    ///                             { "Name", "contractor-webapp" },
-    ///                             { "Permissions", new[]
+    ///                             ["Action"] = "allow",
+    ///                             ["HTTP"] = new Dictionary&lt;string, object?&gt;
+    ///                             {
+    ///                                 ["Methods"] = new[]
+    ///                                 {
+    ///                                     "GET",
+    ///                                     "HEAD",
+    ///                                 },
+    ///                                 ["PathExact"] = "/healtz",
+    ///                             },
+    ///                             ["JWT"] = new Dictionary&lt;string, object?&gt;
+    ///                             {
+    ///                                 ["Providers"] = new[]
     ///                                 {
     ///                                     new Dictionary&lt;string, object?&gt;
     ///                                     {
-    ///                                         { "Action", "allow" },
-    ///                                         { "HTTP", new Dictionary&lt;string, object?&gt;
-    ///                                         {
-    ///                                             { "Methods", new[]
-    ///                                                 {
-    ///                                                     "GET",
-    ///                                                     "HEAD",
-    ///                                                 }
-    ///                                              },
-    ///                                             { "PathExact", "/healtz" },
-    ///                                         } },
+    ///                                         ["Name"] = name,
     ///                                     },
-    ///                                 }
-    ///                              },
-    ///                             { "Precedence", 9 },
-    ///                             { "Type", "consul" },
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                     ["Precedence"] = 9,
+    ///                     ["Type"] = "consul",
+    ///                 },
+    ///                 new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["Name"] = "admin-dashboard-webapp",
+    ///                     ["Permissions"] = new[]
+    ///                     {
+    ///                         new Dictionary&lt;string, object?&gt;
+    ///                         {
+    ///                             ["Action"] = "deny",
+    ///                             ["HTTP"] = new Dictionary&lt;string, object?&gt;
+    ///                             {
+    ///                                 ["PathPrefix"] = "/debugz",
+    ///                             },
     ///                         },
     ///                         new Dictionary&lt;string, object?&gt;
     ///                         {
-    ///                             { "Name", "admin-dashboard-webapp" },
-    ///                             { "Permissions", new[]
-    ///                                 {
-    ///                                     new Dictionary&lt;string, object?&gt;
-    ///                                     {
-    ///                                         { "Action", "deny" },
-    ///                                         { "HTTP", new Dictionary&lt;string, object?&gt;
-    ///                                         {
-    ///                                             { "PathPrefix", "/debugz" },
-    ///                                         } },
-    ///                                     },
-    ///                                     new Dictionary&lt;string, object?&gt;
-    ///                                     {
-    ///                                         { "Action", "allow" },
-    ///                                         { "HTTP", new Dictionary&lt;string, object?&gt;
-    ///                                         {
-    ///                                             { "PathPrefix", "/" },
-    ///                                         } },
-    ///                                     },
-    ///                                 }
-    ///                              },
-    ///                             { "Precedence", 9 },
-    ///                             { "Type", "consul" },
+    ///                             ["Action"] = "allow",
+    ///                             ["HTTP"] = new Dictionary&lt;string, object?&gt;
+    ///                             {
+    ///                                 ["PathPrefix"] = "/",
+    ///                             },
     ///                         },
-    ///                     }
-    ///                  },
-    ///             }),
-    ///         });
-    ///     }
+    ///                     },
+    ///                     ["Precedence"] = 9,
+    ///                     ["Type"] = "consul",
+    ///                 },
+    ///             },
+    ///         })),
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### `exported-services` config entry
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using System.Text.Json;
     /// using Pulumi;
     /// using Consul = Pulumi.Consul;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exportedServices = new Consul.ConfigEntry("exportedServices", new()
     ///     {
-    ///         var exportedServices = new Consul.ConfigEntry("exportedServices", new Consul.ConfigEntryArgs
+    ///         Kind = "exported-services",
+    ///         ConfigJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///         {
-    ///             Kind = "exported-services",
-    ///             ConfigJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///             ["Services"] = new[]
     ///             {
-    ///                 { "Services", new[]
+    ///                 new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["Name"] = "test",
+    ///                     ["Namespace"] = "default",
+    ///                     ["Consumers"] = new[]
     ///                     {
     ///                         new Dictionary&lt;string, object?&gt;
     ///                         {
-    ///                             { "Name", "test" },
-    ///                             { "Namespace", "default" },
-    ///                             { "Consumers", new[]
-    ///                                 {
-    ///                                     new Dictionary&lt;string, object?&gt;
-    ///                                     {
-    ///                                         { "Partition", "default" },
-    ///                                     },
-    ///                                 }
-    ///                              },
+    ///                             ["Partition"] = "default",
     ///                         },
-    ///                     }
-    ///                  },
-    ///             }),
-    ///         });
-    ///     }
+    ///                     },
+    ///                 },
+    ///             },
+    ///         }),
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### `mesh` config entry
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using System.Text.Json;
     /// using Pulumi;
     /// using Consul = Pulumi.Consul;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var mesh = new Consul.ConfigEntry("mesh", new()
     ///     {
-    ///         var mesh = new Consul.ConfigEntry("mesh", new Consul.ConfigEntryArgs
+    ///         Kind = "mesh",
+    ///         Partition = "default",
+    ///         ConfigJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///         {
-    ///             Kind = "mesh",
-    ///             Partition = "default",
-    ///             ConfigJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///             ["TransparentProxy"] = new Dictionary&lt;string, object?&gt;
     ///             {
-    ///                 { "TransparentProxy", new Dictionary&lt;string, object?&gt;
-    ///                 {
-    ///                     { "MeshDestinationsOnly", true },
-    ///                 } },
-    ///             }),
-    ///         });
-    ///     }
+    ///                 ["MeshDestinationsOnly"] = true,
+    ///             },
+    ///         }),
+    ///     });
     /// 
-    /// }
+    /// });
+    /// ```
+    /// ### `jwt-provider` config entry
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using Consul = Pulumi.Consul;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var jwtProvider = new Consul.ConfigEntry("jwtProvider", new()
+    ///     {
+    ///         Kind = "jwt-provider",
+    ///         ConfigJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///         {
+    ///             ["Issuer"] = "https://your.issuer.com",
+    ///             ["JSONWebKeySet"] = new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 ["Remote"] = new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["URI"] = "https://your-remote.jwks.com",
+    ///                     ["FetchAsynchronously"] = true,
+    ///                     ["CacheDuration"] = "10s",
+    ///                 },
+    ///             },
+    ///             ["Forwarding"] = new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 ["HeaderName"] = "test-token",
+    ///             },
+    ///         }),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -365,7 +417,7 @@ namespace Pulumi.Consul
     /// ```
     /// </summary>
     [ConsulResourceType("consul:index/configEntry:ConfigEntry")]
-    public partial class ConfigEntry : Pulumi.CustomResource
+    public partial class ConfigEntry : global::Pulumi.CustomResource
     {
         /// <summary>
         /// An arbitrary map of configuration values.
@@ -441,7 +493,7 @@ namespace Pulumi.Consul
         }
     }
 
-    public sealed class ConfigEntryArgs : Pulumi.ResourceArgs
+    public sealed class ConfigEntryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An arbitrary map of configuration values.
@@ -476,9 +528,10 @@ namespace Pulumi.Consul
         public ConfigEntryArgs()
         {
         }
+        public static new ConfigEntryArgs Empty => new ConfigEntryArgs();
     }
 
-    public sealed class ConfigEntryState : Pulumi.ResourceArgs
+    public sealed class ConfigEntryState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An arbitrary map of configuration values.
@@ -513,5 +566,6 @@ namespace Pulumi.Consul
         public ConfigEntryState()
         {
         }
+        public static new ConfigEntryState Empty => new ConfigEntryState();
     }
 }

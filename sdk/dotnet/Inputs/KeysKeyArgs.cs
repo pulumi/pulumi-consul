@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Consul.Inputs
 {
 
-    public sealed class KeysKeyArgs : Pulumi.ResourceArgs
+    public sealed class KeysKeyArgs : global::Pulumi.ResourceArgs
     {
         [Input("default")]
         public Input<string>? Default { get; set; }
@@ -49,5 +49,6 @@ namespace Pulumi.Consul.Inputs
         public KeysKeyArgs()
         {
         }
+        public static new KeysKeyArgs Empty => new KeysKeyArgs();
     }
 }

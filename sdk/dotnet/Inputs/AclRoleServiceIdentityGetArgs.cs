@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Consul.Inputs
 {
 
-    public sealed class AclRoleServiceIdentityGetArgs : Pulumi.ResourceArgs
+    public sealed class AclRoleServiceIdentityGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("datacenters")]
         private InputList<string>? _datacenters;
@@ -33,5 +33,6 @@ namespace Pulumi.Consul.Inputs
         public AclRoleServiceIdentityGetArgs()
         {
         }
+        public static new AclRoleServiceIdentityGetArgs Empty => new AclRoleServiceIdentityGetArgs();
     }
 }

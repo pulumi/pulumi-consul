@@ -19,26 +19,25 @@ namespace Pulumi.Consul
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Consul = Pulumi.Consul;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Consul.AutopilotConfig("config", new()
     ///     {
-    ///         var config = new Consul.AutopilotConfig("config", new Consul.AutopilotConfigArgs
-    ///         {
-    ///             CleanupDeadServers = false,
-    ///             LastContactThreshold = "1s",
-    ///             MaxTrailingLogs = 500,
-    ///         });
-    ///     }
+    ///         CleanupDeadServers = false,
+    ///         LastContactThreshold = "1s",
+    ///         MaxTrailingLogs = 500,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [ConsulResourceType("consul:index/autopilotConfig:AutopilotConfig")]
-    public partial class AutopilotConfig : Pulumi.CustomResource
+    public partial class AutopilotConfig : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Whether to remove failing servers when a
@@ -142,7 +141,7 @@ namespace Pulumi.Consul
         }
     }
 
-    public sealed class AutopilotConfigArgs : Pulumi.ResourceArgs
+    public sealed class AutopilotConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether to remove failing servers when a
@@ -205,9 +204,10 @@ namespace Pulumi.Consul
         public AutopilotConfigArgs()
         {
         }
+        public static new AutopilotConfigArgs Empty => new AutopilotConfigArgs();
     }
 
-    public sealed class AutopilotConfigState : Pulumi.ResourceArgs
+    public sealed class AutopilotConfigState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether to remove failing servers when a
@@ -270,5 +270,6 @@ namespace Pulumi.Consul
         public AutopilotConfigState()
         {
         }
+        public static new AutopilotConfigState Empty => new AutopilotConfigState();
     }
 }

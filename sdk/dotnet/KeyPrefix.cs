@@ -13,40 +13,39 @@ namespace Pulumi.Consul
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Consul = Pulumi.Consul;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var myappConfig = new Consul.KeyPrefix("myappConfig", new()
     ///     {
-    ///         var myappConfig = new Consul.KeyPrefix("myappConfig", new Consul.KeyPrefixArgs
+    ///         Datacenter = "nyc1",
+    ///         PathPrefix = "myapp/config/",
+    ///         SubkeyCollection = new[]
     ///         {
-    ///             Datacenter = "nyc1",
-    ///             PathPrefix = "myapp/config/",
-    ///             SubkeyCollection = 
+    ///             new Consul.Inputs.KeyPrefixSubkeyCollectionArgs
     ///             {
-    ///                 new Consul.Inputs.KeyPrefixSubkeyCollectionArgs
-    ///                 {
-    ///                     Flags = 2,
-    ///                     Path = "database/password",
-    ///                     Value = aws_db_instance.App.Password,
-    ///                 },
+    ///                 Flags = 2,
+    ///                 Path = "database/password",
+    ///                 Value = aws_db_instance.App.Password,
     ///             },
-    ///             Subkeys = 
-    ///             {
-    ///                 { "database/hostname", aws_db_instance.App.Address },
-    ///                 { "database/name", aws_db_instance.App.Name },
-    ///                 { "database/port", aws_db_instance.App.Port },
-    ///                 { "database/username", aws_db_instance.App.Username },
-    ///                 { "elb_cname", aws_elb.App.Dns_name },
-    ///                 { "s3_bucket_name", aws_s3_bucket.App.Bucket },
-    ///             },
-    ///             Token = "abcd",
-    ///         });
-    ///     }
+    ///         },
+    ///         Subkeys = 
+    ///         {
+    ///             { "database/hostname", aws_db_instance.App.Address },
+    ///             { "database/name", aws_db_instance.App.Name },
+    ///             { "database/port", aws_db_instance.App.Port },
+    ///             { "database/username", aws_db_instance.App.Username },
+    ///             { "elb_cname", aws_elb.App.Dns_name },
+    ///             { "s3_bucket_name", aws_s3_bucket.App.Bucket },
+    ///         },
+    ///         Token = "abcd",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -58,7 +57,7 @@ namespace Pulumi.Consul
     /// ```
     /// </summary>
     [ConsulResourceType("consul:index/keyPrefix:KeyPrefix")]
-    public partial class KeyPrefix : Pulumi.CustomResource
+    public partial class KeyPrefix : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The datacenter to use. This overrides the
@@ -133,6 +132,10 @@ namespace Pulumi.Consul
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "token",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -154,7 +157,7 @@ namespace Pulumi.Consul
         }
     }
 
-    public sealed class KeyPrefixArgs : Pulumi.ResourceArgs
+    public sealed class KeyPrefixArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The datacenter to use. This overrides the
@@ -211,19 +214,32 @@ namespace Pulumi.Consul
             set => _subkeys = value;
         }
 
+        [Input("token")]
+        private Input<string>? _token;
+
         /// <summary>
         /// The ACL token to use. This overrides the
         /// token that the agent provides by default.
         /// </summary>
-        [Input("token")]
-        public Input<string>? Token { get; set; }
+        [Obsolete(@"The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration")]
+        public Input<string>? Token
+        {
+            get => _token;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _token = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public KeyPrefixArgs()
         {
         }
+        public static new KeyPrefixArgs Empty => new KeyPrefixArgs();
     }
 
-    public sealed class KeyPrefixState : Pulumi.ResourceArgs
+    public sealed class KeyPrefixState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The datacenter to use. This overrides the
@@ -280,15 +296,28 @@ namespace Pulumi.Consul
             set => _subkeys = value;
         }
 
+        [Input("token")]
+        private Input<string>? _token;
+
         /// <summary>
         /// The ACL token to use. This overrides the
         /// token that the agent provides by default.
         /// </summary>
-        [Input("token")]
-        public Input<string>? Token { get; set; }
+        [Obsolete(@"The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration")]
+        public Input<string>? Token
+        {
+            get => _token;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _token = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public KeyPrefixState()
         {
         }
+        public static new KeyPrefixState Empty => new KeyPrefixState();
     }
 }

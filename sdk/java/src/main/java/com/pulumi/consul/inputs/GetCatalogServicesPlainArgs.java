@@ -15,9 +15,17 @@ public final class GetCatalogServicesPlainArgs extends com.pulumi.resources.Invo
 
     public static final GetCatalogServicesPlainArgs Empty = new GetCatalogServicesPlainArgs();
 
+    /**
+     * See below.
+     * 
+     */
     @Import(name="queryOptions")
     private @Nullable List<GetCatalogServicesQueryOption> queryOptions;
 
+    /**
+     * @return See below.
+     * 
+     */
     public Optional<List<GetCatalogServicesQueryOption>> queryOptions() {
         return Optional.ofNullable(this.queryOptions);
     }
@@ -46,11 +54,23 @@ public final class GetCatalogServicesPlainArgs extends com.pulumi.resources.Invo
             $ = new GetCatalogServicesPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param queryOptions See below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder queryOptions(@Nullable List<GetCatalogServicesQueryOption> queryOptions) {
             $.queryOptions = queryOptions;
             return this;
         }
 
+        /**
+         * @param queryOptions See below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder queryOptions(GetCatalogServicesQueryOption... queryOptions) {
             return queryOptions(List.of(queryOptions));
         }

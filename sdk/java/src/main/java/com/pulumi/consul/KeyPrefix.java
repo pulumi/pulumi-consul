@@ -19,6 +19,50 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.consul.KeyPrefix;
+ * import com.pulumi.consul.KeyPrefixArgs;
+ * import com.pulumi.consul.inputs.KeyPrefixSubkeyCollectionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var myappConfig = new KeyPrefix(&#34;myappConfig&#34;, KeyPrefixArgs.builder()        
+ *             .datacenter(&#34;nyc1&#34;)
+ *             .pathPrefix(&#34;myapp/config/&#34;)
+ *             .subkeyCollection(KeyPrefixSubkeyCollectionArgs.builder()
+ *                 .flags(2)
+ *                 .path(&#34;database/password&#34;)
+ *                 .value(aws_db_instance.app().password())
+ *                 .build())
+ *             .subkeys(Map.ofEntries(
+ *                 Map.entry(&#34;database/hostname&#34;, aws_db_instance.app().address()),
+ *                 Map.entry(&#34;database/name&#34;, aws_db_instance.app().name()),
+ *                 Map.entry(&#34;database/port&#34;, aws_db_instance.app().port()),
+ *                 Map.entry(&#34;database/username&#34;, aws_db_instance.app().username()),
+ *                 Map.entry(&#34;elb_cname&#34;, aws_elb.app().dns_name()),
+ *                 Map.entry(&#34;s3_bucket_name&#34;, aws_s3_bucket.app().bucket())
+ *             ))
+ *             .token(&#34;abcd&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -184,6 +228,9 @@ Please use the token argument in the provider configuration */
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "token"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

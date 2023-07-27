@@ -22,26 +22,26 @@ namespace Pulumi.Consul
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Consul = Pulumi.Consul;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var segmentsNetworkSegments = Output.Create(Consul.GetNetworkSegments.InvokeAsync());
-        ///         this.Segments = segmentsNetworkSegments.Apply(segmentsNetworkSegments =&gt; segmentsNetworkSegments.Segments);
-        ///     }
+        ///     var segmentsNetworkSegments = Consul.GetNetworkSegments.Invoke();
         /// 
-        ///     [Output("segments")]
-        ///     public Output&lt;string&gt; Segments { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["segments"] = segmentsNetworkSegments.Apply(getNetworkSegmentsResult =&gt; getNetworkSegmentsResult.Segments),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetNetworkSegmentsResult> InvokeAsync(GetNetworkSegmentsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNetworkSegmentsResult>("consul:index/getNetworkSegments:getNetworkSegments", args ?? new GetNetworkSegmentsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetNetworkSegmentsResult>("consul:index/getNetworkSegments:getNetworkSegments", args ?? new GetNetworkSegmentsArgs(), options.WithDefaults());
 
         /// <summary>
         /// &gt; **NOTE:** This feature requires [Consul Enterprise](https://www.consul.io/docs/enterprise/index.html).
@@ -54,30 +54,30 @@ namespace Pulumi.Consul
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Consul = Pulumi.Consul;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var segmentsNetworkSegments = Output.Create(Consul.GetNetworkSegments.InvokeAsync());
-        ///         this.Segments = segmentsNetworkSegments.Apply(segmentsNetworkSegments =&gt; segmentsNetworkSegments.Segments);
-        ///     }
+        ///     var segmentsNetworkSegments = Consul.GetNetworkSegments.Invoke();
         /// 
-        ///     [Output("segments")]
-        ///     public Output&lt;string&gt; Segments { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["segments"] = segmentsNetworkSegments.Apply(getNetworkSegmentsResult =&gt; getNetworkSegmentsResult.Segments),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetNetworkSegmentsResult> Invoke(GetNetworkSegmentsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetNetworkSegmentsResult>("consul:index/getNetworkSegments:getNetworkSegments", args ?? new GetNetworkSegmentsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetNetworkSegmentsResult>("consul:index/getNetworkSegments:getNetworkSegments", args ?? new GetNetworkSegmentsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetNetworkSegmentsArgs : Pulumi.InvokeArgs
+    public sealed class GetNetworkSegmentsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The datacenter to use. This overrides the
@@ -86,19 +86,28 @@ namespace Pulumi.Consul
         [Input("datacenter")]
         public string? Datacenter { get; set; }
 
+        [Input("token")]
+        private string? _token;
+
         /// <summary>
         /// The ACL token to use. This overrides the
         /// token that the agent provides by default.
         /// </summary>
-        [Input("token")]
-        public string? Token { get; set; }
+        [Obsolete(@"The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration")]
+        public string? Token
+        {
+            get => _token;
+            set => _token = value;
+        }
 
         public GetNetworkSegmentsArgs()
         {
         }
+        public static new GetNetworkSegmentsArgs Empty => new GetNetworkSegmentsArgs();
     }
 
-    public sealed class GetNetworkSegmentsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetNetworkSegmentsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The datacenter to use. This overrides the
@@ -107,16 +116,29 @@ namespace Pulumi.Consul
         [Input("datacenter")]
         public Input<string>? Datacenter { get; set; }
 
+        [Input("token")]
+        private Input<string>? _token;
+
         /// <summary>
         /// The ACL token to use. This overrides the
         /// token that the agent provides by default.
         /// </summary>
-        [Input("token")]
-        public Input<string>? Token { get; set; }
+        [Obsolete(@"The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration")]
+        public Input<string>? Token
+        {
+            get => _token;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _token = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public GetNetworkSegmentsInvokeArgs()
         {
         }
+        public static new GetNetworkSegmentsInvokeArgs Empty => new GetNetworkSegmentsInvokeArgs();
     }
 
 

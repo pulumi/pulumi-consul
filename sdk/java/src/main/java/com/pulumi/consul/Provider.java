@@ -10,6 +10,7 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -22,63 +23,147 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="pulumi:providers:consul")
 public class Provider extends com.pulumi.resources.ProviderResource {
+    /**
+     * The HTTP(S) API address of the agent to use. Defaults to &#34;127.0.0.1:8500&#34;.
+     * 
+     */
     @Export(name="address", type=String.class, parameters={})
     private Output</* @Nullable */ String> address;
 
+    /**
+     * @return The HTTP(S) API address of the agent to use. Defaults to &#34;127.0.0.1:8500&#34;.
+     * 
+     */
     public Output<Optional<String>> address() {
         return Codegen.optional(this.address);
     }
+    /**
+     * A path to a PEM-encoded certificate authority used to verify the remote agent&#39;s certificate.
+     * 
+     */
     @Export(name="caFile", type=String.class, parameters={})
     private Output</* @Nullable */ String> caFile;
 
+    /**
+     * @return A path to a PEM-encoded certificate authority used to verify the remote agent&#39;s certificate.
+     * 
+     */
     public Output<Optional<String>> caFile() {
         return Codegen.optional(this.caFile);
     }
+    /**
+     * A path to a directory of PEM-encoded certificate authority files to use to check the authenticity of client and server
+     * connections. Can also be specified with the `CONSUL_CAPATH` environment variable.
+     * 
+     */
     @Export(name="caPath", type=String.class, parameters={})
     private Output</* @Nullable */ String> caPath;
 
+    /**
+     * @return A path to a directory of PEM-encoded certificate authority files to use to check the authenticity of client and server
+     * connections. Can also be specified with the `CONSUL_CAPATH` environment variable.
+     * 
+     */
     public Output<Optional<String>> caPath() {
         return Codegen.optional(this.caPath);
     }
+    /**
+     * PEM-encoded certificate authority used to verify the remote agent&#39;s certificate.
+     * 
+     */
     @Export(name="caPem", type=String.class, parameters={})
     private Output</* @Nullable */ String> caPem;
 
+    /**
+     * @return PEM-encoded certificate authority used to verify the remote agent&#39;s certificate.
+     * 
+     */
     public Output<Optional<String>> caPem() {
         return Codegen.optional(this.caPem);
     }
+    /**
+     * A path to a PEM-encoded certificate provided to the remote agent; requires use of `key_file` or `key_pem`.
+     * 
+     */
     @Export(name="certFile", type=String.class, parameters={})
     private Output</* @Nullable */ String> certFile;
 
+    /**
+     * @return A path to a PEM-encoded certificate provided to the remote agent; requires use of `key_file` or `key_pem`.
+     * 
+     */
     public Output<Optional<String>> certFile() {
         return Codegen.optional(this.certFile);
     }
+    /**
+     * PEM-encoded certificate provided to the remote agent; requires use of `key_file` or `key_pem`.
+     * 
+     */
     @Export(name="certPem", type=String.class, parameters={})
     private Output</* @Nullable */ String> certPem;
 
+    /**
+     * @return PEM-encoded certificate provided to the remote agent; requires use of `key_file` or `key_pem`.
+     * 
+     */
     public Output<Optional<String>> certPem() {
         return Codegen.optional(this.certPem);
     }
+    /**
+     * The datacenter to use. Defaults to that of the agent.
+     * 
+     */
     @Export(name="datacenter", type=String.class, parameters={})
     private Output</* @Nullable */ String> datacenter;
 
+    /**
+     * @return The datacenter to use. Defaults to that of the agent.
+     * 
+     */
     public Output<Optional<String>> datacenter() {
         return Codegen.optional(this.datacenter);
     }
+    /**
+     * HTTP Basic Authentication credentials to be used when communicating with Consul, in the format of either `user` or
+     * `user:pass`. This may also be specified using the `CONSUL_HTTP_AUTH` environment variable.
+     * 
+     */
     @Export(name="httpAuth", type=String.class, parameters={})
     private Output</* @Nullable */ String> httpAuth;
 
+    /**
+     * @return HTTP Basic Authentication credentials to be used when communicating with Consul, in the format of either `user` or
+     * `user:pass`. This may also be specified using the `CONSUL_HTTP_AUTH` environment variable.
+     * 
+     */
     public Output<Optional<String>> httpAuth() {
         return Codegen.optional(this.httpAuth);
     }
+    /**
+     * A path to a PEM-encoded private key, required if `cert_file` or `cert_pem` is specified.
+     * 
+     */
     @Export(name="keyFile", type=String.class, parameters={})
     private Output</* @Nullable */ String> keyFile;
 
+    /**
+     * @return A path to a PEM-encoded private key, required if `cert_file` or `cert_pem` is specified.
+     * 
+     */
     public Output<Optional<String>> keyFile() {
         return Codegen.optional(this.keyFile);
     }
+    /**
+     * PEM-encoded private key, required if `cert_file` or `cert_pem` is specified.
+     * 
+     */
     @Export(name="keyPem", type=String.class, parameters={})
     private Output</* @Nullable */ String> keyPem;
 
+    /**
+     * @return PEM-encoded private key, required if `cert_file` or `cert_pem` is specified.
+     * 
+     */
     public Output<Optional<String>> keyPem() {
         return Codegen.optional(this.keyPem);
     }
@@ -88,15 +173,33 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> namespace() {
         return Codegen.optional(this.namespace);
     }
+    /**
+     * The URL scheme of the agent to use (&#34;http&#34; or &#34;https&#34;). Defaults to &#34;http&#34;.
+     * 
+     */
     @Export(name="scheme", type=String.class, parameters={})
     private Output</* @Nullable */ String> scheme;
 
+    /**
+     * @return The URL scheme of the agent to use (&#34;http&#34; or &#34;https&#34;). Defaults to &#34;http&#34;.
+     * 
+     */
     public Output<Optional<String>> scheme() {
         return Codegen.optional(this.scheme);
     }
+    /**
+     * The ACL token to use by default when making requests to the agent. Can also be specified with `CONSUL_HTTP_TOKEN` or
+     * `CONSUL_TOKEN` as an environment variable.
+     * 
+     */
     @Export(name="token", type=String.class, parameters={})
     private Output</* @Nullable */ String> token;
 
+    /**
+     * @return The ACL token to use by default when making requests to the agent. Can also be specified with `CONSUL_HTTP_TOKEN` or
+     * `CONSUL_TOKEN` as an environment variable.
+     * 
+     */
     public Output<Optional<String>> token() {
         return Codegen.optional(this.token);
     }
@@ -129,6 +232,9 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "token"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

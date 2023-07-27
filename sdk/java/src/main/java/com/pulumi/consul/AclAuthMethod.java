@@ -23,6 +23,87 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * Define a `kubernetes` auth method:
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.consul.AclAuthMethod;
+ * import com.pulumi.consul.AclAuthMethodArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var minikube = new AclAuthMethod(&#34;minikube&#34;, AclAuthMethodArgs.builder()        
+ *             .type(&#34;kubernetes&#34;)
+ *             .description(&#34;dev minikube cluster&#34;)
+ *             .configJson(serializeJson(
+ *                 jsonObject(
+ *                     jsonProperty(&#34;Host&#34;, &#34;https://192.0.2.42:8443&#34;),
+ *                     jsonProperty(&#34;CACert&#34;, &#34;&#34;&#34;
+ * -----BEGIN CERTIFICATE-----
+ * ...-----END CERTIFICATE-----
+ *                     &#34;&#34;&#34;),
+ *                     jsonProperty(&#34;ServiceAccountJWT&#34;, &#34;eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9...&#34;)
+ *                 )))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * Define a `jwt` auth method:
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.consul.AclAuthMethod;
+ * import com.pulumi.consul.AclAuthMethodArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var minikube = new AclAuthMethod(&#34;minikube&#34;, AclAuthMethodArgs.builder()        
+ *             .type(&#34;jwt&#34;)
+ *             .configJson(serializeJson(
+ *                 jsonObject(
+ *                     jsonProperty(&#34;JWKSURL&#34;, &#34;https://example.com/identity/oidc/.well-known/keys&#34;),
+ *                     jsonProperty(&#34;JWTSupportedAlgs&#34;, &#34;RS256&#34;),
+ *                     jsonProperty(&#34;BoundIssuer&#34;, &#34;https://example.com&#34;),
+ *                     jsonProperty(&#34;ClaimMappings&#34;, jsonObject(
+ *                         jsonProperty(&#34;subject&#34;, &#34;subject&#34;)
+ *                     ))
+ *                 )))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  */
 @ResourceType(type="consul:index/aclAuthMethod:AclAuthMethod")
 public class AclAuthMethod extends com.pulumi.resources.CustomResource {

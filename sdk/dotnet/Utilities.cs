@@ -74,7 +74,7 @@ namespace Pulumi.Consul
         }
     }
 
-    internal sealed class ConsulResourceTypeAttribute : Pulumi.ResourceTypeAttribute
+    internal sealed class ConsulResourceTypeAttribute : global::Pulumi.ResourceTypeAttribute
     {
         public ConsulResourceTypeAttribute(string type) : base(type, Utilities.Version)
         {

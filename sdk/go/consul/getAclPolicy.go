@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			agent, err := consul.LookupAclPolicy(ctx, &GetAclPolicyArgs{
+//			agent, err := consul.LookupAclPolicy(ctx, &consul.LookupAclPolicyArgs{
 //				Name: "agent",
 //			}, nil)
 //			if err != nil {
@@ -40,6 +41,7 @@ import (
 //
 // ```
 func LookupAclPolicy(ctx *pulumi.Context, args *LookupAclPolicyArgs, opts ...pulumi.InvokeOption) (*LookupAclPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAclPolicyResult
 	err := ctx.Invoke("consul:index/getAclPolicy:getAclPolicy", args, &rv, opts...)
 	if err != nil {

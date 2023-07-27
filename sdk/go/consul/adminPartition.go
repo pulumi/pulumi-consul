@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -65,6 +66,7 @@ func NewAdminPartition(ctx *pulumi.Context,
 		args = &AdminPartitionArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AdminPartition
 	err := ctx.RegisterResource("consul:index/adminPartition:AdminPartition", name, args, &resource, opts...)
 	if err != nil {
@@ -204,6 +206,16 @@ func (o AdminPartitionOutput) ToAdminPartitionOutput() AdminPartitionOutput {
 
 func (o AdminPartitionOutput) ToAdminPartitionOutputWithContext(ctx context.Context) AdminPartitionOutput {
 	return o
+}
+
+// Free form partition description.
+func (o AdminPartitionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AdminPartition) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The partition name. This must be a valid DNS hostname label.
+func (o AdminPartitionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *AdminPartition) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
 type AdminPartitionArrayOutput struct{ *pulumi.OutputState }

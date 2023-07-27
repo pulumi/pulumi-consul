@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -24,7 +25,7 @@ import (
 //
 // import (
 //
-//	"io/ioutil"
+//	"os"
 //
 //	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -32,7 +33,7 @@ import (
 // )
 //
 //	func readFileOrPanic(path string) pulumi.StringPtrInput {
-//		data, err := ioutil.ReadFile(path)
+//		data, err := os.ReadFile(path)
 //		if err != nil {
 //			panic(err.Error())
 //		}
@@ -92,6 +93,14 @@ func NewLicense(ctx *pulumi.Context,
 	if args.License == nil {
 		return nil, errors.New("invalid value for required argument 'License'")
 	}
+	if args.License != nil {
+		args.License = pulumi.ToSecret(args.License).(pulumi.StringInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"license",
+	})
+	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource License
 	err := ctx.RegisterResource("consul:index/license:License", name, args, &resource, opts...)
 	if err != nil {
@@ -275,6 +284,67 @@ func (o LicenseOutput) ToLicenseOutput() LicenseOutput {
 
 func (o LicenseOutput) ToLicenseOutputWithContext(ctx context.Context) LicenseOutput {
 	return o
+}
+
+// The ID of the customer the license is attached to.
+func (o LicenseOutput) CustomerId() pulumi.StringOutput {
+	return o.ApplyT(func(v *License) pulumi.StringOutput { return v.CustomerId }).(pulumi.StringOutput)
+}
+
+// The datacenter to use. This overrides the
+// agent's default datacenter and the datacenter in the provider setup.
+func (o LicenseOutput) Datacenter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *License) pulumi.StringPtrOutput { return v.Datacenter }).(pulumi.StringPtrOutput)
+}
+
+// The expiration time of the license.
+func (o LicenseOutput) ExpirationTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *License) pulumi.StringOutput { return v.ExpirationTime }).(pulumi.StringOutput)
+}
+
+// The features for which the license is valid.
+func (o LicenseOutput) Features() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *License) pulumi.StringArrayOutput { return v.Features }).(pulumi.StringArrayOutput)
+}
+
+// The ID of the current installation.
+func (o LicenseOutput) InstallationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *License) pulumi.StringOutput { return v.InstallationId }).(pulumi.StringOutput)
+}
+
+// The date the license was issued.
+func (o LicenseOutput) IssueTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *License) pulumi.StringOutput { return v.IssueTime }).(pulumi.StringOutput)
+}
+
+// The Consul license to use.
+func (o LicenseOutput) License() pulumi.StringOutput {
+	return o.ApplyT(func(v *License) pulumi.StringOutput { return v.License }).(pulumi.StringOutput)
+}
+
+// The ID of the license used.
+func (o LicenseOutput) LicenseId() pulumi.StringOutput {
+	return o.ApplyT(func(v *License) pulumi.StringOutput { return v.LicenseId }).(pulumi.StringOutput)
+}
+
+// The product for which the license is valid.
+func (o LicenseOutput) Product() pulumi.StringOutput {
+	return o.ApplyT(func(v *License) pulumi.StringOutput { return v.Product }).(pulumi.StringOutput)
+}
+
+// The start time of the license.
+func (o LicenseOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *License) pulumi.StringOutput { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// Whether the license is valid.
+func (o LicenseOutput) Valid() pulumi.BoolOutput {
+	return o.ApplyT(func(v *License) pulumi.BoolOutput { return v.Valid }).(pulumi.BoolOutput)
+}
+
+// A list of warning messages regarding the license validity.
+func (o LicenseOutput) Warnings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *License) pulumi.StringArrayOutput { return v.Warnings }).(pulumi.StringArrayOutput)
 }
 
 type LicenseArrayOutput struct{ *pulumi.OutputState }

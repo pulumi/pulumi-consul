@@ -10,28 +10,101 @@ using Pulumi.Serialization;
 namespace Pulumi.Consul
 {
     /// <summary>
-    /// ## Import
+    /// ## Example Usage
     /// 
-    /// `consul_prepared_query` can be imported with the query's ID in the Consul HTTP API.
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Consul = Pulumi.Consul;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Creates a prepared query myquery.query.consul that finds the nearest
+    ///     // healthy myapp.service.consul instance that has the active tag and not
+    ///     // the standby tag.
+    ///     var myapp_query = new Consul.PreparedQuery("myapp-query", new()
+    ///     {
+    ///         Datacenter = "us-central1",
+    ///         Dns = new Consul.Inputs.PreparedQueryDnsArgs
+    ///         {
+    ///             Ttl = "30s",
+    ///         },
+    ///         Failover = new Consul.Inputs.PreparedQueryFailoverArgs
+    ///         {
+    ///             Datacenters = new[]
+    ///             {
+    ///                 "us-west1",
+    ///                 "us-east-2",
+    ///                 "asia-east1",
+    ///             },
+    ///             NearestN = 3,
+    ///         },
+    ///         Near = "_agent",
+    ///         OnlyPassing = true,
+    ///         Service = "myapp",
+    ///         StoredToken = "wxyz",
+    ///         Tags = new[]
+    ///         {
+    ///             "active",
+    ///             "!standby",
+    ///         },
+    ///         Token = "abcd",
+    ///     });
+    /// 
+    ///     // Creates a Prepared Query Template that matches *-near-self.query.consul
+    ///     // and finds the nearest service that matches the glob character (e.g.
+    ///     // foo-near-self.query.consul will find the nearest healthy foo.service.consul).
+    ///     var service_near_self = new Consul.PreparedQuery("service-near-self", new()
+    ///     {
+    ///         Connect = true,
+    ///         Datacenter = "nyc1",
+    ///         Dns = new Consul.Inputs.PreparedQueryDnsArgs
+    ///         {
+    ///             Ttl = "5m",
+    ///         },
+    ///         Failover = new Consul.Inputs.PreparedQueryFailoverArgs
+    ///         {
+    ///             Datacenters = new[]
+    ///             {
+    ///                 "dc2",
+    ///                 "dc3",
+    ///                 "dc4",
+    ///             },
+    ///             NearestN = 3,
+    ///         },
+    ///         Near = "_agent",
+    ///         OnlyPassing = true,
+    ///         Service = "${match(1)}",
+    ///         StoredToken = "wxyz",
+    ///         Template = new Consul.Inputs.PreparedQueryTemplateArgs
+    ///         {
+    ///             Regexp = "^(.*)-near-self$",
+    ///             Type = "name_prefix_match",
+    ///         },
+    ///         Token = "abcd",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
     /// 
     /// ```sh
     ///  $ pulumi import consul:index/preparedQuery:PreparedQuery my_service 71ecfb82-717a-4258-b4b6-2fb75144d856
     /// ```
     /// </summary>
     [ConsulResourceType("consul:index/preparedQuery:PreparedQuery")]
-    public partial class PreparedQuery : Pulumi.CustomResource
+    public partial class PreparedQuery : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// When `true` the prepared query will return connect
-        /// proxy services for a queried service.  Conditions such as `tags` in the
-        /// prepared query will be matched against the proxy service. Defaults to false.
+        /// When `true` the prepared query will return connect proxy services for a queried service.  Conditions such as `tags` in the prepared query will be matched against the proxy service. Defaults to false.
         /// </summary>
         [Output("connect")]
         public Output<bool?> Connect { get; private set; } = null!;
 
         /// <summary>
-        /// The datacenter to use. This overrides the
-        /// agent's default datacenter and the datacenter in the provider setup.
+        /// The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
         /// </summary>
         [Output("datacenter")]
         public Output<string?> Datacenter { get; private set; } = null!;
@@ -43,104 +116,79 @@ namespace Pulumi.Consul
         public Output<Outputs.PreparedQueryDns?> Dns { get; private set; } = null!;
 
         /// <summary>
-        /// Options for controlling behavior when no healthy
-        /// nodes are available in the local DC.
+        /// Options for controlling behavior when no healthy nodes are available in the local DC.
         /// </summary>
         [Output("failover")]
         public Output<Outputs.PreparedQueryFailover?> Failover { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies a list of check IDs that should be
-        /// ignored when filtering unhealthy instances. This is mostly useful in an
-        /// emergency or as a temporary measure when a health check is found to be
-        /// unreliable. Being able to ignore it in centrally-defined queries can be
-        /// simpler than de-registering the check as an interim solution until the check
-        /// can be fixed.
+        /// Specifies a list of check IDs that should be ignored when filtering unhealthy instances. This is mostly useful in an emergency or as a temporary measure when a health check is found to be unreliable. Being able to ignore it in centrally-defined queries can be simpler than de-registering the check as an interim solution until the check can be fixed.
         /// </summary>
         [Output("ignoreCheckIds")]
         public Output<ImmutableArray<string>> IgnoreCheckIds { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the prepared query. Used to identify
-        /// the prepared query during requests. Can be specified as an empty string
-        /// to configure the query as a catch-all.
+        /// The name of the prepared query. Used to identify the prepared query during requests. Can be specified as an empty string to configure the query as a catch-all.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Allows specifying the name of a node to sort results
-        /// near using Consul's distance sorting and network coordinates. The magic
-        /// `_agent` value can be used to always sort nearest the node servicing the
-        /// request.
+        /// Allows specifying the name of a node to sort results near using Consul's distance sorting and network coordinates. The magic `_agent` value can be used to always sort nearest the node servicing the request.
         /// </summary>
         [Output("near")]
         public Output<string?> Near { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies a list of user-defined key/value pairs that
-        /// will be used for filtering the query results to nodes with the given metadata
-        /// values present.
+        /// Specifies a list of user-defined key/value pairs that will be used for filtering the query results to nodes with the given metadata values present.
         /// </summary>
         [Output("nodeMeta")]
         public Output<ImmutableDictionary<string, string>?> NodeMeta { get; private set; } = null!;
 
         /// <summary>
-        /// When `true`, the prepared query will only
-        /// return nodes with passing health checks in the result.
+        /// When `true`, the prepared query will only return nodes with passing health checks in the result.
         /// </summary>
         [Output("onlyPassing")]
         public Output<bool?> OnlyPassing { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the service to query.
+        /// The name of the service to query
         /// </summary>
         [Output("service")]
         public Output<string> Service { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies a list of user-defined key/value pairs
-        /// that will be used for filtering the query results to services with the given
-        /// metadata values present.
+        /// Specifies a list of user-defined key/value pairs that will be used for filtering the query results to services with the given metadata values present.
         /// </summary>
         [Output("serviceMeta")]
         public Output<ImmutableDictionary<string, string>?> ServiceMeta { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the Consul session to tie this query's
-        /// lifetime to.  This is an advanced parameter that should not be used without a
-        /// complete understanding of Consul sessions and the implications of their use
-        /// (it is recommended to leave this blank in nearly all cases).  If this
-        /// parameter is omitted the query will not expire.
+        /// The name of the Consul session to tie this query's lifetime to.  This is an advanced parameter that should not be used without a complete understanding of Consul sessions and the implications of their use (it is recommended to leave this blank in nearly all cases).  If this parameter is omitted the query will not expire.
         /// </summary>
         [Output("session")]
         public Output<string?> Session { get; private set; } = null!;
 
         /// <summary>
-        /// The ACL token to store with the prepared
-        /// query. This token will be used by default whenever the query is executed.
+        /// The ACL token to store with the prepared query. This token will be used by default whenever the query is executed.
         /// </summary>
         [Output("storedToken")]
         public Output<string?> StoredToken { get; private set; } = null!;
 
         /// <summary>
-        /// The list of required and/or disallowed tags.  If a tag is
-        /// in this list it must be present.  If the tag is preceded with a "!" then it is
-        /// disallowed.
+        /// The list of required and/or disallowed tags.  If a tag is in this list it must be present.  If the tag is preceded with a "!" then it is disallowed.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// Query templating options. This is used to make a
-        /// single prepared query respond to many different requests.
+        /// Query templating options. This is used to make a single prepared query respond to many different requests
         /// </summary>
         [Output("template")]
         public Output<Outputs.PreparedQueryTemplate?> Template { get; private set; } = null!;
 
         /// <summary>
-        /// The ACL token to use when saving the prepared query.
-        /// This overrides the token that the agent provides by default.
+        /// The ACL token to use when saving the prepared query. This overrides the token that the agent provides by default.
         /// </summary>
         [Output("token")]
         public Output<string?> Token { get; private set; } = null!;
@@ -168,6 +216,10 @@ namespace Pulumi.Consul
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "token",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -189,19 +241,16 @@ namespace Pulumi.Consul
         }
     }
 
-    public sealed class PreparedQueryArgs : Pulumi.ResourceArgs
+    public sealed class PreparedQueryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// When `true` the prepared query will return connect
-        /// proxy services for a queried service.  Conditions such as `tags` in the
-        /// prepared query will be matched against the proxy service. Defaults to false.
+        /// When `true` the prepared query will return connect proxy services for a queried service.  Conditions such as `tags` in the prepared query will be matched against the proxy service. Defaults to false.
         /// </summary>
         [Input("connect")]
         public Input<bool>? Connect { get; set; }
 
         /// <summary>
-        /// The datacenter to use. This overrides the
-        /// agent's default datacenter and the datacenter in the provider setup.
+        /// The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
         /// </summary>
         [Input("datacenter")]
         public Input<string>? Datacenter { get; set; }
@@ -213,8 +262,7 @@ namespace Pulumi.Consul
         public Input<Inputs.PreparedQueryDnsArgs>? Dns { get; set; }
 
         /// <summary>
-        /// Options for controlling behavior when no healthy
-        /// nodes are available in the local DC.
+        /// Options for controlling behavior when no healthy nodes are available in the local DC.
         /// </summary>
         [Input("failover")]
         public Input<Inputs.PreparedQueryFailoverArgs>? Failover { get; set; }
@@ -223,12 +271,7 @@ namespace Pulumi.Consul
         private InputList<string>? _ignoreCheckIds;
 
         /// <summary>
-        /// Specifies a list of check IDs that should be
-        /// ignored when filtering unhealthy instances. This is mostly useful in an
-        /// emergency or as a temporary measure when a health check is found to be
-        /// unreliable. Being able to ignore it in centrally-defined queries can be
-        /// simpler than de-registering the check as an interim solution until the check
-        /// can be fixed.
+        /// Specifies a list of check IDs that should be ignored when filtering unhealthy instances. This is mostly useful in an emergency or as a temporary measure when a health check is found to be unreliable. Being able to ignore it in centrally-defined queries can be simpler than de-registering the check as an interim solution until the check can be fixed.
         /// </summary>
         public InputList<string> IgnoreCheckIds
         {
@@ -237,18 +280,13 @@ namespace Pulumi.Consul
         }
 
         /// <summary>
-        /// The name of the prepared query. Used to identify
-        /// the prepared query during requests. Can be specified as an empty string
-        /// to configure the query as a catch-all.
+        /// The name of the prepared query. Used to identify the prepared query during requests. Can be specified as an empty string to configure the query as a catch-all.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Allows specifying the name of a node to sort results
-        /// near using Consul's distance sorting and network coordinates. The magic
-        /// `_agent` value can be used to always sort nearest the node servicing the
-        /// request.
+        /// Allows specifying the name of a node to sort results near using Consul's distance sorting and network coordinates. The magic `_agent` value can be used to always sort nearest the node servicing the request.
         /// </summary>
         [Input("near")]
         public Input<string>? Near { get; set; }
@@ -257,9 +295,7 @@ namespace Pulumi.Consul
         private InputMap<string>? _nodeMeta;
 
         /// <summary>
-        /// Specifies a list of user-defined key/value pairs that
-        /// will be used for filtering the query results to nodes with the given metadata
-        /// values present.
+        /// Specifies a list of user-defined key/value pairs that will be used for filtering the query results to nodes with the given metadata values present.
         /// </summary>
         public InputMap<string> NodeMeta
         {
@@ -268,14 +304,13 @@ namespace Pulumi.Consul
         }
 
         /// <summary>
-        /// When `true`, the prepared query will only
-        /// return nodes with passing health checks in the result.
+        /// When `true`, the prepared query will only return nodes with passing health checks in the result.
         /// </summary>
         [Input("onlyPassing")]
         public Input<bool>? OnlyPassing { get; set; }
 
         /// <summary>
-        /// The name of the service to query.
+        /// The name of the service to query
         /// </summary>
         [Input("service", required: true)]
         public Input<string> Service { get; set; } = null!;
@@ -284,9 +319,7 @@ namespace Pulumi.Consul
         private InputMap<string>? _serviceMeta;
 
         /// <summary>
-        /// Specifies a list of user-defined key/value pairs
-        /// that will be used for filtering the query results to services with the given
-        /// metadata values present.
+        /// Specifies a list of user-defined key/value pairs that will be used for filtering the query results to services with the given metadata values present.
         /// </summary>
         public InputMap<string> ServiceMeta
         {
@@ -295,18 +328,13 @@ namespace Pulumi.Consul
         }
 
         /// <summary>
-        /// The name of the Consul session to tie this query's
-        /// lifetime to.  This is an advanced parameter that should not be used without a
-        /// complete understanding of Consul sessions and the implications of their use
-        /// (it is recommended to leave this blank in nearly all cases).  If this
-        /// parameter is omitted the query will not expire.
+        /// The name of the Consul session to tie this query's lifetime to.  This is an advanced parameter that should not be used without a complete understanding of Consul sessions and the implications of their use (it is recommended to leave this blank in nearly all cases).  If this parameter is omitted the query will not expire.
         /// </summary>
         [Input("session")]
         public Input<string>? Session { get; set; }
 
         /// <summary>
-        /// The ACL token to store with the prepared
-        /// query. This token will be used by default whenever the query is executed.
+        /// The ACL token to store with the prepared query. This token will be used by default whenever the query is executed.
         /// </summary>
         [Input("storedToken")]
         public Input<string>? StoredToken { get; set; }
@@ -315,9 +343,7 @@ namespace Pulumi.Consul
         private InputList<string>? _tags;
 
         /// <summary>
-        /// The list of required and/or disallowed tags.  If a tag is
-        /// in this list it must be present.  If the tag is preceded with a "!" then it is
-        /// disallowed.
+        /// The list of required and/or disallowed tags.  If a tag is in this list it must be present.  If the tag is preceded with a "!" then it is disallowed.
         /// </summary>
         public InputList<string> Tags
         {
@@ -326,37 +352,45 @@ namespace Pulumi.Consul
         }
 
         /// <summary>
-        /// Query templating options. This is used to make a
-        /// single prepared query respond to many different requests.
+        /// Query templating options. This is used to make a single prepared query respond to many different requests
         /// </summary>
         [Input("template")]
         public Input<Inputs.PreparedQueryTemplateArgs>? Template { get; set; }
 
-        /// <summary>
-        /// The ACL token to use when saving the prepared query.
-        /// This overrides the token that the agent provides by default.
-        /// </summary>
         [Input("token")]
-        public Input<string>? Token { get; set; }
+        private Input<string>? _token;
+
+        /// <summary>
+        /// The ACL token to use when saving the prepared query. This overrides the token that the agent provides by default.
+        /// </summary>
+        [Obsolete(@"The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration")]
+        public Input<string>? Token
+        {
+            get => _token;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _token = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public PreparedQueryArgs()
         {
         }
+        public static new PreparedQueryArgs Empty => new PreparedQueryArgs();
     }
 
-    public sealed class PreparedQueryState : Pulumi.ResourceArgs
+    public sealed class PreparedQueryState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// When `true` the prepared query will return connect
-        /// proxy services for a queried service.  Conditions such as `tags` in the
-        /// prepared query will be matched against the proxy service. Defaults to false.
+        /// When `true` the prepared query will return connect proxy services for a queried service.  Conditions such as `tags` in the prepared query will be matched against the proxy service. Defaults to false.
         /// </summary>
         [Input("connect")]
         public Input<bool>? Connect { get; set; }
 
         /// <summary>
-        /// The datacenter to use. This overrides the
-        /// agent's default datacenter and the datacenter in the provider setup.
+        /// The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
         /// </summary>
         [Input("datacenter")]
         public Input<string>? Datacenter { get; set; }
@@ -368,8 +402,7 @@ namespace Pulumi.Consul
         public Input<Inputs.PreparedQueryDnsGetArgs>? Dns { get; set; }
 
         /// <summary>
-        /// Options for controlling behavior when no healthy
-        /// nodes are available in the local DC.
+        /// Options for controlling behavior when no healthy nodes are available in the local DC.
         /// </summary>
         [Input("failover")]
         public Input<Inputs.PreparedQueryFailoverGetArgs>? Failover { get; set; }
@@ -378,12 +411,7 @@ namespace Pulumi.Consul
         private InputList<string>? _ignoreCheckIds;
 
         /// <summary>
-        /// Specifies a list of check IDs that should be
-        /// ignored when filtering unhealthy instances. This is mostly useful in an
-        /// emergency or as a temporary measure when a health check is found to be
-        /// unreliable. Being able to ignore it in centrally-defined queries can be
-        /// simpler than de-registering the check as an interim solution until the check
-        /// can be fixed.
+        /// Specifies a list of check IDs that should be ignored when filtering unhealthy instances. This is mostly useful in an emergency or as a temporary measure when a health check is found to be unreliable. Being able to ignore it in centrally-defined queries can be simpler than de-registering the check as an interim solution until the check can be fixed.
         /// </summary>
         public InputList<string> IgnoreCheckIds
         {
@@ -392,18 +420,13 @@ namespace Pulumi.Consul
         }
 
         /// <summary>
-        /// The name of the prepared query. Used to identify
-        /// the prepared query during requests. Can be specified as an empty string
-        /// to configure the query as a catch-all.
+        /// The name of the prepared query. Used to identify the prepared query during requests. Can be specified as an empty string to configure the query as a catch-all.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Allows specifying the name of a node to sort results
-        /// near using Consul's distance sorting and network coordinates. The magic
-        /// `_agent` value can be used to always sort nearest the node servicing the
-        /// request.
+        /// Allows specifying the name of a node to sort results near using Consul's distance sorting and network coordinates. The magic `_agent` value can be used to always sort nearest the node servicing the request.
         /// </summary>
         [Input("near")]
         public Input<string>? Near { get; set; }
@@ -412,9 +435,7 @@ namespace Pulumi.Consul
         private InputMap<string>? _nodeMeta;
 
         /// <summary>
-        /// Specifies a list of user-defined key/value pairs that
-        /// will be used for filtering the query results to nodes with the given metadata
-        /// values present.
+        /// Specifies a list of user-defined key/value pairs that will be used for filtering the query results to nodes with the given metadata values present.
         /// </summary>
         public InputMap<string> NodeMeta
         {
@@ -423,14 +444,13 @@ namespace Pulumi.Consul
         }
 
         /// <summary>
-        /// When `true`, the prepared query will only
-        /// return nodes with passing health checks in the result.
+        /// When `true`, the prepared query will only return nodes with passing health checks in the result.
         /// </summary>
         [Input("onlyPassing")]
         public Input<bool>? OnlyPassing { get; set; }
 
         /// <summary>
-        /// The name of the service to query.
+        /// The name of the service to query
         /// </summary>
         [Input("service")]
         public Input<string>? Service { get; set; }
@@ -439,9 +459,7 @@ namespace Pulumi.Consul
         private InputMap<string>? _serviceMeta;
 
         /// <summary>
-        /// Specifies a list of user-defined key/value pairs
-        /// that will be used for filtering the query results to services with the given
-        /// metadata values present.
+        /// Specifies a list of user-defined key/value pairs that will be used for filtering the query results to services with the given metadata values present.
         /// </summary>
         public InputMap<string> ServiceMeta
         {
@@ -450,18 +468,13 @@ namespace Pulumi.Consul
         }
 
         /// <summary>
-        /// The name of the Consul session to tie this query's
-        /// lifetime to.  This is an advanced parameter that should not be used without a
-        /// complete understanding of Consul sessions and the implications of their use
-        /// (it is recommended to leave this blank in nearly all cases).  If this
-        /// parameter is omitted the query will not expire.
+        /// The name of the Consul session to tie this query's lifetime to.  This is an advanced parameter that should not be used without a complete understanding of Consul sessions and the implications of their use (it is recommended to leave this blank in nearly all cases).  If this parameter is omitted the query will not expire.
         /// </summary>
         [Input("session")]
         public Input<string>? Session { get; set; }
 
         /// <summary>
-        /// The ACL token to store with the prepared
-        /// query. This token will be used by default whenever the query is executed.
+        /// The ACL token to store with the prepared query. This token will be used by default whenever the query is executed.
         /// </summary>
         [Input("storedToken")]
         public Input<string>? StoredToken { get; set; }
@@ -470,9 +483,7 @@ namespace Pulumi.Consul
         private InputList<string>? _tags;
 
         /// <summary>
-        /// The list of required and/or disallowed tags.  If a tag is
-        /// in this list it must be present.  If the tag is preceded with a "!" then it is
-        /// disallowed.
+        /// The list of required and/or disallowed tags.  If a tag is in this list it must be present.  If the tag is preceded with a "!" then it is disallowed.
         /// </summary>
         public InputList<string> Tags
         {
@@ -481,21 +492,32 @@ namespace Pulumi.Consul
         }
 
         /// <summary>
-        /// Query templating options. This is used to make a
-        /// single prepared query respond to many different requests.
+        /// Query templating options. This is used to make a single prepared query respond to many different requests
         /// </summary>
         [Input("template")]
         public Input<Inputs.PreparedQueryTemplateGetArgs>? Template { get; set; }
 
-        /// <summary>
-        /// The ACL token to use when saving the prepared query.
-        /// This overrides the token that the agent provides by default.
-        /// </summary>
         [Input("token")]
-        public Input<string>? Token { get; set; }
+        private Input<string>? _token;
+
+        /// <summary>
+        /// The ACL token to use when saving the prepared query. This overrides the token that the agent provides by default.
+        /// </summary>
+        [Obsolete(@"The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration")]
+        public Input<string>? Token
+        {
+            get => _token;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _token = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public PreparedQueryState()
         {
         }
+        public static new PreparedQueryState Empty => new PreparedQueryState();
     }
 }

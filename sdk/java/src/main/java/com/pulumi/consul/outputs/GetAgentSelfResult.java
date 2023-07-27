@@ -15,6 +15,20 @@ import java.util.Objects;
 public final class GetAgentSelfResult {
     private String aclDatacenter;
     private String aclDefaultPolicy;
+    /**
+     * @return * [`acl_down_policy`](https://www.consul.io/docs/agent/options.html#acl_down_policy)
+     * * [`acl_enforce_0_8_semantics`](https://www.consul.io/docs/agent/options.html#acl_enforce_version_8)
+     * * [`acl_ttl`](https://www.consul.io/docs/agent/options.html#acl_ttl)
+     * * [`addresses`](https://www.consul.io/docs/agent/options.html#addresses)
+     * * [`advertise_addr`](https://www.consul.io/docs/agent/options.html#_advertise)
+     * * [`advertise_addr_wan`](https://www.consul.io/docs/agent/options.html#_advertise-wan)
+     * * [`advertise_addrs`](https://www.consul.io/docs/agent/options.html#advertise_addrs)
+     * * [`atlas_join`](https://www.consul.io/docs/agent/options.html#_atlas_join)
+     * * [`bind_addr`](https://www.consul.io/docs/agent/options.html#_bind)
+     * * [`bootstrap_expect`](https://www.consul.io/docs/agent/options.html#_bootstrap_expect)
+     * * [`bootstrap_mode`](https://www.consul.io/docs/agent/options.html#_bootstrap)
+     * 
+     */
     private String aclDisabledTtl;
     private String aclDownPolicy;
     private Boolean aclEnforce08Semantics;
@@ -28,6 +42,11 @@ public final class GetAgentSelfResult {
     private Integer bootstrapExpect;
     private Boolean bootstrapMode;
     private String checkDeregisterIntervalMin;
+    /**
+     * @return * [`check_update_interval`](https://www.consul.io/docs/agent/options.html#check_update_interval)
+     * * [`client_addr`](https://www.consul.io/docs/agent/options.html#_client)
+     * 
+     */
     private String checkReapInterval;
     private String checkUpdateInterval;
     private String clientAddr;
@@ -44,8 +63,14 @@ public final class GetAgentSelfResult {
      * * [`dev_mode`](https://www.consul.io/docs/agent/options.html#_dev)
      * * [`domain`](https://www.consul.io/docs/agent/options.html#_domain)
      * * [`enable_anonymous_signature`](https://www.consul.io/docs/agent/options.html#disable_anonymous_signature)
-     * * `enable_coordinates`
-     * * [`enable_debug`](https://www.consul.io/docs/agent/options.html#enable_debug)
+     * 
+     */
+    private Map<String,String> dns;
+    private List<String> dnsRecursors;
+    private String domain;
+    private Boolean enableAnonymousSignature;
+    /**
+     * @return * [`enable_debug`](https://www.consul.io/docs/agent/options.html#enable_debug)
      * * [`enable_remote_exec`](https://www.consul.io/docs/agent/options.html#disable_remote_exec)
      * * [`enable_syslog`](https://www.consul.io/docs/agent/options.html#_syslog)
      * * [`enable_ui`](https://www.consul.io/docs/agent/options.html#_ui)
@@ -95,10 +120,6 @@ public final class GetAgentSelfResult {
      * * [`unix_sockets`](https://www.consul.io/docs/agent/options.html#unix_sockets)
      * 
      */
-    private Map<String,String> dns;
-    private List<String> dnsRecursors;
-    private String domain;
-    private Boolean enableAnonymousSignature;
     private Boolean enableCoordinates;
     private Boolean enableDebug;
     private Boolean enableRemoteExec;
@@ -145,8 +166,6 @@ public final class GetAgentSelfResult {
     private Map<String,String> unixSockets;
     /**
      * @return The version of the Consul agent.
-     * * `version_prerelease`
-     * * `version_revision`
      * 
      */
     private String version;
@@ -160,6 +179,20 @@ public final class GetAgentSelfResult {
     public String aclDefaultPolicy() {
         return this.aclDefaultPolicy;
     }
+    /**
+     * @return * [`acl_down_policy`](https://www.consul.io/docs/agent/options.html#acl_down_policy)
+     * * [`acl_enforce_0_8_semantics`](https://www.consul.io/docs/agent/options.html#acl_enforce_version_8)
+     * * [`acl_ttl`](https://www.consul.io/docs/agent/options.html#acl_ttl)
+     * * [`addresses`](https://www.consul.io/docs/agent/options.html#addresses)
+     * * [`advertise_addr`](https://www.consul.io/docs/agent/options.html#_advertise)
+     * * [`advertise_addr_wan`](https://www.consul.io/docs/agent/options.html#_advertise-wan)
+     * * [`advertise_addrs`](https://www.consul.io/docs/agent/options.html#advertise_addrs)
+     * * [`atlas_join`](https://www.consul.io/docs/agent/options.html#_atlas_join)
+     * * [`bind_addr`](https://www.consul.io/docs/agent/options.html#_bind)
+     * * [`bootstrap_expect`](https://www.consul.io/docs/agent/options.html#_bootstrap_expect)
+     * * [`bootstrap_mode`](https://www.consul.io/docs/agent/options.html#_bootstrap)
+     * 
+     */
     public String aclDisabledTtl() {
         return this.aclDisabledTtl;
     }
@@ -199,6 +232,11 @@ public final class GetAgentSelfResult {
     public String checkDeregisterIntervalMin() {
         return this.checkDeregisterIntervalMin;
     }
+    /**
+     * @return * [`check_update_interval`](https://www.consul.io/docs/agent/options.html#check_update_interval)
+     * * [`client_addr`](https://www.consul.io/docs/agent/options.html#_client)
+     * 
+     */
     public String checkReapInterval() {
         return this.checkReapInterval;
     }
@@ -227,8 +265,22 @@ public final class GetAgentSelfResult {
      * * [`dev_mode`](https://www.consul.io/docs/agent/options.html#_dev)
      * * [`domain`](https://www.consul.io/docs/agent/options.html#_domain)
      * * [`enable_anonymous_signature`](https://www.consul.io/docs/agent/options.html#disable_anonymous_signature)
-     * * `enable_coordinates`
-     * * [`enable_debug`](https://www.consul.io/docs/agent/options.html#enable_debug)
+     * 
+     */
+    public Map<String,String> dns() {
+        return this.dns;
+    }
+    public List<String> dnsRecursors() {
+        return this.dnsRecursors;
+    }
+    public String domain() {
+        return this.domain;
+    }
+    public Boolean enableAnonymousSignature() {
+        return this.enableAnonymousSignature;
+    }
+    /**
+     * @return * [`enable_debug`](https://www.consul.io/docs/agent/options.html#enable_debug)
      * * [`enable_remote_exec`](https://www.consul.io/docs/agent/options.html#disable_remote_exec)
      * * [`enable_syslog`](https://www.consul.io/docs/agent/options.html#_syslog)
      * * [`enable_ui`](https://www.consul.io/docs/agent/options.html#_ui)
@@ -278,18 +330,6 @@ public final class GetAgentSelfResult {
      * * [`unix_sockets`](https://www.consul.io/docs/agent/options.html#unix_sockets)
      * 
      */
-    public Map<String,String> dns() {
-        return this.dns;
-    }
-    public List<String> dnsRecursors() {
-        return this.dnsRecursors;
-    }
-    public String domain() {
-        return this.domain;
-    }
-    public Boolean enableAnonymousSignature() {
-        return this.enableAnonymousSignature;
-    }
     public Boolean enableCoordinates() {
         return this.enableCoordinates;
     }
@@ -424,8 +464,6 @@ public final class GetAgentSelfResult {
     }
     /**
      * @return The version of the Consul agent.
-     * * `version_prerelease`
-     * * `version_revision`
      * 
      */
     public String version() {

@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -47,12 +48,10 @@ import (
 type PeeringToken struct {
 	pulumi.CustomResourceState
 
-	// Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the
-	// cluster peering process.
+	// Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the cluster peering process.
 	Meta      pulumi.StringMapOutput `pulumi:"meta"`
 	Partition pulumi.StringPtrOutput `pulumi:"partition"`
-	// The name assigned to the peer cluster. The `peer_name` is used to reference the peer cluster in service discovery
-	// queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
+	// The name assigned to the peer cluster. The `peerName` is used to reference the peer cluster in service discovery queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
 	PeerName pulumi.StringOutput `pulumi:"peerName"`
 	// The generated peering token
 	PeeringToken pulumi.StringOutput `pulumi:"peeringToken"`
@@ -68,6 +67,11 @@ func NewPeeringToken(ctx *pulumi.Context,
 	if args.PeerName == nil {
 		return nil, errors.New("invalid value for required argument 'PeerName'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"peeringToken",
+	})
+	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource PeeringToken
 	err := ctx.RegisterResource("consul:index/peeringToken:PeeringToken", name, args, &resource, opts...)
 	if err != nil {
@@ -90,24 +94,20 @@ func GetPeeringToken(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PeeringToken resources.
 type peeringTokenState struct {
-	// Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the
-	// cluster peering process.
+	// Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the cluster peering process.
 	Meta      map[string]string `pulumi:"meta"`
 	Partition *string           `pulumi:"partition"`
-	// The name assigned to the peer cluster. The `peer_name` is used to reference the peer cluster in service discovery
-	// queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
+	// The name assigned to the peer cluster. The `peerName` is used to reference the peer cluster in service discovery queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
 	PeerName *string `pulumi:"peerName"`
 	// The generated peering token
 	PeeringToken *string `pulumi:"peeringToken"`
 }
 
 type PeeringTokenState struct {
-	// Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the
-	// cluster peering process.
+	// Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the cluster peering process.
 	Meta      pulumi.StringMapInput
 	Partition pulumi.StringPtrInput
-	// The name assigned to the peer cluster. The `peer_name` is used to reference the peer cluster in service discovery
-	// queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
+	// The name assigned to the peer cluster. The `peerName` is used to reference the peer cluster in service discovery queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
 	PeerName pulumi.StringPtrInput
 	// The generated peering token
 	PeeringToken pulumi.StringPtrInput
@@ -118,23 +118,19 @@ func (PeeringTokenState) ElementType() reflect.Type {
 }
 
 type peeringTokenArgs struct {
-	// Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the
-	// cluster peering process.
+	// Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the cluster peering process.
 	Meta      map[string]string `pulumi:"meta"`
 	Partition *string           `pulumi:"partition"`
-	// The name assigned to the peer cluster. The `peer_name` is used to reference the peer cluster in service discovery
-	// queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
+	// The name assigned to the peer cluster. The `peerName` is used to reference the peer cluster in service discovery queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
 	PeerName string `pulumi:"peerName"`
 }
 
 // The set of arguments for constructing a PeeringToken resource.
 type PeeringTokenArgs struct {
-	// Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the
-	// cluster peering process.
+	// Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the cluster peering process.
 	Meta      pulumi.StringMapInput
 	Partition pulumi.StringPtrInput
-	// The name assigned to the peer cluster. The `peer_name` is used to reference the peer cluster in service discovery
-	// queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
+	// The name assigned to the peer cluster. The `peerName` is used to reference the peer cluster in service discovery queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
 	PeerName pulumi.StringInput
 }
 
@@ -223,6 +219,25 @@ func (o PeeringTokenOutput) ToPeeringTokenOutput() PeeringTokenOutput {
 
 func (o PeeringTokenOutput) ToPeeringTokenOutputWithContext(ctx context.Context) PeeringTokenOutput {
 	return o
+}
+
+// Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the cluster peering process.
+func (o PeeringTokenOutput) Meta() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *PeeringToken) pulumi.StringMapOutput { return v.Meta }).(pulumi.StringMapOutput)
+}
+
+func (o PeeringTokenOutput) Partition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PeeringToken) pulumi.StringPtrOutput { return v.Partition }).(pulumi.StringPtrOutput)
+}
+
+// The name assigned to the peer cluster. The `peerName` is used to reference the peer cluster in service discovery queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
+func (o PeeringTokenOutput) PeerName() pulumi.StringOutput {
+	return o.ApplyT(func(v *PeeringToken) pulumi.StringOutput { return v.PeerName }).(pulumi.StringOutput)
+}
+
+// The generated peering token
+func (o PeeringTokenOutput) PeeringToken() pulumi.StringOutput {
+	return o.ApplyT(func(v *PeeringToken) pulumi.StringOutput { return v.PeeringToken }).(pulumi.StringOutput)
 }
 
 type PeeringTokenArrayOutput struct{ *pulumi.OutputState }

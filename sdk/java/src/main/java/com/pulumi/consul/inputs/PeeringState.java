@@ -25,16 +25,14 @@ public final class PeeringState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the
-     * cluster peering process.
+     * Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the cluster peering process.
      * 
      */
     @Import(name="meta")
     private @Nullable Output<Map<String,String>> meta;
 
     /**
-     * @return Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the
-     * cluster peering process.
+     * @return Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the cluster peering process.
      * 
      */
     public Optional<Output<Map<String,String>>> meta() {
@@ -63,16 +61,14 @@ public final class PeeringState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name assigned to the peer cluster. The `peer_name` is used to reference the peer cluster in service discovery
-     * queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
+     * The name assigned to the peer cluster. The `peer_name` is used to reference the peer cluster in service discovery queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
      * 
      */
     @Import(name="peerName")
     private @Nullable Output<String> peerName;
 
     /**
-     * @return The name assigned to the peer cluster. The `peer_name` is used to reference the peer cluster in service discovery
-     * queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
+     * @return The name assigned to the peer cluster. The `peer_name` is used to reference the peer cluster in service discovery queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
      * 
      */
     public Optional<Output<String>> peerName() {
@@ -158,8 +154,7 @@ public final class PeeringState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param meta Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the
-         * cluster peering process.
+         * @param meta Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the cluster peering process.
          * 
          * @return builder
          * 
@@ -170,8 +165,7 @@ public final class PeeringState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param meta Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the
-         * cluster peering process.
+         * @param meta Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the cluster peering process.
          * 
          * @return builder
          * 
@@ -212,8 +206,7 @@ public final class PeeringState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param peerName The name assigned to the peer cluster. The `peer_name` is used to reference the peer cluster in service discovery
-         * queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
+         * @param peerName The name assigned to the peer cluster. The `peer_name` is used to reference the peer cluster in service discovery queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
          * 
          * @return builder
          * 
@@ -224,8 +217,7 @@ public final class PeeringState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param peerName The name assigned to the peer cluster. The `peer_name` is used to reference the peer cluster in service discovery
-         * queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
+         * @param peerName The name assigned to the peer cluster. The `peer_name` is used to reference the peer cluster in service discovery queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
          * 
          * @return builder
          * 

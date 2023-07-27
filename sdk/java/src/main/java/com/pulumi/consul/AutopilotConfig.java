@@ -24,6 +24,36 @@ import javax.annotation.Nullable;
  * cluster and stable server introduction.
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.consul.AutopilotConfig;
+ * import com.pulumi.consul.AutopilotConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var config = new AutopilotConfig(&#34;config&#34;, AutopilotConfigArgs.builder()        
+ *             .cleanupDeadServers(false)
+ *             .lastContactThreshold(&#34;1s&#34;)
+ *             .maxTrailingLogs(500)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  */
 @ResourceType(type="consul:index/autopilotConfig:AutopilotConfig")

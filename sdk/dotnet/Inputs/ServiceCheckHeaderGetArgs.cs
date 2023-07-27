@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Consul.Inputs
 {
 
-    public sealed class ServiceCheckHeaderGetArgs : Pulumi.ResourceArgs
+    public sealed class ServiceCheckHeaderGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the header.
@@ -33,5 +33,6 @@ namespace Pulumi.Consul.Inputs
         public ServiceCheckHeaderGetArgs()
         {
         }
+        public static new ServiceCheckHeaderGetArgs Empty => new ServiceCheckHeaderGetArgs();
     }
 }

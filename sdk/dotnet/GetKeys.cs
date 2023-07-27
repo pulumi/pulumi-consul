@@ -20,42 +20,42 @@ namespace Pulumi.Consul
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Aws = Pulumi.Aws;
         /// using Consul = Pulumi.Consul;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var appKeys = Consul.GetKeys.Invoke(new()
         ///     {
-        ///         var appKeys = Output.Create(Consul.GetKeys.InvokeAsync(new Consul.GetKeysArgs
+        ///         Datacenter = "nyc1",
+        ///         Keys = new[]
         ///         {
-        ///             Datacenter = "nyc1",
-        ///             Keys = 
+        ///             new Consul.Inputs.GetKeysKeyInputArgs
         ///             {
-        ///                 new Consul.Inputs.GetKeysKeyArgs
-        ///                 {
-        ///                     Default = "ami-1234",
-        ///                     Name = "ami",
-        ///                     Path = "service/app/launch_ami",
-        ///                 },
+        ///                 Default = "ami-1234",
+        ///                 Name = "ami",
+        ///                 Path = "service/app/launch_ami",
         ///             },
-        ///             Token = "abcd",
-        ///         }));
-        ///         // Start our instance with the dynamic ami value
-        ///         var appInstance = new Aws.Ec2.Instance("appInstance", new Aws.Ec2.InstanceArgs
-        ///         {
-        ///             Ami = appKeys.Apply(appKeys =&gt; appKeys.Var?.Ami),
-        ///         });
-        ///     }
+        ///         },
+        ///         Token = "abcd",
+        ///     });
         /// 
-        /// }
+        ///     // Start our instance with the dynamic ami value
+        ///     var appInstance = new Aws.Ec2.Instance("appInstance", new()
+        ///     {
+        ///         Ami = appKeys.Apply(getKeysResult =&gt; getKeysResult.Var?.Ami),
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetKeysResult> InvokeAsync(GetKeysArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKeysResult>("consul:index/getKeys:getKeys", args ?? new GetKeysArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetKeysResult>("consul:index/getKeys:getKeys", args ?? new GetKeysArgs(), options.WithDefaults());
 
         /// <summary>
         /// The `consul.Keys` resource reads values from the Consul key/value store.
@@ -66,46 +66,46 @@ namespace Pulumi.Consul
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Aws = Pulumi.Aws;
         /// using Consul = Pulumi.Consul;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var appKeys = Consul.GetKeys.Invoke(new()
         ///     {
-        ///         var appKeys = Output.Create(Consul.GetKeys.InvokeAsync(new Consul.GetKeysArgs
+        ///         Datacenter = "nyc1",
+        ///         Keys = new[]
         ///         {
-        ///             Datacenter = "nyc1",
-        ///             Keys = 
+        ///             new Consul.Inputs.GetKeysKeyInputArgs
         ///             {
-        ///                 new Consul.Inputs.GetKeysKeyArgs
-        ///                 {
-        ///                     Default = "ami-1234",
-        ///                     Name = "ami",
-        ///                     Path = "service/app/launch_ami",
-        ///                 },
+        ///                 Default = "ami-1234",
+        ///                 Name = "ami",
+        ///                 Path = "service/app/launch_ami",
         ///             },
-        ///             Token = "abcd",
-        ///         }));
-        ///         // Start our instance with the dynamic ami value
-        ///         var appInstance = new Aws.Ec2.Instance("appInstance", new Aws.Ec2.InstanceArgs
-        ///         {
-        ///             Ami = appKeys.Apply(appKeys =&gt; appKeys.Var?.Ami),
-        ///         });
-        ///     }
+        ///         },
+        ///         Token = "abcd",
+        ///     });
         /// 
-        /// }
+        ///     // Start our instance with the dynamic ami value
+        ///     var appInstance = new Aws.Ec2.Instance("appInstance", new()
+        ///     {
+        ///         Ami = appKeys.Apply(getKeysResult =&gt; getKeysResult.Var?.Ami),
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetKeysResult> Invoke(GetKeysInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetKeysResult>("consul:index/getKeys:getKeys", args ?? new GetKeysInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetKeysResult>("consul:index/getKeys:getKeys", args ?? new GetKeysInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetKeysArgs : Pulumi.InvokeArgs
+    public sealed class GetKeysArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The datacenter to use. This overrides the
@@ -139,19 +139,28 @@ namespace Pulumi.Consul
         [Input("partition")]
         public string? Partition { get; set; }
 
+        [Input("token")]
+        private string? _token;
+
         /// <summary>
         /// The ACL token to use. This overrides the
         /// token that the agent provides by default.
         /// </summary>
-        [Input("token")]
-        public string? Token { get; set; }
+        [Obsolete(@"The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration")]
+        public string? Token
+        {
+            get => _token;
+            set => _token = value;
+        }
 
         public GetKeysArgs()
         {
         }
+        public static new GetKeysArgs Empty => new GetKeysArgs();
     }
 
-    public sealed class GetKeysInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetKeysInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The datacenter to use. This overrides the
@@ -185,16 +194,29 @@ namespace Pulumi.Consul
         [Input("partition")]
         public Input<string>? Partition { get; set; }
 
+        [Input("token")]
+        private Input<string>? _token;
+
         /// <summary>
         /// The ACL token to use. This overrides the
         /// token that the agent provides by default.
         /// </summary>
-        [Input("token")]
-        public Input<string>? Token { get; set; }
+        [Obsolete(@"The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration")]
+        public Input<string>? Token
+        {
+            get => _token;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _token = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public GetKeysInvokeArgs()
         {
         }
+        public static new GetKeysInvokeArgs Empty => new GetKeysInvokeArgs();
     }
 
 

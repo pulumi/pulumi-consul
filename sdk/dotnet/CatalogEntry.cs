@@ -20,40 +20,39 @@ namespace Pulumi.Consul
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Consul = Pulumi.Consul;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var app = new Consul.CatalogEntry("app", new()
     ///     {
-    ///         var app = new Consul.CatalogEntry("app", new Consul.CatalogEntryArgs
+    ///         Address = "192.168.10.10",
+    ///         Node = "foobar",
+    ///         Services = new[]
     ///         {
-    ///             Address = "192.168.10.10",
-    ///             Node = "foobar",
-    ///             Services = 
+    ///             new Consul.Inputs.CatalogEntryServiceArgs
     ///             {
-    ///                 new Consul.Inputs.CatalogEntryServiceArgs
+    ///                 Address = "127.0.0.1",
+    ///                 Id = "redis1",
+    ///                 Name = "redis",
+    ///                 Port = 8000,
+    ///                 Tags = new[]
     ///                 {
-    ///                     Address = "127.0.0.1",
-    ///                     Id = "redis1",
-    ///                     Name = "redis",
-    ///                     Port = 8000,
-    ///                     Tags = 
-    ///                     {
-    ///                         "master",
-    ///                         "v1",
-    ///                     },
+    ///                     "master",
+    ///                     "v1",
     ///                 },
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [ConsulResourceType("consul:index/catalogEntry:CatalogEntry")]
-    public partial class CatalogEntry : Pulumi.CustomResource
+    public partial class CatalogEntry : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The address of the node being added to,
@@ -112,6 +111,10 @@ namespace Pulumi.Consul
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "token",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -133,7 +136,7 @@ namespace Pulumi.Consul
         }
     }
 
-    public sealed class CatalogEntryArgs : Pulumi.ResourceArgs
+    public sealed class CatalogEntryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The address of the node being added to,
@@ -169,18 +172,31 @@ namespace Pulumi.Consul
             set => _services = value;
         }
 
+        [Input("token")]
+        private Input<string>? _token;
+
         /// <summary>
         /// ACL token.
         /// </summary>
-        [Input("token")]
-        public Input<string>? Token { get; set; }
+        [Obsolete(@"The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration")]
+        public Input<string>? Token
+        {
+            get => _token;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _token = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public CatalogEntryArgs()
         {
         }
+        public static new CatalogEntryArgs Empty => new CatalogEntryArgs();
     }
 
-    public sealed class CatalogEntryState : Pulumi.ResourceArgs
+    public sealed class CatalogEntryState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The address of the node being added to,
@@ -216,14 +232,27 @@ namespace Pulumi.Consul
             set => _services = value;
         }
 
+        [Input("token")]
+        private Input<string>? _token;
+
         /// <summary>
         /// ACL token.
         /// </summary>
-        [Input("token")]
-        public Input<string>? Token { get; set; }
+        [Obsolete(@"The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration")]
+        public Input<string>? Token
+        {
+            get => _token;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _token = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public CatalogEntryState()
         {
         }
+        public static new CatalogEntryState Empty => new CatalogEntryState();
     }
 }

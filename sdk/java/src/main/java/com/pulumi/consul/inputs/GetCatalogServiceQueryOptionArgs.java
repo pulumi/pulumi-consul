@@ -18,23 +18,55 @@ public final class GetCatalogServiceQueryOptionArgs extends com.pulumi.resources
 
     public static final GetCatalogServiceQueryOptionArgs Empty = new GetCatalogServiceQueryOptionArgs();
 
+    /**
+     * When `true`, the default, allow responses from
+     * Consul servers that are followers.
+     * 
+     */
     @Import(name="allowStale")
     private @Nullable Output<Boolean> allowStale;
 
+    /**
+     * @return When `true`, the default, allow responses from
+     * Consul servers that are followers.
+     * 
+     */
     public Optional<Output<Boolean>> allowStale() {
         return Optional.ofNullable(this.allowStale);
     }
 
+    /**
+     * The Consul datacenter to query.  Defaults to the
+     * same value found in `query_options` parameter specified below, or if that is
+     * empty, the `datacenter` value found in the Consul agent that this provider is
+     * configured to talk to.
+     * 
+     */
     @Import(name="datacenter")
     private @Nullable Output<String> datacenter;
 
+    /**
+     * @return The Consul datacenter to query.  Defaults to the
+     * same value found in `query_options` parameter specified below, or if that is
+     * empty, the `datacenter` value found in the Consul agent that this provider is
+     * configured to talk to.
+     * 
+     */
     public Optional<Output<String>> datacenter() {
         return Optional.ofNullable(this.datacenter);
     }
 
+    /**
+     * The namespace to lookup the service.
+     * 
+     */
     @Import(name="namespace")
     private @Nullable Output<String> namespace;
 
+    /**
+     * @return The namespace to lookup the service.
+     * 
+     */
     public Optional<Output<String>> namespace() {
         return Optional.ofNullable(this.namespace);
     }
@@ -60,30 +92,72 @@ public final class GetCatalogServiceQueryOptionArgs extends com.pulumi.resources
         return Optional.ofNullable(this.partition);
     }
 
+    /**
+     * When `true` force the client to perform a
+     * read on at least quorum servers and verify the result is the same.  Defaults
+     * to `false`.
+     * 
+     */
     @Import(name="requireConsistent")
     private @Nullable Output<Boolean> requireConsistent;
 
+    /**
+     * @return When `true` force the client to perform a
+     * read on at least quorum servers and verify the result is the same.  Defaults
+     * to `false`.
+     * 
+     */
     public Optional<Output<Boolean>> requireConsistent() {
         return Optional.ofNullable(this.requireConsistent);
     }
 
+    /**
+     * Specify the Consul ACL token to use when performing the
+     * request.  This defaults to the same API token configured by the `consul`
+     * provider but may be overridden if necessary.
+     * 
+     */
     @Import(name="token")
     private @Nullable Output<String> token;
 
+    /**
+     * @return Specify the Consul ACL token to use when performing the
+     * request.  This defaults to the same API token configured by the `consul`
+     * provider but may be overridden if necessary.
+     * 
+     */
     public Optional<Output<String>> token() {
         return Optional.ofNullable(this.token);
     }
 
+    /**
+     * Index number used to enable blocking queries.
+     * 
+     */
     @Import(name="waitIndex")
     private @Nullable Output<Integer> waitIndex;
 
+    /**
+     * @return Index number used to enable blocking queries.
+     * 
+     */
     public Optional<Output<Integer>> waitIndex() {
         return Optional.ofNullable(this.waitIndex);
     }
 
+    /**
+     * Max time the client should wait for a blocking query
+     * to return.
+     * 
+     */
     @Import(name="waitTime")
     private @Nullable Output<String> waitTime;
 
+    /**
+     * @return Max time the client should wait for a blocking query
+     * to return.
+     * 
+     */
     public Optional<Output<String>> waitTime() {
         return Optional.ofNullable(this.waitTime);
     }
@@ -121,29 +195,73 @@ public final class GetCatalogServiceQueryOptionArgs extends com.pulumi.resources
             $ = new GetCatalogServiceQueryOptionArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param allowStale When `true`, the default, allow responses from
+         * Consul servers that are followers.
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowStale(@Nullable Output<Boolean> allowStale) {
             $.allowStale = allowStale;
             return this;
         }
 
+        /**
+         * @param allowStale When `true`, the default, allow responses from
+         * Consul servers that are followers.
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowStale(Boolean allowStale) {
             return allowStale(Output.of(allowStale));
         }
 
+        /**
+         * @param datacenter The Consul datacenter to query.  Defaults to the
+         * same value found in `query_options` parameter specified below, or if that is
+         * empty, the `datacenter` value found in the Consul agent that this provider is
+         * configured to talk to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder datacenter(@Nullable Output<String> datacenter) {
             $.datacenter = datacenter;
             return this;
         }
 
+        /**
+         * @param datacenter The Consul datacenter to query.  Defaults to the
+         * same value found in `query_options` parameter specified below, or if that is
+         * empty, the `datacenter` value found in the Consul agent that this provider is
+         * configured to talk to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder datacenter(String datacenter) {
             return datacenter(Output.of(datacenter));
         }
 
+        /**
+         * @param namespace The namespace to lookup the service.
+         * 
+         * @return builder
+         * 
+         */
         public Builder namespace(@Nullable Output<String> namespace) {
             $.namespace = namespace;
             return this;
         }
 
+        /**
+         * @param namespace The namespace to lookup the service.
+         * 
+         * @return builder
+         * 
+         */
         public Builder namespace(String namespace) {
             return namespace(Output.of(namespace));
         }
@@ -175,38 +293,96 @@ public final class GetCatalogServiceQueryOptionArgs extends com.pulumi.resources
             return partition(Output.of(partition));
         }
 
+        /**
+         * @param requireConsistent When `true` force the client to perform a
+         * read on at least quorum servers and verify the result is the same.  Defaults
+         * to `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder requireConsistent(@Nullable Output<Boolean> requireConsistent) {
             $.requireConsistent = requireConsistent;
             return this;
         }
 
+        /**
+         * @param requireConsistent When `true` force the client to perform a
+         * read on at least quorum servers and verify the result is the same.  Defaults
+         * to `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder requireConsistent(Boolean requireConsistent) {
             return requireConsistent(Output.of(requireConsistent));
         }
 
+        /**
+         * @param token Specify the Consul ACL token to use when performing the
+         * request.  This defaults to the same API token configured by the `consul`
+         * provider but may be overridden if necessary.
+         * 
+         * @return builder
+         * 
+         */
         public Builder token(@Nullable Output<String> token) {
             $.token = token;
             return this;
         }
 
+        /**
+         * @param token Specify the Consul ACL token to use when performing the
+         * request.  This defaults to the same API token configured by the `consul`
+         * provider but may be overridden if necessary.
+         * 
+         * @return builder
+         * 
+         */
         public Builder token(String token) {
             return token(Output.of(token));
         }
 
+        /**
+         * @param waitIndex Index number used to enable blocking queries.
+         * 
+         * @return builder
+         * 
+         */
         public Builder waitIndex(@Nullable Output<Integer> waitIndex) {
             $.waitIndex = waitIndex;
             return this;
         }
 
+        /**
+         * @param waitIndex Index number used to enable blocking queries.
+         * 
+         * @return builder
+         * 
+         */
         public Builder waitIndex(Integer waitIndex) {
             return waitIndex(Output.of(waitIndex));
         }
 
+        /**
+         * @param waitTime Max time the client should wait for a blocking query
+         * to return.
+         * 
+         * @return builder
+         * 
+         */
         public Builder waitTime(@Nullable Output<String> waitTime) {
             $.waitTime = waitTime;
             return this;
         }
 
+        /**
+         * @param waitTime Max time the client should wait for a blocking query
+         * to return.
+         * 
+         * @return builder
+         * 
+         */
         public Builder waitTime(String waitTime) {
             return waitTime(Output.of(waitTime));
         }

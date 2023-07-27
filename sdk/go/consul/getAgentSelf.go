@@ -4,6 +4,7 @@
 package consul
 
 import (
+	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -14,6 +15,7 @@ import (
 // [configuration and status data](https://www.consul.io/docs/agent/http/agent.html#agent_self)
 // from the agent specified in the `provider`.
 func GetAgentSelf(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetAgentSelfResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAgentSelfResult
 	err := ctx.Invoke("consul:index/getAgentSelf:getAgentSelf", nil, &rv, opts...)
 	if err != nil {
@@ -24,8 +26,19 @@ func GetAgentSelf(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetAgentSe
 
 // A collection of values returned by getAgentSelf.
 type GetAgentSelfResult struct {
-	AclDatacenter              string            `pulumi:"aclDatacenter"`
-	AclDefaultPolicy           string            `pulumi:"aclDefaultPolicy"`
+	AclDatacenter    string `pulumi:"aclDatacenter"`
+	AclDefaultPolicy string `pulumi:"aclDefaultPolicy"`
+	// * [`aclDownPolicy`](https://www.consul.io/docs/agent/options.html#acl_down_policy)
+	// * [`aclEnforce08Semantics`](https://www.consul.io/docs/agent/options.html#acl_enforce_version_8)
+	// * [`aclTtl`](https://www.consul.io/docs/agent/options.html#acl_ttl)
+	// * [`addresses`](https://www.consul.io/docs/agent/options.html#addresses)
+	// * [`advertiseAddr`](https://www.consul.io/docs/agent/options.html#_advertise)
+	// * [`advertiseAddrWan`](https://www.consul.io/docs/agent/options.html#_advertise-wan)
+	// * [`advertiseAddrs`](https://www.consul.io/docs/agent/options.html#advertise_addrs)
+	// * [`atlasJoin`](https://www.consul.io/docs/agent/options.html#_atlas_join)
+	// * [`bindAddr`](https://www.consul.io/docs/agent/options.html#_bind)
+	// * [`bootstrapExpect`](https://www.consul.io/docs/agent/options.html#_bootstrap_expect)
+	// * [`bootstrapMode`](https://www.consul.io/docs/agent/options.html#_bootstrap)
 	AclDisabledTtl             string            `pulumi:"aclDisabledTtl"`
 	AclDownPolicy              string            `pulumi:"aclDownPolicy"`
 	AclEnforce08Semantics      bool              `pulumi:"aclEnforce08Semantics"`
@@ -39,12 +52,14 @@ type GetAgentSelfResult struct {
 	BootstrapExpect            int               `pulumi:"bootstrapExpect"`
 	BootstrapMode              bool              `pulumi:"bootstrapMode"`
 	CheckDeregisterIntervalMin string            `pulumi:"checkDeregisterIntervalMin"`
-	CheckReapInterval          string            `pulumi:"checkReapInterval"`
-	CheckUpdateInterval        string            `pulumi:"checkUpdateInterval"`
-	ClientAddr                 string            `pulumi:"clientAddr"`
-	DataDir                    string            `pulumi:"dataDir"`
-	Datacenter                 string            `pulumi:"datacenter"`
-	DevMode                    bool              `pulumi:"devMode"`
+	// * [`checkUpdateInterval`](https://www.consul.io/docs/agent/options.html#check_update_interval)
+	// * [`clientAddr`](https://www.consul.io/docs/agent/options.html#_client)
+	CheckReapInterval   string `pulumi:"checkReapInterval"`
+	CheckUpdateInterval string `pulumi:"checkUpdateInterval"`
+	ClientAddr          string `pulumi:"clientAddr"`
+	DataDir             string `pulumi:"dataDir"`
+	Datacenter          string `pulumi:"datacenter"`
+	DevMode             bool   `pulumi:"devMode"`
 	// A map of DNS configuration attributes.  See below for details on the
 	// contents of the `dns` attribute.
 	// * [`dnsRecursors`](https://www.consul.io/docs/agent/options.html#recursors) - A
@@ -54,7 +69,10 @@ type GetAgentSelfResult struct {
 	// * [`devMode`](https://www.consul.io/docs/agent/options.html#_dev)
 	// * [`domain`](https://www.consul.io/docs/agent/options.html#_domain)
 	// * [`enableAnonymousSignature`](https://www.consul.io/docs/agent/options.html#disable_anonymous_signature)
-	// * `enableCoordinates`
+	Dns                      map[string]string `pulumi:"dns"`
+	DnsRecursors             []string          `pulumi:"dnsRecursors"`
+	Domain                   string            `pulumi:"domain"`
+	EnableAnonymousSignature bool              `pulumi:"enableAnonymousSignature"`
 	// * [`enableDebug`](https://www.consul.io/docs/agent/options.html#enable_debug)
 	// * [`enableRemoteExec`](https://www.consul.io/docs/agent/options.html#disable_remote_exec)
 	// * [`enableSyslog`](https://www.consul.io/docs/agent/options.html#_syslog)
@@ -103,57 +121,51 @@ type GetAgentSelfResult struct {
 	// * [`translateWanAddrs`](https://www.consul.io/docs/agent/options.html#translate_wan_addrs)
 	// * [`uiDir`](https://www.consul.io/docs/agent/options.html#ui_dir)
 	// * [`unixSockets`](https://www.consul.io/docs/agent/options.html#unix_sockets)
-	Dns                      map[string]string `pulumi:"dns"`
-	DnsRecursors             []string          `pulumi:"dnsRecursors"`
-	Domain                   string            `pulumi:"domain"`
-	EnableAnonymousSignature bool              `pulumi:"enableAnonymousSignature"`
-	EnableCoordinates        bool              `pulumi:"enableCoordinates"`
-	EnableDebug              bool              `pulumi:"enableDebug"`
-	EnableRemoteExec         bool              `pulumi:"enableRemoteExec"`
-	EnableSyslog             bool              `pulumi:"enableSyslog"`
-	EnableUi                 bool              `pulumi:"enableUi"`
-	EnableUpdateCheck        bool              `pulumi:"enableUpdateCheck"`
-	Id                       string            `pulumi:"id"`
-	LeaveOnInt               bool              `pulumi:"leaveOnInt"`
-	LeaveOnTerm              bool              `pulumi:"leaveOnTerm"`
-	LogLevel                 string            `pulumi:"logLevel"`
-	Name                     string            `pulumi:"name"`
-	Performance              map[string]string `pulumi:"performance"`
-	PidFile                  string            `pulumi:"pidFile"`
-	Ports                    map[string]int    `pulumi:"ports"`
-	ProtocolVersion          int               `pulumi:"protocolVersion"`
-	ReconnectTimeoutLan      string            `pulumi:"reconnectTimeoutLan"`
-	ReconnectTimeoutWan      string            `pulumi:"reconnectTimeoutWan"`
-	RejoinAfterLeave         bool              `pulumi:"rejoinAfterLeave"`
-	RetryJoinEc2             map[string]string `pulumi:"retryJoinEc2"`
-	RetryJoinGce             map[string]string `pulumi:"retryJoinGce"`
-	RetryJoinWans            []string          `pulumi:"retryJoinWans"`
-	RetryJoins               []string          `pulumi:"retryJoins"`
-	RetryMaxAttempts         int               `pulumi:"retryMaxAttempts"`
-	RetryMaxAttemptsWan      int               `pulumi:"retryMaxAttemptsWan"`
-	SerfLanBindAddr          string            `pulumi:"serfLanBindAddr"`
-	SerfWanBindAddr          string            `pulumi:"serfWanBindAddr"`
-	ServerMode               bool              `pulumi:"serverMode"`
-	ServerName               string            `pulumi:"serverName"`
-	SessionTtlMin            string            `pulumi:"sessionTtlMin"`
-	StartJoinWans            []string          `pulumi:"startJoinWans"`
-	StartJoins               []string          `pulumi:"startJoins"`
-	SyslogFacility           string            `pulumi:"syslogFacility"`
-	TaggedAddresses          map[string]string `pulumi:"taggedAddresses"`
-	Telemetry                map[string]string `pulumi:"telemetry"`
-	TlsCaFile                string            `pulumi:"tlsCaFile"`
-	TlsCertFile              string            `pulumi:"tlsCertFile"`
-	TlsKeyFile               string            `pulumi:"tlsKeyFile"`
-	TlsMinVersion            string            `pulumi:"tlsMinVersion"`
-	TlsVerifyIncoming        bool              `pulumi:"tlsVerifyIncoming"`
-	TlsVerifyOutgoing        bool              `pulumi:"tlsVerifyOutgoing"`
-	TlsVerifyServerHostname  bool              `pulumi:"tlsVerifyServerHostname"`
-	TranslateWanAddrs        bool              `pulumi:"translateWanAddrs"`
-	UiDir                    string            `pulumi:"uiDir"`
-	UnixSockets              map[string]string `pulumi:"unixSockets"`
+	EnableCoordinates       bool              `pulumi:"enableCoordinates"`
+	EnableDebug             bool              `pulumi:"enableDebug"`
+	EnableRemoteExec        bool              `pulumi:"enableRemoteExec"`
+	EnableSyslog            bool              `pulumi:"enableSyslog"`
+	EnableUi                bool              `pulumi:"enableUi"`
+	EnableUpdateCheck       bool              `pulumi:"enableUpdateCheck"`
+	Id                      string            `pulumi:"id"`
+	LeaveOnInt              bool              `pulumi:"leaveOnInt"`
+	LeaveOnTerm             bool              `pulumi:"leaveOnTerm"`
+	LogLevel                string            `pulumi:"logLevel"`
+	Name                    string            `pulumi:"name"`
+	Performance             map[string]string `pulumi:"performance"`
+	PidFile                 string            `pulumi:"pidFile"`
+	Ports                   map[string]int    `pulumi:"ports"`
+	ProtocolVersion         int               `pulumi:"protocolVersion"`
+	ReconnectTimeoutLan     string            `pulumi:"reconnectTimeoutLan"`
+	ReconnectTimeoutWan     string            `pulumi:"reconnectTimeoutWan"`
+	RejoinAfterLeave        bool              `pulumi:"rejoinAfterLeave"`
+	RetryJoinEc2            map[string]string `pulumi:"retryJoinEc2"`
+	RetryJoinGce            map[string]string `pulumi:"retryJoinGce"`
+	RetryJoinWans           []string          `pulumi:"retryJoinWans"`
+	RetryJoins              []string          `pulumi:"retryJoins"`
+	RetryMaxAttempts        int               `pulumi:"retryMaxAttempts"`
+	RetryMaxAttemptsWan     int               `pulumi:"retryMaxAttemptsWan"`
+	SerfLanBindAddr         string            `pulumi:"serfLanBindAddr"`
+	SerfWanBindAddr         string            `pulumi:"serfWanBindAddr"`
+	ServerMode              bool              `pulumi:"serverMode"`
+	ServerName              string            `pulumi:"serverName"`
+	SessionTtlMin           string            `pulumi:"sessionTtlMin"`
+	StartJoinWans           []string          `pulumi:"startJoinWans"`
+	StartJoins              []string          `pulumi:"startJoins"`
+	SyslogFacility          string            `pulumi:"syslogFacility"`
+	TaggedAddresses         map[string]string `pulumi:"taggedAddresses"`
+	Telemetry               map[string]string `pulumi:"telemetry"`
+	TlsCaFile               string            `pulumi:"tlsCaFile"`
+	TlsCertFile             string            `pulumi:"tlsCertFile"`
+	TlsKeyFile              string            `pulumi:"tlsKeyFile"`
+	TlsMinVersion           string            `pulumi:"tlsMinVersion"`
+	TlsVerifyIncoming       bool              `pulumi:"tlsVerifyIncoming"`
+	TlsVerifyOutgoing       bool              `pulumi:"tlsVerifyOutgoing"`
+	TlsVerifyServerHostname bool              `pulumi:"tlsVerifyServerHostname"`
+	TranslateWanAddrs       bool              `pulumi:"translateWanAddrs"`
+	UiDir                   string            `pulumi:"uiDir"`
+	UnixSockets             map[string]string `pulumi:"unixSockets"`
 	// The version of the Consul agent.
-	// * `versionPrerelease`
-	// * `versionRevision`
 	Version           string `pulumi:"version"`
 	VersionPrerelease string `pulumi:"versionPrerelease"`
 	VersionRevision   string `pulumi:"versionRevision"`

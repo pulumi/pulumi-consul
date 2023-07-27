@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Consul.Inputs
 {
 
-    public sealed class PreparedQueryFailoverArgs : Pulumi.ResourceArgs
+    public sealed class PreparedQueryFailoverArgs : global::Pulumi.ResourceArgs
     {
         [Input("datacenters")]
         private InputList<string>? _datacenters;
@@ -25,14 +25,26 @@ namespace Pulumi.Consul.Inputs
         }
 
         /// <summary>
-        /// Return results from this many datacenters,
-        /// sorted in ascending order of estimated RTT.
+        /// Return results from this many datacenters, sorted in ascending order of estimated RTT.
         /// </summary>
         [Input("nearestN")]
         public Input<int>? NearestN { get; set; }
 
+        [Input("targets")]
+        private InputList<Inputs.PreparedQueryFailoverTargetArgs>? _targets;
+
+        /// <summary>
+        /// Specifies a sequential list of remote datacenters and cluster peers to failover to if there are no healthy service instances in the local datacenter. This option cannot be used with `nearest_n` or `datacenters`.
+        /// </summary>
+        public InputList<Inputs.PreparedQueryFailoverTargetArgs> Targets
+        {
+            get => _targets ?? (_targets = new InputList<Inputs.PreparedQueryFailoverTargetArgs>());
+            set => _targets = value;
+        }
+
         public PreparedQueryFailoverArgs()
         {
         }
+        public static new PreparedQueryFailoverArgs Empty => new PreparedQueryFailoverArgs();
     }
 }

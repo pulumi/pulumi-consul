@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -83,6 +84,14 @@ func NewNetworkArea(ctx *pulumi.Context,
 	if args.PeerDatacenter == nil {
 		return nil, errors.New("invalid value for required argument 'PeerDatacenter'")
 	}
+	if args.Token != nil {
+		args.Token = pulumi.ToSecret(args.Token).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"token",
+	})
+	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource NetworkArea
 	err := ctx.RegisterResource("consul:index/networkArea:NetworkArea", name, args, &resource, opts...)
 	if err != nil {
@@ -278,6 +287,39 @@ func (o NetworkAreaOutput) ToNetworkAreaOutput() NetworkAreaOutput {
 
 func (o NetworkAreaOutput) ToNetworkAreaOutputWithContext(ctx context.Context) NetworkAreaOutput {
 	return o
+}
+
+// The datacenter to use. This overrides the
+// agent's default datacenter and the datacenter in the provider setup.
+func (o NetworkAreaOutput) Datacenter() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkArea) pulumi.StringOutput { return v.Datacenter }).(pulumi.StringOutput)
+}
+
+// The name of the Consul datacenter that will be
+// joined to form the area.
+func (o NetworkAreaOutput) PeerDatacenter() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkArea) pulumi.StringOutput { return v.PeerDatacenter }).(pulumi.StringOutput)
+}
+
+// Specifies a list of Consul servers to attempt to
+// join. Servers can be given as `IP`, `IP:port`, `hostname`, or `hostname:port`.
+func (o NetworkAreaOutput) RetryJoins() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NetworkArea) pulumi.StringArrayOutput { return v.RetryJoins }).(pulumi.StringArrayOutput)
+}
+
+// The ACL token to use. This overrides the
+// token that the agent provides by default.
+//
+// Deprecated: The token argument has been deprecated and will be removed in a future release.
+// Please use the token argument in the provider configuration
+func (o NetworkAreaOutput) Token() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkArea) pulumi.StringPtrOutput { return v.Token }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether gossip over this area should be
+// encrypted with TLS if possible. Defaults to `false`.
+func (o NetworkAreaOutput) UseTls() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NetworkArea) pulumi.BoolPtrOutput { return v.UseTls }).(pulumi.BoolPtrOutput)
 }
 
 type NetworkAreaArrayOutput struct{ *pulumi.OutputState }

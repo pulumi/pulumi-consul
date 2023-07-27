@@ -19,25 +19,24 @@ namespace Pulumi.Consul
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using System.IO;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Consul = Pulumi.Consul;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var license = new Consul.License("license", new()
     ///     {
-    ///         var license = new Consul.License("license", new Consul.LicenseArgs
-    ///         {
-    ///             License = File.ReadAllText("license.hclic"),
-    ///         });
-    ///     }
+    ///         ConsulLicense = File.ReadAllText("license.hclic"),
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [ConsulResourceType("consul:index/license:License")]
-    public partial class License : Pulumi.CustomResource
+    public partial class License : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the customer the license is attached to.
@@ -135,6 +134,10 @@ namespace Pulumi.Consul
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "license",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -156,7 +159,7 @@ namespace Pulumi.Consul
         }
     }
 
-    public sealed class LicenseArgs : Pulumi.ResourceArgs
+    public sealed class LicenseArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The datacenter to use. This overrides the
@@ -165,18 +168,29 @@ namespace Pulumi.Consul
         [Input("datacenter")]
         public Input<string>? Datacenter { get; set; }
 
+        [Input("license", required: true)]
+        private Input<string>? _license;
+
         /// <summary>
         /// The Consul license to use.
         /// </summary>
-        [Input("license", required: true)]
-        public Input<string> ConsulLicense { get; set; } = null!;
+        public Input<string>? ConsulLicense
+        {
+            get => _license;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _license = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public LicenseArgs()
         {
         }
+        public static new LicenseArgs Empty => new LicenseArgs();
     }
 
-    public sealed class LicenseState : Pulumi.ResourceArgs
+    public sealed class LicenseState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the customer the license is attached to.
@@ -221,11 +235,21 @@ namespace Pulumi.Consul
         [Input("issueTime")]
         public Input<string>? IssueTime { get; set; }
 
+        [Input("license")]
+        private Input<string>? _license;
+
         /// <summary>
         /// The Consul license to use.
         /// </summary>
-        [Input("license")]
-        public Input<string>? ConsulLicense { get; set; }
+        public Input<string>? ConsulLicense
+        {
+            get => _license;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _license = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The ID of the license used.
@@ -266,5 +290,6 @@ namespace Pulumi.Consul
         public LicenseState()
         {
         }
+        public static new LicenseState Empty => new LicenseState();
     }
 }

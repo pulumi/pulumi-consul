@@ -162,12 +162,16 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     /**
      * The partition the service is associated with.
      * 
+     * The following attributes are available for each health-check:
+     * 
      */
     @Import(name="partition")
     private @Nullable Output<String> partition;
 
     /**
      * @return The partition the service is associated with.
+     * 
+     * The following attributes are available for each health-check:
      * 
      */
     public Optional<Output<String>> partition() {
@@ -190,15 +194,15 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * - If the service ID is not provided, it will be defaulted to the value
-     *   of the `name` attribute.
+     * If the service ID is not provided, it will be defaulted to the value
+     * of the `name` attribute.
      * 
      */
     @Import(name="serviceId")
     private @Nullable Output<String> serviceId;
 
     /**
-     * @return - If the service ID is not provided, it will be defaulted to the value
+     * @return If the service ID is not provided, it will be defaulted to the value
      * of the `name` attribute.
      * 
      */
@@ -455,6 +459,8 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param partition The partition the service is associated with.
          * 
+         * The following attributes are available for each health-check:
+         * 
          * @return builder
          * 
          */
@@ -465,6 +471,8 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param partition The partition the service is associated with.
+         * 
+         * The following attributes are available for each health-check:
          * 
          * @return builder
          * 
@@ -495,7 +503,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceId - If the service ID is not provided, it will be defaulted to the value
+         * @param serviceId If the service ID is not provided, it will be defaulted to the value
          * of the `name` attribute.
          * 
          * @return builder
@@ -507,7 +515,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceId - If the service ID is not provided, it will be defaulted to the value
+         * @param serviceId If the service ID is not provided, it will be defaulted to the value
          * of the `name` attribute.
          * 
          * @return builder

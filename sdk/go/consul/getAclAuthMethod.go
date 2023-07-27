@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			test, err := consul.LookupAclAuthMethod(ctx, &GetAclAuthMethodArgs{
+//			test, err := consul.LookupAclAuthMethod(ctx, &consul.LookupAclAuthMethodArgs{
 //				Name: "minikube",
 //			}, nil)
 //			if err != nil {
@@ -40,6 +41,7 @@ import (
 //
 // ```
 func LookupAclAuthMethod(ctx *pulumi.Context, args *LookupAclAuthMethodArgs, opts ...pulumi.InvokeOption) (*LookupAclAuthMethodResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAclAuthMethodResult
 	err := ctx.Invoke("consul:index/getAclAuthMethod:getAclAuthMethod", args, &rv, opts...)
 	if err != nil {

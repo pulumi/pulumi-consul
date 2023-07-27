@@ -7,13 +7,85 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Import
+// ## Example Usage
 //
-// `consul_prepared_query` can be imported with the query's ID in the Consul HTTP API.
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := consul.NewPreparedQuery(ctx, "myapp-query", &consul.PreparedQueryArgs{
+//				Datacenter: pulumi.String("us-central1"),
+//				Dns: &consul.PreparedQueryDnsArgs{
+//					Ttl: pulumi.String("30s"),
+//				},
+//				Failover: &consul.PreparedQueryFailoverArgs{
+//					Datacenters: pulumi.StringArray{
+//						pulumi.String("us-west1"),
+//						pulumi.String("us-east-2"),
+//						pulumi.String("asia-east1"),
+//					},
+//					NearestN: pulumi.Int(3),
+//				},
+//				Near:        pulumi.String("_agent"),
+//				OnlyPassing: pulumi.Bool(true),
+//				Service:     pulumi.String("myapp"),
+//				StoredToken: pulumi.String("wxyz"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("active"),
+//					pulumi.String("!standby"),
+//				},
+//				Token: pulumi.String("abcd"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = consul.NewPreparedQuery(ctx, "service-near-self", &consul.PreparedQueryArgs{
+//				Connect:    pulumi.Bool(true),
+//				Datacenter: pulumi.String("nyc1"),
+//				Dns: &consul.PreparedQueryDnsArgs{
+//					Ttl: pulumi.String("5m"),
+//				},
+//				Failover: &consul.PreparedQueryFailoverArgs{
+//					Datacenters: pulumi.StringArray{
+//						pulumi.String("dc2"),
+//						pulumi.String("dc3"),
+//						pulumi.String("dc4"),
+//					},
+//					NearestN: pulumi.Int(3),
+//				},
+//				Near:        pulumi.String("_agent"),
+//				OnlyPassing: pulumi.Bool(true),
+//				Service:     pulumi.String("${match(1)}"),
+//				StoredToken: pulumi.String("wxyz"),
+//				Template: &consul.PreparedQueryTemplateArgs{
+//					Regexp: pulumi.String("^(.*)-near-self$"),
+//					Type:   pulumi.String("name_prefix_match"),
+//				},
+//				Token: pulumi.String("abcd"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
 //
 // ```sh
 //
@@ -23,65 +95,37 @@ import (
 type PreparedQuery struct {
 	pulumi.CustomResourceState
 
-	// When `true` the prepared query will return connect
-	// proxy services for a queried service.  Conditions such as `tags` in the
-	// prepared query will be matched against the proxy service. Defaults to false.
+	// When `true` the prepared query will return connect proxy services for a queried service.  Conditions such as `tags` in the prepared query will be matched against the proxy service. Defaults to false.
 	Connect pulumi.BoolPtrOutput `pulumi:"connect"`
-	// The datacenter to use. This overrides the
-	// agent's default datacenter and the datacenter in the provider setup.
+	// The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
 	Datacenter pulumi.StringPtrOutput `pulumi:"datacenter"`
 	// Settings for controlling the DNS response details.
 	Dns PreparedQueryDnsPtrOutput `pulumi:"dns"`
-	// Options for controlling behavior when no healthy
-	// nodes are available in the local DC.
+	// Options for controlling behavior when no healthy nodes are available in the local DC.
 	Failover PreparedQueryFailoverPtrOutput `pulumi:"failover"`
-	// Specifies a list of check IDs that should be
-	// ignored when filtering unhealthy instances. This is mostly useful in an
-	// emergency or as a temporary measure when a health check is found to be
-	// unreliable. Being able to ignore it in centrally-defined queries can be
-	// simpler than de-registering the check as an interim solution until the check
-	// can be fixed.
+	// Specifies a list of check IDs that should be ignored when filtering unhealthy instances. This is mostly useful in an emergency or as a temporary measure when a health check is found to be unreliable. Being able to ignore it in centrally-defined queries can be simpler than de-registering the check as an interim solution until the check can be fixed.
 	IgnoreCheckIds pulumi.StringArrayOutput `pulumi:"ignoreCheckIds"`
-	// The name of the prepared query. Used to identify
-	// the prepared query during requests. Can be specified as an empty string
-	// to configure the query as a catch-all.
+	// The name of the prepared query. Used to identify the prepared query during requests. Can be specified as an empty string to configure the query as a catch-all.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Allows specifying the name of a node to sort results
-	// near using Consul's distance sorting and network coordinates. The magic
-	// `_agent` value can be used to always sort nearest the node servicing the
-	// request.
+	// Allows specifying the name of a node to sort results near using Consul's distance sorting and network coordinates. The magic `_agent` value can be used to always sort nearest the node servicing the request.
 	Near pulumi.StringPtrOutput `pulumi:"near"`
-	// Specifies a list of user-defined key/value pairs that
-	// will be used for filtering the query results to nodes with the given metadata
-	// values present.
+	// Specifies a list of user-defined key/value pairs that will be used for filtering the query results to nodes with the given metadata values present.
 	NodeMeta pulumi.StringMapOutput `pulumi:"nodeMeta"`
-	// When `true`, the prepared query will only
-	// return nodes with passing health checks in the result.
+	// When `true`, the prepared query will only return nodes with passing health checks in the result.
 	OnlyPassing pulumi.BoolPtrOutput `pulumi:"onlyPassing"`
-	// The name of the service to query.
+	// The name of the service to query
 	Service pulumi.StringOutput `pulumi:"service"`
-	// Specifies a list of user-defined key/value pairs
-	// that will be used for filtering the query results to services with the given
-	// metadata values present.
+	// Specifies a list of user-defined key/value pairs that will be used for filtering the query results to services with the given metadata values present.
 	ServiceMeta pulumi.StringMapOutput `pulumi:"serviceMeta"`
-	// The name of the Consul session to tie this query's
-	// lifetime to.  This is an advanced parameter that should not be used without a
-	// complete understanding of Consul sessions and the implications of their use
-	// (it is recommended to leave this blank in nearly all cases).  If this
-	// parameter is omitted the query will not expire.
+	// The name of the Consul session to tie this query's lifetime to.  This is an advanced parameter that should not be used without a complete understanding of Consul sessions and the implications of their use (it is recommended to leave this blank in nearly all cases).  If this parameter is omitted the query will not expire.
 	Session pulumi.StringPtrOutput `pulumi:"session"`
-	// The ACL token to store with the prepared
-	// query. This token will be used by default whenever the query is executed.
+	// The ACL token to store with the prepared query. This token will be used by default whenever the query is executed.
 	StoredToken pulumi.StringPtrOutput `pulumi:"storedToken"`
-	// The list of required and/or disallowed tags.  If a tag is
-	// in this list it must be present.  If the tag is preceded with a "!" then it is
-	// disallowed.
+	// The list of required and/or disallowed tags.  If a tag is in this list it must be present.  If the tag is preceded with a "!" then it is disallowed.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
-	// Query templating options. This is used to make a
-	// single prepared query respond to many different requests.
+	// Query templating options. This is used to make a single prepared query respond to many different requests
 	Template PreparedQueryTemplatePtrOutput `pulumi:"template"`
-	// The ACL token to use when saving the prepared query.
-	// This overrides the token that the agent provides by default.
+	// The ACL token to use when saving the prepared query. This overrides the token that the agent provides by default.
 	//
 	// Deprecated: The token argument has been deprecated and will be removed in a future release.
 	// Please use the token argument in the provider configuration
@@ -98,6 +142,14 @@ func NewPreparedQuery(ctx *pulumi.Context,
 	if args.Service == nil {
 		return nil, errors.New("invalid value for required argument 'Service'")
 	}
+	if args.Token != nil {
+		args.Token = pulumi.ToSecret(args.Token).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"token",
+	})
+	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource PreparedQuery
 	err := ctx.RegisterResource("consul:index/preparedQuery:PreparedQuery", name, args, &resource, opts...)
 	if err != nil {
@@ -120,65 +172,37 @@ func GetPreparedQuery(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PreparedQuery resources.
 type preparedQueryState struct {
-	// When `true` the prepared query will return connect
-	// proxy services for a queried service.  Conditions such as `tags` in the
-	// prepared query will be matched against the proxy service. Defaults to false.
+	// When `true` the prepared query will return connect proxy services for a queried service.  Conditions such as `tags` in the prepared query will be matched against the proxy service. Defaults to false.
 	Connect *bool `pulumi:"connect"`
-	// The datacenter to use. This overrides the
-	// agent's default datacenter and the datacenter in the provider setup.
+	// The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
 	Datacenter *string `pulumi:"datacenter"`
 	// Settings for controlling the DNS response details.
 	Dns *PreparedQueryDns `pulumi:"dns"`
-	// Options for controlling behavior when no healthy
-	// nodes are available in the local DC.
+	// Options for controlling behavior when no healthy nodes are available in the local DC.
 	Failover *PreparedQueryFailover `pulumi:"failover"`
-	// Specifies a list of check IDs that should be
-	// ignored when filtering unhealthy instances. This is mostly useful in an
-	// emergency or as a temporary measure when a health check is found to be
-	// unreliable. Being able to ignore it in centrally-defined queries can be
-	// simpler than de-registering the check as an interim solution until the check
-	// can be fixed.
+	// Specifies a list of check IDs that should be ignored when filtering unhealthy instances. This is mostly useful in an emergency or as a temporary measure when a health check is found to be unreliable. Being able to ignore it in centrally-defined queries can be simpler than de-registering the check as an interim solution until the check can be fixed.
 	IgnoreCheckIds []string `pulumi:"ignoreCheckIds"`
-	// The name of the prepared query. Used to identify
-	// the prepared query during requests. Can be specified as an empty string
-	// to configure the query as a catch-all.
+	// The name of the prepared query. Used to identify the prepared query during requests. Can be specified as an empty string to configure the query as a catch-all.
 	Name *string `pulumi:"name"`
-	// Allows specifying the name of a node to sort results
-	// near using Consul's distance sorting and network coordinates. The magic
-	// `_agent` value can be used to always sort nearest the node servicing the
-	// request.
+	// Allows specifying the name of a node to sort results near using Consul's distance sorting and network coordinates. The magic `_agent` value can be used to always sort nearest the node servicing the request.
 	Near *string `pulumi:"near"`
-	// Specifies a list of user-defined key/value pairs that
-	// will be used for filtering the query results to nodes with the given metadata
-	// values present.
+	// Specifies a list of user-defined key/value pairs that will be used for filtering the query results to nodes with the given metadata values present.
 	NodeMeta map[string]string `pulumi:"nodeMeta"`
-	// When `true`, the prepared query will only
-	// return nodes with passing health checks in the result.
+	// When `true`, the prepared query will only return nodes with passing health checks in the result.
 	OnlyPassing *bool `pulumi:"onlyPassing"`
-	// The name of the service to query.
+	// The name of the service to query
 	Service *string `pulumi:"service"`
-	// Specifies a list of user-defined key/value pairs
-	// that will be used for filtering the query results to services with the given
-	// metadata values present.
+	// Specifies a list of user-defined key/value pairs that will be used for filtering the query results to services with the given metadata values present.
 	ServiceMeta map[string]string `pulumi:"serviceMeta"`
-	// The name of the Consul session to tie this query's
-	// lifetime to.  This is an advanced parameter that should not be used without a
-	// complete understanding of Consul sessions and the implications of their use
-	// (it is recommended to leave this blank in nearly all cases).  If this
-	// parameter is omitted the query will not expire.
+	// The name of the Consul session to tie this query's lifetime to.  This is an advanced parameter that should not be used without a complete understanding of Consul sessions and the implications of their use (it is recommended to leave this blank in nearly all cases).  If this parameter is omitted the query will not expire.
 	Session *string `pulumi:"session"`
-	// The ACL token to store with the prepared
-	// query. This token will be used by default whenever the query is executed.
+	// The ACL token to store with the prepared query. This token will be used by default whenever the query is executed.
 	StoredToken *string `pulumi:"storedToken"`
-	// The list of required and/or disallowed tags.  If a tag is
-	// in this list it must be present.  If the tag is preceded with a "!" then it is
-	// disallowed.
+	// The list of required and/or disallowed tags.  If a tag is in this list it must be present.  If the tag is preceded with a "!" then it is disallowed.
 	Tags []string `pulumi:"tags"`
-	// Query templating options. This is used to make a
-	// single prepared query respond to many different requests.
+	// Query templating options. This is used to make a single prepared query respond to many different requests
 	Template *PreparedQueryTemplate `pulumi:"template"`
-	// The ACL token to use when saving the prepared query.
-	// This overrides the token that the agent provides by default.
+	// The ACL token to use when saving the prepared query. This overrides the token that the agent provides by default.
 	//
 	// Deprecated: The token argument has been deprecated and will be removed in a future release.
 	// Please use the token argument in the provider configuration
@@ -186,65 +210,37 @@ type preparedQueryState struct {
 }
 
 type PreparedQueryState struct {
-	// When `true` the prepared query will return connect
-	// proxy services for a queried service.  Conditions such as `tags` in the
-	// prepared query will be matched against the proxy service. Defaults to false.
+	// When `true` the prepared query will return connect proxy services for a queried service.  Conditions such as `tags` in the prepared query will be matched against the proxy service. Defaults to false.
 	Connect pulumi.BoolPtrInput
-	// The datacenter to use. This overrides the
-	// agent's default datacenter and the datacenter in the provider setup.
+	// The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
 	Datacenter pulumi.StringPtrInput
 	// Settings for controlling the DNS response details.
 	Dns PreparedQueryDnsPtrInput
-	// Options for controlling behavior when no healthy
-	// nodes are available in the local DC.
+	// Options for controlling behavior when no healthy nodes are available in the local DC.
 	Failover PreparedQueryFailoverPtrInput
-	// Specifies a list of check IDs that should be
-	// ignored when filtering unhealthy instances. This is mostly useful in an
-	// emergency or as a temporary measure when a health check is found to be
-	// unreliable. Being able to ignore it in centrally-defined queries can be
-	// simpler than de-registering the check as an interim solution until the check
-	// can be fixed.
+	// Specifies a list of check IDs that should be ignored when filtering unhealthy instances. This is mostly useful in an emergency or as a temporary measure when a health check is found to be unreliable. Being able to ignore it in centrally-defined queries can be simpler than de-registering the check as an interim solution until the check can be fixed.
 	IgnoreCheckIds pulumi.StringArrayInput
-	// The name of the prepared query. Used to identify
-	// the prepared query during requests. Can be specified as an empty string
-	// to configure the query as a catch-all.
+	// The name of the prepared query. Used to identify the prepared query during requests. Can be specified as an empty string to configure the query as a catch-all.
 	Name pulumi.StringPtrInput
-	// Allows specifying the name of a node to sort results
-	// near using Consul's distance sorting and network coordinates. The magic
-	// `_agent` value can be used to always sort nearest the node servicing the
-	// request.
+	// Allows specifying the name of a node to sort results near using Consul's distance sorting and network coordinates. The magic `_agent` value can be used to always sort nearest the node servicing the request.
 	Near pulumi.StringPtrInput
-	// Specifies a list of user-defined key/value pairs that
-	// will be used for filtering the query results to nodes with the given metadata
-	// values present.
+	// Specifies a list of user-defined key/value pairs that will be used for filtering the query results to nodes with the given metadata values present.
 	NodeMeta pulumi.StringMapInput
-	// When `true`, the prepared query will only
-	// return nodes with passing health checks in the result.
+	// When `true`, the prepared query will only return nodes with passing health checks in the result.
 	OnlyPassing pulumi.BoolPtrInput
-	// The name of the service to query.
+	// The name of the service to query
 	Service pulumi.StringPtrInput
-	// Specifies a list of user-defined key/value pairs
-	// that will be used for filtering the query results to services with the given
-	// metadata values present.
+	// Specifies a list of user-defined key/value pairs that will be used for filtering the query results to services with the given metadata values present.
 	ServiceMeta pulumi.StringMapInput
-	// The name of the Consul session to tie this query's
-	// lifetime to.  This is an advanced parameter that should not be used without a
-	// complete understanding of Consul sessions and the implications of their use
-	// (it is recommended to leave this blank in nearly all cases).  If this
-	// parameter is omitted the query will not expire.
+	// The name of the Consul session to tie this query's lifetime to.  This is an advanced parameter that should not be used without a complete understanding of Consul sessions and the implications of their use (it is recommended to leave this blank in nearly all cases).  If this parameter is omitted the query will not expire.
 	Session pulumi.StringPtrInput
-	// The ACL token to store with the prepared
-	// query. This token will be used by default whenever the query is executed.
+	// The ACL token to store with the prepared query. This token will be used by default whenever the query is executed.
 	StoredToken pulumi.StringPtrInput
-	// The list of required and/or disallowed tags.  If a tag is
-	// in this list it must be present.  If the tag is preceded with a "!" then it is
-	// disallowed.
+	// The list of required and/or disallowed tags.  If a tag is in this list it must be present.  If the tag is preceded with a "!" then it is disallowed.
 	Tags pulumi.StringArrayInput
-	// Query templating options. This is used to make a
-	// single prepared query respond to many different requests.
+	// Query templating options. This is used to make a single prepared query respond to many different requests
 	Template PreparedQueryTemplatePtrInput
-	// The ACL token to use when saving the prepared query.
-	// This overrides the token that the agent provides by default.
+	// The ACL token to use when saving the prepared query. This overrides the token that the agent provides by default.
 	//
 	// Deprecated: The token argument has been deprecated and will be removed in a future release.
 	// Please use the token argument in the provider configuration
@@ -256,65 +252,37 @@ func (PreparedQueryState) ElementType() reflect.Type {
 }
 
 type preparedQueryArgs struct {
-	// When `true` the prepared query will return connect
-	// proxy services for a queried service.  Conditions such as `tags` in the
-	// prepared query will be matched against the proxy service. Defaults to false.
+	// When `true` the prepared query will return connect proxy services for a queried service.  Conditions such as `tags` in the prepared query will be matched against the proxy service. Defaults to false.
 	Connect *bool `pulumi:"connect"`
-	// The datacenter to use. This overrides the
-	// agent's default datacenter and the datacenter in the provider setup.
+	// The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
 	Datacenter *string `pulumi:"datacenter"`
 	// Settings for controlling the DNS response details.
 	Dns *PreparedQueryDns `pulumi:"dns"`
-	// Options for controlling behavior when no healthy
-	// nodes are available in the local DC.
+	// Options for controlling behavior when no healthy nodes are available in the local DC.
 	Failover *PreparedQueryFailover `pulumi:"failover"`
-	// Specifies a list of check IDs that should be
-	// ignored when filtering unhealthy instances. This is mostly useful in an
-	// emergency or as a temporary measure when a health check is found to be
-	// unreliable. Being able to ignore it in centrally-defined queries can be
-	// simpler than de-registering the check as an interim solution until the check
-	// can be fixed.
+	// Specifies a list of check IDs that should be ignored when filtering unhealthy instances. This is mostly useful in an emergency or as a temporary measure when a health check is found to be unreliable. Being able to ignore it in centrally-defined queries can be simpler than de-registering the check as an interim solution until the check can be fixed.
 	IgnoreCheckIds []string `pulumi:"ignoreCheckIds"`
-	// The name of the prepared query. Used to identify
-	// the prepared query during requests. Can be specified as an empty string
-	// to configure the query as a catch-all.
+	// The name of the prepared query. Used to identify the prepared query during requests. Can be specified as an empty string to configure the query as a catch-all.
 	Name *string `pulumi:"name"`
-	// Allows specifying the name of a node to sort results
-	// near using Consul's distance sorting and network coordinates. The magic
-	// `_agent` value can be used to always sort nearest the node servicing the
-	// request.
+	// Allows specifying the name of a node to sort results near using Consul's distance sorting and network coordinates. The magic `_agent` value can be used to always sort nearest the node servicing the request.
 	Near *string `pulumi:"near"`
-	// Specifies a list of user-defined key/value pairs that
-	// will be used for filtering the query results to nodes with the given metadata
-	// values present.
+	// Specifies a list of user-defined key/value pairs that will be used for filtering the query results to nodes with the given metadata values present.
 	NodeMeta map[string]string `pulumi:"nodeMeta"`
-	// When `true`, the prepared query will only
-	// return nodes with passing health checks in the result.
+	// When `true`, the prepared query will only return nodes with passing health checks in the result.
 	OnlyPassing *bool `pulumi:"onlyPassing"`
-	// The name of the service to query.
+	// The name of the service to query
 	Service string `pulumi:"service"`
-	// Specifies a list of user-defined key/value pairs
-	// that will be used for filtering the query results to services with the given
-	// metadata values present.
+	// Specifies a list of user-defined key/value pairs that will be used for filtering the query results to services with the given metadata values present.
 	ServiceMeta map[string]string `pulumi:"serviceMeta"`
-	// The name of the Consul session to tie this query's
-	// lifetime to.  This is an advanced parameter that should not be used without a
-	// complete understanding of Consul sessions and the implications of their use
-	// (it is recommended to leave this blank in nearly all cases).  If this
-	// parameter is omitted the query will not expire.
+	// The name of the Consul session to tie this query's lifetime to.  This is an advanced parameter that should not be used without a complete understanding of Consul sessions and the implications of their use (it is recommended to leave this blank in nearly all cases).  If this parameter is omitted the query will not expire.
 	Session *string `pulumi:"session"`
-	// The ACL token to store with the prepared
-	// query. This token will be used by default whenever the query is executed.
+	// The ACL token to store with the prepared query. This token will be used by default whenever the query is executed.
 	StoredToken *string `pulumi:"storedToken"`
-	// The list of required and/or disallowed tags.  If a tag is
-	// in this list it must be present.  If the tag is preceded with a "!" then it is
-	// disallowed.
+	// The list of required and/or disallowed tags.  If a tag is in this list it must be present.  If the tag is preceded with a "!" then it is disallowed.
 	Tags []string `pulumi:"tags"`
-	// Query templating options. This is used to make a
-	// single prepared query respond to many different requests.
+	// Query templating options. This is used to make a single prepared query respond to many different requests
 	Template *PreparedQueryTemplate `pulumi:"template"`
-	// The ACL token to use when saving the prepared query.
-	// This overrides the token that the agent provides by default.
+	// The ACL token to use when saving the prepared query. This overrides the token that the agent provides by default.
 	//
 	// Deprecated: The token argument has been deprecated and will be removed in a future release.
 	// Please use the token argument in the provider configuration
@@ -323,65 +291,37 @@ type preparedQueryArgs struct {
 
 // The set of arguments for constructing a PreparedQuery resource.
 type PreparedQueryArgs struct {
-	// When `true` the prepared query will return connect
-	// proxy services for a queried service.  Conditions such as `tags` in the
-	// prepared query will be matched against the proxy service. Defaults to false.
+	// When `true` the prepared query will return connect proxy services for a queried service.  Conditions such as `tags` in the prepared query will be matched against the proxy service. Defaults to false.
 	Connect pulumi.BoolPtrInput
-	// The datacenter to use. This overrides the
-	// agent's default datacenter and the datacenter in the provider setup.
+	// The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
 	Datacenter pulumi.StringPtrInput
 	// Settings for controlling the DNS response details.
 	Dns PreparedQueryDnsPtrInput
-	// Options for controlling behavior when no healthy
-	// nodes are available in the local DC.
+	// Options for controlling behavior when no healthy nodes are available in the local DC.
 	Failover PreparedQueryFailoverPtrInput
-	// Specifies a list of check IDs that should be
-	// ignored when filtering unhealthy instances. This is mostly useful in an
-	// emergency or as a temporary measure when a health check is found to be
-	// unreliable. Being able to ignore it in centrally-defined queries can be
-	// simpler than de-registering the check as an interim solution until the check
-	// can be fixed.
+	// Specifies a list of check IDs that should be ignored when filtering unhealthy instances. This is mostly useful in an emergency or as a temporary measure when a health check is found to be unreliable. Being able to ignore it in centrally-defined queries can be simpler than de-registering the check as an interim solution until the check can be fixed.
 	IgnoreCheckIds pulumi.StringArrayInput
-	// The name of the prepared query. Used to identify
-	// the prepared query during requests. Can be specified as an empty string
-	// to configure the query as a catch-all.
+	// The name of the prepared query. Used to identify the prepared query during requests. Can be specified as an empty string to configure the query as a catch-all.
 	Name pulumi.StringPtrInput
-	// Allows specifying the name of a node to sort results
-	// near using Consul's distance sorting and network coordinates. The magic
-	// `_agent` value can be used to always sort nearest the node servicing the
-	// request.
+	// Allows specifying the name of a node to sort results near using Consul's distance sorting and network coordinates. The magic `_agent` value can be used to always sort nearest the node servicing the request.
 	Near pulumi.StringPtrInput
-	// Specifies a list of user-defined key/value pairs that
-	// will be used for filtering the query results to nodes with the given metadata
-	// values present.
+	// Specifies a list of user-defined key/value pairs that will be used for filtering the query results to nodes with the given metadata values present.
 	NodeMeta pulumi.StringMapInput
-	// When `true`, the prepared query will only
-	// return nodes with passing health checks in the result.
+	// When `true`, the prepared query will only return nodes with passing health checks in the result.
 	OnlyPassing pulumi.BoolPtrInput
-	// The name of the service to query.
+	// The name of the service to query
 	Service pulumi.StringInput
-	// Specifies a list of user-defined key/value pairs
-	// that will be used for filtering the query results to services with the given
-	// metadata values present.
+	// Specifies a list of user-defined key/value pairs that will be used for filtering the query results to services with the given metadata values present.
 	ServiceMeta pulumi.StringMapInput
-	// The name of the Consul session to tie this query's
-	// lifetime to.  This is an advanced parameter that should not be used without a
-	// complete understanding of Consul sessions and the implications of their use
-	// (it is recommended to leave this blank in nearly all cases).  If this
-	// parameter is omitted the query will not expire.
+	// The name of the Consul session to tie this query's lifetime to.  This is an advanced parameter that should not be used without a complete understanding of Consul sessions and the implications of their use (it is recommended to leave this blank in nearly all cases).  If this parameter is omitted the query will not expire.
 	Session pulumi.StringPtrInput
-	// The ACL token to store with the prepared
-	// query. This token will be used by default whenever the query is executed.
+	// The ACL token to store with the prepared query. This token will be used by default whenever the query is executed.
 	StoredToken pulumi.StringPtrInput
-	// The list of required and/or disallowed tags.  If a tag is
-	// in this list it must be present.  If the tag is preceded with a "!" then it is
-	// disallowed.
+	// The list of required and/or disallowed tags.  If a tag is in this list it must be present.  If the tag is preceded with a "!" then it is disallowed.
 	Tags pulumi.StringArrayInput
-	// Query templating options. This is used to make a
-	// single prepared query respond to many different requests.
+	// Query templating options. This is used to make a single prepared query respond to many different requests
 	Template PreparedQueryTemplatePtrInput
-	// The ACL token to use when saving the prepared query.
-	// This overrides the token that the agent provides by default.
+	// The ACL token to use when saving the prepared query. This overrides the token that the agent provides by default.
 	//
 	// Deprecated: The token argument has been deprecated and will be removed in a future release.
 	// Please use the token argument in the provider configuration
@@ -473,6 +413,89 @@ func (o PreparedQueryOutput) ToPreparedQueryOutput() PreparedQueryOutput {
 
 func (o PreparedQueryOutput) ToPreparedQueryOutputWithContext(ctx context.Context) PreparedQueryOutput {
 	return o
+}
+
+// When `true` the prepared query will return connect proxy services for a queried service.  Conditions such as `tags` in the prepared query will be matched against the proxy service. Defaults to false.
+func (o PreparedQueryOutput) Connect() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PreparedQuery) pulumi.BoolPtrOutput { return v.Connect }).(pulumi.BoolPtrOutput)
+}
+
+// The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
+func (o PreparedQueryOutput) Datacenter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreparedQuery) pulumi.StringPtrOutput { return v.Datacenter }).(pulumi.StringPtrOutput)
+}
+
+// Settings for controlling the DNS response details.
+func (o PreparedQueryOutput) Dns() PreparedQueryDnsPtrOutput {
+	return o.ApplyT(func(v *PreparedQuery) PreparedQueryDnsPtrOutput { return v.Dns }).(PreparedQueryDnsPtrOutput)
+}
+
+// Options for controlling behavior when no healthy nodes are available in the local DC.
+func (o PreparedQueryOutput) Failover() PreparedQueryFailoverPtrOutput {
+	return o.ApplyT(func(v *PreparedQuery) PreparedQueryFailoverPtrOutput { return v.Failover }).(PreparedQueryFailoverPtrOutput)
+}
+
+// Specifies a list of check IDs that should be ignored when filtering unhealthy instances. This is mostly useful in an emergency or as a temporary measure when a health check is found to be unreliable. Being able to ignore it in centrally-defined queries can be simpler than de-registering the check as an interim solution until the check can be fixed.
+func (o PreparedQueryOutput) IgnoreCheckIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PreparedQuery) pulumi.StringArrayOutput { return v.IgnoreCheckIds }).(pulumi.StringArrayOutput)
+}
+
+// The name of the prepared query. Used to identify the prepared query during requests. Can be specified as an empty string to configure the query as a catch-all.
+func (o PreparedQueryOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *PreparedQuery) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Allows specifying the name of a node to sort results near using Consul's distance sorting and network coordinates. The magic `_agent` value can be used to always sort nearest the node servicing the request.
+func (o PreparedQueryOutput) Near() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreparedQuery) pulumi.StringPtrOutput { return v.Near }).(pulumi.StringPtrOutput)
+}
+
+// Specifies a list of user-defined key/value pairs that will be used for filtering the query results to nodes with the given metadata values present.
+func (o PreparedQueryOutput) NodeMeta() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *PreparedQuery) pulumi.StringMapOutput { return v.NodeMeta }).(pulumi.StringMapOutput)
+}
+
+// When `true`, the prepared query will only return nodes with passing health checks in the result.
+func (o PreparedQueryOutput) OnlyPassing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PreparedQuery) pulumi.BoolPtrOutput { return v.OnlyPassing }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the service to query
+func (o PreparedQueryOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v *PreparedQuery) pulumi.StringOutput { return v.Service }).(pulumi.StringOutput)
+}
+
+// Specifies a list of user-defined key/value pairs that will be used for filtering the query results to services with the given metadata values present.
+func (o PreparedQueryOutput) ServiceMeta() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *PreparedQuery) pulumi.StringMapOutput { return v.ServiceMeta }).(pulumi.StringMapOutput)
+}
+
+// The name of the Consul session to tie this query's lifetime to.  This is an advanced parameter that should not be used without a complete understanding of Consul sessions and the implications of their use (it is recommended to leave this blank in nearly all cases).  If this parameter is omitted the query will not expire.
+func (o PreparedQueryOutput) Session() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreparedQuery) pulumi.StringPtrOutput { return v.Session }).(pulumi.StringPtrOutput)
+}
+
+// The ACL token to store with the prepared query. This token will be used by default whenever the query is executed.
+func (o PreparedQueryOutput) StoredToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreparedQuery) pulumi.StringPtrOutput { return v.StoredToken }).(pulumi.StringPtrOutput)
+}
+
+// The list of required and/or disallowed tags.  If a tag is in this list it must be present.  If the tag is preceded with a "!" then it is disallowed.
+func (o PreparedQueryOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PreparedQuery) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// Query templating options. This is used to make a single prepared query respond to many different requests
+func (o PreparedQueryOutput) Template() PreparedQueryTemplatePtrOutput {
+	return o.ApplyT(func(v *PreparedQuery) PreparedQueryTemplatePtrOutput { return v.Template }).(PreparedQueryTemplatePtrOutput)
+}
+
+// The ACL token to use when saving the prepared query. This overrides the token that the agent provides by default.
+//
+// Deprecated: The token argument has been deprecated and will be removed in a future release.
+// Please use the token argument in the provider configuration
+func (o PreparedQueryOutput) Token() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreparedQuery) pulumi.StringPtrOutput { return v.Token }).(pulumi.StringPtrOutput)
 }
 
 type PreparedQueryArrayOutput struct{ *pulumi.OutputState }

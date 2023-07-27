@@ -22,18 +22,14 @@ public final class PreparedQueryState extends com.pulumi.resources.ResourceArgs 
     public static final PreparedQueryState Empty = new PreparedQueryState();
 
     /**
-     * When `true` the prepared query will return connect
-     * proxy services for a queried service.  Conditions such as `tags` in the
-     * prepared query will be matched against the proxy service. Defaults to false.
+     * When `true` the prepared query will return connect proxy services for a queried service.  Conditions such as `tags` in the prepared query will be matched against the proxy service. Defaults to false.
      * 
      */
     @Import(name="connect")
     private @Nullable Output<Boolean> connect;
 
     /**
-     * @return When `true` the prepared query will return connect
-     * proxy services for a queried service.  Conditions such as `tags` in the
-     * prepared query will be matched against the proxy service. Defaults to false.
+     * @return When `true` the prepared query will return connect proxy services for a queried service.  Conditions such as `tags` in the prepared query will be matched against the proxy service. Defaults to false.
      * 
      */
     public Optional<Output<Boolean>> connect() {
@@ -41,16 +37,14 @@ public final class PreparedQueryState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The datacenter to use. This overrides the
-     * agent&#39;s default datacenter and the datacenter in the provider setup.
+     * The datacenter to use. This overrides the agent&#39;s default datacenter and the datacenter in the provider setup.
      * 
      */
     @Import(name="datacenter")
     private @Nullable Output<String> datacenter;
 
     /**
-     * @return The datacenter to use. This overrides the
-     * agent&#39;s default datacenter and the datacenter in the provider setup.
+     * @return The datacenter to use. This overrides the agent&#39;s default datacenter and the datacenter in the provider setup.
      * 
      */
     public Optional<Output<String>> datacenter() {
@@ -73,16 +67,14 @@ public final class PreparedQueryState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Options for controlling behavior when no healthy
-     * nodes are available in the local DC.
+     * Options for controlling behavior when no healthy nodes are available in the local DC.
      * 
      */
     @Import(name="failover")
     private @Nullable Output<PreparedQueryFailoverArgs> failover;
 
     /**
-     * @return Options for controlling behavior when no healthy
-     * nodes are available in the local DC.
+     * @return Options for controlling behavior when no healthy nodes are available in the local DC.
      * 
      */
     public Optional<Output<PreparedQueryFailoverArgs>> failover() {
@@ -90,24 +82,14 @@ public final class PreparedQueryState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Specifies a list of check IDs that should be
-     * ignored when filtering unhealthy instances. This is mostly useful in an
-     * emergency or as a temporary measure when a health check is found to be
-     * unreliable. Being able to ignore it in centrally-defined queries can be
-     * simpler than de-registering the check as an interim solution until the check
-     * can be fixed.
+     * Specifies a list of check IDs that should be ignored when filtering unhealthy instances. This is mostly useful in an emergency or as a temporary measure when a health check is found to be unreliable. Being able to ignore it in centrally-defined queries can be simpler than de-registering the check as an interim solution until the check can be fixed.
      * 
      */
     @Import(name="ignoreCheckIds")
     private @Nullable Output<List<String>> ignoreCheckIds;
 
     /**
-     * @return Specifies a list of check IDs that should be
-     * ignored when filtering unhealthy instances. This is mostly useful in an
-     * emergency or as a temporary measure when a health check is found to be
-     * unreliable. Being able to ignore it in centrally-defined queries can be
-     * simpler than de-registering the check as an interim solution until the check
-     * can be fixed.
+     * @return Specifies a list of check IDs that should be ignored when filtering unhealthy instances. This is mostly useful in an emergency or as a temporary measure when a health check is found to be unreliable. Being able to ignore it in centrally-defined queries can be simpler than de-registering the check as an interim solution until the check can be fixed.
      * 
      */
     public Optional<Output<List<String>>> ignoreCheckIds() {
@@ -115,18 +97,14 @@ public final class PreparedQueryState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The name of the prepared query. Used to identify
-     * the prepared query during requests. Can be specified as an empty string
-     * to configure the query as a catch-all.
+     * The name of the prepared query. Used to identify the prepared query during requests. Can be specified as an empty string to configure the query as a catch-all.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the prepared query. Used to identify
-     * the prepared query during requests. Can be specified as an empty string
-     * to configure the query as a catch-all.
+     * @return The name of the prepared query. Used to identify the prepared query during requests. Can be specified as an empty string to configure the query as a catch-all.
      * 
      */
     public Optional<Output<String>> name() {
@@ -134,20 +112,14 @@ public final class PreparedQueryState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Allows specifying the name of a node to sort results
-     * near using Consul&#39;s distance sorting and network coordinates. The magic
-     * `_agent` value can be used to always sort nearest the node servicing the
-     * request.
+     * Allows specifying the name of a node to sort results near using Consul&#39;s distance sorting and network coordinates. The magic `_agent` value can be used to always sort nearest the node servicing the request.
      * 
      */
     @Import(name="near")
     private @Nullable Output<String> near;
 
     /**
-     * @return Allows specifying the name of a node to sort results
-     * near using Consul&#39;s distance sorting and network coordinates. The magic
-     * `_agent` value can be used to always sort nearest the node servicing the
-     * request.
+     * @return Allows specifying the name of a node to sort results near using Consul&#39;s distance sorting and network coordinates. The magic `_agent` value can be used to always sort nearest the node servicing the request.
      * 
      */
     public Optional<Output<String>> near() {
@@ -155,18 +127,14 @@ public final class PreparedQueryState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Specifies a list of user-defined key/value pairs that
-     * will be used for filtering the query results to nodes with the given metadata
-     * values present.
+     * Specifies a list of user-defined key/value pairs that will be used for filtering the query results to nodes with the given metadata values present.
      * 
      */
     @Import(name="nodeMeta")
     private @Nullable Output<Map<String,String>> nodeMeta;
 
     /**
-     * @return Specifies a list of user-defined key/value pairs that
-     * will be used for filtering the query results to nodes with the given metadata
-     * values present.
+     * @return Specifies a list of user-defined key/value pairs that will be used for filtering the query results to nodes with the given metadata values present.
      * 
      */
     public Optional<Output<Map<String,String>>> nodeMeta() {
@@ -174,16 +142,14 @@ public final class PreparedQueryState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * When `true`, the prepared query will only
-     * return nodes with passing health checks in the result.
+     * When `true`, the prepared query will only return nodes with passing health checks in the result.
      * 
      */
     @Import(name="onlyPassing")
     private @Nullable Output<Boolean> onlyPassing;
 
     /**
-     * @return When `true`, the prepared query will only
-     * return nodes with passing health checks in the result.
+     * @return When `true`, the prepared query will only return nodes with passing health checks in the result.
      * 
      */
     public Optional<Output<Boolean>> onlyPassing() {
@@ -191,14 +157,14 @@ public final class PreparedQueryState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The name of the service to query.
+     * The name of the service to query
      * 
      */
     @Import(name="service")
     private @Nullable Output<String> service;
 
     /**
-     * @return The name of the service to query.
+     * @return The name of the service to query
      * 
      */
     public Optional<Output<String>> service() {
@@ -206,18 +172,14 @@ public final class PreparedQueryState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Specifies a list of user-defined key/value pairs
-     * that will be used for filtering the query results to services with the given
-     * metadata values present.
+     * Specifies a list of user-defined key/value pairs that will be used for filtering the query results to services with the given metadata values present.
      * 
      */
     @Import(name="serviceMeta")
     private @Nullable Output<Map<String,String>> serviceMeta;
 
     /**
-     * @return Specifies a list of user-defined key/value pairs
-     * that will be used for filtering the query results to services with the given
-     * metadata values present.
+     * @return Specifies a list of user-defined key/value pairs that will be used for filtering the query results to services with the given metadata values present.
      * 
      */
     public Optional<Output<Map<String,String>>> serviceMeta() {
@@ -225,22 +187,14 @@ public final class PreparedQueryState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The name of the Consul session to tie this query&#39;s
-     * lifetime to.  This is an advanced parameter that should not be used without a
-     * complete understanding of Consul sessions and the implications of their use
-     * (it is recommended to leave this blank in nearly all cases).  If this
-     * parameter is omitted the query will not expire.
+     * The name of the Consul session to tie this query&#39;s lifetime to.  This is an advanced parameter that should not be used without a complete understanding of Consul sessions and the implications of their use (it is recommended to leave this blank in nearly all cases).  If this parameter is omitted the query will not expire.
      * 
      */
     @Import(name="session")
     private @Nullable Output<String> session;
 
     /**
-     * @return The name of the Consul session to tie this query&#39;s
-     * lifetime to.  This is an advanced parameter that should not be used without a
-     * complete understanding of Consul sessions and the implications of their use
-     * (it is recommended to leave this blank in nearly all cases).  If this
-     * parameter is omitted the query will not expire.
+     * @return The name of the Consul session to tie this query&#39;s lifetime to.  This is an advanced parameter that should not be used without a complete understanding of Consul sessions and the implications of their use (it is recommended to leave this blank in nearly all cases).  If this parameter is omitted the query will not expire.
      * 
      */
     public Optional<Output<String>> session() {
@@ -248,16 +202,14 @@ public final class PreparedQueryState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The ACL token to store with the prepared
-     * query. This token will be used by default whenever the query is executed.
+     * The ACL token to store with the prepared query. This token will be used by default whenever the query is executed.
      * 
      */
     @Import(name="storedToken")
     private @Nullable Output<String> storedToken;
 
     /**
-     * @return The ACL token to store with the prepared
-     * query. This token will be used by default whenever the query is executed.
+     * @return The ACL token to store with the prepared query. This token will be used by default whenever the query is executed.
      * 
      */
     public Optional<Output<String>> storedToken() {
@@ -265,18 +217,14 @@ public final class PreparedQueryState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The list of required and/or disallowed tags.  If a tag is
-     * in this list it must be present.  If the tag is preceded with a &#34;!&#34; then it is
-     * disallowed.
+     * The list of required and/or disallowed tags.  If a tag is in this list it must be present.  If the tag is preceded with a &#34;!&#34; then it is disallowed.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return The list of required and/or disallowed tags.  If a tag is
-     * in this list it must be present.  If the tag is preceded with a &#34;!&#34; then it is
-     * disallowed.
+     * @return The list of required and/or disallowed tags.  If a tag is in this list it must be present.  If the tag is preceded with a &#34;!&#34; then it is disallowed.
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -284,16 +232,14 @@ public final class PreparedQueryState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Query templating options. This is used to make a
-     * single prepared query respond to many different requests.
+     * Query templating options. This is used to make a single prepared query respond to many different requests
      * 
      */
     @Import(name="template")
     private @Nullable Output<PreparedQueryTemplateArgs> template;
 
     /**
-     * @return Query templating options. This is used to make a
-     * single prepared query respond to many different requests.
+     * @return Query templating options. This is used to make a single prepared query respond to many different requests
      * 
      */
     public Optional<Output<PreparedQueryTemplateArgs>> template() {
@@ -301,8 +247,7 @@ public final class PreparedQueryState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The ACL token to use when saving the prepared query.
-     * This overrides the token that the agent provides by default.
+     * The ACL token to use when saving the prepared query. This overrides the token that the agent provides by default.
      * 
      * @deprecated
      * The token argument has been deprecated and will be removed in a future release.
@@ -315,8 +260,7 @@ Please use the token argument in the provider configuration */
     private @Nullable Output<String> token;
 
     /**
-     * @return The ACL token to use when saving the prepared query.
-     * This overrides the token that the agent provides by default.
+     * @return The ACL token to use when saving the prepared query. This overrides the token that the agent provides by default.
      * 
      * @deprecated
      * The token argument has been deprecated and will be removed in a future release.
@@ -369,9 +313,7 @@ Please use the token argument in the provider configuration */
         }
 
         /**
-         * @param connect When `true` the prepared query will return connect
-         * proxy services for a queried service.  Conditions such as `tags` in the
-         * prepared query will be matched against the proxy service. Defaults to false.
+         * @param connect When `true` the prepared query will return connect proxy services for a queried service.  Conditions such as `tags` in the prepared query will be matched against the proxy service. Defaults to false.
          * 
          * @return builder
          * 
@@ -382,9 +324,7 @@ Please use the token argument in the provider configuration */
         }
 
         /**
-         * @param connect When `true` the prepared query will return connect
-         * proxy services for a queried service.  Conditions such as `tags` in the
-         * prepared query will be matched against the proxy service. Defaults to false.
+         * @param connect When `true` the prepared query will return connect proxy services for a queried service.  Conditions such as `tags` in the prepared query will be matched against the proxy service. Defaults to false.
          * 
          * @return builder
          * 
@@ -394,8 +334,7 @@ Please use the token argument in the provider configuration */
         }
 
         /**
-         * @param datacenter The datacenter to use. This overrides the
-         * agent&#39;s default datacenter and the datacenter in the provider setup.
+         * @param datacenter The datacenter to use. This overrides the agent&#39;s default datacenter and the datacenter in the provider setup.
          * 
          * @return builder
          * 
@@ -406,8 +345,7 @@ Please use the token argument in the provider configuration */
         }
 
         /**
-         * @param datacenter The datacenter to use. This overrides the
-         * agent&#39;s default datacenter and the datacenter in the provider setup.
+         * @param datacenter The datacenter to use. This overrides the agent&#39;s default datacenter and the datacenter in the provider setup.
          * 
          * @return builder
          * 
@@ -438,8 +376,7 @@ Please use the token argument in the provider configuration */
         }
 
         /**
-         * @param failover Options for controlling behavior when no healthy
-         * nodes are available in the local DC.
+         * @param failover Options for controlling behavior when no healthy nodes are available in the local DC.
          * 
          * @return builder
          * 
@@ -450,8 +387,7 @@ Please use the token argument in the provider configuration */
         }
 
         /**
-         * @param failover Options for controlling behavior when no healthy
-         * nodes are available in the local DC.
+         * @param failover Options for controlling behavior when no healthy nodes are available in the local DC.
          * 
          * @return builder
          * 
@@ -461,12 +397,7 @@ Please use the token argument in the provider configuration */
         }
 
         /**
-         * @param ignoreCheckIds Specifies a list of check IDs that should be
-         * ignored when filtering unhealthy instances. This is mostly useful in an
-         * emergency or as a temporary measure when a health check is found to be
-         * unreliable. Being able to ignore it in centrally-defined queries can be
-         * simpler than de-registering the check as an interim solution until the check
-         * can be fixed.
+         * @param ignoreCheckIds Specifies a list of check IDs that should be ignored when filtering unhealthy instances. This is mostly useful in an emergency or as a temporary measure when a health check is found to be unreliable. Being able to ignore it in centrally-defined queries can be simpler than de-registering the check as an interim solution until the check can be fixed.
          * 
          * @return builder
          * 
@@ -477,12 +408,7 @@ Please use the token argument in the provider configuration */
         }
 
         /**
-         * @param ignoreCheckIds Specifies a list of check IDs that should be
-         * ignored when filtering unhealthy instances. This is mostly useful in an
-         * emergency or as a temporary measure when a health check is found to be
-         * unreliable. Being able to ignore it in centrally-defined queries can be
-         * simpler than de-registering the check as an interim solution until the check
-         * can be fixed.
+         * @param ignoreCheckIds Specifies a list of check IDs that should be ignored when filtering unhealthy instances. This is mostly useful in an emergency or as a temporary measure when a health check is found to be unreliable. Being able to ignore it in centrally-defined queries can be simpler than de-registering the check as an interim solution until the check can be fixed.
          * 
          * @return builder
          * 
@@ -492,12 +418,7 @@ Please use the token argument in the provider configuration */
         }
 
         /**
-         * @param ignoreCheckIds Specifies a list of check IDs that should be
-         * ignored when filtering unhealthy instances. This is mostly useful in an
-         * emergency or as a temporary measure when a health check is found to be
-         * unreliable. Being able to ignore it in centrally-defined queries can be
-         * simpler than de-registering the check as an interim solution until the check
-         * can be fixed.
+         * @param ignoreCheckIds Specifies a list of check IDs that should be ignored when filtering unhealthy instances. This is mostly useful in an emergency or as a temporary measure when a health check is found to be unreliable. Being able to ignore it in centrally-defined queries can be simpler than de-registering the check as an interim solution until the check can be fixed.
          * 
          * @return builder
          * 
@@ -507,9 +428,7 @@ Please use the token argument in the provider configuration */
         }
 
         /**
-         * @param name The name of the prepared query. Used to identify
-         * the prepared query during requests. Can be specified as an empty string
-         * to configure the query as a catch-all.
+         * @param name The name of the prepared query. Used to identify the prepared query during requests. Can be specified as an empty string to configure the query as a catch-all.
          * 
          * @return builder
          * 
@@ -520,9 +439,7 @@ Please use the token argument in the provider configuration */
         }
 
         /**
-         * @param name The name of the prepared query. Used to identify
-         * the prepared query during requests. Can be specified as an empty string
-         * to configure the query as a catch-all.
+         * @param name The name of the prepared query. Used to identify the prepared query during requests. Can be specified as an empty string to configure the query as a catch-all.
          * 
          * @return builder
          * 
@@ -532,10 +449,7 @@ Please use the token argument in the provider configuration */
         }
 
         /**
-         * @param near Allows specifying the name of a node to sort results
-         * near using Consul&#39;s distance sorting and network coordinates. The magic
-         * `_agent` value can be used to always sort nearest the node servicing the
-         * request.
+         * @param near Allows specifying the name of a node to sort results near using Consul&#39;s distance sorting and network coordinates. The magic `_agent` value can be used to always sort nearest the node servicing the request.
          * 
          * @return builder
          * 
@@ -546,10 +460,7 @@ Please use the token argument in the provider configuration */
         }
 
         /**
-         * @param near Allows specifying the name of a node to sort results
-         * near using Consul&#39;s distance sorting and network coordinates. The magic
-         * `_agent` value can be used to always sort nearest the node servicing the
-         * request.
+         * @param near Allows specifying the name of a node to sort results near using Consul&#39;s distance sorting and network coordinates. The magic `_agent` value can be used to always sort nearest the node servicing the request.
          * 
          * @return builder
          * 
@@ -559,9 +470,7 @@ Please use the token argument in the provider configuration */
         }
 
         /**
-         * @param nodeMeta Specifies a list of user-defined key/value pairs that
-         * will be used for filtering the query results to nodes with the given metadata
-         * values present.
+         * @param nodeMeta Specifies a list of user-defined key/value pairs that will be used for filtering the query results to nodes with the given metadata values present.
          * 
          * @return builder
          * 
@@ -572,9 +481,7 @@ Please use the token argument in the provider configuration */
         }
 
         /**
-         * @param nodeMeta Specifies a list of user-defined key/value pairs that
-         * will be used for filtering the query results to nodes with the given metadata
-         * values present.
+         * @param nodeMeta Specifies a list of user-defined key/value pairs that will be used for filtering the query results to nodes with the given metadata values present.
          * 
          * @return builder
          * 
@@ -584,8 +491,7 @@ Please use the token argument in the provider configuration */
         }
 
         /**
-         * @param onlyPassing When `true`, the prepared query will only
-         * return nodes with passing health checks in the result.
+         * @param onlyPassing When `true`, the prepared query will only return nodes with passing health checks in the result.
          * 
          * @return builder
          * 
@@ -596,8 +502,7 @@ Please use the token argument in the provider configuration */
         }
 
         /**
-         * @param onlyPassing When `true`, the prepared query will only
-         * return nodes with passing health checks in the result.
+         * @param onlyPassing When `true`, the prepared query will only return nodes with passing health checks in the result.
          * 
          * @return builder
          * 
@@ -607,7 +512,7 @@ Please use the token argument in the provider configuration */
         }
 
         /**
-         * @param service The name of the service to query.
+         * @param service The name of the service to query
          * 
          * @return builder
          * 
@@ -618,7 +523,7 @@ Please use the token argument in the provider configuration */
         }
 
         /**
-         * @param service The name of the service to query.
+         * @param service The name of the service to query
          * 
          * @return builder
          * 
@@ -628,9 +533,7 @@ Please use the token argument in the provider configuration */
         }
 
         /**
-         * @param serviceMeta Specifies a list of user-defined key/value pairs
-         * that will be used for filtering the query results to services with the given
-         * metadata values present.
+         * @param serviceMeta Specifies a list of user-defined key/value pairs that will be used for filtering the query results to services with the given metadata values present.
          * 
          * @return builder
          * 
@@ -641,9 +544,7 @@ Please use the token argument in the provider configuration */
         }
 
         /**
-         * @param serviceMeta Specifies a list of user-defined key/value pairs
-         * that will be used for filtering the query results to services with the given
-         * metadata values present.
+         * @param serviceMeta Specifies a list of user-defined key/value pairs that will be used for filtering the query results to services with the given metadata values present.
          * 
          * @return builder
          * 
@@ -653,11 +554,7 @@ Please use the token argument in the provider configuration */
         }
 
         /**
-         * @param session The name of the Consul session to tie this query&#39;s
-         * lifetime to.  This is an advanced parameter that should not be used without a
-         * complete understanding of Consul sessions and the implications of their use
-         * (it is recommended to leave this blank in nearly all cases).  If this
-         * parameter is omitted the query will not expire.
+         * @param session The name of the Consul session to tie this query&#39;s lifetime to.  This is an advanced parameter that should not be used without a complete understanding of Consul sessions and the implications of their use (it is recommended to leave this blank in nearly all cases).  If this parameter is omitted the query will not expire.
          * 
          * @return builder
          * 
@@ -668,11 +565,7 @@ Please use the token argument in the provider configuration */
         }
 
         /**
-         * @param session The name of the Consul session to tie this query&#39;s
-         * lifetime to.  This is an advanced parameter that should not be used without a
-         * complete understanding of Consul sessions and the implications of their use
-         * (it is recommended to leave this blank in nearly all cases).  If this
-         * parameter is omitted the query will not expire.
+         * @param session The name of the Consul session to tie this query&#39;s lifetime to.  This is an advanced parameter that should not be used without a complete understanding of Consul sessions and the implications of their use (it is recommended to leave this blank in nearly all cases).  If this parameter is omitted the query will not expire.
          * 
          * @return builder
          * 
@@ -682,8 +575,7 @@ Please use the token argument in the provider configuration */
         }
 
         /**
-         * @param storedToken The ACL token to store with the prepared
-         * query. This token will be used by default whenever the query is executed.
+         * @param storedToken The ACL token to store with the prepared query. This token will be used by default whenever the query is executed.
          * 
          * @return builder
          * 
@@ -694,8 +586,7 @@ Please use the token argument in the provider configuration */
         }
 
         /**
-         * @param storedToken The ACL token to store with the prepared
-         * query. This token will be used by default whenever the query is executed.
+         * @param storedToken The ACL token to store with the prepared query. This token will be used by default whenever the query is executed.
          * 
          * @return builder
          * 
@@ -705,9 +596,7 @@ Please use the token argument in the provider configuration */
         }
 
         /**
-         * @param tags The list of required and/or disallowed tags.  If a tag is
-         * in this list it must be present.  If the tag is preceded with a &#34;!&#34; then it is
-         * disallowed.
+         * @param tags The list of required and/or disallowed tags.  If a tag is in this list it must be present.  If the tag is preceded with a &#34;!&#34; then it is disallowed.
          * 
          * @return builder
          * 
@@ -718,9 +607,7 @@ Please use the token argument in the provider configuration */
         }
 
         /**
-         * @param tags The list of required and/or disallowed tags.  If a tag is
-         * in this list it must be present.  If the tag is preceded with a &#34;!&#34; then it is
-         * disallowed.
+         * @param tags The list of required and/or disallowed tags.  If a tag is in this list it must be present.  If the tag is preceded with a &#34;!&#34; then it is disallowed.
          * 
          * @return builder
          * 
@@ -730,9 +617,7 @@ Please use the token argument in the provider configuration */
         }
 
         /**
-         * @param tags The list of required and/or disallowed tags.  If a tag is
-         * in this list it must be present.  If the tag is preceded with a &#34;!&#34; then it is
-         * disallowed.
+         * @param tags The list of required and/or disallowed tags.  If a tag is in this list it must be present.  If the tag is preceded with a &#34;!&#34; then it is disallowed.
          * 
          * @return builder
          * 
@@ -742,8 +627,7 @@ Please use the token argument in the provider configuration */
         }
 
         /**
-         * @param template Query templating options. This is used to make a
-         * single prepared query respond to many different requests.
+         * @param template Query templating options. This is used to make a single prepared query respond to many different requests
          * 
          * @return builder
          * 
@@ -754,8 +638,7 @@ Please use the token argument in the provider configuration */
         }
 
         /**
-         * @param template Query templating options. This is used to make a
-         * single prepared query respond to many different requests.
+         * @param template Query templating options. This is used to make a single prepared query respond to many different requests
          * 
          * @return builder
          * 
@@ -765,8 +648,7 @@ Please use the token argument in the provider configuration */
         }
 
         /**
-         * @param token The ACL token to use when saving the prepared query.
-         * This overrides the token that the agent provides by default.
+         * @param token The ACL token to use when saving the prepared query. This overrides the token that the agent provides by default.
          * 
          * @return builder
          * 
@@ -783,8 +665,7 @@ Please use the token argument in the provider configuration */
         }
 
         /**
-         * @param token The ACL token to use when saving the prepared query.
-         * This overrides the token that the agent provides by default.
+         * @param token The ACL token to use when saving the prepared query. This overrides the token that the agent provides by default.
          * 
          * @return builder
          * 

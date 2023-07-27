@@ -4,54 +4,92 @@
 package config
 
 import (
+	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )
 
+var _ = internal.GetEnvOrDefault
+
+// The HTTP(S) API address of the agent to use. Defaults to "127.0.0.1:8500".
 func GetAddress(ctx *pulumi.Context) string {
 	return config.Get(ctx, "consul:address")
 }
+
+// Authenticates to Consul using a JWT authentication method.
+func GetAuthJwt(ctx *pulumi.Context) string {
+	return config.Get(ctx, "consul:authJwt")
+}
+
+// A path to a PEM-encoded certificate authority used to verify the remote agent's certificate.
 func GetCaFile(ctx *pulumi.Context) string {
 	return config.Get(ctx, "consul:caFile")
 }
+
+// A path to a directory of PEM-encoded certificate authority files to use to check the authenticity of client and server
+// connections. Can also be specified with the `CONSUL_CAPATH` environment variable.
 func GetCaPath(ctx *pulumi.Context) string {
 	return config.Get(ctx, "consul:caPath")
 }
+
+// PEM-encoded certificate authority used to verify the remote agent's certificate.
 func GetCaPem(ctx *pulumi.Context) string {
 	return config.Get(ctx, "consul:caPem")
 }
+
+// A path to a PEM-encoded certificate provided to the remote agent; requires use of `key_file` or `key_pem`.
 func GetCertFile(ctx *pulumi.Context) string {
 	return config.Get(ctx, "consul:certFile")
 }
+
+// PEM-encoded certificate provided to the remote agent; requires use of `key_file` or `key_pem`.
 func GetCertPem(ctx *pulumi.Context) string {
 	return config.Get(ctx, "consul:certPem")
 }
+
+// The datacenter to use. Defaults to that of the agent.
 func GetDatacenter(ctx *pulumi.Context) string {
 	return config.Get(ctx, "consul:datacenter")
 }
 
-// Additional headers to send with each Consul request.
+// A configuration block, described below, that provides additional headers to be sent along with all requests to the
+// Consul server. This block can be specified multiple times.
 func GetHeaders(ctx *pulumi.Context) string {
 	return config.Get(ctx, "consul:headers")
 }
+
+// HTTP Basic Authentication credentials to be used when communicating with Consul, in the format of either `user` or
+// `user:pass`. This may also be specified using the `CONSUL_HTTP_AUTH` environment variable.
 func GetHttpAuth(ctx *pulumi.Context) string {
 	return config.Get(ctx, "consul:httpAuth")
 }
+
+// Boolean value to disable SSL certificate verification; setting this value to true is not recommended for production use.
+// Only use this with scheme set to "https".
 func GetInsecureHttps(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "consul:insecureHttps")
 }
+
+// A path to a PEM-encoded private key, required if `cert_file` or `cert_pem` is specified.
 func GetKeyFile(ctx *pulumi.Context) string {
 	return config.Get(ctx, "consul:keyFile")
 }
+
+// PEM-encoded private key, required if `cert_file` or `cert_pem` is specified.
 func GetKeyPem(ctx *pulumi.Context) string {
 	return config.Get(ctx, "consul:keyPem")
 }
 func GetNamespace(ctx *pulumi.Context) string {
 	return config.Get(ctx, "consul:namespace")
 }
+
+// The URL scheme of the agent to use ("http" or "https"). Defaults to "http".
 func GetScheme(ctx *pulumi.Context) string {
 	return config.Get(ctx, "consul:scheme")
 }
+
+// The ACL token to use by default when making requests to the agent. Can also be specified with `CONSUL_HTTP_TOKEN` or
+// `CONSUL_TOKEN` as an environment variable.
 func GetToken(ctx *pulumi.Context) string {
 	return config.Get(ctx, "consul:token")
 }

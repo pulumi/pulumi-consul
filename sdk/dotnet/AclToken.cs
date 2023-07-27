@@ -16,33 +16,33 @@ namespace Pulumi.Consul
     /// ### Basic usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Consul = Pulumi.Consul;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var agent = new Consul.AclPolicy("agent", new()
     ///     {
-    ///         var agent = new Consul.AclPolicy("agent", new Consul.AclPolicyArgs
-    ///         {
-    ///             Rules = @"node_prefix """" {
+    ///         Rules = @"node_prefix """" {
     ///   policy = ""read""
     /// }
     /// 
     /// ",
-    ///         });
-    ///         var test = new Consul.AclToken("test", new Consul.AclTokenArgs
-    ///         {
-    ///             Description = "my test token",
-    ///             Local = true,
-    ///             Policies = 
-    ///             {
-    ///                 agent.Name,
-    ///             },
-    ///         });
-    ///     }
+    ///     });
     /// 
-    /// }
+    ///     var test = new Consul.AclToken("test", new()
+    ///     {
+    ///         Description = "my test token",
+    ///         Local = true,
+    ///         Policies = new[]
+    ///         {
+    ///             agent.Name,
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -58,7 +58,7 @@ namespace Pulumi.Consul
     /// ```
     /// </summary>
     [ConsulResourceType("consul:index/aclToken:AclToken")]
-    public partial class AclToken : Pulumi.CustomResource
+    public partial class AclToken : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The uuid of the token. If omitted, Consul will
@@ -165,7 +165,7 @@ namespace Pulumi.Consul
         }
     }
 
-    public sealed class AclTokenArgs : Pulumi.ResourceArgs
+    public sealed class AclTokenArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The uuid of the token. If omitted, Consul will
@@ -255,9 +255,10 @@ namespace Pulumi.Consul
         public AclTokenArgs()
         {
         }
+        public static new AclTokenArgs Empty => new AclTokenArgs();
     }
 
-    public sealed class AclTokenState : Pulumi.ResourceArgs
+    public sealed class AclTokenState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The uuid of the token. If omitted, Consul will
@@ -347,5 +348,6 @@ namespace Pulumi.Consul
         public AclTokenState()
         {
         }
+        public static new AclTokenState Empty => new AclTokenState();
     }
 }

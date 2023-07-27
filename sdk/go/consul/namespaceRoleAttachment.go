@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -42,6 +43,7 @@ func NewNamespaceRoleAttachment(ctx *pulumi.Context,
 	if args.Role == nil {
 		return nil, errors.New("invalid value for required argument 'Role'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource NamespaceRoleAttachment
 	err := ctx.RegisterResource("consul:index/namespaceRoleAttachment:NamespaceRoleAttachment", name, args, &resource, opts...)
 	if err != nil {
@@ -181,6 +183,16 @@ func (o NamespaceRoleAttachmentOutput) ToNamespaceRoleAttachmentOutput() Namespa
 
 func (o NamespaceRoleAttachmentOutput) ToNamespaceRoleAttachmentOutputWithContext(ctx context.Context) NamespaceRoleAttachmentOutput {
 	return o
+}
+
+// The namespace to attach the role to.
+func (o NamespaceRoleAttachmentOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v *NamespaceRoleAttachment) pulumi.StringOutput { return v.Namespace }).(pulumi.StringOutput)
+}
+
+// The name of the role attached to the namespace.
+func (o NamespaceRoleAttachmentOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v *NamespaceRoleAttachment) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }
 
 type NamespaceRoleAttachmentArrayOutput struct{ *pulumi.OutputState }

@@ -10,14 +10,27 @@ using Pulumi.Serialization;
 namespace Pulumi.Consul.Inputs
 {
 
-    public sealed class GetCatalogServicesQueryOptionArgs : Pulumi.InvokeArgs
+    public sealed class GetCatalogServicesQueryOptionArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// When `true`, the default, allow responses from
+        /// Consul servers that are followers.
+        /// </summary>
         [Input("allowStale")]
         public bool? AllowStale { get; set; }
 
+        /// <summary>
+        /// The Consul datacenter to query.  Defaults to the
+        /// same value found in `query_options` parameter specified below, or if that is
+        /// empty, the `datacenter` value found in the Consul agent that this provider is
+        /// configured to talk to.
+        /// </summary>
         [Input("datacenter")]
         public string? Datacenter { get; set; }
 
+        /// <summary>
+        /// The namespace to lookup the services.
+        /// </summary>
         [Input("namespace")]
         public string? Namespace { get; set; }
 
@@ -35,20 +48,44 @@ namespace Pulumi.Consul.Inputs
         [Input("partition")]
         public string? Partition { get; set; }
 
+        /// <summary>
+        /// When `true` force the client to perform a
+        /// read on at least quorum servers and verify the result is the same.  Defaults
+        /// to `false`.
+        /// </summary>
         [Input("requireConsistent")]
         public bool? RequireConsistent { get; set; }
 
         [Input("token")]
-        public string? Token { get; set; }
+        private string? _token;
 
+        /// <summary>
+        /// Specify the Consul ACL token to use when performing the
+        /// request.  This defaults to the same API token configured by the `consul`
+        /// provider but may be overridden if necessary.
+        /// </summary>
+        public string? Token
+        {
+            get => _token;
+            set => _token = value;
+        }
+
+        /// <summary>
+        /// Index number used to enable blocking queries.
+        /// </summary>
         [Input("waitIndex")]
         public int? WaitIndex { get; set; }
 
+        /// <summary>
+        /// Max time the client should wait for a blocking query
+        /// to return.
+        /// </summary>
         [Input("waitTime")]
         public string? WaitTime { get; set; }
 
         public GetCatalogServicesQueryOptionArgs()
         {
         }
+        public static new GetCatalogServicesQueryOptionArgs Empty => new GetCatalogServicesQueryOptionArgs();
     }
 }

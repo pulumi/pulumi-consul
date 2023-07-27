@@ -80,6 +80,35 @@ public final class ConsulFunctions {
      * [Consul Auth Method](https://www.consul.io/docs/acl/acl-auth-methods.html).
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetAclAuthMethodArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = ConsulFunctions.getAclAuthMethod(GetAclAuthMethodArgs.builder()
+     *             .name(&#34;minikube&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;consulAclAuthMethod&#34;, test.applyValue(getAclAuthMethodResult -&gt; getAclAuthMethodResult.config()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetAclAuthMethodResult> getAclAuthMethod(GetAclAuthMethodArgs args) {
@@ -90,6 +119,35 @@ public final class ConsulFunctions {
      * [Consul Auth Method](https://www.consul.io/docs/acl/acl-auth-methods.html).
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetAclAuthMethodArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = ConsulFunctions.getAclAuthMethod(GetAclAuthMethodArgs.builder()
+     *             .name(&#34;minikube&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;consulAclAuthMethod&#34;, test.applyValue(getAclAuthMethodResult -&gt; getAclAuthMethodResult.config()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAclAuthMethodResult> getAclAuthMethodPlain(GetAclAuthMethodPlainArgs args) {
@@ -100,6 +158,35 @@ public final class ConsulFunctions {
      * [Consul Auth Method](https://www.consul.io/docs/acl/acl-auth-methods.html).
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetAclAuthMethodArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = ConsulFunctions.getAclAuthMethod(GetAclAuthMethodArgs.builder()
+     *             .name(&#34;minikube&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;consulAclAuthMethod&#34;, test.applyValue(getAclAuthMethodResult -&gt; getAclAuthMethodResult.config()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetAclAuthMethodResult> getAclAuthMethod(GetAclAuthMethodArgs args, InvokeOptions options) {
@@ -110,6 +197,35 @@ public final class ConsulFunctions {
      * [Consul Auth Method](https://www.consul.io/docs/acl/acl-auth-methods.html).
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetAclAuthMethodArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = ConsulFunctions.getAclAuthMethod(GetAclAuthMethodArgs.builder()
+     *             .name(&#34;minikube&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;consulAclAuthMethod&#34;, test.applyValue(getAclAuthMethodResult -&gt; getAclAuthMethodResult.config()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAclAuthMethodResult> getAclAuthMethodPlain(GetAclAuthMethodPlainArgs args, InvokeOptions options) {
@@ -120,6 +236,35 @@ public final class ConsulFunctions {
      * [Consul ACL Policy](https://www.consul.io/docs/acl/acl-system.html#acl-policies).
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetAclPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var agent = ConsulFunctions.getAclPolicy(GetAclPolicyArgs.builder()
+     *             .name(&#34;agent&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;consulAclPolicy&#34;, agent.applyValue(getAclPolicyResult -&gt; getAclPolicyResult.rules()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetAclPolicyResult> getAclPolicy(GetAclPolicyArgs args) {
@@ -130,6 +275,35 @@ public final class ConsulFunctions {
      * [Consul ACL Policy](https://www.consul.io/docs/acl/acl-system.html#acl-policies).
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetAclPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var agent = ConsulFunctions.getAclPolicy(GetAclPolicyArgs.builder()
+     *             .name(&#34;agent&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;consulAclPolicy&#34;, agent.applyValue(getAclPolicyResult -&gt; getAclPolicyResult.rules()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAclPolicyResult> getAclPolicyPlain(GetAclPolicyPlainArgs args) {
@@ -140,6 +314,35 @@ public final class ConsulFunctions {
      * [Consul ACL Policy](https://www.consul.io/docs/acl/acl-system.html#acl-policies).
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetAclPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var agent = ConsulFunctions.getAclPolicy(GetAclPolicyArgs.builder()
+     *             .name(&#34;agent&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;consulAclPolicy&#34;, agent.applyValue(getAclPolicyResult -&gt; getAclPolicyResult.rules()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetAclPolicyResult> getAclPolicy(GetAclPolicyArgs args, InvokeOptions options) {
@@ -150,6 +353,35 @@ public final class ConsulFunctions {
      * [Consul ACL Policy](https://www.consul.io/docs/acl/acl-system.html#acl-policies).
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetAclPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var agent = ConsulFunctions.getAclPolicy(GetAclPolicyArgs.builder()
+     *             .name(&#34;agent&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;consulAclPolicy&#34;, agent.applyValue(getAclPolicyResult -&gt; getAclPolicyResult.rules()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAclPolicyResult> getAclPolicyPlain(GetAclPolicyPlainArgs args, InvokeOptions options) {
@@ -160,6 +392,35 @@ public final class ConsulFunctions {
      * [Consul ACL Role](https://www.consul.io/api/acl/roles.html).
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetAclRoleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = ConsulFunctions.getAclRole(GetAclRoleArgs.builder()
+     *             .name(&#34;example-role&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;consulAclRole&#34;, test.applyValue(getAclRoleResult -&gt; getAclRoleResult.id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetAclRoleResult> getAclRole(GetAclRoleArgs args) {
@@ -170,6 +431,35 @@ public final class ConsulFunctions {
      * [Consul ACL Role](https://www.consul.io/api/acl/roles.html).
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetAclRoleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = ConsulFunctions.getAclRole(GetAclRoleArgs.builder()
+     *             .name(&#34;example-role&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;consulAclRole&#34;, test.applyValue(getAclRoleResult -&gt; getAclRoleResult.id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAclRoleResult> getAclRolePlain(GetAclRolePlainArgs args) {
@@ -180,6 +470,35 @@ public final class ConsulFunctions {
      * [Consul ACL Role](https://www.consul.io/api/acl/roles.html).
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetAclRoleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = ConsulFunctions.getAclRole(GetAclRoleArgs.builder()
+     *             .name(&#34;example-role&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;consulAclRole&#34;, test.applyValue(getAclRoleResult -&gt; getAclRoleResult.id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetAclRoleResult> getAclRole(GetAclRoleArgs args, InvokeOptions options) {
@@ -190,6 +509,35 @@ public final class ConsulFunctions {
      * [Consul ACL Role](https://www.consul.io/api/acl/roles.html).
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetAclRoleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = ConsulFunctions.getAclRole(GetAclRoleArgs.builder()
+     *             .name(&#34;example-role&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;consulAclRole&#34;, test.applyValue(getAclRoleResult -&gt; getAclRoleResult.id()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAclRoleResult> getAclRolePlain(GetAclRolePlainArgs args, InvokeOptions options) {
@@ -203,6 +551,35 @@ public final class ConsulFunctions {
      * [`consul.getAclTokenSecretId` data source](https://www.terraform.io/docs/providers/consul/d/acl_token_secret_id.html).
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetAclTokenArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = ConsulFunctions.getAclToken(GetAclTokenArgs.builder()
+     *             .accessorId(&#34;00000000-0000-0000-0000-000000000002&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;consulAclPolicies&#34;, test.applyValue(getAclTokenResult -&gt; getAclTokenResult.policies()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetAclTokenResult> getAclToken(GetAclTokenArgs args) {
@@ -216,6 +593,35 @@ public final class ConsulFunctions {
      * [`consul.getAclTokenSecretId` data source](https://www.terraform.io/docs/providers/consul/d/acl_token_secret_id.html).
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetAclTokenArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = ConsulFunctions.getAclToken(GetAclTokenArgs.builder()
+     *             .accessorId(&#34;00000000-0000-0000-0000-000000000002&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;consulAclPolicies&#34;, test.applyValue(getAclTokenResult -&gt; getAclTokenResult.policies()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAclTokenResult> getAclTokenPlain(GetAclTokenPlainArgs args) {
@@ -229,6 +635,35 @@ public final class ConsulFunctions {
      * [`consul.getAclTokenSecretId` data source](https://www.terraform.io/docs/providers/consul/d/acl_token_secret_id.html).
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetAclTokenArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = ConsulFunctions.getAclToken(GetAclTokenArgs.builder()
+     *             .accessorId(&#34;00000000-0000-0000-0000-000000000002&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;consulAclPolicies&#34;, test.applyValue(getAclTokenResult -&gt; getAclTokenResult.policies()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetAclTokenResult> getAclToken(GetAclTokenArgs args, InvokeOptions options) {
@@ -242,6 +677,35 @@ public final class ConsulFunctions {
      * [`consul.getAclTokenSecretId` data source](https://www.terraform.io/docs/providers/consul/d/acl_token_secret_id.html).
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetAclTokenArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = ConsulFunctions.getAclToken(GetAclTokenArgs.builder()
+     *             .accessorId(&#34;00000000-0000-0000-0000-000000000002&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;consulAclPolicies&#34;, test.applyValue(getAclTokenResult -&gt; getAclTokenResult.policies()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAclTokenResult> getAclTokenPlain(GetAclTokenPlainArgs args, InvokeOptions options) {
@@ -249,6 +713,51 @@ public final class ConsulFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.AclPolicy;
+     * import com.pulumi.consul.AclPolicyArgs;
+     * import com.pulumi.consul.AclToken;
+     * import com.pulumi.consul.AclTokenArgs;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetAclTokenSecretIdArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var testAclPolicy = new AclPolicy(&#34;testAclPolicy&#34;, AclPolicyArgs.builder()        
+     *             .rules(&#34;node \&#34;\&#34; { policy = \&#34;read\&#34; }&#34;)
+     *             .datacenters(&#34;dc1&#34;)
+     *             .build());
+     * 
+     *         var testAclToken = new AclToken(&#34;testAclToken&#34;, AclTokenArgs.builder()        
+     *             .description(&#34;test&#34;)
+     *             .policies(testAclPolicy.name())
+     *             .local(true)
+     *             .build());
+     * 
+     *         final var read = ConsulFunctions.getAclTokenSecretId(GetAclTokenSecretIdArgs.builder()
+     *             .accessorId(testAclToken.id())
+     *             .pgpKey(&#34;keybase:my_username&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;consulAclTokenSecretId&#34;, read.applyValue(getAclTokenSecretIdResult -&gt; getAclTokenSecretIdResult).applyValue(read -&gt; read.applyValue(getAclTokenSecretIdResult -&gt; getAclTokenSecretIdResult.encryptedSecretId())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetAclTokenSecretIdResult> getAclTokenSecretId(GetAclTokenSecretIdArgs args) {
@@ -256,6 +765,51 @@ public final class ConsulFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.AclPolicy;
+     * import com.pulumi.consul.AclPolicyArgs;
+     * import com.pulumi.consul.AclToken;
+     * import com.pulumi.consul.AclTokenArgs;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetAclTokenSecretIdArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var testAclPolicy = new AclPolicy(&#34;testAclPolicy&#34;, AclPolicyArgs.builder()        
+     *             .rules(&#34;node \&#34;\&#34; { policy = \&#34;read\&#34; }&#34;)
+     *             .datacenters(&#34;dc1&#34;)
+     *             .build());
+     * 
+     *         var testAclToken = new AclToken(&#34;testAclToken&#34;, AclTokenArgs.builder()        
+     *             .description(&#34;test&#34;)
+     *             .policies(testAclPolicy.name())
+     *             .local(true)
+     *             .build());
+     * 
+     *         final var read = ConsulFunctions.getAclTokenSecretId(GetAclTokenSecretIdArgs.builder()
+     *             .accessorId(testAclToken.id())
+     *             .pgpKey(&#34;keybase:my_username&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;consulAclTokenSecretId&#34;, read.applyValue(getAclTokenSecretIdResult -&gt; getAclTokenSecretIdResult).applyValue(read -&gt; read.applyValue(getAclTokenSecretIdResult -&gt; getAclTokenSecretIdResult.encryptedSecretId())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAclTokenSecretIdResult> getAclTokenSecretIdPlain(GetAclTokenSecretIdPlainArgs args) {
@@ -263,6 +817,51 @@ public final class ConsulFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.AclPolicy;
+     * import com.pulumi.consul.AclPolicyArgs;
+     * import com.pulumi.consul.AclToken;
+     * import com.pulumi.consul.AclTokenArgs;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetAclTokenSecretIdArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var testAclPolicy = new AclPolicy(&#34;testAclPolicy&#34;, AclPolicyArgs.builder()        
+     *             .rules(&#34;node \&#34;\&#34; { policy = \&#34;read\&#34; }&#34;)
+     *             .datacenters(&#34;dc1&#34;)
+     *             .build());
+     * 
+     *         var testAclToken = new AclToken(&#34;testAclToken&#34;, AclTokenArgs.builder()        
+     *             .description(&#34;test&#34;)
+     *             .policies(testAclPolicy.name())
+     *             .local(true)
+     *             .build());
+     * 
+     *         final var read = ConsulFunctions.getAclTokenSecretId(GetAclTokenSecretIdArgs.builder()
+     *             .accessorId(testAclToken.id())
+     *             .pgpKey(&#34;keybase:my_username&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;consulAclTokenSecretId&#34;, read.applyValue(getAclTokenSecretIdResult -&gt; getAclTokenSecretIdResult).applyValue(read -&gt; read.applyValue(getAclTokenSecretIdResult -&gt; getAclTokenSecretIdResult.encryptedSecretId())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetAclTokenSecretIdResult> getAclTokenSecretId(GetAclTokenSecretIdArgs args, InvokeOptions options) {
@@ -270,6 +869,51 @@ public final class ConsulFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.AclPolicy;
+     * import com.pulumi.consul.AclPolicyArgs;
+     * import com.pulumi.consul.AclToken;
+     * import com.pulumi.consul.AclTokenArgs;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetAclTokenSecretIdArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var testAclPolicy = new AclPolicy(&#34;testAclPolicy&#34;, AclPolicyArgs.builder()        
+     *             .rules(&#34;node \&#34;\&#34; { policy = \&#34;read\&#34; }&#34;)
+     *             .datacenters(&#34;dc1&#34;)
+     *             .build());
+     * 
+     *         var testAclToken = new AclToken(&#34;testAclToken&#34;, AclTokenArgs.builder()        
+     *             .description(&#34;test&#34;)
+     *             .policies(testAclPolicy.name())
+     *             .local(true)
+     *             .build());
+     * 
+     *         final var read = ConsulFunctions.getAclTokenSecretId(GetAclTokenSecretIdArgs.builder()
+     *             .accessorId(testAclToken.id())
+     *             .pgpKey(&#34;keybase:my_username&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;consulAclTokenSecretId&#34;, read.applyValue(getAclTokenSecretIdResult -&gt; getAclTokenSecretIdResult).applyValue(read -&gt; read.applyValue(getAclTokenSecretIdResult -&gt; getAclTokenSecretIdResult.encryptedSecretId())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAclTokenSecretIdResult> getAclTokenSecretIdPlain(GetAclTokenSecretIdPlainArgs args, InvokeOptions options) {
@@ -285,6 +929,32 @@ public final class ConsulFunctions {
      * from the agent specified in the `provider`.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var remoteAgent = ConsulFunctions.getAgentConfig();
+     * 
+     *         ctx.export(&#34;consulVersion&#34;, remoteAgent.applyValue(getAgentConfigResult -&gt; getAgentConfigResult.version()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetAgentConfigResult> getAgentConfig() {
@@ -300,6 +970,32 @@ public final class ConsulFunctions {
      * from the agent specified in the `provider`.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var remoteAgent = ConsulFunctions.getAgentConfig();
+     * 
+     *         ctx.export(&#34;consulVersion&#34;, remoteAgent.applyValue(getAgentConfigResult -&gt; getAgentConfigResult.version()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAgentConfigResult> getAgentConfigPlain() {
@@ -315,6 +1011,32 @@ public final class ConsulFunctions {
      * from the agent specified in the `provider`.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var remoteAgent = ConsulFunctions.getAgentConfig();
+     * 
+     *         ctx.export(&#34;consulVersion&#34;, remoteAgent.applyValue(getAgentConfigResult -&gt; getAgentConfigResult.version()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetAgentConfigResult> getAgentConfig(InvokeArgs args) {
@@ -330,6 +1052,32 @@ public final class ConsulFunctions {
      * from the agent specified in the `provider`.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var remoteAgent = ConsulFunctions.getAgentConfig();
+     * 
+     *         ctx.export(&#34;consulVersion&#34;, remoteAgent.applyValue(getAgentConfigResult -&gt; getAgentConfigResult.version()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAgentConfigResult> getAgentConfigPlain(InvokeArgs args) {
@@ -345,6 +1093,32 @@ public final class ConsulFunctions {
      * from the agent specified in the `provider`.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var remoteAgent = ConsulFunctions.getAgentConfig();
+     * 
+     *         ctx.export(&#34;consulVersion&#34;, remoteAgent.applyValue(getAgentConfigResult -&gt; getAgentConfigResult.version()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetAgentConfigResult> getAgentConfig(InvokeArgs args, InvokeOptions options) {
@@ -360,6 +1134,32 @@ public final class ConsulFunctions {
      * from the agent specified in the `provider`.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var remoteAgent = ConsulFunctions.getAgentConfig();
+     * 
+     *         ctx.export(&#34;consulVersion&#34;, remoteAgent.applyValue(getAgentConfigResult -&gt; getAgentConfigResult.version()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAgentConfigResult> getAgentConfigPlain(InvokeArgs args, InvokeOptions options) {
@@ -373,6 +1173,40 @@ public final class ConsulFunctions {
      * [configuration and status data](https://www.consul.io/docs/agent/http/agent.html#agent_self)
      * from the agent specified in the `provider`.
      * 
+     * ## Example Usage
+     * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.example.example_resource;
+     * import com.pulumi.example.Example_resourceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var read-dc1-agent = ConsulFunctions.getAgentSelf(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         var app = new Example_resource(&#34;app&#34;, Example_resourceArgs.builder()        
+     *             .description(String.format(&#34;Consul datacenter %s&#34;, read_dc1_agent.datacenter()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAgentSelfResult> getAgentSelf() {
         return getAgentSelf(InvokeArgs.Empty, InvokeOptions.Empty);
@@ -384,6 +1218,40 @@ public final class ConsulFunctions {
      * The `consul.getAgentSelf` data source returns
      * [configuration and status data](https://www.consul.io/docs/agent/http/agent.html#agent_self)
      * from the agent specified in the `provider`.
+     * 
+     * ## Example Usage
+     * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.example.example_resource;
+     * import com.pulumi.example.Example_resourceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var read-dc1-agent = ConsulFunctions.getAgentSelf(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         var app = new Example_resource(&#34;app&#34;, Example_resourceArgs.builder()        
+     *             .description(String.format(&#34;Consul datacenter %s&#34;, read_dc1_agent.datacenter()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAgentSelfResult> getAgentSelfPlain() {
@@ -397,6 +1265,40 @@ public final class ConsulFunctions {
      * [configuration and status data](https://www.consul.io/docs/agent/http/agent.html#agent_self)
      * from the agent specified in the `provider`.
      * 
+     * ## Example Usage
+     * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.example.example_resource;
+     * import com.pulumi.example.Example_resourceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var read-dc1-agent = ConsulFunctions.getAgentSelf(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         var app = new Example_resource(&#34;app&#34;, Example_resourceArgs.builder()        
+     *             .description(String.format(&#34;Consul datacenter %s&#34;, read_dc1_agent.datacenter()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAgentSelfResult> getAgentSelf(InvokeArgs args) {
         return getAgentSelf(args, InvokeOptions.Empty);
@@ -408,6 +1310,40 @@ public final class ConsulFunctions {
      * The `consul.getAgentSelf` data source returns
      * [configuration and status data](https://www.consul.io/docs/agent/http/agent.html#agent_self)
      * from the agent specified in the `provider`.
+     * 
+     * ## Example Usage
+     * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.example.example_resource;
+     * import com.pulumi.example.Example_resourceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var read-dc1-agent = ConsulFunctions.getAgentSelf(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         var app = new Example_resource(&#34;app&#34;, Example_resourceArgs.builder()        
+     *             .description(String.format(&#34;Consul datacenter %s&#34;, read_dc1_agent.datacenter()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAgentSelfResult> getAgentSelfPlain(InvokeArgs args) {
@@ -421,6 +1357,40 @@ public final class ConsulFunctions {
      * [configuration and status data](https://www.consul.io/docs/agent/http/agent.html#agent_self)
      * from the agent specified in the `provider`.
      * 
+     * ## Example Usage
+     * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.example.example_resource;
+     * import com.pulumi.example.Example_resourceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var read-dc1-agent = ConsulFunctions.getAgentSelf(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         var app = new Example_resource(&#34;app&#34;, Example_resourceArgs.builder()        
+     *             .description(String.format(&#34;Consul datacenter %s&#34;, read_dc1_agent.datacenter()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetAgentSelfResult> getAgentSelf(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("consul:index/getAgentSelf:getAgentSelf", TypeShape.of(GetAgentSelfResult.class), args, Utilities.withVersion(options));
@@ -433,6 +1403,40 @@ public final class ConsulFunctions {
      * [configuration and status data](https://www.consul.io/docs/agent/http/agent.html#agent_self)
      * from the agent specified in the `provider`.
      * 
+     * ## Example Usage
+     * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.example.example_resource;
+     * import com.pulumi.example.Example_resourceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var read-dc1-agent = ConsulFunctions.getAgentSelf(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         var app = new Example_resource(&#34;app&#34;, Example_resourceArgs.builder()        
+     *             .description(String.format(&#34;Consul datacenter %s&#34;, read_dc1_agent.datacenter()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
      */
     public static CompletableFuture<GetAgentSelfResult> getAgentSelfPlain(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("consul:index/getAgentSelf:getAgentSelf", TypeShape.of(GetAgentSelfResult.class), args, Utilities.withVersion(options));
@@ -443,6 +1447,33 @@ public final class ConsulFunctions {
      * about the current Consul cluster.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetAutopilotHealthArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var read = ConsulFunctions.getAutopilotHealth();
+     * 
+     *         ctx.export(&#34;health&#34;, read.applyValue(getAutopilotHealthResult -&gt; getAutopilotHealthResult.healthy()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetAutopilotHealthResult> getAutopilotHealth() {
@@ -454,6 +1485,33 @@ public final class ConsulFunctions {
      * about the current Consul cluster.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetAutopilotHealthArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var read = ConsulFunctions.getAutopilotHealth();
+     * 
+     *         ctx.export(&#34;health&#34;, read.applyValue(getAutopilotHealthResult -&gt; getAutopilotHealthResult.healthy()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAutopilotHealthResult> getAutopilotHealthPlain() {
@@ -465,6 +1523,33 @@ public final class ConsulFunctions {
      * about the current Consul cluster.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetAutopilotHealthArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var read = ConsulFunctions.getAutopilotHealth();
+     * 
+     *         ctx.export(&#34;health&#34;, read.applyValue(getAutopilotHealthResult -&gt; getAutopilotHealthResult.healthy()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetAutopilotHealthResult> getAutopilotHealth(GetAutopilotHealthArgs args) {
@@ -476,6 +1561,33 @@ public final class ConsulFunctions {
      * about the current Consul cluster.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetAutopilotHealthArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var read = ConsulFunctions.getAutopilotHealth();
+     * 
+     *         ctx.export(&#34;health&#34;, read.applyValue(getAutopilotHealthResult -&gt; getAutopilotHealthResult.healthy()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAutopilotHealthResult> getAutopilotHealthPlain(GetAutopilotHealthPlainArgs args) {
@@ -487,6 +1599,33 @@ public final class ConsulFunctions {
      * about the current Consul cluster.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetAutopilotHealthArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var read = ConsulFunctions.getAutopilotHealth();
+     * 
+     *         ctx.export(&#34;health&#34;, read.applyValue(getAutopilotHealthResult -&gt; getAutopilotHealthResult.healthy()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetAutopilotHealthResult> getAutopilotHealth(GetAutopilotHealthArgs args, InvokeOptions options) {
@@ -498,56 +1637,293 @@ public final class ConsulFunctions {
      * about the current Consul cluster.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetAutopilotHealthArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var read = ConsulFunctions.getAutopilotHealth();
+     * 
+     *         ctx.export(&#34;health&#34;, read.applyValue(getAutopilotHealthResult -&gt; getAutopilotHealthResult.healthy()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAutopilotHealthResult> getAutopilotHealthPlain(GetAutopilotHealthPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("consul:index/getAutopilotHealth:getAutopilotHealth", TypeShape.of(GetAutopilotHealthResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * The `consul.getNodes` data source returns a list of Consul nodes that have
+     * been registered with the Consul cluster in a given datacenter.  By specifying a
+     * different datacenter in the `query_options` it is possible to retrieve a list of
+     * nodes from a different WAN-attached Consul datacenter.
+     * 
+     * @deprecated
+     * getCatalogNodes has been deprecated in favor of getNodes
+     * 
+     */
+    @Deprecated /* getCatalogNodes has been deprecated in favor of getNodes */
     public static Output<GetCatalogNodesResult> getCatalogNodes() {
         return getCatalogNodes(GetCatalogNodesArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * The `consul.getNodes` data source returns a list of Consul nodes that have
+     * been registered with the Consul cluster in a given datacenter.  By specifying a
+     * different datacenter in the `query_options` it is possible to retrieve a list of
+     * nodes from a different WAN-attached Consul datacenter.
+     * 
+     * @deprecated
+     * getCatalogNodes has been deprecated in favor of getNodes
+     * 
+     */
+    @Deprecated /* getCatalogNodes has been deprecated in favor of getNodes */
     public static CompletableFuture<GetCatalogNodesResult> getCatalogNodesPlain() {
         return getCatalogNodesPlain(GetCatalogNodesPlainArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * The `consul.getNodes` data source returns a list of Consul nodes that have
+     * been registered with the Consul cluster in a given datacenter.  By specifying a
+     * different datacenter in the `query_options` it is possible to retrieve a list of
+     * nodes from a different WAN-attached Consul datacenter.
+     * 
+     * @deprecated
+     * getCatalogNodes has been deprecated in favor of getNodes
+     * 
+     */
+    @Deprecated /* getCatalogNodes has been deprecated in favor of getNodes */
     public static Output<GetCatalogNodesResult> getCatalogNodes(GetCatalogNodesArgs args) {
         return getCatalogNodes(args, InvokeOptions.Empty);
     }
+    /**
+     * The `consul.getNodes` data source returns a list of Consul nodes that have
+     * been registered with the Consul cluster in a given datacenter.  By specifying a
+     * different datacenter in the `query_options` it is possible to retrieve a list of
+     * nodes from a different WAN-attached Consul datacenter.
+     * 
+     * @deprecated
+     * getCatalogNodes has been deprecated in favor of getNodes
+     * 
+     */
+    @Deprecated /* getCatalogNodes has been deprecated in favor of getNodes */
     public static CompletableFuture<GetCatalogNodesResult> getCatalogNodesPlain(GetCatalogNodesPlainArgs args) {
         return getCatalogNodesPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * The `consul.getNodes` data source returns a list of Consul nodes that have
+     * been registered with the Consul cluster in a given datacenter.  By specifying a
+     * different datacenter in the `query_options` it is possible to retrieve a list of
+     * nodes from a different WAN-attached Consul datacenter.
+     * 
+     * @deprecated
+     * getCatalogNodes has been deprecated in favor of getNodes
+     * 
+     */
+    @Deprecated /* getCatalogNodes has been deprecated in favor of getNodes */
     public static Output<GetCatalogNodesResult> getCatalogNodes(GetCatalogNodesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("consul:index/getCatalogNodes:getCatalogNodes", TypeShape.of(GetCatalogNodesResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * The `consul.getNodes` data source returns a list of Consul nodes that have
+     * been registered with the Consul cluster in a given datacenter.  By specifying a
+     * different datacenter in the `query_options` it is possible to retrieve a list of
+     * nodes from a different WAN-attached Consul datacenter.
+     * 
+     * @deprecated
+     * getCatalogNodes has been deprecated in favor of getNodes
+     * 
+     */
+    @Deprecated /* getCatalogNodes has been deprecated in favor of getNodes */
     public static CompletableFuture<GetCatalogNodesResult> getCatalogNodesPlain(GetCatalogNodesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("consul:index/getCatalogNodes:getCatalogNodes", TypeShape.of(GetCatalogNodesResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * `consul.Service` provides details about a specific Consul service in a
+     * given datacenter.  The results include a list of nodes advertising the specified
+     * service, the node&#39;s IP address, port number, node ID, etc.  By specifying a
+     * different datacenter in the `query_options` it is possible to retrieve a list of
+     * services from a different WAN-attached Consul datacenter.
+     * 
+     * This data source is different from the `consul.getServices` (plural) data
+     * source, which provides a summary of the current Consul services.
+     * 
+     * @deprecated
+     * getCatalogService has been deprecated in favor of getService
+     * 
+     */
+    @Deprecated /* getCatalogService has been deprecated in favor of getService */
     public static Output<GetCatalogServiceResult> getCatalogService(GetCatalogServiceArgs args) {
         return getCatalogService(args, InvokeOptions.Empty);
     }
+    /**
+     * `consul.Service` provides details about a specific Consul service in a
+     * given datacenter.  The results include a list of nodes advertising the specified
+     * service, the node&#39;s IP address, port number, node ID, etc.  By specifying a
+     * different datacenter in the `query_options` it is possible to retrieve a list of
+     * services from a different WAN-attached Consul datacenter.
+     * 
+     * This data source is different from the `consul.getServices` (plural) data
+     * source, which provides a summary of the current Consul services.
+     * 
+     * @deprecated
+     * getCatalogService has been deprecated in favor of getService
+     * 
+     */
+    @Deprecated /* getCatalogService has been deprecated in favor of getService */
     public static CompletableFuture<GetCatalogServiceResult> getCatalogServicePlain(GetCatalogServicePlainArgs args) {
         return getCatalogServicePlain(args, InvokeOptions.Empty);
     }
+    /**
+     * `consul.Service` provides details about a specific Consul service in a
+     * given datacenter.  The results include a list of nodes advertising the specified
+     * service, the node&#39;s IP address, port number, node ID, etc.  By specifying a
+     * different datacenter in the `query_options` it is possible to retrieve a list of
+     * services from a different WAN-attached Consul datacenter.
+     * 
+     * This data source is different from the `consul.getServices` (plural) data
+     * source, which provides a summary of the current Consul services.
+     * 
+     * @deprecated
+     * getCatalogService has been deprecated in favor of getService
+     * 
+     */
+    @Deprecated /* getCatalogService has been deprecated in favor of getService */
     public static Output<GetCatalogServiceResult> getCatalogService(GetCatalogServiceArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("consul:index/getCatalogService:getCatalogService", TypeShape.of(GetCatalogServiceResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * `consul.Service` provides details about a specific Consul service in a
+     * given datacenter.  The results include a list of nodes advertising the specified
+     * service, the node&#39;s IP address, port number, node ID, etc.  By specifying a
+     * different datacenter in the `query_options` it is possible to retrieve a list of
+     * services from a different WAN-attached Consul datacenter.
+     * 
+     * This data source is different from the `consul.getServices` (plural) data
+     * source, which provides a summary of the current Consul services.
+     * 
+     * @deprecated
+     * getCatalogService has been deprecated in favor of getService
+     * 
+     */
+    @Deprecated /* getCatalogService has been deprecated in favor of getService */
     public static CompletableFuture<GetCatalogServiceResult> getCatalogServicePlain(GetCatalogServicePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("consul:index/getCatalogService:getCatalogService", TypeShape.of(GetCatalogServiceResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * The `consul.getServices` data source returns a list of Consul services that
+     * have been registered with the Consul cluster in a given datacenter.  By
+     * specifying a different datacenter in the `query_options` it is possible to
+     * retrieve a list of services from a different WAN-attached Consul datacenter.
+     * 
+     * This data source is different from the `consul.Service` (singular) data
+     * source, which provides a detailed response about a specific Consul service.
+     * 
+     * @deprecated
+     * getCatalogServices has been deprecated in favor of getServices
+     * 
+     */
+    @Deprecated /* getCatalogServices has been deprecated in favor of getServices */
     public static Output<GetCatalogServicesResult> getCatalogServices() {
         return getCatalogServices(GetCatalogServicesArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * The `consul.getServices` data source returns a list of Consul services that
+     * have been registered with the Consul cluster in a given datacenter.  By
+     * specifying a different datacenter in the `query_options` it is possible to
+     * retrieve a list of services from a different WAN-attached Consul datacenter.
+     * 
+     * This data source is different from the `consul.Service` (singular) data
+     * source, which provides a detailed response about a specific Consul service.
+     * 
+     * @deprecated
+     * getCatalogServices has been deprecated in favor of getServices
+     * 
+     */
+    @Deprecated /* getCatalogServices has been deprecated in favor of getServices */
     public static CompletableFuture<GetCatalogServicesResult> getCatalogServicesPlain() {
         return getCatalogServicesPlain(GetCatalogServicesPlainArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * The `consul.getServices` data source returns a list of Consul services that
+     * have been registered with the Consul cluster in a given datacenter.  By
+     * specifying a different datacenter in the `query_options` it is possible to
+     * retrieve a list of services from a different WAN-attached Consul datacenter.
+     * 
+     * This data source is different from the `consul.Service` (singular) data
+     * source, which provides a detailed response about a specific Consul service.
+     * 
+     * @deprecated
+     * getCatalogServices has been deprecated in favor of getServices
+     * 
+     */
+    @Deprecated /* getCatalogServices has been deprecated in favor of getServices */
     public static Output<GetCatalogServicesResult> getCatalogServices(GetCatalogServicesArgs args) {
         return getCatalogServices(args, InvokeOptions.Empty);
     }
+    /**
+     * The `consul.getServices` data source returns a list of Consul services that
+     * have been registered with the Consul cluster in a given datacenter.  By
+     * specifying a different datacenter in the `query_options` it is possible to
+     * retrieve a list of services from a different WAN-attached Consul datacenter.
+     * 
+     * This data source is different from the `consul.Service` (singular) data
+     * source, which provides a detailed response about a specific Consul service.
+     * 
+     * @deprecated
+     * getCatalogServices has been deprecated in favor of getServices
+     * 
+     */
+    @Deprecated /* getCatalogServices has been deprecated in favor of getServices */
     public static CompletableFuture<GetCatalogServicesResult> getCatalogServicesPlain(GetCatalogServicesPlainArgs args) {
         return getCatalogServicesPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * The `consul.getServices` data source returns a list of Consul services that
+     * have been registered with the Consul cluster in a given datacenter.  By
+     * specifying a different datacenter in the `query_options` it is possible to
+     * retrieve a list of services from a different WAN-attached Consul datacenter.
+     * 
+     * This data source is different from the `consul.Service` (singular) data
+     * source, which provides a detailed response about a specific Consul service.
+     * 
+     * @deprecated
+     * getCatalogServices has been deprecated in favor of getServices
+     * 
+     */
+    @Deprecated /* getCatalogServices has been deprecated in favor of getServices */
     public static Output<GetCatalogServicesResult> getCatalogServices(GetCatalogServicesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("consul:index/getCatalogServices:getCatalogServices", TypeShape.of(GetCatalogServicesResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * The `consul.getServices` data source returns a list of Consul services that
+     * have been registered with the Consul cluster in a given datacenter.  By
+     * specifying a different datacenter in the `query_options` it is possible to
+     * retrieve a list of services from a different WAN-attached Consul datacenter.
+     * 
+     * This data source is different from the `consul.Service` (singular) data
+     * source, which provides a detailed response about a specific Consul service.
+     * 
+     * @deprecated
+     * getCatalogServices has been deprecated in favor of getServices
+     * 
+     */
+    @Deprecated /* getCatalogServices has been deprecated in favor of getServices */
     public static CompletableFuture<GetCatalogServicesResult> getCatalogServicesPlain(GetCatalogServicesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("consul:index/getCatalogServices:getCatalogServices", TypeShape.of(GetCatalogServicesResult.class), args, Utilities.withVersion(options));
     }
@@ -613,6 +1989,83 @@ public final class ConsulFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetKeyPrefixArgs;
+     * import com.pulumi.aws.ec2.Instance;
+     * import com.pulumi.aws.ec2.InstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var appKeyPrefix = ConsulFunctions.getKeyPrefix(GetKeyPrefixArgs.builder()
+     *             .datacenter(&#34;nyc1&#34;)
+     *             .pathPrefix(&#34;myapp/config/&#34;)
+     *             .subkeyCollection(GetKeyPrefixSubkeyCollectionArgs.builder()
+     *                 .default_(&#34;ami-1234&#34;)
+     *                 .name(&#34;ami&#34;)
+     *                 .path(&#34;app/launch_ami&#34;)
+     *                 .build())
+     *             .token(&#34;abcd&#34;)
+     *             .build());
+     * 
+     *         var appInstance = new Instance(&#34;appInstance&#34;, InstanceArgs.builder()        
+     *             .ami(appKeyPrefix.applyValue(getKeyPrefixResult -&gt; getKeyPrefixResult.var().ami()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetKeyPrefixArgs;
+     * import com.pulumi.aws.ec2.Instance;
+     * import com.pulumi.aws.ec2.InstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var webKeyPrefix = ConsulFunctions.getKeyPrefix(GetKeyPrefixArgs.builder()
+     *             .datacenter(&#34;nyc1&#34;)
+     *             .pathPrefix(&#34;myapp/config/&#34;)
+     *             .token(&#34;efgh&#34;)
+     *             .build());
+     * 
+     *         var webInstance = new Instance(&#34;webInstance&#34;, InstanceArgs.builder()        
+     *             .ami(webKeyPrefix.applyValue(getKeyPrefixResult -&gt; getKeyPrefixResult.subkeys().app/launch_ami()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetKeyPrefixResult> getKeyPrefix(GetKeyPrefixArgs args) {
@@ -620,6 +2073,83 @@ public final class ConsulFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetKeyPrefixArgs;
+     * import com.pulumi.aws.ec2.Instance;
+     * import com.pulumi.aws.ec2.InstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var appKeyPrefix = ConsulFunctions.getKeyPrefix(GetKeyPrefixArgs.builder()
+     *             .datacenter(&#34;nyc1&#34;)
+     *             .pathPrefix(&#34;myapp/config/&#34;)
+     *             .subkeyCollection(GetKeyPrefixSubkeyCollectionArgs.builder()
+     *                 .default_(&#34;ami-1234&#34;)
+     *                 .name(&#34;ami&#34;)
+     *                 .path(&#34;app/launch_ami&#34;)
+     *                 .build())
+     *             .token(&#34;abcd&#34;)
+     *             .build());
+     * 
+     *         var appInstance = new Instance(&#34;appInstance&#34;, InstanceArgs.builder()        
+     *             .ami(appKeyPrefix.applyValue(getKeyPrefixResult -&gt; getKeyPrefixResult.var().ami()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetKeyPrefixArgs;
+     * import com.pulumi.aws.ec2.Instance;
+     * import com.pulumi.aws.ec2.InstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var webKeyPrefix = ConsulFunctions.getKeyPrefix(GetKeyPrefixArgs.builder()
+     *             .datacenter(&#34;nyc1&#34;)
+     *             .pathPrefix(&#34;myapp/config/&#34;)
+     *             .token(&#34;efgh&#34;)
+     *             .build());
+     * 
+     *         var webInstance = new Instance(&#34;webInstance&#34;, InstanceArgs.builder()        
+     *             .ami(webKeyPrefix.applyValue(getKeyPrefixResult -&gt; getKeyPrefixResult.subkeys().app/launch_ami()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetKeyPrefixResult> getKeyPrefixPlain(GetKeyPrefixPlainArgs args) {
@@ -627,6 +2157,83 @@ public final class ConsulFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetKeyPrefixArgs;
+     * import com.pulumi.aws.ec2.Instance;
+     * import com.pulumi.aws.ec2.InstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var appKeyPrefix = ConsulFunctions.getKeyPrefix(GetKeyPrefixArgs.builder()
+     *             .datacenter(&#34;nyc1&#34;)
+     *             .pathPrefix(&#34;myapp/config/&#34;)
+     *             .subkeyCollection(GetKeyPrefixSubkeyCollectionArgs.builder()
+     *                 .default_(&#34;ami-1234&#34;)
+     *                 .name(&#34;ami&#34;)
+     *                 .path(&#34;app/launch_ami&#34;)
+     *                 .build())
+     *             .token(&#34;abcd&#34;)
+     *             .build());
+     * 
+     *         var appInstance = new Instance(&#34;appInstance&#34;, InstanceArgs.builder()        
+     *             .ami(appKeyPrefix.applyValue(getKeyPrefixResult -&gt; getKeyPrefixResult.var().ami()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetKeyPrefixArgs;
+     * import com.pulumi.aws.ec2.Instance;
+     * import com.pulumi.aws.ec2.InstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var webKeyPrefix = ConsulFunctions.getKeyPrefix(GetKeyPrefixArgs.builder()
+     *             .datacenter(&#34;nyc1&#34;)
+     *             .pathPrefix(&#34;myapp/config/&#34;)
+     *             .token(&#34;efgh&#34;)
+     *             .build());
+     * 
+     *         var webInstance = new Instance(&#34;webInstance&#34;, InstanceArgs.builder()        
+     *             .ami(webKeyPrefix.applyValue(getKeyPrefixResult -&gt; getKeyPrefixResult.subkeys().app/launch_ami()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetKeyPrefixResult> getKeyPrefix(GetKeyPrefixArgs args, InvokeOptions options) {
@@ -634,6 +2241,83 @@ public final class ConsulFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetKeyPrefixArgs;
+     * import com.pulumi.aws.ec2.Instance;
+     * import com.pulumi.aws.ec2.InstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var appKeyPrefix = ConsulFunctions.getKeyPrefix(GetKeyPrefixArgs.builder()
+     *             .datacenter(&#34;nyc1&#34;)
+     *             .pathPrefix(&#34;myapp/config/&#34;)
+     *             .subkeyCollection(GetKeyPrefixSubkeyCollectionArgs.builder()
+     *                 .default_(&#34;ami-1234&#34;)
+     *                 .name(&#34;ami&#34;)
+     *                 .path(&#34;app/launch_ami&#34;)
+     *                 .build())
+     *             .token(&#34;abcd&#34;)
+     *             .build());
+     * 
+     *         var appInstance = new Instance(&#34;appInstance&#34;, InstanceArgs.builder()        
+     *             .ami(appKeyPrefix.applyValue(getKeyPrefixResult -&gt; getKeyPrefixResult.var().ami()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetKeyPrefixArgs;
+     * import com.pulumi.aws.ec2.Instance;
+     * import com.pulumi.aws.ec2.InstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var webKeyPrefix = ConsulFunctions.getKeyPrefix(GetKeyPrefixArgs.builder()
+     *             .datacenter(&#34;nyc1&#34;)
+     *             .pathPrefix(&#34;myapp/config/&#34;)
+     *             .token(&#34;efgh&#34;)
+     *             .build());
+     * 
+     *         var webInstance = new Instance(&#34;webInstance&#34;, InstanceArgs.builder()        
+     *             .ami(webKeyPrefix.applyValue(getKeyPrefixResult -&gt; getKeyPrefixResult.subkeys().app/launch_ami()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetKeyPrefixResult> getKeyPrefixPlain(GetKeyPrefixPlainArgs args, InvokeOptions options) {
@@ -644,6 +2328,46 @@ public final class ConsulFunctions {
      * This is a powerful way dynamically set values in templates.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetKeysArgs;
+     * import com.pulumi.aws.ec2.Instance;
+     * import com.pulumi.aws.ec2.InstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var appKeys = ConsulFunctions.getKeys(GetKeysArgs.builder()
+     *             .datacenter(&#34;nyc1&#34;)
+     *             .keys(GetKeysKeyArgs.builder()
+     *                 .default_(&#34;ami-1234&#34;)
+     *                 .name(&#34;ami&#34;)
+     *                 .path(&#34;service/app/launch_ami&#34;)
+     *                 .build())
+     *             .token(&#34;abcd&#34;)
+     *             .build());
+     * 
+     *         var appInstance = new Instance(&#34;appInstance&#34;, InstanceArgs.builder()        
+     *             .ami(appKeys.applyValue(getKeysResult -&gt; getKeysResult.var().ami()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetKeysResult> getKeys() {
@@ -654,6 +2378,46 @@ public final class ConsulFunctions {
      * This is a powerful way dynamically set values in templates.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetKeysArgs;
+     * import com.pulumi.aws.ec2.Instance;
+     * import com.pulumi.aws.ec2.InstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var appKeys = ConsulFunctions.getKeys(GetKeysArgs.builder()
+     *             .datacenter(&#34;nyc1&#34;)
+     *             .keys(GetKeysKeyArgs.builder()
+     *                 .default_(&#34;ami-1234&#34;)
+     *                 .name(&#34;ami&#34;)
+     *                 .path(&#34;service/app/launch_ami&#34;)
+     *                 .build())
+     *             .token(&#34;abcd&#34;)
+     *             .build());
+     * 
+     *         var appInstance = new Instance(&#34;appInstance&#34;, InstanceArgs.builder()        
+     *             .ami(appKeys.applyValue(getKeysResult -&gt; getKeysResult.var().ami()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetKeysResult> getKeysPlain() {
@@ -664,6 +2428,46 @@ public final class ConsulFunctions {
      * This is a powerful way dynamically set values in templates.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetKeysArgs;
+     * import com.pulumi.aws.ec2.Instance;
+     * import com.pulumi.aws.ec2.InstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var appKeys = ConsulFunctions.getKeys(GetKeysArgs.builder()
+     *             .datacenter(&#34;nyc1&#34;)
+     *             .keys(GetKeysKeyArgs.builder()
+     *                 .default_(&#34;ami-1234&#34;)
+     *                 .name(&#34;ami&#34;)
+     *                 .path(&#34;service/app/launch_ami&#34;)
+     *                 .build())
+     *             .token(&#34;abcd&#34;)
+     *             .build());
+     * 
+     *         var appInstance = new Instance(&#34;appInstance&#34;, InstanceArgs.builder()        
+     *             .ami(appKeys.applyValue(getKeysResult -&gt; getKeysResult.var().ami()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetKeysResult> getKeys(GetKeysArgs args) {
@@ -674,6 +2478,46 @@ public final class ConsulFunctions {
      * This is a powerful way dynamically set values in templates.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetKeysArgs;
+     * import com.pulumi.aws.ec2.Instance;
+     * import com.pulumi.aws.ec2.InstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var appKeys = ConsulFunctions.getKeys(GetKeysArgs.builder()
+     *             .datacenter(&#34;nyc1&#34;)
+     *             .keys(GetKeysKeyArgs.builder()
+     *                 .default_(&#34;ami-1234&#34;)
+     *                 .name(&#34;ami&#34;)
+     *                 .path(&#34;service/app/launch_ami&#34;)
+     *                 .build())
+     *             .token(&#34;abcd&#34;)
+     *             .build());
+     * 
+     *         var appInstance = new Instance(&#34;appInstance&#34;, InstanceArgs.builder()        
+     *             .ami(appKeys.applyValue(getKeysResult -&gt; getKeysResult.var().ami()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetKeysResult> getKeysPlain(GetKeysPlainArgs args) {
@@ -684,6 +2528,46 @@ public final class ConsulFunctions {
      * This is a powerful way dynamically set values in templates.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetKeysArgs;
+     * import com.pulumi.aws.ec2.Instance;
+     * import com.pulumi.aws.ec2.InstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var appKeys = ConsulFunctions.getKeys(GetKeysArgs.builder()
+     *             .datacenter(&#34;nyc1&#34;)
+     *             .keys(GetKeysKeyArgs.builder()
+     *                 .default_(&#34;ami-1234&#34;)
+     *                 .name(&#34;ami&#34;)
+     *                 .path(&#34;service/app/launch_ami&#34;)
+     *                 .build())
+     *             .token(&#34;abcd&#34;)
+     *             .build());
+     * 
+     *         var appInstance = new Instance(&#34;appInstance&#34;, InstanceArgs.builder()        
+     *             .ami(appKeys.applyValue(getKeysResult -&gt; getKeysResult.var().ami()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetKeysResult> getKeys(GetKeysArgs args, InvokeOptions options) {
@@ -694,6 +2578,46 @@ public final class ConsulFunctions {
      * This is a powerful way dynamically set values in templates.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetKeysArgs;
+     * import com.pulumi.aws.ec2.Instance;
+     * import com.pulumi.aws.ec2.InstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var appKeys = ConsulFunctions.getKeys(GetKeysArgs.builder()
+     *             .datacenter(&#34;nyc1&#34;)
+     *             .keys(GetKeysKeyArgs.builder()
+     *                 .default_(&#34;ami-1234&#34;)
+     *                 .name(&#34;ami&#34;)
+     *                 .path(&#34;service/app/launch_ami&#34;)
+     *                 .build())
+     *             .token(&#34;abcd&#34;)
+     *             .build());
+     * 
+     *         var appInstance = new Instance(&#34;appInstance&#34;, InstanceArgs.builder()        
+     *             .ami(appKeys.applyValue(getKeysResult -&gt; getKeysResult.var().ami()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetKeysResult> getKeysPlain(GetKeysPlainArgs args, InvokeOptions options) {
@@ -706,6 +2630,43 @@ public final class ConsulFunctions {
      * servers present in a specific network area.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.NetworkArea;
+     * import com.pulumi.consul.NetworkAreaArgs;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetNetworkAreaMembersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var dc2NetworkArea = new NetworkArea(&#34;dc2NetworkArea&#34;, NetworkAreaArgs.builder()        
+     *             .peerDatacenter(&#34;dc2&#34;)
+     *             .retryJoins(&#34;1.2.3.4&#34;)
+     *             .useTls(true)
+     *             .build());
+     * 
+     *         final var dc2NetworkAreaMembers = ConsulFunctions.getNetworkAreaMembers(GetNetworkAreaMembersArgs.builder()
+     *             .uuid(dc2NetworkArea.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;members&#34;, dc2NetworkAreaMembers.applyValue(getNetworkAreaMembersResult -&gt; getNetworkAreaMembersResult).applyValue(dc2NetworkAreaMembers -&gt; dc2NetworkAreaMembers.applyValue(getNetworkAreaMembersResult -&gt; getNetworkAreaMembersResult.members())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetNetworkAreaMembersResult> getNetworkAreaMembers(GetNetworkAreaMembersArgs args) {
@@ -718,6 +2679,43 @@ public final class ConsulFunctions {
      * servers present in a specific network area.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.NetworkArea;
+     * import com.pulumi.consul.NetworkAreaArgs;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetNetworkAreaMembersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var dc2NetworkArea = new NetworkArea(&#34;dc2NetworkArea&#34;, NetworkAreaArgs.builder()        
+     *             .peerDatacenter(&#34;dc2&#34;)
+     *             .retryJoins(&#34;1.2.3.4&#34;)
+     *             .useTls(true)
+     *             .build());
+     * 
+     *         final var dc2NetworkAreaMembers = ConsulFunctions.getNetworkAreaMembers(GetNetworkAreaMembersArgs.builder()
+     *             .uuid(dc2NetworkArea.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;members&#34;, dc2NetworkAreaMembers.applyValue(getNetworkAreaMembersResult -&gt; getNetworkAreaMembersResult).applyValue(dc2NetworkAreaMembers -&gt; dc2NetworkAreaMembers.applyValue(getNetworkAreaMembersResult -&gt; getNetworkAreaMembersResult.members())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetNetworkAreaMembersResult> getNetworkAreaMembersPlain(GetNetworkAreaMembersPlainArgs args) {
@@ -730,6 +2728,43 @@ public final class ConsulFunctions {
      * servers present in a specific network area.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.NetworkArea;
+     * import com.pulumi.consul.NetworkAreaArgs;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetNetworkAreaMembersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var dc2NetworkArea = new NetworkArea(&#34;dc2NetworkArea&#34;, NetworkAreaArgs.builder()        
+     *             .peerDatacenter(&#34;dc2&#34;)
+     *             .retryJoins(&#34;1.2.3.4&#34;)
+     *             .useTls(true)
+     *             .build());
+     * 
+     *         final var dc2NetworkAreaMembers = ConsulFunctions.getNetworkAreaMembers(GetNetworkAreaMembersArgs.builder()
+     *             .uuid(dc2NetworkArea.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;members&#34;, dc2NetworkAreaMembers.applyValue(getNetworkAreaMembersResult -&gt; getNetworkAreaMembersResult).applyValue(dc2NetworkAreaMembers -&gt; dc2NetworkAreaMembers.applyValue(getNetworkAreaMembersResult -&gt; getNetworkAreaMembersResult.members())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetNetworkAreaMembersResult> getNetworkAreaMembers(GetNetworkAreaMembersArgs args, InvokeOptions options) {
@@ -742,6 +2777,43 @@ public final class ConsulFunctions {
      * servers present in a specific network area.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.NetworkArea;
+     * import com.pulumi.consul.NetworkAreaArgs;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetNetworkAreaMembersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var dc2NetworkArea = new NetworkArea(&#34;dc2NetworkArea&#34;, NetworkAreaArgs.builder()        
+     *             .peerDatacenter(&#34;dc2&#34;)
+     *             .retryJoins(&#34;1.2.3.4&#34;)
+     *             .useTls(true)
+     *             .build());
+     * 
+     *         final var dc2NetworkAreaMembers = ConsulFunctions.getNetworkAreaMembers(GetNetworkAreaMembersArgs.builder()
+     *             .uuid(dc2NetworkArea.id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;members&#34;, dc2NetworkAreaMembers.applyValue(getNetworkAreaMembersResult -&gt; getNetworkAreaMembersResult).applyValue(dc2NetworkAreaMembers -&gt; dc2NetworkAreaMembers.applyValue(getNetworkAreaMembersResult -&gt; getNetworkAreaMembersResult.members())));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetNetworkAreaMembersResult> getNetworkAreaMembersPlain(GetNetworkAreaMembersPlainArgs args, InvokeOptions options) {
@@ -754,6 +2826,33 @@ public final class ConsulFunctions {
      * segments defined in the configuration.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetNetworkSegmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var segmentsNetworkSegments = ConsulFunctions.getNetworkSegments();
+     * 
+     *         ctx.export(&#34;segments&#34;, segmentsNetworkSegments.applyValue(getNetworkSegmentsResult -&gt; getNetworkSegmentsResult.segments()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetNetworkSegmentsResult> getNetworkSegments() {
@@ -766,6 +2865,33 @@ public final class ConsulFunctions {
      * segments defined in the configuration.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetNetworkSegmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var segmentsNetworkSegments = ConsulFunctions.getNetworkSegments();
+     * 
+     *         ctx.export(&#34;segments&#34;, segmentsNetworkSegments.applyValue(getNetworkSegmentsResult -&gt; getNetworkSegmentsResult.segments()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetNetworkSegmentsResult> getNetworkSegmentsPlain() {
@@ -778,6 +2904,33 @@ public final class ConsulFunctions {
      * segments defined in the configuration.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetNetworkSegmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var segmentsNetworkSegments = ConsulFunctions.getNetworkSegments();
+     * 
+     *         ctx.export(&#34;segments&#34;, segmentsNetworkSegments.applyValue(getNetworkSegmentsResult -&gt; getNetworkSegmentsResult.segments()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetNetworkSegmentsResult> getNetworkSegments(GetNetworkSegmentsArgs args) {
@@ -790,6 +2943,33 @@ public final class ConsulFunctions {
      * segments defined in the configuration.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetNetworkSegmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var segmentsNetworkSegments = ConsulFunctions.getNetworkSegments();
+     * 
+     *         ctx.export(&#34;segments&#34;, segmentsNetworkSegments.applyValue(getNetworkSegmentsResult -&gt; getNetworkSegmentsResult.segments()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetNetworkSegmentsResult> getNetworkSegmentsPlain(GetNetworkSegmentsPlainArgs args) {
@@ -802,6 +2982,33 @@ public final class ConsulFunctions {
      * segments defined in the configuration.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetNetworkSegmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var segmentsNetworkSegments = ConsulFunctions.getNetworkSegments();
+     * 
+     *         ctx.export(&#34;segments&#34;, segmentsNetworkSegments.applyValue(getNetworkSegmentsResult -&gt; getNetworkSegmentsResult.segments()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetNetworkSegmentsResult> getNetworkSegments(GetNetworkSegmentsArgs args, InvokeOptions options) {
@@ -814,6 +3021,33 @@ public final class ConsulFunctions {
      * segments defined in the configuration.
      * 
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetNetworkSegmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var segmentsNetworkSegments = ConsulFunctions.getNetworkSegments();
+     * 
+     *         ctx.export(&#34;segments&#34;, segmentsNetworkSegments.applyValue(getNetworkSegmentsResult -&gt; getNetworkSegmentsResult.segments()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetNetworkSegmentsResult> getNetworkSegmentsPlain(GetNetworkSegmentsPlainArgs args, InvokeOptions options) {
@@ -881,6 +3115,34 @@ public final class ConsulFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetPeeringArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var basic = ConsulFunctions.getPeering(GetPeeringArgs.builder()
+     *             .peerName(&#34;peered-cluster&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetPeeringResult> getPeering(GetPeeringArgs args) {
@@ -888,6 +3150,34 @@ public final class ConsulFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetPeeringArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var basic = ConsulFunctions.getPeering(GetPeeringArgs.builder()
+     *             .peerName(&#34;peered-cluster&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetPeeringResult> getPeeringPlain(GetPeeringPlainArgs args) {
@@ -895,6 +3185,34 @@ public final class ConsulFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetPeeringArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var basic = ConsulFunctions.getPeering(GetPeeringArgs.builder()
+     *             .peerName(&#34;peered-cluster&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetPeeringResult> getPeering(GetPeeringArgs args, InvokeOptions options) {
@@ -902,6 +3220,34 @@ public final class ConsulFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetPeeringArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var basic = ConsulFunctions.getPeering(GetPeeringArgs.builder()
+     *             .peerName(&#34;peered-cluster&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetPeeringResult> getPeeringPlain(GetPeeringPlainArgs args, InvokeOptions options) {
@@ -909,6 +3255,32 @@ public final class ConsulFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetPeeringsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var peers = ConsulFunctions.getPeerings();
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetPeeringsResult> getPeerings() {
@@ -916,6 +3288,32 @@ public final class ConsulFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetPeeringsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var peers = ConsulFunctions.getPeerings();
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetPeeringsResult> getPeeringsPlain() {
@@ -923,6 +3321,32 @@ public final class ConsulFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetPeeringsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var peers = ConsulFunctions.getPeerings();
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetPeeringsResult> getPeerings(GetPeeringsArgs args) {
@@ -930,6 +3354,32 @@ public final class ConsulFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetPeeringsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var peers = ConsulFunctions.getPeerings();
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetPeeringsResult> getPeeringsPlain(GetPeeringsPlainArgs args) {
@@ -937,6 +3387,32 @@ public final class ConsulFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetPeeringsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var peers = ConsulFunctions.getPeerings();
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetPeeringsResult> getPeerings(GetPeeringsArgs args, InvokeOptions options) {
@@ -944,6 +3420,32 @@ public final class ConsulFunctions {
     }
     /**
      * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetPeeringsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var peers = ConsulFunctions.getPeerings();
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetPeeringsResult> getPeeringsPlain(GetPeeringsPlainArgs args, InvokeOptions options) {
@@ -1016,6 +3518,36 @@ public final class ConsulFunctions {
      * 
      * ## Example Usage
      * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetServiceHealthArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var vaultServiceHealth = ConsulFunctions.getServiceHealth(GetServiceHealthArgs.builder()
+     *             .passing(true)
+     *             .service(&#34;vault&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetServiceHealthInvokeResult> getServiceHealth(GetServiceHealthArgs args) {
         return getServiceHealth(args, InvokeOptions.Empty);
@@ -1030,6 +3562,36 @@ public final class ConsulFunctions {
      * updated, you should expect different results in a frequent basis.
      * 
      * ## Example Usage
+     * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetServiceHealthArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var vaultServiceHealth = ConsulFunctions.getServiceHealth(GetServiceHealthArgs.builder()
+     *             .passing(true)
+     *             .service(&#34;vault&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServiceHealthInvokeResult> getServiceHealthPlain(GetServiceHealthPlainArgs args) {
@@ -1046,6 +3608,36 @@ public final class ConsulFunctions {
      * 
      * ## Example Usage
      * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetServiceHealthArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var vaultServiceHealth = ConsulFunctions.getServiceHealth(GetServiceHealthArgs.builder()
+     *             .passing(true)
+     *             .service(&#34;vault&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetServiceHealthInvokeResult> getServiceHealth(GetServiceHealthArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("consul:index/getServiceHealth:getServiceHealth", TypeShape.of(GetServiceHealthInvokeResult.class), args, Utilities.withVersion(options));
@@ -1060,6 +3652,36 @@ public final class ConsulFunctions {
      * updated, you should expect different results in a frequent basis.
      * 
      * ## Example Usage
+     * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetServiceHealthArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var vaultServiceHealth = ConsulFunctions.getServiceHealth(GetServiceHealthArgs.builder()
+     *             .passing(true)
+     *             .service(&#34;vault&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetServiceHealthInvokeResult> getServiceHealthPlain(GetServiceHealthPlainArgs args, InvokeOptions options) {

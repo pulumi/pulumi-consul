@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -14,7 +15,44 @@ import (
 //
 // The `getNetworkAreaMembers` data source provides a list of the Consul
 // servers present in a specific network area.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			dc2NetworkArea, err := consul.NewNetworkArea(ctx, "dc2NetworkArea", &consul.NetworkAreaArgs{
+//				PeerDatacenter: pulumi.String("dc2"),
+//				RetryJoins: pulumi.StringArray{
+//					pulumi.String("1.2.3.4"),
+//				},
+//				UseTls: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			dc2NetworkAreaMembers := consul.GetNetworkAreaMembersOutput(ctx, consul.GetNetworkAreaMembersOutputArgs{
+//				Uuid: dc2NetworkArea.ID(),
+//			}, nil)
+//			ctx.Export("members", dc2NetworkAreaMembers.ApplyT(func(dc2NetworkAreaMembers consul.GetNetworkAreaMembersResult) ([]consul.GetNetworkAreaMembersMember, error) {
+//				return dc2NetworkAreaMembers.Members, nil
+//			}).([]consul.GetNetworkAreaMembersMemberOutput))
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetNetworkAreaMembers(ctx *pulumi.Context, args *GetNetworkAreaMembersArgs, opts ...pulumi.InvokeOption) (*GetNetworkAreaMembersResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetNetworkAreaMembersResult
 	err := ctx.Invoke("consul:index/getNetworkAreaMembers:getNetworkAreaMembers", args, &rv, opts...)
 	if err != nil {

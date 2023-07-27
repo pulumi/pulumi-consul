@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -18,6 +19,7 @@ import (
 // This data source is different from the `Service` (singular) data
 // source, which provides a detailed response about a specific Consul service.
 func GetServices(ctx *pulumi.Context, args *GetServicesArgs, opts ...pulumi.InvokeOption) (*GetServicesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetServicesResult
 	err := ctx.Invoke("consul:index/getServices:getServices", args, &rv, opts...)
 	if err != nil {

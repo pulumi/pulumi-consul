@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -77,7 +78,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = consul.LookupService(ctx, &GetServiceArgs{
+//			_, err = consul.LookupService(ctx, &consul.LookupServiceArgs{
 //				Name: "postgresql",
 //			}, nil)
 //			if err != nil {
@@ -142,6 +143,7 @@ func NewIntention(ctx *pulumi.Context,
 	if args.SourceName == nil {
 		return nil, errors.New("invalid value for required argument 'SourceName'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Intention
 	err := ctx.RegisterResource("consul:index/intention:Intention", name, args, &resource, opts...)
 	if err != nil {
@@ -357,6 +359,53 @@ func (o IntentionOutput) ToIntentionOutput() IntentionOutput {
 
 func (o IntentionOutput) ToIntentionOutputWithContext(ctx context.Context) IntentionOutput {
 	return o
+}
+
+// The intention action. Must be one of `allow` or `deny`.
+func (o IntentionOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v *Intention) pulumi.StringOutput { return v.Action }).(pulumi.StringOutput)
+}
+
+// The datacenter to use. This overrides the
+// agent's default datacenter and the datacenter in the provider setup.
+func (o IntentionOutput) Datacenter() pulumi.StringOutput {
+	return o.ApplyT(func(v *Intention) pulumi.StringOutput { return v.Datacenter }).(pulumi.StringOutput)
+}
+
+// Optional description that can be used by Consul
+// tooling, but is not used internally.
+func (o IntentionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Intention) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The name of the destination service for the intention. This
+// service does not have to exist.
+func (o IntentionOutput) DestinationName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Intention) pulumi.StringOutput { return v.DestinationName }).(pulumi.StringOutput)
+}
+
+// The destination
+// namespace of the intention.
+func (o IntentionOutput) DestinationNamespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Intention) pulumi.StringPtrOutput { return v.DestinationNamespace }).(pulumi.StringPtrOutput)
+}
+
+// Key/value pairs that are opaque to Consul and are associated
+// with the intention.
+func (o IntentionOutput) Meta() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Intention) pulumi.StringMapOutput { return v.Meta }).(pulumi.StringMapOutput)
+}
+
+// The name of the source service for the intention. This
+// service does not have to exist.
+func (o IntentionOutput) SourceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Intention) pulumi.StringOutput { return v.SourceName }).(pulumi.StringOutput)
+}
+
+// The source namespace of the
+// intention.
+func (o IntentionOutput) SourceNamespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Intention) pulumi.StringPtrOutput { return v.SourceNamespace }).(pulumi.StringPtrOutput)
 }
 
 type IntentionArrayOutput struct{ *pulumi.OutputState }

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,6 +40,7 @@ import (
 //
 // ```
 func GetAutopilotHealth(ctx *pulumi.Context, args *GetAutopilotHealthArgs, opts ...pulumi.InvokeOption) (*GetAutopilotHealthResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAutopilotHealthResult
 	err := ctx.Invoke("consul:index/getAutopilotHealth:getAutopilotHealth", args, &rv, opts...)
 	if err != nil {

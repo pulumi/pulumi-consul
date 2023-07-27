@@ -187,6 +187,17 @@ export interface GetAutopilotHealthServer {
 
 export interface GetCatalogNodesNode {
     address: string;
+    /**
+     * The Node ID of the Consul agent.
+     * * [`meta`](https://www.consul.io/docs/agent/http/catalog.html#Meta) - Node meta
+     * data tag information, if any.
+     * * [`name`](https://www.consul.io/docs/agent/http/catalog.html#Node) - The name
+     * of the Consul node.
+     * * [`address`](https://www.consul.io/docs/agent/http/catalog.html#Address) - The
+     * IP address the node is advertising to the Consul cluster.
+     * * [`taggedAddresses`](https://www.consul.io/docs/agent/http/catalog.html#TaggedAddresses) -
+     * List of explicit LAN and WAN IP addresses for the agent.
+     */
     id: string;
     meta: {[key: string]: string};
     name: string;
@@ -194,27 +205,84 @@ export interface GetCatalogNodesNode {
 }
 
 export interface GetCatalogNodesQueryOption {
+    /**
+     * When `true`, the default, allow responses from
+     * Consul servers that are followers.
+     */
     allowStale?: boolean;
+    /**
+     * The Consul datacenter to query.  Defaults to the
+     * same value found in `queryOptions` parameter specified below, or if that is
+     * empty, the `datacenter` value found in the Consul agent that this provider is
+     * configured to talk to then the datacenter in the provider setup.
+     */
     datacenter?: string;
     near?: string;
     nodeMeta?: {[key: string]: string};
     partition?: string;
+    /**
+     * When `true` force the client to perform a
+     * read on at least quorum servers and verify the result is the same.  Defaults
+     * to `false`.
+     */
     requireConsistent?: boolean;
+    /**
+     * Specify the Consul ACL token to use when performing the
+     * request.  This defaults to the same API token configured by the `consul`
+     * provider but may be overridden if necessary.
+     */
     token?: string;
+    /**
+     * Index number used to enable blocking queries.
+     */
     waitIndex?: number;
+    /**
+     * Max time the client should wait for a blocking query
+     * to return.
+     */
     waitTime?: string;
 }
 
 export interface GetCatalogServiceQueryOption {
+    /**
+     * When `true`, the default, allow responses from
+     * Consul servers that are followers.
+     */
     allowStale?: boolean;
+    /**
+     * The Consul datacenter to query.  Defaults to the
+     * same value found in `queryOptions` parameter specified below, or if that is
+     * empty, the `datacenter` value found in the Consul agent that this provider is
+     * configured to talk to.
+     */
     datacenter?: string;
+    /**
+     * The namespace to lookup the service.
+     */
     namespace?: string;
     near?: string;
     nodeMeta?: {[key: string]: string};
     partition?: string;
+    /**
+     * When `true` force the client to perform a
+     * read on at least quorum servers and verify the result is the same.  Defaults
+     * to `false`.
+     */
     requireConsistent?: boolean;
+    /**
+     * Specify the Consul ACL token to use when performing the
+     * request.  This defaults to the same API token configured by the `consul`
+     * provider but may be overridden if necessary.
+     */
     token?: string;
+    /**
+     * Index number used to enable blocking queries.
+     */
     waitIndex?: number;
+    /**
+     * Max time the client should wait for a blocking query
+     * to return.
+     */
     waitTime?: string;
 }
 
@@ -225,8 +293,36 @@ export interface GetCatalogServiceService {
     id: string;
     meta: {[key: string]: string};
     modifyIndex: string;
+    /**
+     * The service name to select.
+     */
     name: string;
     nodeAddress: string;
+    /**
+     * The Node ID of the Consul agent advertising the service.
+     * * [`nodeMeta`](https://www.consul.io/docs/agent/http/catalog.html#Meta) - Node
+     * meta data tag information, if any.
+     * * [`nodeName`](https://www.consul.io/docs/agent/http/catalog.html#Node) - The
+     * name of the Consul node.
+     * * [`address`](https://www.consul.io/docs/agent/http/catalog.html#ServiceAddress) -
+     * The IP address of the service.  If the `ServiceAddress` in the Consul catalog
+     * is empty, this value is automatically populated with the `nodeAddress` (the
+     * `Address` in the Consul Catalog).
+     * * [`enableTagOverride`](https://www.consul.io/docs/agent/http/catalog.html#ServiceEnableTagOverride) -
+     * Whether service tags can be overridden on this service.
+     * * [`id`](https://www.consul.io/docs/agent/http/catalog.html#ServiceID) - A
+     * unique service instance identifier.
+     * * [`name`](https://www.consul.io/docs/agent/http/catalog.html#ServiceName) - The
+     * name of the service.
+     * * [`port`](https://www.consul.io/docs/agent/http/catalog.html#ServicePort) -
+     * Port number of the service.
+     * * [`taggedAddresses`](https://www.consul.io/docs/agent/http/catalog.html#TaggedAddresses) -
+     * List of explicit LAN and WAN IP addresses for the agent.
+     * * [`tags`](https://www.consul.io/docs/agent/http/catalog.html#ServiceTags) -
+     * List of tags for the service.
+     * * [`meta`](https://www.consul.io/docs/agent/http/catalog.html#Meta) - Service meta
+     * data tag information, if any.
+     */
     nodeId: string;
     nodeMeta: {[key: string]: string};
     nodeName: string;
@@ -236,15 +332,45 @@ export interface GetCatalogServiceService {
 }
 
 export interface GetCatalogServicesQueryOption {
+    /**
+     * When `true`, the default, allow responses from
+     * Consul servers that are followers.
+     */
     allowStale?: boolean;
+    /**
+     * The Consul datacenter to query.  Defaults to the
+     * same value found in `queryOptions` parameter specified below, or if that is
+     * empty, the `datacenter` value found in the Consul agent that this provider is
+     * configured to talk to.
+     */
     datacenter?: string;
+    /**
+     * The namespace to lookup the services.
+     */
     namespace?: string;
     near?: string;
     nodeMeta?: {[key: string]: string};
     partition?: string;
+    /**
+     * When `true` force the client to perform a
+     * read on at least quorum servers and verify the result is the same.  Defaults
+     * to `false`.
+     */
     requireConsistent?: boolean;
+    /**
+     * Specify the Consul ACL token to use when performing the
+     * request.  This defaults to the same API token configured by the `consul`
+     * provider but may be overridden if necessary.
+     */
     token?: string;
+    /**
+     * Index number used to enable blocking queries.
+     */
     waitIndex?: number;
+    /**
+     * Max time the client should wait for a blocking query
+     * to return.
+     */
     waitTime?: string;
 }
 

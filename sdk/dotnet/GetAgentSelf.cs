@@ -21,7 +21,7 @@ namespace Pulumi.Consul
         /// from the agent specified in the `provider`.
         /// </summary>
         public static Task<GetAgentSelfResult> InvokeAsync(InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAgentSelfResult>("consul:index/getAgentSelf:getAgentSelf", InvokeArgs.Empty, options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAgentSelfResult>("consul:index/getAgentSelf:getAgentSelf", InvokeArgs.Empty, options.WithDefaults());
     }
 
 
@@ -30,6 +30,19 @@ namespace Pulumi.Consul
     {
         public readonly string AclDatacenter;
         public readonly string AclDefaultPolicy;
+        /// <summary>
+        /// * [`acl_down_policy`](https://www.consul.io/docs/agent/options.html#acl_down_policy)
+        /// * [`acl_enforce_0_8_semantics`](https://www.consul.io/docs/agent/options.html#acl_enforce_version_8)
+        /// * [`acl_ttl`](https://www.consul.io/docs/agent/options.html#acl_ttl)
+        /// * [`addresses`](https://www.consul.io/docs/agent/options.html#addresses)
+        /// * [`advertise_addr`](https://www.consul.io/docs/agent/options.html#_advertise)
+        /// * [`advertise_addr_wan`](https://www.consul.io/docs/agent/options.html#_advertise-wan)
+        /// * [`advertise_addrs`](https://www.consul.io/docs/agent/options.html#advertise_addrs)
+        /// * [`atlas_join`](https://www.consul.io/docs/agent/options.html#_atlas_join)
+        /// * [`bind_addr`](https://www.consul.io/docs/agent/options.html#_bind)
+        /// * [`bootstrap_expect`](https://www.consul.io/docs/agent/options.html#_bootstrap_expect)
+        /// * [`bootstrap_mode`](https://www.consul.io/docs/agent/options.html#_bootstrap)
+        /// </summary>
         public readonly string AclDisabledTtl;
         public readonly string AclDownPolicy;
         public readonly bool AclEnforce08Semantics;
@@ -43,6 +56,10 @@ namespace Pulumi.Consul
         public readonly int BootstrapExpect;
         public readonly bool BootstrapMode;
         public readonly string CheckDeregisterIntervalMin;
+        /// <summary>
+        /// * [`check_update_interval`](https://www.consul.io/docs/agent/options.html#check_update_interval)
+        /// * [`client_addr`](https://www.consul.io/docs/agent/options.html#_client)
+        /// </summary>
         public readonly string CheckReapInterval;
         public readonly string CheckUpdateInterval;
         public readonly string ClientAddr;
@@ -59,7 +76,12 @@ namespace Pulumi.Consul
         /// * [`dev_mode`](https://www.consul.io/docs/agent/options.html#_dev)
         /// * [`domain`](https://www.consul.io/docs/agent/options.html#_domain)
         /// * [`enable_anonymous_signature`](https://www.consul.io/docs/agent/options.html#disable_anonymous_signature)
-        /// * `enable_coordinates`
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> Dns;
+        public readonly ImmutableArray<string> DnsRecursors;
+        public readonly string Domain;
+        public readonly bool EnableAnonymousSignature;
+        /// <summary>
         /// * [`enable_debug`](https://www.consul.io/docs/agent/options.html#enable_debug)
         /// * [`enable_remote_exec`](https://www.consul.io/docs/agent/options.html#disable_remote_exec)
         /// * [`enable_syslog`](https://www.consul.io/docs/agent/options.html#_syslog)
@@ -109,10 +131,6 @@ namespace Pulumi.Consul
         /// * [`ui_dir`](https://www.consul.io/docs/agent/options.html#ui_dir)
         /// * [`unix_sockets`](https://www.consul.io/docs/agent/options.html#unix_sockets)
         /// </summary>
-        public readonly ImmutableDictionary<string, string> Dns;
-        public readonly ImmutableArray<string> DnsRecursors;
-        public readonly string Domain;
-        public readonly bool EnableAnonymousSignature;
         public readonly bool EnableCoordinates;
         public readonly bool EnableDebug;
         public readonly bool EnableRemoteExec;
@@ -159,8 +177,6 @@ namespace Pulumi.Consul
         public readonly ImmutableDictionary<string, string> UnixSockets;
         /// <summary>
         /// The version of the Consul agent.
-        /// * `version_prerelease`
-        /// * `version_revision`
         /// </summary>
         public readonly string Version;
         public readonly string VersionPrerelease;

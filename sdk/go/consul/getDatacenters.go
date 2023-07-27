@@ -4,12 +4,14 @@
 package consul
 
 import (
+	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The `getDatacenters` data source returns the list of all knwown Consul
 // datacenters.
 func GetDatacenters(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetDatacentersResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDatacentersResult
 	err := ctx.Invoke("consul:index/getDatacenters:getDatacenters", nil, &rv, opts...)
 	if err != nil {

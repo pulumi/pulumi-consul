@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -17,34 +18,8 @@ import (
 //
 // This resource is likely to change as frequently as the health-checks are being
 // updated, you should expect different results in a frequent basis.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := consul.LookupServiceHealth(ctx, &GetServiceHealthArgs{
-//				Passing: pulumi.BoolRef(true),
-//				Service: "vault",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupServiceHealth(ctx *pulumi.Context, args *LookupServiceHealthArgs, opts ...pulumi.InvokeOption) (*LookupServiceHealthResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupServiceHealthResult
 	err := ctx.Invoke("consul:index/getServiceHealth:getServiceHealth", args, &rv, opts...)
 	if err != nil {

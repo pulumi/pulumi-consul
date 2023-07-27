@@ -11,6 +11,18 @@ import java.util.Objects;
 @CustomType
 public final class GetCatalogNodesNode {
     private String address;
+    /**
+     * @return The Node ID of the Consul agent.
+     * * [`meta`](https://www.consul.io/docs/agent/http/catalog.html#Meta) - Node meta
+     *   data tag information, if any.
+     * * [`name`](https://www.consul.io/docs/agent/http/catalog.html#Node) - The name
+     *   of the Consul node.
+     * * [`address`](https://www.consul.io/docs/agent/http/catalog.html#Address) - The
+     *   IP address the node is advertising to the Consul cluster.
+     * * [`tagged_addresses`](https://www.consul.io/docs/agent/http/catalog.html#TaggedAddresses) -
+     *   List of explicit LAN and WAN IP addresses for the agent.
+     * 
+     */
     private String id;
     private Map<String,String> meta;
     private String name;
@@ -20,6 +32,18 @@ public final class GetCatalogNodesNode {
     public String address() {
         return this.address;
     }
+    /**
+     * @return The Node ID of the Consul agent.
+     * * [`meta`](https://www.consul.io/docs/agent/http/catalog.html#Meta) - Node meta
+     *   data tag information, if any.
+     * * [`name`](https://www.consul.io/docs/agent/http/catalog.html#Node) - The name
+     *   of the Consul node.
+     * * [`address`](https://www.consul.io/docs/agent/http/catalog.html#Address) - The
+     *   IP address the node is advertising to the Consul cluster.
+     * * [`tagged_addresses`](https://www.consul.io/docs/agent/http/catalog.html#TaggedAddresses) -
+     *   List of explicit LAN and WAN IP addresses for the agent.
+     * 
+     */
     public String id() {
         return this.id;
     }

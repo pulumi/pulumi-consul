@@ -3,6 +3,7 @@
 
 package com.pulumi.consul.outputs;
 
+import com.pulumi.consul.outputs.PreparedQueryFailoverTarget;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Integer;
 import java.lang.String;
@@ -19,11 +20,15 @@ public final class PreparedQueryFailover {
      */
     private @Nullable List<String> datacenters;
     /**
-     * @return Return results from this many datacenters,
-     * sorted in ascending order of estimated RTT.
+     * @return Return results from this many datacenters, sorted in ascending order of estimated RTT.
      * 
      */
     private @Nullable Integer nearestN;
+    /**
+     * @return Specifies a sequential list of remote datacenters and cluster peers to failover to if there are no healthy service instances in the local datacenter. This option cannot be used with `nearest_n` or `datacenters`.
+     * 
+     */
+    private @Nullable List<PreparedQueryFailoverTarget> targets;
 
     private PreparedQueryFailover() {}
     /**
@@ -34,12 +39,18 @@ public final class PreparedQueryFailover {
         return this.datacenters == null ? List.of() : this.datacenters;
     }
     /**
-     * @return Return results from this many datacenters,
-     * sorted in ascending order of estimated RTT.
+     * @return Return results from this many datacenters, sorted in ascending order of estimated RTT.
      * 
      */
     public Optional<Integer> nearestN() {
         return Optional.ofNullable(this.nearestN);
+    }
+    /**
+     * @return Specifies a sequential list of remote datacenters and cluster peers to failover to if there are no healthy service instances in the local datacenter. This option cannot be used with `nearest_n` or `datacenters`.
+     * 
+     */
+    public List<PreparedQueryFailoverTarget> targets() {
+        return this.targets == null ? List.of() : this.targets;
     }
 
     public static Builder builder() {
@@ -53,11 +64,13 @@ public final class PreparedQueryFailover {
     public static final class Builder {
         private @Nullable List<String> datacenters;
         private @Nullable Integer nearestN;
+        private @Nullable List<PreparedQueryFailoverTarget> targets;
         public Builder() {}
         public Builder(PreparedQueryFailover defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.datacenters = defaults.datacenters;
     	      this.nearestN = defaults.nearestN;
+    	      this.targets = defaults.targets;
         }
 
         @CustomType.Setter
@@ -73,10 +86,19 @@ public final class PreparedQueryFailover {
             this.nearestN = nearestN;
             return this;
         }
+        @CustomType.Setter
+        public Builder targets(@Nullable List<PreparedQueryFailoverTarget> targets) {
+            this.targets = targets;
+            return this;
+        }
+        public Builder targets(PreparedQueryFailoverTarget... targets) {
+            return targets(List.of(targets));
+        }
         public PreparedQueryFailover build() {
             final var o = new PreparedQueryFailover();
             o.datacenters = datacenters;
             o.nearestN = nearestN;
+            o.targets = targets;
             return o;
         }
     }

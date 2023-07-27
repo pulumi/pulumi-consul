@@ -29,47 +29,46 @@ namespace Pulumi.Consul
     /// Create a simplest intention with static service names:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Consul = Pulumi.Consul;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var database = new Consul.Intention("database", new()
     ///     {
-    ///         var database = new Consul.Intention("database", new Consul.IntentionArgs
-    ///         {
-    ///             Action = "allow",
-    ///             DestinationName = "db",
-    ///             SourceName = "api",
-    ///         });
-    ///     }
+    ///         Action = "allow",
+    ///         DestinationName = "db",
+    ///         SourceName = "api",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// Referencing a known service via a datasource:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Consul = Pulumi.Consul;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var database = new Consul.Intention("database", new()
     ///     {
-    ///         var database = new Consul.Intention("database", new Consul.IntentionArgs
-    ///         {
-    ///             Action = "allow",
-    ///             DestinationName = consul_service.Pg.Name,
-    ///             SourceName = "api",
-    ///         });
-    ///         var pg = Output.Create(Consul.GetService.InvokeAsync(new Consul.GetServiceArgs
-    ///         {
-    ///             Name = "postgresql",
-    ///         }));
-    ///     }
+    ///         Action = "allow",
+    ///         DestinationName = consul_service.Pg.Name,
+    ///         SourceName = "api",
+    ///     });
     /// 
-    /// }
+    ///     var pg = Consul.GetService.Invoke(new()
+    ///     {
+    ///         Name = "postgresql",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -81,7 +80,7 @@ namespace Pulumi.Consul
     /// ```
     /// </summary>
     [ConsulResourceType("consul:index/intention:Intention")]
-    public partial class Intention : Pulumi.CustomResource
+    public partial class Intention : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The intention action. Must be one of `allow` or `deny`.
@@ -182,7 +181,7 @@ namespace Pulumi.Consul
         }
     }
 
-    public sealed class IntentionArgs : Pulumi.ResourceArgs
+    public sealed class IntentionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The intention action. Must be one of `allow` or `deny`.
@@ -248,9 +247,10 @@ namespace Pulumi.Consul
         public IntentionArgs()
         {
         }
+        public static new IntentionArgs Empty => new IntentionArgs();
     }
 
-    public sealed class IntentionState : Pulumi.ResourceArgs
+    public sealed class IntentionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The intention action. Must be one of `allow` or `deny`.
@@ -316,5 +316,6 @@ namespace Pulumi.Consul
         public IntentionState()
         {
         }
+        public static new IntentionState Empty => new IntentionState();
     }
 }

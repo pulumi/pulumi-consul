@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -17,19 +18,34 @@ import (
 type Provider struct {
 	pulumi.ProviderResourceState
 
-	Address    pulumi.StringPtrOutput `pulumi:"address"`
-	CaFile     pulumi.StringPtrOutput `pulumi:"caFile"`
-	CaPath     pulumi.StringPtrOutput `pulumi:"caPath"`
-	CaPem      pulumi.StringPtrOutput `pulumi:"caPem"`
-	CertFile   pulumi.StringPtrOutput `pulumi:"certFile"`
-	CertPem    pulumi.StringPtrOutput `pulumi:"certPem"`
+	// The HTTP(S) API address of the agent to use. Defaults to "127.0.0.1:8500".
+	Address pulumi.StringPtrOutput `pulumi:"address"`
+	// A path to a PEM-encoded certificate authority used to verify the remote agent's certificate.
+	CaFile pulumi.StringPtrOutput `pulumi:"caFile"`
+	// A path to a directory of PEM-encoded certificate authority files to use to check the authenticity of client and server
+	// connections. Can also be specified with the `CONSUL_CAPATH` environment variable.
+	CaPath pulumi.StringPtrOutput `pulumi:"caPath"`
+	// PEM-encoded certificate authority used to verify the remote agent's certificate.
+	CaPem pulumi.StringPtrOutput `pulumi:"caPem"`
+	// A path to a PEM-encoded certificate provided to the remote agent; requires use of `key_file` or `key_pem`.
+	CertFile pulumi.StringPtrOutput `pulumi:"certFile"`
+	// PEM-encoded certificate provided to the remote agent; requires use of `key_file` or `key_pem`.
+	CertPem pulumi.StringPtrOutput `pulumi:"certPem"`
+	// The datacenter to use. Defaults to that of the agent.
 	Datacenter pulumi.StringPtrOutput `pulumi:"datacenter"`
-	HttpAuth   pulumi.StringPtrOutput `pulumi:"httpAuth"`
-	KeyFile    pulumi.StringPtrOutput `pulumi:"keyFile"`
-	KeyPem     pulumi.StringPtrOutput `pulumi:"keyPem"`
-	Namespace  pulumi.StringPtrOutput `pulumi:"namespace"`
-	Scheme     pulumi.StringPtrOutput `pulumi:"scheme"`
-	Token      pulumi.StringPtrOutput `pulumi:"token"`
+	// HTTP Basic Authentication credentials to be used when communicating with Consul, in the format of either `user` or
+	// `user:pass`. This may also be specified using the `CONSUL_HTTP_AUTH` environment variable.
+	HttpAuth pulumi.StringPtrOutput `pulumi:"httpAuth"`
+	// A path to a PEM-encoded private key, required if `cert_file` or `cert_pem` is specified.
+	KeyFile pulumi.StringPtrOutput `pulumi:"keyFile"`
+	// PEM-encoded private key, required if `cert_file` or `cert_pem` is specified.
+	KeyPem    pulumi.StringPtrOutput `pulumi:"keyPem"`
+	Namespace pulumi.StringPtrOutput `pulumi:"namespace"`
+	// The URL scheme of the agent to use ("http" or "https"). Defaults to "http".
+	Scheme pulumi.StringPtrOutput `pulumi:"scheme"`
+	// The ACL token to use by default when making requests to the agent. Can also be specified with `CONSUL_HTTP_TOKEN` or
+	// `CONSUL_TOKEN` as an environment variable.
+	Token pulumi.StringPtrOutput `pulumi:"token"`
 }
 
 // NewProvider registers a new resource with the given unique name, arguments, and options.
@@ -39,6 +55,17 @@ func NewProvider(ctx *pulumi.Context,
 		args = &ProviderArgs{}
 	}
 
+	if args.Headers != nil {
+		args.Headers = pulumi.ToSecret(args.Headers).(ProviderHeaderArrayInput)
+	}
+	if args.Token != nil {
+		args.Token = pulumi.ToSecret(args.Token).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"token",
+	})
+	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Provider
 	err := ctx.RegisterResource("pulumi:providers:consul", name, args, &resource, opts...)
 	if err != nil {
@@ -48,42 +75,82 @@ func NewProvider(ctx *pulumi.Context,
 }
 
 type providerArgs struct {
-	Address    *string `pulumi:"address"`
-	CaFile     *string `pulumi:"caFile"`
-	CaPath     *string `pulumi:"caPath"`
-	CaPem      *string `pulumi:"caPem"`
-	CertFile   *string `pulumi:"certFile"`
-	CertPem    *string `pulumi:"certPem"`
+	// The HTTP(S) API address of the agent to use. Defaults to "127.0.0.1:8500".
+	Address *string `pulumi:"address"`
+	// Authenticates to Consul using a JWT authentication method.
+	AuthJwt *ProviderAuthJwt `pulumi:"authJwt"`
+	// A path to a PEM-encoded certificate authority used to verify the remote agent's certificate.
+	CaFile *string `pulumi:"caFile"`
+	// A path to a directory of PEM-encoded certificate authority files to use to check the authenticity of client and server
+	// connections. Can also be specified with the `CONSUL_CAPATH` environment variable.
+	CaPath *string `pulumi:"caPath"`
+	// PEM-encoded certificate authority used to verify the remote agent's certificate.
+	CaPem *string `pulumi:"caPem"`
+	// A path to a PEM-encoded certificate provided to the remote agent; requires use of `key_file` or `key_pem`.
+	CertFile *string `pulumi:"certFile"`
+	// PEM-encoded certificate provided to the remote agent; requires use of `key_file` or `key_pem`.
+	CertPem *string `pulumi:"certPem"`
+	// The datacenter to use. Defaults to that of the agent.
 	Datacenter *string `pulumi:"datacenter"`
-	// Additional headers to send with each Consul request.
-	Headers       []ProviderHeader `pulumi:"headers"`
-	HttpAuth      *string          `pulumi:"httpAuth"`
-	InsecureHttps *bool            `pulumi:"insecureHttps"`
-	KeyFile       *string          `pulumi:"keyFile"`
-	KeyPem        *string          `pulumi:"keyPem"`
-	Namespace     *string          `pulumi:"namespace"`
-	Scheme        *string          `pulumi:"scheme"`
-	Token         *string          `pulumi:"token"`
+	// A configuration block, described below, that provides additional headers to be sent along with all requests to the
+	// Consul server. This block can be specified multiple times.
+	Headers []ProviderHeader `pulumi:"headers"`
+	// HTTP Basic Authentication credentials to be used when communicating with Consul, in the format of either `user` or
+	// `user:pass`. This may also be specified using the `CONSUL_HTTP_AUTH` environment variable.
+	HttpAuth *string `pulumi:"httpAuth"`
+	// Boolean value to disable SSL certificate verification; setting this value to true is not recommended for production use.
+	// Only use this with scheme set to "https".
+	InsecureHttps *bool `pulumi:"insecureHttps"`
+	// A path to a PEM-encoded private key, required if `cert_file` or `cert_pem` is specified.
+	KeyFile *string `pulumi:"keyFile"`
+	// PEM-encoded private key, required if `cert_file` or `cert_pem` is specified.
+	KeyPem    *string `pulumi:"keyPem"`
+	Namespace *string `pulumi:"namespace"`
+	// The URL scheme of the agent to use ("http" or "https"). Defaults to "http".
+	Scheme *string `pulumi:"scheme"`
+	// The ACL token to use by default when making requests to the agent. Can also be specified with `CONSUL_HTTP_TOKEN` or
+	// `CONSUL_TOKEN` as an environment variable.
+	Token *string `pulumi:"token"`
 }
 
 // The set of arguments for constructing a Provider resource.
 type ProviderArgs struct {
-	Address    pulumi.StringPtrInput
-	CaFile     pulumi.StringPtrInput
-	CaPath     pulumi.StringPtrInput
-	CaPem      pulumi.StringPtrInput
-	CertFile   pulumi.StringPtrInput
-	CertPem    pulumi.StringPtrInput
+	// The HTTP(S) API address of the agent to use. Defaults to "127.0.0.1:8500".
+	Address pulumi.StringPtrInput
+	// Authenticates to Consul using a JWT authentication method.
+	AuthJwt ProviderAuthJwtPtrInput
+	// A path to a PEM-encoded certificate authority used to verify the remote agent's certificate.
+	CaFile pulumi.StringPtrInput
+	// A path to a directory of PEM-encoded certificate authority files to use to check the authenticity of client and server
+	// connections. Can also be specified with the `CONSUL_CAPATH` environment variable.
+	CaPath pulumi.StringPtrInput
+	// PEM-encoded certificate authority used to verify the remote agent's certificate.
+	CaPem pulumi.StringPtrInput
+	// A path to a PEM-encoded certificate provided to the remote agent; requires use of `key_file` or `key_pem`.
+	CertFile pulumi.StringPtrInput
+	// PEM-encoded certificate provided to the remote agent; requires use of `key_file` or `key_pem`.
+	CertPem pulumi.StringPtrInput
+	// The datacenter to use. Defaults to that of the agent.
 	Datacenter pulumi.StringPtrInput
-	// Additional headers to send with each Consul request.
-	Headers       ProviderHeaderArrayInput
-	HttpAuth      pulumi.StringPtrInput
+	// A configuration block, described below, that provides additional headers to be sent along with all requests to the
+	// Consul server. This block can be specified multiple times.
+	Headers ProviderHeaderArrayInput
+	// HTTP Basic Authentication credentials to be used when communicating with Consul, in the format of either `user` or
+	// `user:pass`. This may also be specified using the `CONSUL_HTTP_AUTH` environment variable.
+	HttpAuth pulumi.StringPtrInput
+	// Boolean value to disable SSL certificate verification; setting this value to true is not recommended for production use.
+	// Only use this with scheme set to "https".
 	InsecureHttps pulumi.BoolPtrInput
-	KeyFile       pulumi.StringPtrInput
-	KeyPem        pulumi.StringPtrInput
-	Namespace     pulumi.StringPtrInput
-	Scheme        pulumi.StringPtrInput
-	Token         pulumi.StringPtrInput
+	// A path to a PEM-encoded private key, required if `cert_file` or `cert_pem` is specified.
+	KeyFile pulumi.StringPtrInput
+	// PEM-encoded private key, required if `cert_file` or `cert_pem` is specified.
+	KeyPem    pulumi.StringPtrInput
+	Namespace pulumi.StringPtrInput
+	// The URL scheme of the agent to use ("http" or "https"). Defaults to "http".
+	Scheme pulumi.StringPtrInput
+	// The ACL token to use by default when making requests to the agent. Can also be specified with `CONSUL_HTTP_TOKEN` or
+	// `CONSUL_TOKEN` as an environment variable.
+	Token pulumi.StringPtrInput
 }
 
 func (ProviderArgs) ElementType() reflect.Type {
@@ -121,6 +188,73 @@ func (o ProviderOutput) ToProviderOutput() ProviderOutput {
 
 func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) ProviderOutput {
 	return o
+}
+
+// The HTTP(S) API address of the agent to use. Defaults to "127.0.0.1:8500".
+func (o ProviderOutput) Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Address }).(pulumi.StringPtrOutput)
+}
+
+// A path to a PEM-encoded certificate authority used to verify the remote agent's certificate.
+func (o ProviderOutput) CaFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.CaFile }).(pulumi.StringPtrOutput)
+}
+
+// A path to a directory of PEM-encoded certificate authority files to use to check the authenticity of client and server
+// connections. Can also be specified with the `CONSUL_CAPATH` environment variable.
+func (o ProviderOutput) CaPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.CaPath }).(pulumi.StringPtrOutput)
+}
+
+// PEM-encoded certificate authority used to verify the remote agent's certificate.
+func (o ProviderOutput) CaPem() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.CaPem }).(pulumi.StringPtrOutput)
+}
+
+// A path to a PEM-encoded certificate provided to the remote agent; requires use of `key_file` or `key_pem`.
+func (o ProviderOutput) CertFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.CertFile }).(pulumi.StringPtrOutput)
+}
+
+// PEM-encoded certificate provided to the remote agent; requires use of `key_file` or `key_pem`.
+func (o ProviderOutput) CertPem() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.CertPem }).(pulumi.StringPtrOutput)
+}
+
+// The datacenter to use. Defaults to that of the agent.
+func (o ProviderOutput) Datacenter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Datacenter }).(pulumi.StringPtrOutput)
+}
+
+// HTTP Basic Authentication credentials to be used when communicating with Consul, in the format of either `user` or
+// `user:pass`. This may also be specified using the `CONSUL_HTTP_AUTH` environment variable.
+func (o ProviderOutput) HttpAuth() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.HttpAuth }).(pulumi.StringPtrOutput)
+}
+
+// A path to a PEM-encoded private key, required if `cert_file` or `cert_pem` is specified.
+func (o ProviderOutput) KeyFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.KeyFile }).(pulumi.StringPtrOutput)
+}
+
+// PEM-encoded private key, required if `cert_file` or `cert_pem` is specified.
+func (o ProviderOutput) KeyPem() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.KeyPem }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+// The URL scheme of the agent to use ("http" or "https"). Defaults to "http".
+func (o ProviderOutput) Scheme() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Scheme }).(pulumi.StringPtrOutput)
+}
+
+// The ACL token to use by default when making requests to the agent. Can also be specified with `CONSUL_HTTP_TOKEN` or
+// `CONSUL_TOKEN` as an environment variable.
+func (o ProviderOutput) Token() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Token }).(pulumi.StringPtrOutput)
 }
 
 func init() {

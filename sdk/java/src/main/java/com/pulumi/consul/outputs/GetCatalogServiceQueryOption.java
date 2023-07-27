@@ -14,24 +14,77 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetCatalogServiceQueryOption {
+    /**
+     * @return When `true`, the default, allow responses from
+     * Consul servers that are followers.
+     * 
+     */
     private @Nullable Boolean allowStale;
+    /**
+     * @return The Consul datacenter to query.  Defaults to the
+     * same value found in `query_options` parameter specified below, or if that is
+     * empty, the `datacenter` value found in the Consul agent that this provider is
+     * configured to talk to.
+     * 
+     */
     private @Nullable String datacenter;
+    /**
+     * @return The namespace to lookup the service.
+     * 
+     */
     private @Nullable String namespace;
     private @Nullable String near;
     private @Nullable Map<String,String> nodeMeta;
     private @Nullable String partition;
+    /**
+     * @return When `true` force the client to perform a
+     * read on at least quorum servers and verify the result is the same.  Defaults
+     * to `false`.
+     * 
+     */
     private @Nullable Boolean requireConsistent;
+    /**
+     * @return Specify the Consul ACL token to use when performing the
+     * request.  This defaults to the same API token configured by the `consul`
+     * provider but may be overridden if necessary.
+     * 
+     */
     private @Nullable String token;
+    /**
+     * @return Index number used to enable blocking queries.
+     * 
+     */
     private @Nullable Integer waitIndex;
+    /**
+     * @return Max time the client should wait for a blocking query
+     * to return.
+     * 
+     */
     private @Nullable String waitTime;
 
     private GetCatalogServiceQueryOption() {}
+    /**
+     * @return When `true`, the default, allow responses from
+     * Consul servers that are followers.
+     * 
+     */
     public Optional<Boolean> allowStale() {
         return Optional.ofNullable(this.allowStale);
     }
+    /**
+     * @return The Consul datacenter to query.  Defaults to the
+     * same value found in `query_options` parameter specified below, or if that is
+     * empty, the `datacenter` value found in the Consul agent that this provider is
+     * configured to talk to.
+     * 
+     */
     public Optional<String> datacenter() {
         return Optional.ofNullable(this.datacenter);
     }
+    /**
+     * @return The namespace to lookup the service.
+     * 
+     */
     public Optional<String> namespace() {
         return Optional.ofNullable(this.namespace);
     }
@@ -44,15 +97,36 @@ public final class GetCatalogServiceQueryOption {
     public Optional<String> partition() {
         return Optional.ofNullable(this.partition);
     }
+    /**
+     * @return When `true` force the client to perform a
+     * read on at least quorum servers and verify the result is the same.  Defaults
+     * to `false`.
+     * 
+     */
     public Optional<Boolean> requireConsistent() {
         return Optional.ofNullable(this.requireConsistent);
     }
+    /**
+     * @return Specify the Consul ACL token to use when performing the
+     * request.  This defaults to the same API token configured by the `consul`
+     * provider but may be overridden if necessary.
+     * 
+     */
     public Optional<String> token() {
         return Optional.ofNullable(this.token);
     }
+    /**
+     * @return Index number used to enable blocking queries.
+     * 
+     */
     public Optional<Integer> waitIndex() {
         return Optional.ofNullable(this.waitIndex);
     }
+    /**
+     * @return Max time the client should wait for a blocking query
+     * to return.
+     * 
+     */
     public Optional<String> waitTime() {
         return Optional.ofNullable(this.waitTime);
     }

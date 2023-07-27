@@ -14,6 +14,17 @@ namespace Pulumi.Consul.Outputs
     public sealed class GetCatalogNodesNodeResult
     {
         public readonly string Address;
+        /// <summary>
+        /// The Node ID of the Consul agent.
+        /// * [`meta`](https://www.consul.io/docs/agent/http/catalog.html#Meta) - Node meta
+        /// data tag information, if any.
+        /// * [`name`](https://www.consul.io/docs/agent/http/catalog.html#Node) - The name
+        /// of the Consul node.
+        /// * [`address`](https://www.consul.io/docs/agent/http/catalog.html#Address) - The
+        /// IP address the node is advertising to the Consul cluster.
+        /// * [`tagged_addresses`](https://www.consul.io/docs/agent/http/catalog.html#TaggedAddresses) -
+        /// List of explicit LAN and WAN IP addresses for the agent.
+        /// </summary>
         public readonly string Id;
         public readonly ImmutableDictionary<string, string> Meta;
         public readonly string Name;

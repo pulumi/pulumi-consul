@@ -12,19 +12,15 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
 import java.util.Map;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The `consul.CertificateAuthority` resource can be used to manage the configuration of
- * the Certificate Authority used by [Consul Connect](https://www.consul.io/docs/connect/ca).
+ * The `consul.CertificateAuthority` resource can be used to manage the configuration of the Certificate Authority used by [Consul Connect](https://www.consul.io/docs/connect/ca).
  * 
  * &gt; **Note:** The keys in the `config` argument must be using Camel case.
  * 
- * ## Example Usage
- * 
  * ## Import
- * 
- * `certificate_authority` can be imported
  * 
  * ```sh
  *  $ pulumi import consul:index/certificateAuthority:CertificateAuthority connect connect-ca
@@ -34,18 +30,36 @@ import javax.annotation.Nullable;
 @ResourceType(type="consul:index/certificateAuthority:CertificateAuthority")
 public class CertificateAuthority extends com.pulumi.resources.CustomResource {
     /**
-     * The raw configuration to use for the chosen provider.
+     * The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+     * 
+     * @deprecated
+     * The config attribute is deprecated, please use config_json instead.
      * 
      */
+    @Deprecated /* The config attribute is deprecated, please use config_json instead. */
     @Export(name="config", type=Map.class, parameters={String.class, String.class})
-    private Output<Map<String,String>> config;
+    private Output</* @Nullable */ Map<String,String>> config;
 
     /**
-     * @return The raw configuration to use for the chosen provider.
+     * @return The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
      * 
      */
-    public Output<Map<String,String>> config() {
-        return this.config;
+    public Output<Optional<Map<String,String>>> config() {
+        return Codegen.optional(this.config);
+    }
+    /**
+     * The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+     * 
+     */
+    @Export(name="configJson", type=String.class, parameters={})
+    private Output</* @Nullable */ String> configJson;
+
+    /**
+     * @return The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+     * 
+     */
+    public Output<Optional<String>> configJson() {
+        return Codegen.optional(this.configJson);
     }
     /**
      * Specifies the CA provider type to use.

@@ -11,6 +11,7 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -25,21 +26,47 @@ import javax.annotation.Nullable;
  * The functionality described here is available only in Consul version 1.13.0 and later.
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.consul.PeeringToken;
+ * import com.pulumi.consul.PeeringTokenArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var token = new PeeringToken(&#34;token&#34;, PeeringTokenArgs.builder()        
+ *             .peerName(&#34;eu-cluster&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  */
 @ResourceType(type="consul:index/peeringToken:PeeringToken")
 public class PeeringToken extends com.pulumi.resources.CustomResource {
     /**
-     * Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the
-     * cluster peering process.
+     * Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the cluster peering process.
      * 
      */
     @Export(name="meta", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> meta;
 
     /**
-     * @return Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the
-     * cluster peering process.
+     * @return Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the cluster peering process.
      * 
      */
     public Output<Optional<Map<String,String>>> meta() {
@@ -52,16 +79,14 @@ public class PeeringToken extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.partition);
     }
     /**
-     * The name assigned to the peer cluster. The `peer_name` is used to reference the peer cluster in service discovery
-     * queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
+     * The name assigned to the peer cluster. The `peer_name` is used to reference the peer cluster in service discovery queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
      * 
      */
     @Export(name="peerName", type=String.class, parameters={})
     private Output<String> peerName;
 
     /**
-     * @return The name assigned to the peer cluster. The `peer_name` is used to reference the peer cluster in service discovery
-     * queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
+     * @return The name assigned to the peer cluster. The `peer_name` is used to reference the peer cluster in service discovery queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
      * 
      */
     public Output<String> peerName() {
@@ -114,6 +139,9 @@ public class PeeringToken extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "peeringToken"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,8 +41,8 @@ import (
 //				Policies: pulumi.StringArray{
 //					read_policy.ID(),
 //				},
-//				ServiceIdentities: AclRoleServiceIdentityArray{
-//					&AclRoleServiceIdentityArgs{
+//				ServiceIdentities: consul.AclRoleServiceIdentityArray{
+//					&consul.AclRoleServiceIdentityArgs{
 //						ServiceName: pulumi.String("foo"),
 //					},
 //				},
@@ -90,6 +91,7 @@ func NewAclRole(ctx *pulumi.Context,
 		args = &AclRoleArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AclRole
 	err := ctx.RegisterResource("consul:index/aclRole:AclRole", name, args, &resource, opts...)
 	if err != nil {
@@ -269,6 +271,41 @@ func (o AclRoleOutput) ToAclRoleOutput() AclRoleOutput {
 
 func (o AclRoleOutput) ToAclRoleOutputWithContext(ctx context.Context) AclRoleOutput {
 	return o
+}
+
+// A free form human readable description of the role.
+func (o AclRoleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AclRole) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The name of the ACL role.
+func (o AclRoleOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *AclRole) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The namespace to create the role within.
+func (o AclRoleOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AclRole) pulumi.StringPtrOutput { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+// The list of node identities that should be applied to the role.
+func (o AclRoleOutput) NodeIdentities() AclRoleNodeIdentityArrayOutput {
+	return o.ApplyT(func(v *AclRole) AclRoleNodeIdentityArrayOutput { return v.NodeIdentities }).(AclRoleNodeIdentityArrayOutput)
+}
+
+// The partition the ACL role is associated with.
+func (o AclRoleOutput) Partition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AclRole) pulumi.StringPtrOutput { return v.Partition }).(pulumi.StringPtrOutput)
+}
+
+// The list of policies that should be applied to the role.
+func (o AclRoleOutput) Policies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AclRole) pulumi.StringArrayOutput { return v.Policies }).(pulumi.StringArrayOutput)
+}
+
+// The list of service identities that should be applied to the role.
+func (o AclRoleOutput) ServiceIdentities() AclRoleServiceIdentityArrayOutput {
+	return o.ApplyT(func(v *AclRole) AclRoleServiceIdentityArrayOutput { return v.ServiceIdentities }).(AclRoleServiceIdentityArrayOutput)
 }
 
 type AclRoleArrayOutput struct{ *pulumi.OutputState }

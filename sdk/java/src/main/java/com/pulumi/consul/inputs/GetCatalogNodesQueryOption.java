@@ -17,16 +17,40 @@ public final class GetCatalogNodesQueryOption extends com.pulumi.resources.Invok
 
     public static final GetCatalogNodesQueryOption Empty = new GetCatalogNodesQueryOption();
 
+    /**
+     * When `true`, the default, allow responses from
+     * Consul servers that are followers.
+     * 
+     */
     @Import(name="allowStale")
     private @Nullable Boolean allowStale;
 
+    /**
+     * @return When `true`, the default, allow responses from
+     * Consul servers that are followers.
+     * 
+     */
     public Optional<Boolean> allowStale() {
         return Optional.ofNullable(this.allowStale);
     }
 
+    /**
+     * The Consul datacenter to query.  Defaults to the
+     * same value found in `query_options` parameter specified below, or if that is
+     * empty, the `datacenter` value found in the Consul agent that this provider is
+     * configured to talk to then the datacenter in the provider setup.
+     * 
+     */
     @Import(name="datacenter")
     private @Nullable String datacenter;
 
+    /**
+     * @return The Consul datacenter to query.  Defaults to the
+     * same value found in `query_options` parameter specified below, or if that is
+     * empty, the `datacenter` value found in the Consul agent that this provider is
+     * configured to talk to then the datacenter in the provider setup.
+     * 
+     */
     public Optional<String> datacenter() {
         return Optional.ofNullable(this.datacenter);
     }
@@ -52,30 +76,72 @@ public final class GetCatalogNodesQueryOption extends com.pulumi.resources.Invok
         return Optional.ofNullable(this.partition);
     }
 
+    /**
+     * When `true` force the client to perform a
+     * read on at least quorum servers and verify the result is the same.  Defaults
+     * to `false`.
+     * 
+     */
     @Import(name="requireConsistent")
     private @Nullable Boolean requireConsistent;
 
+    /**
+     * @return When `true` force the client to perform a
+     * read on at least quorum servers and verify the result is the same.  Defaults
+     * to `false`.
+     * 
+     */
     public Optional<Boolean> requireConsistent() {
         return Optional.ofNullable(this.requireConsistent);
     }
 
+    /**
+     * Specify the Consul ACL token to use when performing the
+     * request.  This defaults to the same API token configured by the `consul`
+     * provider but may be overridden if necessary.
+     * 
+     */
     @Import(name="token")
     private @Nullable String token;
 
+    /**
+     * @return Specify the Consul ACL token to use when performing the
+     * request.  This defaults to the same API token configured by the `consul`
+     * provider but may be overridden if necessary.
+     * 
+     */
     public Optional<String> token() {
         return Optional.ofNullable(this.token);
     }
 
+    /**
+     * Index number used to enable blocking queries.
+     * 
+     */
     @Import(name="waitIndex")
     private @Nullable Integer waitIndex;
 
+    /**
+     * @return Index number used to enable blocking queries.
+     * 
+     */
     public Optional<Integer> waitIndex() {
         return Optional.ofNullable(this.waitIndex);
     }
 
+    /**
+     * Max time the client should wait for a blocking query
+     * to return.
+     * 
+     */
     @Import(name="waitTime")
     private @Nullable String waitTime;
 
+    /**
+     * @return Max time the client should wait for a blocking query
+     * to return.
+     * 
+     */
     public Optional<String> waitTime() {
         return Optional.ofNullable(this.waitTime);
     }
@@ -112,11 +178,27 @@ public final class GetCatalogNodesQueryOption extends com.pulumi.resources.Invok
             $ = new GetCatalogNodesQueryOption(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param allowStale When `true`, the default, allow responses from
+         * Consul servers that are followers.
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowStale(@Nullable Boolean allowStale) {
             $.allowStale = allowStale;
             return this;
         }
 
+        /**
+         * @param datacenter The Consul datacenter to query.  Defaults to the
+         * same value found in `query_options` parameter specified below, or if that is
+         * empty, the `datacenter` value found in the Consul agent that this provider is
+         * configured to talk to then the datacenter in the provider setup.
+         * 
+         * @return builder
+         * 
+         */
         public Builder datacenter(@Nullable String datacenter) {
             $.datacenter = datacenter;
             return this;
@@ -137,21 +219,50 @@ public final class GetCatalogNodesQueryOption extends com.pulumi.resources.Invok
             return this;
         }
 
+        /**
+         * @param requireConsistent When `true` force the client to perform a
+         * read on at least quorum servers and verify the result is the same.  Defaults
+         * to `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder requireConsistent(@Nullable Boolean requireConsistent) {
             $.requireConsistent = requireConsistent;
             return this;
         }
 
+        /**
+         * @param token Specify the Consul ACL token to use when performing the
+         * request.  This defaults to the same API token configured by the `consul`
+         * provider but may be overridden if necessary.
+         * 
+         * @return builder
+         * 
+         */
         public Builder token(@Nullable String token) {
             $.token = token;
             return this;
         }
 
+        /**
+         * @param waitIndex Index number used to enable blocking queries.
+         * 
+         * @return builder
+         * 
+         */
         public Builder waitIndex(@Nullable Integer waitIndex) {
             $.waitIndex = waitIndex;
             return this;
         }
 
+        /**
+         * @param waitTime Max time the client should wait for a blocking query
+         * to return.
+         * 
+         * @return builder
+         * 
+         */
         public Builder waitTime(@Nullable String waitTime) {
             $.waitTime = waitTime;
             return this;
