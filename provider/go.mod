@@ -1,6 +1,6 @@
 module github.com/pulumi/pulumi-consul/provider/v3
 
-go 1.20
+go 1.21
 
 require (
 	github.com/hashicorp/terraform-plugin-sdk v1.17.2
