@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -103,6 +104,12 @@ func (o LookupPeeringResultOutput) ToLookupPeeringResultOutput() LookupPeeringRe
 
 func (o LookupPeeringResultOutput) ToLookupPeeringResultOutputWithContext(ctx context.Context) LookupPeeringResultOutput {
 	return o
+}
+
+func (o LookupPeeringResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPeeringResult] {
+	return pulumix.Output[LookupPeeringResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LookupPeeringResultOutput) DeletedAt() pulumi.StringOutput {

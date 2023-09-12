@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Import
@@ -127,6 +128,12 @@ func (i *AclTokenPolicyAttachment) ToAclTokenPolicyAttachmentOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(AclTokenPolicyAttachmentOutput)
 }
 
+func (i *AclTokenPolicyAttachment) ToOutput(ctx context.Context) pulumix.Output[*AclTokenPolicyAttachment] {
+	return pulumix.Output[*AclTokenPolicyAttachment]{
+		OutputState: i.ToAclTokenPolicyAttachmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AclTokenPolicyAttachmentArrayInput is an input type that accepts AclTokenPolicyAttachmentArray and AclTokenPolicyAttachmentArrayOutput values.
 // You can construct a concrete instance of `AclTokenPolicyAttachmentArrayInput` via:
 //
@@ -150,6 +157,12 @@ func (i AclTokenPolicyAttachmentArray) ToAclTokenPolicyAttachmentArrayOutput() A
 
 func (i AclTokenPolicyAttachmentArray) ToAclTokenPolicyAttachmentArrayOutputWithContext(ctx context.Context) AclTokenPolicyAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AclTokenPolicyAttachmentArrayOutput)
+}
+
+func (i AclTokenPolicyAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*AclTokenPolicyAttachment] {
+	return pulumix.Output[[]*AclTokenPolicyAttachment]{
+		OutputState: i.ToAclTokenPolicyAttachmentArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AclTokenPolicyAttachmentMapInput is an input type that accepts AclTokenPolicyAttachmentMap and AclTokenPolicyAttachmentMapOutput values.
@@ -177,6 +190,12 @@ func (i AclTokenPolicyAttachmentMap) ToAclTokenPolicyAttachmentMapOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(AclTokenPolicyAttachmentMapOutput)
 }
 
+func (i AclTokenPolicyAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AclTokenPolicyAttachment] {
+	return pulumix.Output[map[string]*AclTokenPolicyAttachment]{
+		OutputState: i.ToAclTokenPolicyAttachmentMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AclTokenPolicyAttachmentOutput struct{ *pulumi.OutputState }
 
 func (AclTokenPolicyAttachmentOutput) ElementType() reflect.Type {
@@ -189,6 +208,12 @@ func (o AclTokenPolicyAttachmentOutput) ToAclTokenPolicyAttachmentOutput() AclTo
 
 func (o AclTokenPolicyAttachmentOutput) ToAclTokenPolicyAttachmentOutputWithContext(ctx context.Context) AclTokenPolicyAttachmentOutput {
 	return o
+}
+
+func (o AclTokenPolicyAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*AclTokenPolicyAttachment] {
+	return pulumix.Output[*AclTokenPolicyAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the policy attached to the token.
@@ -215,6 +240,12 @@ func (o AclTokenPolicyAttachmentArrayOutput) ToAclTokenPolicyAttachmentArrayOutp
 	return o
 }
 
+func (o AclTokenPolicyAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AclTokenPolicyAttachment] {
+	return pulumix.Output[[]*AclTokenPolicyAttachment]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AclTokenPolicyAttachmentArrayOutput) Index(i pulumi.IntInput) AclTokenPolicyAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AclTokenPolicyAttachment {
 		return vs[0].([]*AclTokenPolicyAttachment)[vs[1].(int)]
@@ -233,6 +264,12 @@ func (o AclTokenPolicyAttachmentMapOutput) ToAclTokenPolicyAttachmentMapOutput()
 
 func (o AclTokenPolicyAttachmentMapOutput) ToAclTokenPolicyAttachmentMapOutputWithContext(ctx context.Context) AclTokenPolicyAttachmentMapOutput {
 	return o
+}
+
+func (o AclTokenPolicyAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AclTokenPolicyAttachment] {
+	return pulumix.Output[map[string]*AclTokenPolicyAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AclTokenPolicyAttachmentMapOutput) MapIndex(k pulumi.StringInput) AclTokenPolicyAttachmentOutput {

@@ -12,7 +12,7 @@ namespace Pulumi.Consul
     /// <summary>
     /// ## Import
     /// 
-    /// `consul_namespace_policy_attachment` can be imported. This is especially useful to manage the policies attached to the `default` namespace
+    /// `consul_namespace_policy_attachment` can be imported. This is especially useful to manage the policies attached to the `default` namespace:
     /// 
     /// ```sh
     ///  $ pulumi import consul:index/namespacePolicyAttachment:NamespacePolicyAttachment default default:policy_name

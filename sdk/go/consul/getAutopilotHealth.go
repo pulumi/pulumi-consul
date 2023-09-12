@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `getAutopilotHealth` data source returns
@@ -109,6 +110,12 @@ func (o GetAutopilotHealthResultOutput) ToGetAutopilotHealthResultOutput() GetAu
 
 func (o GetAutopilotHealthResultOutput) ToGetAutopilotHealthResultOutputWithContext(ctx context.Context) GetAutopilotHealthResultOutput {
 	return o
+}
+
+func (o GetAutopilotHealthResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAutopilotHealthResult] {
+	return pulumix.Output[GetAutopilotHealthResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAutopilotHealthResultOutput) Datacenter() pulumi.StringPtrOutput {

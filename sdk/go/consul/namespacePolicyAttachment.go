@@ -10,11 +10,12 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Import
 //
-// `consul_namespace_policy_attachment` can be imported. This is especially useful to manage the policies attached to the `default` namespace
+// `consul_namespace_policy_attachment` can be imported. This is especially useful to manage the policies attached to the `default` namespace:
 //
 // ```sh
 //
@@ -121,6 +122,12 @@ func (i *NamespacePolicyAttachment) ToNamespacePolicyAttachmentOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(NamespacePolicyAttachmentOutput)
 }
 
+func (i *NamespacePolicyAttachment) ToOutput(ctx context.Context) pulumix.Output[*NamespacePolicyAttachment] {
+	return pulumix.Output[*NamespacePolicyAttachment]{
+		OutputState: i.ToNamespacePolicyAttachmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 // NamespacePolicyAttachmentArrayInput is an input type that accepts NamespacePolicyAttachmentArray and NamespacePolicyAttachmentArrayOutput values.
 // You can construct a concrete instance of `NamespacePolicyAttachmentArrayInput` via:
 //
@@ -144,6 +151,12 @@ func (i NamespacePolicyAttachmentArray) ToNamespacePolicyAttachmentArrayOutput()
 
 func (i NamespacePolicyAttachmentArray) ToNamespacePolicyAttachmentArrayOutputWithContext(ctx context.Context) NamespacePolicyAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NamespacePolicyAttachmentArrayOutput)
+}
+
+func (i NamespacePolicyAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*NamespacePolicyAttachment] {
+	return pulumix.Output[[]*NamespacePolicyAttachment]{
+		OutputState: i.ToNamespacePolicyAttachmentArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // NamespacePolicyAttachmentMapInput is an input type that accepts NamespacePolicyAttachmentMap and NamespacePolicyAttachmentMapOutput values.
@@ -171,6 +184,12 @@ func (i NamespacePolicyAttachmentMap) ToNamespacePolicyAttachmentMapOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(NamespacePolicyAttachmentMapOutput)
 }
 
+func (i NamespacePolicyAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*NamespacePolicyAttachment] {
+	return pulumix.Output[map[string]*NamespacePolicyAttachment]{
+		OutputState: i.ToNamespacePolicyAttachmentMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NamespacePolicyAttachmentOutput struct{ *pulumi.OutputState }
 
 func (NamespacePolicyAttachmentOutput) ElementType() reflect.Type {
@@ -183,6 +202,12 @@ func (o NamespacePolicyAttachmentOutput) ToNamespacePolicyAttachmentOutput() Nam
 
 func (o NamespacePolicyAttachmentOutput) ToNamespacePolicyAttachmentOutputWithContext(ctx context.Context) NamespacePolicyAttachmentOutput {
 	return o
+}
+
+func (o NamespacePolicyAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*NamespacePolicyAttachment] {
+	return pulumix.Output[*NamespacePolicyAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The namespace to attach the policy to.
@@ -209,6 +234,12 @@ func (o NamespacePolicyAttachmentArrayOutput) ToNamespacePolicyAttachmentArrayOu
 	return o
 }
 
+func (o NamespacePolicyAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*NamespacePolicyAttachment] {
+	return pulumix.Output[[]*NamespacePolicyAttachment]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NamespacePolicyAttachmentArrayOutput) Index(i pulumi.IntInput) NamespacePolicyAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NamespacePolicyAttachment {
 		return vs[0].([]*NamespacePolicyAttachment)[vs[1].(int)]
@@ -227,6 +258,12 @@ func (o NamespacePolicyAttachmentMapOutput) ToNamespacePolicyAttachmentMapOutput
 
 func (o NamespacePolicyAttachmentMapOutput) ToNamespacePolicyAttachmentMapOutputWithContext(ctx context.Context) NamespacePolicyAttachmentMapOutput {
 	return o
+}
+
+func (o NamespacePolicyAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*NamespacePolicyAttachment] {
+	return pulumix.Output[map[string]*NamespacePolicyAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NamespacePolicyAttachmentMapOutput) MapIndex(k pulumi.StringInput) NamespacePolicyAttachmentOutput {

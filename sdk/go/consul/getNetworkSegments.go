@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // > **NOTE:** This feature requires [Consul Enterprise](https://www.consul.io/docs/enterprise/index.html).
@@ -119,6 +120,12 @@ func (o GetNetworkSegmentsResultOutput) ToGetNetworkSegmentsResultOutput() GetNe
 
 func (o GetNetworkSegmentsResultOutput) ToGetNetworkSegmentsResultOutputWithContext(ctx context.Context) GetNetworkSegmentsResultOutput {
 	return o
+}
+
+func (o GetNetworkSegmentsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetNetworkSegmentsResult] {
+	return pulumix.Output[GetNetworkSegmentsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The datacenter the segments are being read from.

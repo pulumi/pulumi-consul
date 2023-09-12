@@ -10,11 +10,12 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Import
 //
-// `consul_namespace_role_attachment` can be imported. This is especially useful to manage the policies attached to the `default` namespace
+// `consul_namespace_role_attachment` can be imported. This is especially useful to manage the policies attached to the `default` namespace:
 //
 // ```sh
 //
@@ -121,6 +122,12 @@ func (i *NamespaceRoleAttachment) ToNamespaceRoleAttachmentOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(NamespaceRoleAttachmentOutput)
 }
 
+func (i *NamespaceRoleAttachment) ToOutput(ctx context.Context) pulumix.Output[*NamespaceRoleAttachment] {
+	return pulumix.Output[*NamespaceRoleAttachment]{
+		OutputState: i.ToNamespaceRoleAttachmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 // NamespaceRoleAttachmentArrayInput is an input type that accepts NamespaceRoleAttachmentArray and NamespaceRoleAttachmentArrayOutput values.
 // You can construct a concrete instance of `NamespaceRoleAttachmentArrayInput` via:
 //
@@ -144,6 +151,12 @@ func (i NamespaceRoleAttachmentArray) ToNamespaceRoleAttachmentArrayOutput() Nam
 
 func (i NamespaceRoleAttachmentArray) ToNamespaceRoleAttachmentArrayOutputWithContext(ctx context.Context) NamespaceRoleAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NamespaceRoleAttachmentArrayOutput)
+}
+
+func (i NamespaceRoleAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*NamespaceRoleAttachment] {
+	return pulumix.Output[[]*NamespaceRoleAttachment]{
+		OutputState: i.ToNamespaceRoleAttachmentArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // NamespaceRoleAttachmentMapInput is an input type that accepts NamespaceRoleAttachmentMap and NamespaceRoleAttachmentMapOutput values.
@@ -171,6 +184,12 @@ func (i NamespaceRoleAttachmentMap) ToNamespaceRoleAttachmentMapOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(NamespaceRoleAttachmentMapOutput)
 }
 
+func (i NamespaceRoleAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*NamespaceRoleAttachment] {
+	return pulumix.Output[map[string]*NamespaceRoleAttachment]{
+		OutputState: i.ToNamespaceRoleAttachmentMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NamespaceRoleAttachmentOutput struct{ *pulumi.OutputState }
 
 func (NamespaceRoleAttachmentOutput) ElementType() reflect.Type {
@@ -183,6 +202,12 @@ func (o NamespaceRoleAttachmentOutput) ToNamespaceRoleAttachmentOutput() Namespa
 
 func (o NamespaceRoleAttachmentOutput) ToNamespaceRoleAttachmentOutputWithContext(ctx context.Context) NamespaceRoleAttachmentOutput {
 	return o
+}
+
+func (o NamespaceRoleAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*NamespaceRoleAttachment] {
+	return pulumix.Output[*NamespaceRoleAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The namespace to attach the role to.
@@ -209,6 +234,12 @@ func (o NamespaceRoleAttachmentArrayOutput) ToNamespaceRoleAttachmentArrayOutput
 	return o
 }
 
+func (o NamespaceRoleAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*NamespaceRoleAttachment] {
+	return pulumix.Output[[]*NamespaceRoleAttachment]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NamespaceRoleAttachmentArrayOutput) Index(i pulumi.IntInput) NamespaceRoleAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NamespaceRoleAttachment {
 		return vs[0].([]*NamespaceRoleAttachment)[vs[1].(int)]
@@ -227,6 +258,12 @@ func (o NamespaceRoleAttachmentMapOutput) ToNamespaceRoleAttachmentMapOutput() N
 
 func (o NamespaceRoleAttachmentMapOutput) ToNamespaceRoleAttachmentMapOutputWithContext(ctx context.Context) NamespaceRoleAttachmentMapOutput {
 	return o
+}
+
+func (o NamespaceRoleAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*NamespaceRoleAttachment] {
+	return pulumix.Output[map[string]*NamespaceRoleAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NamespaceRoleAttachmentMapOutput) MapIndex(k pulumi.StringInput) NamespaceRoleAttachmentOutput {

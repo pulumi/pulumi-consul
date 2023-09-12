@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // [Intentions](https://www.consul.io/docs/connect/intentions.html) are used to define
@@ -92,7 +93,7 @@ import (
 //
 // ## Import
 //
-// `consul_intention` can be imported
+// `consul_intention` can be imported:
 //
 // ```sh
 //
@@ -297,6 +298,12 @@ func (i *Intention) ToIntentionOutputWithContext(ctx context.Context) IntentionO
 	return pulumi.ToOutputWithContext(ctx, i).(IntentionOutput)
 }
 
+func (i *Intention) ToOutput(ctx context.Context) pulumix.Output[*Intention] {
+	return pulumix.Output[*Intention]{
+		OutputState: i.ToIntentionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // IntentionArrayInput is an input type that accepts IntentionArray and IntentionArrayOutput values.
 // You can construct a concrete instance of `IntentionArrayInput` via:
 //
@@ -320,6 +327,12 @@ func (i IntentionArray) ToIntentionArrayOutput() IntentionArrayOutput {
 
 func (i IntentionArray) ToIntentionArrayOutputWithContext(ctx context.Context) IntentionArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IntentionArrayOutput)
+}
+
+func (i IntentionArray) ToOutput(ctx context.Context) pulumix.Output[[]*Intention] {
+	return pulumix.Output[[]*Intention]{
+		OutputState: i.ToIntentionArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // IntentionMapInput is an input type that accepts IntentionMap and IntentionMapOutput values.
@@ -347,6 +360,12 @@ func (i IntentionMap) ToIntentionMapOutputWithContext(ctx context.Context) Inten
 	return pulumi.ToOutputWithContext(ctx, i).(IntentionMapOutput)
 }
 
+func (i IntentionMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Intention] {
+	return pulumix.Output[map[string]*Intention]{
+		OutputState: i.ToIntentionMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type IntentionOutput struct{ *pulumi.OutputState }
 
 func (IntentionOutput) ElementType() reflect.Type {
@@ -359,6 +378,12 @@ func (o IntentionOutput) ToIntentionOutput() IntentionOutput {
 
 func (o IntentionOutput) ToIntentionOutputWithContext(ctx context.Context) IntentionOutput {
 	return o
+}
+
+func (o IntentionOutput) ToOutput(ctx context.Context) pulumix.Output[*Intention] {
+	return pulumix.Output[*Intention]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The intention action. Must be one of `allow` or `deny`.
@@ -422,6 +447,12 @@ func (o IntentionArrayOutput) ToIntentionArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o IntentionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Intention] {
+	return pulumix.Output[[]*Intention]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o IntentionArrayOutput) Index(i pulumi.IntInput) IntentionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Intention {
 		return vs[0].([]*Intention)[vs[1].(int)]
@@ -440,6 +471,12 @@ func (o IntentionMapOutput) ToIntentionMapOutput() IntentionMapOutput {
 
 func (o IntentionMapOutput) ToIntentionMapOutputWithContext(ctx context.Context) IntentionMapOutput {
 	return o
+}
+
+func (o IntentionMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Intention] {
+	return pulumix.Output[map[string]*Intention]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IntentionMapOutput) MapIndex(k pulumi.StringInput) IntentionOutput {

@@ -63,3 +63,25 @@ export interface GetAgentConfigResult {
      */
     readonly version: string;
 }
+/**
+ * > **Note:** The `consul.getAgentConfig` resource differs from [`consul.getAgentSelf`](https://www.terraform.io/docs/providers/consul/d/agent_self.html),
+ * providing less information but utilizing stable APIs. `consul.getAgentSelf` will be
+ * deprecated in a future release.
+ *
+ * The `consul.getAgentConfig` data source returns
+ * [configuration data](https://www.consul.io/api/agent.html#read-configuration)
+ * from the agent specified in the `provider`.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ *
+ * const remoteAgent = consul.getAgentConfig({});
+ * export const consulVersion = remoteAgent.then(remoteAgent => remoteAgent.version);
+ * ```
+ */
+export function getAgentConfigOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetAgentConfigResult> {
+    return pulumi.output(getAgentConfig(opts))
+}

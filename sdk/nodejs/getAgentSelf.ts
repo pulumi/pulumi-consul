@@ -177,3 +177,14 @@ export interface GetAgentSelfResult {
     readonly versionPrerelease: string;
     readonly versionRevision: string;
 }
+/**
+ * > **Warning:** The `consul.getAgentSelf` resource has been deprecated and will be removed
+ * from a future release of the provider. Read the [upgrade instructions](https://www.terraform.io/docs/providers/consul/guides/upgrading.html#deprecation-of-consul_agent_self) for more information.
+ *
+ * The `consul.getAgentSelf` data source returns
+ * [configuration and status data](https://www.consul.io/docs/agent/http/agent.html#agent_self)
+ * from the agent specified in the `provider`.
+ */
+export function getAgentSelfOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetAgentSelfResult> {
+    return pulumi.output(getAgentSelf(opts))
+}
