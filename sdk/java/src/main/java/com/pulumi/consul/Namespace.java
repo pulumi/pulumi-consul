@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * `consul_namespace` can be imported. This is useful to manage attributes of the default namespace that is created automatically
+ * `consul_namespace` can be imported. This is useful to manage attributes of the default namespace that is created automatically:
  * 
  * ```sh
  *  $ pulumi import consul:index/namespace:Namespace default default

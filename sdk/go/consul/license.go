@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // > **NOTE:** This feature requires [Consul Enterprise](https://www.consul.io/docs/enterprise/index.html).
@@ -222,6 +223,12 @@ func (i *License) ToLicenseOutputWithContext(ctx context.Context) LicenseOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(LicenseOutput)
 }
 
+func (i *License) ToOutput(ctx context.Context) pulumix.Output[*License] {
+	return pulumix.Output[*License]{
+		OutputState: i.ToLicenseOutputWithContext(ctx).OutputState,
+	}
+}
+
 // LicenseArrayInput is an input type that accepts LicenseArray and LicenseArrayOutput values.
 // You can construct a concrete instance of `LicenseArrayInput` via:
 //
@@ -245,6 +252,12 @@ func (i LicenseArray) ToLicenseArrayOutput() LicenseArrayOutput {
 
 func (i LicenseArray) ToLicenseArrayOutputWithContext(ctx context.Context) LicenseArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LicenseArrayOutput)
+}
+
+func (i LicenseArray) ToOutput(ctx context.Context) pulumix.Output[[]*License] {
+	return pulumix.Output[[]*License]{
+		OutputState: i.ToLicenseArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // LicenseMapInput is an input type that accepts LicenseMap and LicenseMapOutput values.
@@ -272,6 +285,12 @@ func (i LicenseMap) ToLicenseMapOutputWithContext(ctx context.Context) LicenseMa
 	return pulumi.ToOutputWithContext(ctx, i).(LicenseMapOutput)
 }
 
+func (i LicenseMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*License] {
+	return pulumix.Output[map[string]*License]{
+		OutputState: i.ToLicenseMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type LicenseOutput struct{ *pulumi.OutputState }
 
 func (LicenseOutput) ElementType() reflect.Type {
@@ -284,6 +303,12 @@ func (o LicenseOutput) ToLicenseOutput() LicenseOutput {
 
 func (o LicenseOutput) ToLicenseOutputWithContext(ctx context.Context) LicenseOutput {
 	return o
+}
+
+func (o LicenseOutput) ToOutput(ctx context.Context) pulumix.Output[*License] {
+	return pulumix.Output[*License]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the customer the license is attached to.
@@ -361,6 +386,12 @@ func (o LicenseArrayOutput) ToLicenseArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o LicenseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*License] {
+	return pulumix.Output[[]*License]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o LicenseArrayOutput) Index(i pulumi.IntInput) LicenseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *License {
 		return vs[0].([]*License)[vs[1].(int)]
@@ -379,6 +410,12 @@ func (o LicenseMapOutput) ToLicenseMapOutput() LicenseMapOutput {
 
 func (o LicenseMapOutput) ToLicenseMapOutputWithContext(ctx context.Context) LicenseMapOutput {
 	return o
+}
+
+func (o LicenseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*License] {
+	return pulumix.Output[map[string]*License]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LicenseMapOutput) MapIndex(k pulumi.StringInput) LicenseOutput {

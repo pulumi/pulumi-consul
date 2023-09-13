@@ -97,11 +97,13 @@ utilities.lazyLoad(exports, ["getAclTokenSecretId","getAclTokenSecretIdOutput"],
 
 export { GetAgentConfigResult } from "./getAgentConfig";
 export const getAgentConfig: typeof import("./getAgentConfig").getAgentConfig = null as any;
-utilities.lazyLoad(exports, ["getAgentConfig"], () => require("./getAgentConfig"));
+export const getAgentConfigOutput: typeof import("./getAgentConfig").getAgentConfigOutput = null as any;
+utilities.lazyLoad(exports, ["getAgentConfig","getAgentConfigOutput"], () => require("./getAgentConfig"));
 
 export { GetAgentSelfResult } from "./getAgentSelf";
 export const getAgentSelf: typeof import("./getAgentSelf").getAgentSelf = null as any;
-utilities.lazyLoad(exports, ["getAgentSelf"], () => require("./getAgentSelf"));
+export const getAgentSelfOutput: typeof import("./getAgentSelf").getAgentSelfOutput = null as any;
+utilities.lazyLoad(exports, ["getAgentSelf","getAgentSelfOutput"], () => require("./getAgentSelf"));
 
 export { GetAutopilotHealthArgs, GetAutopilotHealthResult, GetAutopilotHealthOutputArgs } from "./getAutopilotHealth";
 export const getAutopilotHealth: typeof import("./getAutopilotHealth").getAutopilotHealth = null as any;
@@ -130,7 +132,8 @@ utilities.lazyLoad(exports, ["getConfigEntry","getConfigEntryOutput"], () => req
 
 export { GetDatacentersResult } from "./getDatacenters";
 export const getDatacenters: typeof import("./getDatacenters").getDatacenters = null as any;
-utilities.lazyLoad(exports, ["getDatacenters"], () => require("./getDatacenters"));
+export const getDatacentersOutput: typeof import("./getDatacenters").getDatacentersOutput = null as any;
+utilities.lazyLoad(exports, ["getDatacenters","getDatacentersOutput"], () => require("./getDatacenters"));
 
 export { GetKeyPrefixArgs, GetKeyPrefixResult, GetKeyPrefixOutputArgs } from "./getKeyPrefix";
 export const getKeyPrefix: typeof import("./getKeyPrefix").getKeyPrefix = null as any;

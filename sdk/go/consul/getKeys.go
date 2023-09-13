@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `Keys` resource reads values from the Consul key/value store.
@@ -151,6 +152,12 @@ func (o LookupKeysResultOutput) ToLookupKeysResultOutput() LookupKeysResultOutpu
 
 func (o LookupKeysResultOutput) ToLookupKeysResultOutputWithContext(ctx context.Context) LookupKeysResultOutput {
 	return o
+}
+
+func (o LookupKeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupKeysResult] {
+	return pulumix.Output[LookupKeysResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The datacenter the keys are being read from.

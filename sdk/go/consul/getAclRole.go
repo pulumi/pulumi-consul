@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `AclRole` data source returns the information related to a
@@ -119,6 +120,12 @@ func (o LookupAclRoleResultOutput) ToLookupAclRoleResultOutput() LookupAclRoleRe
 
 func (o LookupAclRoleResultOutput) ToLookupAclRoleResultOutputWithContext(ctx context.Context) LookupAclRoleResultOutput {
 	return o
+}
+
+func (o LookupAclRoleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAclRoleResult] {
+	return pulumix.Output[LookupAclRoleResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The description of the ACL Role.

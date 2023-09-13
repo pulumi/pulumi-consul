@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides access to the [Autopilot Configuration](https://www.consul.io/docs/guides/autopilot.html)
@@ -248,6 +249,12 @@ func (i *AutopilotConfig) ToAutopilotConfigOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(AutopilotConfigOutput)
 }
 
+func (i *AutopilotConfig) ToOutput(ctx context.Context) pulumix.Output[*AutopilotConfig] {
+	return pulumix.Output[*AutopilotConfig]{
+		OutputState: i.ToAutopilotConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AutopilotConfigArrayInput is an input type that accepts AutopilotConfigArray and AutopilotConfigArrayOutput values.
 // You can construct a concrete instance of `AutopilotConfigArrayInput` via:
 //
@@ -271,6 +278,12 @@ func (i AutopilotConfigArray) ToAutopilotConfigArrayOutput() AutopilotConfigArra
 
 func (i AutopilotConfigArray) ToAutopilotConfigArrayOutputWithContext(ctx context.Context) AutopilotConfigArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AutopilotConfigArrayOutput)
+}
+
+func (i AutopilotConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]*AutopilotConfig] {
+	return pulumix.Output[[]*AutopilotConfig]{
+		OutputState: i.ToAutopilotConfigArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AutopilotConfigMapInput is an input type that accepts AutopilotConfigMap and AutopilotConfigMapOutput values.
@@ -298,6 +311,12 @@ func (i AutopilotConfigMap) ToAutopilotConfigMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(AutopilotConfigMapOutput)
 }
 
+func (i AutopilotConfigMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AutopilotConfig] {
+	return pulumix.Output[map[string]*AutopilotConfig]{
+		OutputState: i.ToAutopilotConfigMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AutopilotConfigOutput struct{ *pulumi.OutputState }
 
 func (AutopilotConfigOutput) ElementType() reflect.Type {
@@ -310,6 +329,12 @@ func (o AutopilotConfigOutput) ToAutopilotConfigOutput() AutopilotConfigOutput {
 
 func (o AutopilotConfigOutput) ToAutopilotConfigOutputWithContext(ctx context.Context) AutopilotConfigOutput {
 	return o
+}
+
+func (o AutopilotConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*AutopilotConfig] {
+	return pulumix.Output[*AutopilotConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether to remove failing servers when a
@@ -376,6 +401,12 @@ func (o AutopilotConfigArrayOutput) ToAutopilotConfigArrayOutputWithContext(ctx 
 	return o
 }
 
+func (o AutopilotConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AutopilotConfig] {
+	return pulumix.Output[[]*AutopilotConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AutopilotConfigArrayOutput) Index(i pulumi.IntInput) AutopilotConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AutopilotConfig {
 		return vs[0].([]*AutopilotConfig)[vs[1].(int)]
@@ -394,6 +425,12 @@ func (o AutopilotConfigMapOutput) ToAutopilotConfigMapOutput() AutopilotConfigMa
 
 func (o AutopilotConfigMapOutput) ToAutopilotConfigMapOutputWithContext(ctx context.Context) AutopilotConfigMapOutput {
 	return o
+}
+
+func (o AutopilotConfigMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AutopilotConfig] {
+	return pulumix.Output[map[string]*AutopilotConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AutopilotConfigMapOutput) MapIndex(k pulumi.StringInput) AutopilotConfigOutput {

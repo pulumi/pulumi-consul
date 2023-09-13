@@ -45,6 +45,41 @@ namespace Pulumi.Consul
         /// </summary>
         public static Task<GetAgentConfigResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAgentConfigResult>("consul:index/getAgentConfig:getAgentConfig", InvokeArgs.Empty, options.WithDefaults());
+
+        /// <summary>
+        /// &gt; **Note:** The `consul.getAgentConfig` resource differs from [`consul.getAgentSelf`](https://www.terraform.io/docs/providers/consul/d/agent_self.html),
+        /// providing less information but utilizing stable APIs. `consul.getAgentSelf` will be
+        /// deprecated in a future release.
+        /// 
+        /// The `consul.getAgentConfig` data source returns
+        /// [configuration data](https://www.consul.io/api/agent.html#read-configuration)
+        /// from the agent specified in the `provider`.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Consul = Pulumi.Consul;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var remoteAgent = Consul.GetAgentConfig.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["consulVersion"] = remoteAgent.Apply(getAgentConfigResult =&gt; getAgentConfigResult.Version),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetAgentConfigResult> Invoke(InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAgentConfigResult>("consul:index/getAgentConfig:getAgentConfig", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

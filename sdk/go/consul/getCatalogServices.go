@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `getServices` data source returns a list of Consul services that
@@ -88,6 +89,12 @@ func (o GetCatalogServicesResultOutput) ToGetCatalogServicesResultOutput() GetCa
 
 func (o GetCatalogServicesResultOutput) ToGetCatalogServicesResultOutputWithContext(ctx context.Context) GetCatalogServicesResultOutput {
 	return o
+}
+
+func (o GetCatalogServicesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetCatalogServicesResult] {
+	return pulumix.Output[GetCatalogServicesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The datacenter the keys are being read from to.

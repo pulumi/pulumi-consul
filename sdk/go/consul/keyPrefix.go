@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -273,6 +274,12 @@ func (i *KeyPrefix) ToKeyPrefixOutputWithContext(ctx context.Context) KeyPrefixO
 	return pulumi.ToOutputWithContext(ctx, i).(KeyPrefixOutput)
 }
 
+func (i *KeyPrefix) ToOutput(ctx context.Context) pulumix.Output[*KeyPrefix] {
+	return pulumix.Output[*KeyPrefix]{
+		OutputState: i.ToKeyPrefixOutputWithContext(ctx).OutputState,
+	}
+}
+
 // KeyPrefixArrayInput is an input type that accepts KeyPrefixArray and KeyPrefixArrayOutput values.
 // You can construct a concrete instance of `KeyPrefixArrayInput` via:
 //
@@ -296,6 +303,12 @@ func (i KeyPrefixArray) ToKeyPrefixArrayOutput() KeyPrefixArrayOutput {
 
 func (i KeyPrefixArray) ToKeyPrefixArrayOutputWithContext(ctx context.Context) KeyPrefixArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KeyPrefixArrayOutput)
+}
+
+func (i KeyPrefixArray) ToOutput(ctx context.Context) pulumix.Output[[]*KeyPrefix] {
+	return pulumix.Output[[]*KeyPrefix]{
+		OutputState: i.ToKeyPrefixArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // KeyPrefixMapInput is an input type that accepts KeyPrefixMap and KeyPrefixMapOutput values.
@@ -323,6 +336,12 @@ func (i KeyPrefixMap) ToKeyPrefixMapOutputWithContext(ctx context.Context) KeyPr
 	return pulumi.ToOutputWithContext(ctx, i).(KeyPrefixMapOutput)
 }
 
+func (i KeyPrefixMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*KeyPrefix] {
+	return pulumix.Output[map[string]*KeyPrefix]{
+		OutputState: i.ToKeyPrefixMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type KeyPrefixOutput struct{ *pulumi.OutputState }
 
 func (KeyPrefixOutput) ElementType() reflect.Type {
@@ -335,6 +354,12 @@ func (o KeyPrefixOutput) ToKeyPrefixOutput() KeyPrefixOutput {
 
 func (o KeyPrefixOutput) ToKeyPrefixOutputWithContext(ctx context.Context) KeyPrefixOutput {
 	return o
+}
+
+func (o KeyPrefixOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyPrefix] {
+	return pulumix.Output[*KeyPrefix]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The datacenter to use. This overrides the
@@ -397,6 +422,12 @@ func (o KeyPrefixArrayOutput) ToKeyPrefixArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o KeyPrefixArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*KeyPrefix] {
+	return pulumix.Output[[]*KeyPrefix]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o KeyPrefixArrayOutput) Index(i pulumi.IntInput) KeyPrefixOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *KeyPrefix {
 		return vs[0].([]*KeyPrefix)[vs[1].(int)]
@@ -415,6 +446,12 @@ func (o KeyPrefixMapOutput) ToKeyPrefixMapOutput() KeyPrefixMapOutput {
 
 func (o KeyPrefixMapOutput) ToKeyPrefixMapOutputWithContext(ctx context.Context) KeyPrefixMapOutput {
 	return o
+}
+
+func (o KeyPrefixMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*KeyPrefix] {
+	return pulumix.Output[map[string]*KeyPrefix]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KeyPrefixMapOutput) MapIndex(k pulumi.StringInput) KeyPrefixOutput {

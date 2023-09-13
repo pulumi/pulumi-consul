@@ -414,7 +414,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * `consul_config_entry` can be imported using the syntax `&lt;kind&gt;/&lt;name&gt;` if the config entry is in the default partition and default namespace, or `&lt;partition&gt;/&lt;namespace&gt;/&lt;kind&gt;/&lt;name&gt;` for config entries in a non-default partition or namespace
+ * `consul_config_entry` can be imported using the syntax `&lt;kind&gt;/&lt;name&gt;` if the config entry is in the default partition and default namespace, or `&lt;partition&gt;/&lt;namespace&gt;/&lt;kind&gt;/&lt;name&gt;` for config entries in a non-default partition or namespace:
  * 
  * ```sh
  *  $ pulumi import consul:index/configEntry:ConfigEntry service_splitter 816a195f-6cb1-2e8d-92af-3011ae706318

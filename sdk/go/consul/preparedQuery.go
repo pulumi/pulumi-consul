@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -351,6 +352,12 @@ func (i *PreparedQuery) ToPreparedQueryOutputWithContext(ctx context.Context) Pr
 	return pulumi.ToOutputWithContext(ctx, i).(PreparedQueryOutput)
 }
 
+func (i *PreparedQuery) ToOutput(ctx context.Context) pulumix.Output[*PreparedQuery] {
+	return pulumix.Output[*PreparedQuery]{
+		OutputState: i.ToPreparedQueryOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PreparedQueryArrayInput is an input type that accepts PreparedQueryArray and PreparedQueryArrayOutput values.
 // You can construct a concrete instance of `PreparedQueryArrayInput` via:
 //
@@ -374,6 +381,12 @@ func (i PreparedQueryArray) ToPreparedQueryArrayOutput() PreparedQueryArrayOutpu
 
 func (i PreparedQueryArray) ToPreparedQueryArrayOutputWithContext(ctx context.Context) PreparedQueryArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PreparedQueryArrayOutput)
+}
+
+func (i PreparedQueryArray) ToOutput(ctx context.Context) pulumix.Output[[]*PreparedQuery] {
+	return pulumix.Output[[]*PreparedQuery]{
+		OutputState: i.ToPreparedQueryArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // PreparedQueryMapInput is an input type that accepts PreparedQueryMap and PreparedQueryMapOutput values.
@@ -401,6 +414,12 @@ func (i PreparedQueryMap) ToPreparedQueryMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(PreparedQueryMapOutput)
 }
 
+func (i PreparedQueryMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*PreparedQuery] {
+	return pulumix.Output[map[string]*PreparedQuery]{
+		OutputState: i.ToPreparedQueryMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PreparedQueryOutput struct{ *pulumi.OutputState }
 
 func (PreparedQueryOutput) ElementType() reflect.Type {
@@ -413,6 +432,12 @@ func (o PreparedQueryOutput) ToPreparedQueryOutput() PreparedQueryOutput {
 
 func (o PreparedQueryOutput) ToPreparedQueryOutputWithContext(ctx context.Context) PreparedQueryOutput {
 	return o
+}
+
+func (o PreparedQueryOutput) ToOutput(ctx context.Context) pulumix.Output[*PreparedQuery] {
+	return pulumix.Output[*PreparedQuery]{
+		OutputState: o.OutputState,
+	}
 }
 
 // When `true` the prepared query will return connect proxy services for a queried service.  Conditions such as `tags` in the prepared query will be matched against the proxy service. Defaults to false.
@@ -512,6 +537,12 @@ func (o PreparedQueryArrayOutput) ToPreparedQueryArrayOutputWithContext(ctx cont
 	return o
 }
 
+func (o PreparedQueryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*PreparedQuery] {
+	return pulumix.Output[[]*PreparedQuery]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PreparedQueryArrayOutput) Index(i pulumi.IntInput) PreparedQueryOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PreparedQuery {
 		return vs[0].([]*PreparedQuery)[vs[1].(int)]
@@ -530,6 +561,12 @@ func (o PreparedQueryMapOutput) ToPreparedQueryMapOutput() PreparedQueryMapOutpu
 
 func (o PreparedQueryMapOutput) ToPreparedQueryMapOutputWithContext(ctx context.Context) PreparedQueryMapOutput {
 	return o
+}
+
+func (o PreparedQueryMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*PreparedQuery] {
+	return pulumix.Output[map[string]*PreparedQuery]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PreparedQueryMapOutput) MapIndex(k pulumi.StringInput) PreparedQueryOutput {

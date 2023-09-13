@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // > **NOTE:** This feature requires [Consul Enterprise](https://www.consul.io/docs/enterprise/index.html).
@@ -225,6 +226,12 @@ func (i *NetworkArea) ToNetworkAreaOutputWithContext(ctx context.Context) Networ
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkAreaOutput)
 }
 
+func (i *NetworkArea) ToOutput(ctx context.Context) pulumix.Output[*NetworkArea] {
+	return pulumix.Output[*NetworkArea]{
+		OutputState: i.ToNetworkAreaOutputWithContext(ctx).OutputState,
+	}
+}
+
 // NetworkAreaArrayInput is an input type that accepts NetworkAreaArray and NetworkAreaArrayOutput values.
 // You can construct a concrete instance of `NetworkAreaArrayInput` via:
 //
@@ -248,6 +255,12 @@ func (i NetworkAreaArray) ToNetworkAreaArrayOutput() NetworkAreaArrayOutput {
 
 func (i NetworkAreaArray) ToNetworkAreaArrayOutputWithContext(ctx context.Context) NetworkAreaArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkAreaArrayOutput)
+}
+
+func (i NetworkAreaArray) ToOutput(ctx context.Context) pulumix.Output[[]*NetworkArea] {
+	return pulumix.Output[[]*NetworkArea]{
+		OutputState: i.ToNetworkAreaArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // NetworkAreaMapInput is an input type that accepts NetworkAreaMap and NetworkAreaMapOutput values.
@@ -275,6 +288,12 @@ func (i NetworkAreaMap) ToNetworkAreaMapOutputWithContext(ctx context.Context) N
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkAreaMapOutput)
 }
 
+func (i NetworkAreaMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*NetworkArea] {
+	return pulumix.Output[map[string]*NetworkArea]{
+		OutputState: i.ToNetworkAreaMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NetworkAreaOutput struct{ *pulumi.OutputState }
 
 func (NetworkAreaOutput) ElementType() reflect.Type {
@@ -287,6 +306,12 @@ func (o NetworkAreaOutput) ToNetworkAreaOutput() NetworkAreaOutput {
 
 func (o NetworkAreaOutput) ToNetworkAreaOutputWithContext(ctx context.Context) NetworkAreaOutput {
 	return o
+}
+
+func (o NetworkAreaOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkArea] {
+	return pulumix.Output[*NetworkArea]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The datacenter to use. This overrides the
@@ -336,6 +361,12 @@ func (o NetworkAreaArrayOutput) ToNetworkAreaArrayOutputWithContext(ctx context.
 	return o
 }
 
+func (o NetworkAreaArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*NetworkArea] {
+	return pulumix.Output[[]*NetworkArea]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NetworkAreaArrayOutput) Index(i pulumi.IntInput) NetworkAreaOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NetworkArea {
 		return vs[0].([]*NetworkArea)[vs[1].(int)]
@@ -354,6 +385,12 @@ func (o NetworkAreaMapOutput) ToNetworkAreaMapOutput() NetworkAreaMapOutput {
 
 func (o NetworkAreaMapOutput) ToNetworkAreaMapOutputWithContext(ctx context.Context) NetworkAreaMapOutput {
 	return o
+}
+
+func (o NetworkAreaMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*NetworkArea] {
+	return pulumix.Output[map[string]*NetworkArea]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NetworkAreaMapOutput) MapIndex(k pulumi.StringInput) NetworkAreaOutput {

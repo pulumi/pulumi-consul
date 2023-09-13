@@ -22,6 +22,18 @@ namespace Pulumi.Consul
         /// </summary>
         public static Task<GetAgentSelfResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAgentSelfResult>("consul:index/getAgentSelf:getAgentSelf", InvokeArgs.Empty, options.WithDefaults());
+
+        /// <summary>
+        /// &gt; **Warning:** The `consul.getAgentSelf` resource has been deprecated and will be removed
+        /// from a future release of the provider. Read the [upgrade instructions](https://www.terraform.io/docs/providers/consul/guides/upgrading.html#deprecation-of-consul_agent_self) for more information.
+        /// 
+        /// 
+        /// The `consul.getAgentSelf` data source returns
+        /// [configuration and status data](https://www.consul.io/docs/agent/http/agent.html#agent_self)
+        /// from the agent specified in the `provider`.
+        /// </summary>
+        public static Output<GetAgentSelfResult> Invoke(InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAgentSelfResult>("consul:index/getAgentSelf:getAgentSelf", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

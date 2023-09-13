@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * The `consul_node` resource can be imported
+ * The `consul_node` resource can be imported:
  * 
  * ```sh
  *  $ pulumi import consul:index/node:Node example node-name

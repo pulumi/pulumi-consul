@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `AclPolicy` data source returns the information related to a
@@ -115,6 +116,12 @@ func (o LookupAclPolicyResultOutput) ToLookupAclPolicyResultOutput() LookupAclPo
 
 func (o LookupAclPolicyResultOutput) ToLookupAclPolicyResultOutputWithContext(ctx context.Context) LookupAclPolicyResultOutput {
 	return o
+}
+
+func (o LookupAclPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAclPolicyResult] {
+	return pulumix.Output[LookupAclPolicyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The datacenters associated with the ACL Policy.

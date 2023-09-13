@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -195,6 +196,12 @@ func (o LookupKeyPrefixResultOutput) ToLookupKeyPrefixResultOutput() LookupKeyPr
 
 func (o LookupKeyPrefixResultOutput) ToLookupKeyPrefixResultOutputWithContext(ctx context.Context) LookupKeyPrefixResultOutput {
 	return o
+}
+
+func (o LookupKeyPrefixResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupKeyPrefixResult] {
+	return pulumix.Output[LookupKeyPrefixResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The datacenter the keys are being read from.
