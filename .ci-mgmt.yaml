@@ -1,0 +1,10 @@
+provider: consul
+major-version: 3
+docker: true
+makeTemplate: bridged
+plugins:
+  - name: aws 
+    version: "4.0.0"
+  - name: vault 
+    version: "4.0.0"
+team: ecosystem
