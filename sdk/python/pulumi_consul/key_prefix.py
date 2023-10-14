@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -41,24 +41,45 @@ class KeyPrefixArgs:
         :param pulumi.Input[str] token: The ACL token to use. This overrides the
                token that the agent provides by default.
         """
-        pulumi.set(__self__, "path_prefix", path_prefix)
+        KeyPrefixArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            path_prefix=path_prefix,
+            datacenter=datacenter,
+            namespace=namespace,
+            partition=partition,
+            subkey_collection=subkey_collection,
+            subkeys=subkeys,
+            token=token,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             path_prefix: pulumi.Input[str],
+             datacenter: Optional[pulumi.Input[str]] = None,
+             namespace: Optional[pulumi.Input[str]] = None,
+             partition: Optional[pulumi.Input[str]] = None,
+             subkey_collection: Optional[pulumi.Input[Sequence[pulumi.Input['KeyPrefixSubkeyCollectionArgs']]]] = None,
+             subkeys: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             token: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("path_prefix", path_prefix)
         if datacenter is not None:
-            pulumi.set(__self__, "datacenter", datacenter)
+            _setter("datacenter", datacenter)
         if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
+            _setter("namespace", namespace)
         if partition is not None:
-            pulumi.set(__self__, "partition", partition)
+            _setter("partition", partition)
         if subkey_collection is not None:
-            pulumi.set(__self__, "subkey_collection", subkey_collection)
+            _setter("subkey_collection", subkey_collection)
         if subkeys is not None:
-            pulumi.set(__self__, "subkeys", subkeys)
+            _setter("subkeys", subkeys)
         if token is not None:
             warnings.warn("""The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration""", DeprecationWarning)
             pulumi.log.warn("""token is deprecated: The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration""")
         if token is not None:
-            pulumi.set(__self__, "token", token)
+            _setter("token", token)
 
     @property
     @pulumi.getter(name="pathPrefix")
@@ -186,25 +207,46 @@ class _KeyPrefixState:
         :param pulumi.Input[str] token: The ACL token to use. This overrides the
                token that the agent provides by default.
         """
+        _KeyPrefixState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            datacenter=datacenter,
+            namespace=namespace,
+            partition=partition,
+            path_prefix=path_prefix,
+            subkey_collection=subkey_collection,
+            subkeys=subkeys,
+            token=token,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             datacenter: Optional[pulumi.Input[str]] = None,
+             namespace: Optional[pulumi.Input[str]] = None,
+             partition: Optional[pulumi.Input[str]] = None,
+             path_prefix: Optional[pulumi.Input[str]] = None,
+             subkey_collection: Optional[pulumi.Input[Sequence[pulumi.Input['KeyPrefixSubkeyCollectionArgs']]]] = None,
+             subkeys: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             token: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if datacenter is not None:
-            pulumi.set(__self__, "datacenter", datacenter)
+            _setter("datacenter", datacenter)
         if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
+            _setter("namespace", namespace)
         if partition is not None:
-            pulumi.set(__self__, "partition", partition)
+            _setter("partition", partition)
         if path_prefix is not None:
-            pulumi.set(__self__, "path_prefix", path_prefix)
+            _setter("path_prefix", path_prefix)
         if subkey_collection is not None:
-            pulumi.set(__self__, "subkey_collection", subkey_collection)
+            _setter("subkey_collection", subkey_collection)
         if subkeys is not None:
-            pulumi.set(__self__, "subkeys", subkeys)
+            _setter("subkeys", subkeys)
         if token is not None:
             warnings.warn("""The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration""", DeprecationWarning)
             pulumi.log.warn("""token is deprecated: The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration""")
         if token is not None:
-            pulumi.set(__self__, "token", token)
+            _setter("token", token)
 
     @property
     @pulumi.getter
@@ -419,6 +461,10 @@ class KeyPrefix(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            KeyPrefixArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -448,11 +494,6 @@ class KeyPrefix(pulumi.CustomResource):
             __props__.__dict__["path_prefix"] = path_prefix
             __props__.__dict__["subkey_collection"] = subkey_collection
             __props__.__dict__["subkeys"] = subkeys
-            if token is not None and not opts.urn:
-                warnings.warn("""The token argument has been deprecated and will be removed in a future release.
-Please use the token argument in the provider configuration""", DeprecationWarning)
-                pulumi.log.warn("""token is deprecated: The token argument has been deprecated and will be removed in a future release.
-Please use the token argument in the provider configuration""")
             __props__.__dict__["token"] = None if token is None else pulumi.Output.secret(token)
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["token"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)

@@ -6,13 +6,14 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
     'GetDatacentersResult',
     'AwaitableGetDatacentersResult',
     'get_datacenters',
+    'get_datacenters_output',
 ]
 
 @pulumi.output_type
@@ -69,3 +70,12 @@ def get_datacenters(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGet
     return AwaitableGetDatacentersResult(
         datacenters=pulumi.get(__ret__, 'datacenters'),
         id=pulumi.get(__ret__, 'id'))
+
+
+@_utilities.lift_output_func(get_datacenters)
+def get_datacenters_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatacentersResult]:
+    """
+    The `get_datacenters` data source returns the list of all knwown Consul
+    datacenters.
+    """
+    ...

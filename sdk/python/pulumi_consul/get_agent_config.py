@@ -6,13 +6,14 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
     'GetAgentConfigResult',
     'AwaitableGetAgentConfigResult',
     'get_agent_config',
+    'get_agent_config_output',
 ]
 
 @pulumi.output_type
@@ -147,3 +148,27 @@ def get_agent_config(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGe
         revision=pulumi.get(__ret__, 'revision'),
         server=pulumi.get(__ret__, 'server'),
         version=pulumi.get(__ret__, 'version'))
+
+
+@_utilities.lift_output_func(get_agent_config)
+def get_agent_config_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAgentConfigResult]:
+    """
+    > **Note:** The `get_agent_config` resource differs from [`get_agent_self`](https://www.terraform.io/docs/providers/consul/d/agent_self.html),
+    providing less information but utilizing stable APIs. `get_agent_self` will be
+    deprecated in a future release.
+
+    The `get_agent_config` data source returns
+    [configuration data](https://www.consul.io/api/agent.html#read-configuration)
+    from the agent specified in the `provider`.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_consul as consul
+
+    remote_agent = consul.get_agent_config()
+    pulumi.export("consulVersion", remote_agent.version)
+    ```
+    """
+    ...

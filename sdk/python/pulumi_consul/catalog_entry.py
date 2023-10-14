@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -33,19 +33,36 @@ class CatalogEntryArgs:
                the node. Supported values are documented below.
         :param pulumi.Input[str] token: ACL token.
         """
-        pulumi.set(__self__, "address", address)
-        pulumi.set(__self__, "node", node)
+        CatalogEntryArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address=address,
+            node=node,
+            datacenter=datacenter,
+            services=services,
+            token=token,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address: pulumi.Input[str],
+             node: pulumi.Input[str],
+             datacenter: Optional[pulumi.Input[str]] = None,
+             services: Optional[pulumi.Input[Sequence[pulumi.Input['CatalogEntryServiceArgs']]]] = None,
+             token: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("address", address)
+        _setter("node", node)
         if datacenter is not None:
-            pulumi.set(__self__, "datacenter", datacenter)
+            _setter("datacenter", datacenter)
         if services is not None:
-            pulumi.set(__self__, "services", services)
+            _setter("services", services)
         if token is not None:
             warnings.warn("""The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration""", DeprecationWarning)
             pulumi.log.warn("""token is deprecated: The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration""")
         if token is not None:
-            pulumi.set(__self__, "token", token)
+            _setter("token", token)
 
     @property
     @pulumi.getter
@@ -137,21 +154,38 @@ class _CatalogEntryState:
                the node. Supported values are documented below.
         :param pulumi.Input[str] token: ACL token.
         """
+        _CatalogEntryState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address=address,
+            datacenter=datacenter,
+            node=node,
+            services=services,
+            token=token,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address: Optional[pulumi.Input[str]] = None,
+             datacenter: Optional[pulumi.Input[str]] = None,
+             node: Optional[pulumi.Input[str]] = None,
+             services: Optional[pulumi.Input[Sequence[pulumi.Input['CatalogEntryServiceArgs']]]] = None,
+             token: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if address is not None:
-            pulumi.set(__self__, "address", address)
+            _setter("address", address)
         if datacenter is not None:
-            pulumi.set(__self__, "datacenter", datacenter)
+            _setter("datacenter", datacenter)
         if node is not None:
-            pulumi.set(__self__, "node", node)
+            _setter("node", node)
         if services is not None:
-            pulumi.set(__self__, "services", services)
+            _setter("services", services)
         if token is not None:
             warnings.warn("""The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration""", DeprecationWarning)
             pulumi.log.warn("""token is deprecated: The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration""")
         if token is not None:
-            pulumi.set(__self__, "token", token)
+            _setter("token", token)
 
     @property
     @pulumi.getter
@@ -320,6 +354,10 @@ class CatalogEntry(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            CatalogEntryArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -347,11 +385,6 @@ class CatalogEntry(pulumi.CustomResource):
                 raise TypeError("Missing required property 'node'")
             __props__.__dict__["node"] = node
             __props__.__dict__["services"] = services
-            if token is not None and not opts.urn:
-                warnings.warn("""The token argument has been deprecated and will be removed in a future release.
-Please use the token argument in the provider configuration""", DeprecationWarning)
-                pulumi.log.warn("""token is deprecated: The token argument has been deprecated and will be removed in a future release.
-Please use the token argument in the provider configuration""")
             __props__.__dict__["token"] = None if token is None else pulumi.Output.secret(token)
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["token"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)

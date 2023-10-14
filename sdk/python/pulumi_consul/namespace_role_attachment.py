@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['NamespaceRoleAttachmentArgs', 'NamespaceRoleAttachment']
@@ -21,8 +21,19 @@ class NamespaceRoleAttachmentArgs:
         :param pulumi.Input[str] namespace: The namespace to attach the role to.
         :param pulumi.Input[str] role: The name of the role attached to the namespace.
         """
-        pulumi.set(__self__, "namespace", namespace)
-        pulumi.set(__self__, "role", role)
+        NamespaceRoleAttachmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            namespace=namespace,
+            role=role,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             namespace: pulumi.Input[str],
+             role: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("namespace", namespace)
+        _setter("role", role)
 
     @property
     @pulumi.getter
@@ -59,10 +70,21 @@ class _NamespaceRoleAttachmentState:
         :param pulumi.Input[str] namespace: The namespace to attach the role to.
         :param pulumi.Input[str] role: The name of the role attached to the namespace.
         """
+        _NamespaceRoleAttachmentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            namespace=namespace,
+            role=role,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             namespace: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
+            _setter("namespace", namespace)
         if role is not None:
-            pulumi.set(__self__, "role", role)
+            _setter("role", role)
 
     @property
     @pulumi.getter
@@ -136,6 +158,10 @@ class NamespaceRoleAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            NamespaceRoleAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

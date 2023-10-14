@@ -16,23 +16,31 @@ public final class PreparedQueryFailoverTargetArgs extends com.pulumi.resources.
     public static final PreparedQueryFailoverTargetArgs Empty = new PreparedQueryFailoverTargetArgs();
 
     /**
-     * The datacenter to use. This overrides the agent&#39;s default datacenter and the datacenter in the provider setup.
+     * Specifies a WAN federated datacenter to forward the query to.
      * 
      */
     @Import(name="datacenter")
     private @Nullable Output<String> datacenter;
 
     /**
-     * @return The datacenter to use. This overrides the agent&#39;s default datacenter and the datacenter in the provider setup.
+     * @return Specifies a WAN federated datacenter to forward the query to.
      * 
      */
     public Optional<Output<String>> datacenter() {
         return Optional.ofNullable(this.datacenter);
     }
 
+    /**
+     * Specifies a cluster peer to use for failover.
+     * 
+     */
     @Import(name="peer")
     private @Nullable Output<String> peer;
 
+    /**
+     * @return Specifies a cluster peer to use for failover.
+     * 
+     */
     public Optional<Output<String>> peer() {
         return Optional.ofNullable(this.peer);
     }
@@ -63,7 +71,7 @@ public final class PreparedQueryFailoverTargetArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param datacenter The datacenter to use. This overrides the agent&#39;s default datacenter and the datacenter in the provider setup.
+         * @param datacenter Specifies a WAN federated datacenter to forward the query to.
          * 
          * @return builder
          * 
@@ -74,7 +82,7 @@ public final class PreparedQueryFailoverTargetArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param datacenter The datacenter to use. This overrides the agent&#39;s default datacenter and the datacenter in the provider setup.
+         * @param datacenter Specifies a WAN federated datacenter to forward the query to.
          * 
          * @return builder
          * 
@@ -83,11 +91,23 @@ public final class PreparedQueryFailoverTargetArgs extends com.pulumi.resources.
             return datacenter(Output.of(datacenter));
         }
 
+        /**
+         * @param peer Specifies a cluster peer to use for failover.
+         * 
+         * @return builder
+         * 
+         */
         public Builder peer(@Nullable Output<String> peer) {
             $.peer = peer;
             return this;
         }
 
+        /**
+         * @param peer Specifies a cluster peer to use for failover.
+         * 
+         * @return builder
+         * 
+         */
         public Builder peer(String peer) {
             return peer(Output.of(peer));
         }

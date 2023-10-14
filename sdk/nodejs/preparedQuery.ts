@@ -107,7 +107,7 @@ export class PreparedQuery extends pulumi.CustomResource {
      */
     public readonly connect!: pulumi.Output<boolean | undefined>;
     /**
-     * The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
+     * Specifies a WAN federated datacenter to forward the query to.
      */
     public readonly datacenter!: pulumi.Output<string | undefined>;
     /**
@@ -237,7 +237,7 @@ export interface PreparedQueryState {
      */
     connect?: pulumi.Input<boolean>;
     /**
-     * The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
+     * Specifies a WAN federated datacenter to forward the query to.
      */
     datacenter?: pulumi.Input<string>;
     /**
@@ -310,7 +310,7 @@ export interface PreparedQueryArgs {
      */
     connect?: pulumi.Input<boolean>;
     /**
-     * The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
+     * Specifies a WAN federated datacenter to forward the query to.
      */
     datacenter?: pulumi.Input<string>;
     /**

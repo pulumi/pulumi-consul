@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['CertificateAuthorityArgs', 'CertificateAuthority']
@@ -23,14 +23,27 @@ class CertificateAuthorityArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config: The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
         :param pulumi.Input[str] config_json: The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
         """
-        pulumi.set(__self__, "connect_provider", connect_provider)
+        CertificateAuthorityArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            connect_provider=connect_provider,
+            config=config,
+            config_json=config_json,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             connect_provider: pulumi.Input[str],
+             config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             config_json: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("connect_provider", connect_provider)
         if config is not None:
             warnings.warn("""The config attribute is deprecated, please use config_json instead.""", DeprecationWarning)
             pulumi.log.warn("""config is deprecated: The config attribute is deprecated, please use config_json instead.""")
         if config is not None:
-            pulumi.set(__self__, "config", config)
+            _setter("config", config)
         if config_json is not None:
-            pulumi.set(__self__, "config_json", config_json)
+            _setter("config_json", config_json)
 
     @property
     @pulumi.getter(name="connectProvider")
@@ -84,15 +97,28 @@ class _CertificateAuthorityState:
         :param pulumi.Input[str] config_json: The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
         :param pulumi.Input[str] connect_provider: Specifies the CA provider type to use.
         """
+        _CertificateAuthorityState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            config=config,
+            config_json=config_json,
+            connect_provider=connect_provider,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             config_json: Optional[pulumi.Input[str]] = None,
+             connect_provider: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if config is not None:
             warnings.warn("""The config attribute is deprecated, please use config_json instead.""", DeprecationWarning)
             pulumi.log.warn("""config is deprecated: The config attribute is deprecated, please use config_json instead.""")
         if config is not None:
-            pulumi.set(__self__, "config", config)
+            _setter("config", config)
         if config_json is not None:
-            pulumi.set(__self__, "config_json", config_json)
+            _setter("config_json", config_json)
         if connect_provider is not None:
-            pulumi.set(__self__, "connect_provider", connect_provider)
+            _setter("connect_provider", connect_provider)
 
     @property
     @pulumi.getter
@@ -187,6 +213,10 @@ class CertificateAuthority(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            CertificateAuthorityArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -204,9 +234,6 @@ class CertificateAuthority(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CertificateAuthorityArgs.__new__(CertificateAuthorityArgs)
 
-            if config is not None and not opts.urn:
-                warnings.warn("""The config attribute is deprecated, please use config_json instead.""", DeprecationWarning)
-                pulumi.log.warn("""config is deprecated: The config attribute is deprecated, please use config_json instead.""")
             __props__.__dict__["config"] = config
             __props__.__dict__["config_json"] = config_json
             if connect_provider is None and not opts.urn:

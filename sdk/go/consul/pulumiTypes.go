@@ -1517,9 +1517,10 @@ func (o PreparedQueryFailoverPtrOutput) Targets() PreparedQueryFailoverTargetArr
 }
 
 type PreparedQueryFailoverTarget struct {
-	// The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
+	// Specifies a WAN federated datacenter to forward the query to.
 	Datacenter *string `pulumi:"datacenter"`
-	Peer       *string `pulumi:"peer"`
+	// Specifies a cluster peer to use for failover.
+	Peer *string `pulumi:"peer"`
 }
 
 // PreparedQueryFailoverTargetInput is an input type that accepts PreparedQueryFailoverTargetArgs and PreparedQueryFailoverTargetOutput values.
@@ -1534,9 +1535,10 @@ type PreparedQueryFailoverTargetInput interface {
 }
 
 type PreparedQueryFailoverTargetArgs struct {
-	// The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
+	// Specifies a WAN federated datacenter to forward the query to.
 	Datacenter pulumi.StringPtrInput `pulumi:"datacenter"`
-	Peer       pulumi.StringPtrInput `pulumi:"peer"`
+	// Specifies a cluster peer to use for failover.
+	Peer pulumi.StringPtrInput `pulumi:"peer"`
 }
 
 func (PreparedQueryFailoverTargetArgs) ElementType() reflect.Type {
@@ -1608,11 +1610,12 @@ func (o PreparedQueryFailoverTargetOutput) ToOutput(ctx context.Context) pulumix
 	}
 }
 
-// The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
+// Specifies a WAN federated datacenter to forward the query to.
 func (o PreparedQueryFailoverTargetOutput) Datacenter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PreparedQueryFailoverTarget) *string { return v.Datacenter }).(pulumi.StringPtrOutput)
 }
 
+// Specifies a cluster peer to use for failover.
 func (o PreparedQueryFailoverTargetOutput) Peer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PreparedQueryFailoverTarget) *string { return v.Peer }).(pulumi.StringPtrOutput)
 }
@@ -5763,8 +5766,7 @@ func (o GetNodesQueryOptionArrayOutput) Index(i pulumi.IntInput) GetNodesQueryOp
 }
 
 type GetPeeringsPeer struct {
-	DeletedAt string `pulumi:"deletedAt"`
-	// The ID of this resource.
+	DeletedAt           string            `pulumi:"deletedAt"`
 	Id                  string            `pulumi:"id"`
 	Meta                map[string]string `pulumi:"meta"`
 	Name                string            `pulumi:"name"`
@@ -5788,8 +5790,7 @@ type GetPeeringsPeerInput interface {
 }
 
 type GetPeeringsPeerArgs struct {
-	DeletedAt pulumi.StringInput `pulumi:"deletedAt"`
-	// The ID of this resource.
+	DeletedAt           pulumi.StringInput      `pulumi:"deletedAt"`
 	Id                  pulumi.StringInput      `pulumi:"id"`
 	Meta                pulumi.StringMapInput   `pulumi:"meta"`
 	Name                pulumi.StringInput      `pulumi:"name"`
@@ -5874,7 +5875,6 @@ func (o GetPeeringsPeerOutput) DeletedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPeeringsPeer) string { return v.DeletedAt }).(pulumi.StringOutput)
 }
 
-// The ID of this resource.
 func (o GetPeeringsPeerOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPeeringsPeer) string { return v.Id }).(pulumi.StringOutput)
 }

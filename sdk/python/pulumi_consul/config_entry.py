@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ConfigEntryArgs', 'ConfigEntry']
@@ -27,15 +27,32 @@ class ConfigEntryArgs:
         :param pulumi.Input[str] namespace: The namespace to create the config entry within.
         :param pulumi.Input[str] partition: The partition the config entry is associated with.
         """
-        pulumi.set(__self__, "kind", kind)
+        ConfigEntryArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            kind=kind,
+            config_json=config_json,
+            name=name,
+            namespace=namespace,
+            partition=partition,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             kind: pulumi.Input[str],
+             config_json: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             namespace: Optional[pulumi.Input[str]] = None,
+             partition: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("kind", kind)
         if config_json is not None:
-            pulumi.set(__self__, "config_json", config_json)
+            _setter("config_json", config_json)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
+            _setter("namespace", namespace)
         if partition is not None:
-            pulumi.set(__self__, "partition", partition)
+            _setter("partition", partition)
 
     @property
     @pulumi.getter
@@ -114,16 +131,33 @@ class _ConfigEntryState:
         :param pulumi.Input[str] namespace: The namespace to create the config entry within.
         :param pulumi.Input[str] partition: The partition the config entry is associated with.
         """
+        _ConfigEntryState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            config_json=config_json,
+            kind=kind,
+            name=name,
+            namespace=namespace,
+            partition=partition,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             config_json: Optional[pulumi.Input[str]] = None,
+             kind: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             namespace: Optional[pulumi.Input[str]] = None,
+             partition: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if config_json is not None:
-            pulumi.set(__self__, "config_json", config_json)
+            _setter("config_json", config_json)
         if kind is not None:
-            pulumi.set(__self__, "kind", kind)
+            _setter("kind", kind)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
+            _setter("namespace", namespace)
         if partition is not None:
-            pulumi.set(__self__, "partition", partition)
+            _setter("partition", partition)
 
     @property
     @pulumi.getter(name="configJson")
@@ -727,6 +761,10 @@ class ConfigEntry(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ConfigEntryArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
