@@ -14,9 +14,12 @@ namespace Pulumi.Consul.Outputs
     public sealed class PreparedQueryFailoverTarget
     {
         /// <summary>
-        /// The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
+        /// Specifies a WAN federated datacenter to forward the query to.
         /// </summary>
         public readonly string? Datacenter;
+        /// <summary>
+        /// Specifies a cluster peer to use for failover.
+        /// </summary>
         public readonly string? Peer;
 
         [OutputConstructor]

@@ -523,9 +523,6 @@ export interface GetNodesQueryOption {
 
 export interface GetPeeringsPeer {
     deletedAt: string;
-    /**
-     * The ID of this resource.
-     */
     id: string;
     meta: {[key: string]: string};
     name: string;
@@ -836,9 +833,12 @@ export interface PreparedQueryFailover {
 
 export interface PreparedQueryFailoverTarget {
     /**
-     * The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
+     * Specifies a WAN federated datacenter to forward the query to.
      */
     datacenter?: string;
+    /**
+     * Specifies a cluster peer to use for failover.
+     */
     peer?: string;
 }
 

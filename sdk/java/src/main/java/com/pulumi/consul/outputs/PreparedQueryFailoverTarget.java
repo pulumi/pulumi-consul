@@ -12,20 +12,28 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PreparedQueryFailoverTarget {
     /**
-     * @return The datacenter to use. This overrides the agent&#39;s default datacenter and the datacenter in the provider setup.
+     * @return Specifies a WAN federated datacenter to forward the query to.
      * 
      */
     private @Nullable String datacenter;
+    /**
+     * @return Specifies a cluster peer to use for failover.
+     * 
+     */
     private @Nullable String peer;
 
     private PreparedQueryFailoverTarget() {}
     /**
-     * @return The datacenter to use. This overrides the agent&#39;s default datacenter and the datacenter in the provider setup.
+     * @return Specifies a WAN federated datacenter to forward the query to.
      * 
      */
     public Optional<String> datacenter() {
         return Optional.ofNullable(this.datacenter);
     }
+    /**
+     * @return Specifies a cluster peer to use for failover.
+     * 
+     */
     public Optional<String> peer() {
         return Optional.ofNullable(this.peer);
     }

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -36,7 +36,7 @@ class PreparedQueryArgs:
         The set of arguments for constructing a PreparedQuery resource.
         :param pulumi.Input[str] service: The name of the service to query
         :param pulumi.Input[bool] connect: When `true` the prepared query will return connect proxy services for a queried service.  Conditions such as `tags` in the prepared query will be matched against the proxy service. Defaults to false.
-        :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
+        :param pulumi.Input[str] datacenter: Specifies a WAN federated datacenter to forward the query to.
         :param pulumi.Input['PreparedQueryDnsArgs'] dns: Settings for controlling the DNS response details.
         :param pulumi.Input['PreparedQueryFailoverArgs'] failover: Options for controlling behavior when no healthy nodes are available in the local DC.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ignore_check_ids: Specifies a list of check IDs that should be ignored when filtering unhealthy instances. This is mostly useful in an emergency or as a temporary measure when a health check is found to be unreliable. Being able to ignore it in centrally-defined queries can be simpler than de-registering the check as an interim solution until the check can be fixed.
@@ -51,42 +51,81 @@ class PreparedQueryArgs:
         :param pulumi.Input['PreparedQueryTemplateArgs'] template: Query templating options. This is used to make a single prepared query respond to many different requests
         :param pulumi.Input[str] token: The ACL token to use when saving the prepared query. This overrides the token that the agent provides by default.
         """
-        pulumi.set(__self__, "service", service)
+        PreparedQueryArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            service=service,
+            connect=connect,
+            datacenter=datacenter,
+            dns=dns,
+            failover=failover,
+            ignore_check_ids=ignore_check_ids,
+            name=name,
+            near=near,
+            node_meta=node_meta,
+            only_passing=only_passing,
+            service_meta=service_meta,
+            session=session,
+            stored_token=stored_token,
+            tags=tags,
+            template=template,
+            token=token,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             service: pulumi.Input[str],
+             connect: Optional[pulumi.Input[bool]] = None,
+             datacenter: Optional[pulumi.Input[str]] = None,
+             dns: Optional[pulumi.Input['PreparedQueryDnsArgs']] = None,
+             failover: Optional[pulumi.Input['PreparedQueryFailoverArgs']] = None,
+             ignore_check_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             near: Optional[pulumi.Input[str]] = None,
+             node_meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             only_passing: Optional[pulumi.Input[bool]] = None,
+             service_meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             session: Optional[pulumi.Input[str]] = None,
+             stored_token: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             template: Optional[pulumi.Input['PreparedQueryTemplateArgs']] = None,
+             token: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("service", service)
         if connect is not None:
-            pulumi.set(__self__, "connect", connect)
+            _setter("connect", connect)
         if datacenter is not None:
-            pulumi.set(__self__, "datacenter", datacenter)
+            _setter("datacenter", datacenter)
         if dns is not None:
-            pulumi.set(__self__, "dns", dns)
+            _setter("dns", dns)
         if failover is not None:
-            pulumi.set(__self__, "failover", failover)
+            _setter("failover", failover)
         if ignore_check_ids is not None:
-            pulumi.set(__self__, "ignore_check_ids", ignore_check_ids)
+            _setter("ignore_check_ids", ignore_check_ids)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if near is not None:
-            pulumi.set(__self__, "near", near)
+            _setter("near", near)
         if node_meta is not None:
-            pulumi.set(__self__, "node_meta", node_meta)
+            _setter("node_meta", node_meta)
         if only_passing is not None:
-            pulumi.set(__self__, "only_passing", only_passing)
+            _setter("only_passing", only_passing)
         if service_meta is not None:
-            pulumi.set(__self__, "service_meta", service_meta)
+            _setter("service_meta", service_meta)
         if session is not None:
-            pulumi.set(__self__, "session", session)
+            _setter("session", session)
         if stored_token is not None:
-            pulumi.set(__self__, "stored_token", stored_token)
+            _setter("stored_token", stored_token)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if template is not None:
-            pulumi.set(__self__, "template", template)
+            _setter("template", template)
         if token is not None:
             warnings.warn("""The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration""", DeprecationWarning)
             pulumi.log.warn("""token is deprecated: The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration""")
         if token is not None:
-            pulumi.set(__self__, "token", token)
+            _setter("token", token)
 
     @property
     @pulumi.getter
@@ -116,7 +155,7 @@ Please use the token argument in the provider configuration""")
     @pulumi.getter
     def datacenter(self) -> Optional[pulumi.Input[str]]:
         """
-        The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
+        Specifies a WAN federated datacenter to forward the query to.
         """
         return pulumi.get(self, "datacenter")
 
@@ -308,7 +347,7 @@ class _PreparedQueryState:
         """
         Input properties used for looking up and filtering PreparedQuery resources.
         :param pulumi.Input[bool] connect: When `true` the prepared query will return connect proxy services for a queried service.  Conditions such as `tags` in the prepared query will be matched against the proxy service. Defaults to false.
-        :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
+        :param pulumi.Input[str] datacenter: Specifies a WAN federated datacenter to forward the query to.
         :param pulumi.Input['PreparedQueryDnsArgs'] dns: Settings for controlling the DNS response details.
         :param pulumi.Input['PreparedQueryFailoverArgs'] failover: Options for controlling behavior when no healthy nodes are available in the local DC.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ignore_check_ids: Specifies a list of check IDs that should be ignored when filtering unhealthy instances. This is mostly useful in an emergency or as a temporary measure when a health check is found to be unreliable. Being able to ignore it in centrally-defined queries can be simpler than de-registering the check as an interim solution until the check can be fixed.
@@ -324,43 +363,82 @@ class _PreparedQueryState:
         :param pulumi.Input['PreparedQueryTemplateArgs'] template: Query templating options. This is used to make a single prepared query respond to many different requests
         :param pulumi.Input[str] token: The ACL token to use when saving the prepared query. This overrides the token that the agent provides by default.
         """
+        _PreparedQueryState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            connect=connect,
+            datacenter=datacenter,
+            dns=dns,
+            failover=failover,
+            ignore_check_ids=ignore_check_ids,
+            name=name,
+            near=near,
+            node_meta=node_meta,
+            only_passing=only_passing,
+            service=service,
+            service_meta=service_meta,
+            session=session,
+            stored_token=stored_token,
+            tags=tags,
+            template=template,
+            token=token,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             connect: Optional[pulumi.Input[bool]] = None,
+             datacenter: Optional[pulumi.Input[str]] = None,
+             dns: Optional[pulumi.Input['PreparedQueryDnsArgs']] = None,
+             failover: Optional[pulumi.Input['PreparedQueryFailoverArgs']] = None,
+             ignore_check_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             near: Optional[pulumi.Input[str]] = None,
+             node_meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             only_passing: Optional[pulumi.Input[bool]] = None,
+             service: Optional[pulumi.Input[str]] = None,
+             service_meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             session: Optional[pulumi.Input[str]] = None,
+             stored_token: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             template: Optional[pulumi.Input['PreparedQueryTemplateArgs']] = None,
+             token: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if connect is not None:
-            pulumi.set(__self__, "connect", connect)
+            _setter("connect", connect)
         if datacenter is not None:
-            pulumi.set(__self__, "datacenter", datacenter)
+            _setter("datacenter", datacenter)
         if dns is not None:
-            pulumi.set(__self__, "dns", dns)
+            _setter("dns", dns)
         if failover is not None:
-            pulumi.set(__self__, "failover", failover)
+            _setter("failover", failover)
         if ignore_check_ids is not None:
-            pulumi.set(__self__, "ignore_check_ids", ignore_check_ids)
+            _setter("ignore_check_ids", ignore_check_ids)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if near is not None:
-            pulumi.set(__self__, "near", near)
+            _setter("near", near)
         if node_meta is not None:
-            pulumi.set(__self__, "node_meta", node_meta)
+            _setter("node_meta", node_meta)
         if only_passing is not None:
-            pulumi.set(__self__, "only_passing", only_passing)
+            _setter("only_passing", only_passing)
         if service is not None:
-            pulumi.set(__self__, "service", service)
+            _setter("service", service)
         if service_meta is not None:
-            pulumi.set(__self__, "service_meta", service_meta)
+            _setter("service_meta", service_meta)
         if session is not None:
-            pulumi.set(__self__, "session", session)
+            _setter("session", session)
         if stored_token is not None:
-            pulumi.set(__self__, "stored_token", stored_token)
+            _setter("stored_token", stored_token)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if template is not None:
-            pulumi.set(__self__, "template", template)
+            _setter("template", template)
         if token is not None:
             warnings.warn("""The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration""", DeprecationWarning)
             pulumi.log.warn("""token is deprecated: The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration""")
         if token is not None:
-            pulumi.set(__self__, "token", token)
+            _setter("token", token)
 
     @property
     @pulumi.getter
@@ -378,7 +456,7 @@ Please use the token argument in the provider configuration""")
     @pulumi.getter
     def datacenter(self) -> Optional[pulumi.Input[str]]:
         """
-        The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
+        Specifies a WAN federated datacenter to forward the query to.
         """
         return pulumi.get(self, "datacenter")
 
@@ -651,7 +729,7 @@ class PreparedQuery(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] connect: When `true` the prepared query will return connect proxy services for a queried service.  Conditions such as `tags` in the prepared query will be matched against the proxy service. Defaults to false.
-        :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
+        :param pulumi.Input[str] datacenter: Specifies a WAN federated datacenter to forward the query to.
         :param pulumi.Input[pulumi.InputType['PreparedQueryDnsArgs']] dns: Settings for controlling the DNS response details.
         :param pulumi.Input[pulumi.InputType['PreparedQueryFailoverArgs']] failover: Options for controlling behavior when no healthy nodes are available in the local DC.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ignore_check_ids: Specifies a list of check IDs that should be ignored when filtering unhealthy instances. This is mostly useful in an emergency or as a temporary measure when a health check is found to be unreliable. Being able to ignore it in centrally-defined queries can be simpler than de-registering the check as an interim solution until the check can be fixed.
@@ -749,6 +827,10 @@ class PreparedQuery(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            PreparedQueryArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -781,7 +863,17 @@ class PreparedQuery(pulumi.CustomResource):
 
             __props__.__dict__["connect"] = connect
             __props__.__dict__["datacenter"] = datacenter
+            if dns is not None and not isinstance(dns, PreparedQueryDnsArgs):
+                dns = dns or {}
+                def _setter(key, value):
+                    dns[key] = value
+                PreparedQueryDnsArgs._configure(_setter, **dns)
             __props__.__dict__["dns"] = dns
+            if failover is not None and not isinstance(failover, PreparedQueryFailoverArgs):
+                failover = failover or {}
+                def _setter(key, value):
+                    failover[key] = value
+                PreparedQueryFailoverArgs._configure(_setter, **failover)
             __props__.__dict__["failover"] = failover
             __props__.__dict__["ignore_check_ids"] = ignore_check_ids
             __props__.__dict__["name"] = name
@@ -795,12 +887,12 @@ class PreparedQuery(pulumi.CustomResource):
             __props__.__dict__["session"] = session
             __props__.__dict__["stored_token"] = stored_token
             __props__.__dict__["tags"] = tags
+            if template is not None and not isinstance(template, PreparedQueryTemplateArgs):
+                template = template or {}
+                def _setter(key, value):
+                    template[key] = value
+                PreparedQueryTemplateArgs._configure(_setter, **template)
             __props__.__dict__["template"] = template
-            if token is not None and not opts.urn:
-                warnings.warn("""The token argument has been deprecated and will be removed in a future release.
-Please use the token argument in the provider configuration""", DeprecationWarning)
-                pulumi.log.warn("""token is deprecated: The token argument has been deprecated and will be removed in a future release.
-Please use the token argument in the provider configuration""")
             __props__.__dict__["token"] = None if token is None else pulumi.Output.secret(token)
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["token"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
@@ -838,7 +930,7 @@ Please use the token argument in the provider configuration""")
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] connect: When `true` the prepared query will return connect proxy services for a queried service.  Conditions such as `tags` in the prepared query will be matched against the proxy service. Defaults to false.
-        :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
+        :param pulumi.Input[str] datacenter: Specifies a WAN federated datacenter to forward the query to.
         :param pulumi.Input[pulumi.InputType['PreparedQueryDnsArgs']] dns: Settings for controlling the DNS response details.
         :param pulumi.Input[pulumi.InputType['PreparedQueryFailoverArgs']] failover: Options for controlling behavior when no healthy nodes are available in the local DC.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ignore_check_ids: Specifies a list of check IDs that should be ignored when filtering unhealthy instances. This is mostly useful in an emergency or as a temporary measure when a health check is found to be unreliable. Being able to ignore it in centrally-defined queries can be simpler than de-registering the check as an interim solution until the check can be fixed.
@@ -888,7 +980,7 @@ Please use the token argument in the provider configuration""")
     @pulumi.getter
     def datacenter(self) -> pulumi.Output[Optional[str]]:
         """
-        The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
+        Specifies a WAN federated datacenter to forward the query to.
         """
         return pulumi.get(self, "datacenter")
 

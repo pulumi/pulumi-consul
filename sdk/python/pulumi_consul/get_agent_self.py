@@ -6,13 +6,14 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
     'GetAgentSelfResult',
     'AwaitableGetAgentSelfResult',
     'get_agent_self',
+    'get_agent_self_output',
 ]
 
 @pulumi.output_type
@@ -846,3 +847,16 @@ def get_agent_self(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetA
         version=pulumi.get(__ret__, 'version'),
         version_prerelease=pulumi.get(__ret__, 'version_prerelease'),
         version_revision=pulumi.get(__ret__, 'version_revision'))
+
+
+@_utilities.lift_output_func(get_agent_self)
+def get_agent_self_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAgentSelfResult]:
+    """
+    > **Warning:** The `get_agent_self` resource has been deprecated and will be removed
+    from a future release of the provider. Read the [upgrade instructions](https://www.terraform.io/docs/providers/consul/guides/upgrading.html#deprecation-of-consul_agent_self) for more information.
+
+    The `get_agent_self` data source returns
+    [configuration and status data](https://www.consul.io/docs/agent/http/agent.html#agent_self)
+    from the agent specified in the `provider`.
+    """
+    ...

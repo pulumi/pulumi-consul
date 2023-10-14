@@ -13,11 +13,14 @@ namespace Pulumi.Consul.Inputs
     public sealed class PreparedQueryFailoverTargetGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
+        /// Specifies a WAN federated datacenter to forward the query to.
         /// </summary>
         [Input("datacenter")]
         public Input<string>? Datacenter { get; set; }
 
+        /// <summary>
+        /// Specifies a cluster peer to use for failover.
+        /// </summary>
         [Input("peer")]
         public Input<string>? Peer { get; set; }
 

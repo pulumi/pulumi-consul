@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from ._inputs import *
 
@@ -54,38 +54,77 @@ class ProviderArgs:
         :param pulumi.Input[str] token: The ACL token to use by default when making requests to the agent. Can also be specified with `CONSUL_HTTP_TOKEN` or
                `CONSUL_TOKEN` as an environment variable.
         """
+        ProviderArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address=address,
+            auth_jwt=auth_jwt,
+            ca_file=ca_file,
+            ca_path=ca_path,
+            ca_pem=ca_pem,
+            cert_file=cert_file,
+            cert_pem=cert_pem,
+            datacenter=datacenter,
+            headers=headers,
+            http_auth=http_auth,
+            insecure_https=insecure_https,
+            key_file=key_file,
+            key_pem=key_pem,
+            namespace=namespace,
+            scheme=scheme,
+            token=token,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address: Optional[pulumi.Input[str]] = None,
+             auth_jwt: Optional[pulumi.Input['ProviderAuthJwtArgs']] = None,
+             ca_file: Optional[pulumi.Input[str]] = None,
+             ca_path: Optional[pulumi.Input[str]] = None,
+             ca_pem: Optional[pulumi.Input[str]] = None,
+             cert_file: Optional[pulumi.Input[str]] = None,
+             cert_pem: Optional[pulumi.Input[str]] = None,
+             datacenter: Optional[pulumi.Input[str]] = None,
+             headers: Optional[pulumi.Input[Sequence[pulumi.Input['ProviderHeaderArgs']]]] = None,
+             http_auth: Optional[pulumi.Input[str]] = None,
+             insecure_https: Optional[pulumi.Input[bool]] = None,
+             key_file: Optional[pulumi.Input[str]] = None,
+             key_pem: Optional[pulumi.Input[str]] = None,
+             namespace: Optional[pulumi.Input[str]] = None,
+             scheme: Optional[pulumi.Input[str]] = None,
+             token: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if address is not None:
-            pulumi.set(__self__, "address", address)
+            _setter("address", address)
         if auth_jwt is not None:
-            pulumi.set(__self__, "auth_jwt", auth_jwt)
+            _setter("auth_jwt", auth_jwt)
         if ca_file is not None:
-            pulumi.set(__self__, "ca_file", ca_file)
+            _setter("ca_file", ca_file)
         if ca_path is not None:
-            pulumi.set(__self__, "ca_path", ca_path)
+            _setter("ca_path", ca_path)
         if ca_pem is not None:
-            pulumi.set(__self__, "ca_pem", ca_pem)
+            _setter("ca_pem", ca_pem)
         if cert_file is not None:
-            pulumi.set(__self__, "cert_file", cert_file)
+            _setter("cert_file", cert_file)
         if cert_pem is not None:
-            pulumi.set(__self__, "cert_pem", cert_pem)
+            _setter("cert_pem", cert_pem)
         if datacenter is not None:
-            pulumi.set(__self__, "datacenter", datacenter)
+            _setter("datacenter", datacenter)
         if headers is not None:
-            pulumi.set(__self__, "headers", headers)
+            _setter("headers", headers)
         if http_auth is not None:
-            pulumi.set(__self__, "http_auth", http_auth)
+            _setter("http_auth", http_auth)
         if insecure_https is not None:
-            pulumi.set(__self__, "insecure_https", insecure_https)
+            _setter("insecure_https", insecure_https)
         if key_file is not None:
-            pulumi.set(__self__, "key_file", key_file)
+            _setter("key_file", key_file)
         if key_pem is not None:
-            pulumi.set(__self__, "key_pem", key_pem)
+            _setter("key_pem", key_pem)
         if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
+            _setter("namespace", namespace)
         if scheme is not None:
-            pulumi.set(__self__, "scheme", scheme)
+            _setter("scheme", scheme)
         if token is not None:
-            pulumi.set(__self__, "token", token)
+            _setter("token", token)
 
     @property
     @pulumi.getter
@@ -355,6 +394,10 @@ class Provider(pulumi.ProviderResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ProviderArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -386,6 +429,11 @@ class Provider(pulumi.ProviderResource):
             __props__ = ProviderArgs.__new__(ProviderArgs)
 
             __props__.__dict__["address"] = address
+            if auth_jwt is not None and not isinstance(auth_jwt, ProviderAuthJwtArgs):
+                auth_jwt = auth_jwt or {}
+                def _setter(key, value):
+                    auth_jwt[key] = value
+                ProviderAuthJwtArgs._configure(_setter, **auth_jwt)
             __props__.__dict__["auth_jwt"] = pulumi.Output.from_input(auth_jwt).apply(pulumi.runtime.to_json) if auth_jwt is not None else None
             __props__.__dict__["ca_file"] = ca_file
             __props__.__dict__["ca_path"] = ca_path

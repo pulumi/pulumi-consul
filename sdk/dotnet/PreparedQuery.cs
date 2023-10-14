@@ -104,7 +104,7 @@ namespace Pulumi.Consul
         public Output<bool?> Connect { get; private set; } = null!;
 
         /// <summary>
-        /// The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
+        /// Specifies a WAN federated datacenter to forward the query to.
         /// </summary>
         [Output("datacenter")]
         public Output<string?> Datacenter { get; private set; } = null!;
@@ -250,7 +250,7 @@ namespace Pulumi.Consul
         public Input<bool>? Connect { get; set; }
 
         /// <summary>
-        /// The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
+        /// Specifies a WAN federated datacenter to forward the query to.
         /// </summary>
         [Input("datacenter")]
         public Input<string>? Datacenter { get; set; }
@@ -390,7 +390,7 @@ Please use the token argument in the provider configuration")]
         public Input<bool>? Connect { get; set; }
 
         /// <summary>
-        /// The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
+        /// Specifies a WAN federated datacenter to forward the query to.
         /// </summary>
         [Input("datacenter")]
         public Input<string>? Datacenter { get; set; }

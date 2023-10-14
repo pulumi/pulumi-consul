@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -47,30 +47,59 @@ class AclAuthMethodArgs:
         :param pulumi.Input[str] token_locality: The kind of token that this auth method
                produces. This can be either 'local' or 'global'.
         """
-        pulumi.set(__self__, "type", type)
+        AclAuthMethodArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            type=type,
+            config=config,
+            config_json=config_json,
+            description=description,
+            display_name=display_name,
+            max_token_ttl=max_token_ttl,
+            name=name,
+            namespace=namespace,
+            namespace_rules=namespace_rules,
+            partition=partition,
+            token_locality=token_locality,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             type: pulumi.Input[str],
+             config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             config_json: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             max_token_ttl: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             namespace: Optional[pulumi.Input[str]] = None,
+             namespace_rules: Optional[pulumi.Input[Sequence[pulumi.Input['AclAuthMethodNamespaceRuleArgs']]]] = None,
+             partition: Optional[pulumi.Input[str]] = None,
+             token_locality: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("type", type)
         if config is not None:
             warnings.warn("""The config attribute is deprecated, please use config_json instead.""", DeprecationWarning)
             pulumi.log.warn("""config is deprecated: The config attribute is deprecated, please use config_json instead.""")
         if config is not None:
-            pulumi.set(__self__, "config", config)
+            _setter("config", config)
         if config_json is not None:
-            pulumi.set(__self__, "config_json", config_json)
+            _setter("config_json", config_json)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if max_token_ttl is not None:
-            pulumi.set(__self__, "max_token_ttl", max_token_ttl)
+            _setter("max_token_ttl", max_token_ttl)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
+            _setter("namespace", namespace)
         if namespace_rules is not None:
-            pulumi.set(__self__, "namespace_rules", namespace_rules)
+            _setter("namespace_rules", namespace_rules)
         if partition is not None:
-            pulumi.set(__self__, "partition", partition)
+            _setter("partition", partition)
         if token_locality is not None:
-            pulumi.set(__self__, "token_locality", token_locality)
+            _setter("token_locality", token_locality)
 
     @property
     @pulumi.getter
@@ -248,31 +277,60 @@ class _AclAuthMethodState:
                produces. This can be either 'local' or 'global'.
         :param pulumi.Input[str] type: The type of the ACL auth method.
         """
+        _AclAuthMethodState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            config=config,
+            config_json=config_json,
+            description=description,
+            display_name=display_name,
+            max_token_ttl=max_token_ttl,
+            name=name,
+            namespace=namespace,
+            namespace_rules=namespace_rules,
+            partition=partition,
+            token_locality=token_locality,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             config_json: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             max_token_ttl: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             namespace: Optional[pulumi.Input[str]] = None,
+             namespace_rules: Optional[pulumi.Input[Sequence[pulumi.Input['AclAuthMethodNamespaceRuleArgs']]]] = None,
+             partition: Optional[pulumi.Input[str]] = None,
+             token_locality: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if config is not None:
             warnings.warn("""The config attribute is deprecated, please use config_json instead.""", DeprecationWarning)
             pulumi.log.warn("""config is deprecated: The config attribute is deprecated, please use config_json instead.""")
         if config is not None:
-            pulumi.set(__self__, "config", config)
+            _setter("config", config)
         if config_json is not None:
-            pulumi.set(__self__, "config_json", config_json)
+            _setter("config_json", config_json)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if max_token_ttl is not None:
-            pulumi.set(__self__, "max_token_ttl", max_token_ttl)
+            _setter("max_token_ttl", max_token_ttl)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
+            _setter("namespace", namespace)
         if namespace_rules is not None:
-            pulumi.set(__self__, "namespace_rules", namespace_rules)
+            _setter("namespace_rules", namespace_rules)
         if partition is not None:
-            pulumi.set(__self__, "partition", partition)
+            _setter("partition", partition)
         if token_locality is not None:
-            pulumi.set(__self__, "token_locality", token_locality)
+            _setter("token_locality", token_locality)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter
@@ -553,6 +611,10 @@ class AclAuthMethod(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AclAuthMethodArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -578,9 +640,6 @@ class AclAuthMethod(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AclAuthMethodArgs.__new__(AclAuthMethodArgs)
 
-            if config is not None and not opts.urn:
-                warnings.warn("""The config attribute is deprecated, please use config_json instead.""", DeprecationWarning)
-                pulumi.log.warn("""config is deprecated: The config attribute is deprecated, please use config_json instead.""")
             __props__.__dict__["config"] = config
             __props__.__dict__["config_json"] = config_json
             __props__.__dict__["description"] = description

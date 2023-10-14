@@ -98,7 +98,7 @@ type PreparedQuery struct {
 
 	// When `true` the prepared query will return connect proxy services for a queried service.  Conditions such as `tags` in the prepared query will be matched against the proxy service. Defaults to false.
 	Connect pulumi.BoolPtrOutput `pulumi:"connect"`
-	// The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
+	// Specifies a WAN federated datacenter to forward the query to.
 	Datacenter pulumi.StringPtrOutput `pulumi:"datacenter"`
 	// Settings for controlling the DNS response details.
 	Dns PreparedQueryDnsPtrOutput `pulumi:"dns"`
@@ -175,7 +175,7 @@ func GetPreparedQuery(ctx *pulumi.Context,
 type preparedQueryState struct {
 	// When `true` the prepared query will return connect proxy services for a queried service.  Conditions such as `tags` in the prepared query will be matched against the proxy service. Defaults to false.
 	Connect *bool `pulumi:"connect"`
-	// The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
+	// Specifies a WAN federated datacenter to forward the query to.
 	Datacenter *string `pulumi:"datacenter"`
 	// Settings for controlling the DNS response details.
 	Dns *PreparedQueryDns `pulumi:"dns"`
@@ -213,7 +213,7 @@ type preparedQueryState struct {
 type PreparedQueryState struct {
 	// When `true` the prepared query will return connect proxy services for a queried service.  Conditions such as `tags` in the prepared query will be matched against the proxy service. Defaults to false.
 	Connect pulumi.BoolPtrInput
-	// The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
+	// Specifies a WAN federated datacenter to forward the query to.
 	Datacenter pulumi.StringPtrInput
 	// Settings for controlling the DNS response details.
 	Dns PreparedQueryDnsPtrInput
@@ -255,7 +255,7 @@ func (PreparedQueryState) ElementType() reflect.Type {
 type preparedQueryArgs struct {
 	// When `true` the prepared query will return connect proxy services for a queried service.  Conditions such as `tags` in the prepared query will be matched against the proxy service. Defaults to false.
 	Connect *bool `pulumi:"connect"`
-	// The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
+	// Specifies a WAN federated datacenter to forward the query to.
 	Datacenter *string `pulumi:"datacenter"`
 	// Settings for controlling the DNS response details.
 	Dns *PreparedQueryDns `pulumi:"dns"`
@@ -294,7 +294,7 @@ type preparedQueryArgs struct {
 type PreparedQueryArgs struct {
 	// When `true` the prepared query will return connect proxy services for a queried service.  Conditions such as `tags` in the prepared query will be matched against the proxy service. Defaults to false.
 	Connect pulumi.BoolPtrInput
-	// The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
+	// Specifies a WAN federated datacenter to forward the query to.
 	Datacenter pulumi.StringPtrInput
 	// Settings for controlling the DNS response details.
 	Dns PreparedQueryDnsPtrInput
@@ -445,7 +445,7 @@ func (o PreparedQueryOutput) Connect() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *PreparedQuery) pulumi.BoolPtrOutput { return v.Connect }).(pulumi.BoolPtrOutput)
 }
 
-// The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
+// Specifies a WAN federated datacenter to forward the query to.
 func (o PreparedQueryOutput) Datacenter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreparedQuery) pulumi.StringPtrOutput { return v.Datacenter }).(pulumi.StringPtrOutput)
 }

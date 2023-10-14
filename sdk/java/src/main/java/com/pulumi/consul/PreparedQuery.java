@@ -120,14 +120,14 @@ public class PreparedQuery extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.connect);
     }
     /**
-     * The datacenter to use. This overrides the agent&#39;s default datacenter and the datacenter in the provider setup.
+     * Specifies a WAN federated datacenter to forward the query to.
      * 
      */
     @Export(name="datacenter", type=String.class, parameters={})
     private Output</* @Nullable */ String> datacenter;
 
     /**
-     * @return The datacenter to use. This overrides the agent&#39;s default datacenter and the datacenter in the provider setup.
+     * @return Specifies a WAN federated datacenter to forward the query to.
      * 
      */
     public Output<Optional<String>> datacenter() {

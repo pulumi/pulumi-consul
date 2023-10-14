@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -21,13 +21,28 @@ class AuthJwt(dict):
                  bearer_token: Optional[str] = None,
                  meta: Optional[Mapping[str, str]] = None,
                  use_terraform_cloud_workload_identity: Optional[bool] = None):
-        pulumi.set(__self__, "auth_method", auth_method)
+        AuthJwt._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auth_method=auth_method,
+            bearer_token=bearer_token,
+            meta=meta,
+            use_terraform_cloud_workload_identity=use_terraform_cloud_workload_identity,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auth_method: str,
+             bearer_token: Optional[str] = None,
+             meta: Optional[Mapping[str, str]] = None,
+             use_terraform_cloud_workload_identity: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("auth_method", auth_method)
         if bearer_token is not None:
-            pulumi.set(__self__, "bearer_token", bearer_token)
+            _setter("bearer_token", bearer_token)
         if meta is not None:
-            pulumi.set(__self__, "meta", meta)
+            _setter("meta", meta)
         if use_terraform_cloud_workload_identity is not None:
-            pulumi.set(__self__, "use_terraform_cloud_workload_identity", use_terraform_cloud_workload_identity)
+            _setter("use_terraform_cloud_workload_identity", use_terraform_cloud_workload_identity)
 
     @property
     @pulumi.getter(name="authMethod")
@@ -55,8 +70,19 @@ class Headers(dict):
     def __init__(__self__, *,
                  name: str,
                  value: str):
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "value", value)
+        Headers._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("value", value)
 
     @property
     @pulumi.getter

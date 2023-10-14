@@ -14,9 +14,6 @@ namespace Pulumi.Consul.Outputs
     public sealed class GetPeeringsPeerResult
     {
         public readonly string DeletedAt;
-        /// <summary>
-        /// The ID of this resource.
-        /// </summary>
         public readonly string Id;
         public readonly ImmutableDictionary<string, string> Meta;
         public readonly string Name;
