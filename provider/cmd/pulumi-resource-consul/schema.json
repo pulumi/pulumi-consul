@@ -400,10 +400,11 @@
             "properties": {
                 "datacenter": {
                     "type": "string",
-                    "description": "The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.\n"
+                    "description": "Specifies a WAN federated datacenter to forward the query to.\n"
                 },
                 "peer": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Specifies a cluster peer to use for failover.\n"
                 }
             },
             "type": "object"
@@ -1246,8 +1247,7 @@
                     "type": "string"
                 },
                 "id": {
-                    "type": "string",
-                    "description": "The ID of this resource.\n"
+                    "type": "string"
                 },
                 "meta": {
                     "type": "object",
@@ -4348,7 +4348,7 @@
                 },
                 "datacenter": {
                     "type": "string",
-                    "description": "The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.\n"
+                    "description": "Specifies a WAN federated datacenter to forward the query to.\n"
                 },
                 "dns": {
                     "$ref": "#/types/consul:index/PreparedQueryDns:PreparedQueryDns",
@@ -4432,7 +4432,7 @@
                 },
                 "datacenter": {
                     "type": "string",
-                    "description": "The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.\n",
+                    "description": "Specifies a WAN federated datacenter to forward the query to.\n",
                     "willReplaceOnChanges": true
                 },
                 "dns": {
@@ -4518,7 +4518,7 @@
                     },
                     "datacenter": {
                         "type": "string",
-                        "description": "The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.\n",
+                        "description": "Specifies a WAN federated datacenter to forward the query to.\n",
                         "willReplaceOnChanges": true
                     },
                     "dns": {
