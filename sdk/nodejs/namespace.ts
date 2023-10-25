@@ -9,20 +9,6 @@ import * as utilities from "./utilities";
  *
  * The `consul.Namespace` resource provides isolated [Consul Enterprise Namespaces](https://www.consul.io/docs/enterprise/namespaces/index.html).
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as consul from "@pulumi/consul";
- *
- * const production = new consul.Namespace("production", {
- *     description: "Production namespace",
- *     meta: {
- *         foo: "bar",
- *     },
- * });
- * ```
- *
  * ## Import
  *
  * `consul_namespace` can be imported. This is useful to manage attributes of the default namespace that is created automatically:

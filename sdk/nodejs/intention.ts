@@ -19,37 +19,6 @@ import * as utilities from "./utilities";
  * in conjunction with the `consul.Service` datasource when referencing services
  * registered on nodes that have a running Consul agent.
  *
- * ## Example Usage
- *
- * Create a simplest intention with static service names:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as consul from "@pulumi/consul";
- *
- * const database = new consul.Intention("database", {
- *     action: "allow",
- *     destinationName: "db",
- *     sourceName: "api",
- * });
- * ```
- *
- * Referencing a known service via a datasource:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as consul from "@pulumi/consul";
- *
- * const database = new consul.Intention("database", {
- *     action: "allow",
- *     destinationName: consul_service.pg.name,
- *     sourceName: "api",
- * });
- * const pg = consul.getService({
- *     name: "postgresql",
- * });
- * ```
- *
  * ## Import
  *
  * `consul_intention` can be imported:

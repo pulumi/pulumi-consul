@@ -48,7 +48,9 @@ class KeysArgs:
              namespace: Optional[pulumi.Input[str]] = None,
              partition: Optional[pulumi.Input[str]] = None,
              token: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if datacenter is not None:
             _setter("datacenter", datacenter)
         if keys is not None:
@@ -172,7 +174,9 @@ class _KeysState:
              partition: Optional[pulumi.Input[str]] = None,
              token: Optional[pulumi.Input[str]] = None,
              var: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if datacenter is not None:
             _setter("datacenter", datacenter)
         if keys is not None:
@@ -281,21 +285,7 @@ class Keys(pulumi.CustomResource):
                  token: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_consul as consul
-
-        app = consul.Keys("app",
-            datacenter="nyc1",
-            keys=[consul.KeysKeyArgs(
-                path="service/app/elb_address",
-                value=aws_elb["app"]["dns_name"],
-            )],
-            token="abcd")
-        ```
-
+        Create a Keys resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the
@@ -314,21 +304,7 @@ class Keys(pulumi.CustomResource):
                  args: Optional[KeysArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_consul as consul
-
-        app = consul.Keys("app",
-            datacenter="nyc1",
-            keys=[consul.KeysKeyArgs(
-                path="service/app/elb_address",
-                value=aws_elb["app"]["dns_name"],
-            )],
-            token="abcd")
-        ```
-
+        Create a Keys resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param KeysArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

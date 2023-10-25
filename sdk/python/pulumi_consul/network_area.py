@@ -43,12 +43,22 @@ class NetworkAreaArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             peer_datacenter: pulumi.Input[str],
+             peer_datacenter: Optional[pulumi.Input[str]] = None,
              datacenter: Optional[pulumi.Input[str]] = None,
              retry_joins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              token: Optional[pulumi.Input[str]] = None,
              use_tls: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if peer_datacenter is None and 'peerDatacenter' in kwargs:
+            peer_datacenter = kwargs['peerDatacenter']
+        if peer_datacenter is None:
+            raise TypeError("Missing 'peer_datacenter' argument")
+        if retry_joins is None and 'retryJoins' in kwargs:
+            retry_joins = kwargs['retryJoins']
+        if use_tls is None and 'useTls' in kwargs:
+            use_tls = kwargs['useTls']
+
         _setter("peer_datacenter", peer_datacenter)
         if datacenter is not None:
             _setter("datacenter", datacenter)
@@ -172,7 +182,15 @@ class _NetworkAreaState:
              retry_joins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              token: Optional[pulumi.Input[str]] = None,
              use_tls: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if peer_datacenter is None and 'peerDatacenter' in kwargs:
+            peer_datacenter = kwargs['peerDatacenter']
+        if retry_joins is None and 'retryJoins' in kwargs:
+            retry_joins = kwargs['retryJoins']
+        if use_tls is None and 'useTls' in kwargs:
+            use_tls = kwargs['useTls']
+
         if datacenter is not None:
             _setter("datacenter", datacenter)
         if peer_datacenter is not None:
@@ -282,18 +300,6 @@ class NetworkArea(pulumi.CustomResource):
         datacenters, so not all servers need to be fully connected. This allows for
         complex topologies among Consul datacenters like hub/spoke and more general trees.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_consul as consul
-
-        dc2 = consul.NetworkArea("dc2",
-            peer_datacenter="dc2",
-            retry_joins=["1.2.3.4"],
-            use_tls=True)
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the
@@ -323,18 +329,6 @@ class NetworkArea(pulumi.CustomResource):
         communication, and relationships can be made between independent pairs of
         datacenters, so not all servers need to be fully connected. This allows for
         complex topologies among Consul datacenters like hub/spoke and more general trees.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_consul as consul
-
-        dc2 = consul.NetworkArea("dc2",
-            peer_datacenter="dc2",
-            retry_joins=["1.2.3.4"],
-            use_tls=True)
-        ```
 
         :param str resource_name: The name of the resource.
         :param NetworkAreaArgs args: The arguments to use to populate this resource's properties.

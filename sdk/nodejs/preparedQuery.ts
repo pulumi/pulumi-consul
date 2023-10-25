@@ -7,67 +7,6 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as consul from "@pulumi/consul";
- *
- * // Creates a prepared query myquery.query.consul that finds the nearest
- * // healthy myapp.service.consul instance that has the active tag and not
- * // the standby tag.
- * const myapp_query = new consul.PreparedQuery("myapp-query", {
- *     datacenter: "us-central1",
- *     dns: {
- *         ttl: "30s",
- *     },
- *     failover: {
- *         datacenters: [
- *             "us-west1",
- *             "us-east-2",
- *             "asia-east1",
- *         ],
- *         nearestN: 3,
- *     },
- *     near: "_agent",
- *     onlyPassing: true,
- *     service: "myapp",
- *     storedToken: "wxyz",
- *     tags: [
- *         "active",
- *         "!standby",
- *     ],
- *     token: "abcd",
- * });
- * // Creates a Prepared Query Template that matches *-near-self.query.consul
- * // and finds the nearest service that matches the glob character (e.g.
- * // foo-near-self.query.consul will find the nearest healthy foo.service.consul).
- * const service_near_self = new consul.PreparedQuery("service-near-self", {
- *     connect: true,
- *     datacenter: "nyc1",
- *     dns: {
- *         ttl: "5m",
- *     },
- *     failover: {
- *         datacenters: [
- *             "dc2",
- *             "dc3",
- *             "dc4",
- *         ],
- *         nearestN: 3,
- *     },
- *     near: "_agent",
- *     onlyPassing: true,
- *     service: "${match(1)}",
- *     storedToken: "wxyz",
- *     template: {
- *         regexp: "^(.*)-near-self$",
- *         type: "name_prefix_match",
- *     },
- *     token: "abcd",
- * });
- * ```
- *
  * ## Import
  *
  * ```sh

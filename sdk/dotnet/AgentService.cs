@@ -17,30 +17,6 @@ namespace Pulumi.Consul
     /// Provides access to the agent service data in Consul. This can be used to
     /// define a service associated with a particular agent. Currently, defining
     /// health checks for an agent service is not supported.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Consul = Pulumi.Consul;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var app = new Consul.AgentService("app", new()
-    ///     {
-    ///         Address = "www.google.com",
-    ///         Port = 80,
-    ///         Tags = new[]
-    ///         {
-    ///             "tag0",
-    ///             "tag1",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// </summary>
     [ConsulResourceType("consul:index/agentService:AgentService")]
     public partial class AgentService : global::Pulumi.CustomResource

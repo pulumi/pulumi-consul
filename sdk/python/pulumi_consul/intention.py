@@ -54,15 +54,31 @@ class IntentionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             action: pulumi.Input[str],
-             destination_name: pulumi.Input[str],
-             source_name: pulumi.Input[str],
+             action: Optional[pulumi.Input[str]] = None,
+             destination_name: Optional[pulumi.Input[str]] = None,
+             source_name: Optional[pulumi.Input[str]] = None,
              datacenter: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              destination_namespace: Optional[pulumi.Input[str]] = None,
              meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              source_namespace: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if action is None:
+            raise TypeError("Missing 'action' argument")
+        if destination_name is None and 'destinationName' in kwargs:
+            destination_name = kwargs['destinationName']
+        if destination_name is None:
+            raise TypeError("Missing 'destination_name' argument")
+        if source_name is None and 'sourceName' in kwargs:
+            source_name = kwargs['sourceName']
+        if source_name is None:
+            raise TypeError("Missing 'source_name' argument")
+        if destination_namespace is None and 'destinationNamespace' in kwargs:
+            destination_namespace = kwargs['destinationNamespace']
+        if source_namespace is None and 'sourceNamespace' in kwargs:
+            source_namespace = kwargs['sourceNamespace']
+
         _setter("action", action)
         _setter("destination_name", destination_name)
         _setter("source_name", source_name)
@@ -232,7 +248,17 @@ class _IntentionState:
              meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              source_name: Optional[pulumi.Input[str]] = None,
              source_namespace: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if destination_name is None and 'destinationName' in kwargs:
+            destination_name = kwargs['destinationName']
+        if destination_namespace is None and 'destinationNamespace' in kwargs:
+            destination_namespace = kwargs['destinationNamespace']
+        if source_name is None and 'sourceName' in kwargs:
+            source_name = kwargs['sourceName']
+        if source_namespace is None and 'sourceNamespace' in kwargs:
+            source_namespace = kwargs['sourceNamespace']
+
         if action is not None:
             _setter("action", action)
         if datacenter is not None:
@@ -383,33 +409,6 @@ class Intention(pulumi.CustomResource):
         in conjunction with the `Service` datasource when referencing services
         registered on nodes that have a running Consul agent.
 
-        ## Example Usage
-
-        Create a simplest intention with static service names:
-
-        ```python
-        import pulumi
-        import pulumi_consul as consul
-
-        database = consul.Intention("database",
-            action="allow",
-            destination_name="db",
-            source_name="api")
-        ```
-
-        Referencing a known service via a datasource:
-
-        ```python
-        import pulumi
-        import pulumi_consul as consul
-
-        database = consul.Intention("database",
-            action="allow",
-            destination_name=consul_service["pg"]["name"],
-            source_name="api")
-        pg = consul.get_service(name="postgresql")
-        ```
-
         ## Import
 
         `consul_intention` can be imported:
@@ -456,33 +455,6 @@ class Intention(pulumi.CustomResource):
         that will be created in the future when creating intentions. This resource can be used
         in conjunction with the `Service` datasource when referencing services
         registered on nodes that have a running Consul agent.
-
-        ## Example Usage
-
-        Create a simplest intention with static service names:
-
-        ```python
-        import pulumi
-        import pulumi_consul as consul
-
-        database = consul.Intention("database",
-            action="allow",
-            destination_name="db",
-            source_name="api")
-        ```
-
-        Referencing a known service via a datasource:
-
-        ```python
-        import pulumi
-        import pulumi_consul as consul
-
-        database = consul.Intention("database",
-            action="allow",
-            destination_name=consul_service["pg"]["name"],
-            source_name="api")
-        pg = consul.get_service(name="postgresql")
-        ```
 
         ## Import
 

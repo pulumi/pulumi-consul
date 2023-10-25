@@ -32,10 +32,18 @@ class CertificateAuthorityArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             connect_provider: pulumi.Input[str],
+             connect_provider: Optional[pulumi.Input[str]] = None,
              config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              config_json: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if connect_provider is None and 'connectProvider' in kwargs:
+            connect_provider = kwargs['connectProvider']
+        if connect_provider is None:
+            raise TypeError("Missing 'connect_provider' argument")
+        if config_json is None and 'configJson' in kwargs:
+            config_json = kwargs['configJson']
+
         _setter("connect_provider", connect_provider)
         if config is not None:
             warnings.warn("""The config attribute is deprecated, please use config_json instead.""", DeprecationWarning)
@@ -109,7 +117,13 @@ class _CertificateAuthorityState:
              config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              config_json: Optional[pulumi.Input[str]] = None,
              connect_provider: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if config_json is None and 'configJson' in kwargs:
+            config_json = kwargs['configJson']
+        if connect_provider is None and 'connectProvider' in kwargs:
+            connect_provider = kwargs['connectProvider']
+
         if config is not None:
             warnings.warn("""The config attribute is deprecated, please use config_json instead.""", DeprecationWarning)
             pulumi.log.warn("""config is deprecated: The config attribute is deprecated, please use config_json instead.""")

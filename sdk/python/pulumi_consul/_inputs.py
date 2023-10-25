@@ -56,9 +56,15 @@ class AclAuthMethodNamespaceRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bind_namespace: pulumi.Input[str],
+             bind_namespace: Optional[pulumi.Input[str]] = None,
              selector: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if bind_namespace is None and 'bindNamespace' in kwargs:
+            bind_namespace = kwargs['bindNamespace']
+        if bind_namespace is None:
+            raise TypeError("Missing 'bind_namespace' argument")
+
         _setter("bind_namespace", bind_namespace)
         if selector is not None:
             _setter("selector", selector)
@@ -108,9 +114,17 @@ class AclRoleNodeIdentityArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             datacenter: pulumi.Input[str],
-             node_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             datacenter: Optional[pulumi.Input[str]] = None,
+             node_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if datacenter is None:
+            raise TypeError("Missing 'datacenter' argument")
+        if node_name is None and 'nodeName' in kwargs:
+            node_name = kwargs['nodeName']
+        if node_name is None:
+            raise TypeError("Missing 'node_name' argument")
+
         _setter("datacenter", datacenter)
         _setter("node_name", node_name)
 
@@ -156,9 +170,15 @@ class AclRoleServiceIdentityArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             service_name: pulumi.Input[str],
+             service_name: Optional[pulumi.Input[str]] = None,
              datacenters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if service_name is None:
+            raise TypeError("Missing 'service_name' argument")
+
         _setter("service_name", service_name)
         if datacenters is not None:
             _setter("datacenters", datacenters)
@@ -205,9 +225,17 @@ class AclTokenNodeIdentityArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             datacenter: pulumi.Input[str],
-             node_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             datacenter: Optional[pulumi.Input[str]] = None,
+             node_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if datacenter is None:
+            raise TypeError("Missing 'datacenter' argument")
+        if node_name is None and 'nodeName' in kwargs:
+            node_name = kwargs['nodeName']
+        if node_name is None:
+            raise TypeError("Missing 'node_name' argument")
+
         _setter("datacenter", datacenter)
         _setter("node_name", node_name)
 
@@ -253,9 +281,15 @@ class AclTokenServiceIdentityArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             service_name: pulumi.Input[str],
+             service_name: Optional[pulumi.Input[str]] = None,
              datacenters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if service_name is None:
+            raise TypeError("Missing 'service_name' argument")
+
         _setter("service_name", service_name)
         if datacenters is not None:
             _setter("datacenters", datacenters)
@@ -313,12 +347,16 @@ class CatalogEntryServiceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
              address: Optional[pulumi.Input[str]] = None,
              id: Optional[pulumi.Input[str]] = None,
              port: Optional[pulumi.Input[int]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
         if address is not None:
             _setter("address", address)
@@ -414,10 +452,16 @@ class KeyPrefixSubkeyCollectionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             path: pulumi.Input[str],
-             value: pulumi.Input[str],
+             path: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
              flags: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("path", path)
         _setter("value", value)
         if flags is not None:
@@ -493,13 +537,17 @@ class KeysKeyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             path: pulumi.Input[str],
+             path: Optional[pulumi.Input[str]] = None,
              default: Optional[pulumi.Input[str]] = None,
              delete: Optional[pulumi.Input[bool]] = None,
              flags: Optional[pulumi.Input[int]] = None,
              name: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+
         _setter("path", path)
         if default is not None:
             _setter("default", default)
@@ -604,7 +652,9 @@ class PreparedQueryDnsArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              ttl: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if ttl is not None:
             _setter("ttl", ttl)
 
@@ -644,7 +694,11 @@ class PreparedQueryFailoverArgs:
              datacenters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              nearest_n: Optional[pulumi.Input[int]] = None,
              targets: Optional[pulumi.Input[Sequence[pulumi.Input['PreparedQueryFailoverTargetArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if nearest_n is None and 'nearestN' in kwargs:
+            nearest_n = kwargs['nearestN']
+
         if datacenters is not None:
             _setter("datacenters", datacenters)
         if nearest_n is not None:
@@ -708,7 +762,9 @@ class PreparedQueryFailoverTargetArgs:
              _setter: Callable[[Any, Any], None],
              datacenter: Optional[pulumi.Input[str]] = None,
              peer: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if datacenter is not None:
             _setter("datacenter", datacenter)
         if peer is not None:
@@ -759,10 +815,18 @@ class PreparedQueryTemplateArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             regexp: pulumi.Input[str],
-             type: pulumi.Input[str],
+             regexp: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
              remove_empty_tags: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if regexp is None:
+            raise TypeError("Missing 'regexp' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if remove_empty_tags is None and 'removeEmptyTags' in kwargs:
+            remove_empty_tags = kwargs['removeEmptyTags']
+
         _setter("regexp", regexp)
         _setter("type", type)
         if remove_empty_tags is not None:
@@ -822,11 +886,21 @@ class ProviderAuthJwtArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             auth_method: pulumi.Input[str],
+             auth_method: Optional[pulumi.Input[str]] = None,
              bearer_token: Optional[pulumi.Input[str]] = None,
              meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              use_terraform_cloud_workload_identity: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if auth_method is None and 'authMethod' in kwargs:
+            auth_method = kwargs['authMethod']
+        if auth_method is None:
+            raise TypeError("Missing 'auth_method' argument")
+        if bearer_token is None and 'bearerToken' in kwargs:
+            bearer_token = kwargs['bearerToken']
+        if use_terraform_cloud_workload_identity is None and 'useTerraformCloudWorkloadIdentity' in kwargs:
+            use_terraform_cloud_workload_identity = kwargs['useTerraformCloudWorkloadIdentity']
+
         _setter("auth_method", auth_method)
         if bearer_token is not None:
             _setter("bearer_token", bearer_token)
@@ -885,9 +959,15 @@ class ProviderHeaderArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
-             value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("name", name)
         _setter("value", value)
 
@@ -965,10 +1045,10 @@ class ServiceCheckArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             check_id: pulumi.Input[str],
-             interval: pulumi.Input[str],
-             name: pulumi.Input[str],
-             timeout: pulumi.Input[str],
+             check_id: Optional[pulumi.Input[str]] = None,
+             interval: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             timeout: Optional[pulumi.Input[str]] = None,
              deregister_critical_service_after: Optional[pulumi.Input[str]] = None,
              headers: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceCheckHeaderArgs']]]] = None,
              http: Optional[pulumi.Input[str]] = None,
@@ -977,7 +1057,23 @@ class ServiceCheckArgs:
              status: Optional[pulumi.Input[str]] = None,
              tcp: Optional[pulumi.Input[str]] = None,
              tls_skip_verify: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if check_id is None and 'checkId' in kwargs:
+            check_id = kwargs['checkId']
+        if check_id is None:
+            raise TypeError("Missing 'check_id' argument")
+        if interval is None:
+            raise TypeError("Missing 'interval' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if timeout is None:
+            raise TypeError("Missing 'timeout' argument")
+        if deregister_critical_service_after is None and 'deregisterCriticalServiceAfter' in kwargs:
+            deregister_critical_service_after = kwargs['deregisterCriticalServiceAfter']
+        if tls_skip_verify is None and 'tlsSkipVerify' in kwargs:
+            tls_skip_verify = kwargs['tlsSkipVerify']
+
         _setter("check_id", check_id)
         _setter("interval", interval)
         _setter("name", name)
@@ -1169,9 +1265,15 @@ class ServiceCheckHeaderArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
-             values: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[pulumi.Input[str]] = None,
+             values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+
         _setter("name", name)
         _setter("values", values)
 
@@ -1253,7 +1355,19 @@ class GetCatalogNodesQueryOptionArgs:
              token: Optional[str] = None,
              wait_index: Optional[int] = None,
              wait_time: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allow_stale is None and 'allowStale' in kwargs:
+            allow_stale = kwargs['allowStale']
+        if node_meta is None and 'nodeMeta' in kwargs:
+            node_meta = kwargs['nodeMeta']
+        if require_consistent is None and 'requireConsistent' in kwargs:
+            require_consistent = kwargs['requireConsistent']
+        if wait_index is None and 'waitIndex' in kwargs:
+            wait_index = kwargs['waitIndex']
+        if wait_time is None and 'waitTime' in kwargs:
+            wait_time = kwargs['waitTime']
+
         if allow_stale is not None:
             _setter("allow_stale", allow_stale)
         if datacenter is not None:
@@ -1439,7 +1553,19 @@ class GetCatalogServiceQueryOptionArgs:
              token: Optional[str] = None,
              wait_index: Optional[int] = None,
              wait_time: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allow_stale is None and 'allowStale' in kwargs:
+            allow_stale = kwargs['allowStale']
+        if node_meta is None and 'nodeMeta' in kwargs:
+            node_meta = kwargs['nodeMeta']
+        if require_consistent is None and 'requireConsistent' in kwargs:
+            require_consistent = kwargs['requireConsistent']
+        if wait_index is None and 'waitIndex' in kwargs:
+            wait_index = kwargs['waitIndex']
+        if wait_time is None and 'waitTime' in kwargs:
+            wait_time = kwargs['waitTime']
+
         if allow_stale is not None:
             _setter("allow_stale", allow_stale)
         if datacenter is not None:
@@ -1639,7 +1765,19 @@ class GetCatalogServicesQueryOptionArgs:
              token: Optional[str] = None,
              wait_index: Optional[int] = None,
              wait_time: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allow_stale is None and 'allowStale' in kwargs:
+            allow_stale = kwargs['allowStale']
+        if node_meta is None and 'nodeMeta' in kwargs:
+            node_meta = kwargs['nodeMeta']
+        if require_consistent is None and 'requireConsistent' in kwargs:
+            require_consistent = kwargs['requireConsistent']
+        if wait_index is None and 'waitIndex' in kwargs:
+            wait_index = kwargs['waitIndex']
+        if wait_time is None and 'waitTime' in kwargs:
+            wait_time = kwargs['waitTime']
+
         if allow_stale is not None:
             _setter("allow_stale", allow_stale)
         if datacenter is not None:
@@ -1807,10 +1945,16 @@ class GetKeyPrefixSubkeyCollectionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             path: str,
+             name: Optional[str] = None,
+             path: Optional[str] = None,
              default: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+
         _setter("name", name)
         _setter("path", path)
         if default is not None:
@@ -1882,10 +2026,16 @@ class GetKeysKeyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             path: str,
+             name: Optional[str] = None,
+             path: Optional[str] = None,
              default: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+
         _setter("name", name)
         _setter("path", path)
         if default is not None:
@@ -1985,7 +2135,19 @@ class GetNodesQueryOptionArgs:
              token: Optional[str] = None,
              wait_index: Optional[int] = None,
              wait_time: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allow_stale is None and 'allowStale' in kwargs:
+            allow_stale = kwargs['allowStale']
+        if node_meta is None and 'nodeMeta' in kwargs:
+            node_meta = kwargs['nodeMeta']
+        if require_consistent is None and 'requireConsistent' in kwargs:
+            require_consistent = kwargs['requireConsistent']
+        if wait_index is None and 'waitIndex' in kwargs:
+            wait_index = kwargs['waitIndex']
+        if wait_time is None and 'waitTime' in kwargs:
+            wait_time = kwargs['waitTime']
+
         if allow_stale is not None:
             _setter("allow_stale", allow_stale)
         if datacenter is not None:
@@ -2171,7 +2333,19 @@ class GetServiceQueryOptionArgs:
              token: Optional[str] = None,
              wait_index: Optional[int] = None,
              wait_time: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allow_stale is None and 'allowStale' in kwargs:
+            allow_stale = kwargs['allowStale']
+        if node_meta is None and 'nodeMeta' in kwargs:
+            node_meta = kwargs['nodeMeta']
+        if require_consistent is None and 'requireConsistent' in kwargs:
+            require_consistent = kwargs['requireConsistent']
+        if wait_index is None and 'waitIndex' in kwargs:
+            wait_index = kwargs['waitIndex']
+        if wait_time is None and 'waitTime' in kwargs:
+            wait_time = kwargs['waitTime']
+
         if allow_stale is not None:
             _setter("allow_stale", allow_stale)
         if datacenter is not None:
@@ -2371,7 +2545,19 @@ class GetServicesQueryOptionArgs:
              token: Optional[str] = None,
              wait_index: Optional[int] = None,
              wait_time: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allow_stale is None and 'allowStale' in kwargs:
+            allow_stale = kwargs['allowStale']
+        if node_meta is None and 'nodeMeta' in kwargs:
+            node_meta = kwargs['nodeMeta']
+        if require_consistent is None and 'requireConsistent' in kwargs:
+            require_consistent = kwargs['requireConsistent']
+        if wait_index is None and 'waitIndex' in kwargs:
+            wait_index = kwargs['waitIndex']
+        if wait_time is None and 'waitTime' in kwargs:
+            wait_time = kwargs['waitTime']
+
         if allow_stale is not None:
             _setter("allow_stale", allow_stale)
         if datacenter is not None:

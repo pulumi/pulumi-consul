@@ -15,26 +15,6 @@ namespace Pulumi.Consul
     /// 
     /// It includes to automatically cleanup dead servers, monitor the status of the Raft
     /// cluster and stable server introduction.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Consul = Pulumi.Consul;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Consul.AutopilotConfig("config", new()
-    ///     {
-    ///         CleanupDeadServers = false,
-    ///         LastContactThreshold = "1s",
-    ///         MaxTrailingLogs = 500,
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// </summary>
     [ConsulResourceType("consul:index/autopilotConfig:AutopilotConfig")]
     public partial class AutopilotConfig : global::Pulumi.CustomResource

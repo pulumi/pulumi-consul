@@ -6,16 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as consul from "@pulumi/consul";
- *
- * const peers = consul.getPeerings({});
- * ```
- */
 export function getPeerings(args?: GetPeeringsArgs, opts?: pulumi.InvokeOptions): Promise<GetPeeringsResult> {
     args = args || {};
 
@@ -43,16 +33,6 @@ export interface GetPeeringsResult {
     readonly partition?: string;
     readonly peers: outputs.GetPeeringsPeer[];
 }
-/**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as consul from "@pulumi/consul";
- *
- * const peers = consul.getPeerings({});
- * ```
- */
 export function getPeeringsOutput(args?: GetPeeringsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPeeringsResult> {
     return pulumi.output(args).apply((a: any) => getPeerings(a, opts))
 }

@@ -40,13 +40,17 @@ class NodeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             address: pulumi.Input[str],
+             address: Optional[pulumi.Input[str]] = None,
              datacenter: Optional[pulumi.Input[str]] = None,
              meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              partition: Optional[pulumi.Input[str]] = None,
              token: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if address is None:
+            raise TypeError("Missing 'address' argument")
+
         _setter("address", address)
         if datacenter is not None:
             _setter("datacenter", datacenter)
@@ -174,7 +178,9 @@ class _NodeState:
              name: Optional[pulumi.Input[str]] = None,
              partition: Optional[pulumi.Input[str]] = None,
              token: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if address is not None:
             _setter("address", address)
         if datacenter is not None:
@@ -284,15 +290,6 @@ class Node(pulumi.CustomResource):
         Provides access to Node data in Consul. This can be used to define a
         node. Currently, defining health checks is not supported.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_consul as consul
-
-        foobar = consul.Node("foobar", address="192.168.10.10")
-        ```
-
         ## Import
 
         The `consul_node` resource can be imported:
@@ -318,15 +315,6 @@ class Node(pulumi.CustomResource):
         """
         Provides access to Node data in Consul. This can be used to define a
         node. Currently, defining health checks is not supported.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_consul as consul
-
-        foobar = consul.Node("foobar", address="192.168.10.10")
-        ```
 
         ## Import
 

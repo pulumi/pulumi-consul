@@ -10,19 +10,6 @@ import * as utilities from "./utilities";
  *
  * It includes to automatically cleanup dead servers, monitor the status of the Raft
  * cluster and stable server introduction.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as consul from "@pulumi/consul";
- *
- * const config = new consul.AutopilotConfig("config", {
- *     cleanupDeadServers: false,
- *     lastContactThreshold: "1s",
- *     maxTrailingLogs: 500,
- * });
- * ```
  */
 export class AutopilotConfig extends pulumi.CustomResource {
     /**

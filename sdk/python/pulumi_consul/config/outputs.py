@@ -31,11 +31,21 @@ class AuthJwt(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             auth_method: str,
+             auth_method: Optional[str] = None,
              bearer_token: Optional[str] = None,
              meta: Optional[Mapping[str, str]] = None,
              use_terraform_cloud_workload_identity: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if auth_method is None and 'authMethod' in kwargs:
+            auth_method = kwargs['authMethod']
+        if auth_method is None:
+            raise TypeError("Missing 'auth_method' argument")
+        if bearer_token is None and 'bearerToken' in kwargs:
+            bearer_token = kwargs['bearerToken']
+        if use_terraform_cloud_workload_identity is None and 'useTerraformCloudWorkloadIdentity' in kwargs:
+            use_terraform_cloud_workload_identity = kwargs['useTerraformCloudWorkloadIdentity']
+
         _setter("auth_method", auth_method)
         if bearer_token is not None:
             _setter("bearer_token", bearer_token)
@@ -78,9 +88,15 @@ class Headers(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("name", name)
         _setter("value", value)
 

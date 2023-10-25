@@ -30,9 +30,13 @@ class LicenseArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             license: pulumi.Input[str],
+             license: Optional[pulumi.Input[str]] = None,
              datacenter: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if license is None:
+            raise TypeError("Missing 'license' argument")
+
         _setter("license", license)
         if datacenter is not None:
             _setter("datacenter", datacenter)
@@ -124,7 +128,21 @@ class _LicenseState:
              start_time: Optional[pulumi.Input[str]] = None,
              valid: Optional[pulumi.Input[bool]] = None,
              warnings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if customer_id is None and 'customerId' in kwargs:
+            customer_id = kwargs['customerId']
+        if expiration_time is None and 'expirationTime' in kwargs:
+            expiration_time = kwargs['expirationTime']
+        if installation_id is None and 'installationId' in kwargs:
+            installation_id = kwargs['installationId']
+        if issue_time is None and 'issueTime' in kwargs:
+            issue_time = kwargs['issueTime']
+        if license_id is None and 'licenseId' in kwargs:
+            license_id = kwargs['licenseId']
+        if start_time is None and 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+
         if customer_id is not None:
             _setter("customer_id", customer_id)
         if datacenter is not None:
@@ -311,15 +329,6 @@ class License(pulumi.CustomResource):
         the Consul Enterprise license. If ACLs are enabled then a token with operator
         privileges may be required in order to use this command.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_consul as consul
-
-        license = consul.License("license", license=(lambda path: open(path).read())("license.hclic"))
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the
@@ -338,15 +347,6 @@ class License(pulumi.CustomResource):
         The `License` resource provides datacenter-level management of
         the Consul Enterprise license. If ACLs are enabled then a token with operator
         privileges may be required in order to use this command.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_consul as consul
-
-        license = consul.License("license", license=(lambda path: open(path).read())("license.hclic"))
-        ```
 
         :param str resource_name: The name of the resource.
         :param LicenseArgs args: The arguments to use to populate this resource's properties.

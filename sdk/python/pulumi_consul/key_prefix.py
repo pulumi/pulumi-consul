@@ -54,14 +54,22 @@ class KeyPrefixArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             path_prefix: pulumi.Input[str],
+             path_prefix: Optional[pulumi.Input[str]] = None,
              datacenter: Optional[pulumi.Input[str]] = None,
              namespace: Optional[pulumi.Input[str]] = None,
              partition: Optional[pulumi.Input[str]] = None,
              subkey_collection: Optional[pulumi.Input[Sequence[pulumi.Input['KeyPrefixSubkeyCollectionArgs']]]] = None,
              subkeys: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              token: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if path_prefix is None and 'pathPrefix' in kwargs:
+            path_prefix = kwargs['pathPrefix']
+        if path_prefix is None:
+            raise TypeError("Missing 'path_prefix' argument")
+        if subkey_collection is None and 'subkeyCollection' in kwargs:
+            subkey_collection = kwargs['subkeyCollection']
+
         _setter("path_prefix", path_prefix)
         if datacenter is not None:
             _setter("datacenter", datacenter)
@@ -227,7 +235,13 @@ class _KeyPrefixState:
              subkey_collection: Optional[pulumi.Input[Sequence[pulumi.Input['KeyPrefixSubkeyCollectionArgs']]]] = None,
              subkeys: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              token: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if path_prefix is None and 'pathPrefix' in kwargs:
+            path_prefix = kwargs['pathPrefix']
+        if subkey_collection is None and 'subkeyCollection' in kwargs:
+            subkey_collection = kwargs['subkeyCollection']
+
         if datacenter is not None:
             _setter("datacenter", datacenter)
         if namespace is not None:
@@ -360,31 +374,6 @@ class KeyPrefix(pulumi.CustomResource):
                  token: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_consul as consul
-
-        myapp_config = consul.KeyPrefix("myappConfig",
-            datacenter="nyc1",
-            path_prefix="myapp/config/",
-            subkey_collection=[consul.KeyPrefixSubkeyCollectionArgs(
-                flags=2,
-                path="database/password",
-                value=aws_db_instance["app"]["password"],
-            )],
-            subkeys={
-                "database/hostname": aws_db_instance["app"]["address"],
-                "database/name": aws_db_instance["app"]["name"],
-                "database/port": aws_db_instance["app"]["port"],
-                "database/username": aws_db_instance["app"]["username"],
-                "elb_cname": aws_elb["app"]["dns_name"],
-                "s3_bucket_name": aws_s3_bucket["app"]["bucket"],
-            },
-            token="abcd")
-        ```
-
         ## Import
 
         `consul_key_prefix` can be imported. This is useful when the path already exists and you know all keys in path should be managed by Terraform.
@@ -418,31 +407,6 @@ class KeyPrefix(pulumi.CustomResource):
                  args: KeyPrefixArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_consul as consul
-
-        myapp_config = consul.KeyPrefix("myappConfig",
-            datacenter="nyc1",
-            path_prefix="myapp/config/",
-            subkey_collection=[consul.KeyPrefixSubkeyCollectionArgs(
-                flags=2,
-                path="database/password",
-                value=aws_db_instance["app"]["password"],
-            )],
-            subkeys={
-                "database/hostname": aws_db_instance["app"]["address"],
-                "database/name": aws_db_instance["app"]["name"],
-                "database/port": aws_db_instance["app"]["port"],
-                "database/username": aws_db_instance["app"]["username"],
-                "elb_cname": aws_elb["app"]["dns_name"],
-                "s3_bucket_name": aws_s3_bucket["app"]["bucket"],
-            },
-            token="abcd")
-        ```
-
         ## Import
 
         `consul_key_prefix` can be imported. This is useful when the path already exists and you know all keys in path should be managed by Terraform.

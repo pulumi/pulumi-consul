@@ -100,16 +100,6 @@ def get_autopilot_health(datacenter: Optional[str] = None,
     [autopilot health information](https://www.consul.io/api/operator/autopilot.html#read-health)
     about the current Consul cluster.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_consul as consul
-
-    read = consul.get_autopilot_health()
-    pulumi.export("health", read.healthy)
-    ```
-
 
     :param str datacenter: The datacenter to use. This overrides the agent's
            default datacenter and the datacenter in the provider setup.
@@ -134,16 +124,6 @@ def get_autopilot_health_output(datacenter: Optional[pulumi.Input[Optional[str]]
     The `get_autopilot_health` data source returns
     [autopilot health information](https://www.consul.io/api/operator/autopilot.html#read-health)
     about the current Consul cluster.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_consul as consul
-
-    read = consul.get_autopilot_health()
-    pulumi.export("health", read.healthy)
-    ```
 
 
     :param str datacenter: The datacenter to use. This overrides the agent's

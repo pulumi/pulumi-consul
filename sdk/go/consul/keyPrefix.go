@@ -13,49 +13,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := consul.NewKeyPrefix(ctx, "myappConfig", &consul.KeyPrefixArgs{
-//				Datacenter: pulumi.String("nyc1"),
-//				PathPrefix: pulumi.String("myapp/config/"),
-//				SubkeyCollection: consul.KeyPrefixSubkeyCollectionArray{
-//					&consul.KeyPrefixSubkeyCollectionArgs{
-//						Flags: pulumi.Int(2),
-//						Path:  pulumi.String("database/password"),
-//						Value: pulumi.Any(aws_db_instance.App.Password),
-//					},
-//				},
-//				Subkeys: pulumi.StringMap{
-//					"database/hostname": pulumi.Any(aws_db_instance.App.Address),
-//					"database/name":     pulumi.Any(aws_db_instance.App.Name),
-//					"database/port":     pulumi.Any(aws_db_instance.App.Port),
-//					"database/username": pulumi.Any(aws_db_instance.App.Username),
-//					"elb_cname":         pulumi.Any(aws_elb.App.Dns_name),
-//					"s3_bucket_name":    pulumi.Any(aws_s3_bucket.App.Bucket),
-//				},
-//				Token: pulumi.String("abcd"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // `consul_key_prefix` can be imported. This is useful when the path already exists and you know all keys in path should be managed by Terraform.

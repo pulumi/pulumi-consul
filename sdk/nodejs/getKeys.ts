@@ -9,26 +9,6 @@ import * as utilities from "./utilities";
 /**
  * The `consul.Keys` resource reads values from the Consul key/value store.
  * This is a powerful way dynamically set values in templates.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * import * as consul from "@pulumi/consul";
- *
- * const appKeys = consul.getKeys({
- *     datacenter: "nyc1",
- *     keys: [{
- *         "default": "ami-1234",
- *         name: "ami",
- *         path: "service/app/launch_ami",
- *     }],
- *     token: "abcd",
- * });
- * // Start our instance with the dynamic ami value
- * const appInstance = new aws.ec2.Instance("appInstance", {ami: appKeys.then(appKeys => appKeys["var"]?.ami)});
- * ```
  */
 export function getKeys(args?: GetKeysArgs, opts?: pulumi.InvokeOptions): Promise<GetKeysResult> {
     args = args || {};
@@ -102,26 +82,6 @@ Please use the token argument in the provider configuration
 /**
  * The `consul.Keys` resource reads values from the Consul key/value store.
  * This is a powerful way dynamically set values in templates.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * import * as consul from "@pulumi/consul";
- *
- * const appKeys = consul.getKeys({
- *     datacenter: "nyc1",
- *     keys: [{
- *         "default": "ami-1234",
- *         name: "ami",
- *         path: "service/app/launch_ami",
- *     }],
- *     token: "abcd",
- * });
- * // Start our instance with the dynamic ami value
- * const appInstance = new aws.ec2.Instance("appInstance", {ami: appKeys.then(appKeys => appKeys["var"]?.ami)});
- * ```
  */
 export function getKeysOutput(args?: GetKeysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeysResult> {
     return pulumi.output(args).apply((a: any) => getKeys(a, opts))

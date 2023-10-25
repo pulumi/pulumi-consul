@@ -7,18 +7,6 @@ import * as utilities from "./utilities";
 /**
  * The `consul.AclPolicy` data source returns the information related to a
  * [Consul ACL Policy](https://www.consul.io/docs/acl/acl-system.html#acl-policies).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as consul from "@pulumi/consul";
- *
- * const agent = consul.getAclPolicy({
- *     name: "agent",
- * });
- * export const consulAclPolicy = agent.then(agent => agent.rules);
- * ```
  */
 export function getAclPolicy(args: GetAclPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetAclPolicyResult> {
 
@@ -75,18 +63,6 @@ export interface GetAclPolicyResult {
 /**
  * The `consul.AclPolicy` data source returns the information related to a
  * [Consul ACL Policy](https://www.consul.io/docs/acl/acl-system.html#acl-policies).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as consul from "@pulumi/consul";
- *
- * const agent = consul.getAclPolicy({
- *     name: "agent",
- * });
- * export const consulAclPolicy = agent.then(agent => agent.rules);
- * ```
  */
 export function getAclPolicyOutput(args: GetAclPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAclPolicyResult> {
     return pulumi.output(args).apply((a: any) => getAclPolicy(a, opts))

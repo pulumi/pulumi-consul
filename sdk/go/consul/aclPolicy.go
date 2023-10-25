@@ -15,35 +15,6 @@ import (
 
 // Starting with Consul 1.4.0, the AclPolicy can be used to managed Consul ACL policies.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := consul.NewAclPolicy(ctx, "test", &consul.AclPolicyArgs{
-//				Datacenters: pulumi.StringArray{
-//					pulumi.String("dc1"),
-//				},
-//				Rules: pulumi.String("node_prefix \"\" {\n  policy = \"read\"\n}\n\n"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // `consul_acl_policy` can be imported:

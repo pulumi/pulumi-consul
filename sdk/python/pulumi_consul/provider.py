@@ -92,7 +92,29 @@ class ProviderArgs:
              namespace: Optional[pulumi.Input[str]] = None,
              scheme: Optional[pulumi.Input[str]] = None,
              token: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if auth_jwt is None and 'authJwt' in kwargs:
+            auth_jwt = kwargs['authJwt']
+        if ca_file is None and 'caFile' in kwargs:
+            ca_file = kwargs['caFile']
+        if ca_path is None and 'caPath' in kwargs:
+            ca_path = kwargs['caPath']
+        if ca_pem is None and 'caPem' in kwargs:
+            ca_pem = kwargs['caPem']
+        if cert_file is None and 'certFile' in kwargs:
+            cert_file = kwargs['certFile']
+        if cert_pem is None and 'certPem' in kwargs:
+            cert_pem = kwargs['certPem']
+        if http_auth is None and 'httpAuth' in kwargs:
+            http_auth = kwargs['httpAuth']
+        if insecure_https is None and 'insecureHttps' in kwargs:
+            insecure_https = kwargs['insecureHttps']
+        if key_file is None and 'keyFile' in kwargs:
+            key_file = kwargs['keyFile']
+        if key_pem is None and 'keyPem' in kwargs:
+            key_pem = kwargs['keyPem']
+
         if address is not None:
             _setter("address", address)
         if auth_jwt is not None:
@@ -429,11 +451,7 @@ class Provider(pulumi.ProviderResource):
             __props__ = ProviderArgs.__new__(ProviderArgs)
 
             __props__.__dict__["address"] = address
-            if auth_jwt is not None and not isinstance(auth_jwt, ProviderAuthJwtArgs):
-                auth_jwt = auth_jwt or {}
-                def _setter(key, value):
-                    auth_jwt[key] = value
-                ProviderAuthJwtArgs._configure(_setter, **auth_jwt)
+            auth_jwt = _utilities.configure(auth_jwt, ProviderAuthJwtArgs, True)
             __props__.__dict__["auth_jwt"] = pulumi.Output.from_input(auth_jwt).apply(pulumi.runtime.to_json) if auth_jwt is not None else None
             __props__.__dict__["ca_file"] = ca_file
             __props__.__dict__["ca_path"] = ca_path

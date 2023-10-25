@@ -12,63 +12,6 @@ namespace Pulumi.Consul
     /// <summary>
     /// Starting with Consul 1.5.0, the consul.AclAuthMethod resource can be used to
     /// managed [Consul ACL auth methods](https://www.consul.io/docs/acl/auth-methods).
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Define a `kubernetes` auth method:
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using System.Text.Json;
-    /// using Pulumi;
-    /// using Consul = Pulumi.Consul;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var minikube = new Consul.AclAuthMethod("minikube", new()
-    ///     {
-    ///         Type = "kubernetes",
-    ///         Description = "dev minikube cluster",
-    ///         ConfigJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
-    ///         {
-    ///             ["Host"] = "https://192.0.2.42:8443",
-    ///             ["CACert"] = @"-----BEGIN CERTIFICATE-----
-    /// ...-----END CERTIFICATE-----
-    /// ",
-    ///             ["ServiceAccountJWT"] = "eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9...",
-    ///         }),
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// Define a `jwt` auth method:
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using System.Text.Json;
-    /// using Pulumi;
-    /// using Consul = Pulumi.Consul;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var minikube = new Consul.AclAuthMethod("minikube", new()
-    ///     {
-    ///         Type = "jwt",
-    ///         ConfigJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
-    ///         {
-    ///             ["JWKSURL"] = "https://example.com/identity/oidc/.well-known/keys",
-    ///             ["JWTSupportedAlgs"] = "RS256",
-    ///             ["BoundIssuer"] = "https://example.com",
-    ///             ["ClaimMappings"] = new Dictionary&lt;string, object?&gt;
-    ///             {
-    ///                 ["subject"] = "subject",
-    ///             },
-    ///         }),
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// </summary>
     [ConsulResourceType("consul:index/aclAuthMethod:AclAuthMethod")]
     public partial class AclAuthMethod : global::Pulumi.CustomResource

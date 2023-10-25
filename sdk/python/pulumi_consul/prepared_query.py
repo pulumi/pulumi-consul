@@ -73,7 +73,7 @@ class PreparedQueryArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             service: pulumi.Input[str],
+             service: Optional[pulumi.Input[str]] = None,
              connect: Optional[pulumi.Input[bool]] = None,
              datacenter: Optional[pulumi.Input[str]] = None,
              dns: Optional[pulumi.Input['PreparedQueryDnsArgs']] = None,
@@ -89,7 +89,21 @@ class PreparedQueryArgs:
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              template: Optional[pulumi.Input['PreparedQueryTemplateArgs']] = None,
              token: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if service is None:
+            raise TypeError("Missing 'service' argument")
+        if ignore_check_ids is None and 'ignoreCheckIds' in kwargs:
+            ignore_check_ids = kwargs['ignoreCheckIds']
+        if node_meta is None and 'nodeMeta' in kwargs:
+            node_meta = kwargs['nodeMeta']
+        if only_passing is None and 'onlyPassing' in kwargs:
+            only_passing = kwargs['onlyPassing']
+        if service_meta is None and 'serviceMeta' in kwargs:
+            service_meta = kwargs['serviceMeta']
+        if stored_token is None and 'storedToken' in kwargs:
+            stored_token = kwargs['storedToken']
+
         _setter("service", service)
         if connect is not None:
             _setter("connect", connect)
@@ -401,7 +415,19 @@ class _PreparedQueryState:
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              template: Optional[pulumi.Input['PreparedQueryTemplateArgs']] = None,
              token: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if ignore_check_ids is None and 'ignoreCheckIds' in kwargs:
+            ignore_check_ids = kwargs['ignoreCheckIds']
+        if node_meta is None and 'nodeMeta' in kwargs:
+            node_meta = kwargs['nodeMeta']
+        if only_passing is None and 'onlyPassing' in kwargs:
+            only_passing = kwargs['onlyPassing']
+        if service_meta is None and 'serviceMeta' in kwargs:
+            service_meta = kwargs['serviceMeta']
+        if stored_token is None and 'storedToken' in kwargs:
+            stored_token = kwargs['storedToken']
+
         if connect is not None:
             _setter("connect", connect)
         if datacenter is not None:
@@ -661,65 +687,6 @@ class PreparedQuery(pulumi.CustomResource):
                  token: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_consul as consul
-
-        # Creates a prepared query myquery.query.consul that finds the nearest
-        # healthy myapp.service.consul instance that has the active tag and not
-        # the standby tag.
-        myapp_query = consul.PreparedQuery("myapp-query",
-            datacenter="us-central1",
-            dns=consul.PreparedQueryDnsArgs(
-                ttl="30s",
-            ),
-            failover=consul.PreparedQueryFailoverArgs(
-                datacenters=[
-                    "us-west1",
-                    "us-east-2",
-                    "asia-east1",
-                ],
-                nearest_n=3,
-            ),
-            near="_agent",
-            only_passing=True,
-            service="myapp",
-            stored_token="wxyz",
-            tags=[
-                "active",
-                "!standby",
-            ],
-            token="abcd")
-        # Creates a Prepared Query Template that matches *-near-self.query.consul
-        # and finds the nearest service that matches the glob character (e.g.
-        # foo-near-self.query.consul will find the nearest healthy foo.service.consul).
-        service_near_self = consul.PreparedQuery("service-near-self",
-            connect=True,
-            datacenter="nyc1",
-            dns=consul.PreparedQueryDnsArgs(
-                ttl="5m",
-            ),
-            failover=consul.PreparedQueryFailoverArgs(
-                datacenters=[
-                    "dc2",
-                    "dc3",
-                    "dc4",
-                ],
-                nearest_n=3,
-            ),
-            near="_agent",
-            only_passing=True,
-            service="${match(1)}",
-            stored_token="wxyz",
-            template=consul.PreparedQueryTemplateArgs(
-                regexp="^(.*)-near-self$",
-                type="name_prefix_match",
-            ),
-            token="abcd")
-        ```
-
         ## Import
 
         ```sh
@@ -752,65 +719,6 @@ class PreparedQuery(pulumi.CustomResource):
                  args: PreparedQueryArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_consul as consul
-
-        # Creates a prepared query myquery.query.consul that finds the nearest
-        # healthy myapp.service.consul instance that has the active tag and not
-        # the standby tag.
-        myapp_query = consul.PreparedQuery("myapp-query",
-            datacenter="us-central1",
-            dns=consul.PreparedQueryDnsArgs(
-                ttl="30s",
-            ),
-            failover=consul.PreparedQueryFailoverArgs(
-                datacenters=[
-                    "us-west1",
-                    "us-east-2",
-                    "asia-east1",
-                ],
-                nearest_n=3,
-            ),
-            near="_agent",
-            only_passing=True,
-            service="myapp",
-            stored_token="wxyz",
-            tags=[
-                "active",
-                "!standby",
-            ],
-            token="abcd")
-        # Creates a Prepared Query Template that matches *-near-self.query.consul
-        # and finds the nearest service that matches the glob character (e.g.
-        # foo-near-self.query.consul will find the nearest healthy foo.service.consul).
-        service_near_self = consul.PreparedQuery("service-near-self",
-            connect=True,
-            datacenter="nyc1",
-            dns=consul.PreparedQueryDnsArgs(
-                ttl="5m",
-            ),
-            failover=consul.PreparedQueryFailoverArgs(
-                datacenters=[
-                    "dc2",
-                    "dc3",
-                    "dc4",
-                ],
-                nearest_n=3,
-            ),
-            near="_agent",
-            only_passing=True,
-            service="${match(1)}",
-            stored_token="wxyz",
-            template=consul.PreparedQueryTemplateArgs(
-                regexp="^(.*)-near-self$",
-                type="name_prefix_match",
-            ),
-            token="abcd")
-        ```
-
         ## Import
 
         ```sh
@@ -863,17 +771,9 @@ class PreparedQuery(pulumi.CustomResource):
 
             __props__.__dict__["connect"] = connect
             __props__.__dict__["datacenter"] = datacenter
-            if dns is not None and not isinstance(dns, PreparedQueryDnsArgs):
-                dns = dns or {}
-                def _setter(key, value):
-                    dns[key] = value
-                PreparedQueryDnsArgs._configure(_setter, **dns)
+            dns = _utilities.configure(dns, PreparedQueryDnsArgs, True)
             __props__.__dict__["dns"] = dns
-            if failover is not None and not isinstance(failover, PreparedQueryFailoverArgs):
-                failover = failover or {}
-                def _setter(key, value):
-                    failover[key] = value
-                PreparedQueryFailoverArgs._configure(_setter, **failover)
+            failover = _utilities.configure(failover, PreparedQueryFailoverArgs, True)
             __props__.__dict__["failover"] = failover
             __props__.__dict__["ignore_check_ids"] = ignore_check_ids
             __props__.__dict__["name"] = name
@@ -887,11 +787,7 @@ class PreparedQuery(pulumi.CustomResource):
             __props__.__dict__["session"] = session
             __props__.__dict__["stored_token"] = stored_token
             __props__.__dict__["tags"] = tags
-            if template is not None and not isinstance(template, PreparedQueryTemplateArgs):
-                template = template or {}
-                def _setter(key, value):
-                    template[key] = value
-                PreparedQueryTemplateArgs._configure(_setter, **template)
+            template = _utilities.configure(template, PreparedQueryTemplateArgs, True)
             __props__.__dict__["template"] = template
             __props__.__dict__["token"] = None if token is None else pulumi.Output.secret(token)
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["token"])

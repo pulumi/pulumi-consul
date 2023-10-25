@@ -41,13 +41,17 @@ class AclPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             rules: pulumi.Input[str],
+             rules: Optional[pulumi.Input[str]] = None,
              datacenters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              namespace: Optional[pulumi.Input[str]] = None,
              partition: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if rules is None:
+            raise TypeError("Missing 'rules' argument")
+
         _setter("rules", rules)
         if datacenters is not None:
             _setter("datacenters", datacenters)
@@ -169,7 +173,9 @@ class _AclPolicyState:
              namespace: Optional[pulumi.Input[str]] = None,
              partition: Optional[pulumi.Input[str]] = None,
              rules: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if datacenters is not None:
             _setter("datacenters", datacenters)
         if description is not None:
@@ -271,21 +277,6 @@ class AclPolicy(pulumi.CustomResource):
         """
         Starting with Consul 1.4.0, the AclPolicy can be used to managed Consul ACL policies.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_consul as consul
-
-        test = consul.AclPolicy("test",
-            datacenters=["dc1"],
-            rules=\"\"\"node_prefix "" {
-          policy = "read"
-        }
-
-        \"\"\")
-        ```
-
         ## Import
 
         `consul_acl_policy` can be imported:
@@ -311,21 +302,6 @@ class AclPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Starting with Consul 1.4.0, the AclPolicy can be used to managed Consul ACL policies.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_consul as consul
-
-        test = consul.AclPolicy("test",
-            datacenters=["dc1"],
-            rules=\"\"\"node_prefix "" {
-          policy = "read"
-        }
-
-        \"\"\")
-        ```
 
         ## Import
 

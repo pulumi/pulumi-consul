@@ -91,16 +91,6 @@ def get_network_segments(datacenter: Optional[str] = None,
     The `consul_network_segment` data source can be used to retrieve the network
     segments defined in the configuration.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_consul as consul
-
-    segments_network_segments = consul.get_network_segments()
-    pulumi.export("segments", segments_network_segments.segments)
-    ```
-
 
     :param str datacenter: The datacenter to use. This overrides the
            agent's default datacenter and the datacenter in the provider setup.
@@ -129,16 +119,6 @@ def get_network_segments_output(datacenter: Optional[pulumi.Input[Optional[str]]
 
     The `consul_network_segment` data source can be used to retrieve the network
     segments defined in the configuration.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_consul as consul
-
-    segments_network_segments = consul.get_network_segments()
-    pulumi.export("segments", segments_network_segments.segments)
-    ```
 
 
     :param str datacenter: The datacenter to use. This overrides the

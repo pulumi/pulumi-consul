@@ -70,7 +70,7 @@ class ServiceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             node: pulumi.Input[str],
+             node: Optional[pulumi.Input[str]] = None,
              address: Optional[pulumi.Input[str]] = None,
              checks: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceCheckArgs']]]] = None,
              datacenter: Optional[pulumi.Input[str]] = None,
@@ -83,7 +83,15 @@ class ServiceArgs:
              port: Optional[pulumi.Input[int]] = None,
              service_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if node is None:
+            raise TypeError("Missing 'node' argument")
+        if enable_tag_override is None and 'enableTagOverride' in kwargs:
+            enable_tag_override = kwargs['enableTagOverride']
+        if service_id is None and 'serviceId' in kwargs:
+            service_id = kwargs['serviceId']
+
         _setter("node", node)
         if address is not None:
             _setter("address", address)
@@ -345,7 +353,13 @@ class _ServiceState:
              port: Optional[pulumi.Input[int]] = None,
              service_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if enable_tag_override is None and 'enableTagOverride' in kwargs:
+            enable_tag_override = kwargs['enableTagOverride']
+        if service_id is None and 'serviceId' in kwargs:
+            service_id = kwargs['serviceId']
+
         if address is not None:
             _setter("address", address)
         if checks is not None:

@@ -10,23 +10,6 @@ import * as utilities from "./utilities";
  * The `consul.AclToken` resource writes an ACL token into Consul.
  *
  * ## Example Usage
- * ### Basic usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as consul from "@pulumi/consul";
- *
- * const agent = new consul.AclPolicy("agent", {rules: `node_prefix "" {
- *   policy = "read"
- * }
- *
- * `});
- * const test = new consul.AclToken("test", {
- *     description: "my test token",
- *     local: true,
- *     policies: [agent.name],
- * });
- * ```
  *
  * ## Import
  *

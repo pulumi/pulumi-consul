@@ -4,8 +4,12 @@
 package consul
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // > **Warning:** The `getAgentSelf` resource has been deprecated and will be removed
@@ -169,4 +173,399 @@ type GetAgentSelfResult struct {
 	Version           string `pulumi:"version"`
 	VersionPrerelease string `pulumi:"versionPrerelease"`
 	VersionRevision   string `pulumi:"versionRevision"`
+}
+
+func GetAgentSelfOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetAgentSelfResultOutput {
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetAgentSelfResult, error) {
+		r, err := GetAgentSelf(ctx, opts...)
+		var s GetAgentSelfResult
+		if r != nil {
+			s = *r
+		}
+		return s, err
+	}).(GetAgentSelfResultOutput)
+}
+
+// A collection of values returned by getAgentSelf.
+type GetAgentSelfResultOutput struct{ *pulumi.OutputState }
+
+func (GetAgentSelfResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAgentSelfResult)(nil)).Elem()
+}
+
+func (o GetAgentSelfResultOutput) ToGetAgentSelfResultOutput() GetAgentSelfResultOutput {
+	return o
+}
+
+func (o GetAgentSelfResultOutput) ToGetAgentSelfResultOutputWithContext(ctx context.Context) GetAgentSelfResultOutput {
+	return o
+}
+
+func (o GetAgentSelfResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAgentSelfResult] {
+	return pulumix.Output[GetAgentSelfResult]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetAgentSelfResultOutput) AclDatacenter() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) string { return v.AclDatacenter }).(pulumi.StringOutput)
+}
+
+func (o GetAgentSelfResultOutput) AclDefaultPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) string { return v.AclDefaultPolicy }).(pulumi.StringOutput)
+}
+
+// * [`aclDownPolicy`](https://www.consul.io/docs/agent/options.html#acl_down_policy)
+// * [`aclEnforce08Semantics`](https://www.consul.io/docs/agent/options.html#acl_enforce_version_8)
+// * [`aclTtl`](https://www.consul.io/docs/agent/options.html#acl_ttl)
+// * [`addresses`](https://www.consul.io/docs/agent/options.html#addresses)
+// * [`advertiseAddr`](https://www.consul.io/docs/agent/options.html#_advertise)
+// * [`advertiseAddrWan`](https://www.consul.io/docs/agent/options.html#_advertise-wan)
+// * [`advertiseAddrs`](https://www.consul.io/docs/agent/options.html#advertise_addrs)
+// * [`atlasJoin`](https://www.consul.io/docs/agent/options.html#_atlas_join)
+// * [`bindAddr`](https://www.consul.io/docs/agent/options.html#_bind)
+// * [`bootstrapExpect`](https://www.consul.io/docs/agent/options.html#_bootstrap_expect)
+// * [`bootstrapMode`](https://www.consul.io/docs/agent/options.html#_bootstrap)
+func (o GetAgentSelfResultOutput) AclDisabledTtl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) string { return v.AclDisabledTtl }).(pulumi.StringOutput)
+}
+
+func (o GetAgentSelfResultOutput) AclDownPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) string { return v.AclDownPolicy }).(pulumi.StringOutput)
+}
+
+func (o GetAgentSelfResultOutput) AclEnforce08Semantics() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) bool { return v.AclEnforce08Semantics }).(pulumi.BoolOutput)
+}
+
+func (o GetAgentSelfResultOutput) AclTtl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) string { return v.AclTtl }).(pulumi.StringOutput)
+}
+
+func (o GetAgentSelfResultOutput) Addresses() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) map[string]string { return v.Addresses }).(pulumi.StringMapOutput)
+}
+
+func (o GetAgentSelfResultOutput) AdvertiseAddr() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) string { return v.AdvertiseAddr }).(pulumi.StringOutput)
+}
+
+func (o GetAgentSelfResultOutput) AdvertiseAddrWan() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) string { return v.AdvertiseAddrWan }).(pulumi.StringOutput)
+}
+
+func (o GetAgentSelfResultOutput) AdvertiseAddrs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) map[string]string { return v.AdvertiseAddrs }).(pulumi.StringMapOutput)
+}
+
+func (o GetAgentSelfResultOutput) AtlasJoin() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) bool { return v.AtlasJoin }).(pulumi.BoolOutput)
+}
+
+func (o GetAgentSelfResultOutput) BindAddr() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) string { return v.BindAddr }).(pulumi.StringOutput)
+}
+
+func (o GetAgentSelfResultOutput) BootstrapExpect() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) int { return v.BootstrapExpect }).(pulumi.IntOutput)
+}
+
+func (o GetAgentSelfResultOutput) BootstrapMode() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) bool { return v.BootstrapMode }).(pulumi.BoolOutput)
+}
+
+func (o GetAgentSelfResultOutput) CheckDeregisterIntervalMin() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) string { return v.CheckDeregisterIntervalMin }).(pulumi.StringOutput)
+}
+
+// * [`checkUpdateInterval`](https://www.consul.io/docs/agent/options.html#check_update_interval)
+// * [`clientAddr`](https://www.consul.io/docs/agent/options.html#_client)
+func (o GetAgentSelfResultOutput) CheckReapInterval() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) string { return v.CheckReapInterval }).(pulumi.StringOutput)
+}
+
+func (o GetAgentSelfResultOutput) CheckUpdateInterval() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) string { return v.CheckUpdateInterval }).(pulumi.StringOutput)
+}
+
+func (o GetAgentSelfResultOutput) ClientAddr() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) string { return v.ClientAddr }).(pulumi.StringOutput)
+}
+
+func (o GetAgentSelfResultOutput) DataDir() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) string { return v.DataDir }).(pulumi.StringOutput)
+}
+
+func (o GetAgentSelfResultOutput) Datacenter() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) string { return v.Datacenter }).(pulumi.StringOutput)
+}
+
+func (o GetAgentSelfResultOutput) DevMode() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) bool { return v.DevMode }).(pulumi.BoolOutput)
+}
+
+// A map of DNS configuration attributes.  See below for details on the
+// contents of the `dns` attribute.
+//   - [`dnsRecursors`](https://www.consul.io/docs/agent/options.html#recursors) - A
+//     list of all DNS recursors.
+//   - [`dataDir`](https://www.consul.io/docs/agent/options.html#_data_dir)
+//   - [`datacenter`](https://www.consul.io/docs/agent/options.html#_datacenter)
+//   - [`devMode`](https://www.consul.io/docs/agent/options.html#_dev)
+//   - [`domain`](https://www.consul.io/docs/agent/options.html#_domain)
+//   - [`enableAnonymousSignature`](https://www.consul.io/docs/agent/options.html#disable_anonymous_signature)
+func (o GetAgentSelfResultOutput) Dns() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) map[string]string { return v.Dns }).(pulumi.StringMapOutput)
+}
+
+func (o GetAgentSelfResultOutput) DnsRecursors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) []string { return v.DnsRecursors }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAgentSelfResultOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+func (o GetAgentSelfResultOutput) EnableAnonymousSignature() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) bool { return v.EnableAnonymousSignature }).(pulumi.BoolOutput)
+}
+
+//   - [`enableDebug`](https://www.consul.io/docs/agent/options.html#enable_debug)
+//   - [`enableRemoteExec`](https://www.consul.io/docs/agent/options.html#disable_remote_exec)
+//   - [`enableSyslog`](https://www.consul.io/docs/agent/options.html#_syslog)
+//   - [`enableUi`](https://www.consul.io/docs/agent/options.html#_ui)
+//   - [`enableUpdateCheck`](https://www.consul.io/docs/agent/options.html#disable_update_check)
+//   - [`id`](https://www.consul.io/docs/agent/options.html#_node_id)
+//   - [`leaveOnInt`](https://www.consul.io/docs/agent/options.html#skip_leave_on_interrupt)
+//   - [`leaveOnTerm`](https://www.consul.io/docs/agent/options.html#leave_on_terminate)
+//   - [`logLevel`](https://www.consul.io/docs/agent/options.html#_log_level)
+//   - [`name`](https://www.consul.io/docs/agent/options.html#_node)
+//   - [`performance`](https://www.consul.io/docs/agent/options.html#performance)
+//   - [`pidFile`](https://www.consul.io/docs/agent/options.html#_pid_file)
+//   - [`ports`](https://www.consul.io/docs/agent/options.html#ports)
+//   - [`protocolVersion`](https://www.consul.io/docs/agent/options.html#_protocol)
+//   - [`reconnectTimeoutLan`](https://www.consul.io/docs/agent/options.html#reconnect_timeout)
+//   - [`reconnectTimeoutWan`](https://www.consul.io/docs/agent/options.html#reconnect_timeout_wan)
+//   - [`rejoinAfterLeave`](https://www.consul.io/docs/agent/options.html#_rejoin)
+//   - [`retryJoin`](https://www.consul.io/docs/agent/options.html#retry_join)
+//   - [`retryJoinEc2`](https://www.consul.io/docs/agent/options.html#retry_join_ec2) -
+//     A map of EC2 retry attributes.  See below for details on the available
+//     information.
+//   - [`retryJoinGce`](https://www.consul.io/docs/agent/options.html#retry_join_gce) -
+//     A map of GCE retry attributes.  See below for details on the available
+//     information.
+//   - [`retryJoinWan`](https://www.consul.io/docs/agent/options.html#_retry_join_wan)
+//   - [`retryMaxAttempts`](https://www.consul.io/docs/agent/options.html#_retry_max)
+//   - [`retryMaxAttemptsWan`](https://www.consul.io/docs/agent/options.html#_retry_max_wan)
+//   - [`serfLanBindAddr`](https://www.consul.io/docs/agent/options.html#_serf_lan_bind)
+//   - [`serfWanBindAddr`](https://www.consul.io/docs/agent/options.html#_serf_wan_bind)
+//   - [`serverMode`](https://www.consul.io/docs/agent/options.html#_server)
+//   - [`serverName`](https://www.consul.io/docs/agent/options.html#server_name)
+//   - [`sessionTtlMin`](https://www.consul.io/docs/agent/options.html#session_ttl_min)
+//   - [`startJoin`](https://www.consul.io/docs/agent/options.html#start_join)
+//   - [`startJoinWan`](https://www.consul.io/docs/agent/options.html#start_join_wan)
+//   - [`syslogFacility`](https://www.consul.io/docs/agent/options.html#syslog_facility)
+//   - [`tlsCaFile`](https://www.consul.io/docs/agent/options.html#ca_file)
+//   - [`tlsCertFile`](https://www.consul.io/docs/agent/options.html#cert_file)
+//   - [`tlsKeyFile`](https://www.consul.io/docs/agent/options.html#key_file)
+//   - [`tlsMinVersion`](https://www.consul.io/docs/agent/options.html#tls_min_version)
+//   - [`tlsVerifyIncoming`](https://www.consul.io/docs/agent/options.html#verify_incoming)
+//   - [`tlsVerifyOutgoing`](https://www.consul.io/docs/agent/options.html#verify_outgoing)
+//   - [`tlsVerifyServerHostname`](https://www.consul.io/docs/agent/options.html#verify_server_hostname)
+//   - [`taggedAddresses`](https://www.consul.io/docs/agent/options.html#translate_wan_addrs)
+//   - [`telemetry`](https://www.consul.io/docs/agent/options.html#telemetry) - A map
+//     of telemetry configuration.
+//   - [`translateWanAddrs`](https://www.consul.io/docs/agent/options.html#translate_wan_addrs)
+//   - [`uiDir`](https://www.consul.io/docs/agent/options.html#ui_dir)
+//   - [`unixSockets`](https://www.consul.io/docs/agent/options.html#unix_sockets)
+func (o GetAgentSelfResultOutput) EnableCoordinates() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) bool { return v.EnableCoordinates }).(pulumi.BoolOutput)
+}
+
+func (o GetAgentSelfResultOutput) EnableDebug() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) bool { return v.EnableDebug }).(pulumi.BoolOutput)
+}
+
+func (o GetAgentSelfResultOutput) EnableRemoteExec() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) bool { return v.EnableRemoteExec }).(pulumi.BoolOutput)
+}
+
+func (o GetAgentSelfResultOutput) EnableSyslog() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) bool { return v.EnableSyslog }).(pulumi.BoolOutput)
+}
+
+func (o GetAgentSelfResultOutput) EnableUi() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) bool { return v.EnableUi }).(pulumi.BoolOutput)
+}
+
+func (o GetAgentSelfResultOutput) EnableUpdateCheck() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) bool { return v.EnableUpdateCheck }).(pulumi.BoolOutput)
+}
+
+func (o GetAgentSelfResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetAgentSelfResultOutput) LeaveOnInt() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) bool { return v.LeaveOnInt }).(pulumi.BoolOutput)
+}
+
+func (o GetAgentSelfResultOutput) LeaveOnTerm() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) bool { return v.LeaveOnTerm }).(pulumi.BoolOutput)
+}
+
+func (o GetAgentSelfResultOutput) LogLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) string { return v.LogLevel }).(pulumi.StringOutput)
+}
+
+func (o GetAgentSelfResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetAgentSelfResultOutput) Performance() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) map[string]string { return v.Performance }).(pulumi.StringMapOutput)
+}
+
+func (o GetAgentSelfResultOutput) PidFile() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) string { return v.PidFile }).(pulumi.StringOutput)
+}
+
+func (o GetAgentSelfResultOutput) Ports() pulumi.IntMapOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) map[string]int { return v.Ports }).(pulumi.IntMapOutput)
+}
+
+func (o GetAgentSelfResultOutput) ProtocolVersion() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) int { return v.ProtocolVersion }).(pulumi.IntOutput)
+}
+
+func (o GetAgentSelfResultOutput) ReconnectTimeoutLan() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) string { return v.ReconnectTimeoutLan }).(pulumi.StringOutput)
+}
+
+func (o GetAgentSelfResultOutput) ReconnectTimeoutWan() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) string { return v.ReconnectTimeoutWan }).(pulumi.StringOutput)
+}
+
+func (o GetAgentSelfResultOutput) RejoinAfterLeave() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) bool { return v.RejoinAfterLeave }).(pulumi.BoolOutput)
+}
+
+func (o GetAgentSelfResultOutput) RetryJoinEc2() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) map[string]string { return v.RetryJoinEc2 }).(pulumi.StringMapOutput)
+}
+
+func (o GetAgentSelfResultOutput) RetryJoinGce() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) map[string]string { return v.RetryJoinGce }).(pulumi.StringMapOutput)
+}
+
+func (o GetAgentSelfResultOutput) RetryJoinWans() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) []string { return v.RetryJoinWans }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAgentSelfResultOutput) RetryJoins() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) []string { return v.RetryJoins }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAgentSelfResultOutput) RetryMaxAttempts() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) int { return v.RetryMaxAttempts }).(pulumi.IntOutput)
+}
+
+func (o GetAgentSelfResultOutput) RetryMaxAttemptsWan() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) int { return v.RetryMaxAttemptsWan }).(pulumi.IntOutput)
+}
+
+func (o GetAgentSelfResultOutput) SerfLanBindAddr() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) string { return v.SerfLanBindAddr }).(pulumi.StringOutput)
+}
+
+func (o GetAgentSelfResultOutput) SerfWanBindAddr() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) string { return v.SerfWanBindAddr }).(pulumi.StringOutput)
+}
+
+func (o GetAgentSelfResultOutput) ServerMode() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) bool { return v.ServerMode }).(pulumi.BoolOutput)
+}
+
+func (o GetAgentSelfResultOutput) ServerName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) string { return v.ServerName }).(pulumi.StringOutput)
+}
+
+func (o GetAgentSelfResultOutput) SessionTtlMin() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) string { return v.SessionTtlMin }).(pulumi.StringOutput)
+}
+
+func (o GetAgentSelfResultOutput) StartJoinWans() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) []string { return v.StartJoinWans }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAgentSelfResultOutput) StartJoins() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) []string { return v.StartJoins }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAgentSelfResultOutput) SyslogFacility() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) string { return v.SyslogFacility }).(pulumi.StringOutput)
+}
+
+func (o GetAgentSelfResultOutput) TaggedAddresses() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) map[string]string { return v.TaggedAddresses }).(pulumi.StringMapOutput)
+}
+
+func (o GetAgentSelfResultOutput) Telemetry() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) map[string]string { return v.Telemetry }).(pulumi.StringMapOutput)
+}
+
+func (o GetAgentSelfResultOutput) TlsCaFile() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) string { return v.TlsCaFile }).(pulumi.StringOutput)
+}
+
+func (o GetAgentSelfResultOutput) TlsCertFile() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) string { return v.TlsCertFile }).(pulumi.StringOutput)
+}
+
+func (o GetAgentSelfResultOutput) TlsKeyFile() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) string { return v.TlsKeyFile }).(pulumi.StringOutput)
+}
+
+func (o GetAgentSelfResultOutput) TlsMinVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) string { return v.TlsMinVersion }).(pulumi.StringOutput)
+}
+
+func (o GetAgentSelfResultOutput) TlsVerifyIncoming() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) bool { return v.TlsVerifyIncoming }).(pulumi.BoolOutput)
+}
+
+func (o GetAgentSelfResultOutput) TlsVerifyOutgoing() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) bool { return v.TlsVerifyOutgoing }).(pulumi.BoolOutput)
+}
+
+func (o GetAgentSelfResultOutput) TlsVerifyServerHostname() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) bool { return v.TlsVerifyServerHostname }).(pulumi.BoolOutput)
+}
+
+func (o GetAgentSelfResultOutput) TranslateWanAddrs() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) bool { return v.TranslateWanAddrs }).(pulumi.BoolOutput)
+}
+
+func (o GetAgentSelfResultOutput) UiDir() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) string { return v.UiDir }).(pulumi.StringOutput)
+}
+
+func (o GetAgentSelfResultOutput) UnixSockets() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) map[string]string { return v.UnixSockets }).(pulumi.StringMapOutput)
+}
+
+// The version of the Consul agent.
+func (o GetAgentSelfResultOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) string { return v.Version }).(pulumi.StringOutput)
+}
+
+func (o GetAgentSelfResultOutput) VersionPrerelease() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) string { return v.VersionPrerelease }).(pulumi.StringOutput)
+}
+
+func (o GetAgentSelfResultOutput) VersionRevision() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAgentSelfResult) string { return v.VersionRevision }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetAgentSelfResultOutput{})
 }

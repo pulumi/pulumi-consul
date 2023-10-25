@@ -66,7 +66,17 @@ class AclTokenArgs:
              policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              service_identities: Optional[pulumi.Input[Sequence[pulumi.Input['AclTokenServiceIdentityArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if accessor_id is None and 'accessorId' in kwargs:
+            accessor_id = kwargs['accessorId']
+        if expiration_time is None and 'expirationTime' in kwargs:
+            expiration_time = kwargs['expirationTime']
+        if node_identities is None and 'nodeIdentities' in kwargs:
+            node_identities = kwargs['nodeIdentities']
+        if service_identities is None and 'serviceIdentities' in kwargs:
+            service_identities = kwargs['serviceIdentities']
+
         if accessor_id is not None:
             _setter("accessor_id", accessor_id)
         if description is not None:
@@ -263,7 +273,17 @@ class _AclTokenState:
              policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              service_identities: Optional[pulumi.Input[Sequence[pulumi.Input['AclTokenServiceIdentityArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if accessor_id is None and 'accessorId' in kwargs:
+            accessor_id = kwargs['accessorId']
+        if expiration_time is None and 'expirationTime' in kwargs:
+            expiration_time = kwargs['expirationTime']
+        if node_identities is None and 'nodeIdentities' in kwargs:
+            node_identities = kwargs['nodeIdentities']
+        if service_identities is None and 'serviceIdentities' in kwargs:
+            service_identities = kwargs['serviceIdentities']
+
         if accessor_id is not None:
             _setter("accessor_id", accessor_id)
         if description is not None:
@@ -427,22 +447,6 @@ class AclToken(pulumi.CustomResource):
         The `AclToken` resource writes an ACL token into Consul.
 
         ## Example Usage
-        ### Basic usage
-
-        ```python
-        import pulumi
-        import pulumi_consul as consul
-
-        agent = consul.AclPolicy("agent", rules=\"\"\"node_prefix "" {
-          policy = "read"
-        }
-
-        \"\"\")
-        test = consul.AclToken("test",
-            description="my test token",
-            local=True,
-            policies=[agent.name])
-        ```
 
         ## Import
 
@@ -480,22 +484,6 @@ class AclToken(pulumi.CustomResource):
         The `AclToken` resource writes an ACL token into Consul.
 
         ## Example Usage
-        ### Basic usage
-
-        ```python
-        import pulumi
-        import pulumi_consul as consul
-
-        agent = consul.AclPolicy("agent", rules=\"\"\"node_prefix "" {
-          policy = "read"
-        }
-
-        \"\"\")
-        test = consul.AclToken("test",
-            description="my test token",
-            local=True,
-            policies=[agent.name])
-        ```
 
         ## Import
 
