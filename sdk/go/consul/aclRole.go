@@ -14,6 +14,49 @@ import (
 
 // Starting with Consul 1.5.0, the AclRole can be used to managed Consul ACL roles.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := consul.NewAclPolicy(ctx, "read-policy", &consul.AclPolicyArgs{
+//				Datacenters: pulumi.StringArray{
+//					pulumi.String("dc1"),
+//				},
+//				Rules: pulumi.String("node \"\" { policy = \"read\" }"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = consul.NewAclRole(ctx, "read", &consul.AclRoleArgs{
+//				Description: pulumi.String("bar"),
+//				Policies: pulumi.StringArray{
+//					read_policy.ID(),
+//				},
+//				ServiceIdentities: consul.AclRoleServiceIdentityArray{
+//					&consul.AclRoleServiceIdentityArgs{
+//						ServiceName: pulumi.String("foo"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // `consul_acl_role` can be imported:

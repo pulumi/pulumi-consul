@@ -12,6 +12,43 @@ namespace Pulumi.Consul
     /// <summary>
     /// Starting with Consul 1.5.0, the consul.AclBindingRule resource can be used to
     /// managed Consul ACL binding rules.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Consul = Pulumi.Consul;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var minikube = new Consul.AclAuthMethod("minikube", new()
+    ///     {
+    ///         Config = 
+    ///         {
+    ///             { "CACert", @"-----BEGIN CERTIFICATE-----
+    /// ...-----END CERTIFICATE-----
+    /// 
+    /// " },
+    ///             { "Host", "https://192.0.2.42:8443" },
+    ///             { "ServiceAccountJWT", "eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9..." },
+    ///         },
+    ///         Description = "dev minikube cluster",
+    ///         Type = "kubernetes",
+    ///     });
+    /// 
+    ///     var test = new Consul.AclBindingRule("test", new()
+    ///     {
+    ///         AuthMethod = minikube.Name,
+    ///         BindName = "minikube",
+    ///         BindType = "service",
+    ///         Description = "foobar",
+    ///         Selector = "serviceaccount.namespace==default",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [ConsulResourceType("consul:index/aclBindingRule:AclBindingRule")]
     public partial class AclBindingRule : global::Pulumi.CustomResource

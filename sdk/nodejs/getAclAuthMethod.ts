@@ -9,6 +9,18 @@ import * as utilities from "./utilities";
 /**
  * The `consul.AclAuthMethod` data source returns the information related to a
  * [Consul Auth Method](https://www.consul.io/docs/acl/acl-auth-methods.html).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ *
+ * const test = consul.getAclAuthMethod({
+ *     name: "minikube",
+ * });
+ * export const consulAclAuthMethod = test.then(test => test.config);
+ * ```
  */
 export function getAclAuthMethod(args: GetAclAuthMethodArgs, opts?: pulumi.InvokeOptions): Promise<GetAclAuthMethodResult> {
 
@@ -93,6 +105,18 @@ export interface GetAclAuthMethodResult {
 /**
  * The `consul.AclAuthMethod` data source returns the information related to a
  * [Consul Auth Method](https://www.consul.io/docs/acl/acl-auth-methods.html).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ *
+ * const test = consul.getAclAuthMethod({
+ *     name: "minikube",
+ * });
+ * export const consulAclAuthMethod = test.then(test => test.config);
+ * ```
  */
 export function getAclAuthMethodOutput(args: GetAclAuthMethodOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAclAuthMethodResult> {
     return pulumi.output(args).apply((a: any) => getAclAuthMethod(a, opts))

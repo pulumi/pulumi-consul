@@ -5,6 +5,259 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ *
+ * const proxyDefaults = new consul.ConfigEntry("proxyDefaults", {
+ *     kind: "proxy-defaults",
+ *     configJson: JSON.stringify({
+ *         Config: {
+ *             local_connect_timeout_ms: 1000,
+ *             handshake_timeout_ms: 10000,
+ *         },
+ *     }),
+ * });
+ * const web = new consul.ConfigEntry("web", {
+ *     kind: "service-defaults",
+ *     configJson: JSON.stringify({
+ *         Protocol: "http",
+ *     }),
+ * });
+ * const admin = new consul.ConfigEntry("admin", {
+ *     kind: "service-defaults",
+ *     configJson: JSON.stringify({
+ *         Protocol: "http",
+ *     }),
+ * });
+ * const serviceResolver = new consul.ConfigEntry("serviceResolver", {
+ *     kind: "service-resolver",
+ *     configJson: JSON.stringify({
+ *         DefaultSubset: "v1",
+ *         Subsets: {
+ *             v1: {
+ *                 Filter: "Service.Meta.version == v1",
+ *             },
+ *             v2: {
+ *                 Filter: "Service.Meta.version == v2",
+ *             },
+ *         },
+ *     }),
+ * });
+ * const serviceSplitter = new consul.ConfigEntry("serviceSplitter", {
+ *     kind: "service-splitter",
+ *     configJson: JSON.stringify({
+ *         Splits: [
+ *             {
+ *                 Weight: 90,
+ *                 ServiceSubset: "v1",
+ *             },
+ *             {
+ *                 Weight: 10,
+ *                 ServiceSubset: "v2",
+ *             },
+ *         ],
+ *     }),
+ * });
+ * const serviceRouter = new consul.ConfigEntry("serviceRouter", {
+ *     kind: "service-router",
+ *     configJson: JSON.stringify({
+ *         Routes: [{
+ *             Match: {
+ *                 HTTP: {
+ *                     PathPrefix: "/admin",
+ *                 },
+ *             },
+ *             Destination: {
+ *                 Service: "admin",
+ *             },
+ *         }],
+ *     }),
+ * });
+ * const ingressGateway = new consul.ConfigEntry("ingressGateway", {
+ *     kind: "ingress-gateway",
+ *     configJson: JSON.stringify({
+ *         TLS: {
+ *             Enabled: true,
+ *         },
+ *         Listeners: [{
+ *             Port: 8000,
+ *             Protocol: "http",
+ *             Services: [{
+ *                 Name: "*",
+ *             }],
+ *         }],
+ *     }),
+ * });
+ * const terminatingGateway = new consul.ConfigEntry("terminatingGateway", {
+ *     kind: "terminating-gateway",
+ *     configJson: JSON.stringify({
+ *         Services: [{
+ *             Name: "billing",
+ *         }],
+ *     }),
+ * });
+ * ```
+ * ### `service-intentions` config entry
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ *
+ * const serviceIntentions = new consul.ConfigEntry("serviceIntentions", {
+ *     kind: "service-intentions",
+ *     configJson: JSON.stringify({
+ *         Sources: [
+ *             {
+ *                 Action: "allow",
+ *                 Name: "frontend-webapp",
+ *                 Precedence: 9,
+ *                 Type: "consul",
+ *             },
+ *             {
+ *                 Action: "allow",
+ *                 Name: "nightly-cronjob",
+ *                 Precedence: 9,
+ *                 Type: "consul",
+ *             },
+ *         ],
+ *     }),
+ * });
+ * ```
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ *
+ * const sd = new consul.ConfigEntry("sd", {
+ *     kind: "service-defaults",
+ *     configJson: JSON.stringify({
+ *         Protocol: "http",
+ *     }),
+ * });
+ * const jwtProvider = new consul.ConfigEntry("jwtProvider", {
+ *     kind: "jwt-provider",
+ *     configJson: JSON.stringify({
+ *         Issuer: "test-issuer",
+ *         JSONWebKeySet: {
+ *             Remote: {
+ *                 URI: "https://127.0.0.1:9091",
+ *                 FetchAsynchronously: true,
+ *             },
+ *         },
+ *         Forwarding: {
+ *             HeaderName: "test-token",
+ *         },
+ *     }),
+ * });
+ * const serviceIntentions = new consul.ConfigEntry("serviceIntentions", {
+ *     kind: "service-intentions",
+ *     configJson: jwtProvider.name.apply(name => JSON.stringify({
+ *         Sources: [
+ *             {
+ *                 Name: "contractor-webapp",
+ *                 Permissions: [{
+ *                     Action: "allow",
+ *                     HTTP: {
+ *                         Methods: [
+ *                             "GET",
+ *                             "HEAD",
+ *                         ],
+ *                         PathExact: "/healtz",
+ *                     },
+ *                     JWT: {
+ *                         Providers: [{
+ *                             Name: name,
+ *                         }],
+ *                     },
+ *                 }],
+ *                 Precedence: 9,
+ *                 Type: "consul",
+ *             },
+ *             {
+ *                 Name: "admin-dashboard-webapp",
+ *                 Permissions: [
+ *                     {
+ *                         Action: "deny",
+ *                         HTTP: {
+ *                             PathPrefix: "/debugz",
+ *                         },
+ *                     },
+ *                     {
+ *                         Action: "allow",
+ *                         HTTP: {
+ *                             PathPrefix: "/",
+ *                         },
+ *                     },
+ *                 ],
+ *                 Precedence: 9,
+ *                 Type: "consul",
+ *             },
+ *         ],
+ *     })),
+ * });
+ * ```
+ * ### `exported-services` config entry
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ *
+ * const exportedServices = new consul.ConfigEntry("exportedServices", {
+ *     kind: "exported-services",
+ *     configJson: JSON.stringify({
+ *         Services: [{
+ *             Name: "test",
+ *             Namespace: "default",
+ *             Consumers: [{
+ *                 Partition: "default",
+ *             }],
+ *         }],
+ *     }),
+ * });
+ * ```
+ * ### `mesh` config entry
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ *
+ * const mesh = new consul.ConfigEntry("mesh", {
+ *     kind: "mesh",
+ *     partition: "default",
+ *     configJson: JSON.stringify({
+ *         TransparentProxy: {
+ *             MeshDestinationsOnly: true,
+ *         },
+ *     }),
+ * });
+ * ```
+ * ### `jwt-provider` config entry
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ *
+ * const jwtProvider = new consul.ConfigEntry("jwtProvider", {
+ *     kind: "jwt-provider",
+ *     configJson: JSON.stringify({
+ *         Issuer: "https://your.issuer.com",
+ *         JSONWebKeySet: {
+ *             Remote: {
+ *                 URI: "https://your-remote.jwks.com",
+ *                 FetchAsynchronously: true,
+ *                 CacheDuration: "10s",
+ *             },
+ *         },
+ *         Forwarding: {
+ *             HeaderName: "test-token",
+ *         },
+ *     }),
+ * });
+ * ```
+ *
  * ## Import
  *
  * `consul_config_entry` can be imported using the syntax `<kind>/<name>` if the config entry is in the default partition and default namespace, or `<partition>/<namespace>/<kind>/<name>` for config entries in a non-default partition or namespace:

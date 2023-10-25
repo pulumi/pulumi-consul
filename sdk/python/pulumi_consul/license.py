@@ -329,6 +329,15 @@ class License(pulumi.CustomResource):
         the Consul Enterprise license. If ACLs are enabled then a token with operator
         privileges may be required in order to use this command.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_consul as consul
+
+        license = consul.License("license", license=(lambda path: open(path).read())("license.hclic"))
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the
@@ -347,6 +356,15 @@ class License(pulumi.CustomResource):
         The `License` resource provides datacenter-level management of
         the Consul Enterprise license. If ACLs are enabled then a token with operator
         privileges may be required in order to use this command.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_consul as consul
+
+        license = consul.License("license", license=(lambda path: open(path).read())("license.hclic"))
+        ```
 
         :param str resource_name: The name of the resource.
         :param LicenseArgs args: The arguments to use to populate this resource's properties.

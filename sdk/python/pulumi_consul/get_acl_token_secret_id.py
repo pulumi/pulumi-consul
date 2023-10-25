@@ -107,7 +107,24 @@ def get_acl_token_secret_id(accessor_id: Optional[str] = None,
                             pgp_key: Optional[str] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAclTokenSecretIdResult:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_consul as consul
+
+    test_acl_policy = consul.AclPolicy("testAclPolicy",
+        rules="node \\"\\" { policy = \\"read\\" }",
+        datacenters=["dc1"])
+    test_acl_token = consul.AclToken("testAclToken",
+        description="test",
+        policies=[test_acl_policy.name],
+        local=True)
+    read = consul.get_acl_token_secret_id_output(accessor_id=test_acl_token.id,
+        pgp_key="keybase:my_username")
+    pulumi.export("consulAclTokenSecretId", read.encrypted_secret_id)
+    ```
+
 
     :param str accessor_id: The accessor ID of the ACL token.
     :param str namespace: The namespace to lookup the token.
@@ -138,7 +155,24 @@ def get_acl_token_secret_id_output(accessor_id: Optional[pulumi.Input[str]] = No
                                    pgp_key: Optional[pulumi.Input[Optional[str]]] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAclTokenSecretIdResult]:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_consul as consul
+
+    test_acl_policy = consul.AclPolicy("testAclPolicy",
+        rules="node \\"\\" { policy = \\"read\\" }",
+        datacenters=["dc1"])
+    test_acl_token = consul.AclToken("testAclToken",
+        description="test",
+        policies=[test_acl_policy.name],
+        local=True)
+    read = consul.get_acl_token_secret_id_output(accessor_id=test_acl_token.id,
+        pgp_key="keybase:my_username")
+    pulumi.export("consulAclTokenSecretId", read.encrypted_secret_id)
+    ```
+
 
     :param str accessor_id: The accessor ID of the ACL token.
     :param str namespace: The namespace to lookup the token.

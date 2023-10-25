@@ -19,6 +19,45 @@ import (
 //
 // Registers a node or service with the [Consul Catalog](https://www.consul.io/docs/agent/http/catalog.html#catalog_register).
 // Currently, defining health checks is not supported.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := consul.NewCatalogEntry(ctx, "app", &consul.CatalogEntryArgs{
+//				Address: pulumi.String("192.168.10.10"),
+//				Node:    pulumi.String("foobar"),
+//				Services: consul.CatalogEntryServiceArray{
+//					&consul.CatalogEntryServiceArgs{
+//						Address: pulumi.String("127.0.0.1"),
+//						Id:      pulumi.String("redis1"),
+//						Name:    pulumi.String("redis"),
+//						Port:    pulumi.Int(8000),
+//						Tags: pulumi.StringArray{
+//							pulumi.String("master"),
+//							pulumi.String("v1"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type CatalogEntry struct {
 	pulumi.CustomResourceState
 

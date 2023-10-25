@@ -15,6 +15,29 @@ namespace Pulumi.Consul
         /// The `consul.getAutopilotHealth` data source returns
         /// [autopilot health information](https://www.consul.io/api/operator/autopilot.html#read-health)
         /// about the current Consul cluster.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Consul = Pulumi.Consul;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var read = Consul.GetAutopilotHealth.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["health"] = read.Apply(getAutopilotHealthResult =&gt; getAutopilotHealthResult.Healthy),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAutopilotHealthResult> InvokeAsync(GetAutopilotHealthArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAutopilotHealthResult>("consul:index/getAutopilotHealth:getAutopilotHealth", args ?? new GetAutopilotHealthArgs(), options.WithDefaults());
@@ -23,6 +46,29 @@ namespace Pulumi.Consul
         /// The `consul.getAutopilotHealth` data source returns
         /// [autopilot health information](https://www.consul.io/api/operator/autopilot.html#read-health)
         /// about the current Consul cluster.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Consul = Pulumi.Consul;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var read = Consul.GetAutopilotHealth.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["health"] = read.Apply(getAutopilotHealthResult =&gt; getAutopilotHealthResult.Healthy),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetAutopilotHealthResult> Invoke(GetAutopilotHealthInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAutopilotHealthResult>("consul:index/getAutopilotHealth:getAutopilotHealth", args ?? new GetAutopilotHealthInvokeArgs(), options.WithDefaults());

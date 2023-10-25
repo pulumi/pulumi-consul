@@ -12,6 +12,29 @@ import * as utilities from "./utilities";
  * > **Cluster peering is currently in technical preview:** Functionality associated with cluster peering is subject to change. You should never use the technical preview release in secure environments or production scenarios. Features in technical preview may have performance issues, scaling issues, and limited support.
  *
  * The functionality described here is available only in Consul version 1.13.0 and later.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ *
+ * // Create a peering between the EU and US Consul clusters
+ * const eu = new consul.Provider("eu", {address: "eu-cluster:8500"});
+ * const us = new consul.Provider("us", {address: "us-cluster:8500"});
+ * const eu_usPeeringToken = new consul.PeeringToken("eu-usPeeringToken", {peerName: "eu-cluster"}, {
+ *     provider: consul.us,
+ * });
+ * const eu_usPeering = new consul.Peering("eu-usPeering", {
+ *     peerName: "eu-cluster",
+ *     peeringToken: consul_peering_token.token.peering_token,
+ *     meta: {
+ *         hello: "world",
+ *     },
+ * }, {
+ *     provider: consul.eu,
+ * });
+ * ```
  */
 export class Peering extends pulumi.CustomResource {
     /**

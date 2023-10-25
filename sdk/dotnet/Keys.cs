@@ -9,6 +9,34 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Consul
 {
+    /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Consul = Pulumi.Consul;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var app = new Consul.Keys("app", new()
+    ///     {
+    ///         Datacenter = "nyc1",
+    ///         KeysCollection = new[]
+    ///         {
+    ///             new Consul.Inputs.KeysKeyArgs
+    ///             {
+    ///                 Path = "service/app/elb_address",
+    ///                 Value = aws_elb.App.Dns_name,
+    ///             },
+    ///         },
+    ///         Token = "abcd",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// </summary>
     [ConsulResourceType("consul:index/keys:Keys")]
     public partial class Keys : global::Pulumi.CustomResource
     {

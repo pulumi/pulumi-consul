@@ -16,6 +16,29 @@ namespace Pulumi.Consul
         /// 
         /// The `consul_network_segment` data source can be used to retrieve the network
         /// segments defined in the configuration.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Consul = Pulumi.Consul;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var segmentsNetworkSegments = Consul.GetNetworkSegments.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["segments"] = segmentsNetworkSegments.Apply(getNetworkSegmentsResult =&gt; getNetworkSegmentsResult.Segments),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetNetworkSegmentsResult> InvokeAsync(GetNetworkSegmentsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNetworkSegmentsResult>("consul:index/getNetworkSegments:getNetworkSegments", args ?? new GetNetworkSegmentsArgs(), options.WithDefaults());
@@ -25,6 +48,29 @@ namespace Pulumi.Consul
         /// 
         /// The `consul_network_segment` data source can be used to retrieve the network
         /// segments defined in the configuration.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Consul = Pulumi.Consul;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var segmentsNetworkSegments = Consul.GetNetworkSegments.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["segments"] = segmentsNetworkSegments.Apply(getNetworkSegmentsResult =&gt; getNetworkSegmentsResult.Segments),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetNetworkSegmentsResult> Invoke(GetNetworkSegmentsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNetworkSegmentsResult>("consul:index/getNetworkSegments:getNetworkSegments", args ?? new GetNetworkSegmentsInvokeArgs(), options.WithDefaults());

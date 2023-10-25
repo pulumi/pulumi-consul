@@ -130,6 +130,15 @@ class AdminPartition(pulumi.CustomResource):
 
         The `AdminPartition` resource manages [Consul Enterprise Admin Partitions](https://www.consul.io/docs/enterprise/admin-partitions).
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_consul as consul
+
+        na_west = consul.AdminPartition("naWest", description="Partition for North America West")
+        ```
+
         ## Import
 
         `consul_admin_partition` can be imported:
@@ -153,6 +162,15 @@ class AdminPartition(pulumi.CustomResource):
         > **NOTE:** This feature requires Consul Enterprise.
 
         The `AdminPartition` resource manages [Consul Enterprise Admin Partitions](https://www.consul.io/docs/enterprise/admin-partitions).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_consul as consul
+
+        na_west = consul.AdminPartition("naWest", description="Partition for North America West")
+        ```
 
         ## Import
 

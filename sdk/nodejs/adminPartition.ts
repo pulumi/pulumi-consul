@@ -9,6 +9,15 @@ import * as utilities from "./utilities";
  *
  * The `consul.AdminPartition` resource manages [Consul Enterprise Admin Partitions](https://www.consul.io/docs/enterprise/admin-partitions).
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ *
+ * const naWest = new consul.AdminPartition("naWest", {description: "Partition for North America West"});
+ * ```
+ *
  * ## Import
  *
  * `consul_admin_partition` can be imported:

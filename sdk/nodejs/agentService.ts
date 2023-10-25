@@ -12,6 +12,22 @@ import * as utilities from "./utilities";
  * Provides access to the agent service data in Consul. This can be used to
  * define a service associated with a particular agent. Currently, defining
  * health checks for an agent service is not supported.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ *
+ * const app = new consul.AgentService("app", {
+ *     address: "www.google.com",
+ *     port: 80,
+ *     tags: [
+ *         "tag0",
+ *         "tag1",
+ *     ],
+ * });
+ * ```
  */
 export class AgentService extends pulumi.CustomResource {
     /**

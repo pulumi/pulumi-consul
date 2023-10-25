@@ -14,6 +14,33 @@ import (
 
 // The `AclRole` data source returns the information related to a
 // [Consul ACL Role](https://www.consul.io/api/acl/roles.html).
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			test, err := consul.LookupAclRole(ctx, &consul.LookupAclRoleArgs{
+//				Name: "example-role",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("consulAclRole", test.Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupAclRole(ctx *pulumi.Context, args *LookupAclRoleArgs, opts ...pulumi.InvokeOption) (*LookupAclRoleResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAclRoleResult

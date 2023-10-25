@@ -185,6 +185,16 @@ def get_acl_auth_method(name: Optional[str] = None,
     The `AclAuthMethod` data source returns the information related to a
     [Consul Auth Method](https://www.consul.io/docs/acl/acl-auth-methods.html).
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_consul as consul
+
+    test = consul.get_acl_auth_method(name="minikube")
+    pulumi.export("consulAclAuthMethod", test.config)
+    ```
+
 
     :param str name: The name of the ACL Auth Method.
     :param str namespace: The namespace to lookup the auth method.
@@ -220,6 +230,16 @@ def get_acl_auth_method_output(name: Optional[pulumi.Input[str]] = None,
     """
     The `AclAuthMethod` data source returns the information related to a
     [Consul Auth Method](https://www.consul.io/docs/acl/acl-auth-methods.html).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_consul as consul
+
+    test = consul.get_acl_auth_method(name="minikube")
+    pulumi.export("consulAclAuthMethod", test.config)
+    ```
 
 
     :param str name: The name of the ACL Auth Method.

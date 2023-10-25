@@ -14,6 +14,24 @@ namespace Pulumi.Consul
     /// 
     /// The `consul.AdminPartition` resource manages [Consul Enterprise Admin Partitions](https://www.consul.io/docs/enterprise/admin-partitions).
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Consul = Pulumi.Consul;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var naWest = new Consul.AdminPartition("naWest", new()
+    ///     {
+    ///         Description = "Partition for North America West",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// `consul_admin_partition` can be imported:
