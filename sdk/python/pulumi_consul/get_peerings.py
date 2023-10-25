@@ -66,14 +66,7 @@ class AwaitableGetPeeringsResult(GetPeeringsResult):
 def get_peerings(partition: Optional[str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPeeringsResult:
     """
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_consul as consul
-
-    peers = consul.get_peerings()
-    ```
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['partition'] = partition
@@ -90,13 +83,6 @@ def get_peerings(partition: Optional[str] = None,
 def get_peerings_output(partition: Optional[pulumi.Input[Optional[str]]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPeeringsResult]:
     """
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_consul as consul
-
-    peers = consul.get_peerings()
-    ```
+    Use this data source to access information about an existing resource.
     """
     ...

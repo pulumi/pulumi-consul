@@ -31,10 +31,16 @@ class PeeringTokenArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             peer_name: pulumi.Input[str],
+             peer_name: Optional[pulumi.Input[str]] = None,
              meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              partition: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if peer_name is None and 'peerName' in kwargs:
+            peer_name = kwargs['peerName']
+        if peer_name is None:
+            raise TypeError("Missing 'peer_name' argument")
+
         _setter("peer_name", peer_name)
         if meta is not None:
             _setter("meta", meta)
@@ -102,7 +108,13 @@ class _PeeringTokenState:
              partition: Optional[pulumi.Input[str]] = None,
              peer_name: Optional[pulumi.Input[str]] = None,
              peering_token: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if peer_name is None and 'peerName' in kwargs:
+            peer_name = kwargs['peerName']
+        if peering_token is None and 'peeringToken' in kwargs:
+            peering_token = kwargs['peeringToken']
+
         if meta is not None:
             _setter("meta", meta)
         if partition is not None:
@@ -176,15 +188,6 @@ class PeeringToken(pulumi.CustomResource):
 
         The functionality described here is available only in Consul version 1.13.0 and later.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_consul as consul
-
-        token = consul.PeeringToken("token", peer_name="eu-cluster")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the cluster peering process.
@@ -204,15 +207,6 @@ class PeeringToken(pulumi.CustomResource):
         > **Cluster peering is currently in technical preview:** Functionality associated with cluster peering is subject to change. You should never use the technical preview release in secure environments or production scenarios. Features in technical preview may have performance issues, scaling issues, and limited support.
 
         The functionality described here is available only in Consul version 1.13.0 and later.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_consul as consul
-
-        token = consul.PeeringToken("token", peer_name="eu-cluster")
-        ```
 
         :param str resource_name: The name of the resource.
         :param PeeringTokenArgs args: The arguments to use to populate this resource's properties.

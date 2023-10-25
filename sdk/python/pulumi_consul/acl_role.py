@@ -53,7 +53,13 @@ class AclRoleArgs:
              partition: Optional[pulumi.Input[str]] = None,
              policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              service_identities: Optional[pulumi.Input[Sequence[pulumi.Input['AclRoleServiceIdentityArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if node_identities is None and 'nodeIdentities' in kwargs:
+            node_identities = kwargs['nodeIdentities']
+        if service_identities is None and 'serviceIdentities' in kwargs:
+            service_identities = kwargs['serviceIdentities']
+
         if description is not None:
             _setter("description", description)
         if name is not None:
@@ -194,7 +200,13 @@ class _AclRoleState:
              partition: Optional[pulumi.Input[str]] = None,
              policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              service_identities: Optional[pulumi.Input[Sequence[pulumi.Input['AclRoleServiceIdentityArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if node_identities is None and 'nodeIdentities' in kwargs:
+            node_identities = kwargs['nodeIdentities']
+        if service_identities is None and 'serviceIdentities' in kwargs:
+            service_identities = kwargs['serviceIdentities']
+
         if description is not None:
             _setter("description", description)
         if name is not None:
@@ -311,23 +323,6 @@ class AclRole(pulumi.CustomResource):
         """
         Starting with Consul 1.5.0, the AclRole can be used to managed Consul ACL roles.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_consul as consul
-
-        read_policy = consul.AclPolicy("read-policy",
-            datacenters=["dc1"],
-            rules="node \\"\\" { policy = \\"read\\" }")
-        read = consul.AclRole("read",
-            description="bar",
-            policies=[read_policy.id],
-            service_identities=[consul.AclRoleServiceIdentityArgs(
-                service_name="foo",
-            )])
-        ```
-
         ## Import
 
         `consul_acl_role` can be imported:
@@ -354,23 +349,6 @@ class AclRole(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Starting with Consul 1.5.0, the AclRole can be used to managed Consul ACL roles.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_consul as consul
-
-        read_policy = consul.AclPolicy("read-policy",
-            datacenters=["dc1"],
-            rules="node \\"\\" { policy = \\"read\\" }")
-        read = consul.AclRole("read",
-            description="bar",
-            policies=[read_policy.id],
-            service_identities=[consul.AclRoleServiceIdentityArgs(
-                service_name="foo",
-            )])
-        ```
 
         ## Import
 

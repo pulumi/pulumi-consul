@@ -14,47 +14,6 @@ import (
 
 // The `Keys` resource reads values from the Consul key/value store.
 // This is a powerful way dynamically set values in templates.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-aws/sdk/v4/go/aws/ec2"
-//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			appKeys, err := consul.LookupKeys(ctx, &consul.LookupKeysArgs{
-//				Datacenter: pulumi.StringRef("nyc1"),
-//				Keys: []consul.GetKeysKey{
-//					{
-//						Default: pulumi.StringRef("ami-1234"),
-//						Name:    "ami",
-//						Path:    "service/app/launch_ami",
-//					},
-//				},
-//				Token: pulumi.StringRef("abcd"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = ec2.NewInstance(ctx, "appInstance", &ec2.InstanceArgs{
-//				Ami: *pulumi.String(appKeys.Var.Ami),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupKeys(ctx *pulumi.Context, args *LookupKeysArgs, opts ...pulumi.InvokeOption) (*LookupKeysResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupKeysResult

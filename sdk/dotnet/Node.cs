@@ -13,24 +13,6 @@ namespace Pulumi.Consul
     /// Provides access to Node data in Consul. This can be used to define a
     /// node. Currently, defining health checks is not supported.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Consul = Pulumi.Consul;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var foobar = new Consul.Node("foobar", new()
-    ///     {
-    ///         Address = "192.168.10.10",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// The `consul_node` resource can be imported:

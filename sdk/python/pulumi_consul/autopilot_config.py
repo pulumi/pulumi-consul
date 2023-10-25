@@ -65,7 +65,23 @@ class AutopilotConfigArgs:
              redundancy_zone_tag: Optional[pulumi.Input[str]] = None,
              server_stabilization_time: Optional[pulumi.Input[str]] = None,
              upgrade_version_tag: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cleanup_dead_servers is None and 'cleanupDeadServers' in kwargs:
+            cleanup_dead_servers = kwargs['cleanupDeadServers']
+        if disable_upgrade_migration is None and 'disableUpgradeMigration' in kwargs:
+            disable_upgrade_migration = kwargs['disableUpgradeMigration']
+        if last_contact_threshold is None and 'lastContactThreshold' in kwargs:
+            last_contact_threshold = kwargs['lastContactThreshold']
+        if max_trailing_logs is None and 'maxTrailingLogs' in kwargs:
+            max_trailing_logs = kwargs['maxTrailingLogs']
+        if redundancy_zone_tag is None and 'redundancyZoneTag' in kwargs:
+            redundancy_zone_tag = kwargs['redundancyZoneTag']
+        if server_stabilization_time is None and 'serverStabilizationTime' in kwargs:
+            server_stabilization_time = kwargs['serverStabilizationTime']
+        if upgrade_version_tag is None and 'upgradeVersionTag' in kwargs:
+            upgrade_version_tag = kwargs['upgradeVersionTag']
+
         if cleanup_dead_servers is not None:
             _setter("cleanup_dead_servers", cleanup_dead_servers)
         if datacenter is not None:
@@ -244,7 +260,23 @@ class _AutopilotConfigState:
              redundancy_zone_tag: Optional[pulumi.Input[str]] = None,
              server_stabilization_time: Optional[pulumi.Input[str]] = None,
              upgrade_version_tag: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cleanup_dead_servers is None and 'cleanupDeadServers' in kwargs:
+            cleanup_dead_servers = kwargs['cleanupDeadServers']
+        if disable_upgrade_migration is None and 'disableUpgradeMigration' in kwargs:
+            disable_upgrade_migration = kwargs['disableUpgradeMigration']
+        if last_contact_threshold is None and 'lastContactThreshold' in kwargs:
+            last_contact_threshold = kwargs['lastContactThreshold']
+        if max_trailing_logs is None and 'maxTrailingLogs' in kwargs:
+            max_trailing_logs = kwargs['maxTrailingLogs']
+        if redundancy_zone_tag is None and 'redundancyZoneTag' in kwargs:
+            redundancy_zone_tag = kwargs['redundancyZoneTag']
+        if server_stabilization_time is None and 'serverStabilizationTime' in kwargs:
+            server_stabilization_time = kwargs['serverStabilizationTime']
+        if upgrade_version_tag is None and 'upgradeVersionTag' in kwargs:
+            upgrade_version_tag = kwargs['upgradeVersionTag']
+
         if cleanup_dead_servers is not None:
             _setter("cleanup_dead_servers", cleanup_dead_servers)
         if datacenter is not None:
@@ -390,18 +422,6 @@ class AutopilotConfig(pulumi.CustomResource):
         It includes to automatically cleanup dead servers, monitor the status of the Raft
         cluster and stable server introduction.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_consul as consul
-
-        config = consul.AutopilotConfig("config",
-            cleanup_dead_servers=False,
-            last_contact_threshold="1s",
-            max_trailing_logs=500)
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] cleanup_dead_servers: Whether to remove failing servers when a
@@ -435,18 +455,6 @@ class AutopilotConfig(pulumi.CustomResource):
 
         It includes to automatically cleanup dead servers, monitor the status of the Raft
         cluster and stable server introduction.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_consul as consul
-
-        config = consul.AutopilotConfig("config",
-            cleanup_dead_servers=False,
-            last_contact_threshold="1s",
-            max_trailing_logs=500)
-        ```
 
         :param str resource_name: The name of the resource.
         :param AutopilotConfigArgs args: The arguments to use to populate this resource's properties.

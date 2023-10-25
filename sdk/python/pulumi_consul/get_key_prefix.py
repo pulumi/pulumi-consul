@@ -143,37 +143,7 @@ def get_key_prefix(datacenter: Optional[str] = None,
                    token: Optional[str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKeyPrefixResult:
     """
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-    import pulumi_consul as consul
-
-    app_key_prefix = consul.get_key_prefix(datacenter="nyc1",
-        path_prefix="myapp/config/",
-        subkey_collection=[consul.GetKeyPrefixSubkeyCollectionArgs(
-            default="ami-1234",
-            name="ami",
-            path="app/launch_ami",
-        )],
-        token="abcd")
-    # Start our instance with the dynamic ami value
-    app_instance = aws.ec2.Instance("appInstance", ami=app_key_prefix.var["ami"])
-    ```
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-    import pulumi_consul as consul
-
-    web_key_prefix = consul.get_key_prefix(datacenter="nyc1",
-        path_prefix="myapp/config/",
-        token="efgh")
-    # Start our instance with the dynamic ami value
-    web_instance = aws.ec2.Instance("webInstance", ami=web_key_prefix.subkeys["app/launch_ami"])
-    ```
-
+    Use this data source to access information about an existing resource.
 
     :param str datacenter: The datacenter to use. This overrides the
            agent's default datacenter and the datacenter in the provider setup.
@@ -218,37 +188,7 @@ def get_key_prefix_output(datacenter: Optional[pulumi.Input[Optional[str]]] = No
                           token: Optional[pulumi.Input[Optional[str]]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKeyPrefixResult]:
     """
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-    import pulumi_consul as consul
-
-    app_key_prefix = consul.get_key_prefix(datacenter="nyc1",
-        path_prefix="myapp/config/",
-        subkey_collection=[consul.GetKeyPrefixSubkeyCollectionArgs(
-            default="ami-1234",
-            name="ami",
-            path="app/launch_ami",
-        )],
-        token="abcd")
-    # Start our instance with the dynamic ami value
-    app_instance = aws.ec2.Instance("appInstance", ami=app_key_prefix.var["ami"])
-    ```
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-    import pulumi_consul as consul
-
-    web_key_prefix = consul.get_key_prefix(datacenter="nyc1",
-        path_prefix="myapp/config/",
-        token="efgh")
-    # Start our instance with the dynamic ami value
-    web_instance = aws.ec2.Instance("webInstance", ami=web_key_prefix.subkeys["app/launch_ami"])
-    ```
-
+    Use this data source to access information about an existing resource.
 
     :param str datacenter: The datacenter to use. This overrides the
            agent's default datacenter and the datacenter in the provider setup.

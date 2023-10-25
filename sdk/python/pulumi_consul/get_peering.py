@@ -129,14 +129,7 @@ def get_peering(partition: Optional[str] = None,
                 peer_name: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPeeringResult:
     """
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_consul as consul
-
-    basic = consul.get_peering(peer_name="peered-cluster")
-    ```
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['partition'] = partition
@@ -162,13 +155,6 @@ def get_peering_output(partition: Optional[pulumi.Input[Optional[str]]] = None,
                        peer_name: Optional[pulumi.Input[str]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPeeringResult]:
     """
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_consul as consul
-
-    basic = consul.get_peering(peer_name="peered-cluster")
-    ```
+    Use this data source to access information about an existing resource.
     """
     ...

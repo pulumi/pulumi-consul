@@ -14,33 +14,6 @@ import (
 
 // The `AclAuthMethod` data source returns the information related to a
 // [Consul Auth Method](https://www.consul.io/docs/acl/acl-auth-methods.html).
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			test, err := consul.LookupAclAuthMethod(ctx, &consul.LookupAclAuthMethodArgs{
-//				Name: "minikube",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("consulAclAuthMethod", test.Config)
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupAclAuthMethod(ctx *pulumi.Context, args *LookupAclAuthMethodArgs, opts ...pulumi.InvokeOption) (*LookupAclAuthMethodResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAclAuthMethodResult

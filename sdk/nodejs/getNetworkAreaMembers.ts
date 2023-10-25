@@ -11,23 +11,6 @@ import * as utilities from "./utilities";
  *
  * The `consul.getNetworkAreaMembers` data source provides a list of the Consul
  * servers present in a specific network area.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as consul from "@pulumi/consul";
- *
- * const dc2NetworkArea = new consul.NetworkArea("dc2NetworkArea", {
- *     peerDatacenter: "dc2",
- *     retryJoins: ["1.2.3.4"],
- *     useTls: true,
- * });
- * const dc2NetworkAreaMembers = consul.getNetworkAreaMembersOutput({
- *     uuid: dc2NetworkArea.id,
- * });
- * export const members = dc2NetworkAreaMembers.apply(dc2NetworkAreaMembers => dc2NetworkAreaMembers.members);
- * ```
  */
 export function getNetworkAreaMembers(args: GetNetworkAreaMembersArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkAreaMembersResult> {
 
@@ -93,23 +76,6 @@ Please use the token argument in the provider configuration
  *
  * The `consul.getNetworkAreaMembers` data source provides a list of the Consul
  * servers present in a specific network area.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as consul from "@pulumi/consul";
- *
- * const dc2NetworkArea = new consul.NetworkArea("dc2NetworkArea", {
- *     peerDatacenter: "dc2",
- *     retryJoins: ["1.2.3.4"],
- *     useTls: true,
- * });
- * const dc2NetworkAreaMembers = consul.getNetworkAreaMembersOutput({
- *     uuid: dc2NetworkArea.id,
- * });
- * export const members = dc2NetworkAreaMembers.apply(dc2NetworkAreaMembers => dc2NetworkAreaMembers.members);
- * ```
  */
 export function getNetworkAreaMembersOutput(args: GetNetworkAreaMembersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkAreaMembersResult> {
     return pulumi.output(args).apply((a: any) => getNetworkAreaMembers(a, opts))

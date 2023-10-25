@@ -115,16 +115,6 @@ def get_acl_policy(name: Optional[str] = None,
     The `AclPolicy` data source returns the information related to a
     [Consul ACL Policy](https://www.consul.io/docs/acl/acl-system.html#acl-policies).
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_consul as consul
-
-    agent = consul.get_acl_policy(name="agent")
-    pulumi.export("consulAclPolicy", agent.rules)
-    ```
-
 
     :param str name: The name of the ACL Policy.
     :param str namespace: The namespace to lookup the policy.
@@ -155,16 +145,6 @@ def get_acl_policy_output(name: Optional[pulumi.Input[str]] = None,
     """
     The `AclPolicy` data source returns the information related to a
     [Consul ACL Policy](https://www.consul.io/docs/acl/acl-system.html#acl-policies).
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_consul as consul
-
-    agent = consul.get_acl_policy(name="agent")
-    pulumi.export("consulAclPolicy", agent.rules)
-    ```
 
 
     :param str name: The name of the ACL Policy.

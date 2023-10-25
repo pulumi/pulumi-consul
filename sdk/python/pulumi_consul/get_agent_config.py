@@ -125,16 +125,6 @@ def get_agent_config(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGe
     The `get_agent_config` data source returns
     [configuration data](https://www.consul.io/api/agent.html#read-configuration)
     from the agent specified in the `provider`.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_consul as consul
-
-    remote_agent = consul.get_agent_config()
-    pulumi.export("consulVersion", remote_agent.version)
-    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -160,15 +150,5 @@ def get_agent_config_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulu
     The `get_agent_config` data source returns
     [configuration data](https://www.consul.io/api/agent.html#read-configuration)
     from the agent specified in the `provider`.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_consul as consul
-
-    remote_agent = consul.get_agent_config()
-    pulumi.export("consulVersion", remote_agent.version)
-    ```
     """
     ...

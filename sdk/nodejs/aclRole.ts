@@ -9,25 +9,6 @@ import * as utilities from "./utilities";
 /**
  * Starting with Consul 1.5.0, the consul.AclRole can be used to managed Consul ACL roles.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as consul from "@pulumi/consul";
- *
- * const read_policy = new consul.AclPolicy("read-policy", {
- *     datacenters: ["dc1"],
- *     rules: "node \"\" { policy = \"read\" }",
- * });
- * const read = new consul.AclRole("read", {
- *     description: "bar",
- *     policies: [read_policy.id],
- *     serviceIdentities: [{
- *         serviceName: "foo",
- *     }],
- * });
- * ```
- *
  * ## Import
  *
  * `consul_acl_role` can be imported:

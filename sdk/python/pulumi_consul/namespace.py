@@ -47,7 +47,13 @@ class NamespaceArgs:
              partition: Optional[pulumi.Input[str]] = None,
              policy_defaults: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              role_defaults: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if policy_defaults is None and 'policyDefaults' in kwargs:
+            policy_defaults = kwargs['policyDefaults']
+        if role_defaults is None and 'roleDefaults' in kwargs:
+            role_defaults = kwargs['roleDefaults']
+
         if description is not None:
             _setter("description", description)
         if meta is not None:
@@ -170,7 +176,13 @@ class _NamespaceState:
              partition: Optional[pulumi.Input[str]] = None,
              policy_defaults: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              role_defaults: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if policy_defaults is None and 'policyDefaults' in kwargs:
+            policy_defaults = kwargs['policyDefaults']
+        if role_defaults is None and 'roleDefaults' in kwargs:
+            role_defaults = kwargs['roleDefaults']
+
         if description is not None:
             _setter("description", description)
         if meta is not None:
@@ -274,19 +286,6 @@ class Namespace(pulumi.CustomResource):
 
         The `Namespace` resource provides isolated [Consul Enterprise Namespaces](https://www.consul.io/docs/enterprise/namespaces/index.html).
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_consul as consul
-
-        production = consul.Namespace("production",
-            description="Production namespace",
-            meta={
-                "foo": "bar",
-            })
-        ```
-
         ## Import
 
         `consul_namespace` can be imported. This is useful to manage attributes of the default namespace that is created automatically:
@@ -314,19 +313,6 @@ class Namespace(pulumi.CustomResource):
         > **NOTE:** This feature requires Consul Enterprise.
 
         The `Namespace` resource provides isolated [Consul Enterprise Namespaces](https://www.consul.io/docs/enterprise/namespaces/index.html).
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_consul as consul
-
-        production = consul.Namespace("production",
-            description="Production namespace",
-            meta={
-                "foo": "bar",
-            })
-        ```
 
         ## Import
 

@@ -16,31 +16,6 @@ import (
 //
 // The `consulNetworkSegment` data source can be used to retrieve the network
 // segments defined in the configuration.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			segmentsNetworkSegments, err := consul.GetNetworkSegments(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("segments", segmentsNetworkSegments.Segments)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetNetworkSegments(ctx *pulumi.Context, args *GetNetworkSegmentsArgs, opts ...pulumi.InvokeOption) (*GetNetworkSegmentsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetNetworkSegmentsResult

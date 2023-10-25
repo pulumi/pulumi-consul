@@ -134,16 +134,6 @@ def get_acl_role(name: Optional[str] = None,
     The `AclRole` data source returns the information related to a
     [Consul ACL Role](https://www.consul.io/api/acl/roles.html).
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_consul as consul
-
-    test = consul.get_acl_role(name="example-role")
-    pulumi.export("consulAclRole", test.id)
-    ```
-
 
     :param str name: The name of the ACL Role.
     :param str namespace: The namespace to lookup the role.
@@ -175,16 +165,6 @@ def get_acl_role_output(name: Optional[pulumi.Input[str]] = None,
     """
     The `AclRole` data source returns the information related to a
     [Consul ACL Role](https://www.consul.io/api/acl/roles.html).
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_consul as consul
-
-    test = consul.get_acl_role(name="example-role")
-    pulumi.export("consulAclRole", test.id)
-    ```
 
 
     :param str name: The name of the ACL Role.

@@ -4,8 +4,12 @@
 package consul
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `getDatacenters` data source returns the list of all knwown Consul
@@ -28,4 +32,52 @@ type GetDatacentersResult struct {
 	Datacenters []string `pulumi:"datacenters"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
+}
+
+func GetDatacentersOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetDatacentersResultOutput {
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetDatacentersResult, error) {
+		r, err := GetDatacenters(ctx, opts...)
+		var s GetDatacentersResult
+		if r != nil {
+			s = *r
+		}
+		return s, err
+	}).(GetDatacentersResultOutput)
+}
+
+// A collection of values returned by getDatacenters.
+type GetDatacentersResultOutput struct{ *pulumi.OutputState }
+
+func (GetDatacentersResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatacentersResult)(nil)).Elem()
+}
+
+func (o GetDatacentersResultOutput) ToGetDatacentersResultOutput() GetDatacentersResultOutput {
+	return o
+}
+
+func (o GetDatacentersResultOutput) ToGetDatacentersResultOutputWithContext(ctx context.Context) GetDatacentersResultOutput {
+	return o
+}
+
+func (o GetDatacentersResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDatacentersResult] {
+	return pulumix.Output[GetDatacentersResult]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The list of datacenters known. The datacenters will be sorted
+// in ascending order based on the estimated median round trip time from the server
+// to the servers in that datacenter.
+func (o GetDatacentersResultOutput) Datacenters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDatacentersResult) []string { return v.Datacenters }).(pulumi.StringArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetDatacentersResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatacentersResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetDatacentersResultOutput{})
 }

@@ -44,14 +44,28 @@ class AclBindingRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             auth_method: pulumi.Input[str],
-             bind_name: pulumi.Input[str],
-             bind_type: pulumi.Input[str],
+             auth_method: Optional[pulumi.Input[str]] = None,
+             bind_name: Optional[pulumi.Input[str]] = None,
+             bind_type: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              namespace: Optional[pulumi.Input[str]] = None,
              partition: Optional[pulumi.Input[str]] = None,
              selector: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if auth_method is None and 'authMethod' in kwargs:
+            auth_method = kwargs['authMethod']
+        if auth_method is None:
+            raise TypeError("Missing 'auth_method' argument")
+        if bind_name is None and 'bindName' in kwargs:
+            bind_name = kwargs['bindName']
+        if bind_name is None:
+            raise TypeError("Missing 'bind_name' argument")
+        if bind_type is None and 'bindType' in kwargs:
+            bind_type = kwargs['bindType']
+        if bind_type is None:
+            raise TypeError("Missing 'bind_type' argument")
+
         _setter("auth_method", auth_method)
         _setter("bind_name", bind_name)
         _setter("bind_type", bind_type)
@@ -189,7 +203,15 @@ class _AclBindingRuleState:
              namespace: Optional[pulumi.Input[str]] = None,
              partition: Optional[pulumi.Input[str]] = None,
              selector: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if auth_method is None and 'authMethod' in kwargs:
+            auth_method = kwargs['authMethod']
+        if bind_name is None and 'bindName' in kwargs:
+            bind_name = kwargs['bindName']
+        if bind_type is None and 'bindType' in kwargs:
+            bind_type = kwargs['bindType']
+
         if auth_method is not None:
             _setter("auth_method", auth_method)
         if bind_name is not None:
@@ -307,31 +329,6 @@ class AclBindingRule(pulumi.CustomResource):
         Starting with Consul 1.5.0, the AclBindingRule resource can be used to
         managed Consul ACL binding rules.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_consul as consul
-
-        minikube = consul.AclAuthMethod("minikube",
-            config={
-                "CACert": \"\"\"-----BEGIN CERTIFICATE-----
-        ...-----END CERTIFICATE-----
-
-        \"\"\",
-                "Host": "https://192.0.2.42:8443",
-                "ServiceAccountJWT": "eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9...",
-            },
-            description="dev minikube cluster",
-            type="kubernetes")
-        test = consul.AclBindingRule("test",
-            auth_method=minikube.name,
-            bind_name="minikube",
-            bind_type="service",
-            description="foobar",
-            selector="serviceaccount.namespace==default")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] auth_method: The name of the ACL auth method this rule apply.
@@ -351,31 +348,6 @@ class AclBindingRule(pulumi.CustomResource):
         """
         Starting with Consul 1.5.0, the AclBindingRule resource can be used to
         managed Consul ACL binding rules.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_consul as consul
-
-        minikube = consul.AclAuthMethod("minikube",
-            config={
-                "CACert": \"\"\"-----BEGIN CERTIFICATE-----
-        ...-----END CERTIFICATE-----
-
-        \"\"\",
-                "Host": "https://192.0.2.42:8443",
-                "ServiceAccountJWT": "eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9...",
-            },
-            description="dev minikube cluster",
-            type="kubernetes")
-        test = consul.AclBindingRule("test",
-            auth_method=minikube.name,
-            bind_name="minikube",
-            bind_type="service",
-            description="foobar",
-            selector="serviceaccount.namespace==default")
-        ```
 
         :param str resource_name: The name of the resource.
         :param AclBindingRuleArgs args: The arguments to use to populate this resource's properties.

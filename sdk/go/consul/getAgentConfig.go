@@ -4,8 +4,12 @@
 package consul
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // > **Note:** The `getAgentConfig` resource differs from [`getAgentSelf`](https://www.terraform.io/docs/providers/consul/d/agent_self.html),
@@ -15,31 +19,6 @@ import (
 // The `getAgentConfig` data source returns
 // [configuration data](https://www.consul.io/api/agent.html#read-configuration)
 // from the agent specified in the `provider`.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			remoteAgent, err := consul.GetAgentConfig(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("consulVersion", remoteAgent.Version)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetAgentConfig(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetAgentConfigResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAgentConfigResult
@@ -66,4 +45,75 @@ type GetAgentConfigResult struct {
 	Server bool `pulumi:"server"`
 	// The version of the build of Consul that is running
 	Version string `pulumi:"version"`
+}
+
+func GetAgentConfigOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetAgentConfigResultOutput {
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetAgentConfigResult, error) {
+		r, err := GetAgentConfig(ctx, opts...)
+		var s GetAgentConfigResult
+		if r != nil {
+			s = *r
+		}
+		return s, err
+	}).(GetAgentConfigResultOutput)
+}
+
+// A collection of values returned by getAgentConfig.
+type GetAgentConfigResultOutput struct{ *pulumi.OutputState }
+
+func (GetAgentConfigResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAgentConfigResult)(nil)).Elem()
+}
+
+func (o GetAgentConfigResultOutput) ToGetAgentConfigResultOutput() GetAgentConfigResultOutput {
+	return o
+}
+
+func (o GetAgentConfigResultOutput) ToGetAgentConfigResultOutputWithContext(ctx context.Context) GetAgentConfigResultOutput {
+	return o
+}
+
+func (o GetAgentConfigResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAgentConfigResult] {
+	return pulumix.Output[GetAgentConfigResult]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The datacenter the agent is running in
+func (o GetAgentConfigResultOutput) Datacenter() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAgentConfigResult) string { return v.Datacenter }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetAgentConfigResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAgentConfigResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the node the agent is running on
+func (o GetAgentConfigResultOutput) NodeId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAgentConfigResult) string { return v.NodeId }).(pulumi.StringOutput)
+}
+
+// The name of the node the agent is running on
+func (o GetAgentConfigResultOutput) NodeName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAgentConfigResult) string { return v.NodeName }).(pulumi.StringOutput)
+}
+
+// The first 9 characters of the VCS revision of the build of Consul that is running
+func (o GetAgentConfigResultOutput) Revision() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAgentConfigResult) string { return v.Revision }).(pulumi.StringOutput)
+}
+
+// Boolean if the agent is a server or not
+func (o GetAgentConfigResultOutput) Server() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAgentConfigResult) bool { return v.Server }).(pulumi.BoolOutput)
+}
+
+// The version of the build of Consul that is running
+func (o GetAgentConfigResultOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAgentConfigResult) string { return v.Version }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetAgentConfigResultOutput{})
 }

@@ -31,7 +31,9 @@ class AdminPartitionArgs:
              _setter: Callable[[Any, Any], None],
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if description is not None:
             _setter("description", description)
         if name is not None:
@@ -82,7 +84,9 @@ class _AdminPartitionState:
              _setter: Callable[[Any, Any], None],
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if description is not None:
             _setter("description", description)
         if name is not None:
@@ -126,15 +130,6 @@ class AdminPartition(pulumi.CustomResource):
 
         The `AdminPartition` resource manages [Consul Enterprise Admin Partitions](https://www.consul.io/docs/enterprise/admin-partitions).
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_consul as consul
-
-        na_west = consul.AdminPartition("naWest", description="Partition for North America West")
-        ```
-
         ## Import
 
         `consul_admin_partition` can be imported:
@@ -158,15 +153,6 @@ class AdminPartition(pulumi.CustomResource):
         > **NOTE:** This feature requires Consul Enterprise.
 
         The `AdminPartition` resource manages [Consul Enterprise Admin Partitions](https://www.consul.io/docs/enterprise/admin-partitions).
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_consul as consul
-
-        na_west = consul.AdminPartition("naWest", description="Partition for North America West")
-        ```
 
         ## Import
 

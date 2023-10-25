@@ -22,36 +22,6 @@ import (
 // communication, and relationships can be made between independent pairs of
 // datacenters, so not all servers need to be fully connected. This allows for
 // complex topologies among Consul datacenters like hub/spoke and more general trees.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := consul.NewNetworkArea(ctx, "dc2", &consul.NetworkAreaArgs{
-//				PeerDatacenter: pulumi.String("dc2"),
-//				RetryJoins: pulumi.StringArray{
-//					pulumi.String("1.2.3.4"),
-//				},
-//				UseTls: pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type NetworkArea struct {
 	pulumi.CustomResourceState
 

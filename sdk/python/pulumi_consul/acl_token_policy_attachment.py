@@ -29,9 +29,17 @@ class AclTokenPolicyAttachmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             policy: pulumi.Input[str],
-             token_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             policy: Optional[pulumi.Input[str]] = None,
+             token_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if policy is None:
+            raise TypeError("Missing 'policy' argument")
+        if token_id is None and 'tokenId' in kwargs:
+            token_id = kwargs['tokenId']
+        if token_id is None:
+            raise TypeError("Missing 'token_id' argument")
+
         _setter("policy", policy)
         _setter("token_id", token_id)
 
@@ -80,7 +88,11 @@ class _AclTokenPolicyAttachmentState:
              _setter: Callable[[Any, Any], None],
              policy: Optional[pulumi.Input[str]] = None,
              token_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if token_id is None and 'tokenId' in kwargs:
+            token_id = kwargs['tokenId']
+
         if policy is not None:
             _setter("policy", policy)
         if token_id is not None:

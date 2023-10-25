@@ -13,37 +13,6 @@ namespace Pulumi.Consul
     /// The `consul.AclToken` resource writes an ACL token into Consul.
     /// 
     /// ## Example Usage
-    /// ### Basic usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Consul = Pulumi.Consul;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var agent = new Consul.AclPolicy("agent", new()
-    ///     {
-    ///         Rules = @"node_prefix """" {
-    ///   policy = ""read""
-    /// }
-    /// 
-    /// ",
-    ///     });
-    /// 
-    ///     var test = new Consul.AclToken("test", new()
-    ///     {
-    ///         Description = "my test token",
-    ///         Local = true,
-    ///         Policies = new[]
-    ///         {
-    ///             agent.Name,
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

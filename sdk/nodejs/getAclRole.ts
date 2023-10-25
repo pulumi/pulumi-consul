@@ -9,18 +9,6 @@ import * as utilities from "./utilities";
 /**
  * The `consul.AclRole` data source returns the information related to a
  * [Consul ACL Role](https://www.consul.io/api/acl/roles.html).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as consul from "@pulumi/consul";
- *
- * const test = consul.getAclRole({
- *     name: "example-role",
- * });
- * export const consulAclRole = test.then(test => test.id);
- * ```
  */
 export function getAclRole(args: GetAclRoleArgs, opts?: pulumi.InvokeOptions): Promise<GetAclRoleResult> {
 
@@ -87,18 +75,6 @@ export interface GetAclRoleResult {
 /**
  * The `consul.AclRole` data source returns the information related to a
  * [Consul ACL Role](https://www.consul.io/api/acl/roles.html).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as consul from "@pulumi/consul";
- *
- * const test = consul.getAclRole({
- *     name: "example-role",
- * });
- * export const consulAclRole = test.then(test => test.id);
- * ```
  */
 export function getAclRoleOutput(args: GetAclRoleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAclRoleResult> {
     return pulumi.output(args).apply((a: any) => getAclRole(a, opts))

@@ -17,51 +17,6 @@ namespace Pulumi.Consul
     /// &gt; **Cluster peering is currently in technical preview:** Functionality associated with cluster peering is subject to change. You should never use the technical preview release in secure environments or production scenarios. Features in technical preview may have performance issues, scaling issues, and limited support.
     /// 
     /// The functionality described here is available only in Consul version 1.13.0 and later.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Consul = Pulumi.Consul;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     // Create a peering between the EU and US Consul clusters
-    ///     var eu = new Consul.Provider("eu", new()
-    ///     {
-    ///         Address = "eu-cluster:8500",
-    ///     });
-    /// 
-    ///     var us = new Consul.Provider("us", new()
-    ///     {
-    ///         Address = "us-cluster:8500",
-    ///     });
-    /// 
-    ///     var eu_usPeeringToken = new Consul.PeeringToken("eu-usPeeringToken", new()
-    ///     {
-    ///         PeerName = "eu-cluster",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = consul.Us,
-    ///     });
-    /// 
-    ///     var eu_usPeering = new Consul.Peering("eu-usPeering", new()
-    ///     {
-    ///         PeerName = "eu-cluster",
-    ///         PeeringToken = consul_peering_token.Token.Peering_token,
-    ///         Meta = 
-    ///         {
-    ///             { "hello", "world" },
-    ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = consul.Eu,
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// </summary>
     [ConsulResourceType("consul:index/peering:Peering")]
     public partial class Peering : global::Pulumi.CustomResource

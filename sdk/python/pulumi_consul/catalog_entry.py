@@ -44,12 +44,18 @@ class CatalogEntryArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             address: pulumi.Input[str],
-             node: pulumi.Input[str],
+             address: Optional[pulumi.Input[str]] = None,
+             node: Optional[pulumi.Input[str]] = None,
              datacenter: Optional[pulumi.Input[str]] = None,
              services: Optional[pulumi.Input[Sequence[pulumi.Input['CatalogEntryServiceArgs']]]] = None,
              token: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if address is None:
+            raise TypeError("Missing 'address' argument")
+        if node is None:
+            raise TypeError("Missing 'node' argument")
+
         _setter("address", address)
         _setter("node", node)
         if datacenter is not None:
@@ -170,7 +176,9 @@ class _CatalogEntryState:
              node: Optional[pulumi.Input[str]] = None,
              services: Optional[pulumi.Input[Sequence[pulumi.Input['CatalogEntryServiceArgs']]]] = None,
              token: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if address is not None:
             _setter("address", address)
         if datacenter is not None:
@@ -276,27 +284,6 @@ class CatalogEntry(pulumi.CustomResource):
         Registers a node or service with the [Consul Catalog](https://www.consul.io/docs/agent/http/catalog.html#catalog_register).
         Currently, defining health checks is not supported.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_consul as consul
-
-        app = consul.CatalogEntry("app",
-            address="192.168.10.10",
-            node="foobar",
-            services=[consul.CatalogEntryServiceArgs(
-                address="127.0.0.1",
-                id="redis1",
-                name="redis",
-                port=8000,
-                tags=[
-                    "master",
-                    "v1",
-                ],
-            )])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address: The address of the node being added to,
@@ -322,27 +309,6 @@ class CatalogEntry(pulumi.CustomResource):
 
         Registers a node or service with the [Consul Catalog](https://www.consul.io/docs/agent/http/catalog.html#catalog_register).
         Currently, defining health checks is not supported.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_consul as consul
-
-        app = consul.CatalogEntry("app",
-            address="192.168.10.10",
-            node="foobar",
-            services=[consul.CatalogEntryServiceArgs(
-                address="127.0.0.1",
-                id="redis1",
-                name="redis",
-                port=8000,
-                tags=[
-                    "master",
-                    "v1",
-                ],
-            )])
-        ```
 
         :param str resource_name: The name of the resource.
         :param CatalogEntryArgs args: The arguments to use to populate this resource's properties.

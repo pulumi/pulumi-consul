@@ -64,7 +64,7 @@ class AclAuthMethodArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: pulumi.Input[str],
+             type: Optional[pulumi.Input[str]] = None,
              config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              config_json: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
@@ -75,7 +75,21 @@ class AclAuthMethodArgs:
              namespace_rules: Optional[pulumi.Input[Sequence[pulumi.Input['AclAuthMethodNamespaceRuleArgs']]]] = None,
              partition: Optional[pulumi.Input[str]] = None,
              token_locality: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if config_json is None and 'configJson' in kwargs:
+            config_json = kwargs['configJson']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if max_token_ttl is None and 'maxTokenTtl' in kwargs:
+            max_token_ttl = kwargs['maxTokenTtl']
+        if namespace_rules is None and 'namespaceRules' in kwargs:
+            namespace_rules = kwargs['namespaceRules']
+        if token_locality is None and 'tokenLocality' in kwargs:
+            token_locality = kwargs['tokenLocality']
+
         _setter("type", type)
         if config is not None:
             warnings.warn("""The config attribute is deprecated, please use config_json instead.""", DeprecationWarning)
@@ -305,7 +319,19 @@ class _AclAuthMethodState:
              partition: Optional[pulumi.Input[str]] = None,
              token_locality: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if config_json is None and 'configJson' in kwargs:
+            config_json = kwargs['configJson']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if max_token_ttl is None and 'maxTokenTtl' in kwargs:
+            max_token_ttl = kwargs['maxTokenTtl']
+        if namespace_rules is None and 'namespaceRules' in kwargs:
+            namespace_rules = kwargs['namespaceRules']
+        if token_locality is None and 'tokenLocality' in kwargs:
+            token_locality = kwargs['tokenLocality']
+
         if config is not None:
             warnings.warn("""The config attribute is deprecated, please use config_json instead.""", DeprecationWarning)
             pulumi.log.warn("""config is deprecated: The config attribute is deprecated, please use config_json instead.""")
@@ -495,44 +521,6 @@ class AclAuthMethod(pulumi.CustomResource):
         Starting with Consul 1.5.0, the AclAuthMethod resource can be used to
         managed [Consul ACL auth methods](https://www.consul.io/docs/acl/auth-methods).
 
-        ## Example Usage
-
-        Define a `kubernetes` auth method:
-        ```python
-        import pulumi
-        import json
-        import pulumi_consul as consul
-
-        minikube = consul.AclAuthMethod("minikube",
-            type="kubernetes",
-            description="dev minikube cluster",
-            config_json=json.dumps({
-                "Host": "https://192.0.2.42:8443",
-                "CACert": \"\"\"-----BEGIN CERTIFICATE-----
-        ...-----END CERTIFICATE-----
-        \"\"\",
-                "ServiceAccountJWT": "eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9...",
-            }))
-        ```
-
-        Define a `jwt` auth method:
-        ```python
-        import pulumi
-        import json
-        import pulumi_consul as consul
-
-        minikube = consul.AclAuthMethod("minikube",
-            type="jwt",
-            config_json=json.dumps({
-                "JWKSURL": "https://example.com/identity/oidc/.well-known/keys",
-                "JWTSupportedAlgs": "RS256",
-                "BoundIssuer": "https://example.com",
-                "ClaimMappings": {
-                    "subject": "subject",
-                },
-            }))
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config: The raw configuration for this ACL auth method. This
@@ -562,44 +550,6 @@ class AclAuthMethod(pulumi.CustomResource):
         """
         Starting with Consul 1.5.0, the AclAuthMethod resource can be used to
         managed [Consul ACL auth methods](https://www.consul.io/docs/acl/auth-methods).
-
-        ## Example Usage
-
-        Define a `kubernetes` auth method:
-        ```python
-        import pulumi
-        import json
-        import pulumi_consul as consul
-
-        minikube = consul.AclAuthMethod("minikube",
-            type="kubernetes",
-            description="dev minikube cluster",
-            config_json=json.dumps({
-                "Host": "https://192.0.2.42:8443",
-                "CACert": \"\"\"-----BEGIN CERTIFICATE-----
-        ...-----END CERTIFICATE-----
-        \"\"\",
-                "ServiceAccountJWT": "eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9...",
-            }))
-        ```
-
-        Define a `jwt` auth method:
-        ```python
-        import pulumi
-        import json
-        import pulumi_consul as consul
-
-        minikube = consul.AclAuthMethod("minikube",
-            type="jwt",
-            config_json=json.dumps({
-                "JWKSURL": "https://example.com/identity/oidc/.well-known/keys",
-                "JWTSupportedAlgs": "RS256",
-                "BoundIssuer": "https://example.com",
-                "ClaimMappings": {
-                    "subject": "subject",
-                },
-            }))
-        ```
 
         :param str resource_name: The name of the resource.
         :param AclAuthMethodArgs args: The arguments to use to populate this resource's properties.

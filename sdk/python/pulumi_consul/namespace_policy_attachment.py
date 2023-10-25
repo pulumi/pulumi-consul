@@ -29,9 +29,15 @@ class NamespacePolicyAttachmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             namespace: pulumi.Input[str],
-             policy: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             namespace: Optional[pulumi.Input[str]] = None,
+             policy: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if namespace is None:
+            raise TypeError("Missing 'namespace' argument")
+        if policy is None:
+            raise TypeError("Missing 'policy' argument")
+
         _setter("namespace", namespace)
         _setter("policy", policy)
 
@@ -80,7 +86,9 @@ class _NamespacePolicyAttachmentState:
              _setter: Callable[[Any, Any], None],
              namespace: Optional[pulumi.Input[str]] = None,
              policy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if namespace is not None:
             _setter("namespace", namespace)
         if policy is not None:

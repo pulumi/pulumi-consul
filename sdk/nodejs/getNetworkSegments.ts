@@ -9,16 +9,6 @@ import * as utilities from "./utilities";
  *
  * The `consulNetworkSegment` data source can be used to retrieve the network
  * segments defined in the configuration.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as consul from "@pulumi/consul";
- *
- * const segmentsNetworkSegments = consul.getNetworkSegments({});
- * export const segments = segmentsNetworkSegments.then(segmentsNetworkSegments => segmentsNetworkSegments.segments);
- * ```
  */
 export function getNetworkSegments(args?: GetNetworkSegmentsArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkSegmentsResult> {
     args = args || {};
@@ -76,16 +66,6 @@ Please use the token argument in the provider configuration
  *
  * The `consulNetworkSegment` data source can be used to retrieve the network
  * segments defined in the configuration.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as consul from "@pulumi/consul";
- *
- * const segmentsNetworkSegments = consul.getNetworkSegments({});
- * export const segments = segmentsNetworkSegments.then(segmentsNetworkSegments => segmentsNetworkSegments.segments);
- * ```
  */
 export function getNetworkSegmentsOutput(args?: GetNetworkSegmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkSegmentsResult> {
     return pulumi.output(args).apply((a: any) => getNetworkSegments(a, opts))

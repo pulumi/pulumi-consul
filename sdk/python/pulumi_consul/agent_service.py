@@ -41,7 +41,9 @@ class AgentServiceArgs:
              name: Optional[pulumi.Input[str]] = None,
              port: Optional[pulumi.Input[int]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if address is not None:
             _setter("address", address)
         if name is not None:
@@ -132,7 +134,9 @@ class _AgentServiceState:
              name: Optional[pulumi.Input[str]] = None,
              port: Optional[pulumi.Input[int]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if address is not None:
             _setter("address", address)
         if name is not None:
@@ -212,21 +216,6 @@ class AgentService(pulumi.CustomResource):
         define a service associated with a particular agent. Currently, defining
         health checks for an agent service is not supported.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_consul as consul
-
-        app = consul.AgentService("app",
-            address="www.google.com",
-            port=80,
-            tags=[
-                "tag0",
-                "tag1",
-            ])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address: The address of the service. Defaults to the
@@ -250,21 +239,6 @@ class AgentService(pulumi.CustomResource):
         Provides access to the agent service data in Consul. This can be used to
         define a service associated with a particular agent. Currently, defining
         health checks for an agent service is not supported.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_consul as consul
-
-        app = consul.AgentService("app",
-            address="www.google.com",
-            port=80,
-            tags=[
-                "tag0",
-                "tag1",
-            ])
-        ```
 
         :param str resource_name: The name of the resource.
         :param AgentServiceArgs args: The arguments to use to populate this resource's properties.

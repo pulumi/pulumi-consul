@@ -10,44 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Consul
 {
     /// <summary>
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Consul = Pulumi.Consul;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var myappConfig = new Consul.KeyPrefix("myappConfig", new()
-    ///     {
-    ///         Datacenter = "nyc1",
-    ///         PathPrefix = "myapp/config/",
-    ///         SubkeyCollection = new[]
-    ///         {
-    ///             new Consul.Inputs.KeyPrefixSubkeyCollectionArgs
-    ///             {
-    ///                 Flags = 2,
-    ///                 Path = "database/password",
-    ///                 Value = aws_db_instance.App.Password,
-    ///             },
-    ///         },
-    ///         Subkeys = 
-    ///         {
-    ///             { "database/hostname", aws_db_instance.App.Address },
-    ///             { "database/name", aws_db_instance.App.Name },
-    ///             { "database/port", aws_db_instance.App.Port },
-    ///             { "database/username", aws_db_instance.App.Username },
-    ///             { "elb_cname", aws_elb.App.Dns_name },
-    ///             { "s3_bucket_name", aws_s3_bucket.App.Bucket },
-    ///         },
-    ///         Token = "abcd",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// `consul_key_prefix` can be imported. This is useful when the path already exists and you know all keys in path should be managed by Terraform.

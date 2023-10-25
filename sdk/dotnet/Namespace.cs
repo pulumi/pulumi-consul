@@ -14,28 +14,6 @@ namespace Pulumi.Consul
     /// 
     /// The `consul.Namespace` resource provides isolated [Consul Enterprise Namespaces](https://www.consul.io/docs/enterprise/namespaces/index.html).
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Consul = Pulumi.Consul;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var production = new Consul.Namespace("production", new()
-    ///     {
-    ///         Description = "Production namespace",
-    ///         Meta = 
-    ///         {
-    ///             { "foo", "bar" },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// `consul_namespace` can be imported. This is useful to manage attributes of the default namespace that is created automatically:

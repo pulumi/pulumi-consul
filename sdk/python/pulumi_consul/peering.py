@@ -34,11 +34,21 @@ class PeeringArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             peer_name: pulumi.Input[str],
-             peering_token: pulumi.Input[str],
+             peer_name: Optional[pulumi.Input[str]] = None,
+             peering_token: Optional[pulumi.Input[str]] = None,
              meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              partition: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if peer_name is None and 'peerName' in kwargs:
+            peer_name = kwargs['peerName']
+        if peer_name is None:
+            raise TypeError("Missing 'peer_name' argument")
+        if peering_token is None and 'peeringToken' in kwargs:
+            peering_token = kwargs['peeringToken']
+        if peering_token is None:
+            raise TypeError("Missing 'peering_token' argument")
+
         _setter("peer_name", peer_name)
         _setter("peering_token", peering_token)
         if meta is not None:
@@ -137,7 +147,23 @@ class _PeeringState:
              peer_server_name: Optional[pulumi.Input[str]] = None,
              peering_token: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if deleted_at is None and 'deletedAt' in kwargs:
+            deleted_at = kwargs['deletedAt']
+        if peer_ca_pems is None and 'peerCaPems' in kwargs:
+            peer_ca_pems = kwargs['peerCaPems']
+        if peer_id is None and 'peerId' in kwargs:
+            peer_id = kwargs['peerId']
+        if peer_name is None and 'peerName' in kwargs:
+            peer_name = kwargs['peerName']
+        if peer_server_addresses is None and 'peerServerAddresses' in kwargs:
+            peer_server_addresses = kwargs['peerServerAddresses']
+        if peer_server_name is None and 'peerServerName' in kwargs:
+            peer_server_name = kwargs['peerServerName']
+        if peering_token is None and 'peeringToken' in kwargs:
+            peering_token = kwargs['peeringToken']
+
         if deleted_at is not None:
             _setter("deleted_at", deleted_at)
         if meta is not None:
@@ -278,26 +304,6 @@ class Peering(pulumi.CustomResource):
 
         The functionality described here is available only in Consul version 1.13.0 and later.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_consul as consul
-
-        # Create a peering between the EU and US Consul clusters
-        eu = consul.Provider("eu", address="eu-cluster:8500")
-        us = consul.Provider("us", address="us-cluster:8500")
-        eu_us_peering_token = consul.PeeringToken("eu-usPeeringToken", peer_name="eu-cluster",
-        opts=pulumi.ResourceOptions(provider=consul["us"]))
-        eu_us_peering = consul.Peering("eu-usPeering",
-            peer_name="eu-cluster",
-            peering_token=consul_peering_token["token"]["peering_token"],
-            meta={
-                "hello": "world",
-            },
-            opts=pulumi.ResourceOptions(provider=consul["eu"]))
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the cluster peering process.
@@ -318,26 +324,6 @@ class Peering(pulumi.CustomResource):
         > **Cluster peering is currently in technical preview:** Functionality associated with cluster peering is subject to change. You should never use the technical preview release in secure environments or production scenarios. Features in technical preview may have performance issues, scaling issues, and limited support.
 
         The functionality described here is available only in Consul version 1.13.0 and later.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_consul as consul
-
-        # Create a peering between the EU and US Consul clusters
-        eu = consul.Provider("eu", address="eu-cluster:8500")
-        us = consul.Provider("us", address="us-cluster:8500")
-        eu_us_peering_token = consul.PeeringToken("eu-usPeeringToken", peer_name="eu-cluster",
-        opts=pulumi.ResourceOptions(provider=consul["us"]))
-        eu_us_peering = consul.Peering("eu-usPeering",
-            peer_name="eu-cluster",
-            peering_token=consul_peering_token["token"]["peering_token"],
-            meta={
-                "hello": "world",
-            },
-            opts=pulumi.ResourceOptions(provider=consul["eu"]))
-        ```
 
         :param str resource_name: The name of the resource.
         :param PeeringArgs args: The arguments to use to populate this resource's properties.
