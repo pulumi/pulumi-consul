@@ -304,6 +304,26 @@ class Peering(pulumi.CustomResource):
 
         The functionality described here is available only in Consul version 1.13.0 and later.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_consul as consul
+
+        # Create a peering between the EU and US Consul clusters
+        eu = consul.Provider("eu", address="eu-cluster:8500")
+        us = consul.Provider("us", address="us-cluster:8500")
+        eu_us_peering_token = consul.PeeringToken("eu-usPeeringToken", peer_name="eu-cluster",
+        opts=pulumi.ResourceOptions(provider=consul["us"]))
+        eu_us_peering = consul.Peering("eu-usPeering",
+            peer_name="eu-cluster",
+            peering_token=consul_peering_token["token"]["peering_token"],
+            meta={
+                "hello": "world",
+            },
+            opts=pulumi.ResourceOptions(provider=consul["eu"]))
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the cluster peering process.
@@ -324,6 +344,26 @@ class Peering(pulumi.CustomResource):
         > **Cluster peering is currently in technical preview:** Functionality associated with cluster peering is subject to change. You should never use the technical preview release in secure environments or production scenarios. Features in technical preview may have performance issues, scaling issues, and limited support.
 
         The functionality described here is available only in Consul version 1.13.0 and later.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_consul as consul
+
+        # Create a peering between the EU and US Consul clusters
+        eu = consul.Provider("eu", address="eu-cluster:8500")
+        us = consul.Provider("us", address="us-cluster:8500")
+        eu_us_peering_token = consul.PeeringToken("eu-usPeeringToken", peer_name="eu-cluster",
+        opts=pulumi.ResourceOptions(provider=consul["us"]))
+        eu_us_peering = consul.Peering("eu-usPeering",
+            peer_name="eu-cluster",
+            peering_token=consul_peering_token["token"]["peering_token"],
+            meta={
+                "hello": "world",
+            },
+            opts=pulumi.ResourceOptions(provider=consul["eu"]))
+        ```
 
         :param str resource_name: The name of the resource.
         :param PeeringArgs args: The arguments to use to populate this resource's properties.

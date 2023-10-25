@@ -12,6 +12,51 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			testAclPolicy, err := consul.NewAclPolicy(ctx, "testAclPolicy", &consul.AclPolicyArgs{
+//				Rules: pulumi.String("node \"\" { policy = \"read\" }"),
+//				Datacenters: pulumi.StringArray{
+//					pulumi.String("dc1"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			testAclToken, err := consul.NewAclToken(ctx, "testAclToken", &consul.AclTokenArgs{
+//				Description: pulumi.String("test"),
+//				Policies: pulumi.StringArray{
+//					testAclPolicy.Name,
+//				},
+//				Local: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			read := consul.GetAclTokenSecretIdOutput(ctx, consul.GetAclTokenSecretIdOutputArgs{
+//				AccessorId: testAclToken.ID(),
+//				PgpKey:     pulumi.String("keybase:my_username"),
+//			}, nil)
+//			ctx.Export("consulAclTokenSecretId", read.ApplyT(func(read consul.GetAclTokenSecretIdResult) (*string, error) {
+//				return &read.EncryptedSecretId, nil
+//			}).(pulumi.StringPtrOutput))
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetAclTokenSecretId(ctx *pulumi.Context, args *GetAclTokenSecretIdArgs, opts ...pulumi.InvokeOption) (*GetAclTokenSecretIdResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAclTokenSecretIdResult

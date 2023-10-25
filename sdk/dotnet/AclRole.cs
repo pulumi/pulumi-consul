@@ -12,6 +12,44 @@ namespace Pulumi.Consul
     /// <summary>
     /// Starting with Consul 1.5.0, the consul.AclRole can be used to managed Consul ACL roles.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Consul = Pulumi.Consul;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var read_policy = new Consul.AclPolicy("read-policy", new()
+    ///     {
+    ///         Datacenters = new[]
+    ///         {
+    ///             "dc1",
+    ///         },
+    ///         Rules = "node \"\" { policy = \"read\" }",
+    ///     });
+    /// 
+    ///     var read = new Consul.AclRole("read", new()
+    ///     {
+    ///         Description = "bar",
+    ///         Policies = new[]
+    ///         {
+    ///             read_policy.Id,
+    ///         },
+    ///         ServiceIdentities = new[]
+    ///         {
+    ///             new Consul.Inputs.AclRoleServiceIdentityArgs
+    ///             {
+    ///                 ServiceName = "foo",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// `consul_acl_role` can be imported:

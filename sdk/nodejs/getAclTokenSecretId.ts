@@ -4,6 +4,29 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ *
+ * const testAclPolicy = new consul.AclPolicy("testAclPolicy", {
+ *     rules: "node \"\" { policy = \"read\" }",
+ *     datacenters: ["dc1"],
+ * });
+ * const testAclToken = new consul.AclToken("testAclToken", {
+ *     description: "test",
+ *     policies: [testAclPolicy.name],
+ *     local: true,
+ * });
+ * const read = consul.getAclTokenSecretIdOutput({
+ *     accessorId: testAclToken.id,
+ *     pgpKey: "keybase:my_username",
+ * });
+ * export const consulAclTokenSecretId = read.apply(read => read.encryptedSecretId);
+ * ```
+ */
 export function getAclTokenSecretId(args: GetAclTokenSecretIdArgs, opts?: pulumi.InvokeOptions): Promise<GetAclTokenSecretIdResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -52,6 +75,29 @@ export interface GetAclTokenSecretIdResult {
      */
     readonly secretId: string;
 }
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ *
+ * const testAclPolicy = new consul.AclPolicy("testAclPolicy", {
+ *     rules: "node \"\" { policy = \"read\" }",
+ *     datacenters: ["dc1"],
+ * });
+ * const testAclToken = new consul.AclToken("testAclToken", {
+ *     description: "test",
+ *     policies: [testAclPolicy.name],
+ *     local: true,
+ * });
+ * const read = consul.getAclTokenSecretIdOutput({
+ *     accessorId: testAclToken.id,
+ *     pgpKey: "keybase:my_username",
+ * });
+ * export const consulAclTokenSecretId = read.apply(read => read.encryptedSecretId);
+ * ```
+ */
 export function getAclTokenSecretIdOutput(args: GetAclTokenSecretIdOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAclTokenSecretIdResult> {
     return pulumi.output(args).apply((a: any) => getAclTokenSecretId(a, opts))
 }

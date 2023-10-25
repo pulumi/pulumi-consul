@@ -521,6 +521,44 @@ class AclAuthMethod(pulumi.CustomResource):
         Starting with Consul 1.5.0, the AclAuthMethod resource can be used to
         managed [Consul ACL auth methods](https://www.consul.io/docs/acl/auth-methods).
 
+        ## Example Usage
+
+        Define a `kubernetes` auth method:
+        ```python
+        import pulumi
+        import json
+        import pulumi_consul as consul
+
+        minikube = consul.AclAuthMethod("minikube",
+            type="kubernetes",
+            description="dev minikube cluster",
+            config_json=json.dumps({
+                "Host": "https://192.0.2.42:8443",
+                "CACert": \"\"\"-----BEGIN CERTIFICATE-----
+        ...-----END CERTIFICATE-----
+        \"\"\",
+                "ServiceAccountJWT": "eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9...",
+            }))
+        ```
+
+        Define a `jwt` auth method:
+        ```python
+        import pulumi
+        import json
+        import pulumi_consul as consul
+
+        minikube = consul.AclAuthMethod("minikube",
+            type="jwt",
+            config_json=json.dumps({
+                "JWKSURL": "https://example.com/identity/oidc/.well-known/keys",
+                "JWTSupportedAlgs": "RS256",
+                "BoundIssuer": "https://example.com",
+                "ClaimMappings": {
+                    "subject": "subject",
+                },
+            }))
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config: The raw configuration for this ACL auth method. This
@@ -550,6 +588,44 @@ class AclAuthMethod(pulumi.CustomResource):
         """
         Starting with Consul 1.5.0, the AclAuthMethod resource can be used to
         managed [Consul ACL auth methods](https://www.consul.io/docs/acl/auth-methods).
+
+        ## Example Usage
+
+        Define a `kubernetes` auth method:
+        ```python
+        import pulumi
+        import json
+        import pulumi_consul as consul
+
+        minikube = consul.AclAuthMethod("minikube",
+            type="kubernetes",
+            description="dev minikube cluster",
+            config_json=json.dumps({
+                "Host": "https://192.0.2.42:8443",
+                "CACert": \"\"\"-----BEGIN CERTIFICATE-----
+        ...-----END CERTIFICATE-----
+        \"\"\",
+                "ServiceAccountJWT": "eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9...",
+            }))
+        ```
+
+        Define a `jwt` auth method:
+        ```python
+        import pulumi
+        import json
+        import pulumi_consul as consul
+
+        minikube = consul.AclAuthMethod("minikube",
+            type="jwt",
+            config_json=json.dumps({
+                "JWKSURL": "https://example.com/identity/oidc/.well-known/keys",
+                "JWTSupportedAlgs": "RS256",
+                "BoundIssuer": "https://example.com",
+                "ClaimMappings": {
+                    "subject": "subject",
+                },
+            }))
+        ```
 
         :param str resource_name: The name of the resource.
         :param AclAuthMethodArgs args: The arguments to use to populate this resource's properties.

@@ -13,6 +13,482 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//
+//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"Config": map[string]interface{}{
+//					"local_connect_timeout_ms": 1000,
+//					"handshake_timeout_ms":     10000,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			_, err = consul.NewConfigEntry(ctx, "proxyDefaults", &consul.ConfigEntryArgs{
+//				Kind:       pulumi.String("proxy-defaults"),
+//				ConfigJson: pulumi.String(json0),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tmpJSON1, err := json.Marshal(map[string]interface{}{
+//				"Protocol": "http",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json1 := string(tmpJSON1)
+//			_, err = consul.NewConfigEntry(ctx, "web", &consul.ConfigEntryArgs{
+//				Kind:       pulumi.String("service-defaults"),
+//				ConfigJson: pulumi.String(json1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tmpJSON2, err := json.Marshal(map[string]interface{}{
+//				"Protocol": "http",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json2 := string(tmpJSON2)
+//			_, err = consul.NewConfigEntry(ctx, "admin", &consul.ConfigEntryArgs{
+//				Kind:       pulumi.String("service-defaults"),
+//				ConfigJson: pulumi.String(json2),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tmpJSON3, err := json.Marshal(map[string]interface{}{
+//				"DefaultSubset": "v1",
+//				"Subsets": map[string]interface{}{
+//					"v1": map[string]interface{}{
+//						"Filter": "Service.Meta.version == v1",
+//					},
+//					"v2": map[string]interface{}{
+//						"Filter": "Service.Meta.version == v2",
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json3 := string(tmpJSON3)
+//			_, err = consul.NewConfigEntry(ctx, "serviceResolver", &consul.ConfigEntryArgs{
+//				Kind:       pulumi.String("service-resolver"),
+//				ConfigJson: pulumi.String(json3),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tmpJSON4, err := json.Marshal(map[string]interface{}{
+//				"Splits": []interface{}{
+//					map[string]interface{}{
+//						"Weight":        90,
+//						"ServiceSubset": "v1",
+//					},
+//					map[string]interface{}{
+//						"Weight":        10,
+//						"ServiceSubset": "v2",
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json4 := string(tmpJSON4)
+//			_, err = consul.NewConfigEntry(ctx, "serviceSplitter", &consul.ConfigEntryArgs{
+//				Kind:       pulumi.String("service-splitter"),
+//				ConfigJson: pulumi.String(json4),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tmpJSON5, err := json.Marshal(map[string]interface{}{
+//				"Routes": []map[string]interface{}{
+//					map[string]interface{}{
+//						"Match": map[string]interface{}{
+//							"HTTP": map[string]interface{}{
+//								"PathPrefix": "/admin",
+//							},
+//						},
+//						"Destination": map[string]interface{}{
+//							"Service": "admin",
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json5 := string(tmpJSON5)
+//			_, err = consul.NewConfigEntry(ctx, "serviceRouter", &consul.ConfigEntryArgs{
+//				Kind:       pulumi.String("service-router"),
+//				ConfigJson: pulumi.String(json5),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tmpJSON6, err := json.Marshal(map[string]interface{}{
+//				"TLS": map[string]interface{}{
+//					"Enabled": true,
+//				},
+//				"Listeners": []map[string]interface{}{
+//					map[string]interface{}{
+//						"Port":     8000,
+//						"Protocol": "http",
+//						"Services": []map[string]interface{}{
+//							map[string]interface{}{
+//								"Name": "*",
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json6 := string(tmpJSON6)
+//			_, err = consul.NewConfigEntry(ctx, "ingressGateway", &consul.ConfigEntryArgs{
+//				Kind:       pulumi.String("ingress-gateway"),
+//				ConfigJson: pulumi.String(json6),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tmpJSON7, err := json.Marshal(map[string]interface{}{
+//				"Services": []map[string]interface{}{
+//					map[string]interface{}{
+//						"Name": "billing",
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json7 := string(tmpJSON7)
+//			_, err = consul.NewConfigEntry(ctx, "terminatingGateway", &consul.ConfigEntryArgs{
+//				Kind:       pulumi.String("terminating-gateway"),
+//				ConfigJson: pulumi.String(json7),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### `service-intentions` config entry
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//
+//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"Sources": []map[string]interface{}{
+//					map[string]interface{}{
+//						"Action":     "allow",
+//						"Name":       "frontend-webapp",
+//						"Precedence": 9,
+//						"Type":       "consul",
+//					},
+//					map[string]interface{}{
+//						"Action":     "allow",
+//						"Name":       "nightly-cronjob",
+//						"Precedence": 9,
+//						"Type":       "consul",
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			_, err = consul.NewConfigEntry(ctx, "serviceIntentions", &consul.ConfigEntryArgs{
+//				Kind:       pulumi.String("service-intentions"),
+//				ConfigJson: pulumi.String(json0),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//
+//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"Protocol": "http",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			_, err = consul.NewConfigEntry(ctx, "sd", &consul.ConfigEntryArgs{
+//				Kind:       pulumi.String("service-defaults"),
+//				ConfigJson: pulumi.String(json0),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tmpJSON1, err := json.Marshal(map[string]interface{}{
+//				"Issuer": "test-issuer",
+//				"JSONWebKeySet": map[string]interface{}{
+//					"Remote": map[string]interface{}{
+//						"URI":                 "https://127.0.0.1:9091",
+//						"FetchAsynchronously": true,
+//					},
+//				},
+//				"Forwarding": map[string]interface{}{
+//					"HeaderName": "test-token",
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json1 := string(tmpJSON1)
+//			jwtProvider, err := consul.NewConfigEntry(ctx, "jwtProvider", &consul.ConfigEntryArgs{
+//				Kind:       pulumi.String("jwt-provider"),
+//				ConfigJson: pulumi.String(json1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = consul.NewConfigEntry(ctx, "serviceIntentions", &consul.ConfigEntryArgs{
+//				Kind: pulumi.String("service-intentions"),
+//				ConfigJson: jwtProvider.Name.ApplyT(func(name string) (pulumi.String, error) {
+//					var _zero pulumi.String
+//					tmpJSON2, err := json.Marshal(map[string]interface{}{
+//						"Sources": []interface{}{
+//							map[string]interface{}{
+//								"Name": "contractor-webapp",
+//								"Permissions": []map[string]interface{}{
+//									map[string]interface{}{
+//										"Action": "allow",
+//										"HTTP": map[string]interface{}{
+//											"Methods": []string{
+//												"GET",
+//												"HEAD",
+//											},
+//											"PathExact": "/healtz",
+//										},
+//										"JWT": map[string]interface{}{
+//											"Providers": []map[string]interface{}{
+//												map[string]interface{}{
+//													"Name": name,
+//												},
+//											},
+//										},
+//									},
+//								},
+//								"Precedence": 9,
+//								"Type":       "consul",
+//							},
+//							map[string]interface{}{
+//								"Name": "admin-dashboard-webapp",
+//								"Permissions": []map[string]interface{}{
+//									map[string]interface{}{
+//										"Action": "deny",
+//										"HTTP": map[string]interface{}{
+//											"PathPrefix": "/debugz",
+//										},
+//									},
+//									map[string]interface{}{
+//										"Action": "allow",
+//										"HTTP": map[string]interface{}{
+//											"PathPrefix": "/",
+//										},
+//									},
+//								},
+//								"Precedence": 9,
+//								"Type":       "consul",
+//							},
+//						},
+//					})
+//					if err != nil {
+//						return _zero, err
+//					}
+//					json2 := string(tmpJSON2)
+//					return pulumi.String(json2), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### `exported-services` config entry
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//
+//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"Services": []map[string]interface{}{
+//					map[string]interface{}{
+//						"Name":      "test",
+//						"Namespace": "default",
+//						"Consumers": []map[string]interface{}{
+//							map[string]interface{}{
+//								"Partition": "default",
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			_, err = consul.NewConfigEntry(ctx, "exportedServices", &consul.ConfigEntryArgs{
+//				Kind:       pulumi.String("exported-services"),
+//				ConfigJson: pulumi.String(json0),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### `mesh` config entry
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//
+//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"TransparentProxy": map[string]interface{}{
+//					"MeshDestinationsOnly": true,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			_, err = consul.NewConfigEntry(ctx, "mesh", &consul.ConfigEntryArgs{
+//				Kind:       pulumi.String("mesh"),
+//				Partition:  pulumi.String("default"),
+//				ConfigJson: pulumi.String(json0),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### `jwt-provider` config entry
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//
+//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"Issuer": "https://your.issuer.com",
+//				"JSONWebKeySet": map[string]interface{}{
+//					"Remote": map[string]interface{}{
+//						"URI":                 "https://your-remote.jwks.com",
+//						"FetchAsynchronously": true,
+//						"CacheDuration":       "10s",
+//					},
+//				},
+//				"Forwarding": map[string]interface{}{
+//					"HeaderName": "test-token",
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			_, err = consul.NewConfigEntry(ctx, "jwtProvider", &consul.ConfigEntryArgs{
+//				Kind:       pulumi.String("jwt-provider"),
+//				ConfigJson: pulumi.String(json0),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // `consul_config_entry` can be imported using the syntax `<kind>/<name>` if the config entry is in the default partition and default namespace, or `<partition>/<namespace>/<kind>/<name>` for config entries in a non-default partition or namespace:

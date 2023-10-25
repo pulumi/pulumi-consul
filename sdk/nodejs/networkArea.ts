@@ -14,6 +14,19 @@ import * as utilities from "./utilities";
  * communication, and relationships can be made between independent pairs of
  * datacenters, so not all servers need to be fully connected. This allows for
  * complex topologies among Consul datacenters like hub/spoke and more general trees.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ *
+ * const dc2 = new consul.NetworkArea("dc2", {
+ *     peerDatacenter: "dc2",
+ *     retryJoins: ["1.2.3.4"],
+ *     useTls: true,
+ * });
+ * ```
  */
 export class NetworkArea extends pulumi.CustomResource {
     /**

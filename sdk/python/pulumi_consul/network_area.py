@@ -300,6 +300,18 @@ class NetworkArea(pulumi.CustomResource):
         datacenters, so not all servers need to be fully connected. This allows for
         complex topologies among Consul datacenters like hub/spoke and more general trees.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_consul as consul
+
+        dc2 = consul.NetworkArea("dc2",
+            peer_datacenter="dc2",
+            retry_joins=["1.2.3.4"],
+            use_tls=True)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the
@@ -329,6 +341,18 @@ class NetworkArea(pulumi.CustomResource):
         communication, and relationships can be made between independent pairs of
         datacenters, so not all servers need to be fully connected. This allows for
         complex topologies among Consul datacenters like hub/spoke and more general trees.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_consul as consul
+
+        dc2 = consul.NetworkArea("dc2",
+            peer_datacenter="dc2",
+            retry_joins=["1.2.3.4"],
+            use_tls=True)
+        ```
 
         :param str resource_name: The name of the resource.
         :param NetworkAreaArgs args: The arguments to use to populate this resource's properties.

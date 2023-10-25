@@ -19,6 +19,29 @@ namespace Pulumi.Consul
     /// communication, and relationships can be made between independent pairs of
     /// datacenters, so not all servers need to be fully connected. This allows for
     /// complex topologies among Consul datacenters like hub/spoke and more general trees.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Consul = Pulumi.Consul;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var dc2 = new Consul.NetworkArea("dc2", new()
+    ///     {
+    ///         PeerDatacenter = "dc2",
+    ///         RetryJoins = new[]
+    ///         {
+    ///             "1.2.3.4",
+    ///         },
+    ///         UseTls = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [ConsulResourceType("consul:index/networkArea:NetworkArea")]
     public partial class NetworkArea : global::Pulumi.CustomResource

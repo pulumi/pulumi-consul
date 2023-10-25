@@ -167,6 +167,16 @@ def get_acl_token(accessor_id: Optional[str] = None,
     If you want to get the secret ID associated with a token, use the
     [`get_acl_token_secret_id` data source](https://www.terraform.io/docs/providers/consul/d/acl_token_secret_id.html).
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_consul as consul
+
+    test = consul.get_acl_token(accessor_id="00000000-0000-0000-0000-000000000002")
+    pulumi.export("consulAclPolicies", test.policies)
+    ```
+
 
     :param str accessor_id: The accessor ID of the ACL token.
     :param str namespace: The namespace to lookup the ACL token.
@@ -204,6 +214,16 @@ def get_acl_token_output(accessor_id: Optional[pulumi.Input[str]] = None,
 
     If you want to get the secret ID associated with a token, use the
     [`get_acl_token_secret_id` data source](https://www.terraform.io/docs/providers/consul/d/acl_token_secret_id.html).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_consul as consul
+
+    test = consul.get_acl_token(accessor_id="00000000-0000-0000-0000-000000000002")
+    pulumi.export("consulAclPolicies", test.policies)
+    ```
 
 
     :param str accessor_id: The accessor ID of the ACL token.

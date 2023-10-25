@@ -9,6 +9,44 @@ import * as utilities from "./utilities";
 /**
  * Starting with Consul 1.5.0, the consul.AclAuthMethod resource can be used to
  * managed [Consul ACL auth methods](https://www.consul.io/docs/acl/auth-methods).
+ *
+ * ## Example Usage
+ *
+ * Define a `kubernetes` auth method:
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ *
+ * const minikube = new consul.AclAuthMethod("minikube", {
+ *     type: "kubernetes",
+ *     description: "dev minikube cluster",
+ *     configJson: JSON.stringify({
+ *         Host: "https://192.0.2.42:8443",
+ *         CACert: `-----BEGIN CERTIFICATE-----
+ * ...-----END CERTIFICATE-----
+ * `,
+ *         ServiceAccountJWT: "eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9...",
+ *     }),
+ * });
+ * ```
+ *
+ * Define a `jwt` auth method:
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ *
+ * const minikube = new consul.AclAuthMethod("minikube", {
+ *     type: "jwt",
+ *     configJson: JSON.stringify({
+ *         JWKSURL: "https://example.com/identity/oidc/.well-known/keys",
+ *         JWTSupportedAlgs: "RS256",
+ *         BoundIssuer: "https://example.com",
+ *         ClaimMappings: {
+ *             subject: "subject",
+ *         },
+ *     }),
+ * });
+ * ```
  */
 export class AclAuthMethod extends pulumi.CustomResource {
     /**

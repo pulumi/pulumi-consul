@@ -5,7 +5,7 @@ go 1.21
 require (
 	github.com/hashicorp/terraform-plugin-sdk v1.17.2
 	github.com/hashicorp/terraform-provider-consul v1.1.1-0.20230724083048-ba52b81c9d21
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.63.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.63.1
 	github.com/pulumi/pulumi/sdk/v3 v3.90.1
 )
 

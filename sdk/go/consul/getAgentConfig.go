@@ -19,6 +19,31 @@ import (
 // The `getAgentConfig` data source returns
 // [configuration data](https://www.consul.io/api/agent.html#read-configuration)
 // from the agent specified in the `provider`.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			remoteAgent, err := consul.GetAgentConfig(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("consulVersion", remoteAgent.Version)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetAgentConfig(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetAgentConfigResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAgentConfigResult

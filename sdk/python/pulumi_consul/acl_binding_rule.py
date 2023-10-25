@@ -329,6 +329,31 @@ class AclBindingRule(pulumi.CustomResource):
         Starting with Consul 1.5.0, the AclBindingRule resource can be used to
         managed Consul ACL binding rules.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_consul as consul
+
+        minikube = consul.AclAuthMethod("minikube",
+            config={
+                "CACert": \"\"\"-----BEGIN CERTIFICATE-----
+        ...-----END CERTIFICATE-----
+
+        \"\"\",
+                "Host": "https://192.0.2.42:8443",
+                "ServiceAccountJWT": "eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9...",
+            },
+            description="dev minikube cluster",
+            type="kubernetes")
+        test = consul.AclBindingRule("test",
+            auth_method=minikube.name,
+            bind_name="minikube",
+            bind_type="service",
+            description="foobar",
+            selector="serviceaccount.namespace==default")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] auth_method: The name of the ACL auth method this rule apply.
@@ -348,6 +373,31 @@ class AclBindingRule(pulumi.CustomResource):
         """
         Starting with Consul 1.5.0, the AclBindingRule resource can be used to
         managed Consul ACL binding rules.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_consul as consul
+
+        minikube = consul.AclAuthMethod("minikube",
+            config={
+                "CACert": \"\"\"-----BEGIN CERTIFICATE-----
+        ...-----END CERTIFICATE-----
+
+        \"\"\",
+                "Host": "https://192.0.2.42:8443",
+                "ServiceAccountJWT": "eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9...",
+            },
+            description="dev minikube cluster",
+            type="kubernetes")
+        test = consul.AclBindingRule("test",
+            auth_method=minikube.name,
+            bind_name="minikube",
+            bind_type="service",
+            description="foobar",
+            selector="serviceaccount.namespace==default")
+        ```
 
         :param str resource_name: The name of the resource.
         :param AclBindingRuleArgs args: The arguments to use to populate this resource's properties.

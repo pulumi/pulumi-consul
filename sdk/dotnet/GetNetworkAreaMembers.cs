@@ -16,6 +16,42 @@ namespace Pulumi.Consul
         /// 
         /// The `consul.getNetworkAreaMembers` data source provides a list of the Consul
         /// servers present in a specific network area.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Consul = Pulumi.Consul;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var dc2NetworkArea = new Consul.NetworkArea("dc2NetworkArea", new()
+        ///     {
+        ///         PeerDatacenter = "dc2",
+        ///         RetryJoins = new[]
+        ///         {
+        ///             "1.2.3.4",
+        ///         },
+        ///         UseTls = true,
+        ///     });
+        /// 
+        ///     var dc2NetworkAreaMembers = Consul.GetNetworkAreaMembers.Invoke(new()
+        ///     {
+        ///         Uuid = dc2NetworkArea.Id,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["members"] = dc2NetworkAreaMembers.Apply(getNetworkAreaMembersResult =&gt; getNetworkAreaMembersResult.Members),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetNetworkAreaMembersResult> InvokeAsync(GetNetworkAreaMembersArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNetworkAreaMembersResult>("consul:index/getNetworkAreaMembers:getNetworkAreaMembers", args ?? new GetNetworkAreaMembersArgs(), options.WithDefaults());
@@ -25,6 +61,42 @@ namespace Pulumi.Consul
         /// 
         /// The `consul.getNetworkAreaMembers` data source provides a list of the Consul
         /// servers present in a specific network area.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Consul = Pulumi.Consul;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var dc2NetworkArea = new Consul.NetworkArea("dc2NetworkArea", new()
+        ///     {
+        ///         PeerDatacenter = "dc2",
+        ///         RetryJoins = new[]
+        ///         {
+        ///             "1.2.3.4",
+        ///         },
+        ///         UseTls = true,
+        ///     });
+        /// 
+        ///     var dc2NetworkAreaMembers = Consul.GetNetworkAreaMembers.Invoke(new()
+        ///     {
+        ///         Uuid = dc2NetworkArea.Id,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["members"] = dc2NetworkAreaMembers.Apply(getNetworkAreaMembersResult =&gt; getNetworkAreaMembersResult.Members),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetNetworkAreaMembersResult> Invoke(GetNetworkAreaMembersInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNetworkAreaMembersResult>("consul:index/getNetworkAreaMembers:getNetworkAreaMembers", args ?? new GetNetworkAreaMembersInvokeArgs(), options.WithDefaults());

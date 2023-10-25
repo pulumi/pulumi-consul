@@ -7,6 +7,22 @@ import * as utilities from "./utilities";
 /**
  * Starting with Consul 1.4.0, the consul.AclPolicy can be used to managed Consul ACL policies.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ *
+ * const test = new consul.AclPolicy("test", {
+ *     datacenters: ["dc1"],
+ *     rules: `node_prefix "" {
+ *   policy = "read"
+ * }
+ *
+ * `,
+ * });
+ * ```
+ *
  * ## Import
  *
  * `consul_acl_policy` can be imported:

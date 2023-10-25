@@ -422,6 +422,18 @@ class AutopilotConfig(pulumi.CustomResource):
         It includes to automatically cleanup dead servers, monitor the status of the Raft
         cluster and stable server introduction.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_consul as consul
+
+        config = consul.AutopilotConfig("config",
+            cleanup_dead_servers=False,
+            last_contact_threshold="1s",
+            max_trailing_logs=500)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] cleanup_dead_servers: Whether to remove failing servers when a
@@ -455,6 +467,18 @@ class AutopilotConfig(pulumi.CustomResource):
 
         It includes to automatically cleanup dead servers, monitor the status of the Raft
         cluster and stable server introduction.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_consul as consul
+
+        config = consul.AutopilotConfig("config",
+            cleanup_dead_servers=False,
+            last_contact_threshold="1s",
+            max_trailing_logs=500)
+        ```
 
         :param str resource_name: The name of the resource.
         :param AutopilotConfigArgs args: The arguments to use to populate this resource's properties.

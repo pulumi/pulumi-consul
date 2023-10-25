@@ -14,6 +14,32 @@ namespace Pulumi.Consul
         /// <summary>
         /// The `consul.AclAuthMethod` data source returns the information related to a
         /// [Consul Auth Method](https://www.consul.io/docs/acl/acl-auth-methods.html).
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Consul = Pulumi.Consul;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var test = Consul.GetAclAuthMethod.Invoke(new()
+        ///     {
+        ///         Name = "minikube",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["consulAclAuthMethod"] = test.Apply(getAclAuthMethodResult =&gt; getAclAuthMethodResult.Config),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAclAuthMethodResult> InvokeAsync(GetAclAuthMethodArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAclAuthMethodResult>("consul:index/getAclAuthMethod:getAclAuthMethod", args ?? new GetAclAuthMethodArgs(), options.WithDefaults());
@@ -21,6 +47,32 @@ namespace Pulumi.Consul
         /// <summary>
         /// The `consul.AclAuthMethod` data source returns the information related to a
         /// [Consul Auth Method](https://www.consul.io/docs/acl/acl-auth-methods.html).
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Consul = Pulumi.Consul;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var test = Consul.GetAclAuthMethod.Invoke(new()
+        ///     {
+        ///         Name = "minikube",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["consulAclAuthMethod"] = test.Apply(getAclAuthMethodResult =&gt; getAclAuthMethodResult.Config),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetAclAuthMethodResult> Invoke(GetAclAuthMethodInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAclAuthMethodResult>("consul:index/getAclAuthMethod:getAclAuthMethod", args ?? new GetAclAuthMethodInvokeArgs(), options.WithDefaults());

@@ -409,6 +409,33 @@ class Intention(pulumi.CustomResource):
         in conjunction with the `Service` datasource when referencing services
         registered on nodes that have a running Consul agent.
 
+        ## Example Usage
+
+        Create a simplest intention with static service names:
+
+        ```python
+        import pulumi
+        import pulumi_consul as consul
+
+        database = consul.Intention("database",
+            action="allow",
+            destination_name="db",
+            source_name="api")
+        ```
+
+        Referencing a known service via a datasource:
+
+        ```python
+        import pulumi
+        import pulumi_consul as consul
+
+        database = consul.Intention("database",
+            action="allow",
+            destination_name=consul_service["pg"]["name"],
+            source_name="api")
+        pg = consul.get_service(name="postgresql")
+        ```
+
         ## Import
 
         `consul_intention` can be imported:
@@ -455,6 +482,33 @@ class Intention(pulumi.CustomResource):
         that will be created in the future when creating intentions. This resource can be used
         in conjunction with the `Service` datasource when referencing services
         registered on nodes that have a running Consul agent.
+
+        ## Example Usage
+
+        Create a simplest intention with static service names:
+
+        ```python
+        import pulumi
+        import pulumi_consul as consul
+
+        database = consul.Intention("database",
+            action="allow",
+            destination_name="db",
+            source_name="api")
+        ```
+
+        Referencing a known service via a datasource:
+
+        ```python
+        import pulumi
+        import pulumi_consul as consul
+
+        database = consul.Intention("database",
+            action="allow",
+            destination_name=consul_service["pg"]["name"],
+            source_name="api")
+        pg = consul.get_service(name="postgresql")
+        ```
 
         ## Import
 

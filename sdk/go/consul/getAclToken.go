@@ -17,6 +17,33 @@ import (
 //
 // If you want to get the secret ID associated with a token, use the
 // [`getAclTokenSecretId` data source](https://www.terraform.io/docs/providers/consul/d/acl_token_secret_id.html).
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			test, err := consul.LookupAclToken(ctx, &consul.LookupAclTokenArgs{
+//				AccessorId: "00000000-0000-0000-0000-000000000002",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("consulAclPolicies", test.Policies)
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupAclToken(ctx *pulumi.Context, args *LookupAclTokenArgs, opts ...pulumi.InvokeOption) (*LookupAclTokenResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAclTokenResult

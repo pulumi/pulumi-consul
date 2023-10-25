@@ -20,6 +20,54 @@ import (
 // > **Cluster peering is currently in technical preview:** Functionality associated with cluster peering is subject to change. You should never use the technical preview release in secure environments or production scenarios. Features in technical preview may have performance issues, scaling issues, and limited support.
 //
 // The functionality described here is available only in Consul version 1.13.0 and later.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := consul.NewProvider(ctx, "eu", &consul.ProviderArgs{
+//				Address: pulumi.String("eu-cluster:8500"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = consul.NewProvider(ctx, "us", &consul.ProviderArgs{
+//				Address: pulumi.String("us-cluster:8500"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = consul.NewPeeringToken(ctx, "eu-usPeeringToken", &consul.PeeringTokenArgs{
+//				PeerName: pulumi.String("eu-cluster"),
+//			}, pulumi.Provider(consul.Us))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = consul.NewPeering(ctx, "eu-usPeering", &consul.PeeringArgs{
+//				PeerName:     pulumi.String("eu-cluster"),
+//				PeeringToken: pulumi.Any(consul_peering_token.Token.Peering_token),
+//				Meta: pulumi.StringMap{
+//					"hello": pulumi.String("world"),
+//				},
+//			}, pulumi.Provider(consul.Eu))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type Peering struct {
 	pulumi.CustomResourceState
 

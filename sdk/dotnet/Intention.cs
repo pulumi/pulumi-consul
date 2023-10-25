@@ -24,6 +24,53 @@ namespace Pulumi.Consul
     /// in conjunction with the `consul.Service` datasource when referencing services
     /// registered on nodes that have a running Consul agent.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Create a simplest intention with static service names:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Consul = Pulumi.Consul;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var database = new Consul.Intention("database", new()
+    ///     {
+    ///         Action = "allow",
+    ///         DestinationName = "db",
+    ///         SourceName = "api",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Referencing a known service via a datasource:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Consul = Pulumi.Consul;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var database = new Consul.Intention("database", new()
+    ///     {
+    ///         Action = "allow",
+    ///         DestinationName = consul_service.Pg.Name,
+    ///         SourceName = "api",
+    ///     });
+    /// 
+    ///     var pg = Consul.GetService.Invoke(new()
+    ///     {
+    ///         Name = "postgresql",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// `consul_intention` can be imported:

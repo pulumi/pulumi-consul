@@ -105,6 +105,20 @@ def get_network_area_members(datacenter: Optional[str] = None,
     The `get_network_area_members` data source provides a list of the Consul
     servers present in a specific network area.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_consul as consul
+
+    dc2_network_area = consul.NetworkArea("dc2NetworkArea",
+        peer_datacenter="dc2",
+        retry_joins=["1.2.3.4"],
+        use_tls=True)
+    dc2_network_area_members = consul.get_network_area_members_output(uuid=dc2_network_area.id)
+    pulumi.export("members", dc2_network_area_members.members)
+    ```
+
 
     :param str datacenter: The datacenter to use. This overrides the
            agent's default datacenter and the datacenter in the provider setup.
@@ -137,6 +151,20 @@ def get_network_area_members_output(datacenter: Optional[pulumi.Input[Optional[s
 
     The `get_network_area_members` data source provides a list of the Consul
     servers present in a specific network area.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_consul as consul
+
+    dc2_network_area = consul.NetworkArea("dc2NetworkArea",
+        peer_datacenter="dc2",
+        retry_joins=["1.2.3.4"],
+        use_tls=True)
+    dc2_network_area_members = consul.get_network_area_members_output(uuid=dc2_network_area.id)
+    pulumi.export("members", dc2_network_area_members.members)
+    ```
 
 
     :param str datacenter: The datacenter to use. This overrides the

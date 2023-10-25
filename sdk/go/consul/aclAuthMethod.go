@@ -15,6 +15,86 @@ import (
 
 // Starting with Consul 1.5.0, the AclAuthMethod resource can be used to
 // managed [Consul ACL auth methods](https://www.consul.io/docs/acl/auth-methods).
+//
+// ## Example Usage
+//
+// Define a `kubernetes` auth method:
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//
+//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"Host":              "https://192.0.2.42:8443",
+//				"CACert":            "-----BEGIN CERTIFICATE-----\n...-----END CERTIFICATE-----\n",
+//				"ServiceAccountJWT": "eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9...",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			_, err = consul.NewAclAuthMethod(ctx, "minikube", &consul.AclAuthMethodArgs{
+//				Type:        pulumi.String("kubernetes"),
+//				Description: pulumi.String("dev minikube cluster"),
+//				ConfigJson:  pulumi.String(json0),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Define a `jwt` auth method:
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//
+//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"JWKSURL":          "https://example.com/identity/oidc/.well-known/keys",
+//				"JWTSupportedAlgs": "RS256",
+//				"BoundIssuer":      "https://example.com",
+//				"ClaimMappings": map[string]interface{}{
+//					"subject": "subject",
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			_, err = consul.NewAclAuthMethod(ctx, "minikube", &consul.AclAuthMethodArgs{
+//				Type:       pulumi.String("jwt"),
+//				ConfigJson: pulumi.String(json0),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type AclAuthMethod struct {
 	pulumi.CustomResourceState
 

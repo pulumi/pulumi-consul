@@ -10,6 +10,16 @@ import * as utilities from "./utilities";
  * The `consul.getAutopilotHealth` data source returns
  * [autopilot health information](https://www.consul.io/api/operator/autopilot.html#read-health)
  * about the current Consul cluster.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ *
+ * const read = consul.getAutopilotHealth({});
+ * export const health = read.then(read => read.healthy);
+ * ```
  */
 export function getAutopilotHealth(args?: GetAutopilotHealthArgs, opts?: pulumi.InvokeOptions): Promise<GetAutopilotHealthResult> {
     args = args || {};
@@ -60,6 +70,16 @@ export interface GetAutopilotHealthResult {
  * The `consul.getAutopilotHealth` data source returns
  * [autopilot health information](https://www.consul.io/api/operator/autopilot.html#read-health)
  * about the current Consul cluster.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ *
+ * const read = consul.getAutopilotHealth({});
+ * export const health = read.then(read => read.healthy);
+ * ```
  */
 export function getAutopilotHealthOutput(args?: GetAutopilotHealthOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAutopilotHealthResult> {
     return pulumi.output(args).apply((a: any) => getAutopilotHealth(a, opts))

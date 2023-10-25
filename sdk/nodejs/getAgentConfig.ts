@@ -12,6 +12,16 @@ import * as utilities from "./utilities";
  * The `consul.getAgentConfig` data source returns
  * [configuration data](https://www.consul.io/api/agent.html#read-configuration)
  * from the agent specified in the `provider`.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ *
+ * const remoteAgent = consul.getAgentConfig({});
+ * export const consulVersion = remoteAgent.then(remoteAgent => remoteAgent.version);
+ * ```
  */
 export function getAgentConfig(opts?: pulumi.InvokeOptions): Promise<GetAgentConfigResult> {
 
@@ -61,6 +71,16 @@ export interface GetAgentConfigResult {
  * The `consul.getAgentConfig` data source returns
  * [configuration data](https://www.consul.io/api/agent.html#read-configuration)
  * from the agent specified in the `provider`.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ *
+ * const remoteAgent = consul.getAgentConfig({});
+ * export const consulVersion = remoteAgent.then(remoteAgent => remoteAgent.version);
+ * ```
  */
 export function getAgentConfigOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetAgentConfigResult> {
     return pulumi.output(getAgentConfig(opts))

@@ -14,6 +14,45 @@ namespace Pulumi.Consul
         /// <summary>
         /// The `consul.Keys` resource reads values from the Consul key/value store.
         /// This is a powerful way dynamically set values in templates.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aws = Pulumi.Aws;
+        /// using Consul = Pulumi.Consul;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var appKeys = Consul.GetKeys.Invoke(new()
+        ///     {
+        ///         Datacenter = "nyc1",
+        ///         Keys = new[]
+        ///         {
+        ///             new Consul.Inputs.GetKeysKeyInputArgs
+        ///             {
+        ///                 Default = "ami-1234",
+        ///                 Name = "ami",
+        ///                 Path = "service/app/launch_ami",
+        ///             },
+        ///         },
+        ///         Token = "abcd",
+        ///     });
+        /// 
+        ///     // Start our instance with the dynamic ami value
+        ///     var appInstance = new Aws.Ec2.Instance("appInstance", new()
+        ///     {
+        ///         Ami = appKeys.Apply(getKeysResult =&gt; getKeysResult.Var?.Ami),
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetKeysResult> InvokeAsync(GetKeysArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKeysResult>("consul:index/getKeys:getKeys", args ?? new GetKeysArgs(), options.WithDefaults());
@@ -21,6 +60,45 @@ namespace Pulumi.Consul
         /// <summary>
         /// The `consul.Keys` resource reads values from the Consul key/value store.
         /// This is a powerful way dynamically set values in templates.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aws = Pulumi.Aws;
+        /// using Consul = Pulumi.Consul;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var appKeys = Consul.GetKeys.Invoke(new()
+        ///     {
+        ///         Datacenter = "nyc1",
+        ///         Keys = new[]
+        ///         {
+        ///             new Consul.Inputs.GetKeysKeyInputArgs
+        ///             {
+        ///                 Default = "ami-1234",
+        ///                 Name = "ami",
+        ///                 Path = "service/app/launch_ami",
+        ///             },
+        ///         },
+        ///         Token = "abcd",
+        ///     });
+        /// 
+        ///     // Start our instance with the dynamic ami value
+        ///     var appInstance = new Aws.Ec2.Instance("appInstance", new()
+        ///     {
+        ///         Ami = appKeys.Apply(getKeysResult =&gt; getKeysResult.Var?.Ami),
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetKeysResult> Invoke(GetKeysInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKeysResult>("consul:index/getKeys:getKeys", args ?? new GetKeysInvokeArgs(), options.WithDefaults());
