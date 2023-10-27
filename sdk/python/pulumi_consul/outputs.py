@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 
@@ -83,26 +83,9 @@ class AclAuthMethodNamespaceRule(dict):
                rule against valid identities returned from an auth method validation.
                Defaults to `""`.
         """
-        AclAuthMethodNamespaceRule._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bind_namespace=bind_namespace,
-            selector=selector,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bind_namespace: Optional[str] = None,
-             selector: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bind_namespace is None and 'bindNamespace' in kwargs:
-            bind_namespace = kwargs['bindNamespace']
-        if bind_namespace is None:
-            raise TypeError("Missing 'bind_namespace' argument")
-
-        _setter("bind_namespace", bind_namespace)
+        pulumi.set(__self__, "bind_namespace", bind_namespace)
         if selector is not None:
-            _setter("selector", selector)
+            pulumi.set(__self__, "selector", selector)
 
     @property
     @pulumi.getter(name="bindNamespace")
@@ -150,27 +133,8 @@ class AclRoleNodeIdentity(dict):
         :param str datacenter: The datacenter of the node.
         :param str node_name: The name of the node.
         """
-        AclRoleNodeIdentity._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            datacenter=datacenter,
-            node_name=node_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             datacenter: Optional[str] = None,
-             node_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if datacenter is None:
-            raise TypeError("Missing 'datacenter' argument")
-        if node_name is None and 'nodeName' in kwargs:
-            node_name = kwargs['nodeName']
-        if node_name is None:
-            raise TypeError("Missing 'node_name' argument")
-
-        _setter("datacenter", datacenter)
-        _setter("node_name", node_name)
+        pulumi.set(__self__, "datacenter", datacenter)
+        pulumi.set(__self__, "node_name", node_name)
 
     @property
     @pulumi.getter
@@ -215,26 +179,9 @@ class AclRoleServiceIdentity(dict):
         :param str service_name: The name of the service.
         :param Sequence[str] datacenters: The datacenters the effective policy is valid within.
         """
-        AclRoleServiceIdentity._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            service_name=service_name,
-            datacenters=datacenters,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             service_name: Optional[str] = None,
-             datacenters: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if service_name is None and 'serviceName' in kwargs:
-            service_name = kwargs['serviceName']
-        if service_name is None:
-            raise TypeError("Missing 'service_name' argument")
-
-        _setter("service_name", service_name)
+        pulumi.set(__self__, "service_name", service_name)
         if datacenters is not None:
-            _setter("datacenters", datacenters)
+            pulumi.set(__self__, "datacenters", datacenters)
 
     @property
     @pulumi.getter(name="serviceName")
@@ -279,27 +226,8 @@ class AclTokenNodeIdentity(dict):
         :param str datacenter: The datacenter of the node.
         :param str node_name: The name of the node.
         """
-        AclTokenNodeIdentity._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            datacenter=datacenter,
-            node_name=node_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             datacenter: Optional[str] = None,
-             node_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if datacenter is None:
-            raise TypeError("Missing 'datacenter' argument")
-        if node_name is None and 'nodeName' in kwargs:
-            node_name = kwargs['nodeName']
-        if node_name is None:
-            raise TypeError("Missing 'node_name' argument")
-
-        _setter("datacenter", datacenter)
-        _setter("node_name", node_name)
+        pulumi.set(__self__, "datacenter", datacenter)
+        pulumi.set(__self__, "node_name", node_name)
 
     @property
     @pulumi.getter
@@ -344,26 +272,9 @@ class AclTokenServiceIdentity(dict):
         :param str service_name: The name of the service.
         :param Sequence[str] datacenters: The list of datacenters the policy is valid within.
         """
-        AclTokenServiceIdentity._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            service_name=service_name,
-            datacenters=datacenters,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             service_name: Optional[str] = None,
-             datacenters: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if service_name is None and 'serviceName' in kwargs:
-            service_name = kwargs['serviceName']
-        if service_name is None:
-            raise TypeError("Missing 'service_name' argument")
-
-        _setter("service_name", service_name)
+        pulumi.set(__self__, "service_name", service_name)
         if datacenters is not None:
-            _setter("datacenters", datacenters)
+            pulumi.set(__self__, "datacenters", datacenters)
 
     @property
     @pulumi.getter(name="serviceName")
@@ -399,36 +310,15 @@ class CatalogEntryService(dict):
         :param Sequence[str] tags: A list of values that are opaque to Consul,
                but can be used to distinguish between services or nodes.
         """
-        CatalogEntryService._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            address=address,
-            id=id,
-            port=port,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             address: Optional[str] = None,
-             id: Optional[str] = None,
-             port: Optional[int] = None,
-             tags: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-
-        _setter("name", name)
+        pulumi.set(__self__, "name", name)
         if address is not None:
-            _setter("address", address)
+            pulumi.set(__self__, "address", address)
         if id is not None:
-            _setter("id", id)
+            pulumi.set(__self__, "id", id)
         if port is not None:
-            _setter("port", port)
+            pulumi.set(__self__, "port", port)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter
@@ -486,29 +376,10 @@ class KeyPrefixSubkeyCollection(dict):
         :param int flags: An [unsigned integer value](https://www.consul.io/api/kv.html#flags-1)
                to attach to the key (defaults to 0).
         """
-        KeyPrefixSubkeyCollection._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            path=path,
-            value=value,
-            flags=flags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             path: Optional[str] = None,
-             value: Optional[str] = None,
-             flags: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if path is None:
-            raise TypeError("Missing 'path' argument")
-        if value is None:
-            raise TypeError("Missing 'value' argument")
-
-        _setter("path", path)
-        _setter("value", value)
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "value", value)
         if flags is not None:
-            _setter("flags", flags)
+            pulumi.set(__self__, "flags", flags)
 
     @property
     @pulumi.getter
@@ -556,40 +427,17 @@ class KeysKey(dict):
                to attach to the key (defaults to 0).
         :param str value: The value to write to the given path.
         """
-        KeysKey._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            path=path,
-            default=default,
-            delete=delete,
-            flags=flags,
-            name=name,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             path: Optional[str] = None,
-             default: Optional[str] = None,
-             delete: Optional[bool] = None,
-             flags: Optional[int] = None,
-             name: Optional[str] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if path is None:
-            raise TypeError("Missing 'path' argument")
-
-        _setter("path", path)
+        pulumi.set(__self__, "path", path)
         if default is not None:
-            _setter("default", default)
+            pulumi.set(__self__, "default", default)
         if delete is not None:
-            _setter("delete", delete)
+            pulumi.set(__self__, "delete", delete)
         if flags is not None:
-            _setter("flags", flags)
+            pulumi.set(__self__, "flags", flags)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if value is not None:
-            _setter("value", value)
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -648,19 +496,8 @@ class PreparedQueryDns(dict):
         """
         :param str ttl: The TTL to send when returning DNS results.
         """
-        PreparedQueryDns._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            ttl=ttl,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             ttl: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if ttl is not None:
-            _setter("ttl", ttl)
+            pulumi.set(__self__, "ttl", ttl)
 
     @property
     @pulumi.getter
@@ -699,29 +536,12 @@ class PreparedQueryFailover(dict):
         :param int nearest_n: Return results from this many datacenters, sorted in ascending order of estimated RTT.
         :param Sequence['PreparedQueryFailoverTargetArgs'] targets: Specifies a sequential list of remote datacenters and cluster peers to failover to if there are no healthy service instances in the local datacenter. This option cannot be used with `nearest_n` or `datacenters`.
         """
-        PreparedQueryFailover._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            datacenters=datacenters,
-            nearest_n=nearest_n,
-            targets=targets,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             datacenters: Optional[Sequence[str]] = None,
-             nearest_n: Optional[int] = None,
-             targets: Optional[Sequence['outputs.PreparedQueryFailoverTarget']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if nearest_n is None and 'nearestN' in kwargs:
-            nearest_n = kwargs['nearestN']
-
         if datacenters is not None:
-            _setter("datacenters", datacenters)
+            pulumi.set(__self__, "datacenters", datacenters)
         if nearest_n is not None:
-            _setter("nearest_n", nearest_n)
+            pulumi.set(__self__, "nearest_n", nearest_n)
         if targets is not None:
-            _setter("targets", targets)
+            pulumi.set(__self__, "targets", targets)
 
     @property
     @pulumi.getter
@@ -757,23 +577,10 @@ class PreparedQueryFailoverTarget(dict):
         :param str datacenter: Specifies a WAN federated datacenter to forward the query to.
         :param str peer: Specifies a cluster peer to use for failover.
         """
-        PreparedQueryFailoverTarget._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            datacenter=datacenter,
-            peer=peer,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             datacenter: Optional[str] = None,
-             peer: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if datacenter is not None:
-            _setter("datacenter", datacenter)
+            pulumi.set(__self__, "datacenter", datacenter)
         if peer is not None:
-            _setter("peer", peer)
+            pulumi.set(__self__, "peer", peer)
 
     @property
     @pulumi.getter
@@ -820,31 +627,10 @@ class PreparedQueryTemplate(dict):
         :param str type: The type of template matching to perform. Currently only `name_prefix_match` is supported.
         :param bool remove_empty_tags: If set to true, will cause the tags list inside the service structure to be stripped of any empty strings.
         """
-        PreparedQueryTemplate._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            regexp=regexp,
-            type=type,
-            remove_empty_tags=remove_empty_tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             regexp: Optional[str] = None,
-             type: Optional[str] = None,
-             remove_empty_tags: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if regexp is None:
-            raise TypeError("Missing 'regexp' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if remove_empty_tags is None and 'removeEmptyTags' in kwargs:
-            remove_empty_tags = kwargs['removeEmptyTags']
-
-        _setter("regexp", regexp)
-        _setter("type", type)
+        pulumi.set(__self__, "regexp", regexp)
+        pulumi.set(__self__, "type", type)
         if remove_empty_tags is not None:
-            _setter("remove_empty_tags", remove_empty_tags)
+            pulumi.set(__self__, "remove_empty_tags", remove_empty_tags)
 
     @property
     @pulumi.getter
@@ -929,73 +715,26 @@ class ServiceCheck(dict):
         :param bool tls_skip_verify: Whether to deactivate certificate
                verification for HTTP health-checks. Defaults to `false`.
         """
-        ServiceCheck._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            check_id=check_id,
-            interval=interval,
-            name=name,
-            timeout=timeout,
-            deregister_critical_service_after=deregister_critical_service_after,
-            headers=headers,
-            http=http,
-            method=method,
-            notes=notes,
-            status=status,
-            tcp=tcp,
-            tls_skip_verify=tls_skip_verify,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             check_id: Optional[str] = None,
-             interval: Optional[str] = None,
-             name: Optional[str] = None,
-             timeout: Optional[str] = None,
-             deregister_critical_service_after: Optional[str] = None,
-             headers: Optional[Sequence['outputs.ServiceCheckHeader']] = None,
-             http: Optional[str] = None,
-             method: Optional[str] = None,
-             notes: Optional[str] = None,
-             status: Optional[str] = None,
-             tcp: Optional[str] = None,
-             tls_skip_verify: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if check_id is None and 'checkId' in kwargs:
-            check_id = kwargs['checkId']
-        if check_id is None:
-            raise TypeError("Missing 'check_id' argument")
-        if interval is None:
-            raise TypeError("Missing 'interval' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if timeout is None:
-            raise TypeError("Missing 'timeout' argument")
-        if deregister_critical_service_after is None and 'deregisterCriticalServiceAfter' in kwargs:
-            deregister_critical_service_after = kwargs['deregisterCriticalServiceAfter']
-        if tls_skip_verify is None and 'tlsSkipVerify' in kwargs:
-            tls_skip_verify = kwargs['tlsSkipVerify']
-
-        _setter("check_id", check_id)
-        _setter("interval", interval)
-        _setter("name", name)
-        _setter("timeout", timeout)
+        pulumi.set(__self__, "check_id", check_id)
+        pulumi.set(__self__, "interval", interval)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "timeout", timeout)
         if deregister_critical_service_after is not None:
-            _setter("deregister_critical_service_after", deregister_critical_service_after)
+            pulumi.set(__self__, "deregister_critical_service_after", deregister_critical_service_after)
         if headers is not None:
-            _setter("headers", headers)
+            pulumi.set(__self__, "headers", headers)
         if http is not None:
-            _setter("http", http)
+            pulumi.set(__self__, "http", http)
         if method is not None:
-            _setter("method", method)
+            pulumi.set(__self__, "method", method)
         if notes is not None:
-            _setter("notes", notes)
+            pulumi.set(__self__, "notes", notes)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if tcp is not None:
-            _setter("tcp", tcp)
+            pulumi.set(__self__, "tcp", tcp)
         if tls_skip_verify is not None:
-            _setter("tls_skip_verify", tls_skip_verify)
+            pulumi.set(__self__, "tls_skip_verify", tls_skip_verify)
 
     @property
     @pulumi.getter(name="checkId")
@@ -1111,25 +850,8 @@ class ServiceCheckHeader(dict):
         :param str name: The name of the header.
         :param Sequence[str] values: The header's list of values.
         """
-        ServiceCheckHeader._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            values=values,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             values: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if values is None:
-            raise TypeError("Missing 'values' argument")
-
-        _setter("name", name)
-        _setter("values", values)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
@@ -1153,27 +875,8 @@ class GetAclAuthMethodNamespaceRuleResult(dict):
     def __init__(__self__, *,
                  bind_namespace: str,
                  selector: str):
-        GetAclAuthMethodNamespaceRuleResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bind_namespace=bind_namespace,
-            selector=selector,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bind_namespace: Optional[str] = None,
-             selector: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bind_namespace is None and 'bindNamespace' in kwargs:
-            bind_namespace = kwargs['bindNamespace']
-        if bind_namespace is None:
-            raise TypeError("Missing 'bind_namespace' argument")
-        if selector is None:
-            raise TypeError("Missing 'selector' argument")
-
-        _setter("bind_namespace", bind_namespace)
-        _setter("selector", selector)
+        pulumi.set(__self__, "bind_namespace", bind_namespace)
+        pulumi.set(__self__, "selector", selector)
 
     @property
     @pulumi.getter(name="bindNamespace")
@@ -1191,27 +894,8 @@ class GetAclRoleNodeIdentityResult(dict):
     def __init__(__self__, *,
                  datacenter: str,
                  node_name: str):
-        GetAclRoleNodeIdentityResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            datacenter=datacenter,
-            node_name=node_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             datacenter: Optional[str] = None,
-             node_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if datacenter is None:
-            raise TypeError("Missing 'datacenter' argument")
-        if node_name is None and 'nodeName' in kwargs:
-            node_name = kwargs['nodeName']
-        if node_name is None:
-            raise TypeError("Missing 'node_name' argument")
-
-        _setter("datacenter", datacenter)
-        _setter("node_name", node_name)
+        pulumi.set(__self__, "datacenter", datacenter)
+        pulumi.set(__self__, "node_name", node_name)
 
     @property
     @pulumi.getter
@@ -1232,25 +916,8 @@ class GetAclRolePolicyResult(dict):
         """
         :param str name: The name of the ACL Role.
         """
-        GetAclRolePolicyResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            id=id,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             id: Optional[str] = None,
-             name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-
-        _setter("id", id)
-        _setter("name", name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
@@ -1271,25 +938,10 @@ class GetAclRoleServiceIdentityResult(dict):
     def __init__(__self__, *,
                  datacenters: Optional[Sequence[str]] = None,
                  service_name: Optional[str] = None):
-        GetAclRoleServiceIdentityResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            datacenters=datacenters,
-            service_name=service_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             datacenters: Optional[Sequence[str]] = None,
-             service_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if service_name is None and 'serviceName' in kwargs:
-            service_name = kwargs['serviceName']
-
         if datacenters is not None:
-            _setter("datacenters", datacenters)
+            pulumi.set(__self__, "datacenters", datacenters)
         if service_name is not None:
-            _setter("service_name", service_name)
+            pulumi.set(__self__, "service_name", service_name)
 
     @property
     @pulumi.getter
@@ -1307,27 +959,8 @@ class GetAclTokenNodeIdentityResult(dict):
     def __init__(__self__, *,
                  datacenter: str,
                  node_name: str):
-        GetAclTokenNodeIdentityResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            datacenter=datacenter,
-            node_name=node_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             datacenter: Optional[str] = None,
-             node_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if datacenter is None:
-            raise TypeError("Missing 'datacenter' argument")
-        if node_name is None and 'nodeName' in kwargs:
-            node_name = kwargs['nodeName']
-        if node_name is None:
-            raise TypeError("Missing 'node_name' argument")
-
-        _setter("datacenter", datacenter)
-        _setter("node_name", node_name)
+        pulumi.set(__self__, "datacenter", datacenter)
+        pulumi.set(__self__, "node_name", node_name)
 
     @property
     @pulumi.getter
@@ -1345,25 +978,8 @@ class GetAclTokenPolicyResult(dict):
     def __init__(__self__, *,
                  id: str,
                  name: str):
-        GetAclTokenPolicyResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            id=id,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             id: Optional[str] = None,
-             name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-
-        _setter("id", id)
-        _setter("name", name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
@@ -1381,25 +997,8 @@ class GetAclTokenRoleResult(dict):
     def __init__(__self__, *,
                  id: str,
                  name: str):
-        GetAclTokenRoleResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            id=id,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             id: Optional[str] = None,
-             name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-
-        _setter("id", id)
-        _setter("name", name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
@@ -1417,27 +1016,8 @@ class GetAclTokenServiceIdentityResult(dict):
     def __init__(__self__, *,
                  datacenters: Sequence[str],
                  service_name: str):
-        GetAclTokenServiceIdentityResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            datacenters=datacenters,
-            service_name=service_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             datacenters: Optional[Sequence[str]] = None,
-             service_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if datacenters is None:
-            raise TypeError("Missing 'datacenters' argument")
-        if service_name is None and 'serviceName' in kwargs:
-            service_name = kwargs['serviceName']
-        if service_name is None:
-            raise TypeError("Missing 'service_name' argument")
-
-        _setter("datacenters", datacenters)
-        _setter("service_name", service_name)
+        pulumi.set(__self__, "datacenters", datacenters)
+        pulumi.set(__self__, "service_name", service_name)
 
     @property
     @pulumi.getter
@@ -1482,85 +1062,18 @@ class GetAutopilotHealthServerResult(dict):
         :param str version: The Consul version of the server
         :param bool voter: Whether the server is a voting member of the Raft cluster
         """
-        GetAutopilotHealthServerResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            address=address,
-            healthy=healthy,
-            id=id,
-            last_contact=last_contact,
-            last_index=last_index,
-            last_term=last_term,
-            leader=leader,
-            name=name,
-            serf_status=serf_status,
-            stable_since=stable_since,
-            version=version,
-            voter=voter,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             address: Optional[str] = None,
-             healthy: Optional[bool] = None,
-             id: Optional[str] = None,
-             last_contact: Optional[str] = None,
-             last_index: Optional[int] = None,
-             last_term: Optional[int] = None,
-             leader: Optional[bool] = None,
-             name: Optional[str] = None,
-             serf_status: Optional[str] = None,
-             stable_since: Optional[str] = None,
-             version: Optional[str] = None,
-             voter: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if address is None:
-            raise TypeError("Missing 'address' argument")
-        if healthy is None:
-            raise TypeError("Missing 'healthy' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if last_contact is None and 'lastContact' in kwargs:
-            last_contact = kwargs['lastContact']
-        if last_contact is None:
-            raise TypeError("Missing 'last_contact' argument")
-        if last_index is None and 'lastIndex' in kwargs:
-            last_index = kwargs['lastIndex']
-        if last_index is None:
-            raise TypeError("Missing 'last_index' argument")
-        if last_term is None and 'lastTerm' in kwargs:
-            last_term = kwargs['lastTerm']
-        if last_term is None:
-            raise TypeError("Missing 'last_term' argument")
-        if leader is None:
-            raise TypeError("Missing 'leader' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if serf_status is None and 'serfStatus' in kwargs:
-            serf_status = kwargs['serfStatus']
-        if serf_status is None:
-            raise TypeError("Missing 'serf_status' argument")
-        if stable_since is None and 'stableSince' in kwargs:
-            stable_since = kwargs['stableSince']
-        if stable_since is None:
-            raise TypeError("Missing 'stable_since' argument")
-        if version is None:
-            raise TypeError("Missing 'version' argument")
-        if voter is None:
-            raise TypeError("Missing 'voter' argument")
-
-        _setter("address", address)
-        _setter("healthy", healthy)
-        _setter("id", id)
-        _setter("last_contact", last_contact)
-        _setter("last_index", last_index)
-        _setter("last_term", last_term)
-        _setter("leader", leader)
-        _setter("name", name)
-        _setter("serf_status", serf_status)
-        _setter("stable_since", stable_since)
-        _setter("version", version)
-        _setter("voter", voter)
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "healthy", healthy)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "last_contact", last_contact)
+        pulumi.set(__self__, "last_index", last_index)
+        pulumi.set(__self__, "last_term", last_term)
+        pulumi.set(__self__, "leader", leader)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "serf_status", serf_status)
+        pulumi.set(__self__, "stable_since", stable_since)
+        pulumi.set(__self__, "version", version)
+        pulumi.set(__self__, "voter", voter)
 
     @property
     @pulumi.getter
@@ -1681,42 +1194,11 @@ class GetCatalogNodesNodeResult(dict):
                * [`tagged_addresses`](https://www.consul.io/docs/agent/http/catalog.html#TaggedAddresses) -
                List of explicit LAN and WAN IP addresses for the agent.
         """
-        GetCatalogNodesNodeResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            address=address,
-            id=id,
-            meta=meta,
-            name=name,
-            tagged_addresses=tagged_addresses,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             address: Optional[str] = None,
-             id: Optional[str] = None,
-             meta: Optional[Mapping[str, str]] = None,
-             name: Optional[str] = None,
-             tagged_addresses: Optional[Mapping[str, str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if address is None:
-            raise TypeError("Missing 'address' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if meta is None:
-            raise TypeError("Missing 'meta' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if tagged_addresses is None and 'taggedAddresses' in kwargs:
-            tagged_addresses = kwargs['taggedAddresses']
-        if tagged_addresses is None:
-            raise TypeError("Missing 'tagged_addresses' argument")
-
-        _setter("address", address)
-        _setter("id", id)
-        _setter("meta", meta)
-        _setter("name", name)
-        _setter("tagged_addresses", tagged_addresses)
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "meta", meta)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "tagged_addresses", tagged_addresses)
 
     @property
     @pulumi.getter
@@ -1784,61 +1266,24 @@ class GetCatalogNodesQueryOptionResult(dict):
         :param str wait_time: Max time the client should wait for a blocking query
                to return.
         """
-        GetCatalogNodesQueryOptionResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allow_stale=allow_stale,
-            datacenter=datacenter,
-            near=near,
-            node_meta=node_meta,
-            partition=partition,
-            require_consistent=require_consistent,
-            token=token,
-            wait_index=wait_index,
-            wait_time=wait_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allow_stale: Optional[bool] = None,
-             datacenter: Optional[str] = None,
-             near: Optional[str] = None,
-             node_meta: Optional[Mapping[str, str]] = None,
-             partition: Optional[str] = None,
-             require_consistent: Optional[bool] = None,
-             token: Optional[str] = None,
-             wait_index: Optional[int] = None,
-             wait_time: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allow_stale is None and 'allowStale' in kwargs:
-            allow_stale = kwargs['allowStale']
-        if node_meta is None and 'nodeMeta' in kwargs:
-            node_meta = kwargs['nodeMeta']
-        if require_consistent is None and 'requireConsistent' in kwargs:
-            require_consistent = kwargs['requireConsistent']
-        if wait_index is None and 'waitIndex' in kwargs:
-            wait_index = kwargs['waitIndex']
-        if wait_time is None and 'waitTime' in kwargs:
-            wait_time = kwargs['waitTime']
-
         if allow_stale is not None:
-            _setter("allow_stale", allow_stale)
+            pulumi.set(__self__, "allow_stale", allow_stale)
         if datacenter is not None:
-            _setter("datacenter", datacenter)
+            pulumi.set(__self__, "datacenter", datacenter)
         if near is not None:
-            _setter("near", near)
+            pulumi.set(__self__, "near", near)
         if node_meta is not None:
-            _setter("node_meta", node_meta)
+            pulumi.set(__self__, "node_meta", node_meta)
         if partition is not None:
-            _setter("partition", partition)
+            pulumi.set(__self__, "partition", partition)
         if require_consistent is not None:
-            _setter("require_consistent", require_consistent)
+            pulumi.set(__self__, "require_consistent", require_consistent)
         if token is not None:
-            _setter("token", token)
+            pulumi.set(__self__, "token", token)
         if wait_index is not None:
-            _setter("wait_index", wait_index)
+            pulumi.set(__self__, "wait_index", wait_index)
         if wait_time is not None:
-            _setter("wait_time", wait_time)
+            pulumi.set(__self__, "wait_time", wait_time)
 
     @property
     @pulumi.getter(name="allowStale")
@@ -1944,65 +1389,26 @@ class GetCatalogServiceQueryOptionResult(dict):
         :param str wait_time: Max time the client should wait for a blocking query
                to return.
         """
-        GetCatalogServiceQueryOptionResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allow_stale=allow_stale,
-            datacenter=datacenter,
-            namespace=namespace,
-            near=near,
-            node_meta=node_meta,
-            partition=partition,
-            require_consistent=require_consistent,
-            token=token,
-            wait_index=wait_index,
-            wait_time=wait_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allow_stale: Optional[bool] = None,
-             datacenter: Optional[str] = None,
-             namespace: Optional[str] = None,
-             near: Optional[str] = None,
-             node_meta: Optional[Mapping[str, str]] = None,
-             partition: Optional[str] = None,
-             require_consistent: Optional[bool] = None,
-             token: Optional[str] = None,
-             wait_index: Optional[int] = None,
-             wait_time: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allow_stale is None and 'allowStale' in kwargs:
-            allow_stale = kwargs['allowStale']
-        if node_meta is None and 'nodeMeta' in kwargs:
-            node_meta = kwargs['nodeMeta']
-        if require_consistent is None and 'requireConsistent' in kwargs:
-            require_consistent = kwargs['requireConsistent']
-        if wait_index is None and 'waitIndex' in kwargs:
-            wait_index = kwargs['waitIndex']
-        if wait_time is None and 'waitTime' in kwargs:
-            wait_time = kwargs['waitTime']
-
         if allow_stale is not None:
-            _setter("allow_stale", allow_stale)
+            pulumi.set(__self__, "allow_stale", allow_stale)
         if datacenter is not None:
-            _setter("datacenter", datacenter)
+            pulumi.set(__self__, "datacenter", datacenter)
         if namespace is not None:
-            _setter("namespace", namespace)
+            pulumi.set(__self__, "namespace", namespace)
         if near is not None:
-            _setter("near", near)
+            pulumi.set(__self__, "near", near)
         if node_meta is not None:
-            _setter("node_meta", node_meta)
+            pulumi.set(__self__, "node_meta", node_meta)
         if partition is not None:
-            _setter("partition", partition)
+            pulumi.set(__self__, "partition", partition)
         if require_consistent is not None:
-            _setter("require_consistent", require_consistent)
+            pulumi.set(__self__, "require_consistent", require_consistent)
         if token is not None:
-            _setter("token", token)
+            pulumi.set(__self__, "token", token)
         if wait_index is not None:
-            _setter("wait_index", wait_index)
+            pulumi.set(__self__, "wait_index", wait_index)
         if wait_time is not None:
-            _setter("wait_time", wait_time)
+            pulumi.set(__self__, "wait_time", wait_time)
 
     @property
     @pulumi.getter(name="allowStale")
@@ -2128,101 +1534,20 @@ class GetCatalogServiceServiceResult(dict):
                * [`meta`](https://www.consul.io/docs/agent/http/catalog.html#Meta) - Service meta
                data tag information, if any.
         """
-        GetCatalogServiceServiceResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            address=address,
-            create_index=create_index,
-            enable_tag_override=enable_tag_override,
-            id=id,
-            meta=meta,
-            modify_index=modify_index,
-            name=name,
-            node_address=node_address,
-            node_id=node_id,
-            node_meta=node_meta,
-            node_name=node_name,
-            port=port,
-            tagged_addresses=tagged_addresses,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             address: Optional[str] = None,
-             create_index: Optional[str] = None,
-             enable_tag_override: Optional[str] = None,
-             id: Optional[str] = None,
-             meta: Optional[Mapping[str, str]] = None,
-             modify_index: Optional[str] = None,
-             name: Optional[str] = None,
-             node_address: Optional[str] = None,
-             node_id: Optional[str] = None,
-             node_meta: Optional[Mapping[str, str]] = None,
-             node_name: Optional[str] = None,
-             port: Optional[str] = None,
-             tagged_addresses: Optional[Mapping[str, str]] = None,
-             tags: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if address is None:
-            raise TypeError("Missing 'address' argument")
-        if create_index is None and 'createIndex' in kwargs:
-            create_index = kwargs['createIndex']
-        if create_index is None:
-            raise TypeError("Missing 'create_index' argument")
-        if enable_tag_override is None and 'enableTagOverride' in kwargs:
-            enable_tag_override = kwargs['enableTagOverride']
-        if enable_tag_override is None:
-            raise TypeError("Missing 'enable_tag_override' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if meta is None:
-            raise TypeError("Missing 'meta' argument")
-        if modify_index is None and 'modifyIndex' in kwargs:
-            modify_index = kwargs['modifyIndex']
-        if modify_index is None:
-            raise TypeError("Missing 'modify_index' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if node_address is None and 'nodeAddress' in kwargs:
-            node_address = kwargs['nodeAddress']
-        if node_address is None:
-            raise TypeError("Missing 'node_address' argument")
-        if node_id is None and 'nodeId' in kwargs:
-            node_id = kwargs['nodeId']
-        if node_id is None:
-            raise TypeError("Missing 'node_id' argument")
-        if node_meta is None and 'nodeMeta' in kwargs:
-            node_meta = kwargs['nodeMeta']
-        if node_meta is None:
-            raise TypeError("Missing 'node_meta' argument")
-        if node_name is None and 'nodeName' in kwargs:
-            node_name = kwargs['nodeName']
-        if node_name is None:
-            raise TypeError("Missing 'node_name' argument")
-        if port is None:
-            raise TypeError("Missing 'port' argument")
-        if tagged_addresses is None and 'taggedAddresses' in kwargs:
-            tagged_addresses = kwargs['taggedAddresses']
-        if tagged_addresses is None:
-            raise TypeError("Missing 'tagged_addresses' argument")
-        if tags is None:
-            raise TypeError("Missing 'tags' argument")
-
-        _setter("address", address)
-        _setter("create_index", create_index)
-        _setter("enable_tag_override", enable_tag_override)
-        _setter("id", id)
-        _setter("meta", meta)
-        _setter("modify_index", modify_index)
-        _setter("name", name)
-        _setter("node_address", node_address)
-        _setter("node_id", node_id)
-        _setter("node_meta", node_meta)
-        _setter("node_name", node_name)
-        _setter("port", port)
-        _setter("tagged_addresses", tagged_addresses)
-        _setter("tags", tags)
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "create_index", create_index)
+        pulumi.set(__self__, "enable_tag_override", enable_tag_override)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "meta", meta)
+        pulumi.set(__self__, "modify_index", modify_index)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "node_address", node_address)
+        pulumi.set(__self__, "node_id", node_id)
+        pulumi.set(__self__, "node_meta", node_meta)
+        pulumi.set(__self__, "node_name", node_name)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "tagged_addresses", tagged_addresses)
+        pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter
@@ -2354,65 +1679,26 @@ class GetCatalogServicesQueryOptionResult(dict):
         :param str wait_time: Max time the client should wait for a blocking query
                to return.
         """
-        GetCatalogServicesQueryOptionResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allow_stale=allow_stale,
-            datacenter=datacenter,
-            namespace=namespace,
-            near=near,
-            node_meta=node_meta,
-            partition=partition,
-            require_consistent=require_consistent,
-            token=token,
-            wait_index=wait_index,
-            wait_time=wait_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allow_stale: Optional[bool] = None,
-             datacenter: Optional[str] = None,
-             namespace: Optional[str] = None,
-             near: Optional[str] = None,
-             node_meta: Optional[Mapping[str, str]] = None,
-             partition: Optional[str] = None,
-             require_consistent: Optional[bool] = None,
-             token: Optional[str] = None,
-             wait_index: Optional[int] = None,
-             wait_time: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allow_stale is None and 'allowStale' in kwargs:
-            allow_stale = kwargs['allowStale']
-        if node_meta is None and 'nodeMeta' in kwargs:
-            node_meta = kwargs['nodeMeta']
-        if require_consistent is None and 'requireConsistent' in kwargs:
-            require_consistent = kwargs['requireConsistent']
-        if wait_index is None and 'waitIndex' in kwargs:
-            wait_index = kwargs['waitIndex']
-        if wait_time is None and 'waitTime' in kwargs:
-            wait_time = kwargs['waitTime']
-
         if allow_stale is not None:
-            _setter("allow_stale", allow_stale)
+            pulumi.set(__self__, "allow_stale", allow_stale)
         if datacenter is not None:
-            _setter("datacenter", datacenter)
+            pulumi.set(__self__, "datacenter", datacenter)
         if namespace is not None:
-            _setter("namespace", namespace)
+            pulumi.set(__self__, "namespace", namespace)
         if near is not None:
-            _setter("near", near)
+            pulumi.set(__self__, "near", near)
         if node_meta is not None:
-            _setter("node_meta", node_meta)
+            pulumi.set(__self__, "node_meta", node_meta)
         if partition is not None:
-            _setter("partition", partition)
+            pulumi.set(__self__, "partition", partition)
         if require_consistent is not None:
-            _setter("require_consistent", require_consistent)
+            pulumi.set(__self__, "require_consistent", require_consistent)
         if token is not None:
-            _setter("token", token)
+            pulumi.set(__self__, "token", token)
         if wait_index is not None:
-            _setter("wait_index", wait_index)
+            pulumi.set(__self__, "wait_index", wait_index)
         if wait_time is not None:
-            _setter("wait_time", wait_time)
+            pulumi.set(__self__, "wait_time", wait_time)
 
     @property
     @pulumi.getter(name="allowStale")
@@ -2511,29 +1797,10 @@ class GetKeyPrefixSubkeyCollectionResult(dict):
         :param str default: This is the default value to set for `var.<name>`
                if the key does not exist in Consul. Defaults to an empty string.
         """
-        GetKeyPrefixSubkeyCollectionResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            path=path,
-            default=default,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             path: Optional[str] = None,
-             default: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if path is None:
-            raise TypeError("Missing 'path' argument")
-
-        _setter("name", name)
-        _setter("path", path)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "path", path)
         if default is not None:
-            _setter("default", default)
+            pulumi.set(__self__, "default", default)
 
     @property
     @pulumi.getter
@@ -2580,29 +1847,10 @@ class GetKeysKeyResult(dict):
         :param str default: This is the default value to set for `var.<name>`
                if the key does not exist in Consul. Defaults to an empty string.
         """
-        GetKeysKeyResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            path=path,
-            default=default,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             path: Optional[str] = None,
-             default: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if path is None:
-            raise TypeError("Missing 'path' argument")
-
-        _setter("name", name)
-        _setter("path", path)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "path", path)
         if default is not None:
-            _setter("default", default)
+            pulumi.set(__self__, "default", default)
 
     @property
     @pulumi.getter
@@ -2665,65 +1913,16 @@ class GetNetworkAreaMembersMemberResult(dict):
                or `"failed"`. A `"failed"` status means that other servers are not able to
                probe this server over its server RPC interface.
         """
-        GetNetworkAreaMembersMemberResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            address=address,
-            build=build,
-            datacenter=datacenter,
-            id=id,
-            name=name,
-            port=port,
-            protocol=protocol,
-            role=role,
-            rtt=rtt,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             address: Optional[str] = None,
-             build: Optional[str] = None,
-             datacenter: Optional[str] = None,
-             id: Optional[str] = None,
-             name: Optional[str] = None,
-             port: Optional[int] = None,
-             protocol: Optional[int] = None,
-             role: Optional[str] = None,
-             rtt: Optional[int] = None,
-             status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if address is None:
-            raise TypeError("Missing 'address' argument")
-        if build is None:
-            raise TypeError("Missing 'build' argument")
-        if datacenter is None:
-            raise TypeError("Missing 'datacenter' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if port is None:
-            raise TypeError("Missing 'port' argument")
-        if protocol is None:
-            raise TypeError("Missing 'protocol' argument")
-        if role is None:
-            raise TypeError("Missing 'role' argument")
-        if rtt is None:
-            raise TypeError("Missing 'rtt' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-
-        _setter("address", address)
-        _setter("build", build)
-        _setter("datacenter", datacenter)
-        _setter("id", id)
-        _setter("name", name)
-        _setter("port", port)
-        _setter("protocol", protocol)
-        _setter("role", role)
-        _setter("rtt", rtt)
-        _setter("status", status)
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "build", build)
+        pulumi.set(__self__, "datacenter", datacenter)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "protocol", protocol)
+        pulumi.set(__self__, "role", role)
+        pulumi.set(__self__, "rtt", rtt)
+        pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter
@@ -2832,42 +2031,11 @@ class GetNodesNodeResult(dict):
                * [`tagged_addresses`](https://www.consul.io/docs/agent/http/catalog.html#TaggedAddresses) -
                List of explicit LAN and WAN IP addresses for the agent.
         """
-        GetNodesNodeResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            address=address,
-            id=id,
-            meta=meta,
-            name=name,
-            tagged_addresses=tagged_addresses,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             address: Optional[str] = None,
-             id: Optional[str] = None,
-             meta: Optional[Mapping[str, str]] = None,
-             name: Optional[str] = None,
-             tagged_addresses: Optional[Mapping[str, str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if address is None:
-            raise TypeError("Missing 'address' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if meta is None:
-            raise TypeError("Missing 'meta' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if tagged_addresses is None and 'taggedAddresses' in kwargs:
-            tagged_addresses = kwargs['taggedAddresses']
-        if tagged_addresses is None:
-            raise TypeError("Missing 'tagged_addresses' argument")
-
-        _setter("address", address)
-        _setter("id", id)
-        _setter("meta", meta)
-        _setter("name", name)
-        _setter("tagged_addresses", tagged_addresses)
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "meta", meta)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "tagged_addresses", tagged_addresses)
 
     @property
     @pulumi.getter
@@ -2935,61 +2103,24 @@ class GetNodesQueryOptionResult(dict):
         :param str wait_time: Max time the client should wait for a blocking query
                to return.
         """
-        GetNodesQueryOptionResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allow_stale=allow_stale,
-            datacenter=datacenter,
-            near=near,
-            node_meta=node_meta,
-            partition=partition,
-            require_consistent=require_consistent,
-            token=token,
-            wait_index=wait_index,
-            wait_time=wait_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allow_stale: Optional[bool] = None,
-             datacenter: Optional[str] = None,
-             near: Optional[str] = None,
-             node_meta: Optional[Mapping[str, str]] = None,
-             partition: Optional[str] = None,
-             require_consistent: Optional[bool] = None,
-             token: Optional[str] = None,
-             wait_index: Optional[int] = None,
-             wait_time: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allow_stale is None and 'allowStale' in kwargs:
-            allow_stale = kwargs['allowStale']
-        if node_meta is None and 'nodeMeta' in kwargs:
-            node_meta = kwargs['nodeMeta']
-        if require_consistent is None and 'requireConsistent' in kwargs:
-            require_consistent = kwargs['requireConsistent']
-        if wait_index is None and 'waitIndex' in kwargs:
-            wait_index = kwargs['waitIndex']
-        if wait_time is None and 'waitTime' in kwargs:
-            wait_time = kwargs['waitTime']
-
         if allow_stale is not None:
-            _setter("allow_stale", allow_stale)
+            pulumi.set(__self__, "allow_stale", allow_stale)
         if datacenter is not None:
-            _setter("datacenter", datacenter)
+            pulumi.set(__self__, "datacenter", datacenter)
         if near is not None:
-            _setter("near", near)
+            pulumi.set(__self__, "near", near)
         if node_meta is not None:
-            _setter("node_meta", node_meta)
+            pulumi.set(__self__, "node_meta", node_meta)
         if partition is not None:
-            _setter("partition", partition)
+            pulumi.set(__self__, "partition", partition)
         if require_consistent is not None:
-            _setter("require_consistent", require_consistent)
+            pulumi.set(__self__, "require_consistent", require_consistent)
         if token is not None:
-            _setter("token", token)
+            pulumi.set(__self__, "token", token)
         if wait_index is not None:
-            _setter("wait_index", wait_index)
+            pulumi.set(__self__, "wait_index", wait_index)
         if wait_time is not None:
-            _setter("wait_time", wait_time)
+            pulumi.set(__self__, "wait_time", wait_time)
 
     @property
     @pulumi.getter(name="allowStale")
@@ -3077,75 +2208,16 @@ class GetPeeringsPeerResult(dict):
                  peer_server_addresses: Sequence[str],
                  peer_server_name: str,
                  state: str):
-        GetPeeringsPeerResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            deleted_at=deleted_at,
-            id=id,
-            meta=meta,
-            name=name,
-            partition=partition,
-            peer_ca_pems=peer_ca_pems,
-            peer_id=peer_id,
-            peer_server_addresses=peer_server_addresses,
-            peer_server_name=peer_server_name,
-            state=state,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             deleted_at: Optional[str] = None,
-             id: Optional[str] = None,
-             meta: Optional[Mapping[str, str]] = None,
-             name: Optional[str] = None,
-             partition: Optional[str] = None,
-             peer_ca_pems: Optional[Sequence[str]] = None,
-             peer_id: Optional[str] = None,
-             peer_server_addresses: Optional[Sequence[str]] = None,
-             peer_server_name: Optional[str] = None,
-             state: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if deleted_at is None and 'deletedAt' in kwargs:
-            deleted_at = kwargs['deletedAt']
-        if deleted_at is None:
-            raise TypeError("Missing 'deleted_at' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if meta is None:
-            raise TypeError("Missing 'meta' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if partition is None:
-            raise TypeError("Missing 'partition' argument")
-        if peer_ca_pems is None and 'peerCaPems' in kwargs:
-            peer_ca_pems = kwargs['peerCaPems']
-        if peer_ca_pems is None:
-            raise TypeError("Missing 'peer_ca_pems' argument")
-        if peer_id is None and 'peerId' in kwargs:
-            peer_id = kwargs['peerId']
-        if peer_id is None:
-            raise TypeError("Missing 'peer_id' argument")
-        if peer_server_addresses is None and 'peerServerAddresses' in kwargs:
-            peer_server_addresses = kwargs['peerServerAddresses']
-        if peer_server_addresses is None:
-            raise TypeError("Missing 'peer_server_addresses' argument")
-        if peer_server_name is None and 'peerServerName' in kwargs:
-            peer_server_name = kwargs['peerServerName']
-        if peer_server_name is None:
-            raise TypeError("Missing 'peer_server_name' argument")
-        if state is None:
-            raise TypeError("Missing 'state' argument")
-
-        _setter("deleted_at", deleted_at)
-        _setter("id", id)
-        _setter("meta", meta)
-        _setter("name", name)
-        _setter("partition", partition)
-        _setter("peer_ca_pems", peer_ca_pems)
-        _setter("peer_id", peer_id)
-        _setter("peer_server_addresses", peer_server_addresses)
-        _setter("peer_server_name", peer_server_name)
-        _setter("state", state)
+        pulumi.set(__self__, "deleted_at", deleted_at)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "meta", meta)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "partition", partition)
+        pulumi.set(__self__, "peer_ca_pems", peer_ca_pems)
+        pulumi.set(__self__, "peer_id", peer_id)
+        pulumi.set(__self__, "peer_server_addresses", peer_server_addresses)
+        pulumi.set(__self__, "peer_server_name", peer_server_name)
+        pulumi.set(__self__, "state", state)
 
     @property
     @pulumi.getter(name="deletedAt")
@@ -3207,30 +2279,9 @@ class GetServiceHealthResultResult(dict):
         """
         :param Sequence['GetServiceHealthResultNodeArgs'] nodes: The name of the node associated with this health-check.
         """
-        GetServiceHealthResultResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            checks=checks,
-            nodes=nodes,
-            services=services,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             checks: Optional[Sequence['outputs.GetServiceHealthResultCheckResult']] = None,
-             nodes: Optional[Sequence['outputs.GetServiceHealthResultNodeResult']] = None,
-             services: Optional[Sequence['outputs.GetServiceHealthResultServiceResult']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if checks is None:
-            raise TypeError("Missing 'checks' argument")
-        if nodes is None:
-            raise TypeError("Missing 'nodes' argument")
-        if services is None:
-            raise TypeError("Missing 'services' argument")
-
-        _setter("checks", checks)
-        _setter("nodes", nodes)
-        _setter("services", services)
+        pulumi.set(__self__, "checks", checks)
+        pulumi.set(__self__, "nodes", nodes)
+        pulumi.set(__self__, "services", services)
 
     @property
     @pulumi.getter
@@ -3274,66 +2325,15 @@ class GetServiceHealthResultCheckResult(dict):
         :param Sequence[str] service_tags: The list of tags associated with this health-check.
         :param str status: The status of this health-check.
         """
-        GetServiceHealthResultCheckResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            id=id,
-            name=name,
-            node=node,
-            notes=notes,
-            output=output,
-            service_id=service_id,
-            service_name=service_name,
-            service_tags=service_tags,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             id: Optional[str] = None,
-             name: Optional[str] = None,
-             node: Optional[str] = None,
-             notes: Optional[str] = None,
-             output: Optional[str] = None,
-             service_id: Optional[str] = None,
-             service_name: Optional[str] = None,
-             service_tags: Optional[Sequence[str]] = None,
-             status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if node is None:
-            raise TypeError("Missing 'node' argument")
-        if notes is None:
-            raise TypeError("Missing 'notes' argument")
-        if output is None:
-            raise TypeError("Missing 'output' argument")
-        if service_id is None and 'serviceId' in kwargs:
-            service_id = kwargs['serviceId']
-        if service_id is None:
-            raise TypeError("Missing 'service_id' argument")
-        if service_name is None and 'serviceName' in kwargs:
-            service_name = kwargs['serviceName']
-        if service_name is None:
-            raise TypeError("Missing 'service_name' argument")
-        if service_tags is None and 'serviceTags' in kwargs:
-            service_tags = kwargs['serviceTags']
-        if service_tags is None:
-            raise TypeError("Missing 'service_tags' argument")
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-
-        _setter("id", id)
-        _setter("name", name)
-        _setter("node", node)
-        _setter("notes", notes)
-        _setter("output", output)
-        _setter("service_id", service_id)
-        _setter("service_name", service_name)
-        _setter("service_tags", service_tags)
-        _setter("status", status)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "node", node)
+        pulumi.set(__self__, "notes", notes)
+        pulumi.set(__self__, "output", output)
+        pulumi.set(__self__, "service_id", service_id)
+        pulumi.set(__self__, "service_name", service_name)
+        pulumi.set(__self__, "service_tags", service_tags)
+        pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter
@@ -3424,47 +2424,12 @@ class GetServiceHealthResultNodeResult(dict):
         :param Mapping[str, str] meta: Service metadata tag information, if any.
         :param str name: The service name to select.
         """
-        GetServiceHealthResultNodeResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            address=address,
-            datacenter=datacenter,
-            id=id,
-            meta=meta,
-            name=name,
-            tagged_addresses=tagged_addresses,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             address: Optional[str] = None,
-             datacenter: Optional[str] = None,
-             id: Optional[str] = None,
-             meta: Optional[Mapping[str, str]] = None,
-             name: Optional[str] = None,
-             tagged_addresses: Optional[Mapping[str, str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if address is None:
-            raise TypeError("Missing 'address' argument")
-        if datacenter is None:
-            raise TypeError("Missing 'datacenter' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if meta is None:
-            raise TypeError("Missing 'meta' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if tagged_addresses is None and 'taggedAddresses' in kwargs:
-            tagged_addresses = kwargs['taggedAddresses']
-        if tagged_addresses is None:
-            raise TypeError("Missing 'tagged_addresses' argument")
-
-        _setter("address", address)
-        _setter("datacenter", datacenter)
-        _setter("id", id)
-        _setter("meta", meta)
-        _setter("name", name)
-        _setter("tagged_addresses", tagged_addresses)
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "datacenter", datacenter)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "meta", meta)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "tagged_addresses", tagged_addresses)
 
     @property
     @pulumi.getter
@@ -3529,45 +2494,12 @@ class GetServiceHealthResultServiceResult(dict):
         :param int port: The port of this instance.
         :param Sequence[str] tags: The list of tags associated with this instance.
         """
-        GetServiceHealthResultServiceResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            address=address,
-            id=id,
-            meta=meta,
-            name=name,
-            port=port,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             address: Optional[str] = None,
-             id: Optional[str] = None,
-             meta: Optional[Mapping[str, str]] = None,
-             name: Optional[str] = None,
-             port: Optional[int] = None,
-             tags: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if address is None:
-            raise TypeError("Missing 'address' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if meta is None:
-            raise TypeError("Missing 'meta' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if port is None:
-            raise TypeError("Missing 'port' argument")
-        if tags is None:
-            raise TypeError("Missing 'tags' argument")
-
-        _setter("address", address)
-        _setter("id", id)
-        _setter("meta", meta)
-        _setter("name", name)
-        _setter("port", port)
-        _setter("tags", tags)
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "meta", meta)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter
@@ -3649,65 +2581,26 @@ class GetServiceQueryOptionResult(dict):
         :param str wait_time: Max time the client should wait for a blocking query
                to return.
         """
-        GetServiceQueryOptionResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allow_stale=allow_stale,
-            datacenter=datacenter,
-            namespace=namespace,
-            near=near,
-            node_meta=node_meta,
-            partition=partition,
-            require_consistent=require_consistent,
-            token=token,
-            wait_index=wait_index,
-            wait_time=wait_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allow_stale: Optional[bool] = None,
-             datacenter: Optional[str] = None,
-             namespace: Optional[str] = None,
-             near: Optional[str] = None,
-             node_meta: Optional[Mapping[str, str]] = None,
-             partition: Optional[str] = None,
-             require_consistent: Optional[bool] = None,
-             token: Optional[str] = None,
-             wait_index: Optional[int] = None,
-             wait_time: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allow_stale is None and 'allowStale' in kwargs:
-            allow_stale = kwargs['allowStale']
-        if node_meta is None and 'nodeMeta' in kwargs:
-            node_meta = kwargs['nodeMeta']
-        if require_consistent is None and 'requireConsistent' in kwargs:
-            require_consistent = kwargs['requireConsistent']
-        if wait_index is None and 'waitIndex' in kwargs:
-            wait_index = kwargs['waitIndex']
-        if wait_time is None and 'waitTime' in kwargs:
-            wait_time = kwargs['waitTime']
-
         if allow_stale is not None:
-            _setter("allow_stale", allow_stale)
+            pulumi.set(__self__, "allow_stale", allow_stale)
         if datacenter is not None:
-            _setter("datacenter", datacenter)
+            pulumi.set(__self__, "datacenter", datacenter)
         if namespace is not None:
-            _setter("namespace", namespace)
+            pulumi.set(__self__, "namespace", namespace)
         if near is not None:
-            _setter("near", near)
+            pulumi.set(__self__, "near", near)
         if node_meta is not None:
-            _setter("node_meta", node_meta)
+            pulumi.set(__self__, "node_meta", node_meta)
         if partition is not None:
-            _setter("partition", partition)
+            pulumi.set(__self__, "partition", partition)
         if require_consistent is not None:
-            _setter("require_consistent", require_consistent)
+            pulumi.set(__self__, "require_consistent", require_consistent)
         if token is not None:
-            _setter("token", token)
+            pulumi.set(__self__, "token", token)
         if wait_index is not None:
-            _setter("wait_index", wait_index)
+            pulumi.set(__self__, "wait_index", wait_index)
         if wait_time is not None:
-            _setter("wait_time", wait_time)
+            pulumi.set(__self__, "wait_time", wait_time)
 
     @property
     @pulumi.getter(name="allowStale")
@@ -3833,101 +2726,20 @@ class GetServiceServiceResult(dict):
                * [`meta`](https://www.consul.io/docs/agent/http/catalog.html#Meta) - Service meta
                data tag information, if any.
         """
-        GetServiceServiceResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            address=address,
-            create_index=create_index,
-            enable_tag_override=enable_tag_override,
-            id=id,
-            meta=meta,
-            modify_index=modify_index,
-            name=name,
-            node_address=node_address,
-            node_id=node_id,
-            node_meta=node_meta,
-            node_name=node_name,
-            port=port,
-            tagged_addresses=tagged_addresses,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             address: Optional[str] = None,
-             create_index: Optional[str] = None,
-             enable_tag_override: Optional[str] = None,
-             id: Optional[str] = None,
-             meta: Optional[Mapping[str, str]] = None,
-             modify_index: Optional[str] = None,
-             name: Optional[str] = None,
-             node_address: Optional[str] = None,
-             node_id: Optional[str] = None,
-             node_meta: Optional[Mapping[str, str]] = None,
-             node_name: Optional[str] = None,
-             port: Optional[str] = None,
-             tagged_addresses: Optional[Mapping[str, str]] = None,
-             tags: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if address is None:
-            raise TypeError("Missing 'address' argument")
-        if create_index is None and 'createIndex' in kwargs:
-            create_index = kwargs['createIndex']
-        if create_index is None:
-            raise TypeError("Missing 'create_index' argument")
-        if enable_tag_override is None and 'enableTagOverride' in kwargs:
-            enable_tag_override = kwargs['enableTagOverride']
-        if enable_tag_override is None:
-            raise TypeError("Missing 'enable_tag_override' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if meta is None:
-            raise TypeError("Missing 'meta' argument")
-        if modify_index is None and 'modifyIndex' in kwargs:
-            modify_index = kwargs['modifyIndex']
-        if modify_index is None:
-            raise TypeError("Missing 'modify_index' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if node_address is None and 'nodeAddress' in kwargs:
-            node_address = kwargs['nodeAddress']
-        if node_address is None:
-            raise TypeError("Missing 'node_address' argument")
-        if node_id is None and 'nodeId' in kwargs:
-            node_id = kwargs['nodeId']
-        if node_id is None:
-            raise TypeError("Missing 'node_id' argument")
-        if node_meta is None and 'nodeMeta' in kwargs:
-            node_meta = kwargs['nodeMeta']
-        if node_meta is None:
-            raise TypeError("Missing 'node_meta' argument")
-        if node_name is None and 'nodeName' in kwargs:
-            node_name = kwargs['nodeName']
-        if node_name is None:
-            raise TypeError("Missing 'node_name' argument")
-        if port is None:
-            raise TypeError("Missing 'port' argument")
-        if tagged_addresses is None and 'taggedAddresses' in kwargs:
-            tagged_addresses = kwargs['taggedAddresses']
-        if tagged_addresses is None:
-            raise TypeError("Missing 'tagged_addresses' argument")
-        if tags is None:
-            raise TypeError("Missing 'tags' argument")
-
-        _setter("address", address)
-        _setter("create_index", create_index)
-        _setter("enable_tag_override", enable_tag_override)
-        _setter("id", id)
-        _setter("meta", meta)
-        _setter("modify_index", modify_index)
-        _setter("name", name)
-        _setter("node_address", node_address)
-        _setter("node_id", node_id)
-        _setter("node_meta", node_meta)
-        _setter("node_name", node_name)
-        _setter("port", port)
-        _setter("tagged_addresses", tagged_addresses)
-        _setter("tags", tags)
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "create_index", create_index)
+        pulumi.set(__self__, "enable_tag_override", enable_tag_override)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "meta", meta)
+        pulumi.set(__self__, "modify_index", modify_index)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "node_address", node_address)
+        pulumi.set(__self__, "node_id", node_id)
+        pulumi.set(__self__, "node_meta", node_meta)
+        pulumi.set(__self__, "node_name", node_name)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "tagged_addresses", tagged_addresses)
+        pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter
@@ -4059,65 +2871,26 @@ class GetServicesQueryOptionResult(dict):
         :param str wait_time: Max time the client should wait for a blocking query
                to return.
         """
-        GetServicesQueryOptionResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allow_stale=allow_stale,
-            datacenter=datacenter,
-            namespace=namespace,
-            near=near,
-            node_meta=node_meta,
-            partition=partition,
-            require_consistent=require_consistent,
-            token=token,
-            wait_index=wait_index,
-            wait_time=wait_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allow_stale: Optional[bool] = None,
-             datacenter: Optional[str] = None,
-             namespace: Optional[str] = None,
-             near: Optional[str] = None,
-             node_meta: Optional[Mapping[str, str]] = None,
-             partition: Optional[str] = None,
-             require_consistent: Optional[bool] = None,
-             token: Optional[str] = None,
-             wait_index: Optional[int] = None,
-             wait_time: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allow_stale is None and 'allowStale' in kwargs:
-            allow_stale = kwargs['allowStale']
-        if node_meta is None and 'nodeMeta' in kwargs:
-            node_meta = kwargs['nodeMeta']
-        if require_consistent is None and 'requireConsistent' in kwargs:
-            require_consistent = kwargs['requireConsistent']
-        if wait_index is None and 'waitIndex' in kwargs:
-            wait_index = kwargs['waitIndex']
-        if wait_time is None and 'waitTime' in kwargs:
-            wait_time = kwargs['waitTime']
-
         if allow_stale is not None:
-            _setter("allow_stale", allow_stale)
+            pulumi.set(__self__, "allow_stale", allow_stale)
         if datacenter is not None:
-            _setter("datacenter", datacenter)
+            pulumi.set(__self__, "datacenter", datacenter)
         if namespace is not None:
-            _setter("namespace", namespace)
+            pulumi.set(__self__, "namespace", namespace)
         if near is not None:
-            _setter("near", near)
+            pulumi.set(__self__, "near", near)
         if node_meta is not None:
-            _setter("node_meta", node_meta)
+            pulumi.set(__self__, "node_meta", node_meta)
         if partition is not None:
-            _setter("partition", partition)
+            pulumi.set(__self__, "partition", partition)
         if require_consistent is not None:
-            _setter("require_consistent", require_consistent)
+            pulumi.set(__self__, "require_consistent", require_consistent)
         if token is not None:
-            _setter("token", token)
+            pulumi.set(__self__, "token", token)
         if wait_index is not None:
-            _setter("wait_index", wait_index)
+            pulumi.set(__self__, "wait_index", wait_index)
         if wait_time is not None:
-            _setter("wait_time", wait_time)
+            pulumi.set(__self__, "wait_time", wait_time)
 
     @property
     @pulumi.getter(name="allowStale")

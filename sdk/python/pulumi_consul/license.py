@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['LicenseArgs', 'License']
@@ -22,24 +22,9 @@ class LicenseArgs:
         :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the
                agent's default datacenter and the datacenter in the provider setup.
         """
-        LicenseArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            license=license,
-            datacenter=datacenter,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             license: Optional[pulumi.Input[str]] = None,
-             datacenter: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if license is None:
-            raise TypeError("Missing 'license' argument")
-
-        _setter("license", license)
+        pulumi.set(__self__, "license", license)
         if datacenter is not None:
-            _setter("datacenter", datacenter)
+            pulumi.set(__self__, "datacenter", datacenter)
 
     @property
     @pulumi.getter
@@ -98,75 +83,30 @@ class _LicenseState:
         :param pulumi.Input[bool] valid: Whether the license is valid.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] warnings: A list of warning messages regarding the license validity.
         """
-        _LicenseState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            customer_id=customer_id,
-            datacenter=datacenter,
-            expiration_time=expiration_time,
-            features=features,
-            installation_id=installation_id,
-            issue_time=issue_time,
-            license=license,
-            license_id=license_id,
-            product=product,
-            start_time=start_time,
-            valid=valid,
-            warnings=warnings,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             customer_id: Optional[pulumi.Input[str]] = None,
-             datacenter: Optional[pulumi.Input[str]] = None,
-             expiration_time: Optional[pulumi.Input[str]] = None,
-             features: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             installation_id: Optional[pulumi.Input[str]] = None,
-             issue_time: Optional[pulumi.Input[str]] = None,
-             license: Optional[pulumi.Input[str]] = None,
-             license_id: Optional[pulumi.Input[str]] = None,
-             product: Optional[pulumi.Input[str]] = None,
-             start_time: Optional[pulumi.Input[str]] = None,
-             valid: Optional[pulumi.Input[bool]] = None,
-             warnings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if customer_id is None and 'customerId' in kwargs:
-            customer_id = kwargs['customerId']
-        if expiration_time is None and 'expirationTime' in kwargs:
-            expiration_time = kwargs['expirationTime']
-        if installation_id is None and 'installationId' in kwargs:
-            installation_id = kwargs['installationId']
-        if issue_time is None and 'issueTime' in kwargs:
-            issue_time = kwargs['issueTime']
-        if license_id is None and 'licenseId' in kwargs:
-            license_id = kwargs['licenseId']
-        if start_time is None and 'startTime' in kwargs:
-            start_time = kwargs['startTime']
-
         if customer_id is not None:
-            _setter("customer_id", customer_id)
+            pulumi.set(__self__, "customer_id", customer_id)
         if datacenter is not None:
-            _setter("datacenter", datacenter)
+            pulumi.set(__self__, "datacenter", datacenter)
         if expiration_time is not None:
-            _setter("expiration_time", expiration_time)
+            pulumi.set(__self__, "expiration_time", expiration_time)
         if features is not None:
-            _setter("features", features)
+            pulumi.set(__self__, "features", features)
         if installation_id is not None:
-            _setter("installation_id", installation_id)
+            pulumi.set(__self__, "installation_id", installation_id)
         if issue_time is not None:
-            _setter("issue_time", issue_time)
+            pulumi.set(__self__, "issue_time", issue_time)
         if license is not None:
-            _setter("license", license)
+            pulumi.set(__self__, "license", license)
         if license_id is not None:
-            _setter("license_id", license_id)
+            pulumi.set(__self__, "license_id", license_id)
         if product is not None:
-            _setter("product", product)
+            pulumi.set(__self__, "product", product)
         if start_time is not None:
-            _setter("start_time", start_time)
+            pulumi.set(__self__, "start_time", start_time)
         if valid is not None:
-            _setter("valid", valid)
+            pulumi.set(__self__, "valid", valid)
         if warnings is not None:
-            _setter("warnings", warnings)
+            pulumi.set(__self__, "warnings", warnings)
 
     @property
     @pulumi.getter(name="customerId")
@@ -376,10 +316,6 @@ class License(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            LicenseArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
