@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['AclTokenPolicyAttachmentArgs', 'AclTokenPolicyAttachment']
@@ -21,27 +21,8 @@ class AclTokenPolicyAttachmentArgs:
         :param pulumi.Input[str] policy: The name of the policy attached to the token.
         :param pulumi.Input[str] token_id: The id of the token.
         """
-        AclTokenPolicyAttachmentArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            policy=policy,
-            token_id=token_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             policy: Optional[pulumi.Input[str]] = None,
-             token_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if policy is None:
-            raise TypeError("Missing 'policy' argument")
-        if token_id is None and 'tokenId' in kwargs:
-            token_id = kwargs['tokenId']
-        if token_id is None:
-            raise TypeError("Missing 'token_id' argument")
-
-        _setter("policy", policy)
-        _setter("token_id", token_id)
+        pulumi.set(__self__, "policy", policy)
+        pulumi.set(__self__, "token_id", token_id)
 
     @property
     @pulumi.getter
@@ -78,25 +59,10 @@ class _AclTokenPolicyAttachmentState:
         :param pulumi.Input[str] policy: The name of the policy attached to the token.
         :param pulumi.Input[str] token_id: The id of the token.
         """
-        _AclTokenPolicyAttachmentState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            policy=policy,
-            token_id=token_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             policy: Optional[pulumi.Input[str]] = None,
-             token_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if token_id is None and 'tokenId' in kwargs:
-            token_id = kwargs['tokenId']
-
         if policy is not None:
-            _setter("policy", policy)
+            pulumi.set(__self__, "policy", policy)
         if token_id is not None:
-            _setter("token_id", token_id)
+            pulumi.set(__self__, "token_id", token_id)
 
     @property
     @pulumi.getter
@@ -178,10 +144,6 @@ class AclTokenPolicyAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            AclTokenPolicyAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
