@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -51,95 +51,42 @@ class PreparedQueryArgs:
         :param pulumi.Input['PreparedQueryTemplateArgs'] template: Query templating options. This is used to make a single prepared query respond to many different requests
         :param pulumi.Input[str] token: The ACL token to use when saving the prepared query. This overrides the token that the agent provides by default.
         """
-        PreparedQueryArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            service=service,
-            connect=connect,
-            datacenter=datacenter,
-            dns=dns,
-            failover=failover,
-            ignore_check_ids=ignore_check_ids,
-            name=name,
-            near=near,
-            node_meta=node_meta,
-            only_passing=only_passing,
-            service_meta=service_meta,
-            session=session,
-            stored_token=stored_token,
-            tags=tags,
-            template=template,
-            token=token,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             service: Optional[pulumi.Input[str]] = None,
-             connect: Optional[pulumi.Input[bool]] = None,
-             datacenter: Optional[pulumi.Input[str]] = None,
-             dns: Optional[pulumi.Input['PreparedQueryDnsArgs']] = None,
-             failover: Optional[pulumi.Input['PreparedQueryFailoverArgs']] = None,
-             ignore_check_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             near: Optional[pulumi.Input[str]] = None,
-             node_meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             only_passing: Optional[pulumi.Input[bool]] = None,
-             service_meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             session: Optional[pulumi.Input[str]] = None,
-             stored_token: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             template: Optional[pulumi.Input['PreparedQueryTemplateArgs']] = None,
-             token: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if service is None:
-            raise TypeError("Missing 'service' argument")
-        if ignore_check_ids is None and 'ignoreCheckIds' in kwargs:
-            ignore_check_ids = kwargs['ignoreCheckIds']
-        if node_meta is None and 'nodeMeta' in kwargs:
-            node_meta = kwargs['nodeMeta']
-        if only_passing is None and 'onlyPassing' in kwargs:
-            only_passing = kwargs['onlyPassing']
-        if service_meta is None and 'serviceMeta' in kwargs:
-            service_meta = kwargs['serviceMeta']
-        if stored_token is None and 'storedToken' in kwargs:
-            stored_token = kwargs['storedToken']
-
-        _setter("service", service)
+        pulumi.set(__self__, "service", service)
         if connect is not None:
-            _setter("connect", connect)
+            pulumi.set(__self__, "connect", connect)
         if datacenter is not None:
-            _setter("datacenter", datacenter)
+            pulumi.set(__self__, "datacenter", datacenter)
         if dns is not None:
-            _setter("dns", dns)
+            pulumi.set(__self__, "dns", dns)
         if failover is not None:
-            _setter("failover", failover)
+            pulumi.set(__self__, "failover", failover)
         if ignore_check_ids is not None:
-            _setter("ignore_check_ids", ignore_check_ids)
+            pulumi.set(__self__, "ignore_check_ids", ignore_check_ids)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if near is not None:
-            _setter("near", near)
+            pulumi.set(__self__, "near", near)
         if node_meta is not None:
-            _setter("node_meta", node_meta)
+            pulumi.set(__self__, "node_meta", node_meta)
         if only_passing is not None:
-            _setter("only_passing", only_passing)
+            pulumi.set(__self__, "only_passing", only_passing)
         if service_meta is not None:
-            _setter("service_meta", service_meta)
+            pulumi.set(__self__, "service_meta", service_meta)
         if session is not None:
-            _setter("session", session)
+            pulumi.set(__self__, "session", session)
         if stored_token is not None:
-            _setter("stored_token", stored_token)
+            pulumi.set(__self__, "stored_token", stored_token)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if template is not None:
-            _setter("template", template)
+            pulumi.set(__self__, "template", template)
         if token is not None:
             warnings.warn("""The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration""", DeprecationWarning)
             pulumi.log.warn("""token is deprecated: The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration""")
         if token is not None:
-            _setter("token", token)
+            pulumi.set(__self__, "token", token)
 
     @property
     @pulumi.getter
@@ -377,94 +324,43 @@ class _PreparedQueryState:
         :param pulumi.Input['PreparedQueryTemplateArgs'] template: Query templating options. This is used to make a single prepared query respond to many different requests
         :param pulumi.Input[str] token: The ACL token to use when saving the prepared query. This overrides the token that the agent provides by default.
         """
-        _PreparedQueryState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            connect=connect,
-            datacenter=datacenter,
-            dns=dns,
-            failover=failover,
-            ignore_check_ids=ignore_check_ids,
-            name=name,
-            near=near,
-            node_meta=node_meta,
-            only_passing=only_passing,
-            service=service,
-            service_meta=service_meta,
-            session=session,
-            stored_token=stored_token,
-            tags=tags,
-            template=template,
-            token=token,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             connect: Optional[pulumi.Input[bool]] = None,
-             datacenter: Optional[pulumi.Input[str]] = None,
-             dns: Optional[pulumi.Input['PreparedQueryDnsArgs']] = None,
-             failover: Optional[pulumi.Input['PreparedQueryFailoverArgs']] = None,
-             ignore_check_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             near: Optional[pulumi.Input[str]] = None,
-             node_meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             only_passing: Optional[pulumi.Input[bool]] = None,
-             service: Optional[pulumi.Input[str]] = None,
-             service_meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             session: Optional[pulumi.Input[str]] = None,
-             stored_token: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             template: Optional[pulumi.Input['PreparedQueryTemplateArgs']] = None,
-             token: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if ignore_check_ids is None and 'ignoreCheckIds' in kwargs:
-            ignore_check_ids = kwargs['ignoreCheckIds']
-        if node_meta is None and 'nodeMeta' in kwargs:
-            node_meta = kwargs['nodeMeta']
-        if only_passing is None and 'onlyPassing' in kwargs:
-            only_passing = kwargs['onlyPassing']
-        if service_meta is None and 'serviceMeta' in kwargs:
-            service_meta = kwargs['serviceMeta']
-        if stored_token is None and 'storedToken' in kwargs:
-            stored_token = kwargs['storedToken']
-
         if connect is not None:
-            _setter("connect", connect)
+            pulumi.set(__self__, "connect", connect)
         if datacenter is not None:
-            _setter("datacenter", datacenter)
+            pulumi.set(__self__, "datacenter", datacenter)
         if dns is not None:
-            _setter("dns", dns)
+            pulumi.set(__self__, "dns", dns)
         if failover is not None:
-            _setter("failover", failover)
+            pulumi.set(__self__, "failover", failover)
         if ignore_check_ids is not None:
-            _setter("ignore_check_ids", ignore_check_ids)
+            pulumi.set(__self__, "ignore_check_ids", ignore_check_ids)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if near is not None:
-            _setter("near", near)
+            pulumi.set(__self__, "near", near)
         if node_meta is not None:
-            _setter("node_meta", node_meta)
+            pulumi.set(__self__, "node_meta", node_meta)
         if only_passing is not None:
-            _setter("only_passing", only_passing)
+            pulumi.set(__self__, "only_passing", only_passing)
         if service is not None:
-            _setter("service", service)
+            pulumi.set(__self__, "service", service)
         if service_meta is not None:
-            _setter("service_meta", service_meta)
+            pulumi.set(__self__, "service_meta", service_meta)
         if session is not None:
-            _setter("session", session)
+            pulumi.set(__self__, "session", session)
         if stored_token is not None:
-            _setter("stored_token", stored_token)
+            pulumi.set(__self__, "stored_token", stored_token)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if template is not None:
-            _setter("template", template)
+            pulumi.set(__self__, "template", template)
         if token is not None:
             warnings.warn("""The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration""", DeprecationWarning)
             pulumi.log.warn("""token is deprecated: The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration""")
         if token is not None:
-            _setter("token", token)
+            pulumi.set(__self__, "token", token)
 
     @property
     @pulumi.getter
@@ -853,10 +749,6 @@ class PreparedQuery(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            PreparedQueryArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -889,9 +781,7 @@ class PreparedQuery(pulumi.CustomResource):
 
             __props__.__dict__["connect"] = connect
             __props__.__dict__["datacenter"] = datacenter
-            dns = _utilities.configure(dns, PreparedQueryDnsArgs, True)
             __props__.__dict__["dns"] = dns
-            failover = _utilities.configure(failover, PreparedQueryFailoverArgs, True)
             __props__.__dict__["failover"] = failover
             __props__.__dict__["ignore_check_ids"] = ignore_check_ids
             __props__.__dict__["name"] = name
@@ -905,7 +795,6 @@ class PreparedQuery(pulumi.CustomResource):
             __props__.__dict__["session"] = session
             __props__.__dict__["stored_token"] = stored_token
             __props__.__dict__["tags"] = tags
-            template = _utilities.configure(template, PreparedQueryTemplateArgs, True)
             __props__.__dict__["template"] = template
             __props__.__dict__["token"] = None if token is None else pulumi.Output.secret(token)
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["token"])
