@@ -6,7 +6,6 @@ require (
 	github.com/hashicorp/terraform-plugin-sdk v1.17.2
 	github.com/hashicorp/terraform-provider-consul v1.1.1-0.20231025144006-0c25a13e5f46
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.63.2
-	github.com/pulumi/pulumi/sdk/v3 v3.91.1
 )
 
 replace github.com/spf13/afero => github.com/spf13/afero v1.2.2
@@ -179,6 +178,7 @@ require (
 	github.com/pulumi/pulumi-terraform-bridge/x/muxer v0.0.4 // indirect
 	github.com/pulumi/pulumi-yaml v1.2.2 // indirect
 	github.com/pulumi/pulumi/pkg/v3 v3.91.1 // indirect
+	github.com/pulumi/pulumi/sdk/v3 v3.91.1 // indirect
 	github.com/pulumi/schema-tools v0.1.2 // indirect
 	github.com/pulumi/terraform-diff-reader v0.0.2 // indirect
 	github.com/rivo/uniseg v0.4.4 // indirect
