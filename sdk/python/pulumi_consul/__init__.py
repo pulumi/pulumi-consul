@@ -9,6 +9,7 @@ from .acl_auth_method import *
 from .acl_binding_rule import *
 from .acl_policy import *
 from .acl_role import *
+from .acl_role_policy_attachment import *
 from .acl_token import *
 from .acl_token_policy_attachment import *
 from .acl_token_role_attachment import *
@@ -18,6 +19,11 @@ from .autopilot_config import *
 from .catalog_entry import *
 from .certificate_authority import *
 from .config_entry import *
+from .config_entry_service_defaults import *
+from .config_entry_service_intentions import *
+from .config_entry_service_resolver import *
+from .config_entry_service_router import *
+from .config_entry_service_splitter import *
 from .get_acl_auth_method import *
 from .get_acl_policy import *
 from .get_acl_role import *
@@ -102,6 +108,14 @@ _utilities.register(
  },
  {
   "pkg": "consul",
+  "mod": "index/aclRolePolicyAttachment",
+  "fqn": "pulumi_consul",
+  "classes": {
+   "consul:index/aclRolePolicyAttachment:AclRolePolicyAttachment": "AclRolePolicyAttachment"
+  }
+ },
+ {
+  "pkg": "consul",
   "mod": "index/aclToken",
   "fqn": "pulumi_consul",
   "classes": {
@@ -170,6 +184,46 @@ _utilities.register(
   "fqn": "pulumi_consul",
   "classes": {
    "consul:index/configEntry:ConfigEntry": "ConfigEntry"
+  }
+ },
+ {
+  "pkg": "consul",
+  "mod": "index/configEntryServiceDefaults",
+  "fqn": "pulumi_consul",
+  "classes": {
+   "consul:index/configEntryServiceDefaults:ConfigEntryServiceDefaults": "ConfigEntryServiceDefaults"
+  }
+ },
+ {
+  "pkg": "consul",
+  "mod": "index/configEntryServiceIntentions",
+  "fqn": "pulumi_consul",
+  "classes": {
+   "consul:index/configEntryServiceIntentions:ConfigEntryServiceIntentions": "ConfigEntryServiceIntentions"
+  }
+ },
+ {
+  "pkg": "consul",
+  "mod": "index/configEntryServiceResolver",
+  "fqn": "pulumi_consul",
+  "classes": {
+   "consul:index/configEntryServiceResolver:ConfigEntryServiceResolver": "ConfigEntryServiceResolver"
+  }
+ },
+ {
+  "pkg": "consul",
+  "mod": "index/configEntryServiceRouter",
+  "fqn": "pulumi_consul",
+  "classes": {
+   "consul:index/configEntryServiceRouter:ConfigEntryServiceRouter": "ConfigEntryServiceRouter"
+  }
+ },
+ {
+  "pkg": "consul",
+  "mod": "index/configEntryServiceSplitter",
+  "fqn": "pulumi_consul",
+  "classes": {
+   "consul:index/configEntryServiceSplitter:ConfigEntryServiceSplitter": "ConfigEntryServiceSplitter"
   }
  },
  {

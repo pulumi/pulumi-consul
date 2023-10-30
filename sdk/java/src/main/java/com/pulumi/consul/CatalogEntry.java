@@ -73,7 +73,7 @@ public class CatalogEntry extends com.pulumi.resources.CustomResource {
      * or referenced in the catalog.
      * 
      */
-    @Export(name="address", type=String.class, parameters={})
+    @Export(name="address", refs={String.class}, tree="[0]")
     private Output<String> address;
 
     /**
@@ -89,7 +89,7 @@ public class CatalogEntry extends com.pulumi.resources.CustomResource {
      * agent&#39;s default datacenter and the datacenter in the provider setup.
      * 
      */
-    @Export(name="datacenter", type=String.class, parameters={})
+    @Export(name="datacenter", refs={String.class}, tree="[0]")
     private Output<String> datacenter;
 
     /**
@@ -105,7 +105,7 @@ public class CatalogEntry extends com.pulumi.resources.CustomResource {
      * referenced in the catalog.
      * 
      */
-    @Export(name="node", type=String.class, parameters={})
+    @Export(name="node", refs={String.class}, tree="[0]")
     private Output<String> node;
 
     /**
@@ -121,7 +121,7 @@ public class CatalogEntry extends com.pulumi.resources.CustomResource {
      * the node. Supported values are documented below.
      * 
      */
-    @Export(name="services", type=List.class, parameters={CatalogEntryService.class})
+    @Export(name="services", refs={List.class,CatalogEntryService.class}, tree="[0,1]")
     private Output</* @Nullable */ List<CatalogEntryService>> services;
 
     /**
@@ -142,7 +142,7 @@ public class CatalogEntry extends com.pulumi.resources.CustomResource {
      */
     @Deprecated /* The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration */
-    @Export(name="token", type=String.class, parameters={})
+    @Export(name="token", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> token;
 
     /**

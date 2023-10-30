@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Consul
 {
     /// <summary>
-    /// Starting with Consul 1.5.0, the consul.AclRole can be used to managed Consul ACL roles.
+    /// The `consul.AclRole` can be used to manage [Consul ACL roles](https://developer.hashicorp.com/consul/docs/security/acl/acl-roles).
     /// 
     /// ## Example Usage
     /// 
@@ -24,11 +24,11 @@ namespace Pulumi.Consul
     /// {
     ///     var read_policy = new Consul.AclPolicy("read-policy", new()
     ///     {
+    ///         Rules = "node \"\" { policy = \"read\" }",
     ///         Datacenters = new[]
     ///         {
     ///             "dc1",
     ///         },
-    ///         Rules = "node \"\" { policy = \"read\" }",
     ///     });
     /// 
     ///     var read = new Consul.AclRole("read", new()
@@ -52,8 +52,6 @@ namespace Pulumi.Consul
     /// 
     /// ## Import
     /// 
-    /// `consul_acl_role` can be imported:
-    /// 
     /// ```sh
     ///  $ pulumi import consul:index/aclRole:AclRole read 816a195f-6cb1-2e8d-92af-3011ae706318
     /// ```
@@ -68,7 +66,7 @@ namespace Pulumi.Consul
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the ACL role.
+        /// The name of node, workload identity or service.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -92,7 +90,7 @@ namespace Pulumi.Consul
         public Output<string?> Partition { get; private set; } = null!;
 
         /// <summary>
-        /// The list of policies that should be applied to the role.
+        /// The list of policies that should be applied to the role. Both the policy ID or its name can be used.
         /// </summary>
         [Output("policies")]
         public Output<ImmutableArray<string>> Policies { get; private set; } = null!;
@@ -102,6 +100,12 @@ namespace Pulumi.Consul
         /// </summary>
         [Output("serviceIdentities")]
         public Output<ImmutableArray<Outputs.AclRoleServiceIdentity>> ServiceIdentities { get; private set; } = null!;
+
+        /// <summary>
+        /// The list of templated policies that should be applied to the token.
+        /// </summary>
+        [Output("templatedPolicies")]
+        public Output<ImmutableArray<Outputs.AclRoleTemplatedPolicy>> TemplatedPolicies { get; private set; } = null!;
 
 
         /// <summary>
@@ -156,7 +160,7 @@ namespace Pulumi.Consul
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The name of the ACL role.
+        /// The name of node, workload identity or service.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -189,7 +193,7 @@ namespace Pulumi.Consul
         private InputList<string>? _policies;
 
         /// <summary>
-        /// The list of policies that should be applied to the role.
+        /// The list of policies that should be applied to the role. Both the policy ID or its name can be used.
         /// </summary>
         public InputList<string> Policies
         {
@@ -209,6 +213,18 @@ namespace Pulumi.Consul
             set => _serviceIdentities = value;
         }
 
+        [Input("templatedPolicies")]
+        private InputList<Inputs.AclRoleTemplatedPolicyArgs>? _templatedPolicies;
+
+        /// <summary>
+        /// The list of templated policies that should be applied to the token.
+        /// </summary>
+        public InputList<Inputs.AclRoleTemplatedPolicyArgs> TemplatedPolicies
+        {
+            get => _templatedPolicies ?? (_templatedPolicies = new InputList<Inputs.AclRoleTemplatedPolicyArgs>());
+            set => _templatedPolicies = value;
+        }
+
         public AclRoleArgs()
         {
         }
@@ -224,7 +240,7 @@ namespace Pulumi.Consul
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The name of the ACL role.
+        /// The name of node, workload identity or service.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -257,7 +273,7 @@ namespace Pulumi.Consul
         private InputList<string>? _policies;
 
         /// <summary>
-        /// The list of policies that should be applied to the role.
+        /// The list of policies that should be applied to the role. Both the policy ID or its name can be used.
         /// </summary>
         public InputList<string> Policies
         {
@@ -275,6 +291,18 @@ namespace Pulumi.Consul
         {
             get => _serviceIdentities ?? (_serviceIdentities = new InputList<Inputs.AclRoleServiceIdentityGetArgs>());
             set => _serviceIdentities = value;
+        }
+
+        [Input("templatedPolicies")]
+        private InputList<Inputs.AclRoleTemplatedPolicyGetArgs>? _templatedPolicies;
+
+        /// <summary>
+        /// The list of templated policies that should be applied to the token.
+        /// </summary>
+        public InputList<Inputs.AclRoleTemplatedPolicyGetArgs> TemplatedPolicies
+        {
+            get => _templatedPolicies ?? (_templatedPolicies = new InputList<Inputs.AclRoleTemplatedPolicyGetArgs>());
+            set => _templatedPolicies = value;
         }
 
         public AclRoleState()

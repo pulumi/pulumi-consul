@@ -65,10 +65,10 @@ public final class AclTokenNodeIdentity {
             return this;
         }
         public AclTokenNodeIdentity build() {
-            final var o = new AclTokenNodeIdentity();
-            o.datacenter = datacenter;
-            o.nodeName = nodeName;
-            return o;
+            final var _resultValue = new AclTokenNodeIdentity();
+            _resultValue.datacenter = datacenter;
+            _resultValue.nodeName = nodeName;
+            return _resultValue;
         }
     }
 }

@@ -149,14 +149,14 @@ public final class KeysKey {
             return this;
         }
         public KeysKey build() {
-            final var o = new KeysKey();
-            o.default_ = default_;
-            o.delete = delete;
-            o.flags = flags;
-            o.name = name;
-            o.path = path;
-            o.value = value;
-            return o;
+            final var _resultValue = new KeysKey();
+            _resultValue.default_ = default_;
+            _resultValue.delete = delete;
+            _resultValue.flags = flags;
+            _resultValue.name = name;
+            _resultValue.path = path;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

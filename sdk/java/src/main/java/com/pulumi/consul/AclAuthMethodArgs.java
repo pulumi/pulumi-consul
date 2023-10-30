@@ -19,28 +19,24 @@ public final class AclAuthMethodArgs extends com.pulumi.resources.ResourceArgs {
     public static final AclAuthMethodArgs Empty = new AclAuthMethodArgs();
 
     /**
-     * The raw configuration for this ACL auth method. This
-     * attribute is deprecated and will be removed in a future version. `config_json`
-     * should be used instead.
+     * The raw configuration for this ACL auth method.
      * 
      * @deprecated
-     * The config attribute is deprecated, please use config_json instead.
+     * The config attribute is deprecated, please use `config_json` instead.
      * 
      */
-    @Deprecated /* The config attribute is deprecated, please use config_json instead. */
+    @Deprecated /* The config attribute is deprecated, please use `config_json` instead. */
     @Import(name="config")
     private @Nullable Output<Map<String,String>> config;
 
     /**
-     * @return The raw configuration for this ACL auth method. This
-     * attribute is deprecated and will be removed in a future version. `config_json`
-     * should be used instead.
+     * @return The raw configuration for this ACL auth method.
      * 
      * @deprecated
-     * The config attribute is deprecated, please use config_json instead.
+     * The config attribute is deprecated, please use `config_json` instead.
      * 
      */
-    @Deprecated /* The config attribute is deprecated, please use config_json instead. */
+    @Deprecated /* The config attribute is deprecated, please use `config_json` instead. */
     public Optional<Output<Map<String,String>>> config() {
         return Optional.ofNullable(this.config);
     }
@@ -76,16 +72,14 @@ public final class AclAuthMethodArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * An optional name to use instead of the name
-     * attribute when displaying information about this auth method.
+     * An optional name to use instead of the name attribute when displaying information about this auth method.
      * 
      */
     @Import(name="displayName")
     private @Nullable Output<String> displayName;
 
     /**
-     * @return An optional name to use instead of the name
-     * attribute when displaying information about this auth method.
+     * @return An optional name to use instead of the name attribute when displaying information about this auth method.
      * 
      */
     public Optional<Output<String>> displayName() {
@@ -93,16 +87,14 @@ public final class AclAuthMethodArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The maximum life of any token created by this
-     * auth method.
+     * The maximum life of any token created by this auth method. **This attribute is required and must be set to a nonzero for the OIDC auth method.**
      * 
      */
     @Import(name="maxTokenTtl")
     private @Nullable Output<String> maxTokenTtl;
 
     /**
-     * @return The maximum life of any token created by this
-     * auth method.
+     * @return The maximum life of any token created by this auth method. **This attribute is required and must be set to a nonzero for the OIDC auth method.**
      * 
      */
     public Optional<Output<String>> maxTokenTtl() {
@@ -140,16 +132,14 @@ public final class AclAuthMethodArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A set of rules that control
-     * which namespace tokens created via this auth method will be created within.
+     * A set of rules that control which namespace tokens created via this auth method will be created within.
      * 
      */
     @Import(name="namespaceRules")
     private @Nullable Output<List<AclAuthMethodNamespaceRuleArgs>> namespaceRules;
 
     /**
-     * @return A set of rules that control
-     * which namespace tokens created via this auth method will be created within.
+     * @return A set of rules that control which namespace tokens created via this auth method will be created within.
      * 
      */
     public Optional<Output<List<AclAuthMethodNamespaceRuleArgs>>> namespaceRules() {
@@ -172,16 +162,14 @@ public final class AclAuthMethodArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The kind of token that this auth method
-     * produces. This can be either &#39;local&#39; or &#39;global&#39;.
+     * The kind of token that this auth method produces. This can be either &#39;local&#39; or &#39;global&#39;.
      * 
      */
     @Import(name="tokenLocality")
     private @Nullable Output<String> tokenLocality;
 
     /**
-     * @return The kind of token that this auth method
-     * produces. This can be either &#39;local&#39; or &#39;global&#39;.
+     * @return The kind of token that this auth method produces. This can be either &#39;local&#39; or &#39;global&#39;.
      * 
      */
     public Optional<Output<String>> tokenLocality() {
@@ -238,34 +226,30 @@ public final class AclAuthMethodArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param config The raw configuration for this ACL auth method. This
-         * attribute is deprecated and will be removed in a future version. `config_json`
-         * should be used instead.
+         * @param config The raw configuration for this ACL auth method.
          * 
          * @return builder
          * 
          * @deprecated
-         * The config attribute is deprecated, please use config_json instead.
+         * The config attribute is deprecated, please use `config_json` instead.
          * 
          */
-        @Deprecated /* The config attribute is deprecated, please use config_json instead. */
+        @Deprecated /* The config attribute is deprecated, please use `config_json` instead. */
         public Builder config(@Nullable Output<Map<String,String>> config) {
             $.config = config;
             return this;
         }
 
         /**
-         * @param config The raw configuration for this ACL auth method. This
-         * attribute is deprecated and will be removed in a future version. `config_json`
-         * should be used instead.
+         * @param config The raw configuration for this ACL auth method.
          * 
          * @return builder
          * 
          * @deprecated
-         * The config attribute is deprecated, please use config_json instead.
+         * The config attribute is deprecated, please use `config_json` instead.
          * 
          */
-        @Deprecated /* The config attribute is deprecated, please use config_json instead. */
+        @Deprecated /* The config attribute is deprecated, please use `config_json` instead. */
         public Builder config(Map<String,String> config) {
             return config(Output.of(config));
         }
@@ -313,8 +297,7 @@ public final class AclAuthMethodArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param displayName An optional name to use instead of the name
-         * attribute when displaying information about this auth method.
+         * @param displayName An optional name to use instead of the name attribute when displaying information about this auth method.
          * 
          * @return builder
          * 
@@ -325,8 +308,7 @@ public final class AclAuthMethodArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param displayName An optional name to use instead of the name
-         * attribute when displaying information about this auth method.
+         * @param displayName An optional name to use instead of the name attribute when displaying information about this auth method.
          * 
          * @return builder
          * 
@@ -336,8 +318,7 @@ public final class AclAuthMethodArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxTokenTtl The maximum life of any token created by this
-         * auth method.
+         * @param maxTokenTtl The maximum life of any token created by this auth method. **This attribute is required and must be set to a nonzero for the OIDC auth method.**
          * 
          * @return builder
          * 
@@ -348,8 +329,7 @@ public final class AclAuthMethodArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxTokenTtl The maximum life of any token created by this
-         * auth method.
+         * @param maxTokenTtl The maximum life of any token created by this auth method. **This attribute is required and must be set to a nonzero for the OIDC auth method.**
          * 
          * @return builder
          * 
@@ -401,8 +381,7 @@ public final class AclAuthMethodArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param namespaceRules A set of rules that control
-         * which namespace tokens created via this auth method will be created within.
+         * @param namespaceRules A set of rules that control which namespace tokens created via this auth method will be created within.
          * 
          * @return builder
          * 
@@ -413,8 +392,7 @@ public final class AclAuthMethodArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param namespaceRules A set of rules that control
-         * which namespace tokens created via this auth method will be created within.
+         * @param namespaceRules A set of rules that control which namespace tokens created via this auth method will be created within.
          * 
          * @return builder
          * 
@@ -424,8 +402,7 @@ public final class AclAuthMethodArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param namespaceRules A set of rules that control
-         * which namespace tokens created via this auth method will be created within.
+         * @param namespaceRules A set of rules that control which namespace tokens created via this auth method will be created within.
          * 
          * @return builder
          * 
@@ -456,8 +433,7 @@ public final class AclAuthMethodArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tokenLocality The kind of token that this auth method
-         * produces. This can be either &#39;local&#39; or &#39;global&#39;.
+         * @param tokenLocality The kind of token that this auth method produces. This can be either &#39;local&#39; or &#39;global&#39;.
          * 
          * @return builder
          * 
@@ -468,8 +444,7 @@ public final class AclAuthMethodArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tokenLocality The kind of token that this auth method
-         * produces. This can be either &#39;local&#39; or &#39;global&#39;.
+         * @param tokenLocality The kind of token that this auth method produces. This can be either &#39;local&#39; or &#39;global&#39;.
          * 
          * @return builder
          * 

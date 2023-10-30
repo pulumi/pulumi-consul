@@ -32,24 +32,16 @@ class ServiceArgs:
         """
         The set of arguments for constructing a Service resource.
         :param pulumi.Input[str] node: The name of the node the to register the service on.
-        :param pulumi.Input[str] address: The address of the service. Defaults to the
-               address of the node.
-        :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the
-               agent's default datacenter and the datacenter in the provider setup.
-        :param pulumi.Input[bool] enable_tag_override: Specifies to disable the
-               anti-entropy feature for this service's tags. Defaults to `false`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: A map of arbitrary KV metadata linked to the service
-               instance.
-        :param pulumi.Input[str] name: The name of the health-check.
+        :param pulumi.Input[str] address: The address of the service. Defaults to the address of the node.
+        :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
+        :param pulumi.Input[bool] enable_tag_override: Specifies to disable the anti-entropy feature for this service's tags. Defaults to `false`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: A map of arbitrary KV metadata linked to the service instance.
+        :param pulumi.Input[str] name: The name of the header.
         :param pulumi.Input[str] namespace: The namespace to create the service within.
         :param pulumi.Input[str] partition: The partition the service is associated with.
-               
-               The following attributes are available for each health-check:
         :param pulumi.Input[int] port: The port of the service.
-        :param pulumi.Input[str] service_id: If the service ID is not provided, it will be defaulted to the value
-               of the `name` attribute.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of values that are opaque to Consul,
-               but can be used to distinguish between services or nodes.
+        :param pulumi.Input[str] service_id: If the service ID is not provided, it will be defaulted to the value of the `name` attribute.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of values that are opaque to Consul, but can be used to distinguish between services or nodes.
         """
         pulumi.set(__self__, "node", node)
         if address is not None:
@@ -96,8 +88,7 @@ class ServiceArgs:
     @pulumi.getter
     def address(self) -> Optional[pulumi.Input[str]]:
         """
-        The address of the service. Defaults to the
-        address of the node.
+        The address of the service. Defaults to the address of the node.
         """
         return pulumi.get(self, "address")
 
@@ -118,8 +109,7 @@ class ServiceArgs:
     @pulumi.getter
     def datacenter(self) -> Optional[pulumi.Input[str]]:
         """
-        The datacenter to use. This overrides the
-        agent's default datacenter and the datacenter in the provider setup.
+        The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
         """
         return pulumi.get(self, "datacenter")
 
@@ -131,8 +121,7 @@ class ServiceArgs:
     @pulumi.getter(name="enableTagOverride")
     def enable_tag_override(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies to disable the
-        anti-entropy feature for this service's tags. Defaults to `false`.
+        Specifies to disable the anti-entropy feature for this service's tags. Defaults to `false`.
         """
         return pulumi.get(self, "enable_tag_override")
 
@@ -156,8 +145,7 @@ class ServiceArgs:
     @pulumi.getter
     def meta(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        A map of arbitrary KV metadata linked to the service
-        instance.
+        A map of arbitrary KV metadata linked to the service instance.
         """
         return pulumi.get(self, "meta")
 
@@ -169,7 +157,7 @@ class ServiceArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the health-check.
+        The name of the header.
         """
         return pulumi.get(self, "name")
 
@@ -194,8 +182,6 @@ class ServiceArgs:
     def partition(self) -> Optional[pulumi.Input[str]]:
         """
         The partition the service is associated with.
-
-        The following attributes are available for each health-check:
         """
         return pulumi.get(self, "partition")
 
@@ -219,8 +205,7 @@ class ServiceArgs:
     @pulumi.getter(name="serviceId")
     def service_id(self) -> Optional[pulumi.Input[str]]:
         """
-        If the service ID is not provided, it will be defaulted to the value
-        of the `name` attribute.
+        If the service ID is not provided, it will be defaulted to the value of the `name` attribute.
         """
         return pulumi.get(self, "service_id")
 
@@ -232,8 +217,7 @@ class ServiceArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of values that are opaque to Consul,
-        but can be used to distinguish between services or nodes.
+        A list of values that are opaque to Consul, but can be used to distinguish between services or nodes.
         """
         return pulumi.get(self, "tags")
 
@@ -260,25 +244,17 @@ class _ServiceState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Service resources.
-        :param pulumi.Input[str] address: The address of the service. Defaults to the
-               address of the node.
-        :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the
-               agent's default datacenter and the datacenter in the provider setup.
-        :param pulumi.Input[bool] enable_tag_override: Specifies to disable the
-               anti-entropy feature for this service's tags. Defaults to `false`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: A map of arbitrary KV metadata linked to the service
-               instance.
-        :param pulumi.Input[str] name: The name of the health-check.
+        :param pulumi.Input[str] address: The address of the service. Defaults to the address of the node.
+        :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
+        :param pulumi.Input[bool] enable_tag_override: Specifies to disable the anti-entropy feature for this service's tags. Defaults to `false`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: A map of arbitrary KV metadata linked to the service instance.
+        :param pulumi.Input[str] name: The name of the header.
         :param pulumi.Input[str] namespace: The namespace to create the service within.
         :param pulumi.Input[str] node: The name of the node the to register the service on.
         :param pulumi.Input[str] partition: The partition the service is associated with.
-               
-               The following attributes are available for each health-check:
         :param pulumi.Input[int] port: The port of the service.
-        :param pulumi.Input[str] service_id: If the service ID is not provided, it will be defaulted to the value
-               of the `name` attribute.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of values that are opaque to Consul,
-               but can be used to distinguish between services or nodes.
+        :param pulumi.Input[str] service_id: If the service ID is not provided, it will be defaulted to the value of the `name` attribute.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of values that are opaque to Consul, but can be used to distinguish between services or nodes.
         """
         if address is not None:
             pulumi.set(__self__, "address", address)
@@ -314,8 +290,7 @@ class _ServiceState:
     @pulumi.getter
     def address(self) -> Optional[pulumi.Input[str]]:
         """
-        The address of the service. Defaults to the
-        address of the node.
+        The address of the service. Defaults to the address of the node.
         """
         return pulumi.get(self, "address")
 
@@ -336,8 +311,7 @@ class _ServiceState:
     @pulumi.getter
     def datacenter(self) -> Optional[pulumi.Input[str]]:
         """
-        The datacenter to use. This overrides the
-        agent's default datacenter and the datacenter in the provider setup.
+        The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
         """
         return pulumi.get(self, "datacenter")
 
@@ -349,8 +323,7 @@ class _ServiceState:
     @pulumi.getter(name="enableTagOverride")
     def enable_tag_override(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies to disable the
-        anti-entropy feature for this service's tags. Defaults to `false`.
+        Specifies to disable the anti-entropy feature for this service's tags. Defaults to `false`.
         """
         return pulumi.get(self, "enable_tag_override")
 
@@ -374,8 +347,7 @@ class _ServiceState:
     @pulumi.getter
     def meta(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        A map of arbitrary KV metadata linked to the service
-        instance.
+        A map of arbitrary KV metadata linked to the service instance.
         """
         return pulumi.get(self, "meta")
 
@@ -387,7 +359,7 @@ class _ServiceState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the health-check.
+        The name of the header.
         """
         return pulumi.get(self, "name")
 
@@ -424,8 +396,6 @@ class _ServiceState:
     def partition(self) -> Optional[pulumi.Input[str]]:
         """
         The partition the service is associated with.
-
-        The following attributes are available for each health-check:
         """
         return pulumi.get(self, "partition")
 
@@ -449,8 +419,7 @@ class _ServiceState:
     @pulumi.getter(name="serviceId")
     def service_id(self) -> Optional[pulumi.Input[str]]:
         """
-        If the service ID is not provided, it will be defaulted to the value
-        of the `name` attribute.
+        If the service ID is not provided, it will be defaulted to the value of the `name` attribute.
         """
         return pulumi.get(self, "service_id")
 
@@ -462,8 +431,7 @@ class _ServiceState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of values that are opaque to Consul,
-        but can be used to distinguish between services or nodes.
+        A list of values that are opaque to Consul, but can be used to distinguish between services or nodes.
         """
         return pulumi.get(self, "tags")
 
@@ -503,25 +471,17 @@ class Service(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] address: The address of the service. Defaults to the
-               address of the node.
-        :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the
-               agent's default datacenter and the datacenter in the provider setup.
-        :param pulumi.Input[bool] enable_tag_override: Specifies to disable the
-               anti-entropy feature for this service's tags. Defaults to `false`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: A map of arbitrary KV metadata linked to the service
-               instance.
-        :param pulumi.Input[str] name: The name of the health-check.
+        :param pulumi.Input[str] address: The address of the service. Defaults to the address of the node.
+        :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
+        :param pulumi.Input[bool] enable_tag_override: Specifies to disable the anti-entropy feature for this service's tags. Defaults to `false`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: A map of arbitrary KV metadata linked to the service instance.
+        :param pulumi.Input[str] name: The name of the header.
         :param pulumi.Input[str] namespace: The namespace to create the service within.
         :param pulumi.Input[str] node: The name of the node the to register the service on.
         :param pulumi.Input[str] partition: The partition the service is associated with.
-               
-               The following attributes are available for each health-check:
         :param pulumi.Input[int] port: The port of the service.
-        :param pulumi.Input[str] service_id: If the service ID is not provided, it will be defaulted to the value
-               of the `name` attribute.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of values that are opaque to Consul,
-               but can be used to distinguish between services or nodes.
+        :param pulumi.Input[str] service_id: If the service ID is not provided, it will be defaulted to the value of the `name` attribute.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of values that are opaque to Consul, but can be used to distinguish between services or nodes.
         """
         ...
     @overload
@@ -621,25 +581,17 @@ class Service(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] address: The address of the service. Defaults to the
-               address of the node.
-        :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the
-               agent's default datacenter and the datacenter in the provider setup.
-        :param pulumi.Input[bool] enable_tag_override: Specifies to disable the
-               anti-entropy feature for this service's tags. Defaults to `false`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: A map of arbitrary KV metadata linked to the service
-               instance.
-        :param pulumi.Input[str] name: The name of the health-check.
+        :param pulumi.Input[str] address: The address of the service. Defaults to the address of the node.
+        :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
+        :param pulumi.Input[bool] enable_tag_override: Specifies to disable the anti-entropy feature for this service's tags. Defaults to `false`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: A map of arbitrary KV metadata linked to the service instance.
+        :param pulumi.Input[str] name: The name of the header.
         :param pulumi.Input[str] namespace: The namespace to create the service within.
         :param pulumi.Input[str] node: The name of the node the to register the service on.
         :param pulumi.Input[str] partition: The partition the service is associated with.
-               
-               The following attributes are available for each health-check:
         :param pulumi.Input[int] port: The port of the service.
-        :param pulumi.Input[str] service_id: If the service ID is not provided, it will be defaulted to the value
-               of the `name` attribute.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of values that are opaque to Consul,
-               but can be used to distinguish between services or nodes.
+        :param pulumi.Input[str] service_id: If the service ID is not provided, it will be defaulted to the value of the `name` attribute.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of values that are opaque to Consul, but can be used to distinguish between services or nodes.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -664,8 +616,7 @@ class Service(pulumi.CustomResource):
     @pulumi.getter
     def address(self) -> pulumi.Output[str]:
         """
-        The address of the service. Defaults to the
-        address of the node.
+        The address of the service. Defaults to the address of the node.
         """
         return pulumi.get(self, "address")
 
@@ -678,8 +629,7 @@ class Service(pulumi.CustomResource):
     @pulumi.getter
     def datacenter(self) -> pulumi.Output[str]:
         """
-        The datacenter to use. This overrides the
-        agent's default datacenter and the datacenter in the provider setup.
+        The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
         """
         return pulumi.get(self, "datacenter")
 
@@ -687,8 +637,7 @@ class Service(pulumi.CustomResource):
     @pulumi.getter(name="enableTagOverride")
     def enable_tag_override(self) -> pulumi.Output[Optional[bool]]:
         """
-        Specifies to disable the
-        anti-entropy feature for this service's tags. Defaults to `false`.
+        Specifies to disable the anti-entropy feature for this service's tags. Defaults to `false`.
         """
         return pulumi.get(self, "enable_tag_override")
 
@@ -704,8 +653,7 @@ class Service(pulumi.CustomResource):
     @pulumi.getter
     def meta(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        A map of arbitrary KV metadata linked to the service
-        instance.
+        A map of arbitrary KV metadata linked to the service instance.
         """
         return pulumi.get(self, "meta")
 
@@ -713,7 +661,7 @@ class Service(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the health-check.
+        The name of the header.
         """
         return pulumi.get(self, "name")
 
@@ -738,8 +686,6 @@ class Service(pulumi.CustomResource):
     def partition(self) -> pulumi.Output[Optional[str]]:
         """
         The partition the service is associated with.
-
-        The following attributes are available for each health-check:
         """
         return pulumi.get(self, "partition")
 
@@ -755,8 +701,7 @@ class Service(pulumi.CustomResource):
     @pulumi.getter(name="serviceId")
     def service_id(self) -> pulumi.Output[str]:
         """
-        If the service ID is not provided, it will be defaulted to the value
-        of the `name` attribute.
+        If the service ID is not provided, it will be defaulted to the value of the `name` attribute.
         """
         return pulumi.get(self, "service_id")
 
@@ -764,8 +709,7 @@ class Service(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        A list of values that are opaque to Consul,
-        but can be used to distinguish between services or nodes.
+        A list of values that are opaque to Consul, but can be used to distinguish between services or nodes.
         """
         return pulumi.get(self, "tags")
 

@@ -15,21 +15,17 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceCheck {
     /**
-     * @return An ID, *unique per agent*. Will default to *name*
-     * if not set.
+     * @return An ID, *unique per agent*.
      * 
      */
     private String checkId;
     /**
-     * @return The time after which
-     * the service is automatically deregistered when in the `critical` state.
-     * Defaults to `30s`.
+     * @return The time after which the service is automatically deregistered when in the `critical` state. Defaults to `30s`.
      * 
      */
     private @Nullable String deregisterCriticalServiceAfter;
     /**
-     * @return The headers to send for an HTTP check.
-     * The attributes of each header is given below.
+     * @return The headers to send for an HTTP check. The attributes of each header is given below.
      * 
      */
     private @Nullable List<ServiceCheckHeader> headers;
@@ -39,14 +35,12 @@ public final class ServiceCheck {
      */
     private @Nullable String http;
     /**
-     * @return The interval to wait between each health-check
-     * invocation.
+     * @return The interval to wait between each health-check invocation.
      * 
      */
     private String interval;
     /**
-     * @return The method to use for HTTP health-checks. Defaults
-     * to `GET`.
+     * @return The method to use for HTTP health-checks. Defaults to `GET`.
      * 
      */
     private @Nullable String method;
@@ -71,39 +65,33 @@ public final class ServiceCheck {
      */
     private @Nullable String tcp;
     /**
-     * @return Specifies a timeout for outgoing connections in
-     * the case of a HTTP or TCP check.
+     * @return Specifies a timeout for outgoing connections in the case of a HTTP or TCP check.
      * 
      */
     private String timeout;
     /**
-     * @return Whether to deactivate certificate
-     * verification for HTTP health-checks. Defaults to `false`.
+     * @return Whether to deactivate certificate verification for HTTP health-checks. Defaults to `false`.
      * 
      */
     private @Nullable Boolean tlsSkipVerify;
 
     private ServiceCheck() {}
     /**
-     * @return An ID, *unique per agent*. Will default to *name*
-     * if not set.
+     * @return An ID, *unique per agent*.
      * 
      */
     public String checkId() {
         return this.checkId;
     }
     /**
-     * @return The time after which
-     * the service is automatically deregistered when in the `critical` state.
-     * Defaults to `30s`.
+     * @return The time after which the service is automatically deregistered when in the `critical` state. Defaults to `30s`.
      * 
      */
     public Optional<String> deregisterCriticalServiceAfter() {
         return Optional.ofNullable(this.deregisterCriticalServiceAfter);
     }
     /**
-     * @return The headers to send for an HTTP check.
-     * The attributes of each header is given below.
+     * @return The headers to send for an HTTP check. The attributes of each header is given below.
      * 
      */
     public List<ServiceCheckHeader> headers() {
@@ -117,16 +105,14 @@ public final class ServiceCheck {
         return Optional.ofNullable(this.http);
     }
     /**
-     * @return The interval to wait between each health-check
-     * invocation.
+     * @return The interval to wait between each health-check invocation.
      * 
      */
     public String interval() {
         return this.interval;
     }
     /**
-     * @return The method to use for HTTP health-checks. Defaults
-     * to `GET`.
+     * @return The method to use for HTTP health-checks. Defaults to `GET`.
      * 
      */
     public Optional<String> method() {
@@ -161,16 +147,14 @@ public final class ServiceCheck {
         return Optional.ofNullable(this.tcp);
     }
     /**
-     * @return Specifies a timeout for outgoing connections in
-     * the case of a HTTP or TCP check.
+     * @return Specifies a timeout for outgoing connections in the case of a HTTP or TCP check.
      * 
      */
     public String timeout() {
         return this.timeout;
     }
     /**
-     * @return Whether to deactivate certificate
-     * verification for HTTP health-checks. Defaults to `false`.
+     * @return Whether to deactivate certificate verification for HTTP health-checks. Defaults to `false`.
      * 
      */
     public Optional<Boolean> tlsSkipVerify() {
@@ -279,20 +263,20 @@ public final class ServiceCheck {
             return this;
         }
         public ServiceCheck build() {
-            final var o = new ServiceCheck();
-            o.checkId = checkId;
-            o.deregisterCriticalServiceAfter = deregisterCriticalServiceAfter;
-            o.headers = headers;
-            o.http = http;
-            o.interval = interval;
-            o.method = method;
-            o.name = name;
-            o.notes = notes;
-            o.status = status;
-            o.tcp = tcp;
-            o.timeout = timeout;
-            o.tlsSkipVerify = tlsSkipVerify;
-            return o;
+            final var _resultValue = new ServiceCheck();
+            _resultValue.checkId = checkId;
+            _resultValue.deregisterCriticalServiceAfter = deregisterCriticalServiceAfter;
+            _resultValue.headers = headers;
+            _resultValue.http = http;
+            _resultValue.interval = interval;
+            _resultValue.method = method;
+            _resultValue.name = name;
+            _resultValue.notes = notes;
+            _resultValue.status = status;
+            _resultValue.tcp = tcp;
+            _resultValue.timeout = timeout;
+            _resultValue.tlsSkipVerify = tlsSkipVerify;
+            return _resultValue;
         }
     }
 }

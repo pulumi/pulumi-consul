@@ -188,17 +188,17 @@ Please use the token argument in the provider configuration */
             return this;
         }
         public GetKeyPrefixResult build() {
-            final var o = new GetKeyPrefixResult();
-            o.datacenter = datacenter;
-            o.id = id;
-            o.namespace = namespace;
-            o.partition = partition;
-            o.pathPrefix = pathPrefix;
-            o.subkeyCollection = subkeyCollection;
-            o.subkeys = subkeys;
-            o.token = token;
-            o.var_ = var_;
-            return o;
+            final var _resultValue = new GetKeyPrefixResult();
+            _resultValue.datacenter = datacenter;
+            _resultValue.id = id;
+            _resultValue.namespace = namespace;
+            _resultValue.partition = partition;
+            _resultValue.pathPrefix = pathPrefix;
+            _resultValue.subkeyCollection = subkeyCollection;
+            _resultValue.subkeys = subkeys;
+            _resultValue.token = token;
+            _resultValue.var_ = var_;
+            return _resultValue;
         }
     }
 }

@@ -7,12 +7,12 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Starting with Consul 1.5.0, the consul.AclAuthMethod resource can be used to
- * managed [Consul ACL auth methods](https://www.consul.io/docs/acl/auth-methods).
+ * Starting with Consul 1.5.0, the `consul.AclAuthMethod` resource can be used to managed [Consul ACL auth methods](https://www.consul.io/docs/acl/auth-methods).
  *
  * ## Example Usage
  *
  * Define a `kubernetes` auth method:
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
@@ -31,19 +31,30 @@ import * as utilities from "./utilities";
  * ```
  *
  * Define a `jwt` auth method:
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
  *
- * const minikube = new consul.AclAuthMethod("minikube", {
- *     type: "jwt",
+ * const oidc = new consul.AclAuthMethod("oidc", {
+ *     type: "oidc",
+ *     maxTokenTtl: "5m",
  *     configJson: JSON.stringify({
- *         JWKSURL: "https://example.com/identity/oidc/.well-known/keys",
- *         JWTSupportedAlgs: "RS256",
- *         BoundIssuer: "https://example.com",
+ *         AllowedRedirectURIs: [
+ *             "http://localhost:8550/oidc/callback",
+ *             "http://localhost:8500/ui/oidc/callback",
+ *         ],
+ *         BoundAudiences: ["V1RPi2MYptMV1RPi2MYptMV1RPi2MYpt"],
  *         ClaimMappings: {
- *             subject: "subject",
+ *             "http://example.com/first_name": "first_name",
+ *             "http://example.com/last_name": "last_name",
  *         },
+ *         ListClaimMappings: {
+ *             "http://consul.com/groups": "groups",
+ *         },
+ *         OIDCClientID: "V1RPi2MYptMV1RPi2MYptMV1RPi2MYpt",
+ *         OIDCClientSecret: "...(omitted)...",
+ *         OIDCDiscoveryURL: "https://my-corp-app-name.auth0.com/",
  *     }),
  * });
  * ```
@@ -77,11 +88,9 @@ export class AclAuthMethod extends pulumi.CustomResource {
     }
 
     /**
-     * The raw configuration for this ACL auth method. This
-     * attribute is deprecated and will be removed in a future version. `configJson`
-     * should be used instead.
+     * The raw configuration for this ACL auth method.
      *
-     * @deprecated The config attribute is deprecated, please use config_json instead.
+     * @deprecated The config attribute is deprecated, please use `config_json` instead.
      */
     public readonly config!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -93,13 +102,11 @@ export class AclAuthMethod extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * An optional name to use instead of the name
-     * attribute when displaying information about this auth method.
+     * An optional name to use instead of the name attribute when displaying information about this auth method.
      */
     public readonly displayName!: pulumi.Output<string | undefined>;
     /**
-     * The maximum life of any token created by this
-     * auth method.
+     * The maximum life of any token created by this auth method. **This attribute is required and must be set to a nonzero for the OIDC auth method.**
      */
     public readonly maxTokenTtl!: pulumi.Output<string | undefined>;
     /**
@@ -111,8 +118,7 @@ export class AclAuthMethod extends pulumi.CustomResource {
      */
     public readonly namespace!: pulumi.Output<string | undefined>;
     /**
-     * A set of rules that control
-     * which namespace tokens created via this auth method will be created within.
+     * A set of rules that control which namespace tokens created via this auth method will be created within.
      */
     public readonly namespaceRules!: pulumi.Output<outputs.AclAuthMethodNamespaceRule[] | undefined>;
     /**
@@ -120,8 +126,7 @@ export class AclAuthMethod extends pulumi.CustomResource {
      */
     public readonly partition!: pulumi.Output<string | undefined>;
     /**
-     * The kind of token that this auth method
-     * produces. This can be either 'local' or 'global'.
+     * The kind of token that this auth method produces. This can be either 'local' or 'global'.
      */
     public readonly tokenLocality!: pulumi.Output<string | undefined>;
     /**
@@ -180,11 +185,9 @@ export class AclAuthMethod extends pulumi.CustomResource {
  */
 export interface AclAuthMethodState {
     /**
-     * The raw configuration for this ACL auth method. This
-     * attribute is deprecated and will be removed in a future version. `configJson`
-     * should be used instead.
+     * The raw configuration for this ACL auth method.
      *
-     * @deprecated The config attribute is deprecated, please use config_json instead.
+     * @deprecated The config attribute is deprecated, please use `config_json` instead.
      */
     config?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -196,13 +199,11 @@ export interface AclAuthMethodState {
      */
     description?: pulumi.Input<string>;
     /**
-     * An optional name to use instead of the name
-     * attribute when displaying information about this auth method.
+     * An optional name to use instead of the name attribute when displaying information about this auth method.
      */
     displayName?: pulumi.Input<string>;
     /**
-     * The maximum life of any token created by this
-     * auth method.
+     * The maximum life of any token created by this auth method. **This attribute is required and must be set to a nonzero for the OIDC auth method.**
      */
     maxTokenTtl?: pulumi.Input<string>;
     /**
@@ -214,8 +215,7 @@ export interface AclAuthMethodState {
      */
     namespace?: pulumi.Input<string>;
     /**
-     * A set of rules that control
-     * which namespace tokens created via this auth method will be created within.
+     * A set of rules that control which namespace tokens created via this auth method will be created within.
      */
     namespaceRules?: pulumi.Input<pulumi.Input<inputs.AclAuthMethodNamespaceRule>[]>;
     /**
@@ -223,8 +223,7 @@ export interface AclAuthMethodState {
      */
     partition?: pulumi.Input<string>;
     /**
-     * The kind of token that this auth method
-     * produces. This can be either 'local' or 'global'.
+     * The kind of token that this auth method produces. This can be either 'local' or 'global'.
      */
     tokenLocality?: pulumi.Input<string>;
     /**
@@ -238,11 +237,9 @@ export interface AclAuthMethodState {
  */
 export interface AclAuthMethodArgs {
     /**
-     * The raw configuration for this ACL auth method. This
-     * attribute is deprecated and will be removed in a future version. `configJson`
-     * should be used instead.
+     * The raw configuration for this ACL auth method.
      *
-     * @deprecated The config attribute is deprecated, please use config_json instead.
+     * @deprecated The config attribute is deprecated, please use `config_json` instead.
      */
     config?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -254,13 +251,11 @@ export interface AclAuthMethodArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * An optional name to use instead of the name
-     * attribute when displaying information about this auth method.
+     * An optional name to use instead of the name attribute when displaying information about this auth method.
      */
     displayName?: pulumi.Input<string>;
     /**
-     * The maximum life of any token created by this
-     * auth method.
+     * The maximum life of any token created by this auth method. **This attribute is required and must be set to a nonzero for the OIDC auth method.**
      */
     maxTokenTtl?: pulumi.Input<string>;
     /**
@@ -272,8 +267,7 @@ export interface AclAuthMethodArgs {
      */
     namespace?: pulumi.Input<string>;
     /**
-     * A set of rules that control
-     * which namespace tokens created via this auth method will be created within.
+     * A set of rules that control which namespace tokens created via this auth method will be created within.
      */
     namespaceRules?: pulumi.Input<pulumi.Input<inputs.AclAuthMethodNamespaceRule>[]>;
     /**
@@ -281,8 +275,7 @@ export interface AclAuthMethodArgs {
      */
     partition?: pulumi.Input<string>;
     /**
-     * The kind of token that this auth method
-     * produces. This can be either 'local' or 'global'.
+     * The kind of token that this auth method produces. This can be either 'local' or 'global'.
      */
     tokenLocality?: pulumi.Input<string>;
     /**

@@ -6,6 +6,7 @@ package com.pulumi.consul.outputs;
 import com.pulumi.consul.outputs.GetAclRoleNodeIdentity;
 import com.pulumi.consul.outputs.GetAclRolePolicy;
 import com.pulumi.consul.outputs.GetAclRoleServiceIdentity;
+import com.pulumi.consul.outputs.GetAclRoleTemplatedPolicy;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.List;
@@ -36,21 +37,30 @@ public final class GetAclRoleResult {
      */
     private @Nullable String namespace;
     /**
-     * @return The list of node identities associated with the ACL Role. Each entry has a `node_name` and a `datacenter` attributes.
+     * @return The list of node identities associated with the ACL Role.
      * 
      */
     private List<GetAclRoleNodeIdentity> nodeIdentities;
+    /**
+     * @return The partition to lookup the role.
+     * 
+     */
     private @Nullable String partition;
     /**
-     * @return The list of policies associated with the ACL Role. Each entry has an `id` and a `name` attribute.
+     * @return The list of policies associated with the ACL Role.
      * 
      */
     private List<GetAclRolePolicy> policies;
     /**
-     * @return The list of service identities associated with the ACL Role. Each entry has a `service_name` attribute and a list of `datacenters`.
+     * @return The list of service identities associated with the ACL Role.
      * 
      */
     private List<GetAclRoleServiceIdentity> serviceIdentities;
+    /**
+     * @return The list of templated policies that should be applied to the token.
+     * 
+     */
+    private List<GetAclRoleTemplatedPolicy> templatedPolicies;
 
     private GetAclRoleResult() {}
     /**
@@ -82,28 +92,39 @@ public final class GetAclRoleResult {
         return Optional.ofNullable(this.namespace);
     }
     /**
-     * @return The list of node identities associated with the ACL Role. Each entry has a `node_name` and a `datacenter` attributes.
+     * @return The list of node identities associated with the ACL Role.
      * 
      */
     public List<GetAclRoleNodeIdentity> nodeIdentities() {
         return this.nodeIdentities;
     }
+    /**
+     * @return The partition to lookup the role.
+     * 
+     */
     public Optional<String> partition() {
         return Optional.ofNullable(this.partition);
     }
     /**
-     * @return The list of policies associated with the ACL Role. Each entry has an `id` and a `name` attribute.
+     * @return The list of policies associated with the ACL Role.
      * 
      */
     public List<GetAclRolePolicy> policies() {
         return this.policies;
     }
     /**
-     * @return The list of service identities associated with the ACL Role. Each entry has a `service_name` attribute and a list of `datacenters`.
+     * @return The list of service identities associated with the ACL Role.
      * 
      */
     public List<GetAclRoleServiceIdentity> serviceIdentities() {
         return this.serviceIdentities;
+    }
+    /**
+     * @return The list of templated policies that should be applied to the token.
+     * 
+     */
+    public List<GetAclRoleTemplatedPolicy> templatedPolicies() {
+        return this.templatedPolicies;
     }
 
     public static Builder builder() {
@@ -123,6 +144,7 @@ public final class GetAclRoleResult {
         private @Nullable String partition;
         private List<GetAclRolePolicy> policies;
         private List<GetAclRoleServiceIdentity> serviceIdentities;
+        private List<GetAclRoleTemplatedPolicy> templatedPolicies;
         public Builder() {}
         public Builder(GetAclRoleResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -134,6 +156,7 @@ public final class GetAclRoleResult {
     	      this.partition = defaults.partition;
     	      this.policies = defaults.policies;
     	      this.serviceIdentities = defaults.serviceIdentities;
+    	      this.templatedPolicies = defaults.templatedPolicies;
         }
 
         @CustomType.Setter
@@ -185,17 +208,26 @@ public final class GetAclRoleResult {
         public Builder serviceIdentities(GetAclRoleServiceIdentity... serviceIdentities) {
             return serviceIdentities(List.of(serviceIdentities));
         }
+        @CustomType.Setter
+        public Builder templatedPolicies(List<GetAclRoleTemplatedPolicy> templatedPolicies) {
+            this.templatedPolicies = Objects.requireNonNull(templatedPolicies);
+            return this;
+        }
+        public Builder templatedPolicies(GetAclRoleTemplatedPolicy... templatedPolicies) {
+            return templatedPolicies(List.of(templatedPolicies));
+        }
         public GetAclRoleResult build() {
-            final var o = new GetAclRoleResult();
-            o.description = description;
-            o.id = id;
-            o.name = name;
-            o.namespace = namespace;
-            o.nodeIdentities = nodeIdentities;
-            o.partition = partition;
-            o.policies = policies;
-            o.serviceIdentities = serviceIdentities;
-            return o;
+            final var _resultValue = new GetAclRoleResult();
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.namespace = namespace;
+            _resultValue.nodeIdentities = nodeIdentities;
+            _resultValue.partition = partition;
+            _resultValue.policies = policies;
+            _resultValue.serviceIdentities = serviceIdentities;
+            _resultValue.templatedPolicies = templatedPolicies;
+            return _resultValue;
         }
     }
 }

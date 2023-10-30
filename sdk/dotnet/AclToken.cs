@@ -10,44 +10,54 @@ using Pulumi.Serialization;
 namespace Pulumi.Consul
 {
     /// <summary>
-    /// The `consul.AclToken` resource writes an ACL token into Consul.
-    /// 
     /// ## Example Usage
-    /// ### Basic usage
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
     /// using Consul = Pulumi.Consul;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     // Basic usage
     ///     var agent = new Consul.AclPolicy("agent", new()
     ///     {
     ///         Rules = @"node_prefix """" {
     ///   policy = ""read""
     /// }
-    /// 
     /// ",
     ///     });
     /// 
-    ///     var test = new Consul.AclToken("test", new()
+    ///     var testAclToken = new Consul.AclToken("testAclToken", new()
     ///     {
     ///         Description = "my test token",
-    ///         Local = true,
     ///         Policies = new[]
     ///         {
     ///             agent.Name,
     ///         },
+    ///         Local = true,
+    ///     });
+    /// 
+    ///     // Explicitly set the `accessor_id`
+    ///     var testrandom_uuid = new Random.Index.Random_uuid("testrandom_uuid");
+    /// 
+    ///     var testPredefinedId = new Consul.AclToken("testPredefinedId", new()
+    ///     {
+    ///         AccessorId = random_uuid.Test_uuid.Result,
+    ///         Description = "my test uuid token",
+    ///         Policies = new[]
+    ///         {
+    ///             agent.Name,
+    ///         },
+    ///         Local = true,
     ///     });
     /// 
     /// });
     /// ```
     /// 
     /// ## Import
-    /// 
-    /// `consul_acl_token` can be imported. This is especially useful to manage the anonymous and the master token with Terraform
     /// 
     /// ```sh
     ///  $ pulumi import consul:index/aclToken:AclToken anonymous 00000000-0000-0000-0000-000000000002
@@ -61,8 +71,7 @@ namespace Pulumi.Consul
     public partial class AclToken : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The uuid of the token. If omitted, Consul will
-        /// generate a random uuid.
+        /// The uuid of the token. If omitted, Consul will generate a random uuid.
         /// </summary>
         [Output("accessorId")]
         public Output<string> AccessorId { get; private set; } = null!;
@@ -121,6 +130,12 @@ namespace Pulumi.Consul
         [Output("serviceIdentities")]
         public Output<ImmutableArray<Outputs.AclTokenServiceIdentity>> ServiceIdentities { get; private set; } = null!;
 
+        /// <summary>
+        /// The list of templated policies that should be applied to the token.
+        /// </summary>
+        [Output("templatedPolicies")]
+        public Output<ImmutableArray<Outputs.AclTokenTemplatedPolicy>> TemplatedPolicies { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a AclToken resource with the given unique name, arguments, and options.
@@ -168,8 +183,7 @@ namespace Pulumi.Consul
     public sealed class AclTokenArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The uuid of the token. If omitted, Consul will
-        /// generate a random uuid.
+        /// The uuid of the token. If omitted, Consul will generate a random uuid.
         /// </summary>
         [Input("accessorId")]
         public Input<string>? AccessorId { get; set; }
@@ -252,6 +266,18 @@ namespace Pulumi.Consul
             set => _serviceIdentities = value;
         }
 
+        [Input("templatedPolicies")]
+        private InputList<Inputs.AclTokenTemplatedPolicyArgs>? _templatedPolicies;
+
+        /// <summary>
+        /// The list of templated policies that should be applied to the token.
+        /// </summary>
+        public InputList<Inputs.AclTokenTemplatedPolicyArgs> TemplatedPolicies
+        {
+            get => _templatedPolicies ?? (_templatedPolicies = new InputList<Inputs.AclTokenTemplatedPolicyArgs>());
+            set => _templatedPolicies = value;
+        }
+
         public AclTokenArgs()
         {
         }
@@ -261,8 +287,7 @@ namespace Pulumi.Consul
     public sealed class AclTokenState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The uuid of the token. If omitted, Consul will
-        /// generate a random uuid.
+        /// The uuid of the token. If omitted, Consul will generate a random uuid.
         /// </summary>
         [Input("accessorId")]
         public Input<string>? AccessorId { get; set; }
@@ -343,6 +368,18 @@ namespace Pulumi.Consul
         {
             get => _serviceIdentities ?? (_serviceIdentities = new InputList<Inputs.AclTokenServiceIdentityGetArgs>());
             set => _serviceIdentities = value;
+        }
+
+        [Input("templatedPolicies")]
+        private InputList<Inputs.AclTokenTemplatedPolicyGetArgs>? _templatedPolicies;
+
+        /// <summary>
+        /// The list of templated policies that should be applied to the token.
+        /// </summary>
+        public InputList<Inputs.AclTokenTemplatedPolicyGetArgs> TemplatedPolicies
+        {
+            get => _templatedPolicies ?? (_templatedPolicies = new InputList<Inputs.AclTokenTemplatedPolicyGetArgs>());
+            set => _templatedPolicies = value;
         }
 
         public AclTokenState()

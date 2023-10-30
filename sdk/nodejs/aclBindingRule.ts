@@ -2,11 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Starting with Consul 1.5.0, the consul.AclBindingRule resource can be used to
- * managed Consul ACL binding rules.
+ * Starting with Consul 1.5.0, the consul.AclBindingRule resource can be used to managed Consul ACL binding rules.
  *
  * ## Example Usage
  *
@@ -15,23 +16,22 @@ import * as utilities from "./utilities";
  * import * as consul from "@pulumi/consul";
  *
  * const minikube = new consul.AclAuthMethod("minikube", {
+ *     type: "kubernetes",
+ *     description: "dev minikube cluster",
  *     config: {
+ *         Host: "https://192.0.2.42:8443",
  *         CACert: `-----BEGIN CERTIFICATE-----
  * ...-----END CERTIFICATE-----
- *
  * `,
- *         Host: "https://192.0.2.42:8443",
  *         ServiceAccountJWT: "eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9...",
  *     },
- *     description: "dev minikube cluster",
- *     type: "kubernetes",
  * });
  * const test = new consul.AclBindingRule("test", {
  *     authMethod: minikube.name,
- *     bindName: "minikube",
- *     bindType: "service",
  *     description: "foobar",
  *     selector: "serviceaccount.namespace==default",
+ *     bindType: "service",
+ *     bindName: "minikube",
  * });
  * ```
  */
@@ -76,6 +76,10 @@ export class AclBindingRule extends pulumi.CustomResource {
      */
     public readonly bindType!: pulumi.Output<string>;
     /**
+     * The variables used when binding rule type is `templated-policy`. Can be lightly templated using HIL `${foo}` syntax from available field names.
+     */
+    public readonly bindVars!: pulumi.Output<outputs.AclBindingRuleBindVars | undefined>;
+    /**
      * A free form human readable description of the binding rule.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -88,7 +92,7 @@ export class AclBindingRule extends pulumi.CustomResource {
      */
     public readonly partition!: pulumi.Output<string | undefined>;
     /**
-     * The expression used to math this rule against valid identities returned from an auth method validation.
+     * The expression used to match this rule against valid identities returned from an auth method validation.
      */
     public readonly selector!: pulumi.Output<string | undefined>;
 
@@ -108,6 +112,7 @@ export class AclBindingRule extends pulumi.CustomResource {
             resourceInputs["authMethod"] = state ? state.authMethod : undefined;
             resourceInputs["bindName"] = state ? state.bindName : undefined;
             resourceInputs["bindType"] = state ? state.bindType : undefined;
+            resourceInputs["bindVars"] = state ? state.bindVars : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["namespace"] = state ? state.namespace : undefined;
             resourceInputs["partition"] = state ? state.partition : undefined;
@@ -126,6 +131,7 @@ export class AclBindingRule extends pulumi.CustomResource {
             resourceInputs["authMethod"] = args ? args.authMethod : undefined;
             resourceInputs["bindName"] = args ? args.bindName : undefined;
             resourceInputs["bindType"] = args ? args.bindType : undefined;
+            resourceInputs["bindVars"] = args ? args.bindVars : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["namespace"] = args ? args.namespace : undefined;
             resourceInputs["partition"] = args ? args.partition : undefined;
@@ -153,6 +159,10 @@ export interface AclBindingRuleState {
      */
     bindType?: pulumi.Input<string>;
     /**
+     * The variables used when binding rule type is `templated-policy`. Can be lightly templated using HIL `${foo}` syntax from available field names.
+     */
+    bindVars?: pulumi.Input<inputs.AclBindingRuleBindVars>;
+    /**
      * A free form human readable description of the binding rule.
      */
     description?: pulumi.Input<string>;
@@ -165,7 +175,7 @@ export interface AclBindingRuleState {
      */
     partition?: pulumi.Input<string>;
     /**
-     * The expression used to math this rule against valid identities returned from an auth method validation.
+     * The expression used to match this rule against valid identities returned from an auth method validation.
      */
     selector?: pulumi.Input<string>;
 }
@@ -187,6 +197,10 @@ export interface AclBindingRuleArgs {
      */
     bindType: pulumi.Input<string>;
     /**
+     * The variables used when binding rule type is `templated-policy`. Can be lightly templated using HIL `${foo}` syntax from available field names.
+     */
+    bindVars?: pulumi.Input<inputs.AclBindingRuleBindVars>;
+    /**
      * A free form human readable description of the binding rule.
      */
     description?: pulumi.Input<string>;
@@ -199,7 +213,7 @@ export interface AclBindingRuleArgs {
      */
     partition?: pulumi.Input<string>;
     /**
-     * The expression used to math this rule against valid identities returned from an auth method validation.
+     * The expression used to match this rule against valid identities returned from an auth method validation.
      */
     selector?: pulumi.Input<string>;
 }

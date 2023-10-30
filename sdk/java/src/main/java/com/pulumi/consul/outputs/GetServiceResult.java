@@ -159,15 +159,15 @@ public final class GetServiceResult {
             return this;
         }
         public GetServiceResult build() {
-            final var o = new GetServiceResult();
-            o.datacenter = datacenter;
-            o.filter = filter;
-            o.id = id;
-            o.name = name;
-            o.queryOptions = queryOptions;
-            o.services = services;
-            o.tag = tag;
-            return o;
+            final var _resultValue = new GetServiceResult();
+            _resultValue.datacenter = datacenter;
+            _resultValue.filter = filter;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.queryOptions = queryOptions;
+            _resultValue.services = services;
+            _resultValue.tag = tag;
+            return _resultValue;
         }
     }
 }

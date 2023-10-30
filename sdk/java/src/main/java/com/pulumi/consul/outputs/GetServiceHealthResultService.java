@@ -147,14 +147,14 @@ public final class GetServiceHealthResultService {
             return tags(List.of(tags));
         }
         public GetServiceHealthResultService build() {
-            final var o = new GetServiceHealthResultService();
-            o.address = address;
-            o.id = id;
-            o.meta = meta;
-            o.name = name;
-            o.port = port;
-            o.tags = tags;
-            return o;
+            final var _resultValue = new GetServiceHealthResultService();
+            _resultValue.address = address;
+            _resultValue.id = id;
+            _resultValue.meta = meta;
+            _resultValue.name = name;
+            _resultValue.port = port;
+            _resultValue.tags = tags;
+            return _resultValue;
         }
     }
 }

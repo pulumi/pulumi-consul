@@ -14,14 +14,11 @@ namespace Pulumi.Consul.Outputs
     public sealed class AclAuthMethodNamespaceRule
     {
         /// <summary>
-        /// If the namespace rule's `selector` matches then
-        /// this is used to control the namespace where the token is created.
+        /// If the namespace rule's `selector` matches then this is used to control the namespace where the token is created.
         /// </summary>
         public readonly string BindNamespace;
         /// <summary>
-        /// Specifies the expression used to match this namespace
-        /// rule against valid identities returned from an auth method validation.
-        /// Defaults to `""`.
+        /// Specifies the expression used to match this namespace rule against valid identities returned from an auth method validation.
         /// </summary>
         public readonly string? Selector;
 

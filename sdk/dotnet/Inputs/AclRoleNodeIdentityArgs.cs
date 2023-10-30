@@ -13,7 +13,7 @@ namespace Pulumi.Consul.Inputs
     public sealed class AclRoleNodeIdentityArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The datacenter of the node.
+        /// Specifies the node's datacenter.
         /// </summary>
         [Input("datacenter", required: true)]
         public Input<string> Datacenter { get; set; } = null!;

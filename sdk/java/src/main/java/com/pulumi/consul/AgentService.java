@@ -67,7 +67,7 @@ public class AgentService extends com.pulumi.resources.CustomResource {
      * address of the agent.
      * 
      */
-    @Export(name="address", type=String.class, parameters={})
+    @Export(name="address", refs={String.class}, tree="[0]")
     private Output<String> address;
 
     /**
@@ -82,7 +82,7 @@ public class AgentService extends com.pulumi.resources.CustomResource {
      * The name of the service.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -96,7 +96,7 @@ public class AgentService extends com.pulumi.resources.CustomResource {
      * The port of the service.
      * 
      */
-    @Export(name="port", type=Integer.class, parameters={})
+    @Export(name="port", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> port;
 
     /**
@@ -111,7 +111,7 @@ public class AgentService extends com.pulumi.resources.CustomResource {
      * but can be used to distinguish between services or nodes.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**

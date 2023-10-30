@@ -12,32 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AclAuthMethodNamespaceRule {
     /**
-     * @return If the namespace rule&#39;s `selector` matches then
-     * this is used to control the namespace where the token is created.
+     * @return If the namespace rule&#39;s `selector` matches then this is used to control the namespace where the token is created.
      * 
      */
     private String bindNamespace;
     /**
-     * @return Specifies the expression used to match this namespace
-     * rule against valid identities returned from an auth method validation.
-     * Defaults to `&#34;&#34;`.
+     * @return Specifies the expression used to match this namespace rule against valid identities returned from an auth method validation.
      * 
      */
     private @Nullable String selector;
 
     private AclAuthMethodNamespaceRule() {}
     /**
-     * @return If the namespace rule&#39;s `selector` matches then
-     * this is used to control the namespace where the token is created.
+     * @return If the namespace rule&#39;s `selector` matches then this is used to control the namespace where the token is created.
      * 
      */
     public String bindNamespace() {
         return this.bindNamespace;
     }
     /**
-     * @return Specifies the expression used to match this namespace
-     * rule against valid identities returned from an auth method validation.
-     * Defaults to `&#34;&#34;`.
+     * @return Specifies the expression used to match this namespace rule against valid identities returned from an auth method validation.
      * 
      */
     public Optional<String> selector() {
@@ -73,10 +67,10 @@ public final class AclAuthMethodNamespaceRule {
             return this;
         }
         public AclAuthMethodNamespaceRule build() {
-            final var o = new AclAuthMethodNamespaceRule();
-            o.bindNamespace = bindNamespace;
-            o.selector = selector;
-            return o;
+            final var _resultValue = new AclAuthMethodNamespaceRule();
+            _resultValue.bindNamespace = bindNamespace;
+            _resultValue.selector = selector;
+            return _resultValue;
         }
     }
 }

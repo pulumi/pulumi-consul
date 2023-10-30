@@ -10,12 +10,12 @@ using Pulumi.Serialization;
 namespace Pulumi.Consul
 {
     /// <summary>
-    /// Starting with Consul 1.5.0, the consul.AclAuthMethod resource can be used to
-    /// managed [Consul ACL auth methods](https://www.consul.io/docs/acl/auth-methods).
+    /// Starting with Consul 1.5.0, the `consul.AclAuthMethod` resource can be used to managed [Consul ACL auth methods](https://www.consul.io/docs/acl/auth-methods).
     /// 
     /// ## Example Usage
     /// 
     /// Define a `kubernetes` auth method:
+    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -43,6 +43,7 @@ namespace Pulumi.Consul
     /// ```
     /// 
     /// Define a `jwt` auth method:
+    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -52,18 +53,33 @@ namespace Pulumi.Consul
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var minikube = new Consul.AclAuthMethod("minikube", new()
+    ///     var oidc = new Consul.AclAuthMethod("oidc", new()
     ///     {
-    ///         Type = "jwt",
+    ///         Type = "oidc",
+    ///         MaxTokenTtl = "5m",
     ///         ConfigJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///         {
-    ///             ["JWKSURL"] = "https://example.com/identity/oidc/.well-known/keys",
-    ///             ["JWTSupportedAlgs"] = "RS256",
-    ///             ["BoundIssuer"] = "https://example.com",
+    ///             ["AllowedRedirectURIs"] = new[]
+    ///             {
+    ///                 "http://localhost:8550/oidc/callback",
+    ///                 "http://localhost:8500/ui/oidc/callback",
+    ///             },
+    ///             ["BoundAudiences"] = new[]
+    ///             {
+    ///                 "V1RPi2MYptMV1RPi2MYptMV1RPi2MYpt",
+    ///             },
     ///             ["ClaimMappings"] = new Dictionary&lt;string, object?&gt;
     ///             {
-    ///                 ["subject"] = "subject",
+    ///                 ["http://example.com/first_name"] = "first_name",
+    ///                 ["http://example.com/last_name"] = "last_name",
     ///             },
+    ///             ["ListClaimMappings"] = new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 ["http://consul.com/groups"] = "groups",
+    ///             },
+    ///             ["OIDCClientID"] = "V1RPi2MYptMV1RPi2MYptMV1RPi2MYpt",
+    ///             ["OIDCClientSecret"] = "...(omitted)...",
+    ///             ["OIDCDiscoveryURL"] = "https://my-corp-app-name.auth0.com/",
     ///         }),
     ///     });
     /// 
@@ -74,9 +90,7 @@ namespace Pulumi.Consul
     public partial class AclAuthMethod : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The raw configuration for this ACL auth method. This
-        /// attribute is deprecated and will be removed in a future version. `config_json`
-        /// should be used instead.
+        /// The raw configuration for this ACL auth method.
         /// </summary>
         [Output("config")]
         public Output<ImmutableDictionary<string, string>?> Config { get; private set; } = null!;
@@ -94,15 +108,13 @@ namespace Pulumi.Consul
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// An optional name to use instead of the name
-        /// attribute when displaying information about this auth method.
+        /// An optional name to use instead of the name attribute when displaying information about this auth method.
         /// </summary>
         [Output("displayName")]
         public Output<string?> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// The maximum life of any token created by this
-        /// auth method.
+        /// The maximum life of any token created by this auth method. **This attribute is required and must be set to a nonzero for the OIDC auth method.**
         /// </summary>
         [Output("maxTokenTtl")]
         public Output<string?> MaxTokenTtl { get; private set; } = null!;
@@ -120,8 +132,7 @@ namespace Pulumi.Consul
         public Output<string?> Namespace { get; private set; } = null!;
 
         /// <summary>
-        /// A set of rules that control
-        /// which namespace tokens created via this auth method will be created within.
+        /// A set of rules that control which namespace tokens created via this auth method will be created within.
         /// </summary>
         [Output("namespaceRules")]
         public Output<ImmutableArray<Outputs.AclAuthMethodNamespaceRule>> NamespaceRules { get; private set; } = null!;
@@ -133,8 +144,7 @@ namespace Pulumi.Consul
         public Output<string?> Partition { get; private set; } = null!;
 
         /// <summary>
-        /// The kind of token that this auth method
-        /// produces. This can be either 'local' or 'global'.
+        /// The kind of token that this auth method produces. This can be either 'local' or 'global'.
         /// </summary>
         [Output("tokenLocality")]
         public Output<string?> TokenLocality { get; private set; } = null!;
@@ -195,11 +205,9 @@ namespace Pulumi.Consul
         private InputMap<string>? _config;
 
         /// <summary>
-        /// The raw configuration for this ACL auth method. This
-        /// attribute is deprecated and will be removed in a future version. `config_json`
-        /// should be used instead.
+        /// The raw configuration for this ACL auth method.
         /// </summary>
-        [Obsolete(@"The config attribute is deprecated, please use config_json instead.")]
+        [Obsolete(@"The config attribute is deprecated, please use `config_json` instead.")]
         public InputMap<string> Config
         {
             get => _config ?? (_config = new InputMap<string>());
@@ -219,15 +227,13 @@ namespace Pulumi.Consul
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// An optional name to use instead of the name
-        /// attribute when displaying information about this auth method.
+        /// An optional name to use instead of the name attribute when displaying information about this auth method.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// The maximum life of any token created by this
-        /// auth method.
+        /// The maximum life of any token created by this auth method. **This attribute is required and must be set to a nonzero for the OIDC auth method.**
         /// </summary>
         [Input("maxTokenTtl")]
         public Input<string>? MaxTokenTtl { get; set; }
@@ -248,8 +254,7 @@ namespace Pulumi.Consul
         private InputList<Inputs.AclAuthMethodNamespaceRuleArgs>? _namespaceRules;
 
         /// <summary>
-        /// A set of rules that control
-        /// which namespace tokens created via this auth method will be created within.
+        /// A set of rules that control which namespace tokens created via this auth method will be created within.
         /// </summary>
         public InputList<Inputs.AclAuthMethodNamespaceRuleArgs> NamespaceRules
         {
@@ -264,8 +269,7 @@ namespace Pulumi.Consul
         public Input<string>? Partition { get; set; }
 
         /// <summary>
-        /// The kind of token that this auth method
-        /// produces. This can be either 'local' or 'global'.
+        /// The kind of token that this auth method produces. This can be either 'local' or 'global'.
         /// </summary>
         [Input("tokenLocality")]
         public Input<string>? TokenLocality { get; set; }
@@ -288,11 +292,9 @@ namespace Pulumi.Consul
         private InputMap<string>? _config;
 
         /// <summary>
-        /// The raw configuration for this ACL auth method. This
-        /// attribute is deprecated and will be removed in a future version. `config_json`
-        /// should be used instead.
+        /// The raw configuration for this ACL auth method.
         /// </summary>
-        [Obsolete(@"The config attribute is deprecated, please use config_json instead.")]
+        [Obsolete(@"The config attribute is deprecated, please use `config_json` instead.")]
         public InputMap<string> Config
         {
             get => _config ?? (_config = new InputMap<string>());
@@ -312,15 +314,13 @@ namespace Pulumi.Consul
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// An optional name to use instead of the name
-        /// attribute when displaying information about this auth method.
+        /// An optional name to use instead of the name attribute when displaying information about this auth method.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// The maximum life of any token created by this
-        /// auth method.
+        /// The maximum life of any token created by this auth method. **This attribute is required and must be set to a nonzero for the OIDC auth method.**
         /// </summary>
         [Input("maxTokenTtl")]
         public Input<string>? MaxTokenTtl { get; set; }
@@ -341,8 +341,7 @@ namespace Pulumi.Consul
         private InputList<Inputs.AclAuthMethodNamespaceRuleGetArgs>? _namespaceRules;
 
         /// <summary>
-        /// A set of rules that control
-        /// which namespace tokens created via this auth method will be created within.
+        /// A set of rules that control which namespace tokens created via this auth method will be created within.
         /// </summary>
         public InputList<Inputs.AclAuthMethodNamespaceRuleGetArgs> NamespaceRules
         {
@@ -357,8 +356,7 @@ namespace Pulumi.Consul
         public Input<string>? Partition { get; set; }
 
         /// <summary>
-        /// The kind of token that this auth method
-        /// produces. This can be either 'local' or 'global'.
+        /// The kind of token that this auth method produces. This can be either 'local' or 'global'.
         /// </summary>
         [Input("tokenLocality")]
         public Input<string>? TokenLocality { get; set; }

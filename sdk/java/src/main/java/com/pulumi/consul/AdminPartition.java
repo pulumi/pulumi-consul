@@ -64,7 +64,7 @@ public class AdminPartition extends com.pulumi.resources.CustomResource {
      * Free form partition description.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -78,7 +78,7 @@ public class AdminPartition extends com.pulumi.resources.CustomResource {
      * The partition name. This must be a valid DNS hostname label.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**

@@ -48,9 +48,9 @@ public final class PreparedQueryDns {
             return this;
         }
         public PreparedQueryDns build() {
-            final var o = new PreparedQueryDns();
-            o.ttl = ttl;
-            return o;
+            final var _resultValue = new PreparedQueryDns();
+            _resultValue.ttl = ttl;
+            return _resultValue;
         }
     }
 }

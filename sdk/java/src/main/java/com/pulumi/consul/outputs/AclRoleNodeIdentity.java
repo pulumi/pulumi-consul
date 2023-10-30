@@ -10,7 +10,7 @@ import java.util.Objects;
 @CustomType
 public final class AclRoleNodeIdentity {
     /**
-     * @return The datacenter of the node.
+     * @return Specifies the node&#39;s datacenter.
      * 
      */
     private String datacenter;
@@ -22,7 +22,7 @@ public final class AclRoleNodeIdentity {
 
     private AclRoleNodeIdentity() {}
     /**
-     * @return The datacenter of the node.
+     * @return Specifies the node&#39;s datacenter.
      * 
      */
     public String datacenter() {
@@ -65,10 +65,10 @@ public final class AclRoleNodeIdentity {
             return this;
         }
         public AclRoleNodeIdentity build() {
-            final var o = new AclRoleNodeIdentity();
-            o.datacenter = datacenter;
-            o.nodeName = nodeName;
-            return o;
+            final var _resultValue = new AclRoleNodeIdentity();
+            _resultValue.datacenter = datacenter;
+            _resultValue.nodeName = nodeName;
+            return _resultValue;
         }
     }
 }

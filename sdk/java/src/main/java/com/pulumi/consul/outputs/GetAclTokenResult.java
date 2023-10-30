@@ -7,6 +7,7 @@ import com.pulumi.consul.outputs.GetAclTokenNodeIdentity;
 import com.pulumi.consul.outputs.GetAclTokenPolicy;
 import com.pulumi.consul.outputs.GetAclTokenRole;
 import com.pulumi.consul.outputs.GetAclTokenServiceIdentity;
+import com.pulumi.consul.outputs.GetAclTokenTemplatedPolicy;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.String;
@@ -17,6 +18,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAclTokenResult {
+    /**
+     * @return The accessor ID of the ACL token.
+     * 
+     */
     private String accessorId;
     /**
      * @return The description of the ACL token.
@@ -38,30 +43,47 @@ public final class GetAclTokenResult {
      * 
      */
     private Boolean local;
+    /**
+     * @return The namespace to lookup the ACL token.
+     * 
+     */
     private @Nullable String namespace;
     /**
-     * @return The list of node identities attached to the token. Each entry has a `node_name` and a `datacenter` attributes.
+     * @return The list of node identities attached to the token.
      * 
      */
     private List<GetAclTokenNodeIdentity> nodeIdentities;
+    /**
+     * @return The partition to lookup the ACL token.
+     * 
+     */
     private @Nullable String partition;
     /**
-     * @return A list of policies associated with the ACL token. Each entry has an `id` and a `name` attribute.
+     * @return A list of policies associated with the ACL token.
      * 
      */
     private List<GetAclTokenPolicy> policies;
     /**
-     * @return The list of roles attached to the token.
+     * @return List of roles linked to the token
      * 
      */
     private List<GetAclTokenRole> roles;
     /**
-     * @return The list of service identities attached to the token. Each entry has a `service_name` and a `datacenters` attribute.
+     * @return The list of service identities attached to the token.
      * 
      */
     private List<GetAclTokenServiceIdentity> serviceIdentities;
+    /**
+     * @return The list of templated policies that should be applied to the token.
+     * 
+     */
+    private List<GetAclTokenTemplatedPolicy> templatedPolicies;
 
     private GetAclTokenResult() {}
+    /**
+     * @return The accessor ID of the ACL token.
+     * 
+     */
     public String accessorId() {
         return this.accessorId;
     }
@@ -93,39 +115,54 @@ public final class GetAclTokenResult {
     public Boolean local() {
         return this.local;
     }
+    /**
+     * @return The namespace to lookup the ACL token.
+     * 
+     */
     public Optional<String> namespace() {
         return Optional.ofNullable(this.namespace);
     }
     /**
-     * @return The list of node identities attached to the token. Each entry has a `node_name` and a `datacenter` attributes.
+     * @return The list of node identities attached to the token.
      * 
      */
     public List<GetAclTokenNodeIdentity> nodeIdentities() {
         return this.nodeIdentities;
     }
+    /**
+     * @return The partition to lookup the ACL token.
+     * 
+     */
     public Optional<String> partition() {
         return Optional.ofNullable(this.partition);
     }
     /**
-     * @return A list of policies associated with the ACL token. Each entry has an `id` and a `name` attribute.
+     * @return A list of policies associated with the ACL token.
      * 
      */
     public List<GetAclTokenPolicy> policies() {
         return this.policies;
     }
     /**
-     * @return The list of roles attached to the token.
+     * @return List of roles linked to the token
      * 
      */
     public List<GetAclTokenRole> roles() {
         return this.roles;
     }
     /**
-     * @return The list of service identities attached to the token. Each entry has a `service_name` and a `datacenters` attribute.
+     * @return The list of service identities attached to the token.
      * 
      */
     public List<GetAclTokenServiceIdentity> serviceIdentities() {
         return this.serviceIdentities;
+    }
+    /**
+     * @return The list of templated policies that should be applied to the token.
+     * 
+     */
+    public List<GetAclTokenTemplatedPolicy> templatedPolicies() {
+        return this.templatedPolicies;
     }
 
     public static Builder builder() {
@@ -148,6 +185,7 @@ public final class GetAclTokenResult {
         private List<GetAclTokenPolicy> policies;
         private List<GetAclTokenRole> roles;
         private List<GetAclTokenServiceIdentity> serviceIdentities;
+        private List<GetAclTokenTemplatedPolicy> templatedPolicies;
         public Builder() {}
         public Builder(GetAclTokenResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -162,6 +200,7 @@ public final class GetAclTokenResult {
     	      this.policies = defaults.policies;
     	      this.roles = defaults.roles;
     	      this.serviceIdentities = defaults.serviceIdentities;
+    	      this.templatedPolicies = defaults.templatedPolicies;
         }
 
         @CustomType.Setter
@@ -231,20 +270,29 @@ public final class GetAclTokenResult {
         public Builder serviceIdentities(GetAclTokenServiceIdentity... serviceIdentities) {
             return serviceIdentities(List.of(serviceIdentities));
         }
+        @CustomType.Setter
+        public Builder templatedPolicies(List<GetAclTokenTemplatedPolicy> templatedPolicies) {
+            this.templatedPolicies = Objects.requireNonNull(templatedPolicies);
+            return this;
+        }
+        public Builder templatedPolicies(GetAclTokenTemplatedPolicy... templatedPolicies) {
+            return templatedPolicies(List.of(templatedPolicies));
+        }
         public GetAclTokenResult build() {
-            final var o = new GetAclTokenResult();
-            o.accessorId = accessorId;
-            o.description = description;
-            o.expirationTime = expirationTime;
-            o.id = id;
-            o.local = local;
-            o.namespace = namespace;
-            o.nodeIdentities = nodeIdentities;
-            o.partition = partition;
-            o.policies = policies;
-            o.roles = roles;
-            o.serviceIdentities = serviceIdentities;
-            return o;
+            final var _resultValue = new GetAclTokenResult();
+            _resultValue.accessorId = accessorId;
+            _resultValue.description = description;
+            _resultValue.expirationTime = expirationTime;
+            _resultValue.id = id;
+            _resultValue.local = local;
+            _resultValue.namespace = namespace;
+            _resultValue.nodeIdentities = nodeIdentities;
+            _resultValue.partition = partition;
+            _resultValue.policies = policies;
+            _resultValue.roles = roles;
+            _resultValue.serviceIdentities = serviceIdentities;
+            _resultValue.templatedPolicies = templatedPolicies;
+            return _resultValue;
         }
     }
 }

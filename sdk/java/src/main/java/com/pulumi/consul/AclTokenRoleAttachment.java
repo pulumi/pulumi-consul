@@ -29,7 +29,7 @@ public class AclTokenRoleAttachment extends com.pulumi.resources.CustomResource 
      * The role name.
      * 
      */
-    @Export(name="role", type=String.class, parameters={})
+    @Export(name="role", refs={String.class}, tree="[0]")
     private Output<String> role;
 
     /**
@@ -43,7 +43,7 @@ public class AclTokenRoleAttachment extends com.pulumi.resources.CustomResource 
      * The id of the token.
      * 
      */
-    @Export(name="tokenId", type=String.class, parameters={})
+    @Export(name="tokenId", refs={String.class}, tree="[0]")
     private Output<String> tokenId;
 
     /**

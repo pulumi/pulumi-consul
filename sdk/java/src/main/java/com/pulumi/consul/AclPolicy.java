@@ -69,7 +69,7 @@ public class AclPolicy extends com.pulumi.resources.CustomResource {
      * The datacenters of the policy.
      * 
      */
-    @Export(name="datacenters", type=List.class, parameters={String.class})
+    @Export(name="datacenters", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> datacenters;
 
     /**
@@ -83,7 +83,7 @@ public class AclPolicy extends com.pulumi.resources.CustomResource {
      * The description of the policy.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -97,7 +97,7 @@ public class AclPolicy extends com.pulumi.resources.CustomResource {
      * The name of the policy.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -111,7 +111,7 @@ public class AclPolicy extends com.pulumi.resources.CustomResource {
      * The namespace to create the policy within.
      * 
      */
-    @Export(name="namespace", type=String.class, parameters={})
+    @Export(name="namespace", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> namespace;
 
     /**
@@ -125,7 +125,7 @@ public class AclPolicy extends com.pulumi.resources.CustomResource {
      * The partition the ACL policy is associated with.
      * 
      */
-    @Export(name="partition", type=String.class, parameters={})
+    @Export(name="partition", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> partition;
 
     /**
@@ -139,7 +139,7 @@ public class AclPolicy extends com.pulumi.resources.CustomResource {
      * The rules of the policy.
      * 
      */
-    @Export(name="rules", type=String.class, parameters={})
+    @Export(name="rules", refs={String.class}, tree="[0]")
     private Output<String> rules;
 
     /**

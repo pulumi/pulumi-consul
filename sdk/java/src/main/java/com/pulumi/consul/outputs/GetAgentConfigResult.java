@@ -161,15 +161,15 @@ public final class GetAgentConfigResult {
             return this;
         }
         public GetAgentConfigResult build() {
-            final var o = new GetAgentConfigResult();
-            o.datacenter = datacenter;
-            o.id = id;
-            o.nodeId = nodeId;
-            o.nodeName = nodeName;
-            o.revision = revision;
-            o.server = server;
-            o.version = version;
-            return o;
+            final var _resultValue = new GetAgentConfigResult();
+            _resultValue.datacenter = datacenter;
+            _resultValue.id = id;
+            _resultValue.nodeId = nodeId;
+            _resultValue.nodeName = nodeName;
+            _resultValue.revision = revision;
+            _resultValue.server = server;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

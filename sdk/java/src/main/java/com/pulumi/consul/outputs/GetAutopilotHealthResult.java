@@ -129,13 +129,13 @@ public final class GetAutopilotHealthResult {
             return servers(List.of(servers));
         }
         public GetAutopilotHealthResult build() {
-            final var o = new GetAutopilotHealthResult();
-            o.datacenter = datacenter;
-            o.failureTolerance = failureTolerance;
-            o.healthy = healthy;
-            o.id = id;
-            o.servers = servers;
-            return o;
+            final var _resultValue = new GetAutopilotHealthResult();
+            _resultValue.datacenter = datacenter;
+            _resultValue.failureTolerance = failureTolerance;
+            _resultValue.healthy = healthy;
+            _resultValue.id = id;
+            _resultValue.servers = servers;
+            return _resultValue;
         }
     }
 }

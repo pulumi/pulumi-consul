@@ -122,15 +122,15 @@ public final class GetAclTokenSecretIdResult {
             return this;
         }
         public GetAclTokenSecretIdResult build() {
-            final var o = new GetAclTokenSecretIdResult();
-            o.accessorId = accessorId;
-            o.encryptedSecretId = encryptedSecretId;
-            o.id = id;
-            o.namespace = namespace;
-            o.partition = partition;
-            o.pgpKey = pgpKey;
-            o.secretId = secretId;
-            return o;
+            final var _resultValue = new GetAclTokenSecretIdResult();
+            _resultValue.accessorId = accessorId;
+            _resultValue.encryptedSecretId = encryptedSecretId;
+            _resultValue.id = id;
+            _resultValue.namespace = namespace;
+            _resultValue.partition = partition;
+            _resultValue.pgpKey = pgpKey;
+            _resultValue.secretId = secretId;
+            return _resultValue;
         }
     }
 }

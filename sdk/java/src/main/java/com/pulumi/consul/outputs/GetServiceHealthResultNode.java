@@ -134,14 +134,14 @@ public final class GetServiceHealthResultNode {
             return this;
         }
         public GetServiceHealthResultNode build() {
-            final var o = new GetServiceHealthResultNode();
-            o.address = address;
-            o.datacenter = datacenter;
-            o.id = id;
-            o.meta = meta;
-            o.name = name;
-            o.taggedAddresses = taggedAddresses;
-            return o;
+            final var _resultValue = new GetServiceHealthResultNode();
+            _resultValue.address = address;
+            _resultValue.datacenter = datacenter;
+            _resultValue.id = id;
+            _resultValue.meta = meta;
+            _resultValue.name = name;
+            _resultValue.taggedAddresses = taggedAddresses;
+            return _resultValue;
         }
     }
 }

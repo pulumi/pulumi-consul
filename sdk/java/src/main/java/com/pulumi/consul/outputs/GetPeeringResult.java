@@ -155,18 +155,18 @@ public final class GetPeeringResult {
             return this;
         }
         public GetPeeringResult build() {
-            final var o = new GetPeeringResult();
-            o.deletedAt = deletedAt;
-            o.id = id;
-            o.meta = meta;
-            o.partition = partition;
-            o.peerCaPems = peerCaPems;
-            o.peerId = peerId;
-            o.peerName = peerName;
-            o.peerServerAddresses = peerServerAddresses;
-            o.peerServerName = peerServerName;
-            o.state = state;
-            return o;
+            final var _resultValue = new GetPeeringResult();
+            _resultValue.deletedAt = deletedAt;
+            _resultValue.id = id;
+            _resultValue.meta = meta;
+            _resultValue.partition = partition;
+            _resultValue.peerCaPems = peerCaPems;
+            _resultValue.peerId = peerId;
+            _resultValue.peerName = peerName;
+            _resultValue.peerServerAddresses = peerServerAddresses;
+            _resultValue.peerServerName = peerServerName;
+            _resultValue.state = state;
+            return _resultValue;
         }
     }
 }

@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Starting with Consul 1.5.0, the consul.AclRole can be used to managed Consul ACL roles.
+ * The `consul.AclRole` can be used to manage [Consul ACL roles](https://developer.hashicorp.com/consul/docs/security/acl/acl-roles).
  *
  * ## Example Usage
  *
@@ -16,8 +16,8 @@ import * as utilities from "./utilities";
  * import * as consul from "@pulumi/consul";
  *
  * const read_policy = new consul.AclPolicy("read-policy", {
- *     datacenters: ["dc1"],
  *     rules: "node \"\" { policy = \"read\" }",
+ *     datacenters: ["dc1"],
  * });
  * const read = new consul.AclRole("read", {
  *     description: "bar",
@@ -29,8 +29,6 @@ import * as utilities from "./utilities";
  * ```
  *
  * ## Import
- *
- * `consul_acl_role` can be imported:
  *
  * ```sh
  *  $ pulumi import consul:index/aclRole:AclRole read 816a195f-6cb1-2e8d-92af-3011ae706318
@@ -69,7 +67,7 @@ export class AclRole extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The name of the ACL role.
+     * The name of node, workload identity or service.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -85,13 +83,17 @@ export class AclRole extends pulumi.CustomResource {
      */
     public readonly partition!: pulumi.Output<string | undefined>;
     /**
-     * The list of policies that should be applied to the role.
+     * The list of policies that should be applied to the role. Both the policy ID or its name can be used.
      */
     public readonly policies!: pulumi.Output<string[] | undefined>;
     /**
      * The list of service identities that should be applied to the role.
      */
     public readonly serviceIdentities!: pulumi.Output<outputs.AclRoleServiceIdentity[] | undefined>;
+    /**
+     * The list of templated policies that should be applied to the token.
+     */
+    public readonly templatedPolicies!: pulumi.Output<outputs.AclRoleTemplatedPolicy[] | undefined>;
 
     /**
      * Create a AclRole resource with the given unique name, arguments, and options.
@@ -113,6 +115,7 @@ export class AclRole extends pulumi.CustomResource {
             resourceInputs["partition"] = state ? state.partition : undefined;
             resourceInputs["policies"] = state ? state.policies : undefined;
             resourceInputs["serviceIdentities"] = state ? state.serviceIdentities : undefined;
+            resourceInputs["templatedPolicies"] = state ? state.templatedPolicies : undefined;
         } else {
             const args = argsOrState as AclRoleArgs | undefined;
             resourceInputs["description"] = args ? args.description : undefined;
@@ -122,6 +125,7 @@ export class AclRole extends pulumi.CustomResource {
             resourceInputs["partition"] = args ? args.partition : undefined;
             resourceInputs["policies"] = args ? args.policies : undefined;
             resourceInputs["serviceIdentities"] = args ? args.serviceIdentities : undefined;
+            resourceInputs["templatedPolicies"] = args ? args.templatedPolicies : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AclRole.__pulumiType, name, resourceInputs, opts);
@@ -137,7 +141,7 @@ export interface AclRoleState {
      */
     description?: pulumi.Input<string>;
     /**
-     * The name of the ACL role.
+     * The name of node, workload identity or service.
      */
     name?: pulumi.Input<string>;
     /**
@@ -153,13 +157,17 @@ export interface AclRoleState {
      */
     partition?: pulumi.Input<string>;
     /**
-     * The list of policies that should be applied to the role.
+     * The list of policies that should be applied to the role. Both the policy ID or its name can be used.
      */
     policies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The list of service identities that should be applied to the role.
      */
     serviceIdentities?: pulumi.Input<pulumi.Input<inputs.AclRoleServiceIdentity>[]>;
+    /**
+     * The list of templated policies that should be applied to the token.
+     */
+    templatedPolicies?: pulumi.Input<pulumi.Input<inputs.AclRoleTemplatedPolicy>[]>;
 }
 
 /**
@@ -171,7 +179,7 @@ export interface AclRoleArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * The name of the ACL role.
+     * The name of node, workload identity or service.
      */
     name?: pulumi.Input<string>;
     /**
@@ -187,11 +195,15 @@ export interface AclRoleArgs {
      */
     partition?: pulumi.Input<string>;
     /**
-     * The list of policies that should be applied to the role.
+     * The list of policies that should be applied to the role. Both the policy ID or its name can be used.
      */
     policies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The list of service identities that should be applied to the role.
      */
     serviceIdentities?: pulumi.Input<pulumi.Input<inputs.AclRoleServiceIdentity>[]>;
+    /**
+     * The list of templated policies that should be applied to the token.
+     */
+    templatedPolicies?: pulumi.Input<pulumi.Input<inputs.AclRoleTemplatedPolicy>[]>;
 }

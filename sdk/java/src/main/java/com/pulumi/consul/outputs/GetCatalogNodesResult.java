@@ -151,14 +151,14 @@ public final class GetCatalogNodesResult {
             return queryOptions(List.of(queryOptions));
         }
         public GetCatalogNodesResult build() {
-            final var o = new GetCatalogNodesResult();
-            o.datacenter = datacenter;
-            o.id = id;
-            o.nodeIds = nodeIds;
-            o.nodeNames = nodeNames;
-            o.nodes = nodes;
-            o.queryOptions = queryOptions;
-            return o;
+            final var _resultValue = new GetCatalogNodesResult();
+            _resultValue.datacenter = datacenter;
+            _resultValue.id = id;
+            _resultValue.nodeIds = nodeIds;
+            _resultValue.nodeNames = nodeNames;
+            _resultValue.nodes = nodes;
+            _resultValue.queryOptions = queryOptions;
+            return _resultValue;
         }
     }
 }

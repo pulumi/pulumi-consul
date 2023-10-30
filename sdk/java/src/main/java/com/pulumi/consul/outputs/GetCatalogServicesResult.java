@@ -133,14 +133,14 @@ public final class GetCatalogServicesResult {
             return this;
         }
         public GetCatalogServicesResult build() {
-            final var o = new GetCatalogServicesResult();
-            o.datacenter = datacenter;
-            o.id = id;
-            o.names = names;
-            o.queryOptions = queryOptions;
-            o.services = services;
-            o.tags = tags;
-            return o;
+            final var _resultValue = new GetCatalogServicesResult();
+            _resultValue.datacenter = datacenter;
+            _resultValue.id = id;
+            _resultValue.names = names;
+            _resultValue.queryOptions = queryOptions;
+            _resultValue.services = services;
+            _resultValue.tags = tags;
+            return _resultValue;
         }
     }
 }

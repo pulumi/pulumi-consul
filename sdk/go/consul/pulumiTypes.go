@@ -15,12 +15,9 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type AclAuthMethodNamespaceRule struct {
-	// If the namespace rule's `selector` matches then
-	// this is used to control the namespace where the token is created.
+	// If the namespace rule's `selector` matches then this is used to control the namespace where the token is created.
 	BindNamespace string `pulumi:"bindNamespace"`
-	// Specifies the expression used to match this namespace
-	// rule against valid identities returned from an auth method validation.
-	// Defaults to `""`.
+	// Specifies the expression used to match this namespace rule against valid identities returned from an auth method validation.
 	Selector *string `pulumi:"selector"`
 }
 
@@ -36,12 +33,9 @@ type AclAuthMethodNamespaceRuleInput interface {
 }
 
 type AclAuthMethodNamespaceRuleArgs struct {
-	// If the namespace rule's `selector` matches then
-	// this is used to control the namespace where the token is created.
+	// If the namespace rule's `selector` matches then this is used to control the namespace where the token is created.
 	BindNamespace pulumi.StringInput `pulumi:"bindNamespace"`
-	// Specifies the expression used to match this namespace
-	// rule against valid identities returned from an auth method validation.
-	// Defaults to `""`.
+	// Specifies the expression used to match this namespace rule against valid identities returned from an auth method validation.
 	Selector pulumi.StringPtrInput `pulumi:"selector"`
 }
 
@@ -114,15 +108,12 @@ func (o AclAuthMethodNamespaceRuleOutput) ToOutput(ctx context.Context) pulumix.
 	}
 }
 
-// If the namespace rule's `selector` matches then
-// this is used to control the namespace where the token is created.
+// If the namespace rule's `selector` matches then this is used to control the namespace where the token is created.
 func (o AclAuthMethodNamespaceRuleOutput) BindNamespace() pulumi.StringOutput {
 	return o.ApplyT(func(v AclAuthMethodNamespaceRule) string { return v.BindNamespace }).(pulumi.StringOutput)
 }
 
-// Specifies the expression used to match this namespace
-// rule against valid identities returned from an auth method validation.
-// Defaults to `""`.
+// Specifies the expression used to match this namespace rule against valid identities returned from an auth method validation.
 func (o AclAuthMethodNamespaceRuleOutput) Selector() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AclAuthMethodNamespaceRule) *string { return v.Selector }).(pulumi.StringPtrOutput)
 }
@@ -153,8 +144,169 @@ func (o AclAuthMethodNamespaceRuleArrayOutput) Index(i pulumi.IntInput) AclAuthM
 	}).(AclAuthMethodNamespaceRuleOutput)
 }
 
+type AclBindingRuleBindVars struct {
+	// The name of node, workload identity or service.
+	Name *string `pulumi:"name"`
+}
+
+// AclBindingRuleBindVarsInput is an input type that accepts AclBindingRuleBindVarsArgs and AclBindingRuleBindVarsOutput values.
+// You can construct a concrete instance of `AclBindingRuleBindVarsInput` via:
+//
+//	AclBindingRuleBindVarsArgs{...}
+type AclBindingRuleBindVarsInput interface {
+	pulumi.Input
+
+	ToAclBindingRuleBindVarsOutput() AclBindingRuleBindVarsOutput
+	ToAclBindingRuleBindVarsOutputWithContext(context.Context) AclBindingRuleBindVarsOutput
+}
+
+type AclBindingRuleBindVarsArgs struct {
+	// The name of node, workload identity or service.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (AclBindingRuleBindVarsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AclBindingRuleBindVars)(nil)).Elem()
+}
+
+func (i AclBindingRuleBindVarsArgs) ToAclBindingRuleBindVarsOutput() AclBindingRuleBindVarsOutput {
+	return i.ToAclBindingRuleBindVarsOutputWithContext(context.Background())
+}
+
+func (i AclBindingRuleBindVarsArgs) ToAclBindingRuleBindVarsOutputWithContext(ctx context.Context) AclBindingRuleBindVarsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AclBindingRuleBindVarsOutput)
+}
+
+func (i AclBindingRuleBindVarsArgs) ToOutput(ctx context.Context) pulumix.Output[AclBindingRuleBindVars] {
+	return pulumix.Output[AclBindingRuleBindVars]{
+		OutputState: i.ToAclBindingRuleBindVarsOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i AclBindingRuleBindVarsArgs) ToAclBindingRuleBindVarsPtrOutput() AclBindingRuleBindVarsPtrOutput {
+	return i.ToAclBindingRuleBindVarsPtrOutputWithContext(context.Background())
+}
+
+func (i AclBindingRuleBindVarsArgs) ToAclBindingRuleBindVarsPtrOutputWithContext(ctx context.Context) AclBindingRuleBindVarsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AclBindingRuleBindVarsOutput).ToAclBindingRuleBindVarsPtrOutputWithContext(ctx)
+}
+
+// AclBindingRuleBindVarsPtrInput is an input type that accepts AclBindingRuleBindVarsArgs, AclBindingRuleBindVarsPtr and AclBindingRuleBindVarsPtrOutput values.
+// You can construct a concrete instance of `AclBindingRuleBindVarsPtrInput` via:
+//
+//	        AclBindingRuleBindVarsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AclBindingRuleBindVarsPtrInput interface {
+	pulumi.Input
+
+	ToAclBindingRuleBindVarsPtrOutput() AclBindingRuleBindVarsPtrOutput
+	ToAclBindingRuleBindVarsPtrOutputWithContext(context.Context) AclBindingRuleBindVarsPtrOutput
+}
+
+type aclBindingRuleBindVarsPtrType AclBindingRuleBindVarsArgs
+
+func AclBindingRuleBindVarsPtr(v *AclBindingRuleBindVarsArgs) AclBindingRuleBindVarsPtrInput {
+	return (*aclBindingRuleBindVarsPtrType)(v)
+}
+
+func (*aclBindingRuleBindVarsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AclBindingRuleBindVars)(nil)).Elem()
+}
+
+func (i *aclBindingRuleBindVarsPtrType) ToAclBindingRuleBindVarsPtrOutput() AclBindingRuleBindVarsPtrOutput {
+	return i.ToAclBindingRuleBindVarsPtrOutputWithContext(context.Background())
+}
+
+func (i *aclBindingRuleBindVarsPtrType) ToAclBindingRuleBindVarsPtrOutputWithContext(ctx context.Context) AclBindingRuleBindVarsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AclBindingRuleBindVarsPtrOutput)
+}
+
+func (i *aclBindingRuleBindVarsPtrType) ToOutput(ctx context.Context) pulumix.Output[*AclBindingRuleBindVars] {
+	return pulumix.Output[*AclBindingRuleBindVars]{
+		OutputState: i.ToAclBindingRuleBindVarsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type AclBindingRuleBindVarsOutput struct{ *pulumi.OutputState }
+
+func (AclBindingRuleBindVarsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AclBindingRuleBindVars)(nil)).Elem()
+}
+
+func (o AclBindingRuleBindVarsOutput) ToAclBindingRuleBindVarsOutput() AclBindingRuleBindVarsOutput {
+	return o
+}
+
+func (o AclBindingRuleBindVarsOutput) ToAclBindingRuleBindVarsOutputWithContext(ctx context.Context) AclBindingRuleBindVarsOutput {
+	return o
+}
+
+func (o AclBindingRuleBindVarsOutput) ToAclBindingRuleBindVarsPtrOutput() AclBindingRuleBindVarsPtrOutput {
+	return o.ToAclBindingRuleBindVarsPtrOutputWithContext(context.Background())
+}
+
+func (o AclBindingRuleBindVarsOutput) ToAclBindingRuleBindVarsPtrOutputWithContext(ctx context.Context) AclBindingRuleBindVarsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AclBindingRuleBindVars) *AclBindingRuleBindVars {
+		return &v
+	}).(AclBindingRuleBindVarsPtrOutput)
+}
+
+func (o AclBindingRuleBindVarsOutput) ToOutput(ctx context.Context) pulumix.Output[AclBindingRuleBindVars] {
+	return pulumix.Output[AclBindingRuleBindVars]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The name of node, workload identity or service.
+func (o AclBindingRuleBindVarsOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AclBindingRuleBindVars) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type AclBindingRuleBindVarsPtrOutput struct{ *pulumi.OutputState }
+
+func (AclBindingRuleBindVarsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AclBindingRuleBindVars)(nil)).Elem()
+}
+
+func (o AclBindingRuleBindVarsPtrOutput) ToAclBindingRuleBindVarsPtrOutput() AclBindingRuleBindVarsPtrOutput {
+	return o
+}
+
+func (o AclBindingRuleBindVarsPtrOutput) ToAclBindingRuleBindVarsPtrOutputWithContext(ctx context.Context) AclBindingRuleBindVarsPtrOutput {
+	return o
+}
+
+func (o AclBindingRuleBindVarsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AclBindingRuleBindVars] {
+	return pulumix.Output[*AclBindingRuleBindVars]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o AclBindingRuleBindVarsPtrOutput) Elem() AclBindingRuleBindVarsOutput {
+	return o.ApplyT(func(v *AclBindingRuleBindVars) AclBindingRuleBindVars {
+		if v != nil {
+			return *v
+		}
+		var ret AclBindingRuleBindVars
+		return ret
+	}).(AclBindingRuleBindVarsOutput)
+}
+
+// The name of node, workload identity or service.
+func (o AclBindingRuleBindVarsPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AclBindingRuleBindVars) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
 type AclRoleNodeIdentity struct {
-	// The datacenter of the node.
+	// Specifies the node's datacenter.
 	Datacenter string `pulumi:"datacenter"`
 	// The name of the node.
 	NodeName string `pulumi:"nodeName"`
@@ -172,7 +324,7 @@ type AclRoleNodeIdentityInput interface {
 }
 
 type AclRoleNodeIdentityArgs struct {
-	// The datacenter of the node.
+	// Specifies the node's datacenter.
 	Datacenter pulumi.StringInput `pulumi:"datacenter"`
 	// The name of the node.
 	NodeName pulumi.StringInput `pulumi:"nodeName"`
@@ -247,7 +399,7 @@ func (o AclRoleNodeIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[
 	}
 }
 
-// The datacenter of the node.
+// Specifies the node's datacenter.
 func (o AclRoleNodeIdentityOutput) Datacenter() pulumi.StringOutput {
 	return o.ApplyT(func(v AclRoleNodeIdentity) string { return v.Datacenter }).(pulumi.StringOutput)
 }
@@ -284,7 +436,7 @@ func (o AclRoleNodeIdentityArrayOutput) Index(i pulumi.IntInput) AclRoleNodeIden
 }
 
 type AclRoleServiceIdentity struct {
-	// The datacenters the effective policy is valid within.
+	// The datacenters the effective policy is valid within. When no datacenters are provided the effective policy is valid in all datacenters including those which do not yet exist but may in the future.
 	Datacenters []string `pulumi:"datacenters"`
 	// The name of the service.
 	ServiceName string `pulumi:"serviceName"`
@@ -302,7 +454,7 @@ type AclRoleServiceIdentityInput interface {
 }
 
 type AclRoleServiceIdentityArgs struct {
-	// The datacenters the effective policy is valid within.
+	// The datacenters the effective policy is valid within. When no datacenters are provided the effective policy is valid in all datacenters including those which do not yet exist but may in the future.
 	Datacenters pulumi.StringArrayInput `pulumi:"datacenters"`
 	// The name of the service.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
@@ -377,7 +529,7 @@ func (o AclRoleServiceIdentityOutput) ToOutput(ctx context.Context) pulumix.Outp
 	}
 }
 
-// The datacenters the effective policy is valid within.
+// The datacenters the effective policy is valid within. When no datacenters are provided the effective policy is valid in all datacenters including those which do not yet exist but may in the future.
 func (o AclRoleServiceIdentityOutput) Datacenters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AclRoleServiceIdentity) []string { return v.Datacenters }).(pulumi.StringArrayOutput)
 }
@@ -411,6 +563,306 @@ func (o AclRoleServiceIdentityArrayOutput) Index(i pulumi.IntInput) AclRoleServi
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AclRoleServiceIdentity {
 		return vs[0].([]AclRoleServiceIdentity)[vs[1].(int)]
 	}).(AclRoleServiceIdentityOutput)
+}
+
+type AclRoleTemplatedPolicy struct {
+	// Specifies the datacenters the effective policy is valid within.
+	Datacenters []string `pulumi:"datacenters"`
+	// The name of the templated policies.
+	TemplateName string `pulumi:"templateName"`
+	// The templated policy variables.
+	TemplateVariables *AclRoleTemplatedPolicyTemplateVariables `pulumi:"templateVariables"`
+}
+
+// AclRoleTemplatedPolicyInput is an input type that accepts AclRoleTemplatedPolicyArgs and AclRoleTemplatedPolicyOutput values.
+// You can construct a concrete instance of `AclRoleTemplatedPolicyInput` via:
+//
+//	AclRoleTemplatedPolicyArgs{...}
+type AclRoleTemplatedPolicyInput interface {
+	pulumi.Input
+
+	ToAclRoleTemplatedPolicyOutput() AclRoleTemplatedPolicyOutput
+	ToAclRoleTemplatedPolicyOutputWithContext(context.Context) AclRoleTemplatedPolicyOutput
+}
+
+type AclRoleTemplatedPolicyArgs struct {
+	// Specifies the datacenters the effective policy is valid within.
+	Datacenters pulumi.StringArrayInput `pulumi:"datacenters"`
+	// The name of the templated policies.
+	TemplateName pulumi.StringInput `pulumi:"templateName"`
+	// The templated policy variables.
+	TemplateVariables AclRoleTemplatedPolicyTemplateVariablesPtrInput `pulumi:"templateVariables"`
+}
+
+func (AclRoleTemplatedPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AclRoleTemplatedPolicy)(nil)).Elem()
+}
+
+func (i AclRoleTemplatedPolicyArgs) ToAclRoleTemplatedPolicyOutput() AclRoleTemplatedPolicyOutput {
+	return i.ToAclRoleTemplatedPolicyOutputWithContext(context.Background())
+}
+
+func (i AclRoleTemplatedPolicyArgs) ToAclRoleTemplatedPolicyOutputWithContext(ctx context.Context) AclRoleTemplatedPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AclRoleTemplatedPolicyOutput)
+}
+
+func (i AclRoleTemplatedPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[AclRoleTemplatedPolicy] {
+	return pulumix.Output[AclRoleTemplatedPolicy]{
+		OutputState: i.ToAclRoleTemplatedPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
+// AclRoleTemplatedPolicyArrayInput is an input type that accepts AclRoleTemplatedPolicyArray and AclRoleTemplatedPolicyArrayOutput values.
+// You can construct a concrete instance of `AclRoleTemplatedPolicyArrayInput` via:
+//
+//	AclRoleTemplatedPolicyArray{ AclRoleTemplatedPolicyArgs{...} }
+type AclRoleTemplatedPolicyArrayInput interface {
+	pulumi.Input
+
+	ToAclRoleTemplatedPolicyArrayOutput() AclRoleTemplatedPolicyArrayOutput
+	ToAclRoleTemplatedPolicyArrayOutputWithContext(context.Context) AclRoleTemplatedPolicyArrayOutput
+}
+
+type AclRoleTemplatedPolicyArray []AclRoleTemplatedPolicyInput
+
+func (AclRoleTemplatedPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AclRoleTemplatedPolicy)(nil)).Elem()
+}
+
+func (i AclRoleTemplatedPolicyArray) ToAclRoleTemplatedPolicyArrayOutput() AclRoleTemplatedPolicyArrayOutput {
+	return i.ToAclRoleTemplatedPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i AclRoleTemplatedPolicyArray) ToAclRoleTemplatedPolicyArrayOutputWithContext(ctx context.Context) AclRoleTemplatedPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AclRoleTemplatedPolicyArrayOutput)
+}
+
+func (i AclRoleTemplatedPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]AclRoleTemplatedPolicy] {
+	return pulumix.Output[[]AclRoleTemplatedPolicy]{
+		OutputState: i.ToAclRoleTemplatedPolicyArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type AclRoleTemplatedPolicyOutput struct{ *pulumi.OutputState }
+
+func (AclRoleTemplatedPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AclRoleTemplatedPolicy)(nil)).Elem()
+}
+
+func (o AclRoleTemplatedPolicyOutput) ToAclRoleTemplatedPolicyOutput() AclRoleTemplatedPolicyOutput {
+	return o
+}
+
+func (o AclRoleTemplatedPolicyOutput) ToAclRoleTemplatedPolicyOutputWithContext(ctx context.Context) AclRoleTemplatedPolicyOutput {
+	return o
+}
+
+func (o AclRoleTemplatedPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[AclRoleTemplatedPolicy] {
+	return pulumix.Output[AclRoleTemplatedPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Specifies the datacenters the effective policy is valid within.
+func (o AclRoleTemplatedPolicyOutput) Datacenters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AclRoleTemplatedPolicy) []string { return v.Datacenters }).(pulumi.StringArrayOutput)
+}
+
+// The name of the templated policies.
+func (o AclRoleTemplatedPolicyOutput) TemplateName() pulumi.StringOutput {
+	return o.ApplyT(func(v AclRoleTemplatedPolicy) string { return v.TemplateName }).(pulumi.StringOutput)
+}
+
+// The templated policy variables.
+func (o AclRoleTemplatedPolicyOutput) TemplateVariables() AclRoleTemplatedPolicyTemplateVariablesPtrOutput {
+	return o.ApplyT(func(v AclRoleTemplatedPolicy) *AclRoleTemplatedPolicyTemplateVariables { return v.TemplateVariables }).(AclRoleTemplatedPolicyTemplateVariablesPtrOutput)
+}
+
+type AclRoleTemplatedPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (AclRoleTemplatedPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AclRoleTemplatedPolicy)(nil)).Elem()
+}
+
+func (o AclRoleTemplatedPolicyArrayOutput) ToAclRoleTemplatedPolicyArrayOutput() AclRoleTemplatedPolicyArrayOutput {
+	return o
+}
+
+func (o AclRoleTemplatedPolicyArrayOutput) ToAclRoleTemplatedPolicyArrayOutputWithContext(ctx context.Context) AclRoleTemplatedPolicyArrayOutput {
+	return o
+}
+
+func (o AclRoleTemplatedPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AclRoleTemplatedPolicy] {
+	return pulumix.Output[[]AclRoleTemplatedPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o AclRoleTemplatedPolicyArrayOutput) Index(i pulumi.IntInput) AclRoleTemplatedPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AclRoleTemplatedPolicy {
+		return vs[0].([]AclRoleTemplatedPolicy)[vs[1].(int)]
+	}).(AclRoleTemplatedPolicyOutput)
+}
+
+type AclRoleTemplatedPolicyTemplateVariables struct {
+	// The name of node, workload identity or service.
+	Name *string `pulumi:"name"`
+}
+
+// AclRoleTemplatedPolicyTemplateVariablesInput is an input type that accepts AclRoleTemplatedPolicyTemplateVariablesArgs and AclRoleTemplatedPolicyTemplateVariablesOutput values.
+// You can construct a concrete instance of `AclRoleTemplatedPolicyTemplateVariablesInput` via:
+//
+//	AclRoleTemplatedPolicyTemplateVariablesArgs{...}
+type AclRoleTemplatedPolicyTemplateVariablesInput interface {
+	pulumi.Input
+
+	ToAclRoleTemplatedPolicyTemplateVariablesOutput() AclRoleTemplatedPolicyTemplateVariablesOutput
+	ToAclRoleTemplatedPolicyTemplateVariablesOutputWithContext(context.Context) AclRoleTemplatedPolicyTemplateVariablesOutput
+}
+
+type AclRoleTemplatedPolicyTemplateVariablesArgs struct {
+	// The name of node, workload identity or service.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (AclRoleTemplatedPolicyTemplateVariablesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AclRoleTemplatedPolicyTemplateVariables)(nil)).Elem()
+}
+
+func (i AclRoleTemplatedPolicyTemplateVariablesArgs) ToAclRoleTemplatedPolicyTemplateVariablesOutput() AclRoleTemplatedPolicyTemplateVariablesOutput {
+	return i.ToAclRoleTemplatedPolicyTemplateVariablesOutputWithContext(context.Background())
+}
+
+func (i AclRoleTemplatedPolicyTemplateVariablesArgs) ToAclRoleTemplatedPolicyTemplateVariablesOutputWithContext(ctx context.Context) AclRoleTemplatedPolicyTemplateVariablesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AclRoleTemplatedPolicyTemplateVariablesOutput)
+}
+
+func (i AclRoleTemplatedPolicyTemplateVariablesArgs) ToOutput(ctx context.Context) pulumix.Output[AclRoleTemplatedPolicyTemplateVariables] {
+	return pulumix.Output[AclRoleTemplatedPolicyTemplateVariables]{
+		OutputState: i.ToAclRoleTemplatedPolicyTemplateVariablesOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i AclRoleTemplatedPolicyTemplateVariablesArgs) ToAclRoleTemplatedPolicyTemplateVariablesPtrOutput() AclRoleTemplatedPolicyTemplateVariablesPtrOutput {
+	return i.ToAclRoleTemplatedPolicyTemplateVariablesPtrOutputWithContext(context.Background())
+}
+
+func (i AclRoleTemplatedPolicyTemplateVariablesArgs) ToAclRoleTemplatedPolicyTemplateVariablesPtrOutputWithContext(ctx context.Context) AclRoleTemplatedPolicyTemplateVariablesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AclRoleTemplatedPolicyTemplateVariablesOutput).ToAclRoleTemplatedPolicyTemplateVariablesPtrOutputWithContext(ctx)
+}
+
+// AclRoleTemplatedPolicyTemplateVariablesPtrInput is an input type that accepts AclRoleTemplatedPolicyTemplateVariablesArgs, AclRoleTemplatedPolicyTemplateVariablesPtr and AclRoleTemplatedPolicyTemplateVariablesPtrOutput values.
+// You can construct a concrete instance of `AclRoleTemplatedPolicyTemplateVariablesPtrInput` via:
+//
+//	        AclRoleTemplatedPolicyTemplateVariablesArgs{...}
+//
+//	or:
+//
+//	        nil
+type AclRoleTemplatedPolicyTemplateVariablesPtrInput interface {
+	pulumi.Input
+
+	ToAclRoleTemplatedPolicyTemplateVariablesPtrOutput() AclRoleTemplatedPolicyTemplateVariablesPtrOutput
+	ToAclRoleTemplatedPolicyTemplateVariablesPtrOutputWithContext(context.Context) AclRoleTemplatedPolicyTemplateVariablesPtrOutput
+}
+
+type aclRoleTemplatedPolicyTemplateVariablesPtrType AclRoleTemplatedPolicyTemplateVariablesArgs
+
+func AclRoleTemplatedPolicyTemplateVariablesPtr(v *AclRoleTemplatedPolicyTemplateVariablesArgs) AclRoleTemplatedPolicyTemplateVariablesPtrInput {
+	return (*aclRoleTemplatedPolicyTemplateVariablesPtrType)(v)
+}
+
+func (*aclRoleTemplatedPolicyTemplateVariablesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AclRoleTemplatedPolicyTemplateVariables)(nil)).Elem()
+}
+
+func (i *aclRoleTemplatedPolicyTemplateVariablesPtrType) ToAclRoleTemplatedPolicyTemplateVariablesPtrOutput() AclRoleTemplatedPolicyTemplateVariablesPtrOutput {
+	return i.ToAclRoleTemplatedPolicyTemplateVariablesPtrOutputWithContext(context.Background())
+}
+
+func (i *aclRoleTemplatedPolicyTemplateVariablesPtrType) ToAclRoleTemplatedPolicyTemplateVariablesPtrOutputWithContext(ctx context.Context) AclRoleTemplatedPolicyTemplateVariablesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AclRoleTemplatedPolicyTemplateVariablesPtrOutput)
+}
+
+func (i *aclRoleTemplatedPolicyTemplateVariablesPtrType) ToOutput(ctx context.Context) pulumix.Output[*AclRoleTemplatedPolicyTemplateVariables] {
+	return pulumix.Output[*AclRoleTemplatedPolicyTemplateVariables]{
+		OutputState: i.ToAclRoleTemplatedPolicyTemplateVariablesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type AclRoleTemplatedPolicyTemplateVariablesOutput struct{ *pulumi.OutputState }
+
+func (AclRoleTemplatedPolicyTemplateVariablesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AclRoleTemplatedPolicyTemplateVariables)(nil)).Elem()
+}
+
+func (o AclRoleTemplatedPolicyTemplateVariablesOutput) ToAclRoleTemplatedPolicyTemplateVariablesOutput() AclRoleTemplatedPolicyTemplateVariablesOutput {
+	return o
+}
+
+func (o AclRoleTemplatedPolicyTemplateVariablesOutput) ToAclRoleTemplatedPolicyTemplateVariablesOutputWithContext(ctx context.Context) AclRoleTemplatedPolicyTemplateVariablesOutput {
+	return o
+}
+
+func (o AclRoleTemplatedPolicyTemplateVariablesOutput) ToAclRoleTemplatedPolicyTemplateVariablesPtrOutput() AclRoleTemplatedPolicyTemplateVariablesPtrOutput {
+	return o.ToAclRoleTemplatedPolicyTemplateVariablesPtrOutputWithContext(context.Background())
+}
+
+func (o AclRoleTemplatedPolicyTemplateVariablesOutput) ToAclRoleTemplatedPolicyTemplateVariablesPtrOutputWithContext(ctx context.Context) AclRoleTemplatedPolicyTemplateVariablesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AclRoleTemplatedPolicyTemplateVariables) *AclRoleTemplatedPolicyTemplateVariables {
+		return &v
+	}).(AclRoleTemplatedPolicyTemplateVariablesPtrOutput)
+}
+
+func (o AclRoleTemplatedPolicyTemplateVariablesOutput) ToOutput(ctx context.Context) pulumix.Output[AclRoleTemplatedPolicyTemplateVariables] {
+	return pulumix.Output[AclRoleTemplatedPolicyTemplateVariables]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The name of node, workload identity or service.
+func (o AclRoleTemplatedPolicyTemplateVariablesOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AclRoleTemplatedPolicyTemplateVariables) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type AclRoleTemplatedPolicyTemplateVariablesPtrOutput struct{ *pulumi.OutputState }
+
+func (AclRoleTemplatedPolicyTemplateVariablesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AclRoleTemplatedPolicyTemplateVariables)(nil)).Elem()
+}
+
+func (o AclRoleTemplatedPolicyTemplateVariablesPtrOutput) ToAclRoleTemplatedPolicyTemplateVariablesPtrOutput() AclRoleTemplatedPolicyTemplateVariablesPtrOutput {
+	return o
+}
+
+func (o AclRoleTemplatedPolicyTemplateVariablesPtrOutput) ToAclRoleTemplatedPolicyTemplateVariablesPtrOutputWithContext(ctx context.Context) AclRoleTemplatedPolicyTemplateVariablesPtrOutput {
+	return o
+}
+
+func (o AclRoleTemplatedPolicyTemplateVariablesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AclRoleTemplatedPolicyTemplateVariables] {
+	return pulumix.Output[*AclRoleTemplatedPolicyTemplateVariables]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o AclRoleTemplatedPolicyTemplateVariablesPtrOutput) Elem() AclRoleTemplatedPolicyTemplateVariablesOutput {
+	return o.ApplyT(func(v *AclRoleTemplatedPolicyTemplateVariables) AclRoleTemplatedPolicyTemplateVariables {
+		if v != nil {
+			return *v
+		}
+		var ret AclRoleTemplatedPolicyTemplateVariables
+		return ret
+	}).(AclRoleTemplatedPolicyTemplateVariablesOutput)
+}
+
+// The name of node, workload identity or service.
+func (o AclRoleTemplatedPolicyTemplateVariablesPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AclRoleTemplatedPolicyTemplateVariables) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
 }
 
 type AclTokenNodeIdentity struct {
@@ -544,7 +996,7 @@ func (o AclTokenNodeIdentityArrayOutput) Index(i pulumi.IntInput) AclTokenNodeId
 }
 
 type AclTokenServiceIdentity struct {
-	// The list of datacenters the policy is valid within.
+	// Specifies the datacenters the effective policy is valid within.
 	Datacenters []string `pulumi:"datacenters"`
 	// The name of the service.
 	ServiceName string `pulumi:"serviceName"`
@@ -562,7 +1014,7 @@ type AclTokenServiceIdentityInput interface {
 }
 
 type AclTokenServiceIdentityArgs struct {
-	// The list of datacenters the policy is valid within.
+	// Specifies the datacenters the effective policy is valid within.
 	Datacenters pulumi.StringArrayInput `pulumi:"datacenters"`
 	// The name of the service.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
@@ -637,7 +1089,7 @@ func (o AclTokenServiceIdentityOutput) ToOutput(ctx context.Context) pulumix.Out
 	}
 }
 
-// The list of datacenters the policy is valid within.
+// Specifies the datacenters the effective policy is valid within.
 func (o AclTokenServiceIdentityOutput) Datacenters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AclTokenServiceIdentity) []string { return v.Datacenters }).(pulumi.StringArrayOutput)
 }
@@ -671,6 +1123,306 @@ func (o AclTokenServiceIdentityArrayOutput) Index(i pulumi.IntInput) AclTokenSer
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AclTokenServiceIdentity {
 		return vs[0].([]AclTokenServiceIdentity)[vs[1].(int)]
 	}).(AclTokenServiceIdentityOutput)
+}
+
+type AclTokenTemplatedPolicy struct {
+	// Specifies the datacenters the effective policy is valid within.
+	Datacenters []string `pulumi:"datacenters"`
+	// The name of the templated policies.
+	TemplateName string `pulumi:"templateName"`
+	// The templated policy variables.
+	TemplateVariables *AclTokenTemplatedPolicyTemplateVariables `pulumi:"templateVariables"`
+}
+
+// AclTokenTemplatedPolicyInput is an input type that accepts AclTokenTemplatedPolicyArgs and AclTokenTemplatedPolicyOutput values.
+// You can construct a concrete instance of `AclTokenTemplatedPolicyInput` via:
+//
+//	AclTokenTemplatedPolicyArgs{...}
+type AclTokenTemplatedPolicyInput interface {
+	pulumi.Input
+
+	ToAclTokenTemplatedPolicyOutput() AclTokenTemplatedPolicyOutput
+	ToAclTokenTemplatedPolicyOutputWithContext(context.Context) AclTokenTemplatedPolicyOutput
+}
+
+type AclTokenTemplatedPolicyArgs struct {
+	// Specifies the datacenters the effective policy is valid within.
+	Datacenters pulumi.StringArrayInput `pulumi:"datacenters"`
+	// The name of the templated policies.
+	TemplateName pulumi.StringInput `pulumi:"templateName"`
+	// The templated policy variables.
+	TemplateVariables AclTokenTemplatedPolicyTemplateVariablesPtrInput `pulumi:"templateVariables"`
+}
+
+func (AclTokenTemplatedPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AclTokenTemplatedPolicy)(nil)).Elem()
+}
+
+func (i AclTokenTemplatedPolicyArgs) ToAclTokenTemplatedPolicyOutput() AclTokenTemplatedPolicyOutput {
+	return i.ToAclTokenTemplatedPolicyOutputWithContext(context.Background())
+}
+
+func (i AclTokenTemplatedPolicyArgs) ToAclTokenTemplatedPolicyOutputWithContext(ctx context.Context) AclTokenTemplatedPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AclTokenTemplatedPolicyOutput)
+}
+
+func (i AclTokenTemplatedPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[AclTokenTemplatedPolicy] {
+	return pulumix.Output[AclTokenTemplatedPolicy]{
+		OutputState: i.ToAclTokenTemplatedPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
+// AclTokenTemplatedPolicyArrayInput is an input type that accepts AclTokenTemplatedPolicyArray and AclTokenTemplatedPolicyArrayOutput values.
+// You can construct a concrete instance of `AclTokenTemplatedPolicyArrayInput` via:
+//
+//	AclTokenTemplatedPolicyArray{ AclTokenTemplatedPolicyArgs{...} }
+type AclTokenTemplatedPolicyArrayInput interface {
+	pulumi.Input
+
+	ToAclTokenTemplatedPolicyArrayOutput() AclTokenTemplatedPolicyArrayOutput
+	ToAclTokenTemplatedPolicyArrayOutputWithContext(context.Context) AclTokenTemplatedPolicyArrayOutput
+}
+
+type AclTokenTemplatedPolicyArray []AclTokenTemplatedPolicyInput
+
+func (AclTokenTemplatedPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AclTokenTemplatedPolicy)(nil)).Elem()
+}
+
+func (i AclTokenTemplatedPolicyArray) ToAclTokenTemplatedPolicyArrayOutput() AclTokenTemplatedPolicyArrayOutput {
+	return i.ToAclTokenTemplatedPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i AclTokenTemplatedPolicyArray) ToAclTokenTemplatedPolicyArrayOutputWithContext(ctx context.Context) AclTokenTemplatedPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AclTokenTemplatedPolicyArrayOutput)
+}
+
+func (i AclTokenTemplatedPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]AclTokenTemplatedPolicy] {
+	return pulumix.Output[[]AclTokenTemplatedPolicy]{
+		OutputState: i.ToAclTokenTemplatedPolicyArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type AclTokenTemplatedPolicyOutput struct{ *pulumi.OutputState }
+
+func (AclTokenTemplatedPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AclTokenTemplatedPolicy)(nil)).Elem()
+}
+
+func (o AclTokenTemplatedPolicyOutput) ToAclTokenTemplatedPolicyOutput() AclTokenTemplatedPolicyOutput {
+	return o
+}
+
+func (o AclTokenTemplatedPolicyOutput) ToAclTokenTemplatedPolicyOutputWithContext(ctx context.Context) AclTokenTemplatedPolicyOutput {
+	return o
+}
+
+func (o AclTokenTemplatedPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[AclTokenTemplatedPolicy] {
+	return pulumix.Output[AclTokenTemplatedPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Specifies the datacenters the effective policy is valid within.
+func (o AclTokenTemplatedPolicyOutput) Datacenters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AclTokenTemplatedPolicy) []string { return v.Datacenters }).(pulumi.StringArrayOutput)
+}
+
+// The name of the templated policies.
+func (o AclTokenTemplatedPolicyOutput) TemplateName() pulumi.StringOutput {
+	return o.ApplyT(func(v AclTokenTemplatedPolicy) string { return v.TemplateName }).(pulumi.StringOutput)
+}
+
+// The templated policy variables.
+func (o AclTokenTemplatedPolicyOutput) TemplateVariables() AclTokenTemplatedPolicyTemplateVariablesPtrOutput {
+	return o.ApplyT(func(v AclTokenTemplatedPolicy) *AclTokenTemplatedPolicyTemplateVariables { return v.TemplateVariables }).(AclTokenTemplatedPolicyTemplateVariablesPtrOutput)
+}
+
+type AclTokenTemplatedPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (AclTokenTemplatedPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AclTokenTemplatedPolicy)(nil)).Elem()
+}
+
+func (o AclTokenTemplatedPolicyArrayOutput) ToAclTokenTemplatedPolicyArrayOutput() AclTokenTemplatedPolicyArrayOutput {
+	return o
+}
+
+func (o AclTokenTemplatedPolicyArrayOutput) ToAclTokenTemplatedPolicyArrayOutputWithContext(ctx context.Context) AclTokenTemplatedPolicyArrayOutput {
+	return o
+}
+
+func (o AclTokenTemplatedPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AclTokenTemplatedPolicy] {
+	return pulumix.Output[[]AclTokenTemplatedPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o AclTokenTemplatedPolicyArrayOutput) Index(i pulumi.IntInput) AclTokenTemplatedPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AclTokenTemplatedPolicy {
+		return vs[0].([]AclTokenTemplatedPolicy)[vs[1].(int)]
+	}).(AclTokenTemplatedPolicyOutput)
+}
+
+type AclTokenTemplatedPolicyTemplateVariables struct {
+	// The name of node, workload identity or service.
+	Name *string `pulumi:"name"`
+}
+
+// AclTokenTemplatedPolicyTemplateVariablesInput is an input type that accepts AclTokenTemplatedPolicyTemplateVariablesArgs and AclTokenTemplatedPolicyTemplateVariablesOutput values.
+// You can construct a concrete instance of `AclTokenTemplatedPolicyTemplateVariablesInput` via:
+//
+//	AclTokenTemplatedPolicyTemplateVariablesArgs{...}
+type AclTokenTemplatedPolicyTemplateVariablesInput interface {
+	pulumi.Input
+
+	ToAclTokenTemplatedPolicyTemplateVariablesOutput() AclTokenTemplatedPolicyTemplateVariablesOutput
+	ToAclTokenTemplatedPolicyTemplateVariablesOutputWithContext(context.Context) AclTokenTemplatedPolicyTemplateVariablesOutput
+}
+
+type AclTokenTemplatedPolicyTemplateVariablesArgs struct {
+	// The name of node, workload identity or service.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (AclTokenTemplatedPolicyTemplateVariablesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AclTokenTemplatedPolicyTemplateVariables)(nil)).Elem()
+}
+
+func (i AclTokenTemplatedPolicyTemplateVariablesArgs) ToAclTokenTemplatedPolicyTemplateVariablesOutput() AclTokenTemplatedPolicyTemplateVariablesOutput {
+	return i.ToAclTokenTemplatedPolicyTemplateVariablesOutputWithContext(context.Background())
+}
+
+func (i AclTokenTemplatedPolicyTemplateVariablesArgs) ToAclTokenTemplatedPolicyTemplateVariablesOutputWithContext(ctx context.Context) AclTokenTemplatedPolicyTemplateVariablesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AclTokenTemplatedPolicyTemplateVariablesOutput)
+}
+
+func (i AclTokenTemplatedPolicyTemplateVariablesArgs) ToOutput(ctx context.Context) pulumix.Output[AclTokenTemplatedPolicyTemplateVariables] {
+	return pulumix.Output[AclTokenTemplatedPolicyTemplateVariables]{
+		OutputState: i.ToAclTokenTemplatedPolicyTemplateVariablesOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i AclTokenTemplatedPolicyTemplateVariablesArgs) ToAclTokenTemplatedPolicyTemplateVariablesPtrOutput() AclTokenTemplatedPolicyTemplateVariablesPtrOutput {
+	return i.ToAclTokenTemplatedPolicyTemplateVariablesPtrOutputWithContext(context.Background())
+}
+
+func (i AclTokenTemplatedPolicyTemplateVariablesArgs) ToAclTokenTemplatedPolicyTemplateVariablesPtrOutputWithContext(ctx context.Context) AclTokenTemplatedPolicyTemplateVariablesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AclTokenTemplatedPolicyTemplateVariablesOutput).ToAclTokenTemplatedPolicyTemplateVariablesPtrOutputWithContext(ctx)
+}
+
+// AclTokenTemplatedPolicyTemplateVariablesPtrInput is an input type that accepts AclTokenTemplatedPolicyTemplateVariablesArgs, AclTokenTemplatedPolicyTemplateVariablesPtr and AclTokenTemplatedPolicyTemplateVariablesPtrOutput values.
+// You can construct a concrete instance of `AclTokenTemplatedPolicyTemplateVariablesPtrInput` via:
+//
+//	        AclTokenTemplatedPolicyTemplateVariablesArgs{...}
+//
+//	or:
+//
+//	        nil
+type AclTokenTemplatedPolicyTemplateVariablesPtrInput interface {
+	pulumi.Input
+
+	ToAclTokenTemplatedPolicyTemplateVariablesPtrOutput() AclTokenTemplatedPolicyTemplateVariablesPtrOutput
+	ToAclTokenTemplatedPolicyTemplateVariablesPtrOutputWithContext(context.Context) AclTokenTemplatedPolicyTemplateVariablesPtrOutput
+}
+
+type aclTokenTemplatedPolicyTemplateVariablesPtrType AclTokenTemplatedPolicyTemplateVariablesArgs
+
+func AclTokenTemplatedPolicyTemplateVariablesPtr(v *AclTokenTemplatedPolicyTemplateVariablesArgs) AclTokenTemplatedPolicyTemplateVariablesPtrInput {
+	return (*aclTokenTemplatedPolicyTemplateVariablesPtrType)(v)
+}
+
+func (*aclTokenTemplatedPolicyTemplateVariablesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AclTokenTemplatedPolicyTemplateVariables)(nil)).Elem()
+}
+
+func (i *aclTokenTemplatedPolicyTemplateVariablesPtrType) ToAclTokenTemplatedPolicyTemplateVariablesPtrOutput() AclTokenTemplatedPolicyTemplateVariablesPtrOutput {
+	return i.ToAclTokenTemplatedPolicyTemplateVariablesPtrOutputWithContext(context.Background())
+}
+
+func (i *aclTokenTemplatedPolicyTemplateVariablesPtrType) ToAclTokenTemplatedPolicyTemplateVariablesPtrOutputWithContext(ctx context.Context) AclTokenTemplatedPolicyTemplateVariablesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AclTokenTemplatedPolicyTemplateVariablesPtrOutput)
+}
+
+func (i *aclTokenTemplatedPolicyTemplateVariablesPtrType) ToOutput(ctx context.Context) pulumix.Output[*AclTokenTemplatedPolicyTemplateVariables] {
+	return pulumix.Output[*AclTokenTemplatedPolicyTemplateVariables]{
+		OutputState: i.ToAclTokenTemplatedPolicyTemplateVariablesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type AclTokenTemplatedPolicyTemplateVariablesOutput struct{ *pulumi.OutputState }
+
+func (AclTokenTemplatedPolicyTemplateVariablesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AclTokenTemplatedPolicyTemplateVariables)(nil)).Elem()
+}
+
+func (o AclTokenTemplatedPolicyTemplateVariablesOutput) ToAclTokenTemplatedPolicyTemplateVariablesOutput() AclTokenTemplatedPolicyTemplateVariablesOutput {
+	return o
+}
+
+func (o AclTokenTemplatedPolicyTemplateVariablesOutput) ToAclTokenTemplatedPolicyTemplateVariablesOutputWithContext(ctx context.Context) AclTokenTemplatedPolicyTemplateVariablesOutput {
+	return o
+}
+
+func (o AclTokenTemplatedPolicyTemplateVariablesOutput) ToAclTokenTemplatedPolicyTemplateVariablesPtrOutput() AclTokenTemplatedPolicyTemplateVariablesPtrOutput {
+	return o.ToAclTokenTemplatedPolicyTemplateVariablesPtrOutputWithContext(context.Background())
+}
+
+func (o AclTokenTemplatedPolicyTemplateVariablesOutput) ToAclTokenTemplatedPolicyTemplateVariablesPtrOutputWithContext(ctx context.Context) AclTokenTemplatedPolicyTemplateVariablesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AclTokenTemplatedPolicyTemplateVariables) *AclTokenTemplatedPolicyTemplateVariables {
+		return &v
+	}).(AclTokenTemplatedPolicyTemplateVariablesPtrOutput)
+}
+
+func (o AclTokenTemplatedPolicyTemplateVariablesOutput) ToOutput(ctx context.Context) pulumix.Output[AclTokenTemplatedPolicyTemplateVariables] {
+	return pulumix.Output[AclTokenTemplatedPolicyTemplateVariables]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The name of node, workload identity or service.
+func (o AclTokenTemplatedPolicyTemplateVariablesOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AclTokenTemplatedPolicyTemplateVariables) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type AclTokenTemplatedPolicyTemplateVariablesPtrOutput struct{ *pulumi.OutputState }
+
+func (AclTokenTemplatedPolicyTemplateVariablesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AclTokenTemplatedPolicyTemplateVariables)(nil)).Elem()
+}
+
+func (o AclTokenTemplatedPolicyTemplateVariablesPtrOutput) ToAclTokenTemplatedPolicyTemplateVariablesPtrOutput() AclTokenTemplatedPolicyTemplateVariablesPtrOutput {
+	return o
+}
+
+func (o AclTokenTemplatedPolicyTemplateVariablesPtrOutput) ToAclTokenTemplatedPolicyTemplateVariablesPtrOutputWithContext(ctx context.Context) AclTokenTemplatedPolicyTemplateVariablesPtrOutput {
+	return o
+}
+
+func (o AclTokenTemplatedPolicyTemplateVariablesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AclTokenTemplatedPolicyTemplateVariables] {
+	return pulumix.Output[*AclTokenTemplatedPolicyTemplateVariables]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o AclTokenTemplatedPolicyTemplateVariablesPtrOutput) Elem() AclTokenTemplatedPolicyTemplateVariablesOutput {
+	return o.ApplyT(func(v *AclTokenTemplatedPolicyTemplateVariables) AclTokenTemplatedPolicyTemplateVariables {
+		if v != nil {
+			return *v
+		}
+		var ret AclTokenTemplatedPolicyTemplateVariables
+		return ret
+	}).(AclTokenTemplatedPolicyTemplateVariablesOutput)
+}
+
+// The name of node, workload identity or service.
+func (o AclTokenTemplatedPolicyTemplateVariablesPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AclTokenTemplatedPolicyTemplateVariables) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
 }
 
 type CatalogEntryService struct {
@@ -834,6 +1586,6771 @@ func (o CatalogEntryServiceArrayOutput) Index(i pulumi.IntInput) CatalogEntrySer
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CatalogEntryService {
 		return vs[0].([]CatalogEntryService)[vs[1].(int)]
 	}).(CatalogEntryServiceOutput)
+}
+
+type ConfigEntryServiceDefaultsDestination struct {
+	Addresses []string `pulumi:"addresses"`
+	Port      int      `pulumi:"port"`
+}
+
+// ConfigEntryServiceDefaultsDestinationInput is an input type that accepts ConfigEntryServiceDefaultsDestinationArgs and ConfigEntryServiceDefaultsDestinationOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceDefaultsDestinationInput` via:
+//
+//	ConfigEntryServiceDefaultsDestinationArgs{...}
+type ConfigEntryServiceDefaultsDestinationInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceDefaultsDestinationOutput() ConfigEntryServiceDefaultsDestinationOutput
+	ToConfigEntryServiceDefaultsDestinationOutputWithContext(context.Context) ConfigEntryServiceDefaultsDestinationOutput
+}
+
+type ConfigEntryServiceDefaultsDestinationArgs struct {
+	Addresses pulumi.StringArrayInput `pulumi:"addresses"`
+	Port      pulumi.IntInput         `pulumi:"port"`
+}
+
+func (ConfigEntryServiceDefaultsDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceDefaultsDestination)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceDefaultsDestinationArgs) ToConfigEntryServiceDefaultsDestinationOutput() ConfigEntryServiceDefaultsDestinationOutput {
+	return i.ToConfigEntryServiceDefaultsDestinationOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceDefaultsDestinationArgs) ToConfigEntryServiceDefaultsDestinationOutputWithContext(ctx context.Context) ConfigEntryServiceDefaultsDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceDefaultsDestinationOutput)
+}
+
+func (i ConfigEntryServiceDefaultsDestinationArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceDefaultsDestination] {
+	return pulumix.Output[ConfigEntryServiceDefaultsDestination]{
+		OutputState: i.ToConfigEntryServiceDefaultsDestinationOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ConfigEntryServiceDefaultsDestinationArrayInput is an input type that accepts ConfigEntryServiceDefaultsDestinationArray and ConfigEntryServiceDefaultsDestinationArrayOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceDefaultsDestinationArrayInput` via:
+//
+//	ConfigEntryServiceDefaultsDestinationArray{ ConfigEntryServiceDefaultsDestinationArgs{...} }
+type ConfigEntryServiceDefaultsDestinationArrayInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceDefaultsDestinationArrayOutput() ConfigEntryServiceDefaultsDestinationArrayOutput
+	ToConfigEntryServiceDefaultsDestinationArrayOutputWithContext(context.Context) ConfigEntryServiceDefaultsDestinationArrayOutput
+}
+
+type ConfigEntryServiceDefaultsDestinationArray []ConfigEntryServiceDefaultsDestinationInput
+
+func (ConfigEntryServiceDefaultsDestinationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceDefaultsDestination)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceDefaultsDestinationArray) ToConfigEntryServiceDefaultsDestinationArrayOutput() ConfigEntryServiceDefaultsDestinationArrayOutput {
+	return i.ToConfigEntryServiceDefaultsDestinationArrayOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceDefaultsDestinationArray) ToConfigEntryServiceDefaultsDestinationArrayOutputWithContext(ctx context.Context) ConfigEntryServiceDefaultsDestinationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceDefaultsDestinationArrayOutput)
+}
+
+func (i ConfigEntryServiceDefaultsDestinationArray) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceDefaultsDestination] {
+	return pulumix.Output[[]ConfigEntryServiceDefaultsDestination]{
+		OutputState: i.ToConfigEntryServiceDefaultsDestinationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ConfigEntryServiceDefaultsDestinationOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceDefaultsDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceDefaultsDestination)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceDefaultsDestinationOutput) ToConfigEntryServiceDefaultsDestinationOutput() ConfigEntryServiceDefaultsDestinationOutput {
+	return o
+}
+
+func (o ConfigEntryServiceDefaultsDestinationOutput) ToConfigEntryServiceDefaultsDestinationOutputWithContext(ctx context.Context) ConfigEntryServiceDefaultsDestinationOutput {
+	return o
+}
+
+func (o ConfigEntryServiceDefaultsDestinationOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceDefaultsDestination] {
+	return pulumix.Output[ConfigEntryServiceDefaultsDestination]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConfigEntryServiceDefaultsDestinationOutput) Addresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConfigEntryServiceDefaultsDestination) []string { return v.Addresses }).(pulumi.StringArrayOutput)
+}
+
+func (o ConfigEntryServiceDefaultsDestinationOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v ConfigEntryServiceDefaultsDestination) int { return v.Port }).(pulumi.IntOutput)
+}
+
+type ConfigEntryServiceDefaultsDestinationArrayOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceDefaultsDestinationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceDefaultsDestination)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceDefaultsDestinationArrayOutput) ToConfigEntryServiceDefaultsDestinationArrayOutput() ConfigEntryServiceDefaultsDestinationArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceDefaultsDestinationArrayOutput) ToConfigEntryServiceDefaultsDestinationArrayOutputWithContext(ctx context.Context) ConfigEntryServiceDefaultsDestinationArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceDefaultsDestinationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceDefaultsDestination] {
+	return pulumix.Output[[]ConfigEntryServiceDefaultsDestination]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConfigEntryServiceDefaultsDestinationArrayOutput) Index(i pulumi.IntInput) ConfigEntryServiceDefaultsDestinationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConfigEntryServiceDefaultsDestination {
+		return vs[0].([]ConfigEntryServiceDefaultsDestination)[vs[1].(int)]
+	}).(ConfigEntryServiceDefaultsDestinationOutput)
+}
+
+type ConfigEntryServiceDefaultsEnvoyExtension struct {
+	Arguments     map[string]string `pulumi:"arguments"`
+	ConsulVersion *string           `pulumi:"consulVersion"`
+	EnvoyVersion  *string           `pulumi:"envoyVersion"`
+	Name          *string           `pulumi:"name"`
+	Required      *bool             `pulumi:"required"`
+}
+
+// ConfigEntryServiceDefaultsEnvoyExtensionInput is an input type that accepts ConfigEntryServiceDefaultsEnvoyExtensionArgs and ConfigEntryServiceDefaultsEnvoyExtensionOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceDefaultsEnvoyExtensionInput` via:
+//
+//	ConfigEntryServiceDefaultsEnvoyExtensionArgs{...}
+type ConfigEntryServiceDefaultsEnvoyExtensionInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceDefaultsEnvoyExtensionOutput() ConfigEntryServiceDefaultsEnvoyExtensionOutput
+	ToConfigEntryServiceDefaultsEnvoyExtensionOutputWithContext(context.Context) ConfigEntryServiceDefaultsEnvoyExtensionOutput
+}
+
+type ConfigEntryServiceDefaultsEnvoyExtensionArgs struct {
+	Arguments     pulumi.StringMapInput `pulumi:"arguments"`
+	ConsulVersion pulumi.StringPtrInput `pulumi:"consulVersion"`
+	EnvoyVersion  pulumi.StringPtrInput `pulumi:"envoyVersion"`
+	Name          pulumi.StringPtrInput `pulumi:"name"`
+	Required      pulumi.BoolPtrInput   `pulumi:"required"`
+}
+
+func (ConfigEntryServiceDefaultsEnvoyExtensionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceDefaultsEnvoyExtension)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceDefaultsEnvoyExtensionArgs) ToConfigEntryServiceDefaultsEnvoyExtensionOutput() ConfigEntryServiceDefaultsEnvoyExtensionOutput {
+	return i.ToConfigEntryServiceDefaultsEnvoyExtensionOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceDefaultsEnvoyExtensionArgs) ToConfigEntryServiceDefaultsEnvoyExtensionOutputWithContext(ctx context.Context) ConfigEntryServiceDefaultsEnvoyExtensionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceDefaultsEnvoyExtensionOutput)
+}
+
+func (i ConfigEntryServiceDefaultsEnvoyExtensionArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceDefaultsEnvoyExtension] {
+	return pulumix.Output[ConfigEntryServiceDefaultsEnvoyExtension]{
+		OutputState: i.ToConfigEntryServiceDefaultsEnvoyExtensionOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ConfigEntryServiceDefaultsEnvoyExtensionArrayInput is an input type that accepts ConfigEntryServiceDefaultsEnvoyExtensionArray and ConfigEntryServiceDefaultsEnvoyExtensionArrayOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceDefaultsEnvoyExtensionArrayInput` via:
+//
+//	ConfigEntryServiceDefaultsEnvoyExtensionArray{ ConfigEntryServiceDefaultsEnvoyExtensionArgs{...} }
+type ConfigEntryServiceDefaultsEnvoyExtensionArrayInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceDefaultsEnvoyExtensionArrayOutput() ConfigEntryServiceDefaultsEnvoyExtensionArrayOutput
+	ToConfigEntryServiceDefaultsEnvoyExtensionArrayOutputWithContext(context.Context) ConfigEntryServiceDefaultsEnvoyExtensionArrayOutput
+}
+
+type ConfigEntryServiceDefaultsEnvoyExtensionArray []ConfigEntryServiceDefaultsEnvoyExtensionInput
+
+func (ConfigEntryServiceDefaultsEnvoyExtensionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceDefaultsEnvoyExtension)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceDefaultsEnvoyExtensionArray) ToConfigEntryServiceDefaultsEnvoyExtensionArrayOutput() ConfigEntryServiceDefaultsEnvoyExtensionArrayOutput {
+	return i.ToConfigEntryServiceDefaultsEnvoyExtensionArrayOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceDefaultsEnvoyExtensionArray) ToConfigEntryServiceDefaultsEnvoyExtensionArrayOutputWithContext(ctx context.Context) ConfigEntryServiceDefaultsEnvoyExtensionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceDefaultsEnvoyExtensionArrayOutput)
+}
+
+func (i ConfigEntryServiceDefaultsEnvoyExtensionArray) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceDefaultsEnvoyExtension] {
+	return pulumix.Output[[]ConfigEntryServiceDefaultsEnvoyExtension]{
+		OutputState: i.ToConfigEntryServiceDefaultsEnvoyExtensionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ConfigEntryServiceDefaultsEnvoyExtensionOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceDefaultsEnvoyExtensionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceDefaultsEnvoyExtension)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceDefaultsEnvoyExtensionOutput) ToConfigEntryServiceDefaultsEnvoyExtensionOutput() ConfigEntryServiceDefaultsEnvoyExtensionOutput {
+	return o
+}
+
+func (o ConfigEntryServiceDefaultsEnvoyExtensionOutput) ToConfigEntryServiceDefaultsEnvoyExtensionOutputWithContext(ctx context.Context) ConfigEntryServiceDefaultsEnvoyExtensionOutput {
+	return o
+}
+
+func (o ConfigEntryServiceDefaultsEnvoyExtensionOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceDefaultsEnvoyExtension] {
+	return pulumix.Output[ConfigEntryServiceDefaultsEnvoyExtension]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConfigEntryServiceDefaultsEnvoyExtensionOutput) Arguments() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ConfigEntryServiceDefaultsEnvoyExtension) map[string]string { return v.Arguments }).(pulumi.StringMapOutput)
+}
+
+func (o ConfigEntryServiceDefaultsEnvoyExtensionOutput) ConsulVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceDefaultsEnvoyExtension) *string { return v.ConsulVersion }).(pulumi.StringPtrOutput)
+}
+
+func (o ConfigEntryServiceDefaultsEnvoyExtensionOutput) EnvoyVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceDefaultsEnvoyExtension) *string { return v.EnvoyVersion }).(pulumi.StringPtrOutput)
+}
+
+func (o ConfigEntryServiceDefaultsEnvoyExtensionOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceDefaultsEnvoyExtension) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o ConfigEntryServiceDefaultsEnvoyExtensionOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceDefaultsEnvoyExtension) *bool { return v.Required }).(pulumi.BoolPtrOutput)
+}
+
+type ConfigEntryServiceDefaultsEnvoyExtensionArrayOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceDefaultsEnvoyExtensionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceDefaultsEnvoyExtension)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceDefaultsEnvoyExtensionArrayOutput) ToConfigEntryServiceDefaultsEnvoyExtensionArrayOutput() ConfigEntryServiceDefaultsEnvoyExtensionArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceDefaultsEnvoyExtensionArrayOutput) ToConfigEntryServiceDefaultsEnvoyExtensionArrayOutputWithContext(ctx context.Context) ConfigEntryServiceDefaultsEnvoyExtensionArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceDefaultsEnvoyExtensionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceDefaultsEnvoyExtension] {
+	return pulumix.Output[[]ConfigEntryServiceDefaultsEnvoyExtension]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConfigEntryServiceDefaultsEnvoyExtensionArrayOutput) Index(i pulumi.IntInput) ConfigEntryServiceDefaultsEnvoyExtensionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConfigEntryServiceDefaultsEnvoyExtension {
+		return vs[0].([]ConfigEntryServiceDefaultsEnvoyExtension)[vs[1].(int)]
+	}).(ConfigEntryServiceDefaultsEnvoyExtensionOutput)
+}
+
+type ConfigEntryServiceDefaultsExpose struct {
+	Checks *bool                                  `pulumi:"checks"`
+	Paths  []ConfigEntryServiceDefaultsExposePath `pulumi:"paths"`
+}
+
+// ConfigEntryServiceDefaultsExposeInput is an input type that accepts ConfigEntryServiceDefaultsExposeArgs and ConfigEntryServiceDefaultsExposeOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceDefaultsExposeInput` via:
+//
+//	ConfigEntryServiceDefaultsExposeArgs{...}
+type ConfigEntryServiceDefaultsExposeInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceDefaultsExposeOutput() ConfigEntryServiceDefaultsExposeOutput
+	ToConfigEntryServiceDefaultsExposeOutputWithContext(context.Context) ConfigEntryServiceDefaultsExposeOutput
+}
+
+type ConfigEntryServiceDefaultsExposeArgs struct {
+	Checks pulumi.BoolPtrInput                            `pulumi:"checks"`
+	Paths  ConfigEntryServiceDefaultsExposePathArrayInput `pulumi:"paths"`
+}
+
+func (ConfigEntryServiceDefaultsExposeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceDefaultsExpose)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceDefaultsExposeArgs) ToConfigEntryServiceDefaultsExposeOutput() ConfigEntryServiceDefaultsExposeOutput {
+	return i.ToConfigEntryServiceDefaultsExposeOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceDefaultsExposeArgs) ToConfigEntryServiceDefaultsExposeOutputWithContext(ctx context.Context) ConfigEntryServiceDefaultsExposeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceDefaultsExposeOutput)
+}
+
+func (i ConfigEntryServiceDefaultsExposeArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceDefaultsExpose] {
+	return pulumix.Output[ConfigEntryServiceDefaultsExpose]{
+		OutputState: i.ToConfigEntryServiceDefaultsExposeOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ConfigEntryServiceDefaultsExposeArrayInput is an input type that accepts ConfigEntryServiceDefaultsExposeArray and ConfigEntryServiceDefaultsExposeArrayOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceDefaultsExposeArrayInput` via:
+//
+//	ConfigEntryServiceDefaultsExposeArray{ ConfigEntryServiceDefaultsExposeArgs{...} }
+type ConfigEntryServiceDefaultsExposeArrayInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceDefaultsExposeArrayOutput() ConfigEntryServiceDefaultsExposeArrayOutput
+	ToConfigEntryServiceDefaultsExposeArrayOutputWithContext(context.Context) ConfigEntryServiceDefaultsExposeArrayOutput
+}
+
+type ConfigEntryServiceDefaultsExposeArray []ConfigEntryServiceDefaultsExposeInput
+
+func (ConfigEntryServiceDefaultsExposeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceDefaultsExpose)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceDefaultsExposeArray) ToConfigEntryServiceDefaultsExposeArrayOutput() ConfigEntryServiceDefaultsExposeArrayOutput {
+	return i.ToConfigEntryServiceDefaultsExposeArrayOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceDefaultsExposeArray) ToConfigEntryServiceDefaultsExposeArrayOutputWithContext(ctx context.Context) ConfigEntryServiceDefaultsExposeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceDefaultsExposeArrayOutput)
+}
+
+func (i ConfigEntryServiceDefaultsExposeArray) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceDefaultsExpose] {
+	return pulumix.Output[[]ConfigEntryServiceDefaultsExpose]{
+		OutputState: i.ToConfigEntryServiceDefaultsExposeArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ConfigEntryServiceDefaultsExposeOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceDefaultsExposeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceDefaultsExpose)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceDefaultsExposeOutput) ToConfigEntryServiceDefaultsExposeOutput() ConfigEntryServiceDefaultsExposeOutput {
+	return o
+}
+
+func (o ConfigEntryServiceDefaultsExposeOutput) ToConfigEntryServiceDefaultsExposeOutputWithContext(ctx context.Context) ConfigEntryServiceDefaultsExposeOutput {
+	return o
+}
+
+func (o ConfigEntryServiceDefaultsExposeOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceDefaultsExpose] {
+	return pulumix.Output[ConfigEntryServiceDefaultsExpose]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConfigEntryServiceDefaultsExposeOutput) Checks() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceDefaultsExpose) *bool { return v.Checks }).(pulumi.BoolPtrOutput)
+}
+
+func (o ConfigEntryServiceDefaultsExposeOutput) Paths() ConfigEntryServiceDefaultsExposePathArrayOutput {
+	return o.ApplyT(func(v ConfigEntryServiceDefaultsExpose) []ConfigEntryServiceDefaultsExposePath { return v.Paths }).(ConfigEntryServiceDefaultsExposePathArrayOutput)
+}
+
+type ConfigEntryServiceDefaultsExposeArrayOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceDefaultsExposeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceDefaultsExpose)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceDefaultsExposeArrayOutput) ToConfigEntryServiceDefaultsExposeArrayOutput() ConfigEntryServiceDefaultsExposeArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceDefaultsExposeArrayOutput) ToConfigEntryServiceDefaultsExposeArrayOutputWithContext(ctx context.Context) ConfigEntryServiceDefaultsExposeArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceDefaultsExposeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceDefaultsExpose] {
+	return pulumix.Output[[]ConfigEntryServiceDefaultsExpose]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConfigEntryServiceDefaultsExposeArrayOutput) Index(i pulumi.IntInput) ConfigEntryServiceDefaultsExposeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConfigEntryServiceDefaultsExpose {
+		return vs[0].([]ConfigEntryServiceDefaultsExpose)[vs[1].(int)]
+	}).(ConfigEntryServiceDefaultsExposeOutput)
+}
+
+type ConfigEntryServiceDefaultsExposePath struct {
+	ListenerPort  *int    `pulumi:"listenerPort"`
+	LocalPathPort *int    `pulumi:"localPathPort"`
+	Path          *string `pulumi:"path"`
+	Protocol      *string `pulumi:"protocol"`
+}
+
+// ConfigEntryServiceDefaultsExposePathInput is an input type that accepts ConfigEntryServiceDefaultsExposePathArgs and ConfigEntryServiceDefaultsExposePathOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceDefaultsExposePathInput` via:
+//
+//	ConfigEntryServiceDefaultsExposePathArgs{...}
+type ConfigEntryServiceDefaultsExposePathInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceDefaultsExposePathOutput() ConfigEntryServiceDefaultsExposePathOutput
+	ToConfigEntryServiceDefaultsExposePathOutputWithContext(context.Context) ConfigEntryServiceDefaultsExposePathOutput
+}
+
+type ConfigEntryServiceDefaultsExposePathArgs struct {
+	ListenerPort  pulumi.IntPtrInput    `pulumi:"listenerPort"`
+	LocalPathPort pulumi.IntPtrInput    `pulumi:"localPathPort"`
+	Path          pulumi.StringPtrInput `pulumi:"path"`
+	Protocol      pulumi.StringPtrInput `pulumi:"protocol"`
+}
+
+func (ConfigEntryServiceDefaultsExposePathArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceDefaultsExposePath)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceDefaultsExposePathArgs) ToConfigEntryServiceDefaultsExposePathOutput() ConfigEntryServiceDefaultsExposePathOutput {
+	return i.ToConfigEntryServiceDefaultsExposePathOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceDefaultsExposePathArgs) ToConfigEntryServiceDefaultsExposePathOutputWithContext(ctx context.Context) ConfigEntryServiceDefaultsExposePathOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceDefaultsExposePathOutput)
+}
+
+func (i ConfigEntryServiceDefaultsExposePathArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceDefaultsExposePath] {
+	return pulumix.Output[ConfigEntryServiceDefaultsExposePath]{
+		OutputState: i.ToConfigEntryServiceDefaultsExposePathOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ConfigEntryServiceDefaultsExposePathArrayInput is an input type that accepts ConfigEntryServiceDefaultsExposePathArray and ConfigEntryServiceDefaultsExposePathArrayOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceDefaultsExposePathArrayInput` via:
+//
+//	ConfigEntryServiceDefaultsExposePathArray{ ConfigEntryServiceDefaultsExposePathArgs{...} }
+type ConfigEntryServiceDefaultsExposePathArrayInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceDefaultsExposePathArrayOutput() ConfigEntryServiceDefaultsExposePathArrayOutput
+	ToConfigEntryServiceDefaultsExposePathArrayOutputWithContext(context.Context) ConfigEntryServiceDefaultsExposePathArrayOutput
+}
+
+type ConfigEntryServiceDefaultsExposePathArray []ConfigEntryServiceDefaultsExposePathInput
+
+func (ConfigEntryServiceDefaultsExposePathArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceDefaultsExposePath)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceDefaultsExposePathArray) ToConfigEntryServiceDefaultsExposePathArrayOutput() ConfigEntryServiceDefaultsExposePathArrayOutput {
+	return i.ToConfigEntryServiceDefaultsExposePathArrayOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceDefaultsExposePathArray) ToConfigEntryServiceDefaultsExposePathArrayOutputWithContext(ctx context.Context) ConfigEntryServiceDefaultsExposePathArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceDefaultsExposePathArrayOutput)
+}
+
+func (i ConfigEntryServiceDefaultsExposePathArray) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceDefaultsExposePath] {
+	return pulumix.Output[[]ConfigEntryServiceDefaultsExposePath]{
+		OutputState: i.ToConfigEntryServiceDefaultsExposePathArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ConfigEntryServiceDefaultsExposePathOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceDefaultsExposePathOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceDefaultsExposePath)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceDefaultsExposePathOutput) ToConfigEntryServiceDefaultsExposePathOutput() ConfigEntryServiceDefaultsExposePathOutput {
+	return o
+}
+
+func (o ConfigEntryServiceDefaultsExposePathOutput) ToConfigEntryServiceDefaultsExposePathOutputWithContext(ctx context.Context) ConfigEntryServiceDefaultsExposePathOutput {
+	return o
+}
+
+func (o ConfigEntryServiceDefaultsExposePathOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceDefaultsExposePath] {
+	return pulumix.Output[ConfigEntryServiceDefaultsExposePath]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConfigEntryServiceDefaultsExposePathOutput) ListenerPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceDefaultsExposePath) *int { return v.ListenerPort }).(pulumi.IntPtrOutput)
+}
+
+func (o ConfigEntryServiceDefaultsExposePathOutput) LocalPathPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceDefaultsExposePath) *int { return v.LocalPathPort }).(pulumi.IntPtrOutput)
+}
+
+func (o ConfigEntryServiceDefaultsExposePathOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceDefaultsExposePath) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+func (o ConfigEntryServiceDefaultsExposePathOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceDefaultsExposePath) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+type ConfigEntryServiceDefaultsExposePathArrayOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceDefaultsExposePathArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceDefaultsExposePath)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceDefaultsExposePathArrayOutput) ToConfigEntryServiceDefaultsExposePathArrayOutput() ConfigEntryServiceDefaultsExposePathArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceDefaultsExposePathArrayOutput) ToConfigEntryServiceDefaultsExposePathArrayOutputWithContext(ctx context.Context) ConfigEntryServiceDefaultsExposePathArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceDefaultsExposePathArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceDefaultsExposePath] {
+	return pulumix.Output[[]ConfigEntryServiceDefaultsExposePath]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConfigEntryServiceDefaultsExposePathArrayOutput) Index(i pulumi.IntInput) ConfigEntryServiceDefaultsExposePathOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConfigEntryServiceDefaultsExposePath {
+		return vs[0].([]ConfigEntryServiceDefaultsExposePath)[vs[1].(int)]
+	}).(ConfigEntryServiceDefaultsExposePathOutput)
+}
+
+type ConfigEntryServiceDefaultsMeshGateway struct {
+	Mode string `pulumi:"mode"`
+}
+
+// ConfigEntryServiceDefaultsMeshGatewayInput is an input type that accepts ConfigEntryServiceDefaultsMeshGatewayArgs and ConfigEntryServiceDefaultsMeshGatewayOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceDefaultsMeshGatewayInput` via:
+//
+//	ConfigEntryServiceDefaultsMeshGatewayArgs{...}
+type ConfigEntryServiceDefaultsMeshGatewayInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceDefaultsMeshGatewayOutput() ConfigEntryServiceDefaultsMeshGatewayOutput
+	ToConfigEntryServiceDefaultsMeshGatewayOutputWithContext(context.Context) ConfigEntryServiceDefaultsMeshGatewayOutput
+}
+
+type ConfigEntryServiceDefaultsMeshGatewayArgs struct {
+	Mode pulumi.StringInput `pulumi:"mode"`
+}
+
+func (ConfigEntryServiceDefaultsMeshGatewayArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceDefaultsMeshGateway)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceDefaultsMeshGatewayArgs) ToConfigEntryServiceDefaultsMeshGatewayOutput() ConfigEntryServiceDefaultsMeshGatewayOutput {
+	return i.ToConfigEntryServiceDefaultsMeshGatewayOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceDefaultsMeshGatewayArgs) ToConfigEntryServiceDefaultsMeshGatewayOutputWithContext(ctx context.Context) ConfigEntryServiceDefaultsMeshGatewayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceDefaultsMeshGatewayOutput)
+}
+
+func (i ConfigEntryServiceDefaultsMeshGatewayArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceDefaultsMeshGateway] {
+	return pulumix.Output[ConfigEntryServiceDefaultsMeshGateway]{
+		OutputState: i.ToConfigEntryServiceDefaultsMeshGatewayOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ConfigEntryServiceDefaultsMeshGatewayArrayInput is an input type that accepts ConfigEntryServiceDefaultsMeshGatewayArray and ConfigEntryServiceDefaultsMeshGatewayArrayOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceDefaultsMeshGatewayArrayInput` via:
+//
+//	ConfigEntryServiceDefaultsMeshGatewayArray{ ConfigEntryServiceDefaultsMeshGatewayArgs{...} }
+type ConfigEntryServiceDefaultsMeshGatewayArrayInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceDefaultsMeshGatewayArrayOutput() ConfigEntryServiceDefaultsMeshGatewayArrayOutput
+	ToConfigEntryServiceDefaultsMeshGatewayArrayOutputWithContext(context.Context) ConfigEntryServiceDefaultsMeshGatewayArrayOutput
+}
+
+type ConfigEntryServiceDefaultsMeshGatewayArray []ConfigEntryServiceDefaultsMeshGatewayInput
+
+func (ConfigEntryServiceDefaultsMeshGatewayArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceDefaultsMeshGateway)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceDefaultsMeshGatewayArray) ToConfigEntryServiceDefaultsMeshGatewayArrayOutput() ConfigEntryServiceDefaultsMeshGatewayArrayOutput {
+	return i.ToConfigEntryServiceDefaultsMeshGatewayArrayOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceDefaultsMeshGatewayArray) ToConfigEntryServiceDefaultsMeshGatewayArrayOutputWithContext(ctx context.Context) ConfigEntryServiceDefaultsMeshGatewayArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceDefaultsMeshGatewayArrayOutput)
+}
+
+func (i ConfigEntryServiceDefaultsMeshGatewayArray) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceDefaultsMeshGateway] {
+	return pulumix.Output[[]ConfigEntryServiceDefaultsMeshGateway]{
+		OutputState: i.ToConfigEntryServiceDefaultsMeshGatewayArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ConfigEntryServiceDefaultsMeshGatewayOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceDefaultsMeshGatewayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceDefaultsMeshGateway)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceDefaultsMeshGatewayOutput) ToConfigEntryServiceDefaultsMeshGatewayOutput() ConfigEntryServiceDefaultsMeshGatewayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceDefaultsMeshGatewayOutput) ToConfigEntryServiceDefaultsMeshGatewayOutputWithContext(ctx context.Context) ConfigEntryServiceDefaultsMeshGatewayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceDefaultsMeshGatewayOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceDefaultsMeshGateway] {
+	return pulumix.Output[ConfigEntryServiceDefaultsMeshGateway]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConfigEntryServiceDefaultsMeshGatewayOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigEntryServiceDefaultsMeshGateway) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+type ConfigEntryServiceDefaultsMeshGatewayArrayOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceDefaultsMeshGatewayArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceDefaultsMeshGateway)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceDefaultsMeshGatewayArrayOutput) ToConfigEntryServiceDefaultsMeshGatewayArrayOutput() ConfigEntryServiceDefaultsMeshGatewayArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceDefaultsMeshGatewayArrayOutput) ToConfigEntryServiceDefaultsMeshGatewayArrayOutputWithContext(ctx context.Context) ConfigEntryServiceDefaultsMeshGatewayArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceDefaultsMeshGatewayArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceDefaultsMeshGateway] {
+	return pulumix.Output[[]ConfigEntryServiceDefaultsMeshGateway]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConfigEntryServiceDefaultsMeshGatewayArrayOutput) Index(i pulumi.IntInput) ConfigEntryServiceDefaultsMeshGatewayOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConfigEntryServiceDefaultsMeshGateway {
+		return vs[0].([]ConfigEntryServiceDefaultsMeshGateway)[vs[1].(int)]
+	}).(ConfigEntryServiceDefaultsMeshGatewayOutput)
+}
+
+type ConfigEntryServiceDefaultsTransparentProxy struct {
+	DialedDirectly       bool `pulumi:"dialedDirectly"`
+	OutboundListenerPort int  `pulumi:"outboundListenerPort"`
+}
+
+// ConfigEntryServiceDefaultsTransparentProxyInput is an input type that accepts ConfigEntryServiceDefaultsTransparentProxyArgs and ConfigEntryServiceDefaultsTransparentProxyOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceDefaultsTransparentProxyInput` via:
+//
+//	ConfigEntryServiceDefaultsTransparentProxyArgs{...}
+type ConfigEntryServiceDefaultsTransparentProxyInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceDefaultsTransparentProxyOutput() ConfigEntryServiceDefaultsTransparentProxyOutput
+	ToConfigEntryServiceDefaultsTransparentProxyOutputWithContext(context.Context) ConfigEntryServiceDefaultsTransparentProxyOutput
+}
+
+type ConfigEntryServiceDefaultsTransparentProxyArgs struct {
+	DialedDirectly       pulumi.BoolInput `pulumi:"dialedDirectly"`
+	OutboundListenerPort pulumi.IntInput  `pulumi:"outboundListenerPort"`
+}
+
+func (ConfigEntryServiceDefaultsTransparentProxyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceDefaultsTransparentProxy)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceDefaultsTransparentProxyArgs) ToConfigEntryServiceDefaultsTransparentProxyOutput() ConfigEntryServiceDefaultsTransparentProxyOutput {
+	return i.ToConfigEntryServiceDefaultsTransparentProxyOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceDefaultsTransparentProxyArgs) ToConfigEntryServiceDefaultsTransparentProxyOutputWithContext(ctx context.Context) ConfigEntryServiceDefaultsTransparentProxyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceDefaultsTransparentProxyOutput)
+}
+
+func (i ConfigEntryServiceDefaultsTransparentProxyArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceDefaultsTransparentProxy] {
+	return pulumix.Output[ConfigEntryServiceDefaultsTransparentProxy]{
+		OutputState: i.ToConfigEntryServiceDefaultsTransparentProxyOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ConfigEntryServiceDefaultsTransparentProxyArrayInput is an input type that accepts ConfigEntryServiceDefaultsTransparentProxyArray and ConfigEntryServiceDefaultsTransparentProxyArrayOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceDefaultsTransparentProxyArrayInput` via:
+//
+//	ConfigEntryServiceDefaultsTransparentProxyArray{ ConfigEntryServiceDefaultsTransparentProxyArgs{...} }
+type ConfigEntryServiceDefaultsTransparentProxyArrayInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceDefaultsTransparentProxyArrayOutput() ConfigEntryServiceDefaultsTransparentProxyArrayOutput
+	ToConfigEntryServiceDefaultsTransparentProxyArrayOutputWithContext(context.Context) ConfigEntryServiceDefaultsTransparentProxyArrayOutput
+}
+
+type ConfigEntryServiceDefaultsTransparentProxyArray []ConfigEntryServiceDefaultsTransparentProxyInput
+
+func (ConfigEntryServiceDefaultsTransparentProxyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceDefaultsTransparentProxy)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceDefaultsTransparentProxyArray) ToConfigEntryServiceDefaultsTransparentProxyArrayOutput() ConfigEntryServiceDefaultsTransparentProxyArrayOutput {
+	return i.ToConfigEntryServiceDefaultsTransparentProxyArrayOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceDefaultsTransparentProxyArray) ToConfigEntryServiceDefaultsTransparentProxyArrayOutputWithContext(ctx context.Context) ConfigEntryServiceDefaultsTransparentProxyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceDefaultsTransparentProxyArrayOutput)
+}
+
+func (i ConfigEntryServiceDefaultsTransparentProxyArray) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceDefaultsTransparentProxy] {
+	return pulumix.Output[[]ConfigEntryServiceDefaultsTransparentProxy]{
+		OutputState: i.ToConfigEntryServiceDefaultsTransparentProxyArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ConfigEntryServiceDefaultsTransparentProxyOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceDefaultsTransparentProxyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceDefaultsTransparentProxy)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceDefaultsTransparentProxyOutput) ToConfigEntryServiceDefaultsTransparentProxyOutput() ConfigEntryServiceDefaultsTransparentProxyOutput {
+	return o
+}
+
+func (o ConfigEntryServiceDefaultsTransparentProxyOutput) ToConfigEntryServiceDefaultsTransparentProxyOutputWithContext(ctx context.Context) ConfigEntryServiceDefaultsTransparentProxyOutput {
+	return o
+}
+
+func (o ConfigEntryServiceDefaultsTransparentProxyOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceDefaultsTransparentProxy] {
+	return pulumix.Output[ConfigEntryServiceDefaultsTransparentProxy]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConfigEntryServiceDefaultsTransparentProxyOutput) DialedDirectly() pulumi.BoolOutput {
+	return o.ApplyT(func(v ConfigEntryServiceDefaultsTransparentProxy) bool { return v.DialedDirectly }).(pulumi.BoolOutput)
+}
+
+func (o ConfigEntryServiceDefaultsTransparentProxyOutput) OutboundListenerPort() pulumi.IntOutput {
+	return o.ApplyT(func(v ConfigEntryServiceDefaultsTransparentProxy) int { return v.OutboundListenerPort }).(pulumi.IntOutput)
+}
+
+type ConfigEntryServiceDefaultsTransparentProxyArrayOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceDefaultsTransparentProxyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceDefaultsTransparentProxy)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceDefaultsTransparentProxyArrayOutput) ToConfigEntryServiceDefaultsTransparentProxyArrayOutput() ConfigEntryServiceDefaultsTransparentProxyArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceDefaultsTransparentProxyArrayOutput) ToConfigEntryServiceDefaultsTransparentProxyArrayOutputWithContext(ctx context.Context) ConfigEntryServiceDefaultsTransparentProxyArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceDefaultsTransparentProxyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceDefaultsTransparentProxy] {
+	return pulumix.Output[[]ConfigEntryServiceDefaultsTransparentProxy]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConfigEntryServiceDefaultsTransparentProxyArrayOutput) Index(i pulumi.IntInput) ConfigEntryServiceDefaultsTransparentProxyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConfigEntryServiceDefaultsTransparentProxy {
+		return vs[0].([]ConfigEntryServiceDefaultsTransparentProxy)[vs[1].(int)]
+	}).(ConfigEntryServiceDefaultsTransparentProxyOutput)
+}
+
+type ConfigEntryServiceDefaultsUpstreamConfig struct {
+	// Specifies configurations that set default upstream settings. For information about overriding the default configurations for in for individual upstreams, refer to UpstreamConfig.Overrides.
+	Defaults []ConfigEntryServiceDefaultsUpstreamConfigDefault `pulumi:"defaults"`
+	// Specifies options that override the default upstream configurations for individual upstreams.
+	Overrides []ConfigEntryServiceDefaultsUpstreamConfigOverride `pulumi:"overrides"`
+}
+
+// ConfigEntryServiceDefaultsUpstreamConfigInput is an input type that accepts ConfigEntryServiceDefaultsUpstreamConfigArgs and ConfigEntryServiceDefaultsUpstreamConfigOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceDefaultsUpstreamConfigInput` via:
+//
+//	ConfigEntryServiceDefaultsUpstreamConfigArgs{...}
+type ConfigEntryServiceDefaultsUpstreamConfigInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceDefaultsUpstreamConfigOutput() ConfigEntryServiceDefaultsUpstreamConfigOutput
+	ToConfigEntryServiceDefaultsUpstreamConfigOutputWithContext(context.Context) ConfigEntryServiceDefaultsUpstreamConfigOutput
+}
+
+type ConfigEntryServiceDefaultsUpstreamConfigArgs struct {
+	// Specifies configurations that set default upstream settings. For information about overriding the default configurations for in for individual upstreams, refer to UpstreamConfig.Overrides.
+	Defaults ConfigEntryServiceDefaultsUpstreamConfigDefaultArrayInput `pulumi:"defaults"`
+	// Specifies options that override the default upstream configurations for individual upstreams.
+	Overrides ConfigEntryServiceDefaultsUpstreamConfigOverrideArrayInput `pulumi:"overrides"`
+}
+
+func (ConfigEntryServiceDefaultsUpstreamConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceDefaultsUpstreamConfig)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceDefaultsUpstreamConfigArgs) ToConfigEntryServiceDefaultsUpstreamConfigOutput() ConfigEntryServiceDefaultsUpstreamConfigOutput {
+	return i.ToConfigEntryServiceDefaultsUpstreamConfigOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceDefaultsUpstreamConfigArgs) ToConfigEntryServiceDefaultsUpstreamConfigOutputWithContext(ctx context.Context) ConfigEntryServiceDefaultsUpstreamConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceDefaultsUpstreamConfigOutput)
+}
+
+func (i ConfigEntryServiceDefaultsUpstreamConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceDefaultsUpstreamConfig] {
+	return pulumix.Output[ConfigEntryServiceDefaultsUpstreamConfig]{
+		OutputState: i.ToConfigEntryServiceDefaultsUpstreamConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ConfigEntryServiceDefaultsUpstreamConfigArrayInput is an input type that accepts ConfigEntryServiceDefaultsUpstreamConfigArray and ConfigEntryServiceDefaultsUpstreamConfigArrayOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceDefaultsUpstreamConfigArrayInput` via:
+//
+//	ConfigEntryServiceDefaultsUpstreamConfigArray{ ConfigEntryServiceDefaultsUpstreamConfigArgs{...} }
+type ConfigEntryServiceDefaultsUpstreamConfigArrayInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceDefaultsUpstreamConfigArrayOutput() ConfigEntryServiceDefaultsUpstreamConfigArrayOutput
+	ToConfigEntryServiceDefaultsUpstreamConfigArrayOutputWithContext(context.Context) ConfigEntryServiceDefaultsUpstreamConfigArrayOutput
+}
+
+type ConfigEntryServiceDefaultsUpstreamConfigArray []ConfigEntryServiceDefaultsUpstreamConfigInput
+
+func (ConfigEntryServiceDefaultsUpstreamConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceDefaultsUpstreamConfig)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceDefaultsUpstreamConfigArray) ToConfigEntryServiceDefaultsUpstreamConfigArrayOutput() ConfigEntryServiceDefaultsUpstreamConfigArrayOutput {
+	return i.ToConfigEntryServiceDefaultsUpstreamConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceDefaultsUpstreamConfigArray) ToConfigEntryServiceDefaultsUpstreamConfigArrayOutputWithContext(ctx context.Context) ConfigEntryServiceDefaultsUpstreamConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceDefaultsUpstreamConfigArrayOutput)
+}
+
+func (i ConfigEntryServiceDefaultsUpstreamConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceDefaultsUpstreamConfig] {
+	return pulumix.Output[[]ConfigEntryServiceDefaultsUpstreamConfig]{
+		OutputState: i.ToConfigEntryServiceDefaultsUpstreamConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ConfigEntryServiceDefaultsUpstreamConfigOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceDefaultsUpstreamConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceDefaultsUpstreamConfig)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigOutput) ToConfigEntryServiceDefaultsUpstreamConfigOutput() ConfigEntryServiceDefaultsUpstreamConfigOutput {
+	return o
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigOutput) ToConfigEntryServiceDefaultsUpstreamConfigOutputWithContext(ctx context.Context) ConfigEntryServiceDefaultsUpstreamConfigOutput {
+	return o
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceDefaultsUpstreamConfig] {
+	return pulumix.Output[ConfigEntryServiceDefaultsUpstreamConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Specifies configurations that set default upstream settings. For information about overriding the default configurations for in for individual upstreams, refer to UpstreamConfig.Overrides.
+func (o ConfigEntryServiceDefaultsUpstreamConfigOutput) Defaults() ConfigEntryServiceDefaultsUpstreamConfigDefaultArrayOutput {
+	return o.ApplyT(func(v ConfigEntryServiceDefaultsUpstreamConfig) []ConfigEntryServiceDefaultsUpstreamConfigDefault {
+		return v.Defaults
+	}).(ConfigEntryServiceDefaultsUpstreamConfigDefaultArrayOutput)
+}
+
+// Specifies options that override the default upstream configurations for individual upstreams.
+func (o ConfigEntryServiceDefaultsUpstreamConfigOutput) Overrides() ConfigEntryServiceDefaultsUpstreamConfigOverrideArrayOutput {
+	return o.ApplyT(func(v ConfigEntryServiceDefaultsUpstreamConfig) []ConfigEntryServiceDefaultsUpstreamConfigOverride {
+		return v.Overrides
+	}).(ConfigEntryServiceDefaultsUpstreamConfigOverrideArrayOutput)
+}
+
+type ConfigEntryServiceDefaultsUpstreamConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceDefaultsUpstreamConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceDefaultsUpstreamConfig)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigArrayOutput) ToConfigEntryServiceDefaultsUpstreamConfigArrayOutput() ConfigEntryServiceDefaultsUpstreamConfigArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigArrayOutput) ToConfigEntryServiceDefaultsUpstreamConfigArrayOutputWithContext(ctx context.Context) ConfigEntryServiceDefaultsUpstreamConfigArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceDefaultsUpstreamConfig] {
+	return pulumix.Output[[]ConfigEntryServiceDefaultsUpstreamConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigArrayOutput) Index(i pulumi.IntInput) ConfigEntryServiceDefaultsUpstreamConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConfigEntryServiceDefaultsUpstreamConfig {
+		return vs[0].([]ConfigEntryServiceDefaultsUpstreamConfig)[vs[1].(int)]
+	}).(ConfigEntryServiceDefaultsUpstreamConfigOutput)
+}
+
+type ConfigEntryServiceDefaultsUpstreamConfigDefault struct {
+	// Sets the strategy for allocating outbound connections from upstreams across Envoy proxy threads.
+	BalanceOutboundConnections *string `pulumi:"balanceOutboundConnections"`
+	ConnectTimeoutMs           *int    `pulumi:"connectTimeoutMs"`
+	// Map that specifies a set of limits to apply to when connecting upstream services.
+	Limits []ConfigEntryServiceDefaultsUpstreamConfigDefaultLimit `pulumi:"limits"`
+	// Specifies the default mesh gateway mode field for all upstreams.
+	MeshGateways []ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGateway `pulumi:"meshGateways"`
+	// Map that specifies a set of rules that enable Consul to remove hosts from the upstream cluster that are unreachable or that return errors.
+	PassiveHealthChecks []ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheck `pulumi:"passiveHealthChecks"`
+	Protocol            *string                                                             `pulumi:"protocol"`
+}
+
+// ConfigEntryServiceDefaultsUpstreamConfigDefaultInput is an input type that accepts ConfigEntryServiceDefaultsUpstreamConfigDefaultArgs and ConfigEntryServiceDefaultsUpstreamConfigDefaultOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceDefaultsUpstreamConfigDefaultInput` via:
+//
+//	ConfigEntryServiceDefaultsUpstreamConfigDefaultArgs{...}
+type ConfigEntryServiceDefaultsUpstreamConfigDefaultInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceDefaultsUpstreamConfigDefaultOutput() ConfigEntryServiceDefaultsUpstreamConfigDefaultOutput
+	ToConfigEntryServiceDefaultsUpstreamConfigDefaultOutputWithContext(context.Context) ConfigEntryServiceDefaultsUpstreamConfigDefaultOutput
+}
+
+type ConfigEntryServiceDefaultsUpstreamConfigDefaultArgs struct {
+	// Sets the strategy for allocating outbound connections from upstreams across Envoy proxy threads.
+	BalanceOutboundConnections pulumi.StringPtrInput `pulumi:"balanceOutboundConnections"`
+	ConnectTimeoutMs           pulumi.IntPtrInput    `pulumi:"connectTimeoutMs"`
+	// Map that specifies a set of limits to apply to when connecting upstream services.
+	Limits ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitArrayInput `pulumi:"limits"`
+	// Specifies the default mesh gateway mode field for all upstreams.
+	MeshGateways ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayArrayInput `pulumi:"meshGateways"`
+	// Map that specifies a set of rules that enable Consul to remove hosts from the upstream cluster that are unreachable or that return errors.
+	PassiveHealthChecks ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckArrayInput `pulumi:"passiveHealthChecks"`
+	Protocol            pulumi.StringPtrInput                                                       `pulumi:"protocol"`
+}
+
+func (ConfigEntryServiceDefaultsUpstreamConfigDefaultArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceDefaultsUpstreamConfigDefault)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceDefaultsUpstreamConfigDefaultArgs) ToConfigEntryServiceDefaultsUpstreamConfigDefaultOutput() ConfigEntryServiceDefaultsUpstreamConfigDefaultOutput {
+	return i.ToConfigEntryServiceDefaultsUpstreamConfigDefaultOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceDefaultsUpstreamConfigDefaultArgs) ToConfigEntryServiceDefaultsUpstreamConfigDefaultOutputWithContext(ctx context.Context) ConfigEntryServiceDefaultsUpstreamConfigDefaultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceDefaultsUpstreamConfigDefaultOutput)
+}
+
+func (i ConfigEntryServiceDefaultsUpstreamConfigDefaultArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceDefaultsUpstreamConfigDefault] {
+	return pulumix.Output[ConfigEntryServiceDefaultsUpstreamConfigDefault]{
+		OutputState: i.ToConfigEntryServiceDefaultsUpstreamConfigDefaultOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ConfigEntryServiceDefaultsUpstreamConfigDefaultArrayInput is an input type that accepts ConfigEntryServiceDefaultsUpstreamConfigDefaultArray and ConfigEntryServiceDefaultsUpstreamConfigDefaultArrayOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceDefaultsUpstreamConfigDefaultArrayInput` via:
+//
+//	ConfigEntryServiceDefaultsUpstreamConfigDefaultArray{ ConfigEntryServiceDefaultsUpstreamConfigDefaultArgs{...} }
+type ConfigEntryServiceDefaultsUpstreamConfigDefaultArrayInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceDefaultsUpstreamConfigDefaultArrayOutput() ConfigEntryServiceDefaultsUpstreamConfigDefaultArrayOutput
+	ToConfigEntryServiceDefaultsUpstreamConfigDefaultArrayOutputWithContext(context.Context) ConfigEntryServiceDefaultsUpstreamConfigDefaultArrayOutput
+}
+
+type ConfigEntryServiceDefaultsUpstreamConfigDefaultArray []ConfigEntryServiceDefaultsUpstreamConfigDefaultInput
+
+func (ConfigEntryServiceDefaultsUpstreamConfigDefaultArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceDefaultsUpstreamConfigDefault)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceDefaultsUpstreamConfigDefaultArray) ToConfigEntryServiceDefaultsUpstreamConfigDefaultArrayOutput() ConfigEntryServiceDefaultsUpstreamConfigDefaultArrayOutput {
+	return i.ToConfigEntryServiceDefaultsUpstreamConfigDefaultArrayOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceDefaultsUpstreamConfigDefaultArray) ToConfigEntryServiceDefaultsUpstreamConfigDefaultArrayOutputWithContext(ctx context.Context) ConfigEntryServiceDefaultsUpstreamConfigDefaultArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceDefaultsUpstreamConfigDefaultArrayOutput)
+}
+
+func (i ConfigEntryServiceDefaultsUpstreamConfigDefaultArray) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceDefaultsUpstreamConfigDefault] {
+	return pulumix.Output[[]ConfigEntryServiceDefaultsUpstreamConfigDefault]{
+		OutputState: i.ToConfigEntryServiceDefaultsUpstreamConfigDefaultArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ConfigEntryServiceDefaultsUpstreamConfigDefaultOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceDefaultsUpstreamConfigDefaultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceDefaultsUpstreamConfigDefault)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigDefaultOutput) ToConfigEntryServiceDefaultsUpstreamConfigDefaultOutput() ConfigEntryServiceDefaultsUpstreamConfigDefaultOutput {
+	return o
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigDefaultOutput) ToConfigEntryServiceDefaultsUpstreamConfigDefaultOutputWithContext(ctx context.Context) ConfigEntryServiceDefaultsUpstreamConfigDefaultOutput {
+	return o
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigDefaultOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceDefaultsUpstreamConfigDefault] {
+	return pulumix.Output[ConfigEntryServiceDefaultsUpstreamConfigDefault]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Sets the strategy for allocating outbound connections from upstreams across Envoy proxy threads.
+func (o ConfigEntryServiceDefaultsUpstreamConfigDefaultOutput) BalanceOutboundConnections() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceDefaultsUpstreamConfigDefault) *string { return v.BalanceOutboundConnections }).(pulumi.StringPtrOutput)
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigDefaultOutput) ConnectTimeoutMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceDefaultsUpstreamConfigDefault) *int { return v.ConnectTimeoutMs }).(pulumi.IntPtrOutput)
+}
+
+// Map that specifies a set of limits to apply to when connecting upstream services.
+func (o ConfigEntryServiceDefaultsUpstreamConfigDefaultOutput) Limits() ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitArrayOutput {
+	return o.ApplyT(func(v ConfigEntryServiceDefaultsUpstreamConfigDefault) []ConfigEntryServiceDefaultsUpstreamConfigDefaultLimit {
+		return v.Limits
+	}).(ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitArrayOutput)
+}
+
+// Specifies the default mesh gateway mode field for all upstreams.
+func (o ConfigEntryServiceDefaultsUpstreamConfigDefaultOutput) MeshGateways() ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayArrayOutput {
+	return o.ApplyT(func(v ConfigEntryServiceDefaultsUpstreamConfigDefault) []ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGateway {
+		return v.MeshGateways
+	}).(ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayArrayOutput)
+}
+
+// Map that specifies a set of rules that enable Consul to remove hosts from the upstream cluster that are unreachable or that return errors.
+func (o ConfigEntryServiceDefaultsUpstreamConfigDefaultOutput) PassiveHealthChecks() ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckArrayOutput {
+	return o.ApplyT(func(v ConfigEntryServiceDefaultsUpstreamConfigDefault) []ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheck {
+		return v.PassiveHealthChecks
+	}).(ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckArrayOutput)
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigDefaultOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceDefaultsUpstreamConfigDefault) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+type ConfigEntryServiceDefaultsUpstreamConfigDefaultArrayOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceDefaultsUpstreamConfigDefaultArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceDefaultsUpstreamConfigDefault)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigDefaultArrayOutput) ToConfigEntryServiceDefaultsUpstreamConfigDefaultArrayOutput() ConfigEntryServiceDefaultsUpstreamConfigDefaultArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigDefaultArrayOutput) ToConfigEntryServiceDefaultsUpstreamConfigDefaultArrayOutputWithContext(ctx context.Context) ConfigEntryServiceDefaultsUpstreamConfigDefaultArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigDefaultArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceDefaultsUpstreamConfigDefault] {
+	return pulumix.Output[[]ConfigEntryServiceDefaultsUpstreamConfigDefault]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigDefaultArrayOutput) Index(i pulumi.IntInput) ConfigEntryServiceDefaultsUpstreamConfigDefaultOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConfigEntryServiceDefaultsUpstreamConfigDefault {
+		return vs[0].([]ConfigEntryServiceDefaultsUpstreamConfigDefault)[vs[1].(int)]
+	}).(ConfigEntryServiceDefaultsUpstreamConfigDefaultOutput)
+}
+
+type ConfigEntryServiceDefaultsUpstreamConfigDefaultLimit struct {
+	// Specifies the maximum number of concurrent requests.
+	MaxConcurrentRequests *int `pulumi:"maxConcurrentRequests"`
+	// Specifies the maximum number of connections a service instance can establish against the upstream.
+	MaxConnections *int `pulumi:"maxConnections"`
+	// Specifies the maximum number of requests that are queued while waiting for a connection to establish.
+	MaxPendingRequests *int `pulumi:"maxPendingRequests"`
+}
+
+// ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitInput is an input type that accepts ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitArgs and ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitInput` via:
+//
+//	ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitArgs{...}
+type ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceDefaultsUpstreamConfigDefaultLimitOutput() ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitOutput
+	ToConfigEntryServiceDefaultsUpstreamConfigDefaultLimitOutputWithContext(context.Context) ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitOutput
+}
+
+type ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitArgs struct {
+	// Specifies the maximum number of concurrent requests.
+	MaxConcurrentRequests pulumi.IntPtrInput `pulumi:"maxConcurrentRequests"`
+	// Specifies the maximum number of connections a service instance can establish against the upstream.
+	MaxConnections pulumi.IntPtrInput `pulumi:"maxConnections"`
+	// Specifies the maximum number of requests that are queued while waiting for a connection to establish.
+	MaxPendingRequests pulumi.IntPtrInput `pulumi:"maxPendingRequests"`
+}
+
+func (ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceDefaultsUpstreamConfigDefaultLimit)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitArgs) ToConfigEntryServiceDefaultsUpstreamConfigDefaultLimitOutput() ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitOutput {
+	return i.ToConfigEntryServiceDefaultsUpstreamConfigDefaultLimitOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitArgs) ToConfigEntryServiceDefaultsUpstreamConfigDefaultLimitOutputWithContext(ctx context.Context) ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitOutput)
+}
+
+func (i ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceDefaultsUpstreamConfigDefaultLimit] {
+	return pulumix.Output[ConfigEntryServiceDefaultsUpstreamConfigDefaultLimit]{
+		OutputState: i.ToConfigEntryServiceDefaultsUpstreamConfigDefaultLimitOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitArrayInput is an input type that accepts ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitArray and ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitArrayOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitArrayInput` via:
+//
+//	ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitArray{ ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitArgs{...} }
+type ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitArrayInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceDefaultsUpstreamConfigDefaultLimitArrayOutput() ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitArrayOutput
+	ToConfigEntryServiceDefaultsUpstreamConfigDefaultLimitArrayOutputWithContext(context.Context) ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitArrayOutput
+}
+
+type ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitArray []ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitInput
+
+func (ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceDefaultsUpstreamConfigDefaultLimit)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitArray) ToConfigEntryServiceDefaultsUpstreamConfigDefaultLimitArrayOutput() ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitArrayOutput {
+	return i.ToConfigEntryServiceDefaultsUpstreamConfigDefaultLimitArrayOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitArray) ToConfigEntryServiceDefaultsUpstreamConfigDefaultLimitArrayOutputWithContext(ctx context.Context) ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitArrayOutput)
+}
+
+func (i ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitArray) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceDefaultsUpstreamConfigDefaultLimit] {
+	return pulumix.Output[[]ConfigEntryServiceDefaultsUpstreamConfigDefaultLimit]{
+		OutputState: i.ToConfigEntryServiceDefaultsUpstreamConfigDefaultLimitArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceDefaultsUpstreamConfigDefaultLimit)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitOutput) ToConfigEntryServiceDefaultsUpstreamConfigDefaultLimitOutput() ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitOutput {
+	return o
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitOutput) ToConfigEntryServiceDefaultsUpstreamConfigDefaultLimitOutputWithContext(ctx context.Context) ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitOutput {
+	return o
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceDefaultsUpstreamConfigDefaultLimit] {
+	return pulumix.Output[ConfigEntryServiceDefaultsUpstreamConfigDefaultLimit]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Specifies the maximum number of concurrent requests.
+func (o ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitOutput) MaxConcurrentRequests() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceDefaultsUpstreamConfigDefaultLimit) *int { return v.MaxConcurrentRequests }).(pulumi.IntPtrOutput)
+}
+
+// Specifies the maximum number of connections a service instance can establish against the upstream.
+func (o ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitOutput) MaxConnections() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceDefaultsUpstreamConfigDefaultLimit) *int { return v.MaxConnections }).(pulumi.IntPtrOutput)
+}
+
+// Specifies the maximum number of requests that are queued while waiting for a connection to establish.
+func (o ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitOutput) MaxPendingRequests() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceDefaultsUpstreamConfigDefaultLimit) *int { return v.MaxPendingRequests }).(pulumi.IntPtrOutput)
+}
+
+type ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitArrayOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceDefaultsUpstreamConfigDefaultLimit)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitArrayOutput) ToConfigEntryServiceDefaultsUpstreamConfigDefaultLimitArrayOutput() ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitArrayOutput) ToConfigEntryServiceDefaultsUpstreamConfigDefaultLimitArrayOutputWithContext(ctx context.Context) ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceDefaultsUpstreamConfigDefaultLimit] {
+	return pulumix.Output[[]ConfigEntryServiceDefaultsUpstreamConfigDefaultLimit]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitArrayOutput) Index(i pulumi.IntInput) ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConfigEntryServiceDefaultsUpstreamConfigDefaultLimit {
+		return vs[0].([]ConfigEntryServiceDefaultsUpstreamConfigDefaultLimit)[vs[1].(int)]
+	}).(ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitOutput)
+}
+
+type ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGateway struct {
+	Mode *string `pulumi:"mode"`
+}
+
+// ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayInput is an input type that accepts ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayArgs and ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayInput` via:
+//
+//	ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayArgs{...}
+type ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayOutput() ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayOutput
+	ToConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayOutputWithContext(context.Context) ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayOutput
+}
+
+type ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayArgs struct {
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+}
+
+func (ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGateway)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayArgs) ToConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayOutput() ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayOutput {
+	return i.ToConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayArgs) ToConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayOutputWithContext(ctx context.Context) ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayOutput)
+}
+
+func (i ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGateway] {
+	return pulumix.Output[ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGateway]{
+		OutputState: i.ToConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayArrayInput is an input type that accepts ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayArray and ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayArrayOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayArrayInput` via:
+//
+//	ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayArray{ ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayArgs{...} }
+type ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayArrayInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayArrayOutput() ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayArrayOutput
+	ToConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayArrayOutputWithContext(context.Context) ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayArrayOutput
+}
+
+type ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayArray []ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayInput
+
+func (ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGateway)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayArray) ToConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayArrayOutput() ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayArrayOutput {
+	return i.ToConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayArrayOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayArray) ToConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayArrayOutputWithContext(ctx context.Context) ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayArrayOutput)
+}
+
+func (i ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayArray) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGateway] {
+	return pulumix.Output[[]ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGateway]{
+		OutputState: i.ToConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGateway)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayOutput) ToConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayOutput() ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayOutput) ToConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayOutputWithContext(ctx context.Context) ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGateway] {
+	return pulumix.Output[ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGateway]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGateway) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+type ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayArrayOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGateway)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayArrayOutput) ToConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayArrayOutput() ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayArrayOutput) ToConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayArrayOutputWithContext(ctx context.Context) ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGateway] {
+	return pulumix.Output[[]ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGateway]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayArrayOutput) Index(i pulumi.IntInput) ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGateway {
+		return vs[0].([]ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGateway)[vs[1].(int)]
+	}).(ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayOutput)
+}
+
+type ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheck struct {
+	// Specifies the minimum amount of time that an ejected host must remain outside the cluster before rejoining.
+	BaseEjectionTime *string `pulumi:"baseEjectionTime"`
+	// Specifies a percentage that indicates how many times out of 100 that Consul ejects the host when it detects an outlier status.
+	EnforcingConsecutive5xx *int `pulumi:"enforcingConsecutive5xx"`
+	// Specifies the time between checks.
+	Interval *string `pulumi:"interval"`
+	// Specifies the maximum percentage of an upstream cluster that Consul ejects when the proxy reports an outlier.
+	MaxEjectionPercent *int `pulumi:"maxEjectionPercent"`
+	// Specifies the number of consecutive failures allowed per check interval. If exceeded, Consul removes the host from the load balancer.
+	MaxFailures *int `pulumi:"maxFailures"`
+}
+
+// ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckInput is an input type that accepts ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckArgs and ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckInput` via:
+//
+//	ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckArgs{...}
+type ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckOutput() ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckOutput
+	ToConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckOutputWithContext(context.Context) ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckOutput
+}
+
+type ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckArgs struct {
+	// Specifies the minimum amount of time that an ejected host must remain outside the cluster before rejoining.
+	BaseEjectionTime pulumi.StringPtrInput `pulumi:"baseEjectionTime"`
+	// Specifies a percentage that indicates how many times out of 100 that Consul ejects the host when it detects an outlier status.
+	EnforcingConsecutive5xx pulumi.IntPtrInput `pulumi:"enforcingConsecutive5xx"`
+	// Specifies the time between checks.
+	Interval pulumi.StringPtrInput `pulumi:"interval"`
+	// Specifies the maximum percentage of an upstream cluster that Consul ejects when the proxy reports an outlier.
+	MaxEjectionPercent pulumi.IntPtrInput `pulumi:"maxEjectionPercent"`
+	// Specifies the number of consecutive failures allowed per check interval. If exceeded, Consul removes the host from the load balancer.
+	MaxFailures pulumi.IntPtrInput `pulumi:"maxFailures"`
+}
+
+func (ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheck)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckArgs) ToConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckOutput() ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckOutput {
+	return i.ToConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckArgs) ToConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckOutputWithContext(ctx context.Context) ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckOutput)
+}
+
+func (i ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheck] {
+	return pulumix.Output[ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheck]{
+		OutputState: i.ToConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckArrayInput is an input type that accepts ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckArray and ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckArrayOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckArrayInput` via:
+//
+//	ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckArray{ ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckArgs{...} }
+type ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckArrayInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckArrayOutput() ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckArrayOutput
+	ToConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckArrayOutputWithContext(context.Context) ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckArrayOutput
+}
+
+type ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckArray []ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckInput
+
+func (ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheck)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckArray) ToConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckArrayOutput() ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckArrayOutput {
+	return i.ToConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckArrayOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckArray) ToConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckArrayOutputWithContext(ctx context.Context) ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckArrayOutput)
+}
+
+func (i ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckArray) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheck] {
+	return pulumix.Output[[]ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheck]{
+		OutputState: i.ToConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheck)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckOutput) ToConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckOutput() ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckOutput {
+	return o
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckOutput) ToConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckOutputWithContext(ctx context.Context) ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckOutput {
+	return o
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheck] {
+	return pulumix.Output[ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheck]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Specifies the minimum amount of time that an ejected host must remain outside the cluster before rejoining.
+func (o ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckOutput) BaseEjectionTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheck) *string {
+		return v.BaseEjectionTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies a percentage that indicates how many times out of 100 that Consul ejects the host when it detects an outlier status.
+func (o ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckOutput) EnforcingConsecutive5xx() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheck) *int {
+		return v.EnforcingConsecutive5xx
+	}).(pulumi.IntPtrOutput)
+}
+
+// Specifies the time between checks.
+func (o ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckOutput) Interval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheck) *string { return v.Interval }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the maximum percentage of an upstream cluster that Consul ejects when the proxy reports an outlier.
+func (o ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckOutput) MaxEjectionPercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheck) *int {
+		return v.MaxEjectionPercent
+	}).(pulumi.IntPtrOutput)
+}
+
+// Specifies the number of consecutive failures allowed per check interval. If exceeded, Consul removes the host from the load balancer.
+func (o ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckOutput) MaxFailures() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheck) *int { return v.MaxFailures }).(pulumi.IntPtrOutput)
+}
+
+type ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckArrayOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheck)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckArrayOutput) ToConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckArrayOutput() ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckArrayOutput) ToConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckArrayOutputWithContext(ctx context.Context) ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheck] {
+	return pulumix.Output[[]ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheck]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckArrayOutput) Index(i pulumi.IntInput) ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheck {
+		return vs[0].([]ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheck)[vs[1].(int)]
+	}).(ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckOutput)
+}
+
+type ConfigEntryServiceDefaultsUpstreamConfigOverride struct {
+	// Sets the strategy for allocating outbound connections from upstreams across Envoy proxy threads.
+	BalanceOutboundConnections *string `pulumi:"balanceOutboundConnections"`
+	ConnectTimeoutMs           *int    `pulumi:"connectTimeoutMs"`
+	EnvoyListenerJson          *string `pulumi:"envoyListenerJson"`
+	// Map that specifies a set of limits to apply to when connecting upstream services.
+	Limits []ConfigEntryServiceDefaultsUpstreamConfigOverrideLimit `pulumi:"limits"`
+	// Specifies the default mesh gateway mode field for all upstreams.
+	MeshGateways []ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGateway `pulumi:"meshGateways"`
+	Name         *string                                                       `pulumi:"name"`
+	// Specifies the namespace containing the upstream service that the configuration applies to.
+	Namespace *string `pulumi:"namespace"`
+	// Specifies the name of the name of the Consul admin partition that the configuration entry applies to.
+	Partition *string `pulumi:"partition"`
+	// Map that specifies a set of rules that enable Consul to remove hosts from the upstream cluster that are unreachable or that return errors.
+	PassiveHealthChecks []ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheck `pulumi:"passiveHealthChecks"`
+	// Specifies the peer name of the upstream service that the configuration applies to.
+	Peer     *string `pulumi:"peer"`
+	Protocol *string `pulumi:"protocol"`
+}
+
+// ConfigEntryServiceDefaultsUpstreamConfigOverrideInput is an input type that accepts ConfigEntryServiceDefaultsUpstreamConfigOverrideArgs and ConfigEntryServiceDefaultsUpstreamConfigOverrideOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceDefaultsUpstreamConfigOverrideInput` via:
+//
+//	ConfigEntryServiceDefaultsUpstreamConfigOverrideArgs{...}
+type ConfigEntryServiceDefaultsUpstreamConfigOverrideInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceDefaultsUpstreamConfigOverrideOutput() ConfigEntryServiceDefaultsUpstreamConfigOverrideOutput
+	ToConfigEntryServiceDefaultsUpstreamConfigOverrideOutputWithContext(context.Context) ConfigEntryServiceDefaultsUpstreamConfigOverrideOutput
+}
+
+type ConfigEntryServiceDefaultsUpstreamConfigOverrideArgs struct {
+	// Sets the strategy for allocating outbound connections from upstreams across Envoy proxy threads.
+	BalanceOutboundConnections pulumi.StringPtrInput `pulumi:"balanceOutboundConnections"`
+	ConnectTimeoutMs           pulumi.IntPtrInput    `pulumi:"connectTimeoutMs"`
+	EnvoyListenerJson          pulumi.StringPtrInput `pulumi:"envoyListenerJson"`
+	// Map that specifies a set of limits to apply to when connecting upstream services.
+	Limits ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitArrayInput `pulumi:"limits"`
+	// Specifies the default mesh gateway mode field for all upstreams.
+	MeshGateways ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArrayInput `pulumi:"meshGateways"`
+	Name         pulumi.StringPtrInput                                                 `pulumi:"name"`
+	// Specifies the namespace containing the upstream service that the configuration applies to.
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	// Specifies the name of the name of the Consul admin partition that the configuration entry applies to.
+	Partition pulumi.StringPtrInput `pulumi:"partition"`
+	// Map that specifies a set of rules that enable Consul to remove hosts from the upstream cluster that are unreachable or that return errors.
+	PassiveHealthChecks ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckArrayInput `pulumi:"passiveHealthChecks"`
+	// Specifies the peer name of the upstream service that the configuration applies to.
+	Peer     pulumi.StringPtrInput `pulumi:"peer"`
+	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
+}
+
+func (ConfigEntryServiceDefaultsUpstreamConfigOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceDefaultsUpstreamConfigOverride)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceDefaultsUpstreamConfigOverrideArgs) ToConfigEntryServiceDefaultsUpstreamConfigOverrideOutput() ConfigEntryServiceDefaultsUpstreamConfigOverrideOutput {
+	return i.ToConfigEntryServiceDefaultsUpstreamConfigOverrideOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceDefaultsUpstreamConfigOverrideArgs) ToConfigEntryServiceDefaultsUpstreamConfigOverrideOutputWithContext(ctx context.Context) ConfigEntryServiceDefaultsUpstreamConfigOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceDefaultsUpstreamConfigOverrideOutput)
+}
+
+func (i ConfigEntryServiceDefaultsUpstreamConfigOverrideArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceDefaultsUpstreamConfigOverride] {
+	return pulumix.Output[ConfigEntryServiceDefaultsUpstreamConfigOverride]{
+		OutputState: i.ToConfigEntryServiceDefaultsUpstreamConfigOverrideOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ConfigEntryServiceDefaultsUpstreamConfigOverrideArrayInput is an input type that accepts ConfigEntryServiceDefaultsUpstreamConfigOverrideArray and ConfigEntryServiceDefaultsUpstreamConfigOverrideArrayOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceDefaultsUpstreamConfigOverrideArrayInput` via:
+//
+//	ConfigEntryServiceDefaultsUpstreamConfigOverrideArray{ ConfigEntryServiceDefaultsUpstreamConfigOverrideArgs{...} }
+type ConfigEntryServiceDefaultsUpstreamConfigOverrideArrayInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceDefaultsUpstreamConfigOverrideArrayOutput() ConfigEntryServiceDefaultsUpstreamConfigOverrideArrayOutput
+	ToConfigEntryServiceDefaultsUpstreamConfigOverrideArrayOutputWithContext(context.Context) ConfigEntryServiceDefaultsUpstreamConfigOverrideArrayOutput
+}
+
+type ConfigEntryServiceDefaultsUpstreamConfigOverrideArray []ConfigEntryServiceDefaultsUpstreamConfigOverrideInput
+
+func (ConfigEntryServiceDefaultsUpstreamConfigOverrideArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceDefaultsUpstreamConfigOverride)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceDefaultsUpstreamConfigOverrideArray) ToConfigEntryServiceDefaultsUpstreamConfigOverrideArrayOutput() ConfigEntryServiceDefaultsUpstreamConfigOverrideArrayOutput {
+	return i.ToConfigEntryServiceDefaultsUpstreamConfigOverrideArrayOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceDefaultsUpstreamConfigOverrideArray) ToConfigEntryServiceDefaultsUpstreamConfigOverrideArrayOutputWithContext(ctx context.Context) ConfigEntryServiceDefaultsUpstreamConfigOverrideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceDefaultsUpstreamConfigOverrideArrayOutput)
+}
+
+func (i ConfigEntryServiceDefaultsUpstreamConfigOverrideArray) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceDefaultsUpstreamConfigOverride] {
+	return pulumix.Output[[]ConfigEntryServiceDefaultsUpstreamConfigOverride]{
+		OutputState: i.ToConfigEntryServiceDefaultsUpstreamConfigOverrideArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ConfigEntryServiceDefaultsUpstreamConfigOverrideOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceDefaultsUpstreamConfigOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceDefaultsUpstreamConfigOverride)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigOverrideOutput) ToConfigEntryServiceDefaultsUpstreamConfigOverrideOutput() ConfigEntryServiceDefaultsUpstreamConfigOverrideOutput {
+	return o
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigOverrideOutput) ToConfigEntryServiceDefaultsUpstreamConfigOverrideOutputWithContext(ctx context.Context) ConfigEntryServiceDefaultsUpstreamConfigOverrideOutput {
+	return o
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigOverrideOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceDefaultsUpstreamConfigOverride] {
+	return pulumix.Output[ConfigEntryServiceDefaultsUpstreamConfigOverride]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Sets the strategy for allocating outbound connections from upstreams across Envoy proxy threads.
+func (o ConfigEntryServiceDefaultsUpstreamConfigOverrideOutput) BalanceOutboundConnections() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceDefaultsUpstreamConfigOverride) *string { return v.BalanceOutboundConnections }).(pulumi.StringPtrOutput)
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigOverrideOutput) ConnectTimeoutMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceDefaultsUpstreamConfigOverride) *int { return v.ConnectTimeoutMs }).(pulumi.IntPtrOutput)
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigOverrideOutput) EnvoyListenerJson() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceDefaultsUpstreamConfigOverride) *string { return v.EnvoyListenerJson }).(pulumi.StringPtrOutput)
+}
+
+// Map that specifies a set of limits to apply to when connecting upstream services.
+func (o ConfigEntryServiceDefaultsUpstreamConfigOverrideOutput) Limits() ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitArrayOutput {
+	return o.ApplyT(func(v ConfigEntryServiceDefaultsUpstreamConfigOverride) []ConfigEntryServiceDefaultsUpstreamConfigOverrideLimit {
+		return v.Limits
+	}).(ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitArrayOutput)
+}
+
+// Specifies the default mesh gateway mode field for all upstreams.
+func (o ConfigEntryServiceDefaultsUpstreamConfigOverrideOutput) MeshGateways() ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArrayOutput {
+	return o.ApplyT(func(v ConfigEntryServiceDefaultsUpstreamConfigOverride) []ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGateway {
+		return v.MeshGateways
+	}).(ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArrayOutput)
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigOverrideOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceDefaultsUpstreamConfigOverride) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the namespace containing the upstream service that the configuration applies to.
+func (o ConfigEntryServiceDefaultsUpstreamConfigOverrideOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceDefaultsUpstreamConfigOverride) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the name of the name of the Consul admin partition that the configuration entry applies to.
+func (o ConfigEntryServiceDefaultsUpstreamConfigOverrideOutput) Partition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceDefaultsUpstreamConfigOverride) *string { return v.Partition }).(pulumi.StringPtrOutput)
+}
+
+// Map that specifies a set of rules that enable Consul to remove hosts from the upstream cluster that are unreachable or that return errors.
+func (o ConfigEntryServiceDefaultsUpstreamConfigOverrideOutput) PassiveHealthChecks() ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckArrayOutput {
+	return o.ApplyT(func(v ConfigEntryServiceDefaultsUpstreamConfigOverride) []ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheck {
+		return v.PassiveHealthChecks
+	}).(ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckArrayOutput)
+}
+
+// Specifies the peer name of the upstream service that the configuration applies to.
+func (o ConfigEntryServiceDefaultsUpstreamConfigOverrideOutput) Peer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceDefaultsUpstreamConfigOverride) *string { return v.Peer }).(pulumi.StringPtrOutput)
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigOverrideOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceDefaultsUpstreamConfigOverride) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+type ConfigEntryServiceDefaultsUpstreamConfigOverrideArrayOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceDefaultsUpstreamConfigOverrideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceDefaultsUpstreamConfigOverride)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigOverrideArrayOutput) ToConfigEntryServiceDefaultsUpstreamConfigOverrideArrayOutput() ConfigEntryServiceDefaultsUpstreamConfigOverrideArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigOverrideArrayOutput) ToConfigEntryServiceDefaultsUpstreamConfigOverrideArrayOutputWithContext(ctx context.Context) ConfigEntryServiceDefaultsUpstreamConfigOverrideArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigOverrideArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceDefaultsUpstreamConfigOverride] {
+	return pulumix.Output[[]ConfigEntryServiceDefaultsUpstreamConfigOverride]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigOverrideArrayOutput) Index(i pulumi.IntInput) ConfigEntryServiceDefaultsUpstreamConfigOverrideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConfigEntryServiceDefaultsUpstreamConfigOverride {
+		return vs[0].([]ConfigEntryServiceDefaultsUpstreamConfigOverride)[vs[1].(int)]
+	}).(ConfigEntryServiceDefaultsUpstreamConfigOverrideOutput)
+}
+
+type ConfigEntryServiceDefaultsUpstreamConfigOverrideLimit struct {
+	// Specifies the maximum number of concurrent requests.
+	MaxConcurrentRequests *int `pulumi:"maxConcurrentRequests"`
+	// Specifies the maximum number of connections a service instance can establish against the upstream.
+	MaxConnections *int `pulumi:"maxConnections"`
+	// Specifies the maximum number of requests that are queued while waiting for a connection to establish.
+	MaxPendingRequests *int `pulumi:"maxPendingRequests"`
+}
+
+// ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitInput is an input type that accepts ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitArgs and ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitInput` via:
+//
+//	ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitArgs{...}
+type ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceDefaultsUpstreamConfigOverrideLimitOutput() ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitOutput
+	ToConfigEntryServiceDefaultsUpstreamConfigOverrideLimitOutputWithContext(context.Context) ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitOutput
+}
+
+type ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitArgs struct {
+	// Specifies the maximum number of concurrent requests.
+	MaxConcurrentRequests pulumi.IntPtrInput `pulumi:"maxConcurrentRequests"`
+	// Specifies the maximum number of connections a service instance can establish against the upstream.
+	MaxConnections pulumi.IntPtrInput `pulumi:"maxConnections"`
+	// Specifies the maximum number of requests that are queued while waiting for a connection to establish.
+	MaxPendingRequests pulumi.IntPtrInput `pulumi:"maxPendingRequests"`
+}
+
+func (ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceDefaultsUpstreamConfigOverrideLimit)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitArgs) ToConfigEntryServiceDefaultsUpstreamConfigOverrideLimitOutput() ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitOutput {
+	return i.ToConfigEntryServiceDefaultsUpstreamConfigOverrideLimitOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitArgs) ToConfigEntryServiceDefaultsUpstreamConfigOverrideLimitOutputWithContext(ctx context.Context) ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitOutput)
+}
+
+func (i ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceDefaultsUpstreamConfigOverrideLimit] {
+	return pulumix.Output[ConfigEntryServiceDefaultsUpstreamConfigOverrideLimit]{
+		OutputState: i.ToConfigEntryServiceDefaultsUpstreamConfigOverrideLimitOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitArrayInput is an input type that accepts ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitArray and ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitArrayOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitArrayInput` via:
+//
+//	ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitArray{ ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitArgs{...} }
+type ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitArrayInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceDefaultsUpstreamConfigOverrideLimitArrayOutput() ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitArrayOutput
+	ToConfigEntryServiceDefaultsUpstreamConfigOverrideLimitArrayOutputWithContext(context.Context) ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitArrayOutput
+}
+
+type ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitArray []ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitInput
+
+func (ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceDefaultsUpstreamConfigOverrideLimit)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitArray) ToConfigEntryServiceDefaultsUpstreamConfigOverrideLimitArrayOutput() ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitArrayOutput {
+	return i.ToConfigEntryServiceDefaultsUpstreamConfigOverrideLimitArrayOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitArray) ToConfigEntryServiceDefaultsUpstreamConfigOverrideLimitArrayOutputWithContext(ctx context.Context) ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitArrayOutput)
+}
+
+func (i ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitArray) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceDefaultsUpstreamConfigOverrideLimit] {
+	return pulumix.Output[[]ConfigEntryServiceDefaultsUpstreamConfigOverrideLimit]{
+		OutputState: i.ToConfigEntryServiceDefaultsUpstreamConfigOverrideLimitArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceDefaultsUpstreamConfigOverrideLimit)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitOutput) ToConfigEntryServiceDefaultsUpstreamConfigOverrideLimitOutput() ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitOutput {
+	return o
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitOutput) ToConfigEntryServiceDefaultsUpstreamConfigOverrideLimitOutputWithContext(ctx context.Context) ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitOutput {
+	return o
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceDefaultsUpstreamConfigOverrideLimit] {
+	return pulumix.Output[ConfigEntryServiceDefaultsUpstreamConfigOverrideLimit]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Specifies the maximum number of concurrent requests.
+func (o ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitOutput) MaxConcurrentRequests() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceDefaultsUpstreamConfigOverrideLimit) *int { return v.MaxConcurrentRequests }).(pulumi.IntPtrOutput)
+}
+
+// Specifies the maximum number of connections a service instance can establish against the upstream.
+func (o ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitOutput) MaxConnections() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceDefaultsUpstreamConfigOverrideLimit) *int { return v.MaxConnections }).(pulumi.IntPtrOutput)
+}
+
+// Specifies the maximum number of requests that are queued while waiting for a connection to establish.
+func (o ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitOutput) MaxPendingRequests() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceDefaultsUpstreamConfigOverrideLimit) *int { return v.MaxPendingRequests }).(pulumi.IntPtrOutput)
+}
+
+type ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitArrayOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceDefaultsUpstreamConfigOverrideLimit)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitArrayOutput) ToConfigEntryServiceDefaultsUpstreamConfigOverrideLimitArrayOutput() ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitArrayOutput) ToConfigEntryServiceDefaultsUpstreamConfigOverrideLimitArrayOutputWithContext(ctx context.Context) ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceDefaultsUpstreamConfigOverrideLimit] {
+	return pulumix.Output[[]ConfigEntryServiceDefaultsUpstreamConfigOverrideLimit]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitArrayOutput) Index(i pulumi.IntInput) ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConfigEntryServiceDefaultsUpstreamConfigOverrideLimit {
+		return vs[0].([]ConfigEntryServiceDefaultsUpstreamConfigOverrideLimit)[vs[1].(int)]
+	}).(ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitOutput)
+}
+
+type ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGateway struct {
+	Mode *string `pulumi:"mode"`
+}
+
+// ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayInput is an input type that accepts ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArgs and ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayInput` via:
+//
+//	ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArgs{...}
+type ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayOutput() ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayOutput
+	ToConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayOutputWithContext(context.Context) ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayOutput
+}
+
+type ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArgs struct {
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+}
+
+func (ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGateway)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArgs) ToConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayOutput() ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayOutput {
+	return i.ToConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArgs) ToConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayOutputWithContext(ctx context.Context) ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayOutput)
+}
+
+func (i ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGateway] {
+	return pulumix.Output[ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGateway]{
+		OutputState: i.ToConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArrayInput is an input type that accepts ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArray and ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArrayOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArrayInput` via:
+//
+//	ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArray{ ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArgs{...} }
+type ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArrayInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArrayOutput() ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArrayOutput
+	ToConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArrayOutputWithContext(context.Context) ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArrayOutput
+}
+
+type ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArray []ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayInput
+
+func (ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGateway)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArray) ToConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArrayOutput() ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArrayOutput {
+	return i.ToConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArrayOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArray) ToConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArrayOutputWithContext(ctx context.Context) ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArrayOutput)
+}
+
+func (i ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArray) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGateway] {
+	return pulumix.Output[[]ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGateway]{
+		OutputState: i.ToConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGateway)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayOutput) ToConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayOutput() ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayOutput) ToConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayOutputWithContext(ctx context.Context) ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGateway] {
+	return pulumix.Output[ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGateway]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGateway) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+type ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArrayOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGateway)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArrayOutput) ToConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArrayOutput() ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArrayOutput) ToConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArrayOutputWithContext(ctx context.Context) ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGateway] {
+	return pulumix.Output[[]ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGateway]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArrayOutput) Index(i pulumi.IntInput) ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGateway {
+		return vs[0].([]ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGateway)[vs[1].(int)]
+	}).(ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayOutput)
+}
+
+type ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheck struct {
+	// Specifies the minimum amount of time that an ejected host must remain outside the cluster before rejoining.
+	BaseEjectionTime *string `pulumi:"baseEjectionTime"`
+	// Specifies a percentage that indicates how many times out of 100 that Consul ejects the host when it detects an outlier status.
+	EnforcingConsecutive5xx *int `pulumi:"enforcingConsecutive5xx"`
+	// Specifies the time between checks.
+	Interval *string `pulumi:"interval"`
+	// Specifies the maximum percentage of an upstream cluster that Consul ejects when the proxy reports an outlier.
+	MaxEjectionPercent *int `pulumi:"maxEjectionPercent"`
+	// Specifies the number of consecutive failures allowed per check interval. If exceeded, Consul removes the host from the load balancer.
+	MaxFailures *int `pulumi:"maxFailures"`
+}
+
+// ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckInput is an input type that accepts ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckArgs and ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckInput` via:
+//
+//	ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckArgs{...}
+type ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckOutput() ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckOutput
+	ToConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckOutputWithContext(context.Context) ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckOutput
+}
+
+type ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckArgs struct {
+	// Specifies the minimum amount of time that an ejected host must remain outside the cluster before rejoining.
+	BaseEjectionTime pulumi.StringPtrInput `pulumi:"baseEjectionTime"`
+	// Specifies a percentage that indicates how many times out of 100 that Consul ejects the host when it detects an outlier status.
+	EnforcingConsecutive5xx pulumi.IntPtrInput `pulumi:"enforcingConsecutive5xx"`
+	// Specifies the time between checks.
+	Interval pulumi.StringPtrInput `pulumi:"interval"`
+	// Specifies the maximum percentage of an upstream cluster that Consul ejects when the proxy reports an outlier.
+	MaxEjectionPercent pulumi.IntPtrInput `pulumi:"maxEjectionPercent"`
+	// Specifies the number of consecutive failures allowed per check interval. If exceeded, Consul removes the host from the load balancer.
+	MaxFailures pulumi.IntPtrInput `pulumi:"maxFailures"`
+}
+
+func (ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheck)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckArgs) ToConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckOutput() ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckOutput {
+	return i.ToConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckArgs) ToConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckOutputWithContext(ctx context.Context) ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckOutput)
+}
+
+func (i ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheck] {
+	return pulumix.Output[ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheck]{
+		OutputState: i.ToConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckArrayInput is an input type that accepts ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckArray and ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckArrayOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckArrayInput` via:
+//
+//	ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckArray{ ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckArgs{...} }
+type ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckArrayInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckArrayOutput() ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckArrayOutput
+	ToConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckArrayOutputWithContext(context.Context) ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckArrayOutput
+}
+
+type ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckArray []ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckInput
+
+func (ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheck)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckArray) ToConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckArrayOutput() ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckArrayOutput {
+	return i.ToConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckArrayOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckArray) ToConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckArrayOutputWithContext(ctx context.Context) ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckArrayOutput)
+}
+
+func (i ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckArray) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheck] {
+	return pulumix.Output[[]ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheck]{
+		OutputState: i.ToConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheck)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckOutput) ToConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckOutput() ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckOutput {
+	return o
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckOutput) ToConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckOutputWithContext(ctx context.Context) ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckOutput {
+	return o
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheck] {
+	return pulumix.Output[ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheck]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Specifies the minimum amount of time that an ejected host must remain outside the cluster before rejoining.
+func (o ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckOutput) BaseEjectionTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheck) *string {
+		return v.BaseEjectionTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies a percentage that indicates how many times out of 100 that Consul ejects the host when it detects an outlier status.
+func (o ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckOutput) EnforcingConsecutive5xx() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheck) *int {
+		return v.EnforcingConsecutive5xx
+	}).(pulumi.IntPtrOutput)
+}
+
+// Specifies the time between checks.
+func (o ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckOutput) Interval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheck) *string { return v.Interval }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the maximum percentage of an upstream cluster that Consul ejects when the proxy reports an outlier.
+func (o ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckOutput) MaxEjectionPercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheck) *int {
+		return v.MaxEjectionPercent
+	}).(pulumi.IntPtrOutput)
+}
+
+// Specifies the number of consecutive failures allowed per check interval. If exceeded, Consul removes the host from the load balancer.
+func (o ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckOutput) MaxFailures() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheck) *int { return v.MaxFailures }).(pulumi.IntPtrOutput)
+}
+
+type ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckArrayOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheck)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckArrayOutput) ToConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckArrayOutput() ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckArrayOutput) ToConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckArrayOutputWithContext(ctx context.Context) ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheck] {
+	return pulumix.Output[[]ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheck]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckArrayOutput) Index(i pulumi.IntInput) ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheck {
+		return vs[0].([]ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheck)[vs[1].(int)]
+	}).(ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckOutput)
+}
+
+type ConfigEntryServiceIntentionsJwt struct {
+	// Specifies the names of one or more previously configured JWT provider configuration entries, which include the information necessary to validate a JSON web token.
+	Providers []ConfigEntryServiceIntentionsJwtProvider `pulumi:"providers"`
+}
+
+// ConfigEntryServiceIntentionsJwtInput is an input type that accepts ConfigEntryServiceIntentionsJwtArgs and ConfigEntryServiceIntentionsJwtOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceIntentionsJwtInput` via:
+//
+//	ConfigEntryServiceIntentionsJwtArgs{...}
+type ConfigEntryServiceIntentionsJwtInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceIntentionsJwtOutput() ConfigEntryServiceIntentionsJwtOutput
+	ToConfigEntryServiceIntentionsJwtOutputWithContext(context.Context) ConfigEntryServiceIntentionsJwtOutput
+}
+
+type ConfigEntryServiceIntentionsJwtArgs struct {
+	// Specifies the names of one or more previously configured JWT provider configuration entries, which include the information necessary to validate a JSON web token.
+	Providers ConfigEntryServiceIntentionsJwtProviderArrayInput `pulumi:"providers"`
+}
+
+func (ConfigEntryServiceIntentionsJwtArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceIntentionsJwt)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceIntentionsJwtArgs) ToConfigEntryServiceIntentionsJwtOutput() ConfigEntryServiceIntentionsJwtOutput {
+	return i.ToConfigEntryServiceIntentionsJwtOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceIntentionsJwtArgs) ToConfigEntryServiceIntentionsJwtOutputWithContext(ctx context.Context) ConfigEntryServiceIntentionsJwtOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceIntentionsJwtOutput)
+}
+
+func (i ConfigEntryServiceIntentionsJwtArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceIntentionsJwt] {
+	return pulumix.Output[ConfigEntryServiceIntentionsJwt]{
+		OutputState: i.ToConfigEntryServiceIntentionsJwtOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ConfigEntryServiceIntentionsJwtArrayInput is an input type that accepts ConfigEntryServiceIntentionsJwtArray and ConfigEntryServiceIntentionsJwtArrayOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceIntentionsJwtArrayInput` via:
+//
+//	ConfigEntryServiceIntentionsJwtArray{ ConfigEntryServiceIntentionsJwtArgs{...} }
+type ConfigEntryServiceIntentionsJwtArrayInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceIntentionsJwtArrayOutput() ConfigEntryServiceIntentionsJwtArrayOutput
+	ToConfigEntryServiceIntentionsJwtArrayOutputWithContext(context.Context) ConfigEntryServiceIntentionsJwtArrayOutput
+}
+
+type ConfigEntryServiceIntentionsJwtArray []ConfigEntryServiceIntentionsJwtInput
+
+func (ConfigEntryServiceIntentionsJwtArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceIntentionsJwt)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceIntentionsJwtArray) ToConfigEntryServiceIntentionsJwtArrayOutput() ConfigEntryServiceIntentionsJwtArrayOutput {
+	return i.ToConfigEntryServiceIntentionsJwtArrayOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceIntentionsJwtArray) ToConfigEntryServiceIntentionsJwtArrayOutputWithContext(ctx context.Context) ConfigEntryServiceIntentionsJwtArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceIntentionsJwtArrayOutput)
+}
+
+func (i ConfigEntryServiceIntentionsJwtArray) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceIntentionsJwt] {
+	return pulumix.Output[[]ConfigEntryServiceIntentionsJwt]{
+		OutputState: i.ToConfigEntryServiceIntentionsJwtArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ConfigEntryServiceIntentionsJwtOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceIntentionsJwtOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceIntentionsJwt)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceIntentionsJwtOutput) ToConfigEntryServiceIntentionsJwtOutput() ConfigEntryServiceIntentionsJwtOutput {
+	return o
+}
+
+func (o ConfigEntryServiceIntentionsJwtOutput) ToConfigEntryServiceIntentionsJwtOutputWithContext(ctx context.Context) ConfigEntryServiceIntentionsJwtOutput {
+	return o
+}
+
+func (o ConfigEntryServiceIntentionsJwtOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceIntentionsJwt] {
+	return pulumix.Output[ConfigEntryServiceIntentionsJwt]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Specifies the names of one or more previously configured JWT provider configuration entries, which include the information necessary to validate a JSON web token.
+func (o ConfigEntryServiceIntentionsJwtOutput) Providers() ConfigEntryServiceIntentionsJwtProviderArrayOutput {
+	return o.ApplyT(func(v ConfigEntryServiceIntentionsJwt) []ConfigEntryServiceIntentionsJwtProvider { return v.Providers }).(ConfigEntryServiceIntentionsJwtProviderArrayOutput)
+}
+
+type ConfigEntryServiceIntentionsJwtArrayOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceIntentionsJwtArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceIntentionsJwt)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceIntentionsJwtArrayOutput) ToConfigEntryServiceIntentionsJwtArrayOutput() ConfigEntryServiceIntentionsJwtArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceIntentionsJwtArrayOutput) ToConfigEntryServiceIntentionsJwtArrayOutputWithContext(ctx context.Context) ConfigEntryServiceIntentionsJwtArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceIntentionsJwtArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceIntentionsJwt] {
+	return pulumix.Output[[]ConfigEntryServiceIntentionsJwt]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConfigEntryServiceIntentionsJwtArrayOutput) Index(i pulumi.IntInput) ConfigEntryServiceIntentionsJwtOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConfigEntryServiceIntentionsJwt {
+		return vs[0].([]ConfigEntryServiceIntentionsJwt)[vs[1].(int)]
+	}).(ConfigEntryServiceIntentionsJwtOutput)
+}
+
+type ConfigEntryServiceIntentionsJwtProvider struct {
+	// Specifies the name of a JWT provider defined in the Name field of the jwt-provider configuration entry.
+	Name *string `pulumi:"name"`
+	// Specifies additional token information to verify beyond what is configured in the JWT provider configuration entry.
+	VerifyClaims []ConfigEntryServiceIntentionsJwtProviderVerifyClaim `pulumi:"verifyClaims"`
+}
+
+// ConfigEntryServiceIntentionsJwtProviderInput is an input type that accepts ConfigEntryServiceIntentionsJwtProviderArgs and ConfigEntryServiceIntentionsJwtProviderOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceIntentionsJwtProviderInput` via:
+//
+//	ConfigEntryServiceIntentionsJwtProviderArgs{...}
+type ConfigEntryServiceIntentionsJwtProviderInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceIntentionsJwtProviderOutput() ConfigEntryServiceIntentionsJwtProviderOutput
+	ToConfigEntryServiceIntentionsJwtProviderOutputWithContext(context.Context) ConfigEntryServiceIntentionsJwtProviderOutput
+}
+
+type ConfigEntryServiceIntentionsJwtProviderArgs struct {
+	// Specifies the name of a JWT provider defined in the Name field of the jwt-provider configuration entry.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Specifies additional token information to verify beyond what is configured in the JWT provider configuration entry.
+	VerifyClaims ConfigEntryServiceIntentionsJwtProviderVerifyClaimArrayInput `pulumi:"verifyClaims"`
+}
+
+func (ConfigEntryServiceIntentionsJwtProviderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceIntentionsJwtProvider)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceIntentionsJwtProviderArgs) ToConfigEntryServiceIntentionsJwtProviderOutput() ConfigEntryServiceIntentionsJwtProviderOutput {
+	return i.ToConfigEntryServiceIntentionsJwtProviderOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceIntentionsJwtProviderArgs) ToConfigEntryServiceIntentionsJwtProviderOutputWithContext(ctx context.Context) ConfigEntryServiceIntentionsJwtProviderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceIntentionsJwtProviderOutput)
+}
+
+func (i ConfigEntryServiceIntentionsJwtProviderArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceIntentionsJwtProvider] {
+	return pulumix.Output[ConfigEntryServiceIntentionsJwtProvider]{
+		OutputState: i.ToConfigEntryServiceIntentionsJwtProviderOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ConfigEntryServiceIntentionsJwtProviderArrayInput is an input type that accepts ConfigEntryServiceIntentionsJwtProviderArray and ConfigEntryServiceIntentionsJwtProviderArrayOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceIntentionsJwtProviderArrayInput` via:
+//
+//	ConfigEntryServiceIntentionsJwtProviderArray{ ConfigEntryServiceIntentionsJwtProviderArgs{...} }
+type ConfigEntryServiceIntentionsJwtProviderArrayInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceIntentionsJwtProviderArrayOutput() ConfigEntryServiceIntentionsJwtProviderArrayOutput
+	ToConfigEntryServiceIntentionsJwtProviderArrayOutputWithContext(context.Context) ConfigEntryServiceIntentionsJwtProviderArrayOutput
+}
+
+type ConfigEntryServiceIntentionsJwtProviderArray []ConfigEntryServiceIntentionsJwtProviderInput
+
+func (ConfigEntryServiceIntentionsJwtProviderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceIntentionsJwtProvider)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceIntentionsJwtProviderArray) ToConfigEntryServiceIntentionsJwtProviderArrayOutput() ConfigEntryServiceIntentionsJwtProviderArrayOutput {
+	return i.ToConfigEntryServiceIntentionsJwtProviderArrayOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceIntentionsJwtProviderArray) ToConfigEntryServiceIntentionsJwtProviderArrayOutputWithContext(ctx context.Context) ConfigEntryServiceIntentionsJwtProviderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceIntentionsJwtProviderArrayOutput)
+}
+
+func (i ConfigEntryServiceIntentionsJwtProviderArray) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceIntentionsJwtProvider] {
+	return pulumix.Output[[]ConfigEntryServiceIntentionsJwtProvider]{
+		OutputState: i.ToConfigEntryServiceIntentionsJwtProviderArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ConfigEntryServiceIntentionsJwtProviderOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceIntentionsJwtProviderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceIntentionsJwtProvider)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceIntentionsJwtProviderOutput) ToConfigEntryServiceIntentionsJwtProviderOutput() ConfigEntryServiceIntentionsJwtProviderOutput {
+	return o
+}
+
+func (o ConfigEntryServiceIntentionsJwtProviderOutput) ToConfigEntryServiceIntentionsJwtProviderOutputWithContext(ctx context.Context) ConfigEntryServiceIntentionsJwtProviderOutput {
+	return o
+}
+
+func (o ConfigEntryServiceIntentionsJwtProviderOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceIntentionsJwtProvider] {
+	return pulumix.Output[ConfigEntryServiceIntentionsJwtProvider]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Specifies the name of a JWT provider defined in the Name field of the jwt-provider configuration entry.
+func (o ConfigEntryServiceIntentionsJwtProviderOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceIntentionsJwtProvider) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Specifies additional token information to verify beyond what is configured in the JWT provider configuration entry.
+func (o ConfigEntryServiceIntentionsJwtProviderOutput) VerifyClaims() ConfigEntryServiceIntentionsJwtProviderVerifyClaimArrayOutput {
+	return o.ApplyT(func(v ConfigEntryServiceIntentionsJwtProvider) []ConfigEntryServiceIntentionsJwtProviderVerifyClaim {
+		return v.VerifyClaims
+	}).(ConfigEntryServiceIntentionsJwtProviderVerifyClaimArrayOutput)
+}
+
+type ConfigEntryServiceIntentionsJwtProviderArrayOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceIntentionsJwtProviderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceIntentionsJwtProvider)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceIntentionsJwtProviderArrayOutput) ToConfigEntryServiceIntentionsJwtProviderArrayOutput() ConfigEntryServiceIntentionsJwtProviderArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceIntentionsJwtProviderArrayOutput) ToConfigEntryServiceIntentionsJwtProviderArrayOutputWithContext(ctx context.Context) ConfigEntryServiceIntentionsJwtProviderArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceIntentionsJwtProviderArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceIntentionsJwtProvider] {
+	return pulumix.Output[[]ConfigEntryServiceIntentionsJwtProvider]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConfigEntryServiceIntentionsJwtProviderArrayOutput) Index(i pulumi.IntInput) ConfigEntryServiceIntentionsJwtProviderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConfigEntryServiceIntentionsJwtProvider {
+		return vs[0].([]ConfigEntryServiceIntentionsJwtProvider)[vs[1].(int)]
+	}).(ConfigEntryServiceIntentionsJwtProviderOutput)
+}
+
+type ConfigEntryServiceIntentionsJwtProviderVerifyClaim struct {
+	// Specifies the path to the claim in the JSON web token.
+	Paths []string `pulumi:"paths"`
+	// Specifies the value to match on when verifying the the claim designated in path.
+	Value *string `pulumi:"value"`
+}
+
+// ConfigEntryServiceIntentionsJwtProviderVerifyClaimInput is an input type that accepts ConfigEntryServiceIntentionsJwtProviderVerifyClaimArgs and ConfigEntryServiceIntentionsJwtProviderVerifyClaimOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceIntentionsJwtProviderVerifyClaimInput` via:
+//
+//	ConfigEntryServiceIntentionsJwtProviderVerifyClaimArgs{...}
+type ConfigEntryServiceIntentionsJwtProviderVerifyClaimInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceIntentionsJwtProviderVerifyClaimOutput() ConfigEntryServiceIntentionsJwtProviderVerifyClaimOutput
+	ToConfigEntryServiceIntentionsJwtProviderVerifyClaimOutputWithContext(context.Context) ConfigEntryServiceIntentionsJwtProviderVerifyClaimOutput
+}
+
+type ConfigEntryServiceIntentionsJwtProviderVerifyClaimArgs struct {
+	// Specifies the path to the claim in the JSON web token.
+	Paths pulumi.StringArrayInput `pulumi:"paths"`
+	// Specifies the value to match on when verifying the the claim designated in path.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (ConfigEntryServiceIntentionsJwtProviderVerifyClaimArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceIntentionsJwtProviderVerifyClaim)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceIntentionsJwtProviderVerifyClaimArgs) ToConfigEntryServiceIntentionsJwtProviderVerifyClaimOutput() ConfigEntryServiceIntentionsJwtProviderVerifyClaimOutput {
+	return i.ToConfigEntryServiceIntentionsJwtProviderVerifyClaimOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceIntentionsJwtProviderVerifyClaimArgs) ToConfigEntryServiceIntentionsJwtProviderVerifyClaimOutputWithContext(ctx context.Context) ConfigEntryServiceIntentionsJwtProviderVerifyClaimOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceIntentionsJwtProviderVerifyClaimOutput)
+}
+
+func (i ConfigEntryServiceIntentionsJwtProviderVerifyClaimArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceIntentionsJwtProviderVerifyClaim] {
+	return pulumix.Output[ConfigEntryServiceIntentionsJwtProviderVerifyClaim]{
+		OutputState: i.ToConfigEntryServiceIntentionsJwtProviderVerifyClaimOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ConfigEntryServiceIntentionsJwtProviderVerifyClaimArrayInput is an input type that accepts ConfigEntryServiceIntentionsJwtProviderVerifyClaimArray and ConfigEntryServiceIntentionsJwtProviderVerifyClaimArrayOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceIntentionsJwtProviderVerifyClaimArrayInput` via:
+//
+//	ConfigEntryServiceIntentionsJwtProviderVerifyClaimArray{ ConfigEntryServiceIntentionsJwtProviderVerifyClaimArgs{...} }
+type ConfigEntryServiceIntentionsJwtProviderVerifyClaimArrayInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceIntentionsJwtProviderVerifyClaimArrayOutput() ConfigEntryServiceIntentionsJwtProviderVerifyClaimArrayOutput
+	ToConfigEntryServiceIntentionsJwtProviderVerifyClaimArrayOutputWithContext(context.Context) ConfigEntryServiceIntentionsJwtProviderVerifyClaimArrayOutput
+}
+
+type ConfigEntryServiceIntentionsJwtProviderVerifyClaimArray []ConfigEntryServiceIntentionsJwtProviderVerifyClaimInput
+
+func (ConfigEntryServiceIntentionsJwtProviderVerifyClaimArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceIntentionsJwtProviderVerifyClaim)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceIntentionsJwtProviderVerifyClaimArray) ToConfigEntryServiceIntentionsJwtProviderVerifyClaimArrayOutput() ConfigEntryServiceIntentionsJwtProviderVerifyClaimArrayOutput {
+	return i.ToConfigEntryServiceIntentionsJwtProviderVerifyClaimArrayOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceIntentionsJwtProviderVerifyClaimArray) ToConfigEntryServiceIntentionsJwtProviderVerifyClaimArrayOutputWithContext(ctx context.Context) ConfigEntryServiceIntentionsJwtProviderVerifyClaimArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceIntentionsJwtProviderVerifyClaimArrayOutput)
+}
+
+func (i ConfigEntryServiceIntentionsJwtProviderVerifyClaimArray) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceIntentionsJwtProviderVerifyClaim] {
+	return pulumix.Output[[]ConfigEntryServiceIntentionsJwtProviderVerifyClaim]{
+		OutputState: i.ToConfigEntryServiceIntentionsJwtProviderVerifyClaimArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ConfigEntryServiceIntentionsJwtProviderVerifyClaimOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceIntentionsJwtProviderVerifyClaimOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceIntentionsJwtProviderVerifyClaim)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceIntentionsJwtProviderVerifyClaimOutput) ToConfigEntryServiceIntentionsJwtProviderVerifyClaimOutput() ConfigEntryServiceIntentionsJwtProviderVerifyClaimOutput {
+	return o
+}
+
+func (o ConfigEntryServiceIntentionsJwtProviderVerifyClaimOutput) ToConfigEntryServiceIntentionsJwtProviderVerifyClaimOutputWithContext(ctx context.Context) ConfigEntryServiceIntentionsJwtProviderVerifyClaimOutput {
+	return o
+}
+
+func (o ConfigEntryServiceIntentionsJwtProviderVerifyClaimOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceIntentionsJwtProviderVerifyClaim] {
+	return pulumix.Output[ConfigEntryServiceIntentionsJwtProviderVerifyClaim]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Specifies the path to the claim in the JSON web token.
+func (o ConfigEntryServiceIntentionsJwtProviderVerifyClaimOutput) Paths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConfigEntryServiceIntentionsJwtProviderVerifyClaim) []string { return v.Paths }).(pulumi.StringArrayOutput)
+}
+
+// Specifies the value to match on when verifying the the claim designated in path.
+func (o ConfigEntryServiceIntentionsJwtProviderVerifyClaimOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceIntentionsJwtProviderVerifyClaim) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type ConfigEntryServiceIntentionsJwtProviderVerifyClaimArrayOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceIntentionsJwtProviderVerifyClaimArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceIntentionsJwtProviderVerifyClaim)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceIntentionsJwtProviderVerifyClaimArrayOutput) ToConfigEntryServiceIntentionsJwtProviderVerifyClaimArrayOutput() ConfigEntryServiceIntentionsJwtProviderVerifyClaimArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceIntentionsJwtProviderVerifyClaimArrayOutput) ToConfigEntryServiceIntentionsJwtProviderVerifyClaimArrayOutputWithContext(ctx context.Context) ConfigEntryServiceIntentionsJwtProviderVerifyClaimArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceIntentionsJwtProviderVerifyClaimArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceIntentionsJwtProviderVerifyClaim] {
+	return pulumix.Output[[]ConfigEntryServiceIntentionsJwtProviderVerifyClaim]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConfigEntryServiceIntentionsJwtProviderVerifyClaimArrayOutput) Index(i pulumi.IntInput) ConfigEntryServiceIntentionsJwtProviderVerifyClaimOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConfigEntryServiceIntentionsJwtProviderVerifyClaim {
+		return vs[0].([]ConfigEntryServiceIntentionsJwtProviderVerifyClaim)[vs[1].(int)]
+	}).(ConfigEntryServiceIntentionsJwtProviderVerifyClaimOutput)
+}
+
+type ConfigEntryServiceIntentionsSource struct {
+	// Specifies the action to take when the source sends traffic to the destination service.
+	Action *string `pulumi:"action"`
+	// Specifies a description of the intention.
+	Description *string `pulumi:"description"`
+	// Specifies the name of the source that the intention allows or denies traffic from.
+	Name *string `pulumi:"name"`
+	// Specifies the traffic source namespace that the intention allows or denies traffic from.
+	Namespace *string `pulumi:"namespace"`
+	// Specifies the name of an admin partition that the intention allows or denies traffic from.
+	Partition *string `pulumi:"partition"`
+	// Specifies the name of a peered Consul cluster that the intention allows or denies traffic from
+	Peer *string `pulumi:"peer"`
+	// Specifies a list of permissions for L7 traffic sources. The list contains one or more actions and a set of match criteria for each action.
+	Permissions []ConfigEntryServiceIntentionsSourcePermission `pulumi:"permissions"`
+	// The Precedence field contains a read-only integer. Consul generates the value based on name configurations for the source and destination services.
+	Precedence *int `pulumi:"precedence"`
+	// Specifies the name of a sameness group that the intention allows or denies traffic from.
+	SamenessGroup *string `pulumi:"samenessGroup"`
+	// Specifies the type of destination service that the configuration entry applies to.
+	Type *string `pulumi:"type"`
+}
+
+// ConfigEntryServiceIntentionsSourceInput is an input type that accepts ConfigEntryServiceIntentionsSourceArgs and ConfigEntryServiceIntentionsSourceOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceIntentionsSourceInput` via:
+//
+//	ConfigEntryServiceIntentionsSourceArgs{...}
+type ConfigEntryServiceIntentionsSourceInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceIntentionsSourceOutput() ConfigEntryServiceIntentionsSourceOutput
+	ToConfigEntryServiceIntentionsSourceOutputWithContext(context.Context) ConfigEntryServiceIntentionsSourceOutput
+}
+
+type ConfigEntryServiceIntentionsSourceArgs struct {
+	// Specifies the action to take when the source sends traffic to the destination service.
+	Action pulumi.StringPtrInput `pulumi:"action"`
+	// Specifies a description of the intention.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Specifies the name of the source that the intention allows or denies traffic from.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Specifies the traffic source namespace that the intention allows or denies traffic from.
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	// Specifies the name of an admin partition that the intention allows or denies traffic from.
+	Partition pulumi.StringPtrInput `pulumi:"partition"`
+	// Specifies the name of a peered Consul cluster that the intention allows or denies traffic from
+	Peer pulumi.StringPtrInput `pulumi:"peer"`
+	// Specifies a list of permissions for L7 traffic sources. The list contains one or more actions and a set of match criteria for each action.
+	Permissions ConfigEntryServiceIntentionsSourcePermissionArrayInput `pulumi:"permissions"`
+	// The Precedence field contains a read-only integer. Consul generates the value based on name configurations for the source and destination services.
+	Precedence pulumi.IntPtrInput `pulumi:"precedence"`
+	// Specifies the name of a sameness group that the intention allows or denies traffic from.
+	SamenessGroup pulumi.StringPtrInput `pulumi:"samenessGroup"`
+	// Specifies the type of destination service that the configuration entry applies to.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (ConfigEntryServiceIntentionsSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceIntentionsSource)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceIntentionsSourceArgs) ToConfigEntryServiceIntentionsSourceOutput() ConfigEntryServiceIntentionsSourceOutput {
+	return i.ToConfigEntryServiceIntentionsSourceOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceIntentionsSourceArgs) ToConfigEntryServiceIntentionsSourceOutputWithContext(ctx context.Context) ConfigEntryServiceIntentionsSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceIntentionsSourceOutput)
+}
+
+func (i ConfigEntryServiceIntentionsSourceArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceIntentionsSource] {
+	return pulumix.Output[ConfigEntryServiceIntentionsSource]{
+		OutputState: i.ToConfigEntryServiceIntentionsSourceOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ConfigEntryServiceIntentionsSourceArrayInput is an input type that accepts ConfigEntryServiceIntentionsSourceArray and ConfigEntryServiceIntentionsSourceArrayOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceIntentionsSourceArrayInput` via:
+//
+//	ConfigEntryServiceIntentionsSourceArray{ ConfigEntryServiceIntentionsSourceArgs{...} }
+type ConfigEntryServiceIntentionsSourceArrayInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceIntentionsSourceArrayOutput() ConfigEntryServiceIntentionsSourceArrayOutput
+	ToConfigEntryServiceIntentionsSourceArrayOutputWithContext(context.Context) ConfigEntryServiceIntentionsSourceArrayOutput
+}
+
+type ConfigEntryServiceIntentionsSourceArray []ConfigEntryServiceIntentionsSourceInput
+
+func (ConfigEntryServiceIntentionsSourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceIntentionsSource)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceIntentionsSourceArray) ToConfigEntryServiceIntentionsSourceArrayOutput() ConfigEntryServiceIntentionsSourceArrayOutput {
+	return i.ToConfigEntryServiceIntentionsSourceArrayOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceIntentionsSourceArray) ToConfigEntryServiceIntentionsSourceArrayOutputWithContext(ctx context.Context) ConfigEntryServiceIntentionsSourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceIntentionsSourceArrayOutput)
+}
+
+func (i ConfigEntryServiceIntentionsSourceArray) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceIntentionsSource] {
+	return pulumix.Output[[]ConfigEntryServiceIntentionsSource]{
+		OutputState: i.ToConfigEntryServiceIntentionsSourceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ConfigEntryServiceIntentionsSourceOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceIntentionsSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceIntentionsSource)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceIntentionsSourceOutput) ToConfigEntryServiceIntentionsSourceOutput() ConfigEntryServiceIntentionsSourceOutput {
+	return o
+}
+
+func (o ConfigEntryServiceIntentionsSourceOutput) ToConfigEntryServiceIntentionsSourceOutputWithContext(ctx context.Context) ConfigEntryServiceIntentionsSourceOutput {
+	return o
+}
+
+func (o ConfigEntryServiceIntentionsSourceOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceIntentionsSource] {
+	return pulumix.Output[ConfigEntryServiceIntentionsSource]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Specifies the action to take when the source sends traffic to the destination service.
+func (o ConfigEntryServiceIntentionsSourceOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceIntentionsSource) *string { return v.Action }).(pulumi.StringPtrOutput)
+}
+
+// Specifies a description of the intention.
+func (o ConfigEntryServiceIntentionsSourceOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceIntentionsSource) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the name of the source that the intention allows or denies traffic from.
+func (o ConfigEntryServiceIntentionsSourceOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceIntentionsSource) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the traffic source namespace that the intention allows or denies traffic from.
+func (o ConfigEntryServiceIntentionsSourceOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceIntentionsSource) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the name of an admin partition that the intention allows or denies traffic from.
+func (o ConfigEntryServiceIntentionsSourceOutput) Partition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceIntentionsSource) *string { return v.Partition }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the name of a peered Consul cluster that the intention allows or denies traffic from
+func (o ConfigEntryServiceIntentionsSourceOutput) Peer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceIntentionsSource) *string { return v.Peer }).(pulumi.StringPtrOutput)
+}
+
+// Specifies a list of permissions for L7 traffic sources. The list contains one or more actions and a set of match criteria for each action.
+func (o ConfigEntryServiceIntentionsSourceOutput) Permissions() ConfigEntryServiceIntentionsSourcePermissionArrayOutput {
+	return o.ApplyT(func(v ConfigEntryServiceIntentionsSource) []ConfigEntryServiceIntentionsSourcePermission {
+		return v.Permissions
+	}).(ConfigEntryServiceIntentionsSourcePermissionArrayOutput)
+}
+
+// The Precedence field contains a read-only integer. Consul generates the value based on name configurations for the source and destination services.
+func (o ConfigEntryServiceIntentionsSourceOutput) Precedence() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceIntentionsSource) *int { return v.Precedence }).(pulumi.IntPtrOutput)
+}
+
+// Specifies the name of a sameness group that the intention allows or denies traffic from.
+func (o ConfigEntryServiceIntentionsSourceOutput) SamenessGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceIntentionsSource) *string { return v.SamenessGroup }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the type of destination service that the configuration entry applies to.
+func (o ConfigEntryServiceIntentionsSourceOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceIntentionsSource) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type ConfigEntryServiceIntentionsSourceArrayOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceIntentionsSourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceIntentionsSource)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceIntentionsSourceArrayOutput) ToConfigEntryServiceIntentionsSourceArrayOutput() ConfigEntryServiceIntentionsSourceArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceIntentionsSourceArrayOutput) ToConfigEntryServiceIntentionsSourceArrayOutputWithContext(ctx context.Context) ConfigEntryServiceIntentionsSourceArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceIntentionsSourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceIntentionsSource] {
+	return pulumix.Output[[]ConfigEntryServiceIntentionsSource]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConfigEntryServiceIntentionsSourceArrayOutput) Index(i pulumi.IntInput) ConfigEntryServiceIntentionsSourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConfigEntryServiceIntentionsSource {
+		return vs[0].([]ConfigEntryServiceIntentionsSource)[vs[1].(int)]
+	}).(ConfigEntryServiceIntentionsSourceOutput)
+}
+
+type ConfigEntryServiceIntentionsSourcePermission struct {
+	// Specifies the action to take when the source sends traffic to the destination service.
+	Action string `pulumi:"action"`
+	// Specifies a set of HTTP-specific match criteria.
+	Https []ConfigEntryServiceIntentionsSourcePermissionHttp `pulumi:"https"`
+}
+
+// ConfigEntryServiceIntentionsSourcePermissionInput is an input type that accepts ConfigEntryServiceIntentionsSourcePermissionArgs and ConfigEntryServiceIntentionsSourcePermissionOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceIntentionsSourcePermissionInput` via:
+//
+//	ConfigEntryServiceIntentionsSourcePermissionArgs{...}
+type ConfigEntryServiceIntentionsSourcePermissionInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceIntentionsSourcePermissionOutput() ConfigEntryServiceIntentionsSourcePermissionOutput
+	ToConfigEntryServiceIntentionsSourcePermissionOutputWithContext(context.Context) ConfigEntryServiceIntentionsSourcePermissionOutput
+}
+
+type ConfigEntryServiceIntentionsSourcePermissionArgs struct {
+	// Specifies the action to take when the source sends traffic to the destination service.
+	Action pulumi.StringInput `pulumi:"action"`
+	// Specifies a set of HTTP-specific match criteria.
+	Https ConfigEntryServiceIntentionsSourcePermissionHttpArrayInput `pulumi:"https"`
+}
+
+func (ConfigEntryServiceIntentionsSourcePermissionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceIntentionsSourcePermission)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceIntentionsSourcePermissionArgs) ToConfigEntryServiceIntentionsSourcePermissionOutput() ConfigEntryServiceIntentionsSourcePermissionOutput {
+	return i.ToConfigEntryServiceIntentionsSourcePermissionOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceIntentionsSourcePermissionArgs) ToConfigEntryServiceIntentionsSourcePermissionOutputWithContext(ctx context.Context) ConfigEntryServiceIntentionsSourcePermissionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceIntentionsSourcePermissionOutput)
+}
+
+func (i ConfigEntryServiceIntentionsSourcePermissionArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceIntentionsSourcePermission] {
+	return pulumix.Output[ConfigEntryServiceIntentionsSourcePermission]{
+		OutputState: i.ToConfigEntryServiceIntentionsSourcePermissionOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ConfigEntryServiceIntentionsSourcePermissionArrayInput is an input type that accepts ConfigEntryServiceIntentionsSourcePermissionArray and ConfigEntryServiceIntentionsSourcePermissionArrayOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceIntentionsSourcePermissionArrayInput` via:
+//
+//	ConfigEntryServiceIntentionsSourcePermissionArray{ ConfigEntryServiceIntentionsSourcePermissionArgs{...} }
+type ConfigEntryServiceIntentionsSourcePermissionArrayInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceIntentionsSourcePermissionArrayOutput() ConfigEntryServiceIntentionsSourcePermissionArrayOutput
+	ToConfigEntryServiceIntentionsSourcePermissionArrayOutputWithContext(context.Context) ConfigEntryServiceIntentionsSourcePermissionArrayOutput
+}
+
+type ConfigEntryServiceIntentionsSourcePermissionArray []ConfigEntryServiceIntentionsSourcePermissionInput
+
+func (ConfigEntryServiceIntentionsSourcePermissionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceIntentionsSourcePermission)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceIntentionsSourcePermissionArray) ToConfigEntryServiceIntentionsSourcePermissionArrayOutput() ConfigEntryServiceIntentionsSourcePermissionArrayOutput {
+	return i.ToConfigEntryServiceIntentionsSourcePermissionArrayOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceIntentionsSourcePermissionArray) ToConfigEntryServiceIntentionsSourcePermissionArrayOutputWithContext(ctx context.Context) ConfigEntryServiceIntentionsSourcePermissionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceIntentionsSourcePermissionArrayOutput)
+}
+
+func (i ConfigEntryServiceIntentionsSourcePermissionArray) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceIntentionsSourcePermission] {
+	return pulumix.Output[[]ConfigEntryServiceIntentionsSourcePermission]{
+		OutputState: i.ToConfigEntryServiceIntentionsSourcePermissionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ConfigEntryServiceIntentionsSourcePermissionOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceIntentionsSourcePermissionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceIntentionsSourcePermission)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceIntentionsSourcePermissionOutput) ToConfigEntryServiceIntentionsSourcePermissionOutput() ConfigEntryServiceIntentionsSourcePermissionOutput {
+	return o
+}
+
+func (o ConfigEntryServiceIntentionsSourcePermissionOutput) ToConfigEntryServiceIntentionsSourcePermissionOutputWithContext(ctx context.Context) ConfigEntryServiceIntentionsSourcePermissionOutput {
+	return o
+}
+
+func (o ConfigEntryServiceIntentionsSourcePermissionOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceIntentionsSourcePermission] {
+	return pulumix.Output[ConfigEntryServiceIntentionsSourcePermission]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Specifies the action to take when the source sends traffic to the destination service.
+func (o ConfigEntryServiceIntentionsSourcePermissionOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigEntryServiceIntentionsSourcePermission) string { return v.Action }).(pulumi.StringOutput)
+}
+
+// Specifies a set of HTTP-specific match criteria.
+func (o ConfigEntryServiceIntentionsSourcePermissionOutput) Https() ConfigEntryServiceIntentionsSourcePermissionHttpArrayOutput {
+	return o.ApplyT(func(v ConfigEntryServiceIntentionsSourcePermission) []ConfigEntryServiceIntentionsSourcePermissionHttp {
+		return v.Https
+	}).(ConfigEntryServiceIntentionsSourcePermissionHttpArrayOutput)
+}
+
+type ConfigEntryServiceIntentionsSourcePermissionArrayOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceIntentionsSourcePermissionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceIntentionsSourcePermission)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceIntentionsSourcePermissionArrayOutput) ToConfigEntryServiceIntentionsSourcePermissionArrayOutput() ConfigEntryServiceIntentionsSourcePermissionArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceIntentionsSourcePermissionArrayOutput) ToConfigEntryServiceIntentionsSourcePermissionArrayOutputWithContext(ctx context.Context) ConfigEntryServiceIntentionsSourcePermissionArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceIntentionsSourcePermissionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceIntentionsSourcePermission] {
+	return pulumix.Output[[]ConfigEntryServiceIntentionsSourcePermission]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConfigEntryServiceIntentionsSourcePermissionArrayOutput) Index(i pulumi.IntInput) ConfigEntryServiceIntentionsSourcePermissionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConfigEntryServiceIntentionsSourcePermission {
+		return vs[0].([]ConfigEntryServiceIntentionsSourcePermission)[vs[1].(int)]
+	}).(ConfigEntryServiceIntentionsSourcePermissionOutput)
+}
+
+type ConfigEntryServiceIntentionsSourcePermissionHttp struct {
+	// Specifies a header name and matching criteria for HTTP request headers.
+	Headers []ConfigEntryServiceIntentionsSourcePermissionHttpHeader `pulumi:"headers"`
+	// Specifies a list of HTTP methods.
+	Methods []string `pulumi:"methods"`
+	// Specifies an exact path to match on the HTTP request path.
+	PathExact *string `pulumi:"pathExact"`
+	// Specifies a path prefix to match on the HTTP request path.
+	PathPrefix *string `pulumi:"pathPrefix"`
+	// Defines a regular expression to match on the HTTP request path.
+	PathRegex *string `pulumi:"pathRegex"`
+}
+
+// ConfigEntryServiceIntentionsSourcePermissionHttpInput is an input type that accepts ConfigEntryServiceIntentionsSourcePermissionHttpArgs and ConfigEntryServiceIntentionsSourcePermissionHttpOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceIntentionsSourcePermissionHttpInput` via:
+//
+//	ConfigEntryServiceIntentionsSourcePermissionHttpArgs{...}
+type ConfigEntryServiceIntentionsSourcePermissionHttpInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceIntentionsSourcePermissionHttpOutput() ConfigEntryServiceIntentionsSourcePermissionHttpOutput
+	ToConfigEntryServiceIntentionsSourcePermissionHttpOutputWithContext(context.Context) ConfigEntryServiceIntentionsSourcePermissionHttpOutput
+}
+
+type ConfigEntryServiceIntentionsSourcePermissionHttpArgs struct {
+	// Specifies a header name and matching criteria for HTTP request headers.
+	Headers ConfigEntryServiceIntentionsSourcePermissionHttpHeaderArrayInput `pulumi:"headers"`
+	// Specifies a list of HTTP methods.
+	Methods pulumi.StringArrayInput `pulumi:"methods"`
+	// Specifies an exact path to match on the HTTP request path.
+	PathExact pulumi.StringPtrInput `pulumi:"pathExact"`
+	// Specifies a path prefix to match on the HTTP request path.
+	PathPrefix pulumi.StringPtrInput `pulumi:"pathPrefix"`
+	// Defines a regular expression to match on the HTTP request path.
+	PathRegex pulumi.StringPtrInput `pulumi:"pathRegex"`
+}
+
+func (ConfigEntryServiceIntentionsSourcePermissionHttpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceIntentionsSourcePermissionHttp)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceIntentionsSourcePermissionHttpArgs) ToConfigEntryServiceIntentionsSourcePermissionHttpOutput() ConfigEntryServiceIntentionsSourcePermissionHttpOutput {
+	return i.ToConfigEntryServiceIntentionsSourcePermissionHttpOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceIntentionsSourcePermissionHttpArgs) ToConfigEntryServiceIntentionsSourcePermissionHttpOutputWithContext(ctx context.Context) ConfigEntryServiceIntentionsSourcePermissionHttpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceIntentionsSourcePermissionHttpOutput)
+}
+
+func (i ConfigEntryServiceIntentionsSourcePermissionHttpArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceIntentionsSourcePermissionHttp] {
+	return pulumix.Output[ConfigEntryServiceIntentionsSourcePermissionHttp]{
+		OutputState: i.ToConfigEntryServiceIntentionsSourcePermissionHttpOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ConfigEntryServiceIntentionsSourcePermissionHttpArrayInput is an input type that accepts ConfigEntryServiceIntentionsSourcePermissionHttpArray and ConfigEntryServiceIntentionsSourcePermissionHttpArrayOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceIntentionsSourcePermissionHttpArrayInput` via:
+//
+//	ConfigEntryServiceIntentionsSourcePermissionHttpArray{ ConfigEntryServiceIntentionsSourcePermissionHttpArgs{...} }
+type ConfigEntryServiceIntentionsSourcePermissionHttpArrayInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceIntentionsSourcePermissionHttpArrayOutput() ConfigEntryServiceIntentionsSourcePermissionHttpArrayOutput
+	ToConfigEntryServiceIntentionsSourcePermissionHttpArrayOutputWithContext(context.Context) ConfigEntryServiceIntentionsSourcePermissionHttpArrayOutput
+}
+
+type ConfigEntryServiceIntentionsSourcePermissionHttpArray []ConfigEntryServiceIntentionsSourcePermissionHttpInput
+
+func (ConfigEntryServiceIntentionsSourcePermissionHttpArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceIntentionsSourcePermissionHttp)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceIntentionsSourcePermissionHttpArray) ToConfigEntryServiceIntentionsSourcePermissionHttpArrayOutput() ConfigEntryServiceIntentionsSourcePermissionHttpArrayOutput {
+	return i.ToConfigEntryServiceIntentionsSourcePermissionHttpArrayOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceIntentionsSourcePermissionHttpArray) ToConfigEntryServiceIntentionsSourcePermissionHttpArrayOutputWithContext(ctx context.Context) ConfigEntryServiceIntentionsSourcePermissionHttpArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceIntentionsSourcePermissionHttpArrayOutput)
+}
+
+func (i ConfigEntryServiceIntentionsSourcePermissionHttpArray) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceIntentionsSourcePermissionHttp] {
+	return pulumix.Output[[]ConfigEntryServiceIntentionsSourcePermissionHttp]{
+		OutputState: i.ToConfigEntryServiceIntentionsSourcePermissionHttpArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ConfigEntryServiceIntentionsSourcePermissionHttpOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceIntentionsSourcePermissionHttpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceIntentionsSourcePermissionHttp)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceIntentionsSourcePermissionHttpOutput) ToConfigEntryServiceIntentionsSourcePermissionHttpOutput() ConfigEntryServiceIntentionsSourcePermissionHttpOutput {
+	return o
+}
+
+func (o ConfigEntryServiceIntentionsSourcePermissionHttpOutput) ToConfigEntryServiceIntentionsSourcePermissionHttpOutputWithContext(ctx context.Context) ConfigEntryServiceIntentionsSourcePermissionHttpOutput {
+	return o
+}
+
+func (o ConfigEntryServiceIntentionsSourcePermissionHttpOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceIntentionsSourcePermissionHttp] {
+	return pulumix.Output[ConfigEntryServiceIntentionsSourcePermissionHttp]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Specifies a header name and matching criteria for HTTP request headers.
+func (o ConfigEntryServiceIntentionsSourcePermissionHttpOutput) Headers() ConfigEntryServiceIntentionsSourcePermissionHttpHeaderArrayOutput {
+	return o.ApplyT(func(v ConfigEntryServiceIntentionsSourcePermissionHttp) []ConfigEntryServiceIntentionsSourcePermissionHttpHeader {
+		return v.Headers
+	}).(ConfigEntryServiceIntentionsSourcePermissionHttpHeaderArrayOutput)
+}
+
+// Specifies a list of HTTP methods.
+func (o ConfigEntryServiceIntentionsSourcePermissionHttpOutput) Methods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConfigEntryServiceIntentionsSourcePermissionHttp) []string { return v.Methods }).(pulumi.StringArrayOutput)
+}
+
+// Specifies an exact path to match on the HTTP request path.
+func (o ConfigEntryServiceIntentionsSourcePermissionHttpOutput) PathExact() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceIntentionsSourcePermissionHttp) *string { return v.PathExact }).(pulumi.StringPtrOutput)
+}
+
+// Specifies a path prefix to match on the HTTP request path.
+func (o ConfigEntryServiceIntentionsSourcePermissionHttpOutput) PathPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceIntentionsSourcePermissionHttp) *string { return v.PathPrefix }).(pulumi.StringPtrOutput)
+}
+
+// Defines a regular expression to match on the HTTP request path.
+func (o ConfigEntryServiceIntentionsSourcePermissionHttpOutput) PathRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceIntentionsSourcePermissionHttp) *string { return v.PathRegex }).(pulumi.StringPtrOutput)
+}
+
+type ConfigEntryServiceIntentionsSourcePermissionHttpArrayOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceIntentionsSourcePermissionHttpArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceIntentionsSourcePermissionHttp)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceIntentionsSourcePermissionHttpArrayOutput) ToConfigEntryServiceIntentionsSourcePermissionHttpArrayOutput() ConfigEntryServiceIntentionsSourcePermissionHttpArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceIntentionsSourcePermissionHttpArrayOutput) ToConfigEntryServiceIntentionsSourcePermissionHttpArrayOutputWithContext(ctx context.Context) ConfigEntryServiceIntentionsSourcePermissionHttpArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceIntentionsSourcePermissionHttpArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceIntentionsSourcePermissionHttp] {
+	return pulumix.Output[[]ConfigEntryServiceIntentionsSourcePermissionHttp]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConfigEntryServiceIntentionsSourcePermissionHttpArrayOutput) Index(i pulumi.IntInput) ConfigEntryServiceIntentionsSourcePermissionHttpOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConfigEntryServiceIntentionsSourcePermissionHttp {
+		return vs[0].([]ConfigEntryServiceIntentionsSourcePermissionHttp)[vs[1].(int)]
+	}).(ConfigEntryServiceIntentionsSourcePermissionHttpOutput)
+}
+
+type ConfigEntryServiceIntentionsSourcePermissionHttpHeader struct {
+	// Specifies a value for the header key set in the Name field. If the request header value matches the Exact value, Consul applies the permission.
+	Exact *string `pulumi:"exact"`
+	// Inverts the matching logic configured in the Header.
+	Invert *bool `pulumi:"invert"`
+	// Specifies the name of a JWT provider defined in the Name field of the jwt-provider configuration entry.
+	Name string `pulumi:"name"`
+	// Specifies a prefix value for the header key set in the Name field.
+	Prefix *string `pulumi:"prefix"`
+	// Enables a match if the header configured in the Name field appears in the request. Consul matches on any value as long as the header key appears in the request.
+	Present *bool `pulumi:"present"`
+	// Specifies a regular expression pattern as the value for the header key set in the Name field.
+	Regex *string `pulumi:"regex"`
+	// Specifies a suffix value for the header key set in the Name field.
+	Suffix *string `pulumi:"suffix"`
+}
+
+// ConfigEntryServiceIntentionsSourcePermissionHttpHeaderInput is an input type that accepts ConfigEntryServiceIntentionsSourcePermissionHttpHeaderArgs and ConfigEntryServiceIntentionsSourcePermissionHttpHeaderOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceIntentionsSourcePermissionHttpHeaderInput` via:
+//
+//	ConfigEntryServiceIntentionsSourcePermissionHttpHeaderArgs{...}
+type ConfigEntryServiceIntentionsSourcePermissionHttpHeaderInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceIntentionsSourcePermissionHttpHeaderOutput() ConfigEntryServiceIntentionsSourcePermissionHttpHeaderOutput
+	ToConfigEntryServiceIntentionsSourcePermissionHttpHeaderOutputWithContext(context.Context) ConfigEntryServiceIntentionsSourcePermissionHttpHeaderOutput
+}
+
+type ConfigEntryServiceIntentionsSourcePermissionHttpHeaderArgs struct {
+	// Specifies a value for the header key set in the Name field. If the request header value matches the Exact value, Consul applies the permission.
+	Exact pulumi.StringPtrInput `pulumi:"exact"`
+	// Inverts the matching logic configured in the Header.
+	Invert pulumi.BoolPtrInput `pulumi:"invert"`
+	// Specifies the name of a JWT provider defined in the Name field of the jwt-provider configuration entry.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Specifies a prefix value for the header key set in the Name field.
+	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
+	// Enables a match if the header configured in the Name field appears in the request. Consul matches on any value as long as the header key appears in the request.
+	Present pulumi.BoolPtrInput `pulumi:"present"`
+	// Specifies a regular expression pattern as the value for the header key set in the Name field.
+	Regex pulumi.StringPtrInput `pulumi:"regex"`
+	// Specifies a suffix value for the header key set in the Name field.
+	Suffix pulumi.StringPtrInput `pulumi:"suffix"`
+}
+
+func (ConfigEntryServiceIntentionsSourcePermissionHttpHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceIntentionsSourcePermissionHttpHeader)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceIntentionsSourcePermissionHttpHeaderArgs) ToConfigEntryServiceIntentionsSourcePermissionHttpHeaderOutput() ConfigEntryServiceIntentionsSourcePermissionHttpHeaderOutput {
+	return i.ToConfigEntryServiceIntentionsSourcePermissionHttpHeaderOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceIntentionsSourcePermissionHttpHeaderArgs) ToConfigEntryServiceIntentionsSourcePermissionHttpHeaderOutputWithContext(ctx context.Context) ConfigEntryServiceIntentionsSourcePermissionHttpHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceIntentionsSourcePermissionHttpHeaderOutput)
+}
+
+func (i ConfigEntryServiceIntentionsSourcePermissionHttpHeaderArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceIntentionsSourcePermissionHttpHeader] {
+	return pulumix.Output[ConfigEntryServiceIntentionsSourcePermissionHttpHeader]{
+		OutputState: i.ToConfigEntryServiceIntentionsSourcePermissionHttpHeaderOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ConfigEntryServiceIntentionsSourcePermissionHttpHeaderArrayInput is an input type that accepts ConfigEntryServiceIntentionsSourcePermissionHttpHeaderArray and ConfigEntryServiceIntentionsSourcePermissionHttpHeaderArrayOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceIntentionsSourcePermissionHttpHeaderArrayInput` via:
+//
+//	ConfigEntryServiceIntentionsSourcePermissionHttpHeaderArray{ ConfigEntryServiceIntentionsSourcePermissionHttpHeaderArgs{...} }
+type ConfigEntryServiceIntentionsSourcePermissionHttpHeaderArrayInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceIntentionsSourcePermissionHttpHeaderArrayOutput() ConfigEntryServiceIntentionsSourcePermissionHttpHeaderArrayOutput
+	ToConfigEntryServiceIntentionsSourcePermissionHttpHeaderArrayOutputWithContext(context.Context) ConfigEntryServiceIntentionsSourcePermissionHttpHeaderArrayOutput
+}
+
+type ConfigEntryServiceIntentionsSourcePermissionHttpHeaderArray []ConfigEntryServiceIntentionsSourcePermissionHttpHeaderInput
+
+func (ConfigEntryServiceIntentionsSourcePermissionHttpHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceIntentionsSourcePermissionHttpHeader)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceIntentionsSourcePermissionHttpHeaderArray) ToConfigEntryServiceIntentionsSourcePermissionHttpHeaderArrayOutput() ConfigEntryServiceIntentionsSourcePermissionHttpHeaderArrayOutput {
+	return i.ToConfigEntryServiceIntentionsSourcePermissionHttpHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceIntentionsSourcePermissionHttpHeaderArray) ToConfigEntryServiceIntentionsSourcePermissionHttpHeaderArrayOutputWithContext(ctx context.Context) ConfigEntryServiceIntentionsSourcePermissionHttpHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceIntentionsSourcePermissionHttpHeaderArrayOutput)
+}
+
+func (i ConfigEntryServiceIntentionsSourcePermissionHttpHeaderArray) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceIntentionsSourcePermissionHttpHeader] {
+	return pulumix.Output[[]ConfigEntryServiceIntentionsSourcePermissionHttpHeader]{
+		OutputState: i.ToConfigEntryServiceIntentionsSourcePermissionHttpHeaderArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ConfigEntryServiceIntentionsSourcePermissionHttpHeaderOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceIntentionsSourcePermissionHttpHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceIntentionsSourcePermissionHttpHeader)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceIntentionsSourcePermissionHttpHeaderOutput) ToConfigEntryServiceIntentionsSourcePermissionHttpHeaderOutput() ConfigEntryServiceIntentionsSourcePermissionHttpHeaderOutput {
+	return o
+}
+
+func (o ConfigEntryServiceIntentionsSourcePermissionHttpHeaderOutput) ToConfigEntryServiceIntentionsSourcePermissionHttpHeaderOutputWithContext(ctx context.Context) ConfigEntryServiceIntentionsSourcePermissionHttpHeaderOutput {
+	return o
+}
+
+func (o ConfigEntryServiceIntentionsSourcePermissionHttpHeaderOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceIntentionsSourcePermissionHttpHeader] {
+	return pulumix.Output[ConfigEntryServiceIntentionsSourcePermissionHttpHeader]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Specifies a value for the header key set in the Name field. If the request header value matches the Exact value, Consul applies the permission.
+func (o ConfigEntryServiceIntentionsSourcePermissionHttpHeaderOutput) Exact() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceIntentionsSourcePermissionHttpHeader) *string { return v.Exact }).(pulumi.StringPtrOutput)
+}
+
+// Inverts the matching logic configured in the Header.
+func (o ConfigEntryServiceIntentionsSourcePermissionHttpHeaderOutput) Invert() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceIntentionsSourcePermissionHttpHeader) *bool { return v.Invert }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the name of a JWT provider defined in the Name field of the jwt-provider configuration entry.
+func (o ConfigEntryServiceIntentionsSourcePermissionHttpHeaderOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigEntryServiceIntentionsSourcePermissionHttpHeader) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Specifies a prefix value for the header key set in the Name field.
+func (o ConfigEntryServiceIntentionsSourcePermissionHttpHeaderOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceIntentionsSourcePermissionHttpHeader) *string { return v.Prefix }).(pulumi.StringPtrOutput)
+}
+
+// Enables a match if the header configured in the Name field appears in the request. Consul matches on any value as long as the header key appears in the request.
+func (o ConfigEntryServiceIntentionsSourcePermissionHttpHeaderOutput) Present() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceIntentionsSourcePermissionHttpHeader) *bool { return v.Present }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies a regular expression pattern as the value for the header key set in the Name field.
+func (o ConfigEntryServiceIntentionsSourcePermissionHttpHeaderOutput) Regex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceIntentionsSourcePermissionHttpHeader) *string { return v.Regex }).(pulumi.StringPtrOutput)
+}
+
+// Specifies a suffix value for the header key set in the Name field.
+func (o ConfigEntryServiceIntentionsSourcePermissionHttpHeaderOutput) Suffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceIntentionsSourcePermissionHttpHeader) *string { return v.Suffix }).(pulumi.StringPtrOutput)
+}
+
+type ConfigEntryServiceIntentionsSourcePermissionHttpHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceIntentionsSourcePermissionHttpHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceIntentionsSourcePermissionHttpHeader)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceIntentionsSourcePermissionHttpHeaderArrayOutput) ToConfigEntryServiceIntentionsSourcePermissionHttpHeaderArrayOutput() ConfigEntryServiceIntentionsSourcePermissionHttpHeaderArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceIntentionsSourcePermissionHttpHeaderArrayOutput) ToConfigEntryServiceIntentionsSourcePermissionHttpHeaderArrayOutputWithContext(ctx context.Context) ConfigEntryServiceIntentionsSourcePermissionHttpHeaderArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceIntentionsSourcePermissionHttpHeaderArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceIntentionsSourcePermissionHttpHeader] {
+	return pulumix.Output[[]ConfigEntryServiceIntentionsSourcePermissionHttpHeader]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConfigEntryServiceIntentionsSourcePermissionHttpHeaderArrayOutput) Index(i pulumi.IntInput) ConfigEntryServiceIntentionsSourcePermissionHttpHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConfigEntryServiceIntentionsSourcePermissionHttpHeader {
+		return vs[0].([]ConfigEntryServiceIntentionsSourcePermissionHttpHeader)[vs[1].(int)]
+	}).(ConfigEntryServiceIntentionsSourcePermissionHttpHeaderOutput)
+}
+
+type ConfigEntryServiceResolverFailover struct {
+	// Specifies an ordered list of datacenters at the failover location to attempt connections to during a failover scenario. When Consul cannot establish a connection with the first datacenter in the list, it proceeds sequentially until establishing a connection with another datacenter.
+	Datacenters []string `pulumi:"datacenters"`
+	// Specifies the namespace at the failover location where the failover services are deployed.
+	Namespace *string `pulumi:"namespace"`
+	// Specifies the sameness group at the failover location where the failover services are deployed.
+	SamenessGroup *string `pulumi:"samenessGroup"`
+	// Specifies the name of the service to resolve at the failover location during a failover scenario.
+	Service *string `pulumi:"service"`
+	// Specifies the name of a subset of service instances to resolve at the failover location during a failover scenario.
+	ServiceSubset *string `pulumi:"serviceSubset"`
+	// Name of subset.
+	SubsetName string `pulumi:"subsetName"`
+	// Specifies a fixed list of failover targets to try during failover. This list can express complicated failover scenarios.
+	Targets []ConfigEntryServiceResolverFailoverTarget `pulumi:"targets"`
+}
+
+// ConfigEntryServiceResolverFailoverInput is an input type that accepts ConfigEntryServiceResolverFailoverArgs and ConfigEntryServiceResolverFailoverOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceResolverFailoverInput` via:
+//
+//	ConfigEntryServiceResolverFailoverArgs{...}
+type ConfigEntryServiceResolverFailoverInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceResolverFailoverOutput() ConfigEntryServiceResolverFailoverOutput
+	ToConfigEntryServiceResolverFailoverOutputWithContext(context.Context) ConfigEntryServiceResolverFailoverOutput
+}
+
+type ConfigEntryServiceResolverFailoverArgs struct {
+	// Specifies an ordered list of datacenters at the failover location to attempt connections to during a failover scenario. When Consul cannot establish a connection with the first datacenter in the list, it proceeds sequentially until establishing a connection with another datacenter.
+	Datacenters pulumi.StringArrayInput `pulumi:"datacenters"`
+	// Specifies the namespace at the failover location where the failover services are deployed.
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	// Specifies the sameness group at the failover location where the failover services are deployed.
+	SamenessGroup pulumi.StringPtrInput `pulumi:"samenessGroup"`
+	// Specifies the name of the service to resolve at the failover location during a failover scenario.
+	Service pulumi.StringPtrInput `pulumi:"service"`
+	// Specifies the name of a subset of service instances to resolve at the failover location during a failover scenario.
+	ServiceSubset pulumi.StringPtrInput `pulumi:"serviceSubset"`
+	// Name of subset.
+	SubsetName pulumi.StringInput `pulumi:"subsetName"`
+	// Specifies a fixed list of failover targets to try during failover. This list can express complicated failover scenarios.
+	Targets ConfigEntryServiceResolverFailoverTargetArrayInput `pulumi:"targets"`
+}
+
+func (ConfigEntryServiceResolverFailoverArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceResolverFailover)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceResolverFailoverArgs) ToConfigEntryServiceResolverFailoverOutput() ConfigEntryServiceResolverFailoverOutput {
+	return i.ToConfigEntryServiceResolverFailoverOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceResolverFailoverArgs) ToConfigEntryServiceResolverFailoverOutputWithContext(ctx context.Context) ConfigEntryServiceResolverFailoverOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceResolverFailoverOutput)
+}
+
+func (i ConfigEntryServiceResolverFailoverArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceResolverFailover] {
+	return pulumix.Output[ConfigEntryServiceResolverFailover]{
+		OutputState: i.ToConfigEntryServiceResolverFailoverOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ConfigEntryServiceResolverFailoverArrayInput is an input type that accepts ConfigEntryServiceResolverFailoverArray and ConfigEntryServiceResolverFailoverArrayOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceResolverFailoverArrayInput` via:
+//
+//	ConfigEntryServiceResolverFailoverArray{ ConfigEntryServiceResolverFailoverArgs{...} }
+type ConfigEntryServiceResolverFailoverArrayInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceResolverFailoverArrayOutput() ConfigEntryServiceResolverFailoverArrayOutput
+	ToConfigEntryServiceResolverFailoverArrayOutputWithContext(context.Context) ConfigEntryServiceResolverFailoverArrayOutput
+}
+
+type ConfigEntryServiceResolverFailoverArray []ConfigEntryServiceResolverFailoverInput
+
+func (ConfigEntryServiceResolverFailoverArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceResolverFailover)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceResolverFailoverArray) ToConfigEntryServiceResolverFailoverArrayOutput() ConfigEntryServiceResolverFailoverArrayOutput {
+	return i.ToConfigEntryServiceResolverFailoverArrayOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceResolverFailoverArray) ToConfigEntryServiceResolverFailoverArrayOutputWithContext(ctx context.Context) ConfigEntryServiceResolverFailoverArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceResolverFailoverArrayOutput)
+}
+
+func (i ConfigEntryServiceResolverFailoverArray) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceResolverFailover] {
+	return pulumix.Output[[]ConfigEntryServiceResolverFailover]{
+		OutputState: i.ToConfigEntryServiceResolverFailoverArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ConfigEntryServiceResolverFailoverOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceResolverFailoverOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceResolverFailover)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceResolverFailoverOutput) ToConfigEntryServiceResolverFailoverOutput() ConfigEntryServiceResolverFailoverOutput {
+	return o
+}
+
+func (o ConfigEntryServiceResolverFailoverOutput) ToConfigEntryServiceResolverFailoverOutputWithContext(ctx context.Context) ConfigEntryServiceResolverFailoverOutput {
+	return o
+}
+
+func (o ConfigEntryServiceResolverFailoverOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceResolverFailover] {
+	return pulumix.Output[ConfigEntryServiceResolverFailover]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Specifies an ordered list of datacenters at the failover location to attempt connections to during a failover scenario. When Consul cannot establish a connection with the first datacenter in the list, it proceeds sequentially until establishing a connection with another datacenter.
+func (o ConfigEntryServiceResolverFailoverOutput) Datacenters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConfigEntryServiceResolverFailover) []string { return v.Datacenters }).(pulumi.StringArrayOutput)
+}
+
+// Specifies the namespace at the failover location where the failover services are deployed.
+func (o ConfigEntryServiceResolverFailoverOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceResolverFailover) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the sameness group at the failover location where the failover services are deployed.
+func (o ConfigEntryServiceResolverFailoverOutput) SamenessGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceResolverFailover) *string { return v.SamenessGroup }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the name of the service to resolve at the failover location during a failover scenario.
+func (o ConfigEntryServiceResolverFailoverOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceResolverFailover) *string { return v.Service }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the name of a subset of service instances to resolve at the failover location during a failover scenario.
+func (o ConfigEntryServiceResolverFailoverOutput) ServiceSubset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceResolverFailover) *string { return v.ServiceSubset }).(pulumi.StringPtrOutput)
+}
+
+// Name of subset.
+func (o ConfigEntryServiceResolverFailoverOutput) SubsetName() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigEntryServiceResolverFailover) string { return v.SubsetName }).(pulumi.StringOutput)
+}
+
+// Specifies a fixed list of failover targets to try during failover. This list can express complicated failover scenarios.
+func (o ConfigEntryServiceResolverFailoverOutput) Targets() ConfigEntryServiceResolverFailoverTargetArrayOutput {
+	return o.ApplyT(func(v ConfigEntryServiceResolverFailover) []ConfigEntryServiceResolverFailoverTarget {
+		return v.Targets
+	}).(ConfigEntryServiceResolverFailoverTargetArrayOutput)
+}
+
+type ConfigEntryServiceResolverFailoverArrayOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceResolverFailoverArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceResolverFailover)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceResolverFailoverArrayOutput) ToConfigEntryServiceResolverFailoverArrayOutput() ConfigEntryServiceResolverFailoverArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceResolverFailoverArrayOutput) ToConfigEntryServiceResolverFailoverArrayOutputWithContext(ctx context.Context) ConfigEntryServiceResolverFailoverArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceResolverFailoverArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceResolverFailover] {
+	return pulumix.Output[[]ConfigEntryServiceResolverFailover]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConfigEntryServiceResolverFailoverArrayOutput) Index(i pulumi.IntInput) ConfigEntryServiceResolverFailoverOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConfigEntryServiceResolverFailover {
+		return vs[0].([]ConfigEntryServiceResolverFailover)[vs[1].(int)]
+	}).(ConfigEntryServiceResolverFailoverOutput)
+}
+
+type ConfigEntryServiceResolverFailoverTarget struct {
+	// Specifies the WAN federated datacenter to use for the failover target. If empty, the current datacenter is used.
+	Datacenter *string `pulumi:"datacenter"`
+	// Specifies the namespace at the failover location where the failover services are deployed.
+	Namespace *string `pulumi:"namespace"`
+	// Specifies the admin partition within the same datacenter to use for the failover target. If empty, the default partition is used.
+	Partition *string `pulumi:"partition"`
+	// Specifies the destination cluster peer to resolve the target service name from.
+	Peer *string `pulumi:"peer"`
+	// Specifies the name of the service to resolve at the failover location during a failover scenario.
+	Service *string `pulumi:"service"`
+	// Specifies the name of a subset of service instances to resolve at the failover location during a failover scenario.
+	ServiceSubset *string `pulumi:"serviceSubset"`
+}
+
+// ConfigEntryServiceResolverFailoverTargetInput is an input type that accepts ConfigEntryServiceResolverFailoverTargetArgs and ConfigEntryServiceResolverFailoverTargetOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceResolverFailoverTargetInput` via:
+//
+//	ConfigEntryServiceResolverFailoverTargetArgs{...}
+type ConfigEntryServiceResolverFailoverTargetInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceResolverFailoverTargetOutput() ConfigEntryServiceResolverFailoverTargetOutput
+	ToConfigEntryServiceResolverFailoverTargetOutputWithContext(context.Context) ConfigEntryServiceResolverFailoverTargetOutput
+}
+
+type ConfigEntryServiceResolverFailoverTargetArgs struct {
+	// Specifies the WAN federated datacenter to use for the failover target. If empty, the current datacenter is used.
+	Datacenter pulumi.StringPtrInput `pulumi:"datacenter"`
+	// Specifies the namespace at the failover location where the failover services are deployed.
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	// Specifies the admin partition within the same datacenter to use for the failover target. If empty, the default partition is used.
+	Partition pulumi.StringPtrInput `pulumi:"partition"`
+	// Specifies the destination cluster peer to resolve the target service name from.
+	Peer pulumi.StringPtrInput `pulumi:"peer"`
+	// Specifies the name of the service to resolve at the failover location during a failover scenario.
+	Service pulumi.StringPtrInput `pulumi:"service"`
+	// Specifies the name of a subset of service instances to resolve at the failover location during a failover scenario.
+	ServiceSubset pulumi.StringPtrInput `pulumi:"serviceSubset"`
+}
+
+func (ConfigEntryServiceResolverFailoverTargetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceResolverFailoverTarget)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceResolverFailoverTargetArgs) ToConfigEntryServiceResolverFailoverTargetOutput() ConfigEntryServiceResolverFailoverTargetOutput {
+	return i.ToConfigEntryServiceResolverFailoverTargetOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceResolverFailoverTargetArgs) ToConfigEntryServiceResolverFailoverTargetOutputWithContext(ctx context.Context) ConfigEntryServiceResolverFailoverTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceResolverFailoverTargetOutput)
+}
+
+func (i ConfigEntryServiceResolverFailoverTargetArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceResolverFailoverTarget] {
+	return pulumix.Output[ConfigEntryServiceResolverFailoverTarget]{
+		OutputState: i.ToConfigEntryServiceResolverFailoverTargetOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ConfigEntryServiceResolverFailoverTargetArrayInput is an input type that accepts ConfigEntryServiceResolverFailoverTargetArray and ConfigEntryServiceResolverFailoverTargetArrayOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceResolverFailoverTargetArrayInput` via:
+//
+//	ConfigEntryServiceResolverFailoverTargetArray{ ConfigEntryServiceResolverFailoverTargetArgs{...} }
+type ConfigEntryServiceResolverFailoverTargetArrayInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceResolverFailoverTargetArrayOutput() ConfigEntryServiceResolverFailoverTargetArrayOutput
+	ToConfigEntryServiceResolverFailoverTargetArrayOutputWithContext(context.Context) ConfigEntryServiceResolverFailoverTargetArrayOutput
+}
+
+type ConfigEntryServiceResolverFailoverTargetArray []ConfigEntryServiceResolverFailoverTargetInput
+
+func (ConfigEntryServiceResolverFailoverTargetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceResolverFailoverTarget)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceResolverFailoverTargetArray) ToConfigEntryServiceResolverFailoverTargetArrayOutput() ConfigEntryServiceResolverFailoverTargetArrayOutput {
+	return i.ToConfigEntryServiceResolverFailoverTargetArrayOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceResolverFailoverTargetArray) ToConfigEntryServiceResolverFailoverTargetArrayOutputWithContext(ctx context.Context) ConfigEntryServiceResolverFailoverTargetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceResolverFailoverTargetArrayOutput)
+}
+
+func (i ConfigEntryServiceResolverFailoverTargetArray) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceResolverFailoverTarget] {
+	return pulumix.Output[[]ConfigEntryServiceResolverFailoverTarget]{
+		OutputState: i.ToConfigEntryServiceResolverFailoverTargetArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ConfigEntryServiceResolverFailoverTargetOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceResolverFailoverTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceResolverFailoverTarget)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceResolverFailoverTargetOutput) ToConfigEntryServiceResolverFailoverTargetOutput() ConfigEntryServiceResolverFailoverTargetOutput {
+	return o
+}
+
+func (o ConfigEntryServiceResolverFailoverTargetOutput) ToConfigEntryServiceResolverFailoverTargetOutputWithContext(ctx context.Context) ConfigEntryServiceResolverFailoverTargetOutput {
+	return o
+}
+
+func (o ConfigEntryServiceResolverFailoverTargetOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceResolverFailoverTarget] {
+	return pulumix.Output[ConfigEntryServiceResolverFailoverTarget]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Specifies the WAN federated datacenter to use for the failover target. If empty, the current datacenter is used.
+func (o ConfigEntryServiceResolverFailoverTargetOutput) Datacenter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceResolverFailoverTarget) *string { return v.Datacenter }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the namespace at the failover location where the failover services are deployed.
+func (o ConfigEntryServiceResolverFailoverTargetOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceResolverFailoverTarget) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the admin partition within the same datacenter to use for the failover target. If empty, the default partition is used.
+func (o ConfigEntryServiceResolverFailoverTargetOutput) Partition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceResolverFailoverTarget) *string { return v.Partition }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the destination cluster peer to resolve the target service name from.
+func (o ConfigEntryServiceResolverFailoverTargetOutput) Peer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceResolverFailoverTarget) *string { return v.Peer }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the name of the service to resolve at the failover location during a failover scenario.
+func (o ConfigEntryServiceResolverFailoverTargetOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceResolverFailoverTarget) *string { return v.Service }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the name of a subset of service instances to resolve at the failover location during a failover scenario.
+func (o ConfigEntryServiceResolverFailoverTargetOutput) ServiceSubset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceResolverFailoverTarget) *string { return v.ServiceSubset }).(pulumi.StringPtrOutput)
+}
+
+type ConfigEntryServiceResolverFailoverTargetArrayOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceResolverFailoverTargetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceResolverFailoverTarget)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceResolverFailoverTargetArrayOutput) ToConfigEntryServiceResolverFailoverTargetArrayOutput() ConfigEntryServiceResolverFailoverTargetArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceResolverFailoverTargetArrayOutput) ToConfigEntryServiceResolverFailoverTargetArrayOutputWithContext(ctx context.Context) ConfigEntryServiceResolverFailoverTargetArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceResolverFailoverTargetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceResolverFailoverTarget] {
+	return pulumix.Output[[]ConfigEntryServiceResolverFailoverTarget]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConfigEntryServiceResolverFailoverTargetArrayOutput) Index(i pulumi.IntInput) ConfigEntryServiceResolverFailoverTargetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConfigEntryServiceResolverFailoverTarget {
+		return vs[0].([]ConfigEntryServiceResolverFailoverTarget)[vs[1].(int)]
+	}).(ConfigEntryServiceResolverFailoverTargetOutput)
+}
+
+type ConfigEntryServiceResolverLoadBalancer struct {
+	// Specifies a list of hash policies to use for hashing load balancing algorithms. Consul evaluates hash policies individually and combines them so that identical lists result in the same hash.
+	HashPolicies []ConfigEntryServiceResolverLoadBalancerHashPolicy `pulumi:"hashPolicies"`
+	// Specifies configuration for the least*request policy type.
+	LeastRequestConfigs []ConfigEntryServiceResolverLoadBalancerLeastRequestConfig `pulumi:"leastRequestConfigs"`
+	// Specifies the type of load balancing policy for selecting a host.
+	Policy *string `pulumi:"policy"`
+	// Specifies configuration for the ring*hash policy type.
+	RingHashConfigs []ConfigEntryServiceResolverLoadBalancerRingHashConfig `pulumi:"ringHashConfigs"`
+}
+
+// ConfigEntryServiceResolverLoadBalancerInput is an input type that accepts ConfigEntryServiceResolverLoadBalancerArgs and ConfigEntryServiceResolverLoadBalancerOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceResolverLoadBalancerInput` via:
+//
+//	ConfigEntryServiceResolverLoadBalancerArgs{...}
+type ConfigEntryServiceResolverLoadBalancerInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceResolverLoadBalancerOutput() ConfigEntryServiceResolverLoadBalancerOutput
+	ToConfigEntryServiceResolverLoadBalancerOutputWithContext(context.Context) ConfigEntryServiceResolverLoadBalancerOutput
+}
+
+type ConfigEntryServiceResolverLoadBalancerArgs struct {
+	// Specifies a list of hash policies to use for hashing load balancing algorithms. Consul evaluates hash policies individually and combines them so that identical lists result in the same hash.
+	HashPolicies ConfigEntryServiceResolverLoadBalancerHashPolicyArrayInput `pulumi:"hashPolicies"`
+	// Specifies configuration for the least*request policy type.
+	LeastRequestConfigs ConfigEntryServiceResolverLoadBalancerLeastRequestConfigArrayInput `pulumi:"leastRequestConfigs"`
+	// Specifies the type of load balancing policy for selecting a host.
+	Policy pulumi.StringPtrInput `pulumi:"policy"`
+	// Specifies configuration for the ring*hash policy type.
+	RingHashConfigs ConfigEntryServiceResolverLoadBalancerRingHashConfigArrayInput `pulumi:"ringHashConfigs"`
+}
+
+func (ConfigEntryServiceResolverLoadBalancerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceResolverLoadBalancer)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceResolverLoadBalancerArgs) ToConfigEntryServiceResolverLoadBalancerOutput() ConfigEntryServiceResolverLoadBalancerOutput {
+	return i.ToConfigEntryServiceResolverLoadBalancerOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceResolverLoadBalancerArgs) ToConfigEntryServiceResolverLoadBalancerOutputWithContext(ctx context.Context) ConfigEntryServiceResolverLoadBalancerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceResolverLoadBalancerOutput)
+}
+
+func (i ConfigEntryServiceResolverLoadBalancerArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceResolverLoadBalancer] {
+	return pulumix.Output[ConfigEntryServiceResolverLoadBalancer]{
+		OutputState: i.ToConfigEntryServiceResolverLoadBalancerOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ConfigEntryServiceResolverLoadBalancerArrayInput is an input type that accepts ConfigEntryServiceResolverLoadBalancerArray and ConfigEntryServiceResolverLoadBalancerArrayOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceResolverLoadBalancerArrayInput` via:
+//
+//	ConfigEntryServiceResolverLoadBalancerArray{ ConfigEntryServiceResolverLoadBalancerArgs{...} }
+type ConfigEntryServiceResolverLoadBalancerArrayInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceResolverLoadBalancerArrayOutput() ConfigEntryServiceResolverLoadBalancerArrayOutput
+	ToConfigEntryServiceResolverLoadBalancerArrayOutputWithContext(context.Context) ConfigEntryServiceResolverLoadBalancerArrayOutput
+}
+
+type ConfigEntryServiceResolverLoadBalancerArray []ConfigEntryServiceResolverLoadBalancerInput
+
+func (ConfigEntryServiceResolverLoadBalancerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceResolverLoadBalancer)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceResolverLoadBalancerArray) ToConfigEntryServiceResolverLoadBalancerArrayOutput() ConfigEntryServiceResolverLoadBalancerArrayOutput {
+	return i.ToConfigEntryServiceResolverLoadBalancerArrayOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceResolverLoadBalancerArray) ToConfigEntryServiceResolverLoadBalancerArrayOutputWithContext(ctx context.Context) ConfigEntryServiceResolverLoadBalancerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceResolverLoadBalancerArrayOutput)
+}
+
+func (i ConfigEntryServiceResolverLoadBalancerArray) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceResolverLoadBalancer] {
+	return pulumix.Output[[]ConfigEntryServiceResolverLoadBalancer]{
+		OutputState: i.ToConfigEntryServiceResolverLoadBalancerArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ConfigEntryServiceResolverLoadBalancerOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceResolverLoadBalancerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceResolverLoadBalancer)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceResolverLoadBalancerOutput) ToConfigEntryServiceResolverLoadBalancerOutput() ConfigEntryServiceResolverLoadBalancerOutput {
+	return o
+}
+
+func (o ConfigEntryServiceResolverLoadBalancerOutput) ToConfigEntryServiceResolverLoadBalancerOutputWithContext(ctx context.Context) ConfigEntryServiceResolverLoadBalancerOutput {
+	return o
+}
+
+func (o ConfigEntryServiceResolverLoadBalancerOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceResolverLoadBalancer] {
+	return pulumix.Output[ConfigEntryServiceResolverLoadBalancer]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Specifies a list of hash policies to use for hashing load balancing algorithms. Consul evaluates hash policies individually and combines them so that identical lists result in the same hash.
+func (o ConfigEntryServiceResolverLoadBalancerOutput) HashPolicies() ConfigEntryServiceResolverLoadBalancerHashPolicyArrayOutput {
+	return o.ApplyT(func(v ConfigEntryServiceResolverLoadBalancer) []ConfigEntryServiceResolverLoadBalancerHashPolicy {
+		return v.HashPolicies
+	}).(ConfigEntryServiceResolverLoadBalancerHashPolicyArrayOutput)
+}
+
+// Specifies configuration for the least*request policy type.
+func (o ConfigEntryServiceResolverLoadBalancerOutput) LeastRequestConfigs() ConfigEntryServiceResolverLoadBalancerLeastRequestConfigArrayOutput {
+	return o.ApplyT(func(v ConfigEntryServiceResolverLoadBalancer) []ConfigEntryServiceResolverLoadBalancerLeastRequestConfig {
+		return v.LeastRequestConfigs
+	}).(ConfigEntryServiceResolverLoadBalancerLeastRequestConfigArrayOutput)
+}
+
+// Specifies the type of load balancing policy for selecting a host.
+func (o ConfigEntryServiceResolverLoadBalancerOutput) Policy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceResolverLoadBalancer) *string { return v.Policy }).(pulumi.StringPtrOutput)
+}
+
+// Specifies configuration for the ring*hash policy type.
+func (o ConfigEntryServiceResolverLoadBalancerOutput) RingHashConfigs() ConfigEntryServiceResolverLoadBalancerRingHashConfigArrayOutput {
+	return o.ApplyT(func(v ConfigEntryServiceResolverLoadBalancer) []ConfigEntryServiceResolverLoadBalancerRingHashConfig {
+		return v.RingHashConfigs
+	}).(ConfigEntryServiceResolverLoadBalancerRingHashConfigArrayOutput)
+}
+
+type ConfigEntryServiceResolverLoadBalancerArrayOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceResolverLoadBalancerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceResolverLoadBalancer)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceResolverLoadBalancerArrayOutput) ToConfigEntryServiceResolverLoadBalancerArrayOutput() ConfigEntryServiceResolverLoadBalancerArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceResolverLoadBalancerArrayOutput) ToConfigEntryServiceResolverLoadBalancerArrayOutputWithContext(ctx context.Context) ConfigEntryServiceResolverLoadBalancerArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceResolverLoadBalancerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceResolverLoadBalancer] {
+	return pulumix.Output[[]ConfigEntryServiceResolverLoadBalancer]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConfigEntryServiceResolverLoadBalancerArrayOutput) Index(i pulumi.IntInput) ConfigEntryServiceResolverLoadBalancerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConfigEntryServiceResolverLoadBalancer {
+		return vs[0].([]ConfigEntryServiceResolverLoadBalancer)[vs[1].(int)]
+	}).(ConfigEntryServiceResolverLoadBalancerOutput)
+}
+
+type ConfigEntryServiceResolverLoadBalancerHashPolicy struct {
+	// Specifies additional configuration options for the cookie hash policy type.
+	CookieConfigs []ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfig `pulumi:"cookieConfigs"`
+	// Specifies the attribute type to hash on. You cannot specify the Field parameter if SourceIP is also configured.
+	Field *string `pulumi:"field"`
+	// Specifies the value to hash, such as a header name, cookie name, or a URL query parameter name.
+	FieldValue *string `pulumi:"fieldValue"`
+	// Determines if the hash type should be source IP address.
+	SourceIp *bool `pulumi:"sourceIp"`
+	// Determines if Consul should stop computing the hash when multiple hash policies are present.
+	Terminal *bool `pulumi:"terminal"`
+}
+
+// ConfigEntryServiceResolverLoadBalancerHashPolicyInput is an input type that accepts ConfigEntryServiceResolverLoadBalancerHashPolicyArgs and ConfigEntryServiceResolverLoadBalancerHashPolicyOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceResolverLoadBalancerHashPolicyInput` via:
+//
+//	ConfigEntryServiceResolverLoadBalancerHashPolicyArgs{...}
+type ConfigEntryServiceResolverLoadBalancerHashPolicyInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceResolverLoadBalancerHashPolicyOutput() ConfigEntryServiceResolverLoadBalancerHashPolicyOutput
+	ToConfigEntryServiceResolverLoadBalancerHashPolicyOutputWithContext(context.Context) ConfigEntryServiceResolverLoadBalancerHashPolicyOutput
+}
+
+type ConfigEntryServiceResolverLoadBalancerHashPolicyArgs struct {
+	// Specifies additional configuration options for the cookie hash policy type.
+	CookieConfigs ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigArrayInput `pulumi:"cookieConfigs"`
+	// Specifies the attribute type to hash on. You cannot specify the Field parameter if SourceIP is also configured.
+	Field pulumi.StringPtrInput `pulumi:"field"`
+	// Specifies the value to hash, such as a header name, cookie name, or a URL query parameter name.
+	FieldValue pulumi.StringPtrInput `pulumi:"fieldValue"`
+	// Determines if the hash type should be source IP address.
+	SourceIp pulumi.BoolPtrInput `pulumi:"sourceIp"`
+	// Determines if Consul should stop computing the hash when multiple hash policies are present.
+	Terminal pulumi.BoolPtrInput `pulumi:"terminal"`
+}
+
+func (ConfigEntryServiceResolverLoadBalancerHashPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceResolverLoadBalancerHashPolicy)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceResolverLoadBalancerHashPolicyArgs) ToConfigEntryServiceResolverLoadBalancerHashPolicyOutput() ConfigEntryServiceResolverLoadBalancerHashPolicyOutput {
+	return i.ToConfigEntryServiceResolverLoadBalancerHashPolicyOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceResolverLoadBalancerHashPolicyArgs) ToConfigEntryServiceResolverLoadBalancerHashPolicyOutputWithContext(ctx context.Context) ConfigEntryServiceResolverLoadBalancerHashPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceResolverLoadBalancerHashPolicyOutput)
+}
+
+func (i ConfigEntryServiceResolverLoadBalancerHashPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceResolverLoadBalancerHashPolicy] {
+	return pulumix.Output[ConfigEntryServiceResolverLoadBalancerHashPolicy]{
+		OutputState: i.ToConfigEntryServiceResolverLoadBalancerHashPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ConfigEntryServiceResolverLoadBalancerHashPolicyArrayInput is an input type that accepts ConfigEntryServiceResolverLoadBalancerHashPolicyArray and ConfigEntryServiceResolverLoadBalancerHashPolicyArrayOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceResolverLoadBalancerHashPolicyArrayInput` via:
+//
+//	ConfigEntryServiceResolverLoadBalancerHashPolicyArray{ ConfigEntryServiceResolverLoadBalancerHashPolicyArgs{...} }
+type ConfigEntryServiceResolverLoadBalancerHashPolicyArrayInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceResolverLoadBalancerHashPolicyArrayOutput() ConfigEntryServiceResolverLoadBalancerHashPolicyArrayOutput
+	ToConfigEntryServiceResolverLoadBalancerHashPolicyArrayOutputWithContext(context.Context) ConfigEntryServiceResolverLoadBalancerHashPolicyArrayOutput
+}
+
+type ConfigEntryServiceResolverLoadBalancerHashPolicyArray []ConfigEntryServiceResolverLoadBalancerHashPolicyInput
+
+func (ConfigEntryServiceResolverLoadBalancerHashPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceResolverLoadBalancerHashPolicy)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceResolverLoadBalancerHashPolicyArray) ToConfigEntryServiceResolverLoadBalancerHashPolicyArrayOutput() ConfigEntryServiceResolverLoadBalancerHashPolicyArrayOutput {
+	return i.ToConfigEntryServiceResolverLoadBalancerHashPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceResolverLoadBalancerHashPolicyArray) ToConfigEntryServiceResolverLoadBalancerHashPolicyArrayOutputWithContext(ctx context.Context) ConfigEntryServiceResolverLoadBalancerHashPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceResolverLoadBalancerHashPolicyArrayOutput)
+}
+
+func (i ConfigEntryServiceResolverLoadBalancerHashPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceResolverLoadBalancerHashPolicy] {
+	return pulumix.Output[[]ConfigEntryServiceResolverLoadBalancerHashPolicy]{
+		OutputState: i.ToConfigEntryServiceResolverLoadBalancerHashPolicyArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ConfigEntryServiceResolverLoadBalancerHashPolicyOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceResolverLoadBalancerHashPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceResolverLoadBalancerHashPolicy)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceResolverLoadBalancerHashPolicyOutput) ToConfigEntryServiceResolverLoadBalancerHashPolicyOutput() ConfigEntryServiceResolverLoadBalancerHashPolicyOutput {
+	return o
+}
+
+func (o ConfigEntryServiceResolverLoadBalancerHashPolicyOutput) ToConfigEntryServiceResolverLoadBalancerHashPolicyOutputWithContext(ctx context.Context) ConfigEntryServiceResolverLoadBalancerHashPolicyOutput {
+	return o
+}
+
+func (o ConfigEntryServiceResolverLoadBalancerHashPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceResolverLoadBalancerHashPolicy] {
+	return pulumix.Output[ConfigEntryServiceResolverLoadBalancerHashPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Specifies additional configuration options for the cookie hash policy type.
+func (o ConfigEntryServiceResolverLoadBalancerHashPolicyOutput) CookieConfigs() ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigArrayOutput {
+	return o.ApplyT(func(v ConfigEntryServiceResolverLoadBalancerHashPolicy) []ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfig {
+		return v.CookieConfigs
+	}).(ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigArrayOutput)
+}
+
+// Specifies the attribute type to hash on. You cannot specify the Field parameter if SourceIP is also configured.
+func (o ConfigEntryServiceResolverLoadBalancerHashPolicyOutput) Field() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceResolverLoadBalancerHashPolicy) *string { return v.Field }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the value to hash, such as a header name, cookie name, or a URL query parameter name.
+func (o ConfigEntryServiceResolverLoadBalancerHashPolicyOutput) FieldValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceResolverLoadBalancerHashPolicy) *string { return v.FieldValue }).(pulumi.StringPtrOutput)
+}
+
+// Determines if the hash type should be source IP address.
+func (o ConfigEntryServiceResolverLoadBalancerHashPolicyOutput) SourceIp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceResolverLoadBalancerHashPolicy) *bool { return v.SourceIp }).(pulumi.BoolPtrOutput)
+}
+
+// Determines if Consul should stop computing the hash when multiple hash policies are present.
+func (o ConfigEntryServiceResolverLoadBalancerHashPolicyOutput) Terminal() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceResolverLoadBalancerHashPolicy) *bool { return v.Terminal }).(pulumi.BoolPtrOutput)
+}
+
+type ConfigEntryServiceResolverLoadBalancerHashPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceResolverLoadBalancerHashPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceResolverLoadBalancerHashPolicy)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceResolverLoadBalancerHashPolicyArrayOutput) ToConfigEntryServiceResolverLoadBalancerHashPolicyArrayOutput() ConfigEntryServiceResolverLoadBalancerHashPolicyArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceResolverLoadBalancerHashPolicyArrayOutput) ToConfigEntryServiceResolverLoadBalancerHashPolicyArrayOutputWithContext(ctx context.Context) ConfigEntryServiceResolverLoadBalancerHashPolicyArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceResolverLoadBalancerHashPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceResolverLoadBalancerHashPolicy] {
+	return pulumix.Output[[]ConfigEntryServiceResolverLoadBalancerHashPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConfigEntryServiceResolverLoadBalancerHashPolicyArrayOutput) Index(i pulumi.IntInput) ConfigEntryServiceResolverLoadBalancerHashPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConfigEntryServiceResolverLoadBalancerHashPolicy {
+		return vs[0].([]ConfigEntryServiceResolverLoadBalancerHashPolicy)[vs[1].(int)]
+	}).(ConfigEntryServiceResolverLoadBalancerHashPolicyOutput)
+}
+
+type ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfig struct {
+	// Specifies the path to set for the cookie.
+	Path *string `pulumi:"path"`
+	// Directs Consul to generate a session cookie with no expiration.
+	Session *bool `pulumi:"session"`
+	// Specifies the TTL for generated cookies. Cannot be specified for session cookies.
+	Ttl *string `pulumi:"ttl"`
+}
+
+// ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigInput is an input type that accepts ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigArgs and ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigInput` via:
+//
+//	ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigArgs{...}
+type ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigOutput() ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigOutput
+	ToConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigOutputWithContext(context.Context) ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigOutput
+}
+
+type ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigArgs struct {
+	// Specifies the path to set for the cookie.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// Directs Consul to generate a session cookie with no expiration.
+	Session pulumi.BoolPtrInput `pulumi:"session"`
+	// Specifies the TTL for generated cookies. Cannot be specified for session cookies.
+	Ttl pulumi.StringPtrInput `pulumi:"ttl"`
+}
+
+func (ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfig)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigArgs) ToConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigOutput() ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigOutput {
+	return i.ToConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigArgs) ToConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigOutputWithContext(ctx context.Context) ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigOutput)
+}
+
+func (i ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfig] {
+	return pulumix.Output[ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfig]{
+		OutputState: i.ToConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigArrayInput is an input type that accepts ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigArray and ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigArrayOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigArrayInput` via:
+//
+//	ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigArray{ ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigArgs{...} }
+type ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigArrayInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigArrayOutput() ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigArrayOutput
+	ToConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigArrayOutputWithContext(context.Context) ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigArrayOutput
+}
+
+type ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigArray []ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigInput
+
+func (ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfig)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigArray) ToConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigArrayOutput() ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigArrayOutput {
+	return i.ToConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigArray) ToConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigArrayOutputWithContext(ctx context.Context) ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigArrayOutput)
+}
+
+func (i ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfig] {
+	return pulumix.Output[[]ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfig]{
+		OutputState: i.ToConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfig)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigOutput) ToConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigOutput() ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigOutput {
+	return o
+}
+
+func (o ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigOutput) ToConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigOutputWithContext(ctx context.Context) ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigOutput {
+	return o
+}
+
+func (o ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfig] {
+	return pulumix.Output[ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Specifies the path to set for the cookie.
+func (o ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfig) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// Directs Consul to generate a session cookie with no expiration.
+func (o ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigOutput) Session() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfig) *bool { return v.Session }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the TTL for generated cookies. Cannot be specified for session cookies.
+func (o ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigOutput) Ttl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfig) *string { return v.Ttl }).(pulumi.StringPtrOutput)
+}
+
+type ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfig)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigArrayOutput) ToConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigArrayOutput() ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigArrayOutput) ToConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigArrayOutputWithContext(ctx context.Context) ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfig] {
+	return pulumix.Output[[]ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigArrayOutput) Index(i pulumi.IntInput) ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfig {
+		return vs[0].([]ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfig)[vs[1].(int)]
+	}).(ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigOutput)
+}
+
+type ConfigEntryServiceResolverLoadBalancerLeastRequestConfig struct {
+	ChoiceCount *int `pulumi:"choiceCount"`
+}
+
+// ConfigEntryServiceResolverLoadBalancerLeastRequestConfigInput is an input type that accepts ConfigEntryServiceResolverLoadBalancerLeastRequestConfigArgs and ConfigEntryServiceResolverLoadBalancerLeastRequestConfigOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceResolverLoadBalancerLeastRequestConfigInput` via:
+//
+//	ConfigEntryServiceResolverLoadBalancerLeastRequestConfigArgs{...}
+type ConfigEntryServiceResolverLoadBalancerLeastRequestConfigInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceResolverLoadBalancerLeastRequestConfigOutput() ConfigEntryServiceResolverLoadBalancerLeastRequestConfigOutput
+	ToConfigEntryServiceResolverLoadBalancerLeastRequestConfigOutputWithContext(context.Context) ConfigEntryServiceResolverLoadBalancerLeastRequestConfigOutput
+}
+
+type ConfigEntryServiceResolverLoadBalancerLeastRequestConfigArgs struct {
+	ChoiceCount pulumi.IntPtrInput `pulumi:"choiceCount"`
+}
+
+func (ConfigEntryServiceResolverLoadBalancerLeastRequestConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceResolverLoadBalancerLeastRequestConfig)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceResolverLoadBalancerLeastRequestConfigArgs) ToConfigEntryServiceResolverLoadBalancerLeastRequestConfigOutput() ConfigEntryServiceResolverLoadBalancerLeastRequestConfigOutput {
+	return i.ToConfigEntryServiceResolverLoadBalancerLeastRequestConfigOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceResolverLoadBalancerLeastRequestConfigArgs) ToConfigEntryServiceResolverLoadBalancerLeastRequestConfigOutputWithContext(ctx context.Context) ConfigEntryServiceResolverLoadBalancerLeastRequestConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceResolverLoadBalancerLeastRequestConfigOutput)
+}
+
+func (i ConfigEntryServiceResolverLoadBalancerLeastRequestConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceResolverLoadBalancerLeastRequestConfig] {
+	return pulumix.Output[ConfigEntryServiceResolverLoadBalancerLeastRequestConfig]{
+		OutputState: i.ToConfigEntryServiceResolverLoadBalancerLeastRequestConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ConfigEntryServiceResolverLoadBalancerLeastRequestConfigArrayInput is an input type that accepts ConfigEntryServiceResolverLoadBalancerLeastRequestConfigArray and ConfigEntryServiceResolverLoadBalancerLeastRequestConfigArrayOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceResolverLoadBalancerLeastRequestConfigArrayInput` via:
+//
+//	ConfigEntryServiceResolverLoadBalancerLeastRequestConfigArray{ ConfigEntryServiceResolverLoadBalancerLeastRequestConfigArgs{...} }
+type ConfigEntryServiceResolverLoadBalancerLeastRequestConfigArrayInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceResolverLoadBalancerLeastRequestConfigArrayOutput() ConfigEntryServiceResolverLoadBalancerLeastRequestConfigArrayOutput
+	ToConfigEntryServiceResolverLoadBalancerLeastRequestConfigArrayOutputWithContext(context.Context) ConfigEntryServiceResolverLoadBalancerLeastRequestConfigArrayOutput
+}
+
+type ConfigEntryServiceResolverLoadBalancerLeastRequestConfigArray []ConfigEntryServiceResolverLoadBalancerLeastRequestConfigInput
+
+func (ConfigEntryServiceResolverLoadBalancerLeastRequestConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceResolverLoadBalancerLeastRequestConfig)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceResolverLoadBalancerLeastRequestConfigArray) ToConfigEntryServiceResolverLoadBalancerLeastRequestConfigArrayOutput() ConfigEntryServiceResolverLoadBalancerLeastRequestConfigArrayOutput {
+	return i.ToConfigEntryServiceResolverLoadBalancerLeastRequestConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceResolverLoadBalancerLeastRequestConfigArray) ToConfigEntryServiceResolverLoadBalancerLeastRequestConfigArrayOutputWithContext(ctx context.Context) ConfigEntryServiceResolverLoadBalancerLeastRequestConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceResolverLoadBalancerLeastRequestConfigArrayOutput)
+}
+
+func (i ConfigEntryServiceResolverLoadBalancerLeastRequestConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceResolverLoadBalancerLeastRequestConfig] {
+	return pulumix.Output[[]ConfigEntryServiceResolverLoadBalancerLeastRequestConfig]{
+		OutputState: i.ToConfigEntryServiceResolverLoadBalancerLeastRequestConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ConfigEntryServiceResolverLoadBalancerLeastRequestConfigOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceResolverLoadBalancerLeastRequestConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceResolverLoadBalancerLeastRequestConfig)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceResolverLoadBalancerLeastRequestConfigOutput) ToConfigEntryServiceResolverLoadBalancerLeastRequestConfigOutput() ConfigEntryServiceResolverLoadBalancerLeastRequestConfigOutput {
+	return o
+}
+
+func (o ConfigEntryServiceResolverLoadBalancerLeastRequestConfigOutput) ToConfigEntryServiceResolverLoadBalancerLeastRequestConfigOutputWithContext(ctx context.Context) ConfigEntryServiceResolverLoadBalancerLeastRequestConfigOutput {
+	return o
+}
+
+func (o ConfigEntryServiceResolverLoadBalancerLeastRequestConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceResolverLoadBalancerLeastRequestConfig] {
+	return pulumix.Output[ConfigEntryServiceResolverLoadBalancerLeastRequestConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConfigEntryServiceResolverLoadBalancerLeastRequestConfigOutput) ChoiceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceResolverLoadBalancerLeastRequestConfig) *int { return v.ChoiceCount }).(pulumi.IntPtrOutput)
+}
+
+type ConfigEntryServiceResolverLoadBalancerLeastRequestConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceResolverLoadBalancerLeastRequestConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceResolverLoadBalancerLeastRequestConfig)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceResolverLoadBalancerLeastRequestConfigArrayOutput) ToConfigEntryServiceResolverLoadBalancerLeastRequestConfigArrayOutput() ConfigEntryServiceResolverLoadBalancerLeastRequestConfigArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceResolverLoadBalancerLeastRequestConfigArrayOutput) ToConfigEntryServiceResolverLoadBalancerLeastRequestConfigArrayOutputWithContext(ctx context.Context) ConfigEntryServiceResolverLoadBalancerLeastRequestConfigArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceResolverLoadBalancerLeastRequestConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceResolverLoadBalancerLeastRequestConfig] {
+	return pulumix.Output[[]ConfigEntryServiceResolverLoadBalancerLeastRequestConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConfigEntryServiceResolverLoadBalancerLeastRequestConfigArrayOutput) Index(i pulumi.IntInput) ConfigEntryServiceResolverLoadBalancerLeastRequestConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConfigEntryServiceResolverLoadBalancerLeastRequestConfig {
+		return vs[0].([]ConfigEntryServiceResolverLoadBalancerLeastRequestConfig)[vs[1].(int)]
+	}).(ConfigEntryServiceResolverLoadBalancerLeastRequestConfigOutput)
+}
+
+type ConfigEntryServiceResolverLoadBalancerRingHashConfig struct {
+	// Determines the maximum number of entries in the hash ring.
+	MaximumRingSize *int `pulumi:"maximumRingSize"`
+	// Determines the minimum number of entries in the hash ring.
+	MinimumRingSize *int `pulumi:"minimumRingSize"`
+}
+
+// ConfigEntryServiceResolverLoadBalancerRingHashConfigInput is an input type that accepts ConfigEntryServiceResolverLoadBalancerRingHashConfigArgs and ConfigEntryServiceResolverLoadBalancerRingHashConfigOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceResolverLoadBalancerRingHashConfigInput` via:
+//
+//	ConfigEntryServiceResolverLoadBalancerRingHashConfigArgs{...}
+type ConfigEntryServiceResolverLoadBalancerRingHashConfigInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceResolverLoadBalancerRingHashConfigOutput() ConfigEntryServiceResolverLoadBalancerRingHashConfigOutput
+	ToConfigEntryServiceResolverLoadBalancerRingHashConfigOutputWithContext(context.Context) ConfigEntryServiceResolverLoadBalancerRingHashConfigOutput
+}
+
+type ConfigEntryServiceResolverLoadBalancerRingHashConfigArgs struct {
+	// Determines the maximum number of entries in the hash ring.
+	MaximumRingSize pulumi.IntPtrInput `pulumi:"maximumRingSize"`
+	// Determines the minimum number of entries in the hash ring.
+	MinimumRingSize pulumi.IntPtrInput `pulumi:"minimumRingSize"`
+}
+
+func (ConfigEntryServiceResolverLoadBalancerRingHashConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceResolverLoadBalancerRingHashConfig)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceResolverLoadBalancerRingHashConfigArgs) ToConfigEntryServiceResolverLoadBalancerRingHashConfigOutput() ConfigEntryServiceResolverLoadBalancerRingHashConfigOutput {
+	return i.ToConfigEntryServiceResolverLoadBalancerRingHashConfigOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceResolverLoadBalancerRingHashConfigArgs) ToConfigEntryServiceResolverLoadBalancerRingHashConfigOutputWithContext(ctx context.Context) ConfigEntryServiceResolverLoadBalancerRingHashConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceResolverLoadBalancerRingHashConfigOutput)
+}
+
+func (i ConfigEntryServiceResolverLoadBalancerRingHashConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceResolverLoadBalancerRingHashConfig] {
+	return pulumix.Output[ConfigEntryServiceResolverLoadBalancerRingHashConfig]{
+		OutputState: i.ToConfigEntryServiceResolverLoadBalancerRingHashConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ConfigEntryServiceResolverLoadBalancerRingHashConfigArrayInput is an input type that accepts ConfigEntryServiceResolverLoadBalancerRingHashConfigArray and ConfigEntryServiceResolverLoadBalancerRingHashConfigArrayOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceResolverLoadBalancerRingHashConfigArrayInput` via:
+//
+//	ConfigEntryServiceResolverLoadBalancerRingHashConfigArray{ ConfigEntryServiceResolverLoadBalancerRingHashConfigArgs{...} }
+type ConfigEntryServiceResolverLoadBalancerRingHashConfigArrayInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceResolverLoadBalancerRingHashConfigArrayOutput() ConfigEntryServiceResolverLoadBalancerRingHashConfigArrayOutput
+	ToConfigEntryServiceResolverLoadBalancerRingHashConfigArrayOutputWithContext(context.Context) ConfigEntryServiceResolverLoadBalancerRingHashConfigArrayOutput
+}
+
+type ConfigEntryServiceResolverLoadBalancerRingHashConfigArray []ConfigEntryServiceResolverLoadBalancerRingHashConfigInput
+
+func (ConfigEntryServiceResolverLoadBalancerRingHashConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceResolverLoadBalancerRingHashConfig)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceResolverLoadBalancerRingHashConfigArray) ToConfigEntryServiceResolverLoadBalancerRingHashConfigArrayOutput() ConfigEntryServiceResolverLoadBalancerRingHashConfigArrayOutput {
+	return i.ToConfigEntryServiceResolverLoadBalancerRingHashConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceResolverLoadBalancerRingHashConfigArray) ToConfigEntryServiceResolverLoadBalancerRingHashConfigArrayOutputWithContext(ctx context.Context) ConfigEntryServiceResolverLoadBalancerRingHashConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceResolverLoadBalancerRingHashConfigArrayOutput)
+}
+
+func (i ConfigEntryServiceResolverLoadBalancerRingHashConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceResolverLoadBalancerRingHashConfig] {
+	return pulumix.Output[[]ConfigEntryServiceResolverLoadBalancerRingHashConfig]{
+		OutputState: i.ToConfigEntryServiceResolverLoadBalancerRingHashConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ConfigEntryServiceResolverLoadBalancerRingHashConfigOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceResolverLoadBalancerRingHashConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceResolverLoadBalancerRingHashConfig)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceResolverLoadBalancerRingHashConfigOutput) ToConfigEntryServiceResolverLoadBalancerRingHashConfigOutput() ConfigEntryServiceResolverLoadBalancerRingHashConfigOutput {
+	return o
+}
+
+func (o ConfigEntryServiceResolverLoadBalancerRingHashConfigOutput) ToConfigEntryServiceResolverLoadBalancerRingHashConfigOutputWithContext(ctx context.Context) ConfigEntryServiceResolverLoadBalancerRingHashConfigOutput {
+	return o
+}
+
+func (o ConfigEntryServiceResolverLoadBalancerRingHashConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceResolverLoadBalancerRingHashConfig] {
+	return pulumix.Output[ConfigEntryServiceResolverLoadBalancerRingHashConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Determines the maximum number of entries in the hash ring.
+func (o ConfigEntryServiceResolverLoadBalancerRingHashConfigOutput) MaximumRingSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceResolverLoadBalancerRingHashConfig) *int { return v.MaximumRingSize }).(pulumi.IntPtrOutput)
+}
+
+// Determines the minimum number of entries in the hash ring.
+func (o ConfigEntryServiceResolverLoadBalancerRingHashConfigOutput) MinimumRingSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceResolverLoadBalancerRingHashConfig) *int { return v.MinimumRingSize }).(pulumi.IntPtrOutput)
+}
+
+type ConfigEntryServiceResolverLoadBalancerRingHashConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceResolverLoadBalancerRingHashConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceResolverLoadBalancerRingHashConfig)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceResolverLoadBalancerRingHashConfigArrayOutput) ToConfigEntryServiceResolverLoadBalancerRingHashConfigArrayOutput() ConfigEntryServiceResolverLoadBalancerRingHashConfigArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceResolverLoadBalancerRingHashConfigArrayOutput) ToConfigEntryServiceResolverLoadBalancerRingHashConfigArrayOutputWithContext(ctx context.Context) ConfigEntryServiceResolverLoadBalancerRingHashConfigArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceResolverLoadBalancerRingHashConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceResolverLoadBalancerRingHashConfig] {
+	return pulumix.Output[[]ConfigEntryServiceResolverLoadBalancerRingHashConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConfigEntryServiceResolverLoadBalancerRingHashConfigArrayOutput) Index(i pulumi.IntInput) ConfigEntryServiceResolverLoadBalancerRingHashConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConfigEntryServiceResolverLoadBalancerRingHashConfig {
+		return vs[0].([]ConfigEntryServiceResolverLoadBalancerRingHashConfig)[vs[1].(int)]
+	}).(ConfigEntryServiceResolverLoadBalancerRingHashConfigOutput)
+}
+
+type ConfigEntryServiceResolverRedirect struct {
+	// Specifies the datacenter at the redirect’s destination that resolves local upstream requests.
+	Datacenter *string `pulumi:"datacenter"`
+	// Specifies the namespace at the redirect’s destination that resolves local upstream requests.
+	Namespace *string `pulumi:"namespace"`
+	// Specifies the admin partition at the redirect’s destination that resolves local upstream requests.
+	Partition *string `pulumi:"partition"`
+	// Specifies the cluster with an active cluster peering connection at the redirect’s destination that resolves local upstream requests.
+	Peer *string `pulumi:"peer"`
+	// Specifies the sameness group at the redirect’s destination that resolves local upstream requests.
+	SamenessGroup *string `pulumi:"samenessGroup"`
+	// Specifies the name of a service at the redirect’s destination that resolves local upstream requests.
+	Service *string `pulumi:"service"`
+	// Specifies the name of a subset of services at the redirect’s destination that resolves local upstream requests. If empty, the default subset is used. If specified, you must also specify at least one of the following in the same Redirect map: Service, Namespace, andDatacenter.
+	ServiceSubset *string `pulumi:"serviceSubset"`
+}
+
+// ConfigEntryServiceResolverRedirectInput is an input type that accepts ConfigEntryServiceResolverRedirectArgs and ConfigEntryServiceResolverRedirectOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceResolverRedirectInput` via:
+//
+//	ConfigEntryServiceResolverRedirectArgs{...}
+type ConfigEntryServiceResolverRedirectInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceResolverRedirectOutput() ConfigEntryServiceResolverRedirectOutput
+	ToConfigEntryServiceResolverRedirectOutputWithContext(context.Context) ConfigEntryServiceResolverRedirectOutput
+}
+
+type ConfigEntryServiceResolverRedirectArgs struct {
+	// Specifies the datacenter at the redirect’s destination that resolves local upstream requests.
+	Datacenter pulumi.StringPtrInput `pulumi:"datacenter"`
+	// Specifies the namespace at the redirect’s destination that resolves local upstream requests.
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	// Specifies the admin partition at the redirect’s destination that resolves local upstream requests.
+	Partition pulumi.StringPtrInput `pulumi:"partition"`
+	// Specifies the cluster with an active cluster peering connection at the redirect’s destination that resolves local upstream requests.
+	Peer pulumi.StringPtrInput `pulumi:"peer"`
+	// Specifies the sameness group at the redirect’s destination that resolves local upstream requests.
+	SamenessGroup pulumi.StringPtrInput `pulumi:"samenessGroup"`
+	// Specifies the name of a service at the redirect’s destination that resolves local upstream requests.
+	Service pulumi.StringPtrInput `pulumi:"service"`
+	// Specifies the name of a subset of services at the redirect’s destination that resolves local upstream requests. If empty, the default subset is used. If specified, you must also specify at least one of the following in the same Redirect map: Service, Namespace, andDatacenter.
+	ServiceSubset pulumi.StringPtrInput `pulumi:"serviceSubset"`
+}
+
+func (ConfigEntryServiceResolverRedirectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceResolverRedirect)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceResolverRedirectArgs) ToConfigEntryServiceResolverRedirectOutput() ConfigEntryServiceResolverRedirectOutput {
+	return i.ToConfigEntryServiceResolverRedirectOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceResolverRedirectArgs) ToConfigEntryServiceResolverRedirectOutputWithContext(ctx context.Context) ConfigEntryServiceResolverRedirectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceResolverRedirectOutput)
+}
+
+func (i ConfigEntryServiceResolverRedirectArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceResolverRedirect] {
+	return pulumix.Output[ConfigEntryServiceResolverRedirect]{
+		OutputState: i.ToConfigEntryServiceResolverRedirectOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ConfigEntryServiceResolverRedirectArrayInput is an input type that accepts ConfigEntryServiceResolverRedirectArray and ConfigEntryServiceResolverRedirectArrayOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceResolverRedirectArrayInput` via:
+//
+//	ConfigEntryServiceResolverRedirectArray{ ConfigEntryServiceResolverRedirectArgs{...} }
+type ConfigEntryServiceResolverRedirectArrayInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceResolverRedirectArrayOutput() ConfigEntryServiceResolverRedirectArrayOutput
+	ToConfigEntryServiceResolverRedirectArrayOutputWithContext(context.Context) ConfigEntryServiceResolverRedirectArrayOutput
+}
+
+type ConfigEntryServiceResolverRedirectArray []ConfigEntryServiceResolverRedirectInput
+
+func (ConfigEntryServiceResolverRedirectArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceResolverRedirect)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceResolverRedirectArray) ToConfigEntryServiceResolverRedirectArrayOutput() ConfigEntryServiceResolverRedirectArrayOutput {
+	return i.ToConfigEntryServiceResolverRedirectArrayOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceResolverRedirectArray) ToConfigEntryServiceResolverRedirectArrayOutputWithContext(ctx context.Context) ConfigEntryServiceResolverRedirectArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceResolverRedirectArrayOutput)
+}
+
+func (i ConfigEntryServiceResolverRedirectArray) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceResolverRedirect] {
+	return pulumix.Output[[]ConfigEntryServiceResolverRedirect]{
+		OutputState: i.ToConfigEntryServiceResolverRedirectArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ConfigEntryServiceResolverRedirectOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceResolverRedirectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceResolverRedirect)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceResolverRedirectOutput) ToConfigEntryServiceResolverRedirectOutput() ConfigEntryServiceResolverRedirectOutput {
+	return o
+}
+
+func (o ConfigEntryServiceResolverRedirectOutput) ToConfigEntryServiceResolverRedirectOutputWithContext(ctx context.Context) ConfigEntryServiceResolverRedirectOutput {
+	return o
+}
+
+func (o ConfigEntryServiceResolverRedirectOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceResolverRedirect] {
+	return pulumix.Output[ConfigEntryServiceResolverRedirect]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Specifies the datacenter at the redirect’s destination that resolves local upstream requests.
+func (o ConfigEntryServiceResolverRedirectOutput) Datacenter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceResolverRedirect) *string { return v.Datacenter }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the namespace at the redirect’s destination that resolves local upstream requests.
+func (o ConfigEntryServiceResolverRedirectOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceResolverRedirect) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the admin partition at the redirect’s destination that resolves local upstream requests.
+func (o ConfigEntryServiceResolverRedirectOutput) Partition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceResolverRedirect) *string { return v.Partition }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the cluster with an active cluster peering connection at the redirect’s destination that resolves local upstream requests.
+func (o ConfigEntryServiceResolverRedirectOutput) Peer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceResolverRedirect) *string { return v.Peer }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the sameness group at the redirect’s destination that resolves local upstream requests.
+func (o ConfigEntryServiceResolverRedirectOutput) SamenessGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceResolverRedirect) *string { return v.SamenessGroup }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the name of a service at the redirect’s destination that resolves local upstream requests.
+func (o ConfigEntryServiceResolverRedirectOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceResolverRedirect) *string { return v.Service }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the name of a subset of services at the redirect’s destination that resolves local upstream requests. If empty, the default subset is used. If specified, you must also specify at least one of the following in the same Redirect map: Service, Namespace, andDatacenter.
+func (o ConfigEntryServiceResolverRedirectOutput) ServiceSubset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceResolverRedirect) *string { return v.ServiceSubset }).(pulumi.StringPtrOutput)
+}
+
+type ConfigEntryServiceResolverRedirectArrayOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceResolverRedirectArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceResolverRedirect)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceResolverRedirectArrayOutput) ToConfigEntryServiceResolverRedirectArrayOutput() ConfigEntryServiceResolverRedirectArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceResolverRedirectArrayOutput) ToConfigEntryServiceResolverRedirectArrayOutputWithContext(ctx context.Context) ConfigEntryServiceResolverRedirectArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceResolverRedirectArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceResolverRedirect] {
+	return pulumix.Output[[]ConfigEntryServiceResolverRedirect]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConfigEntryServiceResolverRedirectArrayOutput) Index(i pulumi.IntInput) ConfigEntryServiceResolverRedirectOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConfigEntryServiceResolverRedirect {
+		return vs[0].([]ConfigEntryServiceResolverRedirect)[vs[1].(int)]
+	}).(ConfigEntryServiceResolverRedirectOutput)
+}
+
+type ConfigEntryServiceResolverSubset struct {
+	// Specifies an expression that filters the DNS elements of service instances that belong to the subset. If empty, all healthy instances of a service are returned.
+	Filter string `pulumi:"filter"`
+	// Name of subset.
+	Name string `pulumi:"name"`
+	// Determines if instances that return a warning from a health check are allowed to resolve a request. When set to false, instances with passing and warning states are considered healthy. When set to true, only instances with a passing health check state are considered healthy.
+	OnlyPassing bool `pulumi:"onlyPassing"`
+}
+
+// ConfigEntryServiceResolverSubsetInput is an input type that accepts ConfigEntryServiceResolverSubsetArgs and ConfigEntryServiceResolverSubsetOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceResolverSubsetInput` via:
+//
+//	ConfigEntryServiceResolverSubsetArgs{...}
+type ConfigEntryServiceResolverSubsetInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceResolverSubsetOutput() ConfigEntryServiceResolverSubsetOutput
+	ToConfigEntryServiceResolverSubsetOutputWithContext(context.Context) ConfigEntryServiceResolverSubsetOutput
+}
+
+type ConfigEntryServiceResolverSubsetArgs struct {
+	// Specifies an expression that filters the DNS elements of service instances that belong to the subset. If empty, all healthy instances of a service are returned.
+	Filter pulumi.StringInput `pulumi:"filter"`
+	// Name of subset.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Determines if instances that return a warning from a health check are allowed to resolve a request. When set to false, instances with passing and warning states are considered healthy. When set to true, only instances with a passing health check state are considered healthy.
+	OnlyPassing pulumi.BoolInput `pulumi:"onlyPassing"`
+}
+
+func (ConfigEntryServiceResolverSubsetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceResolverSubset)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceResolverSubsetArgs) ToConfigEntryServiceResolverSubsetOutput() ConfigEntryServiceResolverSubsetOutput {
+	return i.ToConfigEntryServiceResolverSubsetOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceResolverSubsetArgs) ToConfigEntryServiceResolverSubsetOutputWithContext(ctx context.Context) ConfigEntryServiceResolverSubsetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceResolverSubsetOutput)
+}
+
+func (i ConfigEntryServiceResolverSubsetArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceResolverSubset] {
+	return pulumix.Output[ConfigEntryServiceResolverSubset]{
+		OutputState: i.ToConfigEntryServiceResolverSubsetOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ConfigEntryServiceResolverSubsetArrayInput is an input type that accepts ConfigEntryServiceResolverSubsetArray and ConfigEntryServiceResolverSubsetArrayOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceResolverSubsetArrayInput` via:
+//
+//	ConfigEntryServiceResolverSubsetArray{ ConfigEntryServiceResolverSubsetArgs{...} }
+type ConfigEntryServiceResolverSubsetArrayInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceResolverSubsetArrayOutput() ConfigEntryServiceResolverSubsetArrayOutput
+	ToConfigEntryServiceResolverSubsetArrayOutputWithContext(context.Context) ConfigEntryServiceResolverSubsetArrayOutput
+}
+
+type ConfigEntryServiceResolverSubsetArray []ConfigEntryServiceResolverSubsetInput
+
+func (ConfigEntryServiceResolverSubsetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceResolverSubset)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceResolverSubsetArray) ToConfigEntryServiceResolverSubsetArrayOutput() ConfigEntryServiceResolverSubsetArrayOutput {
+	return i.ToConfigEntryServiceResolverSubsetArrayOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceResolverSubsetArray) ToConfigEntryServiceResolverSubsetArrayOutputWithContext(ctx context.Context) ConfigEntryServiceResolverSubsetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceResolverSubsetArrayOutput)
+}
+
+func (i ConfigEntryServiceResolverSubsetArray) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceResolverSubset] {
+	return pulumix.Output[[]ConfigEntryServiceResolverSubset]{
+		OutputState: i.ToConfigEntryServiceResolverSubsetArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ConfigEntryServiceResolverSubsetOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceResolverSubsetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceResolverSubset)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceResolverSubsetOutput) ToConfigEntryServiceResolverSubsetOutput() ConfigEntryServiceResolverSubsetOutput {
+	return o
+}
+
+func (o ConfigEntryServiceResolverSubsetOutput) ToConfigEntryServiceResolverSubsetOutputWithContext(ctx context.Context) ConfigEntryServiceResolverSubsetOutput {
+	return o
+}
+
+func (o ConfigEntryServiceResolverSubsetOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceResolverSubset] {
+	return pulumix.Output[ConfigEntryServiceResolverSubset]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Specifies an expression that filters the DNS elements of service instances that belong to the subset. If empty, all healthy instances of a service are returned.
+func (o ConfigEntryServiceResolverSubsetOutput) Filter() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigEntryServiceResolverSubset) string { return v.Filter }).(pulumi.StringOutput)
+}
+
+// Name of subset.
+func (o ConfigEntryServiceResolverSubsetOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigEntryServiceResolverSubset) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Determines if instances that return a warning from a health check are allowed to resolve a request. When set to false, instances with passing and warning states are considered healthy. When set to true, only instances with a passing health check state are considered healthy.
+func (o ConfigEntryServiceResolverSubsetOutput) OnlyPassing() pulumi.BoolOutput {
+	return o.ApplyT(func(v ConfigEntryServiceResolverSubset) bool { return v.OnlyPassing }).(pulumi.BoolOutput)
+}
+
+type ConfigEntryServiceResolverSubsetArrayOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceResolverSubsetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceResolverSubset)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceResolverSubsetArrayOutput) ToConfigEntryServiceResolverSubsetArrayOutput() ConfigEntryServiceResolverSubsetArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceResolverSubsetArrayOutput) ToConfigEntryServiceResolverSubsetArrayOutputWithContext(ctx context.Context) ConfigEntryServiceResolverSubsetArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceResolverSubsetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceResolverSubset] {
+	return pulumix.Output[[]ConfigEntryServiceResolverSubset]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConfigEntryServiceResolverSubsetArrayOutput) Index(i pulumi.IntInput) ConfigEntryServiceResolverSubsetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConfigEntryServiceResolverSubset {
+		return vs[0].([]ConfigEntryServiceResolverSubset)[vs[1].(int)]
+	}).(ConfigEntryServiceResolverSubsetOutput)
+}
+
+type ConfigEntryServiceRouterRoute struct {
+	// Specifies the target service to route matching requests to, as well as behavior for the request to follow when routed.
+	Destination *ConfigEntryServiceRouterRouteDestination `pulumi:"destination"`
+	// Describes a set of criteria that Consul compares incoming L7 traffic with.
+	Match *ConfigEntryServiceRouterRouteMatch `pulumi:"match"`
+}
+
+// ConfigEntryServiceRouterRouteInput is an input type that accepts ConfigEntryServiceRouterRouteArgs and ConfigEntryServiceRouterRouteOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceRouterRouteInput` via:
+//
+//	ConfigEntryServiceRouterRouteArgs{...}
+type ConfigEntryServiceRouterRouteInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceRouterRouteOutput() ConfigEntryServiceRouterRouteOutput
+	ToConfigEntryServiceRouterRouteOutputWithContext(context.Context) ConfigEntryServiceRouterRouteOutput
+}
+
+type ConfigEntryServiceRouterRouteArgs struct {
+	// Specifies the target service to route matching requests to, as well as behavior for the request to follow when routed.
+	Destination ConfigEntryServiceRouterRouteDestinationPtrInput `pulumi:"destination"`
+	// Describes a set of criteria that Consul compares incoming L7 traffic with.
+	Match ConfigEntryServiceRouterRouteMatchPtrInput `pulumi:"match"`
+}
+
+func (ConfigEntryServiceRouterRouteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceRouterRoute)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceRouterRouteArgs) ToConfigEntryServiceRouterRouteOutput() ConfigEntryServiceRouterRouteOutput {
+	return i.ToConfigEntryServiceRouterRouteOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceRouterRouteArgs) ToConfigEntryServiceRouterRouteOutputWithContext(ctx context.Context) ConfigEntryServiceRouterRouteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceRouterRouteOutput)
+}
+
+func (i ConfigEntryServiceRouterRouteArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceRouterRoute] {
+	return pulumix.Output[ConfigEntryServiceRouterRoute]{
+		OutputState: i.ToConfigEntryServiceRouterRouteOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ConfigEntryServiceRouterRouteArrayInput is an input type that accepts ConfigEntryServiceRouterRouteArray and ConfigEntryServiceRouterRouteArrayOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceRouterRouteArrayInput` via:
+//
+//	ConfigEntryServiceRouterRouteArray{ ConfigEntryServiceRouterRouteArgs{...} }
+type ConfigEntryServiceRouterRouteArrayInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceRouterRouteArrayOutput() ConfigEntryServiceRouterRouteArrayOutput
+	ToConfigEntryServiceRouterRouteArrayOutputWithContext(context.Context) ConfigEntryServiceRouterRouteArrayOutput
+}
+
+type ConfigEntryServiceRouterRouteArray []ConfigEntryServiceRouterRouteInput
+
+func (ConfigEntryServiceRouterRouteArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceRouterRoute)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceRouterRouteArray) ToConfigEntryServiceRouterRouteArrayOutput() ConfigEntryServiceRouterRouteArrayOutput {
+	return i.ToConfigEntryServiceRouterRouteArrayOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceRouterRouteArray) ToConfigEntryServiceRouterRouteArrayOutputWithContext(ctx context.Context) ConfigEntryServiceRouterRouteArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceRouterRouteArrayOutput)
+}
+
+func (i ConfigEntryServiceRouterRouteArray) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceRouterRoute] {
+	return pulumix.Output[[]ConfigEntryServiceRouterRoute]{
+		OutputState: i.ToConfigEntryServiceRouterRouteArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ConfigEntryServiceRouterRouteOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceRouterRouteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceRouterRoute)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceRouterRouteOutput) ToConfigEntryServiceRouterRouteOutput() ConfigEntryServiceRouterRouteOutput {
+	return o
+}
+
+func (o ConfigEntryServiceRouterRouteOutput) ToConfigEntryServiceRouterRouteOutputWithContext(ctx context.Context) ConfigEntryServiceRouterRouteOutput {
+	return o
+}
+
+func (o ConfigEntryServiceRouterRouteOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceRouterRoute] {
+	return pulumix.Output[ConfigEntryServiceRouterRoute]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Specifies the target service to route matching requests to, as well as behavior for the request to follow when routed.
+func (o ConfigEntryServiceRouterRouteOutput) Destination() ConfigEntryServiceRouterRouteDestinationPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceRouterRoute) *ConfigEntryServiceRouterRouteDestination { return v.Destination }).(ConfigEntryServiceRouterRouteDestinationPtrOutput)
+}
+
+// Describes a set of criteria that Consul compares incoming L7 traffic with.
+func (o ConfigEntryServiceRouterRouteOutput) Match() ConfigEntryServiceRouterRouteMatchPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceRouterRoute) *ConfigEntryServiceRouterRouteMatch { return v.Match }).(ConfigEntryServiceRouterRouteMatchPtrOutput)
+}
+
+type ConfigEntryServiceRouterRouteArrayOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceRouterRouteArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceRouterRoute)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceRouterRouteArrayOutput) ToConfigEntryServiceRouterRouteArrayOutput() ConfigEntryServiceRouterRouteArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceRouterRouteArrayOutput) ToConfigEntryServiceRouterRouteArrayOutputWithContext(ctx context.Context) ConfigEntryServiceRouterRouteArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceRouterRouteArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceRouterRoute] {
+	return pulumix.Output[[]ConfigEntryServiceRouterRoute]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConfigEntryServiceRouterRouteArrayOutput) Index(i pulumi.IntInput) ConfigEntryServiceRouterRouteOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConfigEntryServiceRouterRoute {
+		return vs[0].([]ConfigEntryServiceRouterRoute)[vs[1].(int)]
+	}).(ConfigEntryServiceRouterRouteOutput)
+}
+
+type ConfigEntryServiceRouterRouteDestination struct {
+	// Specifies the total amount of time permitted for the request stream to be idle.
+	IdleTimeout *string `pulumi:"idleTimeout"`
+	// Specifies the Consul namespace to resolve the service from instead of the current namespace.
+	Namespace *string `pulumi:"namespace"`
+	// Specifies the number of times to retry the request when a retry condition occurs.
+	NumRetries *int `pulumi:"numRetries"`
+	// Specifies the Consul admin partition to resolve the service from instead of the current partition.
+	Partition *string `pulumi:"partition"`
+	// Specifies rewrites to the HTTP request path before proxying it to its final destination.
+	PrefixRewrite *string `pulumi:"prefixRewrite"`
+	// Specifies a set of HTTP-specific header modification rules applied to requests routed with the service router.
+	RequestHeaders *ConfigEntryServiceRouterRouteDestinationRequestHeaders `pulumi:"requestHeaders"`
+	// Specifies the total amount of time permitted for the entire downstream request to be processed, including retry attempts.
+	RequestTimeout *string `pulumi:"requestTimeout"`
+	// Specifies a set of HTTP-specific header modification rules applied to responses routed with the service router.
+	ResponseHeaders *ConfigEntryServiceRouterRouteDestinationResponseHeaders `pulumi:"responseHeaders"`
+	// Specifies that connection failure errors that trigger a retry request.
+	RetryOnConnectFailure *bool `pulumi:"retryOnConnectFailure"`
+	// Specifies a list of integers for HTTP response status codes that trigger a retry request.
+	RetryOnStatusCodes []int `pulumi:"retryOnStatusCodes"`
+	// Specifies a list of conditions for Consul to retry requests based on the response from an upstream service.
+	RetryOns []string `pulumi:"retryOns"`
+	// Specifies the name of the service to resolve.
+	Service *string `pulumi:"service"`
+	// Specifies a named subset of the given service to resolve instead of the one defined as that service's `defaultSubset` in the service resolver configuration entry.
+	ServiceSubset *string `pulumi:"serviceSubset"`
+}
+
+// ConfigEntryServiceRouterRouteDestinationInput is an input type that accepts ConfigEntryServiceRouterRouteDestinationArgs and ConfigEntryServiceRouterRouteDestinationOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceRouterRouteDestinationInput` via:
+//
+//	ConfigEntryServiceRouterRouteDestinationArgs{...}
+type ConfigEntryServiceRouterRouteDestinationInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceRouterRouteDestinationOutput() ConfigEntryServiceRouterRouteDestinationOutput
+	ToConfigEntryServiceRouterRouteDestinationOutputWithContext(context.Context) ConfigEntryServiceRouterRouteDestinationOutput
+}
+
+type ConfigEntryServiceRouterRouteDestinationArgs struct {
+	// Specifies the total amount of time permitted for the request stream to be idle.
+	IdleTimeout pulumi.StringPtrInput `pulumi:"idleTimeout"`
+	// Specifies the Consul namespace to resolve the service from instead of the current namespace.
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	// Specifies the number of times to retry the request when a retry condition occurs.
+	NumRetries pulumi.IntPtrInput `pulumi:"numRetries"`
+	// Specifies the Consul admin partition to resolve the service from instead of the current partition.
+	Partition pulumi.StringPtrInput `pulumi:"partition"`
+	// Specifies rewrites to the HTTP request path before proxying it to its final destination.
+	PrefixRewrite pulumi.StringPtrInput `pulumi:"prefixRewrite"`
+	// Specifies a set of HTTP-specific header modification rules applied to requests routed with the service router.
+	RequestHeaders ConfigEntryServiceRouterRouteDestinationRequestHeadersPtrInput `pulumi:"requestHeaders"`
+	// Specifies the total amount of time permitted for the entire downstream request to be processed, including retry attempts.
+	RequestTimeout pulumi.StringPtrInput `pulumi:"requestTimeout"`
+	// Specifies a set of HTTP-specific header modification rules applied to responses routed with the service router.
+	ResponseHeaders ConfigEntryServiceRouterRouteDestinationResponseHeadersPtrInput `pulumi:"responseHeaders"`
+	// Specifies that connection failure errors that trigger a retry request.
+	RetryOnConnectFailure pulumi.BoolPtrInput `pulumi:"retryOnConnectFailure"`
+	// Specifies a list of integers for HTTP response status codes that trigger a retry request.
+	RetryOnStatusCodes pulumi.IntArrayInput `pulumi:"retryOnStatusCodes"`
+	// Specifies a list of conditions for Consul to retry requests based on the response from an upstream service.
+	RetryOns pulumi.StringArrayInput `pulumi:"retryOns"`
+	// Specifies the name of the service to resolve.
+	Service pulumi.StringPtrInput `pulumi:"service"`
+	// Specifies a named subset of the given service to resolve instead of the one defined as that service's `defaultSubset` in the service resolver configuration entry.
+	ServiceSubset pulumi.StringPtrInput `pulumi:"serviceSubset"`
+}
+
+func (ConfigEntryServiceRouterRouteDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceRouterRouteDestination)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceRouterRouteDestinationArgs) ToConfigEntryServiceRouterRouteDestinationOutput() ConfigEntryServiceRouterRouteDestinationOutput {
+	return i.ToConfigEntryServiceRouterRouteDestinationOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceRouterRouteDestinationArgs) ToConfigEntryServiceRouterRouteDestinationOutputWithContext(ctx context.Context) ConfigEntryServiceRouterRouteDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceRouterRouteDestinationOutput)
+}
+
+func (i ConfigEntryServiceRouterRouteDestinationArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceRouterRouteDestination] {
+	return pulumix.Output[ConfigEntryServiceRouterRouteDestination]{
+		OutputState: i.ToConfigEntryServiceRouterRouteDestinationOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ConfigEntryServiceRouterRouteDestinationArgs) ToConfigEntryServiceRouterRouteDestinationPtrOutput() ConfigEntryServiceRouterRouteDestinationPtrOutput {
+	return i.ToConfigEntryServiceRouterRouteDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceRouterRouteDestinationArgs) ToConfigEntryServiceRouterRouteDestinationPtrOutputWithContext(ctx context.Context) ConfigEntryServiceRouterRouteDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceRouterRouteDestinationOutput).ToConfigEntryServiceRouterRouteDestinationPtrOutputWithContext(ctx)
+}
+
+// ConfigEntryServiceRouterRouteDestinationPtrInput is an input type that accepts ConfigEntryServiceRouterRouteDestinationArgs, ConfigEntryServiceRouterRouteDestinationPtr and ConfigEntryServiceRouterRouteDestinationPtrOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceRouterRouteDestinationPtrInput` via:
+//
+//	        ConfigEntryServiceRouterRouteDestinationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConfigEntryServiceRouterRouteDestinationPtrInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceRouterRouteDestinationPtrOutput() ConfigEntryServiceRouterRouteDestinationPtrOutput
+	ToConfigEntryServiceRouterRouteDestinationPtrOutputWithContext(context.Context) ConfigEntryServiceRouterRouteDestinationPtrOutput
+}
+
+type configEntryServiceRouterRouteDestinationPtrType ConfigEntryServiceRouterRouteDestinationArgs
+
+func ConfigEntryServiceRouterRouteDestinationPtr(v *ConfigEntryServiceRouterRouteDestinationArgs) ConfigEntryServiceRouterRouteDestinationPtrInput {
+	return (*configEntryServiceRouterRouteDestinationPtrType)(v)
+}
+
+func (*configEntryServiceRouterRouteDestinationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigEntryServiceRouterRouteDestination)(nil)).Elem()
+}
+
+func (i *configEntryServiceRouterRouteDestinationPtrType) ToConfigEntryServiceRouterRouteDestinationPtrOutput() ConfigEntryServiceRouterRouteDestinationPtrOutput {
+	return i.ToConfigEntryServiceRouterRouteDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i *configEntryServiceRouterRouteDestinationPtrType) ToConfigEntryServiceRouterRouteDestinationPtrOutputWithContext(ctx context.Context) ConfigEntryServiceRouterRouteDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceRouterRouteDestinationPtrOutput)
+}
+
+func (i *configEntryServiceRouterRouteDestinationPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConfigEntryServiceRouterRouteDestination] {
+	return pulumix.Output[*ConfigEntryServiceRouterRouteDestination]{
+		OutputState: i.ToConfigEntryServiceRouterRouteDestinationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ConfigEntryServiceRouterRouteDestinationOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceRouterRouteDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceRouterRouteDestination)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceRouterRouteDestinationOutput) ToConfigEntryServiceRouterRouteDestinationOutput() ConfigEntryServiceRouterRouteDestinationOutput {
+	return o
+}
+
+func (o ConfigEntryServiceRouterRouteDestinationOutput) ToConfigEntryServiceRouterRouteDestinationOutputWithContext(ctx context.Context) ConfigEntryServiceRouterRouteDestinationOutput {
+	return o
+}
+
+func (o ConfigEntryServiceRouterRouteDestinationOutput) ToConfigEntryServiceRouterRouteDestinationPtrOutput() ConfigEntryServiceRouterRouteDestinationPtrOutput {
+	return o.ToConfigEntryServiceRouterRouteDestinationPtrOutputWithContext(context.Background())
+}
+
+func (o ConfigEntryServiceRouterRouteDestinationOutput) ToConfigEntryServiceRouterRouteDestinationPtrOutputWithContext(ctx context.Context) ConfigEntryServiceRouterRouteDestinationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigEntryServiceRouterRouteDestination) *ConfigEntryServiceRouterRouteDestination {
+		return &v
+	}).(ConfigEntryServiceRouterRouteDestinationPtrOutput)
+}
+
+func (o ConfigEntryServiceRouterRouteDestinationOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceRouterRouteDestination] {
+	return pulumix.Output[ConfigEntryServiceRouterRouteDestination]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Specifies the total amount of time permitted for the request stream to be idle.
+func (o ConfigEntryServiceRouterRouteDestinationOutput) IdleTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceRouterRouteDestination) *string { return v.IdleTimeout }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the Consul namespace to resolve the service from instead of the current namespace.
+func (o ConfigEntryServiceRouterRouteDestinationOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceRouterRouteDestination) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the number of times to retry the request when a retry condition occurs.
+func (o ConfigEntryServiceRouterRouteDestinationOutput) NumRetries() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceRouterRouteDestination) *int { return v.NumRetries }).(pulumi.IntPtrOutput)
+}
+
+// Specifies the Consul admin partition to resolve the service from instead of the current partition.
+func (o ConfigEntryServiceRouterRouteDestinationOutput) Partition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceRouterRouteDestination) *string { return v.Partition }).(pulumi.StringPtrOutput)
+}
+
+// Specifies rewrites to the HTTP request path before proxying it to its final destination.
+func (o ConfigEntryServiceRouterRouteDestinationOutput) PrefixRewrite() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceRouterRouteDestination) *string { return v.PrefixRewrite }).(pulumi.StringPtrOutput)
+}
+
+// Specifies a set of HTTP-specific header modification rules applied to requests routed with the service router.
+func (o ConfigEntryServiceRouterRouteDestinationOutput) RequestHeaders() ConfigEntryServiceRouterRouteDestinationRequestHeadersPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceRouterRouteDestination) *ConfigEntryServiceRouterRouteDestinationRequestHeaders {
+		return v.RequestHeaders
+	}).(ConfigEntryServiceRouterRouteDestinationRequestHeadersPtrOutput)
+}
+
+// Specifies the total amount of time permitted for the entire downstream request to be processed, including retry attempts.
+func (o ConfigEntryServiceRouterRouteDestinationOutput) RequestTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceRouterRouteDestination) *string { return v.RequestTimeout }).(pulumi.StringPtrOutput)
+}
+
+// Specifies a set of HTTP-specific header modification rules applied to responses routed with the service router.
+func (o ConfigEntryServiceRouterRouteDestinationOutput) ResponseHeaders() ConfigEntryServiceRouterRouteDestinationResponseHeadersPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceRouterRouteDestination) *ConfigEntryServiceRouterRouteDestinationResponseHeaders {
+		return v.ResponseHeaders
+	}).(ConfigEntryServiceRouterRouteDestinationResponseHeadersPtrOutput)
+}
+
+// Specifies that connection failure errors that trigger a retry request.
+func (o ConfigEntryServiceRouterRouteDestinationOutput) RetryOnConnectFailure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceRouterRouteDestination) *bool { return v.RetryOnConnectFailure }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies a list of integers for HTTP response status codes that trigger a retry request.
+func (o ConfigEntryServiceRouterRouteDestinationOutput) RetryOnStatusCodes() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v ConfigEntryServiceRouterRouteDestination) []int { return v.RetryOnStatusCodes }).(pulumi.IntArrayOutput)
+}
+
+// Specifies a list of conditions for Consul to retry requests based on the response from an upstream service.
+func (o ConfigEntryServiceRouterRouteDestinationOutput) RetryOns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConfigEntryServiceRouterRouteDestination) []string { return v.RetryOns }).(pulumi.StringArrayOutput)
+}
+
+// Specifies the name of the service to resolve.
+func (o ConfigEntryServiceRouterRouteDestinationOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceRouterRouteDestination) *string { return v.Service }).(pulumi.StringPtrOutput)
+}
+
+// Specifies a named subset of the given service to resolve instead of the one defined as that service's `defaultSubset` in the service resolver configuration entry.
+func (o ConfigEntryServiceRouterRouteDestinationOutput) ServiceSubset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceRouterRouteDestination) *string { return v.ServiceSubset }).(pulumi.StringPtrOutput)
+}
+
+type ConfigEntryServiceRouterRouteDestinationPtrOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceRouterRouteDestinationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigEntryServiceRouterRouteDestination)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceRouterRouteDestinationPtrOutput) ToConfigEntryServiceRouterRouteDestinationPtrOutput() ConfigEntryServiceRouterRouteDestinationPtrOutput {
+	return o
+}
+
+func (o ConfigEntryServiceRouterRouteDestinationPtrOutput) ToConfigEntryServiceRouterRouteDestinationPtrOutputWithContext(ctx context.Context) ConfigEntryServiceRouterRouteDestinationPtrOutput {
+	return o
+}
+
+func (o ConfigEntryServiceRouterRouteDestinationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConfigEntryServiceRouterRouteDestination] {
+	return pulumix.Output[*ConfigEntryServiceRouterRouteDestination]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConfigEntryServiceRouterRouteDestinationPtrOutput) Elem() ConfigEntryServiceRouterRouteDestinationOutput {
+	return o.ApplyT(func(v *ConfigEntryServiceRouterRouteDestination) ConfigEntryServiceRouterRouteDestination {
+		if v != nil {
+			return *v
+		}
+		var ret ConfigEntryServiceRouterRouteDestination
+		return ret
+	}).(ConfigEntryServiceRouterRouteDestinationOutput)
+}
+
+// Specifies the total amount of time permitted for the request stream to be idle.
+func (o ConfigEntryServiceRouterRouteDestinationPtrOutput) IdleTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfigEntryServiceRouterRouteDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdleTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the Consul namespace to resolve the service from instead of the current namespace.
+func (o ConfigEntryServiceRouterRouteDestinationPtrOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfigEntryServiceRouterRouteDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Namespace
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the number of times to retry the request when a retry condition occurs.
+func (o ConfigEntryServiceRouterRouteDestinationPtrOutput) NumRetries() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ConfigEntryServiceRouterRouteDestination) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NumRetries
+	}).(pulumi.IntPtrOutput)
+}
+
+// Specifies the Consul admin partition to resolve the service from instead of the current partition.
+func (o ConfigEntryServiceRouterRouteDestinationPtrOutput) Partition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfigEntryServiceRouterRouteDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Partition
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies rewrites to the HTTP request path before proxying it to its final destination.
+func (o ConfigEntryServiceRouterRouteDestinationPtrOutput) PrefixRewrite() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfigEntryServiceRouterRouteDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrefixRewrite
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies a set of HTTP-specific header modification rules applied to requests routed with the service router.
+func (o ConfigEntryServiceRouterRouteDestinationPtrOutput) RequestHeaders() ConfigEntryServiceRouterRouteDestinationRequestHeadersPtrOutput {
+	return o.ApplyT(func(v *ConfigEntryServiceRouterRouteDestination) *ConfigEntryServiceRouterRouteDestinationRequestHeaders {
+		if v == nil {
+			return nil
+		}
+		return v.RequestHeaders
+	}).(ConfigEntryServiceRouterRouteDestinationRequestHeadersPtrOutput)
+}
+
+// Specifies the total amount of time permitted for the entire downstream request to be processed, including retry attempts.
+func (o ConfigEntryServiceRouterRouteDestinationPtrOutput) RequestTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfigEntryServiceRouterRouteDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RequestTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies a set of HTTP-specific header modification rules applied to responses routed with the service router.
+func (o ConfigEntryServiceRouterRouteDestinationPtrOutput) ResponseHeaders() ConfigEntryServiceRouterRouteDestinationResponseHeadersPtrOutput {
+	return o.ApplyT(func(v *ConfigEntryServiceRouterRouteDestination) *ConfigEntryServiceRouterRouteDestinationResponseHeaders {
+		if v == nil {
+			return nil
+		}
+		return v.ResponseHeaders
+	}).(ConfigEntryServiceRouterRouteDestinationResponseHeadersPtrOutput)
+}
+
+// Specifies that connection failure errors that trigger a retry request.
+func (o ConfigEntryServiceRouterRouteDestinationPtrOutput) RetryOnConnectFailure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConfigEntryServiceRouterRouteDestination) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RetryOnConnectFailure
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies a list of integers for HTTP response status codes that trigger a retry request.
+func (o ConfigEntryServiceRouterRouteDestinationPtrOutput) RetryOnStatusCodes() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *ConfigEntryServiceRouterRouteDestination) []int {
+		if v == nil {
+			return nil
+		}
+		return v.RetryOnStatusCodes
+	}).(pulumi.IntArrayOutput)
+}
+
+// Specifies a list of conditions for Consul to retry requests based on the response from an upstream service.
+func (o ConfigEntryServiceRouterRouteDestinationPtrOutput) RetryOns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConfigEntryServiceRouterRouteDestination) []string {
+		if v == nil {
+			return nil
+		}
+		return v.RetryOns
+	}).(pulumi.StringArrayOutput)
+}
+
+// Specifies the name of the service to resolve.
+func (o ConfigEntryServiceRouterRouteDestinationPtrOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfigEntryServiceRouterRouteDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Service
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies a named subset of the given service to resolve instead of the one defined as that service's `defaultSubset` in the service resolver configuration entry.
+func (o ConfigEntryServiceRouterRouteDestinationPtrOutput) ServiceSubset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfigEntryServiceRouterRouteDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceSubset
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConfigEntryServiceRouterRouteDestinationRequestHeaders struct {
+	// Defines a set of key-value pairs to add to the header. Use header names as the keys.
+	Add map[string]string `pulumi:"add"`
+	// Defines a list of headers to remove.
+	Removes []string `pulumi:"removes"`
+	// Defines a set of key-value pairs to add to the request header or to replace existing header values with.
+	Set map[string]string `pulumi:"set"`
+}
+
+// ConfigEntryServiceRouterRouteDestinationRequestHeadersInput is an input type that accepts ConfigEntryServiceRouterRouteDestinationRequestHeadersArgs and ConfigEntryServiceRouterRouteDestinationRequestHeadersOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceRouterRouteDestinationRequestHeadersInput` via:
+//
+//	ConfigEntryServiceRouterRouteDestinationRequestHeadersArgs{...}
+type ConfigEntryServiceRouterRouteDestinationRequestHeadersInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceRouterRouteDestinationRequestHeadersOutput() ConfigEntryServiceRouterRouteDestinationRequestHeadersOutput
+	ToConfigEntryServiceRouterRouteDestinationRequestHeadersOutputWithContext(context.Context) ConfigEntryServiceRouterRouteDestinationRequestHeadersOutput
+}
+
+type ConfigEntryServiceRouterRouteDestinationRequestHeadersArgs struct {
+	// Defines a set of key-value pairs to add to the header. Use header names as the keys.
+	Add pulumi.StringMapInput `pulumi:"add"`
+	// Defines a list of headers to remove.
+	Removes pulumi.StringArrayInput `pulumi:"removes"`
+	// Defines a set of key-value pairs to add to the request header or to replace existing header values with.
+	Set pulumi.StringMapInput `pulumi:"set"`
+}
+
+func (ConfigEntryServiceRouterRouteDestinationRequestHeadersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceRouterRouteDestinationRequestHeaders)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceRouterRouteDestinationRequestHeadersArgs) ToConfigEntryServiceRouterRouteDestinationRequestHeadersOutput() ConfigEntryServiceRouterRouteDestinationRequestHeadersOutput {
+	return i.ToConfigEntryServiceRouterRouteDestinationRequestHeadersOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceRouterRouteDestinationRequestHeadersArgs) ToConfigEntryServiceRouterRouteDestinationRequestHeadersOutputWithContext(ctx context.Context) ConfigEntryServiceRouterRouteDestinationRequestHeadersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceRouterRouteDestinationRequestHeadersOutput)
+}
+
+func (i ConfigEntryServiceRouterRouteDestinationRequestHeadersArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceRouterRouteDestinationRequestHeaders] {
+	return pulumix.Output[ConfigEntryServiceRouterRouteDestinationRequestHeaders]{
+		OutputState: i.ToConfigEntryServiceRouterRouteDestinationRequestHeadersOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ConfigEntryServiceRouterRouteDestinationRequestHeadersArgs) ToConfigEntryServiceRouterRouteDestinationRequestHeadersPtrOutput() ConfigEntryServiceRouterRouteDestinationRequestHeadersPtrOutput {
+	return i.ToConfigEntryServiceRouterRouteDestinationRequestHeadersPtrOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceRouterRouteDestinationRequestHeadersArgs) ToConfigEntryServiceRouterRouteDestinationRequestHeadersPtrOutputWithContext(ctx context.Context) ConfigEntryServiceRouterRouteDestinationRequestHeadersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceRouterRouteDestinationRequestHeadersOutput).ToConfigEntryServiceRouterRouteDestinationRequestHeadersPtrOutputWithContext(ctx)
+}
+
+// ConfigEntryServiceRouterRouteDestinationRequestHeadersPtrInput is an input type that accepts ConfigEntryServiceRouterRouteDestinationRequestHeadersArgs, ConfigEntryServiceRouterRouteDestinationRequestHeadersPtr and ConfigEntryServiceRouterRouteDestinationRequestHeadersPtrOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceRouterRouteDestinationRequestHeadersPtrInput` via:
+//
+//	        ConfigEntryServiceRouterRouteDestinationRequestHeadersArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConfigEntryServiceRouterRouteDestinationRequestHeadersPtrInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceRouterRouteDestinationRequestHeadersPtrOutput() ConfigEntryServiceRouterRouteDestinationRequestHeadersPtrOutput
+	ToConfigEntryServiceRouterRouteDestinationRequestHeadersPtrOutputWithContext(context.Context) ConfigEntryServiceRouterRouteDestinationRequestHeadersPtrOutput
+}
+
+type configEntryServiceRouterRouteDestinationRequestHeadersPtrType ConfigEntryServiceRouterRouteDestinationRequestHeadersArgs
+
+func ConfigEntryServiceRouterRouteDestinationRequestHeadersPtr(v *ConfigEntryServiceRouterRouteDestinationRequestHeadersArgs) ConfigEntryServiceRouterRouteDestinationRequestHeadersPtrInput {
+	return (*configEntryServiceRouterRouteDestinationRequestHeadersPtrType)(v)
+}
+
+func (*configEntryServiceRouterRouteDestinationRequestHeadersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigEntryServiceRouterRouteDestinationRequestHeaders)(nil)).Elem()
+}
+
+func (i *configEntryServiceRouterRouteDestinationRequestHeadersPtrType) ToConfigEntryServiceRouterRouteDestinationRequestHeadersPtrOutput() ConfigEntryServiceRouterRouteDestinationRequestHeadersPtrOutput {
+	return i.ToConfigEntryServiceRouterRouteDestinationRequestHeadersPtrOutputWithContext(context.Background())
+}
+
+func (i *configEntryServiceRouterRouteDestinationRequestHeadersPtrType) ToConfigEntryServiceRouterRouteDestinationRequestHeadersPtrOutputWithContext(ctx context.Context) ConfigEntryServiceRouterRouteDestinationRequestHeadersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceRouterRouteDestinationRequestHeadersPtrOutput)
+}
+
+func (i *configEntryServiceRouterRouteDestinationRequestHeadersPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConfigEntryServiceRouterRouteDestinationRequestHeaders] {
+	return pulumix.Output[*ConfigEntryServiceRouterRouteDestinationRequestHeaders]{
+		OutputState: i.ToConfigEntryServiceRouterRouteDestinationRequestHeadersPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ConfigEntryServiceRouterRouteDestinationRequestHeadersOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceRouterRouteDestinationRequestHeadersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceRouterRouteDestinationRequestHeaders)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceRouterRouteDestinationRequestHeadersOutput) ToConfigEntryServiceRouterRouteDestinationRequestHeadersOutput() ConfigEntryServiceRouterRouteDestinationRequestHeadersOutput {
+	return o
+}
+
+func (o ConfigEntryServiceRouterRouteDestinationRequestHeadersOutput) ToConfigEntryServiceRouterRouteDestinationRequestHeadersOutputWithContext(ctx context.Context) ConfigEntryServiceRouterRouteDestinationRequestHeadersOutput {
+	return o
+}
+
+func (o ConfigEntryServiceRouterRouteDestinationRequestHeadersOutput) ToConfigEntryServiceRouterRouteDestinationRequestHeadersPtrOutput() ConfigEntryServiceRouterRouteDestinationRequestHeadersPtrOutput {
+	return o.ToConfigEntryServiceRouterRouteDestinationRequestHeadersPtrOutputWithContext(context.Background())
+}
+
+func (o ConfigEntryServiceRouterRouteDestinationRequestHeadersOutput) ToConfigEntryServiceRouterRouteDestinationRequestHeadersPtrOutputWithContext(ctx context.Context) ConfigEntryServiceRouterRouteDestinationRequestHeadersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigEntryServiceRouterRouteDestinationRequestHeaders) *ConfigEntryServiceRouterRouteDestinationRequestHeaders {
+		return &v
+	}).(ConfigEntryServiceRouterRouteDestinationRequestHeadersPtrOutput)
+}
+
+func (o ConfigEntryServiceRouterRouteDestinationRequestHeadersOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceRouterRouteDestinationRequestHeaders] {
+	return pulumix.Output[ConfigEntryServiceRouterRouteDestinationRequestHeaders]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Defines a set of key-value pairs to add to the header. Use header names as the keys.
+func (o ConfigEntryServiceRouterRouteDestinationRequestHeadersOutput) Add() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ConfigEntryServiceRouterRouteDestinationRequestHeaders) map[string]string { return v.Add }).(pulumi.StringMapOutput)
+}
+
+// Defines a list of headers to remove.
+func (o ConfigEntryServiceRouterRouteDestinationRequestHeadersOutput) Removes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConfigEntryServiceRouterRouteDestinationRequestHeaders) []string { return v.Removes }).(pulumi.StringArrayOutput)
+}
+
+// Defines a set of key-value pairs to add to the request header or to replace existing header values with.
+func (o ConfigEntryServiceRouterRouteDestinationRequestHeadersOutput) Set() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ConfigEntryServiceRouterRouteDestinationRequestHeaders) map[string]string { return v.Set }).(pulumi.StringMapOutput)
+}
+
+type ConfigEntryServiceRouterRouteDestinationRequestHeadersPtrOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceRouterRouteDestinationRequestHeadersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigEntryServiceRouterRouteDestinationRequestHeaders)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceRouterRouteDestinationRequestHeadersPtrOutput) ToConfigEntryServiceRouterRouteDestinationRequestHeadersPtrOutput() ConfigEntryServiceRouterRouteDestinationRequestHeadersPtrOutput {
+	return o
+}
+
+func (o ConfigEntryServiceRouterRouteDestinationRequestHeadersPtrOutput) ToConfigEntryServiceRouterRouteDestinationRequestHeadersPtrOutputWithContext(ctx context.Context) ConfigEntryServiceRouterRouteDestinationRequestHeadersPtrOutput {
+	return o
+}
+
+func (o ConfigEntryServiceRouterRouteDestinationRequestHeadersPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConfigEntryServiceRouterRouteDestinationRequestHeaders] {
+	return pulumix.Output[*ConfigEntryServiceRouterRouteDestinationRequestHeaders]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConfigEntryServiceRouterRouteDestinationRequestHeadersPtrOutput) Elem() ConfigEntryServiceRouterRouteDestinationRequestHeadersOutput {
+	return o.ApplyT(func(v *ConfigEntryServiceRouterRouteDestinationRequestHeaders) ConfigEntryServiceRouterRouteDestinationRequestHeaders {
+		if v != nil {
+			return *v
+		}
+		var ret ConfigEntryServiceRouterRouteDestinationRequestHeaders
+		return ret
+	}).(ConfigEntryServiceRouterRouteDestinationRequestHeadersOutput)
+}
+
+// Defines a set of key-value pairs to add to the header. Use header names as the keys.
+func (o ConfigEntryServiceRouterRouteDestinationRequestHeadersPtrOutput) Add() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ConfigEntryServiceRouterRouteDestinationRequestHeaders) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Add
+	}).(pulumi.StringMapOutput)
+}
+
+// Defines a list of headers to remove.
+func (o ConfigEntryServiceRouterRouteDestinationRequestHeadersPtrOutput) Removes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConfigEntryServiceRouterRouteDestinationRequestHeaders) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Removes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Defines a set of key-value pairs to add to the request header or to replace existing header values with.
+func (o ConfigEntryServiceRouterRouteDestinationRequestHeadersPtrOutput) Set() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ConfigEntryServiceRouterRouteDestinationRequestHeaders) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Set
+	}).(pulumi.StringMapOutput)
+}
+
+type ConfigEntryServiceRouterRouteDestinationResponseHeaders struct {
+	// Defines a set of key-value pairs to add to the header. Use header names as the keys.
+	Add map[string]string `pulumi:"add"`
+	// Defines a list of headers to remove.
+	Removes []string `pulumi:"removes"`
+	// Defines a set of key-value pairs to add to the request header or to replace existing header values with.
+	Set map[string]string `pulumi:"set"`
+}
+
+// ConfigEntryServiceRouterRouteDestinationResponseHeadersInput is an input type that accepts ConfigEntryServiceRouterRouteDestinationResponseHeadersArgs and ConfigEntryServiceRouterRouteDestinationResponseHeadersOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceRouterRouteDestinationResponseHeadersInput` via:
+//
+//	ConfigEntryServiceRouterRouteDestinationResponseHeadersArgs{...}
+type ConfigEntryServiceRouterRouteDestinationResponseHeadersInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceRouterRouteDestinationResponseHeadersOutput() ConfigEntryServiceRouterRouteDestinationResponseHeadersOutput
+	ToConfigEntryServiceRouterRouteDestinationResponseHeadersOutputWithContext(context.Context) ConfigEntryServiceRouterRouteDestinationResponseHeadersOutput
+}
+
+type ConfigEntryServiceRouterRouteDestinationResponseHeadersArgs struct {
+	// Defines a set of key-value pairs to add to the header. Use header names as the keys.
+	Add pulumi.StringMapInput `pulumi:"add"`
+	// Defines a list of headers to remove.
+	Removes pulumi.StringArrayInput `pulumi:"removes"`
+	// Defines a set of key-value pairs to add to the request header or to replace existing header values with.
+	Set pulumi.StringMapInput `pulumi:"set"`
+}
+
+func (ConfigEntryServiceRouterRouteDestinationResponseHeadersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceRouterRouteDestinationResponseHeaders)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceRouterRouteDestinationResponseHeadersArgs) ToConfigEntryServiceRouterRouteDestinationResponseHeadersOutput() ConfigEntryServiceRouterRouteDestinationResponseHeadersOutput {
+	return i.ToConfigEntryServiceRouterRouteDestinationResponseHeadersOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceRouterRouteDestinationResponseHeadersArgs) ToConfigEntryServiceRouterRouteDestinationResponseHeadersOutputWithContext(ctx context.Context) ConfigEntryServiceRouterRouteDestinationResponseHeadersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceRouterRouteDestinationResponseHeadersOutput)
+}
+
+func (i ConfigEntryServiceRouterRouteDestinationResponseHeadersArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceRouterRouteDestinationResponseHeaders] {
+	return pulumix.Output[ConfigEntryServiceRouterRouteDestinationResponseHeaders]{
+		OutputState: i.ToConfigEntryServiceRouterRouteDestinationResponseHeadersOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ConfigEntryServiceRouterRouteDestinationResponseHeadersArgs) ToConfigEntryServiceRouterRouteDestinationResponseHeadersPtrOutput() ConfigEntryServiceRouterRouteDestinationResponseHeadersPtrOutput {
+	return i.ToConfigEntryServiceRouterRouteDestinationResponseHeadersPtrOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceRouterRouteDestinationResponseHeadersArgs) ToConfigEntryServiceRouterRouteDestinationResponseHeadersPtrOutputWithContext(ctx context.Context) ConfigEntryServiceRouterRouteDestinationResponseHeadersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceRouterRouteDestinationResponseHeadersOutput).ToConfigEntryServiceRouterRouteDestinationResponseHeadersPtrOutputWithContext(ctx)
+}
+
+// ConfigEntryServiceRouterRouteDestinationResponseHeadersPtrInput is an input type that accepts ConfigEntryServiceRouterRouteDestinationResponseHeadersArgs, ConfigEntryServiceRouterRouteDestinationResponseHeadersPtr and ConfigEntryServiceRouterRouteDestinationResponseHeadersPtrOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceRouterRouteDestinationResponseHeadersPtrInput` via:
+//
+//	        ConfigEntryServiceRouterRouteDestinationResponseHeadersArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConfigEntryServiceRouterRouteDestinationResponseHeadersPtrInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceRouterRouteDestinationResponseHeadersPtrOutput() ConfigEntryServiceRouterRouteDestinationResponseHeadersPtrOutput
+	ToConfigEntryServiceRouterRouteDestinationResponseHeadersPtrOutputWithContext(context.Context) ConfigEntryServiceRouterRouteDestinationResponseHeadersPtrOutput
+}
+
+type configEntryServiceRouterRouteDestinationResponseHeadersPtrType ConfigEntryServiceRouterRouteDestinationResponseHeadersArgs
+
+func ConfigEntryServiceRouterRouteDestinationResponseHeadersPtr(v *ConfigEntryServiceRouterRouteDestinationResponseHeadersArgs) ConfigEntryServiceRouterRouteDestinationResponseHeadersPtrInput {
+	return (*configEntryServiceRouterRouteDestinationResponseHeadersPtrType)(v)
+}
+
+func (*configEntryServiceRouterRouteDestinationResponseHeadersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigEntryServiceRouterRouteDestinationResponseHeaders)(nil)).Elem()
+}
+
+func (i *configEntryServiceRouterRouteDestinationResponseHeadersPtrType) ToConfigEntryServiceRouterRouteDestinationResponseHeadersPtrOutput() ConfigEntryServiceRouterRouteDestinationResponseHeadersPtrOutput {
+	return i.ToConfigEntryServiceRouterRouteDestinationResponseHeadersPtrOutputWithContext(context.Background())
+}
+
+func (i *configEntryServiceRouterRouteDestinationResponseHeadersPtrType) ToConfigEntryServiceRouterRouteDestinationResponseHeadersPtrOutputWithContext(ctx context.Context) ConfigEntryServiceRouterRouteDestinationResponseHeadersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceRouterRouteDestinationResponseHeadersPtrOutput)
+}
+
+func (i *configEntryServiceRouterRouteDestinationResponseHeadersPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConfigEntryServiceRouterRouteDestinationResponseHeaders] {
+	return pulumix.Output[*ConfigEntryServiceRouterRouteDestinationResponseHeaders]{
+		OutputState: i.ToConfigEntryServiceRouterRouteDestinationResponseHeadersPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ConfigEntryServiceRouterRouteDestinationResponseHeadersOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceRouterRouteDestinationResponseHeadersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceRouterRouteDestinationResponseHeaders)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceRouterRouteDestinationResponseHeadersOutput) ToConfigEntryServiceRouterRouteDestinationResponseHeadersOutput() ConfigEntryServiceRouterRouteDestinationResponseHeadersOutput {
+	return o
+}
+
+func (o ConfigEntryServiceRouterRouteDestinationResponseHeadersOutput) ToConfigEntryServiceRouterRouteDestinationResponseHeadersOutputWithContext(ctx context.Context) ConfigEntryServiceRouterRouteDestinationResponseHeadersOutput {
+	return o
+}
+
+func (o ConfigEntryServiceRouterRouteDestinationResponseHeadersOutput) ToConfigEntryServiceRouterRouteDestinationResponseHeadersPtrOutput() ConfigEntryServiceRouterRouteDestinationResponseHeadersPtrOutput {
+	return o.ToConfigEntryServiceRouterRouteDestinationResponseHeadersPtrOutputWithContext(context.Background())
+}
+
+func (o ConfigEntryServiceRouterRouteDestinationResponseHeadersOutput) ToConfigEntryServiceRouterRouteDestinationResponseHeadersPtrOutputWithContext(ctx context.Context) ConfigEntryServiceRouterRouteDestinationResponseHeadersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigEntryServiceRouterRouteDestinationResponseHeaders) *ConfigEntryServiceRouterRouteDestinationResponseHeaders {
+		return &v
+	}).(ConfigEntryServiceRouterRouteDestinationResponseHeadersPtrOutput)
+}
+
+func (o ConfigEntryServiceRouterRouteDestinationResponseHeadersOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceRouterRouteDestinationResponseHeaders] {
+	return pulumix.Output[ConfigEntryServiceRouterRouteDestinationResponseHeaders]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Defines a set of key-value pairs to add to the header. Use header names as the keys.
+func (o ConfigEntryServiceRouterRouteDestinationResponseHeadersOutput) Add() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ConfigEntryServiceRouterRouteDestinationResponseHeaders) map[string]string { return v.Add }).(pulumi.StringMapOutput)
+}
+
+// Defines a list of headers to remove.
+func (o ConfigEntryServiceRouterRouteDestinationResponseHeadersOutput) Removes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConfigEntryServiceRouterRouteDestinationResponseHeaders) []string { return v.Removes }).(pulumi.StringArrayOutput)
+}
+
+// Defines a set of key-value pairs to add to the request header or to replace existing header values with.
+func (o ConfigEntryServiceRouterRouteDestinationResponseHeadersOutput) Set() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ConfigEntryServiceRouterRouteDestinationResponseHeaders) map[string]string { return v.Set }).(pulumi.StringMapOutput)
+}
+
+type ConfigEntryServiceRouterRouteDestinationResponseHeadersPtrOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceRouterRouteDestinationResponseHeadersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigEntryServiceRouterRouteDestinationResponseHeaders)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceRouterRouteDestinationResponseHeadersPtrOutput) ToConfigEntryServiceRouterRouteDestinationResponseHeadersPtrOutput() ConfigEntryServiceRouterRouteDestinationResponseHeadersPtrOutput {
+	return o
+}
+
+func (o ConfigEntryServiceRouterRouteDestinationResponseHeadersPtrOutput) ToConfigEntryServiceRouterRouteDestinationResponseHeadersPtrOutputWithContext(ctx context.Context) ConfigEntryServiceRouterRouteDestinationResponseHeadersPtrOutput {
+	return o
+}
+
+func (o ConfigEntryServiceRouterRouteDestinationResponseHeadersPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConfigEntryServiceRouterRouteDestinationResponseHeaders] {
+	return pulumix.Output[*ConfigEntryServiceRouterRouteDestinationResponseHeaders]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConfigEntryServiceRouterRouteDestinationResponseHeadersPtrOutput) Elem() ConfigEntryServiceRouterRouteDestinationResponseHeadersOutput {
+	return o.ApplyT(func(v *ConfigEntryServiceRouterRouteDestinationResponseHeaders) ConfigEntryServiceRouterRouteDestinationResponseHeaders {
+		if v != nil {
+			return *v
+		}
+		var ret ConfigEntryServiceRouterRouteDestinationResponseHeaders
+		return ret
+	}).(ConfigEntryServiceRouterRouteDestinationResponseHeadersOutput)
+}
+
+// Defines a set of key-value pairs to add to the header. Use header names as the keys.
+func (o ConfigEntryServiceRouterRouteDestinationResponseHeadersPtrOutput) Add() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ConfigEntryServiceRouterRouteDestinationResponseHeaders) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Add
+	}).(pulumi.StringMapOutput)
+}
+
+// Defines a list of headers to remove.
+func (o ConfigEntryServiceRouterRouteDestinationResponseHeadersPtrOutput) Removes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConfigEntryServiceRouterRouteDestinationResponseHeaders) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Removes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Defines a set of key-value pairs to add to the request header or to replace existing header values with.
+func (o ConfigEntryServiceRouterRouteDestinationResponseHeadersPtrOutput) Set() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ConfigEntryServiceRouterRouteDestinationResponseHeaders) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Set
+	}).(pulumi.StringMapOutput)
+}
+
+type ConfigEntryServiceRouterRouteMatch struct {
+	// Specifies a set of HTTP criteria used to evaluate incoming L7 traffic for matches.
+	Http *ConfigEntryServiceRouterRouteMatchHttp `pulumi:"http"`
+}
+
+// ConfigEntryServiceRouterRouteMatchInput is an input type that accepts ConfigEntryServiceRouterRouteMatchArgs and ConfigEntryServiceRouterRouteMatchOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceRouterRouteMatchInput` via:
+//
+//	ConfigEntryServiceRouterRouteMatchArgs{...}
+type ConfigEntryServiceRouterRouteMatchInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceRouterRouteMatchOutput() ConfigEntryServiceRouterRouteMatchOutput
+	ToConfigEntryServiceRouterRouteMatchOutputWithContext(context.Context) ConfigEntryServiceRouterRouteMatchOutput
+}
+
+type ConfigEntryServiceRouterRouteMatchArgs struct {
+	// Specifies a set of HTTP criteria used to evaluate incoming L7 traffic for matches.
+	Http ConfigEntryServiceRouterRouteMatchHttpPtrInput `pulumi:"http"`
+}
+
+func (ConfigEntryServiceRouterRouteMatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceRouterRouteMatch)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceRouterRouteMatchArgs) ToConfigEntryServiceRouterRouteMatchOutput() ConfigEntryServiceRouterRouteMatchOutput {
+	return i.ToConfigEntryServiceRouterRouteMatchOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceRouterRouteMatchArgs) ToConfigEntryServiceRouterRouteMatchOutputWithContext(ctx context.Context) ConfigEntryServiceRouterRouteMatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceRouterRouteMatchOutput)
+}
+
+func (i ConfigEntryServiceRouterRouteMatchArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceRouterRouteMatch] {
+	return pulumix.Output[ConfigEntryServiceRouterRouteMatch]{
+		OutputState: i.ToConfigEntryServiceRouterRouteMatchOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ConfigEntryServiceRouterRouteMatchArgs) ToConfigEntryServiceRouterRouteMatchPtrOutput() ConfigEntryServiceRouterRouteMatchPtrOutput {
+	return i.ToConfigEntryServiceRouterRouteMatchPtrOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceRouterRouteMatchArgs) ToConfigEntryServiceRouterRouteMatchPtrOutputWithContext(ctx context.Context) ConfigEntryServiceRouterRouteMatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceRouterRouteMatchOutput).ToConfigEntryServiceRouterRouteMatchPtrOutputWithContext(ctx)
+}
+
+// ConfigEntryServiceRouterRouteMatchPtrInput is an input type that accepts ConfigEntryServiceRouterRouteMatchArgs, ConfigEntryServiceRouterRouteMatchPtr and ConfigEntryServiceRouterRouteMatchPtrOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceRouterRouteMatchPtrInput` via:
+//
+//	        ConfigEntryServiceRouterRouteMatchArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConfigEntryServiceRouterRouteMatchPtrInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceRouterRouteMatchPtrOutput() ConfigEntryServiceRouterRouteMatchPtrOutput
+	ToConfigEntryServiceRouterRouteMatchPtrOutputWithContext(context.Context) ConfigEntryServiceRouterRouteMatchPtrOutput
+}
+
+type configEntryServiceRouterRouteMatchPtrType ConfigEntryServiceRouterRouteMatchArgs
+
+func ConfigEntryServiceRouterRouteMatchPtr(v *ConfigEntryServiceRouterRouteMatchArgs) ConfigEntryServiceRouterRouteMatchPtrInput {
+	return (*configEntryServiceRouterRouteMatchPtrType)(v)
+}
+
+func (*configEntryServiceRouterRouteMatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigEntryServiceRouterRouteMatch)(nil)).Elem()
+}
+
+func (i *configEntryServiceRouterRouteMatchPtrType) ToConfigEntryServiceRouterRouteMatchPtrOutput() ConfigEntryServiceRouterRouteMatchPtrOutput {
+	return i.ToConfigEntryServiceRouterRouteMatchPtrOutputWithContext(context.Background())
+}
+
+func (i *configEntryServiceRouterRouteMatchPtrType) ToConfigEntryServiceRouterRouteMatchPtrOutputWithContext(ctx context.Context) ConfigEntryServiceRouterRouteMatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceRouterRouteMatchPtrOutput)
+}
+
+func (i *configEntryServiceRouterRouteMatchPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConfigEntryServiceRouterRouteMatch] {
+	return pulumix.Output[*ConfigEntryServiceRouterRouteMatch]{
+		OutputState: i.ToConfigEntryServiceRouterRouteMatchPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ConfigEntryServiceRouterRouteMatchOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceRouterRouteMatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceRouterRouteMatch)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceRouterRouteMatchOutput) ToConfigEntryServiceRouterRouteMatchOutput() ConfigEntryServiceRouterRouteMatchOutput {
+	return o
+}
+
+func (o ConfigEntryServiceRouterRouteMatchOutput) ToConfigEntryServiceRouterRouteMatchOutputWithContext(ctx context.Context) ConfigEntryServiceRouterRouteMatchOutput {
+	return o
+}
+
+func (o ConfigEntryServiceRouterRouteMatchOutput) ToConfigEntryServiceRouterRouteMatchPtrOutput() ConfigEntryServiceRouterRouteMatchPtrOutput {
+	return o.ToConfigEntryServiceRouterRouteMatchPtrOutputWithContext(context.Background())
+}
+
+func (o ConfigEntryServiceRouterRouteMatchOutput) ToConfigEntryServiceRouterRouteMatchPtrOutputWithContext(ctx context.Context) ConfigEntryServiceRouterRouteMatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigEntryServiceRouterRouteMatch) *ConfigEntryServiceRouterRouteMatch {
+		return &v
+	}).(ConfigEntryServiceRouterRouteMatchPtrOutput)
+}
+
+func (o ConfigEntryServiceRouterRouteMatchOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceRouterRouteMatch] {
+	return pulumix.Output[ConfigEntryServiceRouterRouteMatch]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Specifies a set of HTTP criteria used to evaluate incoming L7 traffic for matches.
+func (o ConfigEntryServiceRouterRouteMatchOutput) Http() ConfigEntryServiceRouterRouteMatchHttpPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceRouterRouteMatch) *ConfigEntryServiceRouterRouteMatchHttp { return v.Http }).(ConfigEntryServiceRouterRouteMatchHttpPtrOutput)
+}
+
+type ConfigEntryServiceRouterRouteMatchPtrOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceRouterRouteMatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigEntryServiceRouterRouteMatch)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceRouterRouteMatchPtrOutput) ToConfigEntryServiceRouterRouteMatchPtrOutput() ConfigEntryServiceRouterRouteMatchPtrOutput {
+	return o
+}
+
+func (o ConfigEntryServiceRouterRouteMatchPtrOutput) ToConfigEntryServiceRouterRouteMatchPtrOutputWithContext(ctx context.Context) ConfigEntryServiceRouterRouteMatchPtrOutput {
+	return o
+}
+
+func (o ConfigEntryServiceRouterRouteMatchPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConfigEntryServiceRouterRouteMatch] {
+	return pulumix.Output[*ConfigEntryServiceRouterRouteMatch]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConfigEntryServiceRouterRouteMatchPtrOutput) Elem() ConfigEntryServiceRouterRouteMatchOutput {
+	return o.ApplyT(func(v *ConfigEntryServiceRouterRouteMatch) ConfigEntryServiceRouterRouteMatch {
+		if v != nil {
+			return *v
+		}
+		var ret ConfigEntryServiceRouterRouteMatch
+		return ret
+	}).(ConfigEntryServiceRouterRouteMatchOutput)
+}
+
+// Specifies a set of HTTP criteria used to evaluate incoming L7 traffic for matches.
+func (o ConfigEntryServiceRouterRouteMatchPtrOutput) Http() ConfigEntryServiceRouterRouteMatchHttpPtrOutput {
+	return o.ApplyT(func(v *ConfigEntryServiceRouterRouteMatch) *ConfigEntryServiceRouterRouteMatchHttp {
+		if v == nil {
+			return nil
+		}
+		return v.Http
+	}).(ConfigEntryServiceRouterRouteMatchHttpPtrOutput)
+}
+
+type ConfigEntryServiceRouterRouteMatchHttp struct {
+	// Specifies information in the HTTP request header to match with.
+	Headers []ConfigEntryServiceRouterRouteMatchHttpHeader `pulumi:"headers"`
+	// Specifies HTTP methods that the match applies to.
+	Methods []string `pulumi:"methods"`
+	// Specifies the exact path to match on the HTTP request path.
+	PathExact *string `pulumi:"pathExact"`
+	// Specifies the path prefix to match on the HTTP request path.
+	PathPrefix *string `pulumi:"pathPrefix"`
+	// Specifies a regular expression to match on the HTTP request path.
+	PathRegex *string `pulumi:"pathRegex"`
+	// Specifies information to match to on HTTP query parameters.
+	QueryParams []ConfigEntryServiceRouterRouteMatchHttpQueryParam `pulumi:"queryParams"`
+}
+
+// ConfigEntryServiceRouterRouteMatchHttpInput is an input type that accepts ConfigEntryServiceRouterRouteMatchHttpArgs and ConfigEntryServiceRouterRouteMatchHttpOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceRouterRouteMatchHttpInput` via:
+//
+//	ConfigEntryServiceRouterRouteMatchHttpArgs{...}
+type ConfigEntryServiceRouterRouteMatchHttpInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceRouterRouteMatchHttpOutput() ConfigEntryServiceRouterRouteMatchHttpOutput
+	ToConfigEntryServiceRouterRouteMatchHttpOutputWithContext(context.Context) ConfigEntryServiceRouterRouteMatchHttpOutput
+}
+
+type ConfigEntryServiceRouterRouteMatchHttpArgs struct {
+	// Specifies information in the HTTP request header to match with.
+	Headers ConfigEntryServiceRouterRouteMatchHttpHeaderArrayInput `pulumi:"headers"`
+	// Specifies HTTP methods that the match applies to.
+	Methods pulumi.StringArrayInput `pulumi:"methods"`
+	// Specifies the exact path to match on the HTTP request path.
+	PathExact pulumi.StringPtrInput `pulumi:"pathExact"`
+	// Specifies the path prefix to match on the HTTP request path.
+	PathPrefix pulumi.StringPtrInput `pulumi:"pathPrefix"`
+	// Specifies a regular expression to match on the HTTP request path.
+	PathRegex pulumi.StringPtrInput `pulumi:"pathRegex"`
+	// Specifies information to match to on HTTP query parameters.
+	QueryParams ConfigEntryServiceRouterRouteMatchHttpQueryParamArrayInput `pulumi:"queryParams"`
+}
+
+func (ConfigEntryServiceRouterRouteMatchHttpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceRouterRouteMatchHttp)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceRouterRouteMatchHttpArgs) ToConfigEntryServiceRouterRouteMatchHttpOutput() ConfigEntryServiceRouterRouteMatchHttpOutput {
+	return i.ToConfigEntryServiceRouterRouteMatchHttpOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceRouterRouteMatchHttpArgs) ToConfigEntryServiceRouterRouteMatchHttpOutputWithContext(ctx context.Context) ConfigEntryServiceRouterRouteMatchHttpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceRouterRouteMatchHttpOutput)
+}
+
+func (i ConfigEntryServiceRouterRouteMatchHttpArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceRouterRouteMatchHttp] {
+	return pulumix.Output[ConfigEntryServiceRouterRouteMatchHttp]{
+		OutputState: i.ToConfigEntryServiceRouterRouteMatchHttpOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ConfigEntryServiceRouterRouteMatchHttpArgs) ToConfigEntryServiceRouterRouteMatchHttpPtrOutput() ConfigEntryServiceRouterRouteMatchHttpPtrOutput {
+	return i.ToConfigEntryServiceRouterRouteMatchHttpPtrOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceRouterRouteMatchHttpArgs) ToConfigEntryServiceRouterRouteMatchHttpPtrOutputWithContext(ctx context.Context) ConfigEntryServiceRouterRouteMatchHttpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceRouterRouteMatchHttpOutput).ToConfigEntryServiceRouterRouteMatchHttpPtrOutputWithContext(ctx)
+}
+
+// ConfigEntryServiceRouterRouteMatchHttpPtrInput is an input type that accepts ConfigEntryServiceRouterRouteMatchHttpArgs, ConfigEntryServiceRouterRouteMatchHttpPtr and ConfigEntryServiceRouterRouteMatchHttpPtrOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceRouterRouteMatchHttpPtrInput` via:
+//
+//	        ConfigEntryServiceRouterRouteMatchHttpArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConfigEntryServiceRouterRouteMatchHttpPtrInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceRouterRouteMatchHttpPtrOutput() ConfigEntryServiceRouterRouteMatchHttpPtrOutput
+	ToConfigEntryServiceRouterRouteMatchHttpPtrOutputWithContext(context.Context) ConfigEntryServiceRouterRouteMatchHttpPtrOutput
+}
+
+type configEntryServiceRouterRouteMatchHttpPtrType ConfigEntryServiceRouterRouteMatchHttpArgs
+
+func ConfigEntryServiceRouterRouteMatchHttpPtr(v *ConfigEntryServiceRouterRouteMatchHttpArgs) ConfigEntryServiceRouterRouteMatchHttpPtrInput {
+	return (*configEntryServiceRouterRouteMatchHttpPtrType)(v)
+}
+
+func (*configEntryServiceRouterRouteMatchHttpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigEntryServiceRouterRouteMatchHttp)(nil)).Elem()
+}
+
+func (i *configEntryServiceRouterRouteMatchHttpPtrType) ToConfigEntryServiceRouterRouteMatchHttpPtrOutput() ConfigEntryServiceRouterRouteMatchHttpPtrOutput {
+	return i.ToConfigEntryServiceRouterRouteMatchHttpPtrOutputWithContext(context.Background())
+}
+
+func (i *configEntryServiceRouterRouteMatchHttpPtrType) ToConfigEntryServiceRouterRouteMatchHttpPtrOutputWithContext(ctx context.Context) ConfigEntryServiceRouterRouteMatchHttpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceRouterRouteMatchHttpPtrOutput)
+}
+
+func (i *configEntryServiceRouterRouteMatchHttpPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConfigEntryServiceRouterRouteMatchHttp] {
+	return pulumix.Output[*ConfigEntryServiceRouterRouteMatchHttp]{
+		OutputState: i.ToConfigEntryServiceRouterRouteMatchHttpPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ConfigEntryServiceRouterRouteMatchHttpOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceRouterRouteMatchHttpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceRouterRouteMatchHttp)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceRouterRouteMatchHttpOutput) ToConfigEntryServiceRouterRouteMatchHttpOutput() ConfigEntryServiceRouterRouteMatchHttpOutput {
+	return o
+}
+
+func (o ConfigEntryServiceRouterRouteMatchHttpOutput) ToConfigEntryServiceRouterRouteMatchHttpOutputWithContext(ctx context.Context) ConfigEntryServiceRouterRouteMatchHttpOutput {
+	return o
+}
+
+func (o ConfigEntryServiceRouterRouteMatchHttpOutput) ToConfigEntryServiceRouterRouteMatchHttpPtrOutput() ConfigEntryServiceRouterRouteMatchHttpPtrOutput {
+	return o.ToConfigEntryServiceRouterRouteMatchHttpPtrOutputWithContext(context.Background())
+}
+
+func (o ConfigEntryServiceRouterRouteMatchHttpOutput) ToConfigEntryServiceRouterRouteMatchHttpPtrOutputWithContext(ctx context.Context) ConfigEntryServiceRouterRouteMatchHttpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigEntryServiceRouterRouteMatchHttp) *ConfigEntryServiceRouterRouteMatchHttp {
+		return &v
+	}).(ConfigEntryServiceRouterRouteMatchHttpPtrOutput)
+}
+
+func (o ConfigEntryServiceRouterRouteMatchHttpOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceRouterRouteMatchHttp] {
+	return pulumix.Output[ConfigEntryServiceRouterRouteMatchHttp]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Specifies information in the HTTP request header to match with.
+func (o ConfigEntryServiceRouterRouteMatchHttpOutput) Headers() ConfigEntryServiceRouterRouteMatchHttpHeaderArrayOutput {
+	return o.ApplyT(func(v ConfigEntryServiceRouterRouteMatchHttp) []ConfigEntryServiceRouterRouteMatchHttpHeader {
+		return v.Headers
+	}).(ConfigEntryServiceRouterRouteMatchHttpHeaderArrayOutput)
+}
+
+// Specifies HTTP methods that the match applies to.
+func (o ConfigEntryServiceRouterRouteMatchHttpOutput) Methods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConfigEntryServiceRouterRouteMatchHttp) []string { return v.Methods }).(pulumi.StringArrayOutput)
+}
+
+// Specifies the exact path to match on the HTTP request path.
+func (o ConfigEntryServiceRouterRouteMatchHttpOutput) PathExact() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceRouterRouteMatchHttp) *string { return v.PathExact }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the path prefix to match on the HTTP request path.
+func (o ConfigEntryServiceRouterRouteMatchHttpOutput) PathPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceRouterRouteMatchHttp) *string { return v.PathPrefix }).(pulumi.StringPtrOutput)
+}
+
+// Specifies a regular expression to match on the HTTP request path.
+func (o ConfigEntryServiceRouterRouteMatchHttpOutput) PathRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceRouterRouteMatchHttp) *string { return v.PathRegex }).(pulumi.StringPtrOutput)
+}
+
+// Specifies information to match to on HTTP query parameters.
+func (o ConfigEntryServiceRouterRouteMatchHttpOutput) QueryParams() ConfigEntryServiceRouterRouteMatchHttpQueryParamArrayOutput {
+	return o.ApplyT(func(v ConfigEntryServiceRouterRouteMatchHttp) []ConfigEntryServiceRouterRouteMatchHttpQueryParam {
+		return v.QueryParams
+	}).(ConfigEntryServiceRouterRouteMatchHttpQueryParamArrayOutput)
+}
+
+type ConfigEntryServiceRouterRouteMatchHttpPtrOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceRouterRouteMatchHttpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigEntryServiceRouterRouteMatchHttp)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceRouterRouteMatchHttpPtrOutput) ToConfigEntryServiceRouterRouteMatchHttpPtrOutput() ConfigEntryServiceRouterRouteMatchHttpPtrOutput {
+	return o
+}
+
+func (o ConfigEntryServiceRouterRouteMatchHttpPtrOutput) ToConfigEntryServiceRouterRouteMatchHttpPtrOutputWithContext(ctx context.Context) ConfigEntryServiceRouterRouteMatchHttpPtrOutput {
+	return o
+}
+
+func (o ConfigEntryServiceRouterRouteMatchHttpPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConfigEntryServiceRouterRouteMatchHttp] {
+	return pulumix.Output[*ConfigEntryServiceRouterRouteMatchHttp]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConfigEntryServiceRouterRouteMatchHttpPtrOutput) Elem() ConfigEntryServiceRouterRouteMatchHttpOutput {
+	return o.ApplyT(func(v *ConfigEntryServiceRouterRouteMatchHttp) ConfigEntryServiceRouterRouteMatchHttp {
+		if v != nil {
+			return *v
+		}
+		var ret ConfigEntryServiceRouterRouteMatchHttp
+		return ret
+	}).(ConfigEntryServiceRouterRouteMatchHttpOutput)
+}
+
+// Specifies information in the HTTP request header to match with.
+func (o ConfigEntryServiceRouterRouteMatchHttpPtrOutput) Headers() ConfigEntryServiceRouterRouteMatchHttpHeaderArrayOutput {
+	return o.ApplyT(func(v *ConfigEntryServiceRouterRouteMatchHttp) []ConfigEntryServiceRouterRouteMatchHttpHeader {
+		if v == nil {
+			return nil
+		}
+		return v.Headers
+	}).(ConfigEntryServiceRouterRouteMatchHttpHeaderArrayOutput)
+}
+
+// Specifies HTTP methods that the match applies to.
+func (o ConfigEntryServiceRouterRouteMatchHttpPtrOutput) Methods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConfigEntryServiceRouterRouteMatchHttp) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Methods
+	}).(pulumi.StringArrayOutput)
+}
+
+// Specifies the exact path to match on the HTTP request path.
+func (o ConfigEntryServiceRouterRouteMatchHttpPtrOutput) PathExact() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfigEntryServiceRouterRouteMatchHttp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PathExact
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the path prefix to match on the HTTP request path.
+func (o ConfigEntryServiceRouterRouteMatchHttpPtrOutput) PathPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfigEntryServiceRouterRouteMatchHttp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PathPrefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies a regular expression to match on the HTTP request path.
+func (o ConfigEntryServiceRouterRouteMatchHttpPtrOutput) PathRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfigEntryServiceRouterRouteMatchHttp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PathRegex
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies information to match to on HTTP query parameters.
+func (o ConfigEntryServiceRouterRouteMatchHttpPtrOutput) QueryParams() ConfigEntryServiceRouterRouteMatchHttpQueryParamArrayOutput {
+	return o.ApplyT(func(v *ConfigEntryServiceRouterRouteMatchHttp) []ConfigEntryServiceRouterRouteMatchHttpQueryParam {
+		if v == nil {
+			return nil
+		}
+		return v.QueryParams
+	}).(ConfigEntryServiceRouterRouteMatchHttpQueryParamArrayOutput)
+}
+
+type ConfigEntryServiceRouterRouteMatchHttpHeader struct {
+	// Specifies that a request matches when the header with the given name is this exact value.
+	Exact *string `pulumi:"exact"`
+	// Specifies that the logic for the HTTP header match should be inverted.
+	Invert *bool `pulumi:"invert"`
+	// Specifies the name of the HTTP header to match.
+	Name *string `pulumi:"name"`
+	// Specifies that a request matches when the header with the given name has this prefix.
+	Prefix *string `pulumi:"prefix"`
+	// Specifies that a request matches when the value in the `name` argument is present anywhere in the HTTP header.
+	Present *bool `pulumi:"present"`
+	// Specifies that a request matches when the header with the given name matches this regular expression.
+	Regex *string `pulumi:"regex"`
+	// Specifies that a request matches when the header with the given name has this suffix.
+	Suffix *string `pulumi:"suffix"`
+}
+
+// ConfigEntryServiceRouterRouteMatchHttpHeaderInput is an input type that accepts ConfigEntryServiceRouterRouteMatchHttpHeaderArgs and ConfigEntryServiceRouterRouteMatchHttpHeaderOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceRouterRouteMatchHttpHeaderInput` via:
+//
+//	ConfigEntryServiceRouterRouteMatchHttpHeaderArgs{...}
+type ConfigEntryServiceRouterRouteMatchHttpHeaderInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceRouterRouteMatchHttpHeaderOutput() ConfigEntryServiceRouterRouteMatchHttpHeaderOutput
+	ToConfigEntryServiceRouterRouteMatchHttpHeaderOutputWithContext(context.Context) ConfigEntryServiceRouterRouteMatchHttpHeaderOutput
+}
+
+type ConfigEntryServiceRouterRouteMatchHttpHeaderArgs struct {
+	// Specifies that a request matches when the header with the given name is this exact value.
+	Exact pulumi.StringPtrInput `pulumi:"exact"`
+	// Specifies that the logic for the HTTP header match should be inverted.
+	Invert pulumi.BoolPtrInput `pulumi:"invert"`
+	// Specifies the name of the HTTP header to match.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Specifies that a request matches when the header with the given name has this prefix.
+	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
+	// Specifies that a request matches when the value in the `name` argument is present anywhere in the HTTP header.
+	Present pulumi.BoolPtrInput `pulumi:"present"`
+	// Specifies that a request matches when the header with the given name matches this regular expression.
+	Regex pulumi.StringPtrInput `pulumi:"regex"`
+	// Specifies that a request matches when the header with the given name has this suffix.
+	Suffix pulumi.StringPtrInput `pulumi:"suffix"`
+}
+
+func (ConfigEntryServiceRouterRouteMatchHttpHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceRouterRouteMatchHttpHeader)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceRouterRouteMatchHttpHeaderArgs) ToConfigEntryServiceRouterRouteMatchHttpHeaderOutput() ConfigEntryServiceRouterRouteMatchHttpHeaderOutput {
+	return i.ToConfigEntryServiceRouterRouteMatchHttpHeaderOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceRouterRouteMatchHttpHeaderArgs) ToConfigEntryServiceRouterRouteMatchHttpHeaderOutputWithContext(ctx context.Context) ConfigEntryServiceRouterRouteMatchHttpHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceRouterRouteMatchHttpHeaderOutput)
+}
+
+func (i ConfigEntryServiceRouterRouteMatchHttpHeaderArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceRouterRouteMatchHttpHeader] {
+	return pulumix.Output[ConfigEntryServiceRouterRouteMatchHttpHeader]{
+		OutputState: i.ToConfigEntryServiceRouterRouteMatchHttpHeaderOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ConfigEntryServiceRouterRouteMatchHttpHeaderArrayInput is an input type that accepts ConfigEntryServiceRouterRouteMatchHttpHeaderArray and ConfigEntryServiceRouterRouteMatchHttpHeaderArrayOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceRouterRouteMatchHttpHeaderArrayInput` via:
+//
+//	ConfigEntryServiceRouterRouteMatchHttpHeaderArray{ ConfigEntryServiceRouterRouteMatchHttpHeaderArgs{...} }
+type ConfigEntryServiceRouterRouteMatchHttpHeaderArrayInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceRouterRouteMatchHttpHeaderArrayOutput() ConfigEntryServiceRouterRouteMatchHttpHeaderArrayOutput
+	ToConfigEntryServiceRouterRouteMatchHttpHeaderArrayOutputWithContext(context.Context) ConfigEntryServiceRouterRouteMatchHttpHeaderArrayOutput
+}
+
+type ConfigEntryServiceRouterRouteMatchHttpHeaderArray []ConfigEntryServiceRouterRouteMatchHttpHeaderInput
+
+func (ConfigEntryServiceRouterRouteMatchHttpHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceRouterRouteMatchHttpHeader)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceRouterRouteMatchHttpHeaderArray) ToConfigEntryServiceRouterRouteMatchHttpHeaderArrayOutput() ConfigEntryServiceRouterRouteMatchHttpHeaderArrayOutput {
+	return i.ToConfigEntryServiceRouterRouteMatchHttpHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceRouterRouteMatchHttpHeaderArray) ToConfigEntryServiceRouterRouteMatchHttpHeaderArrayOutputWithContext(ctx context.Context) ConfigEntryServiceRouterRouteMatchHttpHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceRouterRouteMatchHttpHeaderArrayOutput)
+}
+
+func (i ConfigEntryServiceRouterRouteMatchHttpHeaderArray) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceRouterRouteMatchHttpHeader] {
+	return pulumix.Output[[]ConfigEntryServiceRouterRouteMatchHttpHeader]{
+		OutputState: i.ToConfigEntryServiceRouterRouteMatchHttpHeaderArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ConfigEntryServiceRouterRouteMatchHttpHeaderOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceRouterRouteMatchHttpHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceRouterRouteMatchHttpHeader)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceRouterRouteMatchHttpHeaderOutput) ToConfigEntryServiceRouterRouteMatchHttpHeaderOutput() ConfigEntryServiceRouterRouteMatchHttpHeaderOutput {
+	return o
+}
+
+func (o ConfigEntryServiceRouterRouteMatchHttpHeaderOutput) ToConfigEntryServiceRouterRouteMatchHttpHeaderOutputWithContext(ctx context.Context) ConfigEntryServiceRouterRouteMatchHttpHeaderOutput {
+	return o
+}
+
+func (o ConfigEntryServiceRouterRouteMatchHttpHeaderOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceRouterRouteMatchHttpHeader] {
+	return pulumix.Output[ConfigEntryServiceRouterRouteMatchHttpHeader]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Specifies that a request matches when the header with the given name is this exact value.
+func (o ConfigEntryServiceRouterRouteMatchHttpHeaderOutput) Exact() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceRouterRouteMatchHttpHeader) *string { return v.Exact }).(pulumi.StringPtrOutput)
+}
+
+// Specifies that the logic for the HTTP header match should be inverted.
+func (o ConfigEntryServiceRouterRouteMatchHttpHeaderOutput) Invert() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceRouterRouteMatchHttpHeader) *bool { return v.Invert }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the name of the HTTP header to match.
+func (o ConfigEntryServiceRouterRouteMatchHttpHeaderOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceRouterRouteMatchHttpHeader) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Specifies that a request matches when the header with the given name has this prefix.
+func (o ConfigEntryServiceRouterRouteMatchHttpHeaderOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceRouterRouteMatchHttpHeader) *string { return v.Prefix }).(pulumi.StringPtrOutput)
+}
+
+// Specifies that a request matches when the value in the `name` argument is present anywhere in the HTTP header.
+func (o ConfigEntryServiceRouterRouteMatchHttpHeaderOutput) Present() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceRouterRouteMatchHttpHeader) *bool { return v.Present }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies that a request matches when the header with the given name matches this regular expression.
+func (o ConfigEntryServiceRouterRouteMatchHttpHeaderOutput) Regex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceRouterRouteMatchHttpHeader) *string { return v.Regex }).(pulumi.StringPtrOutput)
+}
+
+// Specifies that a request matches when the header with the given name has this suffix.
+func (o ConfigEntryServiceRouterRouteMatchHttpHeaderOutput) Suffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceRouterRouteMatchHttpHeader) *string { return v.Suffix }).(pulumi.StringPtrOutput)
+}
+
+type ConfigEntryServiceRouterRouteMatchHttpHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceRouterRouteMatchHttpHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceRouterRouteMatchHttpHeader)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceRouterRouteMatchHttpHeaderArrayOutput) ToConfigEntryServiceRouterRouteMatchHttpHeaderArrayOutput() ConfigEntryServiceRouterRouteMatchHttpHeaderArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceRouterRouteMatchHttpHeaderArrayOutput) ToConfigEntryServiceRouterRouteMatchHttpHeaderArrayOutputWithContext(ctx context.Context) ConfigEntryServiceRouterRouteMatchHttpHeaderArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceRouterRouteMatchHttpHeaderArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceRouterRouteMatchHttpHeader] {
+	return pulumix.Output[[]ConfigEntryServiceRouterRouteMatchHttpHeader]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConfigEntryServiceRouterRouteMatchHttpHeaderArrayOutput) Index(i pulumi.IntInput) ConfigEntryServiceRouterRouteMatchHttpHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConfigEntryServiceRouterRouteMatchHttpHeader {
+		return vs[0].([]ConfigEntryServiceRouterRouteMatchHttpHeader)[vs[1].(int)]
+	}).(ConfigEntryServiceRouterRouteMatchHttpHeaderOutput)
+}
+
+type ConfigEntryServiceRouterRouteMatchHttpQueryParam struct {
+	// Specifies that a request matches when the header with the given name is this exact value.
+	Exact *string `pulumi:"exact"`
+	// Specifies the name of the HTTP header to match.
+	Name *string `pulumi:"name"`
+	// Specifies that a request matches when the value in the `name` argument is present anywhere in the HTTP header.
+	Present *bool `pulumi:"present"`
+	// Specifies that a request matches when the header with the given name matches this regular expression.
+	Regex *string `pulumi:"regex"`
+}
+
+// ConfigEntryServiceRouterRouteMatchHttpQueryParamInput is an input type that accepts ConfigEntryServiceRouterRouteMatchHttpQueryParamArgs and ConfigEntryServiceRouterRouteMatchHttpQueryParamOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceRouterRouteMatchHttpQueryParamInput` via:
+//
+//	ConfigEntryServiceRouterRouteMatchHttpQueryParamArgs{...}
+type ConfigEntryServiceRouterRouteMatchHttpQueryParamInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceRouterRouteMatchHttpQueryParamOutput() ConfigEntryServiceRouterRouteMatchHttpQueryParamOutput
+	ToConfigEntryServiceRouterRouteMatchHttpQueryParamOutputWithContext(context.Context) ConfigEntryServiceRouterRouteMatchHttpQueryParamOutput
+}
+
+type ConfigEntryServiceRouterRouteMatchHttpQueryParamArgs struct {
+	// Specifies that a request matches when the header with the given name is this exact value.
+	Exact pulumi.StringPtrInput `pulumi:"exact"`
+	// Specifies the name of the HTTP header to match.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Specifies that a request matches when the value in the `name` argument is present anywhere in the HTTP header.
+	Present pulumi.BoolPtrInput `pulumi:"present"`
+	// Specifies that a request matches when the header with the given name matches this regular expression.
+	Regex pulumi.StringPtrInput `pulumi:"regex"`
+}
+
+func (ConfigEntryServiceRouterRouteMatchHttpQueryParamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceRouterRouteMatchHttpQueryParam)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceRouterRouteMatchHttpQueryParamArgs) ToConfigEntryServiceRouterRouteMatchHttpQueryParamOutput() ConfigEntryServiceRouterRouteMatchHttpQueryParamOutput {
+	return i.ToConfigEntryServiceRouterRouteMatchHttpQueryParamOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceRouterRouteMatchHttpQueryParamArgs) ToConfigEntryServiceRouterRouteMatchHttpQueryParamOutputWithContext(ctx context.Context) ConfigEntryServiceRouterRouteMatchHttpQueryParamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceRouterRouteMatchHttpQueryParamOutput)
+}
+
+func (i ConfigEntryServiceRouterRouteMatchHttpQueryParamArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceRouterRouteMatchHttpQueryParam] {
+	return pulumix.Output[ConfigEntryServiceRouterRouteMatchHttpQueryParam]{
+		OutputState: i.ToConfigEntryServiceRouterRouteMatchHttpQueryParamOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ConfigEntryServiceRouterRouteMatchHttpQueryParamArrayInput is an input type that accepts ConfigEntryServiceRouterRouteMatchHttpQueryParamArray and ConfigEntryServiceRouterRouteMatchHttpQueryParamArrayOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceRouterRouteMatchHttpQueryParamArrayInput` via:
+//
+//	ConfigEntryServiceRouterRouteMatchHttpQueryParamArray{ ConfigEntryServiceRouterRouteMatchHttpQueryParamArgs{...} }
+type ConfigEntryServiceRouterRouteMatchHttpQueryParamArrayInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceRouterRouteMatchHttpQueryParamArrayOutput() ConfigEntryServiceRouterRouteMatchHttpQueryParamArrayOutput
+	ToConfigEntryServiceRouterRouteMatchHttpQueryParamArrayOutputWithContext(context.Context) ConfigEntryServiceRouterRouteMatchHttpQueryParamArrayOutput
+}
+
+type ConfigEntryServiceRouterRouteMatchHttpQueryParamArray []ConfigEntryServiceRouterRouteMatchHttpQueryParamInput
+
+func (ConfigEntryServiceRouterRouteMatchHttpQueryParamArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceRouterRouteMatchHttpQueryParam)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceRouterRouteMatchHttpQueryParamArray) ToConfigEntryServiceRouterRouteMatchHttpQueryParamArrayOutput() ConfigEntryServiceRouterRouteMatchHttpQueryParamArrayOutput {
+	return i.ToConfigEntryServiceRouterRouteMatchHttpQueryParamArrayOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceRouterRouteMatchHttpQueryParamArray) ToConfigEntryServiceRouterRouteMatchHttpQueryParamArrayOutputWithContext(ctx context.Context) ConfigEntryServiceRouterRouteMatchHttpQueryParamArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceRouterRouteMatchHttpQueryParamArrayOutput)
+}
+
+func (i ConfigEntryServiceRouterRouteMatchHttpQueryParamArray) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceRouterRouteMatchHttpQueryParam] {
+	return pulumix.Output[[]ConfigEntryServiceRouterRouteMatchHttpQueryParam]{
+		OutputState: i.ToConfigEntryServiceRouterRouteMatchHttpQueryParamArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ConfigEntryServiceRouterRouteMatchHttpQueryParamOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceRouterRouteMatchHttpQueryParamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceRouterRouteMatchHttpQueryParam)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceRouterRouteMatchHttpQueryParamOutput) ToConfigEntryServiceRouterRouteMatchHttpQueryParamOutput() ConfigEntryServiceRouterRouteMatchHttpQueryParamOutput {
+	return o
+}
+
+func (o ConfigEntryServiceRouterRouteMatchHttpQueryParamOutput) ToConfigEntryServiceRouterRouteMatchHttpQueryParamOutputWithContext(ctx context.Context) ConfigEntryServiceRouterRouteMatchHttpQueryParamOutput {
+	return o
+}
+
+func (o ConfigEntryServiceRouterRouteMatchHttpQueryParamOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceRouterRouteMatchHttpQueryParam] {
+	return pulumix.Output[ConfigEntryServiceRouterRouteMatchHttpQueryParam]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Specifies that a request matches when the header with the given name is this exact value.
+func (o ConfigEntryServiceRouterRouteMatchHttpQueryParamOutput) Exact() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceRouterRouteMatchHttpQueryParam) *string { return v.Exact }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the name of the HTTP header to match.
+func (o ConfigEntryServiceRouterRouteMatchHttpQueryParamOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceRouterRouteMatchHttpQueryParam) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Specifies that a request matches when the value in the `name` argument is present anywhere in the HTTP header.
+func (o ConfigEntryServiceRouterRouteMatchHttpQueryParamOutput) Present() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceRouterRouteMatchHttpQueryParam) *bool { return v.Present }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies that a request matches when the header with the given name matches this regular expression.
+func (o ConfigEntryServiceRouterRouteMatchHttpQueryParamOutput) Regex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceRouterRouteMatchHttpQueryParam) *string { return v.Regex }).(pulumi.StringPtrOutput)
+}
+
+type ConfigEntryServiceRouterRouteMatchHttpQueryParamArrayOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceRouterRouteMatchHttpQueryParamArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceRouterRouteMatchHttpQueryParam)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceRouterRouteMatchHttpQueryParamArrayOutput) ToConfigEntryServiceRouterRouteMatchHttpQueryParamArrayOutput() ConfigEntryServiceRouterRouteMatchHttpQueryParamArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceRouterRouteMatchHttpQueryParamArrayOutput) ToConfigEntryServiceRouterRouteMatchHttpQueryParamArrayOutputWithContext(ctx context.Context) ConfigEntryServiceRouterRouteMatchHttpQueryParamArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceRouterRouteMatchHttpQueryParamArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceRouterRouteMatchHttpQueryParam] {
+	return pulumix.Output[[]ConfigEntryServiceRouterRouteMatchHttpQueryParam]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConfigEntryServiceRouterRouteMatchHttpQueryParamArrayOutput) Index(i pulumi.IntInput) ConfigEntryServiceRouterRouteMatchHttpQueryParamOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConfigEntryServiceRouterRouteMatchHttpQueryParam {
+		return vs[0].([]ConfigEntryServiceRouterRouteMatchHttpQueryParam)[vs[1].(int)]
+	}).(ConfigEntryServiceRouterRouteMatchHttpQueryParamOutput)
+}
+
+type ConfigEntryServiceSplitterSplit struct {
+	// Specifies the namespace to use in the FQDN when resolving the service.
+	Namespace *string `pulumi:"namespace"`
+	// Specifies the admin partition to use in the FQDN when resolving the service.
+	Partition *string `pulumi:"partition"`
+	// Specifies a set of HTTP-specific header modification rules applied to requests routed with the service split. You cannot configure request headers if the listener protocol is set to `tcp`.
+	RequestHeaders *ConfigEntryServiceSplitterSplitRequestHeaders `pulumi:"requestHeaders"`
+	// Specifies a set of HTTP-specific header modification rules applied to responses routed with the service split. You cannot configure request headers if the listener protocol is set to `tcp`.
+	ResponseHeaders *ConfigEntryServiceSplitterSplitResponseHeaders `pulumi:"responseHeaders"`
+	// Specifies the name of the service to resolve.
+	Service string `pulumi:"service"`
+	// Specifies a subset of the service to resolve. A service subset assigns a name to a specific subset of discoverable service instances within a datacenter, such as `version2` or `canary`. All services have an unnamed default subset that returns all healthy instances.
+	ServiceSubset *string `pulumi:"serviceSubset"`
+	// Specifies the percentage of traffic sent to the set of service instances specified in the `service` field. Each weight must be a floating integer between `0` and `100`. The smallest representable value is `.01`. The sum of weights across all splits must add up to `100`.
+	Weight float64 `pulumi:"weight"`
+}
+
+// ConfigEntryServiceSplitterSplitInput is an input type that accepts ConfigEntryServiceSplitterSplitArgs and ConfigEntryServiceSplitterSplitOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceSplitterSplitInput` via:
+//
+//	ConfigEntryServiceSplitterSplitArgs{...}
+type ConfigEntryServiceSplitterSplitInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceSplitterSplitOutput() ConfigEntryServiceSplitterSplitOutput
+	ToConfigEntryServiceSplitterSplitOutputWithContext(context.Context) ConfigEntryServiceSplitterSplitOutput
+}
+
+type ConfigEntryServiceSplitterSplitArgs struct {
+	// Specifies the namespace to use in the FQDN when resolving the service.
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	// Specifies the admin partition to use in the FQDN when resolving the service.
+	Partition pulumi.StringPtrInput `pulumi:"partition"`
+	// Specifies a set of HTTP-specific header modification rules applied to requests routed with the service split. You cannot configure request headers if the listener protocol is set to `tcp`.
+	RequestHeaders ConfigEntryServiceSplitterSplitRequestHeadersPtrInput `pulumi:"requestHeaders"`
+	// Specifies a set of HTTP-specific header modification rules applied to responses routed with the service split. You cannot configure request headers if the listener protocol is set to `tcp`.
+	ResponseHeaders ConfigEntryServiceSplitterSplitResponseHeadersPtrInput `pulumi:"responseHeaders"`
+	// Specifies the name of the service to resolve.
+	Service pulumi.StringInput `pulumi:"service"`
+	// Specifies a subset of the service to resolve. A service subset assigns a name to a specific subset of discoverable service instances within a datacenter, such as `version2` or `canary`. All services have an unnamed default subset that returns all healthy instances.
+	ServiceSubset pulumi.StringPtrInput `pulumi:"serviceSubset"`
+	// Specifies the percentage of traffic sent to the set of service instances specified in the `service` field. Each weight must be a floating integer between `0` and `100`. The smallest representable value is `.01`. The sum of weights across all splits must add up to `100`.
+	Weight pulumi.Float64Input `pulumi:"weight"`
+}
+
+func (ConfigEntryServiceSplitterSplitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceSplitterSplit)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceSplitterSplitArgs) ToConfigEntryServiceSplitterSplitOutput() ConfigEntryServiceSplitterSplitOutput {
+	return i.ToConfigEntryServiceSplitterSplitOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceSplitterSplitArgs) ToConfigEntryServiceSplitterSplitOutputWithContext(ctx context.Context) ConfigEntryServiceSplitterSplitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceSplitterSplitOutput)
+}
+
+func (i ConfigEntryServiceSplitterSplitArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceSplitterSplit] {
+	return pulumix.Output[ConfigEntryServiceSplitterSplit]{
+		OutputState: i.ToConfigEntryServiceSplitterSplitOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ConfigEntryServiceSplitterSplitArrayInput is an input type that accepts ConfigEntryServiceSplitterSplitArray and ConfigEntryServiceSplitterSplitArrayOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceSplitterSplitArrayInput` via:
+//
+//	ConfigEntryServiceSplitterSplitArray{ ConfigEntryServiceSplitterSplitArgs{...} }
+type ConfigEntryServiceSplitterSplitArrayInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceSplitterSplitArrayOutput() ConfigEntryServiceSplitterSplitArrayOutput
+	ToConfigEntryServiceSplitterSplitArrayOutputWithContext(context.Context) ConfigEntryServiceSplitterSplitArrayOutput
+}
+
+type ConfigEntryServiceSplitterSplitArray []ConfigEntryServiceSplitterSplitInput
+
+func (ConfigEntryServiceSplitterSplitArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceSplitterSplit)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceSplitterSplitArray) ToConfigEntryServiceSplitterSplitArrayOutput() ConfigEntryServiceSplitterSplitArrayOutput {
+	return i.ToConfigEntryServiceSplitterSplitArrayOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceSplitterSplitArray) ToConfigEntryServiceSplitterSplitArrayOutputWithContext(ctx context.Context) ConfigEntryServiceSplitterSplitArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceSplitterSplitArrayOutput)
+}
+
+func (i ConfigEntryServiceSplitterSplitArray) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceSplitterSplit] {
+	return pulumix.Output[[]ConfigEntryServiceSplitterSplit]{
+		OutputState: i.ToConfigEntryServiceSplitterSplitArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ConfigEntryServiceSplitterSplitOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceSplitterSplitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceSplitterSplit)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceSplitterSplitOutput) ToConfigEntryServiceSplitterSplitOutput() ConfigEntryServiceSplitterSplitOutput {
+	return o
+}
+
+func (o ConfigEntryServiceSplitterSplitOutput) ToConfigEntryServiceSplitterSplitOutputWithContext(ctx context.Context) ConfigEntryServiceSplitterSplitOutput {
+	return o
+}
+
+func (o ConfigEntryServiceSplitterSplitOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceSplitterSplit] {
+	return pulumix.Output[ConfigEntryServiceSplitterSplit]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Specifies the namespace to use in the FQDN when resolving the service.
+func (o ConfigEntryServiceSplitterSplitOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceSplitterSplit) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the admin partition to use in the FQDN when resolving the service.
+func (o ConfigEntryServiceSplitterSplitOutput) Partition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceSplitterSplit) *string { return v.Partition }).(pulumi.StringPtrOutput)
+}
+
+// Specifies a set of HTTP-specific header modification rules applied to requests routed with the service split. You cannot configure request headers if the listener protocol is set to `tcp`.
+func (o ConfigEntryServiceSplitterSplitOutput) RequestHeaders() ConfigEntryServiceSplitterSplitRequestHeadersPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceSplitterSplit) *ConfigEntryServiceSplitterSplitRequestHeaders {
+		return v.RequestHeaders
+	}).(ConfigEntryServiceSplitterSplitRequestHeadersPtrOutput)
+}
+
+// Specifies a set of HTTP-specific header modification rules applied to responses routed with the service split. You cannot configure request headers if the listener protocol is set to `tcp`.
+func (o ConfigEntryServiceSplitterSplitOutput) ResponseHeaders() ConfigEntryServiceSplitterSplitResponseHeadersPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceSplitterSplit) *ConfigEntryServiceSplitterSplitResponseHeaders {
+		return v.ResponseHeaders
+	}).(ConfigEntryServiceSplitterSplitResponseHeadersPtrOutput)
+}
+
+// Specifies the name of the service to resolve.
+func (o ConfigEntryServiceSplitterSplitOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigEntryServiceSplitterSplit) string { return v.Service }).(pulumi.StringOutput)
+}
+
+// Specifies a subset of the service to resolve. A service subset assigns a name to a specific subset of discoverable service instances within a datacenter, such as `version2` or `canary`. All services have an unnamed default subset that returns all healthy instances.
+func (o ConfigEntryServiceSplitterSplitOutput) ServiceSubset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigEntryServiceSplitterSplit) *string { return v.ServiceSubset }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the percentage of traffic sent to the set of service instances specified in the `service` field. Each weight must be a floating integer between `0` and `100`. The smallest representable value is `.01`. The sum of weights across all splits must add up to `100`.
+func (o ConfigEntryServiceSplitterSplitOutput) Weight() pulumi.Float64Output {
+	return o.ApplyT(func(v ConfigEntryServiceSplitterSplit) float64 { return v.Weight }).(pulumi.Float64Output)
+}
+
+type ConfigEntryServiceSplitterSplitArrayOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceSplitterSplitArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigEntryServiceSplitterSplit)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceSplitterSplitArrayOutput) ToConfigEntryServiceSplitterSplitArrayOutput() ConfigEntryServiceSplitterSplitArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceSplitterSplitArrayOutput) ToConfigEntryServiceSplitterSplitArrayOutputWithContext(ctx context.Context) ConfigEntryServiceSplitterSplitArrayOutput {
+	return o
+}
+
+func (o ConfigEntryServiceSplitterSplitArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConfigEntryServiceSplitterSplit] {
+	return pulumix.Output[[]ConfigEntryServiceSplitterSplit]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConfigEntryServiceSplitterSplitArrayOutput) Index(i pulumi.IntInput) ConfigEntryServiceSplitterSplitOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConfigEntryServiceSplitterSplit {
+		return vs[0].([]ConfigEntryServiceSplitterSplit)[vs[1].(int)]
+	}).(ConfigEntryServiceSplitterSplitOutput)
+}
+
+type ConfigEntryServiceSplitterSplitRequestHeaders struct {
+	// Map of one or more key-value pairs. Defines a set of key-value pairs to add to the header. Use header names as the keys. Header names are not case-sensitive. If header values with the same name already exist, the value is appended and Consul applies both headers.
+	Add map[string]string `pulumi:"add"`
+	// Defines an list of headers to remove. Consul removes only headers containing exact matches. Header names are not case-sensitive.
+	Removes []string `pulumi:"removes"`
+	// Map of one or more key-value pairs. Defines a set of key-value pairs to add to the request header or to replace existing header values with. Use header names as the keys. Header names are not case-sensitive. If header values with the same names already exist, Consul replaces the header values.
+	Set map[string]string `pulumi:"set"`
+}
+
+// ConfigEntryServiceSplitterSplitRequestHeadersInput is an input type that accepts ConfigEntryServiceSplitterSplitRequestHeadersArgs and ConfigEntryServiceSplitterSplitRequestHeadersOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceSplitterSplitRequestHeadersInput` via:
+//
+//	ConfigEntryServiceSplitterSplitRequestHeadersArgs{...}
+type ConfigEntryServiceSplitterSplitRequestHeadersInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceSplitterSplitRequestHeadersOutput() ConfigEntryServiceSplitterSplitRequestHeadersOutput
+	ToConfigEntryServiceSplitterSplitRequestHeadersOutputWithContext(context.Context) ConfigEntryServiceSplitterSplitRequestHeadersOutput
+}
+
+type ConfigEntryServiceSplitterSplitRequestHeadersArgs struct {
+	// Map of one or more key-value pairs. Defines a set of key-value pairs to add to the header. Use header names as the keys. Header names are not case-sensitive. If header values with the same name already exist, the value is appended and Consul applies both headers.
+	Add pulumi.StringMapInput `pulumi:"add"`
+	// Defines an list of headers to remove. Consul removes only headers containing exact matches. Header names are not case-sensitive.
+	Removes pulumi.StringArrayInput `pulumi:"removes"`
+	// Map of one or more key-value pairs. Defines a set of key-value pairs to add to the request header or to replace existing header values with. Use header names as the keys. Header names are not case-sensitive. If header values with the same names already exist, Consul replaces the header values.
+	Set pulumi.StringMapInput `pulumi:"set"`
+}
+
+func (ConfigEntryServiceSplitterSplitRequestHeadersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceSplitterSplitRequestHeaders)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceSplitterSplitRequestHeadersArgs) ToConfigEntryServiceSplitterSplitRequestHeadersOutput() ConfigEntryServiceSplitterSplitRequestHeadersOutput {
+	return i.ToConfigEntryServiceSplitterSplitRequestHeadersOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceSplitterSplitRequestHeadersArgs) ToConfigEntryServiceSplitterSplitRequestHeadersOutputWithContext(ctx context.Context) ConfigEntryServiceSplitterSplitRequestHeadersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceSplitterSplitRequestHeadersOutput)
+}
+
+func (i ConfigEntryServiceSplitterSplitRequestHeadersArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceSplitterSplitRequestHeaders] {
+	return pulumix.Output[ConfigEntryServiceSplitterSplitRequestHeaders]{
+		OutputState: i.ToConfigEntryServiceSplitterSplitRequestHeadersOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ConfigEntryServiceSplitterSplitRequestHeadersArgs) ToConfigEntryServiceSplitterSplitRequestHeadersPtrOutput() ConfigEntryServiceSplitterSplitRequestHeadersPtrOutput {
+	return i.ToConfigEntryServiceSplitterSplitRequestHeadersPtrOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceSplitterSplitRequestHeadersArgs) ToConfigEntryServiceSplitterSplitRequestHeadersPtrOutputWithContext(ctx context.Context) ConfigEntryServiceSplitterSplitRequestHeadersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceSplitterSplitRequestHeadersOutput).ToConfigEntryServiceSplitterSplitRequestHeadersPtrOutputWithContext(ctx)
+}
+
+// ConfigEntryServiceSplitterSplitRequestHeadersPtrInput is an input type that accepts ConfigEntryServiceSplitterSplitRequestHeadersArgs, ConfigEntryServiceSplitterSplitRequestHeadersPtr and ConfigEntryServiceSplitterSplitRequestHeadersPtrOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceSplitterSplitRequestHeadersPtrInput` via:
+//
+//	        ConfigEntryServiceSplitterSplitRequestHeadersArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConfigEntryServiceSplitterSplitRequestHeadersPtrInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceSplitterSplitRequestHeadersPtrOutput() ConfigEntryServiceSplitterSplitRequestHeadersPtrOutput
+	ToConfigEntryServiceSplitterSplitRequestHeadersPtrOutputWithContext(context.Context) ConfigEntryServiceSplitterSplitRequestHeadersPtrOutput
+}
+
+type configEntryServiceSplitterSplitRequestHeadersPtrType ConfigEntryServiceSplitterSplitRequestHeadersArgs
+
+func ConfigEntryServiceSplitterSplitRequestHeadersPtr(v *ConfigEntryServiceSplitterSplitRequestHeadersArgs) ConfigEntryServiceSplitterSplitRequestHeadersPtrInput {
+	return (*configEntryServiceSplitterSplitRequestHeadersPtrType)(v)
+}
+
+func (*configEntryServiceSplitterSplitRequestHeadersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigEntryServiceSplitterSplitRequestHeaders)(nil)).Elem()
+}
+
+func (i *configEntryServiceSplitterSplitRequestHeadersPtrType) ToConfigEntryServiceSplitterSplitRequestHeadersPtrOutput() ConfigEntryServiceSplitterSplitRequestHeadersPtrOutput {
+	return i.ToConfigEntryServiceSplitterSplitRequestHeadersPtrOutputWithContext(context.Background())
+}
+
+func (i *configEntryServiceSplitterSplitRequestHeadersPtrType) ToConfigEntryServiceSplitterSplitRequestHeadersPtrOutputWithContext(ctx context.Context) ConfigEntryServiceSplitterSplitRequestHeadersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceSplitterSplitRequestHeadersPtrOutput)
+}
+
+func (i *configEntryServiceSplitterSplitRequestHeadersPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConfigEntryServiceSplitterSplitRequestHeaders] {
+	return pulumix.Output[*ConfigEntryServiceSplitterSplitRequestHeaders]{
+		OutputState: i.ToConfigEntryServiceSplitterSplitRequestHeadersPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ConfigEntryServiceSplitterSplitRequestHeadersOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceSplitterSplitRequestHeadersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceSplitterSplitRequestHeaders)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceSplitterSplitRequestHeadersOutput) ToConfigEntryServiceSplitterSplitRequestHeadersOutput() ConfigEntryServiceSplitterSplitRequestHeadersOutput {
+	return o
+}
+
+func (o ConfigEntryServiceSplitterSplitRequestHeadersOutput) ToConfigEntryServiceSplitterSplitRequestHeadersOutputWithContext(ctx context.Context) ConfigEntryServiceSplitterSplitRequestHeadersOutput {
+	return o
+}
+
+func (o ConfigEntryServiceSplitterSplitRequestHeadersOutput) ToConfigEntryServiceSplitterSplitRequestHeadersPtrOutput() ConfigEntryServiceSplitterSplitRequestHeadersPtrOutput {
+	return o.ToConfigEntryServiceSplitterSplitRequestHeadersPtrOutputWithContext(context.Background())
+}
+
+func (o ConfigEntryServiceSplitterSplitRequestHeadersOutput) ToConfigEntryServiceSplitterSplitRequestHeadersPtrOutputWithContext(ctx context.Context) ConfigEntryServiceSplitterSplitRequestHeadersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigEntryServiceSplitterSplitRequestHeaders) *ConfigEntryServiceSplitterSplitRequestHeaders {
+		return &v
+	}).(ConfigEntryServiceSplitterSplitRequestHeadersPtrOutput)
+}
+
+func (o ConfigEntryServiceSplitterSplitRequestHeadersOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceSplitterSplitRequestHeaders] {
+	return pulumix.Output[ConfigEntryServiceSplitterSplitRequestHeaders]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Map of one or more key-value pairs. Defines a set of key-value pairs to add to the header. Use header names as the keys. Header names are not case-sensitive. If header values with the same name already exist, the value is appended and Consul applies both headers.
+func (o ConfigEntryServiceSplitterSplitRequestHeadersOutput) Add() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ConfigEntryServiceSplitterSplitRequestHeaders) map[string]string { return v.Add }).(pulumi.StringMapOutput)
+}
+
+// Defines an list of headers to remove. Consul removes only headers containing exact matches. Header names are not case-sensitive.
+func (o ConfigEntryServiceSplitterSplitRequestHeadersOutput) Removes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConfigEntryServiceSplitterSplitRequestHeaders) []string { return v.Removes }).(pulumi.StringArrayOutput)
+}
+
+// Map of one or more key-value pairs. Defines a set of key-value pairs to add to the request header or to replace existing header values with. Use header names as the keys. Header names are not case-sensitive. If header values with the same names already exist, Consul replaces the header values.
+func (o ConfigEntryServiceSplitterSplitRequestHeadersOutput) Set() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ConfigEntryServiceSplitterSplitRequestHeaders) map[string]string { return v.Set }).(pulumi.StringMapOutput)
+}
+
+type ConfigEntryServiceSplitterSplitRequestHeadersPtrOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceSplitterSplitRequestHeadersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigEntryServiceSplitterSplitRequestHeaders)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceSplitterSplitRequestHeadersPtrOutput) ToConfigEntryServiceSplitterSplitRequestHeadersPtrOutput() ConfigEntryServiceSplitterSplitRequestHeadersPtrOutput {
+	return o
+}
+
+func (o ConfigEntryServiceSplitterSplitRequestHeadersPtrOutput) ToConfigEntryServiceSplitterSplitRequestHeadersPtrOutputWithContext(ctx context.Context) ConfigEntryServiceSplitterSplitRequestHeadersPtrOutput {
+	return o
+}
+
+func (o ConfigEntryServiceSplitterSplitRequestHeadersPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConfigEntryServiceSplitterSplitRequestHeaders] {
+	return pulumix.Output[*ConfigEntryServiceSplitterSplitRequestHeaders]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConfigEntryServiceSplitterSplitRequestHeadersPtrOutput) Elem() ConfigEntryServiceSplitterSplitRequestHeadersOutput {
+	return o.ApplyT(func(v *ConfigEntryServiceSplitterSplitRequestHeaders) ConfigEntryServiceSplitterSplitRequestHeaders {
+		if v != nil {
+			return *v
+		}
+		var ret ConfigEntryServiceSplitterSplitRequestHeaders
+		return ret
+	}).(ConfigEntryServiceSplitterSplitRequestHeadersOutput)
+}
+
+// Map of one or more key-value pairs. Defines a set of key-value pairs to add to the header. Use header names as the keys. Header names are not case-sensitive. If header values with the same name already exist, the value is appended and Consul applies both headers.
+func (o ConfigEntryServiceSplitterSplitRequestHeadersPtrOutput) Add() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ConfigEntryServiceSplitterSplitRequestHeaders) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Add
+	}).(pulumi.StringMapOutput)
+}
+
+// Defines an list of headers to remove. Consul removes only headers containing exact matches. Header names are not case-sensitive.
+func (o ConfigEntryServiceSplitterSplitRequestHeadersPtrOutput) Removes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConfigEntryServiceSplitterSplitRequestHeaders) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Removes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Map of one or more key-value pairs. Defines a set of key-value pairs to add to the request header or to replace existing header values with. Use header names as the keys. Header names are not case-sensitive. If header values with the same names already exist, Consul replaces the header values.
+func (o ConfigEntryServiceSplitterSplitRequestHeadersPtrOutput) Set() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ConfigEntryServiceSplitterSplitRequestHeaders) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Set
+	}).(pulumi.StringMapOutput)
+}
+
+type ConfigEntryServiceSplitterSplitResponseHeaders struct {
+	// Map of one or more key-value pairs. Defines a set of key-value pairs to add to the header. Use header names as the keys. Header names are not case-sensitive. If header values with the same name already exist, the value is appended and Consul applies both headers.
+	Add map[string]string `pulumi:"add"`
+	// Defines an list of headers to remove. Consul removes only headers containing exact matches. Header names are not case-sensitive.
+	Removes []string `pulumi:"removes"`
+	// Map of one or more key-value pairs. Defines a set of key-value pairs to add to the request header or to replace existing header values with. Use header names as the keys. Header names are not case-sensitive. If header values with the same names already exist, Consul replaces the header values.
+	Set map[string]string `pulumi:"set"`
+}
+
+// ConfigEntryServiceSplitterSplitResponseHeadersInput is an input type that accepts ConfigEntryServiceSplitterSplitResponseHeadersArgs and ConfigEntryServiceSplitterSplitResponseHeadersOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceSplitterSplitResponseHeadersInput` via:
+//
+//	ConfigEntryServiceSplitterSplitResponseHeadersArgs{...}
+type ConfigEntryServiceSplitterSplitResponseHeadersInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceSplitterSplitResponseHeadersOutput() ConfigEntryServiceSplitterSplitResponseHeadersOutput
+	ToConfigEntryServiceSplitterSplitResponseHeadersOutputWithContext(context.Context) ConfigEntryServiceSplitterSplitResponseHeadersOutput
+}
+
+type ConfigEntryServiceSplitterSplitResponseHeadersArgs struct {
+	// Map of one or more key-value pairs. Defines a set of key-value pairs to add to the header. Use header names as the keys. Header names are not case-sensitive. If header values with the same name already exist, the value is appended and Consul applies both headers.
+	Add pulumi.StringMapInput `pulumi:"add"`
+	// Defines an list of headers to remove. Consul removes only headers containing exact matches. Header names are not case-sensitive.
+	Removes pulumi.StringArrayInput `pulumi:"removes"`
+	// Map of one or more key-value pairs. Defines a set of key-value pairs to add to the request header or to replace existing header values with. Use header names as the keys. Header names are not case-sensitive. If header values with the same names already exist, Consul replaces the header values.
+	Set pulumi.StringMapInput `pulumi:"set"`
+}
+
+func (ConfigEntryServiceSplitterSplitResponseHeadersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceSplitterSplitResponseHeaders)(nil)).Elem()
+}
+
+func (i ConfigEntryServiceSplitterSplitResponseHeadersArgs) ToConfigEntryServiceSplitterSplitResponseHeadersOutput() ConfigEntryServiceSplitterSplitResponseHeadersOutput {
+	return i.ToConfigEntryServiceSplitterSplitResponseHeadersOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceSplitterSplitResponseHeadersArgs) ToConfigEntryServiceSplitterSplitResponseHeadersOutputWithContext(ctx context.Context) ConfigEntryServiceSplitterSplitResponseHeadersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceSplitterSplitResponseHeadersOutput)
+}
+
+func (i ConfigEntryServiceSplitterSplitResponseHeadersArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceSplitterSplitResponseHeaders] {
+	return pulumix.Output[ConfigEntryServiceSplitterSplitResponseHeaders]{
+		OutputState: i.ToConfigEntryServiceSplitterSplitResponseHeadersOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ConfigEntryServiceSplitterSplitResponseHeadersArgs) ToConfigEntryServiceSplitterSplitResponseHeadersPtrOutput() ConfigEntryServiceSplitterSplitResponseHeadersPtrOutput {
+	return i.ToConfigEntryServiceSplitterSplitResponseHeadersPtrOutputWithContext(context.Background())
+}
+
+func (i ConfigEntryServiceSplitterSplitResponseHeadersArgs) ToConfigEntryServiceSplitterSplitResponseHeadersPtrOutputWithContext(ctx context.Context) ConfigEntryServiceSplitterSplitResponseHeadersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceSplitterSplitResponseHeadersOutput).ToConfigEntryServiceSplitterSplitResponseHeadersPtrOutputWithContext(ctx)
+}
+
+// ConfigEntryServiceSplitterSplitResponseHeadersPtrInput is an input type that accepts ConfigEntryServiceSplitterSplitResponseHeadersArgs, ConfigEntryServiceSplitterSplitResponseHeadersPtr and ConfigEntryServiceSplitterSplitResponseHeadersPtrOutput values.
+// You can construct a concrete instance of `ConfigEntryServiceSplitterSplitResponseHeadersPtrInput` via:
+//
+//	        ConfigEntryServiceSplitterSplitResponseHeadersArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConfigEntryServiceSplitterSplitResponseHeadersPtrInput interface {
+	pulumi.Input
+
+	ToConfigEntryServiceSplitterSplitResponseHeadersPtrOutput() ConfigEntryServiceSplitterSplitResponseHeadersPtrOutput
+	ToConfigEntryServiceSplitterSplitResponseHeadersPtrOutputWithContext(context.Context) ConfigEntryServiceSplitterSplitResponseHeadersPtrOutput
+}
+
+type configEntryServiceSplitterSplitResponseHeadersPtrType ConfigEntryServiceSplitterSplitResponseHeadersArgs
+
+func ConfigEntryServiceSplitterSplitResponseHeadersPtr(v *ConfigEntryServiceSplitterSplitResponseHeadersArgs) ConfigEntryServiceSplitterSplitResponseHeadersPtrInput {
+	return (*configEntryServiceSplitterSplitResponseHeadersPtrType)(v)
+}
+
+func (*configEntryServiceSplitterSplitResponseHeadersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigEntryServiceSplitterSplitResponseHeaders)(nil)).Elem()
+}
+
+func (i *configEntryServiceSplitterSplitResponseHeadersPtrType) ToConfigEntryServiceSplitterSplitResponseHeadersPtrOutput() ConfigEntryServiceSplitterSplitResponseHeadersPtrOutput {
+	return i.ToConfigEntryServiceSplitterSplitResponseHeadersPtrOutputWithContext(context.Background())
+}
+
+func (i *configEntryServiceSplitterSplitResponseHeadersPtrType) ToConfigEntryServiceSplitterSplitResponseHeadersPtrOutputWithContext(ctx context.Context) ConfigEntryServiceSplitterSplitResponseHeadersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceSplitterSplitResponseHeadersPtrOutput)
+}
+
+func (i *configEntryServiceSplitterSplitResponseHeadersPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConfigEntryServiceSplitterSplitResponseHeaders] {
+	return pulumix.Output[*ConfigEntryServiceSplitterSplitResponseHeaders]{
+		OutputState: i.ToConfigEntryServiceSplitterSplitResponseHeadersPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ConfigEntryServiceSplitterSplitResponseHeadersOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceSplitterSplitResponseHeadersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigEntryServiceSplitterSplitResponseHeaders)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceSplitterSplitResponseHeadersOutput) ToConfigEntryServiceSplitterSplitResponseHeadersOutput() ConfigEntryServiceSplitterSplitResponseHeadersOutput {
+	return o
+}
+
+func (o ConfigEntryServiceSplitterSplitResponseHeadersOutput) ToConfigEntryServiceSplitterSplitResponseHeadersOutputWithContext(ctx context.Context) ConfigEntryServiceSplitterSplitResponseHeadersOutput {
+	return o
+}
+
+func (o ConfigEntryServiceSplitterSplitResponseHeadersOutput) ToConfigEntryServiceSplitterSplitResponseHeadersPtrOutput() ConfigEntryServiceSplitterSplitResponseHeadersPtrOutput {
+	return o.ToConfigEntryServiceSplitterSplitResponseHeadersPtrOutputWithContext(context.Background())
+}
+
+func (o ConfigEntryServiceSplitterSplitResponseHeadersOutput) ToConfigEntryServiceSplitterSplitResponseHeadersPtrOutputWithContext(ctx context.Context) ConfigEntryServiceSplitterSplitResponseHeadersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigEntryServiceSplitterSplitResponseHeaders) *ConfigEntryServiceSplitterSplitResponseHeaders {
+		return &v
+	}).(ConfigEntryServiceSplitterSplitResponseHeadersPtrOutput)
+}
+
+func (o ConfigEntryServiceSplitterSplitResponseHeadersOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigEntryServiceSplitterSplitResponseHeaders] {
+	return pulumix.Output[ConfigEntryServiceSplitterSplitResponseHeaders]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Map of one or more key-value pairs. Defines a set of key-value pairs to add to the header. Use header names as the keys. Header names are not case-sensitive. If header values with the same name already exist, the value is appended and Consul applies both headers.
+func (o ConfigEntryServiceSplitterSplitResponseHeadersOutput) Add() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ConfigEntryServiceSplitterSplitResponseHeaders) map[string]string { return v.Add }).(pulumi.StringMapOutput)
+}
+
+// Defines an list of headers to remove. Consul removes only headers containing exact matches. Header names are not case-sensitive.
+func (o ConfigEntryServiceSplitterSplitResponseHeadersOutput) Removes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConfigEntryServiceSplitterSplitResponseHeaders) []string { return v.Removes }).(pulumi.StringArrayOutput)
+}
+
+// Map of one or more key-value pairs. Defines a set of key-value pairs to add to the request header or to replace existing header values with. Use header names as the keys. Header names are not case-sensitive. If header values with the same names already exist, Consul replaces the header values.
+func (o ConfigEntryServiceSplitterSplitResponseHeadersOutput) Set() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ConfigEntryServiceSplitterSplitResponseHeaders) map[string]string { return v.Set }).(pulumi.StringMapOutput)
+}
+
+type ConfigEntryServiceSplitterSplitResponseHeadersPtrOutput struct{ *pulumi.OutputState }
+
+func (ConfigEntryServiceSplitterSplitResponseHeadersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigEntryServiceSplitterSplitResponseHeaders)(nil)).Elem()
+}
+
+func (o ConfigEntryServiceSplitterSplitResponseHeadersPtrOutput) ToConfigEntryServiceSplitterSplitResponseHeadersPtrOutput() ConfigEntryServiceSplitterSplitResponseHeadersPtrOutput {
+	return o
+}
+
+func (o ConfigEntryServiceSplitterSplitResponseHeadersPtrOutput) ToConfigEntryServiceSplitterSplitResponseHeadersPtrOutputWithContext(ctx context.Context) ConfigEntryServiceSplitterSplitResponseHeadersPtrOutput {
+	return o
+}
+
+func (o ConfigEntryServiceSplitterSplitResponseHeadersPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConfigEntryServiceSplitterSplitResponseHeaders] {
+	return pulumix.Output[*ConfigEntryServiceSplitterSplitResponseHeaders]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConfigEntryServiceSplitterSplitResponseHeadersPtrOutput) Elem() ConfigEntryServiceSplitterSplitResponseHeadersOutput {
+	return o.ApplyT(func(v *ConfigEntryServiceSplitterSplitResponseHeaders) ConfigEntryServiceSplitterSplitResponseHeaders {
+		if v != nil {
+			return *v
+		}
+		var ret ConfigEntryServiceSplitterSplitResponseHeaders
+		return ret
+	}).(ConfigEntryServiceSplitterSplitResponseHeadersOutput)
+}
+
+// Map of one or more key-value pairs. Defines a set of key-value pairs to add to the header. Use header names as the keys. Header names are not case-sensitive. If header values with the same name already exist, the value is appended and Consul applies both headers.
+func (o ConfigEntryServiceSplitterSplitResponseHeadersPtrOutput) Add() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ConfigEntryServiceSplitterSplitResponseHeaders) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Add
+	}).(pulumi.StringMapOutput)
+}
+
+// Defines an list of headers to remove. Consul removes only headers containing exact matches. Header names are not case-sensitive.
+func (o ConfigEntryServiceSplitterSplitResponseHeadersPtrOutput) Removes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConfigEntryServiceSplitterSplitResponseHeaders) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Removes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Map of one or more key-value pairs. Defines a set of key-value pairs to add to the request header or to replace existing header values with. Use header names as the keys. Header names are not case-sensitive. If header values with the same names already exist, Consul replaces the header values.
+func (o ConfigEntryServiceSplitterSplitResponseHeadersPtrOutput) Set() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ConfigEntryServiceSplitterSplitResponseHeaders) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Set
+	}).(pulumi.StringMapOutput)
 }
 
 type KeyPrefixSubkeyCollection struct {
@@ -2172,23 +9689,17 @@ func (o ProviderHeaderArrayOutput) Index(i pulumi.IntInput) ProviderHeaderOutput
 }
 
 type ServiceCheck struct {
-	// An ID, *unique per agent*. Will default to *name*
-	// if not set.
+	// An ID, *unique per agent*.
 	CheckId string `pulumi:"checkId"`
-	// The time after which
-	// the service is automatically deregistered when in the `critical` state.
-	// Defaults to `30s`.
+	// The time after which the service is automatically deregistered when in the `critical` state. Defaults to `30s`.
 	DeregisterCriticalServiceAfter *string `pulumi:"deregisterCriticalServiceAfter"`
-	// The headers to send for an HTTP check.
-	// The attributes of each header is given below.
+	// The headers to send for an HTTP check. The attributes of each header is given below.
 	Headers []ServiceCheckHeader `pulumi:"headers"`
 	// The HTTP endpoint to call for an HTTP check.
 	Http *string `pulumi:"http"`
-	// The interval to wait between each health-check
-	// invocation.
+	// The interval to wait between each health-check invocation.
 	Interval string `pulumi:"interval"`
-	// The method to use for HTTP health-checks. Defaults
-	// to `GET`.
+	// The method to use for HTTP health-checks. Defaults to `GET`.
 	Method *string `pulumi:"method"`
 	// The name of the health-check.
 	Name string `pulumi:"name"`
@@ -2198,11 +9709,9 @@ type ServiceCheck struct {
 	Status *string `pulumi:"status"`
 	// The TCP address and port to connect to for a TCP check.
 	Tcp *string `pulumi:"tcp"`
-	// Specifies a timeout for outgoing connections in
-	// the case of a HTTP or TCP check.
+	// Specifies a timeout for outgoing connections in the case of a HTTP or TCP check.
 	Timeout string `pulumi:"timeout"`
-	// Whether to deactivate certificate
-	// verification for HTTP health-checks. Defaults to `false`.
+	// Whether to deactivate certificate verification for HTTP health-checks. Defaults to `false`.
 	TlsSkipVerify *bool `pulumi:"tlsSkipVerify"`
 }
 
@@ -2218,23 +9727,17 @@ type ServiceCheckInput interface {
 }
 
 type ServiceCheckArgs struct {
-	// An ID, *unique per agent*. Will default to *name*
-	// if not set.
+	// An ID, *unique per agent*.
 	CheckId pulumi.StringInput `pulumi:"checkId"`
-	// The time after which
-	// the service is automatically deregistered when in the `critical` state.
-	// Defaults to `30s`.
+	// The time after which the service is automatically deregistered when in the `critical` state. Defaults to `30s`.
 	DeregisterCriticalServiceAfter pulumi.StringPtrInput `pulumi:"deregisterCriticalServiceAfter"`
-	// The headers to send for an HTTP check.
-	// The attributes of each header is given below.
+	// The headers to send for an HTTP check. The attributes of each header is given below.
 	Headers ServiceCheckHeaderArrayInput `pulumi:"headers"`
 	// The HTTP endpoint to call for an HTTP check.
 	Http pulumi.StringPtrInput `pulumi:"http"`
-	// The interval to wait between each health-check
-	// invocation.
+	// The interval to wait between each health-check invocation.
 	Interval pulumi.StringInput `pulumi:"interval"`
-	// The method to use for HTTP health-checks. Defaults
-	// to `GET`.
+	// The method to use for HTTP health-checks. Defaults to `GET`.
 	Method pulumi.StringPtrInput `pulumi:"method"`
 	// The name of the health-check.
 	Name pulumi.StringInput `pulumi:"name"`
@@ -2244,11 +9747,9 @@ type ServiceCheckArgs struct {
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// The TCP address and port to connect to for a TCP check.
 	Tcp pulumi.StringPtrInput `pulumi:"tcp"`
-	// Specifies a timeout for outgoing connections in
-	// the case of a HTTP or TCP check.
+	// Specifies a timeout for outgoing connections in the case of a HTTP or TCP check.
 	Timeout pulumi.StringInput `pulumi:"timeout"`
-	// Whether to deactivate certificate
-	// verification for HTTP health-checks. Defaults to `false`.
+	// Whether to deactivate certificate verification for HTTP health-checks. Defaults to `false`.
 	TlsSkipVerify pulumi.BoolPtrInput `pulumi:"tlsSkipVerify"`
 }
 
@@ -2321,21 +9822,17 @@ func (o ServiceCheckOutput) ToOutput(ctx context.Context) pulumix.Output[Service
 	}
 }
 
-// An ID, *unique per agent*. Will default to *name*
-// if not set.
+// An ID, *unique per agent*.
 func (o ServiceCheckOutput) CheckId() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceCheck) string { return v.CheckId }).(pulumi.StringOutput)
 }
 
-// The time after which
-// the service is automatically deregistered when in the `critical` state.
-// Defaults to `30s`.
+// The time after which the service is automatically deregistered when in the `critical` state. Defaults to `30s`.
 func (o ServiceCheckOutput) DeregisterCriticalServiceAfter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceCheck) *string { return v.DeregisterCriticalServiceAfter }).(pulumi.StringPtrOutput)
 }
 
-// The headers to send for an HTTP check.
-// The attributes of each header is given below.
+// The headers to send for an HTTP check. The attributes of each header is given below.
 func (o ServiceCheckOutput) Headers() ServiceCheckHeaderArrayOutput {
 	return o.ApplyT(func(v ServiceCheck) []ServiceCheckHeader { return v.Headers }).(ServiceCheckHeaderArrayOutput)
 }
@@ -2345,14 +9842,12 @@ func (o ServiceCheckOutput) Http() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceCheck) *string { return v.Http }).(pulumi.StringPtrOutput)
 }
 
-// The interval to wait between each health-check
-// invocation.
+// The interval to wait between each health-check invocation.
 func (o ServiceCheckOutput) Interval() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceCheck) string { return v.Interval }).(pulumi.StringOutput)
 }
 
-// The method to use for HTTP health-checks. Defaults
-// to `GET`.
+// The method to use for HTTP health-checks. Defaults to `GET`.
 func (o ServiceCheckOutput) Method() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceCheck) *string { return v.Method }).(pulumi.StringPtrOutput)
 }
@@ -2377,14 +9872,12 @@ func (o ServiceCheckOutput) Tcp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceCheck) *string { return v.Tcp }).(pulumi.StringPtrOutput)
 }
 
-// Specifies a timeout for outgoing connections in
-// the case of a HTTP or TCP check.
+// Specifies a timeout for outgoing connections in the case of a HTTP or TCP check.
 func (o ServiceCheckOutput) Timeout() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceCheck) string { return v.Timeout }).(pulumi.StringOutput)
 }
 
-// Whether to deactivate certificate
-// verification for HTTP health-checks. Defaults to `false`.
+// Whether to deactivate certificate verification for HTTP health-checks. Defaults to `false`.
 func (o ServiceCheckOutput) TlsSkipVerify() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServiceCheck) *bool { return v.TlsSkipVerify }).(pulumi.BoolPtrOutput)
 }
@@ -2794,8 +10287,7 @@ func (o GetAclRoleNodeIdentityArrayOutput) Index(i pulumi.IntInput) GetAclRoleNo
 }
 
 type GetAclRolePolicy struct {
-	Id string `pulumi:"id"`
-	// The name of the ACL Role.
+	Id   string `pulumi:"id"`
 	Name string `pulumi:"name"`
 }
 
@@ -2811,8 +10303,7 @@ type GetAclRolePolicyInput interface {
 }
 
 type GetAclRolePolicyArgs struct {
-	Id pulumi.StringInput `pulumi:"id"`
-	// The name of the ACL Role.
+	Id   pulumi.StringInput `pulumi:"id"`
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -2889,7 +10380,6 @@ func (o GetAclRolePolicyOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAclRolePolicy) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The name of the ACL Role.
 func (o GetAclRolePolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAclRolePolicy) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -3042,6 +10532,256 @@ func (o GetAclRoleServiceIdentityArrayOutput) Index(i pulumi.IntInput) GetAclRol
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAclRoleServiceIdentity {
 		return vs[0].([]GetAclRoleServiceIdentity)[vs[1].(int)]
 	}).(GetAclRoleServiceIdentityOutput)
+}
+
+type GetAclRoleTemplatedPolicy struct {
+	Datacenters       []string                                    `pulumi:"datacenters"`
+	TemplateName      string                                      `pulumi:"templateName"`
+	TemplateVariables []GetAclRoleTemplatedPolicyTemplateVariable `pulumi:"templateVariables"`
+}
+
+// GetAclRoleTemplatedPolicyInput is an input type that accepts GetAclRoleTemplatedPolicyArgs and GetAclRoleTemplatedPolicyOutput values.
+// You can construct a concrete instance of `GetAclRoleTemplatedPolicyInput` via:
+//
+//	GetAclRoleTemplatedPolicyArgs{...}
+type GetAclRoleTemplatedPolicyInput interface {
+	pulumi.Input
+
+	ToGetAclRoleTemplatedPolicyOutput() GetAclRoleTemplatedPolicyOutput
+	ToGetAclRoleTemplatedPolicyOutputWithContext(context.Context) GetAclRoleTemplatedPolicyOutput
+}
+
+type GetAclRoleTemplatedPolicyArgs struct {
+	Datacenters       pulumi.StringArrayInput                             `pulumi:"datacenters"`
+	TemplateName      pulumi.StringInput                                  `pulumi:"templateName"`
+	TemplateVariables GetAclRoleTemplatedPolicyTemplateVariableArrayInput `pulumi:"templateVariables"`
+}
+
+func (GetAclRoleTemplatedPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAclRoleTemplatedPolicy)(nil)).Elem()
+}
+
+func (i GetAclRoleTemplatedPolicyArgs) ToGetAclRoleTemplatedPolicyOutput() GetAclRoleTemplatedPolicyOutput {
+	return i.ToGetAclRoleTemplatedPolicyOutputWithContext(context.Background())
+}
+
+func (i GetAclRoleTemplatedPolicyArgs) ToGetAclRoleTemplatedPolicyOutputWithContext(ctx context.Context) GetAclRoleTemplatedPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAclRoleTemplatedPolicyOutput)
+}
+
+func (i GetAclRoleTemplatedPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[GetAclRoleTemplatedPolicy] {
+	return pulumix.Output[GetAclRoleTemplatedPolicy]{
+		OutputState: i.ToGetAclRoleTemplatedPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetAclRoleTemplatedPolicyArrayInput is an input type that accepts GetAclRoleTemplatedPolicyArray and GetAclRoleTemplatedPolicyArrayOutput values.
+// You can construct a concrete instance of `GetAclRoleTemplatedPolicyArrayInput` via:
+//
+//	GetAclRoleTemplatedPolicyArray{ GetAclRoleTemplatedPolicyArgs{...} }
+type GetAclRoleTemplatedPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetAclRoleTemplatedPolicyArrayOutput() GetAclRoleTemplatedPolicyArrayOutput
+	ToGetAclRoleTemplatedPolicyArrayOutputWithContext(context.Context) GetAclRoleTemplatedPolicyArrayOutput
+}
+
+type GetAclRoleTemplatedPolicyArray []GetAclRoleTemplatedPolicyInput
+
+func (GetAclRoleTemplatedPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAclRoleTemplatedPolicy)(nil)).Elem()
+}
+
+func (i GetAclRoleTemplatedPolicyArray) ToGetAclRoleTemplatedPolicyArrayOutput() GetAclRoleTemplatedPolicyArrayOutput {
+	return i.ToGetAclRoleTemplatedPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetAclRoleTemplatedPolicyArray) ToGetAclRoleTemplatedPolicyArrayOutputWithContext(ctx context.Context) GetAclRoleTemplatedPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAclRoleTemplatedPolicyArrayOutput)
+}
+
+func (i GetAclRoleTemplatedPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAclRoleTemplatedPolicy] {
+	return pulumix.Output[[]GetAclRoleTemplatedPolicy]{
+		OutputState: i.ToGetAclRoleTemplatedPolicyArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetAclRoleTemplatedPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetAclRoleTemplatedPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAclRoleTemplatedPolicy)(nil)).Elem()
+}
+
+func (o GetAclRoleTemplatedPolicyOutput) ToGetAclRoleTemplatedPolicyOutput() GetAclRoleTemplatedPolicyOutput {
+	return o
+}
+
+func (o GetAclRoleTemplatedPolicyOutput) ToGetAclRoleTemplatedPolicyOutputWithContext(ctx context.Context) GetAclRoleTemplatedPolicyOutput {
+	return o
+}
+
+func (o GetAclRoleTemplatedPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[GetAclRoleTemplatedPolicy] {
+	return pulumix.Output[GetAclRoleTemplatedPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetAclRoleTemplatedPolicyOutput) Datacenters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAclRoleTemplatedPolicy) []string { return v.Datacenters }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAclRoleTemplatedPolicyOutput) TemplateName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAclRoleTemplatedPolicy) string { return v.TemplateName }).(pulumi.StringOutput)
+}
+
+func (o GetAclRoleTemplatedPolicyOutput) TemplateVariables() GetAclRoleTemplatedPolicyTemplateVariableArrayOutput {
+	return o.ApplyT(func(v GetAclRoleTemplatedPolicy) []GetAclRoleTemplatedPolicyTemplateVariable {
+		return v.TemplateVariables
+	}).(GetAclRoleTemplatedPolicyTemplateVariableArrayOutput)
+}
+
+type GetAclRoleTemplatedPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAclRoleTemplatedPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAclRoleTemplatedPolicy)(nil)).Elem()
+}
+
+func (o GetAclRoleTemplatedPolicyArrayOutput) ToGetAclRoleTemplatedPolicyArrayOutput() GetAclRoleTemplatedPolicyArrayOutput {
+	return o
+}
+
+func (o GetAclRoleTemplatedPolicyArrayOutput) ToGetAclRoleTemplatedPolicyArrayOutputWithContext(ctx context.Context) GetAclRoleTemplatedPolicyArrayOutput {
+	return o
+}
+
+func (o GetAclRoleTemplatedPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAclRoleTemplatedPolicy] {
+	return pulumix.Output[[]GetAclRoleTemplatedPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetAclRoleTemplatedPolicyArrayOutput) Index(i pulumi.IntInput) GetAclRoleTemplatedPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAclRoleTemplatedPolicy {
+		return vs[0].([]GetAclRoleTemplatedPolicy)[vs[1].(int)]
+	}).(GetAclRoleTemplatedPolicyOutput)
+}
+
+type GetAclRoleTemplatedPolicyTemplateVariable struct {
+	Name string `pulumi:"name"`
+}
+
+// GetAclRoleTemplatedPolicyTemplateVariableInput is an input type that accepts GetAclRoleTemplatedPolicyTemplateVariableArgs and GetAclRoleTemplatedPolicyTemplateVariableOutput values.
+// You can construct a concrete instance of `GetAclRoleTemplatedPolicyTemplateVariableInput` via:
+//
+//	GetAclRoleTemplatedPolicyTemplateVariableArgs{...}
+type GetAclRoleTemplatedPolicyTemplateVariableInput interface {
+	pulumi.Input
+
+	ToGetAclRoleTemplatedPolicyTemplateVariableOutput() GetAclRoleTemplatedPolicyTemplateVariableOutput
+	ToGetAclRoleTemplatedPolicyTemplateVariableOutputWithContext(context.Context) GetAclRoleTemplatedPolicyTemplateVariableOutput
+}
+
+type GetAclRoleTemplatedPolicyTemplateVariableArgs struct {
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetAclRoleTemplatedPolicyTemplateVariableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAclRoleTemplatedPolicyTemplateVariable)(nil)).Elem()
+}
+
+func (i GetAclRoleTemplatedPolicyTemplateVariableArgs) ToGetAclRoleTemplatedPolicyTemplateVariableOutput() GetAclRoleTemplatedPolicyTemplateVariableOutput {
+	return i.ToGetAclRoleTemplatedPolicyTemplateVariableOutputWithContext(context.Background())
+}
+
+func (i GetAclRoleTemplatedPolicyTemplateVariableArgs) ToGetAclRoleTemplatedPolicyTemplateVariableOutputWithContext(ctx context.Context) GetAclRoleTemplatedPolicyTemplateVariableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAclRoleTemplatedPolicyTemplateVariableOutput)
+}
+
+func (i GetAclRoleTemplatedPolicyTemplateVariableArgs) ToOutput(ctx context.Context) pulumix.Output[GetAclRoleTemplatedPolicyTemplateVariable] {
+	return pulumix.Output[GetAclRoleTemplatedPolicyTemplateVariable]{
+		OutputState: i.ToGetAclRoleTemplatedPolicyTemplateVariableOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetAclRoleTemplatedPolicyTemplateVariableArrayInput is an input type that accepts GetAclRoleTemplatedPolicyTemplateVariableArray and GetAclRoleTemplatedPolicyTemplateVariableArrayOutput values.
+// You can construct a concrete instance of `GetAclRoleTemplatedPolicyTemplateVariableArrayInput` via:
+//
+//	GetAclRoleTemplatedPolicyTemplateVariableArray{ GetAclRoleTemplatedPolicyTemplateVariableArgs{...} }
+type GetAclRoleTemplatedPolicyTemplateVariableArrayInput interface {
+	pulumi.Input
+
+	ToGetAclRoleTemplatedPolicyTemplateVariableArrayOutput() GetAclRoleTemplatedPolicyTemplateVariableArrayOutput
+	ToGetAclRoleTemplatedPolicyTemplateVariableArrayOutputWithContext(context.Context) GetAclRoleTemplatedPolicyTemplateVariableArrayOutput
+}
+
+type GetAclRoleTemplatedPolicyTemplateVariableArray []GetAclRoleTemplatedPolicyTemplateVariableInput
+
+func (GetAclRoleTemplatedPolicyTemplateVariableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAclRoleTemplatedPolicyTemplateVariable)(nil)).Elem()
+}
+
+func (i GetAclRoleTemplatedPolicyTemplateVariableArray) ToGetAclRoleTemplatedPolicyTemplateVariableArrayOutput() GetAclRoleTemplatedPolicyTemplateVariableArrayOutput {
+	return i.ToGetAclRoleTemplatedPolicyTemplateVariableArrayOutputWithContext(context.Background())
+}
+
+func (i GetAclRoleTemplatedPolicyTemplateVariableArray) ToGetAclRoleTemplatedPolicyTemplateVariableArrayOutputWithContext(ctx context.Context) GetAclRoleTemplatedPolicyTemplateVariableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAclRoleTemplatedPolicyTemplateVariableArrayOutput)
+}
+
+func (i GetAclRoleTemplatedPolicyTemplateVariableArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAclRoleTemplatedPolicyTemplateVariable] {
+	return pulumix.Output[[]GetAclRoleTemplatedPolicyTemplateVariable]{
+		OutputState: i.ToGetAclRoleTemplatedPolicyTemplateVariableArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetAclRoleTemplatedPolicyTemplateVariableOutput struct{ *pulumi.OutputState }
+
+func (GetAclRoleTemplatedPolicyTemplateVariableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAclRoleTemplatedPolicyTemplateVariable)(nil)).Elem()
+}
+
+func (o GetAclRoleTemplatedPolicyTemplateVariableOutput) ToGetAclRoleTemplatedPolicyTemplateVariableOutput() GetAclRoleTemplatedPolicyTemplateVariableOutput {
+	return o
+}
+
+func (o GetAclRoleTemplatedPolicyTemplateVariableOutput) ToGetAclRoleTemplatedPolicyTemplateVariableOutputWithContext(ctx context.Context) GetAclRoleTemplatedPolicyTemplateVariableOutput {
+	return o
+}
+
+func (o GetAclRoleTemplatedPolicyTemplateVariableOutput) ToOutput(ctx context.Context) pulumix.Output[GetAclRoleTemplatedPolicyTemplateVariable] {
+	return pulumix.Output[GetAclRoleTemplatedPolicyTemplateVariable]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetAclRoleTemplatedPolicyTemplateVariableOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAclRoleTemplatedPolicyTemplateVariable) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetAclRoleTemplatedPolicyTemplateVariableArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAclRoleTemplatedPolicyTemplateVariableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAclRoleTemplatedPolicyTemplateVariable)(nil)).Elem()
+}
+
+func (o GetAclRoleTemplatedPolicyTemplateVariableArrayOutput) ToGetAclRoleTemplatedPolicyTemplateVariableArrayOutput() GetAclRoleTemplatedPolicyTemplateVariableArrayOutput {
+	return o
+}
+
+func (o GetAclRoleTemplatedPolicyTemplateVariableArrayOutput) ToGetAclRoleTemplatedPolicyTemplateVariableArrayOutputWithContext(ctx context.Context) GetAclRoleTemplatedPolicyTemplateVariableArrayOutput {
+	return o
+}
+
+func (o GetAclRoleTemplatedPolicyTemplateVariableArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAclRoleTemplatedPolicyTemplateVariable] {
+	return pulumix.Output[[]GetAclRoleTemplatedPolicyTemplateVariable]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetAclRoleTemplatedPolicyTemplateVariableArrayOutput) Index(i pulumi.IntInput) GetAclRoleTemplatedPolicyTemplateVariableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAclRoleTemplatedPolicyTemplateVariable {
+		return vs[0].([]GetAclRoleTemplatedPolicyTemplateVariable)[vs[1].(int)]
+	}).(GetAclRoleTemplatedPolicyTemplateVariableOutput)
 }
 
 type GetAclTokenNodeIdentity struct {
@@ -3538,6 +11278,256 @@ func (o GetAclTokenServiceIdentityArrayOutput) Index(i pulumi.IntInput) GetAclTo
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAclTokenServiceIdentity {
 		return vs[0].([]GetAclTokenServiceIdentity)[vs[1].(int)]
 	}).(GetAclTokenServiceIdentityOutput)
+}
+
+type GetAclTokenTemplatedPolicy struct {
+	Datacenters       []string                                     `pulumi:"datacenters"`
+	TemplateName      string                                       `pulumi:"templateName"`
+	TemplateVariables []GetAclTokenTemplatedPolicyTemplateVariable `pulumi:"templateVariables"`
+}
+
+// GetAclTokenTemplatedPolicyInput is an input type that accepts GetAclTokenTemplatedPolicyArgs and GetAclTokenTemplatedPolicyOutput values.
+// You can construct a concrete instance of `GetAclTokenTemplatedPolicyInput` via:
+//
+//	GetAclTokenTemplatedPolicyArgs{...}
+type GetAclTokenTemplatedPolicyInput interface {
+	pulumi.Input
+
+	ToGetAclTokenTemplatedPolicyOutput() GetAclTokenTemplatedPolicyOutput
+	ToGetAclTokenTemplatedPolicyOutputWithContext(context.Context) GetAclTokenTemplatedPolicyOutput
+}
+
+type GetAclTokenTemplatedPolicyArgs struct {
+	Datacenters       pulumi.StringArrayInput                              `pulumi:"datacenters"`
+	TemplateName      pulumi.StringInput                                   `pulumi:"templateName"`
+	TemplateVariables GetAclTokenTemplatedPolicyTemplateVariableArrayInput `pulumi:"templateVariables"`
+}
+
+func (GetAclTokenTemplatedPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAclTokenTemplatedPolicy)(nil)).Elem()
+}
+
+func (i GetAclTokenTemplatedPolicyArgs) ToGetAclTokenTemplatedPolicyOutput() GetAclTokenTemplatedPolicyOutput {
+	return i.ToGetAclTokenTemplatedPolicyOutputWithContext(context.Background())
+}
+
+func (i GetAclTokenTemplatedPolicyArgs) ToGetAclTokenTemplatedPolicyOutputWithContext(ctx context.Context) GetAclTokenTemplatedPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAclTokenTemplatedPolicyOutput)
+}
+
+func (i GetAclTokenTemplatedPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[GetAclTokenTemplatedPolicy] {
+	return pulumix.Output[GetAclTokenTemplatedPolicy]{
+		OutputState: i.ToGetAclTokenTemplatedPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetAclTokenTemplatedPolicyArrayInput is an input type that accepts GetAclTokenTemplatedPolicyArray and GetAclTokenTemplatedPolicyArrayOutput values.
+// You can construct a concrete instance of `GetAclTokenTemplatedPolicyArrayInput` via:
+//
+//	GetAclTokenTemplatedPolicyArray{ GetAclTokenTemplatedPolicyArgs{...} }
+type GetAclTokenTemplatedPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetAclTokenTemplatedPolicyArrayOutput() GetAclTokenTemplatedPolicyArrayOutput
+	ToGetAclTokenTemplatedPolicyArrayOutputWithContext(context.Context) GetAclTokenTemplatedPolicyArrayOutput
+}
+
+type GetAclTokenTemplatedPolicyArray []GetAclTokenTemplatedPolicyInput
+
+func (GetAclTokenTemplatedPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAclTokenTemplatedPolicy)(nil)).Elem()
+}
+
+func (i GetAclTokenTemplatedPolicyArray) ToGetAclTokenTemplatedPolicyArrayOutput() GetAclTokenTemplatedPolicyArrayOutput {
+	return i.ToGetAclTokenTemplatedPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetAclTokenTemplatedPolicyArray) ToGetAclTokenTemplatedPolicyArrayOutputWithContext(ctx context.Context) GetAclTokenTemplatedPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAclTokenTemplatedPolicyArrayOutput)
+}
+
+func (i GetAclTokenTemplatedPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAclTokenTemplatedPolicy] {
+	return pulumix.Output[[]GetAclTokenTemplatedPolicy]{
+		OutputState: i.ToGetAclTokenTemplatedPolicyArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetAclTokenTemplatedPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetAclTokenTemplatedPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAclTokenTemplatedPolicy)(nil)).Elem()
+}
+
+func (o GetAclTokenTemplatedPolicyOutput) ToGetAclTokenTemplatedPolicyOutput() GetAclTokenTemplatedPolicyOutput {
+	return o
+}
+
+func (o GetAclTokenTemplatedPolicyOutput) ToGetAclTokenTemplatedPolicyOutputWithContext(ctx context.Context) GetAclTokenTemplatedPolicyOutput {
+	return o
+}
+
+func (o GetAclTokenTemplatedPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[GetAclTokenTemplatedPolicy] {
+	return pulumix.Output[GetAclTokenTemplatedPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetAclTokenTemplatedPolicyOutput) Datacenters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAclTokenTemplatedPolicy) []string { return v.Datacenters }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAclTokenTemplatedPolicyOutput) TemplateName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAclTokenTemplatedPolicy) string { return v.TemplateName }).(pulumi.StringOutput)
+}
+
+func (o GetAclTokenTemplatedPolicyOutput) TemplateVariables() GetAclTokenTemplatedPolicyTemplateVariableArrayOutput {
+	return o.ApplyT(func(v GetAclTokenTemplatedPolicy) []GetAclTokenTemplatedPolicyTemplateVariable {
+		return v.TemplateVariables
+	}).(GetAclTokenTemplatedPolicyTemplateVariableArrayOutput)
+}
+
+type GetAclTokenTemplatedPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAclTokenTemplatedPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAclTokenTemplatedPolicy)(nil)).Elem()
+}
+
+func (o GetAclTokenTemplatedPolicyArrayOutput) ToGetAclTokenTemplatedPolicyArrayOutput() GetAclTokenTemplatedPolicyArrayOutput {
+	return o
+}
+
+func (o GetAclTokenTemplatedPolicyArrayOutput) ToGetAclTokenTemplatedPolicyArrayOutputWithContext(ctx context.Context) GetAclTokenTemplatedPolicyArrayOutput {
+	return o
+}
+
+func (o GetAclTokenTemplatedPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAclTokenTemplatedPolicy] {
+	return pulumix.Output[[]GetAclTokenTemplatedPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetAclTokenTemplatedPolicyArrayOutput) Index(i pulumi.IntInput) GetAclTokenTemplatedPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAclTokenTemplatedPolicy {
+		return vs[0].([]GetAclTokenTemplatedPolicy)[vs[1].(int)]
+	}).(GetAclTokenTemplatedPolicyOutput)
+}
+
+type GetAclTokenTemplatedPolicyTemplateVariable struct {
+	Name string `pulumi:"name"`
+}
+
+// GetAclTokenTemplatedPolicyTemplateVariableInput is an input type that accepts GetAclTokenTemplatedPolicyTemplateVariableArgs and GetAclTokenTemplatedPolicyTemplateVariableOutput values.
+// You can construct a concrete instance of `GetAclTokenTemplatedPolicyTemplateVariableInput` via:
+//
+//	GetAclTokenTemplatedPolicyTemplateVariableArgs{...}
+type GetAclTokenTemplatedPolicyTemplateVariableInput interface {
+	pulumi.Input
+
+	ToGetAclTokenTemplatedPolicyTemplateVariableOutput() GetAclTokenTemplatedPolicyTemplateVariableOutput
+	ToGetAclTokenTemplatedPolicyTemplateVariableOutputWithContext(context.Context) GetAclTokenTemplatedPolicyTemplateVariableOutput
+}
+
+type GetAclTokenTemplatedPolicyTemplateVariableArgs struct {
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetAclTokenTemplatedPolicyTemplateVariableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAclTokenTemplatedPolicyTemplateVariable)(nil)).Elem()
+}
+
+func (i GetAclTokenTemplatedPolicyTemplateVariableArgs) ToGetAclTokenTemplatedPolicyTemplateVariableOutput() GetAclTokenTemplatedPolicyTemplateVariableOutput {
+	return i.ToGetAclTokenTemplatedPolicyTemplateVariableOutputWithContext(context.Background())
+}
+
+func (i GetAclTokenTemplatedPolicyTemplateVariableArgs) ToGetAclTokenTemplatedPolicyTemplateVariableOutputWithContext(ctx context.Context) GetAclTokenTemplatedPolicyTemplateVariableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAclTokenTemplatedPolicyTemplateVariableOutput)
+}
+
+func (i GetAclTokenTemplatedPolicyTemplateVariableArgs) ToOutput(ctx context.Context) pulumix.Output[GetAclTokenTemplatedPolicyTemplateVariable] {
+	return pulumix.Output[GetAclTokenTemplatedPolicyTemplateVariable]{
+		OutputState: i.ToGetAclTokenTemplatedPolicyTemplateVariableOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetAclTokenTemplatedPolicyTemplateVariableArrayInput is an input type that accepts GetAclTokenTemplatedPolicyTemplateVariableArray and GetAclTokenTemplatedPolicyTemplateVariableArrayOutput values.
+// You can construct a concrete instance of `GetAclTokenTemplatedPolicyTemplateVariableArrayInput` via:
+//
+//	GetAclTokenTemplatedPolicyTemplateVariableArray{ GetAclTokenTemplatedPolicyTemplateVariableArgs{...} }
+type GetAclTokenTemplatedPolicyTemplateVariableArrayInput interface {
+	pulumi.Input
+
+	ToGetAclTokenTemplatedPolicyTemplateVariableArrayOutput() GetAclTokenTemplatedPolicyTemplateVariableArrayOutput
+	ToGetAclTokenTemplatedPolicyTemplateVariableArrayOutputWithContext(context.Context) GetAclTokenTemplatedPolicyTemplateVariableArrayOutput
+}
+
+type GetAclTokenTemplatedPolicyTemplateVariableArray []GetAclTokenTemplatedPolicyTemplateVariableInput
+
+func (GetAclTokenTemplatedPolicyTemplateVariableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAclTokenTemplatedPolicyTemplateVariable)(nil)).Elem()
+}
+
+func (i GetAclTokenTemplatedPolicyTemplateVariableArray) ToGetAclTokenTemplatedPolicyTemplateVariableArrayOutput() GetAclTokenTemplatedPolicyTemplateVariableArrayOutput {
+	return i.ToGetAclTokenTemplatedPolicyTemplateVariableArrayOutputWithContext(context.Background())
+}
+
+func (i GetAclTokenTemplatedPolicyTemplateVariableArray) ToGetAclTokenTemplatedPolicyTemplateVariableArrayOutputWithContext(ctx context.Context) GetAclTokenTemplatedPolicyTemplateVariableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAclTokenTemplatedPolicyTemplateVariableArrayOutput)
+}
+
+func (i GetAclTokenTemplatedPolicyTemplateVariableArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAclTokenTemplatedPolicyTemplateVariable] {
+	return pulumix.Output[[]GetAclTokenTemplatedPolicyTemplateVariable]{
+		OutputState: i.ToGetAclTokenTemplatedPolicyTemplateVariableArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetAclTokenTemplatedPolicyTemplateVariableOutput struct{ *pulumi.OutputState }
+
+func (GetAclTokenTemplatedPolicyTemplateVariableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAclTokenTemplatedPolicyTemplateVariable)(nil)).Elem()
+}
+
+func (o GetAclTokenTemplatedPolicyTemplateVariableOutput) ToGetAclTokenTemplatedPolicyTemplateVariableOutput() GetAclTokenTemplatedPolicyTemplateVariableOutput {
+	return o
+}
+
+func (o GetAclTokenTemplatedPolicyTemplateVariableOutput) ToGetAclTokenTemplatedPolicyTemplateVariableOutputWithContext(ctx context.Context) GetAclTokenTemplatedPolicyTemplateVariableOutput {
+	return o
+}
+
+func (o GetAclTokenTemplatedPolicyTemplateVariableOutput) ToOutput(ctx context.Context) pulumix.Output[GetAclTokenTemplatedPolicyTemplateVariable] {
+	return pulumix.Output[GetAclTokenTemplatedPolicyTemplateVariable]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetAclTokenTemplatedPolicyTemplateVariableOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAclTokenTemplatedPolicyTemplateVariable) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetAclTokenTemplatedPolicyTemplateVariableArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAclTokenTemplatedPolicyTemplateVariableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAclTokenTemplatedPolicyTemplateVariable)(nil)).Elem()
+}
+
+func (o GetAclTokenTemplatedPolicyTemplateVariableArrayOutput) ToGetAclTokenTemplatedPolicyTemplateVariableArrayOutput() GetAclTokenTemplatedPolicyTemplateVariableArrayOutput {
+	return o
+}
+
+func (o GetAclTokenTemplatedPolicyTemplateVariableArrayOutput) ToGetAclTokenTemplatedPolicyTemplateVariableArrayOutputWithContext(ctx context.Context) GetAclTokenTemplatedPolicyTemplateVariableArrayOutput {
+	return o
+}
+
+func (o GetAclTokenTemplatedPolicyTemplateVariableArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAclTokenTemplatedPolicyTemplateVariable] {
+	return pulumix.Output[[]GetAclTokenTemplatedPolicyTemplateVariable]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetAclTokenTemplatedPolicyTemplateVariableArrayOutput) Index(i pulumi.IntInput) GetAclTokenTemplatedPolicyTemplateVariableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAclTokenTemplatedPolicyTemplateVariable {
+		return vs[0].([]GetAclTokenTemplatedPolicyTemplateVariable)[vs[1].(int)]
+	}).(GetAclTokenTemplatedPolicyTemplateVariableOutput)
 }
 
 type GetAutopilotHealthServer struct {
@@ -7303,16 +15293,110 @@ func (o GetServicesQueryOptionArrayOutput) Index(i pulumi.IntInput) GetServicesQ
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AclAuthMethodNamespaceRuleInput)(nil)).Elem(), AclAuthMethodNamespaceRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AclAuthMethodNamespaceRuleArrayInput)(nil)).Elem(), AclAuthMethodNamespaceRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AclBindingRuleBindVarsInput)(nil)).Elem(), AclBindingRuleBindVarsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AclBindingRuleBindVarsPtrInput)(nil)).Elem(), AclBindingRuleBindVarsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AclRoleNodeIdentityInput)(nil)).Elem(), AclRoleNodeIdentityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AclRoleNodeIdentityArrayInput)(nil)).Elem(), AclRoleNodeIdentityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AclRoleServiceIdentityInput)(nil)).Elem(), AclRoleServiceIdentityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AclRoleServiceIdentityArrayInput)(nil)).Elem(), AclRoleServiceIdentityArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AclRoleTemplatedPolicyInput)(nil)).Elem(), AclRoleTemplatedPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AclRoleTemplatedPolicyArrayInput)(nil)).Elem(), AclRoleTemplatedPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AclRoleTemplatedPolicyTemplateVariablesInput)(nil)).Elem(), AclRoleTemplatedPolicyTemplateVariablesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AclRoleTemplatedPolicyTemplateVariablesPtrInput)(nil)).Elem(), AclRoleTemplatedPolicyTemplateVariablesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AclTokenNodeIdentityInput)(nil)).Elem(), AclTokenNodeIdentityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AclTokenNodeIdentityArrayInput)(nil)).Elem(), AclTokenNodeIdentityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AclTokenServiceIdentityInput)(nil)).Elem(), AclTokenServiceIdentityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AclTokenServiceIdentityArrayInput)(nil)).Elem(), AclTokenServiceIdentityArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AclTokenTemplatedPolicyInput)(nil)).Elem(), AclTokenTemplatedPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AclTokenTemplatedPolicyArrayInput)(nil)).Elem(), AclTokenTemplatedPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AclTokenTemplatedPolicyTemplateVariablesInput)(nil)).Elem(), AclTokenTemplatedPolicyTemplateVariablesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AclTokenTemplatedPolicyTemplateVariablesPtrInput)(nil)).Elem(), AclTokenTemplatedPolicyTemplateVariablesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CatalogEntryServiceInput)(nil)).Elem(), CatalogEntryServiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CatalogEntryServiceArrayInput)(nil)).Elem(), CatalogEntryServiceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceDefaultsDestinationInput)(nil)).Elem(), ConfigEntryServiceDefaultsDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceDefaultsDestinationArrayInput)(nil)).Elem(), ConfigEntryServiceDefaultsDestinationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceDefaultsEnvoyExtensionInput)(nil)).Elem(), ConfigEntryServiceDefaultsEnvoyExtensionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceDefaultsEnvoyExtensionArrayInput)(nil)).Elem(), ConfigEntryServiceDefaultsEnvoyExtensionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceDefaultsExposeInput)(nil)).Elem(), ConfigEntryServiceDefaultsExposeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceDefaultsExposeArrayInput)(nil)).Elem(), ConfigEntryServiceDefaultsExposeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceDefaultsExposePathInput)(nil)).Elem(), ConfigEntryServiceDefaultsExposePathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceDefaultsExposePathArrayInput)(nil)).Elem(), ConfigEntryServiceDefaultsExposePathArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceDefaultsMeshGatewayInput)(nil)).Elem(), ConfigEntryServiceDefaultsMeshGatewayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceDefaultsMeshGatewayArrayInput)(nil)).Elem(), ConfigEntryServiceDefaultsMeshGatewayArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceDefaultsTransparentProxyInput)(nil)).Elem(), ConfigEntryServiceDefaultsTransparentProxyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceDefaultsTransparentProxyArrayInput)(nil)).Elem(), ConfigEntryServiceDefaultsTransparentProxyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceDefaultsUpstreamConfigInput)(nil)).Elem(), ConfigEntryServiceDefaultsUpstreamConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceDefaultsUpstreamConfigArrayInput)(nil)).Elem(), ConfigEntryServiceDefaultsUpstreamConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceDefaultsUpstreamConfigDefaultInput)(nil)).Elem(), ConfigEntryServiceDefaultsUpstreamConfigDefaultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceDefaultsUpstreamConfigDefaultArrayInput)(nil)).Elem(), ConfigEntryServiceDefaultsUpstreamConfigDefaultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitInput)(nil)).Elem(), ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitArrayInput)(nil)).Elem(), ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayInput)(nil)).Elem(), ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayArrayInput)(nil)).Elem(), ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckInput)(nil)).Elem(), ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckArrayInput)(nil)).Elem(), ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceDefaultsUpstreamConfigOverrideInput)(nil)).Elem(), ConfigEntryServiceDefaultsUpstreamConfigOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceDefaultsUpstreamConfigOverrideArrayInput)(nil)).Elem(), ConfigEntryServiceDefaultsUpstreamConfigOverrideArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitInput)(nil)).Elem(), ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitArrayInput)(nil)).Elem(), ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayInput)(nil)).Elem(), ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArrayInput)(nil)).Elem(), ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckInput)(nil)).Elem(), ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckArrayInput)(nil)).Elem(), ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceIntentionsJwtInput)(nil)).Elem(), ConfigEntryServiceIntentionsJwtArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceIntentionsJwtArrayInput)(nil)).Elem(), ConfigEntryServiceIntentionsJwtArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceIntentionsJwtProviderInput)(nil)).Elem(), ConfigEntryServiceIntentionsJwtProviderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceIntentionsJwtProviderArrayInput)(nil)).Elem(), ConfigEntryServiceIntentionsJwtProviderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceIntentionsJwtProviderVerifyClaimInput)(nil)).Elem(), ConfigEntryServiceIntentionsJwtProviderVerifyClaimArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceIntentionsJwtProviderVerifyClaimArrayInput)(nil)).Elem(), ConfigEntryServiceIntentionsJwtProviderVerifyClaimArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceIntentionsSourceInput)(nil)).Elem(), ConfigEntryServiceIntentionsSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceIntentionsSourceArrayInput)(nil)).Elem(), ConfigEntryServiceIntentionsSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceIntentionsSourcePermissionInput)(nil)).Elem(), ConfigEntryServiceIntentionsSourcePermissionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceIntentionsSourcePermissionArrayInput)(nil)).Elem(), ConfigEntryServiceIntentionsSourcePermissionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceIntentionsSourcePermissionHttpInput)(nil)).Elem(), ConfigEntryServiceIntentionsSourcePermissionHttpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceIntentionsSourcePermissionHttpArrayInput)(nil)).Elem(), ConfigEntryServiceIntentionsSourcePermissionHttpArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceIntentionsSourcePermissionHttpHeaderInput)(nil)).Elem(), ConfigEntryServiceIntentionsSourcePermissionHttpHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceIntentionsSourcePermissionHttpHeaderArrayInput)(nil)).Elem(), ConfigEntryServiceIntentionsSourcePermissionHttpHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceResolverFailoverInput)(nil)).Elem(), ConfigEntryServiceResolverFailoverArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceResolverFailoverArrayInput)(nil)).Elem(), ConfigEntryServiceResolverFailoverArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceResolverFailoverTargetInput)(nil)).Elem(), ConfigEntryServiceResolverFailoverTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceResolverFailoverTargetArrayInput)(nil)).Elem(), ConfigEntryServiceResolverFailoverTargetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceResolverLoadBalancerInput)(nil)).Elem(), ConfigEntryServiceResolverLoadBalancerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceResolverLoadBalancerArrayInput)(nil)).Elem(), ConfigEntryServiceResolverLoadBalancerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceResolverLoadBalancerHashPolicyInput)(nil)).Elem(), ConfigEntryServiceResolverLoadBalancerHashPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceResolverLoadBalancerHashPolicyArrayInput)(nil)).Elem(), ConfigEntryServiceResolverLoadBalancerHashPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigInput)(nil)).Elem(), ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigArrayInput)(nil)).Elem(), ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceResolverLoadBalancerLeastRequestConfigInput)(nil)).Elem(), ConfigEntryServiceResolverLoadBalancerLeastRequestConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceResolverLoadBalancerLeastRequestConfigArrayInput)(nil)).Elem(), ConfigEntryServiceResolverLoadBalancerLeastRequestConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceResolverLoadBalancerRingHashConfigInput)(nil)).Elem(), ConfigEntryServiceResolverLoadBalancerRingHashConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceResolverLoadBalancerRingHashConfigArrayInput)(nil)).Elem(), ConfigEntryServiceResolverLoadBalancerRingHashConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceResolverRedirectInput)(nil)).Elem(), ConfigEntryServiceResolverRedirectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceResolverRedirectArrayInput)(nil)).Elem(), ConfigEntryServiceResolverRedirectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceResolverSubsetInput)(nil)).Elem(), ConfigEntryServiceResolverSubsetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceResolverSubsetArrayInput)(nil)).Elem(), ConfigEntryServiceResolverSubsetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceRouterRouteInput)(nil)).Elem(), ConfigEntryServiceRouterRouteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceRouterRouteArrayInput)(nil)).Elem(), ConfigEntryServiceRouterRouteArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceRouterRouteDestinationInput)(nil)).Elem(), ConfigEntryServiceRouterRouteDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceRouterRouteDestinationPtrInput)(nil)).Elem(), ConfigEntryServiceRouterRouteDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceRouterRouteDestinationRequestHeadersInput)(nil)).Elem(), ConfigEntryServiceRouterRouteDestinationRequestHeadersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceRouterRouteDestinationRequestHeadersPtrInput)(nil)).Elem(), ConfigEntryServiceRouterRouteDestinationRequestHeadersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceRouterRouteDestinationResponseHeadersInput)(nil)).Elem(), ConfigEntryServiceRouterRouteDestinationResponseHeadersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceRouterRouteDestinationResponseHeadersPtrInput)(nil)).Elem(), ConfigEntryServiceRouterRouteDestinationResponseHeadersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceRouterRouteMatchInput)(nil)).Elem(), ConfigEntryServiceRouterRouteMatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceRouterRouteMatchPtrInput)(nil)).Elem(), ConfigEntryServiceRouterRouteMatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceRouterRouteMatchHttpInput)(nil)).Elem(), ConfigEntryServiceRouterRouteMatchHttpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceRouterRouteMatchHttpPtrInput)(nil)).Elem(), ConfigEntryServiceRouterRouteMatchHttpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceRouterRouteMatchHttpHeaderInput)(nil)).Elem(), ConfigEntryServiceRouterRouteMatchHttpHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceRouterRouteMatchHttpHeaderArrayInput)(nil)).Elem(), ConfigEntryServiceRouterRouteMatchHttpHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceRouterRouteMatchHttpQueryParamInput)(nil)).Elem(), ConfigEntryServiceRouterRouteMatchHttpQueryParamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceRouterRouteMatchHttpQueryParamArrayInput)(nil)).Elem(), ConfigEntryServiceRouterRouteMatchHttpQueryParamArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceSplitterSplitInput)(nil)).Elem(), ConfigEntryServiceSplitterSplitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceSplitterSplitArrayInput)(nil)).Elem(), ConfigEntryServiceSplitterSplitArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceSplitterSplitRequestHeadersInput)(nil)).Elem(), ConfigEntryServiceSplitterSplitRequestHeadersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceSplitterSplitRequestHeadersPtrInput)(nil)).Elem(), ConfigEntryServiceSplitterSplitRequestHeadersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceSplitterSplitResponseHeadersInput)(nil)).Elem(), ConfigEntryServiceSplitterSplitResponseHeadersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigEntryServiceSplitterSplitResponseHeadersPtrInput)(nil)).Elem(), ConfigEntryServiceSplitterSplitResponseHeadersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KeyPrefixSubkeyCollectionInput)(nil)).Elem(), KeyPrefixSubkeyCollectionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KeyPrefixSubkeyCollectionArrayInput)(nil)).Elem(), KeyPrefixSubkeyCollectionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KeysKeyInput)(nil)).Elem(), KeysKeyArgs{})
@@ -7341,6 +15425,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAclRolePolicyArrayInput)(nil)).Elem(), GetAclRolePolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAclRoleServiceIdentityInput)(nil)).Elem(), GetAclRoleServiceIdentityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAclRoleServiceIdentityArrayInput)(nil)).Elem(), GetAclRoleServiceIdentityArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAclRoleTemplatedPolicyInput)(nil)).Elem(), GetAclRoleTemplatedPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAclRoleTemplatedPolicyArrayInput)(nil)).Elem(), GetAclRoleTemplatedPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAclRoleTemplatedPolicyTemplateVariableInput)(nil)).Elem(), GetAclRoleTemplatedPolicyTemplateVariableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAclRoleTemplatedPolicyTemplateVariableArrayInput)(nil)).Elem(), GetAclRoleTemplatedPolicyTemplateVariableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAclTokenNodeIdentityInput)(nil)).Elem(), GetAclTokenNodeIdentityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAclTokenNodeIdentityArrayInput)(nil)).Elem(), GetAclTokenNodeIdentityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAclTokenPolicyInput)(nil)).Elem(), GetAclTokenPolicyArgs{})
@@ -7349,6 +15437,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAclTokenRoleArrayInput)(nil)).Elem(), GetAclTokenRoleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAclTokenServiceIdentityInput)(nil)).Elem(), GetAclTokenServiceIdentityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAclTokenServiceIdentityArrayInput)(nil)).Elem(), GetAclTokenServiceIdentityArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAclTokenTemplatedPolicyInput)(nil)).Elem(), GetAclTokenTemplatedPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAclTokenTemplatedPolicyArrayInput)(nil)).Elem(), GetAclTokenTemplatedPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAclTokenTemplatedPolicyTemplateVariableInput)(nil)).Elem(), GetAclTokenTemplatedPolicyTemplateVariableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAclTokenTemplatedPolicyTemplateVariableArrayInput)(nil)).Elem(), GetAclTokenTemplatedPolicyTemplateVariableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAutopilotHealthServerInput)(nil)).Elem(), GetAutopilotHealthServerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAutopilotHealthServerArrayInput)(nil)).Elem(), GetAutopilotHealthServerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCatalogNodesNodeInput)(nil)).Elem(), GetCatalogNodesNodeArgs{})
@@ -7389,16 +15481,110 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServicesQueryOptionArrayInput)(nil)).Elem(), GetServicesQueryOptionArray{})
 	pulumi.RegisterOutputType(AclAuthMethodNamespaceRuleOutput{})
 	pulumi.RegisterOutputType(AclAuthMethodNamespaceRuleArrayOutput{})
+	pulumi.RegisterOutputType(AclBindingRuleBindVarsOutput{})
+	pulumi.RegisterOutputType(AclBindingRuleBindVarsPtrOutput{})
 	pulumi.RegisterOutputType(AclRoleNodeIdentityOutput{})
 	pulumi.RegisterOutputType(AclRoleNodeIdentityArrayOutput{})
 	pulumi.RegisterOutputType(AclRoleServiceIdentityOutput{})
 	pulumi.RegisterOutputType(AclRoleServiceIdentityArrayOutput{})
+	pulumi.RegisterOutputType(AclRoleTemplatedPolicyOutput{})
+	pulumi.RegisterOutputType(AclRoleTemplatedPolicyArrayOutput{})
+	pulumi.RegisterOutputType(AclRoleTemplatedPolicyTemplateVariablesOutput{})
+	pulumi.RegisterOutputType(AclRoleTemplatedPolicyTemplateVariablesPtrOutput{})
 	pulumi.RegisterOutputType(AclTokenNodeIdentityOutput{})
 	pulumi.RegisterOutputType(AclTokenNodeIdentityArrayOutput{})
 	pulumi.RegisterOutputType(AclTokenServiceIdentityOutput{})
 	pulumi.RegisterOutputType(AclTokenServiceIdentityArrayOutput{})
+	pulumi.RegisterOutputType(AclTokenTemplatedPolicyOutput{})
+	pulumi.RegisterOutputType(AclTokenTemplatedPolicyArrayOutput{})
+	pulumi.RegisterOutputType(AclTokenTemplatedPolicyTemplateVariablesOutput{})
+	pulumi.RegisterOutputType(AclTokenTemplatedPolicyTemplateVariablesPtrOutput{})
 	pulumi.RegisterOutputType(CatalogEntryServiceOutput{})
 	pulumi.RegisterOutputType(CatalogEntryServiceArrayOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceDefaultsDestinationOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceDefaultsDestinationArrayOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceDefaultsEnvoyExtensionOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceDefaultsEnvoyExtensionArrayOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceDefaultsExposeOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceDefaultsExposeArrayOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceDefaultsExposePathOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceDefaultsExposePathArrayOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceDefaultsMeshGatewayOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceDefaultsMeshGatewayArrayOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceDefaultsTransparentProxyOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceDefaultsTransparentProxyArrayOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceDefaultsUpstreamConfigOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceDefaultsUpstreamConfigArrayOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceDefaultsUpstreamConfigDefaultOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceDefaultsUpstreamConfigDefaultArrayOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitArrayOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayArrayOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckArrayOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceDefaultsUpstreamConfigOverrideOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceDefaultsUpstreamConfigOverrideArrayOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitArrayOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArrayOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckArrayOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceIntentionsJwtOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceIntentionsJwtArrayOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceIntentionsJwtProviderOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceIntentionsJwtProviderArrayOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceIntentionsJwtProviderVerifyClaimOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceIntentionsJwtProviderVerifyClaimArrayOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceIntentionsSourceOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceIntentionsSourceArrayOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceIntentionsSourcePermissionOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceIntentionsSourcePermissionArrayOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceIntentionsSourcePermissionHttpOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceIntentionsSourcePermissionHttpArrayOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceIntentionsSourcePermissionHttpHeaderOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceIntentionsSourcePermissionHttpHeaderArrayOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceResolverFailoverOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceResolverFailoverArrayOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceResolverFailoverTargetOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceResolverFailoverTargetArrayOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceResolverLoadBalancerOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceResolverLoadBalancerArrayOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceResolverLoadBalancerHashPolicyOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceResolverLoadBalancerHashPolicyArrayOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigArrayOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceResolverLoadBalancerLeastRequestConfigOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceResolverLoadBalancerLeastRequestConfigArrayOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceResolverLoadBalancerRingHashConfigOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceResolverLoadBalancerRingHashConfigArrayOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceResolverRedirectOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceResolverRedirectArrayOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceResolverSubsetOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceResolverSubsetArrayOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceRouterRouteOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceRouterRouteArrayOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceRouterRouteDestinationOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceRouterRouteDestinationPtrOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceRouterRouteDestinationRequestHeadersOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceRouterRouteDestinationRequestHeadersPtrOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceRouterRouteDestinationResponseHeadersOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceRouterRouteDestinationResponseHeadersPtrOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceRouterRouteMatchOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceRouterRouteMatchPtrOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceRouterRouteMatchHttpOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceRouterRouteMatchHttpPtrOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceRouterRouteMatchHttpHeaderOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceRouterRouteMatchHttpHeaderArrayOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceRouterRouteMatchHttpQueryParamOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceRouterRouteMatchHttpQueryParamArrayOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceSplitterSplitOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceSplitterSplitArrayOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceSplitterSplitRequestHeadersOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceSplitterSplitRequestHeadersPtrOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceSplitterSplitResponseHeadersOutput{})
+	pulumi.RegisterOutputType(ConfigEntryServiceSplitterSplitResponseHeadersPtrOutput{})
 	pulumi.RegisterOutputType(KeyPrefixSubkeyCollectionOutput{})
 	pulumi.RegisterOutputType(KeyPrefixSubkeyCollectionArrayOutput{})
 	pulumi.RegisterOutputType(KeysKeyOutput{})
@@ -7427,6 +15613,10 @@ func init() {
 	pulumi.RegisterOutputType(GetAclRolePolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetAclRoleServiceIdentityOutput{})
 	pulumi.RegisterOutputType(GetAclRoleServiceIdentityArrayOutput{})
+	pulumi.RegisterOutputType(GetAclRoleTemplatedPolicyOutput{})
+	pulumi.RegisterOutputType(GetAclRoleTemplatedPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetAclRoleTemplatedPolicyTemplateVariableOutput{})
+	pulumi.RegisterOutputType(GetAclRoleTemplatedPolicyTemplateVariableArrayOutput{})
 	pulumi.RegisterOutputType(GetAclTokenNodeIdentityOutput{})
 	pulumi.RegisterOutputType(GetAclTokenNodeIdentityArrayOutput{})
 	pulumi.RegisterOutputType(GetAclTokenPolicyOutput{})
@@ -7435,6 +15625,10 @@ func init() {
 	pulumi.RegisterOutputType(GetAclTokenRoleArrayOutput{})
 	pulumi.RegisterOutputType(GetAclTokenServiceIdentityOutput{})
 	pulumi.RegisterOutputType(GetAclTokenServiceIdentityArrayOutput{})
+	pulumi.RegisterOutputType(GetAclTokenTemplatedPolicyOutput{})
+	pulumi.RegisterOutputType(GetAclTokenTemplatedPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetAclTokenTemplatedPolicyTemplateVariableOutput{})
+	pulumi.RegisterOutputType(GetAclTokenTemplatedPolicyTemplateVariableArrayOutput{})
 	pulumi.RegisterOutputType(GetAutopilotHealthServerOutput{})
 	pulumi.RegisterOutputType(GetAutopilotHealthServerArrayOutput{})
 	pulumi.RegisterOutputType(GetCatalogNodesNodeOutput{})

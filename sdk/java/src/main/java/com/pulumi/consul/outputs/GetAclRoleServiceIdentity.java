@@ -55,10 +55,10 @@ public final class GetAclRoleServiceIdentity {
             return this;
         }
         public GetAclRoleServiceIdentity build() {
-            final var o = new GetAclRoleServiceIdentity();
-            o.datacenters = datacenters;
-            o.serviceName = serviceName;
-            return o;
+            final var _resultValue = new GetAclRoleServiceIdentity();
+            _resultValue.datacenters = datacenters;
+            _resultValue.serviceName = serviceName;
+            return _resultValue;
         }
     }
 }

@@ -117,12 +117,12 @@ Please use the token argument in the provider configuration */
             return this;
         }
         public GetNetworkSegmentsResult build() {
-            final var o = new GetNetworkSegmentsResult();
-            o.datacenter = datacenter;
-            o.id = id;
-            o.segments = segments;
-            o.token = token;
-            return o;
+            final var _resultValue = new GetNetworkSegmentsResult();
+            _resultValue.datacenter = datacenter;
+            _resultValue.id = id;
+            _resultValue.segments = segments;
+            _resultValue.token = token;
+            return _resultValue;
         }
     }
 }

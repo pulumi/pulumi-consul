@@ -12,11 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// The `AclToken` data source returns the information related to the
-// `AclToken` resource with the exception of its secret ID.
+// The `AclToken` data source returns the information related to the `AclToken` resource with the exception of its secret ID.
 //
-// If you want to get the secret ID associated with a token, use the
-// [`getAclTokenSecretId` data source](https://www.terraform.io/docs/providers/consul/d/acl_token_secret_id.html).
+// If you want to get the secret ID associated with a token, use the [`getAclTokenSecretId` data source](https://www.terraform.io/docs/providers/consul/d/acl_token_secret_id.html).
 //
 // ## Example Usage
 //
@@ -66,6 +64,7 @@ type LookupAclTokenArgs struct {
 
 // A collection of values returned by getAclToken.
 type LookupAclTokenResult struct {
+	// The accessor ID of the ACL token.
 	AccessorId string `pulumi:"accessorId"`
 	// The description of the ACL token.
 	Description string `pulumi:"description"`
@@ -74,17 +73,21 @@ type LookupAclTokenResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Whether the ACL token is local to the datacenter it was created within.
-	Local     bool    `pulumi:"local"`
+	Local bool `pulumi:"local"`
+	// The namespace to lookup the ACL token.
 	Namespace *string `pulumi:"namespace"`
-	// The list of node identities attached to the token. Each entry has a `nodeName` and a `datacenter` attributes.
+	// The list of node identities attached to the token.
 	NodeIdentities []GetAclTokenNodeIdentity `pulumi:"nodeIdentities"`
-	Partition      *string                   `pulumi:"partition"`
-	// A list of policies associated with the ACL token. Each entry has an `id` and a `name` attribute.
+	// The partition to lookup the ACL token.
+	Partition *string `pulumi:"partition"`
+	// A list of policies associated with the ACL token.
 	Policies []GetAclTokenPolicy `pulumi:"policies"`
-	// The list of roles attached to the token.
+	// List of roles linked to the token
 	Roles []GetAclTokenRole `pulumi:"roles"`
-	// The list of service identities attached to the token. Each entry has a `serviceName` and a `datacenters` attribute.
+	// The list of service identities attached to the token.
 	ServiceIdentities []GetAclTokenServiceIdentity `pulumi:"serviceIdentities"`
+	// The list of templated policies that should be applied to the token.
+	TemplatedPolicies []GetAclTokenTemplatedPolicy `pulumi:"templatedPolicies"`
 }
 
 func LookupAclTokenOutput(ctx *pulumi.Context, args LookupAclTokenOutputArgs, opts ...pulumi.InvokeOption) LookupAclTokenResultOutput {
@@ -135,6 +138,7 @@ func (o LookupAclTokenResultOutput) ToOutput(ctx context.Context) pulumix.Output
 	}
 }
 
+// The accessor ID of the ACL token.
 func (o LookupAclTokenResultOutput) AccessorId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAclTokenResult) string { return v.AccessorId }).(pulumi.StringOutput)
 }
@@ -159,32 +163,39 @@ func (o LookupAclTokenResultOutput) Local() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupAclTokenResult) bool { return v.Local }).(pulumi.BoolOutput)
 }
 
+// The namespace to lookup the ACL token.
 func (o LookupAclTokenResultOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAclTokenResult) *string { return v.Namespace }).(pulumi.StringPtrOutput)
 }
 
-// The list of node identities attached to the token. Each entry has a `nodeName` and a `datacenter` attributes.
+// The list of node identities attached to the token.
 func (o LookupAclTokenResultOutput) NodeIdentities() GetAclTokenNodeIdentityArrayOutput {
 	return o.ApplyT(func(v LookupAclTokenResult) []GetAclTokenNodeIdentity { return v.NodeIdentities }).(GetAclTokenNodeIdentityArrayOutput)
 }
 
+// The partition to lookup the ACL token.
 func (o LookupAclTokenResultOutput) Partition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAclTokenResult) *string { return v.Partition }).(pulumi.StringPtrOutput)
 }
 
-// A list of policies associated with the ACL token. Each entry has an `id` and a `name` attribute.
+// A list of policies associated with the ACL token.
 func (o LookupAclTokenResultOutput) Policies() GetAclTokenPolicyArrayOutput {
 	return o.ApplyT(func(v LookupAclTokenResult) []GetAclTokenPolicy { return v.Policies }).(GetAclTokenPolicyArrayOutput)
 }
 
-// The list of roles attached to the token.
+// List of roles linked to the token
 func (o LookupAclTokenResultOutput) Roles() GetAclTokenRoleArrayOutput {
 	return o.ApplyT(func(v LookupAclTokenResult) []GetAclTokenRole { return v.Roles }).(GetAclTokenRoleArrayOutput)
 }
 
-// The list of service identities attached to the token. Each entry has a `serviceName` and a `datacenters` attribute.
+// The list of service identities attached to the token.
 func (o LookupAclTokenResultOutput) ServiceIdentities() GetAclTokenServiceIdentityArrayOutput {
 	return o.ApplyT(func(v LookupAclTokenResult) []GetAclTokenServiceIdentity { return v.ServiceIdentities }).(GetAclTokenServiceIdentityArrayOutput)
+}
+
+// The list of templated policies that should be applied to the token.
+func (o LookupAclTokenResultOutput) TemplatedPolicies() GetAclTokenTemplatedPolicyArrayOutput {
+	return o.ApplyT(func(v LookupAclTokenResult) []GetAclTokenTemplatedPolicy { return v.TemplatedPolicies }).(GetAclTokenTemplatedPolicyArrayOutput)
 }
 
 func init() {

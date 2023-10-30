@@ -8,6 +8,7 @@ import com.pulumi.consul.Utilities;
 import com.pulumi.consul.inputs.AclRoleState;
 import com.pulumi.consul.outputs.AclRoleNodeIdentity;
 import com.pulumi.consul.outputs.AclRoleServiceIdentity;
+import com.pulumi.consul.outputs.AclRoleTemplatedPolicy;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -18,7 +19,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Starting with Consul 1.5.0, the consul.AclRole can be used to managed Consul ACL roles.
+ * The `consul.AclRole` can be used to manage [Consul ACL roles](https://developer.hashicorp.com/consul/docs/security/acl/acl-roles).
  * 
  * ## Example Usage
  * ```java
@@ -46,8 +47,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var read_policy = new AclPolicy(&#34;read-policy&#34;, AclPolicyArgs.builder()        
- *             .datacenters(&#34;dc1&#34;)
  *             .rules(&#34;node \&#34;\&#34; { policy = \&#34;read\&#34; }&#34;)
+ *             .datacenters(&#34;dc1&#34;)
  *             .build());
  * 
  *         var read = new AclRole(&#34;read&#34;, AclRoleArgs.builder()        
@@ -64,8 +65,6 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * `consul_acl_role` can be imported:
- * 
  * ```sh
  *  $ pulumi import consul:index/aclRole:AclRole read 816a195f-6cb1-2e8d-92af-3011ae706318
  * ```
@@ -77,7 +76,7 @@ public class AclRole extends com.pulumi.resources.CustomResource {
      * A free form human readable description of the role.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -88,14 +87,14 @@ public class AclRole extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * The name of the ACL role.
+     * The name of node, workload identity or service.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the ACL role.
+     * @return The name of node, workload identity or service.
      * 
      */
     public Output<String> name() {
@@ -105,7 +104,7 @@ public class AclRole extends com.pulumi.resources.CustomResource {
      * The namespace to create the role within.
      * 
      */
-    @Export(name="namespace", type=String.class, parameters={})
+    @Export(name="namespace", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> namespace;
 
     /**
@@ -119,7 +118,7 @@ public class AclRole extends com.pulumi.resources.CustomResource {
      * The list of node identities that should be applied to the role.
      * 
      */
-    @Export(name="nodeIdentities", type=List.class, parameters={AclRoleNodeIdentity.class})
+    @Export(name="nodeIdentities", refs={List.class,AclRoleNodeIdentity.class}, tree="[0,1]")
     private Output</* @Nullable */ List<AclRoleNodeIdentity>> nodeIdentities;
 
     /**
@@ -133,7 +132,7 @@ public class AclRole extends com.pulumi.resources.CustomResource {
      * The partition the ACL role is associated with.
      * 
      */
-    @Export(name="partition", type=String.class, parameters={})
+    @Export(name="partition", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> partition;
 
     /**
@@ -144,14 +143,14 @@ public class AclRole extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.partition);
     }
     /**
-     * The list of policies that should be applied to the role.
+     * The list of policies that should be applied to the role. Both the policy ID or its name can be used.
      * 
      */
-    @Export(name="policies", type=List.class, parameters={String.class})
+    @Export(name="policies", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> policies;
 
     /**
-     * @return The list of policies that should be applied to the role.
+     * @return The list of policies that should be applied to the role. Both the policy ID or its name can be used.
      * 
      */
     public Output<Optional<List<String>>> policies() {
@@ -161,7 +160,7 @@ public class AclRole extends com.pulumi.resources.CustomResource {
      * The list of service identities that should be applied to the role.
      * 
      */
-    @Export(name="serviceIdentities", type=List.class, parameters={AclRoleServiceIdentity.class})
+    @Export(name="serviceIdentities", refs={List.class,AclRoleServiceIdentity.class}, tree="[0,1]")
     private Output</* @Nullable */ List<AclRoleServiceIdentity>> serviceIdentities;
 
     /**
@@ -170,6 +169,20 @@ public class AclRole extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<AclRoleServiceIdentity>>> serviceIdentities() {
         return Codegen.optional(this.serviceIdentities);
+    }
+    /**
+     * The list of templated policies that should be applied to the token.
+     * 
+     */
+    @Export(name="templatedPolicies", refs={List.class,AclRoleTemplatedPolicy.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<AclRoleTemplatedPolicy>> templatedPolicies;
+
+    /**
+     * @return The list of templated policies that should be applied to the token.
+     * 
+     */
+    public Output<Optional<List<AclRoleTemplatedPolicy>>> templatedPolicies() {
+        return Codegen.optional(this.templatedPolicies);
     }
 
     /**

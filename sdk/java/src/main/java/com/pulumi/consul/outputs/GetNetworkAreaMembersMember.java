@@ -232,18 +232,18 @@ public final class GetNetworkAreaMembersMember {
             return this;
         }
         public GetNetworkAreaMembersMember build() {
-            final var o = new GetNetworkAreaMembersMember();
-            o.address = address;
-            o.build = build;
-            o.datacenter = datacenter;
-            o.id = id;
-            o.name = name;
-            o.port = port;
-            o.protocol = protocol;
-            o.role = role;
-            o.rtt = rtt;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetNetworkAreaMembersMember();
+            _resultValue.address = address;
+            _resultValue.build = build;
+            _resultValue.datacenter = datacenter;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.port = port;
+            _resultValue.protocol = protocol;
+            _resultValue.role = role;
+            _resultValue.rtt = rtt;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

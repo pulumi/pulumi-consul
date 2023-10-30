@@ -29,7 +29,7 @@ public class NamespacePolicyAttachment extends com.pulumi.resources.CustomResour
      * The namespace to attach the policy to.
      * 
      */
-    @Export(name="namespace", type=String.class, parameters={})
+    @Export(name="namespace", refs={String.class}, tree="[0]")
     private Output<String> namespace;
 
     /**
@@ -43,7 +43,7 @@ public class NamespacePolicyAttachment extends com.pulumi.resources.CustomResour
      * The name of the policy attached to the namespace.
      * 
      */
-    @Export(name="policy", type=String.class, parameters={})
+    @Export(name="policy", refs={String.class}, tree="[0]")
     private Output<String> policy;
 
     /**

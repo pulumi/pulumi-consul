@@ -14,14 +14,14 @@ public final class AclRoleNodeIdentityArgs extends com.pulumi.resources.Resource
     public static final AclRoleNodeIdentityArgs Empty = new AclRoleNodeIdentityArgs();
 
     /**
-     * The datacenter of the node.
+     * Specifies the node&#39;s datacenter.
      * 
      */
     @Import(name="datacenter", required=true)
     private Output<String> datacenter;
 
     /**
-     * @return The datacenter of the node.
+     * @return Specifies the node&#39;s datacenter.
      * 
      */
     public Output<String> datacenter() {
@@ -69,7 +69,7 @@ public final class AclRoleNodeIdentityArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param datacenter The datacenter of the node.
+         * @param datacenter Specifies the node&#39;s datacenter.
          * 
          * @return builder
          * 
@@ -80,7 +80,7 @@ public final class AclRoleNodeIdentityArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param datacenter The datacenter of the node.
+         * @param datacenter Specifies the node&#39;s datacenter.
          * 
          * @return builder
          * 

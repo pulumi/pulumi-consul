@@ -5,6 +5,7 @@ package com.pulumi.consul;
 
 import com.pulumi.consul.inputs.AclRoleNodeIdentityArgs;
 import com.pulumi.consul.inputs.AclRoleServiceIdentityArgs;
+import com.pulumi.consul.inputs.AclRoleTemplatedPolicyArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
@@ -34,14 +35,14 @@ public final class AclRoleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the ACL role.
+     * The name of node, workload identity or service.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the ACL role.
+     * @return The name of node, workload identity or service.
      * 
      */
     public Optional<Output<String>> name() {
@@ -94,14 +95,14 @@ public final class AclRoleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The list of policies that should be applied to the role.
+     * The list of policies that should be applied to the role. Both the policy ID or its name can be used.
      * 
      */
     @Import(name="policies")
     private @Nullable Output<List<String>> policies;
 
     /**
-     * @return The list of policies that should be applied to the role.
+     * @return The list of policies that should be applied to the role. Both the policy ID or its name can be used.
      * 
      */
     public Optional<Output<List<String>>> policies() {
@@ -123,6 +124,21 @@ public final class AclRoleArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.serviceIdentities);
     }
 
+    /**
+     * The list of templated policies that should be applied to the token.
+     * 
+     */
+    @Import(name="templatedPolicies")
+    private @Nullable Output<List<AclRoleTemplatedPolicyArgs>> templatedPolicies;
+
+    /**
+     * @return The list of templated policies that should be applied to the token.
+     * 
+     */
+    public Optional<Output<List<AclRoleTemplatedPolicyArgs>>> templatedPolicies() {
+        return Optional.ofNullable(this.templatedPolicies);
+    }
+
     private AclRoleArgs() {}
 
     private AclRoleArgs(AclRoleArgs $) {
@@ -133,6 +149,7 @@ public final class AclRoleArgs extends com.pulumi.resources.ResourceArgs {
         this.partition = $.partition;
         this.policies = $.policies;
         this.serviceIdentities = $.serviceIdentities;
+        this.templatedPolicies = $.templatedPolicies;
     }
 
     public static Builder builder() {
@@ -175,7 +192,7 @@ public final class AclRoleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the ACL role.
+         * @param name The name of node, workload identity or service.
          * 
          * @return builder
          * 
@@ -186,7 +203,7 @@ public final class AclRoleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the ACL role.
+         * @param name The name of node, workload identity or service.
          * 
          * @return builder
          * 
@@ -269,7 +286,7 @@ public final class AclRoleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param policies The list of policies that should be applied to the role.
+         * @param policies The list of policies that should be applied to the role. Both the policy ID or its name can be used.
          * 
          * @return builder
          * 
@@ -280,7 +297,7 @@ public final class AclRoleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param policies The list of policies that should be applied to the role.
+         * @param policies The list of policies that should be applied to the role. Both the policy ID or its name can be used.
          * 
          * @return builder
          * 
@@ -290,7 +307,7 @@ public final class AclRoleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param policies The list of policies that should be applied to the role.
+         * @param policies The list of policies that should be applied to the role. Both the policy ID or its name can be used.
          * 
          * @return builder
          * 
@@ -328,6 +345,37 @@ public final class AclRoleArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder serviceIdentities(AclRoleServiceIdentityArgs... serviceIdentities) {
             return serviceIdentities(List.of(serviceIdentities));
+        }
+
+        /**
+         * @param templatedPolicies The list of templated policies that should be applied to the token.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder templatedPolicies(@Nullable Output<List<AclRoleTemplatedPolicyArgs>> templatedPolicies) {
+            $.templatedPolicies = templatedPolicies;
+            return this;
+        }
+
+        /**
+         * @param templatedPolicies The list of templated policies that should be applied to the token.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder templatedPolicies(List<AclRoleTemplatedPolicyArgs> templatedPolicies) {
+            return templatedPolicies(Output.of(templatedPolicies));
+        }
+
+        /**
+         * @param templatedPolicies The list of templated policies that should be applied to the token.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder templatedPolicies(AclRoleTemplatedPolicyArgs... templatedPolicies) {
+            return templatedPolicies(List.of(templatedPolicies));
         }
 
         public AclRoleArgs build() {

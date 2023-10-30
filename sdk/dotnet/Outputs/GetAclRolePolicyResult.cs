@@ -14,9 +14,6 @@ namespace Pulumi.Consul.Outputs
     public sealed class GetAclRolePolicyResult
     {
         public readonly string Id;
-        /// <summary>
-        /// The name of the ACL Role.
-        /// </summary>
         public readonly string Name;
 
         [OutputConstructor]

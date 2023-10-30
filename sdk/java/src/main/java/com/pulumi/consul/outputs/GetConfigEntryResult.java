@@ -143,14 +143,14 @@ public final class GetConfigEntryResult {
             return this;
         }
         public GetConfigEntryResult build() {
-            final var o = new GetConfigEntryResult();
-            o.configJson = configJson;
-            o.id = id;
-            o.kind = kind;
-            o.name = name;
-            o.namespace = namespace;
-            o.partition = partition;
-            return o;
+            final var _resultValue = new GetConfigEntryResult();
+            _resultValue.configJson = configJson;
+            _resultValue.id = id;
+            _resultValue.kind = kind;
+            _resultValue.name = name;
+            _resultValue.namespace = namespace;
+            _resultValue.partition = partition;
+            return _resultValue;
         }
     }
 }

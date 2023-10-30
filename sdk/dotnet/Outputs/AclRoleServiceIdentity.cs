@@ -14,7 +14,7 @@ namespace Pulumi.Consul.Outputs
     public sealed class AclRoleServiceIdentity
     {
         /// <summary>
-        /// The datacenters the effective policy is valid within.
+        /// The datacenters the effective policy is valid within. When no datacenters are provided the effective policy is valid in all datacenters including those which do not yet exist but may in the future.
         /// </summary>
         public readonly ImmutableArray<string> Datacenters;
         /// <summary>

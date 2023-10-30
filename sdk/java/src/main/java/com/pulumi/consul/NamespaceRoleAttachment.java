@@ -29,7 +29,7 @@ public class NamespaceRoleAttachment extends com.pulumi.resources.CustomResource
      * The namespace to attach the role to.
      * 
      */
-    @Export(name="namespace", type=String.class, parameters={})
+    @Export(name="namespace", refs={String.class}, tree="[0]")
     private Output<String> namespace;
 
     /**
@@ -43,7 +43,7 @@ public class NamespaceRoleAttachment extends com.pulumi.resources.CustomResource
      * The name of the role attached to the namespace.
      * 
      */
-    @Export(name="role", type=String.class, parameters={})
+    @Export(name="role", refs={String.class}, tree="[0]")
     private Output<String> role;
 
     /**

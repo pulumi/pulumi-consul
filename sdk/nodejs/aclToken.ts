@@ -7,30 +7,34 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The `consul.AclToken` resource writes an ACL token into Consul.
- *
  * ## Example Usage
- * ### Basic usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
+ * import * as random from "@pulumi/random";
  *
+ * // Basic usage
  * const agent = new consul.AclPolicy("agent", {rules: `node_prefix "" {
  *   policy = "read"
  * }
- *
  * `});
- * const test = new consul.AclToken("test", {
+ * const testAclToken = new consul.AclToken("testAclToken", {
  *     description: "my test token",
- *     local: true,
  *     policies: [agent.name],
+ *     local: true,
+ * });
+ * // Explicitly set the `accessor_id`
+ * const testrandom_uuid = new random.index.Random_uuid("testrandom_uuid", {});
+ * const testPredefinedId = new consul.AclToken("testPredefinedId", {
+ *     accessorId: random_uuid.test_uuid.result,
+ *     description: "my test uuid token",
+ *     policies: [agent.name],
+ *     local: true,
  * });
  * ```
  *
  * ## Import
- *
- * `consul_acl_token` can be imported. This is especially useful to manage the anonymous and the master token with Terraform
  *
  * ```sh
  *  $ pulumi import consul:index/aclToken:AclToken anonymous 00000000-0000-0000-0000-000000000002
@@ -69,8 +73,7 @@ export class AclToken extends pulumi.CustomResource {
     }
 
     /**
-     * The uuid of the token. If omitted, Consul will
-     * generate a random uuid.
+     * The uuid of the token. If omitted, Consul will generate a random uuid.
      */
     public readonly accessorId!: pulumi.Output<string>;
     /**
@@ -109,6 +112,10 @@ export class AclToken extends pulumi.CustomResource {
      * The list of service identities that should be applied to the token.
      */
     public readonly serviceIdentities!: pulumi.Output<outputs.AclTokenServiceIdentity[] | undefined>;
+    /**
+     * The list of templated policies that should be applied to the token.
+     */
+    public readonly templatedPolicies!: pulumi.Output<outputs.AclTokenTemplatedPolicy[] | undefined>;
 
     /**
      * Create a AclToken resource with the given unique name, arguments, and options.
@@ -133,6 +140,7 @@ export class AclToken extends pulumi.CustomResource {
             resourceInputs["policies"] = state ? state.policies : undefined;
             resourceInputs["roles"] = state ? state.roles : undefined;
             resourceInputs["serviceIdentities"] = state ? state.serviceIdentities : undefined;
+            resourceInputs["templatedPolicies"] = state ? state.templatedPolicies : undefined;
         } else {
             const args = argsOrState as AclTokenArgs | undefined;
             resourceInputs["accessorId"] = args ? args.accessorId : undefined;
@@ -145,6 +153,7 @@ export class AclToken extends pulumi.CustomResource {
             resourceInputs["policies"] = args ? args.policies : undefined;
             resourceInputs["roles"] = args ? args.roles : undefined;
             resourceInputs["serviceIdentities"] = args ? args.serviceIdentities : undefined;
+            resourceInputs["templatedPolicies"] = args ? args.templatedPolicies : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AclToken.__pulumiType, name, resourceInputs, opts);
@@ -156,8 +165,7 @@ export class AclToken extends pulumi.CustomResource {
  */
 export interface AclTokenState {
     /**
-     * The uuid of the token. If omitted, Consul will
-     * generate a random uuid.
+     * The uuid of the token. If omitted, Consul will generate a random uuid.
      */
     accessorId?: pulumi.Input<string>;
     /**
@@ -196,6 +204,10 @@ export interface AclTokenState {
      * The list of service identities that should be applied to the token.
      */
     serviceIdentities?: pulumi.Input<pulumi.Input<inputs.AclTokenServiceIdentity>[]>;
+    /**
+     * The list of templated policies that should be applied to the token.
+     */
+    templatedPolicies?: pulumi.Input<pulumi.Input<inputs.AclTokenTemplatedPolicy>[]>;
 }
 
 /**
@@ -203,8 +215,7 @@ export interface AclTokenState {
  */
 export interface AclTokenArgs {
     /**
-     * The uuid of the token. If omitted, Consul will
-     * generate a random uuid.
+     * The uuid of the token. If omitted, Consul will generate a random uuid.
      */
     accessorId?: pulumi.Input<string>;
     /**
@@ -243,4 +254,8 @@ export interface AclTokenArgs {
      * The list of service identities that should be applied to the token.
      */
     serviceIdentities?: pulumi.Input<pulumi.Input<inputs.AclTokenServiceIdentity>[]>;
+    /**
+     * The list of templated policies that should be applied to the token.
+     */
+    templatedPolicies?: pulumi.Input<pulumi.Input<inputs.AclTokenTemplatedPolicy>[]>;
 }

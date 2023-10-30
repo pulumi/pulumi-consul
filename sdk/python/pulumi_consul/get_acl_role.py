@@ -22,7 +22,7 @@ class GetAclRoleResult:
     """
     A collection of values returned by getAclRole.
     """
-    def __init__(__self__, description=None, id=None, name=None, namespace=None, node_identities=None, partition=None, policies=None, service_identities=None):
+    def __init__(__self__, description=None, id=None, name=None, namespace=None, node_identities=None, partition=None, policies=None, service_identities=None, templated_policies=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -47,6 +47,9 @@ class GetAclRoleResult:
         if service_identities and not isinstance(service_identities, list):
             raise TypeError("Expected argument 'service_identities' to be a list")
         pulumi.set(__self__, "service_identities", service_identities)
+        if templated_policies and not isinstance(templated_policies, list):
+            raise TypeError("Expected argument 'templated_policies' to be a list")
+        pulumi.set(__self__, "templated_policies", templated_policies)
 
     @property
     @pulumi.getter
@@ -84,20 +87,23 @@ class GetAclRoleResult:
     @pulumi.getter(name="nodeIdentities")
     def node_identities(self) -> Sequence['outputs.GetAclRoleNodeIdentityResult']:
         """
-        The list of node identities associated with the ACL Role. Each entry has a `node_name` and a `datacenter` attributes.
+        The list of node identities associated with the ACL Role.
         """
         return pulumi.get(self, "node_identities")
 
     @property
     @pulumi.getter
     def partition(self) -> Optional[str]:
+        """
+        The partition to lookup the role.
+        """
         return pulumi.get(self, "partition")
 
     @property
     @pulumi.getter
     def policies(self) -> Sequence['outputs.GetAclRolePolicyResult']:
         """
-        The list of policies associated with the ACL Role. Each entry has an `id` and a `name` attribute.
+        The list of policies associated with the ACL Role.
         """
         return pulumi.get(self, "policies")
 
@@ -105,9 +111,17 @@ class GetAclRoleResult:
     @pulumi.getter(name="serviceIdentities")
     def service_identities(self) -> Sequence['outputs.GetAclRoleServiceIdentityResult']:
         """
-        The list of service identities associated with the ACL Role. Each entry has a `service_name` attribute and a list of `datacenters`.
+        The list of service identities associated with the ACL Role.
         """
         return pulumi.get(self, "service_identities")
+
+    @property
+    @pulumi.getter(name="templatedPolicies")
+    def templated_policies(self) -> Sequence['outputs.GetAclRoleTemplatedPolicyResult']:
+        """
+        The list of templated policies that should be applied to the token.
+        """
+        return pulumi.get(self, "templated_policies")
 
 
 class AwaitableGetAclRoleResult(GetAclRoleResult):
@@ -123,7 +137,8 @@ class AwaitableGetAclRoleResult(GetAclRoleResult):
             node_identities=self.node_identities,
             partition=self.partition,
             policies=self.policies,
-            service_identities=self.service_identities)
+            service_identities=self.service_identities,
+            templated_policies=self.templated_policies)
 
 
 def get_acl_role(name: Optional[str] = None,
@@ -131,8 +146,7 @@ def get_acl_role(name: Optional[str] = None,
                  partition: Optional[str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAclRoleResult:
     """
-    The `AclRole` data source returns the information related to a
-    [Consul ACL Role](https://www.consul.io/api/acl/roles.html).
+    The `AclRole` data source returns the information related to a [Consul ACL Role](https://www.consul.io/api/acl/roles.html).
 
     ## Example Usage
 
@@ -145,7 +159,6 @@ def get_acl_role(name: Optional[str] = None,
     ```
 
 
-    :param str name: The name of the ACL Role.
     :param str namespace: The namespace to lookup the role.
     :param str partition: The partition to lookup the role.
     """
@@ -164,7 +177,8 @@ def get_acl_role(name: Optional[str] = None,
         node_identities=pulumi.get(__ret__, 'node_identities'),
         partition=pulumi.get(__ret__, 'partition'),
         policies=pulumi.get(__ret__, 'policies'),
-        service_identities=pulumi.get(__ret__, 'service_identities'))
+        service_identities=pulumi.get(__ret__, 'service_identities'),
+        templated_policies=pulumi.get(__ret__, 'templated_policies'))
 
 
 @_utilities.lift_output_func(get_acl_role)
@@ -173,8 +187,7 @@ def get_acl_role_output(name: Optional[pulumi.Input[str]] = None,
                         partition: Optional[pulumi.Input[Optional[str]]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAclRoleResult]:
     """
-    The `AclRole` data source returns the information related to a
-    [Consul ACL Role](https://www.consul.io/api/acl/roles.html).
+    The `AclRole` data source returns the information related to a [Consul ACL Role](https://www.consul.io/api/acl/roles.html).
 
     ## Example Usage
 
@@ -187,7 +200,6 @@ def get_acl_role_output(name: Optional[pulumi.Input[str]] = None,
     ```
 
 
-    :param str name: The name of the ACL Role.
     :param str namespace: The namespace to lookup the role.
     :param str partition: The partition to lookup the role.
     """

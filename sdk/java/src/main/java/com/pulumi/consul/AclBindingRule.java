@@ -6,6 +6,7 @@ package com.pulumi.consul;
 import com.pulumi.consul.AclBindingRuleArgs;
 import com.pulumi.consul.Utilities;
 import com.pulumi.consul.inputs.AclBindingRuleState;
+import com.pulumi.consul.outputs.AclBindingRuleBindVars;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -15,8 +16,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Starting with Consul 1.5.0, the consul.AclBindingRule resource can be used to
- * managed Consul ACL binding rules.
+ * Starting with Consul 1.5.0, the consul.AclBindingRule resource can be used to managed Consul ACL binding rules.
  * 
  * ## Example Usage
  * ```java
@@ -43,25 +43,24 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var minikube = new AclAuthMethod(&#34;minikube&#34;, AclAuthMethodArgs.builder()        
+ *             .type(&#34;kubernetes&#34;)
+ *             .description(&#34;dev minikube cluster&#34;)
  *             .config(Map.ofEntries(
+ *                 Map.entry(&#34;Host&#34;, &#34;https://192.0.2.42:8443&#34;),
  *                 Map.entry(&#34;CACert&#34;, &#34;&#34;&#34;
  * -----BEGIN CERTIFICATE-----
  * ...-----END CERTIFICATE-----
- * 
  *                 &#34;&#34;&#34;),
- *                 Map.entry(&#34;Host&#34;, &#34;https://192.0.2.42:8443&#34;),
  *                 Map.entry(&#34;ServiceAccountJWT&#34;, &#34;eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9...&#34;)
  *             ))
- *             .description(&#34;dev minikube cluster&#34;)
- *             .type(&#34;kubernetes&#34;)
  *             .build());
  * 
  *         var test = new AclBindingRule(&#34;test&#34;, AclBindingRuleArgs.builder()        
  *             .authMethod(minikube.name())
- *             .bindName(&#34;minikube&#34;)
- *             .bindType(&#34;service&#34;)
  *             .description(&#34;foobar&#34;)
  *             .selector(&#34;serviceaccount.namespace==default&#34;)
+ *             .bindType(&#34;service&#34;)
+ *             .bindName(&#34;minikube&#34;)
  *             .build());
  * 
  *     }
@@ -75,7 +74,7 @@ public class AclBindingRule extends com.pulumi.resources.CustomResource {
      * The name of the ACL auth method this rule apply.
      * 
      */
-    @Export(name="authMethod", type=String.class, parameters={})
+    @Export(name="authMethod", refs={String.class}, tree="[0]")
     private Output<String> authMethod;
 
     /**
@@ -89,7 +88,7 @@ public class AclBindingRule extends com.pulumi.resources.CustomResource {
      * The name to bind to a token at login-time.
      * 
      */
-    @Export(name="bindName", type=String.class, parameters={})
+    @Export(name="bindName", refs={String.class}, tree="[0]")
     private Output<String> bindName;
 
     /**
@@ -103,7 +102,7 @@ public class AclBindingRule extends com.pulumi.resources.CustomResource {
      * Specifies the way the binding rule affects a token created at login.
      * 
      */
-    @Export(name="bindType", type=String.class, parameters={})
+    @Export(name="bindType", refs={String.class}, tree="[0]")
     private Output<String> bindType;
 
     /**
@@ -114,10 +113,24 @@ public class AclBindingRule extends com.pulumi.resources.CustomResource {
         return this.bindType;
     }
     /**
+     * The variables used when binding rule type is `templated-policy`. Can be lightly templated using HIL `${foo}` syntax from available field names.
+     * 
+     */
+    @Export(name="bindVars", refs={AclBindingRuleBindVars.class}, tree="[0]")
+    private Output</* @Nullable */ AclBindingRuleBindVars> bindVars;
+
+    /**
+     * @return The variables used when binding rule type is `templated-policy`. Can be lightly templated using HIL `${foo}` syntax from available field names.
+     * 
+     */
+    public Output<Optional<AclBindingRuleBindVars>> bindVars() {
+        return Codegen.optional(this.bindVars);
+    }
+    /**
      * A free form human readable description of the binding rule.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -131,7 +144,7 @@ public class AclBindingRule extends com.pulumi.resources.CustomResource {
      * The namespace to create the binding rule within.
      * 
      */
-    @Export(name="namespace", type=String.class, parameters={})
+    @Export(name="namespace", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> namespace;
 
     /**
@@ -145,7 +158,7 @@ public class AclBindingRule extends com.pulumi.resources.CustomResource {
      * The partition the ACL binding rule is associated with.
      * 
      */
-    @Export(name="partition", type=String.class, parameters={})
+    @Export(name="partition", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> partition;
 
     /**
@@ -156,14 +169,14 @@ public class AclBindingRule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.partition);
     }
     /**
-     * The expression used to math this rule against valid identities returned from an auth method validation.
+     * The expression used to match this rule against valid identities returned from an auth method validation.
      * 
      */
-    @Export(name="selector", type=String.class, parameters={})
+    @Export(name="selector", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> selector;
 
     /**
-     * @return The expression used to math this rule against valid identities returned from an auth method validation.
+     * @return The expression used to match this rule against valid identities returned from an auth method validation.
      * 
      */
     public Output<Optional<String>> selector() {

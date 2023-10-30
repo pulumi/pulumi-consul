@@ -49,10 +49,10 @@ public final class GetAclTokenNodeIdentity {
             return this;
         }
         public GetAclTokenNodeIdentity build() {
-            final var o = new GetAclTokenNodeIdentity();
-            o.datacenter = datacenter;
-            o.nodeName = nodeName;
-            return o;
+            final var _resultValue = new GetAclTokenNodeIdentity();
+            _resultValue.datacenter = datacenter;
+            _resultValue.nodeName = nodeName;
+            return _resultValue;
         }
     }
 }

@@ -95,11 +95,11 @@ public final class PreparedQueryFailover {
             return targets(List.of(targets));
         }
         public PreparedQueryFailover build() {
-            final var o = new PreparedQueryFailover();
-            o.datacenters = datacenters;
-            o.nearestN = nearestN;
-            o.targets = targets;
-            return o;
+            final var _resultValue = new PreparedQueryFailover();
+            _resultValue.datacenters = datacenters;
+            _resultValue.nearestN = nearestN;
+            _resultValue.targets = targets;
+            return _resultValue;
         }
     }
 }

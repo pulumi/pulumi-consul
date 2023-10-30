@@ -60,7 +60,7 @@ public class License extends com.pulumi.resources.CustomResource {
      * The ID of the customer the license is attached to.
      * 
      */
-    @Export(name="customerId", type=String.class, parameters={})
+    @Export(name="customerId", refs={String.class}, tree="[0]")
     private Output<String> customerId;
 
     /**
@@ -75,7 +75,7 @@ public class License extends com.pulumi.resources.CustomResource {
      * agent&#39;s default datacenter and the datacenter in the provider setup.
      * 
      */
-    @Export(name="datacenter", type=String.class, parameters={})
+    @Export(name="datacenter", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> datacenter;
 
     /**
@@ -90,7 +90,7 @@ public class License extends com.pulumi.resources.CustomResource {
      * The expiration time of the license.
      * 
      */
-    @Export(name="expirationTime", type=String.class, parameters={})
+    @Export(name="expirationTime", refs={String.class}, tree="[0]")
     private Output<String> expirationTime;
 
     /**
@@ -104,7 +104,7 @@ public class License extends com.pulumi.resources.CustomResource {
      * The features for which the license is valid.
      * 
      */
-    @Export(name="features", type=List.class, parameters={String.class})
+    @Export(name="features", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> features;
 
     /**
@@ -118,7 +118,7 @@ public class License extends com.pulumi.resources.CustomResource {
      * The ID of the current installation.
      * 
      */
-    @Export(name="installationId", type=String.class, parameters={})
+    @Export(name="installationId", refs={String.class}, tree="[0]")
     private Output<String> installationId;
 
     /**
@@ -132,7 +132,7 @@ public class License extends com.pulumi.resources.CustomResource {
      * The date the license was issued.
      * 
      */
-    @Export(name="issueTime", type=String.class, parameters={})
+    @Export(name="issueTime", refs={String.class}, tree="[0]")
     private Output<String> issueTime;
 
     /**
@@ -146,7 +146,7 @@ public class License extends com.pulumi.resources.CustomResource {
      * The Consul license to use.
      * 
      */
-    @Export(name="license", type=String.class, parameters={})
+    @Export(name="license", refs={String.class}, tree="[0]")
     private Output<String> license;
 
     /**
@@ -160,7 +160,7 @@ public class License extends com.pulumi.resources.CustomResource {
      * The ID of the license used.
      * 
      */
-    @Export(name="licenseId", type=String.class, parameters={})
+    @Export(name="licenseId", refs={String.class}, tree="[0]")
     private Output<String> licenseId;
 
     /**
@@ -174,7 +174,7 @@ public class License extends com.pulumi.resources.CustomResource {
      * The product for which the license is valid.
      * 
      */
-    @Export(name="product", type=String.class, parameters={})
+    @Export(name="product", refs={String.class}, tree="[0]")
     private Output<String> product;
 
     /**
@@ -188,7 +188,7 @@ public class License extends com.pulumi.resources.CustomResource {
      * The start time of the license.
      * 
      */
-    @Export(name="startTime", type=String.class, parameters={})
+    @Export(name="startTime", refs={String.class}, tree="[0]")
     private Output<String> startTime;
 
     /**
@@ -202,7 +202,7 @@ public class License extends com.pulumi.resources.CustomResource {
      * Whether the license is valid.
      * 
      */
-    @Export(name="valid", type=Boolean.class, parameters={})
+    @Export(name="valid", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> valid;
 
     /**
@@ -216,7 +216,7 @@ public class License extends com.pulumi.resources.CustomResource {
      * A list of warning messages regarding the license validity.
      * 
      */
-    @Export(name="warnings", type=List.class, parameters={String.class})
+    @Export(name="warnings", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> warnings;
 
     /**

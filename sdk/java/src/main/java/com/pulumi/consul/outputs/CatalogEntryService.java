@@ -133,13 +133,13 @@ public final class CatalogEntryService {
             return tags(List.of(tags));
         }
         public CatalogEntryService build() {
-            final var o = new CatalogEntryService();
-            o.address = address;
-            o.id = id;
-            o.name = name;
-            o.port = port;
-            o.tags = tags;
-            return o;
+            final var _resultValue = new CatalogEntryService();
+            _resultValue.address = address;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.port = port;
+            _resultValue.tags = tags;
+            return _resultValue;
         }
     }
 }

@@ -37,7 +37,7 @@ public class CertificateAuthority extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* The config attribute is deprecated, please use config_json instead. */
-    @Export(name="config", type=Map.class, parameters={String.class, String.class})
+    @Export(name="config", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> config;
 
     /**
@@ -51,7 +51,7 @@ public class CertificateAuthority extends com.pulumi.resources.CustomResource {
      * The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
      * 
      */
-    @Export(name="configJson", type=String.class, parameters={})
+    @Export(name="configJson", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> configJson;
 
     /**
@@ -65,7 +65,7 @@ public class CertificateAuthority extends com.pulumi.resources.CustomResource {
      * Specifies the CA provider type to use.
      * 
      */
-    @Export(name="connectProvider", type=String.class, parameters={})
+    @Export(name="connectProvider", refs={String.class}, tree="[0]")
     private Output<String> connectProvider;
 
     /**

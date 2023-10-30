@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AclRoleServiceIdentity {
     /**
-     * @return The datacenters the effective policy is valid within.
+     * @return The datacenters the effective policy is valid within. When no datacenters are provided the effective policy is valid in all datacenters including those which do not yet exist but may in the future.
      * 
      */
     private @Nullable List<String> datacenters;
@@ -24,7 +24,7 @@ public final class AclRoleServiceIdentity {
 
     private AclRoleServiceIdentity() {}
     /**
-     * @return The datacenters the effective policy is valid within.
+     * @return The datacenters the effective policy is valid within. When no datacenters are provided the effective policy is valid in all datacenters including those which do not yet exist but may in the future.
      * 
      */
     public List<String> datacenters() {
@@ -70,10 +70,10 @@ public final class AclRoleServiceIdentity {
             return this;
         }
         public AclRoleServiceIdentity build() {
-            final var o = new AclRoleServiceIdentity();
-            o.datacenters = datacenters;
-            o.serviceName = serviceName;
-            return o;
+            final var _resultValue = new AclRoleServiceIdentity();
+            _resultValue.datacenters = datacenters;
+            _resultValue.serviceName = serviceName;
+            return _resultValue;
         }
     }
 }

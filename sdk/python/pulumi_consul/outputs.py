@@ -12,11 +12,58 @@ from . import outputs
 
 __all__ = [
     'AclAuthMethodNamespaceRule',
+    'AclBindingRuleBindVars',
     'AclRoleNodeIdentity',
     'AclRoleServiceIdentity',
+    'AclRoleTemplatedPolicy',
+    'AclRoleTemplatedPolicyTemplateVariables',
     'AclTokenNodeIdentity',
     'AclTokenServiceIdentity',
+    'AclTokenTemplatedPolicy',
+    'AclTokenTemplatedPolicyTemplateVariables',
     'CatalogEntryService',
+    'ConfigEntryServiceDefaultsDestination',
+    'ConfigEntryServiceDefaultsEnvoyExtension',
+    'ConfigEntryServiceDefaultsExpose',
+    'ConfigEntryServiceDefaultsExposePath',
+    'ConfigEntryServiceDefaultsMeshGateway',
+    'ConfigEntryServiceDefaultsTransparentProxy',
+    'ConfigEntryServiceDefaultsUpstreamConfig',
+    'ConfigEntryServiceDefaultsUpstreamConfigDefault',
+    'ConfigEntryServiceDefaultsUpstreamConfigDefaultLimit',
+    'ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGateway',
+    'ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheck',
+    'ConfigEntryServiceDefaultsUpstreamConfigOverride',
+    'ConfigEntryServiceDefaultsUpstreamConfigOverrideLimit',
+    'ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGateway',
+    'ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheck',
+    'ConfigEntryServiceIntentionsJwt',
+    'ConfigEntryServiceIntentionsJwtProvider',
+    'ConfigEntryServiceIntentionsJwtProviderVerifyClaim',
+    'ConfigEntryServiceIntentionsSource',
+    'ConfigEntryServiceIntentionsSourcePermission',
+    'ConfigEntryServiceIntentionsSourcePermissionHttp',
+    'ConfigEntryServiceIntentionsSourcePermissionHttpHeader',
+    'ConfigEntryServiceResolverFailover',
+    'ConfigEntryServiceResolverFailoverTarget',
+    'ConfigEntryServiceResolverLoadBalancer',
+    'ConfigEntryServiceResolverLoadBalancerHashPolicy',
+    'ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfig',
+    'ConfigEntryServiceResolverLoadBalancerLeastRequestConfig',
+    'ConfigEntryServiceResolverLoadBalancerRingHashConfig',
+    'ConfigEntryServiceResolverRedirect',
+    'ConfigEntryServiceResolverSubset',
+    'ConfigEntryServiceRouterRoute',
+    'ConfigEntryServiceRouterRouteDestination',
+    'ConfigEntryServiceRouterRouteDestinationRequestHeaders',
+    'ConfigEntryServiceRouterRouteDestinationResponseHeaders',
+    'ConfigEntryServiceRouterRouteMatch',
+    'ConfigEntryServiceRouterRouteMatchHttp',
+    'ConfigEntryServiceRouterRouteMatchHttpHeader',
+    'ConfigEntryServiceRouterRouteMatchHttpQueryParam',
+    'ConfigEntryServiceSplitterSplit',
+    'ConfigEntryServiceSplitterSplitRequestHeaders',
+    'ConfigEntryServiceSplitterSplitResponseHeaders',
     'KeyPrefixSubkeyCollection',
     'KeysKey',
     'PreparedQueryDns',
@@ -29,10 +76,14 @@ __all__ = [
     'GetAclRoleNodeIdentityResult',
     'GetAclRolePolicyResult',
     'GetAclRoleServiceIdentityResult',
+    'GetAclRoleTemplatedPolicyResult',
+    'GetAclRoleTemplatedPolicyTemplateVariableResult',
     'GetAclTokenNodeIdentityResult',
     'GetAclTokenPolicyResult',
     'GetAclTokenRoleResult',
     'GetAclTokenServiceIdentityResult',
+    'GetAclTokenTemplatedPolicyResult',
+    'GetAclTokenTemplatedPolicyTemplateVariableResult',
     'GetAutopilotHealthServerResult',
     'GetCatalogNodesNodeResult',
     'GetCatalogNodesQueryOptionResult',
@@ -77,11 +128,8 @@ class AclAuthMethodNamespaceRule(dict):
                  bind_namespace: str,
                  selector: Optional[str] = None):
         """
-        :param str bind_namespace: If the namespace rule's `selector` matches then
-               this is used to control the namespace where the token is created.
-        :param str selector: Specifies the expression used to match this namespace
-               rule against valid identities returned from an auth method validation.
-               Defaults to `""`.
+        :param str bind_namespace: If the namespace rule's `selector` matches then this is used to control the namespace where the token is created.
+        :param str selector: Specifies the expression used to match this namespace rule against valid identities returned from an auth method validation.
         """
         pulumi.set(__self__, "bind_namespace", bind_namespace)
         if selector is not None:
@@ -91,8 +139,7 @@ class AclAuthMethodNamespaceRule(dict):
     @pulumi.getter(name="bindNamespace")
     def bind_namespace(self) -> str:
         """
-        If the namespace rule's `selector` matches then
-        this is used to control the namespace where the token is created.
+        If the namespace rule's `selector` matches then this is used to control the namespace where the token is created.
         """
         return pulumi.get(self, "bind_namespace")
 
@@ -100,11 +147,28 @@ class AclAuthMethodNamespaceRule(dict):
     @pulumi.getter
     def selector(self) -> Optional[str]:
         """
-        Specifies the expression used to match this namespace
-        rule against valid identities returned from an auth method validation.
-        Defaults to `""`.
+        Specifies the expression used to match this namespace rule against valid identities returned from an auth method validation.
         """
         return pulumi.get(self, "selector")
+
+
+@pulumi.output_type
+class AclBindingRuleBindVars(dict):
+    def __init__(__self__, *,
+                 name: Optional[str] = None):
+        """
+        :param str name: The name of node, workload identity or service.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The name of node, workload identity or service.
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
@@ -130,7 +194,7 @@ class AclRoleNodeIdentity(dict):
                  datacenter: str,
                  node_name: str):
         """
-        :param str datacenter: The datacenter of the node.
+        :param str datacenter: Specifies the node's datacenter.
         :param str node_name: The name of the node.
         """
         pulumi.set(__self__, "datacenter", datacenter)
@@ -140,7 +204,7 @@ class AclRoleNodeIdentity(dict):
     @pulumi.getter
     def datacenter(self) -> str:
         """
-        The datacenter of the node.
+        Specifies the node's datacenter.
         """
         return pulumi.get(self, "datacenter")
 
@@ -177,7 +241,7 @@ class AclRoleServiceIdentity(dict):
                  datacenters: Optional[Sequence[str]] = None):
         """
         :param str service_name: The name of the service.
-        :param Sequence[str] datacenters: The datacenters the effective policy is valid within.
+        :param Sequence[str] datacenters: The datacenters the effective policy is valid within. When no datacenters are provided the effective policy is valid in all datacenters including those which do not yet exist but may in the future.
         """
         pulumi.set(__self__, "service_name", service_name)
         if datacenters is not None:
@@ -195,9 +259,89 @@ class AclRoleServiceIdentity(dict):
     @pulumi.getter
     def datacenters(self) -> Optional[Sequence[str]]:
         """
-        The datacenters the effective policy is valid within.
+        The datacenters the effective policy is valid within. When no datacenters are provided the effective policy is valid in all datacenters including those which do not yet exist but may in the future.
         """
         return pulumi.get(self, "datacenters")
+
+
+@pulumi.output_type
+class AclRoleTemplatedPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "templateName":
+            suggest = "template_name"
+        elif key == "templateVariables":
+            suggest = "template_variables"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AclRoleTemplatedPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AclRoleTemplatedPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AclRoleTemplatedPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 template_name: str,
+                 datacenters: Optional[Sequence[str]] = None,
+                 template_variables: Optional['outputs.AclRoleTemplatedPolicyTemplateVariables'] = None):
+        """
+        :param str template_name: The name of the templated policies.
+        :param Sequence[str] datacenters: Specifies the datacenters the effective policy is valid within.
+        :param 'AclRoleTemplatedPolicyTemplateVariablesArgs' template_variables: The templated policy variables.
+        """
+        pulumi.set(__self__, "template_name", template_name)
+        if datacenters is not None:
+            pulumi.set(__self__, "datacenters", datacenters)
+        if template_variables is not None:
+            pulumi.set(__self__, "template_variables", template_variables)
+
+    @property
+    @pulumi.getter(name="templateName")
+    def template_name(self) -> str:
+        """
+        The name of the templated policies.
+        """
+        return pulumi.get(self, "template_name")
+
+    @property
+    @pulumi.getter
+    def datacenters(self) -> Optional[Sequence[str]]:
+        """
+        Specifies the datacenters the effective policy is valid within.
+        """
+        return pulumi.get(self, "datacenters")
+
+    @property
+    @pulumi.getter(name="templateVariables")
+    def template_variables(self) -> Optional['outputs.AclRoleTemplatedPolicyTemplateVariables']:
+        """
+        The templated policy variables.
+        """
+        return pulumi.get(self, "template_variables")
+
+
+@pulumi.output_type
+class AclRoleTemplatedPolicyTemplateVariables(dict):
+    def __init__(__self__, *,
+                 name: Optional[str] = None):
+        """
+        :param str name: The name of node, workload identity or service.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The name of node, workload identity or service.
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
@@ -270,7 +414,7 @@ class AclTokenServiceIdentity(dict):
                  datacenters: Optional[Sequence[str]] = None):
         """
         :param str service_name: The name of the service.
-        :param Sequence[str] datacenters: The list of datacenters the policy is valid within.
+        :param Sequence[str] datacenters: Specifies the datacenters the effective policy is valid within.
         """
         pulumi.set(__self__, "service_name", service_name)
         if datacenters is not None:
@@ -288,9 +432,89 @@ class AclTokenServiceIdentity(dict):
     @pulumi.getter
     def datacenters(self) -> Optional[Sequence[str]]:
         """
-        The list of datacenters the policy is valid within.
+        Specifies the datacenters the effective policy is valid within.
         """
         return pulumi.get(self, "datacenters")
+
+
+@pulumi.output_type
+class AclTokenTemplatedPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "templateName":
+            suggest = "template_name"
+        elif key == "templateVariables":
+            suggest = "template_variables"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AclTokenTemplatedPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AclTokenTemplatedPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AclTokenTemplatedPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 template_name: str,
+                 datacenters: Optional[Sequence[str]] = None,
+                 template_variables: Optional['outputs.AclTokenTemplatedPolicyTemplateVariables'] = None):
+        """
+        :param str template_name: The name of the templated policies.
+        :param Sequence[str] datacenters: Specifies the datacenters the effective policy is valid within.
+        :param 'AclTokenTemplatedPolicyTemplateVariablesArgs' template_variables: The templated policy variables.
+        """
+        pulumi.set(__self__, "template_name", template_name)
+        if datacenters is not None:
+            pulumi.set(__self__, "datacenters", datacenters)
+        if template_variables is not None:
+            pulumi.set(__self__, "template_variables", template_variables)
+
+    @property
+    @pulumi.getter(name="templateName")
+    def template_name(self) -> str:
+        """
+        The name of the templated policies.
+        """
+        return pulumi.get(self, "template_name")
+
+    @property
+    @pulumi.getter
+    def datacenters(self) -> Optional[Sequence[str]]:
+        """
+        Specifies the datacenters the effective policy is valid within.
+        """
+        return pulumi.get(self, "datacenters")
+
+    @property
+    @pulumi.getter(name="templateVariables")
+    def template_variables(self) -> Optional['outputs.AclTokenTemplatedPolicyTemplateVariables']:
+        """
+        The templated policy variables.
+        """
+        return pulumi.get(self, "template_variables")
+
+
+@pulumi.output_type
+class AclTokenTemplatedPolicyTemplateVariables(dict):
+    def __init__(__self__, *,
+                 name: Optional[str] = None):
+        """
+        :param str name: The name of node, workload identity or service.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The name of node, workload identity or service.
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
@@ -361,6 +585,2711 @@ class CatalogEntryService(dict):
         but can be used to distinguish between services or nodes.
         """
         return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
+class ConfigEntryServiceDefaultsDestination(dict):
+    def __init__(__self__, *,
+                 addresses: Sequence[str],
+                 port: int):
+        pulumi.set(__self__, "addresses", addresses)
+        pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter
+    def addresses(self) -> Sequence[str]:
+        return pulumi.get(self, "addresses")
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        return pulumi.get(self, "port")
+
+
+@pulumi.output_type
+class ConfigEntryServiceDefaultsEnvoyExtension(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "consulVersion":
+            suggest = "consul_version"
+        elif key == "envoyVersion":
+            suggest = "envoy_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConfigEntryServiceDefaultsEnvoyExtension. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConfigEntryServiceDefaultsEnvoyExtension.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConfigEntryServiceDefaultsEnvoyExtension.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 arguments: Optional[Mapping[str, str]] = None,
+                 consul_version: Optional[str] = None,
+                 envoy_version: Optional[str] = None,
+                 name: Optional[str] = None,
+                 required: Optional[bool] = None):
+        if arguments is not None:
+            pulumi.set(__self__, "arguments", arguments)
+        if consul_version is not None:
+            pulumi.set(__self__, "consul_version", consul_version)
+        if envoy_version is not None:
+            pulumi.set(__self__, "envoy_version", envoy_version)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if required is not None:
+            pulumi.set(__self__, "required", required)
+
+    @property
+    @pulumi.getter
+    def arguments(self) -> Optional[Mapping[str, str]]:
+        return pulumi.get(self, "arguments")
+
+    @property
+    @pulumi.getter(name="consulVersion")
+    def consul_version(self) -> Optional[str]:
+        return pulumi.get(self, "consul_version")
+
+    @property
+    @pulumi.getter(name="envoyVersion")
+    def envoy_version(self) -> Optional[str]:
+        return pulumi.get(self, "envoy_version")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def required(self) -> Optional[bool]:
+        return pulumi.get(self, "required")
+
+
+@pulumi.output_type
+class ConfigEntryServiceDefaultsExpose(dict):
+    def __init__(__self__, *,
+                 checks: Optional[bool] = None,
+                 paths: Optional[Sequence['outputs.ConfigEntryServiceDefaultsExposePath']] = None):
+        if checks is not None:
+            pulumi.set(__self__, "checks", checks)
+        if paths is not None:
+            pulumi.set(__self__, "paths", paths)
+
+    @property
+    @pulumi.getter
+    def checks(self) -> Optional[bool]:
+        return pulumi.get(self, "checks")
+
+    @property
+    @pulumi.getter
+    def paths(self) -> Optional[Sequence['outputs.ConfigEntryServiceDefaultsExposePath']]:
+        return pulumi.get(self, "paths")
+
+
+@pulumi.output_type
+class ConfigEntryServiceDefaultsExposePath(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "listenerPort":
+            suggest = "listener_port"
+        elif key == "localPathPort":
+            suggest = "local_path_port"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConfigEntryServiceDefaultsExposePath. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConfigEntryServiceDefaultsExposePath.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConfigEntryServiceDefaultsExposePath.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 listener_port: Optional[int] = None,
+                 local_path_port: Optional[int] = None,
+                 path: Optional[str] = None,
+                 protocol: Optional[str] = None):
+        if listener_port is not None:
+            pulumi.set(__self__, "listener_port", listener_port)
+        if local_path_port is not None:
+            pulumi.set(__self__, "local_path_port", local_path_port)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+
+    @property
+    @pulumi.getter(name="listenerPort")
+    def listener_port(self) -> Optional[int]:
+        return pulumi.get(self, "listener_port")
+
+    @property
+    @pulumi.getter(name="localPathPort")
+    def local_path_port(self) -> Optional[int]:
+        return pulumi.get(self, "local_path_port")
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[str]:
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> Optional[str]:
+        return pulumi.get(self, "protocol")
+
+
+@pulumi.output_type
+class ConfigEntryServiceDefaultsMeshGateway(dict):
+    def __init__(__self__, *,
+                 mode: str):
+        pulumi.set(__self__, "mode", mode)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> str:
+        return pulumi.get(self, "mode")
+
+
+@pulumi.output_type
+class ConfigEntryServiceDefaultsTransparentProxy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dialedDirectly":
+            suggest = "dialed_directly"
+        elif key == "outboundListenerPort":
+            suggest = "outbound_listener_port"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConfigEntryServiceDefaultsTransparentProxy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConfigEntryServiceDefaultsTransparentProxy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConfigEntryServiceDefaultsTransparentProxy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dialed_directly: bool,
+                 outbound_listener_port: int):
+        pulumi.set(__self__, "dialed_directly", dialed_directly)
+        pulumi.set(__self__, "outbound_listener_port", outbound_listener_port)
+
+    @property
+    @pulumi.getter(name="dialedDirectly")
+    def dialed_directly(self) -> bool:
+        return pulumi.get(self, "dialed_directly")
+
+    @property
+    @pulumi.getter(name="outboundListenerPort")
+    def outbound_listener_port(self) -> int:
+        return pulumi.get(self, "outbound_listener_port")
+
+
+@pulumi.output_type
+class ConfigEntryServiceDefaultsUpstreamConfig(dict):
+    def __init__(__self__, *,
+                 defaults: Optional[Sequence['outputs.ConfigEntryServiceDefaultsUpstreamConfigDefault']] = None,
+                 overrides: Optional[Sequence['outputs.ConfigEntryServiceDefaultsUpstreamConfigOverride']] = None):
+        """
+        :param Sequence['ConfigEntryServiceDefaultsUpstreamConfigDefaultArgs'] defaults: Specifies configurations that set default upstream settings. For information about overriding the default configurations for in for individual upstreams, refer to UpstreamConfig.Overrides.
+        :param Sequence['ConfigEntryServiceDefaultsUpstreamConfigOverrideArgs'] overrides: Specifies options that override the default upstream configurations for individual upstreams.
+        """
+        if defaults is not None:
+            pulumi.set(__self__, "defaults", defaults)
+        if overrides is not None:
+            pulumi.set(__self__, "overrides", overrides)
+
+    @property
+    @pulumi.getter
+    def defaults(self) -> Optional[Sequence['outputs.ConfigEntryServiceDefaultsUpstreamConfigDefault']]:
+        """
+        Specifies configurations that set default upstream settings. For information about overriding the default configurations for in for individual upstreams, refer to UpstreamConfig.Overrides.
+        """
+        return pulumi.get(self, "defaults")
+
+    @property
+    @pulumi.getter
+    def overrides(self) -> Optional[Sequence['outputs.ConfigEntryServiceDefaultsUpstreamConfigOverride']]:
+        """
+        Specifies options that override the default upstream configurations for individual upstreams.
+        """
+        return pulumi.get(self, "overrides")
+
+
+@pulumi.output_type
+class ConfigEntryServiceDefaultsUpstreamConfigDefault(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "balanceOutboundConnections":
+            suggest = "balance_outbound_connections"
+        elif key == "connectTimeoutMs":
+            suggest = "connect_timeout_ms"
+        elif key == "meshGateways":
+            suggest = "mesh_gateways"
+        elif key == "passiveHealthChecks":
+            suggest = "passive_health_checks"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConfigEntryServiceDefaultsUpstreamConfigDefault. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConfigEntryServiceDefaultsUpstreamConfigDefault.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConfigEntryServiceDefaultsUpstreamConfigDefault.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 balance_outbound_connections: Optional[str] = None,
+                 connect_timeout_ms: Optional[int] = None,
+                 limits: Optional[Sequence['outputs.ConfigEntryServiceDefaultsUpstreamConfigDefaultLimit']] = None,
+                 mesh_gateways: Optional[Sequence['outputs.ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGateway']] = None,
+                 passive_health_checks: Optional[Sequence['outputs.ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheck']] = None,
+                 protocol: Optional[str] = None):
+        """
+        :param str balance_outbound_connections: Sets the strategy for allocating outbound connections from upstreams across Envoy proxy threads.
+        :param Sequence['ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitArgs'] limits: Map that specifies a set of limits to apply to when connecting upstream services.
+        :param Sequence['ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayArgs'] mesh_gateways: Specifies the default mesh gateway mode field for all upstreams.
+        :param Sequence['ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckArgs'] passive_health_checks: Map that specifies a set of rules that enable Consul to remove hosts from the upstream cluster that are unreachable or that return errors.
+        """
+        if balance_outbound_connections is not None:
+            pulumi.set(__self__, "balance_outbound_connections", balance_outbound_connections)
+        if connect_timeout_ms is not None:
+            pulumi.set(__self__, "connect_timeout_ms", connect_timeout_ms)
+        if limits is not None:
+            pulumi.set(__self__, "limits", limits)
+        if mesh_gateways is not None:
+            pulumi.set(__self__, "mesh_gateways", mesh_gateways)
+        if passive_health_checks is not None:
+            pulumi.set(__self__, "passive_health_checks", passive_health_checks)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+
+    @property
+    @pulumi.getter(name="balanceOutboundConnections")
+    def balance_outbound_connections(self) -> Optional[str]:
+        """
+        Sets the strategy for allocating outbound connections from upstreams across Envoy proxy threads.
+        """
+        return pulumi.get(self, "balance_outbound_connections")
+
+    @property
+    @pulumi.getter(name="connectTimeoutMs")
+    def connect_timeout_ms(self) -> Optional[int]:
+        return pulumi.get(self, "connect_timeout_ms")
+
+    @property
+    @pulumi.getter
+    def limits(self) -> Optional[Sequence['outputs.ConfigEntryServiceDefaultsUpstreamConfigDefaultLimit']]:
+        """
+        Map that specifies a set of limits to apply to when connecting upstream services.
+        """
+        return pulumi.get(self, "limits")
+
+    @property
+    @pulumi.getter(name="meshGateways")
+    def mesh_gateways(self) -> Optional[Sequence['outputs.ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGateway']]:
+        """
+        Specifies the default mesh gateway mode field for all upstreams.
+        """
+        return pulumi.get(self, "mesh_gateways")
+
+    @property
+    @pulumi.getter(name="passiveHealthChecks")
+    def passive_health_checks(self) -> Optional[Sequence['outputs.ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheck']]:
+        """
+        Map that specifies a set of rules that enable Consul to remove hosts from the upstream cluster that are unreachable or that return errors.
+        """
+        return pulumi.get(self, "passive_health_checks")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> Optional[str]:
+        return pulumi.get(self, "protocol")
+
+
+@pulumi.output_type
+class ConfigEntryServiceDefaultsUpstreamConfigDefaultLimit(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxConcurrentRequests":
+            suggest = "max_concurrent_requests"
+        elif key == "maxConnections":
+            suggest = "max_connections"
+        elif key == "maxPendingRequests":
+            suggest = "max_pending_requests"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConfigEntryServiceDefaultsUpstreamConfigDefaultLimit. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConfigEntryServiceDefaultsUpstreamConfigDefaultLimit.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConfigEntryServiceDefaultsUpstreamConfigDefaultLimit.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 max_concurrent_requests: Optional[int] = None,
+                 max_connections: Optional[int] = None,
+                 max_pending_requests: Optional[int] = None):
+        """
+        :param int max_concurrent_requests: Specifies the maximum number of concurrent requests.
+        :param int max_connections: Specifies the maximum number of connections a service instance can establish against the upstream.
+        :param int max_pending_requests: Specifies the maximum number of requests that are queued while waiting for a connection to establish.
+        """
+        if max_concurrent_requests is not None:
+            pulumi.set(__self__, "max_concurrent_requests", max_concurrent_requests)
+        if max_connections is not None:
+            pulumi.set(__self__, "max_connections", max_connections)
+        if max_pending_requests is not None:
+            pulumi.set(__self__, "max_pending_requests", max_pending_requests)
+
+    @property
+    @pulumi.getter(name="maxConcurrentRequests")
+    def max_concurrent_requests(self) -> Optional[int]:
+        """
+        Specifies the maximum number of concurrent requests.
+        """
+        return pulumi.get(self, "max_concurrent_requests")
+
+    @property
+    @pulumi.getter(name="maxConnections")
+    def max_connections(self) -> Optional[int]:
+        """
+        Specifies the maximum number of connections a service instance can establish against the upstream.
+        """
+        return pulumi.get(self, "max_connections")
+
+    @property
+    @pulumi.getter(name="maxPendingRequests")
+    def max_pending_requests(self) -> Optional[int]:
+        """
+        Specifies the maximum number of requests that are queued while waiting for a connection to establish.
+        """
+        return pulumi.get(self, "max_pending_requests")
+
+
+@pulumi.output_type
+class ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGateway(dict):
+    def __init__(__self__, *,
+                 mode: Optional[str] = None):
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[str]:
+        return pulumi.get(self, "mode")
+
+
+@pulumi.output_type
+class ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheck(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "baseEjectionTime":
+            suggest = "base_ejection_time"
+        elif key == "enforcingConsecutive5xx":
+            suggest = "enforcing_consecutive5xx"
+        elif key == "maxEjectionPercent":
+            suggest = "max_ejection_percent"
+        elif key == "maxFailures":
+            suggest = "max_failures"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheck. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheck.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheck.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 base_ejection_time: Optional[str] = None,
+                 enforcing_consecutive5xx: Optional[int] = None,
+                 interval: Optional[str] = None,
+                 max_ejection_percent: Optional[int] = None,
+                 max_failures: Optional[int] = None):
+        """
+        :param str base_ejection_time: Specifies the minimum amount of time that an ejected host must remain outside the cluster before rejoining.
+        :param int enforcing_consecutive5xx: Specifies a percentage that indicates how many times out of 100 that Consul ejects the host when it detects an outlier status.
+        :param str interval: Specifies the time between checks.
+        :param int max_ejection_percent: Specifies the maximum percentage of an upstream cluster that Consul ejects when the proxy reports an outlier.
+        :param int max_failures: Specifies the number of consecutive failures allowed per check interval. If exceeded, Consul removes the host from the load balancer.
+        """
+        if base_ejection_time is not None:
+            pulumi.set(__self__, "base_ejection_time", base_ejection_time)
+        if enforcing_consecutive5xx is not None:
+            pulumi.set(__self__, "enforcing_consecutive5xx", enforcing_consecutive5xx)
+        if interval is not None:
+            pulumi.set(__self__, "interval", interval)
+        if max_ejection_percent is not None:
+            pulumi.set(__self__, "max_ejection_percent", max_ejection_percent)
+        if max_failures is not None:
+            pulumi.set(__self__, "max_failures", max_failures)
+
+    @property
+    @pulumi.getter(name="baseEjectionTime")
+    def base_ejection_time(self) -> Optional[str]:
+        """
+        Specifies the minimum amount of time that an ejected host must remain outside the cluster before rejoining.
+        """
+        return pulumi.get(self, "base_ejection_time")
+
+    @property
+    @pulumi.getter(name="enforcingConsecutive5xx")
+    def enforcing_consecutive5xx(self) -> Optional[int]:
+        """
+        Specifies a percentage that indicates how many times out of 100 that Consul ejects the host when it detects an outlier status.
+        """
+        return pulumi.get(self, "enforcing_consecutive5xx")
+
+    @property
+    @pulumi.getter
+    def interval(self) -> Optional[str]:
+        """
+        Specifies the time between checks.
+        """
+        return pulumi.get(self, "interval")
+
+    @property
+    @pulumi.getter(name="maxEjectionPercent")
+    def max_ejection_percent(self) -> Optional[int]:
+        """
+        Specifies the maximum percentage of an upstream cluster that Consul ejects when the proxy reports an outlier.
+        """
+        return pulumi.get(self, "max_ejection_percent")
+
+    @property
+    @pulumi.getter(name="maxFailures")
+    def max_failures(self) -> Optional[int]:
+        """
+        Specifies the number of consecutive failures allowed per check interval. If exceeded, Consul removes the host from the load balancer.
+        """
+        return pulumi.get(self, "max_failures")
+
+
+@pulumi.output_type
+class ConfigEntryServiceDefaultsUpstreamConfigOverride(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "balanceOutboundConnections":
+            suggest = "balance_outbound_connections"
+        elif key == "connectTimeoutMs":
+            suggest = "connect_timeout_ms"
+        elif key == "envoyListenerJson":
+            suggest = "envoy_listener_json"
+        elif key == "meshGateways":
+            suggest = "mesh_gateways"
+        elif key == "passiveHealthChecks":
+            suggest = "passive_health_checks"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConfigEntryServiceDefaultsUpstreamConfigOverride. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConfigEntryServiceDefaultsUpstreamConfigOverride.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConfigEntryServiceDefaultsUpstreamConfigOverride.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 balance_outbound_connections: Optional[str] = None,
+                 connect_timeout_ms: Optional[int] = None,
+                 envoy_listener_json: Optional[str] = None,
+                 limits: Optional[Sequence['outputs.ConfigEntryServiceDefaultsUpstreamConfigOverrideLimit']] = None,
+                 mesh_gateways: Optional[Sequence['outputs.ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGateway']] = None,
+                 name: Optional[str] = None,
+                 namespace: Optional[str] = None,
+                 partition: Optional[str] = None,
+                 passive_health_checks: Optional[Sequence['outputs.ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheck']] = None,
+                 peer: Optional[str] = None,
+                 protocol: Optional[str] = None):
+        """
+        :param str balance_outbound_connections: Sets the strategy for allocating outbound connections from upstreams across Envoy proxy threads.
+        :param Sequence['ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitArgs'] limits: Map that specifies a set of limits to apply to when connecting upstream services.
+        :param Sequence['ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArgs'] mesh_gateways: Specifies the default mesh gateway mode field for all upstreams.
+        :param str namespace: Specifies the namespace containing the upstream service that the configuration applies to.
+        :param str partition: Specifies the name of the name of the Consul admin partition that the configuration entry applies to.
+        :param Sequence['ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckArgs'] passive_health_checks: Map that specifies a set of rules that enable Consul to remove hosts from the upstream cluster that are unreachable or that return errors.
+        :param str peer: Specifies the peer name of the upstream service that the configuration applies to.
+        """
+        if balance_outbound_connections is not None:
+            pulumi.set(__self__, "balance_outbound_connections", balance_outbound_connections)
+        if connect_timeout_ms is not None:
+            pulumi.set(__self__, "connect_timeout_ms", connect_timeout_ms)
+        if envoy_listener_json is not None:
+            pulumi.set(__self__, "envoy_listener_json", envoy_listener_json)
+        if limits is not None:
+            pulumi.set(__self__, "limits", limits)
+        if mesh_gateways is not None:
+            pulumi.set(__self__, "mesh_gateways", mesh_gateways)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+        if partition is not None:
+            pulumi.set(__self__, "partition", partition)
+        if passive_health_checks is not None:
+            pulumi.set(__self__, "passive_health_checks", passive_health_checks)
+        if peer is not None:
+            pulumi.set(__self__, "peer", peer)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+
+    @property
+    @pulumi.getter(name="balanceOutboundConnections")
+    def balance_outbound_connections(self) -> Optional[str]:
+        """
+        Sets the strategy for allocating outbound connections from upstreams across Envoy proxy threads.
+        """
+        return pulumi.get(self, "balance_outbound_connections")
+
+    @property
+    @pulumi.getter(name="connectTimeoutMs")
+    def connect_timeout_ms(self) -> Optional[int]:
+        return pulumi.get(self, "connect_timeout_ms")
+
+    @property
+    @pulumi.getter(name="envoyListenerJson")
+    def envoy_listener_json(self) -> Optional[str]:
+        return pulumi.get(self, "envoy_listener_json")
+
+    @property
+    @pulumi.getter
+    def limits(self) -> Optional[Sequence['outputs.ConfigEntryServiceDefaultsUpstreamConfigOverrideLimit']]:
+        """
+        Map that specifies a set of limits to apply to when connecting upstream services.
+        """
+        return pulumi.get(self, "limits")
+
+    @property
+    @pulumi.getter(name="meshGateways")
+    def mesh_gateways(self) -> Optional[Sequence['outputs.ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGateway']]:
+        """
+        Specifies the default mesh gateway mode field for all upstreams.
+        """
+        return pulumi.get(self, "mesh_gateways")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[str]:
+        """
+        Specifies the namespace containing the upstream service that the configuration applies to.
+        """
+        return pulumi.get(self, "namespace")
+
+    @property
+    @pulumi.getter
+    def partition(self) -> Optional[str]:
+        """
+        Specifies the name of the name of the Consul admin partition that the configuration entry applies to.
+        """
+        return pulumi.get(self, "partition")
+
+    @property
+    @pulumi.getter(name="passiveHealthChecks")
+    def passive_health_checks(self) -> Optional[Sequence['outputs.ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheck']]:
+        """
+        Map that specifies a set of rules that enable Consul to remove hosts from the upstream cluster that are unreachable or that return errors.
+        """
+        return pulumi.get(self, "passive_health_checks")
+
+    @property
+    @pulumi.getter
+    def peer(self) -> Optional[str]:
+        """
+        Specifies the peer name of the upstream service that the configuration applies to.
+        """
+        return pulumi.get(self, "peer")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> Optional[str]:
+        return pulumi.get(self, "protocol")
+
+
+@pulumi.output_type
+class ConfigEntryServiceDefaultsUpstreamConfigOverrideLimit(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxConcurrentRequests":
+            suggest = "max_concurrent_requests"
+        elif key == "maxConnections":
+            suggest = "max_connections"
+        elif key == "maxPendingRequests":
+            suggest = "max_pending_requests"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConfigEntryServiceDefaultsUpstreamConfigOverrideLimit. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConfigEntryServiceDefaultsUpstreamConfigOverrideLimit.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConfigEntryServiceDefaultsUpstreamConfigOverrideLimit.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 max_concurrent_requests: Optional[int] = None,
+                 max_connections: Optional[int] = None,
+                 max_pending_requests: Optional[int] = None):
+        """
+        :param int max_concurrent_requests: Specifies the maximum number of concurrent requests.
+        :param int max_connections: Specifies the maximum number of connections a service instance can establish against the upstream.
+        :param int max_pending_requests: Specifies the maximum number of requests that are queued while waiting for a connection to establish.
+        """
+        if max_concurrent_requests is not None:
+            pulumi.set(__self__, "max_concurrent_requests", max_concurrent_requests)
+        if max_connections is not None:
+            pulumi.set(__self__, "max_connections", max_connections)
+        if max_pending_requests is not None:
+            pulumi.set(__self__, "max_pending_requests", max_pending_requests)
+
+    @property
+    @pulumi.getter(name="maxConcurrentRequests")
+    def max_concurrent_requests(self) -> Optional[int]:
+        """
+        Specifies the maximum number of concurrent requests.
+        """
+        return pulumi.get(self, "max_concurrent_requests")
+
+    @property
+    @pulumi.getter(name="maxConnections")
+    def max_connections(self) -> Optional[int]:
+        """
+        Specifies the maximum number of connections a service instance can establish against the upstream.
+        """
+        return pulumi.get(self, "max_connections")
+
+    @property
+    @pulumi.getter(name="maxPendingRequests")
+    def max_pending_requests(self) -> Optional[int]:
+        """
+        Specifies the maximum number of requests that are queued while waiting for a connection to establish.
+        """
+        return pulumi.get(self, "max_pending_requests")
+
+
+@pulumi.output_type
+class ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGateway(dict):
+    def __init__(__self__, *,
+                 mode: Optional[str] = None):
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[str]:
+        return pulumi.get(self, "mode")
+
+
+@pulumi.output_type
+class ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheck(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "baseEjectionTime":
+            suggest = "base_ejection_time"
+        elif key == "enforcingConsecutive5xx":
+            suggest = "enforcing_consecutive5xx"
+        elif key == "maxEjectionPercent":
+            suggest = "max_ejection_percent"
+        elif key == "maxFailures":
+            suggest = "max_failures"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheck. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheck.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheck.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 base_ejection_time: Optional[str] = None,
+                 enforcing_consecutive5xx: Optional[int] = None,
+                 interval: Optional[str] = None,
+                 max_ejection_percent: Optional[int] = None,
+                 max_failures: Optional[int] = None):
+        """
+        :param str base_ejection_time: Specifies the minimum amount of time that an ejected host must remain outside the cluster before rejoining.
+        :param int enforcing_consecutive5xx: Specifies a percentage that indicates how many times out of 100 that Consul ejects the host when it detects an outlier status.
+        :param str interval: Specifies the time between checks.
+        :param int max_ejection_percent: Specifies the maximum percentage of an upstream cluster that Consul ejects when the proxy reports an outlier.
+        :param int max_failures: Specifies the number of consecutive failures allowed per check interval. If exceeded, Consul removes the host from the load balancer.
+        """
+        if base_ejection_time is not None:
+            pulumi.set(__self__, "base_ejection_time", base_ejection_time)
+        if enforcing_consecutive5xx is not None:
+            pulumi.set(__self__, "enforcing_consecutive5xx", enforcing_consecutive5xx)
+        if interval is not None:
+            pulumi.set(__self__, "interval", interval)
+        if max_ejection_percent is not None:
+            pulumi.set(__self__, "max_ejection_percent", max_ejection_percent)
+        if max_failures is not None:
+            pulumi.set(__self__, "max_failures", max_failures)
+
+    @property
+    @pulumi.getter(name="baseEjectionTime")
+    def base_ejection_time(self) -> Optional[str]:
+        """
+        Specifies the minimum amount of time that an ejected host must remain outside the cluster before rejoining.
+        """
+        return pulumi.get(self, "base_ejection_time")
+
+    @property
+    @pulumi.getter(name="enforcingConsecutive5xx")
+    def enforcing_consecutive5xx(self) -> Optional[int]:
+        """
+        Specifies a percentage that indicates how many times out of 100 that Consul ejects the host when it detects an outlier status.
+        """
+        return pulumi.get(self, "enforcing_consecutive5xx")
+
+    @property
+    @pulumi.getter
+    def interval(self) -> Optional[str]:
+        """
+        Specifies the time between checks.
+        """
+        return pulumi.get(self, "interval")
+
+    @property
+    @pulumi.getter(name="maxEjectionPercent")
+    def max_ejection_percent(self) -> Optional[int]:
+        """
+        Specifies the maximum percentage of an upstream cluster that Consul ejects when the proxy reports an outlier.
+        """
+        return pulumi.get(self, "max_ejection_percent")
+
+    @property
+    @pulumi.getter(name="maxFailures")
+    def max_failures(self) -> Optional[int]:
+        """
+        Specifies the number of consecutive failures allowed per check interval. If exceeded, Consul removes the host from the load balancer.
+        """
+        return pulumi.get(self, "max_failures")
+
+
+@pulumi.output_type
+class ConfigEntryServiceIntentionsJwt(dict):
+    def __init__(__self__, *,
+                 providers: Optional[Sequence['outputs.ConfigEntryServiceIntentionsJwtProvider']] = None):
+        """
+        :param Sequence['ConfigEntryServiceIntentionsJwtProviderArgs'] providers: Specifies the names of one or more previously configured JWT provider configuration entries, which include the information necessary to validate a JSON web token.
+        """
+        if providers is not None:
+            pulumi.set(__self__, "providers", providers)
+
+    @property
+    @pulumi.getter
+    def providers(self) -> Optional[Sequence['outputs.ConfigEntryServiceIntentionsJwtProvider']]:
+        """
+        Specifies the names of one or more previously configured JWT provider configuration entries, which include the information necessary to validate a JSON web token.
+        """
+        return pulumi.get(self, "providers")
+
+
+@pulumi.output_type
+class ConfigEntryServiceIntentionsJwtProvider(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "verifyClaims":
+            suggest = "verify_claims"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConfigEntryServiceIntentionsJwtProvider. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConfigEntryServiceIntentionsJwtProvider.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConfigEntryServiceIntentionsJwtProvider.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: Optional[str] = None,
+                 verify_claims: Optional[Sequence['outputs.ConfigEntryServiceIntentionsJwtProviderVerifyClaim']] = None):
+        """
+        :param str name: Specifies the name of a JWT provider defined in the Name field of the jwt-provider configuration entry.
+        :param Sequence['ConfigEntryServiceIntentionsJwtProviderVerifyClaimArgs'] verify_claims: Specifies additional token information to verify beyond what is configured in the JWT provider configuration entry.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if verify_claims is not None:
+            pulumi.set(__self__, "verify_claims", verify_claims)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Specifies the name of a JWT provider defined in the Name field of the jwt-provider configuration entry.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="verifyClaims")
+    def verify_claims(self) -> Optional[Sequence['outputs.ConfigEntryServiceIntentionsJwtProviderVerifyClaim']]:
+        """
+        Specifies additional token information to verify beyond what is configured in the JWT provider configuration entry.
+        """
+        return pulumi.get(self, "verify_claims")
+
+
+@pulumi.output_type
+class ConfigEntryServiceIntentionsJwtProviderVerifyClaim(dict):
+    def __init__(__self__, *,
+                 paths: Optional[Sequence[str]] = None,
+                 value: Optional[str] = None):
+        """
+        :param Sequence[str] paths: Specifies the path to the claim in the JSON web token.
+        :param str value: Specifies the value to match on when verifying the the claim designated in path.
+        """
+        if paths is not None:
+            pulumi.set(__self__, "paths", paths)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def paths(self) -> Optional[Sequence[str]]:
+        """
+        Specifies the path to the claim in the JSON web token.
+        """
+        return pulumi.get(self, "paths")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        Specifies the value to match on when verifying the the claim designated in path.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class ConfigEntryServiceIntentionsSource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "samenessGroup":
+            suggest = "sameness_group"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConfigEntryServiceIntentionsSource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConfigEntryServiceIntentionsSource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConfigEntryServiceIntentionsSource.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 action: Optional[str] = None,
+                 description: Optional[str] = None,
+                 name: Optional[str] = None,
+                 namespace: Optional[str] = None,
+                 partition: Optional[str] = None,
+                 peer: Optional[str] = None,
+                 permissions: Optional[Sequence['outputs.ConfigEntryServiceIntentionsSourcePermission']] = None,
+                 precedence: Optional[int] = None,
+                 sameness_group: Optional[str] = None,
+                 type: Optional[str] = None):
+        """
+        :param str action: Specifies the action to take when the source sends traffic to the destination service.
+        :param str description: Specifies a description of the intention.
+        :param str name: Specifies the name of the source that the intention allows or denies traffic from.
+        :param str namespace: Specifies the traffic source namespace that the intention allows or denies traffic from.
+        :param str partition: Specifies the name of an admin partition that the intention allows or denies traffic from.
+        :param str peer: Specifies the name of a peered Consul cluster that the intention allows or denies traffic from
+        :param Sequence['ConfigEntryServiceIntentionsSourcePermissionArgs'] permissions: Specifies a list of permissions for L7 traffic sources. The list contains one or more actions and a set of match criteria for each action.
+        :param int precedence: The Precedence field contains a read-only integer. Consul generates the value based on name configurations for the source and destination services.
+        :param str sameness_group: Specifies the name of a sameness group that the intention allows or denies traffic from.
+        :param str type: Specifies the type of destination service that the configuration entry applies to.
+        """
+        if action is not None:
+            pulumi.set(__self__, "action", action)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+        if partition is not None:
+            pulumi.set(__self__, "partition", partition)
+        if peer is not None:
+            pulumi.set(__self__, "peer", peer)
+        if permissions is not None:
+            pulumi.set(__self__, "permissions", permissions)
+        if precedence is not None:
+            pulumi.set(__self__, "precedence", precedence)
+        if sameness_group is not None:
+            pulumi.set(__self__, "sameness_group", sameness_group)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def action(self) -> Optional[str]:
+        """
+        Specifies the action to take when the source sends traffic to the destination service.
+        """
+        return pulumi.get(self, "action")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        Specifies a description of the intention.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Specifies the name of the source that the intention allows or denies traffic from.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[str]:
+        """
+        Specifies the traffic source namespace that the intention allows or denies traffic from.
+        """
+        return pulumi.get(self, "namespace")
+
+    @property
+    @pulumi.getter
+    def partition(self) -> Optional[str]:
+        """
+        Specifies the name of an admin partition that the intention allows or denies traffic from.
+        """
+        return pulumi.get(self, "partition")
+
+    @property
+    @pulumi.getter
+    def peer(self) -> Optional[str]:
+        """
+        Specifies the name of a peered Consul cluster that the intention allows or denies traffic from
+        """
+        return pulumi.get(self, "peer")
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> Optional[Sequence['outputs.ConfigEntryServiceIntentionsSourcePermission']]:
+        """
+        Specifies a list of permissions for L7 traffic sources. The list contains one or more actions and a set of match criteria for each action.
+        """
+        return pulumi.get(self, "permissions")
+
+    @property
+    @pulumi.getter
+    def precedence(self) -> Optional[int]:
+        """
+        The Precedence field contains a read-only integer. Consul generates the value based on name configurations for the source and destination services.
+        """
+        return pulumi.get(self, "precedence")
+
+    @property
+    @pulumi.getter(name="samenessGroup")
+    def sameness_group(self) -> Optional[str]:
+        """
+        Specifies the name of a sameness group that the intention allows or denies traffic from.
+        """
+        return pulumi.get(self, "sameness_group")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        Specifies the type of destination service that the configuration entry applies to.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class ConfigEntryServiceIntentionsSourcePermission(dict):
+    def __init__(__self__, *,
+                 action: str,
+                 https: Sequence['outputs.ConfigEntryServiceIntentionsSourcePermissionHttp']):
+        """
+        :param str action: Specifies the action to take when the source sends traffic to the destination service.
+        :param Sequence['ConfigEntryServiceIntentionsSourcePermissionHttpArgs'] https: Specifies a set of HTTP-specific match criteria.
+        """
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "https", https)
+
+    @property
+    @pulumi.getter
+    def action(self) -> str:
+        """
+        Specifies the action to take when the source sends traffic to the destination service.
+        """
+        return pulumi.get(self, "action")
+
+    @property
+    @pulumi.getter
+    def https(self) -> Sequence['outputs.ConfigEntryServiceIntentionsSourcePermissionHttp']:
+        """
+        Specifies a set of HTTP-specific match criteria.
+        """
+        return pulumi.get(self, "https")
+
+
+@pulumi.output_type
+class ConfigEntryServiceIntentionsSourcePermissionHttp(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pathExact":
+            suggest = "path_exact"
+        elif key == "pathPrefix":
+            suggest = "path_prefix"
+        elif key == "pathRegex":
+            suggest = "path_regex"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConfigEntryServiceIntentionsSourcePermissionHttp. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConfigEntryServiceIntentionsSourcePermissionHttp.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConfigEntryServiceIntentionsSourcePermissionHttp.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 headers: Optional[Sequence['outputs.ConfigEntryServiceIntentionsSourcePermissionHttpHeader']] = None,
+                 methods: Optional[Sequence[str]] = None,
+                 path_exact: Optional[str] = None,
+                 path_prefix: Optional[str] = None,
+                 path_regex: Optional[str] = None):
+        """
+        :param Sequence['ConfigEntryServiceIntentionsSourcePermissionHttpHeaderArgs'] headers: Specifies a header name and matching criteria for HTTP request headers.
+        :param Sequence[str] methods: Specifies a list of HTTP methods.
+        :param str path_exact: Specifies an exact path to match on the HTTP request path.
+        :param str path_prefix: Specifies a path prefix to match on the HTTP request path.
+        :param str path_regex: Defines a regular expression to match on the HTTP request path.
+        """
+        if headers is not None:
+            pulumi.set(__self__, "headers", headers)
+        if methods is not None:
+            pulumi.set(__self__, "methods", methods)
+        if path_exact is not None:
+            pulumi.set(__self__, "path_exact", path_exact)
+        if path_prefix is not None:
+            pulumi.set(__self__, "path_prefix", path_prefix)
+        if path_regex is not None:
+            pulumi.set(__self__, "path_regex", path_regex)
+
+    @property
+    @pulumi.getter
+    def headers(self) -> Optional[Sequence['outputs.ConfigEntryServiceIntentionsSourcePermissionHttpHeader']]:
+        """
+        Specifies a header name and matching criteria for HTTP request headers.
+        """
+        return pulumi.get(self, "headers")
+
+    @property
+    @pulumi.getter
+    def methods(self) -> Optional[Sequence[str]]:
+        """
+        Specifies a list of HTTP methods.
+        """
+        return pulumi.get(self, "methods")
+
+    @property
+    @pulumi.getter(name="pathExact")
+    def path_exact(self) -> Optional[str]:
+        """
+        Specifies an exact path to match on the HTTP request path.
+        """
+        return pulumi.get(self, "path_exact")
+
+    @property
+    @pulumi.getter(name="pathPrefix")
+    def path_prefix(self) -> Optional[str]:
+        """
+        Specifies a path prefix to match on the HTTP request path.
+        """
+        return pulumi.get(self, "path_prefix")
+
+    @property
+    @pulumi.getter(name="pathRegex")
+    def path_regex(self) -> Optional[str]:
+        """
+        Defines a regular expression to match on the HTTP request path.
+        """
+        return pulumi.get(self, "path_regex")
+
+
+@pulumi.output_type
+class ConfigEntryServiceIntentionsSourcePermissionHttpHeader(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 exact: Optional[str] = None,
+                 invert: Optional[bool] = None,
+                 prefix: Optional[str] = None,
+                 present: Optional[bool] = None,
+                 regex: Optional[str] = None,
+                 suffix: Optional[str] = None):
+        """
+        :param str name: Specifies the name of a JWT provider defined in the Name field of the jwt-provider configuration entry.
+        :param str exact: Specifies a value for the header key set in the Name field. If the request header value matches the Exact value, Consul applies the permission.
+        :param bool invert: Inverts the matching logic configured in the Header.
+        :param str prefix: Specifies a prefix value for the header key set in the Name field.
+        :param bool present: Enables a match if the header configured in the Name field appears in the request. Consul matches on any value as long as the header key appears in the request.
+        :param str regex: Specifies a regular expression pattern as the value for the header key set in the Name field.
+        :param str suffix: Specifies a suffix value for the header key set in the Name field.
+        """
+        pulumi.set(__self__, "name", name)
+        if exact is not None:
+            pulumi.set(__self__, "exact", exact)
+        if invert is not None:
+            pulumi.set(__self__, "invert", invert)
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+        if present is not None:
+            pulumi.set(__self__, "present", present)
+        if regex is not None:
+            pulumi.set(__self__, "regex", regex)
+        if suffix is not None:
+            pulumi.set(__self__, "suffix", suffix)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Specifies the name of a JWT provider defined in the Name field of the jwt-provider configuration entry.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def exact(self) -> Optional[str]:
+        """
+        Specifies a value for the header key set in the Name field. If the request header value matches the Exact value, Consul applies the permission.
+        """
+        return pulumi.get(self, "exact")
+
+    @property
+    @pulumi.getter
+    def invert(self) -> Optional[bool]:
+        """
+        Inverts the matching logic configured in the Header.
+        """
+        return pulumi.get(self, "invert")
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> Optional[str]:
+        """
+        Specifies a prefix value for the header key set in the Name field.
+        """
+        return pulumi.get(self, "prefix")
+
+    @property
+    @pulumi.getter
+    def present(self) -> Optional[bool]:
+        """
+        Enables a match if the header configured in the Name field appears in the request. Consul matches on any value as long as the header key appears in the request.
+        """
+        return pulumi.get(self, "present")
+
+    @property
+    @pulumi.getter
+    def regex(self) -> Optional[str]:
+        """
+        Specifies a regular expression pattern as the value for the header key set in the Name field.
+        """
+        return pulumi.get(self, "regex")
+
+    @property
+    @pulumi.getter
+    def suffix(self) -> Optional[str]:
+        """
+        Specifies a suffix value for the header key set in the Name field.
+        """
+        return pulumi.get(self, "suffix")
+
+
+@pulumi.output_type
+class ConfigEntryServiceResolverFailover(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "subsetName":
+            suggest = "subset_name"
+        elif key == "samenessGroup":
+            suggest = "sameness_group"
+        elif key == "serviceSubset":
+            suggest = "service_subset"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConfigEntryServiceResolverFailover. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConfigEntryServiceResolverFailover.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConfigEntryServiceResolverFailover.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 subset_name: str,
+                 datacenters: Optional[Sequence[str]] = None,
+                 namespace: Optional[str] = None,
+                 sameness_group: Optional[str] = None,
+                 service: Optional[str] = None,
+                 service_subset: Optional[str] = None,
+                 targets: Optional[Sequence['outputs.ConfigEntryServiceResolverFailoverTarget']] = None):
+        """
+        :param str subset_name: Name of subset.
+        :param Sequence[str] datacenters: Specifies an ordered list of datacenters at the failover location to attempt connections to during a failover scenario. When Consul cannot establish a connection with the first datacenter in the list, it proceeds sequentially until establishing a connection with another datacenter.
+        :param str namespace: Specifies the namespace at the failover location where the failover services are deployed.
+        :param str sameness_group: Specifies the sameness group at the failover location where the failover services are deployed.
+        :param str service: Specifies the name of the service to resolve at the failover location during a failover scenario.
+        :param str service_subset: Specifies the name of a subset of service instances to resolve at the failover location during a failover scenario.
+        :param Sequence['ConfigEntryServiceResolverFailoverTargetArgs'] targets: Specifies a fixed list of failover targets to try during failover. This list can express complicated failover scenarios.
+        """
+        pulumi.set(__self__, "subset_name", subset_name)
+        if datacenters is not None:
+            pulumi.set(__self__, "datacenters", datacenters)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+        if sameness_group is not None:
+            pulumi.set(__self__, "sameness_group", sameness_group)
+        if service is not None:
+            pulumi.set(__self__, "service", service)
+        if service_subset is not None:
+            pulumi.set(__self__, "service_subset", service_subset)
+        if targets is not None:
+            pulumi.set(__self__, "targets", targets)
+
+    @property
+    @pulumi.getter(name="subsetName")
+    def subset_name(self) -> str:
+        """
+        Name of subset.
+        """
+        return pulumi.get(self, "subset_name")
+
+    @property
+    @pulumi.getter
+    def datacenters(self) -> Optional[Sequence[str]]:
+        """
+        Specifies an ordered list of datacenters at the failover location to attempt connections to during a failover scenario. When Consul cannot establish a connection with the first datacenter in the list, it proceeds sequentially until establishing a connection with another datacenter.
+        """
+        return pulumi.get(self, "datacenters")
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[str]:
+        """
+        Specifies the namespace at the failover location where the failover services are deployed.
+        """
+        return pulumi.get(self, "namespace")
+
+    @property
+    @pulumi.getter(name="samenessGroup")
+    def sameness_group(self) -> Optional[str]:
+        """
+        Specifies the sameness group at the failover location where the failover services are deployed.
+        """
+        return pulumi.get(self, "sameness_group")
+
+    @property
+    @pulumi.getter
+    def service(self) -> Optional[str]:
+        """
+        Specifies the name of the service to resolve at the failover location during a failover scenario.
+        """
+        return pulumi.get(self, "service")
+
+    @property
+    @pulumi.getter(name="serviceSubset")
+    def service_subset(self) -> Optional[str]:
+        """
+        Specifies the name of a subset of service instances to resolve at the failover location during a failover scenario.
+        """
+        return pulumi.get(self, "service_subset")
+
+    @property
+    @pulumi.getter
+    def targets(self) -> Optional[Sequence['outputs.ConfigEntryServiceResolverFailoverTarget']]:
+        """
+        Specifies a fixed list of failover targets to try during failover. This list can express complicated failover scenarios.
+        """
+        return pulumi.get(self, "targets")
+
+
+@pulumi.output_type
+class ConfigEntryServiceResolverFailoverTarget(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceSubset":
+            suggest = "service_subset"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConfigEntryServiceResolverFailoverTarget. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConfigEntryServiceResolverFailoverTarget.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConfigEntryServiceResolverFailoverTarget.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 datacenter: Optional[str] = None,
+                 namespace: Optional[str] = None,
+                 partition: Optional[str] = None,
+                 peer: Optional[str] = None,
+                 service: Optional[str] = None,
+                 service_subset: Optional[str] = None):
+        """
+        :param str datacenter: Specifies the WAN federated datacenter to use for the failover target. If empty, the current datacenter is used.
+        :param str namespace: Specifies the namespace at the failover location where the failover services are deployed.
+        :param str partition: Specifies the admin partition within the same datacenter to use for the failover target. If empty, the default partition is used.
+        :param str peer: Specifies the destination cluster peer to resolve the target service name from.
+        :param str service: Specifies the name of the service to resolve at the failover location during a failover scenario.
+        :param str service_subset: Specifies the name of a subset of service instances to resolve at the failover location during a failover scenario.
+        """
+        if datacenter is not None:
+            pulumi.set(__self__, "datacenter", datacenter)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+        if partition is not None:
+            pulumi.set(__self__, "partition", partition)
+        if peer is not None:
+            pulumi.set(__self__, "peer", peer)
+        if service is not None:
+            pulumi.set(__self__, "service", service)
+        if service_subset is not None:
+            pulumi.set(__self__, "service_subset", service_subset)
+
+    @property
+    @pulumi.getter
+    def datacenter(self) -> Optional[str]:
+        """
+        Specifies the WAN federated datacenter to use for the failover target. If empty, the current datacenter is used.
+        """
+        return pulumi.get(self, "datacenter")
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[str]:
+        """
+        Specifies the namespace at the failover location where the failover services are deployed.
+        """
+        return pulumi.get(self, "namespace")
+
+    @property
+    @pulumi.getter
+    def partition(self) -> Optional[str]:
+        """
+        Specifies the admin partition within the same datacenter to use for the failover target. If empty, the default partition is used.
+        """
+        return pulumi.get(self, "partition")
+
+    @property
+    @pulumi.getter
+    def peer(self) -> Optional[str]:
+        """
+        Specifies the destination cluster peer to resolve the target service name from.
+        """
+        return pulumi.get(self, "peer")
+
+    @property
+    @pulumi.getter
+    def service(self) -> Optional[str]:
+        """
+        Specifies the name of the service to resolve at the failover location during a failover scenario.
+        """
+        return pulumi.get(self, "service")
+
+    @property
+    @pulumi.getter(name="serviceSubset")
+    def service_subset(self) -> Optional[str]:
+        """
+        Specifies the name of a subset of service instances to resolve at the failover location during a failover scenario.
+        """
+        return pulumi.get(self, "service_subset")
+
+
+@pulumi.output_type
+class ConfigEntryServiceResolverLoadBalancer(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "hashPolicies":
+            suggest = "hash_policies"
+        elif key == "leastRequestConfigs":
+            suggest = "least_request_configs"
+        elif key == "ringHashConfigs":
+            suggest = "ring_hash_configs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConfigEntryServiceResolverLoadBalancer. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConfigEntryServiceResolverLoadBalancer.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConfigEntryServiceResolverLoadBalancer.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 hash_policies: Optional[Sequence['outputs.ConfigEntryServiceResolverLoadBalancerHashPolicy']] = None,
+                 least_request_configs: Optional[Sequence['outputs.ConfigEntryServiceResolverLoadBalancerLeastRequestConfig']] = None,
+                 policy: Optional[str] = None,
+                 ring_hash_configs: Optional[Sequence['outputs.ConfigEntryServiceResolverLoadBalancerRingHashConfig']] = None):
+        """
+        :param Sequence['ConfigEntryServiceResolverLoadBalancerHashPolicyArgs'] hash_policies: Specifies a list of hash policies to use for hashing load balancing algorithms. Consul evaluates hash policies individually and combines them so that identical lists result in the same hash.
+        :param Sequence['ConfigEntryServiceResolverLoadBalancerLeastRequestConfigArgs'] least_request_configs: Specifies configuration for the least*request policy type.
+        :param str policy: Specifies the type of load balancing policy for selecting a host.
+        :param Sequence['ConfigEntryServiceResolverLoadBalancerRingHashConfigArgs'] ring_hash_configs: Specifies configuration for the ring*hash policy type.
+        """
+        if hash_policies is not None:
+            pulumi.set(__self__, "hash_policies", hash_policies)
+        if least_request_configs is not None:
+            pulumi.set(__self__, "least_request_configs", least_request_configs)
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
+        if ring_hash_configs is not None:
+            pulumi.set(__self__, "ring_hash_configs", ring_hash_configs)
+
+    @property
+    @pulumi.getter(name="hashPolicies")
+    def hash_policies(self) -> Optional[Sequence['outputs.ConfigEntryServiceResolverLoadBalancerHashPolicy']]:
+        """
+        Specifies a list of hash policies to use for hashing load balancing algorithms. Consul evaluates hash policies individually and combines them so that identical lists result in the same hash.
+        """
+        return pulumi.get(self, "hash_policies")
+
+    @property
+    @pulumi.getter(name="leastRequestConfigs")
+    def least_request_configs(self) -> Optional[Sequence['outputs.ConfigEntryServiceResolverLoadBalancerLeastRequestConfig']]:
+        """
+        Specifies configuration for the least*request policy type.
+        """
+        return pulumi.get(self, "least_request_configs")
+
+    @property
+    @pulumi.getter
+    def policy(self) -> Optional[str]:
+        """
+        Specifies the type of load balancing policy for selecting a host.
+        """
+        return pulumi.get(self, "policy")
+
+    @property
+    @pulumi.getter(name="ringHashConfigs")
+    def ring_hash_configs(self) -> Optional[Sequence['outputs.ConfigEntryServiceResolverLoadBalancerRingHashConfig']]:
+        """
+        Specifies configuration for the ring*hash policy type.
+        """
+        return pulumi.get(self, "ring_hash_configs")
+
+
+@pulumi.output_type
+class ConfigEntryServiceResolverLoadBalancerHashPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cookieConfigs":
+            suggest = "cookie_configs"
+        elif key == "fieldValue":
+            suggest = "field_value"
+        elif key == "sourceIp":
+            suggest = "source_ip"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConfigEntryServiceResolverLoadBalancerHashPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConfigEntryServiceResolverLoadBalancerHashPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConfigEntryServiceResolverLoadBalancerHashPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cookie_configs: Optional[Sequence['outputs.ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfig']] = None,
+                 field: Optional[str] = None,
+                 field_value: Optional[str] = None,
+                 source_ip: Optional[bool] = None,
+                 terminal: Optional[bool] = None):
+        """
+        :param Sequence['ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigArgs'] cookie_configs: Specifies additional configuration options for the cookie hash policy type.
+        :param str field: Specifies the attribute type to hash on. You cannot specify the Field parameter if SourceIP is also configured.
+        :param str field_value: Specifies the value to hash, such as a header name, cookie name, or a URL query parameter name.
+        :param bool source_ip: Determines if the hash type should be source IP address.
+        :param bool terminal: Determines if Consul should stop computing the hash when multiple hash policies are present.
+        """
+        if cookie_configs is not None:
+            pulumi.set(__self__, "cookie_configs", cookie_configs)
+        if field is not None:
+            pulumi.set(__self__, "field", field)
+        if field_value is not None:
+            pulumi.set(__self__, "field_value", field_value)
+        if source_ip is not None:
+            pulumi.set(__self__, "source_ip", source_ip)
+        if terminal is not None:
+            pulumi.set(__self__, "terminal", terminal)
+
+    @property
+    @pulumi.getter(name="cookieConfigs")
+    def cookie_configs(self) -> Optional[Sequence['outputs.ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfig']]:
+        """
+        Specifies additional configuration options for the cookie hash policy type.
+        """
+        return pulumi.get(self, "cookie_configs")
+
+    @property
+    @pulumi.getter
+    def field(self) -> Optional[str]:
+        """
+        Specifies the attribute type to hash on. You cannot specify the Field parameter if SourceIP is also configured.
+        """
+        return pulumi.get(self, "field")
+
+    @property
+    @pulumi.getter(name="fieldValue")
+    def field_value(self) -> Optional[str]:
+        """
+        Specifies the value to hash, such as a header name, cookie name, or a URL query parameter name.
+        """
+        return pulumi.get(self, "field_value")
+
+    @property
+    @pulumi.getter(name="sourceIp")
+    def source_ip(self) -> Optional[bool]:
+        """
+        Determines if the hash type should be source IP address.
+        """
+        return pulumi.get(self, "source_ip")
+
+    @property
+    @pulumi.getter
+    def terminal(self) -> Optional[bool]:
+        """
+        Determines if Consul should stop computing the hash when multiple hash policies are present.
+        """
+        return pulumi.get(self, "terminal")
+
+
+@pulumi.output_type
+class ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfig(dict):
+    def __init__(__self__, *,
+                 path: Optional[str] = None,
+                 session: Optional[bool] = None,
+                 ttl: Optional[str] = None):
+        """
+        :param str path: Specifies the path to set for the cookie.
+        :param bool session: Directs Consul to generate a session cookie with no expiration.
+        :param str ttl: Specifies the TTL for generated cookies. Cannot be specified for session cookies.
+        """
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if session is not None:
+            pulumi.set(__self__, "session", session)
+        if ttl is not None:
+            pulumi.set(__self__, "ttl", ttl)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[str]:
+        """
+        Specifies the path to set for the cookie.
+        """
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter
+    def session(self) -> Optional[bool]:
+        """
+        Directs Consul to generate a session cookie with no expiration.
+        """
+        return pulumi.get(self, "session")
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> Optional[str]:
+        """
+        Specifies the TTL for generated cookies. Cannot be specified for session cookies.
+        """
+        return pulumi.get(self, "ttl")
+
+
+@pulumi.output_type
+class ConfigEntryServiceResolverLoadBalancerLeastRequestConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "choiceCount":
+            suggest = "choice_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConfigEntryServiceResolverLoadBalancerLeastRequestConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConfigEntryServiceResolverLoadBalancerLeastRequestConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConfigEntryServiceResolverLoadBalancerLeastRequestConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 choice_count: Optional[int] = None):
+        if choice_count is not None:
+            pulumi.set(__self__, "choice_count", choice_count)
+
+    @property
+    @pulumi.getter(name="choiceCount")
+    def choice_count(self) -> Optional[int]:
+        return pulumi.get(self, "choice_count")
+
+
+@pulumi.output_type
+class ConfigEntryServiceResolverLoadBalancerRingHashConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maximumRingSize":
+            suggest = "maximum_ring_size"
+        elif key == "minimumRingSize":
+            suggest = "minimum_ring_size"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConfigEntryServiceResolverLoadBalancerRingHashConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConfigEntryServiceResolverLoadBalancerRingHashConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConfigEntryServiceResolverLoadBalancerRingHashConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 maximum_ring_size: Optional[int] = None,
+                 minimum_ring_size: Optional[int] = None):
+        """
+        :param int maximum_ring_size: Determines the maximum number of entries in the hash ring.
+        :param int minimum_ring_size: Determines the minimum number of entries in the hash ring.
+        """
+        if maximum_ring_size is not None:
+            pulumi.set(__self__, "maximum_ring_size", maximum_ring_size)
+        if minimum_ring_size is not None:
+            pulumi.set(__self__, "minimum_ring_size", minimum_ring_size)
+
+    @property
+    @pulumi.getter(name="maximumRingSize")
+    def maximum_ring_size(self) -> Optional[int]:
+        """
+        Determines the maximum number of entries in the hash ring.
+        """
+        return pulumi.get(self, "maximum_ring_size")
+
+    @property
+    @pulumi.getter(name="minimumRingSize")
+    def minimum_ring_size(self) -> Optional[int]:
+        """
+        Determines the minimum number of entries in the hash ring.
+        """
+        return pulumi.get(self, "minimum_ring_size")
+
+
+@pulumi.output_type
+class ConfigEntryServiceResolverRedirect(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "samenessGroup":
+            suggest = "sameness_group"
+        elif key == "serviceSubset":
+            suggest = "service_subset"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConfigEntryServiceResolverRedirect. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConfigEntryServiceResolverRedirect.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConfigEntryServiceResolverRedirect.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 datacenter: Optional[str] = None,
+                 namespace: Optional[str] = None,
+                 partition: Optional[str] = None,
+                 peer: Optional[str] = None,
+                 sameness_group: Optional[str] = None,
+                 service: Optional[str] = None,
+                 service_subset: Optional[str] = None):
+        """
+        :param str datacenter: Specifies the datacenter at the redirect’s destination that resolves local upstream requests.
+        :param str namespace: Specifies the namespace at the redirect’s destination that resolves local upstream requests.
+        :param str partition: Specifies the admin partition at the redirect’s destination that resolves local upstream requests.
+        :param str peer: Specifies the cluster with an active cluster peering connection at the redirect’s destination that resolves local upstream requests.
+        :param str sameness_group: Specifies the sameness group at the redirect’s destination that resolves local upstream requests.
+        :param str service: Specifies the name of a service at the redirect’s destination that resolves local upstream requests.
+        :param str service_subset: Specifies the name of a subset of services at the redirect’s destination that resolves local upstream requests. If empty, the default subset is used. If specified, you must also specify at least one of the following in the same Redirect map: Service, Namespace, andDatacenter.
+        """
+        if datacenter is not None:
+            pulumi.set(__self__, "datacenter", datacenter)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+        if partition is not None:
+            pulumi.set(__self__, "partition", partition)
+        if peer is not None:
+            pulumi.set(__self__, "peer", peer)
+        if sameness_group is not None:
+            pulumi.set(__self__, "sameness_group", sameness_group)
+        if service is not None:
+            pulumi.set(__self__, "service", service)
+        if service_subset is not None:
+            pulumi.set(__self__, "service_subset", service_subset)
+
+    @property
+    @pulumi.getter
+    def datacenter(self) -> Optional[str]:
+        """
+        Specifies the datacenter at the redirect’s destination that resolves local upstream requests.
+        """
+        return pulumi.get(self, "datacenter")
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[str]:
+        """
+        Specifies the namespace at the redirect’s destination that resolves local upstream requests.
+        """
+        return pulumi.get(self, "namespace")
+
+    @property
+    @pulumi.getter
+    def partition(self) -> Optional[str]:
+        """
+        Specifies the admin partition at the redirect’s destination that resolves local upstream requests.
+        """
+        return pulumi.get(self, "partition")
+
+    @property
+    @pulumi.getter
+    def peer(self) -> Optional[str]:
+        """
+        Specifies the cluster with an active cluster peering connection at the redirect’s destination that resolves local upstream requests.
+        """
+        return pulumi.get(self, "peer")
+
+    @property
+    @pulumi.getter(name="samenessGroup")
+    def sameness_group(self) -> Optional[str]:
+        """
+        Specifies the sameness group at the redirect’s destination that resolves local upstream requests.
+        """
+        return pulumi.get(self, "sameness_group")
+
+    @property
+    @pulumi.getter
+    def service(self) -> Optional[str]:
+        """
+        Specifies the name of a service at the redirect’s destination that resolves local upstream requests.
+        """
+        return pulumi.get(self, "service")
+
+    @property
+    @pulumi.getter(name="serviceSubset")
+    def service_subset(self) -> Optional[str]:
+        """
+        Specifies the name of a subset of services at the redirect’s destination that resolves local upstream requests. If empty, the default subset is used. If specified, you must also specify at least one of the following in the same Redirect map: Service, Namespace, andDatacenter.
+        """
+        return pulumi.get(self, "service_subset")
+
+
+@pulumi.output_type
+class ConfigEntryServiceResolverSubset(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "onlyPassing":
+            suggest = "only_passing"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConfigEntryServiceResolverSubset. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConfigEntryServiceResolverSubset.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConfigEntryServiceResolverSubset.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 filter: str,
+                 name: str,
+                 only_passing: bool):
+        """
+        :param str filter: Specifies an expression that filters the DNS elements of service instances that belong to the subset. If empty, all healthy instances of a service are returned.
+        :param str name: Name of subset.
+        :param bool only_passing: Determines if instances that return a warning from a health check are allowed to resolve a request. When set to false, instances with passing and warning states are considered healthy. When set to true, only instances with a passing health check state are considered healthy.
+        """
+        pulumi.set(__self__, "filter", filter)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "only_passing", only_passing)
+
+    @property
+    @pulumi.getter
+    def filter(self) -> str:
+        """
+        Specifies an expression that filters the DNS elements of service instances that belong to the subset. If empty, all healthy instances of a service are returned.
+        """
+        return pulumi.get(self, "filter")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of subset.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="onlyPassing")
+    def only_passing(self) -> bool:
+        """
+        Determines if instances that return a warning from a health check are allowed to resolve a request. When set to false, instances with passing and warning states are considered healthy. When set to true, only instances with a passing health check state are considered healthy.
+        """
+        return pulumi.get(self, "only_passing")
+
+
+@pulumi.output_type
+class ConfigEntryServiceRouterRoute(dict):
+    def __init__(__self__, *,
+                 destination: Optional['outputs.ConfigEntryServiceRouterRouteDestination'] = None,
+                 match: Optional['outputs.ConfigEntryServiceRouterRouteMatch'] = None):
+        """
+        :param 'ConfigEntryServiceRouterRouteDestinationArgs' destination: Specifies the target service to route matching requests to, as well as behavior for the request to follow when routed.
+        :param 'ConfigEntryServiceRouterRouteMatchArgs' match: Describes a set of criteria that Consul compares incoming L7 traffic with.
+        """
+        if destination is not None:
+            pulumi.set(__self__, "destination", destination)
+        if match is not None:
+            pulumi.set(__self__, "match", match)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> Optional['outputs.ConfigEntryServiceRouterRouteDestination']:
+        """
+        Specifies the target service to route matching requests to, as well as behavior for the request to follow when routed.
+        """
+        return pulumi.get(self, "destination")
+
+    @property
+    @pulumi.getter
+    def match(self) -> Optional['outputs.ConfigEntryServiceRouterRouteMatch']:
+        """
+        Describes a set of criteria that Consul compares incoming L7 traffic with.
+        """
+        return pulumi.get(self, "match")
+
+
+@pulumi.output_type
+class ConfigEntryServiceRouterRouteDestination(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "idleTimeout":
+            suggest = "idle_timeout"
+        elif key == "numRetries":
+            suggest = "num_retries"
+        elif key == "prefixRewrite":
+            suggest = "prefix_rewrite"
+        elif key == "requestHeaders":
+            suggest = "request_headers"
+        elif key == "requestTimeout":
+            suggest = "request_timeout"
+        elif key == "responseHeaders":
+            suggest = "response_headers"
+        elif key == "retryOnConnectFailure":
+            suggest = "retry_on_connect_failure"
+        elif key == "retryOnStatusCodes":
+            suggest = "retry_on_status_codes"
+        elif key == "retryOns":
+            suggest = "retry_ons"
+        elif key == "serviceSubset":
+            suggest = "service_subset"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConfigEntryServiceRouterRouteDestination. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConfigEntryServiceRouterRouteDestination.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConfigEntryServiceRouterRouteDestination.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 idle_timeout: Optional[str] = None,
+                 namespace: Optional[str] = None,
+                 num_retries: Optional[int] = None,
+                 partition: Optional[str] = None,
+                 prefix_rewrite: Optional[str] = None,
+                 request_headers: Optional['outputs.ConfigEntryServiceRouterRouteDestinationRequestHeaders'] = None,
+                 request_timeout: Optional[str] = None,
+                 response_headers: Optional['outputs.ConfigEntryServiceRouterRouteDestinationResponseHeaders'] = None,
+                 retry_on_connect_failure: Optional[bool] = None,
+                 retry_on_status_codes: Optional[Sequence[int]] = None,
+                 retry_ons: Optional[Sequence[str]] = None,
+                 service: Optional[str] = None,
+                 service_subset: Optional[str] = None):
+        """
+        :param str idle_timeout: Specifies the total amount of time permitted for the request stream to be idle.
+        :param str namespace: Specifies the Consul namespace to resolve the service from instead of the current namespace.
+        :param int num_retries: Specifies the number of times to retry the request when a retry condition occurs.
+        :param str partition: Specifies the Consul admin partition to resolve the service from instead of the current partition.
+        :param str prefix_rewrite: Specifies rewrites to the HTTP request path before proxying it to its final destination.
+        :param 'ConfigEntryServiceRouterRouteDestinationRequestHeadersArgs' request_headers: Specifies a set of HTTP-specific header modification rules applied to requests routed with the service router.
+        :param str request_timeout: Specifies the total amount of time permitted for the entire downstream request to be processed, including retry attempts.
+        :param 'ConfigEntryServiceRouterRouteDestinationResponseHeadersArgs' response_headers: Specifies a set of HTTP-specific header modification rules applied to responses routed with the service router.
+        :param bool retry_on_connect_failure: Specifies that connection failure errors that trigger a retry request.
+        :param Sequence[int] retry_on_status_codes: Specifies a list of integers for HTTP response status codes that trigger a retry request.
+        :param Sequence[str] retry_ons: Specifies a list of conditions for Consul to retry requests based on the response from an upstream service.
+        :param str service: Specifies the name of the service to resolve.
+        :param str service_subset: Specifies a named subset of the given service to resolve instead of the one defined as that service's `default_subset` in the service resolver configuration entry.
+        """
+        if idle_timeout is not None:
+            pulumi.set(__self__, "idle_timeout", idle_timeout)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+        if num_retries is not None:
+            pulumi.set(__self__, "num_retries", num_retries)
+        if partition is not None:
+            pulumi.set(__self__, "partition", partition)
+        if prefix_rewrite is not None:
+            pulumi.set(__self__, "prefix_rewrite", prefix_rewrite)
+        if request_headers is not None:
+            pulumi.set(__self__, "request_headers", request_headers)
+        if request_timeout is not None:
+            pulumi.set(__self__, "request_timeout", request_timeout)
+        if response_headers is not None:
+            pulumi.set(__self__, "response_headers", response_headers)
+        if retry_on_connect_failure is not None:
+            pulumi.set(__self__, "retry_on_connect_failure", retry_on_connect_failure)
+        if retry_on_status_codes is not None:
+            pulumi.set(__self__, "retry_on_status_codes", retry_on_status_codes)
+        if retry_ons is not None:
+            pulumi.set(__self__, "retry_ons", retry_ons)
+        if service is not None:
+            pulumi.set(__self__, "service", service)
+        if service_subset is not None:
+            pulumi.set(__self__, "service_subset", service_subset)
+
+    @property
+    @pulumi.getter(name="idleTimeout")
+    def idle_timeout(self) -> Optional[str]:
+        """
+        Specifies the total amount of time permitted for the request stream to be idle.
+        """
+        return pulumi.get(self, "idle_timeout")
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[str]:
+        """
+        Specifies the Consul namespace to resolve the service from instead of the current namespace.
+        """
+        return pulumi.get(self, "namespace")
+
+    @property
+    @pulumi.getter(name="numRetries")
+    def num_retries(self) -> Optional[int]:
+        """
+        Specifies the number of times to retry the request when a retry condition occurs.
+        """
+        return pulumi.get(self, "num_retries")
+
+    @property
+    @pulumi.getter
+    def partition(self) -> Optional[str]:
+        """
+        Specifies the Consul admin partition to resolve the service from instead of the current partition.
+        """
+        return pulumi.get(self, "partition")
+
+    @property
+    @pulumi.getter(name="prefixRewrite")
+    def prefix_rewrite(self) -> Optional[str]:
+        """
+        Specifies rewrites to the HTTP request path before proxying it to its final destination.
+        """
+        return pulumi.get(self, "prefix_rewrite")
+
+    @property
+    @pulumi.getter(name="requestHeaders")
+    def request_headers(self) -> Optional['outputs.ConfigEntryServiceRouterRouteDestinationRequestHeaders']:
+        """
+        Specifies a set of HTTP-specific header modification rules applied to requests routed with the service router.
+        """
+        return pulumi.get(self, "request_headers")
+
+    @property
+    @pulumi.getter(name="requestTimeout")
+    def request_timeout(self) -> Optional[str]:
+        """
+        Specifies the total amount of time permitted for the entire downstream request to be processed, including retry attempts.
+        """
+        return pulumi.get(self, "request_timeout")
+
+    @property
+    @pulumi.getter(name="responseHeaders")
+    def response_headers(self) -> Optional['outputs.ConfigEntryServiceRouterRouteDestinationResponseHeaders']:
+        """
+        Specifies a set of HTTP-specific header modification rules applied to responses routed with the service router.
+        """
+        return pulumi.get(self, "response_headers")
+
+    @property
+    @pulumi.getter(name="retryOnConnectFailure")
+    def retry_on_connect_failure(self) -> Optional[bool]:
+        """
+        Specifies that connection failure errors that trigger a retry request.
+        """
+        return pulumi.get(self, "retry_on_connect_failure")
+
+    @property
+    @pulumi.getter(name="retryOnStatusCodes")
+    def retry_on_status_codes(self) -> Optional[Sequence[int]]:
+        """
+        Specifies a list of integers for HTTP response status codes that trigger a retry request.
+        """
+        return pulumi.get(self, "retry_on_status_codes")
+
+    @property
+    @pulumi.getter(name="retryOns")
+    def retry_ons(self) -> Optional[Sequence[str]]:
+        """
+        Specifies a list of conditions for Consul to retry requests based on the response from an upstream service.
+        """
+        return pulumi.get(self, "retry_ons")
+
+    @property
+    @pulumi.getter
+    def service(self) -> Optional[str]:
+        """
+        Specifies the name of the service to resolve.
+        """
+        return pulumi.get(self, "service")
+
+    @property
+    @pulumi.getter(name="serviceSubset")
+    def service_subset(self) -> Optional[str]:
+        """
+        Specifies a named subset of the given service to resolve instead of the one defined as that service's `default_subset` in the service resolver configuration entry.
+        """
+        return pulumi.get(self, "service_subset")
+
+
+@pulumi.output_type
+class ConfigEntryServiceRouterRouteDestinationRequestHeaders(dict):
+    def __init__(__self__, *,
+                 add: Optional[Mapping[str, str]] = None,
+                 removes: Optional[Sequence[str]] = None,
+                 set: Optional[Mapping[str, str]] = None):
+        """
+        :param Mapping[str, str] add: Defines a set of key-value pairs to add to the header. Use header names as the keys.
+        :param Sequence[str] removes: Defines a list of headers to remove.
+        :param Mapping[str, str] set: Defines a set of key-value pairs to add to the request header or to replace existing header values with.
+        """
+        if add is not None:
+            pulumi.set(__self__, "add", add)
+        if removes is not None:
+            pulumi.set(__self__, "removes", removes)
+        if set is not None:
+            pulumi.set(__self__, "set", set)
+
+    @property
+    @pulumi.getter
+    def add(self) -> Optional[Mapping[str, str]]:
+        """
+        Defines a set of key-value pairs to add to the header. Use header names as the keys.
+        """
+        return pulumi.get(self, "add")
+
+    @property
+    @pulumi.getter
+    def removes(self) -> Optional[Sequence[str]]:
+        """
+        Defines a list of headers to remove.
+        """
+        return pulumi.get(self, "removes")
+
+    @property
+    @pulumi.getter
+    def set(self) -> Optional[Mapping[str, str]]:
+        """
+        Defines a set of key-value pairs to add to the request header or to replace existing header values with.
+        """
+        return pulumi.get(self, "set")
+
+
+@pulumi.output_type
+class ConfigEntryServiceRouterRouteDestinationResponseHeaders(dict):
+    def __init__(__self__, *,
+                 add: Optional[Mapping[str, str]] = None,
+                 removes: Optional[Sequence[str]] = None,
+                 set: Optional[Mapping[str, str]] = None):
+        """
+        :param Mapping[str, str] add: Defines a set of key-value pairs to add to the header. Use header names as the keys.
+        :param Sequence[str] removes: Defines a list of headers to remove.
+        :param Mapping[str, str] set: Defines a set of key-value pairs to add to the request header or to replace existing header values with.
+        """
+        if add is not None:
+            pulumi.set(__self__, "add", add)
+        if removes is not None:
+            pulumi.set(__self__, "removes", removes)
+        if set is not None:
+            pulumi.set(__self__, "set", set)
+
+    @property
+    @pulumi.getter
+    def add(self) -> Optional[Mapping[str, str]]:
+        """
+        Defines a set of key-value pairs to add to the header. Use header names as the keys.
+        """
+        return pulumi.get(self, "add")
+
+    @property
+    @pulumi.getter
+    def removes(self) -> Optional[Sequence[str]]:
+        """
+        Defines a list of headers to remove.
+        """
+        return pulumi.get(self, "removes")
+
+    @property
+    @pulumi.getter
+    def set(self) -> Optional[Mapping[str, str]]:
+        """
+        Defines a set of key-value pairs to add to the request header or to replace existing header values with.
+        """
+        return pulumi.get(self, "set")
+
+
+@pulumi.output_type
+class ConfigEntryServiceRouterRouteMatch(dict):
+    def __init__(__self__, *,
+                 http: Optional['outputs.ConfigEntryServiceRouterRouteMatchHttp'] = None):
+        """
+        :param 'ConfigEntryServiceRouterRouteMatchHttpArgs' http: Specifies a set of HTTP criteria used to evaluate incoming L7 traffic for matches.
+        """
+        if http is not None:
+            pulumi.set(__self__, "http", http)
+
+    @property
+    @pulumi.getter
+    def http(self) -> Optional['outputs.ConfigEntryServiceRouterRouteMatchHttp']:
+        """
+        Specifies a set of HTTP criteria used to evaluate incoming L7 traffic for matches.
+        """
+        return pulumi.get(self, "http")
+
+
+@pulumi.output_type
+class ConfigEntryServiceRouterRouteMatchHttp(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pathExact":
+            suggest = "path_exact"
+        elif key == "pathPrefix":
+            suggest = "path_prefix"
+        elif key == "pathRegex":
+            suggest = "path_regex"
+        elif key == "queryParams":
+            suggest = "query_params"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConfigEntryServiceRouterRouteMatchHttp. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConfigEntryServiceRouterRouteMatchHttp.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConfigEntryServiceRouterRouteMatchHttp.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 headers: Optional[Sequence['outputs.ConfigEntryServiceRouterRouteMatchHttpHeader']] = None,
+                 methods: Optional[Sequence[str]] = None,
+                 path_exact: Optional[str] = None,
+                 path_prefix: Optional[str] = None,
+                 path_regex: Optional[str] = None,
+                 query_params: Optional[Sequence['outputs.ConfigEntryServiceRouterRouteMatchHttpQueryParam']] = None):
+        """
+        :param Sequence['ConfigEntryServiceRouterRouteMatchHttpHeaderArgs'] headers: Specifies information in the HTTP request header to match with.
+        :param Sequence[str] methods: Specifies HTTP methods that the match applies to.
+        :param str path_exact: Specifies the exact path to match on the HTTP request path.
+        :param str path_prefix: Specifies the path prefix to match on the HTTP request path.
+        :param str path_regex: Specifies a regular expression to match on the HTTP request path.
+        :param Sequence['ConfigEntryServiceRouterRouteMatchHttpQueryParamArgs'] query_params: Specifies information to match to on HTTP query parameters.
+        """
+        if headers is not None:
+            pulumi.set(__self__, "headers", headers)
+        if methods is not None:
+            pulumi.set(__self__, "methods", methods)
+        if path_exact is not None:
+            pulumi.set(__self__, "path_exact", path_exact)
+        if path_prefix is not None:
+            pulumi.set(__self__, "path_prefix", path_prefix)
+        if path_regex is not None:
+            pulumi.set(__self__, "path_regex", path_regex)
+        if query_params is not None:
+            pulumi.set(__self__, "query_params", query_params)
+
+    @property
+    @pulumi.getter
+    def headers(self) -> Optional[Sequence['outputs.ConfigEntryServiceRouterRouteMatchHttpHeader']]:
+        """
+        Specifies information in the HTTP request header to match with.
+        """
+        return pulumi.get(self, "headers")
+
+    @property
+    @pulumi.getter
+    def methods(self) -> Optional[Sequence[str]]:
+        """
+        Specifies HTTP methods that the match applies to.
+        """
+        return pulumi.get(self, "methods")
+
+    @property
+    @pulumi.getter(name="pathExact")
+    def path_exact(self) -> Optional[str]:
+        """
+        Specifies the exact path to match on the HTTP request path.
+        """
+        return pulumi.get(self, "path_exact")
+
+    @property
+    @pulumi.getter(name="pathPrefix")
+    def path_prefix(self) -> Optional[str]:
+        """
+        Specifies the path prefix to match on the HTTP request path.
+        """
+        return pulumi.get(self, "path_prefix")
+
+    @property
+    @pulumi.getter(name="pathRegex")
+    def path_regex(self) -> Optional[str]:
+        """
+        Specifies a regular expression to match on the HTTP request path.
+        """
+        return pulumi.get(self, "path_regex")
+
+    @property
+    @pulumi.getter(name="queryParams")
+    def query_params(self) -> Optional[Sequence['outputs.ConfigEntryServiceRouterRouteMatchHttpQueryParam']]:
+        """
+        Specifies information to match to on HTTP query parameters.
+        """
+        return pulumi.get(self, "query_params")
+
+
+@pulumi.output_type
+class ConfigEntryServiceRouterRouteMatchHttpHeader(dict):
+    def __init__(__self__, *,
+                 exact: Optional[str] = None,
+                 invert: Optional[bool] = None,
+                 name: Optional[str] = None,
+                 prefix: Optional[str] = None,
+                 present: Optional[bool] = None,
+                 regex: Optional[str] = None,
+                 suffix: Optional[str] = None):
+        """
+        :param str exact: Specifies that a request matches when the header with the given name is this exact value.
+        :param bool invert: Specifies that the logic for the HTTP header match should be inverted.
+        :param str name: Specifies the name of the HTTP header to match.
+        :param str prefix: Specifies that a request matches when the header with the given name has this prefix.
+        :param bool present: Specifies that a request matches when the value in the `name` argument is present anywhere in the HTTP header.
+        :param str regex: Specifies that a request matches when the header with the given name matches this regular expression.
+        :param str suffix: Specifies that a request matches when the header with the given name has this suffix.
+        """
+        if exact is not None:
+            pulumi.set(__self__, "exact", exact)
+        if invert is not None:
+            pulumi.set(__self__, "invert", invert)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+        if present is not None:
+            pulumi.set(__self__, "present", present)
+        if regex is not None:
+            pulumi.set(__self__, "regex", regex)
+        if suffix is not None:
+            pulumi.set(__self__, "suffix", suffix)
+
+    @property
+    @pulumi.getter
+    def exact(self) -> Optional[str]:
+        """
+        Specifies that a request matches when the header with the given name is this exact value.
+        """
+        return pulumi.get(self, "exact")
+
+    @property
+    @pulumi.getter
+    def invert(self) -> Optional[bool]:
+        """
+        Specifies that the logic for the HTTP header match should be inverted.
+        """
+        return pulumi.get(self, "invert")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Specifies the name of the HTTP header to match.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> Optional[str]:
+        """
+        Specifies that a request matches when the header with the given name has this prefix.
+        """
+        return pulumi.get(self, "prefix")
+
+    @property
+    @pulumi.getter
+    def present(self) -> Optional[bool]:
+        """
+        Specifies that a request matches when the value in the `name` argument is present anywhere in the HTTP header.
+        """
+        return pulumi.get(self, "present")
+
+    @property
+    @pulumi.getter
+    def regex(self) -> Optional[str]:
+        """
+        Specifies that a request matches when the header with the given name matches this regular expression.
+        """
+        return pulumi.get(self, "regex")
+
+    @property
+    @pulumi.getter
+    def suffix(self) -> Optional[str]:
+        """
+        Specifies that a request matches when the header with the given name has this suffix.
+        """
+        return pulumi.get(self, "suffix")
+
+
+@pulumi.output_type
+class ConfigEntryServiceRouterRouteMatchHttpQueryParam(dict):
+    def __init__(__self__, *,
+                 exact: Optional[str] = None,
+                 name: Optional[str] = None,
+                 present: Optional[bool] = None,
+                 regex: Optional[str] = None):
+        """
+        :param str exact: Specifies that a request matches when the header with the given name is this exact value.
+        :param str name: Specifies the name of the HTTP header to match.
+        :param bool present: Specifies that a request matches when the value in the `name` argument is present anywhere in the HTTP header.
+        :param str regex: Specifies that a request matches when the header with the given name matches this regular expression.
+        """
+        if exact is not None:
+            pulumi.set(__self__, "exact", exact)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if present is not None:
+            pulumi.set(__self__, "present", present)
+        if regex is not None:
+            pulumi.set(__self__, "regex", regex)
+
+    @property
+    @pulumi.getter
+    def exact(self) -> Optional[str]:
+        """
+        Specifies that a request matches when the header with the given name is this exact value.
+        """
+        return pulumi.get(self, "exact")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Specifies the name of the HTTP header to match.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def present(self) -> Optional[bool]:
+        """
+        Specifies that a request matches when the value in the `name` argument is present anywhere in the HTTP header.
+        """
+        return pulumi.get(self, "present")
+
+    @property
+    @pulumi.getter
+    def regex(self) -> Optional[str]:
+        """
+        Specifies that a request matches when the header with the given name matches this regular expression.
+        """
+        return pulumi.get(self, "regex")
+
+
+@pulumi.output_type
+class ConfigEntryServiceSplitterSplit(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "requestHeaders":
+            suggest = "request_headers"
+        elif key == "responseHeaders":
+            suggest = "response_headers"
+        elif key == "serviceSubset":
+            suggest = "service_subset"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConfigEntryServiceSplitterSplit. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConfigEntryServiceSplitterSplit.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConfigEntryServiceSplitterSplit.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 service: str,
+                 weight: float,
+                 namespace: Optional[str] = None,
+                 partition: Optional[str] = None,
+                 request_headers: Optional['outputs.ConfigEntryServiceSplitterSplitRequestHeaders'] = None,
+                 response_headers: Optional['outputs.ConfigEntryServiceSplitterSplitResponseHeaders'] = None,
+                 service_subset: Optional[str] = None):
+        """
+        :param str service: Specifies the name of the service to resolve.
+        :param float weight: Specifies the percentage of traffic sent to the set of service instances specified in the `service` field. Each weight must be a floating integer between `0` and `100`. The smallest representable value is `.01`. The sum of weights across all splits must add up to `100`.
+        :param str namespace: Specifies the namespace to use in the FQDN when resolving the service.
+        :param str partition: Specifies the admin partition to use in the FQDN when resolving the service.
+        :param 'ConfigEntryServiceSplitterSplitRequestHeadersArgs' request_headers: Specifies a set of HTTP-specific header modification rules applied to requests routed with the service split. You cannot configure request headers if the listener protocol is set to `tcp`.
+        :param 'ConfigEntryServiceSplitterSplitResponseHeadersArgs' response_headers: Specifies a set of HTTP-specific header modification rules applied to responses routed with the service split. You cannot configure request headers if the listener protocol is set to `tcp`.
+        :param str service_subset: Specifies a subset of the service to resolve. A service subset assigns a name to a specific subset of discoverable service instances within a datacenter, such as `version2` or `canary`. All services have an unnamed default subset that returns all healthy instances.
+        """
+        pulumi.set(__self__, "service", service)
+        pulumi.set(__self__, "weight", weight)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+        if partition is not None:
+            pulumi.set(__self__, "partition", partition)
+        if request_headers is not None:
+            pulumi.set(__self__, "request_headers", request_headers)
+        if response_headers is not None:
+            pulumi.set(__self__, "response_headers", response_headers)
+        if service_subset is not None:
+            pulumi.set(__self__, "service_subset", service_subset)
+
+    @property
+    @pulumi.getter
+    def service(self) -> str:
+        """
+        Specifies the name of the service to resolve.
+        """
+        return pulumi.get(self, "service")
+
+    @property
+    @pulumi.getter
+    def weight(self) -> float:
+        """
+        Specifies the percentage of traffic sent to the set of service instances specified in the `service` field. Each weight must be a floating integer between `0` and `100`. The smallest representable value is `.01`. The sum of weights across all splits must add up to `100`.
+        """
+        return pulumi.get(self, "weight")
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[str]:
+        """
+        Specifies the namespace to use in the FQDN when resolving the service.
+        """
+        return pulumi.get(self, "namespace")
+
+    @property
+    @pulumi.getter
+    def partition(self) -> Optional[str]:
+        """
+        Specifies the admin partition to use in the FQDN when resolving the service.
+        """
+        return pulumi.get(self, "partition")
+
+    @property
+    @pulumi.getter(name="requestHeaders")
+    def request_headers(self) -> Optional['outputs.ConfigEntryServiceSplitterSplitRequestHeaders']:
+        """
+        Specifies a set of HTTP-specific header modification rules applied to requests routed with the service split. You cannot configure request headers if the listener protocol is set to `tcp`.
+        """
+        return pulumi.get(self, "request_headers")
+
+    @property
+    @pulumi.getter(name="responseHeaders")
+    def response_headers(self) -> Optional['outputs.ConfigEntryServiceSplitterSplitResponseHeaders']:
+        """
+        Specifies a set of HTTP-specific header modification rules applied to responses routed with the service split. You cannot configure request headers if the listener protocol is set to `tcp`.
+        """
+        return pulumi.get(self, "response_headers")
+
+    @property
+    @pulumi.getter(name="serviceSubset")
+    def service_subset(self) -> Optional[str]:
+        """
+        Specifies a subset of the service to resolve. A service subset assigns a name to a specific subset of discoverable service instances within a datacenter, such as `version2` or `canary`. All services have an unnamed default subset that returns all healthy instances.
+        """
+        return pulumi.get(self, "service_subset")
+
+
+@pulumi.output_type
+class ConfigEntryServiceSplitterSplitRequestHeaders(dict):
+    def __init__(__self__, *,
+                 add: Optional[Mapping[str, str]] = None,
+                 removes: Optional[Sequence[str]] = None,
+                 set: Optional[Mapping[str, str]] = None):
+        """
+        :param Mapping[str, str] add: Map of one or more key-value pairs. Defines a set of key-value pairs to add to the header. Use header names as the keys. Header names are not case-sensitive. If header values with the same name already exist, the value is appended and Consul applies both headers.
+        :param Sequence[str] removes: Defines an list of headers to remove. Consul removes only headers containing exact matches. Header names are not case-sensitive.
+        :param Mapping[str, str] set: Map of one or more key-value pairs. Defines a set of key-value pairs to add to the request header or to replace existing header values with. Use header names as the keys. Header names are not case-sensitive. If header values with the same names already exist, Consul replaces the header values.
+        """
+        if add is not None:
+            pulumi.set(__self__, "add", add)
+        if removes is not None:
+            pulumi.set(__self__, "removes", removes)
+        if set is not None:
+            pulumi.set(__self__, "set", set)
+
+    @property
+    @pulumi.getter
+    def add(self) -> Optional[Mapping[str, str]]:
+        """
+        Map of one or more key-value pairs. Defines a set of key-value pairs to add to the header. Use header names as the keys. Header names are not case-sensitive. If header values with the same name already exist, the value is appended and Consul applies both headers.
+        """
+        return pulumi.get(self, "add")
+
+    @property
+    @pulumi.getter
+    def removes(self) -> Optional[Sequence[str]]:
+        """
+        Defines an list of headers to remove. Consul removes only headers containing exact matches. Header names are not case-sensitive.
+        """
+        return pulumi.get(self, "removes")
+
+    @property
+    @pulumi.getter
+    def set(self) -> Optional[Mapping[str, str]]:
+        """
+        Map of one or more key-value pairs. Defines a set of key-value pairs to add to the request header or to replace existing header values with. Use header names as the keys. Header names are not case-sensitive. If header values with the same names already exist, Consul replaces the header values.
+        """
+        return pulumi.get(self, "set")
+
+
+@pulumi.output_type
+class ConfigEntryServiceSplitterSplitResponseHeaders(dict):
+    def __init__(__self__, *,
+                 add: Optional[Mapping[str, str]] = None,
+                 removes: Optional[Sequence[str]] = None,
+                 set: Optional[Mapping[str, str]] = None):
+        """
+        :param Mapping[str, str] add: Map of one or more key-value pairs. Defines a set of key-value pairs to add to the header. Use header names as the keys. Header names are not case-sensitive. If header values with the same name already exist, the value is appended and Consul applies both headers.
+        :param Sequence[str] removes: Defines an list of headers to remove. Consul removes only headers containing exact matches. Header names are not case-sensitive.
+        :param Mapping[str, str] set: Map of one or more key-value pairs. Defines a set of key-value pairs to add to the request header or to replace existing header values with. Use header names as the keys. Header names are not case-sensitive. If header values with the same names already exist, Consul replaces the header values.
+        """
+        if add is not None:
+            pulumi.set(__self__, "add", add)
+        if removes is not None:
+            pulumi.set(__self__, "removes", removes)
+        if set is not None:
+            pulumi.set(__self__, "set", set)
+
+    @property
+    @pulumi.getter
+    def add(self) -> Optional[Mapping[str, str]]:
+        """
+        Map of one or more key-value pairs. Defines a set of key-value pairs to add to the header. Use header names as the keys. Header names are not case-sensitive. If header values with the same name already exist, the value is appended and Consul applies both headers.
+        """
+        return pulumi.get(self, "add")
+
+    @property
+    @pulumi.getter
+    def removes(self) -> Optional[Sequence[str]]:
+        """
+        Defines an list of headers to remove. Consul removes only headers containing exact matches. Header names are not case-sensitive.
+        """
+        return pulumi.get(self, "removes")
+
+    @property
+    @pulumi.getter
+    def set(self) -> Optional[Mapping[str, str]]:
+        """
+        Map of one or more key-value pairs. Defines a set of key-value pairs to add to the request header or to replace existing header values with. Use header names as the keys. Header names are not case-sensitive. If header values with the same names already exist, Consul replaces the header values.
+        """
+        return pulumi.get(self, "set")
 
 
 @pulumi.output_type
@@ -694,26 +3623,18 @@ class ServiceCheck(dict):
                  tcp: Optional[str] = None,
                  tls_skip_verify: Optional[bool] = None):
         """
-        :param str check_id: An ID, *unique per agent*. Will default to *name*
-               if not set.
-        :param str interval: The interval to wait between each health-check
-               invocation.
+        :param str check_id: An ID, *unique per agent*.
+        :param str interval: The interval to wait between each health-check invocation.
         :param str name: The name of the health-check.
-        :param str timeout: Specifies a timeout for outgoing connections in
-               the case of a HTTP or TCP check.
-        :param str deregister_critical_service_after: The time after which
-               the service is automatically deregistered when in the `critical` state.
-               Defaults to `30s`.
-        :param Sequence['ServiceCheckHeaderArgs'] headers: The headers to send for an HTTP check.
-               The attributes of each header is given below.
+        :param str timeout: Specifies a timeout for outgoing connections in the case of a HTTP or TCP check.
+        :param str deregister_critical_service_after: The time after which the service is automatically deregistered when in the `critical` state. Defaults to `30s`.
+        :param Sequence['ServiceCheckHeaderArgs'] headers: The headers to send for an HTTP check. The attributes of each header is given below.
         :param str http: The HTTP endpoint to call for an HTTP check.
-        :param str method: The method to use for HTTP health-checks. Defaults
-               to `GET`.
+        :param str method: The method to use for HTTP health-checks. Defaults to `GET`.
         :param str notes: An opaque field meant to hold human readable text.
         :param str status: The initial health-check status.
         :param str tcp: The TCP address and port to connect to for a TCP check.
-        :param bool tls_skip_verify: Whether to deactivate certificate
-               verification for HTTP health-checks. Defaults to `false`.
+        :param bool tls_skip_verify: Whether to deactivate certificate verification for HTTP health-checks. Defaults to `false`.
         """
         pulumi.set(__self__, "check_id", check_id)
         pulumi.set(__self__, "interval", interval)
@@ -740,8 +3661,7 @@ class ServiceCheck(dict):
     @pulumi.getter(name="checkId")
     def check_id(self) -> str:
         """
-        An ID, *unique per agent*. Will default to *name*
-        if not set.
+        An ID, *unique per agent*.
         """
         return pulumi.get(self, "check_id")
 
@@ -749,8 +3669,7 @@ class ServiceCheck(dict):
     @pulumi.getter
     def interval(self) -> str:
         """
-        The interval to wait between each health-check
-        invocation.
+        The interval to wait between each health-check invocation.
         """
         return pulumi.get(self, "interval")
 
@@ -766,8 +3685,7 @@ class ServiceCheck(dict):
     @pulumi.getter
     def timeout(self) -> str:
         """
-        Specifies a timeout for outgoing connections in
-        the case of a HTTP or TCP check.
+        Specifies a timeout for outgoing connections in the case of a HTTP or TCP check.
         """
         return pulumi.get(self, "timeout")
 
@@ -775,9 +3693,7 @@ class ServiceCheck(dict):
     @pulumi.getter(name="deregisterCriticalServiceAfter")
     def deregister_critical_service_after(self) -> Optional[str]:
         """
-        The time after which
-        the service is automatically deregistered when in the `critical` state.
-        Defaults to `30s`.
+        The time after which the service is automatically deregistered when in the `critical` state. Defaults to `30s`.
         """
         return pulumi.get(self, "deregister_critical_service_after")
 
@@ -785,8 +3701,7 @@ class ServiceCheck(dict):
     @pulumi.getter
     def headers(self) -> Optional[Sequence['outputs.ServiceCheckHeader']]:
         """
-        The headers to send for an HTTP check.
-        The attributes of each header is given below.
+        The headers to send for an HTTP check. The attributes of each header is given below.
         """
         return pulumi.get(self, "headers")
 
@@ -802,8 +3717,7 @@ class ServiceCheck(dict):
     @pulumi.getter
     def method(self) -> Optional[str]:
         """
-        The method to use for HTTP health-checks. Defaults
-        to `GET`.
+        The method to use for HTTP health-checks. Defaults to `GET`.
         """
         return pulumi.get(self, "method")
 
@@ -835,8 +3749,7 @@ class ServiceCheck(dict):
     @pulumi.getter(name="tlsSkipVerify")
     def tls_skip_verify(self) -> Optional[bool]:
         """
-        Whether to deactivate certificate
-        verification for HTTP health-checks. Defaults to `false`.
+        Whether to deactivate certificate verification for HTTP health-checks. Defaults to `false`.
         """
         return pulumi.get(self, "tls_skip_verify")
 
@@ -913,9 +3826,6 @@ class GetAclRolePolicyResult(dict):
     def __init__(__self__, *,
                  id: str,
                  name: str):
-        """
-        :param str name: The name of the ACL Role.
-        """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
 
@@ -927,9 +3837,6 @@ class GetAclRolePolicyResult(dict):
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        The name of the ACL Role.
-        """
         return pulumi.get(self, "name")
 
 
@@ -952,6 +3859,44 @@ class GetAclRoleServiceIdentityResult(dict):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[str]:
         return pulumi.get(self, "service_name")
+
+
+@pulumi.output_type
+class GetAclRoleTemplatedPolicyResult(dict):
+    def __init__(__self__, *,
+                 datacenters: Sequence[str],
+                 template_name: str,
+                 template_variables: Sequence['outputs.GetAclRoleTemplatedPolicyTemplateVariableResult']):
+        pulumi.set(__self__, "datacenters", datacenters)
+        pulumi.set(__self__, "template_name", template_name)
+        pulumi.set(__self__, "template_variables", template_variables)
+
+    @property
+    @pulumi.getter
+    def datacenters(self) -> Sequence[str]:
+        return pulumi.get(self, "datacenters")
+
+    @property
+    @pulumi.getter(name="templateName")
+    def template_name(self) -> str:
+        return pulumi.get(self, "template_name")
+
+    @property
+    @pulumi.getter(name="templateVariables")
+    def template_variables(self) -> Sequence['outputs.GetAclRoleTemplatedPolicyTemplateVariableResult']:
+        return pulumi.get(self, "template_variables")
+
+
+@pulumi.output_type
+class GetAclRoleTemplatedPolicyTemplateVariableResult(dict):
+    def __init__(__self__, *,
+                 name: str):
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
@@ -1028,6 +3973,44 @@ class GetAclTokenServiceIdentityResult(dict):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
         return pulumi.get(self, "service_name")
+
+
+@pulumi.output_type
+class GetAclTokenTemplatedPolicyResult(dict):
+    def __init__(__self__, *,
+                 datacenters: Sequence[str],
+                 template_name: str,
+                 template_variables: Sequence['outputs.GetAclTokenTemplatedPolicyTemplateVariableResult']):
+        pulumi.set(__self__, "datacenters", datacenters)
+        pulumi.set(__self__, "template_name", template_name)
+        pulumi.set(__self__, "template_variables", template_variables)
+
+    @property
+    @pulumi.getter
+    def datacenters(self) -> Sequence[str]:
+        return pulumi.get(self, "datacenters")
+
+    @property
+    @pulumi.getter(name="templateName")
+    def template_name(self) -> str:
+        return pulumi.get(self, "template_name")
+
+    @property
+    @pulumi.getter(name="templateVariables")
+    def template_variables(self) -> Sequence['outputs.GetAclTokenTemplatedPolicyTemplateVariableResult']:
+        return pulumi.get(self, "template_variables")
+
+
+@pulumi.output_type
+class GetAclTokenTemplatedPolicyTemplateVariableResult(dict):
+    def __init__(__self__, *,
+                 name: str):
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type

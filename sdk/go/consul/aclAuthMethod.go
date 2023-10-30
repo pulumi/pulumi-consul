@@ -13,12 +13,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// Starting with Consul 1.5.0, the AclAuthMethod resource can be used to
-// managed [Consul ACL auth methods](https://www.consul.io/docs/acl/auth-methods).
+// Starting with Consul 1.5.0, the `AclAuthMethod` resource can be used to managed [Consul ACL auth methods](https://www.consul.io/docs/acl/auth-methods).
 //
 // ## Example Usage
 //
 // Define a `kubernetes` auth method:
+//
 // ```go
 // package main
 //
@@ -57,6 +57,7 @@ import (
 // ```
 //
 // Define a `jwt` auth method:
+//
 // ```go
 // package main
 //
@@ -72,20 +73,32 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			tmpJSON0, err := json.Marshal(map[string]interface{}{
-//				"JWKSURL":          "https://example.com/identity/oidc/.well-known/keys",
-//				"JWTSupportedAlgs": "RS256",
-//				"BoundIssuer":      "https://example.com",
-//				"ClaimMappings": map[string]interface{}{
-//					"subject": "subject",
+//				"AllowedRedirectURIs": []string{
+//					"http://localhost:8550/oidc/callback",
+//					"http://localhost:8500/ui/oidc/callback",
 //				},
+//				"BoundAudiences": []string{
+//					"V1RPi2MYptMV1RPi2MYptMV1RPi2MYpt",
+//				},
+//				"ClaimMappings": map[string]interface{}{
+//					"http://example.com/first_name": "first_name",
+//					"http://example.com/last_name":  "last_name",
+//				},
+//				"ListClaimMappings": map[string]interface{}{
+//					"http://consul.com/groups": "groups",
+//				},
+//				"OIDCClientID":     "V1RPi2MYptMV1RPi2MYptMV1RPi2MYpt",
+//				"OIDCClientSecret": "...(omitted)...",
+//				"OIDCDiscoveryURL": "https://my-corp-app-name.auth0.com/",
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			json0 := string(tmpJSON0)
-//			_, err = consul.NewAclAuthMethod(ctx, "minikube", &consul.AclAuthMethodArgs{
-//				Type:       pulumi.String("jwt"),
-//				ConfigJson: pulumi.String(json0),
+//			_, err = consul.NewAclAuthMethod(ctx, "oidc", &consul.AclAuthMethodArgs{
+//				Type:        pulumi.String("oidc"),
+//				MaxTokenTtl: pulumi.String("5m"),
+//				ConfigJson:  pulumi.String(json0),
 //			})
 //			if err != nil {
 //				return err
@@ -98,33 +111,27 @@ import (
 type AclAuthMethod struct {
 	pulumi.CustomResourceState
 
-	// The raw configuration for this ACL auth method. This
-	// attribute is deprecated and will be removed in a future version. `configJson`
-	// should be used instead.
+	// The raw configuration for this ACL auth method.
 	//
-	// Deprecated: The config attribute is deprecated, please use config_json instead.
+	// Deprecated: The config attribute is deprecated, please use `config_json` instead.
 	Config pulumi.StringMapOutput `pulumi:"config"`
 	// The raw configuration for this ACL auth method.
 	ConfigJson pulumi.StringPtrOutput `pulumi:"configJson"`
 	// A free form human readable description of the auth method.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// An optional name to use instead of the name
-	// attribute when displaying information about this auth method.
+	// An optional name to use instead of the name attribute when displaying information about this auth method.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
-	// The maximum life of any token created by this
-	// auth method.
+	// The maximum life of any token created by this auth method. **This attribute is required and must be set to a nonzero for the OIDC auth method.**
 	MaxTokenTtl pulumi.StringPtrOutput `pulumi:"maxTokenTtl"`
 	// The name of the ACL auth method.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The namespace in which to create the auth method.
 	Namespace pulumi.StringPtrOutput `pulumi:"namespace"`
-	// A set of rules that control
-	// which namespace tokens created via this auth method will be created within.
+	// A set of rules that control which namespace tokens created via this auth method will be created within.
 	NamespaceRules AclAuthMethodNamespaceRuleArrayOutput `pulumi:"namespaceRules"`
 	// The partition the ACL auth method is associated with.
 	Partition pulumi.StringPtrOutput `pulumi:"partition"`
-	// The kind of token that this auth method
-	// produces. This can be either 'local' or 'global'.
+	// The kind of token that this auth method produces. This can be either 'local' or 'global'.
 	TokenLocality pulumi.StringPtrOutput `pulumi:"tokenLocality"`
 	// The type of the ACL auth method.
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -163,66 +170,54 @@ func GetAclAuthMethod(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AclAuthMethod resources.
 type aclAuthMethodState struct {
-	// The raw configuration for this ACL auth method. This
-	// attribute is deprecated and will be removed in a future version. `configJson`
-	// should be used instead.
+	// The raw configuration for this ACL auth method.
 	//
-	// Deprecated: The config attribute is deprecated, please use config_json instead.
+	// Deprecated: The config attribute is deprecated, please use `config_json` instead.
 	Config map[string]string `pulumi:"config"`
 	// The raw configuration for this ACL auth method.
 	ConfigJson *string `pulumi:"configJson"`
 	// A free form human readable description of the auth method.
 	Description *string `pulumi:"description"`
-	// An optional name to use instead of the name
-	// attribute when displaying information about this auth method.
+	// An optional name to use instead of the name attribute when displaying information about this auth method.
 	DisplayName *string `pulumi:"displayName"`
-	// The maximum life of any token created by this
-	// auth method.
+	// The maximum life of any token created by this auth method. **This attribute is required and must be set to a nonzero for the OIDC auth method.**
 	MaxTokenTtl *string `pulumi:"maxTokenTtl"`
 	// The name of the ACL auth method.
 	Name *string `pulumi:"name"`
 	// The namespace in which to create the auth method.
 	Namespace *string `pulumi:"namespace"`
-	// A set of rules that control
-	// which namespace tokens created via this auth method will be created within.
+	// A set of rules that control which namespace tokens created via this auth method will be created within.
 	NamespaceRules []AclAuthMethodNamespaceRule `pulumi:"namespaceRules"`
 	// The partition the ACL auth method is associated with.
 	Partition *string `pulumi:"partition"`
-	// The kind of token that this auth method
-	// produces. This can be either 'local' or 'global'.
+	// The kind of token that this auth method produces. This can be either 'local' or 'global'.
 	TokenLocality *string `pulumi:"tokenLocality"`
 	// The type of the ACL auth method.
 	Type *string `pulumi:"type"`
 }
 
 type AclAuthMethodState struct {
-	// The raw configuration for this ACL auth method. This
-	// attribute is deprecated and will be removed in a future version. `configJson`
-	// should be used instead.
+	// The raw configuration for this ACL auth method.
 	//
-	// Deprecated: The config attribute is deprecated, please use config_json instead.
+	// Deprecated: The config attribute is deprecated, please use `config_json` instead.
 	Config pulumi.StringMapInput
 	// The raw configuration for this ACL auth method.
 	ConfigJson pulumi.StringPtrInput
 	// A free form human readable description of the auth method.
 	Description pulumi.StringPtrInput
-	// An optional name to use instead of the name
-	// attribute when displaying information about this auth method.
+	// An optional name to use instead of the name attribute when displaying information about this auth method.
 	DisplayName pulumi.StringPtrInput
-	// The maximum life of any token created by this
-	// auth method.
+	// The maximum life of any token created by this auth method. **This attribute is required and must be set to a nonzero for the OIDC auth method.**
 	MaxTokenTtl pulumi.StringPtrInput
 	// The name of the ACL auth method.
 	Name pulumi.StringPtrInput
 	// The namespace in which to create the auth method.
 	Namespace pulumi.StringPtrInput
-	// A set of rules that control
-	// which namespace tokens created via this auth method will be created within.
+	// A set of rules that control which namespace tokens created via this auth method will be created within.
 	NamespaceRules AclAuthMethodNamespaceRuleArrayInput
 	// The partition the ACL auth method is associated with.
 	Partition pulumi.StringPtrInput
-	// The kind of token that this auth method
-	// produces. This can be either 'local' or 'global'.
+	// The kind of token that this auth method produces. This can be either 'local' or 'global'.
 	TokenLocality pulumi.StringPtrInput
 	// The type of the ACL auth method.
 	Type pulumi.StringPtrInput
@@ -233,33 +228,27 @@ func (AclAuthMethodState) ElementType() reflect.Type {
 }
 
 type aclAuthMethodArgs struct {
-	// The raw configuration for this ACL auth method. This
-	// attribute is deprecated and will be removed in a future version. `configJson`
-	// should be used instead.
+	// The raw configuration for this ACL auth method.
 	//
-	// Deprecated: The config attribute is deprecated, please use config_json instead.
+	// Deprecated: The config attribute is deprecated, please use `config_json` instead.
 	Config map[string]string `pulumi:"config"`
 	// The raw configuration for this ACL auth method.
 	ConfigJson *string `pulumi:"configJson"`
 	// A free form human readable description of the auth method.
 	Description *string `pulumi:"description"`
-	// An optional name to use instead of the name
-	// attribute when displaying information about this auth method.
+	// An optional name to use instead of the name attribute when displaying information about this auth method.
 	DisplayName *string `pulumi:"displayName"`
-	// The maximum life of any token created by this
-	// auth method.
+	// The maximum life of any token created by this auth method. **This attribute is required and must be set to a nonzero for the OIDC auth method.**
 	MaxTokenTtl *string `pulumi:"maxTokenTtl"`
 	// The name of the ACL auth method.
 	Name *string `pulumi:"name"`
 	// The namespace in which to create the auth method.
 	Namespace *string `pulumi:"namespace"`
-	// A set of rules that control
-	// which namespace tokens created via this auth method will be created within.
+	// A set of rules that control which namespace tokens created via this auth method will be created within.
 	NamespaceRules []AclAuthMethodNamespaceRule `pulumi:"namespaceRules"`
 	// The partition the ACL auth method is associated with.
 	Partition *string `pulumi:"partition"`
-	// The kind of token that this auth method
-	// produces. This can be either 'local' or 'global'.
+	// The kind of token that this auth method produces. This can be either 'local' or 'global'.
 	TokenLocality *string `pulumi:"tokenLocality"`
 	// The type of the ACL auth method.
 	Type string `pulumi:"type"`
@@ -267,33 +256,27 @@ type aclAuthMethodArgs struct {
 
 // The set of arguments for constructing a AclAuthMethod resource.
 type AclAuthMethodArgs struct {
-	// The raw configuration for this ACL auth method. This
-	// attribute is deprecated and will be removed in a future version. `configJson`
-	// should be used instead.
+	// The raw configuration for this ACL auth method.
 	//
-	// Deprecated: The config attribute is deprecated, please use config_json instead.
+	// Deprecated: The config attribute is deprecated, please use `config_json` instead.
 	Config pulumi.StringMapInput
 	// The raw configuration for this ACL auth method.
 	ConfigJson pulumi.StringPtrInput
 	// A free form human readable description of the auth method.
 	Description pulumi.StringPtrInput
-	// An optional name to use instead of the name
-	// attribute when displaying information about this auth method.
+	// An optional name to use instead of the name attribute when displaying information about this auth method.
 	DisplayName pulumi.StringPtrInput
-	// The maximum life of any token created by this
-	// auth method.
+	// The maximum life of any token created by this auth method. **This attribute is required and must be set to a nonzero for the OIDC auth method.**
 	MaxTokenTtl pulumi.StringPtrInput
 	// The name of the ACL auth method.
 	Name pulumi.StringPtrInput
 	// The namespace in which to create the auth method.
 	Namespace pulumi.StringPtrInput
-	// A set of rules that control
-	// which namespace tokens created via this auth method will be created within.
+	// A set of rules that control which namespace tokens created via this auth method will be created within.
 	NamespaceRules AclAuthMethodNamespaceRuleArrayInput
 	// The partition the ACL auth method is associated with.
 	Partition pulumi.StringPtrInput
-	// The kind of token that this auth method
-	// produces. This can be either 'local' or 'global'.
+	// The kind of token that this auth method produces. This can be either 'local' or 'global'.
 	TokenLocality pulumi.StringPtrInput
 	// The type of the ACL auth method.
 	Type pulumi.StringInput
@@ -410,11 +393,9 @@ func (o AclAuthMethodOutput) ToOutput(ctx context.Context) pulumix.Output[*AclAu
 	}
 }
 
-// The raw configuration for this ACL auth method. This
-// attribute is deprecated and will be removed in a future version. `configJson`
-// should be used instead.
+// The raw configuration for this ACL auth method.
 //
-// Deprecated: The config attribute is deprecated, please use config_json instead.
+// Deprecated: The config attribute is deprecated, please use `config_json` instead.
 func (o AclAuthMethodOutput) Config() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AclAuthMethod) pulumi.StringMapOutput { return v.Config }).(pulumi.StringMapOutput)
 }
@@ -429,14 +410,12 @@ func (o AclAuthMethodOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AclAuthMethod) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// An optional name to use instead of the name
-// attribute when displaying information about this auth method.
+// An optional name to use instead of the name attribute when displaying information about this auth method.
 func (o AclAuthMethodOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AclAuthMethod) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// The maximum life of any token created by this
-// auth method.
+// The maximum life of any token created by this auth method. **This attribute is required and must be set to a nonzero for the OIDC auth method.**
 func (o AclAuthMethodOutput) MaxTokenTtl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AclAuthMethod) pulumi.StringPtrOutput { return v.MaxTokenTtl }).(pulumi.StringPtrOutput)
 }
@@ -451,8 +430,7 @@ func (o AclAuthMethodOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AclAuthMethod) pulumi.StringPtrOutput { return v.Namespace }).(pulumi.StringPtrOutput)
 }
 
-// A set of rules that control
-// which namespace tokens created via this auth method will be created within.
+// A set of rules that control which namespace tokens created via this auth method will be created within.
 func (o AclAuthMethodOutput) NamespaceRules() AclAuthMethodNamespaceRuleArrayOutput {
 	return o.ApplyT(func(v *AclAuthMethod) AclAuthMethodNamespaceRuleArrayOutput { return v.NamespaceRules }).(AclAuthMethodNamespaceRuleArrayOutput)
 }
@@ -462,8 +440,7 @@ func (o AclAuthMethodOutput) Partition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AclAuthMethod) pulumi.StringPtrOutput { return v.Partition }).(pulumi.StringPtrOutput)
 }
 
-// The kind of token that this auth method
-// produces. This can be either 'local' or 'global'.
+// The kind of token that this auth method produces. This can be either 'local' or 'global'.
 func (o AclAuthMethodOutput) TokenLocality() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AclAuthMethod) pulumi.StringPtrOutput { return v.TokenLocality }).(pulumi.StringPtrOutput)
 }

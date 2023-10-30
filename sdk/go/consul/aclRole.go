@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// Starting with Consul 1.5.0, the AclRole can be used to managed Consul ACL roles.
+// The `AclRole` can be used to manage [Consul ACL roles](https://developer.hashicorp.com/consul/docs/security/acl/acl-roles).
 //
 // ## Example Usage
 //
@@ -29,10 +29,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := consul.NewAclPolicy(ctx, "read-policy", &consul.AclPolicyArgs{
+//				Rules: pulumi.String("node \"\" { policy = \"read\" }"),
 //				Datacenters: pulumi.StringArray{
 //					pulumi.String("dc1"),
 //				},
-//				Rules: pulumi.String("node \"\" { policy = \"read\" }"),
 //			})
 //			if err != nil {
 //				return err
@@ -59,8 +59,6 @@ import (
 //
 // ## Import
 //
-// `consul_acl_role` can be imported:
-//
 // ```sh
 //
 //	$ pulumi import consul:index/aclRole:AclRole read 816a195f-6cb1-2e8d-92af-3011ae706318
@@ -71,7 +69,7 @@ type AclRole struct {
 
 	// A free form human readable description of the role.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The name of the ACL role.
+	// The name of node, workload identity or service.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The namespace to create the role within.
 	Namespace pulumi.StringPtrOutput `pulumi:"namespace"`
@@ -79,10 +77,12 @@ type AclRole struct {
 	NodeIdentities AclRoleNodeIdentityArrayOutput `pulumi:"nodeIdentities"`
 	// The partition the ACL role is associated with.
 	Partition pulumi.StringPtrOutput `pulumi:"partition"`
-	// The list of policies that should be applied to the role.
+	// The list of policies that should be applied to the role. Both the policy ID or its name can be used.
 	Policies pulumi.StringArrayOutput `pulumi:"policies"`
 	// The list of service identities that should be applied to the role.
 	ServiceIdentities AclRoleServiceIdentityArrayOutput `pulumi:"serviceIdentities"`
+	// The list of templated policies that should be applied to the token.
+	TemplatedPolicies AclRoleTemplatedPolicyArrayOutput `pulumi:"templatedPolicies"`
 }
 
 // NewAclRole registers a new resource with the given unique name, arguments, and options.
@@ -117,7 +117,7 @@ func GetAclRole(ctx *pulumi.Context,
 type aclRoleState struct {
 	// A free form human readable description of the role.
 	Description *string `pulumi:"description"`
-	// The name of the ACL role.
+	// The name of node, workload identity or service.
 	Name *string `pulumi:"name"`
 	// The namespace to create the role within.
 	Namespace *string `pulumi:"namespace"`
@@ -125,16 +125,18 @@ type aclRoleState struct {
 	NodeIdentities []AclRoleNodeIdentity `pulumi:"nodeIdentities"`
 	// The partition the ACL role is associated with.
 	Partition *string `pulumi:"partition"`
-	// The list of policies that should be applied to the role.
+	// The list of policies that should be applied to the role. Both the policy ID or its name can be used.
 	Policies []string `pulumi:"policies"`
 	// The list of service identities that should be applied to the role.
 	ServiceIdentities []AclRoleServiceIdentity `pulumi:"serviceIdentities"`
+	// The list of templated policies that should be applied to the token.
+	TemplatedPolicies []AclRoleTemplatedPolicy `pulumi:"templatedPolicies"`
 }
 
 type AclRoleState struct {
 	// A free form human readable description of the role.
 	Description pulumi.StringPtrInput
-	// The name of the ACL role.
+	// The name of node, workload identity or service.
 	Name pulumi.StringPtrInput
 	// The namespace to create the role within.
 	Namespace pulumi.StringPtrInput
@@ -142,10 +144,12 @@ type AclRoleState struct {
 	NodeIdentities AclRoleNodeIdentityArrayInput
 	// The partition the ACL role is associated with.
 	Partition pulumi.StringPtrInput
-	// The list of policies that should be applied to the role.
+	// The list of policies that should be applied to the role. Both the policy ID or its name can be used.
 	Policies pulumi.StringArrayInput
 	// The list of service identities that should be applied to the role.
 	ServiceIdentities AclRoleServiceIdentityArrayInput
+	// The list of templated policies that should be applied to the token.
+	TemplatedPolicies AclRoleTemplatedPolicyArrayInput
 }
 
 func (AclRoleState) ElementType() reflect.Type {
@@ -155,7 +159,7 @@ func (AclRoleState) ElementType() reflect.Type {
 type aclRoleArgs struct {
 	// A free form human readable description of the role.
 	Description *string `pulumi:"description"`
-	// The name of the ACL role.
+	// The name of node, workload identity or service.
 	Name *string `pulumi:"name"`
 	// The namespace to create the role within.
 	Namespace *string `pulumi:"namespace"`
@@ -163,17 +167,19 @@ type aclRoleArgs struct {
 	NodeIdentities []AclRoleNodeIdentity `pulumi:"nodeIdentities"`
 	// The partition the ACL role is associated with.
 	Partition *string `pulumi:"partition"`
-	// The list of policies that should be applied to the role.
+	// The list of policies that should be applied to the role. Both the policy ID or its name can be used.
 	Policies []string `pulumi:"policies"`
 	// The list of service identities that should be applied to the role.
 	ServiceIdentities []AclRoleServiceIdentity `pulumi:"serviceIdentities"`
+	// The list of templated policies that should be applied to the token.
+	TemplatedPolicies []AclRoleTemplatedPolicy `pulumi:"templatedPolicies"`
 }
 
 // The set of arguments for constructing a AclRole resource.
 type AclRoleArgs struct {
 	// A free form human readable description of the role.
 	Description pulumi.StringPtrInput
-	// The name of the ACL role.
+	// The name of node, workload identity or service.
 	Name pulumi.StringPtrInput
 	// The namespace to create the role within.
 	Namespace pulumi.StringPtrInput
@@ -181,10 +187,12 @@ type AclRoleArgs struct {
 	NodeIdentities AclRoleNodeIdentityArrayInput
 	// The partition the ACL role is associated with.
 	Partition pulumi.StringPtrInput
-	// The list of policies that should be applied to the role.
+	// The list of policies that should be applied to the role. Both the policy ID or its name can be used.
 	Policies pulumi.StringArrayInput
 	// The list of service identities that should be applied to the role.
 	ServiceIdentities AclRoleServiceIdentityArrayInput
+	// The list of templated policies that should be applied to the token.
+	TemplatedPolicies AclRoleTemplatedPolicyArrayInput
 }
 
 func (AclRoleArgs) ElementType() reflect.Type {
@@ -303,7 +311,7 @@ func (o AclRoleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AclRole) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The name of the ACL role.
+// The name of node, workload identity or service.
 func (o AclRoleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AclRole) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -323,7 +331,7 @@ func (o AclRoleOutput) Partition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AclRole) pulumi.StringPtrOutput { return v.Partition }).(pulumi.StringPtrOutput)
 }
 
-// The list of policies that should be applied to the role.
+// The list of policies that should be applied to the role. Both the policy ID or its name can be used.
 func (o AclRoleOutput) Policies() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AclRole) pulumi.StringArrayOutput { return v.Policies }).(pulumi.StringArrayOutput)
 }
@@ -331,6 +339,11 @@ func (o AclRoleOutput) Policies() pulumi.StringArrayOutput {
 // The list of service identities that should be applied to the role.
 func (o AclRoleOutput) ServiceIdentities() AclRoleServiceIdentityArrayOutput {
 	return o.ApplyT(func(v *AclRole) AclRoleServiceIdentityArrayOutput { return v.ServiceIdentities }).(AclRoleServiceIdentityArrayOutput)
+}
+
+// The list of templated policies that should be applied to the token.
+func (o AclRoleOutput) TemplatedPolicies() AclRoleTemplatedPolicyArrayOutput {
+	return o.ApplyT(func(v *AclRole) AclRoleTemplatedPolicyArrayOutput { return v.TemplatedPolicies }).(AclRoleTemplatedPolicyArrayOutput)
 }
 
 type AclRoleArrayOutput struct{ *pulumi.OutputState }
