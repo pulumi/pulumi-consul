@@ -8,3 +8,4 @@ plugins:
   - name: vault 
     version: "4.0.0"
 team: ecosystem
+javaGenVersion: "v0.9.8"
