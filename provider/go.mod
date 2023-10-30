@@ -4,7 +4,7 @@ go 1.21
 
 require (
 	github.com/hashicorp/terraform-plugin-sdk v1.17.2
-	github.com/hashicorp/terraform-provider-consul v1.1.1-0.20230724083048-ba52b81c9d21
+	github.com/hashicorp/terraform-provider-consul v1.1.1-0.20231025144006-0c25a13e5f46
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.63.2
 	github.com/pulumi/pulumi/sdk/v3 v3.91.1
 )
@@ -99,7 +99,7 @@ require (
 	github.com/googleapis/gax-go/v2 v2.11.0 // indirect
 	github.com/gorilla/mux v1.8.0 // indirect
 	github.com/grpc-ecosystem/grpc-opentracing v0.0.0-20180507213350-8e809c8a8645 // indirect
-	github.com/hashicorp/consul/api v1.23.0 // indirect
+	github.com/hashicorp/consul/api v1.26.1-rc1 // indirect
 	github.com/hashicorp/errwrap v1.1.0 // indirect
 	github.com/hashicorp/go-checkpoint v0.5.0 // indirect
 	github.com/hashicorp/go-cleanhttp v0.5.2 // indirect

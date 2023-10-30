@@ -17,16 +17,14 @@ package consul
 import (
 	"fmt"
 	"path/filepath"
-	"unicode"
 
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/hashicorp/terraform-provider-consul/consul"
-	"github.com/pulumi/pulumi-consul/provider/v3/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
+	tks "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv1 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v1"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
+
+	"github.com/pulumi/pulumi-consul/provider/v3/pkg/version"
 )
 
 // all of the token components used below.
@@ -38,77 +36,41 @@ const (
 	mainMod = "index"
 )
 
-func makeMember(mod string, mem string) tokens.ModuleMember {
-	return tokens.ModuleMember(mainPkg + ":" + mod + ":" + mem)
-}
-
-func makeType(mod string, typ string) tokens.Type {
-	return tokens.Type(makeMember(mod, typ))
-}
-
-func makeDataSource(mod string, res string) tokens.ModuleMember {
-	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
-	return makeMember(mod+"/"+fn, res)
-}
-
-func makeResource(mod string, res string) tokens.Type {
-	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
-	return makeType(mod+"/"+fn, res)
-}
-
-func preConfigureCallback(vars resource.PropertyMap, c shim.ResourceConfig) error {
-	return nil
-}
-
 // Provider returns additional overlaid schema and metadata associated with the provider.
 func Provider() tfbridge.ProviderInfo {
 	p := shimv1.NewProvider(consul.Provider().(*schema.Provider))
 	prov := tfbridge.ProviderInfo{
-		P:                    p,
-		Name:                 "consul",
-		Description:          "A Pulumi package for creating and managing consul resources.",
-		Keywords:             []string{"pulumi", "consul"},
-		License:              "Apache-2.0",
-		Homepage:             "https://pulumi.io",
-		Repository:           "https://github.com/pulumi/pulumi-consul",
-		GitHubOrg:            "hashicorp",
-		Config:               map[string]*tfbridge.SchemaInfo{},
-		PreConfigureCallback: preConfigureCallback,
+		P:           p,
+		Name:        "consul",
+		Description: "A Pulumi package for creating and managing consul resources.",
+		Keywords:    []string{"pulumi", "consul"},
+		License:     "Apache-2.0",
+		Homepage:    "https://pulumi.io",
+		Repository:  "https://github.com/pulumi/pulumi-consul",
+		GitHubOrg:   "hashicorp",
+		Config:      map[string]*tfbridge.SchemaInfo{},
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"consul_acl_auth_method": {
-				Tok: makeResource(mainMod, "AclAuthMethod"),
 				Docs: &tfbridge.DocInfo{
 					Source: "acl_auth_method.markdown",
 				},
 			},
 			"consul_acl_binding_rule": {
-				Tok: makeResource(mainMod, "AclBindingRule"),
 				Docs: &tfbridge.DocInfo{
 					Source: "acl_binding_rule.markdown",
 				},
 			},
-			"consul_acl_policy": {Tok: makeResource(mainMod, "AclPolicy")},
 			"consul_acl_role": {
-				Tok: makeResource(mainMod, "AclRole"),
 				Docs: &tfbridge.DocInfo{
 					Source: "acl_role.markdown",
 				},
 			},
-			"consul_acl_token":                   {Tok: makeResource(mainMod, "AclToken")},
-			"consul_acl_token_policy_attachment": {Tok: makeResource(mainMod, "AclTokenPolicyAttachment")},
-			"consul_acl_token_role_attachment":   {Tok: makeResource(mainMod, "AclTokenRoleAttachment")},
-			"consul_agent_service":               {Tok: makeResource(mainMod, "AgentService")},
-			"consul_autopilot_config":            {Tok: makeResource(mainMod, "AutopilotConfig")},
-			"consul_catalog_entry":               {Tok: makeResource(mainMod, "CatalogEntry")},
 			"consul_config_entry": {
-				Tok: makeResource(mainMod, "ConfigEntry"),
 				Docs: &tfbridge.DocInfo{
 					Source: "config_entry.markdown",
 				},
 			},
-			"consul_intention": {Tok: makeResource(mainMod, "Intention")},
 			"consul_key_prefix": {
-				Tok: makeResource(mainMod, "KeyPrefix"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"subkey": {
 						Name: "subkeyCollection",
@@ -116,38 +78,25 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 			"consul_keys": {
-				Tok: makeResource(mainMod, "Keys"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"key": {
 						CSharpName: "KeysCollection",
 					},
 				},
 			},
-			"consul_node": {Tok: makeResource(mainMod, "Node")},
 			"consul_prepared_query": {
-				Tok: makeResource(mainMod, "PreparedQuery"),
 				Docs: &tfbridge.DocInfo{
 					Source: "prepared_query.markdown",
 				},
 			},
-			"consul_service": {Tok: makeResource(mainMod, "Service")},
 			"consul_license": {
-				Tok: makeResource(mainMod, "License"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"license": {
 						CSharpName: "ConsulLicense",
 					},
 				},
 			},
-			"consul_namespace":                   {Tok: makeResource(mainMod, "Namespace")},
-			"consul_namespace_policy_attachment": {Tok: makeResource(mainMod, "NamespacePolicyAttachment")},
-			"consul_namespace_role_attachment":   {Tok: makeResource(mainMod, "NamespaceRoleAttachment")},
-			"consul_network_area":                {Tok: makeResource(mainMod, "NetworkArea")},
-			"consul_certificate_authority":       {Tok: makeResource(mainMod, "CertificateAuthority")},
-			"consul_admin_partition":             {Tok: makeResource(mainMod, "AdminPartition")},
-			"consul_peering":                     {Tok: makeResource(mainMod, "Peering")},
 			"consul_peering_token": {
-				Tok: makeResource(mainMod, "PeeringToken"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"peering_token": {
 						CSharpName: "Token",
@@ -156,54 +105,31 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
-			"consul_acl_auth_method":     {Tok: makeDataSource(mainMod, "getAclAuthMethod")},
-			"consul_acl_policy":          {Tok: makeDataSource(mainMod, "getAclPolicy")},
-			"consul_acl_role":            {Tok: makeDataSource(mainMod, "getAclRole")},
-			"consul_acl_token":           {Tok: makeDataSource(mainMod, "getAclToken")},
-			"consul_acl_token_secret_id": {Tok: makeDataSource(mainMod, "getAclTokenSecretId")},
-			"consul_agent_config":        {Tok: makeDataSource(mainMod, "getAgentConfig")},
-			"consul_agent_self":          {Tok: makeDataSource(mainMod, "getAgentSelf")},
-			"consul_autopilot_health":    {Tok: makeDataSource(mainMod, "getAutopilotHealth")},
 			"consul_catalog_nodes": {
-				Tok: makeDataSource(mainMod, "getCatalogNodes"),
 				Docs: &tfbridge.DocInfo{
 					Source: "nodes.md",
 				},
 				DeprecationMessage: "getCatalogNodes has been deprecated in favor of getNodes",
 			},
 			"consul_catalog_service": {
-				Tok: makeDataSource(mainMod, "getCatalogService"),
 				Docs: &tfbridge.DocInfo{
 					Source: "service.md",
 				},
 				DeprecationMessage: "getCatalogService has been deprecated in favor of getService",
 			},
 			"consul_catalog_services": {
-				Tok: makeDataSource(mainMod, "getCatalogServices"),
 				Docs: &tfbridge.DocInfo{
 					Source: "services.md",
 				},
 				DeprecationMessage: "getCatalogServices has been deprecated in favor of getServices",
 			},
-			"consul_config_entry": {Tok: makeDataSource(mainMod, "getConfigEntry")},
 			"consul_key_prefix": {
-				Tok: makeDataSource(mainMod, "getKeyPrefix"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"subkey": {
 						Name: "subkeyCollection",
 					},
 				},
 			},
-			"consul_keys":                 {Tok: makeDataSource(mainMod, "getKeys")},
-			"consul_nodes":                {Tok: makeDataSource(mainMod, "getNodes")},
-			"consul_service":              {Tok: makeDataSource(mainMod, "getService")},
-			"consul_service_health":       {Tok: makeDataSource(mainMod, "getServiceHealth")},
-			"consul_services":             {Tok: makeDataSource(mainMod, "getServices")},
-			"consul_network_area_members": {Tok: makeDataSource(mainMod, "getNetworkAreaMembers")},
-			"consul_network_segments":     {Tok: makeDataSource(mainMod, "getNetworkSegments")},
-			"consul_datacenters":          {Tok: makeDataSource(mainMod, "getDatacenters")},
-			"consul_peering":              {Tok: makeDataSource(mainMod, "getPeering")},
-			"consul_peerings":             {Tok: makeDataSource(mainMod, "getPeerings")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{
@@ -242,6 +168,8 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		},
 	}
+
+	prov.MustComputeTokens(tks.SingleModule("consul_", mainMod, tks.MakeStandard(mainPkg)))
 
 	prov.SetAutonaming(255, "-")
 
