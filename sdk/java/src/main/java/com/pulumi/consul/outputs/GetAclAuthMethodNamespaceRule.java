@@ -49,10 +49,10 @@ public final class GetAclAuthMethodNamespaceRule {
             return this;
         }
         public GetAclAuthMethodNamespaceRule build() {
-            final var o = new GetAclAuthMethodNamespaceRule();
-            o.bindNamespace = bindNamespace;
-            o.selector = selector;
-            return o;
+            final var _resultValue = new GetAclAuthMethodNamespaceRule();
+            _resultValue.bindNamespace = bindNamespace;
+            _resultValue.selector = selector;
+            return _resultValue;
         }
     }
 }

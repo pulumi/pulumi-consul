@@ -107,13 +107,13 @@ public final class GetNodesNode {
             return this;
         }
         public GetNodesNode build() {
-            final var o = new GetNodesNode();
-            o.address = address;
-            o.id = id;
-            o.meta = meta;
-            o.name = name;
-            o.taggedAddresses = taggedAddresses;
-            return o;
+            final var _resultValue = new GetNodesNode();
+            _resultValue.address = address;
+            _resultValue.id = id;
+            _resultValue.meta = meta;
+            _resultValue.name = name;
+            _resultValue.taggedAddresses = taggedAddresses;
+            return _resultValue;
         }
     }
 }

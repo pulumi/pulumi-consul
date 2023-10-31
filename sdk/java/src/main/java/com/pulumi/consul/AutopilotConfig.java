@@ -63,7 +63,7 @@ public class AutopilotConfig extends com.pulumi.resources.CustomResource {
      * replacement comes online. Defaults to true.
      * 
      */
-    @Export(name="cleanupDeadServers", type=Boolean.class, parameters={})
+    @Export(name="cleanupDeadServers", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> cleanupDeadServers;
 
     /**
@@ -79,7 +79,7 @@ public class AutopilotConfig extends com.pulumi.resources.CustomResource {
      * default datacenter and the datacenter in the provider setup.
      * 
      */
-    @Export(name="datacenter", type=String.class, parameters={})
+    @Export(name="datacenter", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> datacenter;
 
     /**
@@ -95,7 +95,7 @@ public class AutopilotConfig extends com.pulumi.resources.CustomResource {
      * Defaults to false.
      * 
      */
-    @Export(name="disableUpgradeMigration", type=Boolean.class, parameters={})
+    @Export(name="disableUpgradeMigration", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> disableUpgradeMigration;
 
     /**
@@ -111,7 +111,7 @@ public class AutopilotConfig extends com.pulumi.resources.CustomResource {
      * considered as unhealthy and will be removed. Defaults to `&#34;200ms&#34;`.
      * 
      */
-    @Export(name="lastContactThreshold", type=String.class, parameters={})
+    @Export(name="lastContactThreshold", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> lastContactThreshold;
 
     /**
@@ -127,7 +127,7 @@ public class AutopilotConfig extends com.pulumi.resources.CustomResource {
      * server can trail the leader. Defaults to 250.
      * 
      */
-    @Export(name="maxTrailingLogs", type=Integer.class, parameters={})
+    @Export(name="maxTrailingLogs", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> maxTrailingLogs;
 
     /**
@@ -144,7 +144,7 @@ public class AutopilotConfig extends com.pulumi.resources.CustomResource {
      * of isolated failure domains. Defaults to an empty string.
      * 
      */
-    @Export(name="redundancyZoneTag", type=String.class, parameters={})
+    @Export(name="redundancyZoneTag", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> redundancyZoneTag;
 
     /**
@@ -162,7 +162,7 @@ public class AutopilotConfig extends com.pulumi.resources.CustomResource {
      * `&#34;10s&#34;`.
      * 
      */
-    @Export(name="serverStabilizationTime", type=String.class, parameters={})
+    @Export(name="serverStabilizationTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> serverStabilizationTime;
 
     /**
@@ -179,7 +179,7 @@ public class AutopilotConfig extends com.pulumi.resources.CustomResource {
      * used during a migration. Defaults to an empty string.
      * 
      */
-    @Export(name="upgradeVersionTag", type=String.class, parameters={})
+    @Export(name="upgradeVersionTag", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> upgradeVersionTag;
 
     /**

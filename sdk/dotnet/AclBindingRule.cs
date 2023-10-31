@@ -10,8 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Consul
 {
     /// <summary>
-    /// Starting with Consul 1.5.0, the consul.AclBindingRule resource can be used to
-    /// managed Consul ACL binding rules.
+    /// Starting with Consul 1.5.0, the consul.AclBindingRule resource can be used to managed Consul ACL binding rules.
     /// 
     /// ## Example Usage
     /// 
@@ -25,26 +24,25 @@ namespace Pulumi.Consul
     /// {
     ///     var minikube = new Consul.AclAuthMethod("minikube", new()
     ///     {
+    ///         Type = "kubernetes",
+    ///         Description = "dev minikube cluster",
     ///         Config = 
     ///         {
+    ///             { "Host", "https://192.0.2.42:8443" },
     ///             { "CACert", @"-----BEGIN CERTIFICATE-----
     /// ...-----END CERTIFICATE-----
-    /// 
     /// " },
-    ///             { "Host", "https://192.0.2.42:8443" },
     ///             { "ServiceAccountJWT", "eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9..." },
     ///         },
-    ///         Description = "dev minikube cluster",
-    ///         Type = "kubernetes",
     ///     });
     /// 
     ///     var test = new Consul.AclBindingRule("test", new()
     ///     {
     ///         AuthMethod = minikube.Name,
-    ///         BindName = "minikube",
-    ///         BindType = "service",
     ///         Description = "foobar",
     ///         Selector = "serviceaccount.namespace==default",
+    ///         BindType = "service",
+    ///         BindName = "minikube",
     ///     });
     /// 
     /// });
@@ -72,6 +70,12 @@ namespace Pulumi.Consul
         public Output<string> BindType { get; private set; } = null!;
 
         /// <summary>
+        /// The variables used when binding rule type is `templated-policy`. Can be lightly templated using HIL `${foo}` syntax from available field names.
+        /// </summary>
+        [Output("bindVars")]
+        public Output<Outputs.AclBindingRuleBindVars?> BindVars { get; private set; } = null!;
+
+        /// <summary>
         /// A free form human readable description of the binding rule.
         /// </summary>
         [Output("description")]
@@ -90,7 +94,7 @@ namespace Pulumi.Consul
         public Output<string?> Partition { get; private set; } = null!;
 
         /// <summary>
-        /// The expression used to math this rule against valid identities returned from an auth method validation.
+        /// The expression used to match this rule against valid identities returned from an auth method validation.
         /// </summary>
         [Output("selector")]
         public Output<string?> Selector { get; private set; } = null!;
@@ -160,6 +164,12 @@ namespace Pulumi.Consul
         public Input<string> BindType { get; set; } = null!;
 
         /// <summary>
+        /// The variables used when binding rule type is `templated-policy`. Can be lightly templated using HIL `${foo}` syntax from available field names.
+        /// </summary>
+        [Input("bindVars")]
+        public Input<Inputs.AclBindingRuleBindVarsArgs>? BindVars { get; set; }
+
+        /// <summary>
         /// A free form human readable description of the binding rule.
         /// </summary>
         [Input("description")]
@@ -178,7 +188,7 @@ namespace Pulumi.Consul
         public Input<string>? Partition { get; set; }
 
         /// <summary>
-        /// The expression used to math this rule against valid identities returned from an auth method validation.
+        /// The expression used to match this rule against valid identities returned from an auth method validation.
         /// </summary>
         [Input("selector")]
         public Input<string>? Selector { get; set; }
@@ -210,6 +220,12 @@ namespace Pulumi.Consul
         public Input<string>? BindType { get; set; }
 
         /// <summary>
+        /// The variables used when binding rule type is `templated-policy`. Can be lightly templated using HIL `${foo}` syntax from available field names.
+        /// </summary>
+        [Input("bindVars")]
+        public Input<Inputs.AclBindingRuleBindVarsGetArgs>? BindVars { get; set; }
+
+        /// <summary>
         /// A free form human readable description of the binding rule.
         /// </summary>
         [Input("description")]
@@ -228,7 +244,7 @@ namespace Pulumi.Consul
         public Input<string>? Partition { get; set; }
 
         /// <summary>
-        /// The expression used to math this rule against valid identities returned from an auth method validation.
+        /// The expression used to match this rule against valid identities returned from an auth method validation.
         /// </summary>
         [Input("selector")]
         public Input<string>? Selector { get; set; }

@@ -30,27 +30,21 @@ class AclAuthMethodArgs:
         """
         The set of arguments for constructing a AclAuthMethod resource.
         :param pulumi.Input[str] type: The type of the ACL auth method.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config: The raw configuration for this ACL auth method. This
-               attribute is deprecated and will be removed in a future version. `config_json`
-               should be used instead.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config: The raw configuration for this ACL auth method.
         :param pulumi.Input[str] config_json: The raw configuration for this ACL auth method.
         :param pulumi.Input[str] description: A free form human readable description of the auth method.
-        :param pulumi.Input[str] display_name: An optional name to use instead of the name
-               attribute when displaying information about this auth method.
-        :param pulumi.Input[str] max_token_ttl: The maximum life of any token created by this
-               auth method.
+        :param pulumi.Input[str] display_name: An optional name to use instead of the name attribute when displaying information about this auth method.
+        :param pulumi.Input[str] max_token_ttl: The maximum life of any token created by this auth method. **This attribute is required and must be set to a nonzero for the OIDC auth method.**
         :param pulumi.Input[str] name: The name of the ACL auth method.
         :param pulumi.Input[str] namespace: The namespace in which to create the auth method.
-        :param pulumi.Input[Sequence[pulumi.Input['AclAuthMethodNamespaceRuleArgs']]] namespace_rules: A set of rules that control
-               which namespace tokens created via this auth method will be created within.
+        :param pulumi.Input[Sequence[pulumi.Input['AclAuthMethodNamespaceRuleArgs']]] namespace_rules: A set of rules that control which namespace tokens created via this auth method will be created within.
         :param pulumi.Input[str] partition: The partition the ACL auth method is associated with.
-        :param pulumi.Input[str] token_locality: The kind of token that this auth method
-               produces. This can be either 'local' or 'global'.
+        :param pulumi.Input[str] token_locality: The kind of token that this auth method produces. This can be either 'local' or 'global'.
         """
         pulumi.set(__self__, "type", type)
         if config is not None:
-            warnings.warn("""The config attribute is deprecated, please use config_json instead.""", DeprecationWarning)
-            pulumi.log.warn("""config is deprecated: The config attribute is deprecated, please use config_json instead.""")
+            warnings.warn("""The config attribute is deprecated, please use `config_json` instead.""", DeprecationWarning)
+            pulumi.log.warn("""config is deprecated: The config attribute is deprecated, please use `config_json` instead.""")
         if config is not None:
             pulumi.set(__self__, "config", config)
         if config_json is not None:
@@ -88,12 +82,10 @@ class AclAuthMethodArgs:
     @pulumi.getter
     def config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        The raw configuration for this ACL auth method. This
-        attribute is deprecated and will be removed in a future version. `config_json`
-        should be used instead.
+        The raw configuration for this ACL auth method.
         """
-        warnings.warn("""The config attribute is deprecated, please use config_json instead.""", DeprecationWarning)
-        pulumi.log.warn("""config is deprecated: The config attribute is deprecated, please use config_json instead.""")
+        warnings.warn("""The config attribute is deprecated, please use `config_json` instead.""", DeprecationWarning)
+        pulumi.log.warn("""config is deprecated: The config attribute is deprecated, please use `config_json` instead.""")
 
         return pulumi.get(self, "config")
 
@@ -129,8 +121,7 @@ class AclAuthMethodArgs:
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
-        An optional name to use instead of the name
-        attribute when displaying information about this auth method.
+        An optional name to use instead of the name attribute when displaying information about this auth method.
         """
         return pulumi.get(self, "display_name")
 
@@ -142,8 +133,7 @@ class AclAuthMethodArgs:
     @pulumi.getter(name="maxTokenTtl")
     def max_token_ttl(self) -> Optional[pulumi.Input[str]]:
         """
-        The maximum life of any token created by this
-        auth method.
+        The maximum life of any token created by this auth method. **This attribute is required and must be set to a nonzero for the OIDC auth method.**
         """
         return pulumi.get(self, "max_token_ttl")
 
@@ -179,8 +169,7 @@ class AclAuthMethodArgs:
     @pulumi.getter(name="namespaceRules")
     def namespace_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AclAuthMethodNamespaceRuleArgs']]]]:
         """
-        A set of rules that control
-        which namespace tokens created via this auth method will be created within.
+        A set of rules that control which namespace tokens created via this auth method will be created within.
         """
         return pulumi.get(self, "namespace_rules")
 
@@ -204,8 +193,7 @@ class AclAuthMethodArgs:
     @pulumi.getter(name="tokenLocality")
     def token_locality(self) -> Optional[pulumi.Input[str]]:
         """
-        The kind of token that this auth method
-        produces. This can be either 'local' or 'global'.
+        The kind of token that this auth method produces. This can be either 'local' or 'global'.
         """
         return pulumi.get(self, "token_locality")
 
@@ -230,27 +218,21 @@ class _AclAuthMethodState:
                  type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AclAuthMethod resources.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config: The raw configuration for this ACL auth method. This
-               attribute is deprecated and will be removed in a future version. `config_json`
-               should be used instead.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config: The raw configuration for this ACL auth method.
         :param pulumi.Input[str] config_json: The raw configuration for this ACL auth method.
         :param pulumi.Input[str] description: A free form human readable description of the auth method.
-        :param pulumi.Input[str] display_name: An optional name to use instead of the name
-               attribute when displaying information about this auth method.
-        :param pulumi.Input[str] max_token_ttl: The maximum life of any token created by this
-               auth method.
+        :param pulumi.Input[str] display_name: An optional name to use instead of the name attribute when displaying information about this auth method.
+        :param pulumi.Input[str] max_token_ttl: The maximum life of any token created by this auth method. **This attribute is required and must be set to a nonzero for the OIDC auth method.**
         :param pulumi.Input[str] name: The name of the ACL auth method.
         :param pulumi.Input[str] namespace: The namespace in which to create the auth method.
-        :param pulumi.Input[Sequence[pulumi.Input['AclAuthMethodNamespaceRuleArgs']]] namespace_rules: A set of rules that control
-               which namespace tokens created via this auth method will be created within.
+        :param pulumi.Input[Sequence[pulumi.Input['AclAuthMethodNamespaceRuleArgs']]] namespace_rules: A set of rules that control which namespace tokens created via this auth method will be created within.
         :param pulumi.Input[str] partition: The partition the ACL auth method is associated with.
-        :param pulumi.Input[str] token_locality: The kind of token that this auth method
-               produces. This can be either 'local' or 'global'.
+        :param pulumi.Input[str] token_locality: The kind of token that this auth method produces. This can be either 'local' or 'global'.
         :param pulumi.Input[str] type: The type of the ACL auth method.
         """
         if config is not None:
-            warnings.warn("""The config attribute is deprecated, please use config_json instead.""", DeprecationWarning)
-            pulumi.log.warn("""config is deprecated: The config attribute is deprecated, please use config_json instead.""")
+            warnings.warn("""The config attribute is deprecated, please use `config_json` instead.""", DeprecationWarning)
+            pulumi.log.warn("""config is deprecated: The config attribute is deprecated, please use `config_json` instead.""")
         if config is not None:
             pulumi.set(__self__, "config", config)
         if config_json is not None:
@@ -278,12 +260,10 @@ class _AclAuthMethodState:
     @pulumi.getter
     def config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        The raw configuration for this ACL auth method. This
-        attribute is deprecated and will be removed in a future version. `config_json`
-        should be used instead.
+        The raw configuration for this ACL auth method.
         """
-        warnings.warn("""The config attribute is deprecated, please use config_json instead.""", DeprecationWarning)
-        pulumi.log.warn("""config is deprecated: The config attribute is deprecated, please use config_json instead.""")
+        warnings.warn("""The config attribute is deprecated, please use `config_json` instead.""", DeprecationWarning)
+        pulumi.log.warn("""config is deprecated: The config attribute is deprecated, please use `config_json` instead.""")
 
         return pulumi.get(self, "config")
 
@@ -319,8 +299,7 @@ class _AclAuthMethodState:
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
-        An optional name to use instead of the name
-        attribute when displaying information about this auth method.
+        An optional name to use instead of the name attribute when displaying information about this auth method.
         """
         return pulumi.get(self, "display_name")
 
@@ -332,8 +311,7 @@ class _AclAuthMethodState:
     @pulumi.getter(name="maxTokenTtl")
     def max_token_ttl(self) -> Optional[pulumi.Input[str]]:
         """
-        The maximum life of any token created by this
-        auth method.
+        The maximum life of any token created by this auth method. **This attribute is required and must be set to a nonzero for the OIDC auth method.**
         """
         return pulumi.get(self, "max_token_ttl")
 
@@ -369,8 +347,7 @@ class _AclAuthMethodState:
     @pulumi.getter(name="namespaceRules")
     def namespace_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AclAuthMethodNamespaceRuleArgs']]]]:
         """
-        A set of rules that control
-        which namespace tokens created via this auth method will be created within.
+        A set of rules that control which namespace tokens created via this auth method will be created within.
         """
         return pulumi.get(self, "namespace_rules")
 
@@ -394,8 +371,7 @@ class _AclAuthMethodState:
     @pulumi.getter(name="tokenLocality")
     def token_locality(self) -> Optional[pulumi.Input[str]]:
         """
-        The kind of token that this auth method
-        produces. This can be either 'local' or 'global'.
+        The kind of token that this auth method produces. This can be either 'local' or 'global'.
         """
         return pulumi.get(self, "token_locality")
 
@@ -434,12 +410,12 @@ class AclAuthMethod(pulumi.CustomResource):
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Starting with Consul 1.5.0, the AclAuthMethod resource can be used to
-        managed [Consul ACL auth methods](https://www.consul.io/docs/acl/auth-methods).
+        Starting with Consul 1.5.0, the `AclAuthMethod` resource can be used to managed [Consul ACL auth methods](https://www.consul.io/docs/acl/auth-methods).
 
         ## Example Usage
 
         Define a `kubernetes` auth method:
+
         ```python
         import pulumi
         import json
@@ -458,41 +434,46 @@ class AclAuthMethod(pulumi.CustomResource):
         ```
 
         Define a `jwt` auth method:
+
         ```python
         import pulumi
         import json
         import pulumi_consul as consul
 
-        minikube = consul.AclAuthMethod("minikube",
-            type="jwt",
+        oidc = consul.AclAuthMethod("oidc",
+            type="oidc",
+            max_token_ttl="5m",
             config_json=json.dumps({
-                "JWKSURL": "https://example.com/identity/oidc/.well-known/keys",
-                "JWTSupportedAlgs": "RS256",
-                "BoundIssuer": "https://example.com",
+                "AllowedRedirectURIs": [
+                    "http://localhost:8550/oidc/callback",
+                    "http://localhost:8500/ui/oidc/callback",
+                ],
+                "BoundAudiences": ["V1RPi2MYptMV1RPi2MYptMV1RPi2MYpt"],
                 "ClaimMappings": {
-                    "subject": "subject",
+                    "http://example.com/first_name": "first_name",
+                    "http://example.com/last_name": "last_name",
                 },
+                "ListClaimMappings": {
+                    "http://consul.com/groups": "groups",
+                },
+                "OIDCClientID": "V1RPi2MYptMV1RPi2MYptMV1RPi2MYpt",
+                "OIDCClientSecret": "...(omitted)...",
+                "OIDCDiscoveryURL": "https://my-corp-app-name.auth0.com/",
             }))
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config: The raw configuration for this ACL auth method. This
-               attribute is deprecated and will be removed in a future version. `config_json`
-               should be used instead.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config: The raw configuration for this ACL auth method.
         :param pulumi.Input[str] config_json: The raw configuration for this ACL auth method.
         :param pulumi.Input[str] description: A free form human readable description of the auth method.
-        :param pulumi.Input[str] display_name: An optional name to use instead of the name
-               attribute when displaying information about this auth method.
-        :param pulumi.Input[str] max_token_ttl: The maximum life of any token created by this
-               auth method.
+        :param pulumi.Input[str] display_name: An optional name to use instead of the name attribute when displaying information about this auth method.
+        :param pulumi.Input[str] max_token_ttl: The maximum life of any token created by this auth method. **This attribute is required and must be set to a nonzero for the OIDC auth method.**
         :param pulumi.Input[str] name: The name of the ACL auth method.
         :param pulumi.Input[str] namespace: The namespace in which to create the auth method.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclAuthMethodNamespaceRuleArgs']]]] namespace_rules: A set of rules that control
-               which namespace tokens created via this auth method will be created within.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclAuthMethodNamespaceRuleArgs']]]] namespace_rules: A set of rules that control which namespace tokens created via this auth method will be created within.
         :param pulumi.Input[str] partition: The partition the ACL auth method is associated with.
-        :param pulumi.Input[str] token_locality: The kind of token that this auth method
-               produces. This can be either 'local' or 'global'.
+        :param pulumi.Input[str] token_locality: The kind of token that this auth method produces. This can be either 'local' or 'global'.
         :param pulumi.Input[str] type: The type of the ACL auth method.
         """
         ...
@@ -502,12 +483,12 @@ class AclAuthMethod(pulumi.CustomResource):
                  args: AclAuthMethodArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Starting with Consul 1.5.0, the AclAuthMethod resource can be used to
-        managed [Consul ACL auth methods](https://www.consul.io/docs/acl/auth-methods).
+        Starting with Consul 1.5.0, the `AclAuthMethod` resource can be used to managed [Consul ACL auth methods](https://www.consul.io/docs/acl/auth-methods).
 
         ## Example Usage
 
         Define a `kubernetes` auth method:
+
         ```python
         import pulumi
         import json
@@ -526,20 +507,31 @@ class AclAuthMethod(pulumi.CustomResource):
         ```
 
         Define a `jwt` auth method:
+
         ```python
         import pulumi
         import json
         import pulumi_consul as consul
 
-        minikube = consul.AclAuthMethod("minikube",
-            type="jwt",
+        oidc = consul.AclAuthMethod("oidc",
+            type="oidc",
+            max_token_ttl="5m",
             config_json=json.dumps({
-                "JWKSURL": "https://example.com/identity/oidc/.well-known/keys",
-                "JWTSupportedAlgs": "RS256",
-                "BoundIssuer": "https://example.com",
+                "AllowedRedirectURIs": [
+                    "http://localhost:8550/oidc/callback",
+                    "http://localhost:8500/ui/oidc/callback",
+                ],
+                "BoundAudiences": ["V1RPi2MYptMV1RPi2MYptMV1RPi2MYpt"],
                 "ClaimMappings": {
-                    "subject": "subject",
+                    "http://example.com/first_name": "first_name",
+                    "http://example.com/last_name": "last_name",
                 },
+                "ListClaimMappings": {
+                    "http://consul.com/groups": "groups",
+                },
+                "OIDCClientID": "V1RPi2MYptMV1RPi2MYptMV1RPi2MYpt",
+                "OIDCClientSecret": "...(omitted)...",
+                "OIDCDiscoveryURL": "https://my-corp-app-name.auth0.com/",
             }))
         ```
 
@@ -619,22 +611,16 @@ class AclAuthMethod(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config: The raw configuration for this ACL auth method. This
-               attribute is deprecated and will be removed in a future version. `config_json`
-               should be used instead.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config: The raw configuration for this ACL auth method.
         :param pulumi.Input[str] config_json: The raw configuration for this ACL auth method.
         :param pulumi.Input[str] description: A free form human readable description of the auth method.
-        :param pulumi.Input[str] display_name: An optional name to use instead of the name
-               attribute when displaying information about this auth method.
-        :param pulumi.Input[str] max_token_ttl: The maximum life of any token created by this
-               auth method.
+        :param pulumi.Input[str] display_name: An optional name to use instead of the name attribute when displaying information about this auth method.
+        :param pulumi.Input[str] max_token_ttl: The maximum life of any token created by this auth method. **This attribute is required and must be set to a nonzero for the OIDC auth method.**
         :param pulumi.Input[str] name: The name of the ACL auth method.
         :param pulumi.Input[str] namespace: The namespace in which to create the auth method.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclAuthMethodNamespaceRuleArgs']]]] namespace_rules: A set of rules that control
-               which namespace tokens created via this auth method will be created within.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclAuthMethodNamespaceRuleArgs']]]] namespace_rules: A set of rules that control which namespace tokens created via this auth method will be created within.
         :param pulumi.Input[str] partition: The partition the ACL auth method is associated with.
-        :param pulumi.Input[str] token_locality: The kind of token that this auth method
-               produces. This can be either 'local' or 'global'.
+        :param pulumi.Input[str] token_locality: The kind of token that this auth method produces. This can be either 'local' or 'global'.
         :param pulumi.Input[str] type: The type of the ACL auth method.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -658,12 +644,10 @@ class AclAuthMethod(pulumi.CustomResource):
     @pulumi.getter
     def config(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        The raw configuration for this ACL auth method. This
-        attribute is deprecated and will be removed in a future version. `config_json`
-        should be used instead.
+        The raw configuration for this ACL auth method.
         """
-        warnings.warn("""The config attribute is deprecated, please use config_json instead.""", DeprecationWarning)
-        pulumi.log.warn("""config is deprecated: The config attribute is deprecated, please use config_json instead.""")
+        warnings.warn("""The config attribute is deprecated, please use `config_json` instead.""", DeprecationWarning)
+        pulumi.log.warn("""config is deprecated: The config attribute is deprecated, please use `config_json` instead.""")
 
         return pulumi.get(self, "config")
 
@@ -687,8 +671,7 @@ class AclAuthMethod(pulumi.CustomResource):
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[Optional[str]]:
         """
-        An optional name to use instead of the name
-        attribute when displaying information about this auth method.
+        An optional name to use instead of the name attribute when displaying information about this auth method.
         """
         return pulumi.get(self, "display_name")
 
@@ -696,8 +679,7 @@ class AclAuthMethod(pulumi.CustomResource):
     @pulumi.getter(name="maxTokenTtl")
     def max_token_ttl(self) -> pulumi.Output[Optional[str]]:
         """
-        The maximum life of any token created by this
-        auth method.
+        The maximum life of any token created by this auth method. **This attribute is required and must be set to a nonzero for the OIDC auth method.**
         """
         return pulumi.get(self, "max_token_ttl")
 
@@ -721,8 +703,7 @@ class AclAuthMethod(pulumi.CustomResource):
     @pulumi.getter(name="namespaceRules")
     def namespace_rules(self) -> pulumi.Output[Optional[Sequence['outputs.AclAuthMethodNamespaceRule']]]:
         """
-        A set of rules that control
-        which namespace tokens created via this auth method will be created within.
+        A set of rules that control which namespace tokens created via this auth method will be created within.
         """
         return pulumi.get(self, "namespace_rules")
 
@@ -738,8 +719,7 @@ class AclAuthMethod(pulumi.CustomResource):
     @pulumi.getter(name="tokenLocality")
     def token_locality(self) -> pulumi.Output[Optional[str]]:
         """
-        The kind of token that this auth method
-        produces. This can be either 'local' or 'global'.
+        The kind of token that this auth method produces. This can be either 'local' or 'global'.
         """
         return pulumi.get(self, "token_locality")
 

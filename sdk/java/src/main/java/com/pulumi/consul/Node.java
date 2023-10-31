@@ -65,7 +65,7 @@ public class Node extends com.pulumi.resources.CustomResource {
      * The address of the node being added to, or referenced in the catalog.
      * 
      */
-    @Export(name="address", type=String.class, parameters={})
+    @Export(name="address", refs={String.class}, tree="[0]")
     private Output<String> address;
 
     /**
@@ -79,7 +79,7 @@ public class Node extends com.pulumi.resources.CustomResource {
      * The datacenter to use. This overrides the agent&#39;s default datacenter and the datacenter in the provider setup.
      * 
      */
-    @Export(name="datacenter", type=String.class, parameters={})
+    @Export(name="datacenter", refs={String.class}, tree="[0]")
     private Output<String> datacenter;
 
     /**
@@ -93,7 +93,7 @@ public class Node extends com.pulumi.resources.CustomResource {
      * Key/value pairs that are associated with the node.
      * 
      */
-    @Export(name="meta", type=Map.class, parameters={String.class, String.class})
+    @Export(name="meta", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> meta;
 
     /**
@@ -107,7 +107,7 @@ public class Node extends com.pulumi.resources.CustomResource {
      * The name of the node being added to, or referenced in the catalog.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -121,7 +121,7 @@ public class Node extends com.pulumi.resources.CustomResource {
      * The partition the node is associated with.
      * 
      */
-    @Export(name="partition", type=String.class, parameters={})
+    @Export(name="partition", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> partition;
 
     /**
@@ -139,7 +139,7 @@ public class Node extends com.pulumi.resources.CustomResource {
      */
     @Deprecated /* The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration */
-    @Export(name="token", type=String.class, parameters={})
+    @Export(name="token", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> token;
 
     public Output<Optional<String>> token() {

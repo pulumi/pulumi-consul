@@ -45,19 +45,16 @@ export class Service extends pulumi.CustomResource {
     }
 
     /**
-     * The address of the service. Defaults to the
-     * address of the node.
+     * The address of the service. Defaults to the address of the node.
      */
     public readonly address!: pulumi.Output<string>;
     public readonly checks!: pulumi.Output<outputs.ServiceCheck[] | undefined>;
     /**
-     * The datacenter to use. This overrides the
-     * agent's default datacenter and the datacenter in the provider setup.
+     * The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
      */
     public readonly datacenter!: pulumi.Output<string>;
     /**
-     * Specifies to disable the
-     * anti-entropy feature for this service's tags. Defaults to `false`.
+     * Specifies to disable the anti-entropy feature for this service's tags. Defaults to `false`.
      */
     public readonly enableTagOverride!: pulumi.Output<boolean | undefined>;
     /**
@@ -65,12 +62,11 @@ export class Service extends pulumi.CustomResource {
      */
     public readonly external!: pulumi.Output<boolean | undefined>;
     /**
-     * A map of arbitrary KV metadata linked to the service
-     * instance.
+     * A map of arbitrary KV metadata linked to the service instance.
      */
     public readonly meta!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The name of the health-check.
+     * The name of the header.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -83,8 +79,6 @@ export class Service extends pulumi.CustomResource {
     public readonly node!: pulumi.Output<string>;
     /**
      * The partition the service is associated with.
-     *
-     * The following attributes are available for each health-check:
      */
     public readonly partition!: pulumi.Output<string | undefined>;
     /**
@@ -92,13 +86,11 @@ export class Service extends pulumi.CustomResource {
      */
     public readonly port!: pulumi.Output<number | undefined>;
     /**
-     * If the service ID is not provided, it will be defaulted to the value
-     * of the `name` attribute.
+     * If the service ID is not provided, it will be defaulted to the value of the `name` attribute.
      */
     public readonly serviceId!: pulumi.Output<string>;
     /**
-     * A list of values that are opaque to Consul,
-     * but can be used to distinguish between services or nodes.
+     * A list of values that are opaque to Consul, but can be used to distinguish between services or nodes.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
 
@@ -157,19 +149,16 @@ export class Service extends pulumi.CustomResource {
  */
 export interface ServiceState {
     /**
-     * The address of the service. Defaults to the
-     * address of the node.
+     * The address of the service. Defaults to the address of the node.
      */
     address?: pulumi.Input<string>;
     checks?: pulumi.Input<pulumi.Input<inputs.ServiceCheck>[]>;
     /**
-     * The datacenter to use. This overrides the
-     * agent's default datacenter and the datacenter in the provider setup.
+     * The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
      */
     datacenter?: pulumi.Input<string>;
     /**
-     * Specifies to disable the
-     * anti-entropy feature for this service's tags. Defaults to `false`.
+     * Specifies to disable the anti-entropy feature for this service's tags. Defaults to `false`.
      */
     enableTagOverride?: pulumi.Input<boolean>;
     /**
@@ -177,12 +166,11 @@ export interface ServiceState {
      */
     external?: pulumi.Input<boolean>;
     /**
-     * A map of arbitrary KV metadata linked to the service
-     * instance.
+     * A map of arbitrary KV metadata linked to the service instance.
      */
     meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The name of the health-check.
+     * The name of the header.
      */
     name?: pulumi.Input<string>;
     /**
@@ -195,8 +183,6 @@ export interface ServiceState {
     node?: pulumi.Input<string>;
     /**
      * The partition the service is associated with.
-     *
-     * The following attributes are available for each health-check:
      */
     partition?: pulumi.Input<string>;
     /**
@@ -204,13 +190,11 @@ export interface ServiceState {
      */
     port?: pulumi.Input<number>;
     /**
-     * If the service ID is not provided, it will be defaulted to the value
-     * of the `name` attribute.
+     * If the service ID is not provided, it will be defaulted to the value of the `name` attribute.
      */
     serviceId?: pulumi.Input<string>;
     /**
-     * A list of values that are opaque to Consul,
-     * but can be used to distinguish between services or nodes.
+     * A list of values that are opaque to Consul, but can be used to distinguish between services or nodes.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -220,19 +204,16 @@ export interface ServiceState {
  */
 export interface ServiceArgs {
     /**
-     * The address of the service. Defaults to the
-     * address of the node.
+     * The address of the service. Defaults to the address of the node.
      */
     address?: pulumi.Input<string>;
     checks?: pulumi.Input<pulumi.Input<inputs.ServiceCheck>[]>;
     /**
-     * The datacenter to use. This overrides the
-     * agent's default datacenter and the datacenter in the provider setup.
+     * The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
      */
     datacenter?: pulumi.Input<string>;
     /**
-     * Specifies to disable the
-     * anti-entropy feature for this service's tags. Defaults to `false`.
+     * Specifies to disable the anti-entropy feature for this service's tags. Defaults to `false`.
      */
     enableTagOverride?: pulumi.Input<boolean>;
     /**
@@ -240,12 +221,11 @@ export interface ServiceArgs {
      */
     external?: pulumi.Input<boolean>;
     /**
-     * A map of arbitrary KV metadata linked to the service
-     * instance.
+     * A map of arbitrary KV metadata linked to the service instance.
      */
     meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The name of the health-check.
+     * The name of the header.
      */
     name?: pulumi.Input<string>;
     /**
@@ -258,8 +238,6 @@ export interface ServiceArgs {
     node: pulumi.Input<string>;
     /**
      * The partition the service is associated with.
-     *
-     * The following attributes are available for each health-check:
      */
     partition?: pulumi.Input<string>;
     /**
@@ -267,13 +245,11 @@ export interface ServiceArgs {
      */
     port?: pulumi.Input<number>;
     /**
-     * If the service ID is not provided, it will be defaulted to the value
-     * of the `name` attribute.
+     * If the service ID is not provided, it will be defaulted to the value of the `name` attribute.
      */
     serviceId?: pulumi.Input<string>;
     /**
-     * A list of values that are opaque to Consul,
-     * but can be used to distinguish between services or nodes.
+     * A list of values that are opaque to Consul, but can be used to distinguish between services or nodes.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
 }

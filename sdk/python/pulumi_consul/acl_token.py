@@ -25,11 +25,11 @@ class AclTokenArgs:
                  partition: Optional[pulumi.Input[str]] = None,
                  policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 service_identities: Optional[pulumi.Input[Sequence[pulumi.Input['AclTokenServiceIdentityArgs']]]] = None):
+                 service_identities: Optional[pulumi.Input[Sequence[pulumi.Input['AclTokenServiceIdentityArgs']]]] = None,
+                 templated_policies: Optional[pulumi.Input[Sequence[pulumi.Input['AclTokenTemplatedPolicyArgs']]]] = None):
         """
         The set of arguments for constructing a AclToken resource.
-        :param pulumi.Input[str] accessor_id: The uuid of the token. If omitted, Consul will
-               generate a random uuid.
+        :param pulumi.Input[str] accessor_id: The uuid of the token. If omitted, Consul will generate a random uuid.
         :param pulumi.Input[str] description: The description of the token.
         :param pulumi.Input[str] expiration_time: If set this represents the point after which a token should be considered revoked and is eligible for destruction.
         :param pulumi.Input[bool] local: The flag to set the token local to the current datacenter.
@@ -39,6 +39,7 @@ class AclTokenArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] policies: The list of policies attached to the token.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: The list of roles attached to the token.
         :param pulumi.Input[Sequence[pulumi.Input['AclTokenServiceIdentityArgs']]] service_identities: The list of service identities that should be applied to the token.
+        :param pulumi.Input[Sequence[pulumi.Input['AclTokenTemplatedPolicyArgs']]] templated_policies: The list of templated policies that should be applied to the token.
         """
         if accessor_id is not None:
             pulumi.set(__self__, "accessor_id", accessor_id)
@@ -60,13 +61,14 @@ class AclTokenArgs:
             pulumi.set(__self__, "roles", roles)
         if service_identities is not None:
             pulumi.set(__self__, "service_identities", service_identities)
+        if templated_policies is not None:
+            pulumi.set(__self__, "templated_policies", templated_policies)
 
     @property
     @pulumi.getter(name="accessorId")
     def accessor_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The uuid of the token. If omitted, Consul will
-        generate a random uuid.
+        The uuid of the token. If omitted, Consul will generate a random uuid.
         """
         return pulumi.get(self, "accessor_id")
 
@@ -181,6 +183,18 @@ class AclTokenArgs:
     @service_identities.setter
     def service_identities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AclTokenServiceIdentityArgs']]]]):
         pulumi.set(self, "service_identities", value)
+
+    @property
+    @pulumi.getter(name="templatedPolicies")
+    def templated_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AclTokenTemplatedPolicyArgs']]]]:
+        """
+        The list of templated policies that should be applied to the token.
+        """
+        return pulumi.get(self, "templated_policies")
+
+    @templated_policies.setter
+    def templated_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AclTokenTemplatedPolicyArgs']]]]):
+        pulumi.set(self, "templated_policies", value)
 
 
 @pulumi.input_type
@@ -195,11 +209,11 @@ class _AclTokenState:
                  partition: Optional[pulumi.Input[str]] = None,
                  policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 service_identities: Optional[pulumi.Input[Sequence[pulumi.Input['AclTokenServiceIdentityArgs']]]] = None):
+                 service_identities: Optional[pulumi.Input[Sequence[pulumi.Input['AclTokenServiceIdentityArgs']]]] = None,
+                 templated_policies: Optional[pulumi.Input[Sequence[pulumi.Input['AclTokenTemplatedPolicyArgs']]]] = None):
         """
         Input properties used for looking up and filtering AclToken resources.
-        :param pulumi.Input[str] accessor_id: The uuid of the token. If omitted, Consul will
-               generate a random uuid.
+        :param pulumi.Input[str] accessor_id: The uuid of the token. If omitted, Consul will generate a random uuid.
         :param pulumi.Input[str] description: The description of the token.
         :param pulumi.Input[str] expiration_time: If set this represents the point after which a token should be considered revoked and is eligible for destruction.
         :param pulumi.Input[bool] local: The flag to set the token local to the current datacenter.
@@ -209,6 +223,7 @@ class _AclTokenState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] policies: The list of policies attached to the token.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: The list of roles attached to the token.
         :param pulumi.Input[Sequence[pulumi.Input['AclTokenServiceIdentityArgs']]] service_identities: The list of service identities that should be applied to the token.
+        :param pulumi.Input[Sequence[pulumi.Input['AclTokenTemplatedPolicyArgs']]] templated_policies: The list of templated policies that should be applied to the token.
         """
         if accessor_id is not None:
             pulumi.set(__self__, "accessor_id", accessor_id)
@@ -230,13 +245,14 @@ class _AclTokenState:
             pulumi.set(__self__, "roles", roles)
         if service_identities is not None:
             pulumi.set(__self__, "service_identities", service_identities)
+        if templated_policies is not None:
+            pulumi.set(__self__, "templated_policies", templated_policies)
 
     @property
     @pulumi.getter(name="accessorId")
     def accessor_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The uuid of the token. If omitted, Consul will
-        generate a random uuid.
+        The uuid of the token. If omitted, Consul will generate a random uuid.
         """
         return pulumi.get(self, "accessor_id")
 
@@ -351,6 +367,18 @@ class _AclTokenState:
     @service_identities.setter
     def service_identities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AclTokenServiceIdentityArgs']]]]):
         pulumi.set(self, "service_identities", value)
+
+    @property
+    @pulumi.getter(name="templatedPolicies")
+    def templated_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AclTokenTemplatedPolicyArgs']]]]:
+        """
+        The list of templated policies that should be applied to the token.
+        """
+        return pulumi.get(self, "templated_policies")
+
+    @templated_policies.setter
+    def templated_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AclTokenTemplatedPolicyArgs']]]]):
+        pulumi.set(self, "templated_policies", value)
 
 
 class AclToken(pulumi.CustomResource):
@@ -368,31 +396,35 @@ class AclToken(pulumi.CustomResource):
                  policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_identities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclTokenServiceIdentityArgs']]]]] = None,
+                 templated_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclTokenTemplatedPolicyArgs']]]]] = None,
                  __props__=None):
         """
-        The `AclToken` resource writes an ACL token into Consul.
-
         ## Example Usage
-        ### Basic usage
 
         ```python
         import pulumi
         import pulumi_consul as consul
+        import pulumi_random as random
 
+        # Basic usage
         agent = consul.AclPolicy("agent", rules=\"\"\"node_prefix "" {
           policy = "read"
         }
-
         \"\"\")
-        test = consul.AclToken("test",
+        test_acl_token = consul.AclToken("testAclToken",
             description="my test token",
-            local=True,
-            policies=[agent.name])
+            policies=[agent.name],
+            local=True)
+        # Explicitly set the `accessor_id`
+        test_random_uuid = random.RandomUuid("testRandomUuid")
+        test_predefined_id = consul.AclToken("testPredefinedId",
+            accessor_id=random_uuid["test_uuid"]["result"],
+            description="my test uuid token",
+            policies=[agent.name],
+            local=True)
         ```
 
         ## Import
-
-        `consul_acl_token` can be imported. This is especially useful to manage the anonymous and the master token with Terraform
 
         ```sh
          $ pulumi import consul:index/aclToken:AclToken anonymous 00000000-0000-0000-0000-000000000002
@@ -404,8 +436,7 @@ class AclToken(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] accessor_id: The uuid of the token. If omitted, Consul will
-               generate a random uuid.
+        :param pulumi.Input[str] accessor_id: The uuid of the token. If omitted, Consul will generate a random uuid.
         :param pulumi.Input[str] description: The description of the token.
         :param pulumi.Input[str] expiration_time: If set this represents the point after which a token should be considered revoked and is eligible for destruction.
         :param pulumi.Input[bool] local: The flag to set the token local to the current datacenter.
@@ -415,6 +446,7 @@ class AclToken(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] policies: The list of policies attached to the token.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: The list of roles attached to the token.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclTokenServiceIdentityArgs']]]] service_identities: The list of service identities that should be applied to the token.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclTokenTemplatedPolicyArgs']]]] templated_policies: The list of templated policies that should be applied to the token.
         """
         ...
     @overload
@@ -423,29 +455,32 @@ class AclToken(pulumi.CustomResource):
                  args: Optional[AclTokenArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `AclToken` resource writes an ACL token into Consul.
-
         ## Example Usage
-        ### Basic usage
 
         ```python
         import pulumi
         import pulumi_consul as consul
+        import pulumi_random as random
 
+        # Basic usage
         agent = consul.AclPolicy("agent", rules=\"\"\"node_prefix "" {
           policy = "read"
         }
-
         \"\"\")
-        test = consul.AclToken("test",
+        test_acl_token = consul.AclToken("testAclToken",
             description="my test token",
-            local=True,
-            policies=[agent.name])
+            policies=[agent.name],
+            local=True)
+        # Explicitly set the `accessor_id`
+        test_random_uuid = random.RandomUuid("testRandomUuid")
+        test_predefined_id = consul.AclToken("testPredefinedId",
+            accessor_id=random_uuid["test_uuid"]["result"],
+            description="my test uuid token",
+            policies=[agent.name],
+            local=True)
         ```
 
         ## Import
-
-        `consul_acl_token` can be imported. This is especially useful to manage the anonymous and the master token with Terraform
 
         ```sh
          $ pulumi import consul:index/aclToken:AclToken anonymous 00000000-0000-0000-0000-000000000002
@@ -480,6 +515,7 @@ class AclToken(pulumi.CustomResource):
                  policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_identities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclTokenServiceIdentityArgs']]]]] = None,
+                 templated_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclTokenTemplatedPolicyArgs']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -499,6 +535,7 @@ class AclToken(pulumi.CustomResource):
             __props__.__dict__["policies"] = policies
             __props__.__dict__["roles"] = roles
             __props__.__dict__["service_identities"] = service_identities
+            __props__.__dict__["templated_policies"] = templated_policies
         super(AclToken, __self__).__init__(
             'consul:index/aclToken:AclToken',
             resource_name,
@@ -518,7 +555,8 @@ class AclToken(pulumi.CustomResource):
             partition: Optional[pulumi.Input[str]] = None,
             policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            service_identities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclTokenServiceIdentityArgs']]]]] = None) -> 'AclToken':
+            service_identities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclTokenServiceIdentityArgs']]]]] = None,
+            templated_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclTokenTemplatedPolicyArgs']]]]] = None) -> 'AclToken':
         """
         Get an existing AclToken resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -526,8 +564,7 @@ class AclToken(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] accessor_id: The uuid of the token. If omitted, Consul will
-               generate a random uuid.
+        :param pulumi.Input[str] accessor_id: The uuid of the token. If omitted, Consul will generate a random uuid.
         :param pulumi.Input[str] description: The description of the token.
         :param pulumi.Input[str] expiration_time: If set this represents the point after which a token should be considered revoked and is eligible for destruction.
         :param pulumi.Input[bool] local: The flag to set the token local to the current datacenter.
@@ -537,6 +574,7 @@ class AclToken(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] policies: The list of policies attached to the token.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: The list of roles attached to the token.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclTokenServiceIdentityArgs']]]] service_identities: The list of service identities that should be applied to the token.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclTokenTemplatedPolicyArgs']]]] templated_policies: The list of templated policies that should be applied to the token.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -552,14 +590,14 @@ class AclToken(pulumi.CustomResource):
         __props__.__dict__["policies"] = policies
         __props__.__dict__["roles"] = roles
         __props__.__dict__["service_identities"] = service_identities
+        __props__.__dict__["templated_policies"] = templated_policies
         return AclToken(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="accessorId")
     def accessor_id(self) -> pulumi.Output[str]:
         """
-        The uuid of the token. If omitted, Consul will
-        generate a random uuid.
+        The uuid of the token. If omitted, Consul will generate a random uuid.
         """
         return pulumi.get(self, "accessor_id")
 
@@ -634,4 +672,12 @@ class AclToken(pulumi.CustomResource):
         The list of service identities that should be applied to the token.
         """
         return pulumi.get(self, "service_identities")
+
+    @property
+    @pulumi.getter(name="templatedPolicies")
+    def templated_policies(self) -> pulumi.Output[Optional[Sequence['outputs.AclTokenTemplatedPolicy']]]:
+        """
+        The list of templated policies that should be applied to the token.
+        """
+        return pulumi.get(self, "templated_policies")
 

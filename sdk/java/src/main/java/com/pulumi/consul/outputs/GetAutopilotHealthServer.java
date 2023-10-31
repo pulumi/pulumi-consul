@@ -263,20 +263,20 @@ public final class GetAutopilotHealthServer {
             return this;
         }
         public GetAutopilotHealthServer build() {
-            final var o = new GetAutopilotHealthServer();
-            o.address = address;
-            o.healthy = healthy;
-            o.id = id;
-            o.lastContact = lastContact;
-            o.lastIndex = lastIndex;
-            o.lastTerm = lastTerm;
-            o.leader = leader;
-            o.name = name;
-            o.serfStatus = serfStatus;
-            o.stableSince = stableSince;
-            o.version = version;
-            o.voter = voter;
-            return o;
+            final var _resultValue = new GetAutopilotHealthServer();
+            _resultValue.address = address;
+            _resultValue.healthy = healthy;
+            _resultValue.id = id;
+            _resultValue.lastContact = lastContact;
+            _resultValue.lastIndex = lastIndex;
+            _resultValue.lastTerm = lastTerm;
+            _resultValue.leader = leader;
+            _resultValue.name = name;
+            _resultValue.serfStatus = serfStatus;
+            _resultValue.stableSince = stableSince;
+            _resultValue.version = version;
+            _resultValue.voter = voter;
+            return _resultValue;
         }
     }
 }

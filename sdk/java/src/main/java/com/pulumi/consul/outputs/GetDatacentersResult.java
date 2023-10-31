@@ -73,10 +73,10 @@ public final class GetDatacentersResult {
             return this;
         }
         public GetDatacentersResult build() {
-            final var o = new GetDatacentersResult();
-            o.datacenters = datacenters;
-            o.id = id;
-            return o;
+            final var _resultValue = new GetDatacentersResult();
+            _resultValue.datacenters = datacenters;
+            _resultValue.id = id;
+            return _resultValue;
         }
     }
 }

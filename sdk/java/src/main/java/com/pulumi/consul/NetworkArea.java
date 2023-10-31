@@ -67,7 +67,7 @@ public class NetworkArea extends com.pulumi.resources.CustomResource {
      * agent&#39;s default datacenter and the datacenter in the provider setup.
      * 
      */
-    @Export(name="datacenter", type=String.class, parameters={})
+    @Export(name="datacenter", refs={String.class}, tree="[0]")
     private Output<String> datacenter;
 
     /**
@@ -83,7 +83,7 @@ public class NetworkArea extends com.pulumi.resources.CustomResource {
      * joined to form the area.
      * 
      */
-    @Export(name="peerDatacenter", type=String.class, parameters={})
+    @Export(name="peerDatacenter", refs={String.class}, tree="[0]")
     private Output<String> peerDatacenter;
 
     /**
@@ -99,7 +99,7 @@ public class NetworkArea extends com.pulumi.resources.CustomResource {
      * join. Servers can be given as `IP`, `IP:port`, `hostname`, or `hostname:port`.
      * 
      */
-    @Export(name="retryJoins", type=List.class, parameters={String.class})
+    @Export(name="retryJoins", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> retryJoins;
 
     /**
@@ -121,7 +121,7 @@ public class NetworkArea extends com.pulumi.resources.CustomResource {
      */
     @Deprecated /* The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration */
-    @Export(name="token", type=String.class, parameters={})
+    @Export(name="token", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> token;
 
     /**
@@ -137,7 +137,7 @@ Please use the token argument in the provider configuration */
      * encrypted with TLS if possible. Defaults to `false`.
      * 
      */
-    @Export(name="useTls", type=Boolean.class, parameters={})
+    @Export(name="useTls", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> useTls;
 
     /**

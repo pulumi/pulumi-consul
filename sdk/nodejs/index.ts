@@ -25,6 +25,11 @@ export type AclRole = import("./aclRole").AclRole;
 export const AclRole: typeof import("./aclRole").AclRole = null as any;
 utilities.lazyLoad(exports, ["AclRole"], () => require("./aclRole"));
 
+export { AclRolePolicyAttachmentArgs, AclRolePolicyAttachmentState } from "./aclRolePolicyAttachment";
+export type AclRolePolicyAttachment = import("./aclRolePolicyAttachment").AclRolePolicyAttachment;
+export const AclRolePolicyAttachment: typeof import("./aclRolePolicyAttachment").AclRolePolicyAttachment = null as any;
+utilities.lazyLoad(exports, ["AclRolePolicyAttachment"], () => require("./aclRolePolicyAttachment"));
+
 export { AclTokenArgs, AclTokenState } from "./aclToken";
 export type AclToken = import("./aclToken").AclToken;
 export const AclToken: typeof import("./aclToken").AclToken = null as any;
@@ -69,6 +74,31 @@ export { ConfigEntryArgs, ConfigEntryState } from "./configEntry";
 export type ConfigEntry = import("./configEntry").ConfigEntry;
 export const ConfigEntry: typeof import("./configEntry").ConfigEntry = null as any;
 utilities.lazyLoad(exports, ["ConfigEntry"], () => require("./configEntry"));
+
+export { ConfigEntryServiceDefaultsArgs, ConfigEntryServiceDefaultsState } from "./configEntryServiceDefaults";
+export type ConfigEntryServiceDefaults = import("./configEntryServiceDefaults").ConfigEntryServiceDefaults;
+export const ConfigEntryServiceDefaults: typeof import("./configEntryServiceDefaults").ConfigEntryServiceDefaults = null as any;
+utilities.lazyLoad(exports, ["ConfigEntryServiceDefaults"], () => require("./configEntryServiceDefaults"));
+
+export { ConfigEntryServiceIntentionsArgs, ConfigEntryServiceIntentionsState } from "./configEntryServiceIntentions";
+export type ConfigEntryServiceIntentions = import("./configEntryServiceIntentions").ConfigEntryServiceIntentions;
+export const ConfigEntryServiceIntentions: typeof import("./configEntryServiceIntentions").ConfigEntryServiceIntentions = null as any;
+utilities.lazyLoad(exports, ["ConfigEntryServiceIntentions"], () => require("./configEntryServiceIntentions"));
+
+export { ConfigEntryServiceResolverArgs, ConfigEntryServiceResolverState } from "./configEntryServiceResolver";
+export type ConfigEntryServiceResolver = import("./configEntryServiceResolver").ConfigEntryServiceResolver;
+export const ConfigEntryServiceResolver: typeof import("./configEntryServiceResolver").ConfigEntryServiceResolver = null as any;
+utilities.lazyLoad(exports, ["ConfigEntryServiceResolver"], () => require("./configEntryServiceResolver"));
+
+export { ConfigEntryServiceRouterArgs, ConfigEntryServiceRouterState } from "./configEntryServiceRouter";
+export type ConfigEntryServiceRouter = import("./configEntryServiceRouter").ConfigEntryServiceRouter;
+export const ConfigEntryServiceRouter: typeof import("./configEntryServiceRouter").ConfigEntryServiceRouter = null as any;
+utilities.lazyLoad(exports, ["ConfigEntryServiceRouter"], () => require("./configEntryServiceRouter"));
+
+export { ConfigEntryServiceSplitterArgs, ConfigEntryServiceSplitterState } from "./configEntryServiceSplitter";
+export type ConfigEntryServiceSplitter = import("./configEntryServiceSplitter").ConfigEntryServiceSplitter;
+export const ConfigEntryServiceSplitter: typeof import("./configEntryServiceSplitter").ConfigEntryServiceSplitter = null as any;
+utilities.lazyLoad(exports, ["ConfigEntryServiceSplitter"], () => require("./configEntryServiceSplitter"));
 
 export { GetAclAuthMethodArgs, GetAclAuthMethodResult, GetAclAuthMethodOutputArgs } from "./getAclAuthMethod";
 export const getAclAuthMethod: typeof import("./getAclAuthMethod").getAclAuthMethod = null as any;
@@ -277,6 +307,8 @@ const _module = {
                 return new AclPolicy(name, <any>undefined, { urn })
             case "consul:index/aclRole:AclRole":
                 return new AclRole(name, <any>undefined, { urn })
+            case "consul:index/aclRolePolicyAttachment:AclRolePolicyAttachment":
+                return new AclRolePolicyAttachment(name, <any>undefined, { urn })
             case "consul:index/aclToken:AclToken":
                 return new AclToken(name, <any>undefined, { urn })
             case "consul:index/aclTokenPolicyAttachment:AclTokenPolicyAttachment":
@@ -295,6 +327,16 @@ const _module = {
                 return new CertificateAuthority(name, <any>undefined, { urn })
             case "consul:index/configEntry:ConfigEntry":
                 return new ConfigEntry(name, <any>undefined, { urn })
+            case "consul:index/configEntryServiceDefaults:ConfigEntryServiceDefaults":
+                return new ConfigEntryServiceDefaults(name, <any>undefined, { urn })
+            case "consul:index/configEntryServiceIntentions:ConfigEntryServiceIntentions":
+                return new ConfigEntryServiceIntentions(name, <any>undefined, { urn })
+            case "consul:index/configEntryServiceResolver:ConfigEntryServiceResolver":
+                return new ConfigEntryServiceResolver(name, <any>undefined, { urn })
+            case "consul:index/configEntryServiceRouter:ConfigEntryServiceRouter":
+                return new ConfigEntryServiceRouter(name, <any>undefined, { urn })
+            case "consul:index/configEntryServiceSplitter:ConfigEntryServiceSplitter":
+                return new ConfigEntryServiceSplitter(name, <any>undefined, { urn })
             case "consul:index/intention:Intention":
                 return new Intention(name, <any>undefined, { urn })
             case "consul:index/keyPrefix:KeyPrefix":
@@ -330,6 +372,7 @@ pulumi.runtime.registerResourceModule("consul", "index/aclAuthMethod", _module)
 pulumi.runtime.registerResourceModule("consul", "index/aclBindingRule", _module)
 pulumi.runtime.registerResourceModule("consul", "index/aclPolicy", _module)
 pulumi.runtime.registerResourceModule("consul", "index/aclRole", _module)
+pulumi.runtime.registerResourceModule("consul", "index/aclRolePolicyAttachment", _module)
 pulumi.runtime.registerResourceModule("consul", "index/aclToken", _module)
 pulumi.runtime.registerResourceModule("consul", "index/aclTokenPolicyAttachment", _module)
 pulumi.runtime.registerResourceModule("consul", "index/aclTokenRoleAttachment", _module)
@@ -339,6 +382,11 @@ pulumi.runtime.registerResourceModule("consul", "index/autopilotConfig", _module
 pulumi.runtime.registerResourceModule("consul", "index/catalogEntry", _module)
 pulumi.runtime.registerResourceModule("consul", "index/certificateAuthority", _module)
 pulumi.runtime.registerResourceModule("consul", "index/configEntry", _module)
+pulumi.runtime.registerResourceModule("consul", "index/configEntryServiceDefaults", _module)
+pulumi.runtime.registerResourceModule("consul", "index/configEntryServiceIntentions", _module)
+pulumi.runtime.registerResourceModule("consul", "index/configEntryServiceResolver", _module)
+pulumi.runtime.registerResourceModule("consul", "index/configEntryServiceRouter", _module)
+pulumi.runtime.registerResourceModule("consul", "index/configEntryServiceSplitter", _module)
 pulumi.runtime.registerResourceModule("consul", "index/intention", _module)
 pulumi.runtime.registerResourceModule("consul", "index/keyPrefix", _module)
 pulumi.runtime.registerResourceModule("consul", "index/keys", _module)

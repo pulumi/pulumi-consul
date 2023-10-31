@@ -80,11 +80,11 @@ public final class GetServiceHealthResult {
             return services(List.of(services));
         }
         public GetServiceHealthResult build() {
-            final var o = new GetServiceHealthResult();
-            o.checks = checks;
-            o.nodes = nodes;
-            o.services = services;
-            return o;
+            final var _resultValue = new GetServiceHealthResult();
+            _resultValue.checks = checks;
+            _resultValue.nodes = nodes;
+            _resultValue.services = services;
+            return _resultValue;
         }
     }
 }

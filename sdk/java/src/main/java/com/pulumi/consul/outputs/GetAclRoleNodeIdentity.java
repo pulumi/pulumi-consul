@@ -49,10 +49,10 @@ public final class GetAclRoleNodeIdentity {
             return this;
         }
         public GetAclRoleNodeIdentity build() {
-            final var o = new GetAclRoleNodeIdentity();
-            o.datacenter = datacenter;
-            o.nodeName = nodeName;
-            return o;
+            final var _resultValue = new GetAclRoleNodeIdentity();
+            _resultValue.datacenter = datacenter;
+            _resultValue.nodeName = nodeName;
+            return _resultValue;
         }
     }
 }

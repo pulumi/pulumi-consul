@@ -427,7 +427,7 @@ public class ConfigEntry extends com.pulumi.resources.CustomResource {
      * An arbitrary map of configuration values.
      * 
      */
-    @Export(name="configJson", type=String.class, parameters={})
+    @Export(name="configJson", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> configJson;
 
     /**
@@ -441,7 +441,7 @@ public class ConfigEntry extends com.pulumi.resources.CustomResource {
      * The kind of configuration entry to register.
      * 
      */
-    @Export(name="kind", type=String.class, parameters={})
+    @Export(name="kind", refs={String.class}, tree="[0]")
     private Output<String> kind;
 
     /**
@@ -455,7 +455,7 @@ public class ConfigEntry extends com.pulumi.resources.CustomResource {
      * The name of the configuration entry being registered.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -469,7 +469,7 @@ public class ConfigEntry extends com.pulumi.resources.CustomResource {
      * The namespace to create the config entry within.
      * 
      */
-    @Export(name="namespace", type=String.class, parameters={})
+    @Export(name="namespace", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> namespace;
 
     /**
@@ -483,7 +483,7 @@ public class ConfigEntry extends com.pulumi.resources.CustomResource {
      * The partition the config entry is associated with.
      * 
      */
-    @Export(name="partition", type=String.class, parameters={})
+    @Export(name="partition", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> partition;
 
     /**

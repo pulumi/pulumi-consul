@@ -24,38 +24,30 @@ import (
 type Service struct {
 	pulumi.CustomResourceState
 
-	// The address of the service. Defaults to the
-	// address of the node.
+	// The address of the service. Defaults to the address of the node.
 	Address pulumi.StringOutput     `pulumi:"address"`
 	Checks  ServiceCheckArrayOutput `pulumi:"checks"`
-	// The datacenter to use. This overrides the
-	// agent's default datacenter and the datacenter in the provider setup.
+	// The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
 	Datacenter pulumi.StringOutput `pulumi:"datacenter"`
-	// Specifies to disable the
-	// anti-entropy feature for this service's tags. Defaults to `false`.
+	// Specifies to disable the anti-entropy feature for this service's tags. Defaults to `false`.
 	EnableTagOverride pulumi.BoolPtrOutput `pulumi:"enableTagOverride"`
 	// Deprecated: The external field has been deprecated and does nothing.
 	External pulumi.BoolPtrOutput `pulumi:"external"`
-	// A map of arbitrary KV metadata linked to the service
-	// instance.
+	// A map of arbitrary KV metadata linked to the service instance.
 	Meta pulumi.StringMapOutput `pulumi:"meta"`
-	// The name of the health-check.
+	// The name of the header.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The namespace to create the service within.
 	Namespace pulumi.StringPtrOutput `pulumi:"namespace"`
 	// The name of the node the to register the service on.
 	Node pulumi.StringOutput `pulumi:"node"`
 	// The partition the service is associated with.
-	//
-	// The following attributes are available for each health-check:
 	Partition pulumi.StringPtrOutput `pulumi:"partition"`
 	// The port of the service.
 	Port pulumi.IntPtrOutput `pulumi:"port"`
-	// If the service ID is not provided, it will be defaulted to the value
-	// of the `name` attribute.
+	// If the service ID is not provided, it will be defaulted to the value of the `name` attribute.
 	ServiceId pulumi.StringOutput `pulumi:"serviceId"`
-	// A list of values that are opaque to Consul,
-	// but can be used to distinguish between services or nodes.
+	// A list of values that are opaque to Consul, but can be used to distinguish between services or nodes.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 }
 
@@ -92,74 +84,58 @@ func GetService(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Service resources.
 type serviceState struct {
-	// The address of the service. Defaults to the
-	// address of the node.
+	// The address of the service. Defaults to the address of the node.
 	Address *string        `pulumi:"address"`
 	Checks  []ServiceCheck `pulumi:"checks"`
-	// The datacenter to use. This overrides the
-	// agent's default datacenter and the datacenter in the provider setup.
+	// The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
 	Datacenter *string `pulumi:"datacenter"`
-	// Specifies to disable the
-	// anti-entropy feature for this service's tags. Defaults to `false`.
+	// Specifies to disable the anti-entropy feature for this service's tags. Defaults to `false`.
 	EnableTagOverride *bool `pulumi:"enableTagOverride"`
 	// Deprecated: The external field has been deprecated and does nothing.
 	External *bool `pulumi:"external"`
-	// A map of arbitrary KV metadata linked to the service
-	// instance.
+	// A map of arbitrary KV metadata linked to the service instance.
 	Meta map[string]string `pulumi:"meta"`
-	// The name of the health-check.
+	// The name of the header.
 	Name *string `pulumi:"name"`
 	// The namespace to create the service within.
 	Namespace *string `pulumi:"namespace"`
 	// The name of the node the to register the service on.
 	Node *string `pulumi:"node"`
 	// The partition the service is associated with.
-	//
-	// The following attributes are available for each health-check:
 	Partition *string `pulumi:"partition"`
 	// The port of the service.
 	Port *int `pulumi:"port"`
-	// If the service ID is not provided, it will be defaulted to the value
-	// of the `name` attribute.
+	// If the service ID is not provided, it will be defaulted to the value of the `name` attribute.
 	ServiceId *string `pulumi:"serviceId"`
-	// A list of values that are opaque to Consul,
-	// but can be used to distinguish between services or nodes.
+	// A list of values that are opaque to Consul, but can be used to distinguish between services or nodes.
 	Tags []string `pulumi:"tags"`
 }
 
 type ServiceState struct {
-	// The address of the service. Defaults to the
-	// address of the node.
+	// The address of the service. Defaults to the address of the node.
 	Address pulumi.StringPtrInput
 	Checks  ServiceCheckArrayInput
-	// The datacenter to use. This overrides the
-	// agent's default datacenter and the datacenter in the provider setup.
+	// The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
 	Datacenter pulumi.StringPtrInput
-	// Specifies to disable the
-	// anti-entropy feature for this service's tags. Defaults to `false`.
+	// Specifies to disable the anti-entropy feature for this service's tags. Defaults to `false`.
 	EnableTagOverride pulumi.BoolPtrInput
 	// Deprecated: The external field has been deprecated and does nothing.
 	External pulumi.BoolPtrInput
-	// A map of arbitrary KV metadata linked to the service
-	// instance.
+	// A map of arbitrary KV metadata linked to the service instance.
 	Meta pulumi.StringMapInput
-	// The name of the health-check.
+	// The name of the header.
 	Name pulumi.StringPtrInput
 	// The namespace to create the service within.
 	Namespace pulumi.StringPtrInput
 	// The name of the node the to register the service on.
 	Node pulumi.StringPtrInput
 	// The partition the service is associated with.
-	//
-	// The following attributes are available for each health-check:
 	Partition pulumi.StringPtrInput
 	// The port of the service.
 	Port pulumi.IntPtrInput
-	// If the service ID is not provided, it will be defaulted to the value
-	// of the `name` attribute.
+	// If the service ID is not provided, it will be defaulted to the value of the `name` attribute.
 	ServiceId pulumi.StringPtrInput
-	// A list of values that are opaque to Consul,
-	// but can be used to distinguish between services or nodes.
+	// A list of values that are opaque to Consul, but can be used to distinguish between services or nodes.
 	Tags pulumi.StringArrayInput
 }
 
@@ -168,75 +144,59 @@ func (ServiceState) ElementType() reflect.Type {
 }
 
 type serviceArgs struct {
-	// The address of the service. Defaults to the
-	// address of the node.
+	// The address of the service. Defaults to the address of the node.
 	Address *string        `pulumi:"address"`
 	Checks  []ServiceCheck `pulumi:"checks"`
-	// The datacenter to use. This overrides the
-	// agent's default datacenter and the datacenter in the provider setup.
+	// The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
 	Datacenter *string `pulumi:"datacenter"`
-	// Specifies to disable the
-	// anti-entropy feature for this service's tags. Defaults to `false`.
+	// Specifies to disable the anti-entropy feature for this service's tags. Defaults to `false`.
 	EnableTagOverride *bool `pulumi:"enableTagOverride"`
 	// Deprecated: The external field has been deprecated and does nothing.
 	External *bool `pulumi:"external"`
-	// A map of arbitrary KV metadata linked to the service
-	// instance.
+	// A map of arbitrary KV metadata linked to the service instance.
 	Meta map[string]string `pulumi:"meta"`
-	// The name of the health-check.
+	// The name of the header.
 	Name *string `pulumi:"name"`
 	// The namespace to create the service within.
 	Namespace *string `pulumi:"namespace"`
 	// The name of the node the to register the service on.
 	Node string `pulumi:"node"`
 	// The partition the service is associated with.
-	//
-	// The following attributes are available for each health-check:
 	Partition *string `pulumi:"partition"`
 	// The port of the service.
 	Port *int `pulumi:"port"`
-	// If the service ID is not provided, it will be defaulted to the value
-	// of the `name` attribute.
+	// If the service ID is not provided, it will be defaulted to the value of the `name` attribute.
 	ServiceId *string `pulumi:"serviceId"`
-	// A list of values that are opaque to Consul,
-	// but can be used to distinguish between services or nodes.
+	// A list of values that are opaque to Consul, but can be used to distinguish between services or nodes.
 	Tags []string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Service resource.
 type ServiceArgs struct {
-	// The address of the service. Defaults to the
-	// address of the node.
+	// The address of the service. Defaults to the address of the node.
 	Address pulumi.StringPtrInput
 	Checks  ServiceCheckArrayInput
-	// The datacenter to use. This overrides the
-	// agent's default datacenter and the datacenter in the provider setup.
+	// The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
 	Datacenter pulumi.StringPtrInput
-	// Specifies to disable the
-	// anti-entropy feature for this service's tags. Defaults to `false`.
+	// Specifies to disable the anti-entropy feature for this service's tags. Defaults to `false`.
 	EnableTagOverride pulumi.BoolPtrInput
 	// Deprecated: The external field has been deprecated and does nothing.
 	External pulumi.BoolPtrInput
-	// A map of arbitrary KV metadata linked to the service
-	// instance.
+	// A map of arbitrary KV metadata linked to the service instance.
 	Meta pulumi.StringMapInput
-	// The name of the health-check.
+	// The name of the header.
 	Name pulumi.StringPtrInput
 	// The namespace to create the service within.
 	Namespace pulumi.StringPtrInput
 	// The name of the node the to register the service on.
 	Node pulumi.StringInput
 	// The partition the service is associated with.
-	//
-	// The following attributes are available for each health-check:
 	Partition pulumi.StringPtrInput
 	// The port of the service.
 	Port pulumi.IntPtrInput
-	// If the service ID is not provided, it will be defaulted to the value
-	// of the `name` attribute.
+	// If the service ID is not provided, it will be defaulted to the value of the `name` attribute.
 	ServiceId pulumi.StringPtrInput
-	// A list of values that are opaque to Consul,
-	// but can be used to distinguish between services or nodes.
+	// A list of values that are opaque to Consul, but can be used to distinguish between services or nodes.
 	Tags pulumi.StringArrayInput
 }
 
@@ -351,8 +311,7 @@ func (o ServiceOutput) ToOutput(ctx context.Context) pulumix.Output[*Service] {
 	}
 }
 
-// The address of the service. Defaults to the
-// address of the node.
+// The address of the service. Defaults to the address of the node.
 func (o ServiceOutput) Address() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Address }).(pulumi.StringOutput)
 }
@@ -361,14 +320,12 @@ func (o ServiceOutput) Checks() ServiceCheckArrayOutput {
 	return o.ApplyT(func(v *Service) ServiceCheckArrayOutput { return v.Checks }).(ServiceCheckArrayOutput)
 }
 
-// The datacenter to use. This overrides the
-// agent's default datacenter and the datacenter in the provider setup.
+// The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
 func (o ServiceOutput) Datacenter() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Datacenter }).(pulumi.StringOutput)
 }
 
-// Specifies to disable the
-// anti-entropy feature for this service's tags. Defaults to `false`.
+// Specifies to disable the anti-entropy feature for this service's tags. Defaults to `false`.
 func (o ServiceOutput) EnableTagOverride() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Service) pulumi.BoolPtrOutput { return v.EnableTagOverride }).(pulumi.BoolPtrOutput)
 }
@@ -378,13 +335,12 @@ func (o ServiceOutput) External() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Service) pulumi.BoolPtrOutput { return v.External }).(pulumi.BoolPtrOutput)
 }
 
-// A map of arbitrary KV metadata linked to the service
-// instance.
+// A map of arbitrary KV metadata linked to the service instance.
 func (o ServiceOutput) Meta() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringMapOutput { return v.Meta }).(pulumi.StringMapOutput)
 }
 
-// The name of the health-check.
+// The name of the header.
 func (o ServiceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -400,8 +356,6 @@ func (o ServiceOutput) Node() pulumi.StringOutput {
 }
 
 // The partition the service is associated with.
-//
-// The following attributes are available for each health-check:
 func (o ServiceOutput) Partition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringPtrOutput { return v.Partition }).(pulumi.StringPtrOutput)
 }
@@ -411,14 +365,12 @@ func (o ServiceOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Service) pulumi.IntPtrOutput { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-// If the service ID is not provided, it will be defaulted to the value
-// of the `name` attribute.
+// If the service ID is not provided, it will be defaulted to the value of the `name` attribute.
 func (o ServiceOutput) ServiceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.ServiceId }).(pulumi.StringOutput)
 }
 
-// A list of values that are opaque to Consul,
-// but can be used to distinguish between services or nodes.
+// A list of values that are opaque to Consul, but can be used to distinguish between services or nodes.
 func (o ServiceOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }

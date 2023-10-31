@@ -94,11 +94,11 @@ public final class GetKeysKey {
             return this;
         }
         public GetKeysKey build() {
-            final var o = new GetKeysKey();
-            o.default_ = default_;
-            o.name = name;
-            o.path = path;
-            return o;
+            final var _resultValue = new GetKeysKey();
+            _resultValue.default_ = default_;
+            _resultValue.name = name;
+            _resultValue.path = path;
+            return _resultValue;
         }
     }
 }

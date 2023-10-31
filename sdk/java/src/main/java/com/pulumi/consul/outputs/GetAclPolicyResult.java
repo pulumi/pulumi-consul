@@ -142,15 +142,15 @@ public final class GetAclPolicyResult {
             return this;
         }
         public GetAclPolicyResult build() {
-            final var o = new GetAclPolicyResult();
-            o.datacenters = datacenters;
-            o.description = description;
-            o.id = id;
-            o.name = name;
-            o.namespace = namespace;
-            o.partition = partition;
-            o.rules = rules;
-            return o;
+            final var _resultValue = new GetAclPolicyResult();
+            _resultValue.datacenters = datacenters;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.namespace = namespace;
+            _resultValue.partition = partition;
+            _resultValue.rules = rules;
+            return _resultValue;
         }
     }
 }

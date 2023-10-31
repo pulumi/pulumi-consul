@@ -259,20 +259,20 @@ public final class GetAclAuthMethodResult {
             return this;
         }
         public GetAclAuthMethodResult build() {
-            final var o = new GetAclAuthMethodResult();
-            o.config = config;
-            o.configJson = configJson;
-            o.description = description;
-            o.displayName = displayName;
-            o.id = id;
-            o.maxTokenTtl = maxTokenTtl;
-            o.name = name;
-            o.namespace = namespace;
-            o.namespaceRules = namespaceRules;
-            o.partition = partition;
-            o.tokenLocality = tokenLocality;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetAclAuthMethodResult();
+            _resultValue.config = config;
+            _resultValue.configJson = configJson;
+            _resultValue.description = description;
+            _resultValue.displayName = displayName;
+            _resultValue.id = id;
+            _resultValue.maxTokenTtl = maxTokenTtl;
+            _resultValue.name = name;
+            _resultValue.namespace = namespace;
+            _resultValue.namespaceRules = namespaceRules;
+            _resultValue.partition = partition;
+            _resultValue.tokenLocality = tokenLocality;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

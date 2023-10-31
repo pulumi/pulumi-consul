@@ -3,6 +3,7 @@
 
 package com.pulumi.consul;
 
+import com.pulumi.consul.inputs.AclBindingRuleBindVarsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
@@ -61,6 +62,21 @@ public final class AclBindingRuleArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * The variables used when binding rule type is `templated-policy`. Can be lightly templated using HIL `${foo}` syntax from available field names.
+     * 
+     */
+    @Import(name="bindVars")
+    private @Nullable Output<AclBindingRuleBindVarsArgs> bindVars;
+
+    /**
+     * @return The variables used when binding rule type is `templated-policy`. Can be lightly templated using HIL `${foo}` syntax from available field names.
+     * 
+     */
+    public Optional<Output<AclBindingRuleBindVarsArgs>> bindVars() {
+        return Optional.ofNullable(this.bindVars);
+    }
+
+    /**
      * A free form human readable description of the binding rule.
      * 
      */
@@ -106,14 +122,14 @@ public final class AclBindingRuleArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The expression used to math this rule against valid identities returned from an auth method validation.
+     * The expression used to match this rule against valid identities returned from an auth method validation.
      * 
      */
     @Import(name="selector")
     private @Nullable Output<String> selector;
 
     /**
-     * @return The expression used to math this rule against valid identities returned from an auth method validation.
+     * @return The expression used to match this rule against valid identities returned from an auth method validation.
      * 
      */
     public Optional<Output<String>> selector() {
@@ -126,6 +142,7 @@ public final class AclBindingRuleArgs extends com.pulumi.resources.ResourceArgs 
         this.authMethod = $.authMethod;
         this.bindName = $.bindName;
         this.bindType = $.bindType;
+        this.bindVars = $.bindVars;
         this.description = $.description;
         this.namespace = $.namespace;
         this.partition = $.partition;
@@ -214,6 +231,27 @@ public final class AclBindingRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
+         * @param bindVars The variables used when binding rule type is `templated-policy`. Can be lightly templated using HIL `${foo}` syntax from available field names.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bindVars(@Nullable Output<AclBindingRuleBindVarsArgs> bindVars) {
+            $.bindVars = bindVars;
+            return this;
+        }
+
+        /**
+         * @param bindVars The variables used when binding rule type is `templated-policy`. Can be lightly templated using HIL `${foo}` syntax from available field names.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bindVars(AclBindingRuleBindVarsArgs bindVars) {
+            return bindVars(Output.of(bindVars));
+        }
+
+        /**
          * @param description A free form human readable description of the binding rule.
          * 
          * @return builder
@@ -277,7 +315,7 @@ public final class AclBindingRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param selector The expression used to math this rule against valid identities returned from an auth method validation.
+         * @param selector The expression used to match this rule against valid identities returned from an auth method validation.
          * 
          * @return builder
          * 
@@ -288,7 +326,7 @@ public final class AclBindingRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param selector The expression used to math this rule against valid identities returned from an auth method validation.
+         * @param selector The expression used to match this rule against valid identities returned from an auth method validation.
          * 
          * @return builder
          * 

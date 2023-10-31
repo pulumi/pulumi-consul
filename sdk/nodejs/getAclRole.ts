@@ -7,8 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The `consul.AclRole` data source returns the information related to a
- * [Consul ACL Role](https://www.consul.io/api/acl/roles.html).
+ * The `consul.AclRole` data source returns the information related to a [Consul ACL Role](https://www.consul.io/api/acl/roles.html).
  *
  * ## Example Usage
  *
@@ -36,9 +35,6 @@ export function getAclRole(args: GetAclRoleArgs, opts?: pulumi.InvokeOptions): P
  * A collection of arguments for invoking getAclRole.
  */
 export interface GetAclRoleArgs {
-    /**
-     * The name of the ACL Role.
-     */
     name: string;
     /**
      * The namespace to lookup the role.
@@ -71,22 +67,28 @@ export interface GetAclRoleResult {
      */
     readonly namespace?: string;
     /**
-     * The list of node identities associated with the ACL Role. Each entry has a `nodeName` and a `datacenter` attributes.
+     * The list of node identities associated with the ACL Role.
      */
     readonly nodeIdentities: outputs.GetAclRoleNodeIdentity[];
+    /**
+     * The partition to lookup the role.
+     */
     readonly partition?: string;
     /**
-     * The list of policies associated with the ACL Role. Each entry has an `id` and a `name` attribute.
+     * The list of policies associated with the ACL Role.
      */
     readonly policies: outputs.GetAclRolePolicy[];
     /**
-     * The list of service identities associated with the ACL Role. Each entry has a `serviceName` attribute and a list of `datacenters`.
+     * The list of service identities associated with the ACL Role.
      */
     readonly serviceIdentities: outputs.GetAclRoleServiceIdentity[];
+    /**
+     * The list of templated policies that should be applied to the token.
+     */
+    readonly templatedPolicies: outputs.GetAclRoleTemplatedPolicy[];
 }
 /**
- * The `consul.AclRole` data source returns the information related to a
- * [Consul ACL Role](https://www.consul.io/api/acl/roles.html).
+ * The `consul.AclRole` data source returns the information related to a [Consul ACL Role](https://www.consul.io/api/acl/roles.html).
  *
  * ## Example Usage
  *
@@ -108,9 +110,6 @@ export function getAclRoleOutput(args: GetAclRoleOutputArgs, opts?: pulumi.Invok
  * A collection of arguments for invoking getAclRole.
  */
 export interface GetAclRoleOutputArgs {
-    /**
-     * The name of the ACL Role.
-     */
     name: pulumi.Input<string>;
     /**
      * The namespace to lookup the role.

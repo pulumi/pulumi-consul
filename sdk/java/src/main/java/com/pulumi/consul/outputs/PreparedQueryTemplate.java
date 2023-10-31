@@ -87,11 +87,11 @@ public final class PreparedQueryTemplate {
             return this;
         }
         public PreparedQueryTemplate build() {
-            final var o = new PreparedQueryTemplate();
-            o.regexp = regexp;
-            o.removeEmptyTags = removeEmptyTags;
-            o.type = type;
-            return o;
+            final var _resultValue = new PreparedQueryTemplate();
+            _resultValue.regexp = regexp;
+            _resultValue.removeEmptyTags = removeEmptyTags;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

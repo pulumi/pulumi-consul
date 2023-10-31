@@ -197,17 +197,17 @@ public final class GetCatalogNodesQueryOption {
             return this;
         }
         public GetCatalogNodesQueryOption build() {
-            final var o = new GetCatalogNodesQueryOption();
-            o.allowStale = allowStale;
-            o.datacenter = datacenter;
-            o.near = near;
-            o.nodeMeta = nodeMeta;
-            o.partition = partition;
-            o.requireConsistent = requireConsistent;
-            o.token = token;
-            o.waitIndex = waitIndex;
-            o.waitTime = waitTime;
-            return o;
+            final var _resultValue = new GetCatalogNodesQueryOption();
+            _resultValue.allowStale = allowStale;
+            _resultValue.datacenter = datacenter;
+            _resultValue.near = near;
+            _resultValue.nodeMeta = nodeMeta;
+            _resultValue.partition = partition;
+            _resultValue.requireConsistent = requireConsistent;
+            _resultValue.token = token;
+            _resultValue.waitIndex = waitIndex;
+            _resultValue.waitTime = waitTime;
+            return _resultValue;
         }
     }
 }

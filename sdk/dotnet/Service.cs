@@ -23,8 +23,7 @@ namespace Pulumi.Consul
     public partial class Service : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The address of the service. Defaults to the
-        /// address of the node.
+        /// The address of the service. Defaults to the address of the node.
         /// </summary>
         [Output("address")]
         public Output<string> Address { get; private set; } = null!;
@@ -33,15 +32,13 @@ namespace Pulumi.Consul
         public Output<ImmutableArray<Outputs.ServiceCheck>> Checks { get; private set; } = null!;
 
         /// <summary>
-        /// The datacenter to use. This overrides the
-        /// agent's default datacenter and the datacenter in the provider setup.
+        /// The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
         /// </summary>
         [Output("datacenter")]
         public Output<string> Datacenter { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies to disable the
-        /// anti-entropy feature for this service's tags. Defaults to `false`.
+        /// Specifies to disable the anti-entropy feature for this service's tags. Defaults to `false`.
         /// </summary>
         [Output("enableTagOverride")]
         public Output<bool?> EnableTagOverride { get; private set; } = null!;
@@ -50,14 +47,13 @@ namespace Pulumi.Consul
         public Output<bool?> External { get; private set; } = null!;
 
         /// <summary>
-        /// A map of arbitrary KV metadata linked to the service
-        /// instance.
+        /// A map of arbitrary KV metadata linked to the service instance.
         /// </summary>
         [Output("meta")]
         public Output<ImmutableDictionary<string, string>?> Meta { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the health-check.
+        /// The name of the header.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -76,8 +72,6 @@ namespace Pulumi.Consul
 
         /// <summary>
         /// The partition the service is associated with.
-        /// 
-        /// The following attributes are available for each health-check:
         /// </summary>
         [Output("partition")]
         public Output<string?> Partition { get; private set; } = null!;
@@ -89,15 +83,13 @@ namespace Pulumi.Consul
         public Output<int?> Port { get; private set; } = null!;
 
         /// <summary>
-        /// If the service ID is not provided, it will be defaulted to the value
-        /// of the `name` attribute.
+        /// If the service ID is not provided, it will be defaulted to the value of the `name` attribute.
         /// </summary>
         [Output("serviceId")]
         public Output<string> ServiceId { get; private set; } = null!;
 
         /// <summary>
-        /// A list of values that are opaque to Consul,
-        /// but can be used to distinguish between services or nodes.
+        /// A list of values that are opaque to Consul, but can be used to distinguish between services or nodes.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
@@ -149,8 +141,7 @@ namespace Pulumi.Consul
     public sealed class ServiceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The address of the service. Defaults to the
-        /// address of the node.
+        /// The address of the service. Defaults to the address of the node.
         /// </summary>
         [Input("address")]
         public Input<string>? Address { get; set; }
@@ -164,15 +155,13 @@ namespace Pulumi.Consul
         }
 
         /// <summary>
-        /// The datacenter to use. This overrides the
-        /// agent's default datacenter and the datacenter in the provider setup.
+        /// The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
         /// </summary>
         [Input("datacenter")]
         public Input<string>? Datacenter { get; set; }
 
         /// <summary>
-        /// Specifies to disable the
-        /// anti-entropy feature for this service's tags. Defaults to `false`.
+        /// Specifies to disable the anti-entropy feature for this service's tags. Defaults to `false`.
         /// </summary>
         [Input("enableTagOverride")]
         public Input<bool>? EnableTagOverride { get; set; }
@@ -184,8 +173,7 @@ namespace Pulumi.Consul
         private InputMap<string>? _meta;
 
         /// <summary>
-        /// A map of arbitrary KV metadata linked to the service
-        /// instance.
+        /// A map of arbitrary KV metadata linked to the service instance.
         /// </summary>
         public InputMap<string> Meta
         {
@@ -194,7 +182,7 @@ namespace Pulumi.Consul
         }
 
         /// <summary>
-        /// The name of the health-check.
+        /// The name of the header.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -213,8 +201,6 @@ namespace Pulumi.Consul
 
         /// <summary>
         /// The partition the service is associated with.
-        /// 
-        /// The following attributes are available for each health-check:
         /// </summary>
         [Input("partition")]
         public Input<string>? Partition { get; set; }
@@ -226,8 +212,7 @@ namespace Pulumi.Consul
         public Input<int>? Port { get; set; }
 
         /// <summary>
-        /// If the service ID is not provided, it will be defaulted to the value
-        /// of the `name` attribute.
+        /// If the service ID is not provided, it will be defaulted to the value of the `name` attribute.
         /// </summary>
         [Input("serviceId")]
         public Input<string>? ServiceId { get; set; }
@@ -236,8 +221,7 @@ namespace Pulumi.Consul
         private InputList<string>? _tags;
 
         /// <summary>
-        /// A list of values that are opaque to Consul,
-        /// but can be used to distinguish between services or nodes.
+        /// A list of values that are opaque to Consul, but can be used to distinguish between services or nodes.
         /// </summary>
         public InputList<string> Tags
         {
@@ -254,8 +238,7 @@ namespace Pulumi.Consul
     public sealed class ServiceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The address of the service. Defaults to the
-        /// address of the node.
+        /// The address of the service. Defaults to the address of the node.
         /// </summary>
         [Input("address")]
         public Input<string>? Address { get; set; }
@@ -269,15 +252,13 @@ namespace Pulumi.Consul
         }
 
         /// <summary>
-        /// The datacenter to use. This overrides the
-        /// agent's default datacenter and the datacenter in the provider setup.
+        /// The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
         /// </summary>
         [Input("datacenter")]
         public Input<string>? Datacenter { get; set; }
 
         /// <summary>
-        /// Specifies to disable the
-        /// anti-entropy feature for this service's tags. Defaults to `false`.
+        /// Specifies to disable the anti-entropy feature for this service's tags. Defaults to `false`.
         /// </summary>
         [Input("enableTagOverride")]
         public Input<bool>? EnableTagOverride { get; set; }
@@ -289,8 +270,7 @@ namespace Pulumi.Consul
         private InputMap<string>? _meta;
 
         /// <summary>
-        /// A map of arbitrary KV metadata linked to the service
-        /// instance.
+        /// A map of arbitrary KV metadata linked to the service instance.
         /// </summary>
         public InputMap<string> Meta
         {
@@ -299,7 +279,7 @@ namespace Pulumi.Consul
         }
 
         /// <summary>
-        /// The name of the health-check.
+        /// The name of the header.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -318,8 +298,6 @@ namespace Pulumi.Consul
 
         /// <summary>
         /// The partition the service is associated with.
-        /// 
-        /// The following attributes are available for each health-check:
         /// </summary>
         [Input("partition")]
         public Input<string>? Partition { get; set; }
@@ -331,8 +309,7 @@ namespace Pulumi.Consul
         public Input<int>? Port { get; set; }
 
         /// <summary>
-        /// If the service ID is not provided, it will be defaulted to the value
-        /// of the `name` attribute.
+        /// If the service ID is not provided, it will be defaulted to the value of the `name` attribute.
         /// </summary>
         [Input("serviceId")]
         public Input<string>? ServiceId { get; set; }
@@ -341,8 +318,7 @@ namespace Pulumi.Consul
         private InputList<string>? _tags;
 
         /// <summary>
-        /// A list of values that are opaque to Consul,
-        /// but can be used to distinguish between services or nodes.
+        /// A list of values that are opaque to Consul, but can be used to distinguish between services or nodes.
         /// </summary>
         public InputList<string> Tags
         {

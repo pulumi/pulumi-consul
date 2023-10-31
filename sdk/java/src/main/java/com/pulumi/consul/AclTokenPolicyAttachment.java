@@ -33,7 +33,7 @@ public class AclTokenPolicyAttachment extends com.pulumi.resources.CustomResourc
      * The name of the policy attached to the token.
      * 
      */
-    @Export(name="policy", type=String.class, parameters={})
+    @Export(name="policy", refs={String.class}, tree="[0]")
     private Output<String> policy;
 
     /**
@@ -47,7 +47,7 @@ public class AclTokenPolicyAttachment extends com.pulumi.resources.CustomResourc
      * The id of the token.
      * 
      */
-    @Export(name="tokenId", type=String.class, parameters={})
+    @Export(name="tokenId", refs={String.class}, tree="[0]")
     private Output<String> tokenId;
 
     /**

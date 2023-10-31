@@ -12,10 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// The `AclToken` resource writes an ACL token into Consul.
-//
 // ## Example Usage
-// ### Basic usage
 //
 // ```go
 // package main
@@ -23,6 +20,7 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -30,17 +28,32 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			agent, err := consul.NewAclPolicy(ctx, "agent", &consul.AclPolicyArgs{
-//				Rules: pulumi.String("node_prefix \"\" {\n  policy = \"read\"\n}\n\n"),
+//				Rules: pulumi.String("node_prefix \"\" {\n  policy = \"read\"\n}\n"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = consul.NewAclToken(ctx, "test", &consul.AclTokenArgs{
+//			_, err = consul.NewAclToken(ctx, "testAclToken", &consul.AclTokenArgs{
 //				Description: pulumi.String("my test token"),
-//				Local:       pulumi.Bool(true),
 //				Policies: pulumi.StringArray{
 //					agent.Name,
 //				},
+//				Local: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = random.NewRandomUuid(ctx, "testRandomUuid", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = consul.NewAclToken(ctx, "testPredefinedId", &consul.AclTokenArgs{
+//				AccessorId:  pulumi.Any(random_uuid.Test_uuid.Result),
+//				Description: pulumi.String("my test uuid token"),
+//				Policies: pulumi.StringArray{
+//					agent.Name,
+//				},
+//				Local: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -52,8 +65,6 @@ import (
 // ```
 //
 // ## Import
-//
-// `consul_acl_token` can be imported. This is especially useful to manage the anonymous and the master token with Terraform
 //
 // ```sh
 //
@@ -69,8 +80,7 @@ import (
 type AclToken struct {
 	pulumi.CustomResourceState
 
-	// The uuid of the token. If omitted, Consul will
-	// generate a random uuid.
+	// The uuid of the token. If omitted, Consul will generate a random uuid.
 	AccessorId pulumi.StringOutput `pulumi:"accessorId"`
 	// The description of the token.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -90,6 +100,8 @@ type AclToken struct {
 	Roles pulumi.StringArrayOutput `pulumi:"roles"`
 	// The list of service identities that should be applied to the token.
 	ServiceIdentities AclTokenServiceIdentityArrayOutput `pulumi:"serviceIdentities"`
+	// The list of templated policies that should be applied to the token.
+	TemplatedPolicies AclTokenTemplatedPolicyArrayOutput `pulumi:"templatedPolicies"`
 }
 
 // NewAclToken registers a new resource with the given unique name, arguments, and options.
@@ -122,8 +134,7 @@ func GetAclToken(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AclToken resources.
 type aclTokenState struct {
-	// The uuid of the token. If omitted, Consul will
-	// generate a random uuid.
+	// The uuid of the token. If omitted, Consul will generate a random uuid.
 	AccessorId *string `pulumi:"accessorId"`
 	// The description of the token.
 	Description *string `pulumi:"description"`
@@ -143,11 +154,12 @@ type aclTokenState struct {
 	Roles []string `pulumi:"roles"`
 	// The list of service identities that should be applied to the token.
 	ServiceIdentities []AclTokenServiceIdentity `pulumi:"serviceIdentities"`
+	// The list of templated policies that should be applied to the token.
+	TemplatedPolicies []AclTokenTemplatedPolicy `pulumi:"templatedPolicies"`
 }
 
 type AclTokenState struct {
-	// The uuid of the token. If omitted, Consul will
-	// generate a random uuid.
+	// The uuid of the token. If omitted, Consul will generate a random uuid.
 	AccessorId pulumi.StringPtrInput
 	// The description of the token.
 	Description pulumi.StringPtrInput
@@ -167,6 +179,8 @@ type AclTokenState struct {
 	Roles pulumi.StringArrayInput
 	// The list of service identities that should be applied to the token.
 	ServiceIdentities AclTokenServiceIdentityArrayInput
+	// The list of templated policies that should be applied to the token.
+	TemplatedPolicies AclTokenTemplatedPolicyArrayInput
 }
 
 func (AclTokenState) ElementType() reflect.Type {
@@ -174,8 +188,7 @@ func (AclTokenState) ElementType() reflect.Type {
 }
 
 type aclTokenArgs struct {
-	// The uuid of the token. If omitted, Consul will
-	// generate a random uuid.
+	// The uuid of the token. If omitted, Consul will generate a random uuid.
 	AccessorId *string `pulumi:"accessorId"`
 	// The description of the token.
 	Description *string `pulumi:"description"`
@@ -195,12 +208,13 @@ type aclTokenArgs struct {
 	Roles []string `pulumi:"roles"`
 	// The list of service identities that should be applied to the token.
 	ServiceIdentities []AclTokenServiceIdentity `pulumi:"serviceIdentities"`
+	// The list of templated policies that should be applied to the token.
+	TemplatedPolicies []AclTokenTemplatedPolicy `pulumi:"templatedPolicies"`
 }
 
 // The set of arguments for constructing a AclToken resource.
 type AclTokenArgs struct {
-	// The uuid of the token. If omitted, Consul will
-	// generate a random uuid.
+	// The uuid of the token. If omitted, Consul will generate a random uuid.
 	AccessorId pulumi.StringPtrInput
 	// The description of the token.
 	Description pulumi.StringPtrInput
@@ -220,6 +234,8 @@ type AclTokenArgs struct {
 	Roles pulumi.StringArrayInput
 	// The list of service identities that should be applied to the token.
 	ServiceIdentities AclTokenServiceIdentityArrayInput
+	// The list of templated policies that should be applied to the token.
+	TemplatedPolicies AclTokenTemplatedPolicyArrayInput
 }
 
 func (AclTokenArgs) ElementType() reflect.Type {
@@ -333,8 +349,7 @@ func (o AclTokenOutput) ToOutput(ctx context.Context) pulumix.Output[*AclToken] 
 	}
 }
 
-// The uuid of the token. If omitted, Consul will
-// generate a random uuid.
+// The uuid of the token. If omitted, Consul will generate a random uuid.
 func (o AclTokenOutput) AccessorId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AclToken) pulumi.StringOutput { return v.AccessorId }).(pulumi.StringOutput)
 }
@@ -382,6 +397,11 @@ func (o AclTokenOutput) Roles() pulumi.StringArrayOutput {
 // The list of service identities that should be applied to the token.
 func (o AclTokenOutput) ServiceIdentities() AclTokenServiceIdentityArrayOutput {
 	return o.ApplyT(func(v *AclToken) AclTokenServiceIdentityArrayOutput { return v.ServiceIdentities }).(AclTokenServiceIdentityArrayOutput)
+}
+
+// The list of templated policies that should be applied to the token.
+func (o AclTokenOutput) TemplatedPolicies() AclTokenTemplatedPolicyArrayOutput {
+	return o.ApplyT(func(v *AclToken) AclTokenTemplatedPolicyArrayOutput { return v.TemplatedPolicies }).(AclTokenTemplatedPolicyArrayOutput)
 }
 
 type AclTokenArrayOutput struct{ *pulumi.OutputState }

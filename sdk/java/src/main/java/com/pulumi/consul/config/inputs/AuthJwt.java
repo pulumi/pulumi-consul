@@ -75,12 +75,12 @@ public final class AuthJwt {
             return this;
         }
         public AuthJwt build() {
-            final var o = new AuthJwt();
-            o.authMethod = authMethod;
-            o.bearerToken = bearerToken;
-            o.meta = meta;
-            o.useTerraformCloudWorkloadIdentity = useTerraformCloudWorkloadIdentity;
-            return o;
+            final var _resultValue = new AuthJwt();
+            _resultValue.authMethod = authMethod;
+            _resultValue.bearerToken = bearerToken;
+            _resultValue.meta = meta;
+            _resultValue.useTerraformCloudWorkloadIdentity = useTerraformCloudWorkloadIdentity;
+            return _resultValue;
         }
     }
 }

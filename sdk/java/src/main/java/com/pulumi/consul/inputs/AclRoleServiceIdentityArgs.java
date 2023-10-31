@@ -17,14 +17,14 @@ public final class AclRoleServiceIdentityArgs extends com.pulumi.resources.Resou
     public static final AclRoleServiceIdentityArgs Empty = new AclRoleServiceIdentityArgs();
 
     /**
-     * The datacenters the effective policy is valid within.
+     * The datacenters the effective policy is valid within. When no datacenters are provided the effective policy is valid in all datacenters including those which do not yet exist but may in the future.
      * 
      */
     @Import(name="datacenters")
     private @Nullable Output<List<String>> datacenters;
 
     /**
-     * @return The datacenters the effective policy is valid within.
+     * @return The datacenters the effective policy is valid within. When no datacenters are provided the effective policy is valid in all datacenters including those which do not yet exist but may in the future.
      * 
      */
     public Optional<Output<List<String>>> datacenters() {
@@ -72,7 +72,7 @@ public final class AclRoleServiceIdentityArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param datacenters The datacenters the effective policy is valid within.
+         * @param datacenters The datacenters the effective policy is valid within. When no datacenters are provided the effective policy is valid in all datacenters including those which do not yet exist but may in the future.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class AclRoleServiceIdentityArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param datacenters The datacenters the effective policy is valid within.
+         * @param datacenters The datacenters the effective policy is valid within. When no datacenters are provided the effective policy is valid in all datacenters including those which do not yet exist but may in the future.
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class AclRoleServiceIdentityArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param datacenters The datacenters the effective policy is valid within.
+         * @param datacenters The datacenters the effective policy is valid within. When no datacenters are provided the effective policy is valid in all datacenters including those which do not yet exist but may in the future.
          * 
          * @return builder
          * 

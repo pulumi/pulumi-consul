@@ -67,7 +67,7 @@ public class Namespace extends com.pulumi.resources.CustomResource {
      * Free form namespace description.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -81,7 +81,7 @@ public class Namespace extends com.pulumi.resources.CustomResource {
      * Specifies arbitrary KV metadata to associate with the namespace.
      * 
      */
-    @Export(name="meta", type=Map.class, parameters={String.class, String.class})
+    @Export(name="meta", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> meta;
 
     /**
@@ -95,7 +95,7 @@ public class Namespace extends com.pulumi.resources.CustomResource {
      * The namespace name.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -109,7 +109,7 @@ public class Namespace extends com.pulumi.resources.CustomResource {
      * The partition to create the namespace within.
      * 
      */
-    @Export(name="partition", type=String.class, parameters={})
+    @Export(name="partition", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> partition;
 
     /**
@@ -123,7 +123,7 @@ public class Namespace extends com.pulumi.resources.CustomResource {
      * The list of default policies that should be applied to all tokens created in this namespace.
      * 
      */
-    @Export(name="policyDefaults", type=List.class, parameters={String.class})
+    @Export(name="policyDefaults", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> policyDefaults;
 
     /**
@@ -137,7 +137,7 @@ public class Namespace extends com.pulumi.resources.CustomResource {
      * The list of default roles that should be applied to all tokens created in this namespace.
      * 
      */
-    @Export(name="roleDefaults", type=List.class, parameters={String.class})
+    @Export(name="roleDefaults", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> roleDefaults;
 
     /**

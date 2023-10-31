@@ -27,7 +27,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * The HTTP(S) API address of the agent to use. Defaults to &#34;127.0.0.1:8500&#34;.
      * 
      */
-    @Export(name="address", type=String.class, parameters={})
+    @Export(name="address", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> address;
 
     /**
@@ -41,7 +41,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * A path to a PEM-encoded certificate authority used to verify the remote agent&#39;s certificate.
      * 
      */
-    @Export(name="caFile", type=String.class, parameters={})
+    @Export(name="caFile", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> caFile;
 
     /**
@@ -56,7 +56,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * connections. Can also be specified with the `CONSUL_CAPATH` environment variable.
      * 
      */
-    @Export(name="caPath", type=String.class, parameters={})
+    @Export(name="caPath", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> caPath;
 
     /**
@@ -71,7 +71,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * PEM-encoded certificate authority used to verify the remote agent&#39;s certificate.
      * 
      */
-    @Export(name="caPem", type=String.class, parameters={})
+    @Export(name="caPem", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> caPem;
 
     /**
@@ -85,7 +85,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * A path to a PEM-encoded certificate provided to the remote agent; requires use of `key_file` or `key_pem`.
      * 
      */
-    @Export(name="certFile", type=String.class, parameters={})
+    @Export(name="certFile", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> certFile;
 
     /**
@@ -99,7 +99,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * PEM-encoded certificate provided to the remote agent; requires use of `key_file` or `key_pem`.
      * 
      */
-    @Export(name="certPem", type=String.class, parameters={})
+    @Export(name="certPem", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> certPem;
 
     /**
@@ -113,7 +113,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * The datacenter to use. Defaults to that of the agent.
      * 
      */
-    @Export(name="datacenter", type=String.class, parameters={})
+    @Export(name="datacenter", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> datacenter;
 
     /**
@@ -128,7 +128,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * `user:pass`. This may also be specified using the `CONSUL_HTTP_AUTH` environment variable.
      * 
      */
-    @Export(name="httpAuth", type=String.class, parameters={})
+    @Export(name="httpAuth", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> httpAuth;
 
     /**
@@ -143,7 +143,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * A path to a PEM-encoded private key, required if `cert_file` or `cert_pem` is specified.
      * 
      */
-    @Export(name="keyFile", type=String.class, parameters={})
+    @Export(name="keyFile", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> keyFile;
 
     /**
@@ -157,7 +157,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * PEM-encoded private key, required if `cert_file` or `cert_pem` is specified.
      * 
      */
-    @Export(name="keyPem", type=String.class, parameters={})
+    @Export(name="keyPem", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> keyPem;
 
     /**
@@ -167,7 +167,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> keyPem() {
         return Codegen.optional(this.keyPem);
     }
-    @Export(name="namespace", type=String.class, parameters={})
+    @Export(name="namespace", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> namespace;
 
     public Output<Optional<String>> namespace() {
@@ -177,7 +177,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * The URL scheme of the agent to use (&#34;http&#34; or &#34;https&#34;). Defaults to &#34;http&#34;.
      * 
      */
-    @Export(name="scheme", type=String.class, parameters={})
+    @Export(name="scheme", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> scheme;
 
     /**
@@ -192,7 +192,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * `CONSUL_TOKEN` as an environment variable.
      * 
      */
-    @Export(name="token", type=String.class, parameters={})
+    @Export(name="token", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> token;
 
     /**

@@ -14,7 +14,7 @@ namespace Pulumi.Consul.Outputs
     public sealed class AclTokenServiceIdentity
     {
         /// <summary>
-        /// The list of datacenters the policy is valid within.
+        /// Specifies the datacenters the effective policy is valid within.
         /// </summary>
         public readonly ImmutableArray<string> Datacenters;
         /// <summary>

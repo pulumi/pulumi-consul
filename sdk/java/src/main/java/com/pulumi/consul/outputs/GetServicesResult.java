@@ -133,14 +133,14 @@ public final class GetServicesResult {
             return this;
         }
         public GetServicesResult build() {
-            final var o = new GetServicesResult();
-            o.datacenter = datacenter;
-            o.id = id;
-            o.names = names;
-            o.queryOptions = queryOptions;
-            o.services = services;
-            o.tags = tags;
-            return o;
+            final var _resultValue = new GetServicesResult();
+            _resultValue.datacenter = datacenter;
+            _resultValue.id = id;
+            _resultValue.names = names;
+            _resultValue.queryOptions = queryOptions;
+            _resultValue.services = services;
+            _resultValue.tags = tags;
+            return _resultValue;
         }
     }
 }

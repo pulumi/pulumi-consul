@@ -13,8 +13,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// Starting with Consul 1.5.0, the AclBindingRule resource can be used to
-// managed Consul ACL binding rules.
+// Starting with Consul 1.5.0, the AclBindingRule resource can be used to managed Consul ACL binding rules.
 //
 // ## Example Usage
 //
@@ -31,23 +30,23 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			minikube, err := consul.NewAclAuthMethod(ctx, "minikube", &consul.AclAuthMethodArgs{
+//				Type:        pulumi.String("kubernetes"),
+//				Description: pulumi.String("dev minikube cluster"),
 //				Config: pulumi.StringMap{
-//					"CACert":            pulumi.String("-----BEGIN CERTIFICATE-----\n...-----END CERTIFICATE-----\n\n"),
 //					"Host":              pulumi.String("https://192.0.2.42:8443"),
+//					"CACert":            pulumi.String("-----BEGIN CERTIFICATE-----\n...-----END CERTIFICATE-----\n"),
 //					"ServiceAccountJWT": pulumi.String("eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9..."),
 //				},
-//				Description: pulumi.String("dev minikube cluster"),
-//				Type:        pulumi.String("kubernetes"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = consul.NewAclBindingRule(ctx, "test", &consul.AclBindingRuleArgs{
 //				AuthMethod:  minikube.Name,
-//				BindName:    pulumi.String("minikube"),
-//				BindType:    pulumi.String("service"),
 //				Description: pulumi.String("foobar"),
 //				Selector:    pulumi.String("serviceaccount.namespace==default"),
+//				BindType:    pulumi.String("service"),
+//				BindName:    pulumi.String("minikube"),
 //			})
 //			if err != nil {
 //				return err
@@ -66,13 +65,15 @@ type AclBindingRule struct {
 	BindName pulumi.StringOutput `pulumi:"bindName"`
 	// Specifies the way the binding rule affects a token created at login.
 	BindType pulumi.StringOutput `pulumi:"bindType"`
+	// The variables used when binding rule type is `templated-policy`. Can be lightly templated using HIL `${foo}` syntax from available field names.
+	BindVars AclBindingRuleBindVarsPtrOutput `pulumi:"bindVars"`
 	// A free form human readable description of the binding rule.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The namespace to create the binding rule within.
 	Namespace pulumi.StringPtrOutput `pulumi:"namespace"`
 	// The partition the ACL binding rule is associated with.
 	Partition pulumi.StringPtrOutput `pulumi:"partition"`
-	// The expression used to math this rule against valid identities returned from an auth method validation.
+	// The expression used to match this rule against valid identities returned from an auth method validation.
 	Selector pulumi.StringPtrOutput `pulumi:"selector"`
 }
 
@@ -121,13 +122,15 @@ type aclBindingRuleState struct {
 	BindName *string `pulumi:"bindName"`
 	// Specifies the way the binding rule affects a token created at login.
 	BindType *string `pulumi:"bindType"`
+	// The variables used when binding rule type is `templated-policy`. Can be lightly templated using HIL `${foo}` syntax from available field names.
+	BindVars *AclBindingRuleBindVars `pulumi:"bindVars"`
 	// A free form human readable description of the binding rule.
 	Description *string `pulumi:"description"`
 	// The namespace to create the binding rule within.
 	Namespace *string `pulumi:"namespace"`
 	// The partition the ACL binding rule is associated with.
 	Partition *string `pulumi:"partition"`
-	// The expression used to math this rule against valid identities returned from an auth method validation.
+	// The expression used to match this rule against valid identities returned from an auth method validation.
 	Selector *string `pulumi:"selector"`
 }
 
@@ -138,13 +141,15 @@ type AclBindingRuleState struct {
 	BindName pulumi.StringPtrInput
 	// Specifies the way the binding rule affects a token created at login.
 	BindType pulumi.StringPtrInput
+	// The variables used when binding rule type is `templated-policy`. Can be lightly templated using HIL `${foo}` syntax from available field names.
+	BindVars AclBindingRuleBindVarsPtrInput
 	// A free form human readable description of the binding rule.
 	Description pulumi.StringPtrInput
 	// The namespace to create the binding rule within.
 	Namespace pulumi.StringPtrInput
 	// The partition the ACL binding rule is associated with.
 	Partition pulumi.StringPtrInput
-	// The expression used to math this rule against valid identities returned from an auth method validation.
+	// The expression used to match this rule against valid identities returned from an auth method validation.
 	Selector pulumi.StringPtrInput
 }
 
@@ -159,13 +164,15 @@ type aclBindingRuleArgs struct {
 	BindName string `pulumi:"bindName"`
 	// Specifies the way the binding rule affects a token created at login.
 	BindType string `pulumi:"bindType"`
+	// The variables used when binding rule type is `templated-policy`. Can be lightly templated using HIL `${foo}` syntax from available field names.
+	BindVars *AclBindingRuleBindVars `pulumi:"bindVars"`
 	// A free form human readable description of the binding rule.
 	Description *string `pulumi:"description"`
 	// The namespace to create the binding rule within.
 	Namespace *string `pulumi:"namespace"`
 	// The partition the ACL binding rule is associated with.
 	Partition *string `pulumi:"partition"`
-	// The expression used to math this rule against valid identities returned from an auth method validation.
+	// The expression used to match this rule against valid identities returned from an auth method validation.
 	Selector *string `pulumi:"selector"`
 }
 
@@ -177,13 +184,15 @@ type AclBindingRuleArgs struct {
 	BindName pulumi.StringInput
 	// Specifies the way the binding rule affects a token created at login.
 	BindType pulumi.StringInput
+	// The variables used when binding rule type is `templated-policy`. Can be lightly templated using HIL `${foo}` syntax from available field names.
+	BindVars AclBindingRuleBindVarsPtrInput
 	// A free form human readable description of the binding rule.
 	Description pulumi.StringPtrInput
 	// The namespace to create the binding rule within.
 	Namespace pulumi.StringPtrInput
 	// The partition the ACL binding rule is associated with.
 	Partition pulumi.StringPtrInput
-	// The expression used to math this rule against valid identities returned from an auth method validation.
+	// The expression used to match this rule against valid identities returned from an auth method validation.
 	Selector pulumi.StringPtrInput
 }
 
@@ -313,6 +322,11 @@ func (o AclBindingRuleOutput) BindType() pulumi.StringOutput {
 	return o.ApplyT(func(v *AclBindingRule) pulumi.StringOutput { return v.BindType }).(pulumi.StringOutput)
 }
 
+// The variables used when binding rule type is `templated-policy`. Can be lightly templated using HIL `${foo}` syntax from available field names.
+func (o AclBindingRuleOutput) BindVars() AclBindingRuleBindVarsPtrOutput {
+	return o.ApplyT(func(v *AclBindingRule) AclBindingRuleBindVarsPtrOutput { return v.BindVars }).(AclBindingRuleBindVarsPtrOutput)
+}
+
 // A free form human readable description of the binding rule.
 func (o AclBindingRuleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AclBindingRule) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -328,7 +342,7 @@ func (o AclBindingRuleOutput) Partition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AclBindingRule) pulumi.StringPtrOutput { return v.Partition }).(pulumi.StringPtrOutput)
 }
 
-// The expression used to math this rule against valid identities returned from an auth method validation.
+// The expression used to match this rule against valid identities returned from an auth method validation.
 func (o AclBindingRuleOutput) Selector() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AclBindingRule) pulumi.StringPtrOutput { return v.Selector }).(pulumi.StringPtrOutput)
 }

@@ -7,21 +7,25 @@ import * as outputs from "../types/output";
 
 export interface AclAuthMethodNamespaceRule {
     /**
-     * If the namespace rule's `selector` matches then
-     * this is used to control the namespace where the token is created.
+     * If the namespace rule's `selector` matches then this is used to control the namespace where the token is created.
      */
     bindNamespace: string;
     /**
-     * Specifies the expression used to match this namespace
-     * rule against valid identities returned from an auth method validation.
-     * Defaults to `""`.
+     * Specifies the expression used to match this namespace rule against valid identities returned from an auth method validation.
      */
     selector?: string;
 }
 
+export interface AclBindingRuleBindVars {
+    /**
+     * The name of node, workload identity or service.
+     */
+    name?: string;
+}
+
 export interface AclRoleNodeIdentity {
     /**
-     * The datacenter of the node.
+     * Specifies the node's datacenter.
      */
     datacenter: string;
     /**
@@ -32,13 +36,35 @@ export interface AclRoleNodeIdentity {
 
 export interface AclRoleServiceIdentity {
     /**
-     * The datacenters the effective policy is valid within.
+     * The datacenters the effective policy is valid within. When no datacenters are provided the effective policy is valid in all datacenters including those which do not yet exist but may in the future.
      */
     datacenters?: string[];
     /**
      * The name of the service.
      */
     serviceName: string;
+}
+
+export interface AclRoleTemplatedPolicy {
+    /**
+     * Specifies the datacenters the effective policy is valid within.
+     */
+    datacenters?: string[];
+    /**
+     * The name of the templated policies.
+     */
+    templateName: string;
+    /**
+     * The templated policy variables.
+     */
+    templateVariables?: outputs.AclRoleTemplatedPolicyTemplateVariables;
+}
+
+export interface AclRoleTemplatedPolicyTemplateVariables {
+    /**
+     * The name of node, workload identity or service.
+     */
+    name?: string;
 }
 
 export interface AclTokenNodeIdentity {
@@ -54,13 +80,35 @@ export interface AclTokenNodeIdentity {
 
 export interface AclTokenServiceIdentity {
     /**
-     * The list of datacenters the policy is valid within.
+     * Specifies the datacenters the effective policy is valid within.
      */
     datacenters?: string[];
     /**
      * The name of the service.
      */
     serviceName: string;
+}
+
+export interface AclTokenTemplatedPolicy {
+    /**
+     * Specifies the datacenters the effective policy is valid within.
+     */
+    datacenters?: string[];
+    /**
+     * The name of the templated policies.
+     */
+    templateName: string;
+    /**
+     * The templated policy variables.
+     */
+    templateVariables?: outputs.AclTokenTemplatedPolicyTemplateVariables;
+}
+
+export interface AclTokenTemplatedPolicyTemplateVariables {
+    /**
+     * The name of node, workload identity or service.
+     */
+    name?: string;
 }
 
 export interface CatalogEntryService {
@@ -88,6 +136,745 @@ export interface CatalogEntryService {
     tags?: string[];
 }
 
+export interface ConfigEntryServiceDefaultsDestination {
+    addresses: string[];
+    port: number;
+}
+
+export interface ConfigEntryServiceDefaultsEnvoyExtension {
+    arguments?: {[key: string]: string};
+    consulVersion?: string;
+    envoyVersion?: string;
+    name?: string;
+    required?: boolean;
+}
+
+export interface ConfigEntryServiceDefaultsExpose {
+    checks?: boolean;
+    paths?: outputs.ConfigEntryServiceDefaultsExposePath[];
+}
+
+export interface ConfigEntryServiceDefaultsExposePath {
+    listenerPort?: number;
+    localPathPort?: number;
+    path?: string;
+    protocol?: string;
+}
+
+export interface ConfigEntryServiceDefaultsMeshGateway {
+    mode: string;
+}
+
+export interface ConfigEntryServiceDefaultsTransparentProxy {
+    dialedDirectly: boolean;
+    outboundListenerPort: number;
+}
+
+export interface ConfigEntryServiceDefaultsUpstreamConfig {
+    /**
+     * Specifies configurations that set default upstream settings. For information about overriding the default configurations for in for individual upstreams, refer to UpstreamConfig.Overrides.
+     */
+    defaults?: outputs.ConfigEntryServiceDefaultsUpstreamConfigDefault[];
+    /**
+     * Specifies options that override the default upstream configurations for individual upstreams.
+     */
+    overrides?: outputs.ConfigEntryServiceDefaultsUpstreamConfigOverride[];
+}
+
+export interface ConfigEntryServiceDefaultsUpstreamConfigDefault {
+    /**
+     * Sets the strategy for allocating outbound connections from upstreams across Envoy proxy threads.
+     */
+    balanceOutboundConnections?: string;
+    connectTimeoutMs?: number;
+    /**
+     * Map that specifies a set of limits to apply to when connecting upstream services.
+     */
+    limits?: outputs.ConfigEntryServiceDefaultsUpstreamConfigDefaultLimit[];
+    /**
+     * Specifies the default mesh gateway mode field for all upstreams.
+     */
+    meshGateways?: outputs.ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGateway[];
+    /**
+     * Map that specifies a set of rules that enable Consul to remove hosts from the upstream cluster that are unreachable or that return errors.
+     */
+    passiveHealthChecks?: outputs.ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheck[];
+    protocol?: string;
+}
+
+export interface ConfigEntryServiceDefaultsUpstreamConfigDefaultLimit {
+    /**
+     * Specifies the maximum number of concurrent requests.
+     */
+    maxConcurrentRequests?: number;
+    /**
+     * Specifies the maximum number of connections a service instance can establish against the upstream.
+     */
+    maxConnections?: number;
+    /**
+     * Specifies the maximum number of requests that are queued while waiting for a connection to establish.
+     */
+    maxPendingRequests?: number;
+}
+
+export interface ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGateway {
+    mode?: string;
+}
+
+export interface ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheck {
+    /**
+     * Specifies the minimum amount of time that an ejected host must remain outside the cluster before rejoining.
+     */
+    baseEjectionTime?: string;
+    /**
+     * Specifies a percentage that indicates how many times out of 100 that Consul ejects the host when it detects an outlier status.
+     */
+    enforcingConsecutive5xx?: number;
+    /**
+     * Specifies the time between checks.
+     */
+    interval?: string;
+    /**
+     * Specifies the maximum percentage of an upstream cluster that Consul ejects when the proxy reports an outlier.
+     */
+    maxEjectionPercent?: number;
+    /**
+     * Specifies the number of consecutive failures allowed per check interval. If exceeded, Consul removes the host from the load balancer.
+     */
+    maxFailures?: number;
+}
+
+export interface ConfigEntryServiceDefaultsUpstreamConfigOverride {
+    /**
+     * Sets the strategy for allocating outbound connections from upstreams across Envoy proxy threads.
+     */
+    balanceOutboundConnections?: string;
+    connectTimeoutMs?: number;
+    envoyListenerJson?: string;
+    /**
+     * Map that specifies a set of limits to apply to when connecting upstream services.
+     */
+    limits?: outputs.ConfigEntryServiceDefaultsUpstreamConfigOverrideLimit[];
+    /**
+     * Specifies the default mesh gateway mode field for all upstreams.
+     */
+    meshGateways?: outputs.ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGateway[];
+    name?: string;
+    /**
+     * Specifies the namespace containing the upstream service that the configuration applies to.
+     */
+    namespace?: string;
+    /**
+     * Specifies the name of the name of the Consul admin partition that the configuration entry applies to.
+     */
+    partition?: string;
+    /**
+     * Map that specifies a set of rules that enable Consul to remove hosts from the upstream cluster that are unreachable or that return errors.
+     */
+    passiveHealthChecks?: outputs.ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheck[];
+    /**
+     * Specifies the peer name of the upstream service that the configuration applies to.
+     */
+    peer?: string;
+    protocol?: string;
+}
+
+export interface ConfigEntryServiceDefaultsUpstreamConfigOverrideLimit {
+    /**
+     * Specifies the maximum number of concurrent requests.
+     */
+    maxConcurrentRequests?: number;
+    /**
+     * Specifies the maximum number of connections a service instance can establish against the upstream.
+     */
+    maxConnections?: number;
+    /**
+     * Specifies the maximum number of requests that are queued while waiting for a connection to establish.
+     */
+    maxPendingRequests?: number;
+}
+
+export interface ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGateway {
+    mode?: string;
+}
+
+export interface ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheck {
+    /**
+     * Specifies the minimum amount of time that an ejected host must remain outside the cluster before rejoining.
+     */
+    baseEjectionTime?: string;
+    /**
+     * Specifies a percentage that indicates how many times out of 100 that Consul ejects the host when it detects an outlier status.
+     */
+    enforcingConsecutive5xx?: number;
+    /**
+     * Specifies the time between checks.
+     */
+    interval?: string;
+    /**
+     * Specifies the maximum percentage of an upstream cluster that Consul ejects when the proxy reports an outlier.
+     */
+    maxEjectionPercent?: number;
+    /**
+     * Specifies the number of consecutive failures allowed per check interval. If exceeded, Consul removes the host from the load balancer.
+     */
+    maxFailures?: number;
+}
+
+export interface ConfigEntryServiceIntentionsJwt {
+    /**
+     * Specifies the names of one or more previously configured JWT provider configuration entries, which include the information necessary to validate a JSON web token.
+     */
+    providers?: outputs.ConfigEntryServiceIntentionsJwtProvider[];
+}
+
+export interface ConfigEntryServiceIntentionsJwtProvider {
+    /**
+     * Specifies the name of a JWT provider defined in the Name field of the jwt-provider configuration entry.
+     */
+    name?: string;
+    /**
+     * Specifies additional token information to verify beyond what is configured in the JWT provider configuration entry.
+     */
+    verifyClaims?: outputs.ConfigEntryServiceIntentionsJwtProviderVerifyClaim[];
+}
+
+export interface ConfigEntryServiceIntentionsJwtProviderVerifyClaim {
+    /**
+     * Specifies the path to the claim in the JSON web token.
+     */
+    paths?: string[];
+    /**
+     * Specifies the value to match on when verifying the the claim designated in path.
+     */
+    value?: string;
+}
+
+export interface ConfigEntryServiceIntentionsSource {
+    /**
+     * Specifies the action to take when the source sends traffic to the destination service.
+     */
+    action?: string;
+    /**
+     * Specifies a description of the intention.
+     */
+    description?: string;
+    /**
+     * Specifies the name of the source that the intention allows or denies traffic from.
+     */
+    name?: string;
+    /**
+     * Specifies the traffic source namespace that the intention allows or denies traffic from.
+     */
+    namespace?: string;
+    /**
+     * Specifies the name of an admin partition that the intention allows or denies traffic from.
+     */
+    partition?: string;
+    /**
+     * Specifies the name of a peered Consul cluster that the intention allows or denies traffic from
+     */
+    peer?: string;
+    /**
+     * Specifies a list of permissions for L7 traffic sources. The list contains one or more actions and a set of match criteria for each action.
+     */
+    permissions?: outputs.ConfigEntryServiceIntentionsSourcePermission[];
+    /**
+     * The Precedence field contains a read-only integer. Consul generates the value based on name configurations for the source and destination services.
+     */
+    precedence?: number;
+    /**
+     * Specifies the name of a sameness group that the intention allows or denies traffic from.
+     */
+    samenessGroup?: string;
+    /**
+     * Specifies the type of destination service that the configuration entry applies to.
+     */
+    type?: string;
+}
+
+export interface ConfigEntryServiceIntentionsSourcePermission {
+    /**
+     * Specifies the action to take when the source sends traffic to the destination service.
+     */
+    action: string;
+    /**
+     * Specifies a set of HTTP-specific match criteria.
+     */
+    https: outputs.ConfigEntryServiceIntentionsSourcePermissionHttp[];
+}
+
+export interface ConfigEntryServiceIntentionsSourcePermissionHttp {
+    /**
+     * Specifies a header name and matching criteria for HTTP request headers.
+     */
+    headers?: outputs.ConfigEntryServiceIntentionsSourcePermissionHttpHeader[];
+    /**
+     * Specifies a list of HTTP methods.
+     */
+    methods?: string[];
+    /**
+     * Specifies an exact path to match on the HTTP request path.
+     */
+    pathExact?: string;
+    /**
+     * Specifies a path prefix to match on the HTTP request path.
+     */
+    pathPrefix?: string;
+    /**
+     * Defines a regular expression to match on the HTTP request path.
+     */
+    pathRegex?: string;
+}
+
+export interface ConfigEntryServiceIntentionsSourcePermissionHttpHeader {
+    /**
+     * Specifies a value for the header key set in the Name field. If the request header value matches the Exact value, Consul applies the permission.
+     */
+    exact?: string;
+    /**
+     * Inverts the matching logic configured in the Header.
+     */
+    invert?: boolean;
+    /**
+     * Specifies the name of a JWT provider defined in the Name field of the jwt-provider configuration entry.
+     */
+    name: string;
+    /**
+     * Specifies a prefix value for the header key set in the Name field.
+     */
+    prefix?: string;
+    /**
+     * Enables a match if the header configured in the Name field appears in the request. Consul matches on any value as long as the header key appears in the request.
+     */
+    present?: boolean;
+    /**
+     * Specifies a regular expression pattern as the value for the header key set in the Name field.
+     */
+    regex?: string;
+    /**
+     * Specifies a suffix value for the header key set in the Name field.
+     */
+    suffix?: string;
+}
+
+export interface ConfigEntryServiceResolverFailover {
+    /**
+     * Specifies an ordered list of datacenters at the failover location to attempt connections to during a failover scenario. When Consul cannot establish a connection with the first datacenter in the list, it proceeds sequentially until establishing a connection with another datacenter.
+     */
+    datacenters?: string[];
+    /**
+     * Specifies the namespace at the failover location where the failover services are deployed.
+     */
+    namespace?: string;
+    /**
+     * Specifies the sameness group at the failover location where the failover services are deployed.
+     */
+    samenessGroup?: string;
+    /**
+     * Specifies the name of the service to resolve at the failover location during a failover scenario.
+     */
+    service?: string;
+    /**
+     * Specifies the name of a subset of service instances to resolve at the failover location during a failover scenario.
+     */
+    serviceSubset?: string;
+    /**
+     * Name of subset.
+     */
+    subsetName: string;
+    /**
+     * Specifies a fixed list of failover targets to try during failover. This list can express complicated failover scenarios.
+     */
+    targets?: outputs.ConfigEntryServiceResolverFailoverTarget[];
+}
+
+export interface ConfigEntryServiceResolverFailoverTarget {
+    /**
+     * Specifies the WAN federated datacenter to use for the failover target. If empty, the current datacenter is used.
+     */
+    datacenter?: string;
+    /**
+     * Specifies the namespace at the failover location where the failover services are deployed.
+     */
+    namespace?: string;
+    /**
+     * Specifies the admin partition within the same datacenter to use for the failover target. If empty, the default partition is used.
+     */
+    partition?: string;
+    /**
+     * Specifies the destination cluster peer to resolve the target service name from.
+     */
+    peer?: string;
+    /**
+     * Specifies the name of the service to resolve at the failover location during a failover scenario.
+     */
+    service?: string;
+    /**
+     * Specifies the name of a subset of service instances to resolve at the failover location during a failover scenario.
+     */
+    serviceSubset?: string;
+}
+
+export interface ConfigEntryServiceResolverLoadBalancer {
+    /**
+     * Specifies a list of hash policies to use for hashing load balancing algorithms. Consul evaluates hash policies individually and combines them so that identical lists result in the same hash.
+     */
+    hashPolicies?: outputs.ConfigEntryServiceResolverLoadBalancerHashPolicy[];
+    /**
+     * Specifies configuration for the least*request policy type.
+     */
+    leastRequestConfigs?: outputs.ConfigEntryServiceResolverLoadBalancerLeastRequestConfig[];
+    /**
+     * Specifies the type of load balancing policy for selecting a host.
+     */
+    policy?: string;
+    /**
+     * Specifies configuration for the ring*hash policy type.
+     */
+    ringHashConfigs?: outputs.ConfigEntryServiceResolverLoadBalancerRingHashConfig[];
+}
+
+export interface ConfigEntryServiceResolverLoadBalancerHashPolicy {
+    /**
+     * Specifies additional configuration options for the cookie hash policy type.
+     */
+    cookieConfigs?: outputs.ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfig[];
+    /**
+     * Specifies the attribute type to hash on. You cannot specify the Field parameter if SourceIP is also configured.
+     */
+    field?: string;
+    /**
+     * Specifies the value to hash, such as a header name, cookie name, or a URL query parameter name.
+     */
+    fieldValue?: string;
+    /**
+     * Determines if the hash type should be source IP address.
+     */
+    sourceIp?: boolean;
+    /**
+     * Determines if Consul should stop computing the hash when multiple hash policies are present.
+     */
+    terminal?: boolean;
+}
+
+export interface ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfig {
+    /**
+     * Specifies the path to set for the cookie.
+     */
+    path?: string;
+    /**
+     * Directs Consul to generate a session cookie with no expiration.
+     */
+    session?: boolean;
+    /**
+     * Specifies the TTL for generated cookies. Cannot be specified for session cookies.
+     */
+    ttl?: string;
+}
+
+export interface ConfigEntryServiceResolverLoadBalancerLeastRequestConfig {
+    choiceCount?: number;
+}
+
+export interface ConfigEntryServiceResolverLoadBalancerRingHashConfig {
+    /**
+     * Determines the maximum number of entries in the hash ring.
+     */
+    maximumRingSize?: number;
+    /**
+     * Determines the minimum number of entries in the hash ring.
+     */
+    minimumRingSize?: number;
+}
+
+export interface ConfigEntryServiceResolverRedirect {
+    /**
+     * Specifies the datacenter at the redirect’s destination that resolves local upstream requests.
+     */
+    datacenter?: string;
+    /**
+     * Specifies the namespace at the redirect’s destination that resolves local upstream requests.
+     */
+    namespace?: string;
+    /**
+     * Specifies the admin partition at the redirect’s destination that resolves local upstream requests.
+     */
+    partition?: string;
+    /**
+     * Specifies the cluster with an active cluster peering connection at the redirect’s destination that resolves local upstream requests.
+     */
+    peer?: string;
+    /**
+     * Specifies the sameness group at the redirect’s destination that resolves local upstream requests.
+     */
+    samenessGroup?: string;
+    /**
+     * Specifies the name of a service at the redirect’s destination that resolves local upstream requests.
+     */
+    service?: string;
+    /**
+     * Specifies the name of a subset of services at the redirect’s destination that resolves local upstream requests. If empty, the default subset is used. If specified, you must also specify at least one of the following in the same Redirect map: Service, Namespace, andDatacenter.
+     */
+    serviceSubset?: string;
+}
+
+export interface ConfigEntryServiceResolverSubset {
+    /**
+     * Specifies an expression that filters the DNS elements of service instances that belong to the subset. If empty, all healthy instances of a service are returned.
+     */
+    filter: string;
+    /**
+     * Name of subset.
+     */
+    name: string;
+    /**
+     * Determines if instances that return a warning from a health check are allowed to resolve a request. When set to false, instances with passing and warning states are considered healthy. When set to true, only instances with a passing health check state are considered healthy.
+     */
+    onlyPassing: boolean;
+}
+
+export interface ConfigEntryServiceRouterRoute {
+    /**
+     * Specifies the target service to route matching requests to, as well as behavior for the request to follow when routed.
+     */
+    destination?: outputs.ConfigEntryServiceRouterRouteDestination;
+    /**
+     * Describes a set of criteria that Consul compares incoming L7 traffic with.
+     */
+    match?: outputs.ConfigEntryServiceRouterRouteMatch;
+}
+
+export interface ConfigEntryServiceRouterRouteDestination {
+    /**
+     * Specifies the total amount of time permitted for the request stream to be idle.
+     */
+    idleTimeout?: string;
+    /**
+     * Specifies the Consul namespace to resolve the service from instead of the current namespace.
+     */
+    namespace?: string;
+    /**
+     * Specifies the number of times to retry the request when a retry condition occurs.
+     */
+    numRetries?: number;
+    /**
+     * Specifies the Consul admin partition to resolve the service from instead of the current partition.
+     */
+    partition?: string;
+    /**
+     * Specifies rewrites to the HTTP request path before proxying it to its final destination.
+     */
+    prefixRewrite?: string;
+    /**
+     * Specifies a set of HTTP-specific header modification rules applied to requests routed with the service router.
+     */
+    requestHeaders?: outputs.ConfigEntryServiceRouterRouteDestinationRequestHeaders;
+    /**
+     * Specifies the total amount of time permitted for the entire downstream request to be processed, including retry attempts.
+     */
+    requestTimeout?: string;
+    /**
+     * Specifies a set of HTTP-specific header modification rules applied to responses routed with the service router.
+     */
+    responseHeaders?: outputs.ConfigEntryServiceRouterRouteDestinationResponseHeaders;
+    /**
+     * Specifies that connection failure errors that trigger a retry request.
+     */
+    retryOnConnectFailure?: boolean;
+    /**
+     * Specifies a list of integers for HTTP response status codes that trigger a retry request.
+     */
+    retryOnStatusCodes?: number[];
+    /**
+     * Specifies a list of conditions for Consul to retry requests based on the response from an upstream service.
+     */
+    retryOns?: string[];
+    /**
+     * Specifies the name of the service to resolve.
+     */
+    service?: string;
+    /**
+     * Specifies a named subset of the given service to resolve instead of the one defined as that service's `defaultSubset` in the service resolver configuration entry.
+     */
+    serviceSubset?: string;
+}
+
+export interface ConfigEntryServiceRouterRouteDestinationRequestHeaders {
+    /**
+     * Defines a set of key-value pairs to add to the header. Use header names as the keys.
+     */
+    add?: {[key: string]: string};
+    /**
+     * Defines a list of headers to remove.
+     */
+    removes?: string[];
+    /**
+     * Defines a set of key-value pairs to add to the request header or to replace existing header values with.
+     */
+    set?: {[key: string]: string};
+}
+
+export interface ConfigEntryServiceRouterRouteDestinationResponseHeaders {
+    /**
+     * Defines a set of key-value pairs to add to the header. Use header names as the keys.
+     */
+    add?: {[key: string]: string};
+    /**
+     * Defines a list of headers to remove.
+     */
+    removes?: string[];
+    /**
+     * Defines a set of key-value pairs to add to the request header or to replace existing header values with.
+     */
+    set?: {[key: string]: string};
+}
+
+export interface ConfigEntryServiceRouterRouteMatch {
+    /**
+     * Specifies a set of HTTP criteria used to evaluate incoming L7 traffic for matches.
+     */
+    http?: outputs.ConfigEntryServiceRouterRouteMatchHttp;
+}
+
+export interface ConfigEntryServiceRouterRouteMatchHttp {
+    /**
+     * Specifies information in the HTTP request header to match with.
+     */
+    headers?: outputs.ConfigEntryServiceRouterRouteMatchHttpHeader[];
+    /**
+     * Specifies HTTP methods that the match applies to.
+     */
+    methods?: string[];
+    /**
+     * Specifies the exact path to match on the HTTP request path.
+     */
+    pathExact?: string;
+    /**
+     * Specifies the path prefix to match on the HTTP request path.
+     */
+    pathPrefix?: string;
+    /**
+     * Specifies a regular expression to match on the HTTP request path.
+     */
+    pathRegex?: string;
+    /**
+     * Specifies information to match to on HTTP query parameters.
+     */
+    queryParams?: outputs.ConfigEntryServiceRouterRouteMatchHttpQueryParam[];
+}
+
+export interface ConfigEntryServiceRouterRouteMatchHttpHeader {
+    /**
+     * Specifies that a request matches when the header with the given name is this exact value.
+     */
+    exact?: string;
+    /**
+     * Specifies that the logic for the HTTP header match should be inverted.
+     */
+    invert?: boolean;
+    /**
+     * Specifies the name of the HTTP header to match.
+     */
+    name?: string;
+    /**
+     * Specifies that a request matches when the header with the given name has this prefix.
+     */
+    prefix?: string;
+    /**
+     * Specifies that a request matches when the value in the `name` argument is present anywhere in the HTTP header.
+     */
+    present?: boolean;
+    /**
+     * Specifies that a request matches when the header with the given name matches this regular expression.
+     */
+    regex?: string;
+    /**
+     * Specifies that a request matches when the header with the given name has this suffix.
+     */
+    suffix?: string;
+}
+
+export interface ConfigEntryServiceRouterRouteMatchHttpQueryParam {
+    /**
+     * Specifies that a request matches when the header with the given name is this exact value.
+     */
+    exact?: string;
+    /**
+     * Specifies the name of the HTTP header to match.
+     */
+    name?: string;
+    /**
+     * Specifies that a request matches when the value in the `name` argument is present anywhere in the HTTP header.
+     */
+    present?: boolean;
+    /**
+     * Specifies that a request matches when the header with the given name matches this regular expression.
+     */
+    regex?: string;
+}
+
+export interface ConfigEntryServiceSplitterSplit {
+    /**
+     * Specifies the namespace to use in the FQDN when resolving the service.
+     */
+    namespace?: string;
+    /**
+     * Specifies the admin partition to use in the FQDN when resolving the service.
+     */
+    partition?: string;
+    /**
+     * Specifies a set of HTTP-specific header modification rules applied to requests routed with the service split. You cannot configure request headers if the listener protocol is set to `tcp`.
+     */
+    requestHeaders?: outputs.ConfigEntryServiceSplitterSplitRequestHeaders;
+    /**
+     * Specifies a set of HTTP-specific header modification rules applied to responses routed with the service split. You cannot configure request headers if the listener protocol is set to `tcp`.
+     */
+    responseHeaders?: outputs.ConfigEntryServiceSplitterSplitResponseHeaders;
+    /**
+     * Specifies the name of the service to resolve.
+     */
+    service: string;
+    /**
+     * Specifies a subset of the service to resolve. A service subset assigns a name to a specific subset of discoverable service instances within a datacenter, such as `version2` or `canary`. All services have an unnamed default subset that returns all healthy instances.
+     */
+    serviceSubset?: string;
+    /**
+     * Specifies the percentage of traffic sent to the set of service instances specified in the `service` field. Each weight must be a floating integer between `0` and `100`. The smallest representable value is `.01`. The sum of weights across all splits must add up to `100`.
+     */
+    weight: number;
+}
+
+export interface ConfigEntryServiceSplitterSplitRequestHeaders {
+    /**
+     * Map of one or more key-value pairs. Defines a set of key-value pairs to add to the header. Use header names as the keys. Header names are not case-sensitive. If header values with the same name already exist, the value is appended and Consul applies both headers.
+     */
+    add?: {[key: string]: string};
+    /**
+     * Defines an list of headers to remove. Consul removes only headers containing exact matches. Header names are not case-sensitive.
+     */
+    removes?: string[];
+    /**
+     * Map of one or more key-value pairs. Defines a set of key-value pairs to add to the request header or to replace existing header values with. Use header names as the keys. Header names are not case-sensitive. If header values with the same names already exist, Consul replaces the header values.
+     */
+    set?: {[key: string]: string};
+}
+
+export interface ConfigEntryServiceSplitterSplitResponseHeaders {
+    /**
+     * Map of one or more key-value pairs. Defines a set of key-value pairs to add to the header. Use header names as the keys. Header names are not case-sensitive. If header values with the same name already exist, the value is appended and Consul applies both headers.
+     */
+    add?: {[key: string]: string};
+    /**
+     * Defines an list of headers to remove. Consul removes only headers containing exact matches. Header names are not case-sensitive.
+     */
+    removes?: string[];
+    /**
+     * Map of one or more key-value pairs. Defines a set of key-value pairs to add to the request header or to replace existing header values with. Use header names as the keys. Header names are not case-sensitive. If header values with the same names already exist, Consul replaces the header values.
+     */
+    set?: {[key: string]: string};
+}
+
 export interface GetAclAuthMethodNamespaceRule {
     bindNamespace: string;
     selector: string;
@@ -100,15 +887,22 @@ export interface GetAclRoleNodeIdentity {
 
 export interface GetAclRolePolicy {
     id: string;
-    /**
-     * The name of the ACL Role.
-     */
     name: string;
 }
 
 export interface GetAclRoleServiceIdentity {
     datacenters?: string[];
     serviceName?: string;
+}
+
+export interface GetAclRoleTemplatedPolicy {
+    datacenters: string[];
+    templateName: string;
+    templateVariables: outputs.GetAclRoleTemplatedPolicyTemplateVariable[];
+}
+
+export interface GetAclRoleTemplatedPolicyTemplateVariable {
+    name: string;
 }
 
 export interface GetAclTokenNodeIdentity {
@@ -129,6 +923,16 @@ export interface GetAclTokenRole {
 export interface GetAclTokenServiceIdentity {
     datacenters: string[];
     serviceName: string;
+}
+
+export interface GetAclTokenTemplatedPolicy {
+    datacenters: string[];
+    templateName: string;
+    templateVariables: outputs.GetAclTokenTemplatedPolicyTemplateVariable[];
+}
+
+export interface GetAclTokenTemplatedPolicyTemplateVariable {
+    name: string;
 }
 
 export interface GetAutopilotHealthServer {
@@ -859,19 +1663,15 @@ export interface PreparedQueryTemplate {
 
 export interface ServiceCheck {
     /**
-     * An ID, *unique per agent*. Will default to *name*
-     * if not set.
+     * An ID, *unique per agent*.
      */
     checkId: string;
     /**
-     * The time after which
-     * the service is automatically deregistered when in the `critical` state.
-     * Defaults to `30s`.
+     * The time after which the service is automatically deregistered when in the `critical` state. Defaults to `30s`.
      */
     deregisterCriticalServiceAfter?: string;
     /**
-     * The headers to send for an HTTP check.
-     * The attributes of each header is given below.
+     * The headers to send for an HTTP check. The attributes of each header is given below.
      */
     headers?: outputs.ServiceCheckHeader[];
     /**
@@ -879,13 +1679,11 @@ export interface ServiceCheck {
      */
     http?: string;
     /**
-     * The interval to wait between each health-check
-     * invocation.
+     * The interval to wait between each health-check invocation.
      */
     interval: string;
     /**
-     * The method to use for HTTP health-checks. Defaults
-     * to `GET`.
+     * The method to use for HTTP health-checks. Defaults to `GET`.
      */
     method?: string;
     /**
@@ -905,13 +1703,11 @@ export interface ServiceCheck {
      */
     tcp?: string;
     /**
-     * Specifies a timeout for outgoing connections in
-     * the case of a HTTP or TCP check.
+     * Specifies a timeout for outgoing connections in the case of a HTTP or TCP check.
      */
     timeout: string;
     /**
-     * Whether to deactivate certificate
-     * verification for HTTP health-checks. Defaults to `false`.
+     * Whether to deactivate certificate verification for HTTP health-checks. Defaults to `false`.
      */
     tlsSkipVerify?: boolean;
 }

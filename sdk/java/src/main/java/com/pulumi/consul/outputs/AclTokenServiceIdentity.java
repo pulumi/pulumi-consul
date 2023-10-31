@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AclTokenServiceIdentity {
     /**
-     * @return The list of datacenters the policy is valid within.
+     * @return Specifies the datacenters the effective policy is valid within.
      * 
      */
     private @Nullable List<String> datacenters;
@@ -24,7 +24,7 @@ public final class AclTokenServiceIdentity {
 
     private AclTokenServiceIdentity() {}
     /**
-     * @return The list of datacenters the policy is valid within.
+     * @return Specifies the datacenters the effective policy is valid within.
      * 
      */
     public List<String> datacenters() {
@@ -70,10 +70,10 @@ public final class AclTokenServiceIdentity {
             return this;
         }
         public AclTokenServiceIdentity build() {
-            final var o = new AclTokenServiceIdentity();
-            o.datacenters = datacenters;
-            o.serviceName = serviceName;
-            return o;
+            final var _resultValue = new AclTokenServiceIdentity();
+            _resultValue.datacenters = datacenters;
+            _resultValue.serviceName = serviceName;
+            return _resultValue;
         }
     }
 }

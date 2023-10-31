@@ -12,8 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// The `AclRole` data source returns the information related to a
-// [Consul ACL Role](https://www.consul.io/api/acl/roles.html).
+// The `AclRole` data source returns the information related to a [Consul ACL Role](https://www.consul.io/api/acl/roles.html).
 //
 // ## Example Usage
 //
@@ -53,7 +52,6 @@ func LookupAclRole(ctx *pulumi.Context, args *LookupAclRoleArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getAclRole.
 type LookupAclRoleArgs struct {
-	// The name of the ACL Role.
 	Name string `pulumi:"name"`
 	// The namespace to lookup the role.
 	Namespace *string `pulumi:"namespace"`
@@ -71,13 +69,16 @@ type LookupAclRoleResult struct {
 	Name string `pulumi:"name"`
 	// The namespace to lookup the role.
 	Namespace *string `pulumi:"namespace"`
-	// The list of node identities associated with the ACL Role. Each entry has a `nodeName` and a `datacenter` attributes.
+	// The list of node identities associated with the ACL Role.
 	NodeIdentities []GetAclRoleNodeIdentity `pulumi:"nodeIdentities"`
-	Partition      *string                  `pulumi:"partition"`
-	// The list of policies associated with the ACL Role. Each entry has an `id` and a `name` attribute.
+	// The partition to lookup the role.
+	Partition *string `pulumi:"partition"`
+	// The list of policies associated with the ACL Role.
 	Policies []GetAclRolePolicy `pulumi:"policies"`
-	// The list of service identities associated with the ACL Role. Each entry has a `serviceName` attribute and a list of `datacenters`.
+	// The list of service identities associated with the ACL Role.
 	ServiceIdentities []GetAclRoleServiceIdentity `pulumi:"serviceIdentities"`
+	// The list of templated policies that should be applied to the token.
+	TemplatedPolicies []GetAclRoleTemplatedPolicy `pulumi:"templatedPolicies"`
 }
 
 func LookupAclRoleOutput(ctx *pulumi.Context, args LookupAclRoleOutputArgs, opts ...pulumi.InvokeOption) LookupAclRoleResultOutput {
@@ -95,7 +96,6 @@ func LookupAclRoleOutput(ctx *pulumi.Context, args LookupAclRoleOutputArgs, opts
 
 // A collection of arguments for invoking getAclRole.
 type LookupAclRoleOutputArgs struct {
-	// The name of the ACL Role.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The namespace to lookup the role.
 	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
@@ -148,23 +148,29 @@ func (o LookupAclRoleResultOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAclRoleResult) *string { return v.Namespace }).(pulumi.StringPtrOutput)
 }
 
-// The list of node identities associated with the ACL Role. Each entry has a `nodeName` and a `datacenter` attributes.
+// The list of node identities associated with the ACL Role.
 func (o LookupAclRoleResultOutput) NodeIdentities() GetAclRoleNodeIdentityArrayOutput {
 	return o.ApplyT(func(v LookupAclRoleResult) []GetAclRoleNodeIdentity { return v.NodeIdentities }).(GetAclRoleNodeIdentityArrayOutput)
 }
 
+// The partition to lookup the role.
 func (o LookupAclRoleResultOutput) Partition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAclRoleResult) *string { return v.Partition }).(pulumi.StringPtrOutput)
 }
 
-// The list of policies associated with the ACL Role. Each entry has an `id` and a `name` attribute.
+// The list of policies associated with the ACL Role.
 func (o LookupAclRoleResultOutput) Policies() GetAclRolePolicyArrayOutput {
 	return o.ApplyT(func(v LookupAclRoleResult) []GetAclRolePolicy { return v.Policies }).(GetAclRolePolicyArrayOutput)
 }
 
-// The list of service identities associated with the ACL Role. Each entry has a `serviceName` attribute and a list of `datacenters`.
+// The list of service identities associated with the ACL Role.
 func (o LookupAclRoleResultOutput) ServiceIdentities() GetAclRoleServiceIdentityArrayOutput {
 	return o.ApplyT(func(v LookupAclRoleResult) []GetAclRoleServiceIdentity { return v.ServiceIdentities }).(GetAclRoleServiceIdentityArrayOutput)
+}
+
+// The list of templated policies that should be applied to the token.
+func (o LookupAclRoleResultOutput) TemplatedPolicies() GetAclRoleTemplatedPolicyArrayOutput {
+	return o.ApplyT(func(v LookupAclRoleResult) []GetAclRoleTemplatedPolicy { return v.TemplatedPolicies }).(GetAclRoleTemplatedPolicyArrayOutput)
 }
 
 func init() {

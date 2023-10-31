@@ -29,6 +29,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AclPolicy{}
 	case "consul:index/aclRole:AclRole":
 		r = &AclRole{}
+	case "consul:index/aclRolePolicyAttachment:AclRolePolicyAttachment":
+		r = &AclRolePolicyAttachment{}
 	case "consul:index/aclToken:AclToken":
 		r = &AclToken{}
 	case "consul:index/aclTokenPolicyAttachment:AclTokenPolicyAttachment":
@@ -47,6 +49,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CertificateAuthority{}
 	case "consul:index/configEntry:ConfigEntry":
 		r = &ConfigEntry{}
+	case "consul:index/configEntryServiceDefaults:ConfigEntryServiceDefaults":
+		r = &ConfigEntryServiceDefaults{}
+	case "consul:index/configEntryServiceIntentions:ConfigEntryServiceIntentions":
+		r = &ConfigEntryServiceIntentions{}
+	case "consul:index/configEntryServiceResolver:ConfigEntryServiceResolver":
+		r = &ConfigEntryServiceResolver{}
+	case "consul:index/configEntryServiceRouter:ConfigEntryServiceRouter":
+		r = &ConfigEntryServiceRouter{}
+	case "consul:index/configEntryServiceSplitter:ConfigEntryServiceSplitter":
+		r = &ConfigEntryServiceSplitter{}
 	case "consul:index/intention:Intention":
 		r = &Intention{}
 	case "consul:index/keyPrefix:KeyPrefix":
@@ -126,6 +138,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"consul",
+		"index/aclRolePolicyAttachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"consul",
 		"index/aclToken",
 		&module{version},
 	)
@@ -167,6 +184,31 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"consul",
 		"index/configEntry",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"consul",
+		"index/configEntryServiceDefaults",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"consul",
+		"index/configEntryServiceIntentions",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"consul",
+		"index/configEntryServiceResolver",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"consul",
+		"index/configEntryServiceRouter",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"consul",
+		"index/configEntryServiceSplitter",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -62,7 +62,7 @@ public class PeeringToken extends com.pulumi.resources.CustomResource {
      * Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the cluster peering process.
      * 
      */
-    @Export(name="meta", type=Map.class, parameters={String.class, String.class})
+    @Export(name="meta", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> meta;
 
     /**
@@ -72,7 +72,7 @@ public class PeeringToken extends com.pulumi.resources.CustomResource {
     public Output<Optional<Map<String,String>>> meta() {
         return Codegen.optional(this.meta);
     }
-    @Export(name="partition", type=String.class, parameters={})
+    @Export(name="partition", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> partition;
 
     public Output<Optional<String>> partition() {
@@ -82,7 +82,7 @@ public class PeeringToken extends com.pulumi.resources.CustomResource {
      * The name assigned to the peer cluster. The `peer_name` is used to reference the peer cluster in service discovery queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
      * 
      */
-    @Export(name="peerName", type=String.class, parameters={})
+    @Export(name="peerName", refs={String.class}, tree="[0]")
     private Output<String> peerName;
 
     /**
@@ -96,7 +96,7 @@ public class PeeringToken extends com.pulumi.resources.CustomResource {
      * The generated peering token
      * 
      */
-    @Export(name="peeringToken", type=String.class, parameters={})
+    @Export(name="peeringToken", refs={String.class}, tree="[0]")
     private Output<String> peeringToken;
 
     /**

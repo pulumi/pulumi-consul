@@ -220,18 +220,18 @@ public final class GetServiceHealthInvokeResult {
             return this;
         }
         public GetServiceHealthInvokeResult build() {
-            final var o = new GetServiceHealthInvokeResult();
-            o.datacenter = datacenter;
-            o.filter = filter;
-            o.id = id;
-            o.name = name;
-            o.near = near;
-            o.nodeMeta = nodeMeta;
-            o.passing = passing;
-            o.results = results;
-            o.tag = tag;
-            o.waitFor = waitFor;
-            return o;
+            final var _resultValue = new GetServiceHealthInvokeResult();
+            _resultValue.datacenter = datacenter;
+            _resultValue.filter = filter;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.near = near;
+            _resultValue.nodeMeta = nodeMeta;
+            _resultValue.passing = passing;
+            _resultValue.results = results;
+            _resultValue.tag = tag;
+            _resultValue.waitFor = waitFor;
+            return _resultValue;
         }
     }
 }

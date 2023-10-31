@@ -137,13 +137,13 @@ Please use the token argument in the provider configuration */
             return this;
         }
         public GetNetworkAreaMembersResult build() {
-            final var o = new GetNetworkAreaMembersResult();
-            o.datacenter = datacenter;
-            o.id = id;
-            o.members = members;
-            o.token = token;
-            o.uuid = uuid;
-            return o;
+            final var _resultValue = new GetNetworkAreaMembersResult();
+            _resultValue.datacenter = datacenter;
+            _resultValue.id = id;
+            _resultValue.members = members;
+            _resultValue.token = token;
+            _resultValue.uuid = uuid;
+            return _resultValue;
         }
     }
 }

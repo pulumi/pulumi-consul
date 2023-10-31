@@ -75,11 +75,11 @@ public final class GetPeeringsResult {
             return peers(List.of(peers));
         }
         public GetPeeringsResult build() {
-            final var o = new GetPeeringsResult();
-            o.id = id;
-            o.partition = partition;
-            o.peers = peers;
-            return o;
+            final var _resultValue = new GetPeeringsResult();
+            _resultValue.id = id;
+            _resultValue.partition = partition;
+            _resultValue.peers = peers;
+            return _resultValue;
         }
     }
 }

@@ -5,6 +5,7 @@ package com.pulumi.consul;
 
 import com.pulumi.consul.inputs.AclTokenNodeIdentityArgs;
 import com.pulumi.consul.inputs.AclTokenServiceIdentityArgs;
+import com.pulumi.consul.inputs.AclTokenTemplatedPolicyArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -20,16 +21,14 @@ public final class AclTokenArgs extends com.pulumi.resources.ResourceArgs {
     public static final AclTokenArgs Empty = new AclTokenArgs();
 
     /**
-     * The uuid of the token. If omitted, Consul will
-     * generate a random uuid.
+     * The uuid of the token. If omitted, Consul will generate a random uuid.
      * 
      */
     @Import(name="accessorId")
     private @Nullable Output<String> accessorId;
 
     /**
-     * @return The uuid of the token. If omitted, Consul will
-     * generate a random uuid.
+     * @return The uuid of the token. If omitted, Consul will generate a random uuid.
      * 
      */
     public Optional<Output<String>> accessorId() {
@@ -171,6 +170,21 @@ public final class AclTokenArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.serviceIdentities);
     }
 
+    /**
+     * The list of templated policies that should be applied to the token.
+     * 
+     */
+    @Import(name="templatedPolicies")
+    private @Nullable Output<List<AclTokenTemplatedPolicyArgs>> templatedPolicies;
+
+    /**
+     * @return The list of templated policies that should be applied to the token.
+     * 
+     */
+    public Optional<Output<List<AclTokenTemplatedPolicyArgs>>> templatedPolicies() {
+        return Optional.ofNullable(this.templatedPolicies);
+    }
+
     private AclTokenArgs() {}
 
     private AclTokenArgs(AclTokenArgs $) {
@@ -184,6 +198,7 @@ public final class AclTokenArgs extends com.pulumi.resources.ResourceArgs {
         this.policies = $.policies;
         this.roles = $.roles;
         this.serviceIdentities = $.serviceIdentities;
+        this.templatedPolicies = $.templatedPolicies;
     }
 
     public static Builder builder() {
@@ -205,8 +220,7 @@ public final class AclTokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessorId The uuid of the token. If omitted, Consul will
-         * generate a random uuid.
+         * @param accessorId The uuid of the token. If omitted, Consul will generate a random uuid.
          * 
          * @return builder
          * 
@@ -217,8 +231,7 @@ public final class AclTokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessorId The uuid of the token. If omitted, Consul will
-         * generate a random uuid.
+         * @param accessorId The uuid of the token. If omitted, Consul will generate a random uuid.
          * 
          * @return builder
          * 
@@ -454,6 +467,37 @@ public final class AclTokenArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder serviceIdentities(AclTokenServiceIdentityArgs... serviceIdentities) {
             return serviceIdentities(List.of(serviceIdentities));
+        }
+
+        /**
+         * @param templatedPolicies The list of templated policies that should be applied to the token.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder templatedPolicies(@Nullable Output<List<AclTokenTemplatedPolicyArgs>> templatedPolicies) {
+            $.templatedPolicies = templatedPolicies;
+            return this;
+        }
+
+        /**
+         * @param templatedPolicies The list of templated policies that should be applied to the token.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder templatedPolicies(List<AclTokenTemplatedPolicyArgs> templatedPolicies) {
+            return templatedPolicies(Output.of(templatedPolicies));
+        }
+
+        /**
+         * @param templatedPolicies The list of templated policies that should be applied to the token.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder templatedPolicies(AclTokenTemplatedPolicyArgs... templatedPolicies) {
+            return templatedPolicies(List.of(templatedPolicies));
         }
 
         public AclTokenArgs build() {

@@ -7,4 +7,7 @@ plugins:
     version: "4.0.0"
   - name: vault 
     version: "4.0.0"
+  - name: random
+    version: "4.14.0"
 team: ecosystem
+javaGenVersion: "v0.9.8"

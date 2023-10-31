@@ -117,7 +117,7 @@ public class Intention extends com.pulumi.resources.CustomResource {
      * The intention action. Must be one of `allow` or `deny`.
      * 
      */
-    @Export(name="action", type=String.class, parameters={})
+    @Export(name="action", refs={String.class}, tree="[0]")
     private Output<String> action;
 
     /**
@@ -132,7 +132,7 @@ public class Intention extends com.pulumi.resources.CustomResource {
      * agent&#39;s default datacenter and the datacenter in the provider setup.
      * 
      */
-    @Export(name="datacenter", type=String.class, parameters={})
+    @Export(name="datacenter", refs={String.class}, tree="[0]")
     private Output<String> datacenter;
 
     /**
@@ -148,7 +148,7 @@ public class Intention extends com.pulumi.resources.CustomResource {
      * tooling, but is not used internally.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -164,7 +164,7 @@ public class Intention extends com.pulumi.resources.CustomResource {
      * service does not have to exist.
      * 
      */
-    @Export(name="destinationName", type=String.class, parameters={})
+    @Export(name="destinationName", refs={String.class}, tree="[0]")
     private Output<String> destinationName;
 
     /**
@@ -180,7 +180,7 @@ public class Intention extends com.pulumi.resources.CustomResource {
      * namespace of the intention.
      * 
      */
-    @Export(name="destinationNamespace", type=String.class, parameters={})
+    @Export(name="destinationNamespace", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> destinationNamespace;
 
     /**
@@ -196,7 +196,7 @@ public class Intention extends com.pulumi.resources.CustomResource {
      * with the intention.
      * 
      */
-    @Export(name="meta", type=Map.class, parameters={String.class, String.class})
+    @Export(name="meta", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> meta;
 
     /**
@@ -212,7 +212,7 @@ public class Intention extends com.pulumi.resources.CustomResource {
      * service does not have to exist.
      * 
      */
-    @Export(name="sourceName", type=String.class, parameters={})
+    @Export(name="sourceName", refs={String.class}, tree="[0]")
     private Output<String> sourceName;
 
     /**
@@ -228,7 +228,7 @@ public class Intention extends com.pulumi.resources.CustomResource {
      * intention.
      * 
      */
-    @Export(name="sourceNamespace", type=String.class, parameters={})
+    @Export(name="sourceNamespace", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceNamespace;
 
     /**

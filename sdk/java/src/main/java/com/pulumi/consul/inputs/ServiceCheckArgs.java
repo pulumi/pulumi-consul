@@ -19,16 +19,14 @@ public final class ServiceCheckArgs extends com.pulumi.resources.ResourceArgs {
     public static final ServiceCheckArgs Empty = new ServiceCheckArgs();
 
     /**
-     * An ID, *unique per agent*. Will default to *name*
-     * if not set.
+     * An ID, *unique per agent*.
      * 
      */
     @Import(name="checkId", required=true)
     private Output<String> checkId;
 
     /**
-     * @return An ID, *unique per agent*. Will default to *name*
-     * if not set.
+     * @return An ID, *unique per agent*.
      * 
      */
     public Output<String> checkId() {
@@ -36,18 +34,14 @@ public final class ServiceCheckArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The time after which
-     * the service is automatically deregistered when in the `critical` state.
-     * Defaults to `30s`.
+     * The time after which the service is automatically deregistered when in the `critical` state. Defaults to `30s`.
      * 
      */
     @Import(name="deregisterCriticalServiceAfter")
     private @Nullable Output<String> deregisterCriticalServiceAfter;
 
     /**
-     * @return The time after which
-     * the service is automatically deregistered when in the `critical` state.
-     * Defaults to `30s`.
+     * @return The time after which the service is automatically deregistered when in the `critical` state. Defaults to `30s`.
      * 
      */
     public Optional<Output<String>> deregisterCriticalServiceAfter() {
@@ -55,16 +49,14 @@ public final class ServiceCheckArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The headers to send for an HTTP check.
-     * The attributes of each header is given below.
+     * The headers to send for an HTTP check. The attributes of each header is given below.
      * 
      */
     @Import(name="headers")
     private @Nullable Output<List<ServiceCheckHeaderArgs>> headers;
 
     /**
-     * @return The headers to send for an HTTP check.
-     * The attributes of each header is given below.
+     * @return The headers to send for an HTTP check. The attributes of each header is given below.
      * 
      */
     public Optional<Output<List<ServiceCheckHeaderArgs>>> headers() {
@@ -87,16 +79,14 @@ public final class ServiceCheckArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The interval to wait between each health-check
-     * invocation.
+     * The interval to wait between each health-check invocation.
      * 
      */
     @Import(name="interval", required=true)
     private Output<String> interval;
 
     /**
-     * @return The interval to wait between each health-check
-     * invocation.
+     * @return The interval to wait between each health-check invocation.
      * 
      */
     public Output<String> interval() {
@@ -104,16 +94,14 @@ public final class ServiceCheckArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The method to use for HTTP health-checks. Defaults
-     * to `GET`.
+     * The method to use for HTTP health-checks. Defaults to `GET`.
      * 
      */
     @Import(name="method")
     private @Nullable Output<String> method;
 
     /**
-     * @return The method to use for HTTP health-checks. Defaults
-     * to `GET`.
+     * @return The method to use for HTTP health-checks. Defaults to `GET`.
      * 
      */
     public Optional<Output<String>> method() {
@@ -181,16 +169,14 @@ public final class ServiceCheckArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies a timeout for outgoing connections in
-     * the case of a HTTP or TCP check.
+     * Specifies a timeout for outgoing connections in the case of a HTTP or TCP check.
      * 
      */
     @Import(name="timeout", required=true)
     private Output<String> timeout;
 
     /**
-     * @return Specifies a timeout for outgoing connections in
-     * the case of a HTTP or TCP check.
+     * @return Specifies a timeout for outgoing connections in the case of a HTTP or TCP check.
      * 
      */
     public Output<String> timeout() {
@@ -198,16 +184,14 @@ public final class ServiceCheckArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to deactivate certificate
-     * verification for HTTP health-checks. Defaults to `false`.
+     * Whether to deactivate certificate verification for HTTP health-checks. Defaults to `false`.
      * 
      */
     @Import(name="tlsSkipVerify")
     private @Nullable Output<Boolean> tlsSkipVerify;
 
     /**
-     * @return Whether to deactivate certificate
-     * verification for HTTP health-checks. Defaults to `false`.
+     * @return Whether to deactivate certificate verification for HTTP health-checks. Defaults to `false`.
      * 
      */
     public Optional<Output<Boolean>> tlsSkipVerify() {
@@ -250,8 +234,7 @@ public final class ServiceCheckArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param checkId An ID, *unique per agent*. Will default to *name*
-         * if not set.
+         * @param checkId An ID, *unique per agent*.
          * 
          * @return builder
          * 
@@ -262,8 +245,7 @@ public final class ServiceCheckArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param checkId An ID, *unique per agent*. Will default to *name*
-         * if not set.
+         * @param checkId An ID, *unique per agent*.
          * 
          * @return builder
          * 
@@ -273,9 +255,7 @@ public final class ServiceCheckArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deregisterCriticalServiceAfter The time after which
-         * the service is automatically deregistered when in the `critical` state.
-         * Defaults to `30s`.
+         * @param deregisterCriticalServiceAfter The time after which the service is automatically deregistered when in the `critical` state. Defaults to `30s`.
          * 
          * @return builder
          * 
@@ -286,9 +266,7 @@ public final class ServiceCheckArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deregisterCriticalServiceAfter The time after which
-         * the service is automatically deregistered when in the `critical` state.
-         * Defaults to `30s`.
+         * @param deregisterCriticalServiceAfter The time after which the service is automatically deregistered when in the `critical` state. Defaults to `30s`.
          * 
          * @return builder
          * 
@@ -298,8 +276,7 @@ public final class ServiceCheckArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param headers The headers to send for an HTTP check.
-         * The attributes of each header is given below.
+         * @param headers The headers to send for an HTTP check. The attributes of each header is given below.
          * 
          * @return builder
          * 
@@ -310,8 +287,7 @@ public final class ServiceCheckArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param headers The headers to send for an HTTP check.
-         * The attributes of each header is given below.
+         * @param headers The headers to send for an HTTP check. The attributes of each header is given below.
          * 
          * @return builder
          * 
@@ -321,8 +297,7 @@ public final class ServiceCheckArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param headers The headers to send for an HTTP check.
-         * The attributes of each header is given below.
+         * @param headers The headers to send for an HTTP check. The attributes of each header is given below.
          * 
          * @return builder
          * 
@@ -353,8 +328,7 @@ public final class ServiceCheckArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param interval The interval to wait between each health-check
-         * invocation.
+         * @param interval The interval to wait between each health-check invocation.
          * 
          * @return builder
          * 
@@ -365,8 +339,7 @@ public final class ServiceCheckArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param interval The interval to wait between each health-check
-         * invocation.
+         * @param interval The interval to wait between each health-check invocation.
          * 
          * @return builder
          * 
@@ -376,8 +349,7 @@ public final class ServiceCheckArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param method The method to use for HTTP health-checks. Defaults
-         * to `GET`.
+         * @param method The method to use for HTTP health-checks. Defaults to `GET`.
          * 
          * @return builder
          * 
@@ -388,8 +360,7 @@ public final class ServiceCheckArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param method The method to use for HTTP health-checks. Defaults
-         * to `GET`.
+         * @param method The method to use for HTTP health-checks. Defaults to `GET`.
          * 
          * @return builder
          * 
@@ -483,8 +454,7 @@ public final class ServiceCheckArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param timeout Specifies a timeout for outgoing connections in
-         * the case of a HTTP or TCP check.
+         * @param timeout Specifies a timeout for outgoing connections in the case of a HTTP or TCP check.
          * 
          * @return builder
          * 
@@ -495,8 +465,7 @@ public final class ServiceCheckArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param timeout Specifies a timeout for outgoing connections in
-         * the case of a HTTP or TCP check.
+         * @param timeout Specifies a timeout for outgoing connections in the case of a HTTP or TCP check.
          * 
          * @return builder
          * 
@@ -506,8 +475,7 @@ public final class ServiceCheckArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tlsSkipVerify Whether to deactivate certificate
-         * verification for HTTP health-checks. Defaults to `false`.
+         * @param tlsSkipVerify Whether to deactivate certificate verification for HTTP health-checks. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -518,8 +486,7 @@ public final class ServiceCheckArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tlsSkipVerify Whether to deactivate certificate
-         * verification for HTTP health-checks. Defaults to `false`.
+         * @param tlsSkipVerify Whether to deactivate certificate verification for HTTP health-checks. Defaults to `false`.
          * 
          * @return builder
          * 

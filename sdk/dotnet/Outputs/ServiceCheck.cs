@@ -14,19 +14,15 @@ namespace Pulumi.Consul.Outputs
     public sealed class ServiceCheck
     {
         /// <summary>
-        /// An ID, *unique per agent*. Will default to *name*
-        /// if not set.
+        /// An ID, *unique per agent*.
         /// </summary>
         public readonly string CheckId;
         /// <summary>
-        /// The time after which
-        /// the service is automatically deregistered when in the `critical` state.
-        /// Defaults to `30s`.
+        /// The time after which the service is automatically deregistered when in the `critical` state. Defaults to `30s`.
         /// </summary>
         public readonly string? DeregisterCriticalServiceAfter;
         /// <summary>
-        /// The headers to send for an HTTP check.
-        /// The attributes of each header is given below.
+        /// The headers to send for an HTTP check. The attributes of each header is given below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ServiceCheckHeader> Headers;
         /// <summary>
@@ -34,13 +30,11 @@ namespace Pulumi.Consul.Outputs
         /// </summary>
         public readonly string? Http;
         /// <summary>
-        /// The interval to wait between each health-check
-        /// invocation.
+        /// The interval to wait between each health-check invocation.
         /// </summary>
         public readonly string Interval;
         /// <summary>
-        /// The method to use for HTTP health-checks. Defaults
-        /// to `GET`.
+        /// The method to use for HTTP health-checks. Defaults to `GET`.
         /// </summary>
         public readonly string? Method;
         /// <summary>
@@ -60,13 +54,11 @@ namespace Pulumi.Consul.Outputs
         /// </summary>
         public readonly string? Tcp;
         /// <summary>
-        /// Specifies a timeout for outgoing connections in
-        /// the case of a HTTP or TCP check.
+        /// Specifies a timeout for outgoing connections in the case of a HTTP or TCP check.
         /// </summary>
         public readonly string Timeout;
         /// <summary>
-        /// Whether to deactivate certificate
-        /// verification for HTTP health-checks. Defaults to `false`.
+        /// Whether to deactivate certificate verification for HTTP health-checks. Defaults to `false`.
         /// </summary>
         public readonly bool? TlsSkipVerify;
 

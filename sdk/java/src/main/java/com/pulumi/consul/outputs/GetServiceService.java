@@ -246,22 +246,22 @@ public final class GetServiceService {
             return tags(List.of(tags));
         }
         public GetServiceService build() {
-            final var o = new GetServiceService();
-            o.address = address;
-            o.createIndex = createIndex;
-            o.enableTagOverride = enableTagOverride;
-            o.id = id;
-            o.meta = meta;
-            o.modifyIndex = modifyIndex;
-            o.name = name;
-            o.nodeAddress = nodeAddress;
-            o.nodeId = nodeId;
-            o.nodeMeta = nodeMeta;
-            o.nodeName = nodeName;
-            o.port = port;
-            o.taggedAddresses = taggedAddresses;
-            o.tags = tags;
-            return o;
+            final var _resultValue = new GetServiceService();
+            _resultValue.address = address;
+            _resultValue.createIndex = createIndex;
+            _resultValue.enableTagOverride = enableTagOverride;
+            _resultValue.id = id;
+            _resultValue.meta = meta;
+            _resultValue.modifyIndex = modifyIndex;
+            _resultValue.name = name;
+            _resultValue.nodeAddress = nodeAddress;
+            _resultValue.nodeId = nodeId;
+            _resultValue.nodeMeta = nodeMeta;
+            _resultValue.nodeName = nodeName;
+            _resultValue.port = port;
+            _resultValue.taggedAddresses = taggedAddresses;
+            _resultValue.tags = tags;
+            return _resultValue;
         }
     }
 }

@@ -8,6 +8,7 @@ import com.pulumi.consul.Utilities;
 import com.pulumi.consul.inputs.AclTokenState;
 import com.pulumi.consul.outputs.AclTokenNodeIdentity;
 import com.pulumi.consul.outputs.AclTokenServiceIdentity;
+import com.pulumi.consul.outputs.AclTokenTemplatedPolicy;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -19,10 +20,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The `consul.AclToken` resource writes an ACL token into Consul.
- * 
  * ## Example Usage
- * ### Basic usage
  * ```java
  * package generated_program;
  * 
@@ -33,6 +31,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.consul.AclPolicyArgs;
  * import com.pulumi.consul.AclToken;
  * import com.pulumi.consul.AclTokenArgs;
+ * import com.pulumi.random.RandomUuid;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -51,14 +50,22 @@ import javax.annotation.Nullable;
  * node_prefix &#34;&#34; {
  *   policy = &#34;read&#34;
  * }
- * 
  *             &#34;&#34;&#34;)
  *             .build());
  * 
- *         var test = new AclToken(&#34;test&#34;, AclTokenArgs.builder()        
+ *         var testAclToken = new AclToken(&#34;testAclToken&#34;, AclTokenArgs.builder()        
  *             .description(&#34;my test token&#34;)
- *             .local(true)
  *             .policies(agent.name())
+ *             .local(true)
+ *             .build());
+ * 
+ *         var testRandomUuid = new RandomUuid(&#34;testRandomUuid&#34;);
+ * 
+ *         var testPredefinedId = new AclToken(&#34;testPredefinedId&#34;, AclTokenArgs.builder()        
+ *             .accessorId(random_uuid.test_uuid().result())
+ *             .description(&#34;my test uuid token&#34;)
+ *             .policies(agent.name())
+ *             .local(true)
  *             .build());
  * 
  *     }
@@ -66,8 +73,6 @@ import javax.annotation.Nullable;
  * ```
  * 
  * ## Import
- * 
- * `consul_acl_token` can be imported. This is especially useful to manage the anonymous and the master token with Terraform
  * 
  * ```sh
  *  $ pulumi import consul:index/aclToken:AclToken anonymous 00000000-0000-0000-0000-000000000002
@@ -81,16 +86,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="consul:index/aclToken:AclToken")
 public class AclToken extends com.pulumi.resources.CustomResource {
     /**
-     * The uuid of the token. If omitted, Consul will
-     * generate a random uuid.
+     * The uuid of the token. If omitted, Consul will generate a random uuid.
      * 
      */
-    @Export(name="accessorId", type=String.class, parameters={})
+    @Export(name="accessorId", refs={String.class}, tree="[0]")
     private Output<String> accessorId;
 
     /**
-     * @return The uuid of the token. If omitted, Consul will
-     * generate a random uuid.
+     * @return The uuid of the token. If omitted, Consul will generate a random uuid.
      * 
      */
     public Output<String> accessorId() {
@@ -100,7 +103,7 @@ public class AclToken extends com.pulumi.resources.CustomResource {
      * The description of the token.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -114,7 +117,7 @@ public class AclToken extends com.pulumi.resources.CustomResource {
      * If set this represents the point after which a token should be considered revoked and is eligible for destruction.
      * 
      */
-    @Export(name="expirationTime", type=String.class, parameters={})
+    @Export(name="expirationTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> expirationTime;
 
     /**
@@ -128,7 +131,7 @@ public class AclToken extends com.pulumi.resources.CustomResource {
      * The flag to set the token local to the current datacenter.
      * 
      */
-    @Export(name="local", type=Boolean.class, parameters={})
+    @Export(name="local", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> local;
 
     /**
@@ -142,7 +145,7 @@ public class AclToken extends com.pulumi.resources.CustomResource {
      * The namespace to create the token within.
      * 
      */
-    @Export(name="namespace", type=String.class, parameters={})
+    @Export(name="namespace", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> namespace;
 
     /**
@@ -156,7 +159,7 @@ public class AclToken extends com.pulumi.resources.CustomResource {
      * The list of node identities that should be applied to the token.
      * 
      */
-    @Export(name="nodeIdentities", type=List.class, parameters={AclTokenNodeIdentity.class})
+    @Export(name="nodeIdentities", refs={List.class,AclTokenNodeIdentity.class}, tree="[0,1]")
     private Output</* @Nullable */ List<AclTokenNodeIdentity>> nodeIdentities;
 
     /**
@@ -170,7 +173,7 @@ public class AclToken extends com.pulumi.resources.CustomResource {
      * The partition the ACL token is associated with.
      * 
      */
-    @Export(name="partition", type=String.class, parameters={})
+    @Export(name="partition", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> partition;
 
     /**
@@ -184,7 +187,7 @@ public class AclToken extends com.pulumi.resources.CustomResource {
      * The list of policies attached to the token.
      * 
      */
-    @Export(name="policies", type=List.class, parameters={String.class})
+    @Export(name="policies", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> policies;
 
     /**
@@ -198,7 +201,7 @@ public class AclToken extends com.pulumi.resources.CustomResource {
      * The list of roles attached to the token.
      * 
      */
-    @Export(name="roles", type=List.class, parameters={String.class})
+    @Export(name="roles", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> roles;
 
     /**
@@ -212,7 +215,7 @@ public class AclToken extends com.pulumi.resources.CustomResource {
      * The list of service identities that should be applied to the token.
      * 
      */
-    @Export(name="serviceIdentities", type=List.class, parameters={AclTokenServiceIdentity.class})
+    @Export(name="serviceIdentities", refs={List.class,AclTokenServiceIdentity.class}, tree="[0,1]")
     private Output</* @Nullable */ List<AclTokenServiceIdentity>> serviceIdentities;
 
     /**
@@ -221,6 +224,20 @@ public class AclToken extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<AclTokenServiceIdentity>>> serviceIdentities() {
         return Codegen.optional(this.serviceIdentities);
+    }
+    /**
+     * The list of templated policies that should be applied to the token.
+     * 
+     */
+    @Export(name="templatedPolicies", refs={List.class,AclTokenTemplatedPolicy.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<AclTokenTemplatedPolicy>> templatedPolicies;
+
+    /**
+     * @return The list of templated policies that should be applied to the token.
+     * 
+     */
+    public Output<Optional<List<AclTokenTemplatedPolicy>>> templatedPolicies() {
+        return Codegen.optional(this.templatedPolicies);
     }
 
     /**

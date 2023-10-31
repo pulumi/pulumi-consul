@@ -148,15 +148,15 @@ Please use the token argument in the provider configuration */
             return this;
         }
         public GetKeysResult build() {
-            final var o = new GetKeysResult();
-            o.datacenter = datacenter;
-            o.id = id;
-            o.keys = keys;
-            o.namespace = namespace;
-            o.partition = partition;
-            o.token = token;
-            o.var_ = var_;
-            return o;
+            final var _resultValue = new GetKeysResult();
+            _resultValue.datacenter = datacenter;
+            _resultValue.id = id;
+            _resultValue.keys = keys;
+            _resultValue.namespace = namespace;
+            _resultValue.partition = partition;
+            _resultValue.token = token;
+            _resultValue.var_ = var_;
+            return _resultValue;
         }
     }
 }

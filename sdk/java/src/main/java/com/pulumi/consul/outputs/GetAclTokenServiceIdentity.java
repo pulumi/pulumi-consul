@@ -53,10 +53,10 @@ public final class GetAclTokenServiceIdentity {
             return this;
         }
         public GetAclTokenServiceIdentity build() {
-            final var o = new GetAclTokenServiceIdentity();
-            o.datacenters = datacenters;
-            o.serviceName = serviceName;
-            return o;
+            final var _resultValue = new GetAclTokenServiceIdentity();
+            _resultValue.datacenters = datacenters;
+            _resultValue.serviceName = serviceName;
+            return _resultValue;
         }
     }
 }

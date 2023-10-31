@@ -9,7 +9,7 @@ TFGEN := pulumi-tfgen-$(PACK)
 PROVIDER := pulumi-resource-$(PACK)
 VERSION := $(shell pulumictl get version)
 JAVA_GEN := pulumi-java-gen
-JAVA_GEN_VERSION := v0.5.4
+JAVA_GEN_VERSION := v0.9.8
 TESTPARALLELISM := 10
 WORKING_DIR := $(shell pwd)
 PULUMI_CONVERT := 0
@@ -97,6 +97,7 @@ install_nodejs_sdk:
 install_plugins: .pulumi/bin/pulumi
 	.pulumi/bin/pulumi plugin install resource aws 4.0.0
 	.pulumi/bin/pulumi plugin install resource vault 4.0.0
+	.pulumi/bin/pulumi plugin install resource random 4.14.0
 
 lint_provider: provider
 	cd provider && golangci-lint run -c ../.golangci.yml

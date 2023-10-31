@@ -8,6 +8,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['AclBindingRuleArgs', 'AclBindingRule']
 
@@ -17,6 +19,7 @@ class AclBindingRuleArgs:
                  auth_method: pulumi.Input[str],
                  bind_name: pulumi.Input[str],
                  bind_type: pulumi.Input[str],
+                 bind_vars: Optional[pulumi.Input['AclBindingRuleBindVarsArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  namespace: Optional[pulumi.Input[str]] = None,
                  partition: Optional[pulumi.Input[str]] = None,
@@ -26,14 +29,17 @@ class AclBindingRuleArgs:
         :param pulumi.Input[str] auth_method: The name of the ACL auth method this rule apply.
         :param pulumi.Input[str] bind_name: The name to bind to a token at login-time.
         :param pulumi.Input[str] bind_type: Specifies the way the binding rule affects a token created at login.
+        :param pulumi.Input['AclBindingRuleBindVarsArgs'] bind_vars: The variables used when binding rule type is `templated-policy`. Can be lightly templated using HIL `${foo}` syntax from available field names.
         :param pulumi.Input[str] description: A free form human readable description of the binding rule.
         :param pulumi.Input[str] namespace: The namespace to create the binding rule within.
         :param pulumi.Input[str] partition: The partition the ACL binding rule is associated with.
-        :param pulumi.Input[str] selector: The expression used to math this rule against valid identities returned from an auth method validation.
+        :param pulumi.Input[str] selector: The expression used to match this rule against valid identities returned from an auth method validation.
         """
         pulumi.set(__self__, "auth_method", auth_method)
         pulumi.set(__self__, "bind_name", bind_name)
         pulumi.set(__self__, "bind_type", bind_type)
+        if bind_vars is not None:
+            pulumi.set(__self__, "bind_vars", bind_vars)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if namespace is not None:
@@ -80,6 +86,18 @@ class AclBindingRuleArgs:
         pulumi.set(self, "bind_type", value)
 
     @property
+    @pulumi.getter(name="bindVars")
+    def bind_vars(self) -> Optional[pulumi.Input['AclBindingRuleBindVarsArgs']]:
+        """
+        The variables used when binding rule type is `templated-policy`. Can be lightly templated using HIL `${foo}` syntax from available field names.
+        """
+        return pulumi.get(self, "bind_vars")
+
+    @bind_vars.setter
+    def bind_vars(self, value: Optional[pulumi.Input['AclBindingRuleBindVarsArgs']]):
+        pulumi.set(self, "bind_vars", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
@@ -119,7 +137,7 @@ class AclBindingRuleArgs:
     @pulumi.getter
     def selector(self) -> Optional[pulumi.Input[str]]:
         """
-        The expression used to math this rule against valid identities returned from an auth method validation.
+        The expression used to match this rule against valid identities returned from an auth method validation.
         """
         return pulumi.get(self, "selector")
 
@@ -134,6 +152,7 @@ class _AclBindingRuleState:
                  auth_method: Optional[pulumi.Input[str]] = None,
                  bind_name: Optional[pulumi.Input[str]] = None,
                  bind_type: Optional[pulumi.Input[str]] = None,
+                 bind_vars: Optional[pulumi.Input['AclBindingRuleBindVarsArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  namespace: Optional[pulumi.Input[str]] = None,
                  partition: Optional[pulumi.Input[str]] = None,
@@ -143,10 +162,11 @@ class _AclBindingRuleState:
         :param pulumi.Input[str] auth_method: The name of the ACL auth method this rule apply.
         :param pulumi.Input[str] bind_name: The name to bind to a token at login-time.
         :param pulumi.Input[str] bind_type: Specifies the way the binding rule affects a token created at login.
+        :param pulumi.Input['AclBindingRuleBindVarsArgs'] bind_vars: The variables used when binding rule type is `templated-policy`. Can be lightly templated using HIL `${foo}` syntax from available field names.
         :param pulumi.Input[str] description: A free form human readable description of the binding rule.
         :param pulumi.Input[str] namespace: The namespace to create the binding rule within.
         :param pulumi.Input[str] partition: The partition the ACL binding rule is associated with.
-        :param pulumi.Input[str] selector: The expression used to math this rule against valid identities returned from an auth method validation.
+        :param pulumi.Input[str] selector: The expression used to match this rule against valid identities returned from an auth method validation.
         """
         if auth_method is not None:
             pulumi.set(__self__, "auth_method", auth_method)
@@ -154,6 +174,8 @@ class _AclBindingRuleState:
             pulumi.set(__self__, "bind_name", bind_name)
         if bind_type is not None:
             pulumi.set(__self__, "bind_type", bind_type)
+        if bind_vars is not None:
+            pulumi.set(__self__, "bind_vars", bind_vars)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if namespace is not None:
@@ -200,6 +222,18 @@ class _AclBindingRuleState:
         pulumi.set(self, "bind_type", value)
 
     @property
+    @pulumi.getter(name="bindVars")
+    def bind_vars(self) -> Optional[pulumi.Input['AclBindingRuleBindVarsArgs']]:
+        """
+        The variables used when binding rule type is `templated-policy`. Can be lightly templated using HIL `${foo}` syntax from available field names.
+        """
+        return pulumi.get(self, "bind_vars")
+
+    @bind_vars.setter
+    def bind_vars(self, value: Optional[pulumi.Input['AclBindingRuleBindVarsArgs']]):
+        pulumi.set(self, "bind_vars", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
@@ -239,7 +273,7 @@ class _AclBindingRuleState:
     @pulumi.getter
     def selector(self) -> Optional[pulumi.Input[str]]:
         """
-        The expression used to math this rule against valid identities returned from an auth method validation.
+        The expression used to match this rule against valid identities returned from an auth method validation.
         """
         return pulumi.get(self, "selector")
 
@@ -256,14 +290,14 @@ class AclBindingRule(pulumi.CustomResource):
                  auth_method: Optional[pulumi.Input[str]] = None,
                  bind_name: Optional[pulumi.Input[str]] = None,
                  bind_type: Optional[pulumi.Input[str]] = None,
+                 bind_vars: Optional[pulumi.Input[pulumi.InputType['AclBindingRuleBindVarsArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  namespace: Optional[pulumi.Input[str]] = None,
                  partition: Optional[pulumi.Input[str]] = None,
                  selector: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Starting with Consul 1.5.0, the AclBindingRule resource can be used to
-        managed Consul ACL binding rules.
+        Starting with Consul 1.5.0, the AclBindingRule resource can be used to managed Consul ACL binding rules.
 
         ## Example Usage
 
@@ -272,22 +306,21 @@ class AclBindingRule(pulumi.CustomResource):
         import pulumi_consul as consul
 
         minikube = consul.AclAuthMethod("minikube",
+            type="kubernetes",
+            description="dev minikube cluster",
             config={
+                "Host": "https://192.0.2.42:8443",
                 "CACert": \"\"\"-----BEGIN CERTIFICATE-----
         ...-----END CERTIFICATE-----
-
         \"\"\",
-                "Host": "https://192.0.2.42:8443",
                 "ServiceAccountJWT": "eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9...",
-            },
-            description="dev minikube cluster",
-            type="kubernetes")
+            })
         test = consul.AclBindingRule("test",
             auth_method=minikube.name,
-            bind_name="minikube",
-            bind_type="service",
             description="foobar",
-            selector="serviceaccount.namespace==default")
+            selector="serviceaccount.namespace==default",
+            bind_type="service",
+            bind_name="minikube")
         ```
 
         :param str resource_name: The name of the resource.
@@ -295,10 +328,11 @@ class AclBindingRule(pulumi.CustomResource):
         :param pulumi.Input[str] auth_method: The name of the ACL auth method this rule apply.
         :param pulumi.Input[str] bind_name: The name to bind to a token at login-time.
         :param pulumi.Input[str] bind_type: Specifies the way the binding rule affects a token created at login.
+        :param pulumi.Input[pulumi.InputType['AclBindingRuleBindVarsArgs']] bind_vars: The variables used when binding rule type is `templated-policy`. Can be lightly templated using HIL `${foo}` syntax from available field names.
         :param pulumi.Input[str] description: A free form human readable description of the binding rule.
         :param pulumi.Input[str] namespace: The namespace to create the binding rule within.
         :param pulumi.Input[str] partition: The partition the ACL binding rule is associated with.
-        :param pulumi.Input[str] selector: The expression used to math this rule against valid identities returned from an auth method validation.
+        :param pulumi.Input[str] selector: The expression used to match this rule against valid identities returned from an auth method validation.
         """
         ...
     @overload
@@ -307,8 +341,7 @@ class AclBindingRule(pulumi.CustomResource):
                  args: AclBindingRuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Starting with Consul 1.5.0, the AclBindingRule resource can be used to
-        managed Consul ACL binding rules.
+        Starting with Consul 1.5.0, the AclBindingRule resource can be used to managed Consul ACL binding rules.
 
         ## Example Usage
 
@@ -317,22 +350,21 @@ class AclBindingRule(pulumi.CustomResource):
         import pulumi_consul as consul
 
         minikube = consul.AclAuthMethod("minikube",
+            type="kubernetes",
+            description="dev minikube cluster",
             config={
+                "Host": "https://192.0.2.42:8443",
                 "CACert": \"\"\"-----BEGIN CERTIFICATE-----
         ...-----END CERTIFICATE-----
-
         \"\"\",
-                "Host": "https://192.0.2.42:8443",
                 "ServiceAccountJWT": "eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9...",
-            },
-            description="dev minikube cluster",
-            type="kubernetes")
+            })
         test = consul.AclBindingRule("test",
             auth_method=minikube.name,
-            bind_name="minikube",
-            bind_type="service",
             description="foobar",
-            selector="serviceaccount.namespace==default")
+            selector="serviceaccount.namespace==default",
+            bind_type="service",
+            bind_name="minikube")
         ```
 
         :param str resource_name: The name of the resource.
@@ -353,6 +385,7 @@ class AclBindingRule(pulumi.CustomResource):
                  auth_method: Optional[pulumi.Input[str]] = None,
                  bind_name: Optional[pulumi.Input[str]] = None,
                  bind_type: Optional[pulumi.Input[str]] = None,
+                 bind_vars: Optional[pulumi.Input[pulumi.InputType['AclBindingRuleBindVarsArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  namespace: Optional[pulumi.Input[str]] = None,
                  partition: Optional[pulumi.Input[str]] = None,
@@ -375,6 +408,7 @@ class AclBindingRule(pulumi.CustomResource):
             if bind_type is None and not opts.urn:
                 raise TypeError("Missing required property 'bind_type'")
             __props__.__dict__["bind_type"] = bind_type
+            __props__.__dict__["bind_vars"] = bind_vars
             __props__.__dict__["description"] = description
             __props__.__dict__["namespace"] = namespace
             __props__.__dict__["partition"] = partition
@@ -392,6 +426,7 @@ class AclBindingRule(pulumi.CustomResource):
             auth_method: Optional[pulumi.Input[str]] = None,
             bind_name: Optional[pulumi.Input[str]] = None,
             bind_type: Optional[pulumi.Input[str]] = None,
+            bind_vars: Optional[pulumi.Input[pulumi.InputType['AclBindingRuleBindVarsArgs']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             namespace: Optional[pulumi.Input[str]] = None,
             partition: Optional[pulumi.Input[str]] = None,
@@ -406,10 +441,11 @@ class AclBindingRule(pulumi.CustomResource):
         :param pulumi.Input[str] auth_method: The name of the ACL auth method this rule apply.
         :param pulumi.Input[str] bind_name: The name to bind to a token at login-time.
         :param pulumi.Input[str] bind_type: Specifies the way the binding rule affects a token created at login.
+        :param pulumi.Input[pulumi.InputType['AclBindingRuleBindVarsArgs']] bind_vars: The variables used when binding rule type is `templated-policy`. Can be lightly templated using HIL `${foo}` syntax from available field names.
         :param pulumi.Input[str] description: A free form human readable description of the binding rule.
         :param pulumi.Input[str] namespace: The namespace to create the binding rule within.
         :param pulumi.Input[str] partition: The partition the ACL binding rule is associated with.
-        :param pulumi.Input[str] selector: The expression used to math this rule against valid identities returned from an auth method validation.
+        :param pulumi.Input[str] selector: The expression used to match this rule against valid identities returned from an auth method validation.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -418,6 +454,7 @@ class AclBindingRule(pulumi.CustomResource):
         __props__.__dict__["auth_method"] = auth_method
         __props__.__dict__["bind_name"] = bind_name
         __props__.__dict__["bind_type"] = bind_type
+        __props__.__dict__["bind_vars"] = bind_vars
         __props__.__dict__["description"] = description
         __props__.__dict__["namespace"] = namespace
         __props__.__dict__["partition"] = partition
@@ -449,6 +486,14 @@ class AclBindingRule(pulumi.CustomResource):
         return pulumi.get(self, "bind_type")
 
     @property
+    @pulumi.getter(name="bindVars")
+    def bind_vars(self) -> pulumi.Output[Optional['outputs.AclBindingRuleBindVars']]:
+        """
+        The variables used when binding rule type is `templated-policy`. Can be lightly templated using HIL `${foo}` syntax from available field names.
+        """
+        return pulumi.get(self, "bind_vars")
+
+    @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
@@ -476,7 +521,7 @@ class AclBindingRule(pulumi.CustomResource):
     @pulumi.getter
     def selector(self) -> pulumi.Output[Optional[str]]:
         """
-        The expression used to math this rule against valid identities returned from an auth method validation.
+        The expression used to match this rule against valid identities returned from an auth method validation.
         """
         return pulumi.get(self, "selector")
 

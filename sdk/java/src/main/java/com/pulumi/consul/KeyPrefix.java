@@ -80,7 +80,7 @@ public class KeyPrefix extends com.pulumi.resources.CustomResource {
      * agent&#39;s default datacenter and the datacenter in the provider setup.
      * 
      */
-    @Export(name="datacenter", type=String.class, parameters={})
+    @Export(name="datacenter", refs={String.class}, tree="[0]")
     private Output<String> datacenter;
 
     /**
@@ -95,7 +95,7 @@ public class KeyPrefix extends com.pulumi.resources.CustomResource {
      * The namespace to create the keys within.
      * 
      */
-    @Export(name="namespace", type=String.class, parameters={})
+    @Export(name="namespace", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> namespace;
 
     /**
@@ -109,7 +109,7 @@ public class KeyPrefix extends com.pulumi.resources.CustomResource {
      * The admin partition to create the keys within.
      * 
      */
-    @Export(name="partition", type=String.class, parameters={})
+    @Export(name="partition", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> partition;
 
     /**
@@ -125,7 +125,7 @@ public class KeyPrefix extends com.pulumi.resources.CustomResource {
      * end with a slash, to manage a &#34;folder&#34; of keys.
      * 
      */
-    @Export(name="pathPrefix", type=String.class, parameters={})
+    @Export(name="pathPrefix", refs={String.class}, tree="[0]")
     private Output<String> pathPrefix;
 
     /**
@@ -142,7 +142,7 @@ public class KeyPrefix extends com.pulumi.resources.CustomResource {
      * Multiple blocks supported.
      * 
      */
-    @Export(name="subkeyCollection", type=List.class, parameters={KeyPrefixSubkeyCollection.class})
+    @Export(name="subkeyCollection", refs={List.class,KeyPrefixSubkeyCollection.class}, tree="[0,1]")
     private Output</* @Nullable */ List<KeyPrefixSubkeyCollection>> subkeyCollection;
 
     /**
@@ -160,7 +160,7 @@ public class KeyPrefix extends com.pulumi.resources.CustomResource {
      * the given path prefix.
      * 
      */
-    @Export(name="subkeys", type=Map.class, parameters={String.class, String.class})
+    @Export(name="subkeys", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> subkeys;
 
     /**
@@ -184,7 +184,7 @@ public class KeyPrefix extends com.pulumi.resources.CustomResource {
      */
     @Deprecated /* The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration */
-    @Export(name="token", type=String.class, parameters={})
+    @Export(name="token", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> token;
 
     /**

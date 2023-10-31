@@ -69,10 +69,10 @@ public final class ServiceCheckHeader {
             return values(List.of(values));
         }
         public ServiceCheckHeader build() {
-            final var o = new ServiceCheckHeader();
-            o.name = name;
-            o.values = values;
-            return o;
+            final var _resultValue = new ServiceCheckHeader();
+            _resultValue.name = name;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

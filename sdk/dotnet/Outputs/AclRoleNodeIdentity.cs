@@ -14,7 +14,7 @@ namespace Pulumi.Consul.Outputs
     public sealed class AclRoleNodeIdentity
     {
         /// <summary>
-        /// The datacenter of the node.
+        /// Specifies the node's datacenter.
         /// </summary>
         public readonly string Datacenter;
         /// <summary>

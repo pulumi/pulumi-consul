@@ -388,8 +388,7 @@ public final class ConsulFunctions {
         return Deployment.getInstance().invokeAsync("consul:index/getAclPolicy:getAclPolicy", TypeShape.of(GetAclPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `consul.AclRole` data source returns the information related to a
-     * [Consul ACL Role](https://www.consul.io/api/acl/roles.html).
+     * The `consul.AclRole` data source returns the information related to a [Consul ACL Role](https://www.consul.io/api/acl/roles.html).
      * 
      * ## Example Usage
      * ```java
@@ -427,8 +426,7 @@ public final class ConsulFunctions {
         return getAclRole(args, InvokeOptions.Empty);
     }
     /**
-     * The `consul.AclRole` data source returns the information related to a
-     * [Consul ACL Role](https://www.consul.io/api/acl/roles.html).
+     * The `consul.AclRole` data source returns the information related to a [Consul ACL Role](https://www.consul.io/api/acl/roles.html).
      * 
      * ## Example Usage
      * ```java
@@ -466,8 +464,7 @@ public final class ConsulFunctions {
         return getAclRolePlain(args, InvokeOptions.Empty);
     }
     /**
-     * The `consul.AclRole` data source returns the information related to a
-     * [Consul ACL Role](https://www.consul.io/api/acl/roles.html).
+     * The `consul.AclRole` data source returns the information related to a [Consul ACL Role](https://www.consul.io/api/acl/roles.html).
      * 
      * ## Example Usage
      * ```java
@@ -505,8 +502,7 @@ public final class ConsulFunctions {
         return Deployment.getInstance().invoke("consul:index/getAclRole:getAclRole", TypeShape.of(GetAclRoleResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `consul.AclRole` data source returns the information related to a
-     * [Consul ACL Role](https://www.consul.io/api/acl/roles.html).
+     * The `consul.AclRole` data source returns the information related to a [Consul ACL Role](https://www.consul.io/api/acl/roles.html).
      * 
      * ## Example Usage
      * ```java
@@ -544,11 +540,9 @@ public final class ConsulFunctions {
         return Deployment.getInstance().invokeAsync("consul:index/getAclRole:getAclRole", TypeShape.of(GetAclRoleResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `consul.AclToken` data source returns the information related to the
-     * `consul.AclToken` resource with the exception of its secret ID.
+     * The `consul.AclToken` data source returns the information related to the `consul.AclToken` resource with the exception of its secret ID.
      * 
-     * If you want to get the secret ID associated with a token, use the
-     * [`consul.getAclTokenSecretId` data source](https://www.terraform.io/docs/providers/consul/d/acl_token_secret_id.html).
+     * If you want to get the secret ID associated with a token, use the [`consul.getAclTokenSecretId` data source](https://www.terraform.io/docs/providers/consul/d/acl_token_secret_id.html).
      * 
      * ## Example Usage
      * ```java
@@ -586,11 +580,9 @@ public final class ConsulFunctions {
         return getAclToken(args, InvokeOptions.Empty);
     }
     /**
-     * The `consul.AclToken` data source returns the information related to the
-     * `consul.AclToken` resource with the exception of its secret ID.
+     * The `consul.AclToken` data source returns the information related to the `consul.AclToken` resource with the exception of its secret ID.
      * 
-     * If you want to get the secret ID associated with a token, use the
-     * [`consul.getAclTokenSecretId` data source](https://www.terraform.io/docs/providers/consul/d/acl_token_secret_id.html).
+     * If you want to get the secret ID associated with a token, use the [`consul.getAclTokenSecretId` data source](https://www.terraform.io/docs/providers/consul/d/acl_token_secret_id.html).
      * 
      * ## Example Usage
      * ```java
@@ -628,11 +620,9 @@ public final class ConsulFunctions {
         return getAclTokenPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The `consul.AclToken` data source returns the information related to the
-     * `consul.AclToken` resource with the exception of its secret ID.
+     * The `consul.AclToken` data source returns the information related to the `consul.AclToken` resource with the exception of its secret ID.
      * 
-     * If you want to get the secret ID associated with a token, use the
-     * [`consul.getAclTokenSecretId` data source](https://www.terraform.io/docs/providers/consul/d/acl_token_secret_id.html).
+     * If you want to get the secret ID associated with a token, use the [`consul.getAclTokenSecretId` data source](https://www.terraform.io/docs/providers/consul/d/acl_token_secret_id.html).
      * 
      * ## Example Usage
      * ```java
@@ -670,11 +660,9 @@ public final class ConsulFunctions {
         return Deployment.getInstance().invoke("consul:index/getAclToken:getAclToken", TypeShape.of(GetAclTokenResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `consul.AclToken` data source returns the information related to the
-     * `consul.AclToken` resource with the exception of its secret ID.
+     * The `consul.AclToken` data source returns the information related to the `consul.AclToken` resource with the exception of its secret ID.
      * 
-     * If you want to get the secret ID associated with a token, use the
-     * [`consul.getAclTokenSecretId` data source](https://www.terraform.io/docs/providers/consul/d/acl_token_secret_id.html).
+     * If you want to get the secret ID associated with a token, use the [`consul.getAclTokenSecretId` data source](https://www.terraform.io/docs/providers/consul/d/acl_token_secret_id.html).
      * 
      * ## Example Usage
      * ```java

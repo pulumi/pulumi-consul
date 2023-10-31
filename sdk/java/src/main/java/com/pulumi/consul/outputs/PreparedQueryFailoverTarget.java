@@ -67,10 +67,10 @@ public final class PreparedQueryFailoverTarget {
             return this;
         }
         public PreparedQueryFailoverTarget build() {
-            final var o = new PreparedQueryFailoverTarget();
-            o.datacenter = datacenter;
-            o.peer = peer;
-            return o;
+            final var _resultValue = new PreparedQueryFailoverTarget();
+            _resultValue.datacenter = datacenter;
+            _resultValue.peer = peer;
+            return _resultValue;
         }
     }
 }

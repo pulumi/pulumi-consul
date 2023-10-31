@@ -18,8 +18,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Starting with Consul 1.5.0, the consul.AclAuthMethod resource can be used to
- * managed [Consul ACL auth methods](https://www.consul.io/docs/acl/auth-methods).
+ * Starting with Consul 1.5.0, the `consul.AclAuthMethod` resource can be used to managed [Consul ACL auth methods](https://www.consul.io/docs/acl/auth-methods).
  * 
  * ## Example Usage
  * 
@@ -87,16 +86,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var minikube = new AclAuthMethod(&#34;minikube&#34;, AclAuthMethodArgs.builder()        
- *             .type(&#34;jwt&#34;)
+ *         var oidc = new AclAuthMethod(&#34;oidc&#34;, AclAuthMethodArgs.builder()        
+ *             .type(&#34;oidc&#34;)
+ *             .maxTokenTtl(&#34;5m&#34;)
  *             .configJson(serializeJson(
  *                 jsonObject(
- *                     jsonProperty(&#34;JWKSURL&#34;, &#34;https://example.com/identity/oidc/.well-known/keys&#34;),
- *                     jsonProperty(&#34;JWTSupportedAlgs&#34;, &#34;RS256&#34;),
- *                     jsonProperty(&#34;BoundIssuer&#34;, &#34;https://example.com&#34;),
+ *                     jsonProperty(&#34;AllowedRedirectURIs&#34;, jsonArray(
+ *                         &#34;http://localhost:8550/oidc/callback&#34;, 
+ *                         &#34;http://localhost:8500/ui/oidc/callback&#34;
+ *                     )),
+ *                     jsonProperty(&#34;BoundAudiences&#34;, jsonArray(&#34;V1RPi2MYptMV1RPi2MYptMV1RPi2MYpt&#34;)),
  *                     jsonProperty(&#34;ClaimMappings&#34;, jsonObject(
- *                         jsonProperty(&#34;subject&#34;, &#34;subject&#34;)
- *                     ))
+ *                         jsonProperty(&#34;http://example.com/first_name&#34;, &#34;first_name&#34;),
+ *                         jsonProperty(&#34;http://example.com/last_name&#34;, &#34;last_name&#34;)
+ *                     )),
+ *                     jsonProperty(&#34;ListClaimMappings&#34;, jsonObject(
+ *                         jsonProperty(&#34;http://consul.com/groups&#34;, &#34;groups&#34;)
+ *                     )),
+ *                     jsonProperty(&#34;OIDCClientID&#34;, &#34;V1RPi2MYptMV1RPi2MYptMV1RPi2MYpt&#34;),
+ *                     jsonProperty(&#34;OIDCClientSecret&#34;, &#34;...(omitted)...&#34;),
+ *                     jsonProperty(&#34;OIDCDiscoveryURL&#34;, &#34;https://my-corp-app-name.auth0.com/&#34;)
  *                 )))
  *             .build());
  * 
@@ -108,22 +117,18 @@ import javax.annotation.Nullable;
 @ResourceType(type="consul:index/aclAuthMethod:AclAuthMethod")
 public class AclAuthMethod extends com.pulumi.resources.CustomResource {
     /**
-     * The raw configuration for this ACL auth method. This
-     * attribute is deprecated and will be removed in a future version. `config_json`
-     * should be used instead.
+     * The raw configuration for this ACL auth method.
      * 
      * @deprecated
-     * The config attribute is deprecated, please use config_json instead.
+     * The config attribute is deprecated, please use `config_json` instead.
      * 
      */
-    @Deprecated /* The config attribute is deprecated, please use config_json instead. */
-    @Export(name="config", type=Map.class, parameters={String.class, String.class})
+    @Deprecated /* The config attribute is deprecated, please use `config_json` instead. */
+    @Export(name="config", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> config;
 
     /**
-     * @return The raw configuration for this ACL auth method. This
-     * attribute is deprecated and will be removed in a future version. `config_json`
-     * should be used instead.
+     * @return The raw configuration for this ACL auth method.
      * 
      */
     public Output<Optional<Map<String,String>>> config() {
@@ -133,7 +138,7 @@ public class AclAuthMethod extends com.pulumi.resources.CustomResource {
      * The raw configuration for this ACL auth method.
      * 
      */
-    @Export(name="configJson", type=String.class, parameters={})
+    @Export(name="configJson", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> configJson;
 
     /**
@@ -147,7 +152,7 @@ public class AclAuthMethod extends com.pulumi.resources.CustomResource {
      * A free form human readable description of the auth method.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -158,32 +163,28 @@ public class AclAuthMethod extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * An optional name to use instead of the name
-     * attribute when displaying information about this auth method.
+     * An optional name to use instead of the name attribute when displaying information about this auth method.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> displayName;
 
     /**
-     * @return An optional name to use instead of the name
-     * attribute when displaying information about this auth method.
+     * @return An optional name to use instead of the name attribute when displaying information about this auth method.
      * 
      */
     public Output<Optional<String>> displayName() {
         return Codegen.optional(this.displayName);
     }
     /**
-     * The maximum life of any token created by this
-     * auth method.
+     * The maximum life of any token created by this auth method. **This attribute is required and must be set to a nonzero for the OIDC auth method.**
      * 
      */
-    @Export(name="maxTokenTtl", type=String.class, parameters={})
+    @Export(name="maxTokenTtl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> maxTokenTtl;
 
     /**
-     * @return The maximum life of any token created by this
-     * auth method.
+     * @return The maximum life of any token created by this auth method. **This attribute is required and must be set to a nonzero for the OIDC auth method.**
      * 
      */
     public Output<Optional<String>> maxTokenTtl() {
@@ -193,7 +194,7 @@ public class AclAuthMethod extends com.pulumi.resources.CustomResource {
      * The name of the ACL auth method.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -207,7 +208,7 @@ public class AclAuthMethod extends com.pulumi.resources.CustomResource {
      * The namespace in which to create the auth method.
      * 
      */
-    @Export(name="namespace", type=String.class, parameters={})
+    @Export(name="namespace", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> namespace;
 
     /**
@@ -218,16 +219,14 @@ public class AclAuthMethod extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.namespace);
     }
     /**
-     * A set of rules that control
-     * which namespace tokens created via this auth method will be created within.
+     * A set of rules that control which namespace tokens created via this auth method will be created within.
      * 
      */
-    @Export(name="namespaceRules", type=List.class, parameters={AclAuthMethodNamespaceRule.class})
+    @Export(name="namespaceRules", refs={List.class,AclAuthMethodNamespaceRule.class}, tree="[0,1]")
     private Output</* @Nullable */ List<AclAuthMethodNamespaceRule>> namespaceRules;
 
     /**
-     * @return A set of rules that control
-     * which namespace tokens created via this auth method will be created within.
+     * @return A set of rules that control which namespace tokens created via this auth method will be created within.
      * 
      */
     public Output<Optional<List<AclAuthMethodNamespaceRule>>> namespaceRules() {
@@ -237,7 +236,7 @@ public class AclAuthMethod extends com.pulumi.resources.CustomResource {
      * The partition the ACL auth method is associated with.
      * 
      */
-    @Export(name="partition", type=String.class, parameters={})
+    @Export(name="partition", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> partition;
 
     /**
@@ -248,16 +247,14 @@ public class AclAuthMethod extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.partition);
     }
     /**
-     * The kind of token that this auth method
-     * produces. This can be either &#39;local&#39; or &#39;global&#39;.
+     * The kind of token that this auth method produces. This can be either &#39;local&#39; or &#39;global&#39;.
      * 
      */
-    @Export(name="tokenLocality", type=String.class, parameters={})
+    @Export(name="tokenLocality", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> tokenLocality;
 
     /**
-     * @return The kind of token that this auth method
-     * produces. This can be either &#39;local&#39; or &#39;global&#39;.
+     * @return The kind of token that this auth method produces. This can be either &#39;local&#39; or &#39;global&#39;.
      * 
      */
     public Output<Optional<String>> tokenLocality() {
@@ -267,7 +264,7 @@ public class AclAuthMethod extends com.pulumi.resources.CustomResource {
      * The type of the ACL auth method.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**

@@ -91,11 +91,11 @@ public final class KeyPrefixSubkeyCollection {
             return this;
         }
         public KeyPrefixSubkeyCollection build() {
-            final var o = new KeyPrefixSubkeyCollection();
-            o.flags = flags;
-            o.path = path;
-            o.value = value;
-            return o;
+            final var _resultValue = new KeyPrefixSubkeyCollection();
+            _resultValue.flags = flags;
+            _resultValue.path = path;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

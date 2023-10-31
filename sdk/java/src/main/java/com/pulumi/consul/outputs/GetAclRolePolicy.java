@@ -10,20 +10,12 @@ import java.util.Objects;
 @CustomType
 public final class GetAclRolePolicy {
     private String id;
-    /**
-     * @return The name of the ACL Role.
-     * 
-     */
     private String name;
 
     private GetAclRolePolicy() {}
     public String id() {
         return this.id;
     }
-    /**
-     * @return The name of the ACL Role.
-     * 
-     */
     public String name() {
         return this.name;
     }
@@ -57,10 +49,10 @@ public final class GetAclRolePolicy {
             return this;
         }
         public GetAclRolePolicy build() {
-            final var o = new GetAclRolePolicy();
-            o.id = id;
-            o.name = name;
-            return o;
+            final var _resultValue = new GetAclRolePolicy();
+            _resultValue.id = id;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

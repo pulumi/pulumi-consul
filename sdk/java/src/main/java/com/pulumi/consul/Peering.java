@@ -81,7 +81,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="consul:index/peering:Peering")
 public class Peering extends com.pulumi.resources.CustomResource {
-    @Export(name="deletedAt", type=String.class, parameters={})
+    @Export(name="deletedAt", refs={String.class}, tree="[0]")
     private Output<String> deletedAt;
 
     public Output<String> deletedAt() {
@@ -91,7 +91,7 @@ public class Peering extends com.pulumi.resources.CustomResource {
      * Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the cluster peering process.
      * 
      */
-    @Export(name="meta", type=Map.class, parameters={String.class, String.class})
+    @Export(name="meta", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> meta;
 
     /**
@@ -101,19 +101,19 @@ public class Peering extends com.pulumi.resources.CustomResource {
     public Output<Optional<Map<String,String>>> meta() {
         return Codegen.optional(this.meta);
     }
-    @Export(name="partition", type=String.class, parameters={})
+    @Export(name="partition", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> partition;
 
     public Output<Optional<String>> partition() {
         return Codegen.optional(this.partition);
     }
-    @Export(name="peerCaPems", type=List.class, parameters={String.class})
+    @Export(name="peerCaPems", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> peerCaPems;
 
     public Output<List<String>> peerCaPems() {
         return this.peerCaPems;
     }
-    @Export(name="peerId", type=String.class, parameters={})
+    @Export(name="peerId", refs={String.class}, tree="[0]")
     private Output<String> peerId;
 
     public Output<String> peerId() {
@@ -123,7 +123,7 @@ public class Peering extends com.pulumi.resources.CustomResource {
      * The name assigned to the peer cluster. The `peer_name` is used to reference the peer cluster in service discovery queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
      * 
      */
-    @Export(name="peerName", type=String.class, parameters={})
+    @Export(name="peerName", refs={String.class}, tree="[0]")
     private Output<String> peerName;
 
     /**
@@ -133,13 +133,13 @@ public class Peering extends com.pulumi.resources.CustomResource {
     public Output<String> peerName() {
         return this.peerName;
     }
-    @Export(name="peerServerAddresses", type=List.class, parameters={String.class})
+    @Export(name="peerServerAddresses", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> peerServerAddresses;
 
     public Output<List<String>> peerServerAddresses() {
         return this.peerServerAddresses;
     }
-    @Export(name="peerServerName", type=String.class, parameters={})
+    @Export(name="peerServerName", refs={String.class}, tree="[0]")
     private Output<String> peerServerName;
 
     public Output<String> peerServerName() {
@@ -149,7 +149,7 @@ public class Peering extends com.pulumi.resources.CustomResource {
      * The peering token fetched from the peer cluster.
      * 
      */
-    @Export(name="peeringToken", type=String.class, parameters={})
+    @Export(name="peeringToken", refs={String.class}, tree="[0]")
     private Output<String> peeringToken;
 
     /**
@@ -159,7 +159,7 @@ public class Peering extends com.pulumi.resources.CustomResource {
     public Output<String> peeringToken() {
         return this.peeringToken;
     }
-    @Export(name="state", type=String.class, parameters={})
+    @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     public Output<String> state() {

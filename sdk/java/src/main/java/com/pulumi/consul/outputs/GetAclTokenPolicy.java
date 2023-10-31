@@ -49,10 +49,10 @@ public final class GetAclTokenPolicy {
             return this;
         }
         public GetAclTokenPolicy build() {
-            final var o = new GetAclTokenPolicy();
-            o.id = id;
-            o.name = name;
-            return o;
+            final var _resultValue = new GetAclTokenPolicy();
+            _resultValue.id = id;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

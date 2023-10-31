@@ -202,17 +202,17 @@ public final class GetServiceHealthResultCheck {
             return this;
         }
         public GetServiceHealthResultCheck build() {
-            final var o = new GetServiceHealthResultCheck();
-            o.id = id;
-            o.name = name;
-            o.node = node;
-            o.notes = notes;
-            o.output = output;
-            o.serviceId = serviceId;
-            o.serviceName = serviceName;
-            o.serviceTags = serviceTags;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetServiceHealthResultCheck();
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.node = node;
+            _resultValue.notes = notes;
+            _resultValue.output = output;
+            _resultValue.serviceId = serviceId;
+            _resultValue.serviceName = serviceName;
+            _resultValue.serviceTags = serviceTags;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

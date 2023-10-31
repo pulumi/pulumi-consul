@@ -12,8 +12,7 @@ namespace Pulumi.Consul
     public static class GetAclRole
     {
         /// <summary>
-        /// The `consul.AclRole` data source returns the information related to a
-        /// [Consul ACL Role](https://www.consul.io/api/acl/roles.html).
+        /// The `consul.AclRole` data source returns the information related to a [Consul ACL Role](https://www.consul.io/api/acl/roles.html).
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -45,8 +44,7 @@ namespace Pulumi.Consul
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAclRoleResult>("consul:index/getAclRole:getAclRole", args ?? new GetAclRoleArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The `consul.AclRole` data source returns the information related to a
-        /// [Consul ACL Role](https://www.consul.io/api/acl/roles.html).
+        /// The `consul.AclRole` data source returns the information related to a [Consul ACL Role](https://www.consul.io/api/acl/roles.html).
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -81,9 +79,6 @@ namespace Pulumi.Consul
 
     public sealed class GetAclRoleArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The name of the ACL Role.
-        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
@@ -107,9 +102,6 @@ namespace Pulumi.Consul
 
     public sealed class GetAclRoleInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The name of the ACL Role.
-        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
@@ -152,18 +144,25 @@ namespace Pulumi.Consul
         /// </summary>
         public readonly string? Namespace;
         /// <summary>
-        /// The list of node identities associated with the ACL Role. Each entry has a `node_name` and a `datacenter` attributes.
+        /// The list of node identities associated with the ACL Role.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAclRoleNodeIdentityResult> NodeIdentities;
+        /// <summary>
+        /// The partition to lookup the role.
+        /// </summary>
         public readonly string? Partition;
         /// <summary>
-        /// The list of policies associated with the ACL Role. Each entry has an `id` and a `name` attribute.
+        /// The list of policies associated with the ACL Role.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAclRolePolicyResult> Policies;
         /// <summary>
-        /// The list of service identities associated with the ACL Role. Each entry has a `service_name` attribute and a list of `datacenters`.
+        /// The list of service identities associated with the ACL Role.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAclRoleServiceIdentityResult> ServiceIdentities;
+        /// <summary>
+        /// The list of templated policies that should be applied to the token.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetAclRoleTemplatedPolicyResult> TemplatedPolicies;
 
         [OutputConstructor]
         private GetAclRoleResult(
@@ -181,7 +180,9 @@ namespace Pulumi.Consul
 
             ImmutableArray<Outputs.GetAclRolePolicyResult> policies,
 
-            ImmutableArray<Outputs.GetAclRoleServiceIdentityResult> serviceIdentities)
+            ImmutableArray<Outputs.GetAclRoleServiceIdentityResult> serviceIdentities,
+
+            ImmutableArray<Outputs.GetAclRoleTemplatedPolicyResult> templatedPolicies)
         {
             Description = description;
             Id = id;
@@ -191,6 +192,7 @@ namespace Pulumi.Consul
             Partition = partition;
             Policies = policies;
             ServiceIdentities = serviceIdentities;
+            TemplatedPolicies = templatedPolicies;
         }
     }
 }

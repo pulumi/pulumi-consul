@@ -96,11 +96,11 @@ public final class GetKeyPrefixSubkeyCollection {
             return this;
         }
         public GetKeyPrefixSubkeyCollection build() {
-            final var o = new GetKeyPrefixSubkeyCollection();
-            o.default_ = default_;
-            o.name = name;
-            o.path = path;
-            return o;
+            final var _resultValue = new GetKeyPrefixSubkeyCollection();
+            _resultValue.default_ = default_;
+            _resultValue.name = name;
+            _resultValue.path = path;
+            return _resultValue;
         }
     }
 }

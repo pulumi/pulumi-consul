@@ -16,16 +16,14 @@ public final class AclAuthMethodNamespaceRuleArgs extends com.pulumi.resources.R
     public static final AclAuthMethodNamespaceRuleArgs Empty = new AclAuthMethodNamespaceRuleArgs();
 
     /**
-     * If the namespace rule&#39;s `selector` matches then
-     * this is used to control the namespace where the token is created.
+     * If the namespace rule&#39;s `selector` matches then this is used to control the namespace where the token is created.
      * 
      */
     @Import(name="bindNamespace", required=true)
     private Output<String> bindNamespace;
 
     /**
-     * @return If the namespace rule&#39;s `selector` matches then
-     * this is used to control the namespace where the token is created.
+     * @return If the namespace rule&#39;s `selector` matches then this is used to control the namespace where the token is created.
      * 
      */
     public Output<String> bindNamespace() {
@@ -33,18 +31,14 @@ public final class AclAuthMethodNamespaceRuleArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Specifies the expression used to match this namespace
-     * rule against valid identities returned from an auth method validation.
-     * Defaults to `&#34;&#34;`.
+     * Specifies the expression used to match this namespace rule against valid identities returned from an auth method validation.
      * 
      */
     @Import(name="selector")
     private @Nullable Output<String> selector;
 
     /**
-     * @return Specifies the expression used to match this namespace
-     * rule against valid identities returned from an auth method validation.
-     * Defaults to `&#34;&#34;`.
+     * @return Specifies the expression used to match this namespace rule against valid identities returned from an auth method validation.
      * 
      */
     public Optional<Output<String>> selector() {
@@ -77,8 +71,7 @@ public final class AclAuthMethodNamespaceRuleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param bindNamespace If the namespace rule&#39;s `selector` matches then
-         * this is used to control the namespace where the token is created.
+         * @param bindNamespace If the namespace rule&#39;s `selector` matches then this is used to control the namespace where the token is created.
          * 
          * @return builder
          * 
@@ -89,8 +82,7 @@ public final class AclAuthMethodNamespaceRuleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param bindNamespace If the namespace rule&#39;s `selector` matches then
-         * this is used to control the namespace where the token is created.
+         * @param bindNamespace If the namespace rule&#39;s `selector` matches then this is used to control the namespace where the token is created.
          * 
          * @return builder
          * 
@@ -100,9 +92,7 @@ public final class AclAuthMethodNamespaceRuleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param selector Specifies the expression used to match this namespace
-         * rule against valid identities returned from an auth method validation.
-         * Defaults to `&#34;&#34;`.
+         * @param selector Specifies the expression used to match this namespace rule against valid identities returned from an auth method validation.
          * 
          * @return builder
          * 
@@ -113,9 +103,7 @@ public final class AclAuthMethodNamespaceRuleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param selector Specifies the expression used to match this namespace
-         * rule against valid identities returned from an auth method validation.
-         * Defaults to `&#34;&#34;`.
+         * @param selector Specifies the expression used to match this namespace rule against valid identities returned from an auth method validation.
          * 
          * @return builder
          * 

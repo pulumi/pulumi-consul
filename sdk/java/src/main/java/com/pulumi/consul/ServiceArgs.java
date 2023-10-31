@@ -21,16 +21,14 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
     public static final ServiceArgs Empty = new ServiceArgs();
 
     /**
-     * The address of the service. Defaults to the
-     * address of the node.
+     * The address of the service. Defaults to the address of the node.
      * 
      */
     @Import(name="address")
     private @Nullable Output<String> address;
 
     /**
-     * @return The address of the service. Defaults to the
-     * address of the node.
+     * @return The address of the service. Defaults to the address of the node.
      * 
      */
     public Optional<Output<String>> address() {
@@ -45,16 +43,14 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The datacenter to use. This overrides the
-     * agent&#39;s default datacenter and the datacenter in the provider setup.
+     * The datacenter to use. This overrides the agent&#39;s default datacenter and the datacenter in the provider setup.
      * 
      */
     @Import(name="datacenter")
     private @Nullable Output<String> datacenter;
 
     /**
-     * @return The datacenter to use. This overrides the
-     * agent&#39;s default datacenter and the datacenter in the provider setup.
+     * @return The datacenter to use. This overrides the agent&#39;s default datacenter and the datacenter in the provider setup.
      * 
      */
     public Optional<Output<String>> datacenter() {
@@ -62,16 +58,14 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies to disable the
-     * anti-entropy feature for this service&#39;s tags. Defaults to `false`.
+     * Specifies to disable the anti-entropy feature for this service&#39;s tags. Defaults to `false`.
      * 
      */
     @Import(name="enableTagOverride")
     private @Nullable Output<Boolean> enableTagOverride;
 
     /**
-     * @return Specifies to disable the
-     * anti-entropy feature for this service&#39;s tags. Defaults to `false`.
+     * @return Specifies to disable the anti-entropy feature for this service&#39;s tags. Defaults to `false`.
      * 
      */
     public Optional<Output<Boolean>> enableTagOverride() {
@@ -98,16 +92,14 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A map of arbitrary KV metadata linked to the service
-     * instance.
+     * A map of arbitrary KV metadata linked to the service instance.
      * 
      */
     @Import(name="meta")
     private @Nullable Output<Map<String,String>> meta;
 
     /**
-     * @return A map of arbitrary KV metadata linked to the service
-     * instance.
+     * @return A map of arbitrary KV metadata linked to the service instance.
      * 
      */
     public Optional<Output<Map<String,String>>> meta() {
@@ -115,14 +107,14 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the health-check.
+     * The name of the header.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the health-check.
+     * @return The name of the header.
      * 
      */
     public Optional<Output<String>> name() {
@@ -162,16 +154,12 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The partition the service is associated with.
      * 
-     * The following attributes are available for each health-check:
-     * 
      */
     @Import(name="partition")
     private @Nullable Output<String> partition;
 
     /**
      * @return The partition the service is associated with.
-     * 
-     * The following attributes are available for each health-check:
      * 
      */
     public Optional<Output<String>> partition() {
@@ -194,16 +182,14 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If the service ID is not provided, it will be defaulted to the value
-     * of the `name` attribute.
+     * If the service ID is not provided, it will be defaulted to the value of the `name` attribute.
      * 
      */
     @Import(name="serviceId")
     private @Nullable Output<String> serviceId;
 
     /**
-     * @return If the service ID is not provided, it will be defaulted to the value
-     * of the `name` attribute.
+     * @return If the service ID is not provided, it will be defaulted to the value of the `name` attribute.
      * 
      */
     public Optional<Output<String>> serviceId() {
@@ -211,16 +197,14 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A list of values that are opaque to Consul,
-     * but can be used to distinguish between services or nodes.
+     * A list of values that are opaque to Consul, but can be used to distinguish between services or nodes.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return A list of values that are opaque to Consul,
-     * but can be used to distinguish between services or nodes.
+     * @return A list of values that are opaque to Consul, but can be used to distinguish between services or nodes.
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -264,8 +248,7 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param address The address of the service. Defaults to the
-         * address of the node.
+         * @param address The address of the service. Defaults to the address of the node.
          * 
          * @return builder
          * 
@@ -276,8 +259,7 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param address The address of the service. Defaults to the
-         * address of the node.
+         * @param address The address of the service. Defaults to the address of the node.
          * 
          * @return builder
          * 
@@ -300,8 +282,7 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param datacenter The datacenter to use. This overrides the
-         * agent&#39;s default datacenter and the datacenter in the provider setup.
+         * @param datacenter The datacenter to use. This overrides the agent&#39;s default datacenter and the datacenter in the provider setup.
          * 
          * @return builder
          * 
@@ -312,8 +293,7 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param datacenter The datacenter to use. This overrides the
-         * agent&#39;s default datacenter and the datacenter in the provider setup.
+         * @param datacenter The datacenter to use. This overrides the agent&#39;s default datacenter and the datacenter in the provider setup.
          * 
          * @return builder
          * 
@@ -323,8 +303,7 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableTagOverride Specifies to disable the
-         * anti-entropy feature for this service&#39;s tags. Defaults to `false`.
+         * @param enableTagOverride Specifies to disable the anti-entropy feature for this service&#39;s tags. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -335,8 +314,7 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableTagOverride Specifies to disable the
-         * anti-entropy feature for this service&#39;s tags. Defaults to `false`.
+         * @param enableTagOverride Specifies to disable the anti-entropy feature for this service&#39;s tags. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -371,8 +349,7 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param meta A map of arbitrary KV metadata linked to the service
-         * instance.
+         * @param meta A map of arbitrary KV metadata linked to the service instance.
          * 
          * @return builder
          * 
@@ -383,8 +360,7 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param meta A map of arbitrary KV metadata linked to the service
-         * instance.
+         * @param meta A map of arbitrary KV metadata linked to the service instance.
          * 
          * @return builder
          * 
@@ -394,7 +370,7 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the health-check.
+         * @param name The name of the header.
          * 
          * @return builder
          * 
@@ -405,7 +381,7 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the health-check.
+         * @param name The name of the header.
          * 
          * @return builder
          * 
@@ -459,8 +435,6 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param partition The partition the service is associated with.
          * 
-         * The following attributes are available for each health-check:
-         * 
          * @return builder
          * 
          */
@@ -471,8 +445,6 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param partition The partition the service is associated with.
-         * 
-         * The following attributes are available for each health-check:
          * 
          * @return builder
          * 
@@ -503,8 +475,7 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceId If the service ID is not provided, it will be defaulted to the value
-         * of the `name` attribute.
+         * @param serviceId If the service ID is not provided, it will be defaulted to the value of the `name` attribute.
          * 
          * @return builder
          * 
@@ -515,8 +486,7 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceId If the service ID is not provided, it will be defaulted to the value
-         * of the `name` attribute.
+         * @param serviceId If the service ID is not provided, it will be defaulted to the value of the `name` attribute.
          * 
          * @return builder
          * 
@@ -526,8 +496,7 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags A list of values that are opaque to Consul,
-         * but can be used to distinguish between services or nodes.
+         * @param tags A list of values that are opaque to Consul, but can be used to distinguish between services or nodes.
          * 
          * @return builder
          * 
@@ -538,8 +507,7 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags A list of values that are opaque to Consul,
-         * but can be used to distinguish between services or nodes.
+         * @param tags A list of values that are opaque to Consul, but can be used to distinguish between services or nodes.
          * 
          * @return builder
          * 
@@ -549,8 +517,7 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags A list of values that are opaque to Consul,
-         * but can be used to distinguish between services or nodes.
+         * @param tags A list of values that are opaque to Consul, but can be used to distinguish between services or nodes.
          * 
          * @return builder
          * 

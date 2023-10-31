@@ -16,7 +16,7 @@ namespace Pulumi.Consul.Inputs
         private InputList<string>? _datacenters;
 
         /// <summary>
-        /// The datacenters the effective policy is valid within.
+        /// The datacenters the effective policy is valid within. When no datacenters are provided the effective policy is valid in all datacenters including those which do not yet exist but may in the future.
         /// </summary>
         public InputList<string> Datacenters
         {

@@ -157,54 +157,48 @@ import javax.annotation.Nullable;
 @ResourceType(type="consul:index/service:Service")
 public class Service extends com.pulumi.resources.CustomResource {
     /**
-     * The address of the service. Defaults to the
-     * address of the node.
+     * The address of the service. Defaults to the address of the node.
      * 
      */
-    @Export(name="address", type=String.class, parameters={})
+    @Export(name="address", refs={String.class}, tree="[0]")
     private Output<String> address;
 
     /**
-     * @return The address of the service. Defaults to the
-     * address of the node.
+     * @return The address of the service. Defaults to the address of the node.
      * 
      */
     public Output<String> address() {
         return this.address;
     }
-    @Export(name="checks", type=List.class, parameters={ServiceCheck.class})
+    @Export(name="checks", refs={List.class,ServiceCheck.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ServiceCheck>> checks;
 
     public Output<Optional<List<ServiceCheck>>> checks() {
         return Codegen.optional(this.checks);
     }
     /**
-     * The datacenter to use. This overrides the
-     * agent&#39;s default datacenter and the datacenter in the provider setup.
+     * The datacenter to use. This overrides the agent&#39;s default datacenter and the datacenter in the provider setup.
      * 
      */
-    @Export(name="datacenter", type=String.class, parameters={})
+    @Export(name="datacenter", refs={String.class}, tree="[0]")
     private Output<String> datacenter;
 
     /**
-     * @return The datacenter to use. This overrides the
-     * agent&#39;s default datacenter and the datacenter in the provider setup.
+     * @return The datacenter to use. This overrides the agent&#39;s default datacenter and the datacenter in the provider setup.
      * 
      */
     public Output<String> datacenter() {
         return this.datacenter;
     }
     /**
-     * Specifies to disable the
-     * anti-entropy feature for this service&#39;s tags. Defaults to `false`.
+     * Specifies to disable the anti-entropy feature for this service&#39;s tags. Defaults to `false`.
      * 
      */
-    @Export(name="enableTagOverride", type=Boolean.class, parameters={})
+    @Export(name="enableTagOverride", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableTagOverride;
 
     /**
-     * @return Specifies to disable the
-     * anti-entropy feature for this service&#39;s tags. Defaults to `false`.
+     * @return Specifies to disable the anti-entropy feature for this service&#39;s tags. Defaults to `false`.
      * 
      */
     public Output<Optional<Boolean>> enableTagOverride() {
@@ -216,37 +210,35 @@ public class Service extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* The external field has been deprecated and does nothing. */
-    @Export(name="external", type=Boolean.class, parameters={})
+    @Export(name="external", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> external;
 
     public Output<Optional<Boolean>> external() {
         return Codegen.optional(this.external);
     }
     /**
-     * A map of arbitrary KV metadata linked to the service
-     * instance.
+     * A map of arbitrary KV metadata linked to the service instance.
      * 
      */
-    @Export(name="meta", type=Map.class, parameters={String.class, String.class})
+    @Export(name="meta", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> meta;
 
     /**
-     * @return A map of arbitrary KV metadata linked to the service
-     * instance.
+     * @return A map of arbitrary KV metadata linked to the service instance.
      * 
      */
     public Output<Optional<Map<String,String>>> meta() {
         return Codegen.optional(this.meta);
     }
     /**
-     * The name of the health-check.
+     * The name of the header.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the health-check.
+     * @return The name of the header.
      * 
      */
     public Output<String> name() {
@@ -256,7 +248,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * The namespace to create the service within.
      * 
      */
-    @Export(name="namespace", type=String.class, parameters={})
+    @Export(name="namespace", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> namespace;
 
     /**
@@ -270,7 +262,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * The name of the node the to register the service on.
      * 
      */
-    @Export(name="node", type=String.class, parameters={})
+    @Export(name="node", refs={String.class}, tree="[0]")
     private Output<String> node;
 
     /**
@@ -283,16 +275,12 @@ public class Service extends com.pulumi.resources.CustomResource {
     /**
      * The partition the service is associated with.
      * 
-     * The following attributes are available for each health-check:
-     * 
      */
-    @Export(name="partition", type=String.class, parameters={})
+    @Export(name="partition", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> partition;
 
     /**
      * @return The partition the service is associated with.
-     * 
-     * The following attributes are available for each health-check:
      * 
      */
     public Output<Optional<String>> partition() {
@@ -302,7 +290,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * The port of the service.
      * 
      */
-    @Export(name="port", type=Integer.class, parameters={})
+    @Export(name="port", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> port;
 
     /**
@@ -313,32 +301,28 @@ public class Service extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.port);
     }
     /**
-     * If the service ID is not provided, it will be defaulted to the value
-     * of the `name` attribute.
+     * If the service ID is not provided, it will be defaulted to the value of the `name` attribute.
      * 
      */
-    @Export(name="serviceId", type=String.class, parameters={})
+    @Export(name="serviceId", refs={String.class}, tree="[0]")
     private Output<String> serviceId;
 
     /**
-     * @return If the service ID is not provided, it will be defaulted to the value
-     * of the `name` attribute.
+     * @return If the service ID is not provided, it will be defaulted to the value of the `name` attribute.
      * 
      */
     public Output<String> serviceId() {
         return this.serviceId;
     }
     /**
-     * A list of values that are opaque to Consul,
-     * but can be used to distinguish between services or nodes.
+     * A list of values that are opaque to Consul, but can be used to distinguish between services or nodes.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
-     * @return A list of values that are opaque to Consul,
-     * but can be used to distinguish between services or nodes.
+     * @return A list of values that are opaque to Consul, but can be used to distinguish between services or nodes.
      * 
      */
     public Output<Optional<List<String>>> tags() {

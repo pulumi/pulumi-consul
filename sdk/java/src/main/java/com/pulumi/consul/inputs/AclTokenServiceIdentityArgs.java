@@ -17,14 +17,14 @@ public final class AclTokenServiceIdentityArgs extends com.pulumi.resources.Reso
     public static final AclTokenServiceIdentityArgs Empty = new AclTokenServiceIdentityArgs();
 
     /**
-     * The list of datacenters the policy is valid within.
+     * Specifies the datacenters the effective policy is valid within.
      * 
      */
     @Import(name="datacenters")
     private @Nullable Output<List<String>> datacenters;
 
     /**
-     * @return The list of datacenters the policy is valid within.
+     * @return Specifies the datacenters the effective policy is valid within.
      * 
      */
     public Optional<Output<List<String>>> datacenters() {
@@ -72,7 +72,7 @@ public final class AclTokenServiceIdentityArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param datacenters The list of datacenters the policy is valid within.
+         * @param datacenters Specifies the datacenters the effective policy is valid within.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class AclTokenServiceIdentityArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param datacenters The list of datacenters the policy is valid within.
+         * @param datacenters Specifies the datacenters the effective policy is valid within.
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class AclTokenServiceIdentityArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param datacenters The list of datacenters the policy is valid within.
+         * @param datacenters Specifies the datacenters the effective policy is valid within.
          * 
          * @return builder
          * 

@@ -22,7 +22,7 @@ class GetAclTokenResult:
     """
     A collection of values returned by getAclToken.
     """
-    def __init__(__self__, accessor_id=None, description=None, expiration_time=None, id=None, local=None, namespace=None, node_identities=None, partition=None, policies=None, roles=None, service_identities=None):
+    def __init__(__self__, accessor_id=None, description=None, expiration_time=None, id=None, local=None, namespace=None, node_identities=None, partition=None, policies=None, roles=None, service_identities=None, templated_policies=None):
         if accessor_id and not isinstance(accessor_id, str):
             raise TypeError("Expected argument 'accessor_id' to be a str")
         pulumi.set(__self__, "accessor_id", accessor_id)
@@ -56,10 +56,16 @@ class GetAclTokenResult:
         if service_identities and not isinstance(service_identities, list):
             raise TypeError("Expected argument 'service_identities' to be a list")
         pulumi.set(__self__, "service_identities", service_identities)
+        if templated_policies and not isinstance(templated_policies, list):
+            raise TypeError("Expected argument 'templated_policies' to be a list")
+        pulumi.set(__self__, "templated_policies", templated_policies)
 
     @property
     @pulumi.getter(name="accessorId")
     def accessor_id(self) -> str:
+        """
+        The accessor ID of the ACL token.
+        """
         return pulumi.get(self, "accessor_id")
 
     @property
@@ -97,26 +103,32 @@ class GetAclTokenResult:
     @property
     @pulumi.getter
     def namespace(self) -> Optional[str]:
+        """
+        The namespace to lookup the ACL token.
+        """
         return pulumi.get(self, "namespace")
 
     @property
     @pulumi.getter(name="nodeIdentities")
     def node_identities(self) -> Sequence['outputs.GetAclTokenNodeIdentityResult']:
         """
-        The list of node identities attached to the token. Each entry has a `node_name` and a `datacenter` attributes.
+        The list of node identities attached to the token.
         """
         return pulumi.get(self, "node_identities")
 
     @property
     @pulumi.getter
     def partition(self) -> Optional[str]:
+        """
+        The partition to lookup the ACL token.
+        """
         return pulumi.get(self, "partition")
 
     @property
     @pulumi.getter
     def policies(self) -> Sequence['outputs.GetAclTokenPolicyResult']:
         """
-        A list of policies associated with the ACL token. Each entry has an `id` and a `name` attribute.
+        A list of policies associated with the ACL token.
         """
         return pulumi.get(self, "policies")
 
@@ -124,7 +136,7 @@ class GetAclTokenResult:
     @pulumi.getter
     def roles(self) -> Sequence['outputs.GetAclTokenRoleResult']:
         """
-        The list of roles attached to the token.
+        List of roles linked to the token
         """
         return pulumi.get(self, "roles")
 
@@ -132,9 +144,17 @@ class GetAclTokenResult:
     @pulumi.getter(name="serviceIdentities")
     def service_identities(self) -> Sequence['outputs.GetAclTokenServiceIdentityResult']:
         """
-        The list of service identities attached to the token. Each entry has a `service_name` and a `datacenters` attribute.
+        The list of service identities attached to the token.
         """
         return pulumi.get(self, "service_identities")
+
+    @property
+    @pulumi.getter(name="templatedPolicies")
+    def templated_policies(self) -> Sequence['outputs.GetAclTokenTemplatedPolicyResult']:
+        """
+        The list of templated policies that should be applied to the token.
+        """
+        return pulumi.get(self, "templated_policies")
 
 
 class AwaitableGetAclTokenResult(GetAclTokenResult):
@@ -153,7 +173,8 @@ class AwaitableGetAclTokenResult(GetAclTokenResult):
             partition=self.partition,
             policies=self.policies,
             roles=self.roles,
-            service_identities=self.service_identities)
+            service_identities=self.service_identities,
+            templated_policies=self.templated_policies)
 
 
 def get_acl_token(accessor_id: Optional[str] = None,
@@ -161,11 +182,9 @@ def get_acl_token(accessor_id: Optional[str] = None,
                   partition: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAclTokenResult:
     """
-    The `AclToken` data source returns the information related to the
-    `AclToken` resource with the exception of its secret ID.
+    The `AclToken` data source returns the information related to the `AclToken` resource with the exception of its secret ID.
 
-    If you want to get the secret ID associated with a token, use the
-    [`get_acl_token_secret_id` data source](https://www.terraform.io/docs/providers/consul/d/acl_token_secret_id.html).
+    If you want to get the secret ID associated with a token, use the [`get_acl_token_secret_id` data source](https://www.terraform.io/docs/providers/consul/d/acl_token_secret_id.html).
 
     ## Example Usage
 
@@ -200,7 +219,8 @@ def get_acl_token(accessor_id: Optional[str] = None,
         partition=pulumi.get(__ret__, 'partition'),
         policies=pulumi.get(__ret__, 'policies'),
         roles=pulumi.get(__ret__, 'roles'),
-        service_identities=pulumi.get(__ret__, 'service_identities'))
+        service_identities=pulumi.get(__ret__, 'service_identities'),
+        templated_policies=pulumi.get(__ret__, 'templated_policies'))
 
 
 @_utilities.lift_output_func(get_acl_token)
@@ -209,11 +229,9 @@ def get_acl_token_output(accessor_id: Optional[pulumi.Input[str]] = None,
                          partition: Optional[pulumi.Input[Optional[str]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAclTokenResult]:
     """
-    The `AclToken` data source returns the information related to the
-    `AclToken` resource with the exception of its secret ID.
+    The `AclToken` data source returns the information related to the `AclToken` resource with the exception of its secret ID.
 
-    If you want to get the secret ID associated with a token, use the
-    [`get_acl_token_secret_id` data source](https://www.terraform.io/docs/providers/consul/d/acl_token_secret_id.html).
+    If you want to get the secret ID associated with a token, use the [`get_acl_token_secret_id` data source](https://www.terraform.io/docs/providers/consul/d/acl_token_secret_id.html).
 
     ## Example Usage
 

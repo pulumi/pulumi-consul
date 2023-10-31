@@ -13,16 +13,13 @@ namespace Pulumi.Consul.Inputs
     public sealed class ServiceCheckGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// An ID, *unique per agent*. Will default to *name*
-        /// if not set.
+        /// An ID, *unique per agent*.
         /// </summary>
         [Input("checkId", required: true)]
         public Input<string> CheckId { get; set; } = null!;
 
         /// <summary>
-        /// The time after which
-        /// the service is automatically deregistered when in the `critical` state.
-        /// Defaults to `30s`.
+        /// The time after which the service is automatically deregistered when in the `critical` state. Defaults to `30s`.
         /// </summary>
         [Input("deregisterCriticalServiceAfter")]
         public Input<string>? DeregisterCriticalServiceAfter { get; set; }
@@ -31,8 +28,7 @@ namespace Pulumi.Consul.Inputs
         private InputList<Inputs.ServiceCheckHeaderGetArgs>? _headers;
 
         /// <summary>
-        /// The headers to send for an HTTP check.
-        /// The attributes of each header is given below.
+        /// The headers to send for an HTTP check. The attributes of each header is given below.
         /// </summary>
         public InputList<Inputs.ServiceCheckHeaderGetArgs> Headers
         {
@@ -47,15 +43,13 @@ namespace Pulumi.Consul.Inputs
         public Input<string>? Http { get; set; }
 
         /// <summary>
-        /// The interval to wait between each health-check
-        /// invocation.
+        /// The interval to wait between each health-check invocation.
         /// </summary>
         [Input("interval", required: true)]
         public Input<string> Interval { get; set; } = null!;
 
         /// <summary>
-        /// The method to use for HTTP health-checks. Defaults
-        /// to `GET`.
+        /// The method to use for HTTP health-checks. Defaults to `GET`.
         /// </summary>
         [Input("method")]
         public Input<string>? Method { get; set; }
@@ -85,15 +79,13 @@ namespace Pulumi.Consul.Inputs
         public Input<string>? Tcp { get; set; }
 
         /// <summary>
-        /// Specifies a timeout for outgoing connections in
-        /// the case of a HTTP or TCP check.
+        /// Specifies a timeout for outgoing connections in the case of a HTTP or TCP check.
         /// </summary>
         [Input("timeout", required: true)]
         public Input<string> Timeout { get; set; } = null!;
 
         /// <summary>
-        /// Whether to deactivate certificate
-        /// verification for HTTP health-checks. Defaults to `false`.
+        /// Whether to deactivate certificate verification for HTTP health-checks. Defaults to `false`.
         /// </summary>
         [Input("tlsSkipVerify")]
         public Input<bool>? TlsSkipVerify { get; set; }

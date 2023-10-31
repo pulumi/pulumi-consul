@@ -62,7 +62,7 @@ public class Keys extends com.pulumi.resources.CustomResource {
      * agent&#39;s default datacenter and the datacenter in the provider setup.
      * 
      */
-    @Export(name="datacenter", type=String.class, parameters={})
+    @Export(name="datacenter", refs={String.class}, tree="[0]")
     private Output<String> datacenter;
 
     /**
@@ -78,7 +78,7 @@ public class Keys extends com.pulumi.resources.CustomResource {
      * Supported values documented below.
      * 
      */
-    @Export(name="keys", type=List.class, parameters={KeysKey.class})
+    @Export(name="keys", refs={List.class,KeysKey.class}, tree="[0,1]")
     private Output</* @Nullable */ List<KeysKey>> keys;
 
     /**
@@ -93,7 +93,7 @@ public class Keys extends com.pulumi.resources.CustomResource {
      * The namespace to create the keys within.
      * 
      */
-    @Export(name="namespace", type=String.class, parameters={})
+    @Export(name="namespace", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> namespace;
 
     /**
@@ -107,7 +107,7 @@ public class Keys extends com.pulumi.resources.CustomResource {
      * The partition to create the keys within.
      * 
      */
-    @Export(name="partition", type=String.class, parameters={})
+    @Export(name="partition", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> partition;
 
     /**
@@ -128,7 +128,7 @@ public class Keys extends com.pulumi.resources.CustomResource {
      */
     @Deprecated /* The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration */
-    @Export(name="token", type=String.class, parameters={})
+    @Export(name="token", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> token;
 
     /**
@@ -139,7 +139,7 @@ Please use the token argument in the provider configuration */
     public Output<Optional<String>> token() {
         return Codegen.optional(this.token);
     }
-    @Export(name="var", type=Map.class, parameters={String.class, String.class})
+    @Export(name="var", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> var_;
 
     public Output<Map<String,String>> var_() {

@@ -216,18 +216,18 @@ public final class GetServicesQueryOption {
             return this;
         }
         public GetServicesQueryOption build() {
-            final var o = new GetServicesQueryOption();
-            o.allowStale = allowStale;
-            o.datacenter = datacenter;
-            o.namespace = namespace;
-            o.near = near;
-            o.nodeMeta = nodeMeta;
-            o.partition = partition;
-            o.requireConsistent = requireConsistent;
-            o.token = token;
-            o.waitIndex = waitIndex;
-            o.waitTime = waitTime;
-            return o;
+            final var _resultValue = new GetServicesQueryOption();
+            _resultValue.allowStale = allowStale;
+            _resultValue.datacenter = datacenter;
+            _resultValue.namespace = namespace;
+            _resultValue.near = near;
+            _resultValue.nodeMeta = nodeMeta;
+            _resultValue.partition = partition;
+            _resultValue.requireConsistent = requireConsistent;
+            _resultValue.token = token;
+            _resultValue.waitIndex = waitIndex;
+            _resultValue.waitTime = waitTime;
+            return _resultValue;
         }
     }
 }

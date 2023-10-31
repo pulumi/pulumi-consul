@@ -12,11 +12,9 @@ namespace Pulumi.Consul
     public static class GetAclToken
     {
         /// <summary>
-        /// The `consul.AclToken` data source returns the information related to the
-        /// `consul.AclToken` resource with the exception of its secret ID.
+        /// The `consul.AclToken` data source returns the information related to the `consul.AclToken` resource with the exception of its secret ID.
         /// 
-        /// If you want to get the secret ID associated with a token, use the
-        /// [`consul.getAclTokenSecretId` data source](https://www.terraform.io/docs/providers/consul/d/acl_token_secret_id.html).
+        /// If you want to get the secret ID associated with a token, use the [`consul.getAclTokenSecretId` data source](https://www.terraform.io/docs/providers/consul/d/acl_token_secret_id.html).
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -48,11 +46,9 @@ namespace Pulumi.Consul
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAclTokenResult>("consul:index/getAclToken:getAclToken", args ?? new GetAclTokenArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The `consul.AclToken` data source returns the information related to the
-        /// `consul.AclToken` resource with the exception of its secret ID.
+        /// The `consul.AclToken` data source returns the information related to the `consul.AclToken` resource with the exception of its secret ID.
         /// 
-        /// If you want to get the secret ID associated with a token, use the
-        /// [`consul.getAclTokenSecretId` data source](https://www.terraform.io/docs/providers/consul/d/acl_token_secret_id.html).
+        /// If you want to get the secret ID associated with a token, use the [`consul.getAclTokenSecretId` data source](https://www.terraform.io/docs/providers/consul/d/acl_token_secret_id.html).
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -141,6 +137,9 @@ namespace Pulumi.Consul
     [OutputType]
     public sealed class GetAclTokenResult
     {
+        /// <summary>
+        /// The accessor ID of the ACL token.
+        /// </summary>
         public readonly string AccessorId;
         /// <summary>
         /// The description of the ACL token.
@@ -158,24 +157,34 @@ namespace Pulumi.Consul
         /// Whether the ACL token is local to the datacenter it was created within.
         /// </summary>
         public readonly bool Local;
+        /// <summary>
+        /// The namespace to lookup the ACL token.
+        /// </summary>
         public readonly string? Namespace;
         /// <summary>
-        /// The list of node identities attached to the token. Each entry has a `node_name` and a `datacenter` attributes.
+        /// The list of node identities attached to the token.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAclTokenNodeIdentityResult> NodeIdentities;
+        /// <summary>
+        /// The partition to lookup the ACL token.
+        /// </summary>
         public readonly string? Partition;
         /// <summary>
-        /// A list of policies associated with the ACL token. Each entry has an `id` and a `name` attribute.
+        /// A list of policies associated with the ACL token.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAclTokenPolicyResult> Policies;
         /// <summary>
-        /// The list of roles attached to the token.
+        /// List of roles linked to the token
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAclTokenRoleResult> Roles;
         /// <summary>
-        /// The list of service identities attached to the token. Each entry has a `service_name` and a `datacenters` attribute.
+        /// The list of service identities attached to the token.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAclTokenServiceIdentityResult> ServiceIdentities;
+        /// <summary>
+        /// The list of templated policies that should be applied to the token.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetAclTokenTemplatedPolicyResult> TemplatedPolicies;
 
         [OutputConstructor]
         private GetAclTokenResult(
@@ -199,7 +208,9 @@ namespace Pulumi.Consul
 
             ImmutableArray<Outputs.GetAclTokenRoleResult> roles,
 
-            ImmutableArray<Outputs.GetAclTokenServiceIdentityResult> serviceIdentities)
+            ImmutableArray<Outputs.GetAclTokenServiceIdentityResult> serviceIdentities,
+
+            ImmutableArray<Outputs.GetAclTokenTemplatedPolicyResult> templatedPolicies)
         {
             AccessorId = accessorId;
             Description = description;
@@ -212,6 +223,7 @@ namespace Pulumi.Consul
             Policies = policies;
             Roles = roles;
             ServiceIdentities = serviceIdentities;
+            TemplatedPolicies = templatedPolicies;
         }
     }
 }
