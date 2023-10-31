@@ -25,7 +25,7 @@ import * as utilities from "./utilities";
  *     local: true,
  * });
  * // Explicitly set the `accessor_id`
- * const testrandom_uuid = new random.index.Random_uuid("testrandom_uuid", {});
+ * const testRandomUuid = new random.RandomUuid("testRandomUuid", {});
  * const testPredefinedId = new consul.AclToken("testPredefinedId", {
  *     accessorId: random_uuid.test_uuid.result,
  *     description: "my test uuid token",

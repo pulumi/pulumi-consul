@@ -31,7 +31,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.consul.AclPolicyArgs;
  * import com.pulumi.consul.AclToken;
  * import com.pulumi.consul.AclTokenArgs;
- * import com.pulumi.random.random_uuid;
+ * import com.pulumi.random.RandomUuid;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *             .local(true)
  *             .build());
  * 
- *         var testrandom_uuid = new Random_uuid(&#34;testrandom_uuid&#34;);
+ *         var testRandomUuid = new RandomUuid(&#34;testRandomUuid&#34;);
  * 
  *         var testPredefinedId = new AclToken(&#34;testPredefinedId&#34;, AclTokenArgs.builder()        
  *             .accessorId(random_uuid.test_uuid().result())

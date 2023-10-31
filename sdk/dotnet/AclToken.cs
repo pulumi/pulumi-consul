@@ -41,7 +41,7 @@ namespace Pulumi.Consul
     ///     });
     /// 
     ///     // Explicitly set the `accessor_id`
-    ///     var testrandom_uuid = new Random.Index.Random_uuid("testrandom_uuid");
+    ///     var testRandomUuid = new Random.RandomUuid("testRandomUuid");
     /// 
     ///     var testPredefinedId = new Consul.AclToken("testPredefinedId", new()
     ///     {

@@ -20,7 +20,7 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
-//	"github.com/pulumi/pulumi-random/sdk/v1/go/random"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -43,7 +43,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = index.NewRandom_uuid(ctx, "testrandom_uuid", nil)
+//			_, err = random.NewRandomUuid(ctx, "testRandomUuid", nil)
 //			if err != nil {
 //				return err
 //			}
