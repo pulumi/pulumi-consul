@@ -97,6 +97,7 @@ install_nodejs_sdk:
 install_plugins: .pulumi/bin/pulumi
 	.pulumi/bin/pulumi plugin install resource aws 4.0.0
 	.pulumi/bin/pulumi plugin install resource vault 4.0.0
+	.pulumi/bin/pulumi plugin install resource random 4.14.0
 
 lint_provider: provider
 	cd provider && golangci-lint run -c ../.golangci.yml
