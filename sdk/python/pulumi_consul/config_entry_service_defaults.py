@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -55,40 +55,109 @@ class ConfigEntryServiceDefaultsArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceDefaultsTransparentProxyArgs']]] transparent_proxies: Controls configurations specific to proxies in transparent mode. Refer to Transparent Proxy Mode for additional information.
         :param pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceDefaultsUpstreamConfigArgs']]] upstream_configs: Controls default upstream connection settings and custom overrides for individual upstream services.
         """
-        pulumi.set(__self__, "exposes", exposes)
-        pulumi.set(__self__, "protocol", protocol)
+        ConfigEntryServiceDefaultsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            exposes=exposes,
+            protocol=protocol,
+            balance_inbound_connections=balance_inbound_connections,
+            destinations=destinations,
+            envoy_extensions=envoy_extensions,
+            external_sni=external_sni,
+            local_connect_timeout_ms=local_connect_timeout_ms,
+            local_request_timeout_ms=local_request_timeout_ms,
+            max_inbound_connections=max_inbound_connections,
+            mesh_gateways=mesh_gateways,
+            meta=meta,
+            mode=mode,
+            mutual_tls_mode=mutual_tls_mode,
+            name=name,
+            namespace=namespace,
+            partition=partition,
+            transparent_proxies=transparent_proxies,
+            upstream_configs=upstream_configs,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             exposes: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceDefaultsExposeArgs']]]] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
+             balance_inbound_connections: Optional[pulumi.Input[str]] = None,
+             destinations: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceDefaultsDestinationArgs']]]] = None,
+             envoy_extensions: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceDefaultsEnvoyExtensionArgs']]]] = None,
+             external_sni: Optional[pulumi.Input[str]] = None,
+             local_connect_timeout_ms: Optional[pulumi.Input[int]] = None,
+             local_request_timeout_ms: Optional[pulumi.Input[int]] = None,
+             max_inbound_connections: Optional[pulumi.Input[int]] = None,
+             mesh_gateways: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceDefaultsMeshGatewayArgs']]]] = None,
+             meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             mode: Optional[pulumi.Input[str]] = None,
+             mutual_tls_mode: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             namespace: Optional[pulumi.Input[str]] = None,
+             partition: Optional[pulumi.Input[str]] = None,
+             transparent_proxies: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceDefaultsTransparentProxyArgs']]]] = None,
+             upstream_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceDefaultsUpstreamConfigArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if exposes is None:
+            raise TypeError("Missing 'exposes' argument")
+        if protocol is None:
+            raise TypeError("Missing 'protocol' argument")
+        if balance_inbound_connections is None and 'balanceInboundConnections' in kwargs:
+            balance_inbound_connections = kwargs['balanceInboundConnections']
+        if envoy_extensions is None and 'envoyExtensions' in kwargs:
+            envoy_extensions = kwargs['envoyExtensions']
+        if external_sni is None and 'externalSni' in kwargs:
+            external_sni = kwargs['externalSni']
+        if local_connect_timeout_ms is None and 'localConnectTimeoutMs' in kwargs:
+            local_connect_timeout_ms = kwargs['localConnectTimeoutMs']
+        if local_request_timeout_ms is None and 'localRequestTimeoutMs' in kwargs:
+            local_request_timeout_ms = kwargs['localRequestTimeoutMs']
+        if max_inbound_connections is None and 'maxInboundConnections' in kwargs:
+            max_inbound_connections = kwargs['maxInboundConnections']
+        if mesh_gateways is None and 'meshGateways' in kwargs:
+            mesh_gateways = kwargs['meshGateways']
+        if mutual_tls_mode is None and 'mutualTlsMode' in kwargs:
+            mutual_tls_mode = kwargs['mutualTlsMode']
+        if transparent_proxies is None and 'transparentProxies' in kwargs:
+            transparent_proxies = kwargs['transparentProxies']
+        if upstream_configs is None and 'upstreamConfigs' in kwargs:
+            upstream_configs = kwargs['upstreamConfigs']
+
+        _setter("exposes", exposes)
+        _setter("protocol", protocol)
         if balance_inbound_connections is not None:
-            pulumi.set(__self__, "balance_inbound_connections", balance_inbound_connections)
+            _setter("balance_inbound_connections", balance_inbound_connections)
         if destinations is not None:
-            pulumi.set(__self__, "destinations", destinations)
+            _setter("destinations", destinations)
         if envoy_extensions is not None:
-            pulumi.set(__self__, "envoy_extensions", envoy_extensions)
+            _setter("envoy_extensions", envoy_extensions)
         if external_sni is not None:
-            pulumi.set(__self__, "external_sni", external_sni)
+            _setter("external_sni", external_sni)
         if local_connect_timeout_ms is not None:
-            pulumi.set(__self__, "local_connect_timeout_ms", local_connect_timeout_ms)
+            _setter("local_connect_timeout_ms", local_connect_timeout_ms)
         if local_request_timeout_ms is not None:
-            pulumi.set(__self__, "local_request_timeout_ms", local_request_timeout_ms)
+            _setter("local_request_timeout_ms", local_request_timeout_ms)
         if max_inbound_connections is not None:
-            pulumi.set(__self__, "max_inbound_connections", max_inbound_connections)
+            _setter("max_inbound_connections", max_inbound_connections)
         if mesh_gateways is not None:
-            pulumi.set(__self__, "mesh_gateways", mesh_gateways)
+            _setter("mesh_gateways", mesh_gateways)
         if meta is not None:
-            pulumi.set(__self__, "meta", meta)
+            _setter("meta", meta)
         if mode is not None:
-            pulumi.set(__self__, "mode", mode)
+            _setter("mode", mode)
         if mutual_tls_mode is not None:
-            pulumi.set(__self__, "mutual_tls_mode", mutual_tls_mode)
+            _setter("mutual_tls_mode", mutual_tls_mode)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
+            _setter("namespace", namespace)
         if partition is not None:
-            pulumi.set(__self__, "partition", partition)
+            _setter("partition", partition)
         if transparent_proxies is not None:
-            pulumi.set(__self__, "transparent_proxies", transparent_proxies)
+            _setter("transparent_proxies", transparent_proxies)
         if upstream_configs is not None:
-            pulumi.set(__self__, "upstream_configs", upstream_configs)
+            _setter("upstream_configs", upstream_configs)
 
     @property
     @pulumi.getter
@@ -349,42 +418,107 @@ class _ConfigEntryServiceDefaultsState:
         :param pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceDefaultsTransparentProxyArgs']]] transparent_proxies: Controls configurations specific to proxies in transparent mode. Refer to Transparent Proxy Mode for additional information.
         :param pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceDefaultsUpstreamConfigArgs']]] upstream_configs: Controls default upstream connection settings and custom overrides for individual upstream services.
         """
+        _ConfigEntryServiceDefaultsState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            balance_inbound_connections=balance_inbound_connections,
+            destinations=destinations,
+            envoy_extensions=envoy_extensions,
+            exposes=exposes,
+            external_sni=external_sni,
+            local_connect_timeout_ms=local_connect_timeout_ms,
+            local_request_timeout_ms=local_request_timeout_ms,
+            max_inbound_connections=max_inbound_connections,
+            mesh_gateways=mesh_gateways,
+            meta=meta,
+            mode=mode,
+            mutual_tls_mode=mutual_tls_mode,
+            name=name,
+            namespace=namespace,
+            partition=partition,
+            protocol=protocol,
+            transparent_proxies=transparent_proxies,
+            upstream_configs=upstream_configs,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             balance_inbound_connections: Optional[pulumi.Input[str]] = None,
+             destinations: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceDefaultsDestinationArgs']]]] = None,
+             envoy_extensions: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceDefaultsEnvoyExtensionArgs']]]] = None,
+             exposes: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceDefaultsExposeArgs']]]] = None,
+             external_sni: Optional[pulumi.Input[str]] = None,
+             local_connect_timeout_ms: Optional[pulumi.Input[int]] = None,
+             local_request_timeout_ms: Optional[pulumi.Input[int]] = None,
+             max_inbound_connections: Optional[pulumi.Input[int]] = None,
+             mesh_gateways: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceDefaultsMeshGatewayArgs']]]] = None,
+             meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             mode: Optional[pulumi.Input[str]] = None,
+             mutual_tls_mode: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             namespace: Optional[pulumi.Input[str]] = None,
+             partition: Optional[pulumi.Input[str]] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
+             transparent_proxies: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceDefaultsTransparentProxyArgs']]]] = None,
+             upstream_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceDefaultsUpstreamConfigArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if balance_inbound_connections is None and 'balanceInboundConnections' in kwargs:
+            balance_inbound_connections = kwargs['balanceInboundConnections']
+        if envoy_extensions is None and 'envoyExtensions' in kwargs:
+            envoy_extensions = kwargs['envoyExtensions']
+        if external_sni is None and 'externalSni' in kwargs:
+            external_sni = kwargs['externalSni']
+        if local_connect_timeout_ms is None and 'localConnectTimeoutMs' in kwargs:
+            local_connect_timeout_ms = kwargs['localConnectTimeoutMs']
+        if local_request_timeout_ms is None and 'localRequestTimeoutMs' in kwargs:
+            local_request_timeout_ms = kwargs['localRequestTimeoutMs']
+        if max_inbound_connections is None and 'maxInboundConnections' in kwargs:
+            max_inbound_connections = kwargs['maxInboundConnections']
+        if mesh_gateways is None and 'meshGateways' in kwargs:
+            mesh_gateways = kwargs['meshGateways']
+        if mutual_tls_mode is None and 'mutualTlsMode' in kwargs:
+            mutual_tls_mode = kwargs['mutualTlsMode']
+        if transparent_proxies is None and 'transparentProxies' in kwargs:
+            transparent_proxies = kwargs['transparentProxies']
+        if upstream_configs is None and 'upstreamConfigs' in kwargs:
+            upstream_configs = kwargs['upstreamConfigs']
+
         if balance_inbound_connections is not None:
-            pulumi.set(__self__, "balance_inbound_connections", balance_inbound_connections)
+            _setter("balance_inbound_connections", balance_inbound_connections)
         if destinations is not None:
-            pulumi.set(__self__, "destinations", destinations)
+            _setter("destinations", destinations)
         if envoy_extensions is not None:
-            pulumi.set(__self__, "envoy_extensions", envoy_extensions)
+            _setter("envoy_extensions", envoy_extensions)
         if exposes is not None:
-            pulumi.set(__self__, "exposes", exposes)
+            _setter("exposes", exposes)
         if external_sni is not None:
-            pulumi.set(__self__, "external_sni", external_sni)
+            _setter("external_sni", external_sni)
         if local_connect_timeout_ms is not None:
-            pulumi.set(__self__, "local_connect_timeout_ms", local_connect_timeout_ms)
+            _setter("local_connect_timeout_ms", local_connect_timeout_ms)
         if local_request_timeout_ms is not None:
-            pulumi.set(__self__, "local_request_timeout_ms", local_request_timeout_ms)
+            _setter("local_request_timeout_ms", local_request_timeout_ms)
         if max_inbound_connections is not None:
-            pulumi.set(__self__, "max_inbound_connections", max_inbound_connections)
+            _setter("max_inbound_connections", max_inbound_connections)
         if mesh_gateways is not None:
-            pulumi.set(__self__, "mesh_gateways", mesh_gateways)
+            _setter("mesh_gateways", mesh_gateways)
         if meta is not None:
-            pulumi.set(__self__, "meta", meta)
+            _setter("meta", meta)
         if mode is not None:
-            pulumi.set(__self__, "mode", mode)
+            _setter("mode", mode)
         if mutual_tls_mode is not None:
-            pulumi.set(__self__, "mutual_tls_mode", mutual_tls_mode)
+            _setter("mutual_tls_mode", mutual_tls_mode)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
+            _setter("namespace", namespace)
         if partition is not None:
-            pulumi.set(__self__, "partition", partition)
+            _setter("partition", partition)
         if protocol is not None:
-            pulumi.set(__self__, "protocol", protocol)
+            _setter("protocol", protocol)
         if transparent_proxies is not None:
-            pulumi.set(__self__, "transparent_proxies", transparent_proxies)
+            _setter("transparent_proxies", transparent_proxies)
         if upstream_configs is not None:
-            pulumi.set(__self__, "upstream_configs", upstream_configs)
+            _setter("upstream_configs", upstream_configs)
 
     @property
     @pulumi.getter(name="balanceInboundConnections")
@@ -670,6 +804,10 @@ class ConfigEntryServiceDefaults(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ConfigEntryServiceDefaultsArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

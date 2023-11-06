@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['IntentionArgs', 'Intention']
@@ -40,19 +40,58 @@ class IntentionArgs:
         :param pulumi.Input[str] source_namespace: The source namespace of the
                intention.
         """
-        pulumi.set(__self__, "action", action)
-        pulumi.set(__self__, "destination_name", destination_name)
-        pulumi.set(__self__, "source_name", source_name)
+        IntentionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            action=action,
+            destination_name=destination_name,
+            source_name=source_name,
+            datacenter=datacenter,
+            description=description,
+            destination_namespace=destination_namespace,
+            meta=meta,
+            source_namespace=source_namespace,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             action: Optional[pulumi.Input[str]] = None,
+             destination_name: Optional[pulumi.Input[str]] = None,
+             source_name: Optional[pulumi.Input[str]] = None,
+             datacenter: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             destination_namespace: Optional[pulumi.Input[str]] = None,
+             meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             source_namespace: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if action is None:
+            raise TypeError("Missing 'action' argument")
+        if destination_name is None and 'destinationName' in kwargs:
+            destination_name = kwargs['destinationName']
+        if destination_name is None:
+            raise TypeError("Missing 'destination_name' argument")
+        if source_name is None and 'sourceName' in kwargs:
+            source_name = kwargs['sourceName']
+        if source_name is None:
+            raise TypeError("Missing 'source_name' argument")
+        if destination_namespace is None and 'destinationNamespace' in kwargs:
+            destination_namespace = kwargs['destinationNamespace']
+        if source_namespace is None and 'sourceNamespace' in kwargs:
+            source_namespace = kwargs['sourceNamespace']
+
+        _setter("action", action)
+        _setter("destination_name", destination_name)
+        _setter("source_name", source_name)
         if datacenter is not None:
-            pulumi.set(__self__, "datacenter", datacenter)
+            _setter("datacenter", datacenter)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if destination_namespace is not None:
-            pulumi.set(__self__, "destination_namespace", destination_namespace)
+            _setter("destination_namespace", destination_namespace)
         if meta is not None:
-            pulumi.set(__self__, "meta", meta)
+            _setter("meta", meta)
         if source_namespace is not None:
-            pulumi.set(__self__, "source_namespace", source_namespace)
+            _setter("source_namespace", source_namespace)
 
     @property
     @pulumi.getter
@@ -187,22 +226,55 @@ class _IntentionState:
         :param pulumi.Input[str] source_namespace: The source namespace of the
                intention.
         """
+        _IntentionState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            action=action,
+            datacenter=datacenter,
+            description=description,
+            destination_name=destination_name,
+            destination_namespace=destination_namespace,
+            meta=meta,
+            source_name=source_name,
+            source_namespace=source_namespace,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             action: Optional[pulumi.Input[str]] = None,
+             datacenter: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             destination_name: Optional[pulumi.Input[str]] = None,
+             destination_namespace: Optional[pulumi.Input[str]] = None,
+             meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             source_name: Optional[pulumi.Input[str]] = None,
+             source_namespace: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if destination_name is None and 'destinationName' in kwargs:
+            destination_name = kwargs['destinationName']
+        if destination_namespace is None and 'destinationNamespace' in kwargs:
+            destination_namespace = kwargs['destinationNamespace']
+        if source_name is None and 'sourceName' in kwargs:
+            source_name = kwargs['sourceName']
+        if source_namespace is None and 'sourceNamespace' in kwargs:
+            source_namespace = kwargs['sourceNamespace']
+
         if action is not None:
-            pulumi.set(__self__, "action", action)
+            _setter("action", action)
         if datacenter is not None:
-            pulumi.set(__self__, "datacenter", datacenter)
+            _setter("datacenter", datacenter)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if destination_name is not None:
-            pulumi.set(__self__, "destination_name", destination_name)
+            _setter("destination_name", destination_name)
         if destination_namespace is not None:
-            pulumi.set(__self__, "destination_namespace", destination_namespace)
+            _setter("destination_namespace", destination_namespace)
         if meta is not None:
-            pulumi.set(__self__, "meta", meta)
+            _setter("meta", meta)
         if source_name is not None:
-            pulumi.set(__self__, "source_name", source_name)
+            _setter("source_name", source_name)
         if source_namespace is not None:
-            pulumi.set(__self__, "source_namespace", source_namespace)
+            _setter("source_namespace", source_namespace)
 
     @property
     @pulumi.getter
@@ -456,6 +528,10 @@ class Intention(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            IntentionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

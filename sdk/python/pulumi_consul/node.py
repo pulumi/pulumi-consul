@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['NodeArgs', 'Node']
@@ -28,22 +28,45 @@ class NodeArgs:
         :param pulumi.Input[str] name: The name of the node being added to, or referenced in the catalog.
         :param pulumi.Input[str] partition: The partition the node is associated with.
         """
-        pulumi.set(__self__, "address", address)
+        NodeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address=address,
+            datacenter=datacenter,
+            meta=meta,
+            name=name,
+            partition=partition,
+            token=token,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address: Optional[pulumi.Input[str]] = None,
+             datacenter: Optional[pulumi.Input[str]] = None,
+             meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             partition: Optional[pulumi.Input[str]] = None,
+             token: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if address is None:
+            raise TypeError("Missing 'address' argument")
+
+        _setter("address", address)
         if datacenter is not None:
-            pulumi.set(__self__, "datacenter", datacenter)
+            _setter("datacenter", datacenter)
         if meta is not None:
-            pulumi.set(__self__, "meta", meta)
+            _setter("meta", meta)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if partition is not None:
-            pulumi.set(__self__, "partition", partition)
+            _setter("partition", partition)
         if token is not None:
             warnings.warn("""The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration""", DeprecationWarning)
             pulumi.log.warn("""token is deprecated: The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration""")
         if token is not None:
-            pulumi.set(__self__, "token", token)
+            _setter("token", token)
 
     @property
     @pulumi.getter
@@ -137,23 +160,44 @@ class _NodeState:
         :param pulumi.Input[str] name: The name of the node being added to, or referenced in the catalog.
         :param pulumi.Input[str] partition: The partition the node is associated with.
         """
+        _NodeState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address=address,
+            datacenter=datacenter,
+            meta=meta,
+            name=name,
+            partition=partition,
+            token=token,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address: Optional[pulumi.Input[str]] = None,
+             datacenter: Optional[pulumi.Input[str]] = None,
+             meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             partition: Optional[pulumi.Input[str]] = None,
+             token: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if address is not None:
-            pulumi.set(__self__, "address", address)
+            _setter("address", address)
         if datacenter is not None:
-            pulumi.set(__self__, "datacenter", datacenter)
+            _setter("datacenter", datacenter)
         if meta is not None:
-            pulumi.set(__self__, "meta", meta)
+            _setter("meta", meta)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if partition is not None:
-            pulumi.set(__self__, "partition", partition)
+            _setter("partition", partition)
         if token is not None:
             warnings.warn("""The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration""", DeprecationWarning)
             pulumi.log.warn("""token is deprecated: The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration""")
         if token is not None:
-            pulumi.set(__self__, "token", token)
+            _setter("token", token)
 
     @property
     @pulumi.getter
@@ -308,6 +352,10 @@ class Node(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            NodeArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

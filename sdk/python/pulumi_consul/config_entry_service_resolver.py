@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -41,28 +41,67 @@ class ConfigEntryServiceResolverArgs:
         :param pulumi.Input[str] request_timeout: Specifies the timeout duration for receiving an HTTP response from this service.
         :param pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceResolverSubsetArgs']]] subsets: Specifies names for custom service subsets and the conditions under which service instances belong to each subset.
         """
+        ConfigEntryServiceResolverArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            connect_timeout=connect_timeout,
+            default_subset=default_subset,
+            failovers=failovers,
+            load_balancers=load_balancers,
+            meta=meta,
+            name=name,
+            namespace=namespace,
+            partition=partition,
+            redirects=redirects,
+            request_timeout=request_timeout,
+            subsets=subsets,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             connect_timeout: Optional[pulumi.Input[str]] = None,
+             default_subset: Optional[pulumi.Input[str]] = None,
+             failovers: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceResolverFailoverArgs']]]] = None,
+             load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceResolverLoadBalancerArgs']]]] = None,
+             meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             namespace: Optional[pulumi.Input[str]] = None,
+             partition: Optional[pulumi.Input[str]] = None,
+             redirects: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceResolverRedirectArgs']]]] = None,
+             request_timeout: Optional[pulumi.Input[str]] = None,
+             subsets: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceResolverSubsetArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if connect_timeout is None and 'connectTimeout' in kwargs:
+            connect_timeout = kwargs['connectTimeout']
+        if default_subset is None and 'defaultSubset' in kwargs:
+            default_subset = kwargs['defaultSubset']
+        if load_balancers is None and 'loadBalancers' in kwargs:
+            load_balancers = kwargs['loadBalancers']
+        if request_timeout is None and 'requestTimeout' in kwargs:
+            request_timeout = kwargs['requestTimeout']
+
         if connect_timeout is not None:
-            pulumi.set(__self__, "connect_timeout", connect_timeout)
+            _setter("connect_timeout", connect_timeout)
         if default_subset is not None:
-            pulumi.set(__self__, "default_subset", default_subset)
+            _setter("default_subset", default_subset)
         if failovers is not None:
-            pulumi.set(__self__, "failovers", failovers)
+            _setter("failovers", failovers)
         if load_balancers is not None:
-            pulumi.set(__self__, "load_balancers", load_balancers)
+            _setter("load_balancers", load_balancers)
         if meta is not None:
-            pulumi.set(__self__, "meta", meta)
+            _setter("meta", meta)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
+            _setter("namespace", namespace)
         if partition is not None:
-            pulumi.set(__self__, "partition", partition)
+            _setter("partition", partition)
         if redirects is not None:
-            pulumi.set(__self__, "redirects", redirects)
+            _setter("redirects", redirects)
         if request_timeout is not None:
-            pulumi.set(__self__, "request_timeout", request_timeout)
+            _setter("request_timeout", request_timeout)
         if subsets is not None:
-            pulumi.set(__self__, "subsets", subsets)
+            _setter("subsets", subsets)
 
     @property
     @pulumi.getter(name="connectTimeout")
@@ -225,28 +264,67 @@ class _ConfigEntryServiceResolverState:
         :param pulumi.Input[str] request_timeout: Specifies the timeout duration for receiving an HTTP response from this service.
         :param pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceResolverSubsetArgs']]] subsets: Specifies names for custom service subsets and the conditions under which service instances belong to each subset.
         """
+        _ConfigEntryServiceResolverState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            connect_timeout=connect_timeout,
+            default_subset=default_subset,
+            failovers=failovers,
+            load_balancers=load_balancers,
+            meta=meta,
+            name=name,
+            namespace=namespace,
+            partition=partition,
+            redirects=redirects,
+            request_timeout=request_timeout,
+            subsets=subsets,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             connect_timeout: Optional[pulumi.Input[str]] = None,
+             default_subset: Optional[pulumi.Input[str]] = None,
+             failovers: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceResolverFailoverArgs']]]] = None,
+             load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceResolverLoadBalancerArgs']]]] = None,
+             meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             namespace: Optional[pulumi.Input[str]] = None,
+             partition: Optional[pulumi.Input[str]] = None,
+             redirects: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceResolverRedirectArgs']]]] = None,
+             request_timeout: Optional[pulumi.Input[str]] = None,
+             subsets: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceResolverSubsetArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if connect_timeout is None and 'connectTimeout' in kwargs:
+            connect_timeout = kwargs['connectTimeout']
+        if default_subset is None and 'defaultSubset' in kwargs:
+            default_subset = kwargs['defaultSubset']
+        if load_balancers is None and 'loadBalancers' in kwargs:
+            load_balancers = kwargs['loadBalancers']
+        if request_timeout is None and 'requestTimeout' in kwargs:
+            request_timeout = kwargs['requestTimeout']
+
         if connect_timeout is not None:
-            pulumi.set(__self__, "connect_timeout", connect_timeout)
+            _setter("connect_timeout", connect_timeout)
         if default_subset is not None:
-            pulumi.set(__self__, "default_subset", default_subset)
+            _setter("default_subset", default_subset)
         if failovers is not None:
-            pulumi.set(__self__, "failovers", failovers)
+            _setter("failovers", failovers)
         if load_balancers is not None:
-            pulumi.set(__self__, "load_balancers", load_balancers)
+            _setter("load_balancers", load_balancers)
         if meta is not None:
-            pulumi.set(__self__, "meta", meta)
+            _setter("meta", meta)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
+            _setter("namespace", namespace)
         if partition is not None:
-            pulumi.set(__self__, "partition", partition)
+            _setter("partition", partition)
         if redirects is not None:
-            pulumi.set(__self__, "redirects", redirects)
+            _setter("redirects", redirects)
         if request_timeout is not None:
-            pulumi.set(__self__, "request_timeout", request_timeout)
+            _setter("request_timeout", request_timeout)
         if subsets is not None:
-            pulumi.set(__self__, "subsets", subsets)
+            _setter("subsets", subsets)
 
     @property
     @pulumi.getter(name="connectTimeout")
@@ -510,6 +588,10 @@ class ConfigEntryServiceResolver(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ConfigEntryServiceResolverArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

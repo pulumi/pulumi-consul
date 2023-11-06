@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -29,15 +29,36 @@ class ConfigEntryServiceSplitterArgs:
         :param pulumi.Input[str] namespace: Specifies the namespace to use in the FQDN when resolving the service.
         :param pulumi.Input[str] partition: Specifies the admin partition to use in the FQDN when resolving the service.
         """
-        pulumi.set(__self__, "splits", splits)
+        ConfigEntryServiceSplitterArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            splits=splits,
+            meta=meta,
+            name=name,
+            namespace=namespace,
+            partition=partition,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             splits: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceSplitterSplitArgs']]]] = None,
+             meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             namespace: Optional[pulumi.Input[str]] = None,
+             partition: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if splits is None:
+            raise TypeError("Missing 'splits' argument")
+
+        _setter("splits", splits)
         if meta is not None:
-            pulumi.set(__self__, "meta", meta)
+            _setter("meta", meta)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
+            _setter("namespace", namespace)
         if partition is not None:
-            pulumi.set(__self__, "partition", partition)
+            _setter("partition", partition)
 
     @property
     @pulumi.getter
@@ -116,16 +137,35 @@ class _ConfigEntryServiceSplitterState:
         :param pulumi.Input[str] partition: Specifies the admin partition to use in the FQDN when resolving the service.
         :param pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceSplitterSplitArgs']]] splits: Defines how much traffic to send to sets of service instances during a traffic split.
         """
+        _ConfigEntryServiceSplitterState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            meta=meta,
+            name=name,
+            namespace=namespace,
+            partition=partition,
+            splits=splits,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             namespace: Optional[pulumi.Input[str]] = None,
+             partition: Optional[pulumi.Input[str]] = None,
+             splits: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceSplitterSplitArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if meta is not None:
-            pulumi.set(__self__, "meta", meta)
+            _setter("meta", meta)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
+            _setter("namespace", namespace)
         if partition is not None:
-            pulumi.set(__self__, "partition", partition)
+            _setter("partition", partition)
         if splits is not None:
-            pulumi.set(__self__, "splits", splits)
+            _setter("splits", splits)
 
     @property
     @pulumi.getter
@@ -381,6 +421,10 @@ class ConfigEntryServiceSplitter(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ConfigEntryServiceSplitterArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

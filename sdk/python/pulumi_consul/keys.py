@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -32,21 +32,40 @@ class KeysArgs:
         :param pulumi.Input[str] token: The ACL token to use. This overrides the
                token that the agent provides by default.
         """
+        KeysArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            datacenter=datacenter,
+            keys=keys,
+            namespace=namespace,
+            partition=partition,
+            token=token,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             datacenter: Optional[pulumi.Input[str]] = None,
+             keys: Optional[pulumi.Input[Sequence[pulumi.Input['KeysKeyArgs']]]] = None,
+             namespace: Optional[pulumi.Input[str]] = None,
+             partition: Optional[pulumi.Input[str]] = None,
+             token: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if datacenter is not None:
-            pulumi.set(__self__, "datacenter", datacenter)
+            _setter("datacenter", datacenter)
         if keys is not None:
-            pulumi.set(__self__, "keys", keys)
+            _setter("keys", keys)
         if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
+            _setter("namespace", namespace)
         if partition is not None:
-            pulumi.set(__self__, "partition", partition)
+            _setter("partition", partition)
         if token is not None:
             warnings.warn("""The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration""", DeprecationWarning)
             pulumi.log.warn("""token is deprecated: The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration""")
         if token is not None:
-            pulumi.set(__self__, "token", token)
+            _setter("token", token)
 
     @property
     @pulumi.getter
@@ -137,23 +156,44 @@ class _KeysState:
         :param pulumi.Input[str] token: The ACL token to use. This overrides the
                token that the agent provides by default.
         """
+        _KeysState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            datacenter=datacenter,
+            keys=keys,
+            namespace=namespace,
+            partition=partition,
+            token=token,
+            var=var,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             datacenter: Optional[pulumi.Input[str]] = None,
+             keys: Optional[pulumi.Input[Sequence[pulumi.Input['KeysKeyArgs']]]] = None,
+             namespace: Optional[pulumi.Input[str]] = None,
+             partition: Optional[pulumi.Input[str]] = None,
+             token: Optional[pulumi.Input[str]] = None,
+             var: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if datacenter is not None:
-            pulumi.set(__self__, "datacenter", datacenter)
+            _setter("datacenter", datacenter)
         if keys is not None:
-            pulumi.set(__self__, "keys", keys)
+            _setter("keys", keys)
         if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
+            _setter("namespace", namespace)
         if partition is not None:
-            pulumi.set(__self__, "partition", partition)
+            _setter("partition", partition)
         if token is not None:
             warnings.warn("""The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration""", DeprecationWarning)
             pulumi.log.warn("""token is deprecated: The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration""")
         if token is not None:
-            pulumi.set(__self__, "token", token)
+            _setter("token", token)
         if var is not None:
-            pulumi.set(__self__, "var", var)
+            _setter("var", var)
 
     @property
     @pulumi.getter
@@ -303,6 +343,10 @@ class Keys(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            KeysArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

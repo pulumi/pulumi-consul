@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -43,34 +43,75 @@ class ServiceArgs:
         :param pulumi.Input[str] service_id: If the service ID is not provided, it will be defaulted to the value of the `name` attribute.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of values that are opaque to Consul, but can be used to distinguish between services or nodes.
         """
-        pulumi.set(__self__, "node", node)
+        ServiceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            node=node,
+            address=address,
+            checks=checks,
+            datacenter=datacenter,
+            enable_tag_override=enable_tag_override,
+            external=external,
+            meta=meta,
+            name=name,
+            namespace=namespace,
+            partition=partition,
+            port=port,
+            service_id=service_id,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             node: Optional[pulumi.Input[str]] = None,
+             address: Optional[pulumi.Input[str]] = None,
+             checks: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceCheckArgs']]]] = None,
+             datacenter: Optional[pulumi.Input[str]] = None,
+             enable_tag_override: Optional[pulumi.Input[bool]] = None,
+             external: Optional[pulumi.Input[bool]] = None,
+             meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             namespace: Optional[pulumi.Input[str]] = None,
+             partition: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[int]] = None,
+             service_id: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if node is None:
+            raise TypeError("Missing 'node' argument")
+        if enable_tag_override is None and 'enableTagOverride' in kwargs:
+            enable_tag_override = kwargs['enableTagOverride']
+        if service_id is None and 'serviceId' in kwargs:
+            service_id = kwargs['serviceId']
+
+        _setter("node", node)
         if address is not None:
-            pulumi.set(__self__, "address", address)
+            _setter("address", address)
         if checks is not None:
-            pulumi.set(__self__, "checks", checks)
+            _setter("checks", checks)
         if datacenter is not None:
-            pulumi.set(__self__, "datacenter", datacenter)
+            _setter("datacenter", datacenter)
         if enable_tag_override is not None:
-            pulumi.set(__self__, "enable_tag_override", enable_tag_override)
+            _setter("enable_tag_override", enable_tag_override)
         if external is not None:
             warnings.warn("""The external field has been deprecated and does nothing.""", DeprecationWarning)
             pulumi.log.warn("""external is deprecated: The external field has been deprecated and does nothing.""")
         if external is not None:
-            pulumi.set(__self__, "external", external)
+            _setter("external", external)
         if meta is not None:
-            pulumi.set(__self__, "meta", meta)
+            _setter("meta", meta)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
+            _setter("namespace", namespace)
         if partition is not None:
-            pulumi.set(__self__, "partition", partition)
+            _setter("partition", partition)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if service_id is not None:
-            pulumi.set(__self__, "service_id", service_id)
+            _setter("service_id", service_id)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter
@@ -256,35 +297,74 @@ class _ServiceState:
         :param pulumi.Input[str] service_id: If the service ID is not provided, it will be defaulted to the value of the `name` attribute.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of values that are opaque to Consul, but can be used to distinguish between services or nodes.
         """
+        _ServiceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address=address,
+            checks=checks,
+            datacenter=datacenter,
+            enable_tag_override=enable_tag_override,
+            external=external,
+            meta=meta,
+            name=name,
+            namespace=namespace,
+            node=node,
+            partition=partition,
+            port=port,
+            service_id=service_id,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address: Optional[pulumi.Input[str]] = None,
+             checks: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceCheckArgs']]]] = None,
+             datacenter: Optional[pulumi.Input[str]] = None,
+             enable_tag_override: Optional[pulumi.Input[bool]] = None,
+             external: Optional[pulumi.Input[bool]] = None,
+             meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             namespace: Optional[pulumi.Input[str]] = None,
+             node: Optional[pulumi.Input[str]] = None,
+             partition: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[int]] = None,
+             service_id: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enable_tag_override is None and 'enableTagOverride' in kwargs:
+            enable_tag_override = kwargs['enableTagOverride']
+        if service_id is None and 'serviceId' in kwargs:
+            service_id = kwargs['serviceId']
+
         if address is not None:
-            pulumi.set(__self__, "address", address)
+            _setter("address", address)
         if checks is not None:
-            pulumi.set(__self__, "checks", checks)
+            _setter("checks", checks)
         if datacenter is not None:
-            pulumi.set(__self__, "datacenter", datacenter)
+            _setter("datacenter", datacenter)
         if enable_tag_override is not None:
-            pulumi.set(__self__, "enable_tag_override", enable_tag_override)
+            _setter("enable_tag_override", enable_tag_override)
         if external is not None:
             warnings.warn("""The external field has been deprecated and does nothing.""", DeprecationWarning)
             pulumi.log.warn("""external is deprecated: The external field has been deprecated and does nothing.""")
         if external is not None:
-            pulumi.set(__self__, "external", external)
+            _setter("external", external)
         if meta is not None:
-            pulumi.set(__self__, "meta", meta)
+            _setter("meta", meta)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
+            _setter("namespace", namespace)
         if node is not None:
-            pulumi.set(__self__, "node", node)
+            _setter("node", node)
         if partition is not None:
-            pulumi.set(__self__, "partition", partition)
+            _setter("partition", partition)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if service_id is not None:
-            pulumi.set(__self__, "service_id", service_id)
+            _setter("service_id", service_id)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter
@@ -509,6 +589,10 @@ class Service(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ServiceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

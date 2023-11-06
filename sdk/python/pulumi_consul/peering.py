@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['PeeringArgs', 'Peering']
@@ -24,12 +24,37 @@ class PeeringArgs:
         :param pulumi.Input[str] peering_token: The peering token fetched from the peer cluster.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the cluster peering process.
         """
-        pulumi.set(__self__, "peer_name", peer_name)
-        pulumi.set(__self__, "peering_token", peering_token)
+        PeeringArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            peer_name=peer_name,
+            peering_token=peering_token,
+            meta=meta,
+            partition=partition,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             peer_name: Optional[pulumi.Input[str]] = None,
+             peering_token: Optional[pulumi.Input[str]] = None,
+             meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             partition: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if peer_name is None and 'peerName' in kwargs:
+            peer_name = kwargs['peerName']
+        if peer_name is None:
+            raise TypeError("Missing 'peer_name' argument")
+        if peering_token is None and 'peeringToken' in kwargs:
+            peering_token = kwargs['peeringToken']
+        if peering_token is None:
+            raise TypeError("Missing 'peering_token' argument")
+
+        _setter("peer_name", peer_name)
+        _setter("peering_token", peering_token)
         if meta is not None:
-            pulumi.set(__self__, "meta", meta)
+            _setter("meta", meta)
         if partition is not None:
-            pulumi.set(__self__, "partition", partition)
+            _setter("partition", partition)
 
     @property
     @pulumi.getter(name="peerName")
@@ -96,26 +121,69 @@ class _PeeringState:
         :param pulumi.Input[str] peer_name: The name assigned to the peer cluster. The `peer_name` is used to reference the peer cluster in service discovery queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
         :param pulumi.Input[str] peering_token: The peering token fetched from the peer cluster.
         """
+        _PeeringState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            deleted_at=deleted_at,
+            meta=meta,
+            partition=partition,
+            peer_ca_pems=peer_ca_pems,
+            peer_id=peer_id,
+            peer_name=peer_name,
+            peer_server_addresses=peer_server_addresses,
+            peer_server_name=peer_server_name,
+            peering_token=peering_token,
+            state=state,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             deleted_at: Optional[pulumi.Input[str]] = None,
+             meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             partition: Optional[pulumi.Input[str]] = None,
+             peer_ca_pems: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             peer_id: Optional[pulumi.Input[str]] = None,
+             peer_name: Optional[pulumi.Input[str]] = None,
+             peer_server_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             peer_server_name: Optional[pulumi.Input[str]] = None,
+             peering_token: Optional[pulumi.Input[str]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if deleted_at is None and 'deletedAt' in kwargs:
+            deleted_at = kwargs['deletedAt']
+        if peer_ca_pems is None and 'peerCaPems' in kwargs:
+            peer_ca_pems = kwargs['peerCaPems']
+        if peer_id is None and 'peerId' in kwargs:
+            peer_id = kwargs['peerId']
+        if peer_name is None and 'peerName' in kwargs:
+            peer_name = kwargs['peerName']
+        if peer_server_addresses is None and 'peerServerAddresses' in kwargs:
+            peer_server_addresses = kwargs['peerServerAddresses']
+        if peer_server_name is None and 'peerServerName' in kwargs:
+            peer_server_name = kwargs['peerServerName']
+        if peering_token is None and 'peeringToken' in kwargs:
+            peering_token = kwargs['peeringToken']
+
         if deleted_at is not None:
-            pulumi.set(__self__, "deleted_at", deleted_at)
+            _setter("deleted_at", deleted_at)
         if meta is not None:
-            pulumi.set(__self__, "meta", meta)
+            _setter("meta", meta)
         if partition is not None:
-            pulumi.set(__self__, "partition", partition)
+            _setter("partition", partition)
         if peer_ca_pems is not None:
-            pulumi.set(__self__, "peer_ca_pems", peer_ca_pems)
+            _setter("peer_ca_pems", peer_ca_pems)
         if peer_id is not None:
-            pulumi.set(__self__, "peer_id", peer_id)
+            _setter("peer_id", peer_id)
         if peer_name is not None:
-            pulumi.set(__self__, "peer_name", peer_name)
+            _setter("peer_name", peer_name)
         if peer_server_addresses is not None:
-            pulumi.set(__self__, "peer_server_addresses", peer_server_addresses)
+            _setter("peer_server_addresses", peer_server_addresses)
         if peer_server_name is not None:
-            pulumi.set(__self__, "peer_server_name", peer_server_name)
+            _setter("peer_server_name", peer_server_name)
         if peering_token is not None:
-            pulumi.set(__self__, "peering_token", peering_token)
+            _setter("peering_token", peering_token)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
 
     @property
     @pulumi.getter(name="deletedAt")
@@ -307,6 +375,10 @@ class Peering(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            PeeringArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

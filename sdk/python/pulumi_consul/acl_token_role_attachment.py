@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['AclTokenRoleAttachmentArgs', 'AclTokenRoleAttachment']
@@ -21,8 +21,27 @@ class AclTokenRoleAttachmentArgs:
         :param pulumi.Input[str] role: The role name.
         :param pulumi.Input[str] token_id: The id of the token.
         """
-        pulumi.set(__self__, "role", role)
-        pulumi.set(__self__, "token_id", token_id)
+        AclTokenRoleAttachmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            role=role,
+            token_id=token_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             role: Optional[pulumi.Input[str]] = None,
+             token_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if role is None:
+            raise TypeError("Missing 'role' argument")
+        if token_id is None and 'tokenId' in kwargs:
+            token_id = kwargs['tokenId']
+        if token_id is None:
+            raise TypeError("Missing 'token_id' argument")
+
+        _setter("role", role)
+        _setter("token_id", token_id)
 
     @property
     @pulumi.getter
@@ -59,10 +78,25 @@ class _AclTokenRoleAttachmentState:
         :param pulumi.Input[str] role: The role name.
         :param pulumi.Input[str] token_id: The id of the token.
         """
+        _AclTokenRoleAttachmentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            role=role,
+            token_id=token_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             role: Optional[pulumi.Input[str]] = None,
+             token_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if token_id is None and 'tokenId' in kwargs:
+            token_id = kwargs['tokenId']
+
         if role is not None:
-            pulumi.set(__self__, "role", role)
+            _setter("role", role)
         if token_id is not None:
-            pulumi.set(__self__, "token_id", token_id)
+            _setter("token_id", token_id)
 
     @property
     @pulumi.getter
@@ -136,6 +170,10 @@ class AclTokenRoleAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AclTokenRoleAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

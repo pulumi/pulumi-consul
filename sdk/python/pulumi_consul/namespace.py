@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['NamespaceArgs', 'Namespace']
@@ -29,18 +29,43 @@ class NamespaceArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] policy_defaults: The list of default policies that should be applied to all tokens created in this namespace.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] role_defaults: The list of default roles that should be applied to all tokens created in this namespace.
         """
+        NamespaceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            meta=meta,
+            name=name,
+            partition=partition,
+            policy_defaults=policy_defaults,
+            role_defaults=role_defaults,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             partition: Optional[pulumi.Input[str]] = None,
+             policy_defaults: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             role_defaults: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if policy_defaults is None and 'policyDefaults' in kwargs:
+            policy_defaults = kwargs['policyDefaults']
+        if role_defaults is None and 'roleDefaults' in kwargs:
+            role_defaults = kwargs['roleDefaults']
+
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if meta is not None:
-            pulumi.set(__self__, "meta", meta)
+            _setter("meta", meta)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if partition is not None:
-            pulumi.set(__self__, "partition", partition)
+            _setter("partition", partition)
         if policy_defaults is not None:
-            pulumi.set(__self__, "policy_defaults", policy_defaults)
+            _setter("policy_defaults", policy_defaults)
         if role_defaults is not None:
-            pulumi.set(__self__, "role_defaults", role_defaults)
+            _setter("role_defaults", role_defaults)
 
     @property
     @pulumi.getter
@@ -133,18 +158,43 @@ class _NamespaceState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] policy_defaults: The list of default policies that should be applied to all tokens created in this namespace.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] role_defaults: The list of default roles that should be applied to all tokens created in this namespace.
         """
+        _NamespaceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            meta=meta,
+            name=name,
+            partition=partition,
+            policy_defaults=policy_defaults,
+            role_defaults=role_defaults,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             partition: Optional[pulumi.Input[str]] = None,
+             policy_defaults: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             role_defaults: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if policy_defaults is None and 'policyDefaults' in kwargs:
+            policy_defaults = kwargs['policyDefaults']
+        if role_defaults is None and 'roleDefaults' in kwargs:
+            role_defaults = kwargs['roleDefaults']
+
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if meta is not None:
-            pulumi.set(__self__, "meta", meta)
+            _setter("meta", meta)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if partition is not None:
-            pulumi.set(__self__, "partition", partition)
+            _setter("partition", partition)
         if policy_defaults is not None:
-            pulumi.set(__self__, "policy_defaults", policy_defaults)
+            _setter("policy_defaults", policy_defaults)
         if role_defaults is not None:
-            pulumi.set(__self__, "role_defaults", role_defaults)
+            _setter("role_defaults", role_defaults)
 
     @property
     @pulumi.getter
@@ -308,6 +358,10 @@ class Namespace(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            NamespaceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

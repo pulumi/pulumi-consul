@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['NamespacePolicyAttachmentArgs', 'NamespacePolicyAttachment']
@@ -21,8 +21,25 @@ class NamespacePolicyAttachmentArgs:
         :param pulumi.Input[str] namespace: The namespace to attach the policy to.
         :param pulumi.Input[str] policy: The name of the policy attached to the namespace.
         """
-        pulumi.set(__self__, "namespace", namespace)
-        pulumi.set(__self__, "policy", policy)
+        NamespacePolicyAttachmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            namespace=namespace,
+            policy=policy,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             namespace: Optional[pulumi.Input[str]] = None,
+             policy: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if namespace is None:
+            raise TypeError("Missing 'namespace' argument")
+        if policy is None:
+            raise TypeError("Missing 'policy' argument")
+
+        _setter("namespace", namespace)
+        _setter("policy", policy)
 
     @property
     @pulumi.getter
@@ -59,10 +76,23 @@ class _NamespacePolicyAttachmentState:
         :param pulumi.Input[str] namespace: The namespace to attach the policy to.
         :param pulumi.Input[str] policy: The name of the policy attached to the namespace.
         """
+        _NamespacePolicyAttachmentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            namespace=namespace,
+            policy=policy,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             namespace: Optional[pulumi.Input[str]] = None,
+             policy: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
+            _setter("namespace", namespace)
         if policy is not None:
-            pulumi.set(__self__, "policy", policy)
+            _setter("policy", policy)
 
     @property
     @pulumi.getter
@@ -136,6 +166,10 @@ class NamespacePolicyAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            NamespacePolicyAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

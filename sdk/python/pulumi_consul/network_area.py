@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['NetworkAreaArgs', 'NetworkArea']
@@ -32,20 +32,47 @@ class NetworkAreaArgs:
         :param pulumi.Input[bool] use_tls: Specifies whether gossip over this area should be
                encrypted with TLS if possible. Defaults to `false`.
         """
-        pulumi.set(__self__, "peer_datacenter", peer_datacenter)
+        NetworkAreaArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            peer_datacenter=peer_datacenter,
+            datacenter=datacenter,
+            retry_joins=retry_joins,
+            token=token,
+            use_tls=use_tls,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             peer_datacenter: Optional[pulumi.Input[str]] = None,
+             datacenter: Optional[pulumi.Input[str]] = None,
+             retry_joins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             token: Optional[pulumi.Input[str]] = None,
+             use_tls: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if peer_datacenter is None and 'peerDatacenter' in kwargs:
+            peer_datacenter = kwargs['peerDatacenter']
+        if peer_datacenter is None:
+            raise TypeError("Missing 'peer_datacenter' argument")
+        if retry_joins is None and 'retryJoins' in kwargs:
+            retry_joins = kwargs['retryJoins']
+        if use_tls is None and 'useTls' in kwargs:
+            use_tls = kwargs['useTls']
+
+        _setter("peer_datacenter", peer_datacenter)
         if datacenter is not None:
-            pulumi.set(__self__, "datacenter", datacenter)
+            _setter("datacenter", datacenter)
         if retry_joins is not None:
-            pulumi.set(__self__, "retry_joins", retry_joins)
+            _setter("retry_joins", retry_joins)
         if token is not None:
             warnings.warn("""The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration""", DeprecationWarning)
             pulumi.log.warn("""token is deprecated: The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration""")
         if token is not None:
-            pulumi.set(__self__, "token", token)
+            _setter("token", token)
         if use_tls is not None:
-            pulumi.set(__self__, "use_tls", use_tls)
+            _setter("use_tls", use_tls)
 
     @property
     @pulumi.getter(name="peerDatacenter")
@@ -139,21 +166,46 @@ class _NetworkAreaState:
         :param pulumi.Input[bool] use_tls: Specifies whether gossip over this area should be
                encrypted with TLS if possible. Defaults to `false`.
         """
+        _NetworkAreaState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            datacenter=datacenter,
+            peer_datacenter=peer_datacenter,
+            retry_joins=retry_joins,
+            token=token,
+            use_tls=use_tls,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             datacenter: Optional[pulumi.Input[str]] = None,
+             peer_datacenter: Optional[pulumi.Input[str]] = None,
+             retry_joins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             token: Optional[pulumi.Input[str]] = None,
+             use_tls: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if peer_datacenter is None and 'peerDatacenter' in kwargs:
+            peer_datacenter = kwargs['peerDatacenter']
+        if retry_joins is None and 'retryJoins' in kwargs:
+            retry_joins = kwargs['retryJoins']
+        if use_tls is None and 'useTls' in kwargs:
+            use_tls = kwargs['useTls']
+
         if datacenter is not None:
-            pulumi.set(__self__, "datacenter", datacenter)
+            _setter("datacenter", datacenter)
         if peer_datacenter is not None:
-            pulumi.set(__self__, "peer_datacenter", peer_datacenter)
+            _setter("peer_datacenter", peer_datacenter)
         if retry_joins is not None:
-            pulumi.set(__self__, "retry_joins", retry_joins)
+            _setter("retry_joins", retry_joins)
         if token is not None:
             warnings.warn("""The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration""", DeprecationWarning)
             pulumi.log.warn("""token is deprecated: The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration""")
         if token is not None:
-            pulumi.set(__self__, "token", token)
+            _setter("token", token)
         if use_tls is not None:
-            pulumi.set(__self__, "use_tls", use_tls)
+            _setter("use_tls", use_tls)
 
     @property
     @pulumi.getter
@@ -312,6 +364,10 @@ class NetworkArea(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            NetworkAreaArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

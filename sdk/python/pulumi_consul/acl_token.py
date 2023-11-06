@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -41,28 +41,69 @@ class AclTokenArgs:
         :param pulumi.Input[Sequence[pulumi.Input['AclTokenServiceIdentityArgs']]] service_identities: The list of service identities that should be applied to the token.
         :param pulumi.Input[Sequence[pulumi.Input['AclTokenTemplatedPolicyArgs']]] templated_policies: The list of templated policies that should be applied to the token.
         """
+        AclTokenArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            accessor_id=accessor_id,
+            description=description,
+            expiration_time=expiration_time,
+            local=local,
+            namespace=namespace,
+            node_identities=node_identities,
+            partition=partition,
+            policies=policies,
+            roles=roles,
+            service_identities=service_identities,
+            templated_policies=templated_policies,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             accessor_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             expiration_time: Optional[pulumi.Input[str]] = None,
+             local: Optional[pulumi.Input[bool]] = None,
+             namespace: Optional[pulumi.Input[str]] = None,
+             node_identities: Optional[pulumi.Input[Sequence[pulumi.Input['AclTokenNodeIdentityArgs']]]] = None,
+             partition: Optional[pulumi.Input[str]] = None,
+             policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             service_identities: Optional[pulumi.Input[Sequence[pulumi.Input['AclTokenServiceIdentityArgs']]]] = None,
+             templated_policies: Optional[pulumi.Input[Sequence[pulumi.Input['AclTokenTemplatedPolicyArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if accessor_id is None and 'accessorId' in kwargs:
+            accessor_id = kwargs['accessorId']
+        if expiration_time is None and 'expirationTime' in kwargs:
+            expiration_time = kwargs['expirationTime']
+        if node_identities is None and 'nodeIdentities' in kwargs:
+            node_identities = kwargs['nodeIdentities']
+        if service_identities is None and 'serviceIdentities' in kwargs:
+            service_identities = kwargs['serviceIdentities']
+        if templated_policies is None and 'templatedPolicies' in kwargs:
+            templated_policies = kwargs['templatedPolicies']
+
         if accessor_id is not None:
-            pulumi.set(__self__, "accessor_id", accessor_id)
+            _setter("accessor_id", accessor_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if expiration_time is not None:
-            pulumi.set(__self__, "expiration_time", expiration_time)
+            _setter("expiration_time", expiration_time)
         if local is not None:
-            pulumi.set(__self__, "local", local)
+            _setter("local", local)
         if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
+            _setter("namespace", namespace)
         if node_identities is not None:
-            pulumi.set(__self__, "node_identities", node_identities)
+            _setter("node_identities", node_identities)
         if partition is not None:
-            pulumi.set(__self__, "partition", partition)
+            _setter("partition", partition)
         if policies is not None:
-            pulumi.set(__self__, "policies", policies)
+            _setter("policies", policies)
         if roles is not None:
-            pulumi.set(__self__, "roles", roles)
+            _setter("roles", roles)
         if service_identities is not None:
-            pulumi.set(__self__, "service_identities", service_identities)
+            _setter("service_identities", service_identities)
         if templated_policies is not None:
-            pulumi.set(__self__, "templated_policies", templated_policies)
+            _setter("templated_policies", templated_policies)
 
     @property
     @pulumi.getter(name="accessorId")
@@ -225,28 +266,69 @@ class _AclTokenState:
         :param pulumi.Input[Sequence[pulumi.Input['AclTokenServiceIdentityArgs']]] service_identities: The list of service identities that should be applied to the token.
         :param pulumi.Input[Sequence[pulumi.Input['AclTokenTemplatedPolicyArgs']]] templated_policies: The list of templated policies that should be applied to the token.
         """
+        _AclTokenState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            accessor_id=accessor_id,
+            description=description,
+            expiration_time=expiration_time,
+            local=local,
+            namespace=namespace,
+            node_identities=node_identities,
+            partition=partition,
+            policies=policies,
+            roles=roles,
+            service_identities=service_identities,
+            templated_policies=templated_policies,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             accessor_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             expiration_time: Optional[pulumi.Input[str]] = None,
+             local: Optional[pulumi.Input[bool]] = None,
+             namespace: Optional[pulumi.Input[str]] = None,
+             node_identities: Optional[pulumi.Input[Sequence[pulumi.Input['AclTokenNodeIdentityArgs']]]] = None,
+             partition: Optional[pulumi.Input[str]] = None,
+             policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             service_identities: Optional[pulumi.Input[Sequence[pulumi.Input['AclTokenServiceIdentityArgs']]]] = None,
+             templated_policies: Optional[pulumi.Input[Sequence[pulumi.Input['AclTokenTemplatedPolicyArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if accessor_id is None and 'accessorId' in kwargs:
+            accessor_id = kwargs['accessorId']
+        if expiration_time is None and 'expirationTime' in kwargs:
+            expiration_time = kwargs['expirationTime']
+        if node_identities is None and 'nodeIdentities' in kwargs:
+            node_identities = kwargs['nodeIdentities']
+        if service_identities is None and 'serviceIdentities' in kwargs:
+            service_identities = kwargs['serviceIdentities']
+        if templated_policies is None and 'templatedPolicies' in kwargs:
+            templated_policies = kwargs['templatedPolicies']
+
         if accessor_id is not None:
-            pulumi.set(__self__, "accessor_id", accessor_id)
+            _setter("accessor_id", accessor_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if expiration_time is not None:
-            pulumi.set(__self__, "expiration_time", expiration_time)
+            _setter("expiration_time", expiration_time)
         if local is not None:
-            pulumi.set(__self__, "local", local)
+            _setter("local", local)
         if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
+            _setter("namespace", namespace)
         if node_identities is not None:
-            pulumi.set(__self__, "node_identities", node_identities)
+            _setter("node_identities", node_identities)
         if partition is not None:
-            pulumi.set(__self__, "partition", partition)
+            _setter("partition", partition)
         if policies is not None:
-            pulumi.set(__self__, "policies", policies)
+            _setter("policies", policies)
         if roles is not None:
-            pulumi.set(__self__, "roles", roles)
+            _setter("roles", roles)
         if service_identities is not None:
-            pulumi.set(__self__, "service_identities", service_identities)
+            _setter("service_identities", service_identities)
         if templated_policies is not None:
-            pulumi.set(__self__, "templated_policies", templated_policies)
+            _setter("templated_policies", templated_policies)
 
     @property
     @pulumi.getter(name="accessorId")
@@ -500,6 +582,10 @@ class AclToken(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AclTokenArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

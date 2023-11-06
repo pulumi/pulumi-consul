@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['AutopilotConfigArgs', 'AutopilotConfig']
@@ -43,22 +43,61 @@ class AutopilotConfigArgs:
         :param pulumi.Input[str] upgrade_version_tag: The tag to override the version information
                used during a migration. Defaults to an empty string.
         """
+        AutopilotConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cleanup_dead_servers=cleanup_dead_servers,
+            datacenter=datacenter,
+            disable_upgrade_migration=disable_upgrade_migration,
+            last_contact_threshold=last_contact_threshold,
+            max_trailing_logs=max_trailing_logs,
+            redundancy_zone_tag=redundancy_zone_tag,
+            server_stabilization_time=server_stabilization_time,
+            upgrade_version_tag=upgrade_version_tag,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cleanup_dead_servers: Optional[pulumi.Input[bool]] = None,
+             datacenter: Optional[pulumi.Input[str]] = None,
+             disable_upgrade_migration: Optional[pulumi.Input[bool]] = None,
+             last_contact_threshold: Optional[pulumi.Input[str]] = None,
+             max_trailing_logs: Optional[pulumi.Input[int]] = None,
+             redundancy_zone_tag: Optional[pulumi.Input[str]] = None,
+             server_stabilization_time: Optional[pulumi.Input[str]] = None,
+             upgrade_version_tag: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cleanup_dead_servers is None and 'cleanupDeadServers' in kwargs:
+            cleanup_dead_servers = kwargs['cleanupDeadServers']
+        if disable_upgrade_migration is None and 'disableUpgradeMigration' in kwargs:
+            disable_upgrade_migration = kwargs['disableUpgradeMigration']
+        if last_contact_threshold is None and 'lastContactThreshold' in kwargs:
+            last_contact_threshold = kwargs['lastContactThreshold']
+        if max_trailing_logs is None and 'maxTrailingLogs' in kwargs:
+            max_trailing_logs = kwargs['maxTrailingLogs']
+        if redundancy_zone_tag is None and 'redundancyZoneTag' in kwargs:
+            redundancy_zone_tag = kwargs['redundancyZoneTag']
+        if server_stabilization_time is None and 'serverStabilizationTime' in kwargs:
+            server_stabilization_time = kwargs['serverStabilizationTime']
+        if upgrade_version_tag is None and 'upgradeVersionTag' in kwargs:
+            upgrade_version_tag = kwargs['upgradeVersionTag']
+
         if cleanup_dead_servers is not None:
-            pulumi.set(__self__, "cleanup_dead_servers", cleanup_dead_servers)
+            _setter("cleanup_dead_servers", cleanup_dead_servers)
         if datacenter is not None:
-            pulumi.set(__self__, "datacenter", datacenter)
+            _setter("datacenter", datacenter)
         if disable_upgrade_migration is not None:
-            pulumi.set(__self__, "disable_upgrade_migration", disable_upgrade_migration)
+            _setter("disable_upgrade_migration", disable_upgrade_migration)
         if last_contact_threshold is not None:
-            pulumi.set(__self__, "last_contact_threshold", last_contact_threshold)
+            _setter("last_contact_threshold", last_contact_threshold)
         if max_trailing_logs is not None:
-            pulumi.set(__self__, "max_trailing_logs", max_trailing_logs)
+            _setter("max_trailing_logs", max_trailing_logs)
         if redundancy_zone_tag is not None:
-            pulumi.set(__self__, "redundancy_zone_tag", redundancy_zone_tag)
+            _setter("redundancy_zone_tag", redundancy_zone_tag)
         if server_stabilization_time is not None:
-            pulumi.set(__self__, "server_stabilization_time", server_stabilization_time)
+            _setter("server_stabilization_time", server_stabilization_time)
         if upgrade_version_tag is not None:
-            pulumi.set(__self__, "upgrade_version_tag", upgrade_version_tag)
+            _setter("upgrade_version_tag", upgrade_version_tag)
 
     @property
     @pulumi.getter(name="cleanupDeadServers")
@@ -199,22 +238,61 @@ class _AutopilotConfigState:
         :param pulumi.Input[str] upgrade_version_tag: The tag to override the version information
                used during a migration. Defaults to an empty string.
         """
+        _AutopilotConfigState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cleanup_dead_servers=cleanup_dead_servers,
+            datacenter=datacenter,
+            disable_upgrade_migration=disable_upgrade_migration,
+            last_contact_threshold=last_contact_threshold,
+            max_trailing_logs=max_trailing_logs,
+            redundancy_zone_tag=redundancy_zone_tag,
+            server_stabilization_time=server_stabilization_time,
+            upgrade_version_tag=upgrade_version_tag,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cleanup_dead_servers: Optional[pulumi.Input[bool]] = None,
+             datacenter: Optional[pulumi.Input[str]] = None,
+             disable_upgrade_migration: Optional[pulumi.Input[bool]] = None,
+             last_contact_threshold: Optional[pulumi.Input[str]] = None,
+             max_trailing_logs: Optional[pulumi.Input[int]] = None,
+             redundancy_zone_tag: Optional[pulumi.Input[str]] = None,
+             server_stabilization_time: Optional[pulumi.Input[str]] = None,
+             upgrade_version_tag: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cleanup_dead_servers is None and 'cleanupDeadServers' in kwargs:
+            cleanup_dead_servers = kwargs['cleanupDeadServers']
+        if disable_upgrade_migration is None and 'disableUpgradeMigration' in kwargs:
+            disable_upgrade_migration = kwargs['disableUpgradeMigration']
+        if last_contact_threshold is None and 'lastContactThreshold' in kwargs:
+            last_contact_threshold = kwargs['lastContactThreshold']
+        if max_trailing_logs is None and 'maxTrailingLogs' in kwargs:
+            max_trailing_logs = kwargs['maxTrailingLogs']
+        if redundancy_zone_tag is None and 'redundancyZoneTag' in kwargs:
+            redundancy_zone_tag = kwargs['redundancyZoneTag']
+        if server_stabilization_time is None and 'serverStabilizationTime' in kwargs:
+            server_stabilization_time = kwargs['serverStabilizationTime']
+        if upgrade_version_tag is None and 'upgradeVersionTag' in kwargs:
+            upgrade_version_tag = kwargs['upgradeVersionTag']
+
         if cleanup_dead_servers is not None:
-            pulumi.set(__self__, "cleanup_dead_servers", cleanup_dead_servers)
+            _setter("cleanup_dead_servers", cleanup_dead_servers)
         if datacenter is not None:
-            pulumi.set(__self__, "datacenter", datacenter)
+            _setter("datacenter", datacenter)
         if disable_upgrade_migration is not None:
-            pulumi.set(__self__, "disable_upgrade_migration", disable_upgrade_migration)
+            _setter("disable_upgrade_migration", disable_upgrade_migration)
         if last_contact_threshold is not None:
-            pulumi.set(__self__, "last_contact_threshold", last_contact_threshold)
+            _setter("last_contact_threshold", last_contact_threshold)
         if max_trailing_logs is not None:
-            pulumi.set(__self__, "max_trailing_logs", max_trailing_logs)
+            _setter("max_trailing_logs", max_trailing_logs)
         if redundancy_zone_tag is not None:
-            pulumi.set(__self__, "redundancy_zone_tag", redundancy_zone_tag)
+            _setter("redundancy_zone_tag", redundancy_zone_tag)
         if server_stabilization_time is not None:
-            pulumi.set(__self__, "server_stabilization_time", server_stabilization_time)
+            _setter("server_stabilization_time", server_stabilization_time)
         if upgrade_version_tag is not None:
-            pulumi.set(__self__, "upgrade_version_tag", upgrade_version_tag)
+            _setter("upgrade_version_tag", upgrade_version_tag)
 
     @property
     @pulumi.getter(name="cleanupDeadServers")
@@ -412,6 +490,10 @@ class AutopilotConfig(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AutopilotConfigArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

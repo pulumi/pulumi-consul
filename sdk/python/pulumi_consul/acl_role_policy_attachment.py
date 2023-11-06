@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['AclRolePolicyAttachmentArgs', 'AclRolePolicyAttachment']
@@ -21,8 +21,27 @@ class AclRolePolicyAttachmentArgs:
         :param pulumi.Input[str] policy: The policy name.
         :param pulumi.Input[str] role_id: The id of the role.
         """
-        pulumi.set(__self__, "policy", policy)
-        pulumi.set(__self__, "role_id", role_id)
+        AclRolePolicyAttachmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            policy=policy,
+            role_id=role_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             policy: Optional[pulumi.Input[str]] = None,
+             role_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if policy is None:
+            raise TypeError("Missing 'policy' argument")
+        if role_id is None and 'roleId' in kwargs:
+            role_id = kwargs['roleId']
+        if role_id is None:
+            raise TypeError("Missing 'role_id' argument")
+
+        _setter("policy", policy)
+        _setter("role_id", role_id)
 
     @property
     @pulumi.getter
@@ -59,10 +78,25 @@ class _AclRolePolicyAttachmentState:
         :param pulumi.Input[str] policy: The policy name.
         :param pulumi.Input[str] role_id: The id of the role.
         """
+        _AclRolePolicyAttachmentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            policy=policy,
+            role_id=role_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             policy: Optional[pulumi.Input[str]] = None,
+             role_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if role_id is None and 'roleId' in kwargs:
+            role_id = kwargs['roleId']
+
         if policy is not None:
-            pulumi.set(__self__, "policy", policy)
+            _setter("policy", policy)
         if role_id is not None:
-            pulumi.set(__self__, "role_id", role_id)
+            _setter("role_id", role_id)
 
     @property
     @pulumi.getter
@@ -162,6 +196,10 @@ class AclRolePolicyAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AclRolePolicyAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

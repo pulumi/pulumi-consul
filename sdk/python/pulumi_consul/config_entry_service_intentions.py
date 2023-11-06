@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -31,18 +31,39 @@ class ConfigEntryServiceIntentionsArgs:
         :param pulumi.Input[str] partition: Specifies the name of an admin partition that the intention allows or denies traffic from.
         :param pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceIntentionsSourceArgs']]] sources: List of configurations that define intention sources and the authorization granted to the sources.
         """
+        ConfigEntryServiceIntentionsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            jwts=jwts,
+            meta=meta,
+            name=name,
+            namespace=namespace,
+            partition=partition,
+            sources=sources,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             jwts: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceIntentionsJwtArgs']]]] = None,
+             meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             namespace: Optional[pulumi.Input[str]] = None,
+             partition: Optional[pulumi.Input[str]] = None,
+             sources: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceIntentionsSourceArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if jwts is not None:
-            pulumi.set(__self__, "jwts", jwts)
+            _setter("jwts", jwts)
         if meta is not None:
-            pulumi.set(__self__, "meta", meta)
+            _setter("meta", meta)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
+            _setter("namespace", namespace)
         if partition is not None:
-            pulumi.set(__self__, "partition", partition)
+            _setter("partition", partition)
         if sources is not None:
-            pulumi.set(__self__, "sources", sources)
+            _setter("sources", sources)
 
     @property
     @pulumi.getter
@@ -135,18 +156,39 @@ class _ConfigEntryServiceIntentionsState:
         :param pulumi.Input[str] partition: Specifies the name of an admin partition that the intention allows or denies traffic from.
         :param pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceIntentionsSourceArgs']]] sources: List of configurations that define intention sources and the authorization granted to the sources.
         """
+        _ConfigEntryServiceIntentionsState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            jwts=jwts,
+            meta=meta,
+            name=name,
+            namespace=namespace,
+            partition=partition,
+            sources=sources,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             jwts: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceIntentionsJwtArgs']]]] = None,
+             meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             namespace: Optional[pulumi.Input[str]] = None,
+             partition: Optional[pulumi.Input[str]] = None,
+             sources: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceIntentionsSourceArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if jwts is not None:
-            pulumi.set(__self__, "jwts", jwts)
+            _setter("jwts", jwts)
         if meta is not None:
-            pulumi.set(__self__, "meta", meta)
+            _setter("meta", meta)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
+            _setter("namespace", namespace)
         if partition is not None:
-            pulumi.set(__self__, "partition", partition)
+            _setter("partition", partition)
         if sources is not None:
-            pulumi.set(__self__, "sources", sources)
+            _setter("sources", sources)
 
     @property
     @pulumi.getter
@@ -356,6 +398,10 @@ class ConfigEntryServiceIntentions(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ConfigEntryServiceIntentionsArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

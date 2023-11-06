@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -29,16 +29,35 @@ class ConfigEntryServiceRouterArgs:
         :param pulumi.Input[str] partition: Specifies the Consul admin partition to resolve the service from instead of the current partition.
         :param pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceRouterRouteArgs']]] routes: Defines the possible routes for L7 requests.
         """
+        ConfigEntryServiceRouterArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            meta=meta,
+            name=name,
+            namespace=namespace,
+            partition=partition,
+            routes=routes,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             namespace: Optional[pulumi.Input[str]] = None,
+             partition: Optional[pulumi.Input[str]] = None,
+             routes: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceRouterRouteArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if meta is not None:
-            pulumi.set(__self__, "meta", meta)
+            _setter("meta", meta)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
+            _setter("namespace", namespace)
         if partition is not None:
-            pulumi.set(__self__, "partition", partition)
+            _setter("partition", partition)
         if routes is not None:
-            pulumi.set(__self__, "routes", routes)
+            _setter("routes", routes)
 
     @property
     @pulumi.getter
@@ -117,16 +136,35 @@ class _ConfigEntryServiceRouterState:
         :param pulumi.Input[str] partition: Specifies the Consul admin partition to resolve the service from instead of the current partition.
         :param pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceRouterRouteArgs']]] routes: Defines the possible routes for L7 requests.
         """
+        _ConfigEntryServiceRouterState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            meta=meta,
+            name=name,
+            namespace=namespace,
+            partition=partition,
+            routes=routes,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             namespace: Optional[pulumi.Input[str]] = None,
+             partition: Optional[pulumi.Input[str]] = None,
+             routes: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceRouterRouteArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if meta is not None:
-            pulumi.set(__self__, "meta", meta)
+            _setter("meta", meta)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
+            _setter("namespace", namespace)
         if partition is not None:
-            pulumi.set(__self__, "partition", partition)
+            _setter("partition", partition)
         if routes is not None:
-            pulumi.set(__self__, "routes", routes)
+            _setter("routes", routes)
 
     @property
     @pulumi.getter
@@ -270,6 +308,10 @@ class ConfigEntryServiceRouter(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ConfigEntryServiceRouterArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

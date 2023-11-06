@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -21,13 +21,38 @@ class AuthJwt(dict):
                  bearer_token: Optional[str] = None,
                  meta: Optional[Mapping[str, str]] = None,
                  use_terraform_cloud_workload_identity: Optional[bool] = None):
-        pulumi.set(__self__, "auth_method", auth_method)
+        AuthJwt._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auth_method=auth_method,
+            bearer_token=bearer_token,
+            meta=meta,
+            use_terraform_cloud_workload_identity=use_terraform_cloud_workload_identity,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auth_method: Optional[str] = None,
+             bearer_token: Optional[str] = None,
+             meta: Optional[Mapping[str, str]] = None,
+             use_terraform_cloud_workload_identity: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if auth_method is None and 'authMethod' in kwargs:
+            auth_method = kwargs['authMethod']
+        if auth_method is None:
+            raise TypeError("Missing 'auth_method' argument")
+        if bearer_token is None and 'bearerToken' in kwargs:
+            bearer_token = kwargs['bearerToken']
+        if use_terraform_cloud_workload_identity is None and 'useTerraformCloudWorkloadIdentity' in kwargs:
+            use_terraform_cloud_workload_identity = kwargs['useTerraformCloudWorkloadIdentity']
+
+        _setter("auth_method", auth_method)
         if bearer_token is not None:
-            pulumi.set(__self__, "bearer_token", bearer_token)
+            _setter("bearer_token", bearer_token)
         if meta is not None:
-            pulumi.set(__self__, "meta", meta)
+            _setter("meta", meta)
         if use_terraform_cloud_workload_identity is not None:
-            pulumi.set(__self__, "use_terraform_cloud_workload_identity", use_terraform_cloud_workload_identity)
+            _setter("use_terraform_cloud_workload_identity", use_terraform_cloud_workload_identity)
 
     @property
     @pulumi.getter(name="authMethod")
@@ -55,8 +80,25 @@ class Headers(dict):
     def __init__(__self__, *,
                  name: str,
                  value: str):
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "value", value)
+        Headers._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
+        _setter("name", name)
+        _setter("value", value)
 
     @property
     @pulumi.getter
