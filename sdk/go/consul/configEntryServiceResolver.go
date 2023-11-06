@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `ConfigEntryServiceResolver` resource configures a [service resolver](https://developer.hashicorp.com/consul/docs/connect/config-entries/service-resolver) that creates named subsets of service instances and define their behavior when satisfying upstream requests.
@@ -255,12 +254,6 @@ func (i *ConfigEntryServiceResolver) ToConfigEntryServiceResolverOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceResolverOutput)
 }
 
-func (i *ConfigEntryServiceResolver) ToOutput(ctx context.Context) pulumix.Output[*ConfigEntryServiceResolver] {
-	return pulumix.Output[*ConfigEntryServiceResolver]{
-		OutputState: i.ToConfigEntryServiceResolverOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ConfigEntryServiceResolverArrayInput is an input type that accepts ConfigEntryServiceResolverArray and ConfigEntryServiceResolverArrayOutput values.
 // You can construct a concrete instance of `ConfigEntryServiceResolverArrayInput` via:
 //
@@ -284,12 +277,6 @@ func (i ConfigEntryServiceResolverArray) ToConfigEntryServiceResolverArrayOutput
 
 func (i ConfigEntryServiceResolverArray) ToConfigEntryServiceResolverArrayOutputWithContext(ctx context.Context) ConfigEntryServiceResolverArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceResolverArrayOutput)
-}
-
-func (i ConfigEntryServiceResolverArray) ToOutput(ctx context.Context) pulumix.Output[[]*ConfigEntryServiceResolver] {
-	return pulumix.Output[[]*ConfigEntryServiceResolver]{
-		OutputState: i.ToConfigEntryServiceResolverArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ConfigEntryServiceResolverMapInput is an input type that accepts ConfigEntryServiceResolverMap and ConfigEntryServiceResolverMapOutput values.
@@ -317,12 +304,6 @@ func (i ConfigEntryServiceResolverMap) ToConfigEntryServiceResolverMapOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceResolverMapOutput)
 }
 
-func (i ConfigEntryServiceResolverMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConfigEntryServiceResolver] {
-	return pulumix.Output[map[string]*ConfigEntryServiceResolver]{
-		OutputState: i.ToConfigEntryServiceResolverMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConfigEntryServiceResolverOutput struct{ *pulumi.OutputState }
 
 func (ConfigEntryServiceResolverOutput) ElementType() reflect.Type {
@@ -335,12 +316,6 @@ func (o ConfigEntryServiceResolverOutput) ToConfigEntryServiceResolverOutput() C
 
 func (o ConfigEntryServiceResolverOutput) ToConfigEntryServiceResolverOutputWithContext(ctx context.Context) ConfigEntryServiceResolverOutput {
 	return o
-}
-
-func (o ConfigEntryServiceResolverOutput) ToOutput(ctx context.Context) pulumix.Output[*ConfigEntryServiceResolver] {
-	return pulumix.Output[*ConfigEntryServiceResolver]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies the timeout duration for establishing new network connections to this service.
@@ -414,12 +389,6 @@ func (o ConfigEntryServiceResolverArrayOutput) ToConfigEntryServiceResolverArray
 	return o
 }
 
-func (o ConfigEntryServiceResolverArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ConfigEntryServiceResolver] {
-	return pulumix.Output[[]*ConfigEntryServiceResolver]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ConfigEntryServiceResolverArrayOutput) Index(i pulumi.IntInput) ConfigEntryServiceResolverOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ConfigEntryServiceResolver {
 		return vs[0].([]*ConfigEntryServiceResolver)[vs[1].(int)]
@@ -438,12 +407,6 @@ func (o ConfigEntryServiceResolverMapOutput) ToConfigEntryServiceResolverMapOutp
 
 func (o ConfigEntryServiceResolverMapOutput) ToConfigEntryServiceResolverMapOutputWithContext(ctx context.Context) ConfigEntryServiceResolverMapOutput {
 	return o
-}
-
-func (o ConfigEntryServiceResolverMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConfigEntryServiceResolver] {
-	return pulumix.Output[map[string]*ConfigEntryServiceResolver]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConfigEntryServiceResolverMapOutput) MapIndex(k pulumi.StringInput) ConfigEntryServiceResolverOutput {

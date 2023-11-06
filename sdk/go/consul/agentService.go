@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // !> The `AgentService` resource has been deprecated in version 2.0.0 of the provider
@@ -174,12 +173,6 @@ func (i *AgentService) ToAgentServiceOutputWithContext(ctx context.Context) Agen
 	return pulumi.ToOutputWithContext(ctx, i).(AgentServiceOutput)
 }
 
-func (i *AgentService) ToOutput(ctx context.Context) pulumix.Output[*AgentService] {
-	return pulumix.Output[*AgentService]{
-		OutputState: i.ToAgentServiceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AgentServiceArrayInput is an input type that accepts AgentServiceArray and AgentServiceArrayOutput values.
 // You can construct a concrete instance of `AgentServiceArrayInput` via:
 //
@@ -203,12 +196,6 @@ func (i AgentServiceArray) ToAgentServiceArrayOutput() AgentServiceArrayOutput {
 
 func (i AgentServiceArray) ToAgentServiceArrayOutputWithContext(ctx context.Context) AgentServiceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AgentServiceArrayOutput)
-}
-
-func (i AgentServiceArray) ToOutput(ctx context.Context) pulumix.Output[[]*AgentService] {
-	return pulumix.Output[[]*AgentService]{
-		OutputState: i.ToAgentServiceArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AgentServiceMapInput is an input type that accepts AgentServiceMap and AgentServiceMapOutput values.
@@ -236,12 +223,6 @@ func (i AgentServiceMap) ToAgentServiceMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(AgentServiceMapOutput)
 }
 
-func (i AgentServiceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AgentService] {
-	return pulumix.Output[map[string]*AgentService]{
-		OutputState: i.ToAgentServiceMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AgentServiceOutput struct{ *pulumi.OutputState }
 
 func (AgentServiceOutput) ElementType() reflect.Type {
@@ -254,12 +235,6 @@ func (o AgentServiceOutput) ToAgentServiceOutput() AgentServiceOutput {
 
 func (o AgentServiceOutput) ToAgentServiceOutputWithContext(ctx context.Context) AgentServiceOutput {
 	return o
-}
-
-func (o AgentServiceOutput) ToOutput(ctx context.Context) pulumix.Output[*AgentService] {
-	return pulumix.Output[*AgentService]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The address of the service. Defaults to the
@@ -298,12 +273,6 @@ func (o AgentServiceArrayOutput) ToAgentServiceArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o AgentServiceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AgentService] {
-	return pulumix.Output[[]*AgentService]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AgentServiceArrayOutput) Index(i pulumi.IntInput) AgentServiceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AgentService {
 		return vs[0].([]*AgentService)[vs[1].(int)]
@@ -322,12 +291,6 @@ func (o AgentServiceMapOutput) ToAgentServiceMapOutput() AgentServiceMapOutput {
 
 func (o AgentServiceMapOutput) ToAgentServiceMapOutputWithContext(ctx context.Context) AgentServiceMapOutput {
 	return o
-}
-
-func (o AgentServiceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AgentService] {
-	return pulumix.Output[map[string]*AgentService]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AgentServiceMapOutput) MapIndex(k pulumi.StringInput) AgentServiceOutput {

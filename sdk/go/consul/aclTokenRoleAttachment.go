@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Import
@@ -122,12 +121,6 @@ func (i *AclTokenRoleAttachment) ToAclTokenRoleAttachmentOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(AclTokenRoleAttachmentOutput)
 }
 
-func (i *AclTokenRoleAttachment) ToOutput(ctx context.Context) pulumix.Output[*AclTokenRoleAttachment] {
-	return pulumix.Output[*AclTokenRoleAttachment]{
-		OutputState: i.ToAclTokenRoleAttachmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AclTokenRoleAttachmentArrayInput is an input type that accepts AclTokenRoleAttachmentArray and AclTokenRoleAttachmentArrayOutput values.
 // You can construct a concrete instance of `AclTokenRoleAttachmentArrayInput` via:
 //
@@ -151,12 +144,6 @@ func (i AclTokenRoleAttachmentArray) ToAclTokenRoleAttachmentArrayOutput() AclTo
 
 func (i AclTokenRoleAttachmentArray) ToAclTokenRoleAttachmentArrayOutputWithContext(ctx context.Context) AclTokenRoleAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AclTokenRoleAttachmentArrayOutput)
-}
-
-func (i AclTokenRoleAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*AclTokenRoleAttachment] {
-	return pulumix.Output[[]*AclTokenRoleAttachment]{
-		OutputState: i.ToAclTokenRoleAttachmentArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AclTokenRoleAttachmentMapInput is an input type that accepts AclTokenRoleAttachmentMap and AclTokenRoleAttachmentMapOutput values.
@@ -184,12 +171,6 @@ func (i AclTokenRoleAttachmentMap) ToAclTokenRoleAttachmentMapOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(AclTokenRoleAttachmentMapOutput)
 }
 
-func (i AclTokenRoleAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AclTokenRoleAttachment] {
-	return pulumix.Output[map[string]*AclTokenRoleAttachment]{
-		OutputState: i.ToAclTokenRoleAttachmentMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AclTokenRoleAttachmentOutput struct{ *pulumi.OutputState }
 
 func (AclTokenRoleAttachmentOutput) ElementType() reflect.Type {
@@ -202,12 +183,6 @@ func (o AclTokenRoleAttachmentOutput) ToAclTokenRoleAttachmentOutput() AclTokenR
 
 func (o AclTokenRoleAttachmentOutput) ToAclTokenRoleAttachmentOutputWithContext(ctx context.Context) AclTokenRoleAttachmentOutput {
 	return o
-}
-
-func (o AclTokenRoleAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*AclTokenRoleAttachment] {
-	return pulumix.Output[*AclTokenRoleAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The role name.
@@ -234,12 +209,6 @@ func (o AclTokenRoleAttachmentArrayOutput) ToAclTokenRoleAttachmentArrayOutputWi
 	return o
 }
 
-func (o AclTokenRoleAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AclTokenRoleAttachment] {
-	return pulumix.Output[[]*AclTokenRoleAttachment]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AclTokenRoleAttachmentArrayOutput) Index(i pulumi.IntInput) AclTokenRoleAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AclTokenRoleAttachment {
 		return vs[0].([]*AclTokenRoleAttachment)[vs[1].(int)]
@@ -258,12 +227,6 @@ func (o AclTokenRoleAttachmentMapOutput) ToAclTokenRoleAttachmentMapOutput() Acl
 
 func (o AclTokenRoleAttachmentMapOutput) ToAclTokenRoleAttachmentMapOutputWithContext(ctx context.Context) AclTokenRoleAttachmentMapOutput {
 	return o
-}
-
-func (o AclTokenRoleAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AclTokenRoleAttachment] {
-	return pulumix.Output[map[string]*AclTokenRoleAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AclTokenRoleAttachmentMapOutput) MapIndex(k pulumi.StringInput) AclTokenRoleAttachmentOutput {

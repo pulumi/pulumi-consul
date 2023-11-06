@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // [Cluster Peering](https://www.consul.io/docs/connect/cluster-peering) can be used to create connections between two or more independent clusters so that services deployed to different partitions or datacenters can communicate.
@@ -158,12 +157,6 @@ func (i *PeeringToken) ToPeeringTokenOutputWithContext(ctx context.Context) Peer
 	return pulumi.ToOutputWithContext(ctx, i).(PeeringTokenOutput)
 }
 
-func (i *PeeringToken) ToOutput(ctx context.Context) pulumix.Output[*PeeringToken] {
-	return pulumix.Output[*PeeringToken]{
-		OutputState: i.ToPeeringTokenOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PeeringTokenArrayInput is an input type that accepts PeeringTokenArray and PeeringTokenArrayOutput values.
 // You can construct a concrete instance of `PeeringTokenArrayInput` via:
 //
@@ -187,12 +180,6 @@ func (i PeeringTokenArray) ToPeeringTokenArrayOutput() PeeringTokenArrayOutput {
 
 func (i PeeringTokenArray) ToPeeringTokenArrayOutputWithContext(ctx context.Context) PeeringTokenArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PeeringTokenArrayOutput)
-}
-
-func (i PeeringTokenArray) ToOutput(ctx context.Context) pulumix.Output[[]*PeeringToken] {
-	return pulumix.Output[[]*PeeringToken]{
-		OutputState: i.ToPeeringTokenArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // PeeringTokenMapInput is an input type that accepts PeeringTokenMap and PeeringTokenMapOutput values.
@@ -220,12 +207,6 @@ func (i PeeringTokenMap) ToPeeringTokenMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(PeeringTokenMapOutput)
 }
 
-func (i PeeringTokenMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*PeeringToken] {
-	return pulumix.Output[map[string]*PeeringToken]{
-		OutputState: i.ToPeeringTokenMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PeeringTokenOutput struct{ *pulumi.OutputState }
 
 func (PeeringTokenOutput) ElementType() reflect.Type {
@@ -238,12 +219,6 @@ func (o PeeringTokenOutput) ToPeeringTokenOutput() PeeringTokenOutput {
 
 func (o PeeringTokenOutput) ToPeeringTokenOutputWithContext(ctx context.Context) PeeringTokenOutput {
 	return o
-}
-
-func (o PeeringTokenOutput) ToOutput(ctx context.Context) pulumix.Output[*PeeringToken] {
-	return pulumix.Output[*PeeringToken]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the cluster peering process.
@@ -279,12 +254,6 @@ func (o PeeringTokenArrayOutput) ToPeeringTokenArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o PeeringTokenArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*PeeringToken] {
-	return pulumix.Output[[]*PeeringToken]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PeeringTokenArrayOutput) Index(i pulumi.IntInput) PeeringTokenOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PeeringToken {
 		return vs[0].([]*PeeringToken)[vs[1].(int)]
@@ -303,12 +272,6 @@ func (o PeeringTokenMapOutput) ToPeeringTokenMapOutput() PeeringTokenMapOutput {
 
 func (o PeeringTokenMapOutput) ToPeeringTokenMapOutputWithContext(ctx context.Context) PeeringTokenMapOutput {
 	return o
-}
-
-func (o PeeringTokenMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*PeeringToken] {
-	return pulumix.Output[map[string]*PeeringToken]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PeeringTokenMapOutput) MapIndex(k pulumi.StringInput) PeeringTokenOutput {
