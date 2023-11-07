@@ -5,7 +5,7 @@ go 1.21
 require (
 	github.com/hashicorp/terraform-plugin-sdk v1.17.2
 	github.com/hashicorp/terraform-provider-consul v1.1.1-0.20231025144006-0c25a13e5f46
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.63.2
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.63.3-0.20231107155650-cd5f02b099d0
 )
 
 replace github.com/spf13/afero => github.com/spf13/afero v1.2.2
