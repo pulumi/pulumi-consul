@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // `Service` provides details about a specific Consul service in a
@@ -116,12 +115,6 @@ func (o LookupServiceResultOutput) ToLookupServiceResultOutput() LookupServiceRe
 
 func (o LookupServiceResultOutput) ToLookupServiceResultOutputWithContext(ctx context.Context) LookupServiceResultOutput {
 	return o
-}
-
-func (o LookupServiceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupServiceResult] {
-	return pulumix.Output[LookupServiceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The datacenter the keys are being read from to.

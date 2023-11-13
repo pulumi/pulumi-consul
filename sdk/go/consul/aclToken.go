@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -261,12 +260,6 @@ func (i *AclToken) ToAclTokenOutputWithContext(ctx context.Context) AclTokenOutp
 	return pulumi.ToOutputWithContext(ctx, i).(AclTokenOutput)
 }
 
-func (i *AclToken) ToOutput(ctx context.Context) pulumix.Output[*AclToken] {
-	return pulumix.Output[*AclToken]{
-		OutputState: i.ToAclTokenOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AclTokenArrayInput is an input type that accepts AclTokenArray and AclTokenArrayOutput values.
 // You can construct a concrete instance of `AclTokenArrayInput` via:
 //
@@ -290,12 +283,6 @@ func (i AclTokenArray) ToAclTokenArrayOutput() AclTokenArrayOutput {
 
 func (i AclTokenArray) ToAclTokenArrayOutputWithContext(ctx context.Context) AclTokenArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AclTokenArrayOutput)
-}
-
-func (i AclTokenArray) ToOutput(ctx context.Context) pulumix.Output[[]*AclToken] {
-	return pulumix.Output[[]*AclToken]{
-		OutputState: i.ToAclTokenArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AclTokenMapInput is an input type that accepts AclTokenMap and AclTokenMapOutput values.
@@ -323,12 +310,6 @@ func (i AclTokenMap) ToAclTokenMapOutputWithContext(ctx context.Context) AclToke
 	return pulumi.ToOutputWithContext(ctx, i).(AclTokenMapOutput)
 }
 
-func (i AclTokenMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AclToken] {
-	return pulumix.Output[map[string]*AclToken]{
-		OutputState: i.ToAclTokenMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AclTokenOutput struct{ *pulumi.OutputState }
 
 func (AclTokenOutput) ElementType() reflect.Type {
@@ -341,12 +322,6 @@ func (o AclTokenOutput) ToAclTokenOutput() AclTokenOutput {
 
 func (o AclTokenOutput) ToAclTokenOutputWithContext(ctx context.Context) AclTokenOutput {
 	return o
-}
-
-func (o AclTokenOutput) ToOutput(ctx context.Context) pulumix.Output[*AclToken] {
-	return pulumix.Output[*AclToken]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The uuid of the token. If omitted, Consul will generate a random uuid.
@@ -418,12 +393,6 @@ func (o AclTokenArrayOutput) ToAclTokenArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o AclTokenArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AclToken] {
-	return pulumix.Output[[]*AclToken]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AclTokenArrayOutput) Index(i pulumi.IntInput) AclTokenOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AclToken {
 		return vs[0].([]*AclToken)[vs[1].(int)]
@@ -442,12 +411,6 @@ func (o AclTokenMapOutput) ToAclTokenMapOutput() AclTokenMapOutput {
 
 func (o AclTokenMapOutput) ToAclTokenMapOutputWithContext(ctx context.Context) AclTokenMapOutput {
 	return o
-}
-
-func (o AclTokenMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AclToken] {
-	return pulumix.Output[map[string]*AclToken]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AclTokenMapOutput) MapIndex(k pulumi.StringInput) AclTokenOutput {

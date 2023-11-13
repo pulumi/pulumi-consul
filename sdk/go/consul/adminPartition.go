@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // > **NOTE:** This feature requires Consul Enterprise.
@@ -145,12 +144,6 @@ func (i *AdminPartition) ToAdminPartitionOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(AdminPartitionOutput)
 }
 
-func (i *AdminPartition) ToOutput(ctx context.Context) pulumix.Output[*AdminPartition] {
-	return pulumix.Output[*AdminPartition]{
-		OutputState: i.ToAdminPartitionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AdminPartitionArrayInput is an input type that accepts AdminPartitionArray and AdminPartitionArrayOutput values.
 // You can construct a concrete instance of `AdminPartitionArrayInput` via:
 //
@@ -174,12 +167,6 @@ func (i AdminPartitionArray) ToAdminPartitionArrayOutput() AdminPartitionArrayOu
 
 func (i AdminPartitionArray) ToAdminPartitionArrayOutputWithContext(ctx context.Context) AdminPartitionArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AdminPartitionArrayOutput)
-}
-
-func (i AdminPartitionArray) ToOutput(ctx context.Context) pulumix.Output[[]*AdminPartition] {
-	return pulumix.Output[[]*AdminPartition]{
-		OutputState: i.ToAdminPartitionArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AdminPartitionMapInput is an input type that accepts AdminPartitionMap and AdminPartitionMapOutput values.
@@ -207,12 +194,6 @@ func (i AdminPartitionMap) ToAdminPartitionMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(AdminPartitionMapOutput)
 }
 
-func (i AdminPartitionMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AdminPartition] {
-	return pulumix.Output[map[string]*AdminPartition]{
-		OutputState: i.ToAdminPartitionMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AdminPartitionOutput struct{ *pulumi.OutputState }
 
 func (AdminPartitionOutput) ElementType() reflect.Type {
@@ -225,12 +206,6 @@ func (o AdminPartitionOutput) ToAdminPartitionOutput() AdminPartitionOutput {
 
 func (o AdminPartitionOutput) ToAdminPartitionOutputWithContext(ctx context.Context) AdminPartitionOutput {
 	return o
-}
-
-func (o AdminPartitionOutput) ToOutput(ctx context.Context) pulumix.Output[*AdminPartition] {
-	return pulumix.Output[*AdminPartition]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Free form partition description.
@@ -257,12 +232,6 @@ func (o AdminPartitionArrayOutput) ToAdminPartitionArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o AdminPartitionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AdminPartition] {
-	return pulumix.Output[[]*AdminPartition]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AdminPartitionArrayOutput) Index(i pulumi.IntInput) AdminPartitionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AdminPartition {
 		return vs[0].([]*AdminPartition)[vs[1].(int)]
@@ -281,12 +250,6 @@ func (o AdminPartitionMapOutput) ToAdminPartitionMapOutput() AdminPartitionMapOu
 
 func (o AdminPartitionMapOutput) ToAdminPartitionMapOutputWithContext(ctx context.Context) AdminPartitionMapOutput {
 	return o
-}
-
-func (o AdminPartitionMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AdminPartition] {
-	return pulumix.Output[map[string]*AdminPartition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AdminPartitionMapOutput) MapIndex(k pulumi.StringInput) AdminPartitionOutput {

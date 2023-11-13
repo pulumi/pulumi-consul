@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // `getServiceHealth` can be used to get the list of the instances that
@@ -134,12 +133,6 @@ func (o LookupServiceHealthResultOutput) ToLookupServiceHealthResultOutput() Loo
 
 func (o LookupServiceHealthResultOutput) ToLookupServiceHealthResultOutputWithContext(ctx context.Context) LookupServiceHealthResultOutput {
 	return o
-}
-
-func (o LookupServiceHealthResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupServiceHealthResult] {
-	return pulumix.Output[LookupServiceHealthResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The datacenter in which the node is running.

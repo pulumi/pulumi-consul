@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -625,12 +624,6 @@ func (i *ConfigEntry) ToConfigEntryOutputWithContext(ctx context.Context) Config
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryOutput)
 }
 
-func (i *ConfigEntry) ToOutput(ctx context.Context) pulumix.Output[*ConfigEntry] {
-	return pulumix.Output[*ConfigEntry]{
-		OutputState: i.ToConfigEntryOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ConfigEntryArrayInput is an input type that accepts ConfigEntryArray and ConfigEntryArrayOutput values.
 // You can construct a concrete instance of `ConfigEntryArrayInput` via:
 //
@@ -654,12 +647,6 @@ func (i ConfigEntryArray) ToConfigEntryArrayOutput() ConfigEntryArrayOutput {
 
 func (i ConfigEntryArray) ToConfigEntryArrayOutputWithContext(ctx context.Context) ConfigEntryArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryArrayOutput)
-}
-
-func (i ConfigEntryArray) ToOutput(ctx context.Context) pulumix.Output[[]*ConfigEntry] {
-	return pulumix.Output[[]*ConfigEntry]{
-		OutputState: i.ToConfigEntryArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ConfigEntryMapInput is an input type that accepts ConfigEntryMap and ConfigEntryMapOutput values.
@@ -687,12 +674,6 @@ func (i ConfigEntryMap) ToConfigEntryMapOutputWithContext(ctx context.Context) C
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryMapOutput)
 }
 
-func (i ConfigEntryMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConfigEntry] {
-	return pulumix.Output[map[string]*ConfigEntry]{
-		OutputState: i.ToConfigEntryMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConfigEntryOutput struct{ *pulumi.OutputState }
 
 func (ConfigEntryOutput) ElementType() reflect.Type {
@@ -705,12 +686,6 @@ func (o ConfigEntryOutput) ToConfigEntryOutput() ConfigEntryOutput {
 
 func (o ConfigEntryOutput) ToConfigEntryOutputWithContext(ctx context.Context) ConfigEntryOutput {
 	return o
-}
-
-func (o ConfigEntryOutput) ToOutput(ctx context.Context) pulumix.Output[*ConfigEntry] {
-	return pulumix.Output[*ConfigEntry]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An arbitrary map of configuration values.
@@ -752,12 +727,6 @@ func (o ConfigEntryArrayOutput) ToConfigEntryArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o ConfigEntryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ConfigEntry] {
-	return pulumix.Output[[]*ConfigEntry]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ConfigEntryArrayOutput) Index(i pulumi.IntInput) ConfigEntryOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ConfigEntry {
 		return vs[0].([]*ConfigEntry)[vs[1].(int)]
@@ -776,12 +745,6 @@ func (o ConfigEntryMapOutput) ToConfigEntryMapOutput() ConfigEntryMapOutput {
 
 func (o ConfigEntryMapOutput) ToConfigEntryMapOutputWithContext(ctx context.Context) ConfigEntryMapOutput {
 	return o
-}
-
-func (o ConfigEntryMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConfigEntry] {
-	return pulumix.Output[map[string]*ConfigEntry]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConfigEntryMapOutput) MapIndex(k pulumi.StringInput) ConfigEntryOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `AclAuthMethod` data source returns the information related to a
@@ -134,12 +133,6 @@ func (o LookupAclAuthMethodResultOutput) ToLookupAclAuthMethodResultOutput() Loo
 
 func (o LookupAclAuthMethodResultOutput) ToLookupAclAuthMethodResultOutputWithContext(ctx context.Context) LookupAclAuthMethodResultOutput {
 	return o
-}
-
-func (o LookupAclAuthMethodResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAclAuthMethodResult] {
-	return pulumix.Output[LookupAclAuthMethodResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The configuration options of the ACL Auth Method. This attribute is

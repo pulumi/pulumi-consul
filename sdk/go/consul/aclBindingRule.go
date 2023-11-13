@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Starting with Consul 1.5.0, the AclBindingRule resource can be used to managed Consul ACL binding rules.
@@ -219,12 +218,6 @@ func (i *AclBindingRule) ToAclBindingRuleOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(AclBindingRuleOutput)
 }
 
-func (i *AclBindingRule) ToOutput(ctx context.Context) pulumix.Output[*AclBindingRule] {
-	return pulumix.Output[*AclBindingRule]{
-		OutputState: i.ToAclBindingRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AclBindingRuleArrayInput is an input type that accepts AclBindingRuleArray and AclBindingRuleArrayOutput values.
 // You can construct a concrete instance of `AclBindingRuleArrayInput` via:
 //
@@ -248,12 +241,6 @@ func (i AclBindingRuleArray) ToAclBindingRuleArrayOutput() AclBindingRuleArrayOu
 
 func (i AclBindingRuleArray) ToAclBindingRuleArrayOutputWithContext(ctx context.Context) AclBindingRuleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AclBindingRuleArrayOutput)
-}
-
-func (i AclBindingRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]*AclBindingRule] {
-	return pulumix.Output[[]*AclBindingRule]{
-		OutputState: i.ToAclBindingRuleArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AclBindingRuleMapInput is an input type that accepts AclBindingRuleMap and AclBindingRuleMapOutput values.
@@ -281,12 +268,6 @@ func (i AclBindingRuleMap) ToAclBindingRuleMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(AclBindingRuleMapOutput)
 }
 
-func (i AclBindingRuleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AclBindingRule] {
-	return pulumix.Output[map[string]*AclBindingRule]{
-		OutputState: i.ToAclBindingRuleMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AclBindingRuleOutput struct{ *pulumi.OutputState }
 
 func (AclBindingRuleOutput) ElementType() reflect.Type {
@@ -299,12 +280,6 @@ func (o AclBindingRuleOutput) ToAclBindingRuleOutput() AclBindingRuleOutput {
 
 func (o AclBindingRuleOutput) ToAclBindingRuleOutputWithContext(ctx context.Context) AclBindingRuleOutput {
 	return o
-}
-
-func (o AclBindingRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*AclBindingRule] {
-	return pulumix.Output[*AclBindingRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the ACL auth method this rule apply.
@@ -361,12 +336,6 @@ func (o AclBindingRuleArrayOutput) ToAclBindingRuleArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o AclBindingRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AclBindingRule] {
-	return pulumix.Output[[]*AclBindingRule]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AclBindingRuleArrayOutput) Index(i pulumi.IntInput) AclBindingRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AclBindingRule {
 		return vs[0].([]*AclBindingRule)[vs[1].(int)]
@@ -385,12 +354,6 @@ func (o AclBindingRuleMapOutput) ToAclBindingRuleMapOutput() AclBindingRuleMapOu
 
 func (o AclBindingRuleMapOutput) ToAclBindingRuleMapOutputWithContext(ctx context.Context) AclBindingRuleMapOutput {
 	return o
-}
-
-func (o AclBindingRuleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AclBindingRule] {
-	return pulumix.Output[map[string]*AclBindingRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AclBindingRuleMapOutput) MapIndex(k pulumi.StringInput) AclBindingRuleOutput {

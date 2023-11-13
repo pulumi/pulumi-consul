@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -51,12 +50,6 @@ func (i AuthJwtArgs) ToAuthJwtOutputWithContext(ctx context.Context) AuthJwtOutp
 	return pulumi.ToOutputWithContext(ctx, i).(AuthJwtOutput)
 }
 
-func (i AuthJwtArgs) ToOutput(ctx context.Context) pulumix.Output[AuthJwt] {
-	return pulumix.Output[AuthJwt]{
-		OutputState: i.ToAuthJwtOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AuthJwtOutput struct{ *pulumi.OutputState }
 
 func (AuthJwtOutput) ElementType() reflect.Type {
@@ -69,12 +62,6 @@ func (o AuthJwtOutput) ToAuthJwtOutput() AuthJwtOutput {
 
 func (o AuthJwtOutput) ToAuthJwtOutputWithContext(ctx context.Context) AuthJwtOutput {
 	return o
-}
-
-func (o AuthJwtOutput) ToOutput(ctx context.Context) pulumix.Output[AuthJwt] {
-	return pulumix.Output[AuthJwt]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuthJwtOutput) AuthMethod() pulumi.StringOutput {
@@ -126,12 +113,6 @@ func (i HeadersArgs) ToHeadersOutputWithContext(ctx context.Context) HeadersOutp
 	return pulumi.ToOutputWithContext(ctx, i).(HeadersOutput)
 }
 
-func (i HeadersArgs) ToOutput(ctx context.Context) pulumix.Output[Headers] {
-	return pulumix.Output[Headers]{
-		OutputState: i.ToHeadersOutputWithContext(ctx).OutputState,
-	}
-}
-
 // HeadersArrayInput is an input type that accepts HeadersArray and HeadersArrayOutput values.
 // You can construct a concrete instance of `HeadersArrayInput` via:
 //
@@ -157,12 +138,6 @@ func (i HeadersArray) ToHeadersArrayOutputWithContext(ctx context.Context) Heade
 	return pulumi.ToOutputWithContext(ctx, i).(HeadersArrayOutput)
 }
 
-func (i HeadersArray) ToOutput(ctx context.Context) pulumix.Output[[]Headers] {
-	return pulumix.Output[[]Headers]{
-		OutputState: i.ToHeadersArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type HeadersOutput struct{ *pulumi.OutputState }
 
 func (HeadersOutput) ElementType() reflect.Type {
@@ -175,12 +150,6 @@ func (o HeadersOutput) ToHeadersOutput() HeadersOutput {
 
 func (o HeadersOutput) ToHeadersOutputWithContext(ctx context.Context) HeadersOutput {
 	return o
-}
-
-func (o HeadersOutput) ToOutput(ctx context.Context) pulumix.Output[Headers] {
-	return pulumix.Output[Headers]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HeadersOutput) Name() pulumi.StringOutput {
@@ -203,12 +172,6 @@ func (o HeadersArrayOutput) ToHeadersArrayOutput() HeadersArrayOutput {
 
 func (o HeadersArrayOutput) ToHeadersArrayOutputWithContext(ctx context.Context) HeadersArrayOutput {
 	return o
-}
-
-func (o HeadersArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Headers] {
-	return pulumix.Output[[]Headers]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HeadersArrayOutput) Index(i pulumi.IntInput) HeadersOutput {

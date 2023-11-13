@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // !> The `CatalogEntry` resource has been deprecated in version 2.0.0 of the provider
@@ -230,12 +229,6 @@ func (i *CatalogEntry) ToCatalogEntryOutputWithContext(ctx context.Context) Cata
 	return pulumi.ToOutputWithContext(ctx, i).(CatalogEntryOutput)
 }
 
-func (i *CatalogEntry) ToOutput(ctx context.Context) pulumix.Output[*CatalogEntry] {
-	return pulumix.Output[*CatalogEntry]{
-		OutputState: i.ToCatalogEntryOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CatalogEntryArrayInput is an input type that accepts CatalogEntryArray and CatalogEntryArrayOutput values.
 // You can construct a concrete instance of `CatalogEntryArrayInput` via:
 //
@@ -259,12 +252,6 @@ func (i CatalogEntryArray) ToCatalogEntryArrayOutput() CatalogEntryArrayOutput {
 
 func (i CatalogEntryArray) ToCatalogEntryArrayOutputWithContext(ctx context.Context) CatalogEntryArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CatalogEntryArrayOutput)
-}
-
-func (i CatalogEntryArray) ToOutput(ctx context.Context) pulumix.Output[[]*CatalogEntry] {
-	return pulumix.Output[[]*CatalogEntry]{
-		OutputState: i.ToCatalogEntryArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // CatalogEntryMapInput is an input type that accepts CatalogEntryMap and CatalogEntryMapOutput values.
@@ -292,12 +279,6 @@ func (i CatalogEntryMap) ToCatalogEntryMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(CatalogEntryMapOutput)
 }
 
-func (i CatalogEntryMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CatalogEntry] {
-	return pulumix.Output[map[string]*CatalogEntry]{
-		OutputState: i.ToCatalogEntryMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CatalogEntryOutput struct{ *pulumi.OutputState }
 
 func (CatalogEntryOutput) ElementType() reflect.Type {
@@ -310,12 +291,6 @@ func (o CatalogEntryOutput) ToCatalogEntryOutput() CatalogEntryOutput {
 
 func (o CatalogEntryOutput) ToCatalogEntryOutputWithContext(ctx context.Context) CatalogEntryOutput {
 	return o
-}
-
-func (o CatalogEntryOutput) ToOutput(ctx context.Context) pulumix.Output[*CatalogEntry] {
-	return pulumix.Output[*CatalogEntry]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The address of the node being added to,
@@ -364,12 +339,6 @@ func (o CatalogEntryArrayOutput) ToCatalogEntryArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o CatalogEntryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CatalogEntry] {
-	return pulumix.Output[[]*CatalogEntry]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CatalogEntryArrayOutput) Index(i pulumi.IntInput) CatalogEntryOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CatalogEntry {
 		return vs[0].([]*CatalogEntry)[vs[1].(int)]
@@ -388,12 +357,6 @@ func (o CatalogEntryMapOutput) ToCatalogEntryMapOutput() CatalogEntryMapOutput {
 
 func (o CatalogEntryMapOutput) ToCatalogEntryMapOutputWithContext(ctx context.Context) CatalogEntryMapOutput {
 	return o
-}
-
-func (o CatalogEntryMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CatalogEntry] {
-	return pulumix.Output[map[string]*CatalogEntry]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CatalogEntryMapOutput) MapIndex(k pulumi.StringInput) CatalogEntryOutput {
