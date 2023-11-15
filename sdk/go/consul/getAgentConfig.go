@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // > **Note:** The `getAgentConfig` resource differs from [`getAgentSelf`](https://www.terraform.io/docs/providers/consul/d/agent_self.html),
@@ -96,12 +95,6 @@ func (o GetAgentConfigResultOutput) ToGetAgentConfigResultOutput() GetAgentConfi
 
 func (o GetAgentConfigResultOutput) ToGetAgentConfigResultOutputWithContext(ctx context.Context) GetAgentConfigResultOutput {
 	return o
-}
-
-func (o GetAgentConfigResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAgentConfigResult] {
-	return pulumix.Output[GetAgentConfigResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The datacenter the agent is running in

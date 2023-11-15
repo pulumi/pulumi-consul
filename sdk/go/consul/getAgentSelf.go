@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // > **Warning:** The `getAgentSelf` resource has been deprecated and will be removed
@@ -199,12 +198,6 @@ func (o GetAgentSelfResultOutput) ToGetAgentSelfResultOutput() GetAgentSelfResul
 
 func (o GetAgentSelfResultOutput) ToGetAgentSelfResultOutputWithContext(ctx context.Context) GetAgentSelfResultOutput {
 	return o
-}
-
-func (o GetAgentSelfResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAgentSelfResult] {
-	return pulumix.Output[GetAgentSelfResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetAgentSelfResultOutput) AclDatacenter() pulumi.StringOutput {

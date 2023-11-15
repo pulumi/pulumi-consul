@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // > **NOTE:** This feature requires [Consul Enterprise](https://www.consul.io/docs/enterprise/index.html).
@@ -137,12 +136,6 @@ func (o GetNetworkAreaMembersResultOutput) ToGetNetworkAreaMembersResultOutput()
 
 func (o GetNetworkAreaMembersResultOutput) ToGetNetworkAreaMembersResultOutputWithContext(ctx context.Context) GetNetworkAreaMembersResultOutput {
 	return o
-}
-
-func (o GetNetworkAreaMembersResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetNetworkAreaMembersResult] {
-	return pulumix.Output[GetNetworkAreaMembersResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The node's Consul datacenter.

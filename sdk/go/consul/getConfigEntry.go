@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func LookupConfigEntry(ctx *pulumi.Context, args *LookupConfigEntryArgs, opts ...pulumi.InvokeOption) (*LookupConfigEntryResult, error) {
@@ -92,12 +91,6 @@ func (o LookupConfigEntryResultOutput) ToLookupConfigEntryResultOutput() LookupC
 
 func (o LookupConfigEntryResultOutput) ToLookupConfigEntryResultOutputWithContext(ctx context.Context) LookupConfigEntryResultOutput {
 	return o
-}
-
-func (o LookupConfigEntryResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupConfigEntryResult] {
-	return pulumix.Output[LookupConfigEntryResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The configuration of the config entry.

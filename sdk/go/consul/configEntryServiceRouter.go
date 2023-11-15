@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `ConfigEntryServiceRouter` resource configures a [service router](https://developer.hashicorp.com/consul/docs/connect/config-entries/service-router) to redirect a traffic request for a service to one or more specific service instances.
@@ -186,12 +185,6 @@ func (i *ConfigEntryServiceRouter) ToConfigEntryServiceRouterOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceRouterOutput)
 }
 
-func (i *ConfigEntryServiceRouter) ToOutput(ctx context.Context) pulumix.Output[*ConfigEntryServiceRouter] {
-	return pulumix.Output[*ConfigEntryServiceRouter]{
-		OutputState: i.ToConfigEntryServiceRouterOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ConfigEntryServiceRouterArrayInput is an input type that accepts ConfigEntryServiceRouterArray and ConfigEntryServiceRouterArrayOutput values.
 // You can construct a concrete instance of `ConfigEntryServiceRouterArrayInput` via:
 //
@@ -215,12 +208,6 @@ func (i ConfigEntryServiceRouterArray) ToConfigEntryServiceRouterArrayOutput() C
 
 func (i ConfigEntryServiceRouterArray) ToConfigEntryServiceRouterArrayOutputWithContext(ctx context.Context) ConfigEntryServiceRouterArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceRouterArrayOutput)
-}
-
-func (i ConfigEntryServiceRouterArray) ToOutput(ctx context.Context) pulumix.Output[[]*ConfigEntryServiceRouter] {
-	return pulumix.Output[[]*ConfigEntryServiceRouter]{
-		OutputState: i.ToConfigEntryServiceRouterArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ConfigEntryServiceRouterMapInput is an input type that accepts ConfigEntryServiceRouterMap and ConfigEntryServiceRouterMapOutput values.
@@ -248,12 +235,6 @@ func (i ConfigEntryServiceRouterMap) ToConfigEntryServiceRouterMapOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceRouterMapOutput)
 }
 
-func (i ConfigEntryServiceRouterMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConfigEntryServiceRouter] {
-	return pulumix.Output[map[string]*ConfigEntryServiceRouter]{
-		OutputState: i.ToConfigEntryServiceRouterMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConfigEntryServiceRouterOutput struct{ *pulumi.OutputState }
 
 func (ConfigEntryServiceRouterOutput) ElementType() reflect.Type {
@@ -266,12 +247,6 @@ func (o ConfigEntryServiceRouterOutput) ToConfigEntryServiceRouterOutput() Confi
 
 func (o ConfigEntryServiceRouterOutput) ToConfigEntryServiceRouterOutputWithContext(ctx context.Context) ConfigEntryServiceRouterOutput {
 	return o
-}
-
-func (o ConfigEntryServiceRouterOutput) ToOutput(ctx context.Context) pulumix.Output[*ConfigEntryServiceRouter] {
-	return pulumix.Output[*ConfigEntryServiceRouter]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies key-value pairs to add to the KV store.
@@ -313,12 +288,6 @@ func (o ConfigEntryServiceRouterArrayOutput) ToConfigEntryServiceRouterArrayOutp
 	return o
 }
 
-func (o ConfigEntryServiceRouterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ConfigEntryServiceRouter] {
-	return pulumix.Output[[]*ConfigEntryServiceRouter]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ConfigEntryServiceRouterArrayOutput) Index(i pulumi.IntInput) ConfigEntryServiceRouterOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ConfigEntryServiceRouter {
 		return vs[0].([]*ConfigEntryServiceRouter)[vs[1].(int)]
@@ -337,12 +306,6 @@ func (o ConfigEntryServiceRouterMapOutput) ToConfigEntryServiceRouterMapOutput()
 
 func (o ConfigEntryServiceRouterMapOutput) ToConfigEntryServiceRouterMapOutputWithContext(ctx context.Context) ConfigEntryServiceRouterMapOutput {
 	return o
-}
-
-func (o ConfigEntryServiceRouterMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConfigEntryServiceRouter] {
-	return pulumix.Output[map[string]*ConfigEntryServiceRouter]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConfigEntryServiceRouterMapOutput) MapIndex(k pulumi.StringInput) ConfigEntryServiceRouterOutput {

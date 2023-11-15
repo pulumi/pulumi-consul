@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // [Cluster Peering](https://www.consul.io/docs/connect/cluster-peering) can be used to create connections between two or more independent clusters so that services deployed to different partitions or datacenters can communicate.
@@ -208,12 +207,6 @@ func (i *Peering) ToPeeringOutputWithContext(ctx context.Context) PeeringOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(PeeringOutput)
 }
 
-func (i *Peering) ToOutput(ctx context.Context) pulumix.Output[*Peering] {
-	return pulumix.Output[*Peering]{
-		OutputState: i.ToPeeringOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PeeringArrayInput is an input type that accepts PeeringArray and PeeringArrayOutput values.
 // You can construct a concrete instance of `PeeringArrayInput` via:
 //
@@ -237,12 +230,6 @@ func (i PeeringArray) ToPeeringArrayOutput() PeeringArrayOutput {
 
 func (i PeeringArray) ToPeeringArrayOutputWithContext(ctx context.Context) PeeringArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PeeringArrayOutput)
-}
-
-func (i PeeringArray) ToOutput(ctx context.Context) pulumix.Output[[]*Peering] {
-	return pulumix.Output[[]*Peering]{
-		OutputState: i.ToPeeringArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // PeeringMapInput is an input type that accepts PeeringMap and PeeringMapOutput values.
@@ -270,12 +257,6 @@ func (i PeeringMap) ToPeeringMapOutputWithContext(ctx context.Context) PeeringMa
 	return pulumi.ToOutputWithContext(ctx, i).(PeeringMapOutput)
 }
 
-func (i PeeringMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Peering] {
-	return pulumix.Output[map[string]*Peering]{
-		OutputState: i.ToPeeringMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PeeringOutput struct{ *pulumi.OutputState }
 
 func (PeeringOutput) ElementType() reflect.Type {
@@ -288,12 +269,6 @@ func (o PeeringOutput) ToPeeringOutput() PeeringOutput {
 
 func (o PeeringOutput) ToPeeringOutputWithContext(ctx context.Context) PeeringOutput {
 	return o
-}
-
-func (o PeeringOutput) ToOutput(ctx context.Context) pulumix.Output[*Peering] {
-	return pulumix.Output[*Peering]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PeeringOutput) DeletedAt() pulumi.StringOutput {
@@ -353,12 +328,6 @@ func (o PeeringArrayOutput) ToPeeringArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o PeeringArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Peering] {
-	return pulumix.Output[[]*Peering]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PeeringArrayOutput) Index(i pulumi.IntInput) PeeringOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Peering {
 		return vs[0].([]*Peering)[vs[1].(int)]
@@ -377,12 +346,6 @@ func (o PeeringMapOutput) ToPeeringMapOutput() PeeringMapOutput {
 
 func (o PeeringMapOutput) ToPeeringMapOutputWithContext(ctx context.Context) PeeringMapOutput {
 	return o
-}
-
-func (o PeeringMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Peering] {
-	return pulumix.Output[map[string]*Peering]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PeeringMapOutput) MapIndex(k pulumi.StringInput) PeeringOutput {

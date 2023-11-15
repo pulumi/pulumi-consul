@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `consulServiceIntentionsConfigEntry` resource configures [service intentions](https://developer.hashicorp.com/consul/docs/connect/config-entries/service-intentions) that are configurations for controlling access between services in the service mesh. A single service intentions configuration entry specifies one destination service and one or more L4 traffic sources, L7 traffic sources, or combination of traffic sources.
@@ -225,12 +224,6 @@ func (i *ConfigEntryServiceIntentions) ToConfigEntryServiceIntentionsOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceIntentionsOutput)
 }
 
-func (i *ConfigEntryServiceIntentions) ToOutput(ctx context.Context) pulumix.Output[*ConfigEntryServiceIntentions] {
-	return pulumix.Output[*ConfigEntryServiceIntentions]{
-		OutputState: i.ToConfigEntryServiceIntentionsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ConfigEntryServiceIntentionsArrayInput is an input type that accepts ConfigEntryServiceIntentionsArray and ConfigEntryServiceIntentionsArrayOutput values.
 // You can construct a concrete instance of `ConfigEntryServiceIntentionsArrayInput` via:
 //
@@ -254,12 +247,6 @@ func (i ConfigEntryServiceIntentionsArray) ToConfigEntryServiceIntentionsArrayOu
 
 func (i ConfigEntryServiceIntentionsArray) ToConfigEntryServiceIntentionsArrayOutputWithContext(ctx context.Context) ConfigEntryServiceIntentionsArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceIntentionsArrayOutput)
-}
-
-func (i ConfigEntryServiceIntentionsArray) ToOutput(ctx context.Context) pulumix.Output[[]*ConfigEntryServiceIntentions] {
-	return pulumix.Output[[]*ConfigEntryServiceIntentions]{
-		OutputState: i.ToConfigEntryServiceIntentionsArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ConfigEntryServiceIntentionsMapInput is an input type that accepts ConfigEntryServiceIntentionsMap and ConfigEntryServiceIntentionsMapOutput values.
@@ -287,12 +274,6 @@ func (i ConfigEntryServiceIntentionsMap) ToConfigEntryServiceIntentionsMapOutput
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceIntentionsMapOutput)
 }
 
-func (i ConfigEntryServiceIntentionsMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConfigEntryServiceIntentions] {
-	return pulumix.Output[map[string]*ConfigEntryServiceIntentions]{
-		OutputState: i.ToConfigEntryServiceIntentionsMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConfigEntryServiceIntentionsOutput struct{ *pulumi.OutputState }
 
 func (ConfigEntryServiceIntentionsOutput) ElementType() reflect.Type {
@@ -305,12 +286,6 @@ func (o ConfigEntryServiceIntentionsOutput) ToConfigEntryServiceIntentionsOutput
 
 func (o ConfigEntryServiceIntentionsOutput) ToConfigEntryServiceIntentionsOutputWithContext(ctx context.Context) ConfigEntryServiceIntentionsOutput {
 	return o
-}
-
-func (o ConfigEntryServiceIntentionsOutput) ToOutput(ctx context.Context) pulumix.Output[*ConfigEntryServiceIntentions] {
-	return pulumix.Output[*ConfigEntryServiceIntentions]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies a JSON Web Token provider configured in a JWT provider configuration entry, as well as additional configurations for verifying a service's JWT before authorizing communication between services
@@ -357,12 +332,6 @@ func (o ConfigEntryServiceIntentionsArrayOutput) ToConfigEntryServiceIntentionsA
 	return o
 }
 
-func (o ConfigEntryServiceIntentionsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ConfigEntryServiceIntentions] {
-	return pulumix.Output[[]*ConfigEntryServiceIntentions]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ConfigEntryServiceIntentionsArrayOutput) Index(i pulumi.IntInput) ConfigEntryServiceIntentionsOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ConfigEntryServiceIntentions {
 		return vs[0].([]*ConfigEntryServiceIntentions)[vs[1].(int)]
@@ -381,12 +350,6 @@ func (o ConfigEntryServiceIntentionsMapOutput) ToConfigEntryServiceIntentionsMap
 
 func (o ConfigEntryServiceIntentionsMapOutput) ToConfigEntryServiceIntentionsMapOutputWithContext(ctx context.Context) ConfigEntryServiceIntentionsMapOutput {
 	return o
-}
-
-func (o ConfigEntryServiceIntentionsMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConfigEntryServiceIntentions] {
-	return pulumix.Output[map[string]*ConfigEntryServiceIntentions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConfigEntryServiceIntentionsMapOutput) MapIndex(k pulumi.StringInput) ConfigEntryServiceIntentionsOutput {

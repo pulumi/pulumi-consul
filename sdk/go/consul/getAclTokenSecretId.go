@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -132,12 +131,6 @@ func (o GetAclTokenSecretIdResultOutput) ToGetAclTokenSecretIdResultOutput() Get
 
 func (o GetAclTokenSecretIdResultOutput) ToGetAclTokenSecretIdResultOutputWithContext(ctx context.Context) GetAclTokenSecretIdResultOutput {
 	return o
-}
-
-func (o GetAclTokenSecretIdResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAclTokenSecretIdResult] {
-	return pulumix.Output[GetAclTokenSecretIdResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetAclTokenSecretIdResultOutput) AccessorId() pulumi.StringOutput {
