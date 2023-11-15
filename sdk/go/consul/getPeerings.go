@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -93,12 +92,6 @@ func (o GetPeeringsResultOutput) ToGetPeeringsResultOutput() GetPeeringsResultOu
 
 func (o GetPeeringsResultOutput) ToGetPeeringsResultOutputWithContext(ctx context.Context) GetPeeringsResultOutput {
 	return o
-}
-
-func (o GetPeeringsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetPeeringsResult] {
-	return pulumix.Output[GetPeeringsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

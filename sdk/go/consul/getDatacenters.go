@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `getDatacenters` data source returns the list of all knwown Consul
@@ -58,12 +57,6 @@ func (o GetDatacentersResultOutput) ToGetDatacentersResultOutput() GetDatacenter
 
 func (o GetDatacentersResultOutput) ToGetDatacentersResultOutputWithContext(ctx context.Context) GetDatacentersResultOutput {
 	return o
-}
-
-func (o GetDatacentersResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDatacentersResult] {
-	return pulumix.Output[GetDatacentersResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of datacenters known. The datacenters will be sorted

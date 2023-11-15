@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -162,12 +161,6 @@ func (i *AclRolePolicyAttachment) ToAclRolePolicyAttachmentOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(AclRolePolicyAttachmentOutput)
 }
 
-func (i *AclRolePolicyAttachment) ToOutput(ctx context.Context) pulumix.Output[*AclRolePolicyAttachment] {
-	return pulumix.Output[*AclRolePolicyAttachment]{
-		OutputState: i.ToAclRolePolicyAttachmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AclRolePolicyAttachmentArrayInput is an input type that accepts AclRolePolicyAttachmentArray and AclRolePolicyAttachmentArrayOutput values.
 // You can construct a concrete instance of `AclRolePolicyAttachmentArrayInput` via:
 //
@@ -191,12 +184,6 @@ func (i AclRolePolicyAttachmentArray) ToAclRolePolicyAttachmentArrayOutput() Acl
 
 func (i AclRolePolicyAttachmentArray) ToAclRolePolicyAttachmentArrayOutputWithContext(ctx context.Context) AclRolePolicyAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AclRolePolicyAttachmentArrayOutput)
-}
-
-func (i AclRolePolicyAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*AclRolePolicyAttachment] {
-	return pulumix.Output[[]*AclRolePolicyAttachment]{
-		OutputState: i.ToAclRolePolicyAttachmentArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AclRolePolicyAttachmentMapInput is an input type that accepts AclRolePolicyAttachmentMap and AclRolePolicyAttachmentMapOutput values.
@@ -224,12 +211,6 @@ func (i AclRolePolicyAttachmentMap) ToAclRolePolicyAttachmentMapOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(AclRolePolicyAttachmentMapOutput)
 }
 
-func (i AclRolePolicyAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AclRolePolicyAttachment] {
-	return pulumix.Output[map[string]*AclRolePolicyAttachment]{
-		OutputState: i.ToAclRolePolicyAttachmentMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AclRolePolicyAttachmentOutput struct{ *pulumi.OutputState }
 
 func (AclRolePolicyAttachmentOutput) ElementType() reflect.Type {
@@ -242,12 +223,6 @@ func (o AclRolePolicyAttachmentOutput) ToAclRolePolicyAttachmentOutput() AclRole
 
 func (o AclRolePolicyAttachmentOutput) ToAclRolePolicyAttachmentOutputWithContext(ctx context.Context) AclRolePolicyAttachmentOutput {
 	return o
-}
-
-func (o AclRolePolicyAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*AclRolePolicyAttachment] {
-	return pulumix.Output[*AclRolePolicyAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The policy name.
@@ -274,12 +249,6 @@ func (o AclRolePolicyAttachmentArrayOutput) ToAclRolePolicyAttachmentArrayOutput
 	return o
 }
 
-func (o AclRolePolicyAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AclRolePolicyAttachment] {
-	return pulumix.Output[[]*AclRolePolicyAttachment]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AclRolePolicyAttachmentArrayOutput) Index(i pulumi.IntInput) AclRolePolicyAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AclRolePolicyAttachment {
 		return vs[0].([]*AclRolePolicyAttachment)[vs[1].(int)]
@@ -298,12 +267,6 @@ func (o AclRolePolicyAttachmentMapOutput) ToAclRolePolicyAttachmentMapOutput() A
 
 func (o AclRolePolicyAttachmentMapOutput) ToAclRolePolicyAttachmentMapOutputWithContext(ctx context.Context) AclRolePolicyAttachmentMapOutput {
 	return o
-}
-
-func (o AclRolePolicyAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AclRolePolicyAttachment] {
-	return pulumix.Output[map[string]*AclRolePolicyAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AclRolePolicyAttachmentMapOutput) MapIndex(k pulumi.StringInput) AclRolePolicyAttachmentOutput {

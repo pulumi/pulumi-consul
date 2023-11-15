@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `ConfigEntryServiceSplitter` resource configures a [service splitter](https://developer.hashicorp.com/consul/docs/connect/config-entries/service-splitter) that will redirect a percentage of incoming traffic requests for a service to one or more specific service instances.
@@ -249,12 +248,6 @@ func (i *ConfigEntryServiceSplitter) ToConfigEntryServiceSplitterOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceSplitterOutput)
 }
 
-func (i *ConfigEntryServiceSplitter) ToOutput(ctx context.Context) pulumix.Output[*ConfigEntryServiceSplitter] {
-	return pulumix.Output[*ConfigEntryServiceSplitter]{
-		OutputState: i.ToConfigEntryServiceSplitterOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ConfigEntryServiceSplitterArrayInput is an input type that accepts ConfigEntryServiceSplitterArray and ConfigEntryServiceSplitterArrayOutput values.
 // You can construct a concrete instance of `ConfigEntryServiceSplitterArrayInput` via:
 //
@@ -278,12 +271,6 @@ func (i ConfigEntryServiceSplitterArray) ToConfigEntryServiceSplitterArrayOutput
 
 func (i ConfigEntryServiceSplitterArray) ToConfigEntryServiceSplitterArrayOutputWithContext(ctx context.Context) ConfigEntryServiceSplitterArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceSplitterArrayOutput)
-}
-
-func (i ConfigEntryServiceSplitterArray) ToOutput(ctx context.Context) pulumix.Output[[]*ConfigEntryServiceSplitter] {
-	return pulumix.Output[[]*ConfigEntryServiceSplitter]{
-		OutputState: i.ToConfigEntryServiceSplitterArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ConfigEntryServiceSplitterMapInput is an input type that accepts ConfigEntryServiceSplitterMap and ConfigEntryServiceSplitterMapOutput values.
@@ -311,12 +298,6 @@ func (i ConfigEntryServiceSplitterMap) ToConfigEntryServiceSplitterMapOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceSplitterMapOutput)
 }
 
-func (i ConfigEntryServiceSplitterMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConfigEntryServiceSplitter] {
-	return pulumix.Output[map[string]*ConfigEntryServiceSplitter]{
-		OutputState: i.ToConfigEntryServiceSplitterMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConfigEntryServiceSplitterOutput struct{ *pulumi.OutputState }
 
 func (ConfigEntryServiceSplitterOutput) ElementType() reflect.Type {
@@ -329,12 +310,6 @@ func (o ConfigEntryServiceSplitterOutput) ToConfigEntryServiceSplitterOutput() C
 
 func (o ConfigEntryServiceSplitterOutput) ToConfigEntryServiceSplitterOutputWithContext(ctx context.Context) ConfigEntryServiceSplitterOutput {
 	return o
-}
-
-func (o ConfigEntryServiceSplitterOutput) ToOutput(ctx context.Context) pulumix.Output[*ConfigEntryServiceSplitter] {
-	return pulumix.Output[*ConfigEntryServiceSplitter]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies key-value pairs to add to the KV store.
@@ -376,12 +351,6 @@ func (o ConfigEntryServiceSplitterArrayOutput) ToConfigEntryServiceSplitterArray
 	return o
 }
 
-func (o ConfigEntryServiceSplitterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ConfigEntryServiceSplitter] {
-	return pulumix.Output[[]*ConfigEntryServiceSplitter]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ConfigEntryServiceSplitterArrayOutput) Index(i pulumi.IntInput) ConfigEntryServiceSplitterOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ConfigEntryServiceSplitter {
 		return vs[0].([]*ConfigEntryServiceSplitter)[vs[1].(int)]
@@ -400,12 +369,6 @@ func (o ConfigEntryServiceSplitterMapOutput) ToConfigEntryServiceSplitterMapOutp
 
 func (o ConfigEntryServiceSplitterMapOutput) ToConfigEntryServiceSplitterMapOutputWithContext(ctx context.Context) ConfigEntryServiceSplitterMapOutput {
 	return o
-}
-
-func (o ConfigEntryServiceSplitterMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConfigEntryServiceSplitter] {
-	return pulumix.Output[map[string]*ConfigEntryServiceSplitter]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConfigEntryServiceSplitterMapOutput) MapIndex(k pulumi.StringInput) ConfigEntryServiceSplitterOutput {

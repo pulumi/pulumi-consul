@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `ConfigEntryServiceDefaults` resource configures a [service defaults](https://developer.hashicorp.com/consul/docs/connect/config-entries/service-defaults) config entry that contains common configuration settings for service mesh services, such as upstreams and gateways.
@@ -274,12 +273,6 @@ func (i *ConfigEntryServiceDefaults) ToConfigEntryServiceDefaultsOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceDefaultsOutput)
 }
 
-func (i *ConfigEntryServiceDefaults) ToOutput(ctx context.Context) pulumix.Output[*ConfigEntryServiceDefaults] {
-	return pulumix.Output[*ConfigEntryServiceDefaults]{
-		OutputState: i.ToConfigEntryServiceDefaultsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ConfigEntryServiceDefaultsArrayInput is an input type that accepts ConfigEntryServiceDefaultsArray and ConfigEntryServiceDefaultsArrayOutput values.
 // You can construct a concrete instance of `ConfigEntryServiceDefaultsArrayInput` via:
 //
@@ -303,12 +296,6 @@ func (i ConfigEntryServiceDefaultsArray) ToConfigEntryServiceDefaultsArrayOutput
 
 func (i ConfigEntryServiceDefaultsArray) ToConfigEntryServiceDefaultsArrayOutputWithContext(ctx context.Context) ConfigEntryServiceDefaultsArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceDefaultsArrayOutput)
-}
-
-func (i ConfigEntryServiceDefaultsArray) ToOutput(ctx context.Context) pulumix.Output[[]*ConfigEntryServiceDefaults] {
-	return pulumix.Output[[]*ConfigEntryServiceDefaults]{
-		OutputState: i.ToConfigEntryServiceDefaultsArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ConfigEntryServiceDefaultsMapInput is an input type that accepts ConfigEntryServiceDefaultsMap and ConfigEntryServiceDefaultsMapOutput values.
@@ -336,12 +323,6 @@ func (i ConfigEntryServiceDefaultsMap) ToConfigEntryServiceDefaultsMapOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigEntryServiceDefaultsMapOutput)
 }
 
-func (i ConfigEntryServiceDefaultsMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConfigEntryServiceDefaults] {
-	return pulumix.Output[map[string]*ConfigEntryServiceDefaults]{
-		OutputState: i.ToConfigEntryServiceDefaultsMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConfigEntryServiceDefaultsOutput struct{ *pulumi.OutputState }
 
 func (ConfigEntryServiceDefaultsOutput) ElementType() reflect.Type {
@@ -354,12 +335,6 @@ func (o ConfigEntryServiceDefaultsOutput) ToConfigEntryServiceDefaultsOutput() C
 
 func (o ConfigEntryServiceDefaultsOutput) ToConfigEntryServiceDefaultsOutputWithContext(ctx context.Context) ConfigEntryServiceDefaultsOutput {
 	return o
-}
-
-func (o ConfigEntryServiceDefaultsOutput) ToOutput(ctx context.Context) pulumix.Output[*ConfigEntryServiceDefaults] {
-	return pulumix.Output[*ConfigEntryServiceDefaults]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies the strategy for allocating inbound connections to the service across Envoy proxy threads.
@@ -476,12 +451,6 @@ func (o ConfigEntryServiceDefaultsArrayOutput) ToConfigEntryServiceDefaultsArray
 	return o
 }
 
-func (o ConfigEntryServiceDefaultsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ConfigEntryServiceDefaults] {
-	return pulumix.Output[[]*ConfigEntryServiceDefaults]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ConfigEntryServiceDefaultsArrayOutput) Index(i pulumi.IntInput) ConfigEntryServiceDefaultsOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ConfigEntryServiceDefaults {
 		return vs[0].([]*ConfigEntryServiceDefaults)[vs[1].(int)]
@@ -500,12 +469,6 @@ func (o ConfigEntryServiceDefaultsMapOutput) ToConfigEntryServiceDefaultsMapOutp
 
 func (o ConfigEntryServiceDefaultsMapOutput) ToConfigEntryServiceDefaultsMapOutputWithContext(ctx context.Context) ConfigEntryServiceDefaultsMapOutput {
 	return o
-}
-
-func (o ConfigEntryServiceDefaultsMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConfigEntryServiceDefaults] {
-	return pulumix.Output[map[string]*ConfigEntryServiceDefaults]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConfigEntryServiceDefaultsMapOutput) MapIndex(k pulumi.StringInput) ConfigEntryServiceDefaultsOutput {
