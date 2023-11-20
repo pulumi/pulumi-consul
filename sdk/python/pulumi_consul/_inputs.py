@@ -4671,13 +4671,9 @@ class GetKeysKeyArgs:
                  path: str,
                  default: Optional[str] = None):
         """
-        :param str name: This is the name of the key. This value of the
-               key is exposed as `var.<name>`. This is not the path of the key
-               in Consul.
-        :param str path: This is the path in Consul that should be read
-               or written to.
-        :param str default: This is the default value to set for `var.<name>`
-               if the key does not exist in Consul. Defaults to an empty string.
+        :param str name: This is the name of the key. This value of the key is exposed as `var.<name>`. This is not the path of the key in Consul.
+        :param str path: This is the path in Consul that should be read or written to.
+        :param str default: This is the default value to set for `var.<name>` if the key does not exist in Consul. Defaults to an empty string.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "path", path)
@@ -4688,9 +4684,7 @@ class GetKeysKeyArgs:
     @pulumi.getter
     def name(self) -> str:
         """
-        This is the name of the key. This value of the
-        key is exposed as `var.<name>`. This is not the path of the key
-        in Consul.
+        This is the name of the key. This value of the key is exposed as `var.<name>`. This is not the path of the key in Consul.
         """
         return pulumi.get(self, "name")
 
@@ -4702,8 +4696,7 @@ class GetKeysKeyArgs:
     @pulumi.getter
     def path(self) -> str:
         """
-        This is the path in Consul that should be read
-        or written to.
+        This is the path in Consul that should be read or written to.
         """
         return pulumi.get(self, "path")
 
@@ -4715,8 +4708,7 @@ class GetKeysKeyArgs:
     @pulumi.getter
     def default(self) -> Optional[str]:
         """
-        This is the default value to set for `var.<name>`
-        if the key does not exist in Consul. Defaults to an empty string.
+        This is the default value to set for `var.<name>` if the key does not exist in Consul. Defaults to an empty string.
         """
         return pulumi.get(self, "default")
 

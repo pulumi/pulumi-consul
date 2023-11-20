@@ -5,6 +5,7 @@ package com.pulumi.consul.outputs;
 
 import com.pulumi.consul.outputs.GetKeysKey;
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -15,21 +16,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetKeysResult {
     /**
-     * @return The datacenter the keys are being read from.
-     * * `var.&lt;name&gt;` - For each name given, the corresponding attribute
-     *   has the value of the key.
+     * @return The datacenter to use. This overrides the agent&#39;s default datacenter and the datacenter in the provider setup.
      * 
      */
     private String datacenter;
+    /**
+     * @return Whether to return an error when a key is absent from the KV store and no default is configured. This defaults to `false`.
+     * 
+     */
+    private @Nullable Boolean errorOnMissingKeys;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    /**
+     * @return Specifies a key in Consul to be read. Supported values documented below. Multiple blocks supported.
+     * 
+     */
     private @Nullable List<GetKeysKey> keys;
+    /**
+     * @return The namespace to lookup the keys.
+     * 
+     */
     private @Nullable String namespace;
+    /**
+     * @return The partition to lookup the keys.
+     * 
+     */
     private @Nullable String partition;
     /**
+     * @return The ACL token to use. This overrides the token that the agent provides by default.
+     * 
      * @deprecated
      * The token argument has been deprecated and will be removed in a future release.
      * Please use the token argument in the provider configuration
@@ -38,17 +56,26 @@ public final class GetKeysResult {
     @Deprecated /* The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration */
     private @Nullable String token;
+    /**
+     * @return For each name given, the corresponding attribute has the value of the key.
+     * 
+     */
     private Map<String,String> var_;
 
     private GetKeysResult() {}
     /**
-     * @return The datacenter the keys are being read from.
-     * * `var.&lt;name&gt;` - For each name given, the corresponding attribute
-     *   has the value of the key.
+     * @return The datacenter to use. This overrides the agent&#39;s default datacenter and the datacenter in the provider setup.
      * 
      */
     public String datacenter() {
         return this.datacenter;
+    }
+    /**
+     * @return Whether to return an error when a key is absent from the KV store and no default is configured. This defaults to `false`.
+     * 
+     */
+    public Optional<Boolean> errorOnMissingKeys() {
+        return Optional.ofNullable(this.errorOnMissingKeys);
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -57,16 +84,30 @@ Please use the token argument in the provider configuration */
     public String id() {
         return this.id;
     }
+    /**
+     * @return Specifies a key in Consul to be read. Supported values documented below. Multiple blocks supported.
+     * 
+     */
     public List<GetKeysKey> keys() {
         return this.keys == null ? List.of() : this.keys;
     }
+    /**
+     * @return The namespace to lookup the keys.
+     * 
+     */
     public Optional<String> namespace() {
         return Optional.ofNullable(this.namespace);
     }
+    /**
+     * @return The partition to lookup the keys.
+     * 
+     */
     public Optional<String> partition() {
         return Optional.ofNullable(this.partition);
     }
     /**
+     * @return The ACL token to use. This overrides the token that the agent provides by default.
+     * 
      * @deprecated
      * The token argument has been deprecated and will be removed in a future release.
      * Please use the token argument in the provider configuration
@@ -77,6 +118,10 @@ Please use the token argument in the provider configuration */
     public Optional<String> token() {
         return Optional.ofNullable(this.token);
     }
+    /**
+     * @return For each name given, the corresponding attribute has the value of the key.
+     * 
+     */
     public Map<String,String> var_() {
         return this.var_;
     }
@@ -91,6 +136,7 @@ Please use the token argument in the provider configuration */
     @CustomType.Builder
     public static final class Builder {
         private String datacenter;
+        private @Nullable Boolean errorOnMissingKeys;
         private String id;
         private @Nullable List<GetKeysKey> keys;
         private @Nullable String namespace;
@@ -101,6 +147,7 @@ Please use the token argument in the provider configuration */
         public Builder(GetKeysResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.datacenter = defaults.datacenter;
+    	      this.errorOnMissingKeys = defaults.errorOnMissingKeys;
     	      this.id = defaults.id;
     	      this.keys = defaults.keys;
     	      this.namespace = defaults.namespace;
@@ -112,6 +159,11 @@ Please use the token argument in the provider configuration */
         @CustomType.Setter
         public Builder datacenter(String datacenter) {
             this.datacenter = Objects.requireNonNull(datacenter);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder errorOnMissingKeys(@Nullable Boolean errorOnMissingKeys) {
+            this.errorOnMissingKeys = errorOnMissingKeys;
             return this;
         }
         @CustomType.Setter
@@ -150,6 +202,7 @@ Please use the token argument in the provider configuration */
         public GetKeysResult build() {
             final var _resultValue = new GetKeysResult();
             _resultValue.datacenter = datacenter;
+            _resultValue.errorOnMissingKeys = errorOnMissingKeys;
             _resultValue.id = id;
             _resultValue.keys = keys;
             _resultValue.namespace = namespace;

@@ -2312,8 +2312,7 @@ public final class ConsulFunctions {
         return Deployment.getInstance().invokeAsync("consul:index/getKeyPrefix:getKeyPrefix", TypeShape.of(GetKeyPrefixResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `consul.Keys` resource reads values from the Consul key/value store.
-     * This is a powerful way dynamically set values in templates.
+     * The `consul.Keys` datasource reads values from the Consul key/value store. This is a powerful way to dynamically set values in templates.
      * 
      * ## Example Usage
      * ```java
@@ -2342,11 +2341,10 @@ public final class ConsulFunctions {
      *         final var appKeys = ConsulFunctions.getKeys(GetKeysArgs.builder()
      *             .datacenter(&#34;nyc1&#34;)
      *             .keys(GetKeysKeyArgs.builder()
-     *                 .default_(&#34;ami-1234&#34;)
      *                 .name(&#34;ami&#34;)
      *                 .path(&#34;service/app/launch_ami&#34;)
+     *                 .default_(&#34;ami-1234&#34;)
      *                 .build())
-     *             .token(&#34;abcd&#34;)
      *             .build());
      * 
      *         var appInstance = new Instance(&#34;appInstance&#34;, InstanceArgs.builder()        
@@ -2362,8 +2360,7 @@ public final class ConsulFunctions {
         return getKeys(GetKeysArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * The `consul.Keys` resource reads values from the Consul key/value store.
-     * This is a powerful way dynamically set values in templates.
+     * The `consul.Keys` datasource reads values from the Consul key/value store. This is a powerful way to dynamically set values in templates.
      * 
      * ## Example Usage
      * ```java
@@ -2392,11 +2389,10 @@ public final class ConsulFunctions {
      *         final var appKeys = ConsulFunctions.getKeys(GetKeysArgs.builder()
      *             .datacenter(&#34;nyc1&#34;)
      *             .keys(GetKeysKeyArgs.builder()
-     *                 .default_(&#34;ami-1234&#34;)
      *                 .name(&#34;ami&#34;)
      *                 .path(&#34;service/app/launch_ami&#34;)
+     *                 .default_(&#34;ami-1234&#34;)
      *                 .build())
-     *             .token(&#34;abcd&#34;)
      *             .build());
      * 
      *         var appInstance = new Instance(&#34;appInstance&#34;, InstanceArgs.builder()        
@@ -2412,8 +2408,7 @@ public final class ConsulFunctions {
         return getKeysPlain(GetKeysPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * The `consul.Keys` resource reads values from the Consul key/value store.
-     * This is a powerful way dynamically set values in templates.
+     * The `consul.Keys` datasource reads values from the Consul key/value store. This is a powerful way to dynamically set values in templates.
      * 
      * ## Example Usage
      * ```java
@@ -2442,11 +2437,10 @@ public final class ConsulFunctions {
      *         final var appKeys = ConsulFunctions.getKeys(GetKeysArgs.builder()
      *             .datacenter(&#34;nyc1&#34;)
      *             .keys(GetKeysKeyArgs.builder()
-     *                 .default_(&#34;ami-1234&#34;)
      *                 .name(&#34;ami&#34;)
      *                 .path(&#34;service/app/launch_ami&#34;)
+     *                 .default_(&#34;ami-1234&#34;)
      *                 .build())
-     *             .token(&#34;abcd&#34;)
      *             .build());
      * 
      *         var appInstance = new Instance(&#34;appInstance&#34;, InstanceArgs.builder()        
@@ -2462,8 +2456,7 @@ public final class ConsulFunctions {
         return getKeys(args, InvokeOptions.Empty);
     }
     /**
-     * The `consul.Keys` resource reads values from the Consul key/value store.
-     * This is a powerful way dynamically set values in templates.
+     * The `consul.Keys` datasource reads values from the Consul key/value store. This is a powerful way to dynamically set values in templates.
      * 
      * ## Example Usage
      * ```java
@@ -2492,11 +2485,10 @@ public final class ConsulFunctions {
      *         final var appKeys = ConsulFunctions.getKeys(GetKeysArgs.builder()
      *             .datacenter(&#34;nyc1&#34;)
      *             .keys(GetKeysKeyArgs.builder()
-     *                 .default_(&#34;ami-1234&#34;)
      *                 .name(&#34;ami&#34;)
      *                 .path(&#34;service/app/launch_ami&#34;)
+     *                 .default_(&#34;ami-1234&#34;)
      *                 .build())
-     *             .token(&#34;abcd&#34;)
      *             .build());
      * 
      *         var appInstance = new Instance(&#34;appInstance&#34;, InstanceArgs.builder()        
@@ -2512,8 +2504,7 @@ public final class ConsulFunctions {
         return getKeysPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The `consul.Keys` resource reads values from the Consul key/value store.
-     * This is a powerful way dynamically set values in templates.
+     * The `consul.Keys` datasource reads values from the Consul key/value store. This is a powerful way to dynamically set values in templates.
      * 
      * ## Example Usage
      * ```java
@@ -2542,11 +2533,10 @@ public final class ConsulFunctions {
      *         final var appKeys = ConsulFunctions.getKeys(GetKeysArgs.builder()
      *             .datacenter(&#34;nyc1&#34;)
      *             .keys(GetKeysKeyArgs.builder()
-     *                 .default_(&#34;ami-1234&#34;)
      *                 .name(&#34;ami&#34;)
      *                 .path(&#34;service/app/launch_ami&#34;)
+     *                 .default_(&#34;ami-1234&#34;)
      *                 .build())
-     *             .token(&#34;abcd&#34;)
      *             .build());
      * 
      *         var appInstance = new Instance(&#34;appInstance&#34;, InstanceArgs.builder()        
@@ -2562,8 +2552,7 @@ public final class ConsulFunctions {
         return Deployment.getInstance().invoke("consul:index/getKeys:getKeys", TypeShape.of(GetKeysResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `consul.Keys` resource reads values from the Consul key/value store.
-     * This is a powerful way dynamically set values in templates.
+     * The `consul.Keys` datasource reads values from the Consul key/value store. This is a powerful way to dynamically set values in templates.
      * 
      * ## Example Usage
      * ```java
@@ -2592,11 +2581,10 @@ public final class ConsulFunctions {
      *         final var appKeys = ConsulFunctions.getKeys(GetKeysArgs.builder()
      *             .datacenter(&#34;nyc1&#34;)
      *             .keys(GetKeysKeyArgs.builder()
-     *                 .default_(&#34;ami-1234&#34;)
      *                 .name(&#34;ami&#34;)
      *                 .path(&#34;service/app/launch_ami&#34;)
+     *                 .default_(&#34;ami-1234&#34;)
      *                 .build())
-     *             .token(&#34;abcd&#34;)
      *             .build());
      * 
      *         var appInstance = new Instance(&#34;appInstance&#34;, InstanceArgs.builder()        
