@@ -12,8 +12,7 @@ namespace Pulumi.Consul
     public static class GetKeys
     {
         /// <summary>
-        /// The `consul.Keys` resource reads values from the Consul key/value store.
-        /// This is a powerful way dynamically set values in templates.
+        /// The `consul.Keys` datasource reads values from the Consul key/value store. This is a powerful way to dynamically set values in templates.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -35,12 +34,11 @@ namespace Pulumi.Consul
         ///         {
         ///             new Consul.Inputs.GetKeysKeyInputArgs
         ///             {
-        ///                 Default = "ami-1234",
         ///                 Name = "ami",
         ///                 Path = "service/app/launch_ami",
+        ///                 Default = "ami-1234",
         ///             },
         ///         },
-        ///         Token = "abcd",
         ///     });
         /// 
         ///     // Start our instance with the dynamic ami value
@@ -49,6 +47,7 @@ namespace Pulumi.Consul
         ///         Ami = appKeys.Apply(getKeysResult =&gt; getKeysResult.Var?.Ami),
         ///     });
         /// 
+        ///     // ...
         /// });
         /// ```
         /// {{% /example %}}
@@ -58,8 +57,7 @@ namespace Pulumi.Consul
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKeysResult>("consul:index/getKeys:getKeys", args ?? new GetKeysArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The `consul.Keys` resource reads values from the Consul key/value store.
-        /// This is a powerful way dynamically set values in templates.
+        /// The `consul.Keys` datasource reads values from the Consul key/value store. This is a powerful way to dynamically set values in templates.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -81,12 +79,11 @@ namespace Pulumi.Consul
         ///         {
         ///             new Consul.Inputs.GetKeysKeyInputArgs
         ///             {
-        ///                 Default = "ami-1234",
         ///                 Name = "ami",
         ///                 Path = "service/app/launch_ami",
+        ///                 Default = "ami-1234",
         ///             },
         ///         },
-        ///         Token = "abcd",
         ///     });
         /// 
         ///     // Start our instance with the dynamic ami value
@@ -95,6 +92,7 @@ namespace Pulumi.Consul
         ///         Ami = appKeys.Apply(getKeysResult =&gt; getKeysResult.Var?.Ami),
         ///     });
         /// 
+        ///     // ...
         /// });
         /// ```
         /// {{% /example %}}
@@ -108,18 +106,22 @@ namespace Pulumi.Consul
     public sealed class GetKeysArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The datacenter to use. This overrides the
-        /// agent's default datacenter and the datacenter in the provider setup.
+        /// The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
         /// </summary>
         [Input("datacenter")]
         public string? Datacenter { get; set; }
+
+        /// <summary>
+        /// Whether to return an error when a key is absent from the KV store and no default is configured. This defaults to `false`.
+        /// </summary>
+        [Input("errorOnMissingKeys")]
+        public bool? ErrorOnMissingKeys { get; set; }
 
         [Input("keys")]
         private List<Inputs.GetKeysKeyArgs>? _keys;
 
         /// <summary>
-        /// Specifies a key in Consul to be read. Supported
-        /// values documented below. Multiple blocks supported.
+        /// Specifies a key in Consul to be read. Supported values documented below. Multiple blocks supported.
         /// </summary>
         public List<Inputs.GetKeysKeyArgs> Keys
         {
@@ -143,8 +145,7 @@ namespace Pulumi.Consul
         private string? _token;
 
         /// <summary>
-        /// The ACL token to use. This overrides the
-        /// token that the agent provides by default.
+        /// The ACL token to use. This overrides the token that the agent provides by default.
         /// </summary>
         [Obsolete(@"The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration")]
@@ -163,18 +164,22 @@ Please use the token argument in the provider configuration")]
     public sealed class GetKeysInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The datacenter to use. This overrides the
-        /// agent's default datacenter and the datacenter in the provider setup.
+        /// The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
         /// </summary>
         [Input("datacenter")]
         public Input<string>? Datacenter { get; set; }
+
+        /// <summary>
+        /// Whether to return an error when a key is absent from the KV store and no default is configured. This defaults to `false`.
+        /// </summary>
+        [Input("errorOnMissingKeys")]
+        public Input<bool>? ErrorOnMissingKeys { get; set; }
 
         [Input("keys")]
         private InputList<Inputs.GetKeysKeyInputArgs>? _keys;
 
         /// <summary>
-        /// Specifies a key in Consul to be read. Supported
-        /// values documented below. Multiple blocks supported.
+        /// Specifies a key in Consul to be read. Supported values documented below. Multiple blocks supported.
         /// </summary>
         public InputList<Inputs.GetKeysKeyInputArgs> Keys
         {
@@ -198,8 +203,7 @@ Please use the token argument in the provider configuration")]
         private Input<string>? _token;
 
         /// <summary>
-        /// The ACL token to use. This overrides the
-        /// token that the agent provides by default.
+        /// The ACL token to use. This overrides the token that the agent provides by default.
         /// </summary>
         [Obsolete(@"The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration")]
@@ -224,24 +228,43 @@ Please use the token argument in the provider configuration")]
     public sealed class GetKeysResult
     {
         /// <summary>
-        /// The datacenter the keys are being read from.
-        /// * `var.&lt;name&gt;` - For each name given, the corresponding attribute
-        /// has the value of the key.
+        /// The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
         /// </summary>
         public readonly string Datacenter;
+        /// <summary>
+        /// Whether to return an error when a key is absent from the KV store and no default is configured. This defaults to `false`.
+        /// </summary>
+        public readonly bool? ErrorOnMissingKeys;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Specifies a key in Consul to be read. Supported values documented below. Multiple blocks supported.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetKeysKeyResult> Keys;
+        /// <summary>
+        /// The namespace to lookup the keys.
+        /// </summary>
         public readonly string? Namespace;
+        /// <summary>
+        /// The partition to lookup the keys.
+        /// </summary>
         public readonly string? Partition;
+        /// <summary>
+        /// The ACL token to use. This overrides the token that the agent provides by default.
+        /// </summary>
         public readonly string? Token;
+        /// <summary>
+        /// For each name given, the corresponding attribute has the value of the key.
+        /// </summary>
         public readonly ImmutableDictionary<string, string> Var;
 
         [OutputConstructor]
         private GetKeysResult(
             string datacenter,
+
+            bool? errorOnMissingKeys,
 
             string id,
 
@@ -256,6 +279,7 @@ Please use the token argument in the provider configuration")]
             ImmutableDictionary<string, string> var)
         {
             Datacenter = datacenter;
+            ErrorOnMissingKeys = errorOnMissingKeys;
             Id = id;
             Keys = keys;
             Namespace = @namespace;
