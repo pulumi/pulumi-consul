@@ -12,46 +12,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetKeysKey {
     /**
-     * @return This is the default value to set for `var.&lt;name&gt;`
-     * if the key does not exist in Consul. Defaults to an empty string.
+     * @return This is the default value to set for `var.&lt;name&gt;` if the key does not exist in Consul. Defaults to an empty string.
      * 
      */
     private @Nullable String default_;
     /**
-     * @return This is the name of the key. This value of the
-     * key is exposed as `var.&lt;name&gt;`. This is not the path of the key
-     * in Consul.
+     * @return This is the name of the key. This value of the key is exposed as `var.&lt;name&gt;`. This is not the path of the key in Consul.
      * 
      */
     private String name;
     /**
-     * @return This is the path in Consul that should be read
-     * or written to.
+     * @return This is the path in Consul that should be read or written to.
      * 
      */
     private String path;
 
     private GetKeysKey() {}
     /**
-     * @return This is the default value to set for `var.&lt;name&gt;`
-     * if the key does not exist in Consul. Defaults to an empty string.
+     * @return This is the default value to set for `var.&lt;name&gt;` if the key does not exist in Consul. Defaults to an empty string.
      * 
      */
     public Optional<String> default_() {
         return Optional.ofNullable(this.default_);
     }
     /**
-     * @return This is the name of the key. This value of the
-     * key is exposed as `var.&lt;name&gt;`. This is not the path of the key
-     * in Consul.
+     * @return This is the name of the key. This value of the key is exposed as `var.&lt;name&gt;`. This is not the path of the key in Consul.
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return This is the path in Consul that should be read
-     * or written to.
+     * @return This is the path in Consul that should be read or written to.
      * 
      */
     public String path() {

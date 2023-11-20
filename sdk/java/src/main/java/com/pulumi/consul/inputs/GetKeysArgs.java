@@ -6,6 +6,7 @@ package com.pulumi.consul.inputs;
 import com.pulumi.consul.inputs.GetKeysKeyArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -18,16 +19,14 @@ public final class GetKeysArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetKeysArgs Empty = new GetKeysArgs();
 
     /**
-     * The datacenter to use. This overrides the
-     * agent&#39;s default datacenter and the datacenter in the provider setup.
+     * The datacenter to use. This overrides the agent&#39;s default datacenter and the datacenter in the provider setup.
      * 
      */
     @Import(name="datacenter")
     private @Nullable Output<String> datacenter;
 
     /**
-     * @return The datacenter to use. This overrides the
-     * agent&#39;s default datacenter and the datacenter in the provider setup.
+     * @return The datacenter to use. This overrides the agent&#39;s default datacenter and the datacenter in the provider setup.
      * 
      */
     public Optional<Output<String>> datacenter() {
@@ -35,16 +34,29 @@ public final class GetKeysArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Specifies a key in Consul to be read. Supported
-     * values documented below. Multiple blocks supported.
+     * Whether to return an error when a key is absent from the KV store and no default is configured. This defaults to `false`.
+     * 
+     */
+    @Import(name="errorOnMissingKeys")
+    private @Nullable Output<Boolean> errorOnMissingKeys;
+
+    /**
+     * @return Whether to return an error when a key is absent from the KV store and no default is configured. This defaults to `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> errorOnMissingKeys() {
+        return Optional.ofNullable(this.errorOnMissingKeys);
+    }
+
+    /**
+     * Specifies a key in Consul to be read. Supported values documented below. Multiple blocks supported.
      * 
      */
     @Import(name="keys")
     private @Nullable Output<List<GetKeysKeyArgs>> keys;
 
     /**
-     * @return Specifies a key in Consul to be read. Supported
-     * values documented below. Multiple blocks supported.
+     * @return Specifies a key in Consul to be read. Supported values documented below. Multiple blocks supported.
      * 
      */
     public Optional<Output<List<GetKeysKeyArgs>>> keys() {
@@ -82,8 +94,7 @@ public final class GetKeysArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The ACL token to use. This overrides the
-     * token that the agent provides by default.
+     * The ACL token to use. This overrides the token that the agent provides by default.
      * 
      * @deprecated
      * The token argument has been deprecated and will be removed in a future release.
@@ -96,8 +107,7 @@ Please use the token argument in the provider configuration */
     private @Nullable Output<String> token;
 
     /**
-     * @return The ACL token to use. This overrides the
-     * token that the agent provides by default.
+     * @return The ACL token to use. This overrides the token that the agent provides by default.
      * 
      * @deprecated
      * The token argument has been deprecated and will be removed in a future release.
@@ -114,6 +124,7 @@ Please use the token argument in the provider configuration */
 
     private GetKeysArgs(GetKeysArgs $) {
         this.datacenter = $.datacenter;
+        this.errorOnMissingKeys = $.errorOnMissingKeys;
         this.keys = $.keys;
         this.namespace = $.namespace;
         this.partition = $.partition;
@@ -139,8 +150,7 @@ Please use the token argument in the provider configuration */
         }
 
         /**
-         * @param datacenter The datacenter to use. This overrides the
-         * agent&#39;s default datacenter and the datacenter in the provider setup.
+         * @param datacenter The datacenter to use. This overrides the agent&#39;s default datacenter and the datacenter in the provider setup.
          * 
          * @return builder
          * 
@@ -151,8 +161,7 @@ Please use the token argument in the provider configuration */
         }
 
         /**
-         * @param datacenter The datacenter to use. This overrides the
-         * agent&#39;s default datacenter and the datacenter in the provider setup.
+         * @param datacenter The datacenter to use. This overrides the agent&#39;s default datacenter and the datacenter in the provider setup.
          * 
          * @return builder
          * 
@@ -162,8 +171,28 @@ Please use the token argument in the provider configuration */
         }
 
         /**
-         * @param keys Specifies a key in Consul to be read. Supported
-         * values documented below. Multiple blocks supported.
+         * @param errorOnMissingKeys Whether to return an error when a key is absent from the KV store and no default is configured. This defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder errorOnMissingKeys(@Nullable Output<Boolean> errorOnMissingKeys) {
+            $.errorOnMissingKeys = errorOnMissingKeys;
+            return this;
+        }
+
+        /**
+         * @param errorOnMissingKeys Whether to return an error when a key is absent from the KV store and no default is configured. This defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder errorOnMissingKeys(Boolean errorOnMissingKeys) {
+            return errorOnMissingKeys(Output.of(errorOnMissingKeys));
+        }
+
+        /**
+         * @param keys Specifies a key in Consul to be read. Supported values documented below. Multiple blocks supported.
          * 
          * @return builder
          * 
@@ -174,8 +203,7 @@ Please use the token argument in the provider configuration */
         }
 
         /**
-         * @param keys Specifies a key in Consul to be read. Supported
-         * values documented below. Multiple blocks supported.
+         * @param keys Specifies a key in Consul to be read. Supported values documented below. Multiple blocks supported.
          * 
          * @return builder
          * 
@@ -185,8 +213,7 @@ Please use the token argument in the provider configuration */
         }
 
         /**
-         * @param keys Specifies a key in Consul to be read. Supported
-         * values documented below. Multiple blocks supported.
+         * @param keys Specifies a key in Consul to be read. Supported values documented below. Multiple blocks supported.
          * 
          * @return builder
          * 
@@ -238,8 +265,7 @@ Please use the token argument in the provider configuration */
         }
 
         /**
-         * @param token The ACL token to use. This overrides the
-         * token that the agent provides by default.
+         * @param token The ACL token to use. This overrides the token that the agent provides by default.
          * 
          * @return builder
          * 
@@ -256,8 +282,7 @@ Please use the token argument in the provider configuration */
         }
 
         /**
-         * @param token The ACL token to use. This overrides the
-         * token that the agent provides by default.
+         * @param token The ACL token to use. This overrides the token that the agent provides by default.
          * 
          * @return builder
          * 

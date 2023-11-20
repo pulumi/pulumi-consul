@@ -7,8 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The `consul.Keys` resource reads values from the Consul key/value store.
- * This is a powerful way dynamically set values in templates.
+ * The `consul.Keys` datasource reads values from the Consul key/value store. This is a powerful way to dynamically set values in templates.
  *
  * ## Example Usage
  *
@@ -20,14 +19,14 @@ import * as utilities from "./utilities";
  * const appKeys = consul.getKeys({
  *     datacenter: "nyc1",
  *     keys: [{
- *         "default": "ami-1234",
  *         name: "ami",
  *         path: "service/app/launch_ami",
+ *         "default": "ami-1234",
  *     }],
- *     token: "abcd",
  * });
  * // Start our instance with the dynamic ami value
  * const appInstance = new aws.ec2.Instance("appInstance", {ami: appKeys.then(appKeys => appKeys["var"]?.ami)});
+ * // ...
  * ```
  */
 export function getKeys(args?: GetKeysArgs, opts?: pulumi.InvokeOptions): Promise<GetKeysResult> {
@@ -36,6 +35,7 @@ export function getKeys(args?: GetKeysArgs, opts?: pulumi.InvokeOptions): Promis
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("consul:index/getKeys:getKeys", {
         "datacenter": args.datacenter,
+        "errorOnMissingKeys": args.errorOnMissingKeys,
         "keys": args.keys,
         "namespace": args.namespace,
         "partition": args.partition,
@@ -48,13 +48,15 @@ export function getKeys(args?: GetKeysArgs, opts?: pulumi.InvokeOptions): Promis
  */
 export interface GetKeysArgs {
     /**
-     * The datacenter to use. This overrides the
-     * agent's default datacenter and the datacenter in the provider setup.
+     * The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
      */
     datacenter?: string;
     /**
-     * Specifies a key in Consul to be read. Supported
-     * values documented below. Multiple blocks supported.
+     * Whether to return an error when a key is absent from the KV store and no default is configured. This defaults to `false`.
+     */
+    errorOnMissingKeys?: boolean;
+    /**
+     * Specifies a key in Consul to be read. Supported values documented below. Multiple blocks supported.
      */
     keys?: inputs.GetKeysKey[];
     /**
@@ -66,8 +68,7 @@ export interface GetKeysArgs {
      */
     partition?: string;
     /**
-     * The ACL token to use. This overrides the
-     * token that the agent provides by default.
+     * The ACL token to use. This overrides the token that the agent provides by default.
      *
      * @deprecated The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration
@@ -80,28 +81,43 @@ Please use the token argument in the provider configuration
  */
 export interface GetKeysResult {
     /**
-     * The datacenter the keys are being read from.
-     * * `var.<name>` - For each name given, the corresponding attribute
-     * has the value of the key.
+     * The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
      */
     readonly datacenter: string;
+    /**
+     * Whether to return an error when a key is absent from the KV store and no default is configured. This defaults to `false`.
+     */
+    readonly errorOnMissingKeys?: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * Specifies a key in Consul to be read. Supported values documented below. Multiple blocks supported.
+     */
     readonly keys?: outputs.GetKeysKey[];
+    /**
+     * The namespace to lookup the keys.
+     */
     readonly namespace?: string;
+    /**
+     * The partition to lookup the keys.
+     */
     readonly partition?: string;
     /**
+     * The ACL token to use. This overrides the token that the agent provides by default.
+     *
      * @deprecated The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration
      */
     readonly token?: string;
+    /**
+     * For each name given, the corresponding attribute has the value of the key.
+     */
     readonly var: {[key: string]: string};
 }
 /**
- * The `consul.Keys` resource reads values from the Consul key/value store.
- * This is a powerful way dynamically set values in templates.
+ * The `consul.Keys` datasource reads values from the Consul key/value store. This is a powerful way to dynamically set values in templates.
  *
  * ## Example Usage
  *
@@ -113,14 +129,14 @@ Please use the token argument in the provider configuration
  * const appKeys = consul.getKeys({
  *     datacenter: "nyc1",
  *     keys: [{
- *         "default": "ami-1234",
  *         name: "ami",
  *         path: "service/app/launch_ami",
+ *         "default": "ami-1234",
  *     }],
- *     token: "abcd",
  * });
  * // Start our instance with the dynamic ami value
  * const appInstance = new aws.ec2.Instance("appInstance", {ami: appKeys.then(appKeys => appKeys["var"]?.ami)});
+ * // ...
  * ```
  */
 export function getKeysOutput(args?: GetKeysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeysResult> {
@@ -132,13 +148,15 @@ export function getKeysOutput(args?: GetKeysOutputArgs, opts?: pulumi.InvokeOpti
  */
 export interface GetKeysOutputArgs {
     /**
-     * The datacenter to use. This overrides the
-     * agent's default datacenter and the datacenter in the provider setup.
+     * The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
      */
     datacenter?: pulumi.Input<string>;
     /**
-     * Specifies a key in Consul to be read. Supported
-     * values documented below. Multiple blocks supported.
+     * Whether to return an error when a key is absent from the KV store and no default is configured. This defaults to `false`.
+     */
+    errorOnMissingKeys?: pulumi.Input<boolean>;
+    /**
+     * Specifies a key in Consul to be read. Supported values documented below. Multiple blocks supported.
      */
     keys?: pulumi.Input<pulumi.Input<inputs.GetKeysKeyArgs>[]>;
     /**
@@ -150,8 +168,7 @@ export interface GetKeysOutputArgs {
      */
     partition?: pulumi.Input<string>;
     /**
-     * The ACL token to use. This overrides the
-     * token that the agent provides by default.
+     * The ACL token to use. This overrides the token that the agent provides by default.
      *
      * @deprecated The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration
