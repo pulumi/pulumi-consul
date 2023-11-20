@@ -1167,38 +1167,30 @@ export interface GetKeyPrefixSubkeyCollectionArgs {
 
 export interface GetKeysKey {
     /**
-     * This is the default value to set for `var.<name>`
-     * if the key does not exist in Consul. Defaults to an empty string.
+     * This is the default value to set for `var.<name>` if the key does not exist in Consul. Defaults to an empty string.
      */
     default?: string;
     /**
-     * This is the name of the key. This value of the
-     * key is exposed as `var.<name>`. This is not the path of the key
-     * in Consul.
+     * This is the name of the key. This value of the key is exposed as `var.<name>`. This is not the path of the key in Consul.
      */
     name: string;
     /**
-     * This is the path in Consul that should be read
-     * or written to.
+     * This is the path in Consul that should be read or written to.
      */
     path: string;
 }
 
 export interface GetKeysKeyArgs {
     /**
-     * This is the default value to set for `var.<name>`
-     * if the key does not exist in Consul. Defaults to an empty string.
+     * This is the default value to set for `var.<name>` if the key does not exist in Consul. Defaults to an empty string.
      */
     default?: pulumi.Input<string>;
     /**
-     * This is the name of the key. This value of the
-     * key is exposed as `var.<name>`. This is not the path of the key
-     * in Consul.
+     * This is the name of the key. This value of the key is exposed as `var.<name>`. This is not the path of the key in Consul.
      */
     name: pulumi.Input<string>;
     /**
-     * This is the path in Consul that should be read
-     * or written to.
+     * This is the path in Consul that should be read or written to.
      */
     path: pulumi.Input<string>;
 }

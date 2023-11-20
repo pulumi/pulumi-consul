@@ -15,16 +15,14 @@ public final class GetKeysKey extends com.pulumi.resources.InvokeArgs {
     public static final GetKeysKey Empty = new GetKeysKey();
 
     /**
-     * This is the default value to set for `var.&lt;name&gt;`
-     * if the key does not exist in Consul. Defaults to an empty string.
+     * This is the default value to set for `var.&lt;name&gt;` if the key does not exist in Consul. Defaults to an empty string.
      * 
      */
     @Import(name="default")
     private @Nullable String default_;
 
     /**
-     * @return This is the default value to set for `var.&lt;name&gt;`
-     * if the key does not exist in Consul. Defaults to an empty string.
+     * @return This is the default value to set for `var.&lt;name&gt;` if the key does not exist in Consul. Defaults to an empty string.
      * 
      */
     public Optional<String> default_() {
@@ -32,18 +30,14 @@ public final class GetKeysKey extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * This is the name of the key. This value of the
-     * key is exposed as `var.&lt;name&gt;`. This is not the path of the key
-     * in Consul.
+     * This is the name of the key. This value of the key is exposed as `var.&lt;name&gt;`. This is not the path of the key in Consul.
      * 
      */
     @Import(name="name", required=true)
     private String name;
 
     /**
-     * @return This is the name of the key. This value of the
-     * key is exposed as `var.&lt;name&gt;`. This is not the path of the key
-     * in Consul.
+     * @return This is the name of the key. This value of the key is exposed as `var.&lt;name&gt;`. This is not the path of the key in Consul.
      * 
      */
     public String name() {
@@ -51,16 +45,14 @@ public final class GetKeysKey extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * This is the path in Consul that should be read
-     * or written to.
+     * This is the path in Consul that should be read or written to.
      * 
      */
     @Import(name="path", required=true)
     private String path;
 
     /**
-     * @return This is the path in Consul that should be read
-     * or written to.
+     * @return This is the path in Consul that should be read or written to.
      * 
      */
     public String path() {
@@ -94,8 +86,7 @@ public final class GetKeysKey extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param default_ This is the default value to set for `var.&lt;name&gt;`
-         * if the key does not exist in Consul. Defaults to an empty string.
+         * @param default_ This is the default value to set for `var.&lt;name&gt;` if the key does not exist in Consul. Defaults to an empty string.
          * 
          * @return builder
          * 
@@ -106,9 +97,7 @@ public final class GetKeysKey extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param name This is the name of the key. This value of the
-         * key is exposed as `var.&lt;name&gt;`. This is not the path of the key
-         * in Consul.
+         * @param name This is the name of the key. This value of the key is exposed as `var.&lt;name&gt;`. This is not the path of the key in Consul.
          * 
          * @return builder
          * 
@@ -119,8 +108,7 @@ public final class GetKeysKey extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param path This is the path in Consul that should be read
-         * or written to.
+         * @param path This is the path in Consul that should be read or written to.
          * 
          * @return builder
          * 

@@ -16,16 +16,14 @@ public final class GetKeysKeyArgs extends com.pulumi.resources.ResourceArgs {
     public static final GetKeysKeyArgs Empty = new GetKeysKeyArgs();
 
     /**
-     * This is the default value to set for `var.&lt;name&gt;`
-     * if the key does not exist in Consul. Defaults to an empty string.
+     * This is the default value to set for `var.&lt;name&gt;` if the key does not exist in Consul. Defaults to an empty string.
      * 
      */
     @Import(name="default")
     private @Nullable Output<String> default_;
 
     /**
-     * @return This is the default value to set for `var.&lt;name&gt;`
-     * if the key does not exist in Consul. Defaults to an empty string.
+     * @return This is the default value to set for `var.&lt;name&gt;` if the key does not exist in Consul. Defaults to an empty string.
      * 
      */
     public Optional<Output<String>> default_() {
@@ -33,18 +31,14 @@ public final class GetKeysKeyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * This is the name of the key. This value of the
-     * key is exposed as `var.&lt;name&gt;`. This is not the path of the key
-     * in Consul.
+     * This is the name of the key. This value of the key is exposed as `var.&lt;name&gt;`. This is not the path of the key in Consul.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return This is the name of the key. This value of the
-     * key is exposed as `var.&lt;name&gt;`. This is not the path of the key
-     * in Consul.
+     * @return This is the name of the key. This value of the key is exposed as `var.&lt;name&gt;`. This is not the path of the key in Consul.
      * 
      */
     public Output<String> name() {
@@ -52,16 +46,14 @@ public final class GetKeysKeyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * This is the path in Consul that should be read
-     * or written to.
+     * This is the path in Consul that should be read or written to.
      * 
      */
     @Import(name="path", required=true)
     private Output<String> path;
 
     /**
-     * @return This is the path in Consul that should be read
-     * or written to.
+     * @return This is the path in Consul that should be read or written to.
      * 
      */
     public Output<String> path() {
@@ -95,8 +87,7 @@ public final class GetKeysKeyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param default_ This is the default value to set for `var.&lt;name&gt;`
-         * if the key does not exist in Consul. Defaults to an empty string.
+         * @param default_ This is the default value to set for `var.&lt;name&gt;` if the key does not exist in Consul. Defaults to an empty string.
          * 
          * @return builder
          * 
@@ -107,8 +98,7 @@ public final class GetKeysKeyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param default_ This is the default value to set for `var.&lt;name&gt;`
-         * if the key does not exist in Consul. Defaults to an empty string.
+         * @param default_ This is the default value to set for `var.&lt;name&gt;` if the key does not exist in Consul. Defaults to an empty string.
          * 
          * @return builder
          * 
@@ -118,9 +108,7 @@ public final class GetKeysKeyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name This is the name of the key. This value of the
-         * key is exposed as `var.&lt;name&gt;`. This is not the path of the key
-         * in Consul.
+         * @param name This is the name of the key. This value of the key is exposed as `var.&lt;name&gt;`. This is not the path of the key in Consul.
          * 
          * @return builder
          * 
@@ -131,9 +119,7 @@ public final class GetKeysKeyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name This is the name of the key. This value of the
-         * key is exposed as `var.&lt;name&gt;`. This is not the path of the key
-         * in Consul.
+         * @param name This is the name of the key. This value of the key is exposed as `var.&lt;name&gt;`. This is not the path of the key in Consul.
          * 
          * @return builder
          * 
@@ -143,8 +129,7 @@ public final class GetKeysKeyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param path This is the path in Consul that should be read
-         * or written to.
+         * @param path This is the path in Consul that should be read or written to.
          * 
          * @return builder
          * 
@@ -155,8 +140,7 @@ public final class GetKeysKeyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param path This is the path in Consul that should be read
-         * or written to.
+         * @param path This is the path in Consul that should be read or written to.
          * 
          * @return builder
          * 

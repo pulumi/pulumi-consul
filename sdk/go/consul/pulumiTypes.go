@@ -11033,15 +11033,11 @@ func (o GetKeyPrefixSubkeyCollectionArrayOutput) Index(i pulumi.IntInput) GetKey
 }
 
 type GetKeysKey struct {
-	// This is the default value to set for `var.<name>`
-	// if the key does not exist in Consul. Defaults to an empty string.
+	// This is the default value to set for `var.<name>` if the key does not exist in Consul. Defaults to an empty string.
 	Default *string `pulumi:"default"`
-	// This is the name of the key. This value of the
-	// key is exposed as `var.<name>`. This is not the path of the key
-	// in Consul.
+	// This is the name of the key. This value of the key is exposed as `var.<name>`. This is not the path of the key in Consul.
 	Name string `pulumi:"name"`
-	// This is the path in Consul that should be read
-	// or written to.
+	// This is the path in Consul that should be read or written to.
 	Path string `pulumi:"path"`
 }
 
@@ -11057,15 +11053,11 @@ type GetKeysKeyInput interface {
 }
 
 type GetKeysKeyArgs struct {
-	// This is the default value to set for `var.<name>`
-	// if the key does not exist in Consul. Defaults to an empty string.
+	// This is the default value to set for `var.<name>` if the key does not exist in Consul. Defaults to an empty string.
 	Default pulumi.StringPtrInput `pulumi:"default"`
-	// This is the name of the key. This value of the
-	// key is exposed as `var.<name>`. This is not the path of the key
-	// in Consul.
+	// This is the name of the key. This value of the key is exposed as `var.<name>`. This is not the path of the key in Consul.
 	Name pulumi.StringInput `pulumi:"name"`
-	// This is the path in Consul that should be read
-	// or written to.
+	// This is the path in Consul that should be read or written to.
 	Path pulumi.StringInput `pulumi:"path"`
 }
 
@@ -11120,21 +11112,17 @@ func (o GetKeysKeyOutput) ToGetKeysKeyOutputWithContext(ctx context.Context) Get
 	return o
 }
 
-// This is the default value to set for `var.<name>`
-// if the key does not exist in Consul. Defaults to an empty string.
+// This is the default value to set for `var.<name>` if the key does not exist in Consul. Defaults to an empty string.
 func (o GetKeysKeyOutput) Default() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKeysKey) *string { return v.Default }).(pulumi.StringPtrOutput)
 }
 
-// This is the name of the key. This value of the
-// key is exposed as `var.<name>`. This is not the path of the key
-// in Consul.
+// This is the name of the key. This value of the key is exposed as `var.<name>`. This is not the path of the key in Consul.
 func (o GetKeysKeyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeysKey) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// This is the path in Consul that should be read
-// or written to.
+// This is the path in Consul that should be read or written to.
 func (o GetKeysKeyOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeysKey) string { return v.Path }).(pulumi.StringOutput)
 }
