@@ -11,8 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `Keys` resource reads values from the Consul key/value store.
-// This is a powerful way dynamically set values in templates.
+// The `Keys` datasource reads values from the Consul key/value store. This is a powerful way to dynamically set values in templates.
 //
 // ## Example Usage
 //
@@ -33,12 +32,11 @@ import (
 //				Datacenter: pulumi.StringRef("nyc1"),
 //				Keys: []consul.GetKeysKey{
 //					{
-//						Default: pulumi.StringRef("ami-1234"),
 //						Name:    "ami",
 //						Path:    "service/app/launch_ami",
+//						Default: pulumi.StringRef("ami-1234"),
 //					},
 //				},
-//				Token: pulumi.StringRef("abcd"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -66,18 +64,17 @@ func LookupKeys(ctx *pulumi.Context, args *LookupKeysArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getKeys.
 type LookupKeysArgs struct {
-	// The datacenter to use. This overrides the
-	// agent's default datacenter and the datacenter in the provider setup.
+	// The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
 	Datacenter *string `pulumi:"datacenter"`
-	// Specifies a key in Consul to be read. Supported
-	// values documented below. Multiple blocks supported.
+	// Whether to return an error when a key is absent from the KV store and no default is configured. This defaults to `false`.
+	ErrorOnMissingKeys *bool `pulumi:"errorOnMissingKeys"`
+	// Specifies a key in Consul to be read. Supported values documented below. Multiple blocks supported.
 	Keys []GetKeysKey `pulumi:"keys"`
 	// The namespace to lookup the keys.
 	Namespace *string `pulumi:"namespace"`
 	// The partition to lookup the keys.
 	Partition *string `pulumi:"partition"`
-	// The ACL token to use. This overrides the
-	// token that the agent provides by default.
+	// The ACL token to use. This overrides the token that the agent provides by default.
 	//
 	// Deprecated: The token argument has been deprecated and will be removed in a future release.
 	// Please use the token argument in the provider configuration
@@ -86,19 +83,25 @@ type LookupKeysArgs struct {
 
 // A collection of values returned by getKeys.
 type LookupKeysResult struct {
-	// The datacenter the keys are being read from.
-	// * `var.<name>` - For each name given, the corresponding attribute
-	//   has the value of the key.
+	// The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
 	Datacenter string `pulumi:"datacenter"`
+	// Whether to return an error when a key is absent from the KV store and no default is configured. This defaults to `false`.
+	ErrorOnMissingKeys *bool `pulumi:"errorOnMissingKeys"`
 	// The provider-assigned unique ID for this managed resource.
-	Id        string       `pulumi:"id"`
-	Keys      []GetKeysKey `pulumi:"keys"`
-	Namespace *string      `pulumi:"namespace"`
-	Partition *string      `pulumi:"partition"`
+	Id string `pulumi:"id"`
+	// Specifies a key in Consul to be read. Supported values documented below. Multiple blocks supported.
+	Keys []GetKeysKey `pulumi:"keys"`
+	// The namespace to lookup the keys.
+	Namespace *string `pulumi:"namespace"`
+	// The partition to lookup the keys.
+	Partition *string `pulumi:"partition"`
+	// The ACL token to use. This overrides the token that the agent provides by default.
+	//
 	// Deprecated: The token argument has been deprecated and will be removed in a future release.
 	// Please use the token argument in the provider configuration
-	Token *string           `pulumi:"token"`
-	Var   map[string]string `pulumi:"var"`
+	Token *string `pulumi:"token"`
+	// For each name given, the corresponding attribute has the value of the key.
+	Var map[string]string `pulumi:"var"`
 }
 
 func LookupKeysOutput(ctx *pulumi.Context, args LookupKeysOutputArgs, opts ...pulumi.InvokeOption) LookupKeysResultOutput {
@@ -116,18 +119,17 @@ func LookupKeysOutput(ctx *pulumi.Context, args LookupKeysOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getKeys.
 type LookupKeysOutputArgs struct {
-	// The datacenter to use. This overrides the
-	// agent's default datacenter and the datacenter in the provider setup.
+	// The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
 	Datacenter pulumi.StringPtrInput `pulumi:"datacenter"`
-	// Specifies a key in Consul to be read. Supported
-	// values documented below. Multiple blocks supported.
+	// Whether to return an error when a key is absent from the KV store and no default is configured. This defaults to `false`.
+	ErrorOnMissingKeys pulumi.BoolPtrInput `pulumi:"errorOnMissingKeys"`
+	// Specifies a key in Consul to be read. Supported values documented below. Multiple blocks supported.
 	Keys GetKeysKeyArrayInput `pulumi:"keys"`
 	// The namespace to lookup the keys.
 	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
 	// The partition to lookup the keys.
 	Partition pulumi.StringPtrInput `pulumi:"partition"`
-	// The ACL token to use. This overrides the
-	// token that the agent provides by default.
+	// The ACL token to use. This overrides the token that the agent provides by default.
 	//
 	// Deprecated: The token argument has been deprecated and will be removed in a future release.
 	// Please use the token argument in the provider configuration
@@ -153,11 +155,14 @@ func (o LookupKeysResultOutput) ToLookupKeysResultOutputWithContext(ctx context.
 	return o
 }
 
-// The datacenter the keys are being read from.
-//   - `var.<name>` - For each name given, the corresponding attribute
-//     has the value of the key.
+// The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
 func (o LookupKeysResultOutput) Datacenter() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKeysResult) string { return v.Datacenter }).(pulumi.StringOutput)
+}
+
+// Whether to return an error when a key is absent from the KV store and no default is configured. This defaults to `false`.
+func (o LookupKeysResultOutput) ErrorOnMissingKeys() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupKeysResult) *bool { return v.ErrorOnMissingKeys }).(pulumi.BoolPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
@@ -165,24 +170,30 @@ func (o LookupKeysResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKeysResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Specifies a key in Consul to be read. Supported values documented below. Multiple blocks supported.
 func (o LookupKeysResultOutput) Keys() GetKeysKeyArrayOutput {
 	return o.ApplyT(func(v LookupKeysResult) []GetKeysKey { return v.Keys }).(GetKeysKeyArrayOutput)
 }
 
+// The namespace to lookup the keys.
 func (o LookupKeysResultOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupKeysResult) *string { return v.Namespace }).(pulumi.StringPtrOutput)
 }
 
+// The partition to lookup the keys.
 func (o LookupKeysResultOutput) Partition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupKeysResult) *string { return v.Partition }).(pulumi.StringPtrOutput)
 }
 
+// The ACL token to use. This overrides the token that the agent provides by default.
+//
 // Deprecated: The token argument has been deprecated and will be removed in a future release.
 // Please use the token argument in the provider configuration
 func (o LookupKeysResultOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupKeysResult) *string { return v.Token }).(pulumi.StringPtrOutput)
 }
 
+// For each name given, the corresponding attribute has the value of the key.
 func (o LookupKeysResultOutput) Var() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupKeysResult) map[string]string { return v.Var }).(pulumi.StringMapOutput)
 }

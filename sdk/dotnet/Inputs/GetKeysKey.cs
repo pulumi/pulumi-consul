@@ -13,23 +13,19 @@ namespace Pulumi.Consul.Inputs
     public sealed class GetKeysKeyArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// This is the default value to set for `var.&lt;name&gt;`
-        /// if the key does not exist in Consul. Defaults to an empty string.
+        /// This is the default value to set for `var.&lt;name&gt;` if the key does not exist in Consul. Defaults to an empty string.
         /// </summary>
         [Input("default")]
         public string? Default { get; set; }
 
         /// <summary>
-        /// This is the name of the key. This value of the
-        /// key is exposed as `var.&lt;name&gt;`. This is not the path of the key
-        /// in Consul.
+        /// This is the name of the key. This value of the key is exposed as `var.&lt;name&gt;`. This is not the path of the key in Consul.
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
         /// <summary>
-        /// This is the path in Consul that should be read
-        /// or written to.
+        /// This is the path in Consul that should be read or written to.
         /// </summary>
         [Input("path", required: true)]
         public string Path { get; set; } = null!;

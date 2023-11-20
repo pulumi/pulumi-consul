@@ -2273,15 +2273,15 @@
             "properties": {
                 "default": {
                     "type": "string",
-                    "description": "This is the default value to set for `var.\u003cname\u003e`\nif the key does not exist in Consul. Defaults to an empty string.\n"
+                    "description": "This is the default value to set for `var.\u003cname\u003e` if the key does not exist in Consul. Defaults to an empty string.\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "This is the name of the key. This value of the\nkey is exposed as `var.\u003cname\u003e`. This is not the path of the key\nin Consul.\n"
+                    "description": "This is the name of the key. This value of the key is exposed as `var.\u003cname\u003e`. This is not the path of the key in Consul.\n"
                 },
                 "path": {
                     "type": "string",
-                    "description": "This is the path in Consul that should be read\nor written to.\n"
+                    "description": "This is the path in Consul that should be read or written to.\n"
                 }
             },
             "type": "object",
@@ -8192,20 +8192,24 @@
             }
         },
         "consul:index/getKeys:getKeys": {
-            "description": "The `consul.Keys` resource reads values from the Consul key/value store.\nThis is a powerful way dynamically set values in templates.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aws from \"@pulumi/aws\";\nimport * as consul from \"@pulumi/consul\";\n\nconst appKeys = consul.getKeys({\n    datacenter: \"nyc1\",\n    keys: [{\n        \"default\": \"ami-1234\",\n        name: \"ami\",\n        path: \"service/app/launch_ami\",\n    }],\n    token: \"abcd\",\n});\n// Start our instance with the dynamic ami value\nconst appInstance = new aws.ec2.Instance(\"appInstance\", {ami: appKeys.then(appKeys =\u003e appKeys[\"var\"]?.ami)});\n```\n```python\nimport pulumi\nimport pulumi_aws as aws\nimport pulumi_consul as consul\n\napp_keys = consul.get_keys(datacenter=\"nyc1\",\n    keys=[consul.GetKeysKeyArgs(\n        default=\"ami-1234\",\n        name=\"ami\",\n        path=\"service/app/launch_ami\",\n    )],\n    token=\"abcd\")\n# Start our instance with the dynamic ami value\napp_instance = aws.ec2.Instance(\"appInstance\", ami=app_keys.var[\"ami\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aws = Pulumi.Aws;\nusing Consul = Pulumi.Consul;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var appKeys = Consul.GetKeys.Invoke(new()\n    {\n        Datacenter = \"nyc1\",\n        Keys = new[]\n        {\n            new Consul.Inputs.GetKeysKeyInputArgs\n            {\n                Default = \"ami-1234\",\n                Name = \"ami\",\n                Path = \"service/app/launch_ami\",\n            },\n        },\n        Token = \"abcd\",\n    });\n\n    // Start our instance with the dynamic ami value\n    var appInstance = new Aws.Ec2.Instance(\"appInstance\", new()\n    {\n        Ami = appKeys.Apply(getKeysResult =\u003e getKeysResult.Var?.Ami),\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aws/sdk/v4/go/aws/ec2\"\n\t\"github.com/pulumi/pulumi-consul/sdk/v3/go/consul\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tappKeys, err := consul.LookupKeys(ctx, \u0026consul.LookupKeysArgs{\n\t\t\tDatacenter: pulumi.StringRef(\"nyc1\"),\n\t\t\tKeys: []consul.GetKeysKey{\n\t\t\t\t{\n\t\t\t\t\tDefault: pulumi.StringRef(\"ami-1234\"),\n\t\t\t\t\tName:    \"ami\",\n\t\t\t\t\tPath:    \"service/app/launch_ami\",\n\t\t\t\t},\n\t\t\t},\n\t\t\tToken: pulumi.StringRef(\"abcd\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = ec2.NewInstance(ctx, \"appInstance\", \u0026ec2.InstanceArgs{\n\t\t\tAmi: *pulumi.String(appKeys.Var.Ami),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.consul.ConsulFunctions;\nimport com.pulumi.consul.inputs.GetKeysArgs;\nimport com.pulumi.aws.ec2.Instance;\nimport com.pulumi.aws.ec2.InstanceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var appKeys = ConsulFunctions.getKeys(GetKeysArgs.builder()\n            .datacenter(\"nyc1\")\n            .keys(GetKeysKeyArgs.builder()\n                .default_(\"ami-1234\")\n                .name(\"ami\")\n                .path(\"service/app/launch_ami\")\n                .build())\n            .token(\"abcd\")\n            .build());\n\n        var appInstance = new Instance(\"appInstance\", InstanceArgs.builder()        \n            .ami(appKeys.applyValue(getKeysResult -\u003e getKeysResult.var().ami()))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Start our instance with the dynamic ami value\n  appInstance:\n    type: aws:ec2:Instance\n    properties:\n      ami: ${appKeys.var.ami}\nvariables:\n  appKeys:\n    fn::invoke:\n      Function: consul:getKeys\n      Arguments:\n        datacenter: nyc1\n        keys:\n          - default: ami-1234\n            name: ami\n            path: service/app/launch_ami\n        token: abcd\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "The `consul.Keys` datasource reads values from the Consul key/value store. This is a powerful way to dynamically set values in templates.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aws from \"@pulumi/aws\";\nimport * as consul from \"@pulumi/consul\";\n\nconst appKeys = consul.getKeys({\n    datacenter: \"nyc1\",\n    keys: [{\n        name: \"ami\",\n        path: \"service/app/launch_ami\",\n        \"default\": \"ami-1234\",\n    }],\n});\n// Start our instance with the dynamic ami value\nconst appInstance = new aws.ec2.Instance(\"appInstance\", {ami: appKeys.then(appKeys =\u003e appKeys[\"var\"]?.ami)});\n// ...\n```\n```python\nimport pulumi\nimport pulumi_aws as aws\nimport pulumi_consul as consul\n\napp_keys = consul.get_keys(datacenter=\"nyc1\",\n    keys=[consul.GetKeysKeyArgs(\n        name=\"ami\",\n        path=\"service/app/launch_ami\",\n        default=\"ami-1234\",\n    )])\n# Start our instance with the dynamic ami value\napp_instance = aws.ec2.Instance(\"appInstance\", ami=app_keys.var[\"ami\"])\n# ...\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aws = Pulumi.Aws;\nusing Consul = Pulumi.Consul;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var appKeys = Consul.GetKeys.Invoke(new()\n    {\n        Datacenter = \"nyc1\",\n        Keys = new[]\n        {\n            new Consul.Inputs.GetKeysKeyInputArgs\n            {\n                Name = \"ami\",\n                Path = \"service/app/launch_ami\",\n                Default = \"ami-1234\",\n            },\n        },\n    });\n\n    // Start our instance with the dynamic ami value\n    var appInstance = new Aws.Ec2.Instance(\"appInstance\", new()\n    {\n        Ami = appKeys.Apply(getKeysResult =\u003e getKeysResult.Var?.Ami),\n    });\n\n    // ...\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aws/sdk/v4/go/aws/ec2\"\n\t\"github.com/pulumi/pulumi-consul/sdk/v3/go/consul\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tappKeys, err := consul.LookupKeys(ctx, \u0026consul.LookupKeysArgs{\n\t\t\tDatacenter: pulumi.StringRef(\"nyc1\"),\n\t\t\tKeys: []consul.GetKeysKey{\n\t\t\t\t{\n\t\t\t\t\tName:    \"ami\",\n\t\t\t\t\tPath:    \"service/app/launch_ami\",\n\t\t\t\t\tDefault: pulumi.StringRef(\"ami-1234\"),\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = ec2.NewInstance(ctx, \"appInstance\", \u0026ec2.InstanceArgs{\n\t\t\tAmi: *pulumi.String(appKeys.Var.Ami),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.consul.ConsulFunctions;\nimport com.pulumi.consul.inputs.GetKeysArgs;\nimport com.pulumi.aws.ec2.Instance;\nimport com.pulumi.aws.ec2.InstanceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var appKeys = ConsulFunctions.getKeys(GetKeysArgs.builder()\n            .datacenter(\"nyc1\")\n            .keys(GetKeysKeyArgs.builder()\n                .name(\"ami\")\n                .path(\"service/app/launch_ami\")\n                .default_(\"ami-1234\")\n                .build())\n            .build());\n\n        var appInstance = new Instance(\"appInstance\", InstanceArgs.builder()        \n            .ami(appKeys.applyValue(getKeysResult -\u003e getKeysResult.var().ami()))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Start our instance with the dynamic ami value\n  appInstance:\n    type: aws:ec2:Instance\n    properties:\n      ami: ${appKeys.var.ami}\nvariables:\n  appKeys:\n    fn::invoke:\n      Function: consul:getKeys\n      Arguments:\n        datacenter: nyc1\n        keys:\n          - name: ami\n            path: service/app/launch_ami\n            default: ami-1234\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getKeys.\n",
                 "properties": {
                     "datacenter": {
                         "type": "string",
-                        "description": "The datacenter to use. This overrides the\nagent's default datacenter and the datacenter in the provider setup.\n"
+                        "description": "The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.\n"
+                    },
+                    "errorOnMissingKeys": {
+                        "type": "boolean",
+                        "description": "Whether to return an error when a key is absent from the KV store and no default is configured. This defaults to `false`.\n"
                     },
                     "keys": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/consul:index/getKeysKey:getKeysKey"
                         },
-                        "description": "Specifies a key in Consul to be read. Supported\nvalues documented below. Multiple blocks supported.\n"
+                        "description": "Specifies a key in Consul to be read. Supported values documented below. Multiple blocks supported.\n"
                     },
                     "namespace": {
                         "type": "string",
@@ -8217,7 +8221,7 @@
                     },
                     "token": {
                         "type": "string",
-                        "description": "The ACL token to use. This overrides the\ntoken that the agent provides by default.\n",
+                        "description": "The ACL token to use. This overrides the token that the agent provides by default.\n",
                         "deprecationMessage": "The token argument has been deprecated and will be removed in a future release.\nPlease use the token argument in the provider configuration",
                         "secret": true
                     }
@@ -8229,7 +8233,11 @@
                 "properties": {
                     "datacenter": {
                         "type": "string",
-                        "description": "The datacenter the keys are being read from.\n* `var.\u003cname\u003e` - For each name given, the corresponding attribute\nhas the value of the key.\n"
+                        "description": "The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.\n"
+                    },
+                    "errorOnMissingKeys": {
+                        "type": "boolean",
+                        "description": "Whether to return an error when a key is absent from the KV store and no default is configured. This defaults to `false`.\n"
                     },
                     "id": {
                         "type": "string",
@@ -8239,16 +8247,20 @@
                         "type": "array",
                         "items": {
                             "$ref": "#/types/consul:index/getKeysKey:getKeysKey"
-                        }
+                        },
+                        "description": "Specifies a key in Consul to be read. Supported values documented below. Multiple blocks supported.\n"
                     },
                     "namespace": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The namespace to lookup the keys.\n"
                     },
                     "partition": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The partition to lookup the keys.\n"
                     },
                     "token": {
                         "type": "string",
+                        "description": "The ACL token to use. This overrides the token that the agent provides by default.\n",
                         "deprecationMessage": "The token argument has been deprecated and will be removed in a future release.\nPlease use the token argument in the provider configuration",
                         "secret": true
                     },
@@ -8256,7 +8268,8 @@
                         "type": "object",
                         "additionalProperties": {
                             "type": "string"
-                        }
+                        },
+                        "description": "For each name given, the corresponding attribute has the value of the key.\n"
                     }
                 },
                 "type": "object",
