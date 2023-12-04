@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as consul from "@pulumi/consul";
  * import * as fs from "fs";
  *
- * const license = new consul.License("license", {license: fs.readFileSync("license.hclic")});
+ * const license = new consul.License("license", {license: fs.readFileSync("license.hclic", "utf8")});
  * ```
  */
 export class License extends pulumi.CustomResource {
