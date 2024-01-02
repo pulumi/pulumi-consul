@@ -6,6 +6,7 @@ package com.pulumi.consul.inputs;
 import com.pulumi.consul.inputs.ConfigEntryServiceResolverFailoverTargetArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -320,7 +321,9 @@ public final class ConfigEntryServiceResolverFailoverArgs extends com.pulumi.res
         }
 
         public ConfigEntryServiceResolverFailoverArgs build() {
-            $.subsetName = Objects.requireNonNull($.subsetName, "expected parameter 'subsetName' to be non-null");
+            if ($.subsetName == null) {
+                throw new MissingRequiredPropertyException("ConfigEntryServiceResolverFailoverArgs", "subsetName");
+            }
             return $;
         }
     }

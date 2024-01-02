@@ -4,6 +4,7 @@
 package com.pulumi.consul.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -204,62 +205,98 @@ public final class GetAutopilotHealthServer {
 
         @CustomType.Setter
         public Builder address(String address) {
-            this.address = Objects.requireNonNull(address);
+            if (address == null) {
+              throw new MissingRequiredPropertyException("GetAutopilotHealthServer", "address");
+            }
+            this.address = address;
             return this;
         }
         @CustomType.Setter
         public Builder healthy(Boolean healthy) {
-            this.healthy = Objects.requireNonNull(healthy);
+            if (healthy == null) {
+              throw new MissingRequiredPropertyException("GetAutopilotHealthServer", "healthy");
+            }
+            this.healthy = healthy;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAutopilotHealthServer", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder lastContact(String lastContact) {
-            this.lastContact = Objects.requireNonNull(lastContact);
+            if (lastContact == null) {
+              throw new MissingRequiredPropertyException("GetAutopilotHealthServer", "lastContact");
+            }
+            this.lastContact = lastContact;
             return this;
         }
         @CustomType.Setter
         public Builder lastIndex(Integer lastIndex) {
-            this.lastIndex = Objects.requireNonNull(lastIndex);
+            if (lastIndex == null) {
+              throw new MissingRequiredPropertyException("GetAutopilotHealthServer", "lastIndex");
+            }
+            this.lastIndex = lastIndex;
             return this;
         }
         @CustomType.Setter
         public Builder lastTerm(Integer lastTerm) {
-            this.lastTerm = Objects.requireNonNull(lastTerm);
+            if (lastTerm == null) {
+              throw new MissingRequiredPropertyException("GetAutopilotHealthServer", "lastTerm");
+            }
+            this.lastTerm = lastTerm;
             return this;
         }
         @CustomType.Setter
         public Builder leader(Boolean leader) {
-            this.leader = Objects.requireNonNull(leader);
+            if (leader == null) {
+              throw new MissingRequiredPropertyException("GetAutopilotHealthServer", "leader");
+            }
+            this.leader = leader;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetAutopilotHealthServer", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder serfStatus(String serfStatus) {
-            this.serfStatus = Objects.requireNonNull(serfStatus);
+            if (serfStatus == null) {
+              throw new MissingRequiredPropertyException("GetAutopilotHealthServer", "serfStatus");
+            }
+            this.serfStatus = serfStatus;
             return this;
         }
         @CustomType.Setter
         public Builder stableSince(String stableSince) {
-            this.stableSince = Objects.requireNonNull(stableSince);
+            if (stableSince == null) {
+              throw new MissingRequiredPropertyException("GetAutopilotHealthServer", "stableSince");
+            }
+            this.stableSince = stableSince;
             return this;
         }
         @CustomType.Setter
         public Builder version(String version) {
-            this.version = Objects.requireNonNull(version);
+            if (version == null) {
+              throw new MissingRequiredPropertyException("GetAutopilotHealthServer", "version");
+            }
+            this.version = version;
             return this;
         }
         @CustomType.Setter
         public Builder voter(Boolean voter) {
-            this.voter = Objects.requireNonNull(voter);
+            if (voter == null) {
+              throw new MissingRequiredPropertyException("GetAutopilotHealthServer", "voter");
+            }
+            this.voter = voter;
             return this;
         }
         public GetAutopilotHealthServer build() {

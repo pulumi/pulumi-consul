@@ -5,6 +5,7 @@ package com.pulumi.consul.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -77,8 +78,12 @@ public final class ConfigEntryServiceDefaultsDestinationArgs extends com.pulumi.
         }
 
         public ConfigEntryServiceDefaultsDestinationArgs build() {
-            $.addresses = Objects.requireNonNull($.addresses, "expected parameter 'addresses' to be non-null");
-            $.port = Objects.requireNonNull($.port, "expected parameter 'port' to be non-null");
+            if ($.addresses == null) {
+                throw new MissingRequiredPropertyException("ConfigEntryServiceDefaultsDestinationArgs", "addresses");
+            }
+            if ($.port == null) {
+                throw new MissingRequiredPropertyException("ConfigEntryServiceDefaultsDestinationArgs", "port");
+            }
             return $;
         }
     }

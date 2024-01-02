@@ -4,6 +4,7 @@
 package com.pulumi.consul.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -77,17 +78,24 @@ public final class KeyPrefixSubkeyCollection {
 
         @CustomType.Setter
         public Builder flags(@Nullable Integer flags) {
+
             this.flags = flags;
             return this;
         }
         @CustomType.Setter
         public Builder path(String path) {
-            this.path = Objects.requireNonNull(path);
+            if (path == null) {
+              throw new MissingRequiredPropertyException("KeyPrefixSubkeyCollection", "path");
+            }
+            this.path = path;
             return this;
         }
         @CustomType.Setter
         public Builder value(String value) {
-            this.value = Objects.requireNonNull(value);
+            if (value == null) {
+              throw new MissingRequiredPropertyException("KeyPrefixSubkeyCollection", "value");
+            }
+            this.value = value;
             return this;
         }
         public KeyPrefixSubkeyCollection build() {

@@ -5,6 +5,7 @@ package com.pulumi.consul;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -281,7 +282,9 @@ Please use the token argument in the provider configuration */
         }
 
         public NetworkAreaArgs build() {
-            $.peerDatacenter = Objects.requireNonNull($.peerDatacenter, "expected parameter 'peerDatacenter' to be non-null");
+            if ($.peerDatacenter == null) {
+                throw new MissingRequiredPropertyException("NetworkAreaArgs", "peerDatacenter");
+            }
             return $;
         }
     }

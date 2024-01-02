@@ -73,16 +73,19 @@ public final class ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfig 
 
         @CustomType.Setter
         public Builder path(@Nullable String path) {
+
             this.path = path;
             return this;
         }
         @CustomType.Setter
         public Builder session(@Nullable Boolean session) {
+
             this.session = session;
             return this;
         }
         @CustomType.Setter
         public Builder ttl(@Nullable String ttl) {
+
             this.ttl = ttl;
             return this;
         }

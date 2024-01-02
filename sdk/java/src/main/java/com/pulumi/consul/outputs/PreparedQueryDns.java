@@ -44,6 +44,7 @@ public final class PreparedQueryDns {
 
         @CustomType.Setter
         public Builder ttl(@Nullable String ttl) {
+
             this.ttl = ttl;
             return this;
         }

@@ -11,6 +11,7 @@ import com.pulumi.consul.inputs.ConfigEntryServiceDefaultsTransparentProxyArgs;
 import com.pulumi.consul.inputs.ConfigEntryServiceDefaultsUpstreamConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -774,8 +775,12 @@ public final class ConfigEntryServiceDefaultsArgs extends com.pulumi.resources.R
         }
 
         public ConfigEntryServiceDefaultsArgs build() {
-            $.exposes = Objects.requireNonNull($.exposes, "expected parameter 'exposes' to be non-null");
-            $.protocol = Objects.requireNonNull($.protocol, "expected parameter 'protocol' to be non-null");
+            if ($.exposes == null) {
+                throw new MissingRequiredPropertyException("ConfigEntryServiceDefaultsArgs", "exposes");
+            }
+            if ($.protocol == null) {
+                throw new MissingRequiredPropertyException("ConfigEntryServiceDefaultsArgs", "protocol");
+            }
             return $;
         }
     }

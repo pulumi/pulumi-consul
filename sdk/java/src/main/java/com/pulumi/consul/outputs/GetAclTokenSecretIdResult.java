@@ -4,6 +4,7 @@
 package com.pulumi.consul.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -88,37 +89,52 @@ public final class GetAclTokenSecretIdResult {
 
         @CustomType.Setter
         public Builder accessorId(String accessorId) {
-            this.accessorId = Objects.requireNonNull(accessorId);
+            if (accessorId == null) {
+              throw new MissingRequiredPropertyException("GetAclTokenSecretIdResult", "accessorId");
+            }
+            this.accessorId = accessorId;
             return this;
         }
         @CustomType.Setter
         public Builder encryptedSecretId(String encryptedSecretId) {
-            this.encryptedSecretId = Objects.requireNonNull(encryptedSecretId);
+            if (encryptedSecretId == null) {
+              throw new MissingRequiredPropertyException("GetAclTokenSecretIdResult", "encryptedSecretId");
+            }
+            this.encryptedSecretId = encryptedSecretId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAclTokenSecretIdResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder namespace(@Nullable String namespace) {
+
             this.namespace = namespace;
             return this;
         }
         @CustomType.Setter
         public Builder partition(@Nullable String partition) {
+
             this.partition = partition;
             return this;
         }
         @CustomType.Setter
         public Builder pgpKey(@Nullable String pgpKey) {
+
             this.pgpKey = pgpKey;
             return this;
         }
         @CustomType.Setter
         public Builder secretId(String secretId) {
-            this.secretId = Objects.requireNonNull(secretId);
+            if (secretId == null) {
+              throw new MissingRequiredPropertyException("GetAclTokenSecretIdResult", "secretId");
+            }
+            this.secretId = secretId;
             return this;
         }
         public GetAclTokenSecretIdResult build() {

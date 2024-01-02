@@ -103,6 +103,7 @@ public final class ConfigEntryServiceResolverLoadBalancerHashPolicy {
 
         @CustomType.Setter
         public Builder cookieConfigs(@Nullable List<ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfig> cookieConfigs) {
+
             this.cookieConfigs = cookieConfigs;
             return this;
         }
@@ -111,21 +112,25 @@ public final class ConfigEntryServiceResolverLoadBalancerHashPolicy {
         }
         @CustomType.Setter
         public Builder field(@Nullable String field) {
+
             this.field = field;
             return this;
         }
         @CustomType.Setter
         public Builder fieldValue(@Nullable String fieldValue) {
+
             this.fieldValue = fieldValue;
             return this;
         }
         @CustomType.Setter
         public Builder sourceIp(@Nullable Boolean sourceIp) {
+
             this.sourceIp = sourceIp;
             return this;
         }
         @CustomType.Setter
         public Builder terminal(@Nullable Boolean terminal) {
+
             this.terminal = terminal;
             return this;
         }

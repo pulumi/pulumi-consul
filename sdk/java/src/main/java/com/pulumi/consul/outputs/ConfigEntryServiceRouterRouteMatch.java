@@ -44,6 +44,7 @@ public final class ConfigEntryServiceRouterRouteMatch {
 
         @CustomType.Setter
         public Builder http(@Nullable ConfigEntryServiceRouterRouteMatchHttp http) {
+
             this.http = http;
             return this;
         }

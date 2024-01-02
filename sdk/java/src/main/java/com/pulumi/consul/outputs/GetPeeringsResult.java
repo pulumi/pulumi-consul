@@ -5,6 +5,7 @@ package com.pulumi.consul.outputs;
 
 import com.pulumi.consul.outputs.GetPeeringsPeer;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -58,17 +59,24 @@ public final class GetPeeringsResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetPeeringsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder partition(@Nullable String partition) {
+
             this.partition = partition;
             return this;
         }
         @CustomType.Setter
         public Builder peers(List<GetPeeringsPeer> peers) {
-            this.peers = Objects.requireNonNull(peers);
+            if (peers == null) {
+              throw new MissingRequiredPropertyException("GetPeeringsResult", "peers");
+            }
+            this.peers = peers;
             return this;
         }
         public Builder peers(GetPeeringsPeer... peers) {

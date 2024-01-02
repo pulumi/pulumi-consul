@@ -4,6 +4,7 @@
 package com.pulumi.consul.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -73,17 +74,24 @@ public final class PreparedQueryTemplate {
 
         @CustomType.Setter
         public Builder regexp(String regexp) {
-            this.regexp = Objects.requireNonNull(regexp);
+            if (regexp == null) {
+              throw new MissingRequiredPropertyException("PreparedQueryTemplate", "regexp");
+            }
+            this.regexp = regexp;
             return this;
         }
         @CustomType.Setter
         public Builder removeEmptyTags(@Nullable Boolean removeEmptyTags) {
+
             this.removeEmptyTags = removeEmptyTags;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("PreparedQueryTemplate", "type");
+            }
+            this.type = type;
             return this;
         }
         public PreparedQueryTemplate build() {

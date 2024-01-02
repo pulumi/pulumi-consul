@@ -4,6 +4,7 @@
 package com.pulumi.consul.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -100,27 +101,40 @@ public final class GetPeeringResult {
 
         @CustomType.Setter
         public Builder deletedAt(String deletedAt) {
-            this.deletedAt = Objects.requireNonNull(deletedAt);
+            if (deletedAt == null) {
+              throw new MissingRequiredPropertyException("GetPeeringResult", "deletedAt");
+            }
+            this.deletedAt = deletedAt;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetPeeringResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder meta(Map<String,String> meta) {
-            this.meta = Objects.requireNonNull(meta);
+            if (meta == null) {
+              throw new MissingRequiredPropertyException("GetPeeringResult", "meta");
+            }
+            this.meta = meta;
             return this;
         }
         @CustomType.Setter
         public Builder partition(@Nullable String partition) {
+
             this.partition = partition;
             return this;
         }
         @CustomType.Setter
         public Builder peerCaPems(List<String> peerCaPems) {
-            this.peerCaPems = Objects.requireNonNull(peerCaPems);
+            if (peerCaPems == null) {
+              throw new MissingRequiredPropertyException("GetPeeringResult", "peerCaPems");
+            }
+            this.peerCaPems = peerCaPems;
             return this;
         }
         public Builder peerCaPems(String... peerCaPems) {
@@ -128,17 +142,26 @@ public final class GetPeeringResult {
         }
         @CustomType.Setter
         public Builder peerId(String peerId) {
-            this.peerId = Objects.requireNonNull(peerId);
+            if (peerId == null) {
+              throw new MissingRequiredPropertyException("GetPeeringResult", "peerId");
+            }
+            this.peerId = peerId;
             return this;
         }
         @CustomType.Setter
         public Builder peerName(String peerName) {
-            this.peerName = Objects.requireNonNull(peerName);
+            if (peerName == null) {
+              throw new MissingRequiredPropertyException("GetPeeringResult", "peerName");
+            }
+            this.peerName = peerName;
             return this;
         }
         @CustomType.Setter
         public Builder peerServerAddresses(List<String> peerServerAddresses) {
-            this.peerServerAddresses = Objects.requireNonNull(peerServerAddresses);
+            if (peerServerAddresses == null) {
+              throw new MissingRequiredPropertyException("GetPeeringResult", "peerServerAddresses");
+            }
+            this.peerServerAddresses = peerServerAddresses;
             return this;
         }
         public Builder peerServerAddresses(String... peerServerAddresses) {
@@ -146,12 +169,18 @@ public final class GetPeeringResult {
         }
         @CustomType.Setter
         public Builder peerServerName(String peerServerName) {
-            this.peerServerName = Objects.requireNonNull(peerServerName);
+            if (peerServerName == null) {
+              throw new MissingRequiredPropertyException("GetPeeringResult", "peerServerName");
+            }
+            this.peerServerName = peerServerName;
             return this;
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetPeeringResult", "state");
+            }
+            this.state = state;
             return this;
         }
         public GetPeeringResult build() {

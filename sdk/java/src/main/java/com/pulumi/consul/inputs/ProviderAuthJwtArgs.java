@@ -5,6 +5,7 @@ package com.pulumi.consul.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
@@ -109,7 +110,9 @@ public final class ProviderAuthJwtArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public ProviderAuthJwtArgs build() {
-            $.authMethod = Objects.requireNonNull($.authMethod, "expected parameter 'authMethod' to be non-null");
+            if ($.authMethod == null) {
+                throw new MissingRequiredPropertyException("ProviderAuthJwtArgs", "authMethod");
+            }
             return $;
         }
     }

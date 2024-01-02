@@ -59,11 +59,13 @@ public final class ConfigEntryServiceRouterRoute {
 
         @CustomType.Setter
         public Builder destination(@Nullable ConfigEntryServiceRouterRouteDestination destination) {
+
             this.destination = destination;
             return this;
         }
         @CustomType.Setter
         public Builder match(@Nullable ConfigEntryServiceRouterRouteMatch match) {
+
             this.match = match;
             return this;
         }

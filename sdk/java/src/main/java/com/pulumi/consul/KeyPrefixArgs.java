@@ -6,6 +6,7 @@ package com.pulumi.consul;
 import com.pulumi.consul.inputs.KeyPrefixSubkeyCollectionArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -368,7 +369,9 @@ Please use the token argument in the provider configuration */
         }
 
         public KeyPrefixArgs build() {
-            $.pathPrefix = Objects.requireNonNull($.pathPrefix, "expected parameter 'pathPrefix' to be non-null");
+            if ($.pathPrefix == null) {
+                throw new MissingRequiredPropertyException("KeyPrefixArgs", "pathPrefix");
+            }
             return $;
         }
     }

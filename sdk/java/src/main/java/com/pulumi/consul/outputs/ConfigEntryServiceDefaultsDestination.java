@@ -4,6 +4,7 @@
 package com.pulumi.consul.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -42,7 +43,10 @@ public final class ConfigEntryServiceDefaultsDestination {
 
         @CustomType.Setter
         public Builder addresses(List<String> addresses) {
-            this.addresses = Objects.requireNonNull(addresses);
+            if (addresses == null) {
+              throw new MissingRequiredPropertyException("ConfigEntryServiceDefaultsDestination", "addresses");
+            }
+            this.addresses = addresses;
             return this;
         }
         public Builder addresses(String... addresses) {
@@ -50,7 +54,10 @@ public final class ConfigEntryServiceDefaultsDestination {
         }
         @CustomType.Setter
         public Builder port(Integer port) {
-            this.port = Objects.requireNonNull(port);
+            if (port == null) {
+              throw new MissingRequiredPropertyException("ConfigEntryServiceDefaultsDestination", "port");
+            }
+            this.port = port;
             return this;
         }
         public ConfigEntryServiceDefaultsDestination build() {

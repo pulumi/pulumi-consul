@@ -5,6 +5,7 @@ package com.pulumi.consul.inputs;
 
 import com.pulumi.consul.inputs.GetKeyPrefixSubkeyCollection;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -246,7 +247,9 @@ Please use the token argument in the provider configuration */
         }
 
         public GetKeyPrefixPlainArgs build() {
-            $.pathPrefix = Objects.requireNonNull($.pathPrefix, "expected parameter 'pathPrefix' to be non-null");
+            if ($.pathPrefix == null) {
+                throw new MissingRequiredPropertyException("GetKeyPrefixPlainArgs", "pathPrefix");
+            }
             return $;
         }
     }

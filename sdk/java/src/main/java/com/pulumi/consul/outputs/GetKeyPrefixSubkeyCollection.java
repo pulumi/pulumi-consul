@@ -4,6 +4,7 @@
 package com.pulumi.consul.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -82,17 +83,24 @@ public final class GetKeyPrefixSubkeyCollection {
 
         @CustomType.Setter("default")
         public Builder default_(@Nullable String default_) {
+
             this.default_ = default_;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetKeyPrefixSubkeyCollection", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder path(String path) {
-            this.path = Objects.requireNonNull(path);
+            if (path == null) {
+              throw new MissingRequiredPropertyException("GetKeyPrefixSubkeyCollection", "path");
+            }
+            this.path = path;
             return this;
         }
         public GetKeyPrefixSubkeyCollection build() {

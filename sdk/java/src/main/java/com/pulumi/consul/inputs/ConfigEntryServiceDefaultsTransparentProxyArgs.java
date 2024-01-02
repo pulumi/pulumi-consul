@@ -5,6 +5,7 @@ package com.pulumi.consul.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.util.Objects;
@@ -72,8 +73,12 @@ public final class ConfigEntryServiceDefaultsTransparentProxyArgs extends com.pu
         }
 
         public ConfigEntryServiceDefaultsTransparentProxyArgs build() {
-            $.dialedDirectly = Objects.requireNonNull($.dialedDirectly, "expected parameter 'dialedDirectly' to be non-null");
-            $.outboundListenerPort = Objects.requireNonNull($.outboundListenerPort, "expected parameter 'outboundListenerPort' to be non-null");
+            if ($.dialedDirectly == null) {
+                throw new MissingRequiredPropertyException("ConfigEntryServiceDefaultsTransparentProxyArgs", "dialedDirectly");
+            }
+            if ($.outboundListenerPort == null) {
+                throw new MissingRequiredPropertyException("ConfigEntryServiceDefaultsTransparentProxyArgs", "outboundListenerPort");
+            }
             return $;
         }
     }

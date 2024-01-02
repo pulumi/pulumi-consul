@@ -103,16 +103,19 @@ public final class ConfigEntryServiceDefaultsUpstreamConfigDefault {
 
         @CustomType.Setter
         public Builder balanceOutboundConnections(@Nullable String balanceOutboundConnections) {
+
             this.balanceOutboundConnections = balanceOutboundConnections;
             return this;
         }
         @CustomType.Setter
         public Builder connectTimeoutMs(@Nullable Integer connectTimeoutMs) {
+
             this.connectTimeoutMs = connectTimeoutMs;
             return this;
         }
         @CustomType.Setter
         public Builder limits(@Nullable List<ConfigEntryServiceDefaultsUpstreamConfigDefaultLimit> limits) {
+
             this.limits = limits;
             return this;
         }
@@ -121,6 +124,7 @@ public final class ConfigEntryServiceDefaultsUpstreamConfigDefault {
         }
         @CustomType.Setter
         public Builder meshGateways(@Nullable List<ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGateway> meshGateways) {
+
             this.meshGateways = meshGateways;
             return this;
         }
@@ -129,6 +133,7 @@ public final class ConfigEntryServiceDefaultsUpstreamConfigDefault {
         }
         @CustomType.Setter
         public Builder passiveHealthChecks(@Nullable List<ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheck> passiveHealthChecks) {
+
             this.passiveHealthChecks = passiveHealthChecks;
             return this;
         }
@@ -137,6 +142,7 @@ public final class ConfigEntryServiceDefaultsUpstreamConfigDefault {
         }
         @CustomType.Setter
         public Builder protocol(@Nullable String protocol) {
+
             this.protocol = protocol;
             return this;
         }

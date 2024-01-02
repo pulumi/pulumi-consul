@@ -4,6 +4,7 @@
 package com.pulumi.consul.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -64,7 +65,9 @@ public final class GetPeeringPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetPeeringPlainArgs build() {
-            $.peerName = Objects.requireNonNull($.peerName, "expected parameter 'peerName' to be non-null");
+            if ($.peerName == null) {
+                throw new MissingRequiredPropertyException("GetPeeringPlainArgs", "peerName");
+            }
             return $;
         }
     }

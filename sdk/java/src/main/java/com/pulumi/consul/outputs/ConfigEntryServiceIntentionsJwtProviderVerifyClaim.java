@@ -59,6 +59,7 @@ public final class ConfigEntryServiceIntentionsJwtProviderVerifyClaim {
 
         @CustomType.Setter
         public Builder paths(@Nullable List<String> paths) {
+
             this.paths = paths;
             return this;
         }
@@ -67,6 +68,7 @@ public final class ConfigEntryServiceIntentionsJwtProviderVerifyClaim {
         }
         @CustomType.Setter
         public Builder value(@Nullable String value) {
+
             this.value = value;
             return this;
         }

@@ -58,11 +58,13 @@ public final class PreparedQueryFailoverTarget {
 
         @CustomType.Setter
         public Builder datacenter(@Nullable String datacenter) {
+
             this.datacenter = datacenter;
             return this;
         }
         @CustomType.Setter
         public Builder peer(@Nullable String peer) {
+
             this.peer = peer;
             return this;
         }

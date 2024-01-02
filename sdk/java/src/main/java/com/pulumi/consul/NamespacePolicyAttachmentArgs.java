@@ -5,6 +5,7 @@ package com.pulumi.consul;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class NamespacePolicyAttachmentArgs extends com.pulumi.resources.Re
         }
 
         public NamespacePolicyAttachmentArgs build() {
-            $.namespace = Objects.requireNonNull($.namespace, "expected parameter 'namespace' to be non-null");
-            $.policy = Objects.requireNonNull($.policy, "expected parameter 'policy' to be non-null");
+            if ($.namespace == null) {
+                throw new MissingRequiredPropertyException("NamespacePolicyAttachmentArgs", "namespace");
+            }
+            if ($.policy == null) {
+                throw new MissingRequiredPropertyException("NamespacePolicyAttachmentArgs", "policy");
+            }
             return $;
         }
     }

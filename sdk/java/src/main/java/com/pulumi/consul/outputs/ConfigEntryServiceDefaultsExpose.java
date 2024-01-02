@@ -44,11 +44,13 @@ public final class ConfigEntryServiceDefaultsExpose {
 
         @CustomType.Setter
         public Builder checks(@Nullable Boolean checks) {
+
             this.checks = checks;
             return this;
         }
         @CustomType.Setter
         public Builder paths(@Nullable List<ConfigEntryServiceDefaultsExposePath> paths) {
+
             this.paths = paths;
             return this;
         }

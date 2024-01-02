@@ -5,6 +5,7 @@ package com.pulumi.consul.outputs;
 
 import com.pulumi.consul.outputs.ServiceCheckHeader;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -201,16 +202,21 @@ public final class ServiceCheck {
 
         @CustomType.Setter
         public Builder checkId(String checkId) {
-            this.checkId = Objects.requireNonNull(checkId);
+            if (checkId == null) {
+              throw new MissingRequiredPropertyException("ServiceCheck", "checkId");
+            }
+            this.checkId = checkId;
             return this;
         }
         @CustomType.Setter
         public Builder deregisterCriticalServiceAfter(@Nullable String deregisterCriticalServiceAfter) {
+
             this.deregisterCriticalServiceAfter = deregisterCriticalServiceAfter;
             return this;
         }
         @CustomType.Setter
         public Builder headers(@Nullable List<ServiceCheckHeader> headers) {
+
             this.headers = headers;
             return this;
         }
@@ -219,46 +225,61 @@ public final class ServiceCheck {
         }
         @CustomType.Setter
         public Builder http(@Nullable String http) {
+
             this.http = http;
             return this;
         }
         @CustomType.Setter
         public Builder interval(String interval) {
-            this.interval = Objects.requireNonNull(interval);
+            if (interval == null) {
+              throw new MissingRequiredPropertyException("ServiceCheck", "interval");
+            }
+            this.interval = interval;
             return this;
         }
         @CustomType.Setter
         public Builder method(@Nullable String method) {
+
             this.method = method;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("ServiceCheck", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder notes(@Nullable String notes) {
+
             this.notes = notes;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder tcp(@Nullable String tcp) {
+
             this.tcp = tcp;
             return this;
         }
         @CustomType.Setter
         public Builder timeout(String timeout) {
-            this.timeout = Objects.requireNonNull(timeout);
+            if (timeout == null) {
+              throw new MissingRequiredPropertyException("ServiceCheck", "timeout");
+            }
+            this.timeout = timeout;
             return this;
         }
         @CustomType.Setter
         public Builder tlsSkipVerify(@Nullable Boolean tlsSkipVerify) {
+
             this.tlsSkipVerify = tlsSkipVerify;
             return this;
         }

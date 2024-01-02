@@ -6,6 +6,7 @@ package com.pulumi.consul;
 import com.pulumi.consul.inputs.CatalogEntryServiceArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -277,8 +278,12 @@ Please use the token argument in the provider configuration */
         }
 
         public CatalogEntryArgs build() {
-            $.address = Objects.requireNonNull($.address, "expected parameter 'address' to be non-null");
-            $.node = Objects.requireNonNull($.node, "expected parameter 'node' to be non-null");
+            if ($.address == null) {
+                throw new MissingRequiredPropertyException("CatalogEntryArgs", "address");
+            }
+            if ($.node == null) {
+                throw new MissingRequiredPropertyException("CatalogEntryArgs", "node");
+            }
             return $;
         }
     }
