@@ -6,6 +6,7 @@ package com.pulumi.consul.outputs;
 import com.pulumi.consul.outputs.ConfigEntryServiceSplitterSplitRequestHeaders;
 import com.pulumi.consul.outputs.ConfigEntryServiceSplitterSplitResponseHeaders;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
@@ -131,37 +132,48 @@ public final class ConfigEntryServiceSplitterSplit {
 
         @CustomType.Setter
         public Builder namespace(@Nullable String namespace) {
+
             this.namespace = namespace;
             return this;
         }
         @CustomType.Setter
         public Builder partition(@Nullable String partition) {
+
             this.partition = partition;
             return this;
         }
         @CustomType.Setter
         public Builder requestHeaders(@Nullable ConfigEntryServiceSplitterSplitRequestHeaders requestHeaders) {
+
             this.requestHeaders = requestHeaders;
             return this;
         }
         @CustomType.Setter
         public Builder responseHeaders(@Nullable ConfigEntryServiceSplitterSplitResponseHeaders responseHeaders) {
+
             this.responseHeaders = responseHeaders;
             return this;
         }
         @CustomType.Setter
         public Builder service(String service) {
-            this.service = Objects.requireNonNull(service);
+            if (service == null) {
+              throw new MissingRequiredPropertyException("ConfigEntryServiceSplitterSplit", "service");
+            }
+            this.service = service;
             return this;
         }
         @CustomType.Setter
         public Builder serviceSubset(@Nullable String serviceSubset) {
+
             this.serviceSubset = serviceSubset;
             return this;
         }
         @CustomType.Setter
         public Builder weight(Double weight) {
-            this.weight = Objects.requireNonNull(weight);
+            if (weight == null) {
+              throw new MissingRequiredPropertyException("ConfigEntryServiceSplitterSplit", "weight");
+            }
+            this.weight = weight;
             return this;
         }
         public ConfigEntryServiceSplitterSplit build() {

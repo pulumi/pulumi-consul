@@ -4,6 +4,7 @@
 package com.pulumi.consul.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -40,12 +41,18 @@ public final class GetAclAuthMethodNamespaceRule {
 
         @CustomType.Setter
         public Builder bindNamespace(String bindNamespace) {
-            this.bindNamespace = Objects.requireNonNull(bindNamespace);
+            if (bindNamespace == null) {
+              throw new MissingRequiredPropertyException("GetAclAuthMethodNamespaceRule", "bindNamespace");
+            }
+            this.bindNamespace = bindNamespace;
             return this;
         }
         @CustomType.Setter
         public Builder selector(String selector) {
-            this.selector = Objects.requireNonNull(selector);
+            if (selector == null) {
+              throw new MissingRequiredPropertyException("GetAclAuthMethodNamespaceRule", "selector");
+            }
+            this.selector = selector;
             return this;
         }
         public GetAclAuthMethodNamespaceRule build() {

@@ -5,6 +5,7 @@ package com.pulumi.consul.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -159,8 +160,12 @@ public final class KeyPrefixSubkeyCollectionArgs extends com.pulumi.resources.Re
         }
 
         public KeyPrefixSubkeyCollectionArgs build() {
-            $.path = Objects.requireNonNull($.path, "expected parameter 'path' to be non-null");
-            $.value = Objects.requireNonNull($.value, "expected parameter 'value' to be non-null");
+            if ($.path == null) {
+                throw new MissingRequiredPropertyException("KeyPrefixSubkeyCollectionArgs", "path");
+            }
+            if ($.value == null) {
+                throw new MissingRequiredPropertyException("KeyPrefixSubkeyCollectionArgs", "value");
+            }
             return $;
         }
     }

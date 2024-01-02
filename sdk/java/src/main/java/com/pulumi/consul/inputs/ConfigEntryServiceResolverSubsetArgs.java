@@ -5,6 +5,7 @@ package com.pulumi.consul.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -149,9 +150,15 @@ public final class ConfigEntryServiceResolverSubsetArgs extends com.pulumi.resou
         }
 
         public ConfigEntryServiceResolverSubsetArgs build() {
-            $.filter = Objects.requireNonNull($.filter, "expected parameter 'filter' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
-            $.onlyPassing = Objects.requireNonNull($.onlyPassing, "expected parameter 'onlyPassing' to be non-null");
+            if ($.filter == null) {
+                throw new MissingRequiredPropertyException("ConfigEntryServiceResolverSubsetArgs", "filter");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("ConfigEntryServiceResolverSubsetArgs", "name");
+            }
+            if ($.onlyPassing == null) {
+                throw new MissingRequiredPropertyException("ConfigEntryServiceResolverSubsetArgs", "onlyPassing");
+            }
             return $;
         }
     }

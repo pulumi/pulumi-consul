@@ -4,6 +4,7 @@
 package com.pulumi.consul.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -90,32 +91,50 @@ public final class GetPeeringsPeer {
 
         @CustomType.Setter
         public Builder deletedAt(String deletedAt) {
-            this.deletedAt = Objects.requireNonNull(deletedAt);
+            if (deletedAt == null) {
+              throw new MissingRequiredPropertyException("GetPeeringsPeer", "deletedAt");
+            }
+            this.deletedAt = deletedAt;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetPeeringsPeer", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder meta(Map<String,String> meta) {
-            this.meta = Objects.requireNonNull(meta);
+            if (meta == null) {
+              throw new MissingRequiredPropertyException("GetPeeringsPeer", "meta");
+            }
+            this.meta = meta;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetPeeringsPeer", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder partition(String partition) {
-            this.partition = Objects.requireNonNull(partition);
+            if (partition == null) {
+              throw new MissingRequiredPropertyException("GetPeeringsPeer", "partition");
+            }
+            this.partition = partition;
             return this;
         }
         @CustomType.Setter
         public Builder peerCaPems(List<String> peerCaPems) {
-            this.peerCaPems = Objects.requireNonNull(peerCaPems);
+            if (peerCaPems == null) {
+              throw new MissingRequiredPropertyException("GetPeeringsPeer", "peerCaPems");
+            }
+            this.peerCaPems = peerCaPems;
             return this;
         }
         public Builder peerCaPems(String... peerCaPems) {
@@ -123,12 +142,18 @@ public final class GetPeeringsPeer {
         }
         @CustomType.Setter
         public Builder peerId(String peerId) {
-            this.peerId = Objects.requireNonNull(peerId);
+            if (peerId == null) {
+              throw new MissingRequiredPropertyException("GetPeeringsPeer", "peerId");
+            }
+            this.peerId = peerId;
             return this;
         }
         @CustomType.Setter
         public Builder peerServerAddresses(List<String> peerServerAddresses) {
-            this.peerServerAddresses = Objects.requireNonNull(peerServerAddresses);
+            if (peerServerAddresses == null) {
+              throw new MissingRequiredPropertyException("GetPeeringsPeer", "peerServerAddresses");
+            }
+            this.peerServerAddresses = peerServerAddresses;
             return this;
         }
         public Builder peerServerAddresses(String... peerServerAddresses) {
@@ -136,12 +161,18 @@ public final class GetPeeringsPeer {
         }
         @CustomType.Setter
         public Builder peerServerName(String peerServerName) {
-            this.peerServerName = Objects.requireNonNull(peerServerName);
+            if (peerServerName == null) {
+              throw new MissingRequiredPropertyException("GetPeeringsPeer", "peerServerName");
+            }
+            this.peerServerName = peerServerName;
             return this;
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetPeeringsPeer", "state");
+            }
+            this.state = state;
             return this;
         }
         public GetPeeringsPeer build() {

@@ -44,6 +44,7 @@ public final class ConfigEntryServiceIntentionsJwt {
 
         @CustomType.Setter
         public Builder providers(@Nullable List<ConfigEntryServiceIntentionsJwtProvider> providers) {
+
             this.providers = providers;
             return this;
         }

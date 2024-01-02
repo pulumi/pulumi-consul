@@ -58,11 +58,13 @@ public final class ConfigEntryServiceResolverLoadBalancerRingHashConfig {
 
         @CustomType.Setter
         public Builder maximumRingSize(@Nullable Integer maximumRingSize) {
+
             this.maximumRingSize = maximumRingSize;
             return this;
         }
         @CustomType.Setter
         public Builder minimumRingSize(@Nullable Integer minimumRingSize) {
+
             this.minimumRingSize = minimumRingSize;
             return this;
         }

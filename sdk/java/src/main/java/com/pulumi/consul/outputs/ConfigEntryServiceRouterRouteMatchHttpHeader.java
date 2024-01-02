@@ -129,36 +129,43 @@ public final class ConfigEntryServiceRouterRouteMatchHttpHeader {
 
         @CustomType.Setter
         public Builder exact(@Nullable String exact) {
+
             this.exact = exact;
             return this;
         }
         @CustomType.Setter
         public Builder invert(@Nullable Boolean invert) {
+
             this.invert = invert;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder prefix(@Nullable String prefix) {
+
             this.prefix = prefix;
             return this;
         }
         @CustomType.Setter
         public Builder present(@Nullable Boolean present) {
+
             this.present = present;
             return this;
         }
         @CustomType.Setter
         public Builder regex(@Nullable String regex) {
+
             this.regex = regex;
             return this;
         }
         @CustomType.Setter
         public Builder suffix(@Nullable String suffix) {
+
             this.suffix = suffix;
             return this;
         }

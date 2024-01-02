@@ -5,6 +5,7 @@ package com.pulumi.consul;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -168,8 +169,12 @@ public final class PeeringArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public PeeringArgs build() {
-            $.peerName = Objects.requireNonNull($.peerName, "expected parameter 'peerName' to be non-null");
-            $.peeringToken = Objects.requireNonNull($.peeringToken, "expected parameter 'peeringToken' to be non-null");
+            if ($.peerName == null) {
+                throw new MissingRequiredPropertyException("PeeringArgs", "peerName");
+            }
+            if ($.peeringToken == null) {
+                throw new MissingRequiredPropertyException("PeeringArgs", "peeringToken");
+            }
             return $;
         }
     }

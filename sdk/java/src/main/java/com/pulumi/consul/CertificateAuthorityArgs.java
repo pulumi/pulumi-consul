@@ -5,6 +5,7 @@ package com.pulumi.consul;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -167,7 +168,9 @@ public final class CertificateAuthorityArgs extends com.pulumi.resources.Resourc
         }
 
         public CertificateAuthorityArgs build() {
-            $.connectProvider = Objects.requireNonNull($.connectProvider, "expected parameter 'connectProvider' to be non-null");
+            if ($.connectProvider == null) {
+                throw new MissingRequiredPropertyException("CertificateAuthorityArgs", "connectProvider");
+            }
             return $;
         }
     }

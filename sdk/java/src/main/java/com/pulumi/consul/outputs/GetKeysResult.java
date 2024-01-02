@@ -5,6 +5,7 @@ package com.pulumi.consul.outputs;
 
 import com.pulumi.consul.outputs.GetKeysKey;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -158,21 +159,29 @@ Please use the token argument in the provider configuration */
 
         @CustomType.Setter
         public Builder datacenter(String datacenter) {
-            this.datacenter = Objects.requireNonNull(datacenter);
+            if (datacenter == null) {
+              throw new MissingRequiredPropertyException("GetKeysResult", "datacenter");
+            }
+            this.datacenter = datacenter;
             return this;
         }
         @CustomType.Setter
         public Builder errorOnMissingKeys(@Nullable Boolean errorOnMissingKeys) {
+
             this.errorOnMissingKeys = errorOnMissingKeys;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetKeysResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder keys(@Nullable List<GetKeysKey> keys) {
+
             this.keys = keys;
             return this;
         }
@@ -181,22 +190,28 @@ Please use the token argument in the provider configuration */
         }
         @CustomType.Setter
         public Builder namespace(@Nullable String namespace) {
+
             this.namespace = namespace;
             return this;
         }
         @CustomType.Setter
         public Builder partition(@Nullable String partition) {
+
             this.partition = partition;
             return this;
         }
         @CustomType.Setter
         public Builder token(@Nullable String token) {
+
             this.token = token;
             return this;
         }
         @CustomType.Setter("var")
         public Builder var_(Map<String,String> var_) {
-            this.var_ = Objects.requireNonNull(var_);
+            if (var_ == null) {
+              throw new MissingRequiredPropertyException("GetKeysResult", "var_");
+            }
+            this.var_ = var_;
             return this;
         }
         public GetKeysResult build() {

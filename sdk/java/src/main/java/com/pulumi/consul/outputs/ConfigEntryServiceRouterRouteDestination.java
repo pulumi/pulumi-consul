@@ -217,51 +217,61 @@ public final class ConfigEntryServiceRouterRouteDestination {
 
         @CustomType.Setter
         public Builder idleTimeout(@Nullable String idleTimeout) {
+
             this.idleTimeout = idleTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder namespace(@Nullable String namespace) {
+
             this.namespace = namespace;
             return this;
         }
         @CustomType.Setter
         public Builder numRetries(@Nullable Integer numRetries) {
+
             this.numRetries = numRetries;
             return this;
         }
         @CustomType.Setter
         public Builder partition(@Nullable String partition) {
+
             this.partition = partition;
             return this;
         }
         @CustomType.Setter
         public Builder prefixRewrite(@Nullable String prefixRewrite) {
+
             this.prefixRewrite = prefixRewrite;
             return this;
         }
         @CustomType.Setter
         public Builder requestHeaders(@Nullable ConfigEntryServiceRouterRouteDestinationRequestHeaders requestHeaders) {
+
             this.requestHeaders = requestHeaders;
             return this;
         }
         @CustomType.Setter
         public Builder requestTimeout(@Nullable String requestTimeout) {
+
             this.requestTimeout = requestTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder responseHeaders(@Nullable ConfigEntryServiceRouterRouteDestinationResponseHeaders responseHeaders) {
+
             this.responseHeaders = responseHeaders;
             return this;
         }
         @CustomType.Setter
         public Builder retryOnConnectFailure(@Nullable Boolean retryOnConnectFailure) {
+
             this.retryOnConnectFailure = retryOnConnectFailure;
             return this;
         }
         @CustomType.Setter
         public Builder retryOnStatusCodes(@Nullable List<Integer> retryOnStatusCodes) {
+
             this.retryOnStatusCodes = retryOnStatusCodes;
             return this;
         }
@@ -270,6 +280,7 @@ public final class ConfigEntryServiceRouterRouteDestination {
         }
         @CustomType.Setter
         public Builder retryOns(@Nullable List<String> retryOns) {
+
             this.retryOns = retryOns;
             return this;
         }
@@ -278,11 +289,13 @@ public final class ConfigEntryServiceRouterRouteDestination {
         }
         @CustomType.Setter
         public Builder service(@Nullable String service) {
+
             this.service = service;
             return this;
         }
         @CustomType.Setter
         public Builder serviceSubset(@Nullable String serviceSubset) {
+
             this.serviceSubset = serviceSubset;
             return this;
         }

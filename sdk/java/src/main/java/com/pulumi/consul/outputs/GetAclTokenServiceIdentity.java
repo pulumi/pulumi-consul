@@ -4,6 +4,7 @@
 package com.pulumi.consul.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -41,7 +42,10 @@ public final class GetAclTokenServiceIdentity {
 
         @CustomType.Setter
         public Builder datacenters(List<String> datacenters) {
-            this.datacenters = Objects.requireNonNull(datacenters);
+            if (datacenters == null) {
+              throw new MissingRequiredPropertyException("GetAclTokenServiceIdentity", "datacenters");
+            }
+            this.datacenters = datacenters;
             return this;
         }
         public Builder datacenters(String... datacenters) {
@@ -49,7 +53,10 @@ public final class GetAclTokenServiceIdentity {
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetAclTokenServiceIdentity", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         public GetAclTokenServiceIdentity build() {

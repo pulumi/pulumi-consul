@@ -5,6 +5,7 @@ package com.pulumi.consul.outputs;
 
 import com.pulumi.consul.outputs.GetAutopilotHealthServer;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -102,27 +103,40 @@ public final class GetAutopilotHealthResult {
 
         @CustomType.Setter
         public Builder datacenter(@Nullable String datacenter) {
+
             this.datacenter = datacenter;
             return this;
         }
         @CustomType.Setter
         public Builder failureTolerance(Integer failureTolerance) {
-            this.failureTolerance = Objects.requireNonNull(failureTolerance);
+            if (failureTolerance == null) {
+              throw new MissingRequiredPropertyException("GetAutopilotHealthResult", "failureTolerance");
+            }
+            this.failureTolerance = failureTolerance;
             return this;
         }
         @CustomType.Setter
         public Builder healthy(Boolean healthy) {
-            this.healthy = Objects.requireNonNull(healthy);
+            if (healthy == null) {
+              throw new MissingRequiredPropertyException("GetAutopilotHealthResult", "healthy");
+            }
+            this.healthy = healthy;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAutopilotHealthResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder servers(List<GetAutopilotHealthServer> servers) {
-            this.servers = Objects.requireNonNull(servers);
+            if (servers == null) {
+              throw new MissingRequiredPropertyException("GetAutopilotHealthResult", "servers");
+            }
+            this.servers = servers;
             return this;
         }
         public Builder servers(GetAutopilotHealthServer... servers) {

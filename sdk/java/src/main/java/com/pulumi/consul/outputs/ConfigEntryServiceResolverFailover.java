@@ -5,6 +5,7 @@ package com.pulumi.consul.outputs;
 
 import com.pulumi.consul.outputs.ConfigEntryServiceResolverFailoverTarget;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -130,6 +131,7 @@ public final class ConfigEntryServiceResolverFailover {
 
         @CustomType.Setter
         public Builder datacenters(@Nullable List<String> datacenters) {
+
             this.datacenters = datacenters;
             return this;
         }
@@ -138,31 +140,39 @@ public final class ConfigEntryServiceResolverFailover {
         }
         @CustomType.Setter
         public Builder namespace(@Nullable String namespace) {
+
             this.namespace = namespace;
             return this;
         }
         @CustomType.Setter
         public Builder samenessGroup(@Nullable String samenessGroup) {
+
             this.samenessGroup = samenessGroup;
             return this;
         }
         @CustomType.Setter
         public Builder service(@Nullable String service) {
+
             this.service = service;
             return this;
         }
         @CustomType.Setter
         public Builder serviceSubset(@Nullable String serviceSubset) {
+
             this.serviceSubset = serviceSubset;
             return this;
         }
         @CustomType.Setter
         public Builder subsetName(String subsetName) {
-            this.subsetName = Objects.requireNonNull(subsetName);
+            if (subsetName == null) {
+              throw new MissingRequiredPropertyException("ConfigEntryServiceResolverFailover", "subsetName");
+            }
+            this.subsetName = subsetName;
             return this;
         }
         @CustomType.Setter
         public Builder targets(@Nullable List<ConfigEntryServiceResolverFailoverTarget> targets) {
+
             this.targets = targets;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.consul.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -155,42 +156,66 @@ public final class GetServiceHealthResultCheck {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetServiceHealthResultCheck", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetServiceHealthResultCheck", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder node(String node) {
-            this.node = Objects.requireNonNull(node);
+            if (node == null) {
+              throw new MissingRequiredPropertyException("GetServiceHealthResultCheck", "node");
+            }
+            this.node = node;
             return this;
         }
         @CustomType.Setter
         public Builder notes(String notes) {
-            this.notes = Objects.requireNonNull(notes);
+            if (notes == null) {
+              throw new MissingRequiredPropertyException("GetServiceHealthResultCheck", "notes");
+            }
+            this.notes = notes;
             return this;
         }
         @CustomType.Setter
         public Builder output(String output) {
-            this.output = Objects.requireNonNull(output);
+            if (output == null) {
+              throw new MissingRequiredPropertyException("GetServiceHealthResultCheck", "output");
+            }
+            this.output = output;
             return this;
         }
         @CustomType.Setter
         public Builder serviceId(String serviceId) {
-            this.serviceId = Objects.requireNonNull(serviceId);
+            if (serviceId == null) {
+              throw new MissingRequiredPropertyException("GetServiceHealthResultCheck", "serviceId");
+            }
+            this.serviceId = serviceId;
             return this;
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetServiceHealthResultCheck", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         @CustomType.Setter
         public Builder serviceTags(List<String> serviceTags) {
-            this.serviceTags = Objects.requireNonNull(serviceTags);
+            if (serviceTags == null) {
+              throw new MissingRequiredPropertyException("GetServiceHealthResultCheck", "serviceTags");
+            }
+            this.serviceTags = serviceTags;
             return this;
         }
         public Builder serviceTags(String... serviceTags) {
@@ -198,7 +223,10 @@ public final class GetServiceHealthResultCheck {
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetServiceHealthResultCheck", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetServiceHealthResultCheck build() {

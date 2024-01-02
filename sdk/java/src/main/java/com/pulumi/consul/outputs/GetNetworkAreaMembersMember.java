@@ -4,6 +4,7 @@
 package com.pulumi.consul.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -183,52 +184,82 @@ public final class GetNetworkAreaMembersMember {
 
         @CustomType.Setter
         public Builder address(String address) {
-            this.address = Objects.requireNonNull(address);
+            if (address == null) {
+              throw new MissingRequiredPropertyException("GetNetworkAreaMembersMember", "address");
+            }
+            this.address = address;
             return this;
         }
         @CustomType.Setter
         public Builder build(String build) {
-            this.build = Objects.requireNonNull(build);
+            if (build == null) {
+              throw new MissingRequiredPropertyException("GetNetworkAreaMembersMember", "build");
+            }
+            this.build = build;
             return this;
         }
         @CustomType.Setter
         public Builder datacenter(String datacenter) {
-            this.datacenter = Objects.requireNonNull(datacenter);
+            if (datacenter == null) {
+              throw new MissingRequiredPropertyException("GetNetworkAreaMembersMember", "datacenter");
+            }
+            this.datacenter = datacenter;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetNetworkAreaMembersMember", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetNetworkAreaMembersMember", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder port(Integer port) {
-            this.port = Objects.requireNonNull(port);
+            if (port == null) {
+              throw new MissingRequiredPropertyException("GetNetworkAreaMembersMember", "port");
+            }
+            this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder protocol(Integer protocol) {
-            this.protocol = Objects.requireNonNull(protocol);
+            if (protocol == null) {
+              throw new MissingRequiredPropertyException("GetNetworkAreaMembersMember", "protocol");
+            }
+            this.protocol = protocol;
             return this;
         }
         @CustomType.Setter
         public Builder role(String role) {
-            this.role = Objects.requireNonNull(role);
+            if (role == null) {
+              throw new MissingRequiredPropertyException("GetNetworkAreaMembersMember", "role");
+            }
+            this.role = role;
             return this;
         }
         @CustomType.Setter
         public Builder rtt(Integer rtt) {
-            this.rtt = Objects.requireNonNull(rtt);
+            if (rtt == null) {
+              throw new MissingRequiredPropertyException("GetNetworkAreaMembersMember", "rtt");
+            }
+            this.rtt = rtt;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetNetworkAreaMembersMember", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetNetworkAreaMembersMember build() {

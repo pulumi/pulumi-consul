@@ -7,6 +7,7 @@ import com.pulumi.consul.inputs.ConfigEntryServiceSplitterSplitRequestHeadersArg
 import com.pulumi.consul.inputs.ConfigEntryServiceSplitterSplitResponseHeadersArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
@@ -301,8 +302,12 @@ public final class ConfigEntryServiceSplitterSplitArgs extends com.pulumi.resour
         }
 
         public ConfigEntryServiceSplitterSplitArgs build() {
-            $.service = Objects.requireNonNull($.service, "expected parameter 'service' to be non-null");
-            $.weight = Objects.requireNonNull($.weight, "expected parameter 'weight' to be non-null");
+            if ($.service == null) {
+                throw new MissingRequiredPropertyException("ConfigEntryServiceSplitterSplitArgs", "service");
+            }
+            if ($.weight == null) {
+                throw new MissingRequiredPropertyException("ConfigEntryServiceSplitterSplitArgs", "weight");
+            }
             return $;
         }
     }

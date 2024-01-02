@@ -4,6 +4,7 @@
 package com.pulumi.consul.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.util.Objects;
@@ -41,12 +42,18 @@ public final class ConfigEntryServiceDefaultsTransparentProxy {
 
         @CustomType.Setter
         public Builder dialedDirectly(Boolean dialedDirectly) {
-            this.dialedDirectly = Objects.requireNonNull(dialedDirectly);
+            if (dialedDirectly == null) {
+              throw new MissingRequiredPropertyException("ConfigEntryServiceDefaultsTransparentProxy", "dialedDirectly");
+            }
+            this.dialedDirectly = dialedDirectly;
             return this;
         }
         @CustomType.Setter
         public Builder outboundListenerPort(Integer outboundListenerPort) {
-            this.outboundListenerPort = Objects.requireNonNull(outboundListenerPort);
+            if (outboundListenerPort == null) {
+              throw new MissingRequiredPropertyException("ConfigEntryServiceDefaultsTransparentProxy", "outboundListenerPort");
+            }
+            this.outboundListenerPort = outboundListenerPort;
             return this;
         }
         public ConfigEntryServiceDefaultsTransparentProxy build() {

@@ -5,6 +5,7 @@ package com.pulumi.consul.outputs;
 
 import com.pulumi.consul.outputs.GetKeyPrefixSubkeyCollection;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -141,31 +142,43 @@ Please use the token argument in the provider configuration */
 
         @CustomType.Setter
         public Builder datacenter(String datacenter) {
-            this.datacenter = Objects.requireNonNull(datacenter);
+            if (datacenter == null) {
+              throw new MissingRequiredPropertyException("GetKeyPrefixResult", "datacenter");
+            }
+            this.datacenter = datacenter;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetKeyPrefixResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder namespace(@Nullable String namespace) {
+
             this.namespace = namespace;
             return this;
         }
         @CustomType.Setter
         public Builder partition(@Nullable String partition) {
+
             this.partition = partition;
             return this;
         }
         @CustomType.Setter
         public Builder pathPrefix(String pathPrefix) {
-            this.pathPrefix = Objects.requireNonNull(pathPrefix);
+            if (pathPrefix == null) {
+              throw new MissingRequiredPropertyException("GetKeyPrefixResult", "pathPrefix");
+            }
+            this.pathPrefix = pathPrefix;
             return this;
         }
         @CustomType.Setter
         public Builder subkeyCollection(@Nullable List<GetKeyPrefixSubkeyCollection> subkeyCollection) {
+
             this.subkeyCollection = subkeyCollection;
             return this;
         }
@@ -174,17 +187,24 @@ Please use the token argument in the provider configuration */
         }
         @CustomType.Setter
         public Builder subkeys(Map<String,String> subkeys) {
-            this.subkeys = Objects.requireNonNull(subkeys);
+            if (subkeys == null) {
+              throw new MissingRequiredPropertyException("GetKeyPrefixResult", "subkeys");
+            }
+            this.subkeys = subkeys;
             return this;
         }
         @CustomType.Setter
         public Builder token(@Nullable String token) {
+
             this.token = token;
             return this;
         }
         @CustomType.Setter("var")
         public Builder var_(Map<String,String> var_) {
-            this.var_ = Objects.requireNonNull(var_);
+            if (var_ == null) {
+              throw new MissingRequiredPropertyException("GetKeyPrefixResult", "var_");
+            }
+            this.var_ = var_;
             return this;
         }
         public GetKeyPrefixResult build() {

@@ -72,16 +72,19 @@ public final class ConfigEntryServiceDefaultsUpstreamConfigOverrideLimit {
 
         @CustomType.Setter
         public Builder maxConcurrentRequests(@Nullable Integer maxConcurrentRequests) {
+
             this.maxConcurrentRequests = maxConcurrentRequests;
             return this;
         }
         @CustomType.Setter
         public Builder maxConnections(@Nullable Integer maxConnections) {
+
             this.maxConnections = maxConnections;
             return this;
         }
         @CustomType.Setter
         public Builder maxPendingRequests(@Nullable Integer maxPendingRequests) {
+
             this.maxPendingRequests = maxPendingRequests;
             return this;
         }

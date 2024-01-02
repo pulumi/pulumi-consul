@@ -6,6 +6,7 @@ package com.pulumi.consul.inputs;
 import com.pulumi.consul.inputs.ConfigEntryServiceIntentionsSourcePermissionHttpArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -123,8 +124,12 @@ public final class ConfigEntryServiceIntentionsSourcePermissionArgs extends com.
         }
 
         public ConfigEntryServiceIntentionsSourcePermissionArgs build() {
-            $.action = Objects.requireNonNull($.action, "expected parameter 'action' to be non-null");
-            $.https = Objects.requireNonNull($.https, "expected parameter 'https' to be non-null");
+            if ($.action == null) {
+                throw new MissingRequiredPropertyException("ConfigEntryServiceIntentionsSourcePermissionArgs", "action");
+            }
+            if ($.https == null) {
+                throw new MissingRequiredPropertyException("ConfigEntryServiceIntentionsSourcePermissionArgs", "https");
+            }
             return $;
         }
     }

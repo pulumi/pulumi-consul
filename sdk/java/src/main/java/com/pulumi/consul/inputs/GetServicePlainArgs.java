@@ -5,6 +5,7 @@ package com.pulumi.consul.inputs;
 
 import com.pulumi.consul.inputs.GetServiceQueryOption;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -200,7 +201,9 @@ public final class GetServicePlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetServicePlainArgs build() {
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("GetServicePlainArgs", "name");
+            }
             return $;
         }
     }

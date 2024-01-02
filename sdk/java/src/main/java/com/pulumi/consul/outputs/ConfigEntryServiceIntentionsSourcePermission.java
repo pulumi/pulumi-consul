@@ -5,6 +5,7 @@ package com.pulumi.consul.outputs;
 
 import com.pulumi.consul.outputs.ConfigEntryServiceIntentionsSourcePermissionHttp;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -58,12 +59,18 @@ public final class ConfigEntryServiceIntentionsSourcePermission {
 
         @CustomType.Setter
         public Builder action(String action) {
-            this.action = Objects.requireNonNull(action);
+            if (action == null) {
+              throw new MissingRequiredPropertyException("ConfigEntryServiceIntentionsSourcePermission", "action");
+            }
+            this.action = action;
             return this;
         }
         @CustomType.Setter
         public Builder https(List<ConfigEntryServiceIntentionsSourcePermissionHttp> https) {
-            this.https = Objects.requireNonNull(https);
+            if (https == null) {
+              throw new MissingRequiredPropertyException("ConfigEntryServiceIntentionsSourcePermission", "https");
+            }
+            this.https = https;
             return this;
         }
         public Builder https(ConfigEntryServiceIntentionsSourcePermissionHttp... https) {

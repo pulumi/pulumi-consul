@@ -90,6 +90,7 @@ public final class ConfigEntryServiceResolverLoadBalancer {
 
         @CustomType.Setter
         public Builder hashPolicies(@Nullable List<ConfigEntryServiceResolverLoadBalancerHashPolicy> hashPolicies) {
+
             this.hashPolicies = hashPolicies;
             return this;
         }
@@ -98,6 +99,7 @@ public final class ConfigEntryServiceResolverLoadBalancer {
         }
         @CustomType.Setter
         public Builder leastRequestConfigs(@Nullable List<ConfigEntryServiceResolverLoadBalancerLeastRequestConfig> leastRequestConfigs) {
+
             this.leastRequestConfigs = leastRequestConfigs;
             return this;
         }
@@ -106,11 +108,13 @@ public final class ConfigEntryServiceResolverLoadBalancer {
         }
         @CustomType.Setter
         public Builder policy(@Nullable String policy) {
+
             this.policy = policy;
             return this;
         }
         @CustomType.Setter
         public Builder ringHashConfigs(@Nullable List<ConfigEntryServiceResolverLoadBalancerRingHashConfig> ringHashConfigs) {
+
             this.ringHashConfigs = ringHashConfigs;
             return this;
         }

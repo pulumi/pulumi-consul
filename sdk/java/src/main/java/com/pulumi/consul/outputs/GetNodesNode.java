@@ -4,6 +4,7 @@
 package com.pulumi.consul.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -83,27 +84,42 @@ public final class GetNodesNode {
 
         @CustomType.Setter
         public Builder address(String address) {
-            this.address = Objects.requireNonNull(address);
+            if (address == null) {
+              throw new MissingRequiredPropertyException("GetNodesNode", "address");
+            }
+            this.address = address;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetNodesNode", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder meta(Map<String,String> meta) {
-            this.meta = Objects.requireNonNull(meta);
+            if (meta == null) {
+              throw new MissingRequiredPropertyException("GetNodesNode", "meta");
+            }
+            this.meta = meta;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetNodesNode", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder taggedAddresses(Map<String,String> taggedAddresses) {
-            this.taggedAddresses = Objects.requireNonNull(taggedAddresses);
+            if (taggedAddresses == null) {
+              throw new MissingRequiredPropertyException("GetNodesNode", "taggedAddresses");
+            }
+            this.taggedAddresses = taggedAddresses;
             return this;
         }
         public GetNodesNode build() {

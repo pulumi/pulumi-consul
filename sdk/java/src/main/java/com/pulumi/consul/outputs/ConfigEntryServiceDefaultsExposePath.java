@@ -55,21 +55,25 @@ public final class ConfigEntryServiceDefaultsExposePath {
 
         @CustomType.Setter
         public Builder listenerPort(@Nullable Integer listenerPort) {
+
             this.listenerPort = listenerPort;
             return this;
         }
         @CustomType.Setter
         public Builder localPathPort(@Nullable Integer localPathPort) {
+
             this.localPathPort = localPathPort;
             return this;
         }
         @CustomType.Setter
         public Builder path(@Nullable String path) {
+
             this.path = path;
             return this;
         }
         @CustomType.Setter
         public Builder protocol(@Nullable String protocol) {
+
             this.protocol = protocol;
             return this;
         }

@@ -153,46 +153,55 @@ public final class GetNodesQueryOption {
 
         @CustomType.Setter
         public Builder allowStale(@Nullable Boolean allowStale) {
+
             this.allowStale = allowStale;
             return this;
         }
         @CustomType.Setter
         public Builder datacenter(@Nullable String datacenter) {
+
             this.datacenter = datacenter;
             return this;
         }
         @CustomType.Setter
         public Builder near(@Nullable String near) {
+
             this.near = near;
             return this;
         }
         @CustomType.Setter
         public Builder nodeMeta(@Nullable Map<String,String> nodeMeta) {
+
             this.nodeMeta = nodeMeta;
             return this;
         }
         @CustomType.Setter
         public Builder partition(@Nullable String partition) {
+
             this.partition = partition;
             return this;
         }
         @CustomType.Setter
         public Builder requireConsistent(@Nullable Boolean requireConsistent) {
+
             this.requireConsistent = requireConsistent;
             return this;
         }
         @CustomType.Setter
         public Builder token(@Nullable String token) {
+
             this.token = token;
             return this;
         }
         @CustomType.Setter
         public Builder waitIndex(@Nullable Integer waitIndex) {
+
             this.waitIndex = waitIndex;
             return this;
         }
         @CustomType.Setter
         public Builder waitTime(@Nullable String waitTime) {
+
             this.waitTime = waitTime;
             return this;
         }

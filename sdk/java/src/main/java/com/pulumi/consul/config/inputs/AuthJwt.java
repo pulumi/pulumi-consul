@@ -4,6 +4,7 @@
 package com.pulumi.consul.config.inputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
@@ -56,21 +57,27 @@ public final class AuthJwt {
 
         @CustomType.Setter
         public Builder authMethod(String authMethod) {
-            this.authMethod = Objects.requireNonNull(authMethod);
+            if (authMethod == null) {
+              throw new MissingRequiredPropertyException("AuthJwt", "authMethod");
+            }
+            this.authMethod = authMethod;
             return this;
         }
         @CustomType.Setter
         public Builder bearerToken(@Nullable String bearerToken) {
+
             this.bearerToken = bearerToken;
             return this;
         }
         @CustomType.Setter
         public Builder meta(@Nullable Map<String,String> meta) {
+
             this.meta = meta;
             return this;
         }
         @CustomType.Setter
         public Builder useTerraformCloudWorkloadIdentity(@Nullable Boolean useTerraformCloudWorkloadIdentity) {
+
             this.useTerraformCloudWorkloadIdentity = useTerraformCloudWorkloadIdentity;
             return this;
         }

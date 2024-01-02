@@ -60,11 +60,13 @@ public final class ConfigEntryServiceIntentionsJwtProvider {
 
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder verifyClaims(@Nullable List<ConfigEntryServiceIntentionsJwtProviderVerifyClaim> verifyClaims) {
+
             this.verifyClaims = verifyClaims;
             return this;
         }

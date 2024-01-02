@@ -4,6 +4,7 @@
 package com.pulumi.consul.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -120,31 +121,39 @@ public final class KeysKey {
 
         @CustomType.Setter("default")
         public Builder default_(@Nullable String default_) {
+
             this.default_ = default_;
             return this;
         }
         @CustomType.Setter
         public Builder delete(@Nullable Boolean delete) {
+
             this.delete = delete;
             return this;
         }
         @CustomType.Setter
         public Builder flags(@Nullable Integer flags) {
+
             this.flags = flags;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder path(String path) {
-            this.path = Objects.requireNonNull(path);
+            if (path == null) {
+              throw new MissingRequiredPropertyException("KeysKey", "path");
+            }
+            this.path = path;
             return this;
         }
         @CustomType.Setter
         public Builder value(@Nullable String value) {
+
             this.value = value;
             return this;
         }

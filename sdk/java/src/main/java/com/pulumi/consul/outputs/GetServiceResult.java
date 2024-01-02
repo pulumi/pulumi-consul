@@ -6,6 +6,7 @@ package com.pulumi.consul.outputs;
 import com.pulumi.consul.outputs.GetServiceQueryOption;
 import com.pulumi.consul.outputs.GetServiceService;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -119,26 +120,35 @@ public final class GetServiceResult {
 
         @CustomType.Setter
         public Builder datacenter(@Nullable String datacenter) {
+
             this.datacenter = datacenter;
             return this;
         }
         @CustomType.Setter
         public Builder filter(@Nullable String filter) {
+
             this.filter = filter;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder queryOptions(@Nullable List<GetServiceQueryOption> queryOptions) {
+
             this.queryOptions = queryOptions;
             return this;
         }
@@ -147,7 +157,10 @@ public final class GetServiceResult {
         }
         @CustomType.Setter
         public Builder services(List<GetServiceService> services) {
-            this.services = Objects.requireNonNull(services);
+            if (services == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "services");
+            }
+            this.services = services;
             return this;
         }
         public Builder services(GetServiceService... services) {
@@ -155,6 +168,7 @@ public final class GetServiceResult {
         }
         @CustomType.Setter
         public Builder tag(@Nullable String tag) {
+
             this.tag = tag;
             return this;
         }
