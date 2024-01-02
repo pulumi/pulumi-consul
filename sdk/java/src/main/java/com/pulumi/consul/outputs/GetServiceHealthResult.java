@@ -7,6 +7,7 @@ import com.pulumi.consul.outputs.GetServiceHealthResultCheck;
 import com.pulumi.consul.outputs.GetServiceHealthResultNode;
 import com.pulumi.consul.outputs.GetServiceHealthResultService;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.List;
 import java.util.Objects;
 
@@ -57,7 +58,10 @@ public final class GetServiceHealthResult {
 
         @CustomType.Setter
         public Builder checks(List<GetServiceHealthResultCheck> checks) {
-            this.checks = Objects.requireNonNull(checks);
+            if (checks == null) {
+              throw new MissingRequiredPropertyException("GetServiceHealthResult", "checks");
+            }
+            this.checks = checks;
             return this;
         }
         public Builder checks(GetServiceHealthResultCheck... checks) {
@@ -65,7 +69,10 @@ public final class GetServiceHealthResult {
         }
         @CustomType.Setter
         public Builder nodes(List<GetServiceHealthResultNode> nodes) {
-            this.nodes = Objects.requireNonNull(nodes);
+            if (nodes == null) {
+              throw new MissingRequiredPropertyException("GetServiceHealthResult", "nodes");
+            }
+            this.nodes = nodes;
             return this;
         }
         public Builder nodes(GetServiceHealthResultNode... nodes) {
@@ -73,7 +80,10 @@ public final class GetServiceHealthResult {
         }
         @CustomType.Setter
         public Builder services(List<GetServiceHealthResultService> services) {
-            this.services = Objects.requireNonNull(services);
+            if (services == null) {
+              throw new MissingRequiredPropertyException("GetServiceHealthResult", "services");
+            }
+            this.services = services;
             return this;
         }
         public Builder services(GetServiceHealthResultService... services) {

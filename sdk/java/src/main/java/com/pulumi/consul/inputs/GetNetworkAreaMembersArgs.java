@@ -5,6 +5,7 @@ package com.pulumi.consul.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -182,7 +183,9 @@ Please use the token argument in the provider configuration */
         }
 
         public GetNetworkAreaMembersArgs build() {
-            $.uuid = Objects.requireNonNull($.uuid, "expected parameter 'uuid' to be non-null");
+            if ($.uuid == null) {
+                throw new MissingRequiredPropertyException("GetNetworkAreaMembersArgs", "uuid");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.consul.outputs;
 
 import com.pulumi.consul.outputs.GetAclAuthMethodNamespaceRule;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -197,47 +198,72 @@ public final class GetAclAuthMethodResult {
 
         @CustomType.Setter
         public Builder config(Map<String,String> config) {
-            this.config = Objects.requireNonNull(config);
+            if (config == null) {
+              throw new MissingRequiredPropertyException("GetAclAuthMethodResult", "config");
+            }
+            this.config = config;
             return this;
         }
         @CustomType.Setter
         public Builder configJson(String configJson) {
-            this.configJson = Objects.requireNonNull(configJson);
+            if (configJson == null) {
+              throw new MissingRequiredPropertyException("GetAclAuthMethodResult", "configJson");
+            }
+            this.configJson = configJson;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetAclAuthMethodResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder displayName(String displayName) {
-            this.displayName = Objects.requireNonNull(displayName);
+            if (displayName == null) {
+              throw new MissingRequiredPropertyException("GetAclAuthMethodResult", "displayName");
+            }
+            this.displayName = displayName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAclAuthMethodResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder maxTokenTtl(String maxTokenTtl) {
-            this.maxTokenTtl = Objects.requireNonNull(maxTokenTtl);
+            if (maxTokenTtl == null) {
+              throw new MissingRequiredPropertyException("GetAclAuthMethodResult", "maxTokenTtl");
+            }
+            this.maxTokenTtl = maxTokenTtl;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetAclAuthMethodResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder namespace(@Nullable String namespace) {
+
             this.namespace = namespace;
             return this;
         }
         @CustomType.Setter
         public Builder namespaceRules(List<GetAclAuthMethodNamespaceRule> namespaceRules) {
-            this.namespaceRules = Objects.requireNonNull(namespaceRules);
+            if (namespaceRules == null) {
+              throw new MissingRequiredPropertyException("GetAclAuthMethodResult", "namespaceRules");
+            }
+            this.namespaceRules = namespaceRules;
             return this;
         }
         public Builder namespaceRules(GetAclAuthMethodNamespaceRule... namespaceRules) {
@@ -245,17 +271,24 @@ public final class GetAclAuthMethodResult {
         }
         @CustomType.Setter
         public Builder partition(@Nullable String partition) {
+
             this.partition = partition;
             return this;
         }
         @CustomType.Setter
         public Builder tokenLocality(String tokenLocality) {
-            this.tokenLocality = Objects.requireNonNull(tokenLocality);
+            if (tokenLocality == null) {
+              throw new MissingRequiredPropertyException("GetAclAuthMethodResult", "tokenLocality");
+            }
+            this.tokenLocality = tokenLocality;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetAclAuthMethodResult", "type");
+            }
+            this.type = type;
             return this;
         }
         public GetAclAuthMethodResult build() {

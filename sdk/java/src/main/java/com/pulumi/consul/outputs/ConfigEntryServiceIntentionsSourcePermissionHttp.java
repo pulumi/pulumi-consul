@@ -102,6 +102,7 @@ public final class ConfigEntryServiceIntentionsSourcePermissionHttp {
 
         @CustomType.Setter
         public Builder headers(@Nullable List<ConfigEntryServiceIntentionsSourcePermissionHttpHeader> headers) {
+
             this.headers = headers;
             return this;
         }
@@ -110,6 +111,7 @@ public final class ConfigEntryServiceIntentionsSourcePermissionHttp {
         }
         @CustomType.Setter
         public Builder methods(@Nullable List<String> methods) {
+
             this.methods = methods;
             return this;
         }
@@ -118,16 +120,19 @@ public final class ConfigEntryServiceIntentionsSourcePermissionHttp {
         }
         @CustomType.Setter
         public Builder pathExact(@Nullable String pathExact) {
+
             this.pathExact = pathExact;
             return this;
         }
         @CustomType.Setter
         public Builder pathPrefix(@Nullable String pathPrefix) {
+
             this.pathPrefix = pathPrefix;
             return this;
         }
         @CustomType.Setter
         public Builder pathRegex(@Nullable String pathRegex) {
+
             this.pathRegex = pathRegex;
             return this;
         }

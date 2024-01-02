@@ -8,6 +8,7 @@ import com.pulumi.consul.outputs.GetAclRolePolicy;
 import com.pulumi.consul.outputs.GetAclRoleServiceIdentity;
 import com.pulumi.consul.outputs.GetAclRoleTemplatedPolicy;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -161,27 +162,40 @@ public final class GetAclRoleResult {
 
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetAclRoleResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAclRoleResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetAclRoleResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder namespace(@Nullable String namespace) {
+
             this.namespace = namespace;
             return this;
         }
         @CustomType.Setter
         public Builder nodeIdentities(List<GetAclRoleNodeIdentity> nodeIdentities) {
-            this.nodeIdentities = Objects.requireNonNull(nodeIdentities);
+            if (nodeIdentities == null) {
+              throw new MissingRequiredPropertyException("GetAclRoleResult", "nodeIdentities");
+            }
+            this.nodeIdentities = nodeIdentities;
             return this;
         }
         public Builder nodeIdentities(GetAclRoleNodeIdentity... nodeIdentities) {
@@ -189,12 +203,16 @@ public final class GetAclRoleResult {
         }
         @CustomType.Setter
         public Builder partition(@Nullable String partition) {
+
             this.partition = partition;
             return this;
         }
         @CustomType.Setter
         public Builder policies(List<GetAclRolePolicy> policies) {
-            this.policies = Objects.requireNonNull(policies);
+            if (policies == null) {
+              throw new MissingRequiredPropertyException("GetAclRoleResult", "policies");
+            }
+            this.policies = policies;
             return this;
         }
         public Builder policies(GetAclRolePolicy... policies) {
@@ -202,7 +220,10 @@ public final class GetAclRoleResult {
         }
         @CustomType.Setter
         public Builder serviceIdentities(List<GetAclRoleServiceIdentity> serviceIdentities) {
-            this.serviceIdentities = Objects.requireNonNull(serviceIdentities);
+            if (serviceIdentities == null) {
+              throw new MissingRequiredPropertyException("GetAclRoleResult", "serviceIdentities");
+            }
+            this.serviceIdentities = serviceIdentities;
             return this;
         }
         public Builder serviceIdentities(GetAclRoleServiceIdentity... serviceIdentities) {
@@ -210,7 +231,10 @@ public final class GetAclRoleResult {
         }
         @CustomType.Setter
         public Builder templatedPolicies(List<GetAclRoleTemplatedPolicy> templatedPolicies) {
-            this.templatedPolicies = Objects.requireNonNull(templatedPolicies);
+            if (templatedPolicies == null) {
+              throw new MissingRequiredPropertyException("GetAclRoleResult", "templatedPolicies");
+            }
+            this.templatedPolicies = templatedPolicies;
             return this;
         }
         public Builder templatedPolicies(GetAclRoleTemplatedPolicy... templatedPolicies) {

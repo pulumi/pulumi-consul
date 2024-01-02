@@ -6,6 +6,7 @@ package com.pulumi.consul.inputs;
 import com.pulumi.consul.inputs.ServiceCheckHeaderArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -496,10 +497,18 @@ public final class ServiceCheckArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ServiceCheckArgs build() {
-            $.checkId = Objects.requireNonNull($.checkId, "expected parameter 'checkId' to be non-null");
-            $.interval = Objects.requireNonNull($.interval, "expected parameter 'interval' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
-            $.timeout = Objects.requireNonNull($.timeout, "expected parameter 'timeout' to be non-null");
+            if ($.checkId == null) {
+                throw new MissingRequiredPropertyException("ServiceCheckArgs", "checkId");
+            }
+            if ($.interval == null) {
+                throw new MissingRequiredPropertyException("ServiceCheckArgs", "interval");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("ServiceCheckArgs", "name");
+            }
+            if ($.timeout == null) {
+                throw new MissingRequiredPropertyException("ServiceCheckArgs", "timeout");
+            }
             return $;
         }
     }

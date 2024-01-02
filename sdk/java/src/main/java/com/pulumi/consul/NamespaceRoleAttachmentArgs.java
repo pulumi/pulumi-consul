@@ -5,6 +5,7 @@ package com.pulumi.consul;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class NamespaceRoleAttachmentArgs extends com.pulumi.resources.Reso
         }
 
         public NamespaceRoleAttachmentArgs build() {
-            $.namespace = Objects.requireNonNull($.namespace, "expected parameter 'namespace' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            if ($.namespace == null) {
+                throw new MissingRequiredPropertyException("NamespaceRoleAttachmentArgs", "namespace");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("NamespaceRoleAttachmentArgs", "role");
+            }
             return $;
         }
     }

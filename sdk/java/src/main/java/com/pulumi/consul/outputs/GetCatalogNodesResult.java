@@ -6,6 +6,7 @@ package com.pulumi.consul.outputs;
 import com.pulumi.consul.outputs.GetCatalogNodesNode;
 import com.pulumi.consul.outputs.GetCatalogNodesQueryOption;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -110,17 +111,26 @@ public final class GetCatalogNodesResult {
 
         @CustomType.Setter
         public Builder datacenter(String datacenter) {
-            this.datacenter = Objects.requireNonNull(datacenter);
+            if (datacenter == null) {
+              throw new MissingRequiredPropertyException("GetCatalogNodesResult", "datacenter");
+            }
+            this.datacenter = datacenter;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetCatalogNodesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder nodeIds(List<String> nodeIds) {
-            this.nodeIds = Objects.requireNonNull(nodeIds);
+            if (nodeIds == null) {
+              throw new MissingRequiredPropertyException("GetCatalogNodesResult", "nodeIds");
+            }
+            this.nodeIds = nodeIds;
             return this;
         }
         public Builder nodeIds(String... nodeIds) {
@@ -128,7 +138,10 @@ public final class GetCatalogNodesResult {
         }
         @CustomType.Setter
         public Builder nodeNames(List<String> nodeNames) {
-            this.nodeNames = Objects.requireNonNull(nodeNames);
+            if (nodeNames == null) {
+              throw new MissingRequiredPropertyException("GetCatalogNodesResult", "nodeNames");
+            }
+            this.nodeNames = nodeNames;
             return this;
         }
         public Builder nodeNames(String... nodeNames) {
@@ -136,7 +149,10 @@ public final class GetCatalogNodesResult {
         }
         @CustomType.Setter
         public Builder nodes(List<GetCatalogNodesNode> nodes) {
-            this.nodes = Objects.requireNonNull(nodes);
+            if (nodes == null) {
+              throw new MissingRequiredPropertyException("GetCatalogNodesResult", "nodes");
+            }
+            this.nodes = nodes;
             return this;
         }
         public Builder nodes(GetCatalogNodesNode... nodes) {
@@ -144,6 +160,7 @@ public final class GetCatalogNodesResult {
         }
         @CustomType.Setter
         public Builder queryOptions(@Nullable List<GetCatalogNodesQueryOption> queryOptions) {
+
             this.queryOptions = queryOptions;
             return this;
         }

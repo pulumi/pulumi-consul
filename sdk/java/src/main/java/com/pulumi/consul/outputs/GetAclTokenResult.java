@@ -9,6 +9,7 @@ import com.pulumi.consul.outputs.GetAclTokenRole;
 import com.pulumi.consul.outputs.GetAclTokenServiceIdentity;
 import com.pulumi.consul.outputs.GetAclTokenTemplatedPolicy;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -205,37 +206,56 @@ public final class GetAclTokenResult {
 
         @CustomType.Setter
         public Builder accessorId(String accessorId) {
-            this.accessorId = Objects.requireNonNull(accessorId);
+            if (accessorId == null) {
+              throw new MissingRequiredPropertyException("GetAclTokenResult", "accessorId");
+            }
+            this.accessorId = accessorId;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetAclTokenResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder expirationTime(String expirationTime) {
-            this.expirationTime = Objects.requireNonNull(expirationTime);
+            if (expirationTime == null) {
+              throw new MissingRequiredPropertyException("GetAclTokenResult", "expirationTime");
+            }
+            this.expirationTime = expirationTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAclTokenResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder local(Boolean local) {
-            this.local = Objects.requireNonNull(local);
+            if (local == null) {
+              throw new MissingRequiredPropertyException("GetAclTokenResult", "local");
+            }
+            this.local = local;
             return this;
         }
         @CustomType.Setter
         public Builder namespace(@Nullable String namespace) {
+
             this.namespace = namespace;
             return this;
         }
         @CustomType.Setter
         public Builder nodeIdentities(List<GetAclTokenNodeIdentity> nodeIdentities) {
-            this.nodeIdentities = Objects.requireNonNull(nodeIdentities);
+            if (nodeIdentities == null) {
+              throw new MissingRequiredPropertyException("GetAclTokenResult", "nodeIdentities");
+            }
+            this.nodeIdentities = nodeIdentities;
             return this;
         }
         public Builder nodeIdentities(GetAclTokenNodeIdentity... nodeIdentities) {
@@ -243,12 +263,16 @@ public final class GetAclTokenResult {
         }
         @CustomType.Setter
         public Builder partition(@Nullable String partition) {
+
             this.partition = partition;
             return this;
         }
         @CustomType.Setter
         public Builder policies(List<GetAclTokenPolicy> policies) {
-            this.policies = Objects.requireNonNull(policies);
+            if (policies == null) {
+              throw new MissingRequiredPropertyException("GetAclTokenResult", "policies");
+            }
+            this.policies = policies;
             return this;
         }
         public Builder policies(GetAclTokenPolicy... policies) {
@@ -256,7 +280,10 @@ public final class GetAclTokenResult {
         }
         @CustomType.Setter
         public Builder roles(List<GetAclTokenRole> roles) {
-            this.roles = Objects.requireNonNull(roles);
+            if (roles == null) {
+              throw new MissingRequiredPropertyException("GetAclTokenResult", "roles");
+            }
+            this.roles = roles;
             return this;
         }
         public Builder roles(GetAclTokenRole... roles) {
@@ -264,7 +291,10 @@ public final class GetAclTokenResult {
         }
         @CustomType.Setter
         public Builder serviceIdentities(List<GetAclTokenServiceIdentity> serviceIdentities) {
-            this.serviceIdentities = Objects.requireNonNull(serviceIdentities);
+            if (serviceIdentities == null) {
+              throw new MissingRequiredPropertyException("GetAclTokenResult", "serviceIdentities");
+            }
+            this.serviceIdentities = serviceIdentities;
             return this;
         }
         public Builder serviceIdentities(GetAclTokenServiceIdentity... serviceIdentities) {
@@ -272,7 +302,10 @@ public final class GetAclTokenResult {
         }
         @CustomType.Setter
         public Builder templatedPolicies(List<GetAclTokenTemplatedPolicy> templatedPolicies) {
-            this.templatedPolicies = Objects.requireNonNull(templatedPolicies);
+            if (templatedPolicies == null) {
+              throw new MissingRequiredPropertyException("GetAclTokenResult", "templatedPolicies");
+            }
+            this.templatedPolicies = templatedPolicies;
             return this;
         }
         public Builder templatedPolicies(GetAclTokenTemplatedPolicy... templatedPolicies) {

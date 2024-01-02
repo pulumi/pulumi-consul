@@ -62,26 +62,31 @@ public final class ConfigEntryServiceDefaultsEnvoyExtension {
 
         @CustomType.Setter
         public Builder arguments(@Nullable Map<String,String> arguments) {
+
             this.arguments = arguments;
             return this;
         }
         @CustomType.Setter
         public Builder consulVersion(@Nullable String consulVersion) {
+
             this.consulVersion = consulVersion;
             return this;
         }
         @CustomType.Setter
         public Builder envoyVersion(@Nullable String envoyVersion) {
+
             this.envoyVersion = envoyVersion;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder required(@Nullable Boolean required) {
+
             this.required = required;
             return this;
         }

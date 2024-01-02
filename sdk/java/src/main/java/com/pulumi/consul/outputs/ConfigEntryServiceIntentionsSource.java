@@ -173,36 +173,43 @@ public final class ConfigEntryServiceIntentionsSource {
 
         @CustomType.Setter
         public Builder action(@Nullable String action) {
+
             this.action = action;
             return this;
         }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder namespace(@Nullable String namespace) {
+
             this.namespace = namespace;
             return this;
         }
         @CustomType.Setter
         public Builder partition(@Nullable String partition) {
+
             this.partition = partition;
             return this;
         }
         @CustomType.Setter
         public Builder peer(@Nullable String peer) {
+
             this.peer = peer;
             return this;
         }
         @CustomType.Setter
         public Builder permissions(@Nullable List<ConfigEntryServiceIntentionsSourcePermission> permissions) {
+
             this.permissions = permissions;
             return this;
         }
@@ -211,16 +218,19 @@ public final class ConfigEntryServiceIntentionsSource {
         }
         @CustomType.Setter
         public Builder precedence(@Nullable Integer precedence) {
+
             this.precedence = precedence;
             return this;
         }
         @CustomType.Setter
         public Builder samenessGroup(@Nullable String samenessGroup) {
+
             this.samenessGroup = samenessGroup;
             return this;
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }

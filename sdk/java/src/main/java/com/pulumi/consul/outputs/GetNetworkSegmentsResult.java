@@ -4,6 +4,7 @@
 package com.pulumi.consul.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -95,17 +96,26 @@ Please use the token argument in the provider configuration */
 
         @CustomType.Setter
         public Builder datacenter(String datacenter) {
-            this.datacenter = Objects.requireNonNull(datacenter);
+            if (datacenter == null) {
+              throw new MissingRequiredPropertyException("GetNetworkSegmentsResult", "datacenter");
+            }
+            this.datacenter = datacenter;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetNetworkSegmentsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder segments(List<String> segments) {
-            this.segments = Objects.requireNonNull(segments);
+            if (segments == null) {
+              throw new MissingRequiredPropertyException("GetNetworkSegmentsResult", "segments");
+            }
+            this.segments = segments;
             return this;
         }
         public Builder segments(String... segments) {
@@ -113,6 +123,7 @@ Please use the token argument in the provider configuration */
         }
         @CustomType.Setter
         public Builder token(@Nullable String token) {
+
             this.token = token;
             return this;
         }

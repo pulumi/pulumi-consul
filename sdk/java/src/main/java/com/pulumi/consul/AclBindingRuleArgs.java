@@ -6,6 +6,7 @@ package com.pulumi.consul;
 import com.pulumi.consul.inputs.AclBindingRuleBindVarsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -336,9 +337,15 @@ public final class AclBindingRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public AclBindingRuleArgs build() {
-            $.authMethod = Objects.requireNonNull($.authMethod, "expected parameter 'authMethod' to be non-null");
-            $.bindName = Objects.requireNonNull($.bindName, "expected parameter 'bindName' to be non-null");
-            $.bindType = Objects.requireNonNull($.bindType, "expected parameter 'bindType' to be non-null");
+            if ($.authMethod == null) {
+                throw new MissingRequiredPropertyException("AclBindingRuleArgs", "authMethod");
+            }
+            if ($.bindName == null) {
+                throw new MissingRequiredPropertyException("AclBindingRuleArgs", "bindName");
+            }
+            if ($.bindType == null) {
+                throw new MissingRequiredPropertyException("AclBindingRuleArgs", "bindType");
+            }
             return $;
         }
     }

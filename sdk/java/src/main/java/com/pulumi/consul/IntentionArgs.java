@@ -5,6 +5,7 @@ package com.pulumi.consul;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -364,9 +365,15 @@ public final class IntentionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public IntentionArgs build() {
-            $.action = Objects.requireNonNull($.action, "expected parameter 'action' to be non-null");
-            $.destinationName = Objects.requireNonNull($.destinationName, "expected parameter 'destinationName' to be non-null");
-            $.sourceName = Objects.requireNonNull($.sourceName, "expected parameter 'sourceName' to be non-null");
+            if ($.action == null) {
+                throw new MissingRequiredPropertyException("IntentionArgs", "action");
+            }
+            if ($.destinationName == null) {
+                throw new MissingRequiredPropertyException("IntentionArgs", "destinationName");
+            }
+            if ($.sourceName == null) {
+                throw new MissingRequiredPropertyException("IntentionArgs", "sourceName");
+            }
             return $;
         }
     }

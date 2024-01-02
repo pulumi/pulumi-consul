@@ -128,36 +128,43 @@ public final class ConfigEntryServiceResolverRedirect {
 
         @CustomType.Setter
         public Builder datacenter(@Nullable String datacenter) {
+
             this.datacenter = datacenter;
             return this;
         }
         @CustomType.Setter
         public Builder namespace(@Nullable String namespace) {
+
             this.namespace = namespace;
             return this;
         }
         @CustomType.Setter
         public Builder partition(@Nullable String partition) {
+
             this.partition = partition;
             return this;
         }
         @CustomType.Setter
         public Builder peer(@Nullable String peer) {
+
             this.peer = peer;
             return this;
         }
         @CustomType.Setter
         public Builder samenessGroup(@Nullable String samenessGroup) {
+
             this.samenessGroup = samenessGroup;
             return this;
         }
         @CustomType.Setter
         public Builder service(@Nullable String service) {
+
             this.service = service;
             return this;
         }
         @CustomType.Setter
         public Builder serviceSubset(@Nullable String serviceSubset) {
+
             this.serviceSubset = serviceSubset;
             return this;
         }

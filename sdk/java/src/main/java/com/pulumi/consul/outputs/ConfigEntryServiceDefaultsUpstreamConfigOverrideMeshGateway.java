@@ -36,6 +36,7 @@ public final class ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGateway {
 
         @CustomType.Setter
         public Builder mode(@Nullable String mode) {
+
             this.mode = mode;
             return this;
         }

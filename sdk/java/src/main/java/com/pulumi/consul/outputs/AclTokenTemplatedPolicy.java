@@ -5,6 +5,7 @@ package com.pulumi.consul.outputs;
 
 import com.pulumi.consul.outputs.AclTokenTemplatedPolicyTemplateVariables;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -74,6 +75,7 @@ public final class AclTokenTemplatedPolicy {
 
         @CustomType.Setter
         public Builder datacenters(@Nullable List<String> datacenters) {
+
             this.datacenters = datacenters;
             return this;
         }
@@ -82,11 +84,15 @@ public final class AclTokenTemplatedPolicy {
         }
         @CustomType.Setter
         public Builder templateName(String templateName) {
-            this.templateName = Objects.requireNonNull(templateName);
+            if (templateName == null) {
+              throw new MissingRequiredPropertyException("AclTokenTemplatedPolicy", "templateName");
+            }
+            this.templateName = templateName;
             return this;
         }
         @CustomType.Setter
         public Builder templateVariables(@Nullable AclTokenTemplatedPolicyTemplateVariables templateVariables) {
+
             this.templateVariables = templateVariables;
             return this;
         }

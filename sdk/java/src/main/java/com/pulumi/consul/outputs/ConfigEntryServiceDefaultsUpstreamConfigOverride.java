@@ -157,21 +157,25 @@ public final class ConfigEntryServiceDefaultsUpstreamConfigOverride {
 
         @CustomType.Setter
         public Builder balanceOutboundConnections(@Nullable String balanceOutboundConnections) {
+
             this.balanceOutboundConnections = balanceOutboundConnections;
             return this;
         }
         @CustomType.Setter
         public Builder connectTimeoutMs(@Nullable Integer connectTimeoutMs) {
+
             this.connectTimeoutMs = connectTimeoutMs;
             return this;
         }
         @CustomType.Setter
         public Builder envoyListenerJson(@Nullable String envoyListenerJson) {
+
             this.envoyListenerJson = envoyListenerJson;
             return this;
         }
         @CustomType.Setter
         public Builder limits(@Nullable List<ConfigEntryServiceDefaultsUpstreamConfigOverrideLimit> limits) {
+
             this.limits = limits;
             return this;
         }
@@ -180,6 +184,7 @@ public final class ConfigEntryServiceDefaultsUpstreamConfigOverride {
         }
         @CustomType.Setter
         public Builder meshGateways(@Nullable List<ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGateway> meshGateways) {
+
             this.meshGateways = meshGateways;
             return this;
         }
@@ -188,21 +193,25 @@ public final class ConfigEntryServiceDefaultsUpstreamConfigOverride {
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder namespace(@Nullable String namespace) {
+
             this.namespace = namespace;
             return this;
         }
         @CustomType.Setter
         public Builder partition(@Nullable String partition) {
+
             this.partition = partition;
             return this;
         }
         @CustomType.Setter
         public Builder passiveHealthChecks(@Nullable List<ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheck> passiveHealthChecks) {
+
             this.passiveHealthChecks = passiveHealthChecks;
             return this;
         }
@@ -211,11 +220,13 @@ public final class ConfigEntryServiceDefaultsUpstreamConfigOverride {
         }
         @CustomType.Setter
         public Builder peer(@Nullable String peer) {
+
             this.peer = peer;
             return this;
         }
         @CustomType.Setter
         public Builder protocol(@Nullable String protocol) {
+
             this.protocol = protocol;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.consul.outputs;
 
 import com.pulumi.consul.outputs.GetAclRoleTemplatedPolicyTemplateVariable;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -48,7 +49,10 @@ public final class GetAclRoleTemplatedPolicy {
 
         @CustomType.Setter
         public Builder datacenters(List<String> datacenters) {
-            this.datacenters = Objects.requireNonNull(datacenters);
+            if (datacenters == null) {
+              throw new MissingRequiredPropertyException("GetAclRoleTemplatedPolicy", "datacenters");
+            }
+            this.datacenters = datacenters;
             return this;
         }
         public Builder datacenters(String... datacenters) {
@@ -56,12 +60,18 @@ public final class GetAclRoleTemplatedPolicy {
         }
         @CustomType.Setter
         public Builder templateName(String templateName) {
-            this.templateName = Objects.requireNonNull(templateName);
+            if (templateName == null) {
+              throw new MissingRequiredPropertyException("GetAclRoleTemplatedPolicy", "templateName");
+            }
+            this.templateName = templateName;
             return this;
         }
         @CustomType.Setter
         public Builder templateVariables(List<GetAclRoleTemplatedPolicyTemplateVariable> templateVariables) {
-            this.templateVariables = Objects.requireNonNull(templateVariables);
+            if (templateVariables == null) {
+              throw new MissingRequiredPropertyException("GetAclRoleTemplatedPolicy", "templateVariables");
+            }
+            this.templateVariables = templateVariables;
             return this;
         }
         public Builder templateVariables(GetAclRoleTemplatedPolicyTemplateVariable... templateVariables) {

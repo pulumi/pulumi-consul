@@ -4,6 +4,7 @@
 package com.pulumi.consul.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -174,72 +175,114 @@ public final class GetServiceService {
 
         @CustomType.Setter
         public Builder address(String address) {
-            this.address = Objects.requireNonNull(address);
+            if (address == null) {
+              throw new MissingRequiredPropertyException("GetServiceService", "address");
+            }
+            this.address = address;
             return this;
         }
         @CustomType.Setter
         public Builder createIndex(String createIndex) {
-            this.createIndex = Objects.requireNonNull(createIndex);
+            if (createIndex == null) {
+              throw new MissingRequiredPropertyException("GetServiceService", "createIndex");
+            }
+            this.createIndex = createIndex;
             return this;
         }
         @CustomType.Setter
         public Builder enableTagOverride(String enableTagOverride) {
-            this.enableTagOverride = Objects.requireNonNull(enableTagOverride);
+            if (enableTagOverride == null) {
+              throw new MissingRequiredPropertyException("GetServiceService", "enableTagOverride");
+            }
+            this.enableTagOverride = enableTagOverride;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetServiceService", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder meta(Map<String,String> meta) {
-            this.meta = Objects.requireNonNull(meta);
+            if (meta == null) {
+              throw new MissingRequiredPropertyException("GetServiceService", "meta");
+            }
+            this.meta = meta;
             return this;
         }
         @CustomType.Setter
         public Builder modifyIndex(String modifyIndex) {
-            this.modifyIndex = Objects.requireNonNull(modifyIndex);
+            if (modifyIndex == null) {
+              throw new MissingRequiredPropertyException("GetServiceService", "modifyIndex");
+            }
+            this.modifyIndex = modifyIndex;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetServiceService", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder nodeAddress(String nodeAddress) {
-            this.nodeAddress = Objects.requireNonNull(nodeAddress);
+            if (nodeAddress == null) {
+              throw new MissingRequiredPropertyException("GetServiceService", "nodeAddress");
+            }
+            this.nodeAddress = nodeAddress;
             return this;
         }
         @CustomType.Setter
         public Builder nodeId(String nodeId) {
-            this.nodeId = Objects.requireNonNull(nodeId);
+            if (nodeId == null) {
+              throw new MissingRequiredPropertyException("GetServiceService", "nodeId");
+            }
+            this.nodeId = nodeId;
             return this;
         }
         @CustomType.Setter
         public Builder nodeMeta(Map<String,String> nodeMeta) {
-            this.nodeMeta = Objects.requireNonNull(nodeMeta);
+            if (nodeMeta == null) {
+              throw new MissingRequiredPropertyException("GetServiceService", "nodeMeta");
+            }
+            this.nodeMeta = nodeMeta;
             return this;
         }
         @CustomType.Setter
         public Builder nodeName(String nodeName) {
-            this.nodeName = Objects.requireNonNull(nodeName);
+            if (nodeName == null) {
+              throw new MissingRequiredPropertyException("GetServiceService", "nodeName");
+            }
+            this.nodeName = nodeName;
             return this;
         }
         @CustomType.Setter
         public Builder port(String port) {
-            this.port = Objects.requireNonNull(port);
+            if (port == null) {
+              throw new MissingRequiredPropertyException("GetServiceService", "port");
+            }
+            this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder taggedAddresses(Map<String,String> taggedAddresses) {
-            this.taggedAddresses = Objects.requireNonNull(taggedAddresses);
+            if (taggedAddresses == null) {
+              throw new MissingRequiredPropertyException("GetServiceService", "taggedAddresses");
+            }
+            this.taggedAddresses = taggedAddresses;
             return this;
         }
         @CustomType.Setter
         public Builder tags(List<String> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetServiceService", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         public Builder tags(String... tags) {

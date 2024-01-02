@@ -75,6 +75,7 @@ public final class PreparedQueryFailover {
 
         @CustomType.Setter
         public Builder datacenters(@Nullable List<String> datacenters) {
+
             this.datacenters = datacenters;
             return this;
         }
@@ -83,11 +84,13 @@ public final class PreparedQueryFailover {
         }
         @CustomType.Setter
         public Builder nearestN(@Nullable Integer nearestN) {
+
             this.nearestN = nearestN;
             return this;
         }
         @CustomType.Setter
         public Builder targets(@Nullable List<PreparedQueryFailoverTarget> targets) {
+
             this.targets = targets;
             return this;
         }

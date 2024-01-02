@@ -4,6 +4,7 @@
 package com.pulumi.consul.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -636,117 +637,186 @@ public final class GetAgentSelfResult {
 
         @CustomType.Setter
         public Builder aclDatacenter(String aclDatacenter) {
-            this.aclDatacenter = Objects.requireNonNull(aclDatacenter);
+            if (aclDatacenter == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "aclDatacenter");
+            }
+            this.aclDatacenter = aclDatacenter;
             return this;
         }
         @CustomType.Setter
         public Builder aclDefaultPolicy(String aclDefaultPolicy) {
-            this.aclDefaultPolicy = Objects.requireNonNull(aclDefaultPolicy);
+            if (aclDefaultPolicy == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "aclDefaultPolicy");
+            }
+            this.aclDefaultPolicy = aclDefaultPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder aclDisabledTtl(String aclDisabledTtl) {
-            this.aclDisabledTtl = Objects.requireNonNull(aclDisabledTtl);
+            if (aclDisabledTtl == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "aclDisabledTtl");
+            }
+            this.aclDisabledTtl = aclDisabledTtl;
             return this;
         }
         @CustomType.Setter
         public Builder aclDownPolicy(String aclDownPolicy) {
-            this.aclDownPolicy = Objects.requireNonNull(aclDownPolicy);
+            if (aclDownPolicy == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "aclDownPolicy");
+            }
+            this.aclDownPolicy = aclDownPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder aclEnforce08Semantics(Boolean aclEnforce08Semantics) {
-            this.aclEnforce08Semantics = Objects.requireNonNull(aclEnforce08Semantics);
+            if (aclEnforce08Semantics == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "aclEnforce08Semantics");
+            }
+            this.aclEnforce08Semantics = aclEnforce08Semantics;
             return this;
         }
         @CustomType.Setter
         public Builder aclTtl(String aclTtl) {
-            this.aclTtl = Objects.requireNonNull(aclTtl);
+            if (aclTtl == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "aclTtl");
+            }
+            this.aclTtl = aclTtl;
             return this;
         }
         @CustomType.Setter
         public Builder addresses(Map<String,String> addresses) {
-            this.addresses = Objects.requireNonNull(addresses);
+            if (addresses == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "addresses");
+            }
+            this.addresses = addresses;
             return this;
         }
         @CustomType.Setter
         public Builder advertiseAddr(String advertiseAddr) {
-            this.advertiseAddr = Objects.requireNonNull(advertiseAddr);
+            if (advertiseAddr == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "advertiseAddr");
+            }
+            this.advertiseAddr = advertiseAddr;
             return this;
         }
         @CustomType.Setter
         public Builder advertiseAddrWan(String advertiseAddrWan) {
-            this.advertiseAddrWan = Objects.requireNonNull(advertiseAddrWan);
+            if (advertiseAddrWan == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "advertiseAddrWan");
+            }
+            this.advertiseAddrWan = advertiseAddrWan;
             return this;
         }
         @CustomType.Setter
         public Builder advertiseAddrs(Map<String,String> advertiseAddrs) {
-            this.advertiseAddrs = Objects.requireNonNull(advertiseAddrs);
+            if (advertiseAddrs == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "advertiseAddrs");
+            }
+            this.advertiseAddrs = advertiseAddrs;
             return this;
         }
         @CustomType.Setter
         public Builder atlasJoin(Boolean atlasJoin) {
-            this.atlasJoin = Objects.requireNonNull(atlasJoin);
+            if (atlasJoin == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "atlasJoin");
+            }
+            this.atlasJoin = atlasJoin;
             return this;
         }
         @CustomType.Setter
         public Builder bindAddr(String bindAddr) {
-            this.bindAddr = Objects.requireNonNull(bindAddr);
+            if (bindAddr == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "bindAddr");
+            }
+            this.bindAddr = bindAddr;
             return this;
         }
         @CustomType.Setter
         public Builder bootstrapExpect(Integer bootstrapExpect) {
-            this.bootstrapExpect = Objects.requireNonNull(bootstrapExpect);
+            if (bootstrapExpect == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "bootstrapExpect");
+            }
+            this.bootstrapExpect = bootstrapExpect;
             return this;
         }
         @CustomType.Setter
         public Builder bootstrapMode(Boolean bootstrapMode) {
-            this.bootstrapMode = Objects.requireNonNull(bootstrapMode);
+            if (bootstrapMode == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "bootstrapMode");
+            }
+            this.bootstrapMode = bootstrapMode;
             return this;
         }
         @CustomType.Setter
         public Builder checkDeregisterIntervalMin(String checkDeregisterIntervalMin) {
-            this.checkDeregisterIntervalMin = Objects.requireNonNull(checkDeregisterIntervalMin);
+            if (checkDeregisterIntervalMin == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "checkDeregisterIntervalMin");
+            }
+            this.checkDeregisterIntervalMin = checkDeregisterIntervalMin;
             return this;
         }
         @CustomType.Setter
         public Builder checkReapInterval(String checkReapInterval) {
-            this.checkReapInterval = Objects.requireNonNull(checkReapInterval);
+            if (checkReapInterval == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "checkReapInterval");
+            }
+            this.checkReapInterval = checkReapInterval;
             return this;
         }
         @CustomType.Setter
         public Builder checkUpdateInterval(String checkUpdateInterval) {
-            this.checkUpdateInterval = Objects.requireNonNull(checkUpdateInterval);
+            if (checkUpdateInterval == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "checkUpdateInterval");
+            }
+            this.checkUpdateInterval = checkUpdateInterval;
             return this;
         }
         @CustomType.Setter
         public Builder clientAddr(String clientAddr) {
-            this.clientAddr = Objects.requireNonNull(clientAddr);
+            if (clientAddr == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "clientAddr");
+            }
+            this.clientAddr = clientAddr;
             return this;
         }
         @CustomType.Setter
         public Builder dataDir(String dataDir) {
-            this.dataDir = Objects.requireNonNull(dataDir);
+            if (dataDir == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "dataDir");
+            }
+            this.dataDir = dataDir;
             return this;
         }
         @CustomType.Setter
         public Builder datacenter(String datacenter) {
-            this.datacenter = Objects.requireNonNull(datacenter);
+            if (datacenter == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "datacenter");
+            }
+            this.datacenter = datacenter;
             return this;
         }
         @CustomType.Setter
         public Builder devMode(Boolean devMode) {
-            this.devMode = Objects.requireNonNull(devMode);
+            if (devMode == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "devMode");
+            }
+            this.devMode = devMode;
             return this;
         }
         @CustomType.Setter
         public Builder dns(Map<String,String> dns) {
-            this.dns = Objects.requireNonNull(dns);
+            if (dns == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "dns");
+            }
+            this.dns = dns;
             return this;
         }
         @CustomType.Setter
         public Builder dnsRecursors(List<String> dnsRecursors) {
-            this.dnsRecursors = Objects.requireNonNull(dnsRecursors);
+            if (dnsRecursors == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "dnsRecursors");
+            }
+            this.dnsRecursors = dnsRecursors;
             return this;
         }
         public Builder dnsRecursors(String... dnsRecursors) {
@@ -754,117 +824,186 @@ public final class GetAgentSelfResult {
         }
         @CustomType.Setter
         public Builder domain(String domain) {
-            this.domain = Objects.requireNonNull(domain);
+            if (domain == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "domain");
+            }
+            this.domain = domain;
             return this;
         }
         @CustomType.Setter
         public Builder enableAnonymousSignature(Boolean enableAnonymousSignature) {
-            this.enableAnonymousSignature = Objects.requireNonNull(enableAnonymousSignature);
+            if (enableAnonymousSignature == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "enableAnonymousSignature");
+            }
+            this.enableAnonymousSignature = enableAnonymousSignature;
             return this;
         }
         @CustomType.Setter
         public Builder enableCoordinates(Boolean enableCoordinates) {
-            this.enableCoordinates = Objects.requireNonNull(enableCoordinates);
+            if (enableCoordinates == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "enableCoordinates");
+            }
+            this.enableCoordinates = enableCoordinates;
             return this;
         }
         @CustomType.Setter
         public Builder enableDebug(Boolean enableDebug) {
-            this.enableDebug = Objects.requireNonNull(enableDebug);
+            if (enableDebug == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "enableDebug");
+            }
+            this.enableDebug = enableDebug;
             return this;
         }
         @CustomType.Setter
         public Builder enableRemoteExec(Boolean enableRemoteExec) {
-            this.enableRemoteExec = Objects.requireNonNull(enableRemoteExec);
+            if (enableRemoteExec == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "enableRemoteExec");
+            }
+            this.enableRemoteExec = enableRemoteExec;
             return this;
         }
         @CustomType.Setter
         public Builder enableSyslog(Boolean enableSyslog) {
-            this.enableSyslog = Objects.requireNonNull(enableSyslog);
+            if (enableSyslog == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "enableSyslog");
+            }
+            this.enableSyslog = enableSyslog;
             return this;
         }
         @CustomType.Setter
         public Builder enableUi(Boolean enableUi) {
-            this.enableUi = Objects.requireNonNull(enableUi);
+            if (enableUi == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "enableUi");
+            }
+            this.enableUi = enableUi;
             return this;
         }
         @CustomType.Setter
         public Builder enableUpdateCheck(Boolean enableUpdateCheck) {
-            this.enableUpdateCheck = Objects.requireNonNull(enableUpdateCheck);
+            if (enableUpdateCheck == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "enableUpdateCheck");
+            }
+            this.enableUpdateCheck = enableUpdateCheck;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder leaveOnInt(Boolean leaveOnInt) {
-            this.leaveOnInt = Objects.requireNonNull(leaveOnInt);
+            if (leaveOnInt == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "leaveOnInt");
+            }
+            this.leaveOnInt = leaveOnInt;
             return this;
         }
         @CustomType.Setter
         public Builder leaveOnTerm(Boolean leaveOnTerm) {
-            this.leaveOnTerm = Objects.requireNonNull(leaveOnTerm);
+            if (leaveOnTerm == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "leaveOnTerm");
+            }
+            this.leaveOnTerm = leaveOnTerm;
             return this;
         }
         @CustomType.Setter
         public Builder logLevel(String logLevel) {
-            this.logLevel = Objects.requireNonNull(logLevel);
+            if (logLevel == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "logLevel");
+            }
+            this.logLevel = logLevel;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder performance(Map<String,String> performance) {
-            this.performance = Objects.requireNonNull(performance);
+            if (performance == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "performance");
+            }
+            this.performance = performance;
             return this;
         }
         @CustomType.Setter
         public Builder pidFile(String pidFile) {
-            this.pidFile = Objects.requireNonNull(pidFile);
+            if (pidFile == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "pidFile");
+            }
+            this.pidFile = pidFile;
             return this;
         }
         @CustomType.Setter
         public Builder ports(Map<String,Integer> ports) {
-            this.ports = Objects.requireNonNull(ports);
+            if (ports == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "ports");
+            }
+            this.ports = ports;
             return this;
         }
         @CustomType.Setter
         public Builder protocolVersion(Integer protocolVersion) {
-            this.protocolVersion = Objects.requireNonNull(protocolVersion);
+            if (protocolVersion == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "protocolVersion");
+            }
+            this.protocolVersion = protocolVersion;
             return this;
         }
         @CustomType.Setter
         public Builder reconnectTimeoutLan(String reconnectTimeoutLan) {
-            this.reconnectTimeoutLan = Objects.requireNonNull(reconnectTimeoutLan);
+            if (reconnectTimeoutLan == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "reconnectTimeoutLan");
+            }
+            this.reconnectTimeoutLan = reconnectTimeoutLan;
             return this;
         }
         @CustomType.Setter
         public Builder reconnectTimeoutWan(String reconnectTimeoutWan) {
-            this.reconnectTimeoutWan = Objects.requireNonNull(reconnectTimeoutWan);
+            if (reconnectTimeoutWan == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "reconnectTimeoutWan");
+            }
+            this.reconnectTimeoutWan = reconnectTimeoutWan;
             return this;
         }
         @CustomType.Setter
         public Builder rejoinAfterLeave(Boolean rejoinAfterLeave) {
-            this.rejoinAfterLeave = Objects.requireNonNull(rejoinAfterLeave);
+            if (rejoinAfterLeave == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "rejoinAfterLeave");
+            }
+            this.rejoinAfterLeave = rejoinAfterLeave;
             return this;
         }
         @CustomType.Setter
         public Builder retryJoinEc2(Map<String,String> retryJoinEc2) {
-            this.retryJoinEc2 = Objects.requireNonNull(retryJoinEc2);
+            if (retryJoinEc2 == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "retryJoinEc2");
+            }
+            this.retryJoinEc2 = retryJoinEc2;
             return this;
         }
         @CustomType.Setter
         public Builder retryJoinGce(Map<String,String> retryJoinGce) {
-            this.retryJoinGce = Objects.requireNonNull(retryJoinGce);
+            if (retryJoinGce == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "retryJoinGce");
+            }
+            this.retryJoinGce = retryJoinGce;
             return this;
         }
         @CustomType.Setter
         public Builder retryJoinWans(List<String> retryJoinWans) {
-            this.retryJoinWans = Objects.requireNonNull(retryJoinWans);
+            if (retryJoinWans == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "retryJoinWans");
+            }
+            this.retryJoinWans = retryJoinWans;
             return this;
         }
         public Builder retryJoinWans(String... retryJoinWans) {
@@ -872,7 +1011,10 @@ public final class GetAgentSelfResult {
         }
         @CustomType.Setter
         public Builder retryJoins(List<String> retryJoins) {
-            this.retryJoins = Objects.requireNonNull(retryJoins);
+            if (retryJoins == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "retryJoins");
+            }
+            this.retryJoins = retryJoins;
             return this;
         }
         public Builder retryJoins(String... retryJoins) {
@@ -880,42 +1022,66 @@ public final class GetAgentSelfResult {
         }
         @CustomType.Setter
         public Builder retryMaxAttempts(Integer retryMaxAttempts) {
-            this.retryMaxAttempts = Objects.requireNonNull(retryMaxAttempts);
+            if (retryMaxAttempts == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "retryMaxAttempts");
+            }
+            this.retryMaxAttempts = retryMaxAttempts;
             return this;
         }
         @CustomType.Setter
         public Builder retryMaxAttemptsWan(Integer retryMaxAttemptsWan) {
-            this.retryMaxAttemptsWan = Objects.requireNonNull(retryMaxAttemptsWan);
+            if (retryMaxAttemptsWan == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "retryMaxAttemptsWan");
+            }
+            this.retryMaxAttemptsWan = retryMaxAttemptsWan;
             return this;
         }
         @CustomType.Setter
         public Builder serfLanBindAddr(String serfLanBindAddr) {
-            this.serfLanBindAddr = Objects.requireNonNull(serfLanBindAddr);
+            if (serfLanBindAddr == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "serfLanBindAddr");
+            }
+            this.serfLanBindAddr = serfLanBindAddr;
             return this;
         }
         @CustomType.Setter
         public Builder serfWanBindAddr(String serfWanBindAddr) {
-            this.serfWanBindAddr = Objects.requireNonNull(serfWanBindAddr);
+            if (serfWanBindAddr == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "serfWanBindAddr");
+            }
+            this.serfWanBindAddr = serfWanBindAddr;
             return this;
         }
         @CustomType.Setter
         public Builder serverMode(Boolean serverMode) {
-            this.serverMode = Objects.requireNonNull(serverMode);
+            if (serverMode == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "serverMode");
+            }
+            this.serverMode = serverMode;
             return this;
         }
         @CustomType.Setter
         public Builder serverName(String serverName) {
-            this.serverName = Objects.requireNonNull(serverName);
+            if (serverName == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "serverName");
+            }
+            this.serverName = serverName;
             return this;
         }
         @CustomType.Setter
         public Builder sessionTtlMin(String sessionTtlMin) {
-            this.sessionTtlMin = Objects.requireNonNull(sessionTtlMin);
+            if (sessionTtlMin == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "sessionTtlMin");
+            }
+            this.sessionTtlMin = sessionTtlMin;
             return this;
         }
         @CustomType.Setter
         public Builder startJoinWans(List<String> startJoinWans) {
-            this.startJoinWans = Objects.requireNonNull(startJoinWans);
+            if (startJoinWans == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "startJoinWans");
+            }
+            this.startJoinWans = startJoinWans;
             return this;
         }
         public Builder startJoinWans(String... startJoinWans) {
@@ -923,7 +1089,10 @@ public final class GetAgentSelfResult {
         }
         @CustomType.Setter
         public Builder startJoins(List<String> startJoins) {
-            this.startJoins = Objects.requireNonNull(startJoins);
+            if (startJoins == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "startJoins");
+            }
+            this.startJoins = startJoins;
             return this;
         }
         public Builder startJoins(String... startJoins) {
@@ -931,82 +1100,130 @@ public final class GetAgentSelfResult {
         }
         @CustomType.Setter
         public Builder syslogFacility(String syslogFacility) {
-            this.syslogFacility = Objects.requireNonNull(syslogFacility);
+            if (syslogFacility == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "syslogFacility");
+            }
+            this.syslogFacility = syslogFacility;
             return this;
         }
         @CustomType.Setter
         public Builder taggedAddresses(Map<String,String> taggedAddresses) {
-            this.taggedAddresses = Objects.requireNonNull(taggedAddresses);
+            if (taggedAddresses == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "taggedAddresses");
+            }
+            this.taggedAddresses = taggedAddresses;
             return this;
         }
         @CustomType.Setter
         public Builder telemetry(Map<String,String> telemetry) {
-            this.telemetry = Objects.requireNonNull(telemetry);
+            if (telemetry == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "telemetry");
+            }
+            this.telemetry = telemetry;
             return this;
         }
         @CustomType.Setter
         public Builder tlsCaFile(String tlsCaFile) {
-            this.tlsCaFile = Objects.requireNonNull(tlsCaFile);
+            if (tlsCaFile == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "tlsCaFile");
+            }
+            this.tlsCaFile = tlsCaFile;
             return this;
         }
         @CustomType.Setter
         public Builder tlsCertFile(String tlsCertFile) {
-            this.tlsCertFile = Objects.requireNonNull(tlsCertFile);
+            if (tlsCertFile == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "tlsCertFile");
+            }
+            this.tlsCertFile = tlsCertFile;
             return this;
         }
         @CustomType.Setter
         public Builder tlsKeyFile(String tlsKeyFile) {
-            this.tlsKeyFile = Objects.requireNonNull(tlsKeyFile);
+            if (tlsKeyFile == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "tlsKeyFile");
+            }
+            this.tlsKeyFile = tlsKeyFile;
             return this;
         }
         @CustomType.Setter
         public Builder tlsMinVersion(String tlsMinVersion) {
-            this.tlsMinVersion = Objects.requireNonNull(tlsMinVersion);
+            if (tlsMinVersion == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "tlsMinVersion");
+            }
+            this.tlsMinVersion = tlsMinVersion;
             return this;
         }
         @CustomType.Setter
         public Builder tlsVerifyIncoming(Boolean tlsVerifyIncoming) {
-            this.tlsVerifyIncoming = Objects.requireNonNull(tlsVerifyIncoming);
+            if (tlsVerifyIncoming == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "tlsVerifyIncoming");
+            }
+            this.tlsVerifyIncoming = tlsVerifyIncoming;
             return this;
         }
         @CustomType.Setter
         public Builder tlsVerifyOutgoing(Boolean tlsVerifyOutgoing) {
-            this.tlsVerifyOutgoing = Objects.requireNonNull(tlsVerifyOutgoing);
+            if (tlsVerifyOutgoing == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "tlsVerifyOutgoing");
+            }
+            this.tlsVerifyOutgoing = tlsVerifyOutgoing;
             return this;
         }
         @CustomType.Setter
         public Builder tlsVerifyServerHostname(Boolean tlsVerifyServerHostname) {
-            this.tlsVerifyServerHostname = Objects.requireNonNull(tlsVerifyServerHostname);
+            if (tlsVerifyServerHostname == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "tlsVerifyServerHostname");
+            }
+            this.tlsVerifyServerHostname = tlsVerifyServerHostname;
             return this;
         }
         @CustomType.Setter
         public Builder translateWanAddrs(Boolean translateWanAddrs) {
-            this.translateWanAddrs = Objects.requireNonNull(translateWanAddrs);
+            if (translateWanAddrs == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "translateWanAddrs");
+            }
+            this.translateWanAddrs = translateWanAddrs;
             return this;
         }
         @CustomType.Setter
         public Builder uiDir(String uiDir) {
-            this.uiDir = Objects.requireNonNull(uiDir);
+            if (uiDir == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "uiDir");
+            }
+            this.uiDir = uiDir;
             return this;
         }
         @CustomType.Setter
         public Builder unixSockets(Map<String,String> unixSockets) {
-            this.unixSockets = Objects.requireNonNull(unixSockets);
+            if (unixSockets == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "unixSockets");
+            }
+            this.unixSockets = unixSockets;
             return this;
         }
         @CustomType.Setter
         public Builder version(String version) {
-            this.version = Objects.requireNonNull(version);
+            if (version == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "version");
+            }
+            this.version = version;
             return this;
         }
         @CustomType.Setter
         public Builder versionPrerelease(String versionPrerelease) {
-            this.versionPrerelease = Objects.requireNonNull(versionPrerelease);
+            if (versionPrerelease == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "versionPrerelease");
+            }
+            this.versionPrerelease = versionPrerelease;
             return this;
         }
         @CustomType.Setter
         public Builder versionRevision(String versionRevision) {
-            this.versionRevision = Objects.requireNonNull(versionRevision);
+            if (versionRevision == null) {
+              throw new MissingRequiredPropertyException("GetAgentSelfResult", "versionRevision");
+            }
+            this.versionRevision = versionRevision;
             return this;
         }
         public GetAgentSelfResult build() {

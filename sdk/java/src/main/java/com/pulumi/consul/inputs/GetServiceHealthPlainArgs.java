@@ -4,6 +4,7 @@
 package com.pulumi.consul.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
@@ -257,7 +258,9 @@ public final class GetServiceHealthPlainArgs extends com.pulumi.resources.Invoke
         }
 
         public GetServiceHealthPlainArgs build() {
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("GetServiceHealthPlainArgs", "name");
+            }
             return $;
         }
     }

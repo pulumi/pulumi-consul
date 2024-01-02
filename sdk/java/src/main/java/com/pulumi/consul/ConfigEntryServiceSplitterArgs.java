@@ -6,6 +6,7 @@ package com.pulumi.consul;
 import com.pulumi.consul.inputs.ConfigEntryServiceSplitterSplitArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -237,7 +238,9 @@ public final class ConfigEntryServiceSplitterArgs extends com.pulumi.resources.R
         }
 
         public ConfigEntryServiceSplitterArgs build() {
-            $.splits = Objects.requireNonNull($.splits, "expected parameter 'splits' to be non-null");
+            if ($.splits == null) {
+                throw new MissingRequiredPropertyException("ConfigEntryServiceSplitterArgs", "splits");
+            }
             return $;
         }
     }

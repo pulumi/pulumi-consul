@@ -4,6 +4,7 @@
 package com.pulumi.consul.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -146,8 +147,12 @@ public final class GetConfigEntryPlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         public GetConfigEntryPlainArgs build() {
-            $.kind = Objects.requireNonNull($.kind, "expected parameter 'kind' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
+            if ($.kind == null) {
+                throw new MissingRequiredPropertyException("GetConfigEntryPlainArgs", "kind");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("GetConfigEntryPlainArgs", "name");
+            }
             return $;
         }
     }

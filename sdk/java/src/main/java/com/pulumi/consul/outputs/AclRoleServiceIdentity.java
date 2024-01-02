@@ -4,6 +4,7 @@
 package com.pulumi.consul.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -58,6 +59,7 @@ public final class AclRoleServiceIdentity {
 
         @CustomType.Setter
         public Builder datacenters(@Nullable List<String> datacenters) {
+
             this.datacenters = datacenters;
             return this;
         }
@@ -66,7 +68,10 @@ public final class AclRoleServiceIdentity {
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("AclRoleServiceIdentity", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         public AclRoleServiceIdentity build() {

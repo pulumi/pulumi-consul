@@ -59,6 +59,7 @@ public final class ConfigEntryServiceDefaultsUpstreamConfig {
 
         @CustomType.Setter
         public Builder defaults(@Nullable List<ConfigEntryServiceDefaultsUpstreamConfigDefault> defaults) {
+
             this.defaults = defaults;
             return this;
         }
@@ -67,6 +68,7 @@ public final class ConfigEntryServiceDefaultsUpstreamConfig {
         }
         @CustomType.Setter
         public Builder overrides(@Nullable List<ConfigEntryServiceDefaultsUpstreamConfigOverride> overrides) {
+
             this.overrides = overrides;
             return this;
         }

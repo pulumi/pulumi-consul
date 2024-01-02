@@ -101,26 +101,31 @@ public final class ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealth
 
         @CustomType.Setter
         public Builder baseEjectionTime(@Nullable String baseEjectionTime) {
+
             this.baseEjectionTime = baseEjectionTime;
             return this;
         }
         @CustomType.Setter
         public Builder enforcingConsecutive5xx(@Nullable Integer enforcingConsecutive5xx) {
+
             this.enforcingConsecutive5xx = enforcingConsecutive5xx;
             return this;
         }
         @CustomType.Setter
         public Builder interval(@Nullable String interval) {
+
             this.interval = interval;
             return this;
         }
         @CustomType.Setter
         public Builder maxEjectionPercent(@Nullable Integer maxEjectionPercent) {
+
             this.maxEjectionPercent = maxEjectionPercent;
             return this;
         }
         @CustomType.Setter
         public Builder maxFailures(@Nullable Integer maxFailures) {
+
             this.maxFailures = maxFailures;
             return this;
         }

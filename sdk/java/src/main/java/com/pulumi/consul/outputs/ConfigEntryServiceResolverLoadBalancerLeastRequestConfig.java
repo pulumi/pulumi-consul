@@ -36,6 +36,7 @@ public final class ConfigEntryServiceResolverLoadBalancerLeastRequestConfig {
 
         @CustomType.Setter
         public Builder choiceCount(@Nullable Integer choiceCount) {
+
             this.choiceCount = choiceCount;
             return this;
         }

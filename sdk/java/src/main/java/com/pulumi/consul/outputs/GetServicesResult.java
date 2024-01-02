@@ -5,6 +5,7 @@ package com.pulumi.consul.outputs;
 
 import com.pulumi.consul.outputs.GetServicesQueryOption;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -98,17 +99,26 @@ public final class GetServicesResult {
 
         @CustomType.Setter
         public Builder datacenter(String datacenter) {
-            this.datacenter = Objects.requireNonNull(datacenter);
+            if (datacenter == null) {
+              throw new MissingRequiredPropertyException("GetServicesResult", "datacenter");
+            }
+            this.datacenter = datacenter;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetServicesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetServicesResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -116,6 +126,7 @@ public final class GetServicesResult {
         }
         @CustomType.Setter
         public Builder queryOptions(@Nullable List<GetServicesQueryOption> queryOptions) {
+
             this.queryOptions = queryOptions;
             return this;
         }
@@ -124,12 +135,18 @@ public final class GetServicesResult {
         }
         @CustomType.Setter
         public Builder services(Map<String,String> services) {
-            this.services = Objects.requireNonNull(services);
+            if (services == null) {
+              throw new MissingRequiredPropertyException("GetServicesResult", "services");
+            }
+            this.services = services;
             return this;
         }
         @CustomType.Setter
         public Builder tags(Map<String,String> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetServicesResult", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         public GetServicesResult build() {

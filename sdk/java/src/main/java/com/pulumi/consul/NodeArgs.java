@@ -5,6 +5,7 @@ package com.pulumi.consul;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -278,7 +279,9 @@ Please use the token argument in the provider configuration */
         }
 
         public NodeArgs build() {
-            $.address = Objects.requireNonNull($.address, "expected parameter 'address' to be non-null");
+            if ($.address == null) {
+                throw new MissingRequiredPropertyException("NodeArgs", "address");
+            }
             return $;
         }
     }

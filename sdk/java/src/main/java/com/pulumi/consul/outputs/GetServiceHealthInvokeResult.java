@@ -5,6 +5,7 @@ package com.pulumi.consul.outputs;
 
 import com.pulumi.consul.outputs.GetServiceHealthResult;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -168,42 +169,56 @@ public final class GetServiceHealthInvokeResult {
 
         @CustomType.Setter
         public Builder datacenter(@Nullable String datacenter) {
+
             this.datacenter = datacenter;
             return this;
         }
         @CustomType.Setter
         public Builder filter(@Nullable String filter) {
+
             this.filter = filter;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetServiceHealthInvokeResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetServiceHealthInvokeResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder near(@Nullable String near) {
+
             this.near = near;
             return this;
         }
         @CustomType.Setter
         public Builder nodeMeta(@Nullable Map<String,String> nodeMeta) {
+
             this.nodeMeta = nodeMeta;
             return this;
         }
         @CustomType.Setter
         public Builder passing(@Nullable Boolean passing) {
+
             this.passing = passing;
             return this;
         }
         @CustomType.Setter
         public Builder results(List<GetServiceHealthResult> results) {
-            this.results = Objects.requireNonNull(results);
+            if (results == null) {
+              throw new MissingRequiredPropertyException("GetServiceHealthInvokeResult", "results");
+            }
+            this.results = results;
             return this;
         }
         public Builder results(GetServiceHealthResult... results) {
@@ -211,11 +226,13 @@ public final class GetServiceHealthInvokeResult {
         }
         @CustomType.Setter
         public Builder tag(@Nullable String tag) {
+
             this.tag = tag;
             return this;
         }
         @CustomType.Setter
         public Builder waitFor(@Nullable String waitFor) {
+
             this.waitFor = waitFor;
             return this;
         }
