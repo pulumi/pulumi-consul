@@ -399,8 +399,6 @@ class ConfigEntryServiceResolver(pulumi.CustomResource):
                  subsets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceResolverSubsetArgs']]]]] = None,
                  __props__=None):
         """
-        The `ConfigEntryServiceResolver` resource configures a [service resolver](https://developer.hashicorp.com/consul/docs/connect/config-entries/service-resolver) that creates named subsets of service instances and define their behavior when satisfying upstream requests.
-
         ## Example Usage
 
         ```python
@@ -460,8 +458,6 @@ class ConfigEntryServiceResolver(pulumi.CustomResource):
                  args: Optional[ConfigEntryServiceResolverArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `ConfigEntryServiceResolver` resource configures a [service resolver](https://developer.hashicorp.com/consul/docs/connect/config-entries/service-resolver) that creates named subsets of service instances and define their behavior when satisfying upstream requests.
-
         ## Example Usage
 
         ```python

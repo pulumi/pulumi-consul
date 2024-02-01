@@ -13,7 +13,13 @@ namespace Pulumi.Consul.Outputs
     [OutputType]
     public sealed class GetAclTokenServiceIdentityResult
     {
+        /// <summary>
+        /// Specifies the datacenters the effective policy is valid within.
+        /// </summary>
         public readonly ImmutableArray<string> Datacenters;
+        /// <summary>
+        /// The name of the service.
+        /// </summary>
         public readonly string ServiceName;
 
         [OutputConstructor]

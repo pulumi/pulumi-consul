@@ -808,6 +808,7 @@ class ConfigEntryServiceDefaultsUpstreamConfigDefaultArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitArgs']]] limits: Map that specifies a set of limits to apply to when connecting upstream services.
         :param pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayArgs']]] mesh_gateways: Specifies the default mesh gateway mode field for all upstreams.
         :param pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckArgs']]] passive_health_checks: Map that specifies a set of rules that enable Consul to remove hosts from the upstream cluster that are unreachable or that return errors.
+        :param pulumi.Input[str] protocol: Specifies the default protocol for the service.
         """
         if balance_outbound_connections is not None:
             pulumi.set(__self__, "balance_outbound_connections", balance_outbound_connections)
@@ -882,6 +883,9 @@ class ConfigEntryServiceDefaultsUpstreamConfigDefaultArgs:
     @property
     @pulumi.getter
     def protocol(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the default protocol for the service.
+        """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
@@ -1066,10 +1070,12 @@ class ConfigEntryServiceDefaultsUpstreamConfigOverrideArgs:
         :param pulumi.Input[str] balance_outbound_connections: Sets the strategy for allocating outbound connections from upstreams across Envoy proxy threads.
         :param pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitArgs']]] limits: Map that specifies a set of limits to apply to when connecting upstream services.
         :param pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArgs']]] mesh_gateways: Specifies the default mesh gateway mode field for all upstreams.
+        :param pulumi.Input[str] name: Specifies the name of the service you are setting the defaults for.
         :param pulumi.Input[str] namespace: Specifies the namespace containing the upstream service that the configuration applies to.
         :param pulumi.Input[str] partition: Specifies the name of the name of the Consul admin partition that the configuration entry applies to.
         :param pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckArgs']]] passive_health_checks: Map that specifies a set of rules that enable Consul to remove hosts from the upstream cluster that are unreachable or that return errors.
         :param pulumi.Input[str] peer: Specifies the peer name of the upstream service that the configuration applies to.
+        :param pulumi.Input[str] protocol: Specifies the default protocol for the service.
         """
         if balance_outbound_connections is not None:
             pulumi.set(__self__, "balance_outbound_connections", balance_outbound_connections)
@@ -1151,6 +1157,9 @@ class ConfigEntryServiceDefaultsUpstreamConfigOverrideArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the name of the service you are setting the defaults for.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -1208,6 +1217,9 @@ class ConfigEntryServiceDefaultsUpstreamConfigOverrideArgs:
     @property
     @pulumi.getter
     def protocol(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the default protocol for the service.
+        """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
@@ -3794,6 +3806,11 @@ class ProviderAuthJwtArgs:
                  bearer_token: Optional[pulumi.Input[str]] = None,
                  meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  use_terraform_cloud_workload_identity: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] auth_method: The name of the auth method to use for login.
+        :param pulumi.Input[str] bearer_token: The bearer token to present to the auth method during login for authentication purposes. For the Kubernetes auth method this is a [Service Account Token (JWT)](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#service-account-tokens).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: Specifies arbitrary KV metadata linked to the token. Can be useful to track origins.
+        """
         pulumi.set(__self__, "auth_method", auth_method)
         if bearer_token is not None:
             pulumi.set(__self__, "bearer_token", bearer_token)
@@ -3805,6 +3822,9 @@ class ProviderAuthJwtArgs:
     @property
     @pulumi.getter(name="authMethod")
     def auth_method(self) -> pulumi.Input[str]:
+        """
+        The name of the auth method to use for login.
+        """
         return pulumi.get(self, "auth_method")
 
     @auth_method.setter
@@ -3814,6 +3834,9 @@ class ProviderAuthJwtArgs:
     @property
     @pulumi.getter(name="bearerToken")
     def bearer_token(self) -> Optional[pulumi.Input[str]]:
+        """
+        The bearer token to present to the auth method during login for authentication purposes. For the Kubernetes auth method this is a [Service Account Token (JWT)](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#service-account-tokens).
+        """
         return pulumi.get(self, "bearer_token")
 
     @bearer_token.setter
@@ -3823,6 +3846,9 @@ class ProviderAuthJwtArgs:
     @property
     @pulumi.getter
     def meta(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Specifies arbitrary KV metadata linked to the token. Can be useful to track origins.
+        """
         return pulumi.get(self, "meta")
 
     @meta.setter
@@ -3844,12 +3870,19 @@ class ProviderHeaderArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  value: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] name: The name of the header.
+        :param pulumi.Input[str] value: The value of the header.
+        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
+        """
+        The name of the header.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -3859,6 +3892,9 @@ class ProviderHeaderArgs:
     @property
     @pulumi.getter
     def value(self) -> pulumi.Input[str]:
+        """
+        The value of the header.
+        """
         return pulumi.get(self, "value")
 
     @value.setter

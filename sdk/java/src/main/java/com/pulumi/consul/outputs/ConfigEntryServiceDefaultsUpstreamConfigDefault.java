@@ -37,6 +37,10 @@ public final class ConfigEntryServiceDefaultsUpstreamConfigDefault {
      * 
      */
     private @Nullable List<ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheck> passiveHealthChecks;
+    /**
+     * @return Specifies the default protocol for the service.
+     * 
+     */
     private @Nullable String protocol;
 
     private ConfigEntryServiceDefaultsUpstreamConfigDefault() {}
@@ -71,6 +75,10 @@ public final class ConfigEntryServiceDefaultsUpstreamConfigDefault {
     public List<ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheck> passiveHealthChecks() {
         return this.passiveHealthChecks == null ? List.of() : this.passiveHealthChecks;
     }
+    /**
+     * @return Specifies the default protocol for the service.
+     * 
+     */
     public Optional<String> protocol() {
         return Optional.ofNullable(this.protocol);
     }

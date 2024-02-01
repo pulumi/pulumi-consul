@@ -13,7 +13,13 @@ namespace Pulumi.Consul.Outputs
     [OutputType]
     public sealed class GetAclRoleNodeIdentityResult
     {
+        /// <summary>
+        /// Specifies the nodes datacenter. This will result in effective policy only being valid in that datacenter.
+        /// </summary>
         public readonly string Datacenter;
+        /// <summary>
+        /// The name of the node.
+        /// </summary>
         public readonly string NodeName;
 
         [OutputConstructor]

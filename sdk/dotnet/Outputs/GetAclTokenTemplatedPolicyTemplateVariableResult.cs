@@ -13,6 +13,9 @@ namespace Pulumi.Consul.Outputs
     [OutputType]
     public sealed class GetAclTokenTemplatedPolicyTemplateVariableResult
     {
+        /// <summary>
+        /// The name of node, workload identity or service.
+        /// </summary>
         public readonly string Name;
 
         [OutputConstructor]

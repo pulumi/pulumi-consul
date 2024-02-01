@@ -199,6 +199,9 @@ export interface ConfigEntryServiceDefaultsUpstreamConfigDefault {
      * Map that specifies a set of rules that enable Consul to remove hosts from the upstream cluster that are unreachable or that return errors.
      */
     passiveHealthChecks?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheck>[]>;
+    /**
+     * Specifies the default protocol for the service.
+     */
     protocol?: pulumi.Input<string>;
 }
 
@@ -259,6 +262,9 @@ export interface ConfigEntryServiceDefaultsUpstreamConfigOverride {
      * Specifies the default mesh gateway mode field for all upstreams.
      */
     meshGateways?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGateway>[]>;
+    /**
+     * Specifies the name of the service you are setting the defaults for.
+     */
     name?: pulumi.Input<string>;
     /**
      * Specifies the namespace containing the upstream service that the configuration applies to.
@@ -276,6 +282,9 @@ export interface ConfigEntryServiceDefaultsUpstreamConfigOverride {
      * Specifies the peer name of the upstream service that the configuration applies to.
      */
     peer?: pulumi.Input<string>;
+    /**
+     * Specifies the default protocol for the service.
+     */
     protocol?: pulumi.Input<string>;
 }
 
@@ -1539,14 +1548,29 @@ export interface PreparedQueryTemplate {
 }
 
 export interface ProviderAuthJwt {
+    /**
+     * The name of the auth method to use for login.
+     */
     authMethod: pulumi.Input<string>;
+    /**
+     * The bearer token to present to the auth method during login for authentication purposes. For the Kubernetes auth method this is a [Service Account Token (JWT)](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#service-account-tokens).
+     */
     bearerToken?: pulumi.Input<string>;
+    /**
+     * Specifies arbitrary KV metadata linked to the token. Can be useful to track origins.
+     */
     meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     useTerraformCloudWorkloadIdentity?: pulumi.Input<boolean>;
 }
 
 export interface ProviderHeader {
+    /**
+     * The name of the header.
+     */
     name: pulumi.Input<string>;
+    /**
+     * The value of the header.
+     */
     value: pulumi.Input<string>;
 }
 

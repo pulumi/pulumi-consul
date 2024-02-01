@@ -14,8 +14,11 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type AuthJwt struct {
-	AuthMethod                        string            `pulumi:"authMethod"`
-	BearerToken                       *string           `pulumi:"bearerToken"`
+	// The name of the auth method to use for login.
+	AuthMethod string `pulumi:"authMethod"`
+	// The bearer token to present to the auth method during login for authentication purposes. For the Kubernetes auth method this is a [Service Account Token (JWT)](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#service-account-tokens).
+	BearerToken *string `pulumi:"bearerToken"`
+	// Specifies arbitrary KV metadata linked to the token. Can be useful to track origins.
 	Meta                              map[string]string `pulumi:"meta"`
 	UseTerraformCloudWorkloadIdentity *bool             `pulumi:"useTerraformCloudWorkloadIdentity"`
 }
@@ -32,8 +35,11 @@ type AuthJwtInput interface {
 }
 
 type AuthJwtArgs struct {
-	AuthMethod                        pulumi.StringInput    `pulumi:"authMethod"`
-	BearerToken                       pulumi.StringPtrInput `pulumi:"bearerToken"`
+	// The name of the auth method to use for login.
+	AuthMethod pulumi.StringInput `pulumi:"authMethod"`
+	// The bearer token to present to the auth method during login for authentication purposes. For the Kubernetes auth method this is a [Service Account Token (JWT)](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#service-account-tokens).
+	BearerToken pulumi.StringPtrInput `pulumi:"bearerToken"`
+	// Specifies arbitrary KV metadata linked to the token. Can be useful to track origins.
 	Meta                              pulumi.StringMapInput `pulumi:"meta"`
 	UseTerraformCloudWorkloadIdentity pulumi.BoolPtrInput   `pulumi:"useTerraformCloudWorkloadIdentity"`
 }
@@ -64,14 +70,17 @@ func (o AuthJwtOutput) ToAuthJwtOutputWithContext(ctx context.Context) AuthJwtOu
 	return o
 }
 
+// The name of the auth method to use for login.
 func (o AuthJwtOutput) AuthMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v AuthJwt) string { return v.AuthMethod }).(pulumi.StringOutput)
 }
 
+// The bearer token to present to the auth method during login for authentication purposes. For the Kubernetes auth method this is a [Service Account Token (JWT)](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#service-account-tokens).
 func (o AuthJwtOutput) BearerToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AuthJwt) *string { return v.BearerToken }).(pulumi.StringPtrOutput)
 }
 
+// Specifies arbitrary KV metadata linked to the token. Can be useful to track origins.
 func (o AuthJwtOutput) Meta() pulumi.StringMapOutput {
 	return o.ApplyT(func(v AuthJwt) map[string]string { return v.Meta }).(pulumi.StringMapOutput)
 }
@@ -81,7 +90,9 @@ func (o AuthJwtOutput) UseTerraformCloudWorkloadIdentity() pulumi.BoolPtrOutput 
 }
 
 type Headers struct {
-	Name  string `pulumi:"name"`
+	// The name of the header.
+	Name string `pulumi:"name"`
+	// The value of the header.
 	Value string `pulumi:"value"`
 }
 
@@ -97,7 +108,9 @@ type HeadersInput interface {
 }
 
 type HeadersArgs struct {
-	Name  pulumi.StringInput `pulumi:"name"`
+	// The name of the header.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The value of the header.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -152,10 +165,12 @@ func (o HeadersOutput) ToHeadersOutputWithContext(ctx context.Context) HeadersOu
 	return o
 }
 
+// The name of the header.
 func (o HeadersOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v Headers) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The value of the header.
 func (o HeadersOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v Headers) string { return v.Value }).(pulumi.StringOutput)
 }
