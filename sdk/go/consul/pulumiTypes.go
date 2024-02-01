@@ -2067,7 +2067,8 @@ type ConfigEntryServiceDefaultsUpstreamConfigDefault struct {
 	MeshGateways []ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGateway `pulumi:"meshGateways"`
 	// Map that specifies a set of rules that enable Consul to remove hosts from the upstream cluster that are unreachable or that return errors.
 	PassiveHealthChecks []ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheck `pulumi:"passiveHealthChecks"`
-	Protocol            *string                                                             `pulumi:"protocol"`
+	// Specifies the default protocol for the service.
+	Protocol *string `pulumi:"protocol"`
 }
 
 // ConfigEntryServiceDefaultsUpstreamConfigDefaultInput is an input type that accepts ConfigEntryServiceDefaultsUpstreamConfigDefaultArgs and ConfigEntryServiceDefaultsUpstreamConfigDefaultOutput values.
@@ -2091,7 +2092,8 @@ type ConfigEntryServiceDefaultsUpstreamConfigDefaultArgs struct {
 	MeshGateways ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayArrayInput `pulumi:"meshGateways"`
 	// Map that specifies a set of rules that enable Consul to remove hosts from the upstream cluster that are unreachable or that return errors.
 	PassiveHealthChecks ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckArrayInput `pulumi:"passiveHealthChecks"`
-	Protocol            pulumi.StringPtrInput                                                       `pulumi:"protocol"`
+	// Specifies the default protocol for the service.
+	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
 }
 
 func (ConfigEntryServiceDefaultsUpstreamConfigDefaultArgs) ElementType() reflect.Type {
@@ -2175,6 +2177,7 @@ func (o ConfigEntryServiceDefaultsUpstreamConfigDefaultOutput) PassiveHealthChec
 	}).(ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckArrayOutput)
 }
 
+// Specifies the default protocol for the service.
 func (o ConfigEntryServiceDefaultsUpstreamConfigDefaultOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConfigEntryServiceDefaultsUpstreamConfigDefault) *string { return v.Protocol }).(pulumi.StringPtrOutput)
 }
@@ -2556,7 +2559,8 @@ type ConfigEntryServiceDefaultsUpstreamConfigOverride struct {
 	Limits []ConfigEntryServiceDefaultsUpstreamConfigOverrideLimit `pulumi:"limits"`
 	// Specifies the default mesh gateway mode field for all upstreams.
 	MeshGateways []ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGateway `pulumi:"meshGateways"`
-	Name         *string                                                       `pulumi:"name"`
+	// Specifies the name of the service you are setting the defaults for.
+	Name *string `pulumi:"name"`
 	// Specifies the namespace containing the upstream service that the configuration applies to.
 	Namespace *string `pulumi:"namespace"`
 	// Specifies the name of the name of the Consul admin partition that the configuration entry applies to.
@@ -2564,7 +2568,8 @@ type ConfigEntryServiceDefaultsUpstreamConfigOverride struct {
 	// Map that specifies a set of rules that enable Consul to remove hosts from the upstream cluster that are unreachable or that return errors.
 	PassiveHealthChecks []ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheck `pulumi:"passiveHealthChecks"`
 	// Specifies the peer name of the upstream service that the configuration applies to.
-	Peer     *string `pulumi:"peer"`
+	Peer *string `pulumi:"peer"`
+	// Specifies the default protocol for the service.
 	Protocol *string `pulumi:"protocol"`
 }
 
@@ -2588,7 +2593,8 @@ type ConfigEntryServiceDefaultsUpstreamConfigOverrideArgs struct {
 	Limits ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitArrayInput `pulumi:"limits"`
 	// Specifies the default mesh gateway mode field for all upstreams.
 	MeshGateways ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArrayInput `pulumi:"meshGateways"`
-	Name         pulumi.StringPtrInput                                                 `pulumi:"name"`
+	// Specifies the name of the service you are setting the defaults for.
+	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Specifies the namespace containing the upstream service that the configuration applies to.
 	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
 	// Specifies the name of the name of the Consul admin partition that the configuration entry applies to.
@@ -2596,7 +2602,8 @@ type ConfigEntryServiceDefaultsUpstreamConfigOverrideArgs struct {
 	// Map that specifies a set of rules that enable Consul to remove hosts from the upstream cluster that are unreachable or that return errors.
 	PassiveHealthChecks ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckArrayInput `pulumi:"passiveHealthChecks"`
 	// Specifies the peer name of the upstream service that the configuration applies to.
-	Peer     pulumi.StringPtrInput `pulumi:"peer"`
+	Peer pulumi.StringPtrInput `pulumi:"peer"`
+	// Specifies the default protocol for the service.
 	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
 }
 
@@ -2678,6 +2685,7 @@ func (o ConfigEntryServiceDefaultsUpstreamConfigOverrideOutput) MeshGateways() C
 	}).(ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArrayOutput)
 }
 
+// Specifies the name of the service you are setting the defaults for.
 func (o ConfigEntryServiceDefaultsUpstreamConfigOverrideOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConfigEntryServiceDefaultsUpstreamConfigOverride) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -2704,6 +2712,7 @@ func (o ConfigEntryServiceDefaultsUpstreamConfigOverrideOutput) Peer() pulumi.St
 	return o.ApplyT(func(v ConfigEntryServiceDefaultsUpstreamConfigOverride) *string { return v.Peer }).(pulumi.StringPtrOutput)
 }
 
+// Specifies the default protocol for the service.
 func (o ConfigEntryServiceDefaultsUpstreamConfigOverrideOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConfigEntryServiceDefaultsUpstreamConfigOverride) *string { return v.Protocol }).(pulumi.StringPtrOutput)
 }
@@ -7946,8 +7955,11 @@ func (o PreparedQueryTemplatePtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 type ProviderAuthJwt struct {
-	AuthMethod                        string            `pulumi:"authMethod"`
-	BearerToken                       *string           `pulumi:"bearerToken"`
+	// The name of the auth method to use for login.
+	AuthMethod string `pulumi:"authMethod"`
+	// The bearer token to present to the auth method during login for authentication purposes. For the Kubernetes auth method this is a [Service Account Token (JWT)](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#service-account-tokens).
+	BearerToken *string `pulumi:"bearerToken"`
+	// Specifies arbitrary KV metadata linked to the token. Can be useful to track origins.
 	Meta                              map[string]string `pulumi:"meta"`
 	UseTerraformCloudWorkloadIdentity *bool             `pulumi:"useTerraformCloudWorkloadIdentity"`
 }
@@ -7964,8 +7976,11 @@ type ProviderAuthJwtInput interface {
 }
 
 type ProviderAuthJwtArgs struct {
-	AuthMethod                        pulumi.StringInput    `pulumi:"authMethod"`
-	BearerToken                       pulumi.StringPtrInput `pulumi:"bearerToken"`
+	// The name of the auth method to use for login.
+	AuthMethod pulumi.StringInput `pulumi:"authMethod"`
+	// The bearer token to present to the auth method during login for authentication purposes. For the Kubernetes auth method this is a [Service Account Token (JWT)](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#service-account-tokens).
+	BearerToken pulumi.StringPtrInput `pulumi:"bearerToken"`
+	// Specifies arbitrary KV metadata linked to the token. Can be useful to track origins.
 	Meta                              pulumi.StringMapInput `pulumi:"meta"`
 	UseTerraformCloudWorkloadIdentity pulumi.BoolPtrInput   `pulumi:"useTerraformCloudWorkloadIdentity"`
 }
@@ -8047,14 +8062,17 @@ func (o ProviderAuthJwtOutput) ToProviderAuthJwtPtrOutputWithContext(ctx context
 	}).(ProviderAuthJwtPtrOutput)
 }
 
+// The name of the auth method to use for login.
 func (o ProviderAuthJwtOutput) AuthMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v ProviderAuthJwt) string { return v.AuthMethod }).(pulumi.StringOutput)
 }
 
+// The bearer token to present to the auth method during login for authentication purposes. For the Kubernetes auth method this is a [Service Account Token (JWT)](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#service-account-tokens).
 func (o ProviderAuthJwtOutput) BearerToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderAuthJwt) *string { return v.BearerToken }).(pulumi.StringPtrOutput)
 }
 
+// Specifies arbitrary KV metadata linked to the token. Can be useful to track origins.
 func (o ProviderAuthJwtOutput) Meta() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ProviderAuthJwt) map[string]string { return v.Meta }).(pulumi.StringMapOutput)
 }
@@ -8087,6 +8105,7 @@ func (o ProviderAuthJwtPtrOutput) Elem() ProviderAuthJwtOutput {
 	}).(ProviderAuthJwtOutput)
 }
 
+// The name of the auth method to use for login.
 func (o ProviderAuthJwtPtrOutput) AuthMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProviderAuthJwt) *string {
 		if v == nil {
@@ -8096,6 +8115,7 @@ func (o ProviderAuthJwtPtrOutput) AuthMethod() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The bearer token to present to the auth method during login for authentication purposes. For the Kubernetes auth method this is a [Service Account Token (JWT)](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#service-account-tokens).
 func (o ProviderAuthJwtPtrOutput) BearerToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProviderAuthJwt) *string {
 		if v == nil {
@@ -8105,6 +8125,7 @@ func (o ProviderAuthJwtPtrOutput) BearerToken() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Specifies arbitrary KV metadata linked to the token. Can be useful to track origins.
 func (o ProviderAuthJwtPtrOutput) Meta() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ProviderAuthJwt) map[string]string {
 		if v == nil {
@@ -8124,7 +8145,9 @@ func (o ProviderAuthJwtPtrOutput) UseTerraformCloudWorkloadIdentity() pulumi.Boo
 }
 
 type ProviderHeader struct {
-	Name  string `pulumi:"name"`
+	// The name of the header.
+	Name string `pulumi:"name"`
+	// The value of the header.
 	Value string `pulumi:"value"`
 }
 
@@ -8140,7 +8163,9 @@ type ProviderHeaderInput interface {
 }
 
 type ProviderHeaderArgs struct {
-	Name  pulumi.StringInput `pulumi:"name"`
+	// The name of the header.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The value of the header.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -8195,10 +8220,12 @@ func (o ProviderHeaderOutput) ToProviderHeaderOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The name of the header.
 func (o ProviderHeaderOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ProviderHeader) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The value of the header.
 func (o ProviderHeaderOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v ProviderHeader) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -8626,8 +8653,10 @@ func (o GetAclAuthMethodNamespaceRuleArrayOutput) Index(i pulumi.IntInput) GetAc
 }
 
 type GetAclRoleNodeIdentity struct {
+	// Specifies the nodes datacenter. This will result in effective policy only being valid in that datacenter.
 	Datacenter string `pulumi:"datacenter"`
-	NodeName   string `pulumi:"nodeName"`
+	// The name of the node.
+	NodeName string `pulumi:"nodeName"`
 }
 
 // GetAclRoleNodeIdentityInput is an input type that accepts GetAclRoleNodeIdentityArgs and GetAclRoleNodeIdentityOutput values.
@@ -8642,8 +8671,10 @@ type GetAclRoleNodeIdentityInput interface {
 }
 
 type GetAclRoleNodeIdentityArgs struct {
+	// Specifies the nodes datacenter. This will result in effective policy only being valid in that datacenter.
 	Datacenter pulumi.StringInput `pulumi:"datacenter"`
-	NodeName   pulumi.StringInput `pulumi:"nodeName"`
+	// The name of the node.
+	NodeName pulumi.StringInput `pulumi:"nodeName"`
 }
 
 func (GetAclRoleNodeIdentityArgs) ElementType() reflect.Type {
@@ -8697,10 +8728,12 @@ func (o GetAclRoleNodeIdentityOutput) ToGetAclRoleNodeIdentityOutputWithContext(
 	return o
 }
 
+// Specifies the nodes datacenter. This will result in effective policy only being valid in that datacenter.
 func (o GetAclRoleNodeIdentityOutput) Datacenter() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAclRoleNodeIdentity) string { return v.Datacenter }).(pulumi.StringOutput)
 }
 
+// The name of the node.
 func (o GetAclRoleNodeIdentityOutput) NodeName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAclRoleNodeIdentity) string { return v.NodeName }).(pulumi.StringOutput)
 }
@@ -8726,7 +8759,9 @@ func (o GetAclRoleNodeIdentityArrayOutput) Index(i pulumi.IntInput) GetAclRoleNo
 }
 
 type GetAclRolePolicy struct {
-	Id   string `pulumi:"id"`
+	// The ID of the policy.
+	Id string `pulumi:"id"`
+	// The name of the policy.
 	Name string `pulumi:"name"`
 }
 
@@ -8742,7 +8777,9 @@ type GetAclRolePolicyInput interface {
 }
 
 type GetAclRolePolicyArgs struct {
-	Id   pulumi.StringInput `pulumi:"id"`
+	// The ID of the policy.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The name of the policy.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -8797,10 +8834,12 @@ func (o GetAclRolePolicyOutput) ToGetAclRolePolicyOutputWithContext(ctx context.
 	return o
 }
 
+// The ID of the policy.
 func (o GetAclRolePolicyOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAclRolePolicy) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the policy.
 func (o GetAclRolePolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAclRolePolicy) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -8826,8 +8865,10 @@ func (o GetAclRolePolicyArrayOutput) Index(i pulumi.IntInput) GetAclRolePolicyOu
 }
 
 type GetAclRoleServiceIdentity struct {
+	// Specifies the datacenters the effective policy is valid within.
 	Datacenters []string `pulumi:"datacenters"`
-	ServiceName *string  `pulumi:"serviceName"`
+	// The name of the service.
+	ServiceName *string `pulumi:"serviceName"`
 }
 
 // GetAclRoleServiceIdentityInput is an input type that accepts GetAclRoleServiceIdentityArgs and GetAclRoleServiceIdentityOutput values.
@@ -8842,8 +8883,10 @@ type GetAclRoleServiceIdentityInput interface {
 }
 
 type GetAclRoleServiceIdentityArgs struct {
+	// Specifies the datacenters the effective policy is valid within.
 	Datacenters pulumi.StringArrayInput `pulumi:"datacenters"`
-	ServiceName pulumi.StringPtrInput   `pulumi:"serviceName"`
+	// The name of the service.
+	ServiceName pulumi.StringPtrInput `pulumi:"serviceName"`
 }
 
 func (GetAclRoleServiceIdentityArgs) ElementType() reflect.Type {
@@ -8897,10 +8940,12 @@ func (o GetAclRoleServiceIdentityOutput) ToGetAclRoleServiceIdentityOutputWithCo
 	return o
 }
 
+// Specifies the datacenters the effective policy is valid within.
 func (o GetAclRoleServiceIdentityOutput) Datacenters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAclRoleServiceIdentity) []string { return v.Datacenters }).(pulumi.StringArrayOutput)
 }
 
+// The name of the service.
 func (o GetAclRoleServiceIdentityOutput) ServiceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAclRoleServiceIdentity) *string { return v.ServiceName }).(pulumi.StringPtrOutput)
 }
@@ -8926,8 +8971,11 @@ func (o GetAclRoleServiceIdentityArrayOutput) Index(i pulumi.IntInput) GetAclRol
 }
 
 type GetAclRoleTemplatedPolicy struct {
-	Datacenters       []string                                    `pulumi:"datacenters"`
-	TemplateName      string                                      `pulumi:"templateName"`
+	// Specifies the datacenters the effective policy is valid within.
+	Datacenters []string `pulumi:"datacenters"`
+	// The name of the templated policies.
+	TemplateName string `pulumi:"templateName"`
+	// The templated policy variables.
 	TemplateVariables []GetAclRoleTemplatedPolicyTemplateVariable `pulumi:"templateVariables"`
 }
 
@@ -8943,8 +8991,11 @@ type GetAclRoleTemplatedPolicyInput interface {
 }
 
 type GetAclRoleTemplatedPolicyArgs struct {
-	Datacenters       pulumi.StringArrayInput                             `pulumi:"datacenters"`
-	TemplateName      pulumi.StringInput                                  `pulumi:"templateName"`
+	// Specifies the datacenters the effective policy is valid within.
+	Datacenters pulumi.StringArrayInput `pulumi:"datacenters"`
+	// The name of the templated policies.
+	TemplateName pulumi.StringInput `pulumi:"templateName"`
+	// The templated policy variables.
 	TemplateVariables GetAclRoleTemplatedPolicyTemplateVariableArrayInput `pulumi:"templateVariables"`
 }
 
@@ -8999,14 +9050,17 @@ func (o GetAclRoleTemplatedPolicyOutput) ToGetAclRoleTemplatedPolicyOutputWithCo
 	return o
 }
 
+// Specifies the datacenters the effective policy is valid within.
 func (o GetAclRoleTemplatedPolicyOutput) Datacenters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAclRoleTemplatedPolicy) []string { return v.Datacenters }).(pulumi.StringArrayOutput)
 }
 
+// The name of the templated policies.
 func (o GetAclRoleTemplatedPolicyOutput) TemplateName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAclRoleTemplatedPolicy) string { return v.TemplateName }).(pulumi.StringOutput)
 }
 
+// The templated policy variables.
 func (o GetAclRoleTemplatedPolicyOutput) TemplateVariables() GetAclRoleTemplatedPolicyTemplateVariableArrayOutput {
 	return o.ApplyT(func(v GetAclRoleTemplatedPolicy) []GetAclRoleTemplatedPolicyTemplateVariable {
 		return v.TemplateVariables
@@ -9034,6 +9088,7 @@ func (o GetAclRoleTemplatedPolicyArrayOutput) Index(i pulumi.IntInput) GetAclRol
 }
 
 type GetAclRoleTemplatedPolicyTemplateVariable struct {
+	// The name of node, workload identity or service.
 	Name string `pulumi:"name"`
 }
 
@@ -9049,6 +9104,7 @@ type GetAclRoleTemplatedPolicyTemplateVariableInput interface {
 }
 
 type GetAclRoleTemplatedPolicyTemplateVariableArgs struct {
+	// The name of node, workload identity or service.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -9103,6 +9159,7 @@ func (o GetAclRoleTemplatedPolicyTemplateVariableOutput) ToGetAclRoleTemplatedPo
 	return o
 }
 
+// The name of node, workload identity or service.
 func (o GetAclRoleTemplatedPolicyTemplateVariableOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAclRoleTemplatedPolicyTemplateVariable) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -9128,8 +9185,10 @@ func (o GetAclRoleTemplatedPolicyTemplateVariableArrayOutput) Index(i pulumi.Int
 }
 
 type GetAclTokenNodeIdentity struct {
+	// Specifies the node's datacenter.
 	Datacenter string `pulumi:"datacenter"`
-	NodeName   string `pulumi:"nodeName"`
+	// The list of node identities that should be applied to the token.
+	NodeName string `pulumi:"nodeName"`
 }
 
 // GetAclTokenNodeIdentityInput is an input type that accepts GetAclTokenNodeIdentityArgs and GetAclTokenNodeIdentityOutput values.
@@ -9144,8 +9203,10 @@ type GetAclTokenNodeIdentityInput interface {
 }
 
 type GetAclTokenNodeIdentityArgs struct {
+	// Specifies the node's datacenter.
 	Datacenter pulumi.StringInput `pulumi:"datacenter"`
-	NodeName   pulumi.StringInput `pulumi:"nodeName"`
+	// The list of node identities that should be applied to the token.
+	NodeName pulumi.StringInput `pulumi:"nodeName"`
 }
 
 func (GetAclTokenNodeIdentityArgs) ElementType() reflect.Type {
@@ -9199,10 +9260,12 @@ func (o GetAclTokenNodeIdentityOutput) ToGetAclTokenNodeIdentityOutputWithContex
 	return o
 }
 
+// Specifies the node's datacenter.
 func (o GetAclTokenNodeIdentityOutput) Datacenter() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAclTokenNodeIdentity) string { return v.Datacenter }).(pulumi.StringOutput)
 }
 
+// The list of node identities that should be applied to the token.
 func (o GetAclTokenNodeIdentityOutput) NodeName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAclTokenNodeIdentity) string { return v.NodeName }).(pulumi.StringOutput)
 }
@@ -9428,8 +9491,10 @@ func (o GetAclTokenRoleArrayOutput) Index(i pulumi.IntInput) GetAclTokenRoleOutp
 }
 
 type GetAclTokenServiceIdentity struct {
+	// Specifies the datacenters the effective policy is valid within.
 	Datacenters []string `pulumi:"datacenters"`
-	ServiceName string   `pulumi:"serviceName"`
+	// The name of the service.
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // GetAclTokenServiceIdentityInput is an input type that accepts GetAclTokenServiceIdentityArgs and GetAclTokenServiceIdentityOutput values.
@@ -9444,8 +9509,10 @@ type GetAclTokenServiceIdentityInput interface {
 }
 
 type GetAclTokenServiceIdentityArgs struct {
+	// Specifies the datacenters the effective policy is valid within.
 	Datacenters pulumi.StringArrayInput `pulumi:"datacenters"`
-	ServiceName pulumi.StringInput      `pulumi:"serviceName"`
+	// The name of the service.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
 func (GetAclTokenServiceIdentityArgs) ElementType() reflect.Type {
@@ -9499,10 +9566,12 @@ func (o GetAclTokenServiceIdentityOutput) ToGetAclTokenServiceIdentityOutputWith
 	return o
 }
 
+// Specifies the datacenters the effective policy is valid within.
 func (o GetAclTokenServiceIdentityOutput) Datacenters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAclTokenServiceIdentity) []string { return v.Datacenters }).(pulumi.StringArrayOutput)
 }
 
+// The name of the service.
 func (o GetAclTokenServiceIdentityOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAclTokenServiceIdentity) string { return v.ServiceName }).(pulumi.StringOutput)
 }
@@ -9528,8 +9597,11 @@ func (o GetAclTokenServiceIdentityArrayOutput) Index(i pulumi.IntInput) GetAclTo
 }
 
 type GetAclTokenTemplatedPolicy struct {
-	Datacenters       []string                                     `pulumi:"datacenters"`
-	TemplateName      string                                       `pulumi:"templateName"`
+	// Specifies the datacenters the effective policy is valid within.
+	Datacenters []string `pulumi:"datacenters"`
+	// The name of the templated policies.
+	TemplateName string `pulumi:"templateName"`
+	// The templated policy variables.
 	TemplateVariables []GetAclTokenTemplatedPolicyTemplateVariable `pulumi:"templateVariables"`
 }
 
@@ -9545,8 +9617,11 @@ type GetAclTokenTemplatedPolicyInput interface {
 }
 
 type GetAclTokenTemplatedPolicyArgs struct {
-	Datacenters       pulumi.StringArrayInput                              `pulumi:"datacenters"`
-	TemplateName      pulumi.StringInput                                   `pulumi:"templateName"`
+	// Specifies the datacenters the effective policy is valid within.
+	Datacenters pulumi.StringArrayInput `pulumi:"datacenters"`
+	// The name of the templated policies.
+	TemplateName pulumi.StringInput `pulumi:"templateName"`
+	// The templated policy variables.
 	TemplateVariables GetAclTokenTemplatedPolicyTemplateVariableArrayInput `pulumi:"templateVariables"`
 }
 
@@ -9601,14 +9676,17 @@ func (o GetAclTokenTemplatedPolicyOutput) ToGetAclTokenTemplatedPolicyOutputWith
 	return o
 }
 
+// Specifies the datacenters the effective policy is valid within.
 func (o GetAclTokenTemplatedPolicyOutput) Datacenters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAclTokenTemplatedPolicy) []string { return v.Datacenters }).(pulumi.StringArrayOutput)
 }
 
+// The name of the templated policies.
 func (o GetAclTokenTemplatedPolicyOutput) TemplateName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAclTokenTemplatedPolicy) string { return v.TemplateName }).(pulumi.StringOutput)
 }
 
+// The templated policy variables.
 func (o GetAclTokenTemplatedPolicyOutput) TemplateVariables() GetAclTokenTemplatedPolicyTemplateVariableArrayOutput {
 	return o.ApplyT(func(v GetAclTokenTemplatedPolicy) []GetAclTokenTemplatedPolicyTemplateVariable {
 		return v.TemplateVariables
@@ -9636,6 +9714,7 @@ func (o GetAclTokenTemplatedPolicyArrayOutput) Index(i pulumi.IntInput) GetAclTo
 }
 
 type GetAclTokenTemplatedPolicyTemplateVariable struct {
+	// The name of node, workload identity or service.
 	Name string `pulumi:"name"`
 }
 
@@ -9651,6 +9730,7 @@ type GetAclTokenTemplatedPolicyTemplateVariableInput interface {
 }
 
 type GetAclTokenTemplatedPolicyTemplateVariableArgs struct {
+	// The name of node, workload identity or service.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -9705,6 +9785,7 @@ func (o GetAclTokenTemplatedPolicyTemplateVariableOutput) ToGetAclTokenTemplated
 	return o
 }
 
+// The name of node, workload identity or service.
 func (o GetAclTokenTemplatedPolicyTemplateVariableOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAclTokenTemplatedPolicyTemplateVariable) string { return v.Name }).(pulumi.StringOutput)
 }

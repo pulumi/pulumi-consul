@@ -13,7 +13,13 @@ namespace Pulumi.Consul.Outputs
     [OutputType]
     public sealed class GetAclTokenNodeIdentityResult
     {
+        /// <summary>
+        /// Specifies the node's datacenter.
+        /// </summary>
         public readonly string Datacenter;
+        /// <summary>
+        /// The list of node identities that should be applied to the token.
+        /// </summary>
         public readonly string NodeName;
 
         [OutputConstructor]

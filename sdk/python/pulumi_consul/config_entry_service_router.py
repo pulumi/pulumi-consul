@@ -201,8 +201,6 @@ class ConfigEntryServiceRouter(pulumi.CustomResource):
                  routes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceRouterRouteArgs']]]]] = None,
                  __props__=None):
         """
-        The `ConfigEntryServiceRouter` resource configures a [service router](https://developer.hashicorp.com/consul/docs/connect/config-entries/service-router) to redirect a traffic request for a service to one or more specific service instances.
-
         ## Example Usage
 
         ```python
@@ -238,8 +236,6 @@ class ConfigEntryServiceRouter(pulumi.CustomResource):
                  args: Optional[ConfigEntryServiceRouterArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The `ConfigEntryServiceRouter` resource configures a [service router](https://developer.hashicorp.com/consul/docs/connect/config-entries/service-router) to redirect a traffic request for a service to one or more specific service instances.
-
         ## Example Usage
 
         ```python

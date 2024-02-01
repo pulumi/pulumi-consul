@@ -30,6 +30,9 @@ namespace Pulumi.Consul.Outputs
         /// Map that specifies a set of rules that enable Consul to remove hosts from the upstream cluster that are unreachable or that return errors.
         /// </summary>
         public readonly ImmutableArray<Outputs.ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheck> PassiveHealthChecks;
+        /// <summary>
+        /// Specifies the default protocol for the service.
+        /// </summary>
         public readonly string? Protocol;
 
         [OutputConstructor]

@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAclRoleNodeIdentity {
+    /**
+     * @return Specifies the nodes datacenter. This will result in effective policy only being valid in that datacenter.
+     * 
+     */
     private String datacenter;
+    /**
+     * @return The name of the node.
+     * 
+     */
     private String nodeName;
 
     private GetAclRoleNodeIdentity() {}
+    /**
+     * @return Specifies the nodes datacenter. This will result in effective policy only being valid in that datacenter.
+     * 
+     */
     public String datacenter() {
         return this.datacenter;
     }
+    /**
+     * @return The name of the node.
+     * 
+     */
     public String nodeName() {
         return this.nodeName;
     }

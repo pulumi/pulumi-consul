@@ -24,13 +24,15 @@ namespace Pulumi.Consul
     public partial class CertificateAuthority : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+        /// The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
+        /// [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
         /// </summary>
         [Output("config")]
         public Output<ImmutableDictionary<string, string>?> Config { get; private set; } = null!;
 
         /// <summary>
-        /// The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+        /// The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
+        /// [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
         /// </summary>
         [Output("configJson")]
         public Output<string?> ConfigJson { get; private set; } = null!;
@@ -91,7 +93,8 @@ namespace Pulumi.Consul
         private InputMap<string>? _config;
 
         /// <summary>
-        /// The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+        /// The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
+        /// [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
         /// </summary>
         [Obsolete(@"The config attribute is deprecated, please use config_json instead.")]
         public InputMap<string> Config
@@ -101,7 +104,8 @@ namespace Pulumi.Consul
         }
 
         /// <summary>
-        /// The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+        /// The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
+        /// [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
         /// </summary>
         [Input("configJson")]
         public Input<string>? ConfigJson { get; set; }
@@ -124,7 +128,8 @@ namespace Pulumi.Consul
         private InputMap<string>? _config;
 
         /// <summary>
-        /// The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+        /// The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
+        /// [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
         /// </summary>
         [Obsolete(@"The config attribute is deprecated, please use config_json instead.")]
         public InputMap<string> Config
@@ -134,7 +139,8 @@ namespace Pulumi.Consul
         }
 
         /// <summary>
-        /// The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+        /// The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
+        /// [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
         /// </summary>
         [Input("configJson")]
         public Input<string>? ConfigJson { get; set; }

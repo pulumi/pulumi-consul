@@ -14,18 +14,42 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AuthJwt {
+    /**
+     * @return The name of the auth method to use for login.
+     * 
+     */
     private String authMethod;
+    /**
+     * @return The bearer token to present to the auth method during login for authentication purposes. For the Kubernetes auth method this is a [Service Account Token (JWT)](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#service-account-tokens).
+     * 
+     */
     private @Nullable String bearerToken;
+    /**
+     * @return Specifies arbitrary KV metadata linked to the token. Can be useful to track origins.
+     * 
+     */
     private @Nullable Map<String,String> meta;
     private @Nullable Boolean useTerraformCloudWorkloadIdentity;
 
     private AuthJwt() {}
+    /**
+     * @return The name of the auth method to use for login.
+     * 
+     */
     public String authMethod() {
         return this.authMethod;
     }
+    /**
+     * @return The bearer token to present to the auth method during login for authentication purposes. For the Kubernetes auth method this is a [Service Account Token (JWT)](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#service-account-tokens).
+     * 
+     */
     public Optional<String> bearerToken() {
         return Optional.ofNullable(this.bearerToken);
     }
+    /**
+     * @return Specifies arbitrary KV metadata linked to the token. Can be useful to track origins.
+     * 
+     */
     public Map<String,String> meta() {
         return this.meta == null ? Map.of() : this.meta;
     }

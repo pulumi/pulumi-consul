@@ -199,15 +199,30 @@ namespace Pulumi.Consul
 
              public class AuthJwt
              {
+            /// <summary>
+            /// The name of the auth method to use for login.
+            /// </summary>
                 public string AuthMethod { get; set; }
+            /// <summary>
+            /// The bearer token to present to the auth method during login for authentication purposes. For the Kubernetes auth method this is a [Service Account Token (JWT)](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#service-account-tokens).
+            /// </summary>
                 public string? BearerToken { get; set; } = null!;
+            /// <summary>
+            /// Specifies arbitrary KV metadata linked to the token. Can be useful to track origins.
+            /// </summary>
                 public ImmutableDictionary<string, string>? Meta { get; set; } = null!;
                 public bool? UseTerraformCloudWorkloadIdentity { get; set; }
             }
 
              public class Headers
              {
+            /// <summary>
+            /// The name of the header.
+            /// </summary>
                 public string Name { get; set; }
+            /// <summary>
+            /// The value of the header.
+            /// </summary>
                 public string Value { get; set; }
             }
         }

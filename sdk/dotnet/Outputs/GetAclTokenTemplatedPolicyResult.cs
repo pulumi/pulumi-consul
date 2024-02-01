@@ -13,8 +13,17 @@ namespace Pulumi.Consul.Outputs
     [OutputType]
     public sealed class GetAclTokenTemplatedPolicyResult
     {
+        /// <summary>
+        /// Specifies the datacenters the effective policy is valid within.
+        /// </summary>
         public readonly ImmutableArray<string> Datacenters;
+        /// <summary>
+        /// The name of the templated policies.
+        /// </summary>
         public readonly string TemplateName;
+        /// <summary>
+        /// The templated policy variables.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetAclTokenTemplatedPolicyTemplateVariableResult> TemplateVariables;
 
         [OutputConstructor]

@@ -199,6 +199,9 @@ export interface ConfigEntryServiceDefaultsUpstreamConfigDefault {
      * Map that specifies a set of rules that enable Consul to remove hosts from the upstream cluster that are unreachable or that return errors.
      */
     passiveHealthChecks?: outputs.ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheck[];
+    /**
+     * Specifies the default protocol for the service.
+     */
     protocol?: string;
 }
 
@@ -259,6 +262,9 @@ export interface ConfigEntryServiceDefaultsUpstreamConfigOverride {
      * Specifies the default mesh gateway mode field for all upstreams.
      */
     meshGateways?: outputs.ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGateway[];
+    /**
+     * Specifies the name of the service you are setting the defaults for.
+     */
     name?: string;
     /**
      * Specifies the namespace containing the upstream service that the configuration applies to.
@@ -276,6 +282,9 @@ export interface ConfigEntryServiceDefaultsUpstreamConfigOverride {
      * Specifies the peer name of the upstream service that the configuration applies to.
      */
     peer?: string;
+    /**
+     * Specifies the default protocol for the service.
+     */
     protocol?: string;
 }
 
@@ -881,32 +890,68 @@ export interface GetAclAuthMethodNamespaceRule {
 }
 
 export interface GetAclRoleNodeIdentity {
+    /**
+     * Specifies the nodes datacenter. This will result in effective policy only being valid in that datacenter.
+     */
     datacenter: string;
+    /**
+     * The name of the node.
+     */
     nodeName: string;
 }
 
 export interface GetAclRolePolicy {
+    /**
+     * The ID of the policy.
+     */
     id: string;
+    /**
+     * The name of the policy.
+     */
     name: string;
 }
 
 export interface GetAclRoleServiceIdentity {
+    /**
+     * Specifies the datacenters the effective policy is valid within.
+     */
     datacenters?: string[];
+    /**
+     * The name of the service.
+     */
     serviceName?: string;
 }
 
 export interface GetAclRoleTemplatedPolicy {
+    /**
+     * Specifies the datacenters the effective policy is valid within.
+     */
     datacenters: string[];
+    /**
+     * The name of the templated policies.
+     */
     templateName: string;
+    /**
+     * The templated policy variables.
+     */
     templateVariables: outputs.GetAclRoleTemplatedPolicyTemplateVariable[];
 }
 
 export interface GetAclRoleTemplatedPolicyTemplateVariable {
+    /**
+     * The name of node, workload identity or service.
+     */
     name: string;
 }
 
 export interface GetAclTokenNodeIdentity {
+    /**
+     * Specifies the node's datacenter.
+     */
     datacenter: string;
+    /**
+     * The list of node identities that should be applied to the token.
+     */
     nodeName: string;
 }
 
@@ -921,17 +966,35 @@ export interface GetAclTokenRole {
 }
 
 export interface GetAclTokenServiceIdentity {
+    /**
+     * Specifies the datacenters the effective policy is valid within.
+     */
     datacenters: string[];
+    /**
+     * The name of the service.
+     */
     serviceName: string;
 }
 
 export interface GetAclTokenTemplatedPolicy {
+    /**
+     * Specifies the datacenters the effective policy is valid within.
+     */
     datacenters: string[];
+    /**
+     * The name of the templated policies.
+     */
     templateName: string;
+    /**
+     * The templated policy variables.
+     */
     templateVariables: outputs.GetAclTokenTemplatedPolicyTemplateVariable[];
 }
 
 export interface GetAclTokenTemplatedPolicyTemplateVariable {
+    /**
+     * The name of node, workload identity or service.
+     */
     name: string;
 }
 
@@ -1721,14 +1784,29 @@ export interface ServiceCheckHeader {
 
 export namespace config {
     export interface AuthJwt {
+        /**
+         * The name of the auth method to use for login.
+         */
         authMethod: string;
+        /**
+         * The bearer token to present to the auth method during login for authentication purposes. For the Kubernetes auth method this is a [Service Account Token (JWT)](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#service-account-tokens).
+         */
         bearerToken?: string;
+        /**
+         * Specifies arbitrary KV metadata linked to the token. Can be useful to track origins.
+         */
         meta?: {[key: string]: string};
         useTerraformCloudWorkloadIdentity?: boolean;
     }
 
     export interface Headers {
+        /**
+         * The name of the header.
+         */
         name: string;
+        /**
+         * The value of the header.
+         */
         value: string;
     }
 
