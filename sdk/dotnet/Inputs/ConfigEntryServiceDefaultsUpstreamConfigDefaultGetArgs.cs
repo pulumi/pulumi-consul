@@ -57,6 +57,9 @@ namespace Pulumi.Consul.Inputs
             set => _passiveHealthChecks = value;
         }
 
+        /// <summary>
+        /// Specifies the default protocol for the service.
+        /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
 

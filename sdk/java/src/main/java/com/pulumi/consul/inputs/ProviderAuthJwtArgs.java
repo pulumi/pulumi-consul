@@ -18,23 +18,47 @@ public final class ProviderAuthJwtArgs extends com.pulumi.resources.ResourceArgs
 
     public static final ProviderAuthJwtArgs Empty = new ProviderAuthJwtArgs();
 
+    /**
+     * The name of the auth method to use for login.
+     * 
+     */
     @Import(name="authMethod", required=true)
     private Output<String> authMethod;
 
+    /**
+     * @return The name of the auth method to use for login.
+     * 
+     */
     public Output<String> authMethod() {
         return this.authMethod;
     }
 
+    /**
+     * The bearer token to present to the auth method during login for authentication purposes. For the Kubernetes auth method this is a [Service Account Token (JWT)](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#service-account-tokens).
+     * 
+     */
     @Import(name="bearerToken")
     private @Nullable Output<String> bearerToken;
 
+    /**
+     * @return The bearer token to present to the auth method during login for authentication purposes. For the Kubernetes auth method this is a [Service Account Token (JWT)](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#service-account-tokens).
+     * 
+     */
     public Optional<Output<String>> bearerToken() {
         return Optional.ofNullable(this.bearerToken);
     }
 
+    /**
+     * Specifies arbitrary KV metadata linked to the token. Can be useful to track origins.
+     * 
+     */
     @Import(name="meta")
     private @Nullable Output<Map<String,String>> meta;
 
+    /**
+     * @return Specifies arbitrary KV metadata linked to the token. Can be useful to track origins.
+     * 
+     */
     public Optional<Output<Map<String,String>>> meta() {
         return Optional.ofNullable(this.meta);
     }
@@ -73,29 +97,65 @@ public final class ProviderAuthJwtArgs extends com.pulumi.resources.ResourceArgs
             $ = new ProviderAuthJwtArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param authMethod The name of the auth method to use for login.
+         * 
+         * @return builder
+         * 
+         */
         public Builder authMethod(Output<String> authMethod) {
             $.authMethod = authMethod;
             return this;
         }
 
+        /**
+         * @param authMethod The name of the auth method to use for login.
+         * 
+         * @return builder
+         * 
+         */
         public Builder authMethod(String authMethod) {
             return authMethod(Output.of(authMethod));
         }
 
+        /**
+         * @param bearerToken The bearer token to present to the auth method during login for authentication purposes. For the Kubernetes auth method this is a [Service Account Token (JWT)](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#service-account-tokens).
+         * 
+         * @return builder
+         * 
+         */
         public Builder bearerToken(@Nullable Output<String> bearerToken) {
             $.bearerToken = bearerToken;
             return this;
         }
 
+        /**
+         * @param bearerToken The bearer token to present to the auth method during login for authentication purposes. For the Kubernetes auth method this is a [Service Account Token (JWT)](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#service-account-tokens).
+         * 
+         * @return builder
+         * 
+         */
         public Builder bearerToken(String bearerToken) {
             return bearerToken(Output.of(bearerToken));
         }
 
+        /**
+         * @param meta Specifies arbitrary KV metadata linked to the token. Can be useful to track origins.
+         * 
+         * @return builder
+         * 
+         */
         public Builder meta(@Nullable Output<Map<String,String>> meta) {
             $.meta = meta;
             return this;
         }
 
+        /**
+         * @param meta Specifies arbitrary KV metadata linked to the token. Can be useful to track origins.
+         * 
+         * @return builder
+         * 
+         */
         public Builder meta(Map<String,String> meta) {
             return meta(Output.of(meta));
         }

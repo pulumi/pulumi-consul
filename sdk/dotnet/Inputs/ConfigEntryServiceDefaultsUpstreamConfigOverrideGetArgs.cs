@@ -48,6 +48,9 @@ namespace Pulumi.Consul.Inputs
             set => _meshGateways = value;
         }
 
+        /// <summary>
+        /// Specifies the name of the service you are setting the defaults for.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -81,6 +84,9 @@ namespace Pulumi.Consul.Inputs
         [Input("peer")]
         public Input<string>? Peer { get; set; }
 
+        /// <summary>
+        /// Specifies the default protocol for the service.
+        /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
 

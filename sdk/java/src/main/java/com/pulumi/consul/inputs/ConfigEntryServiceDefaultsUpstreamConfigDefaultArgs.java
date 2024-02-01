@@ -87,9 +87,17 @@ public final class ConfigEntryServiceDefaultsUpstreamConfigDefaultArgs extends c
         return Optional.ofNullable(this.passiveHealthChecks);
     }
 
+    /**
+     * Specifies the default protocol for the service.
+     * 
+     */
     @Import(name="protocol")
     private @Nullable Output<String> protocol;
 
+    /**
+     * @return Specifies the default protocol for the service.
+     * 
+     */
     public Optional<Output<String>> protocol() {
         return Optional.ofNullable(this.protocol);
     }
@@ -246,11 +254,23 @@ public final class ConfigEntryServiceDefaultsUpstreamConfigDefaultArgs extends c
             return passiveHealthChecks(List.of(passiveHealthChecks));
         }
 
+        /**
+         * @param protocol Specifies the default protocol for the service.
+         * 
+         * @return builder
+         * 
+         */
         public Builder protocol(@Nullable Output<String> protocol) {
             $.protocol = protocol;
             return this;
         }
 
+        /**
+         * @param protocol Specifies the default protocol for the service.
+         * 
+         * @return builder
+         * 
+         */
         public Builder protocol(String protocol) {
             return protocol(Output.of(protocol));
         }

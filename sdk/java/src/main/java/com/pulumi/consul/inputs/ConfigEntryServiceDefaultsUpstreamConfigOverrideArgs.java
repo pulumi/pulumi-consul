@@ -79,9 +79,17 @@ public final class ConfigEntryServiceDefaultsUpstreamConfigOverrideArgs extends 
         return Optional.ofNullable(this.meshGateways);
     }
 
+    /**
+     * Specifies the name of the service you are setting the defaults for.
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return Specifies the name of the service you are setting the defaults for.
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -146,9 +154,17 @@ public final class ConfigEntryServiceDefaultsUpstreamConfigOverrideArgs extends 
         return Optional.ofNullable(this.peer);
     }
 
+    /**
+     * Specifies the default protocol for the service.
+     * 
+     */
     @Import(name="protocol")
     private @Nullable Output<String> protocol;
 
+    /**
+     * @return Specifies the default protocol for the service.
+     * 
+     */
     public Optional<Output<String>> protocol() {
         return Optional.ofNullable(this.protocol);
     }
@@ -288,11 +304,23 @@ public final class ConfigEntryServiceDefaultsUpstreamConfigOverrideArgs extends 
             return meshGateways(List.of(meshGateways));
         }
 
+        /**
+         * @param name Specifies the name of the service you are setting the defaults for.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Specifies the name of the service you are setting the defaults for.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
@@ -391,11 +419,23 @@ public final class ConfigEntryServiceDefaultsUpstreamConfigOverrideArgs extends 
             return peer(Output.of(peer));
         }
 
+        /**
+         * @param protocol Specifies the default protocol for the service.
+         * 
+         * @return builder
+         * 
+         */
         public Builder protocol(@Nullable Output<String> protocol) {
             $.protocol = protocol;
             return this;
         }
 
+        /**
+         * @param protocol Specifies the default protocol for the service.
+         * 
+         * @return builder
+         * 
+         */
         public Builder protocol(String protocol) {
             return protocol(Output.of(protocol));
         }

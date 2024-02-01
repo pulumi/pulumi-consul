@@ -18,7 +18,8 @@ public final class CertificateAuthorityArgs extends com.pulumi.resources.Resourc
     public static final CertificateAuthorityArgs Empty = new CertificateAuthorityArgs();
 
     /**
-     * The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+     * The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
+     * [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
      * 
      * @deprecated
      * The config attribute is deprecated, please use config_json instead.
@@ -29,7 +30,8 @@ public final class CertificateAuthorityArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<Map<String,String>> config;
 
     /**
-     * @return The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+     * @return The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
+     * [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
      * 
      * @deprecated
      * The config attribute is deprecated, please use config_json instead.
@@ -41,14 +43,16 @@ public final class CertificateAuthorityArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+     * The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
+     * [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
      * 
      */
     @Import(name="configJson")
     private @Nullable Output<String> configJson;
 
     /**
-     * @return The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+     * @return The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
+     * [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
      * 
      */
     public Optional<Output<String>> configJson() {
@@ -97,7 +101,8 @@ public final class CertificateAuthorityArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param config The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+         * @param config The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
+         * [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
          * 
          * @return builder
          * 
@@ -112,7 +117,8 @@ public final class CertificateAuthorityArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param config The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+         * @param config The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
+         * [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
          * 
          * @return builder
          * 
@@ -126,7 +132,8 @@ public final class CertificateAuthorityArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param configJson The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+         * @param configJson The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
+         * [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
          * 
          * @return builder
          * 
@@ -137,7 +144,8 @@ public final class CertificateAuthorityArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param configJson The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+         * @param configJson The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
+         * [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
          * 
          * @return builder
          * 

@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAclTokenNodeIdentity {
+    /**
+     * @return Specifies the node&#39;s datacenter.
+     * 
+     */
     private String datacenter;
+    /**
+     * @return The list of node identities that should be applied to the token.
+     * 
+     */
     private String nodeName;
 
     private GetAclTokenNodeIdentity() {}
+    /**
+     * @return Specifies the node&#39;s datacenter.
+     * 
+     */
     public String datacenter() {
         return this.datacenter;
     }
+    /**
+     * @return The list of node identities that should be applied to the token.
+     * 
+     */
     public String nodeName() {
         return this.nodeName;
     }

@@ -20,8 +20,10 @@ class CertificateAuthorityArgs:
         """
         The set of arguments for constructing a CertificateAuthority resource.
         :param pulumi.Input[str] connect_provider: Specifies the CA provider type to use.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config: The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
-        :param pulumi.Input[str] config_json: The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config: The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
+               [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+        :param pulumi.Input[str] config_json: The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
+               [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
         """
         pulumi.set(__self__, "connect_provider", connect_provider)
         if config is not None:
@@ -48,7 +50,8 @@ class CertificateAuthorityArgs:
     @pulumi.getter
     def config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+        The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
+        [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
         """
         warnings.warn("""The config attribute is deprecated, please use config_json instead.""", DeprecationWarning)
         pulumi.log.warn("""config is deprecated: The config attribute is deprecated, please use config_json instead.""")
@@ -63,7 +66,8 @@ class CertificateAuthorityArgs:
     @pulumi.getter(name="configJson")
     def config_json(self) -> Optional[pulumi.Input[str]]:
         """
-        The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+        The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
+        [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
         """
         return pulumi.get(self, "config_json")
 
@@ -80,8 +84,10 @@ class _CertificateAuthorityState:
                  connect_provider: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering CertificateAuthority resources.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config: The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
-        :param pulumi.Input[str] config_json: The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config: The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
+               [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+        :param pulumi.Input[str] config_json: The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
+               [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
         :param pulumi.Input[str] connect_provider: Specifies the CA provider type to use.
         """
         if config is not None:
@@ -98,7 +104,8 @@ class _CertificateAuthorityState:
     @pulumi.getter
     def config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+        The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
+        [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
         """
         warnings.warn("""The config attribute is deprecated, please use config_json instead.""", DeprecationWarning)
         pulumi.log.warn("""config is deprecated: The config attribute is deprecated, please use config_json instead.""")
@@ -113,7 +120,8 @@ class _CertificateAuthorityState:
     @pulumi.getter(name="configJson")
     def config_json(self) -> Optional[pulumi.Input[str]]:
         """
-        The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+        The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
+        [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
         """
         return pulumi.get(self, "config_json")
 
@@ -156,8 +164,10 @@ class CertificateAuthority(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config: The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
-        :param pulumi.Input[str] config_json: The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config: The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
+               [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+        :param pulumi.Input[str] config_json: The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
+               [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
         :param pulumi.Input[str] connect_provider: Specifies the CA provider type to use.
         """
         ...
@@ -229,8 +239,10 @@ class CertificateAuthority(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config: The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
-        :param pulumi.Input[str] config_json: The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config: The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
+               [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+        :param pulumi.Input[str] config_json: The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
+               [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
         :param pulumi.Input[str] connect_provider: Specifies the CA provider type to use.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -246,7 +258,8 @@ class CertificateAuthority(pulumi.CustomResource):
     @pulumi.getter
     def config(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+        The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
+        [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
         """
         warnings.warn("""The config attribute is deprecated, please use config_json instead.""", DeprecationWarning)
         pulumi.log.warn("""config is deprecated: The config attribute is deprecated, please use config_json instead.""")
@@ -257,7 +270,8 @@ class CertificateAuthority(pulumi.CustomResource):
     @pulumi.getter(name="configJson")
     def config_json(self) -> pulumi.Output[Optional[str]]:
         """
-        The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+        The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
+        [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
         """
         return pulumi.get(self, "config_json")
 

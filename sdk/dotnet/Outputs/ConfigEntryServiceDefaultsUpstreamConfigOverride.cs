@@ -27,6 +27,9 @@ namespace Pulumi.Consul.Outputs
         /// Specifies the default mesh gateway mode field for all upstreams.
         /// </summary>
         public readonly ImmutableArray<Outputs.ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGateway> MeshGateways;
+        /// <summary>
+        /// Specifies the name of the service you are setting the defaults for.
+        /// </summary>
         public readonly string? Name;
         /// <summary>
         /// Specifies the namespace containing the upstream service that the configuration applies to.
@@ -44,6 +47,9 @@ namespace Pulumi.Consul.Outputs
         /// Specifies the peer name of the upstream service that the configuration applies to.
         /// </summary>
         public readonly string? Peer;
+        /// <summary>
+        /// Specifies the default protocol for the service.
+        /// </summary>
         public readonly string? Protocol;
 
         [OutputConstructor]

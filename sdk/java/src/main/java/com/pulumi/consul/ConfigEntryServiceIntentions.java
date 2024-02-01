@@ -19,8 +19,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The `consul_service_intentions_config_entry` resource configures [service intentions](https://developer.hashicorp.com/consul/docs/connect/config-entries/service-intentions) that are configurations for controlling access between services in the service mesh. A single service intentions configuration entry specifies one destination service and one or more L4 traffic sources, L7 traffic sources, or combination of traffic sources.
- * 
  * ## Example Usage
  * ```java
  * package generated_program;

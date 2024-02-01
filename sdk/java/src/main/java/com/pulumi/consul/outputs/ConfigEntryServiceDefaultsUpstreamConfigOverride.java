@@ -33,6 +33,10 @@ public final class ConfigEntryServiceDefaultsUpstreamConfigOverride {
      * 
      */
     private @Nullable List<ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGateway> meshGateways;
+    /**
+     * @return Specifies the name of the service you are setting the defaults for.
+     * 
+     */
     private @Nullable String name;
     /**
      * @return Specifies the namespace containing the upstream service that the configuration applies to.
@@ -54,6 +58,10 @@ public final class ConfigEntryServiceDefaultsUpstreamConfigOverride {
      * 
      */
     private @Nullable String peer;
+    /**
+     * @return Specifies the default protocol for the service.
+     * 
+     */
     private @Nullable String protocol;
 
     private ConfigEntryServiceDefaultsUpstreamConfigOverride() {}
@@ -84,6 +92,10 @@ public final class ConfigEntryServiceDefaultsUpstreamConfigOverride {
     public List<ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGateway> meshGateways() {
         return this.meshGateways == null ? List.of() : this.meshGateways;
     }
+    /**
+     * @return Specifies the name of the service you are setting the defaults for.
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
@@ -115,6 +127,10 @@ public final class ConfigEntryServiceDefaultsUpstreamConfigOverride {
     public Optional<String> peer() {
         return Optional.ofNullable(this.peer);
     }
+    /**
+     * @return Specifies the default protocol for the service.
+     * 
+     */
     public Optional<String> protocol() {
         return Optional.ofNullable(this.protocol);
     }

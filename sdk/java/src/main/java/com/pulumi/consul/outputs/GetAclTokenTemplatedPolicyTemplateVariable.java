@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAclTokenTemplatedPolicyTemplateVariable {
+    /**
+     * @return The name of node, workload identity or service.
+     * 
+     */
     private String name;
 
     private GetAclTokenTemplatedPolicyTemplateVariable() {}
+    /**
+     * @return The name of node, workload identity or service.
+     * 
+     */
     public String name() {
         return this.name;
     }

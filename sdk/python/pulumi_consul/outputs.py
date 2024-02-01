@@ -865,6 +865,7 @@ class ConfigEntryServiceDefaultsUpstreamConfigDefault(dict):
         :param Sequence['ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitArgs'] limits: Map that specifies a set of limits to apply to when connecting upstream services.
         :param Sequence['ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayArgs'] mesh_gateways: Specifies the default mesh gateway mode field for all upstreams.
         :param Sequence['ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckArgs'] passive_health_checks: Map that specifies a set of rules that enable Consul to remove hosts from the upstream cluster that are unreachable or that return errors.
+        :param str protocol: Specifies the default protocol for the service.
         """
         if balance_outbound_connections is not None:
             pulumi.set(__self__, "balance_outbound_connections", balance_outbound_connections)
@@ -919,6 +920,9 @@ class ConfigEntryServiceDefaultsUpstreamConfigDefault(dict):
     @property
     @pulumi.getter
     def protocol(self) -> Optional[str]:
+        """
+        Specifies the default protocol for the service.
+        """
         return pulumi.get(self, "protocol")
 
 
@@ -1132,10 +1136,12 @@ class ConfigEntryServiceDefaultsUpstreamConfigOverride(dict):
         :param str balance_outbound_connections: Sets the strategy for allocating outbound connections from upstreams across Envoy proxy threads.
         :param Sequence['ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitArgs'] limits: Map that specifies a set of limits to apply to when connecting upstream services.
         :param Sequence['ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArgs'] mesh_gateways: Specifies the default mesh gateway mode field for all upstreams.
+        :param str name: Specifies the name of the service you are setting the defaults for.
         :param str namespace: Specifies the namespace containing the upstream service that the configuration applies to.
         :param str partition: Specifies the name of the name of the Consul admin partition that the configuration entry applies to.
         :param Sequence['ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckArgs'] passive_health_checks: Map that specifies a set of rules that enable Consul to remove hosts from the upstream cluster that are unreachable or that return errors.
         :param str peer: Specifies the peer name of the upstream service that the configuration applies to.
+        :param str protocol: Specifies the default protocol for the service.
         """
         if balance_outbound_connections is not None:
             pulumi.set(__self__, "balance_outbound_connections", balance_outbound_connections)
@@ -1197,6 +1203,9 @@ class ConfigEntryServiceDefaultsUpstreamConfigOverride(dict):
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
+        """
+        Specifies the name of the service you are setting the defaults for.
+        """
         return pulumi.get(self, "name")
 
     @property
@@ -1234,6 +1243,9 @@ class ConfigEntryServiceDefaultsUpstreamConfigOverride(dict):
     @property
     @pulumi.getter
     def protocol(self) -> Optional[str]:
+        """
+        Specifies the default protocol for the service.
+        """
         return pulumi.get(self, "protocol")
 
 
@@ -3807,17 +3819,27 @@ class GetAclRoleNodeIdentityResult(dict):
     def __init__(__self__, *,
                  datacenter: str,
                  node_name: str):
+        """
+        :param str datacenter: Specifies the nodes datacenter. This will result in effective policy only being valid in that datacenter.
+        :param str node_name: The name of the node.
+        """
         pulumi.set(__self__, "datacenter", datacenter)
         pulumi.set(__self__, "node_name", node_name)
 
     @property
     @pulumi.getter
     def datacenter(self) -> str:
+        """
+        Specifies the nodes datacenter. This will result in effective policy only being valid in that datacenter.
+        """
         return pulumi.get(self, "datacenter")
 
     @property
     @pulumi.getter(name="nodeName")
     def node_name(self) -> str:
+        """
+        The name of the node.
+        """
         return pulumi.get(self, "node_name")
 
 
@@ -3826,17 +3848,27 @@ class GetAclRolePolicyResult(dict):
     def __init__(__self__, *,
                  id: str,
                  name: str):
+        """
+        :param str id: The ID of the policy.
+        :param str name: The name of the policy.
+        """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
     def id(self) -> str:
+        """
+        The ID of the policy.
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The name of the policy.
+        """
         return pulumi.get(self, "name")
 
 
@@ -3845,6 +3877,10 @@ class GetAclRoleServiceIdentityResult(dict):
     def __init__(__self__, *,
                  datacenters: Optional[Sequence[str]] = None,
                  service_name: Optional[str] = None):
+        """
+        :param Sequence[str] datacenters: Specifies the datacenters the effective policy is valid within.
+        :param str service_name: The name of the service.
+        """
         if datacenters is not None:
             pulumi.set(__self__, "datacenters", datacenters)
         if service_name is not None:
@@ -3853,11 +3889,17 @@ class GetAclRoleServiceIdentityResult(dict):
     @property
     @pulumi.getter
     def datacenters(self) -> Optional[Sequence[str]]:
+        """
+        Specifies the datacenters the effective policy is valid within.
+        """
         return pulumi.get(self, "datacenters")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[str]:
+        """
+        The name of the service.
+        """
         return pulumi.get(self, "service_name")
 
 
@@ -3867,6 +3909,11 @@ class GetAclRoleTemplatedPolicyResult(dict):
                  datacenters: Sequence[str],
                  template_name: str,
                  template_variables: Sequence['outputs.GetAclRoleTemplatedPolicyTemplateVariableResult']):
+        """
+        :param Sequence[str] datacenters: Specifies the datacenters the effective policy is valid within.
+        :param str template_name: The name of the templated policies.
+        :param Sequence['GetAclRoleTemplatedPolicyTemplateVariableArgs'] template_variables: The templated policy variables.
+        """
         pulumi.set(__self__, "datacenters", datacenters)
         pulumi.set(__self__, "template_name", template_name)
         pulumi.set(__self__, "template_variables", template_variables)
@@ -3874,16 +3921,25 @@ class GetAclRoleTemplatedPolicyResult(dict):
     @property
     @pulumi.getter
     def datacenters(self) -> Sequence[str]:
+        """
+        Specifies the datacenters the effective policy is valid within.
+        """
         return pulumi.get(self, "datacenters")
 
     @property
     @pulumi.getter(name="templateName")
     def template_name(self) -> str:
+        """
+        The name of the templated policies.
+        """
         return pulumi.get(self, "template_name")
 
     @property
     @pulumi.getter(name="templateVariables")
     def template_variables(self) -> Sequence['outputs.GetAclRoleTemplatedPolicyTemplateVariableResult']:
+        """
+        The templated policy variables.
+        """
         return pulumi.get(self, "template_variables")
 
 
@@ -3891,11 +3947,17 @@ class GetAclRoleTemplatedPolicyResult(dict):
 class GetAclRoleTemplatedPolicyTemplateVariableResult(dict):
     def __init__(__self__, *,
                  name: str):
+        """
+        :param str name: The name of node, workload identity or service.
+        """
         pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The name of node, workload identity or service.
+        """
         return pulumi.get(self, "name")
 
 
@@ -3904,17 +3966,27 @@ class GetAclTokenNodeIdentityResult(dict):
     def __init__(__self__, *,
                  datacenter: str,
                  node_name: str):
+        """
+        :param str datacenter: Specifies the node's datacenter.
+        :param str node_name: The list of node identities that should be applied to the token.
+        """
         pulumi.set(__self__, "datacenter", datacenter)
         pulumi.set(__self__, "node_name", node_name)
 
     @property
     @pulumi.getter
     def datacenter(self) -> str:
+        """
+        Specifies the node's datacenter.
+        """
         return pulumi.get(self, "datacenter")
 
     @property
     @pulumi.getter(name="nodeName")
     def node_name(self) -> str:
+        """
+        The list of node identities that should be applied to the token.
+        """
         return pulumi.get(self, "node_name")
 
 
@@ -3961,17 +4033,27 @@ class GetAclTokenServiceIdentityResult(dict):
     def __init__(__self__, *,
                  datacenters: Sequence[str],
                  service_name: str):
+        """
+        :param Sequence[str] datacenters: Specifies the datacenters the effective policy is valid within.
+        :param str service_name: The name of the service.
+        """
         pulumi.set(__self__, "datacenters", datacenters)
         pulumi.set(__self__, "service_name", service_name)
 
     @property
     @pulumi.getter
     def datacenters(self) -> Sequence[str]:
+        """
+        Specifies the datacenters the effective policy is valid within.
+        """
         return pulumi.get(self, "datacenters")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
+        """
+        The name of the service.
+        """
         return pulumi.get(self, "service_name")
 
 
@@ -3981,6 +4063,11 @@ class GetAclTokenTemplatedPolicyResult(dict):
                  datacenters: Sequence[str],
                  template_name: str,
                  template_variables: Sequence['outputs.GetAclTokenTemplatedPolicyTemplateVariableResult']):
+        """
+        :param Sequence[str] datacenters: Specifies the datacenters the effective policy is valid within.
+        :param str template_name: The name of the templated policies.
+        :param Sequence['GetAclTokenTemplatedPolicyTemplateVariableArgs'] template_variables: The templated policy variables.
+        """
         pulumi.set(__self__, "datacenters", datacenters)
         pulumi.set(__self__, "template_name", template_name)
         pulumi.set(__self__, "template_variables", template_variables)
@@ -3988,16 +4075,25 @@ class GetAclTokenTemplatedPolicyResult(dict):
     @property
     @pulumi.getter
     def datacenters(self) -> Sequence[str]:
+        """
+        Specifies the datacenters the effective policy is valid within.
+        """
         return pulumi.get(self, "datacenters")
 
     @property
     @pulumi.getter(name="templateName")
     def template_name(self) -> str:
+        """
+        The name of the templated policies.
+        """
         return pulumi.get(self, "template_name")
 
     @property
     @pulumi.getter(name="templateVariables")
     def template_variables(self) -> Sequence['outputs.GetAclTokenTemplatedPolicyTemplateVariableResult']:
+        """
+        The templated policy variables.
+        """
         return pulumi.get(self, "template_variables")
 
 
@@ -4005,11 +4101,17 @@ class GetAclTokenTemplatedPolicyResult(dict):
 class GetAclTokenTemplatedPolicyTemplateVariableResult(dict):
     def __init__(__self__, *,
                  name: str):
+        """
+        :param str name: The name of node, workload identity or service.
+        """
         pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The name of node, workload identity or service.
+        """
         return pulumi.get(self, "name")
 
 

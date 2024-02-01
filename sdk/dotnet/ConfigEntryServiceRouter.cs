@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Consul
 {
     /// <summary>
-    /// The `consul.ConfigEntryServiceRouter` resource configures a [service router](https://developer.hashicorp.com/consul/docs/connect/config-entries/service-router) to redirect a traffic request for a service to one or more specific service instances.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
