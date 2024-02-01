@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
 @ResourceType(type="consul:index/certificateAuthority:CertificateAuthority")
 public class CertificateAuthority extends com.pulumi.resources.CustomResource {
     /**
-     * The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+     * The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
+     * [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
      * 
      * @deprecated
      * The config attribute is deprecated, please use config_json instead.
@@ -41,21 +42,24 @@ public class CertificateAuthority extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Map<String,String>> config;
 
     /**
-     * @return The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+     * @return The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
+     * [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
      * 
      */
     public Output<Optional<Map<String,String>>> config() {
         return Codegen.optional(this.config);
     }
     /**
-     * The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+     * The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
+     * [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
      * 
      */
     @Export(name="configJson", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> configJson;
 
     /**
-     * @return The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+     * @return The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
+     * [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
      * 
      */
     public Output<Optional<String>> configJson() {

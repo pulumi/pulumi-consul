@@ -11,13 +11,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAclTokenServiceIdentity {
+    /**
+     * @return Specifies the datacenters the effective policy is valid within.
+     * 
+     */
     private List<String> datacenters;
+    /**
+     * @return The name of the service.
+     * 
+     */
     private String serviceName;
 
     private GetAclTokenServiceIdentity() {}
+    /**
+     * @return Specifies the datacenters the effective policy is valid within.
+     * 
+     */
     public List<String> datacenters() {
         return this.datacenters;
     }
+    /**
+     * @return The name of the service.
+     * 
+     */
     public String serviceName() {
         return this.serviceName;
     }

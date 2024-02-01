@@ -12,17 +12,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAclTokenTemplatedPolicy {
+    /**
+     * @return Specifies the datacenters the effective policy is valid within.
+     * 
+     */
     private List<String> datacenters;
+    /**
+     * @return The name of the templated policies.
+     * 
+     */
     private String templateName;
+    /**
+     * @return The templated policy variables.
+     * 
+     */
     private List<GetAclTokenTemplatedPolicyTemplateVariable> templateVariables;
 
     private GetAclTokenTemplatedPolicy() {}
+    /**
+     * @return Specifies the datacenters the effective policy is valid within.
+     * 
+     */
     public List<String> datacenters() {
         return this.datacenters;
     }
+    /**
+     * @return The name of the templated policies.
+     * 
+     */
     public String templateName() {
         return this.templateName;
     }
+    /**
+     * @return The templated policy variables.
+     * 
+     */
     public List<GetAclTokenTemplatedPolicyTemplateVariable> templateVariables() {
         return this.templateVariables;
     }

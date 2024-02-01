@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAclRolePolicy {
+    /**
+     * @return The ID of the policy.
+     * 
+     */
     private String id;
+    /**
+     * @return The name of the policy.
+     * 
+     */
     private String name;
 
     private GetAclRolePolicy() {}
+    /**
+     * @return The ID of the policy.
+     * 
+     */
     public String id() {
         return this.id;
     }
+    /**
+     * @return The name of the policy.
+     * 
+     */
     public String name() {
         return this.name;
     }

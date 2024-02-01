@@ -6,9 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * The `consul.ConfigEntryServiceDefaults` resource configures a [service defaults](https://developer.hashicorp.com/consul/docs/connect/config-entries/service-defaults) config entry that contains common configuration settings for service mesh services, such as upstreams and gateways.
- */
 export class ConfigEntryServiceDefaults extends pulumi.CustomResource {
     /**
      * Get an existing ConfigEntryServiceDefaults resource's state with the given name, ID, and optional extra

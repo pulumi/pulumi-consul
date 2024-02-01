@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAclRoleServiceIdentity {
+    /**
+     * @return Specifies the datacenters the effective policy is valid within.
+     * 
+     */
     private @Nullable List<String> datacenters;
+    /**
+     * @return The name of the service.
+     * 
+     */
     private @Nullable String serviceName;
 
     private GetAclRoleServiceIdentity() {}
+    /**
+     * @return Specifies the datacenters the effective policy is valid within.
+     * 
+     */
     public List<String> datacenters() {
         return this.datacenters == null ? List.of() : this.datacenters;
     }
+    /**
+     * @return The name of the service.
+     * 
+     */
     public Optional<String> serviceName() {
         return Optional.ofNullable(this.serviceName);
     }

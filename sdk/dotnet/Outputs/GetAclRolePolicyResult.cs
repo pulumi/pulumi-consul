@@ -13,7 +13,13 @@ namespace Pulumi.Consul.Outputs
     [OutputType]
     public sealed class GetAclRolePolicyResult
     {
+        /// <summary>
+        /// The ID of the policy.
+        /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The name of the policy.
+        /// </summary>
         public readonly string Name;
 
         [OutputConstructor]

@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class Headers {
+    /**
+     * @return The name of the header.
+     * 
+     */
     private String name;
+    /**
+     * @return The value of the header.
+     * 
+     */
     private String value;
 
     private Headers() {}
+    /**
+     * @return The name of the header.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return The value of the header.
+     * 
+     */
     public String value() {
         return this.value;
     }
