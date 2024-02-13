@@ -72,9 +72,7 @@ import (
 // ```
 //
 // ```sh
-//
-//	$ pulumi import consul:index/aclToken:AclToken master-token 624d94ca-bc5c-f960-4e83-0a609cf588be
-//
+// $ pulumi import consul:index/aclToken:AclToken master-token 624d94ca-bc5c-f960-4e83-0a609cf588be
 // ```
 type AclToken struct {
 	pulumi.CustomResourceState
