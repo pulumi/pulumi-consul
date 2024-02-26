@@ -154,7 +154,7 @@ import * as utilities from "./utilities";
  * });
  * const serviceIntentions = new consul.ConfigEntry("serviceIntentions", {
  *     kind: "service-intentions",
- *     configJson: jwtProvider.name.apply(name => JSON.stringify({
+ *     configJson: pulumi.jsonStringify({
  *         Sources: [
  *             {
  *                 Name: "contractor-webapp",
@@ -169,7 +169,7 @@ import * as utilities from "./utilities";
  *                     },
  *                     JWT: {
  *                         Providers: [{
- *                             Name: name,
+ *                             Name: jwtProvider.name,
  *                         }],
  *                     },
  *                 }],
@@ -196,7 +196,7 @@ import * as utilities from "./utilities";
  *                 Type: "consul",
  *             },
  *         ],
- *     })),
+ *     }),
  * });
  * ```
  * ### `exported-services` config entry
