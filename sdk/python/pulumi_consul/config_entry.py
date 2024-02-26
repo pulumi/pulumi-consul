@@ -339,7 +339,7 @@ class ConfigEntry(pulumi.CustomResource):
             }))
         service_intentions = consul.ConfigEntry("serviceIntentions",
             kind="service-intentions",
-            config_json=jwt_provider.name.apply(lambda name: json.dumps({
+            config_json=pulumi.Output.json_dumps({
                 "Sources": [
                     {
                         "Name": "contractor-webapp",
@@ -354,7 +354,7 @@ class ConfigEntry(pulumi.CustomResource):
                             },
                             "JWT": {
                                 "Providers": [{
-                                    "Name": name,
+                                    "Name": jwt_provider.name,
                                 }],
                             },
                         }],
@@ -381,7 +381,7 @@ class ConfigEntry(pulumi.CustomResource):
                         "Type": "consul",
                     },
                 ],
-            })))
+            }))
         ```
         ### `exported-services` config entry
 
@@ -606,7 +606,7 @@ class ConfigEntry(pulumi.CustomResource):
             }))
         service_intentions = consul.ConfigEntry("serviceIntentions",
             kind="service-intentions",
-            config_json=jwt_provider.name.apply(lambda name: json.dumps({
+            config_json=pulumi.Output.json_dumps({
                 "Sources": [
                     {
                         "Name": "contractor-webapp",
@@ -621,7 +621,7 @@ class ConfigEntry(pulumi.CustomResource):
                             },
                             "JWT": {
                                 "Providers": [{
-                                    "Name": name,
+                                    "Name": jwt_provider.name,
                                 }],
                             },
                         }],
@@ -648,7 +648,7 @@ class ConfigEntry(pulumi.CustomResource):
                         "Type": "consul",
                     },
                 ],
-            })))
+            }))
         ```
         ### `exported-services` config entry
 
