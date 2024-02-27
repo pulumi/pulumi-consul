@@ -41,6 +41,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Start our instance with the dynamic ami value
 //			_, err = ec2.NewInstance(ctx, "appInstance", &ec2.InstanceArgs{
 //				Ami: *pulumi.String(appKeyPrefix.Var.Ami),
 //			})
@@ -74,6 +75,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Start our instance with the dynamic ami value
 //			_, err = ec2.NewInstance(ctx, "webInstance", &ec2.InstanceArgs{
 //				Ami: *pulumi.String(webKeyPrefix.Subkeys.App / launch_ami),
 //			})

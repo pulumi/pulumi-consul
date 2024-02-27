@@ -26,6 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Basic usage
 //			agent, err := consul.NewAclPolicy(ctx, "agent", &consul.AclPolicyArgs{
 //				Rules: pulumi.String("node_prefix \"\" {\n  policy = \"read\"\n}\n"),
 //			})

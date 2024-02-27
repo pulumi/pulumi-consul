@@ -34,6 +34,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a peering between the EU and US Consul clusters
 //			_, err := consul.NewProvider(ctx, "eu", &consul.ProviderArgs{
 //				Address: pulumi.String("eu-cluster:8500"),
 //			})
