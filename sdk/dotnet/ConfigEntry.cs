@@ -243,7 +243,7 @@ namespace Pulumi.Consul
     ///     var serviceIntentions = new Consul.ConfigEntry("serviceIntentions", new()
     ///     {
     ///         Kind = "service-intentions",
-    ///         ConfigJson = jwtProvider.Name.Apply(name =&gt; JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///         ConfigJson = Output.JsonSerialize(Output.Create(new Dictionary&lt;string, object?&gt;
     ///         {
     ///             ["Sources"] = new[]
     ///             {
@@ -270,7 +270,7 @@ namespace Pulumi.Consul
     ///                                 {
     ///                                     new Dictionary&lt;string, object?&gt;
     ///                                     {
-    ///                                         ["Name"] = name,
+    ///                                         ["Name"] = jwtProvider.Name,
     ///                                     },
     ///                                 },
     ///                             },

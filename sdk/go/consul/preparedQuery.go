@@ -26,6 +26,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Creates a prepared query myquery.query.consul that finds the nearest
+//			// healthy myapp.service.consul instance that has the active tag and not
+//			// the standby tag.
 //			_, err := consul.NewPreparedQuery(ctx, "myapp-query", &consul.PreparedQueryArgs{
 //				Datacenter: pulumi.String("us-central1"),
 //				Dns: &consul.PreparedQueryDnsArgs{
@@ -52,6 +55,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Creates a Prepared Query Template that matches *-near-self.query.consul
+//			// and finds the nearest service that matches the glob character (e.g.
+//			// foo-near-self.query.consul will find the nearest healthy foo.service.consul).
 //			_, err = consul.NewPreparedQuery(ctx, "service-near-self", &consul.PreparedQueryArgs{
 //				Connect:    pulumi.Bool(true),
 //				Datacenter: pulumi.String("nyc1"),
