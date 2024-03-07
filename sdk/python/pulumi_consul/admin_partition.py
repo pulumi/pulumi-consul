@@ -106,19 +106,21 @@ class AdminPartition(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_consul as consul
 
         na_west = consul.AdminPartition("naWest", description="Partition for North America West")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         `consul_admin_partition` can be imported:
 
         ```sh
-         $ pulumi import consul:index/adminPartition:AdminPartition na_west na-west
+        $ pulumi import consul:index/adminPartition:AdminPartition na_west na-west
         ```
 
         :param str resource_name: The name of the resource.
@@ -139,19 +141,21 @@ class AdminPartition(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_consul as consul
 
         na_west = consul.AdminPartition("naWest", description="Partition for North America West")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         `consul_admin_partition` can be imported:
 
         ```sh
-         $ pulumi import consul:index/adminPartition:AdminPartition na_west na-west
+        $ pulumi import consul:index/adminPartition:AdminPartition na_west na-west
         ```
 
         :param str resource_name: The name of the resource.

@@ -26,6 +26,8 @@ import javax.annotation.Nullable;
  * The functionality described here is available only in Consul version 1.13.0 and later.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -54,6 +56,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="consul:index/peeringToken:PeeringToken")

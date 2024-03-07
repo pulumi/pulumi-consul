@@ -202,6 +202,7 @@ class ConfigEntryServiceSplitter(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -269,11 +270,12 @@ class ConfigEntryServiceSplitter(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import consul:index/configEntryServiceSplitter:ConfigEntryServiceSplitter foo web
+        $ pulumi import consul:index/configEntryServiceSplitter:ConfigEntryServiceSplitter foo web
         ```
 
         :param str resource_name: The name of the resource.
@@ -293,6 +295,7 @@ class ConfigEntryServiceSplitter(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -360,11 +363,12 @@ class ConfigEntryServiceSplitter(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import consul:index/configEntryServiceSplitter:ConfigEntryServiceSplitter foo web
+        $ pulumi import consul:index/configEntryServiceSplitter:ConfigEntryServiceSplitter foo web
         ```
 
         :param str resource_name: The name of the resource.

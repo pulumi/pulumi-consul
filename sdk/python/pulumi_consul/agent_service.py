@@ -184,6 +184,7 @@ class AgentService(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_consul as consul
@@ -196,6 +197,7 @@ class AgentService(pulumi.CustomResource):
                 "tag1",
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -223,6 +225,7 @@ class AgentService(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_consul as consul
@@ -235,6 +238,7 @@ class AgentService(pulumi.CustomResource):
                 "tag1",
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param AgentServiceArgs args: The arguments to use to populate this resource's properties.

@@ -248,19 +248,21 @@ class Node(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_consul as consul
 
         foobar = consul.Node("foobar", address="192.168.10.10")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         The `consul_node` resource can be imported:
 
         ```sh
-         $ pulumi import consul:index/node:Node example node-name
+        $ pulumi import consul:index/node:Node example node-name
         ```
 
         :param str resource_name: The name of the resource.
@@ -283,19 +285,21 @@ class Node(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_consul as consul
 
         foobar = consul.Node("foobar", address="192.168.10.10")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         The `consul_node` resource can be imported:
 
         ```sh
-         $ pulumi import consul:index/node:Node example node-name
+        $ pulumi import consul:index/node:Node example node-name
         ```
 
         :param str resource_name: The name of the resource.

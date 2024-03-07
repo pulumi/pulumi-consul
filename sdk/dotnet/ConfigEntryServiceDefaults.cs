@@ -9,6 +9,9 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Consul
 {
+    /// <summary>
+    /// ## Example Usage
+    /// </summary>
     [ConsulResourceType("consul:index/configEntryServiceDefaults:ConfigEntryServiceDefaults")]
     public partial class ConfigEntryServiceDefaults : global::Pulumi.CustomResource
     {

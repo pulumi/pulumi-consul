@@ -7,6 +7,7 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
@@ -26,6 +27,7 @@ import * as utilities from "./utilities";
  * });
  * export const consulAclTokenSecretId = read.apply(read => read.encryptedSecretId);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAclTokenSecretId(args: GetAclTokenSecretIdArgs, opts?: pulumi.InvokeOptions): Promise<GetAclTokenSecretIdResult> {
 
@@ -78,6 +80,7 @@ export interface GetAclTokenSecretIdResult {
 /**
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
@@ -97,6 +100,7 @@ export interface GetAclTokenSecretIdResult {
  * });
  * export const consulAclTokenSecretId = read.apply(read => read.encryptedSecretId);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAclTokenSecretIdOutput(args: GetAclTokenSecretIdOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAclTokenSecretIdResult> {
     return pulumi.output(args).apply((a: any) => getAclTokenSecretId(a, opts))

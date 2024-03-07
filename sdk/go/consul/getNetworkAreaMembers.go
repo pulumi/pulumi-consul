@@ -18,6 +18,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -51,6 +52,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetNetworkAreaMembers(ctx *pulumi.Context, args *GetNetworkAreaMembersArgs, opts ...pulumi.InvokeOption) (*GetNetworkAreaMembersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetNetworkAreaMembersResult

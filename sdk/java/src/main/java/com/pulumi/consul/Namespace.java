@@ -22,6 +22,8 @@ import javax.annotation.Nullable;
  * The `consul.Namespace` resource provides isolated [Consul Enterprise Namespaces](https://www.consul.io/docs/enterprise/namespaces/index.html).
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -51,13 +53,15 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
- * `consul_namespace` can be imported. This is useful to manage attributes of the default namespace that is created automatically:
+ * `consul_namespace` can be imported. This is useful to manage attributes of the
+ * default namespace that is created automatically:
  * 
  * ```sh
- *  $ pulumi import consul:index/namespace:Namespace default default
+ * $ pulumi import consul:index/namespace:Namespace default default
  * ```
  * 
  */

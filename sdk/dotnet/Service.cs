@@ -18,6 +18,61 @@ namespace Pulumi.Consul
     /// &gt; **NOTE:** If a Consul agent is running on the node where this service is
     /// registered, it is not recommended to use this resource as the service will be
     /// removed during the next [anti-entropy synchronization](https://www.consul.io/docs/architecture/anti-entropy).
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Creating a new node with the service:
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Consul = Pulumi.Consul;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var compute = new Consul.Node("compute", new()
+    ///     {
+    ///         Address = "www.google.com",
+    ///     });
+    /// 
+    ///     var google = new Consul.Service("google", new()
+    ///     {
+    ///         Node = compute.Name,
+    ///         Port = 80,
+    ///         Tags = new[]
+    ///         {
+    ///             "tag0",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// Utilizing an existing known node:
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Consul = Pulumi.Consul;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var google = new Consul.Service("google", new()
+    ///     {
+    ///         Node = "google",
+    ///         Port = 443,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// Register a health-check:
     /// </summary>
     [ConsulResourceType("consul:index/service:Service")]
     public partial class Service : global::Pulumi.CustomResource

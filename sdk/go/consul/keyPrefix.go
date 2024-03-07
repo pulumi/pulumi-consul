@@ -14,6 +14,7 @@ import (
 
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -54,15 +55,15 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
-// `consul_key_prefix` can be imported. This is useful when the path already exists and you know all keys in path should be managed by Terraform.
+// `consul_key_prefix` can be imported. This is useful when the path already exists and
+// you know all keys in path should be managed by Terraform.
 //
 // ```sh
-//
-//	$ pulumi import consul:index/keyPrefix:KeyPrefix myapp_config myapp/config/
-//
+// $ pulumi import consul:index/keyPrefix:KeyPrefix myapp_config myapp/config/
 // ```
 type KeyPrefix struct {
 	pulumi.CustomResourceState

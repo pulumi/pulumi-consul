@@ -12,6 +12,7 @@ namespace Pulumi.Consul
     /// <summary>
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -56,11 +57,12 @@ namespace Pulumi.Consul
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import consul:index/aclToken:AclToken anonymous 00000000-0000-0000-0000-000000000002
+    /// $ pulumi import consul:index/aclToken:AclToken anonymous 00000000-0000-0000-0000-000000000002
     /// ```
     /// 
     /// ```sh

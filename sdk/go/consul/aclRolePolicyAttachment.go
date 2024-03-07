@@ -14,6 +14,7 @@ import (
 
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -53,13 +54,12 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // ```sh
-//
-//	$ pulumi import consul:index/aclRolePolicyAttachment:AclRolePolicyAttachment my_role_read_policy 624d94ca-bc5c-f960-4e83-0a609cf588be:policy_name
-//
+// $ pulumi import consul:index/aclRolePolicyAttachment:AclRolePolicyAttachment my_role_read_policy 624d94ca-bc5c-f960-4e83-0a609cf588be:policy_name
 // ```
 type AclRolePolicyAttachment struct {
 	pulumi.CustomResourceState

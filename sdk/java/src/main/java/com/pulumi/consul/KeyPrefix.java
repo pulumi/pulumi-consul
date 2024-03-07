@@ -19,6 +19,8 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -63,13 +65,15 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
- * `consul_key_prefix` can be imported. This is useful when the path already exists and you know all keys in path should be managed by Terraform.
+ * `consul_key_prefix` can be imported. This is useful when the path already exists and
+ * you know all keys in path should be managed by Terraform.
  * 
  * ```sh
- *  $ pulumi import consul:index/keyPrefix:KeyPrefix myapp_config myapp/config/
+ * $ pulumi import consul:index/keyPrefix:KeyPrefix myapp_config myapp/config/
  * ```
  * 
  */

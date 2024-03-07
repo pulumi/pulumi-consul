@@ -235,6 +235,7 @@ class AclPolicy(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_consul as consul
@@ -247,13 +248,14 @@ class AclPolicy(pulumi.CustomResource):
 
         \"\"\")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         `consul_acl_policy` can be imported:
 
         ```sh
-         $ pulumi import consul:index/aclPolicy:AclPolicy my-policy 1c90ef03-a6dd-6a8c-ac49-042ad3752896
+        $ pulumi import consul:index/aclPolicy:AclPolicy my-policy 1c90ef03-a6dd-6a8c-ac49-042ad3752896
         ```
 
         :param str resource_name: The name of the resource.
@@ -276,6 +278,7 @@ class AclPolicy(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_consul as consul
@@ -288,13 +291,14 @@ class AclPolicy(pulumi.CustomResource):
 
         \"\"\")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         `consul_acl_policy` can be imported:
 
         ```sh
-         $ pulumi import consul:index/aclPolicy:AclPolicy my-policy 1c90ef03-a6dd-6a8c-ac49-042ad3752896
+        $ pulumi import consul:index/aclPolicy:AclPolicy my-policy 1c90ef03-a6dd-6a8c-ac49-042ad3752896
         ```
 
         :param str resource_name: The name of the resource.

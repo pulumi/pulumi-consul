@@ -19,6 +19,8 @@ import javax.annotation.Nullable;
  * Starting with Consul 1.5.0, the consul.AclBindingRule resource can be used to managed Consul ACL binding rules.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -66,6 +68,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="consul:index/aclBindingRule:AclBindingRule")

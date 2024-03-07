@@ -21,6 +21,8 @@ import javax.annotation.Nullable;
  * node. Currently, defining health checks is not supported.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -49,13 +51,14 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * The `consul_node` resource can be imported:
  * 
  * ```sh
- *  $ pulumi import consul:index/node:Node example node-name
+ * $ pulumi import consul:index/node:Node example node-name
  * ```
  * 
  */

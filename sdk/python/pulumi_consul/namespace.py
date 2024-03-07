@@ -238,6 +238,7 @@ class Namespace(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_consul as consul
@@ -248,13 +249,15 @@ class Namespace(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
-        `consul_namespace` can be imported. This is useful to manage attributes of the default namespace that is created automatically:
+        `consul_namespace` can be imported. This is useful to manage attributes of the
+        default namespace that is created automatically:
 
         ```sh
-         $ pulumi import consul:index/namespace:Namespace default default
+        $ pulumi import consul:index/namespace:Namespace default default
         ```
 
         :param str resource_name: The name of the resource.
@@ -279,6 +282,7 @@ class Namespace(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_consul as consul
@@ -289,13 +293,15 @@ class Namespace(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
-        `consul_namespace` can be imported. This is useful to manage attributes of the default namespace that is created automatically:
+        `consul_namespace` can be imported. This is useful to manage attributes of the
+        default namespace that is created automatically:
 
         ```sh
-         $ pulumi import consul:index/namespace:Namespace default default
+        $ pulumi import consul:index/namespace:Namespace default default
         ```
 
         :param str resource_name: The name of the resource.

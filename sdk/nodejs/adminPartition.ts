@@ -11,19 +11,21 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
  *
  * const naWest = new consul.AdminPartition("naWest", {description: "Partition for North America West"});
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * `consul_admin_partition` can be imported:
  *
  * ```sh
- *  $ pulumi import consul:index/adminPartition:AdminPartition na_west na-west
+ * $ pulumi import consul:index/adminPartition:AdminPartition na_west na-west
  * ```
  */
 export class AdminPartition extends pulumi.CustomResource {
