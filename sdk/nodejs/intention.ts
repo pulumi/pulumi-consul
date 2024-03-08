@@ -23,6 +23,7 @@ import * as utilities from "./utilities";
  *
  * Create a simplest intention with static service names:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
@@ -33,9 +34,11 @@ import * as utilities from "./utilities";
  *     sourceName: "api",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * Referencing a known service via a datasource:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
@@ -49,13 +52,14 @@ import * as utilities from "./utilities";
  *     name: "postgresql",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * `consul_intention` can be imported:
  *
  * ```sh
- *  $ pulumi import consul:index/intention:Intention database 657a57d6-0d56-57e2-31cb-e9f1ed3c18dd
+ * $ pulumi import consul:index/intention:Intention database 657a57d6-0d56-57e2-31cb-e9f1ed3c18dd
  * ```
  */
 export class Intention extends pulumi.CustomResource {

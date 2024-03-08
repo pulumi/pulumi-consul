@@ -15,6 +15,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
@@ -22,6 +23,7 @@ import * as utilities from "./utilities";
  * const remoteAgent = consul.getAgentConfig({});
  * export const consulVersion = remoteAgent.then(remoteAgent => remoteAgent.version);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAgentConfig(opts?: pulumi.InvokeOptions): Promise<GetAgentConfigResult> {
 
@@ -74,6 +76,7 @@ export interface GetAgentConfigResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
@@ -81,6 +84,7 @@ export interface GetAgentConfigResult {
  * const remoteAgent = consul.getAgentConfig({});
  * export const consulVersion = remoteAgent.then(remoteAgent => remoteAgent.version);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAgentConfigOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetAgentConfigResult> {
     return pulumi.output(getAgentConfig(opts))

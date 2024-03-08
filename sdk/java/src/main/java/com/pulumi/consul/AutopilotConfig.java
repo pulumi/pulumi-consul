@@ -24,6 +24,8 @@ import javax.annotation.Nullable;
  * cluster and stable server introduction.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -54,6 +56,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="consul:index/autopilotConfig:AutopilotConfig")

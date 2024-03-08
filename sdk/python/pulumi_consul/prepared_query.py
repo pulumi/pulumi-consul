@@ -585,6 +585,7 @@ class PreparedQuery(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_consul as consul
@@ -641,11 +642,12 @@ class PreparedQuery(pulumi.CustomResource):
             ),
             token="abcd")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import consul:index/preparedQuery:PreparedQuery my_service 71ecfb82-717a-4258-b4b6-2fb75144d856
+        $ pulumi import consul:index/preparedQuery:PreparedQuery my_service 71ecfb82-717a-4258-b4b6-2fb75144d856
         ```
 
         :param str resource_name: The name of the resource.
@@ -676,6 +678,7 @@ class PreparedQuery(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_consul as consul
@@ -732,11 +735,12 @@ class PreparedQuery(pulumi.CustomResource):
             ),
             token="abcd")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import consul:index/preparedQuery:PreparedQuery my_service 71ecfb82-717a-4258-b4b6-2fb75144d856
+        $ pulumi import consul:index/preparedQuery:PreparedQuery my_service 71ecfb82-717a-4258-b4b6-2fb75144d856
         ```
 
         :param str resource_name: The name of the resource.

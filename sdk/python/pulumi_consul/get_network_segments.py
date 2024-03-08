@@ -93,6 +93,7 @@ def get_network_segments(datacenter: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_consul as consul
@@ -100,6 +101,7 @@ def get_network_segments(datacenter: Optional[str] = None,
     segments_network_segments = consul.get_network_segments()
     pulumi.export("segments", segments_network_segments.segments)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str datacenter: The datacenter to use. This overrides the
@@ -132,6 +134,7 @@ def get_network_segments_output(datacenter: Optional[pulumi.Input[Optional[str]]
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_consul as consul
@@ -139,6 +142,7 @@ def get_network_segments_output(datacenter: Optional[pulumi.Input[Optional[str]]
     segments_network_segments = consul.get_network_segments()
     pulumi.export("segments", segments_network_segments.segments)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str datacenter: The datacenter to use. This overrides the

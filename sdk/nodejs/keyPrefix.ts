@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
@@ -32,13 +33,15 @@ import * as utilities from "./utilities";
  *     token: "abcd",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
- * `consul_key_prefix` can be imported. This is useful when the path already exists and you know all keys in path should be managed by Terraform.
+ * `consul_key_prefix` can be imported. This is useful when the path already exists and
+ * you know all keys in path should be managed by Terraform.
  *
  * ```sh
- *  $ pulumi import consul:index/keyPrefix:KeyPrefix myapp_config myapp/config/
+ * $ pulumi import consul:index/keyPrefix:KeyPrefix myapp_config myapp/config/
  * ```
  */
 export class KeyPrefix extends pulumi.CustomResource {

@@ -15,6 +15,40 @@ import * as utilities from "./utilities";
  * > **NOTE:** If a Consul agent is running on the node where this service is
  * registered, it is not recommended to use this resource as the service will be
  * removed during the next [anti-entropy synchronization](https://www.consul.io/docs/architecture/anti-entropy).
+ *
+ * ## Example Usage
+ *
+ * Creating a new node with the service:
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ *
+ * const compute = new consul.Node("compute", {address: "www.google.com"});
+ * const google = new consul.Service("google", {
+ *     node: compute.name,
+ *     port: 80,
+ *     tags: ["tag0"],
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * Utilizing an existing known node:
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ *
+ * const google = new consul.Service("google", {
+ *     node: "google",
+ *     port: 443,
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * Register a health-check:
  */
 export class Service extends pulumi.CustomResource {
     /**

@@ -20,6 +20,77 @@ import (
 // > **NOTE:** If a Consul agent is running on the node where this service is
 // registered, it is not recommended to use this resource as the service will be
 // removed during the next [anti-entropy synchronization](https://www.consul.io/docs/architecture/anti-entropy).
+//
+// ## Example Usage
+//
+// Creating a new node with the service:
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			compute, err := consul.NewNode(ctx, "compute", &consul.NodeArgs{
+//				Address: pulumi.String("www.google.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = consul.NewService(ctx, "google", &consul.ServiceArgs{
+//				Node: compute.Name,
+//				Port: pulumi.Int(80),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("tag0"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// Utilizing an existing known node:
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := consul.NewService(ctx, "google", &consul.ServiceArgs{
+//				Node: pulumi.String("google"),
+//				Port: pulumi.Int(443),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// Register a health-check:
 type Service struct {
 	pulumi.CustomResourceState
 

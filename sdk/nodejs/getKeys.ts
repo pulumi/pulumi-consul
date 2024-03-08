@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -28,6 +29,7 @@ import * as utilities from "./utilities";
  * const appInstance = new aws.ec2.Instance("appInstance", {ami: appKeys.then(appKeys => appKeys["var"]?.ami)});
  * // ...
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getKeys(args?: GetKeysArgs, opts?: pulumi.InvokeOptions): Promise<GetKeysResult> {
     args = args || {};
@@ -121,6 +123,7 @@ Please use the token argument in the provider configuration
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -138,6 +141,7 @@ Please use the token argument in the provider configuration
  * const appInstance = new aws.ec2.Instance("appInstance", {ami: appKeys.then(appKeys => appKeys["var"]?.ami)});
  * // ...
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getKeysOutput(args?: GetKeysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeysResult> {
     return pulumi.output(args).apply((a: any) => getKeys(a, opts))

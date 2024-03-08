@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
@@ -67,11 +68,12 @@ import * as utilities from "./utilities";
  *     token: "abcd",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * ```sh
- *  $ pulumi import consul:index/preparedQuery:PreparedQuery my_service 71ecfb82-717a-4258-b4b6-2fb75144d856
+ * $ pulumi import consul:index/preparedQuery:PreparedQuery my_service 71ecfb82-717a-4258-b4b6-2fb75144d856
  * ```
  */
 export class PreparedQuery extends pulumi.CustomResource {

@@ -12,6 +12,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
@@ -19,6 +20,7 @@ import * as utilities from "./utilities";
  * const segmentsNetworkSegments = consul.getNetworkSegments({});
  * export const segments = segmentsNetworkSegments.then(segmentsNetworkSegments => segmentsNetworkSegments.segments);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getNetworkSegments(args?: GetNetworkSegmentsArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkSegmentsResult> {
     args = args || {};
@@ -79,6 +81,7 @@ Please use the token argument in the provider configuration
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
@@ -86,6 +89,7 @@ Please use the token argument in the provider configuration
  * const segmentsNetworkSegments = consul.getNetworkSegments({});
  * export const segments = segmentsNetworkSegments.then(segmentsNetworkSegments => segmentsNetworkSegments.segments);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getNetworkSegmentsOutput(args?: GetNetworkSegmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkSegmentsResult> {
     return pulumi.output(args).apply((a: any) => getNetworkSegments(a, opts))

@@ -20,6 +20,7 @@ namespace Pulumi.Consul
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -62,6 +63,7 @@ namespace Pulumi.Consul
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [ConsulResourceType("consul:index/peering:Peering")]
     public partial class Peering : global::Pulumi.CustomResource

@@ -17,6 +17,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -40,15 +41,14 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // The `consul_node` resource can be imported:
 //
 // ```sh
-//
-//	$ pulumi import consul:index/node:Node example node-name
-//
+// $ pulumi import consul:index/node:Node example node-name
 // ```
 type Node struct {
 	pulumi.CustomResourceState

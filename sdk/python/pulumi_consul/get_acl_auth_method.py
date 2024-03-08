@@ -187,6 +187,7 @@ def get_acl_auth_method(name: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_consul as consul
@@ -194,6 +195,7 @@ def get_acl_auth_method(name: Optional[str] = None,
     test = consul.get_acl_auth_method(name="minikube")
     pulumi.export("consulAclAuthMethod", test.config)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the ACL Auth Method.
@@ -233,6 +235,7 @@ def get_acl_auth_method_output(name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_consul as consul
@@ -240,6 +243,7 @@ def get_acl_auth_method_output(name: Optional[pulumi.Input[str]] = None,
     test = consul.get_acl_auth_method(name="minikube")
     pulumi.export("consulAclAuthMethod", test.config)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the ACL Auth Method.

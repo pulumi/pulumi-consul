@@ -10,19 +10,21 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
  *
  * const foobar = new consul.Node("foobar", {address: "192.168.10.10"});
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * The `consul_node` resource can be imported:
  *
  * ```sh
- *  $ pulumi import consul:index/node:Node example node-name
+ * $ pulumi import consul:index/node:Node example node-name
  * ```
  */
 export class Node extends pulumi.CustomResource {

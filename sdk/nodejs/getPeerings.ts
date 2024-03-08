@@ -9,12 +9,14 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
  *
  * const peers = consul.getPeerings({});
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getPeerings(args?: GetPeeringsArgs, opts?: pulumi.InvokeOptions): Promise<GetPeeringsResult> {
     args = args || {};
@@ -46,12 +48,14 @@ export interface GetPeeringsResult {
 /**
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
  *
  * const peers = consul.getPeerings({});
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getPeeringsOutput(args?: GetPeeringsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPeeringsResult> {
     return pulumi.output(args).apply((a: any) => getPeerings(a, opts))

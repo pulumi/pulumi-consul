@@ -23,7 +23,7 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- *  $ pulumi import consul:index/certificateAuthority:CertificateAuthority connect connect-ca
+ * $ pulumi import consul:index/certificateAuthority:CertificateAuthority connect connect-ca
  * ```
  * 
  */

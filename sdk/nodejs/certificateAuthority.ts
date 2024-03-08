@@ -12,7 +12,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- *  $ pulumi import consul:index/certificateAuthority:CertificateAuthority connect connect-ca
+ * $ pulumi import consul:index/certificateAuthority:CertificateAuthority connect connect-ca
  * ```
  */
 export class CertificateAuthority extends pulumi.CustomResource {

@@ -341,6 +341,7 @@ class Intention(pulumi.CustomResource):
 
         Create a simplest intention with static service names:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_consul as consul
@@ -350,9 +351,11 @@ class Intention(pulumi.CustomResource):
             destination_name="db",
             source_name="api")
         ```
+        <!--End PulumiCodeChooser -->
 
         Referencing a known service via a datasource:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_consul as consul
@@ -363,13 +366,14 @@ class Intention(pulumi.CustomResource):
             source_name="api")
         pg = consul.get_service(name="postgresql")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         `consul_intention` can be imported:
 
         ```sh
-         $ pulumi import consul:index/intention:Intention database 657a57d6-0d56-57e2-31cb-e9f1ed3c18dd
+        $ pulumi import consul:index/intention:Intention database 657a57d6-0d56-57e2-31cb-e9f1ed3c18dd
         ```
 
         :param str resource_name: The name of the resource.
@@ -415,6 +419,7 @@ class Intention(pulumi.CustomResource):
 
         Create a simplest intention with static service names:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_consul as consul
@@ -424,9 +429,11 @@ class Intention(pulumi.CustomResource):
             destination_name="db",
             source_name="api")
         ```
+        <!--End PulumiCodeChooser -->
 
         Referencing a known service via a datasource:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_consul as consul
@@ -437,13 +444,14 @@ class Intention(pulumi.CustomResource):
             source_name="api")
         pg = consul.get_service(name="postgresql")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         `consul_intention` can be imported:
 
         ```sh
-         $ pulumi import consul:index/intention:Intention database 657a57d6-0d56-57e2-31cb-e9f1ed3c18dd
+        $ pulumi import consul:index/intention:Intention database 657a57d6-0d56-57e2-31cb-e9f1ed3c18dd
         ```
 
         :param str resource_name: The name of the resource.
