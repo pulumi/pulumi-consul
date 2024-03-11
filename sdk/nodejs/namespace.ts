@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
@@ -22,13 +23,15 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
- * `consul_namespace` can be imported. This is useful to manage attributes of the default namespace that is created automatically:
+ * `consul_namespace` can be imported. This is useful to manage attributes of the
+ * default namespace that is created automatically:
  *
  * ```sh
- *  $ pulumi import consul:index/namespace:Namespace default default
+ * $ pulumi import consul:index/namespace:Namespace default default
  * ```
  */
 export class Namespace extends pulumi.CustomResource {

@@ -12,6 +12,7 @@ namespace Pulumi.Consul
     /// <summary>
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -116,11 +117,12 @@ namespace Pulumi.Consul
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import consul:index/configEntryServiceSplitter:ConfigEntryServiceSplitter foo web
+    /// $ pulumi import consul:index/configEntryServiceSplitter:ConfigEntryServiceSplitter foo web
     /// ```
     /// </summary>
     [ConsulResourceType("consul:index/configEntryServiceSplitter:ConfigEntryServiceSplitter")]

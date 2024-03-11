@@ -17,6 +17,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -39,6 +40,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetAutopilotHealth(ctx *pulumi.Context, args *GetAutopilotHealthArgs, opts ...pulumi.InvokeOption) (*GetAutopilotHealthResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAutopilotHealthResult

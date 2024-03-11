@@ -30,6 +30,7 @@ import (
 //
 // Create a simplest intention with static service names:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -55,9 +56,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // Referencing a known service via a datasource:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -89,15 +92,14 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // `consul_intention` can be imported:
 //
 // ```sh
-//
-//	$ pulumi import consul:index/intention:Intention database 657a57d6-0d56-57e2-31cb-e9f1ed3c18dd
-//
+// $ pulumi import consul:index/intention:Intention database 657a57d6-0d56-57e2-31cb-e9f1ed3c18dd
 // ```
 type Intention struct {
 	pulumi.CustomResourceState

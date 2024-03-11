@@ -15,6 +15,7 @@ namespace Pulumi.Consul
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -30,13 +31,14 @@ namespace Pulumi.Consul
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// The `consul_node` resource can be imported:
     /// 
     /// ```sh
-    ///  $ pulumi import consul:index/node:Node example node-name
+    /// $ pulumi import consul:index/node:Node example node-name
     /// ```
     /// </summary>
     [ConsulResourceType("consul:index/node:Node")]

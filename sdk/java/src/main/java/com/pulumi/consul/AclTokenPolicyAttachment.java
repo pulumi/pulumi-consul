@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
  * 
  * `consul_acl_token_policy_attachment` can be imported. This is especially useful to manage the
  * 
- *  policies attached to the anonymous and the master tokens with Terraform:
+ * policies attached to the anonymous and the master tokens with Terraform:
  * 
  * ```sh
  * $ pulumi import consul:index/aclTokenPolicyAttachment:AclTokenPolicyAttachment anonymous 00000000-0000-0000-0000-000000000002:policy_name

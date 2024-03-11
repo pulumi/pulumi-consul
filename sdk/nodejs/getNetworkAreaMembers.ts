@@ -14,6 +14,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
@@ -28,6 +29,7 @@ import * as utilities from "./utilities";
  * });
  * export const members = dc2NetworkAreaMembers.apply(dc2NetworkAreaMembers => dc2NetworkAreaMembers.members);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getNetworkAreaMembers(args: GetNetworkAreaMembersArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkAreaMembersResult> {
 
@@ -96,6 +98,7 @@ Please use the token argument in the provider configuration
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
@@ -110,6 +113,7 @@ Please use the token argument in the provider configuration
  * });
  * export const members = dc2NetworkAreaMembers.apply(dc2NetworkAreaMembers => dc2NetworkAreaMembers.members);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getNetworkAreaMembersOutput(args: GetNetworkAreaMembersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkAreaMembersResult> {
     return pulumi.output(args).apply((a: any) => getNetworkAreaMembers(a, opts))

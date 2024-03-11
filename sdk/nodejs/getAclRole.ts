@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
@@ -20,6 +21,7 @@ import * as utilities from "./utilities";
  * });
  * export const consulAclRole = test.then(test => test.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAclRole(args: GetAclRoleArgs, opts?: pulumi.InvokeOptions): Promise<GetAclRoleResult> {
 
@@ -92,6 +94,7 @@ export interface GetAclRoleResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
@@ -101,6 +104,7 @@ export interface GetAclRoleResult {
  * });
  * export const consulAclRole = test.then(test => test.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAclRoleOutput(args: GetAclRoleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAclRoleResult> {
     return pulumi.output(args).apply((a: any) => getAclRole(a, opts))

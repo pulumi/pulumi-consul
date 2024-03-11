@@ -17,7 +17,7 @@ namespace Pulumi.Consul
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import consul:index/certificateAuthority:CertificateAuthority connect connect-ca
+    /// $ pulumi import consul:index/certificateAuthority:CertificateAuthority connect connect-ca
     /// ```
     /// </summary>
     [ConsulResourceType("consul:index/certificateAuthority:CertificateAuthority")]

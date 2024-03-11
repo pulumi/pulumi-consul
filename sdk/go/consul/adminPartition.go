@@ -17,6 +17,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -40,15 +41,14 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // `consul_admin_partition` can be imported:
 //
 // ```sh
-//
-//	$ pulumi import consul:index/adminPartition:AdminPartition na_west na-west
-//
+// $ pulumi import consul:index/adminPartition:AdminPartition na_west na-west
 // ```
 type AdminPartition struct {
 	pulumi.CustomResourceState

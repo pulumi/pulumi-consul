@@ -80,6 +80,8 @@ public final class ConsulFunctions {
      * [Consul Auth Method](https://www.consul.io/docs/acl/acl-auth-methods.html).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -109,6 +111,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAclAuthMethodResult> getAclAuthMethod(GetAclAuthMethodArgs args) {
@@ -119,6 +122,8 @@ public final class ConsulFunctions {
      * [Consul Auth Method](https://www.consul.io/docs/acl/acl-auth-methods.html).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -148,6 +153,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAclAuthMethodResult> getAclAuthMethodPlain(GetAclAuthMethodPlainArgs args) {
@@ -158,6 +164,8 @@ public final class ConsulFunctions {
      * [Consul Auth Method](https://www.consul.io/docs/acl/acl-auth-methods.html).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -187,6 +195,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAclAuthMethodResult> getAclAuthMethod(GetAclAuthMethodArgs args, InvokeOptions options) {
@@ -197,6 +206,8 @@ public final class ConsulFunctions {
      * [Consul Auth Method](https://www.consul.io/docs/acl/acl-auth-methods.html).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -226,6 +237,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAclAuthMethodResult> getAclAuthMethodPlain(GetAclAuthMethodPlainArgs args, InvokeOptions options) {
@@ -236,6 +248,8 @@ public final class ConsulFunctions {
      * [Consul ACL Policy](https://www.consul.io/docs/acl/acl-system.html#acl-policies).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -265,6 +279,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAclPolicyResult> getAclPolicy(GetAclPolicyArgs args) {
@@ -275,6 +290,8 @@ public final class ConsulFunctions {
      * [Consul ACL Policy](https://www.consul.io/docs/acl/acl-system.html#acl-policies).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -304,6 +321,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAclPolicyResult> getAclPolicyPlain(GetAclPolicyPlainArgs args) {
@@ -314,6 +332,8 @@ public final class ConsulFunctions {
      * [Consul ACL Policy](https://www.consul.io/docs/acl/acl-system.html#acl-policies).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -343,6 +363,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAclPolicyResult> getAclPolicy(GetAclPolicyArgs args, InvokeOptions options) {
@@ -353,6 +374,8 @@ public final class ConsulFunctions {
      * [Consul ACL Policy](https://www.consul.io/docs/acl/acl-system.html#acl-policies).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -382,6 +405,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAclPolicyResult> getAclPolicyPlain(GetAclPolicyPlainArgs args, InvokeOptions options) {
@@ -391,6 +415,8 @@ public final class ConsulFunctions {
      * The `consul.AclRole` data source returns the information related to a [Consul ACL Role](https://www.consul.io/api/acl/roles.html).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -420,6 +446,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAclRoleResult> getAclRole(GetAclRoleArgs args) {
@@ -429,6 +456,8 @@ public final class ConsulFunctions {
      * The `consul.AclRole` data source returns the information related to a [Consul ACL Role](https://www.consul.io/api/acl/roles.html).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -458,6 +487,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAclRoleResult> getAclRolePlain(GetAclRolePlainArgs args) {
@@ -467,6 +497,8 @@ public final class ConsulFunctions {
      * The `consul.AclRole` data source returns the information related to a [Consul ACL Role](https://www.consul.io/api/acl/roles.html).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -496,6 +528,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAclRoleResult> getAclRole(GetAclRoleArgs args, InvokeOptions options) {
@@ -505,6 +538,8 @@ public final class ConsulFunctions {
      * The `consul.AclRole` data source returns the information related to a [Consul ACL Role](https://www.consul.io/api/acl/roles.html).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -534,6 +569,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAclRoleResult> getAclRolePlain(GetAclRolePlainArgs args, InvokeOptions options) {
@@ -545,6 +581,8 @@ public final class ConsulFunctions {
      * If you want to get the secret ID associated with a token, use the [`consul.getAclTokenSecretId` data source](https://www.terraform.io/docs/providers/consul/d/acl_token_secret_id.html).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -574,6 +612,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAclTokenResult> getAclToken(GetAclTokenArgs args) {
@@ -585,6 +624,8 @@ public final class ConsulFunctions {
      * If you want to get the secret ID associated with a token, use the [`consul.getAclTokenSecretId` data source](https://www.terraform.io/docs/providers/consul/d/acl_token_secret_id.html).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -614,6 +655,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAclTokenResult> getAclTokenPlain(GetAclTokenPlainArgs args) {
@@ -625,6 +667,8 @@ public final class ConsulFunctions {
      * If you want to get the secret ID associated with a token, use the [`consul.getAclTokenSecretId` data source](https://www.terraform.io/docs/providers/consul/d/acl_token_secret_id.html).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -654,6 +698,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAclTokenResult> getAclToken(GetAclTokenArgs args, InvokeOptions options) {
@@ -665,6 +710,8 @@ public final class ConsulFunctions {
      * If you want to get the secret ID associated with a token, use the [`consul.getAclTokenSecretId` data source](https://www.terraform.io/docs/providers/consul/d/acl_token_secret_id.html).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -694,6 +741,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAclTokenResult> getAclTokenPlain(GetAclTokenPlainArgs args, InvokeOptions options) {
@@ -701,6 +749,8 @@ public final class ConsulFunctions {
     }
     /**
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -746,6 +796,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAclTokenSecretIdResult> getAclTokenSecretId(GetAclTokenSecretIdArgs args) {
@@ -753,6 +804,8 @@ public final class ConsulFunctions {
     }
     /**
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -798,6 +851,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAclTokenSecretIdResult> getAclTokenSecretIdPlain(GetAclTokenSecretIdPlainArgs args) {
@@ -805,6 +859,8 @@ public final class ConsulFunctions {
     }
     /**
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -850,6 +906,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAclTokenSecretIdResult> getAclTokenSecretId(GetAclTokenSecretIdArgs args, InvokeOptions options) {
@@ -857,6 +914,8 @@ public final class ConsulFunctions {
     }
     /**
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -902,6 +961,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAclTokenSecretIdResult> getAclTokenSecretIdPlain(GetAclTokenSecretIdPlainArgs args, InvokeOptions options) {
@@ -917,6 +977,8 @@ public final class ConsulFunctions {
      * from the agent specified in the `provider`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -943,6 +1005,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAgentConfigResult> getAgentConfig() {
@@ -958,6 +1021,8 @@ public final class ConsulFunctions {
      * from the agent specified in the `provider`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -984,6 +1049,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAgentConfigResult> getAgentConfigPlain() {
@@ -999,6 +1065,8 @@ public final class ConsulFunctions {
      * from the agent specified in the `provider`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1025,6 +1093,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAgentConfigResult> getAgentConfig(InvokeArgs args) {
@@ -1040,6 +1109,8 @@ public final class ConsulFunctions {
      * from the agent specified in the `provider`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1066,6 +1137,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAgentConfigResult> getAgentConfigPlain(InvokeArgs args) {
@@ -1081,6 +1153,8 @@ public final class ConsulFunctions {
      * from the agent specified in the `provider`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1107,6 +1181,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAgentConfigResult> getAgentConfig(InvokeArgs args, InvokeOptions options) {
@@ -1122,6 +1197,8 @@ public final class ConsulFunctions {
      * from the agent specified in the `provider`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1148,6 +1225,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAgentConfigResult> getAgentConfigPlain(InvokeArgs args, InvokeOptions options) {
@@ -1163,6 +1241,7 @@ public final class ConsulFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1194,6 +1273,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAgentSelfResult> getAgentSelf() {
@@ -1209,6 +1289,7 @@ public final class ConsulFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1240,6 +1321,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAgentSelfResult> getAgentSelfPlain() {
@@ -1255,6 +1337,7 @@ public final class ConsulFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1286,6 +1369,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAgentSelfResult> getAgentSelf(InvokeArgs args) {
@@ -1301,6 +1385,7 @@ public final class ConsulFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1332,6 +1417,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAgentSelfResult> getAgentSelfPlain(InvokeArgs args) {
@@ -1347,6 +1433,7 @@ public final class ConsulFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1378,6 +1465,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAgentSelfResult> getAgentSelf(InvokeArgs args, InvokeOptions options) {
@@ -1393,6 +1481,7 @@ public final class ConsulFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1424,6 +1513,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAgentSelfResult> getAgentSelfPlain(InvokeArgs args, InvokeOptions options) {
@@ -1435,6 +1525,8 @@ public final class ConsulFunctions {
      * about the current Consul cluster.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1462,6 +1554,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAutopilotHealthResult> getAutopilotHealth() {
@@ -1473,6 +1566,8 @@ public final class ConsulFunctions {
      * about the current Consul cluster.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1500,6 +1595,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAutopilotHealthResult> getAutopilotHealthPlain() {
@@ -1511,6 +1607,8 @@ public final class ConsulFunctions {
      * about the current Consul cluster.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1538,6 +1636,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAutopilotHealthResult> getAutopilotHealth(GetAutopilotHealthArgs args) {
@@ -1549,6 +1648,8 @@ public final class ConsulFunctions {
      * about the current Consul cluster.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1576,6 +1677,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAutopilotHealthResult> getAutopilotHealthPlain(GetAutopilotHealthPlainArgs args) {
@@ -1587,6 +1689,8 @@ public final class ConsulFunctions {
      * about the current Consul cluster.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1614,6 +1718,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAutopilotHealthResult> getAutopilotHealth(GetAutopilotHealthArgs args, InvokeOptions options) {
@@ -1625,6 +1730,8 @@ public final class ConsulFunctions {
      * about the current Consul cluster.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1652,6 +1759,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAutopilotHealthResult> getAutopilotHealthPlain(GetAutopilotHealthPlainArgs args, InvokeOptions options) {
@@ -1977,6 +2085,8 @@ public final class ConsulFunctions {
     }
     /**
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2018,6 +2128,9 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2054,6 +2167,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKeyPrefixResult> getKeyPrefix(GetKeyPrefixArgs args) {
@@ -2061,6 +2175,8 @@ public final class ConsulFunctions {
     }
     /**
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2102,6 +2218,9 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2138,6 +2257,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKeyPrefixResult> getKeyPrefixPlain(GetKeyPrefixPlainArgs args) {
@@ -2145,6 +2265,8 @@ public final class ConsulFunctions {
     }
     /**
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2186,6 +2308,9 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2222,6 +2347,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKeyPrefixResult> getKeyPrefix(GetKeyPrefixArgs args, InvokeOptions options) {
@@ -2229,6 +2355,8 @@ public final class ConsulFunctions {
     }
     /**
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2270,6 +2398,9 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2306,6 +2437,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKeyPrefixResult> getKeyPrefixPlain(GetKeyPrefixPlainArgs args, InvokeOptions options) {
@@ -2315,6 +2447,8 @@ public final class ConsulFunctions {
      * The `consul.Keys` datasource reads values from the Consul key/value store. This is a powerful way to dynamically set values in templates.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2354,6 +2488,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKeysResult> getKeys() {
@@ -2363,6 +2498,8 @@ public final class ConsulFunctions {
      * The `consul.Keys` datasource reads values from the Consul key/value store. This is a powerful way to dynamically set values in templates.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2402,6 +2539,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKeysResult> getKeysPlain() {
@@ -2411,6 +2549,8 @@ public final class ConsulFunctions {
      * The `consul.Keys` datasource reads values from the Consul key/value store. This is a powerful way to dynamically set values in templates.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2450,6 +2590,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKeysResult> getKeys(GetKeysArgs args) {
@@ -2459,6 +2600,8 @@ public final class ConsulFunctions {
      * The `consul.Keys` datasource reads values from the Consul key/value store. This is a powerful way to dynamically set values in templates.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2498,6 +2641,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKeysResult> getKeysPlain(GetKeysPlainArgs args) {
@@ -2507,6 +2651,8 @@ public final class ConsulFunctions {
      * The `consul.Keys` datasource reads values from the Consul key/value store. This is a powerful way to dynamically set values in templates.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2546,6 +2692,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKeysResult> getKeys(GetKeysArgs args, InvokeOptions options) {
@@ -2555,6 +2702,8 @@ public final class ConsulFunctions {
      * The `consul.Keys` datasource reads values from the Consul key/value store. This is a powerful way to dynamically set values in templates.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2594,6 +2743,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKeysResult> getKeysPlain(GetKeysPlainArgs args, InvokeOptions options) {
@@ -2606,6 +2756,8 @@ public final class ConsulFunctions {
      * servers present in a specific network area.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2643,6 +2795,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNetworkAreaMembersResult> getNetworkAreaMembers(GetNetworkAreaMembersArgs args) {
@@ -2655,6 +2808,8 @@ public final class ConsulFunctions {
      * servers present in a specific network area.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2692,6 +2847,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNetworkAreaMembersResult> getNetworkAreaMembersPlain(GetNetworkAreaMembersPlainArgs args) {
@@ -2704,6 +2860,8 @@ public final class ConsulFunctions {
      * servers present in a specific network area.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2741,6 +2899,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNetworkAreaMembersResult> getNetworkAreaMembers(GetNetworkAreaMembersArgs args, InvokeOptions options) {
@@ -2753,6 +2912,8 @@ public final class ConsulFunctions {
      * servers present in a specific network area.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2790,6 +2951,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNetworkAreaMembersResult> getNetworkAreaMembersPlain(GetNetworkAreaMembersPlainArgs args, InvokeOptions options) {
@@ -2802,6 +2964,8 @@ public final class ConsulFunctions {
      * segments defined in the configuration.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2829,6 +2993,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNetworkSegmentsResult> getNetworkSegments() {
@@ -2841,6 +3006,8 @@ public final class ConsulFunctions {
      * segments defined in the configuration.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2868,6 +3035,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNetworkSegmentsResult> getNetworkSegmentsPlain() {
@@ -2880,6 +3048,8 @@ public final class ConsulFunctions {
      * segments defined in the configuration.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2907,6 +3077,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNetworkSegmentsResult> getNetworkSegments(GetNetworkSegmentsArgs args) {
@@ -2919,6 +3090,8 @@ public final class ConsulFunctions {
      * segments defined in the configuration.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2946,6 +3119,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNetworkSegmentsResult> getNetworkSegmentsPlain(GetNetworkSegmentsPlainArgs args) {
@@ -2958,6 +3132,8 @@ public final class ConsulFunctions {
      * segments defined in the configuration.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2985,6 +3161,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNetworkSegmentsResult> getNetworkSegments(GetNetworkSegmentsArgs args, InvokeOptions options) {
@@ -2997,6 +3174,8 @@ public final class ConsulFunctions {
      * segments defined in the configuration.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3024,6 +3203,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNetworkSegmentsResult> getNetworkSegmentsPlain(GetNetworkSegmentsPlainArgs args, InvokeOptions options) {
@@ -3091,6 +3271,8 @@ public final class ConsulFunctions {
     }
     /**
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3119,6 +3301,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPeeringResult> getPeering(GetPeeringArgs args) {
@@ -3126,6 +3309,8 @@ public final class ConsulFunctions {
     }
     /**
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3154,6 +3339,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPeeringResult> getPeeringPlain(GetPeeringPlainArgs args) {
@@ -3161,6 +3347,8 @@ public final class ConsulFunctions {
     }
     /**
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3189,6 +3377,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPeeringResult> getPeering(GetPeeringArgs args, InvokeOptions options) {
@@ -3196,6 +3385,8 @@ public final class ConsulFunctions {
     }
     /**
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3224,6 +3415,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPeeringResult> getPeeringPlain(GetPeeringPlainArgs args, InvokeOptions options) {
@@ -3231,6 +3423,8 @@ public final class ConsulFunctions {
     }
     /**
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3257,6 +3451,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPeeringsResult> getPeerings() {
@@ -3264,6 +3459,8 @@ public final class ConsulFunctions {
     }
     /**
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3290,6 +3487,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPeeringsResult> getPeeringsPlain() {
@@ -3297,6 +3495,8 @@ public final class ConsulFunctions {
     }
     /**
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3323,6 +3523,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPeeringsResult> getPeerings(GetPeeringsArgs args) {
@@ -3330,6 +3531,8 @@ public final class ConsulFunctions {
     }
     /**
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3356,6 +3559,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPeeringsResult> getPeeringsPlain(GetPeeringsPlainArgs args) {
@@ -3363,6 +3567,8 @@ public final class ConsulFunctions {
     }
     /**
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3389,6 +3595,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPeeringsResult> getPeerings(GetPeeringsArgs args, InvokeOptions options) {
@@ -3396,6 +3603,8 @@ public final class ConsulFunctions {
     }
     /**
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3422,6 +3631,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPeeringsResult> getPeeringsPlain(GetPeeringsPlainArgs args, InvokeOptions options) {
@@ -3494,6 +3704,7 @@ public final class ConsulFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3523,6 +3734,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceHealthInvokeResult> getServiceHealth(GetServiceHealthArgs args) {
@@ -3539,6 +3751,7 @@ public final class ConsulFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3568,6 +3781,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceHealthInvokeResult> getServiceHealthPlain(GetServiceHealthPlainArgs args) {
@@ -3584,6 +3798,7 @@ public final class ConsulFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3613,6 +3828,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceHealthInvokeResult> getServiceHealth(GetServiceHealthArgs args, InvokeOptions options) {
@@ -3629,6 +3845,7 @@ public final class ConsulFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3658,6 +3875,7 @@ public final class ConsulFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceHealthInvokeResult> getServiceHealthPlain(GetServiceHealthPlainArgs args, InvokeOptions options) {

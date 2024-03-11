@@ -12,6 +12,7 @@ namespace Pulumi.Consul
     /// <summary>
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -47,13 +48,15 @@ namespace Pulumi.Consul
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
-    /// `consul_key_prefix` can be imported. This is useful when the path already exists and you know all keys in path should be managed by Terraform.
+    /// `consul_key_prefix` can be imported. This is useful when the path already exists and
+    /// you know all keys in path should be managed by Terraform.
     /// 
     /// ```sh
-    ///  $ pulumi import consul:index/keyPrefix:KeyPrefix myapp_config myapp/config/
+    /// $ pulumi import consul:index/keyPrefix:KeyPrefix myapp_config myapp/config/
     /// ```
     /// </summary>
     [ConsulResourceType("consul:index/keyPrefix:KeyPrefix")]

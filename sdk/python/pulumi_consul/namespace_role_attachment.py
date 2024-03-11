@@ -100,10 +100,11 @@ class NamespaceRoleAttachment(pulumi.CustomResource):
         """
         ## Import
 
-        `consul_namespace_role_attachment` can be imported. This is especially useful to manage the policies attached to the `default` namespace:
+        `consul_namespace_role_attachment` can be imported. This is especially useful
+        to manage the policies attached to the `default` namespace:
 
         ```sh
-         $ pulumi import consul:index/namespaceRoleAttachment:NamespaceRoleAttachment default default:role_name
+        $ pulumi import consul:index/namespaceRoleAttachment:NamespaceRoleAttachment default default:role_name
         ```
 
         :param str resource_name: The name of the resource.
@@ -120,10 +121,11 @@ class NamespaceRoleAttachment(pulumi.CustomResource):
         """
         ## Import
 
-        `consul_namespace_role_attachment` can be imported. This is especially useful to manage the policies attached to the `default` namespace:
+        `consul_namespace_role_attachment` can be imported. This is especially useful
+        to manage the policies attached to the `default` namespace:
 
         ```sh
-         $ pulumi import consul:index/namespaceRoleAttachment:NamespaceRoleAttachment default default:role_name
+        $ pulumi import consul:index/namespaceRoleAttachment:NamespaceRoleAttachment default default:role_name
         ```
 
         :param str resource_name: The name of the resource.

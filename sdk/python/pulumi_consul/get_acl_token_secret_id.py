@@ -109,6 +109,7 @@ def get_acl_token_secret_id(accessor_id: Optional[str] = None,
     """
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_consul as consul
@@ -124,6 +125,7 @@ def get_acl_token_secret_id(accessor_id: Optional[str] = None,
         pgp_key="keybase:my_username")
     pulumi.export("consulAclTokenSecretId", read.encrypted_secret_id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str accessor_id: The accessor ID of the ACL token.
@@ -157,6 +159,7 @@ def get_acl_token_secret_id_output(accessor_id: Optional[pulumi.Input[str]] = No
     """
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_consul as consul
@@ -172,6 +175,7 @@ def get_acl_token_secret_id_output(accessor_id: Optional[pulumi.Input[str]] = No
         pgp_key="keybase:my_username")
     pulumi.export("consulAclTokenSecretId", read.encrypted_secret_id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str accessor_id: The accessor ID of the ACL token.

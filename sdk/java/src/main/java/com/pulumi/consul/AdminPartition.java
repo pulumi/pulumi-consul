@@ -20,6 +20,8 @@ import javax.annotation.Nullable;
  * The `consul.AdminPartition` resource manages [Consul Enterprise Admin Partitions](https://www.consul.io/docs/enterprise/admin-partitions).
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -48,13 +50,14 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * `consul_admin_partition` can be imported:
  * 
  * ```sh
- *  $ pulumi import consul:index/adminPartition:AdminPartition na_west na-west
+ * $ pulumi import consul:index/adminPartition:AdminPartition na_west na-west
  * ```
  * 
  */

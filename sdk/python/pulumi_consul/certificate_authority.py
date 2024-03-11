@@ -159,7 +159,7 @@ class CertificateAuthority(pulumi.CustomResource):
         ## Import
 
         ```sh
-         $ pulumi import consul:index/certificateAuthority:CertificateAuthority connect connect-ca
+        $ pulumi import consul:index/certificateAuthority:CertificateAuthority connect connect-ca
         ```
 
         :param str resource_name: The name of the resource.
@@ -184,7 +184,7 @@ class CertificateAuthority(pulumi.CustomResource):
         ## Import
 
         ```sh
-         $ pulumi import consul:index/certificateAuthority:CertificateAuthority connect connect-ca
+        $ pulumi import consul:index/certificateAuthority:CertificateAuthority connect connect-ca
         ```
 
         :param str resource_name: The name of the resource.
