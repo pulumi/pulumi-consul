@@ -320,6 +320,7 @@ class KeyPrefix(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_consul as consul
@@ -342,13 +343,15 @@ class KeyPrefix(pulumi.CustomResource):
             },
             token="abcd")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
-        `consul_key_prefix` can be imported. This is useful when the path already exists and you know all keys in path should be managed by Terraform.
+        `consul_key_prefix` can be imported. This is useful when the path already exists and
+        you know all keys in path should be managed by Terraform.
 
         ```sh
-         $ pulumi import consul:index/keyPrefix:KeyPrefix myapp_config myapp/config/
+        $ pulumi import consul:index/keyPrefix:KeyPrefix myapp_config myapp/config/
         ```
 
         :param str resource_name: The name of the resource.
@@ -378,6 +381,7 @@ class KeyPrefix(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_consul as consul
@@ -400,13 +404,15 @@ class KeyPrefix(pulumi.CustomResource):
             },
             token="abcd")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
-        `consul_key_prefix` can be imported. This is useful when the path already exists and you know all keys in path should be managed by Terraform.
+        `consul_key_prefix` can be imported. This is useful when the path already exists and
+        you know all keys in path should be managed by Terraform.
 
         ```sh
-         $ pulumi import consul:index/keyPrefix:KeyPrefix myapp_config myapp/config/
+        $ pulumi import consul:index/keyPrefix:KeyPrefix myapp_config myapp/config/
         ```
 
         :param str resource_name: The name of the resource.

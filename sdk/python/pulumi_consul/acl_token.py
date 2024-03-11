@@ -401,6 +401,7 @@ class AclToken(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_consul as consul
@@ -423,11 +424,12 @@ class AclToken(pulumi.CustomResource):
             policies=[agent.name],
             local=True)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import consul:index/aclToken:AclToken anonymous 00000000-0000-0000-0000-000000000002
+        $ pulumi import consul:index/aclToken:AclToken anonymous 00000000-0000-0000-0000-000000000002
         ```
 
         ```sh
@@ -457,6 +459,7 @@ class AclToken(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_consul as consul
@@ -479,11 +482,12 @@ class AclToken(pulumi.CustomResource):
             policies=[agent.name],
             local=True)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import consul:index/aclToken:AclToken anonymous 00000000-0000-0000-0000-000000000002
+        $ pulumi import consul:index/aclToken:AclToken anonymous 00000000-0000-0000-0000-000000000002
         ```
 
         ```sh

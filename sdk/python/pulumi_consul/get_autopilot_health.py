@@ -102,6 +102,7 @@ def get_autopilot_health(datacenter: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_consul as consul
@@ -109,6 +110,7 @@ def get_autopilot_health(datacenter: Optional[str] = None,
     read = consul.get_autopilot_health()
     pulumi.export("health", read.healthy)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str datacenter: The datacenter to use. This overrides the agent's
@@ -137,6 +139,7 @@ def get_autopilot_health_output(datacenter: Optional[pulumi.Input[Optional[str]]
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_consul as consul
@@ -144,6 +147,7 @@ def get_autopilot_health_output(datacenter: Optional[pulumi.Input[Optional[str]]
     read = consul.get_autopilot_health()
     pulumi.export("health", read.healthy)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str datacenter: The datacenter to use. This overrides the agent's

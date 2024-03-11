@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
@@ -78,11 +79,12 @@ import * as utilities from "./utilities";
  *     ],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * ```sh
- *  $ pulumi import consul:index/configEntryServiceSplitter:ConfigEntryServiceSplitter foo web
+ * $ pulumi import consul:index/configEntryServiceSplitter:ConfigEntryServiceSplitter foo web
  * ```
  */
 export class ConfigEntryServiceSplitter extends pulumi.CustomResource {

@@ -14,12 +14,11 @@ import (
 
 // ## Import
 //
-// `consul_acl_token_role_attachment` can be imported. This is especially useful to manage the policies attached to the anonymous and the master tokens with Terraform:
+// `consul_acl_token_role_attachment` can be imported. This is especially useful to manage the
+// policies attached to the anonymous and the master tokens with Terraform:
 //
 // ```sh
-//
-//	$ pulumi import consul:index/aclTokenRoleAttachment:AclTokenRoleAttachment anonymous token_id:role_id
-//
+// $ pulumi import consul:index/aclTokenRoleAttachment:AclTokenRoleAttachment anonymous token_id:role_id
 // ```
 type AclTokenRoleAttachment struct {
 	pulumi.CustomResourceState

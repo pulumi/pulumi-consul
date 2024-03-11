@@ -100,6 +100,7 @@ class AclRolePolicyAttachment(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_consul as consul
@@ -112,11 +113,12 @@ class AclRolePolicyAttachment(pulumi.CustomResource):
             role_id=data["consul_acl_role"]["test"]["id"],
             policy=read_policy.name)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import consul:index/aclRolePolicyAttachment:AclRolePolicyAttachment my_role_read_policy 624d94ca-bc5c-f960-4e83-0a609cf588be:policy_name
+        $ pulumi import consul:index/aclRolePolicyAttachment:AclRolePolicyAttachment my_role_read_policy 624d94ca-bc5c-f960-4e83-0a609cf588be:policy_name
         ```
 
         :param str resource_name: The name of the resource.
@@ -133,6 +135,7 @@ class AclRolePolicyAttachment(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_consul as consul
@@ -145,11 +148,12 @@ class AclRolePolicyAttachment(pulumi.CustomResource):
             role_id=data["consul_acl_role"]["test"]["id"],
             policy=read_policy.name)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import consul:index/aclRolePolicyAttachment:AclRolePolicyAttachment my_role_read_policy 624d94ca-bc5c-f960-4e83-0a609cf588be:policy_name
+        $ pulumi import consul:index/aclRolePolicyAttachment:AclRolePolicyAttachment my_role_read_policy 624d94ca-bc5c-f960-4e83-0a609cf588be:policy_name
         ```
 
         :param str resource_name: The name of the resource.

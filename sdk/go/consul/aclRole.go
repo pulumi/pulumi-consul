@@ -13,6 +13,7 @@ import (
 
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -53,13 +54,12 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // ```sh
-//
-//	$ pulumi import consul:index/aclRole:AclRole read 816a195f-6cb1-2e8d-92af-3011ae706318
-//
+// $ pulumi import consul:index/aclRole:AclRole read 816a195f-6cb1-2e8d-92af-3011ae706318
 // ```
 type AclRole struct {
 	pulumi.CustomResourceState

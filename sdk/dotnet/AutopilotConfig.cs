@@ -18,6 +18,7 @@ namespace Pulumi.Consul
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -35,6 +36,7 @@ namespace Pulumi.Consul
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [ConsulResourceType("consul:index/autopilotConfig:AutopilotConfig")]
     public partial class AutopilotConfig : global::Pulumi.CustomResource

@@ -17,10 +17,9 @@ namespace Pulumi.Consul
         /// The `consul.getNetworkAreaMembers` data source provides a list of the Consul
         /// servers present in a specific network area.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -50,8 +49,7 @@ namespace Pulumi.Consul
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetNetworkAreaMembersResult> InvokeAsync(GetNetworkAreaMembersArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNetworkAreaMembersResult>("consul:index/getNetworkAreaMembers:getNetworkAreaMembers", args ?? new GetNetworkAreaMembersArgs(), options.WithDefaults());
@@ -62,10 +60,9 @@ namespace Pulumi.Consul
         /// The `consul.getNetworkAreaMembers` data source provides a list of the Consul
         /// servers present in a specific network area.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -95,8 +92,7 @@ namespace Pulumi.Consul
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetNetworkAreaMembersResult> Invoke(GetNetworkAreaMembersInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNetworkAreaMembersResult>("consul:index/getNetworkAreaMembers:getNetworkAreaMembers", args ?? new GetNetworkAreaMembersInvokeArgs(), options.WithDefaults());

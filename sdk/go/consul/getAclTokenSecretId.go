@@ -13,6 +13,7 @@ import (
 
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -56,6 +57,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetAclTokenSecretId(ctx *pulumi.Context, args *GetAclTokenSecretIdArgs, opts ...pulumi.InvokeOption) (*GetAclTokenSecretIdResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAclTokenSecretIdResult

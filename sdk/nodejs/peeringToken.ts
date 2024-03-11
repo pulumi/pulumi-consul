@@ -15,12 +15,14 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
  *
  * const token = new consul.PeeringToken("token", {peerName: "eu-cluster"});
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export class PeeringToken extends pulumi.CustomResource {
     /**

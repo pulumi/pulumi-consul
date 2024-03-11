@@ -14,10 +14,9 @@ namespace Pulumi.Consul
         /// <summary>
         /// The `consul.AclRole` data source returns the information related to a [Consul ACL Role](https://www.consul.io/api/acl/roles.html).
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -37,8 +36,7 @@ namespace Pulumi.Consul
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAclRoleResult> InvokeAsync(GetAclRoleArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAclRoleResult>("consul:index/getAclRole:getAclRole", args ?? new GetAclRoleArgs(), options.WithDefaults());
@@ -46,10 +44,9 @@ namespace Pulumi.Consul
         /// <summary>
         /// The `consul.AclRole` data source returns the information related to a [Consul ACL Role](https://www.consul.io/api/acl/roles.html).
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -69,8 +66,7 @@ namespace Pulumi.Consul
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAclRoleResult> Invoke(GetAclRoleInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAclRoleResult>("consul:index/getAclRole:getAclRole", args ?? new GetAclRoleInvokeArgs(), options.WithDefaults());

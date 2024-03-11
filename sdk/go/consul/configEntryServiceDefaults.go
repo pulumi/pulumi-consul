@@ -12,6 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
 type ConfigEntryServiceDefaults struct {
 	pulumi.CustomResourceState
 

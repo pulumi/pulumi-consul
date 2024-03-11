@@ -19,6 +19,8 @@ import javax.annotation.Nullable;
  * Starting with Consul 1.4.0, the consul.AclPolicy can be used to managed Consul ACL policies.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -53,13 +55,14 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * `consul_acl_policy` can be imported:
  * 
  * ```sh
- *  $ pulumi import consul:index/aclPolicy:AclPolicy my-policy 1c90ef03-a6dd-6a8c-ac49-042ad3752896
+ * $ pulumi import consul:index/aclPolicy:AclPolicy my-policy 1c90ef03-a6dd-6a8c-ac49-042ad3752896
  * ```
  * 
  */

@@ -13,6 +13,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
@@ -20,6 +21,7 @@ import * as utilities from "./utilities";
  * const read = consul.getAutopilotHealth({});
  * export const health = read.then(read => read.healthy);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAutopilotHealth(args?: GetAutopilotHealthArgs, opts?: pulumi.InvokeOptions): Promise<GetAutopilotHealthResult> {
     args = args || {};
@@ -73,6 +75,7 @@ export interface GetAutopilotHealthResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
@@ -80,6 +83,7 @@ export interface GetAutopilotHealthResult {
  * const read = consul.getAutopilotHealth({});
  * export const health = read.then(read => read.healthy);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAutopilotHealthOutput(args?: GetAutopilotHealthOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAutopilotHealthResult> {
     return pulumi.output(args).apply((a: any) => getAutopilotHealth(a, opts))

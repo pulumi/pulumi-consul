@@ -12,6 +12,7 @@ namespace Pulumi.Consul
     /// <summary>
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -47,11 +48,12 @@ namespace Pulumi.Consul
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import consul:index/aclRole:AclRole read 816a195f-6cb1-2e8d-92af-3011ae706318
+    /// $ pulumi import consul:index/aclRole:AclRole read 816a195f-6cb1-2e8d-92af-3011ae706318
     /// ```
     /// </summary>
     [ConsulResourceType("consul:index/aclRole:AclRole")]

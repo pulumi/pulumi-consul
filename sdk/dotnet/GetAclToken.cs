@@ -16,10 +16,9 @@ namespace Pulumi.Consul
         /// 
         /// If you want to get the secret ID associated with a token, use the [`consul.getAclTokenSecretId` data source](https://www.terraform.io/docs/providers/consul/d/acl_token_secret_id.html).
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -39,8 +38,7 @@ namespace Pulumi.Consul
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAclTokenResult> InvokeAsync(GetAclTokenArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAclTokenResult>("consul:index/getAclToken:getAclToken", args ?? new GetAclTokenArgs(), options.WithDefaults());
@@ -50,10 +48,9 @@ namespace Pulumi.Consul
         /// 
         /// If you want to get the secret ID associated with a token, use the [`consul.getAclTokenSecretId` data source](https://www.terraform.io/docs/providers/consul/d/acl_token_secret_id.html).
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -73,8 +70,7 @@ namespace Pulumi.Consul
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAclTokenResult> Invoke(GetAclTokenInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAclTokenResult>("consul:index/getAclToken:getAclToken", args ?? new GetAclTokenInvokeArgs(), options.WithDefaults());

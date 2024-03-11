@@ -7,6 +7,7 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
@@ -100,8 +101,11 @@ import * as utilities from "./utilities";
  *     }),
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### `service-intentions` config entry
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
@@ -126,7 +130,9 @@ import * as utilities from "./utilities";
  *     }),
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
@@ -199,8 +205,11 @@ import * as utilities from "./utilities";
  *     }),
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### `exported-services` config entry
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
@@ -218,8 +227,11 @@ import * as utilities from "./utilities";
  *     }),
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### `mesh` config entry
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
@@ -234,8 +246,11 @@ import * as utilities from "./utilities";
  *     }),
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### `jwt-provider` config entry
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
@@ -257,13 +272,17 @@ import * as utilities from "./utilities";
  *     }),
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
- * `consul_config_entry` can be imported using the syntax `<kind>/<name>` if the config entry is in the default partition and default namespace, or `<partition>/<namespace>/<kind>/<name>` for config entries in a non-default partition or namespace:
+ * `consul_config_entry` can be imported using the syntax `<kind>/<name>` if the
+ * config entry is in the default partition and default namespace, or
+ * `<partition>/<namespace>/<kind>/<name>` for config entries in a non-default
+ * partition or namespace:
  *
  * ```sh
- *  $ pulumi import consul:index/configEntry:ConfigEntry service_splitter 816a195f-6cb1-2e8d-92af-3011ae706318
+ * $ pulumi import consul:index/configEntry:ConfigEntry service_splitter 816a195f-6cb1-2e8d-92af-3011ae706318
  * ```
  */
 export class ConfigEntry extends pulumi.CustomResource {

@@ -28,6 +28,8 @@ import javax.annotation.Nullable;
  * complex topologies among Consul datacenters like hub/spoke and more general trees.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -58,6 +60,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="consul:index/networkArea:NetworkArea")

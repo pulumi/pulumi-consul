@@ -20,10 +20,9 @@ namespace Pulumi.Consul
         /// [configuration data](https://www.consul.io/api/agent.html#read-configuration)
         /// from the agent specified in the `provider`.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -40,8 +39,7 @@ namespace Pulumi.Consul
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAgentConfigResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAgentConfigResult>("consul:index/getAgentConfig:getAgentConfig", InvokeArgs.Empty, options.WithDefaults());
@@ -55,10 +53,9 @@ namespace Pulumi.Consul
         /// [configuration data](https://www.consul.io/api/agent.html#read-configuration)
         /// from the agent specified in the `provider`.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -75,8 +72,7 @@ namespace Pulumi.Consul
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAgentConfigResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAgentConfigResult>("consul:index/getAgentConfig:getAgentConfig", InvokeArgs.Empty, options.WithDefaults());

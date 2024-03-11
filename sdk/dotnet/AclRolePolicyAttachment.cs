@@ -12,6 +12,7 @@ namespace Pulumi.Consul
     /// <summary>
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -42,11 +43,12 @@ namespace Pulumi.Consul
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import consul:index/aclRolePolicyAttachment:AclRolePolicyAttachment my_role_read_policy 624d94ca-bc5c-f960-4e83-0a609cf588be:policy_name
+    /// $ pulumi import consul:index/aclRolePolicyAttachment:AclRolePolicyAttachment my_role_read_policy 624d94ca-bc5c-f960-4e83-0a609cf588be:policy_name
     /// ```
     /// </summary>
     [ConsulResourceType("consul:index/aclRolePolicyAttachment:AclRolePolicyAttachment")]

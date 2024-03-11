@@ -13,6 +13,7 @@ import (
 
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -63,13 +64,12 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // ```sh
-//
-//	$ pulumi import consul:index/aclToken:AclToken anonymous 00000000-0000-0000-0000-000000000002
-//
+// $ pulumi import consul:index/aclToken:AclToken anonymous 00000000-0000-0000-0000-000000000002
 // ```
 //
 // ```sh

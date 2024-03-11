@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
@@ -33,11 +34,12 @@ import * as utilities from "./utilities";
  *     local: true,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * ```sh
- *  $ pulumi import consul:index/aclToken:AclToken anonymous 00000000-0000-0000-0000-000000000002
+ * $ pulumi import consul:index/aclToken:AclToken anonymous 00000000-0000-0000-0000-000000000002
  * ```
  *
  * ```sh

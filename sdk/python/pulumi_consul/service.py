@@ -469,6 +469,38 @@ class Service(pulumi.CustomResource):
         registered, it is not recommended to use this resource as the service will be
         removed during the next [anti-entropy synchronization](https://www.consul.io/docs/architecture/anti-entropy).
 
+        ## Example Usage
+
+        Creating a new node with the service:
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_consul as consul
+
+        compute = consul.Node("compute", address="www.google.com")
+        google = consul.Service("google",
+            node=compute.name,
+            port=80,
+            tags=["tag0"])
+        ```
+        <!--End PulumiCodeChooser -->
+
+        Utilizing an existing known node:
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_consul as consul
+
+        google = consul.Service("google",
+            node="google",
+            port=443)
+        ```
+        <!--End PulumiCodeChooser -->
+
+        Register a health-check:
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address: The address of the service. Defaults to the address of the node.
@@ -498,6 +530,38 @@ class Service(pulumi.CustomResource):
         > **NOTE:** If a Consul agent is running on the node where this service is
         registered, it is not recommended to use this resource as the service will be
         removed during the next [anti-entropy synchronization](https://www.consul.io/docs/architecture/anti-entropy).
+
+        ## Example Usage
+
+        Creating a new node with the service:
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_consul as consul
+
+        compute = consul.Node("compute", address="www.google.com")
+        google = consul.Service("google",
+            node=compute.name,
+            port=80,
+            tags=["tag0"])
+        ```
+        <!--End PulumiCodeChooser -->
+
+        Utilizing an existing known node:
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_consul as consul
+
+        google = consul.Service("google",
+            node="google",
+            port=443)
+        ```
+        <!--End PulumiCodeChooser -->
+
+        Register a health-check:
 
         :param str resource_name: The name of the resource.
         :param ServiceArgs args: The arguments to use to populate this resource's properties.

@@ -33,6 +33,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * Create a simplest intention with static service names:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -63,8 +65,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Referencing a known service via a datasource:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -101,13 +106,14 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * `consul_intention` can be imported:
  * 
  * ```sh
- *  $ pulumi import consul:index/intention:Intention database 657a57d6-0d56-57e2-31cb-e9f1ed3c18dd
+ * $ pulumi import consul:index/intention:Intention database 657a57d6-0d56-57e2-31cb-e9f1ed3c18dd
  * ```
  * 
  */

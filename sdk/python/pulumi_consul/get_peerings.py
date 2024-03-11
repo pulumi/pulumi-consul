@@ -68,12 +68,14 @@ def get_peerings(partition: Optional[str] = None,
     """
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_consul as consul
 
     peers = consul.get_peerings()
     ```
+    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     __args__['partition'] = partition
@@ -92,11 +94,13 @@ def get_peerings_output(partition: Optional[pulumi.Input[Optional[str]]] = None,
     """
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_consul as consul
 
     peers = consul.get_peerings()
     ```
+    <!--End PulumiCodeChooser -->
     """
     ...

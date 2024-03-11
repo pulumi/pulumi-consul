@@ -107,6 +107,7 @@ def get_network_area_members(datacenter: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_consul as consul
@@ -118,6 +119,7 @@ def get_network_area_members(datacenter: Optional[str] = None,
     dc2_network_area_members = consul.get_network_area_members_output(uuid=dc2_network_area.id)
     pulumi.export("members", dc2_network_area_members.members)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str datacenter: The datacenter to use. This overrides the
@@ -154,6 +156,7 @@ def get_network_area_members_output(datacenter: Optional[pulumi.Input[Optional[s
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_consul as consul
@@ -165,6 +168,7 @@ def get_network_area_members_output(datacenter: Optional[pulumi.Input[Optional[s
     dc2_network_area_members = consul.get_network_area_members_output(uuid=dc2_network_area.id)
     pulumi.export("members", dc2_network_area_members.members)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str datacenter: The datacenter to use. This overrides the
