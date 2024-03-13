@@ -17,7 +17,7 @@ replace github.com/hashicorp/terraform-exec => github.com/hashicorp/terraform-ex
 require (
 	github.com/hashicorp/terraform-plugin-sdk v1.17.2
 	github.com/hashicorp/terraform-provider-consul v1.1.1-0.20231120153550-b46ab37b60ba
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.77.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.77.1-0.20240313202306-548e9053798d
 )
 
 replace github.com/spf13/afero => github.com/spf13/afero v1.2.2
