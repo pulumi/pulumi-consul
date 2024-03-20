@@ -47,7 +47,7 @@ export class CertificateAuthority extends pulumi.CustomResource {
      * The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
      * [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
      *
-     * @deprecated The config attribute is deprecated, please use config_json instead.
+     * @deprecated The config attribute is deprecated, please use configJson instead.
      */
     public readonly config!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -98,7 +98,7 @@ export interface CertificateAuthorityState {
      * The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
      * [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
      *
-     * @deprecated The config attribute is deprecated, please use config_json instead.
+     * @deprecated The config attribute is deprecated, please use configJson instead.
      */
     config?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -120,7 +120,7 @@ export interface CertificateAuthorityArgs {
      * The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
      * [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
      *
-     * @deprecated The config attribute is deprecated, please use config_json instead.
+     * @deprecated The config attribute is deprecated, please use configJson instead.
      */
     config?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
