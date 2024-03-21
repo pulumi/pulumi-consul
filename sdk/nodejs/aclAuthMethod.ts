@@ -94,7 +94,7 @@ export class AclAuthMethod extends pulumi.CustomResource {
     /**
      * The raw configuration for this ACL auth method.
      *
-     * @deprecated The config attribute is deprecated, please use `config_json` instead.
+     * @deprecated The config attribute is deprecated, please use `configJson` instead.
      */
     public readonly config!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -191,7 +191,7 @@ export interface AclAuthMethodState {
     /**
      * The raw configuration for this ACL auth method.
      *
-     * @deprecated The config attribute is deprecated, please use `config_json` instead.
+     * @deprecated The config attribute is deprecated, please use `configJson` instead.
      */
     config?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -243,7 +243,7 @@ export interface AclAuthMethodArgs {
     /**
      * The raw configuration for this ACL auth method.
      *
-     * @deprecated The config attribute is deprecated, please use `config_json` instead.
+     * @deprecated The config attribute is deprecated, please use `configJson` instead.
      */
     config?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
