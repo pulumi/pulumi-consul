@@ -44,7 +44,7 @@ import (
 //			}
 //			// Start our instance with the dynamic ami value
 //			_, err = ec2.NewInstance(ctx, "appInstance", &ec2.InstanceArgs{
-//				Ami: *pulumi.String(appKeys.Var.Ami),
+//				Ami: pulumi.String(appKeys.Var.Ami),
 //			})
 //			if err != nil {
 //				return err
