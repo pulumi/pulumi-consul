@@ -1486,7 +1486,7 @@ export interface KeysKey {
      */
     flags?: pulumi.Input<number>;
     /**
-     * @deprecated Using consul.Keys resource to *read* is deprecated; please use consul.Keys data source instead
+     * @deprecated Using consul_keys resource to *read* is deprecated; please use consul_keys data source instead
      */
     name?: pulumi.Input<string>;
     /**

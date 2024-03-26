@@ -65,19 +65,19 @@ public final class KeysKeyArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @deprecated
-     * Using consul.Keys resource to *read* is deprecated; please use consul.Keys data source instead
+     * Using consul_keys resource to *read* is deprecated; please use consul_keys data source instead
      * 
      */
-    @Deprecated /* Using consul.Keys resource to *read* is deprecated; please use consul.Keys data source instead */
+    @Deprecated /* Using consul_keys resource to *read* is deprecated; please use consul_keys data source instead */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @deprecated
-     * Using consul.Keys resource to *read* is deprecated; please use consul.Keys data source instead
+     * Using consul_keys resource to *read* is deprecated; please use consul_keys data source instead
      * 
      */
-    @Deprecated /* Using consul.Keys resource to *read* is deprecated; please use consul.Keys data source instead */
+    @Deprecated /* Using consul_keys resource to *read* is deprecated; please use consul_keys data source instead */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -204,10 +204,10 @@ public final class KeysKeyArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Using consul.Keys resource to *read* is deprecated; please use consul.Keys data source instead
+         * Using consul_keys resource to *read* is deprecated; please use consul_keys data source instead
          * 
          */
-        @Deprecated /* Using consul.Keys resource to *read* is deprecated; please use consul.Keys data source instead */
+        @Deprecated /* Using consul_keys resource to *read* is deprecated; please use consul_keys data source instead */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
@@ -217,10 +217,10 @@ public final class KeysKeyArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Using consul.Keys resource to *read* is deprecated; please use consul.Keys data source instead
+         * Using consul_keys resource to *read* is deprecated; please use consul_keys data source instead
          * 
          */
-        @Deprecated /* Using consul.Keys resource to *read* is deprecated; please use consul.Keys data source instead */
+        @Deprecated /* Using consul_keys resource to *read* is deprecated; please use consul_keys data source instead */
         public Builder name(String name) {
             return name(Output.of(name));
         }

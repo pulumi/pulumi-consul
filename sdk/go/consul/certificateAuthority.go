@@ -27,7 +27,7 @@ type CertificateAuthority struct {
 	// The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
 	// [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
 	//
-	// Deprecated: The config attribute is deprecated, please use configJson instead.
+	// Deprecated: The config attribute is deprecated, please use config_json instead.
 	Config pulumi.StringMapOutput `pulumi:"config"`
 	// The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
 	// [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
@@ -72,7 +72,7 @@ type certificateAuthorityState struct {
 	// The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
 	// [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
 	//
-	// Deprecated: The config attribute is deprecated, please use configJson instead.
+	// Deprecated: The config attribute is deprecated, please use config_json instead.
 	Config map[string]string `pulumi:"config"`
 	// The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
 	// [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
@@ -85,7 +85,7 @@ type CertificateAuthorityState struct {
 	// The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
 	// [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
 	//
-	// Deprecated: The config attribute is deprecated, please use configJson instead.
+	// Deprecated: The config attribute is deprecated, please use config_json instead.
 	Config pulumi.StringMapInput
 	// The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
 	// [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
@@ -102,7 +102,7 @@ type certificateAuthorityArgs struct {
 	// The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
 	// [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
 	//
-	// Deprecated: The config attribute is deprecated, please use configJson instead.
+	// Deprecated: The config attribute is deprecated, please use config_json instead.
 	Config map[string]string `pulumi:"config"`
 	// The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
 	// [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
@@ -116,7 +116,7 @@ type CertificateAuthorityArgs struct {
 	// The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
 	// [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
 	//
-	// Deprecated: The config attribute is deprecated, please use configJson instead.
+	// Deprecated: The config attribute is deprecated, please use config_json instead.
 	Config pulumi.StringMapInput
 	// The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
 	// [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
@@ -215,7 +215,7 @@ func (o CertificateAuthorityOutput) ToCertificateAuthorityOutputWithContext(ctx 
 // The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
 // [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
 //
-// Deprecated: The config attribute is deprecated, please use configJson instead.
+// Deprecated: The config attribute is deprecated, please use config_json instead.
 func (o CertificateAuthorityOutput) Config() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *CertificateAuthority) pulumi.StringMapOutput { return v.Config }).(pulumi.StringMapOutput)
 }
