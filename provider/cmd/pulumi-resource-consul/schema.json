@@ -1449,7 +1449,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "deprecationMessage": "Using consul.Keys resource to *read* is deprecated; please use consul.Keys data source instead"
+                    "deprecationMessage": "Using consul_keys resource to *read* is deprecated; please use consul_keys data source instead"
                 },
                 "path": {
                     "type": "string",
