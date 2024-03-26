@@ -62,7 +62,7 @@ export interface GetAclAuthMethodResult {
      * too complex to be represented as a map of strings, it will be blank.
      * `configJson` should be used instead.
      *
-     * @deprecated The config attribute is deprecated, please use configJson instead.
+     * @deprecated The config attribute is deprecated, please use config_json instead.
      */
     readonly config: {[key: string]: string};
     /**

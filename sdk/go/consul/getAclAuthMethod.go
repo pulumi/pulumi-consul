@@ -69,7 +69,7 @@ type LookupAclAuthMethodResult struct {
 	// too complex to be represented as a map of strings, it will be blank.
 	// `configJson` should be used instead.
 	//
-	// Deprecated: The config attribute is deprecated, please use configJson instead.
+	// Deprecated: The config attribute is deprecated, please use config_json instead.
 	Config map[string]string `pulumi:"config"`
 	// The configuration options of the ACL Auth Method.
 	ConfigJson string `pulumi:"configJson"`
@@ -142,7 +142,7 @@ func (o LookupAclAuthMethodResultOutput) ToLookupAclAuthMethodResultOutputWithCo
 // too complex to be represented as a map of strings, it will be blank.
 // `configJson` should be used instead.
 //
-// Deprecated: The config attribute is deprecated, please use configJson instead.
+// Deprecated: The config attribute is deprecated, please use config_json instead.
 func (o LookupAclAuthMethodResultOutput) Config() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupAclAuthMethodResult) map[string]string { return v.Config }).(pulumi.StringMapOutput)
 }

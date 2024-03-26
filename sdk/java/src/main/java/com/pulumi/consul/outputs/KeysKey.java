@@ -31,10 +31,10 @@ public final class KeysKey {
     private @Nullable Integer flags;
     /**
      * @deprecated
-     * Using consul.Keys resource to *read* is deprecated; please use consul.Keys data source instead
+     * Using consul_keys resource to *read* is deprecated; please use consul_keys data source instead
      * 
      */
-    @Deprecated /* Using consul.Keys resource to *read* is deprecated; please use consul.Keys data source instead */
+    @Deprecated /* Using consul_keys resource to *read* is deprecated; please use consul_keys data source instead */
     private @Nullable String name;
     /**
      * @return This is the path in Consul that should be written to.
@@ -71,10 +71,10 @@ public final class KeysKey {
     }
     /**
      * @deprecated
-     * Using consul.Keys resource to *read* is deprecated; please use consul.Keys data source instead
+     * Using consul_keys resource to *read* is deprecated; please use consul_keys data source instead
      * 
      */
-    @Deprecated /* Using consul.Keys resource to *read* is deprecated; please use consul.Keys data source instead */
+    @Deprecated /* Using consul_keys resource to *read* is deprecated; please use consul_keys data source instead */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }

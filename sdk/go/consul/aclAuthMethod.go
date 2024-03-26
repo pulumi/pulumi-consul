@@ -116,7 +116,7 @@ type AclAuthMethod struct {
 
 	// The raw configuration for this ACL auth method.
 	//
-	// Deprecated: The config attribute is deprecated, please use `configJson` instead.
+	// Deprecated: The config attribute is deprecated, please use `config_json` instead.
 	Config pulumi.StringMapOutput `pulumi:"config"`
 	// The raw configuration for this ACL auth method.
 	ConfigJson pulumi.StringPtrOutput `pulumi:"configJson"`
@@ -175,7 +175,7 @@ func GetAclAuthMethod(ctx *pulumi.Context,
 type aclAuthMethodState struct {
 	// The raw configuration for this ACL auth method.
 	//
-	// Deprecated: The config attribute is deprecated, please use `configJson` instead.
+	// Deprecated: The config attribute is deprecated, please use `config_json` instead.
 	Config map[string]string `pulumi:"config"`
 	// The raw configuration for this ACL auth method.
 	ConfigJson *string `pulumi:"configJson"`
@@ -202,7 +202,7 @@ type aclAuthMethodState struct {
 type AclAuthMethodState struct {
 	// The raw configuration for this ACL auth method.
 	//
-	// Deprecated: The config attribute is deprecated, please use `configJson` instead.
+	// Deprecated: The config attribute is deprecated, please use `config_json` instead.
 	Config pulumi.StringMapInput
 	// The raw configuration for this ACL auth method.
 	ConfigJson pulumi.StringPtrInput
@@ -233,7 +233,7 @@ func (AclAuthMethodState) ElementType() reflect.Type {
 type aclAuthMethodArgs struct {
 	// The raw configuration for this ACL auth method.
 	//
-	// Deprecated: The config attribute is deprecated, please use `configJson` instead.
+	// Deprecated: The config attribute is deprecated, please use `config_json` instead.
 	Config map[string]string `pulumi:"config"`
 	// The raw configuration for this ACL auth method.
 	ConfigJson *string `pulumi:"configJson"`
@@ -261,7 +261,7 @@ type aclAuthMethodArgs struct {
 type AclAuthMethodArgs struct {
 	// The raw configuration for this ACL auth method.
 	//
-	// Deprecated: The config attribute is deprecated, please use `configJson` instead.
+	// Deprecated: The config attribute is deprecated, please use `config_json` instead.
 	Config pulumi.StringMapInput
 	// The raw configuration for this ACL auth method.
 	ConfigJson pulumi.StringPtrInput
@@ -374,7 +374,7 @@ func (o AclAuthMethodOutput) ToAclAuthMethodOutputWithContext(ctx context.Contex
 
 // The raw configuration for this ACL auth method.
 //
-// Deprecated: The config attribute is deprecated, please use `configJson` instead.
+// Deprecated: The config attribute is deprecated, please use `config_json` instead.
 func (o AclAuthMethodOutput) Config() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AclAuthMethod) pulumi.StringMapOutput { return v.Config }).(pulumi.StringMapOutput)
 }
