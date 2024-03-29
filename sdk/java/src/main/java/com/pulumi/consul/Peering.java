@@ -54,6 +54,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create a peering between the EU and US Consul clusters
  *         var eu = new Provider(&#34;eu&#34;, ProviderArgs.builder()        
  *             .address(&#34;eu-cluster:8500&#34;)
  *             .build());
