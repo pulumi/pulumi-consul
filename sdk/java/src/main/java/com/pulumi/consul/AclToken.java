@@ -47,6 +47,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Basic usage
  *         var agent = new AclPolicy(&#34;agent&#34;, AclPolicyArgs.builder()        
  *             .rules(&#34;&#34;&#34;
  * node_prefix &#34;&#34; {
@@ -61,6 +62,7 @@ import javax.annotation.Nullable;
  *             .local(true)
  *             .build());
  * 
+ *         // Explicitly set the `accessor_id`
  *         var testRandomUuid = new RandomUuid(&#34;testRandomUuid&#34;);
  * 
  *         var testPredefinedId = new AclToken(&#34;testPredefinedId&#34;, AclTokenArgs.builder()        

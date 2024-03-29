@@ -48,6 +48,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Creates a prepared query myquery.query.consul that finds the nearest
+ *         // healthy myapp.service.consul instance that has the active tag and not
+ *         // the standby tag.
  *         var myapp_query = new PreparedQuery(&#34;myapp-query&#34;, PreparedQueryArgs.builder()        
  *             .datacenter(&#34;us-central1&#34;)
  *             .dns(PreparedQueryDnsArgs.builder()
@@ -70,6 +73,9 @@ import javax.annotation.Nullable;
  *             .token(&#34;abcd&#34;)
  *             .build());
  * 
+ *         // Creates a Prepared Query Template that matches *-near-self.query.consul
+ *         // and finds the nearest service that matches the glob character (e.g.
+ *         // foo-near-self.query.consul will find the nearest healthy foo.service.consul).
  *         var service_near_self = new PreparedQuery(&#34;service-near-self&#34;, PreparedQueryArgs.builder()        
  *             .connect(true)
  *             .datacenter(&#34;nyc1&#34;)
