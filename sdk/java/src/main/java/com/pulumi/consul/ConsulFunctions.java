@@ -1266,10 +1266,12 @@ public final class ConsulFunctions {
      *     public static void stack(Context ctx) {
      *         final var read-dc1-agent = ConsulFunctions.getAgentSelf(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
+     *         // Set the description to a whitespace delimited list of the services
      *         var app = new Example_resource(&#34;app&#34;, Example_resourceArgs.builder()        
      *             .description(String.format(&#34;Consul datacenter %s&#34;, read_dc1_agent.datacenter()))
      *             .build());
      * 
+     *         // ...
      *     }
      * }
      * ```
@@ -1314,10 +1316,12 @@ public final class ConsulFunctions {
      *     public static void stack(Context ctx) {
      *         final var read-dc1-agent = ConsulFunctions.getAgentSelf(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
+     *         // Set the description to a whitespace delimited list of the services
      *         var app = new Example_resource(&#34;app&#34;, Example_resourceArgs.builder()        
      *             .description(String.format(&#34;Consul datacenter %s&#34;, read_dc1_agent.datacenter()))
      *             .build());
      * 
+     *         // ...
      *     }
      * }
      * ```
@@ -1362,10 +1366,12 @@ public final class ConsulFunctions {
      *     public static void stack(Context ctx) {
      *         final var read-dc1-agent = ConsulFunctions.getAgentSelf(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
+     *         // Set the description to a whitespace delimited list of the services
      *         var app = new Example_resource(&#34;app&#34;, Example_resourceArgs.builder()        
      *             .description(String.format(&#34;Consul datacenter %s&#34;, read_dc1_agent.datacenter()))
      *             .build());
      * 
+     *         // ...
      *     }
      * }
      * ```
@@ -1410,10 +1416,12 @@ public final class ConsulFunctions {
      *     public static void stack(Context ctx) {
      *         final var read-dc1-agent = ConsulFunctions.getAgentSelf(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
+     *         // Set the description to a whitespace delimited list of the services
      *         var app = new Example_resource(&#34;app&#34;, Example_resourceArgs.builder()        
      *             .description(String.format(&#34;Consul datacenter %s&#34;, read_dc1_agent.datacenter()))
      *             .build());
      * 
+     *         // ...
      *     }
      * }
      * ```
@@ -1458,10 +1466,12 @@ public final class ConsulFunctions {
      *     public static void stack(Context ctx) {
      *         final var read-dc1-agent = ConsulFunctions.getAgentSelf(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
+     *         // Set the description to a whitespace delimited list of the services
      *         var app = new Example_resource(&#34;app&#34;, Example_resourceArgs.builder()        
      *             .description(String.format(&#34;Consul datacenter %s&#34;, read_dc1_agent.datacenter()))
      *             .build());
      * 
+     *         // ...
      *     }
      * }
      * ```
@@ -1506,10 +1516,12 @@ public final class ConsulFunctions {
      *     public static void stack(Context ctx) {
      *         final var read-dc1-agent = ConsulFunctions.getAgentSelf(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
+     *         // Set the description to a whitespace delimited list of the services
      *         var app = new Example_resource(&#34;app&#34;, Example_resourceArgs.builder()        
      *             .description(String.format(&#34;Consul datacenter %s&#34;, read_dc1_agent.datacenter()))
      *             .build());
      * 
+     *         // ...
      *     }
      * }
      * ```
@@ -2121,6 +2133,7 @@ public final class ConsulFunctions {
      *             .token(&#34;abcd&#34;)
      *             .build());
      * 
+     *         // Start our instance with the dynamic ami value
      *         var appInstance = new Instance(&#34;appInstance&#34;, InstanceArgs.builder()        
      *             .ami(appKeyPrefix.applyValue(getKeyPrefixResult -&gt; getKeyPrefixResult.var().ami()))
      *             .build());
@@ -2160,6 +2173,7 @@ public final class ConsulFunctions {
      *             .token(&#34;efgh&#34;)
      *             .build());
      * 
+     *         // Start our instance with the dynamic ami value
      *         var webInstance = new Instance(&#34;webInstance&#34;, InstanceArgs.builder()        
      *             .ami(webKeyPrefix.applyValue(getKeyPrefixResult -&gt; getKeyPrefixResult.subkeys().app/launch_ami()))
      *             .build());
@@ -2211,6 +2225,7 @@ public final class ConsulFunctions {
      *             .token(&#34;abcd&#34;)
      *             .build());
      * 
+     *         // Start our instance with the dynamic ami value
      *         var appInstance = new Instance(&#34;appInstance&#34;, InstanceArgs.builder()        
      *             .ami(appKeyPrefix.applyValue(getKeyPrefixResult -&gt; getKeyPrefixResult.var().ami()))
      *             .build());
@@ -2250,6 +2265,7 @@ public final class ConsulFunctions {
      *             .token(&#34;efgh&#34;)
      *             .build());
      * 
+     *         // Start our instance with the dynamic ami value
      *         var webInstance = new Instance(&#34;webInstance&#34;, InstanceArgs.builder()        
      *             .ami(webKeyPrefix.applyValue(getKeyPrefixResult -&gt; getKeyPrefixResult.subkeys().app/launch_ami()))
      *             .build());
@@ -2301,6 +2317,7 @@ public final class ConsulFunctions {
      *             .token(&#34;abcd&#34;)
      *             .build());
      * 
+     *         // Start our instance with the dynamic ami value
      *         var appInstance = new Instance(&#34;appInstance&#34;, InstanceArgs.builder()        
      *             .ami(appKeyPrefix.applyValue(getKeyPrefixResult -&gt; getKeyPrefixResult.var().ami()))
      *             .build());
@@ -2340,6 +2357,7 @@ public final class ConsulFunctions {
      *             .token(&#34;efgh&#34;)
      *             .build());
      * 
+     *         // Start our instance with the dynamic ami value
      *         var webInstance = new Instance(&#34;webInstance&#34;, InstanceArgs.builder()        
      *             .ami(webKeyPrefix.applyValue(getKeyPrefixResult -&gt; getKeyPrefixResult.subkeys().app/launch_ami()))
      *             .build());
@@ -2391,6 +2409,7 @@ public final class ConsulFunctions {
      *             .token(&#34;abcd&#34;)
      *             .build());
      * 
+     *         // Start our instance with the dynamic ami value
      *         var appInstance = new Instance(&#34;appInstance&#34;, InstanceArgs.builder()        
      *             .ami(appKeyPrefix.applyValue(getKeyPrefixResult -&gt; getKeyPrefixResult.var().ami()))
      *             .build());
@@ -2430,6 +2449,7 @@ public final class ConsulFunctions {
      *             .token(&#34;efgh&#34;)
      *             .build());
      * 
+     *         // Start our instance with the dynamic ami value
      *         var webInstance = new Instance(&#34;webInstance&#34;, InstanceArgs.builder()        
      *             .ami(webKeyPrefix.applyValue(getKeyPrefixResult -&gt; getKeyPrefixResult.subkeys().app/launch_ami()))
      *             .build());
@@ -2481,10 +2501,12 @@ public final class ConsulFunctions {
      *                 .build())
      *             .build());
      * 
+     *         // Start our instance with the dynamic ami value
      *         var appInstance = new Instance(&#34;appInstance&#34;, InstanceArgs.builder()        
      *             .ami(appKeys.applyValue(getKeysResult -&gt; getKeysResult.var().ami()))
      *             .build());
      * 
+     *         // ...
      *     }
      * }
      * ```
@@ -2532,10 +2554,12 @@ public final class ConsulFunctions {
      *                 .build())
      *             .build());
      * 
+     *         // Start our instance with the dynamic ami value
      *         var appInstance = new Instance(&#34;appInstance&#34;, InstanceArgs.builder()        
      *             .ami(appKeys.applyValue(getKeysResult -&gt; getKeysResult.var().ami()))
      *             .build());
      * 
+     *         // ...
      *     }
      * }
      * ```
@@ -2583,10 +2607,12 @@ public final class ConsulFunctions {
      *                 .build())
      *             .build());
      * 
+     *         // Start our instance with the dynamic ami value
      *         var appInstance = new Instance(&#34;appInstance&#34;, InstanceArgs.builder()        
      *             .ami(appKeys.applyValue(getKeysResult -&gt; getKeysResult.var().ami()))
      *             .build());
      * 
+     *         // ...
      *     }
      * }
      * ```
@@ -2634,10 +2660,12 @@ public final class ConsulFunctions {
      *                 .build())
      *             .build());
      * 
+     *         // Start our instance with the dynamic ami value
      *         var appInstance = new Instance(&#34;appInstance&#34;, InstanceArgs.builder()        
      *             .ami(appKeys.applyValue(getKeysResult -&gt; getKeysResult.var().ami()))
      *             .build());
      * 
+     *         // ...
      *     }
      * }
      * ```
@@ -2685,10 +2713,12 @@ public final class ConsulFunctions {
      *                 .build())
      *             .build());
      * 
+     *         // Start our instance with the dynamic ami value
      *         var appInstance = new Instance(&#34;appInstance&#34;, InstanceArgs.builder()        
      *             .ami(appKeys.applyValue(getKeysResult -&gt; getKeysResult.var().ami()))
      *             .build());
      * 
+     *         // ...
      *     }
      * }
      * ```
@@ -2736,10 +2766,12 @@ public final class ConsulFunctions {
      *                 .build())
      *             .build());
      * 
+     *         // Start our instance with the dynamic ami value
      *         var appInstance = new Instance(&#34;appInstance&#34;, InstanceArgs.builder()        
      *             .ami(appKeys.applyValue(getKeysResult -&gt; getKeysResult.var().ami()))
      *             .build());
      * 
+     *         // ...
      *     }
      * }
      * ```
