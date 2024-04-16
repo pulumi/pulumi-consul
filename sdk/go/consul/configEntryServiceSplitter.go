@@ -40,13 +40,15 @@ import (
 //			}
 //			json0 := string(tmpJSON0)
 //			_, err = consul.NewConfigEntry(ctx, "web", &consul.ConfigEntryArgs{
+//				Name:       pulumi.String("web"),
 //				Kind:       pulumi.String("service-defaults"),
 //				ConfigJson: pulumi.String(json0),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = consul.NewConfigEntryServiceResolver(ctx, "serviceResolver", &consul.ConfigEntryServiceResolverArgs{
+//			serviceResolver, err := consul.NewConfigEntryServiceResolver(ctx, "service_resolver", &consul.ConfigEntryServiceResolverArgs{
+//				Name:          pulumi.String("service-resolver"),
 //				DefaultSubset: pulumi.String("v1"),
 //				Subsets: consul.ConfigEntryServiceResolverSubsetArray{
 //					&consul.ConfigEntryServiceResolverSubsetArgs{
@@ -63,6 +65,7 @@ import (
 //				return err
 //			}
 //			_, err = consul.NewConfigEntryServiceSplitter(ctx, "foo", &consul.ConfigEntryServiceSplitterArgs{
+//				Name: serviceResolver.Name,
 //				Meta: pulumi.StringMap{
 //					"key": pulumi.String("value"),
 //				},

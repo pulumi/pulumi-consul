@@ -308,9 +308,11 @@ class AclRole(pulumi.CustomResource):
         import pulumi_consul as consul
 
         read_policy = consul.AclPolicy("read-policy",
+            name="read-policy",
             rules="node \\"\\" { policy = \\"read\\" }",
             datacenters=["dc1"])
         read = consul.AclRole("read",
+            name="foo",
             description="bar",
             policies=[read_policy.id],
             service_identities=[consul.AclRoleServiceIdentityArgs(
@@ -351,9 +353,11 @@ class AclRole(pulumi.CustomResource):
         import pulumi_consul as consul
 
         read_policy = consul.AclPolicy("read-policy",
+            name="read-policy",
             rules="node \\"\\" { policy = \\"read\\" }",
             datacenters=["dc1"])
         read = consul.AclRole("read",
+            name="foo",
             description="bar",
             policies=[read_policy.id],
             service_identities=[consul.AclRoleServiceIdentityArgs(

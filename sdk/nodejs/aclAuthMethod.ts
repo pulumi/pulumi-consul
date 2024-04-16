@@ -19,6 +19,7 @@ import * as utilities from "./utilities";
  * import * as consul from "@pulumi/consul";
  *
  * const minikube = new consul.AclAuthMethod("minikube", {
+ *     name: "minikube",
  *     type: "kubernetes",
  *     description: "dev minikube cluster",
  *     configJson: JSON.stringify({
@@ -40,6 +41,7 @@ import * as utilities from "./utilities";
  * import * as consul from "@pulumi/consul";
  *
  * const oidc = new consul.AclAuthMethod("oidc", {
+ *     name: "auth0",
  *     type: "oidc",
  *     maxTokenTtl: "5m",
  *     configJson: JSON.stringify({

@@ -49,6 +49,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Basic usage
  *         var agent = new AclPolicy(&#34;agent&#34;, AclPolicyArgs.builder()        
+ *             .name(&#34;agent&#34;)
  *             .rules(&#34;&#34;&#34;
  * node_prefix &#34;&#34; {
  *   policy = &#34;read&#34;
@@ -56,7 +57,7 @@ import javax.annotation.Nullable;
  *             &#34;&#34;&#34;)
  *             .build());
  * 
- *         var testAclToken = new AclToken(&#34;testAclToken&#34;, AclTokenArgs.builder()        
+ *         var test = new AclToken(&#34;test&#34;, AclTokenArgs.builder()        
  *             .description(&#34;my test token&#34;)
  *             .policies(agent.name())
  *             .local(true)
@@ -66,7 +67,7 @@ import javax.annotation.Nullable;
  *         var testRandomUuid = new RandomUuid(&#34;testRandomUuid&#34;);
  * 
  *         var testPredefinedId = new AclToken(&#34;testPredefinedId&#34;, AclTokenArgs.builder()        
- *             .accessorId(random_uuid.test_uuid().result())
+ *             .accessorId(testUuid.result())
  *             .description(&#34;my test uuid token&#34;)
  *             .policies(agent.name())
  *             .local(true)

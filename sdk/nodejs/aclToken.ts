@@ -16,19 +16,22 @@ import * as utilities from "./utilities";
  * import * as random from "@pulumi/random";
  *
  * // Basic usage
- * const agent = new consul.AclPolicy("agent", {rules: `node_prefix "" {
+ * const agent = new consul.AclPolicy("agent", {
+ *     name: "agent",
+ *     rules: `node_prefix "" {
  *   policy = "read"
  * }
- * `});
- * const testAclToken = new consul.AclToken("testAclToken", {
+ * `,
+ * });
+ * const test = new consul.AclToken("test", {
  *     description: "my test token",
  *     policies: [agent.name],
  *     local: true,
  * });
  * // Explicitly set the `accessor_id`
- * const testRandomUuid = new random.RandomUuid("testRandomUuid", {});
- * const testPredefinedId = new consul.AclToken("testPredefinedId", {
- *     accessorId: random_uuid.test_uuid.result,
+ * const testRandomUuid = new random.RandomUuid("test", {});
+ * const testPredefinedId = new consul.AclToken("test_predefined_id", {
+ *     accessorId: testUuid.result,
  *     description: "my test uuid token",
  *     policies: [agent.name],
  *     local: true,

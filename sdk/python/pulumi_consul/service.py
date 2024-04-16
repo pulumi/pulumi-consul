@@ -478,8 +478,11 @@ class Service(pulumi.CustomResource):
         import pulumi
         import pulumi_consul as consul
 
-        compute = consul.Node("compute", address="www.google.com")
+        compute = consul.Node("compute",
+            name="compute-google",
+            address="www.google.com")
         google = consul.Service("google",
+            name="google",
             node=compute.name,
             port=80,
             tags=["tag0"])
@@ -494,12 +497,46 @@ class Service(pulumi.CustomResource):
         import pulumi_consul as consul
 
         google = consul.Service("google",
+            name="google",
             node="google",
             port=443)
         ```
         <!--End PulumiCodeChooser -->
 
         Register a health-check:
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_consul as consul
+
+        redis = consul.Service("redis",
+            name="redis",
+            node="redis",
+            port=6379,
+            checks=[consul.ServiceCheckArgs(
+                check_id="service:redis1",
+                name="Redis health check",
+                status="passing",
+                http="https://www.hashicorptest.com",
+                tls_skip_verify=False,
+                method="PUT",
+                interval="5s",
+                timeout="1s",
+                deregister_critical_service_after="30s",
+                headers=[
+                    consul.ServiceCheckHeaderArgs(
+                        name="foo",
+                        values=["test"],
+                    ),
+                    consul.ServiceCheckHeaderArgs(
+                        name="bar",
+                        values=["test"],
+                    ),
+                ],
+            )])
+        ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -540,8 +577,11 @@ class Service(pulumi.CustomResource):
         import pulumi
         import pulumi_consul as consul
 
-        compute = consul.Node("compute", address="www.google.com")
+        compute = consul.Node("compute",
+            name="compute-google",
+            address="www.google.com")
         google = consul.Service("google",
+            name="google",
             node=compute.name,
             port=80,
             tags=["tag0"])
@@ -556,12 +596,46 @@ class Service(pulumi.CustomResource):
         import pulumi_consul as consul
 
         google = consul.Service("google",
+            name="google",
             node="google",
             port=443)
         ```
         <!--End PulumiCodeChooser -->
 
         Register a health-check:
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_consul as consul
+
+        redis = consul.Service("redis",
+            name="redis",
+            node="redis",
+            port=6379,
+            checks=[consul.ServiceCheckArgs(
+                check_id="service:redis1",
+                name="Redis health check",
+                status="passing",
+                http="https://www.hashicorptest.com",
+                tls_skip_verify=False,
+                method="PUT",
+                interval="5s",
+                timeout="1s",
+                deregister_critical_service_after="30s",
+                headers=[
+                    consul.ServiceCheckHeaderArgs(
+                        name="foo",
+                        values=["test"],
+                    ),
+                    consul.ServiceCheckHeaderArgs(
+                        name="bar",
+                        values=["test"],
+                    ),
+                ],
+            )])
+        ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param ServiceArgs args: The arguments to use to populate this resource's properties.

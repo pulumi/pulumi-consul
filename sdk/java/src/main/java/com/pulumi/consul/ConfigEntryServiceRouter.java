@@ -20,60 +20,6 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.consul.ConfigEntryServiceDefaults;
- * import com.pulumi.consul.ConfigEntryServiceDefaultsArgs;
- * import com.pulumi.consul.ConfigEntryServiceRouter;
- * import com.pulumi.consul.ConfigEntryServiceRouterArgs;
- * import com.pulumi.consul.inputs.ConfigEntryServiceRouterRouteArgs;
- * import com.pulumi.consul.inputs.ConfigEntryServiceRouterRouteMatchArgs;
- * import com.pulumi.consul.inputs.ConfigEntryServiceRouterRouteMatchHttpArgs;
- * import com.pulumi.consul.inputs.ConfigEntryServiceRouterRouteDestinationArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var adminServiceDefaultsConfigEntryServiceDefaults = new ConfigEntryServiceDefaults(&#34;adminServiceDefaultsConfigEntryServiceDefaults&#34;, ConfigEntryServiceDefaultsArgs.builder()        
- *             .protocol(&#34;http&#34;)
- *             .build());
- * 
- *         var adminServiceDefaultsIndex_configEntryServiceDefaultsConfigEntryServiceDefaults = new ConfigEntryServiceDefaults(&#34;adminServiceDefaultsIndex/configEntryServiceDefaultsConfigEntryServiceDefaults&#34;, ConfigEntryServiceDefaultsArgs.builder()        
- *             .protocol(&#34;http&#34;)
- *             .build());
- * 
- *         var foo = new ConfigEntryServiceRouter(&#34;foo&#34;, ConfigEntryServiceRouterArgs.builder()        
- *             .routes(ConfigEntryServiceRouterRouteArgs.builder()
- *                 .match(ConfigEntryServiceRouterRouteMatchArgs.builder()
- *                     .http(ConfigEntryServiceRouterRouteMatchHttpArgs.builder()
- *                         .pathPrefix(&#34;/admin&#34;)
- *                         .build())
- *                     .build())
- *                 .destination(ConfigEntryServiceRouterRouteDestinationArgs.builder()
- *                     .service(consul_config_entry.admin_service().name())
- *                     .build())
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * ```
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  */
 @ResourceType(type="consul:index/configEntryServiceRouter:ConfigEntryServiceRouter")
 public class ConfigEntryServiceRouter extends com.pulumi.resources.CustomResource {

@@ -31,6 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := consul.NewNamespace(ctx, "production", &consul.NamespaceArgs{
+//				Name:        pulumi.String("production"),
 //				Description: pulumi.String("Production namespace"),
 //				Meta: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),

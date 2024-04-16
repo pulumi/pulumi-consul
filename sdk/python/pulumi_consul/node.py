@@ -253,7 +253,9 @@ class Node(pulumi.CustomResource):
         import pulumi
         import pulumi_consul as consul
 
-        foobar = consul.Node("foobar", address="192.168.10.10")
+        foobar = consul.Node("foobar",
+            address="192.168.10.10",
+            name="foobar")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -290,7 +292,9 @@ class Node(pulumi.CustomResource):
         import pulumi
         import pulumi_consul as consul
 
-        foobar = consul.Node("foobar", address="192.168.10.10")
+        foobar = consul.Node("foobar",
+            address="192.168.10.10",
+            name="foobar")
         ```
         <!--End PulumiCodeChooser -->
 

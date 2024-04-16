@@ -28,13 +28,13 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := consul.NewKeys(ctx, "app", &consul.KeysArgs{
 //				Datacenter: pulumi.String("nyc1"),
+//				Token:      pulumi.String("abcd"),
 //				Keys: consul.KeysKeyArray{
 //					&consul.KeysKeyArgs{
 //						Path:  pulumi.String("service/app/elb_address"),
-//						Value: pulumi.Any(aws_elb.App.Dns_name),
+//						Value: pulumi.Any(appAwsElb.DnsName),
 //					},
 //				},
-//				Token: pulumi.String("abcd"),
 //			})
 //			if err != nil {
 //				return err

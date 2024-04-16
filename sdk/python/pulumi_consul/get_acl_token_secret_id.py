@@ -114,12 +114,13 @@ def get_acl_token_secret_id(accessor_id: Optional[str] = None,
     import pulumi
     import pulumi_consul as consul
 
-    test_acl_policy = consul.AclPolicy("testAclPolicy",
+    test = consul.AclPolicy("test",
+        name="test",
         rules="node \\"\\" { policy = \\"read\\" }",
         datacenters=["dc1"])
-    test_acl_token = consul.AclToken("testAclToken",
+    test_acl_token = consul.AclToken("test",
         description="test",
-        policies=[test_acl_policy.name],
+        policies=[test.name],
         local=True)
     read = consul.get_acl_token_secret_id_output(accessor_id=test_acl_token.id,
         pgp_key="keybase:my_username")
@@ -164,12 +165,13 @@ def get_acl_token_secret_id_output(accessor_id: Optional[pulumi.Input[str]] = No
     import pulumi
     import pulumi_consul as consul
 
-    test_acl_policy = consul.AclPolicy("testAclPolicy",
+    test = consul.AclPolicy("test",
+        name="test",
         rules="node \\"\\" { policy = \\"read\\" }",
         datacenters=["dc1"])
-    test_acl_token = consul.AclToken("testAclToken",
+    test_acl_token = consul.AclToken("test",
         description="test",
-        policies=[test_acl_policy.name],
+        policies=[test.name],
         local=True)
     read = consul.get_acl_token_secret_id_output(accessor_id=test_acl_token.id,
         pgp_key="keybase:my_username")

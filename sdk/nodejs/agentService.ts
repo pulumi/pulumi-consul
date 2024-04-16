@@ -22,6 +22,7 @@ import * as utilities from "./utilities";
  *
  * const app = new consul.AgentService("app", {
  *     address: "www.google.com",
+ *     name: "google",
  *     port: 80,
  *     tags: [
  *         "tag0",

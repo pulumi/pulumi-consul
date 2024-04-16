@@ -243,18 +243,13 @@ class Peering(pulumi.CustomResource):
         import pulumi
         import pulumi_consul as consul
 
-        # Create a peering between the EU and US Consul clusters
-        eu = consul.Provider("eu", address="eu-cluster:8500")
-        us = consul.Provider("us", address="us-cluster:8500")
-        eu_us_peering_token = consul.PeeringToken("eu-usPeeringToken", peer_name="eu-cluster",
-        opts=pulumi.ResourceOptions(provider=consul["us"]))
-        eu_us_peering = consul.Peering("eu-usPeering",
+        eu_us = consul.PeeringToken("eu-us", peer_name="eu-cluster")
+        eu_us_peering = consul.Peering("eu-us",
             peer_name="eu-cluster",
-            peering_token=consul_peering_token["token"]["peering_token"],
+            peering_token=token["peeringToken"],
             meta={
                 "hello": "world",
-            },
-            opts=pulumi.ResourceOptions(provider=consul["eu"]))
+            })
         ```
         <!--End PulumiCodeChooser -->
 
@@ -286,18 +281,13 @@ class Peering(pulumi.CustomResource):
         import pulumi
         import pulumi_consul as consul
 
-        # Create a peering between the EU and US Consul clusters
-        eu = consul.Provider("eu", address="eu-cluster:8500")
-        us = consul.Provider("us", address="us-cluster:8500")
-        eu_us_peering_token = consul.PeeringToken("eu-usPeeringToken", peer_name="eu-cluster",
-        opts=pulumi.ResourceOptions(provider=consul["us"]))
-        eu_us_peering = consul.Peering("eu-usPeering",
+        eu_us = consul.PeeringToken("eu-us", peer_name="eu-cluster")
+        eu_us_peering = consul.Peering("eu-us",
             peer_name="eu-cluster",
-            peering_token=consul_peering_token["token"]["peering_token"],
+            peering_token=token["peeringToken"],
             meta={
                 "hello": "world",
-            },
-            opts=pulumi.ResourceOptions(provider=consul["eu"]))
+            })
         ```
         <!--End PulumiCodeChooser -->
 

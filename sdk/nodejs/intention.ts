@@ -29,9 +29,9 @@ import * as utilities from "./utilities";
  * import * as consul from "@pulumi/consul";
  *
  * const database = new consul.Intention("database", {
- *     action: "allow",
- *     destinationName: "db",
  *     sourceName: "api",
+ *     destinationName: "db",
+ *     action: "allow",
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -44,9 +44,9 @@ import * as utilities from "./utilities";
  * import * as consul from "@pulumi/consul";
  *
  * const database = new consul.Intention("database", {
- *     action: "allow",
- *     destinationName: consul_service.pg.name,
  *     sourceName: "api",
+ *     destinationName: pgConsulService.name,
+ *     action: "allow",
  * });
  * const pg = consul.getService({
  *     name: "postgresql",

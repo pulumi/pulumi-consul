@@ -16,11 +16,11 @@ import * as utilities from "./utilities";
  *
  * const app = new consul.Keys("app", {
  *     datacenter: "nyc1",
+ *     token: "abcd",
  *     keys: [{
  *         path: "service/app/elb_address",
- *         value: aws_elb.app.dns_name,
+ *         value: appAwsElb.dnsName,
  *     }],
- *     token: "abcd",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

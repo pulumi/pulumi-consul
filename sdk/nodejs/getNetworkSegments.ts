@@ -17,8 +17,12 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
  *
- * const segmentsNetworkSegments = consul.getNetworkSegments({});
- * export const segments = segmentsNetworkSegments.then(segmentsNetworkSegments => segmentsNetworkSegments.segments);
+ * export = async () => {
+ *     const segments = await consul.getNetworkSegments({});
+ *     return {
+ *         segments: segments.segments,
+ *     };
+ * }
  * ```
  * <!--End PulumiCodeChooser -->
  */
@@ -86,8 +90,12 @@ Please use the token argument in the provider configuration
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
  *
- * const segmentsNetworkSegments = consul.getNetworkSegments({});
- * export const segments = segmentsNetworkSegments.then(segmentsNetworkSegments => segmentsNetworkSegments.segments);
+ * export = async () => {
+ *     const segments = await consul.getNetworkSegments({});
+ *     return {
+ *         segments: segments.segments,
+ *     };
+ * }
  * ```
  * <!--End PulumiCodeChooser -->
  */

@@ -57,9 +57,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var database = new Intention(&#34;database&#34;, IntentionArgs.builder()        
- *             .action(&#34;allow&#34;)
- *             .destinationName(&#34;db&#34;)
  *             .sourceName(&#34;api&#34;)
+ *             .destinationName(&#34;db&#34;)
+ *             .action(&#34;allow&#34;)
  *             .build());
  * 
  *     }
@@ -94,9 +94,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var database = new Intention(&#34;database&#34;, IntentionArgs.builder()        
- *             .action(&#34;allow&#34;)
- *             .destinationName(consul_service.pg().name())
  *             .sourceName(&#34;api&#34;)
+ *             .destinationName(pgConsulService.name())
+ *             .action(&#34;allow&#34;)
  *             .build());
  * 
  *         final var pg = ConsulFunctions.getService(GetServiceArgs.builder()

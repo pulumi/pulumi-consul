@@ -15,10 +15,12 @@ import * as utilities from "./utilities";
  * import * as consul from "@pulumi/consul";
  *
  * const read_policy = new consul.AclPolicy("read-policy", {
+ *     name: "read-policy",
  *     rules: "node \"\" { policy = \"read\" }",
  *     datacenters: ["dc1"],
  * });
  * const read = new consul.AclRole("read", {
+ *     name: "foo",
  *     description: "bar",
  *     policies: [read_policy.id],
  *     serviceIdentities: [{

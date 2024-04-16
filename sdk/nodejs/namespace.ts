@@ -17,6 +17,7 @@ import * as utilities from "./utilities";
  * import * as consul from "@pulumi/consul";
  *
  * const production = new consul.Namespace("production", {
+ *     name: "production",
  *     description: "Production namespace",
  *     meta: {
  *         foo: "bar",

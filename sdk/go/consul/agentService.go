@@ -36,6 +36,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := consul.NewAgentService(ctx, "app", &consul.AgentServiceArgs{
 //				Address: pulumi.String("www.google.com"),
+//				Name:    pulumi.String("google"),
 //				Port:    pulumi.Int(80),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("tag0"),

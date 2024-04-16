@@ -17,6 +17,7 @@ import * as utilities from "./utilities";
  * import * as consul from "@pulumi/consul";
  *
  * const minikube = new consul.AclAuthMethod("minikube", {
+ *     name: "minikube",
  *     type: "kubernetes",
  *     description: "dev minikube cluster",
  *     config: {

@@ -106,11 +106,12 @@ class AclRolePolicyAttachment(pulumi.CustomResource):
         import pulumi_consul as consul
 
         my_role = consul.get_acl_role(name="my_role")
-        read_policy = consul.AclPolicy("readPolicy",
+        read_policy = consul.AclPolicy("read_policy",
+            name="read-policy",
             rules="node \\"\\" { policy = \\"read\\" }",
             datacenters=["dc1"])
-        my_role_read_policy = consul.AclRolePolicyAttachment("myRoleReadPolicy",
-            role_id=data["consul_acl_role"]["test"]["id"],
+        my_role_read_policy = consul.AclRolePolicyAttachment("my_role_read_policy",
+            role_id=test["id"],
             policy=read_policy.name)
         ```
         <!--End PulumiCodeChooser -->
@@ -141,11 +142,12 @@ class AclRolePolicyAttachment(pulumi.CustomResource):
         import pulumi_consul as consul
 
         my_role = consul.get_acl_role(name="my_role")
-        read_policy = consul.AclPolicy("readPolicy",
+        read_policy = consul.AclPolicy("read_policy",
+            name="read-policy",
             rules="node \\"\\" { policy = \\"read\\" }",
             datacenters=["dc1"])
-        my_role_read_policy = consul.AclRolePolicyAttachment("myRoleReadPolicy",
-            role_id=data["consul_acl_role"]["test"]["id"],
+        my_role_read_policy = consul.AclRolePolicyAttachment("my_role_read_policy",
+            role_id=test["id"],
             policy=read_policy.name)
         ```
         <!--End PulumiCodeChooser -->

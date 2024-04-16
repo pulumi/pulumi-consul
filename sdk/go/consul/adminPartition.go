@@ -30,7 +30,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := consul.NewAdminPartition(ctx, "naWest", &consul.AdminPartitionArgs{
+//			_, err := consul.NewAdminPartition(ctx, "na_west", &consul.AdminPartitionArgs{
+//				Name:        pulumi.String("na-west"),
 //				Description: pulumi.String("Partition for North America West"),
 //			})
 //			if err != nil {

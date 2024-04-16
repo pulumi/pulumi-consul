@@ -16,42 +16,6 @@ namespace Pulumi.Consul
     /// 
     /// Registers a node or service with the [Consul Catalog](https://www.consul.io/docs/agent/http/catalog.html#catalog_register).
     /// Currently, defining health checks is not supported.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Consul = Pulumi.Consul;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var app = new Consul.CatalogEntry("app", new()
-    ///     {
-    ///         Address = "192.168.10.10",
-    ///         Node = "foobar",
-    ///         Services = new[]
-    ///         {
-    ///             new Consul.Inputs.CatalogEntryServiceArgs
-    ///             {
-    ///                 Address = "127.0.0.1",
-    ///                 Id = "redis1",
-    ///                 Name = "redis",
-    ///                 Port = 8000,
-    ///                 Tags = new[]
-    ///                 {
-    ///                     "master",
-    ///                     "v1",
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [ConsulResourceType("consul:index/catalogEntry:CatalogEntry")]
     public partial class CatalogEntry : global::Pulumi.CustomResource

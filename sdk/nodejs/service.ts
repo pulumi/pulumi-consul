@@ -25,8 +25,12 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
  *
- * const compute = new consul.Node("compute", {address: "www.google.com"});
+ * const compute = new consul.Node("compute", {
+ *     name: "compute-google",
+ *     address: "www.google.com",
+ * });
  * const google = new consul.Service("google", {
+ *     name: "google",
  *     node: compute.name,
  *     port: 80,
  *     tags: ["tag0"],
@@ -42,6 +46,7 @@ import * as utilities from "./utilities";
  * import * as consul from "@pulumi/consul";
  *
  * const google = new consul.Service("google", {
+ *     name: "google",
  *     node: "google",
  *     port: 443,
  * });
@@ -49,6 +54,40 @@ import * as utilities from "./utilities";
  * <!--End PulumiCodeChooser -->
  *
  * Register a health-check:
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ *
+ * const redis = new consul.Service("redis", {
+ *     name: "redis",
+ *     node: "redis",
+ *     port: 6379,
+ *     checks: [{
+ *         checkId: "service:redis1",
+ *         name: "Redis health check",
+ *         status: "passing",
+ *         http: "https://www.hashicorptest.com",
+ *         tlsSkipVerify: false,
+ *         method: "PUT",
+ *         interval: "5s",
+ *         timeout: "1s",
+ *         deregisterCriticalServiceAfter: "30s",
+ *         headers: [
+ *             {
+ *                 name: "foo",
+ *                 values: ["test"],
+ *             },
+ *             {
+ *                 name: "bar",
+ *                 values: ["test"],
+ *             },
+ *         ],
+ *     }],
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
  */
 export class Service extends pulumi.CustomResource {
     /**

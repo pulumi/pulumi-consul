@@ -408,18 +408,20 @@ class AclToken(pulumi.CustomResource):
         import pulumi_random as random
 
         # Basic usage
-        agent = consul.AclPolicy("agent", rules=\"\"\"node_prefix "" {
+        agent = consul.AclPolicy("agent",
+            name="agent",
+            rules=\"\"\"node_prefix "" {
           policy = "read"
         }
         \"\"\")
-        test_acl_token = consul.AclToken("testAclToken",
+        test = consul.AclToken("test",
             description="my test token",
             policies=[agent.name],
             local=True)
         # Explicitly set the `accessor_id`
-        test_random_uuid = random.RandomUuid("testRandomUuid")
-        test_predefined_id = consul.AclToken("testPredefinedId",
-            accessor_id=random_uuid["test_uuid"]["result"],
+        test_random_uuid = random.RandomUuid("test")
+        test_predefined_id = consul.AclToken("test_predefined_id",
+            accessor_id=test_uuid["result"],
             description="my test uuid token",
             policies=[agent.name],
             local=True)
@@ -466,18 +468,20 @@ class AclToken(pulumi.CustomResource):
         import pulumi_random as random
 
         # Basic usage
-        agent = consul.AclPolicy("agent", rules=\"\"\"node_prefix "" {
+        agent = consul.AclPolicy("agent",
+            name="agent",
+            rules=\"\"\"node_prefix "" {
           policy = "read"
         }
         \"\"\")
-        test_acl_token = consul.AclToken("testAclToken",
+        test = consul.AclToken("test",
             description="my test token",
             policies=[agent.name],
             local=True)
         # Explicitly set the `accessor_id`
-        test_random_uuid = random.RandomUuid("testRandomUuid")
-        test_predefined_id = consul.AclToken("testPredefinedId",
-            accessor_id=random_uuid["test_uuid"]["result"],
+        test_random_uuid = random.RandomUuid("test")
+        test_predefined_id = consul.AclToken("test_predefined_id",
+            accessor_id=test_uuid["result"],
             description="my test uuid token",
             policies=[agent.name],
             local=True)

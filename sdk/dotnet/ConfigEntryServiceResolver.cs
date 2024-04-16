@@ -23,47 +23,48 @@ namespace Pulumi.Consul
     /// {
     ///     var web = new Consul.ConfigEntryServiceResolver("web", new()
     ///     {
-    ///         ConnectTimeout = "15s",
+    ///         Name = "web",
     ///         DefaultSubset = "v1",
-    ///         Failovers = new[]
+    ///         ConnectTimeout = "15s",
+    ///         Subsets = new[]
     ///         {
-    ///             new Consul.Inputs.ConfigEntryServiceResolverFailoverArgs
+    ///             new Consul.Inputs.ConfigEntryServiceResolverSubsetArgs
     ///             {
-    ///                 Datacenters = new[]
-    ///                 {
-    ///                     "dc2",
-    ///                 },
-    ///                 SubsetName = "v2",
+    ///                 Name = "v1",
+    ///                 Filter = "Service.Meta.version == v1",
     ///             },
-    ///             new Consul.Inputs.ConfigEntryServiceResolverFailoverArgs
+    ///             new Consul.Inputs.ConfigEntryServiceResolverSubsetArgs
     ///             {
-    ///                 Datacenters = new[]
-    ///                 {
-    ///                     "dc3",
-    ///                     "dc4",
-    ///                 },
-    ///                 SubsetName = "*",
+    ///                 Name = "v2",
+    ///                 Filter = "Service.Meta.version == v2",
     ///             },
     ///         },
     ///         Redirects = new[]
     ///         {
     ///             new Consul.Inputs.ConfigEntryServiceResolverRedirectArgs
     ///             {
-    ///                 Datacenter = "dc2",
     ///                 Service = "web",
+    ///                 Datacenter = "dc2",
     ///             },
     ///         },
-    ///         Subsets = new[]
+    ///         Failovers = new[]
     ///         {
-    ///             new Consul.Inputs.ConfigEntryServiceResolverSubsetArgs
+    ///             new Consul.Inputs.ConfigEntryServiceResolverFailoverArgs
     ///             {
-    ///                 Filter = "Service.Meta.version == v1",
-    ///                 Name = "v1",
+    ///                 SubsetName = "v2",
+    ///                 Datacenters = new[]
+    ///                 {
+    ///                     "dc2",
+    ///                 },
     ///             },
-    ///             new Consul.Inputs.ConfigEntryServiceResolverSubsetArgs
+    ///             new Consul.Inputs.ConfigEntryServiceResolverFailoverArgs
     ///             {
-    ///                 Filter = "Service.Meta.version == v2",
-    ///                 Name = "v2",
+    ///                 SubsetName = "*",
+    ///                 Datacenters = new[]
+    ///                 {
+    ///                     "dc3",
+    ///                     "dc4",
+    ///                 },
     ///             },
     ///         },
     ///     });

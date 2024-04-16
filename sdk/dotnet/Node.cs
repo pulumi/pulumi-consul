@@ -27,6 +27,7 @@ namespace Pulumi.Consul
     ///     var foobar = new Consul.Node("foobar", new()
     ///     {
     ///         Address = "192.168.10.10",
+    ///         Name = "foobar",
     ///     });
     /// 
     /// });

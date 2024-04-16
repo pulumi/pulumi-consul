@@ -241,11 +241,11 @@ class AclPolicy(pulumi.CustomResource):
         import pulumi_consul as consul
 
         test = consul.AclPolicy("test",
+            name="my_policy",
             datacenters=["dc1"],
             rules=\"\"\"node_prefix "" {
           policy = "read"
         }
-
         \"\"\")
         ```
         <!--End PulumiCodeChooser -->
@@ -284,11 +284,11 @@ class AclPolicy(pulumi.CustomResource):
         import pulumi_consul as consul
 
         test = consul.AclPolicy("test",
+            name="my_policy",
             datacenters=["dc1"],
             rules=\"\"\"node_prefix "" {
           policy = "read"
         }
-
         \"\"\")
         ```
         <!--End PulumiCodeChooser -->

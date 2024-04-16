@@ -29,12 +29,13 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Basic usage
 //			agent, err := consul.NewAclPolicy(ctx, "agent", &consul.AclPolicyArgs{
+//				Name:  pulumi.String("agent"),
 //				Rules: pulumi.String("node_prefix \"\" {\n  policy = \"read\"\n}\n"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = consul.NewAclToken(ctx, "testAclToken", &consul.AclTokenArgs{
+//			_, err = consul.NewAclToken(ctx, "test", &consul.AclTokenArgs{
 //				Description: pulumi.String("my test token"),
 //				Policies: pulumi.StringArray{
 //					agent.Name,
@@ -44,12 +45,13 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = random.NewRandomUuid(ctx, "testRandomUuid", nil)
+//			// Explicitly set the `accessor_id`
+//			_, err = random.NewRandomUuid(ctx, "test", nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = consul.NewAclToken(ctx, "testPredefinedId", &consul.AclTokenArgs{
-//				AccessorId:  pulumi.Any(random_uuid.Test_uuid.Result),
+//			_, err = consul.NewAclToken(ctx, "test_predefined_id", &consul.AclTokenArgs{
+//				AccessorId:  pulumi.Any(testUuid.Result),
 //				Description: pulumi.String("my test uuid token"),
 //				Policies: pulumi.StringArray{
 //					agent.Name,

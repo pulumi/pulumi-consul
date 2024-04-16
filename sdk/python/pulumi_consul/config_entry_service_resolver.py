@@ -407,33 +407,34 @@ class ConfigEntryServiceResolver(pulumi.CustomResource):
         import pulumi_consul as consul
 
         web = consul.ConfigEntryServiceResolver("web",
-            connect_timeout="15s",
+            name="web",
             default_subset="v1",
+            connect_timeout="15s",
+            subsets=[
+                consul.ConfigEntryServiceResolverSubsetArgs(
+                    name="v1",
+                    filter="Service.Meta.version == v1",
+                ),
+                consul.ConfigEntryServiceResolverSubsetArgs(
+                    name="v2",
+                    filter="Service.Meta.version == v2",
+                ),
+            ],
+            redirects=[consul.ConfigEntryServiceResolverRedirectArgs(
+                service="web",
+                datacenter="dc2",
+            )],
             failovers=[
                 consul.ConfigEntryServiceResolverFailoverArgs(
-                    datacenters=["dc2"],
                     subset_name="v2",
+                    datacenters=["dc2"],
                 ),
                 consul.ConfigEntryServiceResolverFailoverArgs(
+                    subset_name="*",
                     datacenters=[
                         "dc3",
                         "dc4",
                     ],
-                    subset_name="*",
-                ),
-            ],
-            redirects=[consul.ConfigEntryServiceResolverRedirectArgs(
-                datacenter="dc2",
-                service="web",
-            )],
-            subsets=[
-                consul.ConfigEntryServiceResolverSubsetArgs(
-                    filter="Service.Meta.version == v1",
-                    name="v1",
-                ),
-                consul.ConfigEntryServiceResolverSubsetArgs(
-                    filter="Service.Meta.version == v2",
-                    name="v2",
                 ),
             ])
         ```
@@ -468,33 +469,34 @@ class ConfigEntryServiceResolver(pulumi.CustomResource):
         import pulumi_consul as consul
 
         web = consul.ConfigEntryServiceResolver("web",
-            connect_timeout="15s",
+            name="web",
             default_subset="v1",
+            connect_timeout="15s",
+            subsets=[
+                consul.ConfigEntryServiceResolverSubsetArgs(
+                    name="v1",
+                    filter="Service.Meta.version == v1",
+                ),
+                consul.ConfigEntryServiceResolverSubsetArgs(
+                    name="v2",
+                    filter="Service.Meta.version == v2",
+                ),
+            ],
+            redirects=[consul.ConfigEntryServiceResolverRedirectArgs(
+                service="web",
+                datacenter="dc2",
+            )],
             failovers=[
                 consul.ConfigEntryServiceResolverFailoverArgs(
-                    datacenters=["dc2"],
                     subset_name="v2",
+                    datacenters=["dc2"],
                 ),
                 consul.ConfigEntryServiceResolverFailoverArgs(
+                    subset_name="*",
                     datacenters=[
                         "dc3",
                         "dc4",
                     ],
-                    subset_name="*",
-                ),
-            ],
-            redirects=[consul.ConfigEntryServiceResolverRedirectArgs(
-                datacenter="dc2",
-                service="web",
-            )],
-            subsets=[
-                consul.ConfigEntryServiceResolverSubsetArgs(
-                    filter="Service.Meta.version == v1",
-                    name="v1",
-                ),
-                consul.ConfigEntryServiceResolverSubsetArgs(
-                    filter="Service.Meta.version == v2",
-                    name="v2",
                 ),
             ])
         ```

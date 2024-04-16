@@ -31,27 +31,28 @@ import (
 //			// healthy myapp.service.consul instance that has the active tag and not
 //			// the standby tag.
 //			_, err := consul.NewPreparedQuery(ctx, "myapp-query", &consul.PreparedQueryArgs{
-//				Datacenter: pulumi.String("us-central1"),
-//				Dns: &consul.PreparedQueryDnsArgs{
-//					Ttl: pulumi.String("30s"),
+//				Name:        pulumi.String("myquery"),
+//				Datacenter:  pulumi.String("us-central1"),
+//				Token:       pulumi.String("abcd"),
+//				StoredToken: pulumi.String("wxyz"),
+//				OnlyPassing: pulumi.Bool(true),
+//				Near:        pulumi.String("_agent"),
+//				Service:     pulumi.String("myapp"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("active"),
+//					pulumi.String("!standby"),
 //				},
 //				Failover: &consul.PreparedQueryFailoverArgs{
+//					NearestN: pulumi.Int(3),
 //					Datacenters: pulumi.StringArray{
 //						pulumi.String("us-west1"),
 //						pulumi.String("us-east-2"),
 //						pulumi.String("asia-east1"),
 //					},
-//					NearestN: pulumi.Int(3),
 //				},
-//				Near:        pulumi.String("_agent"),
-//				OnlyPassing: pulumi.Bool(true),
-//				Service:     pulumi.String("myapp"),
-//				StoredToken: pulumi.String("wxyz"),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("active"),
-//					pulumi.String("!standby"),
+//				Dns: &consul.PreparedQueryDnsArgs{
+//					Ttl: pulumi.String("30s"),
 //				},
-//				Token: pulumi.String("abcd"),
 //			})
 //			if err != nil {
 //				return err
@@ -60,28 +61,29 @@ import (
 //			// and finds the nearest service that matches the glob character (e.g.
 //			// foo-near-self.query.consul will find the nearest healthy foo.service.consul).
 //			_, err = consul.NewPreparedQuery(ctx, "service-near-self", &consul.PreparedQueryArgs{
-//				Connect:    pulumi.Bool(true),
-//				Datacenter: pulumi.String("nyc1"),
-//				Dns: &consul.PreparedQueryDnsArgs{
-//					Ttl: pulumi.String("5m"),
+//				Datacenter:  pulumi.String("nyc1"),
+//				Token:       pulumi.String("abcd"),
+//				StoredToken: pulumi.String("wxyz"),
+//				Name:        pulumi.String(""),
+//				OnlyPassing: pulumi.Bool(true),
+//				Connect:     pulumi.Bool(true),
+//				Near:        pulumi.String("_agent"),
+//				Template: &consul.PreparedQueryTemplateArgs{
+//					Type:   pulumi.String("name_prefix_match"),
+//					Regexp: pulumi.String("^(.*)-near-self$"),
 //				},
+//				Service: pulumi.String("${match(1)}"),
 //				Failover: &consul.PreparedQueryFailoverArgs{
+//					NearestN: pulumi.Int(3),
 //					Datacenters: pulumi.StringArray{
 //						pulumi.String("dc2"),
 //						pulumi.String("dc3"),
 //						pulumi.String("dc4"),
 //					},
-//					NearestN: pulumi.Int(3),
 //				},
-//				Near:        pulumi.String("_agent"),
-//				OnlyPassing: pulumi.Bool(true),
-//				Service:     pulumi.String("${match(1)}"),
-//				StoredToken: pulumi.String("wxyz"),
-//				Template: &consul.PreparedQueryTemplateArgs{
-//					Regexp: pulumi.String("^(.*)-near-self$"),
-//					Type:   pulumi.String("name_prefix_match"),
+//				Dns: &consul.PreparedQueryDnsArgs{
+//					Ttl: pulumi.String("5m"),
 //				},
-//				Token: pulumi.String("abcd"),
 //			})
 //			if err != nil {
 //				return err

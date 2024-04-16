@@ -23,8 +23,9 @@ namespace Pulumi.Consul
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var testAclPolicy = new Consul.AclPolicy("testAclPolicy", new()
+        ///     var test = new Consul.AclPolicy("test", new()
         ///     {
+        ///         Name = "test",
         ///         Rules = "node \"\" { policy = \"read\" }",
         ///         Datacenters = new[]
         ///         {
@@ -32,12 +33,12 @@ namespace Pulumi.Consul
         ///         },
         ///     });
         /// 
-        ///     var testAclToken = new Consul.AclToken("testAclToken", new()
+        ///     var testAclToken = new Consul.AclToken("test", new()
         ///     {
         ///         Description = "test",
         ///         Policies = new[]
         ///         {
-        ///             testAclPolicy.Name,
+        ///             test.Name,
         ///         },
         ///         Local = true,
         ///     });
@@ -71,8 +72,9 @@ namespace Pulumi.Consul
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var testAclPolicy = new Consul.AclPolicy("testAclPolicy", new()
+        ///     var test = new Consul.AclPolicy("test", new()
         ///     {
+        ///         Name = "test",
         ///         Rules = "node \"\" { policy = \"read\" }",
         ///         Datacenters = new[]
         ///         {
@@ -80,12 +82,12 @@ namespace Pulumi.Consul
         ///         },
         ///     });
         /// 
-        ///     var testAclToken = new Consul.AclToken("testAclToken", new()
+        ///     var testAclToken = new Consul.AclToken("test", new()
         ///     {
         ///         Description = "test",
         ///         Policies = new[]
         ///         {
-        ///             testAclPolicy.Name,
+        ///             test.Name,
         ///         },
         ///         Local = true,
         ///     });

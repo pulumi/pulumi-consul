@@ -242,7 +242,8 @@ class ConfigEntryServiceIntentions(pulumi.CustomResource):
         import json
         import pulumi_consul as consul
 
-        jwt_provider = consul.ConfigEntry("jwtProvider",
+        jwt_provider = consul.ConfigEntry("jwt_provider",
+            name="okta",
             kind="jwt-provider",
             config_json=json.dumps({
                 "ClockSkewSeconds": 30,
@@ -255,6 +256,7 @@ class ConfigEntryServiceIntentions(pulumi.CustomResource):
                 },
             }))
         web = consul.ConfigEntryServiceIntentions("web",
+            name="web",
             jwts=[consul.ConfigEntryServiceIntentionsJwtArgs(
                 providers=[consul.ConfigEntryServiceIntentionsJwtProviderArgs(
                     name=jwt_provider.name,
@@ -306,7 +308,8 @@ class ConfigEntryServiceIntentions(pulumi.CustomResource):
         import json
         import pulumi_consul as consul
 
-        jwt_provider = consul.ConfigEntry("jwtProvider",
+        jwt_provider = consul.ConfigEntry("jwt_provider",
+            name="okta",
             kind="jwt-provider",
             config_json=json.dumps({
                 "ClockSkewSeconds": 30,
@@ -319,6 +322,7 @@ class ConfigEntryServiceIntentions(pulumi.CustomResource):
                 },
             }))
         web = consul.ConfigEntryServiceIntentions("web",
+            name="web",
             jwts=[consul.ConfigEntryServiceIntentionsJwtArgs(
                 providers=[consul.ConfigEntryServiceIntentionsJwtProviderArgs(
                     name=jwt_provider.name,

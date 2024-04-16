@@ -20,20 +20,13 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
  *
- * // Create a peering between the EU and US Consul clusters
- * const eu = new consul.Provider("eu", {address: "eu-cluster:8500"});
- * const us = new consul.Provider("us", {address: "us-cluster:8500"});
- * const eu_usPeeringToken = new consul.PeeringToken("eu-usPeeringToken", {peerName: "eu-cluster"}, {
- *     provider: consul.us,
- * });
- * const eu_usPeering = new consul.Peering("eu-usPeering", {
+ * const eu_us = new consul.PeeringToken("eu-us", {peerName: "eu-cluster"});
+ * const eu_usPeering = new consul.Peering("eu-us", {
  *     peerName: "eu-cluster",
- *     peeringToken: consul_peering_token.token.peering_token,
+ *     peeringToken: token.peeringToken,
  *     meta: {
  *         hello: "world",
  *     },
- * }, {
- *     provider: consul.eu,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

@@ -51,6 +51,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var app = new AgentService(&#34;app&#34;, AgentServiceArgs.builder()        
  *             .address(&#34;www.google.com&#34;)
+ *             .name(&#34;google&#34;)
  *             .port(80)
  *             .tags(            
  *                 &#34;tag0&#34;,

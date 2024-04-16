@@ -206,8 +206,9 @@ class ConfigEntry(pulumi.CustomResource):
         import json
         import pulumi_consul as consul
 
-        proxy_defaults = consul.ConfigEntry("proxyDefaults",
+        proxy_defaults = consul.ConfigEntry("proxy_defaults",
             kind="proxy-defaults",
+            name="global",
             config_json=json.dumps({
                 "Config": {
                     "local_connect_timeout_ms": 1000,
@@ -215,17 +216,20 @@ class ConfigEntry(pulumi.CustomResource):
                 },
             }))
         web = consul.ConfigEntry("web",
+            name="web",
             kind="service-defaults",
             config_json=json.dumps({
                 "Protocol": "http",
             }))
         admin = consul.ConfigEntry("admin",
+            name="admin",
             kind="service-defaults",
             config_json=json.dumps({
                 "Protocol": "http",
             }))
-        service_resolver = consul.ConfigEntry("serviceResolver",
+        service_resolver = consul.ConfigEntry("service_resolver",
             kind="service-resolver",
+            name=web.name,
             config_json=json.dumps({
                 "DefaultSubset": "v1",
                 "Subsets": {
@@ -237,8 +241,9 @@ class ConfigEntry(pulumi.CustomResource):
                     },
                 },
             }))
-        service_splitter = consul.ConfigEntry("serviceSplitter",
+        service_splitter = consul.ConfigEntry("service_splitter",
             kind="service-splitter",
+            name=service_resolver.name,
             config_json=json.dumps({
                 "Splits": [
                     {
@@ -251,8 +256,9 @@ class ConfigEntry(pulumi.CustomResource):
                     },
                 ],
             }))
-        service_router = consul.ConfigEntry("serviceRouter",
+        service_router = consul.ConfigEntry("service_router",
             kind="service-router",
+            name="web",
             config_json=json.dumps({
                 "Routes": [{
                     "Match": {
@@ -265,7 +271,8 @@ class ConfigEntry(pulumi.CustomResource):
                     },
                 }],
             }))
-        ingress_gateway = consul.ConfigEntry("ingressGateway",
+        ingress_gateway = consul.ConfigEntry("ingress_gateway",
+            name="us-east-ingress",
             kind="ingress-gateway",
             config_json=json.dumps({
                 "TLS": {
@@ -279,7 +286,8 @@ class ConfigEntry(pulumi.CustomResource):
                     }],
                 }],
             }))
-        terminating_gateway = consul.ConfigEntry("terminatingGateway",
+        terminating_gateway = consul.ConfigEntry("terminating_gateway",
+            name="us-west-gateway",
             kind="terminating-gateway",
             config_json=json.dumps({
                 "Services": [{
@@ -297,7 +305,8 @@ class ConfigEntry(pulumi.CustomResource):
         import json
         import pulumi_consul as consul
 
-        service_intentions = consul.ConfigEntry("serviceIntentions",
+        service_intentions = consul.ConfigEntry("service_intentions",
+            name="api-service",
             kind="service-intentions",
             config_json=json.dumps({
                 "Sources": [
@@ -325,11 +334,13 @@ class ConfigEntry(pulumi.CustomResource):
         import pulumi_consul as consul
 
         sd = consul.ConfigEntry("sd",
+            name="fort-knox",
             kind="service-defaults",
             config_json=json.dumps({
                 "Protocol": "http",
             }))
-        jwt_provider = consul.ConfigEntry("jwtProvider",
+        jwt_provider = consul.ConfigEntry("jwt_provider",
+            name="test-provider",
             kind="jwt-provider",
             config_json=json.dumps({
                 "Issuer": "test-issuer",
@@ -343,7 +354,8 @@ class ConfigEntry(pulumi.CustomResource):
                     "HeaderName": "test-token",
                 },
             }))
-        service_intentions = consul.ConfigEntry("serviceIntentions",
+        service_intentions = consul.ConfigEntry("service_intentions",
+            name=sd.name,
             kind="service-intentions",
             config_json=pulumi.Output.json_dumps({
                 "Sources": [
@@ -399,7 +411,8 @@ class ConfigEntry(pulumi.CustomResource):
         import json
         import pulumi_consul as consul
 
-        exported_services = consul.ConfigEntry("exportedServices",
+        exported_services = consul.ConfigEntry("exported_services",
+            name="test",
             kind="exported-services",
             config_json=json.dumps({
                 "Services": [{
@@ -422,6 +435,7 @@ class ConfigEntry(pulumi.CustomResource):
         import pulumi_consul as consul
 
         mesh = consul.ConfigEntry("mesh",
+            name="mesh",
             kind="mesh",
             partition="default",
             config_json=json.dumps({
@@ -440,7 +454,8 @@ class ConfigEntry(pulumi.CustomResource):
         import json
         import pulumi_consul as consul
 
-        jwt_provider = consul.ConfigEntry("jwtProvider",
+        jwt_provider = consul.ConfigEntry("jwt_provider",
+            name="provider-name",
             kind="jwt-provider",
             config_json=json.dumps({
                 "Issuer": "https://your.issuer.com",
@@ -492,8 +507,9 @@ class ConfigEntry(pulumi.CustomResource):
         import json
         import pulumi_consul as consul
 
-        proxy_defaults = consul.ConfigEntry("proxyDefaults",
+        proxy_defaults = consul.ConfigEntry("proxy_defaults",
             kind="proxy-defaults",
+            name="global",
             config_json=json.dumps({
                 "Config": {
                     "local_connect_timeout_ms": 1000,
@@ -501,17 +517,20 @@ class ConfigEntry(pulumi.CustomResource):
                 },
             }))
         web = consul.ConfigEntry("web",
+            name="web",
             kind="service-defaults",
             config_json=json.dumps({
                 "Protocol": "http",
             }))
         admin = consul.ConfigEntry("admin",
+            name="admin",
             kind="service-defaults",
             config_json=json.dumps({
                 "Protocol": "http",
             }))
-        service_resolver = consul.ConfigEntry("serviceResolver",
+        service_resolver = consul.ConfigEntry("service_resolver",
             kind="service-resolver",
+            name=web.name,
             config_json=json.dumps({
                 "DefaultSubset": "v1",
                 "Subsets": {
@@ -523,8 +542,9 @@ class ConfigEntry(pulumi.CustomResource):
                     },
                 },
             }))
-        service_splitter = consul.ConfigEntry("serviceSplitter",
+        service_splitter = consul.ConfigEntry("service_splitter",
             kind="service-splitter",
+            name=service_resolver.name,
             config_json=json.dumps({
                 "Splits": [
                     {
@@ -537,8 +557,9 @@ class ConfigEntry(pulumi.CustomResource):
                     },
                 ],
             }))
-        service_router = consul.ConfigEntry("serviceRouter",
+        service_router = consul.ConfigEntry("service_router",
             kind="service-router",
+            name="web",
             config_json=json.dumps({
                 "Routes": [{
                     "Match": {
@@ -551,7 +572,8 @@ class ConfigEntry(pulumi.CustomResource):
                     },
                 }],
             }))
-        ingress_gateway = consul.ConfigEntry("ingressGateway",
+        ingress_gateway = consul.ConfigEntry("ingress_gateway",
+            name="us-east-ingress",
             kind="ingress-gateway",
             config_json=json.dumps({
                 "TLS": {
@@ -565,7 +587,8 @@ class ConfigEntry(pulumi.CustomResource):
                     }],
                 }],
             }))
-        terminating_gateway = consul.ConfigEntry("terminatingGateway",
+        terminating_gateway = consul.ConfigEntry("terminating_gateway",
+            name="us-west-gateway",
             kind="terminating-gateway",
             config_json=json.dumps({
                 "Services": [{
@@ -583,7 +606,8 @@ class ConfigEntry(pulumi.CustomResource):
         import json
         import pulumi_consul as consul
 
-        service_intentions = consul.ConfigEntry("serviceIntentions",
+        service_intentions = consul.ConfigEntry("service_intentions",
+            name="api-service",
             kind="service-intentions",
             config_json=json.dumps({
                 "Sources": [
@@ -611,11 +635,13 @@ class ConfigEntry(pulumi.CustomResource):
         import pulumi_consul as consul
 
         sd = consul.ConfigEntry("sd",
+            name="fort-knox",
             kind="service-defaults",
             config_json=json.dumps({
                 "Protocol": "http",
             }))
-        jwt_provider = consul.ConfigEntry("jwtProvider",
+        jwt_provider = consul.ConfigEntry("jwt_provider",
+            name="test-provider",
             kind="jwt-provider",
             config_json=json.dumps({
                 "Issuer": "test-issuer",
@@ -629,7 +655,8 @@ class ConfigEntry(pulumi.CustomResource):
                     "HeaderName": "test-token",
                 },
             }))
-        service_intentions = consul.ConfigEntry("serviceIntentions",
+        service_intentions = consul.ConfigEntry("service_intentions",
+            name=sd.name,
             kind="service-intentions",
             config_json=pulumi.Output.json_dumps({
                 "Sources": [
@@ -685,7 +712,8 @@ class ConfigEntry(pulumi.CustomResource):
         import json
         import pulumi_consul as consul
 
-        exported_services = consul.ConfigEntry("exportedServices",
+        exported_services = consul.ConfigEntry("exported_services",
+            name="test",
             kind="exported-services",
             config_json=json.dumps({
                 "Services": [{
@@ -708,6 +736,7 @@ class ConfigEntry(pulumi.CustomResource):
         import pulumi_consul as consul
 
         mesh = consul.ConfigEntry("mesh",
+            name="mesh",
             kind="mesh",
             partition="default",
             config_json=json.dumps({
@@ -726,7 +755,8 @@ class ConfigEntry(pulumi.CustomResource):
         import json
         import pulumi_consul as consul
 
-        jwt_provider = consul.ConfigEntry("jwtProvider",
+        jwt_provider = consul.ConfigEntry("jwt_provider",
+            name="provider-name",
             kind="jwt-provider",
             config_json=json.dumps({
                 "Issuer": "https://your.issuer.com",

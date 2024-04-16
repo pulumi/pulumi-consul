@@ -8,26 +8,6 @@ import * as utilities from "./utilities";
 
 /**
  * ## Example Usage
- *
- * <!--Start PulumiCodeChooser -->
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as consul from "@pulumi/consul";
- *
- * const adminServiceDefaultsConfigEntryServiceDefaults = new consul.ConfigEntryServiceDefaults("adminServiceDefaultsConfigEntryServiceDefaults", {protocol: "http"});
- * const adminServiceDefaultsIndex_configEntryServiceDefaultsConfigEntryServiceDefaults = new consul.ConfigEntryServiceDefaults("adminServiceDefaultsIndex/configEntryServiceDefaultsConfigEntryServiceDefaults", {protocol: "http"});
- * const foo = new consul.ConfigEntryServiceRouter("foo", {routes: [{
- *     match: {
- *         http: {
- *             pathPrefix: "/admin",
- *         },
- *     },
- *     destination: {
- *         service: consul_config_entry.admin_service.name,
- *     },
- * }]});
- * ```
- * <!--End PulumiCodeChooser -->
  */
 export class ConfigEntryServiceRouter extends pulumi.CustomResource {
     /**

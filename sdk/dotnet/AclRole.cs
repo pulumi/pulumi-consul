@@ -23,6 +23,7 @@ namespace Pulumi.Consul
     /// {
     ///     var read_policy = new Consul.AclPolicy("read-policy", new()
     ///     {
+    ///         Name = "read-policy",
     ///         Rules = "node \"\" { policy = \"read\" }",
     ///         Datacenters = new[]
     ///         {
@@ -32,6 +33,7 @@ namespace Pulumi.Consul
     /// 
     ///     var read = new Consul.AclRole("read", new()
     ///     {
+    ///         Name = "foo",
     ///         Description = "bar",
     ///         Policies = new[]
     ///         {

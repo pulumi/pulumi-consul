@@ -594,53 +594,55 @@ class PreparedQuery(pulumi.CustomResource):
         # healthy myapp.service.consul instance that has the active tag and not
         # the standby tag.
         myapp_query = consul.PreparedQuery("myapp-query",
+            name="myquery",
             datacenter="us-central1",
-            dns=consul.PreparedQueryDnsArgs(
-                ttl="30s",
-            ),
+            token="abcd",
+            stored_token="wxyz",
+            only_passing=True,
+            near="_agent",
+            service="myapp",
+            tags=[
+                "active",
+                "!standby",
+            ],
             failover=consul.PreparedQueryFailoverArgs(
+                nearest_n=3,
                 datacenters=[
                     "us-west1",
                     "us-east-2",
                     "asia-east1",
                 ],
-                nearest_n=3,
             ),
-            near="_agent",
-            only_passing=True,
-            service="myapp",
-            stored_token="wxyz",
-            tags=[
-                "active",
-                "!standby",
-            ],
-            token="abcd")
+            dns=consul.PreparedQueryDnsArgs(
+                ttl="30s",
+            ))
         # Creates a Prepared Query Template that matches *-near-self.query.consul
         # and finds the nearest service that matches the glob character (e.g.
         # foo-near-self.query.consul will find the nearest healthy foo.service.consul).
         service_near_self = consul.PreparedQuery("service-near-self",
-            connect=True,
             datacenter="nyc1",
-            dns=consul.PreparedQueryDnsArgs(
-                ttl="5m",
+            token="abcd",
+            stored_token="wxyz",
+            name="",
+            only_passing=True,
+            connect=True,
+            near="_agent",
+            template=consul.PreparedQueryTemplateArgs(
+                type="name_prefix_match",
+                regexp="^(.*)-near-self$",
             ),
+            service="${match(1)}",
             failover=consul.PreparedQueryFailoverArgs(
+                nearest_n=3,
                 datacenters=[
                     "dc2",
                     "dc3",
                     "dc4",
                 ],
-                nearest_n=3,
             ),
-            near="_agent",
-            only_passing=True,
-            service="${match(1)}",
-            stored_token="wxyz",
-            template=consul.PreparedQueryTemplateArgs(
-                regexp="^(.*)-near-self$",
-                type="name_prefix_match",
-            ),
-            token="abcd")
+            dns=consul.PreparedQueryDnsArgs(
+                ttl="5m",
+            ))
         ```
         <!--End PulumiCodeChooser -->
 
@@ -687,53 +689,55 @@ class PreparedQuery(pulumi.CustomResource):
         # healthy myapp.service.consul instance that has the active tag and not
         # the standby tag.
         myapp_query = consul.PreparedQuery("myapp-query",
+            name="myquery",
             datacenter="us-central1",
-            dns=consul.PreparedQueryDnsArgs(
-                ttl="30s",
-            ),
+            token="abcd",
+            stored_token="wxyz",
+            only_passing=True,
+            near="_agent",
+            service="myapp",
+            tags=[
+                "active",
+                "!standby",
+            ],
             failover=consul.PreparedQueryFailoverArgs(
+                nearest_n=3,
                 datacenters=[
                     "us-west1",
                     "us-east-2",
                     "asia-east1",
                 ],
-                nearest_n=3,
             ),
-            near="_agent",
-            only_passing=True,
-            service="myapp",
-            stored_token="wxyz",
-            tags=[
-                "active",
-                "!standby",
-            ],
-            token="abcd")
+            dns=consul.PreparedQueryDnsArgs(
+                ttl="30s",
+            ))
         # Creates a Prepared Query Template that matches *-near-self.query.consul
         # and finds the nearest service that matches the glob character (e.g.
         # foo-near-self.query.consul will find the nearest healthy foo.service.consul).
         service_near_self = consul.PreparedQuery("service-near-self",
-            connect=True,
             datacenter="nyc1",
-            dns=consul.PreparedQueryDnsArgs(
-                ttl="5m",
+            token="abcd",
+            stored_token="wxyz",
+            name="",
+            only_passing=True,
+            connect=True,
+            near="_agent",
+            template=consul.PreparedQueryTemplateArgs(
+                type="name_prefix_match",
+                regexp="^(.*)-near-self$",
             ),
+            service="${match(1)}",
             failover=consul.PreparedQueryFailoverArgs(
+                nearest_n=3,
                 datacenters=[
                     "dc2",
                     "dc3",
                     "dc4",
                 ],
-                nearest_n=3,
             ),
-            near="_agent",
-            only_passing=True,
-            service="${match(1)}",
-            stored_token="wxyz",
-            template=consul.PreparedQueryTemplateArgs(
-                regexp="^(.*)-near-self$",
-                type="name_prefix_match",
-            ),
-            token="abcd")
+            dns=consul.PreparedQueryDnsArgs(
+                ttl="5m",
+            ))
         ```
         <!--End PulumiCodeChooser -->
 

@@ -244,6 +244,7 @@ class Namespace(pulumi.CustomResource):
         import pulumi_consul as consul
 
         production = consul.Namespace("production",
+            name="production",
             description="Production namespace",
             meta={
                 "foo": "bar",
@@ -288,6 +289,7 @@ class Namespace(pulumi.CustomResource):
         import pulumi_consul as consul
 
         production = consul.Namespace("production",
+            name="production",
             description="Production namespace",
             meta={
                 "foo": "bar",

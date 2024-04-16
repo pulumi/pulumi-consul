@@ -14,7 +14,8 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
  *
- * const jwtProvider = new consul.ConfigEntry("jwtProvider", {
+ * const jwtProvider = new consul.ConfigEntry("jwt_provider", {
+ *     name: "okta",
  *     kind: "jwt-provider",
  *     configJson: JSON.stringify({
  *         ClockSkewSeconds: 30,
@@ -28,6 +29,7 @@ import * as utilities from "./utilities";
  *     }),
  * });
  * const web = new consul.ConfigEntryServiceIntentions("web", {
+ *     name: "web",
  *     jwts: [{
  *         providers: [{
  *             name: jwtProvider.name,

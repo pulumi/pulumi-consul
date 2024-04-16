@@ -325,23 +325,23 @@ class KeyPrefix(pulumi.CustomResource):
         import pulumi
         import pulumi_consul as consul
 
-        myapp_config = consul.KeyPrefix("myappConfig",
+        myapp_config = consul.KeyPrefix("myapp_config",
             datacenter="nyc1",
+            token="abcd",
             path_prefix="myapp/config/",
-            subkey_collection=[consul.KeyPrefixSubkeyCollectionArgs(
-                flags=2,
-                path="database/password",
-                value=aws_db_instance["app"]["password"],
-            )],
             subkeys={
-                "database/hostname": aws_db_instance["app"]["address"],
-                "database/name": aws_db_instance["app"]["name"],
-                "database/port": aws_db_instance["app"]["port"],
-                "database/username": aws_db_instance["app"]["username"],
-                "elb_cname": aws_elb["app"]["dns_name"],
-                "s3_bucket_name": aws_s3_bucket["app"]["bucket"],
+                "elb_cname": app_aws_elb["dnsName"],
+                "s3_bucket_name": app_aws_s3_bucket["bucket"],
+                "database/hostname": app["address"],
+                "database/port": app["port"],
+                "database/username": app["username"],
+                "database/name": app["name"],
             },
-            token="abcd")
+            subkey_collection=[consul.KeyPrefixSubkeyCollectionArgs(
+                path="database/password",
+                value=app["password"],
+                flags=2,
+            )])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -386,23 +386,23 @@ class KeyPrefix(pulumi.CustomResource):
         import pulumi
         import pulumi_consul as consul
 
-        myapp_config = consul.KeyPrefix("myappConfig",
+        myapp_config = consul.KeyPrefix("myapp_config",
             datacenter="nyc1",
+            token="abcd",
             path_prefix="myapp/config/",
-            subkey_collection=[consul.KeyPrefixSubkeyCollectionArgs(
-                flags=2,
-                path="database/password",
-                value=aws_db_instance["app"]["password"],
-            )],
             subkeys={
-                "database/hostname": aws_db_instance["app"]["address"],
-                "database/name": aws_db_instance["app"]["name"],
-                "database/port": aws_db_instance["app"]["port"],
-                "database/username": aws_db_instance["app"]["username"],
-                "elb_cname": aws_elb["app"]["dns_name"],
-                "s3_bucket_name": aws_s3_bucket["app"]["bucket"],
+                "elb_cname": app_aws_elb["dnsName"],
+                "s3_bucket_name": app_aws_s3_bucket["bucket"],
+                "database/hostname": app["address"],
+                "database/port": app["port"],
+                "database/username": app["username"],
+                "database/name": app["name"],
             },
-            token="abcd")
+            subkey_collection=[consul.KeyPrefixSubkeyCollectionArgs(
+                path="database/password",
+                value=app["password"],
+                flags=2,
+            )])
         ```
         <!--End PulumiCodeChooser -->
 

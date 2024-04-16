@@ -14,23 +14,23 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
  *
- * const myappConfig = new consul.KeyPrefix("myappConfig", {
+ * const myappConfig = new consul.KeyPrefix("myapp_config", {
  *     datacenter: "nyc1",
- *     pathPrefix: "myapp/config/",
- *     subkeyCollection: [{
- *         flags: 2,
- *         path: "database/password",
- *         value: aws_db_instance.app.password,
- *     }],
- *     subkeys: {
- *         "database/hostname": aws_db_instance.app.address,
- *         "database/name": aws_db_instance.app.name,
- *         "database/port": aws_db_instance.app.port,
- *         "database/username": aws_db_instance.app.username,
- *         elb_cname: aws_elb.app.dns_name,
- *         s3_bucket_name: aws_s3_bucket.app.bucket,
- *     },
  *     token: "abcd",
+ *     pathPrefix: "myapp/config/",
+ *     subkeys: {
+ *         elb_cname: appAwsElb.dnsName,
+ *         s3_bucket_name: appAwsS3Bucket.bucket,
+ *         "database/hostname": app.address,
+ *         "database/port": app.port,
+ *         "database/username": app.username,
+ *         "database/name": app.name,
+ *     },
+ *     subkeyCollection: [{
+ *         path: "database/password",
+ *         value: app.password,
+ *         flags: 2,
+ *     }],
  * });
  * ```
  * <!--End PulumiCodeChooser -->

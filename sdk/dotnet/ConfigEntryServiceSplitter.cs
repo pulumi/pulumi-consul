@@ -24,6 +24,7 @@ namespace Pulumi.Consul
     /// {
     ///     var web = new Consul.ConfigEntry("web", new()
     ///     {
+    ///         Name = "web",
     ///         Kind = "service-defaults",
     ///         ConfigJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///         {
@@ -40,8 +41,9 @@ namespace Pulumi.Consul
     ///         }),
     ///     });
     /// 
-    ///     var serviceResolver = new Consul.ConfigEntryServiceResolver("serviceResolver", new()
+    ///     var serviceResolver = new Consul.ConfigEntryServiceResolver("service_resolver", new()
     ///     {
+    ///         Name = "service-resolver",
     ///         DefaultSubset = "v1",
     ///         Subsets = new[]
     ///         {
@@ -60,6 +62,7 @@ namespace Pulumi.Consul
     /// 
     ///     var foo = new Consul.ConfigEntryServiceSplitter("foo", new()
     ///     {
+    ///         Name = serviceResolver.Name,
     ///         Meta = 
     ///         {
     ///             { "key", "value" },

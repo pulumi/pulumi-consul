@@ -203,26 +203,6 @@ class ConfigEntryServiceRouter(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import pulumi_consul as consul
-
-        admin_service_defaults_config_entry_service_defaults = consul.ConfigEntryServiceDefaults("adminServiceDefaultsConfigEntryServiceDefaults", protocol="http")
-        admin_service_defaults_index_config_entry_service_defaults_config_entry_service_defaults = consul.ConfigEntryServiceDefaults("adminServiceDefaultsIndex/configEntryServiceDefaultsConfigEntryServiceDefaults", protocol="http")
-        foo = consul.ConfigEntryServiceRouter("foo", routes=[consul.ConfigEntryServiceRouterRouteArgs(
-            match=consul.ConfigEntryServiceRouterRouteMatchArgs(
-                http=consul.ConfigEntryServiceRouterRouteMatchHttpArgs(
-                    path_prefix="/admin",
-                ),
-            ),
-            destination=consul.ConfigEntryServiceRouterRouteDestinationArgs(
-                service=consul_config_entry["admin_service"]["name"],
-            ),
-        )])
-        ```
-        <!--End PulumiCodeChooser -->
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: Specifies key-value pairs to add to the KV store.
@@ -239,26 +219,6 @@ class ConfigEntryServiceRouter(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import pulumi_consul as consul
-
-        admin_service_defaults_config_entry_service_defaults = consul.ConfigEntryServiceDefaults("adminServiceDefaultsConfigEntryServiceDefaults", protocol="http")
-        admin_service_defaults_index_config_entry_service_defaults_config_entry_service_defaults = consul.ConfigEntryServiceDefaults("adminServiceDefaultsIndex/configEntryServiceDefaultsConfigEntryServiceDefaults", protocol="http")
-        foo = consul.ConfigEntryServiceRouter("foo", routes=[consul.ConfigEntryServiceRouterRouteArgs(
-            match=consul.ConfigEntryServiceRouterRouteMatchArgs(
-                http=consul.ConfigEntryServiceRouterRouteMatchHttpArgs(
-                    path_prefix="/admin",
-                ),
-            ),
-            destination=consul.ConfigEntryServiceRouterRouteDestinationArgs(
-                service=consul_config_entry["admin_service"]["name"],
-            ),
-        )])
-        ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param ConfigEntryServiceRouterArgs args: The arguments to use to populate this resource's properties.

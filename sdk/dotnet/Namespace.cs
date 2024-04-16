@@ -27,6 +27,7 @@ namespace Pulumi.Consul
     /// {
     ///     var production = new Consul.Namespace("production", new()
     ///     {
+    ///         Name = "production",
     ///         Description = "Production namespace",
     ///         Meta = 
     ///         {

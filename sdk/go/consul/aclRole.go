@@ -27,6 +27,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := consul.NewAclPolicy(ctx, "read-policy", &consul.AclPolicyArgs{
+//				Name:  pulumi.String("read-policy"),
 //				Rules: pulumi.String("node \"\" { policy = \"read\" }"),
 //				Datacenters: pulumi.StringArray{
 //					pulumi.String("dc1"),
@@ -36,6 +37,7 @@ import (
 //				return err
 //			}
 //			_, err = consul.NewAclRole(ctx, "read", &consul.AclRoleArgs{
+//				Name:        pulumi.String("foo"),
 //				Description: pulumi.String("bar"),
 //				Policies: pulumi.StringArray{
 //					read_policy.ID(),

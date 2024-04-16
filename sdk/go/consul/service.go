@@ -39,12 +39,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			compute, err := consul.NewNode(ctx, "compute", &consul.NodeArgs{
+//				Name:    pulumi.String("compute-google"),
 //				Address: pulumi.String("www.google.com"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = consul.NewService(ctx, "google", &consul.ServiceArgs{
+//				Name: pulumi.String("google"),
 //				Node: compute.Name,
 //				Port: pulumi.Int(80),
 //				Tags: pulumi.StringArray{
@@ -77,6 +79,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := consul.NewService(ctx, "google", &consul.ServiceArgs{
+//				Name: pulumi.String("google"),
 //				Node: pulumi.String("google"),
 //				Port: pulumi.Int(443),
 //			})
@@ -91,6 +94,61 @@ import (
 // <!--End PulumiCodeChooser -->
 //
 // Register a health-check:
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := consul.NewService(ctx, "redis", &consul.ServiceArgs{
+//				Name: pulumi.String("redis"),
+//				Node: pulumi.String("redis"),
+//				Port: pulumi.Int(6379),
+//				Checks: consul.ServiceCheckArray{
+//					&consul.ServiceCheckArgs{
+//						CheckId:                        pulumi.String("service:redis1"),
+//						Name:                           pulumi.String("Redis health check"),
+//						Status:                         pulumi.String("passing"),
+//						Http:                           pulumi.String("https://www.hashicorptest.com"),
+//						TlsSkipVerify:                  pulumi.Bool(false),
+//						Method:                         pulumi.String("PUT"),
+//						Interval:                       pulumi.String("5s"),
+//						Timeout:                        pulumi.String("1s"),
+//						DeregisterCriticalServiceAfter: pulumi.String("30s"),
+//						Headers: consul.ServiceCheckHeaderArray{
+//							&consul.ServiceCheckHeaderArgs{
+//								Name: pulumi.String("foo"),
+//								Values: pulumi.StringArray{
+//									pulumi.String("test"),
+//								},
+//							},
+//							&consul.ServiceCheckHeaderArgs{
+//								Name: pulumi.String("bar"),
+//								Values: pulumi.StringArray{
+//									pulumi.String("test"),
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
 type Service struct {
 	pulumi.CustomResourceState
 

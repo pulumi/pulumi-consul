@@ -12,55 +12,6 @@ import (
 )
 
 // ## Example Usage
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := consul.NewConfigEntryServiceDefaults(ctx, "adminServiceDefaultsConfigEntryServiceDefaults", &consul.ConfigEntryServiceDefaultsArgs{
-//				Protocol: pulumi.String("http"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = consul.NewConfigEntryServiceDefaults(ctx, "adminServiceDefaultsIndex/configEntryServiceDefaultsConfigEntryServiceDefaults", &consul.ConfigEntryServiceDefaultsArgs{
-//				Protocol: pulumi.String("http"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = consul.NewConfigEntryServiceRouter(ctx, "foo", &consul.ConfigEntryServiceRouterArgs{
-//				Routes: consul.ConfigEntryServiceRouterRouteArray{
-//					&consul.ConfigEntryServiceRouterRouteArgs{
-//						Match: &consul.ConfigEntryServiceRouterRouteMatchArgs{
-//							Http: &consul.ConfigEntryServiceRouterRouteMatchHttpArgs{
-//								PathPrefix: pulumi.String("/admin"),
-//							},
-//						},
-//						Destination: &consul.ConfigEntryServiceRouterRouteDestinationArgs{
-//							Service: pulumi.Any(consul_config_entry.Admin_service.Name),
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
 type ConfigEntryServiceRouter struct {
 	pulumi.CustomResourceState
 

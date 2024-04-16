@@ -776,14 +776,15 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var testAclPolicy = new AclPolicy(&#34;testAclPolicy&#34;, AclPolicyArgs.builder()        
+     *         var test = new AclPolicy(&#34;test&#34;, AclPolicyArgs.builder()        
+     *             .name(&#34;test&#34;)
      *             .rules(&#34;node \&#34;\&#34; { policy = \&#34;read\&#34; }&#34;)
      *             .datacenters(&#34;dc1&#34;)
      *             .build());
      * 
      *         var testAclToken = new AclToken(&#34;testAclToken&#34;, AclTokenArgs.builder()        
      *             .description(&#34;test&#34;)
-     *             .policies(testAclPolicy.name())
+     *             .policies(test.name())
      *             .local(true)
      *             .build());
      * 
@@ -831,14 +832,15 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var testAclPolicy = new AclPolicy(&#34;testAclPolicy&#34;, AclPolicyArgs.builder()        
+     *         var test = new AclPolicy(&#34;test&#34;, AclPolicyArgs.builder()        
+     *             .name(&#34;test&#34;)
      *             .rules(&#34;node \&#34;\&#34; { policy = \&#34;read\&#34; }&#34;)
      *             .datacenters(&#34;dc1&#34;)
      *             .build());
      * 
      *         var testAclToken = new AclToken(&#34;testAclToken&#34;, AclTokenArgs.builder()        
      *             .description(&#34;test&#34;)
-     *             .policies(testAclPolicy.name())
+     *             .policies(test.name())
      *             .local(true)
      *             .build());
      * 
@@ -886,14 +888,15 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var testAclPolicy = new AclPolicy(&#34;testAclPolicy&#34;, AclPolicyArgs.builder()        
+     *         var test = new AclPolicy(&#34;test&#34;, AclPolicyArgs.builder()        
+     *             .name(&#34;test&#34;)
      *             .rules(&#34;node \&#34;\&#34; { policy = \&#34;read\&#34; }&#34;)
      *             .datacenters(&#34;dc1&#34;)
      *             .build());
      * 
      *         var testAclToken = new AclToken(&#34;testAclToken&#34;, AclTokenArgs.builder()        
      *             .description(&#34;test&#34;)
-     *             .policies(testAclPolicy.name())
+     *             .policies(test.name())
      *             .local(true)
      *             .build());
      * 
@@ -941,14 +944,15 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var testAclPolicy = new AclPolicy(&#34;testAclPolicy&#34;, AclPolicyArgs.builder()        
+     *         var test = new AclPolicy(&#34;test&#34;, AclPolicyArgs.builder()        
+     *             .name(&#34;test&#34;)
      *             .rules(&#34;node \&#34;\&#34; { policy = \&#34;read\&#34; }&#34;)
      *             .datacenters(&#34;dc1&#34;)
      *             .build());
      * 
      *         var testAclToken = new AclToken(&#34;testAclToken&#34;, AclTokenArgs.builder()        
      *             .description(&#34;test&#34;)
-     *             .policies(testAclPolicy.name())
+     *             .policies(test.name())
      *             .local(true)
      *             .build());
      * 
@@ -1249,8 +1253,8 @@ public final class ConsulFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
-     * import com.pulumi.example.example_resource;
-     * import com.pulumi.example.Example_resourceArgs;
+     * import com.pulumi.example.resource;
+     * import com.pulumi.example.ResourceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1267,11 +1271,10 @@ public final class ConsulFunctions {
      *         final var read-dc1-agent = ConsulFunctions.getAgentSelf(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         // Set the description to a whitespace delimited list of the services
-     *         var app = new Example_resource(&#34;app&#34;, Example_resourceArgs.builder()        
+     *         var app = new Resource(&#34;app&#34;, ResourceArgs.builder()        
      *             .description(String.format(&#34;Consul datacenter %s&#34;, read_dc1_agent.datacenter()))
      *             .build());
      * 
-     *         // ...
      *     }
      * }
      * ```
@@ -1299,8 +1302,8 @@ public final class ConsulFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
-     * import com.pulumi.example.example_resource;
-     * import com.pulumi.example.Example_resourceArgs;
+     * import com.pulumi.example.resource;
+     * import com.pulumi.example.ResourceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1317,11 +1320,10 @@ public final class ConsulFunctions {
      *         final var read-dc1-agent = ConsulFunctions.getAgentSelf(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         // Set the description to a whitespace delimited list of the services
-     *         var app = new Example_resource(&#34;app&#34;, Example_resourceArgs.builder()        
+     *         var app = new Resource(&#34;app&#34;, ResourceArgs.builder()        
      *             .description(String.format(&#34;Consul datacenter %s&#34;, read_dc1_agent.datacenter()))
      *             .build());
      * 
-     *         // ...
      *     }
      * }
      * ```
@@ -1349,8 +1351,8 @@ public final class ConsulFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
-     * import com.pulumi.example.example_resource;
-     * import com.pulumi.example.Example_resourceArgs;
+     * import com.pulumi.example.resource;
+     * import com.pulumi.example.ResourceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1367,11 +1369,10 @@ public final class ConsulFunctions {
      *         final var read-dc1-agent = ConsulFunctions.getAgentSelf(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         // Set the description to a whitespace delimited list of the services
-     *         var app = new Example_resource(&#34;app&#34;, Example_resourceArgs.builder()        
+     *         var app = new Resource(&#34;app&#34;, ResourceArgs.builder()        
      *             .description(String.format(&#34;Consul datacenter %s&#34;, read_dc1_agent.datacenter()))
      *             .build());
      * 
-     *         // ...
      *     }
      * }
      * ```
@@ -1399,8 +1400,8 @@ public final class ConsulFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
-     * import com.pulumi.example.example_resource;
-     * import com.pulumi.example.Example_resourceArgs;
+     * import com.pulumi.example.resource;
+     * import com.pulumi.example.ResourceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1417,11 +1418,10 @@ public final class ConsulFunctions {
      *         final var read-dc1-agent = ConsulFunctions.getAgentSelf(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         // Set the description to a whitespace delimited list of the services
-     *         var app = new Example_resource(&#34;app&#34;, Example_resourceArgs.builder()        
+     *         var app = new Resource(&#34;app&#34;, ResourceArgs.builder()        
      *             .description(String.format(&#34;Consul datacenter %s&#34;, read_dc1_agent.datacenter()))
      *             .build());
      * 
-     *         // ...
      *     }
      * }
      * ```
@@ -1449,8 +1449,8 @@ public final class ConsulFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
-     * import com.pulumi.example.example_resource;
-     * import com.pulumi.example.Example_resourceArgs;
+     * import com.pulumi.example.resource;
+     * import com.pulumi.example.ResourceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1467,11 +1467,10 @@ public final class ConsulFunctions {
      *         final var read-dc1-agent = ConsulFunctions.getAgentSelf(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         // Set the description to a whitespace delimited list of the services
-     *         var app = new Example_resource(&#34;app&#34;, Example_resourceArgs.builder()        
+     *         var app = new Resource(&#34;app&#34;, ResourceArgs.builder()        
      *             .description(String.format(&#34;Consul datacenter %s&#34;, read_dc1_agent.datacenter()))
      *             .build());
      * 
-     *         // ...
      *     }
      * }
      * ```
@@ -1499,8 +1498,8 @@ public final class ConsulFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
-     * import com.pulumi.example.example_resource;
-     * import com.pulumi.example.Example_resourceArgs;
+     * import com.pulumi.example.resource;
+     * import com.pulumi.example.ResourceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1517,11 +1516,10 @@ public final class ConsulFunctions {
      *         final var read-dc1-agent = ConsulFunctions.getAgentSelf(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         // Set the description to a whitespace delimited list of the services
-     *         var app = new Example_resource(&#34;app&#34;, Example_resourceArgs.builder()        
+     *         var app = new Resource(&#34;app&#34;, ResourceArgs.builder()        
      *             .description(String.format(&#34;Consul datacenter %s&#34;, read_dc1_agent.datacenter()))
      *             .build());
      * 
-     *         // ...
      *     }
      * }
      * ```
@@ -2107,8 +2105,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetKeyPrefixArgs;
-     * import com.pulumi.aws.ec2.Instance;
-     * import com.pulumi.aws.ec2.InstanceArgs;
+     * import com.pulumi.aws.instance;
+     * import com.pulumi.aws.InstanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2122,20 +2120,20 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var appKeyPrefix = ConsulFunctions.getKeyPrefix(GetKeyPrefixArgs.builder()
+     *         final var app = ConsulFunctions.getKeyPrefix(GetKeyPrefixArgs.builder()
      *             .datacenter(&#34;nyc1&#34;)
+     *             .token(&#34;abcd&#34;)
      *             .pathPrefix(&#34;myapp/config/&#34;)
      *             .subkeyCollection(GetKeyPrefixSubkeyCollectionArgs.builder()
-     *                 .default_(&#34;ami-1234&#34;)
      *                 .name(&#34;ami&#34;)
      *                 .path(&#34;app/launch_ami&#34;)
+     *                 .default_(&#34;ami-1234&#34;)
      *                 .build())
-     *             .token(&#34;abcd&#34;)
      *             .build());
      * 
      *         // Start our instance with the dynamic ami value
      *         var appInstance = new Instance(&#34;appInstance&#34;, InstanceArgs.builder()        
-     *             .ami(appKeyPrefix.applyValue(getKeyPrefixResult -&gt; getKeyPrefixResult.var().ami()))
+     *             .ami(app.applyValue(getKeyPrefixResult -&gt; getKeyPrefixResult.var().ami()))
      *             .build());
      * 
      *     }
@@ -2152,8 +2150,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetKeyPrefixArgs;
-     * import com.pulumi.aws.ec2.Instance;
-     * import com.pulumi.aws.ec2.InstanceArgs;
+     * import com.pulumi.aws.instance;
+     * import com.pulumi.aws.InstanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2167,15 +2165,15 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var webKeyPrefix = ConsulFunctions.getKeyPrefix(GetKeyPrefixArgs.builder()
+     *         final var web = ConsulFunctions.getKeyPrefix(GetKeyPrefixArgs.builder()
      *             .datacenter(&#34;nyc1&#34;)
-     *             .pathPrefix(&#34;myapp/config/&#34;)
      *             .token(&#34;efgh&#34;)
+     *             .pathPrefix(&#34;myapp/config/&#34;)
      *             .build());
      * 
      *         // Start our instance with the dynamic ami value
      *         var webInstance = new Instance(&#34;webInstance&#34;, InstanceArgs.builder()        
-     *             .ami(webKeyPrefix.applyValue(getKeyPrefixResult -&gt; getKeyPrefixResult.subkeys().app/launch_ami()))
+     *             .ami(web.applyValue(getKeyPrefixResult -&gt; getKeyPrefixResult.subkeys().app/launch_ami()))
      *             .build());
      * 
      *     }
@@ -2199,8 +2197,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetKeyPrefixArgs;
-     * import com.pulumi.aws.ec2.Instance;
-     * import com.pulumi.aws.ec2.InstanceArgs;
+     * import com.pulumi.aws.instance;
+     * import com.pulumi.aws.InstanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2214,20 +2212,20 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var appKeyPrefix = ConsulFunctions.getKeyPrefix(GetKeyPrefixArgs.builder()
+     *         final var app = ConsulFunctions.getKeyPrefix(GetKeyPrefixArgs.builder()
      *             .datacenter(&#34;nyc1&#34;)
+     *             .token(&#34;abcd&#34;)
      *             .pathPrefix(&#34;myapp/config/&#34;)
      *             .subkeyCollection(GetKeyPrefixSubkeyCollectionArgs.builder()
-     *                 .default_(&#34;ami-1234&#34;)
      *                 .name(&#34;ami&#34;)
      *                 .path(&#34;app/launch_ami&#34;)
+     *                 .default_(&#34;ami-1234&#34;)
      *                 .build())
-     *             .token(&#34;abcd&#34;)
      *             .build());
      * 
      *         // Start our instance with the dynamic ami value
      *         var appInstance = new Instance(&#34;appInstance&#34;, InstanceArgs.builder()        
-     *             .ami(appKeyPrefix.applyValue(getKeyPrefixResult -&gt; getKeyPrefixResult.var().ami()))
+     *             .ami(app.applyValue(getKeyPrefixResult -&gt; getKeyPrefixResult.var().ami()))
      *             .build());
      * 
      *     }
@@ -2244,8 +2242,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetKeyPrefixArgs;
-     * import com.pulumi.aws.ec2.Instance;
-     * import com.pulumi.aws.ec2.InstanceArgs;
+     * import com.pulumi.aws.instance;
+     * import com.pulumi.aws.InstanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2259,15 +2257,15 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var webKeyPrefix = ConsulFunctions.getKeyPrefix(GetKeyPrefixArgs.builder()
+     *         final var web = ConsulFunctions.getKeyPrefix(GetKeyPrefixArgs.builder()
      *             .datacenter(&#34;nyc1&#34;)
-     *             .pathPrefix(&#34;myapp/config/&#34;)
      *             .token(&#34;efgh&#34;)
+     *             .pathPrefix(&#34;myapp/config/&#34;)
      *             .build());
      * 
      *         // Start our instance with the dynamic ami value
      *         var webInstance = new Instance(&#34;webInstance&#34;, InstanceArgs.builder()        
-     *             .ami(webKeyPrefix.applyValue(getKeyPrefixResult -&gt; getKeyPrefixResult.subkeys().app/launch_ami()))
+     *             .ami(web.applyValue(getKeyPrefixResult -&gt; getKeyPrefixResult.subkeys().app/launch_ami()))
      *             .build());
      * 
      *     }
@@ -2291,8 +2289,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetKeyPrefixArgs;
-     * import com.pulumi.aws.ec2.Instance;
-     * import com.pulumi.aws.ec2.InstanceArgs;
+     * import com.pulumi.aws.instance;
+     * import com.pulumi.aws.InstanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2306,20 +2304,20 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var appKeyPrefix = ConsulFunctions.getKeyPrefix(GetKeyPrefixArgs.builder()
+     *         final var app = ConsulFunctions.getKeyPrefix(GetKeyPrefixArgs.builder()
      *             .datacenter(&#34;nyc1&#34;)
+     *             .token(&#34;abcd&#34;)
      *             .pathPrefix(&#34;myapp/config/&#34;)
      *             .subkeyCollection(GetKeyPrefixSubkeyCollectionArgs.builder()
-     *                 .default_(&#34;ami-1234&#34;)
      *                 .name(&#34;ami&#34;)
      *                 .path(&#34;app/launch_ami&#34;)
+     *                 .default_(&#34;ami-1234&#34;)
      *                 .build())
-     *             .token(&#34;abcd&#34;)
      *             .build());
      * 
      *         // Start our instance with the dynamic ami value
      *         var appInstance = new Instance(&#34;appInstance&#34;, InstanceArgs.builder()        
-     *             .ami(appKeyPrefix.applyValue(getKeyPrefixResult -&gt; getKeyPrefixResult.var().ami()))
+     *             .ami(app.applyValue(getKeyPrefixResult -&gt; getKeyPrefixResult.var().ami()))
      *             .build());
      * 
      *     }
@@ -2336,8 +2334,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetKeyPrefixArgs;
-     * import com.pulumi.aws.ec2.Instance;
-     * import com.pulumi.aws.ec2.InstanceArgs;
+     * import com.pulumi.aws.instance;
+     * import com.pulumi.aws.InstanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2351,15 +2349,15 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var webKeyPrefix = ConsulFunctions.getKeyPrefix(GetKeyPrefixArgs.builder()
+     *         final var web = ConsulFunctions.getKeyPrefix(GetKeyPrefixArgs.builder()
      *             .datacenter(&#34;nyc1&#34;)
-     *             .pathPrefix(&#34;myapp/config/&#34;)
      *             .token(&#34;efgh&#34;)
+     *             .pathPrefix(&#34;myapp/config/&#34;)
      *             .build());
      * 
      *         // Start our instance with the dynamic ami value
      *         var webInstance = new Instance(&#34;webInstance&#34;, InstanceArgs.builder()        
-     *             .ami(webKeyPrefix.applyValue(getKeyPrefixResult -&gt; getKeyPrefixResult.subkeys().app/launch_ami()))
+     *             .ami(web.applyValue(getKeyPrefixResult -&gt; getKeyPrefixResult.subkeys().app/launch_ami()))
      *             .build());
      * 
      *     }
@@ -2383,8 +2381,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetKeyPrefixArgs;
-     * import com.pulumi.aws.ec2.Instance;
-     * import com.pulumi.aws.ec2.InstanceArgs;
+     * import com.pulumi.aws.instance;
+     * import com.pulumi.aws.InstanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2398,20 +2396,20 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var appKeyPrefix = ConsulFunctions.getKeyPrefix(GetKeyPrefixArgs.builder()
+     *         final var app = ConsulFunctions.getKeyPrefix(GetKeyPrefixArgs.builder()
      *             .datacenter(&#34;nyc1&#34;)
+     *             .token(&#34;abcd&#34;)
      *             .pathPrefix(&#34;myapp/config/&#34;)
      *             .subkeyCollection(GetKeyPrefixSubkeyCollectionArgs.builder()
-     *                 .default_(&#34;ami-1234&#34;)
      *                 .name(&#34;ami&#34;)
      *                 .path(&#34;app/launch_ami&#34;)
+     *                 .default_(&#34;ami-1234&#34;)
      *                 .build())
-     *             .token(&#34;abcd&#34;)
      *             .build());
      * 
      *         // Start our instance with the dynamic ami value
      *         var appInstance = new Instance(&#34;appInstance&#34;, InstanceArgs.builder()        
-     *             .ami(appKeyPrefix.applyValue(getKeyPrefixResult -&gt; getKeyPrefixResult.var().ami()))
+     *             .ami(app.applyValue(getKeyPrefixResult -&gt; getKeyPrefixResult.var().ami()))
      *             .build());
      * 
      *     }
@@ -2428,8 +2426,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetKeyPrefixArgs;
-     * import com.pulumi.aws.ec2.Instance;
-     * import com.pulumi.aws.ec2.InstanceArgs;
+     * import com.pulumi.aws.instance;
+     * import com.pulumi.aws.InstanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2443,15 +2441,15 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var webKeyPrefix = ConsulFunctions.getKeyPrefix(GetKeyPrefixArgs.builder()
+     *         final var web = ConsulFunctions.getKeyPrefix(GetKeyPrefixArgs.builder()
      *             .datacenter(&#34;nyc1&#34;)
-     *             .pathPrefix(&#34;myapp/config/&#34;)
      *             .token(&#34;efgh&#34;)
+     *             .pathPrefix(&#34;myapp/config/&#34;)
      *             .build());
      * 
      *         // Start our instance with the dynamic ami value
      *         var webInstance = new Instance(&#34;webInstance&#34;, InstanceArgs.builder()        
-     *             .ami(webKeyPrefix.applyValue(getKeyPrefixResult -&gt; getKeyPrefixResult.subkeys().app/launch_ami()))
+     *             .ami(web.applyValue(getKeyPrefixResult -&gt; getKeyPrefixResult.subkeys().app/launch_ami()))
      *             .build());
      * 
      *     }
@@ -2477,8 +2475,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetKeysArgs;
-     * import com.pulumi.aws.ec2.Instance;
-     * import com.pulumi.aws.ec2.InstanceArgs;
+     * import com.pulumi.aws.instance;
+     * import com.pulumi.aws.InstanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2492,7 +2490,7 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var appKeys = ConsulFunctions.getKeys(GetKeysArgs.builder()
+     *         final var app = ConsulFunctions.getKeys(GetKeysArgs.builder()
      *             .datacenter(&#34;nyc1&#34;)
      *             .keys(GetKeysKeyArgs.builder()
      *                 .name(&#34;ami&#34;)
@@ -2503,10 +2501,9 @@ public final class ConsulFunctions {
      * 
      *         // Start our instance with the dynamic ami value
      *         var appInstance = new Instance(&#34;appInstance&#34;, InstanceArgs.builder()        
-     *             .ami(appKeys.applyValue(getKeysResult -&gt; getKeysResult.var().ami()))
+     *             .ami(app.applyValue(getKeysResult -&gt; getKeysResult.var().ami()))
      *             .build());
      * 
-     *         // ...
      *     }
      * }
      * ```
@@ -2530,8 +2527,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetKeysArgs;
-     * import com.pulumi.aws.ec2.Instance;
-     * import com.pulumi.aws.ec2.InstanceArgs;
+     * import com.pulumi.aws.instance;
+     * import com.pulumi.aws.InstanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2545,7 +2542,7 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var appKeys = ConsulFunctions.getKeys(GetKeysArgs.builder()
+     *         final var app = ConsulFunctions.getKeys(GetKeysArgs.builder()
      *             .datacenter(&#34;nyc1&#34;)
      *             .keys(GetKeysKeyArgs.builder()
      *                 .name(&#34;ami&#34;)
@@ -2556,10 +2553,9 @@ public final class ConsulFunctions {
      * 
      *         // Start our instance with the dynamic ami value
      *         var appInstance = new Instance(&#34;appInstance&#34;, InstanceArgs.builder()        
-     *             .ami(appKeys.applyValue(getKeysResult -&gt; getKeysResult.var().ami()))
+     *             .ami(app.applyValue(getKeysResult -&gt; getKeysResult.var().ami()))
      *             .build());
      * 
-     *         // ...
      *     }
      * }
      * ```
@@ -2583,8 +2579,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetKeysArgs;
-     * import com.pulumi.aws.ec2.Instance;
-     * import com.pulumi.aws.ec2.InstanceArgs;
+     * import com.pulumi.aws.instance;
+     * import com.pulumi.aws.InstanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2598,7 +2594,7 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var appKeys = ConsulFunctions.getKeys(GetKeysArgs.builder()
+     *         final var app = ConsulFunctions.getKeys(GetKeysArgs.builder()
      *             .datacenter(&#34;nyc1&#34;)
      *             .keys(GetKeysKeyArgs.builder()
      *                 .name(&#34;ami&#34;)
@@ -2609,10 +2605,9 @@ public final class ConsulFunctions {
      * 
      *         // Start our instance with the dynamic ami value
      *         var appInstance = new Instance(&#34;appInstance&#34;, InstanceArgs.builder()        
-     *             .ami(appKeys.applyValue(getKeysResult -&gt; getKeysResult.var().ami()))
+     *             .ami(app.applyValue(getKeysResult -&gt; getKeysResult.var().ami()))
      *             .build());
      * 
-     *         // ...
      *     }
      * }
      * ```
@@ -2636,8 +2631,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetKeysArgs;
-     * import com.pulumi.aws.ec2.Instance;
-     * import com.pulumi.aws.ec2.InstanceArgs;
+     * import com.pulumi.aws.instance;
+     * import com.pulumi.aws.InstanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2651,7 +2646,7 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var appKeys = ConsulFunctions.getKeys(GetKeysArgs.builder()
+     *         final var app = ConsulFunctions.getKeys(GetKeysArgs.builder()
      *             .datacenter(&#34;nyc1&#34;)
      *             .keys(GetKeysKeyArgs.builder()
      *                 .name(&#34;ami&#34;)
@@ -2662,10 +2657,9 @@ public final class ConsulFunctions {
      * 
      *         // Start our instance with the dynamic ami value
      *         var appInstance = new Instance(&#34;appInstance&#34;, InstanceArgs.builder()        
-     *             .ami(appKeys.applyValue(getKeysResult -&gt; getKeysResult.var().ami()))
+     *             .ami(app.applyValue(getKeysResult -&gt; getKeysResult.var().ami()))
      *             .build());
      * 
-     *         // ...
      *     }
      * }
      * ```
@@ -2689,8 +2683,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetKeysArgs;
-     * import com.pulumi.aws.ec2.Instance;
-     * import com.pulumi.aws.ec2.InstanceArgs;
+     * import com.pulumi.aws.instance;
+     * import com.pulumi.aws.InstanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2704,7 +2698,7 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var appKeys = ConsulFunctions.getKeys(GetKeysArgs.builder()
+     *         final var app = ConsulFunctions.getKeys(GetKeysArgs.builder()
      *             .datacenter(&#34;nyc1&#34;)
      *             .keys(GetKeysKeyArgs.builder()
      *                 .name(&#34;ami&#34;)
@@ -2715,10 +2709,9 @@ public final class ConsulFunctions {
      * 
      *         // Start our instance with the dynamic ami value
      *         var appInstance = new Instance(&#34;appInstance&#34;, InstanceArgs.builder()        
-     *             .ami(appKeys.applyValue(getKeysResult -&gt; getKeysResult.var().ami()))
+     *             .ami(app.applyValue(getKeysResult -&gt; getKeysResult.var().ami()))
      *             .build());
      * 
-     *         // ...
      *     }
      * }
      * ```
@@ -2742,8 +2735,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetKeysArgs;
-     * import com.pulumi.aws.ec2.Instance;
-     * import com.pulumi.aws.ec2.InstanceArgs;
+     * import com.pulumi.aws.instance;
+     * import com.pulumi.aws.InstanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2757,7 +2750,7 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var appKeys = ConsulFunctions.getKeys(GetKeysArgs.builder()
+     *         final var app = ConsulFunctions.getKeys(GetKeysArgs.builder()
      *             .datacenter(&#34;nyc1&#34;)
      *             .keys(GetKeysKeyArgs.builder()
      *                 .name(&#34;ami&#34;)
@@ -2768,10 +2761,9 @@ public final class ConsulFunctions {
      * 
      *         // Start our instance with the dynamic ami value
      *         var appInstance = new Instance(&#34;appInstance&#34;, InstanceArgs.builder()        
-     *             .ami(appKeys.applyValue(getKeysResult -&gt; getKeysResult.var().ami()))
+     *             .ami(app.applyValue(getKeysResult -&gt; getKeysResult.var().ami()))
      *             .build());
      * 
-     *         // ...
      *     }
      * }
      * ```
@@ -2819,11 +2811,11 @@ public final class ConsulFunctions {
      *             .useTls(true)
      *             .build());
      * 
-     *         final var dc2NetworkAreaMembers = ConsulFunctions.getNetworkAreaMembers(GetNetworkAreaMembersArgs.builder()
+     *         final var dc2 = ConsulFunctions.getNetworkAreaMembers(GetNetworkAreaMembersArgs.builder()
      *             .uuid(dc2NetworkArea.id())
      *             .build());
      * 
-     *         ctx.export(&#34;members&#34;, dc2NetworkAreaMembers.applyValue(getNetworkAreaMembersResult -&gt; getNetworkAreaMembersResult).applyValue(dc2NetworkAreaMembers -&gt; dc2NetworkAreaMembers.applyValue(getNetworkAreaMembersResult -&gt; getNetworkAreaMembersResult.members())));
+     *         ctx.export(&#34;members&#34;, dc2.applyValue(getNetworkAreaMembersResult -&gt; getNetworkAreaMembersResult).applyValue(dc2 -&gt; dc2.applyValue(getNetworkAreaMembersResult -&gt; getNetworkAreaMembersResult.members())));
      *     }
      * }
      * ```
@@ -2871,11 +2863,11 @@ public final class ConsulFunctions {
      *             .useTls(true)
      *             .build());
      * 
-     *         final var dc2NetworkAreaMembers = ConsulFunctions.getNetworkAreaMembers(GetNetworkAreaMembersArgs.builder()
+     *         final var dc2 = ConsulFunctions.getNetworkAreaMembers(GetNetworkAreaMembersArgs.builder()
      *             .uuid(dc2NetworkArea.id())
      *             .build());
      * 
-     *         ctx.export(&#34;members&#34;, dc2NetworkAreaMembers.applyValue(getNetworkAreaMembersResult -&gt; getNetworkAreaMembersResult).applyValue(dc2NetworkAreaMembers -&gt; dc2NetworkAreaMembers.applyValue(getNetworkAreaMembersResult -&gt; getNetworkAreaMembersResult.members())));
+     *         ctx.export(&#34;members&#34;, dc2.applyValue(getNetworkAreaMembersResult -&gt; getNetworkAreaMembersResult).applyValue(dc2 -&gt; dc2.applyValue(getNetworkAreaMembersResult -&gt; getNetworkAreaMembersResult.members())));
      *     }
      * }
      * ```
@@ -2923,11 +2915,11 @@ public final class ConsulFunctions {
      *             .useTls(true)
      *             .build());
      * 
-     *         final var dc2NetworkAreaMembers = ConsulFunctions.getNetworkAreaMembers(GetNetworkAreaMembersArgs.builder()
+     *         final var dc2 = ConsulFunctions.getNetworkAreaMembers(GetNetworkAreaMembersArgs.builder()
      *             .uuid(dc2NetworkArea.id())
      *             .build());
      * 
-     *         ctx.export(&#34;members&#34;, dc2NetworkAreaMembers.applyValue(getNetworkAreaMembersResult -&gt; getNetworkAreaMembersResult).applyValue(dc2NetworkAreaMembers -&gt; dc2NetworkAreaMembers.applyValue(getNetworkAreaMembersResult -&gt; getNetworkAreaMembersResult.members())));
+     *         ctx.export(&#34;members&#34;, dc2.applyValue(getNetworkAreaMembersResult -&gt; getNetworkAreaMembersResult).applyValue(dc2 -&gt; dc2.applyValue(getNetworkAreaMembersResult -&gt; getNetworkAreaMembersResult.members())));
      *     }
      * }
      * ```
@@ -2975,11 +2967,11 @@ public final class ConsulFunctions {
      *             .useTls(true)
      *             .build());
      * 
-     *         final var dc2NetworkAreaMembers = ConsulFunctions.getNetworkAreaMembers(GetNetworkAreaMembersArgs.builder()
+     *         final var dc2 = ConsulFunctions.getNetworkAreaMembers(GetNetworkAreaMembersArgs.builder()
      *             .uuid(dc2NetworkArea.id())
      *             .build());
      * 
-     *         ctx.export(&#34;members&#34;, dc2NetworkAreaMembers.applyValue(getNetworkAreaMembersResult -&gt; getNetworkAreaMembersResult).applyValue(dc2NetworkAreaMembers -&gt; dc2NetworkAreaMembers.applyValue(getNetworkAreaMembersResult -&gt; getNetworkAreaMembersResult.members())));
+     *         ctx.export(&#34;members&#34;, dc2.applyValue(getNetworkAreaMembersResult -&gt; getNetworkAreaMembersResult).applyValue(dc2 -&gt; dc2.applyValue(getNetworkAreaMembersResult -&gt; getNetworkAreaMembersResult.members())));
      *     }
      * }
      * ```
@@ -3019,9 +3011,9 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var segmentsNetworkSegments = ConsulFunctions.getNetworkSegments();
+     *         final var segments = ConsulFunctions.getNetworkSegments();
      * 
-     *         ctx.export(&#34;segments&#34;, segmentsNetworkSegments.applyValue(getNetworkSegmentsResult -&gt; getNetworkSegmentsResult.segments()));
+     *         ctx.export(&#34;segments&#34;, segments.applyValue(getNetworkSegmentsResult -&gt; getNetworkSegmentsResult.segments()));
      *     }
      * }
      * ```
@@ -3061,9 +3053,9 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var segmentsNetworkSegments = ConsulFunctions.getNetworkSegments();
+     *         final var segments = ConsulFunctions.getNetworkSegments();
      * 
-     *         ctx.export(&#34;segments&#34;, segmentsNetworkSegments.applyValue(getNetworkSegmentsResult -&gt; getNetworkSegmentsResult.segments()));
+     *         ctx.export(&#34;segments&#34;, segments.applyValue(getNetworkSegmentsResult -&gt; getNetworkSegmentsResult.segments()));
      *     }
      * }
      * ```
@@ -3103,9 +3095,9 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var segmentsNetworkSegments = ConsulFunctions.getNetworkSegments();
+     *         final var segments = ConsulFunctions.getNetworkSegments();
      * 
-     *         ctx.export(&#34;segments&#34;, segmentsNetworkSegments.applyValue(getNetworkSegmentsResult -&gt; getNetworkSegmentsResult.segments()));
+     *         ctx.export(&#34;segments&#34;, segments.applyValue(getNetworkSegmentsResult -&gt; getNetworkSegmentsResult.segments()));
      *     }
      * }
      * ```
@@ -3145,9 +3137,9 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var segmentsNetworkSegments = ConsulFunctions.getNetworkSegments();
+     *         final var segments = ConsulFunctions.getNetworkSegments();
      * 
-     *         ctx.export(&#34;segments&#34;, segmentsNetworkSegments.applyValue(getNetworkSegmentsResult -&gt; getNetworkSegmentsResult.segments()));
+     *         ctx.export(&#34;segments&#34;, segments.applyValue(getNetworkSegmentsResult -&gt; getNetworkSegmentsResult.segments()));
      *     }
      * }
      * ```
@@ -3187,9 +3179,9 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var segmentsNetworkSegments = ConsulFunctions.getNetworkSegments();
+     *         final var segments = ConsulFunctions.getNetworkSegments();
      * 
-     *         ctx.export(&#34;segments&#34;, segmentsNetworkSegments.applyValue(getNetworkSegmentsResult -&gt; getNetworkSegmentsResult.segments()));
+     *         ctx.export(&#34;segments&#34;, segments.applyValue(getNetworkSegmentsResult -&gt; getNetworkSegmentsResult.segments()));
      *     }
      * }
      * ```
@@ -3229,9 +3221,9 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var segmentsNetworkSegments = ConsulFunctions.getNetworkSegments();
+     *         final var segments = ConsulFunctions.getNetworkSegments();
      * 
-     *         ctx.export(&#34;segments&#34;, segmentsNetworkSegments.applyValue(getNetworkSegmentsResult -&gt; getNetworkSegmentsResult.segments()));
+     *         ctx.export(&#34;segments&#34;, segments.applyValue(getNetworkSegmentsResult -&gt; getNetworkSegmentsResult.segments()));
      *     }
      * }
      * ```
@@ -3758,9 +3750,9 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var vaultServiceHealth = ConsulFunctions.getServiceHealth(GetServiceHealthArgs.builder()
-     *             .passing(true)
+     *         final var vault = ConsulFunctions.getServiceHealth(GetServiceHealthArgs.builder()
      *             .service(&#34;vault&#34;)
+     *             .passing(true)
      *             .build());
      * 
      *     }
@@ -3805,9 +3797,9 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var vaultServiceHealth = ConsulFunctions.getServiceHealth(GetServiceHealthArgs.builder()
-     *             .passing(true)
+     *         final var vault = ConsulFunctions.getServiceHealth(GetServiceHealthArgs.builder()
      *             .service(&#34;vault&#34;)
+     *             .passing(true)
      *             .build());
      * 
      *     }
@@ -3852,9 +3844,9 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var vaultServiceHealth = ConsulFunctions.getServiceHealth(GetServiceHealthArgs.builder()
-     *             .passing(true)
+     *         final var vault = ConsulFunctions.getServiceHealth(GetServiceHealthArgs.builder()
      *             .service(&#34;vault&#34;)
+     *             .passing(true)
      *             .build());
      * 
      *     }
@@ -3899,9 +3891,9 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var vaultServiceHealth = ConsulFunctions.getServiceHealth(GetServiceHealthArgs.builder()
-     *             .passing(true)
+     *         final var vault = ConsulFunctions.getServiceHealth(GetServiceHealthArgs.builder()
      *             .service(&#34;vault&#34;)
+     *             .passing(true)
      *             .build());
      * 
      *     }

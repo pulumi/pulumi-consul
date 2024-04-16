@@ -12,8 +12,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
  *
- * const proxyDefaults = new consul.ConfigEntry("proxyDefaults", {
+ * const proxyDefaults = new consul.ConfigEntry("proxy_defaults", {
  *     kind: "proxy-defaults",
+ *     name: "global",
  *     configJson: JSON.stringify({
  *         Config: {
  *             local_connect_timeout_ms: 1000,
@@ -22,19 +23,22 @@ import * as utilities from "./utilities";
  *     }),
  * });
  * const web = new consul.ConfigEntry("web", {
+ *     name: "web",
  *     kind: "service-defaults",
  *     configJson: JSON.stringify({
  *         Protocol: "http",
  *     }),
  * });
  * const admin = new consul.ConfigEntry("admin", {
+ *     name: "admin",
  *     kind: "service-defaults",
  *     configJson: JSON.stringify({
  *         Protocol: "http",
  *     }),
  * });
- * const serviceResolver = new consul.ConfigEntry("serviceResolver", {
+ * const serviceResolver = new consul.ConfigEntry("service_resolver", {
  *     kind: "service-resolver",
+ *     name: web.name,
  *     configJson: JSON.stringify({
  *         DefaultSubset: "v1",
  *         Subsets: {
@@ -47,8 +51,9 @@ import * as utilities from "./utilities";
  *         },
  *     }),
  * });
- * const serviceSplitter = new consul.ConfigEntry("serviceSplitter", {
+ * const serviceSplitter = new consul.ConfigEntry("service_splitter", {
  *     kind: "service-splitter",
+ *     name: serviceResolver.name,
  *     configJson: JSON.stringify({
  *         Splits: [
  *             {
@@ -62,8 +67,9 @@ import * as utilities from "./utilities";
  *         ],
  *     }),
  * });
- * const serviceRouter = new consul.ConfigEntry("serviceRouter", {
+ * const serviceRouter = new consul.ConfigEntry("service_router", {
  *     kind: "service-router",
+ *     name: "web",
  *     configJson: JSON.stringify({
  *         Routes: [{
  *             Match: {
@@ -77,7 +83,8 @@ import * as utilities from "./utilities";
  *         }],
  *     }),
  * });
- * const ingressGateway = new consul.ConfigEntry("ingressGateway", {
+ * const ingressGateway = new consul.ConfigEntry("ingress_gateway", {
+ *     name: "us-east-ingress",
  *     kind: "ingress-gateway",
  *     configJson: JSON.stringify({
  *         TLS: {
@@ -92,7 +99,8 @@ import * as utilities from "./utilities";
  *         }],
  *     }),
  * });
- * const terminatingGateway = new consul.ConfigEntry("terminatingGateway", {
+ * const terminatingGateway = new consul.ConfigEntry("terminating_gateway", {
+ *     name: "us-west-gateway",
  *     kind: "terminating-gateway",
  *     configJson: JSON.stringify({
  *         Services: [{
@@ -110,7 +118,8 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
  *
- * const serviceIntentions = new consul.ConfigEntry("serviceIntentions", {
+ * const serviceIntentions = new consul.ConfigEntry("service_intentions", {
+ *     name: "api-service",
  *     kind: "service-intentions",
  *     configJson: JSON.stringify({
  *         Sources: [
@@ -138,12 +147,14 @@ import * as utilities from "./utilities";
  * import * as consul from "@pulumi/consul";
  *
  * const sd = new consul.ConfigEntry("sd", {
+ *     name: "fort-knox",
  *     kind: "service-defaults",
  *     configJson: JSON.stringify({
  *         Protocol: "http",
  *     }),
  * });
- * const jwtProvider = new consul.ConfigEntry("jwtProvider", {
+ * const jwtProvider = new consul.ConfigEntry("jwt_provider", {
+ *     name: "test-provider",
  *     kind: "jwt-provider",
  *     configJson: JSON.stringify({
  *         Issuer: "test-issuer",
@@ -158,7 +169,8 @@ import * as utilities from "./utilities";
  *         },
  *     }),
  * });
- * const serviceIntentions = new consul.ConfigEntry("serviceIntentions", {
+ * const serviceIntentions = new consul.ConfigEntry("service_intentions", {
+ *     name: sd.name,
  *     kind: "service-intentions",
  *     configJson: pulumi.jsonStringify({
  *         Sources: [
@@ -214,7 +226,8 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
  *
- * const exportedServices = new consul.ConfigEntry("exportedServices", {
+ * const exportedServices = new consul.ConfigEntry("exported_services", {
+ *     name: "test",
  *     kind: "exported-services",
  *     configJson: JSON.stringify({
  *         Services: [{
@@ -237,6 +250,7 @@ import * as utilities from "./utilities";
  * import * as consul from "@pulumi/consul";
  *
  * const mesh = new consul.ConfigEntry("mesh", {
+ *     name: "mesh",
  *     kind: "mesh",
  *     partition: "default",
  *     configJson: JSON.stringify({
@@ -255,7 +269,8 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
  *
- * const jwtProvider = new consul.ConfigEntry("jwtProvider", {
+ * const jwtProvider = new consul.ConfigEntry("jwt_provider", {
+ *     name: "provider-name",
  *     kind: "jwt-provider",
  *     configJson: JSON.stringify({
  *         Issuer: "https://your.issuer.com",

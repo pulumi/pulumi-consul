@@ -347,9 +347,9 @@ class Intention(pulumi.CustomResource):
         import pulumi_consul as consul
 
         database = consul.Intention("database",
-            action="allow",
+            source_name="api",
             destination_name="db",
-            source_name="api")
+            action="allow")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -361,9 +361,9 @@ class Intention(pulumi.CustomResource):
         import pulumi_consul as consul
 
         database = consul.Intention("database",
-            action="allow",
-            destination_name=consul_service["pg"]["name"],
-            source_name="api")
+            source_name="api",
+            destination_name=pg_consul_service["name"],
+            action="allow")
         pg = consul.get_service(name="postgresql")
         ```
         <!--End PulumiCodeChooser -->
@@ -425,9 +425,9 @@ class Intention(pulumi.CustomResource):
         import pulumi_consul as consul
 
         database = consul.Intention("database",
-            action="allow",
+            source_name="api",
             destination_name="db",
-            source_name="api")
+            action="allow")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -439,9 +439,9 @@ class Intention(pulumi.CustomResource):
         import pulumi_consul as consul
 
         database = consul.Intention("database",
-            action="allow",
-            destination_name=consul_service["pg"]["name"],
-            source_name="api")
+            source_name="api",
+            destination_name=pg_consul_service["name"],
+            action="allow")
         pg = consul.get_service(name="postgresql")
         ```
         <!--End PulumiCodeChooser -->

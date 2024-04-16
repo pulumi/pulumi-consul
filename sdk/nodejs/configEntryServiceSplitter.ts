@@ -15,6 +15,7 @@ import * as utilities from "./utilities";
  * import * as consul from "@pulumi/consul";
  *
  * const web = new consul.ConfigEntry("web", {
+ *     name: "web",
  *     kind: "service-defaults",
  *     configJson: JSON.stringify({
  *         Protocol: "http",
@@ -23,7 +24,8 @@ import * as utilities from "./utilities";
  *         TransparentProxy: {},
  *     }),
  * });
- * const serviceResolver = new consul.ConfigEntryServiceResolver("serviceResolver", {
+ * const serviceResolver = new consul.ConfigEntryServiceResolver("service_resolver", {
+ *     name: "service-resolver",
  *     defaultSubset: "v1",
  *     subsets: [
  *         {
@@ -32,11 +34,12 @@ import * as utilities from "./utilities";
  *         },
  *         {
  *             name: "v2",
- *             Filter: "Service.Meta.version == v2",
+ *             filter: "Service.Meta.version == v2",
  *         },
  *     ],
  * });
  * const foo = new consul.ConfigEntryServiceSplitter("foo", {
+ *     name: serviceResolver.name,
  *     meta: {
  *         key: "value",
  *     },

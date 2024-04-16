@@ -111,7 +111,9 @@ class AdminPartition(pulumi.CustomResource):
         import pulumi
         import pulumi_consul as consul
 
-        na_west = consul.AdminPartition("naWest", description="Partition for North America West")
+        na_west = consul.AdminPartition("na_west",
+            name="na-west",
+            description="Partition for North America West")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -146,7 +148,9 @@ class AdminPartition(pulumi.CustomResource):
         import pulumi
         import pulumi_consul as consul
 
-        na_west = consul.AdminPartition("naWest", description="Partition for North America West")
+        na_west = consul.AdminPartition("na_west",
+            name="na-west",
+            description="Partition for North America West")
         ```
         <!--End PulumiCodeChooser -->
 

@@ -191,6 +191,7 @@ class AgentService(pulumi.CustomResource):
 
         app = consul.AgentService("app",
             address="www.google.com",
+            name="google",
             port=80,
             tags=[
                 "tag0",
@@ -232,6 +233,7 @@ class AgentService(pulumi.CustomResource):
 
         app = consul.AgentService("app",
             address="www.google.com",
+            name="google",
             port=80,
             tags=[
                 "tag0",

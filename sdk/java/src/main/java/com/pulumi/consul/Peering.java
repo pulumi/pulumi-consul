@@ -34,13 +34,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.consul.Provider;
- * import com.pulumi.consul.ProviderArgs;
  * import com.pulumi.consul.PeeringToken;
  * import com.pulumi.consul.PeeringTokenArgs;
  * import com.pulumi.consul.Peering;
  * import com.pulumi.consul.PeeringArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -54,28 +51,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         // Create a peering between the EU and US Consul clusters
- *         var eu = new Provider(&#34;eu&#34;, ProviderArgs.builder()        
- *             .address(&#34;eu-cluster:8500&#34;)
- *             .build());
- * 
- *         var us = new Provider(&#34;us&#34;, ProviderArgs.builder()        
- *             .address(&#34;us-cluster:8500&#34;)
- *             .build());
- * 
- *         var eu_usPeeringToken = new PeeringToken(&#34;eu-usPeeringToken&#34;, PeeringTokenArgs.builder()        
+ *         var eu_us = new PeeringToken(&#34;eu-us&#34;, PeeringTokenArgs.builder()        
  *             .peerName(&#34;eu-cluster&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(consul.us())
- *                 .build());
+ *             .build());
  * 
  *         var eu_usPeering = new Peering(&#34;eu-usPeering&#34;, PeeringArgs.builder()        
  *             .peerName(&#34;eu-cluster&#34;)
- *             .peeringToken(consul_peering_token.token().peering_token())
+ *             .peeringToken(token.peeringToken())
  *             .meta(Map.of(&#34;hello&#34;, &#34;world&#34;))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(consul.eu())
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

@@ -24,26 +24,26 @@ namespace Pulumi.Consul
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var appKeyPrefix = Consul.GetKeyPrefix.Invoke(new()
+        ///     var app = Consul.GetKeyPrefix.Invoke(new()
         ///     {
         ///         Datacenter = "nyc1",
+        ///         Token = "abcd",
         ///         PathPrefix = "myapp/config/",
         ///         SubkeyCollection = new[]
         ///         {
         ///             new Consul.Inputs.GetKeyPrefixSubkeyCollectionInputArgs
         ///             {
-        ///                 Default = "ami-1234",
         ///                 Name = "ami",
         ///                 Path = "app/launch_ami",
+        ///                 Default = "ami-1234",
         ///             },
         ///         },
-        ///         Token = "abcd",
         ///     });
         /// 
         ///     // Start our instance with the dynamic ami value
-        ///     var appInstance = new Aws.Ec2.Instance("appInstance", new()
+        ///     var appInstance = new Aws.Index.Instance("app", new()
         ///     {
-        ///         Ami = appKeyPrefix.Apply(getKeyPrefixResult =&gt; getKeyPrefixResult.Var?.Ami),
+        ///         Ami = app.Apply(getKeyPrefixResult =&gt; getKeyPrefixResult.Var?.Ami),
         ///     });
         /// 
         /// });
@@ -60,17 +60,17 @@ namespace Pulumi.Consul
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var webKeyPrefix = Consul.GetKeyPrefix.Invoke(new()
+        ///     var web = Consul.GetKeyPrefix.Invoke(new()
         ///     {
         ///         Datacenter = "nyc1",
-        ///         PathPrefix = "myapp/config/",
         ///         Token = "efgh",
+        ///         PathPrefix = "myapp/config/",
         ///     });
         /// 
         ///     // Start our instance with the dynamic ami value
-        ///     var webInstance = new Aws.Ec2.Instance("webInstance", new()
+        ///     var webInstance = new Aws.Index.Instance("web", new()
         ///     {
-        ///         Ami = webKeyPrefix.Apply(getKeyPrefixResult =&gt; getKeyPrefixResult.Subkeys?.App_launch_ami),
+        ///         Ami = web.Apply(getKeyPrefixResult =&gt; getKeyPrefixResult.Subkeys?.App_launch_ami),
         ///     });
         /// 
         /// });
@@ -93,26 +93,26 @@ namespace Pulumi.Consul
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var appKeyPrefix = Consul.GetKeyPrefix.Invoke(new()
+        ///     var app = Consul.GetKeyPrefix.Invoke(new()
         ///     {
         ///         Datacenter = "nyc1",
+        ///         Token = "abcd",
         ///         PathPrefix = "myapp/config/",
         ///         SubkeyCollection = new[]
         ///         {
         ///             new Consul.Inputs.GetKeyPrefixSubkeyCollectionInputArgs
         ///             {
-        ///                 Default = "ami-1234",
         ///                 Name = "ami",
         ///                 Path = "app/launch_ami",
+        ///                 Default = "ami-1234",
         ///             },
         ///         },
-        ///         Token = "abcd",
         ///     });
         /// 
         ///     // Start our instance with the dynamic ami value
-        ///     var appInstance = new Aws.Ec2.Instance("appInstance", new()
+        ///     var appInstance = new Aws.Index.Instance("app", new()
         ///     {
-        ///         Ami = appKeyPrefix.Apply(getKeyPrefixResult =&gt; getKeyPrefixResult.Var?.Ami),
+        ///         Ami = app.Apply(getKeyPrefixResult =&gt; getKeyPrefixResult.Var?.Ami),
         ///     });
         /// 
         /// });
@@ -129,17 +129,17 @@ namespace Pulumi.Consul
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var webKeyPrefix = Consul.GetKeyPrefix.Invoke(new()
+        ///     var web = Consul.GetKeyPrefix.Invoke(new()
         ///     {
         ///         Datacenter = "nyc1",
-        ///         PathPrefix = "myapp/config/",
         ///         Token = "efgh",
+        ///         PathPrefix = "myapp/config/",
         ///     });
         /// 
         ///     // Start our instance with the dynamic ami value
-        ///     var webInstance = new Aws.Ec2.Instance("webInstance", new()
+        ///     var webInstance = new Aws.Index.Instance("web", new()
         ///     {
-        ///         Ami = webKeyPrefix.Apply(getKeyPrefixResult =&gt; getKeyPrefixResult.Subkeys?.App_launch_ami),
+        ///         Ami = web.Apply(getKeyPrefixResult =&gt; getKeyPrefixResult.Subkeys?.App_launch_ami),
         ///     });
         /// 
         /// });
