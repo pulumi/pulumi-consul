@@ -27,25 +27,25 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := consul.NewKeyPrefix(ctx, "myappConfig", &consul.KeyPrefixArgs{
+//			_, err := consul.NewKeyPrefix(ctx, "myapp_config", &consul.KeyPrefixArgs{
 //				Datacenter: pulumi.String("nyc1"),
+//				Token:      pulumi.String("abcd"),
 //				PathPrefix: pulumi.String("myapp/config/"),
+//				Subkeys: pulumi.StringMap{
+//					"elb_cname":         pulumi.Any(appAwsElb.DnsName),
+//					"s3_bucket_name":    pulumi.Any(appAwsS3Bucket.Bucket),
+//					"database/hostname": pulumi.Any(app.Address),
+//					"database/port":     pulumi.Any(app.Port),
+//					"database/username": pulumi.Any(app.Username),
+//					"database/name":     pulumi.Any(app.Name),
+//				},
 //				SubkeyCollection: consul.KeyPrefixSubkeyCollectionArray{
 //					&consul.KeyPrefixSubkeyCollectionArgs{
-//						Flags: pulumi.Int(2),
 //						Path:  pulumi.String("database/password"),
-//						Value: pulumi.Any(aws_db_instance.App.Password),
+//						Value: pulumi.Any(app.Password),
+//						Flags: pulumi.Int(2),
 //					},
 //				},
-//				Subkeys: pulumi.StringMap{
-//					"database/hostname": pulumi.Any(aws_db_instance.App.Address),
-//					"database/name":     pulumi.Any(aws_db_instance.App.Name),
-//					"database/port":     pulumi.Any(aws_db_instance.App.Port),
-//					"database/username": pulumi.Any(aws_db_instance.App.Username),
-//					"elb_cname":         pulumi.Any(aws_elb.App.Dns_name),
-//					"s3_bucket_name":    pulumi.Any(aws_s3_bucket.App.Bucket),
-//				},
-//				Token: pulumi.String("abcd"),
 //			})
 //			if err != nil {
 //				return err

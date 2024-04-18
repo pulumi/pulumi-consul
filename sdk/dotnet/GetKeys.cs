@@ -26,7 +26,7 @@ namespace Pulumi.Consul
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var appKeys = Consul.GetKeys.Invoke(new()
+        ///     var app = Consul.GetKeys.Invoke(new()
         ///     {
         ///         Datacenter = "nyc1",
         ///         Keys = new[]
@@ -41,12 +41,11 @@ namespace Pulumi.Consul
         ///     });
         /// 
         ///     // Start our instance with the dynamic ami value
-        ///     var appInstance = new Aws.Ec2.Instance("appInstance", new()
+        ///     var appInstance = new Aws.Index.Instance("app", new()
         ///     {
-        ///         Ami = appKeys.Apply(getKeysResult =&gt; getKeysResult.Var?.Ami),
+        ///         Ami = app.Apply(getKeysResult =&gt; getKeysResult.Var?.Ami),
         ///     });
         /// 
-        ///     // ...
         /// });
         /// ```
         /// &lt;!--End PulumiCodeChooser --&gt;
@@ -69,7 +68,7 @@ namespace Pulumi.Consul
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var appKeys = Consul.GetKeys.Invoke(new()
+        ///     var app = Consul.GetKeys.Invoke(new()
         ///     {
         ///         Datacenter = "nyc1",
         ///         Keys = new[]
@@ -84,12 +83,11 @@ namespace Pulumi.Consul
         ///     });
         /// 
         ///     // Start our instance with the dynamic ami value
-        ///     var appInstance = new Aws.Ec2.Instance("appInstance", new()
+        ///     var appInstance = new Aws.Index.Instance("app", new()
         ///     {
-        ///         Ami = appKeys.Apply(getKeysResult =&gt; getKeysResult.Var?.Ami),
+        ///         Ami = app.Apply(getKeysResult =&gt; getKeysResult.Var?.Ami),
         ///     });
         /// 
-        ///     // ...
         /// });
         /// ```
         /// &lt;!--End PulumiCodeChooser --&gt;

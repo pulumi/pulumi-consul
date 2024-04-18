@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			dc2NetworkArea, err := consul.NewNetworkArea(ctx, "dc2NetworkArea", &consul.NetworkAreaArgs{
+//			dc2NetworkArea, err := consul.NewNetworkArea(ctx, "dc2", &consul.NetworkAreaArgs{
 //				PeerDatacenter: pulumi.String("dc2"),
 //				RetryJoins: pulumi.StringArray{
 //					pulumi.String("1.2.3.4"),
@@ -41,11 +41,11 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			dc2NetworkAreaMembers := consul.GetNetworkAreaMembersOutput(ctx, consul.GetNetworkAreaMembersOutputArgs{
+//			dc2 := consul.GetNetworkAreaMembersOutput(ctx, consul.GetNetworkAreaMembersOutputArgs{
 //				Uuid: dc2NetworkArea.ID(),
 //			}, nil)
-//			ctx.Export("members", dc2NetworkAreaMembers.ApplyT(func(dc2NetworkAreaMembers consul.GetNetworkAreaMembersResult) ([]consul.GetNetworkAreaMembersMember, error) {
-//				return dc2NetworkAreaMembers.Members, nil
+//			ctx.Export("members", dc2.ApplyT(func(dc2 consul.GetNetworkAreaMembersResult) ([]consul.GetNetworkAreaMembersMember, error) {
+//				return dc2.Members, nil
 //			}).([]consul.GetNetworkAreaMembersMemberOutput))
 //			return nil
 //		})

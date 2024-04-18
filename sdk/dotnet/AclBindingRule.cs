@@ -25,6 +25,7 @@ namespace Pulumi.Consul
     /// {
     ///     var minikube = new Consul.AclAuthMethod("minikube", new()
     ///     {
+    ///         Name = "minikube",
     ///         Type = "kubernetes",
     ///         Description = "dev minikube cluster",
     ///         Config = 

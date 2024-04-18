@@ -19,15 +19,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
  *
- * const dc2NetworkArea = new consul.NetworkArea("dc2NetworkArea", {
+ * const dc2NetworkArea = new consul.NetworkArea("dc2", {
  *     peerDatacenter: "dc2",
  *     retryJoins: ["1.2.3.4"],
  *     useTls: true,
  * });
- * const dc2NetworkAreaMembers = consul.getNetworkAreaMembersOutput({
+ * const dc2 = consul.getNetworkAreaMembersOutput({
  *     uuid: dc2NetworkArea.id,
  * });
- * export const members = dc2NetworkAreaMembers.apply(dc2NetworkAreaMembers => dc2NetworkAreaMembers.members);
+ * export const members = dc2.apply(dc2 => dc2.members);
  * ```
  * <!--End PulumiCodeChooser -->
  */
@@ -103,15 +103,15 @@ Please use the token argument in the provider configuration
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
  *
- * const dc2NetworkArea = new consul.NetworkArea("dc2NetworkArea", {
+ * const dc2NetworkArea = new consul.NetworkArea("dc2", {
  *     peerDatacenter: "dc2",
  *     retryJoins: ["1.2.3.4"],
  *     useTls: true,
  * });
- * const dc2NetworkAreaMembers = consul.getNetworkAreaMembersOutput({
+ * const dc2 = consul.getNetworkAreaMembersOutput({
  *     uuid: dc2NetworkArea.id,
  * });
- * export const members = dc2NetworkAreaMembers.apply(dc2NetworkAreaMembers => dc2NetworkAreaMembers.members);
+ * export const members = dc2.apply(dc2 => dc2.members);
  * ```
  * <!--End PulumiCodeChooser -->
  */

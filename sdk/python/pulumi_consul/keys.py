@@ -254,11 +254,11 @@ class Keys(pulumi.CustomResource):
 
         app = consul.Keys("app",
             datacenter="nyc1",
+            token="abcd",
             keys=[consul.KeysKeyArgs(
                 path="service/app/elb_address",
-                value=aws_elb["app"]["dns_name"],
-            )],
-            token="abcd")
+                value=app_aws_elb["dnsName"],
+            )])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -289,11 +289,11 @@ class Keys(pulumi.CustomResource):
 
         app = consul.Keys("app",
             datacenter="nyc1",
+            token="abcd",
             keys=[consul.KeysKeyArgs(
                 path="service/app/elb_address",
-                value=aws_elb["app"]["dns_name"],
-            )],
-            token="abcd")
+                value=app_aws_elb["dnsName"],
+            )])
         ```
         <!--End PulumiCodeChooser -->
 

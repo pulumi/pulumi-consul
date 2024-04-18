@@ -27,37 +27,38 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := consul.NewConfigEntryServiceResolver(ctx, "web", &consul.ConfigEntryServiceResolverArgs{
-//				ConnectTimeout: pulumi.String("15s"),
+//				Name:           pulumi.String("web"),
 //				DefaultSubset:  pulumi.String("v1"),
-//				Failovers: consul.ConfigEntryServiceResolverFailoverArray{
-//					&consul.ConfigEntryServiceResolverFailoverArgs{
-//						Datacenters: pulumi.StringArray{
-//							pulumi.String("dc2"),
-//						},
-//						SubsetName: pulumi.String("v2"),
+//				ConnectTimeout: pulumi.String("15s"),
+//				Subsets: consul.ConfigEntryServiceResolverSubsetArray{
+//					&consul.ConfigEntryServiceResolverSubsetArgs{
+//						Name:   pulumi.String("v1"),
+//						Filter: pulumi.String("Service.Meta.version == v1"),
 //					},
-//					&consul.ConfigEntryServiceResolverFailoverArgs{
-//						Datacenters: pulumi.StringArray{
-//							pulumi.String("dc3"),
-//							pulumi.String("dc4"),
-//						},
-//						SubsetName: pulumi.String("*"),
+//					&consul.ConfigEntryServiceResolverSubsetArgs{
+//						Name:   pulumi.String("v2"),
+//						Filter: pulumi.String("Service.Meta.version == v2"),
 //					},
 //				},
 //				Redirects: consul.ConfigEntryServiceResolverRedirectArray{
 //					&consul.ConfigEntryServiceResolverRedirectArgs{
-//						Datacenter: pulumi.String("dc2"),
 //						Service:    pulumi.String("web"),
+//						Datacenter: pulumi.String("dc2"),
 //					},
 //				},
-//				Subsets: consul.ConfigEntryServiceResolverSubsetArray{
-//					&consul.ConfigEntryServiceResolverSubsetArgs{
-//						Filter: pulumi.String("Service.Meta.version == v1"),
-//						Name:   pulumi.String("v1"),
+//				Failovers: consul.ConfigEntryServiceResolverFailoverArray{
+//					&consul.ConfigEntryServiceResolverFailoverArgs{
+//						SubsetName: pulumi.String("v2"),
+//						Datacenters: pulumi.StringArray{
+//							pulumi.String("dc2"),
+//						},
 //					},
-//					&consul.ConfigEntryServiceResolverSubsetArgs{
-//						Filter: pulumi.String("Service.Meta.version == v2"),
-//						Name:   pulumi.String("v2"),
+//					&consul.ConfigEntryServiceResolverFailoverArgs{
+//						SubsetName: pulumi.String("*"),
+//						Datacenters: pulumi.StringArray{
+//							pulumi.String("dc3"),
+//							pulumi.String("dc4"),
+//						},
 //					},
 //				},
 //			})

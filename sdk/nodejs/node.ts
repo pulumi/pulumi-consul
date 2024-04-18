@@ -15,7 +15,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
  *
- * const foobar = new consul.Node("foobar", {address: "192.168.10.10"});
+ * const foobar = new consul.Node("foobar", {
+ *     address: "192.168.10.10",
+ *     name: "foobar",
+ * });
  * ```
  * <!--End PulumiCodeChooser -->
  *

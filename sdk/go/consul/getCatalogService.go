@@ -20,6 +20,47 @@ import (
 // This data source is different from the `getServices` (plural) data
 // source, which provides a summary of the current Consul services.
 //
+// ## Example Usage
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+//	"github.com/pulumi/pulumi-example/sdk/v1/go/example"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := consul.LookupService(ctx, &consul.LookupServiceArgs{
+//				Name:       "consul",
+//				Datacenter: pulumi.StringRef("dc1"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			// Set the description to a whitespace delimited list of the node names
+//			_, err = index.NewResource(ctx, "app", &index.ResourceArgs{
+//				Description: std.Join(ctx, &std.JoinArgs{
+//					Separator: " ",
+//					Input:     nodes,
+//				}, nil).Result,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
 // Deprecated: getCatalogService has been deprecated in favor of getService
 func GetCatalogService(ctx *pulumi.Context, args *GetCatalogServiceArgs, opts ...pulumi.InvokeOption) (*GetCatalogServiceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

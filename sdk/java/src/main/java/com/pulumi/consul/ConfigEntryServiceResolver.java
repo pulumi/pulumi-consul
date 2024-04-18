@@ -32,9 +32,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.consul.ConfigEntryServiceResolver;
  * import com.pulumi.consul.ConfigEntryServiceResolverArgs;
- * import com.pulumi.consul.inputs.ConfigEntryServiceResolverFailoverArgs;
- * import com.pulumi.consul.inputs.ConfigEntryServiceResolverRedirectArgs;
  * import com.pulumi.consul.inputs.ConfigEntryServiceResolverSubsetArgs;
+ * import com.pulumi.consul.inputs.ConfigEntryServiceResolverRedirectArgs;
+ * import com.pulumi.consul.inputs.ConfigEntryServiceResolverFailoverArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -49,31 +49,32 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var web = new ConfigEntryServiceResolver(&#34;web&#34;, ConfigEntryServiceResolverArgs.builder()        
- *             .connectTimeout(&#34;15s&#34;)
+ *             .name(&#34;web&#34;)
  *             .defaultSubset(&#34;v1&#34;)
+ *             .connectTimeout(&#34;15s&#34;)
+ *             .subsets(            
+ *                 ConfigEntryServiceResolverSubsetArgs.builder()
+ *                     .name(&#34;v1&#34;)
+ *                     .filter(&#34;Service.Meta.version == v1&#34;)
+ *                     .build(),
+ *                 ConfigEntryServiceResolverSubsetArgs.builder()
+ *                     .name(&#34;v2&#34;)
+ *                     .filter(&#34;Service.Meta.version == v2&#34;)
+ *                     .build())
+ *             .redirects(ConfigEntryServiceResolverRedirectArgs.builder()
+ *                 .service(&#34;web&#34;)
+ *                 .datacenter(&#34;dc2&#34;)
+ *                 .build())
  *             .failovers(            
  *                 ConfigEntryServiceResolverFailoverArgs.builder()
- *                     .datacenters(&#34;dc2&#34;)
  *                     .subsetName(&#34;v2&#34;)
+ *                     .datacenters(&#34;dc2&#34;)
  *                     .build(),
  *                 ConfigEntryServiceResolverFailoverArgs.builder()
+ *                     .subsetName(&#34;*&#34;)
  *                     .datacenters(                    
  *                         &#34;dc3&#34;,
  *                         &#34;dc4&#34;)
- *                     .subsetName(&#34;*&#34;)
- *                     .build())
- *             .redirects(ConfigEntryServiceResolverRedirectArgs.builder()
- *                 .datacenter(&#34;dc2&#34;)
- *                 .service(&#34;web&#34;)
- *                 .build())
- *             .subsets(            
- *                 ConfigEntryServiceResolverSubsetArgs.builder()
- *                     .filter(&#34;Service.Meta.version == v1&#34;)
- *                     .name(&#34;v1&#34;)
- *                     .build(),
- *                 ConfigEntryServiceResolverSubsetArgs.builder()
- *                     .filter(&#34;Service.Meta.version == v2&#34;)
- *                     .name(&#34;v2&#34;)
  *                     .build())
  *             .build());
  * 

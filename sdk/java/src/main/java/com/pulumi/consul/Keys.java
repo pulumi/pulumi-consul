@@ -45,11 +45,11 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var app = new Keys(&#34;app&#34;, KeysArgs.builder()        
  *             .datacenter(&#34;nyc1&#34;)
+ *             .token(&#34;abcd&#34;)
  *             .keys(KeysKeyArgs.builder()
  *                 .path(&#34;service/app/elb_address&#34;)
- *                 .value(aws_elb.app().dns_name())
+ *                 .value(appAwsElb.dnsName())
  *                 .build())
- *             .token(&#34;abcd&#34;)
  *             .build());
  * 
  *     }

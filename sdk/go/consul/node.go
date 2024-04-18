@@ -32,6 +32,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := consul.NewNode(ctx, "foobar", &consul.NodeArgs{
 //				Address: pulumi.String("192.168.10.10"),
+//				Name:    pulumi.String("foobar"),
 //			})
 //			if err != nil {
 //				return err

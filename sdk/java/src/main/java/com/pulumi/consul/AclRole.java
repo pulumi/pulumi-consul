@@ -47,11 +47,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var read_policy = new AclPolicy(&#34;read-policy&#34;, AclPolicyArgs.builder()        
+ *             .name(&#34;read-policy&#34;)
  *             .rules(&#34;node \&#34;\&#34; { policy = \&#34;read\&#34; }&#34;)
  *             .datacenters(&#34;dc1&#34;)
  *             .build());
  * 
  *         var read = new AclRole(&#34;read&#34;, AclRoleArgs.builder()        
+ *             .name(&#34;foo&#34;)
  *             .description(&#34;bar&#34;)
  *             .policies(read_policy.id())
  *             .serviceIdentities(AclRoleServiceIdentityArgs.builder()

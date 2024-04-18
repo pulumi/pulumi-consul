@@ -12,13 +12,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
  *
- * const testAclPolicy = new consul.AclPolicy("testAclPolicy", {
+ * const test = new consul.AclPolicy("test", {
+ *     name: "test",
  *     rules: "node \"\" { policy = \"read\" }",
  *     datacenters: ["dc1"],
  * });
- * const testAclToken = new consul.AclToken("testAclToken", {
+ * const testAclToken = new consul.AclToken("test", {
  *     description: "test",
- *     policies: [testAclPolicy.name],
+ *     policies: [test.name],
  *     local: true,
  * });
  * const read = consul.getAclTokenSecretIdOutput({
@@ -85,13 +86,14 @@ export interface GetAclTokenSecretIdResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
  *
- * const testAclPolicy = new consul.AclPolicy("testAclPolicy", {
+ * const test = new consul.AclPolicy("test", {
+ *     name: "test",
  *     rules: "node \"\" { policy = \"read\" }",
  *     datacenters: ["dc1"],
  * });
- * const testAclToken = new consul.AclToken("testAclToken", {
+ * const testAclToken = new consul.AclToken("test", {
  *     description: "test",
- *     policies: [testAclPolicy.name],
+ *     policies: [test.name],
  *     local: true,
  * });
  * const read = consul.getAclTokenSecretIdOutput({

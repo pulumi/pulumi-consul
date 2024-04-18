@@ -43,6 +43,7 @@ import (
 //			}
 //			json0 := string(tmpJSON0)
 //			_, err = consul.NewAclAuthMethod(ctx, "minikube", &consul.AclAuthMethodArgs{
+//				Name:        pulumi.String("minikube"),
 //				Type:        pulumi.String("kubernetes"),
 //				Description: pulumi.String("dev minikube cluster"),
 //				ConfigJson:  pulumi.String(json0),
@@ -98,6 +99,7 @@ import (
 //			}
 //			json0 := string(tmpJSON0)
 //			_, err = consul.NewAclAuthMethod(ctx, "oidc", &consul.AclAuthMethodArgs{
+//				Name:        pulumi.String("auth0"),
 //				Type:        pulumi.String("oidc"),
 //				MaxTokenTtl: pulumi.String("5m"),
 //				ConfigJson:  pulumi.String(json0),

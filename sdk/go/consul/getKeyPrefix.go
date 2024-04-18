@@ -19,7 +19,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-aws/sdk/v4/go/aws/ec2"
+//	"github.com/pulumi/pulumi-aws/sdk/v4/go/aws"
 //	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -27,24 +27,24 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			appKeyPrefix, err := consul.LookupKeyPrefix(ctx, &consul.LookupKeyPrefixArgs{
+//			app, err := consul.LookupKeyPrefix(ctx, &consul.LookupKeyPrefixArgs{
 //				Datacenter: pulumi.StringRef("nyc1"),
+//				Token:      pulumi.StringRef("abcd"),
 //				PathPrefix: "myapp/config/",
 //				SubkeyCollection: []consul.GetKeyPrefixSubkeyCollection{
 //					{
-//						Default: pulumi.StringRef("ami-1234"),
 //						Name:    "ami",
 //						Path:    "app/launch_ami",
+//						Default: pulumi.StringRef("ami-1234"),
 //					},
 //				},
-//				Token: pulumi.StringRef("abcd"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			// Start our instance with the dynamic ami value
-//			_, err = ec2.NewInstance(ctx, "appInstance", &ec2.InstanceArgs{
-//				Ami: pulumi.String(appKeyPrefix.Var.Ami),
+//			_, err = aws.NewInstance(ctx, "app", &aws.InstanceArgs{
+//				Ami: app.Var.Ami,
 //			})
 //			if err != nil {
 //				return err
@@ -62,7 +62,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-aws/sdk/v4/go/aws/ec2"
+//	"github.com/pulumi/pulumi-aws/sdk/v4/go/aws"
 //	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -70,17 +70,17 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			webKeyPrefix, err := consul.LookupKeyPrefix(ctx, &consul.LookupKeyPrefixArgs{
+//			web, err := consul.LookupKeyPrefix(ctx, &consul.LookupKeyPrefixArgs{
 //				Datacenter: pulumi.StringRef("nyc1"),
-//				PathPrefix: "myapp/config/",
 //				Token:      pulumi.StringRef("efgh"),
+//				PathPrefix: "myapp/config/",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			// Start our instance with the dynamic ami value
-//			_, err = ec2.NewInstance(ctx, "webInstance", &ec2.InstanceArgs{
-//				Ami: pulumi.String(webKeyPrefix.Subkeys.App / launch_ami),
+//			_, err = aws.NewInstance(ctx, "web", &aws.InstanceArgs{
+//				Ami: web.Subkeys.App / launch_ami,
 //			})
 //			if err != nil {
 //				return err

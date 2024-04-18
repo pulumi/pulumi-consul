@@ -26,31 +26,32 @@ namespace Pulumi.Consul
     ///     // the standby tag.
     ///     var myapp_query = new Consul.PreparedQuery("myapp-query", new()
     ///     {
+    ///         Name = "myquery",
     ///         Datacenter = "us-central1",
-    ///         Dns = new Consul.Inputs.PreparedQueryDnsArgs
+    ///         Token = "abcd",
+    ///         StoredToken = "wxyz",
+    ///         OnlyPassing = true,
+    ///         Near = "_agent",
+    ///         Service = "myapp",
+    ///         Tags = new[]
     ///         {
-    ///             Ttl = "30s",
+    ///             "active",
+    ///             "!standby",
     ///         },
     ///         Failover = new Consul.Inputs.PreparedQueryFailoverArgs
     ///         {
+    ///             NearestN = 3,
     ///             Datacenters = new[]
     ///             {
     ///                 "us-west1",
     ///                 "us-east-2",
     ///                 "asia-east1",
     ///             },
-    ///             NearestN = 3,
     ///         },
-    ///         Near = "_agent",
-    ///         OnlyPassing = true,
-    ///         Service = "myapp",
-    ///         StoredToken = "wxyz",
-    ///         Tags = new[]
+    ///         Dns = new Consul.Inputs.PreparedQueryDnsArgs
     ///         {
-    ///             "active",
-    ///             "!standby",
+    ///             Ttl = "30s",
     ///         },
-    ///         Token = "abcd",
     ///     });
     /// 
     ///     // Creates a Prepared Query Template that matches *-near-self.query.consul
@@ -58,32 +59,33 @@ namespace Pulumi.Consul
     ///     // foo-near-self.query.consul will find the nearest healthy foo.service.consul).
     ///     var service_near_self = new Consul.PreparedQuery("service-near-self", new()
     ///     {
-    ///         Connect = true,
     ///         Datacenter = "nyc1",
-    ///         Dns = new Consul.Inputs.PreparedQueryDnsArgs
+    ///         Token = "abcd",
+    ///         StoredToken = "wxyz",
+    ///         Name = "",
+    ///         OnlyPassing = true,
+    ///         Connect = true,
+    ///         Near = "_agent",
+    ///         Template = new Consul.Inputs.PreparedQueryTemplateArgs
     ///         {
-    ///             Ttl = "5m",
+    ///             Type = "name_prefix_match",
+    ///             Regexp = "^(.*)-near-self$",
     ///         },
+    ///         Service = "${match(1)}",
     ///         Failover = new Consul.Inputs.PreparedQueryFailoverArgs
     ///         {
+    ///             NearestN = 3,
     ///             Datacenters = new[]
     ///             {
     ///                 "dc2",
     ///                 "dc3",
     ///                 "dc4",
     ///             },
-    ///             NearestN = 3,
     ///         },
-    ///         Near = "_agent",
-    ///         OnlyPassing = true,
-    ///         Service = "${match(1)}",
-    ///         StoredToken = "wxyz",
-    ///         Template = new Consul.Inputs.PreparedQueryTemplateArgs
+    ///         Dns = new Consul.Inputs.PreparedQueryDnsArgs
     ///         {
-    ///             Regexp = "^(.*)-near-self$",
-    ///             Type = "name_prefix_match",
+    ///             Ttl = "5m",
     ///         },
-    ///         Token = "abcd",
     ///     });
     /// 
     /// });

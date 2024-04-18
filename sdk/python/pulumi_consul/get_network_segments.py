@@ -98,8 +98,8 @@ def get_network_segments(datacenter: Optional[str] = None,
     import pulumi
     import pulumi_consul as consul
 
-    segments_network_segments = consul.get_network_segments()
-    pulumi.export("segments", segments_network_segments.segments)
+    segments = consul.get_network_segments()
+    pulumi.export("segments", segments.segments)
     ```
     <!--End PulumiCodeChooser -->
 
@@ -139,8 +139,8 @@ def get_network_segments_output(datacenter: Optional[pulumi.Input[Optional[str]]
     import pulumi
     import pulumi_consul as consul
 
-    segments_network_segments = consul.get_network_segments()
-    pulumi.export("segments", segments_network_segments.segments)
+    segments = consul.get_network_segments()
+    pulumi.export("segments", segments.segments)
     ```
     <!--End PulumiCodeChooser -->
 

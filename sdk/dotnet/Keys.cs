@@ -24,15 +24,15 @@ namespace Pulumi.Consul
     ///     var app = new Consul.Keys("app", new()
     ///     {
     ///         Datacenter = "nyc1",
+    ///         Token = "abcd",
     ///         KeysCollection = new[]
     ///         {
     ///             new Consul.Inputs.KeysKeyArgs
     ///             {
     ///                 Path = "service/app/elb_address",
-    ///                 Value = aws_elb.App.Dns_name,
+    ///                 Value = appAwsElb.DnsName,
     ///             },
     ///         },
-    ///         Token = "abcd",
     ///     });
     /// 
     /// });

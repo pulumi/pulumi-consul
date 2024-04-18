@@ -18,54 +18,56 @@ import * as utilities from "./utilities";
  * // healthy myapp.service.consul instance that has the active tag and not
  * // the standby tag.
  * const myapp_query = new consul.PreparedQuery("myapp-query", {
+ *     name: "myquery",
  *     datacenter: "us-central1",
- *     dns: {
- *         ttl: "30s",
- *     },
+ *     token: "abcd",
+ *     storedToken: "wxyz",
+ *     onlyPassing: true,
+ *     near: "_agent",
+ *     service: "myapp",
+ *     tags: [
+ *         "active",
+ *         "!standby",
+ *     ],
  *     failover: {
+ *         nearestN: 3,
  *         datacenters: [
  *             "us-west1",
  *             "us-east-2",
  *             "asia-east1",
  *         ],
- *         nearestN: 3,
  *     },
- *     near: "_agent",
- *     onlyPassing: true,
- *     service: "myapp",
- *     storedToken: "wxyz",
- *     tags: [
- *         "active",
- *         "!standby",
- *     ],
- *     token: "abcd",
+ *     dns: {
+ *         ttl: "30s",
+ *     },
  * });
  * // Creates a Prepared Query Template that matches *-near-self.query.consul
  * // and finds the nearest service that matches the glob character (e.g.
  * // foo-near-self.query.consul will find the nearest healthy foo.service.consul).
  * const service_near_self = new consul.PreparedQuery("service-near-self", {
- *     connect: true,
  *     datacenter: "nyc1",
- *     dns: {
- *         ttl: "5m",
+ *     token: "abcd",
+ *     storedToken: "wxyz",
+ *     name: "",
+ *     onlyPassing: true,
+ *     connect: true,
+ *     near: "_agent",
+ *     template: {
+ *         type: "name_prefix_match",
+ *         regexp: "^(.*)-near-self$",
  *     },
+ *     service: "${match(1)}",
  *     failover: {
+ *         nearestN: 3,
  *         datacenters: [
  *             "dc2",
  *             "dc3",
  *             "dc4",
  *         ],
- *         nearestN: 3,
  *     },
- *     near: "_agent",
- *     onlyPassing: true,
- *     service: "${match(1)}",
- *     storedToken: "wxyz",
- *     template: {
- *         regexp: "^(.*)-near-self$",
- *         type: "name_prefix_match",
+ *     dns: {
+ *         ttl: "5m",
  *     },
- *     token: "abcd",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

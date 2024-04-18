@@ -21,29 +21,29 @@ namespace Pulumi.Consul
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myappConfig = new Consul.KeyPrefix("myappConfig", new()
+    ///     var myappConfig = new Consul.KeyPrefix("myapp_config", new()
     ///     {
     ///         Datacenter = "nyc1",
+    ///         Token = "abcd",
     ///         PathPrefix = "myapp/config/",
+    ///         Subkeys = 
+    ///         {
+    ///             { "elb_cname", appAwsElb.DnsName },
+    ///             { "s3_bucket_name", appAwsS3Bucket.Bucket },
+    ///             { "database/hostname", app.Address },
+    ///             { "database/port", app.Port },
+    ///             { "database/username", app.Username },
+    ///             { "database/name", app.Name },
+    ///         },
     ///         SubkeyCollection = new[]
     ///         {
     ///             new Consul.Inputs.KeyPrefixSubkeyCollectionArgs
     ///             {
-    ///                 Flags = 2,
     ///                 Path = "database/password",
-    ///                 Value = aws_db_instance.App.Password,
+    ///                 Value = app.Password,
+    ///                 Flags = 2,
     ///             },
     ///         },
-    ///         Subkeys = 
-    ///         {
-    ///             { "database/hostname", aws_db_instance.App.Address },
-    ///             { "database/name", aws_db_instance.App.Name },
-    ///             { "database/port", aws_db_instance.App.Port },
-    ///             { "database/username", aws_db_instance.App.Username },
-    ///             { "elb_cname", aws_elb.App.Dns_name },
-    ///             { "s3_bucket_name", aws_s3_bucket.App.Bucket },
-    ///         },
-    ///         Token = "abcd",
     ///     });
     /// 
     /// });

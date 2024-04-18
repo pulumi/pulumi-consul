@@ -58,10 +58,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var compute = new Node(&#34;compute&#34;, NodeArgs.builder()        
+ *             .name(&#34;compute-google&#34;)
  *             .address(&#34;www.google.com&#34;)
  *             .build());
  * 
  *         var google = new Service(&#34;google&#34;, ServiceArgs.builder()        
+ *             .name(&#34;google&#34;)
  *             .node(compute.name())
  *             .port(80)
  *             .tags(&#34;tag0&#34;)
@@ -97,6 +99,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var google = new Service(&#34;google&#34;, ServiceArgs.builder()        
+ *             .name(&#34;google&#34;)
  *             .node(&#34;google&#34;)
  *             .port(443)
  *             .build());
@@ -132,28 +135,29 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var redis = new Service(&#34;redis&#34;, ServiceArgs.builder()        
+ *             .name(&#34;redis&#34;)
+ *             .node(&#34;redis&#34;)
+ *             .port(6379)
  *             .checks(ServiceCheckArgs.builder()
  *                 .checkId(&#34;service:redis1&#34;)
+ *                 .name(&#34;Redis health check&#34;)
+ *                 .status(&#34;passing&#34;)
+ *                 .http(&#34;https://www.hashicorptest.com&#34;)
+ *                 .tlsSkipVerify(false)
+ *                 .method(&#34;PUT&#34;)
+ *                 .interval(&#34;5s&#34;)
+ *                 .timeout(&#34;1s&#34;)
  *                 .deregisterCriticalServiceAfter(&#34;30s&#34;)
  *                 .headers(                
  *                     ServiceCheckHeaderArgs.builder()
  *                         .name(&#34;foo&#34;)
- *                         .value(&#34;test&#34;)
+ *                         .values(&#34;test&#34;)
  *                         .build(),
  *                     ServiceCheckHeaderArgs.builder()
  *                         .name(&#34;bar&#34;)
- *                         .value(&#34;test&#34;)
+ *                         .values(&#34;test&#34;)
  *                         .build())
- *                 .http(&#34;https://www.hashicorptest.com&#34;)
- *                 .interval(&#34;5s&#34;)
- *                 .method(&#34;PUT&#34;)
- *                 .name(&#34;Redis health check&#34;)
- *                 .status(&#34;passing&#34;)
- *                 .timeout(&#34;1s&#34;)
- *                 .tlsSkipVerify(false)
  *                 .build())
- *             .node(&#34;redis&#34;)
- *             .port(6379)
  *             .build());
  * 
  *     }

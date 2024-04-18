@@ -307,6 +307,7 @@ class AclBindingRule(pulumi.CustomResource):
         import pulumi_consul as consul
 
         minikube = consul.AclAuthMethod("minikube",
+            name="minikube",
             type="kubernetes",
             description="dev minikube cluster",
             config={
@@ -353,6 +354,7 @@ class AclBindingRule(pulumi.CustomResource):
         import pulumi_consul as consul
 
         minikube = consul.AclAuthMethod("minikube",
+            name="minikube",
             type="kubernetes",
             description="dev minikube cluster",
             config={

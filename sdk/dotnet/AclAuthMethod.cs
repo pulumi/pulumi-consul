@@ -28,6 +28,7 @@ namespace Pulumi.Consul
     /// {
     ///     var minikube = new Consul.AclAuthMethod("minikube", new()
     ///     {
+    ///         Name = "minikube",
     ///         Type = "kubernetes",
     ///         Description = "dev minikube cluster",
     ///         ConfigJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
@@ -58,6 +59,7 @@ namespace Pulumi.Consul
     /// {
     ///     var oidc = new Consul.AclAuthMethod("oidc", new()
     ///     {
+    ///         Name = "auth0",
     ///         Type = "oidc",
     ///         MaxTokenTtl = "5m",
     ///         ConfigJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;

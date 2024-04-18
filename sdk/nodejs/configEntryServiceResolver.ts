@@ -15,33 +15,34 @@ import * as utilities from "./utilities";
  * import * as consul from "@pulumi/consul";
  *
  * const web = new consul.ConfigEntryServiceResolver("web", {
- *     connectTimeout: "15s",
+ *     name: "web",
  *     defaultSubset: "v1",
- *     failovers: [
+ *     connectTimeout: "15s",
+ *     subsets: [
  *         {
- *             datacenters: ["dc2"],
- *             subsetName: "v2",
+ *             name: "v1",
+ *             filter: "Service.Meta.version == v1",
  *         },
  *         {
+ *             name: "v2",
+ *             filter: "Service.Meta.version == v2",
+ *         },
+ *     ],
+ *     redirects: [{
+ *         service: "web",
+ *         datacenter: "dc2",
+ *     }],
+ *     failovers: [
+ *         {
+ *             subsetName: "v2",
+ *             datacenters: ["dc2"],
+ *         },
+ *         {
+ *             subsetName: "*",
  *             datacenters: [
  *                 "dc3",
  *                 "dc4",
  *             ],
- *             subsetName: "*",
- *         },
- *     ],
- *     redirects: [{
- *         datacenter: "dc2",
- *         service: "web",
- *     }],
- *     subsets: [
- *         {
- *             filter: "Service.Meta.version == v1",
- *             name: "v1",
- *         },
- *         {
- *             Filter: "Service.Meta.version == v2",
- *             name: "v2",
  *         },
  *     ],
  * });

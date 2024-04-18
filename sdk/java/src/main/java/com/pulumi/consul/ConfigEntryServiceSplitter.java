@@ -52,6 +52,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var web = new ConfigEntry(&#34;web&#34;, ConfigEntryArgs.builder()        
+ *             .name(&#34;web&#34;)
  *             .kind(&#34;service-defaults&#34;)
  *             .configJson(serializeJson(
  *                 jsonObject(
@@ -69,6 +70,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var serviceResolver = new ConfigEntryServiceResolver(&#34;serviceResolver&#34;, ConfigEntryServiceResolverArgs.builder()        
+ *             .name(&#34;service-resolver&#34;)
  *             .defaultSubset(&#34;v1&#34;)
  *             .subsets(            
  *                 ConfigEntryServiceResolverSubsetArgs.builder()
@@ -82,6 +84,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var foo = new ConfigEntryServiceSplitter(&#34;foo&#34;, ConfigEntryServiceSplitterArgs.builder()        
+ *             .name(serviceResolver.name())
  *             .meta(Map.of(&#34;key&#34;, &#34;value&#34;))
  *             .splits(            
  *                 ConfigEntryServiceSplitterSplitArgs.builder()

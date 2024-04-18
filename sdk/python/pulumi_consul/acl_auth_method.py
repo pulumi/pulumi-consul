@@ -423,6 +423,7 @@ class AclAuthMethod(pulumi.CustomResource):
         import pulumi_consul as consul
 
         minikube = consul.AclAuthMethod("minikube",
+            name="minikube",
             type="kubernetes",
             description="dev minikube cluster",
             config_json=json.dumps({
@@ -444,6 +445,7 @@ class AclAuthMethod(pulumi.CustomResource):
         import pulumi_consul as consul
 
         oidc = consul.AclAuthMethod("oidc",
+            name="auth0",
             type="oidc",
             max_token_ttl="5m",
             config_json=json.dumps({
@@ -500,6 +502,7 @@ class AclAuthMethod(pulumi.CustomResource):
         import pulumi_consul as consul
 
         minikube = consul.AclAuthMethod("minikube",
+            name="minikube",
             type="kubernetes",
             description="dev minikube cluster",
             config_json=json.dumps({
@@ -521,6 +524,7 @@ class AclAuthMethod(pulumi.CustomResource):
         import pulumi_consul as consul
 
         oidc = consul.AclAuthMethod("oidc",
+            name="auth0",
             type="oidc",
             max_token_ttl="5m",
             config_json=json.dumps({

@@ -39,9 +39,9 @@ namespace Pulumi.Consul
     /// {
     ///     var database = new Consul.Intention("database", new()
     ///     {
-    ///         Action = "allow",
-    ///         DestinationName = "db",
     ///         SourceName = "api",
+    ///         DestinationName = "db",
+    ///         Action = "allow",
     ///     });
     /// 
     /// });
@@ -61,9 +61,9 @@ namespace Pulumi.Consul
     /// {
     ///     var database = new Consul.Intention("database", new()
     ///     {
-    ///         Action = "allow",
-    ///         DestinationName = consul_service.Pg.Name,
     ///         SourceName = "api",
+    ///         DestinationName = pgConsulService.Name,
+    ///         Action = "allow",
     ///     });
     /// 
     ///     var pg = Consul.GetService.Invoke(new()

@@ -15,18 +15,18 @@ import * as utilities from "./utilities";
  * import * as aws from "@pulumi/aws";
  * import * as consul from "@pulumi/consul";
  *
- * const appKeyPrefix = consul.getKeyPrefix({
+ * const app = consul.getKeyPrefix({
  *     datacenter: "nyc1",
+ *     token: "abcd",
  *     pathPrefix: "myapp/config/",
  *     subkeyCollection: [{
- *         "default": "ami-1234",
  *         name: "ami",
  *         path: "app/launch_ami",
+ *         "default": "ami-1234",
  *     }],
- *     token: "abcd",
  * });
  * // Start our instance with the dynamic ami value
- * const appInstance = new aws.ec2.Instance("appInstance", {ami: appKeyPrefix.then(appKeyPrefix => appKeyPrefix["var"]?.ami)});
+ * const appInstance = new aws.index.Instance("app", {ami: app["var"]?.ami});
  * ```
  * <!--End PulumiCodeChooser -->
  *
@@ -36,13 +36,13 @@ import * as utilities from "./utilities";
  * import * as aws from "@pulumi/aws";
  * import * as consul from "@pulumi/consul";
  *
- * const webKeyPrefix = consul.getKeyPrefix({
+ * const web = consul.getKeyPrefix({
  *     datacenter: "nyc1",
- *     pathPrefix: "myapp/config/",
  *     token: "efgh",
+ *     pathPrefix: "myapp/config/",
  * });
  * // Start our instance with the dynamic ami value
- * const webInstance = new aws.ec2.Instance("webInstance", {ami: webKeyPrefix.then(webKeyPrefix => webKeyPrefix.subkeys?.["app/launch_ami"])});
+ * const webInstance = new aws.index.Instance("web", {ami: web.subkeys?.["app/launch_ami"]});
  * ```
  * <!--End PulumiCodeChooser -->
  */
@@ -139,18 +139,18 @@ Please use the token argument in the provider configuration
  * import * as aws from "@pulumi/aws";
  * import * as consul from "@pulumi/consul";
  *
- * const appKeyPrefix = consul.getKeyPrefix({
+ * const app = consul.getKeyPrefix({
  *     datacenter: "nyc1",
+ *     token: "abcd",
  *     pathPrefix: "myapp/config/",
  *     subkeyCollection: [{
- *         "default": "ami-1234",
  *         name: "ami",
  *         path: "app/launch_ami",
+ *         "default": "ami-1234",
  *     }],
- *     token: "abcd",
  * });
  * // Start our instance with the dynamic ami value
- * const appInstance = new aws.ec2.Instance("appInstance", {ami: appKeyPrefix.then(appKeyPrefix => appKeyPrefix["var"]?.ami)});
+ * const appInstance = new aws.index.Instance("app", {ami: app["var"]?.ami});
  * ```
  * <!--End PulumiCodeChooser -->
  *
@@ -160,13 +160,13 @@ Please use the token argument in the provider configuration
  * import * as aws from "@pulumi/aws";
  * import * as consul from "@pulumi/consul";
  *
- * const webKeyPrefix = consul.getKeyPrefix({
+ * const web = consul.getKeyPrefix({
  *     datacenter: "nyc1",
- *     pathPrefix: "myapp/config/",
  *     token: "efgh",
+ *     pathPrefix: "myapp/config/",
  * });
  * // Start our instance with the dynamic ami value
- * const webInstance = new aws.ec2.Instance("webInstance", {ami: webKeyPrefix.then(webKeyPrefix => webKeyPrefix.subkeys?.["app/launch_ami"])});
+ * const webInstance = new aws.index.Instance("web", {ami: web.subkeys?.["app/launch_ami"]});
  * ```
  * <!--End PulumiCodeChooser -->
  */

@@ -17,9 +17,11 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
- * import * as fs from "fs";
+ * import * as std from "@pulumi/std";
  *
- * const license = new consul.License("license", {license: fs.readFileSync("license.hclic", "utf8")});
+ * const license = new consul.License("license", {license: std.file({
+ *     input: "license.hclic",
+ * }).then(invoke => invoke.result)});
  * ```
  * <!--End PulumiCodeChooser -->
  */

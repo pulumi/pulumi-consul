@@ -15,11 +15,11 @@ import * as utilities from "./utilities";
  * import * as consul from "@pulumi/consul";
  *
  * const test = new consul.AclPolicy("test", {
+ *     name: "my_policy",
  *     datacenters: ["dc1"],
  *     rules: `node_prefix "" {
  *   policy = "read"
  * }
- *
  * `,
  * });
  * ```

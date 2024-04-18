@@ -15,6 +15,27 @@ import * as utilities from "./utilities";
  *
  * This data source is different from the `consul.getServices` (plural) data
  * source, which provides a summary of the current Consul services.
+ *
+ * ## Example Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ * import * as example from "@pulumi/example";
+ * import * as std from "@pulumi/std";
+ *
+ * const read-consul-dc1 = consul.getService({
+ *     name: "consul",
+ *     datacenter: "dc1",
+ * });
+ * // Set the description to a whitespace delimited list of the node names
+ * const app = new example.index.Resource("app", {description: std.join({
+ *     separator: " ",
+ *     input: nodes,
+ * }).result});
+ * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getService(args: GetServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceResult> {
 
@@ -97,6 +118,27 @@ export interface GetServiceResult {
  *
  * This data source is different from the `consul.getServices` (plural) data
  * source, which provides a summary of the current Consul services.
+ *
+ * ## Example Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ * import * as example from "@pulumi/example";
+ * import * as std from "@pulumi/std";
+ *
+ * const read-consul-dc1 = consul.getService({
+ *     name: "consul",
+ *     datacenter: "dc1",
+ * });
+ * // Set the description to a whitespace delimited list of the node names
+ * const app = new example.index.Resource("app", {description: std.join({
+ *     separator: " ",
+ *     input: nodes,
+ * }).result});
+ * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getServiceOutput(args: GetServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceResult> {
     return pulumi.output(args).apply((a: any) => getService(a, opts))

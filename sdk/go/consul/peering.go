@@ -35,32 +35,19 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Create a peering between the EU and US Consul clusters
-//			_, err := consul.NewProvider(ctx, "eu", &consul.ProviderArgs{
-//				Address: pulumi.String("eu-cluster:8500"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = consul.NewProvider(ctx, "us", &consul.ProviderArgs{
-//				Address: pulumi.String("us-cluster:8500"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = consul.NewPeeringToken(ctx, "eu-usPeeringToken", &consul.PeeringTokenArgs{
+//			_, err := consul.NewPeeringToken(ctx, "eu-us", &consul.PeeringTokenArgs{
 //				PeerName: pulumi.String("eu-cluster"),
-//			}, pulumi.Provider(consul.Us))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = consul.NewPeering(ctx, "eu-usPeering", &consul.PeeringArgs{
+//			_, err = consul.NewPeering(ctx, "eu-us", &consul.PeeringArgs{
 //				PeerName:     pulumi.String("eu-cluster"),
-//				PeeringToken: pulumi.Any(consul_peering_token.Token.Peering_token),
+//				PeeringToken: pulumi.Any(token.PeeringToken),
 //				Meta: pulumi.StringMap{
 //					"hello": pulumi.String("world"),
 //				},
-//			}, pulumi.Provider(consul.Eu))
+//			})
 //			if err != nil {
 //				return err
 //			}

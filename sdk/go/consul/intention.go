@@ -44,9 +44,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := consul.NewIntention(ctx, "database", &consul.IntentionArgs{
-//				Action:          pulumi.String("allow"),
-//				DestinationName: pulumi.String("db"),
 //				SourceName:      pulumi.String("api"),
+//				DestinationName: pulumi.String("db"),
+//				Action:          pulumi.String("allow"),
 //			})
 //			if err != nil {
 //				return err
@@ -74,9 +74,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := consul.NewIntention(ctx, "database", &consul.IntentionArgs{
-//				Action:          pulumi.String("allow"),
-//				DestinationName: pulumi.Any(consul_service.Pg.Name),
 //				SourceName:      pulumi.String("api"),
+//				DestinationName: pulumi.Any(pgConsulService.Name),
+//				Action:          pulumi.String("allow"),
 //			})
 //			if err != nil {
 //				return err

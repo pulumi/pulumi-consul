@@ -242,29 +242,6 @@ class CatalogEntry(pulumi.CustomResource):
         Registers a node or service with the [Consul Catalog](https://www.consul.io/docs/agent/http/catalog.html#catalog_register).
         Currently, defining health checks is not supported.
 
-        ## Example Usage
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import pulumi_consul as consul
-
-        app = consul.CatalogEntry("app",
-            address="192.168.10.10",
-            node="foobar",
-            services=[consul.CatalogEntryServiceArgs(
-                address="127.0.0.1",
-                id="redis1",
-                name="redis",
-                port=8000,
-                tags=[
-                    "master",
-                    "v1",
-                ],
-            )])
-        ```
-        <!--End PulumiCodeChooser -->
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address: The address of the node being added to,
@@ -290,29 +267,6 @@ class CatalogEntry(pulumi.CustomResource):
 
         Registers a node or service with the [Consul Catalog](https://www.consul.io/docs/agent/http/catalog.html#catalog_register).
         Currently, defining health checks is not supported.
-
-        ## Example Usage
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import pulumi_consul as consul
-
-        app = consul.CatalogEntry("app",
-            address="192.168.10.10",
-            node="foobar",
-            services=[consul.CatalogEntryServiceArgs(
-                address="127.0.0.1",
-                id="redis1",
-                name="redis",
-                port=8000,
-                tags=[
-                    "master",
-                    "v1",
-                ],
-            )])
-        ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param CatalogEntryArgs args: The arguments to use to populate this resource's properties.

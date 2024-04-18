@@ -20,6 +20,39 @@ namespace Pulumi.Consul
         /// 
         /// This data source is different from the `consul.getServices` (plural) data
         /// source, which provides a summary of the current Consul services.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Consul = Pulumi.Consul;
+        /// using Example = Pulumi.Example;
+        /// using Std = Pulumi.Std;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var read_consul_dc1 = Consul.GetService.Invoke(new()
+        ///     {
+        ///         Name = "consul",
+        ///         Datacenter = "dc1",
+        ///     });
+        /// 
+        ///     // Set the description to a whitespace delimited list of the node names
+        ///     var app = new Example.Index.Resource("app", new()
+        ///     {
+        ///         Description = Std.Join.Invoke(new()
+        ///         {
+        ///             Separator = " ",
+        ///             Input = nodes,
+        ///         }).Result,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetServiceResult> InvokeAsync(GetServiceArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServiceResult>("consul:index/getService:getService", args ?? new GetServiceArgs(), options.WithDefaults());
@@ -33,6 +66,39 @@ namespace Pulumi.Consul
         /// 
         /// This data source is different from the `consul.getServices` (plural) data
         /// source, which provides a summary of the current Consul services.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Consul = Pulumi.Consul;
+        /// using Example = Pulumi.Example;
+        /// using Std = Pulumi.Std;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var read_consul_dc1 = Consul.GetService.Invoke(new()
+        ///     {
+        ///         Name = "consul",
+        ///         Datacenter = "dc1",
+        ///     });
+        /// 
+        ///     // Set the description to a whitespace delimited list of the node names
+        ///     var app = new Example.Index.Resource("app", new()
+        ///     {
+        ///         Description = Std.Join.Invoke(new()
+        ///         {
+        ///             Separator = " ",
+        ///             Input = nodes,
+        ///         }).Result,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetServiceResult> Invoke(GetServiceInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServiceResult>("consul:index/getService:getService", args ?? new GetServiceInvokeArgs(), options.WithDefaults());

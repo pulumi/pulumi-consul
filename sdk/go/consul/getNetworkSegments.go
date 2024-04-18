@@ -31,11 +31,11 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			segmentsNetworkSegments, err := consul.GetNetworkSegments(ctx, nil, nil)
+//			segments, err := consul.GetNetworkSegments(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("segments", segmentsNetworkSegments.Segments)
+//			ctx.Export("segments", segments.Segments)
 //			return nil
 //		})
 //	}

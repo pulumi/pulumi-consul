@@ -112,12 +112,12 @@ def get_network_area_members(datacenter: Optional[str] = None,
     import pulumi
     import pulumi_consul as consul
 
-    dc2_network_area = consul.NetworkArea("dc2NetworkArea",
+    dc2_network_area = consul.NetworkArea("dc2",
         peer_datacenter="dc2",
         retry_joins=["1.2.3.4"],
         use_tls=True)
-    dc2_network_area_members = consul.get_network_area_members_output(uuid=dc2_network_area.id)
-    pulumi.export("members", dc2_network_area_members.members)
+    dc2 = consul.get_network_area_members_output(uuid=dc2_network_area.id)
+    pulumi.export("members", dc2.members)
     ```
     <!--End PulumiCodeChooser -->
 
@@ -161,12 +161,12 @@ def get_network_area_members_output(datacenter: Optional[pulumi.Input[Optional[s
     import pulumi
     import pulumi_consul as consul
 
-    dc2_network_area = consul.NetworkArea("dc2NetworkArea",
+    dc2_network_area = consul.NetworkArea("dc2",
         peer_datacenter="dc2",
         retry_joins=["1.2.3.4"],
         use_tls=True)
-    dc2_network_area_members = consul.get_network_area_members_output(uuid=dc2_network_area.id)
-    pulumi.export("members", dc2_network_area_members.members)
+    dc2 = consul.get_network_area_members_output(uuid=dc2_network_area.id)
+    pulumi.export("members", dc2.members)
     ```
     <!--End PulumiCodeChooser -->
 

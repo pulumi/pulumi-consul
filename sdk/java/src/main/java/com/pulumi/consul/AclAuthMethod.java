@@ -48,6 +48,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var minikube = new AclAuthMethod(&#34;minikube&#34;, AclAuthMethodArgs.builder()        
+ *             .name(&#34;minikube&#34;)
  *             .type(&#34;kubernetes&#34;)
  *             .description(&#34;dev minikube cluster&#34;)
  *             .configJson(serializeJson(
@@ -92,6 +93,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var oidc = new AclAuthMethod(&#34;oidc&#34;, AclAuthMethodArgs.builder()        
+ *             .name(&#34;auth0&#34;)
  *             .type(&#34;oidc&#34;)
  *             .maxTokenTtl(&#34;5m&#34;)
  *             .configJson(serializeJson(

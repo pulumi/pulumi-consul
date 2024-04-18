@@ -25,6 +25,7 @@ namespace Pulumi.Consul
     /// {
     ///     var test = new Consul.AclPolicy("test", new()
     ///     {
+    ///         Name = "my_policy",
     ///         Datacenters = new[]
     ///         {
     ///             "dc1",
@@ -32,7 +33,6 @@ namespace Pulumi.Consul
     ///         Rules = @"node_prefix """" {
     ///   policy = ""read""
     /// }
-    /// 
     /// ",
     ///     });
     /// 

@@ -15,12 +15,13 @@ import * as utilities from "./utilities";
  * const myRole = consul.getAclRole({
  *     name: "my_role",
  * });
- * const readPolicy = new consul.AclPolicy("readPolicy", {
+ * const readPolicy = new consul.AclPolicy("read_policy", {
+ *     name: "read-policy",
  *     rules: "node \"\" { policy = \"read\" }",
  *     datacenters: ["dc1"],
  * });
- * const myRoleReadPolicy = new consul.AclRolePolicyAttachment("myRoleReadPolicy", {
- *     roleId: data.consul_acl_role.test.id,
+ * const myRoleReadPolicy = new consul.AclRolePolicyAttachment("my_role_read_policy", {
+ *     roleId: test.id,
  *     policy: readPolicy.name,
  * });
  * ```

@@ -32,6 +32,7 @@ namespace Pulumi.Consul
     ///     var app = new Consul.AgentService("app", new()
     ///     {
     ///         Address = "www.google.com",
+    ///         Name = "google",
     ///         Port = 80,
     ///         Tags = new[]
     ///         {

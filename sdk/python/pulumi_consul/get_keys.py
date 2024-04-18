@@ -153,15 +153,14 @@ def get_keys(datacenter: Optional[str] = None,
     import pulumi_aws as aws
     import pulumi_consul as consul
 
-    app_keys = consul.get_keys(datacenter="nyc1",
+    app = consul.get_keys(datacenter="nyc1",
         keys=[consul.GetKeysKeyArgs(
             name="ami",
             path="service/app/launch_ami",
             default="ami-1234",
         )])
     # Start our instance with the dynamic ami value
-    app_instance = aws.ec2.Instance("appInstance", ami=app_keys.var["ami"])
-    # ...
+    app_instance = aws.index.Instance("app", ami=app.var.ami)
     ```
     <!--End PulumiCodeChooser -->
 
@@ -213,15 +212,14 @@ def get_keys_output(datacenter: Optional[pulumi.Input[Optional[str]]] = None,
     import pulumi_aws as aws
     import pulumi_consul as consul
 
-    app_keys = consul.get_keys(datacenter="nyc1",
+    app = consul.get_keys(datacenter="nyc1",
         keys=[consul.GetKeysKeyArgs(
             name="ami",
             path="service/app/launch_ami",
             default="ami-1234",
         )])
     # Start our instance with the dynamic ami value
-    app_instance = aws.ec2.Instance("appInstance", ami=app_keys.var["ami"])
-    # ...
+    app_instance = aws.index.Instance("app", ami=app.var.ami)
     ```
     <!--End PulumiCodeChooser -->
 

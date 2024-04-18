@@ -42,7 +42,8 @@ import (
 //				return err
 //			}
 //			json0 := string(tmpJSON0)
-//			jwtProvider, err := consul.NewConfigEntry(ctx, "jwtProvider", &consul.ConfigEntryArgs{
+//			jwtProvider, err := consul.NewConfigEntry(ctx, "jwt_provider", &consul.ConfigEntryArgs{
+//				Name:       pulumi.String("okta"),
 //				Kind:       pulumi.String("jwt-provider"),
 //				ConfigJson: pulumi.String(json0),
 //			})
@@ -50,6 +51,7 @@ import (
 //				return err
 //			}
 //			_, err = consul.NewConfigEntryServiceIntentions(ctx, "web", &consul.ConfigEntryServiceIntentionsArgs{
+//				Name: pulumi.String("web"),
 //				Jwts: consul.ConfigEntryServiceIntentionsJwtArray{
 //					&consul.ConfigEntryServiceIntentionsJwtArgs{
 //						Providers: consul.ConfigEntryServiceIntentionsJwtProviderArray{

@@ -26,7 +26,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			testAclPolicy, err := consul.NewAclPolicy(ctx, "testAclPolicy", &consul.AclPolicyArgs{
+//			test, err := consul.NewAclPolicy(ctx, "test", &consul.AclPolicyArgs{
+//				Name:  pulumi.String("test"),
 //				Rules: pulumi.String("node \"\" { policy = \"read\" }"),
 //				Datacenters: pulumi.StringArray{
 //					pulumi.String("dc1"),
@@ -35,10 +36,10 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			testAclToken, err := consul.NewAclToken(ctx, "testAclToken", &consul.AclTokenArgs{
+//			testAclToken, err := consul.NewAclToken(ctx, "test", &consul.AclTokenArgs{
 //				Description: pulumi.String("test"),
 //				Policies: pulumi.StringArray{
-//					testAclPolicy.Name,
+//					test.Name,
 //				},
 //				Local: pulumi.Bool(true),
 //			})

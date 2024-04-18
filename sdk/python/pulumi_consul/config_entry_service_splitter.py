@@ -209,6 +209,7 @@ class ConfigEntryServiceSplitter(pulumi.CustomResource):
         import pulumi_consul as consul
 
         web = consul.ConfigEntry("web",
+            name="web",
             kind="service-defaults",
             config_json=json.dumps({
                 "Protocol": "http",
@@ -216,7 +217,8 @@ class ConfigEntryServiceSplitter(pulumi.CustomResource):
                 "MeshGateway": {},
                 "TransparentProxy": {},
             }))
-        service_resolver = consul.ConfigEntryServiceResolver("serviceResolver",
+        service_resolver = consul.ConfigEntryServiceResolver("service_resolver",
+            name="service-resolver",
             default_subset="v1",
             subsets=[
                 consul.ConfigEntryServiceResolverSubsetArgs(
@@ -229,6 +231,7 @@ class ConfigEntryServiceSplitter(pulumi.CustomResource):
                 ),
             ])
         foo = consul.ConfigEntryServiceSplitter("foo",
+            name=service_resolver.name,
             meta={
                 "key": "value",
             },
@@ -302,6 +305,7 @@ class ConfigEntryServiceSplitter(pulumi.CustomResource):
         import pulumi_consul as consul
 
         web = consul.ConfigEntry("web",
+            name="web",
             kind="service-defaults",
             config_json=json.dumps({
                 "Protocol": "http",
@@ -309,7 +313,8 @@ class ConfigEntryServiceSplitter(pulumi.CustomResource):
                 "MeshGateway": {},
                 "TransparentProxy": {},
             }))
-        service_resolver = consul.ConfigEntryServiceResolver("serviceResolver",
+        service_resolver = consul.ConfigEntryServiceResolver("service_resolver",
+            name="service-resolver",
             default_subset="v1",
             subsets=[
                 consul.ConfigEntryServiceResolverSubsetArgs(
@@ -322,6 +327,7 @@ class ConfigEntryServiceSplitter(pulumi.CustomResource):
                 ),
             ])
         foo = consul.ConfigEntryServiceSplitter("foo",
+            name=service_resolver.name,
             meta={
                 "key": "value",
             },

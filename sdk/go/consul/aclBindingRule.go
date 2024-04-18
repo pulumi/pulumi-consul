@@ -30,6 +30,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			minikube, err := consul.NewAclAuthMethod(ctx, "minikube", &consul.AclAuthMethodArgs{
+//				Name:        pulumi.String("minikube"),
 //				Type:        pulumi.String("kubernetes"),
 //				Description: pulumi.String("dev minikube cluster"),
 //				Config: pulumi.StringMap{

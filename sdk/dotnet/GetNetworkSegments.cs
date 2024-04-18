@@ -28,11 +28,11 @@ namespace Pulumi.Consul
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var segmentsNetworkSegments = Consul.GetNetworkSegments.Invoke();
+        ///     var segments = Consul.GetNetworkSegments.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["segments"] = segmentsNetworkSegments.Apply(getNetworkSegmentsResult =&gt; getNetworkSegmentsResult.Segments),
+        ///         ["segments"] = segments.Apply(getNetworkSegmentsResult =&gt; getNetworkSegmentsResult.Segments),
         ///     };
         /// });
         /// ```
@@ -58,11 +58,11 @@ namespace Pulumi.Consul
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var segmentsNetworkSegments = Consul.GetNetworkSegments.Invoke();
+        ///     var segments = Consul.GetNetworkSegments.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["segments"] = segmentsNetworkSegments.Apply(getNetworkSegmentsResult =&gt; getNetworkSegmentsResult.Segments),
+        ///         ["segments"] = segments.Apply(getNetworkSegmentsResult =&gt; getNetworkSegmentsResult.Segments),
         ///     };
         /// });
         /// ```

@@ -22,9 +22,10 @@ namespace Pulumi.Consul
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var proxyDefaults = new Consul.ConfigEntry("proxyDefaults", new()
+    ///     var proxyDefaults = new Consul.ConfigEntry("proxy_defaults", new()
     ///     {
     ///         Kind = "proxy-defaults",
+    ///         Name = "global",
     ///         ConfigJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///         {
     ///             ["Config"] = new Dictionary&lt;string, object?&gt;
@@ -37,6 +38,7 @@ namespace Pulumi.Consul
     /// 
     ///     var web = new Consul.ConfigEntry("web", new()
     ///     {
+    ///         Name = "web",
     ///         Kind = "service-defaults",
     ///         ConfigJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///         {
@@ -46,6 +48,7 @@ namespace Pulumi.Consul
     /// 
     ///     var admin = new Consul.ConfigEntry("admin", new()
     ///     {
+    ///         Name = "admin",
     ///         Kind = "service-defaults",
     ///         ConfigJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///         {
@@ -53,9 +56,10 @@ namespace Pulumi.Consul
     ///         }),
     ///     });
     /// 
-    ///     var serviceResolver = new Consul.ConfigEntry("serviceResolver", new()
+    ///     var serviceResolver = new Consul.ConfigEntry("service_resolver", new()
     ///     {
     ///         Kind = "service-resolver",
+    ///         Name = web.Name,
     ///         ConfigJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///         {
     ///             ["DefaultSubset"] = "v1",
@@ -73,9 +77,10 @@ namespace Pulumi.Consul
     ///         }),
     ///     });
     /// 
-    ///     var serviceSplitter = new Consul.ConfigEntry("serviceSplitter", new()
+    ///     var serviceSplitter = new Consul.ConfigEntry("service_splitter", new()
     ///     {
     ///         Kind = "service-splitter",
+    ///         Name = serviceResolver.Name,
     ///         ConfigJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///         {
     ///             ["Splits"] = new[]
@@ -94,9 +99,10 @@ namespace Pulumi.Consul
     ///         }),
     ///     });
     /// 
-    ///     var serviceRouter = new Consul.ConfigEntry("serviceRouter", new()
+    ///     var serviceRouter = new Consul.ConfigEntry("service_router", new()
     ///     {
     ///         Kind = "service-router",
+    ///         Name = "web",
     ///         ConfigJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///         {
     ///             ["Routes"] = new[]
@@ -119,8 +125,9 @@ namespace Pulumi.Consul
     ///         }),
     ///     });
     /// 
-    ///     var ingressGateway = new Consul.ConfigEntry("ingressGateway", new()
+    ///     var ingressGateway = new Consul.ConfigEntry("ingress_gateway", new()
     ///     {
+    ///         Name = "us-east-ingress",
     ///         Kind = "ingress-gateway",
     ///         ConfigJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///         {
@@ -146,8 +153,9 @@ namespace Pulumi.Consul
     ///         }),
     ///     });
     /// 
-    ///     var terminatingGateway = new Consul.ConfigEntry("terminatingGateway", new()
+    ///     var terminatingGateway = new Consul.ConfigEntry("terminating_gateway", new()
     ///     {
+    ///         Name = "us-west-gateway",
     ///         Kind = "terminating-gateway",
     ///         ConfigJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///         {
@@ -177,8 +185,9 @@ namespace Pulumi.Consul
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var serviceIntentions = new Consul.ConfigEntry("serviceIntentions", new()
+    ///     var serviceIntentions = new Consul.ConfigEntry("service_intentions", new()
     ///     {
+    ///         Name = "api-service",
     ///         Kind = "service-intentions",
     ///         ConfigJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///         {
@@ -218,6 +227,7 @@ namespace Pulumi.Consul
     /// {
     ///     var sd = new Consul.ConfigEntry("sd", new()
     ///     {
+    ///         Name = "fort-knox",
     ///         Kind = "service-defaults",
     ///         ConfigJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///         {
@@ -225,8 +235,9 @@ namespace Pulumi.Consul
     ///         }),
     ///     });
     /// 
-    ///     var jwtProvider = new Consul.ConfigEntry("jwtProvider", new()
+    ///     var jwtProvider = new Consul.ConfigEntry("jwt_provider", new()
     ///     {
+    ///         Name = "test-provider",
     ///         Kind = "jwt-provider",
     ///         ConfigJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///         {
@@ -246,8 +257,9 @@ namespace Pulumi.Consul
     ///         }),
     ///     });
     /// 
-    ///     var serviceIntentions = new Consul.ConfigEntry("serviceIntentions", new()
+    ///     var serviceIntentions = new Consul.ConfigEntry("service_intentions", new()
     ///     {
+    ///         Name = sd.Name,
     ///         Kind = "service-intentions",
     ///         ConfigJson = Output.JsonSerialize(Output.Create(new Dictionary&lt;string, object?&gt;
     ///         {
@@ -330,8 +342,9 @@ namespace Pulumi.Consul
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exportedServices = new Consul.ConfigEntry("exportedServices", new()
+    ///     var exportedServices = new Consul.ConfigEntry("exported_services", new()
     ///     {
+    ///         Name = "test",
     ///         Kind = "exported-services",
     ///         ConfigJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///         {
@@ -371,6 +384,7 @@ namespace Pulumi.Consul
     /// {
     ///     var mesh = new Consul.ConfigEntry("mesh", new()
     ///     {
+    ///         Name = "mesh",
     ///         Kind = "mesh",
     ///         Partition = "default",
     ///         ConfigJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
@@ -398,8 +412,9 @@ namespace Pulumi.Consul
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var jwtProvider = new Consul.ConfigEntry("jwtProvider", new()
+    ///     var jwtProvider = new Consul.ConfigEntry("jwt_provider", new()
     ///     {
+    ///         Name = "provider-name",
     ///         Kind = "jwt-provider",
     ///         ConfigJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///         {

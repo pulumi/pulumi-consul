@@ -21,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-aws/sdk/v4/go/aws/ec2"
+//	"github.com/pulumi/pulumi-aws/sdk/v4/go/aws"
 //	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			appKeys, err := consul.LookupKeys(ctx, &consul.LookupKeysArgs{
+//			app, err := consul.LookupKeys(ctx, &consul.LookupKeysArgs{
 //				Datacenter: pulumi.StringRef("nyc1"),
 //				Keys: []consul.GetKeysKey{
 //					{
@@ -43,8 +43,8 @@ import (
 //				return err
 //			}
 //			// Start our instance with the dynamic ami value
-//			_, err = ec2.NewInstance(ctx, "appInstance", &ec2.InstanceArgs{
-//				Ami: pulumi.String(appKeys.Var.Ami),
+//			_, err = aws.NewInstance(ctx, "app", &aws.InstanceArgs{
+//				Ami: app.Var.Ami,
 //			})
 //			if err != nil {
 //				return err

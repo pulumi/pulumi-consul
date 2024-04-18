@@ -26,8 +26,9 @@ namespace Pulumi.Consul
     ///         Name = "my_role",
     ///     });
     /// 
-    ///     var readPolicy = new Consul.AclPolicy("readPolicy", new()
+    ///     var readPolicy = new Consul.AclPolicy("read_policy", new()
     ///     {
+    ///         Name = "read-policy",
     ///         Rules = "node \"\" { policy = \"read\" }",
     ///         Datacenters = new[]
     ///         {
@@ -35,9 +36,9 @@ namespace Pulumi.Consul
     ///         },
     ///     });
     /// 
-    ///     var myRoleReadPolicy = new Consul.AclRolePolicyAttachment("myRoleReadPolicy", new()
+    ///     var myRoleReadPolicy = new Consul.AclRolePolicyAttachment("my_role_read_policy", new()
     ///     {
-    ///         RoleId = data.Consul_acl_role.Test.Id,
+    ///         RoleId = test.Id,
     ///         Policy = readPolicy.Name,
     ///     });
     /// 

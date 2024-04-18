@@ -48,7 +48,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var license = new License(&#34;license&#34;, LicenseArgs.builder()        
- *             .license(Files.readString(Paths.get(&#34;license.hclic&#34;)))
+ *             .license(StdFunctions.file(FileArgs.builder()
+ *                 .input(&#34;license.hclic&#34;)
+ *                 .build()).result())
  *             .build());
  * 
  *     }

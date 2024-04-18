@@ -11,50 +11,6 @@ namespace Pulumi.Consul
 {
     /// <summary>
     /// ## Example Usage
-    /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Consul = Pulumi.Consul;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var adminServiceDefaultsConfigEntryServiceDefaults = new Consul.ConfigEntryServiceDefaults("adminServiceDefaultsConfigEntryServiceDefaults", new()
-    ///     {
-    ///         Protocol = "http",
-    ///     });
-    /// 
-    ///     var adminServiceDefaultsIndex_configEntryServiceDefaultsConfigEntryServiceDefaults = new Consul.ConfigEntryServiceDefaults("adminServiceDefaultsIndex/configEntryServiceDefaultsConfigEntryServiceDefaults", new()
-    ///     {
-    ///         Protocol = "http",
-    ///     });
-    /// 
-    ///     var foo = new Consul.ConfigEntryServiceRouter("foo", new()
-    ///     {
-    ///         Routes = new[]
-    ///         {
-    ///             new Consul.Inputs.ConfigEntryServiceRouterRouteArgs
-    ///             {
-    ///                 Match = new Consul.Inputs.ConfigEntryServiceRouterRouteMatchArgs
-    ///                 {
-    ///                     Http = new Consul.Inputs.ConfigEntryServiceRouterRouteMatchHttpArgs
-    ///                     {
-    ///                         PathPrefix = "/admin",
-    ///                     },
-    ///                 },
-    ///                 Destination = new Consul.Inputs.ConfigEntryServiceRouterRouteDestinationArgs
-    ///                 {
-    ///                     Service = consul_config_entry.Admin_service.Name,
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [ConsulResourceType("consul:index/configEntryServiceRouter:ConfigEntryServiceRouter")]
     public partial class ConfigEntryServiceRouter : global::Pulumi.CustomResource

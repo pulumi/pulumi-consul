@@ -21,16 +21,19 @@ namespace Pulumi.Consul
     /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
-    /// using System.IO;
     /// using System.Linq;
     /// using Pulumi;
     /// using Consul = Pulumi.Consul;
+    /// using Std = Pulumi.Std;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var license = new Consul.License("license", new()
     ///     {
-    ///         ConsulLicense = File.ReadAllText("license.hclic"),
+    ///         ConsulLicense = Std.File.Invoke(new()
+    ///         {
+    ///             Input = "license.hclic",
+    ///         }).Apply(invoke =&gt; invoke.Result),
     ///     });
     /// 
     /// });

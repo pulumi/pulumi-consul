@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as aws from "@pulumi/aws";
  * import * as consul from "@pulumi/consul";
  *
- * const appKeys = consul.getKeys({
+ * const app = consul.getKeys({
  *     datacenter: "nyc1",
  *     keys: [{
  *         name: "ami",
@@ -26,8 +26,7 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * // Start our instance with the dynamic ami value
- * const appInstance = new aws.ec2.Instance("appInstance", {ami: appKeys.then(appKeys => appKeys["var"]?.ami)});
- * // ...
+ * const appInstance = new aws.index.Instance("app", {ami: app["var"]?.ami});
  * ```
  * <!--End PulumiCodeChooser -->
  */
@@ -129,7 +128,7 @@ Please use the token argument in the provider configuration
  * import * as aws from "@pulumi/aws";
  * import * as consul from "@pulumi/consul";
  *
- * const appKeys = consul.getKeys({
+ * const app = consul.getKeys({
  *     datacenter: "nyc1",
  *     keys: [{
  *         name: "ami",
@@ -138,8 +137,7 @@ Please use the token argument in the provider configuration
  *     }],
  * });
  * // Start our instance with the dynamic ami value
- * const appInstance = new aws.ec2.Instance("appInstance", {ami: appKeys.then(appKeys => appKeys["var"]?.ami)});
- * // ...
+ * const appInstance = new aws.index.Instance("app", {ami: app["var"]?.ami});
  * ```
  * <!--End PulumiCodeChooser -->
  */

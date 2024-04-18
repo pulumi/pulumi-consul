@@ -42,6 +42,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var proxyDefaults = new ConfigEntry(&#34;proxyDefaults&#34;, ConfigEntryArgs.builder()        
  *             .kind(&#34;proxy-defaults&#34;)
+ *             .name(&#34;global&#34;)
  *             .configJson(serializeJson(
  *                 jsonObject(
  *                     jsonProperty(&#34;Config&#34;, jsonObject(
@@ -52,6 +53,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var web = new ConfigEntry(&#34;web&#34;, ConfigEntryArgs.builder()        
+ *             .name(&#34;web&#34;)
  *             .kind(&#34;service-defaults&#34;)
  *             .configJson(serializeJson(
  *                 jsonObject(
@@ -60,6 +62,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var admin = new ConfigEntry(&#34;admin&#34;, ConfigEntryArgs.builder()        
+ *             .name(&#34;admin&#34;)
  *             .kind(&#34;service-defaults&#34;)
  *             .configJson(serializeJson(
  *                 jsonObject(
@@ -69,6 +72,7 @@ import javax.annotation.Nullable;
  * 
  *         var serviceResolver = new ConfigEntry(&#34;serviceResolver&#34;, ConfigEntryArgs.builder()        
  *             .kind(&#34;service-resolver&#34;)
+ *             .name(web.name())
  *             .configJson(serializeJson(
  *                 jsonObject(
  *                     jsonProperty(&#34;DefaultSubset&#34;, &#34;v1&#34;),
@@ -85,6 +89,7 @@ import javax.annotation.Nullable;
  * 
  *         var serviceSplitter = new ConfigEntry(&#34;serviceSplitter&#34;, ConfigEntryArgs.builder()        
  *             .kind(&#34;service-splitter&#34;)
+ *             .name(serviceResolver.name())
  *             .configJson(serializeJson(
  *                 jsonObject(
  *                     jsonProperty(&#34;Splits&#34;, jsonArray(
@@ -102,6 +107,7 @@ import javax.annotation.Nullable;
  * 
  *         var serviceRouter = new ConfigEntry(&#34;serviceRouter&#34;, ConfigEntryArgs.builder()        
  *             .kind(&#34;service-router&#34;)
+ *             .name(&#34;web&#34;)
  *             .configJson(serializeJson(
  *                 jsonObject(
  *                     jsonProperty(&#34;Routes&#34;, jsonArray(jsonObject(
@@ -118,6 +124,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var ingressGateway = new ConfigEntry(&#34;ingressGateway&#34;, ConfigEntryArgs.builder()        
+ *             .name(&#34;us-east-ingress&#34;)
  *             .kind(&#34;ingress-gateway&#34;)
  *             .configJson(serializeJson(
  *                 jsonObject(
@@ -135,6 +142,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var terminatingGateway = new ConfigEntry(&#34;terminatingGateway&#34;, ConfigEntryArgs.builder()        
+ *             .name(&#34;us-west-gateway&#34;)
  *             .kind(&#34;terminating-gateway&#34;)
  *             .configJson(serializeJson(
  *                 jsonObject(
@@ -175,6 +183,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var serviceIntentions = new ConfigEntry(&#34;serviceIntentions&#34;, ConfigEntryArgs.builder()        
+ *             .name(&#34;api-service&#34;)
  *             .kind(&#34;service-intentions&#34;)
  *             .configJson(serializeJson(
  *                 jsonObject(
@@ -224,6 +233,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var sd = new ConfigEntry(&#34;sd&#34;, ConfigEntryArgs.builder()        
+ *             .name(&#34;fort-knox&#34;)
  *             .kind(&#34;service-defaults&#34;)
  *             .configJson(serializeJson(
  *                 jsonObject(
@@ -232,6 +242,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var jwtProvider = new ConfigEntry(&#34;jwtProvider&#34;, ConfigEntryArgs.builder()        
+ *             .name(&#34;test-provider&#34;)
  *             .kind(&#34;jwt-provider&#34;)
  *             .configJson(serializeJson(
  *                 jsonObject(
@@ -249,6 +260,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var serviceIntentions = new ConfigEntry(&#34;serviceIntentions&#34;, ConfigEntryArgs.builder()        
+ *             .name(sd.name())
  *             .kind(&#34;service-intentions&#34;)
  *             .configJson(jwtProvider.name().applyValue(name -&gt; serializeJson(
  *                 jsonObject(
@@ -327,6 +339,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var exportedServices = new ConfigEntry(&#34;exportedServices&#34;, ConfigEntryArgs.builder()        
+ *             .name(&#34;test&#34;)
  *             .kind(&#34;exported-services&#34;)
  *             .configJson(serializeJson(
  *                 jsonObject(
@@ -371,6 +384,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var mesh = new ConfigEntry(&#34;mesh&#34;, ConfigEntryArgs.builder()        
+ *             .name(&#34;mesh&#34;)
  *             .kind(&#34;mesh&#34;)
  *             .partition(&#34;default&#34;)
  *             .configJson(serializeJson(
@@ -412,6 +426,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var jwtProvider = new ConfigEntry(&#34;jwtProvider&#34;, ConfigEntryArgs.builder()        
+ *             .name(&#34;provider-name&#34;)
  *             .kind(&#34;jwt-provider&#34;)
  *             .configJson(serializeJson(
  *                 jsonObject(

@@ -35,7 +35,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.consul.CatalogEntry;
  * import com.pulumi.consul.CatalogEntryArgs;
- * import com.pulumi.consul.inputs.CatalogEntryServiceArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;

@@ -33,7 +33,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			readPolicy, err := consul.NewAclPolicy(ctx, "readPolicy", &consul.AclPolicyArgs{
+//			readPolicy, err := consul.NewAclPolicy(ctx, "read_policy", &consul.AclPolicyArgs{
+//				Name:  pulumi.String("read-policy"),
 //				Rules: pulumi.String("node \"\" { policy = \"read\" }"),
 //				Datacenters: pulumi.StringArray{
 //					pulumi.String("dc1"),
@@ -42,8 +43,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = consul.NewAclRolePolicyAttachment(ctx, "myRoleReadPolicy", &consul.AclRolePolicyAttachmentArgs{
-//				RoleId: pulumi.Any(data.Consul_acl_role.Test.Id),
+//			_, err = consul.NewAclRolePolicyAttachment(ctx, "my_role_read_policy", &consul.AclRolePolicyAttachmentArgs{
+//				RoleId: pulumi.Any(test.Id),
 //				Policy: readPolicy.Name,
 //			})
 //			if err != nil {

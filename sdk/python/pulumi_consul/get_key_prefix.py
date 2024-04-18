@@ -151,16 +151,16 @@ def get_key_prefix(datacenter: Optional[str] = None,
     import pulumi_aws as aws
     import pulumi_consul as consul
 
-    app_key_prefix = consul.get_key_prefix(datacenter="nyc1",
+    app = consul.get_key_prefix(datacenter="nyc1",
+        token="abcd",
         path_prefix="myapp/config/",
         subkey_collection=[consul.GetKeyPrefixSubkeyCollectionArgs(
-            default="ami-1234",
             name="ami",
             path="app/launch_ami",
-        )],
-        token="abcd")
+            default="ami-1234",
+        )])
     # Start our instance with the dynamic ami value
-    app_instance = aws.ec2.Instance("appInstance", ami=app_key_prefix.var["ami"])
+    app_instance = aws.index.Instance("app", ami=app.var.ami)
     ```
     <!--End PulumiCodeChooser -->
 
@@ -170,11 +170,11 @@ def get_key_prefix(datacenter: Optional[str] = None,
     import pulumi_aws as aws
     import pulumi_consul as consul
 
-    web_key_prefix = consul.get_key_prefix(datacenter="nyc1",
-        path_prefix="myapp/config/",
-        token="efgh")
+    web = consul.get_key_prefix(datacenter="nyc1",
+        token="efgh",
+        path_prefix="myapp/config/")
     # Start our instance with the dynamic ami value
-    web_instance = aws.ec2.Instance("webInstance", ami=web_key_prefix.subkeys["app/launch_ami"])
+    web_instance = aws.index.Instance("web", ami=web.subkeys.app_launch_ami)
     ```
     <!--End PulumiCodeChooser -->
 
@@ -230,16 +230,16 @@ def get_key_prefix_output(datacenter: Optional[pulumi.Input[Optional[str]]] = No
     import pulumi_aws as aws
     import pulumi_consul as consul
 
-    app_key_prefix = consul.get_key_prefix(datacenter="nyc1",
+    app = consul.get_key_prefix(datacenter="nyc1",
+        token="abcd",
         path_prefix="myapp/config/",
         subkey_collection=[consul.GetKeyPrefixSubkeyCollectionArgs(
-            default="ami-1234",
             name="ami",
             path="app/launch_ami",
-        )],
-        token="abcd")
+            default="ami-1234",
+        )])
     # Start our instance with the dynamic ami value
-    app_instance = aws.ec2.Instance("appInstance", ami=app_key_prefix.var["ami"])
+    app_instance = aws.index.Instance("app", ami=app.var.ami)
     ```
     <!--End PulumiCodeChooser -->
 
@@ -249,11 +249,11 @@ def get_key_prefix_output(datacenter: Optional[pulumi.Input[Optional[str]]] = No
     import pulumi_aws as aws
     import pulumi_consul as consul
 
-    web_key_prefix = consul.get_key_prefix(datacenter="nyc1",
-        path_prefix="myapp/config/",
-        token="efgh")
+    web = consul.get_key_prefix(datacenter="nyc1",
+        token="efgh",
+        path_prefix="myapp/config/")
     # Start our instance with the dynamic ami value
-    web_instance = aws.ec2.Instance("webInstance", ami=web_key_prefix.subkeys["app/launch_ami"])
+    web_instance = aws.index.Instance("web", ami=web.subkeys.app_launch_ami)
     ```
     <!--End PulumiCodeChooser -->
 

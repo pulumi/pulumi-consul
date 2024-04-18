@@ -275,8 +275,9 @@ class License(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_consul as consul
+        import pulumi_std as std
 
-        license = consul.License("license", license=(lambda path: open(path).read())("license.hclic"))
+        license = consul.License("license", license=std.file(input="license.hclic").result)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -305,8 +306,9 @@ class License(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_consul as consul
+        import pulumi_std as std
 
-        license = consul.License("license", license=(lambda path: open(path).read())("license.hclic"))
+        license = consul.License("license", license=std.file(input="license.hclic").result)
         ```
         <!--End PulumiCodeChooser -->
 

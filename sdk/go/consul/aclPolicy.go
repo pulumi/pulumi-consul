@@ -30,10 +30,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := consul.NewAclPolicy(ctx, "test", &consul.AclPolicyArgs{
+//				Name: pulumi.String("my_policy"),
 //				Datacenters: pulumi.StringArray{
 //					pulumi.String("dc1"),
 //				},
-//				Rules: pulumi.String("node_prefix \"\" {\n  policy = \"read\"\n}\n\n"),
+//				Rules: pulumi.String("node_prefix \"\" {\n  policy = \"read\"\n}\n"),
 //			})
 //			if err != nil {
 //				return err

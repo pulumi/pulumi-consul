@@ -34,11 +34,13 @@ namespace Pulumi.Consul
     /// {
     ///     var compute = new Consul.Node("compute", new()
     ///     {
+    ///         Name = "compute-google",
     ///         Address = "www.google.com",
     ///     });
     /// 
     ///     var google = new Consul.Service("google", new()
     ///     {
+    ///         Name = "google",
     ///         Node = compute.Name,
     ///         Port = 80,
     ///         Tags = new[]
@@ -64,6 +66,7 @@ namespace Pulumi.Consul
     /// {
     ///     var google = new Consul.Service("google", new()
     ///     {
+    ///         Name = "google",
     ///         Node = "google",
     ///         Port = 443,
     ///     });
@@ -73,6 +76,60 @@ namespace Pulumi.Consul
     /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// Register a health-check:
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Consul = Pulumi.Consul;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var redis = new Consul.Service("redis", new()
+    ///     {
+    ///         Name = "redis",
+    ///         Node = "redis",
+    ///         Port = 6379,
+    ///         Checks = new[]
+    ///         {
+    ///             new Consul.Inputs.ServiceCheckArgs
+    ///             {
+    ///                 CheckId = "service:redis1",
+    ///                 Name = "Redis health check",
+    ///                 Status = "passing",
+    ///                 Http = "https://www.hashicorptest.com",
+    ///                 TlsSkipVerify = false,
+    ///                 Method = "PUT",
+    ///                 Interval = "5s",
+    ///                 Timeout = "1s",
+    ///                 DeregisterCriticalServiceAfter = "30s",
+    ///                 Headers = new[]
+    ///                 {
+    ///                     new Consul.Inputs.ServiceCheckHeaderArgs
+    ///                     {
+    ///                         Name = "foo",
+    ///                         Values = new[]
+    ///                         {
+    ///                             "test",
+    ///                         },
+    ///                     },
+    ///                     new Consul.Inputs.ServiceCheckHeaderArgs
+    ///                     {
+    ///                         Name = "bar",
+    ///                         Values = new[]
+    ///                         {
+    ///                             "test",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [ConsulResourceType("consul:index/service:Service")]
     public partial class Service : global::Pulumi.CustomResource

@@ -43,12 +43,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var test = new AclPolicy(&#34;test&#34;, AclPolicyArgs.builder()        
+ *             .name(&#34;my_policy&#34;)
  *             .datacenters(&#34;dc1&#34;)
  *             .rules(&#34;&#34;&#34;
  * node_prefix &#34;&#34; {
  *   policy = &#34;read&#34;
  * }
- * 
  *             &#34;&#34;&#34;)
  *             .build());
  * 
