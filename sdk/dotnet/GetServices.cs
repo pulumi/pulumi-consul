@@ -19,6 +19,44 @@ namespace Pulumi.Consul
         /// 
         /// This data source is different from the `consul.Service` (singular) data
         /// source, which provides a detailed response about a specific Consul service.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Consul = Pulumi.Consul;
+        /// using Example = Pulumi.Example;
+        /// using Std = Pulumi.Std;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var read_dc1 = Consul.GetServices.Invoke(new()
+        ///     {
+        ///         QueryOptions = new[]
+        ///         {
+        ///             new Consul.Inputs.GetServicesQueryOptionInputArgs
+        ///             {
+        ///                 Datacenter = "dc1",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     // Set the description to a whitespace delimited list of the services
+        ///     var app = new Example.Index.Resource("app", new()
+        ///     {
+        ///         Description = Std.Join.Invoke(new()
+        ///         {
+        ///             Separator = " ",
+        ///             Input = names,
+        ///         }).Result,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetServicesResult> InvokeAsync(GetServicesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServicesResult>("consul:index/getServices:getServices", args ?? new GetServicesArgs(), options.WithDefaults());
@@ -31,6 +69,44 @@ namespace Pulumi.Consul
         /// 
         /// This data source is different from the `consul.Service` (singular) data
         /// source, which provides a detailed response about a specific Consul service.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Consul = Pulumi.Consul;
+        /// using Example = Pulumi.Example;
+        /// using Std = Pulumi.Std;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var read_dc1 = Consul.GetServices.Invoke(new()
+        ///     {
+        ///         QueryOptions = new[]
+        ///         {
+        ///             new Consul.Inputs.GetServicesQueryOptionInputArgs
+        ///             {
+        ///                 Datacenter = "dc1",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     // Set the description to a whitespace delimited list of the services
+        ///     var app = new Example.Index.Resource("app", new()
+        ///     {
+        ///         Description = Std.Join.Invoke(new()
+        ///         {
+        ///             Separator = " ",
+        ///             Input = names,
+        ///         }).Result,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetServicesResult> Invoke(GetServicesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServicesResult>("consul:index/getServices:getServices", args ?? new GetServicesInvokeArgs(), options.WithDefaults());

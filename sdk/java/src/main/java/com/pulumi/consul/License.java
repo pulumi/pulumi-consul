@@ -23,6 +23,41 @@ import javax.annotation.Nullable;
  * the Consul Enterprise license. If ACLs are enabled then a token with operator
  * privileges may be required in order to use this command.
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.consul.License;
+ * import com.pulumi.consul.LicenseArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var license = new License(&#34;license&#34;, LicenseArgs.builder()        
+ *             .license(StdFunctions.file(FileArgs.builder()
+ *                 .input(&#34;license.hclic&#34;)
+ *                 .build()).result())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  */
 @ResourceType(type="consul:index/license:License")
 public class License extends com.pulumi.resources.CustomResource {

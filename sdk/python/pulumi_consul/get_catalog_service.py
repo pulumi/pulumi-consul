@@ -132,6 +132,23 @@ def get_catalog_service(datacenter: Optional[str] = None,
     This data source is different from the `get_services` (plural) data
     source, which provides a summary of the current Consul services.
 
+    ## Example Usage
+
+    <!--Start PulumiCodeChooser -->
+    ```python
+    import pulumi
+    import pulumi_consul as consul
+    import pulumi_example as example
+    import pulumi_std as std
+
+    read_consul_dc1 = consul.get_service(name="consul",
+        datacenter="dc1")
+    # Set the description to a whitespace delimited list of the node names
+    app = example.index.Resource("app", description=std.join(separator= ,
+        input=nodes).result)
+    ```
+    <!--End PulumiCodeChooser -->
+
 
     :param str datacenter: The Consul datacenter to query.  Defaults to the
            same value found in `query_options` parameter specified below, or if that is
@@ -180,6 +197,23 @@ def get_catalog_service_output(datacenter: Optional[pulumi.Input[Optional[str]]]
 
     This data source is different from the `get_services` (plural) data
     source, which provides a summary of the current Consul services.
+
+    ## Example Usage
+
+    <!--Start PulumiCodeChooser -->
+    ```python
+    import pulumi
+    import pulumi_consul as consul
+    import pulumi_example as example
+    import pulumi_std as std
+
+    read_consul_dc1 = consul.get_service(name="consul",
+        datacenter="dc1")
+    # Set the description to a whitespace delimited list of the node names
+    app = example.index.Resource("app", description=std.join(separator= ,
+        input=nodes).result)
+    ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str datacenter: The Consul datacenter to query.  Defaults to the

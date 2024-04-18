@@ -14,6 +14,28 @@ import * as utilities from "./utilities";
  *
  * This data source is different from the `consul.Service` (singular) data
  * source, which provides a detailed response about a specific Consul service.
+ *
+ * ## Example Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ * import * as example from "@pulumi/example";
+ * import * as std from "@pulumi/std";
+ *
+ * const read-dc1 = consul.getServices({
+ *     queryOptions: [{
+ *         datacenter: "dc1",
+ *     }],
+ * });
+ * // Set the description to a whitespace delimited list of the services
+ * const app = new example.index.Resource("app", {description: std.join({
+ *     separator: " ",
+ *     input: names,
+ * }).result});
+ * ```
+ * <!--End PulumiCodeChooser -->
  */
 /** @deprecated getCatalogServices has been deprecated in favor of getServices */
 export function getCatalogServices(args?: GetCatalogServicesArgs, opts?: pulumi.InvokeOptions): Promise<GetCatalogServicesResult> {
@@ -67,6 +89,28 @@ export interface GetCatalogServicesResult {
  *
  * This data source is different from the `consul.Service` (singular) data
  * source, which provides a detailed response about a specific Consul service.
+ *
+ * ## Example Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ * import * as example from "@pulumi/example";
+ * import * as std from "@pulumi/std";
+ *
+ * const read-dc1 = consul.getServices({
+ *     queryOptions: [{
+ *         datacenter: "dc1",
+ *     }],
+ * });
+ * // Set the description to a whitespace delimited list of the services
+ * const app = new example.index.Resource("app", {description: std.join({
+ *     separator: " ",
+ *     input: names,
+ * }).result});
+ * ```
+ * <!--End PulumiCodeChooser -->
  */
 /** @deprecated getCatalogServices has been deprecated in favor of getServices */
 export function getCatalogServicesOutput(args?: GetCatalogServicesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCatalogServicesResult> {

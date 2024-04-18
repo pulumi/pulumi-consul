@@ -1869,6 +1869,50 @@ public final class ConsulFunctions {
      * This data source is different from the `consul.getServices` (plural) data
      * source, which provides a summary of the current Consul services.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetServiceArgs;
+     * import com.pulumi.example.resource;
+     * import com.pulumi.example.ResourceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var read-consul-dc1 = ConsulFunctions.getService(GetServiceArgs.builder()
+     *             .name(&#34;consul&#34;)
+     *             .datacenter(&#34;dc1&#34;)
+     *             .build());
+     * 
+     *         // Set the description to a whitespace delimited list of the node names
+     *         var app = new Resource(&#34;app&#34;, ResourceArgs.builder()        
+     *             .description(StdFunctions.join(JoinArgs.builder()
+     *                 .separator(&#34; &#34;)
+     *                 .input(nodes)
+     *                 .build()).result())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * @deprecated
      * getCatalogService has been deprecated in favor of getService
      * 
@@ -1886,6 +1930,50 @@ public final class ConsulFunctions {
      * 
      * This data source is different from the `consul.getServices` (plural) data
      * source, which provides a summary of the current Consul services.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetServiceArgs;
+     * import com.pulumi.example.resource;
+     * import com.pulumi.example.ResourceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var read-consul-dc1 = ConsulFunctions.getService(GetServiceArgs.builder()
+     *             .name(&#34;consul&#34;)
+     *             .datacenter(&#34;dc1&#34;)
+     *             .build());
+     * 
+     *         // Set the description to a whitespace delimited list of the node names
+     *         var app = new Resource(&#34;app&#34;, ResourceArgs.builder()        
+     *             .description(StdFunctions.join(JoinArgs.builder()
+     *                 .separator(&#34; &#34;)
+     *                 .input(nodes)
+     *                 .build()).result())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
      * getCatalogService has been deprecated in favor of getService
@@ -1905,6 +1993,50 @@ public final class ConsulFunctions {
      * This data source is different from the `consul.getServices` (plural) data
      * source, which provides a summary of the current Consul services.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetServiceArgs;
+     * import com.pulumi.example.resource;
+     * import com.pulumi.example.ResourceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var read-consul-dc1 = ConsulFunctions.getService(GetServiceArgs.builder()
+     *             .name(&#34;consul&#34;)
+     *             .datacenter(&#34;dc1&#34;)
+     *             .build());
+     * 
+     *         // Set the description to a whitespace delimited list of the node names
+     *         var app = new Resource(&#34;app&#34;, ResourceArgs.builder()        
+     *             .description(StdFunctions.join(JoinArgs.builder()
+     *                 .separator(&#34; &#34;)
+     *                 .input(nodes)
+     *                 .build()).result())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * @deprecated
      * getCatalogService has been deprecated in favor of getService
      * 
@@ -1923,6 +2055,50 @@ public final class ConsulFunctions {
      * This data source is different from the `consul.getServices` (plural) data
      * source, which provides a summary of the current Consul services.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetServiceArgs;
+     * import com.pulumi.example.resource;
+     * import com.pulumi.example.ResourceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var read-consul-dc1 = ConsulFunctions.getService(GetServiceArgs.builder()
+     *             .name(&#34;consul&#34;)
+     *             .datacenter(&#34;dc1&#34;)
+     *             .build());
+     * 
+     *         // Set the description to a whitespace delimited list of the node names
+     *         var app = new Resource(&#34;app&#34;, ResourceArgs.builder()        
+     *             .description(StdFunctions.join(JoinArgs.builder()
+     *                 .separator(&#34; &#34;)
+     *                 .input(nodes)
+     *                 .build()).result())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * @deprecated
      * getCatalogService has been deprecated in favor of getService
      * 
@@ -1939,6 +2115,51 @@ public final class ConsulFunctions {
      * 
      * This data source is different from the `consul.Service` (singular) data
      * source, which provides a detailed response about a specific Consul service.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetServicesArgs;
+     * import com.pulumi.example.resource;
+     * import com.pulumi.example.ResourceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var read-dc1 = ConsulFunctions.getServices(GetServicesArgs.builder()
+     *             .queryOptions(GetServicesQueryOptionArgs.builder()
+     *                 .datacenter(&#34;dc1&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         // Set the description to a whitespace delimited list of the services
+     *         var app = new Resource(&#34;app&#34;, ResourceArgs.builder()        
+     *             .description(StdFunctions.join(JoinArgs.builder()
+     *                 .separator(&#34; &#34;)
+     *                 .input(names)
+     *                 .build()).result())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
      * getCatalogServices has been deprecated in favor of getServices
@@ -1957,6 +2178,51 @@ public final class ConsulFunctions {
      * This data source is different from the `consul.Service` (singular) data
      * source, which provides a detailed response about a specific Consul service.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetServicesArgs;
+     * import com.pulumi.example.resource;
+     * import com.pulumi.example.ResourceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var read-dc1 = ConsulFunctions.getServices(GetServicesArgs.builder()
+     *             .queryOptions(GetServicesQueryOptionArgs.builder()
+     *                 .datacenter(&#34;dc1&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         // Set the description to a whitespace delimited list of the services
+     *         var app = new Resource(&#34;app&#34;, ResourceArgs.builder()        
+     *             .description(StdFunctions.join(JoinArgs.builder()
+     *                 .separator(&#34; &#34;)
+     *                 .input(names)
+     *                 .build()).result())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * @deprecated
      * getCatalogServices has been deprecated in favor of getServices
      * 
@@ -1973,6 +2239,51 @@ public final class ConsulFunctions {
      * 
      * This data source is different from the `consul.Service` (singular) data
      * source, which provides a detailed response about a specific Consul service.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetServicesArgs;
+     * import com.pulumi.example.resource;
+     * import com.pulumi.example.ResourceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var read-dc1 = ConsulFunctions.getServices(GetServicesArgs.builder()
+     *             .queryOptions(GetServicesQueryOptionArgs.builder()
+     *                 .datacenter(&#34;dc1&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         // Set the description to a whitespace delimited list of the services
+     *         var app = new Resource(&#34;app&#34;, ResourceArgs.builder()        
+     *             .description(StdFunctions.join(JoinArgs.builder()
+     *                 .separator(&#34; &#34;)
+     *                 .input(names)
+     *                 .build()).result())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
      * getCatalogServices has been deprecated in favor of getServices
@@ -1991,6 +2302,51 @@ public final class ConsulFunctions {
      * This data source is different from the `consul.Service` (singular) data
      * source, which provides a detailed response about a specific Consul service.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetServicesArgs;
+     * import com.pulumi.example.resource;
+     * import com.pulumi.example.ResourceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var read-dc1 = ConsulFunctions.getServices(GetServicesArgs.builder()
+     *             .queryOptions(GetServicesQueryOptionArgs.builder()
+     *                 .datacenter(&#34;dc1&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         // Set the description to a whitespace delimited list of the services
+     *         var app = new Resource(&#34;app&#34;, ResourceArgs.builder()        
+     *             .description(StdFunctions.join(JoinArgs.builder()
+     *                 .separator(&#34; &#34;)
+     *                 .input(names)
+     *                 .build()).result())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * @deprecated
      * getCatalogServices has been deprecated in favor of getServices
      * 
@@ -2008,6 +2364,51 @@ public final class ConsulFunctions {
      * This data source is different from the `consul.Service` (singular) data
      * source, which provides a detailed response about a specific Consul service.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetServicesArgs;
+     * import com.pulumi.example.resource;
+     * import com.pulumi.example.ResourceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var read-dc1 = ConsulFunctions.getServices(GetServicesArgs.builder()
+     *             .queryOptions(GetServicesQueryOptionArgs.builder()
+     *                 .datacenter(&#34;dc1&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         // Set the description to a whitespace delimited list of the services
+     *         var app = new Resource(&#34;app&#34;, ResourceArgs.builder()        
+     *             .description(StdFunctions.join(JoinArgs.builder()
+     *                 .separator(&#34; &#34;)
+     *                 .input(names)
+     *                 .build()).result())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * @deprecated
      * getCatalogServices has been deprecated in favor of getServices
      * 
@@ -2024,6 +2425,51 @@ public final class ConsulFunctions {
      * 
      * This data source is different from the `consul.Service` (singular) data
      * source, which provides a detailed response about a specific Consul service.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetServicesArgs;
+     * import com.pulumi.example.resource;
+     * import com.pulumi.example.ResourceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var read-dc1 = ConsulFunctions.getServices(GetServicesArgs.builder()
+     *             .queryOptions(GetServicesQueryOptionArgs.builder()
+     *                 .datacenter(&#34;dc1&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         // Set the description to a whitespace delimited list of the services
+     *         var app = new Resource(&#34;app&#34;, ResourceArgs.builder()        
+     *             .description(StdFunctions.join(JoinArgs.builder()
+     *                 .separator(&#34; &#34;)
+     *                 .input(names)
+     *                 .build()).result())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
      * getCatalogServices has been deprecated in favor of getServices
@@ -3671,6 +4117,50 @@ public final class ConsulFunctions {
      * This data source is different from the `consul.getServices` (plural) data
      * source, which provides a summary of the current Consul services.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetServiceArgs;
+     * import com.pulumi.example.resource;
+     * import com.pulumi.example.ResourceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var read-consul-dc1 = ConsulFunctions.getService(GetServiceArgs.builder()
+     *             .name(&#34;consul&#34;)
+     *             .datacenter(&#34;dc1&#34;)
+     *             .build());
+     * 
+     *         // Set the description to a whitespace delimited list of the node names
+     *         var app = new Resource(&#34;app&#34;, ResourceArgs.builder()        
+     *             .description(StdFunctions.join(JoinArgs.builder()
+     *                 .separator(&#34; &#34;)
+     *                 .input(nodes)
+     *                 .build()).result())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args) {
         return getService(args, InvokeOptions.Empty);
@@ -3684,6 +4174,50 @@ public final class ConsulFunctions {
      * 
      * This data source is different from the `consul.getServices` (plural) data
      * source, which provides a summary of the current Consul services.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetServiceArgs;
+     * import com.pulumi.example.resource;
+     * import com.pulumi.example.ResourceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var read-consul-dc1 = ConsulFunctions.getService(GetServiceArgs.builder()
+     *             .name(&#34;consul&#34;)
+     *             .datacenter(&#34;dc1&#34;)
+     *             .build());
+     * 
+     *         // Set the description to a whitespace delimited list of the node names
+     *         var app = new Resource(&#34;app&#34;, ResourceArgs.builder()        
+     *             .description(StdFunctions.join(JoinArgs.builder()
+     *                 .separator(&#34; &#34;)
+     *                 .input(nodes)
+     *                 .build()).result())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args) {
@@ -3699,6 +4233,50 @@ public final class ConsulFunctions {
      * This data source is different from the `consul.getServices` (plural) data
      * source, which provides a summary of the current Consul services.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetServiceArgs;
+     * import com.pulumi.example.resource;
+     * import com.pulumi.example.ResourceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var read-consul-dc1 = ConsulFunctions.getService(GetServiceArgs.builder()
+     *             .name(&#34;consul&#34;)
+     *             .datacenter(&#34;dc1&#34;)
+     *             .build());
+     * 
+     *         // Set the description to a whitespace delimited list of the node names
+     *         var app = new Resource(&#34;app&#34;, ResourceArgs.builder()        
+     *             .description(StdFunctions.join(JoinArgs.builder()
+     *                 .separator(&#34; &#34;)
+     *                 .input(nodes)
+     *                 .build()).result())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("consul:index/getService:getService", TypeShape.of(GetServiceResult.class), args, Utilities.withVersion(options));
@@ -3712,6 +4290,50 @@ public final class ConsulFunctions {
      * 
      * This data source is different from the `consul.getServices` (plural) data
      * source, which provides a summary of the current Consul services.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetServiceArgs;
+     * import com.pulumi.example.resource;
+     * import com.pulumi.example.ResourceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var read-consul-dc1 = ConsulFunctions.getService(GetServiceArgs.builder()
+     *             .name(&#34;consul&#34;)
+     *             .datacenter(&#34;dc1&#34;)
+     *             .build());
+     * 
+     *         // Set the description to a whitespace delimited list of the node names
+     *         var app = new Resource(&#34;app&#34;, ResourceArgs.builder()        
+     *             .description(StdFunctions.join(JoinArgs.builder()
+     *                 .separator(&#34; &#34;)
+     *                 .input(nodes)
+     *                 .build()).result())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args, InvokeOptions options) {
@@ -3914,6 +4536,51 @@ public final class ConsulFunctions {
      * This data source is different from the `consul.Service` (singular) data
      * source, which provides a detailed response about a specific Consul service.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetServicesArgs;
+     * import com.pulumi.example.resource;
+     * import com.pulumi.example.ResourceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var read-dc1 = ConsulFunctions.getServices(GetServicesArgs.builder()
+     *             .queryOptions(GetServicesQueryOptionArgs.builder()
+     *                 .datacenter(&#34;dc1&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         // Set the description to a whitespace delimited list of the services
+     *         var app = new Resource(&#34;app&#34;, ResourceArgs.builder()        
+     *             .description(StdFunctions.join(JoinArgs.builder()
+     *                 .separator(&#34; &#34;)
+     *                 .input(names)
+     *                 .build()).result())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetServicesResult> getServices() {
         return getServices(GetServicesArgs.Empty, InvokeOptions.Empty);
@@ -3926,6 +4593,51 @@ public final class ConsulFunctions {
      * 
      * This data source is different from the `consul.Service` (singular) data
      * source, which provides a detailed response about a specific Consul service.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetServicesArgs;
+     * import com.pulumi.example.resource;
+     * import com.pulumi.example.ResourceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var read-dc1 = ConsulFunctions.getServices(GetServicesArgs.builder()
+     *             .queryOptions(GetServicesQueryOptionArgs.builder()
+     *                 .datacenter(&#34;dc1&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         // Set the description to a whitespace delimited list of the services
+     *         var app = new Resource(&#34;app&#34;, ResourceArgs.builder()        
+     *             .description(StdFunctions.join(JoinArgs.builder()
+     *                 .separator(&#34; &#34;)
+     *                 .input(names)
+     *                 .build()).result())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServicesResult> getServicesPlain() {
@@ -3940,6 +4652,51 @@ public final class ConsulFunctions {
      * This data source is different from the `consul.Service` (singular) data
      * source, which provides a detailed response about a specific Consul service.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetServicesArgs;
+     * import com.pulumi.example.resource;
+     * import com.pulumi.example.ResourceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var read-dc1 = ConsulFunctions.getServices(GetServicesArgs.builder()
+     *             .queryOptions(GetServicesQueryOptionArgs.builder()
+     *                 .datacenter(&#34;dc1&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         // Set the description to a whitespace delimited list of the services
+     *         var app = new Resource(&#34;app&#34;, ResourceArgs.builder()        
+     *             .description(StdFunctions.join(JoinArgs.builder()
+     *                 .separator(&#34; &#34;)
+     *                 .input(names)
+     *                 .build()).result())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetServicesResult> getServices(GetServicesArgs args) {
         return getServices(args, InvokeOptions.Empty);
@@ -3952,6 +4709,51 @@ public final class ConsulFunctions {
      * 
      * This data source is different from the `consul.Service` (singular) data
      * source, which provides a detailed response about a specific Consul service.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetServicesArgs;
+     * import com.pulumi.example.resource;
+     * import com.pulumi.example.ResourceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var read-dc1 = ConsulFunctions.getServices(GetServicesArgs.builder()
+     *             .queryOptions(GetServicesQueryOptionArgs.builder()
+     *                 .datacenter(&#34;dc1&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         // Set the description to a whitespace delimited list of the services
+     *         var app = new Resource(&#34;app&#34;, ResourceArgs.builder()        
+     *             .description(StdFunctions.join(JoinArgs.builder()
+     *                 .separator(&#34; &#34;)
+     *                 .input(names)
+     *                 .build()).result())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServicesResult> getServicesPlain(GetServicesPlainArgs args) {
@@ -3966,6 +4768,51 @@ public final class ConsulFunctions {
      * This data source is different from the `consul.Service` (singular) data
      * source, which provides a detailed response about a specific Consul service.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetServicesArgs;
+     * import com.pulumi.example.resource;
+     * import com.pulumi.example.ResourceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var read-dc1 = ConsulFunctions.getServices(GetServicesArgs.builder()
+     *             .queryOptions(GetServicesQueryOptionArgs.builder()
+     *                 .datacenter(&#34;dc1&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         // Set the description to a whitespace delimited list of the services
+     *         var app = new Resource(&#34;app&#34;, ResourceArgs.builder()        
+     *             .description(StdFunctions.join(JoinArgs.builder()
+     *                 .separator(&#34; &#34;)
+     *                 .input(names)
+     *                 .build()).result())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetServicesResult> getServices(GetServicesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("consul:index/getServices:getServices", TypeShape.of(GetServicesResult.class), args, Utilities.withVersion(options));
@@ -3978,6 +4825,51 @@ public final class ConsulFunctions {
      * 
      * This data source is different from the `consul.Service` (singular) data
      * source, which provides a detailed response about a specific Consul service.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetServicesArgs;
+     * import com.pulumi.example.resource;
+     * import com.pulumi.example.ResourceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var read-dc1 = ConsulFunctions.getServices(GetServicesArgs.builder()
+     *             .queryOptions(GetServicesQueryOptionArgs.builder()
+     *                 .datacenter(&#34;dc1&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *         // Set the description to a whitespace delimited list of the services
+     *         var app = new Resource(&#34;app&#34;, ResourceArgs.builder()        
+     *             .description(StdFunctions.join(JoinArgs.builder()
+     *                 .separator(&#34; &#34;)
+     *                 .input(names)
+     *                 .build()).result())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServicesResult> getServicesPlain(GetServicesPlainArgs args, InvokeOptions options) {

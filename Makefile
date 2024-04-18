@@ -115,6 +115,7 @@ install_plugins: .pulumi/bin/pulumi
 	.pulumi/bin/pulumi plugin install resource aws 4.0.0
 	.pulumi/bin/pulumi plugin install resource vault 4.0.0
 	.pulumi/bin/pulumi plugin install resource random 4.14.0
+	.pulumi/bin/pulumi plugin install resource std 1.6.2
 
 lint_provider: provider
 	cd provider && golangci-lint run -c ../.golangci.yml

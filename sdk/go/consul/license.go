@@ -17,6 +17,41 @@ import (
 // The `License` resource provides datacenter-level management of
 // the Consul Enterprise license. If ACLs are enabled then a token with operator
 // privileges may be required in order to use this command.
+//
+// ## Example Usage
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			invokeFile, err := std.File(ctx, &std.FileArgs{
+//				Input: "license.hclic",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = consul.NewLicense(ctx, "license", &consul.LicenseArgs{
+//				License: invokeFile.Result,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
 type License struct {
 	pulumi.CustomResourceState
 

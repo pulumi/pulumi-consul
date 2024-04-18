@@ -113,6 +113,24 @@ def get_catalog_services(query_options: Optional[Sequence[pulumi.InputType['GetC
     This data source is different from the `Service` (singular) data
     source, which provides a detailed response about a specific Consul service.
 
+    ## Example Usage
+
+    <!--Start PulumiCodeChooser -->
+    ```python
+    import pulumi
+    import pulumi_consul as consul
+    import pulumi_example as example
+    import pulumi_std as std
+
+    read_dc1 = consul.get_services(query_options=[consul.GetServicesQueryOptionArgs(
+        datacenter="dc1",
+    )])
+    # Set the description to a whitespace delimited list of the services
+    app = example.index.Resource("app", description=std.join(separator= ,
+        input=names).result)
+    ```
+    <!--End PulumiCodeChooser -->
+
 
     :param Sequence[pulumi.InputType['GetCatalogServicesQueryOptionArgs']] query_options: See below.
     """
@@ -142,6 +160,24 @@ def get_catalog_services_output(query_options: Optional[pulumi.Input[Optional[Se
 
     This data source is different from the `Service` (singular) data
     source, which provides a detailed response about a specific Consul service.
+
+    ## Example Usage
+
+    <!--Start PulumiCodeChooser -->
+    ```python
+    import pulumi
+    import pulumi_consul as consul
+    import pulumi_example as example
+    import pulumi_std as std
+
+    read_dc1 = consul.get_services(query_options=[consul.GetServicesQueryOptionArgs(
+        datacenter="dc1",
+    )])
+    # Set the description to a whitespace delimited list of the services
+    app = example.index.Resource("app", description=std.join(separator= ,
+        input=names).result)
+    ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[pulumi.InputType['GetCatalogServicesQueryOptionArgs']] query_options: See below.

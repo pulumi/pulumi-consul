@@ -10,6 +10,20 @@ import * as utilities from "./utilities";
  * The `consul.License` resource provides datacenter-level management of
  * the Consul Enterprise license. If ACLs are enabled then a token with operator
  * privileges may be required in order to use this command.
+ *
+ * ## Example Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ * import * as std from "@pulumi/std";
+ *
+ * const license = new consul.License("license", {license: std.file({
+ *     input: "license.hclic",
+ * }).then(invoke => invoke.result)});
+ * ```
+ * <!--End PulumiCodeChooser -->
  */
 export class License extends pulumi.CustomResource {
     /**
