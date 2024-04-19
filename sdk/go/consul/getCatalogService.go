@@ -22,7 +22,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -59,7 +58,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // Deprecated: getCatalogService has been deprecated in favor of getService
 func GetCatalogService(ctx *pulumi.Context, args *GetCatalogServiceArgs, opts ...pulumi.InvokeOption) (*GetCatalogServiceResult, error) {

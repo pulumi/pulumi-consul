@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  *
  * Define a `kubernetes` auth method:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
@@ -31,11 +30,9 @@ import * as utilities from "./utilities";
  *     }),
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Define a `jwt` auth method:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
@@ -63,7 +60,6 @@ import * as utilities from "./utilities";
  *     }),
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export class AclAuthMethod extends pulumi.CustomResource {
     /**

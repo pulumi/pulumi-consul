@@ -18,7 +18,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
@@ -35,7 +34,6 @@ import * as utilities from "./utilities";
  *     input: nodes,
  * }).result});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 /** @deprecated getCatalogService has been deprecated in favor of getService */
 export function getCatalogService(args: GetCatalogServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetCatalogServiceResult> {
@@ -123,7 +121,6 @@ export interface GetCatalogServiceResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
@@ -140,7 +137,6 @@ export interface GetCatalogServiceResult {
  *     input: nodes,
  * }).result});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 /** @deprecated getCatalogService has been deprecated in favor of getService */
 export function getCatalogServiceOutput(args: GetCatalogServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCatalogServiceResult> {

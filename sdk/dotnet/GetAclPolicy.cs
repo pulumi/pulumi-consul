@@ -18,7 +18,6 @@ namespace Pulumi.Consul
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -38,7 +37,6 @@ namespace Pulumi.Consul
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAclPolicyResult> InvokeAsync(GetAclPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAclPolicyResult>("consul:index/getAclPolicy:getAclPolicy", args ?? new GetAclPolicyArgs(), options.WithDefaults());
@@ -50,7 +48,6 @@ namespace Pulumi.Consul
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -70,7 +67,6 @@ namespace Pulumi.Consul
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAclPolicyResult> Invoke(GetAclPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAclPolicyResult>("consul:index/getAclPolicy:getAclPolicy", args ?? new GetAclPolicyInvokeArgs(), options.WithDefaults());

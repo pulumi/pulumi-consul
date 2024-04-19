@@ -150,7 +150,6 @@ def get_acl_role(name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_consul as consul
@@ -158,7 +157,6 @@ def get_acl_role(name: Optional[str] = None,
     test = consul.get_acl_role(name="example-role")
     pulumi.export("consulAclRole", test.id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str namespace: The namespace to lookup the role.
@@ -193,7 +191,6 @@ def get_acl_role_output(name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_consul as consul
@@ -201,7 +198,6 @@ def get_acl_role_output(name: Optional[pulumi.Input[str]] = None,
     test = consul.get_acl_role(name="example-role")
     pulumi.export("consulAclRole", test.id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str namespace: The namespace to lookup the role.

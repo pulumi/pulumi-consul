@@ -18,7 +18,6 @@ namespace Pulumi.Consul
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -38,7 +37,6 @@ namespace Pulumi.Consul
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAclTokenResult> InvokeAsync(GetAclTokenArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAclTokenResult>("consul:index/getAclToken:getAclToken", args ?? new GetAclTokenArgs(), options.WithDefaults());
@@ -50,7 +48,6 @@ namespace Pulumi.Consul
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -70,7 +67,6 @@ namespace Pulumi.Consul
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAclTokenResult> Invoke(GetAclTokenInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAclTokenResult>("consul:index/getAclToken:getAclToken", args ?? new GetAclTokenInvokeArgs(), options.WithDefaults());

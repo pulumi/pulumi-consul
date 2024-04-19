@@ -200,7 +200,6 @@ class ConfigEntry(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -295,11 +294,9 @@ class ConfigEntry(pulumi.CustomResource):
                 }],
             }))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### `service-intentions` config entry
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -325,9 +322,7 @@ class ConfigEntry(pulumi.CustomResource):
                 ],
             }))
         ```
-        <!--End PulumiCodeChooser -->
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -401,11 +396,9 @@ class ConfigEntry(pulumi.CustomResource):
                 ],
             }))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### `exported-services` config entry
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -424,11 +417,9 @@ class ConfigEntry(pulumi.CustomResource):
                 }],
             }))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### `mesh` config entry
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -444,11 +435,9 @@ class ConfigEntry(pulumi.CustomResource):
                 },
             }))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### `jwt-provider` config entry
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -471,7 +460,6 @@ class ConfigEntry(pulumi.CustomResource):
                 },
             }))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -501,7 +489,6 @@ class ConfigEntry(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -596,11 +583,9 @@ class ConfigEntry(pulumi.CustomResource):
                 }],
             }))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### `service-intentions` config entry
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -626,9 +611,7 @@ class ConfigEntry(pulumi.CustomResource):
                 ],
             }))
         ```
-        <!--End PulumiCodeChooser -->
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -702,11 +685,9 @@ class ConfigEntry(pulumi.CustomResource):
                 ],
             }))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### `exported-services` config entry
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -725,11 +706,9 @@ class ConfigEntry(pulumi.CustomResource):
                 }],
             }))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### `mesh` config entry
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -745,11 +724,9 @@ class ConfigEntry(pulumi.CustomResource):
                 },
             }))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### `jwt-provider` config entry
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -772,7 +749,6 @@ class ConfigEntry(pulumi.CustomResource):
                 },
             }))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

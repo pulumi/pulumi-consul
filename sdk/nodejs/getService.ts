@@ -18,7 +18,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
@@ -35,7 +34,6 @@ import * as utilities from "./utilities";
  *     input: nodes,
  * }).result});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getService(args: GetServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceResult> {
 
@@ -121,7 +119,6 @@ export interface GetServiceResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
@@ -138,7 +135,6 @@ export interface GetServiceResult {
  *     input: nodes,
  * }).result});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getServiceOutput(args: GetServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceResult> {
     return pulumi.output(args).apply((a: any) => getService(a, opts))

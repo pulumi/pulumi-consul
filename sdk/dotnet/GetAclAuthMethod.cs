@@ -17,7 +17,6 @@ namespace Pulumi.Consul
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -37,7 +36,6 @@ namespace Pulumi.Consul
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAclAuthMethodResult> InvokeAsync(GetAclAuthMethodArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAclAuthMethodResult>("consul:index/getAclAuthMethod:getAclAuthMethod", args ?? new GetAclAuthMethodArgs(), options.WithDefaults());
@@ -48,7 +46,6 @@ namespace Pulumi.Consul
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -68,7 +65,6 @@ namespace Pulumi.Consul
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAclAuthMethodResult> Invoke(GetAclAuthMethodInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAclAuthMethodResult>("consul:index/getAclAuthMethod:getAclAuthMethod", args ?? new GetAclAuthMethodInvokeArgs(), options.WithDefaults());

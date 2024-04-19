@@ -473,7 +473,6 @@ class Service(pulumi.CustomResource):
 
         Creating a new node with the service:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_consul as consul
@@ -487,11 +486,9 @@ class Service(pulumi.CustomResource):
             port=80,
             tags=["tag0"])
         ```
-        <!--End PulumiCodeChooser -->
 
         Utilizing an existing known node:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_consul as consul
@@ -501,11 +498,9 @@ class Service(pulumi.CustomResource):
             node="google",
             port=443)
         ```
-        <!--End PulumiCodeChooser -->
 
         Register a health-check:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_consul as consul
@@ -536,7 +531,6 @@ class Service(pulumi.CustomResource):
                 ],
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -572,7 +566,6 @@ class Service(pulumi.CustomResource):
 
         Creating a new node with the service:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_consul as consul
@@ -586,11 +579,9 @@ class Service(pulumi.CustomResource):
             port=80,
             tags=["tag0"])
         ```
-        <!--End PulumiCodeChooser -->
 
         Utilizing an existing known node:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_consul as consul
@@ -600,11 +591,9 @@ class Service(pulumi.CustomResource):
             node="google",
             port=443)
         ```
-        <!--End PulumiCodeChooser -->
 
         Register a health-check:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_consul as consul
@@ -635,7 +624,6 @@ class Service(pulumi.CustomResource):
                 ],
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param ServiceArgs args: The arguments to use to populate this resource's properties.

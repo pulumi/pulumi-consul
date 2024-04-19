@@ -14,7 +14,6 @@ import (
 
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -202,11 +201,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### `service-intentions` config entry
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -254,9 +251,7 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -377,11 +372,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### `exported-services` config entry
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -426,11 +419,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### `mesh` config entry
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -468,11 +459,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### `jwt-provider` config entry
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -517,7 +506,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

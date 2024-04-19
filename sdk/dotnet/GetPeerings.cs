@@ -14,7 +14,6 @@ namespace Pulumi.Consul
         /// <summary>
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -27,7 +26,6 @@ namespace Pulumi.Consul
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetPeeringsResult> InvokeAsync(GetPeeringsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPeeringsResult>("consul:index/getPeerings:getPeerings", args ?? new GetPeeringsArgs(), options.WithDefaults());
@@ -35,7 +33,6 @@ namespace Pulumi.Consul
         /// <summary>
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -48,7 +45,6 @@ namespace Pulumi.Consul
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetPeeringsResult> Invoke(GetPeeringsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPeeringsResult>("consul:index/getPeerings:getPeerings", args ?? new GetPeeringsInvokeArgs(), options.WithDefaults());

@@ -18,7 +18,6 @@ namespace Pulumi.Consul
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -35,7 +34,6 @@ namespace Pulumi.Consul
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAutopilotHealthResult> InvokeAsync(GetAutopilotHealthArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAutopilotHealthResult>("consul:index/getAutopilotHealth:getAutopilotHealth", args ?? new GetAutopilotHealthArgs(), options.WithDefaults());
@@ -47,7 +45,6 @@ namespace Pulumi.Consul
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -64,7 +61,6 @@ namespace Pulumi.Consul
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAutopilotHealthResult> Invoke(GetAutopilotHealthInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAutopilotHealthResult>("consul:index/getAutopilotHealth:getAutopilotHealth", args ?? new GetAutopilotHealthInvokeArgs(), options.WithDefaults());

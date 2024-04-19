@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -28,9 +27,7 @@ import * as utilities from "./utilities";
  * // Start our instance with the dynamic ami value
  * const appInstance = new aws.index.Instance("app", {ami: app["var"]?.ami});
  * ```
- * <!--End PulumiCodeChooser -->
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -44,7 +41,6 @@ import * as utilities from "./utilities";
  * // Start our instance with the dynamic ami value
  * const webInstance = new aws.index.Instance("web", {ami: web.subkeys?.["app/launch_ami"]});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getKeyPrefix(args: GetKeyPrefixArgs, opts?: pulumi.InvokeOptions): Promise<GetKeyPrefixResult> {
 
@@ -133,7 +129,6 @@ Please use the token argument in the provider configuration
 /**
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -152,9 +147,7 @@ Please use the token argument in the provider configuration
  * // Start our instance with the dynamic ami value
  * const appInstance = new aws.index.Instance("app", {ami: app["var"]?.ami});
  * ```
- * <!--End PulumiCodeChooser -->
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -168,7 +161,6 @@ Please use the token argument in the provider configuration
  * // Start our instance with the dynamic ami value
  * const webInstance = new aws.index.Instance("web", {ami: web.subkeys?.["app/launch_ami"]});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getKeyPrefixOutput(args: GetKeyPrefixOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeyPrefixResult> {
     return pulumi.output(args).apply((a: any) => getKeyPrefix(a, opts))

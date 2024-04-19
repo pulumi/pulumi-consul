@@ -23,7 +23,6 @@ namespace Pulumi.Consul
     /// 
     /// Creating a new node with the service:
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -51,11 +50,9 @@ namespace Pulumi.Consul
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// Utilizing an existing known node:
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -73,11 +70,9 @@ namespace Pulumi.Consul
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// Register a health-check:
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -129,7 +124,6 @@ namespace Pulumi.Consul
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [ConsulResourceType("consul:index/service:Service")]
     public partial class Service : global::Pulumi.CustomResource

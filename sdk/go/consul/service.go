@@ -25,7 +25,6 @@ import (
 //
 // Creating a new node with the service:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -61,11 +60,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // Utilizing an existing known node:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -91,11 +88,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // Register a health-check:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -148,7 +143,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 type Service struct {
 	pulumi.CustomResourceState
 

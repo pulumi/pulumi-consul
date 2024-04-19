@@ -18,7 +18,6 @@ import (
 //
 // Define a `kubernetes` auth method:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -56,11 +55,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // Define a `jwt` auth method:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -112,7 +109,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 type AclAuthMethod struct {
 	pulumi.CustomResourceState
 

@@ -236,7 +236,6 @@ class ConfigEntryServiceIntentions(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -282,7 +281,6 @@ class ConfigEntryServiceIntentions(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -302,7 +300,6 @@ class ConfigEntryServiceIntentions(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -348,7 +345,6 @@ class ConfigEntryServiceIntentions(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param ConfigEntryServiceIntentionsArgs args: The arguments to use to populate this resource's properties.

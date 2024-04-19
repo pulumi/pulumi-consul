@@ -134,7 +134,6 @@ def get_catalog_service(datacenter: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_consul as consul
@@ -147,7 +146,6 @@ def get_catalog_service(datacenter: Optional[str] = None,
     app = example.index.Resource("app", description=std.join(separator= ,
         input=nodes).result)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str datacenter: The Consul datacenter to query.  Defaults to the
@@ -200,7 +198,6 @@ def get_catalog_service_output(datacenter: Optional[pulumi.Input[Optional[str]]]
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_consul as consul
@@ -213,7 +210,6 @@ def get_catalog_service_output(datacenter: Optional[pulumi.Input[Optional[str]]]
     app = example.index.Resource("app", description=std.join(separator= ,
         input=nodes).result)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str datacenter: The Consul datacenter to query.  Defaults to the

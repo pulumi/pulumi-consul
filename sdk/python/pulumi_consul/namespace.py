@@ -238,7 +238,6 @@ class Namespace(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_consul as consul
@@ -250,7 +249,6 @@ class Namespace(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -283,7 +281,6 @@ class Namespace(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_consul as consul
@@ -295,7 +292,6 @@ class Namespace(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

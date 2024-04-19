@@ -7,7 +7,6 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
@@ -16,7 +15,6 @@ import * as utilities from "./utilities";
  *     peerName: "peered-cluster",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getPeering(args: GetPeeringArgs, opts?: pulumi.InvokeOptions): Promise<GetPeeringResult> {
 
@@ -56,7 +54,6 @@ export interface GetPeeringResult {
 /**
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
@@ -65,7 +62,6 @@ export interface GetPeeringResult {
  *     peerName: "peered-cluster",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getPeeringOutput(args: GetPeeringOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPeeringResult> {
     return pulumi.output(args).apply((a: any) => getPeering(a, opts))
