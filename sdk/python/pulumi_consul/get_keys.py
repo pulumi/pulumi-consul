@@ -147,7 +147,6 @@ def get_keys(datacenter: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aws as aws
@@ -162,7 +161,6 @@ def get_keys(datacenter: Optional[str] = None,
     # Start our instance with the dynamic ami value
     app_instance = aws.index.Instance("app", ami=app.var.ami)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str datacenter: The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
@@ -206,7 +204,6 @@ def get_keys_output(datacenter: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aws as aws
@@ -221,7 +218,6 @@ def get_keys_output(datacenter: Optional[pulumi.Input[Optional[str]]] = None,
     # Start our instance with the dynamic ami value
     app_instance = aws.index.Instance("app", ami=app.var.ami)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str datacenter: The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.

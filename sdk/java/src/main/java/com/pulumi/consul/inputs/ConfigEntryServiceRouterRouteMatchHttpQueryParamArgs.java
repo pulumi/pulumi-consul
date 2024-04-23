@@ -17,14 +17,14 @@ public final class ConfigEntryServiceRouterRouteMatchHttpQueryParamArgs extends 
     public static final ConfigEntryServiceRouterRouteMatchHttpQueryParamArgs Empty = new ConfigEntryServiceRouterRouteMatchHttpQueryParamArgs();
 
     /**
-     * Specifies that a request matches when the header with the given name is this exact value.
+     * Specifies that a request matches when the query parameter with the given name is this exact value.
      * 
      */
     @Import(name="exact")
     private @Nullable Output<String> exact;
 
     /**
-     * @return Specifies that a request matches when the header with the given name is this exact value.
+     * @return Specifies that a request matches when the query parameter with the given name is this exact value.
      * 
      */
     public Optional<Output<String>> exact() {
@@ -32,14 +32,14 @@ public final class ConfigEntryServiceRouterRouteMatchHttpQueryParamArgs extends 
     }
 
     /**
-     * Specifies the name of the HTTP header to match.
+     * Specifies the name of the HTTP query parameter to match.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Specifies the name of the HTTP header to match.
+     * @return Specifies the name of the HTTP query parameter to match.
      * 
      */
     public Optional<Output<String>> name() {
@@ -47,14 +47,14 @@ public final class ConfigEntryServiceRouterRouteMatchHttpQueryParamArgs extends 
     }
 
     /**
-     * Specifies that a request matches when the value in the `name` argument is present anywhere in the HTTP header.
+     * Specifies that a request matches when the value in the `name` argument is present anywhere in the HTTP query parameter.
      * 
      */
     @Import(name="present")
     private @Nullable Output<Boolean> present;
 
     /**
-     * @return Specifies that a request matches when the value in the `name` argument is present anywhere in the HTTP header.
+     * @return Specifies that a request matches when the value in the `name` argument is present anywhere in the HTTP query parameter.
      * 
      */
     public Optional<Output<Boolean>> present() {
@@ -62,14 +62,14 @@ public final class ConfigEntryServiceRouterRouteMatchHttpQueryParamArgs extends 
     }
 
     /**
-     * Specifies that a request matches when the header with the given name matches this regular expression.
+     * Specifies that a request matches when the query parameter with the given name matches this regular expression.
      * 
      */
     @Import(name="regex")
     private @Nullable Output<String> regex;
 
     /**
-     * @return Specifies that a request matches when the header with the given name matches this regular expression.
+     * @return Specifies that a request matches when the query parameter with the given name matches this regular expression.
      * 
      */
     public Optional<Output<String>> regex() {
@@ -104,7 +104,7 @@ public final class ConfigEntryServiceRouterRouteMatchHttpQueryParamArgs extends 
         }
 
         /**
-         * @param exact Specifies that a request matches when the header with the given name is this exact value.
+         * @param exact Specifies that a request matches when the query parameter with the given name is this exact value.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class ConfigEntryServiceRouterRouteMatchHttpQueryParamArgs extends 
         }
 
         /**
-         * @param exact Specifies that a request matches when the header with the given name is this exact value.
+         * @param exact Specifies that a request matches when the query parameter with the given name is this exact value.
          * 
          * @return builder
          * 
@@ -125,7 +125,7 @@ public final class ConfigEntryServiceRouterRouteMatchHttpQueryParamArgs extends 
         }
 
         /**
-         * @param name Specifies the name of the HTTP header to match.
+         * @param name Specifies the name of the HTTP query parameter to match.
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class ConfigEntryServiceRouterRouteMatchHttpQueryParamArgs extends 
         }
 
         /**
-         * @param name Specifies the name of the HTTP header to match.
+         * @param name Specifies the name of the HTTP query parameter to match.
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class ConfigEntryServiceRouterRouteMatchHttpQueryParamArgs extends 
         }
 
         /**
-         * @param present Specifies that a request matches when the value in the `name` argument is present anywhere in the HTTP header.
+         * @param present Specifies that a request matches when the value in the `name` argument is present anywhere in the HTTP query parameter.
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class ConfigEntryServiceRouterRouteMatchHttpQueryParamArgs extends 
         }
 
         /**
-         * @param present Specifies that a request matches when the value in the `name` argument is present anywhere in the HTTP header.
+         * @param present Specifies that a request matches when the value in the `name` argument is present anywhere in the HTTP query parameter.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class ConfigEntryServiceRouterRouteMatchHttpQueryParamArgs extends 
         }
 
         /**
-         * @param regex Specifies that a request matches when the header with the given name matches this regular expression.
+         * @param regex Specifies that a request matches when the query parameter with the given name matches this regular expression.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class ConfigEntryServiceRouterRouteMatchHttpQueryParamArgs extends 
         }
 
         /**
-         * @param regex Specifies that a request matches when the header with the given name matches this regular expression.
+         * @param regex Specifies that a request matches when the query parameter with the given name matches this regular expression.
          * 
          * @return builder
          * 

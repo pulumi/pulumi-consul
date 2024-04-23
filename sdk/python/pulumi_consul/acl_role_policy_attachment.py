@@ -100,7 +100,6 @@ class AclRolePolicyAttachment(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_consul as consul
@@ -114,7 +113,6 @@ class AclRolePolicyAttachment(pulumi.CustomResource):
             role_id=test["id"],
             policy=read_policy.name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -136,7 +134,6 @@ class AclRolePolicyAttachment(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_consul as consul
@@ -150,7 +147,6 @@ class AclRolePolicyAttachment(pulumi.CustomResource):
             role_id=test["id"],
             policy=read_policy.name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

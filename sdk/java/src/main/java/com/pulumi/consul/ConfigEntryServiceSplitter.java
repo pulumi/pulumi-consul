@@ -159,28 +159,28 @@ public class ConfigEntryServiceSplitter extends com.pulumi.resources.CustomResou
         return this.name;
     }
     /**
-     * Specifies the namespace to use in the FQDN when resolving the service.
+     * Specifies the namespace to apply the configuration entry.
      * 
      */
     @Export(name="namespace", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> namespace;
 
     /**
-     * @return Specifies the namespace to use in the FQDN when resolving the service.
+     * @return Specifies the namespace to apply the configuration entry.
      * 
      */
     public Output<Optional<String>> namespace() {
         return Codegen.optional(this.namespace);
     }
     /**
-     * Specifies the admin partition to use in the FQDN when resolving the service.
+     * Specifies the admin partition to apply the configuration entry.
      * 
      */
     @Export(name="partition", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> partition;
 
     /**
-     * @return Specifies the admin partition to use in the FQDN when resolving the service.
+     * @return Specifies the admin partition to apply the configuration entry.
      * 
      */
     public Output<Optional<String>> partition() {

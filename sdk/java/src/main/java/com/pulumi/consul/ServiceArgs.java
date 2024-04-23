@@ -108,14 +108,14 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the header.
+     * The name of the service.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the header.
+     * @return The name of the service.
      * 
      */
     public Optional<Output<String>> name() {
@@ -371,7 +371,7 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the header.
+         * @param name The name of the service.
          * 
          * @return builder
          * 
@@ -382,7 +382,7 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the header.
+         * @param name The name of the service.
          * 
          * @return builder
          * 

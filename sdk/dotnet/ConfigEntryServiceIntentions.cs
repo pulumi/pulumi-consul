@@ -12,7 +12,6 @@ namespace Pulumi.Consul
     /// <summary>
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -88,7 +87,6 @@ namespace Pulumi.Consul
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [ConsulResourceType("consul:index/configEntryServiceIntentions:ConfigEntryServiceIntentions")]
     public partial class ConfigEntryServiceIntentions : global::Pulumi.CustomResource
@@ -106,19 +104,19 @@ namespace Pulumi.Consul
         public Output<ImmutableDictionary<string, string>?> Meta { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the name of a JWT provider defined in the Name field of the jwt-provider configuration entry.
+        /// Specifies a name of the destination service for all intentions defined in the configuration entry.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the traffic source namespace that the intention allows or denies traffic from.
+        /// Specifies the namespace to apply the configuration entry.
         /// </summary>
         [Output("namespace")]
         public Output<string?> Namespace { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the name of an admin partition that the intention allows or denies traffic from.
+        /// Specifies the admin partition to apply the configuration entry.
         /// </summary>
         [Output("partition")]
         public Output<string?> Partition { get; private set; } = null!;
@@ -200,19 +198,19 @@ namespace Pulumi.Consul
         }
 
         /// <summary>
-        /// Specifies the name of a JWT provider defined in the Name field of the jwt-provider configuration entry.
+        /// Specifies a name of the destination service for all intentions defined in the configuration entry.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Specifies the traffic source namespace that the intention allows or denies traffic from.
+        /// Specifies the namespace to apply the configuration entry.
         /// </summary>
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }
 
         /// <summary>
-        /// Specifies the name of an admin partition that the intention allows or denies traffic from.
+        /// Specifies the admin partition to apply the configuration entry.
         /// </summary>
         [Input("partition")]
         public Input<string>? Partition { get; set; }
@@ -262,19 +260,19 @@ namespace Pulumi.Consul
         }
 
         /// <summary>
-        /// Specifies the name of a JWT provider defined in the Name field of the jwt-provider configuration entry.
+        /// Specifies a name of the destination service for all intentions defined in the configuration entry.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Specifies the traffic source namespace that the intention allows or denies traffic from.
+        /// Specifies the namespace to apply the configuration entry.
         /// </summary>
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }
 
         /// <summary>
-        /// Specifies the name of an admin partition that the intention allows or denies traffic from.
+        /// Specifies the admin partition to apply the configuration entry.
         /// </summary>
         [Input("partition")]
         public Input<string>? Partition { get; set; }

@@ -48,14 +48,14 @@ public final class ConfigEntryServiceIntentionsSourcePermissionHttpHeaderArgs ex
     }
 
     /**
-     * Specifies the name of a JWT provider defined in the Name field of the jwt-provider configuration entry.
+     * Specifies the name of the header to match.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Specifies the name of a JWT provider defined in the Name field of the jwt-provider configuration entry.
+     * @return Specifies the name of the header to match.
      * 
      */
     public Output<String> name() {
@@ -195,7 +195,7 @@ public final class ConfigEntryServiceIntentionsSourcePermissionHttpHeaderArgs ex
         }
 
         /**
-         * @param name Specifies the name of a JWT provider defined in the Name field of the jwt-provider configuration entry.
+         * @param name Specifies the name of the header to match.
          * 
          * @return builder
          * 
@@ -206,7 +206,7 @@ public final class ConfigEntryServiceIntentionsSourcePermissionHttpHeaderArgs ex
         }
 
         /**
-         * @param name Specifies the name of a JWT provider defined in the Name field of the jwt-provider configuration entry.
+         * @param name Specifies the name of the header to match.
          * 
          * @return builder
          * 

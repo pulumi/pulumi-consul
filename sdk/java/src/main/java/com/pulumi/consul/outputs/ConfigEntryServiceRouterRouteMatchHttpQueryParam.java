@@ -13,50 +13,50 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ConfigEntryServiceRouterRouteMatchHttpQueryParam {
     /**
-     * @return Specifies that a request matches when the header with the given name is this exact value.
+     * @return Specifies that a request matches when the query parameter with the given name is this exact value.
      * 
      */
     private @Nullable String exact;
     /**
-     * @return Specifies the name of the HTTP header to match.
+     * @return Specifies the name of the HTTP query parameter to match.
      * 
      */
     private @Nullable String name;
     /**
-     * @return Specifies that a request matches when the value in the `name` argument is present anywhere in the HTTP header.
+     * @return Specifies that a request matches when the value in the `name` argument is present anywhere in the HTTP query parameter.
      * 
      */
     private @Nullable Boolean present;
     /**
-     * @return Specifies that a request matches when the header with the given name matches this regular expression.
+     * @return Specifies that a request matches when the query parameter with the given name matches this regular expression.
      * 
      */
     private @Nullable String regex;
 
     private ConfigEntryServiceRouterRouteMatchHttpQueryParam() {}
     /**
-     * @return Specifies that a request matches when the header with the given name is this exact value.
+     * @return Specifies that a request matches when the query parameter with the given name is this exact value.
      * 
      */
     public Optional<String> exact() {
         return Optional.ofNullable(this.exact);
     }
     /**
-     * @return Specifies the name of the HTTP header to match.
+     * @return Specifies the name of the HTTP query parameter to match.
      * 
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return Specifies that a request matches when the value in the `name` argument is present anywhere in the HTTP header.
+     * @return Specifies that a request matches when the value in the `name` argument is present anywhere in the HTTP query parameter.
      * 
      */
     public Optional<Boolean> present() {
         return Optional.ofNullable(this.present);
     }
     /**
-     * @return Specifies that a request matches when the header with the given name matches this regular expression.
+     * @return Specifies that a request matches when the query parameter with the given name matches this regular expression.
      * 
      */
     public Optional<String> regex() {

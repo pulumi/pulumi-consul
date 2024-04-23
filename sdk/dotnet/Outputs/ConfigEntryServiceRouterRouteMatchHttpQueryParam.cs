@@ -14,19 +14,19 @@ namespace Pulumi.Consul.Outputs
     public sealed class ConfigEntryServiceRouterRouteMatchHttpQueryParam
     {
         /// <summary>
-        /// Specifies that a request matches when the header with the given name is this exact value.
+        /// Specifies that a request matches when the query parameter with the given name is this exact value.
         /// </summary>
         public readonly string? Exact;
         /// <summary>
-        /// Specifies the name of the HTTP header to match.
+        /// Specifies the name of the HTTP query parameter to match.
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// Specifies that a request matches when the value in the `name` argument is present anywhere in the HTTP header.
+        /// Specifies that a request matches when the value in the `name` argument is present anywhere in the HTTP query parameter.
         /// </summary>
         public readonly bool? Present;
         /// <summary>
-        /// Specifies that a request matches when the header with the given name matches this regular expression.
+        /// Specifies that a request matches when the query parameter with the given name matches this regular expression.
         /// </summary>
         public readonly string? Regex;
 

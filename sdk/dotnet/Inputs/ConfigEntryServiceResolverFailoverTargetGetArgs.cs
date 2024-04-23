@@ -19,7 +19,7 @@ namespace Pulumi.Consul.Inputs
         public Input<string>? Datacenter { get; set; }
 
         /// <summary>
-        /// Specifies the namespace at the failover location where the failover services are deployed.
+        /// Specifies the namespace to use for the failover target. If empty, the default namespace is used.
         /// </summary>
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }
@@ -37,13 +37,13 @@ namespace Pulumi.Consul.Inputs
         public Input<string>? Peer { get; set; }
 
         /// <summary>
-        /// Specifies the name of the service to resolve at the failover location during a failover scenario.
+        /// Specifies the service name to use for the failover target. If empty, the current service name is used.
         /// </summary>
         [Input("service")]
         public Input<string>? Service { get; set; }
 
         /// <summary>
-        /// Specifies the name of a subset of service instances to resolve at the failover location during a failover scenario.
+        /// Specifies the named subset to use for the failover target. If empty, the default subset for the requested service name is used.
         /// </summary>
         [Input("serviceSubset")]
         public Input<string>? ServiceSubset { get; set; }

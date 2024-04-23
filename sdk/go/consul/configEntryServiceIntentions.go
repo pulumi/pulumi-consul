@@ -13,7 +13,6 @@ import (
 
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -91,7 +90,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 type ConfigEntryServiceIntentions struct {
 	pulumi.CustomResourceState
 
@@ -99,11 +97,11 @@ type ConfigEntryServiceIntentions struct {
 	Jwts ConfigEntryServiceIntentionsJwtArrayOutput `pulumi:"jwts"`
 	// Specifies key-value pairs to add to the KV store.
 	Meta pulumi.StringMapOutput `pulumi:"meta"`
-	// Specifies the name of a JWT provider defined in the Name field of the jwt-provider configuration entry.
+	// Specifies a name of the destination service for all intentions defined in the configuration entry.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Specifies the traffic source namespace that the intention allows or denies traffic from.
+	// Specifies the namespace to apply the configuration entry.
 	Namespace pulumi.StringPtrOutput `pulumi:"namespace"`
-	// Specifies the name of an admin partition that the intention allows or denies traffic from.
+	// Specifies the admin partition to apply the configuration entry.
 	Partition pulumi.StringPtrOutput `pulumi:"partition"`
 	// List of configurations that define intention sources and the authorization granted to the sources.
 	Sources ConfigEntryServiceIntentionsSourceArrayOutput `pulumi:"sources"`
@@ -143,11 +141,11 @@ type configEntryServiceIntentionsState struct {
 	Jwts []ConfigEntryServiceIntentionsJwt `pulumi:"jwts"`
 	// Specifies key-value pairs to add to the KV store.
 	Meta map[string]string `pulumi:"meta"`
-	// Specifies the name of a JWT provider defined in the Name field of the jwt-provider configuration entry.
+	// Specifies a name of the destination service for all intentions defined in the configuration entry.
 	Name *string `pulumi:"name"`
-	// Specifies the traffic source namespace that the intention allows or denies traffic from.
+	// Specifies the namespace to apply the configuration entry.
 	Namespace *string `pulumi:"namespace"`
-	// Specifies the name of an admin partition that the intention allows or denies traffic from.
+	// Specifies the admin partition to apply the configuration entry.
 	Partition *string `pulumi:"partition"`
 	// List of configurations that define intention sources and the authorization granted to the sources.
 	Sources []ConfigEntryServiceIntentionsSource `pulumi:"sources"`
@@ -158,11 +156,11 @@ type ConfigEntryServiceIntentionsState struct {
 	Jwts ConfigEntryServiceIntentionsJwtArrayInput
 	// Specifies key-value pairs to add to the KV store.
 	Meta pulumi.StringMapInput
-	// Specifies the name of a JWT provider defined in the Name field of the jwt-provider configuration entry.
+	// Specifies a name of the destination service for all intentions defined in the configuration entry.
 	Name pulumi.StringPtrInput
-	// Specifies the traffic source namespace that the intention allows or denies traffic from.
+	// Specifies the namespace to apply the configuration entry.
 	Namespace pulumi.StringPtrInput
-	// Specifies the name of an admin partition that the intention allows or denies traffic from.
+	// Specifies the admin partition to apply the configuration entry.
 	Partition pulumi.StringPtrInput
 	// List of configurations that define intention sources and the authorization granted to the sources.
 	Sources ConfigEntryServiceIntentionsSourceArrayInput
@@ -177,11 +175,11 @@ type configEntryServiceIntentionsArgs struct {
 	Jwts []ConfigEntryServiceIntentionsJwt `pulumi:"jwts"`
 	// Specifies key-value pairs to add to the KV store.
 	Meta map[string]string `pulumi:"meta"`
-	// Specifies the name of a JWT provider defined in the Name field of the jwt-provider configuration entry.
+	// Specifies a name of the destination service for all intentions defined in the configuration entry.
 	Name *string `pulumi:"name"`
-	// Specifies the traffic source namespace that the intention allows or denies traffic from.
+	// Specifies the namespace to apply the configuration entry.
 	Namespace *string `pulumi:"namespace"`
-	// Specifies the name of an admin partition that the intention allows or denies traffic from.
+	// Specifies the admin partition to apply the configuration entry.
 	Partition *string `pulumi:"partition"`
 	// List of configurations that define intention sources and the authorization granted to the sources.
 	Sources []ConfigEntryServiceIntentionsSource `pulumi:"sources"`
@@ -193,11 +191,11 @@ type ConfigEntryServiceIntentionsArgs struct {
 	Jwts ConfigEntryServiceIntentionsJwtArrayInput
 	// Specifies key-value pairs to add to the KV store.
 	Meta pulumi.StringMapInput
-	// Specifies the name of a JWT provider defined in the Name field of the jwt-provider configuration entry.
+	// Specifies a name of the destination service for all intentions defined in the configuration entry.
 	Name pulumi.StringPtrInput
-	// Specifies the traffic source namespace that the intention allows or denies traffic from.
+	// Specifies the namespace to apply the configuration entry.
 	Namespace pulumi.StringPtrInput
-	// Specifies the name of an admin partition that the intention allows or denies traffic from.
+	// Specifies the admin partition to apply the configuration entry.
 	Partition pulumi.StringPtrInput
 	// List of configurations that define intention sources and the authorization granted to the sources.
 	Sources ConfigEntryServiceIntentionsSourceArrayInput
@@ -300,17 +298,17 @@ func (o ConfigEntryServiceIntentionsOutput) Meta() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ConfigEntryServiceIntentions) pulumi.StringMapOutput { return v.Meta }).(pulumi.StringMapOutput)
 }
 
-// Specifies the name of a JWT provider defined in the Name field of the jwt-provider configuration entry.
+// Specifies a name of the destination service for all intentions defined in the configuration entry.
 func (o ConfigEntryServiceIntentionsOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConfigEntryServiceIntentions) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the traffic source namespace that the intention allows or denies traffic from.
+// Specifies the namespace to apply the configuration entry.
 func (o ConfigEntryServiceIntentionsOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConfigEntryServiceIntentions) pulumi.StringPtrOutput { return v.Namespace }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the name of an admin partition that the intention allows or denies traffic from.
+// Specifies the admin partition to apply the configuration entry.
 func (o ConfigEntryServiceIntentionsOutput) Partition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConfigEntryServiceIntentions) pulumi.StringPtrOutput { return v.Partition }).(pulumi.StringPtrOutput)
 }

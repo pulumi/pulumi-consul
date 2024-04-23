@@ -404,7 +404,7 @@ export interface ConfigEntryServiceIntentionsSource {
 
 export interface ConfigEntryServiceIntentionsSourcePermission {
     /**
-     * Specifies the action to take when the source sends traffic to the destination service.
+     * Specifies the action to take when the source sends traffic to the destination service. The value is either allow or deny.
      */
     action: pulumi.Input<string>;
     /**
@@ -446,7 +446,7 @@ export interface ConfigEntryServiceIntentionsSourcePermissionHttpHeader {
      */
     invert?: pulumi.Input<boolean>;
     /**
-     * Specifies the name of a JWT provider defined in the Name field of the jwt-provider configuration entry.
+     * Specifies the name of the header to match.
      */
     name: pulumi.Input<string>;
     /**
@@ -504,7 +504,7 @@ export interface ConfigEntryServiceResolverFailoverTarget {
      */
     datacenter?: pulumi.Input<string>;
     /**
-     * Specifies the namespace at the failover location where the failover services are deployed.
+     * Specifies the namespace to use for the failover target. If empty, the default namespace is used.
      */
     namespace?: pulumi.Input<string>;
     /**
@@ -516,11 +516,11 @@ export interface ConfigEntryServiceResolverFailoverTarget {
      */
     peer?: pulumi.Input<string>;
     /**
-     * Specifies the name of the service to resolve at the failover location during a failover scenario.
+     * Specifies the service name to use for the failover target. If empty, the current service name is used.
      */
     service?: pulumi.Input<string>;
     /**
-     * Specifies the name of a subset of service instances to resolve at the failover location during a failover scenario.
+     * Specifies the named subset to use for the failover target. If empty, the default subset for the requested service name is used.
      */
     serviceSubset?: pulumi.Input<string>;
 }
@@ -726,7 +726,7 @@ export interface ConfigEntryServiceRouterRouteDestinationRequestHeaders {
 
 export interface ConfigEntryServiceRouterRouteDestinationResponseHeaders {
     /**
-     * Defines a set of key-value pairs to add to the header. Use header names as the keys.
+     * Defines a set of key-value pairs to add to the header. Use header names as the keys
      */
     add?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -734,7 +734,7 @@ export interface ConfigEntryServiceRouterRouteDestinationResponseHeaders {
      */
     removes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Defines a set of key-value pairs to add to the request header or to replace existing header values with.
+     * Defines a set of key-value pairs to add to the response header or to replace existing header values with
      */
     set?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
@@ -806,19 +806,19 @@ export interface ConfigEntryServiceRouterRouteMatchHttpHeader {
 
 export interface ConfigEntryServiceRouterRouteMatchHttpQueryParam {
     /**
-     * Specifies that a request matches when the header with the given name is this exact value.
+     * Specifies that a request matches when the query parameter with the given name is this exact value.
      */
     exact?: pulumi.Input<string>;
     /**
-     * Specifies the name of the HTTP header to match.
+     * Specifies the name of the HTTP query parameter to match.
      */
     name?: pulumi.Input<string>;
     /**
-     * Specifies that a request matches when the value in the `name` argument is present anywhere in the HTTP header.
+     * Specifies that a request matches when the value in the `name` argument is present anywhere in the HTTP query parameter.
      */
     present?: pulumi.Input<boolean>;
     /**
-     * Specifies that a request matches when the header with the given name matches this regular expression.
+     * Specifies that a request matches when the query parameter with the given name matches this regular expression.
      */
     regex?: pulumi.Input<string>;
 }

@@ -15,9 +15,17 @@ public final class GetAclRolePlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetAclRolePlainArgs Empty = new GetAclRolePlainArgs();
 
+    /**
+     * The name of the ACL Role.
+     * 
+     */
     @Import(name="name", required=true)
     private String name;
 
+    /**
+     * @return The name of the ACL Role.
+     * 
+     */
     public String name() {
         return this.name;
     }
@@ -78,6 +86,12 @@ public final class GetAclRolePlainArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetAclRolePlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param name The name of the ACL Role.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             $.name = name;
             return this;

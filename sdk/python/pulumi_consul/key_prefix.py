@@ -320,7 +320,6 @@ class KeyPrefix(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_consul as consul
@@ -343,7 +342,6 @@ class KeyPrefix(pulumi.CustomResource):
                 flags=2,
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -381,7 +379,6 @@ class KeyPrefix(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_consul as consul
@@ -404,7 +401,6 @@ class KeyPrefix(pulumi.CustomResource):
                 flags=2,
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

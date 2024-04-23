@@ -128,7 +128,6 @@ def get_agent_config(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGe
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_consul as consul
@@ -136,7 +135,6 @@ def get_agent_config(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGe
     remote_agent = consul.get_agent_config()
     pulumi.export("consulVersion", remote_agent.version)
     ```
-    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -165,7 +163,6 @@ def get_agent_config_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulu
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_consul as consul
@@ -173,6 +170,5 @@ def get_agent_config_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulu
     remote_agent = consul.get_agent_config()
     pulumi.export("consulVersion", remote_agent.version)
     ```
-    <!--End PulumiCodeChooser -->
     """
     ...

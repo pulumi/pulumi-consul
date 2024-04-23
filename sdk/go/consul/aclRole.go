@@ -13,7 +13,6 @@ import (
 
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -56,7 +55,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -68,7 +66,7 @@ type AclRole struct {
 
 	// A free form human readable description of the role.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The name of node, workload identity or service.
+	// The name of the ACL role.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The namespace to create the role within.
 	Namespace pulumi.StringPtrOutput `pulumi:"namespace"`
@@ -116,7 +114,7 @@ func GetAclRole(ctx *pulumi.Context,
 type aclRoleState struct {
 	// A free form human readable description of the role.
 	Description *string `pulumi:"description"`
-	// The name of node, workload identity or service.
+	// The name of the ACL role.
 	Name *string `pulumi:"name"`
 	// The namespace to create the role within.
 	Namespace *string `pulumi:"namespace"`
@@ -135,7 +133,7 @@ type aclRoleState struct {
 type AclRoleState struct {
 	// A free form human readable description of the role.
 	Description pulumi.StringPtrInput
-	// The name of node, workload identity or service.
+	// The name of the ACL role.
 	Name pulumi.StringPtrInput
 	// The namespace to create the role within.
 	Namespace pulumi.StringPtrInput
@@ -158,7 +156,7 @@ func (AclRoleState) ElementType() reflect.Type {
 type aclRoleArgs struct {
 	// A free form human readable description of the role.
 	Description *string `pulumi:"description"`
-	// The name of node, workload identity or service.
+	// The name of the ACL role.
 	Name *string `pulumi:"name"`
 	// The namespace to create the role within.
 	Namespace *string `pulumi:"namespace"`
@@ -178,7 +176,7 @@ type aclRoleArgs struct {
 type AclRoleArgs struct {
 	// A free form human readable description of the role.
 	Description pulumi.StringPtrInput
-	// The name of node, workload identity or service.
+	// The name of the ACL role.
 	Name pulumi.StringPtrInput
 	// The namespace to create the role within.
 	Namespace pulumi.StringPtrInput
@@ -286,7 +284,7 @@ func (o AclRoleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AclRole) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The name of node, workload identity or service.
+// The name of the ACL role.
 func (o AclRoleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AclRole) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

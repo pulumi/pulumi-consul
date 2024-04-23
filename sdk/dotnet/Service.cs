@@ -23,7 +23,6 @@ namespace Pulumi.Consul
     /// 
     /// Creating a new node with the service:
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -51,11 +50,9 @@ namespace Pulumi.Consul
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// Utilizing an existing known node:
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -73,11 +70,9 @@ namespace Pulumi.Consul
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// Register a health-check:
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -129,7 +124,6 @@ namespace Pulumi.Consul
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [ConsulResourceType("consul:index/service:Service")]
     public partial class Service : global::Pulumi.CustomResource
@@ -165,7 +159,7 @@ namespace Pulumi.Consul
         public Output<ImmutableDictionary<string, string>?> Meta { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the header.
+        /// The name of the service.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -294,7 +288,7 @@ namespace Pulumi.Consul
         }
 
         /// <summary>
-        /// The name of the header.
+        /// The name of the service.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -391,7 +385,7 @@ namespace Pulumi.Consul
         }
 
         /// <summary>
-        /// The name of the header.
+        /// The name of the service.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

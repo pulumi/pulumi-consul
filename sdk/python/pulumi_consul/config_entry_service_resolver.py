@@ -34,9 +34,9 @@ class ConfigEntryServiceResolverArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceResolverFailoverArgs']]] failovers: Specifies controls for rerouting traffic to an alternate pool of service instances if the target service fails.
         :param pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceResolverLoadBalancerArgs']]] load_balancers: Specifies the load balancing policy and configuration for services issuing requests to this upstream.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: Specifies key-value pairs to add to the KV store.
-        :param pulumi.Input[str] name: Name of subset.
-        :param pulumi.Input[str] namespace: Specifies the namespace at the failover location where the failover services are deployed.
-        :param pulumi.Input[str] partition: Specifies the admin partition within the same datacenter to use for the failover target. If empty, the default partition is used.
+        :param pulumi.Input[str] name: Specifies a name for the configuration entry.
+        :param pulumi.Input[str] namespace: Specifies the namespace that the service resolver applies to.
+        :param pulumi.Input[str] partition: Specifies the admin partition that the service resolver applies to.
         :param pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceResolverRedirectArgs']]] redirects: Specifies redirect instructions for local service traffic so that services deployed to a different network location resolve the upstream request instead.
         :param pulumi.Input[str] request_timeout: Specifies the timeout duration for receiving an HTTP response from this service.
         :param pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceResolverSubsetArgs']]] subsets: Specifies names for custom service subsets and the conditions under which service instances belong to each subset.
@@ -128,7 +128,7 @@ class ConfigEntryServiceResolverArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of subset.
+        Specifies a name for the configuration entry.
         """
         return pulumi.get(self, "name")
 
@@ -140,7 +140,7 @@ class ConfigEntryServiceResolverArgs:
     @pulumi.getter
     def namespace(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the namespace at the failover location where the failover services are deployed.
+        Specifies the namespace that the service resolver applies to.
         """
         return pulumi.get(self, "namespace")
 
@@ -152,7 +152,7 @@ class ConfigEntryServiceResolverArgs:
     @pulumi.getter
     def partition(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the admin partition within the same datacenter to use for the failover target. If empty, the default partition is used.
+        Specifies the admin partition that the service resolver applies to.
         """
         return pulumi.get(self, "partition")
 
@@ -218,9 +218,9 @@ class _ConfigEntryServiceResolverState:
         :param pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceResolverFailoverArgs']]] failovers: Specifies controls for rerouting traffic to an alternate pool of service instances if the target service fails.
         :param pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceResolverLoadBalancerArgs']]] load_balancers: Specifies the load balancing policy and configuration for services issuing requests to this upstream.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: Specifies key-value pairs to add to the KV store.
-        :param pulumi.Input[str] name: Name of subset.
-        :param pulumi.Input[str] namespace: Specifies the namespace at the failover location where the failover services are deployed.
-        :param pulumi.Input[str] partition: Specifies the admin partition within the same datacenter to use for the failover target. If empty, the default partition is used.
+        :param pulumi.Input[str] name: Specifies a name for the configuration entry.
+        :param pulumi.Input[str] namespace: Specifies the namespace that the service resolver applies to.
+        :param pulumi.Input[str] partition: Specifies the admin partition that the service resolver applies to.
         :param pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceResolverRedirectArgs']]] redirects: Specifies redirect instructions for local service traffic so that services deployed to a different network location resolve the upstream request instead.
         :param pulumi.Input[str] request_timeout: Specifies the timeout duration for receiving an HTTP response from this service.
         :param pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceResolverSubsetArgs']]] subsets: Specifies names for custom service subsets and the conditions under which service instances belong to each subset.
@@ -312,7 +312,7 @@ class _ConfigEntryServiceResolverState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of subset.
+        Specifies a name for the configuration entry.
         """
         return pulumi.get(self, "name")
 
@@ -324,7 +324,7 @@ class _ConfigEntryServiceResolverState:
     @pulumi.getter
     def namespace(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the namespace at the failover location where the failover services are deployed.
+        Specifies the namespace that the service resolver applies to.
         """
         return pulumi.get(self, "namespace")
 
@@ -336,7 +336,7 @@ class _ConfigEntryServiceResolverState:
     @pulumi.getter
     def partition(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the admin partition within the same datacenter to use for the failover target. If empty, the default partition is used.
+        Specifies the admin partition that the service resolver applies to.
         """
         return pulumi.get(self, "partition")
 
@@ -401,7 +401,6 @@ class ConfigEntryServiceResolver(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_consul as consul
@@ -438,7 +437,6 @@ class ConfigEntryServiceResolver(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -447,9 +445,9 @@ class ConfigEntryServiceResolver(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceResolverFailoverArgs']]]] failovers: Specifies controls for rerouting traffic to an alternate pool of service instances if the target service fails.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceResolverLoadBalancerArgs']]]] load_balancers: Specifies the load balancing policy and configuration for services issuing requests to this upstream.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: Specifies key-value pairs to add to the KV store.
-        :param pulumi.Input[str] name: Name of subset.
-        :param pulumi.Input[str] namespace: Specifies the namespace at the failover location where the failover services are deployed.
-        :param pulumi.Input[str] partition: Specifies the admin partition within the same datacenter to use for the failover target. If empty, the default partition is used.
+        :param pulumi.Input[str] name: Specifies a name for the configuration entry.
+        :param pulumi.Input[str] namespace: Specifies the namespace that the service resolver applies to.
+        :param pulumi.Input[str] partition: Specifies the admin partition that the service resolver applies to.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceResolverRedirectArgs']]]] redirects: Specifies redirect instructions for local service traffic so that services deployed to a different network location resolve the upstream request instead.
         :param pulumi.Input[str] request_timeout: Specifies the timeout duration for receiving an HTTP response from this service.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceResolverSubsetArgs']]]] subsets: Specifies names for custom service subsets and the conditions under which service instances belong to each subset.
@@ -463,7 +461,6 @@ class ConfigEntryServiceResolver(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_consul as consul
@@ -500,7 +497,6 @@ class ConfigEntryServiceResolver(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param ConfigEntryServiceResolverArgs args: The arguments to use to populate this resource's properties.
@@ -581,9 +577,9 @@ class ConfigEntryServiceResolver(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceResolverFailoverArgs']]]] failovers: Specifies controls for rerouting traffic to an alternate pool of service instances if the target service fails.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceResolverLoadBalancerArgs']]]] load_balancers: Specifies the load balancing policy and configuration for services issuing requests to this upstream.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: Specifies key-value pairs to add to the KV store.
-        :param pulumi.Input[str] name: Name of subset.
-        :param pulumi.Input[str] namespace: Specifies the namespace at the failover location where the failover services are deployed.
-        :param pulumi.Input[str] partition: Specifies the admin partition within the same datacenter to use for the failover target. If empty, the default partition is used.
+        :param pulumi.Input[str] name: Specifies a name for the configuration entry.
+        :param pulumi.Input[str] namespace: Specifies the namespace that the service resolver applies to.
+        :param pulumi.Input[str] partition: Specifies the admin partition that the service resolver applies to.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceResolverRedirectArgs']]]] redirects: Specifies redirect instructions for local service traffic so that services deployed to a different network location resolve the upstream request instead.
         :param pulumi.Input[str] request_timeout: Specifies the timeout duration for receiving an HTTP response from this service.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceResolverSubsetArgs']]]] subsets: Specifies names for custom service subsets and the conditions under which service instances belong to each subset.
@@ -649,7 +645,7 @@ class ConfigEntryServiceResolver(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of subset.
+        Specifies a name for the configuration entry.
         """
         return pulumi.get(self, "name")
 
@@ -657,7 +653,7 @@ class ConfigEntryServiceResolver(pulumi.CustomResource):
     @pulumi.getter
     def namespace(self) -> pulumi.Output[Optional[str]]:
         """
-        Specifies the namespace at the failover location where the failover services are deployed.
+        Specifies the namespace that the service resolver applies to.
         """
         return pulumi.get(self, "namespace")
 
@@ -665,7 +661,7 @@ class ConfigEntryServiceResolver(pulumi.CustomResource):
     @pulumi.getter
     def partition(self) -> pulumi.Output[Optional[str]]:
         """
-        Specifies the admin partition within the same datacenter to use for the failover target. If empty, the default partition is used.
+        Specifies the admin partition that the service resolver applies to.
         """
         return pulumi.get(self, "partition")
 

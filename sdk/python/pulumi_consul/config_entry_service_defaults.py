@@ -45,13 +45,13 @@ class ConfigEntryServiceDefaultsArgs:
         :param pulumi.Input[int] local_connect_timeout_ms: Specifies the number of milliseconds allowed for establishing connections to the local application instance before timing out.
         :param pulumi.Input[int] local_request_timeout_ms: Specifies the timeout for HTTP requests to the local application instance.
         :param pulumi.Input[int] max_inbound_connections: Specifies the maximum number of concurrent inbound connections to each service instance.
-        :param pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceDefaultsMeshGatewayArgs']]] mesh_gateways: Specifies the default mesh gateway mode field for all upstreams.
+        :param pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceDefaultsMeshGatewayArgs']]] mesh_gateways: Specifies the default mesh gateway mode field for the service.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: Specifies a set of custom key-value pairs to add to the Consul KV store.
         :param pulumi.Input[str] mode: Specifies a mode for how the service directs inbound and outbound traffic.
         :param pulumi.Input[str] mutual_tls_mode: Controls whether mutual TLS is required for incoming connections to this service. This setting is only supported for services with transparent proxy enabled.
         :param pulumi.Input[str] name: Specifies the name of the service you are setting the defaults for.
-        :param pulumi.Input[str] namespace: Specifies the namespace containing the upstream service that the configuration applies to.
-        :param pulumi.Input[str] partition: Specifies the name of the name of the Consul admin partition that the configuration entry applies to.
+        :param pulumi.Input[str] namespace: Specifies the Consul namespace that the configuration entry applies to.
+        :param pulumi.Input[str] partition: Specifies the name of the name of the Consul admin partition that the configuration entry applies to. Refer to Admin Partitions for additional information.
         :param pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceDefaultsTransparentProxyArgs']]] transparent_proxies: Controls configurations specific to proxies in transparent mode. Refer to Transparent Proxy Mode for additional information.
         :param pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceDefaultsUpstreamConfigArgs']]] upstream_configs: Controls default upstream connection settings and custom overrides for individual upstream services.
         """
@@ -202,7 +202,7 @@ class ConfigEntryServiceDefaultsArgs:
     @pulumi.getter(name="meshGateways")
     def mesh_gateways(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceDefaultsMeshGatewayArgs']]]]:
         """
-        Specifies the default mesh gateway mode field for all upstreams.
+        Specifies the default mesh gateway mode field for the service.
         """
         return pulumi.get(self, "mesh_gateways")
 
@@ -262,7 +262,7 @@ class ConfigEntryServiceDefaultsArgs:
     @pulumi.getter
     def namespace(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the namespace containing the upstream service that the configuration applies to.
+        Specifies the Consul namespace that the configuration entry applies to.
         """
         return pulumi.get(self, "namespace")
 
@@ -274,7 +274,7 @@ class ConfigEntryServiceDefaultsArgs:
     @pulumi.getter
     def partition(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the name of the name of the Consul admin partition that the configuration entry applies to.
+        Specifies the name of the name of the Consul admin partition that the configuration entry applies to. Refer to Admin Partitions for additional information.
         """
         return pulumi.get(self, "partition")
 
@@ -338,13 +338,13 @@ class _ConfigEntryServiceDefaultsState:
         :param pulumi.Input[int] local_connect_timeout_ms: Specifies the number of milliseconds allowed for establishing connections to the local application instance before timing out.
         :param pulumi.Input[int] local_request_timeout_ms: Specifies the timeout for HTTP requests to the local application instance.
         :param pulumi.Input[int] max_inbound_connections: Specifies the maximum number of concurrent inbound connections to each service instance.
-        :param pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceDefaultsMeshGatewayArgs']]] mesh_gateways: Specifies the default mesh gateway mode field for all upstreams.
+        :param pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceDefaultsMeshGatewayArgs']]] mesh_gateways: Specifies the default mesh gateway mode field for the service.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: Specifies a set of custom key-value pairs to add to the Consul KV store.
         :param pulumi.Input[str] mode: Specifies a mode for how the service directs inbound and outbound traffic.
         :param pulumi.Input[str] mutual_tls_mode: Controls whether mutual TLS is required for incoming connections to this service. This setting is only supported for services with transparent proxy enabled.
         :param pulumi.Input[str] name: Specifies the name of the service you are setting the defaults for.
-        :param pulumi.Input[str] namespace: Specifies the namespace containing the upstream service that the configuration applies to.
-        :param pulumi.Input[str] partition: Specifies the name of the name of the Consul admin partition that the configuration entry applies to.
+        :param pulumi.Input[str] namespace: Specifies the Consul namespace that the configuration entry applies to.
+        :param pulumi.Input[str] partition: Specifies the name of the name of the Consul admin partition that the configuration entry applies to. Refer to Admin Partitions for additional information.
         :param pulumi.Input[str] protocol: Specifies the default protocol for the service.
         :param pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceDefaultsTransparentProxyArgs']]] transparent_proxies: Controls configurations specific to proxies in transparent mode. Refer to Transparent Proxy Mode for additional information.
         :param pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceDefaultsUpstreamConfigArgs']]] upstream_configs: Controls default upstream connection settings and custom overrides for individual upstream services.
@@ -486,7 +486,7 @@ class _ConfigEntryServiceDefaultsState:
     @pulumi.getter(name="meshGateways")
     def mesh_gateways(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceDefaultsMeshGatewayArgs']]]]:
         """
-        Specifies the default mesh gateway mode field for all upstreams.
+        Specifies the default mesh gateway mode field for the service.
         """
         return pulumi.get(self, "mesh_gateways")
 
@@ -546,7 +546,7 @@ class _ConfigEntryServiceDefaultsState:
     @pulumi.getter
     def namespace(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the namespace containing the upstream service that the configuration applies to.
+        Specifies the Consul namespace that the configuration entry applies to.
         """
         return pulumi.get(self, "namespace")
 
@@ -558,7 +558,7 @@ class _ConfigEntryServiceDefaultsState:
     @pulumi.getter
     def partition(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the name of the name of the Consul admin partition that the configuration entry applies to.
+        Specifies the name of the name of the Consul admin partition that the configuration entry applies to. Refer to Admin Partitions for additional information.
         """
         return pulumi.get(self, "partition")
 
@@ -640,13 +640,13 @@ class ConfigEntryServiceDefaults(pulumi.CustomResource):
         :param pulumi.Input[int] local_connect_timeout_ms: Specifies the number of milliseconds allowed for establishing connections to the local application instance before timing out.
         :param pulumi.Input[int] local_request_timeout_ms: Specifies the timeout for HTTP requests to the local application instance.
         :param pulumi.Input[int] max_inbound_connections: Specifies the maximum number of concurrent inbound connections to each service instance.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceDefaultsMeshGatewayArgs']]]] mesh_gateways: Specifies the default mesh gateway mode field for all upstreams.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceDefaultsMeshGatewayArgs']]]] mesh_gateways: Specifies the default mesh gateway mode field for the service.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: Specifies a set of custom key-value pairs to add to the Consul KV store.
         :param pulumi.Input[str] mode: Specifies a mode for how the service directs inbound and outbound traffic.
         :param pulumi.Input[str] mutual_tls_mode: Controls whether mutual TLS is required for incoming connections to this service. This setting is only supported for services with transparent proxy enabled.
         :param pulumi.Input[str] name: Specifies the name of the service you are setting the defaults for.
-        :param pulumi.Input[str] namespace: Specifies the namespace containing the upstream service that the configuration applies to.
-        :param pulumi.Input[str] partition: Specifies the name of the name of the Consul admin partition that the configuration entry applies to.
+        :param pulumi.Input[str] namespace: Specifies the Consul namespace that the configuration entry applies to.
+        :param pulumi.Input[str] partition: Specifies the name of the name of the Consul admin partition that the configuration entry applies to. Refer to Admin Partitions for additional information.
         :param pulumi.Input[str] protocol: Specifies the default protocol for the service.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceDefaultsTransparentProxyArgs']]]] transparent_proxies: Controls configurations specific to proxies in transparent mode. Refer to Transparent Proxy Mode for additional information.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceDefaultsUpstreamConfigArgs']]]] upstream_configs: Controls default upstream connection settings and custom overrides for individual upstream services.
@@ -767,13 +767,13 @@ class ConfigEntryServiceDefaults(pulumi.CustomResource):
         :param pulumi.Input[int] local_connect_timeout_ms: Specifies the number of milliseconds allowed for establishing connections to the local application instance before timing out.
         :param pulumi.Input[int] local_request_timeout_ms: Specifies the timeout for HTTP requests to the local application instance.
         :param pulumi.Input[int] max_inbound_connections: Specifies the maximum number of concurrent inbound connections to each service instance.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceDefaultsMeshGatewayArgs']]]] mesh_gateways: Specifies the default mesh gateway mode field for all upstreams.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceDefaultsMeshGatewayArgs']]]] mesh_gateways: Specifies the default mesh gateway mode field for the service.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: Specifies a set of custom key-value pairs to add to the Consul KV store.
         :param pulumi.Input[str] mode: Specifies a mode for how the service directs inbound and outbound traffic.
         :param pulumi.Input[str] mutual_tls_mode: Controls whether mutual TLS is required for incoming connections to this service. This setting is only supported for services with transparent proxy enabled.
         :param pulumi.Input[str] name: Specifies the name of the service you are setting the defaults for.
-        :param pulumi.Input[str] namespace: Specifies the namespace containing the upstream service that the configuration applies to.
-        :param pulumi.Input[str] partition: Specifies the name of the name of the Consul admin partition that the configuration entry applies to.
+        :param pulumi.Input[str] namespace: Specifies the Consul namespace that the configuration entry applies to.
+        :param pulumi.Input[str] partition: Specifies the name of the name of the Consul admin partition that the configuration entry applies to. Refer to Admin Partitions for additional information.
         :param pulumi.Input[str] protocol: Specifies the default protocol for the service.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceDefaultsTransparentProxyArgs']]]] transparent_proxies: Controls configurations specific to proxies in transparent mode. Refer to Transparent Proxy Mode for additional information.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceDefaultsUpstreamConfigArgs']]]] upstream_configs: Controls default upstream connection settings and custom overrides for individual upstream services.
@@ -870,7 +870,7 @@ class ConfigEntryServiceDefaults(pulumi.CustomResource):
     @pulumi.getter(name="meshGateways")
     def mesh_gateways(self) -> pulumi.Output[Optional[Sequence['outputs.ConfigEntryServiceDefaultsMeshGateway']]]:
         """
-        Specifies the default mesh gateway mode field for all upstreams.
+        Specifies the default mesh gateway mode field for the service.
         """
         return pulumi.get(self, "mesh_gateways")
 
@@ -910,7 +910,7 @@ class ConfigEntryServiceDefaults(pulumi.CustomResource):
     @pulumi.getter
     def namespace(self) -> pulumi.Output[Optional[str]]:
         """
-        Specifies the namespace containing the upstream service that the configuration applies to.
+        Specifies the Consul namespace that the configuration entry applies to.
         """
         return pulumi.get(self, "namespace")
 
@@ -918,7 +918,7 @@ class ConfigEntryServiceDefaults(pulumi.CustomResource):
     @pulumi.getter
     def partition(self) -> pulumi.Output[Optional[str]]:
         """
-        Specifies the name of the name of the Consul admin partition that the configuration entry applies to.
+        Specifies the name of the name of the Consul admin partition that the configuration entry applies to. Refer to Admin Partitions for additional information.
         """
         return pulumi.get(self, "partition")
 

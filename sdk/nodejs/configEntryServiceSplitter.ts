@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
@@ -82,7 +81,6 @@ import * as utilities from "./utilities";
  *     ],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -127,11 +125,11 @@ export class ConfigEntryServiceSplitter extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Specifies the namespace to use in the FQDN when resolving the service.
+     * Specifies the namespace to apply the configuration entry.
      */
     public readonly namespace!: pulumi.Output<string | undefined>;
     /**
-     * Specifies the admin partition to use in the FQDN when resolving the service.
+     * Specifies the admin partition to apply the configuration entry.
      */
     public readonly partition!: pulumi.Output<string | undefined>;
     /**
@@ -186,11 +184,11 @@ export interface ConfigEntryServiceSplitterState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Specifies the namespace to use in the FQDN when resolving the service.
+     * Specifies the namespace to apply the configuration entry.
      */
     namespace?: pulumi.Input<string>;
     /**
-     * Specifies the admin partition to use in the FQDN when resolving the service.
+     * Specifies the admin partition to apply the configuration entry.
      */
     partition?: pulumi.Input<string>;
     /**
@@ -212,11 +210,11 @@ export interface ConfigEntryServiceSplitterArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Specifies the namespace to use in the FQDN when resolving the service.
+     * Specifies the namespace to apply the configuration entry.
      */
     namespace?: pulumi.Input<string>;
     /**
-     * Specifies the admin partition to use in the FQDN when resolving the service.
+     * Specifies the admin partition to apply the configuration entry.
      */
     partition?: pulumi.Input<string>;
     /**

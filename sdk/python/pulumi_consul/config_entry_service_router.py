@@ -24,9 +24,9 @@ class ConfigEntryServiceRouterArgs:
         """
         The set of arguments for constructing a ConfigEntryServiceRouter resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: Specifies key-value pairs to add to the KV store.
-        :param pulumi.Input[str] name: Specifies the name of the HTTP header to match.
-        :param pulumi.Input[str] namespace: Specifies the Consul namespace to resolve the service from instead of the current namespace.
-        :param pulumi.Input[str] partition: Specifies the Consul admin partition to resolve the service from instead of the current partition.
+        :param pulumi.Input[str] name: Specifies a name for the configuration entry.
+        :param pulumi.Input[str] namespace: Specifies the namespace to apply the configuration entry.
+        :param pulumi.Input[str] partition: Specifies the admin partition to apply the configuration entry.
         :param pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceRouterRouteArgs']]] routes: Defines the possible routes for L7 requests.
         """
         if meta is not None:
@@ -56,7 +56,7 @@ class ConfigEntryServiceRouterArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the name of the HTTP header to match.
+        Specifies a name for the configuration entry.
         """
         return pulumi.get(self, "name")
 
@@ -68,7 +68,7 @@ class ConfigEntryServiceRouterArgs:
     @pulumi.getter
     def namespace(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the Consul namespace to resolve the service from instead of the current namespace.
+        Specifies the namespace to apply the configuration entry.
         """
         return pulumi.get(self, "namespace")
 
@@ -80,7 +80,7 @@ class ConfigEntryServiceRouterArgs:
     @pulumi.getter
     def partition(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the Consul admin partition to resolve the service from instead of the current partition.
+        Specifies the admin partition to apply the configuration entry.
         """
         return pulumi.get(self, "partition")
 
@@ -112,9 +112,9 @@ class _ConfigEntryServiceRouterState:
         """
         Input properties used for looking up and filtering ConfigEntryServiceRouter resources.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: Specifies key-value pairs to add to the KV store.
-        :param pulumi.Input[str] name: Specifies the name of the HTTP header to match.
-        :param pulumi.Input[str] namespace: Specifies the Consul namespace to resolve the service from instead of the current namespace.
-        :param pulumi.Input[str] partition: Specifies the Consul admin partition to resolve the service from instead of the current partition.
+        :param pulumi.Input[str] name: Specifies a name for the configuration entry.
+        :param pulumi.Input[str] namespace: Specifies the namespace to apply the configuration entry.
+        :param pulumi.Input[str] partition: Specifies the admin partition to apply the configuration entry.
         :param pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceRouterRouteArgs']]] routes: Defines the possible routes for L7 requests.
         """
         if meta is not None:
@@ -144,7 +144,7 @@ class _ConfigEntryServiceRouterState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the name of the HTTP header to match.
+        Specifies a name for the configuration entry.
         """
         return pulumi.get(self, "name")
 
@@ -156,7 +156,7 @@ class _ConfigEntryServiceRouterState:
     @pulumi.getter
     def namespace(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the Consul namespace to resolve the service from instead of the current namespace.
+        Specifies the namespace to apply the configuration entry.
         """
         return pulumi.get(self, "namespace")
 
@@ -168,7 +168,7 @@ class _ConfigEntryServiceRouterState:
     @pulumi.getter
     def partition(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the Consul admin partition to resolve the service from instead of the current partition.
+        Specifies the admin partition to apply the configuration entry.
         """
         return pulumi.get(self, "partition")
 
@@ -206,9 +206,9 @@ class ConfigEntryServiceRouter(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: Specifies key-value pairs to add to the KV store.
-        :param pulumi.Input[str] name: Specifies the name of the HTTP header to match.
-        :param pulumi.Input[str] namespace: Specifies the Consul namespace to resolve the service from instead of the current namespace.
-        :param pulumi.Input[str] partition: Specifies the Consul admin partition to resolve the service from instead of the current partition.
+        :param pulumi.Input[str] name: Specifies a name for the configuration entry.
+        :param pulumi.Input[str] namespace: Specifies the namespace to apply the configuration entry.
+        :param pulumi.Input[str] partition: Specifies the admin partition to apply the configuration entry.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceRouterRouteArgs']]]] routes: Defines the possible routes for L7 requests.
         """
         ...
@@ -277,9 +277,9 @@ class ConfigEntryServiceRouter(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: Specifies key-value pairs to add to the KV store.
-        :param pulumi.Input[str] name: Specifies the name of the HTTP header to match.
-        :param pulumi.Input[str] namespace: Specifies the Consul namespace to resolve the service from instead of the current namespace.
-        :param pulumi.Input[str] partition: Specifies the Consul admin partition to resolve the service from instead of the current partition.
+        :param pulumi.Input[str] name: Specifies a name for the configuration entry.
+        :param pulumi.Input[str] namespace: Specifies the namespace to apply the configuration entry.
+        :param pulumi.Input[str] partition: Specifies the admin partition to apply the configuration entry.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceRouterRouteArgs']]]] routes: Defines the possible routes for L7 requests.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -305,7 +305,7 @@ class ConfigEntryServiceRouter(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Specifies the name of the HTTP header to match.
+        Specifies a name for the configuration entry.
         """
         return pulumi.get(self, "name")
 
@@ -313,7 +313,7 @@ class ConfigEntryServiceRouter(pulumi.CustomResource):
     @pulumi.getter
     def namespace(self) -> pulumi.Output[Optional[str]]:
         """
-        Specifies the Consul namespace to resolve the service from instead of the current namespace.
+        Specifies the namespace to apply the configuration entry.
         """
         return pulumi.get(self, "namespace")
 
@@ -321,7 +321,7 @@ class ConfigEntryServiceRouter(pulumi.CustomResource):
     @pulumi.getter
     def partition(self) -> pulumi.Output[Optional[str]]:
         """
-        Specifies the Consul admin partition to resolve the service from instead of the current partition.
+        Specifies the admin partition to apply the configuration entry.
         """
         return pulumi.get(self, "partition")
 

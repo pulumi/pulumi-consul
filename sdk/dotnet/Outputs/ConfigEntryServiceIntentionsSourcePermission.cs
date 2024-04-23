@@ -14,7 +14,7 @@ namespace Pulumi.Consul.Outputs
     public sealed class ConfigEntryServiceIntentionsSourcePermission
     {
         /// <summary>
-        /// Specifies the action to take when the source sends traffic to the destination service.
+        /// Specifies the action to take when the source sends traffic to the destination service. The value is either allow or deny.
         /// </summary>
         public readonly string Action;
         /// <summary>

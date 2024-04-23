@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
@@ -28,7 +27,6 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -69,7 +67,7 @@ export class AclRole extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The name of node, workload identity or service.
+     * The name of the ACL role.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -143,7 +141,7 @@ export interface AclRoleState {
      */
     description?: pulumi.Input<string>;
     /**
-     * The name of node, workload identity or service.
+     * The name of the ACL role.
      */
     name?: pulumi.Input<string>;
     /**
@@ -181,7 +179,7 @@ export interface AclRoleArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * The name of node, workload identity or service.
+     * The name of the ACL role.
      */
     name?: pulumi.Input<string>;
     /**

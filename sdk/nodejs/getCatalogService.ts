@@ -18,7 +18,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
@@ -35,7 +34,6 @@ import * as utilities from "./utilities";
  *     input: nodes,
  * }).result});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 /** @deprecated getCatalogService has been deprecated in favor of getService */
 export function getCatalogService(args: GetCatalogServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetCatalogServiceResult> {
@@ -62,10 +60,6 @@ export interface GetCatalogServiceArgs {
      * configured to talk to.
      */
     datacenter?: string;
-    /**
-     * A filter expression to refine the query, see https://www.consul.io/api-docs/features/filtering
-     * and https://www.consul.io/api-docs/catalog#filtering-1.
-     */
     filter?: string;
     /**
      * The service name to select.
@@ -123,7 +117,6 @@ export interface GetCatalogServiceResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
@@ -140,7 +133,6 @@ export interface GetCatalogServiceResult {
  *     input: nodes,
  * }).result});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 /** @deprecated getCatalogService has been deprecated in favor of getService */
 export function getCatalogServiceOutput(args: GetCatalogServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCatalogServiceResult> {
@@ -158,10 +150,6 @@ export interface GetCatalogServiceOutputArgs {
      * configured to talk to.
      */
     datacenter?: pulumi.Input<string>;
-    /**
-     * A filter expression to refine the query, see https://www.consul.io/api-docs/features/filtering
-     * and https://www.consul.io/api-docs/catalog#filtering-1.
-     */
     filter?: pulumi.Input<string>;
     /**
      * The service name to select.

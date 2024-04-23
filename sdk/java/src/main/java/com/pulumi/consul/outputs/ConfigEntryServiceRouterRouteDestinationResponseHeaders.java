@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ConfigEntryServiceRouterRouteDestinationResponseHeaders {
     /**
-     * @return Defines a set of key-value pairs to add to the header. Use header names as the keys.
+     * @return Defines a set of key-value pairs to add to the header. Use header names as the keys
      * 
      */
     private @Nullable Map<String,String> add;
@@ -23,14 +23,14 @@ public final class ConfigEntryServiceRouterRouteDestinationResponseHeaders {
      */
     private @Nullable List<String> removes;
     /**
-     * @return Defines a set of key-value pairs to add to the request header or to replace existing header values with.
+     * @return Defines a set of key-value pairs to add to the response header or to replace existing header values with
      * 
      */
     private @Nullable Map<String,String> set;
 
     private ConfigEntryServiceRouterRouteDestinationResponseHeaders() {}
     /**
-     * @return Defines a set of key-value pairs to add to the header. Use header names as the keys.
+     * @return Defines a set of key-value pairs to add to the header. Use header names as the keys
      * 
      */
     public Map<String,String> add() {
@@ -44,7 +44,7 @@ public final class ConfigEntryServiceRouterRouteDestinationResponseHeaders {
         return this.removes == null ? List.of() : this.removes;
     }
     /**
-     * @return Defines a set of key-value pairs to add to the request header or to replace existing header values with.
+     * @return Defines a set of key-value pairs to add to the response header or to replace existing header values with
      * 
      */
     public Map<String,String> set() {

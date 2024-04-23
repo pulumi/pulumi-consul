@@ -17,7 +17,7 @@ public final class ConfigEntryServiceResolverFailoverTarget {
      */
     private @Nullable String datacenter;
     /**
-     * @return Specifies the namespace at the failover location where the failover services are deployed.
+     * @return Specifies the namespace to use for the failover target. If empty, the default namespace is used.
      * 
      */
     private @Nullable String namespace;
@@ -32,12 +32,12 @@ public final class ConfigEntryServiceResolverFailoverTarget {
      */
     private @Nullable String peer;
     /**
-     * @return Specifies the name of the service to resolve at the failover location during a failover scenario.
+     * @return Specifies the service name to use for the failover target. If empty, the current service name is used.
      * 
      */
     private @Nullable String service;
     /**
-     * @return Specifies the name of a subset of service instances to resolve at the failover location during a failover scenario.
+     * @return Specifies the named subset to use for the failover target. If empty, the default subset for the requested service name is used.
      * 
      */
     private @Nullable String serviceSubset;
@@ -51,7 +51,7 @@ public final class ConfigEntryServiceResolverFailoverTarget {
         return Optional.ofNullable(this.datacenter);
     }
     /**
-     * @return Specifies the namespace at the failover location where the failover services are deployed.
+     * @return Specifies the namespace to use for the failover target. If empty, the default namespace is used.
      * 
      */
     public Optional<String> namespace() {
@@ -72,14 +72,14 @@ public final class ConfigEntryServiceResolverFailoverTarget {
         return Optional.ofNullable(this.peer);
     }
     /**
-     * @return Specifies the name of the service to resolve at the failover location during a failover scenario.
+     * @return Specifies the service name to use for the failover target. If empty, the current service name is used.
      * 
      */
     public Optional<String> service() {
         return Optional.ofNullable(this.service);
     }
     /**
-     * @return Specifies the name of a subset of service instances to resolve at the failover location during a failover scenario.
+     * @return Specifies the named subset to use for the failover target. If empty, the default subset for the requested service name is used.
      * 
      */
     public Optional<String> serviceSubset() {

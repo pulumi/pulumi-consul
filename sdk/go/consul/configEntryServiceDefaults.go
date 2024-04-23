@@ -32,7 +32,7 @@ type ConfigEntryServiceDefaults struct {
 	LocalRequestTimeoutMs pulumi.IntPtrOutput `pulumi:"localRequestTimeoutMs"`
 	// Specifies the maximum number of concurrent inbound connections to each service instance.
 	MaxInboundConnections pulumi.IntPtrOutput `pulumi:"maxInboundConnections"`
-	// Specifies the default mesh gateway mode field for all upstreams.
+	// Specifies the default mesh gateway mode field for the service.
 	MeshGateways ConfigEntryServiceDefaultsMeshGatewayArrayOutput `pulumi:"meshGateways"`
 	// Specifies a set of custom key-value pairs to add to the Consul KV store.
 	Meta pulumi.StringMapOutput `pulumi:"meta"`
@@ -42,9 +42,9 @@ type ConfigEntryServiceDefaults struct {
 	MutualTlsMode pulumi.StringPtrOutput `pulumi:"mutualTlsMode"`
 	// Specifies the name of the service you are setting the defaults for.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Specifies the namespace containing the upstream service that the configuration applies to.
+	// Specifies the Consul namespace that the configuration entry applies to.
 	Namespace pulumi.StringPtrOutput `pulumi:"namespace"`
-	// Specifies the name of the name of the Consul admin partition that the configuration entry applies to.
+	// Specifies the name of the name of the Consul admin partition that the configuration entry applies to. Refer to Admin Partitions for additional information.
 	Partition pulumi.StringPtrOutput `pulumi:"partition"`
 	// Specifies the default protocol for the service.
 	Protocol pulumi.StringOutput `pulumi:"protocol"`
@@ -106,7 +106,7 @@ type configEntryServiceDefaultsState struct {
 	LocalRequestTimeoutMs *int `pulumi:"localRequestTimeoutMs"`
 	// Specifies the maximum number of concurrent inbound connections to each service instance.
 	MaxInboundConnections *int `pulumi:"maxInboundConnections"`
-	// Specifies the default mesh gateway mode field for all upstreams.
+	// Specifies the default mesh gateway mode field for the service.
 	MeshGateways []ConfigEntryServiceDefaultsMeshGateway `pulumi:"meshGateways"`
 	// Specifies a set of custom key-value pairs to add to the Consul KV store.
 	Meta map[string]string `pulumi:"meta"`
@@ -116,9 +116,9 @@ type configEntryServiceDefaultsState struct {
 	MutualTlsMode *string `pulumi:"mutualTlsMode"`
 	// Specifies the name of the service you are setting the defaults for.
 	Name *string `pulumi:"name"`
-	// Specifies the namespace containing the upstream service that the configuration applies to.
+	// Specifies the Consul namespace that the configuration entry applies to.
 	Namespace *string `pulumi:"namespace"`
-	// Specifies the name of the name of the Consul admin partition that the configuration entry applies to.
+	// Specifies the name of the name of the Consul admin partition that the configuration entry applies to. Refer to Admin Partitions for additional information.
 	Partition *string `pulumi:"partition"`
 	// Specifies the default protocol for the service.
 	Protocol *string `pulumi:"protocol"`
@@ -145,7 +145,7 @@ type ConfigEntryServiceDefaultsState struct {
 	LocalRequestTimeoutMs pulumi.IntPtrInput
 	// Specifies the maximum number of concurrent inbound connections to each service instance.
 	MaxInboundConnections pulumi.IntPtrInput
-	// Specifies the default mesh gateway mode field for all upstreams.
+	// Specifies the default mesh gateway mode field for the service.
 	MeshGateways ConfigEntryServiceDefaultsMeshGatewayArrayInput
 	// Specifies a set of custom key-value pairs to add to the Consul KV store.
 	Meta pulumi.StringMapInput
@@ -155,9 +155,9 @@ type ConfigEntryServiceDefaultsState struct {
 	MutualTlsMode pulumi.StringPtrInput
 	// Specifies the name of the service you are setting the defaults for.
 	Name pulumi.StringPtrInput
-	// Specifies the namespace containing the upstream service that the configuration applies to.
+	// Specifies the Consul namespace that the configuration entry applies to.
 	Namespace pulumi.StringPtrInput
-	// Specifies the name of the name of the Consul admin partition that the configuration entry applies to.
+	// Specifies the name of the name of the Consul admin partition that the configuration entry applies to. Refer to Admin Partitions for additional information.
 	Partition pulumi.StringPtrInput
 	// Specifies the default protocol for the service.
 	Protocol pulumi.StringPtrInput
@@ -188,7 +188,7 @@ type configEntryServiceDefaultsArgs struct {
 	LocalRequestTimeoutMs *int `pulumi:"localRequestTimeoutMs"`
 	// Specifies the maximum number of concurrent inbound connections to each service instance.
 	MaxInboundConnections *int `pulumi:"maxInboundConnections"`
-	// Specifies the default mesh gateway mode field for all upstreams.
+	// Specifies the default mesh gateway mode field for the service.
 	MeshGateways []ConfigEntryServiceDefaultsMeshGateway `pulumi:"meshGateways"`
 	// Specifies a set of custom key-value pairs to add to the Consul KV store.
 	Meta map[string]string `pulumi:"meta"`
@@ -198,9 +198,9 @@ type configEntryServiceDefaultsArgs struct {
 	MutualTlsMode *string `pulumi:"mutualTlsMode"`
 	// Specifies the name of the service you are setting the defaults for.
 	Name *string `pulumi:"name"`
-	// Specifies the namespace containing the upstream service that the configuration applies to.
+	// Specifies the Consul namespace that the configuration entry applies to.
 	Namespace *string `pulumi:"namespace"`
-	// Specifies the name of the name of the Consul admin partition that the configuration entry applies to.
+	// Specifies the name of the name of the Consul admin partition that the configuration entry applies to. Refer to Admin Partitions for additional information.
 	Partition *string `pulumi:"partition"`
 	// Specifies the default protocol for the service.
 	Protocol string `pulumi:"protocol"`
@@ -228,7 +228,7 @@ type ConfigEntryServiceDefaultsArgs struct {
 	LocalRequestTimeoutMs pulumi.IntPtrInput
 	// Specifies the maximum number of concurrent inbound connections to each service instance.
 	MaxInboundConnections pulumi.IntPtrInput
-	// Specifies the default mesh gateway mode field for all upstreams.
+	// Specifies the default mesh gateway mode field for the service.
 	MeshGateways ConfigEntryServiceDefaultsMeshGatewayArrayInput
 	// Specifies a set of custom key-value pairs to add to the Consul KV store.
 	Meta pulumi.StringMapInput
@@ -238,9 +238,9 @@ type ConfigEntryServiceDefaultsArgs struct {
 	MutualTlsMode pulumi.StringPtrInput
 	// Specifies the name of the service you are setting the defaults for.
 	Name pulumi.StringPtrInput
-	// Specifies the namespace containing the upstream service that the configuration applies to.
+	// Specifies the Consul namespace that the configuration entry applies to.
 	Namespace pulumi.StringPtrInput
-	// Specifies the name of the name of the Consul admin partition that the configuration entry applies to.
+	// Specifies the name of the name of the Consul admin partition that the configuration entry applies to. Refer to Admin Partitions for additional information.
 	Partition pulumi.StringPtrInput
 	// Specifies the default protocol for the service.
 	Protocol pulumi.StringInput
@@ -381,7 +381,7 @@ func (o ConfigEntryServiceDefaultsOutput) MaxInboundConnections() pulumi.IntPtrO
 	return o.ApplyT(func(v *ConfigEntryServiceDefaults) pulumi.IntPtrOutput { return v.MaxInboundConnections }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the default mesh gateway mode field for all upstreams.
+// Specifies the default mesh gateway mode field for the service.
 func (o ConfigEntryServiceDefaultsOutput) MeshGateways() ConfigEntryServiceDefaultsMeshGatewayArrayOutput {
 	return o.ApplyT(func(v *ConfigEntryServiceDefaults) ConfigEntryServiceDefaultsMeshGatewayArrayOutput {
 		return v.MeshGateways
@@ -408,12 +408,12 @@ func (o ConfigEntryServiceDefaultsOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConfigEntryServiceDefaults) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the namespace containing the upstream service that the configuration applies to.
+// Specifies the Consul namespace that the configuration entry applies to.
 func (o ConfigEntryServiceDefaultsOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConfigEntryServiceDefaults) pulumi.StringPtrOutput { return v.Namespace }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the name of the name of the Consul admin partition that the configuration entry applies to.
+// Specifies the name of the name of the Consul admin partition that the configuration entry applies to. Refer to Admin Partitions for additional information.
 func (o ConfigEntryServiceDefaultsOutput) Partition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConfigEntryServiceDefaults) pulumi.StringPtrOutput { return v.Partition }).(pulumi.StringPtrOutput)
 }

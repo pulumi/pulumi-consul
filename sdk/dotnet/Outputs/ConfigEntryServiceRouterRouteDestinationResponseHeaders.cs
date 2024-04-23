@@ -14,7 +14,7 @@ namespace Pulumi.Consul.Outputs
     public sealed class ConfigEntryServiceRouterRouteDestinationResponseHeaders
     {
         /// <summary>
-        /// Defines a set of key-value pairs to add to the header. Use header names as the keys.
+        /// Defines a set of key-value pairs to add to the header. Use header names as the keys
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Add;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.Consul.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Removes;
         /// <summary>
-        /// Defines a set of key-value pairs to add to the request header or to replace existing header values with.
+        /// Defines a set of key-value pairs to add to the response header or to replace existing header values with
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Set;
 

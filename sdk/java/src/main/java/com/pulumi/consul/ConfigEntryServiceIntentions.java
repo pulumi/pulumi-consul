@@ -127,42 +127,42 @@ public class ConfigEntryServiceIntentions extends com.pulumi.resources.CustomRes
         return Codegen.optional(this.meta);
     }
     /**
-     * Specifies the name of a JWT provider defined in the Name field of the jwt-provider configuration entry.
+     * Specifies a name of the destination service for all intentions defined in the configuration entry.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Specifies the name of a JWT provider defined in the Name field of the jwt-provider configuration entry.
+     * @return Specifies a name of the destination service for all intentions defined in the configuration entry.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * Specifies the traffic source namespace that the intention allows or denies traffic from.
+     * Specifies the namespace to apply the configuration entry.
      * 
      */
     @Export(name="namespace", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> namespace;
 
     /**
-     * @return Specifies the traffic source namespace that the intention allows or denies traffic from.
+     * @return Specifies the namespace to apply the configuration entry.
      * 
      */
     public Output<Optional<String>> namespace() {
         return Codegen.optional(this.namespace);
     }
     /**
-     * Specifies the name of an admin partition that the intention allows or denies traffic from.
+     * Specifies the admin partition to apply the configuration entry.
      * 
      */
     @Export(name="partition", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> partition;
 
     /**
-     * @return Specifies the name of an admin partition that the intention allows or denies traffic from.
+     * @return Specifies the admin partition to apply the configuration entry.
      * 
      */
     public Output<Optional<String>> partition() {

@@ -113,7 +113,6 @@ def get_services(query_options: Optional[Sequence[pulumi.InputType['GetServicesQ
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_consul as consul
@@ -127,7 +126,6 @@ def get_services(query_options: Optional[Sequence[pulumi.InputType['GetServicesQ
     app = example.index.Resource("app", description=std.join(separator= ,
         input=names).result)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[pulumi.InputType['GetServicesQueryOptionArgs']] query_options: See below.
@@ -160,7 +158,6 @@ def get_services_output(query_options: Optional[pulumi.Input[Optional[Sequence[p
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_consul as consul
@@ -174,7 +171,6 @@ def get_services_output(query_options: Optional[pulumi.Input[Optional[Sequence[p
     app = example.index.Resource("app", description=std.join(separator= ,
         input=names).result)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[pulumi.InputType['GetServicesQueryOptionArgs']] query_options: See below.

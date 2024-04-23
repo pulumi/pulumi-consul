@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
@@ -47,7 +46,6 @@ import * as utilities from "./utilities";
  *     ],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export class ConfigEntryServiceResolver extends pulumi.CustomResource {
     /**
@@ -98,15 +96,15 @@ export class ConfigEntryServiceResolver extends pulumi.CustomResource {
      */
     public readonly meta!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Name of subset.
+     * Specifies a name for the configuration entry.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Specifies the namespace at the failover location where the failover services are deployed.
+     * Specifies the namespace that the service resolver applies to.
      */
     public readonly namespace!: pulumi.Output<string | undefined>;
     /**
-     * Specifies the admin partition within the same datacenter to use for the failover target. If empty, the default partition is used.
+     * Specifies the admin partition that the service resolver applies to.
      */
     public readonly partition!: pulumi.Output<string | undefined>;
     /**
@@ -190,15 +188,15 @@ export interface ConfigEntryServiceResolverState {
      */
     meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Name of subset.
+     * Specifies a name for the configuration entry.
      */
     name?: pulumi.Input<string>;
     /**
-     * Specifies the namespace at the failover location where the failover services are deployed.
+     * Specifies the namespace that the service resolver applies to.
      */
     namespace?: pulumi.Input<string>;
     /**
-     * Specifies the admin partition within the same datacenter to use for the failover target. If empty, the default partition is used.
+     * Specifies the admin partition that the service resolver applies to.
      */
     partition?: pulumi.Input<string>;
     /**
@@ -240,15 +238,15 @@ export interface ConfigEntryServiceResolverArgs {
      */
     meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Name of subset.
+     * Specifies a name for the configuration entry.
      */
     name?: pulumi.Input<string>;
     /**
-     * Specifies the namespace at the failover location where the failover services are deployed.
+     * Specifies the namespace that the service resolver applies to.
      */
     namespace?: pulumi.Input<string>;
     /**
-     * Specifies the admin partition within the same datacenter to use for the failover target. If empty, the default partition is used.
+     * Specifies the admin partition that the service resolver applies to.
      */
     partition?: pulumi.Input<string>;
     /**
