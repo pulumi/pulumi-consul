@@ -250,7 +250,6 @@ class NetworkArea(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_consul as consul
@@ -260,7 +259,6 @@ class NetworkArea(pulumi.CustomResource):
             retry_joins=["1.2.3.4"],
             use_tls=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -294,7 +292,6 @@ class NetworkArea(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_consul as consul
@@ -304,7 +301,6 @@ class NetworkArea(pulumi.CustomResource):
             retry_joins=["1.2.3.4"],
             use_tls=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param NetworkAreaArgs args: The arguments to use to populate this resource's properties.

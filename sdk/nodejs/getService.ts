@@ -18,7 +18,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
@@ -35,7 +34,6 @@ import * as utilities from "./utilities";
  *     input: nodes,
  * }).result});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getService(args: GetServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceResult> {
 
@@ -60,10 +58,6 @@ export interface GetServiceArgs {
      * configured to talk to.
      */
     datacenter?: string;
-    /**
-     * A filter expression to refine the query, see https://www.consul.io/api-docs/features/filtering
-     * and https://www.consul.io/api-docs/catalog#filtering-1.
-     */
     filter?: string;
     /**
      * The service name to select.
@@ -121,7 +115,6 @@ export interface GetServiceResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
@@ -138,7 +131,6 @@ export interface GetServiceResult {
  *     input: nodes,
  * }).result});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getServiceOutput(args: GetServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceResult> {
     return pulumi.output(args).apply((a: any) => getService(a, opts))
@@ -155,10 +147,6 @@ export interface GetServiceOutputArgs {
      * configured to talk to.
      */
     datacenter?: pulumi.Input<string>;
-    /**
-     * A filter expression to refine the query, see https://www.consul.io/api-docs/features/filtering
-     * and https://www.consul.io/api-docs/catalog#filtering-1.
-     */
     filter?: pulumi.Input<string>;
     /**
      * The service name to select.

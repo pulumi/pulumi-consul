@@ -20,7 +20,6 @@ import * as utilities from "./utilities";
  *
  * Creating a new node with the service:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
@@ -36,11 +35,9 @@ import * as utilities from "./utilities";
  *     tags: ["tag0"],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Utilizing an existing known node:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
@@ -51,11 +48,9 @@ import * as utilities from "./utilities";
  *     port: 443,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Register a health-check:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
@@ -87,7 +82,6 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export class Service extends pulumi.CustomResource {
     /**
@@ -139,7 +133,7 @@ export class Service extends pulumi.CustomResource {
      */
     public readonly meta!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The name of the header.
+     * The name of the service.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -243,7 +237,7 @@ export interface ServiceState {
      */
     meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The name of the header.
+     * The name of the service.
      */
     name?: pulumi.Input<string>;
     /**
@@ -298,7 +292,7 @@ export interface ServiceArgs {
      */
     meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The name of the header.
+     * The name of the service.
      */
     name?: pulumi.Input<string>;
     /**

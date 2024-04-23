@@ -18,14 +18,14 @@ public final class ConfigEntryServiceRouterRouteDestinationResponseHeadersArgs e
     public static final ConfigEntryServiceRouterRouteDestinationResponseHeadersArgs Empty = new ConfigEntryServiceRouterRouteDestinationResponseHeadersArgs();
 
     /**
-     * Defines a set of key-value pairs to add to the header. Use header names as the keys.
+     * Defines a set of key-value pairs to add to the header. Use header names as the keys
      * 
      */
     @Import(name="add")
     private @Nullable Output<Map<String,String>> add;
 
     /**
-     * @return Defines a set of key-value pairs to add to the header. Use header names as the keys.
+     * @return Defines a set of key-value pairs to add to the header. Use header names as the keys
      * 
      */
     public Optional<Output<Map<String,String>>> add() {
@@ -48,14 +48,14 @@ public final class ConfigEntryServiceRouterRouteDestinationResponseHeadersArgs e
     }
 
     /**
-     * Defines a set of key-value pairs to add to the request header or to replace existing header values with.
+     * Defines a set of key-value pairs to add to the response header or to replace existing header values with
      * 
      */
     @Import(name="set")
     private @Nullable Output<Map<String,String>> set;
 
     /**
-     * @return Defines a set of key-value pairs to add to the request header or to replace existing header values with.
+     * @return Defines a set of key-value pairs to add to the response header or to replace existing header values with
      * 
      */
     public Optional<Output<Map<String,String>>> set() {
@@ -89,7 +89,7 @@ public final class ConfigEntryServiceRouterRouteDestinationResponseHeadersArgs e
         }
 
         /**
-         * @param add Defines a set of key-value pairs to add to the header. Use header names as the keys.
+         * @param add Defines a set of key-value pairs to add to the header. Use header names as the keys
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class ConfigEntryServiceRouterRouteDestinationResponseHeadersArgs e
         }
 
         /**
-         * @param add Defines a set of key-value pairs to add to the header. Use header names as the keys.
+         * @param add Defines a set of key-value pairs to add to the header. Use header names as the keys
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class ConfigEntryServiceRouterRouteDestinationResponseHeadersArgs e
         }
 
         /**
-         * @param set Defines a set of key-value pairs to add to the request header or to replace existing header values with.
+         * @param set Defines a set of key-value pairs to add to the response header or to replace existing header values with
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class ConfigEntryServiceRouterRouteDestinationResponseHeadersArgs e
         }
 
         /**
-         * @param set Defines a set of key-value pairs to add to the request header or to replace existing header values with.
+         * @param set Defines a set of key-value pairs to add to the response header or to replace existing header values with
          * 
          * @return builder
          * 

@@ -97,14 +97,14 @@ public final class ConfigEntryServiceResolverArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Name of subset.
+     * Specifies a name for the configuration entry.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of subset.
+     * @return Specifies a name for the configuration entry.
      * 
      */
     public Optional<Output<String>> name() {
@@ -112,14 +112,14 @@ public final class ConfigEntryServiceResolverArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Specifies the namespace at the failover location where the failover services are deployed.
+     * Specifies the namespace that the service resolver applies to.
      * 
      */
     @Import(name="namespace")
     private @Nullable Output<String> namespace;
 
     /**
-     * @return Specifies the namespace at the failover location where the failover services are deployed.
+     * @return Specifies the namespace that the service resolver applies to.
      * 
      */
     public Optional<Output<String>> namespace() {
@@ -127,14 +127,14 @@ public final class ConfigEntryServiceResolverArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Specifies the admin partition within the same datacenter to use for the failover target. If empty, the default partition is used.
+     * Specifies the admin partition that the service resolver applies to.
      * 
      */
     @Import(name="partition")
     private @Nullable Output<String> partition;
 
     /**
-     * @return Specifies the admin partition within the same datacenter to use for the failover target. If empty, the default partition is used.
+     * @return Specifies the admin partition that the service resolver applies to.
      * 
      */
     public Optional<Output<String>> partition() {
@@ -346,7 +346,7 @@ public final class ConfigEntryServiceResolverArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param name Name of subset.
+         * @param name Specifies a name for the configuration entry.
          * 
          * @return builder
          * 
@@ -357,7 +357,7 @@ public final class ConfigEntryServiceResolverArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param name Name of subset.
+         * @param name Specifies a name for the configuration entry.
          * 
          * @return builder
          * 
@@ -367,7 +367,7 @@ public final class ConfigEntryServiceResolverArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param namespace Specifies the namespace at the failover location where the failover services are deployed.
+         * @param namespace Specifies the namespace that the service resolver applies to.
          * 
          * @return builder
          * 
@@ -378,7 +378,7 @@ public final class ConfigEntryServiceResolverArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param namespace Specifies the namespace at the failover location where the failover services are deployed.
+         * @param namespace Specifies the namespace that the service resolver applies to.
          * 
          * @return builder
          * 
@@ -388,7 +388,7 @@ public final class ConfigEntryServiceResolverArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param partition Specifies the admin partition within the same datacenter to use for the failover target. If empty, the default partition is used.
+         * @param partition Specifies the admin partition that the service resolver applies to.
          * 
          * @return builder
          * 
@@ -399,7 +399,7 @@ public final class ConfigEntryServiceResolverArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param partition Specifies the admin partition within the same datacenter to use for the failover target. If empty, the default partition is used.
+         * @param partition Specifies the admin partition that the service resolver applies to.
          * 
          * @return builder
          * 

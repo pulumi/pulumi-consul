@@ -14,7 +14,6 @@ import (
 
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -115,7 +114,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -129,9 +127,9 @@ type ConfigEntryServiceSplitter struct {
 	Meta pulumi.StringMapOutput `pulumi:"meta"`
 	// Specifies a name for the configuration entry.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Specifies the namespace to use in the FQDN when resolving the service.
+	// Specifies the namespace to apply the configuration entry.
 	Namespace pulumi.StringPtrOutput `pulumi:"namespace"`
-	// Specifies the admin partition to use in the FQDN when resolving the service.
+	// Specifies the admin partition to apply the configuration entry.
 	Partition pulumi.StringPtrOutput `pulumi:"partition"`
 	// Defines how much traffic to send to sets of service instances during a traffic split.
 	Splits ConfigEntryServiceSplitterSplitArrayOutput `pulumi:"splits"`
@@ -174,9 +172,9 @@ type configEntryServiceSplitterState struct {
 	Meta map[string]string `pulumi:"meta"`
 	// Specifies a name for the configuration entry.
 	Name *string `pulumi:"name"`
-	// Specifies the namespace to use in the FQDN when resolving the service.
+	// Specifies the namespace to apply the configuration entry.
 	Namespace *string `pulumi:"namespace"`
-	// Specifies the admin partition to use in the FQDN when resolving the service.
+	// Specifies the admin partition to apply the configuration entry.
 	Partition *string `pulumi:"partition"`
 	// Defines how much traffic to send to sets of service instances during a traffic split.
 	Splits []ConfigEntryServiceSplitterSplit `pulumi:"splits"`
@@ -187,9 +185,9 @@ type ConfigEntryServiceSplitterState struct {
 	Meta pulumi.StringMapInput
 	// Specifies a name for the configuration entry.
 	Name pulumi.StringPtrInput
-	// Specifies the namespace to use in the FQDN when resolving the service.
+	// Specifies the namespace to apply the configuration entry.
 	Namespace pulumi.StringPtrInput
-	// Specifies the admin partition to use in the FQDN when resolving the service.
+	// Specifies the admin partition to apply the configuration entry.
 	Partition pulumi.StringPtrInput
 	// Defines how much traffic to send to sets of service instances during a traffic split.
 	Splits ConfigEntryServiceSplitterSplitArrayInput
@@ -204,9 +202,9 @@ type configEntryServiceSplitterArgs struct {
 	Meta map[string]string `pulumi:"meta"`
 	// Specifies a name for the configuration entry.
 	Name *string `pulumi:"name"`
-	// Specifies the namespace to use in the FQDN when resolving the service.
+	// Specifies the namespace to apply the configuration entry.
 	Namespace *string `pulumi:"namespace"`
-	// Specifies the admin partition to use in the FQDN when resolving the service.
+	// Specifies the admin partition to apply the configuration entry.
 	Partition *string `pulumi:"partition"`
 	// Defines how much traffic to send to sets of service instances during a traffic split.
 	Splits []ConfigEntryServiceSplitterSplit `pulumi:"splits"`
@@ -218,9 +216,9 @@ type ConfigEntryServiceSplitterArgs struct {
 	Meta pulumi.StringMapInput
 	// Specifies a name for the configuration entry.
 	Name pulumi.StringPtrInput
-	// Specifies the namespace to use in the FQDN when resolving the service.
+	// Specifies the namespace to apply the configuration entry.
 	Namespace pulumi.StringPtrInput
-	// Specifies the admin partition to use in the FQDN when resolving the service.
+	// Specifies the admin partition to apply the configuration entry.
 	Partition pulumi.StringPtrInput
 	// Defines how much traffic to send to sets of service instances during a traffic split.
 	Splits ConfigEntryServiceSplitterSplitArrayInput
@@ -323,12 +321,12 @@ func (o ConfigEntryServiceSplitterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConfigEntryServiceSplitter) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the namespace to use in the FQDN when resolving the service.
+// Specifies the namespace to apply the configuration entry.
 func (o ConfigEntryServiceSplitterOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConfigEntryServiceSplitter) pulumi.StringPtrOutput { return v.Namespace }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the admin partition to use in the FQDN when resolving the service.
+// Specifies the admin partition to apply the configuration entry.
 func (o ConfigEntryServiceSplitterOutput) Partition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConfigEntryServiceSplitter) pulumi.StringPtrOutput { return v.Partition }).(pulumi.StringPtrOutput)
 }

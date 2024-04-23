@@ -50,14 +50,14 @@ public final class ConfigEntryServiceSplitterArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Specifies the namespace to use in the FQDN when resolving the service.
+     * Specifies the namespace to apply the configuration entry.
      * 
      */
     @Import(name="namespace")
     private @Nullable Output<String> namespace;
 
     /**
-     * @return Specifies the namespace to use in the FQDN when resolving the service.
+     * @return Specifies the namespace to apply the configuration entry.
      * 
      */
     public Optional<Output<String>> namespace() {
@@ -65,14 +65,14 @@ public final class ConfigEntryServiceSplitterArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Specifies the admin partition to use in the FQDN when resolving the service.
+     * Specifies the admin partition to apply the configuration entry.
      * 
      */
     @Import(name="partition")
     private @Nullable Output<String> partition;
 
     /**
-     * @return Specifies the admin partition to use in the FQDN when resolving the service.
+     * @return Specifies the admin partition to apply the configuration entry.
      * 
      */
     public Optional<Output<String>> partition() {
@@ -165,7 +165,7 @@ public final class ConfigEntryServiceSplitterArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param namespace Specifies the namespace to use in the FQDN when resolving the service.
+         * @param namespace Specifies the namespace to apply the configuration entry.
          * 
          * @return builder
          * 
@@ -176,7 +176,7 @@ public final class ConfigEntryServiceSplitterArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param namespace Specifies the namespace to use in the FQDN when resolving the service.
+         * @param namespace Specifies the namespace to apply the configuration entry.
          * 
          * @return builder
          * 
@@ -186,7 +186,7 @@ public final class ConfigEntryServiceSplitterArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param partition Specifies the admin partition to use in the FQDN when resolving the service.
+         * @param partition Specifies the admin partition to apply the configuration entry.
          * 
          * @return builder
          * 
@@ -197,7 +197,7 @@ public final class ConfigEntryServiceSplitterArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param partition Specifies the admin partition to use in the FQDN when resolving the service.
+         * @param partition Specifies the admin partition to apply the configuration entry.
          * 
          * @return builder
          * 

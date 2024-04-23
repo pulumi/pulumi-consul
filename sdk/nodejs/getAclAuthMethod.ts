@@ -12,7 +12,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
@@ -22,7 +21,6 @@ import * as utilities from "./utilities";
  * });
  * export const consulAclAuthMethod = test.then(test => test.config);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAclAuthMethod(args: GetAclAuthMethodArgs, opts?: pulumi.InvokeOptions): Promise<GetAclAuthMethodResult> {
 
@@ -110,7 +108,6 @@ export interface GetAclAuthMethodResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
@@ -120,7 +117,6 @@ export interface GetAclAuthMethodResult {
  * });
  * export const consulAclAuthMethod = test.then(test => test.config);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAclAuthMethodOutput(args: GetAclAuthMethodOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAclAuthMethodResult> {
     return pulumi.output(args).apply((a: any) => getAclAuthMethod(a, opts))

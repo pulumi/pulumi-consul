@@ -3577,7 +3577,7 @@ func (o ConfigEntryServiceIntentionsSourceArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type ConfigEntryServiceIntentionsSourcePermission struct {
-	// Specifies the action to take when the source sends traffic to the destination service.
+	// Specifies the action to take when the source sends traffic to the destination service. The value is either allow or deny.
 	Action string `pulumi:"action"`
 	// Specifies a set of HTTP-specific match criteria.
 	Https []ConfigEntryServiceIntentionsSourcePermissionHttp `pulumi:"https"`
@@ -3595,7 +3595,7 @@ type ConfigEntryServiceIntentionsSourcePermissionInput interface {
 }
 
 type ConfigEntryServiceIntentionsSourcePermissionArgs struct {
-	// Specifies the action to take when the source sends traffic to the destination service.
+	// Specifies the action to take when the source sends traffic to the destination service. The value is either allow or deny.
 	Action pulumi.StringInput `pulumi:"action"`
 	// Specifies a set of HTTP-specific match criteria.
 	Https ConfigEntryServiceIntentionsSourcePermissionHttpArrayInput `pulumi:"https"`
@@ -3652,7 +3652,7 @@ func (o ConfigEntryServiceIntentionsSourcePermissionOutput) ToConfigEntryService
 	return o
 }
 
-// Specifies the action to take when the source sends traffic to the destination service.
+// Specifies the action to take when the source sends traffic to the destination service. The value is either allow or deny.
 func (o ConfigEntryServiceIntentionsSourcePermissionOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v ConfigEntryServiceIntentionsSourcePermission) string { return v.Action }).(pulumi.StringOutput)
 }
@@ -3824,7 +3824,7 @@ type ConfigEntryServiceIntentionsSourcePermissionHttpHeader struct {
 	Exact *string `pulumi:"exact"`
 	// Inverts the matching logic configured in the Header.
 	Invert *bool `pulumi:"invert"`
-	// Specifies the name of a JWT provider defined in the Name field of the jwt-provider configuration entry.
+	// Specifies the name of the header to match.
 	Name string `pulumi:"name"`
 	// Specifies a prefix value for the header key set in the Name field.
 	Prefix *string `pulumi:"prefix"`
@@ -3852,7 +3852,7 @@ type ConfigEntryServiceIntentionsSourcePermissionHttpHeaderArgs struct {
 	Exact pulumi.StringPtrInput `pulumi:"exact"`
 	// Inverts the matching logic configured in the Header.
 	Invert pulumi.BoolPtrInput `pulumi:"invert"`
-	// Specifies the name of a JWT provider defined in the Name field of the jwt-provider configuration entry.
+	// Specifies the name of the header to match.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Specifies a prefix value for the header key set in the Name field.
 	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
@@ -3925,7 +3925,7 @@ func (o ConfigEntryServiceIntentionsSourcePermissionHttpHeaderOutput) Invert() p
 	return o.ApplyT(func(v ConfigEntryServiceIntentionsSourcePermissionHttpHeader) *bool { return v.Invert }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the name of a JWT provider defined in the Name field of the jwt-provider configuration entry.
+// Specifies the name of the header to match.
 func (o ConfigEntryServiceIntentionsSourcePermissionHttpHeaderOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ConfigEntryServiceIntentionsSourcePermissionHttpHeader) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -4126,15 +4126,15 @@ func (o ConfigEntryServiceResolverFailoverArrayOutput) Index(i pulumi.IntInput) 
 type ConfigEntryServiceResolverFailoverTarget struct {
 	// Specifies the WAN federated datacenter to use for the failover target. If empty, the current datacenter is used.
 	Datacenter *string `pulumi:"datacenter"`
-	// Specifies the namespace at the failover location where the failover services are deployed.
+	// Specifies the namespace to use for the failover target. If empty, the default namespace is used.
 	Namespace *string `pulumi:"namespace"`
 	// Specifies the admin partition within the same datacenter to use for the failover target. If empty, the default partition is used.
 	Partition *string `pulumi:"partition"`
 	// Specifies the destination cluster peer to resolve the target service name from.
 	Peer *string `pulumi:"peer"`
-	// Specifies the name of the service to resolve at the failover location during a failover scenario.
+	// Specifies the service name to use for the failover target. If empty, the current service name is used.
 	Service *string `pulumi:"service"`
-	// Specifies the name of a subset of service instances to resolve at the failover location during a failover scenario.
+	// Specifies the named subset to use for the failover target. If empty, the default subset for the requested service name is used.
 	ServiceSubset *string `pulumi:"serviceSubset"`
 }
 
@@ -4152,15 +4152,15 @@ type ConfigEntryServiceResolverFailoverTargetInput interface {
 type ConfigEntryServiceResolverFailoverTargetArgs struct {
 	// Specifies the WAN federated datacenter to use for the failover target. If empty, the current datacenter is used.
 	Datacenter pulumi.StringPtrInput `pulumi:"datacenter"`
-	// Specifies the namespace at the failover location where the failover services are deployed.
+	// Specifies the namespace to use for the failover target. If empty, the default namespace is used.
 	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
 	// Specifies the admin partition within the same datacenter to use for the failover target. If empty, the default partition is used.
 	Partition pulumi.StringPtrInput `pulumi:"partition"`
 	// Specifies the destination cluster peer to resolve the target service name from.
 	Peer pulumi.StringPtrInput `pulumi:"peer"`
-	// Specifies the name of the service to resolve at the failover location during a failover scenario.
+	// Specifies the service name to use for the failover target. If empty, the current service name is used.
 	Service pulumi.StringPtrInput `pulumi:"service"`
-	// Specifies the name of a subset of service instances to resolve at the failover location during a failover scenario.
+	// Specifies the named subset to use for the failover target. If empty, the default subset for the requested service name is used.
 	ServiceSubset pulumi.StringPtrInput `pulumi:"serviceSubset"`
 }
 
@@ -4220,7 +4220,7 @@ func (o ConfigEntryServiceResolverFailoverTargetOutput) Datacenter() pulumi.Stri
 	return o.ApplyT(func(v ConfigEntryServiceResolverFailoverTarget) *string { return v.Datacenter }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the namespace at the failover location where the failover services are deployed.
+// Specifies the namespace to use for the failover target. If empty, the default namespace is used.
 func (o ConfigEntryServiceResolverFailoverTargetOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConfigEntryServiceResolverFailoverTarget) *string { return v.Namespace }).(pulumi.StringPtrOutput)
 }
@@ -4235,12 +4235,12 @@ func (o ConfigEntryServiceResolverFailoverTargetOutput) Peer() pulumi.StringPtrO
 	return o.ApplyT(func(v ConfigEntryServiceResolverFailoverTarget) *string { return v.Peer }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the name of the service to resolve at the failover location during a failover scenario.
+// Specifies the service name to use for the failover target. If empty, the current service name is used.
 func (o ConfigEntryServiceResolverFailoverTargetOutput) Service() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConfigEntryServiceResolverFailoverTarget) *string { return v.Service }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the name of a subset of service instances to resolve at the failover location during a failover scenario.
+// Specifies the named subset to use for the failover target. If empty, the default subset for the requested service name is used.
 func (o ConfigEntryServiceResolverFailoverTargetOutput) ServiceSubset() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConfigEntryServiceResolverFailoverTarget) *string { return v.ServiceSubset }).(pulumi.StringPtrOutput)
 }
@@ -5762,11 +5762,11 @@ func (o ConfigEntryServiceRouterRouteDestinationRequestHeadersPtrOutput) Set() p
 }
 
 type ConfigEntryServiceRouterRouteDestinationResponseHeaders struct {
-	// Defines a set of key-value pairs to add to the header. Use header names as the keys.
+	// Defines a set of key-value pairs to add to the header. Use header names as the keys
 	Add map[string]string `pulumi:"add"`
 	// Defines a list of headers to remove.
 	Removes []string `pulumi:"removes"`
-	// Defines a set of key-value pairs to add to the request header or to replace existing header values with.
+	// Defines a set of key-value pairs to add to the response header or to replace existing header values with
 	Set map[string]string `pulumi:"set"`
 }
 
@@ -5782,11 +5782,11 @@ type ConfigEntryServiceRouterRouteDestinationResponseHeadersInput interface {
 }
 
 type ConfigEntryServiceRouterRouteDestinationResponseHeadersArgs struct {
-	// Defines a set of key-value pairs to add to the header. Use header names as the keys.
+	// Defines a set of key-value pairs to add to the header. Use header names as the keys
 	Add pulumi.StringMapInput `pulumi:"add"`
 	// Defines a list of headers to remove.
 	Removes pulumi.StringArrayInput `pulumi:"removes"`
-	// Defines a set of key-value pairs to add to the request header or to replace existing header values with.
+	// Defines a set of key-value pairs to add to the response header or to replace existing header values with
 	Set pulumi.StringMapInput `pulumi:"set"`
 }
 
@@ -5867,7 +5867,7 @@ func (o ConfigEntryServiceRouterRouteDestinationResponseHeadersOutput) ToConfigE
 	}).(ConfigEntryServiceRouterRouteDestinationResponseHeadersPtrOutput)
 }
 
-// Defines a set of key-value pairs to add to the header. Use header names as the keys.
+// Defines a set of key-value pairs to add to the header. Use header names as the keys
 func (o ConfigEntryServiceRouterRouteDestinationResponseHeadersOutput) Add() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ConfigEntryServiceRouterRouteDestinationResponseHeaders) map[string]string { return v.Add }).(pulumi.StringMapOutput)
 }
@@ -5877,7 +5877,7 @@ func (o ConfigEntryServiceRouterRouteDestinationResponseHeadersOutput) Removes()
 	return o.ApplyT(func(v ConfigEntryServiceRouterRouteDestinationResponseHeaders) []string { return v.Removes }).(pulumi.StringArrayOutput)
 }
 
-// Defines a set of key-value pairs to add to the request header or to replace existing header values with.
+// Defines a set of key-value pairs to add to the response header or to replace existing header values with
 func (o ConfigEntryServiceRouterRouteDestinationResponseHeadersOutput) Set() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ConfigEntryServiceRouterRouteDestinationResponseHeaders) map[string]string { return v.Set }).(pulumi.StringMapOutput)
 }
@@ -5906,7 +5906,7 @@ func (o ConfigEntryServiceRouterRouteDestinationResponseHeadersPtrOutput) Elem()
 	}).(ConfigEntryServiceRouterRouteDestinationResponseHeadersOutput)
 }
 
-// Defines a set of key-value pairs to add to the header. Use header names as the keys.
+// Defines a set of key-value pairs to add to the header. Use header names as the keys
 func (o ConfigEntryServiceRouterRouteDestinationResponseHeadersPtrOutput) Add() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ConfigEntryServiceRouterRouteDestinationResponseHeaders) map[string]string {
 		if v == nil {
@@ -5926,7 +5926,7 @@ func (o ConfigEntryServiceRouterRouteDestinationResponseHeadersPtrOutput) Remove
 	}).(pulumi.StringArrayOutput)
 }
 
-// Defines a set of key-value pairs to add to the request header or to replace existing header values with.
+// Defines a set of key-value pairs to add to the response header or to replace existing header values with
 func (o ConfigEntryServiceRouterRouteDestinationResponseHeadersPtrOutput) Set() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ConfigEntryServiceRouterRouteDestinationResponseHeaders) map[string]string {
 		if v == nil {
@@ -6461,13 +6461,13 @@ func (o ConfigEntryServiceRouterRouteMatchHttpHeaderArrayOutput) Index(i pulumi.
 }
 
 type ConfigEntryServiceRouterRouteMatchHttpQueryParam struct {
-	// Specifies that a request matches when the header with the given name is this exact value.
+	// Specifies that a request matches when the query parameter with the given name is this exact value.
 	Exact *string `pulumi:"exact"`
-	// Specifies the name of the HTTP header to match.
+	// Specifies the name of the HTTP query parameter to match.
 	Name *string `pulumi:"name"`
-	// Specifies that a request matches when the value in the `name` argument is present anywhere in the HTTP header.
+	// Specifies that a request matches when the value in the `name` argument is present anywhere in the HTTP query parameter.
 	Present *bool `pulumi:"present"`
-	// Specifies that a request matches when the header with the given name matches this regular expression.
+	// Specifies that a request matches when the query parameter with the given name matches this regular expression.
 	Regex *string `pulumi:"regex"`
 }
 
@@ -6483,13 +6483,13 @@ type ConfigEntryServiceRouterRouteMatchHttpQueryParamInput interface {
 }
 
 type ConfigEntryServiceRouterRouteMatchHttpQueryParamArgs struct {
-	// Specifies that a request matches when the header with the given name is this exact value.
+	// Specifies that a request matches when the query parameter with the given name is this exact value.
 	Exact pulumi.StringPtrInput `pulumi:"exact"`
-	// Specifies the name of the HTTP header to match.
+	// Specifies the name of the HTTP query parameter to match.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Specifies that a request matches when the value in the `name` argument is present anywhere in the HTTP header.
+	// Specifies that a request matches when the value in the `name` argument is present anywhere in the HTTP query parameter.
 	Present pulumi.BoolPtrInput `pulumi:"present"`
-	// Specifies that a request matches when the header with the given name matches this regular expression.
+	// Specifies that a request matches when the query parameter with the given name matches this regular expression.
 	Regex pulumi.StringPtrInput `pulumi:"regex"`
 }
 
@@ -6544,22 +6544,22 @@ func (o ConfigEntryServiceRouterRouteMatchHttpQueryParamOutput) ToConfigEntrySer
 	return o
 }
 
-// Specifies that a request matches when the header with the given name is this exact value.
+// Specifies that a request matches when the query parameter with the given name is this exact value.
 func (o ConfigEntryServiceRouterRouteMatchHttpQueryParamOutput) Exact() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConfigEntryServiceRouterRouteMatchHttpQueryParam) *string { return v.Exact }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the name of the HTTP header to match.
+// Specifies the name of the HTTP query parameter to match.
 func (o ConfigEntryServiceRouterRouteMatchHttpQueryParamOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConfigEntryServiceRouterRouteMatchHttpQueryParam) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Specifies that a request matches when the value in the `name` argument is present anywhere in the HTTP header.
+// Specifies that a request matches when the value in the `name` argument is present anywhere in the HTTP query parameter.
 func (o ConfigEntryServiceRouterRouteMatchHttpQueryParamOutput) Present() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConfigEntryServiceRouterRouteMatchHttpQueryParam) *bool { return v.Present }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies that a request matches when the header with the given name matches this regular expression.
+// Specifies that a request matches when the query parameter with the given name matches this regular expression.
 func (o ConfigEntryServiceRouterRouteMatchHttpQueryParamOutput) Regex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConfigEntryServiceRouterRouteMatchHttpQueryParam) *string { return v.Regex }).(pulumi.StringPtrOutput)
 }

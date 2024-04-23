@@ -26,9 +26,9 @@ class ConfigEntryServiceIntentionsArgs:
         The set of arguments for constructing a ConfigEntryServiceIntentions resource.
         :param pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceIntentionsJwtArgs']]] jwts: Specifies a JSON Web Token provider configured in a JWT provider configuration entry, as well as additional configurations for verifying a service's JWT before authorizing communication between services
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: Specifies key-value pairs to add to the KV store.
-        :param pulumi.Input[str] name: Specifies the name of a JWT provider defined in the Name field of the jwt-provider configuration entry.
-        :param pulumi.Input[str] namespace: Specifies the traffic source namespace that the intention allows or denies traffic from.
-        :param pulumi.Input[str] partition: Specifies the name of an admin partition that the intention allows or denies traffic from.
+        :param pulumi.Input[str] name: Specifies a name of the destination service for all intentions defined in the configuration entry.
+        :param pulumi.Input[str] namespace: Specifies the namespace to apply the configuration entry.
+        :param pulumi.Input[str] partition: Specifies the admin partition to apply the configuration entry.
         :param pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceIntentionsSourceArgs']]] sources: List of configurations that define intention sources and the authorization granted to the sources.
         """
         if jwts is not None:
@@ -72,7 +72,7 @@ class ConfigEntryServiceIntentionsArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the name of a JWT provider defined in the Name field of the jwt-provider configuration entry.
+        Specifies a name of the destination service for all intentions defined in the configuration entry.
         """
         return pulumi.get(self, "name")
 
@@ -84,7 +84,7 @@ class ConfigEntryServiceIntentionsArgs:
     @pulumi.getter
     def namespace(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the traffic source namespace that the intention allows or denies traffic from.
+        Specifies the namespace to apply the configuration entry.
         """
         return pulumi.get(self, "namespace")
 
@@ -96,7 +96,7 @@ class ConfigEntryServiceIntentionsArgs:
     @pulumi.getter
     def partition(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the name of an admin partition that the intention allows or denies traffic from.
+        Specifies the admin partition to apply the configuration entry.
         """
         return pulumi.get(self, "partition")
 
@@ -130,9 +130,9 @@ class _ConfigEntryServiceIntentionsState:
         Input properties used for looking up and filtering ConfigEntryServiceIntentions resources.
         :param pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceIntentionsJwtArgs']]] jwts: Specifies a JSON Web Token provider configured in a JWT provider configuration entry, as well as additional configurations for verifying a service's JWT before authorizing communication between services
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: Specifies key-value pairs to add to the KV store.
-        :param pulumi.Input[str] name: Specifies the name of a JWT provider defined in the Name field of the jwt-provider configuration entry.
-        :param pulumi.Input[str] namespace: Specifies the traffic source namespace that the intention allows or denies traffic from.
-        :param pulumi.Input[str] partition: Specifies the name of an admin partition that the intention allows or denies traffic from.
+        :param pulumi.Input[str] name: Specifies a name of the destination service for all intentions defined in the configuration entry.
+        :param pulumi.Input[str] namespace: Specifies the namespace to apply the configuration entry.
+        :param pulumi.Input[str] partition: Specifies the admin partition to apply the configuration entry.
         :param pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceIntentionsSourceArgs']]] sources: List of configurations that define intention sources and the authorization granted to the sources.
         """
         if jwts is not None:
@@ -176,7 +176,7 @@ class _ConfigEntryServiceIntentionsState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the name of a JWT provider defined in the Name field of the jwt-provider configuration entry.
+        Specifies a name of the destination service for all intentions defined in the configuration entry.
         """
         return pulumi.get(self, "name")
 
@@ -188,7 +188,7 @@ class _ConfigEntryServiceIntentionsState:
     @pulumi.getter
     def namespace(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the traffic source namespace that the intention allows or denies traffic from.
+        Specifies the namespace to apply the configuration entry.
         """
         return pulumi.get(self, "namespace")
 
@@ -200,7 +200,7 @@ class _ConfigEntryServiceIntentionsState:
     @pulumi.getter
     def partition(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the name of an admin partition that the intention allows or denies traffic from.
+        Specifies the admin partition to apply the configuration entry.
         """
         return pulumi.get(self, "partition")
 
@@ -236,7 +236,6 @@ class ConfigEntryServiceIntentions(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -282,15 +281,14 @@ class ConfigEntryServiceIntentions(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceIntentionsJwtArgs']]]] jwts: Specifies a JSON Web Token provider configured in a JWT provider configuration entry, as well as additional configurations for verifying a service's JWT before authorizing communication between services
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: Specifies key-value pairs to add to the KV store.
-        :param pulumi.Input[str] name: Specifies the name of a JWT provider defined in the Name field of the jwt-provider configuration entry.
-        :param pulumi.Input[str] namespace: Specifies the traffic source namespace that the intention allows or denies traffic from.
-        :param pulumi.Input[str] partition: Specifies the name of an admin partition that the intention allows or denies traffic from.
+        :param pulumi.Input[str] name: Specifies a name of the destination service for all intentions defined in the configuration entry.
+        :param pulumi.Input[str] namespace: Specifies the namespace to apply the configuration entry.
+        :param pulumi.Input[str] partition: Specifies the admin partition to apply the configuration entry.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceIntentionsSourceArgs']]]] sources: List of configurations that define intention sources and the authorization granted to the sources.
         """
         ...
@@ -302,7 +300,6 @@ class ConfigEntryServiceIntentions(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -348,7 +345,6 @@ class ConfigEntryServiceIntentions(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param ConfigEntryServiceIntentionsArgs args: The arguments to use to populate this resource's properties.
@@ -411,9 +407,9 @@ class ConfigEntryServiceIntentions(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceIntentionsJwtArgs']]]] jwts: Specifies a JSON Web Token provider configured in a JWT provider configuration entry, as well as additional configurations for verifying a service's JWT before authorizing communication between services
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: Specifies key-value pairs to add to the KV store.
-        :param pulumi.Input[str] name: Specifies the name of a JWT provider defined in the Name field of the jwt-provider configuration entry.
-        :param pulumi.Input[str] namespace: Specifies the traffic source namespace that the intention allows or denies traffic from.
-        :param pulumi.Input[str] partition: Specifies the name of an admin partition that the intention allows or denies traffic from.
+        :param pulumi.Input[str] name: Specifies a name of the destination service for all intentions defined in the configuration entry.
+        :param pulumi.Input[str] namespace: Specifies the namespace to apply the configuration entry.
+        :param pulumi.Input[str] partition: Specifies the admin partition to apply the configuration entry.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceIntentionsSourceArgs']]]] sources: List of configurations that define intention sources and the authorization granted to the sources.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -448,7 +444,7 @@ class ConfigEntryServiceIntentions(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Specifies the name of a JWT provider defined in the Name field of the jwt-provider configuration entry.
+        Specifies a name of the destination service for all intentions defined in the configuration entry.
         """
         return pulumi.get(self, "name")
 
@@ -456,7 +452,7 @@ class ConfigEntryServiceIntentions(pulumi.CustomResource):
     @pulumi.getter
     def namespace(self) -> pulumi.Output[Optional[str]]:
         """
-        Specifies the traffic source namespace that the intention allows or denies traffic from.
+        Specifies the namespace to apply the configuration entry.
         """
         return pulumi.get(self, "namespace")
 
@@ -464,7 +460,7 @@ class ConfigEntryServiceIntentions(pulumi.CustomResource):
     @pulumi.getter
     def partition(self) -> pulumi.Output[Optional[str]]:
         """
-        Specifies the name of an admin partition that the intention allows or denies traffic from.
+        Specifies the admin partition to apply the configuration entry.
         """
         return pulumi.get(self, "partition")
 

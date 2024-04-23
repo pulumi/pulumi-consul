@@ -248,7 +248,6 @@ class Node(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_consul as consul
@@ -257,7 +256,6 @@ class Node(pulumi.CustomResource):
             address="192.168.10.10",
             name="foobar")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -287,7 +285,6 @@ class Node(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_consul as consul
@@ -296,7 +293,6 @@ class Node(pulumi.CustomResource):
             address="192.168.10.10",
             name="foobar")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

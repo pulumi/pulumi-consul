@@ -35,14 +35,14 @@ public final class AclRoleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of node, workload identity or service.
+     * The name of the ACL role.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of node, workload identity or service.
+     * @return The name of the ACL role.
      * 
      */
     public Optional<Output<String>> name() {
@@ -192,7 +192,7 @@ public final class AclRoleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of node, workload identity or service.
+         * @param name The name of the ACL role.
          * 
          * @return builder
          * 
@@ -203,7 +203,7 @@ public final class AclRoleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of node, workload identity or service.
+         * @param name The name of the ACL role.
          * 
          * @return builder
          * 

@@ -106,7 +106,6 @@ class AdminPartition(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_consul as consul
@@ -115,7 +114,6 @@ class AdminPartition(pulumi.CustomResource):
             name="na-west",
             description="Partition for North America West")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -143,7 +141,6 @@ class AdminPartition(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_consul as consul
@@ -152,7 +149,6 @@ class AdminPartition(pulumi.CustomResource):
             name="na-west",
             description="Partition for North America West")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

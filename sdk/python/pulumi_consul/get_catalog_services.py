@@ -115,7 +115,6 @@ def get_catalog_services(query_options: Optional[Sequence[pulumi.InputType['GetC
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_consul as consul
@@ -129,7 +128,6 @@ def get_catalog_services(query_options: Optional[Sequence[pulumi.InputType['GetC
     app = example.index.Resource("app", description=std.join(separator= ,
         input=names).result)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[pulumi.InputType['GetCatalogServicesQueryOptionArgs']] query_options: See below.
@@ -163,7 +161,6 @@ def get_catalog_services_output(query_options: Optional[pulumi.Input[Optional[Se
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_consul as consul
@@ -177,7 +174,6 @@ def get_catalog_services_output(query_options: Optional[pulumi.Input[Optional[Se
     app = example.index.Resource("app", description=std.join(separator= ,
         input=names).result)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[pulumi.InputType['GetCatalogServicesQueryOptionArgs']] query_options: See below.

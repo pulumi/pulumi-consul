@@ -38,42 +38,42 @@ public class ConfigEntryServiceRouter extends com.pulumi.resources.CustomResourc
         return Codegen.optional(this.meta);
     }
     /**
-     * Specifies the name of the HTTP header to match.
+     * Specifies a name for the configuration entry.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Specifies the name of the HTTP header to match.
+     * @return Specifies a name for the configuration entry.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * Specifies the Consul namespace to resolve the service from instead of the current namespace.
+     * Specifies the namespace to apply the configuration entry.
      * 
      */
     @Export(name="namespace", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> namespace;
 
     /**
-     * @return Specifies the Consul namespace to resolve the service from instead of the current namespace.
+     * @return Specifies the namespace to apply the configuration entry.
      * 
      */
     public Output<Optional<String>> namespace() {
         return Codegen.optional(this.namespace);
     }
     /**
-     * Specifies the Consul admin partition to resolve the service from instead of the current partition.
+     * Specifies the admin partition to apply the configuration entry.
      * 
      */
     @Export(name="partition", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> partition;
 
     /**
-     * @return Specifies the Consul admin partition to resolve the service from instead of the current partition.
+     * @return Specifies the admin partition to apply the configuration entry.
      * 
      */
     public Output<Optional<String>> partition() {

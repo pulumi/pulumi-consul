@@ -192,14 +192,14 @@ public class ConfigEntryServiceDefaults extends com.pulumi.resources.CustomResou
         return Codegen.optional(this.maxInboundConnections);
     }
     /**
-     * Specifies the default mesh gateway mode field for all upstreams.
+     * Specifies the default mesh gateway mode field for the service.
      * 
      */
     @Export(name="meshGateways", refs={List.class,ConfigEntryServiceDefaultsMeshGateway.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ConfigEntryServiceDefaultsMeshGateway>> meshGateways;
 
     /**
-     * @return Specifies the default mesh gateway mode field for all upstreams.
+     * @return Specifies the default mesh gateway mode field for the service.
      * 
      */
     public Output<Optional<List<ConfigEntryServiceDefaultsMeshGateway>>> meshGateways() {
@@ -262,28 +262,28 @@ public class ConfigEntryServiceDefaults extends com.pulumi.resources.CustomResou
         return this.name;
     }
     /**
-     * Specifies the namespace containing the upstream service that the configuration applies to.
+     * Specifies the Consul namespace that the configuration entry applies to.
      * 
      */
     @Export(name="namespace", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> namespace;
 
     /**
-     * @return Specifies the namespace containing the upstream service that the configuration applies to.
+     * @return Specifies the Consul namespace that the configuration entry applies to.
      * 
      */
     public Output<Optional<String>> namespace() {
         return Codegen.optional(this.namespace);
     }
     /**
-     * Specifies the name of the name of the Consul admin partition that the configuration entry applies to.
+     * Specifies the name of the name of the Consul admin partition that the configuration entry applies to. Refer to Admin Partitions for additional information.
      * 
      */
     @Export(name="partition", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> partition;
 
     /**
-     * @return Specifies the name of the name of the Consul admin partition that the configuration entry applies to.
+     * @return Specifies the name of the name of the Consul admin partition that the configuration entry applies to. Refer to Admin Partitions for additional information.
      * 
      */
     public Output<Optional<String>> partition() {

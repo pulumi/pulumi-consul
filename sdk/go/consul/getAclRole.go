@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -40,7 +39,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupAclRole(ctx *pulumi.Context, args *LookupAclRoleArgs, opts ...pulumi.InvokeOption) (*LookupAclRoleResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAclRoleResult
@@ -53,6 +51,7 @@ func LookupAclRole(ctx *pulumi.Context, args *LookupAclRoleArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getAclRole.
 type LookupAclRoleArgs struct {
+	// The name of the ACL Role.
 	Name string `pulumi:"name"`
 	// The namespace to lookup the role.
 	Namespace *string `pulumi:"namespace"`
@@ -97,6 +96,7 @@ func LookupAclRoleOutput(ctx *pulumi.Context, args LookupAclRoleOutputArgs, opts
 
 // A collection of arguments for invoking getAclRole.
 type LookupAclRoleOutputArgs struct {
+	// The name of the ACL Role.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The namespace to lookup the role.
 	Namespace pulumi.StringPtrInput `pulumi:"namespace"`

@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
@@ -23,7 +22,6 @@ import * as utilities from "./utilities";
  * });
  * export const consulAclPolicies = test.then(test => test.policies);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAclToken(args: GetAclTokenArgs, opts?: pulumi.InvokeOptions): Promise<GetAclTokenResult> {
 
@@ -113,7 +111,6 @@ export interface GetAclTokenResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
@@ -123,7 +120,6 @@ export interface GetAclTokenResult {
  * });
  * export const consulAclPolicies = test.then(test => test.policies);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAclTokenOutput(args: GetAclTokenOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAclTokenResult> {
     return pulumi.output(args).apply((a: any) => getAclToken(a, opts))

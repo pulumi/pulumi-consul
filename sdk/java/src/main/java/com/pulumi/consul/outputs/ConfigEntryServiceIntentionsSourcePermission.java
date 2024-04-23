@@ -13,7 +13,7 @@ import java.util.Objects;
 @CustomType
 public final class ConfigEntryServiceIntentionsSourcePermission {
     /**
-     * @return Specifies the action to take when the source sends traffic to the destination service.
+     * @return Specifies the action to take when the source sends traffic to the destination service. The value is either allow or deny.
      * 
      */
     private String action;
@@ -25,7 +25,7 @@ public final class ConfigEntryServiceIntentionsSourcePermission {
 
     private ConfigEntryServiceIntentionsSourcePermission() {}
     /**
-     * @return Specifies the action to take when the source sends traffic to the destination service.
+     * @return Specifies the action to take when the source sends traffic to the destination service. The value is either allow or deny.
      * 
      */
     public String action() {

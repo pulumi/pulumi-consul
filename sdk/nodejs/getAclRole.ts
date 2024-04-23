@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
@@ -21,7 +20,6 @@ import * as utilities from "./utilities";
  * });
  * export const consulAclRole = test.then(test => test.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAclRole(args: GetAclRoleArgs, opts?: pulumi.InvokeOptions): Promise<GetAclRoleResult> {
 
@@ -37,6 +35,9 @@ export function getAclRole(args: GetAclRoleArgs, opts?: pulumi.InvokeOptions): P
  * A collection of arguments for invoking getAclRole.
  */
 export interface GetAclRoleArgs {
+    /**
+     * The name of the ACL Role.
+     */
     name: string;
     /**
      * The namespace to lookup the role.
@@ -94,7 +95,6 @@ export interface GetAclRoleResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
@@ -104,7 +104,6 @@ export interface GetAclRoleResult {
  * });
  * export const consulAclRole = test.then(test => test.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAclRoleOutput(args: GetAclRoleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAclRoleResult> {
     return pulumi.output(args).apply((a: any) => getAclRole(a, opts))
@@ -114,6 +113,9 @@ export function getAclRoleOutput(args: GetAclRoleOutputArgs, opts?: pulumi.Invok
  * A collection of arguments for invoking getAclRole.
  */
 export interface GetAclRoleOutputArgs {
+    /**
+     * The name of the ACL Role.
+     */
     name: pulumi.Input<string>;
     /**
      * The namespace to lookup the role.

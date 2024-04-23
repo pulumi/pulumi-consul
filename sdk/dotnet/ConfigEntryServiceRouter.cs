@@ -22,19 +22,19 @@ namespace Pulumi.Consul
         public Output<ImmutableDictionary<string, string>?> Meta { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the name of the HTTP header to match.
+        /// Specifies a name for the configuration entry.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the Consul namespace to resolve the service from instead of the current namespace.
+        /// Specifies the namespace to apply the configuration entry.
         /// </summary>
         [Output("namespace")]
         public Output<string?> Namespace { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the Consul admin partition to resolve the service from instead of the current partition.
+        /// Specifies the admin partition to apply the configuration entry.
         /// </summary>
         [Output("partition")]
         public Output<string?> Partition { get; private set; } = null!;
@@ -104,19 +104,19 @@ namespace Pulumi.Consul
         }
 
         /// <summary>
-        /// Specifies the name of the HTTP header to match.
+        /// Specifies a name for the configuration entry.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Specifies the Consul namespace to resolve the service from instead of the current namespace.
+        /// Specifies the namespace to apply the configuration entry.
         /// </summary>
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }
 
         /// <summary>
-        /// Specifies the Consul admin partition to resolve the service from instead of the current partition.
+        /// Specifies the admin partition to apply the configuration entry.
         /// </summary>
         [Input("partition")]
         public Input<string>? Partition { get; set; }
@@ -154,19 +154,19 @@ namespace Pulumi.Consul
         }
 
         /// <summary>
-        /// Specifies the name of the HTTP header to match.
+        /// Specifies a name for the configuration entry.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Specifies the Consul namespace to resolve the service from instead of the current namespace.
+        /// Specifies the namespace to apply the configuration entry.
         /// </summary>
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }
 
         /// <summary>
-        /// Specifies the Consul admin partition to resolve the service from instead of the current partition.
+        /// Specifies the admin partition to apply the configuration entry.
         /// </summary>
         [Input("partition")]
         public Input<string>? Partition { get; set; }

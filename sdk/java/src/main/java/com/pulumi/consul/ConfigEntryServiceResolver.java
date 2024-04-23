@@ -157,42 +157,42 @@ public class ConfigEntryServiceResolver extends com.pulumi.resources.CustomResou
         return Codegen.optional(this.meta);
     }
     /**
-     * Name of subset.
+     * Specifies a name for the configuration entry.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of subset.
+     * @return Specifies a name for the configuration entry.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * Specifies the namespace at the failover location where the failover services are deployed.
+     * Specifies the namespace that the service resolver applies to.
      * 
      */
     @Export(name="namespace", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> namespace;
 
     /**
-     * @return Specifies the namespace at the failover location where the failover services are deployed.
+     * @return Specifies the namespace that the service resolver applies to.
      * 
      */
     public Output<Optional<String>> namespace() {
         return Codegen.optional(this.namespace);
     }
     /**
-     * Specifies the admin partition within the same datacenter to use for the failover target. If empty, the default partition is used.
+     * Specifies the admin partition that the service resolver applies to.
      * 
      */
     @Export(name="partition", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> partition;
 
     /**
-     * @return Specifies the admin partition within the same datacenter to use for the failover target. If empty, the default partition is used.
+     * @return Specifies the admin partition that the service resolver applies to.
      * 
      */
     public Output<Optional<String>> partition() {

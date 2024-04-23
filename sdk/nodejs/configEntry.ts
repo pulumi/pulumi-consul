@@ -7,7 +7,6 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
@@ -109,11 +108,9 @@ import * as utilities from "./utilities";
  *     }),
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### `service-intentions` config entry
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
@@ -139,9 +136,7 @@ import * as utilities from "./utilities";
  *     }),
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
@@ -217,11 +212,9 @@ import * as utilities from "./utilities";
  *     }),
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### `exported-services` config entry
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
@@ -240,11 +233,9 @@ import * as utilities from "./utilities";
  *     }),
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### `mesh` config entry
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
@@ -260,11 +251,9 @@ import * as utilities from "./utilities";
  *     }),
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### `jwt-provider` config entry
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
@@ -287,7 +276,6 @@ import * as utilities from "./utilities";
  *     }),
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

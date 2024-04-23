@@ -20,7 +20,6 @@ namespace Pulumi.Consul
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -43,7 +42,6 @@ namespace Pulumi.Consul
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [ConsulResourceType("consul:index/agentService:AgentService")]
     public partial class AgentService : global::Pulumi.CustomResource

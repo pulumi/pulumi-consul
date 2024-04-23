@@ -22,7 +22,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -59,7 +58,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // Deprecated: getCatalogService has been deprecated in favor of getService
 func GetCatalogService(ctx *pulumi.Context, args *GetCatalogServiceArgs, opts ...pulumi.InvokeOption) (*GetCatalogServiceResult, error) {
@@ -79,9 +77,7 @@ type GetCatalogServiceArgs struct {
 	// empty, the `datacenter` value found in the Consul agent that this provider is
 	// configured to talk to.
 	Datacenter *string `pulumi:"datacenter"`
-	// A filter expression to refine the query, see https://www.consul.io/api-docs/features/filtering
-	// and https://www.consul.io/api-docs/catalog#filtering-1.
-	Filter *string `pulumi:"filter"`
+	Filter     *string `pulumi:"filter"`
 	// The service name to select.
 	Name string `pulumi:"name"`
 	// See below.
@@ -129,9 +125,7 @@ type GetCatalogServiceOutputArgs struct {
 	// empty, the `datacenter` value found in the Consul agent that this provider is
 	// configured to talk to.
 	Datacenter pulumi.StringPtrInput `pulumi:"datacenter"`
-	// A filter expression to refine the query, see https://www.consul.io/api-docs/features/filtering
-	// and https://www.consul.io/api-docs/catalog#filtering-1.
-	Filter pulumi.StringPtrInput `pulumi:"filter"`
+	Filter     pulumi.StringPtrInput `pulumi:"filter"`
 	// The service name to select.
 	Name pulumi.StringInput `pulumi:"name"`
 	// See below.

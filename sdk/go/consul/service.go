@@ -25,7 +25,6 @@ import (
 //
 // Creating a new node with the service:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -61,11 +60,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // Utilizing an existing known node:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -91,11 +88,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // Register a health-check:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -148,7 +143,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 type Service struct {
 	pulumi.CustomResourceState
 
@@ -163,7 +157,7 @@ type Service struct {
 	External pulumi.BoolPtrOutput `pulumi:"external"`
 	// A map of arbitrary KV metadata linked to the service instance.
 	Meta pulumi.StringMapOutput `pulumi:"meta"`
-	// The name of the header.
+	// The name of the service.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The namespace to create the service within.
 	Namespace pulumi.StringPtrOutput `pulumi:"namespace"`
@@ -223,7 +217,7 @@ type serviceState struct {
 	External *bool `pulumi:"external"`
 	// A map of arbitrary KV metadata linked to the service instance.
 	Meta map[string]string `pulumi:"meta"`
-	// The name of the header.
+	// The name of the service.
 	Name *string `pulumi:"name"`
 	// The namespace to create the service within.
 	Namespace *string `pulumi:"namespace"`
@@ -251,7 +245,7 @@ type ServiceState struct {
 	External pulumi.BoolPtrInput
 	// A map of arbitrary KV metadata linked to the service instance.
 	Meta pulumi.StringMapInput
-	// The name of the header.
+	// The name of the service.
 	Name pulumi.StringPtrInput
 	// The namespace to create the service within.
 	Namespace pulumi.StringPtrInput
@@ -283,7 +277,7 @@ type serviceArgs struct {
 	External *bool `pulumi:"external"`
 	// A map of arbitrary KV metadata linked to the service instance.
 	Meta map[string]string `pulumi:"meta"`
-	// The name of the header.
+	// The name of the service.
 	Name *string `pulumi:"name"`
 	// The namespace to create the service within.
 	Namespace *string `pulumi:"namespace"`
@@ -312,7 +306,7 @@ type ServiceArgs struct {
 	External pulumi.BoolPtrInput
 	// A map of arbitrary KV metadata linked to the service instance.
 	Meta pulumi.StringMapInput
-	// The name of the header.
+	// The name of the service.
 	Name pulumi.StringPtrInput
 	// The namespace to create the service within.
 	Namespace pulumi.StringPtrInput
@@ -444,7 +438,7 @@ func (o ServiceOutput) Meta() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringMapOutput { return v.Meta }).(pulumi.StringMapOutput)
 }
 
-// The name of the header.
+// The name of the service.
 func (o ServiceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

@@ -24,7 +24,7 @@ public final class ConfigEntryServiceIntentionsSourcePermissionHttpHeader {
      */
     private @Nullable Boolean invert;
     /**
-     * @return Specifies the name of a JWT provider defined in the Name field of the jwt-provider configuration entry.
+     * @return Specifies the name of the header to match.
      * 
      */
     private String name;
@@ -65,7 +65,7 @@ public final class ConfigEntryServiceIntentionsSourcePermissionHttpHeader {
         return Optional.ofNullable(this.invert);
     }
     /**
-     * @return Specifies the name of a JWT provider defined in the Name field of the jwt-provider configuration entry.
+     * @return Specifies the name of the header to match.
      * 
      */
     public String name() {

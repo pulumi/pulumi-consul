@@ -13,7 +13,6 @@ import (
 
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -70,7 +69,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 type ConfigEntryServiceResolver struct {
 	pulumi.CustomResourceState
 
@@ -84,11 +82,11 @@ type ConfigEntryServiceResolver struct {
 	LoadBalancers ConfigEntryServiceResolverLoadBalancerArrayOutput `pulumi:"loadBalancers"`
 	// Specifies key-value pairs to add to the KV store.
 	Meta pulumi.StringMapOutput `pulumi:"meta"`
-	// Name of subset.
+	// Specifies a name for the configuration entry.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Specifies the namespace at the failover location where the failover services are deployed.
+	// Specifies the namespace that the service resolver applies to.
 	Namespace pulumi.StringPtrOutput `pulumi:"namespace"`
-	// Specifies the admin partition within the same datacenter to use for the failover target. If empty, the default partition is used.
+	// Specifies the admin partition that the service resolver applies to.
 	Partition pulumi.StringPtrOutput `pulumi:"partition"`
 	// Specifies redirect instructions for local service traffic so that services deployed to a different network location resolve the upstream request instead.
 	Redirects ConfigEntryServiceResolverRedirectArrayOutput `pulumi:"redirects"`
@@ -138,11 +136,11 @@ type configEntryServiceResolverState struct {
 	LoadBalancers []ConfigEntryServiceResolverLoadBalancer `pulumi:"loadBalancers"`
 	// Specifies key-value pairs to add to the KV store.
 	Meta map[string]string `pulumi:"meta"`
-	// Name of subset.
+	// Specifies a name for the configuration entry.
 	Name *string `pulumi:"name"`
-	// Specifies the namespace at the failover location where the failover services are deployed.
+	// Specifies the namespace that the service resolver applies to.
 	Namespace *string `pulumi:"namespace"`
-	// Specifies the admin partition within the same datacenter to use for the failover target. If empty, the default partition is used.
+	// Specifies the admin partition that the service resolver applies to.
 	Partition *string `pulumi:"partition"`
 	// Specifies redirect instructions for local service traffic so that services deployed to a different network location resolve the upstream request instead.
 	Redirects []ConfigEntryServiceResolverRedirect `pulumi:"redirects"`
@@ -163,11 +161,11 @@ type ConfigEntryServiceResolverState struct {
 	LoadBalancers ConfigEntryServiceResolverLoadBalancerArrayInput
 	// Specifies key-value pairs to add to the KV store.
 	Meta pulumi.StringMapInput
-	// Name of subset.
+	// Specifies a name for the configuration entry.
 	Name pulumi.StringPtrInput
-	// Specifies the namespace at the failover location where the failover services are deployed.
+	// Specifies the namespace that the service resolver applies to.
 	Namespace pulumi.StringPtrInput
-	// Specifies the admin partition within the same datacenter to use for the failover target. If empty, the default partition is used.
+	// Specifies the admin partition that the service resolver applies to.
 	Partition pulumi.StringPtrInput
 	// Specifies redirect instructions for local service traffic so that services deployed to a different network location resolve the upstream request instead.
 	Redirects ConfigEntryServiceResolverRedirectArrayInput
@@ -192,11 +190,11 @@ type configEntryServiceResolverArgs struct {
 	LoadBalancers []ConfigEntryServiceResolverLoadBalancer `pulumi:"loadBalancers"`
 	// Specifies key-value pairs to add to the KV store.
 	Meta map[string]string `pulumi:"meta"`
-	// Name of subset.
+	// Specifies a name for the configuration entry.
 	Name *string `pulumi:"name"`
-	// Specifies the namespace at the failover location where the failover services are deployed.
+	// Specifies the namespace that the service resolver applies to.
 	Namespace *string `pulumi:"namespace"`
-	// Specifies the admin partition within the same datacenter to use for the failover target. If empty, the default partition is used.
+	// Specifies the admin partition that the service resolver applies to.
 	Partition *string `pulumi:"partition"`
 	// Specifies redirect instructions for local service traffic so that services deployed to a different network location resolve the upstream request instead.
 	Redirects []ConfigEntryServiceResolverRedirect `pulumi:"redirects"`
@@ -218,11 +216,11 @@ type ConfigEntryServiceResolverArgs struct {
 	LoadBalancers ConfigEntryServiceResolverLoadBalancerArrayInput
 	// Specifies key-value pairs to add to the KV store.
 	Meta pulumi.StringMapInput
-	// Name of subset.
+	// Specifies a name for the configuration entry.
 	Name pulumi.StringPtrInput
-	// Specifies the namespace at the failover location where the failover services are deployed.
+	// Specifies the namespace that the service resolver applies to.
 	Namespace pulumi.StringPtrInput
-	// Specifies the admin partition within the same datacenter to use for the failover target. If empty, the default partition is used.
+	// Specifies the admin partition that the service resolver applies to.
 	Partition pulumi.StringPtrInput
 	// Specifies redirect instructions for local service traffic so that services deployed to a different network location resolve the upstream request instead.
 	Redirects ConfigEntryServiceResolverRedirectArrayInput
@@ -346,17 +344,17 @@ func (o ConfigEntryServiceResolverOutput) Meta() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ConfigEntryServiceResolver) pulumi.StringMapOutput { return v.Meta }).(pulumi.StringMapOutput)
 }
 
-// Name of subset.
+// Specifies a name for the configuration entry.
 func (o ConfigEntryServiceResolverOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConfigEntryServiceResolver) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the namespace at the failover location where the failover services are deployed.
+// Specifies the namespace that the service resolver applies to.
 func (o ConfigEntryServiceResolverOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConfigEntryServiceResolver) pulumi.StringPtrOutput { return v.Namespace }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the admin partition within the same datacenter to use for the failover target. If empty, the default partition is used.
+// Specifies the admin partition that the service resolver applies to.
 func (o ConfigEntryServiceResolverOutput) Partition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConfigEntryServiceResolver) pulumi.StringPtrOutput { return v.Partition }).(pulumi.StringPtrOutput)
 }

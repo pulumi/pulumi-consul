@@ -27,7 +27,7 @@ class AclRoleArgs:
         """
         The set of arguments for constructing a AclRole resource.
         :param pulumi.Input[str] description: A free form human readable description of the role.
-        :param pulumi.Input[str] name: The name of node, workload identity or service.
+        :param pulumi.Input[str] name: The name of the ACL role.
         :param pulumi.Input[str] namespace: The namespace to create the role within.
         :param pulumi.Input[Sequence[pulumi.Input['AclRoleNodeIdentityArgs']]] node_identities: The list of node identities that should be applied to the role.
         :param pulumi.Input[str] partition: The partition the ACL role is associated with.
@@ -68,7 +68,7 @@ class AclRoleArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of node, workload identity or service.
+        The name of the ACL role.
         """
         return pulumi.get(self, "name")
 
@@ -163,7 +163,7 @@ class _AclRoleState:
         """
         Input properties used for looking up and filtering AclRole resources.
         :param pulumi.Input[str] description: A free form human readable description of the role.
-        :param pulumi.Input[str] name: The name of node, workload identity or service.
+        :param pulumi.Input[str] name: The name of the ACL role.
         :param pulumi.Input[str] namespace: The namespace to create the role within.
         :param pulumi.Input[Sequence[pulumi.Input['AclRoleNodeIdentityArgs']]] node_identities: The list of node identities that should be applied to the role.
         :param pulumi.Input[str] partition: The partition the ACL role is associated with.
@@ -204,7 +204,7 @@ class _AclRoleState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of node, workload identity or service.
+        The name of the ACL role.
         """
         return pulumi.get(self, "name")
 
@@ -302,7 +302,6 @@ class AclRole(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_consul as consul
@@ -319,7 +318,6 @@ class AclRole(pulumi.CustomResource):
                 service_name="foo",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -330,7 +328,7 @@ class AclRole(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A free form human readable description of the role.
-        :param pulumi.Input[str] name: The name of node, workload identity or service.
+        :param pulumi.Input[str] name: The name of the ACL role.
         :param pulumi.Input[str] namespace: The namespace to create the role within.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclRoleNodeIdentityArgs']]]] node_identities: The list of node identities that should be applied to the role.
         :param pulumi.Input[str] partition: The partition the ACL role is associated with.
@@ -347,7 +345,6 @@ class AclRole(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_consul as consul
@@ -364,7 +361,6 @@ class AclRole(pulumi.CustomResource):
                 service_name="foo",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -438,7 +434,7 @@ class AclRole(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A free form human readable description of the role.
-        :param pulumi.Input[str] name: The name of node, workload identity or service.
+        :param pulumi.Input[str] name: The name of the ACL role.
         :param pulumi.Input[str] namespace: The namespace to create the role within.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclRoleNodeIdentityArgs']]]] node_identities: The list of node identities that should be applied to the role.
         :param pulumi.Input[str] partition: The partition the ACL role is associated with.
@@ -472,7 +468,7 @@ class AclRole(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of node, workload identity or service.
+        The name of the ACL role.
         """
         return pulumi.get(self, "name")
 
