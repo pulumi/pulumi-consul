@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
@@ -56,7 +55,6 @@ import * as utilities from "./utilities";
  *     ],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export class ConfigEntryServiceIntentions extends pulumi.CustomResource {
     /**
@@ -95,15 +93,15 @@ export class ConfigEntryServiceIntentions extends pulumi.CustomResource {
      */
     public readonly meta!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Specifies the name of a JWT provider defined in the Name field of the jwt-provider configuration entry.
+     * Specifies a name of the destination service for all intentions defined in the configuration entry.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Specifies the traffic source namespace that the intention allows or denies traffic from.
+     * Specifies the namespace to apply the configuration entry.
      */
     public readonly namespace!: pulumi.Output<string | undefined>;
     /**
-     * Specifies the name of an admin partition that the intention allows or denies traffic from.
+     * Specifies the admin partition to apply the configuration entry.
      */
     public readonly partition!: pulumi.Output<string | undefined>;
     /**
@@ -157,15 +155,15 @@ export interface ConfigEntryServiceIntentionsState {
      */
     meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Specifies the name of a JWT provider defined in the Name field of the jwt-provider configuration entry.
+     * Specifies a name of the destination service for all intentions defined in the configuration entry.
      */
     name?: pulumi.Input<string>;
     /**
-     * Specifies the traffic source namespace that the intention allows or denies traffic from.
+     * Specifies the namespace to apply the configuration entry.
      */
     namespace?: pulumi.Input<string>;
     /**
-     * Specifies the name of an admin partition that the intention allows or denies traffic from.
+     * Specifies the admin partition to apply the configuration entry.
      */
     partition?: pulumi.Input<string>;
     /**
@@ -187,15 +185,15 @@ export interface ConfigEntryServiceIntentionsArgs {
      */
     meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Specifies the name of a JWT provider defined in the Name field of the jwt-provider configuration entry.
+     * Specifies a name of the destination service for all intentions defined in the configuration entry.
      */
     name?: pulumi.Input<string>;
     /**
-     * Specifies the traffic source namespace that the intention allows or denies traffic from.
+     * Specifies the namespace to apply the configuration entry.
      */
     namespace?: pulumi.Input<string>;
     /**
-     * Specifies the name of an admin partition that the intention allows or denies traffic from.
+     * Specifies the admin partition to apply the configuration entry.
      */
     partition?: pulumi.Input<string>;
     /**

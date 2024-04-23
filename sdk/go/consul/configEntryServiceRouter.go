@@ -17,11 +17,11 @@ type ConfigEntryServiceRouter struct {
 
 	// Specifies key-value pairs to add to the KV store.
 	Meta pulumi.StringMapOutput `pulumi:"meta"`
-	// Specifies the name of the HTTP header to match.
+	// Specifies a name for the configuration entry.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Specifies the Consul namespace to resolve the service from instead of the current namespace.
+	// Specifies the namespace to apply the configuration entry.
 	Namespace pulumi.StringPtrOutput `pulumi:"namespace"`
-	// Specifies the Consul admin partition to resolve the service from instead of the current partition.
+	// Specifies the admin partition to apply the configuration entry.
 	Partition pulumi.StringPtrOutput `pulumi:"partition"`
 	// Defines the possible routes for L7 requests.
 	Routes ConfigEntryServiceRouterRouteArrayOutput `pulumi:"routes"`
@@ -59,11 +59,11 @@ func GetConfigEntryServiceRouter(ctx *pulumi.Context,
 type configEntryServiceRouterState struct {
 	// Specifies key-value pairs to add to the KV store.
 	Meta map[string]string `pulumi:"meta"`
-	// Specifies the name of the HTTP header to match.
+	// Specifies a name for the configuration entry.
 	Name *string `pulumi:"name"`
-	// Specifies the Consul namespace to resolve the service from instead of the current namespace.
+	// Specifies the namespace to apply the configuration entry.
 	Namespace *string `pulumi:"namespace"`
-	// Specifies the Consul admin partition to resolve the service from instead of the current partition.
+	// Specifies the admin partition to apply the configuration entry.
 	Partition *string `pulumi:"partition"`
 	// Defines the possible routes for L7 requests.
 	Routes []ConfigEntryServiceRouterRoute `pulumi:"routes"`
@@ -72,11 +72,11 @@ type configEntryServiceRouterState struct {
 type ConfigEntryServiceRouterState struct {
 	// Specifies key-value pairs to add to the KV store.
 	Meta pulumi.StringMapInput
-	// Specifies the name of the HTTP header to match.
+	// Specifies a name for the configuration entry.
 	Name pulumi.StringPtrInput
-	// Specifies the Consul namespace to resolve the service from instead of the current namespace.
+	// Specifies the namespace to apply the configuration entry.
 	Namespace pulumi.StringPtrInput
-	// Specifies the Consul admin partition to resolve the service from instead of the current partition.
+	// Specifies the admin partition to apply the configuration entry.
 	Partition pulumi.StringPtrInput
 	// Defines the possible routes for L7 requests.
 	Routes ConfigEntryServiceRouterRouteArrayInput
@@ -89,11 +89,11 @@ func (ConfigEntryServiceRouterState) ElementType() reflect.Type {
 type configEntryServiceRouterArgs struct {
 	// Specifies key-value pairs to add to the KV store.
 	Meta map[string]string `pulumi:"meta"`
-	// Specifies the name of the HTTP header to match.
+	// Specifies a name for the configuration entry.
 	Name *string `pulumi:"name"`
-	// Specifies the Consul namespace to resolve the service from instead of the current namespace.
+	// Specifies the namespace to apply the configuration entry.
 	Namespace *string `pulumi:"namespace"`
-	// Specifies the Consul admin partition to resolve the service from instead of the current partition.
+	// Specifies the admin partition to apply the configuration entry.
 	Partition *string `pulumi:"partition"`
 	// Defines the possible routes for L7 requests.
 	Routes []ConfigEntryServiceRouterRoute `pulumi:"routes"`
@@ -103,11 +103,11 @@ type configEntryServiceRouterArgs struct {
 type ConfigEntryServiceRouterArgs struct {
 	// Specifies key-value pairs to add to the KV store.
 	Meta pulumi.StringMapInput
-	// Specifies the name of the HTTP header to match.
+	// Specifies a name for the configuration entry.
 	Name pulumi.StringPtrInput
-	// Specifies the Consul namespace to resolve the service from instead of the current namespace.
+	// Specifies the namespace to apply the configuration entry.
 	Namespace pulumi.StringPtrInput
-	// Specifies the Consul admin partition to resolve the service from instead of the current partition.
+	// Specifies the admin partition to apply the configuration entry.
 	Partition pulumi.StringPtrInput
 	// Defines the possible routes for L7 requests.
 	Routes ConfigEntryServiceRouterRouteArrayInput
@@ -205,17 +205,17 @@ func (o ConfigEntryServiceRouterOutput) Meta() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ConfigEntryServiceRouter) pulumi.StringMapOutput { return v.Meta }).(pulumi.StringMapOutput)
 }
 
-// Specifies the name of the HTTP header to match.
+// Specifies a name for the configuration entry.
 func (o ConfigEntryServiceRouterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConfigEntryServiceRouter) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the Consul namespace to resolve the service from instead of the current namespace.
+// Specifies the namespace to apply the configuration entry.
 func (o ConfigEntryServiceRouterOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConfigEntryServiceRouter) pulumi.StringPtrOutput { return v.Namespace }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the Consul admin partition to resolve the service from instead of the current partition.
+// Specifies the admin partition to apply the configuration entry.
 func (o ConfigEntryServiceRouterOutput) Partition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConfigEntryServiceRouter) pulumi.StringPtrOutput { return v.Partition }).(pulumi.StringPtrOutput)
 }

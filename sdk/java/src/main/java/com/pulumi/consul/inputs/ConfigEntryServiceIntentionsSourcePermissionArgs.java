@@ -17,14 +17,14 @@ public final class ConfigEntryServiceIntentionsSourcePermissionArgs extends com.
     public static final ConfigEntryServiceIntentionsSourcePermissionArgs Empty = new ConfigEntryServiceIntentionsSourcePermissionArgs();
 
     /**
-     * Specifies the action to take when the source sends traffic to the destination service.
+     * Specifies the action to take when the source sends traffic to the destination service. The value is either allow or deny.
      * 
      */
     @Import(name="action", required=true)
     private Output<String> action;
 
     /**
-     * @return Specifies the action to take when the source sends traffic to the destination service.
+     * @return Specifies the action to take when the source sends traffic to the destination service. The value is either allow or deny.
      * 
      */
     public Output<String> action() {
@@ -72,7 +72,7 @@ public final class ConfigEntryServiceIntentionsSourcePermissionArgs extends com.
         }
 
         /**
-         * @param action Specifies the action to take when the source sends traffic to the destination service.
+         * @param action Specifies the action to take when the source sends traffic to the destination service. The value is either allow or deny.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class ConfigEntryServiceIntentionsSourcePermissionArgs extends com.
         }
 
         /**
-         * @param action Specifies the action to take when the source sends traffic to the destination service.
+         * @param action Specifies the action to take when the source sends traffic to the destination service. The value is either allow or deny.
          * 
          * @return builder
          * 

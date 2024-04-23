@@ -13,7 +13,7 @@ namespace Pulumi.Consul.Inputs
     public sealed class ConfigEntryServiceIntentionsSourcePermissionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies the action to take when the source sends traffic to the destination service.
+        /// Specifies the action to take when the source sends traffic to the destination service. The value is either allow or deny.
         /// </summary>
         [Input("action", required: true)]
         public Input<string> Action { get; set; } = null!;

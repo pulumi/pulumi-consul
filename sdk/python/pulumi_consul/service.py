@@ -36,7 +36,7 @@ class ServiceArgs:
         :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
         :param pulumi.Input[bool] enable_tag_override: Specifies to disable the anti-entropy feature for this service's tags. Defaults to `false`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: A map of arbitrary KV metadata linked to the service instance.
-        :param pulumi.Input[str] name: The name of the header.
+        :param pulumi.Input[str] name: The name of the service.
         :param pulumi.Input[str] namespace: The namespace to create the service within.
         :param pulumi.Input[str] partition: The partition the service is associated with.
         :param pulumi.Input[int] port: The port of the service.
@@ -157,7 +157,7 @@ class ServiceArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the header.
+        The name of the service.
         """
         return pulumi.get(self, "name")
 
@@ -248,7 +248,7 @@ class _ServiceState:
         :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
         :param pulumi.Input[bool] enable_tag_override: Specifies to disable the anti-entropy feature for this service's tags. Defaults to `false`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: A map of arbitrary KV metadata linked to the service instance.
-        :param pulumi.Input[str] name: The name of the header.
+        :param pulumi.Input[str] name: The name of the service.
         :param pulumi.Input[str] namespace: The namespace to create the service within.
         :param pulumi.Input[str] node: The name of the node the to register the service on.
         :param pulumi.Input[str] partition: The partition the service is associated with.
@@ -359,7 +359,7 @@ class _ServiceState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the header.
+        The name of the service.
         """
         return pulumi.get(self, "name")
 
@@ -473,7 +473,6 @@ class Service(pulumi.CustomResource):
 
         Creating a new node with the service:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_consul as consul
@@ -487,11 +486,9 @@ class Service(pulumi.CustomResource):
             port=80,
             tags=["tag0"])
         ```
-        <!--End PulumiCodeChooser -->
 
         Utilizing an existing known node:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_consul as consul
@@ -501,11 +498,9 @@ class Service(pulumi.CustomResource):
             node="google",
             port=443)
         ```
-        <!--End PulumiCodeChooser -->
 
         Register a health-check:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_consul as consul
@@ -536,7 +531,6 @@ class Service(pulumi.CustomResource):
                 ],
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -544,7 +538,7 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
         :param pulumi.Input[bool] enable_tag_override: Specifies to disable the anti-entropy feature for this service's tags. Defaults to `false`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: A map of arbitrary KV metadata linked to the service instance.
-        :param pulumi.Input[str] name: The name of the header.
+        :param pulumi.Input[str] name: The name of the service.
         :param pulumi.Input[str] namespace: The namespace to create the service within.
         :param pulumi.Input[str] node: The name of the node the to register the service on.
         :param pulumi.Input[str] partition: The partition the service is associated with.
@@ -572,7 +566,6 @@ class Service(pulumi.CustomResource):
 
         Creating a new node with the service:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_consul as consul
@@ -586,11 +579,9 @@ class Service(pulumi.CustomResource):
             port=80,
             tags=["tag0"])
         ```
-        <!--End PulumiCodeChooser -->
 
         Utilizing an existing known node:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_consul as consul
@@ -600,11 +591,9 @@ class Service(pulumi.CustomResource):
             node="google",
             port=443)
         ```
-        <!--End PulumiCodeChooser -->
 
         Register a health-check:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_consul as consul
@@ -635,7 +624,6 @@ class Service(pulumi.CustomResource):
                 ],
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param ServiceArgs args: The arguments to use to populate this resource's properties.
@@ -723,7 +711,7 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
         :param pulumi.Input[bool] enable_tag_override: Specifies to disable the anti-entropy feature for this service's tags. Defaults to `false`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: A map of arbitrary KV metadata linked to the service instance.
-        :param pulumi.Input[str] name: The name of the header.
+        :param pulumi.Input[str] name: The name of the service.
         :param pulumi.Input[str] namespace: The namespace to create the service within.
         :param pulumi.Input[str] node: The name of the node the to register the service on.
         :param pulumi.Input[str] partition: The partition the service is associated with.
@@ -799,7 +787,7 @@ class Service(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the header.
+        The name of the service.
         """
         return pulumi.get(self, "name")
 

@@ -26,8 +26,8 @@ class ConfigEntryServiceSplitterArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceSplitterSplitArgs']]] splits: Defines how much traffic to send to sets of service instances during a traffic split.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: Specifies key-value pairs to add to the KV store.
         :param pulumi.Input[str] name: Specifies a name for the configuration entry.
-        :param pulumi.Input[str] namespace: Specifies the namespace to use in the FQDN when resolving the service.
-        :param pulumi.Input[str] partition: Specifies the admin partition to use in the FQDN when resolving the service.
+        :param pulumi.Input[str] namespace: Specifies the namespace to apply the configuration entry.
+        :param pulumi.Input[str] partition: Specifies the admin partition to apply the configuration entry.
         """
         pulumi.set(__self__, "splits", splits)
         if meta is not None:
@@ -79,7 +79,7 @@ class ConfigEntryServiceSplitterArgs:
     @pulumi.getter
     def namespace(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the namespace to use in the FQDN when resolving the service.
+        Specifies the namespace to apply the configuration entry.
         """
         return pulumi.get(self, "namespace")
 
@@ -91,7 +91,7 @@ class ConfigEntryServiceSplitterArgs:
     @pulumi.getter
     def partition(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the admin partition to use in the FQDN when resolving the service.
+        Specifies the admin partition to apply the configuration entry.
         """
         return pulumi.get(self, "partition")
 
@@ -112,8 +112,8 @@ class _ConfigEntryServiceSplitterState:
         Input properties used for looking up and filtering ConfigEntryServiceSplitter resources.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: Specifies key-value pairs to add to the KV store.
         :param pulumi.Input[str] name: Specifies a name for the configuration entry.
-        :param pulumi.Input[str] namespace: Specifies the namespace to use in the FQDN when resolving the service.
-        :param pulumi.Input[str] partition: Specifies the admin partition to use in the FQDN when resolving the service.
+        :param pulumi.Input[str] namespace: Specifies the namespace to apply the configuration entry.
+        :param pulumi.Input[str] partition: Specifies the admin partition to apply the configuration entry.
         :param pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceSplitterSplitArgs']]] splits: Defines how much traffic to send to sets of service instances during a traffic split.
         """
         if meta is not None:
@@ -155,7 +155,7 @@ class _ConfigEntryServiceSplitterState:
     @pulumi.getter
     def namespace(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the namespace to use in the FQDN when resolving the service.
+        Specifies the namespace to apply the configuration entry.
         """
         return pulumi.get(self, "namespace")
 
@@ -167,7 +167,7 @@ class _ConfigEntryServiceSplitterState:
     @pulumi.getter
     def partition(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the admin partition to use in the FQDN when resolving the service.
+        Specifies the admin partition to apply the configuration entry.
         """
         return pulumi.get(self, "partition")
 
@@ -202,7 +202,6 @@ class ConfigEntryServiceSplitter(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -273,7 +272,6 @@ class ConfigEntryServiceSplitter(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -285,8 +283,8 @@ class ConfigEntryServiceSplitter(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: Specifies key-value pairs to add to the KV store.
         :param pulumi.Input[str] name: Specifies a name for the configuration entry.
-        :param pulumi.Input[str] namespace: Specifies the namespace to use in the FQDN when resolving the service.
-        :param pulumi.Input[str] partition: Specifies the admin partition to use in the FQDN when resolving the service.
+        :param pulumi.Input[str] namespace: Specifies the namespace to apply the configuration entry.
+        :param pulumi.Input[str] partition: Specifies the admin partition to apply the configuration entry.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceSplitterSplitArgs']]]] splits: Defines how much traffic to send to sets of service instances during a traffic split.
         """
         ...
@@ -298,7 +296,6 @@ class ConfigEntryServiceSplitter(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -369,7 +366,6 @@ class ConfigEntryServiceSplitter(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -437,8 +433,8 @@ class ConfigEntryServiceSplitter(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: Specifies key-value pairs to add to the KV store.
         :param pulumi.Input[str] name: Specifies a name for the configuration entry.
-        :param pulumi.Input[str] namespace: Specifies the namespace to use in the FQDN when resolving the service.
-        :param pulumi.Input[str] partition: Specifies the admin partition to use in the FQDN when resolving the service.
+        :param pulumi.Input[str] namespace: Specifies the namespace to apply the configuration entry.
+        :param pulumi.Input[str] partition: Specifies the admin partition to apply the configuration entry.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceSplitterSplitArgs']]]] splits: Defines how much traffic to send to sets of service instances during a traffic split.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -472,7 +468,7 @@ class ConfigEntryServiceSplitter(pulumi.CustomResource):
     @pulumi.getter
     def namespace(self) -> pulumi.Output[Optional[str]]:
         """
-        Specifies the namespace to use in the FQDN when resolving the service.
+        Specifies the namespace to apply the configuration entry.
         """
         return pulumi.get(self, "namespace")
 
@@ -480,7 +476,7 @@ class ConfigEntryServiceSplitter(pulumi.CustomResource):
     @pulumi.getter
     def partition(self) -> pulumi.Output[Optional[str]]:
         """
-        Specifies the admin partition to use in the FQDN when resolving the service.
+        Specifies the admin partition to apply the configuration entry.
         """
         return pulumi.get(self, "partition")
 

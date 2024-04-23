@@ -34,14 +34,14 @@ public final class ConfigEntryServiceRouterState extends com.pulumi.resources.Re
     }
 
     /**
-     * Specifies the name of the HTTP header to match.
+     * Specifies a name for the configuration entry.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Specifies the name of the HTTP header to match.
+     * @return Specifies a name for the configuration entry.
      * 
      */
     public Optional<Output<String>> name() {
@@ -49,14 +49,14 @@ public final class ConfigEntryServiceRouterState extends com.pulumi.resources.Re
     }
 
     /**
-     * Specifies the Consul namespace to resolve the service from instead of the current namespace.
+     * Specifies the namespace to apply the configuration entry.
      * 
      */
     @Import(name="namespace")
     private @Nullable Output<String> namespace;
 
     /**
-     * @return Specifies the Consul namespace to resolve the service from instead of the current namespace.
+     * @return Specifies the namespace to apply the configuration entry.
      * 
      */
     public Optional<Output<String>> namespace() {
@@ -64,14 +64,14 @@ public final class ConfigEntryServiceRouterState extends com.pulumi.resources.Re
     }
 
     /**
-     * Specifies the Consul admin partition to resolve the service from instead of the current partition.
+     * Specifies the admin partition to apply the configuration entry.
      * 
      */
     @Import(name="partition")
     private @Nullable Output<String> partition;
 
     /**
-     * @return Specifies the Consul admin partition to resolve the service from instead of the current partition.
+     * @return Specifies the admin partition to apply the configuration entry.
      * 
      */
     public Optional<Output<String>> partition() {
@@ -143,7 +143,7 @@ public final class ConfigEntryServiceRouterState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param name Specifies the name of the HTTP header to match.
+         * @param name Specifies a name for the configuration entry.
          * 
          * @return builder
          * 
@@ -154,7 +154,7 @@ public final class ConfigEntryServiceRouterState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param name Specifies the name of the HTTP header to match.
+         * @param name Specifies a name for the configuration entry.
          * 
          * @return builder
          * 
@@ -164,7 +164,7 @@ public final class ConfigEntryServiceRouterState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param namespace Specifies the Consul namespace to resolve the service from instead of the current namespace.
+         * @param namespace Specifies the namespace to apply the configuration entry.
          * 
          * @return builder
          * 
@@ -175,7 +175,7 @@ public final class ConfigEntryServiceRouterState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param namespace Specifies the Consul namespace to resolve the service from instead of the current namespace.
+         * @param namespace Specifies the namespace to apply the configuration entry.
          * 
          * @return builder
          * 
@@ -185,7 +185,7 @@ public final class ConfigEntryServiceRouterState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param partition Specifies the Consul admin partition to resolve the service from instead of the current partition.
+         * @param partition Specifies the admin partition to apply the configuration entry.
          * 
          * @return builder
          * 
@@ -196,7 +196,7 @@ public final class ConfigEntryServiceRouterState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param partition Specifies the Consul admin partition to resolve the service from instead of the current partition.
+         * @param partition Specifies the admin partition to apply the configuration entry.
          * 
          * @return builder
          * 

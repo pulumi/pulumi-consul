@@ -1664,7 +1664,7 @@ class ConfigEntryServiceIntentionsSourcePermission(dict):
                  action: str,
                  https: Sequence['outputs.ConfigEntryServiceIntentionsSourcePermissionHttp']):
         """
-        :param str action: Specifies the action to take when the source sends traffic to the destination service.
+        :param str action: Specifies the action to take when the source sends traffic to the destination service. The value is either allow or deny.
         :param Sequence['ConfigEntryServiceIntentionsSourcePermissionHttpArgs'] https: Specifies a set of HTTP-specific match criteria.
         """
         pulumi.set(__self__, "action", action)
@@ -1674,7 +1674,7 @@ class ConfigEntryServiceIntentionsSourcePermission(dict):
     @pulumi.getter
     def action(self) -> str:
         """
-        Specifies the action to take when the source sends traffic to the destination service.
+        Specifies the action to take when the source sends traffic to the destination service. The value is either allow or deny.
         """
         return pulumi.get(self, "action")
 
@@ -1786,7 +1786,7 @@ class ConfigEntryServiceIntentionsSourcePermissionHttpHeader(dict):
                  regex: Optional[str] = None,
                  suffix: Optional[str] = None):
         """
-        :param str name: Specifies the name of a JWT provider defined in the Name field of the jwt-provider configuration entry.
+        :param str name: Specifies the name of the header to match.
         :param str exact: Specifies a value for the header key set in the Name field. If the request header value matches the Exact value, Consul applies the permission.
         :param bool invert: Inverts the matching logic configured in the Header.
         :param str prefix: Specifies a prefix value for the header key set in the Name field.
@@ -1812,7 +1812,7 @@ class ConfigEntryServiceIntentionsSourcePermissionHttpHeader(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Specifies the name of a JWT provider defined in the Name field of the jwt-provider configuration entry.
+        Specifies the name of the header to match.
         """
         return pulumi.get(self, "name")
 
@@ -2004,11 +2004,11 @@ class ConfigEntryServiceResolverFailoverTarget(dict):
                  service_subset: Optional[str] = None):
         """
         :param str datacenter: Specifies the WAN federated datacenter to use for the failover target. If empty, the current datacenter is used.
-        :param str namespace: Specifies the namespace at the failover location where the failover services are deployed.
+        :param str namespace: Specifies the namespace to use for the failover target. If empty, the default namespace is used.
         :param str partition: Specifies the admin partition within the same datacenter to use for the failover target. If empty, the default partition is used.
         :param str peer: Specifies the destination cluster peer to resolve the target service name from.
-        :param str service: Specifies the name of the service to resolve at the failover location during a failover scenario.
-        :param str service_subset: Specifies the name of a subset of service instances to resolve at the failover location during a failover scenario.
+        :param str service: Specifies the service name to use for the failover target. If empty, the current service name is used.
+        :param str service_subset: Specifies the named subset to use for the failover target. If empty, the default subset for the requested service name is used.
         """
         if datacenter is not None:
             pulumi.set(__self__, "datacenter", datacenter)
@@ -2035,7 +2035,7 @@ class ConfigEntryServiceResolverFailoverTarget(dict):
     @pulumi.getter
     def namespace(self) -> Optional[str]:
         """
-        Specifies the namespace at the failover location where the failover services are deployed.
+        Specifies the namespace to use for the failover target. If empty, the default namespace is used.
         """
         return pulumi.get(self, "namespace")
 
@@ -2059,7 +2059,7 @@ class ConfigEntryServiceResolverFailoverTarget(dict):
     @pulumi.getter
     def service(self) -> Optional[str]:
         """
-        Specifies the name of the service to resolve at the failover location during a failover scenario.
+        Specifies the service name to use for the failover target. If empty, the current service name is used.
         """
         return pulumi.get(self, "service")
 
@@ -2067,7 +2067,7 @@ class ConfigEntryServiceResolverFailoverTarget(dict):
     @pulumi.getter(name="serviceSubset")
     def service_subset(self) -> Optional[str]:
         """
-        Specifies the name of a subset of service instances to resolve at the failover location during a failover scenario.
+        Specifies the named subset to use for the failover target. If empty, the default subset for the requested service name is used.
         """
         return pulumi.get(self, "service_subset")
 
@@ -2805,9 +2805,9 @@ class ConfigEntryServiceRouterRouteDestinationResponseHeaders(dict):
                  removes: Optional[Sequence[str]] = None,
                  set: Optional[Mapping[str, str]] = None):
         """
-        :param Mapping[str, str] add: Defines a set of key-value pairs to add to the header. Use header names as the keys.
+        :param Mapping[str, str] add: Defines a set of key-value pairs to add to the header. Use header names as the keys
         :param Sequence[str] removes: Defines a list of headers to remove.
-        :param Mapping[str, str] set: Defines a set of key-value pairs to add to the request header or to replace existing header values with.
+        :param Mapping[str, str] set: Defines a set of key-value pairs to add to the response header or to replace existing header values with
         """
         if add is not None:
             pulumi.set(__self__, "add", add)
@@ -2820,7 +2820,7 @@ class ConfigEntryServiceRouterRouteDestinationResponseHeaders(dict):
     @pulumi.getter
     def add(self) -> Optional[Mapping[str, str]]:
         """
-        Defines a set of key-value pairs to add to the header. Use header names as the keys.
+        Defines a set of key-value pairs to add to the header. Use header names as the keys
         """
         return pulumi.get(self, "add")
 
@@ -2836,7 +2836,7 @@ class ConfigEntryServiceRouterRouteDestinationResponseHeaders(dict):
     @pulumi.getter
     def set(self) -> Optional[Mapping[str, str]]:
         """
-        Defines a set of key-value pairs to add to the request header or to replace existing header values with.
+        Defines a set of key-value pairs to add to the response header or to replace existing header values with
         """
         return pulumi.get(self, "set")
 
@@ -3061,10 +3061,10 @@ class ConfigEntryServiceRouterRouteMatchHttpQueryParam(dict):
                  present: Optional[bool] = None,
                  regex: Optional[str] = None):
         """
-        :param str exact: Specifies that a request matches when the header with the given name is this exact value.
-        :param str name: Specifies the name of the HTTP header to match.
-        :param bool present: Specifies that a request matches when the value in the `name` argument is present anywhere in the HTTP header.
-        :param str regex: Specifies that a request matches when the header with the given name matches this regular expression.
+        :param str exact: Specifies that a request matches when the query parameter with the given name is this exact value.
+        :param str name: Specifies the name of the HTTP query parameter to match.
+        :param bool present: Specifies that a request matches when the value in the `name` argument is present anywhere in the HTTP query parameter.
+        :param str regex: Specifies that a request matches when the query parameter with the given name matches this regular expression.
         """
         if exact is not None:
             pulumi.set(__self__, "exact", exact)
@@ -3079,7 +3079,7 @@ class ConfigEntryServiceRouterRouteMatchHttpQueryParam(dict):
     @pulumi.getter
     def exact(self) -> Optional[str]:
         """
-        Specifies that a request matches when the header with the given name is this exact value.
+        Specifies that a request matches when the query parameter with the given name is this exact value.
         """
         return pulumi.get(self, "exact")
 
@@ -3087,7 +3087,7 @@ class ConfigEntryServiceRouterRouteMatchHttpQueryParam(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        Specifies the name of the HTTP header to match.
+        Specifies the name of the HTTP query parameter to match.
         """
         return pulumi.get(self, "name")
 
@@ -3095,7 +3095,7 @@ class ConfigEntryServiceRouterRouteMatchHttpQueryParam(dict):
     @pulumi.getter
     def present(self) -> Optional[bool]:
         """
-        Specifies that a request matches when the value in the `name` argument is present anywhere in the HTTP header.
+        Specifies that a request matches when the value in the `name` argument is present anywhere in the HTTP query parameter.
         """
         return pulumi.get(self, "present")
 
@@ -3103,7 +3103,7 @@ class ConfigEntryServiceRouterRouteMatchHttpQueryParam(dict):
     @pulumi.getter
     def regex(self) -> Optional[str]:
         """
-        Specifies that a request matches when the header with the given name matches this regular expression.
+        Specifies that a request matches when the query parameter with the given name matches this regular expression.
         """
         return pulumi.get(self, "regex")
 

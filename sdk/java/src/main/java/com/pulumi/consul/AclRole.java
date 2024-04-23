@@ -90,14 +90,14 @@ public class AclRole extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * The name of node, workload identity or service.
+     * The name of the ACL role.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of node, workload identity or service.
+     * @return The name of the ACL role.
      * 
      */
     public Output<String> name() {

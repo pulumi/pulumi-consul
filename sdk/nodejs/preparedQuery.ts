@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
@@ -70,7 +69,6 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -111,7 +109,7 @@ export class PreparedQuery extends pulumi.CustomResource {
      */
     public readonly connect!: pulumi.Output<boolean | undefined>;
     /**
-     * Specifies a WAN federated datacenter to forward the query to.
+     * The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
      */
     public readonly datacenter!: pulumi.Output<string | undefined>;
     /**
@@ -241,7 +239,7 @@ export interface PreparedQueryState {
      */
     connect?: pulumi.Input<boolean>;
     /**
-     * Specifies a WAN federated datacenter to forward the query to.
+     * The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
      */
     datacenter?: pulumi.Input<string>;
     /**
@@ -314,7 +312,7 @@ export interface PreparedQueryArgs {
      */
     connect?: pulumi.Input<boolean>;
     /**
-     * Specifies a WAN federated datacenter to forward the query to.
+     * The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
      */
     datacenter?: pulumi.Input<string>;
     /**

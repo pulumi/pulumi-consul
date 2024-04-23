@@ -243,14 +243,14 @@ public class Service extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.meta);
     }
     /**
-     * The name of the header.
+     * The name of the service.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the header.
+     * @return The name of the service.
      * 
      */
     public Output<String> name() {

@@ -341,7 +341,6 @@ class Intention(pulumi.CustomResource):
 
         Create a simplest intention with static service names:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_consul as consul
@@ -351,11 +350,9 @@ class Intention(pulumi.CustomResource):
             destination_name="db",
             action="allow")
         ```
-        <!--End PulumiCodeChooser -->
 
         Referencing a known service via a datasource:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_consul as consul
@@ -366,7 +363,6 @@ class Intention(pulumi.CustomResource):
             action="allow")
         pg = consul.get_service(name="postgresql")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -419,7 +415,6 @@ class Intention(pulumi.CustomResource):
 
         Create a simplest intention with static service names:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_consul as consul
@@ -429,11 +424,9 @@ class Intention(pulumi.CustomResource):
             destination_name="db",
             action="allow")
         ```
-        <!--End PulumiCodeChooser -->
 
         Referencing a known service via a datasource:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_consul as consul
@@ -444,7 +437,6 @@ class Intention(pulumi.CustomResource):
             action="allow")
         pg = consul.get_service(name="postgresql")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

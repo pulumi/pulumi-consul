@@ -24,7 +24,6 @@ namespace Pulumi.Consul
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -53,7 +52,6 @@ namespace Pulumi.Consul
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetCatalogServiceResult> InvokeAsync(GetCatalogServiceArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCatalogServiceResult>("consul:index/getCatalogService:getCatalogService", args ?? new GetCatalogServiceArgs(), options.WithDefaults());
@@ -70,7 +68,6 @@ namespace Pulumi.Consul
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -99,7 +96,6 @@ namespace Pulumi.Consul
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetCatalogServiceResult> Invoke(GetCatalogServiceInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCatalogServiceResult>("consul:index/getCatalogService:getCatalogService", args ?? new GetCatalogServiceInvokeArgs(), options.WithDefaults());
@@ -117,10 +113,6 @@ namespace Pulumi.Consul
         [Input("datacenter")]
         public string? Datacenter { get; set; }
 
-        /// <summary>
-        /// A filter expression to refine the query, see https://www.consul.io/api-docs/features/filtering
-        /// and https://www.consul.io/api-docs/catalog#filtering-1.
-        /// </summary>
         [Input("filter")]
         public string? Filter { get; set; }
 
@@ -166,10 +158,6 @@ namespace Pulumi.Consul
         [Input("datacenter")]
         public Input<string>? Datacenter { get; set; }
 
-        /// <summary>
-        /// A filter expression to refine the query, see https://www.consul.io/api-docs/features/filtering
-        /// and https://www.consul.io/api-docs/catalog#filtering-1.
-        /// </summary>
         [Input("filter")]
         public Input<string>? Filter { get; set; }
 

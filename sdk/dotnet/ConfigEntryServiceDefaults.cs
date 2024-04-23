@@ -64,7 +64,7 @@ namespace Pulumi.Consul
         public Output<int?> MaxInboundConnections { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the default mesh gateway mode field for all upstreams.
+        /// Specifies the default mesh gateway mode field for the service.
         /// </summary>
         [Output("meshGateways")]
         public Output<ImmutableArray<Outputs.ConfigEntryServiceDefaultsMeshGateway>> MeshGateways { get; private set; } = null!;
@@ -94,13 +94,13 @@ namespace Pulumi.Consul
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the namespace containing the upstream service that the configuration applies to.
+        /// Specifies the Consul namespace that the configuration entry applies to.
         /// </summary>
         [Output("namespace")]
         public Output<string?> Namespace { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the name of the name of the Consul admin partition that the configuration entry applies to.
+        /// Specifies the name of the name of the Consul admin partition that the configuration entry applies to. Refer to Admin Partitions for additional information.
         /// </summary>
         [Output("partition")]
         public Output<string?> Partition { get; private set; } = null!;
@@ -239,7 +239,7 @@ namespace Pulumi.Consul
         private InputList<Inputs.ConfigEntryServiceDefaultsMeshGatewayArgs>? _meshGateways;
 
         /// <summary>
-        /// Specifies the default mesh gateway mode field for all upstreams.
+        /// Specifies the default mesh gateway mode field for the service.
         /// </summary>
         public InputList<Inputs.ConfigEntryServiceDefaultsMeshGatewayArgs> MeshGateways
         {
@@ -278,13 +278,13 @@ namespace Pulumi.Consul
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Specifies the namespace containing the upstream service that the configuration applies to.
+        /// Specifies the Consul namespace that the configuration entry applies to.
         /// </summary>
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }
 
         /// <summary>
-        /// Specifies the name of the name of the Consul admin partition that the configuration entry applies to.
+        /// Specifies the name of the name of the Consul admin partition that the configuration entry applies to. Refer to Admin Partitions for additional information.
         /// </summary>
         [Input("partition")]
         public Input<string>? Partition { get; set; }
@@ -397,7 +397,7 @@ namespace Pulumi.Consul
         private InputList<Inputs.ConfigEntryServiceDefaultsMeshGatewayGetArgs>? _meshGateways;
 
         /// <summary>
-        /// Specifies the default mesh gateway mode field for all upstreams.
+        /// Specifies the default mesh gateway mode field for the service.
         /// </summary>
         public InputList<Inputs.ConfigEntryServiceDefaultsMeshGatewayGetArgs> MeshGateways
         {
@@ -436,13 +436,13 @@ namespace Pulumi.Consul
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Specifies the namespace containing the upstream service that the configuration applies to.
+        /// Specifies the Consul namespace that the configuration entry applies to.
         /// </summary>
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }
 
         /// <summary>
-        /// Specifies the name of the name of the Consul admin partition that the configuration entry applies to.
+        /// Specifies the name of the name of the Consul admin partition that the configuration entry applies to. Refer to Admin Partitions for additional information.
         /// </summary>
         [Input("partition")]
         public Input<string>? Partition { get; set; }

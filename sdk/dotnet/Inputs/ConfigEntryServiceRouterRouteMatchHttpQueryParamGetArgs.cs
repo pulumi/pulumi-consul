@@ -13,25 +13,25 @@ namespace Pulumi.Consul.Inputs
     public sealed class ConfigEntryServiceRouterRouteMatchHttpQueryParamGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies that a request matches when the header with the given name is this exact value.
+        /// Specifies that a request matches when the query parameter with the given name is this exact value.
         /// </summary>
         [Input("exact")]
         public Input<string>? Exact { get; set; }
 
         /// <summary>
-        /// Specifies the name of the HTTP header to match.
+        /// Specifies the name of the HTTP query parameter to match.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Specifies that a request matches when the value in the `name` argument is present anywhere in the HTTP header.
+        /// Specifies that a request matches when the value in the `name` argument is present anywhere in the HTTP query parameter.
         /// </summary>
         [Input("present")]
         public Input<bool>? Present { get; set; }
 
         /// <summary>
-        /// Specifies that a request matches when the header with the given name matches this regular expression.
+        /// Specifies that a request matches when the query parameter with the given name matches this regular expression.
         /// </summary>
         [Input("regex")]
         public Input<string>? Regex { get; set; }

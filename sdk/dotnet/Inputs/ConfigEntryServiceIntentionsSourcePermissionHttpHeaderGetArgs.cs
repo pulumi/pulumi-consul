@@ -25,7 +25,7 @@ namespace Pulumi.Consul.Inputs
         public Input<bool>? Invert { get; set; }
 
         /// <summary>
-        /// Specifies the name of a JWT provider defined in the Name field of the jwt-provider configuration entry.
+        /// Specifies the name of the header to match.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

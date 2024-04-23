@@ -16,7 +16,6 @@ namespace Pulumi.Consul
     /// 
     /// Define a `kubernetes` auth method:
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -43,11 +42,9 @@ namespace Pulumi.Consul
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// Define a `jwt` auth method:
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -90,7 +87,6 @@ namespace Pulumi.Consul
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [ConsulResourceType("consul:index/aclAuthMethod:AclAuthMethod")]
     public partial class AclAuthMethod : global::Pulumi.CustomResource

@@ -12,7 +12,6 @@ namespace Pulumi.Consul
     /// <summary>
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -120,7 +119,6 @@ namespace Pulumi.Consul
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -144,13 +142,13 @@ namespace Pulumi.Consul
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the namespace to use in the FQDN when resolving the service.
+        /// Specifies the namespace to apply the configuration entry.
         /// </summary>
         [Output("namespace")]
         public Output<string?> Namespace { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the admin partition to use in the FQDN when resolving the service.
+        /// Specifies the admin partition to apply the configuration entry.
         /// </summary>
         [Output("partition")]
         public Output<string?> Partition { get; private set; } = null!;
@@ -226,13 +224,13 @@ namespace Pulumi.Consul
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Specifies the namespace to use in the FQDN when resolving the service.
+        /// Specifies the namespace to apply the configuration entry.
         /// </summary>
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }
 
         /// <summary>
-        /// Specifies the admin partition to use in the FQDN when resolving the service.
+        /// Specifies the admin partition to apply the configuration entry.
         /// </summary>
         [Input("partition")]
         public Input<string>? Partition { get; set; }
@@ -276,13 +274,13 @@ namespace Pulumi.Consul
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Specifies the namespace to use in the FQDN when resolving the service.
+        /// Specifies the namespace to apply the configuration entry.
         /// </summary>
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }
 
         /// <summary>
-        /// Specifies the admin partition to use in the FQDN when resolving the service.
+        /// Specifies the admin partition to apply the configuration entry.
         /// </summary>
         [Input("partition")]
         public Input<string>? Partition { get; set; }

@@ -12,7 +12,6 @@ namespace Pulumi.Consul
     /// <summary>
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -71,7 +70,6 @@ namespace Pulumi.Consul
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [ConsulResourceType("consul:index/configEntryServiceResolver:ConfigEntryServiceResolver")]
     public partial class ConfigEntryServiceResolver : global::Pulumi.CustomResource
@@ -107,19 +105,19 @@ namespace Pulumi.Consul
         public Output<ImmutableDictionary<string, string>?> Meta { get; private set; } = null!;
 
         /// <summary>
-        /// Name of subset.
+        /// Specifies a name for the configuration entry.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the namespace at the failover location where the failover services are deployed.
+        /// Specifies the namespace that the service resolver applies to.
         /// </summary>
         [Output("namespace")]
         public Output<string?> Namespace { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the admin partition within the same datacenter to use for the failover target. If empty, the default partition is used.
+        /// Specifies the admin partition that the service resolver applies to.
         /// </summary>
         [Output("partition")]
         public Output<string?> Partition { get; private set; } = null!;
@@ -237,19 +235,19 @@ namespace Pulumi.Consul
         }
 
         /// <summary>
-        /// Name of subset.
+        /// Specifies a name for the configuration entry.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Specifies the namespace at the failover location where the failover services are deployed.
+        /// Specifies the namespace that the service resolver applies to.
         /// </summary>
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }
 
         /// <summary>
-        /// Specifies the admin partition within the same datacenter to use for the failover target. If empty, the default partition is used.
+        /// Specifies the admin partition that the service resolver applies to.
         /// </summary>
         [Input("partition")]
         public Input<string>? Partition { get; set; }
@@ -341,19 +339,19 @@ namespace Pulumi.Consul
         }
 
         /// <summary>
-        /// Name of subset.
+        /// Specifies a name for the configuration entry.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Specifies the namespace at the failover location where the failover services are deployed.
+        /// Specifies the namespace that the service resolver applies to.
         /// </summary>
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }
 
         /// <summary>
-        /// Specifies the admin partition within the same datacenter to use for the failover target. If empty, the default partition is used.
+        /// Specifies the admin partition that the service resolver applies to.
         /// </summary>
         [Input("partition")]
         public Input<string>? Partition { get; set; }

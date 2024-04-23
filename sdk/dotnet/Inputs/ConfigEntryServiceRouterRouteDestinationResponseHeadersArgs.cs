@@ -16,7 +16,7 @@ namespace Pulumi.Consul.Inputs
         private InputMap<string>? _add;
 
         /// <summary>
-        /// Defines a set of key-value pairs to add to the header. Use header names as the keys.
+        /// Defines a set of key-value pairs to add to the header. Use header names as the keys
         /// </summary>
         public InputMap<string> Add
         {
@@ -40,7 +40,7 @@ namespace Pulumi.Consul.Inputs
         private InputMap<string>? _set;
 
         /// <summary>
-        /// Defines a set of key-value pairs to add to the request header or to replace existing header values with.
+        /// Defines a set of key-value pairs to add to the response header or to replace existing header values with
         /// </summary>
         public InputMap<string> Set
         {

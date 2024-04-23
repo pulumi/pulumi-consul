@@ -23,7 +23,6 @@ import * as utilities from "./utilities";
  *
  * Create a simplest intention with static service names:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
@@ -34,11 +33,9 @@ import * as utilities from "./utilities";
  *     action: "allow",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Referencing a known service via a datasource:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as consul from "@pulumi/consul";
@@ -52,7 +49,6 @@ import * as utilities from "./utilities";
  *     name: "postgresql",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

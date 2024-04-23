@@ -42,15 +42,15 @@ export class ConfigEntryServiceRouter extends pulumi.CustomResource {
      */
     public readonly meta!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Specifies the name of the HTTP header to match.
+     * Specifies a name for the configuration entry.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Specifies the Consul namespace to resolve the service from instead of the current namespace.
+     * Specifies the namespace to apply the configuration entry.
      */
     public readonly namespace!: pulumi.Output<string | undefined>;
     /**
-     * Specifies the Consul admin partition to resolve the service from instead of the current partition.
+     * Specifies the admin partition to apply the configuration entry.
      */
     public readonly partition!: pulumi.Output<string | undefined>;
     /**
@@ -98,15 +98,15 @@ export interface ConfigEntryServiceRouterState {
      */
     meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Specifies the name of the HTTP header to match.
+     * Specifies a name for the configuration entry.
      */
     name?: pulumi.Input<string>;
     /**
-     * Specifies the Consul namespace to resolve the service from instead of the current namespace.
+     * Specifies the namespace to apply the configuration entry.
      */
     namespace?: pulumi.Input<string>;
     /**
-     * Specifies the Consul admin partition to resolve the service from instead of the current partition.
+     * Specifies the admin partition to apply the configuration entry.
      */
     partition?: pulumi.Input<string>;
     /**
@@ -124,15 +124,15 @@ export interface ConfigEntryServiceRouterArgs {
      */
     meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Specifies the name of the HTTP header to match.
+     * Specifies a name for the configuration entry.
      */
     name?: pulumi.Input<string>;
     /**
-     * Specifies the Consul namespace to resolve the service from instead of the current namespace.
+     * Specifies the namespace to apply the configuration entry.
      */
     namespace?: pulumi.Input<string>;
     /**
-     * Specifies the Consul admin partition to resolve the service from instead of the current partition.
+     * Specifies the admin partition to apply the configuration entry.
      */
     partition?: pulumi.Input<string>;
     /**

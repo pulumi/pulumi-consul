@@ -132,7 +132,6 @@ def get_service(datacenter: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_consul as consul
@@ -145,15 +144,12 @@ def get_service(datacenter: Optional[str] = None,
     app = example.index.Resource("app", description=std.join(separator= ,
         input=nodes).result)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str datacenter: The Consul datacenter to query.  Defaults to the
            same value found in `query_options` parameter specified below, or if that is
            empty, the `datacenter` value found in the Consul agent that this provider is
            configured to talk to.
-    :param str filter: A filter expression to refine the query, see https://www.consul.io/api-docs/features/filtering
-           and https://www.consul.io/api-docs/catalog#filtering-1.
     :param str name: The service name to select.
     :param Sequence[pulumi.InputType['GetServiceQueryOptionArgs']] query_options: See below.
     :param str tag: A single tag that can be used to filter the list of nodes
@@ -197,7 +193,6 @@ def get_service_output(datacenter: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_consul as consul
@@ -210,15 +205,12 @@ def get_service_output(datacenter: Optional[pulumi.Input[Optional[str]]] = None,
     app = example.index.Resource("app", description=std.join(separator= ,
         input=nodes).result)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str datacenter: The Consul datacenter to query.  Defaults to the
            same value found in `query_options` parameter specified below, or if that is
            empty, the `datacenter` value found in the Consul agent that this provider is
            configured to talk to.
-    :param str filter: A filter expression to refine the query, see https://www.consul.io/api-docs/features/filtering
-           and https://www.consul.io/api-docs/catalog#filtering-1.
     :param str name: The service name to select.
     :param Sequence[pulumi.InputType['GetServiceQueryOptionArgs']] query_options: See below.
     :param str tag: A single tag that can be used to filter the list of nodes

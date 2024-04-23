@@ -50,14 +50,14 @@ public final class ConfigEntryServiceIntentionsState extends com.pulumi.resource
     }
 
     /**
-     * Specifies the name of a JWT provider defined in the Name field of the jwt-provider configuration entry.
+     * Specifies a name of the destination service for all intentions defined in the configuration entry.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Specifies the name of a JWT provider defined in the Name field of the jwt-provider configuration entry.
+     * @return Specifies a name of the destination service for all intentions defined in the configuration entry.
      * 
      */
     public Optional<Output<String>> name() {
@@ -65,14 +65,14 @@ public final class ConfigEntryServiceIntentionsState extends com.pulumi.resource
     }
 
     /**
-     * Specifies the traffic source namespace that the intention allows or denies traffic from.
+     * Specifies the namespace to apply the configuration entry.
      * 
      */
     @Import(name="namespace")
     private @Nullable Output<String> namespace;
 
     /**
-     * @return Specifies the traffic source namespace that the intention allows or denies traffic from.
+     * @return Specifies the namespace to apply the configuration entry.
      * 
      */
     public Optional<Output<String>> namespace() {
@@ -80,14 +80,14 @@ public final class ConfigEntryServiceIntentionsState extends com.pulumi.resource
     }
 
     /**
-     * Specifies the name of an admin partition that the intention allows or denies traffic from.
+     * Specifies the admin partition to apply the configuration entry.
      * 
      */
     @Import(name="partition")
     private @Nullable Output<String> partition;
 
     /**
-     * @return Specifies the name of an admin partition that the intention allows or denies traffic from.
+     * @return Specifies the admin partition to apply the configuration entry.
      * 
      */
     public Optional<Output<String>> partition() {
@@ -191,7 +191,7 @@ public final class ConfigEntryServiceIntentionsState extends com.pulumi.resource
         }
 
         /**
-         * @param name Specifies the name of a JWT provider defined in the Name field of the jwt-provider configuration entry.
+         * @param name Specifies a name of the destination service for all intentions defined in the configuration entry.
          * 
          * @return builder
          * 
@@ -202,7 +202,7 @@ public final class ConfigEntryServiceIntentionsState extends com.pulumi.resource
         }
 
         /**
-         * @param name Specifies the name of a JWT provider defined in the Name field of the jwt-provider configuration entry.
+         * @param name Specifies a name of the destination service for all intentions defined in the configuration entry.
          * 
          * @return builder
          * 
@@ -212,7 +212,7 @@ public final class ConfigEntryServiceIntentionsState extends com.pulumi.resource
         }
 
         /**
-         * @param namespace Specifies the traffic source namespace that the intention allows or denies traffic from.
+         * @param namespace Specifies the namespace to apply the configuration entry.
          * 
          * @return builder
          * 
@@ -223,7 +223,7 @@ public final class ConfigEntryServiceIntentionsState extends com.pulumi.resource
         }
 
         /**
-         * @param namespace Specifies the traffic source namespace that the intention allows or denies traffic from.
+         * @param namespace Specifies the namespace to apply the configuration entry.
          * 
          * @return builder
          * 
@@ -233,7 +233,7 @@ public final class ConfigEntryServiceIntentionsState extends com.pulumi.resource
         }
 
         /**
-         * @param partition Specifies the name of an admin partition that the intention allows or denies traffic from.
+         * @param partition Specifies the admin partition to apply the configuration entry.
          * 
          * @return builder
          * 
@@ -244,7 +244,7 @@ public final class ConfigEntryServiceIntentionsState extends com.pulumi.resource
         }
 
         /**
-         * @param partition Specifies the name of an admin partition that the intention allows or denies traffic from.
+         * @param partition Specifies the admin partition to apply the configuration entry.
          * 
          * @return builder
          * 

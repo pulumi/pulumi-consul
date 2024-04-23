@@ -22,7 +22,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -59,7 +58,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupService(ctx *pulumi.Context, args *LookupServiceArgs, opts ...pulumi.InvokeOption) (*LookupServiceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupServiceResult
@@ -77,9 +75,7 @@ type LookupServiceArgs struct {
 	// empty, the `datacenter` value found in the Consul agent that this provider is
 	// configured to talk to.
 	Datacenter *string `pulumi:"datacenter"`
-	// A filter expression to refine the query, see https://www.consul.io/api-docs/features/filtering
-	// and https://www.consul.io/api-docs/catalog#filtering-1.
-	Filter *string `pulumi:"filter"`
+	Filter     *string `pulumi:"filter"`
 	// The service name to select.
 	Name string `pulumi:"name"`
 	// See below.
@@ -127,9 +123,7 @@ type LookupServiceOutputArgs struct {
 	// empty, the `datacenter` value found in the Consul agent that this provider is
 	// configured to talk to.
 	Datacenter pulumi.StringPtrInput `pulumi:"datacenter"`
-	// A filter expression to refine the query, see https://www.consul.io/api-docs/features/filtering
-	// and https://www.consul.io/api-docs/catalog#filtering-1.
-	Filter pulumi.StringPtrInput `pulumi:"filter"`
+	Filter     pulumi.StringPtrInput `pulumi:"filter"`
 	// The service name to select.
 	Name pulumi.StringInput `pulumi:"name"`
 	// See below.

@@ -145,7 +145,6 @@ def get_key_prefix(datacenter: Optional[str] = None,
     """
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aws as aws
@@ -162,9 +161,7 @@ def get_key_prefix(datacenter: Optional[str] = None,
     # Start our instance with the dynamic ami value
     app_instance = aws.index.Instance("app", ami=app.var.ami)
     ```
-    <!--End PulumiCodeChooser -->
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aws as aws
@@ -176,7 +173,6 @@ def get_key_prefix(datacenter: Optional[str] = None,
     # Start our instance with the dynamic ami value
     web_instance = aws.index.Instance("web", ami=web.subkeys.app_launch_ami)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str datacenter: The datacenter to use. This overrides the
@@ -224,7 +220,6 @@ def get_key_prefix_output(datacenter: Optional[pulumi.Input[Optional[str]]] = No
     """
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aws as aws
@@ -241,9 +236,7 @@ def get_key_prefix_output(datacenter: Optional[pulumi.Input[Optional[str]]] = No
     # Start our instance with the dynamic ami value
     app_instance = aws.index.Instance("app", ami=app.var.ami)
     ```
-    <!--End PulumiCodeChooser -->
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aws as aws
@@ -255,7 +248,6 @@ def get_key_prefix_output(datacenter: Optional[pulumi.Input[Optional[str]]] = No
     # Start our instance with the dynamic ami value
     web_instance = aws.index.Instance("web", ami=web.subkeys.app_launch_ami)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str datacenter: The datacenter to use. This overrides the

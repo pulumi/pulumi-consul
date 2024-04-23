@@ -38,14 +38,14 @@ public final class PreparedQueryArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies a WAN federated datacenter to forward the query to.
+     * The datacenter to use. This overrides the agent&#39;s default datacenter and the datacenter in the provider setup.
      * 
      */
     @Import(name="datacenter")
     private @Nullable Output<String> datacenter;
 
     /**
-     * @return Specifies a WAN federated datacenter to forward the query to.
+     * @return The datacenter to use. This overrides the agent&#39;s default datacenter and the datacenter in the provider setup.
      * 
      */
     public Optional<Output<String>> datacenter() {
@@ -335,7 +335,7 @@ Please use the token argument in the provider configuration */
         }
 
         /**
-         * @param datacenter Specifies a WAN federated datacenter to forward the query to.
+         * @param datacenter The datacenter to use. This overrides the agent&#39;s default datacenter and the datacenter in the provider setup.
          * 
          * @return builder
          * 
@@ -346,7 +346,7 @@ Please use the token argument in the provider configuration */
         }
 
         /**
-         * @param datacenter Specifies a WAN federated datacenter to forward the query to.
+         * @param datacenter The datacenter to use. This overrides the agent&#39;s default datacenter and the datacenter in the provider setup.
          * 
          * @return builder
          * 

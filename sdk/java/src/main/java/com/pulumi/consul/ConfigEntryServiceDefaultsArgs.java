@@ -146,14 +146,14 @@ public final class ConfigEntryServiceDefaultsArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Specifies the default mesh gateway mode field for all upstreams.
+     * Specifies the default mesh gateway mode field for the service.
      * 
      */
     @Import(name="meshGateways")
     private @Nullable Output<List<ConfigEntryServiceDefaultsMeshGatewayArgs>> meshGateways;
 
     /**
-     * @return Specifies the default mesh gateway mode field for all upstreams.
+     * @return Specifies the default mesh gateway mode field for the service.
      * 
      */
     public Optional<Output<List<ConfigEntryServiceDefaultsMeshGatewayArgs>>> meshGateways() {
@@ -221,14 +221,14 @@ public final class ConfigEntryServiceDefaultsArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Specifies the namespace containing the upstream service that the configuration applies to.
+     * Specifies the Consul namespace that the configuration entry applies to.
      * 
      */
     @Import(name="namespace")
     private @Nullable Output<String> namespace;
 
     /**
-     * @return Specifies the namespace containing the upstream service that the configuration applies to.
+     * @return Specifies the Consul namespace that the configuration entry applies to.
      * 
      */
     public Optional<Output<String>> namespace() {
@@ -236,14 +236,14 @@ public final class ConfigEntryServiceDefaultsArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Specifies the name of the name of the Consul admin partition that the configuration entry applies to.
+     * Specifies the name of the name of the Consul admin partition that the configuration entry applies to. Refer to Admin Partitions for additional information.
      * 
      */
     @Import(name="partition")
     private @Nullable Output<String> partition;
 
     /**
-     * @return Specifies the name of the name of the Consul admin partition that the configuration entry applies to.
+     * @return Specifies the name of the name of the Consul admin partition that the configuration entry applies to. Refer to Admin Partitions for additional information.
      * 
      */
     public Optional<Output<String>> partition() {
@@ -535,7 +535,7 @@ public final class ConfigEntryServiceDefaultsArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param meshGateways Specifies the default mesh gateway mode field for all upstreams.
+         * @param meshGateways Specifies the default mesh gateway mode field for the service.
          * 
          * @return builder
          * 
@@ -546,7 +546,7 @@ public final class ConfigEntryServiceDefaultsArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param meshGateways Specifies the default mesh gateway mode field for all upstreams.
+         * @param meshGateways Specifies the default mesh gateway mode field for the service.
          * 
          * @return builder
          * 
@@ -556,7 +556,7 @@ public final class ConfigEntryServiceDefaultsArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param meshGateways Specifies the default mesh gateway mode field for all upstreams.
+         * @param meshGateways Specifies the default mesh gateway mode field for the service.
          * 
          * @return builder
          * 
@@ -650,7 +650,7 @@ public final class ConfigEntryServiceDefaultsArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param namespace Specifies the namespace containing the upstream service that the configuration applies to.
+         * @param namespace Specifies the Consul namespace that the configuration entry applies to.
          * 
          * @return builder
          * 
@@ -661,7 +661,7 @@ public final class ConfigEntryServiceDefaultsArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param namespace Specifies the namespace containing the upstream service that the configuration applies to.
+         * @param namespace Specifies the Consul namespace that the configuration entry applies to.
          * 
          * @return builder
          * 
@@ -671,7 +671,7 @@ public final class ConfigEntryServiceDefaultsArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param partition Specifies the name of the name of the Consul admin partition that the configuration entry applies to.
+         * @param partition Specifies the name of the name of the Consul admin partition that the configuration entry applies to. Refer to Admin Partitions for additional information.
          * 
          * @return builder
          * 
@@ -682,7 +682,7 @@ public final class ConfigEntryServiceDefaultsArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param partition Specifies the name of the name of the Consul admin partition that the configuration entry applies to.
+         * @param partition Specifies the name of the name of the Consul admin partition that the configuration entry applies to. Refer to Admin Partitions for additional information.
          * 
          * @return builder
          * 

@@ -18,7 +18,7 @@ namespace Pulumi.Consul.Outputs
         /// </summary>
         public readonly string? Datacenter;
         /// <summary>
-        /// Specifies the namespace at the failover location where the failover services are deployed.
+        /// Specifies the namespace to use for the failover target. If empty, the default namespace is used.
         /// </summary>
         public readonly string? Namespace;
         /// <summary>
@@ -30,11 +30,11 @@ namespace Pulumi.Consul.Outputs
         /// </summary>
         public readonly string? Peer;
         /// <summary>
-        /// Specifies the name of the service to resolve at the failover location during a failover scenario.
+        /// Specifies the service name to use for the failover target. If empty, the current service name is used.
         /// </summary>
         public readonly string? Service;
         /// <summary>
-        /// Specifies the name of a subset of service instances to resolve at the failover location during a failover scenario.
+        /// Specifies the named subset to use for the failover target. If empty, the default subset for the requested service name is used.
         /// </summary>
         public readonly string? ServiceSubset;
 

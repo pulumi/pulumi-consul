@@ -36,7 +36,7 @@ class PreparedQueryArgs:
         The set of arguments for constructing a PreparedQuery resource.
         :param pulumi.Input[str] service: The name of the service to query
         :param pulumi.Input[bool] connect: When `true` the prepared query will return connect proxy services for a queried service.  Conditions such as `tags` in the prepared query will be matched against the proxy service. Defaults to false.
-        :param pulumi.Input[str] datacenter: Specifies a WAN federated datacenter to forward the query to.
+        :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
         :param pulumi.Input['PreparedQueryDnsArgs'] dns: Settings for controlling the DNS response details.
         :param pulumi.Input['PreparedQueryFailoverArgs'] failover: Options for controlling behavior when no healthy nodes are available in the local DC.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ignore_check_ids: Specifies a list of check IDs that should be ignored when filtering unhealthy instances. This is mostly useful in an emergency or as a temporary measure when a health check is found to be unreliable. Being able to ignore it in centrally-defined queries can be simpler than de-registering the check as an interim solution until the check can be fixed.
@@ -116,7 +116,7 @@ Please use the token argument in the provider configuration""")
     @pulumi.getter
     def datacenter(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies a WAN federated datacenter to forward the query to.
+        The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
         """
         return pulumi.get(self, "datacenter")
 
@@ -308,7 +308,7 @@ class _PreparedQueryState:
         """
         Input properties used for looking up and filtering PreparedQuery resources.
         :param pulumi.Input[bool] connect: When `true` the prepared query will return connect proxy services for a queried service.  Conditions such as `tags` in the prepared query will be matched against the proxy service. Defaults to false.
-        :param pulumi.Input[str] datacenter: Specifies a WAN federated datacenter to forward the query to.
+        :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
         :param pulumi.Input['PreparedQueryDnsArgs'] dns: Settings for controlling the DNS response details.
         :param pulumi.Input['PreparedQueryFailoverArgs'] failover: Options for controlling behavior when no healthy nodes are available in the local DC.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ignore_check_ids: Specifies a list of check IDs that should be ignored when filtering unhealthy instances. This is mostly useful in an emergency or as a temporary measure when a health check is found to be unreliable. Being able to ignore it in centrally-defined queries can be simpler than de-registering the check as an interim solution until the check can be fixed.
@@ -378,7 +378,7 @@ Please use the token argument in the provider configuration""")
     @pulumi.getter
     def datacenter(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies a WAN federated datacenter to forward the query to.
+        The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
         """
         return pulumi.get(self, "datacenter")
 
@@ -585,7 +585,6 @@ class PreparedQuery(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_consul as consul
@@ -644,7 +643,6 @@ class PreparedQuery(pulumi.CustomResource):
                 ttl="5m",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -655,7 +653,7 @@ class PreparedQuery(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] connect: When `true` the prepared query will return connect proxy services for a queried service.  Conditions such as `tags` in the prepared query will be matched against the proxy service. Defaults to false.
-        :param pulumi.Input[str] datacenter: Specifies a WAN federated datacenter to forward the query to.
+        :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
         :param pulumi.Input[pulumi.InputType['PreparedQueryDnsArgs']] dns: Settings for controlling the DNS response details.
         :param pulumi.Input[pulumi.InputType['PreparedQueryFailoverArgs']] failover: Options for controlling behavior when no healthy nodes are available in the local DC.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ignore_check_ids: Specifies a list of check IDs that should be ignored when filtering unhealthy instances. This is mostly useful in an emergency or as a temporary measure when a health check is found to be unreliable. Being able to ignore it in centrally-defined queries can be simpler than de-registering the check as an interim solution until the check can be fixed.
@@ -680,7 +678,6 @@ class PreparedQuery(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_consul as consul
@@ -739,7 +736,6 @@ class PreparedQuery(pulumi.CustomResource):
                 ttl="5m",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -841,7 +837,7 @@ class PreparedQuery(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] connect: When `true` the prepared query will return connect proxy services for a queried service.  Conditions such as `tags` in the prepared query will be matched against the proxy service. Defaults to false.
-        :param pulumi.Input[str] datacenter: Specifies a WAN federated datacenter to forward the query to.
+        :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
         :param pulumi.Input[pulumi.InputType['PreparedQueryDnsArgs']] dns: Settings for controlling the DNS response details.
         :param pulumi.Input[pulumi.InputType['PreparedQueryFailoverArgs']] failover: Options for controlling behavior when no healthy nodes are available in the local DC.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ignore_check_ids: Specifies a list of check IDs that should be ignored when filtering unhealthy instances. This is mostly useful in an emergency or as a temporary measure when a health check is found to be unreliable. Being able to ignore it in centrally-defined queries can be simpler than de-registering the check as an interim solution until the check can be fixed.
@@ -891,7 +887,7 @@ class PreparedQuery(pulumi.CustomResource):
     @pulumi.getter
     def datacenter(self) -> pulumi.Output[Optional[str]]:
         """
-        Specifies a WAN federated datacenter to forward the query to.
+        The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
         """
         return pulumi.get(self, "datacenter")
 

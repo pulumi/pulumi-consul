@@ -31,14 +31,14 @@ public final class ConfigEntryServiceResolverFailoverTargetArgs extends com.pulu
     }
 
     /**
-     * Specifies the namespace at the failover location where the failover services are deployed.
+     * Specifies the namespace to use for the failover target. If empty, the default namespace is used.
      * 
      */
     @Import(name="namespace")
     private @Nullable Output<String> namespace;
 
     /**
-     * @return Specifies the namespace at the failover location where the failover services are deployed.
+     * @return Specifies the namespace to use for the failover target. If empty, the default namespace is used.
      * 
      */
     public Optional<Output<String>> namespace() {
@@ -76,14 +76,14 @@ public final class ConfigEntryServiceResolverFailoverTargetArgs extends com.pulu
     }
 
     /**
-     * Specifies the name of the service to resolve at the failover location during a failover scenario.
+     * Specifies the service name to use for the failover target. If empty, the current service name is used.
      * 
      */
     @Import(name="service")
     private @Nullable Output<String> service;
 
     /**
-     * @return Specifies the name of the service to resolve at the failover location during a failover scenario.
+     * @return Specifies the service name to use for the failover target. If empty, the current service name is used.
      * 
      */
     public Optional<Output<String>> service() {
@@ -91,14 +91,14 @@ public final class ConfigEntryServiceResolverFailoverTargetArgs extends com.pulu
     }
 
     /**
-     * Specifies the name of a subset of service instances to resolve at the failover location during a failover scenario.
+     * Specifies the named subset to use for the failover target. If empty, the default subset for the requested service name is used.
      * 
      */
     @Import(name="serviceSubset")
     private @Nullable Output<String> serviceSubset;
 
     /**
-     * @return Specifies the name of a subset of service instances to resolve at the failover location during a failover scenario.
+     * @return Specifies the named subset to use for the failover target. If empty, the default subset for the requested service name is used.
      * 
      */
     public Optional<Output<String>> serviceSubset() {
@@ -156,7 +156,7 @@ public final class ConfigEntryServiceResolverFailoverTargetArgs extends com.pulu
         }
 
         /**
-         * @param namespace Specifies the namespace at the failover location where the failover services are deployed.
+         * @param namespace Specifies the namespace to use for the failover target. If empty, the default namespace is used.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class ConfigEntryServiceResolverFailoverTargetArgs extends com.pulu
         }
 
         /**
-         * @param namespace Specifies the namespace at the failover location where the failover services are deployed.
+         * @param namespace Specifies the namespace to use for the failover target. If empty, the default namespace is used.
          * 
          * @return builder
          * 
@@ -219,7 +219,7 @@ public final class ConfigEntryServiceResolverFailoverTargetArgs extends com.pulu
         }
 
         /**
-         * @param service Specifies the name of the service to resolve at the failover location during a failover scenario.
+         * @param service Specifies the service name to use for the failover target. If empty, the current service name is used.
          * 
          * @return builder
          * 
@@ -230,7 +230,7 @@ public final class ConfigEntryServiceResolverFailoverTargetArgs extends com.pulu
         }
 
         /**
-         * @param service Specifies the name of the service to resolve at the failover location during a failover scenario.
+         * @param service Specifies the service name to use for the failover target. If empty, the current service name is used.
          * 
          * @return builder
          * 
@@ -240,7 +240,7 @@ public final class ConfigEntryServiceResolverFailoverTargetArgs extends com.pulu
         }
 
         /**
-         * @param serviceSubset Specifies the name of a subset of service instances to resolve at the failover location during a failover scenario.
+         * @param serviceSubset Specifies the named subset to use for the failover target. If empty, the default subset for the requested service name is used.
          * 
          * @return builder
          * 
@@ -251,7 +251,7 @@ public final class ConfigEntryServiceResolverFailoverTargetArgs extends com.pulu
         }
 
         /**
-         * @param serviceSubset Specifies the name of a subset of service instances to resolve at the failover location during a failover scenario.
+         * @param serviceSubset Specifies the named subset to use for the failover target. If empty, the default subset for the requested service name is used.
          * 
          * @return builder
          * 

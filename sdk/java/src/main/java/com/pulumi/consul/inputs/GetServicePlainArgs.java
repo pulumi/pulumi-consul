@@ -38,19 +38,9 @@ public final class GetServicePlainArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.datacenter);
     }
 
-    /**
-     * A filter expression to refine the query, see https://www.consul.io/api-docs/features/filtering
-     * and https://www.consul.io/api-docs/catalog#filtering-1.
-     * 
-     */
     @Import(name="filter")
     private @Nullable String filter;
 
-    /**
-     * @return A filter expression to refine the query, see https://www.consul.io/api-docs/features/filtering
-     * and https://www.consul.io/api-docs/catalog#filtering-1.
-     * 
-     */
     public Optional<String> filter() {
         return Optional.ofNullable(this.filter);
     }
@@ -144,13 +134,6 @@ public final class GetServicePlainArgs extends com.pulumi.resources.InvokeArgs {
             return this;
         }
 
-        /**
-         * @param filter A filter expression to refine the query, see https://www.consul.io/api-docs/features/filtering
-         * and https://www.consul.io/api-docs/catalog#filtering-1.
-         * 
-         * @return builder
-         * 
-         */
         public Builder filter(@Nullable String filter) {
             $.filter = filter;
             return this;
