@@ -790,7 +790,7 @@
             "properties": {
                 "action": {
                     "type": "string",
-                    "description": "Specifies the action to take when the source sends traffic to the destination service.\n"
+                    "description": "Specifies the action to take when the source sends traffic to the destination service. The value is either allow or deny.\n"
                 },
                 "https": {
                     "type": "array",
@@ -849,7 +849,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Specifies the name of a JWT provider defined in the Name field of the jwt-provider configuration entry.\n"
+                    "description": "Specifies the name of the header to match.\n"
                 },
                 "prefix": {
                     "type": "string",
@@ -923,7 +923,7 @@
                 },
                 "namespace": {
                     "type": "string",
-                    "description": "Specifies the namespace at the failover location where the failover services are deployed.\n"
+                    "description": "Specifies the namespace to use for the failover target. If empty, the default namespace is used.\n"
                 },
                 "partition": {
                     "type": "string",
@@ -935,11 +935,11 @@
                 },
                 "service": {
                     "type": "string",
-                    "description": "Specifies the name of the service to resolve at the failover location during a failover scenario.\n"
+                    "description": "Specifies the service name to use for the failover target. If empty, the current service name is used.\n"
                 },
                 "serviceSubset": {
                     "type": "string",
-                    "description": "Specifies the name of a subset of service instances to resolve at the failover location during a failover scenario.\n"
+                    "description": "Specifies the named subset to use for the failover target. If empty, the default subset for the requested service name is used.\n"
                 }
             },
             "type": "object"
@@ -1204,7 +1204,7 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Defines a set of key-value pairs to add to the header. Use header names as the keys.\n"
+                    "description": "Defines a set of key-value pairs to add to the header. Use header names as the keys\n"
                 },
                 "removes": {
                     "type": "array",
@@ -1218,7 +1218,7 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Defines a set of key-value pairs to add to the request header or to replace existing header values with.\n"
+                    "description": "Defines a set of key-value pairs to add to the response header or to replace existing header values with\n"
                 }
             },
             "type": "object"
@@ -1307,19 +1307,19 @@
             "properties": {
                 "exact": {
                     "type": "string",
-                    "description": "Specifies that a request matches when the header with the given name is this exact value.\n"
+                    "description": "Specifies that a request matches when the query parameter with the given name is this exact value.\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "Specifies the name of the HTTP header to match.\n"
+                    "description": "Specifies the name of the HTTP query parameter to match.\n"
                 },
                 "present": {
                     "type": "boolean",
-                    "description": "Specifies that a request matches when the value in the `name` argument is present anywhere in the HTTP header.\n"
+                    "description": "Specifies that a request matches when the value in the `name` argument is present anywhere in the HTTP query parameter.\n"
                 },
                 "regex": {
                     "type": "string",
-                    "description": "Specifies that a request matches when the header with the given name matches this regular expression.\n"
+                    "description": "Specifies that a request matches when the query parameter with the given name matches this regular expression.\n"
                 }
             },
             "type": "object"
@@ -3455,7 +3455,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of node, workload identity or service.\n"
+                    "description": "The name of the ACL role.\n"
                 },
                 "namespace": {
                     "type": "string",
@@ -3504,7 +3504,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of node, workload identity or service.\n"
+                    "description": "The name of the ACL role.\n"
                 },
                 "namespace": {
                     "type": "string",
@@ -3554,7 +3554,7 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "The name of node, workload identity or service.\n"
+                        "description": "The name of the ACL role.\n"
                     },
                     "namespace": {
                         "type": "string",
@@ -4496,7 +4496,7 @@
                     "items": {
                         "$ref": "#/types/consul:index/ConfigEntryServiceDefaultsMeshGateway:ConfigEntryServiceDefaultsMeshGateway"
                     },
-                    "description": "Specifies the default mesh gateway mode field for all upstreams.\n"
+                    "description": "Specifies the default mesh gateway mode field for the service.\n"
                 },
                 "meta": {
                     "type": "object",
@@ -4519,11 +4519,11 @@
                 },
                 "namespace": {
                     "type": "string",
-                    "description": "Specifies the namespace containing the upstream service that the configuration applies to.\n"
+                    "description": "Specifies the Consul namespace that the configuration entry applies to.\n"
                 },
                 "partition": {
                     "type": "string",
-                    "description": "Specifies the name of the name of the Consul admin partition that the configuration entry applies to.\n"
+                    "description": "Specifies the name of the name of the Consul admin partition that the configuration entry applies to. Refer to Admin Partitions for additional information.\n"
                 },
                 "protocol": {
                     "type": "string",
@@ -4596,7 +4596,7 @@
                     "items": {
                         "$ref": "#/types/consul:index/ConfigEntryServiceDefaultsMeshGateway:ConfigEntryServiceDefaultsMeshGateway"
                     },
-                    "description": "Specifies the default mesh gateway mode field for all upstreams.\n"
+                    "description": "Specifies the default mesh gateway mode field for the service.\n"
                 },
                 "meta": {
                     "type": "object",
@@ -4620,12 +4620,12 @@
                 },
                 "namespace": {
                     "type": "string",
-                    "description": "Specifies the namespace containing the upstream service that the configuration applies to.\n",
+                    "description": "Specifies the Consul namespace that the configuration entry applies to.\n",
                     "willReplaceOnChanges": true
                 },
                 "partition": {
                     "type": "string",
-                    "description": "Specifies the name of the name of the Consul admin partition that the configuration entry applies to.\n",
+                    "description": "Specifies the name of the name of the Consul admin partition that the configuration entry applies to. Refer to Admin Partitions for additional information.\n",
                     "willReplaceOnChanges": true
                 },
                 "protocol": {
@@ -4700,7 +4700,7 @@
                         "items": {
                             "$ref": "#/types/consul:index/ConfigEntryServiceDefaultsMeshGateway:ConfigEntryServiceDefaultsMeshGateway"
                         },
-                        "description": "Specifies the default mesh gateway mode field for all upstreams.\n"
+                        "description": "Specifies the default mesh gateway mode field for the service.\n"
                     },
                     "meta": {
                         "type": "object",
@@ -4724,12 +4724,12 @@
                     },
                     "namespace": {
                         "type": "string",
-                        "description": "Specifies the namespace containing the upstream service that the configuration applies to.\n",
+                        "description": "Specifies the Consul namespace that the configuration entry applies to.\n",
                         "willReplaceOnChanges": true
                     },
                     "partition": {
                         "type": "string",
-                        "description": "Specifies the name of the name of the Consul admin partition that the configuration entry applies to.\n",
+                        "description": "Specifies the name of the name of the Consul admin partition that the configuration entry applies to. Refer to Admin Partitions for additional information.\n",
                         "willReplaceOnChanges": true
                     },
                     "protocol": {
@@ -4773,15 +4773,15 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Specifies the name of a JWT provider defined in the Name field of the jwt-provider configuration entry.\n"
+                    "description": "Specifies a name of the destination service for all intentions defined in the configuration entry.\n"
                 },
                 "namespace": {
                     "type": "string",
-                    "description": "Specifies the traffic source namespace that the intention allows or denies traffic from.\n"
+                    "description": "Specifies the namespace to apply the configuration entry.\n"
                 },
                 "partition": {
                     "type": "string",
-                    "description": "Specifies the name of an admin partition that the intention allows or denies traffic from.\n"
+                    "description": "Specifies the admin partition to apply the configuration entry.\n"
                 },
                 "sources": {
                     "type": "array",
@@ -4811,17 +4811,17 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Specifies the name of a JWT provider defined in the Name field of the jwt-provider configuration entry.\n",
+                    "description": "Specifies a name of the destination service for all intentions defined in the configuration entry.\n",
                     "willReplaceOnChanges": true
                 },
                 "namespace": {
                     "type": "string",
-                    "description": "Specifies the traffic source namespace that the intention allows or denies traffic from.\n",
+                    "description": "Specifies the namespace to apply the configuration entry.\n",
                     "willReplaceOnChanges": true
                 },
                 "partition": {
                     "type": "string",
-                    "description": "Specifies the name of an admin partition that the intention allows or denies traffic from.\n",
+                    "description": "Specifies the admin partition to apply the configuration entry.\n",
                     "willReplaceOnChanges": true
                 },
                 "sources": {
@@ -4851,17 +4851,17 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "Specifies the name of a JWT provider defined in the Name field of the jwt-provider configuration entry.\n",
+                        "description": "Specifies a name of the destination service for all intentions defined in the configuration entry.\n",
                         "willReplaceOnChanges": true
                     },
                     "namespace": {
                         "type": "string",
-                        "description": "Specifies the traffic source namespace that the intention allows or denies traffic from.\n",
+                        "description": "Specifies the namespace to apply the configuration entry.\n",
                         "willReplaceOnChanges": true
                     },
                     "partition": {
                         "type": "string",
-                        "description": "Specifies the name of an admin partition that the intention allows or denies traffic from.\n",
+                        "description": "Specifies the admin partition to apply the configuration entry.\n",
                         "willReplaceOnChanges": true
                     },
                     "sources": {
@@ -4909,15 +4909,15 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of subset.\n"
+                    "description": "Specifies a name for the configuration entry.\n"
                 },
                 "namespace": {
                     "type": "string",
-                    "description": "Specifies the namespace at the failover location where the failover services are deployed.\n"
+                    "description": "Specifies the namespace that the service resolver applies to.\n"
                 },
                 "partition": {
                     "type": "string",
-                    "description": "Specifies the admin partition within the same datacenter to use for the failover target. If empty, the default partition is used.\n"
+                    "description": "Specifies the admin partition that the service resolver applies to.\n"
                 },
                 "redirects": {
                     "type": "array",
@@ -4973,17 +4973,17 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of subset.\n",
+                    "description": "Specifies a name for the configuration entry.\n",
                     "willReplaceOnChanges": true
                 },
                 "namespace": {
                     "type": "string",
-                    "description": "Specifies the namespace at the failover location where the failover services are deployed.\n",
+                    "description": "Specifies the namespace that the service resolver applies to.\n",
                     "willReplaceOnChanges": true
                 },
                 "partition": {
                     "type": "string",
-                    "description": "Specifies the admin partition within the same datacenter to use for the failover target. If empty, the default partition is used.\n",
+                    "description": "Specifies the admin partition that the service resolver applies to.\n",
                     "willReplaceOnChanges": true
                 },
                 "redirects": {
@@ -5039,17 +5039,17 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "Name of subset.\n",
+                        "description": "Specifies a name for the configuration entry.\n",
                         "willReplaceOnChanges": true
                     },
                     "namespace": {
                         "type": "string",
-                        "description": "Specifies the namespace at the failover location where the failover services are deployed.\n",
+                        "description": "Specifies the namespace that the service resolver applies to.\n",
                         "willReplaceOnChanges": true
                     },
                     "partition": {
                         "type": "string",
-                        "description": "Specifies the admin partition within the same datacenter to use for the failover target. If empty, the default partition is used.\n",
+                        "description": "Specifies the admin partition that the service resolver applies to.\n",
                         "willReplaceOnChanges": true
                     },
                     "redirects": {
@@ -5086,15 +5086,15 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Specifies the name of the HTTP header to match.\n"
+                    "description": "Specifies a name for the configuration entry.\n"
                 },
                 "namespace": {
                     "type": "string",
-                    "description": "Specifies the Consul namespace to resolve the service from instead of the current namespace.\n"
+                    "description": "Specifies the namespace to apply the configuration entry.\n"
                 },
                 "partition": {
                     "type": "string",
-                    "description": "Specifies the Consul admin partition to resolve the service from instead of the current partition.\n"
+                    "description": "Specifies the admin partition to apply the configuration entry.\n"
                 },
                 "routes": {
                     "type": "array",
@@ -5117,17 +5117,17 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Specifies the name of the HTTP header to match.\n",
+                    "description": "Specifies a name for the configuration entry.\n",
                     "willReplaceOnChanges": true
                 },
                 "namespace": {
                     "type": "string",
-                    "description": "Specifies the Consul namespace to resolve the service from instead of the current namespace.\n",
+                    "description": "Specifies the namespace to apply the configuration entry.\n",
                     "willReplaceOnChanges": true
                 },
                 "partition": {
                     "type": "string",
-                    "description": "Specifies the Consul admin partition to resolve the service from instead of the current partition.\n",
+                    "description": "Specifies the admin partition to apply the configuration entry.\n",
                     "willReplaceOnChanges": true
                 },
                 "routes": {
@@ -5150,17 +5150,17 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "Specifies the name of the HTTP header to match.\n",
+                        "description": "Specifies a name for the configuration entry.\n",
                         "willReplaceOnChanges": true
                     },
                     "namespace": {
                         "type": "string",
-                        "description": "Specifies the Consul namespace to resolve the service from instead of the current namespace.\n",
+                        "description": "Specifies the namespace to apply the configuration entry.\n",
                         "willReplaceOnChanges": true
                     },
                     "partition": {
                         "type": "string",
-                        "description": "Specifies the Consul admin partition to resolve the service from instead of the current partition.\n",
+                        "description": "Specifies the admin partition to apply the configuration entry.\n",
                         "willReplaceOnChanges": true
                     },
                     "routes": {
@@ -5190,11 +5190,11 @@
                 },
                 "namespace": {
                     "type": "string",
-                    "description": "Specifies the namespace to use in the FQDN when resolving the service.\n"
+                    "description": "Specifies the namespace to apply the configuration entry.\n"
                 },
                 "partition": {
                     "type": "string",
-                    "description": "Specifies the admin partition to use in the FQDN when resolving the service.\n"
+                    "description": "Specifies the admin partition to apply the configuration entry.\n"
                 },
                 "splits": {
                     "type": "array",
@@ -5223,12 +5223,12 @@
                 },
                 "namespace": {
                     "type": "string",
-                    "description": "Specifies the namespace to use in the FQDN when resolving the service.\n",
+                    "description": "Specifies the namespace to apply the configuration entry.\n",
                     "willReplaceOnChanges": true
                 },
                 "partition": {
                     "type": "string",
-                    "description": "Specifies the admin partition to use in the FQDN when resolving the service.\n",
+                    "description": "Specifies the admin partition to apply the configuration entry.\n",
                     "willReplaceOnChanges": true
                 },
                 "splits": {
@@ -5259,12 +5259,12 @@
                     },
                     "namespace": {
                         "type": "string",
-                        "description": "Specifies the namespace to use in the FQDN when resolving the service.\n",
+                        "description": "Specifies the namespace to apply the configuration entry.\n",
                         "willReplaceOnChanges": true
                     },
                     "partition": {
                         "type": "string",
-                        "description": "Specifies the admin partition to use in the FQDN when resolving the service.\n",
+                        "description": "Specifies the admin partition to apply the configuration entry.\n",
                         "willReplaceOnChanges": true
                     },
                     "splits": {
@@ -6507,7 +6507,7 @@
                 },
                 "datacenter": {
                     "type": "string",
-                    "description": "Specifies a WAN federated datacenter to forward the query to.\n"
+                    "description": "The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.\n"
                 },
                 "dns": {
                     "$ref": "#/types/consul:index/PreparedQueryDns:PreparedQueryDns",
@@ -6591,7 +6591,7 @@
                 },
                 "datacenter": {
                     "type": "string",
-                    "description": "Specifies a WAN federated datacenter to forward the query to.\n",
+                    "description": "The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.\n",
                     "willReplaceOnChanges": true
                 },
                 "dns": {
@@ -6677,7 +6677,7 @@
                     },
                     "datacenter": {
                         "type": "string",
-                        "description": "Specifies a WAN federated datacenter to forward the query to.\n",
+                        "description": "The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.\n",
                         "willReplaceOnChanges": true
                     },
                     "dns": {
@@ -6788,7 +6788,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the header.\n"
+                    "description": "The name of the service.\n"
                 },
                 "namespace": {
                     "type": "string",
@@ -6858,7 +6858,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the header.\n",
+                    "description": "The name of the service.\n",
                     "willReplaceOnChanges": true
                 },
                 "namespace": {
@@ -6931,7 +6931,7 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "The name of the header.\n",
+                        "description": "The name of the service.\n",
                         "willReplaceOnChanges": true
                     },
                     "namespace": {
@@ -7136,7 +7136,8 @@
                 "description": "A collection of arguments for invoking getAclRole.\n",
                 "properties": {
                     "name": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The name of the ACL Role.\n"
                     },
                     "namespace": {
                         "type": "string",
@@ -7903,8 +7904,7 @@
                         "description": "The Consul datacenter to query.  Defaults to the\nsame value found in `query_options` parameter specified below, or if that is\nempty, the `datacenter` value found in the Consul agent that this provider is\nconfigured to talk to.\n"
                     },
                     "filter": {
-                        "type": "string",
-                        "description": "A filter expression to refine the query, see https://www.consul.io/api-docs/features/filtering\nand https://www.consul.io/api-docs/catalog#filtering-1.\n"
+                        "type": "string"
                     },
                     "name": {
                         "type": "string",
@@ -8607,8 +8607,7 @@
                         "description": "The Consul datacenter to query.  Defaults to the\nsame value found in `query_options` parameter specified below, or if that is\nempty, the `datacenter` value found in the Consul agent that this provider is\nconfigured to talk to.\n"
                     },
                     "filter": {
-                        "type": "string",
-                        "description": "A filter expression to refine the query, see https://www.consul.io/api-docs/features/filtering\nand https://www.consul.io/api-docs/catalog#filtering-1.\n"
+                        "type": "string"
                     },
                     "name": {
                         "type": "string",
