@@ -45,11 +45,11 @@ export class Provider extends pulumi.ProviderResource {
      */
     public readonly caPem!: pulumi.Output<string | undefined>;
     /**
-     * A path to a PEM-encoded certificate provided to the remote agent; requires use of `key_file` or `key_pem`.
+     * A path to a PEM-encoded certificate provided to the remote agent; requires use of `keyFile` or `keyPem`.
      */
     public readonly certFile!: pulumi.Output<string | undefined>;
     /**
-     * PEM-encoded certificate provided to the remote agent; requires use of `key_file` or `key_pem`.
+     * PEM-encoded certificate provided to the remote agent; requires use of `keyFile` or `keyPem`.
      */
     public readonly certPem!: pulumi.Output<string | undefined>;
     /**
@@ -62,11 +62,11 @@ export class Provider extends pulumi.ProviderResource {
      */
     public readonly httpAuth!: pulumi.Output<string | undefined>;
     /**
-     * A path to a PEM-encoded private key, required if `cert_file` or `cert_pem` is specified.
+     * A path to a PEM-encoded private key, required if `certFile` or `certPem` is specified.
      */
     public readonly keyFile!: pulumi.Output<string | undefined>;
     /**
-     * PEM-encoded private key, required if `cert_file` or `cert_pem` is specified.
+     * PEM-encoded private key, required if `certFile` or `certPem` is specified.
      */
     public readonly keyPem!: pulumi.Output<string | undefined>;
     public readonly namespace!: pulumi.Output<string | undefined>;
@@ -141,11 +141,11 @@ export interface ProviderArgs {
      */
     caPem?: pulumi.Input<string>;
     /**
-     * A path to a PEM-encoded certificate provided to the remote agent; requires use of `key_file` or `key_pem`.
+     * A path to a PEM-encoded certificate provided to the remote agent; requires use of `keyFile` or `keyPem`.
      */
     certFile?: pulumi.Input<string>;
     /**
-     * PEM-encoded certificate provided to the remote agent; requires use of `key_file` or `key_pem`.
+     * PEM-encoded certificate provided to the remote agent; requires use of `keyFile` or `keyPem`.
      */
     certPem?: pulumi.Input<string>;
     /**
@@ -168,11 +168,11 @@ export interface ProviderArgs {
      */
     insecureHttps?: pulumi.Input<boolean>;
     /**
-     * A path to a PEM-encoded private key, required if `cert_file` or `cert_pem` is specified.
+     * A path to a PEM-encoded private key, required if `certFile` or `certPem` is specified.
      */
     keyFile?: pulumi.Input<string>;
     /**
-     * PEM-encoded private key, required if `cert_file` or `cert_pem` is specified.
+     * PEM-encoded private key, required if `certFile` or `certPem` is specified.
      */
     keyPem?: pulumi.Input<string>;
     namespace?: pulumi.Input<string>;
