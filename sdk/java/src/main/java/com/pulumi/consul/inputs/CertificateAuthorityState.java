@@ -17,9 +17,6 @@ public final class CertificateAuthorityState extends com.pulumi.resources.Resour
     public static final CertificateAuthorityState Empty = new CertificateAuthorityState();
 
     /**
-     * The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
-     * [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
-     * 
      * @deprecated
      * The config attribute is deprecated, please use config_json instead.
      * 
@@ -29,9 +26,6 @@ public final class CertificateAuthorityState extends com.pulumi.resources.Resour
     private @Nullable Output<Map<String,String>> config;
 
     /**
-     * @return The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
-     * [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
-     * 
      * @deprecated
      * The config attribute is deprecated, please use config_json instead.
      * 
@@ -41,19 +35,9 @@ public final class CertificateAuthorityState extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.config);
     }
 
-    /**
-     * The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
-     * [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
-     * 
-     */
     @Import(name="configJson")
     private @Nullable Output<String> configJson;
 
-    /**
-     * @return The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
-     * [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
-     * 
-     */
     public Optional<Output<String>> configJson() {
         return Optional.ofNullable(this.configJson);
     }
@@ -100,9 +84,6 @@ public final class CertificateAuthorityState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param config The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
-         * [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
-         * 
          * @return builder
          * 
          * @deprecated
@@ -116,9 +97,6 @@ public final class CertificateAuthorityState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param config The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
-         * [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
-         * 
          * @return builder
          * 
          * @deprecated
@@ -130,25 +108,11 @@ public final class CertificateAuthorityState extends com.pulumi.resources.Resour
             return config(Output.of(config));
         }
 
-        /**
-         * @param configJson The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
-         * [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
-         * 
-         * @return builder
-         * 
-         */
         public Builder configJson(@Nullable Output<String> configJson) {
             $.configJson = configJson;
             return this;
         }
 
-        /**
-         * @param configJson The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
-         * [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
-         * 
-         * @return builder
-         * 
-         */
         public Builder configJson(String configJson) {
             return configJson(Output.of(configJson));
         }
