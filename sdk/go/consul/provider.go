@@ -27,18 +27,18 @@ type Provider struct {
 	CaPath pulumi.StringPtrOutput `pulumi:"caPath"`
 	// PEM-encoded certificate authority used to verify the remote agent's certificate.
 	CaPem pulumi.StringPtrOutput `pulumi:"caPem"`
-	// A path to a PEM-encoded certificate provided to the remote agent; requires use of `key_file` or `key_pem`.
+	// A path to a PEM-encoded certificate provided to the remote agent; requires use of `keyFile` or `keyPem`.
 	CertFile pulumi.StringPtrOutput `pulumi:"certFile"`
-	// PEM-encoded certificate provided to the remote agent; requires use of `key_file` or `key_pem`.
+	// PEM-encoded certificate provided to the remote agent; requires use of `keyFile` or `keyPem`.
 	CertPem pulumi.StringPtrOutput `pulumi:"certPem"`
 	// The datacenter to use. Defaults to that of the agent.
 	Datacenter pulumi.StringPtrOutput `pulumi:"datacenter"`
 	// HTTP Basic Authentication credentials to be used when communicating with Consul, in the format of either `user` or
 	// `user:pass`. This may also be specified using the `CONSUL_HTTP_AUTH` environment variable.
 	HttpAuth pulumi.StringPtrOutput `pulumi:"httpAuth"`
-	// A path to a PEM-encoded private key, required if `cert_file` or `cert_pem` is specified.
+	// A path to a PEM-encoded private key, required if `certFile` or `certPem` is specified.
 	KeyFile pulumi.StringPtrOutput `pulumi:"keyFile"`
-	// PEM-encoded private key, required if `cert_file` or `cert_pem` is specified.
+	// PEM-encoded private key, required if `certFile` or `certPem` is specified.
 	KeyPem    pulumi.StringPtrOutput `pulumi:"keyPem"`
 	Namespace pulumi.StringPtrOutput `pulumi:"namespace"`
 	// The URL scheme of the agent to use ("http" or "https"). Defaults to "http".
@@ -86,9 +86,9 @@ type providerArgs struct {
 	CaPath *string `pulumi:"caPath"`
 	// PEM-encoded certificate authority used to verify the remote agent's certificate.
 	CaPem *string `pulumi:"caPem"`
-	// A path to a PEM-encoded certificate provided to the remote agent; requires use of `key_file` or `key_pem`.
+	// A path to a PEM-encoded certificate provided to the remote agent; requires use of `keyFile` or `keyPem`.
 	CertFile *string `pulumi:"certFile"`
-	// PEM-encoded certificate provided to the remote agent; requires use of `key_file` or `key_pem`.
+	// PEM-encoded certificate provided to the remote agent; requires use of `keyFile` or `keyPem`.
 	CertPem *string `pulumi:"certPem"`
 	// The datacenter to use. Defaults to that of the agent.
 	Datacenter *string `pulumi:"datacenter"`
@@ -101,9 +101,9 @@ type providerArgs struct {
 	// Boolean value to disable SSL certificate verification; setting this value to true is not recommended for production use.
 	// Only use this with scheme set to "https".
 	InsecureHttps *bool `pulumi:"insecureHttps"`
-	// A path to a PEM-encoded private key, required if `cert_file` or `cert_pem` is specified.
+	// A path to a PEM-encoded private key, required if `certFile` or `certPem` is specified.
 	KeyFile *string `pulumi:"keyFile"`
-	// PEM-encoded private key, required if `cert_file` or `cert_pem` is specified.
+	// PEM-encoded private key, required if `certFile` or `certPem` is specified.
 	KeyPem    *string `pulumi:"keyPem"`
 	Namespace *string `pulumi:"namespace"`
 	// The URL scheme of the agent to use ("http" or "https"). Defaults to "http".
@@ -126,9 +126,9 @@ type ProviderArgs struct {
 	CaPath pulumi.StringPtrInput
 	// PEM-encoded certificate authority used to verify the remote agent's certificate.
 	CaPem pulumi.StringPtrInput
-	// A path to a PEM-encoded certificate provided to the remote agent; requires use of `key_file` or `key_pem`.
+	// A path to a PEM-encoded certificate provided to the remote agent; requires use of `keyFile` or `keyPem`.
 	CertFile pulumi.StringPtrInput
-	// PEM-encoded certificate provided to the remote agent; requires use of `key_file` or `key_pem`.
+	// PEM-encoded certificate provided to the remote agent; requires use of `keyFile` or `keyPem`.
 	CertPem pulumi.StringPtrInput
 	// The datacenter to use. Defaults to that of the agent.
 	Datacenter pulumi.StringPtrInput
@@ -141,9 +141,9 @@ type ProviderArgs struct {
 	// Boolean value to disable SSL certificate verification; setting this value to true is not recommended for production use.
 	// Only use this with scheme set to "https".
 	InsecureHttps pulumi.BoolPtrInput
-	// A path to a PEM-encoded private key, required if `cert_file` or `cert_pem` is specified.
+	// A path to a PEM-encoded private key, required if `certFile` or `certPem` is specified.
 	KeyFile pulumi.StringPtrInput
-	// PEM-encoded private key, required if `cert_file` or `cert_pem` is specified.
+	// PEM-encoded private key, required if `certFile` or `certPem` is specified.
 	KeyPem    pulumi.StringPtrInput
 	Namespace pulumi.StringPtrInput
 	// The URL scheme of the agent to use ("http" or "https"). Defaults to "http".
@@ -211,12 +211,12 @@ func (o ProviderOutput) CaPem() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.CaPem }).(pulumi.StringPtrOutput)
 }
 
-// A path to a PEM-encoded certificate provided to the remote agent; requires use of `key_file` or `key_pem`.
+// A path to a PEM-encoded certificate provided to the remote agent; requires use of `keyFile` or `keyPem`.
 func (o ProviderOutput) CertFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.CertFile }).(pulumi.StringPtrOutput)
 }
 
-// PEM-encoded certificate provided to the remote agent; requires use of `key_file` or `key_pem`.
+// PEM-encoded certificate provided to the remote agent; requires use of `keyFile` or `keyPem`.
 func (o ProviderOutput) CertPem() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.CertPem }).(pulumi.StringPtrOutput)
 }
@@ -232,12 +232,12 @@ func (o ProviderOutput) HttpAuth() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.HttpAuth }).(pulumi.StringPtrOutput)
 }
 
-// A path to a PEM-encoded private key, required if `cert_file` or `cert_pem` is specified.
+// A path to a PEM-encoded private key, required if `certFile` or `certPem` is specified.
 func (o ProviderOutput) KeyFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.KeyFile }).(pulumi.StringPtrOutput)
 }
 
-// PEM-encoded private key, required if `cert_file` or `cert_pem` is specified.
+// PEM-encoded private key, required if `certFile` or `certPem` is specified.
 func (o ProviderOutput) KeyPem() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.KeyPem }).(pulumi.StringPtrOutput)
 }

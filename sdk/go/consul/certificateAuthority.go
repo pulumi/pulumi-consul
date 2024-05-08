@@ -24,13 +24,8 @@ import (
 type CertificateAuthority struct {
 	pulumi.CustomResourceState
 
-	// The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
-	// [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
-	//
 	// Deprecated: The config attribute is deprecated, please use configJson instead.
-	Config pulumi.StringMapOutput `pulumi:"config"`
-	// The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
-	// [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+	Config     pulumi.StringMapOutput `pulumi:"config"`
 	ConfigJson pulumi.StringPtrOutput `pulumi:"configJson"`
 	// Specifies the CA provider type to use.
 	ConnectProvider pulumi.StringOutput `pulumi:"connectProvider"`
@@ -69,26 +64,16 @@ func GetCertificateAuthority(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CertificateAuthority resources.
 type certificateAuthorityState struct {
-	// The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
-	// [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
-	//
 	// Deprecated: The config attribute is deprecated, please use configJson instead.
-	Config map[string]string `pulumi:"config"`
-	// The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
-	// [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
-	ConfigJson *string `pulumi:"configJson"`
+	Config     map[string]string `pulumi:"config"`
+	ConfigJson *string           `pulumi:"configJson"`
 	// Specifies the CA provider type to use.
 	ConnectProvider *string `pulumi:"connectProvider"`
 }
 
 type CertificateAuthorityState struct {
-	// The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
-	// [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
-	//
 	// Deprecated: The config attribute is deprecated, please use configJson instead.
-	Config pulumi.StringMapInput
-	// The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
-	// [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+	Config     pulumi.StringMapInput
 	ConfigJson pulumi.StringPtrInput
 	// Specifies the CA provider type to use.
 	ConnectProvider pulumi.StringPtrInput
@@ -99,27 +84,17 @@ func (CertificateAuthorityState) ElementType() reflect.Type {
 }
 
 type certificateAuthorityArgs struct {
-	// The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
-	// [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
-	//
 	// Deprecated: The config attribute is deprecated, please use configJson instead.
-	Config map[string]string `pulumi:"config"`
-	// The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
-	// [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
-	ConfigJson *string `pulumi:"configJson"`
+	Config     map[string]string `pulumi:"config"`
+	ConfigJson *string           `pulumi:"configJson"`
 	// Specifies the CA provider type to use.
 	ConnectProvider string `pulumi:"connectProvider"`
 }
 
 // The set of arguments for constructing a CertificateAuthority resource.
 type CertificateAuthorityArgs struct {
-	// The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
-	// [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
-	//
 	// Deprecated: The config attribute is deprecated, please use configJson instead.
-	Config pulumi.StringMapInput
-	// The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
-	// [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
+	Config     pulumi.StringMapInput
 	ConfigJson pulumi.StringPtrInput
 	// Specifies the CA provider type to use.
 	ConnectProvider pulumi.StringInput
@@ -212,16 +187,11 @@ func (o CertificateAuthorityOutput) ToCertificateAuthorityOutputWithContext(ctx 
 	return o
 }
 
-// The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
-// [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
-//
 // Deprecated: The config attribute is deprecated, please use configJson instead.
 func (o CertificateAuthorityOutput) Config() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *CertificateAuthority) pulumi.StringMapOutput { return v.Config }).(pulumi.StringMapOutput)
 }
 
-// The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
-// [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
 func (o CertificateAuthorityOutput) ConfigJson() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CertificateAuthority) pulumi.StringPtrOutput { return v.ConfigJson }).(pulumi.StringPtrOutput)
 }
