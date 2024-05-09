@@ -4294,12 +4294,10 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see\n[Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).\n",
                     "deprecationMessage": "The config attribute is deprecated, please use config_json instead."
                 },
                 "configJson": {
-                    "type": "string",
-                    "description": "The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see\n[Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).\n"
+                    "type": "string"
                 },
                 "connectProvider": {
                     "type": "string",
@@ -4315,13 +4313,11 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see\n[Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).\n",
                     "deprecationMessage": "The config attribute is deprecated, please use config_json instead.",
                     "willReplaceOnChanges": true
                 },
                 "configJson": {
                     "type": "string",
-                    "description": "The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see\n[Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).\n",
                     "willReplaceOnChanges": true
                 },
                 "connectProvider": {
@@ -4341,13 +4337,11 @@
                         "additionalProperties": {
                             "type": "string"
                         },
-                        "description": "The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see\n[Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).\n",
                         "deprecationMessage": "The config attribute is deprecated, please use config_json instead.",
                         "willReplaceOnChanges": true
                     },
                     "configJson": {
                         "type": "string",
-                        "description": "The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see\n[Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).\n",
                         "willReplaceOnChanges": true
                     },
                     "connectProvider": {
