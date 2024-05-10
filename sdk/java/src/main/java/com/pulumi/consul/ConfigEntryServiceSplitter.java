@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,74 +52,75 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var web = new ConfigEntry(&#34;web&#34;, ConfigEntryArgs.builder()        
- *             .name(&#34;web&#34;)
- *             .kind(&#34;service-defaults&#34;)
+ *         var web = new ConfigEntry("web", ConfigEntryArgs.builder()        
+ *             .name("web")
+ *             .kind("service-defaults")
  *             .configJson(serializeJson(
  *                 jsonObject(
- *                     jsonProperty(&#34;Protocol&#34;, &#34;http&#34;),
- *                     jsonProperty(&#34;Expose&#34;, jsonObject(
+ *                     jsonProperty("Protocol", "http"),
+ *                     jsonProperty("Expose", jsonObject(
  * 
  *                     )),
- *                     jsonProperty(&#34;MeshGateway&#34;, jsonObject(
+ *                     jsonProperty("MeshGateway", jsonObject(
  * 
  *                     )),
- *                     jsonProperty(&#34;TransparentProxy&#34;, jsonObject(
+ *                     jsonProperty("TransparentProxy", jsonObject(
  * 
  *                     ))
  *                 )))
  *             .build());
  * 
- *         var serviceResolver = new ConfigEntryServiceResolver(&#34;serviceResolver&#34;, ConfigEntryServiceResolverArgs.builder()        
- *             .name(&#34;service-resolver&#34;)
- *             .defaultSubset(&#34;v1&#34;)
+ *         var serviceResolver = new ConfigEntryServiceResolver("serviceResolver", ConfigEntryServiceResolverArgs.builder()        
+ *             .name("service-resolver")
+ *             .defaultSubset("v1")
  *             .subsets(            
  *                 ConfigEntryServiceResolverSubsetArgs.builder()
- *                     .name(&#34;v1&#34;)
- *                     .filter(&#34;Service.Meta.version == v1&#34;)
+ *                     .name("v1")
+ *                     .filter("Service.Meta.version == v1")
  *                     .build(),
  *                 ConfigEntryServiceResolverSubsetArgs.builder()
- *                     .name(&#34;v2&#34;)
- *                     .filter(&#34;Service.Meta.version == v2&#34;)
+ *                     .name("v2")
+ *                     .filter("Service.Meta.version == v2")
  *                     .build())
  *             .build());
  * 
- *         var foo = new ConfigEntryServiceSplitter(&#34;foo&#34;, ConfigEntryServiceSplitterArgs.builder()        
+ *         var foo = new ConfigEntryServiceSplitter("foo", ConfigEntryServiceSplitterArgs.builder()        
  *             .name(serviceResolver.name())
- *             .meta(Map.of(&#34;key&#34;, &#34;value&#34;))
+ *             .meta(Map.of("key", "value"))
  *             .splits(            
  *                 ConfigEntryServiceSplitterSplitArgs.builder()
  *                     .weight(80)
- *                     .service(&#34;web&#34;)
- *                     .serviceSubset(&#34;v1&#34;)
+ *                     .service("web")
+ *                     .serviceSubset("v1")
  *                     .requestHeaders(ConfigEntryServiceSplitterSplitRequestHeadersArgs.builder()
- *                         .set(Map.of(&#34;x-web-version&#34;, &#34;from-v1&#34;))
+ *                         .set(Map.of("x-web-version", "from-v1"))
  *                         .build())
  *                     .responseHeaders(ConfigEntryServiceSplitterSplitResponseHeadersArgs.builder()
- *                         .set(Map.of(&#34;x-web-version&#34;, &#34;to-v1&#34;))
+ *                         .set(Map.of("x-web-version", "to-v1"))
  *                         .build())
  *                     .build(),
  *                 ConfigEntryServiceSplitterSplitArgs.builder()
  *                     .weight(10)
- *                     .service(&#34;web&#34;)
- *                     .serviceSubset(&#34;v2&#34;)
+ *                     .service("web")
+ *                     .serviceSubset("v2")
  *                     .requestHeaders(ConfigEntryServiceSplitterSplitRequestHeadersArgs.builder()
- *                         .set(Map.of(&#34;x-web-version&#34;, &#34;from-v2&#34;))
+ *                         .set(Map.of("x-web-version", "from-v2"))
  *                         .build())
  *                     .responseHeaders(ConfigEntryServiceSplitterSplitResponseHeadersArgs.builder()
- *                         .set(Map.of(&#34;x-web-version&#34;, &#34;to-v2&#34;))
+ *                         .set(Map.of("x-web-version", "to-v2"))
  *                         .build())
  *                     .build(),
  *                 ConfigEntryServiceSplitterSplitArgs.builder()
  *                     .weight(10)
- *                     .service(&#34;web&#34;)
- *                     .serviceSubset(&#34;v2&#34;)
+ *                     .service("web")
+ *                     .serviceSubset("v2")
  *                     .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -43,20 +44,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myappConfig = new KeyPrefix(&#34;myappConfig&#34;, KeyPrefixArgs.builder()        
- *             .datacenter(&#34;nyc1&#34;)
- *             .token(&#34;abcd&#34;)
- *             .pathPrefix(&#34;myapp/config/&#34;)
+ *         var myappConfig = new KeyPrefix("myappConfig", KeyPrefixArgs.builder()        
+ *             .datacenter("nyc1")
+ *             .token("abcd")
+ *             .pathPrefix("myapp/config/")
  *             .subkeys(Map.ofEntries(
- *                 Map.entry(&#34;elb_cname&#34;, appAwsElb.dnsName()),
- *                 Map.entry(&#34;s3_bucket_name&#34;, appAwsS3Bucket.bucket()),
- *                 Map.entry(&#34;database/hostname&#34;, app.address()),
- *                 Map.entry(&#34;database/port&#34;, app.port()),
- *                 Map.entry(&#34;database/username&#34;, app.username()),
- *                 Map.entry(&#34;database/name&#34;, app.name())
+ *                 Map.entry("elb_cname", appAwsElb.dnsName()),
+ *                 Map.entry("s3_bucket_name", appAwsS3Bucket.bucket()),
+ *                 Map.entry("database/hostname", app.address()),
+ *                 Map.entry("database/port", app.port()),
+ *                 Map.entry("database/username", app.username()),
+ *                 Map.entry("database/name", app.name())
  *             ))
  *             .subkeyCollection(KeyPrefixSubkeyCollectionArgs.builder()
- *                 .path(&#34;database/password&#34;)
+ *                 .path("database/password")
  *                 .value(app.password())
  *                 .flags(2)
  *                 .build())
@@ -64,7 +65,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

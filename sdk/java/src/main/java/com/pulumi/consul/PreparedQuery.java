@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,60 +52,61 @@ import javax.annotation.Nullable;
  *         // Creates a prepared query myquery.query.consul that finds the nearest
  *         // healthy myapp.service.consul instance that has the active tag and not
  *         // the standby tag.
- *         var myapp_query = new PreparedQuery(&#34;myapp-query&#34;, PreparedQueryArgs.builder()        
- *             .name(&#34;myquery&#34;)
- *             .datacenter(&#34;us-central1&#34;)
- *             .token(&#34;abcd&#34;)
- *             .storedToken(&#34;wxyz&#34;)
+ *         var myapp_query = new PreparedQuery("myapp-query", PreparedQueryArgs.builder()        
+ *             .name("myquery")
+ *             .datacenter("us-central1")
+ *             .token("abcd")
+ *             .storedToken("wxyz")
  *             .onlyPassing(true)
- *             .near(&#34;_agent&#34;)
- *             .service(&#34;myapp&#34;)
+ *             .near("_agent")
+ *             .service("myapp")
  *             .tags(            
- *                 &#34;active&#34;,
- *                 &#34;!standby&#34;)
+ *                 "active",
+ *                 "!standby")
  *             .failover(PreparedQueryFailoverArgs.builder()
  *                 .nearestN(3)
  *                 .datacenters(                
- *                     &#34;us-west1&#34;,
- *                     &#34;us-east-2&#34;,
- *                     &#34;asia-east1&#34;)
+ *                     "us-west1",
+ *                     "us-east-2",
+ *                     "asia-east1")
  *                 .build())
  *             .dns(PreparedQueryDnsArgs.builder()
- *                 .ttl(&#34;30s&#34;)
+ *                 .ttl("30s")
  *                 .build())
  *             .build());
  * 
  *         // Creates a Prepared Query Template that matches *-near-self.query.consul
  *         // and finds the nearest service that matches the glob character (e.g.
  *         // foo-near-self.query.consul will find the nearest healthy foo.service.consul).
- *         var service_near_self = new PreparedQuery(&#34;service-near-self&#34;, PreparedQueryArgs.builder()        
- *             .datacenter(&#34;nyc1&#34;)
- *             .token(&#34;abcd&#34;)
- *             .storedToken(&#34;wxyz&#34;)
- *             .name(&#34;&#34;)
+ *         var service_near_self = new PreparedQuery("service-near-self", PreparedQueryArgs.builder()        
+ *             .datacenter("nyc1")
+ *             .token("abcd")
+ *             .storedToken("wxyz")
+ *             .name("")
  *             .onlyPassing(true)
  *             .connect(true)
- *             .near(&#34;_agent&#34;)
+ *             .near("_agent")
  *             .template(PreparedQueryTemplateArgs.builder()
- *                 .type(&#34;name_prefix_match&#34;)
- *                 .regexp(&#34;^(.*)-near-self$&#34;)
+ *                 .type("name_prefix_match")
+ *                 .regexp("^(.*)-near-self$")
  *                 .build())
- *             .service(&#34;${match(1)}&#34;)
+ *             .service("${match(1)}")
  *             .failover(PreparedQueryFailoverArgs.builder()
  *                 .nearestN(3)
  *                 .datacenters(                
- *                     &#34;dc2&#34;,
- *                     &#34;dc3&#34;,
- *                     &#34;dc4&#34;)
+ *                     "dc2",
+ *                     "dc3",
+ *                     "dc4")
  *                 .build())
  *             .dns(PreparedQueryDnsArgs.builder()
- *                 .ttl(&#34;5m&#34;)
+ *                 .ttl("5m")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

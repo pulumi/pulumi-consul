@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,24 +47,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var read_policy = new AclPolicy(&#34;read-policy&#34;, AclPolicyArgs.builder()        
- *             .name(&#34;read-policy&#34;)
- *             .rules(&#34;node \&#34;\&#34; { policy = \&#34;read\&#34; }&#34;)
- *             .datacenters(&#34;dc1&#34;)
+ *         var read_policy = new AclPolicy("read-policy", AclPolicyArgs.builder()        
+ *             .name("read-policy")
+ *             .rules("node \"\" { policy = \"read\" }")
+ *             .datacenters("dc1")
  *             .build());
  * 
- *         var read = new AclRole(&#34;read&#34;, AclRoleArgs.builder()        
- *             .name(&#34;foo&#34;)
- *             .description(&#34;bar&#34;)
+ *         var read = new AclRole("read", AclRoleArgs.builder()        
+ *             .name("foo")
+ *             .description("bar")
  *             .policies(read_policy.id())
  *             .serviceIdentities(AclRoleServiceIdentityArgs.builder()
- *                 .serviceName(&#34;foo&#34;)
+ *                 .serviceName("foo")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

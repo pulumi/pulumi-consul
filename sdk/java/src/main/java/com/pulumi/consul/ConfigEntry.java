@@ -18,7 +18,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -40,127 +41,129 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var proxyDefaults = new ConfigEntry(&#34;proxyDefaults&#34;, ConfigEntryArgs.builder()        
- *             .kind(&#34;proxy-defaults&#34;)
- *             .name(&#34;global&#34;)
+ *         var proxyDefaults = new ConfigEntry("proxyDefaults", ConfigEntryArgs.builder()        
+ *             .kind("proxy-defaults")
+ *             .name("global")
  *             .configJson(serializeJson(
  *                 jsonObject(
- *                     jsonProperty(&#34;Config&#34;, jsonObject(
- *                         jsonProperty(&#34;local_connect_timeout_ms&#34;, 1000),
- *                         jsonProperty(&#34;handshake_timeout_ms&#34;, 10000)
+ *                     jsonProperty("Config", jsonObject(
+ *                         jsonProperty("local_connect_timeout_ms", 1000),
+ *                         jsonProperty("handshake_timeout_ms", 10000)
  *                     ))
  *                 )))
  *             .build());
  * 
- *         var web = new ConfigEntry(&#34;web&#34;, ConfigEntryArgs.builder()        
- *             .name(&#34;web&#34;)
- *             .kind(&#34;service-defaults&#34;)
+ *         var web = new ConfigEntry("web", ConfigEntryArgs.builder()        
+ *             .name("web")
+ *             .kind("service-defaults")
  *             .configJson(serializeJson(
  *                 jsonObject(
- *                     jsonProperty(&#34;Protocol&#34;, &#34;http&#34;)
+ *                     jsonProperty("Protocol", "http")
  *                 )))
  *             .build());
  * 
- *         var admin = new ConfigEntry(&#34;admin&#34;, ConfigEntryArgs.builder()        
- *             .name(&#34;admin&#34;)
- *             .kind(&#34;service-defaults&#34;)
+ *         var admin = new ConfigEntry("admin", ConfigEntryArgs.builder()        
+ *             .name("admin")
+ *             .kind("service-defaults")
  *             .configJson(serializeJson(
  *                 jsonObject(
- *                     jsonProperty(&#34;Protocol&#34;, &#34;http&#34;)
+ *                     jsonProperty("Protocol", "http")
  *                 )))
  *             .build());
  * 
- *         var serviceResolver = new ConfigEntry(&#34;serviceResolver&#34;, ConfigEntryArgs.builder()        
- *             .kind(&#34;service-resolver&#34;)
+ *         var serviceResolver = new ConfigEntry("serviceResolver", ConfigEntryArgs.builder()        
+ *             .kind("service-resolver")
  *             .name(web.name())
  *             .configJson(serializeJson(
  *                 jsonObject(
- *                     jsonProperty(&#34;DefaultSubset&#34;, &#34;v1&#34;),
- *                     jsonProperty(&#34;Subsets&#34;, jsonObject(
- *                         jsonProperty(&#34;v1&#34;, jsonObject(
- *                             jsonProperty(&#34;Filter&#34;, &#34;Service.Meta.version == v1&#34;)
+ *                     jsonProperty("DefaultSubset", "v1"),
+ *                     jsonProperty("Subsets", jsonObject(
+ *                         jsonProperty("v1", jsonObject(
+ *                             jsonProperty("Filter", "Service.Meta.version == v1")
  *                         )),
- *                         jsonProperty(&#34;v2&#34;, jsonObject(
- *                             jsonProperty(&#34;Filter&#34;, &#34;Service.Meta.version == v2&#34;)
+ *                         jsonProperty("v2", jsonObject(
+ *                             jsonProperty("Filter", "Service.Meta.version == v2")
  *                         ))
  *                     ))
  *                 )))
  *             .build());
  * 
- *         var serviceSplitter = new ConfigEntry(&#34;serviceSplitter&#34;, ConfigEntryArgs.builder()        
- *             .kind(&#34;service-splitter&#34;)
+ *         var serviceSplitter = new ConfigEntry("serviceSplitter", ConfigEntryArgs.builder()        
+ *             .kind("service-splitter")
  *             .name(serviceResolver.name())
  *             .configJson(serializeJson(
  *                 jsonObject(
- *                     jsonProperty(&#34;Splits&#34;, jsonArray(
+ *                     jsonProperty("Splits", jsonArray(
  *                         jsonObject(
- *                             jsonProperty(&#34;Weight&#34;, 90),
- *                             jsonProperty(&#34;ServiceSubset&#34;, &#34;v1&#34;)
+ *                             jsonProperty("Weight", 90),
+ *                             jsonProperty("ServiceSubset", "v1")
  *                         ), 
  *                         jsonObject(
- *                             jsonProperty(&#34;Weight&#34;, 10),
- *                             jsonProperty(&#34;ServiceSubset&#34;, &#34;v2&#34;)
+ *                             jsonProperty("Weight", 10),
+ *                             jsonProperty("ServiceSubset", "v2")
  *                         )
  *                     ))
  *                 )))
  *             .build());
  * 
- *         var serviceRouter = new ConfigEntry(&#34;serviceRouter&#34;, ConfigEntryArgs.builder()        
- *             .kind(&#34;service-router&#34;)
- *             .name(&#34;web&#34;)
+ *         var serviceRouter = new ConfigEntry("serviceRouter", ConfigEntryArgs.builder()        
+ *             .kind("service-router")
+ *             .name("web")
  *             .configJson(serializeJson(
  *                 jsonObject(
- *                     jsonProperty(&#34;Routes&#34;, jsonArray(jsonObject(
- *                         jsonProperty(&#34;Match&#34;, jsonObject(
- *                             jsonProperty(&#34;HTTP&#34;, jsonObject(
- *                                 jsonProperty(&#34;PathPrefix&#34;, &#34;/admin&#34;)
+ *                     jsonProperty("Routes", jsonArray(jsonObject(
+ *                         jsonProperty("Match", jsonObject(
+ *                             jsonProperty("HTTP", jsonObject(
+ *                                 jsonProperty("PathPrefix", "/admin")
  *                             ))
  *                         )),
- *                         jsonProperty(&#34;Destination&#34;, jsonObject(
- *                             jsonProperty(&#34;Service&#34;, &#34;admin&#34;)
+ *                         jsonProperty("Destination", jsonObject(
+ *                             jsonProperty("Service", "admin")
  *                         ))
  *                     )))
  *                 )))
  *             .build());
  * 
- *         var ingressGateway = new ConfigEntry(&#34;ingressGateway&#34;, ConfigEntryArgs.builder()        
- *             .name(&#34;us-east-ingress&#34;)
- *             .kind(&#34;ingress-gateway&#34;)
+ *         var ingressGateway = new ConfigEntry("ingressGateway", ConfigEntryArgs.builder()        
+ *             .name("us-east-ingress")
+ *             .kind("ingress-gateway")
  *             .configJson(serializeJson(
  *                 jsonObject(
- *                     jsonProperty(&#34;TLS&#34;, jsonObject(
- *                         jsonProperty(&#34;Enabled&#34;, true)
+ *                     jsonProperty("TLS", jsonObject(
+ *                         jsonProperty("Enabled", true)
  *                     )),
- *                     jsonProperty(&#34;Listeners&#34;, jsonArray(jsonObject(
- *                         jsonProperty(&#34;Port&#34;, 8000),
- *                         jsonProperty(&#34;Protocol&#34;, &#34;http&#34;),
- *                         jsonProperty(&#34;Services&#34;, jsonArray(jsonObject(
- *                             jsonProperty(&#34;Name&#34;, &#34;*&#34;)
+ *                     jsonProperty("Listeners", jsonArray(jsonObject(
+ *                         jsonProperty("Port", 8000),
+ *                         jsonProperty("Protocol", "http"),
+ *                         jsonProperty("Services", jsonArray(jsonObject(
+ *                             jsonProperty("Name", "*")
  *                         )))
  *                     )))
  *                 )))
  *             .build());
  * 
- *         var terminatingGateway = new ConfigEntry(&#34;terminatingGateway&#34;, ConfigEntryArgs.builder()        
- *             .name(&#34;us-west-gateway&#34;)
- *             .kind(&#34;terminating-gateway&#34;)
+ *         var terminatingGateway = new ConfigEntry("terminatingGateway", ConfigEntryArgs.builder()        
+ *             .name("us-west-gateway")
+ *             .kind("terminating-gateway")
  *             .configJson(serializeJson(
  *                 jsonObject(
- *                     jsonProperty(&#34;Services&#34;, jsonArray(jsonObject(
- *                         jsonProperty(&#34;Name&#34;, &#34;billing&#34;)
+ *                     jsonProperty("Services", jsonArray(jsonObject(
+ *                         jsonProperty("Name", "billing")
  *                     )))
  *                 )))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### `service-intentions` config entry
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -182,23 +185,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var serviceIntentions = new ConfigEntry(&#34;serviceIntentions&#34;, ConfigEntryArgs.builder()        
- *             .name(&#34;api-service&#34;)
- *             .kind(&#34;service-intentions&#34;)
+ *         var serviceIntentions = new ConfigEntry("serviceIntentions", ConfigEntryArgs.builder()        
+ *             .name("api-service")
+ *             .kind("service-intentions")
  *             .configJson(serializeJson(
  *                 jsonObject(
- *                     jsonProperty(&#34;Sources&#34;, jsonArray(
+ *                     jsonProperty("Sources", jsonArray(
  *                         jsonObject(
- *                             jsonProperty(&#34;Action&#34;, &#34;allow&#34;),
- *                             jsonProperty(&#34;Name&#34;, &#34;frontend-webapp&#34;),
- *                             jsonProperty(&#34;Precedence&#34;, 9),
- *                             jsonProperty(&#34;Type&#34;, &#34;consul&#34;)
+ *                             jsonProperty("Action", "allow"),
+ *                             jsonProperty("Name", "frontend-webapp"),
+ *                             jsonProperty("Precedence", 9),
+ *                             jsonProperty("Type", "consul")
  *                         ), 
  *                         jsonObject(
- *                             jsonProperty(&#34;Action&#34;, &#34;allow&#34;),
- *                             jsonProperty(&#34;Name&#34;, &#34;nightly-cronjob&#34;),
- *                             jsonProperty(&#34;Precedence&#34;, 9),
- *                             jsonProperty(&#34;Type&#34;, &#34;consul&#34;)
+ *                             jsonProperty("Action", "allow"),
+ *                             jsonProperty("Name", "nightly-cronjob"),
+ *                             jsonProperty("Precedence", 9),
+ *                             jsonProperty("Type", "consul")
  *                         )
  *                     ))
  *                 )))
@@ -206,11 +209,13 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -232,77 +237,77 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var sd = new ConfigEntry(&#34;sd&#34;, ConfigEntryArgs.builder()        
- *             .name(&#34;fort-knox&#34;)
- *             .kind(&#34;service-defaults&#34;)
+ *         var sd = new ConfigEntry("sd", ConfigEntryArgs.builder()        
+ *             .name("fort-knox")
+ *             .kind("service-defaults")
  *             .configJson(serializeJson(
  *                 jsonObject(
- *                     jsonProperty(&#34;Protocol&#34;, &#34;http&#34;)
+ *                     jsonProperty("Protocol", "http")
  *                 )))
  *             .build());
  * 
- *         var jwtProvider = new ConfigEntry(&#34;jwtProvider&#34;, ConfigEntryArgs.builder()        
- *             .name(&#34;test-provider&#34;)
- *             .kind(&#34;jwt-provider&#34;)
+ *         var jwtProvider = new ConfigEntry("jwtProvider", ConfigEntryArgs.builder()        
+ *             .name("test-provider")
+ *             .kind("jwt-provider")
  *             .configJson(serializeJson(
  *                 jsonObject(
- *                     jsonProperty(&#34;Issuer&#34;, &#34;test-issuer&#34;),
- *                     jsonProperty(&#34;JSONWebKeySet&#34;, jsonObject(
- *                         jsonProperty(&#34;Remote&#34;, jsonObject(
- *                             jsonProperty(&#34;URI&#34;, &#34;https://127.0.0.1:9091&#34;),
- *                             jsonProperty(&#34;FetchAsynchronously&#34;, true)
+ *                     jsonProperty("Issuer", "test-issuer"),
+ *                     jsonProperty("JSONWebKeySet", jsonObject(
+ *                         jsonProperty("Remote", jsonObject(
+ *                             jsonProperty("URI", "https://127.0.0.1:9091"),
+ *                             jsonProperty("FetchAsynchronously", true)
  *                         ))
  *                     )),
- *                     jsonProperty(&#34;Forwarding&#34;, jsonObject(
- *                         jsonProperty(&#34;HeaderName&#34;, &#34;test-token&#34;)
+ *                     jsonProperty("Forwarding", jsonObject(
+ *                         jsonProperty("HeaderName", "test-token")
  *                     ))
  *                 )))
  *             .build());
  * 
- *         var serviceIntentions = new ConfigEntry(&#34;serviceIntentions&#34;, ConfigEntryArgs.builder()        
+ *         var serviceIntentions = new ConfigEntry("serviceIntentions", ConfigEntryArgs.builder()        
  *             .name(sd.name())
- *             .kind(&#34;service-intentions&#34;)
- *             .configJson(jwtProvider.name().applyValue(name -&gt; serializeJson(
+ *             .kind("service-intentions")
+ *             .configJson(jwtProvider.name().applyValue(name -> serializeJson(
  *                 jsonObject(
- *                     jsonProperty(&#34;Sources&#34;, jsonArray(
+ *                     jsonProperty("Sources", jsonArray(
  *                         jsonObject(
- *                             jsonProperty(&#34;Name&#34;, &#34;contractor-webapp&#34;),
- *                             jsonProperty(&#34;Permissions&#34;, jsonArray(jsonObject(
- *                                 jsonProperty(&#34;Action&#34;, &#34;allow&#34;),
- *                                 jsonProperty(&#34;HTTP&#34;, jsonObject(
- *                                     jsonProperty(&#34;Methods&#34;, jsonArray(
- *                                         &#34;GET&#34;, 
- *                                         &#34;HEAD&#34;
+ *                             jsonProperty("Name", "contractor-webapp"),
+ *                             jsonProperty("Permissions", jsonArray(jsonObject(
+ *                                 jsonProperty("Action", "allow"),
+ *                                 jsonProperty("HTTP", jsonObject(
+ *                                     jsonProperty("Methods", jsonArray(
+ *                                         "GET", 
+ *                                         "HEAD"
  *                                     )),
- *                                     jsonProperty(&#34;PathExact&#34;, &#34;/healtz&#34;)
+ *                                     jsonProperty("PathExact", "/healtz")
  *                                 )),
- *                                 jsonProperty(&#34;JWT&#34;, jsonObject(
- *                                     jsonProperty(&#34;Providers&#34;, jsonArray(jsonObject(
- *                                         jsonProperty(&#34;Name&#34;, name)
+ *                                 jsonProperty("JWT", jsonObject(
+ *                                     jsonProperty("Providers", jsonArray(jsonObject(
+ *                                         jsonProperty("Name", name)
  *                                     )))
  *                                 ))
  *                             ))),
- *                             jsonProperty(&#34;Precedence&#34;, 9),
- *                             jsonProperty(&#34;Type&#34;, &#34;consul&#34;)
+ *                             jsonProperty("Precedence", 9),
+ *                             jsonProperty("Type", "consul")
  *                         ), 
  *                         jsonObject(
- *                             jsonProperty(&#34;Name&#34;, &#34;admin-dashboard-webapp&#34;),
- *                             jsonProperty(&#34;Permissions&#34;, jsonArray(
+ *                             jsonProperty("Name", "admin-dashboard-webapp"),
+ *                             jsonProperty("Permissions", jsonArray(
  *                                 jsonObject(
- *                                     jsonProperty(&#34;Action&#34;, &#34;deny&#34;),
- *                                     jsonProperty(&#34;HTTP&#34;, jsonObject(
- *                                         jsonProperty(&#34;PathPrefix&#34;, &#34;/debugz&#34;)
+ *                                     jsonProperty("Action", "deny"),
+ *                                     jsonProperty("HTTP", jsonObject(
+ *                                         jsonProperty("PathPrefix", "/debugz")
  *                                     ))
  *                                 ), 
  *                                 jsonObject(
- *                                     jsonProperty(&#34;Action&#34;, &#34;allow&#34;),
- *                                     jsonProperty(&#34;HTTP&#34;, jsonObject(
- *                                         jsonProperty(&#34;PathPrefix&#34;, &#34;/&#34;)
+ *                                     jsonProperty("Action", "allow"),
+ *                                     jsonProperty("HTTP", jsonObject(
+ *                                         jsonProperty("PathPrefix", "/")
  *                                     ))
  *                                 )
  *                             )),
- *                             jsonProperty(&#34;Precedence&#34;, 9),
- *                             jsonProperty(&#34;Type&#34;, &#34;consul&#34;)
+ *                             jsonProperty("Precedence", 9),
+ *                             jsonProperty("Type", "consul")
  *                         )
  *                     ))
  *                 ))))
@@ -310,13 +315,15 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### `exported-services` config entry
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -338,16 +345,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exportedServices = new ConfigEntry(&#34;exportedServices&#34;, ConfigEntryArgs.builder()        
- *             .name(&#34;test&#34;)
- *             .kind(&#34;exported-services&#34;)
+ *         var exportedServices = new ConfigEntry("exportedServices", ConfigEntryArgs.builder()        
+ *             .name("test")
+ *             .kind("exported-services")
  *             .configJson(serializeJson(
  *                 jsonObject(
- *                     jsonProperty(&#34;Services&#34;, jsonArray(jsonObject(
- *                         jsonProperty(&#34;Name&#34;, &#34;test&#34;),
- *                         jsonProperty(&#34;Namespace&#34;, &#34;default&#34;),
- *                         jsonProperty(&#34;Consumers&#34;, jsonArray(jsonObject(
- *                             jsonProperty(&#34;Partition&#34;, &#34;default&#34;)
+ *                     jsonProperty("Services", jsonArray(jsonObject(
+ *                         jsonProperty("Name", "test"),
+ *                         jsonProperty("Namespace", "default"),
+ *                         jsonProperty("Consumers", jsonArray(jsonObject(
+ *                             jsonProperty("Partition", "default")
  *                         )))
  *                     )))
  *                 )))
@@ -355,13 +362,15 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### `mesh` config entry
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -383,27 +392,29 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var mesh = new ConfigEntry(&#34;mesh&#34;, ConfigEntryArgs.builder()        
- *             .name(&#34;mesh&#34;)
- *             .kind(&#34;mesh&#34;)
- *             .partition(&#34;default&#34;)
+ *         var mesh = new ConfigEntry("mesh", ConfigEntryArgs.builder()        
+ *             .name("mesh")
+ *             .kind("mesh")
+ *             .partition("default")
  *             .configJson(serializeJson(
  *                 jsonObject(
- *                     jsonProperty(&#34;TransparentProxy&#34;, jsonObject(
- *                         jsonProperty(&#34;MeshDestinationsOnly&#34;, true)
+ *                     jsonProperty("TransparentProxy", jsonObject(
+ *                         jsonProperty("MeshDestinationsOnly", true)
  *                     ))
  *                 )))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### `jwt-provider` config entry
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -425,28 +436,29 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var jwtProvider = new ConfigEntry(&#34;jwtProvider&#34;, ConfigEntryArgs.builder()        
- *             .name(&#34;provider-name&#34;)
- *             .kind(&#34;jwt-provider&#34;)
+ *         var jwtProvider = new ConfigEntry("jwtProvider", ConfigEntryArgs.builder()        
+ *             .name("provider-name")
+ *             .kind("jwt-provider")
  *             .configJson(serializeJson(
  *                 jsonObject(
- *                     jsonProperty(&#34;Issuer&#34;, &#34;https://your.issuer.com&#34;),
- *                     jsonProperty(&#34;JSONWebKeySet&#34;, jsonObject(
- *                         jsonProperty(&#34;Remote&#34;, jsonObject(
- *                             jsonProperty(&#34;URI&#34;, &#34;https://your-remote.jwks.com&#34;),
- *                             jsonProperty(&#34;FetchAsynchronously&#34;, true),
- *                             jsonProperty(&#34;CacheDuration&#34;, &#34;10s&#34;)
+ *                     jsonProperty("Issuer", "https://your.issuer.com"),
+ *                     jsonProperty("JSONWebKeySet", jsonObject(
+ *                         jsonProperty("Remote", jsonObject(
+ *                             jsonProperty("URI", "https://your-remote.jwks.com"),
+ *                             jsonProperty("FetchAsynchronously", true),
+ *                             jsonProperty("CacheDuration", "10s")
  *                         ))
  *                     )),
- *                     jsonProperty(&#34;Forwarding&#34;, jsonObject(
- *                         jsonProperty(&#34;HeaderName&#34;, &#34;test-token&#34;)
+ *                     jsonProperty("Forwarding", jsonObject(
+ *                         jsonProperty("HeaderName", "test-token")
  *                     ))
  *                 )))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

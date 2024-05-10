@@ -82,7 +82,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -104,13 +105,14 @@ public final class ConsulFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = ConsulFunctions.getAclAuthMethod(GetAclAuthMethodArgs.builder()
-     *             .name(&#34;minikube&#34;)
+     *             .name("minikube")
      *             .build());
      * 
-     *         ctx.export(&#34;consulAclAuthMethod&#34;, test.applyValue(getAclAuthMethodResult -&gt; getAclAuthMethodResult.config()));
+     *         ctx.export("consulAclAuthMethod", test.applyValue(getAclAuthMethodResult -> getAclAuthMethodResult.config()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -124,7 +126,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -146,13 +149,14 @@ public final class ConsulFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = ConsulFunctions.getAclAuthMethod(GetAclAuthMethodArgs.builder()
-     *             .name(&#34;minikube&#34;)
+     *             .name("minikube")
      *             .build());
      * 
-     *         ctx.export(&#34;consulAclAuthMethod&#34;, test.applyValue(getAclAuthMethodResult -&gt; getAclAuthMethodResult.config()));
+     *         ctx.export("consulAclAuthMethod", test.applyValue(getAclAuthMethodResult -> getAclAuthMethodResult.config()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -166,7 +170,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -188,13 +193,14 @@ public final class ConsulFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = ConsulFunctions.getAclAuthMethod(GetAclAuthMethodArgs.builder()
-     *             .name(&#34;minikube&#34;)
+     *             .name("minikube")
      *             .build());
      * 
-     *         ctx.export(&#34;consulAclAuthMethod&#34;, test.applyValue(getAclAuthMethodResult -&gt; getAclAuthMethodResult.config()));
+     *         ctx.export("consulAclAuthMethod", test.applyValue(getAclAuthMethodResult -> getAclAuthMethodResult.config()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -208,7 +214,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -230,13 +237,14 @@ public final class ConsulFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = ConsulFunctions.getAclAuthMethod(GetAclAuthMethodArgs.builder()
-     *             .name(&#34;minikube&#34;)
+     *             .name("minikube")
      *             .build());
      * 
-     *         ctx.export(&#34;consulAclAuthMethod&#34;, test.applyValue(getAclAuthMethodResult -&gt; getAclAuthMethodResult.config()));
+     *         ctx.export("consulAclAuthMethod", test.applyValue(getAclAuthMethodResult -> getAclAuthMethodResult.config()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -250,7 +258,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -272,13 +281,14 @@ public final class ConsulFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var agent = ConsulFunctions.getAclPolicy(GetAclPolicyArgs.builder()
-     *             .name(&#34;agent&#34;)
+     *             .name("agent")
      *             .build());
      * 
-     *         ctx.export(&#34;consulAclPolicy&#34;, agent.applyValue(getAclPolicyResult -&gt; getAclPolicyResult.rules()));
+     *         ctx.export("consulAclPolicy", agent.applyValue(getAclPolicyResult -> getAclPolicyResult.rules()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -292,7 +302,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -314,13 +325,14 @@ public final class ConsulFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var agent = ConsulFunctions.getAclPolicy(GetAclPolicyArgs.builder()
-     *             .name(&#34;agent&#34;)
+     *             .name("agent")
      *             .build());
      * 
-     *         ctx.export(&#34;consulAclPolicy&#34;, agent.applyValue(getAclPolicyResult -&gt; getAclPolicyResult.rules()));
+     *         ctx.export("consulAclPolicy", agent.applyValue(getAclPolicyResult -> getAclPolicyResult.rules()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -334,7 +346,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -356,13 +369,14 @@ public final class ConsulFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var agent = ConsulFunctions.getAclPolicy(GetAclPolicyArgs.builder()
-     *             .name(&#34;agent&#34;)
+     *             .name("agent")
      *             .build());
      * 
-     *         ctx.export(&#34;consulAclPolicy&#34;, agent.applyValue(getAclPolicyResult -&gt; getAclPolicyResult.rules()));
+     *         ctx.export("consulAclPolicy", agent.applyValue(getAclPolicyResult -> getAclPolicyResult.rules()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -376,7 +390,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -398,13 +413,14 @@ public final class ConsulFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var agent = ConsulFunctions.getAclPolicy(GetAclPolicyArgs.builder()
-     *             .name(&#34;agent&#34;)
+     *             .name("agent")
      *             .build());
      * 
-     *         ctx.export(&#34;consulAclPolicy&#34;, agent.applyValue(getAclPolicyResult -&gt; getAclPolicyResult.rules()));
+     *         ctx.export("consulAclPolicy", agent.applyValue(getAclPolicyResult -> getAclPolicyResult.rules()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -417,7 +433,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -439,13 +456,14 @@ public final class ConsulFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = ConsulFunctions.getAclRole(GetAclRoleArgs.builder()
-     *             .name(&#34;example-role&#34;)
+     *             .name("example-role")
      *             .build());
      * 
-     *         ctx.export(&#34;consulAclRole&#34;, test.applyValue(getAclRoleResult -&gt; getAclRoleResult.id()));
+     *         ctx.export("consulAclRole", test.applyValue(getAclRoleResult -> getAclRoleResult.id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -458,7 +476,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -480,13 +499,14 @@ public final class ConsulFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = ConsulFunctions.getAclRole(GetAclRoleArgs.builder()
-     *             .name(&#34;example-role&#34;)
+     *             .name("example-role")
      *             .build());
      * 
-     *         ctx.export(&#34;consulAclRole&#34;, test.applyValue(getAclRoleResult -&gt; getAclRoleResult.id()));
+     *         ctx.export("consulAclRole", test.applyValue(getAclRoleResult -> getAclRoleResult.id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -499,7 +519,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -521,13 +542,14 @@ public final class ConsulFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = ConsulFunctions.getAclRole(GetAclRoleArgs.builder()
-     *             .name(&#34;example-role&#34;)
+     *             .name("example-role")
      *             .build());
      * 
-     *         ctx.export(&#34;consulAclRole&#34;, test.applyValue(getAclRoleResult -&gt; getAclRoleResult.id()));
+     *         ctx.export("consulAclRole", test.applyValue(getAclRoleResult -> getAclRoleResult.id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -540,7 +562,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -562,13 +585,14 @@ public final class ConsulFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = ConsulFunctions.getAclRole(GetAclRoleArgs.builder()
-     *             .name(&#34;example-role&#34;)
+     *             .name("example-role")
      *             .build());
      * 
-     *         ctx.export(&#34;consulAclRole&#34;, test.applyValue(getAclRoleResult -&gt; getAclRoleResult.id()));
+     *         ctx.export("consulAclRole", test.applyValue(getAclRoleResult -> getAclRoleResult.id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -583,7 +607,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -605,13 +630,14 @@ public final class ConsulFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = ConsulFunctions.getAclToken(GetAclTokenArgs.builder()
-     *             .accessorId(&#34;00000000-0000-0000-0000-000000000002&#34;)
+     *             .accessorId("00000000-0000-0000-0000-000000000002")
      *             .build());
      * 
-     *         ctx.export(&#34;consulAclPolicies&#34;, test.applyValue(getAclTokenResult -&gt; getAclTokenResult.policies()));
+     *         ctx.export("consulAclPolicies", test.applyValue(getAclTokenResult -> getAclTokenResult.policies()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -626,7 +652,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -648,13 +675,14 @@ public final class ConsulFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = ConsulFunctions.getAclToken(GetAclTokenArgs.builder()
-     *             .accessorId(&#34;00000000-0000-0000-0000-000000000002&#34;)
+     *             .accessorId("00000000-0000-0000-0000-000000000002")
      *             .build());
      * 
-     *         ctx.export(&#34;consulAclPolicies&#34;, test.applyValue(getAclTokenResult -&gt; getAclTokenResult.policies()));
+     *         ctx.export("consulAclPolicies", test.applyValue(getAclTokenResult -> getAclTokenResult.policies()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -669,7 +697,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -691,13 +720,14 @@ public final class ConsulFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = ConsulFunctions.getAclToken(GetAclTokenArgs.builder()
-     *             .accessorId(&#34;00000000-0000-0000-0000-000000000002&#34;)
+     *             .accessorId("00000000-0000-0000-0000-000000000002")
      *             .build());
      * 
-     *         ctx.export(&#34;consulAclPolicies&#34;, test.applyValue(getAclTokenResult -&gt; getAclTokenResult.policies()));
+     *         ctx.export("consulAclPolicies", test.applyValue(getAclTokenResult -> getAclTokenResult.policies()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -712,7 +742,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -734,13 +765,14 @@ public final class ConsulFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = ConsulFunctions.getAclToken(GetAclTokenArgs.builder()
-     *             .accessorId(&#34;00000000-0000-0000-0000-000000000002&#34;)
+     *             .accessorId("00000000-0000-0000-0000-000000000002")
      *             .build());
      * 
-     *         ctx.export(&#34;consulAclPolicies&#34;, test.applyValue(getAclTokenResult -&gt; getAclTokenResult.policies()));
+     *         ctx.export("consulAclPolicies", test.applyValue(getAclTokenResult -> getAclTokenResult.policies()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -751,7 +783,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -776,27 +809,28 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var test = new AclPolicy(&#34;test&#34;, AclPolicyArgs.builder()        
-     *             .name(&#34;test&#34;)
-     *             .rules(&#34;node \&#34;\&#34; { policy = \&#34;read\&#34; }&#34;)
-     *             .datacenters(&#34;dc1&#34;)
+     *         var test = new AclPolicy("test", AclPolicyArgs.builder()        
+     *             .name("test")
+     *             .rules("node \"\" { policy = \"read\" }")
+     *             .datacenters("dc1")
      *             .build());
      * 
-     *         var testAclToken = new AclToken(&#34;testAclToken&#34;, AclTokenArgs.builder()        
-     *             .description(&#34;test&#34;)
+     *         var testAclToken = new AclToken("testAclToken", AclTokenArgs.builder()        
+     *             .description("test")
      *             .policies(test.name())
      *             .local(true)
      *             .build());
      * 
      *         final var read = ConsulFunctions.getAclTokenSecretId(GetAclTokenSecretIdArgs.builder()
      *             .accessorId(testAclToken.id())
-     *             .pgpKey(&#34;keybase:my_username&#34;)
+     *             .pgpKey("keybase:my_username")
      *             .build());
      * 
-     *         ctx.export(&#34;consulAclTokenSecretId&#34;, read.applyValue(getAclTokenSecretIdResult -&gt; getAclTokenSecretIdResult).applyValue(read -&gt; read.applyValue(getAclTokenSecretIdResult -&gt; getAclTokenSecretIdResult.encryptedSecretId())));
+     *         ctx.export("consulAclTokenSecretId", read.applyValue(getAclTokenSecretIdResult -> getAclTokenSecretIdResult).applyValue(read -> read.applyValue(getAclTokenSecretIdResult -> getAclTokenSecretIdResult.encryptedSecretId())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -807,7 +841,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -832,27 +867,28 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var test = new AclPolicy(&#34;test&#34;, AclPolicyArgs.builder()        
-     *             .name(&#34;test&#34;)
-     *             .rules(&#34;node \&#34;\&#34; { policy = \&#34;read\&#34; }&#34;)
-     *             .datacenters(&#34;dc1&#34;)
+     *         var test = new AclPolicy("test", AclPolicyArgs.builder()        
+     *             .name("test")
+     *             .rules("node \"\" { policy = \"read\" }")
+     *             .datacenters("dc1")
      *             .build());
      * 
-     *         var testAclToken = new AclToken(&#34;testAclToken&#34;, AclTokenArgs.builder()        
-     *             .description(&#34;test&#34;)
+     *         var testAclToken = new AclToken("testAclToken", AclTokenArgs.builder()        
+     *             .description("test")
      *             .policies(test.name())
      *             .local(true)
      *             .build());
      * 
      *         final var read = ConsulFunctions.getAclTokenSecretId(GetAclTokenSecretIdArgs.builder()
      *             .accessorId(testAclToken.id())
-     *             .pgpKey(&#34;keybase:my_username&#34;)
+     *             .pgpKey("keybase:my_username")
      *             .build());
      * 
-     *         ctx.export(&#34;consulAclTokenSecretId&#34;, read.applyValue(getAclTokenSecretIdResult -&gt; getAclTokenSecretIdResult).applyValue(read -&gt; read.applyValue(getAclTokenSecretIdResult -&gt; getAclTokenSecretIdResult.encryptedSecretId())));
+     *         ctx.export("consulAclTokenSecretId", read.applyValue(getAclTokenSecretIdResult -> getAclTokenSecretIdResult).applyValue(read -> read.applyValue(getAclTokenSecretIdResult -> getAclTokenSecretIdResult.encryptedSecretId())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -863,7 +899,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -888,27 +925,28 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var test = new AclPolicy(&#34;test&#34;, AclPolicyArgs.builder()        
-     *             .name(&#34;test&#34;)
-     *             .rules(&#34;node \&#34;\&#34; { policy = \&#34;read\&#34; }&#34;)
-     *             .datacenters(&#34;dc1&#34;)
+     *         var test = new AclPolicy("test", AclPolicyArgs.builder()        
+     *             .name("test")
+     *             .rules("node \"\" { policy = \"read\" }")
+     *             .datacenters("dc1")
      *             .build());
      * 
-     *         var testAclToken = new AclToken(&#34;testAclToken&#34;, AclTokenArgs.builder()        
-     *             .description(&#34;test&#34;)
+     *         var testAclToken = new AclToken("testAclToken", AclTokenArgs.builder()        
+     *             .description("test")
      *             .policies(test.name())
      *             .local(true)
      *             .build());
      * 
      *         final var read = ConsulFunctions.getAclTokenSecretId(GetAclTokenSecretIdArgs.builder()
      *             .accessorId(testAclToken.id())
-     *             .pgpKey(&#34;keybase:my_username&#34;)
+     *             .pgpKey("keybase:my_username")
      *             .build());
      * 
-     *         ctx.export(&#34;consulAclTokenSecretId&#34;, read.applyValue(getAclTokenSecretIdResult -&gt; getAclTokenSecretIdResult).applyValue(read -&gt; read.applyValue(getAclTokenSecretIdResult -&gt; getAclTokenSecretIdResult.encryptedSecretId())));
+     *         ctx.export("consulAclTokenSecretId", read.applyValue(getAclTokenSecretIdResult -> getAclTokenSecretIdResult).applyValue(read -> read.applyValue(getAclTokenSecretIdResult -> getAclTokenSecretIdResult.encryptedSecretId())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -919,7 +957,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -944,27 +983,28 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var test = new AclPolicy(&#34;test&#34;, AclPolicyArgs.builder()        
-     *             .name(&#34;test&#34;)
-     *             .rules(&#34;node \&#34;\&#34; { policy = \&#34;read\&#34; }&#34;)
-     *             .datacenters(&#34;dc1&#34;)
+     *         var test = new AclPolicy("test", AclPolicyArgs.builder()        
+     *             .name("test")
+     *             .rules("node \"\" { policy = \"read\" }")
+     *             .datacenters("dc1")
      *             .build());
      * 
-     *         var testAclToken = new AclToken(&#34;testAclToken&#34;, AclTokenArgs.builder()        
-     *             .description(&#34;test&#34;)
+     *         var testAclToken = new AclToken("testAclToken", AclTokenArgs.builder()        
+     *             .description("test")
      *             .policies(test.name())
      *             .local(true)
      *             .build());
      * 
      *         final var read = ConsulFunctions.getAclTokenSecretId(GetAclTokenSecretIdArgs.builder()
      *             .accessorId(testAclToken.id())
-     *             .pgpKey(&#34;keybase:my_username&#34;)
+     *             .pgpKey("keybase:my_username")
      *             .build());
      * 
-     *         ctx.export(&#34;consulAclTokenSecretId&#34;, read.applyValue(getAclTokenSecretIdResult -&gt; getAclTokenSecretIdResult).applyValue(read -&gt; read.applyValue(getAclTokenSecretIdResult -&gt; getAclTokenSecretIdResult.encryptedSecretId())));
+     *         ctx.export("consulAclTokenSecretId", read.applyValue(getAclTokenSecretIdResult -> getAclTokenSecretIdResult).applyValue(read -> read.applyValue(getAclTokenSecretIdResult -> getAclTokenSecretIdResult.encryptedSecretId())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -983,7 +1023,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1005,10 +1046,11 @@ public final class ConsulFunctions {
      *     public static void stack(Context ctx) {
      *         final var remoteAgent = ConsulFunctions.getAgentConfig();
      * 
-     *         ctx.export(&#34;consulVersion&#34;, remoteAgent.applyValue(getAgentConfigResult -&gt; getAgentConfigResult.version()));
+     *         ctx.export("consulVersion", remoteAgent.applyValue(getAgentConfigResult -> getAgentConfigResult.version()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1027,7 +1069,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1049,10 +1092,11 @@ public final class ConsulFunctions {
      *     public static void stack(Context ctx) {
      *         final var remoteAgent = ConsulFunctions.getAgentConfig();
      * 
-     *         ctx.export(&#34;consulVersion&#34;, remoteAgent.applyValue(getAgentConfigResult -&gt; getAgentConfigResult.version()));
+     *         ctx.export("consulVersion", remoteAgent.applyValue(getAgentConfigResult -> getAgentConfigResult.version()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1071,7 +1115,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1093,10 +1138,11 @@ public final class ConsulFunctions {
      *     public static void stack(Context ctx) {
      *         final var remoteAgent = ConsulFunctions.getAgentConfig();
      * 
-     *         ctx.export(&#34;consulVersion&#34;, remoteAgent.applyValue(getAgentConfigResult -&gt; getAgentConfigResult.version()));
+     *         ctx.export("consulVersion", remoteAgent.applyValue(getAgentConfigResult -> getAgentConfigResult.version()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1115,7 +1161,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1137,10 +1184,11 @@ public final class ConsulFunctions {
      *     public static void stack(Context ctx) {
      *         final var remoteAgent = ConsulFunctions.getAgentConfig();
      * 
-     *         ctx.export(&#34;consulVersion&#34;, remoteAgent.applyValue(getAgentConfigResult -&gt; getAgentConfigResult.version()));
+     *         ctx.export("consulVersion", remoteAgent.applyValue(getAgentConfigResult -> getAgentConfigResult.version()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1159,7 +1207,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1181,10 +1230,11 @@ public final class ConsulFunctions {
      *     public static void stack(Context ctx) {
      *         final var remoteAgent = ConsulFunctions.getAgentConfig();
      * 
-     *         ctx.export(&#34;consulVersion&#34;, remoteAgent.applyValue(getAgentConfigResult -&gt; getAgentConfigResult.version()));
+     *         ctx.export("consulVersion", remoteAgent.applyValue(getAgentConfigResult -> getAgentConfigResult.version()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1203,7 +1253,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1225,10 +1276,11 @@ public final class ConsulFunctions {
      *     public static void stack(Context ctx) {
      *         final var remoteAgent = ConsulFunctions.getAgentConfig();
      * 
-     *         ctx.export(&#34;consulVersion&#34;, remoteAgent.applyValue(getAgentConfigResult -&gt; getAgentConfigResult.version()));
+     *         ctx.export("consulVersion", remoteAgent.applyValue(getAgentConfigResult -> getAgentConfigResult.version()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1246,7 +1298,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1271,13 +1324,14 @@ public final class ConsulFunctions {
      *         final var read-dc1-agent = ConsulFunctions.getAgentSelf(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         // Set the description to a whitespace delimited list of the services
-     *         var app = new Resource(&#34;app&#34;, ResourceArgs.builder()        
-     *             .description(String.format(&#34;Consul datacenter %s&#34;, read_dc1_agent.datacenter()))
+     *         var app = new Resource("app", ResourceArgs.builder()        
+     *             .description(String.format("Consul datacenter %s", read_dc1_agent.datacenter()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1295,7 +1349,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1320,13 +1375,14 @@ public final class ConsulFunctions {
      *         final var read-dc1-agent = ConsulFunctions.getAgentSelf(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         // Set the description to a whitespace delimited list of the services
-     *         var app = new Resource(&#34;app&#34;, ResourceArgs.builder()        
-     *             .description(String.format(&#34;Consul datacenter %s&#34;, read_dc1_agent.datacenter()))
+     *         var app = new Resource("app", ResourceArgs.builder()        
+     *             .description(String.format("Consul datacenter %s", read_dc1_agent.datacenter()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1344,7 +1400,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1369,13 +1426,14 @@ public final class ConsulFunctions {
      *         final var read-dc1-agent = ConsulFunctions.getAgentSelf(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         // Set the description to a whitespace delimited list of the services
-     *         var app = new Resource(&#34;app&#34;, ResourceArgs.builder()        
-     *             .description(String.format(&#34;Consul datacenter %s&#34;, read_dc1_agent.datacenter()))
+     *         var app = new Resource("app", ResourceArgs.builder()        
+     *             .description(String.format("Consul datacenter %s", read_dc1_agent.datacenter()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1393,7 +1451,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1418,13 +1477,14 @@ public final class ConsulFunctions {
      *         final var read-dc1-agent = ConsulFunctions.getAgentSelf(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         // Set the description to a whitespace delimited list of the services
-     *         var app = new Resource(&#34;app&#34;, ResourceArgs.builder()        
-     *             .description(String.format(&#34;Consul datacenter %s&#34;, read_dc1_agent.datacenter()))
+     *         var app = new Resource("app", ResourceArgs.builder()        
+     *             .description(String.format("Consul datacenter %s", read_dc1_agent.datacenter()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1442,7 +1502,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1467,13 +1528,14 @@ public final class ConsulFunctions {
      *         final var read-dc1-agent = ConsulFunctions.getAgentSelf(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         // Set the description to a whitespace delimited list of the services
-     *         var app = new Resource(&#34;app&#34;, ResourceArgs.builder()        
-     *             .description(String.format(&#34;Consul datacenter %s&#34;, read_dc1_agent.datacenter()))
+     *         var app = new Resource("app", ResourceArgs.builder()        
+     *             .description(String.format("Consul datacenter %s", read_dc1_agent.datacenter()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1491,7 +1553,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1516,13 +1579,14 @@ public final class ConsulFunctions {
      *         final var read-dc1-agent = ConsulFunctions.getAgentSelf(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         // Set the description to a whitespace delimited list of the services
-     *         var app = new Resource(&#34;app&#34;, ResourceArgs.builder()        
-     *             .description(String.format(&#34;Consul datacenter %s&#34;, read_dc1_agent.datacenter()))
+     *         var app = new Resource("app", ResourceArgs.builder()        
+     *             .description(String.format("Consul datacenter %s", read_dc1_agent.datacenter()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1537,7 +1601,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1560,10 +1625,11 @@ public final class ConsulFunctions {
      *     public static void stack(Context ctx) {
      *         final var read = ConsulFunctions.getAutopilotHealth();
      * 
-     *         ctx.export(&#34;health&#34;, read.applyValue(getAutopilotHealthResult -&gt; getAutopilotHealthResult.healthy()));
+     *         ctx.export("health", read.applyValue(getAutopilotHealthResult -> getAutopilotHealthResult.healthy()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1578,7 +1644,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1601,10 +1668,11 @@ public final class ConsulFunctions {
      *     public static void stack(Context ctx) {
      *         final var read = ConsulFunctions.getAutopilotHealth();
      * 
-     *         ctx.export(&#34;health&#34;, read.applyValue(getAutopilotHealthResult -&gt; getAutopilotHealthResult.healthy()));
+     *         ctx.export("health", read.applyValue(getAutopilotHealthResult -> getAutopilotHealthResult.healthy()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1619,7 +1687,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1642,10 +1711,11 @@ public final class ConsulFunctions {
      *     public static void stack(Context ctx) {
      *         final var read = ConsulFunctions.getAutopilotHealth();
      * 
-     *         ctx.export(&#34;health&#34;, read.applyValue(getAutopilotHealthResult -&gt; getAutopilotHealthResult.healthy()));
+     *         ctx.export("health", read.applyValue(getAutopilotHealthResult -> getAutopilotHealthResult.healthy()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1660,7 +1730,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1683,10 +1754,11 @@ public final class ConsulFunctions {
      *     public static void stack(Context ctx) {
      *         final var read = ConsulFunctions.getAutopilotHealth();
      * 
-     *         ctx.export(&#34;health&#34;, read.applyValue(getAutopilotHealthResult -&gt; getAutopilotHealthResult.healthy()));
+     *         ctx.export("health", read.applyValue(getAutopilotHealthResult -> getAutopilotHealthResult.healthy()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1701,7 +1773,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1724,10 +1797,11 @@ public final class ConsulFunctions {
      *     public static void stack(Context ctx) {
      *         final var read = ConsulFunctions.getAutopilotHealth();
      * 
-     *         ctx.export(&#34;health&#34;, read.applyValue(getAutopilotHealthResult -&gt; getAutopilotHealthResult.healthy()));
+     *         ctx.export("health", read.applyValue(getAutopilotHealthResult -> getAutopilotHealthResult.healthy()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1742,7 +1816,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1765,10 +1840,11 @@ public final class ConsulFunctions {
      *     public static void stack(Context ctx) {
      *         final var read = ConsulFunctions.getAutopilotHealth();
      * 
-     *         ctx.export(&#34;health&#34;, read.applyValue(getAutopilotHealthResult -&gt; getAutopilotHealthResult.healthy()));
+     *         ctx.export("health", read.applyValue(getAutopilotHealthResult -> getAutopilotHealthResult.healthy()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1872,7 +1948,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1896,21 +1973,22 @@ public final class ConsulFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var read-consul-dc1 = ConsulFunctions.getService(GetServiceArgs.builder()
-     *             .name(&#34;consul&#34;)
-     *             .datacenter(&#34;dc1&#34;)
+     *             .name("consul")
+     *             .datacenter("dc1")
      *             .build());
      * 
      *         // Set the description to a whitespace delimited list of the node names
-     *         var app = new Resource(&#34;app&#34;, ResourceArgs.builder()        
+     *         var app = new Resource("app", ResourceArgs.builder()        
      *             .description(StdFunctions.join(JoinArgs.builder()
-     *                 .separator(&#34; &#34;)
+     *                 .separator(" ")
      *                 .input(nodes)
      *                 .build()).result())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
@@ -1934,7 +2012,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1958,21 +2037,22 @@ public final class ConsulFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var read-consul-dc1 = ConsulFunctions.getService(GetServiceArgs.builder()
-     *             .name(&#34;consul&#34;)
-     *             .datacenter(&#34;dc1&#34;)
+     *             .name("consul")
+     *             .datacenter("dc1")
      *             .build());
      * 
      *         // Set the description to a whitespace delimited list of the node names
-     *         var app = new Resource(&#34;app&#34;, ResourceArgs.builder()        
+     *         var app = new Resource("app", ResourceArgs.builder()        
      *             .description(StdFunctions.join(JoinArgs.builder()
-     *                 .separator(&#34; &#34;)
+     *                 .separator(" ")
      *                 .input(nodes)
      *                 .build()).result())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
@@ -1996,7 +2076,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2020,21 +2101,22 @@ public final class ConsulFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var read-consul-dc1 = ConsulFunctions.getService(GetServiceArgs.builder()
-     *             .name(&#34;consul&#34;)
-     *             .datacenter(&#34;dc1&#34;)
+     *             .name("consul")
+     *             .datacenter("dc1")
      *             .build());
      * 
      *         // Set the description to a whitespace delimited list of the node names
-     *         var app = new Resource(&#34;app&#34;, ResourceArgs.builder()        
+     *         var app = new Resource("app", ResourceArgs.builder()        
      *             .description(StdFunctions.join(JoinArgs.builder()
-     *                 .separator(&#34; &#34;)
+     *                 .separator(" ")
      *                 .input(nodes)
      *                 .build()).result())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
@@ -2058,7 +2140,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2082,21 +2165,22 @@ public final class ConsulFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var read-consul-dc1 = ConsulFunctions.getService(GetServiceArgs.builder()
-     *             .name(&#34;consul&#34;)
-     *             .datacenter(&#34;dc1&#34;)
+     *             .name("consul")
+     *             .datacenter("dc1")
      *             .build());
      * 
      *         // Set the description to a whitespace delimited list of the node names
-     *         var app = new Resource(&#34;app&#34;, ResourceArgs.builder()        
+     *         var app = new Resource("app", ResourceArgs.builder()        
      *             .description(StdFunctions.join(JoinArgs.builder()
-     *                 .separator(&#34; &#34;)
+     *                 .separator(" ")
      *                 .input(nodes)
      *                 .build()).result())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
@@ -2119,7 +2203,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2144,21 +2229,22 @@ public final class ConsulFunctions {
      *     public static void stack(Context ctx) {
      *         final var read-dc1 = ConsulFunctions.getServices(GetServicesArgs.builder()
      *             .queryOptions(GetServicesQueryOptionArgs.builder()
-     *                 .datacenter(&#34;dc1&#34;)
+     *                 .datacenter("dc1")
      *                 .build())
      *             .build());
      * 
      *         // Set the description to a whitespace delimited list of the services
-     *         var app = new Resource(&#34;app&#34;, ResourceArgs.builder()        
+     *         var app = new Resource("app", ResourceArgs.builder()        
      *             .description(StdFunctions.join(JoinArgs.builder()
-     *                 .separator(&#34; &#34;)
+     *                 .separator(" ")
      *                 .input(names)
      *                 .build()).result())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
@@ -2181,7 +2267,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2206,21 +2293,22 @@ public final class ConsulFunctions {
      *     public static void stack(Context ctx) {
      *         final var read-dc1 = ConsulFunctions.getServices(GetServicesArgs.builder()
      *             .queryOptions(GetServicesQueryOptionArgs.builder()
-     *                 .datacenter(&#34;dc1&#34;)
+     *                 .datacenter("dc1")
      *                 .build())
      *             .build());
      * 
      *         // Set the description to a whitespace delimited list of the services
-     *         var app = new Resource(&#34;app&#34;, ResourceArgs.builder()        
+     *         var app = new Resource("app", ResourceArgs.builder()        
      *             .description(StdFunctions.join(JoinArgs.builder()
-     *                 .separator(&#34; &#34;)
+     *                 .separator(" ")
      *                 .input(names)
      *                 .build()).result())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
@@ -2243,7 +2331,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2268,21 +2357,22 @@ public final class ConsulFunctions {
      *     public static void stack(Context ctx) {
      *         final var read-dc1 = ConsulFunctions.getServices(GetServicesArgs.builder()
      *             .queryOptions(GetServicesQueryOptionArgs.builder()
-     *                 .datacenter(&#34;dc1&#34;)
+     *                 .datacenter("dc1")
      *                 .build())
      *             .build());
      * 
      *         // Set the description to a whitespace delimited list of the services
-     *         var app = new Resource(&#34;app&#34;, ResourceArgs.builder()        
+     *         var app = new Resource("app", ResourceArgs.builder()        
      *             .description(StdFunctions.join(JoinArgs.builder()
-     *                 .separator(&#34; &#34;)
+     *                 .separator(" ")
      *                 .input(names)
      *                 .build()).result())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
@@ -2305,7 +2395,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2330,21 +2421,22 @@ public final class ConsulFunctions {
      *     public static void stack(Context ctx) {
      *         final var read-dc1 = ConsulFunctions.getServices(GetServicesArgs.builder()
      *             .queryOptions(GetServicesQueryOptionArgs.builder()
-     *                 .datacenter(&#34;dc1&#34;)
+     *                 .datacenter("dc1")
      *                 .build())
      *             .build());
      * 
      *         // Set the description to a whitespace delimited list of the services
-     *         var app = new Resource(&#34;app&#34;, ResourceArgs.builder()        
+     *         var app = new Resource("app", ResourceArgs.builder()        
      *             .description(StdFunctions.join(JoinArgs.builder()
-     *                 .separator(&#34; &#34;)
+     *                 .separator(" ")
      *                 .input(names)
      *                 .build()).result())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
@@ -2367,7 +2459,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2392,21 +2485,22 @@ public final class ConsulFunctions {
      *     public static void stack(Context ctx) {
      *         final var read-dc1 = ConsulFunctions.getServices(GetServicesArgs.builder()
      *             .queryOptions(GetServicesQueryOptionArgs.builder()
-     *                 .datacenter(&#34;dc1&#34;)
+     *                 .datacenter("dc1")
      *                 .build())
      *             .build());
      * 
      *         // Set the description to a whitespace delimited list of the services
-     *         var app = new Resource(&#34;app&#34;, ResourceArgs.builder()        
+     *         var app = new Resource("app", ResourceArgs.builder()        
      *             .description(StdFunctions.join(JoinArgs.builder()
-     *                 .separator(&#34; &#34;)
+     *                 .separator(" ")
      *                 .input(names)
      *                 .build()).result())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
@@ -2429,7 +2523,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2454,21 +2549,22 @@ public final class ConsulFunctions {
      *     public static void stack(Context ctx) {
      *         final var read-dc1 = ConsulFunctions.getServices(GetServicesArgs.builder()
      *             .queryOptions(GetServicesQueryOptionArgs.builder()
-     *                 .datacenter(&#34;dc1&#34;)
+     *                 .datacenter("dc1")
      *                 .build())
      *             .build());
      * 
      *         // Set the description to a whitespace delimited list of the services
-     *         var app = new Resource(&#34;app&#34;, ResourceArgs.builder()        
+     *         var app = new Resource("app", ResourceArgs.builder()        
      *             .description(StdFunctions.join(JoinArgs.builder()
-     *                 .separator(&#34; &#34;)
+     *                 .separator(" ")
      *                 .input(names)
      *                 .build()).result())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
@@ -2543,7 +2639,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2567,28 +2664,30 @@ public final class ConsulFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var app = ConsulFunctions.getKeyPrefix(GetKeyPrefixArgs.builder()
-     *             .datacenter(&#34;nyc1&#34;)
-     *             .token(&#34;abcd&#34;)
-     *             .pathPrefix(&#34;myapp/config/&#34;)
+     *             .datacenter("nyc1")
+     *             .token("abcd")
+     *             .pathPrefix("myapp/config/")
      *             .subkeyCollection(GetKeyPrefixSubkeyCollectionArgs.builder()
-     *                 .name(&#34;ami&#34;)
-     *                 .path(&#34;app/launch_ami&#34;)
-     *                 .default_(&#34;ami-1234&#34;)
+     *                 .name("ami")
+     *                 .path("app/launch_ami")
+     *                 .default_("ami-1234")
      *                 .build())
      *             .build());
      * 
      *         // Start our instance with the dynamic ami value
-     *         var appInstance = new Instance(&#34;appInstance&#34;, InstanceArgs.builder()        
-     *             .ami(app.applyValue(getKeyPrefixResult -&gt; getKeyPrefixResult.var().ami()))
+     *         var appInstance = new Instance("appInstance", InstanceArgs.builder()        
+     *             .ami(app.applyValue(getKeyPrefixResult -> getKeyPrefixResult.var().ami()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2612,19 +2711,20 @@ public final class ConsulFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var web = ConsulFunctions.getKeyPrefix(GetKeyPrefixArgs.builder()
-     *             .datacenter(&#34;nyc1&#34;)
-     *             .token(&#34;efgh&#34;)
-     *             .pathPrefix(&#34;myapp/config/&#34;)
+     *             .datacenter("nyc1")
+     *             .token("efgh")
+     *             .pathPrefix("myapp/config/")
      *             .build());
      * 
      *         // Start our instance with the dynamic ami value
-     *         var webInstance = new Instance(&#34;webInstance&#34;, InstanceArgs.builder()        
-     *             .ami(web.applyValue(getKeyPrefixResult -&gt; getKeyPrefixResult.subkeys().app/launch_ami()))
+     *         var webInstance = new Instance("webInstance", InstanceArgs.builder()        
+     *             .ami(web.applyValue(getKeyPrefixResult -> getKeyPrefixResult.subkeys().app/launch_ami()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2635,7 +2735,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2659,28 +2760,30 @@ public final class ConsulFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var app = ConsulFunctions.getKeyPrefix(GetKeyPrefixArgs.builder()
-     *             .datacenter(&#34;nyc1&#34;)
-     *             .token(&#34;abcd&#34;)
-     *             .pathPrefix(&#34;myapp/config/&#34;)
+     *             .datacenter("nyc1")
+     *             .token("abcd")
+     *             .pathPrefix("myapp/config/")
      *             .subkeyCollection(GetKeyPrefixSubkeyCollectionArgs.builder()
-     *                 .name(&#34;ami&#34;)
-     *                 .path(&#34;app/launch_ami&#34;)
-     *                 .default_(&#34;ami-1234&#34;)
+     *                 .name("ami")
+     *                 .path("app/launch_ami")
+     *                 .default_("ami-1234")
      *                 .build())
      *             .build());
      * 
      *         // Start our instance with the dynamic ami value
-     *         var appInstance = new Instance(&#34;appInstance&#34;, InstanceArgs.builder()        
-     *             .ami(app.applyValue(getKeyPrefixResult -&gt; getKeyPrefixResult.var().ami()))
+     *         var appInstance = new Instance("appInstance", InstanceArgs.builder()        
+     *             .ami(app.applyValue(getKeyPrefixResult -> getKeyPrefixResult.var().ami()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2704,19 +2807,20 @@ public final class ConsulFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var web = ConsulFunctions.getKeyPrefix(GetKeyPrefixArgs.builder()
-     *             .datacenter(&#34;nyc1&#34;)
-     *             .token(&#34;efgh&#34;)
-     *             .pathPrefix(&#34;myapp/config/&#34;)
+     *             .datacenter("nyc1")
+     *             .token("efgh")
+     *             .pathPrefix("myapp/config/")
      *             .build());
      * 
      *         // Start our instance with the dynamic ami value
-     *         var webInstance = new Instance(&#34;webInstance&#34;, InstanceArgs.builder()        
-     *             .ami(web.applyValue(getKeyPrefixResult -&gt; getKeyPrefixResult.subkeys().app/launch_ami()))
+     *         var webInstance = new Instance("webInstance", InstanceArgs.builder()        
+     *             .ami(web.applyValue(getKeyPrefixResult -> getKeyPrefixResult.subkeys().app/launch_ami()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2727,7 +2831,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2751,28 +2856,30 @@ public final class ConsulFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var app = ConsulFunctions.getKeyPrefix(GetKeyPrefixArgs.builder()
-     *             .datacenter(&#34;nyc1&#34;)
-     *             .token(&#34;abcd&#34;)
-     *             .pathPrefix(&#34;myapp/config/&#34;)
+     *             .datacenter("nyc1")
+     *             .token("abcd")
+     *             .pathPrefix("myapp/config/")
      *             .subkeyCollection(GetKeyPrefixSubkeyCollectionArgs.builder()
-     *                 .name(&#34;ami&#34;)
-     *                 .path(&#34;app/launch_ami&#34;)
-     *                 .default_(&#34;ami-1234&#34;)
+     *                 .name("ami")
+     *                 .path("app/launch_ami")
+     *                 .default_("ami-1234")
      *                 .build())
      *             .build());
      * 
      *         // Start our instance with the dynamic ami value
-     *         var appInstance = new Instance(&#34;appInstance&#34;, InstanceArgs.builder()        
-     *             .ami(app.applyValue(getKeyPrefixResult -&gt; getKeyPrefixResult.var().ami()))
+     *         var appInstance = new Instance("appInstance", InstanceArgs.builder()        
+     *             .ami(app.applyValue(getKeyPrefixResult -> getKeyPrefixResult.var().ami()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2796,19 +2903,20 @@ public final class ConsulFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var web = ConsulFunctions.getKeyPrefix(GetKeyPrefixArgs.builder()
-     *             .datacenter(&#34;nyc1&#34;)
-     *             .token(&#34;efgh&#34;)
-     *             .pathPrefix(&#34;myapp/config/&#34;)
+     *             .datacenter("nyc1")
+     *             .token("efgh")
+     *             .pathPrefix("myapp/config/")
      *             .build());
      * 
      *         // Start our instance with the dynamic ami value
-     *         var webInstance = new Instance(&#34;webInstance&#34;, InstanceArgs.builder()        
-     *             .ami(web.applyValue(getKeyPrefixResult -&gt; getKeyPrefixResult.subkeys().app/launch_ami()))
+     *         var webInstance = new Instance("webInstance", InstanceArgs.builder()        
+     *             .ami(web.applyValue(getKeyPrefixResult -> getKeyPrefixResult.subkeys().app/launch_ami()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2819,7 +2927,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2843,28 +2952,30 @@ public final class ConsulFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var app = ConsulFunctions.getKeyPrefix(GetKeyPrefixArgs.builder()
-     *             .datacenter(&#34;nyc1&#34;)
-     *             .token(&#34;abcd&#34;)
-     *             .pathPrefix(&#34;myapp/config/&#34;)
+     *             .datacenter("nyc1")
+     *             .token("abcd")
+     *             .pathPrefix("myapp/config/")
      *             .subkeyCollection(GetKeyPrefixSubkeyCollectionArgs.builder()
-     *                 .name(&#34;ami&#34;)
-     *                 .path(&#34;app/launch_ami&#34;)
-     *                 .default_(&#34;ami-1234&#34;)
+     *                 .name("ami")
+     *                 .path("app/launch_ami")
+     *                 .default_("ami-1234")
      *                 .build())
      *             .build());
      * 
      *         // Start our instance with the dynamic ami value
-     *         var appInstance = new Instance(&#34;appInstance&#34;, InstanceArgs.builder()        
-     *             .ami(app.applyValue(getKeyPrefixResult -&gt; getKeyPrefixResult.var().ami()))
+     *         var appInstance = new Instance("appInstance", InstanceArgs.builder()        
+     *             .ami(app.applyValue(getKeyPrefixResult -> getKeyPrefixResult.var().ami()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2888,19 +2999,20 @@ public final class ConsulFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var web = ConsulFunctions.getKeyPrefix(GetKeyPrefixArgs.builder()
-     *             .datacenter(&#34;nyc1&#34;)
-     *             .token(&#34;efgh&#34;)
-     *             .pathPrefix(&#34;myapp/config/&#34;)
+     *             .datacenter("nyc1")
+     *             .token("efgh")
+     *             .pathPrefix("myapp/config/")
      *             .build());
      * 
      *         // Start our instance with the dynamic ami value
-     *         var webInstance = new Instance(&#34;webInstance&#34;, InstanceArgs.builder()        
-     *             .ami(web.applyValue(getKeyPrefixResult -&gt; getKeyPrefixResult.subkeys().app/launch_ami()))
+     *         var webInstance = new Instance("webInstance", InstanceArgs.builder()        
+     *             .ami(web.applyValue(getKeyPrefixResult -> getKeyPrefixResult.subkeys().app/launch_ami()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2913,7 +3025,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2937,22 +3050,23 @@ public final class ConsulFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var app = ConsulFunctions.getKeys(GetKeysArgs.builder()
-     *             .datacenter(&#34;nyc1&#34;)
+     *             .datacenter("nyc1")
      *             .keys(GetKeysKeyArgs.builder()
-     *                 .name(&#34;ami&#34;)
-     *                 .path(&#34;service/app/launch_ami&#34;)
-     *                 .default_(&#34;ami-1234&#34;)
+     *                 .name("ami")
+     *                 .path("service/app/launch_ami")
+     *                 .default_("ami-1234")
      *                 .build())
      *             .build());
      * 
      *         // Start our instance with the dynamic ami value
-     *         var appInstance = new Instance(&#34;appInstance&#34;, InstanceArgs.builder()        
-     *             .ami(app.applyValue(getKeysResult -&gt; getKeysResult.var().ami()))
+     *         var appInstance = new Instance("appInstance", InstanceArgs.builder()        
+     *             .ami(app.applyValue(getKeysResult -> getKeysResult.var().ami()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2965,7 +3079,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2989,22 +3104,23 @@ public final class ConsulFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var app = ConsulFunctions.getKeys(GetKeysArgs.builder()
-     *             .datacenter(&#34;nyc1&#34;)
+     *             .datacenter("nyc1")
      *             .keys(GetKeysKeyArgs.builder()
-     *                 .name(&#34;ami&#34;)
-     *                 .path(&#34;service/app/launch_ami&#34;)
-     *                 .default_(&#34;ami-1234&#34;)
+     *                 .name("ami")
+     *                 .path("service/app/launch_ami")
+     *                 .default_("ami-1234")
      *                 .build())
      *             .build());
      * 
      *         // Start our instance with the dynamic ami value
-     *         var appInstance = new Instance(&#34;appInstance&#34;, InstanceArgs.builder()        
-     *             .ami(app.applyValue(getKeysResult -&gt; getKeysResult.var().ami()))
+     *         var appInstance = new Instance("appInstance", InstanceArgs.builder()        
+     *             .ami(app.applyValue(getKeysResult -> getKeysResult.var().ami()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3017,7 +3133,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3041,22 +3158,23 @@ public final class ConsulFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var app = ConsulFunctions.getKeys(GetKeysArgs.builder()
-     *             .datacenter(&#34;nyc1&#34;)
+     *             .datacenter("nyc1")
      *             .keys(GetKeysKeyArgs.builder()
-     *                 .name(&#34;ami&#34;)
-     *                 .path(&#34;service/app/launch_ami&#34;)
-     *                 .default_(&#34;ami-1234&#34;)
+     *                 .name("ami")
+     *                 .path("service/app/launch_ami")
+     *                 .default_("ami-1234")
      *                 .build())
      *             .build());
      * 
      *         // Start our instance with the dynamic ami value
-     *         var appInstance = new Instance(&#34;appInstance&#34;, InstanceArgs.builder()        
-     *             .ami(app.applyValue(getKeysResult -&gt; getKeysResult.var().ami()))
+     *         var appInstance = new Instance("appInstance", InstanceArgs.builder()        
+     *             .ami(app.applyValue(getKeysResult -> getKeysResult.var().ami()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3069,7 +3187,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3093,22 +3212,23 @@ public final class ConsulFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var app = ConsulFunctions.getKeys(GetKeysArgs.builder()
-     *             .datacenter(&#34;nyc1&#34;)
+     *             .datacenter("nyc1")
      *             .keys(GetKeysKeyArgs.builder()
-     *                 .name(&#34;ami&#34;)
-     *                 .path(&#34;service/app/launch_ami&#34;)
-     *                 .default_(&#34;ami-1234&#34;)
+     *                 .name("ami")
+     *                 .path("service/app/launch_ami")
+     *                 .default_("ami-1234")
      *                 .build())
      *             .build());
      * 
      *         // Start our instance with the dynamic ami value
-     *         var appInstance = new Instance(&#34;appInstance&#34;, InstanceArgs.builder()        
-     *             .ami(app.applyValue(getKeysResult -&gt; getKeysResult.var().ami()))
+     *         var appInstance = new Instance("appInstance", InstanceArgs.builder()        
+     *             .ami(app.applyValue(getKeysResult -> getKeysResult.var().ami()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3121,7 +3241,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3145,22 +3266,23 @@ public final class ConsulFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var app = ConsulFunctions.getKeys(GetKeysArgs.builder()
-     *             .datacenter(&#34;nyc1&#34;)
+     *             .datacenter("nyc1")
      *             .keys(GetKeysKeyArgs.builder()
-     *                 .name(&#34;ami&#34;)
-     *                 .path(&#34;service/app/launch_ami&#34;)
-     *                 .default_(&#34;ami-1234&#34;)
+     *                 .name("ami")
+     *                 .path("service/app/launch_ami")
+     *                 .default_("ami-1234")
      *                 .build())
      *             .build());
      * 
      *         // Start our instance with the dynamic ami value
-     *         var appInstance = new Instance(&#34;appInstance&#34;, InstanceArgs.builder()        
-     *             .ami(app.applyValue(getKeysResult -&gt; getKeysResult.var().ami()))
+     *         var appInstance = new Instance("appInstance", InstanceArgs.builder()        
+     *             .ami(app.applyValue(getKeysResult -> getKeysResult.var().ami()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3173,7 +3295,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3197,22 +3320,23 @@ public final class ConsulFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var app = ConsulFunctions.getKeys(GetKeysArgs.builder()
-     *             .datacenter(&#34;nyc1&#34;)
+     *             .datacenter("nyc1")
      *             .keys(GetKeysKeyArgs.builder()
-     *                 .name(&#34;ami&#34;)
-     *                 .path(&#34;service/app/launch_ami&#34;)
-     *                 .default_(&#34;ami-1234&#34;)
+     *                 .name("ami")
+     *                 .path("service/app/launch_ami")
+     *                 .default_("ami-1234")
      *                 .build())
      *             .build());
      * 
      *         // Start our instance with the dynamic ami value
-     *         var appInstance = new Instance(&#34;appInstance&#34;, InstanceArgs.builder()        
-     *             .ami(app.applyValue(getKeysResult -&gt; getKeysResult.var().ami()))
+     *         var appInstance = new Instance("appInstance", InstanceArgs.builder()        
+     *             .ami(app.applyValue(getKeysResult -> getKeysResult.var().ami()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3228,7 +3352,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3251,9 +3376,9 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var dc2NetworkArea = new NetworkArea(&#34;dc2NetworkArea&#34;, NetworkAreaArgs.builder()        
-     *             .peerDatacenter(&#34;dc2&#34;)
-     *             .retryJoins(&#34;1.2.3.4&#34;)
+     *         var dc2NetworkArea = new NetworkArea("dc2NetworkArea", NetworkAreaArgs.builder()        
+     *             .peerDatacenter("dc2")
+     *             .retryJoins("1.2.3.4")
      *             .useTls(true)
      *             .build());
      * 
@@ -3261,10 +3386,11 @@ public final class ConsulFunctions {
      *             .uuid(dc2NetworkArea.id())
      *             .build());
      * 
-     *         ctx.export(&#34;members&#34;, dc2.applyValue(getNetworkAreaMembersResult -&gt; getNetworkAreaMembersResult).applyValue(dc2 -&gt; dc2.applyValue(getNetworkAreaMembersResult -&gt; getNetworkAreaMembersResult.members())));
+     *         ctx.export("members", dc2.applyValue(getNetworkAreaMembersResult -> getNetworkAreaMembersResult).applyValue(dc2 -> dc2.applyValue(getNetworkAreaMembersResult -> getNetworkAreaMembersResult.members())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3280,7 +3406,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3303,9 +3430,9 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var dc2NetworkArea = new NetworkArea(&#34;dc2NetworkArea&#34;, NetworkAreaArgs.builder()        
-     *             .peerDatacenter(&#34;dc2&#34;)
-     *             .retryJoins(&#34;1.2.3.4&#34;)
+     *         var dc2NetworkArea = new NetworkArea("dc2NetworkArea", NetworkAreaArgs.builder()        
+     *             .peerDatacenter("dc2")
+     *             .retryJoins("1.2.3.4")
      *             .useTls(true)
      *             .build());
      * 
@@ -3313,10 +3440,11 @@ public final class ConsulFunctions {
      *             .uuid(dc2NetworkArea.id())
      *             .build());
      * 
-     *         ctx.export(&#34;members&#34;, dc2.applyValue(getNetworkAreaMembersResult -&gt; getNetworkAreaMembersResult).applyValue(dc2 -&gt; dc2.applyValue(getNetworkAreaMembersResult -&gt; getNetworkAreaMembersResult.members())));
+     *         ctx.export("members", dc2.applyValue(getNetworkAreaMembersResult -> getNetworkAreaMembersResult).applyValue(dc2 -> dc2.applyValue(getNetworkAreaMembersResult -> getNetworkAreaMembersResult.members())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3332,7 +3460,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3355,9 +3484,9 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var dc2NetworkArea = new NetworkArea(&#34;dc2NetworkArea&#34;, NetworkAreaArgs.builder()        
-     *             .peerDatacenter(&#34;dc2&#34;)
-     *             .retryJoins(&#34;1.2.3.4&#34;)
+     *         var dc2NetworkArea = new NetworkArea("dc2NetworkArea", NetworkAreaArgs.builder()        
+     *             .peerDatacenter("dc2")
+     *             .retryJoins("1.2.3.4")
      *             .useTls(true)
      *             .build());
      * 
@@ -3365,10 +3494,11 @@ public final class ConsulFunctions {
      *             .uuid(dc2NetworkArea.id())
      *             .build());
      * 
-     *         ctx.export(&#34;members&#34;, dc2.applyValue(getNetworkAreaMembersResult -&gt; getNetworkAreaMembersResult).applyValue(dc2 -&gt; dc2.applyValue(getNetworkAreaMembersResult -&gt; getNetworkAreaMembersResult.members())));
+     *         ctx.export("members", dc2.applyValue(getNetworkAreaMembersResult -> getNetworkAreaMembersResult).applyValue(dc2 -> dc2.applyValue(getNetworkAreaMembersResult -> getNetworkAreaMembersResult.members())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3384,7 +3514,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3407,9 +3538,9 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var dc2NetworkArea = new NetworkArea(&#34;dc2NetworkArea&#34;, NetworkAreaArgs.builder()        
-     *             .peerDatacenter(&#34;dc2&#34;)
-     *             .retryJoins(&#34;1.2.3.4&#34;)
+     *         var dc2NetworkArea = new NetworkArea("dc2NetworkArea", NetworkAreaArgs.builder()        
+     *             .peerDatacenter("dc2")
+     *             .retryJoins("1.2.3.4")
      *             .useTls(true)
      *             .build());
      * 
@@ -3417,10 +3548,11 @@ public final class ConsulFunctions {
      *             .uuid(dc2NetworkArea.id())
      *             .build());
      * 
-     *         ctx.export(&#34;members&#34;, dc2.applyValue(getNetworkAreaMembersResult -&gt; getNetworkAreaMembersResult).applyValue(dc2 -&gt; dc2.applyValue(getNetworkAreaMembersResult -&gt; getNetworkAreaMembersResult.members())));
+     *         ctx.export("members", dc2.applyValue(getNetworkAreaMembersResult -> getNetworkAreaMembersResult).applyValue(dc2 -> dc2.applyValue(getNetworkAreaMembersResult -> getNetworkAreaMembersResult.members())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3436,7 +3568,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3459,10 +3592,11 @@ public final class ConsulFunctions {
      *     public static void stack(Context ctx) {
      *         final var segments = ConsulFunctions.getNetworkSegments();
      * 
-     *         ctx.export(&#34;segments&#34;, segments.applyValue(getNetworkSegmentsResult -&gt; getNetworkSegmentsResult.segments()));
+     *         ctx.export("segments", segments.applyValue(getNetworkSegmentsResult -> getNetworkSegmentsResult.segments()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3478,7 +3612,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3501,10 +3636,11 @@ public final class ConsulFunctions {
      *     public static void stack(Context ctx) {
      *         final var segments = ConsulFunctions.getNetworkSegments();
      * 
-     *         ctx.export(&#34;segments&#34;, segments.applyValue(getNetworkSegmentsResult -&gt; getNetworkSegmentsResult.segments()));
+     *         ctx.export("segments", segments.applyValue(getNetworkSegmentsResult -> getNetworkSegmentsResult.segments()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3520,7 +3656,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3543,10 +3680,11 @@ public final class ConsulFunctions {
      *     public static void stack(Context ctx) {
      *         final var segments = ConsulFunctions.getNetworkSegments();
      * 
-     *         ctx.export(&#34;segments&#34;, segments.applyValue(getNetworkSegmentsResult -&gt; getNetworkSegmentsResult.segments()));
+     *         ctx.export("segments", segments.applyValue(getNetworkSegmentsResult -> getNetworkSegmentsResult.segments()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3562,7 +3700,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3585,10 +3724,11 @@ public final class ConsulFunctions {
      *     public static void stack(Context ctx) {
      *         final var segments = ConsulFunctions.getNetworkSegments();
      * 
-     *         ctx.export(&#34;segments&#34;, segments.applyValue(getNetworkSegmentsResult -&gt; getNetworkSegmentsResult.segments()));
+     *         ctx.export("segments", segments.applyValue(getNetworkSegmentsResult -> getNetworkSegmentsResult.segments()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3604,7 +3744,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3627,10 +3768,11 @@ public final class ConsulFunctions {
      *     public static void stack(Context ctx) {
      *         final var segments = ConsulFunctions.getNetworkSegments();
      * 
-     *         ctx.export(&#34;segments&#34;, segments.applyValue(getNetworkSegmentsResult -&gt; getNetworkSegmentsResult.segments()));
+     *         ctx.export("segments", segments.applyValue(getNetworkSegmentsResult -> getNetworkSegmentsResult.segments()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3646,7 +3788,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3669,10 +3812,11 @@ public final class ConsulFunctions {
      *     public static void stack(Context ctx) {
      *         final var segments = ConsulFunctions.getNetworkSegments();
      * 
-     *         ctx.export(&#34;segments&#34;, segments.applyValue(getNetworkSegmentsResult -&gt; getNetworkSegmentsResult.segments()));
+     *         ctx.export("segments", segments.applyValue(getNetworkSegmentsResult -> getNetworkSegmentsResult.segments()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3743,7 +3887,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3765,12 +3910,13 @@ public final class ConsulFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var basic = ConsulFunctions.getPeering(GetPeeringArgs.builder()
-     *             .peerName(&#34;peered-cluster&#34;)
+     *             .peerName("peered-cluster")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3781,7 +3927,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3803,12 +3950,13 @@ public final class ConsulFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var basic = ConsulFunctions.getPeering(GetPeeringArgs.builder()
-     *             .peerName(&#34;peered-cluster&#34;)
+     *             .peerName("peered-cluster")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3819,7 +3967,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3841,12 +3990,13 @@ public final class ConsulFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var basic = ConsulFunctions.getPeering(GetPeeringArgs.builder()
-     *             .peerName(&#34;peered-cluster&#34;)
+     *             .peerName("peered-cluster")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3857,7 +4007,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3879,12 +4030,13 @@ public final class ConsulFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var basic = ConsulFunctions.getPeering(GetPeeringArgs.builder()
-     *             .peerName(&#34;peered-cluster&#34;)
+     *             .peerName("peered-cluster")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3895,7 +4047,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3920,7 +4073,8 @@ public final class ConsulFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3931,7 +4085,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3956,7 +4111,8 @@ public final class ConsulFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3967,7 +4123,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3992,7 +4149,8 @@ public final class ConsulFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4003,7 +4161,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4028,7 +4187,8 @@ public final class ConsulFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4039,7 +4199,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4064,7 +4225,8 @@ public final class ConsulFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4075,7 +4237,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4100,7 +4263,8 @@ public final class ConsulFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4120,7 +4284,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4144,21 +4309,22 @@ public final class ConsulFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var read-consul-dc1 = ConsulFunctions.getService(GetServiceArgs.builder()
-     *             .name(&#34;consul&#34;)
-     *             .datacenter(&#34;dc1&#34;)
+     *             .name("consul")
+     *             .datacenter("dc1")
      *             .build());
      * 
      *         // Set the description to a whitespace delimited list of the node names
-     *         var app = new Resource(&#34;app&#34;, ResourceArgs.builder()        
+     *         var app = new Resource("app", ResourceArgs.builder()        
      *             .description(StdFunctions.join(JoinArgs.builder()
-     *                 .separator(&#34; &#34;)
+     *                 .separator(" ")
      *                 .input(nodes)
      *                 .build()).result())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4178,7 +4344,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4202,21 +4369,22 @@ public final class ConsulFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var read-consul-dc1 = ConsulFunctions.getService(GetServiceArgs.builder()
-     *             .name(&#34;consul&#34;)
-     *             .datacenter(&#34;dc1&#34;)
+     *             .name("consul")
+     *             .datacenter("dc1")
      *             .build());
      * 
      *         // Set the description to a whitespace delimited list of the node names
-     *         var app = new Resource(&#34;app&#34;, ResourceArgs.builder()        
+     *         var app = new Resource("app", ResourceArgs.builder()        
      *             .description(StdFunctions.join(JoinArgs.builder()
-     *                 .separator(&#34; &#34;)
+     *                 .separator(" ")
      *                 .input(nodes)
      *                 .build()).result())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4236,7 +4404,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4260,21 +4429,22 @@ public final class ConsulFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var read-consul-dc1 = ConsulFunctions.getService(GetServiceArgs.builder()
-     *             .name(&#34;consul&#34;)
-     *             .datacenter(&#34;dc1&#34;)
+     *             .name("consul")
+     *             .datacenter("dc1")
      *             .build());
      * 
      *         // Set the description to a whitespace delimited list of the node names
-     *         var app = new Resource(&#34;app&#34;, ResourceArgs.builder()        
+     *         var app = new Resource("app", ResourceArgs.builder()        
      *             .description(StdFunctions.join(JoinArgs.builder()
-     *                 .separator(&#34; &#34;)
+     *                 .separator(" ")
      *                 .input(nodes)
      *                 .build()).result())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4294,7 +4464,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4318,21 +4489,22 @@ public final class ConsulFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var read-consul-dc1 = ConsulFunctions.getService(GetServiceArgs.builder()
-     *             .name(&#34;consul&#34;)
-     *             .datacenter(&#34;dc1&#34;)
+     *             .name("consul")
+     *             .datacenter("dc1")
      *             .build());
      * 
      *         // Set the description to a whitespace delimited list of the node names
-     *         var app = new Resource(&#34;app&#34;, ResourceArgs.builder()        
+     *         var app = new Resource("app", ResourceArgs.builder()        
      *             .description(StdFunctions.join(JoinArgs.builder()
-     *                 .separator(&#34; &#34;)
+     *                 .separator(" ")
      *                 .input(nodes)
      *                 .build()).result())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4351,7 +4523,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4373,13 +4546,14 @@ public final class ConsulFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var vault = ConsulFunctions.getServiceHealth(GetServiceHealthArgs.builder()
-     *             .service(&#34;vault&#34;)
+     *             .service("vault")
      *             .passing(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4398,7 +4572,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4420,13 +4595,14 @@ public final class ConsulFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var vault = ConsulFunctions.getServiceHealth(GetServiceHealthArgs.builder()
-     *             .service(&#34;vault&#34;)
+     *             .service("vault")
      *             .passing(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4445,7 +4621,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4467,13 +4644,14 @@ public final class ConsulFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var vault = ConsulFunctions.getServiceHealth(GetServiceHealthArgs.builder()
-     *             .service(&#34;vault&#34;)
+     *             .service("vault")
      *             .passing(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4492,7 +4670,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4514,13 +4693,14 @@ public final class ConsulFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var vault = ConsulFunctions.getServiceHealth(GetServiceHealthArgs.builder()
-     *             .service(&#34;vault&#34;)
+     *             .service("vault")
      *             .passing(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4539,7 +4719,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4564,21 +4745,22 @@ public final class ConsulFunctions {
      *     public static void stack(Context ctx) {
      *         final var read-dc1 = ConsulFunctions.getServices(GetServicesArgs.builder()
      *             .queryOptions(GetServicesQueryOptionArgs.builder()
-     *                 .datacenter(&#34;dc1&#34;)
+     *                 .datacenter("dc1")
      *                 .build())
      *             .build());
      * 
      *         // Set the description to a whitespace delimited list of the services
-     *         var app = new Resource(&#34;app&#34;, ResourceArgs.builder()        
+     *         var app = new Resource("app", ResourceArgs.builder()        
      *             .description(StdFunctions.join(JoinArgs.builder()
-     *                 .separator(&#34; &#34;)
+     *                 .separator(" ")
      *                 .input(names)
      *                 .build()).result())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4597,7 +4779,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4622,21 +4805,22 @@ public final class ConsulFunctions {
      *     public static void stack(Context ctx) {
      *         final var read-dc1 = ConsulFunctions.getServices(GetServicesArgs.builder()
      *             .queryOptions(GetServicesQueryOptionArgs.builder()
-     *                 .datacenter(&#34;dc1&#34;)
+     *                 .datacenter("dc1")
      *                 .build())
      *             .build());
      * 
      *         // Set the description to a whitespace delimited list of the services
-     *         var app = new Resource(&#34;app&#34;, ResourceArgs.builder()        
+     *         var app = new Resource("app", ResourceArgs.builder()        
      *             .description(StdFunctions.join(JoinArgs.builder()
-     *                 .separator(&#34; &#34;)
+     *                 .separator(" ")
      *                 .input(names)
      *                 .build()).result())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4655,7 +4839,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4680,21 +4865,22 @@ public final class ConsulFunctions {
      *     public static void stack(Context ctx) {
      *         final var read-dc1 = ConsulFunctions.getServices(GetServicesArgs.builder()
      *             .queryOptions(GetServicesQueryOptionArgs.builder()
-     *                 .datacenter(&#34;dc1&#34;)
+     *                 .datacenter("dc1")
      *                 .build())
      *             .build());
      * 
      *         // Set the description to a whitespace delimited list of the services
-     *         var app = new Resource(&#34;app&#34;, ResourceArgs.builder()        
+     *         var app = new Resource("app", ResourceArgs.builder()        
      *             .description(StdFunctions.join(JoinArgs.builder()
-     *                 .separator(&#34; &#34;)
+     *                 .separator(" ")
      *                 .input(names)
      *                 .build()).result())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4713,7 +4899,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4738,21 +4925,22 @@ public final class ConsulFunctions {
      *     public static void stack(Context ctx) {
      *         final var read-dc1 = ConsulFunctions.getServices(GetServicesArgs.builder()
      *             .queryOptions(GetServicesQueryOptionArgs.builder()
-     *                 .datacenter(&#34;dc1&#34;)
+     *                 .datacenter("dc1")
      *                 .build())
      *             .build());
      * 
      *         // Set the description to a whitespace delimited list of the services
-     *         var app = new Resource(&#34;app&#34;, ResourceArgs.builder()        
+     *         var app = new Resource("app", ResourceArgs.builder()        
      *             .description(StdFunctions.join(JoinArgs.builder()
-     *                 .separator(&#34; &#34;)
+     *                 .separator(" ")
      *                 .input(names)
      *                 .build()).result())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4771,7 +4959,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4796,21 +4985,22 @@ public final class ConsulFunctions {
      *     public static void stack(Context ctx) {
      *         final var read-dc1 = ConsulFunctions.getServices(GetServicesArgs.builder()
      *             .queryOptions(GetServicesQueryOptionArgs.builder()
-     *                 .datacenter(&#34;dc1&#34;)
+     *                 .datacenter("dc1")
      *                 .build())
      *             .build());
      * 
      *         // Set the description to a whitespace delimited list of the services
-     *         var app = new Resource(&#34;app&#34;, ResourceArgs.builder()        
+     *         var app = new Resource("app", ResourceArgs.builder()        
      *             .description(StdFunctions.join(JoinArgs.builder()
-     *                 .separator(&#34; &#34;)
+     *                 .separator(" ")
      *                 .input(names)
      *                 .build()).result())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4829,7 +5019,8 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4854,21 +5045,22 @@ public final class ConsulFunctions {
      *     public static void stack(Context ctx) {
      *         final var read-dc1 = ConsulFunctions.getServices(GetServicesArgs.builder()
      *             .queryOptions(GetServicesQueryOptionArgs.builder()
-     *                 .datacenter(&#34;dc1&#34;)
+     *                 .datacenter("dc1")
      *                 .build())
      *             .build());
      * 
      *         // Set the description to a whitespace delimited list of the services
-     *         var app = new Resource(&#34;app&#34;, ResourceArgs.builder()        
+     *         var app = new Resource("app", ResourceArgs.builder()        
      *             .description(StdFunctions.join(JoinArgs.builder()
-     *                 .separator(&#34; &#34;)
+     *                 .separator(" ")
      *                 .input(names)
      *                 .build()).result())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

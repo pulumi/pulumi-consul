@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -43,18 +44,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var app = new Keys(&#34;app&#34;, KeysArgs.builder()        
- *             .datacenter(&#34;nyc1&#34;)
- *             .token(&#34;abcd&#34;)
+ *         var app = new Keys("app", KeysArgs.builder()        
+ *             .datacenter("nyc1")
+ *             .token("abcd")
  *             .keys(KeysKeyArgs.builder()
- *                 .path(&#34;service/app/elb_address&#34;)
+ *                 .path("service/app/elb_address")
  *                 .value(appAwsElb.dnsName())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

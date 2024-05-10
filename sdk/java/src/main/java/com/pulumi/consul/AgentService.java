@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,18 +50,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var app = new AgentService(&#34;app&#34;, AgentServiceArgs.builder()        
- *             .address(&#34;www.google.com&#34;)
- *             .name(&#34;google&#34;)
+ *         var app = new AgentService("app", AgentServiceArgs.builder()        
+ *             .address("www.google.com")
+ *             .name("google")
  *             .port(80)
  *             .tags(            
- *                 &#34;tag0&#34;,
- *                 &#34;tag1&#34;)
+ *                 "tag0",
+ *                 "tag1")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,15 +48,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var license = new License(&#34;license&#34;, LicenseArgs.builder()        
+ *         var license = new License("license", LicenseArgs.builder()        
  *             .license(StdFunctions.file(FileArgs.builder()
- *                 .input(&#34;license.hclic&#34;)
+ *                 .input("license.hclic")
  *                 .build()).result())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

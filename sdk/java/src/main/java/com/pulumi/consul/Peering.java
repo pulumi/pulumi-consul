@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,19 +52,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var eu_us = new PeeringToken(&#34;eu-us&#34;, PeeringTokenArgs.builder()        
- *             .peerName(&#34;eu-cluster&#34;)
+ *         var eu_us = new PeeringToken("eu-us", PeeringTokenArgs.builder()        
+ *             .peerName("eu-cluster")
  *             .build());
  * 
- *         var eu_usPeering = new Peering(&#34;eu-usPeering&#34;, PeeringArgs.builder()        
- *             .peerName(&#34;eu-cluster&#34;)
+ *         var eu_usPeering = new Peering("eu-usPeering", PeeringArgs.builder()        
+ *             .peerName("eu-cluster")
  *             .peeringToken(token.peeringToken())
- *             .meta(Map.of(&#34;hello&#34;, &#34;world&#34;))
+ *             .meta(Map.of("hello", "world"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

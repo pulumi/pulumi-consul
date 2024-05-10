@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,51 +49,52 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var jwtProvider = new ConfigEntry(&#34;jwtProvider&#34;, ConfigEntryArgs.builder()        
- *             .name(&#34;okta&#34;)
- *             .kind(&#34;jwt-provider&#34;)
+ *         var jwtProvider = new ConfigEntry("jwtProvider", ConfigEntryArgs.builder()        
+ *             .name("okta")
+ *             .kind("jwt-provider")
  *             .configJson(serializeJson(
  *                 jsonObject(
- *                     jsonProperty(&#34;ClockSkewSeconds&#34;, 30),
- *                     jsonProperty(&#34;Issuer&#34;, &#34;test-issuer&#34;),
- *                     jsonProperty(&#34;JSONWebKeySet&#34;, jsonObject(
- *                         jsonProperty(&#34;Remote&#34;, jsonObject(
- *                             jsonProperty(&#34;URI&#34;, &#34;https://127.0.0.1:9091&#34;),
- *                             jsonProperty(&#34;FetchAsynchronously&#34;, true)
+ *                     jsonProperty("ClockSkewSeconds", 30),
+ *                     jsonProperty("Issuer", "test-issuer"),
+ *                     jsonProperty("JSONWebKeySet", jsonObject(
+ *                         jsonProperty("Remote", jsonObject(
+ *                             jsonProperty("URI", "https://127.0.0.1:9091"),
+ *                             jsonProperty("FetchAsynchronously", true)
  *                         ))
  *                     ))
  *                 )))
  *             .build());
  * 
- *         var web = new ConfigEntryServiceIntentions(&#34;web&#34;, ConfigEntryServiceIntentionsArgs.builder()        
- *             .name(&#34;web&#34;)
+ *         var web = new ConfigEntryServiceIntentions("web", ConfigEntryServiceIntentionsArgs.builder()        
+ *             .name("web")
  *             .jwts(ConfigEntryServiceIntentionsJwtArgs.builder()
  *                 .providers(ConfigEntryServiceIntentionsJwtProviderArgs.builder()
  *                     .name(jwtProvider.name())
  *                     .verifyClaims(ConfigEntryServiceIntentionsJwtProviderVerifyClaimArgs.builder()
  *                         .paths(                        
- *                             &#34;perms&#34;,
- *                             &#34;role&#34;)
- *                         .value(&#34;admin&#34;)
+ *                             "perms",
+ *                             "role")
+ *                         .value("admin")
  *                         .build())
  *                     .build())
  *                 .build())
  *             .sources(            
  *                 ConfigEntryServiceIntentionsSourceArgs.builder()
- *                     .name(&#34;frontend-webapp&#34;)
- *                     .type(&#34;consul&#34;)
- *                     .action(&#34;allow&#34;)
+ *                     .name("frontend-webapp")
+ *                     .type("consul")
+ *                     .action("allow")
  *                     .build(),
  *                 ConfigEntryServiceIntentionsSourceArgs.builder()
- *                     .name(&#34;nightly-cronjob&#34;)
- *                     .type(&#34;consul&#34;)
- *                     .action(&#34;deny&#34;)
+ *                     .name("nightly-cronjob")
+ *                     .type("consul")
+ *                     .action("deny")
  *                     .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,13 +50,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var token = new PeeringToken(&#34;token&#34;, PeeringTokenArgs.builder()        
- *             .peerName(&#34;eu-cluster&#34;)
+ *         var token = new PeeringToken("token", PeeringTokenArgs.builder()        
+ *             .peerName("eu-cluster")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

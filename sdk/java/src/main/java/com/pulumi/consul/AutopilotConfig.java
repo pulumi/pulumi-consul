@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,15 +48,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var config = new AutopilotConfig(&#34;config&#34;, AutopilotConfigArgs.builder()        
+ *         var config = new AutopilotConfig("config", AutopilotConfigArgs.builder()        
  *             .cleanupDeadServers(false)
- *             .lastContactThreshold(&#34;1s&#34;)
+ *             .lastContactThreshold("1s")
  *             .maxTrailingLogs(500)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
