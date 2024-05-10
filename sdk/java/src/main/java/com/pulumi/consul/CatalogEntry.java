@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,23 +49,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var app = new CatalogEntry(&#34;app&#34;, CatalogEntryArgs.builder()        
- *             .address(&#34;192.168.10.10&#34;)
- *             .node(&#34;foobar&#34;)
+ *         var app = new CatalogEntry("app", CatalogEntryArgs.builder()        
+ *             .address("192.168.10.10")
+ *             .node("foobar")
  *             .services(CatalogEntryServiceArgs.builder()
- *                 .address(&#34;127.0.0.1&#34;)
- *                 .id(&#34;redis1&#34;)
- *                 .name(&#34;redis&#34;)
+ *                 .address("127.0.0.1")
+ *                 .id("redis1")
+ *                 .name("redis")
  *                 .port(8000)
  *                 .tags(                
- *                     &#34;master&#34;,
- *                     &#34;v1&#34;)
+ *                     "master",
+ *                     "v1")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,39 +49,40 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var web = new ConfigEntryServiceResolver(&#34;web&#34;, ConfigEntryServiceResolverArgs.builder()        
- *             .name(&#34;web&#34;)
- *             .defaultSubset(&#34;v1&#34;)
- *             .connectTimeout(&#34;15s&#34;)
+ *         var web = new ConfigEntryServiceResolver("web", ConfigEntryServiceResolverArgs.builder()        
+ *             .name("web")
+ *             .defaultSubset("v1")
+ *             .connectTimeout("15s")
  *             .subsets(            
  *                 ConfigEntryServiceResolverSubsetArgs.builder()
- *                     .name(&#34;v1&#34;)
- *                     .filter(&#34;Service.Meta.version == v1&#34;)
+ *                     .name("v1")
+ *                     .filter("Service.Meta.version == v1")
  *                     .build(),
  *                 ConfigEntryServiceResolverSubsetArgs.builder()
- *                     .name(&#34;v2&#34;)
- *                     .filter(&#34;Service.Meta.version == v2&#34;)
+ *                     .name("v2")
+ *                     .filter("Service.Meta.version == v2")
  *                     .build())
  *             .redirects(ConfigEntryServiceResolverRedirectArgs.builder()
- *                 .service(&#34;web&#34;)
- *                 .datacenter(&#34;dc2&#34;)
+ *                 .service("web")
+ *                 .datacenter("dc2")
  *                 .build())
  *             .failovers(            
  *                 ConfigEntryServiceResolverFailoverArgs.builder()
- *                     .subsetName(&#34;v2&#34;)
- *                     .datacenters(&#34;dc2&#34;)
+ *                     .subsetName("v2")
+ *                     .datacenters("dc2")
  *                     .build(),
  *                 ConfigEntryServiceResolverFailoverArgs.builder()
- *                     .subsetName(&#34;*&#34;)
+ *                     .subsetName("*")
  *                     .datacenters(                    
- *                         &#34;dc3&#34;,
- *                         &#34;dc4&#34;)
+ *                         "dc3",
+ *                         "dc4")
  *                     .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

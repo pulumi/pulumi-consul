@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,12 +50,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dashboard = new ConfigEntryServiceDefaults(&#34;dashboard&#34;, ConfigEntryServiceDefaultsArgs.builder()        
- *             .name(&#34;dashboard&#34;)
+ *         var dashboard = new ConfigEntryServiceDefaults("dashboard", ConfigEntryServiceDefaultsArgs.builder()        
+ *             .name("dashboard")
  *             .upstreamConfigs(ConfigEntryServiceDefaultsUpstreamConfigArgs.builder()
  *                 .defaults(ConfigEntryServiceDefaultsUpstreamConfigDefaultArgs.builder()
  *                     .meshGateways(ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayArgs.builder()
- *                         .mode(&#34;local&#34;)
+ *                         .mode("local")
  *                         .build())
  *                     .limits(ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitArgs.builder()
  *                         .maxConnections(512)
@@ -63,9 +64,9 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *                 .overrides(ConfigEntryServiceDefaultsUpstreamConfigOverrideArgs.builder()
- *                     .name(&#34;counting&#34;)
+ *                     .name("counting")
  *                     .meshGateways(ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArgs.builder()
- *                         .mode(&#34;remote&#34;)
+ *                         .mode("remote")
  *                         .build())
  *                     .build())
  *                 .build())
@@ -73,7 +74,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

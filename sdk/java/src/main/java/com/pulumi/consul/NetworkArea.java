@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,15 +52,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dc2 = new NetworkArea(&#34;dc2&#34;, NetworkAreaArgs.builder()        
- *             .peerDatacenter(&#34;dc2&#34;)
- *             .retryJoins(&#34;1.2.3.4&#34;)
+ *         var dc2 = new NetworkArea("dc2", NetworkAreaArgs.builder()        
+ *             .peerDatacenter("dc2")
+ *             .retryJoins("1.2.3.4")
  *             .useTls(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

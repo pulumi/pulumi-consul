@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,31 +45,32 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var minikube = new AclAuthMethod(&#34;minikube&#34;, AclAuthMethodArgs.builder()        
- *             .name(&#34;minikube&#34;)
- *             .type(&#34;kubernetes&#34;)
- *             .description(&#34;dev minikube cluster&#34;)
+ *         var minikube = new AclAuthMethod("minikube", AclAuthMethodArgs.builder()        
+ *             .name("minikube")
+ *             .type("kubernetes")
+ *             .description("dev minikube cluster")
  *             .config(Map.ofEntries(
- *                 Map.entry(&#34;Host&#34;, &#34;https://192.0.2.42:8443&#34;),
- *                 Map.entry(&#34;CACert&#34;, &#34;&#34;&#34;
+ *                 Map.entry("Host", "https://192.0.2.42:8443"),
+ *                 Map.entry("CACert", """
  * -----BEGIN CERTIFICATE-----
  * ...-----END CERTIFICATE-----
- *                 &#34;&#34;&#34;),
- *                 Map.entry(&#34;ServiceAccountJWT&#34;, &#34;eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9...&#34;)
+ *                 """),
+ *                 Map.entry("ServiceAccountJWT", "eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9...")
  *             ))
  *             .build());
  * 
- *         var test = new AclBindingRule(&#34;test&#34;, AclBindingRuleArgs.builder()        
+ *         var test = new AclBindingRule("test", AclBindingRuleArgs.builder()        
  *             .authMethod(minikube.name())
- *             .description(&#34;foobar&#34;)
- *             .selector(&#34;serviceaccount.namespace==default&#34;)
- *             .bindType(&#34;service&#34;)
- *             .bindName(&#34;minikube&#34;)
+ *             .description("foobar")
+ *             .selector("serviceaccount.namespace==default")
+ *             .bindType("service")
+ *             .bindName("minikube")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

@@ -35,7 +35,8 @@ import javax.annotation.Nullable;
  * Create a simplest intention with static service names:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -56,21 +57,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var database = new Intention(&#34;database&#34;, IntentionArgs.builder()        
- *             .sourceName(&#34;api&#34;)
- *             .destinationName(&#34;db&#34;)
- *             .action(&#34;allow&#34;)
+ *         var database = new Intention("database", IntentionArgs.builder()        
+ *             .sourceName("api")
+ *             .destinationName("db")
+ *             .action("allow")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Referencing a known service via a datasource:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -93,19 +96,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var database = new Intention(&#34;database&#34;, IntentionArgs.builder()        
- *             .sourceName(&#34;api&#34;)
+ *         var database = new Intention("database", IntentionArgs.builder()        
+ *             .sourceName("api")
  *             .destinationName(pgConsulService.name())
- *             .action(&#34;allow&#34;)
+ *             .action("allow")
  *             .build());
  * 
  *         final var pg = ConsulFunctions.getService(GetServiceArgs.builder()
- *             .name(&#34;postgresql&#34;)
+ *             .name("postgresql")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

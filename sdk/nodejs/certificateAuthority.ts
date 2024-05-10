@@ -44,16 +44,9 @@ export class CertificateAuthority extends pulumi.CustomResource {
     }
 
     /**
-     * The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
-     * [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
-     *
      * @deprecated The config attribute is deprecated, please use configJson instead.
      */
     public readonly config!: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
-     * [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
-     */
     public readonly configJson!: pulumi.Output<string | undefined>;
     /**
      * Specifies the CA provider type to use.
@@ -95,16 +88,9 @@ export class CertificateAuthority extends pulumi.CustomResource {
  */
 export interface CertificateAuthorityState {
     /**
-     * The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
-     * [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
-     *
      * @deprecated The config attribute is deprecated, please use configJson instead.
      */
     config?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
-     * [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
-     */
     configJson?: pulumi.Input<string>;
     /**
      * Specifies the CA provider type to use.
@@ -117,16 +103,9 @@ export interface CertificateAuthorityState {
  */
 export interface CertificateAuthorityArgs {
     /**
-     * The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
-     * [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
-     *
      * @deprecated The config attribute is deprecated, please use configJson instead.
      */
     config?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see
-     * [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
-     */
     configJson?: pulumi.Input<string>;
     /**
      * Specifies the CA provider type to use.

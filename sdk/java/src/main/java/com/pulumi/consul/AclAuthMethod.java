@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * Define a `kubernetes` auth method:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,30 +48,32 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var minikube = new AclAuthMethod(&#34;minikube&#34;, AclAuthMethodArgs.builder()        
- *             .name(&#34;minikube&#34;)
- *             .type(&#34;kubernetes&#34;)
- *             .description(&#34;dev minikube cluster&#34;)
+ *         var minikube = new AclAuthMethod("minikube", AclAuthMethodArgs.builder()        
+ *             .name("minikube")
+ *             .type("kubernetes")
+ *             .description("dev minikube cluster")
  *             .configJson(serializeJson(
  *                 jsonObject(
- *                     jsonProperty(&#34;Host&#34;, &#34;https://192.0.2.42:8443&#34;),
- *                     jsonProperty(&#34;CACert&#34;, &#34;&#34;&#34;
+ *                     jsonProperty("Host", "https://192.0.2.42:8443"),
+ *                     jsonProperty("CACert", """
  * -----BEGIN CERTIFICATE-----
  * ...-----END CERTIFICATE-----
- *                     &#34;&#34;&#34;),
- *                     jsonProperty(&#34;ServiceAccountJWT&#34;, &#34;eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9...&#34;)
+ *                     """),
+ *                     jsonProperty("ServiceAccountJWT", "eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9...")
  *                 )))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Define a `jwt` auth method:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -92,33 +95,34 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var oidc = new AclAuthMethod(&#34;oidc&#34;, AclAuthMethodArgs.builder()        
- *             .name(&#34;auth0&#34;)
- *             .type(&#34;oidc&#34;)
- *             .maxTokenTtl(&#34;5m&#34;)
+ *         var oidc = new AclAuthMethod("oidc", AclAuthMethodArgs.builder()        
+ *             .name("auth0")
+ *             .type("oidc")
+ *             .maxTokenTtl("5m")
  *             .configJson(serializeJson(
  *                 jsonObject(
- *                     jsonProperty(&#34;AllowedRedirectURIs&#34;, jsonArray(
- *                         &#34;http://localhost:8550/oidc/callback&#34;, 
- *                         &#34;http://localhost:8500/ui/oidc/callback&#34;
+ *                     jsonProperty("AllowedRedirectURIs", jsonArray(
+ *                         "http://localhost:8550/oidc/callback", 
+ *                         "http://localhost:8500/ui/oidc/callback"
  *                     )),
- *                     jsonProperty(&#34;BoundAudiences&#34;, jsonArray(&#34;V1RPi2MYptMV1RPi2MYptMV1RPi2MYpt&#34;)),
- *                     jsonProperty(&#34;ClaimMappings&#34;, jsonObject(
- *                         jsonProperty(&#34;http://example.com/first_name&#34;, &#34;first_name&#34;),
- *                         jsonProperty(&#34;http://example.com/last_name&#34;, &#34;last_name&#34;)
+ *                     jsonProperty("BoundAudiences", jsonArray("V1RPi2MYptMV1RPi2MYptMV1RPi2MYpt")),
+ *                     jsonProperty("ClaimMappings", jsonObject(
+ *                         jsonProperty("http://example.com/first_name", "first_name"),
+ *                         jsonProperty("http://example.com/last_name", "last_name")
  *                     )),
- *                     jsonProperty(&#34;ListClaimMappings&#34;, jsonObject(
- *                         jsonProperty(&#34;http://consul.com/groups&#34;, &#34;groups&#34;)
+ *                     jsonProperty("ListClaimMappings", jsonObject(
+ *                         jsonProperty("http://consul.com/groups", "groups")
  *                     )),
- *                     jsonProperty(&#34;OIDCClientID&#34;, &#34;V1RPi2MYptMV1RPi2MYptMV1RPi2MYpt&#34;),
- *                     jsonProperty(&#34;OIDCClientSecret&#34;, &#34;...(omitted)...&#34;),
- *                     jsonProperty(&#34;OIDCDiscoveryURL&#34;, &#34;https://my-corp-app-name.auth0.com/&#34;)
+ *                     jsonProperty("OIDCClientID", "V1RPi2MYptMV1RPi2MYptMV1RPi2MYpt"),
+ *                     jsonProperty("OIDCClientSecret", "...(omitted)..."),
+ *                     jsonProperty("OIDCDiscoveryURL", "https://my-corp-app-name.auth0.com/")
  *                 )))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

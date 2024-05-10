@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,34 +49,35 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Basic usage
- *         var agent = new AclPolicy(&#34;agent&#34;, AclPolicyArgs.builder()        
- *             .name(&#34;agent&#34;)
- *             .rules(&#34;&#34;&#34;
- * node_prefix &#34;&#34; {
- *   policy = &#34;read&#34;
+ *         var agent = new AclPolicy("agent", AclPolicyArgs.builder()        
+ *             .name("agent")
+ *             .rules("""
+ * node_prefix "" {
+ *   policy = "read"
  * }
- *             &#34;&#34;&#34;)
+ *             """)
  *             .build());
  * 
- *         var test = new AclToken(&#34;test&#34;, AclTokenArgs.builder()        
- *             .description(&#34;my test token&#34;)
+ *         var test = new AclToken("test", AclTokenArgs.builder()        
+ *             .description("my test token")
  *             .policies(agent.name())
  *             .local(true)
  *             .build());
  * 
  *         // Explicitly set the `accessor_id`
- *         var testRandomUuid = new RandomUuid(&#34;testRandomUuid&#34;);
+ *         var testRandomUuid = new RandomUuid("testRandomUuid");
  * 
- *         var testPredefinedId = new AclToken(&#34;testPredefinedId&#34;, AclTokenArgs.builder()        
+ *         var testPredefinedId = new AclToken("testPredefinedId", AclTokenArgs.builder()        
  *             .accessorId(testUuid.result())
- *             .description(&#34;my test uuid token&#34;)
+ *             .description("my test uuid token")
  *             .policies(agent.name())
  *             .local(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
