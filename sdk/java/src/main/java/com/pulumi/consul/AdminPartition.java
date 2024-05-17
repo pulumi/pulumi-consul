@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var naWest = new AdminPartition("naWest", AdminPartitionArgs.builder()        
+ *         var naWest = new AdminPartition("naWest", AdminPartitionArgs.builder()
  *             .name("na-west")
  *             .description("Partition for North America West")
  *             .build());

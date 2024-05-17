@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var app = new CatalogEntry("app", CatalogEntryArgs.builder()        
+ *         var app = new CatalogEntry("app", CatalogEntryArgs.builder()
  *             .address("192.168.10.10")
  *             .node("foobar")
  *             .services(CatalogEntryServiceArgs.builder()

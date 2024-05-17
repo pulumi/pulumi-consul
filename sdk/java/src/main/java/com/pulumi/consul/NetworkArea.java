@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dc2 = new NetworkArea("dc2", NetworkAreaArgs.builder()        
+ *         var dc2 = new NetworkArea("dc2", NetworkAreaArgs.builder()
  *             .peerDatacenter("dc2")
  *             .retryJoins("1.2.3.4")
  *             .useTls(true)

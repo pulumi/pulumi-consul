@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var minikube = new AclAuthMethod("minikube", AclAuthMethodArgs.builder()        
+ *         var minikube = new AclAuthMethod("minikube", AclAuthMethodArgs.builder()
  *             .name("minikube")
  *             .type("kubernetes")
  *             .description("dev minikube cluster")
@@ -95,7 +95,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var oidc = new AclAuthMethod("oidc", AclAuthMethodArgs.builder()        
+ *         var oidc = new AclAuthMethod("oidc", AclAuthMethodArgs.builder()
  *             .name("auth0")
  *             .type("oidc")
  *             .maxTokenTtl("5m")

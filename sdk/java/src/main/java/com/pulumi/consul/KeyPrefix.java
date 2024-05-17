@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myappConfig = new KeyPrefix("myappConfig", KeyPrefixArgs.builder()        
+ *         var myappConfig = new KeyPrefix("myappConfig", KeyPrefixArgs.builder()
  *             .datacenter("nyc1")
  *             .token("abcd")
  *             .pathPrefix("myapp/config/")
