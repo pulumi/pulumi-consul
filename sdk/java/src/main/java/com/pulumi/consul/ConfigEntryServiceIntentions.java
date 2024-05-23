@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var jwtProvider = new ConfigEntry("jwtProvider", ConfigEntryArgs.builder()        
+ *         var jwtProvider = new ConfigEntry("jwtProvider", ConfigEntryArgs.builder()
  *             .name("okta")
  *             .kind("jwt-provider")
  *             .configJson(serializeJson(
@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  *                 )))
  *             .build());
  * 
- *         var web = new ConfigEntryServiceIntentions("web", ConfigEntryServiceIntentionsArgs.builder()        
+ *         var web = new ConfigEntryServiceIntentions("web", ConfigEntryServiceIntentionsArgs.builder()
  *             .name("web")
  *             .jwts(ConfigEntryServiceIntentionsJwtArgs.builder()
  *                 .providers(ConfigEntryServiceIntentionsJwtProviderArgs.builder()

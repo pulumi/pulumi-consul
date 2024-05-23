@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var web = new ConfigEntryServiceResolver("web", ConfigEntryServiceResolverArgs.builder()        
+ *         var web = new ConfigEntryServiceResolver("web", ConfigEntryServiceResolverArgs.builder()
  *             .name("web")
  *             .defaultSubset("v1")
  *             .connectTimeout("15s")

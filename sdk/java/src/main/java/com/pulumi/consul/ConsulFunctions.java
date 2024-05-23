@@ -809,13 +809,13 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var test = new AclPolicy("test", AclPolicyArgs.builder()        
+     *         var test = new AclPolicy("test", AclPolicyArgs.builder()
      *             .name("test")
      *             .rules("node \"\" { policy = \"read\" }")
      *             .datacenters("dc1")
      *             .build());
      * 
-     *         var testAclToken = new AclToken("testAclToken", AclTokenArgs.builder()        
+     *         var testAclToken = new AclToken("testAclToken", AclTokenArgs.builder()
      *             .description("test")
      *             .policies(test.name())
      *             .local(true)
@@ -867,13 +867,13 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var test = new AclPolicy("test", AclPolicyArgs.builder()        
+     *         var test = new AclPolicy("test", AclPolicyArgs.builder()
      *             .name("test")
      *             .rules("node \"\" { policy = \"read\" }")
      *             .datacenters("dc1")
      *             .build());
      * 
-     *         var testAclToken = new AclToken("testAclToken", AclTokenArgs.builder()        
+     *         var testAclToken = new AclToken("testAclToken", AclTokenArgs.builder()
      *             .description("test")
      *             .policies(test.name())
      *             .local(true)
@@ -925,13 +925,13 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var test = new AclPolicy("test", AclPolicyArgs.builder()        
+     *         var test = new AclPolicy("test", AclPolicyArgs.builder()
      *             .name("test")
      *             .rules("node \"\" { policy = \"read\" }")
      *             .datacenters("dc1")
      *             .build());
      * 
-     *         var testAclToken = new AclToken("testAclToken", AclTokenArgs.builder()        
+     *         var testAclToken = new AclToken("testAclToken", AclTokenArgs.builder()
      *             .description("test")
      *             .policies(test.name())
      *             .local(true)
@@ -983,13 +983,13 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var test = new AclPolicy("test", AclPolicyArgs.builder()        
+     *         var test = new AclPolicy("test", AclPolicyArgs.builder()
      *             .name("test")
      *             .rules("node \"\" { policy = \"read\" }")
      *             .datacenters("dc1")
      *             .build());
      * 
-     *         var testAclToken = new AclToken("testAclToken", AclTokenArgs.builder()        
+     *         var testAclToken = new AclToken("testAclToken", AclTokenArgs.builder()
      *             .description("test")
      *             .policies(test.name())
      *             .local(true)
@@ -1324,7 +1324,7 @@ public final class ConsulFunctions {
      *         final var read-dc1-agent = ConsulFunctions.getAgentSelf(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         // Set the description to a whitespace delimited list of the services
-     *         var app = new Resource("app", ResourceArgs.builder()        
+     *         var app = new Resource("app", ResourceArgs.builder()
      *             .description(String.format("Consul datacenter %s", read_dc1_agent.datacenter()))
      *             .build());
      * 
@@ -1375,7 +1375,7 @@ public final class ConsulFunctions {
      *         final var read-dc1-agent = ConsulFunctions.getAgentSelf(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         // Set the description to a whitespace delimited list of the services
-     *         var app = new Resource("app", ResourceArgs.builder()        
+     *         var app = new Resource("app", ResourceArgs.builder()
      *             .description(String.format("Consul datacenter %s", read_dc1_agent.datacenter()))
      *             .build());
      * 
@@ -1426,7 +1426,7 @@ public final class ConsulFunctions {
      *         final var read-dc1-agent = ConsulFunctions.getAgentSelf(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         // Set the description to a whitespace delimited list of the services
-     *         var app = new Resource("app", ResourceArgs.builder()        
+     *         var app = new Resource("app", ResourceArgs.builder()
      *             .description(String.format("Consul datacenter %s", read_dc1_agent.datacenter()))
      *             .build());
      * 
@@ -1477,7 +1477,7 @@ public final class ConsulFunctions {
      *         final var read-dc1-agent = ConsulFunctions.getAgentSelf(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         // Set the description to a whitespace delimited list of the services
-     *         var app = new Resource("app", ResourceArgs.builder()        
+     *         var app = new Resource("app", ResourceArgs.builder()
      *             .description(String.format("Consul datacenter %s", read_dc1_agent.datacenter()))
      *             .build());
      * 
@@ -1528,7 +1528,7 @@ public final class ConsulFunctions {
      *         final var read-dc1-agent = ConsulFunctions.getAgentSelf(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         // Set the description to a whitespace delimited list of the services
-     *         var app = new Resource("app", ResourceArgs.builder()        
+     *         var app = new Resource("app", ResourceArgs.builder()
      *             .description(String.format("Consul datacenter %s", read_dc1_agent.datacenter()))
      *             .build());
      * 
@@ -1579,7 +1579,7 @@ public final class ConsulFunctions {
      *         final var read-dc1-agent = ConsulFunctions.getAgentSelf(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         // Set the description to a whitespace delimited list of the services
-     *         var app = new Resource("app", ResourceArgs.builder()        
+     *         var app = new Resource("app", ResourceArgs.builder()
      *             .description(String.format("Consul datacenter %s", read_dc1_agent.datacenter()))
      *             .build());
      * 
@@ -1978,7 +1978,7 @@ public final class ConsulFunctions {
      *             .build());
      * 
      *         // Set the description to a whitespace delimited list of the node names
-     *         var app = new Resource("app", ResourceArgs.builder()        
+     *         var app = new Resource("app", ResourceArgs.builder()
      *             .description(StdFunctions.join(JoinArgs.builder()
      *                 .separator(" ")
      *                 .input(nodes)
@@ -2042,7 +2042,7 @@ public final class ConsulFunctions {
      *             .build());
      * 
      *         // Set the description to a whitespace delimited list of the node names
-     *         var app = new Resource("app", ResourceArgs.builder()        
+     *         var app = new Resource("app", ResourceArgs.builder()
      *             .description(StdFunctions.join(JoinArgs.builder()
      *                 .separator(" ")
      *                 .input(nodes)
@@ -2106,7 +2106,7 @@ public final class ConsulFunctions {
      *             .build());
      * 
      *         // Set the description to a whitespace delimited list of the node names
-     *         var app = new Resource("app", ResourceArgs.builder()        
+     *         var app = new Resource("app", ResourceArgs.builder()
      *             .description(StdFunctions.join(JoinArgs.builder()
      *                 .separator(" ")
      *                 .input(nodes)
@@ -2170,7 +2170,7 @@ public final class ConsulFunctions {
      *             .build());
      * 
      *         // Set the description to a whitespace delimited list of the node names
-     *         var app = new Resource("app", ResourceArgs.builder()        
+     *         var app = new Resource("app", ResourceArgs.builder()
      *             .description(StdFunctions.join(JoinArgs.builder()
      *                 .separator(" ")
      *                 .input(nodes)
@@ -2234,7 +2234,7 @@ public final class ConsulFunctions {
      *             .build());
      * 
      *         // Set the description to a whitespace delimited list of the services
-     *         var app = new Resource("app", ResourceArgs.builder()        
+     *         var app = new Resource("app", ResourceArgs.builder()
      *             .description(StdFunctions.join(JoinArgs.builder()
      *                 .separator(" ")
      *                 .input(names)
@@ -2298,7 +2298,7 @@ public final class ConsulFunctions {
      *             .build());
      * 
      *         // Set the description to a whitespace delimited list of the services
-     *         var app = new Resource("app", ResourceArgs.builder()        
+     *         var app = new Resource("app", ResourceArgs.builder()
      *             .description(StdFunctions.join(JoinArgs.builder()
      *                 .separator(" ")
      *                 .input(names)
@@ -2362,7 +2362,7 @@ public final class ConsulFunctions {
      *             .build());
      * 
      *         // Set the description to a whitespace delimited list of the services
-     *         var app = new Resource("app", ResourceArgs.builder()        
+     *         var app = new Resource("app", ResourceArgs.builder()
      *             .description(StdFunctions.join(JoinArgs.builder()
      *                 .separator(" ")
      *                 .input(names)
@@ -2426,7 +2426,7 @@ public final class ConsulFunctions {
      *             .build());
      * 
      *         // Set the description to a whitespace delimited list of the services
-     *         var app = new Resource("app", ResourceArgs.builder()        
+     *         var app = new Resource("app", ResourceArgs.builder()
      *             .description(StdFunctions.join(JoinArgs.builder()
      *                 .separator(" ")
      *                 .input(names)
@@ -2490,7 +2490,7 @@ public final class ConsulFunctions {
      *             .build());
      * 
      *         // Set the description to a whitespace delimited list of the services
-     *         var app = new Resource("app", ResourceArgs.builder()        
+     *         var app = new Resource("app", ResourceArgs.builder()
      *             .description(StdFunctions.join(JoinArgs.builder()
      *                 .separator(" ")
      *                 .input(names)
@@ -2554,7 +2554,7 @@ public final class ConsulFunctions {
      *             .build());
      * 
      *         // Set the description to a whitespace delimited list of the services
-     *         var app = new Resource("app", ResourceArgs.builder()        
+     *         var app = new Resource("app", ResourceArgs.builder()
      *             .description(StdFunctions.join(JoinArgs.builder()
      *                 .separator(" ")
      *                 .input(names)
@@ -2675,7 +2675,7 @@ public final class ConsulFunctions {
      *             .build());
      * 
      *         // Start our instance with the dynamic ami value
-     *         var appInstance = new Instance("appInstance", InstanceArgs.builder()        
+     *         var appInstance = new Instance("appInstance", InstanceArgs.builder()
      *             .ami(app.applyValue(getKeyPrefixResult -> getKeyPrefixResult.var().ami()))
      *             .build());
      * 
@@ -2717,7 +2717,7 @@ public final class ConsulFunctions {
      *             .build());
      * 
      *         // Start our instance with the dynamic ami value
-     *         var webInstance = new Instance("webInstance", InstanceArgs.builder()        
+     *         var webInstance = new Instance("webInstance", InstanceArgs.builder()
      *             .ami(web.applyValue(getKeyPrefixResult -> getKeyPrefixResult.subkeys().app/launch_ami()))
      *             .build());
      * 
@@ -2771,7 +2771,7 @@ public final class ConsulFunctions {
      *             .build());
      * 
      *         // Start our instance with the dynamic ami value
-     *         var appInstance = new Instance("appInstance", InstanceArgs.builder()        
+     *         var appInstance = new Instance("appInstance", InstanceArgs.builder()
      *             .ami(app.applyValue(getKeyPrefixResult -> getKeyPrefixResult.var().ami()))
      *             .build());
      * 
@@ -2813,7 +2813,7 @@ public final class ConsulFunctions {
      *             .build());
      * 
      *         // Start our instance with the dynamic ami value
-     *         var webInstance = new Instance("webInstance", InstanceArgs.builder()        
+     *         var webInstance = new Instance("webInstance", InstanceArgs.builder()
      *             .ami(web.applyValue(getKeyPrefixResult -> getKeyPrefixResult.subkeys().app/launch_ami()))
      *             .build());
      * 
@@ -2867,7 +2867,7 @@ public final class ConsulFunctions {
      *             .build());
      * 
      *         // Start our instance with the dynamic ami value
-     *         var appInstance = new Instance("appInstance", InstanceArgs.builder()        
+     *         var appInstance = new Instance("appInstance", InstanceArgs.builder()
      *             .ami(app.applyValue(getKeyPrefixResult -> getKeyPrefixResult.var().ami()))
      *             .build());
      * 
@@ -2909,7 +2909,7 @@ public final class ConsulFunctions {
      *             .build());
      * 
      *         // Start our instance with the dynamic ami value
-     *         var webInstance = new Instance("webInstance", InstanceArgs.builder()        
+     *         var webInstance = new Instance("webInstance", InstanceArgs.builder()
      *             .ami(web.applyValue(getKeyPrefixResult -> getKeyPrefixResult.subkeys().app/launch_ami()))
      *             .build());
      * 
@@ -2963,7 +2963,7 @@ public final class ConsulFunctions {
      *             .build());
      * 
      *         // Start our instance with the dynamic ami value
-     *         var appInstance = new Instance("appInstance", InstanceArgs.builder()        
+     *         var appInstance = new Instance("appInstance", InstanceArgs.builder()
      *             .ami(app.applyValue(getKeyPrefixResult -> getKeyPrefixResult.var().ami()))
      *             .build());
      * 
@@ -3005,7 +3005,7 @@ public final class ConsulFunctions {
      *             .build());
      * 
      *         // Start our instance with the dynamic ami value
-     *         var webInstance = new Instance("webInstance", InstanceArgs.builder()        
+     *         var webInstance = new Instance("webInstance", InstanceArgs.builder()
      *             .ami(web.applyValue(getKeyPrefixResult -> getKeyPrefixResult.subkeys().app/launch_ami()))
      *             .build());
      * 
@@ -3059,7 +3059,7 @@ public final class ConsulFunctions {
      *             .build());
      * 
      *         // Start our instance with the dynamic ami value
-     *         var appInstance = new Instance("appInstance", InstanceArgs.builder()        
+     *         var appInstance = new Instance("appInstance", InstanceArgs.builder()
      *             .ami(app.applyValue(getKeysResult -> getKeysResult.var().ami()))
      *             .build());
      * 
@@ -3113,7 +3113,7 @@ public final class ConsulFunctions {
      *             .build());
      * 
      *         // Start our instance with the dynamic ami value
-     *         var appInstance = new Instance("appInstance", InstanceArgs.builder()        
+     *         var appInstance = new Instance("appInstance", InstanceArgs.builder()
      *             .ami(app.applyValue(getKeysResult -> getKeysResult.var().ami()))
      *             .build());
      * 
@@ -3167,7 +3167,7 @@ public final class ConsulFunctions {
      *             .build());
      * 
      *         // Start our instance with the dynamic ami value
-     *         var appInstance = new Instance("appInstance", InstanceArgs.builder()        
+     *         var appInstance = new Instance("appInstance", InstanceArgs.builder()
      *             .ami(app.applyValue(getKeysResult -> getKeysResult.var().ami()))
      *             .build());
      * 
@@ -3221,7 +3221,7 @@ public final class ConsulFunctions {
      *             .build());
      * 
      *         // Start our instance with the dynamic ami value
-     *         var appInstance = new Instance("appInstance", InstanceArgs.builder()        
+     *         var appInstance = new Instance("appInstance", InstanceArgs.builder()
      *             .ami(app.applyValue(getKeysResult -> getKeysResult.var().ami()))
      *             .build());
      * 
@@ -3275,7 +3275,7 @@ public final class ConsulFunctions {
      *             .build());
      * 
      *         // Start our instance with the dynamic ami value
-     *         var appInstance = new Instance("appInstance", InstanceArgs.builder()        
+     *         var appInstance = new Instance("appInstance", InstanceArgs.builder()
      *             .ami(app.applyValue(getKeysResult -> getKeysResult.var().ami()))
      *             .build());
      * 
@@ -3329,7 +3329,7 @@ public final class ConsulFunctions {
      *             .build());
      * 
      *         // Start our instance with the dynamic ami value
-     *         var appInstance = new Instance("appInstance", InstanceArgs.builder()        
+     *         var appInstance = new Instance("appInstance", InstanceArgs.builder()
      *             .ami(app.applyValue(getKeysResult -> getKeysResult.var().ami()))
      *             .build());
      * 
@@ -3376,7 +3376,7 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var dc2NetworkArea = new NetworkArea("dc2NetworkArea", NetworkAreaArgs.builder()        
+     *         var dc2NetworkArea = new NetworkArea("dc2NetworkArea", NetworkAreaArgs.builder()
      *             .peerDatacenter("dc2")
      *             .retryJoins("1.2.3.4")
      *             .useTls(true)
@@ -3430,7 +3430,7 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var dc2NetworkArea = new NetworkArea("dc2NetworkArea", NetworkAreaArgs.builder()        
+     *         var dc2NetworkArea = new NetworkArea("dc2NetworkArea", NetworkAreaArgs.builder()
      *             .peerDatacenter("dc2")
      *             .retryJoins("1.2.3.4")
      *             .useTls(true)
@@ -3484,7 +3484,7 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var dc2NetworkArea = new NetworkArea("dc2NetworkArea", NetworkAreaArgs.builder()        
+     *         var dc2NetworkArea = new NetworkArea("dc2NetworkArea", NetworkAreaArgs.builder()
      *             .peerDatacenter("dc2")
      *             .retryJoins("1.2.3.4")
      *             .useTls(true)
@@ -3538,7 +3538,7 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var dc2NetworkArea = new NetworkArea("dc2NetworkArea", NetworkAreaArgs.builder()        
+     *         var dc2NetworkArea = new NetworkArea("dc2NetworkArea", NetworkAreaArgs.builder()
      *             .peerDatacenter("dc2")
      *             .retryJoins("1.2.3.4")
      *             .useTls(true)
@@ -4314,7 +4314,7 @@ public final class ConsulFunctions {
      *             .build());
      * 
      *         // Set the description to a whitespace delimited list of the node names
-     *         var app = new Resource("app", ResourceArgs.builder()        
+     *         var app = new Resource("app", ResourceArgs.builder()
      *             .description(StdFunctions.join(JoinArgs.builder()
      *                 .separator(" ")
      *                 .input(nodes)
@@ -4374,7 +4374,7 @@ public final class ConsulFunctions {
      *             .build());
      * 
      *         // Set the description to a whitespace delimited list of the node names
-     *         var app = new Resource("app", ResourceArgs.builder()        
+     *         var app = new Resource("app", ResourceArgs.builder()
      *             .description(StdFunctions.join(JoinArgs.builder()
      *                 .separator(" ")
      *                 .input(nodes)
@@ -4434,7 +4434,7 @@ public final class ConsulFunctions {
      *             .build());
      * 
      *         // Set the description to a whitespace delimited list of the node names
-     *         var app = new Resource("app", ResourceArgs.builder()        
+     *         var app = new Resource("app", ResourceArgs.builder()
      *             .description(StdFunctions.join(JoinArgs.builder()
      *                 .separator(" ")
      *                 .input(nodes)
@@ -4494,7 +4494,7 @@ public final class ConsulFunctions {
      *             .build());
      * 
      *         // Set the description to a whitespace delimited list of the node names
-     *         var app = new Resource("app", ResourceArgs.builder()        
+     *         var app = new Resource("app", ResourceArgs.builder()
      *             .description(StdFunctions.join(JoinArgs.builder()
      *                 .separator(" ")
      *                 .input(nodes)
@@ -4750,7 +4750,7 @@ public final class ConsulFunctions {
      *             .build());
      * 
      *         // Set the description to a whitespace delimited list of the services
-     *         var app = new Resource("app", ResourceArgs.builder()        
+     *         var app = new Resource("app", ResourceArgs.builder()
      *             .description(StdFunctions.join(JoinArgs.builder()
      *                 .separator(" ")
      *                 .input(names)
@@ -4810,7 +4810,7 @@ public final class ConsulFunctions {
      *             .build());
      * 
      *         // Set the description to a whitespace delimited list of the services
-     *         var app = new Resource("app", ResourceArgs.builder()        
+     *         var app = new Resource("app", ResourceArgs.builder()
      *             .description(StdFunctions.join(JoinArgs.builder()
      *                 .separator(" ")
      *                 .input(names)
@@ -4870,7 +4870,7 @@ public final class ConsulFunctions {
      *             .build());
      * 
      *         // Set the description to a whitespace delimited list of the services
-     *         var app = new Resource("app", ResourceArgs.builder()        
+     *         var app = new Resource("app", ResourceArgs.builder()
      *             .description(StdFunctions.join(JoinArgs.builder()
      *                 .separator(" ")
      *                 .input(names)
@@ -4930,7 +4930,7 @@ public final class ConsulFunctions {
      *             .build());
      * 
      *         // Set the description to a whitespace delimited list of the services
-     *         var app = new Resource("app", ResourceArgs.builder()        
+     *         var app = new Resource("app", ResourceArgs.builder()
      *             .description(StdFunctions.join(JoinArgs.builder()
      *                 .separator(" ")
      *                 .input(names)
@@ -4990,7 +4990,7 @@ public final class ConsulFunctions {
      *             .build());
      * 
      *         // Set the description to a whitespace delimited list of the services
-     *         var app = new Resource("app", ResourceArgs.builder()        
+     *         var app = new Resource("app", ResourceArgs.builder()
      *             .description(StdFunctions.join(JoinArgs.builder()
      *                 .separator(" ")
      *                 .input(names)
@@ -5050,7 +5050,7 @@ public final class ConsulFunctions {
      *             .build());
      * 
      *         // Set the description to a whitespace delimited list of the services
-     *         var app = new Resource("app", ResourceArgs.builder()        
+     *         var app = new Resource("app", ResourceArgs.builder()
      *             .description(StdFunctions.join(JoinArgs.builder()
      *                 .separator(" ")
      *                 .input(names)

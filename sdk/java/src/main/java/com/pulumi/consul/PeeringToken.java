@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var token = new PeeringToken("token", PeeringTokenArgs.builder()        
+ *         var token = new PeeringToken("token", PeeringTokenArgs.builder()
  *             .peerName("eu-cluster")
  *             .build());
  * 
