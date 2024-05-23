@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dashboard = new ConfigEntryServiceDefaults("dashboard", ConfigEntryServiceDefaultsArgs.builder()        
+ *         var dashboard = new ConfigEntryServiceDefaults("dashboard", ConfigEntryServiceDefaultsArgs.builder()
  *             .name("dashboard")
  *             .upstreamConfigs(ConfigEntryServiceDefaultsUpstreamConfigArgs.builder()
  *                 .defaults(ConfigEntryServiceDefaultsUpstreamConfigDefaultArgs.builder()

@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *         // Creates a prepared query myquery.query.consul that finds the nearest
  *         // healthy myapp.service.consul instance that has the active tag and not
  *         // the standby tag.
- *         var myapp_query = new PreparedQuery("myapp-query", PreparedQueryArgs.builder()        
+ *         var myapp_query = new PreparedQuery("myapp-query", PreparedQueryArgs.builder()
  *             .name("myquery")
  *             .datacenter("us-central1")
  *             .token("abcd")
@@ -78,7 +78,7 @@ import javax.annotation.Nullable;
  *         // Creates a Prepared Query Template that matches *-near-self.query.consul
  *         // and finds the nearest service that matches the glob character (e.g.
  *         // foo-near-self.query.consul will find the nearest healthy foo.service.consul).
- *         var service_near_self = new PreparedQuery("service-near-self", PreparedQueryArgs.builder()        
+ *         var service_near_self = new PreparedQuery("service-near-self", PreparedQueryArgs.builder()
  *             .datacenter("nyc1")
  *             .token("abcd")
  *             .storedToken("wxyz")

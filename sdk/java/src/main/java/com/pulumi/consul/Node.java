@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foobar = new Node("foobar", NodeArgs.builder()        
+ *         var foobar = new Node("foobar", NodeArgs.builder()
  *             .address("192.168.10.10")
  *             .name("foobar")
  *             .build());

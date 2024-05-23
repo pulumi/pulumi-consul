@@ -52,11 +52,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var eu_us = new PeeringToken("eu-us", PeeringTokenArgs.builder()        
+ *         var eu_us = new PeeringToken("eu-us", PeeringTokenArgs.builder()
  *             .peerName("eu-cluster")
  *             .build());
  * 
- *         var eu_usPeering = new Peering("eu-usPeering", PeeringArgs.builder()        
+ *         var eu_usPeering = new Peering("eu-usPeering", PeeringArgs.builder()
  *             .peerName("eu-cluster")
  *             .peeringToken(token.peeringToken())
  *             .meta(Map.of("hello", "world"))

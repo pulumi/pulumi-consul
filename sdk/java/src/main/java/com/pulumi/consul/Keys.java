@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var app = new Keys("app", KeysArgs.builder()        
+ *         var app = new Keys("app", KeysArgs.builder()
  *             .datacenter("nyc1")
  *             .token("abcd")
  *             .keys(KeysKeyArgs.builder()
