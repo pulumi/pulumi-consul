@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var database = new Intention("database", IntentionArgs.builder()        
+ *         var database = new Intention("database", IntentionArgs.builder()
  *             .sourceName("api")
  *             .destinationName("db")
  *             .action("allow")
@@ -96,7 +96,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var database = new Intention("database", IntentionArgs.builder()        
+ *         var database = new Intention("database", IntentionArgs.builder()
  *             .sourceName("api")
  *             .destinationName(pgConsulService.name())
  *             .action("allow")

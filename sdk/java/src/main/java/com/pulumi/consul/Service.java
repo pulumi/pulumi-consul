@@ -58,12 +58,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var compute = new Node("compute", NodeArgs.builder()        
+ *         var compute = new Node("compute", NodeArgs.builder()
  *             .name("compute-google")
  *             .address("www.google.com")
  *             .build());
  * 
- *         var google = new Service("google", ServiceArgs.builder()        
+ *         var google = new Service("google", ServiceArgs.builder()
  *             .name("google")
  *             .node(compute.name())
  *             .port(80)
@@ -101,7 +101,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var google = new Service("google", ServiceArgs.builder()        
+ *         var google = new Service("google", ServiceArgs.builder()
  *             .name("google")
  *             .node("google")
  *             .port(443)
@@ -139,7 +139,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var redis = new Service("redis", ServiceArgs.builder()        
+ *         var redis = new Service("redis", ServiceArgs.builder()
  *             .name("redis")
  *             .node("redis")
  *             .port(6379)

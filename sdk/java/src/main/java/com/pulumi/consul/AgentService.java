@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var app = new AgentService("app", AgentServiceArgs.builder()        
+ *         var app = new AgentService("app", AgentServiceArgs.builder()
  *             .address("www.google.com")
  *             .name("google")
  *             .port(80)

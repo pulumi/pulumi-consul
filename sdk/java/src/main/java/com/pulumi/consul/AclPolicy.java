@@ -43,7 +43,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test = new AclPolicy("test", AclPolicyArgs.builder()        
+ *         var test = new AclPolicy("test", AclPolicyArgs.builder()
  *             .name("my_policy")
  *             .datacenters("dc1")
  *             .rules("""
