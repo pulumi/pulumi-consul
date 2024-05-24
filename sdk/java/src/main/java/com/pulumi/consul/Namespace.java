@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var production = new Namespace("production", NamespaceArgs.builder()        
+ *         var production = new Namespace("production", NamespaceArgs.builder()
  *             .name("production")
  *             .description("Production namespace")
  *             .meta(Map.of("foo", "bar"))

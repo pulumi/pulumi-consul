@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var minikube = new AclAuthMethod("minikube", AclAuthMethodArgs.builder()        
+ *         var minikube = new AclAuthMethod("minikube", AclAuthMethodArgs.builder()
  *             .name("minikube")
  *             .type("kubernetes")
  *             .description("dev minikube cluster")
@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *             ))
  *             .build());
  * 
- *         var test = new AclBindingRule("test", AclBindingRuleArgs.builder()        
+ *         var test = new AclBindingRule("test", AclBindingRuleArgs.builder()
  *             .authMethod(minikube.name())
  *             .description("foobar")
  *             .selector("serviceaccount.namespace==default")

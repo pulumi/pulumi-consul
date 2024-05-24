@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var config = new AutopilotConfig("config", AutopilotConfigArgs.builder()        
+ *         var config = new AutopilotConfig("config", AutopilotConfigArgs.builder()
  *             .cleanupDeadServers(false)
  *             .lastContactThreshold("1s")
  *             .maxTrailingLogs(500)
