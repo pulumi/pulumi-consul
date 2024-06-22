@@ -131,10 +131,8 @@ class ServiceArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""The external field has been deprecated and does nothing.""")
     def external(self) -> Optional[pulumi.Input[bool]]:
-        warnings.warn("""The external field has been deprecated and does nothing.""", DeprecationWarning)
-        pulumi.log.warn("""external is deprecated: The external field has been deprecated and does nothing.""")
-
         return pulumi.get(self, "external")
 
     @external.setter
@@ -333,10 +331,8 @@ class _ServiceState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""The external field has been deprecated and does nothing.""")
     def external(self) -> Optional[pulumi.Input[bool]]:
-        warnings.warn("""The external field has been deprecated and does nothing.""", DeprecationWarning)
-        pulumi.log.warn("""external is deprecated: The external field has been deprecated and does nothing.""")
-
         return pulumi.get(self, "external")
 
     @external.setter
@@ -769,10 +765,8 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""The external field has been deprecated and does nothing.""")
     def external(self) -> pulumi.Output[Optional[bool]]:
-        warnings.warn("""The external field has been deprecated and does nothing.""", DeprecationWarning)
-        pulumi.log.warn("""external is deprecated: The external field has been deprecated and does nothing.""")
-
         return pulumi.get(self, "external")
 
     @property

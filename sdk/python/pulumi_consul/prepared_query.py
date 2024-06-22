@@ -270,15 +270,12 @@ Please use the token argument in the provider configuration""")
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration""")
     def token(self) -> Optional[pulumi.Input[str]]:
         """
         The ACL token to use when saving the prepared query. This overrides the token that the agent provides by default.
         """
-        warnings.warn("""The token argument has been deprecated and will be removed in a future release.
-Please use the token argument in the provider configuration""", DeprecationWarning)
-        pulumi.log.warn("""token is deprecated: The token argument has been deprecated and will be removed in a future release.
-Please use the token argument in the provider configuration""")
-
         return pulumi.get(self, "token")
 
     @token.setter
@@ -544,15 +541,12 @@ Please use the token argument in the provider configuration""")
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration""")
     def token(self) -> Optional[pulumi.Input[str]]:
         """
         The ACL token to use when saving the prepared query. This overrides the token that the agent provides by default.
         """
-        warnings.warn("""The token argument has been deprecated and will be removed in a future release.
-Please use the token argument in the provider configuration""", DeprecationWarning)
-        pulumi.log.warn("""token is deprecated: The token argument has been deprecated and will be removed in a future release.
-Please use the token argument in the provider configuration""")
-
         return pulumi.get(self, "token")
 
     @token.setter
@@ -997,14 +991,11 @@ class PreparedQuery(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration""")
     def token(self) -> pulumi.Output[Optional[str]]:
         """
         The ACL token to use when saving the prepared query. This overrides the token that the agent provides by default.
         """
-        warnings.warn("""The token argument has been deprecated and will be removed in a future release.
-Please use the token argument in the provider configuration""", DeprecationWarning)
-        pulumi.log.warn("""token is deprecated: The token argument has been deprecated and will be removed in a future release.
-Please use the token argument in the provider configuration""")
-
         return pulumi.get(self, "token")
 

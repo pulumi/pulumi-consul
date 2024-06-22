@@ -65,12 +65,9 @@ class GetNetworkAreaMembersResult:
 
     @property
     @pulumi.getter
-    def token(self) -> Optional[str]:
-        warnings.warn("""The token argument has been deprecated and will be removed in a future release.
-Please use the token argument in the provider configuration""", DeprecationWarning)
-        pulumi.log.warn("""token is deprecated: The token argument has been deprecated and will be removed in a future release.
+    @_utilities.deprecated("""The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration""")
-
+    def token(self) -> Optional[str]:
         return pulumi.get(self, "token")
 
     @property

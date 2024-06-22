@@ -62,6 +62,7 @@ class GetAclAuthMethodResult:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""The config attribute is deprecated, please use config_json instead.""")
     def config(self) -> Mapping[str, str]:
         """
         The configuration options of the ACL Auth Method. This attribute is
@@ -69,9 +70,6 @@ class GetAclAuthMethodResult:
         too complex to be represented as a map of strings, it will be blank.
         `config_json` should be used instead.
         """
-        warnings.warn("""The config attribute is deprecated, please use config_json instead.""", DeprecationWarning)
-        pulumi.log.warn("""config is deprecated: The config attribute is deprecated, please use config_json instead.""")
-
         return pulumi.get(self, "config")
 
     @property

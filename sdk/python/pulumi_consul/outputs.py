@@ -3415,10 +3415,8 @@ class KeysKey(dict):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Using Keys resource to *read* is deprecated; please use Keys data source instead""")
     def name(self) -> Optional[str]:
-        warnings.warn("""Using Keys resource to *read* is deprecated; please use Keys data source instead""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Using Keys resource to *read* is deprecated; please use Keys data source instead""")
-
         return pulumi.get(self, "name")
 
     @property
