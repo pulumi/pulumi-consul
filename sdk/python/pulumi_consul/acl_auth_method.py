@@ -80,13 +80,11 @@ class AclAuthMethodArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""The config attribute is deprecated, please use `config_json` instead.""")
     def config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The raw configuration for this ACL auth method.
         """
-        warnings.warn("""The config attribute is deprecated, please use `config_json` instead.""", DeprecationWarning)
-        pulumi.log.warn("""config is deprecated: The config attribute is deprecated, please use `config_json` instead.""")
-
         return pulumi.get(self, "config")
 
     @config.setter
@@ -258,13 +256,11 @@ class _AclAuthMethodState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""The config attribute is deprecated, please use `config_json` instead.""")
     def config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The raw configuration for this ACL auth method.
         """
-        warnings.warn("""The config attribute is deprecated, please use `config_json` instead.""", DeprecationWarning)
-        pulumi.log.warn("""config is deprecated: The config attribute is deprecated, please use `config_json` instead.""")
-
         return pulumi.get(self, "config")
 
     @config.setter
@@ -646,13 +642,11 @@ class AclAuthMethod(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""The config attribute is deprecated, please use `config_json` instead.""")
     def config(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The raw configuration for this ACL auth method.
         """
-        warnings.warn("""The config attribute is deprecated, please use `config_json` instead.""", DeprecationWarning)
-        pulumi.log.warn("""config is deprecated: The config attribute is deprecated, please use `config_json` instead.""")
-
         return pulumi.get(self, "config")
 
     @property

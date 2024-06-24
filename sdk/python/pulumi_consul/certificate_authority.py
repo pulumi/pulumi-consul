@@ -44,10 +44,8 @@ class CertificateAuthorityArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""The config attribute is deprecated, please use config_json instead.""")
     def config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        warnings.warn("""The config attribute is deprecated, please use config_json instead.""", DeprecationWarning)
-        pulumi.log.warn("""config is deprecated: The config attribute is deprecated, please use config_json instead.""")
-
         return pulumi.get(self, "config")
 
     @config.setter
@@ -86,10 +84,8 @@ class _CertificateAuthorityState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""The config attribute is deprecated, please use config_json instead.""")
     def config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        warnings.warn("""The config attribute is deprecated, please use config_json instead.""", DeprecationWarning)
-        pulumi.log.warn("""config is deprecated: The config attribute is deprecated, please use config_json instead.""")
-
         return pulumi.get(self, "config")
 
     @config.setter
@@ -224,10 +220,8 @@ class CertificateAuthority(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""The config attribute is deprecated, please use config_json instead.""")
     def config(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        warnings.warn("""The config attribute is deprecated, please use config_json instead.""", DeprecationWarning)
-        pulumi.log.warn("""config is deprecated: The config attribute is deprecated, please use config_json instead.""")
-
         return pulumi.get(self, "config")
 
     @property

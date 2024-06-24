@@ -101,15 +101,12 @@ Please use the token argument in the provider configuration""")
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration""")
     def token(self) -> Optional[pulumi.Input[str]]:
         """
         ACL token.
         """
-        warnings.warn("""The token argument has been deprecated and will be removed in a future release.
-Please use the token argument in the provider configuration""", DeprecationWarning)
-        pulumi.log.warn("""token is deprecated: The token argument has been deprecated and will be removed in a future release.
-Please use the token argument in the provider configuration""")
-
         return pulumi.get(self, "token")
 
     @token.setter
@@ -207,15 +204,12 @@ Please use the token argument in the provider configuration""")
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration""")
     def token(self) -> Optional[pulumi.Input[str]]:
         """
         ACL token.
         """
-        warnings.warn("""The token argument has been deprecated and will be removed in a future release.
-Please use the token argument in the provider configuration""", DeprecationWarning)
-        pulumi.log.warn("""token is deprecated: The token argument has been deprecated and will be removed in a future release.
-Please use the token argument in the provider configuration""")
-
         return pulumi.get(self, "token")
 
     @token.setter
@@ -389,14 +383,11 @@ class CatalogEntry(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""The token argument has been deprecated and will be removed in a future release.
+Please use the token argument in the provider configuration""")
     def token(self) -> pulumi.Output[Optional[str]]:
         """
         ACL token.
         """
-        warnings.warn("""The token argument has been deprecated and will be removed in a future release.
-Please use the token argument in the provider configuration""", DeprecationWarning)
-        pulumi.log.warn("""token is deprecated: The token argument has been deprecated and will be removed in a future release.
-Please use the token argument in the provider configuration""")
-
         return pulumi.get(self, "token")
 
