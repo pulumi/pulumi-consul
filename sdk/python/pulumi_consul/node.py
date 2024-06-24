@@ -107,12 +107,9 @@ Please use the token argument in the provider configuration""")
 
     @property
     @pulumi.getter
-    def token(self) -> Optional[pulumi.Input[str]]:
-        warnings.warn("""The token argument has been deprecated and will be removed in a future release.
-Please use the token argument in the provider configuration""", DeprecationWarning)
-        pulumi.log.warn("""token is deprecated: The token argument has been deprecated and will be removed in a future release.
+    @_utilities.deprecated("""The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration""")
-
+    def token(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "token")
 
     @token.setter
@@ -217,12 +214,9 @@ Please use the token argument in the provider configuration""")
 
     @property
     @pulumi.getter
-    def token(self) -> Optional[pulumi.Input[str]]:
-        warnings.warn("""The token argument has been deprecated and will be removed in a future release.
-Please use the token argument in the provider configuration""", DeprecationWarning)
-        pulumi.log.warn("""token is deprecated: The token argument has been deprecated and will be removed in a future release.
+    @_utilities.deprecated("""The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration""")
-
+    def token(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "token")
 
     @token.setter
@@ -425,11 +419,8 @@ class Node(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def token(self) -> pulumi.Output[Optional[str]]:
-        warnings.warn("""The token argument has been deprecated and will be removed in a future release.
-Please use the token argument in the provider configuration""", DeprecationWarning)
-        pulumi.log.warn("""token is deprecated: The token argument has been deprecated and will be removed in a future release.
+    @_utilities.deprecated("""The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration""")
-
+    def token(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "token")
 
