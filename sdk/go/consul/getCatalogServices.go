@@ -27,7 +27,7 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
-//	"github.com/pulumi/pulumi-example/sdk/v1/go/example"
+//	"github.com/pulumi/pulumi-example/sdk/go/example"
 //	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -46,7 +46,7 @@ import (
 //				return err
 //			}
 //			// Set the description to a whitespace delimited list of the services
-//			_, err = index.NewResource(ctx, "app", &index.ResourceArgs{
+//			_, err = example.NewResource(ctx, "app", &example.ResourceArgs{
 //				Description: std.Join(ctx, &std.JoinArgs{
 //					Separator: " ",
 //					Input:     names,
