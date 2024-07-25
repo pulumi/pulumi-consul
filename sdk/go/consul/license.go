@@ -40,7 +40,7 @@ import (
 //				return err
 //			}
 //			_, err = consul.NewLicense(ctx, "license", &consul.LicenseArgs{
-//				License: invokeFile.Result,
+//				License: pulumi.String(invokeFile.Result),
 //			})
 //			if err != nil {
 //				return err
