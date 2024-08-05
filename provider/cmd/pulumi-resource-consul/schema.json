@@ -1604,7 +1604,7 @@
                 },
                 "deregisterCriticalServiceAfter": {
                     "type": "string",
-                    "description": "The time after which the service is automatically deregistered when in the `critical` state. Defaults to `30s`.\n"
+                    "description": "The time after which the service is automatically deregistered when in the `critical` state. Defaults to `30s`. Setting to `0` will disable.\n"
                 },
                 "headers": {
                     "type": "array",
@@ -5276,6 +5276,163 @@
                 "type": "object"
             }
         },
+        "consul:index/configEntryV2ExportedServices:ConfigEntryV2ExportedServices": {
+            "properties": {
+                "kind": {
+                    "type": "string",
+                    "description": "The kind of exported services config (ExportedServices, NamespaceExportedServices, PartitionExportedServices).\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the config entry to read.\n"
+                },
+                "namespace": {
+                    "type": "string",
+                    "description": "The namespace the config entry is associated with.\n"
+                },
+                "partition": {
+                    "type": "string",
+                    "description": "The partition the config entry is associated with.\n"
+                },
+                "partitionConsumers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The exported service partition consumers.\n"
+                },
+                "peerConsumers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The exported service peer consumers.\n"
+                },
+                "samenessGroupConsumers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The exported service sameness group consumers.\n"
+                },
+                "services": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The exported services.\n"
+                }
+            },
+            "required": [
+                "kind",
+                "name",
+                "partition"
+            ],
+            "inputProperties": {
+                "kind": {
+                    "type": "string",
+                    "description": "The kind of exported services config (ExportedServices, NamespaceExportedServices, PartitionExportedServices).\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the config entry to read.\n"
+                },
+                "namespace": {
+                    "type": "string",
+                    "description": "The namespace the config entry is associated with.\n",
+                    "willReplaceOnChanges": true
+                },
+                "partition": {
+                    "type": "string",
+                    "description": "The partition the config entry is associated with.\n",
+                    "willReplaceOnChanges": true
+                },
+                "partitionConsumers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The exported service partition consumers.\n"
+                },
+                "peerConsumers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The exported service peer consumers.\n"
+                },
+                "samenessGroupConsumers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The exported service sameness group consumers.\n"
+                },
+                "services": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The exported services.\n"
+                }
+            },
+            "requiredInputs": [
+                "kind",
+                "partition"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ConfigEntryV2ExportedServices resources.\n",
+                "properties": {
+                    "kind": {
+                        "type": "string",
+                        "description": "The kind of exported services config (ExportedServices, NamespaceExportedServices, PartitionExportedServices).\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the config entry to read.\n"
+                    },
+                    "namespace": {
+                        "type": "string",
+                        "description": "The namespace the config entry is associated with.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "partition": {
+                        "type": "string",
+                        "description": "The partition the config entry is associated with.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "partitionConsumers": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The exported service partition consumers.\n"
+                    },
+                    "peerConsumers": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The exported service peer consumers.\n"
+                    },
+                    "samenessGroupConsumers": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The exported service sameness group consumers.\n"
+                    },
+                    "services": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The exported services.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "consul:index/intention:Intention": {
             "description": "[Intentions](https://www.consul.io/docs/connect/intentions.html) are used to define\nrules for which services may connect to one another when using [Consul Connect](https://www.consul.io/docs/connect/index.html).\n\n\u003e **NOTE:** This resource is appropriate for managing legacy intentions in\nConsul version 1.8 and earlier. As of Consul 1.9, intentions should be managed\nusing the [`service-intentions`](https://www.consul.io/docs/connect/intentions)\nconfiguration entry. It is recommended to migrate from the `consul.Intention`\nresource to `consul.ConfigEntry` when running Consul 1.9 and later.\n\nIt is appropriate to either reference existing services, or specify non-existent services\nthat will be created in the future when creating intentions. This resource can be used\nin conjunction with the `consul.Service` datasource when referencing services\nregistered on nodes that have a running Consul agent.\n\n## Example Usage\n\nCreate a simplest intention with static service names:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as consul from \"@pulumi/consul\";\n\nconst database = new consul.Intention(\"database\", {\n    sourceName: \"api\",\n    destinationName: \"db\",\n    action: \"allow\",\n});\n```\n```python\nimport pulumi\nimport pulumi_consul as consul\n\ndatabase = consul.Intention(\"database\",\n    source_name=\"api\",\n    destination_name=\"db\",\n    action=\"allow\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Consul = Pulumi.Consul;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var database = new Consul.Intention(\"database\", new()\n    {\n        SourceName = \"api\",\n        DestinationName = \"db\",\n        Action = \"allow\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-consul/sdk/v3/go/consul\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := consul.NewIntention(ctx, \"database\", \u0026consul.IntentionArgs{\n\t\t\tSourceName:      pulumi.String(\"api\"),\n\t\t\tDestinationName: pulumi.String(\"db\"),\n\t\t\tAction:          pulumi.String(\"allow\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.consul.Intention;\nimport com.pulumi.consul.IntentionArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var database = new Intention(\"database\", IntentionArgs.builder()\n            .sourceName(\"api\")\n            .destinationName(\"db\")\n            .action(\"allow\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  database:\n    type: consul:Intention\n    properties:\n      sourceName: api\n      destinationName: db\n      action: allow\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nReferencing a known service via a datasource:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as consul from \"@pulumi/consul\";\n\nconst database = new consul.Intention(\"database\", {\n    sourceName: \"api\",\n    destinationName: pgConsulService.name,\n    action: \"allow\",\n});\nconst pg = consul.getService({\n    name: \"postgresql\",\n});\n```\n```python\nimport pulumi\nimport pulumi_consul as consul\n\ndatabase = consul.Intention(\"database\",\n    source_name=\"api\",\n    destination_name=pg_consul_service[\"name\"],\n    action=\"allow\")\npg = consul.get_service(name=\"postgresql\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Consul = Pulumi.Consul;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var database = new Consul.Intention(\"database\", new()\n    {\n        SourceName = \"api\",\n        DestinationName = pgConsulService.Name,\n        Action = \"allow\",\n    });\n\n    var pg = Consul.GetService.Invoke(new()\n    {\n        Name = \"postgresql\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-consul/sdk/v3/go/consul\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := consul.NewIntention(ctx, \"database\", \u0026consul.IntentionArgs{\n\t\t\tSourceName:      pulumi.String(\"api\"),\n\t\t\tDestinationName: pulumi.Any(pgConsulService.Name),\n\t\t\tAction:          pulumi.String(\"allow\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = consul.LookupService(ctx, \u0026consul.LookupServiceArgs{\n\t\t\tName: \"postgresql\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.consul.Intention;\nimport com.pulumi.consul.IntentionArgs;\nimport com.pulumi.consul.ConsulFunctions;\nimport com.pulumi.consul.inputs.GetServiceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var database = new Intention(\"database\", IntentionArgs.builder()\n            .sourceName(\"api\")\n            .destinationName(pgConsulService.name())\n            .action(\"allow\")\n            .build());\n\n        final var pg = ConsulFunctions.getService(GetServiceArgs.builder()\n            .name(\"postgresql\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  database:\n    type: consul:Intention\n    properties:\n      sourceName: api\n      destinationName: ${pgConsulService.name}\n      action: allow\nvariables:\n  pg:\n    fn::invoke:\n      Function: consul:getService\n      Arguments:\n        name: postgresql\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n`consul_intention` can be imported:\n\n```sh\n$ pulumi import consul:index/intention:Intention database 657a57d6-0d56-57e2-31cb-e9f1ed3c18dd\n```\n",
             "properties": {
@@ -6409,7 +6566,7 @@
             }
         },
         "consul:index/peeringToken:PeeringToken": {
-            "description": "[Cluster Peering](https://www.consul.io/docs/connect/cluster-peering) can be used to create connections between two or more independent clusters so that services deployed to different partitions or datacenters can communicate.\n\nThe `cluster_peering_token` resource can be used to generate a peering token that can later be used to establish a peering connection.\n\n\u003e **Cluster peering is currently in technical preview:** Functionality associated with cluster peering is subject to change. You should never use the technical preview release in secure environments or production scenarios. Features in technical preview may have performance issues, scaling issues, and limited support.\n\nThe functionality described here is available only in Consul version 1.13.0 and later.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as consul from \"@pulumi/consul\";\n\nconst token = new consul.PeeringToken(\"token\", {peerName: \"eu-cluster\"});\n```\n```python\nimport pulumi\nimport pulumi_consul as consul\n\ntoken = consul.PeeringToken(\"token\", peer_name=\"eu-cluster\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Consul = Pulumi.Consul;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var token = new Consul.PeeringToken(\"token\", new()\n    {\n        PeerName = \"eu-cluster\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-consul/sdk/v3/go/consul\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := consul.NewPeeringToken(ctx, \"token\", \u0026consul.PeeringTokenArgs{\n\t\t\tPeerName: pulumi.String(\"eu-cluster\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.consul.PeeringToken;\nimport com.pulumi.consul.PeeringTokenArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var token = new PeeringToken(\"token\", PeeringTokenArgs.builder()\n            .peerName(\"eu-cluster\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  token:\n    type: consul:PeeringToken\n    properties:\n      peerName: eu-cluster\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "[Cluster Peering](https://www.consul.io/docs/connect/cluster-peering) can be used to create connections between two or more independent clusters so that services deployed to different partitions or datacenters can communicate.\n\nThe `cluster_peering_token` resource can be used to generate a peering token that can later be used to establish a peering connection.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as consul from \"@pulumi/consul\";\n\nconst token = new consul.PeeringToken(\"token\", {peerName: \"eu-cluster\"});\n```\n```python\nimport pulumi\nimport pulumi_consul as consul\n\ntoken = consul.PeeringToken(\"token\", peer_name=\"eu-cluster\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Consul = Pulumi.Consul;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var token = new Consul.PeeringToken(\"token\", new()\n    {\n        PeerName = \"eu-cluster\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-consul/sdk/v3/go/consul\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := consul.NewPeeringToken(ctx, \"token\", \u0026consul.PeeringTokenArgs{\n\t\t\tPeerName: pulumi.String(\"eu-cluster\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.consul.PeeringToken;\nimport com.pulumi.consul.PeeringTokenArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var token = new PeeringToken(\"token\", PeeringTokenArgs.builder()\n            .peerName(\"eu-cluster\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  token:\n    type: consul:PeeringToken\n    properties:\n      peerName: eu-cluster\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
                 "meta": {
                     "type": "object",
@@ -6434,6 +6591,13 @@
                         }
                     },
                     "secret": true
+                },
+                "serverExternalAddresses": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The addresses for the cluster that generates the peering token. Addresses take the form {host or IP}:port. You can specify one or more load balancers or external IPs that route external traffic to this cluster's Consul servers.\n"
                 }
             },
             "required": [
@@ -6456,6 +6620,14 @@
                 "peerName": {
                     "type": "string",
                     "description": "The name assigned to the peer cluster. The `peer_name` is used to reference the peer cluster in service discovery queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.\n",
+                    "willReplaceOnChanges": true
+                },
+                "serverExternalAddresses": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The addresses for the cluster that generates the peering token. Addresses take the form {host or IP}:port. You can specify one or more load balancers or external IPs that route external traffic to this cluster's Consul servers.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -6491,6 +6663,14 @@
                             }
                         },
                         "secret": true
+                    },
+                    "serverExternalAddresses": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The addresses for the cluster that generates the peering token. Addresses take the form {host or IP}:port. You can specify one or more load balancers or external IPs that route external traffic to this cluster's Consul servers.\n",
+                        "willReplaceOnChanges": true
                     }
                 },
                 "type": "object"
@@ -8093,6 +8273,121 @@
                 },
                 "required": [
                     "configJson",
+                    "kind",
+                    "name",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "consul:index/getConfigEntryV2ExportedServices:getConfigEntryV2ExportedServices": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getConfigEntryV2ExportedServices.\n",
+                "properties": {
+                    "kind": {
+                        "type": "string",
+                        "description": "The kind of exported services config (ExportedServices, NamespaceExportedServices, PartitionExportedServices).\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the config entry to read.\n"
+                    },
+                    "namespace": {
+                        "type": "string",
+                        "description": "The namespace the config entry is associated with.\n"
+                    },
+                    "partition": {
+                        "type": "string",
+                        "description": "The partition the config entry is associated with.\n"
+                    },
+                    "partitionConsumers": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The exported service partition consumers.\n"
+                    },
+                    "peerConsumers": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The exported service peer consumers.\n"
+                    },
+                    "samenessGroupConsumers": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The exported service sameness group consumers.\n"
+                    },
+                    "services": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The exported services.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "kind",
+                    "name"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getConfigEntryV2ExportedServices.\n",
+                "properties": {
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "kind": {
+                        "description": "The kind of exported services config (ExportedServices, NamespaceExportedServices, PartitionExportedServices).\n",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "The name of the config entry to read.\n",
+                        "type": "string"
+                    },
+                    "namespace": {
+                        "description": "The namespace the config entry is associated with.\n",
+                        "type": "string"
+                    },
+                    "partition": {
+                        "description": "The partition the config entry is associated with.\n",
+                        "type": "string"
+                    },
+                    "partitionConsumers": {
+                        "description": "The exported service partition consumers.\n",
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "peerConsumers": {
+                        "description": "The exported service peer consumers.\n",
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "samenessGroupConsumers": {
+                        "description": "The exported service sameness group consumers.\n",
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "services": {
+                        "description": "The exported services.\n",
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
                     "kind",
                     "name",
                     "id"
