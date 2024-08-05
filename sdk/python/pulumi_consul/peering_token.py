@@ -16,17 +16,21 @@ class PeeringTokenArgs:
     def __init__(__self__, *,
                  peer_name: pulumi.Input[str],
                  meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 partition: Optional[pulumi.Input[str]] = None):
+                 partition: Optional[pulumi.Input[str]] = None,
+                 server_external_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a PeeringToken resource.
         :param pulumi.Input[str] peer_name: The name assigned to the peer cluster. The `peer_name` is used to reference the peer cluster in service discovery queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the cluster peering process.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] server_external_addresses: The addresses for the cluster that generates the peering token. Addresses take the form {host or IP}:port. You can specify one or more load balancers or external IPs that route external traffic to this cluster's Consul servers.
         """
         pulumi.set(__self__, "peer_name", peer_name)
         if meta is not None:
             pulumi.set(__self__, "meta", meta)
         if partition is not None:
             pulumi.set(__self__, "partition", partition)
+        if server_external_addresses is not None:
+            pulumi.set(__self__, "server_external_addresses", server_external_addresses)
 
     @property
     @pulumi.getter(name="peerName")
@@ -61,6 +65,18 @@ class PeeringTokenArgs:
     def partition(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "partition", value)
 
+    @property
+    @pulumi.getter(name="serverExternalAddresses")
+    def server_external_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The addresses for the cluster that generates the peering token. Addresses take the form {host or IP}:port. You can specify one or more load balancers or external IPs that route external traffic to this cluster's Consul servers.
+        """
+        return pulumi.get(self, "server_external_addresses")
+
+    @server_external_addresses.setter
+    def server_external_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "server_external_addresses", value)
+
 
 @pulumi.input_type
 class _PeeringTokenState:
@@ -68,12 +84,14 @@ class _PeeringTokenState:
                  meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  partition: Optional[pulumi.Input[str]] = None,
                  peer_name: Optional[pulumi.Input[str]] = None,
-                 peering_token: Optional[pulumi.Input[str]] = None):
+                 peering_token: Optional[pulumi.Input[str]] = None,
+                 server_external_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering PeeringToken resources.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the cluster peering process.
         :param pulumi.Input[str] peer_name: The name assigned to the peer cluster. The `peer_name` is used to reference the peer cluster in service discovery queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
         :param pulumi.Input[str] peering_token: The generated peering token
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] server_external_addresses: The addresses for the cluster that generates the peering token. Addresses take the form {host or IP}:port. You can specify one or more load balancers or external IPs that route external traffic to this cluster's Consul servers.
         """
         if meta is not None:
             pulumi.set(__self__, "meta", meta)
@@ -83,6 +101,8 @@ class _PeeringTokenState:
             pulumi.set(__self__, "peer_name", peer_name)
         if peering_token is not None:
             pulumi.set(__self__, "peering_token", peering_token)
+        if server_external_addresses is not None:
+            pulumi.set(__self__, "server_external_addresses", server_external_addresses)
 
     @property
     @pulumi.getter
@@ -129,6 +149,18 @@ class _PeeringTokenState:
     def peering_token(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "peering_token", value)
 
+    @property
+    @pulumi.getter(name="serverExternalAddresses")
+    def server_external_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The addresses for the cluster that generates the peering token. Addresses take the form {host or IP}:port. You can specify one or more load balancers or external IPs that route external traffic to this cluster's Consul servers.
+        """
+        return pulumi.get(self, "server_external_addresses")
+
+    @server_external_addresses.setter
+    def server_external_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "server_external_addresses", value)
+
 
 class PeeringToken(pulumi.CustomResource):
     @overload
@@ -138,15 +170,12 @@ class PeeringToken(pulumi.CustomResource):
                  meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  partition: Optional[pulumi.Input[str]] = None,
                  peer_name: Optional[pulumi.Input[str]] = None,
+                 server_external_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         [Cluster Peering](https://www.consul.io/docs/connect/cluster-peering) can be used to create connections between two or more independent clusters so that services deployed to different partitions or datacenters can communicate.
 
         The `cluster_peering_token` resource can be used to generate a peering token that can later be used to establish a peering connection.
-
-        > **Cluster peering is currently in technical preview:** Functionality associated with cluster peering is subject to change. You should never use the technical preview release in secure environments or production scenarios. Features in technical preview may have performance issues, scaling issues, and limited support.
-
-        The functionality described here is available only in Consul version 1.13.0 and later.
 
         ## Example Usage
 
@@ -161,6 +190,7 @@ class PeeringToken(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the cluster peering process.
         :param pulumi.Input[str] peer_name: The name assigned to the peer cluster. The `peer_name` is used to reference the peer cluster in service discovery queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] server_external_addresses: The addresses for the cluster that generates the peering token. Addresses take the form {host or IP}:port. You can specify one or more load balancers or external IPs that route external traffic to this cluster's Consul servers.
         """
         ...
     @overload
@@ -172,10 +202,6 @@ class PeeringToken(pulumi.CustomResource):
         [Cluster Peering](https://www.consul.io/docs/connect/cluster-peering) can be used to create connections between two or more independent clusters so that services deployed to different partitions or datacenters can communicate.
 
         The `cluster_peering_token` resource can be used to generate a peering token that can later be used to establish a peering connection.
-
-        > **Cluster peering is currently in technical preview:** Functionality associated with cluster peering is subject to change. You should never use the technical preview release in secure environments or production scenarios. Features in technical preview may have performance issues, scaling issues, and limited support.
-
-        The functionality described here is available only in Consul version 1.13.0 and later.
 
         ## Example Usage
 
@@ -204,6 +230,7 @@ class PeeringToken(pulumi.CustomResource):
                  meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  partition: Optional[pulumi.Input[str]] = None,
                  peer_name: Optional[pulumi.Input[str]] = None,
+                 server_external_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -218,6 +245,7 @@ class PeeringToken(pulumi.CustomResource):
             if peer_name is None and not opts.urn:
                 raise TypeError("Missing required property 'peer_name'")
             __props__.__dict__["peer_name"] = peer_name
+            __props__.__dict__["server_external_addresses"] = server_external_addresses
             __props__.__dict__["peering_token"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["peeringToken"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
@@ -234,7 +262,8 @@ class PeeringToken(pulumi.CustomResource):
             meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             partition: Optional[pulumi.Input[str]] = None,
             peer_name: Optional[pulumi.Input[str]] = None,
-            peering_token: Optional[pulumi.Input[str]] = None) -> 'PeeringToken':
+            peering_token: Optional[pulumi.Input[str]] = None,
+            server_external_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'PeeringToken':
         """
         Get an existing PeeringToken resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -245,6 +274,7 @@ class PeeringToken(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the cluster peering process.
         :param pulumi.Input[str] peer_name: The name assigned to the peer cluster. The `peer_name` is used to reference the peer cluster in service discovery queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
         :param pulumi.Input[str] peering_token: The generated peering token
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] server_external_addresses: The addresses for the cluster that generates the peering token. Addresses take the form {host or IP}:port. You can specify one or more load balancers or external IPs that route external traffic to this cluster's Consul servers.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -254,6 +284,7 @@ class PeeringToken(pulumi.CustomResource):
         __props__.__dict__["partition"] = partition
         __props__.__dict__["peer_name"] = peer_name
         __props__.__dict__["peering_token"] = peering_token
+        __props__.__dict__["server_external_addresses"] = server_external_addresses
         return PeeringToken(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -284,4 +315,12 @@ class PeeringToken(pulumi.CustomResource):
         The generated peering token
         """
         return pulumi.get(self, "peering_token")
+
+    @property
+    @pulumi.getter(name="serverExternalAddresses")
+    def server_external_addresses(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        The addresses for the cluster that generates the peering token. Addresses take the form {host or IP}:port. You can specify one or more load balancers or external IPs that route external traffic to this cluster's Consul servers.
+        """
+        return pulumi.get(self, "server_external_addresses")
 

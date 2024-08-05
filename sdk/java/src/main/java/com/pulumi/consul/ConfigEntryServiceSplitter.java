@@ -225,11 +225,18 @@ public class ConfigEntryServiceSplitter extends com.pulumi.resources.CustomResou
      * @param options A bag of options that control this resource's behavior.
      */
     public ConfigEntryServiceSplitter(String name, ConfigEntryServiceSplitterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("consul:index/configEntryServiceSplitter:ConfigEntryServiceSplitter", name, args == null ? ConfigEntryServiceSplitterArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("consul:index/configEntryServiceSplitter:ConfigEntryServiceSplitter", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ConfigEntryServiceSplitter(String name, Output<String> id, @Nullable ConfigEntryServiceSplitterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("consul:index/configEntryServiceSplitter:ConfigEntryServiceSplitter", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ConfigEntryServiceSplitterArgs makeArgs(ConfigEntryServiceSplitterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ConfigEntryServiceSplitterArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

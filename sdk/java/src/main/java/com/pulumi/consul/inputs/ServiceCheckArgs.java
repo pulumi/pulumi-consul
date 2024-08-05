@@ -35,14 +35,14 @@ public final class ServiceCheckArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The time after which the service is automatically deregistered when in the `critical` state. Defaults to `30s`.
+     * The time after which the service is automatically deregistered when in the `critical` state. Defaults to `30s`. Setting to `0` will disable.
      * 
      */
     @Import(name="deregisterCriticalServiceAfter")
     private @Nullable Output<String> deregisterCriticalServiceAfter;
 
     /**
-     * @return The time after which the service is automatically deregistered when in the `critical` state. Defaults to `30s`.
+     * @return The time after which the service is automatically deregistered when in the `critical` state. Defaults to `30s`. Setting to `0` will disable.
      * 
      */
     public Optional<Output<String>> deregisterCriticalServiceAfter() {
@@ -256,7 +256,7 @@ public final class ServiceCheckArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deregisterCriticalServiceAfter The time after which the service is automatically deregistered when in the `critical` state. Defaults to `30s`.
+         * @param deregisterCriticalServiceAfter The time after which the service is automatically deregistered when in the `critical` state. Defaults to `30s`. Setting to `0` will disable.
          * 
          * @return builder
          * 
@@ -267,7 +267,7 @@ public final class ServiceCheckArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deregisterCriticalServiceAfter The time after which the service is automatically deregistered when in the `critical` state. Defaults to `30s`.
+         * @param deregisterCriticalServiceAfter The time after which the service is automatically deregistered when in the `critical` state. Defaults to `30s`. Setting to `0` will disable.
          * 
          * @return builder
          * 

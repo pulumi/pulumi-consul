@@ -151,11 +151,18 @@ public class AgentService extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public AgentService(String name, @Nullable AgentServiceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("consul:index/agentService:AgentService", name, args == null ? AgentServiceArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("consul:index/agentService:AgentService", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private AgentService(String name, Output<String> id, @Nullable AgentServiceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("consul:index/agentService:AgentService", name, state, makeResourceOptions(options, id));
+    }
+
+    private static AgentServiceArgs makeArgs(@Nullable AgentServiceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AgentServiceArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

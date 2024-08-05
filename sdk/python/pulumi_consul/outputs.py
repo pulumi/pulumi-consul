@@ -3637,7 +3637,7 @@ class ServiceCheck(dict):
         :param str interval: The interval to wait between each health-check invocation.
         :param str name: The name of the health-check.
         :param str timeout: Specifies a timeout for outgoing connections in the case of a HTTP or TCP check.
-        :param str deregister_critical_service_after: The time after which the service is automatically deregistered when in the `critical` state. Defaults to `30s`.
+        :param str deregister_critical_service_after: The time after which the service is automatically deregistered when in the `critical` state. Defaults to `30s`. Setting to `0` will disable.
         :param Sequence['ServiceCheckHeaderArgs'] headers: The headers to send for an HTTP check. The attributes of each header is given below.
         :param str http: The HTTP endpoint to call for an HTTP check.
         :param str method: The method to use for HTTP health-checks. Defaults to `GET`.
@@ -3703,7 +3703,7 @@ class ServiceCheck(dict):
     @pulumi.getter(name="deregisterCriticalServiceAfter")
     def deregister_critical_service_after(self) -> Optional[str]:
         """
-        The time after which the service is automatically deregistered when in the `critical` state. Defaults to `30s`.
+        The time after which the service is automatically deregistered when in the `critical` state. Defaults to `30s`. Setting to `0` will disable.
         """
         return pulumi.get(self, "deregister_critical_service_after")
 

@@ -8253,7 +8253,7 @@ func (o ProviderHeaderArrayOutput) Index(i pulumi.IntInput) ProviderHeaderOutput
 type ServiceCheck struct {
 	// An ID, *unique per agent*.
 	CheckId string `pulumi:"checkId"`
-	// The time after which the service is automatically deregistered when in the `critical` state. Defaults to `30s`.
+	// The time after which the service is automatically deregistered when in the `critical` state. Defaults to `30s`. Setting to `0` will disable.
 	DeregisterCriticalServiceAfter *string `pulumi:"deregisterCriticalServiceAfter"`
 	// The headers to send for an HTTP check. The attributes of each header is given below.
 	Headers []ServiceCheckHeader `pulumi:"headers"`
@@ -8291,7 +8291,7 @@ type ServiceCheckInput interface {
 type ServiceCheckArgs struct {
 	// An ID, *unique per agent*.
 	CheckId pulumi.StringInput `pulumi:"checkId"`
-	// The time after which the service is automatically deregistered when in the `critical` state. Defaults to `30s`.
+	// The time after which the service is automatically deregistered when in the `critical` state. Defaults to `30s`. Setting to `0` will disable.
 	DeregisterCriticalServiceAfter pulumi.StringPtrInput `pulumi:"deregisterCriticalServiceAfter"`
 	// The headers to send for an HTTP check. The attributes of each header is given below.
 	Headers ServiceCheckHeaderArrayInput `pulumi:"headers"`
@@ -8371,7 +8371,7 @@ func (o ServiceCheckOutput) CheckId() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceCheck) string { return v.CheckId }).(pulumi.StringOutput)
 }
 
-// The time after which the service is automatically deregistered when in the `critical` state. Defaults to `30s`.
+// The time after which the service is automatically deregistered when in the `critical` state. Defaults to `30s`. Setting to `0` will disable.
 func (o ServiceCheckOutput) DeregisterCriticalServiceAfter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceCheck) *string { return v.DeregisterCriticalServiceAfter }).(pulumi.StringPtrOutput)
 }

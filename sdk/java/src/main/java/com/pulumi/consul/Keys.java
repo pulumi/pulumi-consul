@@ -173,11 +173,18 @@ Please use the token argument in the provider configuration */
      * @param options A bag of options that control this resource's behavior.
      */
     public Keys(String name, @Nullable KeysArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("consul:index/keys:Keys", name, args == null ? KeysArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("consul:index/keys:Keys", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Keys(String name, Output<String> id, @Nullable KeysState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("consul:index/keys:Keys", name, state, makeResourceOptions(options, id));
+    }
+
+    private static KeysArgs makeArgs(@Nullable KeysArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? KeysArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -100,6 +100,11 @@ export type ConfigEntryServiceSplitter = import("./configEntryServiceSplitter").
 export const ConfigEntryServiceSplitter: typeof import("./configEntryServiceSplitter").ConfigEntryServiceSplitter = null as any;
 utilities.lazyLoad(exports, ["ConfigEntryServiceSplitter"], () => require("./configEntryServiceSplitter"));
 
+export { ConfigEntryV2ExportedServicesArgs, ConfigEntryV2ExportedServicesState } from "./configEntryV2ExportedServices";
+export type ConfigEntryV2ExportedServices = import("./configEntryV2ExportedServices").ConfigEntryV2ExportedServices;
+export const ConfigEntryV2ExportedServices: typeof import("./configEntryV2ExportedServices").ConfigEntryV2ExportedServices = null as any;
+utilities.lazyLoad(exports, ["ConfigEntryV2ExportedServices"], () => require("./configEntryV2ExportedServices"));
+
 export { GetAclAuthMethodArgs, GetAclAuthMethodResult, GetAclAuthMethodOutputArgs } from "./getAclAuthMethod";
 export const getAclAuthMethod: typeof import("./getAclAuthMethod").getAclAuthMethod = null as any;
 export const getAclAuthMethodOutput: typeof import("./getAclAuthMethod").getAclAuthMethodOutput = null as any;
@@ -159,6 +164,11 @@ export { GetConfigEntryArgs, GetConfigEntryResult, GetConfigEntryOutputArgs } fr
 export const getConfigEntry: typeof import("./getConfigEntry").getConfigEntry = null as any;
 export const getConfigEntryOutput: typeof import("./getConfigEntry").getConfigEntryOutput = null as any;
 utilities.lazyLoad(exports, ["getConfigEntry","getConfigEntryOutput"], () => require("./getConfigEntry"));
+
+export { GetConfigEntryV2ExportedServicesArgs, GetConfigEntryV2ExportedServicesResult, GetConfigEntryV2ExportedServicesOutputArgs } from "./getConfigEntryV2ExportedServices";
+export const getConfigEntryV2ExportedServices: typeof import("./getConfigEntryV2ExportedServices").getConfigEntryV2ExportedServices = null as any;
+export const getConfigEntryV2ExportedServicesOutput: typeof import("./getConfigEntryV2ExportedServices").getConfigEntryV2ExportedServicesOutput = null as any;
+utilities.lazyLoad(exports, ["getConfigEntryV2ExportedServices","getConfigEntryV2ExportedServicesOutput"], () => require("./getConfigEntryV2ExportedServices"));
 
 export { GetDatacentersResult } from "./getDatacenters";
 export const getDatacenters: typeof import("./getDatacenters").getDatacenters = null as any;
@@ -337,6 +347,8 @@ const _module = {
                 return new ConfigEntryServiceRouter(name, <any>undefined, { urn })
             case "consul:index/configEntryServiceSplitter:ConfigEntryServiceSplitter":
                 return new ConfigEntryServiceSplitter(name, <any>undefined, { urn })
+            case "consul:index/configEntryV2ExportedServices:ConfigEntryV2ExportedServices":
+                return new ConfigEntryV2ExportedServices(name, <any>undefined, { urn })
             case "consul:index/intention:Intention":
                 return new Intention(name, <any>undefined, { urn })
             case "consul:index/keyPrefix:KeyPrefix":
@@ -387,6 +399,7 @@ pulumi.runtime.registerResourceModule("consul", "index/configEntryServiceIntenti
 pulumi.runtime.registerResourceModule("consul", "index/configEntryServiceResolver", _module)
 pulumi.runtime.registerResourceModule("consul", "index/configEntryServiceRouter", _module)
 pulumi.runtime.registerResourceModule("consul", "index/configEntryServiceSplitter", _module)
+pulumi.runtime.registerResourceModule("consul", "index/configEntryV2ExportedServices", _module)
 pulumi.runtime.registerResourceModule("consul", "index/intention", _module)
 pulumi.runtime.registerResourceModule("consul", "index/keyPrefix", _module)
 pulumi.runtime.registerResourceModule("consul", "index/keys", _module)

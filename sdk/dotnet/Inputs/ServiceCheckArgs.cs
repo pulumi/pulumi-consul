@@ -19,7 +19,7 @@ namespace Pulumi.Consul.Inputs
         public Input<string> CheckId { get; set; } = null!;
 
         /// <summary>
-        /// The time after which the service is automatically deregistered when in the `critical` state. Defaults to `30s`.
+        /// The time after which the service is automatically deregistered when in the `critical` state. Defaults to `30s`. Setting to `0` will disable.
         /// </summary>
         [Input("deregisterCriticalServiceAfter")]
         public Input<string>? DeregisterCriticalServiceAfter { get; set; }

@@ -117,11 +117,18 @@ public class AdminPartition extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public AdminPartition(String name, @Nullable AdminPartitionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("consul:index/adminPartition:AdminPartition", name, args == null ? AdminPartitionArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("consul:index/adminPartition:AdminPartition", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private AdminPartition(String name, Output<String> id, @Nullable AdminPartitionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("consul:index/adminPartition:AdminPartition", name, state, makeResourceOptions(options, id));
+    }
+
+    private static AdminPartitionArgs makeArgs(@Nullable AdminPartitionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AdminPartitionArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

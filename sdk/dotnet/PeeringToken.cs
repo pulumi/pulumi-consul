@@ -14,10 +14,6 @@ namespace Pulumi.Consul
     /// 
     /// The `cluster_peering_token` resource can be used to generate a peering token that can later be used to establish a peering connection.
     /// 
-    /// &gt; **Cluster peering is currently in technical preview:** Functionality associated with cluster peering is subject to change. You should never use the technical preview release in secure environments or production scenarios. Features in technical preview may have performance issues, scaling issues, and limited support.
-    /// 
-    /// The functionality described here is available only in Consul version 1.13.0 and later.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -59,6 +55,12 @@ namespace Pulumi.Consul
         /// </summary>
         [Output("peeringToken")]
         public Output<string> Token { get; private set; } = null!;
+
+        /// <summary>
+        /// The addresses for the cluster that generates the peering token. Addresses take the form {host or IP}:port. You can specify one or more load balancers or external IPs that route external traffic to this cluster's Consul servers.
+        /// </summary>
+        [Output("serverExternalAddresses")]
+        public Output<ImmutableArray<string>> ServerExternalAddresses { get; private set; } = null!;
 
 
         /// <summary>
@@ -131,6 +133,18 @@ namespace Pulumi.Consul
         [Input("peerName", required: true)]
         public Input<string> PeerName { get; set; } = null!;
 
+        [Input("serverExternalAddresses")]
+        private InputList<string>? _serverExternalAddresses;
+
+        /// <summary>
+        /// The addresses for the cluster that generates the peering token. Addresses take the form {host or IP}:port. You can specify one or more load balancers or external IPs that route external traffic to this cluster's Consul servers.
+        /// </summary>
+        public InputList<string> ServerExternalAddresses
+        {
+            get => _serverExternalAddresses ?? (_serverExternalAddresses = new InputList<string>());
+            set => _serverExternalAddresses = value;
+        }
+
         public PeeringTokenArgs()
         {
         }
@@ -174,6 +188,18 @@ namespace Pulumi.Consul
                 var emptySecret = Output.CreateSecret(0);
                 _peeringToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
+        }
+
+        [Input("serverExternalAddresses")]
+        private InputList<string>? _serverExternalAddresses;
+
+        /// <summary>
+        /// The addresses for the cluster that generates the peering token. Addresses take the form {host or IP}:port. You can specify one or more load balancers or external IPs that route external traffic to this cluster's Consul servers.
+        /// </summary>
+        public InputList<string> ServerExternalAddresses
+        {
+            get => _serverExternalAddresses ?? (_serverExternalAddresses = new InputList<string>());
+            set => _serverExternalAddresses = value;
         }
 
         public PeeringTokenState()

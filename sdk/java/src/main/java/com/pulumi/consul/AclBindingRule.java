@@ -211,11 +211,18 @@ public class AclBindingRule extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public AclBindingRule(String name, AclBindingRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("consul:index/aclBindingRule:AclBindingRule", name, args == null ? AclBindingRuleArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("consul:index/aclBindingRule:AclBindingRule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private AclBindingRule(String name, Output<String> id, @Nullable AclBindingRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("consul:index/aclBindingRule:AclBindingRule", name, state, makeResourceOptions(options, id));
+    }
+
+    private static AclBindingRuleArgs makeArgs(AclBindingRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AclBindingRuleArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

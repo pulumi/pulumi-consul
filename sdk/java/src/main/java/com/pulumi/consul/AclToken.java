@@ -270,11 +270,18 @@ public class AclToken extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public AclToken(String name, @Nullable AclTokenArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("consul:index/aclToken:AclToken", name, args == null ? AclTokenArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("consul:index/aclToken:AclToken", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private AclToken(String name, Output<String> id, @Nullable AclTokenState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("consul:index/aclToken:AclToken", name, state, makeResourceOptions(options, id));
+    }
+
+    private static AclTokenArgs makeArgs(@Nullable AclTokenArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AclTokenArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -207,11 +207,18 @@ public class ConfigEntryServiceIntentions extends com.pulumi.resources.CustomRes
      * @param options A bag of options that control this resource's behavior.
      */
     public ConfigEntryServiceIntentions(String name, @Nullable ConfigEntryServiceIntentionsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("consul:index/configEntryServiceIntentions:ConfigEntryServiceIntentions", name, args == null ? ConfigEntryServiceIntentionsArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("consul:index/configEntryServiceIntentions:ConfigEntryServiceIntentions", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ConfigEntryServiceIntentions(String name, Output<String> id, @Nullable ConfigEntryServiceIntentionsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("consul:index/configEntryServiceIntentions:ConfigEntryServiceIntentions", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ConfigEntryServiceIntentionsArgs makeArgs(@Nullable ConfigEntryServiceIntentionsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ConfigEntryServiceIntentionsArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
