@@ -21,10 +21,6 @@ import javax.annotation.Nullable;
  * 
  * The `cluster_peering_token` resource can be used to generate a peering token that can later be used to establish a peering connection.
  * 
- * &gt; **Cluster peering is currently in technical preview:** Functionality associated with cluster peering is subject to change. You should never use the technical preview release in secure environments or production scenarios. Features in technical preview may have performance issues, scaling issues, and limited support.
- * 
- * The functionality described here is available only in Consul version 1.13.0 and later.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -111,6 +107,20 @@ public class PeeringToken extends com.pulumi.resources.CustomResource {
     public Output<String> peeringToken() {
         return this.peeringToken;
     }
+    /**
+     * The addresses for the cluster that generates the peering token. Addresses take the form {host or IP}:port. You can specify one or more load balancers or external IPs that route external traffic to this cluster&#39;s Consul servers.
+     * 
+     */
+    @Export(name="serverExternalAddresses", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> serverExternalAddresses;
+
+    /**
+     * @return The addresses for the cluster that generates the peering token. Addresses take the form {host or IP}:port. You can specify one or more load balancers or external IPs that route external traffic to this cluster&#39;s Consul servers.
+     * 
+     */
+    public Output<Optional<List<String>>> serverExternalAddresses() {
+        return Codegen.optional(this.serverExternalAddresses);
+    }
 
     /**
      *
@@ -134,11 +144,18 @@ public class PeeringToken extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public PeeringToken(String name, PeeringTokenArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("consul:index/peeringToken:PeeringToken", name, args == null ? PeeringTokenArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("consul:index/peeringToken:PeeringToken", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private PeeringToken(String name, Output<String> id, @Nullable PeeringTokenState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("consul:index/peeringToken:PeeringToken", name, state, makeResourceOptions(options, id));
+    }
+
+    private static PeeringTokenArgs makeArgs(PeeringTokenArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? PeeringTokenArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

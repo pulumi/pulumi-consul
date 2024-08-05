@@ -59,6 +59,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ConfigEntryServiceRouter{}
 	case "consul:index/configEntryServiceSplitter:ConfigEntryServiceSplitter":
 		r = &ConfigEntryServiceSplitter{}
+	case "consul:index/configEntryV2ExportedServices:ConfigEntryV2ExportedServices":
+		r = &ConfigEntryV2ExportedServices{}
 	case "consul:index/intention:Intention":
 		r = &Intention{}
 	case "consul:index/keyPrefix:KeyPrefix":
@@ -209,6 +211,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"consul",
 		"index/configEntryServiceSplitter",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"consul",
+		"index/configEntryV2ExportedServices",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

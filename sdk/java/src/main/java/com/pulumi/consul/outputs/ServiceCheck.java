@@ -21,7 +21,7 @@ public final class ServiceCheck {
      */
     private String checkId;
     /**
-     * @return The time after which the service is automatically deregistered when in the `critical` state. Defaults to `30s`.
+     * @return The time after which the service is automatically deregistered when in the `critical` state. Defaults to `30s`. Setting to `0` will disable.
      * 
      */
     private @Nullable String deregisterCriticalServiceAfter;
@@ -85,7 +85,7 @@ public final class ServiceCheck {
         return this.checkId;
     }
     /**
-     * @return The time after which the service is automatically deregistered when in the `critical` state. Defaults to `30s`.
+     * @return The time after which the service is automatically deregistered when in the `critical` state. Defaults to `30s`. Setting to `0` will disable.
      * 
      */
     public Optional<String> deregisterCriticalServiceAfter() {

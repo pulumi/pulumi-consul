@@ -16,7 +16,7 @@ replace github.com/hashicorp/terraform-exec => github.com/hashicorp/terraform-ex
 
 require (
 	github.com/hashicorp/terraform-plugin-sdk v1.17.2
-	github.com/hashicorp/terraform-provider-consul v1.1.1-0.20231120153550-b46ab37b60ba
+	github.com/hashicorp/terraform-provider-consul v1.1.1-0.20240802192014-7a097673283b
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.88.0
 )
 
@@ -110,7 +110,8 @@ require (
 	github.com/googleapis/gax-go/v2 v2.12.2 // indirect
 	github.com/gorilla/mux v1.8.0 // indirect
 	github.com/grpc-ecosystem/grpc-opentracing v0.0.0-20180507213350-8e809c8a8645 // indirect
-	github.com/hashicorp/consul/api v1.26.1-rc1 // indirect
+	github.com/hashicorp/consul/api v1.10.1-0.20240305172350-4e7982a5b707 // indirect
+	github.com/hashicorp/consul/proto-public v0.6.0 // indirect
 	github.com/hashicorp/errwrap v1.1.0 // indirect
 	github.com/hashicorp/go-checkpoint v0.5.0 // indirect
 	github.com/hashicorp/go-cleanhttp v0.5.2 // indirect

@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -54,12 +55,28 @@ public final class PeeringTokenArgs extends com.pulumi.resources.ResourceArgs {
         return this.peerName;
     }
 
+    /**
+     * The addresses for the cluster that generates the peering token. Addresses take the form {host or IP}:port. You can specify one or more load balancers or external IPs that route external traffic to this cluster&#39;s Consul servers.
+     * 
+     */
+    @Import(name="serverExternalAddresses")
+    private @Nullable Output<List<String>> serverExternalAddresses;
+
+    /**
+     * @return The addresses for the cluster that generates the peering token. Addresses take the form {host or IP}:port. You can specify one or more load balancers or external IPs that route external traffic to this cluster&#39;s Consul servers.
+     * 
+     */
+    public Optional<Output<List<String>>> serverExternalAddresses() {
+        return Optional.ofNullable(this.serverExternalAddresses);
+    }
+
     private PeeringTokenArgs() {}
 
     private PeeringTokenArgs(PeeringTokenArgs $) {
         this.meta = $.meta;
         this.partition = $.partition;
         this.peerName = $.peerName;
+        this.serverExternalAddresses = $.serverExternalAddresses;
     }
 
     public static Builder builder() {
@@ -129,6 +146,37 @@ public final class PeeringTokenArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder peerName(String peerName) {
             return peerName(Output.of(peerName));
+        }
+
+        /**
+         * @param serverExternalAddresses The addresses for the cluster that generates the peering token. Addresses take the form {host or IP}:port. You can specify one or more load balancers or external IPs that route external traffic to this cluster&#39;s Consul servers.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverExternalAddresses(@Nullable Output<List<String>> serverExternalAddresses) {
+            $.serverExternalAddresses = serverExternalAddresses;
+            return this;
+        }
+
+        /**
+         * @param serverExternalAddresses The addresses for the cluster that generates the peering token. Addresses take the form {host or IP}:port. You can specify one or more load balancers or external IPs that route external traffic to this cluster&#39;s Consul servers.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverExternalAddresses(List<String> serverExternalAddresses) {
+            return serverExternalAddresses(Output.of(serverExternalAddresses));
+        }
+
+        /**
+         * @param serverExternalAddresses The addresses for the cluster that generates the peering token. Addresses take the form {host or IP}:port. You can specify one or more load balancers or external IPs that route external traffic to this cluster&#39;s Consul servers.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverExternalAddresses(String... serverExternalAddresses) {
+            return serverExternalAddresses(List.of(serverExternalAddresses));
         }
 
         public PeeringTokenArgs build() {

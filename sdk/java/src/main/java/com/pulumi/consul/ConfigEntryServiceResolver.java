@@ -265,11 +265,18 @@ public class ConfigEntryServiceResolver extends com.pulumi.resources.CustomResou
      * @param options A bag of options that control this resource's behavior.
      */
     public ConfigEntryServiceResolver(String name, @Nullable ConfigEntryServiceResolverArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("consul:index/configEntryServiceResolver:ConfigEntryServiceResolver", name, args == null ? ConfigEntryServiceResolverArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("consul:index/configEntryServiceResolver:ConfigEntryServiceResolver", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ConfigEntryServiceResolver(String name, Output<String> id, @Nullable ConfigEntryServiceResolverState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("consul:index/configEntryServiceResolver:ConfigEntryServiceResolver", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ConfigEntryServiceResolverArgs makeArgs(@Nullable ConfigEntryServiceResolverArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ConfigEntryServiceResolverArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

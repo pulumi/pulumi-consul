@@ -24,6 +24,8 @@ import com.pulumi.consul.inputs.GetCatalogServicesArgs;
 import com.pulumi.consul.inputs.GetCatalogServicesPlainArgs;
 import com.pulumi.consul.inputs.GetConfigEntryArgs;
 import com.pulumi.consul.inputs.GetConfigEntryPlainArgs;
+import com.pulumi.consul.inputs.GetConfigEntryV2ExportedServicesArgs;
+import com.pulumi.consul.inputs.GetConfigEntryV2ExportedServicesPlainArgs;
 import com.pulumi.consul.inputs.GetKeyPrefixArgs;
 import com.pulumi.consul.inputs.GetKeyPrefixPlainArgs;
 import com.pulumi.consul.inputs.GetKeysArgs;
@@ -56,6 +58,7 @@ import com.pulumi.consul.outputs.GetCatalogNodesResult;
 import com.pulumi.consul.outputs.GetCatalogServiceResult;
 import com.pulumi.consul.outputs.GetCatalogServicesResult;
 import com.pulumi.consul.outputs.GetConfigEntryResult;
+import com.pulumi.consul.outputs.GetConfigEntryV2ExportedServicesResult;
 import com.pulumi.consul.outputs.GetDatacentersResult;
 import com.pulumi.consul.outputs.GetKeyPrefixResult;
 import com.pulumi.consul.outputs.GetKeysResult;
@@ -2586,6 +2589,18 @@ public final class ConsulFunctions {
     }
     public static CompletableFuture<GetConfigEntryResult> getConfigEntryPlain(GetConfigEntryPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("consul:index/getConfigEntry:getConfigEntry", TypeShape.of(GetConfigEntryResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetConfigEntryV2ExportedServicesResult> getConfigEntryV2ExportedServices(GetConfigEntryV2ExportedServicesArgs args) {
+        return getConfigEntryV2ExportedServices(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetConfigEntryV2ExportedServicesResult> getConfigEntryV2ExportedServicesPlain(GetConfigEntryV2ExportedServicesPlainArgs args) {
+        return getConfigEntryV2ExportedServicesPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetConfigEntryV2ExportedServicesResult> getConfigEntryV2ExportedServices(GetConfigEntryV2ExportedServicesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("consul:index/getConfigEntryV2ExportedServices:getConfigEntryV2ExportedServices", TypeShape.of(GetConfigEntryV2ExportedServicesResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetConfigEntryV2ExportedServicesResult> getConfigEntryV2ExportedServicesPlain(GetConfigEntryV2ExportedServicesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("consul:index/getConfigEntryV2ExportedServices:getConfigEntryV2ExportedServices", TypeShape.of(GetConfigEntryV2ExportedServicesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * The `consul.getDatacenters` data source returns the list of all knwown Consul

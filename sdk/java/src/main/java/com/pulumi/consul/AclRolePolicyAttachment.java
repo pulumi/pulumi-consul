@@ -124,11 +124,18 @@ public class AclRolePolicyAttachment extends com.pulumi.resources.CustomResource
      * @param options A bag of options that control this resource's behavior.
      */
     public AclRolePolicyAttachment(String name, AclRolePolicyAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("consul:index/aclRolePolicyAttachment:AclRolePolicyAttachment", name, args == null ? AclRolePolicyAttachmentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("consul:index/aclRolePolicyAttachment:AclRolePolicyAttachment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private AclRolePolicyAttachment(String name, Output<String> id, @Nullable AclRolePolicyAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("consul:index/aclRolePolicyAttachment:AclRolePolicyAttachment", name, state, makeResourceOptions(options, id));
+    }
+
+    private static AclRolePolicyAttachmentArgs makeArgs(AclRolePolicyAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AclRolePolicyAttachmentArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

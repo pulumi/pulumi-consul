@@ -1580,7 +1580,7 @@ export interface ServiceCheck {
      */
     checkId: pulumi.Input<string>;
     /**
-     * The time after which the service is automatically deregistered when in the `critical` state. Defaults to `30s`.
+     * The time after which the service is automatically deregistered when in the `critical` state. Defaults to `30s`. Setting to `0` will disable.
      */
     deregisterCriticalServiceAfter?: pulumi.Input<string>;
     /**

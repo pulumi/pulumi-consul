@@ -9,10 +9,6 @@ import * as utilities from "./utilities";
  *
  * The `clusterPeeringToken` resource can be used to generate a peering token that can later be used to establish a peering connection.
  *
- * > **Cluster peering is currently in technical preview:** Functionality associated with cluster peering is subject to change. You should never use the technical preview release in secure environments or production scenarios. Features in technical preview may have performance issues, scaling issues, and limited support.
- *
- * The functionality described here is available only in Consul version 1.13.0 and later.
- *
  * ## Example Usage
  *
  * ```typescript
@@ -63,6 +59,10 @@ export class PeeringToken extends pulumi.CustomResource {
      * The generated peering token
      */
     public /*out*/ readonly peeringToken!: pulumi.Output<string>;
+    /**
+     * The addresses for the cluster that generates the peering token. Addresses take the form {host or IP}:port. You can specify one or more load balancers or external IPs that route external traffic to this cluster's Consul servers.
+     */
+    public readonly serverExternalAddresses!: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a PeeringToken resource with the given unique name, arguments, and options.
@@ -81,6 +81,7 @@ export class PeeringToken extends pulumi.CustomResource {
             resourceInputs["partition"] = state ? state.partition : undefined;
             resourceInputs["peerName"] = state ? state.peerName : undefined;
             resourceInputs["peeringToken"] = state ? state.peeringToken : undefined;
+            resourceInputs["serverExternalAddresses"] = state ? state.serverExternalAddresses : undefined;
         } else {
             const args = argsOrState as PeeringTokenArgs | undefined;
             if ((!args || args.peerName === undefined) && !opts.urn) {
@@ -89,6 +90,7 @@ export class PeeringToken extends pulumi.CustomResource {
             resourceInputs["meta"] = args ? args.meta : undefined;
             resourceInputs["partition"] = args ? args.partition : undefined;
             resourceInputs["peerName"] = args ? args.peerName : undefined;
+            resourceInputs["serverExternalAddresses"] = args ? args.serverExternalAddresses : undefined;
             resourceInputs["peeringToken"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -115,6 +117,10 @@ export interface PeeringTokenState {
      * The generated peering token
      */
     peeringToken?: pulumi.Input<string>;
+    /**
+     * The addresses for the cluster that generates the peering token. Addresses take the form {host or IP}:port. You can specify one or more load balancers or external IPs that route external traffic to this cluster's Consul servers.
+     */
+    serverExternalAddresses?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -130,4 +136,8 @@ export interface PeeringTokenArgs {
      * The name assigned to the peer cluster. The `peerName` is used to reference the peer cluster in service discovery queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
      */
     peerName: pulumi.Input<string>;
+    /**
+     * The addresses for the cluster that generates the peering token. Addresses take the form {host or IP}:port. You can specify one or more load balancers or external IPs that route external traffic to this cluster's Consul servers.
+     */
+    serverExternalAddresses?: pulumi.Input<pulumi.Input<string>[]>;
 }

@@ -24,6 +24,7 @@ from .config_entry_service_intentions import *
 from .config_entry_service_resolver import *
 from .config_entry_service_router import *
 from .config_entry_service_splitter import *
+from .config_entry_v2_exported_services import *
 from .get_acl_auth_method import *
 from .get_acl_policy import *
 from .get_acl_role import *
@@ -36,6 +37,7 @@ from .get_catalog_nodes import *
 from .get_catalog_service import *
 from .get_catalog_services import *
 from .get_config_entry import *
+from .get_config_entry_v2_exported_services import *
 from .get_datacenters import *
 from .get_key_prefix import *
 from .get_keys import *
@@ -224,6 +226,14 @@ _utilities.register(
   "fqn": "pulumi_consul",
   "classes": {
    "consul:index/configEntryServiceSplitter:ConfigEntryServiceSplitter": "ConfigEntryServiceSplitter"
+  }
+ },
+ {
+  "pkg": "consul",
+  "mod": "index/configEntryV2ExportedServices",
+  "fqn": "pulumi_consul",
+  "classes": {
+   "consul:index/configEntryV2ExportedServices:ConfigEntryV2ExportedServices": "ConfigEntryV2ExportedServices"
   }
  },
  {

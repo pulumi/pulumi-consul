@@ -16,10 +16,6 @@ import (
 //
 // The `clusterPeeringToken` resource can be used to generate a peering token that can later be used to establish a peering connection.
 //
-// > **Cluster peering is currently in technical preview:** Functionality associated with cluster peering is subject to change. You should never use the technical preview release in secure environments or production scenarios. Features in technical preview may have performance issues, scaling issues, and limited support.
-//
-// The functionality described here is available only in Consul version 1.13.0 and later.
-//
 // ## Example Usage
 //
 // ```go
@@ -55,6 +51,8 @@ type PeeringToken struct {
 	PeerName pulumi.StringOutput `pulumi:"peerName"`
 	// The generated peering token
 	PeeringToken pulumi.StringOutput `pulumi:"peeringToken"`
+	// The addresses for the cluster that generates the peering token. Addresses take the form {host or IP}:port. You can specify one or more load balancers or external IPs that route external traffic to this cluster's Consul servers.
+	ServerExternalAddresses pulumi.StringArrayOutput `pulumi:"serverExternalAddresses"`
 }
 
 // NewPeeringToken registers a new resource with the given unique name, arguments, and options.
@@ -101,6 +99,8 @@ type peeringTokenState struct {
 	PeerName *string `pulumi:"peerName"`
 	// The generated peering token
 	PeeringToken *string `pulumi:"peeringToken"`
+	// The addresses for the cluster that generates the peering token. Addresses take the form {host or IP}:port. You can specify one or more load balancers or external IPs that route external traffic to this cluster's Consul servers.
+	ServerExternalAddresses []string `pulumi:"serverExternalAddresses"`
 }
 
 type PeeringTokenState struct {
@@ -111,6 +111,8 @@ type PeeringTokenState struct {
 	PeerName pulumi.StringPtrInput
 	// The generated peering token
 	PeeringToken pulumi.StringPtrInput
+	// The addresses for the cluster that generates the peering token. Addresses take the form {host or IP}:port. You can specify one or more load balancers or external IPs that route external traffic to this cluster's Consul servers.
+	ServerExternalAddresses pulumi.StringArrayInput
 }
 
 func (PeeringTokenState) ElementType() reflect.Type {
@@ -123,6 +125,8 @@ type peeringTokenArgs struct {
 	Partition *string           `pulumi:"partition"`
 	// The name assigned to the peer cluster. The `peerName` is used to reference the peer cluster in service discovery queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
 	PeerName string `pulumi:"peerName"`
+	// The addresses for the cluster that generates the peering token. Addresses take the form {host or IP}:port. You can specify one or more load balancers or external IPs that route external traffic to this cluster's Consul servers.
+	ServerExternalAddresses []string `pulumi:"serverExternalAddresses"`
 }
 
 // The set of arguments for constructing a PeeringToken resource.
@@ -132,6 +136,8 @@ type PeeringTokenArgs struct {
 	Partition pulumi.StringPtrInput
 	// The name assigned to the peer cluster. The `peerName` is used to reference the peer cluster in service discovery queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
 	PeerName pulumi.StringInput
+	// The addresses for the cluster that generates the peering token. Addresses take the form {host or IP}:port. You can specify one or more load balancers or external IPs that route external traffic to this cluster's Consul servers.
+	ServerExternalAddresses pulumi.StringArrayInput
 }
 
 func (PeeringTokenArgs) ElementType() reflect.Type {
@@ -238,6 +244,11 @@ func (o PeeringTokenOutput) PeerName() pulumi.StringOutput {
 // The generated peering token
 func (o PeeringTokenOutput) PeeringToken() pulumi.StringOutput {
 	return o.ApplyT(func(v *PeeringToken) pulumi.StringOutput { return v.PeeringToken }).(pulumi.StringOutput)
+}
+
+// The addresses for the cluster that generates the peering token. Addresses take the form {host or IP}:port. You can specify one or more load balancers or external IPs that route external traffic to this cluster's Consul servers.
+func (o PeeringTokenOutput) ServerExternalAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PeeringToken) pulumi.StringArrayOutput { return v.ServerExternalAddresses }).(pulumi.StringArrayOutput)
 }
 
 type PeeringTokenArrayOutput struct{ *pulumi.OutputState }

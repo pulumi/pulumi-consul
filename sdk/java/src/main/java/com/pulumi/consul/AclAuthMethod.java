@@ -309,11 +309,18 @@ public class AclAuthMethod extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public AclAuthMethod(String name, AclAuthMethodArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("consul:index/aclAuthMethod:AclAuthMethod", name, args == null ? AclAuthMethodArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("consul:index/aclAuthMethod:AclAuthMethod", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private AclAuthMethod(String name, Output<String> id, @Nullable AclAuthMethodState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("consul:index/aclAuthMethod:AclAuthMethod", name, state, makeResourceOptions(options, id));
+    }
+
+    private static AclAuthMethodArgs makeArgs(AclAuthMethodArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AclAuthMethodArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
