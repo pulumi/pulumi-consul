@@ -134,7 +134,7 @@ class AwaitableGetKeysResult(GetKeysResult):
 
 def get_keys(datacenter: Optional[str] = None,
              error_on_missing_keys: Optional[bool] = None,
-             keys: Optional[Sequence[pulumi.InputType['GetKeysKeyArgs']]] = None,
+             keys: Optional[Sequence[Union['GetKeysKeyArgs', 'GetKeysKeyArgsDict']]] = None,
              namespace: Optional[str] = None,
              partition: Optional[str] = None,
              token: Optional[str] = None,
@@ -150,11 +150,11 @@ def get_keys(datacenter: Optional[str] = None,
     import pulumi_consul as consul
 
     app = consul.get_keys(datacenter="nyc1",
-        keys=[consul.GetKeysKeyArgs(
-            name="ami",
-            path="service/app/launch_ami",
-            default="ami-1234",
-        )])
+        keys=[{
+            "name": "ami",
+            "path": "service/app/launch_ami",
+            "default": "ami-1234",
+        }])
     # Start our instance with the dynamic ami value
     app_instance = aws.index.Instance("app", ami=app.var.ami)
     ```
@@ -162,7 +162,7 @@ def get_keys(datacenter: Optional[str] = None,
 
     :param str datacenter: The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
     :param bool error_on_missing_keys: Whether to return an error when a key is absent from the KV store and no default is configured. This defaults to `false`.
-    :param Sequence[pulumi.InputType['GetKeysKeyArgs']] keys: Specifies a key in Consul to be read. Supported values documented below. Multiple blocks supported.
+    :param Sequence[Union['GetKeysKeyArgs', 'GetKeysKeyArgsDict']] keys: Specifies a key in Consul to be read. Supported values documented below. Multiple blocks supported.
     :param str namespace: The namespace to lookup the keys.
     :param str partition: The partition to lookup the keys.
     :param str token: The ACL token to use. This overrides the token that the agent provides by default.
@@ -191,7 +191,7 @@ def get_keys(datacenter: Optional[str] = None,
 @_utilities.lift_output_func(get_keys)
 def get_keys_output(datacenter: Optional[pulumi.Input[Optional[str]]] = None,
                     error_on_missing_keys: Optional[pulumi.Input[Optional[bool]]] = None,
-                    keys: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetKeysKeyArgs']]]]] = None,
+                    keys: Optional[pulumi.Input[Optional[Sequence[Union['GetKeysKeyArgs', 'GetKeysKeyArgsDict']]]]] = None,
                     namespace: Optional[pulumi.Input[Optional[str]]] = None,
                     partition: Optional[pulumi.Input[Optional[str]]] = None,
                     token: Optional[pulumi.Input[Optional[str]]] = None,
@@ -207,11 +207,11 @@ def get_keys_output(datacenter: Optional[pulumi.Input[Optional[str]]] = None,
     import pulumi_consul as consul
 
     app = consul.get_keys(datacenter="nyc1",
-        keys=[consul.GetKeysKeyArgs(
-            name="ami",
-            path="service/app/launch_ami",
-            default="ami-1234",
-        )])
+        keys=[{
+            "name": "ami",
+            "path": "service/app/launch_ami",
+            "default": "ami-1234",
+        }])
     # Start our instance with the dynamic ami value
     app_instance = aws.index.Instance("app", ami=app.var.ami)
     ```
@@ -219,7 +219,7 @@ def get_keys_output(datacenter: Optional[pulumi.Input[Optional[str]]] = None,
 
     :param str datacenter: The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
     :param bool error_on_missing_keys: Whether to return an error when a key is absent from the KV store and no default is configured. This defaults to `false`.
-    :param Sequence[pulumi.InputType['GetKeysKeyArgs']] keys: Specifies a key in Consul to be read. Supported values documented below. Multiple blocks supported.
+    :param Sequence[Union['GetKeysKeyArgs', 'GetKeysKeyArgsDict']] keys: Specifies a key in Consul to be read. Supported values documented below. Multiple blocks supported.
     :param str namespace: The namespace to lookup the keys.
     :param str partition: The partition to lookup the keys.
     :param str token: The ACL token to use. This overrides the token that the agent provides by default.

@@ -136,7 +136,7 @@ def get_key_prefix(datacenter: Optional[str] = None,
                    namespace: Optional[str] = None,
                    partition: Optional[str] = None,
                    path_prefix: Optional[str] = None,
-                   subkey_collection: Optional[Sequence[pulumi.InputType['GetKeyPrefixSubkeyCollectionArgs']]] = None,
+                   subkey_collection: Optional[Sequence[Union['GetKeyPrefixSubkeyCollectionArgs', 'GetKeyPrefixSubkeyCollectionArgsDict']]] = None,
                    token: Optional[str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKeyPrefixResult:
     """
@@ -150,11 +150,11 @@ def get_key_prefix(datacenter: Optional[str] = None,
     app = consul.get_key_prefix(datacenter="nyc1",
         token="abcd",
         path_prefix="myapp/config/",
-        subkey_collection=[consul.GetKeyPrefixSubkeyCollectionArgs(
-            name="ami",
-            path="app/launch_ami",
-            default="ami-1234",
-        )])
+        subkey_collection=[{
+            "name": "ami",
+            "path": "app/launch_ami",
+            "default": "ami-1234",
+        }])
     # Start our instance with the dynamic ami value
     app_instance = aws.index.Instance("app", ami=app.var.ami)
     ```
@@ -179,7 +179,7 @@ def get_key_prefix(datacenter: Optional[str] = None,
     :param str path_prefix: Specifies the common prefix shared by all keys
            that will be read by this data source instance. In most cases, this will
            end with a slash to read a "folder" of subkeys.
-    :param Sequence[pulumi.InputType['GetKeyPrefixSubkeyCollectionArgs']] subkey_collection: Specifies a subkey in Consul to be read. Supported
+    :param Sequence[Union['GetKeyPrefixSubkeyCollectionArgs', 'GetKeyPrefixSubkeyCollectionArgsDict']] subkey_collection: Specifies a subkey in Consul to be read. Supported
            values documented below. Multiple blocks supported.
     :param str token: The ACL token to use. This overrides the
            token that the agent provides by default.
@@ -211,7 +211,7 @@ def get_key_prefix_output(datacenter: Optional[pulumi.Input[Optional[str]]] = No
                           namespace: Optional[pulumi.Input[Optional[str]]] = None,
                           partition: Optional[pulumi.Input[Optional[str]]] = None,
                           path_prefix: Optional[pulumi.Input[str]] = None,
-                          subkey_collection: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetKeyPrefixSubkeyCollectionArgs']]]]] = None,
+                          subkey_collection: Optional[pulumi.Input[Optional[Sequence[Union['GetKeyPrefixSubkeyCollectionArgs', 'GetKeyPrefixSubkeyCollectionArgsDict']]]]] = None,
                           token: Optional[pulumi.Input[Optional[str]]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKeyPrefixResult]:
     """
@@ -225,11 +225,11 @@ def get_key_prefix_output(datacenter: Optional[pulumi.Input[Optional[str]]] = No
     app = consul.get_key_prefix(datacenter="nyc1",
         token="abcd",
         path_prefix="myapp/config/",
-        subkey_collection=[consul.GetKeyPrefixSubkeyCollectionArgs(
-            name="ami",
-            path="app/launch_ami",
-            default="ami-1234",
-        )])
+        subkey_collection=[{
+            "name": "ami",
+            "path": "app/launch_ami",
+            "default": "ami-1234",
+        }])
     # Start our instance with the dynamic ami value
     app_instance = aws.index.Instance("app", ami=app.var.ami)
     ```
@@ -254,7 +254,7 @@ def get_key_prefix_output(datacenter: Optional[pulumi.Input[Optional[str]]] = No
     :param str path_prefix: Specifies the common prefix shared by all keys
            that will be read by this data source instance. In most cases, this will
            end with a slash to read a "folder" of subkeys.
-    :param Sequence[pulumi.InputType['GetKeyPrefixSubkeyCollectionArgs']] subkey_collection: Specifies a subkey in Consul to be read. Supported
+    :param Sequence[Union['GetKeyPrefixSubkeyCollectionArgs', 'GetKeyPrefixSubkeyCollectionArgsDict']] subkey_collection: Specifies a subkey in Consul to be read. Supported
            values documented below. Multiple blocks supported.
     :param str token: The ACL token to use. This overrides the
            token that the agent provides by default.

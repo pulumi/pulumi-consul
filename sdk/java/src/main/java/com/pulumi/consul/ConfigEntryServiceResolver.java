@@ -247,7 +247,7 @@ public class ConfigEntryServiceResolver extends com.pulumi.resources.CustomResou
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ConfigEntryServiceResolver(String name) {
+    public ConfigEntryServiceResolver(java.lang.String name) {
         this(name, ConfigEntryServiceResolverArgs.Empty);
     }
     /**
@@ -255,7 +255,7 @@ public class ConfigEntryServiceResolver extends com.pulumi.resources.CustomResou
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ConfigEntryServiceResolver(String name, @Nullable ConfigEntryServiceResolverArgs args) {
+    public ConfigEntryServiceResolver(java.lang.String name, @Nullable ConfigEntryServiceResolverArgs args) {
         this(name, args, null);
     }
     /**
@@ -264,12 +264,12 @@ public class ConfigEntryServiceResolver extends com.pulumi.resources.CustomResou
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ConfigEntryServiceResolver(String name, @Nullable ConfigEntryServiceResolverArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("consul:index/configEntryServiceResolver:ConfigEntryServiceResolver", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public ConfigEntryServiceResolver(java.lang.String name, @Nullable ConfigEntryServiceResolverArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("consul:index/configEntryServiceResolver:ConfigEntryServiceResolver", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ConfigEntryServiceResolver(String name, Output<String> id, @Nullable ConfigEntryServiceResolverState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("consul:index/configEntryServiceResolver:ConfigEntryServiceResolver", name, state, makeResourceOptions(options, id));
+    private ConfigEntryServiceResolver(java.lang.String name, Output<java.lang.String> id, @Nullable ConfigEntryServiceResolverState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("consul:index/configEntryServiceResolver:ConfigEntryServiceResolver", name, state, makeResourceOptions(options, id), false);
     }
 
     private static ConfigEntryServiceResolverArgs makeArgs(@Nullable ConfigEntryServiceResolverArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -279,7 +279,7 @@ public class ConfigEntryServiceResolver extends com.pulumi.resources.CustomResou
         return args == null ? ConfigEntryServiceResolverArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -295,7 +295,7 @@ public class ConfigEntryServiceResolver extends com.pulumi.resources.CustomResou
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ConfigEntryServiceResolver get(String name, Output<String> id, @Nullable ConfigEntryServiceResolverState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ConfigEntryServiceResolver get(java.lang.String name, Output<java.lang.String> id, @Nullable ConfigEntryServiceResolverState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ConfigEntryServiceResolver(name, id, state, options);
     }
 }

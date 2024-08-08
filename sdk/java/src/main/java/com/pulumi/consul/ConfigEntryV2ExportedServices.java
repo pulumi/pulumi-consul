@@ -134,7 +134,7 @@ public class ConfigEntryV2ExportedServices extends com.pulumi.resources.CustomRe
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ConfigEntryV2ExportedServices(String name) {
+    public ConfigEntryV2ExportedServices(java.lang.String name) {
         this(name, ConfigEntryV2ExportedServicesArgs.Empty);
     }
     /**
@@ -142,7 +142,7 @@ public class ConfigEntryV2ExportedServices extends com.pulumi.resources.CustomRe
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ConfigEntryV2ExportedServices(String name, ConfigEntryV2ExportedServicesArgs args) {
+    public ConfigEntryV2ExportedServices(java.lang.String name, ConfigEntryV2ExportedServicesArgs args) {
         this(name, args, null);
     }
     /**
@@ -151,12 +151,12 @@ public class ConfigEntryV2ExportedServices extends com.pulumi.resources.CustomRe
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ConfigEntryV2ExportedServices(String name, ConfigEntryV2ExportedServicesArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("consul:index/configEntryV2ExportedServices:ConfigEntryV2ExportedServices", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public ConfigEntryV2ExportedServices(java.lang.String name, ConfigEntryV2ExportedServicesArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("consul:index/configEntryV2ExportedServices:ConfigEntryV2ExportedServices", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ConfigEntryV2ExportedServices(String name, Output<String> id, @Nullable ConfigEntryV2ExportedServicesState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("consul:index/configEntryV2ExportedServices:ConfigEntryV2ExportedServices", name, state, makeResourceOptions(options, id));
+    private ConfigEntryV2ExportedServices(java.lang.String name, Output<java.lang.String> id, @Nullable ConfigEntryV2ExportedServicesState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("consul:index/configEntryV2ExportedServices:ConfigEntryV2ExportedServices", name, state, makeResourceOptions(options, id), false);
     }
 
     private static ConfigEntryV2ExportedServicesArgs makeArgs(ConfigEntryV2ExportedServicesArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -166,7 +166,7 @@ public class ConfigEntryV2ExportedServices extends com.pulumi.resources.CustomRe
         return args == null ? ConfigEntryV2ExportedServicesArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -182,7 +182,7 @@ public class ConfigEntryV2ExportedServices extends com.pulumi.resources.CustomRe
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ConfigEntryV2ExportedServices get(String name, Output<String> id, @Nullable ConfigEntryV2ExportedServicesState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ConfigEntryV2ExportedServices get(java.lang.String name, Output<java.lang.String> id, @Nullable ConfigEntryV2ExportedServicesState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ConfigEntryV2ExportedServices(name, id, state, options);
     }
 }

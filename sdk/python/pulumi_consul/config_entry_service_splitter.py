@@ -197,7 +197,7 @@ class ConfigEntryServiceSplitter(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  namespace: Optional[pulumi.Input[str]] = None,
                  partition: Optional[pulumi.Input[str]] = None,
-                 splits: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceSplitterSplitArgs']]]]] = None,
+                 splits: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceSplitterSplitArgs', 'ConfigEntryServiceSplitterSplitArgsDict']]]]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -220,14 +220,14 @@ class ConfigEntryServiceSplitter(pulumi.CustomResource):
             name="service-resolver",
             default_subset="v1",
             subsets=[
-                consul.ConfigEntryServiceResolverSubsetArgs(
-                    name="v1",
-                    filter="Service.Meta.version == v1",
-                ),
-                consul.ConfigEntryServiceResolverSubsetArgs(
-                    name="v2",
-                    filter="Service.Meta.version == v2",
-                ),
+                {
+                    "name": "v1",
+                    "filter": "Service.Meta.version == v1",
+                },
+                {
+                    "name": "v2",
+                    "filter": "Service.Meta.version == v2",
+                },
             ])
         foo = consul.ConfigEntryServiceSplitter("foo",
             name=service_resolver.name,
@@ -235,41 +235,41 @@ class ConfigEntryServiceSplitter(pulumi.CustomResource):
                 "key": "value",
             },
             splits=[
-                consul.ConfigEntryServiceSplitterSplitArgs(
-                    weight=80,
-                    service="web",
-                    service_subset="v1",
-                    request_headers=consul.ConfigEntryServiceSplitterSplitRequestHeadersArgs(
-                        set={
-                            "x-web-version": "from-v1",
+                {
+                    "weight": 80,
+                    "service": "web",
+                    "service_subset": "v1",
+                    "request_headers": {
+                        "set": {
+                            "x_web_version": "from-v1",
                         },
-                    ),
-                    response_headers=consul.ConfigEntryServiceSplitterSplitResponseHeadersArgs(
-                        set={
-                            "x-web-version": "to-v1",
+                    },
+                    "response_headers": {
+                        "set": {
+                            "x_web_version": "to-v1",
                         },
-                    ),
-                ),
-                consul.ConfigEntryServiceSplitterSplitArgs(
-                    weight=10,
-                    service="web",
-                    service_subset="v2",
-                    request_headers=consul.ConfigEntryServiceSplitterSplitRequestHeadersArgs(
-                        set={
-                            "x-web-version": "from-v2",
+                    },
+                },
+                {
+                    "weight": 10,
+                    "service": "web",
+                    "service_subset": "v2",
+                    "request_headers": {
+                        "set": {
+                            "x_web_version": "from-v2",
                         },
-                    ),
-                    response_headers=consul.ConfigEntryServiceSplitterSplitResponseHeadersArgs(
-                        set={
-                            "x-web-version": "to-v2",
+                    },
+                    "response_headers": {
+                        "set": {
+                            "x_web_version": "to-v2",
                         },
-                    ),
-                ),
-                consul.ConfigEntryServiceSplitterSplitArgs(
-                    weight=10,
-                    service="web",
-                    service_subset="v2",
-                ),
+                    },
+                },
+                {
+                    "weight": 10,
+                    "service": "web",
+                    "service_subset": "v2",
+                },
             ])
         ```
 
@@ -285,7 +285,7 @@ class ConfigEntryServiceSplitter(pulumi.CustomResource):
         :param pulumi.Input[str] name: Specifies a name for the configuration entry.
         :param pulumi.Input[str] namespace: Specifies the namespace to apply the configuration entry.
         :param pulumi.Input[str] partition: Specifies the admin partition to apply the configuration entry.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceSplitterSplitArgs']]]] splits: Defines how much traffic to send to sets of service instances during a traffic split.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceSplitterSplitArgs', 'ConfigEntryServiceSplitterSplitArgsDict']]]] splits: Defines how much traffic to send to sets of service instances during a traffic split.
         """
         ...
     @overload
@@ -314,14 +314,14 @@ class ConfigEntryServiceSplitter(pulumi.CustomResource):
             name="service-resolver",
             default_subset="v1",
             subsets=[
-                consul.ConfigEntryServiceResolverSubsetArgs(
-                    name="v1",
-                    filter="Service.Meta.version == v1",
-                ),
-                consul.ConfigEntryServiceResolverSubsetArgs(
-                    name="v2",
-                    filter="Service.Meta.version == v2",
-                ),
+                {
+                    "name": "v1",
+                    "filter": "Service.Meta.version == v1",
+                },
+                {
+                    "name": "v2",
+                    "filter": "Service.Meta.version == v2",
+                },
             ])
         foo = consul.ConfigEntryServiceSplitter("foo",
             name=service_resolver.name,
@@ -329,41 +329,41 @@ class ConfigEntryServiceSplitter(pulumi.CustomResource):
                 "key": "value",
             },
             splits=[
-                consul.ConfigEntryServiceSplitterSplitArgs(
-                    weight=80,
-                    service="web",
-                    service_subset="v1",
-                    request_headers=consul.ConfigEntryServiceSplitterSplitRequestHeadersArgs(
-                        set={
-                            "x-web-version": "from-v1",
+                {
+                    "weight": 80,
+                    "service": "web",
+                    "service_subset": "v1",
+                    "request_headers": {
+                        "set": {
+                            "x_web_version": "from-v1",
                         },
-                    ),
-                    response_headers=consul.ConfigEntryServiceSplitterSplitResponseHeadersArgs(
-                        set={
-                            "x-web-version": "to-v1",
+                    },
+                    "response_headers": {
+                        "set": {
+                            "x_web_version": "to-v1",
                         },
-                    ),
-                ),
-                consul.ConfigEntryServiceSplitterSplitArgs(
-                    weight=10,
-                    service="web",
-                    service_subset="v2",
-                    request_headers=consul.ConfigEntryServiceSplitterSplitRequestHeadersArgs(
-                        set={
-                            "x-web-version": "from-v2",
+                    },
+                },
+                {
+                    "weight": 10,
+                    "service": "web",
+                    "service_subset": "v2",
+                    "request_headers": {
+                        "set": {
+                            "x_web_version": "from-v2",
                         },
-                    ),
-                    response_headers=consul.ConfigEntryServiceSplitterSplitResponseHeadersArgs(
-                        set={
-                            "x-web-version": "to-v2",
+                    },
+                    "response_headers": {
+                        "set": {
+                            "x_web_version": "to-v2",
                         },
-                    ),
-                ),
-                consul.ConfigEntryServiceSplitterSplitArgs(
-                    weight=10,
-                    service="web",
-                    service_subset="v2",
-                ),
+                    },
+                },
+                {
+                    "weight": 10,
+                    "service": "web",
+                    "service_subset": "v2",
+                },
             ])
         ```
 
@@ -392,7 +392,7 @@ class ConfigEntryServiceSplitter(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  namespace: Optional[pulumi.Input[str]] = None,
                  partition: Optional[pulumi.Input[str]] = None,
-                 splits: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceSplitterSplitArgs']]]]] = None,
+                 splits: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceSplitterSplitArgs', 'ConfigEntryServiceSplitterSplitArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -423,7 +423,7 @@ class ConfigEntryServiceSplitter(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             namespace: Optional[pulumi.Input[str]] = None,
             partition: Optional[pulumi.Input[str]] = None,
-            splits: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceSplitterSplitArgs']]]]] = None) -> 'ConfigEntryServiceSplitter':
+            splits: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceSplitterSplitArgs', 'ConfigEntryServiceSplitterSplitArgsDict']]]]] = None) -> 'ConfigEntryServiceSplitter':
         """
         Get an existing ConfigEntryServiceSplitter resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -435,7 +435,7 @@ class ConfigEntryServiceSplitter(pulumi.CustomResource):
         :param pulumi.Input[str] name: Specifies a name for the configuration entry.
         :param pulumi.Input[str] namespace: Specifies the namespace to apply the configuration entry.
         :param pulumi.Input[str] partition: Specifies the admin partition to apply the configuration entry.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceSplitterSplitArgs']]]] splits: Defines how much traffic to send to sets of service instances during a traffic split.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceSplitterSplitArgs', 'ConfigEntryServiceSplitterSplitArgsDict']]]] splits: Defines how much traffic to send to sets of service instances during a traffic split.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
