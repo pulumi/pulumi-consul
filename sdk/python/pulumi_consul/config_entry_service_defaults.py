@@ -609,14 +609,14 @@ class ConfigEntryServiceDefaults(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  balance_inbound_connections: Optional[pulumi.Input[str]] = None,
-                 destinations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceDefaultsDestinationArgs']]]]] = None,
-                 envoy_extensions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceDefaultsEnvoyExtensionArgs']]]]] = None,
-                 exposes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceDefaultsExposeArgs']]]]] = None,
+                 destinations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceDefaultsDestinationArgs', 'ConfigEntryServiceDefaultsDestinationArgsDict']]]]] = None,
+                 envoy_extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceDefaultsEnvoyExtensionArgs', 'ConfigEntryServiceDefaultsEnvoyExtensionArgsDict']]]]] = None,
+                 exposes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceDefaultsExposeArgs', 'ConfigEntryServiceDefaultsExposeArgsDict']]]]] = None,
                  external_sni: Optional[pulumi.Input[str]] = None,
                  local_connect_timeout_ms: Optional[pulumi.Input[int]] = None,
                  local_request_timeout_ms: Optional[pulumi.Input[int]] = None,
                  max_inbound_connections: Optional[pulumi.Input[int]] = None,
-                 mesh_gateways: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceDefaultsMeshGatewayArgs']]]]] = None,
+                 mesh_gateways: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceDefaultsMeshGatewayArgs', 'ConfigEntryServiceDefaultsMeshGatewayArgsDict']]]]] = None,
                  meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
                  mutual_tls_mode: Optional[pulumi.Input[str]] = None,
@@ -624,8 +624,8 @@ class ConfigEntryServiceDefaults(pulumi.CustomResource):
                  namespace: Optional[pulumi.Input[str]] = None,
                  partition: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
-                 transparent_proxies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceDefaultsTransparentProxyArgs']]]]] = None,
-                 upstream_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceDefaultsUpstreamConfigArgs']]]]] = None,
+                 transparent_proxies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceDefaultsTransparentProxyArgs', 'ConfigEntryServiceDefaultsTransparentProxyArgsDict']]]]] = None,
+                 upstream_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceDefaultsUpstreamConfigArgs', 'ConfigEntryServiceDefaultsUpstreamConfigArgsDict']]]]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -633,14 +633,14 @@ class ConfigEntryServiceDefaults(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] balance_inbound_connections: Specifies the strategy for allocating inbound connections to the service across Envoy proxy threads.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceDefaultsDestinationArgs']]]] destinations: Configures the destination for service traffic through terminating gateways.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceDefaultsEnvoyExtensionArgs']]]] envoy_extensions: List of extensions to modify Envoy proxy configuration.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceDefaultsExposeArgs']]]] exposes: Specifies default configurations for exposing HTTP paths through Envoy.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceDefaultsDestinationArgs', 'ConfigEntryServiceDefaultsDestinationArgsDict']]]] destinations: Configures the destination for service traffic through terminating gateways.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceDefaultsEnvoyExtensionArgs', 'ConfigEntryServiceDefaultsEnvoyExtensionArgsDict']]]] envoy_extensions: List of extensions to modify Envoy proxy configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceDefaultsExposeArgs', 'ConfigEntryServiceDefaultsExposeArgsDict']]]] exposes: Specifies default configurations for exposing HTTP paths through Envoy.
         :param pulumi.Input[str] external_sni: Specifies the TLS server name indication (SNI) when federating with an external system.
         :param pulumi.Input[int] local_connect_timeout_ms: Specifies the number of milliseconds allowed for establishing connections to the local application instance before timing out.
         :param pulumi.Input[int] local_request_timeout_ms: Specifies the timeout for HTTP requests to the local application instance.
         :param pulumi.Input[int] max_inbound_connections: Specifies the maximum number of concurrent inbound connections to each service instance.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceDefaultsMeshGatewayArgs']]]] mesh_gateways: Specifies the default mesh gateway mode field for the service.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceDefaultsMeshGatewayArgs', 'ConfigEntryServiceDefaultsMeshGatewayArgsDict']]]] mesh_gateways: Specifies the default mesh gateway mode field for the service.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: Specifies a set of custom key-value pairs to add to the Consul KV store.
         :param pulumi.Input[str] mode: Specifies a mode for how the service directs inbound and outbound traffic.
         :param pulumi.Input[str] mutual_tls_mode: Controls whether mutual TLS is required for incoming connections to this service. This setting is only supported for services with transparent proxy enabled.
@@ -648,8 +648,8 @@ class ConfigEntryServiceDefaults(pulumi.CustomResource):
         :param pulumi.Input[str] namespace: Specifies the Consul namespace that the configuration entry applies to.
         :param pulumi.Input[str] partition: Specifies the name of the name of the Consul admin partition that the configuration entry applies to. Refer to Admin Partitions for additional information.
         :param pulumi.Input[str] protocol: Specifies the default protocol for the service.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceDefaultsTransparentProxyArgs']]]] transparent_proxies: Controls configurations specific to proxies in transparent mode. Refer to Transparent Proxy Mode for additional information.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceDefaultsUpstreamConfigArgs']]]] upstream_configs: Controls default upstream connection settings and custom overrides for individual upstream services.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceDefaultsTransparentProxyArgs', 'ConfigEntryServiceDefaultsTransparentProxyArgsDict']]]] transparent_proxies: Controls configurations specific to proxies in transparent mode. Refer to Transparent Proxy Mode for additional information.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceDefaultsUpstreamConfigArgs', 'ConfigEntryServiceDefaultsUpstreamConfigArgsDict']]]] upstream_configs: Controls default upstream connection settings and custom overrides for individual upstream services.
         """
         ...
     @overload
@@ -676,14 +676,14 @@ class ConfigEntryServiceDefaults(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  balance_inbound_connections: Optional[pulumi.Input[str]] = None,
-                 destinations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceDefaultsDestinationArgs']]]]] = None,
-                 envoy_extensions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceDefaultsEnvoyExtensionArgs']]]]] = None,
-                 exposes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceDefaultsExposeArgs']]]]] = None,
+                 destinations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceDefaultsDestinationArgs', 'ConfigEntryServiceDefaultsDestinationArgsDict']]]]] = None,
+                 envoy_extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceDefaultsEnvoyExtensionArgs', 'ConfigEntryServiceDefaultsEnvoyExtensionArgsDict']]]]] = None,
+                 exposes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceDefaultsExposeArgs', 'ConfigEntryServiceDefaultsExposeArgsDict']]]]] = None,
                  external_sni: Optional[pulumi.Input[str]] = None,
                  local_connect_timeout_ms: Optional[pulumi.Input[int]] = None,
                  local_request_timeout_ms: Optional[pulumi.Input[int]] = None,
                  max_inbound_connections: Optional[pulumi.Input[int]] = None,
-                 mesh_gateways: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceDefaultsMeshGatewayArgs']]]]] = None,
+                 mesh_gateways: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceDefaultsMeshGatewayArgs', 'ConfigEntryServiceDefaultsMeshGatewayArgsDict']]]]] = None,
                  meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
                  mutual_tls_mode: Optional[pulumi.Input[str]] = None,
@@ -691,8 +691,8 @@ class ConfigEntryServiceDefaults(pulumi.CustomResource):
                  namespace: Optional[pulumi.Input[str]] = None,
                  partition: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
-                 transparent_proxies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceDefaultsTransparentProxyArgs']]]]] = None,
-                 upstream_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceDefaultsUpstreamConfigArgs']]]]] = None,
+                 transparent_proxies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceDefaultsTransparentProxyArgs', 'ConfigEntryServiceDefaultsTransparentProxyArgsDict']]]]] = None,
+                 upstream_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceDefaultsUpstreamConfigArgs', 'ConfigEntryServiceDefaultsUpstreamConfigArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -735,14 +735,14 @@ class ConfigEntryServiceDefaults(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             balance_inbound_connections: Optional[pulumi.Input[str]] = None,
-            destinations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceDefaultsDestinationArgs']]]]] = None,
-            envoy_extensions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceDefaultsEnvoyExtensionArgs']]]]] = None,
-            exposes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceDefaultsExposeArgs']]]]] = None,
+            destinations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceDefaultsDestinationArgs', 'ConfigEntryServiceDefaultsDestinationArgsDict']]]]] = None,
+            envoy_extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceDefaultsEnvoyExtensionArgs', 'ConfigEntryServiceDefaultsEnvoyExtensionArgsDict']]]]] = None,
+            exposes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceDefaultsExposeArgs', 'ConfigEntryServiceDefaultsExposeArgsDict']]]]] = None,
             external_sni: Optional[pulumi.Input[str]] = None,
             local_connect_timeout_ms: Optional[pulumi.Input[int]] = None,
             local_request_timeout_ms: Optional[pulumi.Input[int]] = None,
             max_inbound_connections: Optional[pulumi.Input[int]] = None,
-            mesh_gateways: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceDefaultsMeshGatewayArgs']]]]] = None,
+            mesh_gateways: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceDefaultsMeshGatewayArgs', 'ConfigEntryServiceDefaultsMeshGatewayArgsDict']]]]] = None,
             meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             mode: Optional[pulumi.Input[str]] = None,
             mutual_tls_mode: Optional[pulumi.Input[str]] = None,
@@ -750,8 +750,8 @@ class ConfigEntryServiceDefaults(pulumi.CustomResource):
             namespace: Optional[pulumi.Input[str]] = None,
             partition: Optional[pulumi.Input[str]] = None,
             protocol: Optional[pulumi.Input[str]] = None,
-            transparent_proxies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceDefaultsTransparentProxyArgs']]]]] = None,
-            upstream_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceDefaultsUpstreamConfigArgs']]]]] = None) -> 'ConfigEntryServiceDefaults':
+            transparent_proxies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceDefaultsTransparentProxyArgs', 'ConfigEntryServiceDefaultsTransparentProxyArgsDict']]]]] = None,
+            upstream_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceDefaultsUpstreamConfigArgs', 'ConfigEntryServiceDefaultsUpstreamConfigArgsDict']]]]] = None) -> 'ConfigEntryServiceDefaults':
         """
         Get an existing ConfigEntryServiceDefaults resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -760,14 +760,14 @@ class ConfigEntryServiceDefaults(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] balance_inbound_connections: Specifies the strategy for allocating inbound connections to the service across Envoy proxy threads.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceDefaultsDestinationArgs']]]] destinations: Configures the destination for service traffic through terminating gateways.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceDefaultsEnvoyExtensionArgs']]]] envoy_extensions: List of extensions to modify Envoy proxy configuration.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceDefaultsExposeArgs']]]] exposes: Specifies default configurations for exposing HTTP paths through Envoy.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceDefaultsDestinationArgs', 'ConfigEntryServiceDefaultsDestinationArgsDict']]]] destinations: Configures the destination for service traffic through terminating gateways.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceDefaultsEnvoyExtensionArgs', 'ConfigEntryServiceDefaultsEnvoyExtensionArgsDict']]]] envoy_extensions: List of extensions to modify Envoy proxy configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceDefaultsExposeArgs', 'ConfigEntryServiceDefaultsExposeArgsDict']]]] exposes: Specifies default configurations for exposing HTTP paths through Envoy.
         :param pulumi.Input[str] external_sni: Specifies the TLS server name indication (SNI) when federating with an external system.
         :param pulumi.Input[int] local_connect_timeout_ms: Specifies the number of milliseconds allowed for establishing connections to the local application instance before timing out.
         :param pulumi.Input[int] local_request_timeout_ms: Specifies the timeout for HTTP requests to the local application instance.
         :param pulumi.Input[int] max_inbound_connections: Specifies the maximum number of concurrent inbound connections to each service instance.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceDefaultsMeshGatewayArgs']]]] mesh_gateways: Specifies the default mesh gateway mode field for the service.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceDefaultsMeshGatewayArgs', 'ConfigEntryServiceDefaultsMeshGatewayArgsDict']]]] mesh_gateways: Specifies the default mesh gateway mode field for the service.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: Specifies a set of custom key-value pairs to add to the Consul KV store.
         :param pulumi.Input[str] mode: Specifies a mode for how the service directs inbound and outbound traffic.
         :param pulumi.Input[str] mutual_tls_mode: Controls whether mutual TLS is required for incoming connections to this service. This setting is only supported for services with transparent proxy enabled.
@@ -775,8 +775,8 @@ class ConfigEntryServiceDefaults(pulumi.CustomResource):
         :param pulumi.Input[str] namespace: Specifies the Consul namespace that the configuration entry applies to.
         :param pulumi.Input[str] partition: Specifies the name of the name of the Consul admin partition that the configuration entry applies to. Refer to Admin Partitions for additional information.
         :param pulumi.Input[str] protocol: Specifies the default protocol for the service.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceDefaultsTransparentProxyArgs']]]] transparent_proxies: Controls configurations specific to proxies in transparent mode. Refer to Transparent Proxy Mode for additional information.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceDefaultsUpstreamConfigArgs']]]] upstream_configs: Controls default upstream connection settings and custom overrides for individual upstream services.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceDefaultsTransparentProxyArgs', 'ConfigEntryServiceDefaultsTransparentProxyArgsDict']]]] transparent_proxies: Controls configurations specific to proxies in transparent mode. Refer to Transparent Proxy Mode for additional information.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceDefaultsUpstreamConfigArgs', 'ConfigEntryServiceDefaultsUpstreamConfigArgsDict']]]] upstream_configs: Controls default upstream connection settings and custom overrides for individual upstream services.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

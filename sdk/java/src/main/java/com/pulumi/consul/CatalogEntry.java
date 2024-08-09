@@ -161,7 +161,7 @@ Please use the token argument in the provider configuration */
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public CatalogEntry(String name) {
+    public CatalogEntry(java.lang.String name) {
         this(name, CatalogEntryArgs.Empty);
     }
     /**
@@ -169,7 +169,7 @@ Please use the token argument in the provider configuration */
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public CatalogEntry(String name, CatalogEntryArgs args) {
+    public CatalogEntry(java.lang.String name, CatalogEntryArgs args) {
         this(name, args, null);
     }
     /**
@@ -178,12 +178,12 @@ Please use the token argument in the provider configuration */
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public CatalogEntry(String name, CatalogEntryArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("consul:index/catalogEntry:CatalogEntry", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public CatalogEntry(java.lang.String name, CatalogEntryArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("consul:index/catalogEntry:CatalogEntry", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private CatalogEntry(String name, Output<String> id, @Nullable CatalogEntryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("consul:index/catalogEntry:CatalogEntry", name, state, makeResourceOptions(options, id));
+    private CatalogEntry(java.lang.String name, Output<java.lang.String> id, @Nullable CatalogEntryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("consul:index/catalogEntry:CatalogEntry", name, state, makeResourceOptions(options, id), false);
     }
 
     private static CatalogEntryArgs makeArgs(CatalogEntryArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -193,7 +193,7 @@ Please use the token argument in the provider configuration */
         return args == null ? CatalogEntryArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -212,7 +212,7 @@ Please use the token argument in the provider configuration */
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static CatalogEntry get(String name, Output<String> id, @Nullable CatalogEntryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static CatalogEntry get(java.lang.String name, Output<java.lang.String> id, @Nullable CatalogEntryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new CatalogEntry(name, id, state, options);
     }
 }

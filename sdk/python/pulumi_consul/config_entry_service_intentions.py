@@ -226,12 +226,12 @@ class ConfigEntryServiceIntentions(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 jwts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceIntentionsJwtArgs']]]]] = None,
+                 jwts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceIntentionsJwtArgs', 'ConfigEntryServiceIntentionsJwtArgsDict']]]]] = None,
                  meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  namespace: Optional[pulumi.Input[str]] = None,
                  partition: Optional[pulumi.Input[str]] = None,
-                 sources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceIntentionsSourceArgs']]]]] = None,
+                 sources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceIntentionsSourceArgs', 'ConfigEntryServiceIntentionsSourceArgsDict']]]]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -256,40 +256,40 @@ class ConfigEntryServiceIntentions(pulumi.CustomResource):
             }))
         web = consul.ConfigEntryServiceIntentions("web",
             name="web",
-            jwts=[consul.ConfigEntryServiceIntentionsJwtArgs(
-                providers=[consul.ConfigEntryServiceIntentionsJwtProviderArgs(
-                    name=jwt_provider.name,
-                    verify_claims=[consul.ConfigEntryServiceIntentionsJwtProviderVerifyClaimArgs(
-                        paths=[
+            jwts=[{
+                "providers": [{
+                    "name": jwt_provider.name,
+                    "verify_claims": [{
+                        "paths": [
                             "perms",
                             "role",
                         ],
-                        value="admin",
-                    )],
-                )],
-            )],
+                        "value": "admin",
+                    }],
+                }],
+            }],
             sources=[
-                consul.ConfigEntryServiceIntentionsSourceArgs(
-                    name="frontend-webapp",
-                    type="consul",
-                    action="allow",
-                ),
-                consul.ConfigEntryServiceIntentionsSourceArgs(
-                    name="nightly-cronjob",
-                    type="consul",
-                    action="deny",
-                ),
+                {
+                    "name": "frontend-webapp",
+                    "type": "consul",
+                    "action": "allow",
+                },
+                {
+                    "name": "nightly-cronjob",
+                    "type": "consul",
+                    "action": "deny",
+                },
             ])
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceIntentionsJwtArgs']]]] jwts: Specifies a JSON Web Token provider configured in a JWT provider configuration entry, as well as additional configurations for verifying a service's JWT before authorizing communication between services
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceIntentionsJwtArgs', 'ConfigEntryServiceIntentionsJwtArgsDict']]]] jwts: Specifies a JSON Web Token provider configured in a JWT provider configuration entry, as well as additional configurations for verifying a service's JWT before authorizing communication between services
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: Specifies key-value pairs to add to the KV store.
         :param pulumi.Input[str] name: Specifies a name of the destination service for all intentions defined in the configuration entry.
         :param pulumi.Input[str] namespace: Specifies the namespace to apply the configuration entry.
         :param pulumi.Input[str] partition: Specifies the admin partition to apply the configuration entry.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceIntentionsSourceArgs']]]] sources: List of configurations that define intention sources and the authorization granted to the sources.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceIntentionsSourceArgs', 'ConfigEntryServiceIntentionsSourceArgsDict']]]] sources: List of configurations that define intention sources and the authorization granted to the sources.
         """
         ...
     @overload
@@ -320,29 +320,29 @@ class ConfigEntryServiceIntentions(pulumi.CustomResource):
             }))
         web = consul.ConfigEntryServiceIntentions("web",
             name="web",
-            jwts=[consul.ConfigEntryServiceIntentionsJwtArgs(
-                providers=[consul.ConfigEntryServiceIntentionsJwtProviderArgs(
-                    name=jwt_provider.name,
-                    verify_claims=[consul.ConfigEntryServiceIntentionsJwtProviderVerifyClaimArgs(
-                        paths=[
+            jwts=[{
+                "providers": [{
+                    "name": jwt_provider.name,
+                    "verify_claims": [{
+                        "paths": [
                             "perms",
                             "role",
                         ],
-                        value="admin",
-                    )],
-                )],
-            )],
+                        "value": "admin",
+                    }],
+                }],
+            }],
             sources=[
-                consul.ConfigEntryServiceIntentionsSourceArgs(
-                    name="frontend-webapp",
-                    type="consul",
-                    action="allow",
-                ),
-                consul.ConfigEntryServiceIntentionsSourceArgs(
-                    name="nightly-cronjob",
-                    type="consul",
-                    action="deny",
-                ),
+                {
+                    "name": "frontend-webapp",
+                    "type": "consul",
+                    "action": "allow",
+                },
+                {
+                    "name": "nightly-cronjob",
+                    "type": "consul",
+                    "action": "deny",
+                },
             ])
         ```
 
@@ -361,12 +361,12 @@ class ConfigEntryServiceIntentions(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 jwts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceIntentionsJwtArgs']]]]] = None,
+                 jwts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceIntentionsJwtArgs', 'ConfigEntryServiceIntentionsJwtArgsDict']]]]] = None,
                  meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  namespace: Optional[pulumi.Input[str]] = None,
                  partition: Optional[pulumi.Input[str]] = None,
-                 sources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceIntentionsSourceArgs']]]]] = None,
+                 sources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceIntentionsSourceArgs', 'ConfigEntryServiceIntentionsSourceArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -392,12 +392,12 @@ class ConfigEntryServiceIntentions(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            jwts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceIntentionsJwtArgs']]]]] = None,
+            jwts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceIntentionsJwtArgs', 'ConfigEntryServiceIntentionsJwtArgsDict']]]]] = None,
             meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             namespace: Optional[pulumi.Input[str]] = None,
             partition: Optional[pulumi.Input[str]] = None,
-            sources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceIntentionsSourceArgs']]]]] = None) -> 'ConfigEntryServiceIntentions':
+            sources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceIntentionsSourceArgs', 'ConfigEntryServiceIntentionsSourceArgsDict']]]]] = None) -> 'ConfigEntryServiceIntentions':
         """
         Get an existing ConfigEntryServiceIntentions resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -405,12 +405,12 @@ class ConfigEntryServiceIntentions(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceIntentionsJwtArgs']]]] jwts: Specifies a JSON Web Token provider configured in a JWT provider configuration entry, as well as additional configurations for verifying a service's JWT before authorizing communication between services
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceIntentionsJwtArgs', 'ConfigEntryServiceIntentionsJwtArgsDict']]]] jwts: Specifies a JSON Web Token provider configured in a JWT provider configuration entry, as well as additional configurations for verifying a service's JWT before authorizing communication between services
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] meta: Specifies key-value pairs to add to the KV store.
         :param pulumi.Input[str] name: Specifies a name of the destination service for all intentions defined in the configuration entry.
         :param pulumi.Input[str] namespace: Specifies the namespace to apply the configuration entry.
         :param pulumi.Input[str] partition: Specifies the admin partition to apply the configuration entry.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceIntentionsSourceArgs']]]] sources: List of configurations that define intention sources and the authorization granted to the sources.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceIntentionsSourceArgs', 'ConfigEntryServiceIntentionsSourceArgsDict']]]] sources: List of configurations that define intention sources and the authorization granted to the sources.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

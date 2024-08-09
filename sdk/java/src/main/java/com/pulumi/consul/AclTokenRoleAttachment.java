@@ -59,7 +59,7 @@ public class AclTokenRoleAttachment extends com.pulumi.resources.CustomResource 
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AclTokenRoleAttachment(String name) {
+    public AclTokenRoleAttachment(java.lang.String name) {
         this(name, AclTokenRoleAttachmentArgs.Empty);
     }
     /**
@@ -67,7 +67,7 @@ public class AclTokenRoleAttachment extends com.pulumi.resources.CustomResource 
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AclTokenRoleAttachment(String name, AclTokenRoleAttachmentArgs args) {
+    public AclTokenRoleAttachment(java.lang.String name, AclTokenRoleAttachmentArgs args) {
         this(name, args, null);
     }
     /**
@@ -76,12 +76,12 @@ public class AclTokenRoleAttachment extends com.pulumi.resources.CustomResource 
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AclTokenRoleAttachment(String name, AclTokenRoleAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("consul:index/aclTokenRoleAttachment:AclTokenRoleAttachment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public AclTokenRoleAttachment(java.lang.String name, AclTokenRoleAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("consul:index/aclTokenRoleAttachment:AclTokenRoleAttachment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AclTokenRoleAttachment(String name, Output<String> id, @Nullable AclTokenRoleAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("consul:index/aclTokenRoleAttachment:AclTokenRoleAttachment", name, state, makeResourceOptions(options, id));
+    private AclTokenRoleAttachment(java.lang.String name, Output<java.lang.String> id, @Nullable AclTokenRoleAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("consul:index/aclTokenRoleAttachment:AclTokenRoleAttachment", name, state, makeResourceOptions(options, id), false);
     }
 
     private static AclTokenRoleAttachmentArgs makeArgs(AclTokenRoleAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -91,7 +91,7 @@ public class AclTokenRoleAttachment extends com.pulumi.resources.CustomResource 
         return args == null ? AclTokenRoleAttachmentArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -107,7 +107,7 @@ public class AclTokenRoleAttachment extends com.pulumi.resources.CustomResource 
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AclTokenRoleAttachment get(String name, Output<String> id, @Nullable AclTokenRoleAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AclTokenRoleAttachment get(java.lang.String name, Output<java.lang.String> id, @Nullable AclTokenRoleAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AclTokenRoleAttachment(name, id, state, options);
     }
 }

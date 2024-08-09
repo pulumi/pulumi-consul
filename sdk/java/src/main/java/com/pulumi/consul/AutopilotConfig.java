@@ -200,7 +200,7 @@ public class AutopilotConfig extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AutopilotConfig(String name) {
+    public AutopilotConfig(java.lang.String name) {
         this(name, AutopilotConfigArgs.Empty);
     }
     /**
@@ -208,7 +208,7 @@ public class AutopilotConfig extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AutopilotConfig(String name, @Nullable AutopilotConfigArgs args) {
+    public AutopilotConfig(java.lang.String name, @Nullable AutopilotConfigArgs args) {
         this(name, args, null);
     }
     /**
@@ -217,12 +217,12 @@ public class AutopilotConfig extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AutopilotConfig(String name, @Nullable AutopilotConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("consul:index/autopilotConfig:AutopilotConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public AutopilotConfig(java.lang.String name, @Nullable AutopilotConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("consul:index/autopilotConfig:AutopilotConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AutopilotConfig(String name, Output<String> id, @Nullable AutopilotConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("consul:index/autopilotConfig:AutopilotConfig", name, state, makeResourceOptions(options, id));
+    private AutopilotConfig(java.lang.String name, Output<java.lang.String> id, @Nullable AutopilotConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("consul:index/autopilotConfig:AutopilotConfig", name, state, makeResourceOptions(options, id), false);
     }
 
     private static AutopilotConfigArgs makeArgs(@Nullable AutopilotConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -232,7 +232,7 @@ public class AutopilotConfig extends com.pulumi.resources.CustomResource {
         return args == null ? AutopilotConfigArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -248,7 +248,7 @@ public class AutopilotConfig extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AutopilotConfig get(String name, Output<String> id, @Nullable AutopilotConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AutopilotConfig get(java.lang.String name, Output<java.lang.String> id, @Nullable AutopilotConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AutopilotConfig(name, id, state, options);
     }
 }

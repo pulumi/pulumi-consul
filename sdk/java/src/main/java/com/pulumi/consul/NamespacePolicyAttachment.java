@@ -59,7 +59,7 @@ public class NamespacePolicyAttachment extends com.pulumi.resources.CustomResour
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public NamespacePolicyAttachment(String name) {
+    public NamespacePolicyAttachment(java.lang.String name) {
         this(name, NamespacePolicyAttachmentArgs.Empty);
     }
     /**
@@ -67,7 +67,7 @@ public class NamespacePolicyAttachment extends com.pulumi.resources.CustomResour
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public NamespacePolicyAttachment(String name, NamespacePolicyAttachmentArgs args) {
+    public NamespacePolicyAttachment(java.lang.String name, NamespacePolicyAttachmentArgs args) {
         this(name, args, null);
     }
     /**
@@ -76,12 +76,12 @@ public class NamespacePolicyAttachment extends com.pulumi.resources.CustomResour
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public NamespacePolicyAttachment(String name, NamespacePolicyAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("consul:index/namespacePolicyAttachment:NamespacePolicyAttachment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public NamespacePolicyAttachment(java.lang.String name, NamespacePolicyAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("consul:index/namespacePolicyAttachment:NamespacePolicyAttachment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private NamespacePolicyAttachment(String name, Output<String> id, @Nullable NamespacePolicyAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("consul:index/namespacePolicyAttachment:NamespacePolicyAttachment", name, state, makeResourceOptions(options, id));
+    private NamespacePolicyAttachment(java.lang.String name, Output<java.lang.String> id, @Nullable NamespacePolicyAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("consul:index/namespacePolicyAttachment:NamespacePolicyAttachment", name, state, makeResourceOptions(options, id), false);
     }
 
     private static NamespacePolicyAttachmentArgs makeArgs(NamespacePolicyAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -91,7 +91,7 @@ public class NamespacePolicyAttachment extends com.pulumi.resources.CustomResour
         return args == null ? NamespacePolicyAttachmentArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -107,7 +107,7 @@ public class NamespacePolicyAttachment extends com.pulumi.resources.CustomResour
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static NamespacePolicyAttachment get(String name, Output<String> id, @Nullable NamespacePolicyAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static NamespacePolicyAttachment get(java.lang.String name, Output<java.lang.String> id, @Nullable NamespacePolicyAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new NamespacePolicyAttachment(name, id, state, options);
     }
 }

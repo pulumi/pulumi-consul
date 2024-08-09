@@ -288,14 +288,14 @@ class Provider(pulumi.ProviderResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  address: Optional[pulumi.Input[str]] = None,
-                 auth_jwt: Optional[pulumi.Input[pulumi.InputType['ProviderAuthJwtArgs']]] = None,
+                 auth_jwt: Optional[pulumi.Input[Union['ProviderAuthJwtArgs', 'ProviderAuthJwtArgsDict']]] = None,
                  ca_file: Optional[pulumi.Input[str]] = None,
                  ca_path: Optional[pulumi.Input[str]] = None,
                  ca_pem: Optional[pulumi.Input[str]] = None,
                  cert_file: Optional[pulumi.Input[str]] = None,
                  cert_pem: Optional[pulumi.Input[str]] = None,
                  datacenter: Optional[pulumi.Input[str]] = None,
-                 headers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProviderHeaderArgs']]]]] = None,
+                 headers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProviderHeaderArgs', 'ProviderHeaderArgsDict']]]]] = None,
                  http_auth: Optional[pulumi.Input[str]] = None,
                  insecure_https: Optional[pulumi.Input[bool]] = None,
                  key_file: Optional[pulumi.Input[str]] = None,
@@ -313,7 +313,7 @@ class Provider(pulumi.ProviderResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address: The HTTP(S) API address of the agent to use. Defaults to "127.0.0.1:8500".
-        :param pulumi.Input[pulumi.InputType['ProviderAuthJwtArgs']] auth_jwt: Authenticates to Consul using a JWT authentication method.
+        :param pulumi.Input[Union['ProviderAuthJwtArgs', 'ProviderAuthJwtArgsDict']] auth_jwt: Authenticates to Consul using a JWT authentication method.
         :param pulumi.Input[str] ca_file: A path to a PEM-encoded certificate authority used to verify the remote agent's certificate.
         :param pulumi.Input[str] ca_path: A path to a directory of PEM-encoded certificate authority files to use to check the authenticity of client and server
                connections. Can also be specified with the `CONSUL_CAPATH` environment variable.
@@ -321,7 +321,7 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[str] cert_file: A path to a PEM-encoded certificate provided to the remote agent; requires use of `key_file` or `key_pem`.
         :param pulumi.Input[str] cert_pem: PEM-encoded certificate provided to the remote agent; requires use of `key_file` or `key_pem`.
         :param pulumi.Input[str] datacenter: The datacenter to use. Defaults to that of the agent.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProviderHeaderArgs']]]] headers: A configuration block, described below, that provides additional headers to be sent along with all requests to the
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ProviderHeaderArgs', 'ProviderHeaderArgsDict']]]] headers: A configuration block, described below, that provides additional headers to be sent along with all requests to the
                Consul server. This block can be specified multiple times.
         :param pulumi.Input[str] http_auth: HTTP Basic Authentication credentials to be used when communicating with Consul, in the format of either `user` or
                `user:pass`. This may also be specified using the `CONSUL_HTTP_AUTH` environment variable.
@@ -361,14 +361,14 @@ class Provider(pulumi.ProviderResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  address: Optional[pulumi.Input[str]] = None,
-                 auth_jwt: Optional[pulumi.Input[pulumi.InputType['ProviderAuthJwtArgs']]] = None,
+                 auth_jwt: Optional[pulumi.Input[Union['ProviderAuthJwtArgs', 'ProviderAuthJwtArgsDict']]] = None,
                  ca_file: Optional[pulumi.Input[str]] = None,
                  ca_path: Optional[pulumi.Input[str]] = None,
                  ca_pem: Optional[pulumi.Input[str]] = None,
                  cert_file: Optional[pulumi.Input[str]] = None,
                  cert_pem: Optional[pulumi.Input[str]] = None,
                  datacenter: Optional[pulumi.Input[str]] = None,
-                 headers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProviderHeaderArgs']]]]] = None,
+                 headers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProviderHeaderArgs', 'ProviderHeaderArgsDict']]]]] = None,
                  http_auth: Optional[pulumi.Input[str]] = None,
                  insecure_https: Optional[pulumi.Input[bool]] = None,
                  key_file: Optional[pulumi.Input[str]] = None,

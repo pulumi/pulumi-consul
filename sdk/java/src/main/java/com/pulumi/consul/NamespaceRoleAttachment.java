@@ -59,7 +59,7 @@ public class NamespaceRoleAttachment extends com.pulumi.resources.CustomResource
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public NamespaceRoleAttachment(String name) {
+    public NamespaceRoleAttachment(java.lang.String name) {
         this(name, NamespaceRoleAttachmentArgs.Empty);
     }
     /**
@@ -67,7 +67,7 @@ public class NamespaceRoleAttachment extends com.pulumi.resources.CustomResource
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public NamespaceRoleAttachment(String name, NamespaceRoleAttachmentArgs args) {
+    public NamespaceRoleAttachment(java.lang.String name, NamespaceRoleAttachmentArgs args) {
         this(name, args, null);
     }
     /**
@@ -76,12 +76,12 @@ public class NamespaceRoleAttachment extends com.pulumi.resources.CustomResource
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public NamespaceRoleAttachment(String name, NamespaceRoleAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("consul:index/namespaceRoleAttachment:NamespaceRoleAttachment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public NamespaceRoleAttachment(java.lang.String name, NamespaceRoleAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("consul:index/namespaceRoleAttachment:NamespaceRoleAttachment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private NamespaceRoleAttachment(String name, Output<String> id, @Nullable NamespaceRoleAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("consul:index/namespaceRoleAttachment:NamespaceRoleAttachment", name, state, makeResourceOptions(options, id));
+    private NamespaceRoleAttachment(java.lang.String name, Output<java.lang.String> id, @Nullable NamespaceRoleAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("consul:index/namespaceRoleAttachment:NamespaceRoleAttachment", name, state, makeResourceOptions(options, id), false);
     }
 
     private static NamespaceRoleAttachmentArgs makeArgs(NamespaceRoleAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -91,7 +91,7 @@ public class NamespaceRoleAttachment extends com.pulumi.resources.CustomResource
         return args == null ? NamespaceRoleAttachmentArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -107,7 +107,7 @@ public class NamespaceRoleAttachment extends com.pulumi.resources.CustomResource
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static NamespaceRoleAttachment get(String name, Output<String> id, @Nullable NamespaceRoleAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static NamespaceRoleAttachment get(java.lang.String name, Output<java.lang.String> id, @Nullable NamespaceRoleAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new NamespaceRoleAttachment(name, id, state, options);
     }
 }
