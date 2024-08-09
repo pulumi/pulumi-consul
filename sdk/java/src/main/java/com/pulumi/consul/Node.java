@@ -156,7 +156,7 @@ Please use the token argument in the provider configuration */
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Node(String name) {
+    public Node(java.lang.String name) {
         this(name, NodeArgs.Empty);
     }
     /**
@@ -164,7 +164,7 @@ Please use the token argument in the provider configuration */
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Node(String name, NodeArgs args) {
+    public Node(java.lang.String name, NodeArgs args) {
         this(name, args, null);
     }
     /**
@@ -173,12 +173,12 @@ Please use the token argument in the provider configuration */
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Node(String name, NodeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("consul:index/node:Node", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public Node(java.lang.String name, NodeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("consul:index/node:Node", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Node(String name, Output<String> id, @Nullable NodeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("consul:index/node:Node", name, state, makeResourceOptions(options, id));
+    private Node(java.lang.String name, Output<java.lang.String> id, @Nullable NodeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("consul:index/node:Node", name, state, makeResourceOptions(options, id), false);
     }
 
     private static NodeArgs makeArgs(NodeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -188,7 +188,7 @@ Please use the token argument in the provider configuration */
         return args == null ? NodeArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -207,7 +207,7 @@ Please use the token argument in the provider configuration */
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Node get(String name, Output<String> id, @Nullable NodeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Node get(java.lang.String name, Output<java.lang.String> id, @Nullable NodeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Node(name, id, state, options);
     }
 }

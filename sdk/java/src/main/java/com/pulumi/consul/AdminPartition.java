@@ -99,7 +99,7 @@ public class AdminPartition extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AdminPartition(String name) {
+    public AdminPartition(java.lang.String name) {
         this(name, AdminPartitionArgs.Empty);
     }
     /**
@@ -107,7 +107,7 @@ public class AdminPartition extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AdminPartition(String name, @Nullable AdminPartitionArgs args) {
+    public AdminPartition(java.lang.String name, @Nullable AdminPartitionArgs args) {
         this(name, args, null);
     }
     /**
@@ -116,12 +116,12 @@ public class AdminPartition extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AdminPartition(String name, @Nullable AdminPartitionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("consul:index/adminPartition:AdminPartition", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public AdminPartition(java.lang.String name, @Nullable AdminPartitionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("consul:index/adminPartition:AdminPartition", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AdminPartition(String name, Output<String> id, @Nullable AdminPartitionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("consul:index/adminPartition:AdminPartition", name, state, makeResourceOptions(options, id));
+    private AdminPartition(java.lang.String name, Output<java.lang.String> id, @Nullable AdminPartitionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("consul:index/adminPartition:AdminPartition", name, state, makeResourceOptions(options, id), false);
     }
 
     private static AdminPartitionArgs makeArgs(@Nullable AdminPartitionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -131,7 +131,7 @@ public class AdminPartition extends com.pulumi.resources.CustomResource {
         return args == null ? AdminPartitionArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -147,7 +147,7 @@ public class AdminPartition extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AdminPartition get(String name, Output<String> id, @Nullable AdminPartitionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AdminPartition get(java.lang.String name, Output<java.lang.String> id, @Nullable AdminPartitionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AdminPartition(name, id, state, options);
     }
 }

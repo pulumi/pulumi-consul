@@ -104,7 +104,7 @@ class AwaitableGetNodesResult(GetNodesResult):
             query_options=self.query_options)
 
 
-def get_nodes(query_options: Optional[Sequence[pulumi.InputType['GetNodesQueryOptionArgs']]] = None,
+def get_nodes(query_options: Optional[Sequence[Union['GetNodesQueryOptionArgs', 'GetNodesQueryOptionArgsDict']]] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNodesResult:
     """
     The `get_nodes` data source returns a list of Consul nodes that have
@@ -113,7 +113,7 @@ def get_nodes(query_options: Optional[Sequence[pulumi.InputType['GetNodesQueryOp
     nodes from a different WAN-attached Consul datacenter.
 
 
-    :param Sequence[pulumi.InputType['GetNodesQueryOptionArgs']] query_options: See below.
+    :param Sequence[Union['GetNodesQueryOptionArgs', 'GetNodesQueryOptionArgsDict']] query_options: See below.
     """
     __args__ = dict()
     __args__['queryOptions'] = query_options
@@ -130,7 +130,7 @@ def get_nodes(query_options: Optional[Sequence[pulumi.InputType['GetNodesQueryOp
 
 
 @_utilities.lift_output_func(get_nodes)
-def get_nodes_output(query_options: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetNodesQueryOptionArgs']]]]] = None,
+def get_nodes_output(query_options: Optional[pulumi.Input[Optional[Sequence[Union['GetNodesQueryOptionArgs', 'GetNodesQueryOptionArgsDict']]]]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNodesResult]:
     """
     The `get_nodes` data source returns a list of Consul nodes that have
@@ -139,6 +139,6 @@ def get_nodes_output(query_options: Optional[pulumi.Input[Optional[Sequence[pulu
     nodes from a different WAN-attached Consul datacenter.
 
 
-    :param Sequence[pulumi.InputType['GetNodesQueryOptionArgs']] query_options: See below.
+    :param Sequence[Union['GetNodesQueryOptionArgs', 'GetNodesQueryOptionArgsDict']] query_options: See below.
     """
     ...

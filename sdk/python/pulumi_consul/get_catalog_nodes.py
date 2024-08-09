@@ -106,7 +106,7 @@ class AwaitableGetCatalogNodesResult(GetCatalogNodesResult):
             query_options=self.query_options)
 
 
-def get_catalog_nodes(query_options: Optional[Sequence[pulumi.InputType['GetCatalogNodesQueryOptionArgs']]] = None,
+def get_catalog_nodes(query_options: Optional[Sequence[Union['GetCatalogNodesQueryOptionArgs', 'GetCatalogNodesQueryOptionArgsDict']]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCatalogNodesResult:
     """
     The `get_nodes` data source returns a list of Consul nodes that have
@@ -115,7 +115,7 @@ def get_catalog_nodes(query_options: Optional[Sequence[pulumi.InputType['GetCata
     nodes from a different WAN-attached Consul datacenter.
 
 
-    :param Sequence[pulumi.InputType['GetCatalogNodesQueryOptionArgs']] query_options: See below.
+    :param Sequence[Union['GetCatalogNodesQueryOptionArgs', 'GetCatalogNodesQueryOptionArgsDict']] query_options: See below.
     """
     pulumi.log.warn("""get_catalog_nodes is deprecated: getCatalogNodes has been deprecated in favor of getNodes""")
     __args__ = dict()
@@ -133,7 +133,7 @@ def get_catalog_nodes(query_options: Optional[Sequence[pulumi.InputType['GetCata
 
 
 @_utilities.lift_output_func(get_catalog_nodes)
-def get_catalog_nodes_output(query_options: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetCatalogNodesQueryOptionArgs']]]]] = None,
+def get_catalog_nodes_output(query_options: Optional[pulumi.Input[Optional[Sequence[Union['GetCatalogNodesQueryOptionArgs', 'GetCatalogNodesQueryOptionArgsDict']]]]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCatalogNodesResult]:
     """
     The `get_nodes` data source returns a list of Consul nodes that have
@@ -142,7 +142,7 @@ def get_catalog_nodes_output(query_options: Optional[pulumi.Input[Optional[Seque
     nodes from a different WAN-attached Consul datacenter.
 
 
-    :param Sequence[pulumi.InputType['GetCatalogNodesQueryOptionArgs']] query_options: See below.
+    :param Sequence[Union['GetCatalogNodesQueryOptionArgs', 'GetCatalogNodesQueryOptionArgsDict']] query_options: See below.
     """
     pulumi.log.warn("""get_catalog_nodes is deprecated: getCatalogNodes has been deprecated in favor of getNodes""")
     ...

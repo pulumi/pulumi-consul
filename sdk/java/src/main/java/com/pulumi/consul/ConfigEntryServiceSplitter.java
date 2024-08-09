@@ -207,7 +207,7 @@ public class ConfigEntryServiceSplitter extends com.pulumi.resources.CustomResou
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ConfigEntryServiceSplitter(String name) {
+    public ConfigEntryServiceSplitter(java.lang.String name) {
         this(name, ConfigEntryServiceSplitterArgs.Empty);
     }
     /**
@@ -215,7 +215,7 @@ public class ConfigEntryServiceSplitter extends com.pulumi.resources.CustomResou
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ConfigEntryServiceSplitter(String name, ConfigEntryServiceSplitterArgs args) {
+    public ConfigEntryServiceSplitter(java.lang.String name, ConfigEntryServiceSplitterArgs args) {
         this(name, args, null);
     }
     /**
@@ -224,12 +224,12 @@ public class ConfigEntryServiceSplitter extends com.pulumi.resources.CustomResou
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ConfigEntryServiceSplitter(String name, ConfigEntryServiceSplitterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("consul:index/configEntryServiceSplitter:ConfigEntryServiceSplitter", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public ConfigEntryServiceSplitter(java.lang.String name, ConfigEntryServiceSplitterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("consul:index/configEntryServiceSplitter:ConfigEntryServiceSplitter", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ConfigEntryServiceSplitter(String name, Output<String> id, @Nullable ConfigEntryServiceSplitterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("consul:index/configEntryServiceSplitter:ConfigEntryServiceSplitter", name, state, makeResourceOptions(options, id));
+    private ConfigEntryServiceSplitter(java.lang.String name, Output<java.lang.String> id, @Nullable ConfigEntryServiceSplitterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("consul:index/configEntryServiceSplitter:ConfigEntryServiceSplitter", name, state, makeResourceOptions(options, id), false);
     }
 
     private static ConfigEntryServiceSplitterArgs makeArgs(ConfigEntryServiceSplitterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -239,7 +239,7 @@ public class ConfigEntryServiceSplitter extends com.pulumi.resources.CustomResou
         return args == null ? ConfigEntryServiceSplitterArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -255,7 +255,7 @@ public class ConfigEntryServiceSplitter extends com.pulumi.resources.CustomResou
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ConfigEntryServiceSplitter get(String name, Output<String> id, @Nullable ConfigEntryServiceSplitterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ConfigEntryServiceSplitter get(java.lang.String name, Output<java.lang.String> id, @Nullable ConfigEntryServiceSplitterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ConfigEntryServiceSplitter(name, id, state, options);
     }
 }

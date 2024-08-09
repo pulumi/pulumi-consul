@@ -561,8 +561,8 @@ class PreparedQuery(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connect: Optional[pulumi.Input[bool]] = None,
                  datacenter: Optional[pulumi.Input[str]] = None,
-                 dns: Optional[pulumi.Input[pulumi.InputType['PreparedQueryDnsArgs']]] = None,
-                 failover: Optional[pulumi.Input[pulumi.InputType['PreparedQueryFailoverArgs']]] = None,
+                 dns: Optional[pulumi.Input[Union['PreparedQueryDnsArgs', 'PreparedQueryDnsArgsDict']]] = None,
+                 failover: Optional[pulumi.Input[Union['PreparedQueryFailoverArgs', 'PreparedQueryFailoverArgsDict']]] = None,
                  ignore_check_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  near: Optional[pulumi.Input[str]] = None,
@@ -573,7 +573,7 @@ class PreparedQuery(pulumi.CustomResource):
                  session: Optional[pulumi.Input[str]] = None,
                  stored_token: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 template: Optional[pulumi.Input[pulumi.InputType['PreparedQueryTemplateArgs']]] = None,
+                 template: Optional[pulumi.Input[Union['PreparedQueryTemplateArgs', 'PreparedQueryTemplateArgsDict']]] = None,
                  token: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -598,17 +598,17 @@ class PreparedQuery(pulumi.CustomResource):
                 "active",
                 "!standby",
             ],
-            failover=consul.PreparedQueryFailoverArgs(
-                nearest_n=3,
-                datacenters=[
+            failover={
+                "nearest_n": 3,
+                "datacenters": [
                     "us-west1",
                     "us-east-2",
                     "asia-east1",
                 ],
-            ),
-            dns=consul.PreparedQueryDnsArgs(
-                ttl="30s",
-            ))
+            },
+            dns={
+                "ttl": "30s",
+            })
         # Creates a Prepared Query Template that matches *-near-self.query.consul
         # and finds the nearest service that matches the glob character (e.g.
         # foo-near-self.query.consul will find the nearest healthy foo.service.consul).
@@ -620,22 +620,22 @@ class PreparedQuery(pulumi.CustomResource):
             only_passing=True,
             connect=True,
             near="_agent",
-            template=consul.PreparedQueryTemplateArgs(
-                type="name_prefix_match",
-                regexp="^(.*)-near-self$",
-            ),
+            template={
+                "type": "name_prefix_match",
+                "regexp": "^(.*)-near-self$",
+            },
             service="${match(1)}",
-            failover=consul.PreparedQueryFailoverArgs(
-                nearest_n=3,
-                datacenters=[
+            failover={
+                "nearest_n": 3,
+                "datacenters": [
                     "dc2",
                     "dc3",
                     "dc4",
                 ],
-            ),
-            dns=consul.PreparedQueryDnsArgs(
-                ttl="5m",
-            ))
+            },
+            dns={
+                "ttl": "5m",
+            })
         ```
 
         ## Import
@@ -648,8 +648,8 @@ class PreparedQuery(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] connect: When `true` the prepared query will return connect proxy services for a queried service.  Conditions such as `tags` in the prepared query will be matched against the proxy service. Defaults to false.
         :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
-        :param pulumi.Input[pulumi.InputType['PreparedQueryDnsArgs']] dns: Settings for controlling the DNS response details.
-        :param pulumi.Input[pulumi.InputType['PreparedQueryFailoverArgs']] failover: Options for controlling behavior when no healthy nodes are available in the local DC.
+        :param pulumi.Input[Union['PreparedQueryDnsArgs', 'PreparedQueryDnsArgsDict']] dns: Settings for controlling the DNS response details.
+        :param pulumi.Input[Union['PreparedQueryFailoverArgs', 'PreparedQueryFailoverArgsDict']] failover: Options for controlling behavior when no healthy nodes are available in the local DC.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ignore_check_ids: Specifies a list of check IDs that should be ignored when filtering unhealthy instances. This is mostly useful in an emergency or as a temporary measure when a health check is found to be unreliable. Being able to ignore it in centrally-defined queries can be simpler than de-registering the check as an interim solution until the check can be fixed.
         :param pulumi.Input[str] name: The name of the prepared query. Used to identify the prepared query during requests. Can be specified as an empty string to configure the query as a catch-all.
         :param pulumi.Input[str] near: Allows specifying the name of a node to sort results near using Consul's distance sorting and network coordinates. The magic `_agent` value can be used to always sort nearest the node servicing the request.
@@ -660,7 +660,7 @@ class PreparedQuery(pulumi.CustomResource):
         :param pulumi.Input[str] session: The name of the Consul session to tie this query's lifetime to.  This is an advanced parameter that should not be used without a complete understanding of Consul sessions and the implications of their use (it is recommended to leave this blank in nearly all cases).  If this parameter is omitted the query will not expire.
         :param pulumi.Input[str] stored_token: The ACL token to store with the prepared query. This token will be used by default whenever the query is executed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The list of required and/or disallowed tags.  If a tag is in this list it must be present.  If the tag is preceded with a "!" then it is disallowed.
-        :param pulumi.Input[pulumi.InputType['PreparedQueryTemplateArgs']] template: Query templating options. This is used to make a single prepared query respond to many different requests
+        :param pulumi.Input[Union['PreparedQueryTemplateArgs', 'PreparedQueryTemplateArgsDict']] template: Query templating options. This is used to make a single prepared query respond to many different requests
         :param pulumi.Input[str] token: The ACL token to use when saving the prepared query. This overrides the token that the agent provides by default.
         """
         ...
@@ -691,17 +691,17 @@ class PreparedQuery(pulumi.CustomResource):
                 "active",
                 "!standby",
             ],
-            failover=consul.PreparedQueryFailoverArgs(
-                nearest_n=3,
-                datacenters=[
+            failover={
+                "nearest_n": 3,
+                "datacenters": [
                     "us-west1",
                     "us-east-2",
                     "asia-east1",
                 ],
-            ),
-            dns=consul.PreparedQueryDnsArgs(
-                ttl="30s",
-            ))
+            },
+            dns={
+                "ttl": "30s",
+            })
         # Creates a Prepared Query Template that matches *-near-self.query.consul
         # and finds the nearest service that matches the glob character (e.g.
         # foo-near-self.query.consul will find the nearest healthy foo.service.consul).
@@ -713,22 +713,22 @@ class PreparedQuery(pulumi.CustomResource):
             only_passing=True,
             connect=True,
             near="_agent",
-            template=consul.PreparedQueryTemplateArgs(
-                type="name_prefix_match",
-                regexp="^(.*)-near-self$",
-            ),
+            template={
+                "type": "name_prefix_match",
+                "regexp": "^(.*)-near-self$",
+            },
             service="${match(1)}",
-            failover=consul.PreparedQueryFailoverArgs(
-                nearest_n=3,
-                datacenters=[
+            failover={
+                "nearest_n": 3,
+                "datacenters": [
                     "dc2",
                     "dc3",
                     "dc4",
                 ],
-            ),
-            dns=consul.PreparedQueryDnsArgs(
-                ttl="5m",
-            ))
+            },
+            dns={
+                "ttl": "5m",
+            })
         ```
 
         ## Import
@@ -754,8 +754,8 @@ class PreparedQuery(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connect: Optional[pulumi.Input[bool]] = None,
                  datacenter: Optional[pulumi.Input[str]] = None,
-                 dns: Optional[pulumi.Input[pulumi.InputType['PreparedQueryDnsArgs']]] = None,
-                 failover: Optional[pulumi.Input[pulumi.InputType['PreparedQueryFailoverArgs']]] = None,
+                 dns: Optional[pulumi.Input[Union['PreparedQueryDnsArgs', 'PreparedQueryDnsArgsDict']]] = None,
+                 failover: Optional[pulumi.Input[Union['PreparedQueryFailoverArgs', 'PreparedQueryFailoverArgsDict']]] = None,
                  ignore_check_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  near: Optional[pulumi.Input[str]] = None,
@@ -766,7 +766,7 @@ class PreparedQuery(pulumi.CustomResource):
                  session: Optional[pulumi.Input[str]] = None,
                  stored_token: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 template: Optional[pulumi.Input[pulumi.InputType['PreparedQueryTemplateArgs']]] = None,
+                 template: Optional[pulumi.Input[Union['PreparedQueryTemplateArgs', 'PreparedQueryTemplateArgsDict']]] = None,
                  token: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -809,8 +809,8 @@ class PreparedQuery(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             connect: Optional[pulumi.Input[bool]] = None,
             datacenter: Optional[pulumi.Input[str]] = None,
-            dns: Optional[pulumi.Input[pulumi.InputType['PreparedQueryDnsArgs']]] = None,
-            failover: Optional[pulumi.Input[pulumi.InputType['PreparedQueryFailoverArgs']]] = None,
+            dns: Optional[pulumi.Input[Union['PreparedQueryDnsArgs', 'PreparedQueryDnsArgsDict']]] = None,
+            failover: Optional[pulumi.Input[Union['PreparedQueryFailoverArgs', 'PreparedQueryFailoverArgsDict']]] = None,
             ignore_check_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             near: Optional[pulumi.Input[str]] = None,
@@ -821,7 +821,7 @@ class PreparedQuery(pulumi.CustomResource):
             session: Optional[pulumi.Input[str]] = None,
             stored_token: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            template: Optional[pulumi.Input[pulumi.InputType['PreparedQueryTemplateArgs']]] = None,
+            template: Optional[pulumi.Input[Union['PreparedQueryTemplateArgs', 'PreparedQueryTemplateArgsDict']]] = None,
             token: Optional[pulumi.Input[str]] = None) -> 'PreparedQuery':
         """
         Get an existing PreparedQuery resource's state with the given name, id, and optional extra
@@ -832,8 +832,8 @@ class PreparedQuery(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] connect: When `true` the prepared query will return connect proxy services for a queried service.  Conditions such as `tags` in the prepared query will be matched against the proxy service. Defaults to false.
         :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
-        :param pulumi.Input[pulumi.InputType['PreparedQueryDnsArgs']] dns: Settings for controlling the DNS response details.
-        :param pulumi.Input[pulumi.InputType['PreparedQueryFailoverArgs']] failover: Options for controlling behavior when no healthy nodes are available in the local DC.
+        :param pulumi.Input[Union['PreparedQueryDnsArgs', 'PreparedQueryDnsArgsDict']] dns: Settings for controlling the DNS response details.
+        :param pulumi.Input[Union['PreparedQueryFailoverArgs', 'PreparedQueryFailoverArgsDict']] failover: Options for controlling behavior when no healthy nodes are available in the local DC.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ignore_check_ids: Specifies a list of check IDs that should be ignored when filtering unhealthy instances. This is mostly useful in an emergency or as a temporary measure when a health check is found to be unreliable. Being able to ignore it in centrally-defined queries can be simpler than de-registering the check as an interim solution until the check can be fixed.
         :param pulumi.Input[str] name: The name of the prepared query. Used to identify the prepared query during requests. Can be specified as an empty string to configure the query as a catch-all.
         :param pulumi.Input[str] near: Allows specifying the name of a node to sort results near using Consul's distance sorting and network coordinates. The magic `_agent` value can be used to always sort nearest the node servicing the request.
@@ -844,7 +844,7 @@ class PreparedQuery(pulumi.CustomResource):
         :param pulumi.Input[str] session: The name of the Consul session to tie this query's lifetime to.  This is an advanced parameter that should not be used without a complete understanding of Consul sessions and the implications of their use (it is recommended to leave this blank in nearly all cases).  If this parameter is omitted the query will not expire.
         :param pulumi.Input[str] stored_token: The ACL token to store with the prepared query. This token will be used by default whenever the query is executed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The list of required and/or disallowed tags.  If a tag is in this list it must be present.  If the tag is preceded with a "!" then it is disallowed.
-        :param pulumi.Input[pulumi.InputType['PreparedQueryTemplateArgs']] template: Query templating options. This is used to make a single prepared query respond to many different requests
+        :param pulumi.Input[Union['PreparedQueryTemplateArgs', 'PreparedQueryTemplateArgsDict']] template: Query templating options. This is used to make a single prepared query respond to many different requests
         :param pulumi.Input[str] token: The ACL token to use when saving the prepared query. This overrides the token that the agent provides by default.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

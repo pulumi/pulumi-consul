@@ -158,7 +158,7 @@ Please use the token argument in the provider configuration */
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public NetworkArea(String name) {
+    public NetworkArea(java.lang.String name) {
         this(name, NetworkAreaArgs.Empty);
     }
     /**
@@ -166,7 +166,7 @@ Please use the token argument in the provider configuration */
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public NetworkArea(String name, NetworkAreaArgs args) {
+    public NetworkArea(java.lang.String name, NetworkAreaArgs args) {
         this(name, args, null);
     }
     /**
@@ -175,12 +175,12 @@ Please use the token argument in the provider configuration */
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public NetworkArea(String name, NetworkAreaArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("consul:index/networkArea:NetworkArea", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public NetworkArea(java.lang.String name, NetworkAreaArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("consul:index/networkArea:NetworkArea", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private NetworkArea(String name, Output<String> id, @Nullable NetworkAreaState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("consul:index/networkArea:NetworkArea", name, state, makeResourceOptions(options, id));
+    private NetworkArea(java.lang.String name, Output<java.lang.String> id, @Nullable NetworkAreaState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("consul:index/networkArea:NetworkArea", name, state, makeResourceOptions(options, id), false);
     }
 
     private static NetworkAreaArgs makeArgs(NetworkAreaArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -190,7 +190,7 @@ Please use the token argument in the provider configuration */
         return args == null ? NetworkAreaArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -209,7 +209,7 @@ Please use the token argument in the provider configuration */
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static NetworkArea get(String name, Output<String> id, @Nullable NetworkAreaState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static NetworkArea get(java.lang.String name, Output<java.lang.String> id, @Nullable NetworkAreaState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new NetworkArea(name, id, state, options);
     }
 }

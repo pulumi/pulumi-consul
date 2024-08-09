@@ -233,7 +233,7 @@ class Keys(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  datacenter: Optional[pulumi.Input[str]] = None,
-                 keys: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KeysKeyArgs']]]]] = None,
+                 keys: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KeysKeyArgs', 'KeysKeyArgsDict']]]]] = None,
                  namespace: Optional[pulumi.Input[str]] = None,
                  partition: Optional[pulumi.Input[str]] = None,
                  token: Optional[pulumi.Input[str]] = None,
@@ -248,17 +248,17 @@ class Keys(pulumi.CustomResource):
         app = consul.Keys("app",
             datacenter="nyc1",
             token="abcd",
-            keys=[consul.KeysKeyArgs(
-                path="service/app/elb_address",
-                value=app_aws_elb["dnsName"],
-            )])
+            keys=[{
+                "path": "service/app/elb_address",
+                "value": app_aws_elb["dnsName"],
+            }])
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the
                agent's default datacenter and the datacenter in the provider setup.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KeysKeyArgs']]]] keys: Specifies a key in Consul to be written.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['KeysKeyArgs', 'KeysKeyArgsDict']]]] keys: Specifies a key in Consul to be written.
                Supported values documented below.
         :param pulumi.Input[str] namespace: The namespace to create the keys within.
         :param pulumi.Input[str] partition: The partition to create the keys within.
@@ -281,10 +281,10 @@ class Keys(pulumi.CustomResource):
         app = consul.Keys("app",
             datacenter="nyc1",
             token="abcd",
-            keys=[consul.KeysKeyArgs(
-                path="service/app/elb_address",
-                value=app_aws_elb["dnsName"],
-            )])
+            keys=[{
+                "path": "service/app/elb_address",
+                "value": app_aws_elb["dnsName"],
+            }])
         ```
 
         :param str resource_name: The name of the resource.
@@ -303,7 +303,7 @@ class Keys(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  datacenter: Optional[pulumi.Input[str]] = None,
-                 keys: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KeysKeyArgs']]]]] = None,
+                 keys: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KeysKeyArgs', 'KeysKeyArgsDict']]]]] = None,
                  namespace: Optional[pulumi.Input[str]] = None,
                  partition: Optional[pulumi.Input[str]] = None,
                  token: Optional[pulumi.Input[str]] = None,
@@ -335,7 +335,7 @@ class Keys(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             datacenter: Optional[pulumi.Input[str]] = None,
-            keys: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KeysKeyArgs']]]]] = None,
+            keys: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KeysKeyArgs', 'KeysKeyArgsDict']]]]] = None,
             namespace: Optional[pulumi.Input[str]] = None,
             partition: Optional[pulumi.Input[str]] = None,
             token: Optional[pulumi.Input[str]] = None,
@@ -349,7 +349,7 @@ class Keys(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] datacenter: The datacenter to use. This overrides the
                agent's default datacenter and the datacenter in the provider setup.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KeysKeyArgs']]]] keys: Specifies a key in Consul to be written.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['KeysKeyArgs', 'KeysKeyArgsDict']]]] keys: Specifies a key in Consul to be written.
                Supported values documented below.
         :param pulumi.Input[str] namespace: The namespace to create the keys within.
         :param pulumi.Input[str] partition: The partition to create the keys within.

@@ -442,7 +442,7 @@ class Service(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  address: Optional[pulumi.Input[str]] = None,
-                 checks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceCheckArgs']]]]] = None,
+                 checks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceCheckArgs', 'ServiceCheckArgsDict']]]]] = None,
                  datacenter: Optional[pulumi.Input[str]] = None,
                  enable_tag_override: Optional[pulumi.Input[bool]] = None,
                  external: Optional[pulumi.Input[bool]] = None,
@@ -505,27 +505,27 @@ class Service(pulumi.CustomResource):
             name="redis",
             node="redis",
             port=6379,
-            checks=[consul.ServiceCheckArgs(
-                check_id="service:redis1",
-                name="Redis health check",
-                status="passing",
-                http="https://www.hashicorptest.com",
-                tls_skip_verify=False,
-                method="PUT",
-                interval="5s",
-                timeout="1s",
-                deregister_critical_service_after="30s",
-                headers=[
-                    consul.ServiceCheckHeaderArgs(
-                        name="foo",
-                        values=["test"],
-                    ),
-                    consul.ServiceCheckHeaderArgs(
-                        name="bar",
-                        values=["test"],
-                    ),
+            checks=[{
+                "check_id": "service:redis1",
+                "name": "Redis health check",
+                "status": "passing",
+                "http": "https://www.hashicorptest.com",
+                "tls_skip_verify": False,
+                "method": "PUT",
+                "interval": "5s",
+                "timeout": "1s",
+                "deregister_critical_service_after": "30s",
+                "headers": [
+                    {
+                        "name": "foo",
+                        "values": ["test"],
+                    },
+                    {
+                        "name": "bar",
+                        "values": ["test"],
+                    },
                 ],
-            )])
+            }])
         ```
 
         :param str resource_name: The name of the resource.
@@ -598,27 +598,27 @@ class Service(pulumi.CustomResource):
             name="redis",
             node="redis",
             port=6379,
-            checks=[consul.ServiceCheckArgs(
-                check_id="service:redis1",
-                name="Redis health check",
-                status="passing",
-                http="https://www.hashicorptest.com",
-                tls_skip_verify=False,
-                method="PUT",
-                interval="5s",
-                timeout="1s",
-                deregister_critical_service_after="30s",
-                headers=[
-                    consul.ServiceCheckHeaderArgs(
-                        name="foo",
-                        values=["test"],
-                    ),
-                    consul.ServiceCheckHeaderArgs(
-                        name="bar",
-                        values=["test"],
-                    ),
+            checks=[{
+                "check_id": "service:redis1",
+                "name": "Redis health check",
+                "status": "passing",
+                "http": "https://www.hashicorptest.com",
+                "tls_skip_verify": False,
+                "method": "PUT",
+                "interval": "5s",
+                "timeout": "1s",
+                "deregister_critical_service_after": "30s",
+                "headers": [
+                    {
+                        "name": "foo",
+                        "values": ["test"],
+                    },
+                    {
+                        "name": "bar",
+                        "values": ["test"],
+                    },
                 ],
-            )])
+            }])
         ```
 
         :param str resource_name: The name of the resource.
@@ -637,7 +637,7 @@ class Service(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  address: Optional[pulumi.Input[str]] = None,
-                 checks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceCheckArgs']]]]] = None,
+                 checks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceCheckArgs', 'ServiceCheckArgsDict']]]]] = None,
                  datacenter: Optional[pulumi.Input[str]] = None,
                  enable_tag_override: Optional[pulumi.Input[bool]] = None,
                  external: Optional[pulumi.Input[bool]] = None,
@@ -684,7 +684,7 @@ class Service(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             address: Optional[pulumi.Input[str]] = None,
-            checks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceCheckArgs']]]]] = None,
+            checks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceCheckArgs', 'ServiceCheckArgsDict']]]]] = None,
             datacenter: Optional[pulumi.Input[str]] = None,
             enable_tag_override: Optional[pulumi.Input[bool]] = None,
             external: Optional[pulumi.Input[bool]] = None,

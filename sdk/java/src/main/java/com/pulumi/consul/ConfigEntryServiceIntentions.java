@@ -189,7 +189,7 @@ public class ConfigEntryServiceIntentions extends com.pulumi.resources.CustomRes
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ConfigEntryServiceIntentions(String name) {
+    public ConfigEntryServiceIntentions(java.lang.String name) {
         this(name, ConfigEntryServiceIntentionsArgs.Empty);
     }
     /**
@@ -197,7 +197,7 @@ public class ConfigEntryServiceIntentions extends com.pulumi.resources.CustomRes
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ConfigEntryServiceIntentions(String name, @Nullable ConfigEntryServiceIntentionsArgs args) {
+    public ConfigEntryServiceIntentions(java.lang.String name, @Nullable ConfigEntryServiceIntentionsArgs args) {
         this(name, args, null);
     }
     /**
@@ -206,12 +206,12 @@ public class ConfigEntryServiceIntentions extends com.pulumi.resources.CustomRes
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ConfigEntryServiceIntentions(String name, @Nullable ConfigEntryServiceIntentionsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("consul:index/configEntryServiceIntentions:ConfigEntryServiceIntentions", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public ConfigEntryServiceIntentions(java.lang.String name, @Nullable ConfigEntryServiceIntentionsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("consul:index/configEntryServiceIntentions:ConfigEntryServiceIntentions", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ConfigEntryServiceIntentions(String name, Output<String> id, @Nullable ConfigEntryServiceIntentionsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("consul:index/configEntryServiceIntentions:ConfigEntryServiceIntentions", name, state, makeResourceOptions(options, id));
+    private ConfigEntryServiceIntentions(java.lang.String name, Output<java.lang.String> id, @Nullable ConfigEntryServiceIntentionsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("consul:index/configEntryServiceIntentions:ConfigEntryServiceIntentions", name, state, makeResourceOptions(options, id), false);
     }
 
     private static ConfigEntryServiceIntentionsArgs makeArgs(@Nullable ConfigEntryServiceIntentionsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -221,7 +221,7 @@ public class ConfigEntryServiceIntentions extends com.pulumi.resources.CustomRes
         return args == null ? ConfigEntryServiceIntentionsArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -237,7 +237,7 @@ public class ConfigEntryServiceIntentions extends com.pulumi.resources.CustomRes
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ConfigEntryServiceIntentions get(String name, Output<String> id, @Nullable ConfigEntryServiceIntentionsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ConfigEntryServiceIntentions get(java.lang.String name, Output<java.lang.String> id, @Nullable ConfigEntryServiceIntentionsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ConfigEntryServiceIntentions(name, id, state, options);
     }
 }

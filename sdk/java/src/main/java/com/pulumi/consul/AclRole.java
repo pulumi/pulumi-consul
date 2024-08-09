@@ -194,7 +194,7 @@ public class AclRole extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AclRole(String name) {
+    public AclRole(java.lang.String name) {
         this(name, AclRoleArgs.Empty);
     }
     /**
@@ -202,7 +202,7 @@ public class AclRole extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AclRole(String name, @Nullable AclRoleArgs args) {
+    public AclRole(java.lang.String name, @Nullable AclRoleArgs args) {
         this(name, args, null);
     }
     /**
@@ -211,12 +211,12 @@ public class AclRole extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AclRole(String name, @Nullable AclRoleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("consul:index/aclRole:AclRole", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public AclRole(java.lang.String name, @Nullable AclRoleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("consul:index/aclRole:AclRole", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AclRole(String name, Output<String> id, @Nullable AclRoleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("consul:index/aclRole:AclRole", name, state, makeResourceOptions(options, id));
+    private AclRole(java.lang.String name, Output<java.lang.String> id, @Nullable AclRoleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("consul:index/aclRole:AclRole", name, state, makeResourceOptions(options, id), false);
     }
 
     private static AclRoleArgs makeArgs(@Nullable AclRoleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -226,7 +226,7 @@ public class AclRole extends com.pulumi.resources.CustomResource {
         return args == null ? AclRoleArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -242,7 +242,7 @@ public class AclRole extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AclRole get(String name, Output<String> id, @Nullable AclRoleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AclRole get(java.lang.String name, Output<java.lang.String> id, @Nullable AclRoleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AclRole(name, id, state, options);
     }
 }

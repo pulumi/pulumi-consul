@@ -64,7 +64,7 @@ public class AclTokenPolicyAttachment extends com.pulumi.resources.CustomResourc
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AclTokenPolicyAttachment(String name) {
+    public AclTokenPolicyAttachment(java.lang.String name) {
         this(name, AclTokenPolicyAttachmentArgs.Empty);
     }
     /**
@@ -72,7 +72,7 @@ public class AclTokenPolicyAttachment extends com.pulumi.resources.CustomResourc
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AclTokenPolicyAttachment(String name, AclTokenPolicyAttachmentArgs args) {
+    public AclTokenPolicyAttachment(java.lang.String name, AclTokenPolicyAttachmentArgs args) {
         this(name, args, null);
     }
     /**
@@ -81,12 +81,12 @@ public class AclTokenPolicyAttachment extends com.pulumi.resources.CustomResourc
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AclTokenPolicyAttachment(String name, AclTokenPolicyAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("consul:index/aclTokenPolicyAttachment:AclTokenPolicyAttachment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public AclTokenPolicyAttachment(java.lang.String name, AclTokenPolicyAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("consul:index/aclTokenPolicyAttachment:AclTokenPolicyAttachment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AclTokenPolicyAttachment(String name, Output<String> id, @Nullable AclTokenPolicyAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("consul:index/aclTokenPolicyAttachment:AclTokenPolicyAttachment", name, state, makeResourceOptions(options, id));
+    private AclTokenPolicyAttachment(java.lang.String name, Output<java.lang.String> id, @Nullable AclTokenPolicyAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("consul:index/aclTokenPolicyAttachment:AclTokenPolicyAttachment", name, state, makeResourceOptions(options, id), false);
     }
 
     private static AclTokenPolicyAttachmentArgs makeArgs(AclTokenPolicyAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -96,7 +96,7 @@ public class AclTokenPolicyAttachment extends com.pulumi.resources.CustomResourc
         return args == null ? AclTokenPolicyAttachmentArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -112,7 +112,7 @@ public class AclTokenPolicyAttachment extends com.pulumi.resources.CustomResourc
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AclTokenPolicyAttachment get(String name, Output<String> id, @Nullable AclTokenPolicyAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AclTokenPolicyAttachment get(java.lang.String name, Output<java.lang.String> id, @Nullable AclTokenPolicyAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AclTokenPolicyAttachment(name, id, state, options);
     }
 }

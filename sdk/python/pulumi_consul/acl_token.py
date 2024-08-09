@@ -391,12 +391,12 @@ class AclToken(pulumi.CustomResource):
                  expiration_time: Optional[pulumi.Input[str]] = None,
                  local: Optional[pulumi.Input[bool]] = None,
                  namespace: Optional[pulumi.Input[str]] = None,
-                 node_identities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclTokenNodeIdentityArgs']]]]] = None,
+                 node_identities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AclTokenNodeIdentityArgs', 'AclTokenNodeIdentityArgsDict']]]]] = None,
                  partition: Optional[pulumi.Input[str]] = None,
                  policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 service_identities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclTokenServiceIdentityArgs']]]]] = None,
-                 templated_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclTokenTemplatedPolicyArgs']]]]] = None,
+                 service_identities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AclTokenServiceIdentityArgs', 'AclTokenServiceIdentityArgsDict']]]]] = None,
+                 templated_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AclTokenTemplatedPolicyArgs', 'AclTokenTemplatedPolicyArgsDict']]]]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -443,12 +443,12 @@ class AclToken(pulumi.CustomResource):
         :param pulumi.Input[str] expiration_time: If set this represents the point after which a token should be considered revoked and is eligible for destruction.
         :param pulumi.Input[bool] local: The flag to set the token local to the current datacenter.
         :param pulumi.Input[str] namespace: The namespace to create the token within.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclTokenNodeIdentityArgs']]]] node_identities: The list of node identities that should be applied to the token.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AclTokenNodeIdentityArgs', 'AclTokenNodeIdentityArgsDict']]]] node_identities: The list of node identities that should be applied to the token.
         :param pulumi.Input[str] partition: The partition the ACL token is associated with.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] policies: The list of policies attached to the token.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: The list of roles attached to the token.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclTokenServiceIdentityArgs']]]] service_identities: The list of service identities that should be applied to the token.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclTokenTemplatedPolicyArgs']]]] templated_policies: The list of templated policies that should be applied to the token.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AclTokenServiceIdentityArgs', 'AclTokenServiceIdentityArgsDict']]]] service_identities: The list of service identities that should be applied to the token.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AclTokenTemplatedPolicyArgs', 'AclTokenTemplatedPolicyArgsDict']]]] templated_policies: The list of templated policies that should be applied to the token.
         """
         ...
     @overload
@@ -514,12 +514,12 @@ class AclToken(pulumi.CustomResource):
                  expiration_time: Optional[pulumi.Input[str]] = None,
                  local: Optional[pulumi.Input[bool]] = None,
                  namespace: Optional[pulumi.Input[str]] = None,
-                 node_identities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclTokenNodeIdentityArgs']]]]] = None,
+                 node_identities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AclTokenNodeIdentityArgs', 'AclTokenNodeIdentityArgsDict']]]]] = None,
                  partition: Optional[pulumi.Input[str]] = None,
                  policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 service_identities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclTokenServiceIdentityArgs']]]]] = None,
-                 templated_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclTokenTemplatedPolicyArgs']]]]] = None,
+                 service_identities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AclTokenServiceIdentityArgs', 'AclTokenServiceIdentityArgsDict']]]]] = None,
+                 templated_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AclTokenTemplatedPolicyArgs', 'AclTokenTemplatedPolicyArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -555,12 +555,12 @@ class AclToken(pulumi.CustomResource):
             expiration_time: Optional[pulumi.Input[str]] = None,
             local: Optional[pulumi.Input[bool]] = None,
             namespace: Optional[pulumi.Input[str]] = None,
-            node_identities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclTokenNodeIdentityArgs']]]]] = None,
+            node_identities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AclTokenNodeIdentityArgs', 'AclTokenNodeIdentityArgsDict']]]]] = None,
             partition: Optional[pulumi.Input[str]] = None,
             policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            service_identities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclTokenServiceIdentityArgs']]]]] = None,
-            templated_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclTokenTemplatedPolicyArgs']]]]] = None) -> 'AclToken':
+            service_identities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AclTokenServiceIdentityArgs', 'AclTokenServiceIdentityArgsDict']]]]] = None,
+            templated_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AclTokenTemplatedPolicyArgs', 'AclTokenTemplatedPolicyArgsDict']]]]] = None) -> 'AclToken':
         """
         Get an existing AclToken resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -573,12 +573,12 @@ class AclToken(pulumi.CustomResource):
         :param pulumi.Input[str] expiration_time: If set this represents the point after which a token should be considered revoked and is eligible for destruction.
         :param pulumi.Input[bool] local: The flag to set the token local to the current datacenter.
         :param pulumi.Input[str] namespace: The namespace to create the token within.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclTokenNodeIdentityArgs']]]] node_identities: The list of node identities that should be applied to the token.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AclTokenNodeIdentityArgs', 'AclTokenNodeIdentityArgsDict']]]] node_identities: The list of node identities that should be applied to the token.
         :param pulumi.Input[str] partition: The partition the ACL token is associated with.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] policies: The list of policies attached to the token.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: The list of roles attached to the token.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclTokenServiceIdentityArgs']]]] service_identities: The list of service identities that should be applied to the token.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclTokenTemplatedPolicyArgs']]]] templated_policies: The list of templated policies that should be applied to the token.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AclTokenServiceIdentityArgs', 'AclTokenServiceIdentityArgsDict']]]] service_identities: The list of service identities that should be applied to the token.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AclTokenTemplatedPolicyArgs', 'AclTokenTemplatedPolicyArgsDict']]]] templated_policies: The list of templated policies that should be applied to the token.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

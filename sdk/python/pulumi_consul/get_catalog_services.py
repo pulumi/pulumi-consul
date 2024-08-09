@@ -102,7 +102,7 @@ class AwaitableGetCatalogServicesResult(GetCatalogServicesResult):
             tags=self.tags)
 
 
-def get_catalog_services(query_options: Optional[Sequence[pulumi.InputType['GetCatalogServicesQueryOptionArgs']]] = None,
+def get_catalog_services(query_options: Optional[Sequence[Union['GetCatalogServicesQueryOptionArgs', 'GetCatalogServicesQueryOptionArgsDict']]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCatalogServicesResult:
     """
     The `get_services` data source returns a list of Consul services that
@@ -121,16 +121,16 @@ def get_catalog_services(query_options: Optional[Sequence[pulumi.InputType['GetC
     import pulumi_example as example
     import pulumi_std as std
 
-    read_dc1 = consul.get_services(query_options=[consul.GetServicesQueryOptionArgs(
-        datacenter="dc1",
-    )])
+    read_dc1 = consul.get_services(query_options=[{
+        "datacenter": "dc1",
+    }])
     # Set the description to a whitespace delimited list of the services
     app = example.index.Resource("app", description=std.join(separator= ,
         input=names).result)
     ```
 
 
-    :param Sequence[pulumi.InputType['GetCatalogServicesQueryOptionArgs']] query_options: See below.
+    :param Sequence[Union['GetCatalogServicesQueryOptionArgs', 'GetCatalogServicesQueryOptionArgsDict']] query_options: See below.
     """
     pulumi.log.warn("""get_catalog_services is deprecated: getCatalogServices has been deprecated in favor of getServices""")
     __args__ = dict()
@@ -148,7 +148,7 @@ def get_catalog_services(query_options: Optional[Sequence[pulumi.InputType['GetC
 
 
 @_utilities.lift_output_func(get_catalog_services)
-def get_catalog_services_output(query_options: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetCatalogServicesQueryOptionArgs']]]]] = None,
+def get_catalog_services_output(query_options: Optional[pulumi.Input[Optional[Sequence[Union['GetCatalogServicesQueryOptionArgs', 'GetCatalogServicesQueryOptionArgsDict']]]]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCatalogServicesResult]:
     """
     The `get_services` data source returns a list of Consul services that
@@ -167,16 +167,16 @@ def get_catalog_services_output(query_options: Optional[pulumi.Input[Optional[Se
     import pulumi_example as example
     import pulumi_std as std
 
-    read_dc1 = consul.get_services(query_options=[consul.GetServicesQueryOptionArgs(
-        datacenter="dc1",
-    )])
+    read_dc1 = consul.get_services(query_options=[{
+        "datacenter": "dc1",
+    }])
     # Set the description to a whitespace delimited list of the services
     app = example.index.Resource("app", description=std.join(separator= ,
         input=names).result)
     ```
 
 
-    :param Sequence[pulumi.InputType['GetCatalogServicesQueryOptionArgs']] query_options: See below.
+    :param Sequence[Union['GetCatalogServicesQueryOptionArgs', 'GetCatalogServicesQueryOptionArgsDict']] query_options: See below.
     """
     pulumi.log.warn("""get_catalog_services is deprecated: getCatalogServices has been deprecated in favor of getServices""")
     ...

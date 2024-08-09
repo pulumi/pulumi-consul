@@ -155,7 +155,7 @@ Please use the token argument in the provider configuration */
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Keys(String name) {
+    public Keys(java.lang.String name) {
         this(name, KeysArgs.Empty);
     }
     /**
@@ -163,7 +163,7 @@ Please use the token argument in the provider configuration */
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Keys(String name, @Nullable KeysArgs args) {
+    public Keys(java.lang.String name, @Nullable KeysArgs args) {
         this(name, args, null);
     }
     /**
@@ -172,12 +172,12 @@ Please use the token argument in the provider configuration */
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Keys(String name, @Nullable KeysArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("consul:index/keys:Keys", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public Keys(java.lang.String name, @Nullable KeysArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("consul:index/keys:Keys", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Keys(String name, Output<String> id, @Nullable KeysState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("consul:index/keys:Keys", name, state, makeResourceOptions(options, id));
+    private Keys(java.lang.String name, Output<java.lang.String> id, @Nullable KeysState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("consul:index/keys:Keys", name, state, makeResourceOptions(options, id), false);
     }
 
     private static KeysArgs makeArgs(@Nullable KeysArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -187,7 +187,7 @@ Please use the token argument in the provider configuration */
         return args == null ? KeysArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -206,7 +206,7 @@ Please use the token argument in the provider configuration */
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Keys get(String name, Output<String> id, @Nullable KeysState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Keys get(java.lang.String name, Output<java.lang.String> id, @Nullable KeysState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Keys(name, id, state, options);
     }
 }

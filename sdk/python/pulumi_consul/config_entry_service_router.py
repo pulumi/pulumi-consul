@@ -198,7 +198,7 @@ class ConfigEntryServiceRouter(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  namespace: Optional[pulumi.Input[str]] = None,
                  partition: Optional[pulumi.Input[str]] = None,
-                 routes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceRouterRouteArgs']]]]] = None,
+                 routes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceRouterRouteArgs', 'ConfigEntryServiceRouterRouteArgsDict']]]]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -209,7 +209,7 @@ class ConfigEntryServiceRouter(pulumi.CustomResource):
         :param pulumi.Input[str] name: Specifies a name for the configuration entry.
         :param pulumi.Input[str] namespace: Specifies the namespace to apply the configuration entry.
         :param pulumi.Input[str] partition: Specifies the admin partition to apply the configuration entry.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceRouterRouteArgs']]]] routes: Defines the possible routes for L7 requests.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceRouterRouteArgs', 'ConfigEntryServiceRouterRouteArgsDict']]]] routes: Defines the possible routes for L7 requests.
         """
         ...
     @overload
@@ -239,7 +239,7 @@ class ConfigEntryServiceRouter(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  namespace: Optional[pulumi.Input[str]] = None,
                  partition: Optional[pulumi.Input[str]] = None,
-                 routes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceRouterRouteArgs']]]]] = None,
+                 routes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceRouterRouteArgs', 'ConfigEntryServiceRouterRouteArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -268,7 +268,7 @@ class ConfigEntryServiceRouter(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             namespace: Optional[pulumi.Input[str]] = None,
             partition: Optional[pulumi.Input[str]] = None,
-            routes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceRouterRouteArgs']]]]] = None) -> 'ConfigEntryServiceRouter':
+            routes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceRouterRouteArgs', 'ConfigEntryServiceRouterRouteArgsDict']]]]] = None) -> 'ConfigEntryServiceRouter':
         """
         Get an existing ConfigEntryServiceRouter resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -280,7 +280,7 @@ class ConfigEntryServiceRouter(pulumi.CustomResource):
         :param pulumi.Input[str] name: Specifies a name for the configuration entry.
         :param pulumi.Input[str] namespace: Specifies the namespace to apply the configuration entry.
         :param pulumi.Input[str] partition: Specifies the admin partition to apply the configuration entry.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigEntryServiceRouterRouteArgs']]]] routes: Defines the possible routes for L7 requests.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceRouterRouteArgs', 'ConfigEntryServiceRouterRouteArgsDict']]]] routes: Defines the possible routes for L7 requests.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

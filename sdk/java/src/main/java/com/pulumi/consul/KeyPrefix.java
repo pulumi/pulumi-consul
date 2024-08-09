@@ -206,7 +206,7 @@ Please use the token argument in the provider configuration */
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public KeyPrefix(String name) {
+    public KeyPrefix(java.lang.String name) {
         this(name, KeyPrefixArgs.Empty);
     }
     /**
@@ -214,7 +214,7 @@ Please use the token argument in the provider configuration */
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public KeyPrefix(String name, KeyPrefixArgs args) {
+    public KeyPrefix(java.lang.String name, KeyPrefixArgs args) {
         this(name, args, null);
     }
     /**
@@ -223,12 +223,12 @@ Please use the token argument in the provider configuration */
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public KeyPrefix(String name, KeyPrefixArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("consul:index/keyPrefix:KeyPrefix", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public KeyPrefix(java.lang.String name, KeyPrefixArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("consul:index/keyPrefix:KeyPrefix", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private KeyPrefix(String name, Output<String> id, @Nullable KeyPrefixState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("consul:index/keyPrefix:KeyPrefix", name, state, makeResourceOptions(options, id));
+    private KeyPrefix(java.lang.String name, Output<java.lang.String> id, @Nullable KeyPrefixState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("consul:index/keyPrefix:KeyPrefix", name, state, makeResourceOptions(options, id), false);
     }
 
     private static KeyPrefixArgs makeArgs(KeyPrefixArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -238,7 +238,7 @@ Please use the token argument in the provider configuration */
         return args == null ? KeyPrefixArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -257,7 +257,7 @@ Please use the token argument in the provider configuration */
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static KeyPrefix get(String name, Output<String> id, @Nullable KeyPrefixState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static KeyPrefix get(java.lang.String name, Output<java.lang.String> id, @Nullable KeyPrefixState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new KeyPrefix(name, id, state, options);
     }
 }
