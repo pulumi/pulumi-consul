@@ -550,7 +550,7 @@ public class ConfigEntry extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ConfigEntry(String name) {
+    public ConfigEntry(java.lang.String name) {
         this(name, ConfigEntryArgs.Empty);
     }
     /**
@@ -558,7 +558,7 @@ public class ConfigEntry extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ConfigEntry(String name, ConfigEntryArgs args) {
+    public ConfigEntry(java.lang.String name, ConfigEntryArgs args) {
         this(name, args, null);
     }
     /**
@@ -567,12 +567,12 @@ public class ConfigEntry extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ConfigEntry(String name, ConfigEntryArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("consul:index/configEntry:ConfigEntry", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public ConfigEntry(java.lang.String name, ConfigEntryArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("consul:index/configEntry:ConfigEntry", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ConfigEntry(String name, Output<String> id, @Nullable ConfigEntryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("consul:index/configEntry:ConfigEntry", name, state, makeResourceOptions(options, id));
+    private ConfigEntry(java.lang.String name, Output<java.lang.String> id, @Nullable ConfigEntryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("consul:index/configEntry:ConfigEntry", name, state, makeResourceOptions(options, id), false);
     }
 
     private static ConfigEntryArgs makeArgs(ConfigEntryArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -582,7 +582,7 @@ public class ConfigEntry extends com.pulumi.resources.CustomResource {
         return args == null ? ConfigEntryArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -598,7 +598,7 @@ public class ConfigEntry extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ConfigEntry get(String name, Output<String> id, @Nullable ConfigEntryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ConfigEntry get(java.lang.String name, Output<java.lang.String> id, @Nullable ConfigEntryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ConfigEntry(name, id, state, options);
     }
 }
