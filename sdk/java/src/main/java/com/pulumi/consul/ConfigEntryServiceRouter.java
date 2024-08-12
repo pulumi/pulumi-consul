@@ -98,7 +98,7 @@ public class ConfigEntryServiceRouter extends com.pulumi.resources.CustomResourc
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ConfigEntryServiceRouter(String name) {
+    public ConfigEntryServiceRouter(java.lang.String name) {
         this(name, ConfigEntryServiceRouterArgs.Empty);
     }
     /**
@@ -106,7 +106,7 @@ public class ConfigEntryServiceRouter extends com.pulumi.resources.CustomResourc
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ConfigEntryServiceRouter(String name, @Nullable ConfigEntryServiceRouterArgs args) {
+    public ConfigEntryServiceRouter(java.lang.String name, @Nullable ConfigEntryServiceRouterArgs args) {
         this(name, args, null);
     }
     /**
@@ -115,12 +115,12 @@ public class ConfigEntryServiceRouter extends com.pulumi.resources.CustomResourc
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ConfigEntryServiceRouter(String name, @Nullable ConfigEntryServiceRouterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("consul:index/configEntryServiceRouter:ConfigEntryServiceRouter", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public ConfigEntryServiceRouter(java.lang.String name, @Nullable ConfigEntryServiceRouterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("consul:index/configEntryServiceRouter:ConfigEntryServiceRouter", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ConfigEntryServiceRouter(String name, Output<String> id, @Nullable ConfigEntryServiceRouterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("consul:index/configEntryServiceRouter:ConfigEntryServiceRouter", name, state, makeResourceOptions(options, id));
+    private ConfigEntryServiceRouter(java.lang.String name, Output<java.lang.String> id, @Nullable ConfigEntryServiceRouterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("consul:index/configEntryServiceRouter:ConfigEntryServiceRouter", name, state, makeResourceOptions(options, id), false);
     }
 
     private static ConfigEntryServiceRouterArgs makeArgs(@Nullable ConfigEntryServiceRouterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -130,7 +130,7 @@ public class ConfigEntryServiceRouter extends com.pulumi.resources.CustomResourc
         return args == null ? ConfigEntryServiceRouterArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -146,7 +146,7 @@ public class ConfigEntryServiceRouter extends com.pulumi.resources.CustomResourc
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ConfigEntryServiceRouter get(String name, Output<String> id, @Nullable ConfigEntryServiceRouterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ConfigEntryServiceRouter get(java.lang.String name, Output<java.lang.String> id, @Nullable ConfigEntryServiceRouterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ConfigEntryServiceRouter(name, id, state, options);
     }
 }

@@ -293,11 +293,11 @@ class AclRole(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  namespace: Optional[pulumi.Input[str]] = None,
-                 node_identities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclRoleNodeIdentityArgs']]]]] = None,
+                 node_identities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AclRoleNodeIdentityArgs', 'AclRoleNodeIdentityArgsDict']]]]] = None,
                  partition: Optional[pulumi.Input[str]] = None,
                  policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 service_identities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclRoleServiceIdentityArgs']]]]] = None,
-                 templated_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclRoleTemplatedPolicyArgs']]]]] = None,
+                 service_identities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AclRoleServiceIdentityArgs', 'AclRoleServiceIdentityArgsDict']]]]] = None,
+                 templated_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AclRoleTemplatedPolicyArgs', 'AclRoleTemplatedPolicyArgsDict']]]]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -314,9 +314,9 @@ class AclRole(pulumi.CustomResource):
             name="foo",
             description="bar",
             policies=[read_policy.id],
-            service_identities=[consul.AclRoleServiceIdentityArgs(
-                service_name="foo",
-            )])
+            service_identities=[{
+                "service_name": "foo",
+            }])
         ```
 
         ## Import
@@ -330,11 +330,11 @@ class AclRole(pulumi.CustomResource):
         :param pulumi.Input[str] description: A free form human readable description of the role.
         :param pulumi.Input[str] name: The name of the ACL role.
         :param pulumi.Input[str] namespace: The namespace to create the role within.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclRoleNodeIdentityArgs']]]] node_identities: The list of node identities that should be applied to the role.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AclRoleNodeIdentityArgs', 'AclRoleNodeIdentityArgsDict']]]] node_identities: The list of node identities that should be applied to the role.
         :param pulumi.Input[str] partition: The partition the ACL role is associated with.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] policies: The list of policies that should be applied to the role. Both the policy ID or its name can be used.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclRoleServiceIdentityArgs']]]] service_identities: The list of service identities that should be applied to the role.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclRoleTemplatedPolicyArgs']]]] templated_policies: The list of templated policies that should be applied to the token.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AclRoleServiceIdentityArgs', 'AclRoleServiceIdentityArgsDict']]]] service_identities: The list of service identities that should be applied to the role.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AclRoleTemplatedPolicyArgs', 'AclRoleTemplatedPolicyArgsDict']]]] templated_policies: The list of templated policies that should be applied to the token.
         """
         ...
     @overload
@@ -357,9 +357,9 @@ class AclRole(pulumi.CustomResource):
             name="foo",
             description="bar",
             policies=[read_policy.id],
-            service_identities=[consul.AclRoleServiceIdentityArgs(
-                service_name="foo",
-            )])
+            service_identities=[{
+                "service_name": "foo",
+            }])
         ```
 
         ## Import
@@ -386,11 +386,11 @@ class AclRole(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  namespace: Optional[pulumi.Input[str]] = None,
-                 node_identities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclRoleNodeIdentityArgs']]]]] = None,
+                 node_identities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AclRoleNodeIdentityArgs', 'AclRoleNodeIdentityArgsDict']]]]] = None,
                  partition: Optional[pulumi.Input[str]] = None,
                  policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 service_identities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclRoleServiceIdentityArgs']]]]] = None,
-                 templated_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclRoleTemplatedPolicyArgs']]]]] = None,
+                 service_identities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AclRoleServiceIdentityArgs', 'AclRoleServiceIdentityArgsDict']]]]] = None,
+                 templated_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AclRoleTemplatedPolicyArgs', 'AclRoleTemplatedPolicyArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -421,11 +421,11 @@ class AclRole(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             namespace: Optional[pulumi.Input[str]] = None,
-            node_identities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclRoleNodeIdentityArgs']]]]] = None,
+            node_identities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AclRoleNodeIdentityArgs', 'AclRoleNodeIdentityArgsDict']]]]] = None,
             partition: Optional[pulumi.Input[str]] = None,
             policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            service_identities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclRoleServiceIdentityArgs']]]]] = None,
-            templated_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclRoleTemplatedPolicyArgs']]]]] = None) -> 'AclRole':
+            service_identities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AclRoleServiceIdentityArgs', 'AclRoleServiceIdentityArgsDict']]]]] = None,
+            templated_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AclRoleTemplatedPolicyArgs', 'AclRoleTemplatedPolicyArgsDict']]]]] = None) -> 'AclRole':
         """
         Get an existing AclRole resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -436,11 +436,11 @@ class AclRole(pulumi.CustomResource):
         :param pulumi.Input[str] description: A free form human readable description of the role.
         :param pulumi.Input[str] name: The name of the ACL role.
         :param pulumi.Input[str] namespace: The namespace to create the role within.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclRoleNodeIdentityArgs']]]] node_identities: The list of node identities that should be applied to the role.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AclRoleNodeIdentityArgs', 'AclRoleNodeIdentityArgsDict']]]] node_identities: The list of node identities that should be applied to the role.
         :param pulumi.Input[str] partition: The partition the ACL role is associated with.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] policies: The list of policies that should be applied to the role. Both the policy ID or its name can be used.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclRoleServiceIdentityArgs']]]] service_identities: The list of service identities that should be applied to the role.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclRoleTemplatedPolicyArgs']]]] templated_policies: The list of templated policies that should be applied to the token.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AclRoleServiceIdentityArgs', 'AclRoleServiceIdentityArgsDict']]]] service_identities: The list of service identities that should be applied to the role.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AclRoleTemplatedPolicyArgs', 'AclRoleTemplatedPolicyArgsDict']]]] templated_policies: The list of templated policies that should be applied to the token.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

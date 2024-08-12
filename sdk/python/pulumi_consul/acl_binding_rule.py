@@ -290,7 +290,7 @@ class AclBindingRule(pulumi.CustomResource):
                  auth_method: Optional[pulumi.Input[str]] = None,
                  bind_name: Optional[pulumi.Input[str]] = None,
                  bind_type: Optional[pulumi.Input[str]] = None,
-                 bind_vars: Optional[pulumi.Input[pulumi.InputType['AclBindingRuleBindVarsArgs']]] = None,
+                 bind_vars: Optional[pulumi.Input[Union['AclBindingRuleBindVarsArgs', 'AclBindingRuleBindVarsArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  namespace: Optional[pulumi.Input[str]] = None,
                  partition: Optional[pulumi.Input[str]] = None,
@@ -329,7 +329,7 @@ class AclBindingRule(pulumi.CustomResource):
         :param pulumi.Input[str] auth_method: The name of the ACL auth method this rule apply.
         :param pulumi.Input[str] bind_name: The name to bind to a token at login-time.
         :param pulumi.Input[str] bind_type: Specifies the way the binding rule affects a token created at login.
-        :param pulumi.Input[pulumi.InputType['AclBindingRuleBindVarsArgs']] bind_vars: The variables used when binding rule type is `templated-policy`. Can be lightly templated using HIL `${foo}` syntax from available field names.
+        :param pulumi.Input[Union['AclBindingRuleBindVarsArgs', 'AclBindingRuleBindVarsArgsDict']] bind_vars: The variables used when binding rule type is `templated-policy`. Can be lightly templated using HIL `${foo}` syntax from available field names.
         :param pulumi.Input[str] description: A free form human readable description of the binding rule.
         :param pulumi.Input[str] namespace: The namespace to create the binding rule within.
         :param pulumi.Input[str] partition: The partition the ACL binding rule is associated with.
@@ -387,7 +387,7 @@ class AclBindingRule(pulumi.CustomResource):
                  auth_method: Optional[pulumi.Input[str]] = None,
                  bind_name: Optional[pulumi.Input[str]] = None,
                  bind_type: Optional[pulumi.Input[str]] = None,
-                 bind_vars: Optional[pulumi.Input[pulumi.InputType['AclBindingRuleBindVarsArgs']]] = None,
+                 bind_vars: Optional[pulumi.Input[Union['AclBindingRuleBindVarsArgs', 'AclBindingRuleBindVarsArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  namespace: Optional[pulumi.Input[str]] = None,
                  partition: Optional[pulumi.Input[str]] = None,
@@ -428,7 +428,7 @@ class AclBindingRule(pulumi.CustomResource):
             auth_method: Optional[pulumi.Input[str]] = None,
             bind_name: Optional[pulumi.Input[str]] = None,
             bind_type: Optional[pulumi.Input[str]] = None,
-            bind_vars: Optional[pulumi.Input[pulumi.InputType['AclBindingRuleBindVarsArgs']]] = None,
+            bind_vars: Optional[pulumi.Input[Union['AclBindingRuleBindVarsArgs', 'AclBindingRuleBindVarsArgsDict']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             namespace: Optional[pulumi.Input[str]] = None,
             partition: Optional[pulumi.Input[str]] = None,
@@ -443,7 +443,7 @@ class AclBindingRule(pulumi.CustomResource):
         :param pulumi.Input[str] auth_method: The name of the ACL auth method this rule apply.
         :param pulumi.Input[str] bind_name: The name to bind to a token at login-time.
         :param pulumi.Input[str] bind_type: Specifies the way the binding rule affects a token created at login.
-        :param pulumi.Input[pulumi.InputType['AclBindingRuleBindVarsArgs']] bind_vars: The variables used when binding rule type is `templated-policy`. Can be lightly templated using HIL `${foo}` syntax from available field names.
+        :param pulumi.Input[Union['AclBindingRuleBindVarsArgs', 'AclBindingRuleBindVarsArgsDict']] bind_vars: The variables used when binding rule type is `templated-policy`. Can be lightly templated using HIL `${foo}` syntax from available field names.
         :param pulumi.Input[str] description: A free form human readable description of the binding rule.
         :param pulumi.Input[str] namespace: The namespace to create the binding rule within.
         :param pulumi.Input[str] partition: The partition the ACL binding rule is associated with.

@@ -100,7 +100,7 @@ class AwaitableGetServicesResult(GetServicesResult):
             tags=self.tags)
 
 
-def get_services(query_options: Optional[Sequence[pulumi.InputType['GetServicesQueryOptionArgs']]] = None,
+def get_services(query_options: Optional[Sequence[Union['GetServicesQueryOptionArgs', 'GetServicesQueryOptionArgsDict']]] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServicesResult:
     """
     The `get_services` data source returns a list of Consul services that
@@ -119,16 +119,16 @@ def get_services(query_options: Optional[Sequence[pulumi.InputType['GetServicesQ
     import pulumi_example as example
     import pulumi_std as std
 
-    read_dc1 = consul.get_services(query_options=[consul.GetServicesQueryOptionArgs(
-        datacenter="dc1",
-    )])
+    read_dc1 = consul.get_services(query_options=[{
+        "datacenter": "dc1",
+    }])
     # Set the description to a whitespace delimited list of the services
     app = example.index.Resource("app", description=std.join(separator= ,
         input=names).result)
     ```
 
 
-    :param Sequence[pulumi.InputType['GetServicesQueryOptionArgs']] query_options: See below.
+    :param Sequence[Union['GetServicesQueryOptionArgs', 'GetServicesQueryOptionArgsDict']] query_options: See below.
     """
     __args__ = dict()
     __args__['queryOptions'] = query_options
@@ -145,7 +145,7 @@ def get_services(query_options: Optional[Sequence[pulumi.InputType['GetServicesQ
 
 
 @_utilities.lift_output_func(get_services)
-def get_services_output(query_options: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetServicesQueryOptionArgs']]]]] = None,
+def get_services_output(query_options: Optional[pulumi.Input[Optional[Sequence[Union['GetServicesQueryOptionArgs', 'GetServicesQueryOptionArgsDict']]]]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServicesResult]:
     """
     The `get_services` data source returns a list of Consul services that
@@ -164,15 +164,15 @@ def get_services_output(query_options: Optional[pulumi.Input[Optional[Sequence[p
     import pulumi_example as example
     import pulumi_std as std
 
-    read_dc1 = consul.get_services(query_options=[consul.GetServicesQueryOptionArgs(
-        datacenter="dc1",
-    )])
+    read_dc1 = consul.get_services(query_options=[{
+        "datacenter": "dc1",
+    }])
     # Set the description to a whitespace delimited list of the services
     app = example.index.Resource("app", description=std.join(separator= ,
         input=names).result)
     ```
 
 
-    :param Sequence[pulumi.InputType['GetServicesQueryOptionArgs']] query_options: See below.
+    :param Sequence[Union['GetServicesQueryOptionArgs', 'GetServicesQueryOptionArgsDict']] query_options: See below.
     """
     ...
