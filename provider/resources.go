@@ -15,6 +15,7 @@
 package consul
 
 import (
+	"bytes"
 	"fmt"
 	"path/filepath"
 
@@ -23,6 +24,7 @@ import (
 
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	tks "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
 	shimv1 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v1"
 
 	"github.com/pulumi/pulumi-consul/provider/v3/pkg/version"
@@ -50,6 +52,7 @@ func Provider() tfbridge.ProviderInfo {
 		Repository:  "https://github.com/pulumi/pulumi-consul",
 		GitHubOrg:   "hashicorp",
 		Config:      map[string]*tfbridge.SchemaInfo{},
+		DocRules:    &tfbridge.DocRuleInfo{EditRules: docEditRules},
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"consul_acl_auth_method": {
 				Docs: &tfbridge.DocInfo{
@@ -180,4 +183,38 @@ func Provider() tfbridge.ProviderInfo {
 	prov.SetAutonaming(255, "-")
 
 	return prov
+}
+
+func docEditRules(defaults []tfbridge.DocsEdit) []tfbridge.DocsEdit {
+	return append(
+		defaults,
+		removeRemoteStateBackend,
+		skipCompatibilitySection,
+	)
+}
+
+var remoteStateBackendNote = "~> **NOTE:** The Consul provider should not be confused with the " +
+	"[Consul remote\nstate backend][consul-remote-state-backend], which is one of many backends " +
+	"that\ncan be used to store Terraform state. The Consul provider is instead used to\nmanage " +
+	"resources within Consul itself, such as adding external services or\nworking with the key/value " +
+	"store.\n\n[consul-remote-state-backend]: /docs/backends/types/consul.html\n"
+
+// Removes a reference to Consul Remote State Backend
+var removeRemoteStateBackend = tfbridge.DocsEdit{
+	Path: "index.md",
+	Edit: func(_ string, content []byte) ([]byte, error) {
+		before, after, _ := bytes.Cut(content, []byte(remoteStateBackendNote))
+		content = append(before, after...)
+		return content, nil
+	},
+}
+
+// Skip a section on compatibility with TF provider versions
+var skipCompatibilitySection = tfbridge.DocsEdit{
+	Path: "index.md",
+	Edit: func(_ string, content []byte) ([]byte, error) {
+		return tfgen.SkipSectionByHeaderContent(content, func(headerText string) bool {
+			return headerText == "Compatibility"
+		})
+	},
 }
