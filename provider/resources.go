@@ -17,13 +17,14 @@ package consul
 import (
 	"bytes"
 	"fmt"
+	"path/filepath"
+
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/hashicorp/terraform-provider-consul/consul"
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
-	"path/filepath"
 
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	tks "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
 	shimv1 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v1"
 
 	"github.com/pulumi/pulumi-consul/provider/v3/pkg/version"
