@@ -35,7 +35,7 @@ public final class GetServiceHealthArgs extends com.pulumi.resources.InvokeArgs 
 
     /**
      * A filter expression to refine the list of results, see
-     * https://www.consul.io/api-docs/features/filtering and https://www.consul.io/api-docs/health#filtering-2.
+     * &lt;https://www.consul.io/api-docs/features/filtering&gt; and &lt;https://www.consul.io/api-docs/health#filtering-2&gt;.
      * 
      */
     @Import(name="filter")
@@ -43,7 +43,7 @@ public final class GetServiceHealthArgs extends com.pulumi.resources.InvokeArgs 
 
     /**
      * @return A filter expression to refine the list of results, see
-     * https://www.consul.io/api-docs/features/filtering and https://www.consul.io/api-docs/health#filtering-2.
+     * &lt;https://www.consul.io/api-docs/features/filtering&gt; and &lt;https://www.consul.io/api-docs/health#filtering-2&gt;.
      * 
      */
     public Optional<Output<String>> filter() {
@@ -194,7 +194,7 @@ public final class GetServiceHealthArgs extends com.pulumi.resources.InvokeArgs 
 
         /**
          * @param filter A filter expression to refine the list of results, see
-         * https://www.consul.io/api-docs/features/filtering and https://www.consul.io/api-docs/health#filtering-2.
+         * &lt;https://www.consul.io/api-docs/features/filtering&gt; and &lt;https://www.consul.io/api-docs/health#filtering-2&gt;.
          * 
          * @return builder
          * 
@@ -206,7 +206,7 @@ public final class GetServiceHealthArgs extends com.pulumi.resources.InvokeArgs 
 
         /**
          * @param filter A filter expression to refine the list of results, see
-         * https://www.consul.io/api-docs/features/filtering and https://www.consul.io/api-docs/health#filtering-2.
+         * &lt;https://www.consul.io/api-docs/features/filtering&gt; and &lt;https://www.consul.io/api-docs/health#filtering-2&gt;.
          * 
          * @return builder
          * 

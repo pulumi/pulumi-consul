@@ -9831,7 +9831,7 @@ type GetAutopilotHealthServer struct {
 	Name string `pulumi:"name"`
 	// The status of the SerfHealth check of the server
 	SerfStatus string `pulumi:"serfStatus"`
-	// The time this server has been in its current ``Healthy``
+	// The time this server has been in its current `Healthy`
 	// state
 	StableSince string `pulumi:"stableSince"`
 	// The Consul version of the server
@@ -9872,7 +9872,7 @@ type GetAutopilotHealthServerArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// The status of the SerfHealth check of the server
 	SerfStatus pulumi.StringInput `pulumi:"serfStatus"`
-	// The time this server has been in its current ``Healthy``
+	// The time this server has been in its current `Healthy`
 	// state
 	StableSince pulumi.StringInput `pulumi:"stableSince"`
 	// The Consul version of the server
@@ -9979,7 +9979,7 @@ func (o GetAutopilotHealthServerOutput) SerfStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAutopilotHealthServer) string { return v.SerfStatus }).(pulumi.StringOutput)
 }
 
-// The time this server has been in its current “Healthy“
+// The time this server has been in its current `Healthy`
 // state
 func (o GetAutopilotHealthServerOutput) StableSince() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAutopilotHealthServer) string { return v.StableSince }).(pulumi.StringOutput)

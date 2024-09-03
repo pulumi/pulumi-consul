@@ -4140,7 +4140,7 @@ class GetAutopilotHealthServerResult(dict):
         :param bool leader: Whether the server is currently leader
         :param str name: The node name of the server
         :param str serf_status: The status of the SerfHealth check of the server
-        :param str stable_since: The time this server has been in its current ``Healthy``
+        :param str stable_since: The time this server has been in its current `Healthy`
                state
         :param str version: The Consul version of the server
         :param bool voter: Whether the server is a voting member of the Raft cluster
@@ -4236,7 +4236,7 @@ class GetAutopilotHealthServerResult(dict):
     @pulumi.getter(name="stableSince")
     def stable_since(self) -> str:
         """
-        The time this server has been in its current ``Healthy``
+        The time this server has been in its current `Healthy`
         state
         """
         return pulumi.get(self, "stable_since")

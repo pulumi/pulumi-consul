@@ -33,7 +33,7 @@ type LookupServiceHealthArgs struct {
 	// The Consul datacenter to query.
 	Datacenter *string `pulumi:"datacenter"`
 	// A filter expression to refine the list of results, see
-	// https://www.consul.io/api-docs/features/filtering and https://www.consul.io/api-docs/health#filtering-2.
+	// <https://www.consul.io/api-docs/features/filtering> and <https://www.consul.io/api-docs/health#filtering-2>.
 	Filter *string `pulumi:"filter"`
 	// The service name to select.
 	Name string `pulumi:"name"`
@@ -97,7 +97,7 @@ type LookupServiceHealthOutputArgs struct {
 	// The Consul datacenter to query.
 	Datacenter pulumi.StringPtrInput `pulumi:"datacenter"`
 	// A filter expression to refine the list of results, see
-	// https://www.consul.io/api-docs/features/filtering and https://www.consul.io/api-docs/health#filtering-2.
+	// <https://www.consul.io/api-docs/features/filtering> and <https://www.consul.io/api-docs/health#filtering-2>.
 	Filter pulumi.StringPtrInput `pulumi:"filter"`
 	// The service name to select.
 	Name pulumi.StringInput `pulumi:"name"`

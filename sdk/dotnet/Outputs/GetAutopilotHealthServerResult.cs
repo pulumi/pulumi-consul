@@ -52,7 +52,7 @@ namespace Pulumi.Consul.Outputs
         /// </summary>
         public readonly string SerfStatus;
         /// <summary>
-        /// The time this server has been in its current ``Healthy``
+        /// The time this server has been in its current `Healthy`
         /// state
         /// </summary>
         public readonly string StableSince;
