@@ -47,7 +47,7 @@ namespace Pulumi.Consul
 
         /// <summary>
         /// A filter expression to refine the list of results, see
-        /// https://www.consul.io/api-docs/features/filtering and https://www.consul.io/api-docs/health#filtering-2.
+        /// &lt;https://www.consul.io/api-docs/features/filtering&gt; and &lt;https://www.consul.io/api-docs/health#filtering-2&gt;.
         /// </summary>
         [Input("filter")]
         public string? Filter { get; set; }
@@ -111,7 +111,7 @@ namespace Pulumi.Consul
 
         /// <summary>
         /// A filter expression to refine the list of results, see
-        /// https://www.consul.io/api-docs/features/filtering and https://www.consul.io/api-docs/health#filtering-2.
+        /// &lt;https://www.consul.io/api-docs/features/filtering&gt; and &lt;https://www.consul.io/api-docs/health#filtering-2&gt;.
         /// </summary>
         [Input("filter")]
         public Input<string>? Filter { get; set; }

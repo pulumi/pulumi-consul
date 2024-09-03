@@ -60,7 +60,7 @@ public final class GetAutopilotHealthServer {
      */
     private String serfStatus;
     /**
-     * @return The time this server has been in its current ``Healthy``
+     * @return The time this server has been in its current `Healthy`
      * state
      * 
      */
@@ -143,7 +143,7 @@ public final class GetAutopilotHealthServer {
         return this.serfStatus;
     }
     /**
-     * @return The time this server has been in its current ``Healthy``
+     * @return The time this server has been in its current `Healthy`
      * state
      * 
      */

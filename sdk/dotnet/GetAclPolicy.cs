@@ -15,7 +15,6 @@ namespace Pulumi.Consul
         /// The `consul.AclPolicy` data source returns the information related to a
         /// [Consul ACL Policy](https://www.consul.io/docs/acl/acl-system.html#acl-policies).
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -44,7 +43,6 @@ namespace Pulumi.Consul
         /// <summary>
         /// The `consul.AclPolicy` data source returns the information related to a
         /// [Consul ACL Policy](https://www.consul.io/docs/acl/acl-system.html#acl-policies).
-        /// 
         /// 
         /// ## Example Usage
         /// 

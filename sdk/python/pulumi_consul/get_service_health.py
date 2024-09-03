@@ -173,7 +173,7 @@ def get_service_health(datacenter: Optional[str] = None,
 
     :param str datacenter: The Consul datacenter to query.
     :param str filter: A filter expression to refine the list of results, see
-           https://www.consul.io/api-docs/features/filtering and https://www.consul.io/api-docs/health#filtering-2.
+           <https://www.consul.io/api-docs/features/filtering> and <https://www.consul.io/api-docs/health#filtering-2>.
     :param str name: The service name to select.
     :param str near: Specifies a node name to sort the node list in ascending order
            based on the estimated round trip time from that node.
@@ -231,7 +231,7 @@ def get_service_health_output(datacenter: Optional[pulumi.Input[Optional[str]]] 
 
     :param str datacenter: The Consul datacenter to query.
     :param str filter: A filter expression to refine the list of results, see
-           https://www.consul.io/api-docs/features/filtering and https://www.consul.io/api-docs/health#filtering-2.
+           <https://www.consul.io/api-docs/features/filtering> and <https://www.consul.io/api-docs/health#filtering-2>.
     :param str name: The service name to select.
     :param str near: Specifies a node name to sort the node list in ascending order
            based on the estimated round trip time from that node.

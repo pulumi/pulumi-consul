@@ -15,7 +15,6 @@ namespace Pulumi.Consul
         /// &gt; **Warning:** The `consul.getAgentSelf` resource has been deprecated and will be removed
         /// from a future release of the provider. Read the [upgrade instructions](https://www.terraform.io/docs/providers/consul/guides/upgrading.html#deprecation-of-consul_agent_self) for more information.
         /// 
-        /// 
         /// The `consul.getAgentSelf` data source returns
         /// [configuration and status data](https://www.consul.io/docs/agent/http/agent.html#agent_self)
         /// from the agent specified in the `provider`.
@@ -26,7 +25,6 @@ namespace Pulumi.Consul
         /// <summary>
         /// &gt; **Warning:** The `consul.getAgentSelf` resource has been deprecated and will be removed
         /// from a future release of the provider. Read the [upgrade instructions](https://www.terraform.io/docs/providers/consul/guides/upgrading.html#deprecation-of-consul_agent_self) for more information.
-        /// 
         /// 
         /// The `consul.getAgentSelf` data source returns
         /// [configuration and status data](https://www.consul.io/docs/agent/http/agent.html#agent_self)

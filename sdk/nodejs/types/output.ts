@@ -1038,7 +1038,7 @@ export interface GetAutopilotHealthServer {
      */
     serfStatus: string;
     /**
-     * The time this server has been in its current ``Healthy``
+     * The time this server has been in its current `Healthy`
      * state
      */
     stableSince: string;
