@@ -72,13 +72,19 @@ type GetAgentConfigResult struct {
 }
 
 func GetAgentConfigOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetAgentConfigResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetAgentConfigResult, error) {
-		r, err := GetAgentConfig(ctx, opts...)
-		var s GetAgentConfigResult
-		if r != nil {
-			s = *r
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetAgentConfigResultOutput, error) {
+		opts = internal.PkgInvokeDefaultOpts(opts)
+		var rv GetAgentConfigResult
+		secret, err := ctx.InvokePackageRaw("consul:index/getAgentConfig:getAgentConfig", nil, &rv, "", opts...)
+		if err != nil {
+			return GetAgentConfigResultOutput{}, err
 		}
-		return s, err
+
+		output := pulumi.ToOutput(rv).(GetAgentConfigResultOutput)
+		if secret {
+			return pulumi.ToSecret(output).(GetAgentConfigResultOutput), nil
+		}
+		return output, nil
 	}).(GetAgentConfigResultOutput)
 }
 

@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  * datacenters.
  */
 export function getDatacenters(opts?: pulumi.InvokeOptions): Promise<GetDatacentersResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("consul:index/getDatacenters:getDatacenters", {
     }, opts);
@@ -35,5 +34,7 @@ export interface GetDatacentersResult {
  * datacenters.
  */
 export function getDatacentersOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetDatacentersResult> {
-    return pulumi.output(getDatacenters(opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("consul:index/getDatacenters:getDatacenters", {
+    }, opts);
 }

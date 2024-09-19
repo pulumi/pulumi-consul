@@ -78,14 +78,20 @@ type GetNetworkSegmentsResult struct {
 
 func GetNetworkSegmentsOutput(ctx *pulumi.Context, args GetNetworkSegmentsOutputArgs, opts ...pulumi.InvokeOption) GetNetworkSegmentsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetNetworkSegmentsResult, error) {
+		ApplyT(func(v interface{}) (GetNetworkSegmentsResultOutput, error) {
 			args := v.(GetNetworkSegmentsArgs)
-			r, err := GetNetworkSegments(ctx, &args, opts...)
-			var s GetNetworkSegmentsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetNetworkSegmentsResult
+			secret, err := ctx.InvokePackageRaw("consul:index/getNetworkSegments:getNetworkSegments", args, &rv, "", opts...)
+			if err != nil {
+				return GetNetworkSegmentsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetNetworkSegmentsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetNetworkSegmentsResultOutput), nil
+			}
+			return output, nil
 		}).(GetNetworkSegmentsResultOutput)
 }
 

@@ -29,7 +29,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getAclTokenSecretId(args: GetAclTokenSecretIdArgs, opts?: pulumi.InvokeOptions): Promise<GetAclTokenSecretIdResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("consul:index/getAclTokenSecretId:getAclTokenSecretId", {
         "accessorId": args.accessorId,
@@ -101,7 +100,13 @@ export interface GetAclTokenSecretIdResult {
  * ```
  */
 export function getAclTokenSecretIdOutput(args: GetAclTokenSecretIdOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAclTokenSecretIdResult> {
-    return pulumi.output(args).apply((a: any) => getAclTokenSecretId(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("consul:index/getAclTokenSecretId:getAclTokenSecretId", {
+        "accessorId": args.accessorId,
+        "namespace": args.namespace,
+        "partition": args.partition,
+        "pgpKey": args.pgpKey,
+    }, opts);
 }
 
 /**

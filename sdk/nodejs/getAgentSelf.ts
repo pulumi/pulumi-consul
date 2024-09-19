@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  * from the agent specified in the `provider`.
  */
 export function getAgentSelf(opts?: pulumi.InvokeOptions): Promise<GetAgentSelfResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("consul:index/getAgentSelf:getAgentSelf", {
     }, opts);
@@ -186,5 +185,7 @@ export interface GetAgentSelfResult {
  * from the agent specified in the `provider`.
  */
 export function getAgentSelfOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetAgentSelfResult> {
-    return pulumi.output(getAgentSelf(opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("consul:index/getAgentSelf:getAgentSelf", {
+    }, opts);
 }

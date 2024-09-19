@@ -34,13 +34,19 @@ type GetDatacentersResult struct {
 }
 
 func GetDatacentersOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetDatacentersResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetDatacentersResult, error) {
-		r, err := GetDatacenters(ctx, opts...)
-		var s GetDatacentersResult
-		if r != nil {
-			s = *r
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetDatacentersResultOutput, error) {
+		opts = internal.PkgInvokeDefaultOpts(opts)
+		var rv GetDatacentersResult
+		secret, err := ctx.InvokePackageRaw("consul:index/getDatacenters:getDatacenters", nil, &rv, "", opts...)
+		if err != nil {
+			return GetDatacentersResultOutput{}, err
 		}
-		return s, err
+
+		output := pulumi.ToOutput(rv).(GetDatacentersResultOutput)
+		if secret {
+			return pulumi.ToSecret(output).(GetDatacentersResultOutput), nil
+		}
+		return output, nil
 	}).(GetDatacentersResultOutput)
 }
 

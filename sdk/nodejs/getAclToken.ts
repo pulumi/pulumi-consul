@@ -24,7 +24,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getAclToken(args: GetAclTokenArgs, opts?: pulumi.InvokeOptions): Promise<GetAclTokenResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("consul:index/getAclToken:getAclToken", {
         "accessorId": args.accessorId,
@@ -122,7 +121,12 @@ export interface GetAclTokenResult {
  * ```
  */
 export function getAclTokenOutput(args: GetAclTokenOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAclTokenResult> {
-    return pulumi.output(args).apply((a: any) => getAclToken(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("consul:index/getAclToken:getAclToken", {
+        "accessorId": args.accessorId,
+        "namespace": args.namespace,
+        "partition": args.partition,
+    }, opts);
 }
 
 /**

@@ -43,7 +43,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getKeyPrefix(args: GetKeyPrefixArgs, opts?: pulumi.InvokeOptions): Promise<GetKeyPrefixResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("consul:index/getKeyPrefix:getKeyPrefix", {
         "datacenter": args.datacenter,
@@ -163,7 +162,15 @@ Please use the token argument in the provider configuration
  * ```
  */
 export function getKeyPrefixOutput(args: GetKeyPrefixOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeyPrefixResult> {
-    return pulumi.output(args).apply((a: any) => getKeyPrefix(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("consul:index/getKeyPrefix:getKeyPrefix", {
+        "datacenter": args.datacenter,
+        "namespace": args.namespace,
+        "partition": args.partition,
+        "pathPrefix": args.pathPrefix,
+        "subkeyCollection": args.subkeyCollection,
+        "token": args.token,
+    }, opts);
 }
 
 /**

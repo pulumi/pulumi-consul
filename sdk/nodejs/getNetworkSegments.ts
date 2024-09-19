@@ -26,7 +26,6 @@ import * as utilities from "./utilities";
  */
 export function getNetworkSegments(args?: GetNetworkSegmentsArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkSegmentsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("consul:index/getNetworkSegments:getNetworkSegments", {
         "datacenter": args.datacenter,
@@ -96,7 +95,12 @@ Please use the token argument in the provider configuration
  * ```
  */
 export function getNetworkSegmentsOutput(args?: GetNetworkSegmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkSegmentsResult> {
-    return pulumi.output(args).apply((a: any) => getNetworkSegments(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("consul:index/getNetworkSegments:getNetworkSegments", {
+        "datacenter": args.datacenter,
+        "token": args.token,
+    }, opts);
 }
 
 /**

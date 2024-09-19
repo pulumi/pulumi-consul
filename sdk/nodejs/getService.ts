@@ -36,7 +36,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getService(args: GetServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("consul:index/getService:getService", {
         "datacenter": args.datacenter,
@@ -133,7 +132,14 @@ export interface GetServiceResult {
  * ```
  */
 export function getServiceOutput(args: GetServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceResult> {
-    return pulumi.output(args).apply((a: any) => getService(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("consul:index/getService:getService", {
+        "datacenter": args.datacenter,
+        "filter": args.filter,
+        "name": args.name,
+        "queryOptions": args.queryOptions,
+        "tag": args.tag,
+    }, opts);
 }
 
 /**

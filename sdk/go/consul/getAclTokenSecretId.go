@@ -93,14 +93,20 @@ type GetAclTokenSecretIdResult struct {
 
 func GetAclTokenSecretIdOutput(ctx *pulumi.Context, args GetAclTokenSecretIdOutputArgs, opts ...pulumi.InvokeOption) GetAclTokenSecretIdResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetAclTokenSecretIdResult, error) {
+		ApplyT(func(v interface{}) (GetAclTokenSecretIdResultOutput, error) {
 			args := v.(GetAclTokenSecretIdArgs)
-			r, err := GetAclTokenSecretId(ctx, &args, opts...)
-			var s GetAclTokenSecretIdResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetAclTokenSecretIdResult
+			secret, err := ctx.InvokePackageRaw("consul:index/getAclTokenSecretId:getAclTokenSecretId", args, &rv, "", opts...)
+			if err != nil {
+				return GetAclTokenSecretIdResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetAclTokenSecretIdResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetAclTokenSecretIdResultOutput), nil
+			}
+			return output, nil
 		}).(GetAclTokenSecretIdResultOutput)
 }
 

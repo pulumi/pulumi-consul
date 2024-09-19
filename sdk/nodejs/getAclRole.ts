@@ -22,7 +22,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getAclRole(args: GetAclRoleArgs, opts?: pulumi.InvokeOptions): Promise<GetAclRoleResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("consul:index/getAclRole:getAclRole", {
         "name": args.name,
@@ -106,7 +105,12 @@ export interface GetAclRoleResult {
  * ```
  */
 export function getAclRoleOutput(args: GetAclRoleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAclRoleResult> {
-    return pulumi.output(args).apply((a: any) => getAclRole(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("consul:index/getAclRole:getAclRole", {
+        "name": args.name,
+        "namespace": args.namespace,
+        "partition": args.partition,
+    }, opts);
 }
 
 /**

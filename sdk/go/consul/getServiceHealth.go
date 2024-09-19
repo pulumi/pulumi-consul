@@ -81,14 +81,20 @@ type LookupServiceHealthResult struct {
 
 func LookupServiceHealthOutput(ctx *pulumi.Context, args LookupServiceHealthOutputArgs, opts ...pulumi.InvokeOption) LookupServiceHealthResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupServiceHealthResult, error) {
+		ApplyT(func(v interface{}) (LookupServiceHealthResultOutput, error) {
 			args := v.(LookupServiceHealthArgs)
-			r, err := LookupServiceHealth(ctx, &args, opts...)
-			var s LookupServiceHealthResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupServiceHealthResult
+			secret, err := ctx.InvokePackageRaw("consul:index/getServiceHealth:getServiceHealth", args, &rv, "", opts...)
+			if err != nil {
+				return LookupServiceHealthResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupServiceHealthResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupServiceHealthResultOutput), nil
+			}
+			return output, nil
 		}).(LookupServiceHealthResultOutput)
 }
 

@@ -23,7 +23,6 @@ import * as utilities from "./utilities";
  */
 export function getAutopilotHealth(args?: GetAutopilotHealthArgs, opts?: pulumi.InvokeOptions): Promise<GetAutopilotHealthResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("consul:index/getAutopilotHealth:getAutopilotHealth", {
         "datacenter": args.datacenter,
@@ -82,7 +81,11 @@ export interface GetAutopilotHealthResult {
  * ```
  */
 export function getAutopilotHealthOutput(args?: GetAutopilotHealthOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAutopilotHealthResult> {
-    return pulumi.output(args).apply((a: any) => getAutopilotHealth(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("consul:index/getAutopilotHealth:getAutopilotHealth", {
+        "datacenter": args.datacenter,
+    }, opts);
 }
 
 /**
