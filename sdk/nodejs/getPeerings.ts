@@ -18,7 +18,6 @@ import * as utilities from "./utilities";
  */
 export function getPeerings(args?: GetPeeringsArgs, opts?: pulumi.InvokeOptions): Promise<GetPeeringsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("consul:index/getPeerings:getPeerings", {
         "partition": args.partition,
@@ -54,7 +53,11 @@ export interface GetPeeringsResult {
  * ```
  */
 export function getPeeringsOutput(args?: GetPeeringsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPeeringsResult> {
-    return pulumi.output(args).apply((a: any) => getPeerings(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("consul:index/getPeerings:getPeerings", {
+        "partition": args.partition,
+    }, opts);
 }
 
 /**

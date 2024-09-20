@@ -51,14 +51,20 @@ type LookupConfigEntryResult struct {
 
 func LookupConfigEntryOutput(ctx *pulumi.Context, args LookupConfigEntryOutputArgs, opts ...pulumi.InvokeOption) LookupConfigEntryResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupConfigEntryResult, error) {
+		ApplyT(func(v interface{}) (LookupConfigEntryResultOutput, error) {
 			args := v.(LookupConfigEntryArgs)
-			r, err := LookupConfigEntry(ctx, &args, opts...)
-			var s LookupConfigEntryResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupConfigEntryResult
+			secret, err := ctx.InvokePackageRaw("consul:index/getConfigEntry:getConfigEntry", args, &rv, "", opts...)
+			if err != nil {
+				return LookupConfigEntryResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupConfigEntryResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupConfigEntryResultOutput), nil
+			}
+			return output, nil
 		}).(LookupConfigEntryResultOutput)
 }
 

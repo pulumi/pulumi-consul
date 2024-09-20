@@ -16,7 +16,6 @@ import * as utilities from "./utilities";
  * updated, you should expect different results in a frequent basis.
  */
 export function getServiceHealth(args: GetServiceHealthArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceHealthResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("consul:index/getServiceHealth:getServiceHealth", {
         "datacenter": args.datacenter,
@@ -124,7 +123,17 @@ export interface GetServiceHealthResult {
  * updated, you should expect different results in a frequent basis.
  */
 export function getServiceHealthOutput(args: GetServiceHealthOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceHealthResult> {
-    return pulumi.output(args).apply((a: any) => getServiceHealth(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("consul:index/getServiceHealth:getServiceHealth", {
+        "datacenter": args.datacenter,
+        "filter": args.filter,
+        "name": args.name,
+        "near": args.near,
+        "nodeMeta": args.nodeMeta,
+        "passing": args.passing,
+        "tag": args.tag,
+        "waitFor": args.waitFor,
+    }, opts);
 }
 
 /**

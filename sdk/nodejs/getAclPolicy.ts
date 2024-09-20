@@ -21,7 +21,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getAclPolicy(args: GetAclPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetAclPolicyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("consul:index/getAclPolicy:getAclPolicy", {
         "name": args.name,
@@ -89,7 +88,12 @@ export interface GetAclPolicyResult {
  * ```
  */
 export function getAclPolicyOutput(args: GetAclPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAclPolicyResult> {
-    return pulumi.output(args).apply((a: any) => getAclPolicy(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("consul:index/getAclPolicy:getAclPolicy", {
+        "name": args.name,
+        "namespace": args.namespace,
+        "partition": args.partition,
+    }, opts);
 }
 
 /**

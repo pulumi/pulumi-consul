@@ -5,7 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 export function getConfigEntry(args: GetConfigEntryArgs, opts?: pulumi.InvokeOptions): Promise<GetConfigEntryResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("consul:index/getConfigEntry:getConfigEntry", {
         "kind": args.kind,
@@ -67,7 +66,13 @@ export interface GetConfigEntryResult {
     readonly partition?: string;
 }
 export function getConfigEntryOutput(args: GetConfigEntryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConfigEntryResult> {
-    return pulumi.output(args).apply((a: any) => getConfigEntry(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("consul:index/getConfigEntry:getConfigEntry", {
+        "kind": args.kind,
+        "name": args.name,
+        "namespace": args.namespace,
+        "partition": args.partition,
+    }, opts);
 }
 
 /**
