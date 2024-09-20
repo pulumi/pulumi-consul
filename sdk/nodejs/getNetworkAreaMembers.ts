@@ -30,7 +30,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getNetworkAreaMembers(args: GetNetworkAreaMembersArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkAreaMembersResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("consul:index/getNetworkAreaMembers:getNetworkAreaMembers", {
         "datacenter": args.datacenter,
@@ -112,7 +111,12 @@ Please use the token argument in the provider configuration
  * ```
  */
 export function getNetworkAreaMembersOutput(args: GetNetworkAreaMembersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkAreaMembersResult> {
-    return pulumi.output(args).apply((a: any) => getNetworkAreaMembers(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("consul:index/getNetworkAreaMembers:getNetworkAreaMembers", {
+        "datacenter": args.datacenter,
+        "token": args.token,
+        "uuid": args.uuid,
+    }, opts);
 }
 
 /**

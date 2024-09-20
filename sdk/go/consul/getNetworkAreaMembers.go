@@ -93,14 +93,20 @@ type GetNetworkAreaMembersResult struct {
 
 func GetNetworkAreaMembersOutput(ctx *pulumi.Context, args GetNetworkAreaMembersOutputArgs, opts ...pulumi.InvokeOption) GetNetworkAreaMembersResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetNetworkAreaMembersResult, error) {
+		ApplyT(func(v interface{}) (GetNetworkAreaMembersResultOutput, error) {
 			args := v.(GetNetworkAreaMembersArgs)
-			r, err := GetNetworkAreaMembers(ctx, &args, opts...)
-			var s GetNetworkAreaMembersResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetNetworkAreaMembersResult
+			secret, err := ctx.InvokePackageRaw("consul:index/getNetworkAreaMembers:getNetworkAreaMembers", args, &rv, "", opts...)
+			if err != nil {
+				return GetNetworkAreaMembersResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetNetworkAreaMembersResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetNetworkAreaMembersResultOutput), nil
+			}
+			return output, nil
 		}).(GetNetworkAreaMembersResultOutput)
 }
 

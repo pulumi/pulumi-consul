@@ -24,7 +24,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getAgentConfig(opts?: pulumi.InvokeOptions): Promise<GetAgentConfigResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("consul:index/getAgentConfig:getAgentConfig", {
     }, opts);
@@ -83,5 +82,7 @@ export interface GetAgentConfigResult {
  * ```
  */
 export function getAgentConfigOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetAgentConfigResult> {
-    return pulumi.output(getAgentConfig(opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("consul:index/getAgentConfig:getAgentConfig", {
+    }, opts);
 }

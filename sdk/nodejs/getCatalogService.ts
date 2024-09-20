@@ -38,7 +38,6 @@ import * as utilities from "./utilities";
 /** @deprecated getCatalogService has been deprecated in favor of getService */
 export function getCatalogService(args: GetCatalogServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetCatalogServiceResult> {
     pulumi.log.warn("getCatalogService is deprecated: getCatalogService has been deprecated in favor of getService")
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("consul:index/getCatalogService:getCatalogService", {
         "datacenter": args.datacenter,
@@ -136,7 +135,15 @@ export interface GetCatalogServiceResult {
  */
 /** @deprecated getCatalogService has been deprecated in favor of getService */
 export function getCatalogServiceOutput(args: GetCatalogServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCatalogServiceResult> {
-    return pulumi.output(args).apply((a: any) => getCatalogService(a, opts))
+    pulumi.log.warn("getCatalogService is deprecated: getCatalogService has been deprecated in favor of getService")
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("consul:index/getCatalogService:getCatalogService", {
+        "datacenter": args.datacenter,
+        "filter": args.filter,
+        "name": args.name,
+        "queryOptions": args.queryOptions,
+        "tag": args.tag,
+    }, opts);
 }
 
 /**

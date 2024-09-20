@@ -145,14 +145,20 @@ type LookupKeyPrefixResult struct {
 
 func LookupKeyPrefixOutput(ctx *pulumi.Context, args LookupKeyPrefixOutputArgs, opts ...pulumi.InvokeOption) LookupKeyPrefixResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupKeyPrefixResult, error) {
+		ApplyT(func(v interface{}) (LookupKeyPrefixResultOutput, error) {
 			args := v.(LookupKeyPrefixArgs)
-			r, err := LookupKeyPrefix(ctx, &args, opts...)
-			var s LookupKeyPrefixResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupKeyPrefixResult
+			secret, err := ctx.InvokePackageRaw("consul:index/getKeyPrefix:getKeyPrefix", args, &rv, "", opts...)
+			if err != nil {
+				return LookupKeyPrefixResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupKeyPrefixResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupKeyPrefixResultOutput), nil
+			}
+			return output, nil
 		}).(LookupKeyPrefixResultOutput)
 }
 

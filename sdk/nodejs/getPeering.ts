@@ -17,7 +17,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getPeering(args: GetPeeringArgs, opts?: pulumi.InvokeOptions): Promise<GetPeeringResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("consul:index/getPeering:getPeering", {
         "partition": args.partition,
@@ -64,7 +63,11 @@ export interface GetPeeringResult {
  * ```
  */
 export function getPeeringOutput(args: GetPeeringOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPeeringResult> {
-    return pulumi.output(args).apply((a: any) => getPeering(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("consul:index/getPeering:getPeering", {
+        "partition": args.partition,
+        "peerName": args.peerName,
+    }, opts);
 }
 
 /**

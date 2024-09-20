@@ -30,7 +30,6 @@ import * as utilities from "./utilities";
  */
 export function getKeys(args?: GetKeysArgs, opts?: pulumi.InvokeOptions): Promise<GetKeysResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("consul:index/getKeys:getKeys", {
         "datacenter": args.datacenter,
@@ -138,7 +137,16 @@ Please use the token argument in the provider configuration
  * ```
  */
 export function getKeysOutput(args?: GetKeysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeysResult> {
-    return pulumi.output(args).apply((a: any) => getKeys(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("consul:index/getKeys:getKeys", {
+        "datacenter": args.datacenter,
+        "errorOnMissingKeys": args.errorOnMissingKeys,
+        "keys": args.keys,
+        "namespace": args.namespace,
+        "partition": args.partition,
+        "token": args.token,
+    }, opts);
 }
 
 /**

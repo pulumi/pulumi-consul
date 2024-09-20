@@ -14,7 +14,6 @@ import * as utilities from "./utilities";
  */
 export function getNodes(args?: GetNodesArgs, opts?: pulumi.InvokeOptions): Promise<GetNodesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("consul:index/getNodes:getNodes", {
         "queryOptions": args.queryOptions,
@@ -65,7 +64,11 @@ export interface GetNodesResult {
  * nodes from a different WAN-attached Consul datacenter.
  */
 export function getNodesOutput(args?: GetNodesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNodesResult> {
-    return pulumi.output(args).apply((a: any) => getNodes(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("consul:index/getNodes:getNodes", {
+        "queryOptions": args.queryOptions,
+    }, opts);
 }
 
 /**

@@ -23,7 +23,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getAclAuthMethod(args: GetAclAuthMethodArgs, opts?: pulumi.InvokeOptions): Promise<GetAclAuthMethodResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("consul:index/getAclAuthMethod:getAclAuthMethod", {
         "name": args.name,
@@ -119,7 +118,12 @@ export interface GetAclAuthMethodResult {
  * ```
  */
 export function getAclAuthMethodOutput(args: GetAclAuthMethodOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAclAuthMethodResult> {
-    return pulumi.output(args).apply((a: any) => getAclAuthMethod(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("consul:index/getAclAuthMethod:getAclAuthMethod", {
+        "name": args.name,
+        "namespace": args.namespace,
+        "partition": args.partition,
+    }, opts);
 }
 
 /**

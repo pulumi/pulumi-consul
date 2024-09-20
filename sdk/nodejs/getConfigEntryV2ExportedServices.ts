@@ -5,7 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 export function getConfigEntryV2ExportedServices(args: GetConfigEntryV2ExportedServicesArgs, opts?: pulumi.InvokeOptions): Promise<GetConfigEntryV2ExportedServicesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("consul:index/getConfigEntryV2ExportedServices:getConfigEntryV2ExportedServices", {
         "kind": args.kind,
@@ -99,7 +98,17 @@ export interface GetConfigEntryV2ExportedServicesResult {
     readonly services?: string[];
 }
 export function getConfigEntryV2ExportedServicesOutput(args: GetConfigEntryV2ExportedServicesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConfigEntryV2ExportedServicesResult> {
-    return pulumi.output(args).apply((a: any) => getConfigEntryV2ExportedServices(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("consul:index/getConfigEntryV2ExportedServices:getConfigEntryV2ExportedServices", {
+        "kind": args.kind,
+        "name": args.name,
+        "namespace": args.namespace,
+        "partition": args.partition,
+        "partitionConsumers": args.partitionConsumers,
+        "peerConsumers": args.peerConsumers,
+        "samenessGroupConsumers": args.samenessGroupConsumers,
+        "services": args.services,
+    }, opts);
 }
 
 /**
