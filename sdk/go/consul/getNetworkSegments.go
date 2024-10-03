@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			segments, err := consul.GetNetworkSegments(ctx, nil, nil)
+//			segments, err := consul.GetNetworkSegments(ctx, &consul.GetNetworkSegmentsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

@@ -4,84 +4,175 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
     'AclAuthMethodNamespaceRuleArgs',
+    'AclAuthMethodNamespaceRuleArgsDict',
     'AclBindingRuleBindVarsArgs',
+    'AclBindingRuleBindVarsArgsDict',
     'AclRoleNodeIdentityArgs',
+    'AclRoleNodeIdentityArgsDict',
     'AclRoleServiceIdentityArgs',
+    'AclRoleServiceIdentityArgsDict',
     'AclRoleTemplatedPolicyArgs',
+    'AclRoleTemplatedPolicyArgsDict',
     'AclRoleTemplatedPolicyTemplateVariablesArgs',
+    'AclRoleTemplatedPolicyTemplateVariablesArgsDict',
     'AclTokenNodeIdentityArgs',
+    'AclTokenNodeIdentityArgsDict',
     'AclTokenServiceIdentityArgs',
+    'AclTokenServiceIdentityArgsDict',
     'AclTokenTemplatedPolicyArgs',
+    'AclTokenTemplatedPolicyArgsDict',
     'AclTokenTemplatedPolicyTemplateVariablesArgs',
+    'AclTokenTemplatedPolicyTemplateVariablesArgsDict',
     'CatalogEntryServiceArgs',
+    'CatalogEntryServiceArgsDict',
     'ConfigEntryServiceDefaultsDestinationArgs',
+    'ConfigEntryServiceDefaultsDestinationArgsDict',
     'ConfigEntryServiceDefaultsEnvoyExtensionArgs',
+    'ConfigEntryServiceDefaultsEnvoyExtensionArgsDict',
     'ConfigEntryServiceDefaultsExposeArgs',
+    'ConfigEntryServiceDefaultsExposeArgsDict',
     'ConfigEntryServiceDefaultsExposePathArgs',
+    'ConfigEntryServiceDefaultsExposePathArgsDict',
     'ConfigEntryServiceDefaultsMeshGatewayArgs',
+    'ConfigEntryServiceDefaultsMeshGatewayArgsDict',
     'ConfigEntryServiceDefaultsTransparentProxyArgs',
+    'ConfigEntryServiceDefaultsTransparentProxyArgsDict',
     'ConfigEntryServiceDefaultsUpstreamConfigArgs',
+    'ConfigEntryServiceDefaultsUpstreamConfigArgsDict',
     'ConfigEntryServiceDefaultsUpstreamConfigDefaultArgs',
+    'ConfigEntryServiceDefaultsUpstreamConfigDefaultArgsDict',
     'ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitArgs',
+    'ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitArgsDict',
     'ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayArgs',
+    'ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayArgsDict',
     'ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckArgs',
+    'ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckArgsDict',
     'ConfigEntryServiceDefaultsUpstreamConfigOverrideArgs',
+    'ConfigEntryServiceDefaultsUpstreamConfigOverrideArgsDict',
     'ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitArgs',
+    'ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitArgsDict',
     'ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArgs',
+    'ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArgsDict',
     'ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckArgs',
+    'ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckArgsDict',
     'ConfigEntryServiceIntentionsJwtArgs',
+    'ConfigEntryServiceIntentionsJwtArgsDict',
     'ConfigEntryServiceIntentionsJwtProviderArgs',
+    'ConfigEntryServiceIntentionsJwtProviderArgsDict',
     'ConfigEntryServiceIntentionsJwtProviderVerifyClaimArgs',
+    'ConfigEntryServiceIntentionsJwtProviderVerifyClaimArgsDict',
     'ConfigEntryServiceIntentionsSourceArgs',
+    'ConfigEntryServiceIntentionsSourceArgsDict',
     'ConfigEntryServiceIntentionsSourcePermissionArgs',
+    'ConfigEntryServiceIntentionsSourcePermissionArgsDict',
     'ConfigEntryServiceIntentionsSourcePermissionHttpArgs',
+    'ConfigEntryServiceIntentionsSourcePermissionHttpArgsDict',
     'ConfigEntryServiceIntentionsSourcePermissionHttpHeaderArgs',
+    'ConfigEntryServiceIntentionsSourcePermissionHttpHeaderArgsDict',
     'ConfigEntryServiceResolverFailoverArgs',
+    'ConfigEntryServiceResolverFailoverArgsDict',
     'ConfigEntryServiceResolverFailoverTargetArgs',
+    'ConfigEntryServiceResolverFailoverTargetArgsDict',
     'ConfigEntryServiceResolverLoadBalancerArgs',
+    'ConfigEntryServiceResolverLoadBalancerArgsDict',
     'ConfigEntryServiceResolverLoadBalancerHashPolicyArgs',
+    'ConfigEntryServiceResolverLoadBalancerHashPolicyArgsDict',
     'ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigArgs',
+    'ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigArgsDict',
     'ConfigEntryServiceResolverLoadBalancerLeastRequestConfigArgs',
+    'ConfigEntryServiceResolverLoadBalancerLeastRequestConfigArgsDict',
     'ConfigEntryServiceResolverLoadBalancerRingHashConfigArgs',
+    'ConfigEntryServiceResolverLoadBalancerRingHashConfigArgsDict',
     'ConfigEntryServiceResolverRedirectArgs',
+    'ConfigEntryServiceResolverRedirectArgsDict',
     'ConfigEntryServiceResolverSubsetArgs',
+    'ConfigEntryServiceResolverSubsetArgsDict',
     'ConfigEntryServiceRouterRouteArgs',
+    'ConfigEntryServiceRouterRouteArgsDict',
     'ConfigEntryServiceRouterRouteDestinationArgs',
+    'ConfigEntryServiceRouterRouteDestinationArgsDict',
     'ConfigEntryServiceRouterRouteDestinationRequestHeadersArgs',
+    'ConfigEntryServiceRouterRouteDestinationRequestHeadersArgsDict',
     'ConfigEntryServiceRouterRouteDestinationResponseHeadersArgs',
+    'ConfigEntryServiceRouterRouteDestinationResponseHeadersArgsDict',
     'ConfigEntryServiceRouterRouteMatchArgs',
+    'ConfigEntryServiceRouterRouteMatchArgsDict',
     'ConfigEntryServiceRouterRouteMatchHttpArgs',
+    'ConfigEntryServiceRouterRouteMatchHttpArgsDict',
     'ConfigEntryServiceRouterRouteMatchHttpHeaderArgs',
+    'ConfigEntryServiceRouterRouteMatchHttpHeaderArgsDict',
     'ConfigEntryServiceRouterRouteMatchHttpQueryParamArgs',
+    'ConfigEntryServiceRouterRouteMatchHttpQueryParamArgsDict',
     'ConfigEntryServiceSplitterSplitArgs',
+    'ConfigEntryServiceSplitterSplitArgsDict',
     'ConfigEntryServiceSplitterSplitRequestHeadersArgs',
+    'ConfigEntryServiceSplitterSplitRequestHeadersArgsDict',
     'ConfigEntryServiceSplitterSplitResponseHeadersArgs',
+    'ConfigEntryServiceSplitterSplitResponseHeadersArgsDict',
     'KeyPrefixSubkeyCollectionArgs',
+    'KeyPrefixSubkeyCollectionArgsDict',
     'KeysKeyArgs',
+    'KeysKeyArgsDict',
     'PreparedQueryDnsArgs',
+    'PreparedQueryDnsArgsDict',
     'PreparedQueryFailoverArgs',
+    'PreparedQueryFailoverArgsDict',
     'PreparedQueryFailoverTargetArgs',
+    'PreparedQueryFailoverTargetArgsDict',
     'PreparedQueryTemplateArgs',
+    'PreparedQueryTemplateArgsDict',
     'ProviderAuthJwtArgs',
+    'ProviderAuthJwtArgsDict',
     'ProviderHeaderArgs',
+    'ProviderHeaderArgsDict',
     'ServiceCheckArgs',
+    'ServiceCheckArgsDict',
     'ServiceCheckHeaderArgs',
+    'ServiceCheckHeaderArgsDict',
     'GetCatalogNodesQueryOptionArgs',
+    'GetCatalogNodesQueryOptionArgsDict',
     'GetCatalogServiceQueryOptionArgs',
+    'GetCatalogServiceQueryOptionArgsDict',
     'GetCatalogServicesQueryOptionArgs',
+    'GetCatalogServicesQueryOptionArgsDict',
     'GetKeyPrefixSubkeyCollectionArgs',
+    'GetKeyPrefixSubkeyCollectionArgsDict',
     'GetKeysKeyArgs',
+    'GetKeysKeyArgsDict',
     'GetNodesQueryOptionArgs',
+    'GetNodesQueryOptionArgsDict',
     'GetServiceQueryOptionArgs',
+    'GetServiceQueryOptionArgsDict',
     'GetServicesQueryOptionArgs',
+    'GetServicesQueryOptionArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class AclAuthMethodNamespaceRuleArgsDict(TypedDict):
+        bind_namespace: pulumi.Input[str]
+        """
+        If the namespace rule's `selector` matches then this is used to control the namespace where the token is created.
+        """
+        selector: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the expression used to match this namespace rule against valid identities returned from an auth method validation.
+        """
+elif False:
+    AclAuthMethodNamespaceRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AclAuthMethodNamespaceRuleArgs:
@@ -121,6 +212,15 @@ class AclAuthMethodNamespaceRuleArgs:
         pulumi.set(self, "selector", value)
 
 
+if not MYPY:
+    class AclBindingRuleBindVarsArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The name of node, workload identity or service.
+        """
+elif False:
+    AclBindingRuleBindVarsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AclBindingRuleBindVarsArgs:
     def __init__(__self__, *,
@@ -143,6 +243,19 @@ class AclBindingRuleBindVarsArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class AclRoleNodeIdentityArgsDict(TypedDict):
+        datacenter: pulumi.Input[str]
+        """
+        Specifies the node's datacenter.
+        """
+        node_name: pulumi.Input[str]
+        """
+        The name of the node.
+        """
+elif False:
+    AclRoleNodeIdentityArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AclRoleNodeIdentityArgs:
@@ -181,6 +294,19 @@ class AclRoleNodeIdentityArgs:
         pulumi.set(self, "node_name", value)
 
 
+if not MYPY:
+    class AclRoleServiceIdentityArgsDict(TypedDict):
+        service_name: pulumi.Input[str]
+        """
+        The name of the service.
+        """
+        datacenters: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The datacenters the effective policy is valid within. When no datacenters are provided the effective policy is valid in all datacenters including those which do not yet exist but may in the future.
+        """
+elif False:
+    AclRoleServiceIdentityArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AclRoleServiceIdentityArgs:
     def __init__(__self__, *,
@@ -218,6 +344,23 @@ class AclRoleServiceIdentityArgs:
     def datacenters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "datacenters", value)
 
+
+if not MYPY:
+    class AclRoleTemplatedPolicyArgsDict(TypedDict):
+        template_name: pulumi.Input[str]
+        """
+        The name of the templated policies.
+        """
+        datacenters: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specifies the datacenters the effective policy is valid within.
+        """
+        template_variables: NotRequired[pulumi.Input['AclRoleTemplatedPolicyTemplateVariablesArgsDict']]
+        """
+        The templated policy variables.
+        """
+elif False:
+    AclRoleTemplatedPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AclRoleTemplatedPolicyArgs:
@@ -273,6 +416,15 @@ class AclRoleTemplatedPolicyArgs:
         pulumi.set(self, "template_variables", value)
 
 
+if not MYPY:
+    class AclRoleTemplatedPolicyTemplateVariablesArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The name of node, workload identity or service.
+        """
+elif False:
+    AclRoleTemplatedPolicyTemplateVariablesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AclRoleTemplatedPolicyTemplateVariablesArgs:
     def __init__(__self__, *,
@@ -295,6 +447,19 @@ class AclRoleTemplatedPolicyTemplateVariablesArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class AclTokenNodeIdentityArgsDict(TypedDict):
+        datacenter: pulumi.Input[str]
+        """
+        The datacenter of the node.
+        """
+        node_name: pulumi.Input[str]
+        """
+        The name of the node.
+        """
+elif False:
+    AclTokenNodeIdentityArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AclTokenNodeIdentityArgs:
@@ -333,6 +498,19 @@ class AclTokenNodeIdentityArgs:
         pulumi.set(self, "node_name", value)
 
 
+if not MYPY:
+    class AclTokenServiceIdentityArgsDict(TypedDict):
+        service_name: pulumi.Input[str]
+        """
+        The name of the service.
+        """
+        datacenters: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specifies the datacenters the effective policy is valid within.
+        """
+elif False:
+    AclTokenServiceIdentityArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AclTokenServiceIdentityArgs:
     def __init__(__self__, *,
@@ -370,6 +548,23 @@ class AclTokenServiceIdentityArgs:
     def datacenters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "datacenters", value)
 
+
+if not MYPY:
+    class AclTokenTemplatedPolicyArgsDict(TypedDict):
+        template_name: pulumi.Input[str]
+        """
+        The name of the templated policies.
+        """
+        datacenters: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specifies the datacenters the effective policy is valid within.
+        """
+        template_variables: NotRequired[pulumi.Input['AclTokenTemplatedPolicyTemplateVariablesArgsDict']]
+        """
+        The templated policy variables.
+        """
+elif False:
+    AclTokenTemplatedPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AclTokenTemplatedPolicyArgs:
@@ -425,6 +620,15 @@ class AclTokenTemplatedPolicyArgs:
         pulumi.set(self, "template_variables", value)
 
 
+if not MYPY:
+    class AclTokenTemplatedPolicyTemplateVariablesArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The name of node, workload identity or service.
+        """
+elif False:
+    AclTokenTemplatedPolicyTemplateVariablesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AclTokenTemplatedPolicyTemplateVariablesArgs:
     def __init__(__self__, *,
@@ -447,6 +651,33 @@ class AclTokenTemplatedPolicyTemplateVariablesArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class CatalogEntryServiceArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The name of the service
+        """
+        address: NotRequired[pulumi.Input[str]]
+        """
+        The address of the service. Defaults to the
+        node address.
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of the service. Defaults to the `name`.
+        """
+        port: NotRequired[pulumi.Input[int]]
+        """
+        The port of the service.
+        """
+        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of values that are opaque to Consul,
+        but can be used to distinguish between services or nodes.
+        """
+elif False:
+    CatalogEntryServiceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CatalogEntryServiceArgs:
@@ -538,6 +769,13 @@ class CatalogEntryServiceArgs:
         pulumi.set(self, "tags", value)
 
 
+if not MYPY:
+    class ConfigEntryServiceDefaultsDestinationArgsDict(TypedDict):
+        addresses: pulumi.Input[Sequence[pulumi.Input[str]]]
+        port: pulumi.Input[int]
+elif False:
+    ConfigEntryServiceDefaultsDestinationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConfigEntryServiceDefaultsDestinationArgs:
     def __init__(__self__, *,
@@ -564,6 +802,16 @@ class ConfigEntryServiceDefaultsDestinationArgs:
     def port(self, value: pulumi.Input[int]):
         pulumi.set(self, "port", value)
 
+
+if not MYPY:
+    class ConfigEntryServiceDefaultsEnvoyExtensionArgsDict(TypedDict):
+        arguments: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        consul_version: NotRequired[pulumi.Input[str]]
+        envoy_version: NotRequired[pulumi.Input[str]]
+        name: NotRequired[pulumi.Input[str]]
+        required: NotRequired[pulumi.Input[bool]]
+elif False:
+    ConfigEntryServiceDefaultsEnvoyExtensionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConfigEntryServiceDefaultsEnvoyExtensionArgs:
@@ -630,6 +878,13 @@ class ConfigEntryServiceDefaultsEnvoyExtensionArgs:
         pulumi.set(self, "required", value)
 
 
+if not MYPY:
+    class ConfigEntryServiceDefaultsExposeArgsDict(TypedDict):
+        checks: NotRequired[pulumi.Input[bool]]
+        paths: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceDefaultsExposePathArgsDict']]]]
+elif False:
+    ConfigEntryServiceDefaultsExposeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConfigEntryServiceDefaultsExposeArgs:
     def __init__(__self__, *,
@@ -658,6 +913,15 @@ class ConfigEntryServiceDefaultsExposeArgs:
     def paths(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceDefaultsExposePathArgs']]]]):
         pulumi.set(self, "paths", value)
 
+
+if not MYPY:
+    class ConfigEntryServiceDefaultsExposePathArgsDict(TypedDict):
+        listener_port: NotRequired[pulumi.Input[int]]
+        local_path_port: NotRequired[pulumi.Input[int]]
+        path: NotRequired[pulumi.Input[str]]
+        protocol: NotRequired[pulumi.Input[str]]
+elif False:
+    ConfigEntryServiceDefaultsExposePathArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConfigEntryServiceDefaultsExposePathArgs:
@@ -712,6 +976,12 @@ class ConfigEntryServiceDefaultsExposePathArgs:
         pulumi.set(self, "protocol", value)
 
 
+if not MYPY:
+    class ConfigEntryServiceDefaultsMeshGatewayArgsDict(TypedDict):
+        mode: pulumi.Input[str]
+elif False:
+    ConfigEntryServiceDefaultsMeshGatewayArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConfigEntryServiceDefaultsMeshGatewayArgs:
     def __init__(__self__, *,
@@ -727,6 +997,13 @@ class ConfigEntryServiceDefaultsMeshGatewayArgs:
     def mode(self, value: pulumi.Input[str]):
         pulumi.set(self, "mode", value)
 
+
+if not MYPY:
+    class ConfigEntryServiceDefaultsTransparentProxyArgsDict(TypedDict):
+        dialed_directly: pulumi.Input[bool]
+        outbound_listener_port: pulumi.Input[int]
+elif False:
+    ConfigEntryServiceDefaultsTransparentProxyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConfigEntryServiceDefaultsTransparentProxyArgs:
@@ -754,6 +1031,19 @@ class ConfigEntryServiceDefaultsTransparentProxyArgs:
     def outbound_listener_port(self, value: pulumi.Input[int]):
         pulumi.set(self, "outbound_listener_port", value)
 
+
+if not MYPY:
+    class ConfigEntryServiceDefaultsUpstreamConfigArgsDict(TypedDict):
+        defaults: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceDefaultsUpstreamConfigDefaultArgsDict']]]]
+        """
+        Specifies configurations that set default upstream settings. For information about overriding the default configurations for in for individual upstreams, refer to UpstreamConfig.Overrides.
+        """
+        overrides: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceDefaultsUpstreamConfigOverrideArgsDict']]]]
+        """
+        Specifies options that override the default upstream configurations for individual upstreams.
+        """
+elif False:
+    ConfigEntryServiceDefaultsUpstreamConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConfigEntryServiceDefaultsUpstreamConfigArgs:
@@ -793,6 +1083,32 @@ class ConfigEntryServiceDefaultsUpstreamConfigArgs:
     def overrides(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceDefaultsUpstreamConfigOverrideArgs']]]]):
         pulumi.set(self, "overrides", value)
 
+
+if not MYPY:
+    class ConfigEntryServiceDefaultsUpstreamConfigDefaultArgsDict(TypedDict):
+        balance_outbound_connections: NotRequired[pulumi.Input[str]]
+        """
+        Sets the strategy for allocating outbound connections from upstreams across Envoy proxy threads.
+        """
+        connect_timeout_ms: NotRequired[pulumi.Input[int]]
+        limits: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitArgsDict']]]]
+        """
+        Map that specifies a set of limits to apply to when connecting upstream services.
+        """
+        mesh_gateways: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayArgsDict']]]]
+        """
+        Specifies the default mesh gateway mode field for all upstreams.
+        """
+        passive_health_checks: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckArgsDict']]]]
+        """
+        Map that specifies a set of rules that enable Consul to remove hosts from the upstream cluster that are unreachable or that return errors.
+        """
+        protocol: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the default protocol for the service.
+        """
+elif False:
+    ConfigEntryServiceDefaultsUpstreamConfigDefaultArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConfigEntryServiceDefaultsUpstreamConfigDefaultArgs:
@@ -893,6 +1209,23 @@ class ConfigEntryServiceDefaultsUpstreamConfigDefaultArgs:
         pulumi.set(self, "protocol", value)
 
 
+if not MYPY:
+    class ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitArgsDict(TypedDict):
+        max_concurrent_requests: NotRequired[pulumi.Input[int]]
+        """
+        Specifies the maximum number of concurrent requests.
+        """
+        max_connections: NotRequired[pulumi.Input[int]]
+        """
+        Specifies the maximum number of connections a service instance can establish against the upstream.
+        """
+        max_pending_requests: NotRequired[pulumi.Input[int]]
+        """
+        Specifies the maximum number of requests that are queued while waiting for a connection to establish.
+        """
+elif False:
+    ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitArgs:
     def __init__(__self__, *,
@@ -948,6 +1281,12 @@ class ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitArgs:
         pulumi.set(self, "max_pending_requests", value)
 
 
+if not MYPY:
+    class ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayArgsDict(TypedDict):
+        mode: NotRequired[pulumi.Input[str]]
+elif False:
+    ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayArgs:
     def __init__(__self__, *,
@@ -964,6 +1303,31 @@ class ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayArgs:
     def mode(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "mode", value)
 
+
+if not MYPY:
+    class ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckArgsDict(TypedDict):
+        base_ejection_time: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the minimum amount of time that an ejected host must remain outside the cluster before rejoining.
+        """
+        enforcing_consecutive5xx: NotRequired[pulumi.Input[int]]
+        """
+        Specifies a percentage that indicates how many times out of 100 that Consul ejects the host when it detects an outlier status.
+        """
+        interval: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the time between checks.
+        """
+        max_ejection_percent: NotRequired[pulumi.Input[int]]
+        """
+        Specifies the maximum percentage of an upstream cluster that Consul ejects when the proxy reports an outlier.
+        """
+        max_failures: NotRequired[pulumi.Input[int]]
+        """
+        Specifies the number of consecutive failures allowed per check interval. If exceeded, Consul removes the host from the load balancer.
+        """
+elif False:
+    ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckArgs:
@@ -1051,6 +1415,49 @@ class ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckArgs:
     def max_failures(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_failures", value)
 
+
+if not MYPY:
+    class ConfigEntryServiceDefaultsUpstreamConfigOverrideArgsDict(TypedDict):
+        balance_outbound_connections: NotRequired[pulumi.Input[str]]
+        """
+        Sets the strategy for allocating outbound connections from upstreams across Envoy proxy threads.
+        """
+        connect_timeout_ms: NotRequired[pulumi.Input[int]]
+        envoy_listener_json: NotRequired[pulumi.Input[str]]
+        limits: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitArgsDict']]]]
+        """
+        Map that specifies a set of limits to apply to when connecting upstream services.
+        """
+        mesh_gateways: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArgsDict']]]]
+        """
+        Specifies the default mesh gateway mode field for all upstreams.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the name of the service you are setting the defaults for.
+        """
+        namespace: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the namespace containing the upstream service that the configuration applies to.
+        """
+        partition: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the name of the name of the Consul admin partition that the configuration entry applies to.
+        """
+        passive_health_checks: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckArgsDict']]]]
+        """
+        Map that specifies a set of rules that enable Consul to remove hosts from the upstream cluster that are unreachable or that return errors.
+        """
+        peer: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the peer name of the upstream service that the configuration applies to.
+        """
+        protocol: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the default protocol for the service.
+        """
+elif False:
+    ConfigEntryServiceDefaultsUpstreamConfigOverrideArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConfigEntryServiceDefaultsUpstreamConfigOverrideArgs:
@@ -1227,6 +1634,23 @@ class ConfigEntryServiceDefaultsUpstreamConfigOverrideArgs:
         pulumi.set(self, "protocol", value)
 
 
+if not MYPY:
+    class ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitArgsDict(TypedDict):
+        max_concurrent_requests: NotRequired[pulumi.Input[int]]
+        """
+        Specifies the maximum number of concurrent requests.
+        """
+        max_connections: NotRequired[pulumi.Input[int]]
+        """
+        Specifies the maximum number of connections a service instance can establish against the upstream.
+        """
+        max_pending_requests: NotRequired[pulumi.Input[int]]
+        """
+        Specifies the maximum number of requests that are queued while waiting for a connection to establish.
+        """
+elif False:
+    ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitArgs:
     def __init__(__self__, *,
@@ -1282,6 +1706,12 @@ class ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitArgs:
         pulumi.set(self, "max_pending_requests", value)
 
 
+if not MYPY:
+    class ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArgsDict(TypedDict):
+        mode: NotRequired[pulumi.Input[str]]
+elif False:
+    ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArgs:
     def __init__(__self__, *,
@@ -1298,6 +1728,31 @@ class ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArgs:
     def mode(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "mode", value)
 
+
+if not MYPY:
+    class ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckArgsDict(TypedDict):
+        base_ejection_time: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the minimum amount of time that an ejected host must remain outside the cluster before rejoining.
+        """
+        enforcing_consecutive5xx: NotRequired[pulumi.Input[int]]
+        """
+        Specifies a percentage that indicates how many times out of 100 that Consul ejects the host when it detects an outlier status.
+        """
+        interval: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the time between checks.
+        """
+        max_ejection_percent: NotRequired[pulumi.Input[int]]
+        """
+        Specifies the maximum percentage of an upstream cluster that Consul ejects when the proxy reports an outlier.
+        """
+        max_failures: NotRequired[pulumi.Input[int]]
+        """
+        Specifies the number of consecutive failures allowed per check interval. If exceeded, Consul removes the host from the load balancer.
+        """
+elif False:
+    ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckArgs:
@@ -1386,6 +1841,15 @@ class ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckArgs:
         pulumi.set(self, "max_failures", value)
 
 
+if not MYPY:
+    class ConfigEntryServiceIntentionsJwtArgsDict(TypedDict):
+        providers: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceIntentionsJwtProviderArgsDict']]]]
+        """
+        Specifies the names of one or more previously configured JWT provider configuration entries, which include the information necessary to validate a JSON web token.
+        """
+elif False:
+    ConfigEntryServiceIntentionsJwtArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConfigEntryServiceIntentionsJwtArgs:
     def __init__(__self__, *,
@@ -1408,6 +1872,19 @@ class ConfigEntryServiceIntentionsJwtArgs:
     def providers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceIntentionsJwtProviderArgs']]]]):
         pulumi.set(self, "providers", value)
 
+
+if not MYPY:
+    class ConfigEntryServiceIntentionsJwtProviderArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the name of a JWT provider defined in the Name field of the jwt-provider configuration entry.
+        """
+        verify_claims: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceIntentionsJwtProviderVerifyClaimArgsDict']]]]
+        """
+        Specifies additional token information to verify beyond what is configured in the JWT provider configuration entry.
+        """
+elif False:
+    ConfigEntryServiceIntentionsJwtProviderArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConfigEntryServiceIntentionsJwtProviderArgs:
@@ -1448,6 +1925,19 @@ class ConfigEntryServiceIntentionsJwtProviderArgs:
         pulumi.set(self, "verify_claims", value)
 
 
+if not MYPY:
+    class ConfigEntryServiceIntentionsJwtProviderVerifyClaimArgsDict(TypedDict):
+        paths: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specifies the path to the claim in the JSON web token.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the value to match on when verifying the the claim designated in path.
+        """
+elif False:
+    ConfigEntryServiceIntentionsJwtProviderVerifyClaimArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConfigEntryServiceIntentionsJwtProviderVerifyClaimArgs:
     def __init__(__self__, *,
@@ -1486,6 +1976,51 @@ class ConfigEntryServiceIntentionsJwtProviderVerifyClaimArgs:
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class ConfigEntryServiceIntentionsSourceArgsDict(TypedDict):
+        action: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the action to take when the source sends traffic to the destination service.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Specifies a description of the intention.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the name of the source that the intention allows or denies traffic from.
+        """
+        namespace: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the traffic source namespace that the intention allows or denies traffic from.
+        """
+        partition: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the name of an admin partition that the intention allows or denies traffic from.
+        """
+        peer: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the name of a peered Consul cluster that the intention allows or denies traffic from
+        """
+        permissions: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceIntentionsSourcePermissionArgsDict']]]]
+        """
+        Specifies a list of permissions for L7 traffic sources. The list contains one or more actions and a set of match criteria for each action.
+        """
+        precedence: NotRequired[pulumi.Input[int]]
+        """
+        The Precedence field contains a read-only integer. Consul generates the value based on name configurations for the source and destination services.
+        """
+        sameness_group: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the name of a sameness group that the intention allows or denies traffic from.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the type of destination service that the configuration entry applies to.
+        """
+elif False:
+    ConfigEntryServiceIntentionsSourceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConfigEntryServiceIntentionsSourceArgs:
@@ -1654,6 +2189,19 @@ class ConfigEntryServiceIntentionsSourceArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class ConfigEntryServiceIntentionsSourcePermissionArgsDict(TypedDict):
+        action: pulumi.Input[str]
+        """
+        Specifies the action to take when the source sends traffic to the destination service. The value is either allow or deny.
+        """
+        https: pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceIntentionsSourcePermissionHttpArgsDict']]]
+        """
+        Specifies a set of HTTP-specific match criteria.
+        """
+elif False:
+    ConfigEntryServiceIntentionsSourcePermissionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConfigEntryServiceIntentionsSourcePermissionArgs:
     def __init__(__self__, *,
@@ -1690,6 +2238,31 @@ class ConfigEntryServiceIntentionsSourcePermissionArgs:
     def https(self, value: pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceIntentionsSourcePermissionHttpArgs']]]):
         pulumi.set(self, "https", value)
 
+
+if not MYPY:
+    class ConfigEntryServiceIntentionsSourcePermissionHttpArgsDict(TypedDict):
+        headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceIntentionsSourcePermissionHttpHeaderArgsDict']]]]
+        """
+        Specifies a header name and matching criteria for HTTP request headers.
+        """
+        methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specifies a list of HTTP methods.
+        """
+        path_exact: NotRequired[pulumi.Input[str]]
+        """
+        Specifies an exact path to match on the HTTP request path.
+        """
+        path_prefix: NotRequired[pulumi.Input[str]]
+        """
+        Specifies a path prefix to match on the HTTP request path.
+        """
+        path_regex: NotRequired[pulumi.Input[str]]
+        """
+        Defines a regular expression to match on the HTTP request path.
+        """
+elif False:
+    ConfigEntryServiceIntentionsSourcePermissionHttpArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConfigEntryServiceIntentionsSourcePermissionHttpArgs:
@@ -1777,6 +2350,39 @@ class ConfigEntryServiceIntentionsSourcePermissionHttpArgs:
     def path_regex(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "path_regex", value)
 
+
+if not MYPY:
+    class ConfigEntryServiceIntentionsSourcePermissionHttpHeaderArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Specifies the name of the header to match.
+        """
+        exact: NotRequired[pulumi.Input[str]]
+        """
+        Specifies a value for the header key set in the Name field. If the request header value matches the Exact value, Consul applies the permission.
+        """
+        invert: NotRequired[pulumi.Input[bool]]
+        """
+        Inverts the matching logic configured in the Header.
+        """
+        prefix: NotRequired[pulumi.Input[str]]
+        """
+        Specifies a prefix value for the header key set in the Name field.
+        """
+        present: NotRequired[pulumi.Input[bool]]
+        """
+        Enables a match if the header configured in the Name field appears in the request. Consul matches on any value as long as the header key appears in the request.
+        """
+        regex: NotRequired[pulumi.Input[str]]
+        """
+        Specifies a regular expression pattern as the value for the header key set in the Name field.
+        """
+        suffix: NotRequired[pulumi.Input[str]]
+        """
+        Specifies a suffix value for the header key set in the Name field.
+        """
+elif False:
+    ConfigEntryServiceIntentionsSourcePermissionHttpHeaderArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConfigEntryServiceIntentionsSourcePermissionHttpHeaderArgs:
@@ -1896,6 +2502,39 @@ class ConfigEntryServiceIntentionsSourcePermissionHttpHeaderArgs:
         pulumi.set(self, "suffix", value)
 
 
+if not MYPY:
+    class ConfigEntryServiceResolverFailoverArgsDict(TypedDict):
+        subset_name: pulumi.Input[str]
+        """
+        Name of subset.
+        """
+        datacenters: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specifies an ordered list of datacenters at the failover location to attempt connections to during a failover scenario. When Consul cannot establish a connection with the first datacenter in the list, it proceeds sequentially until establishing a connection with another datacenter.
+        """
+        namespace: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the namespace at the failover location where the failover services are deployed.
+        """
+        sameness_group: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the sameness group at the failover location where the failover services are deployed.
+        """
+        service: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the name of the service to resolve at the failover location during a failover scenario.
+        """
+        service_subset: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the name of a subset of service instances to resolve at the failover location during a failover scenario.
+        """
+        targets: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceResolverFailoverTargetArgsDict']]]]
+        """
+        Specifies a fixed list of failover targets to try during failover. This list can express complicated failover scenarios.
+        """
+elif False:
+    ConfigEntryServiceResolverFailoverArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConfigEntryServiceResolverFailoverArgs:
     def __init__(__self__, *,
@@ -2014,6 +2653,35 @@ class ConfigEntryServiceResolverFailoverArgs:
         pulumi.set(self, "targets", value)
 
 
+if not MYPY:
+    class ConfigEntryServiceResolverFailoverTargetArgsDict(TypedDict):
+        datacenter: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the WAN federated datacenter to use for the failover target. If empty, the current datacenter is used.
+        """
+        namespace: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the namespace to use for the failover target. If empty, the default namespace is used.
+        """
+        partition: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the admin partition within the same datacenter to use for the failover target. If empty, the default partition is used.
+        """
+        peer: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the destination cluster peer to resolve the target service name from.
+        """
+        service: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the service name to use for the failover target. If empty, the current service name is used.
+        """
+        service_subset: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the named subset to use for the failover target. If empty, the default subset for the requested service name is used.
+        """
+elif False:
+    ConfigEntryServiceResolverFailoverTargetArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConfigEntryServiceResolverFailoverTargetArgs:
     def __init__(__self__, *,
@@ -2117,6 +2785,27 @@ class ConfigEntryServiceResolverFailoverTargetArgs:
         pulumi.set(self, "service_subset", value)
 
 
+if not MYPY:
+    class ConfigEntryServiceResolverLoadBalancerArgsDict(TypedDict):
+        hash_policies: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceResolverLoadBalancerHashPolicyArgsDict']]]]
+        """
+        Specifies a list of hash policies to use for hashing load balancing algorithms. Consul evaluates hash policies individually and combines them so that identical lists result in the same hash.
+        """
+        least_request_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceResolverLoadBalancerLeastRequestConfigArgsDict']]]]
+        """
+        Specifies configuration for the least*request policy type.
+        """
+        policy: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the type of load balancing policy for selecting a host.
+        """
+        ring_hash_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceResolverLoadBalancerRingHashConfigArgsDict']]]]
+        """
+        Specifies configuration for the ring*hash policy type.
+        """
+elif False:
+    ConfigEntryServiceResolverLoadBalancerArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConfigEntryServiceResolverLoadBalancerArgs:
     def __init__(__self__, *,
@@ -2187,6 +2876,31 @@ class ConfigEntryServiceResolverLoadBalancerArgs:
     def ring_hash_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceResolverLoadBalancerRingHashConfigArgs']]]]):
         pulumi.set(self, "ring_hash_configs", value)
 
+
+if not MYPY:
+    class ConfigEntryServiceResolverLoadBalancerHashPolicyArgsDict(TypedDict):
+        cookie_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigArgsDict']]]]
+        """
+        Specifies additional configuration options for the cookie hash policy type.
+        """
+        field: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the attribute type to hash on. You cannot specify the Field parameter if SourceIP is also configured.
+        """
+        field_value: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the value to hash, such as a header name, cookie name, or a URL query parameter name.
+        """
+        source_ip: NotRequired[pulumi.Input[bool]]
+        """
+        Determines if the hash type should be source IP address.
+        """
+        terminal: NotRequired[pulumi.Input[bool]]
+        """
+        Determines if Consul should stop computing the hash when multiple hash policies are present.
+        """
+elif False:
+    ConfigEntryServiceResolverLoadBalancerHashPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConfigEntryServiceResolverLoadBalancerHashPolicyArgs:
@@ -2275,6 +2989,23 @@ class ConfigEntryServiceResolverLoadBalancerHashPolicyArgs:
         pulumi.set(self, "terminal", value)
 
 
+if not MYPY:
+    class ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigArgsDict(TypedDict):
+        path: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the path to set for the cookie.
+        """
+        session: NotRequired[pulumi.Input[bool]]
+        """
+        Directs Consul to generate a session cookie with no expiration.
+        """
+        ttl: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the TTL for generated cookies. Cannot be specified for session cookies.
+        """
+elif False:
+    ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigArgs:
     def __init__(__self__, *,
@@ -2330,6 +3061,12 @@ class ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigArgs:
         pulumi.set(self, "ttl", value)
 
 
+if not MYPY:
+    class ConfigEntryServiceResolverLoadBalancerLeastRequestConfigArgsDict(TypedDict):
+        choice_count: NotRequired[pulumi.Input[int]]
+elif False:
+    ConfigEntryServiceResolverLoadBalancerLeastRequestConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConfigEntryServiceResolverLoadBalancerLeastRequestConfigArgs:
     def __init__(__self__, *,
@@ -2346,6 +3083,19 @@ class ConfigEntryServiceResolverLoadBalancerLeastRequestConfigArgs:
     def choice_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "choice_count", value)
 
+
+if not MYPY:
+    class ConfigEntryServiceResolverLoadBalancerRingHashConfigArgsDict(TypedDict):
+        maximum_ring_size: NotRequired[pulumi.Input[int]]
+        """
+        Determines the maximum number of entries in the hash ring.
+        """
+        minimum_ring_size: NotRequired[pulumi.Input[int]]
+        """
+        Determines the minimum number of entries in the hash ring.
+        """
+elif False:
+    ConfigEntryServiceResolverLoadBalancerRingHashConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConfigEntryServiceResolverLoadBalancerRingHashConfigArgs:
@@ -2385,6 +3135,39 @@ class ConfigEntryServiceResolverLoadBalancerRingHashConfigArgs:
     def minimum_ring_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "minimum_ring_size", value)
 
+
+if not MYPY:
+    class ConfigEntryServiceResolverRedirectArgsDict(TypedDict):
+        datacenter: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the datacenter at the redirect’s destination that resolves local upstream requests.
+        """
+        namespace: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the namespace at the redirect’s destination that resolves local upstream requests.
+        """
+        partition: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the admin partition at the redirect’s destination that resolves local upstream requests.
+        """
+        peer: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the cluster with an active cluster peering connection at the redirect’s destination that resolves local upstream requests.
+        """
+        sameness_group: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the sameness group at the redirect’s destination that resolves local upstream requests.
+        """
+        service: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the name of a service at the redirect’s destination that resolves local upstream requests.
+        """
+        service_subset: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the name of a subset of services at the redirect’s destination that resolves local upstream requests. If empty, the default subset is used. If specified, you must also specify at least one of the following in the same Redirect map: Service, Namespace, andDatacenter.
+        """
+elif False:
+    ConfigEntryServiceResolverRedirectArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConfigEntryServiceResolverRedirectArgs:
@@ -2505,6 +3288,23 @@ class ConfigEntryServiceResolverRedirectArgs:
         pulumi.set(self, "service_subset", value)
 
 
+if not MYPY:
+    class ConfigEntryServiceResolverSubsetArgsDict(TypedDict):
+        filter: pulumi.Input[str]
+        """
+        Specifies an expression that filters the DNS elements of service instances that belong to the subset. If empty, all healthy instances of a service are returned.
+        """
+        name: pulumi.Input[str]
+        """
+        Name of subset.
+        """
+        only_passing: pulumi.Input[bool]
+        """
+        Determines if instances that return a warning from a health check are allowed to resolve a request. When set to false, instances with passing and warning states are considered healthy. When set to true, only instances with a passing health check state are considered healthy.
+        """
+elif False:
+    ConfigEntryServiceResolverSubsetArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConfigEntryServiceResolverSubsetArgs:
     def __init__(__self__, *,
@@ -2557,6 +3357,19 @@ class ConfigEntryServiceResolverSubsetArgs:
         pulumi.set(self, "only_passing", value)
 
 
+if not MYPY:
+    class ConfigEntryServiceRouterRouteArgsDict(TypedDict):
+        destination: NotRequired[pulumi.Input['ConfigEntryServiceRouterRouteDestinationArgsDict']]
+        """
+        Specifies the target service to route matching requests to, as well as behavior for the request to follow when routed.
+        """
+        match: NotRequired[pulumi.Input['ConfigEntryServiceRouterRouteMatchArgsDict']]
+        """
+        Describes a set of criteria that Consul compares incoming L7 traffic with.
+        """
+elif False:
+    ConfigEntryServiceRouterRouteArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConfigEntryServiceRouterRouteArgs:
     def __init__(__self__, *,
@@ -2595,6 +3408,63 @@ class ConfigEntryServiceRouterRouteArgs:
     def match(self, value: Optional[pulumi.Input['ConfigEntryServiceRouterRouteMatchArgs']]):
         pulumi.set(self, "match", value)
 
+
+if not MYPY:
+    class ConfigEntryServiceRouterRouteDestinationArgsDict(TypedDict):
+        idle_timeout: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the total amount of time permitted for the request stream to be idle.
+        """
+        namespace: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the Consul namespace to resolve the service from instead of the current namespace.
+        """
+        num_retries: NotRequired[pulumi.Input[int]]
+        """
+        Specifies the number of times to retry the request when a retry condition occurs.
+        """
+        partition: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the Consul admin partition to resolve the service from instead of the current partition.
+        """
+        prefix_rewrite: NotRequired[pulumi.Input[str]]
+        """
+        Specifies rewrites to the HTTP request path before proxying it to its final destination.
+        """
+        request_headers: NotRequired[pulumi.Input['ConfigEntryServiceRouterRouteDestinationRequestHeadersArgsDict']]
+        """
+        Specifies a set of HTTP-specific header modification rules applied to requests routed with the service router.
+        """
+        request_timeout: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the total amount of time permitted for the entire downstream request to be processed, including retry attempts.
+        """
+        response_headers: NotRequired[pulumi.Input['ConfigEntryServiceRouterRouteDestinationResponseHeadersArgsDict']]
+        """
+        Specifies a set of HTTP-specific header modification rules applied to responses routed with the service router.
+        """
+        retry_on_connect_failure: NotRequired[pulumi.Input[bool]]
+        """
+        Specifies that connection failure errors that trigger a retry request.
+        """
+        retry_on_status_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[int]]]]
+        """
+        Specifies a list of integers for HTTP response status codes that trigger a retry request.
+        """
+        retry_ons: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specifies a list of conditions for Consul to retry requests based on the response from an upstream service.
+        """
+        service: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the name of the service to resolve.
+        """
+        service_subset: NotRequired[pulumi.Input[str]]
+        """
+        Specifies a named subset of the given service to resolve instead of the one defined as that service's `default_subset` in the service resolver configuration entry.
+        """
+elif False:
+    ConfigEntryServiceRouterRouteDestinationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConfigEntryServiceRouterRouteDestinationArgs:
@@ -2811,6 +3681,23 @@ class ConfigEntryServiceRouterRouteDestinationArgs:
         pulumi.set(self, "service_subset", value)
 
 
+if not MYPY:
+    class ConfigEntryServiceRouterRouteDestinationRequestHeadersArgsDict(TypedDict):
+        add: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Defines a set of key-value pairs to add to the header. Use header names as the keys.
+        """
+        removes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Defines a list of headers to remove.
+        """
+        set: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Defines a set of key-value pairs to add to the request header or to replace existing header values with.
+        """
+elif False:
+    ConfigEntryServiceRouterRouteDestinationRequestHeadersArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConfigEntryServiceRouterRouteDestinationRequestHeadersArgs:
     def __init__(__self__, *,
@@ -2865,6 +3752,23 @@ class ConfigEntryServiceRouterRouteDestinationRequestHeadersArgs:
     def set(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "set", value)
 
+
+if not MYPY:
+    class ConfigEntryServiceRouterRouteDestinationResponseHeadersArgsDict(TypedDict):
+        add: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Defines a set of key-value pairs to add to the header. Use header names as the keys
+        """
+        removes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Defines a list of headers to remove.
+        """
+        set: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Defines a set of key-value pairs to add to the response header or to replace existing header values with
+        """
+elif False:
+    ConfigEntryServiceRouterRouteDestinationResponseHeadersArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConfigEntryServiceRouterRouteDestinationResponseHeadersArgs:
@@ -2921,6 +3825,15 @@ class ConfigEntryServiceRouterRouteDestinationResponseHeadersArgs:
         pulumi.set(self, "set", value)
 
 
+if not MYPY:
+    class ConfigEntryServiceRouterRouteMatchArgsDict(TypedDict):
+        http: NotRequired[pulumi.Input['ConfigEntryServiceRouterRouteMatchHttpArgsDict']]
+        """
+        Specifies a set of HTTP criteria used to evaluate incoming L7 traffic for matches.
+        """
+elif False:
+    ConfigEntryServiceRouterRouteMatchArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConfigEntryServiceRouterRouteMatchArgs:
     def __init__(__self__, *,
@@ -2943,6 +3856,35 @@ class ConfigEntryServiceRouterRouteMatchArgs:
     def http(self, value: Optional[pulumi.Input['ConfigEntryServiceRouterRouteMatchHttpArgs']]):
         pulumi.set(self, "http", value)
 
+
+if not MYPY:
+    class ConfigEntryServiceRouterRouteMatchHttpArgsDict(TypedDict):
+        headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceRouterRouteMatchHttpHeaderArgsDict']]]]
+        """
+        Specifies information in the HTTP request header to match with.
+        """
+        methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specifies HTTP methods that the match applies to.
+        """
+        path_exact: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the exact path to match on the HTTP request path.
+        """
+        path_prefix: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the path prefix to match on the HTTP request path.
+        """
+        path_regex: NotRequired[pulumi.Input[str]]
+        """
+        Specifies a regular expression to match on the HTTP request path.
+        """
+        query_params: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceRouterRouteMatchHttpQueryParamArgsDict']]]]
+        """
+        Specifies information to match to on HTTP query parameters.
+        """
+elif False:
+    ConfigEntryServiceRouterRouteMatchHttpArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConfigEntryServiceRouterRouteMatchHttpArgs:
@@ -3046,6 +3988,39 @@ class ConfigEntryServiceRouterRouteMatchHttpArgs:
     def query_params(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceRouterRouteMatchHttpQueryParamArgs']]]]):
         pulumi.set(self, "query_params", value)
 
+
+if not MYPY:
+    class ConfigEntryServiceRouterRouteMatchHttpHeaderArgsDict(TypedDict):
+        exact: NotRequired[pulumi.Input[str]]
+        """
+        Specifies that a request matches when the header with the given name is this exact value.
+        """
+        invert: NotRequired[pulumi.Input[bool]]
+        """
+        Specifies that the logic for the HTTP header match should be inverted.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the name of the HTTP header to match.
+        """
+        prefix: NotRequired[pulumi.Input[str]]
+        """
+        Specifies that a request matches when the header with the given name has this prefix.
+        """
+        present: NotRequired[pulumi.Input[bool]]
+        """
+        Specifies that a request matches when the value in the `name` argument is present anywhere in the HTTP header.
+        """
+        regex: NotRequired[pulumi.Input[str]]
+        """
+        Specifies that a request matches when the header with the given name matches this regular expression.
+        """
+        suffix: NotRequired[pulumi.Input[str]]
+        """
+        Specifies that a request matches when the header with the given name has this suffix.
+        """
+elif False:
+    ConfigEntryServiceRouterRouteMatchHttpHeaderArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConfigEntryServiceRouterRouteMatchHttpHeaderArgs:
@@ -3166,6 +4141,27 @@ class ConfigEntryServiceRouterRouteMatchHttpHeaderArgs:
         pulumi.set(self, "suffix", value)
 
 
+if not MYPY:
+    class ConfigEntryServiceRouterRouteMatchHttpQueryParamArgsDict(TypedDict):
+        exact: NotRequired[pulumi.Input[str]]
+        """
+        Specifies that a request matches when the query parameter with the given name is this exact value.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the name of the HTTP query parameter to match.
+        """
+        present: NotRequired[pulumi.Input[bool]]
+        """
+        Specifies that a request matches when the value in the `name` argument is present anywhere in the HTTP query parameter.
+        """
+        regex: NotRequired[pulumi.Input[str]]
+        """
+        Specifies that a request matches when the query parameter with the given name matches this regular expression.
+        """
+elif False:
+    ConfigEntryServiceRouterRouteMatchHttpQueryParamArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConfigEntryServiceRouterRouteMatchHttpQueryParamArgs:
     def __init__(__self__, *,
@@ -3236,6 +4232,39 @@ class ConfigEntryServiceRouterRouteMatchHttpQueryParamArgs:
     def regex(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "regex", value)
 
+
+if not MYPY:
+    class ConfigEntryServiceSplitterSplitArgsDict(TypedDict):
+        service: pulumi.Input[str]
+        """
+        Specifies the name of the service to resolve.
+        """
+        weight: pulumi.Input[float]
+        """
+        Specifies the percentage of traffic sent to the set of service instances specified in the `service` field. Each weight must be a floating integer between `0` and `100`. The smallest representable value is `.01`. The sum of weights across all splits must add up to `100`.
+        """
+        namespace: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the namespace to use in the FQDN when resolving the service.
+        """
+        partition: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the admin partition to use in the FQDN when resolving the service.
+        """
+        request_headers: NotRequired[pulumi.Input['ConfigEntryServiceSplitterSplitRequestHeadersArgsDict']]
+        """
+        Specifies a set of HTTP-specific header modification rules applied to requests routed with the service split. You cannot configure request headers if the listener protocol is set to `tcp`.
+        """
+        response_headers: NotRequired[pulumi.Input['ConfigEntryServiceSplitterSplitResponseHeadersArgsDict']]
+        """
+        Specifies a set of HTTP-specific header modification rules applied to responses routed with the service split. You cannot configure request headers if the listener protocol is set to `tcp`.
+        """
+        service_subset: NotRequired[pulumi.Input[str]]
+        """
+        Specifies a subset of the service to resolve. A service subset assigns a name to a specific subset of discoverable service instances within a datacenter, such as `version2` or `canary`. All services have an unnamed default subset that returns all healthy instances.
+        """
+elif False:
+    ConfigEntryServiceSplitterSplitArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConfigEntryServiceSplitterSplitArgs:
@@ -3354,6 +4383,23 @@ class ConfigEntryServiceSplitterSplitArgs:
         pulumi.set(self, "service_subset", value)
 
 
+if not MYPY:
+    class ConfigEntryServiceSplitterSplitRequestHeadersArgsDict(TypedDict):
+        add: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Map of one or more key-value pairs. Defines a set of key-value pairs to add to the header. Use header names as the keys. Header names are not case-sensitive. If header values with the same name already exist, the value is appended and Consul applies both headers.
+        """
+        removes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Defines an list of headers to remove. Consul removes only headers containing exact matches. Header names are not case-sensitive.
+        """
+        set: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Map of one or more key-value pairs. Defines a set of key-value pairs to add to the request header or to replace existing header values with. Use header names as the keys. Header names are not case-sensitive. If header values with the same names already exist, Consul replaces the header values.
+        """
+elif False:
+    ConfigEntryServiceSplitterSplitRequestHeadersArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConfigEntryServiceSplitterSplitRequestHeadersArgs:
     def __init__(__self__, *,
@@ -3409,6 +4455,23 @@ class ConfigEntryServiceSplitterSplitRequestHeadersArgs:
         pulumi.set(self, "set", value)
 
 
+if not MYPY:
+    class ConfigEntryServiceSplitterSplitResponseHeadersArgsDict(TypedDict):
+        add: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Map of one or more key-value pairs. Defines a set of key-value pairs to add to the header. Use header names as the keys. Header names are not case-sensitive. If header values with the same name already exist, the value is appended and Consul applies both headers.
+        """
+        removes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Defines an list of headers to remove. Consul removes only headers containing exact matches. Header names are not case-sensitive.
+        """
+        set: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Map of one or more key-value pairs. Defines a set of key-value pairs to add to the request header or to replace existing header values with. Use header names as the keys. Header names are not case-sensitive. If header values with the same names already exist, Consul replaces the header values.
+        """
+elif False:
+    ConfigEntryServiceSplitterSplitResponseHeadersArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConfigEntryServiceSplitterSplitResponseHeadersArgs:
     def __init__(__self__, *,
@@ -3463,6 +4526,25 @@ class ConfigEntryServiceSplitterSplitResponseHeadersArgs:
     def set(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "set", value)
 
+
+if not MYPY:
+    class KeyPrefixSubkeyCollectionArgsDict(TypedDict):
+        path: pulumi.Input[str]
+        """
+        This is the path (which will be appended to the given
+        `path_prefix`) in Consul that should be written to.
+        """
+        value: pulumi.Input[str]
+        """
+        The value to write to the given path.
+        """
+        flags: NotRequired[pulumi.Input[int]]
+        """
+        An [unsigned integer value](https://www.consul.io/api/kv.html#flags-1)
+        to attach to the key (defaults to 0).
+        """
+elif False:
+    KeyPrefixSubkeyCollectionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class KeyPrefixSubkeyCollectionArgs:
@@ -3520,6 +4602,33 @@ class KeyPrefixSubkeyCollectionArgs:
     def flags(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "flags", value)
 
+
+if not MYPY:
+    class KeysKeyArgsDict(TypedDict):
+        path: pulumi.Input[str]
+        """
+        This is the path in Consul that should be written to.
+        """
+        default: NotRequired[pulumi.Input[str]]
+        delete: NotRequired[pulumi.Input[bool]]
+        """
+        If true, then the key will be deleted when
+        either its configuration block is removed from the configuration or
+        the entire resource is destroyed. Otherwise, it will be left in Consul.
+        Defaults to false.
+        """
+        flags: NotRequired[pulumi.Input[int]]
+        """
+        An [unsigned integer value](https://www.consul.io/api/kv.html#flags-1)
+        to attach to the key (defaults to 0).
+        """
+        name: NotRequired[pulumi.Input[str]]
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The value to write to the given path.
+        """
+elif False:
+    KeysKeyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class KeysKeyArgs:
@@ -3627,6 +4736,15 @@ class KeysKeyArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class PreparedQueryDnsArgsDict(TypedDict):
+        ttl: NotRequired[pulumi.Input[str]]
+        """
+        The TTL to send when returning DNS results.
+        """
+elif False:
+    PreparedQueryDnsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PreparedQueryDnsArgs:
     def __init__(__self__, *,
@@ -3649,6 +4767,23 @@ class PreparedQueryDnsArgs:
     def ttl(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ttl", value)
 
+
+if not MYPY:
+    class PreparedQueryFailoverArgsDict(TypedDict):
+        datacenters: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Remote datacenters to return results from.
+        """
+        nearest_n: NotRequired[pulumi.Input[int]]
+        """
+        Return results from this many datacenters, sorted in ascending order of estimated RTT.
+        """
+        targets: NotRequired[pulumi.Input[Sequence[pulumi.Input['PreparedQueryFailoverTargetArgsDict']]]]
+        """
+        Specifies a sequential list of remote datacenters and cluster peers to failover to if there are no healthy service instances in the local datacenter. This option cannot be used with `nearest_n` or `datacenters`.
+        """
+elif False:
+    PreparedQueryFailoverArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PreparedQueryFailoverArgs:
@@ -3705,6 +4840,19 @@ class PreparedQueryFailoverArgs:
         pulumi.set(self, "targets", value)
 
 
+if not MYPY:
+    class PreparedQueryFailoverTargetArgsDict(TypedDict):
+        datacenter: NotRequired[pulumi.Input[str]]
+        """
+        Specifies a WAN federated datacenter to forward the query to.
+        """
+        peer: NotRequired[pulumi.Input[str]]
+        """
+        Specifies a cluster peer to use for failover.
+        """
+elif False:
+    PreparedQueryFailoverTargetArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PreparedQueryFailoverTargetArgs:
     def __init__(__self__, *,
@@ -3743,6 +4891,23 @@ class PreparedQueryFailoverTargetArgs:
     def peer(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "peer", value)
 
+
+if not MYPY:
+    class PreparedQueryTemplateArgsDict(TypedDict):
+        regexp: pulumi.Input[str]
+        """
+        The regular expression to match with. When using `name_prefix_match`, this regex is applied against the query name.
+        """
+        type: pulumi.Input[str]
+        """
+        The type of template matching to perform. Currently only `name_prefix_match` is supported.
+        """
+        remove_empty_tags: NotRequired[pulumi.Input[bool]]
+        """
+        If set to true, will cause the tags list inside the service structure to be stripped of any empty strings.
+        """
+elif False:
+    PreparedQueryTemplateArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PreparedQueryTemplateArgs:
@@ -3796,6 +4961,24 @@ class PreparedQueryTemplateArgs:
     def remove_empty_tags(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "remove_empty_tags", value)
 
+
+if not MYPY:
+    class ProviderAuthJwtArgsDict(TypedDict):
+        auth_method: pulumi.Input[str]
+        """
+        The name of the auth method to use for login.
+        """
+        bearer_token: NotRequired[pulumi.Input[str]]
+        """
+        The bearer token to present to the auth method during login for authentication purposes. For the Kubernetes auth method this is a [Service Account Token (JWT)](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#service-account-tokens).
+        """
+        meta: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Specifies arbitrary KV metadata linked to the token. Can be useful to track origins.
+        """
+        use_terraform_cloud_workload_identity: NotRequired[pulumi.Input[bool]]
+elif False:
+    ProviderAuthJwtArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ProviderAuthJwtArgs:
@@ -3863,6 +5046,19 @@ class ProviderAuthJwtArgs:
         pulumi.set(self, "use_terraform_cloud_workload_identity", value)
 
 
+if not MYPY:
+    class ProviderHeaderArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The name of the header.
+        """
+        value: pulumi.Input[str]
+        """
+        The value of the header.
+        """
+elif False:
+    ProviderHeaderArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ProviderHeaderArgs:
     def __init__(__self__, *,
@@ -3899,6 +5095,59 @@ class ProviderHeaderArgs:
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class ServiceCheckArgsDict(TypedDict):
+        check_id: pulumi.Input[str]
+        """
+        An ID, *unique per agent*.
+        """
+        interval: pulumi.Input[str]
+        """
+        The interval to wait between each health-check invocation.
+        """
+        name: pulumi.Input[str]
+        """
+        The name of the health-check.
+        """
+        timeout: pulumi.Input[str]
+        """
+        Specifies a timeout for outgoing connections in the case of a HTTP or TCP check.
+        """
+        deregister_critical_service_after: NotRequired[pulumi.Input[str]]
+        """
+        The time after which the service is automatically deregistered when in the `critical` state. Defaults to `30s`. Setting to `0` will disable.
+        """
+        headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceCheckHeaderArgsDict']]]]
+        """
+        The headers to send for an HTTP check. The attributes of each header is given below.
+        """
+        http: NotRequired[pulumi.Input[str]]
+        """
+        The HTTP endpoint to call for an HTTP check.
+        """
+        method: NotRequired[pulumi.Input[str]]
+        """
+        The method to use for HTTP health-checks. Defaults to `GET`.
+        """
+        notes: NotRequired[pulumi.Input[str]]
+        """
+        An opaque field meant to hold human readable text.
+        """
+        status: NotRequired[pulumi.Input[str]]
+        """
+        The initial health-check status.
+        """
+        tcp: NotRequired[pulumi.Input[str]]
+        """
+        The TCP address and port to connect to for a TCP check.
+        """
+        tls_skip_verify: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to deactivate certificate verification for HTTP health-checks. Defaults to `false`.
+        """
+elif False:
+    ServiceCheckArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceCheckArgs:
@@ -4095,6 +5344,19 @@ class ServiceCheckArgs:
         pulumi.set(self, "tls_skip_verify", value)
 
 
+if not MYPY:
+    class ServiceCheckHeaderArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The name of the header.
+        """
+        values: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        The header's list of values.
+        """
+elif False:
+    ServiceCheckHeaderArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServiceCheckHeaderArgs:
     def __init__(__self__, *,
@@ -4131,6 +5393,47 @@ class ServiceCheckHeaderArgs:
     def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
 
+
+if not MYPY:
+    class GetCatalogNodesQueryOptionArgsDict(TypedDict):
+        allow_stale: NotRequired[bool]
+        """
+        When `true`, the default, allow responses from
+        Consul servers that are followers.
+        """
+        datacenter: NotRequired[str]
+        """
+        The Consul datacenter to query.  Defaults to the
+        same value found in `query_options` parameter specified below, or if that is
+        empty, the `datacenter` value found in the Consul agent that this provider is
+        configured to talk to then the datacenter in the provider setup.
+        """
+        near: NotRequired[str]
+        node_meta: NotRequired[Mapping[str, str]]
+        partition: NotRequired[str]
+        require_consistent: NotRequired[bool]
+        """
+        When `true` force the client to perform a
+        read on at least quorum servers and verify the result is the same.  Defaults
+        to `false`.
+        """
+        token: NotRequired[str]
+        """
+        Specify the Consul ACL token to use when performing the
+        request.  This defaults to the same API token configured by the `consul`
+        provider but may be overridden if necessary.
+        """
+        wait_index: NotRequired[int]
+        """
+        Index number used to enable blocking queries.
+        """
+        wait_time: NotRequired[str]
+        """
+        Max time the client should wait for a blocking query
+        to return.
+        """
+elif False:
+    GetCatalogNodesQueryOptionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetCatalogNodesQueryOptionArgs:
@@ -4288,6 +5591,51 @@ class GetCatalogNodesQueryOptionArgs:
     def wait_time(self, value: Optional[str]):
         pulumi.set(self, "wait_time", value)
 
+
+if not MYPY:
+    class GetCatalogServiceQueryOptionArgsDict(TypedDict):
+        allow_stale: NotRequired[bool]
+        """
+        When `true`, the default, allow responses from
+        Consul servers that are followers.
+        """
+        datacenter: NotRequired[str]
+        """
+        The Consul datacenter to query.  Defaults to the
+        same value found in `query_options` parameter specified below, or if that is
+        empty, the `datacenter` value found in the Consul agent that this provider is
+        configured to talk to.
+        """
+        namespace: NotRequired[str]
+        """
+        The namespace to lookup the service.
+        """
+        near: NotRequired[str]
+        node_meta: NotRequired[Mapping[str, str]]
+        partition: NotRequired[str]
+        require_consistent: NotRequired[bool]
+        """
+        When `true` force the client to perform a
+        read on at least quorum servers and verify the result is the same.  Defaults
+        to `false`.
+        """
+        token: NotRequired[str]
+        """
+        Specify the Consul ACL token to use when performing the
+        request.  This defaults to the same API token configured by the `consul`
+        provider but may be overridden if necessary.
+        """
+        wait_index: NotRequired[int]
+        """
+        Index number used to enable blocking queries.
+        """
+        wait_time: NotRequired[str]
+        """
+        Max time the client should wait for a blocking query
+        to return.
+        """
+elif False:
+    GetCatalogServiceQueryOptionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetCatalogServiceQueryOptionArgs:
@@ -4462,6 +5810,51 @@ class GetCatalogServiceQueryOptionArgs:
         pulumi.set(self, "wait_time", value)
 
 
+if not MYPY:
+    class GetCatalogServicesQueryOptionArgsDict(TypedDict):
+        allow_stale: NotRequired[bool]
+        """
+        When `true`, the default, allow responses from
+        Consul servers that are followers.
+        """
+        datacenter: NotRequired[str]
+        """
+        The Consul datacenter to query.  Defaults to the
+        same value found in `query_options` parameter specified below, or if that is
+        empty, the `datacenter` value found in the Consul agent that this provider is
+        configured to talk to.
+        """
+        namespace: NotRequired[str]
+        """
+        The namespace to lookup the services.
+        """
+        near: NotRequired[str]
+        node_meta: NotRequired[Mapping[str, str]]
+        partition: NotRequired[str]
+        require_consistent: NotRequired[bool]
+        """
+        When `true` force the client to perform a
+        read on at least quorum servers and verify the result is the same.  Defaults
+        to `false`.
+        """
+        token: NotRequired[str]
+        """
+        Specify the Consul ACL token to use when performing the
+        request.  This defaults to the same API token configured by the `consul`
+        provider but may be overridden if necessary.
+        """
+        wait_index: NotRequired[int]
+        """
+        Index number used to enable blocking queries.
+        """
+        wait_time: NotRequired[str]
+        """
+        Max time the client should wait for a blocking query
+        to return.
+        """
+elif False:
+    GetCatalogServicesQueryOptionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetCatalogServicesQueryOptionArgs:
     def __init__(__self__, *,
@@ -4635,6 +6028,28 @@ class GetCatalogServicesQueryOptionArgs:
         pulumi.set(self, "wait_time", value)
 
 
+if not MYPY:
+    class GetKeyPrefixSubkeyCollectionArgsDict(TypedDict):
+        name: str
+        """
+        This is the name of the key. This value of the
+        key is exposed as `var.<name>`. This is not the path of the subkey
+        in Consul.
+        """
+        path: str
+        """
+        This is the subkey path in Consul (which will be appended
+        to the given `path_prefix`) to construct the full key that will be used
+        to read the value.
+        """
+        default: NotRequired[str]
+        """
+        This is the default value to set for `var.<name>`
+        if the key does not exist in Consul. Defaults to an empty string.
+        """
+elif False:
+    GetKeyPrefixSubkeyCollectionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetKeyPrefixSubkeyCollectionArgs:
     def __init__(__self__, *,
@@ -4698,6 +6113,23 @@ class GetKeyPrefixSubkeyCollectionArgs:
         pulumi.set(self, "default", value)
 
 
+if not MYPY:
+    class GetKeysKeyArgsDict(TypedDict):
+        name: str
+        """
+        This is the name of the key. This value of the key is exposed as `var.<name>`. This is not the path of the key in Consul.
+        """
+        path: str
+        """
+        This is the path in Consul that should be read or written to.
+        """
+        default: NotRequired[str]
+        """
+        This is the default value to set for `var.<name>` if the key does not exist in Consul. Defaults to an empty string.
+        """
+elif False:
+    GetKeysKeyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetKeysKeyArgs:
     def __init__(__self__, *,
@@ -4750,6 +6182,47 @@ class GetKeysKeyArgs:
     def default(self, value: Optional[str]):
         pulumi.set(self, "default", value)
 
+
+if not MYPY:
+    class GetNodesQueryOptionArgsDict(TypedDict):
+        allow_stale: NotRequired[bool]
+        """
+        When `true`, the default, allow responses from
+        Consul servers that are followers.
+        """
+        datacenter: NotRequired[str]
+        """
+        The Consul datacenter to query.  Defaults to the
+        same value found in `query_options` parameter specified below, or if that is
+        empty, the `datacenter` value found in the Consul agent that this provider is
+        configured to talk to then the datacenter in the provider setup.
+        """
+        near: NotRequired[str]
+        node_meta: NotRequired[Mapping[str, str]]
+        partition: NotRequired[str]
+        require_consistent: NotRequired[bool]
+        """
+        When `true` force the client to perform a
+        read on at least quorum servers and verify the result is the same.  Defaults
+        to `false`.
+        """
+        token: NotRequired[str]
+        """
+        Specify the Consul ACL token to use when performing the
+        request.  This defaults to the same API token configured by the `consul`
+        provider but may be overridden if necessary.
+        """
+        wait_index: NotRequired[int]
+        """
+        Index number used to enable blocking queries.
+        """
+        wait_time: NotRequired[str]
+        """
+        Max time the client should wait for a blocking query
+        to return.
+        """
+elif False:
+    GetNodesQueryOptionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetNodesQueryOptionArgs:
@@ -4907,6 +6380,51 @@ class GetNodesQueryOptionArgs:
     def wait_time(self, value: Optional[str]):
         pulumi.set(self, "wait_time", value)
 
+
+if not MYPY:
+    class GetServiceQueryOptionArgsDict(TypedDict):
+        allow_stale: NotRequired[bool]
+        """
+        When `true`, the default, allow responses from
+        Consul servers that are followers.
+        """
+        datacenter: NotRequired[str]
+        """
+        The Consul datacenter to query.  Defaults to the
+        same value found in `query_options` parameter specified below, or if that is
+        empty, the `datacenter` value found in the Consul agent that this provider is
+        configured to talk to.
+        """
+        namespace: NotRequired[str]
+        """
+        The namespace to lookup the service.
+        """
+        near: NotRequired[str]
+        node_meta: NotRequired[Mapping[str, str]]
+        partition: NotRequired[str]
+        require_consistent: NotRequired[bool]
+        """
+        When `true` force the client to perform a
+        read on at least quorum servers and verify the result is the same.  Defaults
+        to `false`.
+        """
+        token: NotRequired[str]
+        """
+        Specify the Consul ACL token to use when performing the
+        request.  This defaults to the same API token configured by the `consul`
+        provider but may be overridden if necessary.
+        """
+        wait_index: NotRequired[int]
+        """
+        Index number used to enable blocking queries.
+        """
+        wait_time: NotRequired[str]
+        """
+        Max time the client should wait for a blocking query
+        to return.
+        """
+elif False:
+    GetServiceQueryOptionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetServiceQueryOptionArgs:
@@ -5080,6 +6598,51 @@ class GetServiceQueryOptionArgs:
     def wait_time(self, value: Optional[str]):
         pulumi.set(self, "wait_time", value)
 
+
+if not MYPY:
+    class GetServicesQueryOptionArgsDict(TypedDict):
+        allow_stale: NotRequired[bool]
+        """
+        When `true`, the default, allow responses from
+        Consul servers that are followers.
+        """
+        datacenter: NotRequired[str]
+        """
+        The Consul datacenter to query.  Defaults to the
+        same value found in `query_options` parameter specified below, or if that is
+        empty, the `datacenter` value found in the Consul agent that this provider is
+        configured to talk to.
+        """
+        namespace: NotRequired[str]
+        """
+        The namespace to lookup the services.
+        """
+        near: NotRequired[str]
+        node_meta: NotRequired[Mapping[str, str]]
+        partition: NotRequired[str]
+        require_consistent: NotRequired[bool]
+        """
+        When `true` force the client to perform a
+        read on at least quorum servers and verify the result is the same.  Defaults
+        to `false`.
+        """
+        token: NotRequired[str]
+        """
+        Specify the Consul ACL token to use when performing the
+        request.  This defaults to the same API token configured by the `consul`
+        provider but may be overridden if necessary.
+        """
+        wait_index: NotRequired[int]
+        """
+        Index number used to enable blocking queries.
+        """
+        wait_time: NotRequired[str]
+        """
+        Max time the client should wait for a blocking query
+        to return.
+        """
+elif False:
+    GetServicesQueryOptionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetServicesQueryOptionArgs:

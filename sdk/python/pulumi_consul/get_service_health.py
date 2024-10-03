@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -207,9 +212,6 @@ def get_service_health(datacenter: Optional[str] = None,
         results=pulumi.get(__ret__, 'results'),
         tag=pulumi.get(__ret__, 'tag'),
         wait_for=pulumi.get(__ret__, 'wait_for'))
-
-
-@_utilities.lift_output_func(get_service_health)
 def get_service_health_output(datacenter: Optional[pulumi.Input[Optional[str]]] = None,
                               filter: Optional[pulumi.Input[Optional[str]]] = None,
                               name: Optional[pulumi.Input[str]] = None,
@@ -242,4 +244,25 @@ def get_service_health_output(datacenter: Optional[pulumi.Input[Optional[str]]] 
     :param str tag: A single tag that can be used to filter the list to return
            based on a single matching tag.
     """
-    ...
+    __args__ = dict()
+    __args__['datacenter'] = datacenter
+    __args__['filter'] = filter
+    __args__['name'] = name
+    __args__['near'] = near
+    __args__['nodeMeta'] = node_meta
+    __args__['passing'] = passing
+    __args__['tag'] = tag
+    __args__['waitFor'] = wait_for
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('consul:index/getServiceHealth:getServiceHealth', __args__, opts=opts, typ=GetServiceHealthResult)
+    return __ret__.apply(lambda __response__: GetServiceHealthResult(
+        datacenter=pulumi.get(__response__, 'datacenter'),
+        filter=pulumi.get(__response__, 'filter'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        near=pulumi.get(__response__, 'near'),
+        node_meta=pulumi.get(__response__, 'node_meta'),
+        passing=pulumi.get(__response__, 'passing'),
+        results=pulumi.get(__response__, 'results'),
+        tag=pulumi.get(__response__, 'tag'),
+        wait_for=pulumi.get(__response__, 'wait_for')))

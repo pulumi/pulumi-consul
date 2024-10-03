@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -145,9 +150,6 @@ def get_catalog_services(query_options: Optional[Sequence[Union['GetCatalogServi
         query_options=pulumi.get(__ret__, 'query_options'),
         services=pulumi.get(__ret__, 'services'),
         tags=pulumi.get(__ret__, 'tags'))
-
-
-@_utilities.lift_output_func(get_catalog_services)
 def get_catalog_services_output(query_options: Optional[pulumi.Input[Optional[Sequence[Union['GetCatalogServicesQueryOptionArgs', 'GetCatalogServicesQueryOptionArgsDict']]]]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCatalogServicesResult]:
     """
@@ -179,4 +181,14 @@ def get_catalog_services_output(query_options: Optional[pulumi.Input[Optional[Se
     :param Sequence[Union['GetCatalogServicesQueryOptionArgs', 'GetCatalogServicesQueryOptionArgsDict']] query_options: See below.
     """
     pulumi.log.warn("""get_catalog_services is deprecated: getCatalogServices has been deprecated in favor of getServices""")
-    ...
+    __args__ = dict()
+    __args__['queryOptions'] = query_options
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('consul:index/getCatalogServices:getCatalogServices', __args__, opts=opts, typ=GetCatalogServicesResult)
+    return __ret__.apply(lambda __response__: GetCatalogServicesResult(
+        datacenter=pulumi.get(__response__, 'datacenter'),
+        id=pulumi.get(__response__, 'id'),
+        names=pulumi.get(__response__, 'names'),
+        query_options=pulumi.get(__response__, 'query_options'),
+        services=pulumi.get(__response__, 'services'),
+        tags=pulumi.get(__response__, 'tags')))
