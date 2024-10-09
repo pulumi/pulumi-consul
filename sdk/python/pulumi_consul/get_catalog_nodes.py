@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -130,9 +135,6 @@ def get_catalog_nodes(query_options: Optional[Sequence[Union['GetCatalogNodesQue
         node_names=pulumi.get(__ret__, 'node_names'),
         nodes=pulumi.get(__ret__, 'nodes'),
         query_options=pulumi.get(__ret__, 'query_options'))
-
-
-@_utilities.lift_output_func(get_catalog_nodes)
 def get_catalog_nodes_output(query_options: Optional[pulumi.Input[Optional[Sequence[Union['GetCatalogNodesQueryOptionArgs', 'GetCatalogNodesQueryOptionArgsDict']]]]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCatalogNodesResult]:
     """
@@ -145,4 +147,14 @@ def get_catalog_nodes_output(query_options: Optional[pulumi.Input[Optional[Seque
     :param Sequence[Union['GetCatalogNodesQueryOptionArgs', 'GetCatalogNodesQueryOptionArgsDict']] query_options: See below.
     """
     pulumi.log.warn("""get_catalog_nodes is deprecated: getCatalogNodes has been deprecated in favor of getNodes""")
-    ...
+    __args__ = dict()
+    __args__['queryOptions'] = query_options
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('consul:index/getCatalogNodes:getCatalogNodes', __args__, opts=opts, typ=GetCatalogNodesResult)
+    return __ret__.apply(lambda __response__: GetCatalogNodesResult(
+        datacenter=pulumi.get(__response__, 'datacenter'),
+        id=pulumi.get(__response__, 'id'),
+        node_ids=pulumi.get(__response__, 'node_ids'),
+        node_names=pulumi.get(__response__, 'node_names'),
+        nodes=pulumi.get(__response__, 'nodes'),
+        query_options=pulumi.get(__response__, 'query_options')))

@@ -33,7 +33,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			remoteAgent, err := consul.GetAgentConfig(ctx, nil, nil)
+//			remoteAgent, err := consul.GetAgentConfig(ctx, map[string]interface{}{}, nil)
 //			if err != nil {
 //				return err
 //			}

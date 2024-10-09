@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -847,9 +852,6 @@ def get_agent_self(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetA
         version=pulumi.get(__ret__, 'version'),
         version_prerelease=pulumi.get(__ret__, 'version_prerelease'),
         version_revision=pulumi.get(__ret__, 'version_revision'))
-
-
-@_utilities.lift_output_func(get_agent_self)
 def get_agent_self_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAgentSelfResult]:
     """
     > **Warning:** The `get_agent_self` resource has been deprecated and will be removed
@@ -859,4 +861,79 @@ def get_agent_self_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi
     [configuration and status data](https://www.consul.io/docs/agent/http/agent.html#agent_self)
     from the agent specified in the `provider`.
     """
-    ...
+    __args__ = dict()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('consul:index/getAgentSelf:getAgentSelf', __args__, opts=opts, typ=GetAgentSelfResult)
+    return __ret__.apply(lambda __response__: GetAgentSelfResult(
+        acl_datacenter=pulumi.get(__response__, 'acl_datacenter'),
+        acl_default_policy=pulumi.get(__response__, 'acl_default_policy'),
+        acl_disabled_ttl=pulumi.get(__response__, 'acl_disabled_ttl'),
+        acl_down_policy=pulumi.get(__response__, 'acl_down_policy'),
+        acl_enforce08_semantics=pulumi.get(__response__, 'acl_enforce08_semantics'),
+        acl_ttl=pulumi.get(__response__, 'acl_ttl'),
+        addresses=pulumi.get(__response__, 'addresses'),
+        advertise_addr=pulumi.get(__response__, 'advertise_addr'),
+        advertise_addr_wan=pulumi.get(__response__, 'advertise_addr_wan'),
+        advertise_addrs=pulumi.get(__response__, 'advertise_addrs'),
+        atlas_join=pulumi.get(__response__, 'atlas_join'),
+        bind_addr=pulumi.get(__response__, 'bind_addr'),
+        bootstrap_expect=pulumi.get(__response__, 'bootstrap_expect'),
+        bootstrap_mode=pulumi.get(__response__, 'bootstrap_mode'),
+        check_deregister_interval_min=pulumi.get(__response__, 'check_deregister_interval_min'),
+        check_reap_interval=pulumi.get(__response__, 'check_reap_interval'),
+        check_update_interval=pulumi.get(__response__, 'check_update_interval'),
+        client_addr=pulumi.get(__response__, 'client_addr'),
+        data_dir=pulumi.get(__response__, 'data_dir'),
+        datacenter=pulumi.get(__response__, 'datacenter'),
+        dev_mode=pulumi.get(__response__, 'dev_mode'),
+        dns=pulumi.get(__response__, 'dns'),
+        dns_recursors=pulumi.get(__response__, 'dns_recursors'),
+        domain=pulumi.get(__response__, 'domain'),
+        enable_anonymous_signature=pulumi.get(__response__, 'enable_anonymous_signature'),
+        enable_coordinates=pulumi.get(__response__, 'enable_coordinates'),
+        enable_debug=pulumi.get(__response__, 'enable_debug'),
+        enable_remote_exec=pulumi.get(__response__, 'enable_remote_exec'),
+        enable_syslog=pulumi.get(__response__, 'enable_syslog'),
+        enable_ui=pulumi.get(__response__, 'enable_ui'),
+        enable_update_check=pulumi.get(__response__, 'enable_update_check'),
+        id=pulumi.get(__response__, 'id'),
+        leave_on_int=pulumi.get(__response__, 'leave_on_int'),
+        leave_on_term=pulumi.get(__response__, 'leave_on_term'),
+        log_level=pulumi.get(__response__, 'log_level'),
+        name=pulumi.get(__response__, 'name'),
+        performance=pulumi.get(__response__, 'performance'),
+        pid_file=pulumi.get(__response__, 'pid_file'),
+        ports=pulumi.get(__response__, 'ports'),
+        protocol_version=pulumi.get(__response__, 'protocol_version'),
+        reconnect_timeout_lan=pulumi.get(__response__, 'reconnect_timeout_lan'),
+        reconnect_timeout_wan=pulumi.get(__response__, 'reconnect_timeout_wan'),
+        rejoin_after_leave=pulumi.get(__response__, 'rejoin_after_leave'),
+        retry_join_ec2=pulumi.get(__response__, 'retry_join_ec2'),
+        retry_join_gce=pulumi.get(__response__, 'retry_join_gce'),
+        retry_join_wans=pulumi.get(__response__, 'retry_join_wans'),
+        retry_joins=pulumi.get(__response__, 'retry_joins'),
+        retry_max_attempts=pulumi.get(__response__, 'retry_max_attempts'),
+        retry_max_attempts_wan=pulumi.get(__response__, 'retry_max_attempts_wan'),
+        serf_lan_bind_addr=pulumi.get(__response__, 'serf_lan_bind_addr'),
+        serf_wan_bind_addr=pulumi.get(__response__, 'serf_wan_bind_addr'),
+        server_mode=pulumi.get(__response__, 'server_mode'),
+        server_name=pulumi.get(__response__, 'server_name'),
+        session_ttl_min=pulumi.get(__response__, 'session_ttl_min'),
+        start_join_wans=pulumi.get(__response__, 'start_join_wans'),
+        start_joins=pulumi.get(__response__, 'start_joins'),
+        syslog_facility=pulumi.get(__response__, 'syslog_facility'),
+        tagged_addresses=pulumi.get(__response__, 'tagged_addresses'),
+        telemetry=pulumi.get(__response__, 'telemetry'),
+        tls_ca_file=pulumi.get(__response__, 'tls_ca_file'),
+        tls_cert_file=pulumi.get(__response__, 'tls_cert_file'),
+        tls_key_file=pulumi.get(__response__, 'tls_key_file'),
+        tls_min_version=pulumi.get(__response__, 'tls_min_version'),
+        tls_verify_incoming=pulumi.get(__response__, 'tls_verify_incoming'),
+        tls_verify_outgoing=pulumi.get(__response__, 'tls_verify_outgoing'),
+        tls_verify_server_hostname=pulumi.get(__response__, 'tls_verify_server_hostname'),
+        translate_wan_addrs=pulumi.get(__response__, 'translate_wan_addrs'),
+        ui_dir=pulumi.get(__response__, 'ui_dir'),
+        unix_sockets=pulumi.get(__response__, 'unix_sockets'),
+        version=pulumi.get(__response__, 'version'),
+        version_prerelease=pulumi.get(__response__, 'version_prerelease'),
+        version_revision=pulumi.get(__response__, 'version_revision')))
