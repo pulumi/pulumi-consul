@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -172,9 +177,6 @@ def get_service(datacenter: Optional[str] = None,
         query_options=pulumi.get(__ret__, 'query_options'),
         services=pulumi.get(__ret__, 'services'),
         tag=pulumi.get(__ret__, 'tag'))
-
-
-@_utilities.lift_output_func(get_service)
 def get_service_output(datacenter: Optional[pulumi.Input[Optional[str]]] = None,
                        filter: Optional[pulumi.Input[Optional[str]]] = None,
                        name: Optional[pulumi.Input[str]] = None,
@@ -216,4 +218,19 @@ def get_service_output(datacenter: Optional[pulumi.Input[Optional[str]]] = None,
     :param str tag: A single tag that can be used to filter the list of nodes
            to return based on a single matching tag..
     """
-    ...
+    __args__ = dict()
+    __args__['datacenter'] = datacenter
+    __args__['filter'] = filter
+    __args__['name'] = name
+    __args__['queryOptions'] = query_options
+    __args__['tag'] = tag
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('consul:index/getService:getService', __args__, opts=opts, typ=GetServiceResult)
+    return __ret__.apply(lambda __response__: GetServiceResult(
+        datacenter=pulumi.get(__response__, 'datacenter'),
+        filter=pulumi.get(__response__, 'filter'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        query_options=pulumi.get(__response__, 'query_options'),
+        services=pulumi.get(__response__, 'services'),
+        tag=pulumi.get(__response__, 'tag')))

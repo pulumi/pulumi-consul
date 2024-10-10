@@ -30,9 +30,9 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			tmpJSON0, err := json.Marshal(map[string]interface{}{
 //				"Protocol":         "http",
-//				"Expose":           nil,
-//				"MeshGateway":      nil,
-//				"TransparentProxy": nil,
+//				"Expose":           map[string]interface{}{},
+//				"MeshGateway":      map[string]interface{}{},
+//				"TransparentProxy": map[string]interface{}{},
 //			})
 //			if err != nil {
 //				return err

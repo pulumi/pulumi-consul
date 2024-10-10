@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -183,9 +188,6 @@ def get_config_entry_v2_exported_services(kind: Optional[str] = None,
         peer_consumers=pulumi.get(__ret__, 'peer_consumers'),
         sameness_group_consumers=pulumi.get(__ret__, 'sameness_group_consumers'),
         services=pulumi.get(__ret__, 'services'))
-
-
-@_utilities.lift_output_func(get_config_entry_v2_exported_services)
 def get_config_entry_v2_exported_services_output(kind: Optional[pulumi.Input[str]] = None,
                                                  name: Optional[pulumi.Input[str]] = None,
                                                  namespace: Optional[pulumi.Input[Optional[str]]] = None,
@@ -207,4 +209,24 @@ def get_config_entry_v2_exported_services_output(kind: Optional[pulumi.Input[str
     :param Sequence[str] sameness_group_consumers: The exported service sameness group consumers.
     :param Sequence[str] services: The exported services.
     """
-    ...
+    __args__ = dict()
+    __args__['kind'] = kind
+    __args__['name'] = name
+    __args__['namespace'] = namespace
+    __args__['partition'] = partition
+    __args__['partitionConsumers'] = partition_consumers
+    __args__['peerConsumers'] = peer_consumers
+    __args__['samenessGroupConsumers'] = sameness_group_consumers
+    __args__['services'] = services
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('consul:index/getConfigEntryV2ExportedServices:getConfigEntryV2ExportedServices', __args__, opts=opts, typ=GetConfigEntryV2ExportedServicesResult)
+    return __ret__.apply(lambda __response__: GetConfigEntryV2ExportedServicesResult(
+        id=pulumi.get(__response__, 'id'),
+        kind=pulumi.get(__response__, 'kind'),
+        name=pulumi.get(__response__, 'name'),
+        namespace=pulumi.get(__response__, 'namespace'),
+        partition=pulumi.get(__response__, 'partition'),
+        partition_consumers=pulumi.get(__response__, 'partition_consumers'),
+        peer_consumers=pulumi.get(__response__, 'peer_consumers'),
+        sameness_group_consumers=pulumi.get(__response__, 'sameness_group_consumers'),
+        services=pulumi.get(__response__, 'services')))

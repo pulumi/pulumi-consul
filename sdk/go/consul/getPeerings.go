@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := consul.GetPeerings(ctx, nil, nil)
+//			_, err := consul.GetPeerings(ctx, &consul.GetPeeringsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

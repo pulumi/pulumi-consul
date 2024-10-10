@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -132,9 +137,6 @@ def get_config_entry(kind: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         namespace=pulumi.get(__ret__, 'namespace'),
         partition=pulumi.get(__ret__, 'partition'))
-
-
-@_utilities.lift_output_func(get_config_entry)
 def get_config_entry_output(kind: Optional[pulumi.Input[str]] = None,
                             name: Optional[pulumi.Input[str]] = None,
                             namespace: Optional[pulumi.Input[Optional[str]]] = None,
@@ -148,4 +150,17 @@ def get_config_entry_output(kind: Optional[pulumi.Input[str]] = None,
     :param str namespace: The namespace the config entry is associated with.
     :param str partition: The partition the config entry is associated with.
     """
-    ...
+    __args__ = dict()
+    __args__['kind'] = kind
+    __args__['name'] = name
+    __args__['namespace'] = namespace
+    __args__['partition'] = partition
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('consul:index/getConfigEntry:getConfigEntry', __args__, opts=opts, typ=GetConfigEntryResult)
+    return __ret__.apply(lambda __response__: GetConfigEntryResult(
+        config_json=pulumi.get(__response__, 'config_json'),
+        id=pulumi.get(__response__, 'id'),
+        kind=pulumi.get(__response__, 'kind'),
+        name=pulumi.get(__response__, 'name'),
+        namespace=pulumi.get(__response__, 'namespace'),
+        partition=pulumi.get(__response__, 'partition')))

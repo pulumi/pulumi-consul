@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -218,9 +223,6 @@ def get_acl_auth_method(name: Optional[str] = None,
         partition=pulumi.get(__ret__, 'partition'),
         token_locality=pulumi.get(__ret__, 'token_locality'),
         type=pulumi.get(__ret__, 'type'))
-
-
-@_utilities.lift_output_func(get_acl_auth_method)
 def get_acl_auth_method_output(name: Optional[pulumi.Input[str]] = None,
                                namespace: Optional[pulumi.Input[Optional[str]]] = None,
                                partition: Optional[pulumi.Input[Optional[str]]] = None,
@@ -244,4 +246,22 @@ def get_acl_auth_method_output(name: Optional[pulumi.Input[str]] = None,
     :param str namespace: The namespace to lookup the auth method.
     :param str partition: The partition to lookup the auth method.
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['namespace'] = namespace
+    __args__['partition'] = partition
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('consul:index/getAclAuthMethod:getAclAuthMethod', __args__, opts=opts, typ=GetAclAuthMethodResult)
+    return __ret__.apply(lambda __response__: GetAclAuthMethodResult(
+        config=pulumi.get(__response__, 'config'),
+        config_json=pulumi.get(__response__, 'config_json'),
+        description=pulumi.get(__response__, 'description'),
+        display_name=pulumi.get(__response__, 'display_name'),
+        id=pulumi.get(__response__, 'id'),
+        max_token_ttl=pulumi.get(__response__, 'max_token_ttl'),
+        name=pulumi.get(__response__, 'name'),
+        namespace=pulumi.get(__response__, 'namespace'),
+        namespace_rules=pulumi.get(__response__, 'namespace_rules'),
+        partition=pulumi.get(__response__, 'partition'),
+        token_locality=pulumi.get(__response__, 'token_locality'),
+        type=pulumi.get(__response__, 'type')))
