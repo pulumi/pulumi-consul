@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -125,9 +130,6 @@ def get_autopilot_health(datacenter: Optional[str] = None,
         healthy=pulumi.get(__ret__, 'healthy'),
         id=pulumi.get(__ret__, 'id'),
         servers=pulumi.get(__ret__, 'servers'))
-
-
-@_utilities.lift_output_func(get_autopilot_health)
 def get_autopilot_health_output(datacenter: Optional[pulumi.Input[Optional[str]]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAutopilotHealthResult]:
     """
@@ -149,4 +151,13 @@ def get_autopilot_health_output(datacenter: Optional[pulumi.Input[Optional[str]]
     :param str datacenter: The datacenter to use. This overrides the agent's
            default datacenter and the datacenter in the provider setup.
     """
-    ...
+    __args__ = dict()
+    __args__['datacenter'] = datacenter
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('consul:index/getAutopilotHealth:getAutopilotHealth', __args__, opts=opts, typ=GetAutopilotHealthResult)
+    return __ret__.apply(lambda __response__: GetAutopilotHealthResult(
+        datacenter=pulumi.get(__response__, 'datacenter'),
+        failure_tolerance=pulumi.get(__response__, 'failure_tolerance'),
+        healthy=pulumi.get(__response__, 'healthy'),
+        id=pulumi.get(__response__, 'id'),
+        servers=pulumi.get(__response__, 'servers')))

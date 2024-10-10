@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -180,9 +185,6 @@ def get_acl_role(name: Optional[str] = None,
         policies=pulumi.get(__ret__, 'policies'),
         service_identities=pulumi.get(__ret__, 'service_identities'),
         templated_policies=pulumi.get(__ret__, 'templated_policies'))
-
-
-@_utilities.lift_output_func(get_acl_role)
 def get_acl_role_output(name: Optional[pulumi.Input[str]] = None,
                         namespace: Optional[pulumi.Input[Optional[str]]] = None,
                         partition: Optional[pulumi.Input[Optional[str]]] = None,
@@ -205,4 +207,19 @@ def get_acl_role_output(name: Optional[pulumi.Input[str]] = None,
     :param str namespace: The namespace to lookup the role.
     :param str partition: The partition to lookup the role.
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['namespace'] = namespace
+    __args__['partition'] = partition
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('consul:index/getAclRole:getAclRole', __args__, opts=opts, typ=GetAclRoleResult)
+    return __ret__.apply(lambda __response__: GetAclRoleResult(
+        description=pulumi.get(__response__, 'description'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        namespace=pulumi.get(__response__, 'namespace'),
+        node_identities=pulumi.get(__response__, 'node_identities'),
+        partition=pulumi.get(__response__, 'partition'),
+        policies=pulumi.get(__response__, 'policies'),
+        service_identities=pulumi.get(__response__, 'service_identities'),
+        templated_policies=pulumi.get(__response__, 'templated_policies')))

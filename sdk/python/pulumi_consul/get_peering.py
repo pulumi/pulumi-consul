@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -155,9 +160,6 @@ def get_peering(partition: Optional[str] = None,
         peer_server_addresses=pulumi.get(__ret__, 'peer_server_addresses'),
         peer_server_name=pulumi.get(__ret__, 'peer_server_name'),
         state=pulumi.get(__ret__, 'state'))
-
-
-@_utilities.lift_output_func(get_peering)
 def get_peering_output(partition: Optional[pulumi.Input[Optional[str]]] = None,
                        peer_name: Optional[pulumi.Input[str]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPeeringResult]:
@@ -171,4 +173,19 @@ def get_peering_output(partition: Optional[pulumi.Input[Optional[str]]] = None,
     basic = consul.get_peering(peer_name="peered-cluster")
     ```
     """
-    ...
+    __args__ = dict()
+    __args__['partition'] = partition
+    __args__['peerName'] = peer_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('consul:index/getPeering:getPeering', __args__, opts=opts, typ=GetPeeringResult)
+    return __ret__.apply(lambda __response__: GetPeeringResult(
+        deleted_at=pulumi.get(__response__, 'deleted_at'),
+        id=pulumi.get(__response__, 'id'),
+        meta=pulumi.get(__response__, 'meta'),
+        partition=pulumi.get(__response__, 'partition'),
+        peer_ca_pems=pulumi.get(__response__, 'peer_ca_pems'),
+        peer_id=pulumi.get(__response__, 'peer_id'),
+        peer_name=pulumi.get(__response__, 'peer_name'),
+        peer_server_addresses=pulumi.get(__response__, 'peer_server_addresses'),
+        peer_server_name=pulumi.get(__response__, 'peer_server_name'),
+        state=pulumi.get(__response__, 'state')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -186,9 +191,6 @@ def get_keys(datacenter: Optional[str] = None,
         partition=pulumi.get(__ret__, 'partition'),
         token=pulumi.get(__ret__, 'token'),
         var=pulumi.get(__ret__, 'var'))
-
-
-@_utilities.lift_output_func(get_keys)
 def get_keys_output(datacenter: Optional[pulumi.Input[Optional[str]]] = None,
                     error_on_missing_keys: Optional[pulumi.Input[Optional[bool]]] = None,
                     keys: Optional[pulumi.Input[Optional[Sequence[Union['GetKeysKeyArgs', 'GetKeysKeyArgsDict']]]]] = None,
@@ -224,4 +226,21 @@ def get_keys_output(datacenter: Optional[pulumi.Input[Optional[str]]] = None,
     :param str partition: The partition to lookup the keys.
     :param str token: The ACL token to use. This overrides the token that the agent provides by default.
     """
-    ...
+    __args__ = dict()
+    __args__['datacenter'] = datacenter
+    __args__['errorOnMissingKeys'] = error_on_missing_keys
+    __args__['keys'] = keys
+    __args__['namespace'] = namespace
+    __args__['partition'] = partition
+    __args__['token'] = token
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('consul:index/getKeys:getKeys', __args__, opts=opts, typ=GetKeysResult)
+    return __ret__.apply(lambda __response__: GetKeysResult(
+        datacenter=pulumi.get(__response__, 'datacenter'),
+        error_on_missing_keys=pulumi.get(__response__, 'error_on_missing_keys'),
+        id=pulumi.get(__response__, 'id'),
+        keys=pulumi.get(__response__, 'keys'),
+        namespace=pulumi.get(__response__, 'namespace'),
+        partition=pulumi.get(__response__, 'partition'),
+        token=pulumi.get(__response__, 'token'),
+        var=pulumi.get(__response__, 'var')))

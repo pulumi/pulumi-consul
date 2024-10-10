@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -127,9 +132,6 @@ def get_nodes(query_options: Optional[Sequence[Union['GetNodesQueryOptionArgs', 
         node_names=pulumi.get(__ret__, 'node_names'),
         nodes=pulumi.get(__ret__, 'nodes'),
         query_options=pulumi.get(__ret__, 'query_options'))
-
-
-@_utilities.lift_output_func(get_nodes)
 def get_nodes_output(query_options: Optional[pulumi.Input[Optional[Sequence[Union['GetNodesQueryOptionArgs', 'GetNodesQueryOptionArgsDict']]]]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNodesResult]:
     """
@@ -141,4 +143,14 @@ def get_nodes_output(query_options: Optional[pulumi.Input[Optional[Sequence[Unio
 
     :param Sequence[Union['GetNodesQueryOptionArgs', 'GetNodesQueryOptionArgsDict']] query_options: See below.
     """
-    ...
+    __args__ = dict()
+    __args__['queryOptions'] = query_options
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('consul:index/getNodes:getNodes', __args__, opts=opts, typ=GetNodesResult)
+    return __ret__.apply(lambda __response__: GetNodesResult(
+        datacenter=pulumi.get(__response__, 'datacenter'),
+        id=pulumi.get(__response__, 'id'),
+        node_ids=pulumi.get(__response__, 'node_ids'),
+        node_names=pulumi.get(__response__, 'node_names'),
+        nodes=pulumi.get(__response__, 'nodes'),
+        query_options=pulumi.get(__response__, 'query_options')))

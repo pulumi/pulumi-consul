@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -148,9 +153,6 @@ def get_agent_config(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGe
         revision=pulumi.get(__ret__, 'revision'),
         server=pulumi.get(__ret__, 'server'),
         version=pulumi.get(__ret__, 'version'))
-
-
-@_utilities.lift_output_func(get_agent_config)
 def get_agent_config_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAgentConfigResult]:
     """
     > **Note:** The `get_agent_config` resource differs from [`get_agent_self`](https://www.terraform.io/docs/providers/consul/d/agent_self.html),
@@ -171,4 +173,14 @@ def get_agent_config_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulu
     pulumi.export("consulVersion", remote_agent.version)
     ```
     """
-    ...
+    __args__ = dict()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('consul:index/getAgentConfig:getAgentConfig', __args__, opts=opts, typ=GetAgentConfigResult)
+    return __ret__.apply(lambda __response__: GetAgentConfigResult(
+        datacenter=pulumi.get(__response__, 'datacenter'),
+        id=pulumi.get(__response__, 'id'),
+        node_id=pulumi.get(__response__, 'node_id'),
+        node_name=pulumi.get(__response__, 'node_name'),
+        revision=pulumi.get(__response__, 'revision'),
+        server=pulumi.get(__response__, 'server'),
+        version=pulumi.get(__response__, 'version')))
