@@ -12,6 +12,7 @@ The consul provider is available as a package in all Pulumi languages:
 * Go: [`github.com/pulumi/pulumi-consul/sdk/v3/go/consul`](https://github.com/pulumi/pulumi-consul)
 * .NET: [`Pulumi.Consul`](https://www.nuget.org/packages/Pulumi.Consul)
 * Java: [`com.pulumi/consul`](https://central.sonatype.com/artifact/com.pulumi/consul)
+## Overview
 
 [Consul](https://www.consul.io) is a service networking platform which provides
 service discovery, service mesh, and application configuration capabilities.
