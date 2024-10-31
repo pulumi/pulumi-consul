@@ -246,12 +246,12 @@ class ConfigEntryServiceSplitter(pulumi.CustomResource):
                     "service_subset": "v1",
                     "request_headers": {
                         "set": {
-                            "x_web_version": "from-v1",
+                            "x-web-version": "from-v1",
                         },
                     },
                     "response_headers": {
                         "set": {
-                            "x_web_version": "to-v1",
+                            "x-web-version": "to-v1",
                         },
                     },
                 },
@@ -261,12 +261,12 @@ class ConfigEntryServiceSplitter(pulumi.CustomResource):
                     "service_subset": "v2",
                     "request_headers": {
                         "set": {
-                            "x_web_version": "from-v2",
+                            "x-web-version": "from-v2",
                         },
                     },
                     "response_headers": {
                         "set": {
-                            "x_web_version": "to-v2",
+                            "x-web-version": "to-v2",
                         },
                     },
                 },
@@ -340,12 +340,12 @@ class ConfigEntryServiceSplitter(pulumi.CustomResource):
                     "service_subset": "v1",
                     "request_headers": {
                         "set": {
-                            "x_web_version": "from-v1",
+                            "x-web-version": "from-v1",
                         },
                     },
                     "response_headers": {
                         "set": {
-                            "x_web_version": "to-v1",
+                            "x-web-version": "to-v1",
                         },
                     },
                 },
@@ -355,12 +355,12 @@ class ConfigEntryServiceSplitter(pulumi.CustomResource):
                     "service_subset": "v2",
                     "request_headers": {
                         "set": {
-                            "x_web_version": "from-v2",
+                            "x-web-version": "from-v2",
                         },
                     },
                     "response_headers": {
                         "set": {
-                            "x_web_version": "to-v2",
+                            "x-web-version": "to-v2",
                         },
                     },
                 },
