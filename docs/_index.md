@@ -280,7 +280,7 @@ public class App {
 - `token` (String, Sensitive) The ACL token to use by default when making requests to the agent. Can also be specified with `CONSUL_HTTP_TOKEN` or `CONSUL_TOKEN` as an environment variable.
 
 <a id="nestedblock--auth_jwt"></a>
-### Nested Configuration Reference for `authJwt`
+### Nested Schema for `authJwt`
 
 Required:
 
@@ -293,7 +293,7 @@ Optional:
 - `usePulumiCloudWorkloadIdentity` (Boolean) Whether to use a Pulumi Workload Identity token. The token will be read from the `TFC_WORKLOAD_IDENTITY_TOKEN` environment variable.
 
 <a id="nestedblock--header"></a>
-### Nested Configuration Reference for `header`
+### Nested Schema for `header`
 
 Required:
 
