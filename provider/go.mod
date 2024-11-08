@@ -19,7 +19,7 @@ replace github.com/hashicorp/terraform-exec => github.com/hashicorp/terraform-ex
 require (
 	github.com/hashicorp/terraform-plugin-sdk v1.17.2
 	github.com/hashicorp/terraform-provider-consul v1.1.1-0.20240802192014-7a097673283b
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.94.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.94.1-0.20241108214517-af9ccb5aa383
 )
 
 replace github.com/spf13/afero => github.com/spf13/afero v1.2.2
@@ -143,6 +143,7 @@ require (
 	github.com/muesli/termenv v0.15.2 // indirect
 	github.com/natefinch/atomic v1.0.1 // indirect
 	github.com/oklog/run v1.1.0 // indirect
+	github.com/olekukonko/tablewriter v0.0.5 // indirect
 	github.com/opentracing/basictracer-go v1.1.0 // indirect
 	github.com/opentracing/opentracing-go v1.2.0 // indirect
 	github.com/pgavlin/fx v0.1.6 // indirect
