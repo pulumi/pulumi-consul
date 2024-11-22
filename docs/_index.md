@@ -6,7 +6,7 @@ layout: package
 ---
 ## Installation
 
-The consul provider is available as a package in all Pulumi languages:
+The Consul provider is available as a package in all Pulumi languages:
 
 * JavaScript/TypeScript: [`@pulumi/consul`](https://www.npmjs.com/package/@pulumi/consul)
 * Python: [`pulumi-consul`](https://pypi.org/project/pulumi-consul/)
