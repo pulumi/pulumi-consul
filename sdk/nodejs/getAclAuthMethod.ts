@@ -117,7 +117,7 @@ export interface GetAclAuthMethodResult {
  * export const consulAclAuthMethod = test.then(test => test.config);
  * ```
  */
-export function getAclAuthMethodOutput(args: GetAclAuthMethodOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAclAuthMethodResult> {
+export function getAclAuthMethodOutput(args: GetAclAuthMethodOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAclAuthMethodResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("consul:index/getAclAuthMethod:getAclAuthMethod", {
         "name": args.name,

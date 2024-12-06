@@ -161,7 +161,7 @@ Please use the token argument in the provider configuration
  * const webInstance = new aws.index.Instance("web", {ami: web.subkeys?.["app/launch_ami"]});
  * ```
  */
-export function getKeyPrefixOutput(args: GetKeyPrefixOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeyPrefixResult> {
+export function getKeyPrefixOutput(args: GetKeyPrefixOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKeyPrefixResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("consul:index/getKeyPrefix:getKeyPrefix", {
         "datacenter": args.datacenter,

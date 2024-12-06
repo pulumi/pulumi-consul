@@ -136,7 +136,7 @@ Please use the token argument in the provider configuration
  * const appInstance = new aws.index.Instance("app", {ami: app["var"]?.ami});
  * ```
  */
-export function getKeysOutput(args?: GetKeysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeysResult> {
+export function getKeysOutput(args?: GetKeysOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKeysResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("consul:index/getKeys:getKeys", {

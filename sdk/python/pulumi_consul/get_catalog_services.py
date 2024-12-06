@@ -151,7 +151,7 @@ def get_catalog_services(query_options: Optional[Sequence[Union['GetCatalogServi
         services=pulumi.get(__ret__, 'services'),
         tags=pulumi.get(__ret__, 'tags'))
 def get_catalog_services_output(query_options: Optional[pulumi.Input[Optional[Sequence[Union['GetCatalogServicesQueryOptionArgs', 'GetCatalogServicesQueryOptionArgsDict']]]]] = None,
-                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCatalogServicesResult]:
+                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCatalogServicesResult]:
     """
     The `get_services` data source returns a list of Consul services that
     have been registered with the Consul cluster in a given datacenter.  By
@@ -183,7 +183,7 @@ def get_catalog_services_output(query_options: Optional[pulumi.Input[Optional[Se
     pulumi.log.warn("""get_catalog_services is deprecated: getCatalogServices has been deprecated in favor of getServices""")
     __args__ = dict()
     __args__['queryOptions'] = query_options
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('consul:index/getCatalogServices:getCatalogServices', __args__, opts=opts, typ=GetCatalogServicesResult)
     return __ret__.apply(lambda __response__: GetCatalogServicesResult(
         datacenter=pulumi.get(__response__, 'datacenter'),
