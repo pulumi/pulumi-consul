@@ -97,7 +97,7 @@ export interface GetConfigEntryV2ExportedServicesResult {
      */
     readonly services?: string[];
 }
-export function getConfigEntryV2ExportedServicesOutput(args: GetConfigEntryV2ExportedServicesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConfigEntryV2ExportedServicesResult> {
+export function getConfigEntryV2ExportedServicesOutput(args: GetConfigEntryV2ExportedServicesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetConfigEntryV2ExportedServicesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("consul:index/getConfigEntryV2ExportedServices:getConfigEntryV2ExportedServices", {
         "kind": args.kind,

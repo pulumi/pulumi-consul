@@ -62,7 +62,7 @@ export interface GetPeeringResult {
  * });
  * ```
  */
-export function getPeeringOutput(args: GetPeeringOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPeeringResult> {
+export function getPeeringOutput(args: GetPeeringOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPeeringResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("consul:index/getPeering:getPeering", {
         "partition": args.partition,

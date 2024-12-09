@@ -148,7 +148,7 @@ def get_services(query_options: Optional[Sequence[Union['GetServicesQueryOptionA
         services=pulumi.get(__ret__, 'services'),
         tags=pulumi.get(__ret__, 'tags'))
 def get_services_output(query_options: Optional[pulumi.Input[Optional[Sequence[Union['GetServicesQueryOptionArgs', 'GetServicesQueryOptionArgsDict']]]]] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServicesResult]:
+                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServicesResult]:
     """
     The `get_services` data source returns a list of Consul services that
     have been registered with the Consul cluster in a given datacenter.  By
@@ -179,7 +179,7 @@ def get_services_output(query_options: Optional[pulumi.Input[Optional[Sequence[U
     """
     __args__ = dict()
     __args__['queryOptions'] = query_options
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('consul:index/getServices:getServices', __args__, opts=opts, typ=GetServicesResult)
     return __ret__.apply(lambda __response__: GetServicesResult(
         datacenter=pulumi.get(__response__, 'datacenter'),

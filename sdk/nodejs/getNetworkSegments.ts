@@ -94,7 +94,7 @@ Please use the token argument in the provider configuration
  * }
  * ```
  */
-export function getNetworkSegmentsOutput(args?: GetNetworkSegmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkSegmentsResult> {
+export function getNetworkSegmentsOutput(args?: GetNetworkSegmentsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNetworkSegmentsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("consul:index/getNetworkSegments:getNetworkSegments", {

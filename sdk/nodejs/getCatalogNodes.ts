@@ -66,7 +66,7 @@ export interface GetCatalogNodesResult {
  * nodes from a different WAN-attached Consul datacenter.
  */
 /** @deprecated getCatalogNodes has been deprecated in favor of getNodes */
-export function getCatalogNodesOutput(args?: GetCatalogNodesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCatalogNodesResult> {
+export function getCatalogNodesOutput(args?: GetCatalogNodesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCatalogNodesResult> {
     pulumi.log.warn("getCatalogNodes is deprecated: getCatalogNodes has been deprecated in favor of getNodes")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

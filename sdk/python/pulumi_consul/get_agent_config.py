@@ -153,7 +153,7 @@ def get_agent_config(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGe
         revision=pulumi.get(__ret__, 'revision'),
         server=pulumi.get(__ret__, 'server'),
         version=pulumi.get(__ret__, 'version'))
-def get_agent_config_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAgentConfigResult]:
+def get_agent_config_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAgentConfigResult]:
     """
     > **Note:** The `get_agent_config` resource differs from [`get_agent_self`](https://www.terraform.io/docs/providers/consul/d/agent_self.html),
     providing less information but utilizing stable APIs. `get_agent_self` will be
@@ -174,7 +174,7 @@ def get_agent_config_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulu
     ```
     """
     __args__ = dict()
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('consul:index/getAgentConfig:getAgentConfig', __args__, opts=opts, typ=GetAgentConfigResult)
     return __ret__.apply(lambda __response__: GetAgentConfigResult(
         datacenter=pulumi.get(__response__, 'datacenter'),

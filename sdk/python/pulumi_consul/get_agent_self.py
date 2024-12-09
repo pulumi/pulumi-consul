@@ -852,7 +852,7 @@ def get_agent_self(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetA
         version=pulumi.get(__ret__, 'version'),
         version_prerelease=pulumi.get(__ret__, 'version_prerelease'),
         version_revision=pulumi.get(__ret__, 'version_revision'))
-def get_agent_self_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAgentSelfResult]:
+def get_agent_self_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAgentSelfResult]:
     """
     > **Warning:** The `get_agent_self` resource has been deprecated and will be removed
     from a future release of the provider. Read the [upgrade instructions](https://www.terraform.io/docs/providers/consul/guides/upgrading.html#deprecation-of-consul_agent_self) for more information.
@@ -862,7 +862,7 @@ def get_agent_self_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi
     from the agent specified in the `provider`.
     """
     __args__ = dict()
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('consul:index/getAgentSelf:getAgentSelf', __args__, opts=opts, typ=GetAgentSelfResult)
     return __ret__.apply(lambda __response__: GetAgentSelfResult(
         acl_datacenter=pulumi.get(__response__, 'acl_datacenter'),
