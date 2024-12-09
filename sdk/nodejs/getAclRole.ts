@@ -104,7 +104,7 @@ export interface GetAclRoleResult {
  * export const consulAclRole = test.then(test => test.id);
  * ```
  */
-export function getAclRoleOutput(args: GetAclRoleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAclRoleResult> {
+export function getAclRoleOutput(args: GetAclRoleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAclRoleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("consul:index/getAclRole:getAclRole", {
         "name": args.name,

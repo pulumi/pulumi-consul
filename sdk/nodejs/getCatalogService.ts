@@ -134,7 +134,7 @@ export interface GetCatalogServiceResult {
  * ```
  */
 /** @deprecated getCatalogService has been deprecated in favor of getService */
-export function getCatalogServiceOutput(args: GetCatalogServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCatalogServiceResult> {
+export function getCatalogServiceOutput(args: GetCatalogServiceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCatalogServiceResult> {
     pulumi.log.warn("getCatalogService is deprecated: getCatalogService has been deprecated in favor of getService")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("consul:index/getCatalogService:getCatalogService", {

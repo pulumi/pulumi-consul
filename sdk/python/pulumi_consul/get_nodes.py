@@ -133,7 +133,7 @@ def get_nodes(query_options: Optional[Sequence[Union['GetNodesQueryOptionArgs', 
         nodes=pulumi.get(__ret__, 'nodes'),
         query_options=pulumi.get(__ret__, 'query_options'))
 def get_nodes_output(query_options: Optional[pulumi.Input[Optional[Sequence[Union['GetNodesQueryOptionArgs', 'GetNodesQueryOptionArgsDict']]]]] = None,
-                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNodesResult]:
+                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNodesResult]:
     """
     The `get_nodes` data source returns a list of Consul nodes that have
     been registered with the Consul cluster in a given datacenter.  By specifying a
@@ -145,7 +145,7 @@ def get_nodes_output(query_options: Optional[pulumi.Input[Optional[Sequence[Unio
     """
     __args__ = dict()
     __args__['queryOptions'] = query_options
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('consul:index/getNodes:getNodes', __args__, opts=opts, typ=GetNodesResult)
     return __ret__.apply(lambda __response__: GetNodesResult(
         datacenter=pulumi.get(__response__, 'datacenter'),

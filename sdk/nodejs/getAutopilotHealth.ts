@@ -80,7 +80,7 @@ export interface GetAutopilotHealthResult {
  * export const health = read.then(read => read.healthy);
  * ```
  */
-export function getAutopilotHealthOutput(args?: GetAutopilotHealthOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAutopilotHealthResult> {
+export function getAutopilotHealthOutput(args?: GetAutopilotHealthOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAutopilotHealthResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("consul:index/getAutopilotHealth:getAutopilotHealth", {
