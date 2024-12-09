@@ -156,7 +156,7 @@ def get_acl_token_secret_id_output(accessor_id: Optional[pulumi.Input[str]] = No
                                    namespace: Optional[pulumi.Input[Optional[str]]] = None,
                                    partition: Optional[pulumi.Input[Optional[str]]] = None,
                                    pgp_key: Optional[pulumi.Input[Optional[str]]] = None,
-                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAclTokenSecretIdResult]:
+                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAclTokenSecretIdResult]:
     """
     ## Example Usage
 
@@ -187,7 +187,7 @@ def get_acl_token_secret_id_output(accessor_id: Optional[pulumi.Input[str]] = No
     __args__['namespace'] = namespace
     __args__['partition'] = partition
     __args__['pgpKey'] = pgp_key
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('consul:index/getAclTokenSecretId:getAclTokenSecretId', __args__, opts=opts, typ=GetAclTokenSecretIdResult)
     return __ret__.apply(lambda __response__: GetAclTokenSecretIdResult(
         accessor_id=pulumi.get(__response__, 'accessor_id'),

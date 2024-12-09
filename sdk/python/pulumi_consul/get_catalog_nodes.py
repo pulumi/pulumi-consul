@@ -136,7 +136,7 @@ def get_catalog_nodes(query_options: Optional[Sequence[Union['GetCatalogNodesQue
         nodes=pulumi.get(__ret__, 'nodes'),
         query_options=pulumi.get(__ret__, 'query_options'))
 def get_catalog_nodes_output(query_options: Optional[pulumi.Input[Optional[Sequence[Union['GetCatalogNodesQueryOptionArgs', 'GetCatalogNodesQueryOptionArgsDict']]]]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCatalogNodesResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCatalogNodesResult]:
     """
     The `get_nodes` data source returns a list of Consul nodes that have
     been registered with the Consul cluster in a given datacenter.  By specifying a
@@ -149,7 +149,7 @@ def get_catalog_nodes_output(query_options: Optional[pulumi.Input[Optional[Seque
     pulumi.log.warn("""get_catalog_nodes is deprecated: getCatalogNodes has been deprecated in favor of getNodes""")
     __args__ = dict()
     __args__['queryOptions'] = query_options
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('consul:index/getCatalogNodes:getCatalogNodes', __args__, opts=opts, typ=GetCatalogNodesResult)
     return __ret__.apply(lambda __response__: GetCatalogNodesResult(
         datacenter=pulumi.get(__response__, 'datacenter'),

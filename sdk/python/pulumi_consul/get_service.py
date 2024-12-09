@@ -182,7 +182,7 @@ def get_service_output(datacenter: Optional[pulumi.Input[Optional[str]]] = None,
                        name: Optional[pulumi.Input[str]] = None,
                        query_options: Optional[pulumi.Input[Optional[Sequence[Union['GetServiceQueryOptionArgs', 'GetServiceQueryOptionArgsDict']]]]] = None,
                        tag: Optional[pulumi.Input[Optional[str]]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServiceResult]:
     """
     `Service` provides details about a specific Consul service in a
     given datacenter.  The results include a list of nodes advertising the specified
@@ -224,7 +224,7 @@ def get_service_output(datacenter: Optional[pulumi.Input[Optional[str]]] = None,
     __args__['name'] = name
     __args__['queryOptions'] = query_options
     __args__['tag'] = tag
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('consul:index/getService:getService', __args__, opts=opts, typ=GetServiceResult)
     return __ret__.apply(lambda __response__: GetServiceResult(
         datacenter=pulumi.get(__response__, 'datacenter'),

@@ -52,7 +52,7 @@ export interface GetPeeringsResult {
  * const peers = consul.getPeerings({});
  * ```
  */
-export function getPeeringsOutput(args?: GetPeeringsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPeeringsResult> {
+export function getPeeringsOutput(args?: GetPeeringsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPeeringsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("consul:index/getPeerings:getPeerings", {

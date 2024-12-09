@@ -120,7 +120,7 @@ export interface GetAclTokenResult {
  * export const consulAclPolicies = test.then(test => test.policies);
  * ```
  */
-export function getAclTokenOutput(args: GetAclTokenOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAclTokenResult> {
+export function getAclTokenOutput(args: GetAclTokenOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAclTokenResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("consul:index/getAclToken:getAclToken", {
         "accessorId": args.accessorId,

@@ -197,7 +197,7 @@ def get_keys_output(datacenter: Optional[pulumi.Input[Optional[str]]] = None,
                     namespace: Optional[pulumi.Input[Optional[str]]] = None,
                     partition: Optional[pulumi.Input[Optional[str]]] = None,
                     token: Optional[pulumi.Input[Optional[str]]] = None,
-                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKeysResult]:
+                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKeysResult]:
     """
     The `Keys` datasource reads values from the Consul key/value store. This is a powerful way to dynamically set values in templates.
 
@@ -233,7 +233,7 @@ def get_keys_output(datacenter: Optional[pulumi.Input[Optional[str]]] = None,
     __args__['namespace'] = namespace
     __args__['partition'] = partition
     __args__['token'] = token
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('consul:index/getKeys:getKeys', __args__, opts=opts, typ=GetKeysResult)
     return __ret__.apply(lambda __response__: GetKeysResult(
         datacenter=pulumi.get(__response__, 'datacenter'),
