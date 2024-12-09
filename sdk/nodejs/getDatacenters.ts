@@ -33,7 +33,7 @@ export interface GetDatacentersResult {
  * The `consul.getDatacenters` data source returns the list of all knwown Consul
  * datacenters.
  */
-export function getDatacentersOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetDatacentersResult> {
+export function getDatacentersOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDatacentersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("consul:index/getDatacenters:getDatacenters", {
     }, opts);

@@ -153,7 +153,7 @@ def get_acl_policy(name: Optional[str] = None,
 def get_acl_policy_output(name: Optional[pulumi.Input[str]] = None,
                           namespace: Optional[pulumi.Input[Optional[str]]] = None,
                           partition: Optional[pulumi.Input[Optional[str]]] = None,
-                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAclPolicyResult]:
+                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAclPolicyResult]:
     """
     The `AclPolicy` data source returns the information related to a
     [Consul ACL Policy](https://www.consul.io/docs/acl/acl-system.html#acl-policies).
@@ -177,7 +177,7 @@ def get_acl_policy_output(name: Optional[pulumi.Input[str]] = None,
     __args__['name'] = name
     __args__['namespace'] = namespace
     __args__['partition'] = partition
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('consul:index/getAclPolicy:getAclPolicy', __args__, opts=opts, typ=GetAclPolicyResult)
     return __ret__.apply(lambda __response__: GetAclPolicyResult(
         datacenters=pulumi.get(__response__, 'datacenters'),

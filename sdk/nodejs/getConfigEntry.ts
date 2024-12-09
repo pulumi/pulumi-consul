@@ -65,7 +65,7 @@ export interface GetConfigEntryResult {
      */
     readonly partition?: string;
 }
-export function getConfigEntryOutput(args: GetConfigEntryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConfigEntryResult> {
+export function getConfigEntryOutput(args: GetConfigEntryOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetConfigEntryResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("consul:index/getConfigEntry:getConfigEntry", {
         "kind": args.kind,

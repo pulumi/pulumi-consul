@@ -220,7 +220,7 @@ def get_service_health_output(datacenter: Optional[pulumi.Input[Optional[str]]] 
                               passing: Optional[pulumi.Input[Optional[bool]]] = None,
                               tag: Optional[pulumi.Input[Optional[str]]] = None,
                               wait_for: Optional[pulumi.Input[Optional[str]]] = None,
-                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceHealthResult]:
+                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServiceHealthResult]:
     """
     `get_service_health` can be used to get the list of the instances that
     are currently healthy, according to their associated  health-checks.
@@ -253,7 +253,7 @@ def get_service_health_output(datacenter: Optional[pulumi.Input[Optional[str]]] 
     __args__['passing'] = passing
     __args__['tag'] = tag
     __args__['waitFor'] = wait_for
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('consul:index/getServiceHealth:getServiceHealth', __args__, opts=opts, typ=GetServiceHealthResult)
     return __ret__.apply(lambda __response__: GetServiceHealthResult(
         datacenter=pulumi.get(__response__, 'datacenter'),

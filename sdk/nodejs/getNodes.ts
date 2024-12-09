@@ -63,7 +63,7 @@ export interface GetNodesResult {
  * different datacenter in the `queryOptions` it is possible to retrieve a list of
  * nodes from a different WAN-attached Consul datacenter.
  */
-export function getNodesOutput(args?: GetNodesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNodesResult> {
+export function getNodesOutput(args?: GetNodesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNodesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("consul:index/getNodes:getNodes", {
