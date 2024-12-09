@@ -215,7 +215,7 @@ def get_key_prefix_output(datacenter: Optional[pulumi.Input[Optional[str]]] = No
                           path_prefix: Optional[pulumi.Input[str]] = None,
                           subkey_collection: Optional[pulumi.Input[Optional[Sequence[Union['GetKeyPrefixSubkeyCollectionArgs', 'GetKeyPrefixSubkeyCollectionArgsDict']]]]] = None,
                           token: Optional[pulumi.Input[Optional[str]]] = None,
-                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKeyPrefixResult]:
+                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKeyPrefixResult]:
     """
     ## Example Usage
 
@@ -268,7 +268,7 @@ def get_key_prefix_output(datacenter: Optional[pulumi.Input[Optional[str]]] = No
     __args__['pathPrefix'] = path_prefix
     __args__['subkeyCollection'] = subkey_collection
     __args__['token'] = token
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('consul:index/getKeyPrefix:getKeyPrefix', __args__, opts=opts, typ=GetKeyPrefixResult)
     return __ret__.apply(lambda __response__: GetKeyPrefixResult(
         datacenter=pulumi.get(__response__, 'datacenter'),

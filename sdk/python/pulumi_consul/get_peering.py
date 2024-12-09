@@ -162,7 +162,7 @@ def get_peering(partition: Optional[str] = None,
         state=pulumi.get(__ret__, 'state'))
 def get_peering_output(partition: Optional[pulumi.Input[Optional[str]]] = None,
                        peer_name: Optional[pulumi.Input[str]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPeeringResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPeeringResult]:
     """
     ## Example Usage
 
@@ -176,7 +176,7 @@ def get_peering_output(partition: Optional[pulumi.Input[Optional[str]]] = None,
     __args__ = dict()
     __args__['partition'] = partition
     __args__['peerName'] = peer_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('consul:index/getPeering:getPeering', __args__, opts=opts, typ=GetPeeringResult)
     return __ret__.apply(lambda __response__: GetPeeringResult(
         deleted_at=pulumi.get(__response__, 'deleted_at'),

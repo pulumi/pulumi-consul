@@ -226,7 +226,7 @@ def get_acl_auth_method(name: Optional[str] = None,
 def get_acl_auth_method_output(name: Optional[pulumi.Input[str]] = None,
                                namespace: Optional[pulumi.Input[Optional[str]]] = None,
                                partition: Optional[pulumi.Input[Optional[str]]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAclAuthMethodResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAclAuthMethodResult]:
     """
     The `AclAuthMethod` data source returns the information related to a
     [Consul Auth Method](https://www.consul.io/docs/acl/acl-auth-methods.html).
@@ -250,7 +250,7 @@ def get_acl_auth_method_output(name: Optional[pulumi.Input[str]] = None,
     __args__['name'] = name
     __args__['namespace'] = namespace
     __args__['partition'] = partition
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('consul:index/getAclAuthMethod:getAclAuthMethod', __args__, opts=opts, typ=GetAclAuthMethodResult)
     return __ret__.apply(lambda __response__: GetAclAuthMethodResult(
         config=pulumi.get(__response__, 'config'),

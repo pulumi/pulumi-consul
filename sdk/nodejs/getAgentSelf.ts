@@ -184,7 +184,7 @@ export interface GetAgentSelfResult {
  * [configuration and status data](https://www.consul.io/docs/agent/http/agent.html#agent_self)
  * from the agent specified in the `provider`.
  */
-export function getAgentSelfOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetAgentSelfResult> {
+export function getAgentSelfOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAgentSelfResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("consul:index/getAgentSelf:getAgentSelf", {
     }, opts);

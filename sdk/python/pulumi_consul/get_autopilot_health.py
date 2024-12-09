@@ -131,7 +131,7 @@ def get_autopilot_health(datacenter: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         servers=pulumi.get(__ret__, 'servers'))
 def get_autopilot_health_output(datacenter: Optional[pulumi.Input[Optional[str]]] = None,
-                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAutopilotHealthResult]:
+                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAutopilotHealthResult]:
     """
     The `get_autopilot_health` data source returns
     [autopilot health information](https://www.consul.io/api/operator/autopilot.html#read-health)
@@ -153,7 +153,7 @@ def get_autopilot_health_output(datacenter: Optional[pulumi.Input[Optional[str]]
     """
     __args__ = dict()
     __args__['datacenter'] = datacenter
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('consul:index/getAutopilotHealth:getAutopilotHealth', __args__, opts=opts, typ=GetAutopilotHealthResult)
     return __ret__.apply(lambda __response__: GetAutopilotHealthResult(
         datacenter=pulumi.get(__response__, 'datacenter'),

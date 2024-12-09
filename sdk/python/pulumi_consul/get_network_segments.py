@@ -122,7 +122,7 @@ def get_network_segments(datacenter: Optional[str] = None,
         token=pulumi.get(__ret__, 'token'))
 def get_network_segments_output(datacenter: Optional[pulumi.Input[Optional[str]]] = None,
                                 token: Optional[pulumi.Input[Optional[str]]] = None,
-                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNetworkSegmentsResult]:
+                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNetworkSegmentsResult]:
     """
     > **NOTE:** This feature requires [Consul Enterprise](https://www.consul.io/docs/enterprise/index.html).
 
@@ -148,7 +148,7 @@ def get_network_segments_output(datacenter: Optional[pulumi.Input[Optional[str]]
     __args__ = dict()
     __args__['datacenter'] = datacenter
     __args__['token'] = token
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('consul:index/getNetworkSegments:getNetworkSegments', __args__, opts=opts, typ=GetNetworkSegmentsResult)
     return __ret__.apply(lambda __response__: GetNetworkSegmentsResult(
         datacenter=pulumi.get(__response__, 'datacenter'),

@@ -110,7 +110,7 @@ Please use the token argument in the provider configuration
  * export const members = dc2.apply(dc2 => dc2.members);
  * ```
  */
-export function getNetworkAreaMembersOutput(args: GetNetworkAreaMembersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkAreaMembersResult> {
+export function getNetworkAreaMembersOutput(args: GetNetworkAreaMembersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNetworkAreaMembersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("consul:index/getNetworkAreaMembers:getNetworkAreaMembers", {
         "datacenter": args.datacenter,

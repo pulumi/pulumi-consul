@@ -90,7 +90,7 @@ def get_peerings(partition: Optional[str] = None,
         partition=pulumi.get(__ret__, 'partition'),
         peers=pulumi.get(__ret__, 'peers'))
 def get_peerings_output(partition: Optional[pulumi.Input[Optional[str]]] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPeeringsResult]:
+                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPeeringsResult]:
     """
     ## Example Usage
 
@@ -103,7 +103,7 @@ def get_peerings_output(partition: Optional[pulumi.Input[Optional[str]]] = None,
     """
     __args__ = dict()
     __args__['partition'] = partition
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('consul:index/getPeerings:getPeerings', __args__, opts=opts, typ=GetPeeringsResult)
     return __ret__.apply(lambda __response__: GetPeeringsResult(
         id=pulumi.get(__response__, 'id'),

@@ -196,7 +196,7 @@ def get_config_entry_v2_exported_services_output(kind: Optional[pulumi.Input[str
                                                  peer_consumers: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                                  sameness_group_consumers: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                                  services: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
-                                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConfigEntryV2ExportedServicesResult]:
+                                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConfigEntryV2ExportedServicesResult]:
     """
     Use this data source to access information about an existing resource.
 
@@ -218,7 +218,7 @@ def get_config_entry_v2_exported_services_output(kind: Optional[pulumi.Input[str
     __args__['peerConsumers'] = peer_consumers
     __args__['samenessGroupConsumers'] = sameness_group_consumers
     __args__['services'] = services
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('consul:index/getConfigEntryV2ExportedServices:getConfigEntryV2ExportedServices', __args__, opts=opts, typ=GetConfigEntryV2ExportedServicesResult)
     return __ret__.apply(lambda __response__: GetConfigEntryV2ExportedServicesResult(
         id=pulumi.get(__response__, 'id'),

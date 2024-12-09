@@ -99,7 +99,7 @@ export interface GetAclTokenSecretIdResult {
  * export const consulAclTokenSecretId = read.apply(read => read.encryptedSecretId);
  * ```
  */
-export function getAclTokenSecretIdOutput(args: GetAclTokenSecretIdOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAclTokenSecretIdResult> {
+export function getAclTokenSecretIdOutput(args: GetAclTokenSecretIdOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAclTokenSecretIdResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("consul:index/getAclTokenSecretId:getAclTokenSecretId", {
         "accessorId": args.accessorId,

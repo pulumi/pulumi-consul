@@ -81,7 +81,7 @@ export interface GetAgentConfigResult {
  * export const consulVersion = remoteAgent.then(remoteAgent => remoteAgent.version);
  * ```
  */
-export function getAgentConfigOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetAgentConfigResult> {
+export function getAgentConfigOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAgentConfigResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("consul:index/getAgentConfig:getAgentConfig", {
     }, opts);
