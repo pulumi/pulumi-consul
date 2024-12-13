@@ -34,6 +34,18 @@ namespace Pulumi.Consul
         /// </summary>
         public static Output<GetServiceHealthResult> Invoke(GetServiceHealthInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServiceHealthResult>("consul:index/getServiceHealth:getServiceHealth", args ?? new GetServiceHealthInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// `consul.getServiceHealth` can be used to get the list of the instances that
+        /// are currently healthy, according to their associated  health-checks.
+        /// The result includes the list of service instances, the node associated to each
+        /// instance and its health-checks.
+        /// 
+        /// This resource is likely to change as frequently as the health-checks are being
+        /// updated, you should expect different results in a frequent basis.
+        /// </summary>
+        public static Output<GetServiceHealthResult> Invoke(GetServiceHealthInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetServiceHealthResult>("consul:index/getServiceHealth:getServiceHealth", args ?? new GetServiceHealthInvokeArgs(), options.WithDefaults());
     }
 
 

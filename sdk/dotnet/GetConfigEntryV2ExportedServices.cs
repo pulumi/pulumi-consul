@@ -16,6 +16,9 @@ namespace Pulumi.Consul
 
         public static Output<GetConfigEntryV2ExportedServicesResult> Invoke(GetConfigEntryV2ExportedServicesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetConfigEntryV2ExportedServicesResult>("consul:index/getConfigEntryV2ExportedServices:getConfigEntryV2ExportedServices", args ?? new GetConfigEntryV2ExportedServicesInvokeArgs(), options.WithDefaults());
+
+        public static Output<GetConfigEntryV2ExportedServicesResult> Invoke(GetConfigEntryV2ExportedServicesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetConfigEntryV2ExportedServicesResult>("consul:index/getConfigEntryV2ExportedServices:getConfigEntryV2ExportedServices", args ?? new GetConfigEntryV2ExportedServicesInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -140,6 +140,71 @@ namespace Pulumi.Consul
         /// </summary>
         public static Output<GetKeyPrefixResult> Invoke(GetKeyPrefixInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKeyPrefixResult>("consul:index/getKeyPrefix:getKeyPrefix", args ?? new GetKeyPrefixInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aws = Pulumi.Aws;
+        /// using Consul = Pulumi.Consul;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var app = Consul.GetKeyPrefix.Invoke(new()
+        ///     {
+        ///         Datacenter = "nyc1",
+        ///         Token = "abcd",
+        ///         PathPrefix = "myapp/config/",
+        ///         SubkeyCollection = new[]
+        ///         {
+        ///             new Consul.Inputs.GetKeyPrefixSubkeyCollectionInputArgs
+        ///             {
+        ///                 Name = "ami",
+        ///                 Path = "app/launch_ami",
+        ///                 Default = "ami-1234",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     // Start our instance with the dynamic ami value
+        ///     var appInstance = new Aws.Index.Instance("app", new()
+        ///     {
+        ///         Ami = app.Apply(getKeyPrefixResult =&gt; getKeyPrefixResult.Var?.Ami),
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aws = Pulumi.Aws;
+        /// using Consul = Pulumi.Consul;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var web = Consul.GetKeyPrefix.Invoke(new()
+        ///     {
+        ///         Datacenter = "nyc1",
+        ///         Token = "efgh",
+        ///         PathPrefix = "myapp/config/",
+        ///     });
+        /// 
+        ///     // Start our instance with the dynamic ami value
+        ///     var webInstance = new Aws.Index.Instance("web", new()
+        ///     {
+        ///         Ami = web.Apply(getKeyPrefixResult =&gt; getKeyPrefixResult.Subkeys?.App_launch_ami),
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetKeyPrefixResult> Invoke(GetKeyPrefixInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetKeyPrefixResult>("consul:index/getKeyPrefix:getKeyPrefix", args ?? new GetKeyPrefixInvokeArgs(), options.WithDefaults());
     }
 
 

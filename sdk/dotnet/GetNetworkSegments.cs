@@ -66,6 +66,34 @@ namespace Pulumi.Consul
         /// </summary>
         public static Output<GetNetworkSegmentsResult> Invoke(GetNetworkSegmentsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNetworkSegmentsResult>("consul:index/getNetworkSegments:getNetworkSegments", args ?? new GetNetworkSegmentsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// &gt; **NOTE:** This feature requires [Consul Enterprise](https://www.consul.io/docs/enterprise/index.html).
+        /// 
+        /// The `consul_network_segment` data source can be used to retrieve the network
+        /// segments defined in the configuration.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Consul = Pulumi.Consul;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var segments = Consul.GetNetworkSegments.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["segments"] = segments.Apply(getNetworkSegmentsResult =&gt; getNetworkSegmentsResult.Segments),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetNetworkSegmentsResult> Invoke(GetNetworkSegmentsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetNetworkSegmentsResult>("consul:index/getNetworkSegments:getNetworkSegments", args ?? new GetNetworkSegmentsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -64,21 +64,11 @@ type LookupConfigEntryV2ExportedServicesResult struct {
 }
 
 func LookupConfigEntryV2ExportedServicesOutput(ctx *pulumi.Context, args LookupConfigEntryV2ExportedServicesOutputArgs, opts ...pulumi.InvokeOption) LookupConfigEntryV2ExportedServicesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupConfigEntryV2ExportedServicesResultOutput, error) {
 			args := v.(LookupConfigEntryV2ExportedServicesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupConfigEntryV2ExportedServicesResult
-			secret, err := ctx.InvokePackageRaw("consul:index/getConfigEntryV2ExportedServices:getConfigEntryV2ExportedServices", args, &rv, "", opts...)
-			if err != nil {
-				return LookupConfigEntryV2ExportedServicesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupConfigEntryV2ExportedServicesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupConfigEntryV2ExportedServicesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("consul:index/getConfigEntryV2ExportedServices:getConfigEntryV2ExportedServices", args, LookupConfigEntryV2ExportedServicesResultOutput{}, options).(LookupConfigEntryV2ExportedServicesResultOutput), nil
 		}).(LookupConfigEntryV2ExportedServicesResultOutput)
 }
 

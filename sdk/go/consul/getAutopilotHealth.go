@@ -73,21 +73,11 @@ type GetAutopilotHealthResult struct {
 }
 
 func GetAutopilotHealthOutput(ctx *pulumi.Context, args GetAutopilotHealthOutputArgs, opts ...pulumi.InvokeOption) GetAutopilotHealthResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetAutopilotHealthResultOutput, error) {
 			args := v.(GetAutopilotHealthArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetAutopilotHealthResult
-			secret, err := ctx.InvokePackageRaw("consul:index/getAutopilotHealth:getAutopilotHealth", args, &rv, "", opts...)
-			if err != nil {
-				return GetAutopilotHealthResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetAutopilotHealthResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetAutopilotHealthResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("consul:index/getAutopilotHealth:getAutopilotHealth", args, GetAutopilotHealthResultOutput{}, options).(GetAutopilotHealthResultOutput), nil
 		}).(GetAutopilotHealthResultOutput)
 }
 

@@ -50,21 +50,11 @@ type GetCatalogNodesResult struct {
 }
 
 func GetCatalogNodesOutput(ctx *pulumi.Context, args GetCatalogNodesOutputArgs, opts ...pulumi.InvokeOption) GetCatalogNodesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetCatalogNodesResultOutput, error) {
 			args := v.(GetCatalogNodesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetCatalogNodesResult
-			secret, err := ctx.InvokePackageRaw("consul:index/getCatalogNodes:getCatalogNodes", args, &rv, "", opts...)
-			if err != nil {
-				return GetCatalogNodesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetCatalogNodesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetCatalogNodesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("consul:index/getCatalogNodes:getCatalogNodes", args, GetCatalogNodesResultOutput{}, options).(GetCatalogNodesResultOutput), nil
 		}).(GetCatalogNodesResultOutput)
 }
 

@@ -104,6 +104,53 @@ namespace Pulumi.Consul
         /// </summary>
         public static Output<GetAclTokenSecretIdResult> Invoke(GetAclTokenSecretIdInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAclTokenSecretIdResult>("consul:index/getAclTokenSecretId:getAclTokenSecretId", args ?? new GetAclTokenSecretIdInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Consul = Pulumi.Consul;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var test = new Consul.AclPolicy("test", new()
+        ///     {
+        ///         Name = "test",
+        ///         Rules = "node \"\" { policy = \"read\" }",
+        ///         Datacenters = new[]
+        ///         {
+        ///             "dc1",
+        ///         },
+        ///     });
+        /// 
+        ///     var testAclToken = new Consul.AclToken("test", new()
+        ///     {
+        ///         Description = "test",
+        ///         Policies = new[]
+        ///         {
+        ///             test.Name,
+        ///         },
+        ///         Local = true,
+        ///     });
+        /// 
+        ///     var read = Consul.GetAclTokenSecretId.Invoke(new()
+        ///     {
+        ///         AccessorId = testAclToken.Id,
+        ///         PgpKey = "keybase:my_username",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["consulAclTokenSecretId"] = read.Apply(getAclTokenSecretIdResult =&gt; getAclTokenSecretIdResult.EncryptedSecretId),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAclTokenSecretIdResult> Invoke(GetAclTokenSecretIdInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAclTokenSecretIdResult>("consul:index/getAclTokenSecretId:getAclTokenSecretId", args ?? new GetAclTokenSecretIdInvokeArgs(), options.WithDefaults());
     }
 
 
