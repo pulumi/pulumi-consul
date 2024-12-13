@@ -106,6 +106,54 @@ namespace Pulumi.Consul
         /// </summary>
         public static Output<GetServicesResult> Invoke(GetServicesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServicesResult>("consul:index/getServices:getServices", args ?? new GetServicesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The `consul.getServices` data source returns a list of Consul services that
+        /// have been registered with the Consul cluster in a given datacenter.  By
+        /// specifying a different datacenter in the `query_options` it is possible to
+        /// retrieve a list of services from a different WAN-attached Consul datacenter.
+        /// 
+        /// This data source is different from the `consul.Service` (singular) data
+        /// source, which provides a detailed response about a specific Consul service.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Consul = Pulumi.Consul;
+        /// using Example = Pulumi.Example;
+        /// using Std = Pulumi.Std;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var read_dc1 = Consul.GetServices.Invoke(new()
+        ///     {
+        ///         QueryOptions = new[]
+        ///         {
+        ///             new Consul.Inputs.GetServicesQueryOptionInputArgs
+        ///             {
+        ///                 Datacenter = "dc1",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     // Set the description to a whitespace delimited list of the services
+        ///     var app = new Example.Index.Resource("app", new()
+        ///     {
+        ///         Description = Std.Join.Invoke(new()
+        ///         {
+        ///             Separator = " ",
+        ///             Input = names,
+        ///         }).Result,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetServicesResult> Invoke(GetServicesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetServicesResult>("consul:index/getServices:getServices", args ?? new GetServicesInvokeArgs(), options.WithDefaults());
     }
 
 

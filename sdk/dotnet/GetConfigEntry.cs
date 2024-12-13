@@ -16,6 +16,9 @@ namespace Pulumi.Consul
 
         public static Output<GetConfigEntryResult> Invoke(GetConfigEntryInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetConfigEntryResult>("consul:index/getConfigEntry:getConfigEntry", args ?? new GetConfigEntryInvokeArgs(), options.WithDefaults());
+
+        public static Output<GetConfigEntryResult> Invoke(GetConfigEntryInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetConfigEntryResult>("consul:index/getConfigEntry:getConfigEntry", args ?? new GetConfigEntryInvokeArgs(), options.WithDefaults());
     }
 
 

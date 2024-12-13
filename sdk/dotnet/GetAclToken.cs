@@ -70,6 +70,36 @@ namespace Pulumi.Consul
         /// </summary>
         public static Output<GetAclTokenResult> Invoke(GetAclTokenInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAclTokenResult>("consul:index/getAclToken:getAclToken", args ?? new GetAclTokenInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The `consul.AclToken` data source returns the information related to the `consul.AclToken` resource with the exception of its secret ID.
+        /// 
+        /// If you want to get the secret ID associated with a token, use the [`consul.getAclTokenSecretId` data source](https://www.terraform.io/docs/providers/consul/d/acl_token_secret_id.html).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Consul = Pulumi.Consul;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var test = Consul.GetAclToken.Invoke(new()
+        ///     {
+        ///         AccessorId = "00000000-0000-0000-0000-000000000002",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["consulAclPolicies"] = test.Apply(getAclTokenResult =&gt; getAclTokenResult.Policies),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAclTokenResult> Invoke(GetAclTokenInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAclTokenResult>("consul:index/getAclToken:getAclToken", args ?? new GetAclTokenInvokeArgs(), options.WithDefaults());
     }
 
 

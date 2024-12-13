@@ -64,6 +64,33 @@ namespace Pulumi.Consul
         /// </summary>
         public static Output<GetAutopilotHealthResult> Invoke(GetAutopilotHealthInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAutopilotHealthResult>("consul:index/getAutopilotHealth:getAutopilotHealth", args ?? new GetAutopilotHealthInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The `consul.getAutopilotHealth` data source returns
+        /// [autopilot health information](https://www.consul.io/api/operator/autopilot.html#read-health)
+        /// about the current Consul cluster.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Consul = Pulumi.Consul;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var read = Consul.GetAutopilotHealth.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["health"] = read.Apply(getAutopilotHealthResult =&gt; getAutopilotHealthResult.Healthy),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAutopilotHealthResult> Invoke(GetAutopilotHealthInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAutopilotHealthResult>("consul:index/getAutopilotHealth:getAutopilotHealth", args ?? new GetAutopilotHealthInvokeArgs(), options.WithDefaults());
     }
 
 

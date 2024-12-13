@@ -106,21 +106,11 @@ type LookupKeysResult struct {
 }
 
 func LookupKeysOutput(ctx *pulumi.Context, args LookupKeysOutputArgs, opts ...pulumi.InvokeOption) LookupKeysResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupKeysResultOutput, error) {
 			args := v.(LookupKeysArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupKeysResult
-			secret, err := ctx.InvokePackageRaw("consul:index/getKeys:getKeys", args, &rv, "", opts...)
-			if err != nil {
-				return LookupKeysResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupKeysResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupKeysResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("consul:index/getKeys:getKeys", args, LookupKeysResultOutput{}, options).(LookupKeysResultOutput), nil
 		}).(LookupKeysResultOutput)
 }
 

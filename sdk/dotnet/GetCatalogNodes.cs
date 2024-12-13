@@ -29,6 +29,15 @@ namespace Pulumi.Consul
         /// </summary>
         public static Output<GetCatalogNodesResult> Invoke(GetCatalogNodesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCatalogNodesResult>("consul:index/getCatalogNodes:getCatalogNodes", args ?? new GetCatalogNodesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The `consul.getNodes` data source returns a list of Consul nodes that have
+        /// been registered with the Consul cluster in a given datacenter.  By specifying a
+        /// different datacenter in the `query_options` it is possible to retrieve a list of
+        /// nodes from a different WAN-attached Consul datacenter.
+        /// </summary>
+        public static Output<GetCatalogNodesResult> Invoke(GetCatalogNodesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetCatalogNodesResult>("consul:index/getCatalogNodes:getCatalogNodes", args ?? new GetCatalogNodesInvokeArgs(), options.WithDefaults());
     }
 
 

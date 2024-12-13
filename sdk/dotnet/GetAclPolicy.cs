@@ -70,6 +70,36 @@ namespace Pulumi.Consul
         /// </summary>
         public static Output<GetAclPolicyResult> Invoke(GetAclPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAclPolicyResult>("consul:index/getAclPolicy:getAclPolicy", args ?? new GetAclPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The `consul.AclPolicy` data source returns the information related to a
+        /// [Consul ACL Policy](https://www.consul.io/docs/acl/acl-system.html#acl-policies).
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Consul = Pulumi.Consul;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var agent = Consul.GetAclPolicy.Invoke(new()
+        ///     {
+        ///         Name = "agent",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["consulAclPolicy"] = agent.Apply(getAclPolicyResult =&gt; getAclPolicyResult.Rules),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAclPolicyResult> Invoke(GetAclPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAclPolicyResult>("consul:index/getAclPolicy:getAclPolicy", args ?? new GetAclPolicyInvokeArgs(), options.WithDefaults());
     }
 
 
