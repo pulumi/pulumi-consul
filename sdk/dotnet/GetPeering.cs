@@ -54,6 +54,28 @@ namespace Pulumi.Consul
         /// </summary>
         public static Output<GetPeeringResult> Invoke(GetPeeringInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPeeringResult>("consul:index/getPeering:getPeering", args ?? new GetPeeringInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Consul = Pulumi.Consul;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var basic = Consul.GetPeering.Invoke(new()
+        ///     {
+        ///         PeerName = "peered-cluster",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetPeeringResult> Invoke(GetPeeringInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetPeeringResult>("consul:index/getPeering:getPeering", args ?? new GetPeeringInvokeArgs(), options.WithDefaults());
     }
 
 

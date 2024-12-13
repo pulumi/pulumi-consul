@@ -94,21 +94,11 @@ type LookupAclAuthMethodResult struct {
 }
 
 func LookupAclAuthMethodOutput(ctx *pulumi.Context, args LookupAclAuthMethodOutputArgs, opts ...pulumi.InvokeOption) LookupAclAuthMethodResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAclAuthMethodResultOutput, error) {
 			args := v.(LookupAclAuthMethodArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupAclAuthMethodResult
-			secret, err := ctx.InvokePackageRaw("consul:index/getAclAuthMethod:getAclAuthMethod", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAclAuthMethodResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAclAuthMethodResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAclAuthMethodResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("consul:index/getAclAuthMethod:getAclAuthMethod", args, LookupAclAuthMethodResultOutput{}, options).(LookupAclAuthMethodResultOutput), nil
 		}).(LookupAclAuthMethodResultOutput)
 }
 

@@ -92,6 +92,47 @@ namespace Pulumi.Consul
         /// </summary>
         public static Output<GetNetworkAreaMembersResult> Invoke(GetNetworkAreaMembersInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNetworkAreaMembersResult>("consul:index/getNetworkAreaMembers:getNetworkAreaMembers", args ?? new GetNetworkAreaMembersInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// &gt; **NOTE:** This feature requires [Consul Enterprise](https://www.consul.io/docs/enterprise/index.html).
+        /// 
+        /// The `consul.getNetworkAreaMembers` data source provides a list of the Consul
+        /// servers present in a specific network area.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Consul = Pulumi.Consul;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var dc2NetworkArea = new Consul.NetworkArea("dc2", new()
+        ///     {
+        ///         PeerDatacenter = "dc2",
+        ///         RetryJoins = new[]
+        ///         {
+        ///             "1.2.3.4",
+        ///         },
+        ///         UseTls = true,
+        ///     });
+        /// 
+        ///     var dc2 = Consul.GetNetworkAreaMembers.Invoke(new()
+        ///     {
+        ///         Uuid = dc2NetworkArea.Id,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["members"] = dc2.Apply(getNetworkAreaMembersResult =&gt; getNetworkAreaMembersResult.Members),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetNetworkAreaMembersResult> Invoke(GetNetworkAreaMembersInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetNetworkAreaMembersResult>("consul:index/getNetworkAreaMembers:getNetworkAreaMembers", args ?? new GetNetworkAreaMembersInvokeArgs(), options.WithDefaults());
     }
 
 

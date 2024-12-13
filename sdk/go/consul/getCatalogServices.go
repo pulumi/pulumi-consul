@@ -95,21 +95,11 @@ type GetCatalogServicesResult struct {
 }
 
 func GetCatalogServicesOutput(ctx *pulumi.Context, args GetCatalogServicesOutputArgs, opts ...pulumi.InvokeOption) GetCatalogServicesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetCatalogServicesResultOutput, error) {
 			args := v.(GetCatalogServicesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetCatalogServicesResult
-			secret, err := ctx.InvokePackageRaw("consul:index/getCatalogServices:getCatalogServices", args, &rv, "", opts...)
-			if err != nil {
-				return GetCatalogServicesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetCatalogServicesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetCatalogServicesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("consul:index/getCatalogServices:getCatalogServices", args, GetCatalogServicesResultOutput{}, options).(GetCatalogServicesResultOutput), nil
 		}).(GetCatalogServicesResultOutput)
 }
 
