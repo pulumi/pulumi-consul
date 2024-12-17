@@ -45,6 +45,7 @@ func Provider() tfbridge.ProviderInfo {
 	prov := tfbridge.ProviderInfo{
 		P:           p,
 		Name:        "consul",
+		DisplayName: "Consul",
 		Description: "A Pulumi package for creating and managing consul resources.",
 		Keywords:    []string{"pulumi", "consul"},
 		License:     "Apache-2.0",
