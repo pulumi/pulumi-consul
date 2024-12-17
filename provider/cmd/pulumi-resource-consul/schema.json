@@ -1,5 +1,6 @@
 {
     "name": "consul",
+    "displayName": "Consul",
     "description": "A Pulumi package for creating and managing consul resources.",
     "keywords": [
         "pulumi",
