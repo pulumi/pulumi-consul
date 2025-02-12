@@ -24,7 +24,7 @@ import * as utilities from "./utilities";
  * import * as example from "@pulumi/example";
  * import * as std from "@pulumi/std";
  *
- * const read-consul-dc1 = consul.getService({
+ * const read_consul_dc1 = consul.getService({
  *     name: "consul",
  *     datacenter: "dc1",
  * });
@@ -120,7 +120,7 @@ export interface GetServiceResult {
  * import * as example from "@pulumi/example";
  * import * as std from "@pulumi/std";
  *
- * const read-consul-dc1 = consul.getService({
+ * const read_consul_dc1 = consul.getService({
  *     name: "consul",
  *     datacenter: "dc1",
  * });

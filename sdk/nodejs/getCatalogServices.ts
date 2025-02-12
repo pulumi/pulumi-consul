@@ -23,7 +23,7 @@ import * as utilities from "./utilities";
  * import * as example from "@pulumi/example";
  * import * as std from "@pulumi/std";
  *
- * const read-dc1 = consul.getServices({
+ * const read_dc1 = consul.getServices({
  *     queryOptions: [{
  *         datacenter: "dc1",
  *     }],
@@ -95,7 +95,7 @@ export interface GetCatalogServicesResult {
  * import * as example from "@pulumi/example";
  * import * as std from "@pulumi/std";
  *
- * const read-dc1 = consul.getServices({
+ * const read_dc1 = consul.getServices({
  *     queryOptions: [{
  *         datacenter: "dc1",
  *     }],
