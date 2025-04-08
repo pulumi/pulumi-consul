@@ -112,7 +112,7 @@ public final class ConsulFunctions {
      *             .name("minikube")
      *             .build());
      * 
-     *         ctx.export("consulAclAuthMethod", test.applyValue(getAclAuthMethodResult -> getAclAuthMethodResult.config()));
+     *         ctx.export("consulAclAuthMethod", test.config());
      *     }
      * }
      * }
@@ -156,7 +156,7 @@ public final class ConsulFunctions {
      *             .name("minikube")
      *             .build());
      * 
-     *         ctx.export("consulAclAuthMethod", test.applyValue(getAclAuthMethodResult -> getAclAuthMethodResult.config()));
+     *         ctx.export("consulAclAuthMethod", test.config());
      *     }
      * }
      * }
@@ -200,7 +200,7 @@ public final class ConsulFunctions {
      *             .name("minikube")
      *             .build());
      * 
-     *         ctx.export("consulAclAuthMethod", test.applyValue(getAclAuthMethodResult -> getAclAuthMethodResult.config()));
+     *         ctx.export("consulAclAuthMethod", test.config());
      *     }
      * }
      * }
@@ -244,7 +244,7 @@ public final class ConsulFunctions {
      *             .name("minikube")
      *             .build());
      * 
-     *         ctx.export("consulAclAuthMethod", test.applyValue(getAclAuthMethodResult -> getAclAuthMethodResult.config()));
+     *         ctx.export("consulAclAuthMethod", test.config());
      *     }
      * }
      * }
@@ -288,7 +288,7 @@ public final class ConsulFunctions {
      *             .name("minikube")
      *             .build());
      * 
-     *         ctx.export("consulAclAuthMethod", test.applyValue(getAclAuthMethodResult -> getAclAuthMethodResult.config()));
+     *         ctx.export("consulAclAuthMethod", test.config());
      *     }
      * }
      * }
@@ -332,7 +332,7 @@ public final class ConsulFunctions {
      *             .name("agent")
      *             .build());
      * 
-     *         ctx.export("consulAclPolicy", agent.applyValue(getAclPolicyResult -> getAclPolicyResult.rules()));
+     *         ctx.export("consulAclPolicy", agent.rules());
      *     }
      * }
      * }
@@ -376,7 +376,7 @@ public final class ConsulFunctions {
      *             .name("agent")
      *             .build());
      * 
-     *         ctx.export("consulAclPolicy", agent.applyValue(getAclPolicyResult -> getAclPolicyResult.rules()));
+     *         ctx.export("consulAclPolicy", agent.rules());
      *     }
      * }
      * }
@@ -420,7 +420,7 @@ public final class ConsulFunctions {
      *             .name("agent")
      *             .build());
      * 
-     *         ctx.export("consulAclPolicy", agent.applyValue(getAclPolicyResult -> getAclPolicyResult.rules()));
+     *         ctx.export("consulAclPolicy", agent.rules());
      *     }
      * }
      * }
@@ -464,7 +464,7 @@ public final class ConsulFunctions {
      *             .name("agent")
      *             .build());
      * 
-     *         ctx.export("consulAclPolicy", agent.applyValue(getAclPolicyResult -> getAclPolicyResult.rules()));
+     *         ctx.export("consulAclPolicy", agent.rules());
      *     }
      * }
      * }
@@ -508,7 +508,7 @@ public final class ConsulFunctions {
      *             .name("agent")
      *             .build());
      * 
-     *         ctx.export("consulAclPolicy", agent.applyValue(getAclPolicyResult -> getAclPolicyResult.rules()));
+     *         ctx.export("consulAclPolicy", agent.rules());
      *     }
      * }
      * }
@@ -551,7 +551,7 @@ public final class ConsulFunctions {
      *             .name("example-role")
      *             .build());
      * 
-     *         ctx.export("consulAclRole", test.applyValue(getAclRoleResult -> getAclRoleResult.id()));
+     *         ctx.export("consulAclRole", test.id());
      *     }
      * }
      * }
@@ -594,7 +594,7 @@ public final class ConsulFunctions {
      *             .name("example-role")
      *             .build());
      * 
-     *         ctx.export("consulAclRole", test.applyValue(getAclRoleResult -> getAclRoleResult.id()));
+     *         ctx.export("consulAclRole", test.id());
      *     }
      * }
      * }
@@ -637,7 +637,7 @@ public final class ConsulFunctions {
      *             .name("example-role")
      *             .build());
      * 
-     *         ctx.export("consulAclRole", test.applyValue(getAclRoleResult -> getAclRoleResult.id()));
+     *         ctx.export("consulAclRole", test.id());
      *     }
      * }
      * }
@@ -680,7 +680,7 @@ public final class ConsulFunctions {
      *             .name("example-role")
      *             .build());
      * 
-     *         ctx.export("consulAclRole", test.applyValue(getAclRoleResult -> getAclRoleResult.id()));
+     *         ctx.export("consulAclRole", test.id());
      *     }
      * }
      * }
@@ -723,7 +723,7 @@ public final class ConsulFunctions {
      *             .name("example-role")
      *             .build());
      * 
-     *         ctx.export("consulAclRole", test.applyValue(getAclRoleResult -> getAclRoleResult.id()));
+     *         ctx.export("consulAclRole", test.id());
      *     }
      * }
      * }
@@ -768,7 +768,7 @@ public final class ConsulFunctions {
      *             .accessorId("00000000-0000-0000-0000-000000000002")
      *             .build());
      * 
-     *         ctx.export("consulAclPolicies", test.applyValue(getAclTokenResult -> getAclTokenResult.policies()));
+     *         ctx.export("consulAclPolicies", test.policies());
      *     }
      * }
      * }
@@ -813,7 +813,7 @@ public final class ConsulFunctions {
      *             .accessorId("00000000-0000-0000-0000-000000000002")
      *             .build());
      * 
-     *         ctx.export("consulAclPolicies", test.applyValue(getAclTokenResult -> getAclTokenResult.policies()));
+     *         ctx.export("consulAclPolicies", test.policies());
      *     }
      * }
      * }
@@ -858,7 +858,7 @@ public final class ConsulFunctions {
      *             .accessorId("00000000-0000-0000-0000-000000000002")
      *             .build());
      * 
-     *         ctx.export("consulAclPolicies", test.applyValue(getAclTokenResult -> getAclTokenResult.policies()));
+     *         ctx.export("consulAclPolicies", test.policies());
      *     }
      * }
      * }
@@ -903,7 +903,7 @@ public final class ConsulFunctions {
      *             .accessorId("00000000-0000-0000-0000-000000000002")
      *             .build());
      * 
-     *         ctx.export("consulAclPolicies", test.applyValue(getAclTokenResult -> getAclTokenResult.policies()));
+     *         ctx.export("consulAclPolicies", test.policies());
      *     }
      * }
      * }
@@ -948,7 +948,7 @@ public final class ConsulFunctions {
      *             .accessorId("00000000-0000-0000-0000-000000000002")
      *             .build());
      * 
-     *         ctx.export("consulAclPolicies", test.applyValue(getAclTokenResult -> getAclTokenResult.policies()));
+     *         ctx.export("consulAclPolicies", test.policies());
      *     }
      * }
      * }
@@ -1006,7 +1006,7 @@ public final class ConsulFunctions {
      *             .pgpKey("keybase:my_username")
      *             .build());
      * 
-     *         ctx.export("consulAclTokenSecretId", read.applyValue(getAclTokenSecretIdResult -> getAclTokenSecretIdResult).applyValue(read -> read.applyValue(getAclTokenSecretIdResult -> getAclTokenSecretIdResult.encryptedSecretId())));
+     *         ctx.export("consulAclTokenSecretId", read.applyValue(_read -> _read.encryptedSecretId()));
      *     }
      * }
      * }
@@ -1064,7 +1064,7 @@ public final class ConsulFunctions {
      *             .pgpKey("keybase:my_username")
      *             .build());
      * 
-     *         ctx.export("consulAclTokenSecretId", read.applyValue(getAclTokenSecretIdResult -> getAclTokenSecretIdResult).applyValue(read -> read.applyValue(getAclTokenSecretIdResult -> getAclTokenSecretIdResult.encryptedSecretId())));
+     *         ctx.export("consulAclTokenSecretId", read.applyValue(_read -> _read.encryptedSecretId()));
      *     }
      * }
      * }
@@ -1122,7 +1122,7 @@ public final class ConsulFunctions {
      *             .pgpKey("keybase:my_username")
      *             .build());
      * 
-     *         ctx.export("consulAclTokenSecretId", read.applyValue(getAclTokenSecretIdResult -> getAclTokenSecretIdResult).applyValue(read -> read.applyValue(getAclTokenSecretIdResult -> getAclTokenSecretIdResult.encryptedSecretId())));
+     *         ctx.export("consulAclTokenSecretId", read.applyValue(_read -> _read.encryptedSecretId()));
      *     }
      * }
      * }
@@ -1180,7 +1180,7 @@ public final class ConsulFunctions {
      *             .pgpKey("keybase:my_username")
      *             .build());
      * 
-     *         ctx.export("consulAclTokenSecretId", read.applyValue(getAclTokenSecretIdResult -> getAclTokenSecretIdResult).applyValue(read -> read.applyValue(getAclTokenSecretIdResult -> getAclTokenSecretIdResult.encryptedSecretId())));
+     *         ctx.export("consulAclTokenSecretId", read.applyValue(_read -> _read.encryptedSecretId()));
      *     }
      * }
      * }
@@ -1238,7 +1238,7 @@ public final class ConsulFunctions {
      *             .pgpKey("keybase:my_username")
      *             .build());
      * 
-     *         ctx.export("consulAclTokenSecretId", read.applyValue(getAclTokenSecretIdResult -> getAclTokenSecretIdResult).applyValue(read -> read.applyValue(getAclTokenSecretIdResult -> getAclTokenSecretIdResult.encryptedSecretId())));
+     *         ctx.export("consulAclTokenSecretId", read.applyValue(_read -> _read.encryptedSecretId()));
      *     }
      * }
      * }
@@ -1282,9 +1282,9 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var remoteAgent = ConsulFunctions.getAgentConfig();
+     *         final var remoteAgent = ConsulFunctions.getAgentConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("consulVersion", remoteAgent.applyValue(getAgentConfigResult -> getAgentConfigResult.version()));
+     *         ctx.export("consulVersion", remoteAgent.version());
      *     }
      * }
      * }
@@ -1328,9 +1328,9 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var remoteAgent = ConsulFunctions.getAgentConfig();
+     *         final var remoteAgent = ConsulFunctions.getAgentConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("consulVersion", remoteAgent.applyValue(getAgentConfigResult -> getAgentConfigResult.version()));
+     *         ctx.export("consulVersion", remoteAgent.version());
      *     }
      * }
      * }
@@ -1374,9 +1374,9 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var remoteAgent = ConsulFunctions.getAgentConfig();
+     *         final var remoteAgent = ConsulFunctions.getAgentConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("consulVersion", remoteAgent.applyValue(getAgentConfigResult -> getAgentConfigResult.version()));
+     *         ctx.export("consulVersion", remoteAgent.version());
      *     }
      * }
      * }
@@ -1420,9 +1420,9 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var remoteAgent = ConsulFunctions.getAgentConfig();
+     *         final var remoteAgent = ConsulFunctions.getAgentConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("consulVersion", remoteAgent.applyValue(getAgentConfigResult -> getAgentConfigResult.version()));
+     *         ctx.export("consulVersion", remoteAgent.version());
      *     }
      * }
      * }
@@ -1466,9 +1466,9 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var remoteAgent = ConsulFunctions.getAgentConfig();
+     *         final var remoteAgent = ConsulFunctions.getAgentConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("consulVersion", remoteAgent.applyValue(getAgentConfigResult -> getAgentConfigResult.version()));
+     *         ctx.export("consulVersion", remoteAgent.version());
      *     }
      * }
      * }
@@ -1512,9 +1512,9 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var remoteAgent = ConsulFunctions.getAgentConfig();
+     *         final var remoteAgent = ConsulFunctions.getAgentConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("consulVersion", remoteAgent.applyValue(getAgentConfigResult -> getAgentConfigResult.version()));
+     *         ctx.export("consulVersion", remoteAgent.version());
      *     }
      * }
      * }
@@ -1558,9 +1558,9 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var remoteAgent = ConsulFunctions.getAgentConfig();
+     *         final var remoteAgent = ConsulFunctions.getAgentConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("consulVersion", remoteAgent.applyValue(getAgentConfigResult -> getAgentConfigResult.version()));
+     *         ctx.export("consulVersion", remoteAgent.version());
      *     }
      * }
      * }
@@ -1582,40 +1582,6 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.consul.ConsulFunctions;
-     * import com.pulumi.example.resource;
-     * import com.pulumi.example.ResourceArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var read-dc1-agent = ConsulFunctions.getAgentSelf(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
-     * 
-     *         // Set the description to a whitespace delimited list of the services
-     *         var app = new Resource("app", ResourceArgs.builder()
-     *             .description(String.format("Consul datacenter %s", read_dc1_agent.datacenter()))
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1633,40 +1599,6 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.consul.ConsulFunctions;
-     * import com.pulumi.example.resource;
-     * import com.pulumi.example.ResourceArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var read-dc1-agent = ConsulFunctions.getAgentSelf(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
-     * 
-     *         // Set the description to a whitespace delimited list of the services
-     *         var app = new Resource("app", ResourceArgs.builder()
-     *             .description(String.format("Consul datacenter %s", read_dc1_agent.datacenter()))
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1684,40 +1616,6 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.consul.ConsulFunctions;
-     * import com.pulumi.example.resource;
-     * import com.pulumi.example.ResourceArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var read-dc1-agent = ConsulFunctions.getAgentSelf(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
-     * 
-     *         // Set the description to a whitespace delimited list of the services
-     *         var app = new Resource("app", ResourceArgs.builder()
-     *             .description(String.format("Consul datacenter %s", read_dc1_agent.datacenter()))
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1735,40 +1633,6 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.consul.ConsulFunctions;
-     * import com.pulumi.example.resource;
-     * import com.pulumi.example.ResourceArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var read-dc1-agent = ConsulFunctions.getAgentSelf(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
-     * 
-     *         // Set the description to a whitespace delimited list of the services
-     *         var app = new Resource("app", ResourceArgs.builder()
-     *             .description(String.format("Consul datacenter %s", read_dc1_agent.datacenter()))
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1786,40 +1650,6 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.consul.ConsulFunctions;
-     * import com.pulumi.example.resource;
-     * import com.pulumi.example.ResourceArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var read-dc1-agent = ConsulFunctions.getAgentSelf(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
-     * 
-     *         // Set the description to a whitespace delimited list of the services
-     *         var app = new Resource("app", ResourceArgs.builder()
-     *             .description(String.format("Consul datacenter %s", read_dc1_agent.datacenter()))
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1837,40 +1667,6 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.consul.ConsulFunctions;
-     * import com.pulumi.example.resource;
-     * import com.pulumi.example.ResourceArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var read-dc1-agent = ConsulFunctions.getAgentSelf(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
-     * 
-     *         // Set the description to a whitespace delimited list of the services
-     *         var app = new Resource("app", ResourceArgs.builder()
-     *             .description(String.format("Consul datacenter %s", read_dc1_agent.datacenter()))
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1888,40 +1684,6 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.consul.ConsulFunctions;
-     * import com.pulumi.example.resource;
-     * import com.pulumi.example.ResourceArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var read-dc1-agent = ConsulFunctions.getAgentSelf(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
-     * 
-     *         // Set the description to a whitespace delimited list of the services
-     *         var app = new Resource("app", ResourceArgs.builder()
-     *             .description(String.format("Consul datacenter %s", read_dc1_agent.datacenter()))
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1958,9 +1720,10 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var read = ConsulFunctions.getAutopilotHealth();
+     *         final var read = ConsulFunctions.getAutopilotHealth(GetAutopilotHealthArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("health", read.applyValue(getAutopilotHealthResult -> getAutopilotHealthResult.healthy()));
+     *         ctx.export("health", read.healthy());
      *     }
      * }
      * }
@@ -2001,9 +1764,10 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var read = ConsulFunctions.getAutopilotHealth();
+     *         final var read = ConsulFunctions.getAutopilotHealth(GetAutopilotHealthArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("health", read.applyValue(getAutopilotHealthResult -> getAutopilotHealthResult.healthy()));
+     *         ctx.export("health", read.healthy());
      *     }
      * }
      * }
@@ -2044,9 +1808,10 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var read = ConsulFunctions.getAutopilotHealth();
+     *         final var read = ConsulFunctions.getAutopilotHealth(GetAutopilotHealthArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("health", read.applyValue(getAutopilotHealthResult -> getAutopilotHealthResult.healthy()));
+     *         ctx.export("health", read.healthy());
      *     }
      * }
      * }
@@ -2087,9 +1852,10 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var read = ConsulFunctions.getAutopilotHealth();
+     *         final var read = ConsulFunctions.getAutopilotHealth(GetAutopilotHealthArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("health", read.applyValue(getAutopilotHealthResult -> getAutopilotHealthResult.healthy()));
+     *         ctx.export("health", read.healthy());
      *     }
      * }
      * }
@@ -2130,9 +1896,10 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var read = ConsulFunctions.getAutopilotHealth();
+     *         final var read = ConsulFunctions.getAutopilotHealth(GetAutopilotHealthArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("health", read.applyValue(getAutopilotHealthResult -> getAutopilotHealthResult.healthy()));
+     *         ctx.export("health", read.healthy());
      *     }
      * }
      * }
@@ -2173,9 +1940,10 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var read = ConsulFunctions.getAutopilotHealth();
+     *         final var read = ConsulFunctions.getAutopilotHealth(GetAutopilotHealthArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("health", read.applyValue(getAutopilotHealthResult -> getAutopilotHealthResult.healthy()));
+     *         ctx.export("health", read.healthy());
      *     }
      * }
      * }
@@ -2216,9 +1984,10 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var read = ConsulFunctions.getAutopilotHealth();
+     *         final var read = ConsulFunctions.getAutopilotHealth(GetAutopilotHealthArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("health", read.applyValue(getAutopilotHealthResult -> getAutopilotHealthResult.healthy()));
+     *         ctx.export("health", read.healthy());
      *     }
      * }
      * }
@@ -2350,7 +2119,9 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetServiceArgs;
      * import com.pulumi.example.resource;
-     * import com.pulumi.example.ResourceArgs;
+     * import com.pulumi.example.resourceArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2414,7 +2185,9 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetServiceArgs;
      * import com.pulumi.example.resource;
-     * import com.pulumi.example.ResourceArgs;
+     * import com.pulumi.example.resourceArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2478,7 +2251,9 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetServiceArgs;
      * import com.pulumi.example.resource;
-     * import com.pulumi.example.ResourceArgs;
+     * import com.pulumi.example.resourceArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2542,7 +2317,9 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetServiceArgs;
      * import com.pulumi.example.resource;
-     * import com.pulumi.example.ResourceArgs;
+     * import com.pulumi.example.resourceArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2606,7 +2383,9 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetServiceArgs;
      * import com.pulumi.example.resource;
-     * import com.pulumi.example.ResourceArgs;
+     * import com.pulumi.example.resourceArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2669,7 +2448,9 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetServicesArgs;
      * import com.pulumi.example.resource;
-     * import com.pulumi.example.ResourceArgs;
+     * import com.pulumi.example.resourceArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2733,7 +2514,9 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetServicesArgs;
      * import com.pulumi.example.resource;
-     * import com.pulumi.example.ResourceArgs;
+     * import com.pulumi.example.resourceArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2797,7 +2580,9 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetServicesArgs;
      * import com.pulumi.example.resource;
-     * import com.pulumi.example.ResourceArgs;
+     * import com.pulumi.example.resourceArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2861,7 +2646,9 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetServicesArgs;
      * import com.pulumi.example.resource;
-     * import com.pulumi.example.ResourceArgs;
+     * import com.pulumi.example.resourceArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2925,7 +2712,9 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetServicesArgs;
      * import com.pulumi.example.resource;
-     * import com.pulumi.example.ResourceArgs;
+     * import com.pulumi.example.resourceArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2989,7 +2778,9 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetServicesArgs;
      * import com.pulumi.example.resource;
-     * import com.pulumi.example.ResourceArgs;
+     * import com.pulumi.example.resourceArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -3053,7 +2844,9 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetServicesArgs;
      * import com.pulumi.example.resource;
-     * import com.pulumi.example.ResourceArgs;
+     * import com.pulumi.example.resourceArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -3195,7 +2988,7 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetKeyPrefixArgs;
      * import com.pulumi.aws.instance;
-     * import com.pulumi.aws.InstanceArgs;
+     * import com.pulumi.aws.instanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -3222,7 +3015,7 @@ public final class ConsulFunctions {
      * 
      *         // Start our instance with the dynamic ami value
      *         var appInstance = new Instance("appInstance", InstanceArgs.builder()
-     *             .ami(app.applyValue(getKeyPrefixResult -> getKeyPrefixResult.var().ami()))
+     *             .ami(app.var().ami())
      *             .build());
      * 
      *     }
@@ -3242,7 +3035,7 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetKeyPrefixArgs;
      * import com.pulumi.aws.instance;
-     * import com.pulumi.aws.InstanceArgs;
+     * import com.pulumi.aws.instanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -3264,7 +3057,7 @@ public final class ConsulFunctions {
      * 
      *         // Start our instance with the dynamic ami value
      *         var webInstance = new Instance("webInstance", InstanceArgs.builder()
-     *             .ami(web.applyValue(getKeyPrefixResult -> getKeyPrefixResult.subkeys().app/launch_ami()))
+     *             .ami(web.subkeys().app/launch_ami())
      *             .build());
      * 
      *     }
@@ -3291,7 +3084,7 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetKeyPrefixArgs;
      * import com.pulumi.aws.instance;
-     * import com.pulumi.aws.InstanceArgs;
+     * import com.pulumi.aws.instanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -3318,7 +3111,7 @@ public final class ConsulFunctions {
      * 
      *         // Start our instance with the dynamic ami value
      *         var appInstance = new Instance("appInstance", InstanceArgs.builder()
-     *             .ami(app.applyValue(getKeyPrefixResult -> getKeyPrefixResult.var().ami()))
+     *             .ami(app.var().ami())
      *             .build());
      * 
      *     }
@@ -3338,7 +3131,7 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetKeyPrefixArgs;
      * import com.pulumi.aws.instance;
-     * import com.pulumi.aws.InstanceArgs;
+     * import com.pulumi.aws.instanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -3360,7 +3153,7 @@ public final class ConsulFunctions {
      * 
      *         // Start our instance with the dynamic ami value
      *         var webInstance = new Instance("webInstance", InstanceArgs.builder()
-     *             .ami(web.applyValue(getKeyPrefixResult -> getKeyPrefixResult.subkeys().app/launch_ami()))
+     *             .ami(web.subkeys().app/launch_ami())
      *             .build());
      * 
      *     }
@@ -3387,7 +3180,7 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetKeyPrefixArgs;
      * import com.pulumi.aws.instance;
-     * import com.pulumi.aws.InstanceArgs;
+     * import com.pulumi.aws.instanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -3414,7 +3207,7 @@ public final class ConsulFunctions {
      * 
      *         // Start our instance with the dynamic ami value
      *         var appInstance = new Instance("appInstance", InstanceArgs.builder()
-     *             .ami(app.applyValue(getKeyPrefixResult -> getKeyPrefixResult.var().ami()))
+     *             .ami(app.var().ami())
      *             .build());
      * 
      *     }
@@ -3434,7 +3227,7 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetKeyPrefixArgs;
      * import com.pulumi.aws.instance;
-     * import com.pulumi.aws.InstanceArgs;
+     * import com.pulumi.aws.instanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -3456,7 +3249,7 @@ public final class ConsulFunctions {
      * 
      *         // Start our instance with the dynamic ami value
      *         var webInstance = new Instance("webInstance", InstanceArgs.builder()
-     *             .ami(web.applyValue(getKeyPrefixResult -> getKeyPrefixResult.subkeys().app/launch_ami()))
+     *             .ami(web.subkeys().app/launch_ami())
      *             .build());
      * 
      *     }
@@ -3483,7 +3276,7 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetKeyPrefixArgs;
      * import com.pulumi.aws.instance;
-     * import com.pulumi.aws.InstanceArgs;
+     * import com.pulumi.aws.instanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -3510,7 +3303,7 @@ public final class ConsulFunctions {
      * 
      *         // Start our instance with the dynamic ami value
      *         var appInstance = new Instance("appInstance", InstanceArgs.builder()
-     *             .ami(app.applyValue(getKeyPrefixResult -> getKeyPrefixResult.var().ami()))
+     *             .ami(app.var().ami())
      *             .build());
      * 
      *     }
@@ -3530,7 +3323,7 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetKeyPrefixArgs;
      * import com.pulumi.aws.instance;
-     * import com.pulumi.aws.InstanceArgs;
+     * import com.pulumi.aws.instanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -3552,7 +3345,7 @@ public final class ConsulFunctions {
      * 
      *         // Start our instance with the dynamic ami value
      *         var webInstance = new Instance("webInstance", InstanceArgs.builder()
-     *             .ami(web.applyValue(getKeyPrefixResult -> getKeyPrefixResult.subkeys().app/launch_ami()))
+     *             .ami(web.subkeys().app/launch_ami())
      *             .build());
      * 
      *     }
@@ -3579,7 +3372,7 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetKeyPrefixArgs;
      * import com.pulumi.aws.instance;
-     * import com.pulumi.aws.InstanceArgs;
+     * import com.pulumi.aws.instanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -3606,7 +3399,7 @@ public final class ConsulFunctions {
      * 
      *         // Start our instance with the dynamic ami value
      *         var appInstance = new Instance("appInstance", InstanceArgs.builder()
-     *             .ami(app.applyValue(getKeyPrefixResult -> getKeyPrefixResult.var().ami()))
+     *             .ami(app.var().ami())
      *             .build());
      * 
      *     }
@@ -3626,7 +3419,7 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetKeyPrefixArgs;
      * import com.pulumi.aws.instance;
-     * import com.pulumi.aws.InstanceArgs;
+     * import com.pulumi.aws.instanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -3648,7 +3441,7 @@ public final class ConsulFunctions {
      * 
      *         // Start our instance with the dynamic ami value
      *         var webInstance = new Instance("webInstance", InstanceArgs.builder()
-     *             .ami(web.applyValue(getKeyPrefixResult -> getKeyPrefixResult.subkeys().app/launch_ami()))
+     *             .ami(web.subkeys().app/launch_ami())
      *             .build());
      * 
      *     }
@@ -3677,7 +3470,7 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetKeysArgs;
      * import com.pulumi.aws.instance;
-     * import com.pulumi.aws.InstanceArgs;
+     * import com.pulumi.aws.instanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -3702,7 +3495,7 @@ public final class ConsulFunctions {
      * 
      *         // Start our instance with the dynamic ami value
      *         var appInstance = new Instance("appInstance", InstanceArgs.builder()
-     *             .ami(app.applyValue(getKeysResult -> getKeysResult.var().ami()))
+     *             .ami(app.var().ami())
      *             .build());
      * 
      *     }
@@ -3731,7 +3524,7 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetKeysArgs;
      * import com.pulumi.aws.instance;
-     * import com.pulumi.aws.InstanceArgs;
+     * import com.pulumi.aws.instanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -3756,7 +3549,7 @@ public final class ConsulFunctions {
      * 
      *         // Start our instance with the dynamic ami value
      *         var appInstance = new Instance("appInstance", InstanceArgs.builder()
-     *             .ami(app.applyValue(getKeysResult -> getKeysResult.var().ami()))
+     *             .ami(app.var().ami())
      *             .build());
      * 
      *     }
@@ -3785,7 +3578,7 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetKeysArgs;
      * import com.pulumi.aws.instance;
-     * import com.pulumi.aws.InstanceArgs;
+     * import com.pulumi.aws.instanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -3810,7 +3603,7 @@ public final class ConsulFunctions {
      * 
      *         // Start our instance with the dynamic ami value
      *         var appInstance = new Instance("appInstance", InstanceArgs.builder()
-     *             .ami(app.applyValue(getKeysResult -> getKeysResult.var().ami()))
+     *             .ami(app.var().ami())
      *             .build());
      * 
      *     }
@@ -3839,7 +3632,7 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetKeysArgs;
      * import com.pulumi.aws.instance;
-     * import com.pulumi.aws.InstanceArgs;
+     * import com.pulumi.aws.instanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -3864,7 +3657,7 @@ public final class ConsulFunctions {
      * 
      *         // Start our instance with the dynamic ami value
      *         var appInstance = new Instance("appInstance", InstanceArgs.builder()
-     *             .ami(app.applyValue(getKeysResult -> getKeysResult.var().ami()))
+     *             .ami(app.var().ami())
      *             .build());
      * 
      *     }
@@ -3893,7 +3686,7 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetKeysArgs;
      * import com.pulumi.aws.instance;
-     * import com.pulumi.aws.InstanceArgs;
+     * import com.pulumi.aws.instanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -3918,7 +3711,7 @@ public final class ConsulFunctions {
      * 
      *         // Start our instance with the dynamic ami value
      *         var appInstance = new Instance("appInstance", InstanceArgs.builder()
-     *             .ami(app.applyValue(getKeysResult -> getKeysResult.var().ami()))
+     *             .ami(app.var().ami())
      *             .build());
      * 
      *     }
@@ -3947,7 +3740,7 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetKeysArgs;
      * import com.pulumi.aws.instance;
-     * import com.pulumi.aws.InstanceArgs;
+     * import com.pulumi.aws.instanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -3972,7 +3765,7 @@ public final class ConsulFunctions {
      * 
      *         // Start our instance with the dynamic ami value
      *         var appInstance = new Instance("appInstance", InstanceArgs.builder()
-     *             .ami(app.applyValue(getKeysResult -> getKeysResult.var().ami()))
+     *             .ami(app.var().ami())
      *             .build());
      * 
      *     }
@@ -4001,7 +3794,7 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetKeysArgs;
      * import com.pulumi.aws.instance;
-     * import com.pulumi.aws.InstanceArgs;
+     * import com.pulumi.aws.instanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -4026,7 +3819,7 @@ public final class ConsulFunctions {
      * 
      *         // Start our instance with the dynamic ami value
      *         var appInstance = new Instance("appInstance", InstanceArgs.builder()
-     *             .ami(app.applyValue(getKeysResult -> getKeysResult.var().ami()))
+     *             .ami(app.var().ami())
      *             .build());
      * 
      *     }
@@ -4082,7 +3875,7 @@ public final class ConsulFunctions {
      *             .uuid(dc2NetworkArea.id())
      *             .build());
      * 
-     *         ctx.export("members", dc2.applyValue(getNetworkAreaMembersResult -> getNetworkAreaMembersResult).applyValue(dc2 -> dc2.applyValue(getNetworkAreaMembersResult -> getNetworkAreaMembersResult.members())));
+     *         ctx.export("members", dc2.applyValue(_dc2 -> _dc2.members()));
      *     }
      * }
      * }
@@ -4136,7 +3929,7 @@ public final class ConsulFunctions {
      *             .uuid(dc2NetworkArea.id())
      *             .build());
      * 
-     *         ctx.export("members", dc2.applyValue(getNetworkAreaMembersResult -> getNetworkAreaMembersResult).applyValue(dc2 -> dc2.applyValue(getNetworkAreaMembersResult -> getNetworkAreaMembersResult.members())));
+     *         ctx.export("members", dc2.applyValue(_dc2 -> _dc2.members()));
      *     }
      * }
      * }
@@ -4190,7 +3983,7 @@ public final class ConsulFunctions {
      *             .uuid(dc2NetworkArea.id())
      *             .build());
      * 
-     *         ctx.export("members", dc2.applyValue(getNetworkAreaMembersResult -> getNetworkAreaMembersResult).applyValue(dc2 -> dc2.applyValue(getNetworkAreaMembersResult -> getNetworkAreaMembersResult.members())));
+     *         ctx.export("members", dc2.applyValue(_dc2 -> _dc2.members()));
      *     }
      * }
      * }
@@ -4244,7 +4037,7 @@ public final class ConsulFunctions {
      *             .uuid(dc2NetworkArea.id())
      *             .build());
      * 
-     *         ctx.export("members", dc2.applyValue(getNetworkAreaMembersResult -> getNetworkAreaMembersResult).applyValue(dc2 -> dc2.applyValue(getNetworkAreaMembersResult -> getNetworkAreaMembersResult.members())));
+     *         ctx.export("members", dc2.applyValue(_dc2 -> _dc2.members()));
      *     }
      * }
      * }
@@ -4298,7 +4091,7 @@ public final class ConsulFunctions {
      *             .uuid(dc2NetworkArea.id())
      *             .build());
      * 
-     *         ctx.export("members", dc2.applyValue(getNetworkAreaMembersResult -> getNetworkAreaMembersResult).applyValue(dc2 -> dc2.applyValue(getNetworkAreaMembersResult -> getNetworkAreaMembersResult.members())));
+     *         ctx.export("members", dc2.applyValue(_dc2 -> _dc2.members()));
      *     }
      * }
      * }
@@ -4340,9 +4133,10 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var segments = ConsulFunctions.getNetworkSegments();
+     *         final var segments = ConsulFunctions.getNetworkSegments(GetNetworkSegmentsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("segments", segments.applyValue(getNetworkSegmentsResult -> getNetworkSegmentsResult.segments()));
+     *         ctx.export("segments", segments.segments());
      *     }
      * }
      * }
@@ -4384,9 +4178,10 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var segments = ConsulFunctions.getNetworkSegments();
+     *         final var segments = ConsulFunctions.getNetworkSegments(GetNetworkSegmentsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("segments", segments.applyValue(getNetworkSegmentsResult -> getNetworkSegmentsResult.segments()));
+     *         ctx.export("segments", segments.segments());
      *     }
      * }
      * }
@@ -4428,9 +4223,10 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var segments = ConsulFunctions.getNetworkSegments();
+     *         final var segments = ConsulFunctions.getNetworkSegments(GetNetworkSegmentsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("segments", segments.applyValue(getNetworkSegmentsResult -> getNetworkSegmentsResult.segments()));
+     *         ctx.export("segments", segments.segments());
      *     }
      * }
      * }
@@ -4472,9 +4268,10 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var segments = ConsulFunctions.getNetworkSegments();
+     *         final var segments = ConsulFunctions.getNetworkSegments(GetNetworkSegmentsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("segments", segments.applyValue(getNetworkSegmentsResult -> getNetworkSegmentsResult.segments()));
+     *         ctx.export("segments", segments.segments());
      *     }
      * }
      * }
@@ -4516,9 +4313,10 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var segments = ConsulFunctions.getNetworkSegments();
+     *         final var segments = ConsulFunctions.getNetworkSegments(GetNetworkSegmentsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("segments", segments.applyValue(getNetworkSegmentsResult -> getNetworkSegmentsResult.segments()));
+     *         ctx.export("segments", segments.segments());
      *     }
      * }
      * }
@@ -4560,9 +4358,10 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var segments = ConsulFunctions.getNetworkSegments();
+     *         final var segments = ConsulFunctions.getNetworkSegments(GetNetworkSegmentsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("segments", segments.applyValue(getNetworkSegmentsResult -> getNetworkSegmentsResult.segments()));
+     *         ctx.export("segments", segments.segments());
      *     }
      * }
      * }
@@ -4604,9 +4403,10 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var segments = ConsulFunctions.getNetworkSegments();
+     *         final var segments = ConsulFunctions.getNetworkSegments(GetNetworkSegmentsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("segments", segments.applyValue(getNetworkSegmentsResult -> getNetworkSegmentsResult.segments()));
+     *         ctx.export("segments", segments.segments());
      *     }
      * }
      * }
@@ -4913,7 +4713,8 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var peers = ConsulFunctions.getPeerings();
+     *         final var peers = ConsulFunctions.getPeerings(GetPeeringsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -4951,7 +4752,8 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var peers = ConsulFunctions.getPeerings();
+     *         final var peers = ConsulFunctions.getPeerings(GetPeeringsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -4989,7 +4791,8 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var peers = ConsulFunctions.getPeerings();
+     *         final var peers = ConsulFunctions.getPeerings(GetPeeringsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -5027,7 +4830,8 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var peers = ConsulFunctions.getPeerings();
+     *         final var peers = ConsulFunctions.getPeerings(GetPeeringsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -5065,7 +4869,8 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var peers = ConsulFunctions.getPeerings();
+     *         final var peers = ConsulFunctions.getPeerings(GetPeeringsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -5103,7 +4908,8 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var peers = ConsulFunctions.getPeerings();
+     *         final var peers = ConsulFunctions.getPeerings(GetPeeringsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -5141,7 +4947,8 @@ public final class ConsulFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var peers = ConsulFunctions.getPeerings();
+     *         final var peers = ConsulFunctions.getPeerings(GetPeeringsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -5176,7 +4983,9 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetServiceArgs;
      * import com.pulumi.example.resource;
-     * import com.pulumi.example.ResourceArgs;
+     * import com.pulumi.example.resourceArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -5236,7 +5045,9 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetServiceArgs;
      * import com.pulumi.example.resource;
-     * import com.pulumi.example.ResourceArgs;
+     * import com.pulumi.example.resourceArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -5296,7 +5107,9 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetServiceArgs;
      * import com.pulumi.example.resource;
-     * import com.pulumi.example.ResourceArgs;
+     * import com.pulumi.example.resourceArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -5356,7 +5169,9 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetServiceArgs;
      * import com.pulumi.example.resource;
-     * import com.pulumi.example.ResourceArgs;
+     * import com.pulumi.example.resourceArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -5416,7 +5231,9 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetServiceArgs;
      * import com.pulumi.example.resource;
-     * import com.pulumi.example.ResourceArgs;
+     * import com.pulumi.example.resourceArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -5465,37 +5282,6 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.consul.ConsulFunctions;
-     * import com.pulumi.consul.inputs.GetServiceHealthArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var vault = ConsulFunctions.getServiceHealth(GetServiceHealthArgs.builder()
-     *             .service("vault")
-     *             .passing(true)
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5514,37 +5300,6 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.consul.ConsulFunctions;
-     * import com.pulumi.consul.inputs.GetServiceHealthArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var vault = ConsulFunctions.getServiceHealth(GetServiceHealthArgs.builder()
-     *             .service("vault")
-     *             .passing(true)
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5563,37 +5318,6 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.consul.ConsulFunctions;
-     * import com.pulumi.consul.inputs.GetServiceHealthArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var vault = ConsulFunctions.getServiceHealth(GetServiceHealthArgs.builder()
-     *             .service("vault")
-     *             .passing(true)
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5612,37 +5336,6 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.consul.ConsulFunctions;
-     * import com.pulumi.consul.inputs.GetServiceHealthArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var vault = ConsulFunctions.getServiceHealth(GetServiceHealthArgs.builder()
-     *             .service("vault")
-     *             .passing(true)
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5661,37 +5354,6 @@ public final class ConsulFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.consul.ConsulFunctions;
-     * import com.pulumi.consul.inputs.GetServiceHealthArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var vault = ConsulFunctions.getServiceHealth(GetServiceHealthArgs.builder()
-     *             .service("vault")
-     *             .passing(true)
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5720,7 +5382,9 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetServicesArgs;
      * import com.pulumi.example.resource;
-     * import com.pulumi.example.ResourceArgs;
+     * import com.pulumi.example.resourceArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -5780,7 +5444,9 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetServicesArgs;
      * import com.pulumi.example.resource;
-     * import com.pulumi.example.ResourceArgs;
+     * import com.pulumi.example.resourceArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -5840,7 +5506,9 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetServicesArgs;
      * import com.pulumi.example.resource;
-     * import com.pulumi.example.ResourceArgs;
+     * import com.pulumi.example.resourceArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -5900,7 +5568,9 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetServicesArgs;
      * import com.pulumi.example.resource;
-     * import com.pulumi.example.ResourceArgs;
+     * import com.pulumi.example.resourceArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -5960,7 +5630,9 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetServicesArgs;
      * import com.pulumi.example.resource;
-     * import com.pulumi.example.ResourceArgs;
+     * import com.pulumi.example.resourceArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -6020,7 +5692,9 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetServicesArgs;
      * import com.pulumi.example.resource;
-     * import com.pulumi.example.ResourceArgs;
+     * import com.pulumi.example.resourceArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -6080,7 +5754,9 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetServicesArgs;
      * import com.pulumi.example.resource;
-     * import com.pulumi.example.ResourceArgs;
+     * import com.pulumi.example.resourceArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
