@@ -89,7 +89,7 @@ import javax.annotation.Nullable;
  *             .meta(Map.of("key", "value"))
  *             .splits(            
  *                 ConfigEntryServiceSplitterSplitArgs.builder()
- *                     .weight(80)
+ *                     .weight(80.0)
  *                     .service("web")
  *                     .serviceSubset("v1")
  *                     .requestHeaders(ConfigEntryServiceSplitterSplitRequestHeadersArgs.builder()
@@ -100,7 +100,7 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build(),
  *                 ConfigEntryServiceSplitterSplitArgs.builder()
- *                     .weight(10)
+ *                     .weight(10.0)
  *                     .service("web")
  *                     .serviceSubset("v2")
  *                     .requestHeaders(ConfigEntryServiceSplitterSplitRequestHeadersArgs.builder()
@@ -111,7 +111,7 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build(),
  *                 ConfigEntryServiceSplitterSplitArgs.builder()
- *                     .weight(10)
+ *                     .weight(10.0)
  *                     .service("web")
  *                     .serviceSubset("v2")
  *                     .build())

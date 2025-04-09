@@ -27,46 +27,6 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.consul.CatalogEntry;
- * import com.pulumi.consul.CatalogEntryArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var app = new CatalogEntry("app", CatalogEntryArgs.builder()
- *             .address("192.168.10.10")
- *             .node("foobar")
- *             .services(CatalogEntryServiceArgs.builder()
- *                 .address("127.0.0.1")
- *                 .id("redis1")
- *                 .name("redis")
- *                 .port(8000)
- *                 .tags(                
- *                     "master",
- *                     "v1")
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
