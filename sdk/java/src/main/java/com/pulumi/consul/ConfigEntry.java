@@ -267,7 +267,7 @@ import javax.annotation.Nullable;
  *         var serviceIntentions = new ConfigEntry("serviceIntentions", ConfigEntryArgs.builder()
  *             .name(sd.name())
  *             .kind("service-intentions")
- *             .configJson(jwtProvider.name().applyValue(name -> serializeJson(
+ *             .configJson(jwtProvider.name().applyValue(_name -> serializeJson(
  *                 jsonObject(
  *                     jsonProperty("Sources", jsonArray(
  *                         jsonObject(
@@ -283,7 +283,7 @@ import javax.annotation.Nullable;
  *                                 )),
  *                                 jsonProperty("JWT", jsonObject(
  *                                     jsonProperty("Providers", jsonArray(jsonObject(
- *                                         jsonProperty("Name", name)
+ *                                         jsonProperty("Name", _name)
  *                                     )))
  *                                 ))
  *                             ))),
