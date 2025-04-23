@@ -96,6 +96,9 @@ class _NamespacePolicyAttachmentState:
 
 
 class NamespacePolicyAttachment(pulumi.CustomResource):
+
+    pulumi_type = "consul:index/namespacePolicyAttachment:NamespacePolicyAttachment"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

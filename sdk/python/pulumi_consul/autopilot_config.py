@@ -330,6 +330,9 @@ class _AutopilotConfigState:
 
 
 class AutopilotConfig(pulumi.CustomResource):
+
+    pulumi_type = "consul:index/autopilotConfig:AutopilotConfig"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
