@@ -261,6 +261,9 @@ class _LicenseState:
 
 
 class License(pulumi.CustomResource):
+
+    pulumi_type = "consul:index/license:License"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

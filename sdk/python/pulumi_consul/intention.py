@@ -315,6 +315,9 @@ class _IntentionState:
 
 
 class Intention(pulumi.CustomResource):
+
+    pulumi_type = "consul:index/intention:Intention"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

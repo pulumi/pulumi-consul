@@ -305,6 +305,9 @@ Please use the token argument in the provider configuration""")
 
 
 class KeyPrefix(pulumi.CustomResource):
+
+    pulumi_type = "consul:index/keyPrefix:KeyPrefix"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

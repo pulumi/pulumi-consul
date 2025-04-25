@@ -170,6 +170,9 @@ class _AgentServiceState:
 
 
 class AgentService(pulumi.CustomResource):
+
+    pulumi_type = "consul:index/agentService:AgentService"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

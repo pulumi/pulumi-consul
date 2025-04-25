@@ -224,6 +224,9 @@ class _PeeringState:
 
 
 class Peering(pulumi.CustomResource):
+
+    pulumi_type = "consul:index/peering:Peering"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
