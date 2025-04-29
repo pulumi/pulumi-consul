@@ -231,6 +231,9 @@ Please use the token argument in the provider configuration""")
 
 
 class Node(pulumi.CustomResource):
+
+    pulumi_type = "consul:index/node:Node"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -395,6 +395,9 @@ class _AclAuthMethodState:
 
 
 class AclAuthMethod(pulumi.CustomResource):
+
+    pulumi_type = "consul:index/aclAuthMethod:AclAuthMethod"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

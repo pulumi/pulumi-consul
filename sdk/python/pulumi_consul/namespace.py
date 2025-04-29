@@ -226,6 +226,9 @@ class _NamespaceState:
 
 
 class Namespace(pulumi.CustomResource):
+
+    pulumi_type = "consul:index/namespace:Namespace"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

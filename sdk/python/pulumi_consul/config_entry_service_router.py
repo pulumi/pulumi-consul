@@ -196,6 +196,9 @@ class _ConfigEntryServiceRouterState:
 
 
 class ConfigEntryServiceRouter(pulumi.CustomResource):
+
+    pulumi_type = "consul:index/configEntryServiceRouter:ConfigEntryServiceRouter"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

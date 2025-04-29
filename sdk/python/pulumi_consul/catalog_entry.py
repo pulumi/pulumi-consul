@@ -224,6 +224,9 @@ Please use the token argument in the provider configuration""")
 
 
 class CatalogEntry(pulumi.CustomResource):
+
+    pulumi_type = "consul:index/catalogEntry:CatalogEntry"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
