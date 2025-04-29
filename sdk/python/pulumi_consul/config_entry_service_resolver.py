@@ -388,6 +388,9 @@ class _ConfigEntryServiceResolverState:
 
 
 class ConfigEntryServiceResolver(pulumi.CustomResource):
+
+    pulumi_type = "consul:index/configEntryServiceResolver:ConfigEntryServiceResolver"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

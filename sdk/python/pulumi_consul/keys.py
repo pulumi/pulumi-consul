@@ -234,6 +234,9 @@ Please use the token argument in the provider configuration""")
 
 
 class Keys(pulumi.CustomResource):
+
+    pulumi_type = "consul:index/keys:Keys"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

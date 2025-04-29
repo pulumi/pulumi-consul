@@ -227,6 +227,9 @@ Please use the token argument in the provider configuration""")
 
 
 class NetworkArea(pulumi.CustomResource):
+
+    pulumi_type = "consul:index/networkArea:NetworkArea"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
