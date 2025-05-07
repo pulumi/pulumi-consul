@@ -192,10 +192,8 @@ class _ConfigEntryState:
         pulumi.set(self, "partition", value)
 
 
+@pulumi.type_token("consul:index/configEntry:ConfigEntry")
 class ConfigEntry(pulumi.CustomResource):
-
-    pulumi_type = "consul:index/configEntry:ConfigEntry"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

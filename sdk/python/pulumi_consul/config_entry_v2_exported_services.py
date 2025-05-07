@@ -287,10 +287,8 @@ class _ConfigEntryV2ExportedServicesState:
         pulumi.set(self, "services", value)
 
 
+@pulumi.type_token("consul:index/configEntryV2ExportedServices:ConfigEntryV2ExportedServices")
 class ConfigEntryV2ExportedServices(pulumi.CustomResource):
-
-    pulumi_type = "consul:index/configEntryV2ExportedServices:ConfigEntryV2ExportedServices"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

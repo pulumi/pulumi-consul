@@ -223,10 +223,8 @@ Please use the token argument in the provider configuration""")
         pulumi.set(self, "token", value)
 
 
+@pulumi.type_token("consul:index/catalogEntry:CatalogEntry")
 class CatalogEntry(pulumi.CustomResource):
-
-    pulumi_type = "consul:index/catalogEntry:CatalogEntry"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

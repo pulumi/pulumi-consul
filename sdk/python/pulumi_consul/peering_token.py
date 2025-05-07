@@ -168,10 +168,8 @@ class _PeeringTokenState:
         pulumi.set(self, "server_external_addresses", value)
 
 
+@pulumi.type_token("consul:index/peeringToken:PeeringToken")
 class PeeringToken(pulumi.CustomResource):
-
-    pulumi_type = "consul:index/peeringToken:PeeringToken"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

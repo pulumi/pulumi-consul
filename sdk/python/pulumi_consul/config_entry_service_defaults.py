@@ -609,10 +609,8 @@ class _ConfigEntryServiceDefaultsState:
         pulumi.set(self, "upstream_configs", value)
 
 
+@pulumi.type_token("consul:index/configEntryServiceDefaults:ConfigEntryServiceDefaults")
 class ConfigEntryServiceDefaults(pulumi.CustomResource):
-
-    pulumi_type = "consul:index/configEntryServiceDefaults:ConfigEntryServiceDefaults"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

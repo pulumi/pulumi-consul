@@ -260,10 +260,8 @@ class _LicenseState:
         pulumi.set(self, "warnings", value)
 
 
+@pulumi.type_token("consul:index/license:License")
 class License(pulumi.CustomResource):
-
-    pulumi_type = "consul:index/license:License"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

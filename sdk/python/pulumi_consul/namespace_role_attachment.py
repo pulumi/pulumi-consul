@@ -95,10 +95,8 @@ class _NamespaceRoleAttachmentState:
         pulumi.set(self, "role", value)
 
 
+@pulumi.type_token("consul:index/namespaceRoleAttachment:NamespaceRoleAttachment")
 class NamespaceRoleAttachment(pulumi.CustomResource):
-
-    pulumi_type = "consul:index/namespaceRoleAttachment:NamespaceRoleAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
