@@ -314,10 +314,8 @@ class _IntentionState:
         pulumi.set(self, "source_namespace", value)
 
 
+@pulumi.type_token("consul:index/intention:Intention")
 class Intention(pulumi.CustomResource):
-
-    pulumi_type = "consul:index/intention:Intention"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

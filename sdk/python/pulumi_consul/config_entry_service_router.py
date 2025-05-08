@@ -195,10 +195,8 @@ class _ConfigEntryServiceRouterState:
         pulumi.set(self, "routes", value)
 
 
+@pulumi.type_token("consul:index/configEntryServiceRouter:ConfigEntryServiceRouter")
 class ConfigEntryServiceRouter(pulumi.CustomResource):
-
-    pulumi_type = "consul:index/configEntryServiceRouter:ConfigEntryServiceRouter"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

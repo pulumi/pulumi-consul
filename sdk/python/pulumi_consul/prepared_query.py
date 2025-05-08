@@ -560,10 +560,8 @@ Please use the token argument in the provider configuration""")
         pulumi.set(self, "token", value)
 
 
+@pulumi.type_token("consul:index/preparedQuery:PreparedQuery")
 class PreparedQuery(pulumi.CustomResource):
-
-    pulumi_type = "consul:index/preparedQuery:PreparedQuery"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

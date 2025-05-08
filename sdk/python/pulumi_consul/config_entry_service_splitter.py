@@ -194,10 +194,8 @@ class _ConfigEntryServiceSplitterState:
         pulumi.set(self, "splits", value)
 
 
+@pulumi.type_token("consul:index/configEntryServiceSplitter:ConfigEntryServiceSplitter")
 class ConfigEntryServiceSplitter(pulumi.CustomResource):
-
-    pulumi_type = "consul:index/configEntryServiceSplitter:ConfigEntryServiceSplitter"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -394,10 +394,8 @@ class _AclAuthMethodState:
         pulumi.set(self, "type", value)
 
 
+@pulumi.type_token("consul:index/aclAuthMethod:AclAuthMethod")
 class AclAuthMethod(pulumi.CustomResource):
-
-    pulumi_type = "consul:index/aclAuthMethod:AclAuthMethod"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

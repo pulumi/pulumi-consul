@@ -224,10 +224,8 @@ class _AclPolicyState:
         pulumi.set(self, "rules", value)
 
 
+@pulumi.type_token("consul:index/aclPolicy:AclPolicy")
 class AclPolicy(pulumi.CustomResource):
-
-    pulumi_type = "consul:index/aclPolicy:AclPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -387,10 +387,8 @@ class _ConfigEntryServiceResolverState:
         pulumi.set(self, "subsets", value)
 
 
+@pulumi.type_token("consul:index/configEntryServiceResolver:ConfigEntryServiceResolver")
 class ConfigEntryServiceResolver(pulumi.CustomResource):
-
-    pulumi_type = "consul:index/configEntryServiceResolver:ConfigEntryServiceResolver"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

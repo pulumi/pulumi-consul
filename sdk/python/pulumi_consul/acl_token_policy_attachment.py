@@ -95,10 +95,8 @@ class _AclTokenPolicyAttachmentState:
         pulumi.set(self, "token_id", value)
 
 
+@pulumi.type_token("consul:index/aclTokenPolicyAttachment:AclTokenPolicyAttachment")
 class AclTokenPolicyAttachment(pulumi.CustomResource):
-
-    pulumi_type = "consul:index/aclTokenPolicyAttachment:AclTokenPolicyAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

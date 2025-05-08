@@ -225,10 +225,8 @@ class _NamespaceState:
         pulumi.set(self, "role_defaults", value)
 
 
+@pulumi.type_token("consul:index/namespace:Namespace")
 class Namespace(pulumi.CustomResource):
-
-    pulumi_type = "consul:index/namespace:Namespace"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -329,10 +329,8 @@ class _AutopilotConfigState:
         pulumi.set(self, "upgrade_version_tag", value)
 
 
+@pulumi.type_token("consul:index/autopilotConfig:AutopilotConfig")
 class AutopilotConfig(pulumi.CustomResource):
-
-    pulumi_type = "consul:index/autopilotConfig:AutopilotConfig"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
