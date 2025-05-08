@@ -97,10 +97,8 @@ class _AdminPartitionState:
         pulumi.set(self, "name", value)
 
 
+@pulumi.type_token("consul:index/adminPartition:AdminPartition")
 class AdminPartition(pulumi.CustomResource):
-
-    pulumi_type = "consul:index/adminPartition:AdminPartition"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

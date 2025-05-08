@@ -291,10 +291,8 @@ class _AclRoleState:
         pulumi.set(self, "templated_policies", value)
 
 
+@pulumi.type_token("consul:index/aclRole:AclRole")
 class AclRole(pulumi.CustomResource):
-
-    pulumi_type = "consul:index/aclRole:AclRole"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

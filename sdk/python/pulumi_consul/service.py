@@ -442,10 +442,8 @@ class _ServiceState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("consul:index/service:Service")
 class Service(pulumi.CustomResource):
-
-    pulumi_type = "consul:index/service:Service"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -95,10 +95,8 @@ class _NamespacePolicyAttachmentState:
         pulumi.set(self, "policy", value)
 
 
+@pulumi.type_token("consul:index/namespacePolicyAttachment:NamespacePolicyAttachment")
 class NamespacePolicyAttachment(pulumi.CustomResource):
-
-    pulumi_type = "consul:index/namespacePolicyAttachment:NamespacePolicyAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

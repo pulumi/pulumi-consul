@@ -285,10 +285,8 @@ export type PreparedQuery = import("./preparedQuery").PreparedQuery;
 export const PreparedQuery: typeof import("./preparedQuery").PreparedQuery = null as any;
 utilities.lazyLoad(exports, ["PreparedQuery"], () => require("./preparedQuery"));
 
-export { ProviderArgs } from "./provider";
-export type Provider = import("./provider").Provider;
-export const Provider: typeof import("./provider").Provider = null as any;
-utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
+export * from "./provider";
+import { Provider } from "./provider";
 
 export { ServiceArgs, ServiceState } from "./service";
 export type Service = import("./service").Service;

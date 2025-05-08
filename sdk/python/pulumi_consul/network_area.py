@@ -226,10 +226,8 @@ Please use the token argument in the provider configuration""")
         pulumi.set(self, "use_tls", value)
 
 
+@pulumi.type_token("consul:index/networkArea:NetworkArea")
 class NetworkArea(pulumi.CustomResource):
-
-    pulumi_type = "consul:index/networkArea:NetworkArea"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

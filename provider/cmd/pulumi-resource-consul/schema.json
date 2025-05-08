@@ -3029,6 +3029,9 @@
                 "description": "The ACL token to use by default when making requests to the agent. Can also be specified with `CONSUL_HTTP_TOKEN` or\n`CONSUL_TOKEN` as an environment variable.\n",
                 "secret": true
             }
+        },
+        "methods": {
+            "terraformConfig": "pulumi:providers:consul/terraformConfig"
         }
     },
     "resources": {
@@ -9121,6 +9124,35 @@
                     "services",
                     "tags",
                     "id"
+                ],
+                "type": "object"
+            }
+        },
+        "pulumi:providers:consul/terraformConfig": {
+            "description": "This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.",
+            "inputs": {
+                "properties": {
+                    "__self__": {
+                        "type": "ref",
+                        "$ref": "#/resources/pulumi:providers:consul"
+                    }
+                },
+                "type": "pulumi:providers:consul/terraformConfig",
+                "required": [
+                    "__self__"
+                ]
+            },
+            "outputs": {
+                "properties": {
+                    "result": {
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "type": "object"
+                    }
+                },
+                "required": [
+                    "result"
                 ],
                 "type": "object"
             }

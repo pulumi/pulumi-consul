@@ -288,10 +288,8 @@ class _AclBindingRuleState:
         pulumi.set(self, "selector", value)
 
 
+@pulumi.type_token("consul:index/aclBindingRule:AclBindingRule")
 class AclBindingRule(pulumi.CustomResource):
-
-    pulumi_type = "consul:index/aclBindingRule:AclBindingRule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

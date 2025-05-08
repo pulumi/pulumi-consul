@@ -227,10 +227,8 @@ class _ConfigEntryServiceIntentionsState:
         pulumi.set(self, "sources", value)
 
 
+@pulumi.type_token("consul:index/configEntryServiceIntentions:ConfigEntryServiceIntentions")
 class ConfigEntryServiceIntentions(pulumi.CustomResource):
-
-    pulumi_type = "consul:index/configEntryServiceIntentions:ConfigEntryServiceIntentions"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

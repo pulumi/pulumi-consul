@@ -120,10 +120,8 @@ class _CertificateAuthorityState:
         pulumi.set(self, "connect_provider", value)
 
 
+@pulumi.type_token("consul:index/certificateAuthority:CertificateAuthority")
 class CertificateAuthority(pulumi.CustomResource):
-
-    pulumi_type = "consul:index/certificateAuthority:CertificateAuthority"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
