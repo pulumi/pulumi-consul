@@ -10,6 +10,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -79,6 +80,20 @@ public class AdminPartition extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    /**
+     * . Disable gossip pool for the partition. Defaults to `false`.
+     * 
+     */
+    @Export(name="disableGossip", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> disableGossip;
+
+    /**
+     * @return . Disable gossip pool for the partition. Defaults to `false`.
+     * 
+     */
+    public Output<Optional<Boolean>> disableGossip() {
+        return Codegen.optional(this.disableGossip);
     }
     /**
      * The partition name. This must be a valid DNS hostname label.

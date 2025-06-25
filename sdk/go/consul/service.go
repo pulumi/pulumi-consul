@@ -171,6 +171,8 @@ type Service struct {
 	ServiceId pulumi.StringOutput `pulumi:"serviceId"`
 	// A list of values that are opaque to Consul, but can be used to distinguish between services or nodes.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
+	// Object that configures how the service responds to DNS SRV requests based on the service's health status. You can specify one or more of the following states and configure an integer value indicating its weight: `passing`, `warning`.
+	Weights pulumi.IntMapOutput `pulumi:"weights"`
 }
 
 // NewService registers a new resource with the given unique name, arguments, and options.
@@ -231,6 +233,8 @@ type serviceState struct {
 	ServiceId *string `pulumi:"serviceId"`
 	// A list of values that are opaque to Consul, but can be used to distinguish between services or nodes.
 	Tags []string `pulumi:"tags"`
+	// Object that configures how the service responds to DNS SRV requests based on the service's health status. You can specify one or more of the following states and configure an integer value indicating its weight: `passing`, `warning`.
+	Weights map[string]int `pulumi:"weights"`
 }
 
 type ServiceState struct {
@@ -259,6 +263,8 @@ type ServiceState struct {
 	ServiceId pulumi.StringPtrInput
 	// A list of values that are opaque to Consul, but can be used to distinguish between services or nodes.
 	Tags pulumi.StringArrayInput
+	// Object that configures how the service responds to DNS SRV requests based on the service's health status. You can specify one or more of the following states and configure an integer value indicating its weight: `passing`, `warning`.
+	Weights pulumi.IntMapInput
 }
 
 func (ServiceState) ElementType() reflect.Type {
@@ -291,6 +297,8 @@ type serviceArgs struct {
 	ServiceId *string `pulumi:"serviceId"`
 	// A list of values that are opaque to Consul, but can be used to distinguish between services or nodes.
 	Tags []string `pulumi:"tags"`
+	// Object that configures how the service responds to DNS SRV requests based on the service's health status. You can specify one or more of the following states and configure an integer value indicating its weight: `passing`, `warning`.
+	Weights map[string]int `pulumi:"weights"`
 }
 
 // The set of arguments for constructing a Service resource.
@@ -320,6 +328,8 @@ type ServiceArgs struct {
 	ServiceId pulumi.StringPtrInput
 	// A list of values that are opaque to Consul, but can be used to distinguish between services or nodes.
 	Tags pulumi.StringArrayInput
+	// Object that configures how the service responds to DNS SRV requests based on the service's health status. You can specify one or more of the following states and configure an integer value indicating its weight: `passing`, `warning`.
+	Weights pulumi.IntMapInput
 }
 
 func (ServiceArgs) ElementType() reflect.Type {
@@ -471,6 +481,11 @@ func (o ServiceOutput) ServiceId() pulumi.StringOutput {
 // A list of values that are opaque to Consul, but can be used to distinguish between services or nodes.
 func (o ServiceOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// Object that configures how the service responds to DNS SRV requests based on the service's health status. You can specify one or more of the following states and configure an integer value indicating its weight: `passing`, `warning`.
+func (o ServiceOutput) Weights() pulumi.IntMapOutput {
+	return o.ApplyT(func(v *Service) pulumi.IntMapOutput { return v.Weights }).(pulumi.IntMapOutput)
 }
 
 type ServiceArrayOutput struct{ *pulumi.OutputState }
