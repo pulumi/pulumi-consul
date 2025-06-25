@@ -51,6 +51,12 @@ namespace Pulumi.Consul
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// . Disable gossip pool for the partition. Defaults to `false`.
+        /// </summary>
+        [Output("disableGossip")]
+        public Output<bool?> DisableGossip { get; private set; } = null!;
+
+        /// <summary>
         /// The partition name. This must be a valid DNS hostname label.
         /// </summary>
         [Output("name")]
@@ -109,6 +115,12 @@ namespace Pulumi.Consul
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// . Disable gossip pool for the partition. Defaults to `false`.
+        /// </summary>
+        [Input("disableGossip")]
+        public Input<bool>? DisableGossip { get; set; }
+
+        /// <summary>
         /// The partition name. This must be a valid DNS hostname label.
         /// </summary>
         [Input("name")]
@@ -127,6 +139,12 @@ namespace Pulumi.Consul
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// . Disable gossip pool for the partition. Defaults to `false`.
+        /// </summary>
+        [Input("disableGossip")]
+        public Input<bool>? DisableGossip { get; set; }
 
         /// <summary>
         /// The partition name. This must be a valid DNS hostname label.

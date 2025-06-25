@@ -5,6 +5,7 @@ package com.pulumi.consul.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -31,6 +32,21 @@ public final class AdminPartitionState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * . Disable gossip pool for the partition. Defaults to `false`.
+     * 
+     */
+    @Import(name="disableGossip")
+    private @Nullable Output<Boolean> disableGossip;
+
+    /**
+     * @return . Disable gossip pool for the partition. Defaults to `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> disableGossip() {
+        return Optional.ofNullable(this.disableGossip);
+    }
+
+    /**
      * The partition name. This must be a valid DNS hostname label.
      * 
      */
@@ -49,6 +65,7 @@ public final class AdminPartitionState extends com.pulumi.resources.ResourceArgs
 
     private AdminPartitionState(AdminPartitionState $) {
         this.description = $.description;
+        this.disableGossip = $.disableGossip;
         this.name = $.name;
     }
 
@@ -89,6 +106,27 @@ public final class AdminPartitionState extends com.pulumi.resources.ResourceArgs
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param disableGossip . Disable gossip pool for the partition. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableGossip(@Nullable Output<Boolean> disableGossip) {
+            $.disableGossip = disableGossip;
+            return this;
+        }
+
+        /**
+         * @param disableGossip . Disable gossip pool for the partition. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableGossip(Boolean disableGossip) {
+            return disableGossip(Output.of(disableGossip));
         }
 
         /**

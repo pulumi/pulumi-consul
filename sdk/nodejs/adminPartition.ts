@@ -62,6 +62,10 @@ export class AdminPartition extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * . Disable gossip pool for the partition. Defaults to `false`.
+     */
+    public readonly disableGossip!: pulumi.Output<boolean | undefined>;
+    /**
      * The partition name. This must be a valid DNS hostname label.
      */
     public readonly name!: pulumi.Output<string>;
@@ -80,10 +84,12 @@ export class AdminPartition extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as AdminPartitionState | undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["disableGossip"] = state ? state.disableGossip : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as AdminPartitionArgs | undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["disableGossip"] = args ? args.disableGossip : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -100,6 +106,10 @@ export interface AdminPartitionState {
      */
     description?: pulumi.Input<string>;
     /**
+     * . Disable gossip pool for the partition. Defaults to `false`.
+     */
+    disableGossip?: pulumi.Input<boolean>;
+    /**
      * The partition name. This must be a valid DNS hostname label.
      */
     name?: pulumi.Input<string>;
@@ -113,6 +123,10 @@ export interface AdminPartitionArgs {
      * Free form partition description.
      */
     description?: pulumi.Input<string>;
+    /**
+     * . Disable gossip pool for the partition. Defaults to `false`.
+     */
+    disableGossip?: pulumi.Input<boolean>;
     /**
      * The partition name. This must be a valid DNS hostname label.
      */

@@ -346,6 +346,20 @@ public class Service extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<String>>> tags() {
         return Codegen.optional(this.tags);
     }
+    /**
+     * Object that configures how the service responds to DNS SRV requests based on the service&#39;s health status. You can specify one or more of the following states and configure an integer value indicating its weight: `passing`, `warning`.
+     * 
+     */
+    @Export(name="weights", refs={Map.class,String.class,Integer.class}, tree="[0,1,2]")
+    private Output</* @Nullable */ Map<String,Integer>> weights;
+
+    /**
+     * @return Object that configures how the service responds to DNS SRV requests based on the service&#39;s health status. You can specify one or more of the following states and configure an integer value indicating its weight: `passing`, `warning`.
+     * 
+     */
+    public Output<Optional<Map<String,Integer>>> weights() {
+        return Codegen.optional(this.weights);
+    }
 
     /**
      *

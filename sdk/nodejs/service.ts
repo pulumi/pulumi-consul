@@ -160,6 +160,10 @@ export class Service extends pulumi.CustomResource {
      * A list of values that are opaque to Consul, but can be used to distinguish between services or nodes.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
+    /**
+     * Object that configures how the service responds to DNS SRV requests based on the service's health status. You can specify one or more of the following states and configure an integer value indicating its weight: `passing`, `warning`.
+     */
+    public readonly weights!: pulumi.Output<{[key: string]: number} | undefined>;
 
     /**
      * Create a Service resource with the given unique name, arguments, and options.
@@ -187,6 +191,7 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["port"] = state ? state.port : undefined;
             resourceInputs["serviceId"] = state ? state.serviceId : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["weights"] = state ? state.weights : undefined;
         } else {
             const args = argsOrState as ServiceArgs | undefined;
             if ((!args || args.node === undefined) && !opts.urn) {
@@ -205,6 +210,7 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["port"] = args ? args.port : undefined;
             resourceInputs["serviceId"] = args ? args.serviceId : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["weights"] = args ? args.weights : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Service.__pulumiType, name, resourceInputs, opts);
@@ -264,6 +270,10 @@ export interface ServiceState {
      * A list of values that are opaque to Consul, but can be used to distinguish between services or nodes.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Object that configures how the service responds to DNS SRV requests based on the service's health status. You can specify one or more of the following states and configure an integer value indicating its weight: `passing`, `warning`.
+     */
+    weights?: pulumi.Input<{[key: string]: pulumi.Input<number>}>;
 }
 
 /**
@@ -319,4 +329,8 @@ export interface ServiceArgs {
      * A list of values that are opaque to Consul, but can be used to distinguish between services or nodes.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Object that configures how the service responds to DNS SRV requests based on the service's health status. You can specify one or more of the following states and configure an integer value indicating its weight: `passing`, `warning`.
+     */
+    weights?: pulumi.Input<{[key: string]: pulumi.Input<number>}>;
 }

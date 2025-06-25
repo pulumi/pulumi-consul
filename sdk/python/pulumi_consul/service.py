@@ -34,7 +34,8 @@ class ServiceArgs:
                  partition: Optional[pulumi.Input[builtins.str]] = None,
                  port: Optional[pulumi.Input[builtins.int]] = None,
                  service_id: Optional[pulumi.Input[builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 weights: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.int]]]] = None):
         """
         The set of arguments for constructing a Service resource.
         :param pulumi.Input[builtins.str] node: The name of the node the to register the service on.
@@ -48,6 +49,7 @@ class ServiceArgs:
         :param pulumi.Input[builtins.int] port: The port of the service.
         :param pulumi.Input[builtins.str] service_id: If the service ID is not provided, it will be defaulted to the value of the `name` attribute.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] tags: A list of values that are opaque to Consul, but can be used to distinguish between services or nodes.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.int]]] weights: Object that configures how the service responds to DNS SRV requests based on the service's health status. You can specify one or more of the following states and configure an integer value indicating its weight: `passing`, `warning`.
         """
         pulumi.set(__self__, "node", node)
         if address is not None:
@@ -77,6 +79,8 @@ class ServiceArgs:
             pulumi.set(__self__, "service_id", service_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if weights is not None:
+            pulumi.set(__self__, "weights", weights)
 
     @property
     @pulumi.getter
@@ -229,6 +233,18 @@ class ServiceArgs:
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
+    @property
+    @pulumi.getter
+    def weights(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.int]]]]:
+        """
+        Object that configures how the service responds to DNS SRV requests based on the service's health status. You can specify one or more of the following states and configure an integer value indicating its weight: `passing`, `warning`.
+        """
+        return pulumi.get(self, "weights")
+
+    @weights.setter
+    def weights(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.int]]]]):
+        pulumi.set(self, "weights", value)
+
 
 @pulumi.input_type
 class _ServiceState:
@@ -245,7 +261,8 @@ class _ServiceState:
                  partition: Optional[pulumi.Input[builtins.str]] = None,
                  port: Optional[pulumi.Input[builtins.int]] = None,
                  service_id: Optional[pulumi.Input[builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 weights: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.int]]]] = None):
         """
         Input properties used for looking up and filtering Service resources.
         :param pulumi.Input[builtins.str] address: The address of the service. Defaults to the address of the node.
@@ -259,6 +276,7 @@ class _ServiceState:
         :param pulumi.Input[builtins.int] port: The port of the service.
         :param pulumi.Input[builtins.str] service_id: If the service ID is not provided, it will be defaulted to the value of the `name` attribute.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] tags: A list of values that are opaque to Consul, but can be used to distinguish between services or nodes.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.int]]] weights: Object that configures how the service responds to DNS SRV requests based on the service's health status. You can specify one or more of the following states and configure an integer value indicating its weight: `passing`, `warning`.
         """
         if address is not None:
             pulumi.set(__self__, "address", address)
@@ -289,6 +307,8 @@ class _ServiceState:
             pulumi.set(__self__, "service_id", service_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if weights is not None:
+            pulumi.set(__self__, "weights", weights)
 
     @property
     @pulumi.getter
@@ -441,6 +461,18 @@ class _ServiceState:
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
+    @property
+    @pulumi.getter
+    def weights(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.int]]]]:
+        """
+        Object that configures how the service responds to DNS SRV requests based on the service's health status. You can specify one or more of the following states and configure an integer value indicating its weight: `passing`, `warning`.
+        """
+        return pulumi.get(self, "weights")
+
+    @weights.setter
+    def weights(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.int]]]]):
+        pulumi.set(self, "weights", value)
+
 
 @pulumi.type_token("consul:index/service:Service")
 class Service(pulumi.CustomResource):
@@ -461,6 +493,7 @@ class Service(pulumi.CustomResource):
                  port: Optional[pulumi.Input[builtins.int]] = None,
                  service_id: Optional[pulumi.Input[builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 weights: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.int]]]] = None,
                  __props__=None):
         """
         A high-level resource for creating a Service in Consul in the Consul catalog. This
@@ -548,6 +581,7 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[builtins.int] port: The port of the service.
         :param pulumi.Input[builtins.str] service_id: If the service ID is not provided, it will be defaulted to the value of the `name` attribute.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] tags: A list of values that are opaque to Consul, but can be used to distinguish between services or nodes.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.int]]] weights: Object that configures how the service responds to DNS SRV requests based on the service's health status. You can specify one or more of the following states and configure an integer value indicating its weight: `passing`, `warning`.
         """
         ...
     @overload
@@ -656,6 +690,7 @@ class Service(pulumi.CustomResource):
                  port: Optional[pulumi.Input[builtins.int]] = None,
                  service_id: Optional[pulumi.Input[builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 weights: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.int]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -680,6 +715,7 @@ class Service(pulumi.CustomResource):
             __props__.__dict__["port"] = port
             __props__.__dict__["service_id"] = service_id
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["weights"] = weights
         super(Service, __self__).__init__(
             'consul:index/service:Service',
             resource_name,
@@ -702,7 +738,8 @@ class Service(pulumi.CustomResource):
             partition: Optional[pulumi.Input[builtins.str]] = None,
             port: Optional[pulumi.Input[builtins.int]] = None,
             service_id: Optional[pulumi.Input[builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None) -> 'Service':
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+            weights: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.int]]]] = None) -> 'Service':
         """
         Get an existing Service resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -721,6 +758,7 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[builtins.int] port: The port of the service.
         :param pulumi.Input[builtins.str] service_id: If the service ID is not provided, it will be defaulted to the value of the `name` attribute.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] tags: A list of values that are opaque to Consul, but can be used to distinguish between services or nodes.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.int]]] weights: Object that configures how the service responds to DNS SRV requests based on the service's health status. You can specify one or more of the following states and configure an integer value indicating its weight: `passing`, `warning`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -739,6 +777,7 @@ class Service(pulumi.CustomResource):
         __props__.__dict__["port"] = port
         __props__.__dict__["service_id"] = service_id
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["weights"] = weights
         return Service(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -839,4 +878,12 @@ class Service(pulumi.CustomResource):
         A list of values that are opaque to Consul, but can be used to distinguish between services or nodes.
         """
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def weights(self) -> pulumi.Output[Optional[Mapping[str, builtins.int]]]:
+        """
+        Object that configures how the service responds to DNS SRV requests based on the service's health status. You can specify one or more of the following states and configure an integer value indicating its weight: `passing`, `warning`.
+        """
+        return pulumi.get(self, "weights")
 

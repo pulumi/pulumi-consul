@@ -211,6 +211,21 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.tags);
     }
 
+    /**
+     * Object that configures how the service responds to DNS SRV requests based on the service&#39;s health status. You can specify one or more of the following states and configure an integer value indicating its weight: `passing`, `warning`.
+     * 
+     */
+    @Import(name="weights")
+    private @Nullable Output<Map<String,Integer>> weights;
+
+    /**
+     * @return Object that configures how the service responds to DNS SRV requests based on the service&#39;s health status. You can specify one or more of the following states and configure an integer value indicating its weight: `passing`, `warning`.
+     * 
+     */
+    public Optional<Output<Map<String,Integer>>> weights() {
+        return Optional.ofNullable(this.weights);
+    }
+
     private ServiceState() {}
 
     private ServiceState(ServiceState $) {
@@ -227,6 +242,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         this.port = $.port;
         this.serviceId = $.serviceId;
         this.tags = $.tags;
+        this.weights = $.weights;
     }
 
     public static Builder builder() {
@@ -524,6 +540,27 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder tags(String... tags) {
             return tags(List.of(tags));
+        }
+
+        /**
+         * @param weights Object that configures how the service responds to DNS SRV requests based on the service&#39;s health status. You can specify one or more of the following states and configure an integer value indicating its weight: `passing`, `warning`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder weights(@Nullable Output<Map<String,Integer>> weights) {
+            $.weights = weights;
+            return this;
+        }
+
+        /**
+         * @param weights Object that configures how the service responds to DNS SRV requests based on the service&#39;s health status. You can specify one or more of the following states and configure an integer value indicating its weight: `passing`, `warning`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder weights(Map<String,Integer> weights) {
+            return weights(Output.of(weights));
         }
 
         public ServiceState build() {

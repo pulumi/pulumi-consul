@@ -54,6 +54,8 @@ type AdminPartition struct {
 
 	// Free form partition description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// . Disable gossip pool for the partition. Defaults to `false`.
+	DisableGossip pulumi.BoolPtrOutput `pulumi:"disableGossip"`
 	// The partition name. This must be a valid DNS hostname label.
 	Name pulumi.StringOutput `pulumi:"name"`
 }
@@ -90,6 +92,8 @@ func GetAdminPartition(ctx *pulumi.Context,
 type adminPartitionState struct {
 	// Free form partition description.
 	Description *string `pulumi:"description"`
+	// . Disable gossip pool for the partition. Defaults to `false`.
+	DisableGossip *bool `pulumi:"disableGossip"`
 	// The partition name. This must be a valid DNS hostname label.
 	Name *string `pulumi:"name"`
 }
@@ -97,6 +101,8 @@ type adminPartitionState struct {
 type AdminPartitionState struct {
 	// Free form partition description.
 	Description pulumi.StringPtrInput
+	// . Disable gossip pool for the partition. Defaults to `false`.
+	DisableGossip pulumi.BoolPtrInput
 	// The partition name. This must be a valid DNS hostname label.
 	Name pulumi.StringPtrInput
 }
@@ -108,6 +114,8 @@ func (AdminPartitionState) ElementType() reflect.Type {
 type adminPartitionArgs struct {
 	// Free form partition description.
 	Description *string `pulumi:"description"`
+	// . Disable gossip pool for the partition. Defaults to `false`.
+	DisableGossip *bool `pulumi:"disableGossip"`
 	// The partition name. This must be a valid DNS hostname label.
 	Name *string `pulumi:"name"`
 }
@@ -116,6 +124,8 @@ type adminPartitionArgs struct {
 type AdminPartitionArgs struct {
 	// Free form partition description.
 	Description pulumi.StringPtrInput
+	// . Disable gossip pool for the partition. Defaults to `false`.
+	DisableGossip pulumi.BoolPtrInput
 	// The partition name. This must be a valid DNS hostname label.
 	Name pulumi.StringPtrInput
 }
@@ -210,6 +220,11 @@ func (o AdminPartitionOutput) ToAdminPartitionOutputWithContext(ctx context.Cont
 // Free form partition description.
 func (o AdminPartitionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AdminPartition) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// . Disable gossip pool for the partition. Defaults to `false`.
+func (o AdminPartitionOutput) DisableGossip() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AdminPartition) pulumi.BoolPtrOutput { return v.DisableGossip }).(pulumi.BoolPtrOutput)
 }
 
 // The partition name. This must be a valid DNS hostname label.

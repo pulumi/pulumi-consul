@@ -3957,6 +3957,10 @@
                     "type": "string",
                     "description": "Free form partition description.\n"
                 },
+                "disableGossip": {
+                    "type": "boolean",
+                    "description": ". Disable gossip pool for the partition. Defaults to `false`.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "The partition name. This must be a valid DNS hostname label.\n"
@@ -3970,6 +3974,10 @@
                     "type": "string",
                     "description": "Free form partition description.\n"
                 },
+                "disableGossip": {
+                    "type": "boolean",
+                    "description": ". Disable gossip pool for the partition. Defaults to `false`.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "The partition name. This must be a valid DNS hostname label.\n",
@@ -3982,6 +3990,10 @@
                     "description": {
                         "type": "string",
                         "description": "Free form partition description.\n"
+                    },
+                    "disableGossip": {
+                        "type": "boolean",
+                        "description": ". Disable gossip pool for the partition. Defaults to `false`.\n"
                     },
                     "name": {
                         "type": "string",
@@ -6992,6 +7004,13 @@
                         "type": "string"
                     },
                     "description": "A list of values that are opaque to Consul, but can be used to distinguish between services or nodes.\n"
+                },
+                "weights": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "integer"
+                    },
+                    "description": "Object that configures how the service responds to DNS SRV requests based on the service's health status. You can specify one or more of the following states and configure an integer value indicating its weight: `passing`, `warning`.\n"
                 }
             },
             "required": [
@@ -7067,6 +7086,13 @@
                         "type": "string"
                     },
                     "description": "A list of values that are opaque to Consul, but can be used to distinguish between services or nodes.\n"
+                },
+                "weights": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "integer"
+                    },
+                    "description": "Object that configures how the service responds to DNS SRV requests based on the service's health status. You can specify one or more of the following states and configure an integer value indicating its weight: `passing`, `warning`.\n"
                 }
             },
             "requiredInputs": [
@@ -7140,6 +7166,13 @@
                             "type": "string"
                         },
                         "description": "A list of values that are opaque to Consul, but can be used to distinguish between services or nodes.\n"
+                    },
+                    "weights": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "integer"
+                        },
+                        "description": "Object that configures how the service responds to DNS SRV requests based on the service's health status. You can specify one or more of the following states and configure an integer value indicating its weight: `passing`, `warning`.\n"
                     }
                 },
                 "type": "object"

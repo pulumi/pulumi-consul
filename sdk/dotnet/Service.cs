@@ -200,6 +200,12 @@ namespace Pulumi.Consul
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
+        /// <summary>
+        /// Object that configures how the service responds to DNS SRV requests based on the service's health status. You can specify one or more of the following states and configure an integer value indicating its weight: `passing`, `warning`.
+        /// </summary>
+        [Output("weights")]
+        public Output<ImmutableDictionary<string, int>?> Weights { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Service resource with the given unique name, arguments, and options.
@@ -335,6 +341,18 @@ namespace Pulumi.Consul
             set => _tags = value;
         }
 
+        [Input("weights")]
+        private InputMap<int>? _weights;
+
+        /// <summary>
+        /// Object that configures how the service responds to DNS SRV requests based on the service's health status. You can specify one or more of the following states and configure an integer value indicating its weight: `passing`, `warning`.
+        /// </summary>
+        public InputMap<int> Weights
+        {
+            get => _weights ?? (_weights = new InputMap<int>());
+            set => _weights = value;
+        }
+
         public ServiceArgs()
         {
         }
@@ -430,6 +448,18 @@ namespace Pulumi.Consul
         {
             get => _tags ?? (_tags = new InputList<string>());
             set => _tags = value;
+        }
+
+        [Input("weights")]
+        private InputMap<int>? _weights;
+
+        /// <summary>
+        /// Object that configures how the service responds to DNS SRV requests based on the service's health status. You can specify one or more of the following states and configure an integer value indicating its weight: `passing`, `warning`.
+        /// </summary>
+        public InputMap<int> Weights
+        {
+            get => _weights ?? (_weights = new InputMap<int>());
+            set => _weights = value;
         }
 
         public ServiceState()

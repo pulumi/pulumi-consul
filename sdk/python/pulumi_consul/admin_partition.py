@@ -21,14 +21,18 @@ __all__ = ['AdminPartitionArgs', 'AdminPartition']
 class AdminPartitionArgs:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[builtins.str]] = None,
+                 disable_gossip: Optional[pulumi.Input[builtins.bool]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a AdminPartition resource.
         :param pulumi.Input[builtins.str] description: Free form partition description.
+        :param pulumi.Input[builtins.bool] disable_gossip: . Disable gossip pool for the partition. Defaults to `false`.
         :param pulumi.Input[builtins.str] name: The partition name. This must be a valid DNS hostname label.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if disable_gossip is not None:
+            pulumi.set(__self__, "disable_gossip", disable_gossip)
         if name is not None:
             pulumi.set(__self__, "name", name)
 
@@ -43,6 +47,18 @@ class AdminPartitionArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="disableGossip")
+    def disable_gossip(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        . Disable gossip pool for the partition. Defaults to `false`.
+        """
+        return pulumi.get(self, "disable_gossip")
+
+    @disable_gossip.setter
+    def disable_gossip(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "disable_gossip", value)
 
     @property
     @pulumi.getter
@@ -61,14 +77,18 @@ class AdminPartitionArgs:
 class _AdminPartitionState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[builtins.str]] = None,
+                 disable_gossip: Optional[pulumi.Input[builtins.bool]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering AdminPartition resources.
         :param pulumi.Input[builtins.str] description: Free form partition description.
+        :param pulumi.Input[builtins.bool] disable_gossip: . Disable gossip pool for the partition. Defaults to `false`.
         :param pulumi.Input[builtins.str] name: The partition name. This must be a valid DNS hostname label.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if disable_gossip is not None:
+            pulumi.set(__self__, "disable_gossip", disable_gossip)
         if name is not None:
             pulumi.set(__self__, "name", name)
 
@@ -83,6 +103,18 @@ class _AdminPartitionState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="disableGossip")
+    def disable_gossip(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        . Disable gossip pool for the partition. Defaults to `false`.
+        """
+        return pulumi.get(self, "disable_gossip")
+
+    @disable_gossip.setter
+    def disable_gossip(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "disable_gossip", value)
 
     @property
     @pulumi.getter
@@ -104,6 +136,7 @@ class AdminPartition(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
+                 disable_gossip: Optional[pulumi.Input[builtins.bool]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
@@ -133,6 +166,7 @@ class AdminPartition(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] description: Free form partition description.
+        :param pulumi.Input[builtins.bool] disable_gossip: . Disable gossip pool for the partition. Defaults to `false`.
         :param pulumi.Input[builtins.str] name: The partition name. This must be a valid DNS hostname label.
         """
         ...
@@ -181,6 +215,7 @@ class AdminPartition(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
+                 disable_gossip: Optional[pulumi.Input[builtins.bool]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -192,6 +227,7 @@ class AdminPartition(pulumi.CustomResource):
             __props__ = AdminPartitionArgs.__new__(AdminPartitionArgs)
 
             __props__.__dict__["description"] = description
+            __props__.__dict__["disable_gossip"] = disable_gossip
             __props__.__dict__["name"] = name
         super(AdminPartition, __self__).__init__(
             'consul:index/adminPartition:AdminPartition',
@@ -204,6 +240,7 @@ class AdminPartition(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[builtins.str]] = None,
+            disable_gossip: Optional[pulumi.Input[builtins.bool]] = None,
             name: Optional[pulumi.Input[builtins.str]] = None) -> 'AdminPartition':
         """
         Get an existing AdminPartition resource's state with the given name, id, and optional extra
@@ -213,6 +250,7 @@ class AdminPartition(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] description: Free form partition description.
+        :param pulumi.Input[builtins.bool] disable_gossip: . Disable gossip pool for the partition. Defaults to `false`.
         :param pulumi.Input[builtins.str] name: The partition name. This must be a valid DNS hostname label.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -220,6 +258,7 @@ class AdminPartition(pulumi.CustomResource):
         __props__ = _AdminPartitionState.__new__(_AdminPartitionState)
 
         __props__.__dict__["description"] = description
+        __props__.__dict__["disable_gossip"] = disable_gossip
         __props__.__dict__["name"] = name
         return AdminPartition(resource_name, opts=opts, __props__=__props__)
 
@@ -230,6 +269,14 @@ class AdminPartition(pulumi.CustomResource):
         Free form partition description.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="disableGossip")
+    def disable_gossip(self) -> pulumi.Output[Optional[builtins.bool]]:
+        """
+        . Disable gossip pool for the partition. Defaults to `false`.
+        """
+        return pulumi.get(self, "disable_gossip")
 
     @property
     @pulumi.getter
