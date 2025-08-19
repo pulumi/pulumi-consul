@@ -9167,7 +9167,7 @@
                 "properties": {
                     "__self__": {
                         "type": "ref",
-                        "$ref": "#/resources/pulumi:providers:consul"
+                        "$ref": "#/provider"
                     }
                 },
                 "type": "pulumi:providers:consul/terraformConfig",
