@@ -78,47 +78,47 @@ export class ConfigEntryServiceResolver extends pulumi.CustomResource {
     /**
      * Specifies the timeout duration for establishing new network connections to this service.
      */
-    public readonly connectTimeout!: pulumi.Output<string | undefined>;
+    declare public readonly connectTimeout: pulumi.Output<string | undefined>;
     /**
      * Specifies a defined subset of service instances to use when no explicit subset is requested. If this parameter is not specified, Consul uses the unnamed default subset.
      */
-    public readonly defaultSubset!: pulumi.Output<string | undefined>;
+    declare public readonly defaultSubset: pulumi.Output<string | undefined>;
     /**
      * Specifies controls for rerouting traffic to an alternate pool of service instances if the target service fails.
      */
-    public readonly failovers!: pulumi.Output<outputs.ConfigEntryServiceResolverFailover[] | undefined>;
+    declare public readonly failovers: pulumi.Output<outputs.ConfigEntryServiceResolverFailover[] | undefined>;
     /**
      * Specifies the load balancing policy and configuration for services issuing requests to this upstream.
      */
-    public readonly loadBalancers!: pulumi.Output<outputs.ConfigEntryServiceResolverLoadBalancer[] | undefined>;
+    declare public readonly loadBalancers: pulumi.Output<outputs.ConfigEntryServiceResolverLoadBalancer[] | undefined>;
     /**
      * Specifies key-value pairs to add to the KV store.
      */
-    public readonly meta!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly meta: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Specifies a name for the configuration entry.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Specifies the namespace that the service resolver applies to.
      */
-    public readonly namespace!: pulumi.Output<string | undefined>;
+    declare public readonly namespace: pulumi.Output<string | undefined>;
     /**
      * Specifies the admin partition that the service resolver applies to.
      */
-    public readonly partition!: pulumi.Output<string | undefined>;
+    declare public readonly partition: pulumi.Output<string | undefined>;
     /**
      * Specifies redirect instructions for local service traffic so that services deployed to a different network location resolve the upstream request instead.
      */
-    public readonly redirects!: pulumi.Output<outputs.ConfigEntryServiceResolverRedirect[] | undefined>;
+    declare public readonly redirects: pulumi.Output<outputs.ConfigEntryServiceResolverRedirect[] | undefined>;
     /**
      * Specifies the timeout duration for receiving an HTTP response from this service.
      */
-    public readonly requestTimeout!: pulumi.Output<string | undefined>;
+    declare public readonly requestTimeout: pulumi.Output<string | undefined>;
     /**
      * Specifies names for custom service subsets and the conditions under which service instances belong to each subset.
      */
-    public readonly subsets!: pulumi.Output<outputs.ConfigEntryServiceResolverSubset[] | undefined>;
+    declare public readonly subsets: pulumi.Output<outputs.ConfigEntryServiceResolverSubset[] | undefined>;
 
     /**
      * Create a ConfigEntryServiceResolver resource with the given unique name, arguments, and options.
@@ -133,30 +133,30 @@ export class ConfigEntryServiceResolver extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConfigEntryServiceResolverState | undefined;
-            resourceInputs["connectTimeout"] = state ? state.connectTimeout : undefined;
-            resourceInputs["defaultSubset"] = state ? state.defaultSubset : undefined;
-            resourceInputs["failovers"] = state ? state.failovers : undefined;
-            resourceInputs["loadBalancers"] = state ? state.loadBalancers : undefined;
-            resourceInputs["meta"] = state ? state.meta : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["namespace"] = state ? state.namespace : undefined;
-            resourceInputs["partition"] = state ? state.partition : undefined;
-            resourceInputs["redirects"] = state ? state.redirects : undefined;
-            resourceInputs["requestTimeout"] = state ? state.requestTimeout : undefined;
-            resourceInputs["subsets"] = state ? state.subsets : undefined;
+            resourceInputs["connectTimeout"] = state?.connectTimeout;
+            resourceInputs["defaultSubset"] = state?.defaultSubset;
+            resourceInputs["failovers"] = state?.failovers;
+            resourceInputs["loadBalancers"] = state?.loadBalancers;
+            resourceInputs["meta"] = state?.meta;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["namespace"] = state?.namespace;
+            resourceInputs["partition"] = state?.partition;
+            resourceInputs["redirects"] = state?.redirects;
+            resourceInputs["requestTimeout"] = state?.requestTimeout;
+            resourceInputs["subsets"] = state?.subsets;
         } else {
             const args = argsOrState as ConfigEntryServiceResolverArgs | undefined;
-            resourceInputs["connectTimeout"] = args ? args.connectTimeout : undefined;
-            resourceInputs["defaultSubset"] = args ? args.defaultSubset : undefined;
-            resourceInputs["failovers"] = args ? args.failovers : undefined;
-            resourceInputs["loadBalancers"] = args ? args.loadBalancers : undefined;
-            resourceInputs["meta"] = args ? args.meta : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["namespace"] = args ? args.namespace : undefined;
-            resourceInputs["partition"] = args ? args.partition : undefined;
-            resourceInputs["redirects"] = args ? args.redirects : undefined;
-            resourceInputs["requestTimeout"] = args ? args.requestTimeout : undefined;
-            resourceInputs["subsets"] = args ? args.subsets : undefined;
+            resourceInputs["connectTimeout"] = args?.connectTimeout;
+            resourceInputs["defaultSubset"] = args?.defaultSubset;
+            resourceInputs["failovers"] = args?.failovers;
+            resourceInputs["loadBalancers"] = args?.loadBalancers;
+            resourceInputs["meta"] = args?.meta;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["namespace"] = args?.namespace;
+            resourceInputs["partition"] = args?.partition;
+            resourceInputs["redirects"] = args?.redirects;
+            resourceInputs["requestTimeout"] = args?.requestTimeout;
+            resourceInputs["subsets"] = args?.subsets;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ConfigEntryServiceResolver.__pulumiType, name, resourceInputs, opts);

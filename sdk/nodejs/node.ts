@@ -59,28 +59,28 @@ export class Node extends pulumi.CustomResource {
     /**
      * The address of the node being added to, or referenced in the catalog.
      */
-    public readonly address!: pulumi.Output<string>;
+    declare public readonly address: pulumi.Output<string>;
     /**
      * The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
      */
-    public readonly datacenter!: pulumi.Output<string>;
+    declare public readonly datacenter: pulumi.Output<string>;
     /**
      * Key/value pairs that are associated with the node.
      */
-    public readonly meta!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly meta: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The name of the node being added to, or referenced in the catalog.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The partition the node is associated with.
      */
-    public readonly partition!: pulumi.Output<string | undefined>;
+    declare public readonly partition: pulumi.Output<string | undefined>;
     /**
      * @deprecated The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration
      */
-    public readonly token!: pulumi.Output<string | undefined>;
+    declare public readonly token: pulumi.Output<string | undefined>;
 
     /**
      * Create a Node resource with the given unique name, arguments, and options.
@@ -95,22 +95,22 @@ Please use the token argument in the provider configuration
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NodeState | undefined;
-            resourceInputs["address"] = state ? state.address : undefined;
-            resourceInputs["datacenter"] = state ? state.datacenter : undefined;
-            resourceInputs["meta"] = state ? state.meta : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["partition"] = state ? state.partition : undefined;
-            resourceInputs["token"] = state ? state.token : undefined;
+            resourceInputs["address"] = state?.address;
+            resourceInputs["datacenter"] = state?.datacenter;
+            resourceInputs["meta"] = state?.meta;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["partition"] = state?.partition;
+            resourceInputs["token"] = state?.token;
         } else {
             const args = argsOrState as NodeArgs | undefined;
-            if ((!args || args.address === undefined) && !opts.urn) {
+            if (args?.address === undefined && !opts.urn) {
                 throw new Error("Missing required property 'address'");
             }
-            resourceInputs["address"] = args ? args.address : undefined;
-            resourceInputs["datacenter"] = args ? args.datacenter : undefined;
-            resourceInputs["meta"] = args ? args.meta : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["partition"] = args ? args.partition : undefined;
+            resourceInputs["address"] = args?.address;
+            resourceInputs["datacenter"] = args?.datacenter;
+            resourceInputs["meta"] = args?.meta;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["partition"] = args?.partition;
             resourceInputs["token"] = args?.token ? pulumi.secret(args.token) : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -62,11 +62,11 @@ export class AclRolePolicyAttachment extends pulumi.CustomResource {
     /**
      * The policy name.
      */
-    public readonly policy!: pulumi.Output<string>;
+    declare public readonly policy: pulumi.Output<string>;
     /**
      * The id of the role.
      */
-    public readonly roleId!: pulumi.Output<string>;
+    declare public readonly roleId: pulumi.Output<string>;
 
     /**
      * Create a AclRolePolicyAttachment resource with the given unique name, arguments, and options.
@@ -81,18 +81,18 @@ export class AclRolePolicyAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AclRolePolicyAttachmentState | undefined;
-            resourceInputs["policy"] = state ? state.policy : undefined;
-            resourceInputs["roleId"] = state ? state.roleId : undefined;
+            resourceInputs["policy"] = state?.policy;
+            resourceInputs["roleId"] = state?.roleId;
         } else {
             const args = argsOrState as AclRolePolicyAttachmentArgs | undefined;
-            if ((!args || args.policy === undefined) && !opts.urn) {
+            if (args?.policy === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policy'");
             }
-            if ((!args || args.roleId === undefined) && !opts.urn) {
+            if (args?.roleId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'roleId'");
             }
-            resourceInputs["policy"] = args ? args.policy : undefined;
-            resourceInputs["roleId"] = args ? args.roleId : undefined;
+            resourceInputs["policy"] = args?.policy;
+            resourceInputs["roleId"] = args?.roleId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AclRolePolicyAttachment.__pulumiType, name, resourceInputs, opts);

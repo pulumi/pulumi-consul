@@ -4,6 +4,7 @@ title: Consul Provider
 meta_desc: Provides an overview on how to configure the Pulumi Consul provider.
 layout: package
 ---
+
 ## Installation
 
 The Consul provider is available as a package in all Pulumi languages:
@@ -13,6 +14,7 @@ The Consul provider is available as a package in all Pulumi languages:
 * Go: [`github.com/pulumi/pulumi-consul/sdk/v3/go/consul`](https://github.com/pulumi/pulumi-consul)
 * .NET: [`Pulumi.Consul`](https://www.nuget.org/packages/Pulumi.Consul)
 * Java: [`com.pulumi/consul`](https://central.sonatype.com/artifact/com.pulumi/consul)
+
 ## Overview
 
 [Consul](https://www.consul.io) is a service networking platform which provides
@@ -142,7 +144,7 @@ config:
 package main
 
 import (
-	"github.com/pulumi/pulumi-aws/sdk/v6/go/aws/ec2"
+	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/ec2"
 	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -198,8 +200,8 @@ variables:
   # Access a key in Consul
   app:
     fn::invoke:
-      Function: consul:getKeys
-      Arguments:
+      function: consul:getKeys
+      arguments:
         keys:
           - name: ami
             path: service/app/launch_ami
@@ -252,7 +254,7 @@ public class App {
 
         // Use our variable from Consul
         var appInstance = new Instance("appInstance", InstanceArgs.builder()
-            .ami(app.applyValue(getKeysResult -> getKeysResult.var().ami()))
+            .ami(app.var().ami())
             .build());
 
     }

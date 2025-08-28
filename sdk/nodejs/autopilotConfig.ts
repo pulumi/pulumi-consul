@@ -56,44 +56,44 @@ export class AutopilotConfig extends pulumi.CustomResource {
      * Whether to remove failing servers when a
      * replacement comes online. Defaults to true.
      */
-    public readonly cleanupDeadServers!: pulumi.Output<boolean | undefined>;
+    declare public readonly cleanupDeadServers: pulumi.Output<boolean | undefined>;
     /**
      * The datacenter to use. This overrides the agent's
      * default datacenter and the datacenter in the provider setup.
      */
-    public readonly datacenter!: pulumi.Output<string | undefined>;
+    declare public readonly datacenter: pulumi.Output<string | undefined>;
     /**
      * Whether to disable [upgrade migrations](https://www.consul.io/docs/guides/autopilot.html#redundancy-zones).
      * Defaults to false.
      */
-    public readonly disableUpgradeMigration!: pulumi.Output<boolean | undefined>;
+    declare public readonly disableUpgradeMigration: pulumi.Output<boolean | undefined>;
     /**
      * The time after which a server is
      * considered as unhealthy and will be removed. Defaults to `"200ms"`.
      */
-    public readonly lastContactThreshold!: pulumi.Output<string | undefined>;
+    declare public readonly lastContactThreshold: pulumi.Output<string | undefined>;
     /**
      * The maximum number of Raft log entries a
      * server can trail the leader. Defaults to 250.
      */
-    public readonly maxTrailingLogs!: pulumi.Output<number | undefined>;
+    declare public readonly maxTrailingLogs: pulumi.Output<number | undefined>;
     /**
      * The [redundancy zone](https://www.consul.io/docs/guides/autopilot.html#redundancy-zones)
      * tag to use. Consul will try to keep one voting server by zone to take advantage
      * of isolated failure domains. Defaults to an empty string.
      */
-    public readonly redundancyZoneTag!: pulumi.Output<string | undefined>;
+    declare public readonly redundancyZoneTag: pulumi.Output<string | undefined>;
     /**
      * The period to wait for a server to be
      * healthy and stable before being promoted to a full, voting member. Defaults to
      * `"10s"`.
      */
-    public readonly serverStabilizationTime!: pulumi.Output<string | undefined>;
+    declare public readonly serverStabilizationTime: pulumi.Output<string | undefined>;
     /**
      * The tag to override the version information
      * used during a migration. Defaults to an empty string.
      */
-    public readonly upgradeVersionTag!: pulumi.Output<string | undefined>;
+    declare public readonly upgradeVersionTag: pulumi.Output<string | undefined>;
 
     /**
      * Create a AutopilotConfig resource with the given unique name, arguments, and options.
@@ -108,24 +108,24 @@ export class AutopilotConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AutopilotConfigState | undefined;
-            resourceInputs["cleanupDeadServers"] = state ? state.cleanupDeadServers : undefined;
-            resourceInputs["datacenter"] = state ? state.datacenter : undefined;
-            resourceInputs["disableUpgradeMigration"] = state ? state.disableUpgradeMigration : undefined;
-            resourceInputs["lastContactThreshold"] = state ? state.lastContactThreshold : undefined;
-            resourceInputs["maxTrailingLogs"] = state ? state.maxTrailingLogs : undefined;
-            resourceInputs["redundancyZoneTag"] = state ? state.redundancyZoneTag : undefined;
-            resourceInputs["serverStabilizationTime"] = state ? state.serverStabilizationTime : undefined;
-            resourceInputs["upgradeVersionTag"] = state ? state.upgradeVersionTag : undefined;
+            resourceInputs["cleanupDeadServers"] = state?.cleanupDeadServers;
+            resourceInputs["datacenter"] = state?.datacenter;
+            resourceInputs["disableUpgradeMigration"] = state?.disableUpgradeMigration;
+            resourceInputs["lastContactThreshold"] = state?.lastContactThreshold;
+            resourceInputs["maxTrailingLogs"] = state?.maxTrailingLogs;
+            resourceInputs["redundancyZoneTag"] = state?.redundancyZoneTag;
+            resourceInputs["serverStabilizationTime"] = state?.serverStabilizationTime;
+            resourceInputs["upgradeVersionTag"] = state?.upgradeVersionTag;
         } else {
             const args = argsOrState as AutopilotConfigArgs | undefined;
-            resourceInputs["cleanupDeadServers"] = args ? args.cleanupDeadServers : undefined;
-            resourceInputs["datacenter"] = args ? args.datacenter : undefined;
-            resourceInputs["disableUpgradeMigration"] = args ? args.disableUpgradeMigration : undefined;
-            resourceInputs["lastContactThreshold"] = args ? args.lastContactThreshold : undefined;
-            resourceInputs["maxTrailingLogs"] = args ? args.maxTrailingLogs : undefined;
-            resourceInputs["redundancyZoneTag"] = args ? args.redundancyZoneTag : undefined;
-            resourceInputs["serverStabilizationTime"] = args ? args.serverStabilizationTime : undefined;
-            resourceInputs["upgradeVersionTag"] = args ? args.upgradeVersionTag : undefined;
+            resourceInputs["cleanupDeadServers"] = args?.cleanupDeadServers;
+            resourceInputs["datacenter"] = args?.datacenter;
+            resourceInputs["disableUpgradeMigration"] = args?.disableUpgradeMigration;
+            resourceInputs["lastContactThreshold"] = args?.lastContactThreshold;
+            resourceInputs["maxTrailingLogs"] = args?.maxTrailingLogs;
+            resourceInputs["redundancyZoneTag"] = args?.redundancyZoneTag;
+            resourceInputs["serverStabilizationTime"] = args?.serverStabilizationTime;
+            resourceInputs["upgradeVersionTag"] = args?.upgradeVersionTag;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AutopilotConfig.__pulumiType, name, resourceInputs, opts);

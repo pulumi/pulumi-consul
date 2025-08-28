@@ -45,11 +45,11 @@ export class NamespaceRoleAttachment extends pulumi.CustomResource {
     /**
      * The namespace to attach the role to.
      */
-    public readonly namespace!: pulumi.Output<string>;
+    declare public readonly namespace: pulumi.Output<string>;
     /**
      * The name of the role attached to the namespace.
      */
-    public readonly role!: pulumi.Output<string>;
+    declare public readonly role: pulumi.Output<string>;
 
     /**
      * Create a NamespaceRoleAttachment resource with the given unique name, arguments, and options.
@@ -64,18 +64,18 @@ export class NamespaceRoleAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NamespaceRoleAttachmentState | undefined;
-            resourceInputs["namespace"] = state ? state.namespace : undefined;
-            resourceInputs["role"] = state ? state.role : undefined;
+            resourceInputs["namespace"] = state?.namespace;
+            resourceInputs["role"] = state?.role;
         } else {
             const args = argsOrState as NamespaceRoleAttachmentArgs | undefined;
-            if ((!args || args.namespace === undefined) && !opts.urn) {
+            if (args?.namespace === undefined && !opts.urn) {
                 throw new Error("Missing required property 'namespace'");
             }
-            if ((!args || args.role === undefined) && !opts.urn) {
+            if (args?.role === undefined && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            resourceInputs["namespace"] = args ? args.namespace : undefined;
-            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["namespace"] = args?.namespace;
+            resourceInputs["role"] = args?.role;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(NamespaceRoleAttachment.__pulumiType, name, resourceInputs, opts);

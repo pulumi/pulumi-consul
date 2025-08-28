@@ -114,56 +114,56 @@ export class Service extends pulumi.CustomResource {
     /**
      * The address of the service. Defaults to the address of the node.
      */
-    public readonly address!: pulumi.Output<string>;
-    public readonly checks!: pulumi.Output<outputs.ServiceCheck[] | undefined>;
+    declare public readonly address: pulumi.Output<string>;
+    declare public readonly checks: pulumi.Output<outputs.ServiceCheck[] | undefined>;
     /**
      * The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
      */
-    public readonly datacenter!: pulumi.Output<string>;
+    declare public readonly datacenter: pulumi.Output<string>;
     /**
      * Specifies to disable the anti-entropy feature for this service's tags. Defaults to `false`.
      */
-    public readonly enableTagOverride!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableTagOverride: pulumi.Output<boolean | undefined>;
     /**
      * @deprecated The external field has been deprecated and does nothing.
      */
-    public readonly external!: pulumi.Output<boolean | undefined>;
+    declare public readonly external: pulumi.Output<boolean | undefined>;
     /**
      * A map of arbitrary KV metadata linked to the service instance.
      */
-    public readonly meta!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly meta: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The name of the service.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The namespace to create the service within.
      */
-    public readonly namespace!: pulumi.Output<string | undefined>;
+    declare public readonly namespace: pulumi.Output<string | undefined>;
     /**
      * The name of the node the to register the service on.
      */
-    public readonly node!: pulumi.Output<string>;
+    declare public readonly node: pulumi.Output<string>;
     /**
      * The partition the service is associated with.
      */
-    public readonly partition!: pulumi.Output<string | undefined>;
+    declare public readonly partition: pulumi.Output<string | undefined>;
     /**
      * The port of the service.
      */
-    public readonly port!: pulumi.Output<number | undefined>;
+    declare public readonly port: pulumi.Output<number | undefined>;
     /**
      * If the service ID is not provided, it will be defaulted to the value of the `name` attribute.
      */
-    public readonly serviceId!: pulumi.Output<string>;
+    declare public readonly serviceId: pulumi.Output<string>;
     /**
      * A list of values that are opaque to Consul, but can be used to distinguish between services or nodes.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * Object that configures how the service responds to DNS SRV requests based on the service's health status. You can specify one or more of the following states and configure an integer value indicating its weight: `passing`, `warning`.
      */
-    public readonly weights!: pulumi.Output<{[key: string]: number} | undefined>;
+    declare public readonly weights: pulumi.Output<{[key: string]: number} | undefined>;
 
     /**
      * Create a Service resource with the given unique name, arguments, and options.
@@ -178,39 +178,39 @@ export class Service extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceState | undefined;
-            resourceInputs["address"] = state ? state.address : undefined;
-            resourceInputs["checks"] = state ? state.checks : undefined;
-            resourceInputs["datacenter"] = state ? state.datacenter : undefined;
-            resourceInputs["enableTagOverride"] = state ? state.enableTagOverride : undefined;
-            resourceInputs["external"] = state ? state.external : undefined;
-            resourceInputs["meta"] = state ? state.meta : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["namespace"] = state ? state.namespace : undefined;
-            resourceInputs["node"] = state ? state.node : undefined;
-            resourceInputs["partition"] = state ? state.partition : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["serviceId"] = state ? state.serviceId : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["weights"] = state ? state.weights : undefined;
+            resourceInputs["address"] = state?.address;
+            resourceInputs["checks"] = state?.checks;
+            resourceInputs["datacenter"] = state?.datacenter;
+            resourceInputs["enableTagOverride"] = state?.enableTagOverride;
+            resourceInputs["external"] = state?.external;
+            resourceInputs["meta"] = state?.meta;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["namespace"] = state?.namespace;
+            resourceInputs["node"] = state?.node;
+            resourceInputs["partition"] = state?.partition;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["serviceId"] = state?.serviceId;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["weights"] = state?.weights;
         } else {
             const args = argsOrState as ServiceArgs | undefined;
-            if ((!args || args.node === undefined) && !opts.urn) {
+            if (args?.node === undefined && !opts.urn) {
                 throw new Error("Missing required property 'node'");
             }
-            resourceInputs["address"] = args ? args.address : undefined;
-            resourceInputs["checks"] = args ? args.checks : undefined;
-            resourceInputs["datacenter"] = args ? args.datacenter : undefined;
-            resourceInputs["enableTagOverride"] = args ? args.enableTagOverride : undefined;
-            resourceInputs["external"] = args ? args.external : undefined;
-            resourceInputs["meta"] = args ? args.meta : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["namespace"] = args ? args.namespace : undefined;
-            resourceInputs["node"] = args ? args.node : undefined;
-            resourceInputs["partition"] = args ? args.partition : undefined;
-            resourceInputs["port"] = args ? args.port : undefined;
-            resourceInputs["serviceId"] = args ? args.serviceId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["weights"] = args ? args.weights : undefined;
+            resourceInputs["address"] = args?.address;
+            resourceInputs["checks"] = args?.checks;
+            resourceInputs["datacenter"] = args?.datacenter;
+            resourceInputs["enableTagOverride"] = args?.enableTagOverride;
+            resourceInputs["external"] = args?.external;
+            resourceInputs["meta"] = args?.meta;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["namespace"] = args?.namespace;
+            resourceInputs["node"] = args?.node;
+            resourceInputs["partition"] = args?.partition;
+            resourceInputs["port"] = args?.port;
+            resourceInputs["serviceId"] = args?.serviceId;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["weights"] = args?.weights;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Service.__pulumiType, name, resourceInputs, opts);

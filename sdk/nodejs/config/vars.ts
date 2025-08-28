@@ -43,8 +43,7 @@ Object.defineProperty(exports, "caFile", {
 });
 
 /**
- * A path to a directory of PEM-encoded certificate authority files to use to check the authenticity of client and server
- * connections. Can also be specified with the `CONSUL_CAPATH` environment variable.
+ * A path to a directory of PEM-encoded certificate authority files to use to check the authenticity of client and server connections. Can also be specified with the `CONSUL_CAPATH` environment variable.
  */
 export declare const caPath: string | undefined;
 Object.defineProperty(exports, "caPath", {
@@ -99,8 +98,7 @@ Object.defineProperty(exports, "datacenter", {
 });
 
 /**
- * A configuration block, described below, that provides additional headers to be sent along with all requests to the
- * Consul server. This block can be specified multiple times.
+ * A configuration block, described below, that provides additional headers to be sent along with all requests to the Consul server. This block can be specified multiple times.
  */
 export declare const headers: outputs.config.Headers[] | undefined;
 Object.defineProperty(exports, "headers", {
@@ -111,8 +109,7 @@ Object.defineProperty(exports, "headers", {
 });
 
 /**
- * HTTP Basic Authentication credentials to be used when communicating with Consul, in the format of either `user` or
- * `user:pass`. This may also be specified using the `CONSUL_HTTP_AUTH` environment variable.
+ * HTTP Basic Authentication credentials to be used when communicating with Consul, in the format of either `user` or `user:pass`. This may also be specified using the `CONSUL_HTTP_AUTH` environment variable.
  */
 export declare const httpAuth: string | undefined;
 Object.defineProperty(exports, "httpAuth", {
@@ -123,8 +120,7 @@ Object.defineProperty(exports, "httpAuth", {
 });
 
 /**
- * Boolean value to disable SSL certificate verification; setting this value to true is not recommended for production use.
- * Only use this with scheme set to "https".
+ * Boolean value to disable SSL certificate verification; setting this value to true is not recommended for production use. Only use this with scheme set to "https".
  */
 export declare const insecureHttps: boolean | undefined;
 Object.defineProperty(exports, "insecureHttps", {
@@ -176,8 +172,7 @@ Object.defineProperty(exports, "scheme", {
 });
 
 /**
- * The ACL token to use by default when making requests to the agent. Can also be specified with `CONSUL_HTTP_TOKEN` or
- * `CONSUL_TOKEN` as an environment variable.
+ * The ACL token to use by default when making requests to the agent. Can also be specified with `CONSUL_HTTP_TOKEN` or `CONSUL_TOKEN` as an environment variable.
  */
 export declare const token: string | undefined;
 Object.defineProperty(exports, "token", {

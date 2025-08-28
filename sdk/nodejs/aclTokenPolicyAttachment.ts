@@ -50,11 +50,11 @@ export class AclTokenPolicyAttachment extends pulumi.CustomResource {
     /**
      * The name of the policy attached to the token.
      */
-    public readonly policy!: pulumi.Output<string>;
+    declare public readonly policy: pulumi.Output<string>;
     /**
      * The id of the token.
      */
-    public readonly tokenId!: pulumi.Output<string>;
+    declare public readonly tokenId: pulumi.Output<string>;
 
     /**
      * Create a AclTokenPolicyAttachment resource with the given unique name, arguments, and options.
@@ -69,18 +69,18 @@ export class AclTokenPolicyAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AclTokenPolicyAttachmentState | undefined;
-            resourceInputs["policy"] = state ? state.policy : undefined;
-            resourceInputs["tokenId"] = state ? state.tokenId : undefined;
+            resourceInputs["policy"] = state?.policy;
+            resourceInputs["tokenId"] = state?.tokenId;
         } else {
             const args = argsOrState as AclTokenPolicyAttachmentArgs | undefined;
-            if ((!args || args.policy === undefined) && !opts.urn) {
+            if (args?.policy === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policy'");
             }
-            if ((!args || args.tokenId === undefined) && !opts.urn) {
+            if (args?.tokenId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'tokenId'");
             }
-            resourceInputs["policy"] = args ? args.policy : undefined;
-            resourceInputs["tokenId"] = args ? args.tokenId : undefined;
+            resourceInputs["policy"] = args?.policy;
+            resourceInputs["tokenId"] = args?.tokenId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AclTokenPolicyAttachment.__pulumiType, name, resourceInputs, opts);

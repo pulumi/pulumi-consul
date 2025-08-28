@@ -62,27 +62,27 @@ export class AclPolicy extends pulumi.CustomResource {
     /**
      * The datacenters of the policy.
      */
-    public readonly datacenters!: pulumi.Output<string[] | undefined>;
+    declare public readonly datacenters: pulumi.Output<string[] | undefined>;
     /**
      * The description of the policy.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The name of the policy.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The namespace to create the policy within.
      */
-    public readonly namespace!: pulumi.Output<string | undefined>;
+    declare public readonly namespace: pulumi.Output<string | undefined>;
     /**
      * The partition the ACL policy is associated with.
      */
-    public readonly partition!: pulumi.Output<string | undefined>;
+    declare public readonly partition: pulumi.Output<string | undefined>;
     /**
      * The rules of the policy.
      */
-    public readonly rules!: pulumi.Output<string>;
+    declare public readonly rules: pulumi.Output<string>;
 
     /**
      * Create a AclPolicy resource with the given unique name, arguments, and options.
@@ -97,23 +97,23 @@ export class AclPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AclPolicyState | undefined;
-            resourceInputs["datacenters"] = state ? state.datacenters : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["namespace"] = state ? state.namespace : undefined;
-            resourceInputs["partition"] = state ? state.partition : undefined;
-            resourceInputs["rules"] = state ? state.rules : undefined;
+            resourceInputs["datacenters"] = state?.datacenters;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["namespace"] = state?.namespace;
+            resourceInputs["partition"] = state?.partition;
+            resourceInputs["rules"] = state?.rules;
         } else {
             const args = argsOrState as AclPolicyArgs | undefined;
-            if ((!args || args.rules === undefined) && !opts.urn) {
+            if (args?.rules === undefined && !opts.urn) {
                 throw new Error("Missing required property 'rules'");
             }
-            resourceInputs["datacenters"] = args ? args.datacenters : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["namespace"] = args ? args.namespace : undefined;
-            resourceInputs["partition"] = args ? args.partition : undefined;
-            resourceInputs["rules"] = args ? args.rules : undefined;
+            resourceInputs["datacenters"] = args?.datacenters;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["namespace"] = args?.namespace;
+            resourceInputs["partition"] = args?.partition;
+            resourceInputs["rules"] = args?.rules;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AclPolicy.__pulumiType, name, resourceInputs, opts);

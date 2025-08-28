@@ -52,16 +52,14 @@ public class Provider extends com.pulumi.resources.ProviderResource {
         return Codegen.optional(this.caFile);
     }
     /**
-     * A path to a directory of PEM-encoded certificate authority files to use to check the authenticity of client and server
-     * connections. Can also be specified with the `CONSUL_CAPATH` environment variable.
+     * A path to a directory of PEM-encoded certificate authority files to use to check the authenticity of client and server connections. Can also be specified with the `CONSUL_CAPATH` environment variable.
      * 
      */
     @Export(name="caPath", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> caPath;
 
     /**
-     * @return A path to a directory of PEM-encoded certificate authority files to use to check the authenticity of client and server
-     * connections. Can also be specified with the `CONSUL_CAPATH` environment variable.
+     * @return A path to a directory of PEM-encoded certificate authority files to use to check the authenticity of client and server connections. Can also be specified with the `CONSUL_CAPATH` environment variable.
      * 
      */
     public Output<Optional<String>> caPath() {
@@ -124,16 +122,14 @@ public class Provider extends com.pulumi.resources.ProviderResource {
         return Codegen.optional(this.datacenter);
     }
     /**
-     * HTTP Basic Authentication credentials to be used when communicating with Consul, in the format of either `user` or
-     * `user:pass`. This may also be specified using the `CONSUL_HTTP_AUTH` environment variable.
+     * HTTP Basic Authentication credentials to be used when communicating with Consul, in the format of either `user` or `user:pass`. This may also be specified using the `CONSUL_HTTP_AUTH` environment variable.
      * 
      */
     @Export(name="httpAuth", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> httpAuth;
 
     /**
-     * @return HTTP Basic Authentication credentials to be used when communicating with Consul, in the format of either `user` or
-     * `user:pass`. This may also be specified using the `CONSUL_HTTP_AUTH` environment variable.
+     * @return HTTP Basic Authentication credentials to be used when communicating with Consul, in the format of either `user` or `user:pass`. This may also be specified using the `CONSUL_HTTP_AUTH` environment variable.
      * 
      */
     public Output<Optional<String>> httpAuth() {
@@ -188,16 +184,14 @@ public class Provider extends com.pulumi.resources.ProviderResource {
         return Codegen.optional(this.scheme);
     }
     /**
-     * The ACL token to use by default when making requests to the agent. Can also be specified with `CONSUL_HTTP_TOKEN` or
-     * `CONSUL_TOKEN` as an environment variable.
+     * The ACL token to use by default when making requests to the agent. Can also be specified with `CONSUL_HTTP_TOKEN` or `CONSUL_TOKEN` as an environment variable.
      * 
      */
     @Export(name="token", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> token;
 
     /**
-     * @return The ACL token to use by default when making requests to the agent. Can also be specified with `CONSUL_HTTP_TOKEN` or
-     * `CONSUL_TOKEN` as an environment variable.
+     * @return The ACL token to use by default when making requests to the agent. Can also be specified with `CONSUL_HTTP_TOKEN` or `CONSUL_TOKEN` as an environment variable.
      * 
      */
     public Output<Optional<String>> token() {

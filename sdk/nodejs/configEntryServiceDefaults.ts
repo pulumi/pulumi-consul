@@ -40,75 +40,75 @@ export class ConfigEntryServiceDefaults extends pulumi.CustomResource {
     /**
      * Specifies the strategy for allocating inbound connections to the service across Envoy proxy threads.
      */
-    public readonly balanceInboundConnections!: pulumi.Output<string | undefined>;
+    declare public readonly balanceInboundConnections: pulumi.Output<string | undefined>;
     /**
      * Configures the destination for service traffic through terminating gateways.
      */
-    public readonly destinations!: pulumi.Output<outputs.ConfigEntryServiceDefaultsDestination[] | undefined>;
+    declare public readonly destinations: pulumi.Output<outputs.ConfigEntryServiceDefaultsDestination[] | undefined>;
     /**
      * List of extensions to modify Envoy proxy configuration.
      */
-    public readonly envoyExtensions!: pulumi.Output<outputs.ConfigEntryServiceDefaultsEnvoyExtension[] | undefined>;
+    declare public readonly envoyExtensions: pulumi.Output<outputs.ConfigEntryServiceDefaultsEnvoyExtension[] | undefined>;
     /**
      * Specifies default configurations for exposing HTTP paths through Envoy.
      */
-    public readonly exposes!: pulumi.Output<outputs.ConfigEntryServiceDefaultsExpose[]>;
+    declare public readonly exposes: pulumi.Output<outputs.ConfigEntryServiceDefaultsExpose[]>;
     /**
      * Specifies the TLS server name indication (SNI) when federating with an external system.
      */
-    public readonly externalSni!: pulumi.Output<string | undefined>;
+    declare public readonly externalSni: pulumi.Output<string | undefined>;
     /**
      * Specifies the number of milliseconds allowed for establishing connections to the local application instance before timing out.
      */
-    public readonly localConnectTimeoutMs!: pulumi.Output<number | undefined>;
+    declare public readonly localConnectTimeoutMs: pulumi.Output<number | undefined>;
     /**
      * Specifies the timeout for HTTP requests to the local application instance.
      */
-    public readonly localRequestTimeoutMs!: pulumi.Output<number | undefined>;
+    declare public readonly localRequestTimeoutMs: pulumi.Output<number | undefined>;
     /**
      * Specifies the maximum number of concurrent inbound connections to each service instance.
      */
-    public readonly maxInboundConnections!: pulumi.Output<number | undefined>;
+    declare public readonly maxInboundConnections: pulumi.Output<number | undefined>;
     /**
      * Specifies the default mesh gateway mode field for the service.
      */
-    public readonly meshGateways!: pulumi.Output<outputs.ConfigEntryServiceDefaultsMeshGateway[] | undefined>;
+    declare public readonly meshGateways: pulumi.Output<outputs.ConfigEntryServiceDefaultsMeshGateway[] | undefined>;
     /**
      * Specifies a set of custom key-value pairs to add to the Consul KV store.
      */
-    public readonly meta!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly meta: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Specifies a mode for how the service directs inbound and outbound traffic.
      */
-    public readonly mode!: pulumi.Output<string | undefined>;
+    declare public readonly mode: pulumi.Output<string | undefined>;
     /**
      * Controls whether mutual TLS is required for incoming connections to this service. This setting is only supported for services with transparent proxy enabled.
      */
-    public readonly mutualTlsMode!: pulumi.Output<string | undefined>;
+    declare public readonly mutualTlsMode: pulumi.Output<string | undefined>;
     /**
      * Specifies the name of the service you are setting the defaults for.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Specifies the Consul namespace that the configuration entry applies to.
      */
-    public readonly namespace!: pulumi.Output<string | undefined>;
+    declare public readonly namespace: pulumi.Output<string | undefined>;
     /**
      * Specifies the name of the name of the Consul admin partition that the configuration entry applies to. Refer to Admin Partitions for additional information.
      */
-    public readonly partition!: pulumi.Output<string | undefined>;
+    declare public readonly partition: pulumi.Output<string | undefined>;
     /**
      * Specifies the default protocol for the service.
      */
-    public readonly protocol!: pulumi.Output<string>;
+    declare public readonly protocol: pulumi.Output<string>;
     /**
      * Controls configurations specific to proxies in transparent mode. Refer to Transparent Proxy Mode for additional information.
      */
-    public readonly transparentProxies!: pulumi.Output<outputs.ConfigEntryServiceDefaultsTransparentProxy[] | undefined>;
+    declare public readonly transparentProxies: pulumi.Output<outputs.ConfigEntryServiceDefaultsTransparentProxy[] | undefined>;
     /**
      * Controls default upstream connection settings and custom overrides for individual upstream services.
      */
-    public readonly upstreamConfigs!: pulumi.Output<outputs.ConfigEntryServiceDefaultsUpstreamConfig[] | undefined>;
+    declare public readonly upstreamConfigs: pulumi.Output<outputs.ConfigEntryServiceDefaultsUpstreamConfig[] | undefined>;
 
     /**
      * Create a ConfigEntryServiceDefaults resource with the given unique name, arguments, and options.
@@ -123,50 +123,50 @@ export class ConfigEntryServiceDefaults extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConfigEntryServiceDefaultsState | undefined;
-            resourceInputs["balanceInboundConnections"] = state ? state.balanceInboundConnections : undefined;
-            resourceInputs["destinations"] = state ? state.destinations : undefined;
-            resourceInputs["envoyExtensions"] = state ? state.envoyExtensions : undefined;
-            resourceInputs["exposes"] = state ? state.exposes : undefined;
-            resourceInputs["externalSni"] = state ? state.externalSni : undefined;
-            resourceInputs["localConnectTimeoutMs"] = state ? state.localConnectTimeoutMs : undefined;
-            resourceInputs["localRequestTimeoutMs"] = state ? state.localRequestTimeoutMs : undefined;
-            resourceInputs["maxInboundConnections"] = state ? state.maxInboundConnections : undefined;
-            resourceInputs["meshGateways"] = state ? state.meshGateways : undefined;
-            resourceInputs["meta"] = state ? state.meta : undefined;
-            resourceInputs["mode"] = state ? state.mode : undefined;
-            resourceInputs["mutualTlsMode"] = state ? state.mutualTlsMode : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["namespace"] = state ? state.namespace : undefined;
-            resourceInputs["partition"] = state ? state.partition : undefined;
-            resourceInputs["protocol"] = state ? state.protocol : undefined;
-            resourceInputs["transparentProxies"] = state ? state.transparentProxies : undefined;
-            resourceInputs["upstreamConfigs"] = state ? state.upstreamConfigs : undefined;
+            resourceInputs["balanceInboundConnections"] = state?.balanceInboundConnections;
+            resourceInputs["destinations"] = state?.destinations;
+            resourceInputs["envoyExtensions"] = state?.envoyExtensions;
+            resourceInputs["exposes"] = state?.exposes;
+            resourceInputs["externalSni"] = state?.externalSni;
+            resourceInputs["localConnectTimeoutMs"] = state?.localConnectTimeoutMs;
+            resourceInputs["localRequestTimeoutMs"] = state?.localRequestTimeoutMs;
+            resourceInputs["maxInboundConnections"] = state?.maxInboundConnections;
+            resourceInputs["meshGateways"] = state?.meshGateways;
+            resourceInputs["meta"] = state?.meta;
+            resourceInputs["mode"] = state?.mode;
+            resourceInputs["mutualTlsMode"] = state?.mutualTlsMode;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["namespace"] = state?.namespace;
+            resourceInputs["partition"] = state?.partition;
+            resourceInputs["protocol"] = state?.protocol;
+            resourceInputs["transparentProxies"] = state?.transparentProxies;
+            resourceInputs["upstreamConfigs"] = state?.upstreamConfigs;
         } else {
             const args = argsOrState as ConfigEntryServiceDefaultsArgs | undefined;
-            if ((!args || args.exposes === undefined) && !opts.urn) {
+            if (args?.exposes === undefined && !opts.urn) {
                 throw new Error("Missing required property 'exposes'");
             }
-            if ((!args || args.protocol === undefined) && !opts.urn) {
+            if (args?.protocol === undefined && !opts.urn) {
                 throw new Error("Missing required property 'protocol'");
             }
-            resourceInputs["balanceInboundConnections"] = args ? args.balanceInboundConnections : undefined;
-            resourceInputs["destinations"] = args ? args.destinations : undefined;
-            resourceInputs["envoyExtensions"] = args ? args.envoyExtensions : undefined;
-            resourceInputs["exposes"] = args ? args.exposes : undefined;
-            resourceInputs["externalSni"] = args ? args.externalSni : undefined;
-            resourceInputs["localConnectTimeoutMs"] = args ? args.localConnectTimeoutMs : undefined;
-            resourceInputs["localRequestTimeoutMs"] = args ? args.localRequestTimeoutMs : undefined;
-            resourceInputs["maxInboundConnections"] = args ? args.maxInboundConnections : undefined;
-            resourceInputs["meshGateways"] = args ? args.meshGateways : undefined;
-            resourceInputs["meta"] = args ? args.meta : undefined;
-            resourceInputs["mode"] = args ? args.mode : undefined;
-            resourceInputs["mutualTlsMode"] = args ? args.mutualTlsMode : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["namespace"] = args ? args.namespace : undefined;
-            resourceInputs["partition"] = args ? args.partition : undefined;
-            resourceInputs["protocol"] = args ? args.protocol : undefined;
-            resourceInputs["transparentProxies"] = args ? args.transparentProxies : undefined;
-            resourceInputs["upstreamConfigs"] = args ? args.upstreamConfigs : undefined;
+            resourceInputs["balanceInboundConnections"] = args?.balanceInboundConnections;
+            resourceInputs["destinations"] = args?.destinations;
+            resourceInputs["envoyExtensions"] = args?.envoyExtensions;
+            resourceInputs["exposes"] = args?.exposes;
+            resourceInputs["externalSni"] = args?.externalSni;
+            resourceInputs["localConnectTimeoutMs"] = args?.localConnectTimeoutMs;
+            resourceInputs["localRequestTimeoutMs"] = args?.localRequestTimeoutMs;
+            resourceInputs["maxInboundConnections"] = args?.maxInboundConnections;
+            resourceInputs["meshGateways"] = args?.meshGateways;
+            resourceInputs["meta"] = args?.meta;
+            resourceInputs["mode"] = args?.mode;
+            resourceInputs["mutualTlsMode"] = args?.mutualTlsMode;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["namespace"] = args?.namespace;
+            resourceInputs["partition"] = args?.partition;
+            resourceInputs["protocol"] = args?.protocol;
+            resourceInputs["transparentProxies"] = args?.transparentProxies;
+            resourceInputs["upstreamConfigs"] = args?.upstreamConfigs;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ConfigEntryServiceDefaults.__pulumiType, name, resourceInputs, opts);
