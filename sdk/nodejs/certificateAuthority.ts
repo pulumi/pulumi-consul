@@ -46,12 +46,12 @@ export class CertificateAuthority extends pulumi.CustomResource {
     /**
      * @deprecated The config attribute is deprecated, please use configJson instead.
      */
-    public readonly config!: pulumi.Output<{[key: string]: string} | undefined>;
-    public readonly configJson!: pulumi.Output<string | undefined>;
+    declare public readonly config: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly configJson: pulumi.Output<string | undefined>;
     /**
      * Specifies the CA provider type to use.
      */
-    public readonly connectProvider!: pulumi.Output<string>;
+    declare public readonly connectProvider: pulumi.Output<string>;
 
     /**
      * Create a CertificateAuthority resource with the given unique name, arguments, and options.
@@ -66,17 +66,17 @@ export class CertificateAuthority extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CertificateAuthorityState | undefined;
-            resourceInputs["config"] = state ? state.config : undefined;
-            resourceInputs["configJson"] = state ? state.configJson : undefined;
-            resourceInputs["connectProvider"] = state ? state.connectProvider : undefined;
+            resourceInputs["config"] = state?.config;
+            resourceInputs["configJson"] = state?.configJson;
+            resourceInputs["connectProvider"] = state?.connectProvider;
         } else {
             const args = argsOrState as CertificateAuthorityArgs | undefined;
-            if ((!args || args.connectProvider === undefined) && !opts.urn) {
+            if (args?.connectProvider === undefined && !opts.urn) {
                 throw new Error("Missing required property 'connectProvider'");
             }
-            resourceInputs["config"] = args ? args.config : undefined;
-            resourceInputs["configJson"] = args ? args.configJson : undefined;
-            resourceInputs["connectProvider"] = args ? args.connectProvider : undefined;
+            resourceInputs["config"] = args?.config;
+            resourceInputs["configJson"] = args?.configJson;
+            resourceInputs["connectProvider"] = args?.connectProvider;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(CertificateAuthority.__pulumiType, name, resourceInputs, opts);

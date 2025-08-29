@@ -89,42 +89,42 @@ export class Intention extends pulumi.CustomResource {
     /**
      * The intention action. Must be one of `allow` or `deny`.
      */
-    public readonly action!: pulumi.Output<string>;
+    declare public readonly action: pulumi.Output<string>;
     /**
      * The datacenter to use. This overrides the
      * agent's default datacenter and the datacenter in the provider setup.
      */
-    public readonly datacenter!: pulumi.Output<string>;
+    declare public readonly datacenter: pulumi.Output<string>;
     /**
      * Optional description that can be used by Consul
      * tooling, but is not used internally.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The name of the destination service for the intention. This
      * service does not have to exist.
      */
-    public readonly destinationName!: pulumi.Output<string>;
+    declare public readonly destinationName: pulumi.Output<string>;
     /**
      * The destination
      * namespace of the intention.
      */
-    public readonly destinationNamespace!: pulumi.Output<string | undefined>;
+    declare public readonly destinationNamespace: pulumi.Output<string | undefined>;
     /**
      * Key/value pairs that are opaque to Consul and are associated
      * with the intention.
      */
-    public readonly meta!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly meta: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The name of the source service for the intention. This
      * service does not have to exist.
      */
-    public readonly sourceName!: pulumi.Output<string>;
+    declare public readonly sourceName: pulumi.Output<string>;
     /**
      * The source namespace of the
      * intention.
      */
-    public readonly sourceNamespace!: pulumi.Output<string | undefined>;
+    declare public readonly sourceNamespace: pulumi.Output<string | undefined>;
 
     /**
      * Create a Intention resource with the given unique name, arguments, and options.
@@ -139,33 +139,33 @@ export class Intention extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IntentionState | undefined;
-            resourceInputs["action"] = state ? state.action : undefined;
-            resourceInputs["datacenter"] = state ? state.datacenter : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["destinationName"] = state ? state.destinationName : undefined;
-            resourceInputs["destinationNamespace"] = state ? state.destinationNamespace : undefined;
-            resourceInputs["meta"] = state ? state.meta : undefined;
-            resourceInputs["sourceName"] = state ? state.sourceName : undefined;
-            resourceInputs["sourceNamespace"] = state ? state.sourceNamespace : undefined;
+            resourceInputs["action"] = state?.action;
+            resourceInputs["datacenter"] = state?.datacenter;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["destinationName"] = state?.destinationName;
+            resourceInputs["destinationNamespace"] = state?.destinationNamespace;
+            resourceInputs["meta"] = state?.meta;
+            resourceInputs["sourceName"] = state?.sourceName;
+            resourceInputs["sourceNamespace"] = state?.sourceNamespace;
         } else {
             const args = argsOrState as IntentionArgs | undefined;
-            if ((!args || args.action === undefined) && !opts.urn) {
+            if (args?.action === undefined && !opts.urn) {
                 throw new Error("Missing required property 'action'");
             }
-            if ((!args || args.destinationName === undefined) && !opts.urn) {
+            if (args?.destinationName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'destinationName'");
             }
-            if ((!args || args.sourceName === undefined) && !opts.urn) {
+            if (args?.sourceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sourceName'");
             }
-            resourceInputs["action"] = args ? args.action : undefined;
-            resourceInputs["datacenter"] = args ? args.datacenter : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["destinationName"] = args ? args.destinationName : undefined;
-            resourceInputs["destinationNamespace"] = args ? args.destinationNamespace : undefined;
-            resourceInputs["meta"] = args ? args.meta : undefined;
-            resourceInputs["sourceName"] = args ? args.sourceName : undefined;
-            resourceInputs["sourceNamespace"] = args ? args.sourceNamespace : undefined;
+            resourceInputs["action"] = args?.action;
+            resourceInputs["datacenter"] = args?.datacenter;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["destinationName"] = args?.destinationName;
+            resourceInputs["destinationNamespace"] = args?.destinationNamespace;
+            resourceInputs["meta"] = args?.meta;
+            resourceInputs["sourceName"] = args?.sourceName;
+            resourceInputs["sourceNamespace"] = args?.sourceNamespace;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Intention.__pulumiType, name, resourceInputs, opts);

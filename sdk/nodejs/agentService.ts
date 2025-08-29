@@ -62,20 +62,20 @@ export class AgentService extends pulumi.CustomResource {
      * The address of the service. Defaults to the
      * address of the agent.
      */
-    public readonly address!: pulumi.Output<string>;
+    declare public readonly address: pulumi.Output<string>;
     /**
      * The name of the service.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The port of the service.
      */
-    public readonly port!: pulumi.Output<number | undefined>;
+    declare public readonly port: pulumi.Output<number | undefined>;
     /**
      * A list of values that are opaque to Consul,
      * but can be used to distinguish between services or nodes.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a AgentService resource with the given unique name, arguments, and options.
@@ -90,16 +90,16 @@ export class AgentService extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AgentServiceState | undefined;
-            resourceInputs["address"] = state ? state.address : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["address"] = state?.address;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as AgentServiceArgs | undefined;
-            resourceInputs["address"] = args ? args.address : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["port"] = args ? args.port : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["address"] = args?.address;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["port"] = args?.port;
+            resourceInputs["tags"] = args?.tags;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AgentService.__pulumiType, name, resourceInputs, opts);

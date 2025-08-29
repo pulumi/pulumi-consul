@@ -45,11 +45,11 @@ export class NamespacePolicyAttachment extends pulumi.CustomResource {
     /**
      * The namespace to attach the policy to.
      */
-    public readonly namespace!: pulumi.Output<string>;
+    declare public readonly namespace: pulumi.Output<string>;
     /**
      * The name of the policy attached to the namespace.
      */
-    public readonly policy!: pulumi.Output<string>;
+    declare public readonly policy: pulumi.Output<string>;
 
     /**
      * Create a NamespacePolicyAttachment resource with the given unique name, arguments, and options.
@@ -64,18 +64,18 @@ export class NamespacePolicyAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NamespacePolicyAttachmentState | undefined;
-            resourceInputs["namespace"] = state ? state.namespace : undefined;
-            resourceInputs["policy"] = state ? state.policy : undefined;
+            resourceInputs["namespace"] = state?.namespace;
+            resourceInputs["policy"] = state?.policy;
         } else {
             const args = argsOrState as NamespacePolicyAttachmentArgs | undefined;
-            if ((!args || args.namespace === undefined) && !opts.urn) {
+            if (args?.namespace === undefined && !opts.urn) {
                 throw new Error("Missing required property 'namespace'");
             }
-            if ((!args || args.policy === undefined) && !opts.urn) {
+            if (args?.policy === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policy'");
             }
-            resourceInputs["namespace"] = args ? args.namespace : undefined;
-            resourceInputs["policy"] = args ? args.policy : undefined;
+            resourceInputs["namespace"] = args?.namespace;
+            resourceInputs["policy"] = args?.policy;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(NamespacePolicyAttachment.__pulumiType, name, resourceInputs, opts);

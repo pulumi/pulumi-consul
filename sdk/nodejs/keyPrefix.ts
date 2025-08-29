@@ -74,33 +74,33 @@ export class KeyPrefix extends pulumi.CustomResource {
      * The datacenter to use. This overrides the
      * agent's default datacenter and the datacenter in the provider setup.
      */
-    public readonly datacenter!: pulumi.Output<string>;
+    declare public readonly datacenter: pulumi.Output<string>;
     /**
      * The namespace to create the keys within.
      */
-    public readonly namespace!: pulumi.Output<string | undefined>;
+    declare public readonly namespace: pulumi.Output<string | undefined>;
     /**
      * The admin partition to create the keys within.
      */
-    public readonly partition!: pulumi.Output<string | undefined>;
+    declare public readonly partition: pulumi.Output<string | undefined>;
     /**
      * Specifies the common prefix shared by all keys
      * that will be managed by this resource instance. In most cases this will
      * end with a slash, to manage a "folder" of keys.
      */
-    public readonly pathPrefix!: pulumi.Output<string>;
+    declare public readonly pathPrefix: pulumi.Output<string>;
     /**
      * A subkey to add. Supported values documented below.
      * Multiple blocks supported.
      */
-    public readonly subkeyCollection!: pulumi.Output<outputs.KeyPrefixSubkeyCollection[] | undefined>;
+    declare public readonly subkeyCollection: pulumi.Output<outputs.KeyPrefixSubkeyCollection[] | undefined>;
     /**
      * A mapping from subkey name (which will be appended
      * to the given `pathPrefix`) to the value that should be stored at that key.
      * Use slashes, as shown in the above example, to create "sub-folders" under
      * the given path prefix.
      */
-    public readonly subkeys!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly subkeys: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The ACL token to use. This overrides the
      * token that the agent provides by default.
@@ -108,7 +108,7 @@ export class KeyPrefix extends pulumi.CustomResource {
      * @deprecated The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration
      */
-    public readonly token!: pulumi.Output<string | undefined>;
+    declare public readonly token: pulumi.Output<string | undefined>;
 
     /**
      * Create a KeyPrefix resource with the given unique name, arguments, and options.
@@ -123,24 +123,24 @@ Please use the token argument in the provider configuration
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KeyPrefixState | undefined;
-            resourceInputs["datacenter"] = state ? state.datacenter : undefined;
-            resourceInputs["namespace"] = state ? state.namespace : undefined;
-            resourceInputs["partition"] = state ? state.partition : undefined;
-            resourceInputs["pathPrefix"] = state ? state.pathPrefix : undefined;
-            resourceInputs["subkeyCollection"] = state ? state.subkeyCollection : undefined;
-            resourceInputs["subkeys"] = state ? state.subkeys : undefined;
-            resourceInputs["token"] = state ? state.token : undefined;
+            resourceInputs["datacenter"] = state?.datacenter;
+            resourceInputs["namespace"] = state?.namespace;
+            resourceInputs["partition"] = state?.partition;
+            resourceInputs["pathPrefix"] = state?.pathPrefix;
+            resourceInputs["subkeyCollection"] = state?.subkeyCollection;
+            resourceInputs["subkeys"] = state?.subkeys;
+            resourceInputs["token"] = state?.token;
         } else {
             const args = argsOrState as KeyPrefixArgs | undefined;
-            if ((!args || args.pathPrefix === undefined) && !opts.urn) {
+            if (args?.pathPrefix === undefined && !opts.urn) {
                 throw new Error("Missing required property 'pathPrefix'");
             }
-            resourceInputs["datacenter"] = args ? args.datacenter : undefined;
-            resourceInputs["namespace"] = args ? args.namespace : undefined;
-            resourceInputs["partition"] = args ? args.partition : undefined;
-            resourceInputs["pathPrefix"] = args ? args.pathPrefix : undefined;
-            resourceInputs["subkeyCollection"] = args ? args.subkeyCollection : undefined;
-            resourceInputs["subkeys"] = args ? args.subkeys : undefined;
+            resourceInputs["datacenter"] = args?.datacenter;
+            resourceInputs["namespace"] = args?.namespace;
+            resourceInputs["partition"] = args?.partition;
+            resourceInputs["pathPrefix"] = args?.pathPrefix;
+            resourceInputs["subkeyCollection"] = args?.subkeyCollection;
+            resourceInputs["subkeys"] = args?.subkeys;
             resourceInputs["token"] = args?.token ? pulumi.secret(args.token) : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

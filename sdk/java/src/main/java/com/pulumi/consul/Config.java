@@ -37,8 +37,7 @@ public final class Config {
         return Codegen.stringProp("caFile").config(config).get();
     }
 /**
- * A path to a directory of PEM-encoded certificate authority files to use to check the authenticity of client and server
- * connections. Can also be specified with the `CONSUL_CAPATH` environment variable.
+ * A path to a directory of PEM-encoded certificate authority files to use to check the authenticity of client and server connections. Can also be specified with the `CONSUL_CAPATH` environment variable.
  * 
  */
     public Optional<String> caPath() {
@@ -73,24 +72,21 @@ public final class Config {
         return Codegen.stringProp("datacenter").config(config).get();
     }
 /**
- * A configuration block, described below, that provides additional headers to be sent along with all requests to the
- * Consul server. This block can be specified multiple times.
+ * A configuration block, described below, that provides additional headers to be sent along with all requests to the Consul server. This block can be specified multiple times.
  * 
  */
     public Optional<List<Headers>> headers() {
         return Codegen.objectProp("headers", TypeShape.<List<Headers>>builder(List.class).addParameter(Headers.class).build()).config(config).get();
     }
 /**
- * HTTP Basic Authentication credentials to be used when communicating with Consul, in the format of either `user` or
- * `user:pass`. This may also be specified using the `CONSUL_HTTP_AUTH` environment variable.
+ * HTTP Basic Authentication credentials to be used when communicating with Consul, in the format of either `user` or `user:pass`. This may also be specified using the `CONSUL_HTTP_AUTH` environment variable.
  * 
  */
     public Optional<String> httpAuth() {
         return Codegen.stringProp("httpAuth").config(config).get();
     }
 /**
- * Boolean value to disable SSL certificate verification; setting this value to true is not recommended for production use.
- * Only use this with scheme set to &#34;https&#34;.
+ * Boolean value to disable SSL certificate verification; setting this value to true is not recommended for production use. Only use this with scheme set to &#34;https&#34;.
  * 
  */
     public Optional<Boolean> insecureHttps() {
@@ -121,8 +117,7 @@ public final class Config {
         return Codegen.stringProp("scheme").config(config).get();
     }
 /**
- * The ACL token to use by default when making requests to the agent. Can also be specified with `CONSUL_HTTP_TOKEN` or
- * `CONSUL_TOKEN` as an environment variable.
+ * The ACL token to use by default when making requests to the agent. Can also be specified with `CONSUL_HTTP_TOKEN` or `CONSUL_TOKEN` as an environment variable.
  * 
  */
     public Optional<String> token() {

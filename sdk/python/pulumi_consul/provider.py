@@ -41,23 +41,18 @@ class ProviderArgs:
         :param pulumi.Input[_builtins.str] address: The HTTP(S) API address of the agent to use. Defaults to "127.0.0.1:8500".
         :param pulumi.Input['ProviderAuthJwtArgs'] auth_jwt: Authenticates to Consul using a JWT authentication method.
         :param pulumi.Input[_builtins.str] ca_file: A path to a PEM-encoded certificate authority used to verify the remote agent's certificate.
-        :param pulumi.Input[_builtins.str] ca_path: A path to a directory of PEM-encoded certificate authority files to use to check the authenticity of client and server
-               connections. Can also be specified with the `CONSUL_CAPATH` environment variable.
+        :param pulumi.Input[_builtins.str] ca_path: A path to a directory of PEM-encoded certificate authority files to use to check the authenticity of client and server connections. Can also be specified with the `CONSUL_CAPATH` environment variable.
         :param pulumi.Input[_builtins.str] ca_pem: PEM-encoded certificate authority used to verify the remote agent's certificate.
         :param pulumi.Input[_builtins.str] cert_file: A path to a PEM-encoded certificate provided to the remote agent; requires use of `key_file` or `key_pem`.
         :param pulumi.Input[_builtins.str] cert_pem: PEM-encoded certificate provided to the remote agent; requires use of `key_file` or `key_pem`.
         :param pulumi.Input[_builtins.str] datacenter: The datacenter to use. Defaults to that of the agent.
-        :param pulumi.Input[Sequence[pulumi.Input['ProviderHeaderArgs']]] headers: A configuration block, described below, that provides additional headers to be sent along with all requests to the
-               Consul server. This block can be specified multiple times.
-        :param pulumi.Input[_builtins.str] http_auth: HTTP Basic Authentication credentials to be used when communicating with Consul, in the format of either `user` or
-               `user:pass`. This may also be specified using the `CONSUL_HTTP_AUTH` environment variable.
-        :param pulumi.Input[_builtins.bool] insecure_https: Boolean value to disable SSL certificate verification; setting this value to true is not recommended for production use.
-               Only use this with scheme set to "https".
+        :param pulumi.Input[Sequence[pulumi.Input['ProviderHeaderArgs']]] headers: A configuration block, described below, that provides additional headers to be sent along with all requests to the Consul server. This block can be specified multiple times.
+        :param pulumi.Input[_builtins.str] http_auth: HTTP Basic Authentication credentials to be used when communicating with Consul, in the format of either `user` or `user:pass`. This may also be specified using the `CONSUL_HTTP_AUTH` environment variable.
+        :param pulumi.Input[_builtins.bool] insecure_https: Boolean value to disable SSL certificate verification; setting this value to true is not recommended for production use. Only use this with scheme set to "https".
         :param pulumi.Input[_builtins.str] key_file: A path to a PEM-encoded private key, required if `cert_file` or `cert_pem` is specified.
         :param pulumi.Input[_builtins.str] key_pem: PEM-encoded private key, required if `cert_file` or `cert_pem` is specified.
         :param pulumi.Input[_builtins.str] scheme: The URL scheme of the agent to use ("http" or "https"). Defaults to "http".
-        :param pulumi.Input[_builtins.str] token: The ACL token to use by default when making requests to the agent. Can also be specified with `CONSUL_HTTP_TOKEN` or
-               `CONSUL_TOKEN` as an environment variable.
+        :param pulumi.Input[_builtins.str] token: The ACL token to use by default when making requests to the agent. Can also be specified with `CONSUL_HTTP_TOKEN` or `CONSUL_TOKEN` as an environment variable.
         """
         if address is not None:
             pulumi.set(__self__, "address", address)
@@ -132,8 +127,7 @@ class ProviderArgs:
     @pulumi.getter(name="caPath")
     def ca_path(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        A path to a directory of PEM-encoded certificate authority files to use to check the authenticity of client and server
-        connections. Can also be specified with the `CONSUL_CAPATH` environment variable.
+        A path to a directory of PEM-encoded certificate authority files to use to check the authenticity of client and server connections. Can also be specified with the `CONSUL_CAPATH` environment variable.
         """
         return pulumi.get(self, "ca_path")
 
@@ -193,8 +187,7 @@ class ProviderArgs:
     @pulumi.getter
     def headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ProviderHeaderArgs']]]]:
         """
-        A configuration block, described below, that provides additional headers to be sent along with all requests to the
-        Consul server. This block can be specified multiple times.
+        A configuration block, described below, that provides additional headers to be sent along with all requests to the Consul server. This block can be specified multiple times.
         """
         return pulumi.get(self, "headers")
 
@@ -206,8 +199,7 @@ class ProviderArgs:
     @pulumi.getter(name="httpAuth")
     def http_auth(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        HTTP Basic Authentication credentials to be used when communicating with Consul, in the format of either `user` or
-        `user:pass`. This may also be specified using the `CONSUL_HTTP_AUTH` environment variable.
+        HTTP Basic Authentication credentials to be used when communicating with Consul, in the format of either `user` or `user:pass`. This may also be specified using the `CONSUL_HTTP_AUTH` environment variable.
         """
         return pulumi.get(self, "http_auth")
 
@@ -219,8 +211,7 @@ class ProviderArgs:
     @pulumi.getter(name="insecureHttps")
     def insecure_https(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Boolean value to disable SSL certificate verification; setting this value to true is not recommended for production use.
-        Only use this with scheme set to "https".
+        Boolean value to disable SSL certificate verification; setting this value to true is not recommended for production use. Only use this with scheme set to "https".
         """
         return pulumi.get(self, "insecure_https")
 
@@ -277,8 +268,7 @@ class ProviderArgs:
     @pulumi.getter
     def token(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ACL token to use by default when making requests to the agent. Can also be specified with `CONSUL_HTTP_TOKEN` or
-        `CONSUL_TOKEN` as an environment variable.
+        The ACL token to use by default when making requests to the agent. Can also be specified with `CONSUL_HTTP_TOKEN` or `CONSUL_TOKEN` as an environment variable.
         """
         return pulumi.get(self, "token")
 
@@ -321,23 +311,18 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[_builtins.str] address: The HTTP(S) API address of the agent to use. Defaults to "127.0.0.1:8500".
         :param pulumi.Input[Union['ProviderAuthJwtArgs', 'ProviderAuthJwtArgsDict']] auth_jwt: Authenticates to Consul using a JWT authentication method.
         :param pulumi.Input[_builtins.str] ca_file: A path to a PEM-encoded certificate authority used to verify the remote agent's certificate.
-        :param pulumi.Input[_builtins.str] ca_path: A path to a directory of PEM-encoded certificate authority files to use to check the authenticity of client and server
-               connections. Can also be specified with the `CONSUL_CAPATH` environment variable.
+        :param pulumi.Input[_builtins.str] ca_path: A path to a directory of PEM-encoded certificate authority files to use to check the authenticity of client and server connections. Can also be specified with the `CONSUL_CAPATH` environment variable.
         :param pulumi.Input[_builtins.str] ca_pem: PEM-encoded certificate authority used to verify the remote agent's certificate.
         :param pulumi.Input[_builtins.str] cert_file: A path to a PEM-encoded certificate provided to the remote agent; requires use of `key_file` or `key_pem`.
         :param pulumi.Input[_builtins.str] cert_pem: PEM-encoded certificate provided to the remote agent; requires use of `key_file` or `key_pem`.
         :param pulumi.Input[_builtins.str] datacenter: The datacenter to use. Defaults to that of the agent.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ProviderHeaderArgs', 'ProviderHeaderArgsDict']]]] headers: A configuration block, described below, that provides additional headers to be sent along with all requests to the
-               Consul server. This block can be specified multiple times.
-        :param pulumi.Input[_builtins.str] http_auth: HTTP Basic Authentication credentials to be used when communicating with Consul, in the format of either `user` or
-               `user:pass`. This may also be specified using the `CONSUL_HTTP_AUTH` environment variable.
-        :param pulumi.Input[_builtins.bool] insecure_https: Boolean value to disable SSL certificate verification; setting this value to true is not recommended for production use.
-               Only use this with scheme set to "https".
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ProviderHeaderArgs', 'ProviderHeaderArgsDict']]]] headers: A configuration block, described below, that provides additional headers to be sent along with all requests to the Consul server. This block can be specified multiple times.
+        :param pulumi.Input[_builtins.str] http_auth: HTTP Basic Authentication credentials to be used when communicating with Consul, in the format of either `user` or `user:pass`. This may also be specified using the `CONSUL_HTTP_AUTH` environment variable.
+        :param pulumi.Input[_builtins.bool] insecure_https: Boolean value to disable SSL certificate verification; setting this value to true is not recommended for production use. Only use this with scheme set to "https".
         :param pulumi.Input[_builtins.str] key_file: A path to a PEM-encoded private key, required if `cert_file` or `cert_pem` is specified.
         :param pulumi.Input[_builtins.str] key_pem: PEM-encoded private key, required if `cert_file` or `cert_pem` is specified.
         :param pulumi.Input[_builtins.str] scheme: The URL scheme of the agent to use ("http" or "https"). Defaults to "http".
-        :param pulumi.Input[_builtins.str] token: The ACL token to use by default when making requests to the agent. Can also be specified with `CONSUL_HTTP_TOKEN` or
-               `CONSUL_TOKEN` as an environment variable.
+        :param pulumi.Input[_builtins.str] token: The ACL token to use by default when making requests to the agent. Can also be specified with `CONSUL_HTTP_TOKEN` or `CONSUL_TOKEN` as an environment variable.
         """
         ...
     @overload
@@ -435,8 +420,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="caPath")
     def ca_path(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        A path to a directory of PEM-encoded certificate authority files to use to check the authenticity of client and server
-        connections. Can also be specified with the `CONSUL_CAPATH` environment variable.
+        A path to a directory of PEM-encoded certificate authority files to use to check the authenticity of client and server connections. Can also be specified with the `CONSUL_CAPATH` environment variable.
         """
         return pulumi.get(self, "ca_path")
 
@@ -476,8 +460,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="httpAuth")
     def http_auth(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        HTTP Basic Authentication credentials to be used when communicating with Consul, in the format of either `user` or
-        `user:pass`. This may also be specified using the `CONSUL_HTTP_AUTH` environment variable.
+        HTTP Basic Authentication credentials to be used when communicating with Consul, in the format of either `user` or `user:pass`. This may also be specified using the `CONSUL_HTTP_AUTH` environment variable.
         """
         return pulumi.get(self, "http_auth")
 
@@ -514,8 +497,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter
     def token(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The ACL token to use by default when making requests to the agent. Can also be specified with `CONSUL_HTTP_TOKEN` or
-        `CONSUL_TOKEN` as an environment variable.
+        The ACL token to use by default when making requests to the agent. Can also be specified with `CONSUL_HTTP_TOKEN` or `CONSUL_TOKEN` as an environment variable.
         """
         return pulumi.get(self, "token")
 

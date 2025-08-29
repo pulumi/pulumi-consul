@@ -45,8 +45,7 @@ class _ExportableConfig(types.ModuleType):
     @_builtins.property
     def ca_path(self) -> Optional[str]:
         """
-        A path to a directory of PEM-encoded certificate authority files to use to check the authenticity of client and server
-        connections. Can also be specified with the `CONSUL_CAPATH` environment variable.
+        A path to a directory of PEM-encoded certificate authority files to use to check the authenticity of client and server connections. Can also be specified with the `CONSUL_CAPATH` environment variable.
         """
         return __config__.get('caPath')
 
@@ -81,24 +80,21 @@ class _ExportableConfig(types.ModuleType):
     @_builtins.property
     def headers(self) -> Optional[str]:
         """
-        A configuration block, described below, that provides additional headers to be sent along with all requests to the
-        Consul server. This block can be specified multiple times.
+        A configuration block, described below, that provides additional headers to be sent along with all requests to the Consul server. This block can be specified multiple times.
         """
         return __config__.get('headers')
 
     @_builtins.property
     def http_auth(self) -> Optional[str]:
         """
-        HTTP Basic Authentication credentials to be used when communicating with Consul, in the format of either `user` or
-        `user:pass`. This may also be specified using the `CONSUL_HTTP_AUTH` environment variable.
+        HTTP Basic Authentication credentials to be used when communicating with Consul, in the format of either `user` or `user:pass`. This may also be specified using the `CONSUL_HTTP_AUTH` environment variable.
         """
         return __config__.get('httpAuth')
 
     @_builtins.property
     def insecure_https(self) -> Optional[bool]:
         """
-        Boolean value to disable SSL certificate verification; setting this value to true is not recommended for production use.
-        Only use this with scheme set to "https".
+        Boolean value to disable SSL certificate verification; setting this value to true is not recommended for production use. Only use this with scheme set to "https".
         """
         return __config__.get_bool('insecureHttps')
 
@@ -130,8 +126,7 @@ class _ExportableConfig(types.ModuleType):
     @_builtins.property
     def token(self) -> Optional[str]:
         """
-        The ACL token to use by default when making requests to the agent. Can also be specified with `CONSUL_HTTP_TOKEN` or
-        `CONSUL_TOKEN` as an environment variable.
+        The ACL token to use by default when making requests to the agent. Can also be specified with `CONSUL_HTTP_TOKEN` or `CONSUL_TOKEN` as an environment variable.
         """
         return __config__.get('token')
 

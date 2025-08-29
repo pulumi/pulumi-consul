@@ -30,55 +30,52 @@ export class Provider extends pulumi.ProviderResource {
     /**
      * The HTTP(S) API address of the agent to use. Defaults to "127.0.0.1:8500".
      */
-    public readonly address!: pulumi.Output<string | undefined>;
+    declare public readonly address: pulumi.Output<string | undefined>;
     /**
      * A path to a PEM-encoded certificate authority used to verify the remote agent's certificate.
      */
-    public readonly caFile!: pulumi.Output<string | undefined>;
+    declare public readonly caFile: pulumi.Output<string | undefined>;
     /**
-     * A path to a directory of PEM-encoded certificate authority files to use to check the authenticity of client and server
-     * connections. Can also be specified with the `CONSUL_CAPATH` environment variable.
+     * A path to a directory of PEM-encoded certificate authority files to use to check the authenticity of client and server connections. Can also be specified with the `CONSUL_CAPATH` environment variable.
      */
-    public readonly caPath!: pulumi.Output<string | undefined>;
+    declare public readonly caPath: pulumi.Output<string | undefined>;
     /**
      * PEM-encoded certificate authority used to verify the remote agent's certificate.
      */
-    public readonly caPem!: pulumi.Output<string | undefined>;
+    declare public readonly caPem: pulumi.Output<string | undefined>;
     /**
      * A path to a PEM-encoded certificate provided to the remote agent; requires use of `keyFile` or `keyPem`.
      */
-    public readonly certFile!: pulumi.Output<string | undefined>;
+    declare public readonly certFile: pulumi.Output<string | undefined>;
     /**
      * PEM-encoded certificate provided to the remote agent; requires use of `keyFile` or `keyPem`.
      */
-    public readonly certPem!: pulumi.Output<string | undefined>;
+    declare public readonly certPem: pulumi.Output<string | undefined>;
     /**
      * The datacenter to use. Defaults to that of the agent.
      */
-    public readonly datacenter!: pulumi.Output<string | undefined>;
+    declare public readonly datacenter: pulumi.Output<string | undefined>;
     /**
-     * HTTP Basic Authentication credentials to be used when communicating with Consul, in the format of either `user` or
-     * `user:pass`. This may also be specified using the `CONSUL_HTTP_AUTH` environment variable.
+     * HTTP Basic Authentication credentials to be used when communicating with Consul, in the format of either `user` or `user:pass`. This may also be specified using the `CONSUL_HTTP_AUTH` environment variable.
      */
-    public readonly httpAuth!: pulumi.Output<string | undefined>;
+    declare public readonly httpAuth: pulumi.Output<string | undefined>;
     /**
      * A path to a PEM-encoded private key, required if `certFile` or `certPem` is specified.
      */
-    public readonly keyFile!: pulumi.Output<string | undefined>;
+    declare public readonly keyFile: pulumi.Output<string | undefined>;
     /**
      * PEM-encoded private key, required if `certFile` or `certPem` is specified.
      */
-    public readonly keyPem!: pulumi.Output<string | undefined>;
-    public readonly namespace!: pulumi.Output<string | undefined>;
+    declare public readonly keyPem: pulumi.Output<string | undefined>;
+    declare public readonly namespace: pulumi.Output<string | undefined>;
     /**
      * The URL scheme of the agent to use ("http" or "https"). Defaults to "http".
      */
-    public readonly scheme!: pulumi.Output<string | undefined>;
+    declare public readonly scheme: pulumi.Output<string | undefined>;
     /**
-     * The ACL token to use by default when making requests to the agent. Can also be specified with `CONSUL_HTTP_TOKEN` or
-     * `CONSUL_TOKEN` as an environment variable.
+     * The ACL token to use by default when making requests to the agent. Can also be specified with `CONSUL_HTTP_TOKEN` or `CONSUL_TOKEN` as an environment variable.
      */
-    public readonly token!: pulumi.Output<string | undefined>;
+    declare public readonly token: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -91,21 +88,21 @@ export class Provider extends pulumi.ProviderResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            resourceInputs["address"] = args ? args.address : undefined;
-            resourceInputs["authJwt"] = pulumi.output(args ? args.authJwt : undefined).apply(JSON.stringify);
-            resourceInputs["caFile"] = args ? args.caFile : undefined;
-            resourceInputs["caPath"] = args ? args.caPath : undefined;
-            resourceInputs["caPem"] = args ? args.caPem : undefined;
-            resourceInputs["certFile"] = args ? args.certFile : undefined;
-            resourceInputs["certPem"] = args ? args.certPem : undefined;
-            resourceInputs["datacenter"] = args ? args.datacenter : undefined;
+            resourceInputs["address"] = args?.address;
+            resourceInputs["authJwt"] = pulumi.output(args?.authJwt).apply(JSON.stringify);
+            resourceInputs["caFile"] = args?.caFile;
+            resourceInputs["caPath"] = args?.caPath;
+            resourceInputs["caPem"] = args?.caPem;
+            resourceInputs["certFile"] = args?.certFile;
+            resourceInputs["certPem"] = args?.certPem;
+            resourceInputs["datacenter"] = args?.datacenter;
             resourceInputs["headers"] = pulumi.output(args?.headers ? pulumi.secret(args.headers) : undefined).apply(JSON.stringify);
-            resourceInputs["httpAuth"] = args ? args.httpAuth : undefined;
-            resourceInputs["insecureHttps"] = pulumi.output(args ? args.insecureHttps : undefined).apply(JSON.stringify);
-            resourceInputs["keyFile"] = args ? args.keyFile : undefined;
-            resourceInputs["keyPem"] = args ? args.keyPem : undefined;
-            resourceInputs["namespace"] = args ? args.namespace : undefined;
-            resourceInputs["scheme"] = args ? args.scheme : undefined;
+            resourceInputs["httpAuth"] = args?.httpAuth;
+            resourceInputs["insecureHttps"] = pulumi.output(args?.insecureHttps).apply(JSON.stringify);
+            resourceInputs["keyFile"] = args?.keyFile;
+            resourceInputs["keyPem"] = args?.keyPem;
+            resourceInputs["namespace"] = args?.namespace;
+            resourceInputs["scheme"] = args?.scheme;
             resourceInputs["token"] = args?.token ? pulumi.secret(args.token) : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -141,8 +138,7 @@ export interface ProviderArgs {
      */
     caFile?: pulumi.Input<string>;
     /**
-     * A path to a directory of PEM-encoded certificate authority files to use to check the authenticity of client and server
-     * connections. Can also be specified with the `CONSUL_CAPATH` environment variable.
+     * A path to a directory of PEM-encoded certificate authority files to use to check the authenticity of client and server connections. Can also be specified with the `CONSUL_CAPATH` environment variable.
      */
     caPath?: pulumi.Input<string>;
     /**
@@ -162,18 +158,15 @@ export interface ProviderArgs {
      */
     datacenter?: pulumi.Input<string>;
     /**
-     * A configuration block, described below, that provides additional headers to be sent along with all requests to the
-     * Consul server. This block can be specified multiple times.
+     * A configuration block, described below, that provides additional headers to be sent along with all requests to the Consul server. This block can be specified multiple times.
      */
     headers?: pulumi.Input<pulumi.Input<inputs.ProviderHeader>[]>;
     /**
-     * HTTP Basic Authentication credentials to be used when communicating with Consul, in the format of either `user` or
-     * `user:pass`. This may also be specified using the `CONSUL_HTTP_AUTH` environment variable.
+     * HTTP Basic Authentication credentials to be used when communicating with Consul, in the format of either `user` or `user:pass`. This may also be specified using the `CONSUL_HTTP_AUTH` environment variable.
      */
     httpAuth?: pulumi.Input<string>;
     /**
-     * Boolean value to disable SSL certificate verification; setting this value to true is not recommended for production use.
-     * Only use this with scheme set to "https".
+     * Boolean value to disable SSL certificate verification; setting this value to true is not recommended for production use. Only use this with scheme set to "https".
      */
     insecureHttps?: pulumi.Input<boolean>;
     /**
@@ -190,8 +183,7 @@ export interface ProviderArgs {
      */
     scheme?: pulumi.Input<string>;
     /**
-     * The ACL token to use by default when making requests to the agent. Can also be specified with `CONSUL_HTTP_TOKEN` or
-     * `CONSUL_TOKEN` as an environment variable.
+     * The ACL token to use by default when making requests to the agent. Can also be specified with `CONSUL_HTTP_TOKEN` or `CONSUL_TOKEN` as an environment variable.
      */
     token?: pulumi.Input<string>;
 }
