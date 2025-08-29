@@ -54,70 +54,70 @@
         "variables": {
             "address": {
                 "type": "string",
-                "description": "The HTTP(S) API address of the agent to use. Defaults to \"127.0.0.1:8500\".\n"
+                "description": "The HTTP(S) API address of the agent to use. Defaults to \"127.0.0.1:8500\"."
             },
             "authJwt": {
                 "$ref": "#/types/consul:config/authJwt:authJwt",
-                "description": "Authenticates to Consul using a JWT authentication method.\n"
+                "description": "Authenticates to Consul using a JWT authentication method."
             },
             "caFile": {
                 "type": "string",
-                "description": "A path to a PEM-encoded certificate authority used to verify the remote agent's certificate.\n"
+                "description": "A path to a PEM-encoded certificate authority used to verify the remote agent's certificate."
             },
             "caPath": {
                 "type": "string",
-                "description": "A path to a directory of PEM-encoded certificate authority files to use to check the authenticity of client and server\nconnections. Can also be specified with the `CONSUL_CAPATH` environment variable.\n"
+                "description": "A path to a directory of PEM-encoded certificate authority files to use to check the authenticity of client and server connections. Can also be specified with the `CONSUL_CAPATH` environment variable."
             },
             "caPem": {
                 "type": "string",
-                "description": "PEM-encoded certificate authority used to verify the remote agent's certificate.\n"
+                "description": "PEM-encoded certificate authority used to verify the remote agent's certificate."
             },
             "certFile": {
                 "type": "string",
-                "description": "A path to a PEM-encoded certificate provided to the remote agent; requires use of `key_file` or `key_pem`.\n"
+                "description": "A path to a PEM-encoded certificate provided to the remote agent; requires use of `key_file` or `key_pem`."
             },
             "certPem": {
                 "type": "string",
-                "description": "PEM-encoded certificate provided to the remote agent; requires use of `key_file` or `key_pem`.\n"
+                "description": "PEM-encoded certificate provided to the remote agent; requires use of `key_file` or `key_pem`."
             },
             "datacenter": {
                 "type": "string",
-                "description": "The datacenter to use. Defaults to that of the agent.\n"
+                "description": "The datacenter to use. Defaults to that of the agent."
             },
             "headers": {
                 "type": "array",
                 "items": {
                     "$ref": "#/types/consul:config/headers:headers"
                 },
-                "description": "A configuration block, described below, that provides additional headers to be sent along with all requests to the\nConsul server. This block can be specified multiple times.\n",
+                "description": "A configuration block, described below, that provides additional headers to be sent along with all requests to the Consul server. This block can be specified multiple times.",
                 "secret": true
             },
             "httpAuth": {
                 "type": "string",
-                "description": "HTTP Basic Authentication credentials to be used when communicating with Consul, in the format of either `user` or\n`user:pass`. This may also be specified using the `CONSUL_HTTP_AUTH` environment variable.\n"
+                "description": "HTTP Basic Authentication credentials to be used when communicating with Consul, in the format of either `user` or `user:pass`. This may also be specified using the `CONSUL_HTTP_AUTH` environment variable."
             },
             "insecureHttps": {
                 "type": "boolean",
-                "description": "Boolean value to disable SSL certificate verification; setting this value to true is not recommended for production use.\nOnly use this with scheme set to \"https\".\n"
+                "description": "Boolean value to disable SSL certificate verification; setting this value to true is not recommended for production use. Only use this with scheme set to \"https\"."
             },
             "keyFile": {
                 "type": "string",
-                "description": "A path to a PEM-encoded private key, required if `cert_file` or `cert_pem` is specified.\n"
+                "description": "A path to a PEM-encoded private key, required if `cert_file` or `cert_pem` is specified."
             },
             "keyPem": {
                 "type": "string",
-                "description": "PEM-encoded private key, required if `cert_file` or `cert_pem` is specified.\n"
+                "description": "PEM-encoded private key, required if `cert_file` or `cert_pem` is specified."
             },
             "namespace": {
                 "type": "string"
             },
             "scheme": {
                 "type": "string",
-                "description": "The URL scheme of the agent to use (\"http\" or \"https\"). Defaults to \"http\".\n"
+                "description": "The URL scheme of the agent to use (\"http\" or \"https\"). Defaults to \"http\"."
             },
             "token": {
                 "type": "string",
-                "description": "The ACL token to use by default when making requests to the agent. Can also be specified with `CONSUL_HTTP_TOKEN` or\n`CONSUL_TOKEN` as an environment variable.\n",
+                "description": "The ACL token to use by default when making requests to the agent. Can also be specified with `CONSUL_HTTP_TOKEN` or `CONSUL_TOKEN` as an environment variable.",
                 "secret": true
             }
         }
@@ -2893,140 +2893,140 @@
         "properties": {
             "address": {
                 "type": "string",
-                "description": "The HTTP(S) API address of the agent to use. Defaults to \"127.0.0.1:8500\".\n"
+                "description": "The HTTP(S) API address of the agent to use. Defaults to \"127.0.0.1:8500\"."
             },
             "authJwt": {
                 "$ref": "#/types/consul:index/ProviderAuthJwt:ProviderAuthJwt",
-                "description": "Authenticates to Consul using a JWT authentication method.\n"
+                "description": "Authenticates to Consul using a JWT authentication method."
             },
             "caFile": {
                 "type": "string",
-                "description": "A path to a PEM-encoded certificate authority used to verify the remote agent's certificate.\n"
+                "description": "A path to a PEM-encoded certificate authority used to verify the remote agent's certificate."
             },
             "caPath": {
                 "type": "string",
-                "description": "A path to a directory of PEM-encoded certificate authority files to use to check the authenticity of client and server\nconnections. Can also be specified with the `CONSUL_CAPATH` environment variable.\n"
+                "description": "A path to a directory of PEM-encoded certificate authority files to use to check the authenticity of client and server connections. Can also be specified with the `CONSUL_CAPATH` environment variable."
             },
             "caPem": {
                 "type": "string",
-                "description": "PEM-encoded certificate authority used to verify the remote agent's certificate.\n"
+                "description": "PEM-encoded certificate authority used to verify the remote agent's certificate."
             },
             "certFile": {
                 "type": "string",
-                "description": "A path to a PEM-encoded certificate provided to the remote agent; requires use of `key_file` or `key_pem`.\n"
+                "description": "A path to a PEM-encoded certificate provided to the remote agent; requires use of `key_file` or `key_pem`."
             },
             "certPem": {
                 "type": "string",
-                "description": "PEM-encoded certificate provided to the remote agent; requires use of `key_file` or `key_pem`.\n"
+                "description": "PEM-encoded certificate provided to the remote agent; requires use of `key_file` or `key_pem`."
             },
             "datacenter": {
                 "type": "string",
-                "description": "The datacenter to use. Defaults to that of the agent.\n"
+                "description": "The datacenter to use. Defaults to that of the agent."
             },
             "headers": {
                 "type": "array",
                 "items": {
                     "$ref": "#/types/consul:index/ProviderHeader:ProviderHeader"
                 },
-                "description": "A configuration block, described below, that provides additional headers to be sent along with all requests to the\nConsul server. This block can be specified multiple times.\n",
+                "description": "A configuration block, described below, that provides additional headers to be sent along with all requests to the Consul server. This block can be specified multiple times.",
                 "secret": true
             },
             "httpAuth": {
                 "type": "string",
-                "description": "HTTP Basic Authentication credentials to be used when communicating with Consul, in the format of either `user` or\n`user:pass`. This may also be specified using the `CONSUL_HTTP_AUTH` environment variable.\n"
+                "description": "HTTP Basic Authentication credentials to be used when communicating with Consul, in the format of either `user` or `user:pass`. This may also be specified using the `CONSUL_HTTP_AUTH` environment variable."
             },
             "insecureHttps": {
                 "type": "boolean",
-                "description": "Boolean value to disable SSL certificate verification; setting this value to true is not recommended for production use.\nOnly use this with scheme set to \"https\".\n"
+                "description": "Boolean value to disable SSL certificate verification; setting this value to true is not recommended for production use. Only use this with scheme set to \"https\"."
             },
             "keyFile": {
                 "type": "string",
-                "description": "A path to a PEM-encoded private key, required if `cert_file` or `cert_pem` is specified.\n"
+                "description": "A path to a PEM-encoded private key, required if `cert_file` or `cert_pem` is specified."
             },
             "keyPem": {
                 "type": "string",
-                "description": "PEM-encoded private key, required if `cert_file` or `cert_pem` is specified.\n"
+                "description": "PEM-encoded private key, required if `cert_file` or `cert_pem` is specified."
             },
             "namespace": {
                 "type": "string"
             },
             "scheme": {
                 "type": "string",
-                "description": "The URL scheme of the agent to use (\"http\" or \"https\"). Defaults to \"http\".\n"
+                "description": "The URL scheme of the agent to use (\"http\" or \"https\"). Defaults to \"http\"."
             },
             "token": {
                 "type": "string",
-                "description": "The ACL token to use by default when making requests to the agent. Can also be specified with `CONSUL_HTTP_TOKEN` or\n`CONSUL_TOKEN` as an environment variable.\n",
+                "description": "The ACL token to use by default when making requests to the agent. Can also be specified with `CONSUL_HTTP_TOKEN` or `CONSUL_TOKEN` as an environment variable.",
                 "secret": true
             }
         },
         "inputProperties": {
             "address": {
                 "type": "string",
-                "description": "The HTTP(S) API address of the agent to use. Defaults to \"127.0.0.1:8500\".\n"
+                "description": "The HTTP(S) API address of the agent to use. Defaults to \"127.0.0.1:8500\"."
             },
             "authJwt": {
                 "$ref": "#/types/consul:index/ProviderAuthJwt:ProviderAuthJwt",
-                "description": "Authenticates to Consul using a JWT authentication method.\n"
+                "description": "Authenticates to Consul using a JWT authentication method."
             },
             "caFile": {
                 "type": "string",
-                "description": "A path to a PEM-encoded certificate authority used to verify the remote agent's certificate.\n"
+                "description": "A path to a PEM-encoded certificate authority used to verify the remote agent's certificate."
             },
             "caPath": {
                 "type": "string",
-                "description": "A path to a directory of PEM-encoded certificate authority files to use to check the authenticity of client and server\nconnections. Can also be specified with the `CONSUL_CAPATH` environment variable.\n"
+                "description": "A path to a directory of PEM-encoded certificate authority files to use to check the authenticity of client and server connections. Can also be specified with the `CONSUL_CAPATH` environment variable."
             },
             "caPem": {
                 "type": "string",
-                "description": "PEM-encoded certificate authority used to verify the remote agent's certificate.\n"
+                "description": "PEM-encoded certificate authority used to verify the remote agent's certificate."
             },
             "certFile": {
                 "type": "string",
-                "description": "A path to a PEM-encoded certificate provided to the remote agent; requires use of `key_file` or `key_pem`.\n"
+                "description": "A path to a PEM-encoded certificate provided to the remote agent; requires use of `key_file` or `key_pem`."
             },
             "certPem": {
                 "type": "string",
-                "description": "PEM-encoded certificate provided to the remote agent; requires use of `key_file` or `key_pem`.\n"
+                "description": "PEM-encoded certificate provided to the remote agent; requires use of `key_file` or `key_pem`."
             },
             "datacenter": {
                 "type": "string",
-                "description": "The datacenter to use. Defaults to that of the agent.\n"
+                "description": "The datacenter to use. Defaults to that of the agent."
             },
             "headers": {
                 "type": "array",
                 "items": {
                     "$ref": "#/types/consul:index/ProviderHeader:ProviderHeader"
                 },
-                "description": "A configuration block, described below, that provides additional headers to be sent along with all requests to the\nConsul server. This block can be specified multiple times.\n",
+                "description": "A configuration block, described below, that provides additional headers to be sent along with all requests to the Consul server. This block can be specified multiple times.",
                 "secret": true
             },
             "httpAuth": {
                 "type": "string",
-                "description": "HTTP Basic Authentication credentials to be used when communicating with Consul, in the format of either `user` or\n`user:pass`. This may also be specified using the `CONSUL_HTTP_AUTH` environment variable.\n"
+                "description": "HTTP Basic Authentication credentials to be used when communicating with Consul, in the format of either `user` or `user:pass`. This may also be specified using the `CONSUL_HTTP_AUTH` environment variable."
             },
             "insecureHttps": {
                 "type": "boolean",
-                "description": "Boolean value to disable SSL certificate verification; setting this value to true is not recommended for production use.\nOnly use this with scheme set to \"https\".\n"
+                "description": "Boolean value to disable SSL certificate verification; setting this value to true is not recommended for production use. Only use this with scheme set to \"https\"."
             },
             "keyFile": {
                 "type": "string",
-                "description": "A path to a PEM-encoded private key, required if `cert_file` or `cert_pem` is specified.\n"
+                "description": "A path to a PEM-encoded private key, required if `cert_file` or `cert_pem` is specified."
             },
             "keyPem": {
                 "type": "string",
-                "description": "PEM-encoded private key, required if `cert_file` or `cert_pem` is specified.\n"
+                "description": "PEM-encoded private key, required if `cert_file` or `cert_pem` is specified."
             },
             "namespace": {
                 "type": "string"
             },
             "scheme": {
                 "type": "string",
-                "description": "The URL scheme of the agent to use (\"http\" or \"https\"). Defaults to \"http\".\n"
+                "description": "The URL scheme of the agent to use (\"http\" or \"https\"). Defaults to \"http\"."
             },
             "token": {
                 "type": "string",
-                "description": "The ACL token to use by default when making requests to the agent. Can also be specified with `CONSUL_HTTP_TOKEN` or\n`CONSUL_TOKEN` as an environment variable.\n",
+                "description": "The ACL token to use by default when making requests to the agent. Can also be specified with `CONSUL_HTTP_TOKEN` or `CONSUL_TOKEN` as an environment variable.",
                 "secret": true
             }
         },
@@ -3906,7 +3906,7 @@
             "properties": {
                 "role": {
                     "type": "string",
-                    "description": "The role name.\n"
+                    "description": "The role name."
                 },
                 "tokenId": {
                     "type": "string",
@@ -3920,7 +3920,7 @@
             "inputProperties": {
                 "role": {
                     "type": "string",
-                    "description": "The role name.\n",
+                    "description": "The role name.",
                     "willReplaceOnChanges": true
                 },
                 "tokenId": {
@@ -3938,7 +3938,7 @@
                 "properties": {
                     "role": {
                         "type": "string",
-                        "description": "The role name.\n",
+                        "description": "The role name.",
                         "willReplaceOnChanges": true
                     },
                     "tokenId": {
@@ -7227,7 +7227,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "maxTokenTtl": {
@@ -7312,7 +7312,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "name": {
@@ -7370,7 +7370,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "name": {
@@ -7465,7 +7465,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "local": {
@@ -7568,7 +7568,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "namespace": {
@@ -7605,7 +7605,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "nodeId": {
@@ -8017,7 +8017,7 @@
                         "type": "boolean"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "servers": {
@@ -8061,7 +8061,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "nodeIds": {
@@ -8147,7 +8147,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "name": {
@@ -8204,7 +8204,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "names": {
@@ -8282,7 +8282,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "kind": {
@@ -8370,7 +8370,7 @@
                 "description": "A collection of values returned by getConfigEntryV2ExportedServices.\n",
                 "properties": {
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "kind": {
@@ -8439,7 +8439,7 @@
                         "type": "array"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     }
                 },
@@ -8498,7 +8498,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "namespace": {
@@ -8595,7 +8595,7 @@
                         "type": "boolean"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "keys": {
@@ -8668,7 +8668,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "members": {
@@ -8723,7 +8723,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "segments": {
@@ -8770,7 +8770,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "nodeIds": {
@@ -8835,7 +8835,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "meta": {
@@ -8901,7 +8901,7 @@
                 "description": "A collection of values returned by getPeerings.\n",
                 "properties": {
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "partition": {
@@ -8965,7 +8965,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "name": {
@@ -9054,7 +9054,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "name": {
@@ -9122,7 +9122,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "names": {
