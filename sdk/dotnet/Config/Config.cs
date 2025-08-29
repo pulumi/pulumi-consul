@@ -64,8 +64,7 @@ namespace Pulumi.Consul
 
         private static readonly __Value<string?> _caPath = new __Value<string?>(() => __config.Get("caPath"));
         /// <summary>
-        /// A path to a directory of PEM-encoded certificate authority files to use to check the authenticity of client and server
-        /// connections. Can also be specified with the `CONSUL_CAPATH` environment variable.
+        /// A path to a directory of PEM-encoded certificate authority files to use to check the authenticity of client and server connections. Can also be specified with the `CONSUL_CAPATH` environment variable.
         /// </summary>
         public static string? CaPath
         {
@@ -115,8 +114,7 @@ namespace Pulumi.Consul
 
         private static readonly __Value<ImmutableArray<Pulumi.Consul.Config.Types.Headers>> _headers = new __Value<ImmutableArray<Pulumi.Consul.Config.Types.Headers>>(() => __config.GetObject<ImmutableArray<Pulumi.Consul.Config.Types.Headers>>("headers"));
         /// <summary>
-        /// A configuration block, described below, that provides additional headers to be sent along with all requests to the
-        /// Consul server. This block can be specified multiple times.
+        /// A configuration block, described below, that provides additional headers to be sent along with all requests to the Consul server. This block can be specified multiple times.
         /// </summary>
         public static ImmutableArray<Pulumi.Consul.Config.Types.Headers> Headers
         {
@@ -126,8 +124,7 @@ namespace Pulumi.Consul
 
         private static readonly __Value<string?> _httpAuth = new __Value<string?>(() => __config.Get("httpAuth"));
         /// <summary>
-        /// HTTP Basic Authentication credentials to be used when communicating with Consul, in the format of either `user` or
-        /// `user:pass`. This may also be specified using the `CONSUL_HTTP_AUTH` environment variable.
+        /// HTTP Basic Authentication credentials to be used when communicating with Consul, in the format of either `user` or `user:pass`. This may also be specified using the `CONSUL_HTTP_AUTH` environment variable.
         /// </summary>
         public static string? HttpAuth
         {
@@ -137,8 +134,7 @@ namespace Pulumi.Consul
 
         private static readonly __Value<bool?> _insecureHttps = new __Value<bool?>(() => __config.GetBoolean("insecureHttps"));
         /// <summary>
-        /// Boolean value to disable SSL certificate verification; setting this value to true is not recommended for production use.
-        /// Only use this with scheme set to "https".
+        /// Boolean value to disable SSL certificate verification; setting this value to true is not recommended for production use. Only use this with scheme set to "https".
         /// </summary>
         public static bool? InsecureHttps
         {
@@ -185,8 +181,7 @@ namespace Pulumi.Consul
 
         private static readonly __Value<string?> _token = new __Value<string?>(() => __config.Get("token"));
         /// <summary>
-        /// The ACL token to use by default when making requests to the agent. Can also be specified with `CONSUL_HTTP_TOKEN` or
-        /// `CONSUL_TOKEN` as an environment variable.
+        /// The ACL token to use by default when making requests to the agent. Can also be specified with `CONSUL_HTTP_TOKEN` or `CONSUL_TOKEN` as an environment variable.
         /// </summary>
         public static string? Token
         {

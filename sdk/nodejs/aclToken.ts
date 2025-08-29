@@ -78,47 +78,47 @@ export class AclToken extends pulumi.CustomResource {
     /**
      * The uuid of the token. If omitted, Consul will generate a random uuid.
      */
-    public readonly accessorId!: pulumi.Output<string>;
+    declare public readonly accessorId: pulumi.Output<string>;
     /**
      * The description of the token.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * If set this represents the point after which a token should be considered revoked and is eligible for destruction.
      */
-    public readonly expirationTime!: pulumi.Output<string | undefined>;
+    declare public readonly expirationTime: pulumi.Output<string | undefined>;
     /**
      * The flag to set the token local to the current datacenter.
      */
-    public readonly local!: pulumi.Output<boolean | undefined>;
+    declare public readonly local: pulumi.Output<boolean | undefined>;
     /**
      * The namespace to create the token within.
      */
-    public readonly namespace!: pulumi.Output<string | undefined>;
+    declare public readonly namespace: pulumi.Output<string | undefined>;
     /**
      * The list of node identities that should be applied to the token.
      */
-    public readonly nodeIdentities!: pulumi.Output<outputs.AclTokenNodeIdentity[] | undefined>;
+    declare public readonly nodeIdentities: pulumi.Output<outputs.AclTokenNodeIdentity[] | undefined>;
     /**
      * The partition the ACL token is associated with.
      */
-    public readonly partition!: pulumi.Output<string | undefined>;
+    declare public readonly partition: pulumi.Output<string | undefined>;
     /**
      * The list of policies attached to the token.
      */
-    public readonly policies!: pulumi.Output<string[] | undefined>;
+    declare public readonly policies: pulumi.Output<string[] | undefined>;
     /**
      * The list of roles attached to the token.
      */
-    public readonly roles!: pulumi.Output<string[] | undefined>;
+    declare public readonly roles: pulumi.Output<string[] | undefined>;
     /**
      * The list of service identities that should be applied to the token.
      */
-    public readonly serviceIdentities!: pulumi.Output<outputs.AclTokenServiceIdentity[] | undefined>;
+    declare public readonly serviceIdentities: pulumi.Output<outputs.AclTokenServiceIdentity[] | undefined>;
     /**
      * The list of templated policies that should be applied to the token.
      */
-    public readonly templatedPolicies!: pulumi.Output<outputs.AclTokenTemplatedPolicy[] | undefined>;
+    declare public readonly templatedPolicies: pulumi.Output<outputs.AclTokenTemplatedPolicy[] | undefined>;
 
     /**
      * Create a AclToken resource with the given unique name, arguments, and options.
@@ -133,30 +133,30 @@ export class AclToken extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AclTokenState | undefined;
-            resourceInputs["accessorId"] = state ? state.accessorId : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["expirationTime"] = state ? state.expirationTime : undefined;
-            resourceInputs["local"] = state ? state.local : undefined;
-            resourceInputs["namespace"] = state ? state.namespace : undefined;
-            resourceInputs["nodeIdentities"] = state ? state.nodeIdentities : undefined;
-            resourceInputs["partition"] = state ? state.partition : undefined;
-            resourceInputs["policies"] = state ? state.policies : undefined;
-            resourceInputs["roles"] = state ? state.roles : undefined;
-            resourceInputs["serviceIdentities"] = state ? state.serviceIdentities : undefined;
-            resourceInputs["templatedPolicies"] = state ? state.templatedPolicies : undefined;
+            resourceInputs["accessorId"] = state?.accessorId;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["expirationTime"] = state?.expirationTime;
+            resourceInputs["local"] = state?.local;
+            resourceInputs["namespace"] = state?.namespace;
+            resourceInputs["nodeIdentities"] = state?.nodeIdentities;
+            resourceInputs["partition"] = state?.partition;
+            resourceInputs["policies"] = state?.policies;
+            resourceInputs["roles"] = state?.roles;
+            resourceInputs["serviceIdentities"] = state?.serviceIdentities;
+            resourceInputs["templatedPolicies"] = state?.templatedPolicies;
         } else {
             const args = argsOrState as AclTokenArgs | undefined;
-            resourceInputs["accessorId"] = args ? args.accessorId : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["expirationTime"] = args ? args.expirationTime : undefined;
-            resourceInputs["local"] = args ? args.local : undefined;
-            resourceInputs["namespace"] = args ? args.namespace : undefined;
-            resourceInputs["nodeIdentities"] = args ? args.nodeIdentities : undefined;
-            resourceInputs["partition"] = args ? args.partition : undefined;
-            resourceInputs["policies"] = args ? args.policies : undefined;
-            resourceInputs["roles"] = args ? args.roles : undefined;
-            resourceInputs["serviceIdentities"] = args ? args.serviceIdentities : undefined;
-            resourceInputs["templatedPolicies"] = args ? args.templatedPolicies : undefined;
+            resourceInputs["accessorId"] = args?.accessorId;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["expirationTime"] = args?.expirationTime;
+            resourceInputs["local"] = args?.local;
+            resourceInputs["namespace"] = args?.namespace;
+            resourceInputs["nodeIdentities"] = args?.nodeIdentities;
+            resourceInputs["partition"] = args?.partition;
+            resourceInputs["policies"] = args?.policies;
+            resourceInputs["roles"] = args?.roles;
+            resourceInputs["serviceIdentities"] = args?.serviceIdentities;
+            resourceInputs["templatedPolicies"] = args?.templatedPolicies;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AclToken.__pulumiType, name, resourceInputs, opts);

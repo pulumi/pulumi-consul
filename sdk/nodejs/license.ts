@@ -54,52 +54,52 @@ export class License extends pulumi.CustomResource {
     /**
      * The ID of the customer the license is attached to.
      */
-    public /*out*/ readonly customerId!: pulumi.Output<string>;
+    declare public /*out*/ readonly customerId: pulumi.Output<string>;
     /**
      * The datacenter to use. This overrides the
      * agent's default datacenter and the datacenter in the provider setup.
      */
-    public readonly datacenter!: pulumi.Output<string | undefined>;
+    declare public readonly datacenter: pulumi.Output<string | undefined>;
     /**
      * The expiration time of the license.
      */
-    public /*out*/ readonly expirationTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly expirationTime: pulumi.Output<string>;
     /**
      * The features for which the license is valid.
      */
-    public /*out*/ readonly features!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly features: pulumi.Output<string[]>;
     /**
      * The ID of the current installation.
      */
-    public /*out*/ readonly installationId!: pulumi.Output<string>;
+    declare public /*out*/ readonly installationId: pulumi.Output<string>;
     /**
      * The date the license was issued.
      */
-    public /*out*/ readonly issueTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly issueTime: pulumi.Output<string>;
     /**
      * The Consul license to use.
      */
-    public readonly license!: pulumi.Output<string>;
+    declare public readonly license: pulumi.Output<string>;
     /**
      * The ID of the license used.
      */
-    public /*out*/ readonly licenseId!: pulumi.Output<string>;
+    declare public /*out*/ readonly licenseId: pulumi.Output<string>;
     /**
      * The product for which the license is valid.
      */
-    public /*out*/ readonly product!: pulumi.Output<string>;
+    declare public /*out*/ readonly product: pulumi.Output<string>;
     /**
      * The start time of the license.
      */
-    public /*out*/ readonly startTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly startTime: pulumi.Output<string>;
     /**
      * Whether the license is valid.
      */
-    public /*out*/ readonly valid!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly valid: pulumi.Output<boolean>;
     /**
      * A list of warning messages regarding the license validity.
      */
-    public /*out*/ readonly warnings!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly warnings: pulumi.Output<string[]>;
 
     /**
      * Create a License resource with the given unique name, arguments, and options.
@@ -114,24 +114,24 @@ export class License extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LicenseState | undefined;
-            resourceInputs["customerId"] = state ? state.customerId : undefined;
-            resourceInputs["datacenter"] = state ? state.datacenter : undefined;
-            resourceInputs["expirationTime"] = state ? state.expirationTime : undefined;
-            resourceInputs["features"] = state ? state.features : undefined;
-            resourceInputs["installationId"] = state ? state.installationId : undefined;
-            resourceInputs["issueTime"] = state ? state.issueTime : undefined;
-            resourceInputs["license"] = state ? state.license : undefined;
-            resourceInputs["licenseId"] = state ? state.licenseId : undefined;
-            resourceInputs["product"] = state ? state.product : undefined;
-            resourceInputs["startTime"] = state ? state.startTime : undefined;
-            resourceInputs["valid"] = state ? state.valid : undefined;
-            resourceInputs["warnings"] = state ? state.warnings : undefined;
+            resourceInputs["customerId"] = state?.customerId;
+            resourceInputs["datacenter"] = state?.datacenter;
+            resourceInputs["expirationTime"] = state?.expirationTime;
+            resourceInputs["features"] = state?.features;
+            resourceInputs["installationId"] = state?.installationId;
+            resourceInputs["issueTime"] = state?.issueTime;
+            resourceInputs["license"] = state?.license;
+            resourceInputs["licenseId"] = state?.licenseId;
+            resourceInputs["product"] = state?.product;
+            resourceInputs["startTime"] = state?.startTime;
+            resourceInputs["valid"] = state?.valid;
+            resourceInputs["warnings"] = state?.warnings;
         } else {
             const args = argsOrState as LicenseArgs | undefined;
-            if ((!args || args.license === undefined) && !opts.urn) {
+            if (args?.license === undefined && !opts.urn) {
                 throw new Error("Missing required property 'license'");
             }
-            resourceInputs["datacenter"] = args ? args.datacenter : undefined;
+            resourceInputs["datacenter"] = args?.datacenter;
             resourceInputs["license"] = args?.license ? pulumi.secret(args.license) : undefined;
             resourceInputs["customerId"] = undefined /*out*/;
             resourceInputs["expirationTime"] = undefined /*out*/;

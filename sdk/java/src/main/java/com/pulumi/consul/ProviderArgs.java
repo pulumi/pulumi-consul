@@ -65,16 +65,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A path to a directory of PEM-encoded certificate authority files to use to check the authenticity of client and server
-     * connections. Can also be specified with the `CONSUL_CAPATH` environment variable.
+     * A path to a directory of PEM-encoded certificate authority files to use to check the authenticity of client and server connections. Can also be specified with the `CONSUL_CAPATH` environment variable.
      * 
      */
     @Import(name="caPath")
     private @Nullable Output<String> caPath;
 
     /**
-     * @return A path to a directory of PEM-encoded certificate authority files to use to check the authenticity of client and server
-     * connections. Can also be specified with the `CONSUL_CAPATH` environment variable.
+     * @return A path to a directory of PEM-encoded certificate authority files to use to check the authenticity of client and server connections. Can also be specified with the `CONSUL_CAPATH` environment variable.
      * 
      */
     public Optional<Output<String>> caPath() {
@@ -142,16 +140,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A configuration block, described below, that provides additional headers to be sent along with all requests to the
-     * Consul server. This block can be specified multiple times.
+     * A configuration block, described below, that provides additional headers to be sent along with all requests to the Consul server. This block can be specified multiple times.
      * 
      */
     @Import(name="headers", json=true)
     private @Nullable Output<List<ProviderHeaderArgs>> headers;
 
     /**
-     * @return A configuration block, described below, that provides additional headers to be sent along with all requests to the
-     * Consul server. This block can be specified multiple times.
+     * @return A configuration block, described below, that provides additional headers to be sent along with all requests to the Consul server. This block can be specified multiple times.
      * 
      */
     public Optional<Output<List<ProviderHeaderArgs>>> headers() {
@@ -159,16 +155,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * HTTP Basic Authentication credentials to be used when communicating with Consul, in the format of either `user` or
-     * `user:pass`. This may also be specified using the `CONSUL_HTTP_AUTH` environment variable.
+     * HTTP Basic Authentication credentials to be used when communicating with Consul, in the format of either `user` or `user:pass`. This may also be specified using the `CONSUL_HTTP_AUTH` environment variable.
      * 
      */
     @Import(name="httpAuth")
     private @Nullable Output<String> httpAuth;
 
     /**
-     * @return HTTP Basic Authentication credentials to be used when communicating with Consul, in the format of either `user` or
-     * `user:pass`. This may also be specified using the `CONSUL_HTTP_AUTH` environment variable.
+     * @return HTTP Basic Authentication credentials to be used when communicating with Consul, in the format of either `user` or `user:pass`. This may also be specified using the `CONSUL_HTTP_AUTH` environment variable.
      * 
      */
     public Optional<Output<String>> httpAuth() {
@@ -176,16 +170,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Boolean value to disable SSL certificate verification; setting this value to true is not recommended for production use.
-     * Only use this with scheme set to &#34;https&#34;.
+     * Boolean value to disable SSL certificate verification; setting this value to true is not recommended for production use. Only use this with scheme set to &#34;https&#34;.
      * 
      */
     @Import(name="insecureHttps", json=true)
     private @Nullable Output<Boolean> insecureHttps;
 
     /**
-     * @return Boolean value to disable SSL certificate verification; setting this value to true is not recommended for production use.
-     * Only use this with scheme set to &#34;https&#34;.
+     * @return Boolean value to disable SSL certificate verification; setting this value to true is not recommended for production use. Only use this with scheme set to &#34;https&#34;.
      * 
      */
     public Optional<Output<Boolean>> insecureHttps() {
@@ -245,16 +237,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ACL token to use by default when making requests to the agent. Can also be specified with `CONSUL_HTTP_TOKEN` or
-     * `CONSUL_TOKEN` as an environment variable.
+     * The ACL token to use by default when making requests to the agent. Can also be specified with `CONSUL_HTTP_TOKEN` or `CONSUL_TOKEN` as an environment variable.
      * 
      */
     @Import(name="token")
     private @Nullable Output<String> token;
 
     /**
-     * @return The ACL token to use by default when making requests to the agent. Can also be specified with `CONSUL_HTTP_TOKEN` or
-     * `CONSUL_TOKEN` as an environment variable.
+     * @return The ACL token to use by default when making requests to the agent. Can also be specified with `CONSUL_HTTP_TOKEN` or `CONSUL_TOKEN` as an environment variable.
      * 
      */
     public Optional<Output<String>> token() {
@@ -364,8 +354,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param caPath A path to a directory of PEM-encoded certificate authority files to use to check the authenticity of client and server
-         * connections. Can also be specified with the `CONSUL_CAPATH` environment variable.
+         * @param caPath A path to a directory of PEM-encoded certificate authority files to use to check the authenticity of client and server connections. Can also be specified with the `CONSUL_CAPATH` environment variable.
          * 
          * @return builder
          * 
@@ -376,8 +365,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param caPath A path to a directory of PEM-encoded certificate authority files to use to check the authenticity of client and server
-         * connections. Can also be specified with the `CONSUL_CAPATH` environment variable.
+         * @param caPath A path to a directory of PEM-encoded certificate authority files to use to check the authenticity of client and server connections. Can also be specified with the `CONSUL_CAPATH` environment variable.
          * 
          * @return builder
          * 
@@ -471,8 +459,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param headers A configuration block, described below, that provides additional headers to be sent along with all requests to the
-         * Consul server. This block can be specified multiple times.
+         * @param headers A configuration block, described below, that provides additional headers to be sent along with all requests to the Consul server. This block can be specified multiple times.
          * 
          * @return builder
          * 
@@ -483,8 +470,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param headers A configuration block, described below, that provides additional headers to be sent along with all requests to the
-         * Consul server. This block can be specified multiple times.
+         * @param headers A configuration block, described below, that provides additional headers to be sent along with all requests to the Consul server. This block can be specified multiple times.
          * 
          * @return builder
          * 
@@ -494,8 +480,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param headers A configuration block, described below, that provides additional headers to be sent along with all requests to the
-         * Consul server. This block can be specified multiple times.
+         * @param headers A configuration block, described below, that provides additional headers to be sent along with all requests to the Consul server. This block can be specified multiple times.
          * 
          * @return builder
          * 
@@ -505,8 +490,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param httpAuth HTTP Basic Authentication credentials to be used when communicating with Consul, in the format of either `user` or
-         * `user:pass`. This may also be specified using the `CONSUL_HTTP_AUTH` environment variable.
+         * @param httpAuth HTTP Basic Authentication credentials to be used when communicating with Consul, in the format of either `user` or `user:pass`. This may also be specified using the `CONSUL_HTTP_AUTH` environment variable.
          * 
          * @return builder
          * 
@@ -517,8 +501,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param httpAuth HTTP Basic Authentication credentials to be used when communicating with Consul, in the format of either `user` or
-         * `user:pass`. This may also be specified using the `CONSUL_HTTP_AUTH` environment variable.
+         * @param httpAuth HTTP Basic Authentication credentials to be used when communicating with Consul, in the format of either `user` or `user:pass`. This may also be specified using the `CONSUL_HTTP_AUTH` environment variable.
          * 
          * @return builder
          * 
@@ -528,8 +511,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param insecureHttps Boolean value to disable SSL certificate verification; setting this value to true is not recommended for production use.
-         * Only use this with scheme set to &#34;https&#34;.
+         * @param insecureHttps Boolean value to disable SSL certificate verification; setting this value to true is not recommended for production use. Only use this with scheme set to &#34;https&#34;.
          * 
          * @return builder
          * 
@@ -540,8 +522,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param insecureHttps Boolean value to disable SSL certificate verification; setting this value to true is not recommended for production use.
-         * Only use this with scheme set to &#34;https&#34;.
+         * @param insecureHttps Boolean value to disable SSL certificate verification; setting this value to true is not recommended for production use. Only use this with scheme set to &#34;https&#34;.
          * 
          * @return builder
          * 
@@ -623,8 +604,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param token The ACL token to use by default when making requests to the agent. Can also be specified with `CONSUL_HTTP_TOKEN` or
-         * `CONSUL_TOKEN` as an environment variable.
+         * @param token The ACL token to use by default when making requests to the agent. Can also be specified with `CONSUL_HTTP_TOKEN` or `CONSUL_TOKEN` as an environment variable.
          * 
          * @return builder
          * 
@@ -635,8 +615,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param token The ACL token to use by default when making requests to the agent. Can also be specified with `CONSUL_HTTP_TOKEN` or
-         * `CONSUL_TOKEN` as an environment variable.
+         * @param token The ACL token to use by default when making requests to the agent. Can also be specified with `CONSUL_HTTP_TOKEN` or `CONSUL_TOKEN` as an environment variable.
          * 
          * @return builder
          * 

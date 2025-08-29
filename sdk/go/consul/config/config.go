@@ -26,8 +26,7 @@ func GetCaFile(ctx *pulumi.Context) string {
 	return config.Get(ctx, "consul:caFile")
 }
 
-// A path to a directory of PEM-encoded certificate authority files to use to check the authenticity of client and server
-// connections. Can also be specified with the `CONSUL_CAPATH` environment variable.
+// A path to a directory of PEM-encoded certificate authority files to use to check the authenticity of client and server connections. Can also be specified with the `CONSUL_CAPATH` environment variable.
 func GetCaPath(ctx *pulumi.Context) string {
 	return config.Get(ctx, "consul:caPath")
 }
@@ -52,20 +51,17 @@ func GetDatacenter(ctx *pulumi.Context) string {
 	return config.Get(ctx, "consul:datacenter")
 }
 
-// A configuration block, described below, that provides additional headers to be sent along with all requests to the
-// Consul server. This block can be specified multiple times.
+// A configuration block, described below, that provides additional headers to be sent along with all requests to the Consul server. This block can be specified multiple times.
 func GetHeaders(ctx *pulumi.Context) string {
 	return config.Get(ctx, "consul:headers")
 }
 
-// HTTP Basic Authentication credentials to be used when communicating with Consul, in the format of either `user` or
-// `user:pass`. This may also be specified using the `CONSUL_HTTP_AUTH` environment variable.
+// HTTP Basic Authentication credentials to be used when communicating with Consul, in the format of either `user` or `user:pass`. This may also be specified using the `CONSUL_HTTP_AUTH` environment variable.
 func GetHttpAuth(ctx *pulumi.Context) string {
 	return config.Get(ctx, "consul:httpAuth")
 }
 
-// Boolean value to disable SSL certificate verification; setting this value to true is not recommended for production use.
-// Only use this with scheme set to "https".
+// Boolean value to disable SSL certificate verification; setting this value to true is not recommended for production use. Only use this with scheme set to "https".
 func GetInsecureHttps(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "consul:insecureHttps")
 }
@@ -88,8 +84,7 @@ func GetScheme(ctx *pulumi.Context) string {
 	return config.Get(ctx, "consul:scheme")
 }
 
-// The ACL token to use by default when making requests to the agent. Can also be specified with `CONSUL_HTTP_TOKEN` or
-// `CONSUL_TOKEN` as an environment variable.
+// The ACL token to use by default when making requests to the agent. Can also be specified with `CONSUL_HTTP_TOKEN` or `CONSUL_TOKEN` as an environment variable.
 func GetToken(ctx *pulumi.Context) string {
 	return config.Get(ctx, "consul:token")
 }

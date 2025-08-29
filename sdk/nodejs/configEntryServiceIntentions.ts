@@ -87,27 +87,27 @@ export class ConfigEntryServiceIntentions extends pulumi.CustomResource {
     /**
      * Specifies a JSON Web Token provider configured in a JWT provider configuration entry, as well as additional configurations for verifying a service's JWT before authorizing communication between services
      */
-    public readonly jwts!: pulumi.Output<outputs.ConfigEntryServiceIntentionsJwt[] | undefined>;
+    declare public readonly jwts: pulumi.Output<outputs.ConfigEntryServiceIntentionsJwt[] | undefined>;
     /**
      * Specifies key-value pairs to add to the KV store.
      */
-    public readonly meta!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly meta: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Specifies a name of the destination service for all intentions defined in the configuration entry.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Specifies the namespace to apply the configuration entry.
      */
-    public readonly namespace!: pulumi.Output<string | undefined>;
+    declare public readonly namespace: pulumi.Output<string | undefined>;
     /**
      * Specifies the admin partition to apply the configuration entry.
      */
-    public readonly partition!: pulumi.Output<string | undefined>;
+    declare public readonly partition: pulumi.Output<string | undefined>;
     /**
      * List of configurations that define intention sources and the authorization granted to the sources.
      */
-    public readonly sources!: pulumi.Output<outputs.ConfigEntryServiceIntentionsSource[] | undefined>;
+    declare public readonly sources: pulumi.Output<outputs.ConfigEntryServiceIntentionsSource[] | undefined>;
 
     /**
      * Create a ConfigEntryServiceIntentions resource with the given unique name, arguments, and options.
@@ -122,20 +122,20 @@ export class ConfigEntryServiceIntentions extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConfigEntryServiceIntentionsState | undefined;
-            resourceInputs["jwts"] = state ? state.jwts : undefined;
-            resourceInputs["meta"] = state ? state.meta : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["namespace"] = state ? state.namespace : undefined;
-            resourceInputs["partition"] = state ? state.partition : undefined;
-            resourceInputs["sources"] = state ? state.sources : undefined;
+            resourceInputs["jwts"] = state?.jwts;
+            resourceInputs["meta"] = state?.meta;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["namespace"] = state?.namespace;
+            resourceInputs["partition"] = state?.partition;
+            resourceInputs["sources"] = state?.sources;
         } else {
             const args = argsOrState as ConfigEntryServiceIntentionsArgs | undefined;
-            resourceInputs["jwts"] = args ? args.jwts : undefined;
-            resourceInputs["meta"] = args ? args.meta : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["namespace"] = args ? args.namespace : undefined;
-            resourceInputs["partition"] = args ? args.partition : undefined;
-            resourceInputs["sources"] = args ? args.sources : undefined;
+            resourceInputs["jwts"] = args?.jwts;
+            resourceInputs["meta"] = args?.meta;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["namespace"] = args?.namespace;
+            resourceInputs["partition"] = args?.partition;
+            resourceInputs["sources"] = args?.sources;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ConfigEntryServiceIntentions.__pulumiType, name, resourceInputs, opts);

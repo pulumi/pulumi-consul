@@ -107,70 +107,70 @@ export class PreparedQuery extends pulumi.CustomResource {
     /**
      * When `true` the prepared query will return connect proxy services for a queried service.  Conditions such as `tags` in the prepared query will be matched against the proxy service. Defaults to false.
      */
-    public readonly connect!: pulumi.Output<boolean | undefined>;
+    declare public readonly connect: pulumi.Output<boolean | undefined>;
     /**
      * The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
      */
-    public readonly datacenter!: pulumi.Output<string | undefined>;
+    declare public readonly datacenter: pulumi.Output<string | undefined>;
     /**
      * Settings for controlling the DNS response details.
      */
-    public readonly dns!: pulumi.Output<outputs.PreparedQueryDns | undefined>;
+    declare public readonly dns: pulumi.Output<outputs.PreparedQueryDns | undefined>;
     /**
      * Options for controlling behavior when no healthy nodes are available in the local DC.
      */
-    public readonly failover!: pulumi.Output<outputs.PreparedQueryFailover | undefined>;
+    declare public readonly failover: pulumi.Output<outputs.PreparedQueryFailover | undefined>;
     /**
      * Specifies a list of check IDs that should be ignored when filtering unhealthy instances. This is mostly useful in an emergency or as a temporary measure when a health check is found to be unreliable. Being able to ignore it in centrally-defined queries can be simpler than de-registering the check as an interim solution until the check can be fixed.
      */
-    public readonly ignoreCheckIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly ignoreCheckIds: pulumi.Output<string[] | undefined>;
     /**
      * The name of the prepared query. Used to identify the prepared query during requests. Can be specified as an empty string to configure the query as a catch-all.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Allows specifying the name of a node to sort results near using Consul's distance sorting and network coordinates. The magic `_agent` value can be used to always sort nearest the node servicing the request.
      */
-    public readonly near!: pulumi.Output<string | undefined>;
+    declare public readonly near: pulumi.Output<string | undefined>;
     /**
      * Specifies a list of user-defined key/value pairs that will be used for filtering the query results to nodes with the given metadata values present.
      */
-    public readonly nodeMeta!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly nodeMeta: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * When `true`, the prepared query will only return nodes with passing health checks in the result.
      */
-    public readonly onlyPassing!: pulumi.Output<boolean | undefined>;
+    declare public readonly onlyPassing: pulumi.Output<boolean | undefined>;
     /**
      * The name of the service to query
      */
-    public readonly service!: pulumi.Output<string>;
+    declare public readonly service: pulumi.Output<string>;
     /**
      * Specifies a list of user-defined key/value pairs that will be used for filtering the query results to services with the given metadata values present.
      */
-    public readonly serviceMeta!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly serviceMeta: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The name of the Consul session to tie this query's lifetime to.  This is an advanced parameter that should not be used without a complete understanding of Consul sessions and the implications of their use (it is recommended to leave this blank in nearly all cases).  If this parameter is omitted the query will not expire.
      */
-    public readonly session!: pulumi.Output<string | undefined>;
+    declare public readonly session: pulumi.Output<string | undefined>;
     /**
      * The ACL token to store with the prepared query. This token will be used by default whenever the query is executed.
      */
-    public readonly storedToken!: pulumi.Output<string | undefined>;
+    declare public readonly storedToken: pulumi.Output<string | undefined>;
     /**
      * The list of required and/or disallowed tags.  If a tag is in this list it must be present.  If the tag is preceded with a "!" then it is disallowed.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * Query templating options. This is used to make a single prepared query respond to many different requests
      */
-    public readonly template!: pulumi.Output<outputs.PreparedQueryTemplate | undefined>;
+    declare public readonly template: pulumi.Output<outputs.PreparedQueryTemplate | undefined>;
     /**
      * The ACL token to use when saving the prepared query. This overrides the token that the agent provides by default.
      *
      * @deprecated The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration
      */
-    public readonly token!: pulumi.Output<string | undefined>;
+    declare public readonly token: pulumi.Output<string | undefined>;
 
     /**
      * Create a PreparedQuery resource with the given unique name, arguments, and options.
@@ -185,42 +185,42 @@ Please use the token argument in the provider configuration
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PreparedQueryState | undefined;
-            resourceInputs["connect"] = state ? state.connect : undefined;
-            resourceInputs["datacenter"] = state ? state.datacenter : undefined;
-            resourceInputs["dns"] = state ? state.dns : undefined;
-            resourceInputs["failover"] = state ? state.failover : undefined;
-            resourceInputs["ignoreCheckIds"] = state ? state.ignoreCheckIds : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["near"] = state ? state.near : undefined;
-            resourceInputs["nodeMeta"] = state ? state.nodeMeta : undefined;
-            resourceInputs["onlyPassing"] = state ? state.onlyPassing : undefined;
-            resourceInputs["service"] = state ? state.service : undefined;
-            resourceInputs["serviceMeta"] = state ? state.serviceMeta : undefined;
-            resourceInputs["session"] = state ? state.session : undefined;
-            resourceInputs["storedToken"] = state ? state.storedToken : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["template"] = state ? state.template : undefined;
-            resourceInputs["token"] = state ? state.token : undefined;
+            resourceInputs["connect"] = state?.connect;
+            resourceInputs["datacenter"] = state?.datacenter;
+            resourceInputs["dns"] = state?.dns;
+            resourceInputs["failover"] = state?.failover;
+            resourceInputs["ignoreCheckIds"] = state?.ignoreCheckIds;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["near"] = state?.near;
+            resourceInputs["nodeMeta"] = state?.nodeMeta;
+            resourceInputs["onlyPassing"] = state?.onlyPassing;
+            resourceInputs["service"] = state?.service;
+            resourceInputs["serviceMeta"] = state?.serviceMeta;
+            resourceInputs["session"] = state?.session;
+            resourceInputs["storedToken"] = state?.storedToken;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["template"] = state?.template;
+            resourceInputs["token"] = state?.token;
         } else {
             const args = argsOrState as PreparedQueryArgs | undefined;
-            if ((!args || args.service === undefined) && !opts.urn) {
+            if (args?.service === undefined && !opts.urn) {
                 throw new Error("Missing required property 'service'");
             }
-            resourceInputs["connect"] = args ? args.connect : undefined;
-            resourceInputs["datacenter"] = args ? args.datacenter : undefined;
-            resourceInputs["dns"] = args ? args.dns : undefined;
-            resourceInputs["failover"] = args ? args.failover : undefined;
-            resourceInputs["ignoreCheckIds"] = args ? args.ignoreCheckIds : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["near"] = args ? args.near : undefined;
-            resourceInputs["nodeMeta"] = args ? args.nodeMeta : undefined;
-            resourceInputs["onlyPassing"] = args ? args.onlyPassing : undefined;
-            resourceInputs["service"] = args ? args.service : undefined;
-            resourceInputs["serviceMeta"] = args ? args.serviceMeta : undefined;
-            resourceInputs["session"] = args ? args.session : undefined;
-            resourceInputs["storedToken"] = args ? args.storedToken : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["template"] = args ? args.template : undefined;
+            resourceInputs["connect"] = args?.connect;
+            resourceInputs["datacenter"] = args?.datacenter;
+            resourceInputs["dns"] = args?.dns;
+            resourceInputs["failover"] = args?.failover;
+            resourceInputs["ignoreCheckIds"] = args?.ignoreCheckIds;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["near"] = args?.near;
+            resourceInputs["nodeMeta"] = args?.nodeMeta;
+            resourceInputs["onlyPassing"] = args?.onlyPassing;
+            resourceInputs["service"] = args?.service;
+            resourceInputs["serviceMeta"] = args?.serviceMeta;
+            resourceInputs["session"] = args?.session;
+            resourceInputs["storedToken"] = args?.storedToken;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["template"] = args?.template;
             resourceInputs["token"] = args?.token ? pulumi.secret(args.token) : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -49,20 +49,20 @@ export class PeeringToken extends pulumi.CustomResource {
     /**
      * Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the cluster peering process.
      */
-    public readonly meta!: pulumi.Output<{[key: string]: string} | undefined>;
-    public readonly partition!: pulumi.Output<string | undefined>;
+    declare public readonly meta: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly partition: pulumi.Output<string | undefined>;
     /**
      * The name assigned to the peer cluster. The `peerName` is used to reference the peer cluster in service discovery queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
      */
-    public readonly peerName!: pulumi.Output<string>;
+    declare public readonly peerName: pulumi.Output<string>;
     /**
      * The generated peering token
      */
-    public /*out*/ readonly peeringToken!: pulumi.Output<string>;
+    declare public /*out*/ readonly peeringToken: pulumi.Output<string>;
     /**
      * The addresses for the cluster that generates the peering token. Addresses take the form {host or IP}:port. You can specify one or more load balancers or external IPs that route external traffic to this cluster's Consul servers.
      */
-    public readonly serverExternalAddresses!: pulumi.Output<string[] | undefined>;
+    declare public readonly serverExternalAddresses: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a PeeringToken resource with the given unique name, arguments, and options.
@@ -77,20 +77,20 @@ export class PeeringToken extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PeeringTokenState | undefined;
-            resourceInputs["meta"] = state ? state.meta : undefined;
-            resourceInputs["partition"] = state ? state.partition : undefined;
-            resourceInputs["peerName"] = state ? state.peerName : undefined;
-            resourceInputs["peeringToken"] = state ? state.peeringToken : undefined;
-            resourceInputs["serverExternalAddresses"] = state ? state.serverExternalAddresses : undefined;
+            resourceInputs["meta"] = state?.meta;
+            resourceInputs["partition"] = state?.partition;
+            resourceInputs["peerName"] = state?.peerName;
+            resourceInputs["peeringToken"] = state?.peeringToken;
+            resourceInputs["serverExternalAddresses"] = state?.serverExternalAddresses;
         } else {
             const args = argsOrState as PeeringTokenArgs | undefined;
-            if ((!args || args.peerName === undefined) && !opts.urn) {
+            if (args?.peerName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'peerName'");
             }
-            resourceInputs["meta"] = args ? args.meta : undefined;
-            resourceInputs["partition"] = args ? args.partition : undefined;
-            resourceInputs["peerName"] = args ? args.peerName : undefined;
-            resourceInputs["serverExternalAddresses"] = args ? args.serverExternalAddresses : undefined;
+            resourceInputs["meta"] = args?.meta;
+            resourceInputs["partition"] = args?.partition;
+            resourceInputs["peerName"] = args?.peerName;
+            resourceInputs["serverExternalAddresses"] = args?.serverExternalAddresses;
             resourceInputs["peeringToken"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

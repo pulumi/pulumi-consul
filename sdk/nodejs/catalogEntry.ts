@@ -46,29 +46,29 @@ export class CatalogEntry extends pulumi.CustomResource {
      * The address of the node being added to,
      * or referenced in the catalog.
      */
-    public readonly address!: pulumi.Output<string>;
+    declare public readonly address: pulumi.Output<string>;
     /**
      * The datacenter to use. This overrides the
      * agent's default datacenter and the datacenter in the provider setup.
      */
-    public readonly datacenter!: pulumi.Output<string>;
+    declare public readonly datacenter: pulumi.Output<string>;
     /**
      * The name of the node being added to, or
      * referenced in the catalog.
      */
-    public readonly node!: pulumi.Output<string>;
+    declare public readonly node: pulumi.Output<string>;
     /**
      * A service to optionally associated with
      * the node. Supported values are documented below.
      */
-    public readonly services!: pulumi.Output<outputs.CatalogEntryService[] | undefined>;
+    declare public readonly services: pulumi.Output<outputs.CatalogEntryService[] | undefined>;
     /**
      * ACL token.
      *
      * @deprecated The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration
      */
-    public readonly token!: pulumi.Output<string | undefined>;
+    declare public readonly token: pulumi.Output<string | undefined>;
 
     /**
      * Create a CatalogEntry resource with the given unique name, arguments, and options.
@@ -83,23 +83,23 @@ Please use the token argument in the provider configuration
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CatalogEntryState | undefined;
-            resourceInputs["address"] = state ? state.address : undefined;
-            resourceInputs["datacenter"] = state ? state.datacenter : undefined;
-            resourceInputs["node"] = state ? state.node : undefined;
-            resourceInputs["services"] = state ? state.services : undefined;
-            resourceInputs["token"] = state ? state.token : undefined;
+            resourceInputs["address"] = state?.address;
+            resourceInputs["datacenter"] = state?.datacenter;
+            resourceInputs["node"] = state?.node;
+            resourceInputs["services"] = state?.services;
+            resourceInputs["token"] = state?.token;
         } else {
             const args = argsOrState as CatalogEntryArgs | undefined;
-            if ((!args || args.address === undefined) && !opts.urn) {
+            if (args?.address === undefined && !opts.urn) {
                 throw new Error("Missing required property 'address'");
             }
-            if ((!args || args.node === undefined) && !opts.urn) {
+            if (args?.node === undefined && !opts.urn) {
                 throw new Error("Missing required property 'node'");
             }
-            resourceInputs["address"] = args ? args.address : undefined;
-            resourceInputs["datacenter"] = args ? args.datacenter : undefined;
-            resourceInputs["node"] = args ? args.node : undefined;
-            resourceInputs["services"] = args ? args.services : undefined;
+            resourceInputs["address"] = args?.address;
+            resourceInputs["datacenter"] = args?.datacenter;
+            resourceInputs["node"] = args?.node;
+            resourceInputs["services"] = args?.services;
             resourceInputs["token"] = args?.token ? pulumi.secret(args.token) : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

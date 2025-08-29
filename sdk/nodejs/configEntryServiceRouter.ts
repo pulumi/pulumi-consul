@@ -40,23 +40,23 @@ export class ConfigEntryServiceRouter extends pulumi.CustomResource {
     /**
      * Specifies key-value pairs to add to the KV store.
      */
-    public readonly meta!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly meta: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Specifies a name for the configuration entry.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Specifies the namespace to apply the configuration entry.
      */
-    public readonly namespace!: pulumi.Output<string | undefined>;
+    declare public readonly namespace: pulumi.Output<string | undefined>;
     /**
      * Specifies the admin partition to apply the configuration entry.
      */
-    public readonly partition!: pulumi.Output<string | undefined>;
+    declare public readonly partition: pulumi.Output<string | undefined>;
     /**
      * Defines the possible routes for L7 requests.
      */
-    public readonly routes!: pulumi.Output<outputs.ConfigEntryServiceRouterRoute[] | undefined>;
+    declare public readonly routes: pulumi.Output<outputs.ConfigEntryServiceRouterRoute[] | undefined>;
 
     /**
      * Create a ConfigEntryServiceRouter resource with the given unique name, arguments, and options.
@@ -71,18 +71,18 @@ export class ConfigEntryServiceRouter extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConfigEntryServiceRouterState | undefined;
-            resourceInputs["meta"] = state ? state.meta : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["namespace"] = state ? state.namespace : undefined;
-            resourceInputs["partition"] = state ? state.partition : undefined;
-            resourceInputs["routes"] = state ? state.routes : undefined;
+            resourceInputs["meta"] = state?.meta;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["namespace"] = state?.namespace;
+            resourceInputs["partition"] = state?.partition;
+            resourceInputs["routes"] = state?.routes;
         } else {
             const args = argsOrState as ConfigEntryServiceRouterArgs | undefined;
-            resourceInputs["meta"] = args ? args.meta : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["namespace"] = args ? args.namespace : undefined;
-            resourceInputs["partition"] = args ? args.partition : undefined;
-            resourceInputs["routes"] = args ? args.routes : undefined;
+            resourceInputs["meta"] = args?.meta;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["namespace"] = args?.namespace;
+            resourceInputs["partition"] = args?.partition;
+            resourceInputs["routes"] = args?.routes;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ConfigEntryServiceRouter.__pulumiType, name, resourceInputs, opts);

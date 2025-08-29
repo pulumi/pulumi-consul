@@ -32,8 +32,7 @@ A path to a PEM-encoded certificate authority used to verify the remote agent's 
 
 caPath: Optional[str]
 """
-A path to a directory of PEM-encoded certificate authority files to use to check the authenticity of client and server
-connections. Can also be specified with the `CONSUL_CAPATH` environment variable.
+A path to a directory of PEM-encoded certificate authority files to use to check the authenticity of client and server connections. Can also be specified with the `CONSUL_CAPATH` environment variable.
 """
 
 caPem: Optional[str]
@@ -58,20 +57,17 @@ The datacenter to use. Defaults to that of the agent.
 
 headers: Optional[str]
 """
-A configuration block, described below, that provides additional headers to be sent along with all requests to the
-Consul server. This block can be specified multiple times.
+A configuration block, described below, that provides additional headers to be sent along with all requests to the Consul server. This block can be specified multiple times.
 """
 
 httpAuth: Optional[str]
 """
-HTTP Basic Authentication credentials to be used when communicating with Consul, in the format of either `user` or
-`user:pass`. This may also be specified using the `CONSUL_HTTP_AUTH` environment variable.
+HTTP Basic Authentication credentials to be used when communicating with Consul, in the format of either `user` or `user:pass`. This may also be specified using the `CONSUL_HTTP_AUTH` environment variable.
 """
 
 insecureHttps: Optional[bool]
 """
-Boolean value to disable SSL certificate verification; setting this value to true is not recommended for production use.
-Only use this with scheme set to "https".
+Boolean value to disable SSL certificate verification; setting this value to true is not recommended for production use. Only use this with scheme set to "https".
 """
 
 keyFile: Optional[str]
@@ -93,7 +89,6 @@ The URL scheme of the agent to use ("http" or "https"). Defaults to "http".
 
 token: Optional[str]
 """
-The ACL token to use by default when making requests to the agent. Can also be specified with `CONSUL_HTTP_TOKEN` or
-`CONSUL_TOKEN` as an environment variable.
+The ACL token to use by default when making requests to the agent. Can also be specified with `CONSUL_HTTP_TOKEN` or `CONSUL_TOKEN` as an environment variable.
 """
 

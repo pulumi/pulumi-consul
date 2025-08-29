@@ -31,8 +31,7 @@ namespace Pulumi.Consul
         public Output<string?> CaFile { get; private set; } = null!;
 
         /// <summary>
-        /// A path to a directory of PEM-encoded certificate authority files to use to check the authenticity of client and server
-        /// connections. Can also be specified with the `CONSUL_CAPATH` environment variable.
+        /// A path to a directory of PEM-encoded certificate authority files to use to check the authenticity of client and server connections. Can also be specified with the `CONSUL_CAPATH` environment variable.
         /// </summary>
         [Output("caPath")]
         public Output<string?> CaPath { get; private set; } = null!;
@@ -62,8 +61,7 @@ namespace Pulumi.Consul
         public Output<string?> Datacenter { get; private set; } = null!;
 
         /// <summary>
-        /// HTTP Basic Authentication credentials to be used when communicating with Consul, in the format of either `user` or
-        /// `user:pass`. This may also be specified using the `CONSUL_HTTP_AUTH` environment variable.
+        /// HTTP Basic Authentication credentials to be used when communicating with Consul, in the format of either `user` or `user:pass`. This may also be specified using the `CONSUL_HTTP_AUTH` environment variable.
         /// </summary>
         [Output("httpAuth")]
         public Output<string?> HttpAuth { get; private set; } = null!;
@@ -90,8 +88,7 @@ namespace Pulumi.Consul
         public Output<string?> Scheme { get; private set; } = null!;
 
         /// <summary>
-        /// The ACL token to use by default when making requests to the agent. Can also be specified with `CONSUL_HTTP_TOKEN` or
-        /// `CONSUL_TOKEN` as an environment variable.
+        /// The ACL token to use by default when making requests to the agent. Can also be specified with `CONSUL_HTTP_TOKEN` or `CONSUL_TOKEN` as an environment variable.
         /// </summary>
         [Output("token")]
         public Output<string?> Token { get; private set; } = null!;
@@ -153,8 +150,7 @@ namespace Pulumi.Consul
         public Input<string>? CaFile { get; set; }
 
         /// <summary>
-        /// A path to a directory of PEM-encoded certificate authority files to use to check the authenticity of client and server
-        /// connections. Can also be specified with the `CONSUL_CAPATH` environment variable.
+        /// A path to a directory of PEM-encoded certificate authority files to use to check the authenticity of client and server connections. Can also be specified with the `CONSUL_CAPATH` environment variable.
         /// </summary>
         [Input("caPath")]
         public Input<string>? CaPath { get; set; }
@@ -187,8 +183,7 @@ namespace Pulumi.Consul
         private InputList<Inputs.ProviderHeaderArgs>? _headers;
 
         /// <summary>
-        /// A configuration block, described below, that provides additional headers to be sent along with all requests to the
-        /// Consul server. This block can be specified multiple times.
+        /// A configuration block, described below, that provides additional headers to be sent along with all requests to the Consul server. This block can be specified multiple times.
         /// </summary>
         public InputList<Inputs.ProviderHeaderArgs> Headers
         {
@@ -201,15 +196,13 @@ namespace Pulumi.Consul
         }
 
         /// <summary>
-        /// HTTP Basic Authentication credentials to be used when communicating with Consul, in the format of either `user` or
-        /// `user:pass`. This may also be specified using the `CONSUL_HTTP_AUTH` environment variable.
+        /// HTTP Basic Authentication credentials to be used when communicating with Consul, in the format of either `user` or `user:pass`. This may also be specified using the `CONSUL_HTTP_AUTH` environment variable.
         /// </summary>
         [Input("httpAuth")]
         public Input<string>? HttpAuth { get; set; }
 
         /// <summary>
-        /// Boolean value to disable SSL certificate verification; setting this value to true is not recommended for production use.
-        /// Only use this with scheme set to "https".
+        /// Boolean value to disable SSL certificate verification; setting this value to true is not recommended for production use. Only use this with scheme set to "https".
         /// </summary>
         [Input("insecureHttps", json: true)]
         public Input<bool>? InsecureHttps { get; set; }
@@ -239,8 +232,7 @@ namespace Pulumi.Consul
         private Input<string>? _token;
 
         /// <summary>
-        /// The ACL token to use by default when making requests to the agent. Can also be specified with `CONSUL_HTTP_TOKEN` or
-        /// `CONSUL_TOKEN` as an environment variable.
+        /// The ACL token to use by default when making requests to the agent. Can also be specified with `CONSUL_HTTP_TOKEN` or `CONSUL_TOKEN` as an environment variable.
         /// </summary>
         public Input<string>? Token
         {

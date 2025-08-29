@@ -60,17 +60,17 @@ export class NetworkArea extends pulumi.CustomResource {
      * The datacenter to use. This overrides the
      * agent's default datacenter and the datacenter in the provider setup.
      */
-    public readonly datacenter!: pulumi.Output<string>;
+    declare public readonly datacenter: pulumi.Output<string>;
     /**
      * The name of the Consul datacenter that will be
      * joined to form the area.
      */
-    public readonly peerDatacenter!: pulumi.Output<string>;
+    declare public readonly peerDatacenter: pulumi.Output<string>;
     /**
      * Specifies a list of Consul servers to attempt to
      * join. Servers can be given as `IP`, `IP:port`, `hostname`, or `hostname:port`.
      */
-    public readonly retryJoins!: pulumi.Output<string[] | undefined>;
+    declare public readonly retryJoins: pulumi.Output<string[] | undefined>;
     /**
      * The ACL token to use. This overrides the
      * token that the agent provides by default.
@@ -78,12 +78,12 @@ export class NetworkArea extends pulumi.CustomResource {
      * @deprecated The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration
      */
-    public readonly token!: pulumi.Output<string | undefined>;
+    declare public readonly token: pulumi.Output<string | undefined>;
     /**
      * Specifies whether gossip over this area should be
      * encrypted with TLS if possible. Defaults to `false`.
      */
-    public readonly useTls!: pulumi.Output<boolean | undefined>;
+    declare public readonly useTls: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a NetworkArea resource with the given unique name, arguments, and options.
@@ -98,21 +98,21 @@ Please use the token argument in the provider configuration
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NetworkAreaState | undefined;
-            resourceInputs["datacenter"] = state ? state.datacenter : undefined;
-            resourceInputs["peerDatacenter"] = state ? state.peerDatacenter : undefined;
-            resourceInputs["retryJoins"] = state ? state.retryJoins : undefined;
-            resourceInputs["token"] = state ? state.token : undefined;
-            resourceInputs["useTls"] = state ? state.useTls : undefined;
+            resourceInputs["datacenter"] = state?.datacenter;
+            resourceInputs["peerDatacenter"] = state?.peerDatacenter;
+            resourceInputs["retryJoins"] = state?.retryJoins;
+            resourceInputs["token"] = state?.token;
+            resourceInputs["useTls"] = state?.useTls;
         } else {
             const args = argsOrState as NetworkAreaArgs | undefined;
-            if ((!args || args.peerDatacenter === undefined) && !opts.urn) {
+            if (args?.peerDatacenter === undefined && !opts.urn) {
                 throw new Error("Missing required property 'peerDatacenter'");
             }
-            resourceInputs["datacenter"] = args ? args.datacenter : undefined;
-            resourceInputs["peerDatacenter"] = args ? args.peerDatacenter : undefined;
-            resourceInputs["retryJoins"] = args ? args.retryJoins : undefined;
+            resourceInputs["datacenter"] = args?.datacenter;
+            resourceInputs["peerDatacenter"] = args?.peerDatacenter;
+            resourceInputs["retryJoins"] = args?.retryJoins;
             resourceInputs["token"] = args?.token ? pulumi.secret(args.token) : undefined;
-            resourceInputs["useTls"] = args ? args.useTls : undefined;
+            resourceInputs["useTls"] = args?.useTls;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["token"] };

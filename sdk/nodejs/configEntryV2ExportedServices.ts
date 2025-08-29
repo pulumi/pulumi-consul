@@ -35,35 +35,35 @@ export class ConfigEntryV2ExportedServices extends pulumi.CustomResource {
     /**
      * The kind of exported services config (ExportedServices, NamespaceExportedServices, PartitionExportedServices).
      */
-    public readonly kind!: pulumi.Output<string>;
+    declare public readonly kind: pulumi.Output<string>;
     /**
      * The name of the config entry to read.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The namespace the config entry is associated with.
      */
-    public readonly namespace!: pulumi.Output<string | undefined>;
+    declare public readonly namespace: pulumi.Output<string | undefined>;
     /**
      * The partition the config entry is associated with.
      */
-    public readonly partition!: pulumi.Output<string>;
+    declare public readonly partition: pulumi.Output<string>;
     /**
      * The exported service partition consumers.
      */
-    public readonly partitionConsumers!: pulumi.Output<string[] | undefined>;
+    declare public readonly partitionConsumers: pulumi.Output<string[] | undefined>;
     /**
      * The exported service peer consumers.
      */
-    public readonly peerConsumers!: pulumi.Output<string[] | undefined>;
+    declare public readonly peerConsumers: pulumi.Output<string[] | undefined>;
     /**
      * The exported service sameness group consumers.
      */
-    public readonly samenessGroupConsumers!: pulumi.Output<string[] | undefined>;
+    declare public readonly samenessGroupConsumers: pulumi.Output<string[] | undefined>;
     /**
      * The exported services.
      */
-    public readonly services!: pulumi.Output<string[] | undefined>;
+    declare public readonly services: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a ConfigEntryV2ExportedServices resource with the given unique name, arguments, and options.
@@ -78,30 +78,30 @@ export class ConfigEntryV2ExportedServices extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConfigEntryV2ExportedServicesState | undefined;
-            resourceInputs["kind"] = state ? state.kind : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["namespace"] = state ? state.namespace : undefined;
-            resourceInputs["partition"] = state ? state.partition : undefined;
-            resourceInputs["partitionConsumers"] = state ? state.partitionConsumers : undefined;
-            resourceInputs["peerConsumers"] = state ? state.peerConsumers : undefined;
-            resourceInputs["samenessGroupConsumers"] = state ? state.samenessGroupConsumers : undefined;
-            resourceInputs["services"] = state ? state.services : undefined;
+            resourceInputs["kind"] = state?.kind;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["namespace"] = state?.namespace;
+            resourceInputs["partition"] = state?.partition;
+            resourceInputs["partitionConsumers"] = state?.partitionConsumers;
+            resourceInputs["peerConsumers"] = state?.peerConsumers;
+            resourceInputs["samenessGroupConsumers"] = state?.samenessGroupConsumers;
+            resourceInputs["services"] = state?.services;
         } else {
             const args = argsOrState as ConfigEntryV2ExportedServicesArgs | undefined;
-            if ((!args || args.kind === undefined) && !opts.urn) {
+            if (args?.kind === undefined && !opts.urn) {
                 throw new Error("Missing required property 'kind'");
             }
-            if ((!args || args.partition === undefined) && !opts.urn) {
+            if (args?.partition === undefined && !opts.urn) {
                 throw new Error("Missing required property 'partition'");
             }
-            resourceInputs["kind"] = args ? args.kind : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["namespace"] = args ? args.namespace : undefined;
-            resourceInputs["partition"] = args ? args.partition : undefined;
-            resourceInputs["partitionConsumers"] = args ? args.partitionConsumers : undefined;
-            resourceInputs["peerConsumers"] = args ? args.peerConsumers : undefined;
-            resourceInputs["samenessGroupConsumers"] = args ? args.samenessGroupConsumers : undefined;
-            resourceInputs["services"] = args ? args.services : undefined;
+            resourceInputs["kind"] = args?.kind;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["namespace"] = args?.namespace;
+            resourceInputs["partition"] = args?.partition;
+            resourceInputs["partitionConsumers"] = args?.partitionConsumers;
+            resourceInputs["peerConsumers"] = args?.peerConsumers;
+            resourceInputs["samenessGroupConsumers"] = args?.samenessGroupConsumers;
+            resourceInputs["services"] = args?.services;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ConfigEntryV2ExportedServices.__pulumiType, name, resourceInputs, opts);

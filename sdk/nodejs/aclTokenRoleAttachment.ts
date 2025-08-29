@@ -45,11 +45,11 @@ export class AclTokenRoleAttachment extends pulumi.CustomResource {
     /**
      * The role name.
      */
-    public readonly role!: pulumi.Output<string>;
+    declare public readonly role: pulumi.Output<string>;
     /**
      * The id of the token.
      */
-    public readonly tokenId!: pulumi.Output<string>;
+    declare public readonly tokenId: pulumi.Output<string>;
 
     /**
      * Create a AclTokenRoleAttachment resource with the given unique name, arguments, and options.
@@ -64,18 +64,18 @@ export class AclTokenRoleAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AclTokenRoleAttachmentState | undefined;
-            resourceInputs["role"] = state ? state.role : undefined;
-            resourceInputs["tokenId"] = state ? state.tokenId : undefined;
+            resourceInputs["role"] = state?.role;
+            resourceInputs["tokenId"] = state?.tokenId;
         } else {
             const args = argsOrState as AclTokenRoleAttachmentArgs | undefined;
-            if ((!args || args.role === undefined) && !opts.urn) {
+            if (args?.role === undefined && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            if ((!args || args.tokenId === undefined) && !opts.urn) {
+            if (args?.tokenId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'tokenId'");
             }
-            resourceInputs["role"] = args ? args.role : undefined;
-            resourceInputs["tokenId"] = args ? args.tokenId : undefined;
+            resourceInputs["role"] = args?.role;
+            resourceInputs["tokenId"] = args?.tokenId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AclTokenRoleAttachment.__pulumiType, name, resourceInputs, opts);

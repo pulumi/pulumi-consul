@@ -64,27 +64,27 @@ export class Namespace extends pulumi.CustomResource {
     /**
      * Free form namespace description.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Specifies arbitrary KV metadata to associate with the namespace.
      */
-    public readonly meta!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly meta: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The namespace name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The partition to create the namespace within.
      */
-    public readonly partition!: pulumi.Output<string | undefined>;
+    declare public readonly partition: pulumi.Output<string | undefined>;
     /**
      * The list of default policies that should be applied to all tokens created in this namespace.
      */
-    public readonly policyDefaults!: pulumi.Output<string[] | undefined>;
+    declare public readonly policyDefaults: pulumi.Output<string[] | undefined>;
     /**
      * The list of default roles that should be applied to all tokens created in this namespace.
      */
-    public readonly roleDefaults!: pulumi.Output<string[] | undefined>;
+    declare public readonly roleDefaults: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a Namespace resource with the given unique name, arguments, and options.
@@ -99,20 +99,20 @@ export class Namespace extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NamespaceState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["meta"] = state ? state.meta : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["partition"] = state ? state.partition : undefined;
-            resourceInputs["policyDefaults"] = state ? state.policyDefaults : undefined;
-            resourceInputs["roleDefaults"] = state ? state.roleDefaults : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["meta"] = state?.meta;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["partition"] = state?.partition;
+            resourceInputs["policyDefaults"] = state?.policyDefaults;
+            resourceInputs["roleDefaults"] = state?.roleDefaults;
         } else {
             const args = argsOrState as NamespaceArgs | undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["meta"] = args ? args.meta : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["partition"] = args ? args.partition : undefined;
-            resourceInputs["policyDefaults"] = args ? args.policyDefaults : undefined;
-            resourceInputs["roleDefaults"] = args ? args.roleDefaults : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["meta"] = args?.meta;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["partition"] = args?.partition;
+            resourceInputs["policyDefaults"] = args?.policyDefaults;
+            resourceInputs["roleDefaults"] = args?.roleDefaults;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Namespace.__pulumiType, name, resourceInputs, opts);

@@ -94,47 +94,47 @@ export class AclAuthMethod extends pulumi.CustomResource {
      *
      * @deprecated The config attribute is deprecated, please use `configJson` instead.
      */
-    public readonly config!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly config: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The raw configuration for this ACL auth method.
      */
-    public readonly configJson!: pulumi.Output<string | undefined>;
+    declare public readonly configJson: pulumi.Output<string | undefined>;
     /**
      * A free form human readable description of the auth method.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * An optional name to use instead of the name attribute when displaying information about this auth method.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
      * The maximum life of any token created by this auth method. **This attribute is required and must be set to a nonzero for the OIDC auth method.**
      */
-    public readonly maxTokenTtl!: pulumi.Output<string | undefined>;
+    declare public readonly maxTokenTtl: pulumi.Output<string | undefined>;
     /**
      * The name of the ACL auth method.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The namespace in which to create the auth method.
      */
-    public readonly namespace!: pulumi.Output<string | undefined>;
+    declare public readonly namespace: pulumi.Output<string | undefined>;
     /**
      * A set of rules that control which namespace tokens created via this auth method will be created within.
      */
-    public readonly namespaceRules!: pulumi.Output<outputs.AclAuthMethodNamespaceRule[] | undefined>;
+    declare public readonly namespaceRules: pulumi.Output<outputs.AclAuthMethodNamespaceRule[] | undefined>;
     /**
      * The partition the ACL auth method is associated with.
      */
-    public readonly partition!: pulumi.Output<string | undefined>;
+    declare public readonly partition: pulumi.Output<string | undefined>;
     /**
      * The kind of token that this auth method produces. This can be either 'local' or 'global'.
      */
-    public readonly tokenLocality!: pulumi.Output<string | undefined>;
+    declare public readonly tokenLocality: pulumi.Output<string | undefined>;
     /**
      * The type of the ACL auth method.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a AclAuthMethod resource with the given unique name, arguments, and options.
@@ -149,33 +149,33 @@ export class AclAuthMethod extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AclAuthMethodState | undefined;
-            resourceInputs["config"] = state ? state.config : undefined;
-            resourceInputs["configJson"] = state ? state.configJson : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["maxTokenTtl"] = state ? state.maxTokenTtl : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["namespace"] = state ? state.namespace : undefined;
-            resourceInputs["namespaceRules"] = state ? state.namespaceRules : undefined;
-            resourceInputs["partition"] = state ? state.partition : undefined;
-            resourceInputs["tokenLocality"] = state ? state.tokenLocality : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["config"] = state?.config;
+            resourceInputs["configJson"] = state?.configJson;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["maxTokenTtl"] = state?.maxTokenTtl;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["namespace"] = state?.namespace;
+            resourceInputs["namespaceRules"] = state?.namespaceRules;
+            resourceInputs["partition"] = state?.partition;
+            resourceInputs["tokenLocality"] = state?.tokenLocality;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as AclAuthMethodArgs | undefined;
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["config"] = args ? args.config : undefined;
-            resourceInputs["configJson"] = args ? args.configJson : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["maxTokenTtl"] = args ? args.maxTokenTtl : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["namespace"] = args ? args.namespace : undefined;
-            resourceInputs["namespaceRules"] = args ? args.namespaceRules : undefined;
-            resourceInputs["partition"] = args ? args.partition : undefined;
-            resourceInputs["tokenLocality"] = args ? args.tokenLocality : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["config"] = args?.config;
+            resourceInputs["configJson"] = args?.configJson;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["maxTokenTtl"] = args?.maxTokenTtl;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["namespace"] = args?.namespace;
+            resourceInputs["namespaceRules"] = args?.namespaceRules;
+            resourceInputs["partition"] = args?.partition;
+            resourceInputs["tokenLocality"] = args?.tokenLocality;
+            resourceInputs["type"] = args?.type;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AclAuthMethod.__pulumiType, name, resourceInputs, opts);

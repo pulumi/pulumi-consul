@@ -65,35 +65,35 @@ export class AclRole extends pulumi.CustomResource {
     /**
      * A free form human readable description of the role.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The name of the ACL role.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The namespace to create the role within.
      */
-    public readonly namespace!: pulumi.Output<string | undefined>;
+    declare public readonly namespace: pulumi.Output<string | undefined>;
     /**
      * The list of node identities that should be applied to the role.
      */
-    public readonly nodeIdentities!: pulumi.Output<outputs.AclRoleNodeIdentity[] | undefined>;
+    declare public readonly nodeIdentities: pulumi.Output<outputs.AclRoleNodeIdentity[] | undefined>;
     /**
      * The partition the ACL role is associated with.
      */
-    public readonly partition!: pulumi.Output<string | undefined>;
+    declare public readonly partition: pulumi.Output<string | undefined>;
     /**
      * The list of policies that should be applied to the role. Both the policy ID or its name can be used.
      */
-    public readonly policies!: pulumi.Output<string[] | undefined>;
+    declare public readonly policies: pulumi.Output<string[] | undefined>;
     /**
      * The list of service identities that should be applied to the role.
      */
-    public readonly serviceIdentities!: pulumi.Output<outputs.AclRoleServiceIdentity[] | undefined>;
+    declare public readonly serviceIdentities: pulumi.Output<outputs.AclRoleServiceIdentity[] | undefined>;
     /**
      * The list of templated policies that should be applied to the token.
      */
-    public readonly templatedPolicies!: pulumi.Output<outputs.AclRoleTemplatedPolicy[] | undefined>;
+    declare public readonly templatedPolicies: pulumi.Output<outputs.AclRoleTemplatedPolicy[] | undefined>;
 
     /**
      * Create a AclRole resource with the given unique name, arguments, and options.
@@ -108,24 +108,24 @@ export class AclRole extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AclRoleState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["namespace"] = state ? state.namespace : undefined;
-            resourceInputs["nodeIdentities"] = state ? state.nodeIdentities : undefined;
-            resourceInputs["partition"] = state ? state.partition : undefined;
-            resourceInputs["policies"] = state ? state.policies : undefined;
-            resourceInputs["serviceIdentities"] = state ? state.serviceIdentities : undefined;
-            resourceInputs["templatedPolicies"] = state ? state.templatedPolicies : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["namespace"] = state?.namespace;
+            resourceInputs["nodeIdentities"] = state?.nodeIdentities;
+            resourceInputs["partition"] = state?.partition;
+            resourceInputs["policies"] = state?.policies;
+            resourceInputs["serviceIdentities"] = state?.serviceIdentities;
+            resourceInputs["templatedPolicies"] = state?.templatedPolicies;
         } else {
             const args = argsOrState as AclRoleArgs | undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["namespace"] = args ? args.namespace : undefined;
-            resourceInputs["nodeIdentities"] = args ? args.nodeIdentities : undefined;
-            resourceInputs["partition"] = args ? args.partition : undefined;
-            resourceInputs["policies"] = args ? args.policies : undefined;
-            resourceInputs["serviceIdentities"] = args ? args.serviceIdentities : undefined;
-            resourceInputs["templatedPolicies"] = args ? args.templatedPolicies : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["namespace"] = args?.namespace;
+            resourceInputs["nodeIdentities"] = args?.nodeIdentities;
+            resourceInputs["partition"] = args?.partition;
+            resourceInputs["policies"] = args?.policies;
+            resourceInputs["serviceIdentities"] = args?.serviceIdentities;
+            resourceInputs["templatedPolicies"] = args?.templatedPolicies;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AclRole.__pulumiType, name, resourceInputs, opts);

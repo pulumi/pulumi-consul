@@ -55,20 +55,20 @@ export class Keys extends pulumi.CustomResource {
      * The datacenter to use. This overrides the
      * agent's default datacenter and the datacenter in the provider setup.
      */
-    public readonly datacenter!: pulumi.Output<string>;
+    declare public readonly datacenter: pulumi.Output<string>;
     /**
      * Specifies a key in Consul to be written.
      * Supported values documented below.
      */
-    public readonly keys!: pulumi.Output<outputs.KeysKey[] | undefined>;
+    declare public readonly keys: pulumi.Output<outputs.KeysKey[] | undefined>;
     /**
      * The namespace to create the keys within.
      */
-    public readonly namespace!: pulumi.Output<string | undefined>;
+    declare public readonly namespace: pulumi.Output<string | undefined>;
     /**
      * The partition to create the keys within.
      */
-    public readonly partition!: pulumi.Output<string | undefined>;
+    declare public readonly partition: pulumi.Output<string | undefined>;
     /**
      * The ACL token to use. This overrides the
      * token that the agent provides by default.
@@ -76,8 +76,8 @@ export class Keys extends pulumi.CustomResource {
      * @deprecated The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration
      */
-    public readonly token!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly var!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly token: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly var: pulumi.Output<{[key: string]: string}>;
 
     /**
      * Create a Keys resource with the given unique name, arguments, and options.
@@ -92,18 +92,18 @@ Please use the token argument in the provider configuration
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KeysState | undefined;
-            resourceInputs["datacenter"] = state ? state.datacenter : undefined;
-            resourceInputs["keys"] = state ? state.keys : undefined;
-            resourceInputs["namespace"] = state ? state.namespace : undefined;
-            resourceInputs["partition"] = state ? state.partition : undefined;
-            resourceInputs["token"] = state ? state.token : undefined;
-            resourceInputs["var"] = state ? state.var : undefined;
+            resourceInputs["datacenter"] = state?.datacenter;
+            resourceInputs["keys"] = state?.keys;
+            resourceInputs["namespace"] = state?.namespace;
+            resourceInputs["partition"] = state?.partition;
+            resourceInputs["token"] = state?.token;
+            resourceInputs["var"] = state?.var;
         } else {
             const args = argsOrState as KeysArgs | undefined;
-            resourceInputs["datacenter"] = args ? args.datacenter : undefined;
-            resourceInputs["keys"] = args ? args.keys : undefined;
-            resourceInputs["namespace"] = args ? args.namespace : undefined;
-            resourceInputs["partition"] = args ? args.partition : undefined;
+            resourceInputs["datacenter"] = args?.datacenter;
+            resourceInputs["keys"] = args?.keys;
+            resourceInputs["namespace"] = args?.namespace;
+            resourceInputs["partition"] = args?.partition;
             resourceInputs["token"] = args?.token ? pulumi.secret(args.token) : undefined;
             resourceInputs["var"] = undefined /*out*/;
         }

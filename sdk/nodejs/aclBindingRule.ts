@@ -67,35 +67,35 @@ export class AclBindingRule extends pulumi.CustomResource {
     /**
      * The name of the ACL auth method this rule apply.
      */
-    public readonly authMethod!: pulumi.Output<string>;
+    declare public readonly authMethod: pulumi.Output<string>;
     /**
      * The name to bind to a token at login-time.
      */
-    public readonly bindName!: pulumi.Output<string>;
+    declare public readonly bindName: pulumi.Output<string>;
     /**
      * Specifies the way the binding rule affects a token created at login.
      */
-    public readonly bindType!: pulumi.Output<string>;
+    declare public readonly bindType: pulumi.Output<string>;
     /**
      * The variables used when binding rule type is `templated-policy`. Can be lightly templated using HIL `${foo}` syntax from available field names.
      */
-    public readonly bindVars!: pulumi.Output<outputs.AclBindingRuleBindVars | undefined>;
+    declare public readonly bindVars: pulumi.Output<outputs.AclBindingRuleBindVars | undefined>;
     /**
      * A free form human readable description of the binding rule.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The namespace to create the binding rule within.
      */
-    public readonly namespace!: pulumi.Output<string | undefined>;
+    declare public readonly namespace: pulumi.Output<string | undefined>;
     /**
      * The partition the ACL binding rule is associated with.
      */
-    public readonly partition!: pulumi.Output<string | undefined>;
+    declare public readonly partition: pulumi.Output<string | undefined>;
     /**
      * The expression used to match this rule against valid identities returned from an auth method validation.
      */
-    public readonly selector!: pulumi.Output<string | undefined>;
+    declare public readonly selector: pulumi.Output<string | undefined>;
 
     /**
      * Create a AclBindingRule resource with the given unique name, arguments, and options.
@@ -110,33 +110,33 @@ export class AclBindingRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AclBindingRuleState | undefined;
-            resourceInputs["authMethod"] = state ? state.authMethod : undefined;
-            resourceInputs["bindName"] = state ? state.bindName : undefined;
-            resourceInputs["bindType"] = state ? state.bindType : undefined;
-            resourceInputs["bindVars"] = state ? state.bindVars : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["namespace"] = state ? state.namespace : undefined;
-            resourceInputs["partition"] = state ? state.partition : undefined;
-            resourceInputs["selector"] = state ? state.selector : undefined;
+            resourceInputs["authMethod"] = state?.authMethod;
+            resourceInputs["bindName"] = state?.bindName;
+            resourceInputs["bindType"] = state?.bindType;
+            resourceInputs["bindVars"] = state?.bindVars;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["namespace"] = state?.namespace;
+            resourceInputs["partition"] = state?.partition;
+            resourceInputs["selector"] = state?.selector;
         } else {
             const args = argsOrState as AclBindingRuleArgs | undefined;
-            if ((!args || args.authMethod === undefined) && !opts.urn) {
+            if (args?.authMethod === undefined && !opts.urn) {
                 throw new Error("Missing required property 'authMethod'");
             }
-            if ((!args || args.bindName === undefined) && !opts.urn) {
+            if (args?.bindName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bindName'");
             }
-            if ((!args || args.bindType === undefined) && !opts.urn) {
+            if (args?.bindType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bindType'");
             }
-            resourceInputs["authMethod"] = args ? args.authMethod : undefined;
-            resourceInputs["bindName"] = args ? args.bindName : undefined;
-            resourceInputs["bindType"] = args ? args.bindType : undefined;
-            resourceInputs["bindVars"] = args ? args.bindVars : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["namespace"] = args ? args.namespace : undefined;
-            resourceInputs["partition"] = args ? args.partition : undefined;
-            resourceInputs["selector"] = args ? args.selector : undefined;
+            resourceInputs["authMethod"] = args?.authMethod;
+            resourceInputs["bindName"] = args?.bindName;
+            resourceInputs["bindType"] = args?.bindType;
+            resourceInputs["bindVars"] = args?.bindVars;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["namespace"] = args?.namespace;
+            resourceInputs["partition"] = args?.partition;
+            resourceInputs["selector"] = args?.selector;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AclBindingRule.__pulumiType, name, resourceInputs, opts);

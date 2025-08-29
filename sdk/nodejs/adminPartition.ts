@@ -60,15 +60,15 @@ export class AdminPartition extends pulumi.CustomResource {
     /**
      * Free form partition description.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * . Disable gossip pool for the partition. Defaults to `false`.
      */
-    public readonly disableGossip!: pulumi.Output<boolean | undefined>;
+    declare public readonly disableGossip: pulumi.Output<boolean | undefined>;
     /**
      * The partition name. This must be a valid DNS hostname label.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
 
     /**
      * Create a AdminPartition resource with the given unique name, arguments, and options.
@@ -83,14 +83,14 @@ export class AdminPartition extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AdminPartitionState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["disableGossip"] = state ? state.disableGossip : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["disableGossip"] = state?.disableGossip;
+            resourceInputs["name"] = state?.name;
         } else {
             const args = argsOrState as AdminPartitionArgs | undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["disableGossip"] = args ? args.disableGossip : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["disableGossip"] = args?.disableGossip;
+            resourceInputs["name"] = args?.name;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AdminPartition.__pulumiType, name, resourceInputs, opts);
