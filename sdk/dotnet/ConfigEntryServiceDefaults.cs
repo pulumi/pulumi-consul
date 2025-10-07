@@ -11,6 +11,55 @@ namespace Pulumi.Consul
 {
     /// <summary>
     /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Consul = Pulumi.Consul;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var dashboard = new Consul.ConfigEntryServiceDefaults("dashboard", new()
+    ///     {
+    ///         Name = "dashboard",
+    ///         UpstreamConfigs = new[]
+    ///         {
+    ///             new Consul.Inputs.ConfigEntryServiceDefaultsUpstreamConfigArgs
+    ///             {
+    ///                 Defaults = 
+    ///                 {
+    ///                     { "meshGateways", new Consul.Inputs.ConfigEntryServiceDefaultsUpstreamConfigDefaultArgs
+    ///                     {
+    ///                         Mode = "local",
+    ///                     } },
+    ///                     { "limits", new Consul.Inputs.ConfigEntryServiceDefaultsUpstreamConfigDefaultArgs
+    ///                     {
+    ///                         MaxConnections = 512,
+    ///                         MaxPendingRequests = 512,
+    ///                         MaxConcurrentRequests = 512,
+    ///                     } },
+    ///                 },
+    ///                 Overrides = new[]
+    ///                 {
+    ///                     new Consul.Inputs.ConfigEntryServiceDefaultsUpstreamConfigOverrideArgs
+    ///                     {
+    ///                         Name = "counting",
+    ///                         MeshGateways = new[]
+    ///                         {
+    ///                             new Consul.Inputs.ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArgs
+    ///                             {
+    ///                                 Mode = "remote",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [ConsulResourceType("consul:index/configEntryServiceDefaults:ConfigEntryServiceDefaults")]
     public partial class ConfigEntryServiceDefaults : global::Pulumi.CustomResource

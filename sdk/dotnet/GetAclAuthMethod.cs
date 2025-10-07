@@ -160,7 +160,7 @@ namespace Pulumi.Consul
         /// The configuration options of the ACL Auth Method. This attribute is
         /// deprecated and will be removed in a future version. If the configuration is
         /// too complex to be represented as a map of strings, it will be blank.
-        /// `config_json` should be used instead.
+        /// `ConfigJson` should be used instead.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Config;
         /// <summary>
