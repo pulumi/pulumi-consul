@@ -13,7 +13,7 @@ namespace Pulumi.Consul.Inputs
     public sealed class AclAuthMethodNamespaceRuleGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If the namespace rule's `selector` matches then this is used to control the namespace where the token is created.
+        /// If the namespace rule's `Selector` matches then this is used to control the namespace where the token is created.
         /// </summary>
         [Input("bindNamespace", required: true)]
         public Input<string> BindNamespace { get; set; } = null!;

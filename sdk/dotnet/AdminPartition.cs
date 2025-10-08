@@ -51,7 +51,7 @@ namespace Pulumi.Consul
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// . Disable gossip pool for the partition. Defaults to `false`.
+        /// . Disable gossip pool for the partition. Defaults to `False`.
         /// </summary>
         [Output("disableGossip")]
         public Output<bool?> DisableGossip { get; private set; } = null!;
@@ -115,7 +115,7 @@ namespace Pulumi.Consul
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// . Disable gossip pool for the partition. Defaults to `false`.
+        /// . Disable gossip pool for the partition. Defaults to `False`.
         /// </summary>
         [Input("disableGossip")]
         public Input<bool>? DisableGossip { get; set; }
@@ -141,7 +141,7 @@ namespace Pulumi.Consul
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// . Disable gossip pool for the partition. Defaults to `false`.
+        /// . Disable gossip pool for the partition. Defaults to `False`.
         /// </summary>
         [Input("disableGossip")]
         public Input<bool>? DisableGossip { get; set; }

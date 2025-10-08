@@ -362,7 +362,7 @@ namespace Pulumi.Consul
     /// });
     /// ```
     /// 
-    /// ### `mesh` config entry
+    /// ### `Mesh` config entry
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
