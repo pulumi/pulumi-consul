@@ -36,7 +36,7 @@ public final class KeyPrefixSubkeyCollectionArgs extends com.pulumi.resources.Re
 
     /**
      * This is the path (which will be appended to the given
-     * `path_prefix`) in Consul that should be written to.
+     * `pathPrefix`) in Consul that should be written to.
      * 
      */
     @Import(name="path", required=true)
@@ -44,7 +44,7 @@ public final class KeyPrefixSubkeyCollectionArgs extends com.pulumi.resources.Re
 
     /**
      * @return This is the path (which will be appended to the given
-     * `path_prefix`) in Consul that should be written to.
+     * `pathPrefix`) in Consul that should be written to.
      * 
      */
     public Output<String> path() {
@@ -117,7 +117,7 @@ public final class KeyPrefixSubkeyCollectionArgs extends com.pulumi.resources.Re
 
         /**
          * @param path This is the path (which will be appended to the given
-         * `path_prefix`) in Consul that should be written to.
+         * `pathPrefix`) in Consul that should be written to.
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class KeyPrefixSubkeyCollectionArgs extends com.pulumi.resources.Re
 
         /**
          * @param path This is the path (which will be appended to the given
-         * `path_prefix`) in Consul that should be written to.
+         * `pathPrefix`) in Consul that should be written to.
          * 
          * @return builder
          * 

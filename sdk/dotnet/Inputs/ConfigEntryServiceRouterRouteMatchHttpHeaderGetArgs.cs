@@ -37,7 +37,7 @@ namespace Pulumi.Consul.Inputs
         public Input<string>? Prefix { get; set; }
 
         /// <summary>
-        /// Specifies that a request matches when the value in the `name` argument is present anywhere in the HTTP header.
+        /// Specifies that a request matches when the value in the `Name` argument is present anywhere in the HTTP header.
         /// </summary>
         [Input("present")]
         public Input<bool>? Present { get; set; }

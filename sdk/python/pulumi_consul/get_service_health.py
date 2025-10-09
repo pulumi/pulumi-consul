@@ -175,6 +175,8 @@ def get_service_health(datacenter: Optional[_builtins.str] = None,
     This resource is likely to change as frequently as the health-checks are being
     updated, you should expect different results in a frequent basis.
 
+    ## Example Usage
+
 
     :param _builtins.str datacenter: The Consul datacenter to query.
     :param _builtins.str filter: A filter expression to refine the list of results, see
@@ -229,6 +231,8 @@ def get_service_health_output(datacenter: Optional[pulumi.Input[Optional[_builti
 
     This resource is likely to change as frequently as the health-checks are being
     updated, you should expect different results in a frequent basis.
+
+    ## Example Usage
 
 
     :param _builtins.str datacenter: The Consul datacenter to query.

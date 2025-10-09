@@ -20,7 +20,7 @@ public final class GetCatalogNodesNode {
      *   of the Consul node.
      * * [`address`](https://www.consul.io/docs/agent/http/catalog.html#Address) - The
      *   IP address the node is advertising to the Consul cluster.
-     * * [`tagged_addresses`](https://www.consul.io/docs/agent/http/catalog.html#TaggedAddresses) -
+     * * [`taggedAddresses`](https://www.consul.io/docs/agent/http/catalog.html#TaggedAddresses) -
      *   List of explicit LAN and WAN IP addresses for the agent.
      * 
      */
@@ -41,7 +41,7 @@ public final class GetCatalogNodesNode {
      *   of the Consul node.
      * * [`address`](https://www.consul.io/docs/agent/http/catalog.html#Address) - The
      *   IP address the node is advertising to the Consul cluster.
-     * * [`tagged_addresses`](https://www.consul.io/docs/agent/http/catalog.html#TaggedAddresses) -
+     * * [`taggedAddresses`](https://www.consul.io/docs/agent/http/catalog.html#TaggedAddresses) -
      *   List of explicit LAN and WAN IP addresses for the agent.
      * 
      */

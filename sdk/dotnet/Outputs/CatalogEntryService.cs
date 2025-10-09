@@ -19,7 +19,7 @@ namespace Pulumi.Consul.Outputs
         /// </summary>
         public readonly string? Address;
         /// <summary>
-        /// The ID of the service. Defaults to the `name`.
+        /// The ID of the service. Defaults to the `Name`.
         /// </summary>
         public readonly string? Id;
         /// <summary>

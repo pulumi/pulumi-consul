@@ -103,7 +103,7 @@ public final class KeyPrefixState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * A mapping from subkey name (which will be appended
-     * to the given `path_prefix`) to the value that should be stored at that key.
+     * to the given `pathPrefix`) to the value that should be stored at that key.
      * Use slashes, as shown in the above example, to create &#34;sub-folders&#34; under
      * the given path prefix.
      * 
@@ -113,7 +113,7 @@ public final class KeyPrefixState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return A mapping from subkey name (which will be appended
-     * to the given `path_prefix`) to the value that should be stored at that key.
+     * to the given `pathPrefix`) to the value that should be stored at that key.
      * Use slashes, as shown in the above example, to create &#34;sub-folders&#34; under
      * the given path prefix.
      * 
@@ -307,7 +307,7 @@ Please use the token argument in the provider configuration */
 
         /**
          * @param subkeys A mapping from subkey name (which will be appended
-         * to the given `path_prefix`) to the value that should be stored at that key.
+         * to the given `pathPrefix`) to the value that should be stored at that key.
          * Use slashes, as shown in the above example, to create &#34;sub-folders&#34; under
          * the given path prefix.
          * 
@@ -321,7 +321,7 @@ Please use the token argument in the provider configuration */
 
         /**
          * @param subkeys A mapping from subkey name (which will be appended
-         * to the given `path_prefix`) to the value that should be stored at that key.
+         * to the given `pathPrefix`) to the value that should be stored at that key.
          * Use slashes, as shown in the above example, to create &#34;sub-folders&#34; under
          * the given path prefix.
          * 

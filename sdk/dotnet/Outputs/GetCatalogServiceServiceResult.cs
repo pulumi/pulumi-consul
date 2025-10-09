@@ -26,27 +26,27 @@ namespace Pulumi.Consul.Outputs
         public readonly string NodeAddress;
         /// <summary>
         /// The Node ID of the Consul agent advertising the service.
-        /// * [`node_meta`](https://www.consul.io/docs/agent/http/catalog.html#Meta) - Node
+        /// * [`NodeMeta`](https://www.consul.io/docs/agent/http/catalog.html#Meta) - Node
         /// meta data tag information, if any.
-        /// * [`node_name`](https://www.consul.io/docs/agent/http/catalog.html#Node) - The
+        /// * [`NodeName`](https://www.consul.io/docs/agent/http/catalog.html#Node) - The
         /// name of the Consul node.
-        /// * [`address`](https://www.consul.io/docs/agent/http/catalog.html#ServiceAddress) -
+        /// * [`Address`](https://www.consul.io/docs/agent/http/catalog.html#ServiceAddress) -
         /// The IP address of the service.  If the `ServiceAddress` in the Consul catalog
-        /// is empty, this value is automatically populated with the `node_address` (the
+        /// is empty, this value is automatically populated with the `NodeAddress` (the
         /// `Address` in the Consul Catalog).
-        /// * [`enable_tag_override`](https://www.consul.io/docs/agent/http/catalog.html#ServiceEnableTagOverride) -
+        /// * [`EnableTagOverride`](https://www.consul.io/docs/agent/http/catalog.html#ServiceEnableTagOverride) -
         /// Whether service tags can be overridden on this service.
-        /// * [`id`](https://www.consul.io/docs/agent/http/catalog.html#ServiceID) - A
+        /// * [`Id`](https://www.consul.io/docs/agent/http/catalog.html#ServiceID) - A
         /// unique service instance identifier.
-        /// * [`name`](https://www.consul.io/docs/agent/http/catalog.html#ServiceName) - The
+        /// * [`Name`](https://www.consul.io/docs/agent/http/catalog.html#ServiceName) - The
         /// name of the service.
-        /// * [`port`](https://www.consul.io/docs/agent/http/catalog.html#ServicePort) -
+        /// * [`Port`](https://www.consul.io/docs/agent/http/catalog.html#ServicePort) -
         /// Port number of the service.
-        /// * [`tagged_addresses`](https://www.consul.io/docs/agent/http/catalog.html#TaggedAddresses) -
+        /// * [`TaggedAddresses`](https://www.consul.io/docs/agent/http/catalog.html#TaggedAddresses) -
         /// List of explicit LAN and WAN IP addresses for the agent.
-        /// * [`tags`](https://www.consul.io/docs/agent/http/catalog.html#ServiceTags) -
+        /// * [`Tags`](https://www.consul.io/docs/agent/http/catalog.html#ServiceTags) -
         /// List of tags for the service.
-        /// * [`meta`](https://www.consul.io/docs/agent/http/catalog.html#Meta) - Service meta
+        /// * [`Meta`](https://www.consul.io/docs/agent/http/catalog.html#Meta) - Service meta
         /// data tag information, if any.
         /// </summary>
         public readonly string NodeId;
