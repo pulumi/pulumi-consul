@@ -1515,6 +1515,8 @@ public final class ConsulFunctions {
      * [configuration and status data](https://www.consul.io/docs/agent/http/agent.html#agent_self)
      * from the agent specified in the `provider`.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetAgentSelfResult> getAgentSelf() {
         return getAgentSelf(InvokeArgs.Empty, InvokeOptions.Empty);
@@ -1526,6 +1528,8 @@ public final class ConsulFunctions {
      * The `consul.getAgentSelf` data source returns
      * [configuration and status data](https://www.consul.io/docs/agent/http/agent.html#agent_self)
      * from the agent specified in the `provider`.
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetAgentSelfResult> getAgentSelfPlain() {
@@ -1539,6 +1543,8 @@ public final class ConsulFunctions {
      * [configuration and status data](https://www.consul.io/docs/agent/http/agent.html#agent_self)
      * from the agent specified in the `provider`.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetAgentSelfResult> getAgentSelf(InvokeArgs args) {
         return getAgentSelf(args, InvokeOptions.Empty);
@@ -1550,6 +1556,8 @@ public final class ConsulFunctions {
      * The `consul.getAgentSelf` data source returns
      * [configuration and status data](https://www.consul.io/docs/agent/http/agent.html#agent_self)
      * from the agent specified in the `provider`.
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetAgentSelfResult> getAgentSelfPlain(InvokeArgs args) {
@@ -1563,6 +1571,8 @@ public final class ConsulFunctions {
      * [configuration and status data](https://www.consul.io/docs/agent/http/agent.html#agent_self)
      * from the agent specified in the `provider`.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetAgentSelfResult> getAgentSelf(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("consul:index/getAgentSelf:getAgentSelf", TypeShape.of(GetAgentSelfResult.class), args, Utilities.withVersion(options));
@@ -1575,6 +1585,8 @@ public final class ConsulFunctions {
      * [configuration and status data](https://www.consul.io/docs/agent/http/agent.html#agent_self)
      * from the agent specified in the `provider`.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetAgentSelfResult> getAgentSelf(InvokeArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("consul:index/getAgentSelf:getAgentSelf", TypeShape.of(GetAgentSelfResult.class), args, Utilities.withVersion(options));
@@ -1586,6 +1598,8 @@ public final class ConsulFunctions {
      * The `consul.getAgentSelf` data source returns
      * [configuration and status data](https://www.consul.io/docs/agent/http/agent.html#agent_self)
      * from the agent specified in the `provider`.
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetAgentSelfResult> getAgentSelfPlain(InvokeArgs args, InvokeOptions options) {
@@ -1888,7 +1902,7 @@ public final class ConsulFunctions {
     /**
      * The `consul.getNodes` data source returns a list of Consul nodes that have
      * been registered with the Consul cluster in a given datacenter.  By specifying a
-     * different datacenter in the `query_options` it is possible to retrieve a list of
+     * different datacenter in the `queryOptions` it is possible to retrieve a list of
      * nodes from a different WAN-attached Consul datacenter.
      * 
      * @deprecated
@@ -1902,7 +1916,7 @@ public final class ConsulFunctions {
     /**
      * The `consul.getNodes` data source returns a list of Consul nodes that have
      * been registered with the Consul cluster in a given datacenter.  By specifying a
-     * different datacenter in the `query_options` it is possible to retrieve a list of
+     * different datacenter in the `queryOptions` it is possible to retrieve a list of
      * nodes from a different WAN-attached Consul datacenter.
      * 
      * @deprecated
@@ -1916,7 +1930,7 @@ public final class ConsulFunctions {
     /**
      * The `consul.getNodes` data source returns a list of Consul nodes that have
      * been registered with the Consul cluster in a given datacenter.  By specifying a
-     * different datacenter in the `query_options` it is possible to retrieve a list of
+     * different datacenter in the `queryOptions` it is possible to retrieve a list of
      * nodes from a different WAN-attached Consul datacenter.
      * 
      * @deprecated
@@ -1930,7 +1944,7 @@ public final class ConsulFunctions {
     /**
      * The `consul.getNodes` data source returns a list of Consul nodes that have
      * been registered with the Consul cluster in a given datacenter.  By specifying a
-     * different datacenter in the `query_options` it is possible to retrieve a list of
+     * different datacenter in the `queryOptions` it is possible to retrieve a list of
      * nodes from a different WAN-attached Consul datacenter.
      * 
      * @deprecated
@@ -1944,7 +1958,7 @@ public final class ConsulFunctions {
     /**
      * The `consul.getNodes` data source returns a list of Consul nodes that have
      * been registered with the Consul cluster in a given datacenter.  By specifying a
-     * different datacenter in the `query_options` it is possible to retrieve a list of
+     * different datacenter in the `queryOptions` it is possible to retrieve a list of
      * nodes from a different WAN-attached Consul datacenter.
      * 
      * @deprecated
@@ -1958,7 +1972,7 @@ public final class ConsulFunctions {
     /**
      * The `consul.getNodes` data source returns a list of Consul nodes that have
      * been registered with the Consul cluster in a given datacenter.  By specifying a
-     * different datacenter in the `query_options` it is possible to retrieve a list of
+     * different datacenter in the `queryOptions` it is possible to retrieve a list of
      * nodes from a different WAN-attached Consul datacenter.
      * 
      * @deprecated
@@ -1972,7 +1986,7 @@ public final class ConsulFunctions {
     /**
      * The `consul.getNodes` data source returns a list of Consul nodes that have
      * been registered with the Consul cluster in a given datacenter.  By specifying a
-     * different datacenter in the `query_options` it is possible to retrieve a list of
+     * different datacenter in the `queryOptions` it is possible to retrieve a list of
      * nodes from a different WAN-attached Consul datacenter.
      * 
      * @deprecated
@@ -1987,7 +2001,7 @@ public final class ConsulFunctions {
      * `consul.Service` provides details about a specific Consul service in a
      * given datacenter.  The results include a list of nodes advertising the specified
      * service, the node&#39;s IP address, port number, node ID, etc.  By specifying a
-     * different datacenter in the `query_options` it is possible to retrieve a list of
+     * different datacenter in the `queryOptions` it is possible to retrieve a list of
      * services from a different WAN-attached Consul datacenter.
      * 
      * This data source is different from the `consul.getServices` (plural) data
@@ -2051,7 +2065,7 @@ public final class ConsulFunctions {
      * `consul.Service` provides details about a specific Consul service in a
      * given datacenter.  The results include a list of nodes advertising the specified
      * service, the node&#39;s IP address, port number, node ID, etc.  By specifying a
-     * different datacenter in the `query_options` it is possible to retrieve a list of
+     * different datacenter in the `queryOptions` it is possible to retrieve a list of
      * services from a different WAN-attached Consul datacenter.
      * 
      * This data source is different from the `consul.getServices` (plural) data
@@ -2115,7 +2129,7 @@ public final class ConsulFunctions {
      * `consul.Service` provides details about a specific Consul service in a
      * given datacenter.  The results include a list of nodes advertising the specified
      * service, the node&#39;s IP address, port number, node ID, etc.  By specifying a
-     * different datacenter in the `query_options` it is possible to retrieve a list of
+     * different datacenter in the `queryOptions` it is possible to retrieve a list of
      * services from a different WAN-attached Consul datacenter.
      * 
      * This data source is different from the `consul.getServices` (plural) data
@@ -2179,7 +2193,7 @@ public final class ConsulFunctions {
      * `consul.Service` provides details about a specific Consul service in a
      * given datacenter.  The results include a list of nodes advertising the specified
      * service, the node&#39;s IP address, port number, node ID, etc.  By specifying a
-     * different datacenter in the `query_options` it is possible to retrieve a list of
+     * different datacenter in the `queryOptions` it is possible to retrieve a list of
      * services from a different WAN-attached Consul datacenter.
      * 
      * This data source is different from the `consul.getServices` (plural) data
@@ -2243,7 +2257,7 @@ public final class ConsulFunctions {
      * `consul.Service` provides details about a specific Consul service in a
      * given datacenter.  The results include a list of nodes advertising the specified
      * service, the node&#39;s IP address, port number, node ID, etc.  By specifying a
-     * different datacenter in the `query_options` it is possible to retrieve a list of
+     * different datacenter in the `queryOptions` it is possible to retrieve a list of
      * services from a different WAN-attached Consul datacenter.
      * 
      * This data source is different from the `consul.getServices` (plural) data
@@ -2306,7 +2320,7 @@ public final class ConsulFunctions {
     /**
      * The `consul.getServices` data source returns a list of Consul services that
      * have been registered with the Consul cluster in a given datacenter.  By
-     * specifying a different datacenter in the `query_options` it is possible to
+     * specifying a different datacenter in the `queryOptions` it is possible to
      * retrieve a list of services from a different WAN-attached Consul datacenter.
      * 
      * This data source is different from the `consul.Service` (singular) data
@@ -2370,7 +2384,7 @@ public final class ConsulFunctions {
     /**
      * The `consul.getServices` data source returns a list of Consul services that
      * have been registered with the Consul cluster in a given datacenter.  By
-     * specifying a different datacenter in the `query_options` it is possible to
+     * specifying a different datacenter in the `queryOptions` it is possible to
      * retrieve a list of services from a different WAN-attached Consul datacenter.
      * 
      * This data source is different from the `consul.Service` (singular) data
@@ -2434,7 +2448,7 @@ public final class ConsulFunctions {
     /**
      * The `consul.getServices` data source returns a list of Consul services that
      * have been registered with the Consul cluster in a given datacenter.  By
-     * specifying a different datacenter in the `query_options` it is possible to
+     * specifying a different datacenter in the `queryOptions` it is possible to
      * retrieve a list of services from a different WAN-attached Consul datacenter.
      * 
      * This data source is different from the `consul.Service` (singular) data
@@ -2498,7 +2512,7 @@ public final class ConsulFunctions {
     /**
      * The `consul.getServices` data source returns a list of Consul services that
      * have been registered with the Consul cluster in a given datacenter.  By
-     * specifying a different datacenter in the `query_options` it is possible to
+     * specifying a different datacenter in the `queryOptions` it is possible to
      * retrieve a list of services from a different WAN-attached Consul datacenter.
      * 
      * This data source is different from the `consul.Service` (singular) data
@@ -2562,7 +2576,7 @@ public final class ConsulFunctions {
     /**
      * The `consul.getServices` data source returns a list of Consul services that
      * have been registered with the Consul cluster in a given datacenter.  By
-     * specifying a different datacenter in the `query_options` it is possible to
+     * specifying a different datacenter in the `queryOptions` it is possible to
      * retrieve a list of services from a different WAN-attached Consul datacenter.
      * 
      * This data source is different from the `consul.Service` (singular) data
@@ -2626,7 +2640,7 @@ public final class ConsulFunctions {
     /**
      * The `consul.getServices` data source returns a list of Consul services that
      * have been registered with the Consul cluster in a given datacenter.  By
-     * specifying a different datacenter in the `query_options` it is possible to
+     * specifying a different datacenter in the `queryOptions` it is possible to
      * retrieve a list of services from a different WAN-attached Consul datacenter.
      * 
      * This data source is different from the `consul.Service` (singular) data
@@ -2690,7 +2704,7 @@ public final class ConsulFunctions {
     /**
      * The `consul.getServices` data source returns a list of Consul services that
      * have been registered with the Consul cluster in a given datacenter.  By
-     * specifying a different datacenter in the `query_options` it is possible to
+     * specifying a different datacenter in the `queryOptions` it is possible to
      * retrieve a list of services from a different WAN-attached Consul datacenter.
      * 
      * This data source is different from the `consul.Service` (singular) data
@@ -3924,7 +3938,7 @@ public final class ConsulFunctions {
     /**
      * &gt; **NOTE:** This feature requires [Consul Enterprise](https://www.consul.io/docs/enterprise/index.html).
      * 
-     * The `consul_network_segment` data source can be used to retrieve the network
+     * The `consulNetworkSegment` data source can be used to retrieve the network
      * segments defined in the configuration.
      * 
      * ## Example Usage
@@ -3967,7 +3981,7 @@ public final class ConsulFunctions {
     /**
      * &gt; **NOTE:** This feature requires [Consul Enterprise](https://www.consul.io/docs/enterprise/index.html).
      * 
-     * The `consul_network_segment` data source can be used to retrieve the network
+     * The `consulNetworkSegment` data source can be used to retrieve the network
      * segments defined in the configuration.
      * 
      * ## Example Usage
@@ -4010,7 +4024,7 @@ public final class ConsulFunctions {
     /**
      * &gt; **NOTE:** This feature requires [Consul Enterprise](https://www.consul.io/docs/enterprise/index.html).
      * 
-     * The `consul_network_segment` data source can be used to retrieve the network
+     * The `consulNetworkSegment` data source can be used to retrieve the network
      * segments defined in the configuration.
      * 
      * ## Example Usage
@@ -4053,7 +4067,7 @@ public final class ConsulFunctions {
     /**
      * &gt; **NOTE:** This feature requires [Consul Enterprise](https://www.consul.io/docs/enterprise/index.html).
      * 
-     * The `consul_network_segment` data source can be used to retrieve the network
+     * The `consulNetworkSegment` data source can be used to retrieve the network
      * segments defined in the configuration.
      * 
      * ## Example Usage
@@ -4096,7 +4110,7 @@ public final class ConsulFunctions {
     /**
      * &gt; **NOTE:** This feature requires [Consul Enterprise](https://www.consul.io/docs/enterprise/index.html).
      * 
-     * The `consul_network_segment` data source can be used to retrieve the network
+     * The `consulNetworkSegment` data source can be used to retrieve the network
      * segments defined in the configuration.
      * 
      * ## Example Usage
@@ -4139,7 +4153,7 @@ public final class ConsulFunctions {
     /**
      * &gt; **NOTE:** This feature requires [Consul Enterprise](https://www.consul.io/docs/enterprise/index.html).
      * 
-     * The `consul_network_segment` data source can be used to retrieve the network
+     * The `consulNetworkSegment` data source can be used to retrieve the network
      * segments defined in the configuration.
      * 
      * ## Example Usage
@@ -4182,7 +4196,7 @@ public final class ConsulFunctions {
     /**
      * &gt; **NOTE:** This feature requires [Consul Enterprise](https://www.consul.io/docs/enterprise/index.html).
      * 
-     * The `consul_network_segment` data source can be used to retrieve the network
+     * The `consulNetworkSegment` data source can be used to retrieve the network
      * segments defined in the configuration.
      * 
      * ## Example Usage
@@ -4225,7 +4239,7 @@ public final class ConsulFunctions {
     /**
      * The `consul.getNodes` data source returns a list of Consul nodes that have
      * been registered with the Consul cluster in a given datacenter.  By specifying a
-     * different datacenter in the `query_options` it is possible to retrieve a list of
+     * different datacenter in the `queryOptions` it is possible to retrieve a list of
      * nodes from a different WAN-attached Consul datacenter.
      * 
      */
@@ -4235,7 +4249,7 @@ public final class ConsulFunctions {
     /**
      * The `consul.getNodes` data source returns a list of Consul nodes that have
      * been registered with the Consul cluster in a given datacenter.  By specifying a
-     * different datacenter in the `query_options` it is possible to retrieve a list of
+     * different datacenter in the `queryOptions` it is possible to retrieve a list of
      * nodes from a different WAN-attached Consul datacenter.
      * 
      */
@@ -4245,7 +4259,7 @@ public final class ConsulFunctions {
     /**
      * The `consul.getNodes` data source returns a list of Consul nodes that have
      * been registered with the Consul cluster in a given datacenter.  By specifying a
-     * different datacenter in the `query_options` it is possible to retrieve a list of
+     * different datacenter in the `queryOptions` it is possible to retrieve a list of
      * nodes from a different WAN-attached Consul datacenter.
      * 
      */
@@ -4255,7 +4269,7 @@ public final class ConsulFunctions {
     /**
      * The `consul.getNodes` data source returns a list of Consul nodes that have
      * been registered with the Consul cluster in a given datacenter.  By specifying a
-     * different datacenter in the `query_options` it is possible to retrieve a list of
+     * different datacenter in the `queryOptions` it is possible to retrieve a list of
      * nodes from a different WAN-attached Consul datacenter.
      * 
      */
@@ -4265,7 +4279,7 @@ public final class ConsulFunctions {
     /**
      * The `consul.getNodes` data source returns a list of Consul nodes that have
      * been registered with the Consul cluster in a given datacenter.  By specifying a
-     * different datacenter in the `query_options` it is possible to retrieve a list of
+     * different datacenter in the `queryOptions` it is possible to retrieve a list of
      * nodes from a different WAN-attached Consul datacenter.
      * 
      */
@@ -4275,7 +4289,7 @@ public final class ConsulFunctions {
     /**
      * The `consul.getNodes` data source returns a list of Consul nodes that have
      * been registered with the Consul cluster in a given datacenter.  By specifying a
-     * different datacenter in the `query_options` it is possible to retrieve a list of
+     * different datacenter in the `queryOptions` it is possible to retrieve a list of
      * nodes from a different WAN-attached Consul datacenter.
      * 
      */
@@ -4285,7 +4299,7 @@ public final class ConsulFunctions {
     /**
      * The `consul.getNodes` data source returns a list of Consul nodes that have
      * been registered with the Consul cluster in a given datacenter.  By specifying a
-     * different datacenter in the `query_options` it is possible to retrieve a list of
+     * different datacenter in the `queryOptions` it is possible to retrieve a list of
      * nodes from a different WAN-attached Consul datacenter.
      * 
      */
@@ -4745,7 +4759,7 @@ public final class ConsulFunctions {
      * `consul.Service` provides details about a specific Consul service in a
      * given datacenter.  The results include a list of nodes advertising the specified
      * service, the node&#39;s IP address, port number, node ID, etc.  By specifying a
-     * different datacenter in the `query_options` it is possible to retrieve a list of
+     * different datacenter in the `queryOptions` it is possible to retrieve a list of
      * services from a different WAN-attached Consul datacenter.
      * 
      * This data source is different from the `consul.getServices` (plural) data
@@ -4805,7 +4819,7 @@ public final class ConsulFunctions {
      * `consul.Service` provides details about a specific Consul service in a
      * given datacenter.  The results include a list of nodes advertising the specified
      * service, the node&#39;s IP address, port number, node ID, etc.  By specifying a
-     * different datacenter in the `query_options` it is possible to retrieve a list of
+     * different datacenter in the `queryOptions` it is possible to retrieve a list of
      * services from a different WAN-attached Consul datacenter.
      * 
      * This data source is different from the `consul.getServices` (plural) data
@@ -4865,7 +4879,7 @@ public final class ConsulFunctions {
      * `consul.Service` provides details about a specific Consul service in a
      * given datacenter.  The results include a list of nodes advertising the specified
      * service, the node&#39;s IP address, port number, node ID, etc.  By specifying a
-     * different datacenter in the `query_options` it is possible to retrieve a list of
+     * different datacenter in the `queryOptions` it is possible to retrieve a list of
      * services from a different WAN-attached Consul datacenter.
      * 
      * This data source is different from the `consul.getServices` (plural) data
@@ -4925,7 +4939,7 @@ public final class ConsulFunctions {
      * `consul.Service` provides details about a specific Consul service in a
      * given datacenter.  The results include a list of nodes advertising the specified
      * service, the node&#39;s IP address, port number, node ID, etc.  By specifying a
-     * different datacenter in the `query_options` it is possible to retrieve a list of
+     * different datacenter in the `queryOptions` it is possible to retrieve a list of
      * services from a different WAN-attached Consul datacenter.
      * 
      * This data source is different from the `consul.getServices` (plural) data
@@ -4985,7 +4999,7 @@ public final class ConsulFunctions {
      * `consul.Service` provides details about a specific Consul service in a
      * given datacenter.  The results include a list of nodes advertising the specified
      * service, the node&#39;s IP address, port number, node ID, etc.  By specifying a
-     * different datacenter in the `query_options` it is possible to retrieve a list of
+     * different datacenter in the `queryOptions` it is possible to retrieve a list of
      * services from a different WAN-attached Consul datacenter.
      * 
      * This data source is different from the `consul.getServices` (plural) data
@@ -5050,6 +5064,8 @@ public final class ConsulFunctions {
      * This resource is likely to change as frequently as the health-checks are being
      * updated, you should expect different results in a frequent basis.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetServiceHealthInvokeResult> getServiceHealth(GetServiceHealthArgs args) {
         return getServiceHealth(args, InvokeOptions.Empty);
@@ -5062,6 +5078,8 @@ public final class ConsulFunctions {
      * 
      * This resource is likely to change as frequently as the health-checks are being
      * updated, you should expect different results in a frequent basis.
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetServiceHealthInvokeResult> getServiceHealthPlain(GetServiceHealthPlainArgs args) {
@@ -5076,6 +5094,8 @@ public final class ConsulFunctions {
      * This resource is likely to change as frequently as the health-checks are being
      * updated, you should expect different results in a frequent basis.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetServiceHealthInvokeResult> getServiceHealth(GetServiceHealthArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("consul:index/getServiceHealth:getServiceHealth", TypeShape.of(GetServiceHealthInvokeResult.class), args, Utilities.withVersion(options));
@@ -5088,6 +5108,8 @@ public final class ConsulFunctions {
      * 
      * This resource is likely to change as frequently as the health-checks are being
      * updated, you should expect different results in a frequent basis.
+     * 
+     * ## Example Usage
      * 
      */
     public static Output<GetServiceHealthInvokeResult> getServiceHealth(GetServiceHealthArgs args, InvokeOutputOptions options) {
@@ -5102,6 +5124,8 @@ public final class ConsulFunctions {
      * This resource is likely to change as frequently as the health-checks are being
      * updated, you should expect different results in a frequent basis.
      * 
+     * ## Example Usage
+     * 
      */
     public static CompletableFuture<GetServiceHealthInvokeResult> getServiceHealthPlain(GetServiceHealthPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("consul:index/getServiceHealth:getServiceHealth", TypeShape.of(GetServiceHealthInvokeResult.class), args, Utilities.withVersion(options));
@@ -5109,7 +5133,7 @@ public final class ConsulFunctions {
     /**
      * The `consul.getServices` data source returns a list of Consul services that
      * have been registered with the Consul cluster in a given datacenter.  By
-     * specifying a different datacenter in the `query_options` it is possible to
+     * specifying a different datacenter in the `queryOptions` it is possible to
      * retrieve a list of services from a different WAN-attached Consul datacenter.
      * 
      * This data source is different from the `consul.Service` (singular) data
@@ -5169,7 +5193,7 @@ public final class ConsulFunctions {
     /**
      * The `consul.getServices` data source returns a list of Consul services that
      * have been registered with the Consul cluster in a given datacenter.  By
-     * specifying a different datacenter in the `query_options` it is possible to
+     * specifying a different datacenter in the `queryOptions` it is possible to
      * retrieve a list of services from a different WAN-attached Consul datacenter.
      * 
      * This data source is different from the `consul.Service` (singular) data
@@ -5229,7 +5253,7 @@ public final class ConsulFunctions {
     /**
      * The `consul.getServices` data source returns a list of Consul services that
      * have been registered with the Consul cluster in a given datacenter.  By
-     * specifying a different datacenter in the `query_options` it is possible to
+     * specifying a different datacenter in the `queryOptions` it is possible to
      * retrieve a list of services from a different WAN-attached Consul datacenter.
      * 
      * This data source is different from the `consul.Service` (singular) data
@@ -5289,7 +5313,7 @@ public final class ConsulFunctions {
     /**
      * The `consul.getServices` data source returns a list of Consul services that
      * have been registered with the Consul cluster in a given datacenter.  By
-     * specifying a different datacenter in the `query_options` it is possible to
+     * specifying a different datacenter in the `queryOptions` it is possible to
      * retrieve a list of services from a different WAN-attached Consul datacenter.
      * 
      * This data source is different from the `consul.Service` (singular) data
@@ -5349,7 +5373,7 @@ public final class ConsulFunctions {
     /**
      * The `consul.getServices` data source returns a list of Consul services that
      * have been registered with the Consul cluster in a given datacenter.  By
-     * specifying a different datacenter in the `query_options` it is possible to
+     * specifying a different datacenter in the `queryOptions` it is possible to
      * retrieve a list of services from a different WAN-attached Consul datacenter.
      * 
      * This data source is different from the `consul.Service` (singular) data
@@ -5409,7 +5433,7 @@ public final class ConsulFunctions {
     /**
      * The `consul.getServices` data source returns a list of Consul services that
      * have been registered with the Consul cluster in a given datacenter.  By
-     * specifying a different datacenter in the `query_options` it is possible to
+     * specifying a different datacenter in the `queryOptions` it is possible to
      * retrieve a list of services from a different WAN-attached Consul datacenter.
      * 
      * This data source is different from the `consul.Service` (singular) data
@@ -5469,7 +5493,7 @@ public final class ConsulFunctions {
     /**
      * The `consul.getServices` data source returns a list of Consul services that
      * have been registered with the Consul cluster in a given datacenter.  By
-     * specifying a different datacenter in the `query_options` it is possible to
+     * specifying a different datacenter in the `queryOptions` it is possible to
      * retrieve a list of services from a different WAN-attached Consul datacenter.
      * 
      * This data source is different from the `consul.Service` (singular) data

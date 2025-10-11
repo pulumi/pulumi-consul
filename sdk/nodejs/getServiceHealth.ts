@@ -14,6 +14,8 @@ import * as utilities from "./utilities";
  *
  * This resource is likely to change as frequently as the health-checks are being
  * updated, you should expect different results in a frequent basis.
+ *
+ * ## Example Usage
  */
 export function getServiceHealth(args: GetServiceHealthArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceHealthResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -121,6 +123,8 @@ export interface GetServiceHealthResult {
  *
  * This resource is likely to change as frequently as the health-checks are being
  * updated, you should expect different results in a frequent basis.
+ *
+ * ## Example Usage
  */
 export function getServiceHealthOutput(args: GetServiceHealthOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServiceHealthResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

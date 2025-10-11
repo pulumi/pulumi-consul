@@ -13,7 +13,7 @@ namespace Pulumi.Consul.Inputs
     public sealed class GetCatalogNodesQueryOptionArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// When `true`, the default, allow responses from
+        /// When `True`, the default, allow responses from
         /// Consul servers that are followers.
         /// </summary>
         [Input("allowStale")]
@@ -21,8 +21,8 @@ namespace Pulumi.Consul.Inputs
 
         /// <summary>
         /// The Consul datacenter to query.  Defaults to the
-        /// same value found in `query_options` parameter specified below, or if that is
-        /// empty, the `datacenter` value found in the Consul agent that this provider is
+        /// same value found in `QueryOptions` parameter specified below, or if that is
+        /// empty, the `Datacenter` value found in the Consul agent that this provider is
         /// configured to talk to then the datacenter in the provider setup.
         /// </summary>
         [Input("datacenter")]
@@ -43,9 +43,9 @@ namespace Pulumi.Consul.Inputs
         public string? Partition { get; set; }
 
         /// <summary>
-        /// When `true` force the client to perform a
+        /// When `True` force the client to perform a
         /// read on at least quorum servers and verify the result is the same.  Defaults
-        /// to `false`.
+        /// to `False`.
         /// </summary>
         [Input("requireConsistent")]
         public bool? RequireConsistent { get; set; }
@@ -55,7 +55,7 @@ namespace Pulumi.Consul.Inputs
 
         /// <summary>
         /// Specify the Consul ACL token to use when performing the
-        /// request.  This defaults to the same API token configured by the `consul`
+        /// request.  This defaults to the same API token configured by the `Consul`
         /// provider but may be overridden if necessary.
         /// </summary>
         public string? Token

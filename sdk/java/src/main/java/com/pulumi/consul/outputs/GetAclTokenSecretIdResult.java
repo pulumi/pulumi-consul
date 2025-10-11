@@ -23,7 +23,7 @@ public final class GetAclTokenSecretIdResult {
     private @Nullable String partition;
     private @Nullable String pgpKey;
     /**
-     * @return The secret ID of the ACL token if `pgp_key` has not been set.
+     * @return The secret ID of the ACL token if `pgpKey` has not been set.
      * 
      */
     private String secretId;
@@ -52,7 +52,7 @@ public final class GetAclTokenSecretIdResult {
         return Optional.ofNullable(this.pgpKey);
     }
     /**
-     * @return The secret ID of the ACL token if `pgp_key` has not been set.
+     * @return The secret ID of the ACL token if `pgpKey` has not been set.
      * 
      */
     public String secretId() {

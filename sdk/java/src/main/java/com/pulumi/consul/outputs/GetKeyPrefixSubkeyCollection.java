@@ -27,7 +27,7 @@ public final class GetKeyPrefixSubkeyCollection {
     private String name;
     /**
      * @return This is the subkey path in Consul (which will be appended
-     * to the given `path_prefix`) to construct the full key that will be used
+     * to the given `pathPrefix`) to construct the full key that will be used
      * to read the value.
      * 
      */
@@ -53,7 +53,7 @@ public final class GetKeyPrefixSubkeyCollection {
     }
     /**
      * @return This is the subkey path in Consul (which will be appended
-     * to the given `path_prefix`) to construct the full key that will be used
+     * to the given `pathPrefix`) to construct the full key that will be used
      * to read the value.
      * 
      */

@@ -15,7 +15,7 @@ namespace Pulumi.Consul
         /// `consul.Service` provides details about a specific Consul service in a
         /// given datacenter.  The results include a list of nodes advertising the specified
         /// service, the node's IP address, port number, node ID, etc.  By specifying a
-        /// different datacenter in the `query_options` it is possible to retrieve a list of
+        /// different datacenter in the `QueryOptions` it is possible to retrieve a list of
         /// services from a different WAN-attached Consul datacenter.
         /// 
         /// This data source is different from the `consul.getServices` (plural) data
@@ -59,7 +59,7 @@ namespace Pulumi.Consul
         /// `consul.Service` provides details about a specific Consul service in a
         /// given datacenter.  The results include a list of nodes advertising the specified
         /// service, the node's IP address, port number, node ID, etc.  By specifying a
-        /// different datacenter in the `query_options` it is possible to retrieve a list of
+        /// different datacenter in the `QueryOptions` it is possible to retrieve a list of
         /// services from a different WAN-attached Consul datacenter.
         /// 
         /// This data source is different from the `consul.getServices` (plural) data
@@ -103,7 +103,7 @@ namespace Pulumi.Consul
         /// `consul.Service` provides details about a specific Consul service in a
         /// given datacenter.  The results include a list of nodes advertising the specified
         /// service, the node's IP address, port number, node ID, etc.  By specifying a
-        /// different datacenter in the `query_options` it is possible to retrieve a list of
+        /// different datacenter in the `QueryOptions` it is possible to retrieve a list of
         /// services from a different WAN-attached Consul datacenter.
         /// 
         /// This data source is different from the `consul.getServices` (plural) data
@@ -149,8 +149,8 @@ namespace Pulumi.Consul
     {
         /// <summary>
         /// The Consul datacenter to query.  Defaults to the
-        /// same value found in `query_options` parameter specified below, or if that is
-        /// empty, the `datacenter` value found in the Consul agent that this provider is
+        /// same value found in `QueryOptions` parameter specified below, or if that is
+        /// empty, the `Datacenter` value found in the Consul agent that this provider is
         /// configured to talk to.
         /// </summary>
         [Input("datacenter")]
@@ -194,8 +194,8 @@ namespace Pulumi.Consul
     {
         /// <summary>
         /// The Consul datacenter to query.  Defaults to the
-        /// same value found in `query_options` parameter specified below, or if that is
-        /// empty, the `datacenter` value found in the Consul agent that this provider is
+        /// same value found in `QueryOptions` parameter specified below, or if that is
+        /// empty, the `Datacenter` value found in the Consul agent that this provider is
         /// configured to talk to.
         /// </summary>
         [Input("datacenter")]
@@ -260,7 +260,7 @@ namespace Pulumi.Consul
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceServiceResult> Services;
         /// <summary>
-        /// The name of the tag used to filter the list of nodes in `service`.
+        /// The name of the tag used to filter the list of nodes in `Service`.
         /// </summary>
         public readonly string? Tag;
 

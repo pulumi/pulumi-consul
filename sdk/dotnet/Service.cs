@@ -144,7 +144,7 @@ namespace Pulumi.Consul
         public Output<string> Datacenter { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies to disable the anti-entropy feature for this service's tags. Defaults to `false`.
+        /// Specifies to disable the anti-entropy feature for this service's tags. Defaults to `False`.
         /// </summary>
         [Output("enableTagOverride")]
         public Output<bool?> EnableTagOverride { get; private set; } = null!;
@@ -189,7 +189,7 @@ namespace Pulumi.Consul
         public Output<int?> Port { get; private set; } = null!;
 
         /// <summary>
-        /// If the service ID is not provided, it will be defaulted to the value of the `name` attribute.
+        /// If the service ID is not provided, it will be defaulted to the value of the `Name` attribute.
         /// </summary>
         [Output("serviceId")]
         public Output<string> ServiceId { get; private set; } = null!;
@@ -201,7 +201,7 @@ namespace Pulumi.Consul
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// Object that configures how the service responds to DNS SRV requests based on the service's health status. You can specify one or more of the following states and configure an integer value indicating its weight: `passing`, `warning`.
+        /// Object that configures how the service responds to DNS SRV requests based on the service's health status. You can specify one or more of the following states and configure an integer value indicating its weight: `Passing`, `Warning`.
         /// </summary>
         [Output("weights")]
         public Output<ImmutableDictionary<string, int>?> Weights { get; private set; } = null!;
@@ -273,7 +273,7 @@ namespace Pulumi.Consul
         public Input<string>? Datacenter { get; set; }
 
         /// <summary>
-        /// Specifies to disable the anti-entropy feature for this service's tags. Defaults to `false`.
+        /// Specifies to disable the anti-entropy feature for this service's tags. Defaults to `False`.
         /// </summary>
         [Input("enableTagOverride")]
         public Input<bool>? EnableTagOverride { get; set; }
@@ -324,7 +324,7 @@ namespace Pulumi.Consul
         public Input<int>? Port { get; set; }
 
         /// <summary>
-        /// If the service ID is not provided, it will be defaulted to the value of the `name` attribute.
+        /// If the service ID is not provided, it will be defaulted to the value of the `Name` attribute.
         /// </summary>
         [Input("serviceId")]
         public Input<string>? ServiceId { get; set; }
@@ -345,7 +345,7 @@ namespace Pulumi.Consul
         private InputMap<int>? _weights;
 
         /// <summary>
-        /// Object that configures how the service responds to DNS SRV requests based on the service's health status. You can specify one or more of the following states and configure an integer value indicating its weight: `passing`, `warning`.
+        /// Object that configures how the service responds to DNS SRV requests based on the service's health status. You can specify one or more of the following states and configure an integer value indicating its weight: `Passing`, `Warning`.
         /// </summary>
         public InputMap<int> Weights
         {
@@ -382,7 +382,7 @@ namespace Pulumi.Consul
         public Input<string>? Datacenter { get; set; }
 
         /// <summary>
-        /// Specifies to disable the anti-entropy feature for this service's tags. Defaults to `false`.
+        /// Specifies to disable the anti-entropy feature for this service's tags. Defaults to `False`.
         /// </summary>
         [Input("enableTagOverride")]
         public Input<bool>? EnableTagOverride { get; set; }
@@ -433,7 +433,7 @@ namespace Pulumi.Consul
         public Input<int>? Port { get; set; }
 
         /// <summary>
-        /// If the service ID is not provided, it will be defaulted to the value of the `name` attribute.
+        /// If the service ID is not provided, it will be defaulted to the value of the `Name` attribute.
         /// </summary>
         [Input("serviceId")]
         public Input<string>? ServiceId { get; set; }
@@ -454,7 +454,7 @@ namespace Pulumi.Consul
         private InputMap<int>? _weights;
 
         /// <summary>
-        /// Object that configures how the service responds to DNS SRV requests based on the service's health status. You can specify one or more of the following states and configure an integer value indicating its weight: `passing`, `warning`.
+        /// Object that configures how the service responds to DNS SRV requests based on the service's health status. You can specify one or more of the following states and configure an integer value indicating its weight: `Passing`, `Warning`.
         /// </summary>
         public InputMap<int> Weights
         {

@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
 public final class GetServiceHealthInvokeResult {
     /**
      * @return The datacenter in which the node is running.
-     * * [`tagged_addresses`](https://www.consul.io/docs/agent/http/catalog.html#TaggedAddresses) -
+     * * [`taggedAddresses`](https://www.consul.io/docs/agent/http/catalog.html#TaggedAddresses) -
      *   List of explicit LAN and WAN IP addresses for the agent.
      * 
      */
@@ -67,7 +67,7 @@ public final class GetServiceHealthInvokeResult {
     private GetServiceHealthInvokeResult() {}
     /**
      * @return The datacenter in which the node is running.
-     * * [`tagged_addresses`](https://www.consul.io/docs/agent/http/catalog.html#TaggedAddresses) -
+     * * [`taggedAddresses`](https://www.consul.io/docs/agent/http/catalog.html#TaggedAddresses) -
      *   List of explicit LAN and WAN IP addresses for the agent.
      * 
      */

@@ -40,14 +40,14 @@ public final class PeeringArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name assigned to the peer cluster. The `peer_name` is used to reference the peer cluster in service discovery queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
+     * The name assigned to the peer cluster. The `peerName` is used to reference the peer cluster in service discovery queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
      * 
      */
     @Import(name="peerName", required=true)
     private Output<String> peerName;
 
     /**
-     * @return The name assigned to the peer cluster. The `peer_name` is used to reference the peer cluster in service discovery queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
+     * @return The name assigned to the peer cluster. The `peerName` is used to reference the peer cluster in service discovery queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
      * 
      */
     public Output<String> peerName() {
@@ -127,7 +127,7 @@ public final class PeeringArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param peerName The name assigned to the peer cluster. The `peer_name` is used to reference the peer cluster in service discovery queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
+         * @param peerName The name assigned to the peer cluster. The `peerName` is used to reference the peer cluster in service discovery queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
          * 
          * @return builder
          * 
@@ -138,7 +138,7 @@ public final class PeeringArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param peerName The name assigned to the peer cluster. The `peer_name` is used to reference the peer cluster in service discovery queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
+         * @param peerName The name assigned to the peer cluster. The `peerName` is used to reference the peer cluster in service discovery queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
          * 
          * @return builder
          * 

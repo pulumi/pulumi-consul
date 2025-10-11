@@ -14,7 +14,7 @@ namespace Pulumi.Consul.Outputs
     public sealed class PreparedQueryTemplate
     {
         /// <summary>
-        /// The regular expression to match with. When using `name_prefix_match`, this regex is applied against the query name.
+        /// The regular expression to match with. When using `NamePrefixMatch`, this regex is applied against the query name.
         /// </summary>
         public readonly string Regexp;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.Consul.Outputs
         /// </summary>
         public readonly bool? RemoveEmptyTags;
         /// <summary>
-        /// The type of template matching to perform. Currently only `name_prefix_match` is supported.
+        /// The type of template matching to perform. Currently only `NamePrefixMatch` is supported.
         /// </summary>
         public readonly string Type;
 

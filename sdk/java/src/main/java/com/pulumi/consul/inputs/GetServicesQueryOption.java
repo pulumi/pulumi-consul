@@ -36,7 +36,7 @@ public final class GetServicesQueryOption extends com.pulumi.resources.InvokeArg
 
     /**
      * The Consul datacenter to query.  Defaults to the
-     * same value found in `query_options` parameter specified below, or if that is
+     * same value found in `queryOptions` parameter specified below, or if that is
      * empty, the `datacenter` value found in the Consul agent that this provider is
      * configured to talk to.
      * 
@@ -46,7 +46,7 @@ public final class GetServicesQueryOption extends com.pulumi.resources.InvokeArg
 
     /**
      * @return The Consul datacenter to query.  Defaults to the
-     * same value found in `query_options` parameter specified below, or if that is
+     * same value found in `queryOptions` parameter specified below, or if that is
      * empty, the `datacenter` value found in the Consul agent that this provider is
      * configured to talk to.
      * 
@@ -208,7 +208,7 @@ public final class GetServicesQueryOption extends com.pulumi.resources.InvokeArg
 
         /**
          * @param datacenter The Consul datacenter to query.  Defaults to the
-         * same value found in `query_options` parameter specified below, or if that is
+         * same value found in `queryOptions` parameter specified below, or if that is
          * empty, the `datacenter` value found in the Consul agent that this provider is
          * configured to talk to.
          * 

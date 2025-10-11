@@ -14,7 +14,7 @@ namespace Pulumi.Consul
         /// <summary>
         /// The `consul.getNodes` data source returns a list of Consul nodes that have
         /// been registered with the Consul cluster in a given datacenter.  By specifying a
-        /// different datacenter in the `query_options` it is possible to retrieve a list of
+        /// different datacenter in the `QueryOptions` it is possible to retrieve a list of
         /// nodes from a different WAN-attached Consul datacenter.
         /// </summary>
         public static Task<GetNodesResult> InvokeAsync(GetNodesArgs? args = null, InvokeOptions? options = null)
@@ -23,7 +23,7 @@ namespace Pulumi.Consul
         /// <summary>
         /// The `consul.getNodes` data source returns a list of Consul nodes that have
         /// been registered with the Consul cluster in a given datacenter.  By specifying a
-        /// different datacenter in the `query_options` it is possible to retrieve a list of
+        /// different datacenter in the `QueryOptions` it is possible to retrieve a list of
         /// nodes from a different WAN-attached Consul datacenter.
         /// </summary>
         public static Output<GetNodesResult> Invoke(GetNodesInvokeArgs? args = null, InvokeOptions? options = null)
@@ -32,7 +32,7 @@ namespace Pulumi.Consul
         /// <summary>
         /// The `consul.getNodes` data source returns a list of Consul nodes that have
         /// been registered with the Consul cluster in a given datacenter.  By specifying a
-        /// different datacenter in the `query_options` it is possible to retrieve a list of
+        /// different datacenter in the `QueryOptions` it is possible to retrieve a list of
         /// nodes from a different WAN-attached Consul datacenter.
         /// </summary>
         public static Output<GetNodesResult> Invoke(GetNodesInvokeArgs args, InvokeOutputOptions options)

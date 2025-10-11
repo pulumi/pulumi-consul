@@ -30,7 +30,7 @@ namespace Pulumi.Consul.Outputs
         /// </summary>
         public readonly string? Prefix;
         /// <summary>
-        /// Specifies that a request matches when the value in the `name` argument is present anywhere in the HTTP header.
+        /// Specifies that a request matches when the value in the `Name` argument is present anywhere in the HTTP header.
         /// </summary>
         public readonly bool? Present;
         /// <summary>

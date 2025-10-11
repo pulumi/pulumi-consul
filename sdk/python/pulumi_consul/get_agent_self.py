@@ -774,6 +774,8 @@ def get_agent_self(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetA
     The `get_agent_self` data source returns
     [configuration and status data](https://www.consul.io/docs/agent/http/agent.html#agent_self)
     from the agent specified in the `provider`.
+
+    ## Example Usage
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -860,6 +862,8 @@ def get_agent_self_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.Invo
     The `get_agent_self` data source returns
     [configuration and status data](https://www.consul.io/docs/agent/http/agent.html#agent_self)
     from the agent specified in the `provider`.
+
+    ## Example Usage
     """
     __args__ = dict()
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

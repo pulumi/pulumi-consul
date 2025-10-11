@@ -18,14 +18,14 @@ public final class PreparedQueryTemplateArgs extends com.pulumi.resources.Resour
     public static final PreparedQueryTemplateArgs Empty = new PreparedQueryTemplateArgs();
 
     /**
-     * The regular expression to match with. When using `name_prefix_match`, this regex is applied against the query name.
+     * The regular expression to match with. When using `namePrefixMatch`, this regex is applied against the query name.
      * 
      */
     @Import(name="regexp", required=true)
     private Output<String> regexp;
 
     /**
-     * @return The regular expression to match with. When using `name_prefix_match`, this regex is applied against the query name.
+     * @return The regular expression to match with. When using `namePrefixMatch`, this regex is applied against the query name.
      * 
      */
     public Output<String> regexp() {
@@ -48,14 +48,14 @@ public final class PreparedQueryTemplateArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The type of template matching to perform. Currently only `name_prefix_match` is supported.
+     * The type of template matching to perform. Currently only `namePrefixMatch` is supported.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return The type of template matching to perform. Currently only `name_prefix_match` is supported.
+     * @return The type of template matching to perform. Currently only `namePrefixMatch` is supported.
      * 
      */
     public Output<String> type() {
@@ -89,7 +89,7 @@ public final class PreparedQueryTemplateArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param regexp The regular expression to match with. When using `name_prefix_match`, this regex is applied against the query name.
+         * @param regexp The regular expression to match with. When using `namePrefixMatch`, this regex is applied against the query name.
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class PreparedQueryTemplateArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param regexp The regular expression to match with. When using `name_prefix_match`, this regex is applied against the query name.
+         * @param regexp The regular expression to match with. When using `namePrefixMatch`, this regex is applied against the query name.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class PreparedQueryTemplateArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param type The type of template matching to perform. Currently only `name_prefix_match` is supported.
+         * @param type The type of template matching to perform. Currently only `namePrefixMatch` is supported.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class PreparedQueryTemplateArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param type The type of template matching to perform. Currently only `name_prefix_match` is supported.
+         * @param type The type of template matching to perform. Currently only `namePrefixMatch` is supported.
          * 
          * @return builder
          * 

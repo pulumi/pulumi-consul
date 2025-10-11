@@ -13,7 +13,7 @@ namespace Pulumi.Consul.Inputs
     public sealed class PreparedQueryTemplateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The regular expression to match with. When using `name_prefix_match`, this regex is applied against the query name.
+        /// The regular expression to match with. When using `NamePrefixMatch`, this regex is applied against the query name.
         /// </summary>
         [Input("regexp", required: true)]
         public Input<string> Regexp { get; set; } = null!;
@@ -25,7 +25,7 @@ namespace Pulumi.Consul.Inputs
         public Input<bool>? RemoveEmptyTags { get; set; }
 
         /// <summary>
-        /// The type of template matching to perform. Currently only `name_prefix_match` is supported.
+        /// The type of template matching to perform. Currently only `NamePrefixMatch` is supported.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

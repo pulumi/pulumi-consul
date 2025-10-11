@@ -14,7 +14,7 @@ namespace Pulumi.Consul
         /// <summary>
         /// &gt; **NOTE:** This feature requires [Consul Enterprise](https://www.consul.io/docs/enterprise/index.html).
         /// 
-        /// The `consul_network_segment` data source can be used to retrieve the network
+        /// The `ConsulNetworkSegment` data source can be used to retrieve the network
         /// segments defined in the configuration.
         /// 
         /// ## Example Usage
@@ -42,7 +42,7 @@ namespace Pulumi.Consul
         /// <summary>
         /// &gt; **NOTE:** This feature requires [Consul Enterprise](https://www.consul.io/docs/enterprise/index.html).
         /// 
-        /// The `consul_network_segment` data source can be used to retrieve the network
+        /// The `ConsulNetworkSegment` data source can be used to retrieve the network
         /// segments defined in the configuration.
         /// 
         /// ## Example Usage
@@ -70,7 +70,7 @@ namespace Pulumi.Consul
         /// <summary>
         /// &gt; **NOTE:** This feature requires [Consul Enterprise](https://www.consul.io/docs/enterprise/index.html).
         /// 
-        /// The `consul_network_segment` data source can be used to retrieve the network
+        /// The `ConsulNetworkSegment` data source can be used to retrieve the network
         /// segments defined in the configuration.
         /// 
         /// ## Example Usage

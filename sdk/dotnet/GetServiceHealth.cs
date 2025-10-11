@@ -19,6 +19,8 @@ namespace Pulumi.Consul
         /// 
         /// This resource is likely to change as frequently as the health-checks are being
         /// updated, you should expect different results in a frequent basis.
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Task<GetServiceHealthResult> InvokeAsync(GetServiceHealthArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServiceHealthResult>("consul:index/getServiceHealth:getServiceHealth", args ?? new GetServiceHealthArgs(), options.WithDefaults());
@@ -31,6 +33,8 @@ namespace Pulumi.Consul
         /// 
         /// This resource is likely to change as frequently as the health-checks are being
         /// updated, you should expect different results in a frequent basis.
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Output<GetServiceHealthResult> Invoke(GetServiceHealthInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServiceHealthResult>("consul:index/getServiceHealth:getServiceHealth", args ?? new GetServiceHealthInvokeArgs(), options.WithDefaults());
@@ -43,6 +47,8 @@ namespace Pulumi.Consul
         /// 
         /// This resource is likely to change as frequently as the health-checks are being
         /// updated, you should expect different results in a frequent basis.
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Output<GetServiceHealthResult> Invoke(GetServiceHealthInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetServiceHealthResult>("consul:index/getServiceHealth:getServiceHealth", args ?? new GetServiceHealthInvokeArgs(), options.WithDefaults());
@@ -92,7 +98,7 @@ namespace Pulumi.Consul
 
         /// <summary>
         /// Whether to return only nodes with all checks in the
-        /// passing state. Defaults to `true`.
+        /// passing state. Defaults to `True`.
         /// </summary>
         [Input("passing")]
         public bool? Passing { get; set; }
@@ -156,7 +162,7 @@ namespace Pulumi.Consul
 
         /// <summary>
         /// Whether to return only nodes with all checks in the
-        /// passing state. Defaults to `true`.
+        /// passing state. Defaults to `True`.
         /// </summary>
         [Input("passing")]
         public Input<bool>? Passing { get; set; }
@@ -183,7 +189,7 @@ namespace Pulumi.Consul
     {
         /// <summary>
         /// The datacenter in which the node is running.
-        /// * [`tagged_addresses`](https://www.consul.io/docs/agent/http/catalog.html#TaggedAddresses) -
+        /// * [`TaggedAddresses`](https://www.consul.io/docs/agent/http/catalog.html#TaggedAddresses) -
         /// List of explicit LAN and WAN IP addresses for the agent.
         /// </summary>
         public readonly string? Datacenter;
@@ -211,8 +217,8 @@ namespace Pulumi.Consul
         public readonly bool? Passing;
         /// <summary>
         /// A list of entries and details about each endpoint advertising a
-        /// service.  Each element in the list has three attributes: `node`, `service` and
-        /// `checks`.  The list of the attributes of each one is detailed below.
+        /// service.  Each element in the list has three attributes: `Node`, `Service` and
+        /// `Checks`.  The list of the attributes of each one is detailed below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceHealthResultResult> Results;
         /// <summary>

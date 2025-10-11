@@ -18,7 +18,7 @@ namespace Pulumi.Consul.Outputs
         /// </summary>
         public readonly string CheckId;
         /// <summary>
-        /// The time after which the service is automatically deregistered when in the `critical` state. Defaults to `30s`. Setting to `0` will disable.
+        /// The time after which the service is automatically deregistered when in the `Critical` state. Defaults to `30s`. Setting to `0` will disable.
         /// </summary>
         public readonly string? DeregisterCriticalServiceAfter;
         /// <summary>
@@ -58,7 +58,7 @@ namespace Pulumi.Consul.Outputs
         /// </summary>
         public readonly string Timeout;
         /// <summary>
-        /// Whether to deactivate certificate verification for HTTP health-checks. Defaults to `false`.
+        /// Whether to deactivate certificate verification for HTTP health-checks. Defaults to `False`.
         /// </summary>
         public readonly bool? TlsSkipVerify;
 

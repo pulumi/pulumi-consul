@@ -25,7 +25,7 @@ namespace Pulumi.Consul.Inputs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Specifies that a request matches when the value in the `name` argument is present anywhere in the HTTP query parameter.
+        /// Specifies that a request matches when the value in the `Name` argument is present anywhere in the HTTP query parameter.
         /// </summary>
         [Input("present")]
         public Input<bool>? Present { get; set; }

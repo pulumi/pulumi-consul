@@ -21,7 +21,7 @@ public final class KeyPrefixSubkeyCollection {
     private @Nullable Integer flags;
     /**
      * @return This is the path (which will be appended to the given
-     * `path_prefix`) in Consul that should be written to.
+     * `pathPrefix`) in Consul that should be written to.
      * 
      */
     private String path;
@@ -42,7 +42,7 @@ public final class KeyPrefixSubkeyCollection {
     }
     /**
      * @return This is the path (which will be appended to the given
-     * `path_prefix`) in Consul that should be written to.
+     * `pathPrefix`) in Consul that should be written to.
      * 
      */
     public String path() {

@@ -128,10 +128,10 @@ public class AclAuthMethod extends com.pulumi.resources.CustomResource {
      * The raw configuration for this ACL auth method.
      * 
      * @deprecated
-     * The config attribute is deprecated, please use `config_json` instead.
+     * The config attribute is deprecated, please use `configJson` instead.
      * 
      */
-    @Deprecated /* The config attribute is deprecated, please use `config_json` instead. */
+    @Deprecated /* The config attribute is deprecated, please use `configJson` instead. */
     @Export(name="config", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> config;
 

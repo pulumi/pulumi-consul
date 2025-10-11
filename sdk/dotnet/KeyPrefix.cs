@@ -96,7 +96,7 @@ namespace Pulumi.Consul
 
         /// <summary>
         /// A mapping from subkey name (which will be appended
-        /// to the given `path_prefix`) to the value that should be stored at that key.
+        /// to the given `PathPrefix`) to the value that should be stored at that key.
         /// Use slashes, as shown in the above example, to create "sub-folders" under
         /// the given path prefix.
         /// </summary>
@@ -205,7 +205,7 @@ namespace Pulumi.Consul
 
         /// <summary>
         /// A mapping from subkey name (which will be appended
-        /// to the given `path_prefix`) to the value that should be stored at that key.
+        /// to the given `PathPrefix`) to the value that should be stored at that key.
         /// Use slashes, as shown in the above example, to create "sub-folders" under
         /// the given path prefix.
         /// </summary>
@@ -287,7 +287,7 @@ Please use the token argument in the provider configuration")]
 
         /// <summary>
         /// A mapping from subkey name (which will be appended
-        /// to the given `path_prefix`) to the value that should be stored at that key.
+        /// to the given `PathPrefix`) to the value that should be stored at that key.
         /// Use slashes, as shown in the above example, to create "sub-folders" under
         /// the given path prefix.
         /// </summary>

@@ -360,7 +360,7 @@ Please use the token argument in the provider configuration")]
         public readonly string PathPrefix;
         public readonly ImmutableArray<Outputs.GetKeyPrefixSubkeyCollectionResult> SubkeyCollection;
         /// <summary>
-        /// A map of the subkeys and values is set if no `subkey`
+        /// A map of the subkeys and values is set if no `Subkey`
         /// block is provided.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Subkeys;

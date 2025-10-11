@@ -18,7 +18,7 @@ namespace Pulumi.Consul
         /// 
         /// The `consul.getAgentConfig` data source returns
         /// [configuration data](https://www.consul.io/api/agent.html#read-configuration)
-        /// from the agent specified in the `provider`.
+        /// from the agent specified in the `Provider`.
         /// 
         /// ## Example Usage
         /// 
@@ -49,7 +49,7 @@ namespace Pulumi.Consul
         /// 
         /// The `consul.getAgentConfig` data source returns
         /// [configuration data](https://www.consul.io/api/agent.html#read-configuration)
-        /// from the agent specified in the `provider`.
+        /// from the agent specified in the `Provider`.
         /// 
         /// ## Example Usage
         /// 
@@ -80,7 +80,7 @@ namespace Pulumi.Consul
         /// 
         /// The `consul.getAgentConfig` data source returns
         /// [configuration data](https://www.consul.io/api/agent.html#read-configuration)
-        /// from the agent specified in the `provider`.
+        /// from the agent specified in the `Provider`.
         /// 
         /// ## Example Usage
         /// 

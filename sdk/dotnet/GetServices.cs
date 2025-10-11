@@ -14,7 +14,7 @@ namespace Pulumi.Consul
         /// <summary>
         /// The `consul.getServices` data source returns a list of Consul services that
         /// have been registered with the Consul cluster in a given datacenter.  By
-        /// specifying a different datacenter in the `query_options` it is possible to
+        /// specifying a different datacenter in the `QueryOptions` it is possible to
         /// retrieve a list of services from a different WAN-attached Consul datacenter.
         /// 
         /// This data source is different from the `consul.Service` (singular) data
@@ -62,7 +62,7 @@ namespace Pulumi.Consul
         /// <summary>
         /// The `consul.getServices` data source returns a list of Consul services that
         /// have been registered with the Consul cluster in a given datacenter.  By
-        /// specifying a different datacenter in the `query_options` it is possible to
+        /// specifying a different datacenter in the `QueryOptions` it is possible to
         /// retrieve a list of services from a different WAN-attached Consul datacenter.
         /// 
         /// This data source is different from the `consul.Service` (singular) data
@@ -110,7 +110,7 @@ namespace Pulumi.Consul
         /// <summary>
         /// The `consul.getServices` data source returns a list of Consul services that
         /// have been registered with the Consul cluster in a given datacenter.  By
-        /// specifying a different datacenter in the `query_options` it is possible to
+        /// specifying a different datacenter in the `QueryOptions` it is possible to
         /// retrieve a list of services from a different WAN-attached Consul datacenter.
         /// 
         /// This data source is different from the `consul.Service` (singular) data
@@ -215,7 +215,7 @@ namespace Pulumi.Consul
         /// <summary>
         /// A map of the tags found for each service.  If more than one service
         /// shares the same tag, unique service names will be joined by whitespace (this
-        /// is the inverse of `services` and can be used to lookup the services that match
+        /// is the inverse of `Services` and can be used to lookup the services that match
         /// a single tag).
         /// </summary>
         public readonly ImmutableDictionary<string, string> Tags;

@@ -18,7 +18,9 @@ namespace Pulumi.Consul
         /// 
         /// The `consul.getAgentSelf` data source returns
         /// [configuration and status data](https://www.consul.io/docs/agent/http/agent.html#agent_self)
-        /// from the agent specified in the `provider`.
+        /// from the agent specified in the `Provider`.
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Task<GetAgentSelfResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAgentSelfResult>("consul:index/getAgentSelf:getAgentSelf", InvokeArgs.Empty, options.WithDefaults());
@@ -30,7 +32,9 @@ namespace Pulumi.Consul
         /// 
         /// The `consul.getAgentSelf` data source returns
         /// [configuration and status data](https://www.consul.io/docs/agent/http/agent.html#agent_self)
-        /// from the agent specified in the `provider`.
+        /// from the agent specified in the `Provider`.
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Output<GetAgentSelfResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAgentSelfResult>("consul:index/getAgentSelf:getAgentSelf", InvokeArgs.Empty, options.WithDefaults());
@@ -42,7 +46,9 @@ namespace Pulumi.Consul
         /// 
         /// The `consul.getAgentSelf` data source returns
         /// [configuration and status data](https://www.consul.io/docs/agent/http/agent.html#agent_self)
-        /// from the agent specified in the `provider`.
+        /// from the agent specified in the `Provider`.
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Output<GetAgentSelfResult> Invoke(InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetAgentSelfResult>("consul:index/getAgentSelf:getAgentSelf", InvokeArgs.Empty, options.WithDefaults());
@@ -55,17 +61,17 @@ namespace Pulumi.Consul
         public readonly string AclDatacenter;
         public readonly string AclDefaultPolicy;
         /// <summary>
-        /// * [`acl_down_policy`](https://www.consul.io/docs/agent/options.html#acl_down_policy)
-        /// * [`acl_enforce_0_8_semantics`](https://www.consul.io/docs/agent/options.html#acl_enforce_version_8)
-        /// * [`acl_ttl`](https://www.consul.io/docs/agent/options.html#acl_ttl)
-        /// * [`addresses`](https://www.consul.io/docs/agent/options.html#addresses)
-        /// * [`advertise_addr`](https://www.consul.io/docs/agent/options.html#_advertise)
-        /// * [`advertise_addr_wan`](https://www.consul.io/docs/agent/options.html#_advertise-wan)
-        /// * [`advertise_addrs`](https://www.consul.io/docs/agent/options.html#advertise_addrs)
-        /// * [`atlas_join`](https://www.consul.io/docs/agent/options.html#_atlas_join)
-        /// * [`bind_addr`](https://www.consul.io/docs/agent/options.html#_bind)
-        /// * [`bootstrap_expect`](https://www.consul.io/docs/agent/options.html#_bootstrap_expect)
-        /// * [`bootstrap_mode`](https://www.consul.io/docs/agent/options.html#_bootstrap)
+        /// * [`AclDownPolicy`](https://www.consul.io/docs/agent/options.html#acl_down_policy)
+        /// * [`AclEnforce08Semantics`](https://www.consul.io/docs/agent/options.html#acl_enforce_version_8)
+        /// * [`AclTtl`](https://www.consul.io/docs/agent/options.html#acl_ttl)
+        /// * [`Addresses`](https://www.consul.io/docs/agent/options.html#addresses)
+        /// * [`AdvertiseAddr`](https://www.consul.io/docs/agent/options.html#_advertise)
+        /// * [`AdvertiseAddrWan`](https://www.consul.io/docs/agent/options.html#_advertise-wan)
+        /// * [`AdvertiseAddrs`](https://www.consul.io/docs/agent/options.html#advertise_addrs)
+        /// * [`AtlasJoin`](https://www.consul.io/docs/agent/options.html#_atlas_join)
+        /// * [`BindAddr`](https://www.consul.io/docs/agent/options.html#_bind)
+        /// * [`BootstrapExpect`](https://www.consul.io/docs/agent/options.html#_bootstrap_expect)
+        /// * [`BootstrapMode`](https://www.consul.io/docs/agent/options.html#_bootstrap)
         /// </summary>
         public readonly string AclDisabledTtl;
         public readonly string AclDownPolicy;
@@ -81,8 +87,8 @@ namespace Pulumi.Consul
         public readonly bool BootstrapMode;
         public readonly string CheckDeregisterIntervalMin;
         /// <summary>
-        /// * [`check_update_interval`](https://www.consul.io/docs/agent/options.html#check_update_interval)
-        /// * [`client_addr`](https://www.consul.io/docs/agent/options.html#_client)
+        /// * [`CheckUpdateInterval`](https://www.consul.io/docs/agent/options.html#check_update_interval)
+        /// * [`ClientAddr`](https://www.consul.io/docs/agent/options.html#_client)
         /// </summary>
         public readonly string CheckReapInterval;
         public readonly string CheckUpdateInterval;
@@ -92,68 +98,68 @@ namespace Pulumi.Consul
         public readonly bool DevMode;
         /// <summary>
         /// A map of DNS configuration attributes.  See below for details on the
-        /// contents of the `dns` attribute.
-        /// * [`dns_recursors`](https://www.consul.io/docs/agent/options.html#recursors) - A
+        /// contents of the `Dns` attribute.
+        /// * [`DnsRecursors`](https://www.consul.io/docs/agent/options.html#recursors) - A
         /// list of all DNS recursors.
-        /// * [`data_dir`](https://www.consul.io/docs/agent/options.html#_data_dir)
-        /// * [`datacenter`](https://www.consul.io/docs/agent/options.html#_datacenter)
-        /// * [`dev_mode`](https://www.consul.io/docs/agent/options.html#_dev)
-        /// * [`domain`](https://www.consul.io/docs/agent/options.html#_domain)
-        /// * [`enable_anonymous_signature`](https://www.consul.io/docs/agent/options.html#disable_anonymous_signature)
+        /// * [`DataDir`](https://www.consul.io/docs/agent/options.html#_data_dir)
+        /// * [`Datacenter`](https://www.consul.io/docs/agent/options.html#_datacenter)
+        /// * [`DevMode`](https://www.consul.io/docs/agent/options.html#_dev)
+        /// * [`Domain`](https://www.consul.io/docs/agent/options.html#_domain)
+        /// * [`EnableAnonymousSignature`](https://www.consul.io/docs/agent/options.html#disable_anonymous_signature)
         /// </summary>
         public readonly ImmutableDictionary<string, string> Dns;
         public readonly ImmutableArray<string> DnsRecursors;
         public readonly string Domain;
         public readonly bool EnableAnonymousSignature;
         /// <summary>
-        /// * [`enable_debug`](https://www.consul.io/docs/agent/options.html#enable_debug)
-        /// * [`enable_remote_exec`](https://www.consul.io/docs/agent/options.html#disable_remote_exec)
-        /// * [`enable_syslog`](https://www.consul.io/docs/agent/options.html#_syslog)
-        /// * [`enable_ui`](https://www.consul.io/docs/agent/options.html#_ui)
-        /// * [`enable_update_check`](https://www.consul.io/docs/agent/options.html#disable_update_check)
-        /// * [`id`](https://www.consul.io/docs/agent/options.html#_node_id)
-        /// * [`leave_on_int`](https://www.consul.io/docs/agent/options.html#skip_leave_on_interrupt)
-        /// * [`leave_on_term`](https://www.consul.io/docs/agent/options.html#leave_on_terminate)
-        /// * [`log_level`](https://www.consul.io/docs/agent/options.html#_log_level)
-        /// * [`name`](https://www.consul.io/docs/agent/options.html#_node)
-        /// * [`performance`](https://www.consul.io/docs/agent/options.html#performance)
-        /// * [`pid_file`](https://www.consul.io/docs/agent/options.html#_pid_file)
-        /// * [`ports`](https://www.consul.io/docs/agent/options.html#ports)
-        /// * [`protocol_version`](https://www.consul.io/docs/agent/options.html#_protocol)
-        /// * [`reconnect_timeout_lan`](https://www.consul.io/docs/agent/options.html#reconnect_timeout)
-        /// * [`reconnect_timeout_wan`](https://www.consul.io/docs/agent/options.html#reconnect_timeout_wan)
-        /// * [`rejoin_after_leave`](https://www.consul.io/docs/agent/options.html#_rejoin)
-        /// * [`retry_join`](https://www.consul.io/docs/agent/options.html#retry_join)
-        /// * [`retry_join_ec2`](https://www.consul.io/docs/agent/options.html#retry_join_ec2) -
+        /// * [`EnableDebug`](https://www.consul.io/docs/agent/options.html#enable_debug)
+        /// * [`EnableRemoteExec`](https://www.consul.io/docs/agent/options.html#disable_remote_exec)
+        /// * [`EnableSyslog`](https://www.consul.io/docs/agent/options.html#_syslog)
+        /// * [`EnableUi`](https://www.consul.io/docs/agent/options.html#_ui)
+        /// * [`EnableUpdateCheck`](https://www.consul.io/docs/agent/options.html#disable_update_check)
+        /// * [`Id`](https://www.consul.io/docs/agent/options.html#_node_id)
+        /// * [`LeaveOnInt`](https://www.consul.io/docs/agent/options.html#skip_leave_on_interrupt)
+        /// * [`LeaveOnTerm`](https://www.consul.io/docs/agent/options.html#leave_on_terminate)
+        /// * [`LogLevel`](https://www.consul.io/docs/agent/options.html#_log_level)
+        /// * [`Name`](https://www.consul.io/docs/agent/options.html#_node)
+        /// * [`Performance`](https://www.consul.io/docs/agent/options.html#performance)
+        /// * [`PidFile`](https://www.consul.io/docs/agent/options.html#_pid_file)
+        /// * [`Ports`](https://www.consul.io/docs/agent/options.html#ports)
+        /// * [`ProtocolVersion`](https://www.consul.io/docs/agent/options.html#_protocol)
+        /// * [`ReconnectTimeoutLan`](https://www.consul.io/docs/agent/options.html#reconnect_timeout)
+        /// * [`ReconnectTimeoutWan`](https://www.consul.io/docs/agent/options.html#reconnect_timeout_wan)
+        /// * [`RejoinAfterLeave`](https://www.consul.io/docs/agent/options.html#_rejoin)
+        /// * [`RetryJoin`](https://www.consul.io/docs/agent/options.html#retry_join)
+        /// * [`RetryJoinEc2`](https://www.consul.io/docs/agent/options.html#retry_join_ec2) -
         /// A map of EC2 retry attributes.  See below for details on the available
         /// information.
-        /// * [`retry_join_gce`](https://www.consul.io/docs/agent/options.html#retry_join_gce) -
+        /// * [`RetryJoinGce`](https://www.consul.io/docs/agent/options.html#retry_join_gce) -
         /// A map of GCE retry attributes.  See below for details on the available
         /// information.
-        /// * [`retry_join_wan`](https://www.consul.io/docs/agent/options.html#_retry_join_wan)
-        /// * [`retry_max_attempts`](https://www.consul.io/docs/agent/options.html#_retry_max)
-        /// * [`retry_max_attempts_wan`](https://www.consul.io/docs/agent/options.html#_retry_max_wan)
-        /// * [`serf_lan_bind_addr`](https://www.consul.io/docs/agent/options.html#_serf_lan_bind)
-        /// * [`serf_wan_bind_addr`](https://www.consul.io/docs/agent/options.html#_serf_wan_bind)
-        /// * [`server_mode`](https://www.consul.io/docs/agent/options.html#_server)
-        /// * [`server_name`](https://www.consul.io/docs/agent/options.html#server_name)
-        /// * [`session_ttl_min`](https://www.consul.io/docs/agent/options.html#session_ttl_min)
-        /// * [`start_join`](https://www.consul.io/docs/agent/options.html#start_join)
-        /// * [`start_join_wan`](https://www.consul.io/docs/agent/options.html#start_join_wan)
-        /// * [`syslog_facility`](https://www.consul.io/docs/agent/options.html#syslog_facility)
-        /// * [`tls_ca_file`](https://www.consul.io/docs/agent/options.html#ca_file)
-        /// * [`tls_cert_file`](https://www.consul.io/docs/agent/options.html#cert_file)
-        /// * [`tls_key_file`](https://www.consul.io/docs/agent/options.html#key_file)
-        /// * [`tls_min_version`](https://www.consul.io/docs/agent/options.html#tls_min_version)
-        /// * [`tls_verify_incoming`](https://www.consul.io/docs/agent/options.html#verify_incoming)
-        /// * [`tls_verify_outgoing`](https://www.consul.io/docs/agent/options.html#verify_outgoing)
-        /// * [`tls_verify_server_hostname`](https://www.consul.io/docs/agent/options.html#verify_server_hostname)
-        /// * [`tagged_addresses`](https://www.consul.io/docs/agent/options.html#translate_wan_addrs)
-        /// * [`telemetry`](https://www.consul.io/docs/agent/options.html#telemetry) - A map
+        /// * [`RetryJoinWan`](https://www.consul.io/docs/agent/options.html#_retry_join_wan)
+        /// * [`RetryMaxAttempts`](https://www.consul.io/docs/agent/options.html#_retry_max)
+        /// * [`RetryMaxAttemptsWan`](https://www.consul.io/docs/agent/options.html#_retry_max_wan)
+        /// * [`SerfLanBindAddr`](https://www.consul.io/docs/agent/options.html#_serf_lan_bind)
+        /// * [`SerfWanBindAddr`](https://www.consul.io/docs/agent/options.html#_serf_wan_bind)
+        /// * [`ServerMode`](https://www.consul.io/docs/agent/options.html#_server)
+        /// * [`ServerName`](https://www.consul.io/docs/agent/options.html#server_name)
+        /// * [`SessionTtlMin`](https://www.consul.io/docs/agent/options.html#session_ttl_min)
+        /// * [`StartJoin`](https://www.consul.io/docs/agent/options.html#start_join)
+        /// * [`StartJoinWan`](https://www.consul.io/docs/agent/options.html#start_join_wan)
+        /// * [`SyslogFacility`](https://www.consul.io/docs/agent/options.html#syslog_facility)
+        /// * [`TlsCaFile`](https://www.consul.io/docs/agent/options.html#ca_file)
+        /// * [`TlsCertFile`](https://www.consul.io/docs/agent/options.html#cert_file)
+        /// * [`TlsKeyFile`](https://www.consul.io/docs/agent/options.html#key_file)
+        /// * [`TlsMinVersion`](https://www.consul.io/docs/agent/options.html#tls_min_version)
+        /// * [`TlsVerifyIncoming`](https://www.consul.io/docs/agent/options.html#verify_incoming)
+        /// * [`TlsVerifyOutgoing`](https://www.consul.io/docs/agent/options.html#verify_outgoing)
+        /// * [`TlsVerifyServerHostname`](https://www.consul.io/docs/agent/options.html#verify_server_hostname)
+        /// * [`TaggedAddresses`](https://www.consul.io/docs/agent/options.html#translate_wan_addrs)
+        /// * [`Telemetry`](https://www.consul.io/docs/agent/options.html#telemetry) - A map
         /// of telemetry configuration.
-        /// * [`translate_wan_addrs`](https://www.consul.io/docs/agent/options.html#translate_wan_addrs)
-        /// * [`ui_dir`](https://www.consul.io/docs/agent/options.html#ui_dir)
-        /// * [`unix_sockets`](https://www.consul.io/docs/agent/options.html#unix_sockets)
+        /// * [`TranslateWanAddrs`](https://www.consul.io/docs/agent/options.html#translate_wan_addrs)
+        /// * [`UiDir`](https://www.consul.io/docs/agent/options.html#ui_dir)
+        /// * [`UnixSockets`](https://www.consul.io/docs/agent/options.html#unix_sockets)
         /// </summary>
         public readonly bool EnableCoordinates;
         public readonly bool EnableDebug;

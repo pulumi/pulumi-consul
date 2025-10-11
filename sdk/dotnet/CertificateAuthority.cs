@@ -12,7 +12,7 @@ namespace Pulumi.Consul
     /// <summary>
     /// The `consul.CertificateAuthority` resource can be used to manage the configuration of the Certificate Authority used by [Consul Connect](https://www.consul.io/docs/connect/ca).
     /// 
-    /// &gt; **Note:** The keys in the `config` argument must be using Camel case.
+    /// &gt; **Note:** The keys in the `Config` argument must be using Camel case.
     /// 
     /// ## Import
     /// 
@@ -83,7 +83,7 @@ namespace Pulumi.Consul
     {
         [Input("config")]
         private InputMap<string>? _config;
-        [Obsolete(@"The config attribute is deprecated, please use config_json instead.")]
+        [Obsolete(@"The config attribute is deprecated, please use ConfigJson instead.")]
         public InputMap<string> Config
         {
             get => _config ?? (_config = new InputMap<string>());
@@ -109,7 +109,7 @@ namespace Pulumi.Consul
     {
         [Input("config")]
         private InputMap<string>? _config;
-        [Obsolete(@"The config attribute is deprecated, please use config_json instead.")]
+        [Obsolete(@"The config attribute is deprecated, please use ConfigJson instead.")]
         public InputMap<string> Config
         {
             get => _config ?? (_config = new InputMap<string>());

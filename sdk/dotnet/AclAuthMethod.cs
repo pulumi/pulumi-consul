@@ -14,7 +14,7 @@ namespace Pulumi.Consul
     /// 
     /// ## Example Usage
     /// 
-    /// Define a `kubernetes` auth method:
+    /// Define a `Kubernetes` auth method:
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -43,7 +43,7 @@ namespace Pulumi.Consul
     /// });
     /// ```
     /// 
-    /// Define a `jwt` auth method:
+    /// Define a `Jwt` auth method:
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -209,7 +209,7 @@ namespace Pulumi.Consul
         /// <summary>
         /// The raw configuration for this ACL auth method.
         /// </summary>
-        [Obsolete(@"The config attribute is deprecated, please use `config_json` instead.")]
+        [Obsolete(@"The config attribute is deprecated, please use `ConfigJson` instead.")]
         public InputMap<string> Config
         {
             get => _config ?? (_config = new InputMap<string>());
@@ -296,7 +296,7 @@ namespace Pulumi.Consul
         /// <summary>
         /// The raw configuration for this ACL auth method.
         /// </summary>
-        [Obsolete(@"The config attribute is deprecated, please use `config_json` instead.")]
+        [Obsolete(@"The config attribute is deprecated, please use `ConfigJson` instead.")]
         public InputMap<string> Config
         {
             get => _config ?? (_config = new InputMap<string>());

@@ -16,13 +16,13 @@ namespace Pulumi.Consul.Outputs
         public readonly string Address;
         /// <summary>
         /// The Node ID of the Consul agent.
-        /// * [`meta`](https://www.consul.io/docs/agent/http/catalog.html#Meta) - Node meta
+        /// * [`Meta`](https://www.consul.io/docs/agent/http/catalog.html#Meta) - Node meta
         /// data tag information, if any.
-        /// * [`name`](https://www.consul.io/docs/agent/http/catalog.html#Node) - The name
+        /// * [`Name`](https://www.consul.io/docs/agent/http/catalog.html#Node) - The name
         /// of the Consul node.
-        /// * [`address`](https://www.consul.io/docs/agent/http/catalog.html#Address) - The
+        /// * [`Address`](https://www.consul.io/docs/agent/http/catalog.html#Address) - The
         /// IP address the node is advertising to the Consul cluster.
-        /// * [`tagged_addresses`](https://www.consul.io/docs/agent/http/catalog.html#TaggedAddresses) -
+        /// * [`TaggedAddresses`](https://www.consul.io/docs/agent/http/catalog.html#TaggedAddresses) -
         /// List of explicit LAN and WAN IP addresses for the agent.
         /// </summary>
         public readonly string Id;

@@ -100,7 +100,7 @@ namespace Pulumi.Consul
     public partial class PreparedQuery : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// When `true` the prepared query will return connect proxy services for a queried service.  Conditions such as `tags` in the prepared query will be matched against the proxy service. Defaults to false.
+        /// When `True` the prepared query will return connect proxy services for a queried service.  Conditions such as `Tags` in the prepared query will be matched against the proxy service. Defaults to false.
         /// </summary>
         [Output("connect")]
         public Output<bool?> Connect { get; private set; } = null!;
@@ -148,7 +148,7 @@ namespace Pulumi.Consul
         public Output<ImmutableDictionary<string, string>?> NodeMeta { get; private set; } = null!;
 
         /// <summary>
-        /// When `true`, the prepared query will only return nodes with passing health checks in the result.
+        /// When `True`, the prepared query will only return nodes with passing health checks in the result.
         /// </summary>
         [Output("onlyPassing")]
         public Output<bool?> OnlyPassing { get; private set; } = null!;
@@ -246,7 +246,7 @@ namespace Pulumi.Consul
     public sealed class PreparedQueryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// When `true` the prepared query will return connect proxy services for a queried service.  Conditions such as `tags` in the prepared query will be matched against the proxy service. Defaults to false.
+        /// When `True` the prepared query will return connect proxy services for a queried service.  Conditions such as `Tags` in the prepared query will be matched against the proxy service. Defaults to false.
         /// </summary>
         [Input("connect")]
         public Input<bool>? Connect { get; set; }
@@ -306,7 +306,7 @@ namespace Pulumi.Consul
         }
 
         /// <summary>
-        /// When `true`, the prepared query will only return nodes with passing health checks in the result.
+        /// When `True`, the prepared query will only return nodes with passing health checks in the result.
         /// </summary>
         [Input("onlyPassing")]
         public Input<bool>? OnlyPassing { get; set; }
@@ -386,7 +386,7 @@ Please use the token argument in the provider configuration")]
     public sealed class PreparedQueryState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// When `true` the prepared query will return connect proxy services for a queried service.  Conditions such as `tags` in the prepared query will be matched against the proxy service. Defaults to false.
+        /// When `True` the prepared query will return connect proxy services for a queried service.  Conditions such as `Tags` in the prepared query will be matched against the proxy service. Defaults to false.
         /// </summary>
         [Input("connect")]
         public Input<bool>? Connect { get; set; }
@@ -446,7 +446,7 @@ Please use the token argument in the provider configuration")]
         }
 
         /// <summary>
-        /// When `true`, the prepared query will only return nodes with passing health checks in the result.
+        /// When `True`, the prepared query will only return nodes with passing health checks in the result.
         /// </summary>
         [Input("onlyPassing")]
         public Input<bool>? OnlyPassing { get; set; }

@@ -19,13 +19,13 @@ public final class GetAclAuthMethodResult {
      * @return The configuration options of the ACL Auth Method. This attribute is
      * deprecated and will be removed in a future version. If the configuration is
      * too complex to be represented as a map of strings, it will be blank.
-     * `config_json` should be used instead.
+     * `configJson` should be used instead.
      * 
      * @deprecated
-     * The config attribute is deprecated, please use config_json instead.
+     * The config attribute is deprecated, please use configJson instead.
      * 
      */
-    @Deprecated /* The config attribute is deprecated, please use config_json instead. */
+    @Deprecated /* The config attribute is deprecated, please use configJson instead. */
     private Map<String,String> config;
     /**
      * @return The configuration options of the ACL Auth Method.
@@ -79,13 +79,13 @@ public final class GetAclAuthMethodResult {
      * @return The configuration options of the ACL Auth Method. This attribute is
      * deprecated and will be removed in a future version. If the configuration is
      * too complex to be represented as a map of strings, it will be blank.
-     * `config_json` should be used instead.
+     * `configJson` should be used instead.
      * 
      * @deprecated
-     * The config attribute is deprecated, please use config_json instead.
+     * The config attribute is deprecated, please use configJson instead.
      * 
      */
-    @Deprecated /* The config attribute is deprecated, please use config_json instead. */
+    @Deprecated /* The config attribute is deprecated, please use configJson instead. */
     public Map<String,String> config() {
         return this.config;
     }

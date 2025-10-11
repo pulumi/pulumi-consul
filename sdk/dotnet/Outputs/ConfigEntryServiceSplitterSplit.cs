@@ -22,11 +22,11 @@ namespace Pulumi.Consul.Outputs
         /// </summary>
         public readonly string? Partition;
         /// <summary>
-        /// Specifies a set of HTTP-specific header modification rules applied to requests routed with the service split. You cannot configure request headers if the listener protocol is set to `tcp`.
+        /// Specifies a set of HTTP-specific header modification rules applied to requests routed with the service split. You cannot configure request headers if the listener protocol is set to `Tcp`.
         /// </summary>
         public readonly Outputs.ConfigEntryServiceSplitterSplitRequestHeaders? RequestHeaders;
         /// <summary>
-        /// Specifies a set of HTTP-specific header modification rules applied to responses routed with the service split. You cannot configure request headers if the listener protocol is set to `tcp`.
+        /// Specifies a set of HTTP-specific header modification rules applied to responses routed with the service split. You cannot configure request headers if the listener protocol is set to `Tcp`.
         /// </summary>
         public readonly Outputs.ConfigEntryServiceSplitterSplitResponseHeaders? ResponseHeaders;
         /// <summary>
@@ -34,11 +34,11 @@ namespace Pulumi.Consul.Outputs
         /// </summary>
         public readonly string Service;
         /// <summary>
-        /// Specifies a subset of the service to resolve. A service subset assigns a name to a specific subset of discoverable service instances within a datacenter, such as `version2` or `canary`. All services have an unnamed default subset that returns all healthy instances.
+        /// Specifies a subset of the service to resolve. A service subset assigns a name to a specific subset of discoverable service instances within a datacenter, such as `Version2` or `Canary`. All services have an unnamed default subset that returns all healthy instances.
         /// </summary>
         public readonly string? ServiceSubset;
         /// <summary>
-        /// Specifies the percentage of traffic sent to the set of service instances specified in the `service` field. Each weight must be a floating integer between `0` and `100`. The smallest representable value is `.01`. The sum of weights across all splits must add up to `100`.
+        /// Specifies the percentage of traffic sent to the set of service instances specified in the `Service` field. Each weight must be a floating integer between `0` and `100`. The smallest representable value is `.01`. The sum of weights across all splits must add up to `100`.
         /// </summary>
         public readonly double Weight;
 
