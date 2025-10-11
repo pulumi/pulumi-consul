@@ -34,7 +34,7 @@ namespace Pulumi.Consul.Inputs
         private InputList<Inputs.PreparedQueryFailoverTargetArgs>? _targets;
 
         /// <summary>
-        /// Specifies a sequential list of remote datacenters and cluster peers to failover to if there are no healthy service instances in the local datacenter. This option cannot be used with `nearest_n` or `datacenters`.
+        /// Specifies a sequential list of remote datacenters and cluster peers to failover to if there are no healthy service instances in the local datacenter. This option cannot be used with `NearestN` or `Datacenters`.
         /// </summary>
         public InputList<Inputs.PreparedQueryFailoverTargetArgs> Targets
         {

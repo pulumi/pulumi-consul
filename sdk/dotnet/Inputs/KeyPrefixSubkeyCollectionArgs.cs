@@ -21,7 +21,7 @@ namespace Pulumi.Consul.Inputs
 
         /// <summary>
         /// This is the path (which will be appended to the given
-        /// `path_prefix`) in Consul that should be written to.
+        /// `PathPrefix`) in Consul that should be written to.
         /// </summary>
         [Input("path", required: true)]
         public Input<string> Path { get; set; } = null!;

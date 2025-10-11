@@ -54,7 +54,7 @@ public final class GetKeyPrefixSubkeyCollectionArgs extends com.pulumi.resources
 
     /**
      * This is the subkey path in Consul (which will be appended
-     * to the given `path_prefix`) to construct the full key that will be used
+     * to the given `pathPrefix`) to construct the full key that will be used
      * to read the value.
      * 
      */
@@ -63,7 +63,7 @@ public final class GetKeyPrefixSubkeyCollectionArgs extends com.pulumi.resources
 
     /**
      * @return This is the subkey path in Consul (which will be appended
-     * to the given `path_prefix`) to construct the full key that will be used
+     * to the given `pathPrefix`) to construct the full key that will be used
      * to read the value.
      * 
      */
@@ -147,7 +147,7 @@ public final class GetKeyPrefixSubkeyCollectionArgs extends com.pulumi.resources
 
         /**
          * @param path This is the subkey path in Consul (which will be appended
-         * to the given `path_prefix`) to construct the full key that will be used
+         * to the given `pathPrefix`) to construct the full key that will be used
          * to read the value.
          * 
          * @return builder
@@ -160,7 +160,7 @@ public final class GetKeyPrefixSubkeyCollectionArgs extends com.pulumi.resources
 
         /**
          * @param path This is the subkey path in Consul (which will be appended
-         * to the given `path_prefix`) to construct the full key that will be used
+         * to the given `pathPrefix`) to construct the full key that will be used
          * to read the value.
          * 
          * @return builder

@@ -97,7 +97,7 @@ namespace Pulumi.Consul.Inputs
         public Input<string>? Service { get; set; }
 
         /// <summary>
-        /// Specifies a named subset of the given service to resolve instead of the one defined as that service's `default_subset` in the service resolver configuration entry.
+        /// Specifies a named subset of the given service to resolve instead of the one defined as that service's `DefaultSubset` in the service resolver configuration entry.
         /// </summary>
         [Input("serviceSubset")]
         public Input<string>? ServiceSubset { get; set; }
