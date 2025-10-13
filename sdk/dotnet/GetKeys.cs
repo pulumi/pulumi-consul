@@ -142,7 +142,7 @@ namespace Pulumi.Consul
         public string? Datacenter { get; set; }
 
         /// <summary>
-        /// Whether to return an error when a key is absent from the KV store and no default is configured. This defaults to `false`.
+        /// Whether to return an error when a key is absent from the KV store and no default is configured. This defaults to `False`.
         /// </summary>
         [Input("errorOnMissingKeys")]
         public bool? ErrorOnMissingKeys { get; set; }
@@ -200,7 +200,7 @@ Please use the token argument in the provider configuration")]
         public Input<string>? Datacenter { get; set; }
 
         /// <summary>
-        /// Whether to return an error when a key is absent from the KV store and no default is configured. This defaults to `false`.
+        /// Whether to return an error when a key is absent from the KV store and no default is configured. This defaults to `False`.
         /// </summary>
         [Input("errorOnMissingKeys")]
         public Input<bool>? ErrorOnMissingKeys { get; set; }
@@ -262,7 +262,7 @@ Please use the token argument in the provider configuration")]
         /// </summary>
         public readonly string Datacenter;
         /// <summary>
-        /// Whether to return an error when a key is absent from the KV store and no default is configured. This defaults to `false`.
+        /// Whether to return an error when a key is absent from the KV store and no default is configured. This defaults to `False`.
         /// </summary>
         public readonly bool? ErrorOnMissingKeys;
         /// <summary>

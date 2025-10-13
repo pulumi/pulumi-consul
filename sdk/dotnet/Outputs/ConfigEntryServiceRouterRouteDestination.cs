@@ -62,7 +62,7 @@ namespace Pulumi.Consul.Outputs
         /// </summary>
         public readonly string? Service;
         /// <summary>
-        /// Specifies a named subset of the given service to resolve instead of the one defined as that service's `default_subset` in the service resolver configuration entry.
+        /// Specifies a named subset of the given service to resolve instead of the one defined as that service's `DefaultSubset` in the service resolver configuration entry.
         /// </summary>
         public readonly string? ServiceSubset;
 

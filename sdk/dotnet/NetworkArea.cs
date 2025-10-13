@@ -62,7 +62,7 @@ namespace Pulumi.Consul
 
         /// <summary>
         /// Specifies a list of Consul servers to attempt to
-        /// join. Servers can be given as `IP`, `IP:port`, `hostname`, or `hostname:port`.
+        /// join. Servers can be given as `IP`, `IP:port`, `Hostname`, or `hostname:port`.
         /// </summary>
         [Output("retryJoins")]
         public Output<ImmutableArray<string>> RetryJoins { get; private set; } = null!;
@@ -76,7 +76,7 @@ namespace Pulumi.Consul
 
         /// <summary>
         /// Specifies whether gossip over this area should be
-        /// encrypted with TLS if possible. Defaults to `false`.
+        /// encrypted with TLS if possible. Defaults to `False`.
         /// </summary>
         [Output("useTls")]
         public Output<bool?> UseTls { get; private set; } = null!;
@@ -150,7 +150,7 @@ namespace Pulumi.Consul
 
         /// <summary>
         /// Specifies a list of Consul servers to attempt to
-        /// join. Servers can be given as `IP`, `IP:port`, `hostname`, or `hostname:port`.
+        /// join. Servers can be given as `IP`, `IP:port`, `Hostname`, or `hostname:port`.
         /// </summary>
         public InputList<string> RetryJoins
         {
@@ -179,7 +179,7 @@ Please use the token argument in the provider configuration")]
 
         /// <summary>
         /// Specifies whether gossip over this area should be
-        /// encrypted with TLS if possible. Defaults to `false`.
+        /// encrypted with TLS if possible. Defaults to `False`.
         /// </summary>
         [Input("useTls")]
         public Input<bool>? UseTls { get; set; }
@@ -211,7 +211,7 @@ Please use the token argument in the provider configuration")]
 
         /// <summary>
         /// Specifies a list of Consul servers to attempt to
-        /// join. Servers can be given as `IP`, `IP:port`, `hostname`, or `hostname:port`.
+        /// join. Servers can be given as `IP`, `IP:port`, `Hostname`, or `hostname:port`.
         /// </summary>
         public InputList<string> RetryJoins
         {
@@ -240,7 +240,7 @@ Please use the token argument in the provider configuration")]
 
         /// <summary>
         /// Specifies whether gossip over this area should be
-        /// encrypted with TLS if possible. Defaults to `false`.
+        /// encrypted with TLS if possible. Defaults to `False`.
         /// </summary>
         [Input("useTls")]
         public Input<bool>? UseTls { get; set; }

@@ -83,7 +83,7 @@ namespace Pulumi.Consul
     public partial class Intention : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The intention action. Must be one of `allow` or `deny`.
+        /// The intention action. Must be one of `Allow` or `Deny`.
         /// </summary>
         [Output("action")]
         public Output<string> Action { get; private set; } = null!;
@@ -184,7 +184,7 @@ namespace Pulumi.Consul
     public sealed class IntentionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The intention action. Must be one of `allow` or `deny`.
+        /// The intention action. Must be one of `Allow` or `Deny`.
         /// </summary>
         [Input("action", required: true)]
         public Input<string> Action { get; set; } = null!;
@@ -253,7 +253,7 @@ namespace Pulumi.Consul
     public sealed class IntentionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The intention action. Must be one of `allow` or `deny`.
+        /// The intention action. Must be one of `Allow` or `Deny`.
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }

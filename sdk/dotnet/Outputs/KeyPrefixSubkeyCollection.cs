@@ -20,7 +20,7 @@ namespace Pulumi.Consul.Outputs
         public readonly int? Flags;
         /// <summary>
         /// This is the path (which will be appended to the given
-        /// `path_prefix`) in Consul that should be written to.
+        /// `PathPrefix`) in Consul that should be written to.
         /// </summary>
         public readonly string Path;
         /// <summary>
