@@ -19,7 +19,7 @@ namespace Pulumi.Consul.Inputs
         public Input<string> CheckId { get; set; } = null!;
 
         /// <summary>
-        /// The time after which the service is automatically deregistered when in the `critical` state. Defaults to `30s`. Setting to `0` will disable.
+        /// The time after which the service is automatically deregistered when in the `Critical` state. Defaults to `30s`. Setting to `0` will disable.
         /// </summary>
         [Input("deregisterCriticalServiceAfter")]
         public Input<string>? DeregisterCriticalServiceAfter { get; set; }
@@ -85,7 +85,7 @@ namespace Pulumi.Consul.Inputs
         public Input<string> Timeout { get; set; } = null!;
 
         /// <summary>
-        /// Whether to deactivate certificate verification for HTTP health-checks. Defaults to `false`.
+        /// Whether to deactivate certificate verification for HTTP health-checks. Defaults to `False`.
         /// </summary>
         [Input("tlsSkipVerify")]
         public Input<bool>? TlsSkipVerify { get; set; }

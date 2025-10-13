@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PreparedQueryTemplate {
     /**
-     * @return The regular expression to match with. When using `name_prefix_match`, this regex is applied against the query name.
+     * @return The regular expression to match with. When using `namePrefixMatch`, this regex is applied against the query name.
      * 
      */
     private String regexp;
@@ -24,14 +24,14 @@ public final class PreparedQueryTemplate {
      */
     private @Nullable Boolean removeEmptyTags;
     /**
-     * @return The type of template matching to perform. Currently only `name_prefix_match` is supported.
+     * @return The type of template matching to perform. Currently only `namePrefixMatch` is supported.
      * 
      */
     private String type;
 
     private PreparedQueryTemplate() {}
     /**
-     * @return The regular expression to match with. When using `name_prefix_match`, this regex is applied against the query name.
+     * @return The regular expression to match with. When using `namePrefixMatch`, this regex is applied against the query name.
      * 
      */
     public String regexp() {
@@ -45,7 +45,7 @@ public final class PreparedQueryTemplate {
         return Optional.ofNullable(this.removeEmptyTags);
     }
     /**
-     * @return The type of template matching to perform. Currently only `name_prefix_match` is supported.
+     * @return The type of template matching to perform. Currently only `namePrefixMatch` is supported.
      * 
      */
     public String type() {

@@ -20,7 +20,7 @@ namespace Pulumi.Consul.Inputs
         public Input<string>? Address { get; set; }
 
         /// <summary>
-        /// The ID of the service. Defaults to the `name`.
+        /// The ID of the service. Defaults to the `Name`.
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }

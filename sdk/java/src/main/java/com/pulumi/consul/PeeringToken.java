@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
 /**
  * [Cluster Peering](https://www.consul.io/docs/connect/cluster-peering) can be used to create connections between two or more independent clusters so that services deployed to different partitions or datacenters can communicate.
  * 
- * The `cluster_peering_token` resource can be used to generate a peering token that can later be used to establish a peering connection.
+ * The `clusterPeeringToken` resource can be used to generate a peering token that can later be used to establish a peering connection.
  * 
  * ## Example Usage
  * 
@@ -78,14 +78,14 @@ public class PeeringToken extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.partition);
     }
     /**
-     * The name assigned to the peer cluster. The `peer_name` is used to reference the peer cluster in service discovery queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
+     * The name assigned to the peer cluster. The `peerName` is used to reference the peer cluster in service discovery queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
      * 
      */
     @Export(name="peerName", refs={String.class}, tree="[0]")
     private Output<String> peerName;
 
     /**
-     * @return The name assigned to the peer cluster. The `peer_name` is used to reference the peer cluster in service discovery queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
+     * @return The name assigned to the peer cluster. The `peerName` is used to reference the peer cluster in service discovery queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
      * 
      */
     public Output<String> peerName() {

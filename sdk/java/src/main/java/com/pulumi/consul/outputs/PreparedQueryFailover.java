@@ -25,7 +25,7 @@ public final class PreparedQueryFailover {
      */
     private @Nullable Integer nearestN;
     /**
-     * @return Specifies a sequential list of remote datacenters and cluster peers to failover to if there are no healthy service instances in the local datacenter. This option cannot be used with `nearest_n` or `datacenters`.
+     * @return Specifies a sequential list of remote datacenters and cluster peers to failover to if there are no healthy service instances in the local datacenter. This option cannot be used with `nearestN` or `datacenters`.
      * 
      */
     private @Nullable List<PreparedQueryFailoverTarget> targets;
@@ -46,7 +46,7 @@ public final class PreparedQueryFailover {
         return Optional.ofNullable(this.nearestN);
     }
     /**
-     * @return Specifies a sequential list of remote datacenters and cluster peers to failover to if there are no healthy service instances in the local datacenter. This option cannot be used with `nearest_n` or `datacenters`.
+     * @return Specifies a sequential list of remote datacenters and cluster peers to failover to if there are no healthy service instances in the local datacenter. This option cannot be used with `nearestN` or `datacenters`.
      * 
      */
     public List<PreparedQueryFailoverTarget> targets() {

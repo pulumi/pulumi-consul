@@ -12,7 +12,7 @@ namespace Pulumi.Consul
     /// <summary>
     /// [Cluster Peering](https://www.consul.io/docs/connect/cluster-peering) can be used to create connections between two or more independent clusters so that services deployed to different partitions or datacenters can communicate.
     /// 
-    /// The `cluster_peering_token` resource can be used to generate a peering token that can later be used to establish a peering connection.
+    /// The `ClusterPeeringToken` resource can be used to generate a peering token that can later be used to establish a peering connection.
     /// 
     /// ## Example Usage
     /// 
@@ -45,7 +45,7 @@ namespace Pulumi.Consul
         public Output<string?> Partition { get; private set; } = null!;
 
         /// <summary>
-        /// The name assigned to the peer cluster. The `peer_name` is used to reference the peer cluster in service discovery queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
+        /// The name assigned to the peer cluster. The `PeerName` is used to reference the peer cluster in service discovery queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
         /// </summary>
         [Output("peerName")]
         public Output<string> PeerName { get; private set; } = null!;
@@ -128,7 +128,7 @@ namespace Pulumi.Consul
         public Input<string>? Partition { get; set; }
 
         /// <summary>
-        /// The name assigned to the peer cluster. The `peer_name` is used to reference the peer cluster in service discovery queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
+        /// The name assigned to the peer cluster. The `PeerName` is used to reference the peer cluster in service discovery queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
         /// </summary>
         [Input("peerName", required: true)]
         public Input<string> PeerName { get; set; } = null!;
@@ -169,7 +169,7 @@ namespace Pulumi.Consul
         public Input<string>? Partition { get; set; }
 
         /// <summary>
-        /// The name assigned to the peer cluster. The `peer_name` is used to reference the peer cluster in service discovery queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
+        /// The name assigned to the peer cluster. The `PeerName` is used to reference the peer cluster in service discovery queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
         /// </summary>
         [Input("peerName")]
         public Input<string>? PeerName { get; set; }

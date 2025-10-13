@@ -18,6 +18,8 @@ import (
 //
 // Registers a node or service with the [Consul Catalog](https://www.consul.io/docs/agent/http/catalog.html#catalog_register).
 // Currently, defining health checks is not supported.
+//
+// ## Example Usage
 type CatalogEntry struct {
 	pulumi.CustomResourceState
 

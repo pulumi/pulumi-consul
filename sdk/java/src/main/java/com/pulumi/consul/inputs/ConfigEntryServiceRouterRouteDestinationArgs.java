@@ -201,14 +201,14 @@ public final class ConfigEntryServiceRouterRouteDestinationArgs extends com.pulu
     }
 
     /**
-     * Specifies a named subset of the given service to resolve instead of the one defined as that service&#39;s `default_subset` in the service resolver configuration entry.
+     * Specifies a named subset of the given service to resolve instead of the one defined as that service&#39;s `defaultSubset` in the service resolver configuration entry.
      * 
      */
     @Import(name="serviceSubset")
     private @Nullable Output<String> serviceSubset;
 
     /**
-     * @return Specifies a named subset of the given service to resolve instead of the one defined as that service&#39;s `default_subset` in the service resolver configuration entry.
+     * @return Specifies a named subset of the given service to resolve instead of the one defined as that service&#39;s `defaultSubset` in the service resolver configuration entry.
      * 
      */
     public Optional<Output<String>> serviceSubset() {
@@ -524,7 +524,7 @@ public final class ConfigEntryServiceRouterRouteDestinationArgs extends com.pulu
         }
 
         /**
-         * @param serviceSubset Specifies a named subset of the given service to resolve instead of the one defined as that service&#39;s `default_subset` in the service resolver configuration entry.
+         * @param serviceSubset Specifies a named subset of the given service to resolve instead of the one defined as that service&#39;s `defaultSubset` in the service resolver configuration entry.
          * 
          * @return builder
          * 
@@ -535,7 +535,7 @@ public final class ConfigEntryServiceRouterRouteDestinationArgs extends com.pulu
         }
 
         /**
-         * @param serviceSubset Specifies a named subset of the given service to resolve instead of the one defined as that service&#39;s `default_subset` in the service resolver configuration entry.
+         * @param serviceSubset Specifies a named subset of the given service to resolve instead of the one defined as that service&#39;s `defaultSubset` in the service resolver configuration entry.
          * 
          * @return builder
          * 

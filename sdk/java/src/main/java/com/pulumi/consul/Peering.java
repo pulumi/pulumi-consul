@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
 /**
  * [Cluster Peering](https://www.consul.io/docs/connect/cluster-peering) can be used to create connections between two or more independent clusters so that services deployed to different partitions or datacenters can communicate.
  * 
- * The `cluster_peering` resource can be used to establish the peering after a peering token has been generated.
+ * The `clusterPeering` resource can be used to establish the peering after a peering token has been generated.
  * 
  * &gt; **Cluster peering is currently in technical preview:** Functionality associated with cluster peering is subject to change. You should never use the technical preview release in secure environments or production scenarios. Features in technical preview may have performance issues, scaling issues, and limited support.
  * 
@@ -108,14 +108,14 @@ public class Peering extends com.pulumi.resources.CustomResource {
         return this.peerId;
     }
     /**
-     * The name assigned to the peer cluster. The `peer_name` is used to reference the peer cluster in service discovery queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
+     * The name assigned to the peer cluster. The `peerName` is used to reference the peer cluster in service discovery queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
      * 
      */
     @Export(name="peerName", refs={String.class}, tree="[0]")
     private Output<String> peerName;
 
     /**
-     * @return The name assigned to the peer cluster. The `peer_name` is used to reference the peer cluster in service discovery queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
+     * @return The name assigned to the peer cluster. The `peerName` is used to reference the peer cluster in service discovery queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
      * 
      */
     public Output<String> peerName() {

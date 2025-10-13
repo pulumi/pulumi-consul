@@ -77,7 +77,7 @@ public final class ConfigEntryServiceRouterRouteDestination {
      */
     private @Nullable String service;
     /**
-     * @return Specifies a named subset of the given service to resolve instead of the one defined as that service&#39;s `default_subset` in the service resolver configuration entry.
+     * @return Specifies a named subset of the given service to resolve instead of the one defined as that service&#39;s `defaultSubset` in the service resolver configuration entry.
      * 
      */
     private @Nullable String serviceSubset;
@@ -168,7 +168,7 @@ public final class ConfigEntryServiceRouterRouteDestination {
         return Optional.ofNullable(this.service);
     }
     /**
-     * @return Specifies a named subset of the given service to resolve instead of the one defined as that service&#39;s `default_subset` in the service resolver configuration entry.
+     * @return Specifies a named subset of the given service to resolve instead of the one defined as that service&#39;s `defaultSubset` in the service resolver configuration entry.
      * 
      */
     public Optional<String> serviceSubset() {

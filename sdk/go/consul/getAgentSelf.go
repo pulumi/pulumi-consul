@@ -17,6 +17,8 @@ import (
 // The `getAgentSelf` data source returns
 // [configuration and status data](https://www.consul.io/docs/agent/http/agent.html#agent_self)
 // from the agent specified in the `provider`.
+//
+// ## Example Usage
 func GetAgentSelf(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetAgentSelfResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAgentSelfResult

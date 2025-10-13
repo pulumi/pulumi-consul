@@ -49,14 +49,14 @@ public final class PreparedQueryFailoverArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Specifies a sequential list of remote datacenters and cluster peers to failover to if there are no healthy service instances in the local datacenter. This option cannot be used with `nearest_n` or `datacenters`.
+     * Specifies a sequential list of remote datacenters and cluster peers to failover to if there are no healthy service instances in the local datacenter. This option cannot be used with `nearestN` or `datacenters`.
      * 
      */
     @Import(name="targets")
     private @Nullable Output<List<PreparedQueryFailoverTargetArgs>> targets;
 
     /**
-     * @return Specifies a sequential list of remote datacenters and cluster peers to failover to if there are no healthy service instances in the local datacenter. This option cannot be used with `nearest_n` or `datacenters`.
+     * @return Specifies a sequential list of remote datacenters and cluster peers to failover to if there are no healthy service instances in the local datacenter. This option cannot be used with `nearestN` or `datacenters`.
      * 
      */
     public Optional<Output<List<PreparedQueryFailoverTargetArgs>>> targets() {
@@ -142,7 +142,7 @@ public final class PreparedQueryFailoverArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param targets Specifies a sequential list of remote datacenters and cluster peers to failover to if there are no healthy service instances in the local datacenter. This option cannot be used with `nearest_n` or `datacenters`.
+         * @param targets Specifies a sequential list of remote datacenters and cluster peers to failover to if there are no healthy service instances in the local datacenter. This option cannot be used with `nearestN` or `datacenters`.
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class PreparedQueryFailoverArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param targets Specifies a sequential list of remote datacenters and cluster peers to failover to if there are no healthy service instances in the local datacenter. This option cannot be used with `nearest_n` or `datacenters`.
+         * @param targets Specifies a sequential list of remote datacenters and cluster peers to failover to if there are no healthy service instances in the local datacenter. This option cannot be used with `nearestN` or `datacenters`.
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class PreparedQueryFailoverArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param targets Specifies a sequential list of remote datacenters and cluster peers to failover to if there are no healthy service instances in the local datacenter. This option cannot be used with `nearest_n` or `datacenters`.
+         * @param targets Specifies a sequential list of remote datacenters and cluster peers to failover to if there are no healthy service instances in the local datacenter. This option cannot be used with `nearestN` or `datacenters`.
          * 
          * @return builder
          * 

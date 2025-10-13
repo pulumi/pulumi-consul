@@ -18,19 +18,19 @@ public final class CertificateAuthorityState extends com.pulumi.resources.Resour
 
     /**
      * @deprecated
-     * The config attribute is deprecated, please use config_json instead.
+     * The config attribute is deprecated, please use configJson instead.
      * 
      */
-    @Deprecated /* The config attribute is deprecated, please use config_json instead. */
+    @Deprecated /* The config attribute is deprecated, please use configJson instead. */
     @Import(name="config")
     private @Nullable Output<Map<String,String>> config;
 
     /**
      * @deprecated
-     * The config attribute is deprecated, please use config_json instead.
+     * The config attribute is deprecated, please use configJson instead.
      * 
      */
-    @Deprecated /* The config attribute is deprecated, please use config_json instead. */
+    @Deprecated /* The config attribute is deprecated, please use configJson instead. */
     public Optional<Output<Map<String,String>>> config() {
         return Optional.ofNullable(this.config);
     }
@@ -87,10 +87,10 @@ public final class CertificateAuthorityState extends com.pulumi.resources.Resour
          * @return builder
          * 
          * @deprecated
-         * The config attribute is deprecated, please use config_json instead.
+         * The config attribute is deprecated, please use configJson instead.
          * 
          */
-        @Deprecated /* The config attribute is deprecated, please use config_json instead. */
+        @Deprecated /* The config attribute is deprecated, please use configJson instead. */
         public Builder config(@Nullable Output<Map<String,String>> config) {
             $.config = config;
             return this;
@@ -100,10 +100,10 @@ public final class CertificateAuthorityState extends com.pulumi.resources.Resour
          * @return builder
          * 
          * @deprecated
-         * The config attribute is deprecated, please use config_json instead.
+         * The config attribute is deprecated, please use configJson instead.
          * 
          */
-        @Deprecated /* The config attribute is deprecated, please use config_json instead. */
+        @Deprecated /* The config attribute is deprecated, please use configJson instead. */
         public Builder config(Map<String,String> config) {
             return config(Output.of(config));
         }
