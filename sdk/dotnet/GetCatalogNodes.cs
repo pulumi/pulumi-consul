@@ -17,6 +17,49 @@ namespace Pulumi.Consul
         /// been registered with the Consul cluster in a given datacenter.  By specifying a
         /// different datacenter in the `QueryOptions` it is possible to retrieve a list of
         /// nodes from a different WAN-attached Consul datacenter.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Consul = Pulumi.Consul;
+        /// using Example = Pulumi.Example;
+        /// using Std = Pulumi.Std;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var read_dc1_nodes = Consul.GetNodes.Invoke(new()
+        ///     {
+        ///         QueryOptions = new[]
+        ///         {
+        ///             new Consul.Inputs.GetNodesQueryOptionInputArgs
+        ///             {
+        ///                 Datacenter = "dc1",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     // Set the description to a whitespace delimited list of the node names
+        ///     var app = new Example.Index.Resource("app", new()
+        ///     {
+        ///         Description = Std.Join.Invoke(new()
+        ///         {
+        ///             Separator = " ",
+        ///             Input = Std.Formatlist.Invoke(new()
+        ///             {
+        ///                 Input = "%s",
+        ///                 Args = new[]
+        ///                 {
+        ///                     nodeNames,
+        ///                 },
+        ///             }).Result,
+        ///         }).Result,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetCatalogNodesResult> InvokeAsync(GetCatalogNodesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCatalogNodesResult>("consul:index/getCatalogNodes:getCatalogNodes", args ?? new GetCatalogNodesArgs(), options.WithDefaults());
@@ -26,6 +69,49 @@ namespace Pulumi.Consul
         /// been registered with the Consul cluster in a given datacenter.  By specifying a
         /// different datacenter in the `QueryOptions` it is possible to retrieve a list of
         /// nodes from a different WAN-attached Consul datacenter.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Consul = Pulumi.Consul;
+        /// using Example = Pulumi.Example;
+        /// using Std = Pulumi.Std;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var read_dc1_nodes = Consul.GetNodes.Invoke(new()
+        ///     {
+        ///         QueryOptions = new[]
+        ///         {
+        ///             new Consul.Inputs.GetNodesQueryOptionInputArgs
+        ///             {
+        ///                 Datacenter = "dc1",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     // Set the description to a whitespace delimited list of the node names
+        ///     var app = new Example.Index.Resource("app", new()
+        ///     {
+        ///         Description = Std.Join.Invoke(new()
+        ///         {
+        ///             Separator = " ",
+        ///             Input = Std.Formatlist.Invoke(new()
+        ///             {
+        ///                 Input = "%s",
+        ///                 Args = new[]
+        ///                 {
+        ///                     nodeNames,
+        ///                 },
+        ///             }).Result,
+        ///         }).Result,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetCatalogNodesResult> Invoke(GetCatalogNodesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCatalogNodesResult>("consul:index/getCatalogNodes:getCatalogNodes", args ?? new GetCatalogNodesInvokeArgs(), options.WithDefaults());
@@ -35,6 +121,49 @@ namespace Pulumi.Consul
         /// been registered with the Consul cluster in a given datacenter.  By specifying a
         /// different datacenter in the `QueryOptions` it is possible to retrieve a list of
         /// nodes from a different WAN-attached Consul datacenter.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Consul = Pulumi.Consul;
+        /// using Example = Pulumi.Example;
+        /// using Std = Pulumi.Std;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var read_dc1_nodes = Consul.GetNodes.Invoke(new()
+        ///     {
+        ///         QueryOptions = new[]
+        ///         {
+        ///             new Consul.Inputs.GetNodesQueryOptionInputArgs
+        ///             {
+        ///                 Datacenter = "dc1",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     // Set the description to a whitespace delimited list of the node names
+        ///     var app = new Example.Index.Resource("app", new()
+        ///     {
+        ///         Description = Std.Join.Invoke(new()
+        ///         {
+        ///             Separator = " ",
+        ///             Input = Std.Formatlist.Invoke(new()
+        ///             {
+        ///                 Input = "%s",
+        ///                 Args = new[]
+        ///                 {
+        ///                     nodeNames,
+        ///                 },
+        ///             }).Result,
+        ///         }).Result,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetCatalogNodesResult> Invoke(GetCatalogNodesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetCatalogNodesResult>("consul:index/getCatalogNodes:getCatalogNodes", args ?? new GetCatalogNodesInvokeArgs(), options.WithDefaults());

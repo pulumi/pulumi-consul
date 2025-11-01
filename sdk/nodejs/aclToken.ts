@@ -17,8 +17,8 @@ import * as utilities from "./utilities";
  * // Basic usage
  * const agent = new consul.AclPolicy("agent", {
  *     name: "agent",
- *     rules: `node_prefix "" {
- *   policy = "read"
+ *     rules: `node_prefix \\"\\" {
+ *   policy = \\"read\\"
  * }
  * `,
  * });
@@ -28,9 +28,9 @@ import * as utilities from "./utilities";
  *     local: true,
  * });
  * // Explicitly set the `accessor_id`
- * const testRandomUuid = new random.RandomUuid("test", {});
+ * const testUuid = new random.index.Uuid("test", {});
  * const testPredefinedId = new consul.AclToken("test_predefined_id", {
- *     accessorId: testUuid.result,
+ *     accessorId: testUuidRandomUuid.result,
  *     description: "my test uuid token",
  *     policies: [agent.name],
  *     local: true,

@@ -11,6 +11,29 @@ import * as utilities from "./utilities";
  * been registered with the Consul cluster in a given datacenter.  By specifying a
  * different datacenter in the `queryOptions` it is possible to retrieve a list of
  * nodes from a different WAN-attached Consul datacenter.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ * import * as example from "@pulumi/example";
+ * import * as std from "@pulumi/std";
+ *
+ * const read_dc1_nodes = consul.getNodes({
+ *     queryOptions: [{
+ *         datacenter: "dc1",
+ *     }],
+ * });
+ * // Set the description to a whitespace delimited list of the node names
+ * const app = new example.index.Resource("app", {description: std.join({
+ *     separator: " ",
+ *     input: std.formatlist({
+ *         input: "%s",
+ *         args: [nodeNames],
+ *     }).result,
+ * }).result});
+ * ```
  */
 export function getNodes(args?: GetNodesArgs, opts?: pulumi.InvokeOptions): Promise<GetNodesResult> {
     args = args || {};
@@ -62,6 +85,29 @@ export interface GetNodesResult {
  * been registered with the Consul cluster in a given datacenter.  By specifying a
  * different datacenter in the `queryOptions` it is possible to retrieve a list of
  * nodes from a different WAN-attached Consul datacenter.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ * import * as example from "@pulumi/example";
+ * import * as std from "@pulumi/std";
+ *
+ * const read_dc1_nodes = consul.getNodes({
+ *     queryOptions: [{
+ *         datacenter: "dc1",
+ *     }],
+ * });
+ * // Set the description to a whitespace delimited list of the node names
+ * const app = new example.index.Resource("app", {description: std.join({
+ *     separator: " ",
+ *     input: std.formatlist({
+ *         input: "%s",
+ *         args: [nodeNames],
+ *     }).result,
+ * }).result});
+ * ```
  */
 export function getNodesOutput(args?: GetNodesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNodesResult> {
     args = args || {};

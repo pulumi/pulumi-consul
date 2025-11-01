@@ -67,6 +67,40 @@ def get_datacenters(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGet
     """
     The `get_datacenters` data source returns the list of all knwown Consul
     datacenters.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_consul as consul
+    import pulumi_std as std
+
+    all = consul.get_datacenters()
+    # Register a prepared query in each of the datacenters
+    myapp_query = []
+    for range in [{"key": k, "value": v} for [k, v] in enumerate(std.toset(input=all.datacenters).result)]:
+        myapp_query.append(consul.PreparedQuery(f"myapp-query-{range['key']}",
+            name="myquery",
+            datacenter=range["key"],
+            only_passing=True,
+            near="_agent",
+            service="myapp",
+            tags=[
+                "active",
+                "!standby",
+            ],
+            failover={
+                "nearest_n": 3,
+                "datacenters": [
+                    "us-west1",
+                    "us-east-2",
+                    "asia-east1",
+                ],
+            },
+            dns={
+                "ttl": "30s",
+            }))
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -79,6 +113,40 @@ def get_datacenters_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.Inv
     """
     The `get_datacenters` data source returns the list of all knwown Consul
     datacenters.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_consul as consul
+    import pulumi_std as std
+
+    all = consul.get_datacenters()
+    # Register a prepared query in each of the datacenters
+    myapp_query = []
+    for range in [{"key": k, "value": v} for [k, v] in enumerate(std.toset(input=all.datacenters).result)]:
+        myapp_query.append(consul.PreparedQuery(f"myapp-query-{range['key']}",
+            name="myquery",
+            datacenter=range["key"],
+            only_passing=True,
+            near="_agent",
+            service="myapp",
+            tags=[
+                "active",
+                "!standby",
+            ],
+            failover={
+                "nearest_n": 3,
+                "datacenters": [
+                    "us-west1",
+                    "us-east-2",
+                    "asia-east1",
+                ],
+            },
+            dns={
+                "ttl": "30s",
+            }))
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

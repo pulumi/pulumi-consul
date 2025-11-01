@@ -29,8 +29,8 @@ namespace Pulumi.Consul
     ///         {
     ///             "dc1",
     ///         },
-    ///         Rules = @"node_prefix """" {
-    ///   policy = ""read""
+    ///         Rules = @"node_prefix \""\"" {
+    ///   policy = \""read\""
     /// }
     /// ",
     ///     });

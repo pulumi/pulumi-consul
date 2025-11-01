@@ -248,8 +248,8 @@ class AclPolicy(pulumi.CustomResource):
         test = consul.AclPolicy("test",
             name="my_policy",
             datacenters=["dc1"],
-            rules=\"\"\"node_prefix "" {
-          policy = "read"
+            rules=\"\"\"node_prefix \\"\\" {
+          policy = \\"read\\"
         }
         \"\"\")
         ```
@@ -289,8 +289,8 @@ class AclPolicy(pulumi.CustomResource):
         test = consul.AclPolicy("test",
             name="my_policy",
             datacenters=["dc1"],
-            rules=\"\"\"node_prefix "" {
-          policy = "read"
+            rules=\"\"\"node_prefix \\"\\" {
+          policy = \\"read\\"
         }
         \"\"\")
         ```
