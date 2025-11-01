@@ -15,6 +15,53 @@ import (
 // been registered with the Consul cluster in a given datacenter.  By specifying a
 // different datacenter in the `queryOptions` it is possible to retrieve a list of
 // nodes from a different WAN-attached Consul datacenter.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+//	"github.com/pulumi/pulumi-example/sdk/go/example"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := consul.GetNodes(ctx, &consul.GetNodesArgs{
+//				QueryOptions: []consul.GetNodesQueryOption{
+//					{
+//						Datacenter: pulumi.StringRef("dc1"),
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			// Set the description to a whitespace delimited list of the node names
+//			_, err = example.NewResource(ctx, "app", &example.ResourceArgs{
+//				Description: std.Join(ctx, &std.JoinArgs{
+//					Separator: " ",
+//					Input: std.Formatlist(ctx, &std.FormatlistArgs{
+//						Input: "%s",
+//						Args: []interface{}{
+//							nodeNames,
+//						},
+//					}, nil).Result,
+//				}, nil).Result,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetNodes(ctx *pulumi.Context, args *GetNodesArgs, opts ...pulumi.InvokeOption) (*GetNodesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetNodesResult

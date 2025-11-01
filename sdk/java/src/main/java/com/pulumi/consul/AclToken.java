@@ -33,7 +33,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.consul.AclPolicyArgs;
  * import com.pulumi.consul.AclToken;
  * import com.pulumi.consul.AclTokenArgs;
- * import com.pulumi.random.RandomUuid;
+ * import com.pulumi.random.Uuid;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -51,8 +51,8 @@ import javax.annotation.Nullable;
  *         var agent = new AclPolicy("agent", AclPolicyArgs.builder()
  *             .name("agent")
  *             .rules("""
- * node_prefix "" {
- *   policy = "read"
+ * node_prefix \"\" {
+ *   policy = \"read\"
  * }
  *             """)
  *             .build());
@@ -64,10 +64,10 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // Explicitly set the `accessor_id`
- *         var testRandomUuid = new RandomUuid("testRandomUuid");
+ *         var testUuid = new Uuid("testUuid");
  * 
  *         var testPredefinedId = new AclToken("testPredefinedId", AclTokenArgs.builder()
- *             .accessorId(testUuid.result())
+ *             .accessorId(testUuidRandomUuid.result())
  *             .description("my test uuid token")
  *             .policies(agent.name())
  *             .local(true)

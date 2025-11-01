@@ -29,7 +29,7 @@ import (
 //			// Basic usage
 //			agent, err := consul.NewAclPolicy(ctx, "agent", &consul.AclPolicyArgs{
 //				Name:  pulumi.String("agent"),
-//				Rules: pulumi.String("node_prefix \"\" {\n  policy = \"read\"\n}\n"),
+//				Rules: pulumi.String("node_prefix \\\"\\\" {\n  policy = \\\"read\\\"\n}\n"),
 //			})
 //			if err != nil {
 //				return err
@@ -45,12 +45,12 @@ import (
 //				return err
 //			}
 //			// Explicitly set the `accessor_id`
-//			_, err = random.NewRandomUuid(ctx, "test", nil)
+//			_, err = random.NewUuid(ctx, "test", nil)
 //			if err != nil {
 //				return err
 //			}
 //			_, err = consul.NewAclToken(ctx, "test_predefined_id", &consul.AclTokenArgs{
-//				AccessorId:  pulumi.Any(testUuid.Result),
+//				AccessorId:  pulumi.Any(testUuidRandomUuid.Result),
 //				Description: pulumi.String("my test uuid token"),
 //				Policies: pulumi.StringArray{
 //					agent.Name,

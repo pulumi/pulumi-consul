@@ -7,6 +7,46 @@ import * as utilities from "./utilities";
 /**
  * The `consul.getDatacenters` data source returns the list of all knwown Consul
  * datacenters.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ * import * as std from "@pulumi/std";
+ *
+ * export = async () => {
+ *     const all = await consul.getDatacenters({});
+ *     // Register a prepared query in each of the datacenters
+ *     const myapp_query: consul.PreparedQuery[] = [];
+ *     for (const range of std.toset({
+ *         input: all.datacenters,
+ *     }).result.map((v, k) => ({key: k, value: v}))) {
+ *         myapp_query.push(new consul.PreparedQuery(`myapp-query-${range.key}`, {
+ *             name: "myquery",
+ *             datacenter: range.key,
+ *             onlyPassing: true,
+ *             near: "_agent",
+ *             service: "myapp",
+ *             tags: [
+ *                 "active",
+ *                 "!standby",
+ *             ],
+ *             failover: {
+ *                 nearestN: 3,
+ *                 datacenters: [
+ *                     "us-west1",
+ *                     "us-east-2",
+ *                     "asia-east1",
+ *                 ],
+ *             },
+ *             dns: {
+ *                 ttl: "30s",
+ *             },
+ *         }));
+ *     }
+ * }
+ * ```
  */
 export function getDatacenters(opts?: pulumi.InvokeOptions): Promise<GetDatacentersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -32,6 +72,46 @@ export interface GetDatacentersResult {
 /**
  * The `consul.getDatacenters` data source returns the list of all knwown Consul
  * datacenters.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ * import * as std from "@pulumi/std";
+ *
+ * export = async () => {
+ *     const all = await consul.getDatacenters({});
+ *     // Register a prepared query in each of the datacenters
+ *     const myapp_query: consul.PreparedQuery[] = [];
+ *     for (const range of std.toset({
+ *         input: all.datacenters,
+ *     }).result.map((v, k) => ({key: k, value: v}))) {
+ *         myapp_query.push(new consul.PreparedQuery(`myapp-query-${range.key}`, {
+ *             name: "myquery",
+ *             datacenter: range.key,
+ *             onlyPassing: true,
+ *             near: "_agent",
+ *             service: "myapp",
+ *             tags: [
+ *                 "active",
+ *                 "!standby",
+ *             ],
+ *             failover: {
+ *                 nearestN: 3,
+ *                 datacenters: [
+ *                     "us-west1",
+ *                     "us-east-2",
+ *                     "asia-east1",
+ *                 ],
+ *             },
+ *             dns: {
+ *                 ttl: "30s",
+ *             },
+ *         }));
+ *     }
+ * }
+ * ```
  */
 export function getDatacentersOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDatacentersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

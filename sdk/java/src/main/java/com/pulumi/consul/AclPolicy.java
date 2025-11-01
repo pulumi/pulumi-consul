@@ -46,8 +46,8 @@ import javax.annotation.Nullable;
  *             .name("my_policy")
  *             .datacenters("dc1")
  *             .rules("""
- * node_prefix "" {
- *   policy = "read"
+ * node_prefix \"\" {
+ *   policy = \"read\"
  * }
  *             """)
  *             .build());
