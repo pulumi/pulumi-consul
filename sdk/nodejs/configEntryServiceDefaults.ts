@@ -8,6 +8,33 @@ import * as utilities from "./utilities";
 
 /**
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ *
+ * const dashboard = new consul.ConfigEntryServiceDefaults("dashboard", {
+ *     name: "dashboard",
+ *     upstreamConfigs: [{
+ *         defaults: {
+ *             meshGateways: {
+ *                 mode: "local",
+ *             },
+ *             limits: {
+ *                 maxConnections: 512,
+ *                 maxPendingRequests: 512,
+ *                 maxConcurrentRequests: 512,
+ *             },
+ *         },
+ *         overrides: [{
+ *             name: "counting",
+ *             meshGateways: [{
+ *                 mode: "remote",
+ *             }],
+ *         }],
+ *     }],
+ * });
+ * ```
  */
 export class ConfigEntryServiceDefaults extends pulumi.CustomResource {
     /**

@@ -117,6 +117,23 @@ def get_nodes(query_options: Optional[Sequence[Union['GetNodesQueryOptionArgs', 
     different datacenter in the `query_options` it is possible to retrieve a list of
     nodes from a different WAN-attached Consul datacenter.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_consul as consul
+    import pulumi_example as example
+    import pulumi_std as std
+
+    read_dc1_nodes = consul.get_nodes(query_options=[{
+        "datacenter": "dc1",
+    }])
+    # Set the description to a whitespace delimited list of the node names
+    app = example.index.Resource("app", description=std.join(separator= ,
+        input=std.formatlist(input=%s,
+            args=[node_names]).result).result)
+    ```
+
 
     :param Sequence[Union['GetNodesQueryOptionArgs', 'GetNodesQueryOptionArgsDict']] query_options: See below.
     """
@@ -139,6 +156,23 @@ def get_nodes_output(query_options: Optional[pulumi.Input[Optional[Sequence[Unio
     been registered with the Consul cluster in a given datacenter.  By specifying a
     different datacenter in the `query_options` it is possible to retrieve a list of
     nodes from a different WAN-attached Consul datacenter.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_consul as consul
+    import pulumi_example as example
+    import pulumi_std as std
+
+    read_dc1_nodes = consul.get_nodes(query_options=[{
+        "datacenter": "dc1",
+    }])
+    # Set the description to a whitespace delimited list of the node names
+    app = example.index.Resource("app", description=std.join(separator= ,
+        input=std.formatlist(input=%s,
+            args=[node_names]).result).result)
+    ```
 
 
     :param Sequence[Union['GetNodesQueryOptionArgs', 'GetNodesQueryOptionArgsDict']] query_options: See below.

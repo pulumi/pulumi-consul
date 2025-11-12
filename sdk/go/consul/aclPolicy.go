@@ -33,7 +33,7 @@ import (
 //				Datacenters: pulumi.StringArray{
 //					pulumi.String("dc1"),
 //				},
-//				Rules: pulumi.String("node_prefix \"\" {\n  policy = \"read\"\n}\n"),
+//				Rules: pulumi.String("node_prefix \\\"\\\" {\n  policy = \\\"read\\\"\n}\n"),
 //			})
 //			if err != nil {
 //				return err
