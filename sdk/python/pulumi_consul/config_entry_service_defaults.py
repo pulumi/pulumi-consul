@@ -636,6 +636,32 @@ class ConfigEntryServiceDefaults(pulumi.CustomResource):
         """
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_consul as consul
+
+        dashboard = consul.ConfigEntryServiceDefaults("dashboard",
+            name="dashboard",
+            upstream_configs=[{
+                "defaults": {
+                    "meshGateways": {
+                        "mode": "local",
+                    },
+                    "limits": {
+                        "max_connections": 512,
+                        "max_pending_requests": 512,
+                        "max_concurrent_requests": 512,
+                    },
+                },
+                "overrides": [{
+                    "name": "counting",
+                    "mesh_gateways": [{
+                        "mode": "remote",
+                    }],
+                }],
+            }])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] balance_inbound_connections: Specifies the strategy for allocating inbound connections to the service across Envoy proxy threads.
@@ -665,6 +691,32 @@ class ConfigEntryServiceDefaults(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_consul as consul
+
+        dashboard = consul.ConfigEntryServiceDefaults("dashboard",
+            name="dashboard",
+            upstream_configs=[{
+                "defaults": {
+                    "meshGateways": {
+                        "mode": "local",
+                    },
+                    "limits": {
+                        "max_connections": 512,
+                        "max_pending_requests": 512,
+                        "max_concurrent_requests": 512,
+                    },
+                },
+                "overrides": [{
+                    "name": "counting",
+                    "mesh_gateways": [{
+                        "mode": "remote",
+                    }],
+                }],
+            }])
+        ```
 
         :param str resource_name: The name of the resource.
         :param ConfigEntryServiceDefaultsArgs args: The arguments to use to populate this resource's properties.
