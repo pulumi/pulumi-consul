@@ -13,6 +13,54 @@ import (
 )
 
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := consul.NewConfigEntryServiceDefaults(ctx, "dashboard", &consul.ConfigEntryServiceDefaultsArgs{
+//				Name: pulumi.String("dashboard"),
+//				UpstreamConfigs: consul.ConfigEntryServiceDefaultsUpstreamConfigArray{
+//					&consul.ConfigEntryServiceDefaultsUpstreamConfigArgs{
+//						Defaults: consul.ConfigEntryServiceDefaultsUpstreamConfigDefaultArray{
+//							MeshGateways: &consul.ConfigEntryServiceDefaultsUpstreamConfigDefaultArgs{
+//								Mode: "local",
+//							},
+//							Limits: &consul.ConfigEntryServiceDefaultsUpstreamConfigDefaultArgs{
+//								MaxConnections:        512,
+//								MaxPendingRequests:    512,
+//								MaxConcurrentRequests: 512,
+//							},
+//						},
+//						Overrides: consul.ConfigEntryServiceDefaultsUpstreamConfigOverrideArray{
+//							&consul.ConfigEntryServiceDefaultsUpstreamConfigOverrideArgs{
+//								Name: pulumi.String("counting"),
+//								MeshGateways: consul.ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArray{
+//									&consul.ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArgs{
+//										Mode: pulumi.String("remote"),
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type ConfigEntryServiceDefaults struct {
 	pulumi.CustomResourceState
 

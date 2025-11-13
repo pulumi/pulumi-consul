@@ -1905,6 +1905,57 @@ public final class ConsulFunctions {
      * different datacenter in the `queryOptions` it is possible to retrieve a list of
      * nodes from a different WAN-attached Consul datacenter.
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetNodesArgs;
+     * import com.pulumi.example.Resource;
+     * import com.pulumi.example.ResourceArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.FormatlistArgs;
+     * import com.pulumi.std.inputs.JoinArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var read-dc1-nodes = ConsulFunctions.getNodes(GetNodesArgs.builder()
+     *             .queryOptions(GetNodesQueryOptionArgs.builder()
+     *                 .datacenter("dc1")
+     *                 .build())
+     *             .build());
+     * 
+     *         // Set the description to a whitespace delimited list of the node names
+     *         var app = new Resource("app", ResourceArgs.builder()
+     *             .description(StdFunctions.join(JoinArgs.builder()
+     *                 .separator(" ")
+     *                 .input(StdFunctions.formatlist(FormatlistArgs.builder()
+     *                     .input("%s")
+     *                     .args(nodeNames)
+     *                     .build()).result())
+     *                 .build()).result())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      * @deprecated
      * getCatalogNodes has been deprecated in favor of getNodes
      * 
@@ -1918,6 +1969,57 @@ public final class ConsulFunctions {
      * been registered with the Consul cluster in a given datacenter.  By specifying a
      * different datacenter in the `queryOptions` it is possible to retrieve a list of
      * nodes from a different WAN-attached Consul datacenter.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetNodesArgs;
+     * import com.pulumi.example.Resource;
+     * import com.pulumi.example.ResourceArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.FormatlistArgs;
+     * import com.pulumi.std.inputs.JoinArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var read-dc1-nodes = ConsulFunctions.getNodes(GetNodesArgs.builder()
+     *             .queryOptions(GetNodesQueryOptionArgs.builder()
+     *                 .datacenter("dc1")
+     *                 .build())
+     *             .build());
+     * 
+     *         // Set the description to a whitespace delimited list of the node names
+     *         var app = new Resource("app", ResourceArgs.builder()
+     *             .description(StdFunctions.join(JoinArgs.builder()
+     *                 .separator(" ")
+     *                 .input(StdFunctions.formatlist(FormatlistArgs.builder()
+     *                     .input("%s")
+     *                     .args(nodeNames)
+     *                     .build()).result())
+     *                 .build()).result())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      * @deprecated
      * getCatalogNodes has been deprecated in favor of getNodes
@@ -1933,6 +2035,57 @@ public final class ConsulFunctions {
      * different datacenter in the `queryOptions` it is possible to retrieve a list of
      * nodes from a different WAN-attached Consul datacenter.
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetNodesArgs;
+     * import com.pulumi.example.Resource;
+     * import com.pulumi.example.ResourceArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.FormatlistArgs;
+     * import com.pulumi.std.inputs.JoinArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var read-dc1-nodes = ConsulFunctions.getNodes(GetNodesArgs.builder()
+     *             .queryOptions(GetNodesQueryOptionArgs.builder()
+     *                 .datacenter("dc1")
+     *                 .build())
+     *             .build());
+     * 
+     *         // Set the description to a whitespace delimited list of the node names
+     *         var app = new Resource("app", ResourceArgs.builder()
+     *             .description(StdFunctions.join(JoinArgs.builder()
+     *                 .separator(" ")
+     *                 .input(StdFunctions.formatlist(FormatlistArgs.builder()
+     *                     .input("%s")
+     *                     .args(nodeNames)
+     *                     .build()).result())
+     *                 .build()).result())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      * @deprecated
      * getCatalogNodes has been deprecated in favor of getNodes
      * 
@@ -1946,6 +2099,57 @@ public final class ConsulFunctions {
      * been registered with the Consul cluster in a given datacenter.  By specifying a
      * different datacenter in the `queryOptions` it is possible to retrieve a list of
      * nodes from a different WAN-attached Consul datacenter.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetNodesArgs;
+     * import com.pulumi.example.Resource;
+     * import com.pulumi.example.ResourceArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.FormatlistArgs;
+     * import com.pulumi.std.inputs.JoinArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var read-dc1-nodes = ConsulFunctions.getNodes(GetNodesArgs.builder()
+     *             .queryOptions(GetNodesQueryOptionArgs.builder()
+     *                 .datacenter("dc1")
+     *                 .build())
+     *             .build());
+     * 
+     *         // Set the description to a whitespace delimited list of the node names
+     *         var app = new Resource("app", ResourceArgs.builder()
+     *             .description(StdFunctions.join(JoinArgs.builder()
+     *                 .separator(" ")
+     *                 .input(StdFunctions.formatlist(FormatlistArgs.builder()
+     *                     .input("%s")
+     *                     .args(nodeNames)
+     *                     .build()).result())
+     *                 .build()).result())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      * @deprecated
      * getCatalogNodes has been deprecated in favor of getNodes
@@ -1961,6 +2165,57 @@ public final class ConsulFunctions {
      * different datacenter in the `queryOptions` it is possible to retrieve a list of
      * nodes from a different WAN-attached Consul datacenter.
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetNodesArgs;
+     * import com.pulumi.example.Resource;
+     * import com.pulumi.example.ResourceArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.FormatlistArgs;
+     * import com.pulumi.std.inputs.JoinArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var read-dc1-nodes = ConsulFunctions.getNodes(GetNodesArgs.builder()
+     *             .queryOptions(GetNodesQueryOptionArgs.builder()
+     *                 .datacenter("dc1")
+     *                 .build())
+     *             .build());
+     * 
+     *         // Set the description to a whitespace delimited list of the node names
+     *         var app = new Resource("app", ResourceArgs.builder()
+     *             .description(StdFunctions.join(JoinArgs.builder()
+     *                 .separator(" ")
+     *                 .input(StdFunctions.formatlist(FormatlistArgs.builder()
+     *                     .input("%s")
+     *                     .args(nodeNames)
+     *                     .build()).result())
+     *                 .build()).result())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      * @deprecated
      * getCatalogNodes has been deprecated in favor of getNodes
      * 
@@ -1975,6 +2230,57 @@ public final class ConsulFunctions {
      * different datacenter in the `queryOptions` it is possible to retrieve a list of
      * nodes from a different WAN-attached Consul datacenter.
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetNodesArgs;
+     * import com.pulumi.example.Resource;
+     * import com.pulumi.example.ResourceArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.FormatlistArgs;
+     * import com.pulumi.std.inputs.JoinArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var read-dc1-nodes = ConsulFunctions.getNodes(GetNodesArgs.builder()
+     *             .queryOptions(GetNodesQueryOptionArgs.builder()
+     *                 .datacenter("dc1")
+     *                 .build())
+     *             .build());
+     * 
+     *         // Set the description to a whitespace delimited list of the node names
+     *         var app = new Resource("app", ResourceArgs.builder()
+     *             .description(StdFunctions.join(JoinArgs.builder()
+     *                 .separator(" ")
+     *                 .input(StdFunctions.formatlist(FormatlistArgs.builder()
+     *                     .input("%s")
+     *                     .args(nodeNames)
+     *                     .build()).result())
+     *                 .build()).result())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      * @deprecated
      * getCatalogNodes has been deprecated in favor of getNodes
      * 
@@ -1988,6 +2294,57 @@ public final class ConsulFunctions {
      * been registered with the Consul cluster in a given datacenter.  By specifying a
      * different datacenter in the `queryOptions` it is possible to retrieve a list of
      * nodes from a different WAN-attached Consul datacenter.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetNodesArgs;
+     * import com.pulumi.example.Resource;
+     * import com.pulumi.example.ResourceArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.FormatlistArgs;
+     * import com.pulumi.std.inputs.JoinArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var read-dc1-nodes = ConsulFunctions.getNodes(GetNodesArgs.builder()
+     *             .queryOptions(GetNodesQueryOptionArgs.builder()
+     *                 .datacenter("dc1")
+     *                 .build())
+     *             .build());
+     * 
+     *         // Set the description to a whitespace delimited list of the node names
+     *         var app = new Resource("app", ResourceArgs.builder()
+     *             .description(StdFunctions.join(JoinArgs.builder()
+     *                 .separator(" ")
+     *                 .input(StdFunctions.formatlist(FormatlistArgs.builder()
+     *                     .input("%s")
+     *                     .args(nodeNames)
+     *                     .build()).result())
+     *                 .build()).result())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      * @deprecated
      * getCatalogNodes has been deprecated in favor of getNodes
@@ -2018,8 +2375,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetServiceArgs;
-     * import com.pulumi.example.resource;
-     * import com.pulumi.example.resourceArgs;
+     * import com.pulumi.example.Resource;
+     * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.List;
@@ -2082,8 +2439,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetServiceArgs;
-     * import com.pulumi.example.resource;
-     * import com.pulumi.example.resourceArgs;
+     * import com.pulumi.example.Resource;
+     * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.List;
@@ -2146,8 +2503,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetServiceArgs;
-     * import com.pulumi.example.resource;
-     * import com.pulumi.example.resourceArgs;
+     * import com.pulumi.example.Resource;
+     * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.List;
@@ -2210,8 +2567,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetServiceArgs;
-     * import com.pulumi.example.resource;
-     * import com.pulumi.example.resourceArgs;
+     * import com.pulumi.example.Resource;
+     * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.List;
@@ -2274,8 +2631,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetServiceArgs;
-     * import com.pulumi.example.resource;
-     * import com.pulumi.example.resourceArgs;
+     * import com.pulumi.example.Resource;
+     * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.List;
@@ -2337,8 +2694,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetServicesArgs;
-     * import com.pulumi.example.resource;
-     * import com.pulumi.example.resourceArgs;
+     * import com.pulumi.example.Resource;
+     * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.List;
@@ -2401,8 +2758,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetServicesArgs;
-     * import com.pulumi.example.resource;
-     * import com.pulumi.example.resourceArgs;
+     * import com.pulumi.example.Resource;
+     * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.List;
@@ -2465,8 +2822,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetServicesArgs;
-     * import com.pulumi.example.resource;
-     * import com.pulumi.example.resourceArgs;
+     * import com.pulumi.example.Resource;
+     * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.List;
@@ -2529,8 +2886,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetServicesArgs;
-     * import com.pulumi.example.resource;
-     * import com.pulumi.example.resourceArgs;
+     * import com.pulumi.example.Resource;
+     * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.List;
@@ -2593,8 +2950,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetServicesArgs;
-     * import com.pulumi.example.resource;
-     * import com.pulumi.example.resourceArgs;
+     * import com.pulumi.example.Resource;
+     * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.List;
@@ -2657,8 +3014,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetServicesArgs;
-     * import com.pulumi.example.resource;
-     * import com.pulumi.example.resourceArgs;
+     * import com.pulumi.example.Resource;
+     * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.List;
@@ -2721,8 +3078,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetServicesArgs;
-     * import com.pulumi.example.resource;
-     * import com.pulumi.example.resourceArgs;
+     * import com.pulumi.example.Resource;
+     * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.List;
@@ -2799,6 +3156,67 @@ public final class ConsulFunctions {
      * The `consul.getDatacenters` data source returns the list of all knwown Consul
      * datacenters.
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.PreparedQuery;
+     * import com.pulumi.consul.PreparedQueryArgs;
+     * import com.pulumi.consul.inputs.PreparedQueryFailoverArgs;
+     * import com.pulumi.consul.inputs.PreparedQueryDnsArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = ConsulFunctions.getDatacenters(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         // Register a prepared query in each of the datacenters
+     *         for (var range : KeyedValue.of(com.pulumi.std.StdFunctions(TosetArgs.builder()
+     *             .input(all.datacenters())
+     *             .build()).result())) {
+     *             new PreparedQuery("myapp-query-" + range.key(), PreparedQueryArgs.builder()
+     *                 .name("myquery")
+     *                 .datacenter(range.key())
+     *                 .onlyPassing(true)
+     *                 .near("_agent")
+     *                 .service("myapp")
+     *                 .tags(                
+     *                     "active",
+     *                     "!standby")
+     *                 .failover(PreparedQueryFailoverArgs.builder()
+     *                     .nearestN(3)
+     *                     .datacenters(                    
+     *                         "us-west1",
+     *                         "us-east-2",
+     *                         "asia-east1")
+     *                     .build())
+     *                 .dns(PreparedQueryDnsArgs.builder()
+     *                     .ttl("30s")
+     *                     .build())
+     *                 .build());
+     *         }
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetDatacentersResult> getDatacenters() {
         return getDatacenters(InvokeArgs.Empty, InvokeOptions.Empty);
@@ -2806,6 +3224,67 @@ public final class ConsulFunctions {
     /**
      * The `consul.getDatacenters` data source returns the list of all knwown Consul
      * datacenters.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.PreparedQuery;
+     * import com.pulumi.consul.PreparedQueryArgs;
+     * import com.pulumi.consul.inputs.PreparedQueryFailoverArgs;
+     * import com.pulumi.consul.inputs.PreparedQueryDnsArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = ConsulFunctions.getDatacenters(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         // Register a prepared query in each of the datacenters
+     *         for (var range : KeyedValue.of(com.pulumi.std.StdFunctions(TosetArgs.builder()
+     *             .input(all.datacenters())
+     *             .build()).result())) {
+     *             new PreparedQuery("myapp-query-" + range.key(), PreparedQueryArgs.builder()
+     *                 .name("myquery")
+     *                 .datacenter(range.key())
+     *                 .onlyPassing(true)
+     *                 .near("_agent")
+     *                 .service("myapp")
+     *                 .tags(                
+     *                     "active",
+     *                     "!standby")
+     *                 .failover(PreparedQueryFailoverArgs.builder()
+     *                     .nearestN(3)
+     *                     .datacenters(                    
+     *                         "us-west1",
+     *                         "us-east-2",
+     *                         "asia-east1")
+     *                     .build())
+     *                 .dns(PreparedQueryDnsArgs.builder()
+     *                     .ttl("30s")
+     *                     .build())
+     *                 .build());
+     *         }
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetDatacentersResult> getDatacentersPlain() {
@@ -2815,6 +3294,67 @@ public final class ConsulFunctions {
      * The `consul.getDatacenters` data source returns the list of all knwown Consul
      * datacenters.
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.PreparedQuery;
+     * import com.pulumi.consul.PreparedQueryArgs;
+     * import com.pulumi.consul.inputs.PreparedQueryFailoverArgs;
+     * import com.pulumi.consul.inputs.PreparedQueryDnsArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = ConsulFunctions.getDatacenters(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         // Register a prepared query in each of the datacenters
+     *         for (var range : KeyedValue.of(com.pulumi.std.StdFunctions(TosetArgs.builder()
+     *             .input(all.datacenters())
+     *             .build()).result())) {
+     *             new PreparedQuery("myapp-query-" + range.key(), PreparedQueryArgs.builder()
+     *                 .name("myquery")
+     *                 .datacenter(range.key())
+     *                 .onlyPassing(true)
+     *                 .near("_agent")
+     *                 .service("myapp")
+     *                 .tags(                
+     *                     "active",
+     *                     "!standby")
+     *                 .failover(PreparedQueryFailoverArgs.builder()
+     *                     .nearestN(3)
+     *                     .datacenters(                    
+     *                         "us-west1",
+     *                         "us-east-2",
+     *                         "asia-east1")
+     *                     .build())
+     *                 .dns(PreparedQueryDnsArgs.builder()
+     *                     .ttl("30s")
+     *                     .build())
+     *                 .build());
+     *         }
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetDatacentersResult> getDatacenters(InvokeArgs args) {
         return getDatacenters(args, InvokeOptions.Empty);
@@ -2822,6 +3362,67 @@ public final class ConsulFunctions {
     /**
      * The `consul.getDatacenters` data source returns the list of all knwown Consul
      * datacenters.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.PreparedQuery;
+     * import com.pulumi.consul.PreparedQueryArgs;
+     * import com.pulumi.consul.inputs.PreparedQueryFailoverArgs;
+     * import com.pulumi.consul.inputs.PreparedQueryDnsArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = ConsulFunctions.getDatacenters(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         // Register a prepared query in each of the datacenters
+     *         for (var range : KeyedValue.of(com.pulumi.std.StdFunctions(TosetArgs.builder()
+     *             .input(all.datacenters())
+     *             .build()).result())) {
+     *             new PreparedQuery("myapp-query-" + range.key(), PreparedQueryArgs.builder()
+     *                 .name("myquery")
+     *                 .datacenter(range.key())
+     *                 .onlyPassing(true)
+     *                 .near("_agent")
+     *                 .service("myapp")
+     *                 .tags(                
+     *                     "active",
+     *                     "!standby")
+     *                 .failover(PreparedQueryFailoverArgs.builder()
+     *                     .nearestN(3)
+     *                     .datacenters(                    
+     *                         "us-west1",
+     *                         "us-east-2",
+     *                         "asia-east1")
+     *                     .build())
+     *                 .dns(PreparedQueryDnsArgs.builder()
+     *                     .ttl("30s")
+     *                     .build())
+     *                 .build());
+     *         }
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetDatacentersResult> getDatacentersPlain(InvokeArgs args) {
@@ -2831,6 +3432,67 @@ public final class ConsulFunctions {
      * The `consul.getDatacenters` data source returns the list of all knwown Consul
      * datacenters.
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.PreparedQuery;
+     * import com.pulumi.consul.PreparedQueryArgs;
+     * import com.pulumi.consul.inputs.PreparedQueryFailoverArgs;
+     * import com.pulumi.consul.inputs.PreparedQueryDnsArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = ConsulFunctions.getDatacenters(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         // Register a prepared query in each of the datacenters
+     *         for (var range : KeyedValue.of(com.pulumi.std.StdFunctions(TosetArgs.builder()
+     *             .input(all.datacenters())
+     *             .build()).result())) {
+     *             new PreparedQuery("myapp-query-" + range.key(), PreparedQueryArgs.builder()
+     *                 .name("myquery")
+     *                 .datacenter(range.key())
+     *                 .onlyPassing(true)
+     *                 .near("_agent")
+     *                 .service("myapp")
+     *                 .tags(                
+     *                     "active",
+     *                     "!standby")
+     *                 .failover(PreparedQueryFailoverArgs.builder()
+     *                     .nearestN(3)
+     *                     .datacenters(                    
+     *                         "us-west1",
+     *                         "us-east-2",
+     *                         "asia-east1")
+     *                     .build())
+     *                 .dns(PreparedQueryDnsArgs.builder()
+     *                     .ttl("30s")
+     *                     .build())
+     *                 .build());
+     *         }
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetDatacentersResult> getDatacenters(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("consul:index/getDatacenters:getDatacenters", TypeShape.of(GetDatacentersResult.class), args, Utilities.withVersion(options));
@@ -2839,6 +3501,67 @@ public final class ConsulFunctions {
      * The `consul.getDatacenters` data source returns the list of all knwown Consul
      * datacenters.
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.PreparedQuery;
+     * import com.pulumi.consul.PreparedQueryArgs;
+     * import com.pulumi.consul.inputs.PreparedQueryFailoverArgs;
+     * import com.pulumi.consul.inputs.PreparedQueryDnsArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = ConsulFunctions.getDatacenters(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         // Register a prepared query in each of the datacenters
+     *         for (var range : KeyedValue.of(com.pulumi.std.StdFunctions(TosetArgs.builder()
+     *             .input(all.datacenters())
+     *             .build()).result())) {
+     *             new PreparedQuery("myapp-query-" + range.key(), PreparedQueryArgs.builder()
+     *                 .name("myquery")
+     *                 .datacenter(range.key())
+     *                 .onlyPassing(true)
+     *                 .near("_agent")
+     *                 .service("myapp")
+     *                 .tags(                
+     *                     "active",
+     *                     "!standby")
+     *                 .failover(PreparedQueryFailoverArgs.builder()
+     *                     .nearestN(3)
+     *                     .datacenters(                    
+     *                         "us-west1",
+     *                         "us-east-2",
+     *                         "asia-east1")
+     *                     .build())
+     *                 .dns(PreparedQueryDnsArgs.builder()
+     *                     .ttl("30s")
+     *                     .build())
+     *                 .build());
+     *         }
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetDatacentersResult> getDatacenters(InvokeArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("consul:index/getDatacenters:getDatacenters", TypeShape.of(GetDatacentersResult.class), args, Utilities.withVersion(options));
@@ -2846,6 +3569,67 @@ public final class ConsulFunctions {
     /**
      * The `consul.getDatacenters` data source returns the list of all knwown Consul
      * datacenters.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.PreparedQuery;
+     * import com.pulumi.consul.PreparedQueryArgs;
+     * import com.pulumi.consul.inputs.PreparedQueryFailoverArgs;
+     * import com.pulumi.consul.inputs.PreparedQueryDnsArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = ConsulFunctions.getDatacenters(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         // Register a prepared query in each of the datacenters
+     *         for (var range : KeyedValue.of(com.pulumi.std.StdFunctions(TosetArgs.builder()
+     *             .input(all.datacenters())
+     *             .build()).result())) {
+     *             new PreparedQuery("myapp-query-" + range.key(), PreparedQueryArgs.builder()
+     *                 .name("myquery")
+     *                 .datacenter(range.key())
+     *                 .onlyPassing(true)
+     *                 .near("_agent")
+     *                 .service("myapp")
+     *                 .tags(                
+     *                     "active",
+     *                     "!standby")
+     *                 .failover(PreparedQueryFailoverArgs.builder()
+     *                     .nearestN(3)
+     *                     .datacenters(                    
+     *                         "us-west1",
+     *                         "us-east-2",
+     *                         "asia-east1")
+     *                     .build())
+     *                 .dns(PreparedQueryDnsArgs.builder()
+     *                     .ttl("30s")
+     *                     .build())
+     *                 .build());
+     *         }
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetDatacentersResult> getDatacentersPlain(InvokeArgs args, InvokeOptions options) {
@@ -2863,8 +3647,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetKeyPrefixArgs;
-     * import com.pulumi.aws.instance;
-     * import com.pulumi.aws.instanceArgs;
+     * import com.pulumi.aws.Instance;
+     * import com.pulumi.aws.InstanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2908,8 +3692,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetKeyPrefixArgs;
-     * import com.pulumi.aws.instance;
-     * import com.pulumi.aws.instanceArgs;
+     * import com.pulumi.aws.Instance;
+     * import com.pulumi.aws.InstanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2955,8 +3739,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetKeyPrefixArgs;
-     * import com.pulumi.aws.instance;
-     * import com.pulumi.aws.instanceArgs;
+     * import com.pulumi.aws.Instance;
+     * import com.pulumi.aws.InstanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -3000,8 +3784,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetKeyPrefixArgs;
-     * import com.pulumi.aws.instance;
-     * import com.pulumi.aws.instanceArgs;
+     * import com.pulumi.aws.Instance;
+     * import com.pulumi.aws.InstanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -3047,8 +3831,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetKeyPrefixArgs;
-     * import com.pulumi.aws.instance;
-     * import com.pulumi.aws.instanceArgs;
+     * import com.pulumi.aws.Instance;
+     * import com.pulumi.aws.InstanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -3092,8 +3876,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetKeyPrefixArgs;
-     * import com.pulumi.aws.instance;
-     * import com.pulumi.aws.instanceArgs;
+     * import com.pulumi.aws.Instance;
+     * import com.pulumi.aws.InstanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -3139,8 +3923,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetKeyPrefixArgs;
-     * import com.pulumi.aws.instance;
-     * import com.pulumi.aws.instanceArgs;
+     * import com.pulumi.aws.Instance;
+     * import com.pulumi.aws.InstanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -3184,8 +3968,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetKeyPrefixArgs;
-     * import com.pulumi.aws.instance;
-     * import com.pulumi.aws.instanceArgs;
+     * import com.pulumi.aws.Instance;
+     * import com.pulumi.aws.InstanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -3231,8 +4015,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetKeyPrefixArgs;
-     * import com.pulumi.aws.instance;
-     * import com.pulumi.aws.instanceArgs;
+     * import com.pulumi.aws.Instance;
+     * import com.pulumi.aws.InstanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -3276,8 +4060,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetKeyPrefixArgs;
-     * import com.pulumi.aws.instance;
-     * import com.pulumi.aws.instanceArgs;
+     * import com.pulumi.aws.Instance;
+     * import com.pulumi.aws.InstanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -3325,8 +4109,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetKeysArgs;
-     * import com.pulumi.aws.instance;
-     * import com.pulumi.aws.instanceArgs;
+     * import com.pulumi.aws.Instance;
+     * import com.pulumi.aws.InstanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -3377,8 +4161,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetKeysArgs;
-     * import com.pulumi.aws.instance;
-     * import com.pulumi.aws.instanceArgs;
+     * import com.pulumi.aws.Instance;
+     * import com.pulumi.aws.InstanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -3429,8 +4213,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetKeysArgs;
-     * import com.pulumi.aws.instance;
-     * import com.pulumi.aws.instanceArgs;
+     * import com.pulumi.aws.Instance;
+     * import com.pulumi.aws.InstanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -3481,8 +4265,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetKeysArgs;
-     * import com.pulumi.aws.instance;
-     * import com.pulumi.aws.instanceArgs;
+     * import com.pulumi.aws.Instance;
+     * import com.pulumi.aws.InstanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -3533,8 +4317,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetKeysArgs;
-     * import com.pulumi.aws.instance;
-     * import com.pulumi.aws.instanceArgs;
+     * import com.pulumi.aws.Instance;
+     * import com.pulumi.aws.InstanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -3585,8 +4369,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetKeysArgs;
-     * import com.pulumi.aws.instance;
-     * import com.pulumi.aws.instanceArgs;
+     * import com.pulumi.aws.Instance;
+     * import com.pulumi.aws.InstanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -3637,8 +4421,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetKeysArgs;
-     * import com.pulumi.aws.instance;
-     * import com.pulumi.aws.instanceArgs;
+     * import com.pulumi.aws.Instance;
+     * import com.pulumi.aws.InstanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -4242,6 +5026,57 @@ public final class ConsulFunctions {
      * different datacenter in the `queryOptions` it is possible to retrieve a list of
      * nodes from a different WAN-attached Consul datacenter.
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetNodesArgs;
+     * import com.pulumi.example.Resource;
+     * import com.pulumi.example.ResourceArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.FormatlistArgs;
+     * import com.pulumi.std.inputs.JoinArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var read-dc1-nodes = ConsulFunctions.getNodes(GetNodesArgs.builder()
+     *             .queryOptions(GetNodesQueryOptionArgs.builder()
+     *                 .datacenter("dc1")
+     *                 .build())
+     *             .build());
+     * 
+     *         // Set the description to a whitespace delimited list of the node names
+     *         var app = new Resource("app", ResourceArgs.builder()
+     *             .description(StdFunctions.join(JoinArgs.builder()
+     *                 .separator(" ")
+     *                 .input(StdFunctions.formatlist(FormatlistArgs.builder()
+     *                     .input("%s")
+     *                     .args(nodeNames)
+     *                     .build()).result())
+     *                 .build()).result())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetNodesResult> getNodes() {
         return getNodes(GetNodesArgs.Empty, InvokeOptions.Empty);
@@ -4251,6 +5086,57 @@ public final class ConsulFunctions {
      * been registered with the Consul cluster in a given datacenter.  By specifying a
      * different datacenter in the `queryOptions` it is possible to retrieve a list of
      * nodes from a different WAN-attached Consul datacenter.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetNodesArgs;
+     * import com.pulumi.example.Resource;
+     * import com.pulumi.example.ResourceArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.FormatlistArgs;
+     * import com.pulumi.std.inputs.JoinArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var read-dc1-nodes = ConsulFunctions.getNodes(GetNodesArgs.builder()
+     *             .queryOptions(GetNodesQueryOptionArgs.builder()
+     *                 .datacenter("dc1")
+     *                 .build())
+     *             .build());
+     * 
+     *         // Set the description to a whitespace delimited list of the node names
+     *         var app = new Resource("app", ResourceArgs.builder()
+     *             .description(StdFunctions.join(JoinArgs.builder()
+     *                 .separator(" ")
+     *                 .input(StdFunctions.formatlist(FormatlistArgs.builder()
+     *                     .input("%s")
+     *                     .args(nodeNames)
+     *                     .build()).result())
+     *                 .build()).result())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetNodesResult> getNodesPlain() {
@@ -4262,6 +5148,57 @@ public final class ConsulFunctions {
      * different datacenter in the `queryOptions` it is possible to retrieve a list of
      * nodes from a different WAN-attached Consul datacenter.
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetNodesArgs;
+     * import com.pulumi.example.Resource;
+     * import com.pulumi.example.ResourceArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.FormatlistArgs;
+     * import com.pulumi.std.inputs.JoinArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var read-dc1-nodes = ConsulFunctions.getNodes(GetNodesArgs.builder()
+     *             .queryOptions(GetNodesQueryOptionArgs.builder()
+     *                 .datacenter("dc1")
+     *                 .build())
+     *             .build());
+     * 
+     *         // Set the description to a whitespace delimited list of the node names
+     *         var app = new Resource("app", ResourceArgs.builder()
+     *             .description(StdFunctions.join(JoinArgs.builder()
+     *                 .separator(" ")
+     *                 .input(StdFunctions.formatlist(FormatlistArgs.builder()
+     *                     .input("%s")
+     *                     .args(nodeNames)
+     *                     .build()).result())
+     *                 .build()).result())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetNodesResult> getNodes(GetNodesArgs args) {
         return getNodes(args, InvokeOptions.Empty);
@@ -4271,6 +5208,57 @@ public final class ConsulFunctions {
      * been registered with the Consul cluster in a given datacenter.  By specifying a
      * different datacenter in the `queryOptions` it is possible to retrieve a list of
      * nodes from a different WAN-attached Consul datacenter.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetNodesArgs;
+     * import com.pulumi.example.Resource;
+     * import com.pulumi.example.ResourceArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.FormatlistArgs;
+     * import com.pulumi.std.inputs.JoinArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var read-dc1-nodes = ConsulFunctions.getNodes(GetNodesArgs.builder()
+     *             .queryOptions(GetNodesQueryOptionArgs.builder()
+     *                 .datacenter("dc1")
+     *                 .build())
+     *             .build());
+     * 
+     *         // Set the description to a whitespace delimited list of the node names
+     *         var app = new Resource("app", ResourceArgs.builder()
+     *             .description(StdFunctions.join(JoinArgs.builder()
+     *                 .separator(" ")
+     *                 .input(StdFunctions.formatlist(FormatlistArgs.builder()
+     *                     .input("%s")
+     *                     .args(nodeNames)
+     *                     .build()).result())
+     *                 .build()).result())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetNodesResult> getNodesPlain(GetNodesPlainArgs args) {
@@ -4282,6 +5270,57 @@ public final class ConsulFunctions {
      * different datacenter in the `queryOptions` it is possible to retrieve a list of
      * nodes from a different WAN-attached Consul datacenter.
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetNodesArgs;
+     * import com.pulumi.example.Resource;
+     * import com.pulumi.example.ResourceArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.FormatlistArgs;
+     * import com.pulumi.std.inputs.JoinArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var read-dc1-nodes = ConsulFunctions.getNodes(GetNodesArgs.builder()
+     *             .queryOptions(GetNodesQueryOptionArgs.builder()
+     *                 .datacenter("dc1")
+     *                 .build())
+     *             .build());
+     * 
+     *         // Set the description to a whitespace delimited list of the node names
+     *         var app = new Resource("app", ResourceArgs.builder()
+     *             .description(StdFunctions.join(JoinArgs.builder()
+     *                 .separator(" ")
+     *                 .input(StdFunctions.formatlist(FormatlistArgs.builder()
+     *                     .input("%s")
+     *                     .args(nodeNames)
+     *                     .build()).result())
+     *                 .build()).result())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetNodesResult> getNodes(GetNodesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("consul:index/getNodes:getNodes", TypeShape.of(GetNodesResult.class), args, Utilities.withVersion(options));
@@ -4292,6 +5331,57 @@ public final class ConsulFunctions {
      * different datacenter in the `queryOptions` it is possible to retrieve a list of
      * nodes from a different WAN-attached Consul datacenter.
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetNodesArgs;
+     * import com.pulumi.example.Resource;
+     * import com.pulumi.example.ResourceArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.FormatlistArgs;
+     * import com.pulumi.std.inputs.JoinArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var read-dc1-nodes = ConsulFunctions.getNodes(GetNodesArgs.builder()
+     *             .queryOptions(GetNodesQueryOptionArgs.builder()
+     *                 .datacenter("dc1")
+     *                 .build())
+     *             .build());
+     * 
+     *         // Set the description to a whitespace delimited list of the node names
+     *         var app = new Resource("app", ResourceArgs.builder()
+     *             .description(StdFunctions.join(JoinArgs.builder()
+     *                 .separator(" ")
+     *                 .input(StdFunctions.formatlist(FormatlistArgs.builder()
+     *                     .input("%s")
+     *                     .args(nodeNames)
+     *                     .build()).result())
+     *                 .build()).result())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetNodesResult> getNodes(GetNodesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("consul:index/getNodes:getNodes", TypeShape.of(GetNodesResult.class), args, Utilities.withVersion(options));
@@ -4301,6 +5391,57 @@ public final class ConsulFunctions {
      * been registered with the Consul cluster in a given datacenter.  By specifying a
      * different datacenter in the `queryOptions` it is possible to retrieve a list of
      * nodes from a different WAN-attached Consul datacenter.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetNodesArgs;
+     * import com.pulumi.example.Resource;
+     * import com.pulumi.example.ResourceArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.FormatlistArgs;
+     * import com.pulumi.std.inputs.JoinArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var read-dc1-nodes = ConsulFunctions.getNodes(GetNodesArgs.builder()
+     *             .queryOptions(GetNodesQueryOptionArgs.builder()
+     *                 .datacenter("dc1")
+     *                 .build())
+     *             .build());
+     * 
+     *         // Set the description to a whitespace delimited list of the node names
+     *         var app = new Resource("app", ResourceArgs.builder()
+     *             .description(StdFunctions.join(JoinArgs.builder()
+     *                 .separator(" ")
+     *                 .input(StdFunctions.formatlist(FormatlistArgs.builder()
+     *                     .input("%s")
+     *                     .args(nodeNames)
+     *                     .build()).result())
+     *                 .build()).result())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetNodesResult> getNodesPlain(GetNodesPlainArgs args, InvokeOptions options) {
@@ -4776,8 +5917,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetServiceArgs;
-     * import com.pulumi.example.resource;
-     * import com.pulumi.example.resourceArgs;
+     * import com.pulumi.example.Resource;
+     * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.List;
@@ -4836,8 +5977,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetServiceArgs;
-     * import com.pulumi.example.resource;
-     * import com.pulumi.example.resourceArgs;
+     * import com.pulumi.example.Resource;
+     * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.List;
@@ -4896,8 +6037,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetServiceArgs;
-     * import com.pulumi.example.resource;
-     * import com.pulumi.example.resourceArgs;
+     * import com.pulumi.example.Resource;
+     * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.List;
@@ -4956,8 +6097,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetServiceArgs;
-     * import com.pulumi.example.resource;
-     * import com.pulumi.example.resourceArgs;
+     * import com.pulumi.example.Resource;
+     * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.List;
@@ -5016,8 +6157,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetServiceArgs;
-     * import com.pulumi.example.resource;
-     * import com.pulumi.example.resourceArgs;
+     * import com.pulumi.example.Resource;
+     * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.List;
@@ -5150,8 +6291,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetServicesArgs;
-     * import com.pulumi.example.resource;
-     * import com.pulumi.example.resourceArgs;
+     * import com.pulumi.example.Resource;
+     * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.List;
@@ -5210,8 +6351,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetServicesArgs;
-     * import com.pulumi.example.resource;
-     * import com.pulumi.example.resourceArgs;
+     * import com.pulumi.example.Resource;
+     * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.List;
@@ -5270,8 +6411,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetServicesArgs;
-     * import com.pulumi.example.resource;
-     * import com.pulumi.example.resourceArgs;
+     * import com.pulumi.example.Resource;
+     * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.List;
@@ -5330,8 +6471,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetServicesArgs;
-     * import com.pulumi.example.resource;
-     * import com.pulumi.example.resourceArgs;
+     * import com.pulumi.example.Resource;
+     * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.List;
@@ -5390,8 +6531,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetServicesArgs;
-     * import com.pulumi.example.resource;
-     * import com.pulumi.example.resourceArgs;
+     * import com.pulumi.example.Resource;
+     * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.List;
@@ -5450,8 +6591,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetServicesArgs;
-     * import com.pulumi.example.resource;
-     * import com.pulumi.example.resourceArgs;
+     * import com.pulumi.example.Resource;
+     * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.List;
@@ -5510,8 +6651,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetServicesArgs;
-     * import com.pulumi.example.resource;
-     * import com.pulumi.example.resourceArgs;
+     * import com.pulumi.example.Resource;
+     * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.List;

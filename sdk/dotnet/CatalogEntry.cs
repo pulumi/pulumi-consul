@@ -18,6 +18,35 @@ namespace Pulumi.Consul
     /// Currently, defining health checks is not supported.
     /// 
     /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Consul = Pulumi.Consul;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var app = new Consul.CatalogEntry("app", new()
+    ///     {
+    ///         Address = "192.168.10.10",
+    ///         Node = "foobar",
+    ///         Services = 
+    ///         {
+    ///             { "address", "127.0.0.1" },
+    ///             { "id", "redis1" },
+    ///             { "name", "redis" },
+    ///             { "port", 8000 },
+    ///             { "tags", new[]
+    ///             {
+    ///                 "master",
+    ///                 "v1",
+    ///             } },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [ConsulResourceType("consul:index/catalogEntry:CatalogEntry")]
     public partial class CatalogEntry : global::Pulumi.CustomResource

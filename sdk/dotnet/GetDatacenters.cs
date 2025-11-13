@@ -14,6 +14,55 @@ namespace Pulumi.Consul
         /// <summary>
         /// The `consul.getDatacenters` data source returns the list of all knwown Consul
         /// datacenters.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using System.Threading.Tasks;
+        /// using Pulumi;
+        /// using Consul = Pulumi.Consul;
+        /// using Std = Pulumi.Std;
+        /// 
+        /// return await Deployment.RunAsync(async() =&gt; 
+        /// {
+        ///     var all = await Consul.GetDatacenters.InvokeAsync();
+        /// 
+        ///     // Register a prepared query in each of the datacenters
+        ///     var myapp_query = new List&lt;Consul.PreparedQuery&gt;();
+        ///     foreach (var range in )
+        ///     {
+        ///         myapp_query.Add(new Consul.PreparedQuery($"myapp-query-{range.Key}", new()
+        ///         {
+        ///             Name = "myquery",
+        ///             Datacenter = range.Key,
+        ///             OnlyPassing = true,
+        ///             Near = "_agent",
+        ///             Service = "myapp",
+        ///             Tags = new[]
+        ///             {
+        ///                 "active",
+        ///                 "!standby",
+        ///             },
+        ///             Failover = new Consul.Inputs.PreparedQueryFailoverArgs
+        ///             {
+        ///                 NearestN = 3,
+        ///                 Datacenters = new[]
+        ///                 {
+        ///                     "us-west1",
+        ///                     "us-east-2",
+        ///                     "asia-east1",
+        ///                 },
+        ///             },
+        ///             Dns = new Consul.Inputs.PreparedQueryDnsArgs
+        ///             {
+        ///                 Ttl = "30s",
+        ///             },
+        ///         }));
+        ///     }
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetDatacentersResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatacentersResult>("consul:index/getDatacenters:getDatacenters", InvokeArgs.Empty, options.WithDefaults());
@@ -21,6 +70,55 @@ namespace Pulumi.Consul
         /// <summary>
         /// The `consul.getDatacenters` data source returns the list of all knwown Consul
         /// datacenters.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using System.Threading.Tasks;
+        /// using Pulumi;
+        /// using Consul = Pulumi.Consul;
+        /// using Std = Pulumi.Std;
+        /// 
+        /// return await Deployment.RunAsync(async() =&gt; 
+        /// {
+        ///     var all = await Consul.GetDatacenters.InvokeAsync();
+        /// 
+        ///     // Register a prepared query in each of the datacenters
+        ///     var myapp_query = new List&lt;Consul.PreparedQuery&gt;();
+        ///     foreach (var range in )
+        ///     {
+        ///         myapp_query.Add(new Consul.PreparedQuery($"myapp-query-{range.Key}", new()
+        ///         {
+        ///             Name = "myquery",
+        ///             Datacenter = range.Key,
+        ///             OnlyPassing = true,
+        ///             Near = "_agent",
+        ///             Service = "myapp",
+        ///             Tags = new[]
+        ///             {
+        ///                 "active",
+        ///                 "!standby",
+        ///             },
+        ///             Failover = new Consul.Inputs.PreparedQueryFailoverArgs
+        ///             {
+        ///                 NearestN = 3,
+        ///                 Datacenters = new[]
+        ///                 {
+        ///                     "us-west1",
+        ///                     "us-east-2",
+        ///                     "asia-east1",
+        ///                 },
+        ///             },
+        ///             Dns = new Consul.Inputs.PreparedQueryDnsArgs
+        ///             {
+        ///                 Ttl = "30s",
+        ///             },
+        ///         }));
+        ///     }
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetDatacentersResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatacentersResult>("consul:index/getDatacenters:getDatacenters", InvokeArgs.Empty, options.WithDefaults());
@@ -28,6 +126,55 @@ namespace Pulumi.Consul
         /// <summary>
         /// The `consul.getDatacenters` data source returns the list of all knwown Consul
         /// datacenters.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using System.Threading.Tasks;
+        /// using Pulumi;
+        /// using Consul = Pulumi.Consul;
+        /// using Std = Pulumi.Std;
+        /// 
+        /// return await Deployment.RunAsync(async() =&gt; 
+        /// {
+        ///     var all = await Consul.GetDatacenters.InvokeAsync();
+        /// 
+        ///     // Register a prepared query in each of the datacenters
+        ///     var myapp_query = new List&lt;Consul.PreparedQuery&gt;();
+        ///     foreach (var range in )
+        ///     {
+        ///         myapp_query.Add(new Consul.PreparedQuery($"myapp-query-{range.Key}", new()
+        ///         {
+        ///             Name = "myquery",
+        ///             Datacenter = range.Key,
+        ///             OnlyPassing = true,
+        ///             Near = "_agent",
+        ///             Service = "myapp",
+        ///             Tags = new[]
+        ///             {
+        ///                 "active",
+        ///                 "!standby",
+        ///             },
+        ///             Failover = new Consul.Inputs.PreparedQueryFailoverArgs
+        ///             {
+        ///                 NearestN = 3,
+        ///                 Datacenters = new[]
+        ///                 {
+        ///                     "us-west1",
+        ///                     "us-east-2",
+        ///                     "asia-east1",
+        ///                 },
+        ///             },
+        ///             Dns = new Consul.Inputs.PreparedQueryDnsArgs
+        ///             {
+        ///                 Ttl = "30s",
+        ///             },
+        ///         }));
+        ///     }
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetDatacentersResult> Invoke(InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatacentersResult>("consul:index/getDatacenters:getDatacenters", InvokeArgs.Empty, options.WithDefaults());

@@ -13,6 +13,63 @@ import (
 
 // The `getDatacenters` data source returns the list of all knwown Consul
 // datacenters.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			all, err := consul.GetDatacenters(ctx, map[string]interface{}{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			// Register a prepared query in each of the datacenters
+//			var myapp_query []*consul.PreparedQuery
+//			for key0, _ := range interface{}(std.Toset(ctx, &std.TosetArgs{
+//				Input: all.Datacenters,
+//			}, nil).Result) {
+//				__res, err := consul.NewPreparedQuery(ctx, fmt.Sprintf("myapp-query-%v", key0), &consul.PreparedQueryArgs{
+//					Name:        pulumi.String("myquery"),
+//					Datacenter:  pulumi.Float64(key0),
+//					OnlyPassing: pulumi.Bool(true),
+//					Near:        pulumi.String("_agent"),
+//					Service:     pulumi.String("myapp"),
+//					Tags: pulumi.StringArray{
+//						pulumi.String("active"),
+//						pulumi.String("!standby"),
+//					},
+//					Failover: &consul.PreparedQueryFailoverArgs{
+//						NearestN: pulumi.Int(3),
+//						Datacenters: pulumi.StringArray{
+//							pulumi.String("us-west1"),
+//							pulumi.String("us-east-2"),
+//							pulumi.String("asia-east1"),
+//						},
+//					},
+//					Dns: &consul.PreparedQueryDnsArgs{
+//						Ttl: pulumi.String("30s"),
+//					},
+//				})
+//				if err != nil {
+//					return err
+//				}
+//				myapp_query = append(myapp_query, __res)
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetDatacenters(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetDatacentersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDatacentersResult

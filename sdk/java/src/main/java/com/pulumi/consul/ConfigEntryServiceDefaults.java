@@ -26,6 +26,56 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.consul.ConfigEntryServiceDefaults;
+ * import com.pulumi.consul.ConfigEntryServiceDefaultsArgs;
+ * import com.pulumi.consul.inputs.ConfigEntryServiceDefaultsUpstreamConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var dashboard = new ConfigEntryServiceDefaults("dashboard", ConfigEntryServiceDefaultsArgs.builder()
+ *             .name("dashboard")
+ *             .upstreamConfigs(ConfigEntryServiceDefaultsUpstreamConfigArgs.builder()
+ *                 .defaults(ConfigEntryServiceDefaultsUpstreamConfigDefaultArgs.builder()
+ *                     .meshGateways(ConfigEntryServiceDefaultsUpstreamConfigDefaultArgs.builder()
+ *                         .mode("local")
+ *                         .build())
+ *                     .limits(ConfigEntryServiceDefaultsUpstreamConfigDefaultArgs.builder()
+ *                         .maxConnections(512)
+ *                         .maxPendingRequests(512)
+ *                         .maxConcurrentRequests(512)
+ *                         .build())
+ *                     .build())
+ *                 .overrides(ConfigEntryServiceDefaultsUpstreamConfigOverrideArgs.builder()
+ *                     .name("counting")
+ *                     .meshGateways(ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArgs.builder()
+ *                         .mode("remote")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  */
 @ResourceType(type="consul:index/configEntryServiceDefaults:ConfigEntryServiceDefaults")
 public class ConfigEntryServiceDefaults extends com.pulumi.resources.CustomResource {
