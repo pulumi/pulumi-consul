@@ -1,8 +1,6 @@
 module github.com/pulumi/pulumi-consul/provider/v3
 
-go 1.24.7
-
-toolchain go1.24.10
+go 1.25.2
 
 // tfinstall was removed from terraform-exec in v0.16.0.
 //
@@ -18,7 +16,7 @@ replace github.com/hashicorp/terraform-exec => github.com/hashicorp/terraform-ex
 
 require (
 	github.com/hashicorp/terraform-plugin-sdk v1.17.2
-	github.com/hashicorp/terraform-provider-consul v1.1.1-0.20250624101247-2514e7d43535
+	github.com/hashicorp/terraform-provider-consul v1.1.1-0.20251017103405-b2798b33bd40
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.117.0
 )
 
@@ -87,7 +85,7 @@ require (
 	github.com/hashicorp/go-checkpoint v0.5.0 // indirect
 	github.com/hashicorp/go-cleanhttp v0.5.2 // indirect
 	github.com/hashicorp/go-cty v1.5.0 // indirect
-	github.com/hashicorp/go-getter v1.7.5 // indirect
+	github.com/hashicorp/go-getter v1.7.9 // indirect
 	github.com/hashicorp/go-hclog v1.6.3 // indirect
 	github.com/hashicorp/go-immutable-radix v1.3.1 // indirect
 	github.com/hashicorp/go-multierror v1.1.1 // indirect
@@ -181,7 +179,7 @@ require (
 	github.com/texttheater/golang-levenshtein v1.0.1 // indirect
 	github.com/uber/jaeger-client-go v2.30.0+incompatible // indirect
 	github.com/uber/jaeger-lib v2.4.1+incompatible // indirect
-	github.com/ulikunitz/xz v0.5.11 // indirect
+	github.com/ulikunitz/xz v0.5.15 // indirect
 	github.com/vmihailenco/msgpack v4.0.4+incompatible // indirect
 	github.com/vmihailenco/msgpack/v5 v5.4.1 // indirect
 	github.com/vmihailenco/tagparser/v2 v2.0.0 // indirect
