@@ -39,6 +39,7 @@ config:
         value: nyc1
 
 ```
+
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as aws from "@pulumi/aws";
@@ -55,6 +56,7 @@ const app = consul.getKeys({
 // Use our variable from Consul
 const appInstance = new aws.ec2.Instance("app", {ami: app.then(app => app["var"]?.ami)});
 ```
+
 {{% /choosable %}}
 {{% choosable language python %}}
 ```yaml
@@ -68,6 +70,7 @@ config:
         value: nyc1
 
 ```
+
 ```python
 import pulumi
 import pulumi_aws as aws
@@ -82,6 +85,7 @@ app = consul.get_keys(keys=[{
 # Use our variable from Consul
 app_instance = aws.ec2.Instance("app", ami=app.var["ami"])
 ```
+
 {{% /choosable %}}
 {{% choosable language csharp %}}
 ```yaml
@@ -95,6 +99,7 @@ config:
         value: nyc1
 
 ```
+
 ```csharp
 using System.Collections.Generic;
 using System.Linq;
@@ -127,6 +132,7 @@ return await Deployment.RunAsync(() =>
 });
 
 ```
+
 {{% /choosable %}}
 {{% choosable language go %}}
 ```yaml
@@ -140,6 +146,7 @@ config:
         value: nyc1
 
 ```
+
 ```go
 package main
 
@@ -175,6 +182,7 @@ func main() {
 	})
 }
 ```
+
 {{% /choosable %}}
 {{% choosable language yaml %}}
 ```yaml
@@ -188,6 +196,7 @@ config:
         value: nyc1
 
 ```
+
 ```yaml
 resources:
   # Use our variable from Consul
@@ -207,6 +216,7 @@ variables:
             path: service/app/launch_ami
             default: ami-1234
 ```
+
 {{% /choosable %}}
 {{% choosable language java %}}
 ```yaml
@@ -220,6 +230,7 @@ config:
         value: nyc1
 
 ```
+
 ```java
 package generated_program;
 
@@ -260,6 +271,7 @@ public class App {
     }
 }
 ```
+
 {{% /choosable %}}
 {{< /chooser >}}
 ## Configuration Reference
