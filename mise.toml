@@ -1,7 +1,7 @@
 [tools]
 golangci-lint = "2.5.0"
-"vfox-pulumi:pulumi/pulumi-converter-terraform" = "latest"
-"vfox-pulumi:pulumi/pulumi-aws" = "latest"
-"vfox-pulumi:pulumi/pulumi-vault" = "latest"
-"vfox-pulumi:pulumi/pulumi-random" = "latest"
-"vfox-pulumi:pulumi/pulumi-std" = "latest"
+"vfox-pulumi:pulumi/pulumi-converter-terraform" = "1.2.4"
+"vfox-pulumi:pulumi/pulumi-aws" = "7.16.0"
+"vfox-pulumi:pulumi/pulumi-vault" = "7.6.0"
+"vfox-pulumi:pulumi/pulumi-random" = "4.18.5"
+"vfox-pulumi:pulumi/pulumi-std" = "2.2.0"
