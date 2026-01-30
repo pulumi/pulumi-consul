@@ -8144,6 +8144,428 @@ func (o ProviderAuthJwtPtrOutput) UseTerraformCloudWorkloadIdentity() pulumi.Boo
 	}).(pulumi.BoolPtrOutput)
 }
 
+type ProviderAuthLoginAws struct {
+	// The name of the Consul auth method to use for login.
+	AuthMethod string `pulumi:"authMethod"`
+	// The AWS access key ID.
+	AwsAccessKeyId *string `pulumi:"awsAccessKeyId"`
+	// The IAM endpoint URL.
+	AwsIamEndpoint *string `pulumi:"awsIamEndpoint"`
+	// The name of the AWS profile.
+	AwsProfile *string `pulumi:"awsProfile"`
+	// The AWS region.
+	AwsRegion *string `pulumi:"awsRegion"`
+	// The ARN of the AWS Role to assume. Used during STS AssumeRole
+	AwsRoleArn *string `pulumi:"awsRoleArn"`
+	// Specifies the name to attach to the AWS role session. Used during STS AssumeRole
+	AwsRoleSessionName *string `pulumi:"awsRoleSessionName"`
+	// The AWS secret access key.
+	AwsSecretAccessKey *string `pulumi:"awsSecretAccessKey"`
+	// The AWS session token.
+	AwsSessionToken *string `pulumi:"awsSessionToken"`
+	// Path to the AWS shared credentials file.
+	AwsSharedCredentialsFile *string `pulumi:"awsSharedCredentialsFile"`
+	// The STS endpoint URL.
+	AwsStsEndpoint *string `pulumi:"awsStsEndpoint"`
+	// Path to the file containing an OAuth 2.0 access token or OpenID Connect ID token.
+	AwsWebIdentityTokenFile *string `pulumi:"awsWebIdentityTokenFile"`
+	// Specifies arbitrary KV metadata linked to the token. Can be useful to track origins.
+	Meta map[string]string `pulumi:"meta"`
+	// The Consul namespace to authenticate to.
+	Namespace *string `pulumi:"namespace"`
+	// The Consul admin partition to authenticate to.
+	Partition *string `pulumi:"partition"`
+	// The Consul Server ID header value to include in the STS signing request. This must match the ServerIDHeaderValue configured in the Consul auth method.
+	ServerIdHeaderValue *string `pulumi:"serverIdHeaderValue"`
+}
+
+// ProviderAuthLoginAwsInput is an input type that accepts ProviderAuthLoginAwsArgs and ProviderAuthLoginAwsOutput values.
+// You can construct a concrete instance of `ProviderAuthLoginAwsInput` via:
+//
+//	ProviderAuthLoginAwsArgs{...}
+type ProviderAuthLoginAwsInput interface {
+	pulumi.Input
+
+	ToProviderAuthLoginAwsOutput() ProviderAuthLoginAwsOutput
+	ToProviderAuthLoginAwsOutputWithContext(context.Context) ProviderAuthLoginAwsOutput
+}
+
+type ProviderAuthLoginAwsArgs struct {
+	// The name of the Consul auth method to use for login.
+	AuthMethod pulumi.StringInput `pulumi:"authMethod"`
+	// The AWS access key ID.
+	AwsAccessKeyId pulumi.StringPtrInput `pulumi:"awsAccessKeyId"`
+	// The IAM endpoint URL.
+	AwsIamEndpoint pulumi.StringPtrInput `pulumi:"awsIamEndpoint"`
+	// The name of the AWS profile.
+	AwsProfile pulumi.StringPtrInput `pulumi:"awsProfile"`
+	// The AWS region.
+	AwsRegion pulumi.StringPtrInput `pulumi:"awsRegion"`
+	// The ARN of the AWS Role to assume. Used during STS AssumeRole
+	AwsRoleArn pulumi.StringPtrInput `pulumi:"awsRoleArn"`
+	// Specifies the name to attach to the AWS role session. Used during STS AssumeRole
+	AwsRoleSessionName pulumi.StringPtrInput `pulumi:"awsRoleSessionName"`
+	// The AWS secret access key.
+	AwsSecretAccessKey pulumi.StringPtrInput `pulumi:"awsSecretAccessKey"`
+	// The AWS session token.
+	AwsSessionToken pulumi.StringPtrInput `pulumi:"awsSessionToken"`
+	// Path to the AWS shared credentials file.
+	AwsSharedCredentialsFile pulumi.StringPtrInput `pulumi:"awsSharedCredentialsFile"`
+	// The STS endpoint URL.
+	AwsStsEndpoint pulumi.StringPtrInput `pulumi:"awsStsEndpoint"`
+	// Path to the file containing an OAuth 2.0 access token or OpenID Connect ID token.
+	AwsWebIdentityTokenFile pulumi.StringPtrInput `pulumi:"awsWebIdentityTokenFile"`
+	// Specifies arbitrary KV metadata linked to the token. Can be useful to track origins.
+	Meta pulumi.StringMapInput `pulumi:"meta"`
+	// The Consul namespace to authenticate to.
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	// The Consul admin partition to authenticate to.
+	Partition pulumi.StringPtrInput `pulumi:"partition"`
+	// The Consul Server ID header value to include in the STS signing request. This must match the ServerIDHeaderValue configured in the Consul auth method.
+	ServerIdHeaderValue pulumi.StringPtrInput `pulumi:"serverIdHeaderValue"`
+}
+
+func (ProviderAuthLoginAwsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProviderAuthLoginAws)(nil)).Elem()
+}
+
+func (i ProviderAuthLoginAwsArgs) ToProviderAuthLoginAwsOutput() ProviderAuthLoginAwsOutput {
+	return i.ToProviderAuthLoginAwsOutputWithContext(context.Background())
+}
+
+func (i ProviderAuthLoginAwsArgs) ToProviderAuthLoginAwsOutputWithContext(ctx context.Context) ProviderAuthLoginAwsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderAuthLoginAwsOutput)
+}
+
+func (i ProviderAuthLoginAwsArgs) ToProviderAuthLoginAwsPtrOutput() ProviderAuthLoginAwsPtrOutput {
+	return i.ToProviderAuthLoginAwsPtrOutputWithContext(context.Background())
+}
+
+func (i ProviderAuthLoginAwsArgs) ToProviderAuthLoginAwsPtrOutputWithContext(ctx context.Context) ProviderAuthLoginAwsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderAuthLoginAwsOutput).ToProviderAuthLoginAwsPtrOutputWithContext(ctx)
+}
+
+// ProviderAuthLoginAwsPtrInput is an input type that accepts ProviderAuthLoginAwsArgs, ProviderAuthLoginAwsPtr and ProviderAuthLoginAwsPtrOutput values.
+// You can construct a concrete instance of `ProviderAuthLoginAwsPtrInput` via:
+//
+//	        ProviderAuthLoginAwsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ProviderAuthLoginAwsPtrInput interface {
+	pulumi.Input
+
+	ToProviderAuthLoginAwsPtrOutput() ProviderAuthLoginAwsPtrOutput
+	ToProviderAuthLoginAwsPtrOutputWithContext(context.Context) ProviderAuthLoginAwsPtrOutput
+}
+
+type providerAuthLoginAwsPtrType ProviderAuthLoginAwsArgs
+
+func ProviderAuthLoginAwsPtr(v *ProviderAuthLoginAwsArgs) ProviderAuthLoginAwsPtrInput {
+	return (*providerAuthLoginAwsPtrType)(v)
+}
+
+func (*providerAuthLoginAwsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProviderAuthLoginAws)(nil)).Elem()
+}
+
+func (i *providerAuthLoginAwsPtrType) ToProviderAuthLoginAwsPtrOutput() ProviderAuthLoginAwsPtrOutput {
+	return i.ToProviderAuthLoginAwsPtrOutputWithContext(context.Background())
+}
+
+func (i *providerAuthLoginAwsPtrType) ToProviderAuthLoginAwsPtrOutputWithContext(ctx context.Context) ProviderAuthLoginAwsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderAuthLoginAwsPtrOutput)
+}
+
+type ProviderAuthLoginAwsOutput struct{ *pulumi.OutputState }
+
+func (ProviderAuthLoginAwsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProviderAuthLoginAws)(nil)).Elem()
+}
+
+func (o ProviderAuthLoginAwsOutput) ToProviderAuthLoginAwsOutput() ProviderAuthLoginAwsOutput {
+	return o
+}
+
+func (o ProviderAuthLoginAwsOutput) ToProviderAuthLoginAwsOutputWithContext(ctx context.Context) ProviderAuthLoginAwsOutput {
+	return o
+}
+
+func (o ProviderAuthLoginAwsOutput) ToProviderAuthLoginAwsPtrOutput() ProviderAuthLoginAwsPtrOutput {
+	return o.ToProviderAuthLoginAwsPtrOutputWithContext(context.Background())
+}
+
+func (o ProviderAuthLoginAwsOutput) ToProviderAuthLoginAwsPtrOutputWithContext(ctx context.Context) ProviderAuthLoginAwsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProviderAuthLoginAws) *ProviderAuthLoginAws {
+		return &v
+	}).(ProviderAuthLoginAwsPtrOutput)
+}
+
+// The name of the Consul auth method to use for login.
+func (o ProviderAuthLoginAwsOutput) AuthMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v ProviderAuthLoginAws) string { return v.AuthMethod }).(pulumi.StringOutput)
+}
+
+// The AWS access key ID.
+func (o ProviderAuthLoginAwsOutput) AwsAccessKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderAuthLoginAws) *string { return v.AwsAccessKeyId }).(pulumi.StringPtrOutput)
+}
+
+// The IAM endpoint URL.
+func (o ProviderAuthLoginAwsOutput) AwsIamEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderAuthLoginAws) *string { return v.AwsIamEndpoint }).(pulumi.StringPtrOutput)
+}
+
+// The name of the AWS profile.
+func (o ProviderAuthLoginAwsOutput) AwsProfile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderAuthLoginAws) *string { return v.AwsProfile }).(pulumi.StringPtrOutput)
+}
+
+// The AWS region.
+func (o ProviderAuthLoginAwsOutput) AwsRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderAuthLoginAws) *string { return v.AwsRegion }).(pulumi.StringPtrOutput)
+}
+
+// The ARN of the AWS Role to assume. Used during STS AssumeRole
+func (o ProviderAuthLoginAwsOutput) AwsRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderAuthLoginAws) *string { return v.AwsRoleArn }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the name to attach to the AWS role session. Used during STS AssumeRole
+func (o ProviderAuthLoginAwsOutput) AwsRoleSessionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderAuthLoginAws) *string { return v.AwsRoleSessionName }).(pulumi.StringPtrOutput)
+}
+
+// The AWS secret access key.
+func (o ProviderAuthLoginAwsOutput) AwsSecretAccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderAuthLoginAws) *string { return v.AwsSecretAccessKey }).(pulumi.StringPtrOutput)
+}
+
+// The AWS session token.
+func (o ProviderAuthLoginAwsOutput) AwsSessionToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderAuthLoginAws) *string { return v.AwsSessionToken }).(pulumi.StringPtrOutput)
+}
+
+// Path to the AWS shared credentials file.
+func (o ProviderAuthLoginAwsOutput) AwsSharedCredentialsFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderAuthLoginAws) *string { return v.AwsSharedCredentialsFile }).(pulumi.StringPtrOutput)
+}
+
+// The STS endpoint URL.
+func (o ProviderAuthLoginAwsOutput) AwsStsEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderAuthLoginAws) *string { return v.AwsStsEndpoint }).(pulumi.StringPtrOutput)
+}
+
+// Path to the file containing an OAuth 2.0 access token or OpenID Connect ID token.
+func (o ProviderAuthLoginAwsOutput) AwsWebIdentityTokenFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderAuthLoginAws) *string { return v.AwsWebIdentityTokenFile }).(pulumi.StringPtrOutput)
+}
+
+// Specifies arbitrary KV metadata linked to the token. Can be useful to track origins.
+func (o ProviderAuthLoginAwsOutput) Meta() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ProviderAuthLoginAws) map[string]string { return v.Meta }).(pulumi.StringMapOutput)
+}
+
+// The Consul namespace to authenticate to.
+func (o ProviderAuthLoginAwsOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderAuthLoginAws) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+// The Consul admin partition to authenticate to.
+func (o ProviderAuthLoginAwsOutput) Partition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderAuthLoginAws) *string { return v.Partition }).(pulumi.StringPtrOutput)
+}
+
+// The Consul Server ID header value to include in the STS signing request. This must match the ServerIDHeaderValue configured in the Consul auth method.
+func (o ProviderAuthLoginAwsOutput) ServerIdHeaderValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderAuthLoginAws) *string { return v.ServerIdHeaderValue }).(pulumi.StringPtrOutput)
+}
+
+type ProviderAuthLoginAwsPtrOutput struct{ *pulumi.OutputState }
+
+func (ProviderAuthLoginAwsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProviderAuthLoginAws)(nil)).Elem()
+}
+
+func (o ProviderAuthLoginAwsPtrOutput) ToProviderAuthLoginAwsPtrOutput() ProviderAuthLoginAwsPtrOutput {
+	return o
+}
+
+func (o ProviderAuthLoginAwsPtrOutput) ToProviderAuthLoginAwsPtrOutputWithContext(ctx context.Context) ProviderAuthLoginAwsPtrOutput {
+	return o
+}
+
+func (o ProviderAuthLoginAwsPtrOutput) Elem() ProviderAuthLoginAwsOutput {
+	return o.ApplyT(func(v *ProviderAuthLoginAws) ProviderAuthLoginAws {
+		if v != nil {
+			return *v
+		}
+		var ret ProviderAuthLoginAws
+		return ret
+	}).(ProviderAuthLoginAwsOutput)
+}
+
+// The name of the Consul auth method to use for login.
+func (o ProviderAuthLoginAwsPtrOutput) AuthMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProviderAuthLoginAws) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AuthMethod
+	}).(pulumi.StringPtrOutput)
+}
+
+// The AWS access key ID.
+func (o ProviderAuthLoginAwsPtrOutput) AwsAccessKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProviderAuthLoginAws) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AwsAccessKeyId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The IAM endpoint URL.
+func (o ProviderAuthLoginAwsPtrOutput) AwsIamEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProviderAuthLoginAws) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AwsIamEndpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the AWS profile.
+func (o ProviderAuthLoginAwsPtrOutput) AwsProfile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProviderAuthLoginAws) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AwsProfile
+	}).(pulumi.StringPtrOutput)
+}
+
+// The AWS region.
+func (o ProviderAuthLoginAwsPtrOutput) AwsRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProviderAuthLoginAws) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AwsRegion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ARN of the AWS Role to assume. Used during STS AssumeRole
+func (o ProviderAuthLoginAwsPtrOutput) AwsRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProviderAuthLoginAws) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AwsRoleArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the name to attach to the AWS role session. Used during STS AssumeRole
+func (o ProviderAuthLoginAwsPtrOutput) AwsRoleSessionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProviderAuthLoginAws) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AwsRoleSessionName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The AWS secret access key.
+func (o ProviderAuthLoginAwsPtrOutput) AwsSecretAccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProviderAuthLoginAws) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AwsSecretAccessKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// The AWS session token.
+func (o ProviderAuthLoginAwsPtrOutput) AwsSessionToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProviderAuthLoginAws) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AwsSessionToken
+	}).(pulumi.StringPtrOutput)
+}
+
+// Path to the AWS shared credentials file.
+func (o ProviderAuthLoginAwsPtrOutput) AwsSharedCredentialsFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProviderAuthLoginAws) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AwsSharedCredentialsFile
+	}).(pulumi.StringPtrOutput)
+}
+
+// The STS endpoint URL.
+func (o ProviderAuthLoginAwsPtrOutput) AwsStsEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProviderAuthLoginAws) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AwsStsEndpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// Path to the file containing an OAuth 2.0 access token or OpenID Connect ID token.
+func (o ProviderAuthLoginAwsPtrOutput) AwsWebIdentityTokenFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProviderAuthLoginAws) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AwsWebIdentityTokenFile
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies arbitrary KV metadata linked to the token. Can be useful to track origins.
+func (o ProviderAuthLoginAwsPtrOutput) Meta() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ProviderAuthLoginAws) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Meta
+	}).(pulumi.StringMapOutput)
+}
+
+// The Consul namespace to authenticate to.
+func (o ProviderAuthLoginAwsPtrOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProviderAuthLoginAws) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Namespace
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Consul admin partition to authenticate to.
+func (o ProviderAuthLoginAwsPtrOutput) Partition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProviderAuthLoginAws) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Partition
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Consul Server ID header value to include in the STS signing request. This must match the ServerIDHeaderValue configured in the Consul auth method.
+func (o ProviderAuthLoginAwsPtrOutput) ServerIdHeaderValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProviderAuthLoginAws) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServerIdHeaderValue
+	}).(pulumi.StringPtrOutput)
+}
+
 type ProviderHeader struct {
 	// The name of the header.
 	Name string `pulumi:"name"`
@@ -13223,6 +13645,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PreparedQueryTemplatePtrInput)(nil)).Elem(), PreparedQueryTemplateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderAuthJwtInput)(nil)).Elem(), ProviderAuthJwtArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderAuthJwtPtrInput)(nil)).Elem(), ProviderAuthJwtArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProviderAuthLoginAwsInput)(nil)).Elem(), ProviderAuthLoginAwsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProviderAuthLoginAwsPtrInput)(nil)).Elem(), ProviderAuthLoginAwsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderHeaderInput)(nil)).Elem(), ProviderHeaderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderHeaderArrayInput)(nil)).Elem(), ProviderHeaderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceCheckInput)(nil)).Elem(), ServiceCheckArgs{})
@@ -13411,6 +13835,8 @@ func init() {
 	pulumi.RegisterOutputType(PreparedQueryTemplatePtrOutput{})
 	pulumi.RegisterOutputType(ProviderAuthJwtOutput{})
 	pulumi.RegisterOutputType(ProviderAuthJwtPtrOutput{})
+	pulumi.RegisterOutputType(ProviderAuthLoginAwsOutput{})
+	pulumi.RegisterOutputType(ProviderAuthLoginAwsPtrOutput{})
 	pulumi.RegisterOutputType(ProviderHeaderOutput{})
 	pulumi.RegisterOutputType(ProviderHeaderArrayOutput{})
 	pulumi.RegisterOutputType(ServiceCheckOutput{})

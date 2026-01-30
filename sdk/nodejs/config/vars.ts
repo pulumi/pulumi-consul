@@ -32,6 +32,17 @@ Object.defineProperty(exports, "authJwt", {
 });
 
 /**
+ * Login to Consul using the AWS IAM auth method
+ */
+export declare const authLoginAws: outputs.config.AuthLoginAws | undefined;
+Object.defineProperty(exports, "authLoginAws", {
+    get() {
+        return __config.getObject<outputs.config.AuthLoginAws>("authLoginAws");
+    },
+    enumerable: true,
+});
+
+/**
  * A path to a PEM-encoded certificate authority used to verify the remote agent's certificate.
  */
 export declare const caFile: string | undefined;

@@ -1563,6 +1563,73 @@ export interface ProviderAuthJwt {
     useTerraformCloudWorkloadIdentity?: pulumi.Input<boolean>;
 }
 
+export interface ProviderAuthLoginAws {
+    /**
+     * The name of the Consul auth method to use for login.
+     */
+    authMethod: pulumi.Input<string>;
+    /**
+     * The AWS access key ID.
+     */
+    awsAccessKeyId?: pulumi.Input<string>;
+    /**
+     * The IAM endpoint URL.
+     */
+    awsIamEndpoint?: pulumi.Input<string>;
+    /**
+     * The name of the AWS profile.
+     */
+    awsProfile?: pulumi.Input<string>;
+    /**
+     * The AWS region.
+     */
+    awsRegion?: pulumi.Input<string>;
+    /**
+     * The ARN of the AWS Role to assume. Used during STS AssumeRole
+     */
+    awsRoleArn?: pulumi.Input<string>;
+    /**
+     * Specifies the name to attach to the AWS role session. Used during STS AssumeRole
+     */
+    awsRoleSessionName?: pulumi.Input<string>;
+    /**
+     * The AWS secret access key.
+     */
+    awsSecretAccessKey?: pulumi.Input<string>;
+    /**
+     * The AWS session token.
+     */
+    awsSessionToken?: pulumi.Input<string>;
+    /**
+     * Path to the AWS shared credentials file.
+     */
+    awsSharedCredentialsFile?: pulumi.Input<string>;
+    /**
+     * The STS endpoint URL.
+     */
+    awsStsEndpoint?: pulumi.Input<string>;
+    /**
+     * Path to the file containing an OAuth 2.0 access token or OpenID Connect ID token.
+     */
+    awsWebIdentityTokenFile?: pulumi.Input<string>;
+    /**
+     * Specifies arbitrary KV metadata linked to the token. Can be useful to track origins.
+     */
+    meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The Consul namespace to authenticate to.
+     */
+    namespace?: pulumi.Input<string>;
+    /**
+     * The Consul admin partition to authenticate to.
+     */
+    partition?: pulumi.Input<string>;
+    /**
+     * The Consul Server ID header value to include in the STS signing request. This must match the ServerIDHeaderValue configured in the Consul auth method.
+     */
+    serverIdHeaderValue?: pulumi.Input<string>;
+}
+
 export interface ProviderHeader {
     /**
      * The name of the header.

@@ -4,6 +4,7 @@
 package com.pulumi.consul;
 
 import com.pulumi.consul.config.inputs.AuthJwt;
+import com.pulumi.consul.config.inputs.AuthLoginAws;
 import com.pulumi.consul.config.inputs.Headers;
 import com.pulumi.core.TypeShape;
 import com.pulumi.core.internal.Codegen;
@@ -28,6 +29,13 @@ public final class Config {
  */
     public Optional<AuthJwt> authJwt() {
         return Codegen.objectProp("authJwt", AuthJwt.class).config(config).get();
+    }
+/**
+ * Login to Consul using the AWS IAM auth method
+ * 
+ */
+    public Optional<AuthLoginAws> authLoginAws() {
+        return Codegen.objectProp("authLoginAws", AuthLoginAws.class).config(config).get();
     }
 /**
  * A path to a PEM-encoded certificate authority used to verify the remote agent&#39;s certificate.

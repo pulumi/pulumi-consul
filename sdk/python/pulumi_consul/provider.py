@@ -22,6 +22,7 @@ class ProviderArgs:
     def __init__(__self__, *,
                  address: Optional[pulumi.Input[_builtins.str]] = None,
                  auth_jwt: Optional[pulumi.Input['ProviderAuthJwtArgs']] = None,
+                 auth_login_aws: Optional[pulumi.Input['ProviderAuthLoginAwsArgs']] = None,
                  ca_file: Optional[pulumi.Input[_builtins.str]] = None,
                  ca_path: Optional[pulumi.Input[_builtins.str]] = None,
                  ca_pem: Optional[pulumi.Input[_builtins.str]] = None,
@@ -40,6 +41,7 @@ class ProviderArgs:
         The set of arguments for constructing a Provider resource.
         :param pulumi.Input[_builtins.str] address: The HTTP(S) API address of the agent to use. Defaults to "127.0.0.1:8500".
         :param pulumi.Input['ProviderAuthJwtArgs'] auth_jwt: Authenticates to Consul using a JWT authentication method.
+        :param pulumi.Input['ProviderAuthLoginAwsArgs'] auth_login_aws: Login to Consul using the AWS IAM auth method
         :param pulumi.Input[_builtins.str] ca_file: A path to a PEM-encoded certificate authority used to verify the remote agent's certificate.
         :param pulumi.Input[_builtins.str] ca_path: A path to a directory of PEM-encoded certificate authority files to use to check the authenticity of client and server connections. Can also be specified with the `CONSUL_CAPATH` environment variable.
         :param pulumi.Input[_builtins.str] ca_pem: PEM-encoded certificate authority used to verify the remote agent's certificate.
@@ -58,6 +60,8 @@ class ProviderArgs:
             pulumi.set(__self__, "address", address)
         if auth_jwt is not None:
             pulumi.set(__self__, "auth_jwt", auth_jwt)
+        if auth_login_aws is not None:
+            pulumi.set(__self__, "auth_login_aws", auth_login_aws)
         if ca_file is not None:
             pulumi.set(__self__, "ca_file", ca_file)
         if ca_path is not None:
@@ -110,6 +114,18 @@ class ProviderArgs:
     @auth_jwt.setter
     def auth_jwt(self, value: Optional[pulumi.Input['ProviderAuthJwtArgs']]):
         pulumi.set(self, "auth_jwt", value)
+
+    @_builtins.property
+    @pulumi.getter(name="authLoginAws")
+    def auth_login_aws(self) -> Optional[pulumi.Input['ProviderAuthLoginAwsArgs']]:
+        """
+        Login to Consul using the AWS IAM auth method
+        """
+        return pulumi.get(self, "auth_login_aws")
+
+    @auth_login_aws.setter
+    def auth_login_aws(self, value: Optional[pulumi.Input['ProviderAuthLoginAwsArgs']]):
+        pulumi.set(self, "auth_login_aws", value)
 
     @_builtins.property
     @pulumi.getter(name="caFile")
@@ -285,6 +301,7 @@ class Provider(pulumi.ProviderResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  address: Optional[pulumi.Input[_builtins.str]] = None,
                  auth_jwt: Optional[pulumi.Input[Union['ProviderAuthJwtArgs', 'ProviderAuthJwtArgsDict']]] = None,
+                 auth_login_aws: Optional[pulumi.Input[Union['ProviderAuthLoginAwsArgs', 'ProviderAuthLoginAwsArgsDict']]] = None,
                  ca_file: Optional[pulumi.Input[_builtins.str]] = None,
                  ca_path: Optional[pulumi.Input[_builtins.str]] = None,
                  ca_pem: Optional[pulumi.Input[_builtins.str]] = None,
@@ -310,6 +327,7 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] address: The HTTP(S) API address of the agent to use. Defaults to "127.0.0.1:8500".
         :param pulumi.Input[Union['ProviderAuthJwtArgs', 'ProviderAuthJwtArgsDict']] auth_jwt: Authenticates to Consul using a JWT authentication method.
+        :param pulumi.Input[Union['ProviderAuthLoginAwsArgs', 'ProviderAuthLoginAwsArgsDict']] auth_login_aws: Login to Consul using the AWS IAM auth method
         :param pulumi.Input[_builtins.str] ca_file: A path to a PEM-encoded certificate authority used to verify the remote agent's certificate.
         :param pulumi.Input[_builtins.str] ca_path: A path to a directory of PEM-encoded certificate authority files to use to check the authenticity of client and server connections. Can also be specified with the `CONSUL_CAPATH` environment variable.
         :param pulumi.Input[_builtins.str] ca_pem: PEM-encoded certificate authority used to verify the remote agent's certificate.
@@ -353,6 +371,7 @@ class Provider(pulumi.ProviderResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  address: Optional[pulumi.Input[_builtins.str]] = None,
                  auth_jwt: Optional[pulumi.Input[Union['ProviderAuthJwtArgs', 'ProviderAuthJwtArgsDict']]] = None,
+                 auth_login_aws: Optional[pulumi.Input[Union['ProviderAuthLoginAwsArgs', 'ProviderAuthLoginAwsArgsDict']]] = None,
                  ca_file: Optional[pulumi.Input[_builtins.str]] = None,
                  ca_path: Optional[pulumi.Input[_builtins.str]] = None,
                  ca_pem: Optional[pulumi.Input[_builtins.str]] = None,
@@ -378,6 +397,7 @@ class Provider(pulumi.ProviderResource):
 
             __props__.__dict__["address"] = address
             __props__.__dict__["auth_jwt"] = pulumi.Output.from_input(auth_jwt).apply(pulumi.runtime.to_json) if auth_jwt is not None else None
+            __props__.__dict__["auth_login_aws"] = pulumi.Output.from_input(auth_login_aws).apply(pulumi.runtime.to_json) if auth_login_aws is not None else None
             __props__.__dict__["ca_file"] = ca_file
             __props__.__dict__["ca_path"] = ca_path
             __props__.__dict__["ca_pem"] = ca_pem

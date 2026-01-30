@@ -25,6 +25,11 @@ authJwt: Optional[str]
 Authenticates to Consul using a JWT authentication method.
 """
 
+authLoginAws: Optional[str]
+"""
+Login to Consul using the AWS IAM auth method
+"""
+
 caFile: Optional[str]
 """
 A path to a PEM-encoded certificate authority used to verify the remote agent's certificate.

@@ -36,6 +36,13 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('authJwt')
 
     @_builtins.property
+    def auth_login_aws(self) -> Optional[str]:
+        """
+        Login to Consul using the AWS IAM auth method
+        """
+        return __config__.get('authLoginAws')
+
+    @_builtins.property
     def ca_file(self) -> Optional[str]:
         """
         A path to a PEM-encoded certificate authority used to verify the remote agent's certificate.

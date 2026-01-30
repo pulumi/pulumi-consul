@@ -16,6 +16,7 @@ from .. import _utilities
 
 __all__ = [
     'AuthJwt',
+    'AuthLoginAws',
     'Headers',
 ]
 
@@ -67,6 +68,204 @@ class AuthJwt(dict):
     @pulumi.getter(name="useTerraformCloudWorkloadIdentity")
     def use_terraform_cloud_workload_identity(self) -> Optional[_builtins.bool]:
         return pulumi.get(self, "use_terraform_cloud_workload_identity")
+
+
+@pulumi.output_type
+class AuthLoginAws(dict):
+    def __init__(__self__, *,
+                 auth_method: _builtins.str,
+                 aws_access_key_id: Optional[_builtins.str] = None,
+                 aws_iam_endpoint: Optional[_builtins.str] = None,
+                 aws_profile: Optional[_builtins.str] = None,
+                 aws_region: Optional[_builtins.str] = None,
+                 aws_role_arn: Optional[_builtins.str] = None,
+                 aws_role_session_name: Optional[_builtins.str] = None,
+                 aws_secret_access_key: Optional[_builtins.str] = None,
+                 aws_session_token: Optional[_builtins.str] = None,
+                 aws_shared_credentials_file: Optional[_builtins.str] = None,
+                 aws_sts_endpoint: Optional[_builtins.str] = None,
+                 aws_web_identity_token_file: Optional[_builtins.str] = None,
+                 meta: Optional[Mapping[str, _builtins.str]] = None,
+                 namespace: Optional[_builtins.str] = None,
+                 partition: Optional[_builtins.str] = None,
+                 server_id_header_value: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str auth_method: The name of the Consul auth method to use for login.
+        :param _builtins.str aws_access_key_id: The AWS access key ID.
+        :param _builtins.str aws_iam_endpoint: The IAM endpoint URL.
+        :param _builtins.str aws_profile: The name of the AWS profile.
+        :param _builtins.str aws_region: The AWS region.
+        :param _builtins.str aws_role_arn: The ARN of the AWS Role to assume. Used during STS AssumeRole
+        :param _builtins.str aws_role_session_name: Specifies the name to attach to the AWS role session. Used during STS AssumeRole
+        :param _builtins.str aws_secret_access_key: The AWS secret access key.
+        :param _builtins.str aws_session_token: The AWS session token.
+        :param _builtins.str aws_shared_credentials_file: Path to the AWS shared credentials file.
+        :param _builtins.str aws_sts_endpoint: The STS endpoint URL.
+        :param _builtins.str aws_web_identity_token_file: Path to the file containing an OAuth 2.0 access token or OpenID Connect ID token.
+        :param Mapping[str, _builtins.str] meta: Specifies arbitrary KV metadata linked to the token. Can be useful to track origins.
+        :param _builtins.str namespace: The Consul namespace to authenticate to.
+        :param _builtins.str partition: The Consul admin partition to authenticate to.
+        :param _builtins.str server_id_header_value: The Consul Server ID header value to include in the STS signing request. This must match the ServerIDHeaderValue configured in the Consul auth method.
+        """
+        pulumi.set(__self__, "auth_method", auth_method)
+        if aws_access_key_id is not None:
+            pulumi.set(__self__, "aws_access_key_id", aws_access_key_id)
+        if aws_iam_endpoint is not None:
+            pulumi.set(__self__, "aws_iam_endpoint", aws_iam_endpoint)
+        if aws_profile is not None:
+            pulumi.set(__self__, "aws_profile", aws_profile)
+        if aws_region is not None:
+            pulumi.set(__self__, "aws_region", aws_region)
+        if aws_role_arn is not None:
+            pulumi.set(__self__, "aws_role_arn", aws_role_arn)
+        if aws_role_session_name is not None:
+            pulumi.set(__self__, "aws_role_session_name", aws_role_session_name)
+        if aws_secret_access_key is not None:
+            pulumi.set(__self__, "aws_secret_access_key", aws_secret_access_key)
+        if aws_session_token is not None:
+            pulumi.set(__self__, "aws_session_token", aws_session_token)
+        if aws_shared_credentials_file is not None:
+            pulumi.set(__self__, "aws_shared_credentials_file", aws_shared_credentials_file)
+        if aws_sts_endpoint is not None:
+            pulumi.set(__self__, "aws_sts_endpoint", aws_sts_endpoint)
+        if aws_web_identity_token_file is not None:
+            pulumi.set(__self__, "aws_web_identity_token_file", aws_web_identity_token_file)
+        if meta is not None:
+            pulumi.set(__self__, "meta", meta)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+        if partition is not None:
+            pulumi.set(__self__, "partition", partition)
+        if server_id_header_value is not None:
+            pulumi.set(__self__, "server_id_header_value", server_id_header_value)
+
+    @_builtins.property
+    @pulumi.getter(name="authMethod")
+    def auth_method(self) -> _builtins.str:
+        """
+        The name of the Consul auth method to use for login.
+        """
+        return pulumi.get(self, "auth_method")
+
+    @_builtins.property
+    @pulumi.getter(name="awsAccessKeyId")
+    def aws_access_key_id(self) -> Optional[_builtins.str]:
+        """
+        The AWS access key ID.
+        """
+        return pulumi.get(self, "aws_access_key_id")
+
+    @_builtins.property
+    @pulumi.getter(name="awsIamEndpoint")
+    def aws_iam_endpoint(self) -> Optional[_builtins.str]:
+        """
+        The IAM endpoint URL.
+        """
+        return pulumi.get(self, "aws_iam_endpoint")
+
+    @_builtins.property
+    @pulumi.getter(name="awsProfile")
+    def aws_profile(self) -> Optional[_builtins.str]:
+        """
+        The name of the AWS profile.
+        """
+        return pulumi.get(self, "aws_profile")
+
+    @_builtins.property
+    @pulumi.getter(name="awsRegion")
+    def aws_region(self) -> Optional[_builtins.str]:
+        """
+        The AWS region.
+        """
+        return pulumi.get(self, "aws_region")
+
+    @_builtins.property
+    @pulumi.getter(name="awsRoleArn")
+    def aws_role_arn(self) -> Optional[_builtins.str]:
+        """
+        The ARN of the AWS Role to assume. Used during STS AssumeRole
+        """
+        return pulumi.get(self, "aws_role_arn")
+
+    @_builtins.property
+    @pulumi.getter(name="awsRoleSessionName")
+    def aws_role_session_name(self) -> Optional[_builtins.str]:
+        """
+        Specifies the name to attach to the AWS role session. Used during STS AssumeRole
+        """
+        return pulumi.get(self, "aws_role_session_name")
+
+    @_builtins.property
+    @pulumi.getter(name="awsSecretAccessKey")
+    def aws_secret_access_key(self) -> Optional[_builtins.str]:
+        """
+        The AWS secret access key.
+        """
+        return pulumi.get(self, "aws_secret_access_key")
+
+    @_builtins.property
+    @pulumi.getter(name="awsSessionToken")
+    def aws_session_token(self) -> Optional[_builtins.str]:
+        """
+        The AWS session token.
+        """
+        return pulumi.get(self, "aws_session_token")
+
+    @_builtins.property
+    @pulumi.getter(name="awsSharedCredentialsFile")
+    def aws_shared_credentials_file(self) -> Optional[_builtins.str]:
+        """
+        Path to the AWS shared credentials file.
+        """
+        return pulumi.get(self, "aws_shared_credentials_file")
+
+    @_builtins.property
+    @pulumi.getter(name="awsStsEndpoint")
+    def aws_sts_endpoint(self) -> Optional[_builtins.str]:
+        """
+        The STS endpoint URL.
+        """
+        return pulumi.get(self, "aws_sts_endpoint")
+
+    @_builtins.property
+    @pulumi.getter(name="awsWebIdentityTokenFile")
+    def aws_web_identity_token_file(self) -> Optional[_builtins.str]:
+        """
+        Path to the file containing an OAuth 2.0 access token or OpenID Connect ID token.
+        """
+        return pulumi.get(self, "aws_web_identity_token_file")
+
+    @_builtins.property
+    @pulumi.getter
+    def meta(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Specifies arbitrary KV metadata linked to the token. Can be useful to track origins.
+        """
+        return pulumi.get(self, "meta")
+
+    @_builtins.property
+    @pulumi.getter
+    def namespace(self) -> Optional[_builtins.str]:
+        """
+        The Consul namespace to authenticate to.
+        """
+        return pulumi.get(self, "namespace")
+
+    @_builtins.property
+    @pulumi.getter
+    def partition(self) -> Optional[_builtins.str]:
+        """
+        The Consul admin partition to authenticate to.
+        """
+        return pulumi.get(self, "partition")
+
+    @_builtins.property
+    @pulumi.getter(name="serverIdHeaderValue")
+    def server_id_header_value(self) -> Optional[_builtins.str]:
+        """
+        The Consul Server ID header value to include in the STS signing request. This must match the ServerIDHeaderValue configured in the Consul auth method.
+        """
+        return pulumi.get(self, "server_id_header_value")
 
 
 @pulumi.output_type
