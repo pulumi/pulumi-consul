@@ -144,6 +144,12 @@ namespace Pulumi.Consul
         public Input<Inputs.ProviderAuthJwtArgs>? AuthJwt { get; set; }
 
         /// <summary>
+        /// Login to Consul using the AWS IAM auth method
+        /// </summary>
+        [Input("authLoginAws", json: true)]
+        public Input<Inputs.ProviderAuthLoginAwsArgs>? AuthLoginAws { get; set; }
+
+        /// <summary>
         /// A path to a PEM-encoded certificate authority used to verify the remote agent's certificate.
         /// </summary>
         [Input("caFile")]

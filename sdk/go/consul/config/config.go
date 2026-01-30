@@ -21,6 +21,11 @@ func GetAuthJwt(ctx *pulumi.Context) string {
 	return config.Get(ctx, "consul:authJwt")
 }
 
+// Login to Consul using the AWS IAM auth method
+func GetAuthLoginAws(ctx *pulumi.Context) string {
+	return config.Get(ctx, "consul:authLoginAws")
+}
+
 // A path to a PEM-encoded certificate authority used to verify the remote agent's certificate.
 func GetCaFile(ctx *pulumi.Context) string {
 	return config.Get(ctx, "consul:caFile")

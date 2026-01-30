@@ -52,6 +52,16 @@ namespace Pulumi.Consul
             set => _authJwt.Set(value);
         }
 
+        private static readonly __Value<Pulumi.Consul.Config.Types.AuthLoginAws?> _authLoginAws = new __Value<Pulumi.Consul.Config.Types.AuthLoginAws?>(() => __config.GetObject<Pulumi.Consul.Config.Types.AuthLoginAws>("authLoginAws"));
+        /// <summary>
+        /// Login to Consul using the AWS IAM auth method
+        /// </summary>
+        public static Pulumi.Consul.Config.Types.AuthLoginAws? AuthLoginAws
+        {
+            get => _authLoginAws.Get();
+            set => _authLoginAws.Set(value);
+        }
+
         private static readonly __Value<string?> _caFile = new __Value<string?>(() => __config.Get("caFile"));
         /// <summary>
         /// A path to a PEM-encoded certificate authority used to verify the remote agent's certificate.
@@ -207,6 +217,74 @@ namespace Pulumi.Consul
             /// </summary>
                 public ImmutableDictionary<string, string>? Meta { get; set; } = null!;
                 public bool? UseTerraformCloudWorkloadIdentity { get; set; }
+            }
+
+             public class AuthLoginAws
+             {
+            /// <summary>
+            /// The name of the Consul auth method to use for login.
+            /// </summary>
+                public string AuthMethod { get; set; }
+            /// <summary>
+            /// The AWS access key ID.
+            /// </summary>
+                public string? AwsAccessKeyId { get; set; } = null!;
+            /// <summary>
+            /// The IAM endpoint URL.
+            /// </summary>
+                public string? AwsIamEndpoint { get; set; } = null!;
+            /// <summary>
+            /// The name of the AWS profile.
+            /// </summary>
+                public string? AwsProfile { get; set; } = null!;
+            /// <summary>
+            /// The AWS region.
+            /// </summary>
+                public string? AwsRegion { get; set; } = null!;
+            /// <summary>
+            /// The ARN of the AWS Role to assume. Used during STS AssumeRole
+            /// </summary>
+                public string? AwsRoleArn { get; set; } = null!;
+            /// <summary>
+            /// Specifies the name to attach to the AWS role session. Used during STS AssumeRole
+            /// </summary>
+                public string? AwsRoleSessionName { get; set; } = null!;
+            /// <summary>
+            /// The AWS secret access key.
+            /// </summary>
+                public string? AwsSecretAccessKey { get; set; } = null!;
+            /// <summary>
+            /// The AWS session token.
+            /// </summary>
+                public string? AwsSessionToken { get; set; } = null!;
+            /// <summary>
+            /// Path to the AWS shared credentials file.
+            /// </summary>
+                public string? AwsSharedCredentialsFile { get; set; } = null!;
+            /// <summary>
+            /// The STS endpoint URL.
+            /// </summary>
+                public string? AwsStsEndpoint { get; set; } = null!;
+            /// <summary>
+            /// Path to the file containing an OAuth 2.0 access token or OpenID Connect ID token.
+            /// </summary>
+                public string? AwsWebIdentityTokenFile { get; set; } = null!;
+            /// <summary>
+            /// Specifies arbitrary KV metadata linked to the token. Can be useful to track origins.
+            /// </summary>
+                public ImmutableDictionary<string, string>? Meta { get; set; } = null!;
+            /// <summary>
+            /// The Consul namespace to authenticate to.
+            /// </summary>
+                public string? Namespace { get; set; } = null!;
+            /// <summary>
+            /// The Consul admin partition to authenticate to.
+            /// </summary>
+                public string? Partition { get; set; } = null!;
+            /// <summary>
+            /// The Consul Server ID header value to include in the STS signing request. This must match the ServerIDHeaderValue configured in the Consul auth method.
+            /// </summary>
+                public string? ServerIdHeaderValue { get; set; } = null!;
             }
 
              public class Headers

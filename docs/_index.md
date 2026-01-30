@@ -278,6 +278,7 @@ public class App {
 
 - `address` (String) The HTTP(S) API address of the agent to use. Defaults to "127.0.0.1:8500".
 - `authJwt` (Block List, Max: 1) Authenticates to Consul using a JWT authentication method. (see below for nested schema)
+- `authLoginAws` (Block List, Max: 1) Login to Consul using the AWS IAM auth method (see below for nested schema)
 - `caFile` (String) A path to a PEM-encoded certificate authority used to verify the remote agent's certificate.
 - `caPath` (String) A path to a directory of PEM-encoded certificate authority files to use to check the authenticity of client and server connections. Can also be specified with the `CONSUL_CAPATH` environment variable.
 - `caPem` (String) PEM-encoded certificate authority used to verify the remote agent's certificate.
@@ -305,6 +306,31 @@ Optional:
 - `bearerToken` (String) The bearer token to present to the auth method during login for authentication purposes. For the Kubernetes auth method this is a [Service Account Token (JWT)](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#service-account-tokens).
 - `meta` (Map of String) Specifies arbitrary KV metadata linked to the token. Can be useful to track origins.
 - `usePulumiCloudWorkloadIdentity` (Boolean) Whether to use a Pulumi Workload Identity token. The token will be read from the `TFC_WORKLOAD_IDENTITY_TOKEN` environment variable.
+
+<a id="nestedblock--auth_login_aws"></a>
+### Nested Schema for `authLoginAws`
+
+Required:
+
+- `authMethod` (String) The name of the Consul auth method to use for login.
+
+Optional:
+
+- `awsAccessKeyId` (String) The AWS access key ID.
+- `awsIamEndpoint` (String) The IAM endpoint URL.
+- `awsProfile` (String) The name of the AWS profile.
+- `awsRegion` (String) The AWS region.
+- `awsRoleArn` (String) The ARN of the AWS Role to assume. Used during STS AssumeRole
+- `awsRoleSessionName` (String) Specifies the name to attach to the AWS role session. Used during STS AssumeRole
+- `awsSecretAccessKey` (String, Sensitive) The AWS secret access key.
+- `awsSessionToken` (String, Sensitive) The AWS session token.
+- `awsSharedCredentialsFile` (String) Path to the AWS shared credentials file.
+- `awsStsEndpoint` (String) The STS endpoint URL.
+- `awsWebIdentityTokenFile` (String) Path to the file containing an OAuth 2.0 access token or OpenID Connect ID token.
+- `meta` (Map of String) Specifies arbitrary KV metadata linked to the token. Can be useful to track origins.
+- `namespace` (String) The Consul namespace to authenticate to.
+- `partition` (String) The Consul admin partition to authenticate to.
+- `serverIdHeaderValue` (String) The Consul Server ID header value to include in the STS signing request. This must match the ServerIDHeaderValue configured in the Consul auth method.
 
 <a id="nestedblock--header"></a>
 ### Nested Schema for `header`

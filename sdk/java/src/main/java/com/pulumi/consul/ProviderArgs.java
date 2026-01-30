@@ -4,6 +4,7 @@
 package com.pulumi.consul;
 
 import com.pulumi.consul.inputs.ProviderAuthJwtArgs;
+import com.pulumi.consul.inputs.ProviderAuthLoginAwsArgs;
 import com.pulumi.consul.inputs.ProviderHeaderArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -47,6 +48,21 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<ProviderAuthJwtArgs>> authJwt() {
         return Optional.ofNullable(this.authJwt);
+    }
+
+    /**
+     * Login to Consul using the AWS IAM auth method
+     * 
+     */
+    @Import(name="authLoginAws", json=true)
+    private @Nullable Output<ProviderAuthLoginAwsArgs> authLoginAws;
+
+    /**
+     * @return Login to Consul using the AWS IAM auth method
+     * 
+     */
+    public Optional<Output<ProviderAuthLoginAwsArgs>> authLoginAws() {
+        return Optional.ofNullable(this.authLoginAws);
     }
 
     /**
@@ -256,6 +272,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     private ProviderArgs(ProviderArgs $) {
         this.address = $.address;
         this.authJwt = $.authJwt;
+        this.authLoginAws = $.authLoginAws;
         this.caFile = $.caFile;
         this.caPath = $.caPath;
         this.caPem = $.caPem;
@@ -330,6 +347,27 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder authJwt(ProviderAuthJwtArgs authJwt) {
             return authJwt(Output.of(authJwt));
+        }
+
+        /**
+         * @param authLoginAws Login to Consul using the AWS IAM auth method
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authLoginAws(@Nullable Output<ProviderAuthLoginAwsArgs> authLoginAws) {
+            $.authLoginAws = authLoginAws;
+            return this;
+        }
+
+        /**
+         * @param authLoginAws Login to Consul using the AWS IAM auth method
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authLoginAws(ProviderAuthLoginAwsArgs authLoginAws) {
+            return authLoginAws(Output.of(authLoginAws));
         }
 
         /**

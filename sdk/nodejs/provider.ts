@@ -90,6 +90,7 @@ export class Provider extends pulumi.ProviderResource {
         {
             resourceInputs["address"] = args?.address;
             resourceInputs["authJwt"] = pulumi.output(args?.authJwt).apply(JSON.stringify);
+            resourceInputs["authLoginAws"] = pulumi.output(args?.authLoginAws).apply(JSON.stringify);
             resourceInputs["caFile"] = args?.caFile;
             resourceInputs["caPath"] = args?.caPath;
             resourceInputs["caPem"] = args?.caPem;
@@ -133,6 +134,10 @@ export interface ProviderArgs {
      * Authenticates to Consul using a JWT authentication method.
      */
     authJwt?: pulumi.Input<inputs.ProviderAuthJwt>;
+    /**
+     * Login to Consul using the AWS IAM auth method
+     */
+    authLoginAws?: pulumi.Input<inputs.ProviderAuthLoginAws>;
     /**
      * A path to a PEM-encoded certificate authority used to verify the remote agent's certificate.
      */

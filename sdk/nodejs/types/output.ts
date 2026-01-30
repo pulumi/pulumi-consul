@@ -1799,6 +1799,73 @@ export namespace config {
         useTerraformCloudWorkloadIdentity?: boolean;
     }
 
+    export interface AuthLoginAws {
+        /**
+         * The name of the Consul auth method to use for login.
+         */
+        authMethod: string;
+        /**
+         * The AWS access key ID.
+         */
+        awsAccessKeyId?: string;
+        /**
+         * The IAM endpoint URL.
+         */
+        awsIamEndpoint?: string;
+        /**
+         * The name of the AWS profile.
+         */
+        awsProfile?: string;
+        /**
+         * The AWS region.
+         */
+        awsRegion?: string;
+        /**
+         * The ARN of the AWS Role to assume. Used during STS AssumeRole
+         */
+        awsRoleArn?: string;
+        /**
+         * Specifies the name to attach to the AWS role session. Used during STS AssumeRole
+         */
+        awsRoleSessionName?: string;
+        /**
+         * The AWS secret access key.
+         */
+        awsSecretAccessKey?: string;
+        /**
+         * The AWS session token.
+         */
+        awsSessionToken?: string;
+        /**
+         * Path to the AWS shared credentials file.
+         */
+        awsSharedCredentialsFile?: string;
+        /**
+         * The STS endpoint URL.
+         */
+        awsStsEndpoint?: string;
+        /**
+         * Path to the file containing an OAuth 2.0 access token or OpenID Connect ID token.
+         */
+        awsWebIdentityTokenFile?: string;
+        /**
+         * Specifies arbitrary KV metadata linked to the token. Can be useful to track origins.
+         */
+        meta?: {[key: string]: string};
+        /**
+         * The Consul namespace to authenticate to.
+         */
+        namespace?: string;
+        /**
+         * The Consul admin partition to authenticate to.
+         */
+        partition?: string;
+        /**
+         * The Consul Server ID header value to include in the STS signing request. This must match the ServerIDHeaderValue configured in the Consul auth method.
+         */
+        serverIdHeaderValue?: string;
+    }
+
     export interface Headers {
         /**
          * The name of the header.

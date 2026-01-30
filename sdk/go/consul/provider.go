@@ -76,6 +76,8 @@ type providerArgs struct {
 	Address *string `pulumi:"address"`
 	// Authenticates to Consul using a JWT authentication method.
 	AuthJwt *ProviderAuthJwt `pulumi:"authJwt"`
+	// Login to Consul using the AWS IAM auth method
+	AuthLoginAws *ProviderAuthLoginAws `pulumi:"authLoginAws"`
 	// A path to a PEM-encoded certificate authority used to verify the remote agent's certificate.
 	CaFile *string `pulumi:"caFile"`
 	// A path to a directory of PEM-encoded certificate authority files to use to check the authenticity of client and server connections. Can also be specified with the `CONSUL_CAPATH` environment variable.
@@ -111,6 +113,8 @@ type ProviderArgs struct {
 	Address pulumi.StringPtrInput
 	// Authenticates to Consul using a JWT authentication method.
 	AuthJwt ProviderAuthJwtPtrInput
+	// Login to Consul using the AWS IAM auth method
+	AuthLoginAws ProviderAuthLoginAwsPtrInput
 	// A path to a PEM-encoded certificate authority used to verify the remote agent's certificate.
 	CaFile pulumi.StringPtrInput
 	// A path to a directory of PEM-encoded certificate authority files to use to check the authenticity of client and server connections. Can also be specified with the `CONSUL_CAPATH` environment variable.
