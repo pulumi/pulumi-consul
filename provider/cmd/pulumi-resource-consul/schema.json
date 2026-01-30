@@ -60,6 +60,10 @@
                 "$ref": "#/types/consul:config/authJwt:authJwt",
                 "description": "Authenticates to Consul using a JWT authentication method."
             },
+            "authLoginAws": {
+                "$ref": "#/types/consul:config/authLoginAws:authLoginAws",
+                "description": "Login to Consul using the AWS IAM auth method"
+            },
             "caFile": {
                 "type": "string",
                 "description": "A path to a PEM-encoded certificate authority used to verify the remote agent's certificate."
@@ -142,6 +146,88 @@
                 },
                 "useTerraformCloudWorkloadIdentity": {
                     "type": "boolean"
+                }
+            },
+            "type": "object",
+            "required": [
+                "authMethod"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "consul:config/authLoginAws:authLoginAws": {
+            "properties": {
+                "authMethod": {
+                    "type": "string",
+                    "description": "The name of the Consul auth method to use for login.\n"
+                },
+                "awsAccessKeyId": {
+                    "type": "string",
+                    "description": "The AWS access key ID.\n"
+                },
+                "awsIamEndpoint": {
+                    "type": "string",
+                    "description": "The IAM endpoint URL.\n"
+                },
+                "awsProfile": {
+                    "type": "string",
+                    "description": "The name of the AWS profile.\n"
+                },
+                "awsRegion": {
+                    "type": "string",
+                    "description": "The AWS region.\n"
+                },
+                "awsRoleArn": {
+                    "type": "string",
+                    "description": "The ARN of the AWS Role to assume. Used during STS AssumeRole\n"
+                },
+                "awsRoleSessionName": {
+                    "type": "string",
+                    "description": "Specifies the name to attach to the AWS role session. Used during STS AssumeRole\n"
+                },
+                "awsSecretAccessKey": {
+                    "type": "string",
+                    "description": "The AWS secret access key.\n",
+                    "secret": true
+                },
+                "awsSessionToken": {
+                    "type": "string",
+                    "description": "The AWS session token.\n",
+                    "secret": true
+                },
+                "awsSharedCredentialsFile": {
+                    "type": "string",
+                    "description": "Path to the AWS shared credentials file.\n"
+                },
+                "awsStsEndpoint": {
+                    "type": "string",
+                    "description": "The STS endpoint URL.\n"
+                },
+                "awsWebIdentityTokenFile": {
+                    "type": "string",
+                    "description": "Path to the file containing an OAuth 2.0 access token or OpenID Connect ID token.\n"
+                },
+                "meta": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Specifies arbitrary KV metadata linked to the token. Can be useful to track origins.\n"
+                },
+                "namespace": {
+                    "type": "string",
+                    "description": "The Consul namespace to authenticate to.\n"
+                },
+                "partition": {
+                    "type": "string",
+                    "description": "The Consul admin partition to authenticate to.\n"
+                },
+                "serverIdHeaderValue": {
+                    "type": "string",
+                    "description": "The Consul Server ID header value to include in the STS signing request. This must match the ServerIDHeaderValue configured in the Consul auth method.\n"
                 }
             },
             "type": "object",
@@ -1569,6 +1655,88 @@
                 }
             }
         },
+        "consul:index/ProviderAuthLoginAws:ProviderAuthLoginAws": {
+            "properties": {
+                "authMethod": {
+                    "type": "string",
+                    "description": "The name of the Consul auth method to use for login.\n"
+                },
+                "awsAccessKeyId": {
+                    "type": "string",
+                    "description": "The AWS access key ID.\n"
+                },
+                "awsIamEndpoint": {
+                    "type": "string",
+                    "description": "The IAM endpoint URL.\n"
+                },
+                "awsProfile": {
+                    "type": "string",
+                    "description": "The name of the AWS profile.\n"
+                },
+                "awsRegion": {
+                    "type": "string",
+                    "description": "The AWS region.\n"
+                },
+                "awsRoleArn": {
+                    "type": "string",
+                    "description": "The ARN of the AWS Role to assume. Used during STS AssumeRole\n"
+                },
+                "awsRoleSessionName": {
+                    "type": "string",
+                    "description": "Specifies the name to attach to the AWS role session. Used during STS AssumeRole\n"
+                },
+                "awsSecretAccessKey": {
+                    "type": "string",
+                    "description": "The AWS secret access key.\n",
+                    "secret": true
+                },
+                "awsSessionToken": {
+                    "type": "string",
+                    "description": "The AWS session token.\n",
+                    "secret": true
+                },
+                "awsSharedCredentialsFile": {
+                    "type": "string",
+                    "description": "Path to the AWS shared credentials file.\n"
+                },
+                "awsStsEndpoint": {
+                    "type": "string",
+                    "description": "The STS endpoint URL.\n"
+                },
+                "awsWebIdentityTokenFile": {
+                    "type": "string",
+                    "description": "Path to the file containing an OAuth 2.0 access token or OpenID Connect ID token.\n"
+                },
+                "meta": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Specifies arbitrary KV metadata linked to the token. Can be useful to track origins.\n"
+                },
+                "namespace": {
+                    "type": "string",
+                    "description": "The Consul namespace to authenticate to.\n"
+                },
+                "partition": {
+                    "type": "string",
+                    "description": "The Consul admin partition to authenticate to.\n"
+                },
+                "serverIdHeaderValue": {
+                    "type": "string",
+                    "description": "The Consul Server ID header value to include in the STS signing request. This must match the ServerIDHeaderValue configured in the Consul auth method.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "authMethod"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": []
+                }
+            }
+        },
         "consul:index/ProviderHeader:ProviderHeader": {
             "properties": {
                 "name": {
@@ -2899,6 +3067,10 @@
                 "$ref": "#/types/consul:index/ProviderAuthJwt:ProviderAuthJwt",
                 "description": "Authenticates to Consul using a JWT authentication method."
             },
+            "authLoginAws": {
+                "$ref": "#/types/consul:index/ProviderAuthLoginAws:ProviderAuthLoginAws",
+                "description": "Login to Consul using the AWS IAM auth method"
+            },
             "caFile": {
                 "type": "string",
                 "description": "A path to a PEM-encoded certificate authority used to verify the remote agent's certificate."
@@ -2968,6 +3140,10 @@
             "authJwt": {
                 "$ref": "#/types/consul:index/ProviderAuthJwt:ProviderAuthJwt",
                 "description": "Authenticates to Consul using a JWT authentication method."
+            },
+            "authLoginAws": {
+                "$ref": "#/types/consul:index/ProviderAuthLoginAws:ProviderAuthLoginAws",
+                "description": "Login to Consul using the AWS IAM auth method"
             },
             "caFile": {
                 "type": "string",
