@@ -920,6 +920,18 @@ public final class ConsulFunctions {
         return Deployment.getInstance().invokeAsync("consul:index/getAclToken:getAclToken", TypeShape.of(GetAclTokenResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Warning:** When using this is resource, the ACL Token secret ID will be
+     * written to the Terraform state. It is strongly recommended to use the `pgpKey`
+     * attribute and to make sure the remote state has strong access controls before
+     * using this resource.
+     * 
+     * The `consulAclTokenSecret` data source returns the secret ID associated to
+     * the accessor ID. This can be useful to make systems that cannot use an auth
+     * method to interface with Consul.
+     * 
+     * If you want to get other attributes of the Consul ACL token, please use the
+     * [`consul.AclToken` data source](https://www.terraform.io/docs/providers/consul/d/acl_token.html).
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -976,6 +988,18 @@ public final class ConsulFunctions {
         return getAclTokenSecretId(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Warning:** When using this is resource, the ACL Token secret ID will be
+     * written to the Terraform state. It is strongly recommended to use the `pgpKey`
+     * attribute and to make sure the remote state has strong access controls before
+     * using this resource.
+     * 
+     * The `consulAclTokenSecret` data source returns the secret ID associated to
+     * the accessor ID. This can be useful to make systems that cannot use an auth
+     * method to interface with Consul.
+     * 
+     * If you want to get other attributes of the Consul ACL token, please use the
+     * [`consul.AclToken` data source](https://www.terraform.io/docs/providers/consul/d/acl_token.html).
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -1032,6 +1056,18 @@ public final class ConsulFunctions {
         return getAclTokenSecretIdPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Warning:** When using this is resource, the ACL Token secret ID will be
+     * written to the Terraform state. It is strongly recommended to use the `pgpKey`
+     * attribute and to make sure the remote state has strong access controls before
+     * using this resource.
+     * 
+     * The `consulAclTokenSecret` data source returns the secret ID associated to
+     * the accessor ID. This can be useful to make systems that cannot use an auth
+     * method to interface with Consul.
+     * 
+     * If you want to get other attributes of the Consul ACL token, please use the
+     * [`consul.AclToken` data source](https://www.terraform.io/docs/providers/consul/d/acl_token.html).
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -1088,6 +1124,18 @@ public final class ConsulFunctions {
         return Deployment.getInstance().invoke("consul:index/getAclTokenSecretId:getAclTokenSecretId", TypeShape.of(GetAclTokenSecretIdResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Warning:** When using this is resource, the ACL Token secret ID will be
+     * written to the Terraform state. It is strongly recommended to use the `pgpKey`
+     * attribute and to make sure the remote state has strong access controls before
+     * using this resource.
+     * 
+     * The `consulAclTokenSecret` data source returns the secret ID associated to
+     * the accessor ID. This can be useful to make systems that cannot use an auth
+     * method to interface with Consul.
+     * 
+     * If you want to get other attributes of the Consul ACL token, please use the
+     * [`consul.AclToken` data source](https://www.terraform.io/docs/providers/consul/d/acl_token.html).
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -1144,6 +1192,18 @@ public final class ConsulFunctions {
         return Deployment.getInstance().invoke("consul:index/getAclTokenSecretId:getAclTokenSecretId", TypeShape.of(GetAclTokenSecretIdResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Warning:** When using this is resource, the ACL Token secret ID will be
+     * written to the Terraform state. It is strongly recommended to use the `pgpKey`
+     * attribute and to make sure the remote state has strong access controls before
+     * using this resource.
+     * 
+     * The `consulAclTokenSecret` data source returns the secret ID associated to
+     * the accessor ID. This can be useful to make systems that cannot use an auth
+     * method to interface with Consul.
+     * 
+     * If you want to get other attributes of the Consul ACL token, please use the
+     * [`consul.AclToken` data source](https://www.terraform.io/docs/providers/consul/d/acl_token.html).
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -3636,6 +3696,9 @@ public final class ConsulFunctions {
         return Deployment.getInstance().invokeAsync("consul:index/getDatacenters:getDatacenters", TypeShape.of(GetDatacentersResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Allows Terraform to read values from a &#34;namespace&#34; of Consul keys that
+     * share a common name prefix.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -3728,6 +3791,9 @@ public final class ConsulFunctions {
         return getKeyPrefix(args, InvokeOptions.Empty);
     }
     /**
+     * Allows Terraform to read values from a &#34;namespace&#34; of Consul keys that
+     * share a common name prefix.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -3820,6 +3886,9 @@ public final class ConsulFunctions {
         return getKeyPrefixPlain(args, InvokeOptions.Empty);
     }
     /**
+     * Allows Terraform to read values from a &#34;namespace&#34; of Consul keys that
+     * share a common name prefix.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -3912,6 +3981,9 @@ public final class ConsulFunctions {
         return Deployment.getInstance().invoke("consul:index/getKeyPrefix:getKeyPrefix", TypeShape.of(GetKeyPrefixResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Allows Terraform to read values from a &#34;namespace&#34; of Consul keys that
+     * share a common name prefix.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -4004,6 +4076,9 @@ public final class ConsulFunctions {
         return Deployment.getInstance().invoke("consul:index/getKeyPrefix:getKeyPrefix", TypeShape.of(GetKeyPrefixResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Allows Terraform to read values from a &#34;namespace&#34; of Consul keys that
+     * share a common name prefix.
+     * 
      * ## Example Usage
      * 
      * <pre>

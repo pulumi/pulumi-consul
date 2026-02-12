@@ -47,7 +47,7 @@ import (
 //
 // ## Import
 //
-// `consul_namespace` can be imported. This is useful to manage attributes of the
+// `Namespace` can be imported. This is useful to manage attributes of the
 // default namespace that is created automatically:
 //
 // ```sh

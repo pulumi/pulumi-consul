@@ -14,17 +14,155 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
+ * The `consul.AclTokenPolicyAttachment` resource links a Consul Token and an ACL
+ * policy. The link is implemented through an update to the Consul ACL token.
+ * 
+ * &gt; **NOTE:** This resource is only useful to attach policies to an ACL token
+ * that has been created outside the current Terraform configuration, like the
+ * anonymous or the master token. If the token you need to attach a policy to has
+ * been created in the current Terraform configuration and will only be used in it,
+ * you should use the `policies` attribute of [`consul.AclToken`](https://www.terraform.io/docs/providers/consul/r/acl_token.html).
+ * 
+ * ## Example Usage
+ * 
+ * ### Attach a policy to the anonymous token
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.consul.AclPolicy;
+ * import com.pulumi.consul.AclPolicyArgs;
+ * import com.pulumi.consul.AclTokenPolicyAttachment;
+ * import com.pulumi.consul.AclTokenPolicyAttachmentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var agent = new AclPolicy("agent", AclPolicyArgs.builder()
+ *             .name("agent")
+ *             .rules("""
+ * node_prefix \"\" {
+ *   policy = \"read\"
+ * }
+ *             """)
+ *             .build());
+ * 
+ *         var attachment = new AclTokenPolicyAttachment("attachment", AclTokenPolicyAttachmentArgs.builder()
+ *             .tokenId("00000000-0000-0000-0000-000000000002")
+ *             .policy(agent.name())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Attach a policy to a token created in another Terraform configuration
+ * 
+ * ### In `first_configuration/main.tf`
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.consul.AclToken;
+ * import com.pulumi.consul.AclTokenArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var test = new AclToken("test", AclTokenArgs.builder()
+ *             .accessorId("9b20de68-3ea2-4b70-b4f1-506afad062a4")
+ *             .description("my test token")
+ *             .local(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### In `second_configuration/main.tf`
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.consul.AclPolicy;
+ * import com.pulumi.consul.AclPolicyArgs;
+ * import com.pulumi.consul.AclTokenPolicyAttachment;
+ * import com.pulumi.consul.AclTokenPolicyAttachmentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var agent = new AclPolicy("agent", AclPolicyArgs.builder()
+ *             .name("agent")
+ *             .rules("""
+ * node_prefix \"\" {
+ *   policy = \"read\"
+ * }
+ *             """)
+ *             .build());
+ * 
+ *         var attachment = new AclTokenPolicyAttachment("attachment", AclTokenPolicyAttachmentArgs.builder()
+ *             .tokenId("9b20de68-3ea2-4b70-b4f1-506afad062a4")
+ *             .policy(agent.name())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * **NOTE**: consul.AclToken would attempt to enforce an empty set of policies,
+ * because its policies attribute is empty. For this reason it is necessary to add
+ * the lifecycle clause to prevent Terraform from attempting to empty the set of
+ * policies associated to the token.
+ * 
  * ## Import
  * 
- * `consul_acl_token_policy_attachment` can be imported. This is especially useful to manage the
- * 
+ * `consul.AclTokenPolicyAttachment` can be imported. This is especially useful to manage the
  * policies attached to the anonymous and the master tokens with Terraform:
  * 
  * ```sh
  * $ pulumi import consul:index/aclTokenPolicyAttachment:AclTokenPolicyAttachment anonymous 00000000-0000-0000-0000-000000000002:policy_name
- * ```
- * 
- * ```sh
  * $ pulumi import consul:index/aclTokenPolicyAttachment:AclTokenPolicyAttachment master-token 624d94ca-bc5c-f960-4e83-0a609cf588be:policy_name
  * ```
  * 

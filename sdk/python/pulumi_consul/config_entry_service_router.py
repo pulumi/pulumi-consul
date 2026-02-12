@@ -207,7 +207,7 @@ class ConfigEntryServiceRouter(pulumi.CustomResource):
                  routes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceRouterRouteArgs', 'ConfigEntryServiceRouterRouteArgsDict']]]]] = None,
                  __props__=None):
         """
-        ## Example Usage
+        The `ConfigEntryServiceRouter` resource configures a [service router](https://developer.hashicorp.com/consul/docs/connect/config-entries/service-router) to redirect a traffic request for a service to one or more specific service instances.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -224,7 +224,7 @@ class ConfigEntryServiceRouter(pulumi.CustomResource):
                  args: Optional[ConfigEntryServiceRouterArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
+        The `ConfigEntryServiceRouter` resource configures a [service router](https://developer.hashicorp.com/consul/docs/connect/config-entries/service-router) to redirect a traffic request for a service to one or more specific service instances.
 
         :param str resource_name: The name of the resource.
         :param ConfigEntryServiceRouterArgs args: The arguments to use to populate this resource's properties.

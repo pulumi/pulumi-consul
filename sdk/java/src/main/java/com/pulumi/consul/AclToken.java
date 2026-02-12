@@ -20,6 +20,10 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * The `consul.AclToken` resource writes an ACL token into Consul.
+ * 
+ * &gt; **NOTE:** The `consul.AclToken` resource does not save the secret ID of the generated token to the Terraform state to avoid leaking it when it is not needed. If you need to get the secret ID after creating the ACL token you can use the [`consul.getAclTokenSecretId`](https://www.terraform.io/docs/providers/consul/d/consul_acl_token_secret_id.html) datasource.
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -82,9 +86,6 @@ import javax.annotation.Nullable;
  * 
  * ```sh
  * $ pulumi import consul:index/aclToken:AclToken anonymous 00000000-0000-0000-0000-000000000002
- * ```
- * 
- * ```sh
  * $ pulumi import consul:index/aclToken:AclToken master-token 624d94ca-bc5c-f960-4e83-0a609cf588be
  * ```
  * 

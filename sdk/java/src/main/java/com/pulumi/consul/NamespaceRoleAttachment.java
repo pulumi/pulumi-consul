@@ -14,9 +14,141 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
+ * &gt; **NOTE:** This feature requires Consul Enterprise.
+ * 
+ * The `consul.NamespaceRoleAttachment` resource links a Consul Namespace and an ACL
+ * role. The link is implemented through an update to the Consul Namespace.
+ * 
+ * &gt; **NOTE:** This resource is only useful to attach roles to a namespace
+ * that has been created outside the current Terraform configuration, like the
+ * `default` namespace. If the namespace you need to attach a role to has
+ * been created in the current Terraform configuration and will only be used in it,
+ * you should use the `roleDefaults` attribute of [`consul.Namespace`](https://www.terraform.io/docs/providers/consul/r/namespace.html).
+ * 
+ * ## Example Usage
+ * 
+ * ### Attach a role to the default namespace
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.consul.AclRole;
+ * import com.pulumi.consul.AclRoleArgs;
+ * import com.pulumi.consul.NamespaceRoleAttachment;
+ * import com.pulumi.consul.NamespaceRoleAttachmentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var agent = new AclRole("agent", AclRoleArgs.builder()
+ *             .name("agent")
+ *             .build());
+ * 
+ *         var attachment = new NamespaceRoleAttachment("attachment", NamespaceRoleAttachmentArgs.builder()
+ *             .namespace("default")
+ *             .role(agent.name())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Attach a role to a namespace created in another Terraform configuration
+ * 
+ * ### In `first_configuration/main.tf`
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.consul.Namespace;
+ * import com.pulumi.consul.NamespaceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var qa = new Namespace("qa", NamespaceArgs.builder()
+ *             .name("qa")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### In `second_configuration/main.tf`
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.consul.AclRole;
+ * import com.pulumi.consul.AclRoleArgs;
+ * import com.pulumi.consul.NamespaceRoleAttachment;
+ * import com.pulumi.consul.NamespaceRoleAttachmentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var agent = new AclRole("agent", AclRoleArgs.builder()
+ *             .name("agent")
+ *             .build());
+ * 
+ *         var attachment = new NamespaceRoleAttachment("attachment", NamespaceRoleAttachmentArgs.builder()
+ *             .namespace("qa")
+ *             .role(agent.name())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * **NOTE**: consulAclNamespace would attempt to enforce an empty set of default
+ * roles, because its `roleDefaults` attribute is empty. For this reason it
+ * is necessary to add the lifecycle clause to prevent Terraform from attempting to
+ * empty the set of policies associated to the namespace.
+ * 
  * ## Import
  * 
- * `consul_namespace_role_attachment` can be imported. This is especially useful
+ * `consul.NamespaceRoleAttachment` can be imported. This is especially useful
  * to manage the policies attached to the `default` namespace:
  * 
  * ```sh

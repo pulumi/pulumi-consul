@@ -7960,8 +7960,9 @@ type ProviderAuthJwt struct {
 	// The bearer token to present to the auth method during login for authentication purposes. For the Kubernetes auth method this is a [Service Account Token (JWT)](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#service-account-tokens).
 	BearerToken *string `pulumi:"bearerToken"`
 	// Specifies arbitrary KV metadata linked to the token. Can be useful to track origins.
-	Meta                              map[string]string `pulumi:"meta"`
-	UseTerraformCloudWorkloadIdentity *bool             `pulumi:"useTerraformCloudWorkloadIdentity"`
+	Meta map[string]string `pulumi:"meta"`
+	// Whether to use a [Terraform Workload Identity token](https://developer.hashicorp.com/terraform/cloud-docs/workspaces/dynamic-provider-credentials/workload-identity-tokens). The token will be read from the `TFC_WORKLOAD_IDENTITY_TOKEN` environment variable.
+	UseTerraformCloudWorkloadIdentity *bool `pulumi:"useTerraformCloudWorkloadIdentity"`
 }
 
 // ProviderAuthJwtInput is an input type that accepts ProviderAuthJwtArgs and ProviderAuthJwtOutput values.
@@ -7981,8 +7982,9 @@ type ProviderAuthJwtArgs struct {
 	// The bearer token to present to the auth method during login for authentication purposes. For the Kubernetes auth method this is a [Service Account Token (JWT)](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#service-account-tokens).
 	BearerToken pulumi.StringPtrInput `pulumi:"bearerToken"`
 	// Specifies arbitrary KV metadata linked to the token. Can be useful to track origins.
-	Meta                              pulumi.StringMapInput `pulumi:"meta"`
-	UseTerraformCloudWorkloadIdentity pulumi.BoolPtrInput   `pulumi:"useTerraformCloudWorkloadIdentity"`
+	Meta pulumi.StringMapInput `pulumi:"meta"`
+	// Whether to use a [Terraform Workload Identity token](https://developer.hashicorp.com/terraform/cloud-docs/workspaces/dynamic-provider-credentials/workload-identity-tokens). The token will be read from the `TFC_WORKLOAD_IDENTITY_TOKEN` environment variable.
+	UseTerraformCloudWorkloadIdentity pulumi.BoolPtrInput `pulumi:"useTerraformCloudWorkloadIdentity"`
 }
 
 func (ProviderAuthJwtArgs) ElementType() reflect.Type {
@@ -8077,6 +8079,7 @@ func (o ProviderAuthJwtOutput) Meta() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ProviderAuthJwt) map[string]string { return v.Meta }).(pulumi.StringMapOutput)
 }
 
+// Whether to use a [Terraform Workload Identity token](https://developer.hashicorp.com/terraform/cloud-docs/workspaces/dynamic-provider-credentials/workload-identity-tokens). The token will be read from the `TFC_WORKLOAD_IDENTITY_TOKEN` environment variable.
 func (o ProviderAuthJwtOutput) UseTerraformCloudWorkloadIdentity() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ProviderAuthJwt) *bool { return v.UseTerraformCloudWorkloadIdentity }).(pulumi.BoolPtrOutput)
 }
@@ -8135,6 +8138,7 @@ func (o ProviderAuthJwtPtrOutput) Meta() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
+// Whether to use a [Terraform Workload Identity token](https://developer.hashicorp.com/terraform/cloud-docs/workspaces/dynamic-provider-credentials/workload-identity-tokens). The token will be read from the `TFC_WORKLOAD_IDENTITY_TOKEN` environment variable.
 func (o ProviderAuthJwtPtrOutput) UseTerraformCloudWorkloadIdentity() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ProviderAuthJwt) *bool {
 		if v == nil {

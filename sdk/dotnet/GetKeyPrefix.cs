@@ -12,6 +12,9 @@ namespace Pulumi.Consul
     public static class GetKeyPrefix
     {
         /// <summary>
+        /// Allows Terraform to read values from a "namespace" of Consul keys that
+        /// share a common name prefix.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -77,6 +80,9 @@ namespace Pulumi.Consul
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKeyPrefixResult>("consul:index/getKeyPrefix:getKeyPrefix", args ?? new GetKeyPrefixArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Allows Terraform to read values from a "namespace" of Consul keys that
+        /// share a common name prefix.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -142,6 +148,9 @@ namespace Pulumi.Consul
             => global::Pulumi.Deployment.Instance.Invoke<GetKeyPrefixResult>("consul:index/getKeyPrefix:getKeyPrefix", args ?? new GetKeyPrefixInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Allows Terraform to read values from a "namespace" of Consul keys that
+        /// share a common name prefix.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

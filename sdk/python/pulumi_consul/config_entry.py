@@ -204,6 +204,14 @@ class ConfigEntry(pulumi.CustomResource):
                  partition: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        The [Configuration Entry](https://www.consul.io/docs/agent/config_entries.html)
+        resource can be used to provide cluster-wide defaults for various aspects of
+        Consul.
+
+        > **NOTE:** Because the schema in a `ConfigEntry` resource can vary
+        widely between the various configuration entry kinds, it is necessary to explicitly
+        define every attribute to avoid Terraform reporting a diff on the resource.
+
         ## Example Usage
 
         ```python
@@ -469,7 +477,7 @@ class ConfigEntry(pulumi.CustomResource):
 
         ## Import
 
-        `consul_config_entry` can be imported using the syntax `<kind>/<name>` if the
+        `ConfigEntry` can be imported using the syntax `<kind>/<name>` if the
         config entry is in the default partition and default namespace, or
         `<partition>/<namespace>/<kind>/<name>` for config entries in a non-default
         partition or namespace:
@@ -493,6 +501,14 @@ class ConfigEntry(pulumi.CustomResource):
                  args: ConfigEntryArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        The [Configuration Entry](https://www.consul.io/docs/agent/config_entries.html)
+        resource can be used to provide cluster-wide defaults for various aspects of
+        Consul.
+
+        > **NOTE:** Because the schema in a `ConfigEntry` resource can vary
+        widely between the various configuration entry kinds, it is necessary to explicitly
+        define every attribute to avoid Terraform reporting a diff on the resource.
+
         ## Example Usage
 
         ```python
@@ -758,7 +774,7 @@ class ConfigEntry(pulumi.CustomResource):
 
         ## Import
 
-        `consul_config_entry` can be imported using the syntax `<kind>/<name>` if the
+        `ConfigEntry` can be imported using the syntax `<kind>/<name>` if the
         config entry is in the default partition and default namespace, or
         `<partition>/<namespace>/<kind>/<name>` for config entries in a non-default
         partition or namespace:

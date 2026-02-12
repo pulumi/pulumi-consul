@@ -210,6 +210,13 @@ namespace Pulumi.Consul
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// A list of the Consul services found.  This will always contain the
+        /// list of services found.
+        /// * `services.&lt;service&gt;` - For each name given, the corresponding attribute is a
+        /// Terraform map of services and their tags.  The value is an alphanumerically
+        /// sorted, whitespace delimited set of tags associated with the service.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly ImmutableArray<Outputs.GetCatalogServicesQueryOptionResult> QueryOptions;
         public readonly ImmutableDictionary<string, string> Services;

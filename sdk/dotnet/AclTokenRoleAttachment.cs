@@ -10,9 +10,110 @@ using Pulumi.Serialization;
 namespace Pulumi.Consul
 {
     /// <summary>
+    /// The `consul.AclTokenRoleAttachment` resource links a Consul Token and an ACL
+    /// role. The link is implemented through an update to the Consul ACL token.
+    /// 
+    /// &gt; **NOTE:** This resource is only useful to attach roles to an ACL token
+    /// that has been created outside the current Terraform configuration, like the
+    /// anonymous or the master token. If the token you need to attach a policy to has
+    /// been created in the current Terraform configuration and will only be used in it,
+    /// you should use the `Roles` attribute of [`consul.AclToken`](https://www.terraform.io/docs/providers/consul/r/acl_token.html).
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ### Attach a role to the anonymous token
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Consul = Pulumi.Consul;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var role = new Consul.AclRole("role", new()
+    ///     {
+    ///         Name = "foo",
+    ///         Description = "Foo",
+    ///         ServiceIdentities = new[]
+    ///         {
+    ///             new Consul.Inputs.AclRoleServiceIdentityArgs
+    ///             {
+    ///                 ServiceName = "foo",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var attachment = new Consul.AclTokenRoleAttachment("attachment", new()
+    ///     {
+    ///         TokenId = "00000000-0000-0000-0000-000000000002",
+    ///         RoleId = role.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Attach a policy to a token created in another Terraform configuration
+    /// 
+    /// ### In `first_configuration/main.tf`
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Consul = Pulumi.Consul;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var test = new Consul.AclToken("test", new()
+    ///     {
+    ///         AccessorId = "5914ee49-eb8d-4837-9767-9299ec155000",
+    ///         Description = "my test token",
+    ///         Local = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### In `second_configuration/main.tf`
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Consul = Pulumi.Consul;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var role = new Consul.AclRole("role", new()
+    ///     {
+    ///         Name = "foo",
+    ///         Description = "Foo",
+    ///         ServiceIdentities = new[]
+    ///         {
+    ///             new Consul.Inputs.AclRoleServiceIdentityArgs
+    ///             {
+    ///                 ServiceName = "foo",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var attachment = new Consul.AclTokenRoleAttachment("attachment", new()
+    ///     {
+    ///         TokenId = "00000000-0000-0000-0000-000000000002",
+    ///         RoleId = role.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// **NOTE**: `consul.AclToken` would attempt to enforce an empty set of roles,
+    /// because its `Roles` attribute is empty. For this reason it is necessary to add
+    /// the lifecycle clause to prevent Terraform from attempting to clear the set of
+    /// roles associated to the token.
+    /// 
     /// ## Import
     /// 
-    /// `consul_acl_token_role_attachment` can be imported. This is especially useful to manage the
+    /// `consul.AclTokenRoleAttachment` can be imported. This is especially useful to manage the
     /// policies attached to the anonymous and the master tokens with Terraform:
     /// 
     /// ```sh

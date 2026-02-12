@@ -7,6 +7,29 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Allows Terraform to manage a "namespace" of Consul keys that share a common
+ * name prefix.
+ *
+ * Like `consul.Keys`, this resource can write values into the Consul key/value
+ * store, but *unlike* `consul.Keys` this resource can detect and remove extra
+ * keys that have been added some other way, thus ensuring that rogue data
+ * added outside of Terraform will be removed on the next run.
+ *
+ * This resource is thus useful in the case where Terraform is exclusively
+ * managing a set of related keys.
+ *
+ * To avoid accidentally clobbering matching data that existed in Consul before
+ * a `consul.KeyPrefix` resource was created, creation of a key prefix instance
+ * will fail if any matching keys are already present in the key/value store.
+ * If any conflicting data is present, you must first delete it manually or
+ * explicitly import the prefix.
+ *
+ * > **Warning** After this resource is instantiated, Terraform takes control
+ * over *all* keys with the given path prefix, and will remove any matching keys
+ * that are not present in the configuration. It will also delete *all* keys under
+ * the given prefix when a `consul.KeyPrefix` resource is destroyed, even if
+ * those keys were created outside of Terraform.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -35,7 +58,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * `consul_key_prefix` can be imported. This is useful when the path already exists and
+ * `consul.KeyPrefix` can be imported. This is useful when the path already exists and
  * you know all keys in path should be managed by Terraform.
  *
  * ```sh

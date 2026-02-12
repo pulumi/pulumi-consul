@@ -63,9 +63,17 @@ public final class ProviderAuthJwtArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.meta);
     }
 
+    /**
+     * Whether to use a [Terraform Workload Identity token](https://developer.hashicorp.com/terraform/cloud-docs/workspaces/dynamic-provider-credentials/workload-identity-tokens). The token will be read from the `TFC_WORKLOAD_IDENTITY_TOKEN` environment variable.
+     * 
+     */
     @Import(name="useTerraformCloudWorkloadIdentity")
     private @Nullable Output<Boolean> useTerraformCloudWorkloadIdentity;
 
+    /**
+     * @return Whether to use a [Terraform Workload Identity token](https://developer.hashicorp.com/terraform/cloud-docs/workspaces/dynamic-provider-credentials/workload-identity-tokens). The token will be read from the `TFC_WORKLOAD_IDENTITY_TOKEN` environment variable.
+     * 
+     */
     public Optional<Output<Boolean>> useTerraformCloudWorkloadIdentity() {
         return Optional.ofNullable(this.useTerraformCloudWorkloadIdentity);
     }
@@ -160,11 +168,23 @@ public final class ProviderAuthJwtArgs extends com.pulumi.resources.ResourceArgs
             return meta(Output.of(meta));
         }
 
+        /**
+         * @param useTerraformCloudWorkloadIdentity Whether to use a [Terraform Workload Identity token](https://developer.hashicorp.com/terraform/cloud-docs/workspaces/dynamic-provider-credentials/workload-identity-tokens). The token will be read from the `TFC_WORKLOAD_IDENTITY_TOKEN` environment variable.
+         * 
+         * @return builder
+         * 
+         */
         public Builder useTerraformCloudWorkloadIdentity(@Nullable Output<Boolean> useTerraformCloudWorkloadIdentity) {
             $.useTerraformCloudWorkloadIdentity = useTerraformCloudWorkloadIdentity;
             return this;
         }
 
+        /**
+         * @param useTerraformCloudWorkloadIdentity Whether to use a [Terraform Workload Identity token](https://developer.hashicorp.com/terraform/cloud-docs/workspaces/dynamic-provider-credentials/workload-identity-tokens). The token will be read from the `TFC_WORKLOAD_IDENTITY_TOKEN` environment variable.
+         * 
+         * @return builder
+         * 
+         */
         public Builder useTerraformCloudWorkloadIdentity(Boolean useTerraformCloudWorkloadIdentity) {
             return useTerraformCloudWorkloadIdentity(Output.of(useTerraformCloudWorkloadIdentity));
         }

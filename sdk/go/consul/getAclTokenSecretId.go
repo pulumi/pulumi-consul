@@ -11,6 +11,18 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **Warning:** When using this is resource, the ACL Token secret ID will be
+// written to the Terraform state. It is strongly recommended to use the `pgpKey`
+// attribute and to make sure the remote state has strong access controls before
+// using this resource.
+//
+// The `consulAclTokenSecret` data source returns the secret ID associated to
+// the accessor ID. This can be useful to make systems that cannot use an auth
+// method to interface with Consul.
+//
+// If you want to get other attributes of the Consul ACL token, please use the
+// [`AclToken` data source](https://www.terraform.io/docs/providers/consul/d/acl_token.html).
+//
 // ## Example Usage
 //
 // ```go
@@ -75,12 +87,19 @@ type GetAclTokenSecretIdArgs struct {
 	Namespace *string `pulumi:"namespace"`
 	// The partition to lookup the token.
 	Partition *string `pulumi:"partition"`
-	PgpKey    *string `pulumi:"pgpKey"`
+	// Either a base-64 encoded PGP public key, or a keybase
+	// username in the form `keybase:some_person_that_exists`. **If you do not set this
+	// argument, the token secret ID will be written as plain text in the Terraform
+	// state.**
+	PgpKey *string `pulumi:"pgpKey"`
 }
 
 // A collection of values returned by getAclTokenSecretId.
 type GetAclTokenSecretIdResult struct {
-	AccessorId        string `pulumi:"accessorId"`
+	AccessorId string `pulumi:"accessorId"`
+	// The encrypted secret ID of the ACL token if `pgpKey`
+	// has been set. You can decrypt the secret by using the command line, for example
+	// with: `terraform output encryptedSecret | base64 --decode | keybase pgp decrypt`.
 	EncryptedSecretId string `pulumi:"encryptedSecretId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id        string  `pulumi:"id"`
@@ -108,7 +127,11 @@ type GetAclTokenSecretIdOutputArgs struct {
 	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
 	// The partition to lookup the token.
 	Partition pulumi.StringPtrInput `pulumi:"partition"`
-	PgpKey    pulumi.StringPtrInput `pulumi:"pgpKey"`
+	// Either a base-64 encoded PGP public key, or a keybase
+	// username in the form `keybase:some_person_that_exists`. **If you do not set this
+	// argument, the token secret ID will be written as plain text in the Terraform
+	// state.**
+	PgpKey pulumi.StringPtrInput `pulumi:"pgpKey"`
 }
 
 func (GetAclTokenSecretIdOutputArgs) ElementType() reflect.Type {
@@ -134,6 +157,9 @@ func (o GetAclTokenSecretIdResultOutput) AccessorId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAclTokenSecretIdResult) string { return v.AccessorId }).(pulumi.StringOutput)
 }
 
+// The encrypted secret ID of the ACL token if `pgpKey`
+// has been set. You can decrypt the secret by using the command line, for example
+// with: `terraform output encryptedSecret | base64 --decode | keybase pgp decrypt`.
 func (o GetAclTokenSecretIdResultOutput) EncryptedSecretId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAclTokenSecretIdResult) string { return v.EncryptedSecretId }).(pulumi.StringOutput)
 }

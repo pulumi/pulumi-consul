@@ -21,6 +21,10 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Allows Terraform to manage a Consul prepared query.
+ * 
+ * Managing prepared queries is done using Consul&#39;s REST API. This resource is useful to provide a consistent and declarative way of managing prepared queries in your Consul cluster using Terraform.
+ * 
  * ## Example Usage
  * 
  * <pre>

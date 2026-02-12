@@ -10,10 +10,103 @@ using Pulumi.Serialization;
 namespace Pulumi.Consul
 {
     /// <summary>
+    /// &gt; **NOTE:** This feature requires Consul Enterprise.
+    /// 
+    /// The `consul.NamespacePolicyAttachment` resource links a Consul Namespace and an ACL
+    /// policy. The link is implemented through an update to the Consul Namespace.
+    /// 
+    /// &gt; **NOTE:** This resource is only useful to attach policies to a namespace
+    /// that has been created outside the current Terraform configuration, like the
+    /// `Default` namespace. If the namespace you need to attach a policy to has
+    /// been created in the current Terraform configuration and will only be used in it,
+    /// you should use the `PolicyDefaults` attribute of [`consul.Namespace`](https://www.terraform.io/docs/providers/consul/r/namespace.html).
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ### Attach a policy to the default namespace
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Consul = Pulumi.Consul;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var agent = new Consul.AclPolicy("agent", new()
+    ///     {
+    ///         Name = "agent",
+    ///         Rules = @"node_prefix \""\"" {
+    ///   policy = \""read\""
+    /// }
+    /// ",
+    ///     });
+    /// 
+    ///     var attachment = new Consul.NamespacePolicyAttachment("attachment", new()
+    ///     {
+    ///         Namespace = "default",
+    ///         Policy = agent.Name,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Attach a policy to a namespace created in another Terraform configuration
+    /// 
+    /// ### In `first_configuration/main.tf`
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Consul = Pulumi.Consul;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var qa = new Consul.Namespace("qa", new()
+    ///     {
+    ///         Name = "qa",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### In `second_configuration/main.tf`
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Consul = Pulumi.Consul;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var agent = new Consul.AclPolicy("agent", new()
+    ///     {
+    ///         Name = "agent",
+    ///         Rules = @"node_prefix \""\"" {
+    ///   policy = \""read\""
+    /// }
+    /// ",
+    ///     });
+    /// 
+    ///     var attachment = new Consul.NamespacePolicyAttachment("attachment", new()
+    ///     {
+    ///         Namespace = "qa",
+    ///         Policy = agent.Name,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// **NOTE**: ConsulAclNamespace would attempt to enforce an empty set of default
+    /// policies, because its `PolicyDefaults` attribute is empty. For this reason it
+    /// is necessary to add the lifecycle clause to prevent Terraform from attempting to
+    /// empty the set of policies associated to the namespace.
+    /// 
     /// ## Import
     /// 
-    /// `consul_namespace_policy_attachment` can be imported. This is especially useful
-    /// to manage the policies attached to the `default` namespace:
+    /// `consul.NamespacePolicyAttachment` can be imported. This is especially useful
+    /// to manage the policies attached to the `Default` namespace:
     /// 
     /// ```sh
     /// $ pulumi import consul:index/namespacePolicyAttachment:NamespacePolicyAttachment default default:policy_name

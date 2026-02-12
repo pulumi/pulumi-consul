@@ -11,6 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Allows Terraform to read values from a "namespace" of Consul keys that
+// share a common name prefix.
+//
 // ## Example Usage
 //
 // ```go

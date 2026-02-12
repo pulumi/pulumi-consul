@@ -12,9 +12,122 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **NOTE:** This feature requires Consul Enterprise.
+//
+// The `NamespacePolicyAttachment` resource links a Consul Namespace and an ACL
+// policy. The link is implemented through an update to the Consul Namespace.
+//
+// > **NOTE:** This resource is only useful to attach policies to a namespace
+// that has been created outside the current Terraform configuration, like the
+// `default` namespace. If the namespace you need to attach a policy to has
+// been created in the current Terraform configuration and will only be used in it,
+// you should use the `policyDefaults` attribute of [`Namespace`](https://www.terraform.io/docs/providers/consul/r/namespace.html).
+//
+// ## Example Usage
+//
+// ### Attach a policy to the default namespace
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			agent, err := consul.NewAclPolicy(ctx, "agent", &consul.AclPolicyArgs{
+//				Name:  pulumi.String("agent"),
+//				Rules: pulumi.String("node_prefix \\\"\\\" {\n  policy = \\\"read\\\"\n}\n"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = consul.NewNamespacePolicyAttachment(ctx, "attachment", &consul.NamespacePolicyAttachmentArgs{
+//				Namespace: pulumi.String("default"),
+//				Policy:    agent.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Attach a policy to a namespace created in another Terraform configuration
+//
+// ### In `first_configuration/main.tf`
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := consul.NewNamespace(ctx, "qa", &consul.NamespaceArgs{
+//				Name: pulumi.String("qa"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### In `second_configuration/main.tf`
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			agent, err := consul.NewAclPolicy(ctx, "agent", &consul.AclPolicyArgs{
+//				Name:  pulumi.String("agent"),
+//				Rules: pulumi.String("node_prefix \\\"\\\" {\n  policy = \\\"read\\\"\n}\n"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = consul.NewNamespacePolicyAttachment(ctx, "attachment", &consul.NamespacePolicyAttachmentArgs{
+//				Namespace: pulumi.String("qa"),
+//				Policy:    agent.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// **NOTE**: consulAclNamespace would attempt to enforce an empty set of default
+// policies, because its `policyDefaults` attribute is empty. For this reason it
+// is necessary to add the lifecycle clause to prevent Terraform from attempting to
+// empty the set of policies associated to the namespace.
+//
 // ## Import
 //
-// `consul_namespace_policy_attachment` can be imported. This is especially useful
+// `NamespacePolicyAttachment` can be imported. This is especially useful
 // to manage the policies attached to the `default` namespace:
 //
 // ```sh

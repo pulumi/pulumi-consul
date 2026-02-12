@@ -57,6 +57,11 @@ class GetAclTokenSecretIdResult:
     @_builtins.property
     @pulumi.getter(name="encryptedSecretId")
     def encrypted_secret_id(self) -> _builtins.str:
+        """
+        The encrypted secret ID of the ACL token if `pgp_key`
+        has been set. You can decrypt the secret by using the command line, for example
+        with: `terraform output encrypted_secret | base64 --decode | keybase pgp decrypt`.
+        """
         return pulumi.get(self, "encrypted_secret_id")
 
     @_builtins.property
@@ -112,6 +117,18 @@ def get_acl_token_secret_id(accessor_id: Optional[_builtins.str] = None,
                             pgp_key: Optional[_builtins.str] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAclTokenSecretIdResult:
     """
+    > **Warning:** When using this is resource, the ACL Token secret ID will be
+    written to the Terraform state. It is strongly recommended to use the `pgp_key`
+    attribute and to make sure the remote state has strong access controls before
+    using this resource.
+
+    The `consul_acl_token_secret` data source returns the secret ID associated to
+    the accessor ID. This can be useful to make systems that cannot use an auth
+    method to interface with Consul.
+
+    If you want to get other attributes of the Consul ACL token, please use the
+    [`AclToken` data source](https://www.terraform.io/docs/providers/consul/d/acl_token.html).
+
     ## Example Usage
 
     ```python
@@ -135,6 +152,10 @@ def get_acl_token_secret_id(accessor_id: Optional[_builtins.str] = None,
     :param _builtins.str accessor_id: The accessor ID of the ACL token.
     :param _builtins.str namespace: The namespace to lookup the token.
     :param _builtins.str partition: The partition to lookup the token.
+    :param _builtins.str pgp_key: Either a base-64 encoded PGP public key, or a keybase
+           username in the form `keybase:some_person_that_exists`. **If you do not set this
+           argument, the token secret ID will be written as plain text in the Terraform
+           state.**
     """
     __args__ = dict()
     __args__['accessorId'] = accessor_id
@@ -158,6 +179,18 @@ def get_acl_token_secret_id_output(accessor_id: Optional[pulumi.Input[_builtins.
                                    pgp_key: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAclTokenSecretIdResult]:
     """
+    > **Warning:** When using this is resource, the ACL Token secret ID will be
+    written to the Terraform state. It is strongly recommended to use the `pgp_key`
+    attribute and to make sure the remote state has strong access controls before
+    using this resource.
+
+    The `consul_acl_token_secret` data source returns the secret ID associated to
+    the accessor ID. This can be useful to make systems that cannot use an auth
+    method to interface with Consul.
+
+    If you want to get other attributes of the Consul ACL token, please use the
+    [`AclToken` data source](https://www.terraform.io/docs/providers/consul/d/acl_token.html).
+
     ## Example Usage
 
     ```python
@@ -181,6 +214,10 @@ def get_acl_token_secret_id_output(accessor_id: Optional[pulumi.Input[_builtins.
     :param _builtins.str accessor_id: The accessor ID of the ACL token.
     :param _builtins.str namespace: The namespace to lookup the token.
     :param _builtins.str partition: The partition to lookup the token.
+    :param _builtins.str pgp_key: Either a base-64 encoded PGP public key, or a keybase
+           username in the form `keybase:some_person_that_exists`. **If you do not set this
+           argument, the token secret ID will be written as plain text in the Terraform
+           state.**
     """
     __args__ = dict()
     __args__['accessorId'] = accessor_id

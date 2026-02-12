@@ -12,9 +12,132 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The `AclTokenRoleAttachment` resource links a Consul Token and an ACL
+// role. The link is implemented through an update to the Consul ACL token.
+//
+// > **NOTE:** This resource is only useful to attach roles to an ACL token
+// that has been created outside the current Terraform configuration, like the
+// anonymous or the master token. If the token you need to attach a policy to has
+// been created in the current Terraform configuration and will only be used in it,
+// you should use the `roles` attribute of [`AclToken`](https://www.terraform.io/docs/providers/consul/r/acl_token.html).
+//
+// ## Example Usage
+//
+// ### Attach a role to the anonymous token
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			role, err := consul.NewAclRole(ctx, "role", &consul.AclRoleArgs{
+//				Name:        pulumi.String("foo"),
+//				Description: pulumi.String("Foo"),
+//				ServiceIdentities: consul.AclRoleServiceIdentityArray{
+//					&consul.AclRoleServiceIdentityArgs{
+//						ServiceName: pulumi.String("foo"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = consul.NewAclTokenRoleAttachment(ctx, "attachment", &consul.AclTokenRoleAttachmentArgs{
+//				TokenId: pulumi.String("00000000-0000-0000-0000-000000000002"),
+//				RoleId:  role.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Attach a policy to a token created in another Terraform configuration
+//
+// ### In `first_configuration/main.tf`
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := consul.NewAclToken(ctx, "test", &consul.AclTokenArgs{
+//				AccessorId:  pulumi.String("5914ee49-eb8d-4837-9767-9299ec155000"),
+//				Description: pulumi.String("my test token"),
+//				Local:       pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### In `second_configuration/main.tf`
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			role, err := consul.NewAclRole(ctx, "role", &consul.AclRoleArgs{
+//				Name:        pulumi.String("foo"),
+//				Description: pulumi.String("Foo"),
+//				ServiceIdentities: consul.AclRoleServiceIdentityArray{
+//					&consul.AclRoleServiceIdentityArgs{
+//						ServiceName: pulumi.String("foo"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = consul.NewAclTokenRoleAttachment(ctx, "attachment", &consul.AclTokenRoleAttachmentArgs{
+//				TokenId: pulumi.String("00000000-0000-0000-0000-000000000002"),
+//				RoleId:  role.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// **NOTE**: `AclToken` would attempt to enforce an empty set of roles,
+// because its `roles` attribute is empty. For this reason it is necessary to add
+// the lifecycle clause to prevent Terraform from attempting to clear the set of
+// roles associated to the token.
+//
 // ## Import
 //
-// `consul_acl_token_role_attachment` can be imported. This is especially useful to manage the
+// `AclTokenRoleAttachment` can be imported. This is especially useful to manage the
 // policies attached to the anonymous and the master tokens with Terraform:
 //
 // ```sh

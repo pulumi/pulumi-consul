@@ -61,9 +61,23 @@ public final class GetAclTokenSecretIdArgs extends com.pulumi.resources.InvokeAr
         return Optional.ofNullable(this.partition);
     }
 
+    /**
+     * Either a base-64 encoded PGP public key, or a keybase
+     * username in the form `keybase:some_person_that_exists`. **If you do not set this
+     * argument, the token secret ID will be written as plain text in the Terraform
+     * state.**
+     * 
+     */
     @Import(name="pgpKey")
     private @Nullable Output<String> pgpKey;
 
+    /**
+     * @return Either a base-64 encoded PGP public key, or a keybase
+     * username in the form `keybase:some_person_that_exists`. **If you do not set this
+     * argument, the token secret ID will be written as plain text in the Terraform
+     * state.**
+     * 
+     */
     public Optional<Output<String>> pgpKey() {
         return Optional.ofNullable(this.pgpKey);
     }
@@ -158,11 +172,29 @@ public final class GetAclTokenSecretIdArgs extends com.pulumi.resources.InvokeAr
             return partition(Output.of(partition));
         }
 
+        /**
+         * @param pgpKey Either a base-64 encoded PGP public key, or a keybase
+         * username in the form `keybase:some_person_that_exists`. **If you do not set this
+         * argument, the token secret ID will be written as plain text in the Terraform
+         * state.**
+         * 
+         * @return builder
+         * 
+         */
         public Builder pgpKey(@Nullable Output<String> pgpKey) {
             $.pgpKey = pgpKey;
             return this;
         }
 
+        /**
+         * @param pgpKey Either a base-64 encoded PGP public key, or a keybase
+         * username in the form `keybase:some_person_that_exists`. **If you do not set this
+         * argument, the token secret ID will be written as plain text in the Terraform
+         * state.**
+         * 
+         * @return builder
+         * 
+         */
         public Builder pgpKey(String pgpKey) {
             return pgpKey(Output.of(pgpKey));
         }

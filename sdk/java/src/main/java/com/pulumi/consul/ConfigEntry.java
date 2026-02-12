@@ -15,6 +15,14 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * The [Configuration Entry](https://www.consul.io/docs/agent/config_entries.html)
+ * resource can be used to provide cluster-wide defaults for various aspects of
+ * Consul.
+ * 
+ * &gt; **NOTE:** Because the schema in a `consul.ConfigEntry` resource can vary
+ * widely between the various configuration entry kinds, it is necessary to explicitly
+ * define every attribute to avoid Terraform reporting a diff on the resource.
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -451,7 +459,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * `consul_config_entry` can be imported using the syntax `&lt;kind&gt;/&lt;name&gt;` if the
+ * `consul.ConfigEntry` can be imported using the syntax `&lt;kind&gt;/&lt;name&gt;` if the
  * config entry is in the default partition and default namespace, or
  * `&lt;partition&gt;/&lt;namespace&gt;/&lt;kind&gt;/&lt;name&gt;` for config entries in a non-default
  * partition or namespace:

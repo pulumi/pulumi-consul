@@ -14,6 +14,10 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
+ * The `consul.AclRolePolicyAttachment` resource links a Consul ACL role and an ACL policy. The link is implemented through an update to the Consul ACL role.
+ * 
+ * &gt; **NOTE:** This resource is only useful to attach policies to an ACL role that has been created outside the current Terraform configuration. If the ACL role you need to attach a policy to has been created in the current Terraform configuration and will only be used in it, you should use the `policies` attribute of [`consul.AclRole`](https://www.terraform.io/docs/providers/consul/r/acl_role.html).
+ * 
  * ## Example Usage
  * 
  * <pre>

@@ -13,6 +13,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAclTokenSecretIdResult {
     private String accessorId;
+    /**
+     * @return The encrypted secret ID of the ACL token if `pgpKey`
+     * has been set. You can decrypt the secret by using the command line, for example
+     * with: `terraform output encryptedSecret | base64 --decode | keybase pgp decrypt`.
+     * 
+     */
     private String encryptedSecretId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -32,6 +38,12 @@ public final class GetAclTokenSecretIdResult {
     public String accessorId() {
         return this.accessorId;
     }
+    /**
+     * @return The encrypted secret ID of the ACL token if `pgpKey`
+     * has been set. You can decrypt the secret by using the command line, for example
+     * with: `terraform output encryptedSecret | base64 --decode | keybase pgp decrypt`.
+     * 
+     */
     public String encryptedSecretId() {
         return this.encryptedSecretId;
     }

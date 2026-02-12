@@ -5,6 +5,14 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * The [Configuration Entry](https://www.consul.io/docs/agent/config_entries.html)
+ * resource can be used to provide cluster-wide defaults for various aspects of
+ * Consul.
+ *
+ * > **NOTE:** Because the schema in a `consul.ConfigEntry` resource can vary
+ * widely between the various configuration entry kinds, it is necessary to explicitly
+ * define every attribute to avoid Terraform reporting a diff on the resource.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -279,7 +287,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * `consul_config_entry` can be imported using the syntax `<kind>/<name>` if the
+ * `consul.ConfigEntry` can be imported using the syntax `<kind>/<name>` if the
  * config entry is in the default partition and default namespace, or
  * `<partition>/<namespace>/<kind>/<name>` for config entries in a non-default
  * partition or namespace:

@@ -1560,6 +1560,9 @@ export interface ProviderAuthJwt {
      * Specifies arbitrary KV metadata linked to the token. Can be useful to track origins.
      */
     meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Whether to use a [Terraform Workload Identity token](https://developer.hashicorp.com/terraform/cloud-docs/workspaces/dynamic-provider-credentials/workload-identity-tokens). The token will be read from the `TFC_WORKLOAD_IDENTITY_TOKEN` environment variable.
+     */
     useTerraformCloudWorkloadIdentity?: pulumi.Input<boolean>;
 }
 
