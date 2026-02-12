@@ -81,7 +81,12 @@ type GetServicesResult struct {
 	// The datacenter the keys are being read from to.
 	Datacenter string `pulumi:"datacenter"`
 	// The provider-assigned unique ID for this managed resource.
-	Id           string                   `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// A list of the Consul services found.  This will always contain the
+	// list of services found.
+	// * `services.<service>` - For each name given, the corresponding attribute is a
+	//   Terraform map of services and their tags.  The value is an alphanumerically
+	//   sorted, whitespace delimited set of tags associated with the service.
 	Names        []string                 `pulumi:"names"`
 	QueryOptions []GetServicesQueryOption `pulumi:"queryOptions"`
 	Services     map[string]string        `pulumi:"services"`
@@ -136,6 +141,11 @@ func (o GetServicesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServicesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// A list of the Consul services found.  This will always contain the
+// list of services found.
+//   - `services.<service>` - For each name given, the corresponding attribute is a
+//     Terraform map of services and their tags.  The value is an alphanumerically
+//     sorted, whitespace delimited set of tags associated with the service.
 func (o GetServicesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetServicesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }

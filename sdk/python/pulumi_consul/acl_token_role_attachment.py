@@ -104,9 +104,72 @@ class AclTokenRoleAttachment(pulumi.CustomResource):
                  token_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        The `AclTokenRoleAttachment` resource links a Consul Token and an ACL
+        role. The link is implemented through an update to the Consul ACL token.
+
+        > **NOTE:** This resource is only useful to attach roles to an ACL token
+        that has been created outside the current Terraform configuration, like the
+        anonymous or the master token. If the token you need to attach a policy to has
+        been created in the current Terraform configuration and will only be used in it,
+        you should use the `roles` attribute of [`AclToken`](https://www.terraform.io/docs/providers/consul/r/acl_token.html).
+
+        ## Example Usage
+
+        ### Attach a role to the anonymous token
+
+        ```python
+        import pulumi
+        import pulumi_consul as consul
+
+        role = consul.AclRole("role",
+            name="foo",
+            description="Foo",
+            service_identities=[{
+                "service_name": "foo",
+            }])
+        attachment = consul.AclTokenRoleAttachment("attachment",
+            token_id="00000000-0000-0000-0000-000000000002",
+            role_id=role.id)
+        ```
+
+        ### Attach a policy to a token created in another Terraform configuration
+
+        ### In `first_configuration/main.tf`
+
+        ```python
+        import pulumi
+        import pulumi_consul as consul
+
+        test = consul.AclToken("test",
+            accessor_id="5914ee49-eb8d-4837-9767-9299ec155000",
+            description="my test token",
+            local=True)
+        ```
+
+        ### In `second_configuration/main.tf`
+
+        ```python
+        import pulumi
+        import pulumi_consul as consul
+
+        role = consul.AclRole("role",
+            name="foo",
+            description="Foo",
+            service_identities=[{
+                "service_name": "foo",
+            }])
+        attachment = consul.AclTokenRoleAttachment("attachment",
+            token_id="00000000-0000-0000-0000-000000000002",
+            role_id=role.id)
+        ```
+        **NOTE**: `AclToken` would attempt to enforce an empty set of roles,
+        because its `roles` attribute is empty. For this reason it is necessary to add
+        the lifecycle clause to prevent Terraform from attempting to clear the set of
+        roles associated to the token.
+
         ## Import
 
-        `consul_acl_token_role_attachment` can be imported. This is especially useful to manage the
+        `AclTokenRoleAttachment` can be imported. This is especially useful to manage the
         policies attached to the anonymous and the master tokens with Terraform:
 
         ```sh
@@ -125,9 +188,72 @@ class AclTokenRoleAttachment(pulumi.CustomResource):
                  args: AclTokenRoleAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        The `AclTokenRoleAttachment` resource links a Consul Token and an ACL
+        role. The link is implemented through an update to the Consul ACL token.
+
+        > **NOTE:** This resource is only useful to attach roles to an ACL token
+        that has been created outside the current Terraform configuration, like the
+        anonymous or the master token. If the token you need to attach a policy to has
+        been created in the current Terraform configuration and will only be used in it,
+        you should use the `roles` attribute of [`AclToken`](https://www.terraform.io/docs/providers/consul/r/acl_token.html).
+
+        ## Example Usage
+
+        ### Attach a role to the anonymous token
+
+        ```python
+        import pulumi
+        import pulumi_consul as consul
+
+        role = consul.AclRole("role",
+            name="foo",
+            description="Foo",
+            service_identities=[{
+                "service_name": "foo",
+            }])
+        attachment = consul.AclTokenRoleAttachment("attachment",
+            token_id="00000000-0000-0000-0000-000000000002",
+            role_id=role.id)
+        ```
+
+        ### Attach a policy to a token created in another Terraform configuration
+
+        ### In `first_configuration/main.tf`
+
+        ```python
+        import pulumi
+        import pulumi_consul as consul
+
+        test = consul.AclToken("test",
+            accessor_id="5914ee49-eb8d-4837-9767-9299ec155000",
+            description="my test token",
+            local=True)
+        ```
+
+        ### In `second_configuration/main.tf`
+
+        ```python
+        import pulumi
+        import pulumi_consul as consul
+
+        role = consul.AclRole("role",
+            name="foo",
+            description="Foo",
+            service_identities=[{
+                "service_name": "foo",
+            }])
+        attachment = consul.AclTokenRoleAttachment("attachment",
+            token_id="00000000-0000-0000-0000-000000000002",
+            role_id=role.id)
+        ```
+        **NOTE**: `AclToken` would attempt to enforce an empty set of roles,
+        because its `roles` attribute is empty. For this reason it is necessary to add
+        the lifecycle clause to prevent Terraform from attempting to clear the set of
+        roles associated to the token.
+
         ## Import
 
-        `consul_acl_token_role_attachment` can be imported. This is especially useful to manage the
+        `AclTokenRoleAttachment` can be imported. This is especially useful to manage the
         policies attached to the anonymous and the master tokens with Terraform:
 
         ```sh

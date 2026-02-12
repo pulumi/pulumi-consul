@@ -104,9 +104,61 @@ class NamespaceRoleAttachment(pulumi.CustomResource):
                  role: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        > **NOTE:** This feature requires Consul Enterprise.
+
+        The `NamespaceRoleAttachment` resource links a Consul Namespace and an ACL
+        role. The link is implemented through an update to the Consul Namespace.
+
+        > **NOTE:** This resource is only useful to attach roles to a namespace
+        that has been created outside the current Terraform configuration, like the
+        `default` namespace. If the namespace you need to attach a role to has
+        been created in the current Terraform configuration and will only be used in it,
+        you should use the `role_defaults` attribute of [`Namespace`](https://www.terraform.io/docs/providers/consul/r/namespace.html).
+
+        ## Example Usage
+
+        ### Attach a role to the default namespace
+
+        ```python
+        import pulumi
+        import pulumi_consul as consul
+
+        agent = consul.AclRole("agent", name="agent")
+        attachment = consul.NamespaceRoleAttachment("attachment",
+            namespace="default",
+            role=agent.name)
+        ```
+
+        ### Attach a role to a namespace created in another Terraform configuration
+
+        ### In `first_configuration/main.tf`
+
+        ```python
+        import pulumi
+        import pulumi_consul as consul
+
+        qa = consul.Namespace("qa", name="qa")
+        ```
+
+        ### In `second_configuration/main.tf`
+
+        ```python
+        import pulumi
+        import pulumi_consul as consul
+
+        agent = consul.AclRole("agent", name="agent")
+        attachment = consul.NamespaceRoleAttachment("attachment",
+            namespace="qa",
+            role=agent.name)
+        ```
+        **NOTE**: consul_acl_namespace would attempt to enforce an empty set of default
+        roles, because its `role_defaults` attribute is empty. For this reason it
+        is necessary to add the lifecycle clause to prevent Terraform from attempting to
+        empty the set of policies associated to the namespace.
+
         ## Import
 
-        `consul_namespace_role_attachment` can be imported. This is especially useful
+        `NamespaceRoleAttachment` can be imported. This is especially useful
         to manage the policies attached to the `default` namespace:
 
         ```sh
@@ -125,9 +177,61 @@ class NamespaceRoleAttachment(pulumi.CustomResource):
                  args: NamespaceRoleAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        > **NOTE:** This feature requires Consul Enterprise.
+
+        The `NamespaceRoleAttachment` resource links a Consul Namespace and an ACL
+        role. The link is implemented through an update to the Consul Namespace.
+
+        > **NOTE:** This resource is only useful to attach roles to a namespace
+        that has been created outside the current Terraform configuration, like the
+        `default` namespace. If the namespace you need to attach a role to has
+        been created in the current Terraform configuration and will only be used in it,
+        you should use the `role_defaults` attribute of [`Namespace`](https://www.terraform.io/docs/providers/consul/r/namespace.html).
+
+        ## Example Usage
+
+        ### Attach a role to the default namespace
+
+        ```python
+        import pulumi
+        import pulumi_consul as consul
+
+        agent = consul.AclRole("agent", name="agent")
+        attachment = consul.NamespaceRoleAttachment("attachment",
+            namespace="default",
+            role=agent.name)
+        ```
+
+        ### Attach a role to a namespace created in another Terraform configuration
+
+        ### In `first_configuration/main.tf`
+
+        ```python
+        import pulumi
+        import pulumi_consul as consul
+
+        qa = consul.Namespace("qa", name="qa")
+        ```
+
+        ### In `second_configuration/main.tf`
+
+        ```python
+        import pulumi
+        import pulumi_consul as consul
+
+        agent = consul.AclRole("agent", name="agent")
+        attachment = consul.NamespaceRoleAttachment("attachment",
+            namespace="qa",
+            role=agent.name)
+        ```
+        **NOTE**: consul_acl_namespace would attempt to enforce an empty set of default
+        roles, because its `role_defaults` attribute is empty. For this reason it
+        is necessary to add the lifecycle clause to prevent Terraform from attempting to
+        empty the set of policies associated to the namespace.
+
         ## Import
 
-        `consul_namespace_role_attachment` can be imported. This is especially useful
+        `NamespaceRoleAttachment` can be imported. This is especially useful
         to manage the policies attached to the `default` namespace:
 
         ```sh

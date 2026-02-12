@@ -31,6 +31,7 @@ class AuthJwt(dict):
         :param _builtins.str auth_method: The name of the auth method to use for login.
         :param _builtins.str bearer_token: The bearer token to present to the auth method during login for authentication purposes. For the Kubernetes auth method this is a [Service Account Token (JWT)](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#service-account-tokens).
         :param Mapping[str, _builtins.str] meta: Specifies arbitrary KV metadata linked to the token. Can be useful to track origins.
+        :param _builtins.bool use_terraform_cloud_workload_identity: Whether to use a [Terraform Workload Identity token](https://developer.hashicorp.com/terraform/cloud-docs/workspaces/dynamic-provider-credentials/workload-identity-tokens). The token will be read from the `TFC_WORKLOAD_IDENTITY_TOKEN` environment variable.
         """
         pulumi.set(__self__, "auth_method", auth_method)
         if bearer_token is not None:
@@ -67,6 +68,9 @@ class AuthJwt(dict):
     @_builtins.property
     @pulumi.getter(name="useTerraformCloudWorkloadIdentity")
     def use_terraform_cloud_workload_identity(self) -> Optional[_builtins.bool]:
+        """
+        Whether to use a [Terraform Workload Identity token](https://developer.hashicorp.com/terraform/cloud-docs/workspaces/dynamic-provider-credentials/workload-identity-tokens). The token will be read from the `TFC_WORKLOAD_IDENTITY_TOKEN` environment variable.
+        """
         return pulumi.get(self, "use_terraform_cloud_workload_identity")
 
 

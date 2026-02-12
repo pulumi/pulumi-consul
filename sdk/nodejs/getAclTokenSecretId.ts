@@ -5,6 +5,18 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * > **Warning:** When using this is resource, the ACL Token secret ID will be
+ * written to the Terraform state. It is strongly recommended to use the `pgpKey`
+ * attribute and to make sure the remote state has strong access controls before
+ * using this resource.
+ *
+ * The `consulAclTokenSecret` data source returns the secret ID associated to
+ * the accessor ID. This can be useful to make systems that cannot use an auth
+ * method to interface with Consul.
+ *
+ * If you want to get other attributes of the Consul ACL token, please use the
+ * [`consul.AclToken` data source](https://www.terraform.io/docs/providers/consul/d/acl_token.html).
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -54,6 +66,12 @@ export interface GetAclTokenSecretIdArgs {
      * The partition to lookup the token.
      */
     partition?: string;
+    /**
+     * Either a base-64 encoded PGP public key, or a keybase
+     * username in the form `keybase:some_person_that_exists`. **If you do not set this
+     * argument, the token secret ID will be written as plain text in the Terraform
+     * state.**
+     */
     pgpKey?: string;
 }
 
@@ -62,6 +80,11 @@ export interface GetAclTokenSecretIdArgs {
  */
 export interface GetAclTokenSecretIdResult {
     readonly accessorId: string;
+    /**
+     * The encrypted secret ID of the ACL token if `pgpKey`
+     * has been set. You can decrypt the secret by using the command line, for example
+     * with: `terraform output encryptedSecret | base64 --decode | keybase pgp decrypt`.
+     */
     readonly encryptedSecretId: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -76,6 +99,18 @@ export interface GetAclTokenSecretIdResult {
     readonly secretId: string;
 }
 /**
+ * > **Warning:** When using this is resource, the ACL Token secret ID will be
+ * written to the Terraform state. It is strongly recommended to use the `pgpKey`
+ * attribute and to make sure the remote state has strong access controls before
+ * using this resource.
+ *
+ * The `consulAclTokenSecret` data source returns the secret ID associated to
+ * the accessor ID. This can be useful to make systems that cannot use an auth
+ * method to interface with Consul.
+ *
+ * If you want to get other attributes of the Consul ACL token, please use the
+ * [`consul.AclToken` data source](https://www.terraform.io/docs/providers/consul/d/acl_token.html).
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -125,5 +160,11 @@ export interface GetAclTokenSecretIdOutputArgs {
      * The partition to lookup the token.
      */
     partition?: pulumi.Input<string>;
+    /**
+     * Either a base-64 encoded PGP public key, or a keybase
+     * username in the form `keybase:some_person_that_exists`. **If you do not set this
+     * argument, the token secret ID will be written as plain text in the Terraform
+     * state.**
+     */
     pgpKey?: pulumi.Input<string>;
 }

@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Consul
 {
     /// <summary>
+    /// The `consul.AclRole` can be used to manage [Consul ACL roles](https://developer.hashicorp.com/consul/docs/security/acl/acl-roles).
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp

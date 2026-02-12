@@ -7,6 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * The `consul.ConfigEntryServiceDefaults` resource configures a [service defaults](https://developer.hashicorp.com/consul/docs/connect/config-entries/service-defaults) config entry that contains common configuration settings for service mesh services, such as upstreams and gateways.
+ *
  * ## Example Usage
  *
  * ```typescript

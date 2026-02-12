@@ -583,6 +583,10 @@ class PreparedQuery(pulumi.CustomResource):
                  token: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Allows Terraform to manage a Consul prepared query.
+
+        Managing prepared queries is done using Consul's REST API. This resource is useful to provide a consistent and declarative way of managing prepared queries in your Consul cluster using Terraform.
+
         ## Example Usage
 
         ```python
@@ -676,6 +680,10 @@ class PreparedQuery(pulumi.CustomResource):
                  args: PreparedQueryArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Allows Terraform to manage a Consul prepared query.
+
+        Managing prepared queries is done using Consul's REST API. This resource is useful to provide a consistent and declarative way of managing prepared queries in your Consul cluster using Terraform.
+
         ## Example Usage
 
         ```python

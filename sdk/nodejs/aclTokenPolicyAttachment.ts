@@ -5,17 +5,81 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * The `consul.AclTokenPolicyAttachment` resource links a Consul Token and an ACL
+ * policy. The link is implemented through an update to the Consul ACL token.
+ *
+ * > **NOTE:** This resource is only useful to attach policies to an ACL token
+ * that has been created outside the current Terraform configuration, like the
+ * anonymous or the master token. If the token you need to attach a policy to has
+ * been created in the current Terraform configuration and will only be used in it,
+ * you should use the `policies` attribute of [`consul.AclToken`](https://www.terraform.io/docs/providers/consul/r/acl_token.html).
+ *
+ * ## Example Usage
+ *
+ * ### Attach a policy to the anonymous token
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ *
+ * const agent = new consul.AclPolicy("agent", {
+ *     name: "agent",
+ *     rules: `node_prefix \\"\\" {
+ *   policy = \\"read\\"
+ * }
+ * `,
+ * });
+ * const attachment = new consul.AclTokenPolicyAttachment("attachment", {
+ *     tokenId: "00000000-0000-0000-0000-000000000002",
+ *     policy: agent.name,
+ * });
+ * ```
+ *
+ * ### Attach a policy to a token created in another Terraform configuration
+ *
+ * ### In `first_configuration/main.tf`
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ *
+ * const test = new consul.AclToken("test", {
+ *     accessorId: "9b20de68-3ea2-4b70-b4f1-506afad062a4",
+ *     description: "my test token",
+ *     local: true,
+ * });
+ * ```
+ *
+ * ### In `second_configuration/main.tf`
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ *
+ * const agent = new consul.AclPolicy("agent", {
+ *     name: "agent",
+ *     rules: `node_prefix \\"\\" {
+ *   policy = \\"read\\"
+ * }
+ * `,
+ * });
+ * const attachment = new consul.AclTokenPolicyAttachment("attachment", {
+ *     tokenId: "9b20de68-3ea2-4b70-b4f1-506afad062a4",
+ *     policy: agent.name,
+ * });
+ * ```
+ * **NOTE**: consul.AclToken would attempt to enforce an empty set of policies,
+ * because its policies attribute is empty. For this reason it is necessary to add
+ * the lifecycle clause to prevent Terraform from attempting to empty the set of
+ * policies associated to the token.
+ *
  * ## Import
  *
- * `consul_acl_token_policy_attachment` can be imported. This is especially useful to manage the
- *
+ * `consul.AclTokenPolicyAttachment` can be imported. This is especially useful to manage the
  * policies attached to the anonymous and the master tokens with Terraform:
  *
  * ```sh
  * $ pulumi import consul:index/aclTokenPolicyAttachment:AclTokenPolicyAttachment anonymous 00000000-0000-0000-0000-000000000002:policy_name
- * ```
- *
- * ```sh
  * $ pulumi import consul:index/aclTokenPolicyAttachment:AclTokenPolicyAttachment master-token 624d94ca-bc5c-f960-4e83-0a609cf588be:policy_name
  * ```
  */

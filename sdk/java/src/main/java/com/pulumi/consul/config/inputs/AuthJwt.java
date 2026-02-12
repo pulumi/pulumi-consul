@@ -29,6 +29,10 @@ public final class AuthJwt {
      * 
      */
     private @Nullable Map<String,String> meta;
+    /**
+     * @return Whether to use a [Terraform Workload Identity token](https://developer.hashicorp.com/terraform/cloud-docs/workspaces/dynamic-provider-credentials/workload-identity-tokens). The token will be read from the `TFC_WORKLOAD_IDENTITY_TOKEN` environment variable.
+     * 
+     */
     private @Nullable Boolean useTerraformCloudWorkloadIdentity;
 
     private AuthJwt() {}
@@ -53,6 +57,10 @@ public final class AuthJwt {
     public Map<String,String> meta() {
         return this.meta == null ? Map.of() : this.meta;
     }
+    /**
+     * @return Whether to use a [Terraform Workload Identity token](https://developer.hashicorp.com/terraform/cloud-docs/workspaces/dynamic-provider-credentials/workload-identity-tokens). The token will be read from the `TFC_WORKLOAD_IDENTITY_TOKEN` environment variable.
+     * 
+     */
     public Optional<Boolean> useTerraformCloudWorkloadIdentity() {
         return Optional.ofNullable(this.useTerraformCloudWorkloadIdentity);
     }

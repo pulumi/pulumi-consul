@@ -634,6 +634,8 @@ class ConfigEntryServiceDefaults(pulumi.CustomResource):
                  upstream_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceDefaultsUpstreamConfigArgs', 'ConfigEntryServiceDefaultsUpstreamConfigArgsDict']]]]] = None,
                  __props__=None):
         """
+        The `ConfigEntryServiceDefaults` resource configures a [service defaults](https://developer.hashicorp.com/consul/docs/connect/config-entries/service-defaults) config entry that contains common configuration settings for service mesh services, such as upstreams and gateways.
+
         ## Example Usage
 
         ```python
@@ -690,6 +692,8 @@ class ConfigEntryServiceDefaults(pulumi.CustomResource):
                  args: ConfigEntryServiceDefaultsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        The `ConfigEntryServiceDefaults` resource configures a [service defaults](https://developer.hashicorp.com/consul/docs/connect/config-entries/service-defaults) config entry that contains common configuration settings for service mesh services, such as upstreams and gateways.
+
         ## Example Usage
 
         ```python

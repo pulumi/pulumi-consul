@@ -7,6 +7,9 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Allows Terraform to read values from a "namespace" of Consul keys that
+ * share a common name prefix.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -126,6 +129,9 @@ Please use the token argument in the provider configuration
     readonly var: {[key: string]: string};
 }
 /**
+ * Allows Terraform to read values from a "namespace" of Consul keys that
+ * share a common name prefix.
+ *
  * ## Example Usage
  *
  * ```typescript

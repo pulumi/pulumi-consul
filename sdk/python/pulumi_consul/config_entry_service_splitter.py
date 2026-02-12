@@ -206,6 +206,8 @@ class ConfigEntryServiceSplitter(pulumi.CustomResource):
                  splits: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceSplitterSplitArgs', 'ConfigEntryServiceSplitterSplitArgsDict']]]]] = None,
                  __props__=None):
         """
+        The `ConfigEntryServiceSplitter` resource configures a [service splitter](https://developer.hashicorp.com/consul/docs/connect/config-entries/service-splitter) that will redirect a percentage of incoming traffic requests for a service to one or more specific service instances.
+
         ## Example Usage
 
         ```python
@@ -300,6 +302,8 @@ class ConfigEntryServiceSplitter(pulumi.CustomResource):
                  args: ConfigEntryServiceSplitterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        The `ConfigEntryServiceSplitter` resource configures a [service splitter](https://developer.hashicorp.com/consul/docs/connect/config-entries/service-splitter) that will redirect a percentage of incoming traffic requests for a service to one or more specific service instances.
+
         ## Example Usage
 
         ```python

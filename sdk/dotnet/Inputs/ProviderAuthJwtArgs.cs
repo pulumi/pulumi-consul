@@ -36,6 +36,9 @@ namespace Pulumi.Consul.Inputs
             set => _meta = value;
         }
 
+        /// <summary>
+        /// Whether to use a [Terraform Workload Identity token](https://developer.hashicorp.com/terraform/cloud-docs/workspaces/dynamic-provider-credentials/workload-identity-tokens). The token will be read from the `TFC_WORKLOAD_IDENTITY_TOKEN` environment variable.
+        /// </summary>
         [Input("useTerraformCloudWorkloadIdentity")]
         public Input<bool>? UseTerraformCloudWorkloadIdentity { get; set; }
 

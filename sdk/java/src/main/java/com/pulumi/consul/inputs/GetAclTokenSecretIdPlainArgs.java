@@ -60,9 +60,23 @@ public final class GetAclTokenSecretIdPlainArgs extends com.pulumi.resources.Inv
         return Optional.ofNullable(this.partition);
     }
 
+    /**
+     * Either a base-64 encoded PGP public key, or a keybase
+     * username in the form `keybase:some_person_that_exists`. **If you do not set this
+     * argument, the token secret ID will be written as plain text in the Terraform
+     * state.**
+     * 
+     */
     @Import(name="pgpKey")
     private @Nullable String pgpKey;
 
+    /**
+     * @return Either a base-64 encoded PGP public key, or a keybase
+     * username in the form `keybase:some_person_that_exists`. **If you do not set this
+     * argument, the token secret ID will be written as plain text in the Terraform
+     * state.**
+     * 
+     */
     public Optional<String> pgpKey() {
         return Optional.ofNullable(this.pgpKey);
     }
@@ -127,6 +141,15 @@ public final class GetAclTokenSecretIdPlainArgs extends com.pulumi.resources.Inv
             return this;
         }
 
+        /**
+         * @param pgpKey Either a base-64 encoded PGP public key, or a keybase
+         * username in the form `keybase:some_person_that_exists`. **If you do not set this
+         * argument, the token secret ID will be written as plain text in the Terraform
+         * state.**
+         * 
+         * @return builder
+         * 
+         */
         public Builder pgpKey(@Nullable String pgpKey) {
             $.pgpKey = pgpKey;
             return this;

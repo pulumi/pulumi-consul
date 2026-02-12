@@ -145,6 +145,9 @@ def get_key_prefix(datacenter: Optional[_builtins.str] = None,
                    token: Optional[_builtins.str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKeyPrefixResult:
     """
+    Allows Terraform to read values from a "namespace" of Consul keys that
+    share a common name prefix.
+
     ## Example Usage
 
     ```python
@@ -217,6 +220,9 @@ def get_key_prefix_output(datacenter: Optional[pulumi.Input[Optional[_builtins.s
                           token: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKeyPrefixResult]:
     """
+    Allows Terraform to read values from a "namespace" of Consul keys that
+    share a common name prefix.
+
     ## Example Usage
 
     ```python

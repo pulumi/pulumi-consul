@@ -306,6 +306,8 @@ class AclRole(pulumi.CustomResource):
                  templated_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AclRoleTemplatedPolicyArgs', 'AclRoleTemplatedPolicyArgsDict']]]]] = None,
                  __props__=None):
         """
+        The `AclRole` can be used to manage [Consul ACL roles](https://developer.hashicorp.com/consul/docs/security/acl/acl-roles).
+
         ## Example Usage
 
         ```python
@@ -349,6 +351,8 @@ class AclRole(pulumi.CustomResource):
                  args: Optional[AclRoleArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        The `AclRole` can be used to manage [Consul ACL roles](https://developer.hashicorp.com/consul/docs/security/acl/acl-roles).
+
         ## Example Usage
 
         ```python

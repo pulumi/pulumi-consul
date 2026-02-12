@@ -23,7 +23,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * `consul_admin_partition` can be imported:
+ * `consul.AdminPartition` can be imported:
  *
  * ```sh
  * $ pulumi import consul:index/adminPartition:AdminPartition na_west na-west

@@ -73,7 +73,7 @@ namespace Pulumi.Consul
     /// 
     /// ## Import
     /// 
-    /// `consul_intention` can be imported:
+    /// `consul.Intention` can be imported:
     /// 
     /// ```sh
     /// $ pulumi import consul:index/intention:Intention database 657a57d6-0d56-57e2-31cb-e9f1ed3c18dd

@@ -5,9 +5,63 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * > **NOTE:** This feature requires Consul Enterprise.
+ *
+ * The `consul.NamespaceRoleAttachment` resource links a Consul Namespace and an ACL
+ * role. The link is implemented through an update to the Consul Namespace.
+ *
+ * > **NOTE:** This resource is only useful to attach roles to a namespace
+ * that has been created outside the current Terraform configuration, like the
+ * `default` namespace. If the namespace you need to attach a role to has
+ * been created in the current Terraform configuration and will only be used in it,
+ * you should use the `roleDefaults` attribute of [`consul.Namespace`](https://www.terraform.io/docs/providers/consul/r/namespace.html).
+ *
+ * ## Example Usage
+ *
+ * ### Attach a role to the default namespace
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ *
+ * const agent = new consul.AclRole("agent", {name: "agent"});
+ * const attachment = new consul.NamespaceRoleAttachment("attachment", {
+ *     namespace: "default",
+ *     role: agent.name,
+ * });
+ * ```
+ *
+ * ### Attach a role to a namespace created in another Terraform configuration
+ *
+ * ### In `first_configuration/main.tf`
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ *
+ * const qa = new consul.Namespace("qa", {name: "qa"});
+ * ```
+ *
+ * ### In `second_configuration/main.tf`
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ *
+ * const agent = new consul.AclRole("agent", {name: "agent"});
+ * const attachment = new consul.NamespaceRoleAttachment("attachment", {
+ *     namespace: "qa",
+ *     role: agent.name,
+ * });
+ * ```
+ * **NOTE**: consulAclNamespace would attempt to enforce an empty set of default
+ * roles, because its `roleDefaults` attribute is empty. For this reason it
+ * is necessary to add the lifecycle clause to prevent Terraform from attempting to
+ * empty the set of policies associated to the namespace.
+ *
  * ## Import
  *
- * `consul_namespace_role_attachment` can be imported. This is especially useful
+ * `consul.NamespaceRoleAttachment` can be imported. This is especially useful
  * to manage the policies attached to the `default` namespace:
  *
  * ```sh

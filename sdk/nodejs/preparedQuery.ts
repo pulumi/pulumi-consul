@@ -7,6 +7,10 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Allows Terraform to manage a Consul prepared query.
+ *
+ * Managing prepared queries is done using Consul's REST API. This resource is useful to provide a consistent and declarative way of managing prepared queries in your Consul cluster using Terraform.
+ *
  * ## Example Usage
  *
  * ```typescript
