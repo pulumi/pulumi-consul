@@ -26,6 +26,7 @@ class NetworkAreaArgs:
                  use_tls: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a NetworkArea resource.
+
         :param pulumi.Input[_builtins.str] peer_datacenter: The name of the Consul datacenter that will be
                joined to form the area.
         :param pulumi.Input[_builtins.str] datacenter: The datacenter to use. This overrides the
@@ -130,6 +131,7 @@ class _NetworkAreaState:
                  use_tls: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering NetworkArea resources.
+
         :param pulumi.Input[_builtins.str] datacenter: The datacenter to use. This overrides the
                agent's default datacenter and the datacenter in the provider setup.
         :param pulumi.Input[_builtins.str] peer_datacenter: The name of the Consul datacenter that will be
@@ -260,6 +262,7 @@ class NetworkArea(pulumi.CustomResource):
             use_tls=True)
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] datacenter: The datacenter to use. This overrides the
@@ -301,6 +304,7 @@ class NetworkArea(pulumi.CustomResource):
             retry_joins=["1.2.3.4"],
             use_tls=True)
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NetworkAreaArgs args: The arguments to use to populate this resource's properties.

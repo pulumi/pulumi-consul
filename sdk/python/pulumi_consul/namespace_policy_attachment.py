@@ -23,6 +23,7 @@ class NamespacePolicyAttachmentArgs:
                  policy: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a NamespacePolicyAttachment resource.
+
         :param pulumi.Input[_builtins.str] namespace: The namespace to attach the policy to.
         :param pulumi.Input[_builtins.str] policy: The name of the policy attached to the namespace.
         """
@@ -61,6 +62,7 @@ class _NamespacePolicyAttachmentState:
                  policy: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NamespacePolicyAttachment resources.
+
         :param pulumi.Input[_builtins.str] namespace: The namespace to attach the policy to.
         :param pulumi.Input[_builtins.str] policy: The name of the policy attached to the namespace.
         """
@@ -175,6 +177,7 @@ class NamespacePolicyAttachment(pulumi.CustomResource):
         $ pulumi import consul:index/namespacePolicyAttachment:NamespacePolicyAttachment default default:policy_name
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] namespace: The namespace to attach the policy to.
@@ -257,6 +260,7 @@ class NamespacePolicyAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import consul:index/namespacePolicyAttachment:NamespacePolicyAttachment default default:policy_name
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NamespacePolicyAttachmentArgs args: The arguments to use to populate this resource's properties.

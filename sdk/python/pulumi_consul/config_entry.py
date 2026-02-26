@@ -26,6 +26,7 @@ class ConfigEntryArgs:
                  partition: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ConfigEntry resource.
+
         :param pulumi.Input[_builtins.str] kind: The kind of configuration entry to register.
         :param pulumi.Input[_builtins.str] config_json: An arbitrary map of configuration values.
         :param pulumi.Input[_builtins.str] name: The name of the configuration entry being registered.
@@ -113,6 +114,7 @@ class _ConfigEntryState:
                  partition: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ConfigEntry resources.
+
         :param pulumi.Input[_builtins.str] config_json: An arbitrary map of configuration values.
         :param pulumi.Input[_builtins.str] kind: The kind of configuration entry to register.
         :param pulumi.Input[_builtins.str] name: The name of the configuration entry being registered.
@@ -486,6 +488,7 @@ class ConfigEntry(pulumi.CustomResource):
         $ pulumi import consul:index/configEntry:ConfigEntry service_splitter 816a195f-6cb1-2e8d-92af-3011ae706318
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] config_json: An arbitrary map of configuration values.
@@ -782,6 +785,7 @@ class ConfigEntry(pulumi.CustomResource):
         ```sh
         $ pulumi import consul:index/configEntry:ConfigEntry service_splitter 816a195f-6cb1-2e8d-92af-3011ae706318
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ConfigEntryArgs args: The arguments to use to populate this resource's properties.

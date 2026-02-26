@@ -27,6 +27,7 @@ class NamespaceArgs:
                  role_defaults: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Namespace resource.
+
         :param pulumi.Input[_builtins.str] description: Free form namespace description.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] meta: Specifies arbitrary KV metadata to associate with the namespace.
         :param pulumi.Input[_builtins.str] name: The namespace name.
@@ -131,6 +132,7 @@ class _NamespaceState:
                  role_defaults: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Namespace resources.
+
         :param pulumi.Input[_builtins.str] description: Free form namespace description.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] meta: Specifies arbitrary KV metadata to associate with the namespace.
         :param pulumi.Input[_builtins.str] name: The namespace name.
@@ -265,6 +267,7 @@ class Namespace(pulumi.CustomResource):
         $ pulumi import consul:index/namespace:Namespace default default
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Free form namespace description.
@@ -307,6 +310,7 @@ class Namespace(pulumi.CustomResource):
         ```sh
         $ pulumi import consul:index/namespace:Namespace default default
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NamespaceArgs args: The arguments to use to populate this resource's properties.

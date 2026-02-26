@@ -39,6 +39,7 @@ class PreparedQueryArgs:
                  token: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a PreparedQuery resource.
+
         :param pulumi.Input[_builtins.str] service: The name of the service to query
         :param pulumi.Input[_builtins.bool] connect: When `true` the prepared query will return connect proxy services for a queried service.  Conditions such as `tags` in the prepared query will be matched against the proxy service. Defaults to false.
         :param pulumi.Input[_builtins.str] datacenter: The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
@@ -309,6 +310,7 @@ class _PreparedQueryState:
                  token: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PreparedQuery resources.
+
         :param pulumi.Input[_builtins.bool] connect: When `true` the prepared query will return connect proxy services for a queried service.  Conditions such as `tags` in the prepared query will be matched against the proxy service. Defaults to false.
         :param pulumi.Input[_builtins.str] datacenter: The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
         :param pulumi.Input['PreparedQueryDnsArgs'] dns: Settings for controlling the DNS response details.
@@ -654,6 +656,7 @@ class PreparedQuery(pulumi.CustomResource):
         $ pulumi import consul:index/preparedQuery:PreparedQuery my_service 71ecfb82-717a-4258-b4b6-2fb75144d856
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] connect: When `true` the prepared query will return connect proxy services for a queried service.  Conditions such as `tags` in the prepared query will be matched against the proxy service. Defaults to false.
@@ -750,6 +753,7 @@ class PreparedQuery(pulumi.CustomResource):
         ```sh
         $ pulumi import consul:index/preparedQuery:PreparedQuery my_service 71ecfb82-717a-4258-b4b6-2fb75144d856
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PreparedQueryArgs args: The arguments to use to populate this resource's properties.

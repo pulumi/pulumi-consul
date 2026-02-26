@@ -25,6 +25,7 @@ class PeeringArgs:
                  partition: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Peering resource.
+
         :param pulumi.Input[_builtins.str] peer_name: The name assigned to the peer cluster. The `peer_name` is used to reference the peer cluster in service discovery queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
         :param pulumi.Input[_builtins.str] peering_token: The peering token fetched from the peer cluster.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] meta: Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the cluster peering process.
@@ -97,6 +98,7 @@ class _PeeringState:
                  state: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Peering resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] meta: Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the cluster peering process.
         :param pulumi.Input[_builtins.str] peer_name: The name assigned to the peer cluster. The `peer_name` is used to reference the peer cluster in service discovery queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
         :param pulumi.Input[_builtins.str] peering_token: The peering token fetched from the peer cluster.
@@ -257,6 +259,7 @@ class Peering(pulumi.CustomResource):
             })
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] meta: Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the cluster peering process.
@@ -292,6 +295,7 @@ class Peering(pulumi.CustomResource):
                 "hello": "world",
             })
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PeeringArgs args: The arguments to use to populate this resource's properties.

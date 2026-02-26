@@ -30,6 +30,7 @@ class KeyPrefixArgs:
                  token: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a KeyPrefix resource.
+
         :param pulumi.Input[_builtins.str] path_prefix: Specifies the common prefix shared by all keys
                that will be managed by this resource instance. In most cases this will
                end with a slash, to manage a "folder" of keys.
@@ -172,6 +173,7 @@ class _KeyPrefixState:
                  token: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering KeyPrefix resources.
+
         :param pulumi.Input[_builtins.str] datacenter: The datacenter to use. This overrides the
                agent's default datacenter and the datacenter in the provider setup.
         :param pulumi.Input[_builtins.str] namespace: The namespace to create the keys within.
@@ -375,6 +377,7 @@ class KeyPrefix(pulumi.CustomResource):
         $ pulumi import consul:index/keyPrefix:KeyPrefix myapp_config myapp/config/
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] datacenter: The datacenter to use. This overrides the
@@ -456,6 +459,7 @@ class KeyPrefix(pulumi.CustomResource):
         ```sh
         $ pulumi import consul:index/keyPrefix:KeyPrefix myapp_config myapp/config/
         ```
+
 
         :param str resource_name: The name of the resource.
         :param KeyPrefixArgs args: The arguments to use to populate this resource's properties.

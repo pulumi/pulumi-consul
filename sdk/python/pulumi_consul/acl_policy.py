@@ -27,6 +27,7 @@ class AclPolicyArgs:
                  partition: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AclPolicy resource.
+
         :param pulumi.Input[_builtins.str] rules: The rules of the policy.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] datacenters: The datacenters of the policy.
         :param pulumi.Input[_builtins.str] description: The description of the policy.
@@ -130,6 +131,7 @@ class _AclPolicyState:
                  rules: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AclPolicy resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] datacenters: The datacenters of the policy.
         :param pulumi.Input[_builtins.str] description: The description of the policy.
         :param pulumi.Input[_builtins.str] name: The name of the policy.
@@ -262,6 +264,7 @@ class AclPolicy(pulumi.CustomResource):
         $ pulumi import consul:index/aclPolicy:AclPolicy my-policy 1c90ef03-a6dd-6a8c-ac49-042ad3752896
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] datacenters: The datacenters of the policy.
@@ -302,6 +305,7 @@ class AclPolicy(pulumi.CustomResource):
         ```sh
         $ pulumi import consul:index/aclPolicy:AclPolicy my-policy 1c90ef03-a6dd-6a8c-ac49-042ad3752896
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AclPolicyArgs args: The arguments to use to populate this resource's properties.

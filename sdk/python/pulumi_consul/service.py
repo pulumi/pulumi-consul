@@ -37,6 +37,7 @@ class ServiceArgs:
                  weights: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.int]]]] = None):
         """
         The set of arguments for constructing a Service resource.
+
         :param pulumi.Input[_builtins.str] node: The name of the node the to register the service on.
         :param pulumi.Input[_builtins.str] address: The address of the service. Defaults to the address of the node.
         :param pulumi.Input[_builtins.str] datacenter: The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
@@ -264,6 +265,7 @@ class _ServiceState:
                  weights: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.int]]]] = None):
         """
         Input properties used for looking up and filtering Service resources.
+
         :param pulumi.Input[_builtins.str] address: The address of the service. Defaults to the address of the node.
         :param pulumi.Input[_builtins.str] datacenter: The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
         :param pulumi.Input[_builtins.bool] enable_tag_override: Specifies to disable the anti-entropy feature for this service's tags. Defaults to `false`.
@@ -567,6 +569,7 @@ class Service(pulumi.CustomResource):
             }])
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] address: The address of the service. Defaults to the address of the node.
@@ -660,6 +663,7 @@ class Service(pulumi.CustomResource):
                 ],
             }])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ServiceArgs args: The arguments to use to populate this resource's properties.

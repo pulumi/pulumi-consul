@@ -25,6 +25,7 @@ class AgentServiceArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a AgentService resource.
+
         :param pulumi.Input[_builtins.str] address: The address of the service. Defaults to the
                address of the agent.
         :param pulumi.Input[_builtins.str] name: The name of the service.
@@ -101,6 +102,7 @@ class _AgentServiceState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering AgentService resources.
+
         :param pulumi.Input[_builtins.str] address: The address of the service. Defaults to the
                address of the agent.
         :param pulumi.Input[_builtins.str] name: The name of the service.
@@ -204,6 +206,7 @@ class AgentService(pulumi.CustomResource):
             ])
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] address: The address of the service. Defaults to the
@@ -243,6 +246,7 @@ class AgentService(pulumi.CustomResource):
                 "tag1",
             ])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AgentServiceArgs args: The arguments to use to populate this resource's properties.

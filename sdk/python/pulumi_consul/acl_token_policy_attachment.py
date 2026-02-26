@@ -23,6 +23,7 @@ class AclTokenPolicyAttachmentArgs:
                  token_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a AclTokenPolicyAttachment resource.
+
         :param pulumi.Input[_builtins.str] policy: The name of the policy attached to the token.
         :param pulumi.Input[_builtins.str] token_id: The id of the token.
         """
@@ -61,6 +62,7 @@ class _AclTokenPolicyAttachmentState:
                  token_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AclTokenPolicyAttachment resources.
+
         :param pulumi.Input[_builtins.str] policy: The name of the policy attached to the token.
         :param pulumi.Input[_builtins.str] token_id: The id of the token.
         """
@@ -177,6 +179,7 @@ class AclTokenPolicyAttachment(pulumi.CustomResource):
         $ pulumi import consul:index/aclTokenPolicyAttachment:AclTokenPolicyAttachment master-token 624d94ca-bc5c-f960-4e83-0a609cf588be:policy_name
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] policy: The name of the policy attached to the token.
@@ -261,6 +264,7 @@ class AclTokenPolicyAttachment(pulumi.CustomResource):
         $ pulumi import consul:index/aclTokenPolicyAttachment:AclTokenPolicyAttachment anonymous 00000000-0000-0000-0000-000000000002:policy_name
         $ pulumi import consul:index/aclTokenPolicyAttachment:AclTokenPolicyAttachment master-token 624d94ca-bc5c-f960-4e83-0a609cf588be:policy_name
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AclTokenPolicyAttachmentArgs args: The arguments to use to populate this resource's properties.

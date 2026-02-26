@@ -34,6 +34,7 @@ class AclAuthMethodArgs:
                  token_locality: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AclAuthMethod resource.
+
         :param pulumi.Input[_builtins.str] type: The type of the ACL auth method.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] config: The raw configuration for this ACL auth method.
         :param pulumi.Input[_builtins.str] config_json: The raw configuration for this ACL auth method.
@@ -221,6 +222,7 @@ class _AclAuthMethodState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AclAuthMethod resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] config: The raw configuration for this ACL auth method.
         :param pulumi.Input[_builtins.str] config_json: The raw configuration for this ACL auth method.
         :param pulumi.Input[_builtins.str] description: A free form human readable description of the auth method.
@@ -466,6 +468,7 @@ class AclAuthMethod(pulumi.CustomResource):
             }))
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] config: The raw configuration for this ACL auth method.
@@ -540,6 +543,7 @@ class AclAuthMethod(pulumi.CustomResource):
                 "OIDCDiscoveryURL": "https://my-corp-app-name.auth0.com/",
             }))
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AclAuthMethodArgs args: The arguments to use to populate this resource's properties.

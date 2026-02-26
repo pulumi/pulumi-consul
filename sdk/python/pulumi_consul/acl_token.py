@@ -34,6 +34,7 @@ class AclTokenArgs:
                  templated_policies: Optional[pulumi.Input[Sequence[pulumi.Input['AclTokenTemplatedPolicyArgs']]]] = None):
         """
         The set of arguments for constructing a AclToken resource.
+
         :param pulumi.Input[_builtins.str] accessor_id: The uuid of the token. If omitted, Consul will generate a random uuid.
         :param pulumi.Input[_builtins.str] description: The description of the token.
         :param pulumi.Input[_builtins.str] expiration_time: If set this represents the point after which a token should be considered revoked and is eligible for destruction.
@@ -218,6 +219,7 @@ class _AclTokenState:
                  templated_policies: Optional[pulumi.Input[Sequence[pulumi.Input['AclTokenTemplatedPolicyArgs']]]] = None):
         """
         Input properties used for looking up and filtering AclToken resources.
+
         :param pulumi.Input[_builtins.str] accessor_id: The uuid of the token. If omitted, Consul will generate a random uuid.
         :param pulumi.Input[_builtins.str] description: The description of the token.
         :param pulumi.Input[_builtins.str] expiration_time: If set this represents the point after which a token should be considered revoked and is eligible for destruction.
@@ -443,6 +445,7 @@ class AclToken(pulumi.CustomResource):
         $ pulumi import consul:index/aclToken:AclToken master-token 624d94ca-bc5c-f960-4e83-0a609cf588be
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] accessor_id: The uuid of the token. If omitted, Consul will generate a random uuid.
@@ -501,6 +504,7 @@ class AclToken(pulumi.CustomResource):
         $ pulumi import consul:index/aclToken:AclToken anonymous 00000000-0000-0000-0000-000000000002
         $ pulumi import consul:index/aclToken:AclToken master-token 624d94ca-bc5c-f960-4e83-0a609cf588be
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AclTokenArgs args: The arguments to use to populate this resource's properties.

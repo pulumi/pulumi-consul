@@ -31,6 +31,7 @@ class AclBindingRuleArgs:
                  selector: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AclBindingRule resource.
+
         :param pulumi.Input[_builtins.str] auth_method: The name of the ACL auth method this rule apply.
         :param pulumi.Input[_builtins.str] bind_name: The name to bind to a token at login-time.
         :param pulumi.Input[_builtins.str] bind_type: Specifies the way the binding rule affects a token created at login.
@@ -164,6 +165,7 @@ class _AclBindingRuleState:
                  selector: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AclBindingRule resources.
+
         :param pulumi.Input[_builtins.str] auth_method: The name of the ACL auth method this rule apply.
         :param pulumi.Input[_builtins.str] bind_name: The name to bind to a token at login-time.
         :param pulumi.Input[_builtins.str] bind_type: Specifies the way the binding rule affects a token created at login.
@@ -330,6 +332,7 @@ class AclBindingRule(pulumi.CustomResource):
             bind_name="minikube")
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] auth_method: The name of the ACL auth method this rule apply.
@@ -374,6 +377,7 @@ class AclBindingRule(pulumi.CustomResource):
             bind_type="service",
             bind_name="minikube")
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AclBindingRuleArgs args: The arguments to use to populate this resource's properties.

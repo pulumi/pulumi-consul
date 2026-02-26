@@ -23,6 +23,7 @@ class AclTokenRoleAttachmentArgs:
                  token_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a AclTokenRoleAttachment resource.
+
         :param pulumi.Input[_builtins.str] role: The role name.
         :param pulumi.Input[_builtins.str] token_id: The id of the token.
         """
@@ -61,6 +62,7 @@ class _AclTokenRoleAttachmentState:
                  token_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AclTokenRoleAttachment resources.
+
         :param pulumi.Input[_builtins.str] role: The role name.
         :param pulumi.Input[_builtins.str] token_id: The id of the token.
         """
@@ -176,6 +178,7 @@ class AclTokenRoleAttachment(pulumi.CustomResource):
         $ pulumi import consul:index/aclTokenRoleAttachment:AclTokenRoleAttachment anonymous token_id:role_id
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] role: The role name.
@@ -259,6 +262,7 @@ class AclTokenRoleAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import consul:index/aclTokenRoleAttachment:AclTokenRoleAttachment anonymous token_id:role_id
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AclTokenRoleAttachmentArgs args: The arguments to use to populate this resource's properties.

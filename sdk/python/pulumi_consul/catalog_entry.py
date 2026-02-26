@@ -28,6 +28,7 @@ class CatalogEntryArgs:
                  token: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CatalogEntry resource.
+
         :param pulumi.Input[_builtins.str] address: The address of the node being added to,
                or referenced in the catalog.
         :param pulumi.Input[_builtins.str] node: The name of the node being added to, or
@@ -129,6 +130,7 @@ class _CatalogEntryState:
                  token: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CatalogEntry resources.
+
         :param pulumi.Input[_builtins.str] address: The address of the node being added to,
                or referenced in the catalog.
         :param pulumi.Input[_builtins.str] datacenter: The datacenter to use. This overrides the
@@ -263,6 +265,7 @@ class CatalogEntry(pulumi.CustomResource):
             })
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] address: The address of the node being added to,
@@ -309,6 +312,7 @@ class CatalogEntry(pulumi.CustomResource):
                 ],
             })
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CatalogEntryArgs args: The arguments to use to populate this resource's properties.
