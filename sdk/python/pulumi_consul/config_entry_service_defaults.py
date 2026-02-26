@@ -41,6 +41,7 @@ class ConfigEntryServiceDefaultsArgs:
                  upstream_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceDefaultsUpstreamConfigArgs']]]] = None):
         """
         The set of arguments for constructing a ConfigEntryServiceDefaults resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceDefaultsExposeArgs']]] exposes: Specifies default configurations for exposing HTTP paths through Envoy.
         :param pulumi.Input[_builtins.str] protocol: Specifies the default protocol for the service.
         :param pulumi.Input[_builtins.str] balance_inbound_connections: Specifies the strategy for allocating inbound connections to the service across Envoy proxy threads.
@@ -335,6 +336,7 @@ class _ConfigEntryServiceDefaultsState:
                  upstream_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceDefaultsUpstreamConfigArgs']]]] = None):
         """
         Input properties used for looking up and filtering ConfigEntryServiceDefaults resources.
+
         :param pulumi.Input[_builtins.str] balance_inbound_connections: Specifies the strategy for allocating inbound connections to the service across Envoy proxy threads.
         :param pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceDefaultsDestinationArgs']]] destinations: Configures the destination for service traffic through terminating gateways.
         :param pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceDefaultsEnvoyExtensionArgs']]] envoy_extensions: List of extensions to modify Envoy proxy configuration.
@@ -664,6 +666,7 @@ class ConfigEntryServiceDefaults(pulumi.CustomResource):
             }])
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] balance_inbound_connections: Specifies the strategy for allocating inbound connections to the service across Envoy proxy threads.
@@ -721,6 +724,7 @@ class ConfigEntryServiceDefaults(pulumi.CustomResource):
                 }],
             }])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ConfigEntryServiceDefaultsArgs args: The arguments to use to populate this resource's properties.

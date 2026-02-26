@@ -23,6 +23,7 @@ class LicenseArgs:
                  datacenter: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a License resource.
+
         :param pulumi.Input[_builtins.str] license: The Consul license to use.
         :param pulumi.Input[_builtins.str] datacenter: The datacenter to use. This overrides the
                agent's default datacenter and the datacenter in the provider setup.
@@ -74,6 +75,7 @@ class _LicenseState:
                  warnings: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering License resources.
+
         :param pulumi.Input[_builtins.str] customer_id: The ID of the customer the license is attached to.
         :param pulumi.Input[_builtins.str] datacenter: The datacenter to use. This overrides the
                agent's default datacenter and the datacenter in the provider setup.
@@ -285,6 +287,7 @@ class License(pulumi.CustomResource):
         license = consul.License("license", license=std.file(input="license.hclic").result)
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] datacenter: The datacenter to use. This overrides the
@@ -313,6 +316,7 @@ class License(pulumi.CustomResource):
 
         license = consul.License("license", license=std.file(input="license.hclic").result)
         ```
+
 
         :param str resource_name: The name of the resource.
         :param LicenseArgs args: The arguments to use to populate this resource's properties.

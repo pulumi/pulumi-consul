@@ -28,6 +28,7 @@ class KeysArgs:
                  token: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Keys resource.
+
         :param pulumi.Input[_builtins.str] datacenter: The datacenter to use. This overrides the
                agent's default datacenter and the datacenter in the provider setup.
         :param pulumi.Input[Sequence[pulumi.Input['KeysKeyArgs']]] keys: Specifies a key in Consul to be written.
@@ -130,6 +131,7 @@ class _KeysState:
                  var: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Keys resources.
+
         :param pulumi.Input[_builtins.str] datacenter: The datacenter to use. This overrides the
                agent's default datacenter and the datacenter in the provider setup.
         :param pulumi.Input[Sequence[pulumi.Input['KeysKeyArgs']]] keys: Specifies a key in Consul to be written.
@@ -270,6 +272,7 @@ class Keys(pulumi.CustomResource):
             }])
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] datacenter: The datacenter to use. This overrides the
@@ -312,6 +315,7 @@ class Keys(pulumi.CustomResource):
                 "value": app_aws_elb["dnsName"],
             }])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param KeysArgs args: The arguments to use to populate this resource's properties.

@@ -25,6 +25,7 @@ class PeeringTokenArgs:
                  server_external_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a PeeringToken resource.
+
         :param pulumi.Input[_builtins.str] peer_name: The name assigned to the peer cluster. The `peer_name` is used to reference the peer cluster in service discovery queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] meta: Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the cluster peering process.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] server_external_addresses: The addresses for the cluster that generates the peering token. Addresses take the form {host or IP}:port. You can specify one or more load balancers or external IPs that route external traffic to this cluster's Consul servers.
@@ -93,6 +94,7 @@ class _PeeringTokenState:
                  server_external_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering PeeringToken resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] meta: Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the cluster peering process.
         :param pulumi.Input[_builtins.str] peer_name: The name assigned to the peer cluster. The `peer_name` is used to reference the peer cluster in service discovery queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
         :param pulumi.Input[_builtins.str] peering_token: The generated peering token
@@ -192,6 +194,7 @@ class PeeringToken(pulumi.CustomResource):
         token = consul.PeeringToken("token", peer_name="eu-cluster")
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] meta: Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the cluster peering process.
@@ -217,6 +220,7 @@ class PeeringToken(pulumi.CustomResource):
 
         token = consul.PeeringToken("token", peer_name="eu-cluster")
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PeeringTokenArgs args: The arguments to use to populate this resource's properties.

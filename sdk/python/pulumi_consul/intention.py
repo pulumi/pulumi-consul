@@ -29,6 +29,7 @@ class IntentionArgs:
                  source_namespace: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Intention resource.
+
         :param pulumi.Input[_builtins.str] action: The intention action. Must be one of `allow` or `deny`.
         :param pulumi.Input[_builtins.str] destination_name: The name of the destination service for the intention. This
                service does not have to exist.
@@ -176,6 +177,7 @@ class _IntentionState:
                  source_namespace: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Intention resources.
+
         :param pulumi.Input[_builtins.str] action: The intention action. Must be one of `allow` or `deny`.
         :param pulumi.Input[_builtins.str] datacenter: The datacenter to use. This overrides the
                agent's default datacenter and the datacenter in the provider setup.
@@ -378,6 +380,7 @@ class Intention(pulumi.CustomResource):
         $ pulumi import consul:index/intention:Intention database 657a57d6-0d56-57e2-31cb-e9f1ed3c18dd
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] action: The intention action. Must be one of `allow` or `deny`.
@@ -451,6 +454,7 @@ class Intention(pulumi.CustomResource):
         ```sh
         $ pulumi import consul:index/intention:Intention database 657a57d6-0d56-57e2-31cb-e9f1ed3c18dd
         ```
+
 
         :param str resource_name: The name of the resource.
         :param IntentionArgs args: The arguments to use to populate this resource's properties.

@@ -24,6 +24,7 @@ class AdminPartitionArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AdminPartition resource.
+
         :param pulumi.Input[_builtins.str] description: Free form partition description.
         :param pulumi.Input[_builtins.bool] disable_gossip: . Disable gossip pool for the partition. Defaults to `false`.
         :param pulumi.Input[_builtins.str] name: The partition name. This must be a valid DNS hostname label.
@@ -80,6 +81,7 @@ class _AdminPartitionState:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AdminPartition resources.
+
         :param pulumi.Input[_builtins.str] description: Free form partition description.
         :param pulumi.Input[_builtins.bool] disable_gossip: . Disable gossip pool for the partition. Defaults to `false`.
         :param pulumi.Input[_builtins.str] name: The partition name. This must be a valid DNS hostname label.
@@ -162,6 +164,7 @@ class AdminPartition(pulumi.CustomResource):
         $ pulumi import consul:index/adminPartition:AdminPartition na_west na-west
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Free form partition description.
@@ -197,6 +200,7 @@ class AdminPartition(pulumi.CustomResource):
         ```sh
         $ pulumi import consul:index/adminPartition:AdminPartition na_west na-west
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AdminPartitionArgs args: The arguments to use to populate this resource's properties.

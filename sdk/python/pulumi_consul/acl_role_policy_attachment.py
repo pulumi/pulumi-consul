@@ -23,6 +23,7 @@ class AclRolePolicyAttachmentArgs:
                  role_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a AclRolePolicyAttachment resource.
+
         :param pulumi.Input[_builtins.str] policy: The policy name.
         :param pulumi.Input[_builtins.str] role_id: The id of the role.
         """
@@ -61,6 +62,7 @@ class _AclRolePolicyAttachmentState:
                  role_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AclRolePolicyAttachment resources.
+
         :param pulumi.Input[_builtins.str] policy: The policy name.
         :param pulumi.Input[_builtins.str] role_id: The id of the role.
         """
@@ -130,6 +132,7 @@ class AclRolePolicyAttachment(pulumi.CustomResource):
         $ pulumi import consul:index/aclRolePolicyAttachment:AclRolePolicyAttachment my_role_read_policy 624d94ca-bc5c-f960-4e83-0a609cf588be:policy_name
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] policy: The policy name.
@@ -167,6 +170,7 @@ class AclRolePolicyAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import consul:index/aclRolePolicyAttachment:AclRolePolicyAttachment my_role_read_policy 624d94ca-bc5c-f960-4e83-0a609cf588be:policy_name
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AclRolePolicyAttachmentArgs args: The arguments to use to populate this resource's properties.

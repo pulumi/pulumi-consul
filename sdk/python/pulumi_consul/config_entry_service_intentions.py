@@ -29,6 +29,7 @@ class ConfigEntryServiceIntentionsArgs:
                  sources: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceIntentionsSourceArgs']]]] = None):
         """
         The set of arguments for constructing a ConfigEntryServiceIntentions resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceIntentionsJwtArgs']]] jwts: Specifies a JSON Web Token provider configured in a JWT provider configuration entry, as well as additional configurations for verifying a service's JWT before authorizing communication between services
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] meta: Specifies key-value pairs to add to the KV store.
         :param pulumi.Input[_builtins.str] name: Specifies a name of the destination service for all intentions defined in the configuration entry.
@@ -133,6 +134,7 @@ class _ConfigEntryServiceIntentionsState:
                  sources: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceIntentionsSourceArgs']]]] = None):
         """
         Input properties used for looking up and filtering ConfigEntryServiceIntentions resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceIntentionsJwtArgs']]] jwts: Specifies a JSON Web Token provider configured in a JWT provider configuration entry, as well as additional configurations for verifying a service's JWT before authorizing communication between services
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] meta: Specifies key-value pairs to add to the KV store.
         :param pulumi.Input[_builtins.str] name: Specifies a name of the destination service for all intentions defined in the configuration entry.
@@ -290,6 +292,7 @@ class ConfigEntryServiceIntentions(pulumi.CustomResource):
             ])
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceIntentionsJwtArgs', 'ConfigEntryServiceIntentionsJwtArgsDict']]]] jwts: Specifies a JSON Web Token provider configured in a JWT provider configuration entry, as well as additional configurations for verifying a service's JWT before authorizing communication between services
@@ -355,6 +358,7 @@ class ConfigEntryServiceIntentions(pulumi.CustomResource):
                 },
             ])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ConfigEntryServiceIntentionsArgs args: The arguments to use to populate this resource's properties.

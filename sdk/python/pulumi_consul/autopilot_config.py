@@ -29,6 +29,7 @@ class AutopilotConfigArgs:
                  upgrade_version_tag: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AutopilotConfig resource.
+
         :param pulumi.Input[_builtins.bool] cleanup_dead_servers: Whether to remove failing servers when a
                replacement comes online. Defaults to true.
         :param pulumi.Input[_builtins.str] datacenter: The datacenter to use. This overrides the agent's
@@ -185,6 +186,7 @@ class _AutopilotConfigState:
                  upgrade_version_tag: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AutopilotConfig resources.
+
         :param pulumi.Input[_builtins.bool] cleanup_dead_servers: Whether to remove failing servers when a
                replacement comes online. Defaults to true.
         :param pulumi.Input[_builtins.str] datacenter: The datacenter to use. This overrides the agent's
@@ -362,6 +364,7 @@ class AutopilotConfig(pulumi.CustomResource):
             max_trailing_logs=500)
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] cleanup_dead_servers: Whether to remove failing servers when a
@@ -407,6 +410,7 @@ class AutopilotConfig(pulumi.CustomResource):
             last_contact_threshold="1s",
             max_trailing_logs=500)
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AutopilotConfigArgs args: The arguments to use to populate this resource's properties.

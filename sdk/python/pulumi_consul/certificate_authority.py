@@ -24,6 +24,7 @@ class CertificateAuthorityArgs:
                  config_json: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CertificateAuthority resource.
+
         :param pulumi.Input[_builtins.str] connect_provider: Specifies the CA provider type to use.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] config: The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
         :param pulumi.Input[_builtins.str] config_json: The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
@@ -83,6 +84,7 @@ class _CertificateAuthorityState:
                  connect_provider: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CertificateAuthority resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] config: The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
         :param pulumi.Input[_builtins.str] config_json: The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
         :param pulumi.Input[_builtins.str] connect_provider: Specifies the CA provider type to use.
@@ -156,6 +158,7 @@ class CertificateAuthority(pulumi.CustomResource):
         $ pulumi import consul:index/certificateAuthority:CertificateAuthority connect connect-ca
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] config: The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
@@ -178,6 +181,7 @@ class CertificateAuthority(pulumi.CustomResource):
         ```sh
         $ pulumi import consul:index/certificateAuthority:CertificateAuthority connect connect-ca
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CertificateAuthorityArgs args: The arguments to use to populate this resource's properties.

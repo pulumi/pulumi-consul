@@ -34,6 +34,7 @@ class ConfigEntryServiceResolverArgs:
                  subsets: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceResolverSubsetArgs']]]] = None):
         """
         The set of arguments for constructing a ConfigEntryServiceResolver resource.
+
         :param pulumi.Input[_builtins.str] connect_timeout: Specifies the timeout duration for establishing new network connections to this service.
         :param pulumi.Input[_builtins.str] default_subset: Specifies a defined subset of service instances to use when no explicit subset is requested. If this parameter is not specified, Consul uses the unnamed default subset.
         :param pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceResolverFailoverArgs']]] failovers: Specifies controls for rerouting traffic to an alternate pool of service instances if the target service fails.
@@ -218,6 +219,7 @@ class _ConfigEntryServiceResolverState:
                  subsets: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceResolverSubsetArgs']]]] = None):
         """
         Input properties used for looking up and filtering ConfigEntryServiceResolver resources.
+
         :param pulumi.Input[_builtins.str] connect_timeout: Specifies the timeout duration for establishing new network connections to this service.
         :param pulumi.Input[_builtins.str] default_subset: Specifies a defined subset of service instances to use when no explicit subset is requested. If this parameter is not specified, Consul uses the unnamed default subset.
         :param pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceResolverFailoverArgs']]] failovers: Specifies controls for rerouting traffic to an alternate pool of service instances if the target service fails.
@@ -446,6 +448,7 @@ class ConfigEntryServiceResolver(pulumi.CustomResource):
             ])
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] connect_timeout: Specifies the timeout duration for establishing new network connections to this service.
@@ -507,6 +510,7 @@ class ConfigEntryServiceResolver(pulumi.CustomResource):
                 },
             ])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ConfigEntryServiceResolverArgs args: The arguments to use to populate this resource's properties.

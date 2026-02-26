@@ -27,6 +27,7 @@ class NodeArgs:
                  token: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Node resource.
+
         :param pulumi.Input[_builtins.str] address: The address of the node being added to, or referenced in the catalog.
         :param pulumi.Input[_builtins.str] datacenter: The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] meta: Key/value pairs that are associated with the node.
@@ -133,6 +134,7 @@ class _NodeState:
                  token: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Node resources.
+
         :param pulumi.Input[_builtins.str] address: The address of the node being added to, or referenced in the catalog.
         :param pulumi.Input[_builtins.str] datacenter: The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] meta: Key/value pairs that are associated with the node.
@@ -265,6 +267,7 @@ class Node(pulumi.CustomResource):
         $ pulumi import consul:index/node:Node example node-name
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] address: The address of the node being added to, or referenced in the catalog.
@@ -301,6 +304,7 @@ class Node(pulumi.CustomResource):
         ```sh
         $ pulumi import consul:index/node:Node example node-name
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NodeArgs args: The arguments to use to populate this resource's properties.

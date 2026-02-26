@@ -28,6 +28,7 @@ class ConfigEntryServiceRouterArgs:
                  routes: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceRouterRouteArgs']]]] = None):
         """
         The set of arguments for constructing a ConfigEntryServiceRouter resource.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] meta: Specifies key-value pairs to add to the KV store.
         :param pulumi.Input[_builtins.str] name: Specifies a name for the configuration entry.
         :param pulumi.Input[_builtins.str] namespace: Specifies the namespace to apply the configuration entry.
@@ -116,6 +117,7 @@ class _ConfigEntryServiceRouterState:
                  routes: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceRouterRouteArgs']]]] = None):
         """
         Input properties used for looking up and filtering ConfigEntryServiceRouter resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] meta: Specifies key-value pairs to add to the KV store.
         :param pulumi.Input[_builtins.str] name: Specifies a name for the configuration entry.
         :param pulumi.Input[_builtins.str] namespace: Specifies the namespace to apply the configuration entry.
@@ -209,6 +211,7 @@ class ConfigEntryServiceRouter(pulumi.CustomResource):
         """
         The `ConfigEntryServiceRouter` resource configures a [service router](https://developer.hashicorp.com/consul/docs/connect/config-entries/service-router) to redirect a traffic request for a service to one or more specific service instances.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] meta: Specifies key-value pairs to add to the KV store.
@@ -225,6 +228,7 @@ class ConfigEntryServiceRouter(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The `ConfigEntryServiceRouter` resource configures a [service router](https://developer.hashicorp.com/consul/docs/connect/config-entries/service-router) to redirect a traffic request for a service to one or more specific service instances.
+
 
         :param str resource_name: The name of the resource.
         :param ConfigEntryServiceRouterArgs args: The arguments to use to populate this resource's properties.

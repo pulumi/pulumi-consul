@@ -29,6 +29,7 @@ class ConfigEntryV2ExportedServicesArgs:
                  services: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ConfigEntryV2ExportedServices resource.
+
         :param pulumi.Input[_builtins.str] kind: The kind of exported services config (ExportedServices, NamespaceExportedServices, PartitionExportedServices).
         :param pulumi.Input[_builtins.str] partition: The partition the config entry is associated with.
         :param pulumi.Input[_builtins.str] name: The name of the config entry to read.
@@ -163,6 +164,7 @@ class _ConfigEntryV2ExportedServicesState:
                  services: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ConfigEntryV2ExportedServices resources.
+
         :param pulumi.Input[_builtins.str] kind: The kind of exported services config (ExportedServices, NamespaceExportedServices, PartitionExportedServices).
         :param pulumi.Input[_builtins.str] name: The name of the config entry to read.
         :param pulumi.Input[_builtins.str] namespace: The namespace the config entry is associated with.
@@ -303,6 +305,7 @@ class ConfigEntryV2ExportedServices(pulumi.CustomResource):
                  __props__=None):
         """
         Create a ConfigEntryV2ExportedServices resource with the given unique name, props, and options.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] kind: The kind of exported services config (ExportedServices, NamespaceExportedServices, PartitionExportedServices).
@@ -322,6 +325,7 @@ class ConfigEntryV2ExportedServices(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Create a ConfigEntryV2ExportedServices resource with the given unique name, props, and options.
+
         :param str resource_name: The name of the resource.
         :param ConfigEntryV2ExportedServicesArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

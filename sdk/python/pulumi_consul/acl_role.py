@@ -31,6 +31,7 @@ class AclRoleArgs:
                  templated_policies: Optional[pulumi.Input[Sequence[pulumi.Input['AclRoleTemplatedPolicyArgs']]]] = None):
         """
         The set of arguments for constructing a AclRole resource.
+
         :param pulumi.Input[_builtins.str] description: A free form human readable description of the role.
         :param pulumi.Input[_builtins.str] name: The name of the ACL role.
         :param pulumi.Input[_builtins.str] namespace: The namespace to create the role within.
@@ -167,6 +168,7 @@ class _AclRoleState:
                  templated_policies: Optional[pulumi.Input[Sequence[pulumi.Input['AclRoleTemplatedPolicyArgs']]]] = None):
         """
         Input properties used for looking up and filtering AclRole resources.
+
         :param pulumi.Input[_builtins.str] description: A free form human readable description of the role.
         :param pulumi.Input[_builtins.str] name: The name of the ACL role.
         :param pulumi.Input[_builtins.str] namespace: The namespace to create the role within.
@@ -333,6 +335,7 @@ class AclRole(pulumi.CustomResource):
         $ pulumi import consul:index/aclRole:AclRole read 816a195f-6cb1-2e8d-92af-3011ae706318
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: A free form human readable description of the role.
@@ -377,6 +380,7 @@ class AclRole(pulumi.CustomResource):
         ```sh
         $ pulumi import consul:index/aclRole:AclRole read 816a195f-6cb1-2e8d-92af-3011ae706318
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AclRoleArgs args: The arguments to use to populate this resource's properties.

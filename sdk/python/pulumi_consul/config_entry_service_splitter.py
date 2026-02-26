@@ -28,6 +28,7 @@ class ConfigEntryServiceSplitterArgs:
                  partition: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ConfigEntryServiceSplitter resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceSplitterSplitArgs']]] splits: Defines how much traffic to send to sets of service instances during a traffic split.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] meta: Specifies key-value pairs to add to the KV store.
         :param pulumi.Input[_builtins.str] name: Specifies a name for the configuration entry.
@@ -115,6 +116,7 @@ class _ConfigEntryServiceSplitterState:
                  splits: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceSplitterSplitArgs']]]] = None):
         """
         Input properties used for looking up and filtering ConfigEntryServiceSplitter resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] meta: Specifies key-value pairs to add to the KV store.
         :param pulumi.Input[_builtins.str] name: Specifies a name for the configuration entry.
         :param pulumi.Input[_builtins.str] namespace: Specifies the namespace to apply the configuration entry.
@@ -287,6 +289,7 @@ class ConfigEntryServiceSplitter(pulumi.CustomResource):
         $ pulumi import consul:index/configEntryServiceSplitter:ConfigEntryServiceSplitter foo web
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] meta: Specifies key-value pairs to add to the KV store.
@@ -382,6 +385,7 @@ class ConfigEntryServiceSplitter(pulumi.CustomResource):
         ```sh
         $ pulumi import consul:index/configEntryServiceSplitter:ConfigEntryServiceSplitter foo web
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ConfigEntryServiceSplitterArgs args: The arguments to use to populate this resource's properties.
