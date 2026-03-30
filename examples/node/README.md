@@ -1,1 +1,0 @@
-# examples/consul/node
