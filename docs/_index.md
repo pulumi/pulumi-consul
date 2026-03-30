@@ -173,7 +173,7 @@ func main() {
 		}
 		// Use our variable from Consul
 		_, err = ec2.NewInstance(ctx, "app", &ec2.InstanceArgs{
-			Ami: pulumi.String(app.Var.Ami),
+			Ami: pulumi.String(pulumi.String(app.Var.Ami)),
 		})
 		if err != nil {
 			return err

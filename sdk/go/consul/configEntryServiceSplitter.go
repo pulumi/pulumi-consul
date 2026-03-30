@@ -43,7 +43,7 @@ import (
 //			_, err = consul.NewConfigEntry(ctx, "web", &consul.ConfigEntryArgs{
 //				Name:       pulumi.String("web"),
 //				Kind:       pulumi.String("service-defaults"),
-//				ConfigJson: pulumi.String(json0),
+//				ConfigJson: pulumi.String(pulumi.String(json0)),
 //			})
 //			if err != nil {
 //				return err
