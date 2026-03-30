@@ -49,7 +49,7 @@ import (
 //			_, err = consul.NewConfigEntry(ctx, "proxy_defaults", &consul.ConfigEntryArgs{
 //				Kind:       pulumi.String("proxy-defaults"),
 //				Name:       pulumi.String("global"),
-//				ConfigJson: pulumi.String(json0),
+//				ConfigJson: pulumi.String(pulumi.String(json0)),
 //			})
 //			if err != nil {
 //				return err
@@ -64,7 +64,7 @@ import (
 //			web, err := consul.NewConfigEntry(ctx, "web", &consul.ConfigEntryArgs{
 //				Name:       pulumi.String("web"),
 //				Kind:       pulumi.String("service-defaults"),
-//				ConfigJson: pulumi.String(json1),
+//				ConfigJson: pulumi.String(pulumi.String(json1)),
 //			})
 //			if err != nil {
 //				return err
@@ -79,7 +79,7 @@ import (
 //			_, err = consul.NewConfigEntry(ctx, "admin", &consul.ConfigEntryArgs{
 //				Name:       pulumi.String("admin"),
 //				Kind:       pulumi.String("service-defaults"),
-//				ConfigJson: pulumi.String(json2),
+//				ConfigJson: pulumi.String(pulumi.String(json2)),
 //			})
 //			if err != nil {
 //				return err
@@ -102,7 +102,7 @@ import (
 //			serviceResolver, err := consul.NewConfigEntry(ctx, "service_resolver", &consul.ConfigEntryArgs{
 //				Kind:       pulumi.String("service-resolver"),
 //				Name:       web.Name,
-//				ConfigJson: pulumi.String(json3),
+//				ConfigJson: pulumi.String(pulumi.String(json3)),
 //			})
 //			if err != nil {
 //				return err
@@ -126,7 +126,7 @@ import (
 //			_, err = consul.NewConfigEntry(ctx, "service_splitter", &consul.ConfigEntryArgs{
 //				Kind:       pulumi.String("service-splitter"),
 //				Name:       serviceResolver.Name,
-//				ConfigJson: pulumi.String(json4),
+//				ConfigJson: pulumi.String(pulumi.String(json4)),
 //			})
 //			if err != nil {
 //				return err
@@ -152,7 +152,7 @@ import (
 //			_, err = consul.NewConfigEntry(ctx, "service_router", &consul.ConfigEntryArgs{
 //				Kind:       pulumi.String("service-router"),
 //				Name:       pulumi.String("web"),
-//				ConfigJson: pulumi.String(json5),
+//				ConfigJson: pulumi.String(pulumi.String(json5)),
 //			})
 //			if err != nil {
 //				return err
@@ -180,7 +180,7 @@ import (
 //			_, err = consul.NewConfigEntry(ctx, "ingress_gateway", &consul.ConfigEntryArgs{
 //				Name:       pulumi.String("us-east-ingress"),
 //				Kind:       pulumi.String("ingress-gateway"),
-//				ConfigJson: pulumi.String(json6),
+//				ConfigJson: pulumi.String(pulumi.String(json6)),
 //			})
 //			if err != nil {
 //				return err
@@ -199,7 +199,7 @@ import (
 //			_, err = consul.NewConfigEntry(ctx, "terminating_gateway", &consul.ConfigEntryArgs{
 //				Name:       pulumi.String("us-west-gateway"),
 //				Kind:       pulumi.String("terminating-gateway"),
-//				ConfigJson: pulumi.String(json7),
+//				ConfigJson: pulumi.String(pulumi.String(json7)),
 //			})
 //			if err != nil {
 //				return err
@@ -249,7 +249,7 @@ import (
 //			_, err = consul.NewConfigEntry(ctx, "service_intentions", &consul.ConfigEntryArgs{
 //				Name:       pulumi.String("api-service"),
 //				Kind:       pulumi.String("service-intentions"),
-//				ConfigJson: pulumi.String(json0),
+//				ConfigJson: pulumi.String(pulumi.String(json0)),
 //			})
 //			if err != nil {
 //				return err
@@ -284,7 +284,7 @@ import (
 //			sd, err := consul.NewConfigEntry(ctx, "sd", &consul.ConfigEntryArgs{
 //				Name:       pulumi.String("fort-knox"),
 //				Kind:       pulumi.String("service-defaults"),
-//				ConfigJson: pulumi.String(json0),
+//				ConfigJson: pulumi.String(pulumi.String(json0)),
 //			})
 //			if err != nil {
 //				return err
@@ -308,7 +308,7 @@ import (
 //			jwtProvider, err := consul.NewConfigEntry(ctx, "jwt_provider", &consul.ConfigEntryArgs{
 //				Name:       pulumi.String("test-provider"),
 //				Kind:       pulumi.String("jwt-provider"),
-//				ConfigJson: pulumi.String(json1),
+//				ConfigJson: pulumi.String(pulumi.String(json1)),
 //			})
 //			if err != nil {
 //				return err
@@ -417,7 +417,7 @@ import (
 //			_, err = consul.NewConfigEntry(ctx, "exported_services", &consul.ConfigEntryArgs{
 //				Name:       pulumi.String("test"),
 //				Kind:       pulumi.String("exported-services"),
-//				ConfigJson: pulumi.String(json0),
+//				ConfigJson: pulumi.String(pulumi.String(json0)),
 //			})
 //			if err != nil {
 //				return err
@@ -457,7 +457,7 @@ import (
 //				Name:       pulumi.String("mesh"),
 //				Kind:       pulumi.String("mesh"),
 //				Partition:  pulumi.String("default"),
-//				ConfigJson: pulumi.String(json0),
+//				ConfigJson: pulumi.String(pulumi.String(json0)),
 //			})
 //			if err != nil {
 //				return err
@@ -504,7 +504,7 @@ import (
 //			_, err = consul.NewConfigEntry(ctx, "jwt_provider", &consul.ConfigEntryArgs{
 //				Name:       pulumi.String("provider-name"),
 //				Kind:       pulumi.String("jwt-provider"),
-//				ConfigJson: pulumi.String(json0),
+//				ConfigJson: pulumi.String(pulumi.String(json0)),
 //			})
 //			if err != nil {
 //				return err

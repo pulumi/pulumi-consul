@@ -45,7 +45,7 @@ import (
 //				Name:        pulumi.String("minikube"),
 //				Type:        pulumi.String("kubernetes"),
 //				Description: pulumi.String("dev minikube cluster"),
-//				ConfigJson:  pulumi.String(json0),
+//				ConfigJson:  pulumi.String(pulumi.String(json0)),
 //			})
 //			if err != nil {
 //				return err
@@ -99,7 +99,7 @@ import (
 //				Name:        pulumi.String("auth0"),
 //				Type:        pulumi.String("oidc"),
 //				MaxTokenTtl: pulumi.String("5m"),
-//				ConfigJson:  pulumi.String(json0),
+//				ConfigJson:  pulumi.String(pulumi.String(json0)),
 //			})
 //			if err != nil {
 //				return err

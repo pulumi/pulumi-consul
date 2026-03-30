@@ -46,7 +46,7 @@ import (
 //			jwtProvider, err := consul.NewConfigEntry(ctx, "jwt_provider", &consul.ConfigEntryArgs{
 //				Name:       pulumi.String("okta"),
 //				Kind:       pulumi.String("jwt-provider"),
-//				ConfigJson: pulumi.String(json0),
+//				ConfigJson: pulumi.String(pulumi.String(json0)),
 //			})
 //			if err != nil {
 //				return err

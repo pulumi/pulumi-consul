@@ -42,7 +42,7 @@ import (
 //			}, nil).Result) {
 //				__res, err := consul.NewPreparedQuery(ctx, fmt.Sprintf("myapp-query-%v", key0), &consul.PreparedQueryArgs{
 //					Name:        pulumi.String("myquery"),
-//					Datacenter:  pulumi.Float64(key0),
+//					Datacenter:  pulumi.String(pulumi.Float64(key0)),
 //					OnlyPassing: pulumi.Bool(true),
 //					Near:        pulumi.String("_agent"),
 //					Service:     pulumi.String("myapp"),
