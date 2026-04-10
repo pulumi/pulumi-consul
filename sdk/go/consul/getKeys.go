@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			app, err := consul.LookupKeys(ctx, &consul.LookupKeysArgs{
+//			app, err := consul.GetKeys(ctx, &consul.LookupKeysArgs{
 //				Datacenter: pulumi.StringRef("nyc1"),
 //				Keys: []consul.GetKeysKey{
 //					{

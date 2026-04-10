@@ -24,7 +24,7 @@ namespace Pulumi.Consul
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var test = Consul.GetAclRole.Invoke(new()
+        ///     var test = Consul.Index.GetAclRole.Invoke(new()
         ///     {
         ///         Name = "example-role",
         ///     });
@@ -52,7 +52,7 @@ namespace Pulumi.Consul
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var test = Consul.GetAclRole.Invoke(new()
+        ///     var test = Consul.Index.GetAclRole.Invoke(new()
         ///     {
         ///         Name = "example-role",
         ///     });
@@ -80,7 +80,7 @@ namespace Pulumi.Consul
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var test = Consul.GetAclRole.Invoke(new()
+        ///     var test = Consul.Index.GetAclRole.Invoke(new()
         ///     {
         ///         Name = "example-role",
         ///     });

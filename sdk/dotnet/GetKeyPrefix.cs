@@ -26,7 +26,7 @@ namespace Pulumi.Consul
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var app = Consul.GetKeyPrefix.Invoke(new()
+        ///     var app = Consul.Index.GetKeyPrefix.Invoke(new()
         ///     {
         ///         Datacenter = "nyc1",
         ///         Token = "abcd",
@@ -60,7 +60,7 @@ namespace Pulumi.Consul
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var web = Consul.GetKeyPrefix.Invoke(new()
+        ///     var web = Consul.Index.GetKeyPrefix.Invoke(new()
         ///     {
         ///         Datacenter = "nyc1",
         ///         Token = "efgh",
@@ -94,7 +94,7 @@ namespace Pulumi.Consul
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var app = Consul.GetKeyPrefix.Invoke(new()
+        ///     var app = Consul.Index.GetKeyPrefix.Invoke(new()
         ///     {
         ///         Datacenter = "nyc1",
         ///         Token = "abcd",
@@ -128,7 +128,7 @@ namespace Pulumi.Consul
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var web = Consul.GetKeyPrefix.Invoke(new()
+        ///     var web = Consul.Index.GetKeyPrefix.Invoke(new()
         ///     {
         ///         Datacenter = "nyc1",
         ///         Token = "efgh",
@@ -162,7 +162,7 @@ namespace Pulumi.Consul
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var app = Consul.GetKeyPrefix.Invoke(new()
+        ///     var app = Consul.Index.GetKeyPrefix.Invoke(new()
         ///     {
         ///         Datacenter = "nyc1",
         ///         Token = "abcd",
@@ -196,7 +196,7 @@ namespace Pulumi.Consul
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var web = Consul.GetKeyPrefix.Invoke(new()
+        ///     var web = Consul.Index.GetKeyPrefix.Invoke(new()
         ///     {
         ///         Datacenter = "nyc1",
         ///         Token = "efgh",

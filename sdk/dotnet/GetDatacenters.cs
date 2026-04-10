@@ -27,13 +27,13 @@ namespace Pulumi.Consul
         /// 
         /// return await Deployment.RunAsync(async() =&gt; 
         /// {
-        ///     var all = await Consul.GetDatacenters.InvokeAsync();
+        ///     var all = await Consul.Index.GetDatacenters.InvokeAsync();
         /// 
         ///     // Register a prepared query in each of the datacenters
-        ///     var myapp_query = new List&lt;Consul.PreparedQuery&gt;();
+        ///     var myapp_query = new List&lt;Consul.Index.PreparedQuery&gt;();
         ///     foreach (var range in )
         ///     {
-        ///         myapp_query.Add(new Consul.PreparedQuery($"myapp-query-{range.Key}", new()
+        ///         myapp_query.Add(new Consul.Index.PreparedQuery($"myapp-query-{range.Key}", new()
         ///         {
         ///             Name = "myquery",
         ///             Datacenter = range.Key,
@@ -83,13 +83,13 @@ namespace Pulumi.Consul
         /// 
         /// return await Deployment.RunAsync(async() =&gt; 
         /// {
-        ///     var all = await Consul.GetDatacenters.InvokeAsync();
+        ///     var all = await Consul.Index.GetDatacenters.InvokeAsync();
         /// 
         ///     // Register a prepared query in each of the datacenters
-        ///     var myapp_query = new List&lt;Consul.PreparedQuery&gt;();
+        ///     var myapp_query = new List&lt;Consul.Index.PreparedQuery&gt;();
         ///     foreach (var range in )
         ///     {
-        ///         myapp_query.Add(new Consul.PreparedQuery($"myapp-query-{range.Key}", new()
+        ///         myapp_query.Add(new Consul.Index.PreparedQuery($"myapp-query-{range.Key}", new()
         ///         {
         ///             Name = "myquery",
         ///             Datacenter = range.Key,
@@ -139,13 +139,13 @@ namespace Pulumi.Consul
         /// 
         /// return await Deployment.RunAsync(async() =&gt; 
         /// {
-        ///     var all = await Consul.GetDatacenters.InvokeAsync();
+        ///     var all = await Consul.Index.GetDatacenters.InvokeAsync();
         /// 
         ///     // Register a prepared query in each of the datacenters
-        ///     var myapp_query = new List&lt;Consul.PreparedQuery&gt;();
+        ///     var myapp_query = new List&lt;Consul.Index.PreparedQuery&gt;();
         ///     foreach (var range in )
         ///     {
-        ///         myapp_query.Add(new Consul.PreparedQuery($"myapp-query-{range.Key}", new()
+        ///         myapp_query.Add(new Consul.Index.PreparedQuery($"myapp-query-{range.Key}", new()
         ///         {
         ///             Name = "myquery",
         ///             Datacenter = range.Key,

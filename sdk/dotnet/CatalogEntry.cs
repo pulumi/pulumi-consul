@@ -27,7 +27,7 @@ namespace Pulumi.Consul
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var app = new Consul.CatalogEntry("app", new()
+    ///     var app = new Consul.Index.CatalogEntry("app", new()
     ///     {
     ///         Address = "192.168.10.10",
     ///         Node = "foobar",

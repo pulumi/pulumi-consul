@@ -34,7 +34,7 @@ namespace Pulumi.Consul
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var test = new Consul.AclPolicy("test", new()
+        ///     var test = new Consul.Index.AclPolicy("test", new()
         ///     {
         ///         Name = "test",
         ///         Rules = "node \"\" { policy = \"read\" }",
@@ -44,7 +44,7 @@ namespace Pulumi.Consul
         ///         },
         ///     });
         /// 
-        ///     var testAclToken = new Consul.AclToken("test", new()
+        ///     var testAclToken = new Consul.Index.AclToken("test", new()
         ///     {
         ///         Description = "test",
         ///         Policies = new[]
@@ -54,7 +54,7 @@ namespace Pulumi.Consul
         ///         Local = true,
         ///     });
         /// 
-        ///     var read = Consul.GetAclTokenSecretId.Invoke(new()
+        ///     var read = Consul.Index.GetAclTokenSecretId.Invoke(new()
         ///     {
         ///         AccessorId = testAclToken.Id,
         ///         PgpKey = "keybase:my_username",
@@ -93,7 +93,7 @@ namespace Pulumi.Consul
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var test = new Consul.AclPolicy("test", new()
+        ///     var test = new Consul.Index.AclPolicy("test", new()
         ///     {
         ///         Name = "test",
         ///         Rules = "node \"\" { policy = \"read\" }",
@@ -103,7 +103,7 @@ namespace Pulumi.Consul
         ///         },
         ///     });
         /// 
-        ///     var testAclToken = new Consul.AclToken("test", new()
+        ///     var testAclToken = new Consul.Index.AclToken("test", new()
         ///     {
         ///         Description = "test",
         ///         Policies = new[]
@@ -113,7 +113,7 @@ namespace Pulumi.Consul
         ///         Local = true,
         ///     });
         /// 
-        ///     var read = Consul.GetAclTokenSecretId.Invoke(new()
+        ///     var read = Consul.Index.GetAclTokenSecretId.Invoke(new()
         ///     {
         ///         AccessorId = testAclToken.Id,
         ///         PgpKey = "keybase:my_username",
@@ -152,7 +152,7 @@ namespace Pulumi.Consul
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var test = new Consul.AclPolicy("test", new()
+        ///     var test = new Consul.Index.AclPolicy("test", new()
         ///     {
         ///         Name = "test",
         ///         Rules = "node \"\" { policy = \"read\" }",
@@ -162,7 +162,7 @@ namespace Pulumi.Consul
         ///         },
         ///     });
         /// 
-        ///     var testAclToken = new Consul.AclToken("test", new()
+        ///     var testAclToken = new Consul.Index.AclToken("test", new()
         ///     {
         ///         Description = "test",
         ///         Policies = new[]
@@ -172,7 +172,7 @@ namespace Pulumi.Consul
         ///         Local = true,
         ///     });
         /// 
-        ///     var read = Consul.GetAclTokenSecretId.Invoke(new()
+        ///     var read = Consul.Index.GetAclTokenSecretId.Invoke(new()
         ///     {
         ///         AccessorId = testAclToken.Id,
         ///         PgpKey = "keybase:my_username",

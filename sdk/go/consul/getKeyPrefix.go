@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			app, err := consul.LookupKeyPrefix(ctx, &consul.LookupKeyPrefixArgs{
+//			app, err := consul.GetKeyPrefix(ctx, &consul.LookupKeyPrefixArgs{
 //				Datacenter: pulumi.StringRef("nyc1"),
 //				Token:      pulumi.StringRef("abcd"),
 //				PathPrefix: "myapp/config/",
@@ -70,7 +70,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			web, err := consul.LookupKeyPrefix(ctx, &consul.LookupKeyPrefixArgs{
+//			web, err := consul.GetKeyPrefix(ctx, &consul.LookupKeyPrefixArgs{
 //				Datacenter: pulumi.StringRef("nyc1"),
 //				Token:      pulumi.StringRef("efgh"),
 //				PathPrefix: "myapp/config/",

@@ -31,7 +31,7 @@ namespace Pulumi.Consul
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var agent = new Consul.AclPolicy("agent", new()
+    ///     var agent = new Consul.Index.AclPolicy("agent", new()
     ///     {
     ///         Name = "agent",
     ///         Rules = @"node_prefix \""\"" {
@@ -40,7 +40,7 @@ namespace Pulumi.Consul
     /// ",
     ///     });
     /// 
-    ///     var attachment = new Consul.AclTokenPolicyAttachment("attachment", new()
+    ///     var attachment = new Consul.Index.AclTokenPolicyAttachment("attachment", new()
     ///     {
     ///         TokenId = "00000000-0000-0000-0000-000000000002",
     ///         Policy = agent.Name,
@@ -61,7 +61,7 @@ namespace Pulumi.Consul
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var test = new Consul.AclToken("test", new()
+    ///     var test = new Consul.Index.AclToken("test", new()
     ///     {
     ///         AccessorId = "9b20de68-3ea2-4b70-b4f1-506afad062a4",
     ///         Description = "my test token",
@@ -81,7 +81,7 @@ namespace Pulumi.Consul
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var agent = new Consul.AclPolicy("agent", new()
+    ///     var agent = new Consul.Index.AclPolicy("agent", new()
     ///     {
     ///         Name = "agent",
     ///         Rules = @"node_prefix \""\"" {
@@ -90,7 +90,7 @@ namespace Pulumi.Consul
     /// ",
     ///     });
     /// 
-    ///     var attachment = new Consul.AclTokenPolicyAttachment("attachment", new()
+    ///     var attachment = new Consul.Index.AclTokenPolicyAttachment("attachment", new()
     ///     {
     ///         TokenId = "9b20de68-3ea2-4b70-b4f1-506afad062a4",
     ///         Policy = agent.Name,

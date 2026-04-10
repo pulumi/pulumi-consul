@@ -78,7 +78,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = consul.LookupService(ctx, &consul.LookupServiceArgs{
+//			_, err = consul.GetService(ctx, &consul.LookupServiceArgs{
 //				Name: "postgresql",
 //			}, nil)
 //			if err != nil {

@@ -22,7 +22,7 @@ namespace Pulumi.Consul
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var basic = Consul.GetPeering.Invoke(new()
+        ///     var basic = Consul.Index.GetPeering.Invoke(new()
         ///     {
         ///         PeerName = "peered-cluster",
         ///     });
@@ -44,7 +44,7 @@ namespace Pulumi.Consul
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var basic = Consul.GetPeering.Invoke(new()
+        ///     var basic = Consul.Index.GetPeering.Invoke(new()
         ///     {
         ///         PeerName = "peered-cluster",
         ///     });
@@ -66,7 +66,7 @@ namespace Pulumi.Consul
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var basic = Consul.GetPeering.Invoke(new()
+        ///     var basic = Consul.Index.GetPeering.Invoke(new()
         ///     {
         ///         PeerName = "peered-cluster",
         ///     });

@@ -26,7 +26,7 @@ namespace Pulumi.Consul
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var agent = Consul.GetAclPolicy.Invoke(new()
+        ///     var agent = Consul.Index.GetAclPolicy.Invoke(new()
         ///     {
         ///         Name = "agent",
         ///     });
@@ -56,7 +56,7 @@ namespace Pulumi.Consul
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var agent = Consul.GetAclPolicy.Invoke(new()
+        ///     var agent = Consul.Index.GetAclPolicy.Invoke(new()
         ///     {
         ///         Name = "agent",
         ///     });
@@ -86,7 +86,7 @@ namespace Pulumi.Consul
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var agent = Consul.GetAclPolicy.Invoke(new()
+        ///     var agent = Consul.Index.GetAclPolicy.Invoke(new()
         ///     {
         ///         Name = "agent",
         ///     });

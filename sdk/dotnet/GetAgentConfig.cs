@@ -30,7 +30,7 @@ namespace Pulumi.Consul
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var remoteAgent = Consul.GetAgentConfig.Invoke();
+        ///     var remoteAgent = Consul.Index.GetAgentConfig.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -61,7 +61,7 @@ namespace Pulumi.Consul
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var remoteAgent = Consul.GetAgentConfig.Invoke();
+        ///     var remoteAgent = Consul.Index.GetAgentConfig.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -92,7 +92,7 @@ namespace Pulumi.Consul
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var remoteAgent = Consul.GetAgentConfig.Invoke();
+        ///     var remoteAgent = Consul.Index.GetAgentConfig.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {

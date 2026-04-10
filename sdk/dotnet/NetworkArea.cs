@@ -30,7 +30,7 @@ namespace Pulumi.Consul
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var dc2 = new Consul.NetworkArea("dc2", new()
+    ///     var dc2 = new Consul.Index.NetworkArea("dc2", new()
     ///     {
     ///         PeerDatacenter = "dc2",
     ///         RetryJoins = new[]

@@ -22,7 +22,7 @@ namespace Pulumi.Consul
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var dashboard = new Consul.ConfigEntryServiceDefaults("dashboard", new()
+    ///     var dashboard = new Consul.Index.ConfigEntryServiceDefaults("dashboard", new()
     ///     {
     ///         Name = "dashboard",
     ///         UpstreamConfigs = new[]

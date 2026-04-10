@@ -27,7 +27,7 @@ namespace Pulumi.Consul
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var dc2NetworkArea = new Consul.NetworkArea("dc2", new()
+        ///     var dc2NetworkArea = new Consul.Index.NetworkArea("dc2", new()
         ///     {
         ///         PeerDatacenter = "dc2",
         ///         RetryJoins = new[]
@@ -37,7 +37,7 @@ namespace Pulumi.Consul
         ///         UseTls = true,
         ///     });
         /// 
-        ///     var dc2 = Consul.GetNetworkAreaMembers.Invoke(new()
+        ///     var dc2 = Consul.Index.GetNetworkAreaMembers.Invoke(new()
         ///     {
         ///         Uuid = dc2NetworkArea.Id,
         ///     });
@@ -68,7 +68,7 @@ namespace Pulumi.Consul
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var dc2NetworkArea = new Consul.NetworkArea("dc2", new()
+        ///     var dc2NetworkArea = new Consul.Index.NetworkArea("dc2", new()
         ///     {
         ///         PeerDatacenter = "dc2",
         ///         RetryJoins = new[]
@@ -78,7 +78,7 @@ namespace Pulumi.Consul
         ///         UseTls = true,
         ///     });
         /// 
-        ///     var dc2 = Consul.GetNetworkAreaMembers.Invoke(new()
+        ///     var dc2 = Consul.Index.GetNetworkAreaMembers.Invoke(new()
         ///     {
         ///         Uuid = dc2NetworkArea.Id,
         ///     });
@@ -109,7 +109,7 @@ namespace Pulumi.Consul
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var dc2NetworkArea = new Consul.NetworkArea("dc2", new()
+        ///     var dc2NetworkArea = new Consul.Index.NetworkArea("dc2", new()
         ///     {
         ///         PeerDatacenter = "dc2",
         ///         RetryJoins = new[]
@@ -119,7 +119,7 @@ namespace Pulumi.Consul
         ///         UseTls = true,
         ///     });
         /// 
-        ///     var dc2 = Consul.GetNetworkAreaMembers.Invoke(new()
+        ///     var dc2 = Consul.Index.GetNetworkAreaMembers.Invoke(new()
         ///     {
         ///         Uuid = dc2NetworkArea.Id,
         ///     });

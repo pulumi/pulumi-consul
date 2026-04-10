@@ -23,7 +23,7 @@ namespace Pulumi.Consul
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var web = new Consul.ConfigEntry("web", new()
+    ///     var web = new Consul.Index.ConfigEntry("web", new()
     ///     {
     ///         Name = "web",
     ///         Kind = "service-defaults",
@@ -42,7 +42,7 @@ namespace Pulumi.Consul
     ///         }),
     ///     });
     /// 
-    ///     var serviceResolver = new Consul.ConfigEntryServiceResolver("service_resolver", new()
+    ///     var serviceResolver = new Consul.Index.ConfigEntryServiceResolver("service_resolver", new()
     ///     {
     ///         Name = "service-resolver",
     ///         DefaultSubset = "v1",
@@ -61,7 +61,7 @@ namespace Pulumi.Consul
     ///         },
     ///     });
     /// 
-    ///     var foo = new Consul.ConfigEntryServiceSplitter("foo", new()
+    ///     var foo = new Consul.Index.ConfigEntryServiceSplitter("foo", new()
     ///     {
     ///         Name = serviceResolver.Name,
     ///         Meta = 

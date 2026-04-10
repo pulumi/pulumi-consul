@@ -161,7 +161,7 @@ def get_keys(datacenter: Optional[_builtins.str] = None,
             "default": "ami-1234",
         }])
     # Start our instance with the dynamic ami value
-    app_instance = aws.index.Instance("app", ami=app.var.ami)
+    app_instance = aws.Instance("app", ami=app.var.ami)
     ```
 
 
@@ -215,7 +215,7 @@ def get_keys_output(datacenter: Optional[pulumi.Input[Optional[_builtins.str]]] 
             "default": "ami-1234",
         }])
     # Start our instance with the dynamic ami value
-    app_instance = aws.index.Instance("app", ami=app.var.ami)
+    app_instance = aws.Instance("app", ami=app.var.ami)
     ```
 
 

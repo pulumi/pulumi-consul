@@ -24,12 +24,12 @@ namespace Pulumi.Consul
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myRole = Consul.GetAclRole.Invoke(new()
+    ///     var myRole = Consul.Index.GetAclRole.Invoke(new()
     ///     {
     ///         Name = "my_role",
     ///     });
     /// 
-    ///     var readPolicy = new Consul.AclPolicy("read_policy", new()
+    ///     var readPolicy = new Consul.Index.AclPolicy("read_policy", new()
     ///     {
     ///         Name = "read-policy",
     ///         Rules = "node \"\" { policy = \"read\" }",
@@ -39,7 +39,7 @@ namespace Pulumi.Consul
     ///         },
     ///     });
     /// 
-    ///     var myRoleReadPolicy = new Consul.AclRolePolicyAttachment("my_role_read_policy", new()
+    ///     var myRoleReadPolicy = new Consul.Index.AclRolePolicyAttachment("my_role_read_policy", new()
     ///     {
     ///         RoleId = test.Id,
     ///         Policy = readPolicy.Name,

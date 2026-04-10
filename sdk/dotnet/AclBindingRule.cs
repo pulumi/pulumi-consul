@@ -22,7 +22,7 @@ namespace Pulumi.Consul
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var minikube = new Consul.AclAuthMethod("minikube", new()
+    ///     var minikube = new Consul.Index.AclAuthMethod("minikube", new()
     ///     {
     ///         Name = "minikube",
     ///         Type = "kubernetes",
@@ -37,7 +37,7 @@ namespace Pulumi.Consul
     ///         },
     ///     });
     /// 
-    ///     var test = new Consul.AclBindingRule("test", new()
+    ///     var test = new Consul.Index.AclBindingRule("test", new()
     ///     {
     ///         AuthMethod = minikube.Name,
     ///         Description = "foobar",

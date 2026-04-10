@@ -22,7 +22,7 @@ namespace Pulumi.Consul
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var read_policy = new Consul.AclPolicy("read-policy", new()
+    ///     var read_policy = new Consul.Index.AclPolicy("read-policy", new()
     ///     {
     ///         Name = "read-policy",
     ///         Rules = "node \"\" { policy = \"read\" }",
@@ -32,7 +32,7 @@ namespace Pulumi.Consul
     ///         },
     ///     });
     /// 
-    ///     var read = new Consul.AclRole("read", new()
+    ///     var read = new Consul.Index.AclRole("read", new()
     ///     {
     ///         Name = "foo",
     ///         Description = "bar",

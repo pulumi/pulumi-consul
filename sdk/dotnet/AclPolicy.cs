@@ -22,7 +22,7 @@ namespace Pulumi.Consul
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var test = new Consul.AclPolicy("test", new()
+    ///     var test = new Consul.Index.AclPolicy("test", new()
     ///     {
     ///         Name = "my_policy",
     ///         Datacenters = new[]

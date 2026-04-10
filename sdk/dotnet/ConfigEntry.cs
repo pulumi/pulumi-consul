@@ -29,7 +29,7 @@ namespace Pulumi.Consul
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var proxyDefaults = new Consul.ConfigEntry("proxy_defaults", new()
+    ///     var proxyDefaults = new Consul.Index.ConfigEntry("proxy_defaults", new()
     ///     {
     ///         Kind = "proxy-defaults",
     ///         Name = "global",
@@ -43,7 +43,7 @@ namespace Pulumi.Consul
     ///         }),
     ///     });
     /// 
-    ///     var web = new Consul.ConfigEntry("web", new()
+    ///     var web = new Consul.Index.ConfigEntry("web", new()
     ///     {
     ///         Name = "web",
     ///         Kind = "service-defaults",
@@ -53,7 +53,7 @@ namespace Pulumi.Consul
     ///         }),
     ///     });
     /// 
-    ///     var admin = new Consul.ConfigEntry("admin", new()
+    ///     var admin = new Consul.Index.ConfigEntry("admin", new()
     ///     {
     ///         Name = "admin",
     ///         Kind = "service-defaults",
@@ -63,7 +63,7 @@ namespace Pulumi.Consul
     ///         }),
     ///     });
     /// 
-    ///     var serviceResolver = new Consul.ConfigEntry("service_resolver", new()
+    ///     var serviceResolver = new Consul.Index.ConfigEntry("service_resolver", new()
     ///     {
     ///         Kind = "service-resolver",
     ///         Name = web.Name,
@@ -84,7 +84,7 @@ namespace Pulumi.Consul
     ///         }),
     ///     });
     /// 
-    ///     var serviceSplitter = new Consul.ConfigEntry("service_splitter", new()
+    ///     var serviceSplitter = new Consul.Index.ConfigEntry("service_splitter", new()
     ///     {
     ///         Kind = "service-splitter",
     ///         Name = serviceResolver.Name,
@@ -106,7 +106,7 @@ namespace Pulumi.Consul
     ///         }),
     ///     });
     /// 
-    ///     var serviceRouter = new Consul.ConfigEntry("service_router", new()
+    ///     var serviceRouter = new Consul.Index.ConfigEntry("service_router", new()
     ///     {
     ///         Kind = "service-router",
     ///         Name = "web",
@@ -132,7 +132,7 @@ namespace Pulumi.Consul
     ///         }),
     ///     });
     /// 
-    ///     var ingressGateway = new Consul.ConfigEntry("ingress_gateway", new()
+    ///     var ingressGateway = new Consul.Index.ConfigEntry("ingress_gateway", new()
     ///     {
     ///         Name = "us-east-ingress",
     ///         Kind = "ingress-gateway",
@@ -160,7 +160,7 @@ namespace Pulumi.Consul
     ///         }),
     ///     });
     /// 
-    ///     var terminatingGateway = new Consul.ConfigEntry("terminating_gateway", new()
+    ///     var terminatingGateway = new Consul.Index.ConfigEntry("terminating_gateway", new()
     ///     {
     ///         Name = "us-west-gateway",
     ///         Kind = "terminating-gateway",
@@ -190,7 +190,7 @@ namespace Pulumi.Consul
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var serviceIntentions = new Consul.ConfigEntry("service_intentions", new()
+    ///     var serviceIntentions = new Consul.Index.ConfigEntry("service_intentions", new()
     ///     {
     ///         Name = "api-service",
     ///         Kind = "service-intentions",
@@ -228,7 +228,7 @@ namespace Pulumi.Consul
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var sd = new Consul.ConfigEntry("sd", new()
+    ///     var sd = new Consul.Index.ConfigEntry("sd", new()
     ///     {
     ///         Name = "fort-knox",
     ///         Kind = "service-defaults",
@@ -238,7 +238,7 @@ namespace Pulumi.Consul
     ///         }),
     ///     });
     /// 
-    ///     var jwtProvider = new Consul.ConfigEntry("jwt_provider", new()
+    ///     var jwtProvider = new Consul.Index.ConfigEntry("jwt_provider", new()
     ///     {
     ///         Name = "test-provider",
     ///         Kind = "jwt-provider",
@@ -260,7 +260,7 @@ namespace Pulumi.Consul
     ///         }),
     ///     });
     /// 
-    ///     var serviceIntentions = new Consul.ConfigEntry("service_intentions", new()
+    ///     var serviceIntentions = new Consul.Index.ConfigEntry("service_intentions", new()
     ///     {
     ///         Name = sd.Name,
     ///         Kind = "service-intentions",
@@ -343,7 +343,7 @@ namespace Pulumi.Consul
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exportedServices = new Consul.ConfigEntry("exported_services", new()
+    ///     var exportedServices = new Consul.Index.ConfigEntry("exported_services", new()
     ///     {
     ///         Name = "test",
     ///         Kind = "exported-services",
@@ -381,7 +381,7 @@ namespace Pulumi.Consul
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var mesh = new Consul.ConfigEntry("mesh", new()
+    ///     var mesh = new Consul.Index.ConfigEntry("mesh", new()
     ///     {
     ///         Name = "mesh",
     ///         Kind = "mesh",
@@ -409,7 +409,7 @@ namespace Pulumi.Consul
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var jwtProvider = new Consul.ConfigEntry("jwt_provider", new()
+    ///     var jwtProvider = new Consul.Index.ConfigEntry("jwt_provider", new()
     ///     {
     ///         Name = "provider-name",
     ///         Kind = "jwt-provider",

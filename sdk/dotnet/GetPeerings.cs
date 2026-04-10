@@ -22,7 +22,7 @@ namespace Pulumi.Consul
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var peers = Consul.GetPeerings.Invoke();
+        ///     var peers = Consul.Index.GetPeerings.Invoke();
         /// 
         /// });
         /// ```
@@ -41,7 +41,7 @@ namespace Pulumi.Consul
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var peers = Consul.GetPeerings.Invoke();
+        ///     var peers = Consul.Index.GetPeerings.Invoke();
         /// 
         /// });
         /// ```
@@ -60,7 +60,7 @@ namespace Pulumi.Consul
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var peers = Consul.GetPeerings.Invoke();
+        ///     var peers = Consul.Index.GetPeerings.Invoke();
         /// 
         /// });
         /// ```

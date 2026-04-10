@@ -33,12 +33,12 @@ namespace Pulumi.Consul
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var agent = new Consul.AclRole("agent", new()
+    ///     var agent = new Consul.Index.AclRole("agent", new()
     ///     {
     ///         Name = "agent",
     ///     });
     /// 
-    ///     var attachment = new Consul.NamespaceRoleAttachment("attachment", new()
+    ///     var attachment = new Consul.Index.NamespaceRoleAttachment("attachment", new()
     ///     {
     ///         Namespace = "default",
     ///         Role = agent.Name,
@@ -59,7 +59,7 @@ namespace Pulumi.Consul
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var qa = new Consul.Namespace("qa", new()
+    ///     var qa = new Consul.Index.Namespace("qa", new()
     ///     {
     ///         Name = "qa",
     ///     });
@@ -77,12 +77,12 @@ namespace Pulumi.Consul
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var agent = new Consul.AclRole("agent", new()
+    ///     var agent = new Consul.Index.AclRole("agent", new()
     ///     {
     ///         Name = "agent",
     ///     });
     /// 
-    ///     var attachment = new Consul.NamespaceRoleAttachment("attachment", new()
+    ///     var attachment = new Consul.Index.NamespaceRoleAttachment("attachment", new()
     ///     {
     ///         Namespace = "qa",
     ///         Role = agent.Name,

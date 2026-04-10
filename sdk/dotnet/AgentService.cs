@@ -28,7 +28,7 @@ namespace Pulumi.Consul
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var app = new Consul.AgentService("app", new()
+    ///     var app = new Consul.Index.AgentService("app", new()
     ///     {
     ///         Address = "www.google.com",
     ///         Name = "google",

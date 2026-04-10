@@ -31,13 +31,13 @@ namespace Pulumi.Consul
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var compute = new Consul.Node("compute", new()
+    ///     var compute = new Consul.Index.Node("compute", new()
     ///     {
     ///         Name = "compute-google",
     ///         Address = "www.google.com",
     ///     });
     /// 
-    ///     var google = new Consul.Service("google", new()
+    ///     var google = new Consul.Index.Service("google", new()
     ///     {
     ///         Name = "google",
     ///         Node = compute.Name,
@@ -61,7 +61,7 @@ namespace Pulumi.Consul
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var google = new Consul.Service("google", new()
+    ///     var google = new Consul.Index.Service("google", new()
     ///     {
     ///         Name = "google",
     ///         Node = "google",
@@ -81,7 +81,7 @@ namespace Pulumi.Consul
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var redis = new Consul.Service("redis", new()
+    ///     var redis = new Consul.Index.Service("redis", new()
     ///     {
     ///         Name = "redis",
     ///         Node = "redis",

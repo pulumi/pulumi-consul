@@ -110,7 +110,7 @@ using Consul = Pulumi.Consul;
 return await Deployment.RunAsync(() =>
 {
     // Access a key in Consul
-    var app = Consul.GetKeys.Invoke(new()
+    var app = Consul.Index.GetKeys.Invoke(new()
     {
         Keys = new[]
         {
@@ -159,7 +159,7 @@ import (
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
 		// Access a key in Consul
-		app, err := consul.LookupKeys(ctx, &consul.LookupKeysArgs{
+		app, err := consul.GetKeys(ctx, &consul.LookupKeysArgs{
 			Keys: []consul.GetKeysKey{
 				{
 					Name:    "ami",

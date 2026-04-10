@@ -26,7 +26,7 @@ namespace Pulumi.Consul
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var test = Consul.GetAclToken.Invoke(new()
+        ///     var test = Consul.Index.GetAclToken.Invoke(new()
         ///     {
         ///         AccessorId = "00000000-0000-0000-0000-000000000002",
         ///     });
@@ -56,7 +56,7 @@ namespace Pulumi.Consul
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var test = Consul.GetAclToken.Invoke(new()
+        ///     var test = Consul.Index.GetAclToken.Invoke(new()
         ///     {
         ///         AccessorId = "00000000-0000-0000-0000-000000000002",
         ///     });
@@ -86,7 +86,7 @@ namespace Pulumi.Consul
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var test = Consul.GetAclToken.Invoke(new()
+        ///     var test = Consul.Index.GetAclToken.Invoke(new()
         ///     {
         ///         AccessorId = "00000000-0000-0000-0000-000000000002",
         ///     });

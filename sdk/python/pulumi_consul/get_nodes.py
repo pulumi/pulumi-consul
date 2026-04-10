@@ -129,7 +129,7 @@ def get_nodes(query_options: Optional[Sequence[Union['GetNodesQueryOptionArgs', 
         "datacenter": "dc1",
     }])
     # Set the description to a whitespace delimited list of the node names
-    app = example.index.Resource("app", description=std.join(separator= ,
+    app = example.Resource("app", description=std.join(separator= ,
         input=std.formatlist(input=%s,
             args=[node_names]).result).result)
     ```
@@ -169,7 +169,7 @@ def get_nodes_output(query_options: Optional[pulumi.Input[Optional[Sequence[Unio
         "datacenter": "dc1",
     }])
     # Set the description to a whitespace delimited list of the node names
-    app = example.index.Resource("app", description=std.join(separator= ,
+    app = example.Resource("app", description=std.join(separator= ,
         input=std.formatlist(input=%s,
             args=[node_names]).result).result)
     ```
