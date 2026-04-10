@@ -25,7 +25,7 @@ namespace Pulumi.Consul
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var minikube = new Consul.AclAuthMethod("minikube", new()
+    ///     var minikube = new Consul.Index.AclAuthMethod("minikube", new()
     ///     {
     ///         Name = "minikube",
     ///         Type = "kubernetes",
@@ -54,7 +54,7 @@ namespace Pulumi.Consul
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var oidc = new Consul.AclAuthMethod("oidc", new()
+    ///     var oidc = new Consul.Index.AclAuthMethod("oidc", new()
     ///     {
     ///         Name = "auth0",
     ///         Type = "oidc",

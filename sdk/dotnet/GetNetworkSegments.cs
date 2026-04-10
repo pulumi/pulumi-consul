@@ -27,7 +27,7 @@ namespace Pulumi.Consul
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var segments = Consul.GetNetworkSegments.Invoke();
+        ///     var segments = Consul.Index.GetNetworkSegments.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -55,7 +55,7 @@ namespace Pulumi.Consul
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var segments = Consul.GetNetworkSegments.Invoke();
+        ///     var segments = Consul.Index.GetNetworkSegments.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -83,7 +83,7 @@ namespace Pulumi.Consul
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var segments = Consul.GetNetworkSegments.Invoke();
+        ///     var segments = Consul.Index.GetNetworkSegments.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {

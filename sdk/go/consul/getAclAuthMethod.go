@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			test, err := consul.LookupAclAuthMethod(ctx, &consul.LookupAclAuthMethodArgs{
+//			test, err := consul.GetAclAuthMethod(ctx, &consul.LookupAclAuthMethodArgs{
 //				Name: "minikube",
 //			}, nil)
 //			if err != nil {

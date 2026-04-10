@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			test, err := consul.LookupAclToken(ctx, &consul.LookupAclTokenArgs{
+//			test, err := consul.GetAclToken(ctx, &consul.LookupAclTokenArgs{
 //				AccessorId: "00000000-0000-0000-0000-000000000002",
 //			}, nil)
 //			if err != nil {

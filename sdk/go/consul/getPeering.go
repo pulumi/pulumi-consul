@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := consul.LookupPeering(ctx, &consul.LookupPeeringArgs{
+//			_, err := consul.GetPeering(ctx, &consul.LookupPeeringArgs{
 //				PeerName: "peered-cluster",
 //			}, nil)
 //			if err != nil {

@@ -28,12 +28,12 @@ namespace Pulumi.Consul
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var eu_us = new Consul.PeeringToken("eu-us", new()
+    ///     var eu_us = new Consul.Index.PeeringToken("eu-us", new()
     ///     {
     ///         PeerName = "eu-cluster",
     ///     });
     /// 
-    ///     var eu_usPeering = new Consul.Peering("eu-us", new()
+    ///     var eu_usPeering = new Consul.Index.Peering("eu-us", new()
     ///     {
     ///         PeerName = "eu-cluster",
     ///         PeeringToken = token.PeeringToken,

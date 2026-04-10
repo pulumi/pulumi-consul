@@ -23,7 +23,7 @@ namespace Pulumi.Consul
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foobar = new Consul.Node("foobar", new()
+    ///     var foobar = new Consul.Index.Node("foobar", new()
     ///     {
     ///         Address = "192.168.10.10",
     ///         Name = "foobar",

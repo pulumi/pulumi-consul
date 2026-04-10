@@ -36,7 +36,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := consul.LookupService(ctx, &consul.LookupServiceArgs{
+//			_, err := consul.GetService(ctx, &consul.LookupServiceArgs{
 //				Name:       "consul",
 //				Datacenter: pulumi.StringRef("dc1"),
 //			}, nil)

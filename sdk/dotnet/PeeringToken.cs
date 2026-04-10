@@ -24,7 +24,7 @@ namespace Pulumi.Consul
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var token = new Consul.PeeringToken("token", new()
+    ///     var token = new Consul.Index.PeeringToken("token", new()
     ///     {
     ///         PeerName = "eu-cluster",
     ///     });

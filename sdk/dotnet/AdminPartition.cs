@@ -24,7 +24,7 @@ namespace Pulumi.Consul
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var naWest = new Consul.AdminPartition("na_west", new()
+    ///     var naWest = new Consul.Index.AdminPartition("na_west", new()
     ///     {
     ///         Name = "na-west",
     ///         Description = "Partition for North America West",

@@ -30,7 +30,7 @@ namespace Pulumi.Consul
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var app = new Consul.Keys("app", new()
+    ///     var app = new Consul.Index.Keys("app", new()
     ///     {
     ///         Datacenter = "nyc1",
     ///         Token = "abcd",

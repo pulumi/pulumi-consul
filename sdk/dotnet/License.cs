@@ -27,9 +27,9 @@ namespace Pulumi.Consul
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var license = new Consul.License("license", new()
+    ///     var license = new Consul.Index.License("license", new()
     ///     {
-    ///         ConsulLicense = Std.File.Invoke(new()
+    ///         ConsulLicense = Std.Index.File.Invoke(new()
     ///         {
     ///             Input = "license.hclic",
     ///         }).Apply(invoke =&gt; invoke.Result),

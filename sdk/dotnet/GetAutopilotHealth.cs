@@ -26,7 +26,7 @@ namespace Pulumi.Consul
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var read = Consul.GetAutopilotHealth.Invoke();
+        ///     var read = Consul.Index.GetAutopilotHealth.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -53,7 +53,7 @@ namespace Pulumi.Consul
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var read = Consul.GetAutopilotHealth.Invoke();
+        ///     var read = Consul.Index.GetAutopilotHealth.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -80,7 +80,7 @@ namespace Pulumi.Consul
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var read = Consul.GetAutopilotHealth.Invoke();
+        ///     var read = Consul.Index.GetAutopilotHealth.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {

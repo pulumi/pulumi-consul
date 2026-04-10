@@ -135,7 +135,7 @@ def get_services(query_options: Optional[Sequence[Union['GetServicesQueryOptionA
         "datacenter": "dc1",
     }])
     # Set the description to a whitespace delimited list of the services
-    app = example.index.Resource("app", description=std.join(separator= ,
+    app = example.Resource("app", description=std.join(separator= ,
         input=names).result)
     ```
 
@@ -177,7 +177,7 @@ def get_services_output(query_options: Optional[pulumi.Input[Optional[Sequence[U
         "datacenter": "dc1",
     }])
     # Set the description to a whitespace delimited list of the services
-    app = example.index.Resource("app", description=std.join(separator= ,
+    app = example.Resource("app", description=std.join(separator= ,
         input=names).result)
     ```
 

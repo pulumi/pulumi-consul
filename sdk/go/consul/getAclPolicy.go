@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			agent, err := consul.LookupAclPolicy(ctx, &consul.LookupAclPolicyArgs{
+//			agent, err := consul.GetAclPolicy(ctx, &consul.LookupAclPolicyArgs{
 //				Name: "agent",
 //			}, nil)
 //			if err != nil {

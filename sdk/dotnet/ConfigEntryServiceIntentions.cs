@@ -23,7 +23,7 @@ namespace Pulumi.Consul
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var jwtProvider = new Consul.ConfigEntry("jwt_provider", new()
+    ///     var jwtProvider = new Consul.Index.ConfigEntry("jwt_provider", new()
     ///     {
     ///         Name = "okta",
     ///         Kind = "jwt-provider",
@@ -42,7 +42,7 @@ namespace Pulumi.Consul
     ///         }),
     ///     });
     /// 
-    ///     var web = new Consul.ConfigEntryServiceIntentions("web", new()
+    ///     var web = new Consul.Index.ConfigEntryServiceIntentions("web", new()
     ///     {
     ///         Name = "web",
     ///         Jwts = new[]

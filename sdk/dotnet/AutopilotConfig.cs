@@ -26,7 +26,7 @@ namespace Pulumi.Consul
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var config = new Consul.AutopilotConfig("config", new()
+    ///     var config = new Consul.Index.AutopilotConfig("config", new()
     ///     {
     ///         CleanupDeadServers = false,
     ///         LastContactThreshold = "1s",

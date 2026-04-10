@@ -27,7 +27,7 @@ namespace Pulumi.Consul
     ///     // Creates a prepared query myquery.query.consul that finds the nearest
     ///     // healthy myapp.service.consul instance that has the active tag and not
     ///     // the standby tag.
-    ///     var myapp_query = new Consul.PreparedQuery("myapp-query", new()
+    ///     var myapp_query = new Consul.Index.PreparedQuery("myapp-query", new()
     ///     {
     ///         Name = "myquery",
     ///         Datacenter = "us-central1",
@@ -60,7 +60,7 @@ namespace Pulumi.Consul
     ///     // Creates a Prepared Query Template that matches *-near-self.query.consul
     ///     // and finds the nearest service that matches the glob character (e.g.
     ///     // foo-near-self.query.consul will find the nearest healthy foo.service.consul).
-    ///     var service_near_self = new Consul.PreparedQuery("service-near-self", new()
+    ///     var service_near_self = new Consul.Index.PreparedQuery("service-near-self", new()
     ///     {
     ///         Datacenter = "nyc1",
     ///         Token = "abcd",

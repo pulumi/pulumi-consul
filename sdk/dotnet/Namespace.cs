@@ -24,7 +24,7 @@ namespace Pulumi.Consul
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var production = new Consul.Namespace("production", new()
+    ///     var production = new Consul.Index.Namespace("production", new()
     ///     {
     ///         Name = "production",
     ///         Description = "Production namespace",

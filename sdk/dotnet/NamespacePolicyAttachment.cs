@@ -33,7 +33,7 @@ namespace Pulumi.Consul
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var agent = new Consul.AclPolicy("agent", new()
+    ///     var agent = new Consul.Index.AclPolicy("agent", new()
     ///     {
     ///         Name = "agent",
     ///         Rules = @"node_prefix \""\"" {
@@ -42,7 +42,7 @@ namespace Pulumi.Consul
     /// ",
     ///     });
     /// 
-    ///     var attachment = new Consul.NamespacePolicyAttachment("attachment", new()
+    ///     var attachment = new Consul.Index.NamespacePolicyAttachment("attachment", new()
     ///     {
     ///         Namespace = "default",
     ///         Policy = agent.Name,
@@ -63,7 +63,7 @@ namespace Pulumi.Consul
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var qa = new Consul.Namespace("qa", new()
+    ///     var qa = new Consul.Index.Namespace("qa", new()
     ///     {
     ///         Name = "qa",
     ///     });
@@ -81,7 +81,7 @@ namespace Pulumi.Consul
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var agent = new Consul.AclPolicy("agent", new()
+    ///     var agent = new Consul.Index.AclPolicy("agent", new()
     ///     {
     ///         Name = "agent",
     ///         Rules = @"node_prefix \""\"" {
@@ -90,7 +90,7 @@ namespace Pulumi.Consul
     /// ",
     ///     });
     /// 
-    ///     var attachment = new Consul.NamespacePolicyAttachment("attachment", new()
+    ///     var attachment = new Consul.Index.NamespacePolicyAttachment("attachment", new()
     ///     {
     ///         Namespace = "qa",
     ///         Policy = agent.Name,

@@ -430,7 +430,7 @@ class AclToken(pulumi.CustomResource):
             policies=[agent.name],
             local=True)
         # Explicitly set the `accessor_id`
-        test_uuid = random.index.Uuid("test")
+        test_uuid = random.Uuid("test")
         test_predefined_id = consul.AclToken("test_predefined_id",
             accessor_id=test_uuid_random_uuid["result"],
             description="my test uuid token",
@@ -490,7 +490,7 @@ class AclToken(pulumi.CustomResource):
             policies=[agent.name],
             local=True)
         # Explicitly set the `accessor_id`
-        test_uuid = random.index.Uuid("test")
+        test_uuid = random.Uuid("test")
         test_predefined_id = consul.AclToken("test_predefined_id",
             accessor_id=test_uuid_random_uuid["result"],
             description="my test uuid token",

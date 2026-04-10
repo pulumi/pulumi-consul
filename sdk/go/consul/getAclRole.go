@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			test, err := consul.LookupAclRole(ctx, &consul.LookupAclRoleArgs{
+//			test, err := consul.GetAclRole(ctx, &consul.LookupAclRoleArgs{
 //				Name: "example-role",
 //			}, nil)
 //			if err != nil {

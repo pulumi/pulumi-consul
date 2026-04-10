@@ -25,7 +25,7 @@ namespace Pulumi.Consul
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var test = Consul.GetAclAuthMethod.Invoke(new()
+        ///     var test = Consul.Index.GetAclAuthMethod.Invoke(new()
         ///     {
         ///         Name = "minikube",
         ///     });
@@ -54,7 +54,7 @@ namespace Pulumi.Consul
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var test = Consul.GetAclAuthMethod.Invoke(new()
+        ///     var test = Consul.Index.GetAclAuthMethod.Invoke(new()
         ///     {
         ///         Name = "minikube",
         ///     });
@@ -83,7 +83,7 @@ namespace Pulumi.Consul
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var test = Consul.GetAclAuthMethod.Invoke(new()
+        ///     var test = Consul.Index.GetAclAuthMethod.Invoke(new()
         ///     {
         ///         Name = "minikube",
         ///     });

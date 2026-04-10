@@ -33,7 +33,7 @@ namespace Pulumi.Consul
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var read_dc1 = Consul.GetServices.Invoke(new()
+        ///     var read_dc1 = Consul.Index.GetServices.Invoke(new()
         ///     {
         ///         QueryOptions = new[]
         ///         {
@@ -47,7 +47,7 @@ namespace Pulumi.Consul
         ///     // Set the description to a whitespace delimited list of the services
         ///     var app = new Example.Index.Resource("app", new()
         ///     {
-        ///         Description = Std.Join.Invoke(new()
+        ///         Description = Std.Index.Join.Invoke(new()
         ///         {
         ///             Separator = " ",
         ///             Input = names,
@@ -81,7 +81,7 @@ namespace Pulumi.Consul
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var read_dc1 = Consul.GetServices.Invoke(new()
+        ///     var read_dc1 = Consul.Index.GetServices.Invoke(new()
         ///     {
         ///         QueryOptions = new[]
         ///         {
@@ -95,7 +95,7 @@ namespace Pulumi.Consul
         ///     // Set the description to a whitespace delimited list of the services
         ///     var app = new Example.Index.Resource("app", new()
         ///     {
-        ///         Description = Std.Join.Invoke(new()
+        ///         Description = Std.Index.Join.Invoke(new()
         ///         {
         ///             Separator = " ",
         ///             Input = names,
@@ -129,7 +129,7 @@ namespace Pulumi.Consul
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var read_dc1 = Consul.GetServices.Invoke(new()
+        ///     var read_dc1 = Consul.Index.GetServices.Invoke(new()
         ///     {
         ///         QueryOptions = new[]
         ///         {
@@ -143,7 +143,7 @@ namespace Pulumi.Consul
         ///     // Set the description to a whitespace delimited list of the services
         ///     var app = new Example.Index.Resource("app", new()
         ///     {
-        ///         Description = Std.Join.Invoke(new()
+        ///         Description = Std.Index.Join.Invoke(new()
         ///         {
         ///             Separator = " ",
         ///             Input = names,

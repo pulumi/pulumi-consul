@@ -22,7 +22,7 @@ namespace Pulumi.Consul
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var web = new Consul.ConfigEntryServiceResolver("web", new()
+    ///     var web = new Consul.Index.ConfigEntryServiceResolver("web", new()
     ///     {
     ///         Name = "web",
     ///         DefaultSubset = "v1",

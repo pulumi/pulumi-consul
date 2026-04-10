@@ -148,7 +148,7 @@ def get_catalog_service(datacenter: Optional[_builtins.str] = None,
     read_consul_dc1 = consul.get_service(name="consul",
         datacenter="dc1")
     # Set the description to a whitespace delimited list of the node names
-    app = example.index.Resource("app", description=std.join(separator= ,
+    app = example.Resource("app", description=std.join(separator= ,
         input=nodes).result)
     ```
 
@@ -207,7 +207,7 @@ def get_catalog_service_output(datacenter: Optional[pulumi.Input[Optional[_built
     read_consul_dc1 = consul.get_service(name="consul",
         datacenter="dc1")
     # Set the description to a whitespace delimited list of the node names
-    app = example.index.Resource("app", description=std.join(separator= ,
+    app = example.Resource("app", description=std.join(separator= ,
         input=nodes).result)
     ```
 

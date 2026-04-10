@@ -164,7 +164,7 @@ def get_key_prefix(datacenter: Optional[_builtins.str] = None,
             "default": "ami-1234",
         }])
     # Start our instance with the dynamic ami value
-    app_instance = aws.index.Instance("app", ami=app.var.ami)
+    app_instance = aws.Instance("app", ami=app.var.ami)
     ```
 
     ```python
@@ -176,7 +176,7 @@ def get_key_prefix(datacenter: Optional[_builtins.str] = None,
         token="efgh",
         path_prefix="myapp/config/")
     # Start our instance with the dynamic ami value
-    web_instance = aws.index.Instance("web", ami=web.subkeys.app_launch_ami)
+    web_instance = aws.Instance("web", ami=web.subkeys.app_launch_ami)
     ```
 
 
@@ -239,7 +239,7 @@ def get_key_prefix_output(datacenter: Optional[pulumi.Input[Optional[_builtins.s
             "default": "ami-1234",
         }])
     # Start our instance with the dynamic ami value
-    app_instance = aws.index.Instance("app", ami=app.var.ami)
+    app_instance = aws.Instance("app", ami=app.var.ami)
     ```
 
     ```python
@@ -251,7 +251,7 @@ def get_key_prefix_output(datacenter: Optional[pulumi.Input[Optional[_builtins.s
         token="efgh",
         path_prefix="myapp/config/")
     # Start our instance with the dynamic ami value
-    web_instance = aws.index.Instance("web", ami=web.subkeys.app_launch_ami)
+    web_instance = aws.Instance("web", ami=web.subkeys.app_launch_ami)
     ```
 
 

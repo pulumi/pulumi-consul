@@ -31,7 +31,7 @@ namespace Pulumi.Consul
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var role = new Consul.AclRole("role", new()
+    ///     var role = new Consul.Index.AclRole("role", new()
     ///     {
     ///         Name = "foo",
     ///         Description = "Foo",
@@ -44,7 +44,7 @@ namespace Pulumi.Consul
     ///         },
     ///     });
     /// 
-    ///     var attachment = new Consul.AclTokenRoleAttachment("attachment", new()
+    ///     var attachment = new Consul.Index.AclTokenRoleAttachment("attachment", new()
     ///     {
     ///         TokenId = "00000000-0000-0000-0000-000000000002",
     ///         RoleId = role.Id,
@@ -65,7 +65,7 @@ namespace Pulumi.Consul
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var test = new Consul.AclToken("test", new()
+    ///     var test = new Consul.Index.AclToken("test", new()
     ///     {
     ///         AccessorId = "5914ee49-eb8d-4837-9767-9299ec155000",
     ///         Description = "my test token",
@@ -85,7 +85,7 @@ namespace Pulumi.Consul
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var role = new Consul.AclRole("role", new()
+    ///     var role = new Consul.Index.AclRole("role", new()
     ///     {
     ///         Name = "foo",
     ///         Description = "Foo",
@@ -98,7 +98,7 @@ namespace Pulumi.Consul
     ///         },
     ///     });
     /// 
-    ///     var attachment = new Consul.AclTokenRoleAttachment("attachment", new()
+    ///     var attachment = new Consul.Index.AclTokenRoleAttachment("attachment", new()
     ///     {
     ///         TokenId = "00000000-0000-0000-0000-000000000002",
     ///         RoleId = role.Id,

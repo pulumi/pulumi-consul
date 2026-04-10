@@ -36,7 +36,7 @@ namespace Pulumi.Consul
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var database = new Consul.Intention("database", new()
+    ///     var database = new Consul.Index.Intention("database", new()
     ///     {
     ///         SourceName = "api",
     ///         DestinationName = "db",
@@ -56,14 +56,14 @@ namespace Pulumi.Consul
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var database = new Consul.Intention("database", new()
+    ///     var database = new Consul.Index.Intention("database", new()
     ///     {
     ///         SourceName = "api",
     ///         DestinationName = pgConsulService.Name,
     ///         Action = "allow",
     ///     });
     /// 
-    ///     var pg = Consul.GetService.Invoke(new()
+    ///     var pg = Consul.Index.GetService.Invoke(new()
     ///     {
     ///         Name = "postgresql",
     ///     });
