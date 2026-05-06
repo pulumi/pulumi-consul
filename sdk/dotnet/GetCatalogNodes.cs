@@ -30,7 +30,7 @@ namespace Pulumi.Consul
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var read_dc1_nodes = Consul.Index.GetNodes.Invoke(new()
+        ///     var read_dc1_nodes = Consul.GetNodes.Invoke(new()
         ///     {
         ///         QueryOptions = new[]
         ///         {
@@ -42,12 +42,12 @@ namespace Pulumi.Consul
         ///     });
         /// 
         ///     // Set the description to a whitespace delimited list of the node names
-        ///     var app = new Example.Index.Resource("app", new()
+        ///     var app = new Example.Resource("app", new()
         ///     {
-        ///         Description = Std.Index.Join.Invoke(new()
+        ///         Description = Std.Join.Invoke(new()
         ///         {
         ///             Separator = " ",
-        ///             Input = Std.Index.Formatlist.Invoke(new()
+        ///             Input = Std.Formatlist.Invoke(new()
         ///             {
         ///                 Input = "%s",
         ///                 Args = new[]
@@ -82,7 +82,7 @@ namespace Pulumi.Consul
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var read_dc1_nodes = Consul.Index.GetNodes.Invoke(new()
+        ///     var read_dc1_nodes = Consul.GetNodes.Invoke(new()
         ///     {
         ///         QueryOptions = new[]
         ///         {
@@ -94,12 +94,12 @@ namespace Pulumi.Consul
         ///     });
         /// 
         ///     // Set the description to a whitespace delimited list of the node names
-        ///     var app = new Example.Index.Resource("app", new()
+        ///     var app = new Example.Resource("app", new()
         ///     {
-        ///         Description = Std.Index.Join.Invoke(new()
+        ///         Description = Std.Join.Invoke(new()
         ///         {
         ///             Separator = " ",
-        ///             Input = Std.Index.Formatlist.Invoke(new()
+        ///             Input = Std.Formatlist.Invoke(new()
         ///             {
         ///                 Input = "%s",
         ///                 Args = new[]
@@ -134,7 +134,7 @@ namespace Pulumi.Consul
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var read_dc1_nodes = Consul.Index.GetNodes.Invoke(new()
+        ///     var read_dc1_nodes = Consul.GetNodes.Invoke(new()
         ///     {
         ///         QueryOptions = new[]
         ///         {
@@ -146,12 +146,12 @@ namespace Pulumi.Consul
         ///     });
         /// 
         ///     // Set the description to a whitespace delimited list of the node names
-        ///     var app = new Example.Index.Resource("app", new()
+        ///     var app = new Example.Resource("app", new()
         ///     {
-        ///         Description = Std.Index.Join.Invoke(new()
+        ///         Description = Std.Join.Invoke(new()
         ///         {
         ///             Separator = " ",
-        ///             Input = Std.Index.Formatlist.Invoke(new()
+        ///             Input = Std.Formatlist.Invoke(new()
         ///             {
         ///                 Input = "%s",
         ///                 Args = new[]

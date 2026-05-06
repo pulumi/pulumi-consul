@@ -110,7 +110,7 @@ using Consul = Pulumi.Consul;
 return await Deployment.RunAsync(() =>
 {
     // Access a key in Consul
-    var app = Consul.Index.GetKeys.Invoke(new()
+    var app = Consul.GetKeys.Invoke(new()
     {
         Keys = new[]
         {
@@ -241,8 +241,8 @@ import com.pulumi.consul.ConsulFunctions;
 import com.pulumi.consul.inputs.GetKeysArgs;
 import com.pulumi.aws.ec2.Instance;
 import com.pulumi.aws.ec2.InstanceArgs;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Map;
 import java.io.File;
 import java.nio.file.Files;

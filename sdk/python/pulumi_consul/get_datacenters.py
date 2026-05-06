@@ -81,7 +81,7 @@ def get_datacenters(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGet
     for range in [{"key": k, "value": v} for [k, v] in enumerate(std.toset(input=all.datacenters).result)]:
         myapp_query.append(consul.PreparedQuery(f"myapp-query-{range['key']}",
             name="myquery",
-            datacenter=range["key"],
+            datacenter=str(range["key"]),
             only_passing=True,
             near="_agent",
             service="myapp",
@@ -127,7 +127,7 @@ def get_datacenters_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.Inv
     for range in [{"key": k, "value": v} for [k, v] in enumerate(std.toset(input=all.datacenters).result)]:
         myapp_query.append(consul.PreparedQuery(f"myapp-query-{range['key']}",
             name="myquery",
-            datacenter=range["key"],
+            datacenter=str(range["key"]),
             only_passing=True,
             near="_agent",
             service="myapp",

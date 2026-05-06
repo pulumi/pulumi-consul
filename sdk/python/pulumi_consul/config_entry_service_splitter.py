@@ -246,7 +246,7 @@ class ConfigEntryServiceSplitter(pulumi.CustomResource):
             },
             splits=[
                 {
-                    "weight": 80,
+                    "weight": float(80),
                     "service": "web",
                     "service_subset": "v1",
                     "request_headers": {
@@ -261,7 +261,7 @@ class ConfigEntryServiceSplitter(pulumi.CustomResource):
                     },
                 },
                 {
-                    "weight": 10,
+                    "weight": float(10),
                     "service": "web",
                     "service_subset": "v2",
                     "request_headers": {
@@ -276,7 +276,7 @@ class ConfigEntryServiceSplitter(pulumi.CustomResource):
                     },
                 },
                 {
-                    "weight": 10,
+                    "weight": float(10),
                     "service": "web",
                     "service_subset": "v2",
                 },
@@ -343,7 +343,7 @@ class ConfigEntryServiceSplitter(pulumi.CustomResource):
             },
             splits=[
                 {
-                    "weight": 80,
+                    "weight": float(80),
                     "service": "web",
                     "service_subset": "v1",
                     "request_headers": {
@@ -358,7 +358,7 @@ class ConfigEntryServiceSplitter(pulumi.CustomResource):
                     },
                 },
                 {
-                    "weight": 10,
+                    "weight": float(10),
                     "service": "web",
                     "service_subset": "v2",
                     "request_headers": {
@@ -373,7 +373,7 @@ class ConfigEntryServiceSplitter(pulumi.CustomResource):
                     },
                 },
                 {
-                    "weight": 10,
+                    "weight": float(10),
                     "service": "web",
                     "service_subset": "v2",
                 },
