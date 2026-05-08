@@ -152,8 +152,8 @@ export interface GetServiceOutputArgs {
      * empty, the `datacenter` value found in the Consul agent that this provider is
      * configured to talk to.
      */
-    datacenter?: pulumi.Input<string>;
-    filter?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string | undefined>;
+    filter?: pulumi.Input<string | undefined>;
     /**
      * The service name to select.
      */
@@ -161,10 +161,10 @@ export interface GetServiceOutputArgs {
     /**
      * See below.
      */
-    queryOptions?: pulumi.Input<pulumi.Input<inputs.GetServiceQueryOptionArgs>[]>;
+    queryOptions?: pulumi.Input<pulumi.Input<inputs.GetServiceQueryOptionArgs>[] | undefined>;
     /**
      * A single tag that can be used to filter the list of nodes
      * to return based on a single matching tag..
      */
-    tag?: pulumi.Input<string>;
+    tag?: pulumi.Input<string | undefined>;
 }

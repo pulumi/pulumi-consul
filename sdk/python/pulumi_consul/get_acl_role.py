@@ -185,9 +185,9 @@ def get_acl_role(name: Optional[_builtins.str] = None,
         policies=pulumi.get(__ret__, 'policies'),
         service_identities=pulumi.get(__ret__, 'service_identities'),
         templated_policies=pulumi.get(__ret__, 'templated_policies'))
-def get_acl_role_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                        namespace: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        partition: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_acl_role_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                        namespace: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        partition: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAclRoleResult]:
     """
     The `AclRole` data source returns the information related to a [Consul ACL Role](https://www.consul.io/api/acl/roles.html).

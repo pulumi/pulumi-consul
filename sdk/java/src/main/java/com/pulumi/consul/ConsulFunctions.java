@@ -94,8 +94,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetAclAuthMethodArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -136,8 +136,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetAclAuthMethodArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -178,8 +178,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetAclAuthMethodArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -220,8 +220,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetAclAuthMethodArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -262,8 +262,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetAclAuthMethodArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -304,8 +304,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetAclPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -346,8 +346,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetAclPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -388,8 +388,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetAclPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -430,8 +430,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetAclPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -472,8 +472,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetAclPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -513,8 +513,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetAclRoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -554,8 +554,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetAclRoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -595,8 +595,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetAclRoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -636,8 +636,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetAclRoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -677,8 +677,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetAclRoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -720,8 +720,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetAclTokenArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -763,8 +763,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetAclTokenArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -806,8 +806,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetAclTokenArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -849,8 +849,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetAclTokenArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -892,8 +892,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetAclTokenArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -947,8 +947,8 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.AclTokenArgs;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetAclTokenSecretIdArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1015,8 +1015,8 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.AclTokenArgs;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetAclTokenSecretIdArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1083,8 +1083,8 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.AclTokenArgs;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetAclTokenSecretIdArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1151,8 +1151,8 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.AclTokenArgs;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetAclTokenSecretIdArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1219,8 +1219,8 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.AclTokenArgs;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetAclTokenSecretIdArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1278,8 +1278,8 @@ public final class ConsulFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1322,8 +1322,8 @@ public final class ConsulFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1366,8 +1366,8 @@ public final class ConsulFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1410,8 +1410,8 @@ public final class ConsulFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1454,8 +1454,8 @@ public final class ConsulFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1498,8 +1498,8 @@ public final class ConsulFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1542,8 +1542,8 @@ public final class ConsulFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1681,8 +1681,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetAutopilotHealthArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1723,8 +1723,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetAutopilotHealthArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1765,8 +1765,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetAutopilotHealthArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1807,8 +1807,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetAutopilotHealthArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1849,8 +1849,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetAutopilotHealthArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1891,8 +1891,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetAutopilotHealthArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1933,8 +1933,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetAutopilotHealthArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1981,8 +1981,8 @@ public final class ConsulFunctions {
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.FormatlistArgs;
      * import com.pulumi.std.inputs.JoinArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2046,8 +2046,8 @@ public final class ConsulFunctions {
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.FormatlistArgs;
      * import com.pulumi.std.inputs.JoinArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2111,8 +2111,8 @@ public final class ConsulFunctions {
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.FormatlistArgs;
      * import com.pulumi.std.inputs.JoinArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2176,8 +2176,8 @@ public final class ConsulFunctions {
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.FormatlistArgs;
      * import com.pulumi.std.inputs.JoinArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2241,8 +2241,8 @@ public final class ConsulFunctions {
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.FormatlistArgs;
      * import com.pulumi.std.inputs.JoinArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2306,8 +2306,8 @@ public final class ConsulFunctions {
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.FormatlistArgs;
      * import com.pulumi.std.inputs.JoinArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2371,8 +2371,8 @@ public final class ConsulFunctions {
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.FormatlistArgs;
      * import com.pulumi.std.inputs.JoinArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2439,8 +2439,8 @@ public final class ConsulFunctions {
      * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.JoinArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2503,8 +2503,8 @@ public final class ConsulFunctions {
      * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.JoinArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2567,8 +2567,8 @@ public final class ConsulFunctions {
      * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.JoinArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2631,8 +2631,8 @@ public final class ConsulFunctions {
      * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.JoinArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2695,8 +2695,8 @@ public final class ConsulFunctions {
      * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.JoinArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2758,8 +2758,8 @@ public final class ConsulFunctions {
      * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.JoinArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2822,8 +2822,8 @@ public final class ConsulFunctions {
      * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.JoinArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2886,8 +2886,8 @@ public final class ConsulFunctions {
      * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.JoinArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2950,8 +2950,8 @@ public final class ConsulFunctions {
      * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.JoinArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3014,8 +3014,8 @@ public final class ConsulFunctions {
      * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.JoinArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3078,8 +3078,8 @@ public final class ConsulFunctions {
      * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.JoinArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3142,8 +3142,8 @@ public final class ConsulFunctions {
      * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.JoinArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3231,8 +3231,8 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.inputs.PreparedQueryFailoverArgs;
      * import com.pulumi.consul.inputs.PreparedQueryDnsArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3300,8 +3300,8 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.inputs.PreparedQueryFailoverArgs;
      * import com.pulumi.consul.inputs.PreparedQueryDnsArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3369,8 +3369,8 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.inputs.PreparedQueryFailoverArgs;
      * import com.pulumi.consul.inputs.PreparedQueryDnsArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3438,8 +3438,8 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.inputs.PreparedQueryFailoverArgs;
      * import com.pulumi.consul.inputs.PreparedQueryDnsArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3507,8 +3507,8 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.inputs.PreparedQueryFailoverArgs;
      * import com.pulumi.consul.inputs.PreparedQueryDnsArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3576,8 +3576,8 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.inputs.PreparedQueryFailoverArgs;
      * import com.pulumi.consul.inputs.PreparedQueryDnsArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3645,8 +3645,8 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.inputs.PreparedQueryFailoverArgs;
      * import com.pulumi.consul.inputs.PreparedQueryDnsArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3712,8 +3712,8 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.inputs.GetKeyPrefixArgs;
      * import com.pulumi.aws.Instance;
      * import com.pulumi.aws.InstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3757,8 +3757,8 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.inputs.GetKeyPrefixArgs;
      * import com.pulumi.aws.Instance;
      * import com.pulumi.aws.InstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3807,8 +3807,8 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.inputs.GetKeyPrefixArgs;
      * import com.pulumi.aws.Instance;
      * import com.pulumi.aws.InstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3852,8 +3852,8 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.inputs.GetKeyPrefixArgs;
      * import com.pulumi.aws.Instance;
      * import com.pulumi.aws.InstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3902,8 +3902,8 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.inputs.GetKeyPrefixArgs;
      * import com.pulumi.aws.Instance;
      * import com.pulumi.aws.InstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3947,8 +3947,8 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.inputs.GetKeyPrefixArgs;
      * import com.pulumi.aws.Instance;
      * import com.pulumi.aws.InstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3997,8 +3997,8 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.inputs.GetKeyPrefixArgs;
      * import com.pulumi.aws.Instance;
      * import com.pulumi.aws.InstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4042,8 +4042,8 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.inputs.GetKeyPrefixArgs;
      * import com.pulumi.aws.Instance;
      * import com.pulumi.aws.InstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4092,8 +4092,8 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.inputs.GetKeyPrefixArgs;
      * import com.pulumi.aws.Instance;
      * import com.pulumi.aws.InstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4137,8 +4137,8 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.inputs.GetKeyPrefixArgs;
      * import com.pulumi.aws.Instance;
      * import com.pulumi.aws.InstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4186,8 +4186,8 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.inputs.GetKeysArgs;
      * import com.pulumi.aws.Instance;
      * import com.pulumi.aws.InstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4238,8 +4238,8 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.inputs.GetKeysArgs;
      * import com.pulumi.aws.Instance;
      * import com.pulumi.aws.InstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4290,8 +4290,8 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.inputs.GetKeysArgs;
      * import com.pulumi.aws.Instance;
      * import com.pulumi.aws.InstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4342,8 +4342,8 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.inputs.GetKeysArgs;
      * import com.pulumi.aws.Instance;
      * import com.pulumi.aws.InstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4394,8 +4394,8 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.inputs.GetKeysArgs;
      * import com.pulumi.aws.Instance;
      * import com.pulumi.aws.InstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4446,8 +4446,8 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.inputs.GetKeysArgs;
      * import com.pulumi.aws.Instance;
      * import com.pulumi.aws.InstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4498,8 +4498,8 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.inputs.GetKeysArgs;
      * import com.pulumi.aws.Instance;
      * import com.pulumi.aws.InstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4553,8 +4553,8 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.NetworkAreaArgs;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetNetworkAreaMembersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4605,8 +4605,8 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.NetworkAreaArgs;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetNetworkAreaMembersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4657,8 +4657,8 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.NetworkAreaArgs;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetNetworkAreaMembersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4709,8 +4709,8 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.NetworkAreaArgs;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetNetworkAreaMembersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4761,8 +4761,8 @@ public final class ConsulFunctions {
      * import com.pulumi.consul.NetworkAreaArgs;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetNetworkAreaMembersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4811,8 +4811,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetNetworkSegmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4854,8 +4854,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetNetworkSegmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4897,8 +4897,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetNetworkSegmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4940,8 +4940,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetNetworkSegmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4983,8 +4983,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetNetworkSegmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5026,8 +5026,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetNetworkSegmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5069,8 +5069,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetNetworkSegmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5117,8 +5117,8 @@ public final class ConsulFunctions {
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.FormatlistArgs;
      * import com.pulumi.std.inputs.JoinArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5178,8 +5178,8 @@ public final class ConsulFunctions {
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.FormatlistArgs;
      * import com.pulumi.std.inputs.JoinArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5239,8 +5239,8 @@ public final class ConsulFunctions {
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.FormatlistArgs;
      * import com.pulumi.std.inputs.JoinArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5300,8 +5300,8 @@ public final class ConsulFunctions {
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.FormatlistArgs;
      * import com.pulumi.std.inputs.JoinArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5361,8 +5361,8 @@ public final class ConsulFunctions {
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.FormatlistArgs;
      * import com.pulumi.std.inputs.JoinArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5422,8 +5422,8 @@ public final class ConsulFunctions {
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.FormatlistArgs;
      * import com.pulumi.std.inputs.JoinArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5483,8 +5483,8 @@ public final class ConsulFunctions {
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.FormatlistArgs;
      * import com.pulumi.std.inputs.JoinArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5534,8 +5534,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetPeeringArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5572,8 +5572,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetPeeringArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5610,8 +5610,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetPeeringArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5648,8 +5648,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetPeeringArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5686,8 +5686,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetPeeringArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5724,8 +5724,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetPeeringsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5761,8 +5761,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetPeeringsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5798,8 +5798,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetPeeringsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5835,8 +5835,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetPeeringsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5872,8 +5872,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetPeeringsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5909,8 +5909,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetPeeringsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5946,8 +5946,8 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetPeeringsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5996,8 +5996,8 @@ public final class ConsulFunctions {
      * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.JoinArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6056,8 +6056,8 @@ public final class ConsulFunctions {
      * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.JoinArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6116,8 +6116,8 @@ public final class ConsulFunctions {
      * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.JoinArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6176,8 +6176,8 @@ public final class ConsulFunctions {
      * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.JoinArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6236,8 +6236,8 @@ public final class ConsulFunctions {
      * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.JoinArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6370,8 +6370,8 @@ public final class ConsulFunctions {
      * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.JoinArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6430,8 +6430,8 @@ public final class ConsulFunctions {
      * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.JoinArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6490,8 +6490,8 @@ public final class ConsulFunctions {
      * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.JoinArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6550,8 +6550,8 @@ public final class ConsulFunctions {
      * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.JoinArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6610,8 +6610,8 @@ public final class ConsulFunctions {
      * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.JoinArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6670,8 +6670,8 @@ public final class ConsulFunctions {
      * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.JoinArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6730,8 +6730,8 @@ public final class ConsulFunctions {
      * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.JoinArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

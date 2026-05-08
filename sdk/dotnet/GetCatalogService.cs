@@ -34,16 +34,16 @@ namespace Pulumi.Consul
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var read_consul_dc1 = Consul.Index.GetService.Invoke(new()
+        ///     var read_consul_dc1 = Consul.GetService.Invoke(new()
         ///     {
         ///         Name = "consul",
         ///         Datacenter = "dc1",
         ///     });
         /// 
         ///     // Set the description to a whitespace delimited list of the node names
-        ///     var app = new Example.Index.Resource("app", new()
+        ///     var app = new Example.Resource("app", new()
         ///     {
-        ///         Description = Std.Index.Join.Invoke(new()
+        ///         Description = Std.Join.Invoke(new()
         ///         {
         ///             Separator = " ",
         ///             Input = nodes,
@@ -78,16 +78,16 @@ namespace Pulumi.Consul
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var read_consul_dc1 = Consul.Index.GetService.Invoke(new()
+        ///     var read_consul_dc1 = Consul.GetService.Invoke(new()
         ///     {
         ///         Name = "consul",
         ///         Datacenter = "dc1",
         ///     });
         /// 
         ///     // Set the description to a whitespace delimited list of the node names
-        ///     var app = new Example.Index.Resource("app", new()
+        ///     var app = new Example.Resource("app", new()
         ///     {
-        ///         Description = Std.Index.Join.Invoke(new()
+        ///         Description = Std.Join.Invoke(new()
         ///         {
         ///             Separator = " ",
         ///             Input = nodes,
@@ -122,16 +122,16 @@ namespace Pulumi.Consul
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var read_consul_dc1 = Consul.Index.GetService.Invoke(new()
+        ///     var read_consul_dc1 = Consul.GetService.Invoke(new()
         ///     {
         ///         Name = "consul",
         ///         Datacenter = "dc1",
         ///     });
         /// 
         ///     // Set the description to a whitespace delimited list of the node names
-        ///     var app = new Example.Index.Resource("app", new()
+        ///     var app = new Example.Resource("app", new()
         ///     {
-        ///         Description = Std.Index.Join.Invoke(new()
+        ///         Description = Std.Join.Invoke(new()
         ///         {
         ///             Separator = " ",
         ///             Input = nodes,

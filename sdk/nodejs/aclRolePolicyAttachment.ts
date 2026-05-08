@@ -110,11 +110,11 @@ export interface AclRolePolicyAttachmentState {
     /**
      * The policy name.
      */
-    policy?: pulumi.Input<string>;
+    policy?: pulumi.Input<string | undefined>;
     /**
      * The id of the role.
      */
-    roleId?: pulumi.Input<string>;
+    roleId?: pulumi.Input<string | undefined>;
 }
 
 /**

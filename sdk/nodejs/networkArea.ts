@@ -129,17 +129,17 @@ export interface NetworkAreaState {
      * The datacenter to use. This overrides the
      * agent's default datacenter and the datacenter in the provider setup.
      */
-    datacenter?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string | undefined>;
     /**
      * The name of the Consul datacenter that will be
      * joined to form the area.
      */
-    peerDatacenter?: pulumi.Input<string>;
+    peerDatacenter?: pulumi.Input<string | undefined>;
     /**
      * Specifies a list of Consul servers to attempt to
      * join. Servers can be given as `IP`, `IP:port`, `hostname`, or `hostname:port`.
      */
-    retryJoins?: pulumi.Input<pulumi.Input<string>[]>;
+    retryJoins?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ACL token to use. This overrides the
      * token that the agent provides by default.
@@ -147,12 +147,12 @@ export interface NetworkAreaState {
      * @deprecated The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether gossip over this area should be
      * encrypted with TLS if possible. Defaults to `false`.
      */
-    useTls?: pulumi.Input<boolean>;
+    useTls?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -163,7 +163,7 @@ export interface NetworkAreaArgs {
      * The datacenter to use. This overrides the
      * agent's default datacenter and the datacenter in the provider setup.
      */
-    datacenter?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string | undefined>;
     /**
      * The name of the Consul datacenter that will be
      * joined to form the area.
@@ -173,7 +173,7 @@ export interface NetworkAreaArgs {
      * Specifies a list of Consul servers to attempt to
      * join. Servers can be given as `IP`, `IP:port`, `hostname`, or `hostname:port`.
      */
-    retryJoins?: pulumi.Input<pulumi.Input<string>[]>;
+    retryJoins?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ACL token to use. This overrides the
      * token that the agent provides by default.
@@ -181,10 +181,10 @@ export interface NetworkAreaArgs {
      * @deprecated The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether gossip over this area should be
      * encrypted with TLS if possible. Defaults to `false`.
      */
-    useTls?: pulumi.Input<boolean>;
+    useTls?: pulumi.Input<boolean | undefined>;
 }

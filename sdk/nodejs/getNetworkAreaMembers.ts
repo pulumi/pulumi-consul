@@ -127,7 +127,7 @@ export interface GetNetworkAreaMembersOutputArgs {
      * The datacenter to use. This overrides the
      * agent's default datacenter and the datacenter in the provider setup.
      */
-    datacenter?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string | undefined>;
     /**
      * The ACL token to use. This overrides the
      * token that the agent provides by default.
@@ -135,7 +135,7 @@ export interface GetNetworkAreaMembersOutputArgs {
      * @deprecated The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
     /**
      * The UUID of the area to list.
      */

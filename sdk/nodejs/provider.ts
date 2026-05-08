@@ -129,68 +129,68 @@ export interface ProviderArgs {
     /**
      * The HTTP(S) API address of the agent to use. Defaults to "127.0.0.1:8500".
      */
-    address?: pulumi.Input<string>;
+    address?: pulumi.Input<string | undefined>;
     /**
      * Authenticates to Consul using a JWT authentication method.
      */
-    authJwt?: pulumi.Input<inputs.ProviderAuthJwt>;
+    authJwt?: pulumi.Input<inputs.ProviderAuthJwt | undefined>;
     /**
      * Login to Consul using the AWS IAM auth method
      */
-    authLoginAws?: pulumi.Input<inputs.ProviderAuthLoginAws>;
+    authLoginAws?: pulumi.Input<inputs.ProviderAuthLoginAws | undefined>;
     /**
      * A path to a PEM-encoded certificate authority used to verify the remote agent's certificate.
      */
-    caFile?: pulumi.Input<string>;
+    caFile?: pulumi.Input<string | undefined>;
     /**
      * A path to a directory of PEM-encoded certificate authority files to use to check the authenticity of client and server connections. Can also be specified with the `CONSUL_CAPATH` environment variable.
      */
-    caPath?: pulumi.Input<string>;
+    caPath?: pulumi.Input<string | undefined>;
     /**
      * PEM-encoded certificate authority used to verify the remote agent's certificate.
      */
-    caPem?: pulumi.Input<string>;
+    caPem?: pulumi.Input<string | undefined>;
     /**
      * A path to a PEM-encoded certificate provided to the remote agent; requires use of `keyFile` or `keyPem`.
      */
-    certFile?: pulumi.Input<string>;
+    certFile?: pulumi.Input<string | undefined>;
     /**
      * PEM-encoded certificate provided to the remote agent; requires use of `keyFile` or `keyPem`.
      */
-    certPem?: pulumi.Input<string>;
+    certPem?: pulumi.Input<string | undefined>;
     /**
      * The datacenter to use. Defaults to that of the agent.
      */
-    datacenter?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string | undefined>;
     /**
      * A configuration block, described below, that provides additional headers to be sent along with all requests to the Consul server. This block can be specified multiple times.
      */
-    headers?: pulumi.Input<pulumi.Input<inputs.ProviderHeader>[]>;
+    headers?: pulumi.Input<pulumi.Input<inputs.ProviderHeader>[] | undefined>;
     /**
      * HTTP Basic Authentication credentials to be used when communicating with Consul, in the format of either `user` or `user:pass`. This may also be specified using the `CONSUL_HTTP_AUTH` environment variable.
      */
-    httpAuth?: pulumi.Input<string>;
+    httpAuth?: pulumi.Input<string | undefined>;
     /**
      * Boolean value to disable SSL certificate verification; setting this value to true is not recommended for production use. Only use this with scheme set to "https".
      */
-    insecureHttps?: pulumi.Input<boolean>;
+    insecureHttps?: pulumi.Input<boolean | undefined>;
     /**
      * A path to a PEM-encoded private key, required if `certFile` or `certPem` is specified.
      */
-    keyFile?: pulumi.Input<string>;
+    keyFile?: pulumi.Input<string | undefined>;
     /**
      * PEM-encoded private key, required if `certFile` or `certPem` is specified.
      */
-    keyPem?: pulumi.Input<string>;
-    namespace?: pulumi.Input<string>;
+    keyPem?: pulumi.Input<string | undefined>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * The URL scheme of the agent to use ("http" or "https"). Defaults to "http".
      */
-    scheme?: pulumi.Input<string>;
+    scheme?: pulumi.Input<string | undefined>;
     /**
      * The ACL token to use by default when making requests to the agent. Can also be specified with `CONSUL_HTTP_TOKEN` or `CONSUL_TOKEN` as an environment variable.
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
 }
 
 export namespace Provider {

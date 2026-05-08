@@ -96,5 +96,5 @@ export interface GetAutopilotHealthOutputArgs {
      * The datacenter to use. This overrides the agent's
      * default datacenter and the datacenter in the provider setup.
      */
-    datacenter?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string | undefined>;
 }

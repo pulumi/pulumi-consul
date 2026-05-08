@@ -141,35 +141,35 @@ export interface AclRoleState {
     /**
      * A free form human readable description of the role.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the ACL role.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The namespace to create the role within.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * The list of node identities that should be applied to the role.
      */
-    nodeIdentities?: pulumi.Input<pulumi.Input<inputs.AclRoleNodeIdentity>[]>;
+    nodeIdentities?: pulumi.Input<pulumi.Input<inputs.AclRoleNodeIdentity>[] | undefined>;
     /**
      * The partition the ACL role is associated with.
      */
-    partition?: pulumi.Input<string>;
+    partition?: pulumi.Input<string | undefined>;
     /**
      * The list of policies that should be applied to the role. Both the policy ID or its name can be used.
      */
-    policies?: pulumi.Input<pulumi.Input<string>[]>;
+    policies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The list of service identities that should be applied to the role.
      */
-    serviceIdentities?: pulumi.Input<pulumi.Input<inputs.AclRoleServiceIdentity>[]>;
+    serviceIdentities?: pulumi.Input<pulumi.Input<inputs.AclRoleServiceIdentity>[] | undefined>;
     /**
      * The list of templated policies that should be applied to the token.
      */
-    templatedPolicies?: pulumi.Input<pulumi.Input<inputs.AclRoleTemplatedPolicy>[]>;
+    templatedPolicies?: pulumi.Input<pulumi.Input<inputs.AclRoleTemplatedPolicy>[] | undefined>;
 }
 
 /**
@@ -179,33 +179,33 @@ export interface AclRoleArgs {
     /**
      * A free form human readable description of the role.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the ACL role.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The namespace to create the role within.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * The list of node identities that should be applied to the role.
      */
-    nodeIdentities?: pulumi.Input<pulumi.Input<inputs.AclRoleNodeIdentity>[]>;
+    nodeIdentities?: pulumi.Input<pulumi.Input<inputs.AclRoleNodeIdentity>[] | undefined>;
     /**
      * The partition the ACL role is associated with.
      */
-    partition?: pulumi.Input<string>;
+    partition?: pulumi.Input<string | undefined>;
     /**
      * The list of policies that should be applied to the role. Both the policy ID or its name can be used.
      */
-    policies?: pulumi.Input<pulumi.Input<string>[]>;
+    policies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The list of service identities that should be applied to the role.
      */
-    serviceIdentities?: pulumi.Input<pulumi.Input<inputs.AclRoleServiceIdentity>[]>;
+    serviceIdentities?: pulumi.Input<pulumi.Input<inputs.AclRoleServiceIdentity>[] | undefined>;
     /**
      * The list of templated policies that should be applied to the token.
      */
-    templatedPolicies?: pulumi.Input<pulumi.Input<inputs.AclRoleTemplatedPolicy>[]>;
+    templatedPolicies?: pulumi.Input<pulumi.Input<inputs.AclRoleTemplatedPolicy>[] | undefined>;
 }

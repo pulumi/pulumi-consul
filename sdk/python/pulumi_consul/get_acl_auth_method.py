@@ -223,9 +223,9 @@ def get_acl_auth_method(name: Optional[_builtins.str] = None,
         partition=pulumi.get(__ret__, 'partition'),
         token_locality=pulumi.get(__ret__, 'token_locality'),
         type=pulumi.get(__ret__, 'type'))
-def get_acl_auth_method_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                               namespace: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               partition: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_acl_auth_method_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                               namespace: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               partition: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAclAuthMethodResult]:
     """
     The `AclAuthMethod` data source returns the information related to a

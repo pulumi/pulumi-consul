@@ -209,75 +209,75 @@ export interface ConfigEntryServiceDefaultsState {
     /**
      * Specifies the strategy for allocating inbound connections to the service across Envoy proxy threads.
      */
-    balanceInboundConnections?: pulumi.Input<string>;
+    balanceInboundConnections?: pulumi.Input<string | undefined>;
     /**
      * Configures the destination for service traffic through terminating gateways.
      */
-    destinations?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceDefaultsDestination>[]>;
+    destinations?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceDefaultsDestination>[] | undefined>;
     /**
      * List of extensions to modify Envoy proxy configuration.
      */
-    envoyExtensions?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceDefaultsEnvoyExtension>[]>;
+    envoyExtensions?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceDefaultsEnvoyExtension>[] | undefined>;
     /**
      * Specifies default configurations for exposing HTTP paths through Envoy.
      */
-    exposes?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceDefaultsExpose>[]>;
+    exposes?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceDefaultsExpose>[] | undefined>;
     /**
      * Specifies the TLS server name indication (SNI) when federating with an external system.
      */
-    externalSni?: pulumi.Input<string>;
+    externalSni?: pulumi.Input<string | undefined>;
     /**
      * Specifies the number of milliseconds allowed for establishing connections to the local application instance before timing out.
      */
-    localConnectTimeoutMs?: pulumi.Input<number>;
+    localConnectTimeoutMs?: pulumi.Input<number | undefined>;
     /**
      * Specifies the timeout for HTTP requests to the local application instance.
      */
-    localRequestTimeoutMs?: pulumi.Input<number>;
+    localRequestTimeoutMs?: pulumi.Input<number | undefined>;
     /**
      * Specifies the maximum number of concurrent inbound connections to each service instance.
      */
-    maxInboundConnections?: pulumi.Input<number>;
+    maxInboundConnections?: pulumi.Input<number | undefined>;
     /**
      * Specifies the default mesh gateway mode field for the service.
      */
-    meshGateways?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceDefaultsMeshGateway>[]>;
+    meshGateways?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceDefaultsMeshGateway>[] | undefined>;
     /**
      * Specifies a set of custom key-value pairs to add to the Consul KV store.
      */
-    meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    meta?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Specifies a mode for how the service directs inbound and outbound traffic.
      */
-    mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string | undefined>;
     /**
      * Controls whether mutual TLS is required for incoming connections to this service. This setting is only supported for services with transparent proxy enabled.
      */
-    mutualTlsMode?: pulumi.Input<string>;
+    mutualTlsMode?: pulumi.Input<string | undefined>;
     /**
      * Specifies the name of the service you are setting the defaults for.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Specifies the Consul namespace that the configuration entry applies to.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * Specifies the name of the name of the Consul admin partition that the configuration entry applies to. Refer to Admin Partitions for additional information.
      */
-    partition?: pulumi.Input<string>;
+    partition?: pulumi.Input<string | undefined>;
     /**
      * Specifies the default protocol for the service.
      */
-    protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string | undefined>;
     /**
      * Controls configurations specific to proxies in transparent mode. Refer to Transparent Proxy Mode for additional information.
      */
-    transparentProxies?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceDefaultsTransparentProxy>[]>;
+    transparentProxies?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceDefaultsTransparentProxy>[] | undefined>;
     /**
      * Controls default upstream connection settings and custom overrides for individual upstream services.
      */
-    upstreamConfigs?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceDefaultsUpstreamConfig>[]>;
+    upstreamConfigs?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceDefaultsUpstreamConfig>[] | undefined>;
 }
 
 /**
@@ -287,15 +287,15 @@ export interface ConfigEntryServiceDefaultsArgs {
     /**
      * Specifies the strategy for allocating inbound connections to the service across Envoy proxy threads.
      */
-    balanceInboundConnections?: pulumi.Input<string>;
+    balanceInboundConnections?: pulumi.Input<string | undefined>;
     /**
      * Configures the destination for service traffic through terminating gateways.
      */
-    destinations?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceDefaultsDestination>[]>;
+    destinations?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceDefaultsDestination>[] | undefined>;
     /**
      * List of extensions to modify Envoy proxy configuration.
      */
-    envoyExtensions?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceDefaultsEnvoyExtension>[]>;
+    envoyExtensions?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceDefaultsEnvoyExtension>[] | undefined>;
     /**
      * Specifies default configurations for exposing HTTP paths through Envoy.
      */
@@ -303,47 +303,47 @@ export interface ConfigEntryServiceDefaultsArgs {
     /**
      * Specifies the TLS server name indication (SNI) when federating with an external system.
      */
-    externalSni?: pulumi.Input<string>;
+    externalSni?: pulumi.Input<string | undefined>;
     /**
      * Specifies the number of milliseconds allowed for establishing connections to the local application instance before timing out.
      */
-    localConnectTimeoutMs?: pulumi.Input<number>;
+    localConnectTimeoutMs?: pulumi.Input<number | undefined>;
     /**
      * Specifies the timeout for HTTP requests to the local application instance.
      */
-    localRequestTimeoutMs?: pulumi.Input<number>;
+    localRequestTimeoutMs?: pulumi.Input<number | undefined>;
     /**
      * Specifies the maximum number of concurrent inbound connections to each service instance.
      */
-    maxInboundConnections?: pulumi.Input<number>;
+    maxInboundConnections?: pulumi.Input<number | undefined>;
     /**
      * Specifies the default mesh gateway mode field for the service.
      */
-    meshGateways?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceDefaultsMeshGateway>[]>;
+    meshGateways?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceDefaultsMeshGateway>[] | undefined>;
     /**
      * Specifies a set of custom key-value pairs to add to the Consul KV store.
      */
-    meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    meta?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Specifies a mode for how the service directs inbound and outbound traffic.
      */
-    mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string | undefined>;
     /**
      * Controls whether mutual TLS is required for incoming connections to this service. This setting is only supported for services with transparent proxy enabled.
      */
-    mutualTlsMode?: pulumi.Input<string>;
+    mutualTlsMode?: pulumi.Input<string | undefined>;
     /**
      * Specifies the name of the service you are setting the defaults for.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Specifies the Consul namespace that the configuration entry applies to.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * Specifies the name of the name of the Consul admin partition that the configuration entry applies to. Refer to Admin Partitions for additional information.
      */
-    partition?: pulumi.Input<string>;
+    partition?: pulumi.Input<string | undefined>;
     /**
      * Specifies the default protocol for the service.
      */
@@ -351,9 +351,9 @@ export interface ConfigEntryServiceDefaultsArgs {
     /**
      * Controls configurations specific to proxies in transparent mode. Refer to Transparent Proxy Mode for additional information.
      */
-    transparentProxies?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceDefaultsTransparentProxy>[]>;
+    transparentProxies?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceDefaultsTransparentProxy>[] | undefined>;
     /**
      * Controls default upstream connection settings and custom overrides for individual upstream services.
      */
-    upstreamConfigs?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceDefaultsUpstreamConfig>[]>;
+    upstreamConfigs?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceDefaultsUpstreamConfig>[] | undefined>;
 }

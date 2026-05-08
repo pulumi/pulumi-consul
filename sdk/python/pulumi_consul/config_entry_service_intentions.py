@@ -21,12 +21,12 @@ __all__ = ['ConfigEntryServiceIntentionsArgs', 'ConfigEntryServiceIntentions']
 @pulumi.input_type
 class ConfigEntryServiceIntentionsArgs:
     def __init__(__self__, *,
-                 jwts: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceIntentionsJwtArgs']]]] = None,
-                 meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 partition: Optional[pulumi.Input[_builtins.str]] = None,
-                 sources: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceIntentionsSourceArgs']]]] = None):
+                 jwts: pulumi.Input[Optional[Sequence[pulumi.Input['ConfigEntryServiceIntentionsJwtArgs']]]] = None,
+                 meta: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 partition: pulumi.Input[Optional[_builtins.str]] = None,
+                 sources: pulumi.Input[Optional[Sequence[pulumi.Input['ConfigEntryServiceIntentionsSourceArgs']]]] = None):
         """
         The set of arguments for constructing a ConfigEntryServiceIntentions resource.
 
@@ -52,86 +52,86 @@ class ConfigEntryServiceIntentionsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def jwts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceIntentionsJwtArgs']]]]:
+    def jwts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ConfigEntryServiceIntentionsJwtArgs']]]]:
         """
         Specifies a JSON Web Token provider configured in a JWT provider configuration entry, as well as additional configurations for verifying a service's JWT before authorizing communication between services
         """
         return pulumi.get(self, "jwts")
 
     @jwts.setter
-    def jwts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceIntentionsJwtArgs']]]]):
+    def jwts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ConfigEntryServiceIntentionsJwtArgs']]]]):
         pulumi.set(self, "jwts", value)
 
     @_builtins.property
     @pulumi.getter
-    def meta(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def meta(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Specifies key-value pairs to add to the KV store.
         """
         return pulumi.get(self, "meta")
 
     @meta.setter
-    def meta(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def meta(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "meta", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies a name of the destination service for all intentions defined in the configuration entry.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the namespace to apply the configuration entry.
         """
         return pulumi.get(self, "namespace")
 
     @namespace.setter
-    def namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace", value)
 
     @_builtins.property
     @pulumi.getter
-    def partition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def partition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the admin partition to apply the configuration entry.
         """
         return pulumi.get(self, "partition")
 
     @partition.setter
-    def partition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def partition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "partition", value)
 
     @_builtins.property
     @pulumi.getter
-    def sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceIntentionsSourceArgs']]]]:
+    def sources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ConfigEntryServiceIntentionsSourceArgs']]]]:
         """
         List of configurations that define intention sources and the authorization granted to the sources.
         """
         return pulumi.get(self, "sources")
 
     @sources.setter
-    def sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceIntentionsSourceArgs']]]]):
+    def sources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ConfigEntryServiceIntentionsSourceArgs']]]]):
         pulumi.set(self, "sources", value)
 
 
 @pulumi.input_type
 class _ConfigEntryServiceIntentionsState:
     def __init__(__self__, *,
-                 jwts: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceIntentionsJwtArgs']]]] = None,
-                 meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 partition: Optional[pulumi.Input[_builtins.str]] = None,
-                 sources: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceIntentionsSourceArgs']]]] = None):
+                 jwts: pulumi.Input[Optional[Sequence[pulumi.Input['ConfigEntryServiceIntentionsJwtArgs']]]] = None,
+                 meta: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 partition: pulumi.Input[Optional[_builtins.str]] = None,
+                 sources: pulumi.Input[Optional[Sequence[pulumi.Input['ConfigEntryServiceIntentionsSourceArgs']]]] = None):
         """
         Input properties used for looking up and filtering ConfigEntryServiceIntentions resources.
 
@@ -157,74 +157,74 @@ class _ConfigEntryServiceIntentionsState:
 
     @_builtins.property
     @pulumi.getter
-    def jwts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceIntentionsJwtArgs']]]]:
+    def jwts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ConfigEntryServiceIntentionsJwtArgs']]]]:
         """
         Specifies a JSON Web Token provider configured in a JWT provider configuration entry, as well as additional configurations for verifying a service's JWT before authorizing communication between services
         """
         return pulumi.get(self, "jwts")
 
     @jwts.setter
-    def jwts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceIntentionsJwtArgs']]]]):
+    def jwts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ConfigEntryServiceIntentionsJwtArgs']]]]):
         pulumi.set(self, "jwts", value)
 
     @_builtins.property
     @pulumi.getter
-    def meta(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def meta(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Specifies key-value pairs to add to the KV store.
         """
         return pulumi.get(self, "meta")
 
     @meta.setter
-    def meta(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def meta(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "meta", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies a name of the destination service for all intentions defined in the configuration entry.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the namespace to apply the configuration entry.
         """
         return pulumi.get(self, "namespace")
 
     @namespace.setter
-    def namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace", value)
 
     @_builtins.property
     @pulumi.getter
-    def partition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def partition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the admin partition to apply the configuration entry.
         """
         return pulumi.get(self, "partition")
 
     @partition.setter
-    def partition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def partition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "partition", value)
 
     @_builtins.property
     @pulumi.getter
-    def sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceIntentionsSourceArgs']]]]:
+    def sources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ConfigEntryServiceIntentionsSourceArgs']]]]:
         """
         List of configurations that define intention sources and the authorization granted to the sources.
         """
         return pulumi.get(self, "sources")
 
     @sources.setter
-    def sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceIntentionsSourceArgs']]]]):
+    def sources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ConfigEntryServiceIntentionsSourceArgs']]]]):
         pulumi.set(self, "sources", value)
 
 
@@ -234,12 +234,12 @@ class ConfigEntryServiceIntentions(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 jwts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceIntentionsJwtArgs', 'ConfigEntryServiceIntentionsJwtArgsDict']]]]] = None,
-                 meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 partition: Optional[pulumi.Input[_builtins.str]] = None,
-                 sources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceIntentionsSourceArgs', 'ConfigEntryServiceIntentionsSourceArgsDict']]]]] = None,
+                 jwts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigEntryServiceIntentionsJwtArgs', 'ConfigEntryServiceIntentionsJwtArgsDict']]]]] = None,
+                 meta: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 partition: pulumi.Input[Optional[_builtins.str]] = None,
+                 sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigEntryServiceIntentionsSourceArgs', 'ConfigEntryServiceIntentionsSourceArgsDict']]]]] = None,
                  __props__=None):
         """
         The `consul_service_intentions_config_entry` resource configures [service intentions](https://developer.hashicorp.com/consul/docs/connect/config-entries/service-intentions) that are configurations for controlling access between services in the service mesh. A single service intentions configuration entry specifies one destination service and one or more L4 traffic sources, L7 traffic sources, or combination of traffic sources.
@@ -375,12 +375,12 @@ class ConfigEntryServiceIntentions(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 jwts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceIntentionsJwtArgs', 'ConfigEntryServiceIntentionsJwtArgsDict']]]]] = None,
-                 meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 partition: Optional[pulumi.Input[_builtins.str]] = None,
-                 sources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceIntentionsSourceArgs', 'ConfigEntryServiceIntentionsSourceArgsDict']]]]] = None,
+                 jwts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigEntryServiceIntentionsJwtArgs', 'ConfigEntryServiceIntentionsJwtArgsDict']]]]] = None,
+                 meta: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 partition: pulumi.Input[Optional[_builtins.str]] = None,
+                 sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigEntryServiceIntentionsSourceArgs', 'ConfigEntryServiceIntentionsSourceArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -406,12 +406,12 @@ class ConfigEntryServiceIntentions(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            jwts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceIntentionsJwtArgs', 'ConfigEntryServiceIntentionsJwtArgsDict']]]]] = None,
-            meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            namespace: Optional[pulumi.Input[_builtins.str]] = None,
-            partition: Optional[pulumi.Input[_builtins.str]] = None,
-            sources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceIntentionsSourceArgs', 'ConfigEntryServiceIntentionsSourceArgsDict']]]]] = None) -> 'ConfigEntryServiceIntentions':
+            jwts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigEntryServiceIntentionsJwtArgs', 'ConfigEntryServiceIntentionsJwtArgsDict']]]]] = None,
+            meta: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            partition: pulumi.Input[Optional[_builtins.str]] = None,
+            sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigEntryServiceIntentionsSourceArgs', 'ConfigEntryServiceIntentionsSourceArgsDict']]]]] = None) -> 'ConfigEntryServiceIntentions':
         """
         Get an existing ConfigEntryServiceIntentions resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -150,35 +150,35 @@ export interface AclBindingRuleState {
     /**
      * The name of the ACL auth method this rule apply.
      */
-    authMethod?: pulumi.Input<string>;
+    authMethod?: pulumi.Input<string | undefined>;
     /**
      * The name to bind to a token at login-time.
      */
-    bindName?: pulumi.Input<string>;
+    bindName?: pulumi.Input<string | undefined>;
     /**
      * Specifies the way the binding rule affects a token created at login.
      */
-    bindType?: pulumi.Input<string>;
+    bindType?: pulumi.Input<string | undefined>;
     /**
      * The variables used when binding rule type is `templated-policy`. Can be lightly templated using HIL `${foo}` syntax from available field names.
      */
-    bindVars?: pulumi.Input<inputs.AclBindingRuleBindVars>;
+    bindVars?: pulumi.Input<inputs.AclBindingRuleBindVars | undefined>;
     /**
      * A free form human readable description of the binding rule.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The namespace to create the binding rule within.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * The partition the ACL binding rule is associated with.
      */
-    partition?: pulumi.Input<string>;
+    partition?: pulumi.Input<string | undefined>;
     /**
      * The expression used to match this rule against valid identities returned from an auth method validation.
      */
-    selector?: pulumi.Input<string>;
+    selector?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -200,21 +200,21 @@ export interface AclBindingRuleArgs {
     /**
      * The variables used when binding rule type is `templated-policy`. Can be lightly templated using HIL `${foo}` syntax from available field names.
      */
-    bindVars?: pulumi.Input<inputs.AclBindingRuleBindVars>;
+    bindVars?: pulumi.Input<inputs.AclBindingRuleBindVars | undefined>;
     /**
      * A free form human readable description of the binding rule.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The namespace to create the binding rule within.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * The partition the ACL binding rule is associated with.
      */
-    partition?: pulumi.Input<string>;
+    partition?: pulumi.Input<string | undefined>;
     /**
      * The expression used to match this rule against valid identities returned from an auth method validation.
      */
-    selector?: pulumi.Input<string>;
+    selector?: pulumi.Input<string | undefined>;
 }

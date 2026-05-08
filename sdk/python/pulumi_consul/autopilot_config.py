@@ -19,14 +19,14 @@ __all__ = ['AutopilotConfigArgs', 'AutopilotConfig']
 @pulumi.input_type
 class AutopilotConfigArgs:
     def __init__(__self__, *,
-                 cleanup_dead_servers: Optional[pulumi.Input[_builtins.bool]] = None,
-                 datacenter: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_upgrade_migration: Optional[pulumi.Input[_builtins.bool]] = None,
-                 last_contact_threshold: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_trailing_logs: Optional[pulumi.Input[_builtins.int]] = None,
-                 redundancy_zone_tag: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_stabilization_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 upgrade_version_tag: Optional[pulumi.Input[_builtins.str]] = None):
+                 cleanup_dead_servers: pulumi.Input[Optional[_builtins.bool]] = None,
+                 datacenter: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_upgrade_migration: pulumi.Input[Optional[_builtins.bool]] = None,
+                 last_contact_threshold: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_trailing_logs: pulumi.Input[Optional[_builtins.int]] = None,
+                 redundancy_zone_tag: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_stabilization_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 upgrade_version_tag: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AutopilotConfig resource.
 
@@ -68,7 +68,7 @@ class AutopilotConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="cleanupDeadServers")
-    def cleanup_dead_servers(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def cleanup_dead_servers(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to remove failing servers when a
         replacement comes online. Defaults to true.
@@ -76,12 +76,12 @@ class AutopilotConfigArgs:
         return pulumi.get(self, "cleanup_dead_servers")
 
     @cleanup_dead_servers.setter
-    def cleanup_dead_servers(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def cleanup_dead_servers(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "cleanup_dead_servers", value)
 
     @_builtins.property
     @pulumi.getter
-    def datacenter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def datacenter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The datacenter to use. This overrides the agent's
         default datacenter and the datacenter in the provider setup.
@@ -89,12 +89,12 @@ class AutopilotConfigArgs:
         return pulumi.get(self, "datacenter")
 
     @datacenter.setter
-    def datacenter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def datacenter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "datacenter", value)
 
     @_builtins.property
     @pulumi.getter(name="disableUpgradeMigration")
-    def disable_upgrade_migration(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_upgrade_migration(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to disable [upgrade migrations](https://www.consul.io/docs/guides/autopilot.html#redundancy-zones).
         Defaults to false.
@@ -102,12 +102,12 @@ class AutopilotConfigArgs:
         return pulumi.get(self, "disable_upgrade_migration")
 
     @disable_upgrade_migration.setter
-    def disable_upgrade_migration(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_upgrade_migration(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_upgrade_migration", value)
 
     @_builtins.property
     @pulumi.getter(name="lastContactThreshold")
-    def last_contact_threshold(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_contact_threshold(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time after which a server is
         considered as unhealthy and will be removed. Defaults to `"200ms"`.
@@ -115,12 +115,12 @@ class AutopilotConfigArgs:
         return pulumi.get(self, "last_contact_threshold")
 
     @last_contact_threshold.setter
-    def last_contact_threshold(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_contact_threshold(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_contact_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="maxTrailingLogs")
-    def max_trailing_logs(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_trailing_logs(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of Raft log entries a
         server can trail the leader. Defaults to 250.
@@ -128,12 +128,12 @@ class AutopilotConfigArgs:
         return pulumi.get(self, "max_trailing_logs")
 
     @max_trailing_logs.setter
-    def max_trailing_logs(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_trailing_logs(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_trailing_logs", value)
 
     @_builtins.property
     @pulumi.getter(name="redundancyZoneTag")
-    def redundancy_zone_tag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def redundancy_zone_tag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The [redundancy zone](https://www.consul.io/docs/guides/autopilot.html#redundancy-zones)
         tag to use. Consul will try to keep one voting server by zone to take advantage
@@ -142,12 +142,12 @@ class AutopilotConfigArgs:
         return pulumi.get(self, "redundancy_zone_tag")
 
     @redundancy_zone_tag.setter
-    def redundancy_zone_tag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def redundancy_zone_tag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "redundancy_zone_tag", value)
 
     @_builtins.property
     @pulumi.getter(name="serverStabilizationTime")
-    def server_stabilization_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_stabilization_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The period to wait for a server to be
         healthy and stable before being promoted to a full, voting member. Defaults to
@@ -156,12 +156,12 @@ class AutopilotConfigArgs:
         return pulumi.get(self, "server_stabilization_time")
 
     @server_stabilization_time.setter
-    def server_stabilization_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_stabilization_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_stabilization_time", value)
 
     @_builtins.property
     @pulumi.getter(name="upgradeVersionTag")
-    def upgrade_version_tag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def upgrade_version_tag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The tag to override the version information
         used during a migration. Defaults to an empty string.
@@ -169,21 +169,21 @@ class AutopilotConfigArgs:
         return pulumi.get(self, "upgrade_version_tag")
 
     @upgrade_version_tag.setter
-    def upgrade_version_tag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def upgrade_version_tag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "upgrade_version_tag", value)
 
 
 @pulumi.input_type
 class _AutopilotConfigState:
     def __init__(__self__, *,
-                 cleanup_dead_servers: Optional[pulumi.Input[_builtins.bool]] = None,
-                 datacenter: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_upgrade_migration: Optional[pulumi.Input[_builtins.bool]] = None,
-                 last_contact_threshold: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_trailing_logs: Optional[pulumi.Input[_builtins.int]] = None,
-                 redundancy_zone_tag: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_stabilization_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 upgrade_version_tag: Optional[pulumi.Input[_builtins.str]] = None):
+                 cleanup_dead_servers: pulumi.Input[Optional[_builtins.bool]] = None,
+                 datacenter: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_upgrade_migration: pulumi.Input[Optional[_builtins.bool]] = None,
+                 last_contact_threshold: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_trailing_logs: pulumi.Input[Optional[_builtins.int]] = None,
+                 redundancy_zone_tag: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_stabilization_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 upgrade_version_tag: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AutopilotConfig resources.
 
@@ -225,7 +225,7 @@ class _AutopilotConfigState:
 
     @_builtins.property
     @pulumi.getter(name="cleanupDeadServers")
-    def cleanup_dead_servers(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def cleanup_dead_servers(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to remove failing servers when a
         replacement comes online. Defaults to true.
@@ -233,12 +233,12 @@ class _AutopilotConfigState:
         return pulumi.get(self, "cleanup_dead_servers")
 
     @cleanup_dead_servers.setter
-    def cleanup_dead_servers(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def cleanup_dead_servers(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "cleanup_dead_servers", value)
 
     @_builtins.property
     @pulumi.getter
-    def datacenter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def datacenter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The datacenter to use. This overrides the agent's
         default datacenter and the datacenter in the provider setup.
@@ -246,12 +246,12 @@ class _AutopilotConfigState:
         return pulumi.get(self, "datacenter")
 
     @datacenter.setter
-    def datacenter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def datacenter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "datacenter", value)
 
     @_builtins.property
     @pulumi.getter(name="disableUpgradeMigration")
-    def disable_upgrade_migration(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_upgrade_migration(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to disable [upgrade migrations](https://www.consul.io/docs/guides/autopilot.html#redundancy-zones).
         Defaults to false.
@@ -259,12 +259,12 @@ class _AutopilotConfigState:
         return pulumi.get(self, "disable_upgrade_migration")
 
     @disable_upgrade_migration.setter
-    def disable_upgrade_migration(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_upgrade_migration(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_upgrade_migration", value)
 
     @_builtins.property
     @pulumi.getter(name="lastContactThreshold")
-    def last_contact_threshold(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_contact_threshold(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time after which a server is
         considered as unhealthy and will be removed. Defaults to `"200ms"`.
@@ -272,12 +272,12 @@ class _AutopilotConfigState:
         return pulumi.get(self, "last_contact_threshold")
 
     @last_contact_threshold.setter
-    def last_contact_threshold(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_contact_threshold(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_contact_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="maxTrailingLogs")
-    def max_trailing_logs(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_trailing_logs(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of Raft log entries a
         server can trail the leader. Defaults to 250.
@@ -285,12 +285,12 @@ class _AutopilotConfigState:
         return pulumi.get(self, "max_trailing_logs")
 
     @max_trailing_logs.setter
-    def max_trailing_logs(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_trailing_logs(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_trailing_logs", value)
 
     @_builtins.property
     @pulumi.getter(name="redundancyZoneTag")
-    def redundancy_zone_tag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def redundancy_zone_tag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The [redundancy zone](https://www.consul.io/docs/guides/autopilot.html#redundancy-zones)
         tag to use. Consul will try to keep one voting server by zone to take advantage
@@ -299,12 +299,12 @@ class _AutopilotConfigState:
         return pulumi.get(self, "redundancy_zone_tag")
 
     @redundancy_zone_tag.setter
-    def redundancy_zone_tag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def redundancy_zone_tag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "redundancy_zone_tag", value)
 
     @_builtins.property
     @pulumi.getter(name="serverStabilizationTime")
-    def server_stabilization_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_stabilization_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The period to wait for a server to be
         healthy and stable before being promoted to a full, voting member. Defaults to
@@ -313,12 +313,12 @@ class _AutopilotConfigState:
         return pulumi.get(self, "server_stabilization_time")
 
     @server_stabilization_time.setter
-    def server_stabilization_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_stabilization_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_stabilization_time", value)
 
     @_builtins.property
     @pulumi.getter(name="upgradeVersionTag")
-    def upgrade_version_tag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def upgrade_version_tag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The tag to override the version information
         used during a migration. Defaults to an empty string.
@@ -326,7 +326,7 @@ class _AutopilotConfigState:
         return pulumi.get(self, "upgrade_version_tag")
 
     @upgrade_version_tag.setter
-    def upgrade_version_tag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def upgrade_version_tag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "upgrade_version_tag", value)
 
 
@@ -336,14 +336,14 @@ class AutopilotConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cleanup_dead_servers: Optional[pulumi.Input[_builtins.bool]] = None,
-                 datacenter: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_upgrade_migration: Optional[pulumi.Input[_builtins.bool]] = None,
-                 last_contact_threshold: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_trailing_logs: Optional[pulumi.Input[_builtins.int]] = None,
-                 redundancy_zone_tag: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_stabilization_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 upgrade_version_tag: Optional[pulumi.Input[_builtins.str]] = None,
+                 cleanup_dead_servers: pulumi.Input[Optional[_builtins.bool]] = None,
+                 datacenter: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_upgrade_migration: pulumi.Input[Optional[_builtins.bool]] = None,
+                 last_contact_threshold: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_trailing_logs: pulumi.Input[Optional[_builtins.int]] = None,
+                 redundancy_zone_tag: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_stabilization_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 upgrade_version_tag: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides access to the [Autopilot Configuration](https://www.consul.io/docs/guides/autopilot.html)
@@ -427,14 +427,14 @@ class AutopilotConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cleanup_dead_servers: Optional[pulumi.Input[_builtins.bool]] = None,
-                 datacenter: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_upgrade_migration: Optional[pulumi.Input[_builtins.bool]] = None,
-                 last_contact_threshold: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_trailing_logs: Optional[pulumi.Input[_builtins.int]] = None,
-                 redundancy_zone_tag: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_stabilization_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 upgrade_version_tag: Optional[pulumi.Input[_builtins.str]] = None,
+                 cleanup_dead_servers: pulumi.Input[Optional[_builtins.bool]] = None,
+                 datacenter: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_upgrade_migration: pulumi.Input[Optional[_builtins.bool]] = None,
+                 last_contact_threshold: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_trailing_logs: pulumi.Input[Optional[_builtins.int]] = None,
+                 redundancy_zone_tag: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_stabilization_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 upgrade_version_tag: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -462,14 +462,14 @@ class AutopilotConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cleanup_dead_servers: Optional[pulumi.Input[_builtins.bool]] = None,
-            datacenter: Optional[pulumi.Input[_builtins.str]] = None,
-            disable_upgrade_migration: Optional[pulumi.Input[_builtins.bool]] = None,
-            last_contact_threshold: Optional[pulumi.Input[_builtins.str]] = None,
-            max_trailing_logs: Optional[pulumi.Input[_builtins.int]] = None,
-            redundancy_zone_tag: Optional[pulumi.Input[_builtins.str]] = None,
-            server_stabilization_time: Optional[pulumi.Input[_builtins.str]] = None,
-            upgrade_version_tag: Optional[pulumi.Input[_builtins.str]] = None) -> 'AutopilotConfig':
+            cleanup_dead_servers: pulumi.Input[Optional[_builtins.bool]] = None,
+            datacenter: pulumi.Input[Optional[_builtins.str]] = None,
+            disable_upgrade_migration: pulumi.Input[Optional[_builtins.bool]] = None,
+            last_contact_threshold: pulumi.Input[Optional[_builtins.str]] = None,
+            max_trailing_logs: pulumi.Input[Optional[_builtins.int]] = None,
+            redundancy_zone_tag: pulumi.Input[Optional[_builtins.str]] = None,
+            server_stabilization_time: pulumi.Input[Optional[_builtins.str]] = None,
+            upgrade_version_tag: pulumi.Input[Optional[_builtins.str]] = None) -> 'AutopilotConfig':
         """
         Get an existing AutopilotConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

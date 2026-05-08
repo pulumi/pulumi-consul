@@ -172,47 +172,47 @@ export interface ConfigEntryServiceResolverState {
     /**
      * Specifies the timeout duration for establishing new network connections to this service.
      */
-    connectTimeout?: pulumi.Input<string>;
+    connectTimeout?: pulumi.Input<string | undefined>;
     /**
      * Specifies a defined subset of service instances to use when no explicit subset is requested. If this parameter is not specified, Consul uses the unnamed default subset.
      */
-    defaultSubset?: pulumi.Input<string>;
+    defaultSubset?: pulumi.Input<string | undefined>;
     /**
      * Specifies controls for rerouting traffic to an alternate pool of service instances if the target service fails.
      */
-    failovers?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceResolverFailover>[]>;
+    failovers?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceResolverFailover>[] | undefined>;
     /**
      * Specifies the load balancing policy and configuration for services issuing requests to this upstream.
      */
-    loadBalancers?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceResolverLoadBalancer>[]>;
+    loadBalancers?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceResolverLoadBalancer>[] | undefined>;
     /**
      * Specifies key-value pairs to add to the KV store.
      */
-    meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    meta?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Specifies a name for the configuration entry.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Specifies the namespace that the service resolver applies to.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * Specifies the admin partition that the service resolver applies to.
      */
-    partition?: pulumi.Input<string>;
+    partition?: pulumi.Input<string | undefined>;
     /**
      * Specifies redirect instructions for local service traffic so that services deployed to a different network location resolve the upstream request instead.
      */
-    redirects?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceResolverRedirect>[]>;
+    redirects?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceResolverRedirect>[] | undefined>;
     /**
      * Specifies the timeout duration for receiving an HTTP response from this service.
      */
-    requestTimeout?: pulumi.Input<string>;
+    requestTimeout?: pulumi.Input<string | undefined>;
     /**
      * Specifies names for custom service subsets and the conditions under which service instances belong to each subset.
      */
-    subsets?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceResolverSubset>[]>;
+    subsets?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceResolverSubset>[] | undefined>;
 }
 
 /**
@@ -222,45 +222,45 @@ export interface ConfigEntryServiceResolverArgs {
     /**
      * Specifies the timeout duration for establishing new network connections to this service.
      */
-    connectTimeout?: pulumi.Input<string>;
+    connectTimeout?: pulumi.Input<string | undefined>;
     /**
      * Specifies a defined subset of service instances to use when no explicit subset is requested. If this parameter is not specified, Consul uses the unnamed default subset.
      */
-    defaultSubset?: pulumi.Input<string>;
+    defaultSubset?: pulumi.Input<string | undefined>;
     /**
      * Specifies controls for rerouting traffic to an alternate pool of service instances if the target service fails.
      */
-    failovers?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceResolverFailover>[]>;
+    failovers?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceResolverFailover>[] | undefined>;
     /**
      * Specifies the load balancing policy and configuration for services issuing requests to this upstream.
      */
-    loadBalancers?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceResolverLoadBalancer>[]>;
+    loadBalancers?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceResolverLoadBalancer>[] | undefined>;
     /**
      * Specifies key-value pairs to add to the KV store.
      */
-    meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    meta?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Specifies a name for the configuration entry.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Specifies the namespace that the service resolver applies to.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * Specifies the admin partition that the service resolver applies to.
      */
-    partition?: pulumi.Input<string>;
+    partition?: pulumi.Input<string | undefined>;
     /**
      * Specifies redirect instructions for local service traffic so that services deployed to a different network location resolve the upstream request instead.
      */
-    redirects?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceResolverRedirect>[]>;
+    redirects?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceResolverRedirect>[] | undefined>;
     /**
      * Specifies the timeout duration for receiving an HTTP response from this service.
      */
-    requestTimeout?: pulumi.Input<string>;
+    requestTimeout?: pulumi.Input<string | undefined>;
     /**
      * Specifies names for custom service subsets and the conditions under which service instances belong to each subset.
      */
-    subsets?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceResolverSubset>[]>;
+    subsets?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceResolverSubset>[] | undefined>;
 }

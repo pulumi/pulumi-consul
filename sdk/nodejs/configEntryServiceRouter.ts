@@ -96,23 +96,23 @@ export interface ConfigEntryServiceRouterState {
     /**
      * Specifies key-value pairs to add to the KV store.
      */
-    meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    meta?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Specifies a name for the configuration entry.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Specifies the namespace to apply the configuration entry.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * Specifies the admin partition to apply the configuration entry.
      */
-    partition?: pulumi.Input<string>;
+    partition?: pulumi.Input<string | undefined>;
     /**
      * Defines the possible routes for L7 requests.
      */
-    routes?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceRouterRoute>[]>;
+    routes?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceRouterRoute>[] | undefined>;
 }
 
 /**
@@ -122,21 +122,21 @@ export interface ConfigEntryServiceRouterArgs {
     /**
      * Specifies key-value pairs to add to the KV store.
      */
-    meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    meta?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Specifies a name for the configuration entry.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Specifies the namespace to apply the configuration entry.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * Specifies the admin partition to apply the configuration entry.
      */
-    partition?: pulumi.Input<string>;
+    partition?: pulumi.Input<string | undefined>;
     /**
      * Defines the possible routes for L7 requests.
      */
-    routes?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceRouterRoute>[]>;
+    routes?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceRouterRoute>[] | undefined>;
 }

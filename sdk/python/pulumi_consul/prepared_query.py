@@ -22,21 +22,21 @@ __all__ = ['PreparedQueryArgs', 'PreparedQuery']
 class PreparedQueryArgs:
     def __init__(__self__, *,
                  service: pulumi.Input[_builtins.str],
-                 connect: Optional[pulumi.Input[_builtins.bool]] = None,
-                 datacenter: Optional[pulumi.Input[_builtins.str]] = None,
-                 dns: Optional[pulumi.Input['PreparedQueryDnsArgs']] = None,
-                 failover: Optional[pulumi.Input['PreparedQueryFailoverArgs']] = None,
-                 ignore_check_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 near: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 only_passing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 service_meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 session: Optional[pulumi.Input[_builtins.str]] = None,
-                 stored_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 template: Optional[pulumi.Input['PreparedQueryTemplateArgs']] = None,
-                 token: Optional[pulumi.Input[_builtins.str]] = None):
+                 connect: pulumi.Input[Optional[_builtins.bool]] = None,
+                 datacenter: pulumi.Input[Optional[_builtins.str]] = None,
+                 dns: pulumi.Input[Optional['PreparedQueryDnsArgs']] = None,
+                 failover: pulumi.Input[Optional['PreparedQueryFailoverArgs']] = None,
+                 ignore_check_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 near: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_meta: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 only_passing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 service_meta: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 session: pulumi.Input[Optional[_builtins.str]] = None,
+                 stored_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 template: pulumi.Input[Optional['PreparedQueryTemplateArgs']] = None,
+                 token: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a PreparedQuery resource.
 
@@ -108,206 +108,206 @@ Please use the token argument in the provider configuration""")
 
     @_builtins.property
     @pulumi.getter
-    def connect(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def connect(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When `true` the prepared query will return connect proxy services for a queried service.  Conditions such as `tags` in the prepared query will be matched against the proxy service. Defaults to false.
         """
         return pulumi.get(self, "connect")
 
     @connect.setter
-    def connect(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def connect(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "connect", value)
 
     @_builtins.property
     @pulumi.getter
-    def datacenter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def datacenter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
         """
         return pulumi.get(self, "datacenter")
 
     @datacenter.setter
-    def datacenter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def datacenter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "datacenter", value)
 
     @_builtins.property
     @pulumi.getter
-    def dns(self) -> Optional[pulumi.Input['PreparedQueryDnsArgs']]:
+    def dns(self) -> pulumi.Input[Optional['PreparedQueryDnsArgs']]:
         """
         Settings for controlling the DNS response details.
         """
         return pulumi.get(self, "dns")
 
     @dns.setter
-    def dns(self, value: Optional[pulumi.Input['PreparedQueryDnsArgs']]):
+    def dns(self, value: pulumi.Input[Optional['PreparedQueryDnsArgs']]):
         pulumi.set(self, "dns", value)
 
     @_builtins.property
     @pulumi.getter
-    def failover(self) -> Optional[pulumi.Input['PreparedQueryFailoverArgs']]:
+    def failover(self) -> pulumi.Input[Optional['PreparedQueryFailoverArgs']]:
         """
         Options for controlling behavior when no healthy nodes are available in the local DC.
         """
         return pulumi.get(self, "failover")
 
     @failover.setter
-    def failover(self, value: Optional[pulumi.Input['PreparedQueryFailoverArgs']]):
+    def failover(self, value: pulumi.Input[Optional['PreparedQueryFailoverArgs']]):
         pulumi.set(self, "failover", value)
 
     @_builtins.property
     @pulumi.getter(name="ignoreCheckIds")
-    def ignore_check_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ignore_check_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Specifies a list of check IDs that should be ignored when filtering unhealthy instances. This is mostly useful in an emergency or as a temporary measure when a health check is found to be unreliable. Being able to ignore it in centrally-defined queries can be simpler than de-registering the check as an interim solution until the check can be fixed.
         """
         return pulumi.get(self, "ignore_check_ids")
 
     @ignore_check_ids.setter
-    def ignore_check_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ignore_check_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ignore_check_ids", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the prepared query. Used to identify the prepared query during requests. Can be specified as an empty string to configure the query as a catch-all.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def near(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def near(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Allows specifying the name of a node to sort results near using Consul's distance sorting and network coordinates. The magic `_agent` value can be used to always sort nearest the node servicing the request.
         """
         return pulumi.get(self, "near")
 
     @near.setter
-    def near(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def near(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "near", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeMeta")
-    def node_meta(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def node_meta(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Specifies a list of user-defined key/value pairs that will be used for filtering the query results to nodes with the given metadata values present.
         """
         return pulumi.get(self, "node_meta")
 
     @node_meta.setter
-    def node_meta(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def node_meta(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "node_meta", value)
 
     @_builtins.property
     @pulumi.getter(name="onlyPassing")
-    def only_passing(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def only_passing(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When `true`, the prepared query will only return nodes with passing health checks in the result.
         """
         return pulumi.get(self, "only_passing")
 
     @only_passing.setter
-    def only_passing(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def only_passing(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "only_passing", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceMeta")
-    def service_meta(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def service_meta(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Specifies a list of user-defined key/value pairs that will be used for filtering the query results to services with the given metadata values present.
         """
         return pulumi.get(self, "service_meta")
 
     @service_meta.setter
-    def service_meta(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def service_meta(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "service_meta", value)
 
     @_builtins.property
     @pulumi.getter
-    def session(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def session(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Consul session to tie this query's lifetime to.  This is an advanced parameter that should not be used without a complete understanding of Consul sessions and the implications of their use (it is recommended to leave this blank in nearly all cases).  If this parameter is omitted the query will not expire.
         """
         return pulumi.get(self, "session")
 
     @session.setter
-    def session(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def session(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "session", value)
 
     @_builtins.property
     @pulumi.getter(name="storedToken")
-    def stored_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def stored_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ACL token to store with the prepared query. This token will be used by default whenever the query is executed.
         """
         return pulumi.get(self, "stored_token")
 
     @stored_token.setter
-    def stored_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def stored_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "stored_token", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of required and/or disallowed tags.  If a tag is in this list it must be present.  If the tag is preceded with a "!" then it is disallowed.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def template(self) -> Optional[pulumi.Input['PreparedQueryTemplateArgs']]:
+    def template(self) -> pulumi.Input[Optional['PreparedQueryTemplateArgs']]:
         """
         Query templating options. This is used to make a single prepared query respond to many different requests
         """
         return pulumi.get(self, "template")
 
     @template.setter
-    def template(self, value: Optional[pulumi.Input['PreparedQueryTemplateArgs']]):
+    def template(self, value: pulumi.Input[Optional['PreparedQueryTemplateArgs']]):
         pulumi.set(self, "template", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration""")
-    def token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ACL token to use when saving the prepared query. This overrides the token that the agent provides by default.
         """
         return pulumi.get(self, "token")
 
     @token.setter
-    def token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token", value)
 
 
 @pulumi.input_type
 class _PreparedQueryState:
     def __init__(__self__, *,
-                 connect: Optional[pulumi.Input[_builtins.bool]] = None,
-                 datacenter: Optional[pulumi.Input[_builtins.str]] = None,
-                 dns: Optional[pulumi.Input['PreparedQueryDnsArgs']] = None,
-                 failover: Optional[pulumi.Input['PreparedQueryFailoverArgs']] = None,
-                 ignore_check_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 near: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 only_passing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 service: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 session: Optional[pulumi.Input[_builtins.str]] = None,
-                 stored_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 template: Optional[pulumi.Input['PreparedQueryTemplateArgs']] = None,
-                 token: Optional[pulumi.Input[_builtins.str]] = None):
+                 connect: pulumi.Input[Optional[_builtins.bool]] = None,
+                 datacenter: pulumi.Input[Optional[_builtins.str]] = None,
+                 dns: pulumi.Input[Optional['PreparedQueryDnsArgs']] = None,
+                 failover: pulumi.Input[Optional['PreparedQueryFailoverArgs']] = None,
+                 ignore_check_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 near: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_meta: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 only_passing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 service: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_meta: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 session: pulumi.Input[Optional[_builtins.str]] = None,
+                 stored_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 template: pulumi.Input[Optional['PreparedQueryTemplateArgs']] = None,
+                 token: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PreparedQuery resources.
 
@@ -368,196 +368,196 @@ Please use the token argument in the provider configuration""")
 
     @_builtins.property
     @pulumi.getter
-    def connect(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def connect(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When `true` the prepared query will return connect proxy services for a queried service.  Conditions such as `tags` in the prepared query will be matched against the proxy service. Defaults to false.
         """
         return pulumi.get(self, "connect")
 
     @connect.setter
-    def connect(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def connect(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "connect", value)
 
     @_builtins.property
     @pulumi.getter
-    def datacenter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def datacenter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
         """
         return pulumi.get(self, "datacenter")
 
     @datacenter.setter
-    def datacenter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def datacenter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "datacenter", value)
 
     @_builtins.property
     @pulumi.getter
-    def dns(self) -> Optional[pulumi.Input['PreparedQueryDnsArgs']]:
+    def dns(self) -> pulumi.Input[Optional['PreparedQueryDnsArgs']]:
         """
         Settings for controlling the DNS response details.
         """
         return pulumi.get(self, "dns")
 
     @dns.setter
-    def dns(self, value: Optional[pulumi.Input['PreparedQueryDnsArgs']]):
+    def dns(self, value: pulumi.Input[Optional['PreparedQueryDnsArgs']]):
         pulumi.set(self, "dns", value)
 
     @_builtins.property
     @pulumi.getter
-    def failover(self) -> Optional[pulumi.Input['PreparedQueryFailoverArgs']]:
+    def failover(self) -> pulumi.Input[Optional['PreparedQueryFailoverArgs']]:
         """
         Options for controlling behavior when no healthy nodes are available in the local DC.
         """
         return pulumi.get(self, "failover")
 
     @failover.setter
-    def failover(self, value: Optional[pulumi.Input['PreparedQueryFailoverArgs']]):
+    def failover(self, value: pulumi.Input[Optional['PreparedQueryFailoverArgs']]):
         pulumi.set(self, "failover", value)
 
     @_builtins.property
     @pulumi.getter(name="ignoreCheckIds")
-    def ignore_check_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ignore_check_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Specifies a list of check IDs that should be ignored when filtering unhealthy instances. This is mostly useful in an emergency or as a temporary measure when a health check is found to be unreliable. Being able to ignore it in centrally-defined queries can be simpler than de-registering the check as an interim solution until the check can be fixed.
         """
         return pulumi.get(self, "ignore_check_ids")
 
     @ignore_check_ids.setter
-    def ignore_check_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ignore_check_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ignore_check_ids", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the prepared query. Used to identify the prepared query during requests. Can be specified as an empty string to configure the query as a catch-all.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def near(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def near(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Allows specifying the name of a node to sort results near using Consul's distance sorting and network coordinates. The magic `_agent` value can be used to always sort nearest the node servicing the request.
         """
         return pulumi.get(self, "near")
 
     @near.setter
-    def near(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def near(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "near", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeMeta")
-    def node_meta(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def node_meta(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Specifies a list of user-defined key/value pairs that will be used for filtering the query results to nodes with the given metadata values present.
         """
         return pulumi.get(self, "node_meta")
 
     @node_meta.setter
-    def node_meta(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def node_meta(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "node_meta", value)
 
     @_builtins.property
     @pulumi.getter(name="onlyPassing")
-    def only_passing(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def only_passing(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When `true`, the prepared query will only return nodes with passing health checks in the result.
         """
         return pulumi.get(self, "only_passing")
 
     @only_passing.setter
-    def only_passing(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def only_passing(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "only_passing", value)
 
     @_builtins.property
     @pulumi.getter
-    def service(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the service to query
         """
         return pulumi.get(self, "service")
 
     @service.setter
-    def service(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceMeta")
-    def service_meta(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def service_meta(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Specifies a list of user-defined key/value pairs that will be used for filtering the query results to services with the given metadata values present.
         """
         return pulumi.get(self, "service_meta")
 
     @service_meta.setter
-    def service_meta(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def service_meta(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "service_meta", value)
 
     @_builtins.property
     @pulumi.getter
-    def session(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def session(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Consul session to tie this query's lifetime to.  This is an advanced parameter that should not be used without a complete understanding of Consul sessions and the implications of their use (it is recommended to leave this blank in nearly all cases).  If this parameter is omitted the query will not expire.
         """
         return pulumi.get(self, "session")
 
     @session.setter
-    def session(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def session(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "session", value)
 
     @_builtins.property
     @pulumi.getter(name="storedToken")
-    def stored_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def stored_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ACL token to store with the prepared query. This token will be used by default whenever the query is executed.
         """
         return pulumi.get(self, "stored_token")
 
     @stored_token.setter
-    def stored_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def stored_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "stored_token", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of required and/or disallowed tags.  If a tag is in this list it must be present.  If the tag is preceded with a "!" then it is disallowed.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def template(self) -> Optional[pulumi.Input['PreparedQueryTemplateArgs']]:
+    def template(self) -> pulumi.Input[Optional['PreparedQueryTemplateArgs']]:
         """
         Query templating options. This is used to make a single prepared query respond to many different requests
         """
         return pulumi.get(self, "template")
 
     @template.setter
-    def template(self, value: Optional[pulumi.Input['PreparedQueryTemplateArgs']]):
+    def template(self, value: pulumi.Input[Optional['PreparedQueryTemplateArgs']]):
         pulumi.set(self, "template", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration""")
-    def token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ACL token to use when saving the prepared query. This overrides the token that the agent provides by default.
         """
         return pulumi.get(self, "token")
 
     @token.setter
-    def token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token", value)
 
 
@@ -567,22 +567,22 @@ class PreparedQuery(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 connect: Optional[pulumi.Input[_builtins.bool]] = None,
-                 datacenter: Optional[pulumi.Input[_builtins.str]] = None,
-                 dns: Optional[pulumi.Input[Union['PreparedQueryDnsArgs', 'PreparedQueryDnsArgsDict']]] = None,
-                 failover: Optional[pulumi.Input[Union['PreparedQueryFailoverArgs', 'PreparedQueryFailoverArgsDict']]] = None,
-                 ignore_check_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 near: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 only_passing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 service: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 session: Optional[pulumi.Input[_builtins.str]] = None,
-                 stored_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 template: Optional[pulumi.Input[Union['PreparedQueryTemplateArgs', 'PreparedQueryTemplateArgsDict']]] = None,
-                 token: Optional[pulumi.Input[_builtins.str]] = None,
+                 connect: pulumi.Input[Optional[_builtins.bool]] = None,
+                 datacenter: pulumi.Input[Optional[_builtins.str]] = None,
+                 dns: pulumi.Input[Optional[Union['PreparedQueryDnsArgs', 'PreparedQueryDnsArgsDict']]] = None,
+                 failover: pulumi.Input[Optional[Union['PreparedQueryFailoverArgs', 'PreparedQueryFailoverArgsDict']]] = None,
+                 ignore_check_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 near: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_meta: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 only_passing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 service: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_meta: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 session: pulumi.Input[Optional[_builtins.str]] = None,
+                 stored_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 template: pulumi.Input[Optional[Union['PreparedQueryTemplateArgs', 'PreparedQueryTemplateArgsDict']]] = None,
+                 token: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Allows Terraform to manage a Consul prepared query.
@@ -770,22 +770,22 @@ class PreparedQuery(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 connect: Optional[pulumi.Input[_builtins.bool]] = None,
-                 datacenter: Optional[pulumi.Input[_builtins.str]] = None,
-                 dns: Optional[pulumi.Input[Union['PreparedQueryDnsArgs', 'PreparedQueryDnsArgsDict']]] = None,
-                 failover: Optional[pulumi.Input[Union['PreparedQueryFailoverArgs', 'PreparedQueryFailoverArgsDict']]] = None,
-                 ignore_check_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 near: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 only_passing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 service: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 session: Optional[pulumi.Input[_builtins.str]] = None,
-                 stored_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 template: Optional[pulumi.Input[Union['PreparedQueryTemplateArgs', 'PreparedQueryTemplateArgsDict']]] = None,
-                 token: Optional[pulumi.Input[_builtins.str]] = None,
+                 connect: pulumi.Input[Optional[_builtins.bool]] = None,
+                 datacenter: pulumi.Input[Optional[_builtins.str]] = None,
+                 dns: pulumi.Input[Optional[Union['PreparedQueryDnsArgs', 'PreparedQueryDnsArgsDict']]] = None,
+                 failover: pulumi.Input[Optional[Union['PreparedQueryFailoverArgs', 'PreparedQueryFailoverArgsDict']]] = None,
+                 ignore_check_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 near: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_meta: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 only_passing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 service: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_meta: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 session: pulumi.Input[Optional[_builtins.str]] = None,
+                 stored_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 template: pulumi.Input[Optional[Union['PreparedQueryTemplateArgs', 'PreparedQueryTemplateArgsDict']]] = None,
+                 token: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -825,22 +825,22 @@ class PreparedQuery(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            connect: Optional[pulumi.Input[_builtins.bool]] = None,
-            datacenter: Optional[pulumi.Input[_builtins.str]] = None,
-            dns: Optional[pulumi.Input[Union['PreparedQueryDnsArgs', 'PreparedQueryDnsArgsDict']]] = None,
-            failover: Optional[pulumi.Input[Union['PreparedQueryFailoverArgs', 'PreparedQueryFailoverArgsDict']]] = None,
-            ignore_check_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            near: Optional[pulumi.Input[_builtins.str]] = None,
-            node_meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            only_passing: Optional[pulumi.Input[_builtins.bool]] = None,
-            service: Optional[pulumi.Input[_builtins.str]] = None,
-            service_meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            session: Optional[pulumi.Input[_builtins.str]] = None,
-            stored_token: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            template: Optional[pulumi.Input[Union['PreparedQueryTemplateArgs', 'PreparedQueryTemplateArgsDict']]] = None,
-            token: Optional[pulumi.Input[_builtins.str]] = None) -> 'PreparedQuery':
+            connect: pulumi.Input[Optional[_builtins.bool]] = None,
+            datacenter: pulumi.Input[Optional[_builtins.str]] = None,
+            dns: pulumi.Input[Optional[Union['PreparedQueryDnsArgs', 'PreparedQueryDnsArgsDict']]] = None,
+            failover: pulumi.Input[Optional[Union['PreparedQueryFailoverArgs', 'PreparedQueryFailoverArgsDict']]] = None,
+            ignore_check_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            near: pulumi.Input[Optional[_builtins.str]] = None,
+            node_meta: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            only_passing: pulumi.Input[Optional[_builtins.bool]] = None,
+            service: pulumi.Input[Optional[_builtins.str]] = None,
+            service_meta: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            session: pulumi.Input[Optional[_builtins.str]] = None,
+            stored_token: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            template: pulumi.Input[Optional[Union['PreparedQueryTemplateArgs', 'PreparedQueryTemplateArgsDict']]] = None,
+            token: pulumi.Input[Optional[_builtins.str]] = None) -> 'PreparedQuery':
         """
         Get an existing PreparedQuery resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

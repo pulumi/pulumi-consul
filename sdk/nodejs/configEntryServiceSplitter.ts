@@ -180,23 +180,23 @@ export interface ConfigEntryServiceSplitterState {
     /**
      * Specifies key-value pairs to add to the KV store.
      */
-    meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    meta?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Specifies a name for the configuration entry.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Specifies the namespace to apply the configuration entry.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * Specifies the admin partition to apply the configuration entry.
      */
-    partition?: pulumi.Input<string>;
+    partition?: pulumi.Input<string | undefined>;
     /**
      * Defines how much traffic to send to sets of service instances during a traffic split.
      */
-    splits?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceSplitterSplit>[]>;
+    splits?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceSplitterSplit>[] | undefined>;
 }
 
 /**
@@ -206,19 +206,19 @@ export interface ConfigEntryServiceSplitterArgs {
     /**
      * Specifies key-value pairs to add to the KV store.
      */
-    meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    meta?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Specifies a name for the configuration entry.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Specifies the namespace to apply the configuration entry.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * Specifies the admin partition to apply the configuration entry.
      */
-    partition?: pulumi.Input<string>;
+    partition?: pulumi.Input<string | undefined>;
     /**
      * Defines how much traffic to send to sets of service instances during a traffic split.
      */

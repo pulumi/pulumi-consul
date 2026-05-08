@@ -124,5 +124,5 @@ export interface GetNodesOutputArgs {
     /**
      * See below.
      */
-    queryOptions?: pulumi.Input<pulumi.Input<inputs.GetNodesQueryOptionArgs>[]>;
+    queryOptions?: pulumi.Input<pulumi.Input<inputs.GetNodesQueryOptionArgs>[] | undefined>;
 }

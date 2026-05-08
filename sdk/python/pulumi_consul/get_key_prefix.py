@@ -212,12 +212,12 @@ def get_key_prefix(datacenter: Optional[_builtins.str] = None,
         subkeys=pulumi.get(__ret__, 'subkeys'),
         token=pulumi.get(__ret__, 'token'),
         var=pulumi.get(__ret__, 'var'))
-def get_key_prefix_output(datacenter: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                          namespace: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                          partition: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                          path_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                          subkey_collection: Optional[pulumi.Input[Optional[Sequence[Union['GetKeyPrefixSubkeyCollectionArgs', 'GetKeyPrefixSubkeyCollectionArgsDict']]]]] = None,
-                          token: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_key_prefix_output(datacenter: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                          namespace: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                          partition: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                          path_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                          subkey_collection: pulumi.Input[Optional[Optional[Sequence[Union['GetKeyPrefixSubkeyCollectionArgs', 'GetKeyPrefixSubkeyCollectionArgsDict']]]]] = None,
+                          token: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKeyPrefixResult]:
     """
     Allows Terraform to read values from a "namespace" of Consul keys that

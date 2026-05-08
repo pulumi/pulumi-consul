@@ -155,11 +155,11 @@ export interface NamespacePolicyAttachmentState {
     /**
      * The namespace to attach the policy to.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * The name of the policy attached to the namespace.
      */
-    policy?: pulumi.Input<string>;
+    policy?: pulumi.Input<string | undefined>;
 }
 
 /**

@@ -187,15 +187,15 @@ export interface GetKeyPrefixOutputArgs {
      * The datacenter to use. This overrides the
      * agent's default datacenter and the datacenter in the provider setup.
      */
-    datacenter?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string | undefined>;
     /**
      * The namespace to lookup the keys within.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * The namespace to lookup the keys within.
      */
-    partition?: pulumi.Input<string>;
+    partition?: pulumi.Input<string | undefined>;
     /**
      * Specifies the common prefix shared by all keys
      * that will be read by this data source instance. In most cases, this will
@@ -206,7 +206,7 @@ export interface GetKeyPrefixOutputArgs {
      * Specifies a subkey in Consul to be read. Supported
      * values documented below. Multiple blocks supported.
      */
-    subkeyCollection?: pulumi.Input<pulumi.Input<inputs.GetKeyPrefixSubkeyCollectionArgs>[]>;
+    subkeyCollection?: pulumi.Input<pulumi.Input<inputs.GetKeyPrefixSubkeyCollectionArgs>[] | undefined>;
     /**
      * The ACL token to use. This overrides the
      * token that the agent provides by default.
@@ -214,5 +214,5 @@ export interface GetKeyPrefixOutputArgs {
      * @deprecated The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
 }

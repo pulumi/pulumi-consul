@@ -147,12 +147,12 @@ export interface GetServiceHealthOutputArgs {
     /**
      * The Consul datacenter to query.
      */
-    datacenter?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string | undefined>;
     /**
      * A filter expression to refine the list of results, see
      * https://www.consul.io/api-docs/features/filtering and https://www.consul.io/api-docs/health#filtering-2.
      */
-    filter?: pulumi.Input<string>;
+    filter?: pulumi.Input<string | undefined>;
     /**
      * The service name to select.
      */
@@ -161,21 +161,21 @@ export interface GetServiceHealthOutputArgs {
      * Specifies a node name to sort the node list in ascending order
      * based on the estimated round trip time from that node.
      */
-    near?: pulumi.Input<string>;
+    near?: pulumi.Input<string | undefined>;
     /**
      * Filter the results to nodes with the specified key/value
      * pairs.
      */
-    nodeMeta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    nodeMeta?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Whether to return only nodes with all checks in the
      * passing state. Defaults to `true`.
      */
-    passing?: pulumi.Input<boolean>;
+    passing?: pulumi.Input<boolean | undefined>;
     /**
      * A single tag that can be used to filter the list to return
      * based on a single matching tag.
      */
-    tag?: pulumi.Input<string>;
-    waitFor?: pulumi.Input<string>;
+    tag?: pulumi.Input<string | undefined>;
+    waitFor?: pulumi.Input<string | undefined>;
 }

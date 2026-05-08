@@ -157,7 +157,7 @@ def get_catalog_services(query_options: Optional[Sequence[Union['GetCatalogServi
         query_options=pulumi.get(__ret__, 'query_options'),
         services=pulumi.get(__ret__, 'services'),
         tags=pulumi.get(__ret__, 'tags'))
-def get_catalog_services_output(query_options: Optional[pulumi.Input[Optional[Sequence[Union['GetCatalogServicesQueryOptionArgs', 'GetCatalogServicesQueryOptionArgsDict']]]]] = None,
+def get_catalog_services_output(query_options: pulumi.Input[Optional[Optional[Sequence[Union['GetCatalogServicesQueryOptionArgs', 'GetCatalogServicesQueryOptionArgsDict']]]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCatalogServicesResult]:
     """
     The `get_services` data source returns a list of Consul services that

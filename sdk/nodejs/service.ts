@@ -224,56 +224,56 @@ export interface ServiceState {
     /**
      * The address of the service. Defaults to the address of the node.
      */
-    address?: pulumi.Input<string>;
-    checks?: pulumi.Input<pulumi.Input<inputs.ServiceCheck>[]>;
+    address?: pulumi.Input<string | undefined>;
+    checks?: pulumi.Input<pulumi.Input<inputs.ServiceCheck>[] | undefined>;
     /**
      * The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
      */
-    datacenter?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string | undefined>;
     /**
      * Specifies to disable the anti-entropy feature for this service's tags. Defaults to `false`.
      */
-    enableTagOverride?: pulumi.Input<boolean>;
+    enableTagOverride?: pulumi.Input<boolean | undefined>;
     /**
      * @deprecated The external field has been deprecated and does nothing.
      */
-    external?: pulumi.Input<boolean>;
+    external?: pulumi.Input<boolean | undefined>;
     /**
      * A map of arbitrary KV metadata linked to the service instance.
      */
-    meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    meta?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the service.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The namespace to create the service within.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * The name of the node the to register the service on.
      */
-    node?: pulumi.Input<string>;
+    node?: pulumi.Input<string | undefined>;
     /**
      * The partition the service is associated with.
      */
-    partition?: pulumi.Input<string>;
+    partition?: pulumi.Input<string | undefined>;
     /**
      * The port of the service.
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * If the service ID is not provided, it will be defaulted to the value of the `name` attribute.
      */
-    serviceId?: pulumi.Input<string>;
+    serviceId?: pulumi.Input<string | undefined>;
     /**
      * A list of values that are opaque to Consul, but can be used to distinguish between services or nodes.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Object that configures how the service responds to DNS SRV requests based on the service's health status. You can specify one or more of the following states and configure an integer value indicating its weight: `passing`, `warning`.
      */
-    weights?: pulumi.Input<{[key: string]: pulumi.Input<number>}>;
+    weights?: pulumi.Input<{[key: string]: pulumi.Input<number>} | undefined>;
 }
 
 /**
@@ -283,32 +283,32 @@ export interface ServiceArgs {
     /**
      * The address of the service. Defaults to the address of the node.
      */
-    address?: pulumi.Input<string>;
-    checks?: pulumi.Input<pulumi.Input<inputs.ServiceCheck>[]>;
+    address?: pulumi.Input<string | undefined>;
+    checks?: pulumi.Input<pulumi.Input<inputs.ServiceCheck>[] | undefined>;
     /**
      * The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
      */
-    datacenter?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string | undefined>;
     /**
      * Specifies to disable the anti-entropy feature for this service's tags. Defaults to `false`.
      */
-    enableTagOverride?: pulumi.Input<boolean>;
+    enableTagOverride?: pulumi.Input<boolean | undefined>;
     /**
      * @deprecated The external field has been deprecated and does nothing.
      */
-    external?: pulumi.Input<boolean>;
+    external?: pulumi.Input<boolean | undefined>;
     /**
      * A map of arbitrary KV metadata linked to the service instance.
      */
-    meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    meta?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the service.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The namespace to create the service within.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * The name of the node the to register the service on.
      */
@@ -316,21 +316,21 @@ export interface ServiceArgs {
     /**
      * The partition the service is associated with.
      */
-    partition?: pulumi.Input<string>;
+    partition?: pulumi.Input<string | undefined>;
     /**
      * The port of the service.
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * If the service ID is not provided, it will be defaulted to the value of the `name` attribute.
      */
-    serviceId?: pulumi.Input<string>;
+    serviceId?: pulumi.Input<string | undefined>;
     /**
      * A list of values that are opaque to Consul, but can be used to distinguish between services or nodes.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Object that configures how the service responds to DNS SRV requests based on the service's health status. You can specify one or more of the following states and configure an integer value indicating its weight: `passing`, `warning`.
      */
-    weights?: pulumi.Input<{[key: string]: pulumi.Input<number>}>;
+    weights?: pulumi.Input<{[key: string]: pulumi.Input<number>} | undefined>;
 }

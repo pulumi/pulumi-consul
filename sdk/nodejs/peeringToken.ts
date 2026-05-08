@@ -107,20 +107,20 @@ export interface PeeringTokenState {
     /**
      * Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the cluster peering process.
      */
-    meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    partition?: pulumi.Input<string>;
+    meta?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    partition?: pulumi.Input<string | undefined>;
     /**
      * The name assigned to the peer cluster. The `peerName` is used to reference the peer cluster in service discovery queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
      */
-    peerName?: pulumi.Input<string>;
+    peerName?: pulumi.Input<string | undefined>;
     /**
      * The generated peering token
      */
-    peeringToken?: pulumi.Input<string>;
+    peeringToken?: pulumi.Input<string | undefined>;
     /**
      * The addresses for the cluster that generates the peering token. Addresses take the form {host or IP}:port. You can specify one or more load balancers or external IPs that route external traffic to this cluster's Consul servers.
      */
-    serverExternalAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    serverExternalAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -130,8 +130,8 @@ export interface PeeringTokenArgs {
     /**
      * Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the cluster peering process.
      */
-    meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    partition?: pulumi.Input<string>;
+    meta?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    partition?: pulumi.Input<string | undefined>;
     /**
      * The name assigned to the peer cluster. The `peerName` is used to reference the peer cluster in service discovery queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
      */
@@ -139,5 +139,5 @@ export interface PeeringTokenArgs {
     /**
      * The addresses for the cluster that generates the peering token. Addresses take the form {host or IP}:port. You can specify one or more load balancers or external IPs that route external traffic to this cluster's Consul servers.
      */
-    serverExternalAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    serverExternalAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

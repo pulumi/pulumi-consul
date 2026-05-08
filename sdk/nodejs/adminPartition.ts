@@ -104,15 +104,15 @@ export interface AdminPartitionState {
     /**
      * Free form partition description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * . Disable gossip pool for the partition. Defaults to `false`.
      */
-    disableGossip?: pulumi.Input<boolean>;
+    disableGossip?: pulumi.Input<boolean | undefined>;
     /**
      * The partition name. This must be a valid DNS hostname label.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -122,13 +122,13 @@ export interface AdminPartitionArgs {
     /**
      * Free form partition description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * . Disable gossip pool for the partition. Defaults to `false`.
      */
-    disableGossip?: pulumi.Input<boolean>;
+    disableGossip?: pulumi.Input<boolean | undefined>;
     /**
      * The partition name. This must be a valid DNS hostname label.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

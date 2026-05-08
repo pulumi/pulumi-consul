@@ -89,7 +89,7 @@ def get_peerings(partition: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         partition=pulumi.get(__ret__, 'partition'),
         peers=pulumi.get(__ret__, 'peers'))
-def get_peerings_output(partition: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_peerings_output(partition: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPeeringsResult]:
     """
     ## Example Usage

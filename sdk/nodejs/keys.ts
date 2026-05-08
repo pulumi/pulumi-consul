@@ -132,20 +132,20 @@ export interface KeysState {
      * The datacenter to use. This overrides the
      * agent's default datacenter and the datacenter in the provider setup.
      */
-    datacenter?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string | undefined>;
     /**
      * Specifies a key in Consul to be written.
      * Supported values documented below.
      */
-    keys?: pulumi.Input<pulumi.Input<inputs.KeysKey>[]>;
+    keys?: pulumi.Input<pulumi.Input<inputs.KeysKey>[] | undefined>;
     /**
      * The namespace to create the keys within.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * The partition to create the keys within.
      */
-    partition?: pulumi.Input<string>;
+    partition?: pulumi.Input<string | undefined>;
     /**
      * The ACL token to use. This overrides the
      * token that the agent provides by default.
@@ -153,8 +153,8 @@ export interface KeysState {
      * @deprecated The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration
      */
-    token?: pulumi.Input<string>;
-    var?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    token?: pulumi.Input<string | undefined>;
+    var?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -165,20 +165,20 @@ export interface KeysArgs {
      * The datacenter to use. This overrides the
      * agent's default datacenter and the datacenter in the provider setup.
      */
-    datacenter?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string | undefined>;
     /**
      * Specifies a key in Consul to be written.
      * Supported values documented below.
      */
-    keys?: pulumi.Input<pulumi.Input<inputs.KeysKey>[]>;
+    keys?: pulumi.Input<pulumi.Input<inputs.KeysKey>[] | undefined>;
     /**
      * The namespace to create the keys within.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * The partition to create the keys within.
      */
-    partition?: pulumi.Input<string>;
+    partition?: pulumi.Input<string | undefined>;
     /**
      * The ACL token to use. This overrides the
      * token that the agent provides by default.
@@ -186,5 +186,5 @@ export interface KeysArgs {
      * @deprecated The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
 }

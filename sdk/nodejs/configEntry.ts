@@ -386,23 +386,23 @@ export interface ConfigEntryState {
     /**
      * An arbitrary map of configuration values.
      */
-    configJson?: pulumi.Input<string>;
+    configJson?: pulumi.Input<string | undefined>;
     /**
      * The kind of configuration entry to register.
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * The name of the configuration entry being registered.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The namespace to create the config entry within.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * The partition the config entry is associated with.
      */
-    partition?: pulumi.Input<string>;
+    partition?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -412,7 +412,7 @@ export interface ConfigEntryArgs {
     /**
      * An arbitrary map of configuration values.
      */
-    configJson?: pulumi.Input<string>;
+    configJson?: pulumi.Input<string | undefined>;
     /**
      * The kind of configuration entry to register.
      */
@@ -420,13 +420,13 @@ export interface ConfigEntryArgs {
     /**
      * The name of the configuration entry being registered.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The namespace to create the config entry within.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * The partition the config entry is associated with.
      */
-    partition?: pulumi.Input<string>;
+    partition?: pulumi.Input<string | undefined>;
 }

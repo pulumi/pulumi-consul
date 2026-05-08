@@ -181,33 +181,33 @@ export interface KeyPrefixState {
      * The datacenter to use. This overrides the
      * agent's default datacenter and the datacenter in the provider setup.
      */
-    datacenter?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string | undefined>;
     /**
      * The namespace to create the keys within.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * The admin partition to create the keys within.
      */
-    partition?: pulumi.Input<string>;
+    partition?: pulumi.Input<string | undefined>;
     /**
      * Specifies the common prefix shared by all keys
      * that will be managed by this resource instance. In most cases this will
      * end with a slash, to manage a "folder" of keys.
      */
-    pathPrefix?: pulumi.Input<string>;
+    pathPrefix?: pulumi.Input<string | undefined>;
     /**
      * A subkey to add. Supported values documented below.
      * Multiple blocks supported.
      */
-    subkeyCollection?: pulumi.Input<pulumi.Input<inputs.KeyPrefixSubkeyCollection>[]>;
+    subkeyCollection?: pulumi.Input<pulumi.Input<inputs.KeyPrefixSubkeyCollection>[] | undefined>;
     /**
      * A mapping from subkey name (which will be appended
      * to the given `pathPrefix`) to the value that should be stored at that key.
      * Use slashes, as shown in the above example, to create "sub-folders" under
      * the given path prefix.
      */
-    subkeys?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    subkeys?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ACL token to use. This overrides the
      * token that the agent provides by default.
@@ -215,7 +215,7 @@ export interface KeyPrefixState {
      * @deprecated The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -226,15 +226,15 @@ export interface KeyPrefixArgs {
      * The datacenter to use. This overrides the
      * agent's default datacenter and the datacenter in the provider setup.
      */
-    datacenter?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string | undefined>;
     /**
      * The namespace to create the keys within.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * The admin partition to create the keys within.
      */
-    partition?: pulumi.Input<string>;
+    partition?: pulumi.Input<string | undefined>;
     /**
      * Specifies the common prefix shared by all keys
      * that will be managed by this resource instance. In most cases this will
@@ -245,14 +245,14 @@ export interface KeyPrefixArgs {
      * A subkey to add. Supported values documented below.
      * Multiple blocks supported.
      */
-    subkeyCollection?: pulumi.Input<pulumi.Input<inputs.KeyPrefixSubkeyCollection>[]>;
+    subkeyCollection?: pulumi.Input<pulumi.Input<inputs.KeyPrefixSubkeyCollection>[] | undefined>;
     /**
      * A mapping from subkey name (which will be appended
      * to the given `pathPrefix`) to the value that should be stored at that key.
      * Use slashes, as shown in the above example, to create "sub-folders" under
      * the given path prefix.
      */
-    subkeys?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    subkeys?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ACL token to use. This overrides the
      * token that the agent provides by default.
@@ -260,5 +260,5 @@ export interface KeyPrefixArgs {
      * @deprecated The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
 }
