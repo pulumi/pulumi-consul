@@ -191,12 +191,12 @@ def get_keys(datacenter: Optional[_builtins.str] = None,
         partition=pulumi.get(__ret__, 'partition'),
         token=pulumi.get(__ret__, 'token'),
         var=pulumi.get(__ret__, 'var'))
-def get_keys_output(datacenter: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                    error_on_missing_keys: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                    keys: Optional[pulumi.Input[Optional[Sequence[Union['GetKeysKeyArgs', 'GetKeysKeyArgsDict']]]]] = None,
-                    namespace: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                    partition: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                    token: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_keys_output(datacenter: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                    error_on_missing_keys: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                    keys: pulumi.Input[Optional[Optional[Sequence[Union['GetKeysKeyArgs', 'GetKeysKeyArgsDict']]]]] = None,
+                    namespace: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                    partition: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                    token: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKeysResult]:
     """
     The `Keys` datasource reads values from the Consul key/value store. This is a powerful way to dynamically set values in templates.

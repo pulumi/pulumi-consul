@@ -151,27 +151,27 @@ export interface ConfigEntryServiceIntentionsState {
     /**
      * Specifies a JSON Web Token provider configured in a JWT provider configuration entry, as well as additional configurations for verifying a service's JWT before authorizing communication between services
      */
-    jwts?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceIntentionsJwt>[]>;
+    jwts?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceIntentionsJwt>[] | undefined>;
     /**
      * Specifies key-value pairs to add to the KV store.
      */
-    meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    meta?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Specifies a name of the destination service for all intentions defined in the configuration entry.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Specifies the namespace to apply the configuration entry.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * Specifies the admin partition to apply the configuration entry.
      */
-    partition?: pulumi.Input<string>;
+    partition?: pulumi.Input<string | undefined>;
     /**
      * List of configurations that define intention sources and the authorization granted to the sources.
      */
-    sources?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceIntentionsSource>[]>;
+    sources?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceIntentionsSource>[] | undefined>;
 }
 
 /**
@@ -181,25 +181,25 @@ export interface ConfigEntryServiceIntentionsArgs {
     /**
      * Specifies a JSON Web Token provider configured in a JWT provider configuration entry, as well as additional configurations for verifying a service's JWT before authorizing communication between services
      */
-    jwts?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceIntentionsJwt>[]>;
+    jwts?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceIntentionsJwt>[] | undefined>;
     /**
      * Specifies key-value pairs to add to the KV store.
      */
-    meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    meta?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Specifies a name of the destination service for all intentions defined in the configuration entry.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Specifies the namespace to apply the configuration entry.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * Specifies the admin partition to apply the configuration entry.
      */
-    partition?: pulumi.Input<string>;
+    partition?: pulumi.Input<string | undefined>;
     /**
      * List of configurations that define intention sources and the authorization granted to the sources.
      */
-    sources?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceIntentionsSource>[]>;
+    sources?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceIntentionsSource>[] | undefined>;
 }

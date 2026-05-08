@@ -26,7 +26,7 @@ namespace Pulumi.Consul
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Basic usage
-    ///     var agent = new Consul.Index.AclPolicy("agent", new()
+    ///     var agent = new Consul.AclPolicy("agent", new()
     ///     {
     ///         Name = "agent",
     ///         Rules = @"node_prefix \""\"" {
@@ -35,7 +35,7 @@ namespace Pulumi.Consul
     /// ",
     ///     });
     /// 
-    ///     var test = new Consul.Index.AclToken("test", new()
+    ///     var test = new Consul.AclToken("test", new()
     ///     {
     ///         Description = "my test token",
     ///         Policies = new[]
@@ -46,9 +46,9 @@ namespace Pulumi.Consul
     ///     });
     /// 
     ///     // Explicitly set the `accessor_id`
-    ///     var testUuid = new Random.Index.Uuid("test");
+    ///     var testUuid = new Random.Uuid("test");
     /// 
-    ///     var testPredefinedId = new Consul.Index.AclToken("test_predefined_id", new()
+    ///     var testPredefinedId = new Consul.AclToken("test_predefined_id", new()
     ///     {
     ///         AccessorId = testUuidRandomUuid.Result,
     ///         Description = "my test uuid token",

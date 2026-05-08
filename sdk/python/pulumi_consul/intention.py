@@ -22,11 +22,11 @@ class IntentionArgs:
                  action: pulumi.Input[_builtins.str],
                  destination_name: pulumi.Input[_builtins.str],
                  source_name: pulumi.Input[_builtins.str],
-                 datacenter: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 source_namespace: Optional[pulumi.Input[_builtins.str]] = None):
+                 datacenter: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 meta: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 source_namespace: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Intention resource.
 
@@ -100,7 +100,7 @@ class IntentionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def datacenter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def datacenter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The datacenter to use. This overrides the
         agent's default datacenter and the datacenter in the provider setup.
@@ -108,12 +108,12 @@ class IntentionArgs:
         return pulumi.get(self, "datacenter")
 
     @datacenter.setter
-    def datacenter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def datacenter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "datacenter", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional description that can be used by Consul
         tooling, but is not used internally.
@@ -121,12 +121,12 @@ class IntentionArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationNamespace")
-    def destination_namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The destination
         namespace of the intention.
@@ -134,12 +134,12 @@ class IntentionArgs:
         return pulumi.get(self, "destination_namespace")
 
     @destination_namespace.setter
-    def destination_namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_namespace", value)
 
     @_builtins.property
     @pulumi.getter
-    def meta(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def meta(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Key/value pairs that are opaque to Consul and are associated
         with the intention.
@@ -147,12 +147,12 @@ class IntentionArgs:
         return pulumi.get(self, "meta")
 
     @meta.setter
-    def meta(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def meta(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "meta", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceNamespace")
-    def source_namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The source namespace of the
         intention.
@@ -160,21 +160,21 @@ class IntentionArgs:
         return pulumi.get(self, "source_namespace")
 
     @source_namespace.setter
-    def source_namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_namespace", value)
 
 
 @pulumi.input_type
 class _IntentionState:
     def __init__(__self__, *,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 datacenter: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 source_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_namespace: Optional[pulumi.Input[_builtins.str]] = None):
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 datacenter: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 meta: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 source_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_namespace: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Intention resources.
 
@@ -213,19 +213,19 @@ class _IntentionState:
 
     @_builtins.property
     @pulumi.getter
-    def action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The intention action. Must be one of `allow` or `deny`.
         """
         return pulumi.get(self, "action")
 
     @action.setter
-    def action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "action", value)
 
     @_builtins.property
     @pulumi.getter
-    def datacenter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def datacenter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The datacenter to use. This overrides the
         agent's default datacenter and the datacenter in the provider setup.
@@ -233,12 +233,12 @@ class _IntentionState:
         return pulumi.get(self, "datacenter")
 
     @datacenter.setter
-    def datacenter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def datacenter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "datacenter", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional description that can be used by Consul
         tooling, but is not used internally.
@@ -246,12 +246,12 @@ class _IntentionState:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationName")
-    def destination_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the destination service for the intention. This
         service does not have to exist.
@@ -259,12 +259,12 @@ class _IntentionState:
         return pulumi.get(self, "destination_name")
 
     @destination_name.setter
-    def destination_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_name", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationNamespace")
-    def destination_namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The destination
         namespace of the intention.
@@ -272,12 +272,12 @@ class _IntentionState:
         return pulumi.get(self, "destination_namespace")
 
     @destination_namespace.setter
-    def destination_namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_namespace", value)
 
     @_builtins.property
     @pulumi.getter
-    def meta(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def meta(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Key/value pairs that are opaque to Consul and are associated
         with the intention.
@@ -285,12 +285,12 @@ class _IntentionState:
         return pulumi.get(self, "meta")
 
     @meta.setter
-    def meta(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def meta(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "meta", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceName")
-    def source_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the source service for the intention. This
         service does not have to exist.
@@ -298,12 +298,12 @@ class _IntentionState:
         return pulumi.get(self, "source_name")
 
     @source_name.setter
-    def source_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_name", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceNamespace")
-    def source_namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The source namespace of the
         intention.
@@ -311,7 +311,7 @@ class _IntentionState:
         return pulumi.get(self, "source_namespace")
 
     @source_namespace.setter
-    def source_namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_namespace", value)
 
 
@@ -321,14 +321,14 @@ class Intention(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 datacenter: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 source_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_namespace: Optional[pulumi.Input[_builtins.str]] = None,
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 datacenter: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 meta: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 source_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_namespace: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         [Intentions](https://www.consul.io/docs/connect/intentions.html) are used to define
@@ -471,14 +471,14 @@ class Intention(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 datacenter: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 source_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_namespace: Optional[pulumi.Input[_builtins.str]] = None,
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 datacenter: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 meta: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 source_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_namespace: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -512,14 +512,14 @@ class Intention(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            action: Optional[pulumi.Input[_builtins.str]] = None,
-            datacenter: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            destination_name: Optional[pulumi.Input[_builtins.str]] = None,
-            destination_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-            meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            source_name: Optional[pulumi.Input[_builtins.str]] = None,
-            source_namespace: Optional[pulumi.Input[_builtins.str]] = None) -> 'Intention':
+            action: pulumi.Input[Optional[_builtins.str]] = None,
+            datacenter: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_name: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            meta: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            source_name: pulumi.Input[Optional[_builtins.str]] = None,
+            source_namespace: pulumi.Input[Optional[_builtins.str]] = None) -> 'Intention':
         """
         Get an existing Intention resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

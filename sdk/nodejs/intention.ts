@@ -179,42 +179,42 @@ export interface IntentionState {
     /**
      * The intention action. Must be one of `allow` or `deny`.
      */
-    action?: pulumi.Input<string>;
+    action?: pulumi.Input<string | undefined>;
     /**
      * The datacenter to use. This overrides the
      * agent's default datacenter and the datacenter in the provider setup.
      */
-    datacenter?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string | undefined>;
     /**
      * Optional description that can be used by Consul
      * tooling, but is not used internally.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the destination service for the intention. This
      * service does not have to exist.
      */
-    destinationName?: pulumi.Input<string>;
+    destinationName?: pulumi.Input<string | undefined>;
     /**
      * The destination
      * namespace of the intention.
      */
-    destinationNamespace?: pulumi.Input<string>;
+    destinationNamespace?: pulumi.Input<string | undefined>;
     /**
      * Key/value pairs that are opaque to Consul and are associated
      * with the intention.
      */
-    meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    meta?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the source service for the intention. This
      * service does not have to exist.
      */
-    sourceName?: pulumi.Input<string>;
+    sourceName?: pulumi.Input<string | undefined>;
     /**
      * The source namespace of the
      * intention.
      */
-    sourceNamespace?: pulumi.Input<string>;
+    sourceNamespace?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -229,12 +229,12 @@ export interface IntentionArgs {
      * The datacenter to use. This overrides the
      * agent's default datacenter and the datacenter in the provider setup.
      */
-    datacenter?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string | undefined>;
     /**
      * Optional description that can be used by Consul
      * tooling, but is not used internally.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the destination service for the intention. This
      * service does not have to exist.
@@ -244,12 +244,12 @@ export interface IntentionArgs {
      * The destination
      * namespace of the intention.
      */
-    destinationNamespace?: pulumi.Input<string>;
+    destinationNamespace?: pulumi.Input<string | undefined>;
     /**
      * Key/value pairs that are opaque to Consul and are associated
      * with the intention.
      */
-    meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    meta?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the source service for the intention. This
      * service does not have to exist.
@@ -259,5 +259,5 @@ export interface IntentionArgs {
      * The source namespace of the
      * intention.
      */
-    sourceNamespace?: pulumi.Input<string>;
+    sourceNamespace?: pulumi.Input<string | undefined>;
 }

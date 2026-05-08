@@ -126,27 +126,27 @@ export interface NamespaceState {
     /**
      * Free form namespace description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Specifies arbitrary KV metadata to associate with the namespace.
      */
-    meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    meta?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The namespace name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The partition to create the namespace within.
      */
-    partition?: pulumi.Input<string>;
+    partition?: pulumi.Input<string | undefined>;
     /**
      * The list of default policies that should be applied to all tokens created in this namespace.
      */
-    policyDefaults?: pulumi.Input<pulumi.Input<string>[]>;
+    policyDefaults?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The list of default roles that should be applied to all tokens created in this namespace.
      */
-    roleDefaults?: pulumi.Input<pulumi.Input<string>[]>;
+    roleDefaults?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -156,25 +156,25 @@ export interface NamespaceArgs {
     /**
      * Free form namespace description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Specifies arbitrary KV metadata to associate with the namespace.
      */
-    meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    meta?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The namespace name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The partition to create the namespace within.
      */
-    partition?: pulumi.Input<string>;
+    partition?: pulumi.Input<string | undefined>;
     /**
      * The list of default policies that should be applied to all tokens created in this namespace.
      */
-    policyDefaults?: pulumi.Input<pulumi.Input<string>[]>;
+    policyDefaults?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The list of default roles that should be applied to all tokens created in this namespace.
      */
-    roleDefaults?: pulumi.Input<pulumi.Input<string>[]>;
+    roleDefaults?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

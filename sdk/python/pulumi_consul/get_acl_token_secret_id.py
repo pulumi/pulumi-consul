@@ -173,10 +173,10 @@ def get_acl_token_secret_id(accessor_id: Optional[_builtins.str] = None,
         partition=pulumi.get(__ret__, 'partition'),
         pgp_key=pulumi.get(__ret__, 'pgp_key'),
         secret_id=pulumi.get(__ret__, 'secret_id'))
-def get_acl_token_secret_id_output(accessor_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                   namespace: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                   partition: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                   pgp_key: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_acl_token_secret_id_output(accessor_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                   namespace: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                   partition: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                   pgp_key: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAclTokenSecretIdResult]:
     """
     > **Warning:** When using this is resource, the ACL Token secret ID will be

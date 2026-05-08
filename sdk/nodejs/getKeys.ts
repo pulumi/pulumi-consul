@@ -156,28 +156,28 @@ export interface GetKeysOutputArgs {
     /**
      * The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
      */
-    datacenter?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string | undefined>;
     /**
      * Whether to return an error when a key is absent from the KV store and no default is configured. This defaults to `false`.
      */
-    errorOnMissingKeys?: pulumi.Input<boolean>;
+    errorOnMissingKeys?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies a key in Consul to be read. Supported values documented below. Multiple blocks supported.
      */
-    keys?: pulumi.Input<pulumi.Input<inputs.GetKeysKeyArgs>[]>;
+    keys?: pulumi.Input<pulumi.Input<inputs.GetKeysKeyArgs>[] | undefined>;
     /**
      * The namespace to lookup the keys.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * The partition to lookup the keys.
      */
-    partition?: pulumi.Input<string>;
+    partition?: pulumi.Input<string | undefined>;
     /**
      * The ACL token to use. This overrides the token that the agent provides by default.
      *
      * @deprecated The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
 }

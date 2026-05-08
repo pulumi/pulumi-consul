@@ -124,9 +124,9 @@ export interface GetAclRoleOutputArgs {
     /**
      * The namespace to lookup the role.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * The partition to lookup the role.
      */
-    partition?: pulumi.Input<string>;
+    partition?: pulumi.Input<string | undefined>;
 }

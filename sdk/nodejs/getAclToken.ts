@@ -140,9 +140,9 @@ export interface GetAclTokenOutputArgs {
     /**
      * The namespace to lookup the ACL token.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * The partition to lookup the ACL token.
      */
-    partition?: pulumi.Input<string>;
+    partition?: pulumi.Input<string | undefined>;
 }

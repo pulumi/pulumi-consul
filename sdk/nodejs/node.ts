@@ -127,28 +127,28 @@ export interface NodeState {
     /**
      * The address of the node being added to, or referenced in the catalog.
      */
-    address?: pulumi.Input<string>;
+    address?: pulumi.Input<string | undefined>;
     /**
      * The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
      */
-    datacenter?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string | undefined>;
     /**
      * Key/value pairs that are associated with the node.
      */
-    meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    meta?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the node being added to, or referenced in the catalog.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The partition the node is associated with.
      */
-    partition?: pulumi.Input<string>;
+    partition?: pulumi.Input<string | undefined>;
     /**
      * @deprecated The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -162,22 +162,22 @@ export interface NodeArgs {
     /**
      * The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
      */
-    datacenter?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string | undefined>;
     /**
      * Key/value pairs that are associated with the node.
      */
-    meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    meta?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the node being added to, or referenced in the catalog.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The partition the node is associated with.
      */
-    partition?: pulumi.Input<string>;
+    partition?: pulumi.Input<string | undefined>;
     /**
      * @deprecated The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
 }

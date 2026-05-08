@@ -158,11 +158,11 @@ export interface AclTokenPolicyAttachmentState {
     /**
      * The name of the policy attached to the token.
      */
-    policy?: pulumi.Input<string>;
+    policy?: pulumi.Input<string | undefined>;
     /**
      * The id of the token.
      */
-    tokenId?: pulumi.Input<string>;
+    tokenId?: pulumi.Input<string | undefined>;
 }
 
 /**

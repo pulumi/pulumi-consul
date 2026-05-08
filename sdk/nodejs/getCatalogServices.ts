@@ -131,5 +131,5 @@ export interface GetCatalogServicesOutputArgs {
     /**
      * See below.
      */
-    queryOptions?: pulumi.Input<pulumi.Input<inputs.GetCatalogServicesQueryOptionArgs>[]>;
+    queryOptions?: pulumi.Input<pulumi.Input<inputs.GetCatalogServicesQueryOptionArgs>[] | undefined>;
 }

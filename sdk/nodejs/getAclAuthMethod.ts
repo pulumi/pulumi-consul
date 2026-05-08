@@ -137,9 +137,9 @@ export interface GetAclAuthMethodOutputArgs {
     /**
      * The namespace to lookup the auth method.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * The partition to lookup the auth method.
      */
-    partition?: pulumi.Input<string>;
+    partition?: pulumi.Input<string | undefined>;
 }

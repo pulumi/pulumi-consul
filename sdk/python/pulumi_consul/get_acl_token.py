@@ -226,9 +226,9 @@ def get_acl_token(accessor_id: Optional[_builtins.str] = None,
         roles=pulumi.get(__ret__, 'roles'),
         service_identities=pulumi.get(__ret__, 'service_identities'),
         templated_policies=pulumi.get(__ret__, 'templated_policies'))
-def get_acl_token_output(accessor_id: Optional[pulumi.Input[_builtins.str]] = None,
-                         namespace: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         partition: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_acl_token_output(accessor_id: pulumi.Input[Optional[_builtins.str]] = None,
+                         namespace: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         partition: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAclTokenResult]:
     """
     The `AclToken` data source returns the information related to the `AclToken` resource with the exception of its secret ID.

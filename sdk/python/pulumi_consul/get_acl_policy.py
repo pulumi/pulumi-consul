@@ -150,9 +150,9 @@ def get_acl_policy(name: Optional[_builtins.str] = None,
         namespace=pulumi.get(__ret__, 'namespace'),
         partition=pulumi.get(__ret__, 'partition'),
         rules=pulumi.get(__ret__, 'rules'))
-def get_acl_policy_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                          namespace: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                          partition: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_acl_policy_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                          namespace: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                          partition: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAclPolicyResult]:
     """
     The `AclPolicy` data source returns the information related to a

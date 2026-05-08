@@ -13,14 +13,14 @@ export interface AclAuthMethodNamespaceRule {
     /**
      * Specifies the expression used to match this namespace rule against valid identities returned from an auth method validation.
      */
-    selector?: pulumi.Input<string>;
+    selector?: pulumi.Input<string | undefined>;
 }
 
 export interface AclBindingRuleBindVars {
     /**
      * The name of node, workload identity or service.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 export interface AclRoleNodeIdentity {
@@ -38,7 +38,7 @@ export interface AclRoleServiceIdentity {
     /**
      * The datacenters the effective policy is valid within. When no datacenters are provided the effective policy is valid in all datacenters including those which do not yet exist but may in the future.
      */
-    datacenters?: pulumi.Input<pulumi.Input<string>[]>;
+    datacenters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the service.
      */
@@ -49,7 +49,7 @@ export interface AclRoleTemplatedPolicy {
     /**
      * Specifies the datacenters the effective policy is valid within.
      */
-    datacenters?: pulumi.Input<pulumi.Input<string>[]>;
+    datacenters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the templated policies.
      */
@@ -57,14 +57,14 @@ export interface AclRoleTemplatedPolicy {
     /**
      * The templated policy variables.
      */
-    templateVariables?: pulumi.Input<inputs.AclRoleTemplatedPolicyTemplateVariables>;
+    templateVariables?: pulumi.Input<inputs.AclRoleTemplatedPolicyTemplateVariables | undefined>;
 }
 
 export interface AclRoleTemplatedPolicyTemplateVariables {
     /**
      * The name of node, workload identity or service.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 export interface AclTokenNodeIdentity {
@@ -82,7 +82,7 @@ export interface AclTokenServiceIdentity {
     /**
      * Specifies the datacenters the effective policy is valid within.
      */
-    datacenters?: pulumi.Input<pulumi.Input<string>[]>;
+    datacenters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the service.
      */
@@ -93,7 +93,7 @@ export interface AclTokenTemplatedPolicy {
     /**
      * Specifies the datacenters the effective policy is valid within.
      */
-    datacenters?: pulumi.Input<pulumi.Input<string>[]>;
+    datacenters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the templated policies.
      */
@@ -101,14 +101,14 @@ export interface AclTokenTemplatedPolicy {
     /**
      * The templated policy variables.
      */
-    templateVariables?: pulumi.Input<inputs.AclTokenTemplatedPolicyTemplateVariables>;
+    templateVariables?: pulumi.Input<inputs.AclTokenTemplatedPolicyTemplateVariables | undefined>;
 }
 
 export interface AclTokenTemplatedPolicyTemplateVariables {
     /**
      * The name of node, workload identity or service.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 export interface CatalogEntryService {
@@ -116,11 +116,11 @@ export interface CatalogEntryService {
      * The address of the service. Defaults to the
      * node address.
      */
-    address?: pulumi.Input<string>;
+    address?: pulumi.Input<string | undefined>;
     /**
      * The ID of the service. Defaults to the `name`.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The name of the service
      */
@@ -128,12 +128,12 @@ export interface CatalogEntryService {
     /**
      * The port of the service.
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * A list of values that are opaque to Consul,
      * but can be used to distinguish between services or nodes.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface ConfigEntryServiceDefaultsDestination {
@@ -142,23 +142,23 @@ export interface ConfigEntryServiceDefaultsDestination {
 }
 
 export interface ConfigEntryServiceDefaultsEnvoyExtension {
-    arguments?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    consulVersion?: pulumi.Input<string>;
-    envoyVersion?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    required?: pulumi.Input<boolean>;
+    arguments?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    consulVersion?: pulumi.Input<string | undefined>;
+    envoyVersion?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    required?: pulumi.Input<boolean | undefined>;
 }
 
 export interface ConfigEntryServiceDefaultsExpose {
-    checks?: pulumi.Input<boolean>;
-    paths?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceDefaultsExposePath>[]>;
+    checks?: pulumi.Input<boolean | undefined>;
+    paths?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceDefaultsExposePath>[] | undefined>;
 }
 
 export interface ConfigEntryServiceDefaultsExposePath {
-    listenerPort?: pulumi.Input<number>;
-    localPathPort?: pulumi.Input<number>;
-    path?: pulumi.Input<string>;
-    protocol?: pulumi.Input<string>;
+    listenerPort?: pulumi.Input<number | undefined>;
+    localPathPort?: pulumi.Input<number | undefined>;
+    path?: pulumi.Input<string | undefined>;
+    protocol?: pulumi.Input<string | undefined>;
 }
 
 export interface ConfigEntryServiceDefaultsMeshGateway {
@@ -174,232 +174,232 @@ export interface ConfigEntryServiceDefaultsUpstreamConfig {
     /**
      * Specifies configurations that set default upstream settings. For information about overriding the default configurations for in for individual upstreams, refer to UpstreamConfig.Overrides.
      */
-    defaults?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceDefaultsUpstreamConfigDefault>[]>;
+    defaults?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceDefaultsUpstreamConfigDefault>[] | undefined>;
     /**
      * Specifies options that override the default upstream configurations for individual upstreams.
      */
-    overrides?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceDefaultsUpstreamConfigOverride>[]>;
+    overrides?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceDefaultsUpstreamConfigOverride>[] | undefined>;
 }
 
 export interface ConfigEntryServiceDefaultsUpstreamConfigDefault {
     /**
      * Sets the strategy for allocating outbound connections from upstreams across Envoy proxy threads.
      */
-    balanceOutboundConnections?: pulumi.Input<string>;
-    connectTimeoutMs?: pulumi.Input<number>;
+    balanceOutboundConnections?: pulumi.Input<string | undefined>;
+    connectTimeoutMs?: pulumi.Input<number | undefined>;
     /**
      * Map that specifies a set of limits to apply to when connecting upstream services.
      */
-    limits?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceDefaultsUpstreamConfigDefaultLimit>[]>;
+    limits?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceDefaultsUpstreamConfigDefaultLimit>[] | undefined>;
     /**
      * Specifies the default mesh gateway mode field for all upstreams.
      */
-    meshGateways?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGateway>[]>;
+    meshGateways?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGateway>[] | undefined>;
     /**
      * Map that specifies a set of rules that enable Consul to remove hosts from the upstream cluster that are unreachable or that return errors.
      */
-    passiveHealthChecks?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheck>[]>;
+    passiveHealthChecks?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheck>[] | undefined>;
     /**
      * Specifies the default protocol for the service.
      */
-    protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string | undefined>;
 }
 
 export interface ConfigEntryServiceDefaultsUpstreamConfigDefaultLimit {
     /**
      * Specifies the maximum number of concurrent requests.
      */
-    maxConcurrentRequests?: pulumi.Input<number>;
+    maxConcurrentRequests?: pulumi.Input<number | undefined>;
     /**
      * Specifies the maximum number of connections a service instance can establish against the upstream.
      */
-    maxConnections?: pulumi.Input<number>;
+    maxConnections?: pulumi.Input<number | undefined>;
     /**
      * Specifies the maximum number of requests that are queued while waiting for a connection to establish.
      */
-    maxPendingRequests?: pulumi.Input<number>;
+    maxPendingRequests?: pulumi.Input<number | undefined>;
 }
 
 export interface ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGateway {
-    mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string | undefined>;
 }
 
 export interface ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheck {
     /**
      * Specifies the minimum amount of time that an ejected host must remain outside the cluster before rejoining.
      */
-    baseEjectionTime?: pulumi.Input<string>;
+    baseEjectionTime?: pulumi.Input<string | undefined>;
     /**
      * Specifies a percentage that indicates how many times out of 100 that Consul ejects the host when it detects an outlier status.
      */
-    enforcingConsecutive5xx?: pulumi.Input<number>;
+    enforcingConsecutive5xx?: pulumi.Input<number | undefined>;
     /**
      * Specifies the time between checks.
      */
-    interval?: pulumi.Input<string>;
+    interval?: pulumi.Input<string | undefined>;
     /**
      * Specifies the maximum percentage of an upstream cluster that Consul ejects when the proxy reports an outlier.
      */
-    maxEjectionPercent?: pulumi.Input<number>;
+    maxEjectionPercent?: pulumi.Input<number | undefined>;
     /**
      * Specifies the number of consecutive failures allowed per check interval. If exceeded, Consul removes the host from the load balancer.
      */
-    maxFailures?: pulumi.Input<number>;
+    maxFailures?: pulumi.Input<number | undefined>;
 }
 
 export interface ConfigEntryServiceDefaultsUpstreamConfigOverride {
     /**
      * Sets the strategy for allocating outbound connections from upstreams across Envoy proxy threads.
      */
-    balanceOutboundConnections?: pulumi.Input<string>;
-    connectTimeoutMs?: pulumi.Input<number>;
-    envoyListenerJson?: pulumi.Input<string>;
+    balanceOutboundConnections?: pulumi.Input<string | undefined>;
+    connectTimeoutMs?: pulumi.Input<number | undefined>;
+    envoyListenerJson?: pulumi.Input<string | undefined>;
     /**
      * Map that specifies a set of limits to apply to when connecting upstream services.
      */
-    limits?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceDefaultsUpstreamConfigOverrideLimit>[]>;
+    limits?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceDefaultsUpstreamConfigOverrideLimit>[] | undefined>;
     /**
      * Specifies the default mesh gateway mode field for all upstreams.
      */
-    meshGateways?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGateway>[]>;
+    meshGateways?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGateway>[] | undefined>;
     /**
      * Specifies the name of the service you are setting the defaults for.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Specifies the namespace containing the upstream service that the configuration applies to.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * Specifies the name of the name of the Consul admin partition that the configuration entry applies to.
      */
-    partition?: pulumi.Input<string>;
+    partition?: pulumi.Input<string | undefined>;
     /**
      * Map that specifies a set of rules that enable Consul to remove hosts from the upstream cluster that are unreachable or that return errors.
      */
-    passiveHealthChecks?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheck>[]>;
+    passiveHealthChecks?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheck>[] | undefined>;
     /**
      * Specifies the peer name of the upstream service that the configuration applies to.
      */
-    peer?: pulumi.Input<string>;
+    peer?: pulumi.Input<string | undefined>;
     /**
      * Specifies the default protocol for the service.
      */
-    protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string | undefined>;
 }
 
 export interface ConfigEntryServiceDefaultsUpstreamConfigOverrideLimit {
     /**
      * Specifies the maximum number of concurrent requests.
      */
-    maxConcurrentRequests?: pulumi.Input<number>;
+    maxConcurrentRequests?: pulumi.Input<number | undefined>;
     /**
      * Specifies the maximum number of connections a service instance can establish against the upstream.
      */
-    maxConnections?: pulumi.Input<number>;
+    maxConnections?: pulumi.Input<number | undefined>;
     /**
      * Specifies the maximum number of requests that are queued while waiting for a connection to establish.
      */
-    maxPendingRequests?: pulumi.Input<number>;
+    maxPendingRequests?: pulumi.Input<number | undefined>;
 }
 
 export interface ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGateway {
-    mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string | undefined>;
 }
 
 export interface ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheck {
     /**
      * Specifies the minimum amount of time that an ejected host must remain outside the cluster before rejoining.
      */
-    baseEjectionTime?: pulumi.Input<string>;
+    baseEjectionTime?: pulumi.Input<string | undefined>;
     /**
      * Specifies a percentage that indicates how many times out of 100 that Consul ejects the host when it detects an outlier status.
      */
-    enforcingConsecutive5xx?: pulumi.Input<number>;
+    enforcingConsecutive5xx?: pulumi.Input<number | undefined>;
     /**
      * Specifies the time between checks.
      */
-    interval?: pulumi.Input<string>;
+    interval?: pulumi.Input<string | undefined>;
     /**
      * Specifies the maximum percentage of an upstream cluster that Consul ejects when the proxy reports an outlier.
      */
-    maxEjectionPercent?: pulumi.Input<number>;
+    maxEjectionPercent?: pulumi.Input<number | undefined>;
     /**
      * Specifies the number of consecutive failures allowed per check interval. If exceeded, Consul removes the host from the load balancer.
      */
-    maxFailures?: pulumi.Input<number>;
+    maxFailures?: pulumi.Input<number | undefined>;
 }
 
 export interface ConfigEntryServiceIntentionsJwt {
     /**
      * Specifies the names of one or more previously configured JWT provider configuration entries, which include the information necessary to validate a JSON web token.
      */
-    providers?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceIntentionsJwtProvider>[]>;
+    providers?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceIntentionsJwtProvider>[] | undefined>;
 }
 
 export interface ConfigEntryServiceIntentionsJwtProvider {
     /**
      * Specifies the name of a JWT provider defined in the Name field of the jwt-provider configuration entry.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Specifies additional token information to verify beyond what is configured in the JWT provider configuration entry.
      */
-    verifyClaims?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceIntentionsJwtProviderVerifyClaim>[]>;
+    verifyClaims?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceIntentionsJwtProviderVerifyClaim>[] | undefined>;
 }
 
 export interface ConfigEntryServiceIntentionsJwtProviderVerifyClaim {
     /**
      * Specifies the path to the claim in the JSON web token.
      */
-    paths?: pulumi.Input<pulumi.Input<string>[]>;
+    paths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Specifies the value to match on when verifying the the claim designated in path.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface ConfigEntryServiceIntentionsSource {
     /**
      * Specifies the action to take when the source sends traffic to the destination service.
      */
-    action?: pulumi.Input<string>;
+    action?: pulumi.Input<string | undefined>;
     /**
      * Specifies a description of the intention.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Specifies the name of the source that the intention allows or denies traffic from.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Specifies the traffic source namespace that the intention allows or denies traffic from.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * Specifies the name of an admin partition that the intention allows or denies traffic from.
      */
-    partition?: pulumi.Input<string>;
+    partition?: pulumi.Input<string | undefined>;
     /**
      * Specifies the name of a peered Consul cluster that the intention allows or denies traffic from
      */
-    peer?: pulumi.Input<string>;
+    peer?: pulumi.Input<string | undefined>;
     /**
      * Specifies a list of permissions for L7 traffic sources. The list contains one or more actions and a set of match criteria for each action.
      */
-    permissions?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceIntentionsSourcePermission>[]>;
+    permissions?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceIntentionsSourcePermission>[] | undefined>;
     /**
      * The Precedence field contains a read-only integer. Consul generates the value based on name configurations for the source and destination services.
      */
-    precedence?: pulumi.Input<number>;
+    precedence?: pulumi.Input<number | undefined>;
     /**
      * Specifies the name of a sameness group that the intention allows or denies traffic from.
      */
-    samenessGroup?: pulumi.Input<string>;
+    samenessGroup?: pulumi.Input<string | undefined>;
     /**
      * Specifies the type of destination service that the configuration entry applies to.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 export interface ConfigEntryServiceIntentionsSourcePermission {
@@ -417,34 +417,34 @@ export interface ConfigEntryServiceIntentionsSourcePermissionHttp {
     /**
      * Specifies a header name and matching criteria for HTTP request headers.
      */
-    headers?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceIntentionsSourcePermissionHttpHeader>[]>;
+    headers?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceIntentionsSourcePermissionHttpHeader>[] | undefined>;
     /**
      * Specifies a list of HTTP methods.
      */
-    methods?: pulumi.Input<pulumi.Input<string>[]>;
+    methods?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Specifies an exact path to match on the HTTP request path.
      */
-    pathExact?: pulumi.Input<string>;
+    pathExact?: pulumi.Input<string | undefined>;
     /**
      * Specifies a path prefix to match on the HTTP request path.
      */
-    pathPrefix?: pulumi.Input<string>;
+    pathPrefix?: pulumi.Input<string | undefined>;
     /**
      * Defines a regular expression to match on the HTTP request path.
      */
-    pathRegex?: pulumi.Input<string>;
+    pathRegex?: pulumi.Input<string | undefined>;
 }
 
 export interface ConfigEntryServiceIntentionsSourcePermissionHttpHeader {
     /**
      * Specifies a value for the header key set in the Name field. If the request header value matches the Exact value, Consul applies the permission.
      */
-    exact?: pulumi.Input<string>;
+    exact?: pulumi.Input<string | undefined>;
     /**
      * Inverts the matching logic configured in the Header.
      */
-    invert?: pulumi.Input<boolean>;
+    invert?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies the name of the header to match.
      */
@@ -452,42 +452,42 @@ export interface ConfigEntryServiceIntentionsSourcePermissionHttpHeader {
     /**
      * Specifies a prefix value for the header key set in the Name field.
      */
-    prefix?: pulumi.Input<string>;
+    prefix?: pulumi.Input<string | undefined>;
     /**
      * Enables a match if the header configured in the Name field appears in the request. Consul matches on any value as long as the header key appears in the request.
      */
-    present?: pulumi.Input<boolean>;
+    present?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies a regular expression pattern as the value for the header key set in the Name field.
      */
-    regex?: pulumi.Input<string>;
+    regex?: pulumi.Input<string | undefined>;
     /**
      * Specifies a suffix value for the header key set in the Name field.
      */
-    suffix?: pulumi.Input<string>;
+    suffix?: pulumi.Input<string | undefined>;
 }
 
 export interface ConfigEntryServiceResolverFailover {
     /**
      * Specifies an ordered list of datacenters at the failover location to attempt connections to during a failover scenario. When Consul cannot establish a connection with the first datacenter in the list, it proceeds sequentially until establishing a connection with another datacenter.
      */
-    datacenters?: pulumi.Input<pulumi.Input<string>[]>;
+    datacenters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Specifies the namespace at the failover location where the failover services are deployed.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * Specifies the sameness group at the failover location where the failover services are deployed.
      */
-    samenessGroup?: pulumi.Input<string>;
+    samenessGroup?: pulumi.Input<string | undefined>;
     /**
      * Specifies the name of the service to resolve at the failover location during a failover scenario.
      */
-    service?: pulumi.Input<string>;
+    service?: pulumi.Input<string | undefined>;
     /**
      * Specifies the name of a subset of service instances to resolve at the failover location during a failover scenario.
      */
-    serviceSubset?: pulumi.Input<string>;
+    serviceSubset?: pulumi.Input<string | undefined>;
     /**
      * Name of subset.
      */
@@ -495,137 +495,137 @@ export interface ConfigEntryServiceResolverFailover {
     /**
      * Specifies a fixed list of failover targets to try during failover. This list can express complicated failover scenarios.
      */
-    targets?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceResolverFailoverTarget>[]>;
+    targets?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceResolverFailoverTarget>[] | undefined>;
 }
 
 export interface ConfigEntryServiceResolverFailoverTarget {
     /**
      * Specifies the WAN federated datacenter to use for the failover target. If empty, the current datacenter is used.
      */
-    datacenter?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string | undefined>;
     /**
      * Specifies the namespace to use for the failover target. If empty, the default namespace is used.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * Specifies the admin partition within the same datacenter to use for the failover target. If empty, the default partition is used.
      */
-    partition?: pulumi.Input<string>;
+    partition?: pulumi.Input<string | undefined>;
     /**
      * Specifies the destination cluster peer to resolve the target service name from.
      */
-    peer?: pulumi.Input<string>;
+    peer?: pulumi.Input<string | undefined>;
     /**
      * Specifies the service name to use for the failover target. If empty, the current service name is used.
      */
-    service?: pulumi.Input<string>;
+    service?: pulumi.Input<string | undefined>;
     /**
      * Specifies the named subset to use for the failover target. If empty, the default subset for the requested service name is used.
      */
-    serviceSubset?: pulumi.Input<string>;
+    serviceSubset?: pulumi.Input<string | undefined>;
 }
 
 export interface ConfigEntryServiceResolverLoadBalancer {
     /**
      * Specifies a list of hash policies to use for hashing load balancing algorithms. Consul evaluates hash policies individually and combines them so that identical lists result in the same hash.
      */
-    hashPolicies?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceResolverLoadBalancerHashPolicy>[]>;
+    hashPolicies?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceResolverLoadBalancerHashPolicy>[] | undefined>;
     /**
      * Specifies configuration for the least*request policy type.
      */
-    leastRequestConfigs?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceResolverLoadBalancerLeastRequestConfig>[]>;
+    leastRequestConfigs?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceResolverLoadBalancerLeastRequestConfig>[] | undefined>;
     /**
      * Specifies the type of load balancing policy for selecting a host.
      */
-    policy?: pulumi.Input<string>;
+    policy?: pulumi.Input<string | undefined>;
     /**
      * Specifies configuration for the ring*hash policy type.
      */
-    ringHashConfigs?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceResolverLoadBalancerRingHashConfig>[]>;
+    ringHashConfigs?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceResolverLoadBalancerRingHashConfig>[] | undefined>;
 }
 
 export interface ConfigEntryServiceResolverLoadBalancerHashPolicy {
     /**
      * Specifies additional configuration options for the cookie hash policy type.
      */
-    cookieConfigs?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfig>[]>;
+    cookieConfigs?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfig>[] | undefined>;
     /**
      * Specifies the attribute type to hash on. You cannot specify the Field parameter if SourceIP is also configured.
      */
-    field?: pulumi.Input<string>;
+    field?: pulumi.Input<string | undefined>;
     /**
      * Specifies the value to hash, such as a header name, cookie name, or a URL query parameter name.
      */
-    fieldValue?: pulumi.Input<string>;
+    fieldValue?: pulumi.Input<string | undefined>;
     /**
      * Determines if the hash type should be source IP address.
      */
-    sourceIp?: pulumi.Input<boolean>;
+    sourceIp?: pulumi.Input<boolean | undefined>;
     /**
      * Determines if Consul should stop computing the hash when multiple hash policies are present.
      */
-    terminal?: pulumi.Input<boolean>;
+    terminal?: pulumi.Input<boolean | undefined>;
 }
 
 export interface ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfig {
     /**
      * Specifies the path to set for the cookie.
      */
-    path?: pulumi.Input<string>;
+    path?: pulumi.Input<string | undefined>;
     /**
      * Directs Consul to generate a session cookie with no expiration.
      */
-    session?: pulumi.Input<boolean>;
+    session?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies the TTL for generated cookies. Cannot be specified for session cookies.
      */
-    ttl?: pulumi.Input<string>;
+    ttl?: pulumi.Input<string | undefined>;
 }
 
 export interface ConfigEntryServiceResolverLoadBalancerLeastRequestConfig {
-    choiceCount?: pulumi.Input<number>;
+    choiceCount?: pulumi.Input<number | undefined>;
 }
 
 export interface ConfigEntryServiceResolverLoadBalancerRingHashConfig {
     /**
      * Determines the maximum number of entries in the hash ring.
      */
-    maximumRingSize?: pulumi.Input<number>;
+    maximumRingSize?: pulumi.Input<number | undefined>;
     /**
      * Determines the minimum number of entries in the hash ring.
      */
-    minimumRingSize?: pulumi.Input<number>;
+    minimumRingSize?: pulumi.Input<number | undefined>;
 }
 
 export interface ConfigEntryServiceResolverRedirect {
     /**
      * Specifies the datacenter at the redirect’s destination that resolves local upstream requests.
      */
-    datacenter?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string | undefined>;
     /**
      * Specifies the namespace at the redirect’s destination that resolves local upstream requests.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * Specifies the admin partition at the redirect’s destination that resolves local upstream requests.
      */
-    partition?: pulumi.Input<string>;
+    partition?: pulumi.Input<string | undefined>;
     /**
      * Specifies the cluster with an active cluster peering connection at the redirect’s destination that resolves local upstream requests.
      */
-    peer?: pulumi.Input<string>;
+    peer?: pulumi.Input<string | undefined>;
     /**
      * Specifies the sameness group at the redirect’s destination that resolves local upstream requests.
      */
-    samenessGroup?: pulumi.Input<string>;
+    samenessGroup?: pulumi.Input<string | undefined>;
     /**
      * Specifies the name of a service at the redirect’s destination that resolves local upstream requests.
      */
-    service?: pulumi.Input<string>;
+    service?: pulumi.Input<string | undefined>;
     /**
      * Specifies the name of a subset of services at the redirect’s destination that resolves local upstream requests. If empty, the default subset is used. If specified, you must also specify at least one of the following in the same Redirect map: Service, Namespace, andDatacenter.
      */
-    serviceSubset?: pulumi.Input<string>;
+    serviceSubset?: pulumi.Input<string | undefined>;
 }
 
 export interface ConfigEntryServiceResolverSubset {
@@ -647,199 +647,199 @@ export interface ConfigEntryServiceRouterRoute {
     /**
      * Specifies the target service to route matching requests to, as well as behavior for the request to follow when routed.
      */
-    destination?: pulumi.Input<inputs.ConfigEntryServiceRouterRouteDestination>;
+    destination?: pulumi.Input<inputs.ConfigEntryServiceRouterRouteDestination | undefined>;
     /**
      * Describes a set of criteria that Consul compares incoming L7 traffic with.
      */
-    match?: pulumi.Input<inputs.ConfigEntryServiceRouterRouteMatch>;
+    match?: pulumi.Input<inputs.ConfigEntryServiceRouterRouteMatch | undefined>;
 }
 
 export interface ConfigEntryServiceRouterRouteDestination {
     /**
      * Specifies the total amount of time permitted for the request stream to be idle.
      */
-    idleTimeout?: pulumi.Input<string>;
+    idleTimeout?: pulumi.Input<string | undefined>;
     /**
      * Specifies the Consul namespace to resolve the service from instead of the current namespace.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * Specifies the number of times to retry the request when a retry condition occurs.
      */
-    numRetries?: pulumi.Input<number>;
+    numRetries?: pulumi.Input<number | undefined>;
     /**
      * Specifies the Consul admin partition to resolve the service from instead of the current partition.
      */
-    partition?: pulumi.Input<string>;
+    partition?: pulumi.Input<string | undefined>;
     /**
      * Specifies rewrites to the HTTP request path before proxying it to its final destination.
      */
-    prefixRewrite?: pulumi.Input<string>;
+    prefixRewrite?: pulumi.Input<string | undefined>;
     /**
      * Specifies a set of HTTP-specific header modification rules applied to requests routed with the service router.
      */
-    requestHeaders?: pulumi.Input<inputs.ConfigEntryServiceRouterRouteDestinationRequestHeaders>;
+    requestHeaders?: pulumi.Input<inputs.ConfigEntryServiceRouterRouteDestinationRequestHeaders | undefined>;
     /**
      * Specifies the total amount of time permitted for the entire downstream request to be processed, including retry attempts.
      */
-    requestTimeout?: pulumi.Input<string>;
+    requestTimeout?: pulumi.Input<string | undefined>;
     /**
      * Specifies a set of HTTP-specific header modification rules applied to responses routed with the service router.
      */
-    responseHeaders?: pulumi.Input<inputs.ConfigEntryServiceRouterRouteDestinationResponseHeaders>;
+    responseHeaders?: pulumi.Input<inputs.ConfigEntryServiceRouterRouteDestinationResponseHeaders | undefined>;
     /**
      * Specifies that connection failure errors that trigger a retry request.
      */
-    retryOnConnectFailure?: pulumi.Input<boolean>;
+    retryOnConnectFailure?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies a list of integers for HTTP response status codes that trigger a retry request.
      */
-    retryOnStatusCodes?: pulumi.Input<pulumi.Input<number>[]>;
+    retryOnStatusCodes?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * Specifies a list of conditions for Consul to retry requests based on the response from an upstream service.
      */
-    retryOns?: pulumi.Input<pulumi.Input<string>[]>;
+    retryOns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Specifies the name of the service to resolve.
      */
-    service?: pulumi.Input<string>;
+    service?: pulumi.Input<string | undefined>;
     /**
      * Specifies a named subset of the given service to resolve instead of the one defined as that service's `defaultSubset` in the service resolver configuration entry.
      */
-    serviceSubset?: pulumi.Input<string>;
+    serviceSubset?: pulumi.Input<string | undefined>;
 }
 
 export interface ConfigEntryServiceRouterRouteDestinationRequestHeaders {
     /**
      * Defines a set of key-value pairs to add to the header. Use header names as the keys.
      */
-    add?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    add?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Defines a list of headers to remove.
      */
-    removes?: pulumi.Input<pulumi.Input<string>[]>;
+    removes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Defines a set of key-value pairs to add to the request header or to replace existing header values with.
      */
-    set?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    set?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 export interface ConfigEntryServiceRouterRouteDestinationResponseHeaders {
     /**
      * Defines a set of key-value pairs to add to the header. Use header names as the keys
      */
-    add?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    add?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Defines a list of headers to remove.
      */
-    removes?: pulumi.Input<pulumi.Input<string>[]>;
+    removes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Defines a set of key-value pairs to add to the response header or to replace existing header values with
      */
-    set?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    set?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 export interface ConfigEntryServiceRouterRouteMatch {
     /**
      * Specifies a set of HTTP criteria used to evaluate incoming L7 traffic for matches.
      */
-    http?: pulumi.Input<inputs.ConfigEntryServiceRouterRouteMatchHttp>;
+    http?: pulumi.Input<inputs.ConfigEntryServiceRouterRouteMatchHttp | undefined>;
 }
 
 export interface ConfigEntryServiceRouterRouteMatchHttp {
     /**
      * Specifies information in the HTTP request header to match with.
      */
-    headers?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceRouterRouteMatchHttpHeader>[]>;
+    headers?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceRouterRouteMatchHttpHeader>[] | undefined>;
     /**
      * Specifies HTTP methods that the match applies to.
      */
-    methods?: pulumi.Input<pulumi.Input<string>[]>;
+    methods?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Specifies the exact path to match on the HTTP request path.
      */
-    pathExact?: pulumi.Input<string>;
+    pathExact?: pulumi.Input<string | undefined>;
     /**
      * Specifies the path prefix to match on the HTTP request path.
      */
-    pathPrefix?: pulumi.Input<string>;
+    pathPrefix?: pulumi.Input<string | undefined>;
     /**
      * Specifies a regular expression to match on the HTTP request path.
      */
-    pathRegex?: pulumi.Input<string>;
+    pathRegex?: pulumi.Input<string | undefined>;
     /**
      * Specifies information to match to on HTTP query parameters.
      */
-    queryParams?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceRouterRouteMatchHttpQueryParam>[]>;
+    queryParams?: pulumi.Input<pulumi.Input<inputs.ConfigEntryServiceRouterRouteMatchHttpQueryParam>[] | undefined>;
 }
 
 export interface ConfigEntryServiceRouterRouteMatchHttpHeader {
     /**
      * Specifies that a request matches when the header with the given name is this exact value.
      */
-    exact?: pulumi.Input<string>;
+    exact?: pulumi.Input<string | undefined>;
     /**
      * Specifies that the logic for the HTTP header match should be inverted.
      */
-    invert?: pulumi.Input<boolean>;
+    invert?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies the name of the HTTP header to match.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Specifies that a request matches when the header with the given name has this prefix.
      */
-    prefix?: pulumi.Input<string>;
+    prefix?: pulumi.Input<string | undefined>;
     /**
      * Specifies that a request matches when the value in the `name` argument is present anywhere in the HTTP header.
      */
-    present?: pulumi.Input<boolean>;
+    present?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies that a request matches when the header with the given name matches this regular expression.
      */
-    regex?: pulumi.Input<string>;
+    regex?: pulumi.Input<string | undefined>;
     /**
      * Specifies that a request matches when the header with the given name has this suffix.
      */
-    suffix?: pulumi.Input<string>;
+    suffix?: pulumi.Input<string | undefined>;
 }
 
 export interface ConfigEntryServiceRouterRouteMatchHttpQueryParam {
     /**
      * Specifies that a request matches when the query parameter with the given name is this exact value.
      */
-    exact?: pulumi.Input<string>;
+    exact?: pulumi.Input<string | undefined>;
     /**
      * Specifies the name of the HTTP query parameter to match.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Specifies that a request matches when the value in the `name` argument is present anywhere in the HTTP query parameter.
      */
-    present?: pulumi.Input<boolean>;
+    present?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies that a request matches when the query parameter with the given name matches this regular expression.
      */
-    regex?: pulumi.Input<string>;
+    regex?: pulumi.Input<string | undefined>;
 }
 
 export interface ConfigEntryServiceSplitterSplit {
     /**
      * Specifies the namespace to use in the FQDN when resolving the service.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * Specifies the admin partition to use in the FQDN when resolving the service.
      */
-    partition?: pulumi.Input<string>;
+    partition?: pulumi.Input<string | undefined>;
     /**
      * Specifies a set of HTTP-specific header modification rules applied to requests routed with the service split. You cannot configure request headers if the listener protocol is set to `tcp`.
      */
-    requestHeaders?: pulumi.Input<inputs.ConfigEntryServiceSplitterSplitRequestHeaders>;
+    requestHeaders?: pulumi.Input<inputs.ConfigEntryServiceSplitterSplitRequestHeaders | undefined>;
     /**
      * Specifies a set of HTTP-specific header modification rules applied to responses routed with the service split. You cannot configure request headers if the listener protocol is set to `tcp`.
      */
-    responseHeaders?: pulumi.Input<inputs.ConfigEntryServiceSplitterSplitResponseHeaders>;
+    responseHeaders?: pulumi.Input<inputs.ConfigEntryServiceSplitterSplitResponseHeaders | undefined>;
     /**
      * Specifies the name of the service to resolve.
      */
@@ -847,7 +847,7 @@ export interface ConfigEntryServiceSplitterSplit {
     /**
      * Specifies a subset of the service to resolve. A service subset assigns a name to a specific subset of discoverable service instances within a datacenter, such as `version2` or `canary`. All services have an unnamed default subset that returns all healthy instances.
      */
-    serviceSubset?: pulumi.Input<string>;
+    serviceSubset?: pulumi.Input<string | undefined>;
     /**
      * Specifies the percentage of traffic sent to the set of service instances specified in the `service` field. Each weight must be a floating integer between `0` and `100`. The smallest representable value is `.01`. The sum of weights across all splits must add up to `100`.
      */
@@ -858,30 +858,30 @@ export interface ConfigEntryServiceSplitterSplitRequestHeaders {
     /**
      * Map of one or more key-value pairs. Defines a set of key-value pairs to add to the header. Use header names as the keys. Header names are not case-sensitive. If header values with the same name already exist, the value is appended and Consul applies both headers.
      */
-    add?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    add?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Defines an list of headers to remove. Consul removes only headers containing exact matches. Header names are not case-sensitive.
      */
-    removes?: pulumi.Input<pulumi.Input<string>[]>;
+    removes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Map of one or more key-value pairs. Defines a set of key-value pairs to add to the request header or to replace existing header values with. Use header names as the keys. Header names are not case-sensitive. If header values with the same names already exist, Consul replaces the header values.
      */
-    set?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    set?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 export interface ConfigEntryServiceSplitterSplitResponseHeaders {
     /**
      * Map of one or more key-value pairs. Defines a set of key-value pairs to add to the header. Use header names as the keys. Header names are not case-sensitive. If header values with the same name already exist, the value is appended and Consul applies both headers.
      */
-    add?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    add?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Defines an list of headers to remove. Consul removes only headers containing exact matches. Header names are not case-sensitive.
      */
-    removes?: pulumi.Input<pulumi.Input<string>[]>;
+    removes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Map of one or more key-value pairs. Defines a set of key-value pairs to add to the request header or to replace existing header values with. Use header names as the keys. Header names are not case-sensitive. If header values with the same names already exist, Consul replaces the header values.
      */
-    set?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    set?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 export interface GetCatalogNodesQueryOption {
@@ -928,38 +928,38 @@ export interface GetCatalogNodesQueryOptionArgs {
      * When `true`, the default, allow responses from
      * Consul servers that are followers.
      */
-    allowStale?: pulumi.Input<boolean>;
+    allowStale?: pulumi.Input<boolean | undefined>;
     /**
      * The Consul datacenter to query.  Defaults to the
      * same value found in `queryOptions` parameter specified below, or if that is
      * empty, the `datacenter` value found in the Consul agent that this provider is
      * configured to talk to then the datacenter in the provider setup.
      */
-    datacenter?: pulumi.Input<string>;
-    near?: pulumi.Input<string>;
-    nodeMeta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    partition?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string | undefined>;
+    near?: pulumi.Input<string | undefined>;
+    nodeMeta?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    partition?: pulumi.Input<string | undefined>;
     /**
      * When `true` force the client to perform a
      * read on at least quorum servers and verify the result is the same.  Defaults
      * to `false`.
      */
-    requireConsistent?: pulumi.Input<boolean>;
+    requireConsistent?: pulumi.Input<boolean | undefined>;
     /**
      * Specify the Consul ACL token to use when performing the
      * request.  This defaults to the same API token configured by the `consul`
      * provider but may be overridden if necessary.
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
     /**
      * Index number used to enable blocking queries.
      */
-    waitIndex?: pulumi.Input<number>;
+    waitIndex?: pulumi.Input<number | undefined>;
     /**
      * Max time the client should wait for a blocking query
      * to return.
      */
-    waitTime?: pulumi.Input<string>;
+    waitTime?: pulumi.Input<string | undefined>;
 }
 
 export interface GetCatalogServiceQueryOption {
@@ -1010,42 +1010,42 @@ export interface GetCatalogServiceQueryOptionArgs {
      * When `true`, the default, allow responses from
      * Consul servers that are followers.
      */
-    allowStale?: pulumi.Input<boolean>;
+    allowStale?: pulumi.Input<boolean | undefined>;
     /**
      * The Consul datacenter to query.  Defaults to the
      * same value found in `queryOptions` parameter specified below, or if that is
      * empty, the `datacenter` value found in the Consul agent that this provider is
      * configured to talk to.
      */
-    datacenter?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string | undefined>;
     /**
      * The namespace to lookup the service.
      */
-    namespace?: pulumi.Input<string>;
-    near?: pulumi.Input<string>;
-    nodeMeta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    partition?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
+    near?: pulumi.Input<string | undefined>;
+    nodeMeta?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    partition?: pulumi.Input<string | undefined>;
     /**
      * When `true` force the client to perform a
      * read on at least quorum servers and verify the result is the same.  Defaults
      * to `false`.
      */
-    requireConsistent?: pulumi.Input<boolean>;
+    requireConsistent?: pulumi.Input<boolean | undefined>;
     /**
      * Specify the Consul ACL token to use when performing the
      * request.  This defaults to the same API token configured by the `consul`
      * provider but may be overridden if necessary.
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
     /**
      * Index number used to enable blocking queries.
      */
-    waitIndex?: pulumi.Input<number>;
+    waitIndex?: pulumi.Input<number | undefined>;
     /**
      * Max time the client should wait for a blocking query
      * to return.
      */
-    waitTime?: pulumi.Input<string>;
+    waitTime?: pulumi.Input<string | undefined>;
 }
 
 export interface GetCatalogServicesQueryOption {
@@ -1096,42 +1096,42 @@ export interface GetCatalogServicesQueryOptionArgs {
      * When `true`, the default, allow responses from
      * Consul servers that are followers.
      */
-    allowStale?: pulumi.Input<boolean>;
+    allowStale?: pulumi.Input<boolean | undefined>;
     /**
      * The Consul datacenter to query.  Defaults to the
      * same value found in `queryOptions` parameter specified below, or if that is
      * empty, the `datacenter` value found in the Consul agent that this provider is
      * configured to talk to.
      */
-    datacenter?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string | undefined>;
     /**
      * The namespace to lookup the services.
      */
-    namespace?: pulumi.Input<string>;
-    near?: pulumi.Input<string>;
-    nodeMeta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    partition?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
+    near?: pulumi.Input<string | undefined>;
+    nodeMeta?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    partition?: pulumi.Input<string | undefined>;
     /**
      * When `true` force the client to perform a
      * read on at least quorum servers and verify the result is the same.  Defaults
      * to `false`.
      */
-    requireConsistent?: pulumi.Input<boolean>;
+    requireConsistent?: pulumi.Input<boolean | undefined>;
     /**
      * Specify the Consul ACL token to use when performing the
      * request.  This defaults to the same API token configured by the `consul`
      * provider but may be overridden if necessary.
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
     /**
      * Index number used to enable blocking queries.
      */
-    waitIndex?: pulumi.Input<number>;
+    waitIndex?: pulumi.Input<number | undefined>;
     /**
      * Max time the client should wait for a blocking query
      * to return.
      */
-    waitTime?: pulumi.Input<string>;
+    waitTime?: pulumi.Input<string | undefined>;
 }
 
 export interface GetKeyPrefixSubkeyCollection {
@@ -1159,7 +1159,7 @@ export interface GetKeyPrefixSubkeyCollectionArgs {
      * This is the default value to set for `var.<name>`
      * if the key does not exist in Consul. Defaults to an empty string.
      */
-    default?: pulumi.Input<string>;
+    default?: pulumi.Input<string | undefined>;
     /**
      * This is the name of the key. This value of the
      * key is exposed as `var.<name>`. This is not the path of the subkey
@@ -1193,7 +1193,7 @@ export interface GetKeysKeyArgs {
     /**
      * This is the default value to set for `var.<name>` if the key does not exist in Consul. Defaults to an empty string.
      */
-    default?: pulumi.Input<string>;
+    default?: pulumi.Input<string | undefined>;
     /**
      * This is the name of the key. This value of the key is exposed as `var.<name>`. This is not the path of the key in Consul.
      */
@@ -1248,38 +1248,38 @@ export interface GetNodesQueryOptionArgs {
      * When `true`, the default, allow responses from
      * Consul servers that are followers.
      */
-    allowStale?: pulumi.Input<boolean>;
+    allowStale?: pulumi.Input<boolean | undefined>;
     /**
      * The Consul datacenter to query.  Defaults to the
      * same value found in `queryOptions` parameter specified below, or if that is
      * empty, the `datacenter` value found in the Consul agent that this provider is
      * configured to talk to then the datacenter in the provider setup.
      */
-    datacenter?: pulumi.Input<string>;
-    near?: pulumi.Input<string>;
-    nodeMeta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    partition?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string | undefined>;
+    near?: pulumi.Input<string | undefined>;
+    nodeMeta?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    partition?: pulumi.Input<string | undefined>;
     /**
      * When `true` force the client to perform a
      * read on at least quorum servers and verify the result is the same.  Defaults
      * to `false`.
      */
-    requireConsistent?: pulumi.Input<boolean>;
+    requireConsistent?: pulumi.Input<boolean | undefined>;
     /**
      * Specify the Consul ACL token to use when performing the
      * request.  This defaults to the same API token configured by the `consul`
      * provider but may be overridden if necessary.
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
     /**
      * Index number used to enable blocking queries.
      */
-    waitIndex?: pulumi.Input<number>;
+    waitIndex?: pulumi.Input<number | undefined>;
     /**
      * Max time the client should wait for a blocking query
      * to return.
      */
-    waitTime?: pulumi.Input<string>;
+    waitTime?: pulumi.Input<string | undefined>;
 }
 
 export interface GetServiceQueryOption {
@@ -1330,42 +1330,42 @@ export interface GetServiceQueryOptionArgs {
      * When `true`, the default, allow responses from
      * Consul servers that are followers.
      */
-    allowStale?: pulumi.Input<boolean>;
+    allowStale?: pulumi.Input<boolean | undefined>;
     /**
      * The Consul datacenter to query.  Defaults to the
      * same value found in `queryOptions` parameter specified below, or if that is
      * empty, the `datacenter` value found in the Consul agent that this provider is
      * configured to talk to.
      */
-    datacenter?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string | undefined>;
     /**
      * The namespace to lookup the service.
      */
-    namespace?: pulumi.Input<string>;
-    near?: pulumi.Input<string>;
-    nodeMeta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    partition?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
+    near?: pulumi.Input<string | undefined>;
+    nodeMeta?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    partition?: pulumi.Input<string | undefined>;
     /**
      * When `true` force the client to perform a
      * read on at least quorum servers and verify the result is the same.  Defaults
      * to `false`.
      */
-    requireConsistent?: pulumi.Input<boolean>;
+    requireConsistent?: pulumi.Input<boolean | undefined>;
     /**
      * Specify the Consul ACL token to use when performing the
      * request.  This defaults to the same API token configured by the `consul`
      * provider but may be overridden if necessary.
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
     /**
      * Index number used to enable blocking queries.
      */
-    waitIndex?: pulumi.Input<number>;
+    waitIndex?: pulumi.Input<number | undefined>;
     /**
      * Max time the client should wait for a blocking query
      * to return.
      */
-    waitTime?: pulumi.Input<string>;
+    waitTime?: pulumi.Input<string | undefined>;
 }
 
 export interface GetServicesQueryOption {
@@ -1416,42 +1416,42 @@ export interface GetServicesQueryOptionArgs {
      * When `true`, the default, allow responses from
      * Consul servers that are followers.
      */
-    allowStale?: pulumi.Input<boolean>;
+    allowStale?: pulumi.Input<boolean | undefined>;
     /**
      * The Consul datacenter to query.  Defaults to the
      * same value found in `queryOptions` parameter specified below, or if that is
      * empty, the `datacenter` value found in the Consul agent that this provider is
      * configured to talk to.
      */
-    datacenter?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string | undefined>;
     /**
      * The namespace to lookup the services.
      */
-    namespace?: pulumi.Input<string>;
-    near?: pulumi.Input<string>;
-    nodeMeta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    partition?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
+    near?: pulumi.Input<string | undefined>;
+    nodeMeta?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    partition?: pulumi.Input<string | undefined>;
     /**
      * When `true` force the client to perform a
      * read on at least quorum servers and verify the result is the same.  Defaults
      * to `false`.
      */
-    requireConsistent?: pulumi.Input<boolean>;
+    requireConsistent?: pulumi.Input<boolean | undefined>;
     /**
      * Specify the Consul ACL token to use when performing the
      * request.  This defaults to the same API token configured by the `consul`
      * provider but may be overridden if necessary.
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
     /**
      * Index number used to enable blocking queries.
      */
-    waitIndex?: pulumi.Input<number>;
+    waitIndex?: pulumi.Input<number | undefined>;
     /**
      * Max time the client should wait for a blocking query
      * to return.
      */
-    waitTime?: pulumi.Input<string>;
+    waitTime?: pulumi.Input<string | undefined>;
 }
 
 export interface KeyPrefixSubkeyCollection {
@@ -1459,7 +1459,7 @@ export interface KeyPrefixSubkeyCollection {
      * An [unsigned integer value](https://www.consul.io/api/kv.html#flags-1)
      * to attach to the key (defaults to 0).
      */
-    flags?: pulumi.Input<number>;
+    flags?: pulumi.Input<number | undefined>;
     /**
      * This is the path (which will be appended to the given
      * `pathPrefix`) in Consul that should be written to.
@@ -1472,23 +1472,23 @@ export interface KeyPrefixSubkeyCollection {
 }
 
 export interface KeysKey {
-    default?: pulumi.Input<string>;
+    default?: pulumi.Input<string | undefined>;
     /**
      * If true, then the key will be deleted when
      * either its configuration block is removed from the configuration or
      * the entire resource is destroyed. Otherwise, it will be left in Consul.
      * Defaults to false.
      */
-    delete?: pulumi.Input<boolean>;
+    delete?: pulumi.Input<boolean | undefined>;
     /**
      * An [unsigned integer value](https://www.consul.io/api/kv.html#flags-1)
      * to attach to the key (defaults to 0).
      */
-    flags?: pulumi.Input<number>;
+    flags?: pulumi.Input<number | undefined>;
     /**
      * @deprecated Using consul.Keys resource to *read* is deprecated; please use consul.Keys data source instead
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * This is the path in Consul that should be written to.
      */
@@ -1496,40 +1496,40 @@ export interface KeysKey {
     /**
      * The value to write to the given path.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface PreparedQueryDns {
     /**
      * The TTL to send when returning DNS results.
      */
-    ttl?: pulumi.Input<string>;
+    ttl?: pulumi.Input<string | undefined>;
 }
 
 export interface PreparedQueryFailover {
     /**
      * Remote datacenters to return results from.
      */
-    datacenters?: pulumi.Input<pulumi.Input<string>[]>;
+    datacenters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Return results from this many datacenters, sorted in ascending order of estimated RTT.
      */
-    nearestN?: pulumi.Input<number>;
+    nearestN?: pulumi.Input<number | undefined>;
     /**
      * Specifies a sequential list of remote datacenters and cluster peers to failover to if there are no healthy service instances in the local datacenter. This option cannot be used with `nearestN` or `datacenters`.
      */
-    targets?: pulumi.Input<pulumi.Input<inputs.PreparedQueryFailoverTarget>[]>;
+    targets?: pulumi.Input<pulumi.Input<inputs.PreparedQueryFailoverTarget>[] | undefined>;
 }
 
 export interface PreparedQueryFailoverTarget {
     /**
      * Specifies a WAN federated datacenter to forward the query to.
      */
-    datacenter?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string | undefined>;
     /**
      * Specifies a cluster peer to use for failover.
      */
-    peer?: pulumi.Input<string>;
+    peer?: pulumi.Input<string | undefined>;
 }
 
 export interface PreparedQueryTemplate {
@@ -1540,7 +1540,7 @@ export interface PreparedQueryTemplate {
     /**
      * If set to true, will cause the tags list inside the service structure to be stripped of any empty strings.
      */
-    removeEmptyTags?: pulumi.Input<boolean>;
+    removeEmptyTags?: pulumi.Input<boolean | undefined>;
     /**
      * The type of template matching to perform. Currently only `namePrefixMatch` is supported.
      */
@@ -1555,15 +1555,15 @@ export interface ProviderAuthJwt {
     /**
      * The bearer token to present to the auth method during login for authentication purposes. For the Kubernetes auth method this is a [Service Account Token (JWT)](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#service-account-tokens).
      */
-    bearerToken?: pulumi.Input<string>;
+    bearerToken?: pulumi.Input<string | undefined>;
     /**
      * Specifies arbitrary KV metadata linked to the token. Can be useful to track origins.
      */
-    meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    meta?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Whether to use a [Terraform Workload Identity token](https://developer.hashicorp.com/terraform/cloud-docs/workspaces/dynamic-provider-credentials/workload-identity-tokens). The token will be read from the `TFC_WORKLOAD_IDENTITY_TOKEN` environment variable.
      */
-    useTerraformCloudWorkloadIdentity?: pulumi.Input<boolean>;
+    useTerraformCloudWorkloadIdentity?: pulumi.Input<boolean | undefined>;
 }
 
 export interface ProviderAuthLoginAws {
@@ -1574,63 +1574,63 @@ export interface ProviderAuthLoginAws {
     /**
      * The AWS access key ID.
      */
-    awsAccessKeyId?: pulumi.Input<string>;
+    awsAccessKeyId?: pulumi.Input<string | undefined>;
     /**
      * The IAM endpoint URL.
      */
-    awsIamEndpoint?: pulumi.Input<string>;
+    awsIamEndpoint?: pulumi.Input<string | undefined>;
     /**
      * The name of the AWS profile.
      */
-    awsProfile?: pulumi.Input<string>;
+    awsProfile?: pulumi.Input<string | undefined>;
     /**
      * The AWS region.
      */
-    awsRegion?: pulumi.Input<string>;
+    awsRegion?: pulumi.Input<string | undefined>;
     /**
      * The ARN of the AWS Role to assume. Used during STS AssumeRole
      */
-    awsRoleArn?: pulumi.Input<string>;
+    awsRoleArn?: pulumi.Input<string | undefined>;
     /**
      * Specifies the name to attach to the AWS role session. Used during STS AssumeRole
      */
-    awsRoleSessionName?: pulumi.Input<string>;
+    awsRoleSessionName?: pulumi.Input<string | undefined>;
     /**
      * The AWS secret access key.
      */
-    awsSecretAccessKey?: pulumi.Input<string>;
+    awsSecretAccessKey?: pulumi.Input<string | undefined>;
     /**
      * The AWS session token.
      */
-    awsSessionToken?: pulumi.Input<string>;
+    awsSessionToken?: pulumi.Input<string | undefined>;
     /**
      * Path to the AWS shared credentials file.
      */
-    awsSharedCredentialsFile?: pulumi.Input<string>;
+    awsSharedCredentialsFile?: pulumi.Input<string | undefined>;
     /**
      * The STS endpoint URL.
      */
-    awsStsEndpoint?: pulumi.Input<string>;
+    awsStsEndpoint?: pulumi.Input<string | undefined>;
     /**
      * Path to the file containing an OAuth 2.0 access token or OpenID Connect ID token.
      */
-    awsWebIdentityTokenFile?: pulumi.Input<string>;
+    awsWebIdentityTokenFile?: pulumi.Input<string | undefined>;
     /**
      * Specifies arbitrary KV metadata linked to the token. Can be useful to track origins.
      */
-    meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    meta?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The Consul namespace to authenticate to.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * The Consul admin partition to authenticate to.
      */
-    partition?: pulumi.Input<string>;
+    partition?: pulumi.Input<string | undefined>;
     /**
      * The Consul Server ID header value to include in the STS signing request. This must match the ServerIDHeaderValue configured in the Consul auth method.
      */
-    serverIdHeaderValue?: pulumi.Input<string>;
+    serverIdHeaderValue?: pulumi.Input<string | undefined>;
 }
 
 export interface ProviderHeader {
@@ -1652,15 +1652,15 @@ export interface ServiceCheck {
     /**
      * The time after which the service is automatically deregistered when in the `critical` state. Defaults to `30s`. Setting to `0` will disable.
      */
-    deregisterCriticalServiceAfter?: pulumi.Input<string>;
+    deregisterCriticalServiceAfter?: pulumi.Input<string | undefined>;
     /**
      * The headers to send for an HTTP check. The attributes of each header is given below.
      */
-    headers?: pulumi.Input<pulumi.Input<inputs.ServiceCheckHeader>[]>;
+    headers?: pulumi.Input<pulumi.Input<inputs.ServiceCheckHeader>[] | undefined>;
     /**
      * The HTTP endpoint to call for an HTTP check.
      */
-    http?: pulumi.Input<string>;
+    http?: pulumi.Input<string | undefined>;
     /**
      * The interval to wait between each health-check invocation.
      */
@@ -1668,7 +1668,7 @@ export interface ServiceCheck {
     /**
      * The method to use for HTTP health-checks. Defaults to `GET`.
      */
-    method?: pulumi.Input<string>;
+    method?: pulumi.Input<string | undefined>;
     /**
      * The name of the health-check.
      */
@@ -1676,15 +1676,15 @@ export interface ServiceCheck {
     /**
      * An opaque field meant to hold human readable text.
      */
-    notes?: pulumi.Input<string>;
+    notes?: pulumi.Input<string | undefined>;
     /**
      * The initial health-check status.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The TCP address and port to connect to for a TCP check.
      */
-    tcp?: pulumi.Input<string>;
+    tcp?: pulumi.Input<string | undefined>;
     /**
      * Specifies a timeout for outgoing connections in the case of a HTTP or TCP check.
      */
@@ -1692,7 +1692,7 @@ export interface ServiceCheck {
     /**
      * Whether to deactivate certificate verification for HTTP health-checks. Defaults to `false`.
      */
-    tlsSkipVerify?: pulumi.Input<boolean>;
+    tlsSkipVerify?: pulumi.Input<boolean | undefined>;
 }
 
 export interface ServiceCheckHeader {

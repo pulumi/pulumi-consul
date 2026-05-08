@@ -90,9 +90,9 @@ export interface GetConfigEntryOutputArgs {
     /**
      * The namespace the config entry is associated with.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * The partition the config entry is associated with.
      */
-    partition?: pulumi.Input<string>;
+    partition?: pulumi.Input<string | undefined>;
 }

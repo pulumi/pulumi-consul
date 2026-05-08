@@ -20,8 +20,8 @@ __all__ = ['CertificateAuthorityArgs', 'CertificateAuthority']
 class CertificateAuthorityArgs:
     def __init__(__self__, *,
                  connect_provider: pulumi.Input[_builtins.str],
-                 config: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 config_json: Optional[pulumi.Input[_builtins.str]] = None):
+                 config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 config_json: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a CertificateAuthority resource.
 
@@ -53,35 +53,35 @@ class CertificateAuthorityArgs:
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""The config attribute is deprecated, please use config_json instead.""")
-    def config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def config(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
         """
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def config(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "config", value)
 
     @_builtins.property
     @pulumi.getter(name="configJson")
-    def config_json(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def config_json(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
         """
         return pulumi.get(self, "config_json")
 
     @config_json.setter
-    def config_json(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def config_json(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "config_json", value)
 
 
 @pulumi.input_type
 class _CertificateAuthorityState:
     def __init__(__self__, *,
-                 config: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 config_json: Optional[pulumi.Input[_builtins.str]] = None,
-                 connect_provider: Optional[pulumi.Input[_builtins.str]] = None):
+                 config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 config_json: pulumi.Input[Optional[_builtins.str]] = None,
+                 connect_provider: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CertificateAuthority resources.
 
@@ -102,38 +102,38 @@ class _CertificateAuthorityState:
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""The config attribute is deprecated, please use config_json instead.""")
-    def config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def config(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
         """
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def config(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "config", value)
 
     @_builtins.property
     @pulumi.getter(name="configJson")
-    def config_json(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def config_json(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
         """
         return pulumi.get(self, "config_json")
 
     @config_json.setter
-    def config_json(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def config_json(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "config_json", value)
 
     @_builtins.property
     @pulumi.getter(name="connectProvider")
-    def connect_provider(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connect_provider(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the CA provider type to use.
         """
         return pulumi.get(self, "connect_provider")
 
     @connect_provider.setter
-    def connect_provider(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connect_provider(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connect_provider", value)
 
 
@@ -143,9 +143,9 @@ class CertificateAuthority(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 config_json: Optional[pulumi.Input[_builtins.str]] = None,
-                 connect_provider: Optional[pulumi.Input[_builtins.str]] = None,
+                 config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 config_json: pulumi.Input[Optional[_builtins.str]] = None,
+                 connect_provider: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The `CertificateAuthority` resource can be used to manage the configuration of the Certificate Authority used by [Consul Connect](https://www.consul.io/docs/connect/ca).
@@ -198,9 +198,9 @@ class CertificateAuthority(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 config_json: Optional[pulumi.Input[_builtins.str]] = None,
-                 connect_provider: Optional[pulumi.Input[_builtins.str]] = None,
+                 config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 config_json: pulumi.Input[Optional[_builtins.str]] = None,
+                 connect_provider: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -225,9 +225,9 @@ class CertificateAuthority(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            config: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            config_json: Optional[pulumi.Input[_builtins.str]] = None,
-            connect_provider: Optional[pulumi.Input[_builtins.str]] = None) -> 'CertificateAuthority':
+            config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            config_json: pulumi.Input[Optional[_builtins.str]] = None,
+            connect_provider: pulumi.Input[Optional[_builtins.str]] = None) -> 'CertificateAuthority':
         """
         Get an existing CertificateAuthority resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

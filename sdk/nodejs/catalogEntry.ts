@@ -139,29 +139,29 @@ export interface CatalogEntryState {
      * The address of the node being added to,
      * or referenced in the catalog.
      */
-    address?: pulumi.Input<string>;
+    address?: pulumi.Input<string | undefined>;
     /**
      * The datacenter to use. This overrides the
      * agent's default datacenter and the datacenter in the provider setup.
      */
-    datacenter?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string | undefined>;
     /**
      * The name of the node being added to, or
      * referenced in the catalog.
      */
-    node?: pulumi.Input<string>;
+    node?: pulumi.Input<string | undefined>;
     /**
      * A service to optionally associated with
      * the node. Supported values are documented below.
      */
-    services?: pulumi.Input<pulumi.Input<inputs.CatalogEntryService>[]>;
+    services?: pulumi.Input<pulumi.Input<inputs.CatalogEntryService>[] | undefined>;
     /**
      * ACL token.
      *
      * @deprecated The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -177,7 +177,7 @@ export interface CatalogEntryArgs {
      * The datacenter to use. This overrides the
      * agent's default datacenter and the datacenter in the provider setup.
      */
-    datacenter?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string | undefined>;
     /**
      * The name of the node being added to, or
      * referenced in the catalog.
@@ -187,12 +187,12 @@ export interface CatalogEntryArgs {
      * A service to optionally associated with
      * the node. Supported values are documented below.
      */
-    services?: pulumi.Input<pulumi.Input<inputs.CatalogEntryService>[]>;
+    services?: pulumi.Input<pulumi.Input<inputs.CatalogEntryService>[] | undefined>;
     /**
      * ACL token.
      *
      * @deprecated The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
 }

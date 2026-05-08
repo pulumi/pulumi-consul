@@ -22,10 +22,10 @@ __all__ = ['ConfigEntryServiceSplitterArgs', 'ConfigEntryServiceSplitter']
 class ConfigEntryServiceSplitterArgs:
     def __init__(__self__, *,
                  splits: pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceSplitterSplitArgs']]],
-                 meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 partition: Optional[pulumi.Input[_builtins.str]] = None):
+                 meta: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 partition: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ConfigEntryServiceSplitter resource.
 
@@ -59,61 +59,61 @@ class ConfigEntryServiceSplitterArgs:
 
     @_builtins.property
     @pulumi.getter
-    def meta(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def meta(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Specifies key-value pairs to add to the KV store.
         """
         return pulumi.get(self, "meta")
 
     @meta.setter
-    def meta(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def meta(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "meta", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies a name for the configuration entry.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the namespace to apply the configuration entry.
         """
         return pulumi.get(self, "namespace")
 
     @namespace.setter
-    def namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace", value)
 
     @_builtins.property
     @pulumi.getter
-    def partition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def partition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the admin partition to apply the configuration entry.
         """
         return pulumi.get(self, "partition")
 
     @partition.setter
-    def partition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def partition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "partition", value)
 
 
 @pulumi.input_type
 class _ConfigEntryServiceSplitterState:
     def __init__(__self__, *,
-                 meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 partition: Optional[pulumi.Input[_builtins.str]] = None,
-                 splits: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceSplitterSplitArgs']]]] = None):
+                 meta: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 partition: pulumi.Input[Optional[_builtins.str]] = None,
+                 splits: pulumi.Input[Optional[Sequence[pulumi.Input['ConfigEntryServiceSplitterSplitArgs']]]] = None):
         """
         Input properties used for looking up and filtering ConfigEntryServiceSplitter resources.
 
@@ -136,62 +136,62 @@ class _ConfigEntryServiceSplitterState:
 
     @_builtins.property
     @pulumi.getter
-    def meta(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def meta(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Specifies key-value pairs to add to the KV store.
         """
         return pulumi.get(self, "meta")
 
     @meta.setter
-    def meta(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def meta(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "meta", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies a name for the configuration entry.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the namespace to apply the configuration entry.
         """
         return pulumi.get(self, "namespace")
 
     @namespace.setter
-    def namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace", value)
 
     @_builtins.property
     @pulumi.getter
-    def partition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def partition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the admin partition to apply the configuration entry.
         """
         return pulumi.get(self, "partition")
 
     @partition.setter
-    def partition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def partition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "partition", value)
 
     @_builtins.property
     @pulumi.getter
-    def splits(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceSplitterSplitArgs']]]]:
+    def splits(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ConfigEntryServiceSplitterSplitArgs']]]]:
         """
         Defines how much traffic to send to sets of service instances during a traffic split.
         """
         return pulumi.get(self, "splits")
 
     @splits.setter
-    def splits(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigEntryServiceSplitterSplitArgs']]]]):
+    def splits(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ConfigEntryServiceSplitterSplitArgs']]]]):
         pulumi.set(self, "splits", value)
 
 
@@ -201,11 +201,11 @@ class ConfigEntryServiceSplitter(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 partition: Optional[pulumi.Input[_builtins.str]] = None,
-                 splits: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceSplitterSplitArgs', 'ConfigEntryServiceSplitterSplitArgsDict']]]]] = None,
+                 meta: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 partition: pulumi.Input[Optional[_builtins.str]] = None,
+                 splits: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigEntryServiceSplitterSplitArgs', 'ConfigEntryServiceSplitterSplitArgsDict']]]]] = None,
                  __props__=None):
         """
         The `ConfigEntryServiceSplitter` resource configures a [service splitter](https://developer.hashicorp.com/consul/docs/connect/config-entries/service-splitter) that will redirect a percentage of incoming traffic requests for a service to one or more specific service instances.
@@ -246,7 +246,7 @@ class ConfigEntryServiceSplitter(pulumi.CustomResource):
             },
             splits=[
                 {
-                    "weight": 80,
+                    "weight": float(80),
                     "service": "web",
                     "service_subset": "v1",
                     "request_headers": {
@@ -261,7 +261,7 @@ class ConfigEntryServiceSplitter(pulumi.CustomResource):
                     },
                 },
                 {
-                    "weight": 10,
+                    "weight": float(10),
                     "service": "web",
                     "service_subset": "v2",
                     "request_headers": {
@@ -276,7 +276,7 @@ class ConfigEntryServiceSplitter(pulumi.CustomResource):
                     },
                 },
                 {
-                    "weight": 10,
+                    "weight": float(10),
                     "service": "web",
                     "service_subset": "v2",
                 },
@@ -343,7 +343,7 @@ class ConfigEntryServiceSplitter(pulumi.CustomResource):
             },
             splits=[
                 {
-                    "weight": 80,
+                    "weight": float(80),
                     "service": "web",
                     "service_subset": "v1",
                     "request_headers": {
@@ -358,7 +358,7 @@ class ConfigEntryServiceSplitter(pulumi.CustomResource):
                     },
                 },
                 {
-                    "weight": 10,
+                    "weight": float(10),
                     "service": "web",
                     "service_subset": "v2",
                     "request_headers": {
@@ -373,7 +373,7 @@ class ConfigEntryServiceSplitter(pulumi.CustomResource):
                     },
                 },
                 {
-                    "weight": 10,
+                    "weight": float(10),
                     "service": "web",
                     "service_subset": "v2",
                 },
@@ -402,11 +402,11 @@ class ConfigEntryServiceSplitter(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 partition: Optional[pulumi.Input[_builtins.str]] = None,
-                 splits: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceSplitterSplitArgs', 'ConfigEntryServiceSplitterSplitArgsDict']]]]] = None,
+                 meta: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 partition: pulumi.Input[Optional[_builtins.str]] = None,
+                 splits: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigEntryServiceSplitterSplitArgs', 'ConfigEntryServiceSplitterSplitArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -433,11 +433,11 @@ class ConfigEntryServiceSplitter(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            namespace: Optional[pulumi.Input[_builtins.str]] = None,
-            partition: Optional[pulumi.Input[_builtins.str]] = None,
-            splits: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceSplitterSplitArgs', 'ConfigEntryServiceSplitterSplitArgsDict']]]]] = None) -> 'ConfigEntryServiceSplitter':
+            meta: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            partition: pulumi.Input[Optional[_builtins.str]] = None,
+            splits: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigEntryServiceSplitterSplitArgs', 'ConfigEntryServiceSplitterSplitArgsDict']]]]] = None) -> 'ConfigEntryServiceSplitter':
         """
         Get an existing ConfigEntryServiceSplitter resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

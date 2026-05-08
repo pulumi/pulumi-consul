@@ -130,25 +130,25 @@ export class Peering extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Peering resources.
  */
 export interface PeeringState {
-    deletedAt?: pulumi.Input<string>;
+    deletedAt?: pulumi.Input<string | undefined>;
     /**
      * Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the cluster peering process.
      */
-    meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    partition?: pulumi.Input<string>;
-    peerCaPems?: pulumi.Input<pulumi.Input<string>[]>;
-    peerId?: pulumi.Input<string>;
+    meta?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    partition?: pulumi.Input<string | undefined>;
+    peerCaPems?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    peerId?: pulumi.Input<string | undefined>;
     /**
      * The name assigned to the peer cluster. The `peerName` is used to reference the peer cluster in service discovery queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
      */
-    peerName?: pulumi.Input<string>;
-    peerServerAddresses?: pulumi.Input<pulumi.Input<string>[]>;
-    peerServerName?: pulumi.Input<string>;
+    peerName?: pulumi.Input<string | undefined>;
+    peerServerAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    peerServerName?: pulumi.Input<string | undefined>;
     /**
      * The peering token fetched from the peer cluster.
      */
-    peeringToken?: pulumi.Input<string>;
-    state?: pulumi.Input<string>;
+    peeringToken?: pulumi.Input<string | undefined>;
+    state?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -158,8 +158,8 @@ export interface PeeringArgs {
     /**
      * Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the cluster peering process.
      */
-    meta?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    partition?: pulumi.Input<string>;
+    meta?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    partition?: pulumi.Input<string | undefined>;
     /**
      * The name assigned to the peer cluster. The `peerName` is used to reference the peer cluster in service discovery queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
      */

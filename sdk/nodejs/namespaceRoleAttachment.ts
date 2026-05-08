@@ -143,11 +143,11 @@ export interface NamespaceRoleAttachmentState {
     /**
      * The namespace to attach the role to.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * The name of the role attached to the namespace.
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
 }
 
 /**

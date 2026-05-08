@@ -24,11 +24,11 @@ class AclBindingRuleArgs:
                  auth_method: pulumi.Input[_builtins.str],
                  bind_name: pulumi.Input[_builtins.str],
                  bind_type: pulumi.Input[_builtins.str],
-                 bind_vars: Optional[pulumi.Input['AclBindingRuleBindVarsArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 partition: Optional[pulumi.Input[_builtins.str]] = None,
-                 selector: Optional[pulumi.Input[_builtins.str]] = None):
+                 bind_vars: pulumi.Input[Optional['AclBindingRuleBindVarsArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 partition: pulumi.Input[Optional[_builtins.str]] = None,
+                 selector: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AclBindingRule resource.
 
@@ -93,76 +93,76 @@ class AclBindingRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="bindVars")
-    def bind_vars(self) -> Optional[pulumi.Input['AclBindingRuleBindVarsArgs']]:
+    def bind_vars(self) -> pulumi.Input[Optional['AclBindingRuleBindVarsArgs']]:
         """
         The variables used when binding rule type is `templated-policy`. Can be lightly templated using HIL `${foo}` syntax from available field names.
         """
         return pulumi.get(self, "bind_vars")
 
     @bind_vars.setter
-    def bind_vars(self, value: Optional[pulumi.Input['AclBindingRuleBindVarsArgs']]):
+    def bind_vars(self, value: pulumi.Input[Optional['AclBindingRuleBindVarsArgs']]):
         pulumi.set(self, "bind_vars", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A free form human readable description of the binding rule.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The namespace to create the binding rule within.
         """
         return pulumi.get(self, "namespace")
 
     @namespace.setter
-    def namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace", value)
 
     @_builtins.property
     @pulumi.getter
-    def partition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def partition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The partition the ACL binding rule is associated with.
         """
         return pulumi.get(self, "partition")
 
     @partition.setter
-    def partition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def partition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "partition", value)
 
     @_builtins.property
     @pulumi.getter
-    def selector(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def selector(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The expression used to match this rule against valid identities returned from an auth method validation.
         """
         return pulumi.get(self, "selector")
 
     @selector.setter
-    def selector(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def selector(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "selector", value)
 
 
 @pulumi.input_type
 class _AclBindingRuleState:
     def __init__(__self__, *,
-                 auth_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 bind_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 bind_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 bind_vars: Optional[pulumi.Input['AclBindingRuleBindVarsArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 partition: Optional[pulumi.Input[_builtins.str]] = None,
-                 selector: Optional[pulumi.Input[_builtins.str]] = None):
+                 auth_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 bind_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 bind_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 bind_vars: pulumi.Input[Optional['AclBindingRuleBindVarsArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 partition: pulumi.Input[Optional[_builtins.str]] = None,
+                 selector: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AclBindingRule resources.
 
@@ -194,98 +194,98 @@ class _AclBindingRuleState:
 
     @_builtins.property
     @pulumi.getter(name="authMethod")
-    def auth_method(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auth_method(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the ACL auth method this rule apply.
         """
         return pulumi.get(self, "auth_method")
 
     @auth_method.setter
-    def auth_method(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auth_method(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auth_method", value)
 
     @_builtins.property
     @pulumi.getter(name="bindName")
-    def bind_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bind_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name to bind to a token at login-time.
         """
         return pulumi.get(self, "bind_name")
 
     @bind_name.setter
-    def bind_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bind_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bind_name", value)
 
     @_builtins.property
     @pulumi.getter(name="bindType")
-    def bind_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bind_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the way the binding rule affects a token created at login.
         """
         return pulumi.get(self, "bind_type")
 
     @bind_type.setter
-    def bind_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bind_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bind_type", value)
 
     @_builtins.property
     @pulumi.getter(name="bindVars")
-    def bind_vars(self) -> Optional[pulumi.Input['AclBindingRuleBindVarsArgs']]:
+    def bind_vars(self) -> pulumi.Input[Optional['AclBindingRuleBindVarsArgs']]:
         """
         The variables used when binding rule type is `templated-policy`. Can be lightly templated using HIL `${foo}` syntax from available field names.
         """
         return pulumi.get(self, "bind_vars")
 
     @bind_vars.setter
-    def bind_vars(self, value: Optional[pulumi.Input['AclBindingRuleBindVarsArgs']]):
+    def bind_vars(self, value: pulumi.Input[Optional['AclBindingRuleBindVarsArgs']]):
         pulumi.set(self, "bind_vars", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A free form human readable description of the binding rule.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The namespace to create the binding rule within.
         """
         return pulumi.get(self, "namespace")
 
     @namespace.setter
-    def namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace", value)
 
     @_builtins.property
     @pulumi.getter
-    def partition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def partition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The partition the ACL binding rule is associated with.
         """
         return pulumi.get(self, "partition")
 
     @partition.setter
-    def partition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def partition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "partition", value)
 
     @_builtins.property
     @pulumi.getter
-    def selector(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def selector(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The expression used to match this rule against valid identities returned from an auth method validation.
         """
         return pulumi.get(self, "selector")
 
     @selector.setter
-    def selector(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def selector(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "selector", value)
 
 
@@ -295,14 +295,14 @@ class AclBindingRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auth_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 bind_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 bind_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 bind_vars: Optional[pulumi.Input[Union['AclBindingRuleBindVarsArgs', 'AclBindingRuleBindVarsArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 partition: Optional[pulumi.Input[_builtins.str]] = None,
-                 selector: Optional[pulumi.Input[_builtins.str]] = None,
+                 auth_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 bind_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 bind_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 bind_vars: pulumi.Input[Optional[Union['AclBindingRuleBindVarsArgs', 'AclBindingRuleBindVarsArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 partition: pulumi.Input[Optional[_builtins.str]] = None,
+                 selector: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Starting with Consul 1.5.0, the AclBindingRule resource can be used to managed Consul ACL binding rules.
@@ -394,14 +394,14 @@ class AclBindingRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auth_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 bind_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 bind_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 bind_vars: Optional[pulumi.Input[Union['AclBindingRuleBindVarsArgs', 'AclBindingRuleBindVarsArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 partition: Optional[pulumi.Input[_builtins.str]] = None,
-                 selector: Optional[pulumi.Input[_builtins.str]] = None,
+                 auth_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 bind_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 bind_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 bind_vars: pulumi.Input[Optional[Union['AclBindingRuleBindVarsArgs', 'AclBindingRuleBindVarsArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 partition: pulumi.Input[Optional[_builtins.str]] = None,
+                 selector: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -435,14 +435,14 @@ class AclBindingRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auth_method: Optional[pulumi.Input[_builtins.str]] = None,
-            bind_name: Optional[pulumi.Input[_builtins.str]] = None,
-            bind_type: Optional[pulumi.Input[_builtins.str]] = None,
-            bind_vars: Optional[pulumi.Input[Union['AclBindingRuleBindVarsArgs', 'AclBindingRuleBindVarsArgsDict']]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            namespace: Optional[pulumi.Input[_builtins.str]] = None,
-            partition: Optional[pulumi.Input[_builtins.str]] = None,
-            selector: Optional[pulumi.Input[_builtins.str]] = None) -> 'AclBindingRule':
+            auth_method: pulumi.Input[Optional[_builtins.str]] = None,
+            bind_name: pulumi.Input[Optional[_builtins.str]] = None,
+            bind_type: pulumi.Input[Optional[_builtins.str]] = None,
+            bind_vars: pulumi.Input[Optional[Union['AclBindingRuleBindVarsArgs', 'AclBindingRuleBindVarsArgsDict']]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            partition: pulumi.Input[Optional[_builtins.str]] = None,
+            selector: pulumi.Input[Optional[_builtins.str]] = None) -> 'AclBindingRule':
         """
         Get an existing AclBindingRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

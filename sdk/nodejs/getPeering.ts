@@ -74,6 +74,6 @@ export function getPeeringOutput(args: GetPeeringOutputArgs, opts?: pulumi.Invok
  * A collection of arguments for invoking getPeering.
  */
 export interface GetPeeringOutputArgs {
-    partition?: pulumi.Input<string>;
+    partition?: pulumi.Input<string | undefined>;
     peerName: pulumi.Input<string>;
 }

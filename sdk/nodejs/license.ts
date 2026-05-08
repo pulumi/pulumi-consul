@@ -158,52 +158,52 @@ export interface LicenseState {
     /**
      * The ID of the customer the license is attached to.
      */
-    customerId?: pulumi.Input<string>;
+    customerId?: pulumi.Input<string | undefined>;
     /**
      * The datacenter to use. This overrides the
      * agent's default datacenter and the datacenter in the provider setup.
      */
-    datacenter?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string | undefined>;
     /**
      * The expiration time of the license.
      */
-    expirationTime?: pulumi.Input<string>;
+    expirationTime?: pulumi.Input<string | undefined>;
     /**
      * The features for which the license is valid.
      */
-    features?: pulumi.Input<pulumi.Input<string>[]>;
+    features?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the current installation.
      */
-    installationId?: pulumi.Input<string>;
+    installationId?: pulumi.Input<string | undefined>;
     /**
      * The date the license was issued.
      */
-    issueTime?: pulumi.Input<string>;
+    issueTime?: pulumi.Input<string | undefined>;
     /**
      * The Consul license to use.
      */
-    license?: pulumi.Input<string>;
+    license?: pulumi.Input<string | undefined>;
     /**
      * The ID of the license used.
      */
-    licenseId?: pulumi.Input<string>;
+    licenseId?: pulumi.Input<string | undefined>;
     /**
      * The product for which the license is valid.
      */
-    product?: pulumi.Input<string>;
+    product?: pulumi.Input<string | undefined>;
     /**
      * The start time of the license.
      */
-    startTime?: pulumi.Input<string>;
+    startTime?: pulumi.Input<string | undefined>;
     /**
      * Whether the license is valid.
      */
-    valid?: pulumi.Input<boolean>;
+    valid?: pulumi.Input<boolean | undefined>;
     /**
      * A list of warning messages regarding the license validity.
      */
-    warnings?: pulumi.Input<pulumi.Input<string>[]>;
+    warnings?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -214,7 +214,7 @@ export interface LicenseArgs {
      * The datacenter to use. This overrides the
      * agent's default datacenter and the datacenter in the provider setup.
      */
-    datacenter?: pulumi.Input<string>;
+    datacenter?: pulumi.Input<string | undefined>;
     /**
      * The Consul license to use.
      */

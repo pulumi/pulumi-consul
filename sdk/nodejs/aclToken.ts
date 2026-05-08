@@ -171,47 +171,47 @@ export interface AclTokenState {
     /**
      * The uuid of the token. If omitted, Consul will generate a random uuid.
      */
-    accessorId?: pulumi.Input<string>;
+    accessorId?: pulumi.Input<string | undefined>;
     /**
      * The description of the token.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * If set this represents the point after which a token should be considered revoked and is eligible for destruction.
      */
-    expirationTime?: pulumi.Input<string>;
+    expirationTime?: pulumi.Input<string | undefined>;
     /**
      * The flag to set the token local to the current datacenter.
      */
-    local?: pulumi.Input<boolean>;
+    local?: pulumi.Input<boolean | undefined>;
     /**
      * The namespace to create the token within.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * The list of node identities that should be applied to the token.
      */
-    nodeIdentities?: pulumi.Input<pulumi.Input<inputs.AclTokenNodeIdentity>[]>;
+    nodeIdentities?: pulumi.Input<pulumi.Input<inputs.AclTokenNodeIdentity>[] | undefined>;
     /**
      * The partition the ACL token is associated with.
      */
-    partition?: pulumi.Input<string>;
+    partition?: pulumi.Input<string | undefined>;
     /**
      * The list of policies attached to the token.
      */
-    policies?: pulumi.Input<pulumi.Input<string>[]>;
+    policies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The list of roles attached to the token.
      */
-    roles?: pulumi.Input<pulumi.Input<string>[]>;
+    roles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The list of service identities that should be applied to the token.
      */
-    serviceIdentities?: pulumi.Input<pulumi.Input<inputs.AclTokenServiceIdentity>[]>;
+    serviceIdentities?: pulumi.Input<pulumi.Input<inputs.AclTokenServiceIdentity>[] | undefined>;
     /**
      * The list of templated policies that should be applied to the token.
      */
-    templatedPolicies?: pulumi.Input<pulumi.Input<inputs.AclTokenTemplatedPolicy>[]>;
+    templatedPolicies?: pulumi.Input<pulumi.Input<inputs.AclTokenTemplatedPolicy>[] | undefined>;
 }
 
 /**
@@ -221,45 +221,45 @@ export interface AclTokenArgs {
     /**
      * The uuid of the token. If omitted, Consul will generate a random uuid.
      */
-    accessorId?: pulumi.Input<string>;
+    accessorId?: pulumi.Input<string | undefined>;
     /**
      * The description of the token.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * If set this represents the point after which a token should be considered revoked and is eligible for destruction.
      */
-    expirationTime?: pulumi.Input<string>;
+    expirationTime?: pulumi.Input<string | undefined>;
     /**
      * The flag to set the token local to the current datacenter.
      */
-    local?: pulumi.Input<boolean>;
+    local?: pulumi.Input<boolean | undefined>;
     /**
      * The namespace to create the token within.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * The list of node identities that should be applied to the token.
      */
-    nodeIdentities?: pulumi.Input<pulumi.Input<inputs.AclTokenNodeIdentity>[]>;
+    nodeIdentities?: pulumi.Input<pulumi.Input<inputs.AclTokenNodeIdentity>[] | undefined>;
     /**
      * The partition the ACL token is associated with.
      */
-    partition?: pulumi.Input<string>;
+    partition?: pulumi.Input<string | undefined>;
     /**
      * The list of policies attached to the token.
      */
-    policies?: pulumi.Input<pulumi.Input<string>[]>;
+    policies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The list of roles attached to the token.
      */
-    roles?: pulumi.Input<pulumi.Input<string>[]>;
+    roles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The list of service identities that should be applied to the token.
      */
-    serviceIdentities?: pulumi.Input<pulumi.Input<inputs.AclTokenServiceIdentity>[]>;
+    serviceIdentities?: pulumi.Input<pulumi.Input<inputs.AclTokenServiceIdentity>[] | undefined>;
     /**
      * The list of templated policies that should be applied to the token.
      */
-    templatedPolicies?: pulumi.Input<pulumi.Input<inputs.AclTokenTemplatedPolicy>[]>;
+    templatedPolicies?: pulumi.Input<pulumi.Input<inputs.AclTokenTemplatedPolicy>[] | undefined>;
 }

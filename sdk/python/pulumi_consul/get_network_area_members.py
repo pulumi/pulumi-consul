@@ -141,9 +141,9 @@ def get_network_area_members(datacenter: Optional[_builtins.str] = None,
         members=pulumi.get(__ret__, 'members'),
         token=pulumi.get(__ret__, 'token'),
         uuid=pulumi.get(__ret__, 'uuid'))
-def get_network_area_members_output(datacenter: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                    token: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                    uuid: Optional[pulumi.Input[_builtins.str]] = None,
+def get_network_area_members_output(datacenter: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                    token: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                    uuid: pulumi.Input[Optional[_builtins.str]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNetworkAreaMembersResult]:
     """
     > **NOTE:** This feature requires [Consul Enterprise](https://www.consul.io/docs/enterprise/index.html).

@@ -115,35 +115,35 @@ export interface ConfigEntryV2ExportedServicesState {
     /**
      * The kind of exported services config (ExportedServices, NamespaceExportedServices, PartitionExportedServices).
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * The name of the config entry to read.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The namespace the config entry is associated with.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * The partition the config entry is associated with.
      */
-    partition?: pulumi.Input<string>;
+    partition?: pulumi.Input<string | undefined>;
     /**
      * The exported service partition consumers.
      */
-    partitionConsumers?: pulumi.Input<pulumi.Input<string>[]>;
+    partitionConsumers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The exported service peer consumers.
      */
-    peerConsumers?: pulumi.Input<pulumi.Input<string>[]>;
+    peerConsumers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The exported service sameness group consumers.
      */
-    samenessGroupConsumers?: pulumi.Input<pulumi.Input<string>[]>;
+    samenessGroupConsumers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The exported services.
      */
-    services?: pulumi.Input<pulumi.Input<string>[]>;
+    services?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -157,11 +157,11 @@ export interface ConfigEntryV2ExportedServicesArgs {
     /**
      * The name of the config entry to read.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The namespace the config entry is associated with.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * The partition the config entry is associated with.
      */
@@ -169,17 +169,17 @@ export interface ConfigEntryV2ExportedServicesArgs {
     /**
      * The exported service partition consumers.
      */
-    partitionConsumers?: pulumi.Input<pulumi.Input<string>[]>;
+    partitionConsumers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The exported service peer consumers.
      */
-    peerConsumers?: pulumi.Input<pulumi.Input<string>[]>;
+    peerConsumers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The exported service sameness group consumers.
      */
-    samenessGroupConsumers?: pulumi.Input<pulumi.Input<string>[]>;
+    samenessGroupConsumers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The exported services.
      */
-    services?: pulumi.Input<pulumi.Input<string>[]>;
+    services?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

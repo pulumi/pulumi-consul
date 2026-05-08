@@ -24,7 +24,7 @@ import * as utilities from "./utilities";
  *     }).result.map((v, k) => ({key: k, value: v}))) {
  *         myapp_query.push(new consul.PreparedQuery(`myapp-query-${range.key}`, {
  *             name: "myquery",
- *             datacenter: range.key,
+ *             datacenter: String(range.key),
  *             onlyPassing: true,
  *             near: "_agent",
  *             service: "myapp",
@@ -89,7 +89,7 @@ export interface GetDatacentersResult {
  *     }).result.map((v, k) => ({key: k, value: v}))) {
  *         myapp_query.push(new consul.PreparedQuery(`myapp-query-${range.key}`, {
  *             name: "myquery",
- *             datacenter: range.key,
+ *             datacenter: String(range.key),
  *             onlyPassing: true,
  *             near: "_agent",
  *             service: "myapp",

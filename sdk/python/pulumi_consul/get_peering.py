@@ -160,8 +160,8 @@ def get_peering(partition: Optional[_builtins.str] = None,
         peer_server_addresses=pulumi.get(__ret__, 'peer_server_addresses'),
         peer_server_name=pulumi.get(__ret__, 'peer_server_name'),
         state=pulumi.get(__ret__, 'state'))
-def get_peering_output(partition: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       peer_name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_peering_output(partition: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       peer_name: pulumi.Input[Optional[_builtins.str]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPeeringResult]:
     """
     ## Example Usage

@@ -58,8 +58,8 @@ class AclTokenPolicyAttachmentArgs:
 @pulumi.input_type
 class _AclTokenPolicyAttachmentState:
     def __init__(__self__, *,
-                 policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 token_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 token_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AclTokenPolicyAttachment resources.
 
@@ -73,26 +73,26 @@ class _AclTokenPolicyAttachmentState:
 
     @_builtins.property
     @pulumi.getter
-    def policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the policy attached to the token.
         """
         return pulumi.get(self, "policy")
 
     @policy.setter
-    def policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy", value)
 
     @_builtins.property
     @pulumi.getter(name="tokenId")
-    def token_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the token.
         """
         return pulumi.get(self, "token_id")
 
     @token_id.setter
-    def token_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token_id", value)
 
 
@@ -102,8 +102,8 @@ class AclTokenPolicyAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 token_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 token_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The `AclTokenPolicyAttachment` resource links a Consul Token and an ACL
@@ -281,8 +281,8 @@ class AclTokenPolicyAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 token_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 token_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -308,8 +308,8 @@ class AclTokenPolicyAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            policy: Optional[pulumi.Input[_builtins.str]] = None,
-            token_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'AclTokenPolicyAttachment':
+            policy: pulumi.Input[Optional[_builtins.str]] = None,
+            token_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'AclTokenPolicyAttachment':
         """
         Get an existing AclTokenPolicyAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

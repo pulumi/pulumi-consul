@@ -191,47 +191,47 @@ export interface AclAuthMethodState {
      *
      * @deprecated The config attribute is deprecated, please use `configJson` instead.
      */
-    config?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    config?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The raw configuration for this ACL auth method.
      */
-    configJson?: pulumi.Input<string>;
+    configJson?: pulumi.Input<string | undefined>;
     /**
      * A free form human readable description of the auth method.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * An optional name to use instead of the name attribute when displaying information about this auth method.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The maximum life of any token created by this auth method. **This attribute is required and must be set to a nonzero for the OIDC auth method.**
      */
-    maxTokenTtl?: pulumi.Input<string>;
+    maxTokenTtl?: pulumi.Input<string | undefined>;
     /**
      * The name of the ACL auth method.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The namespace in which to create the auth method.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * A set of rules that control which namespace tokens created via this auth method will be created within.
      */
-    namespaceRules?: pulumi.Input<pulumi.Input<inputs.AclAuthMethodNamespaceRule>[]>;
+    namespaceRules?: pulumi.Input<pulumi.Input<inputs.AclAuthMethodNamespaceRule>[] | undefined>;
     /**
      * The partition the ACL auth method is associated with.
      */
-    partition?: pulumi.Input<string>;
+    partition?: pulumi.Input<string | undefined>;
     /**
      * The kind of token that this auth method produces. This can be either 'local' or 'global'.
      */
-    tokenLocality?: pulumi.Input<string>;
+    tokenLocality?: pulumi.Input<string | undefined>;
     /**
      * The type of the ACL auth method.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -243,43 +243,43 @@ export interface AclAuthMethodArgs {
      *
      * @deprecated The config attribute is deprecated, please use `configJson` instead.
      */
-    config?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    config?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The raw configuration for this ACL auth method.
      */
-    configJson?: pulumi.Input<string>;
+    configJson?: pulumi.Input<string | undefined>;
     /**
      * A free form human readable description of the auth method.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * An optional name to use instead of the name attribute when displaying information about this auth method.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The maximum life of any token created by this auth method. **This attribute is required and must be set to a nonzero for the OIDC auth method.**
      */
-    maxTokenTtl?: pulumi.Input<string>;
+    maxTokenTtl?: pulumi.Input<string | undefined>;
     /**
      * The name of the ACL auth method.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The namespace in which to create the auth method.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * A set of rules that control which namespace tokens created via this auth method will be created within.
      */
-    namespaceRules?: pulumi.Input<pulumi.Input<inputs.AclAuthMethodNamespaceRule>[]>;
+    namespaceRules?: pulumi.Input<pulumi.Input<inputs.AclAuthMethodNamespaceRule>[] | undefined>;
     /**
      * The partition the ACL auth method is associated with.
      */
-    partition?: pulumi.Input<string>;
+    partition?: pulumi.Input<string | undefined>;
     /**
      * The kind of token that this auth method produces. This can be either 'local' or 'global'.
      */
-    tokenLocality?: pulumi.Input<string>;
+    tokenLocality?: pulumi.Input<string | undefined>;
     /**
      * The type of the ACL auth method.
      */

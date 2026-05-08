@@ -177,11 +177,11 @@ def get_service(datacenter: Optional[_builtins.str] = None,
         query_options=pulumi.get(__ret__, 'query_options'),
         services=pulumi.get(__ret__, 'services'),
         tag=pulumi.get(__ret__, 'tag'))
-def get_service_output(datacenter: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       filter: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       name: Optional[pulumi.Input[_builtins.str]] = None,
-                       query_options: Optional[pulumi.Input[Optional[Sequence[Union['GetServiceQueryOptionArgs', 'GetServiceQueryOptionArgsDict']]]]] = None,
-                       tag: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_service_output(datacenter: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       filter: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       name: pulumi.Input[Optional[_builtins.str]] = None,
+                       query_options: pulumi.Input[Optional[Optional[Sequence[Union['GetServiceQueryOptionArgs', 'GetServiceQueryOptionArgsDict']]]]] = None,
+                       tag: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServiceResult]:
     """
     `Service` provides details about a specific Consul service in a

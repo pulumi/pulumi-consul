@@ -130,7 +130,7 @@ def get_autopilot_health(datacenter: Optional[_builtins.str] = None,
         healthy=pulumi.get(__ret__, 'healthy'),
         id=pulumi.get(__ret__, 'id'),
         servers=pulumi.get(__ret__, 'servers'))
-def get_autopilot_health_output(datacenter: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_autopilot_health_output(datacenter: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAutopilotHealthResult]:
     """
     The `get_autopilot_health` data source returns

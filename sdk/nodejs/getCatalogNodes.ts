@@ -128,5 +128,5 @@ export interface GetCatalogNodesOutputArgs {
     /**
      * See below.
      */
-    queryOptions?: pulumi.Input<pulumi.Input<inputs.GetCatalogNodesQueryOptionArgs>[]>;
+    queryOptions?: pulumi.Input<pulumi.Input<inputs.GetCatalogNodesQueryOptionArgs>[] | undefined>;
 }

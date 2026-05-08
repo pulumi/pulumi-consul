@@ -127,5 +127,5 @@ export interface GetServicesOutputArgs {
     /**
      * See below.
      */
-    queryOptions?: pulumi.Input<pulumi.Input<inputs.GetServicesQueryOptionArgs>[]>;
+    queryOptions?: pulumi.Input<pulumi.Input<inputs.GetServicesQueryOptionArgs>[] | undefined>;
 }

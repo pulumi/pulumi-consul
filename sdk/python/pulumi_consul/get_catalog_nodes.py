@@ -152,7 +152,7 @@ def get_catalog_nodes(query_options: Optional[Sequence[Union['GetCatalogNodesQue
         node_names=pulumi.get(__ret__, 'node_names'),
         nodes=pulumi.get(__ret__, 'nodes'),
         query_options=pulumi.get(__ret__, 'query_options'))
-def get_catalog_nodes_output(query_options: Optional[pulumi.Input[Optional[Sequence[Union['GetCatalogNodesQueryOptionArgs', 'GetCatalogNodesQueryOptionArgsDict']]]]] = None,
+def get_catalog_nodes_output(query_options: pulumi.Input[Optional[Optional[Sequence[Union['GetCatalogNodesQueryOptionArgs', 'GetCatalogNodesQueryOptionArgsDict']]]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCatalogNodesResult]:
     """
     The `get_nodes` data source returns a list of Consul nodes that have

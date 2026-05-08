@@ -22,12 +22,12 @@ __all__ = ['KeyPrefixArgs', 'KeyPrefix']
 class KeyPrefixArgs:
     def __init__(__self__, *,
                  path_prefix: pulumi.Input[_builtins.str],
-                 datacenter: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 partition: Optional[pulumi.Input[_builtins.str]] = None,
-                 subkey_collection: Optional[pulumi.Input[Sequence[pulumi.Input['KeyPrefixSubkeyCollectionArgs']]]] = None,
-                 subkeys: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 token: Optional[pulumi.Input[_builtins.str]] = None):
+                 datacenter: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 partition: pulumi.Input[Optional[_builtins.str]] = None,
+                 subkey_collection: pulumi.Input[Optional[Sequence[pulumi.Input['KeyPrefixSubkeyCollectionArgs']]]] = None,
+                 subkeys: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 token: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a KeyPrefix resource.
 
@@ -82,7 +82,7 @@ Please use the token argument in the provider configuration""")
 
     @_builtins.property
     @pulumi.getter
-    def datacenter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def datacenter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The datacenter to use. This overrides the
         agent's default datacenter and the datacenter in the provider setup.
@@ -90,36 +90,36 @@ Please use the token argument in the provider configuration""")
         return pulumi.get(self, "datacenter")
 
     @datacenter.setter
-    def datacenter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def datacenter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "datacenter", value)
 
     @_builtins.property
     @pulumi.getter
-    def namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The namespace to create the keys within.
         """
         return pulumi.get(self, "namespace")
 
     @namespace.setter
-    def namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace", value)
 
     @_builtins.property
     @pulumi.getter
-    def partition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def partition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The admin partition to create the keys within.
         """
         return pulumi.get(self, "partition")
 
     @partition.setter
-    def partition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def partition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "partition", value)
 
     @_builtins.property
     @pulumi.getter(name="subkeyCollection")
-    def subkey_collection(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KeyPrefixSubkeyCollectionArgs']]]]:
+    def subkey_collection(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['KeyPrefixSubkeyCollectionArgs']]]]:
         """
         A subkey to add. Supported values documented below.
         Multiple blocks supported.
@@ -127,12 +127,12 @@ Please use the token argument in the provider configuration""")
         return pulumi.get(self, "subkey_collection")
 
     @subkey_collection.setter
-    def subkey_collection(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KeyPrefixSubkeyCollectionArgs']]]]):
+    def subkey_collection(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['KeyPrefixSubkeyCollectionArgs']]]]):
         pulumi.set(self, "subkey_collection", value)
 
     @_builtins.property
     @pulumi.getter
-    def subkeys(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def subkeys(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping from subkey name (which will be appended
         to the given `path_prefix`) to the value that should be stored at that key.
@@ -142,14 +142,14 @@ Please use the token argument in the provider configuration""")
         return pulumi.get(self, "subkeys")
 
     @subkeys.setter
-    def subkeys(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def subkeys(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "subkeys", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration""")
-    def token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ACL token to use. This overrides the
         token that the agent provides by default.
@@ -157,20 +157,20 @@ Please use the token argument in the provider configuration""")
         return pulumi.get(self, "token")
 
     @token.setter
-    def token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token", value)
 
 
 @pulumi.input_type
 class _KeyPrefixState:
     def __init__(__self__, *,
-                 datacenter: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 partition: Optional[pulumi.Input[_builtins.str]] = None,
-                 path_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 subkey_collection: Optional[pulumi.Input[Sequence[pulumi.Input['KeyPrefixSubkeyCollectionArgs']]]] = None,
-                 subkeys: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 token: Optional[pulumi.Input[_builtins.str]] = None):
+                 datacenter: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 partition: pulumi.Input[Optional[_builtins.str]] = None,
+                 path_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 subkey_collection: pulumi.Input[Optional[Sequence[pulumi.Input['KeyPrefixSubkeyCollectionArgs']]]] = None,
+                 subkeys: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 token: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering KeyPrefix resources.
 
@@ -212,7 +212,7 @@ Please use the token argument in the provider configuration""")
 
     @_builtins.property
     @pulumi.getter
-    def datacenter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def datacenter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The datacenter to use. This overrides the
         agent's default datacenter and the datacenter in the provider setup.
@@ -220,36 +220,36 @@ Please use the token argument in the provider configuration""")
         return pulumi.get(self, "datacenter")
 
     @datacenter.setter
-    def datacenter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def datacenter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "datacenter", value)
 
     @_builtins.property
     @pulumi.getter
-    def namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The namespace to create the keys within.
         """
         return pulumi.get(self, "namespace")
 
     @namespace.setter
-    def namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace", value)
 
     @_builtins.property
     @pulumi.getter
-    def partition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def partition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The admin partition to create the keys within.
         """
         return pulumi.get(self, "partition")
 
     @partition.setter
-    def partition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def partition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "partition", value)
 
     @_builtins.property
     @pulumi.getter(name="pathPrefix")
-    def path_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the common prefix shared by all keys
         that will be managed by this resource instance. In most cases this will
@@ -258,12 +258,12 @@ Please use the token argument in the provider configuration""")
         return pulumi.get(self, "path_prefix")
 
     @path_prefix.setter
-    def path_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="subkeyCollection")
-    def subkey_collection(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KeyPrefixSubkeyCollectionArgs']]]]:
+    def subkey_collection(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['KeyPrefixSubkeyCollectionArgs']]]]:
         """
         A subkey to add. Supported values documented below.
         Multiple blocks supported.
@@ -271,12 +271,12 @@ Please use the token argument in the provider configuration""")
         return pulumi.get(self, "subkey_collection")
 
     @subkey_collection.setter
-    def subkey_collection(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KeyPrefixSubkeyCollectionArgs']]]]):
+    def subkey_collection(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['KeyPrefixSubkeyCollectionArgs']]]]):
         pulumi.set(self, "subkey_collection", value)
 
     @_builtins.property
     @pulumi.getter
-    def subkeys(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def subkeys(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping from subkey name (which will be appended
         to the given `path_prefix`) to the value that should be stored at that key.
@@ -286,14 +286,14 @@ Please use the token argument in the provider configuration""")
         return pulumi.get(self, "subkeys")
 
     @subkeys.setter
-    def subkeys(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def subkeys(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "subkeys", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""The token argument has been deprecated and will be removed in a future release.
 Please use the token argument in the provider configuration""")
-    def token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ACL token to use. This overrides the
         token that the agent provides by default.
@@ -301,7 +301,7 @@ Please use the token argument in the provider configuration""")
         return pulumi.get(self, "token")
 
     @token.setter
-    def token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token", value)
 
 
@@ -311,13 +311,13 @@ class KeyPrefix(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 datacenter: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 partition: Optional[pulumi.Input[_builtins.str]] = None,
-                 path_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 subkey_collection: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KeyPrefixSubkeyCollectionArgs', 'KeyPrefixSubkeyCollectionArgsDict']]]]] = None,
-                 subkeys: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 token: Optional[pulumi.Input[_builtins.str]] = None,
+                 datacenter: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 partition: pulumi.Input[Optional[_builtins.str]] = None,
+                 path_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 subkey_collection: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KeyPrefixSubkeyCollectionArgs', 'KeyPrefixSubkeyCollectionArgsDict']]]]] = None,
+                 subkeys: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 token: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Allows Terraform to manage a "namespace" of Consul keys that share a common
@@ -476,13 +476,13 @@ class KeyPrefix(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 datacenter: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 partition: Optional[pulumi.Input[_builtins.str]] = None,
-                 path_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 subkey_collection: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KeyPrefixSubkeyCollectionArgs', 'KeyPrefixSubkeyCollectionArgsDict']]]]] = None,
-                 subkeys: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 token: Optional[pulumi.Input[_builtins.str]] = None,
+                 datacenter: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 partition: pulumi.Input[Optional[_builtins.str]] = None,
+                 path_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 subkey_collection: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KeyPrefixSubkeyCollectionArgs', 'KeyPrefixSubkeyCollectionArgsDict']]]]] = None,
+                 subkeys: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 token: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -513,13 +513,13 @@ class KeyPrefix(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            datacenter: Optional[pulumi.Input[_builtins.str]] = None,
-            namespace: Optional[pulumi.Input[_builtins.str]] = None,
-            partition: Optional[pulumi.Input[_builtins.str]] = None,
-            path_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-            subkey_collection: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KeyPrefixSubkeyCollectionArgs', 'KeyPrefixSubkeyCollectionArgsDict']]]]] = None,
-            subkeys: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            token: Optional[pulumi.Input[_builtins.str]] = None) -> 'KeyPrefix':
+            datacenter: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            partition: pulumi.Input[Optional[_builtins.str]] = None,
+            path_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            subkey_collection: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KeyPrefixSubkeyCollectionArgs', 'KeyPrefixSubkeyCollectionArgsDict']]]]] = None,
+            subkeys: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            token: pulumi.Input[Optional[_builtins.str]] = None) -> 'KeyPrefix':
         """
         Get an existing KeyPrefix resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

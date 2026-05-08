@@ -155,16 +155,16 @@ export interface GetAclTokenSecretIdOutputArgs {
     /**
      * The namespace to lookup the token.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * The partition to lookup the token.
      */
-    partition?: pulumi.Input<string>;
+    partition?: pulumi.Input<string | undefined>;
     /**
      * Either a base-64 encoded PGP public key, or a keybase
      * username in the form `keybase:some_person_that_exists`. **If you do not set this
      * argument, the token secret ID will be written as plain text in the Terraform
      * state.**
      */
-    pgpKey?: pulumi.Input<string>;
+    pgpKey?: pulumi.Input<string | undefined>;
 }

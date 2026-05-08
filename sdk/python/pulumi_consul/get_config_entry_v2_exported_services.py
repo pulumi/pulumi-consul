@@ -188,14 +188,14 @@ def get_config_entry_v2_exported_services(kind: Optional[_builtins.str] = None,
         peer_consumers=pulumi.get(__ret__, 'peer_consumers'),
         sameness_group_consumers=pulumi.get(__ret__, 'sameness_group_consumers'),
         services=pulumi.get(__ret__, 'services'))
-def get_config_entry_v2_exported_services_output(kind: Optional[pulumi.Input[_builtins.str]] = None,
-                                                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                                                 namespace: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                 partition: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                 partition_consumers: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                                 peer_consumers: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                                 sameness_group_consumers: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                                 services: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
+def get_config_entry_v2_exported_services_output(kind: pulumi.Input[Optional[_builtins.str]] = None,
+                                                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                                                 namespace: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                 partition: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                 partition_consumers: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                                 peer_consumers: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                                 sameness_group_consumers: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                                 services: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConfigEntryV2ExportedServicesResult]:
     """
     Use this data source to access information about an existing resource.

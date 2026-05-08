@@ -37,12 +37,12 @@ import (
 //			}
 //			// Register a prepared query in each of the datacenters
 //			var myapp_query []*consul.PreparedQuery
-//			for key0, _ := range interface{}(std.Toset(ctx, &std.TosetArgs{
+//			for key0, _ := range []interface{}(std.Toset(ctx, &std.TosetArgs{
 //				Input: all.Datacenters,
 //			}, nil).Result) {
 //				__res, err := consul.NewPreparedQuery(ctx, fmt.Sprintf("myapp-query-%v", key0), &consul.PreparedQueryArgs{
 //					Name:        pulumi.String("myquery"),
-//					Datacenter:  pulumi.String(pulumi.Float64(key0)),
+//					Datacenter:  pulumi.String(pulumi.Int(key0)),
 //					OnlyPassing: pulumi.Bool(true),
 //					Near:        pulumi.String("_agent"),
 //					Service:     pulumi.String("myapp"),

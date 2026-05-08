@@ -157,11 +157,11 @@ export interface AclTokenRoleAttachmentState {
     /**
      * The role name.
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
     /**
      * The id of the token.
      */
-    tokenId?: pulumi.Input<string>;
+    tokenId?: pulumi.Input<string | undefined>;
 }
 
 /**

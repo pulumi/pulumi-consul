@@ -127,27 +127,27 @@ export interface AclPolicyState {
     /**
      * The datacenters of the policy.
      */
-    datacenters?: pulumi.Input<pulumi.Input<string>[]>;
+    datacenters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The description of the policy.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the policy.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The namespace to create the policy within.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * The partition the ACL policy is associated with.
      */
-    partition?: pulumi.Input<string>;
+    partition?: pulumi.Input<string | undefined>;
     /**
      * The rules of the policy.
      */
-    rules?: pulumi.Input<string>;
+    rules?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -157,23 +157,23 @@ export interface AclPolicyArgs {
     /**
      * The datacenters of the policy.
      */
-    datacenters?: pulumi.Input<pulumi.Input<string>[]>;
+    datacenters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The description of the policy.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the policy.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The namespace to create the policy within.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * The partition the ACL policy is associated with.
      */
-    partition?: pulumi.Input<string>;
+    partition?: pulumi.Input<string | undefined>;
     /**
      * The rules of the policy.
      */

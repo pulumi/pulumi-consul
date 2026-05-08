@@ -107,9 +107,9 @@ export interface GetAclPolicyOutputArgs {
     /**
      * The namespace to lookup the policy.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * The partition to lookup the policy.
      */
-    partition?: pulumi.Input<string>;
+    partition?: pulumi.Input<string | undefined>;
 }

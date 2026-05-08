@@ -25,7 +25,7 @@ namespace Pulumi.Consul
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var app = Consul.Index.GetKeys.Invoke(new()
+        ///     var app = Consul.GetKeys.Invoke(new()
         ///     {
         ///         Datacenter = "nyc1",
         ///         Keys = new[]
@@ -40,7 +40,7 @@ namespace Pulumi.Consul
         ///     });
         /// 
         ///     // Start our instance with the dynamic ami value
-        ///     var appInstance = new Aws.Index.Instance("app", new()
+        ///     var appInstance = new Aws.Instance("app", new()
         ///     {
         ///         Ami = app.Apply(getKeysResult =&gt; getKeysResult.Var?.Ami),
         ///     });
@@ -65,7 +65,7 @@ namespace Pulumi.Consul
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var app = Consul.Index.GetKeys.Invoke(new()
+        ///     var app = Consul.GetKeys.Invoke(new()
         ///     {
         ///         Datacenter = "nyc1",
         ///         Keys = new[]
@@ -80,7 +80,7 @@ namespace Pulumi.Consul
         ///     });
         /// 
         ///     // Start our instance with the dynamic ami value
-        ///     var appInstance = new Aws.Index.Instance("app", new()
+        ///     var appInstance = new Aws.Instance("app", new()
         ///     {
         ///         Ami = app.Apply(getKeysResult =&gt; getKeysResult.Var?.Ami),
         ///     });
@@ -105,7 +105,7 @@ namespace Pulumi.Consul
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var app = Consul.Index.GetKeys.Invoke(new()
+        ///     var app = Consul.GetKeys.Invoke(new()
         ///     {
         ///         Datacenter = "nyc1",
         ///         Keys = new[]
@@ -120,7 +120,7 @@ namespace Pulumi.Consul
         ///     });
         /// 
         ///     // Start our instance with the dynamic ami value
-        ///     var appInstance = new Aws.Index.Instance("app", new()
+        ///     var appInstance = new Aws.Instance("app", new()
         ///     {
         ///         Ami = app.Apply(getKeysResult =&gt; getKeysResult.Var?.Ami),
         ///     });

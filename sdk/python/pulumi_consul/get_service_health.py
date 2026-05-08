@@ -214,14 +214,14 @@ def get_service_health(datacenter: Optional[_builtins.str] = None,
         results=pulumi.get(__ret__, 'results'),
         tag=pulumi.get(__ret__, 'tag'),
         wait_for=pulumi.get(__ret__, 'wait_for'))
-def get_service_health_output(datacenter: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              filter: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              name: Optional[pulumi.Input[_builtins.str]] = None,
-                              near: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              node_meta: Optional[pulumi.Input[Optional[Mapping[str, _builtins.str]]]] = None,
-                              passing: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                              tag: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              wait_for: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_service_health_output(datacenter: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              filter: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              name: pulumi.Input[Optional[_builtins.str]] = None,
+                              near: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              node_meta: pulumi.Input[Optional[Optional[Mapping[str, _builtins.str]]]] = None,
+                              passing: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                              tag: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              wait_for: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServiceHealthResult]:
     """
     `get_service_health` can be used to get the list of the instances that

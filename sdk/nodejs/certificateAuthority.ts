@@ -97,15 +97,15 @@ export interface CertificateAuthorityState {
      *
      * @deprecated The config attribute is deprecated, please use configJson instead.
      */
-    config?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    config?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
      */
-    configJson?: pulumi.Input<string>;
+    configJson?: pulumi.Input<string | undefined>;
     /**
      * Specifies the CA provider type to use.
      */
-    connectProvider?: pulumi.Input<string>;
+    connectProvider?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -117,11 +117,11 @@ export interface CertificateAuthorityArgs {
      *
      * @deprecated The config attribute is deprecated, please use configJson instead.
      */
-    config?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    config?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
      */
-    configJson?: pulumi.Input<string>;
+    configJson?: pulumi.Input<string | undefined>;
     /**
      * Specifies the CA provider type to use.
      */

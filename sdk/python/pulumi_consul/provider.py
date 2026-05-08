@@ -20,23 +20,23 @@ __all__ = ['ProviderArgs', 'Provider']
 @pulumi.input_type
 class ProviderArgs:
     def __init__(__self__, *,
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 auth_jwt: Optional[pulumi.Input['ProviderAuthJwtArgs']] = None,
-                 auth_login_aws: Optional[pulumi.Input['ProviderAuthLoginAwsArgs']] = None,
-                 ca_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 ca_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 ca_pem: Optional[pulumi.Input[_builtins.str]] = None,
-                 cert_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 cert_pem: Optional[pulumi.Input[_builtins.str]] = None,
-                 datacenter: Optional[pulumi.Input[_builtins.str]] = None,
-                 headers: Optional[pulumi.Input[Sequence[pulumi.Input['ProviderHeaderArgs']]]] = None,
-                 http_auth: Optional[pulumi.Input[_builtins.str]] = None,
-                 insecure_https: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_pem: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheme: Optional[pulumi.Input[_builtins.str]] = None,
-                 token: Optional[pulumi.Input[_builtins.str]] = None):
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 auth_jwt: pulumi.Input[Optional['ProviderAuthJwtArgs']] = None,
+                 auth_login_aws: pulumi.Input[Optional['ProviderAuthLoginAwsArgs']] = None,
+                 ca_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 ca_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 ca_pem: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert_pem: pulumi.Input[Optional[_builtins.str]] = None,
+                 datacenter: pulumi.Input[Optional[_builtins.str]] = None,
+                 headers: pulumi.Input[Optional[Sequence[pulumi.Input['ProviderHeaderArgs']]]] = None,
+                 http_auth: pulumi.Input[Optional[_builtins.str]] = None,
+                 insecure_https: pulumi.Input[Optional[_builtins.bool]] = None,
+                 key_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_pem: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheme: pulumi.Input[Optional[_builtins.str]] = None,
+                 token: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Provider resource.
 
@@ -94,203 +94,203 @@ class ProviderArgs:
 
     @_builtins.property
     @pulumi.getter
-    def address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The HTTP(S) API address of the agent to use. Defaults to "127.0.0.1:8500".
         """
         return pulumi.get(self, "address")
 
     @address.setter
-    def address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address", value)
 
     @_builtins.property
     @pulumi.getter(name="authJwt")
-    def auth_jwt(self) -> Optional[pulumi.Input['ProviderAuthJwtArgs']]:
+    def auth_jwt(self) -> pulumi.Input[Optional['ProviderAuthJwtArgs']]:
         """
         Authenticates to Consul using a JWT authentication method.
         """
         return pulumi.get(self, "auth_jwt")
 
     @auth_jwt.setter
-    def auth_jwt(self, value: Optional[pulumi.Input['ProviderAuthJwtArgs']]):
+    def auth_jwt(self, value: pulumi.Input[Optional['ProviderAuthJwtArgs']]):
         pulumi.set(self, "auth_jwt", value)
 
     @_builtins.property
     @pulumi.getter(name="authLoginAws")
-    def auth_login_aws(self) -> Optional[pulumi.Input['ProviderAuthLoginAwsArgs']]:
+    def auth_login_aws(self) -> pulumi.Input[Optional['ProviderAuthLoginAwsArgs']]:
         """
         Login to Consul using the AWS IAM auth method
         """
         return pulumi.get(self, "auth_login_aws")
 
     @auth_login_aws.setter
-    def auth_login_aws(self, value: Optional[pulumi.Input['ProviderAuthLoginAwsArgs']]):
+    def auth_login_aws(self, value: pulumi.Input[Optional['ProviderAuthLoginAwsArgs']]):
         pulumi.set(self, "auth_login_aws", value)
 
     @_builtins.property
     @pulumi.getter(name="caFile")
-    def ca_file(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ca_file(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A path to a PEM-encoded certificate authority used to verify the remote agent's certificate.
         """
         return pulumi.get(self, "ca_file")
 
     @ca_file.setter
-    def ca_file(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ca_file(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ca_file", value)
 
     @_builtins.property
     @pulumi.getter(name="caPath")
-    def ca_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ca_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A path to a directory of PEM-encoded certificate authority files to use to check the authenticity of client and server connections. Can also be specified with the `CONSUL_CAPATH` environment variable.
         """
         return pulumi.get(self, "ca_path")
 
     @ca_path.setter
-    def ca_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ca_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ca_path", value)
 
     @_builtins.property
     @pulumi.getter(name="caPem")
-    def ca_pem(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ca_pem(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         PEM-encoded certificate authority used to verify the remote agent's certificate.
         """
         return pulumi.get(self, "ca_pem")
 
     @ca_pem.setter
-    def ca_pem(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ca_pem(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ca_pem", value)
 
     @_builtins.property
     @pulumi.getter(name="certFile")
-    def cert_file(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cert_file(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A path to a PEM-encoded certificate provided to the remote agent; requires use of `key_file` or `key_pem`.
         """
         return pulumi.get(self, "cert_file")
 
     @cert_file.setter
-    def cert_file(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cert_file(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cert_file", value)
 
     @_builtins.property
     @pulumi.getter(name="certPem")
-    def cert_pem(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cert_pem(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         PEM-encoded certificate provided to the remote agent; requires use of `key_file` or `key_pem`.
         """
         return pulumi.get(self, "cert_pem")
 
     @cert_pem.setter
-    def cert_pem(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cert_pem(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cert_pem", value)
 
     @_builtins.property
     @pulumi.getter
-    def datacenter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def datacenter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The datacenter to use. Defaults to that of the agent.
         """
         return pulumi.get(self, "datacenter")
 
     @datacenter.setter
-    def datacenter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def datacenter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "datacenter", value)
 
     @_builtins.property
     @pulumi.getter
-    def headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ProviderHeaderArgs']]]]:
+    def headers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ProviderHeaderArgs']]]]:
         """
         A configuration block, described below, that provides additional headers to be sent along with all requests to the Consul server. This block can be specified multiple times.
         """
         return pulumi.get(self, "headers")
 
     @headers.setter
-    def headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ProviderHeaderArgs']]]]):
+    def headers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ProviderHeaderArgs']]]]):
         pulumi.set(self, "headers", value)
 
     @_builtins.property
     @pulumi.getter(name="httpAuth")
-    def http_auth(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def http_auth(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         HTTP Basic Authentication credentials to be used when communicating with Consul, in the format of either `user` or `user:pass`. This may also be specified using the `CONSUL_HTTP_AUTH` environment variable.
         """
         return pulumi.get(self, "http_auth")
 
     @http_auth.setter
-    def http_auth(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def http_auth(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "http_auth", value)
 
     @_builtins.property
     @pulumi.getter(name="insecureHttps")
-    def insecure_https(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def insecure_https(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean value to disable SSL certificate verification; setting this value to true is not recommended for production use. Only use this with scheme set to "https".
         """
         return pulumi.get(self, "insecure_https")
 
     @insecure_https.setter
-    def insecure_https(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def insecure_https(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "insecure_https", value)
 
     @_builtins.property
     @pulumi.getter(name="keyFile")
-    def key_file(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_file(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A path to a PEM-encoded private key, required if `cert_file` or `cert_pem` is specified.
         """
         return pulumi.get(self, "key_file")
 
     @key_file.setter
-    def key_file(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_file(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_file", value)
 
     @_builtins.property
     @pulumi.getter(name="keyPem")
-    def key_pem(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_pem(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         PEM-encoded private key, required if `cert_file` or `cert_pem` is specified.
         """
         return pulumi.get(self, "key_pem")
 
     @key_pem.setter
-    def key_pem(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_pem(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_pem", value)
 
     @_builtins.property
     @pulumi.getter
-    def namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "namespace")
 
     @namespace.setter
-    def namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace", value)
 
     @_builtins.property
     @pulumi.getter
-    def scheme(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scheme(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL scheme of the agent to use ("http" or "https"). Defaults to "http".
         """
         return pulumi.get(self, "scheme")
 
     @scheme.setter
-    def scheme(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scheme(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scheme", value)
 
     @_builtins.property
     @pulumi.getter
-    def token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ACL token to use by default when making requests to the agent. Can also be specified with `CONSUL_HTTP_TOKEN` or `CONSUL_TOKEN` as an environment variable.
         """
         return pulumi.get(self, "token")
 
     @token.setter
-    def token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token", value)
 
 
@@ -300,23 +300,23 @@ class Provider(pulumi.ProviderResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 auth_jwt: Optional[pulumi.Input[Union['ProviderAuthJwtArgs', 'ProviderAuthJwtArgsDict']]] = None,
-                 auth_login_aws: Optional[pulumi.Input[Union['ProviderAuthLoginAwsArgs', 'ProviderAuthLoginAwsArgsDict']]] = None,
-                 ca_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 ca_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 ca_pem: Optional[pulumi.Input[_builtins.str]] = None,
-                 cert_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 cert_pem: Optional[pulumi.Input[_builtins.str]] = None,
-                 datacenter: Optional[pulumi.Input[_builtins.str]] = None,
-                 headers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProviderHeaderArgs', 'ProviderHeaderArgsDict']]]]] = None,
-                 http_auth: Optional[pulumi.Input[_builtins.str]] = None,
-                 insecure_https: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_pem: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheme: Optional[pulumi.Input[_builtins.str]] = None,
-                 token: Optional[pulumi.Input[_builtins.str]] = None,
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 auth_jwt: pulumi.Input[Optional[Union['ProviderAuthJwtArgs', 'ProviderAuthJwtArgsDict']]] = None,
+                 auth_login_aws: pulumi.Input[Optional[Union['ProviderAuthLoginAwsArgs', 'ProviderAuthLoginAwsArgsDict']]] = None,
+                 ca_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 ca_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 ca_pem: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert_pem: pulumi.Input[Optional[_builtins.str]] = None,
+                 datacenter: pulumi.Input[Optional[_builtins.str]] = None,
+                 headers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProviderHeaderArgs', 'ProviderHeaderArgsDict']]]]] = None,
+                 http_auth: pulumi.Input[Optional[_builtins.str]] = None,
+                 insecure_https: pulumi.Input[Optional[_builtins.bool]] = None,
+                 key_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_pem: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheme: pulumi.Input[Optional[_builtins.str]] = None,
+                 token: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The provider type for the consul package. By default, resources use package-wide configuration
@@ -372,23 +372,23 @@ class Provider(pulumi.ProviderResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 auth_jwt: Optional[pulumi.Input[Union['ProviderAuthJwtArgs', 'ProviderAuthJwtArgsDict']]] = None,
-                 auth_login_aws: Optional[pulumi.Input[Union['ProviderAuthLoginAwsArgs', 'ProviderAuthLoginAwsArgsDict']]] = None,
-                 ca_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 ca_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 ca_pem: Optional[pulumi.Input[_builtins.str]] = None,
-                 cert_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 cert_pem: Optional[pulumi.Input[_builtins.str]] = None,
-                 datacenter: Optional[pulumi.Input[_builtins.str]] = None,
-                 headers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProviderHeaderArgs', 'ProviderHeaderArgsDict']]]]] = None,
-                 http_auth: Optional[pulumi.Input[_builtins.str]] = None,
-                 insecure_https: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_pem: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheme: Optional[pulumi.Input[_builtins.str]] = None,
-                 token: Optional[pulumi.Input[_builtins.str]] = None,
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 auth_jwt: pulumi.Input[Optional[Union['ProviderAuthJwtArgs', 'ProviderAuthJwtArgsDict']]] = None,
+                 auth_login_aws: pulumi.Input[Optional[Union['ProviderAuthLoginAwsArgs', 'ProviderAuthLoginAwsArgsDict']]] = None,
+                 ca_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 ca_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 ca_pem: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert_pem: pulumi.Input[Optional[_builtins.str]] = None,
+                 datacenter: pulumi.Input[Optional[_builtins.str]] = None,
+                 headers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProviderHeaderArgs', 'ProviderHeaderArgsDict']]]]] = None,
+                 http_auth: pulumi.Input[Optional[_builtins.str]] = None,
+                 insecure_https: pulumi.Input[Optional[_builtins.bool]] = None,
+                 key_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_pem: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheme: pulumi.Input[Optional[_builtins.str]] = None,
+                 token: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

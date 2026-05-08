@@ -22,19 +22,19 @@ __all__ = ['ServiceArgs', 'Service']
 class ServiceArgs:
     def __init__(__self__, *,
                  node: pulumi.Input[_builtins.str],
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 checks: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceCheckArgs']]]] = None,
-                 datacenter: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_tag_override: Optional[pulumi.Input[_builtins.bool]] = None,
-                 external: Optional[pulumi.Input[_builtins.bool]] = None,
-                 meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 partition: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 service_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 weights: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.int]]]] = None):
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 checks: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceCheckArgs']]]] = None,
+                 datacenter: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_tag_override: pulumi.Input[Optional[_builtins.bool]] = None,
+                 external: pulumi.Input[Optional[_builtins.bool]] = None,
+                 meta: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 partition: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 service_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 weights: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.int]]]] = None):
         """
         The set of arguments for constructing a Service resource.
 
@@ -96,173 +96,173 @@ class ServiceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The address of the service. Defaults to the address of the node.
         """
         return pulumi.get(self, "address")
 
     @address.setter
-    def address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address", value)
 
     @_builtins.property
     @pulumi.getter
-    def checks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceCheckArgs']]]]:
+    def checks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServiceCheckArgs']]]]:
         return pulumi.get(self, "checks")
 
     @checks.setter
-    def checks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceCheckArgs']]]]):
+    def checks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceCheckArgs']]]]):
         pulumi.set(self, "checks", value)
 
     @_builtins.property
     @pulumi.getter
-    def datacenter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def datacenter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
         """
         return pulumi.get(self, "datacenter")
 
     @datacenter.setter
-    def datacenter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def datacenter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "datacenter", value)
 
     @_builtins.property
     @pulumi.getter(name="enableTagOverride")
-    def enable_tag_override(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_tag_override(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies to disable the anti-entropy feature for this service's tags. Defaults to `false`.
         """
         return pulumi.get(self, "enable_tag_override")
 
     @enable_tag_override.setter
-    def enable_tag_override(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_tag_override(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_tag_override", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""The external field has been deprecated and does nothing.""")
-    def external(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def external(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "external")
 
     @external.setter
-    def external(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def external(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "external", value)
 
     @_builtins.property
     @pulumi.getter
-    def meta(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def meta(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A map of arbitrary KV metadata linked to the service instance.
         """
         return pulumi.get(self, "meta")
 
     @meta.setter
-    def meta(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def meta(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "meta", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the service.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The namespace to create the service within.
         """
         return pulumi.get(self, "namespace")
 
     @namespace.setter
-    def namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace", value)
 
     @_builtins.property
     @pulumi.getter
-    def partition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def partition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The partition the service is associated with.
         """
         return pulumi.get(self, "partition")
 
     @partition.setter
-    def partition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def partition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "partition", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The port of the service.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceId")
-    def service_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If the service ID is not provided, it will be defaulted to the value of the `name` attribute.
         """
         return pulumi.get(self, "service_id")
 
     @service_id.setter
-    def service_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of values that are opaque to Consul, but can be used to distinguish between services or nodes.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def weights(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.int]]]]:
+    def weights(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.int]]]]:
         """
         Object that configures how the service responds to DNS SRV requests based on the service's health status. You can specify one or more of the following states and configure an integer value indicating its weight: `passing`, `warning`.
         """
         return pulumi.get(self, "weights")
 
     @weights.setter
-    def weights(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.int]]]]):
+    def weights(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "weights", value)
 
 
 @pulumi.input_type
 class _ServiceState:
     def __init__(__self__, *,
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 checks: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceCheckArgs']]]] = None,
-                 datacenter: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_tag_override: Optional[pulumi.Input[_builtins.bool]] = None,
-                 external: Optional[pulumi.Input[_builtins.bool]] = None,
-                 meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 node: Optional[pulumi.Input[_builtins.str]] = None,
-                 partition: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 service_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 weights: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.int]]]] = None):
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 checks: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceCheckArgs']]]] = None,
+                 datacenter: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_tag_override: pulumi.Input[Optional[_builtins.bool]] = None,
+                 external: pulumi.Input[Optional[_builtins.bool]] = None,
+                 meta: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 node: pulumi.Input[Optional[_builtins.str]] = None,
+                 partition: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 service_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 weights: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.int]]]] = None):
         """
         Input properties used for looking up and filtering Service resources.
 
@@ -313,165 +313,165 @@ class _ServiceState:
 
     @_builtins.property
     @pulumi.getter
-    def address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The address of the service. Defaults to the address of the node.
         """
         return pulumi.get(self, "address")
 
     @address.setter
-    def address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address", value)
 
     @_builtins.property
     @pulumi.getter
-    def checks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceCheckArgs']]]]:
+    def checks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServiceCheckArgs']]]]:
         return pulumi.get(self, "checks")
 
     @checks.setter
-    def checks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceCheckArgs']]]]):
+    def checks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceCheckArgs']]]]):
         pulumi.set(self, "checks", value)
 
     @_builtins.property
     @pulumi.getter
-    def datacenter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def datacenter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
         """
         return pulumi.get(self, "datacenter")
 
     @datacenter.setter
-    def datacenter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def datacenter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "datacenter", value)
 
     @_builtins.property
     @pulumi.getter(name="enableTagOverride")
-    def enable_tag_override(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_tag_override(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies to disable the anti-entropy feature for this service's tags. Defaults to `false`.
         """
         return pulumi.get(self, "enable_tag_override")
 
     @enable_tag_override.setter
-    def enable_tag_override(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_tag_override(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_tag_override", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""The external field has been deprecated and does nothing.""")
-    def external(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def external(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "external")
 
     @external.setter
-    def external(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def external(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "external", value)
 
     @_builtins.property
     @pulumi.getter
-    def meta(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def meta(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A map of arbitrary KV metadata linked to the service instance.
         """
         return pulumi.get(self, "meta")
 
     @meta.setter
-    def meta(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def meta(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "meta", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the service.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The namespace to create the service within.
         """
         return pulumi.get(self, "namespace")
 
     @namespace.setter
-    def namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace", value)
 
     @_builtins.property
     @pulumi.getter
-    def node(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the node the to register the service on.
         """
         return pulumi.get(self, "node")
 
     @node.setter
-    def node(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node", value)
 
     @_builtins.property
     @pulumi.getter
-    def partition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def partition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The partition the service is associated with.
         """
         return pulumi.get(self, "partition")
 
     @partition.setter
-    def partition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def partition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "partition", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The port of the service.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceId")
-    def service_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If the service ID is not provided, it will be defaulted to the value of the `name` attribute.
         """
         return pulumi.get(self, "service_id")
 
     @service_id.setter
-    def service_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of values that are opaque to Consul, but can be used to distinguish between services or nodes.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def weights(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.int]]]]:
+    def weights(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.int]]]]:
         """
         Object that configures how the service responds to DNS SRV requests based on the service's health status. You can specify one or more of the following states and configure an integer value indicating its weight: `passing`, `warning`.
         """
         return pulumi.get(self, "weights")
 
     @weights.setter
-    def weights(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.int]]]]):
+    def weights(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "weights", value)
 
 
@@ -481,20 +481,20 @@ class Service(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 checks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceCheckArgs', 'ServiceCheckArgsDict']]]]] = None,
-                 datacenter: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_tag_override: Optional[pulumi.Input[_builtins.bool]] = None,
-                 external: Optional[pulumi.Input[_builtins.bool]] = None,
-                 meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 node: Optional[pulumi.Input[_builtins.str]] = None,
-                 partition: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 service_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 weights: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.int]]]] = None,
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 checks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceCheckArgs', 'ServiceCheckArgsDict']]]]] = None,
+                 datacenter: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_tag_override: pulumi.Input[Optional[_builtins.bool]] = None,
+                 external: pulumi.Input[Optional[_builtins.bool]] = None,
+                 meta: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 node: pulumi.Input[Optional[_builtins.str]] = None,
+                 partition: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 service_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 weights: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.int]]]] = None,
                  __props__=None):
         """
         A high-level resource for creating a Service in Consul in the Consul catalog. This
@@ -680,20 +680,20 @@ class Service(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 checks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceCheckArgs', 'ServiceCheckArgsDict']]]]] = None,
-                 datacenter: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_tag_override: Optional[pulumi.Input[_builtins.bool]] = None,
-                 external: Optional[pulumi.Input[_builtins.bool]] = None,
-                 meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 node: Optional[pulumi.Input[_builtins.str]] = None,
-                 partition: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 service_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 weights: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.int]]]] = None,
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 checks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceCheckArgs', 'ServiceCheckArgsDict']]]]] = None,
+                 datacenter: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_tag_override: pulumi.Input[Optional[_builtins.bool]] = None,
+                 external: pulumi.Input[Optional[_builtins.bool]] = None,
+                 meta: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 node: pulumi.Input[Optional[_builtins.str]] = None,
+                 partition: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 service_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 weights: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.int]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -729,20 +729,20 @@ class Service(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            address: Optional[pulumi.Input[_builtins.str]] = None,
-            checks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceCheckArgs', 'ServiceCheckArgsDict']]]]] = None,
-            datacenter: Optional[pulumi.Input[_builtins.str]] = None,
-            enable_tag_override: Optional[pulumi.Input[_builtins.bool]] = None,
-            external: Optional[pulumi.Input[_builtins.bool]] = None,
-            meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            namespace: Optional[pulumi.Input[_builtins.str]] = None,
-            node: Optional[pulumi.Input[_builtins.str]] = None,
-            partition: Optional[pulumi.Input[_builtins.str]] = None,
-            port: Optional[pulumi.Input[_builtins.int]] = None,
-            service_id: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            weights: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.int]]]] = None) -> 'Service':
+            address: pulumi.Input[Optional[_builtins.str]] = None,
+            checks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceCheckArgs', 'ServiceCheckArgsDict']]]]] = None,
+            datacenter: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_tag_override: pulumi.Input[Optional[_builtins.bool]] = None,
+            external: pulumi.Input[Optional[_builtins.bool]] = None,
+            meta: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            node: pulumi.Input[Optional[_builtins.str]] = None,
+            partition: pulumi.Input[Optional[_builtins.str]] = None,
+            port: pulumi.Input[Optional[_builtins.int]] = None,
+            service_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            weights: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.int]]]] = None) -> 'Service':
         """
         Get an existing Service resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

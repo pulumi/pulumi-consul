@@ -21,8 +21,8 @@ class PeeringArgs:
     def __init__(__self__, *,
                  peer_name: pulumi.Input[_builtins.str],
                  peering_token: pulumi.Input[_builtins.str],
-                 meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 partition: Optional[pulumi.Input[_builtins.str]] = None):
+                 meta: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 partition: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Peering resource.
 
@@ -63,39 +63,39 @@ class PeeringArgs:
 
     @_builtins.property
     @pulumi.getter
-    def meta(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def meta(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the cluster peering process.
         """
         return pulumi.get(self, "meta")
 
     @meta.setter
-    def meta(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def meta(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "meta", value)
 
     @_builtins.property
     @pulumi.getter
-    def partition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def partition(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "partition")
 
     @partition.setter
-    def partition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def partition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "partition", value)
 
 
 @pulumi.input_type
 class _PeeringState:
     def __init__(__self__, *,
-                 deleted_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 partition: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_ca_pems: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 peer_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_server_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 peer_server_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 peering_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 deleted_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 meta: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 partition: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_ca_pems: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 peer_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_server_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 peer_server_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 peering_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Peering resources.
 
@@ -126,101 +126,101 @@ class _PeeringState:
 
     @_builtins.property
     @pulumi.getter(name="deletedAt")
-    def deleted_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deleted_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "deleted_at")
 
     @deleted_at.setter
-    def deleted_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deleted_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deleted_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def meta(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def meta(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Specifies KV metadata to associate with the peering. This parameter is not required and does not directly impact the cluster peering process.
         """
         return pulumi.get(self, "meta")
 
     @meta.setter
-    def meta(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def meta(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "meta", value)
 
     @_builtins.property
     @pulumi.getter
-    def partition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def partition(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "partition")
 
     @partition.setter
-    def partition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def partition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "partition", value)
 
     @_builtins.property
     @pulumi.getter(name="peerCaPems")
-    def peer_ca_pems(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def peer_ca_pems(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "peer_ca_pems")
 
     @peer_ca_pems.setter
-    def peer_ca_pems(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def peer_ca_pems(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "peer_ca_pems", value)
 
     @_builtins.property
     @pulumi.getter(name="peerId")
-    def peer_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peer_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "peer_id")
 
     @peer_id.setter
-    def peer_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peer_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peer_id", value)
 
     @_builtins.property
     @pulumi.getter(name="peerName")
-    def peer_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peer_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name assigned to the peer cluster. The `peer_name` is used to reference the peer cluster in service discovery queries and configuration entries such as `service-intentions`. This field must be a valid DNS hostname label.
         """
         return pulumi.get(self, "peer_name")
 
     @peer_name.setter
-    def peer_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peer_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peer_name", value)
 
     @_builtins.property
     @pulumi.getter(name="peerServerAddresses")
-    def peer_server_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def peer_server_addresses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "peer_server_addresses")
 
     @peer_server_addresses.setter
-    def peer_server_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def peer_server_addresses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "peer_server_addresses", value)
 
     @_builtins.property
     @pulumi.getter(name="peerServerName")
-    def peer_server_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peer_server_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "peer_server_name")
 
     @peer_server_name.setter
-    def peer_server_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peer_server_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peer_server_name", value)
 
     @_builtins.property
     @pulumi.getter(name="peeringToken")
-    def peering_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peering_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The peering token fetched from the peer cluster.
         """
         return pulumi.get(self, "peering_token")
 
     @peering_token.setter
-    def peering_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peering_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peering_token", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 
@@ -230,10 +230,10 @@ class Peering(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 partition: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 peering_token: Optional[pulumi.Input[_builtins.str]] = None,
+                 meta: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 partition: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 peering_token: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         [Cluster Peering](https://www.consul.io/docs/connect/cluster-peering) can be used to create connections between two or more independent clusters so that services deployed to different partitions or datacenters can communicate.
@@ -312,10 +312,10 @@ class Peering(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 partition: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 peering_token: Optional[pulumi.Input[_builtins.str]] = None,
+                 meta: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 partition: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 peering_token: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -351,16 +351,16 @@ class Peering(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            deleted_at: Optional[pulumi.Input[_builtins.str]] = None,
-            meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            partition: Optional[pulumi.Input[_builtins.str]] = None,
-            peer_ca_pems: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            peer_id: Optional[pulumi.Input[_builtins.str]] = None,
-            peer_name: Optional[pulumi.Input[_builtins.str]] = None,
-            peer_server_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            peer_server_name: Optional[pulumi.Input[_builtins.str]] = None,
-            peering_token: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None) -> 'Peering':
+            deleted_at: pulumi.Input[Optional[_builtins.str]] = None,
+            meta: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            partition: pulumi.Input[Optional[_builtins.str]] = None,
+            peer_ca_pems: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            peer_id: pulumi.Input[Optional[_builtins.str]] = None,
+            peer_name: pulumi.Input[Optional[_builtins.str]] = None,
+            peer_server_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            peer_server_name: pulumi.Input[Optional[_builtins.str]] = None,
+            peering_token: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None) -> 'Peering':
         """
         Get an existing Peering resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
