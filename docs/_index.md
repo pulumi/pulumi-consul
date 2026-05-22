@@ -26,7 +26,7 @@ reasonable defaults for all arguments.
 Use the navigation to the left to read about the available resources.
 ## Example Usage
 
-{{< chooser language "typescript,python,go,csharp,java,yaml" >}}
+{{< chooser language "typescript,python,go,csharp,java,yaml,hcl" >}}
 {{% choosable language typescript %}}
 ```yaml
 # Pulumi.yaml provider configuration file
@@ -270,6 +270,35 @@ public class App {
 
     }
 }
+```
+
+{{% /choosable %}}
+{{% choosable language hcl %}}
+```hcl
+pulumi {
+  required_providers {
+    aws = {
+      source = "pulumi/aws"
+    }
+    consul = {
+      source = "pulumi/consul"
+    }
+  }
+}
+
+data "consul_getkeys" "app" {
+  keys {
+    name    = "ami"
+    path    = "service/app/launch_ami"
+    default = "ami-1234"
+  }
+}
+
+# Use our variable from Consul
+resource "aws_ec2_instance" "app" {
+  ami = data.consul_getkeys.app.var.ami
+}
+# Access a key in Consul
 ```
 
 {{% /choosable %}}
