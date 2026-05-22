@@ -342,7 +342,7 @@ class AclRoleTemplatedPolicyArgsDict(TypedDict):
     """
     Specifies the datacenters the effective policy is valid within.
     """
-    template_variables: NotRequired[pulumi.Input[Optional['AclRoleTemplatedPolicyTemplateVariablesArgs']]]
+    template_variables: NotRequired[pulumi.Input[Optional['AclRoleTemplatedPolicyTemplateVariablesArgsDict']]]
     """
     The templated policy variables.
     """
@@ -534,7 +534,7 @@ class AclTokenTemplatedPolicyArgsDict(TypedDict):
     """
     Specifies the datacenters the effective policy is valid within.
     """
-    template_variables: NotRequired[pulumi.Input[Optional['AclTokenTemplatedPolicyTemplateVariablesArgs']]]
+    template_variables: NotRequired[pulumi.Input[Optional['AclTokenTemplatedPolicyTemplateVariablesArgsDict']]]
     """
     The templated policy variables.
     """
@@ -841,7 +841,7 @@ class ConfigEntryServiceDefaultsEnvoyExtensionArgs:
 
 class ConfigEntryServiceDefaultsExposeArgsDict(TypedDict):
     checks: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
-    paths: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConfigEntryServiceDefaultsExposePathArgs']]]]]
+    paths: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConfigEntryServiceDefaultsExposePathArgsDict']]]]]
 
 @pulumi.input_type
 class ConfigEntryServiceDefaultsExposeArgs:
@@ -982,11 +982,11 @@ class ConfigEntryServiceDefaultsTransparentProxyArgs:
 
 
 class ConfigEntryServiceDefaultsUpstreamConfigArgsDict(TypedDict):
-    defaults: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConfigEntryServiceDefaultsUpstreamConfigDefaultArgs']]]]]
+    defaults: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConfigEntryServiceDefaultsUpstreamConfigDefaultArgsDict']]]]]
     """
     Specifies configurations that set default upstream settings. For information about overriding the default configurations for in for individual upstreams, refer to UpstreamConfig.Overrides.
     """
-    overrides: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConfigEntryServiceDefaultsUpstreamConfigOverrideArgs']]]]]
+    overrides: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConfigEntryServiceDefaultsUpstreamConfigOverrideArgsDict']]]]]
     """
     Specifies options that override the default upstream configurations for individual upstreams.
     """
@@ -1036,15 +1036,15 @@ class ConfigEntryServiceDefaultsUpstreamConfigDefaultArgsDict(TypedDict):
     Sets the strategy for allocating outbound connections from upstreams across Envoy proxy threads.
     """
     connect_timeout_ms: NotRequired[pulumi.Input[Optional[_builtins.int]]]
-    limits: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitArgs']]]]]
+    limits: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConfigEntryServiceDefaultsUpstreamConfigDefaultLimitArgsDict']]]]]
     """
     Map that specifies a set of limits to apply to when connecting upstream services.
     """
-    mesh_gateways: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayArgs']]]]]
+    mesh_gateways: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConfigEntryServiceDefaultsUpstreamConfigDefaultMeshGatewayArgsDict']]]]]
     """
     Specifies the default mesh gateway mode field for all upstreams.
     """
-    passive_health_checks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckArgs']]]]]
+    passive_health_checks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConfigEntryServiceDefaultsUpstreamConfigDefaultPassiveHealthCheckArgsDict']]]]]
     """
     Map that specifies a set of rules that enable Consul to remove hosts from the upstream cluster that are unreachable or that return errors.
     """
@@ -1357,11 +1357,11 @@ class ConfigEntryServiceDefaultsUpstreamConfigOverrideArgsDict(TypedDict):
     """
     connect_timeout_ms: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     envoy_listener_json: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    limits: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitArgs']]]]]
+    limits: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConfigEntryServiceDefaultsUpstreamConfigOverrideLimitArgsDict']]]]]
     """
     Map that specifies a set of limits to apply to when connecting upstream services.
     """
-    mesh_gateways: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArgs']]]]]
+    mesh_gateways: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArgsDict']]]]]
     """
     Specifies the default mesh gateway mode field for all upstreams.
     """
@@ -1377,7 +1377,7 @@ class ConfigEntryServiceDefaultsUpstreamConfigOverrideArgsDict(TypedDict):
     """
     Specifies the name of the name of the Consul admin partition that the configuration entry applies to.
     """
-    passive_health_checks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckArgs']]]]]
+    passive_health_checks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckArgsDict']]]]]
     """
     Map that specifies a set of rules that enable Consul to remove hosts from the upstream cluster that are unreachable or that return errors.
     """
@@ -1764,7 +1764,7 @@ class ConfigEntryServiceDefaultsUpstreamConfigOverridePassiveHealthCheckArgs:
 
 
 class ConfigEntryServiceIntentionsJwtArgsDict(TypedDict):
-    providers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConfigEntryServiceIntentionsJwtProviderArgs']]]]]
+    providers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConfigEntryServiceIntentionsJwtProviderArgsDict']]]]]
     """
     Specifies the names of one or more previously configured JWT provider configuration entries, which include the information necessary to validate a JSON web token.
     """
@@ -1797,7 +1797,7 @@ class ConfigEntryServiceIntentionsJwtProviderArgsDict(TypedDict):
     """
     Specifies the name of a JWT provider defined in the Name field of the jwt-provider configuration entry.
     """
-    verify_claims: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConfigEntryServiceIntentionsJwtProviderVerifyClaimArgs']]]]]
+    verify_claims: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConfigEntryServiceIntentionsJwtProviderVerifyClaimArgsDict']]]]]
     """
     Specifies additional token information to verify beyond what is configured in the JWT provider configuration entry.
     """
@@ -1915,7 +1915,7 @@ class ConfigEntryServiceIntentionsSourceArgsDict(TypedDict):
     """
     Specifies the name of a peered Consul cluster that the intention allows or denies traffic from
     """
-    permissions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConfigEntryServiceIntentionsSourcePermissionArgs']]]]]
+    permissions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConfigEntryServiceIntentionsSourcePermissionArgsDict']]]]]
     """
     Specifies a list of permissions for L7 traffic sources. The list contains one or more actions and a set of match criteria for each action.
     """
@@ -2147,7 +2147,7 @@ class ConfigEntryServiceIntentionsSourcePermissionArgs:
 
 
 class ConfigEntryServiceIntentionsSourcePermissionHttpArgsDict(TypedDict):
-    headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConfigEntryServiceIntentionsSourcePermissionHttpHeaderArgs']]]]]
+    headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConfigEntryServiceIntentionsSourcePermissionHttpHeaderArgsDict']]]]]
     """
     Specifies a header name and matching criteria for HTTP request headers.
     """
@@ -2428,7 +2428,7 @@ class ConfigEntryServiceResolverFailoverArgsDict(TypedDict):
     """
     Specifies the name of a subset of service instances to resolve at the failover location during a failover scenario.
     """
-    targets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConfigEntryServiceResolverFailoverTargetArgs']]]]]
+    targets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConfigEntryServiceResolverFailoverTargetArgsDict']]]]]
     """
     Specifies a fixed list of failover targets to try during failover. This list can express complicated failover scenarios.
     """
@@ -2681,11 +2681,11 @@ class ConfigEntryServiceResolverFailoverTargetArgs:
 
 
 class ConfigEntryServiceResolverLoadBalancerArgsDict(TypedDict):
-    hash_policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConfigEntryServiceResolverLoadBalancerHashPolicyArgs']]]]]
+    hash_policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConfigEntryServiceResolverLoadBalancerHashPolicyArgsDict']]]]]
     """
     Specifies a list of hash policies to use for hashing load balancing algorithms. Consul evaluates hash policies individually and combines them so that identical lists result in the same hash.
     """
-    least_request_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConfigEntryServiceResolverLoadBalancerLeastRequestConfigArgs']]]]]
+    least_request_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConfigEntryServiceResolverLoadBalancerLeastRequestConfigArgsDict']]]]]
     """
     Specifies configuration for the least*request policy type.
     """
@@ -2693,7 +2693,7 @@ class ConfigEntryServiceResolverLoadBalancerArgsDict(TypedDict):
     """
     Specifies the type of load balancing policy for selecting a host.
     """
-    ring_hash_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConfigEntryServiceResolverLoadBalancerRingHashConfigArgs']]]]]
+    ring_hash_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConfigEntryServiceResolverLoadBalancerRingHashConfigArgsDict']]]]]
     """
     Specifies configuration for the ring*hash policy type.
     """
@@ -2770,7 +2770,7 @@ class ConfigEntryServiceResolverLoadBalancerArgs:
 
 
 class ConfigEntryServiceResolverLoadBalancerHashPolicyArgsDict(TypedDict):
-    cookie_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigArgs']]]]]
+    cookie_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConfigEntryServiceResolverLoadBalancerHashPolicyCookieConfigArgsDict']]]]]
     """
     Specifies additional configuration options for the cookie hash policy type.
     """
@@ -3232,11 +3232,11 @@ class ConfigEntryServiceResolverSubsetArgs:
 
 
 class ConfigEntryServiceRouterRouteArgsDict(TypedDict):
-    destination: NotRequired[pulumi.Input[Optional['ConfigEntryServiceRouterRouteDestinationArgs']]]
+    destination: NotRequired[pulumi.Input[Optional['ConfigEntryServiceRouterRouteDestinationArgsDict']]]
     """
     Specifies the target service to route matching requests to, as well as behavior for the request to follow when routed.
     """
-    match: NotRequired[pulumi.Input[Optional['ConfigEntryServiceRouterRouteMatchArgs']]]
+    match: NotRequired[pulumi.Input[Optional['ConfigEntryServiceRouterRouteMatchArgsDict']]]
     """
     Describes a set of criteria that Consul compares incoming L7 traffic with.
     """
@@ -3301,7 +3301,7 @@ class ConfigEntryServiceRouterRouteDestinationArgsDict(TypedDict):
     """
     Specifies rewrites to the HTTP request path before proxying it to its final destination.
     """
-    request_headers: NotRequired[pulumi.Input[Optional['ConfigEntryServiceRouterRouteDestinationRequestHeadersArgs']]]
+    request_headers: NotRequired[pulumi.Input[Optional['ConfigEntryServiceRouterRouteDestinationRequestHeadersArgsDict']]]
     """
     Specifies a set of HTTP-specific header modification rules applied to requests routed with the service router.
     """
@@ -3309,7 +3309,7 @@ class ConfigEntryServiceRouterRouteDestinationArgsDict(TypedDict):
     """
     Specifies the total amount of time permitted for the entire downstream request to be processed, including retry attempts.
     """
-    response_headers: NotRequired[pulumi.Input[Optional['ConfigEntryServiceRouterRouteDestinationResponseHeadersArgs']]]
+    response_headers: NotRequired[pulumi.Input[Optional['ConfigEntryServiceRouterRouteDestinationResponseHeadersArgsDict']]]
     """
     Specifies a set of HTTP-specific header modification rules applied to responses routed with the service router.
     """
@@ -3688,7 +3688,7 @@ class ConfigEntryServiceRouterRouteDestinationResponseHeadersArgs:
 
 
 class ConfigEntryServiceRouterRouteMatchArgsDict(TypedDict):
-    http: NotRequired[pulumi.Input[Optional['ConfigEntryServiceRouterRouteMatchHttpArgs']]]
+    http: NotRequired[pulumi.Input[Optional['ConfigEntryServiceRouterRouteMatchHttpArgsDict']]]
     """
     Specifies a set of HTTP criteria used to evaluate incoming L7 traffic for matches.
     """
@@ -3717,7 +3717,7 @@ class ConfigEntryServiceRouterRouteMatchArgs:
 
 
 class ConfigEntryServiceRouterRouteMatchHttpArgsDict(TypedDict):
-    headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConfigEntryServiceRouterRouteMatchHttpHeaderArgs']]]]]
+    headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConfigEntryServiceRouterRouteMatchHttpHeaderArgsDict']]]]]
     """
     Specifies information in the HTTP request header to match with.
     """
@@ -3737,7 +3737,7 @@ class ConfigEntryServiceRouterRouteMatchHttpArgsDict(TypedDict):
     """
     Specifies a regular expression to match on the HTTP request path.
     """
-    query_params: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConfigEntryServiceRouterRouteMatchHttpQueryParamArgs']]]]]
+    query_params: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConfigEntryServiceRouterRouteMatchHttpQueryParamArgsDict']]]]]
     """
     Specifies information to match to on HTTP query parameters.
     """
@@ -4100,11 +4100,11 @@ class ConfigEntryServiceSplitterSplitArgsDict(TypedDict):
     """
     Specifies the admin partition to use in the FQDN when resolving the service.
     """
-    request_headers: NotRequired[pulumi.Input[Optional['ConfigEntryServiceSplitterSplitRequestHeadersArgs']]]
+    request_headers: NotRequired[pulumi.Input[Optional['ConfigEntryServiceSplitterSplitRequestHeadersArgsDict']]]
     """
     Specifies a set of HTTP-specific header modification rules applied to requests routed with the service split. You cannot configure request headers if the listener protocol is set to `tcp`.
     """
-    response_headers: NotRequired[pulumi.Input[Optional['ConfigEntryServiceSplitterSplitResponseHeadersArgs']]]
+    response_headers: NotRequired[pulumi.Input[Optional['ConfigEntryServiceSplitterSplitResponseHeadersArgsDict']]]
     """
     Specifies a set of HTTP-specific header modification rules applied to responses routed with the service split. You cannot configure request headers if the listener protocol is set to `tcp`.
     """
@@ -4609,7 +4609,7 @@ class PreparedQueryFailoverArgsDict(TypedDict):
     """
     Return results from this many datacenters, sorted in ascending order of estimated RTT.
     """
-    targets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreparedQueryFailoverTargetArgs']]]]]
+    targets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreparedQueryFailoverTargetArgsDict']]]]]
     """
     Specifies a sequential list of remote datacenters and cluster peers to failover to if there are no healthy service instances in the local datacenter. This option cannot be used with `nearest_n` or `datacenters`.
     """
@@ -5269,7 +5269,7 @@ class ServiceCheckArgsDict(TypedDict):
     """
     The time after which the service is automatically deregistered when in the `critical` state. Defaults to `30s`. Setting to `0` will disable.
     """
-    headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceCheckHeaderArgs']]]]]
+    headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceCheckHeaderArgsDict']]]]]
     """
     The headers to send for an HTTP check. The attributes of each header is given below.
     """
