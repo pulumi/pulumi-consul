@@ -182,7 +182,7 @@ class AgentService(pulumi.CustomResource):
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
-        !> The `AgentService` resource has been deprecated in version 2.0.0 of the provider
+        > The `AgentService` resource has been deprecated in version 2.0.0 of the provider
         and will be removed in a future release. Please read the [upgrade guide](https://www.terraform.io/docs/providers/consul/guides/upgrading.html#deprecation-of-consul_agent_service)
         for more information.
 
@@ -223,7 +223,7 @@ class AgentService(pulumi.CustomResource):
                  args: Optional[AgentServiceArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        !> The `AgentService` resource has been deprecated in version 2.0.0 of the provider
+        > The `AgentService` resource has been deprecated in version 2.0.0 of the provider
         and will be removed in a future release. Please read the [upgrade guide](https://www.terraform.io/docs/providers/consul/guides/upgrading.html#deprecation-of-consul_agent_service)
         for more information.
 

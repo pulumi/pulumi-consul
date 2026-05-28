@@ -17,7 +17,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * !&gt; The `consul.CatalogEntry` resource has been deprecated in version 2.0.0 of the provider
+ * &gt; The `consul.CatalogEntry` resource has been deprecated in version 2.0.0 of the provider
  * and will be removed in a future release. Please read the [upgrade guide](https://www.terraform.io/docs/providers/consul/guides/upgrading.html#deprecation-of-consul_catalog_entry)
  * for more information.
  * 
