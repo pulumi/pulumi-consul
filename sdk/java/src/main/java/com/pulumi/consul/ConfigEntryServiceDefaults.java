@@ -38,6 +38,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.consul.ConfigEntryServiceDefaults;
  * import com.pulumi.consul.ConfigEntryServiceDefaultsArgs;
  * import com.pulumi.consul.inputs.ConfigEntryServiceDefaultsUpstreamConfigArgs;
+ * import com.pulumi.consul.inputs.ConfigEntryServiceDefaultsUpstreamConfigOverrideArgs;
+ * import com.pulumi.consul.inputs.ConfigEntryServiceDefaultsUpstreamConfigOverrideMeshGatewayArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -54,11 +56,11 @@ import javax.annotation.Nullable;
  *         var dashboard = new ConfigEntryServiceDefaults("dashboard", ConfigEntryServiceDefaultsArgs.builder()
  *             .name("dashboard")
  *             .upstreamConfigs(ConfigEntryServiceDefaultsUpstreamConfigArgs.builder()
- *                 .defaults(ConfigEntryServiceDefaultsUpstreamConfigDefaultArgs.builder()
- *                     .meshGateways(ConfigEntryServiceDefaultsUpstreamConfigDefaultArgs.builder()
+ *                 .defaults(com.pulumi.consul.inputs.ConfigEntryServiceDefaultsUpstreamConfigDefaultArgs.builder()
+ *                     .meshGateways(com.pulumi.consul.inputs.ConfigEntryServiceDefaultsUpstreamConfigDefaultArgs.builder()
  *                         .mode("local")
  *                         .build())
- *                     .limits(ConfigEntryServiceDefaultsUpstreamConfigDefaultArgs.builder()
+ *                     .limits(com.pulumi.consul.inputs.ConfigEntryServiceDefaultsUpstreamConfigDefaultArgs.builder()
  *                         .maxConnections(512)
  *                         .maxPendingRequests(512)
  *                         .maxConcurrentRequests(512)

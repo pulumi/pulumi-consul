@@ -35,6 +35,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.consul.ConfigEntryServiceIntentions;
  * import com.pulumi.consul.ConfigEntryServiceIntentionsArgs;
  * import com.pulumi.consul.inputs.ConfigEntryServiceIntentionsJwtArgs;
+ * import com.pulumi.consul.inputs.ConfigEntryServiceIntentionsJwtProviderArgs;
+ * import com.pulumi.consul.inputs.ConfigEntryServiceIntentionsJwtProviderVerifyClaimArgs;
  * import com.pulumi.consul.inputs.ConfigEntryServiceIntentionsSourceArgs;
  * import static com.pulumi.codegen.internal.Serialization.*;
  * import java.util.ArrayList;

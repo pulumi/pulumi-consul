@@ -239,6 +239,7 @@ import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
 import com.pulumi.consul.ConsulFunctions;
 import com.pulumi.consul.inputs.GetKeysArgs;
+import com.pulumi.consul.inputs.GetKeysKeyArgs;
 import com.pulumi.aws.ec2.Instance;
 import com.pulumi.aws.ec2.InstanceArgs;
 import java.util.ArrayList;

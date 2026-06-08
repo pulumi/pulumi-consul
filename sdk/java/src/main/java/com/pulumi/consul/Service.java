@@ -121,6 +121,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.consul.Service;
  * import com.pulumi.consul.ServiceArgs;
  * import com.pulumi.consul.inputs.ServiceCheckArgs;
+ * import com.pulumi.consul.inputs.ServiceCheckHeaderArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
