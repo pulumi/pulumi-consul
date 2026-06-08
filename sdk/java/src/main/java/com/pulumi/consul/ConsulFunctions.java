@@ -1976,6 +1976,7 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetNodesArgs;
+     * import com.pulumi.consul.inputs.GetNodesQueryOptionArgs;
      * import com.pulumi.example.Resource;
      * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
@@ -2041,6 +2042,7 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetNodesArgs;
+     * import com.pulumi.consul.inputs.GetNodesQueryOptionArgs;
      * import com.pulumi.example.Resource;
      * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
@@ -2106,6 +2108,7 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetNodesArgs;
+     * import com.pulumi.consul.inputs.GetNodesQueryOptionArgs;
      * import com.pulumi.example.Resource;
      * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
@@ -2171,6 +2174,7 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetNodesArgs;
+     * import com.pulumi.consul.inputs.GetNodesQueryOptionArgs;
      * import com.pulumi.example.Resource;
      * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
@@ -2236,6 +2240,7 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetNodesArgs;
+     * import com.pulumi.consul.inputs.GetNodesQueryOptionArgs;
      * import com.pulumi.example.Resource;
      * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
@@ -2301,6 +2306,7 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetNodesArgs;
+     * import com.pulumi.consul.inputs.GetNodesQueryOptionArgs;
      * import com.pulumi.example.Resource;
      * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
@@ -2366,6 +2372,7 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetNodesArgs;
+     * import com.pulumi.consul.inputs.GetNodesQueryOptionArgs;
      * import com.pulumi.example.Resource;
      * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
@@ -2754,6 +2761,7 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetServicesArgs;
+     * import com.pulumi.consul.inputs.GetServicesQueryOptionArgs;
      * import com.pulumi.example.Resource;
      * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
@@ -2818,6 +2826,7 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetServicesArgs;
+     * import com.pulumi.consul.inputs.GetServicesQueryOptionArgs;
      * import com.pulumi.example.Resource;
      * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
@@ -2882,6 +2891,7 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetServicesArgs;
+     * import com.pulumi.consul.inputs.GetServicesQueryOptionArgs;
      * import com.pulumi.example.Resource;
      * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
@@ -2946,6 +2956,7 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetServicesArgs;
+     * import com.pulumi.consul.inputs.GetServicesQueryOptionArgs;
      * import com.pulumi.example.Resource;
      * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
@@ -3010,6 +3021,7 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetServicesArgs;
+     * import com.pulumi.consul.inputs.GetServicesQueryOptionArgs;
      * import com.pulumi.example.Resource;
      * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
@@ -3074,6 +3086,7 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetServicesArgs;
+     * import com.pulumi.consul.inputs.GetServicesQueryOptionArgs;
      * import com.pulumi.example.Resource;
      * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
@@ -3138,6 +3151,7 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetServicesArgs;
+     * import com.pulumi.consul.inputs.GetServicesQueryOptionArgs;
      * import com.pulumi.example.Resource;
      * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
@@ -3247,7 +3261,7 @@ public final class ConsulFunctions {
      *         final var all = ConsulFunctions.getDatacenters(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         // Register a prepared query in each of the datacenters
-     *         for (var range : KeyedValue.of(com.pulumi.std.StdFunctions(TosetArgs.builder()
+     *         for (var range : KeyedValue.of(com.pulumi.std.StdFunctions(com.pulumi.std.inputs.TosetArgs.builder()
      *             .input(all.datacenters())
      *             .build()).result())) {
      *             new PreparedQuery("myapp-query-" + range.key(), PreparedQueryArgs.builder()
@@ -3316,7 +3330,7 @@ public final class ConsulFunctions {
      *         final var all = ConsulFunctions.getDatacenters(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         // Register a prepared query in each of the datacenters
-     *         for (var range : KeyedValue.of(com.pulumi.std.StdFunctions(TosetArgs.builder()
+     *         for (var range : KeyedValue.of(com.pulumi.std.StdFunctions(com.pulumi.std.inputs.TosetArgs.builder()
      *             .input(all.datacenters())
      *             .build()).result())) {
      *             new PreparedQuery("myapp-query-" + range.key(), PreparedQueryArgs.builder()
@@ -3385,7 +3399,7 @@ public final class ConsulFunctions {
      *         final var all = ConsulFunctions.getDatacenters(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         // Register a prepared query in each of the datacenters
-     *         for (var range : KeyedValue.of(com.pulumi.std.StdFunctions(TosetArgs.builder()
+     *         for (var range : KeyedValue.of(com.pulumi.std.StdFunctions(com.pulumi.std.inputs.TosetArgs.builder()
      *             .input(all.datacenters())
      *             .build()).result())) {
      *             new PreparedQuery("myapp-query-" + range.key(), PreparedQueryArgs.builder()
@@ -3454,7 +3468,7 @@ public final class ConsulFunctions {
      *         final var all = ConsulFunctions.getDatacenters(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         // Register a prepared query in each of the datacenters
-     *         for (var range : KeyedValue.of(com.pulumi.std.StdFunctions(TosetArgs.builder()
+     *         for (var range : KeyedValue.of(com.pulumi.std.StdFunctions(com.pulumi.std.inputs.TosetArgs.builder()
      *             .input(all.datacenters())
      *             .build()).result())) {
      *             new PreparedQuery("myapp-query-" + range.key(), PreparedQueryArgs.builder()
@@ -3523,7 +3537,7 @@ public final class ConsulFunctions {
      *         final var all = ConsulFunctions.getDatacenters(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         // Register a prepared query in each of the datacenters
-     *         for (var range : KeyedValue.of(com.pulumi.std.StdFunctions(TosetArgs.builder()
+     *         for (var range : KeyedValue.of(com.pulumi.std.StdFunctions(com.pulumi.std.inputs.TosetArgs.builder()
      *             .input(all.datacenters())
      *             .build()).result())) {
      *             new PreparedQuery("myapp-query-" + range.key(), PreparedQueryArgs.builder()
@@ -3592,7 +3606,7 @@ public final class ConsulFunctions {
      *         final var all = ConsulFunctions.getDatacenters(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         // Register a prepared query in each of the datacenters
-     *         for (var range : KeyedValue.of(com.pulumi.std.StdFunctions(TosetArgs.builder()
+     *         for (var range : KeyedValue.of(com.pulumi.std.StdFunctions(com.pulumi.std.inputs.TosetArgs.builder()
      *             .input(all.datacenters())
      *             .build()).result())) {
      *             new PreparedQuery("myapp-query-" + range.key(), PreparedQueryArgs.builder()
@@ -3661,7 +3675,7 @@ public final class ConsulFunctions {
      *         final var all = ConsulFunctions.getDatacenters(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         // Register a prepared query in each of the datacenters
-     *         for (var range : KeyedValue.of(com.pulumi.std.StdFunctions(TosetArgs.builder()
+     *         for (var range : KeyedValue.of(com.pulumi.std.StdFunctions(com.pulumi.std.inputs.TosetArgs.builder()
      *             .input(all.datacenters())
      *             .build()).result())) {
      *             new PreparedQuery("myapp-query-" + range.key(), PreparedQueryArgs.builder()
@@ -3710,6 +3724,7 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetKeyPrefixArgs;
+     * import com.pulumi.consul.inputs.GetKeyPrefixSubkeyCollectionArgs;
      * import com.pulumi.aws.Instance;
      * import com.pulumi.aws.InstanceArgs;
      * import java.util.ArrayList;
@@ -3805,6 +3820,7 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetKeyPrefixArgs;
+     * import com.pulumi.consul.inputs.GetKeyPrefixSubkeyCollectionArgs;
      * import com.pulumi.aws.Instance;
      * import com.pulumi.aws.InstanceArgs;
      * import java.util.ArrayList;
@@ -3900,6 +3916,7 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetKeyPrefixArgs;
+     * import com.pulumi.consul.inputs.GetKeyPrefixSubkeyCollectionArgs;
      * import com.pulumi.aws.Instance;
      * import com.pulumi.aws.InstanceArgs;
      * import java.util.ArrayList;
@@ -3995,6 +4012,7 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetKeyPrefixArgs;
+     * import com.pulumi.consul.inputs.GetKeyPrefixSubkeyCollectionArgs;
      * import com.pulumi.aws.Instance;
      * import com.pulumi.aws.InstanceArgs;
      * import java.util.ArrayList;
@@ -4090,6 +4108,7 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetKeyPrefixArgs;
+     * import com.pulumi.consul.inputs.GetKeyPrefixSubkeyCollectionArgs;
      * import com.pulumi.aws.Instance;
      * import com.pulumi.aws.InstanceArgs;
      * import java.util.ArrayList;
@@ -4184,6 +4203,7 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetKeysArgs;
+     * import com.pulumi.consul.inputs.GetKeysKeyArgs;
      * import com.pulumi.aws.Instance;
      * import com.pulumi.aws.InstanceArgs;
      * import java.util.ArrayList;
@@ -4236,6 +4256,7 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetKeysArgs;
+     * import com.pulumi.consul.inputs.GetKeysKeyArgs;
      * import com.pulumi.aws.Instance;
      * import com.pulumi.aws.InstanceArgs;
      * import java.util.ArrayList;
@@ -4288,6 +4309,7 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetKeysArgs;
+     * import com.pulumi.consul.inputs.GetKeysKeyArgs;
      * import com.pulumi.aws.Instance;
      * import com.pulumi.aws.InstanceArgs;
      * import java.util.ArrayList;
@@ -4340,6 +4362,7 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetKeysArgs;
+     * import com.pulumi.consul.inputs.GetKeysKeyArgs;
      * import com.pulumi.aws.Instance;
      * import com.pulumi.aws.InstanceArgs;
      * import java.util.ArrayList;
@@ -4392,6 +4415,7 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetKeysArgs;
+     * import com.pulumi.consul.inputs.GetKeysKeyArgs;
      * import com.pulumi.aws.Instance;
      * import com.pulumi.aws.InstanceArgs;
      * import java.util.ArrayList;
@@ -4444,6 +4468,7 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetKeysArgs;
+     * import com.pulumi.consul.inputs.GetKeysKeyArgs;
      * import com.pulumi.aws.Instance;
      * import com.pulumi.aws.InstanceArgs;
      * import java.util.ArrayList;
@@ -4496,6 +4521,7 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetKeysArgs;
+     * import com.pulumi.consul.inputs.GetKeysKeyArgs;
      * import com.pulumi.aws.Instance;
      * import com.pulumi.aws.InstanceArgs;
      * import java.util.ArrayList;
@@ -5112,6 +5138,7 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetNodesArgs;
+     * import com.pulumi.consul.inputs.GetNodesQueryOptionArgs;
      * import com.pulumi.example.Resource;
      * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
@@ -5173,6 +5200,7 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetNodesArgs;
+     * import com.pulumi.consul.inputs.GetNodesQueryOptionArgs;
      * import com.pulumi.example.Resource;
      * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
@@ -5234,6 +5262,7 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetNodesArgs;
+     * import com.pulumi.consul.inputs.GetNodesQueryOptionArgs;
      * import com.pulumi.example.Resource;
      * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
@@ -5295,6 +5324,7 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetNodesArgs;
+     * import com.pulumi.consul.inputs.GetNodesQueryOptionArgs;
      * import com.pulumi.example.Resource;
      * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
@@ -5356,6 +5386,7 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetNodesArgs;
+     * import com.pulumi.consul.inputs.GetNodesQueryOptionArgs;
      * import com.pulumi.example.Resource;
      * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
@@ -5417,6 +5448,7 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetNodesArgs;
+     * import com.pulumi.consul.inputs.GetNodesQueryOptionArgs;
      * import com.pulumi.example.Resource;
      * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
@@ -5478,6 +5510,7 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetNodesArgs;
+     * import com.pulumi.consul.inputs.GetNodesQueryOptionArgs;
      * import com.pulumi.example.Resource;
      * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
@@ -6366,6 +6399,7 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetServicesArgs;
+     * import com.pulumi.consul.inputs.GetServicesQueryOptionArgs;
      * import com.pulumi.example.Resource;
      * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
@@ -6426,6 +6460,7 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetServicesArgs;
+     * import com.pulumi.consul.inputs.GetServicesQueryOptionArgs;
      * import com.pulumi.example.Resource;
      * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
@@ -6486,6 +6521,7 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetServicesArgs;
+     * import com.pulumi.consul.inputs.GetServicesQueryOptionArgs;
      * import com.pulumi.example.Resource;
      * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
@@ -6546,6 +6582,7 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetServicesArgs;
+     * import com.pulumi.consul.inputs.GetServicesQueryOptionArgs;
      * import com.pulumi.example.Resource;
      * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
@@ -6606,6 +6643,7 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetServicesArgs;
+     * import com.pulumi.consul.inputs.GetServicesQueryOptionArgs;
      * import com.pulumi.example.Resource;
      * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
@@ -6666,6 +6704,7 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetServicesArgs;
+     * import com.pulumi.consul.inputs.GetServicesQueryOptionArgs;
      * import com.pulumi.example.Resource;
      * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;
@@ -6726,6 +6765,7 @@ public final class ConsulFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.consul.ConsulFunctions;
      * import com.pulumi.consul.inputs.GetServicesArgs;
+     * import com.pulumi.consul.inputs.GetServicesQueryOptionArgs;
      * import com.pulumi.example.Resource;
      * import com.pulumi.example.ResourceArgs;
      * import com.pulumi.std.StdFunctions;

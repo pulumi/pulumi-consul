@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *         var app = new CatalogEntry("app", CatalogEntryArgs.builder()
  *             .address("192.168.10.10")
  *             .node("foobar")
- *             .services(CatalogEntryServiceArgs.builder()
+ *             .services(com.pulumi.consul.inputs.CatalogEntryServiceArgs.builder()
  *                 .address("127.0.0.1")
  *                 .id("redis1")
  *                 .name("redis")
