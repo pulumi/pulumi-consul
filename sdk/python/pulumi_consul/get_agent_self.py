@@ -373,7 +373,7 @@ class GetAgentSelfResult:
         A map of DNS configuration attributes.  See below for details on the
         contents of the `dns` attribute.
         * [`dns_recursors`](https://www.consul.io/docs/agent/options.html#recursors) - A
-        list of all DNS recursors.
+          list of all DNS recursors.
         * [`data_dir`](https://www.consul.io/docs/agent/options.html#_data_dir)
         * [`datacenter`](https://www.consul.io/docs/agent/options.html#_datacenter)
         * [`dev_mode`](https://www.consul.io/docs/agent/options.html#_dev)
@@ -420,11 +420,11 @@ class GetAgentSelfResult:
         * [`rejoin_after_leave`](https://www.consul.io/docs/agent/options.html#_rejoin)
         * [`retry_join`](https://www.consul.io/docs/agent/options.html#retry_join)
         * [`retry_join_ec2`](https://www.consul.io/docs/agent/options.html#retry_join_ec2) -
-        A map of EC2 retry attributes.  See below for details on the available
-        information.
+          A map of EC2 retry attributes.  See below for details on the available
+          information.
         * [`retry_join_gce`](https://www.consul.io/docs/agent/options.html#retry_join_gce) -
-        A map of GCE retry attributes.  See below for details on the available
-        information.
+          A map of GCE retry attributes.  See below for details on the available
+          information.
         * [`retry_join_wan`](https://www.consul.io/docs/agent/options.html#_retry_join_wan)
         * [`retry_max_attempts`](https://www.consul.io/docs/agent/options.html#_retry_max)
         * [`retry_max_attempts_wan`](https://www.consul.io/docs/agent/options.html#_retry_max_wan)
@@ -445,7 +445,7 @@ class GetAgentSelfResult:
         * [`tls_verify_server_hostname`](https://www.consul.io/docs/agent/options.html#verify_server_hostname)
         * [`tagged_addresses`](https://www.consul.io/docs/agent/options.html#translate_wan_addrs)
         * [`telemetry`](https://www.consul.io/docs/agent/options.html#telemetry) - A map
-        of telemetry configuration.
+          of telemetry configuration.
         * [`translate_wan_addrs`](https://www.consul.io/docs/agent/options.html#translate_wan_addrs)
         * [`ui_dir`](https://www.consul.io/docs/agent/options.html#ui_dir)
         * [`unix_sockets`](https://www.consul.io/docs/agent/options.html#unix_sockets)

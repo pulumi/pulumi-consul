@@ -65,7 +65,7 @@ class GetServiceHealthResult:
         """
         The datacenter in which the node is running.
         * [`tagged_addresses`](https://www.consul.io/docs/agent/http/catalog.html#TaggedAddresses) -
-        List of explicit LAN and WAN IP addresses for the agent.
+          List of explicit LAN and WAN IP addresses for the agent.
         """
         return pulumi.get(self, "datacenter")
 

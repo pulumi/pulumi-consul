@@ -78,11 +78,11 @@ def get_datacenters(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGet
 
     all = consul.get_datacenters()
     # Register a prepared query in each of the datacenters
-    myapp_query: list[Any] = []
-    for range in [{"key": k, "value": v} for [k, v] in enumerate(std.toset(input=all.datacenters).result)]:
-        myapp_query.append(consul.PreparedQuery(f"myapp-query-{range['key']}",
+    myapp_query: list[consul.PreparedQuery] = []
+    for myapp_query_range in [{"key": k, "value": v} for [k, v] in enumerate(std.toset(input=all.datacenters).result)]:
+        myapp_query.append(consul.PreparedQuery(f"myapp-query-{myapp_query_range['key']}",
             name="myquery",
-            datacenter=str(range["key"]),
+            datacenter=str(myapp_query_range["key"]),
             only_passing=True,
             near="_agent",
             service="myapp",
@@ -125,11 +125,11 @@ def get_datacenters_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.Inv
 
     all = consul.get_datacenters()
     # Register a prepared query in each of the datacenters
-    myapp_query: list[Any] = []
-    for range in [{"key": k, "value": v} for [k, v] in enumerate(std.toset(input=all.datacenters).result)]:
-        myapp_query.append(consul.PreparedQuery(f"myapp-query-{range['key']}",
+    myapp_query: list[consul.PreparedQuery] = []
+    for myapp_query_range in [{"key": k, "value": v} for [k, v] in enumerate(std.toset(input=all.datacenters).result)]:
+        myapp_query.append(consul.PreparedQuery(f"myapp-query-{myapp_query_range['key']}",
             name="myquery",
-            datacenter=str(range["key"]),
+            datacenter=str(myapp_query_range["key"]),
             only_passing=True,
             near="_agent",
             service="myapp",

@@ -95,7 +95,7 @@ publishing {
                 inceptionYear = "2022"
                 name = "pulumi-consul"
                 packaging = "jar"
-                description = "A Pulumi package for creating and managing consul resources."
+                description = $/A Pulumi package for creating and managing consul resources./$
 
                 url = "https://github.com/pulumi/pulumi-consul"
 

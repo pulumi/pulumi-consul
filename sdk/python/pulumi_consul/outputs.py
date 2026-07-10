@@ -4274,13 +4274,13 @@ class GetCatalogNodesNodeResult(dict):
         """
         :param _builtins.str id: The Node ID of the Consul agent.
                * [`meta`](https://www.consul.io/docs/agent/http/catalog.html#Meta) - Node meta
-               data tag information, if any.
+                 data tag information, if any.
                * [`name`](https://www.consul.io/docs/agent/http/catalog.html#Node) - The name
-               of the Consul node.
+                 of the Consul node.
                * [`address`](https://www.consul.io/docs/agent/http/catalog.html#Address) - The
-               IP address the node is advertising to the Consul cluster.
+                 IP address the node is advertising to the Consul cluster.
                * [`tagged_addresses`](https://www.consul.io/docs/agent/http/catalog.html#TaggedAddresses) -
-               List of explicit LAN and WAN IP addresses for the agent.
+                 List of explicit LAN and WAN IP addresses for the agent.
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "id", id)
@@ -4299,13 +4299,13 @@ class GetCatalogNodesNodeResult(dict):
         """
         The Node ID of the Consul agent.
         * [`meta`](https://www.consul.io/docs/agent/http/catalog.html#Meta) - Node meta
-        data tag information, if any.
+          data tag information, if any.
         * [`name`](https://www.consul.io/docs/agent/http/catalog.html#Node) - The name
-        of the Consul node.
+          of the Consul node.
         * [`address`](https://www.consul.io/docs/agent/http/catalog.html#Address) - The
-        IP address the node is advertising to the Consul cluster.
+          IP address the node is advertising to the Consul cluster.
         * [`tagged_addresses`](https://www.consul.io/docs/agent/http/catalog.html#TaggedAddresses) -
-        List of explicit LAN and WAN IP addresses for the agent.
+          List of explicit LAN and WAN IP addresses for the agent.
         """
         return pulumi.get(self, "id")
 
@@ -4600,27 +4600,27 @@ class GetCatalogServiceServiceResult(dict):
         :param _builtins.str name: The service name to select.
         :param _builtins.str node_id: The Node ID of the Consul agent advertising the service.
                * [`node_meta`](https://www.consul.io/docs/agent/http/catalog.html#Meta) - Node
-               meta data tag information, if any.
+                 meta data tag information, if any.
                * [`node_name`](https://www.consul.io/docs/agent/http/catalog.html#Node) - The
-               name of the Consul node.
+                 name of the Consul node.
                * [`address`](https://www.consul.io/docs/agent/http/catalog.html#ServiceAddress) -
-               The IP address of the service.  If the `ServiceAddress` in the Consul catalog
-               is empty, this value is automatically populated with the `node_address` (the
-               `Address` in the Consul Catalog).
+                 The IP address of the service.  If the `ServiceAddress` in the Consul catalog
+                 is empty, this value is automatically populated with the `node_address` (the
+                 `Address` in the Consul Catalog).
                * [`enable_tag_override`](https://www.consul.io/docs/agent/http/catalog.html#ServiceEnableTagOverride) -
-               Whether service tags can be overridden on this service.
+                 Whether service tags can be overridden on this service.
                * [`id`](https://www.consul.io/docs/agent/http/catalog.html#ServiceID) - A
-               unique service instance identifier.
+                 unique service instance identifier.
                * [`name`](https://www.consul.io/docs/agent/http/catalog.html#ServiceName) - The
-               name of the service.
+                 name of the service.
                * [`port`](https://www.consul.io/docs/agent/http/catalog.html#ServicePort) -
-               Port number of the service.
+                 Port number of the service.
                * [`tagged_addresses`](https://www.consul.io/docs/agent/http/catalog.html#TaggedAddresses) -
-               List of explicit LAN and WAN IP addresses for the agent.
+                 List of explicit LAN and WAN IP addresses for the agent.
                * [`tags`](https://www.consul.io/docs/agent/http/catalog.html#ServiceTags) -
-               List of tags for the service.
+                 List of tags for the service.
                * [`meta`](https://www.consul.io/docs/agent/http/catalog.html#Meta) - Service meta
-               data tag information, if any.
+                 data tag information, if any.
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "create_index", create_index)
@@ -4686,27 +4686,27 @@ class GetCatalogServiceServiceResult(dict):
         """
         The Node ID of the Consul agent advertising the service.
         * [`node_meta`](https://www.consul.io/docs/agent/http/catalog.html#Meta) - Node
-        meta data tag information, if any.
+          meta data tag information, if any.
         * [`node_name`](https://www.consul.io/docs/agent/http/catalog.html#Node) - The
-        name of the Consul node.
+          name of the Consul node.
         * [`address`](https://www.consul.io/docs/agent/http/catalog.html#ServiceAddress) -
-        The IP address of the service.  If the `ServiceAddress` in the Consul catalog
-        is empty, this value is automatically populated with the `node_address` (the
-        `Address` in the Consul Catalog).
+          The IP address of the service.  If the `ServiceAddress` in the Consul catalog
+          is empty, this value is automatically populated with the `node_address` (the
+          `Address` in the Consul Catalog).
         * [`enable_tag_override`](https://www.consul.io/docs/agent/http/catalog.html#ServiceEnableTagOverride) -
-        Whether service tags can be overridden on this service.
+          Whether service tags can be overridden on this service.
         * [`id`](https://www.consul.io/docs/agent/http/catalog.html#ServiceID) - A
-        unique service instance identifier.
+          unique service instance identifier.
         * [`name`](https://www.consul.io/docs/agent/http/catalog.html#ServiceName) - The
-        name of the service.
+          name of the service.
         * [`port`](https://www.consul.io/docs/agent/http/catalog.html#ServicePort) -
-        Port number of the service.
+          Port number of the service.
         * [`tagged_addresses`](https://www.consul.io/docs/agent/http/catalog.html#TaggedAddresses) -
-        List of explicit LAN and WAN IP addresses for the agent.
+          List of explicit LAN and WAN IP addresses for the agent.
         * [`tags`](https://www.consul.io/docs/agent/http/catalog.html#ServiceTags) -
-        List of tags for the service.
+          List of tags for the service.
         * [`meta`](https://www.consul.io/docs/agent/http/catalog.html#Meta) - Service meta
-        data tag information, if any.
+          data tag information, if any.
         """
         return pulumi.get(self, "node_id")
 
@@ -5103,13 +5103,13 @@ class GetNodesNodeResult(dict):
         """
         :param _builtins.str id: The Node ID of the Consul agent.
                * [`meta`](https://www.consul.io/docs/agent/http/catalog.html#Meta) - Node meta
-               data tag information, if any.
+                 data tag information, if any.
                * [`name`](https://www.consul.io/docs/agent/http/catalog.html#Node) - The name
-               of the Consul node.
+                 of the Consul node.
                * [`address`](https://www.consul.io/docs/agent/http/catalog.html#Address) - The
-               IP address the node is advertising to the Consul cluster.
+                 IP address the node is advertising to the Consul cluster.
                * [`tagged_addresses`](https://www.consul.io/docs/agent/http/catalog.html#TaggedAddresses) -
-               List of explicit LAN and WAN IP addresses for the agent.
+                 List of explicit LAN and WAN IP addresses for the agent.
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "id", id)
@@ -5128,13 +5128,13 @@ class GetNodesNodeResult(dict):
         """
         The Node ID of the Consul agent.
         * [`meta`](https://www.consul.io/docs/agent/http/catalog.html#Meta) - Node meta
-        data tag information, if any.
+          data tag information, if any.
         * [`name`](https://www.consul.io/docs/agent/http/catalog.html#Node) - The name
-        of the Consul node.
+          of the Consul node.
         * [`address`](https://www.consul.io/docs/agent/http/catalog.html#Address) - The
-        IP address the node is advertising to the Consul cluster.
+          IP address the node is advertising to the Consul cluster.
         * [`tagged_addresses`](https://www.consul.io/docs/agent/http/catalog.html#TaggedAddresses) -
-        List of explicit LAN and WAN IP addresses for the agent.
+          List of explicit LAN and WAN IP addresses for the agent.
         """
         return pulumi.get(self, "id")
 
@@ -5784,27 +5784,27 @@ class GetServiceServiceResult(dict):
         :param _builtins.str name: The service name to select.
         :param _builtins.str node_id: The Node ID of the Consul agent advertising the service.
                * [`node_meta`](https://www.consul.io/docs/agent/http/catalog.html#Meta) - Node
-               meta data tag information, if any.
+                 meta data tag information, if any.
                * [`node_name`](https://www.consul.io/docs/agent/http/catalog.html#Node) - The
-               name of the Consul node.
+                 name of the Consul node.
                * [`address`](https://www.consul.io/docs/agent/http/catalog.html#ServiceAddress) -
-               The IP address of the service.  If the `ServiceAddress` in the Consul catalog
-               is empty, this value is automatically populated with the `node_address` (the
-               `Address` in the Consul Catalog).
+                 The IP address of the service.  If the `ServiceAddress` in the Consul catalog
+                 is empty, this value is automatically populated with the `node_address` (the
+                 `Address` in the Consul Catalog).
                * [`enable_tag_override`](https://www.consul.io/docs/agent/http/catalog.html#ServiceEnableTagOverride) -
-               Whether service tags can be overridden on this service.
+                 Whether service tags can be overridden on this service.
                * [`id`](https://www.consul.io/docs/agent/http/catalog.html#ServiceID) - A
-               unique service instance identifier.
+                 unique service instance identifier.
                * [`name`](https://www.consul.io/docs/agent/http/catalog.html#ServiceName) - The
-               name of the service.
+                 name of the service.
                * [`port`](https://www.consul.io/docs/agent/http/catalog.html#ServicePort) -
-               Port number of the service.
+                 Port number of the service.
                * [`tagged_addresses`](https://www.consul.io/docs/agent/http/catalog.html#TaggedAddresses) -
-               List of explicit LAN and WAN IP addresses for the agent.
+                 List of explicit LAN and WAN IP addresses for the agent.
                * [`tags`](https://www.consul.io/docs/agent/http/catalog.html#ServiceTags) -
-               List of tags for the service.
+                 List of tags for the service.
                * [`meta`](https://www.consul.io/docs/agent/http/catalog.html#Meta) - Service meta
-               data tag information, if any.
+                 data tag information, if any.
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "create_index", create_index)
@@ -5870,27 +5870,27 @@ class GetServiceServiceResult(dict):
         """
         The Node ID of the Consul agent advertising the service.
         * [`node_meta`](https://www.consul.io/docs/agent/http/catalog.html#Meta) - Node
-        meta data tag information, if any.
+          meta data tag information, if any.
         * [`node_name`](https://www.consul.io/docs/agent/http/catalog.html#Node) - The
-        name of the Consul node.
+          name of the Consul node.
         * [`address`](https://www.consul.io/docs/agent/http/catalog.html#ServiceAddress) -
-        The IP address of the service.  If the `ServiceAddress` in the Consul catalog
-        is empty, this value is automatically populated with the `node_address` (the
-        `Address` in the Consul Catalog).
+          The IP address of the service.  If the `ServiceAddress` in the Consul catalog
+          is empty, this value is automatically populated with the `node_address` (the
+          `Address` in the Consul Catalog).
         * [`enable_tag_override`](https://www.consul.io/docs/agent/http/catalog.html#ServiceEnableTagOverride) -
-        Whether service tags can be overridden on this service.
+          Whether service tags can be overridden on this service.
         * [`id`](https://www.consul.io/docs/agent/http/catalog.html#ServiceID) - A
-        unique service instance identifier.
+          unique service instance identifier.
         * [`name`](https://www.consul.io/docs/agent/http/catalog.html#ServiceName) - The
-        name of the service.
+          name of the service.
         * [`port`](https://www.consul.io/docs/agent/http/catalog.html#ServicePort) -
-        Port number of the service.
+          Port number of the service.
         * [`tagged_addresses`](https://www.consul.io/docs/agent/http/catalog.html#TaggedAddresses) -
-        List of explicit LAN and WAN IP addresses for the agent.
+          List of explicit LAN and WAN IP addresses for the agent.
         * [`tags`](https://www.consul.io/docs/agent/http/catalog.html#ServiceTags) -
-        List of tags for the service.
+          List of tags for the service.
         * [`meta`](https://www.consul.io/docs/agent/http/catalog.html#Meta) - Service meta
-        data tag information, if any.
+          data tag information, if any.
         """
         return pulumi.get(self, "node_id")
 
