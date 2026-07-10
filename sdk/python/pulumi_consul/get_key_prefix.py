@@ -89,7 +89,7 @@ class GetKeyPrefixResult:
         """
         the common prefix shared by all keys being read.
         * `var.<name>` - For each name given, the corresponding attribute
-        has the value of the key.
+          has the value of the key.
         """
         return pulumi.get(self, "path_prefix")
 

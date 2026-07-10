@@ -45,7 +45,7 @@ import (
 //			}, nil)
 //			ctx.Export("members", dc2.ApplyT(func(dc2 consul.GetNetworkAreaMembersResult) ([]consul.GetNetworkAreaMembersMember, error) {
 //				return []consul.GetNetworkAreaMembersMember(dc2.Members), nil
-//			}).([]consul.GetNetworkAreaMembersMemberOutput))
+//			}).(pulumi.ArrayOutput))
 //			return nil
 //		})
 //	}

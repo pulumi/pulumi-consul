@@ -62,7 +62,7 @@ import (
 //				PgpKey:     pulumi.String("keybase:my_username"),
 //			}, nil)
 //			ctx.Export("consulAclTokenSecretId", read.ApplyT(func(read consul.GetAclTokenSecretIdResult) (*string, error) {
-//				return &read.EncryptedSecretId, nil
+//				return read.EncryptedSecretId, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})
