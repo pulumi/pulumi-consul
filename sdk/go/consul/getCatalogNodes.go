@@ -46,7 +46,7 @@ import (
 //			_, err = example.NewResource(ctx, "app", &example.ResourceArgs{
 //				Description: std.Join(ctx, &std.JoinArgs{
 //					Separator: " ",
-//					Input: std.Formatlist(ctx, &std.FormatlistArgs{
+//					Input: std.Formatlist(ctx, std.FormatlistArgs{
 //						Input: "%s",
 //						Args: []interface{}{
 //							nodeNames,

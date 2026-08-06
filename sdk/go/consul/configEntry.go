@@ -36,8 +36,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			tmpJSON0, err := json.Marshal(map[string]interface{}{
-//				"Config": map[string]interface{}{
+//			tmpJSON0, err := json.Marshal(map[string]map[string]int{
+//				"Config": map[string]int{
 //					"local_connect_timeout_ms": 1000,
 //					"handshake_timeout_ms":     10000,
 //				},
@@ -54,7 +54,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			tmpJSON1, err := json.Marshal(map[string]interface{}{
+//			tmpJSON1, err := json.Marshal(map[string]string{
 //				"Protocol": "http",
 //			})
 //			if err != nil {
@@ -69,7 +69,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			tmpJSON2, err := json.Marshal(map[string]interface{}{
+//			tmpJSON2, err := json.Marshal(map[string]string{
 //				"Protocol": "http",
 //			})
 //			if err != nil {
@@ -86,11 +86,11 @@ import (
 //			}
 //			tmpJSON3, err := json.Marshal(map[string]interface{}{
 //				"DefaultSubset": "v1",
-//				"Subsets": map[string]interface{}{
-//					"v1": map[string]interface{}{
+//				"Subsets": map[string]map[string]string{
+//					"v1": map[string]string{
 //						"Filter": "Service.Meta.version == v1",
 //					},
-//					"v2": map[string]interface{}{
+//					"v2": map[string]string{
 //						"Filter": "Service.Meta.version == v2",
 //					},
 //				},
@@ -107,7 +107,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			tmpJSON4, err := json.Marshal(map[string]interface{}{
+//			tmpJSON4, err := json.Marshal(map[string][]interface{}{
 //				"Splits": []interface{}{
 //					map[string]interface{}{
 //						"Weight":        90,
@@ -131,15 +131,15 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			tmpJSON5, err := json.Marshal(map[string]interface{}{
+//			tmpJSON5, err := json.Marshal(map[string][]map[string]interface{}{
 //				"Routes": []map[string]interface{}{
 //					map[string]interface{}{
-//						"Match": map[string]interface{}{
-//							"HTTP": map[string]interface{}{
+//						"Match": map[string]map[string]string{
+//							"HTTP": map[string]string{
 //								"PathPrefix": "/admin",
 //							},
 //						},
-//						"Destination": map[string]interface{}{
+//						"Destination": map[string]string{
 //							"Service": "admin",
 //						},
 //					},
@@ -158,15 +158,15 @@ import (
 //				return err
 //			}
 //			tmpJSON6, err := json.Marshal(map[string]interface{}{
-//				"TLS": map[string]interface{}{
+//				"TLS": map[string]bool{
 //					"Enabled": true,
 //				},
 //				"Listeners": []map[string]interface{}{
 //					map[string]interface{}{
 //						"Port":     8000,
 //						"Protocol": "http",
-//						"Services": []map[string]interface{}{
-//							map[string]interface{}{
+//						"Services": []map[string]string{
+//							{
 //								"Name": "*",
 //							},
 //						},
@@ -185,9 +185,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			tmpJSON7, err := json.Marshal(map[string]interface{}{
-//				"Services": []map[string]interface{}{
-//					map[string]interface{}{
+//			tmpJSON7, err := json.Marshal(map[string][]map[string]string{
+//				"Services": []map[string]string{
+//					{
 //						"Name": "billing",
 //					},
 //				},
@@ -226,7 +226,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//			tmpJSON0, err := json.Marshal(map[string][]map[string]interface{}{
 //				"Sources": []map[string]interface{}{
 //					map[string]interface{}{
 //						"Action":     "allow",
@@ -274,7 +274,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//			tmpJSON0, err := json.Marshal(map[string]string{
 //				"Protocol": "http",
 //			})
 //			if err != nil {
@@ -291,13 +291,13 @@ import (
 //			}
 //			tmpJSON1, err := json.Marshal(map[string]interface{}{
 //				"Issuer": "test-issuer",
-//				"JSONWebKeySet": map[string]interface{}{
+//				"JSONWebKeySet": map[string]map[string]interface{}{
 //					"Remote": map[string]interface{}{
 //						"URI":                 "https://127.0.0.1:9091",
 //						"FetchAsynchronously": true,
 //					},
 //				},
-//				"Forwarding": map[string]interface{}{
+//				"Forwarding": map[string]string{
 //					"HeaderName": "test-token",
 //				},
 //			})
@@ -318,7 +318,7 @@ import (
 //				Kind: pulumi.String("service-intentions"),
 //				ConfigJson: jwtProvider.Name.ApplyT(func(name string) (pulumi.String, error) {
 //					var _zero pulumi.String
-//					tmpJSON2, err := json.Marshal(map[string]interface{}{
+//					tmpJSON2, err := json.Marshal(map[string][]interface{}{
 //						"Sources": []interface{}{
 //							map[string]interface{}{
 //								"Name": "contractor-webapp",
@@ -332,9 +332,9 @@ import (
 //											},
 //											"PathExact": "/healtz",
 //										},
-//										"JWT": map[string]interface{}{
-//											"Providers": []map[string]interface{}{
-//												map[string]interface{}{
+//										"JWT": map[string][]map[string]string{
+//											"Providers": []map[string]string{
+//												{
 //													"Name": name,
 //												},
 //											},
@@ -349,13 +349,13 @@ import (
 //								"Permissions": []map[string]interface{}{
 //									map[string]interface{}{
 //										"Action": "deny",
-//										"HTTP": map[string]interface{}{
+//										"HTTP": map[string]string{
 //											"PathPrefix": "/debugz",
 //										},
 //									},
 //									map[string]interface{}{
 //										"Action": "allow",
-//										"HTTP": map[string]interface{}{
+//										"HTTP": map[string]string{
 //											"PathPrefix": "/",
 //										},
 //									},
@@ -397,13 +397,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//			tmpJSON0, err := json.Marshal(map[string][]map[string]interface{}{
 //				"Services": []map[string]interface{}{
 //					map[string]interface{}{
 //						"Name":      "test",
 //						"Namespace": "default",
-//						"Consumers": []map[string]interface{}{
-//							map[string]interface{}{
+//						"Consumers": []map[string]string{
+//							{
 //								"Partition": "default",
 //							},
 //						},
@@ -444,8 +444,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			tmpJSON0, err := json.Marshal(map[string]interface{}{
-//				"TransparentProxy": map[string]interface{}{
+//			tmpJSON0, err := json.Marshal(map[string]map[string]bool{
+//				"TransparentProxy": map[string]bool{
 //					"MeshDestinationsOnly": true,
 //				},
 //			})
@@ -486,14 +486,14 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			tmpJSON0, err := json.Marshal(map[string]interface{}{
 //				"Issuer": "https://your.issuer.com",
-//				"JSONWebKeySet": map[string]interface{}{
+//				"JSONWebKeySet": map[string]map[string]interface{}{
 //					"Remote": map[string]interface{}{
 //						"URI":                 "https://your-remote.jwks.com",
 //						"FetchAsynchronously": true,
 //						"CacheDuration":       "10s",
 //					},
 //				},
-//				"Forwarding": map[string]interface{}{
+//				"Forwarding": map[string]string{
 //					"HeaderName": "test-token",
 //				},
 //			})
