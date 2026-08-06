@@ -32,7 +32,7 @@ import (
 //			tmpJSON0, err := json.Marshal(map[string]interface{}{
 //				"ClockSkewSeconds": 30,
 //				"Issuer":           "test-issuer",
-//				"JSONWebKeySet": map[string]interface{}{
+//				"JSONWebKeySet": map[string]map[string]interface{}{
 //					"Remote": map[string]interface{}{
 //						"URI":                 "https://127.0.0.1:9091",
 //						"FetchAsynchronously": true,

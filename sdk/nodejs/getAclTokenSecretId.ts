@@ -37,7 +37,7 @@ import * as utilities from "./utilities";
  *     accessorId: testAclToken.id,
  *     pgpKey: "keybase:my_username",
  * });
- * export const consulAclTokenSecretId = read.apply(read => read.encryptedSecretId);
+ * export const consulAclTokenSecretId = read.encryptedSecretId;
  * ```
  */
 export function getAclTokenSecretId(args: GetAclTokenSecretIdArgs, opts?: pulumi.InvokeOptions): Promise<GetAclTokenSecretIdResult> {
@@ -131,7 +131,7 @@ export interface GetAclTokenSecretIdResult {
  *     accessorId: testAclToken.id,
  *     pgpKey: "keybase:my_username",
  * });
- * export const consulAclTokenSecretId = read.apply(read => read.encryptedSecretId);
+ * export const consulAclTokenSecretId = read.encryptedSecretId;
  * ```
  */
 export function getAclTokenSecretIdOutput(args: GetAclTokenSecretIdOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAclTokenSecretIdResult> {

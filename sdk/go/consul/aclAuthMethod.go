@@ -32,7 +32,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//			tmpJSON0, err := json.Marshal(map[string]string{
 //				"Host":              "https://192.0.2.42:8443",
 //				"CACert":            "-----BEGIN CERTIFICATE-----\n...-----END CERTIFICATE-----\n",
 //				"ServiceAccountJWT": "eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9...",
@@ -80,11 +80,11 @@ import (
 //				"BoundAudiences": []string{
 //					"V1RPi2MYptMV1RPi2MYptMV1RPi2MYpt",
 //				},
-//				"ClaimMappings": map[string]interface{}{
+//				"ClaimMappings": map[string]string{
 //					"http://example.com/first_name": "first_name",
 //					"http://example.com/last_name":  "last_name",
 //				},
-//				"ListClaimMappings": map[string]interface{}{
+//				"ListClaimMappings": map[string]string{
 //					"http://consul.com/groups": "groups",
 //				},
 //				"OIDCClientID":     "V1RPi2MYptMV1RPi2MYptMV1RPi2MYpt",
