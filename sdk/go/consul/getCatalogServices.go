@@ -100,12 +100,8 @@ type GetCatalogServicesResult struct {
 }
 
 func GetCatalogServicesOutput(ctx *pulumi.Context, args GetCatalogServicesOutputArgs, opts ...pulumi.InvokeOption) GetCatalogServicesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetCatalogServicesResultOutput, error) {
-			args := v.(GetCatalogServicesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("consul:index/getCatalogServices:getCatalogServices", args, GetCatalogServicesResultOutput{}, options).(GetCatalogServicesResultOutput), nil
-		}).(GetCatalogServicesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("consul:index/getCatalogServices:getCatalogServices", args, GetCatalogServicesResultOutput{}, options).(GetCatalogServicesResultOutput)
 }
 
 // A collection of arguments for invoking getCatalogServices.

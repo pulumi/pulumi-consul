@@ -64,12 +64,8 @@ type LookupConfigEntryV2ExportedServicesResult struct {
 }
 
 func LookupConfigEntryV2ExportedServicesOutput(ctx *pulumi.Context, args LookupConfigEntryV2ExportedServicesOutputArgs, opts ...pulumi.InvokeOption) LookupConfigEntryV2ExportedServicesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupConfigEntryV2ExportedServicesResultOutput, error) {
-			args := v.(LookupConfigEntryV2ExportedServicesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("consul:index/getConfigEntryV2ExportedServices:getConfigEntryV2ExportedServices", args, LookupConfigEntryV2ExportedServicesResultOutput{}, options).(LookupConfigEntryV2ExportedServicesResultOutput), nil
-		}).(LookupConfigEntryV2ExportedServicesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("consul:index/getConfigEntryV2ExportedServices:getConfigEntryV2ExportedServices", args, LookupConfigEntryV2ExportedServicesResultOutput{}, options).(LookupConfigEntryV2ExportedServicesResultOutput)
 }
 
 // A collection of arguments for invoking getConfigEntryV2ExportedServices.

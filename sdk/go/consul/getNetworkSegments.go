@@ -77,12 +77,8 @@ type GetNetworkSegmentsResult struct {
 }
 
 func GetNetworkSegmentsOutput(ctx *pulumi.Context, args GetNetworkSegmentsOutputArgs, opts ...pulumi.InvokeOption) GetNetworkSegmentsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetNetworkSegmentsResultOutput, error) {
-			args := v.(GetNetworkSegmentsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("consul:index/getNetworkSegments:getNetworkSegments", args, GetNetworkSegmentsResultOutput{}, options).(GetNetworkSegmentsResultOutput), nil
-		}).(GetNetworkSegmentsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("consul:index/getNetworkSegments:getNetworkSegments", args, GetNetworkSegmentsResultOutput{}, options).(GetNetworkSegmentsResultOutput)
 }
 
 // A collection of arguments for invoking getNetworkSegments.

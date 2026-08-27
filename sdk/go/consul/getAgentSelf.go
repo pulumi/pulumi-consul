@@ -177,10 +177,8 @@ type GetAgentSelfResult struct {
 }
 
 func GetAgentSelfOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetAgentSelfResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetAgentSelfResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("consul:index/getAgentSelf:getAgentSelf", nil, GetAgentSelfResultOutput{}, options).(GetAgentSelfResultOutput), nil
-	}).(GetAgentSelfResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("consul:index/getAgentSelf:getAgentSelf", nil, GetAgentSelfResultOutput{}, options).(GetAgentSelfResultOutput)
 }
 
 // A collection of values returned by getAgentSelf.

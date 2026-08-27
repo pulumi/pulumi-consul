@@ -94,12 +94,8 @@ type LookupAclAuthMethodResult struct {
 }
 
 func LookupAclAuthMethodOutput(ctx *pulumi.Context, args LookupAclAuthMethodOutputArgs, opts ...pulumi.InvokeOption) LookupAclAuthMethodResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAclAuthMethodResultOutput, error) {
-			args := v.(LookupAclAuthMethodArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("consul:index/getAclAuthMethod:getAclAuthMethod", args, LookupAclAuthMethodResultOutput{}, options).(LookupAclAuthMethodResultOutput), nil
-		}).(LookupAclAuthMethodResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("consul:index/getAclAuthMethod:getAclAuthMethod", args, LookupAclAuthMethodResultOutput{}, options).(LookupAclAuthMethodResultOutput)
 }
 
 // A collection of arguments for invoking getAclAuthMethod.

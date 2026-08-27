@@ -97,12 +97,8 @@ type GetCatalogNodesResult struct {
 }
 
 func GetCatalogNodesOutput(ctx *pulumi.Context, args GetCatalogNodesOutputArgs, opts ...pulumi.InvokeOption) GetCatalogNodesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetCatalogNodesResultOutput, error) {
-			args := v.(GetCatalogNodesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("consul:index/getCatalogNodes:getCatalogNodes", args, GetCatalogNodesResultOutput{}, options).(GetCatalogNodesResultOutput), nil
-		}).(GetCatalogNodesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("consul:index/getCatalogNodes:getCatalogNodes", args, GetCatalogNodesResultOutput{}, options).(GetCatalogNodesResultOutput)
 }
 
 // A collection of arguments for invoking getCatalogNodes.

@@ -50,12 +50,8 @@ type LookupConfigEntryResult struct {
 }
 
 func LookupConfigEntryOutput(ctx *pulumi.Context, args LookupConfigEntryOutputArgs, opts ...pulumi.InvokeOption) LookupConfigEntryResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupConfigEntryResultOutput, error) {
-			args := v.(LookupConfigEntryArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("consul:index/getConfigEntry:getConfigEntry", args, LookupConfigEntryResultOutput{}, options).(LookupConfigEntryResultOutput), nil
-		}).(LookupConfigEntryResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("consul:index/getConfigEntry:getConfigEntry", args, LookupConfigEntryResultOutput{}, options).(LookupConfigEntryResultOutput)
 }
 
 // A collection of arguments for invoking getConfigEntry.

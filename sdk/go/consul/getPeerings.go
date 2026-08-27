@@ -58,12 +58,8 @@ type GetPeeringsResult struct {
 }
 
 func GetPeeringsOutput(ctx *pulumi.Context, args GetPeeringsOutputArgs, opts ...pulumi.InvokeOption) GetPeeringsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetPeeringsResultOutput, error) {
-			args := v.(GetPeeringsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("consul:index/getPeerings:getPeerings", args, GetPeeringsResultOutput{}, options).(GetPeeringsResultOutput), nil
-		}).(GetPeeringsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("consul:index/getPeerings:getPeerings", args, GetPeeringsResultOutput{}, options).(GetPeeringsResultOutput)
 }
 
 // A collection of arguments for invoking getPeerings.

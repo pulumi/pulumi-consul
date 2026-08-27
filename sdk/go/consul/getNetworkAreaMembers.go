@@ -44,7 +44,7 @@ import (
 //				Uuid: dc2NetworkArea.ID().ToIDOutput().ToStringOutput(),
 //			}, nil)
 //			ctx.Export("members", dc2.ApplyT(func(dc2 consul.GetNetworkAreaMembersResult) ([]consul.GetNetworkAreaMembersMember, error) {
-//				return []consul.GetNetworkAreaMembersMember(dc2.Members), nil
+//				return dc2.Members.([]consul.GetNetworkAreaMembersMember), nil
 //			}).(pulumi.ArrayOutput))
 //			return nil
 //		})
@@ -92,12 +92,8 @@ type GetNetworkAreaMembersResult struct {
 }
 
 func GetNetworkAreaMembersOutput(ctx *pulumi.Context, args GetNetworkAreaMembersOutputArgs, opts ...pulumi.InvokeOption) GetNetworkAreaMembersResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetNetworkAreaMembersResultOutput, error) {
-			args := v.(GetNetworkAreaMembersArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("consul:index/getNetworkAreaMembers:getNetworkAreaMembers", args, GetNetworkAreaMembersResultOutput{}, options).(GetNetworkAreaMembersResultOutput), nil
-		}).(GetNetworkAreaMembersResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("consul:index/getNetworkAreaMembers:getNetworkAreaMembers", args, GetNetworkAreaMembersResultOutput{}, options).(GetNetworkAreaMembersResultOutput)
 }
 
 // A collection of arguments for invoking getNetworkAreaMembers.
