@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  * 
  *         var eu_usPeering = new Peering("eu-usPeering", PeeringArgs.builder()
  *             .peerName("eu-cluster")
- *             .peeringToken(token.peeringToken())
+ *             .peeringToken(token.get("peeringToken"))
  *             .meta(Map.of("hello", "world"))
  *             .build());
  * 

@@ -71,7 +71,7 @@ import javax.annotation.Nullable;
  *         var testUuid = new Uuid("testUuid");
  * 
  *         var testPredefinedId = new AclToken("testPredefinedId", AclTokenArgs.builder()
- *             .accessorId(testUuidRandomUuid.result())
+ *             .accessorId(testUuidRandomUuid.get("result"))
  *             .description("my test uuid token")
  *             .policies(agent.name())
  *             .local(true)

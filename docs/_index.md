@@ -276,7 +276,7 @@ public class App {
 {{% /choosable %}}
 {{% choosable language hcl %}}
 ```hcl
-pulumi {
+terraform {
   required_providers {
     aws = {
       source = "pulumi/aws"
@@ -287,7 +287,7 @@ pulumi {
   }
 }
 
-data "consul_getkeys" "app" {
+data "consul_keys" "app" {
   keys {
     name    = "ami"
     path    = "service/app/launch_ami"
@@ -297,7 +297,10 @@ data "consul_getkeys" "app" {
 
 # Use our variable from Consul
 resource "aws_ec2_instance" "app" {
-  ami = data.consul_getkeys.app.var.ami
+  lifecycle {
+    create_before_destroy = true
+  }
+  ami = data.consul_keys.app.var.ami
 }
 # Access a key in Consul
 ```

@@ -72,7 +72,7 @@ namespace Pulumi.Consul
     ///         {
     ///             new Consul.Inputs.ConfigEntryServiceSplitterSplitArgs
     ///             {
-    ///                 Weight = 80,
+    ///                 Weight = 80.0,
     ///                 Service = "web",
     ///                 ServiceSubset = "v1",
     ///                 RequestHeaders = new Consul.Inputs.ConfigEntryServiceSplitterSplitRequestHeadersArgs
@@ -92,7 +92,7 @@ namespace Pulumi.Consul
     ///             },
     ///             new Consul.Inputs.ConfigEntryServiceSplitterSplitArgs
     ///             {
-    ///                 Weight = 10,
+    ///                 Weight = 10.0,
     ///                 Service = "web",
     ///                 ServiceSubset = "v2",
     ///                 RequestHeaders = new Consul.Inputs.ConfigEntryServiceSplitterSplitRequestHeadersArgs
@@ -112,7 +112,7 @@ namespace Pulumi.Consul
     ///             },
     ///             new Consul.Inputs.ConfigEntryServiceSplitterSplitArgs
     ///             {
-    ///                 Weight = 10,
+    ///                 Weight = 10.0,
     ///                 Service = "web",
     ///                 ServiceSubset = "v2",
     ///             },

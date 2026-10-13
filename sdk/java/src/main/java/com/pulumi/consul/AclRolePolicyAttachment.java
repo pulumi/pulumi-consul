@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var myRoleReadPolicy = new AclRolePolicyAttachment("myRoleReadPolicy", AclRolePolicyAttachmentArgs.builder()
- *             .roleId(test.id())
+ *             .roleId(test.get("id"))
  *             .policy(readPolicy.name())
  *             .build());
  * 

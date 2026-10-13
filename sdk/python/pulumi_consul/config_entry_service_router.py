@@ -206,7 +206,7 @@ class ConfigEntryServiceRouter(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  namespace: pulumi.Input[Optional[_builtins.str]] = None,
                  partition: pulumi.Input[Optional[_builtins.str]] = None,
-                 routes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigEntryServiceRouterRouteArgs', 'ConfigEntryServiceRouterRouteArgsDict']]]]] = None,
+                 routes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigEntryServiceRouterRouteArgs', 'ConfigEntryServiceRouterRouteArgsDict', 'outputs.ConfigEntryServiceRouterRoute']]]]] = None,
                  __props__=None):
         """
         The `ConfigEntryServiceRouter` resource configures a [service router](https://developer.hashicorp.com/consul/docs/connect/config-entries/service-router) to redirect a traffic request for a service to one or more specific service instances.
@@ -218,7 +218,7 @@ class ConfigEntryServiceRouter(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Specifies a name for the configuration entry.
         :param pulumi.Input[_builtins.str] namespace: Specifies the namespace to apply the configuration entry.
         :param pulumi.Input[_builtins.str] partition: Specifies the admin partition to apply the configuration entry.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceRouterRouteArgs', 'ConfigEntryServiceRouterRouteArgsDict']]]] routes: Defines the possible routes for L7 requests.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceRouterRouteArgs', 'ConfigEntryServiceRouterRouteArgsDict', 'outputs.ConfigEntryServiceRouterRoute']]]] routes: Defines the possible routes for L7 requests.
         """
         ...
     @overload
@@ -249,7 +249,7 @@ class ConfigEntryServiceRouter(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  namespace: pulumi.Input[Optional[_builtins.str]] = None,
                  partition: pulumi.Input[Optional[_builtins.str]] = None,
-                 routes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigEntryServiceRouterRouteArgs', 'ConfigEntryServiceRouterRouteArgsDict']]]]] = None,
+                 routes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigEntryServiceRouterRouteArgs', 'ConfigEntryServiceRouterRouteArgsDict', 'outputs.ConfigEntryServiceRouterRoute']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -278,7 +278,7 @@ class ConfigEntryServiceRouter(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             namespace: pulumi.Input[Optional[_builtins.str]] = None,
             partition: pulumi.Input[Optional[_builtins.str]] = None,
-            routes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigEntryServiceRouterRouteArgs', 'ConfigEntryServiceRouterRouteArgsDict']]]]] = None) -> 'ConfigEntryServiceRouter':
+            routes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigEntryServiceRouterRouteArgs', 'ConfigEntryServiceRouterRouteArgsDict', 'outputs.ConfigEntryServiceRouterRoute']]]]] = None) -> 'ConfigEntryServiceRouter':
         """
         Get an existing ConfigEntryServiceRouter resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -290,7 +290,7 @@ class ConfigEntryServiceRouter(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Specifies a name for the configuration entry.
         :param pulumi.Input[_builtins.str] namespace: Specifies the namespace to apply the configuration entry.
         :param pulumi.Input[_builtins.str] partition: Specifies the admin partition to apply the configuration entry.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceRouterRouteArgs', 'ConfigEntryServiceRouterRouteArgsDict']]]] routes: Defines the possible routes for L7 requests.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceRouterRouteArgs', 'ConfigEntryServiceRouterRouteArgsDict', 'outputs.ConfigEntryServiceRouterRoute']]]] routes: Defines the possible routes for L7 requests.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

@@ -233,7 +233,7 @@ class CatalogEntry(pulumi.CustomResource):
                  address: pulumi.Input[Optional[_builtins.str]] = None,
                  datacenter: pulumi.Input[Optional[_builtins.str]] = None,
                  node: pulumi.Input[Optional[_builtins.str]] = None,
-                 services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CatalogEntryServiceArgs', 'CatalogEntryServiceArgsDict']]]]] = None,
+                 services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CatalogEntryServiceArgs', 'CatalogEntryServiceArgsDict', 'outputs.CatalogEntryService']]]]] = None,
                  token: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -274,7 +274,7 @@ class CatalogEntry(pulumi.CustomResource):
                agent's default datacenter and the datacenter in the provider setup.
         :param pulumi.Input[_builtins.str] node: The name of the node being added to, or
                referenced in the catalog.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['CatalogEntryServiceArgs', 'CatalogEntryServiceArgsDict']]]] services: A service to optionally associated with
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CatalogEntryServiceArgs', 'CatalogEntryServiceArgsDict', 'outputs.CatalogEntryService']]]] services: A service to optionally associated with
                the node. Supported values are documented below.
         :param pulumi.Input[_builtins.str] token: ACL token.
         """
@@ -332,7 +332,7 @@ class CatalogEntry(pulumi.CustomResource):
                  address: pulumi.Input[Optional[_builtins.str]] = None,
                  datacenter: pulumi.Input[Optional[_builtins.str]] = None,
                  node: pulumi.Input[Optional[_builtins.str]] = None,
-                 services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CatalogEntryServiceArgs', 'CatalogEntryServiceArgsDict']]]]] = None,
+                 services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CatalogEntryServiceArgs', 'CatalogEntryServiceArgsDict', 'outputs.CatalogEntryService']]]]] = None,
                  token: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -367,7 +367,7 @@ class CatalogEntry(pulumi.CustomResource):
             address: pulumi.Input[Optional[_builtins.str]] = None,
             datacenter: pulumi.Input[Optional[_builtins.str]] = None,
             node: pulumi.Input[Optional[_builtins.str]] = None,
-            services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CatalogEntryServiceArgs', 'CatalogEntryServiceArgsDict']]]]] = None,
+            services: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CatalogEntryServiceArgs', 'CatalogEntryServiceArgsDict', 'outputs.CatalogEntryService']]]]] = None,
             token: pulumi.Input[Optional[_builtins.str]] = None) -> 'CatalogEntry':
         """
         Get an existing CatalogEntry resource's state with the given name, id, and optional extra
@@ -382,7 +382,7 @@ class CatalogEntry(pulumi.CustomResource):
                agent's default datacenter and the datacenter in the provider setup.
         :param pulumi.Input[_builtins.str] node: The name of the node being added to, or
                referenced in the catalog.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['CatalogEntryServiceArgs', 'CatalogEntryServiceArgsDict']]]] services: A service to optionally associated with
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CatalogEntryServiceArgs', 'CatalogEntryServiceArgsDict', 'outputs.CatalogEntryService']]]] services: A service to optionally associated with
                the node. Supported values are documented below.
         :param pulumi.Input[_builtins.str] token: ACL token.
         """

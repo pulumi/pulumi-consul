@@ -36,7 +36,7 @@ namespace Pulumi.Consul
         ///         myapp_query.Add(new Consul.PreparedQuery($"myapp-query-{range.Key}", new()
         ///         {
         ///             Name = "myquery",
-        ///             Datacenter = range.Key,
+        ///             Datacenter = range.Key.ToString(System.Globalization.CultureInfo.InvariantCulture),
         ///             OnlyPassing = true,
         ///             Near = "_agent",
         ///             Service = "myapp",
@@ -92,7 +92,7 @@ namespace Pulumi.Consul
         ///         myapp_query.Add(new Consul.PreparedQuery($"myapp-query-{range.Key}", new()
         ///         {
         ///             Name = "myquery",
-        ///             Datacenter = range.Key,
+        ///             Datacenter = range.Key.ToString(System.Globalization.CultureInfo.InvariantCulture),
         ///             OnlyPassing = true,
         ///             Near = "_agent",
         ///             Service = "myapp",
@@ -148,7 +148,7 @@ namespace Pulumi.Consul
         ///         myapp_query.Add(new Consul.PreparedQuery($"myapp-query-{range.Key}", new()
         ///         {
         ///             Name = "myquery",
-        ///             Datacenter = range.Key,
+        ///             Datacenter = range.Key.ToString(System.Globalization.CultureInfo.InvariantCulture),
         ///             OnlyPassing = true,
         ///             Near = "_agent",
         ///             Service = "myapp",

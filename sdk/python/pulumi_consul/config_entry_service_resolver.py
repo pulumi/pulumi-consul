@@ -396,15 +396,15 @@ class ConfigEntryServiceResolver(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connect_timeout: pulumi.Input[Optional[_builtins.str]] = None,
                  default_subset: pulumi.Input[Optional[_builtins.str]] = None,
-                 failovers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigEntryServiceResolverFailoverArgs', 'ConfigEntryServiceResolverFailoverArgsDict']]]]] = None,
-                 load_balancers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigEntryServiceResolverLoadBalancerArgs', 'ConfigEntryServiceResolverLoadBalancerArgsDict']]]]] = None,
+                 failovers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigEntryServiceResolverFailoverArgs', 'ConfigEntryServiceResolverFailoverArgsDict', 'outputs.ConfigEntryServiceResolverFailover']]]]] = None,
+                 load_balancers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigEntryServiceResolverLoadBalancerArgs', 'ConfigEntryServiceResolverLoadBalancerArgsDict', 'outputs.ConfigEntryServiceResolverLoadBalancer']]]]] = None,
                  meta: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  namespace: pulumi.Input[Optional[_builtins.str]] = None,
                  partition: pulumi.Input[Optional[_builtins.str]] = None,
-                 redirects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigEntryServiceResolverRedirectArgs', 'ConfigEntryServiceResolverRedirectArgsDict']]]]] = None,
+                 redirects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigEntryServiceResolverRedirectArgs', 'ConfigEntryServiceResolverRedirectArgsDict', 'outputs.ConfigEntryServiceResolverRedirect']]]]] = None,
                  request_timeout: pulumi.Input[Optional[_builtins.str]] = None,
-                 subsets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigEntryServiceResolverSubsetArgs', 'ConfigEntryServiceResolverSubsetArgsDict']]]]] = None,
+                 subsets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigEntryServiceResolverSubsetArgs', 'ConfigEntryServiceResolverSubsetArgsDict', 'outputs.ConfigEntryServiceResolverSubset']]]]] = None,
                  __props__=None):
         """
         The `ConfigEntryServiceResolver` resource configures a [service resolver](https://developer.hashicorp.com/consul/docs/connect/config-entries/service-resolver) that creates named subsets of service instances and define their behavior when satisfying upstream requests.
@@ -453,15 +453,15 @@ class ConfigEntryServiceResolver(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] connect_timeout: Specifies the timeout duration for establishing new network connections to this service.
         :param pulumi.Input[_builtins.str] default_subset: Specifies a defined subset of service instances to use when no explicit subset is requested. If this parameter is not specified, Consul uses the unnamed default subset.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceResolverFailoverArgs', 'ConfigEntryServiceResolverFailoverArgsDict']]]] failovers: Specifies controls for rerouting traffic to an alternate pool of service instances if the target service fails.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceResolverLoadBalancerArgs', 'ConfigEntryServiceResolverLoadBalancerArgsDict']]]] load_balancers: Specifies the load balancing policy and configuration for services issuing requests to this upstream.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceResolverFailoverArgs', 'ConfigEntryServiceResolverFailoverArgsDict', 'outputs.ConfigEntryServiceResolverFailover']]]] failovers: Specifies controls for rerouting traffic to an alternate pool of service instances if the target service fails.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceResolverLoadBalancerArgs', 'ConfigEntryServiceResolverLoadBalancerArgsDict', 'outputs.ConfigEntryServiceResolverLoadBalancer']]]] load_balancers: Specifies the load balancing policy and configuration for services issuing requests to this upstream.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] meta: Specifies key-value pairs to add to the KV store.
         :param pulumi.Input[_builtins.str] name: Specifies a name for the configuration entry.
         :param pulumi.Input[_builtins.str] namespace: Specifies the namespace that the service resolver applies to.
         :param pulumi.Input[_builtins.str] partition: Specifies the admin partition that the service resolver applies to.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceResolverRedirectArgs', 'ConfigEntryServiceResolverRedirectArgsDict']]]] redirects: Specifies redirect instructions for local service traffic so that services deployed to a different network location resolve the upstream request instead.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceResolverRedirectArgs', 'ConfigEntryServiceResolverRedirectArgsDict', 'outputs.ConfigEntryServiceResolverRedirect']]]] redirects: Specifies redirect instructions for local service traffic so that services deployed to a different network location resolve the upstream request instead.
         :param pulumi.Input[_builtins.str] request_timeout: Specifies the timeout duration for receiving an HTTP response from this service.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceResolverSubsetArgs', 'ConfigEntryServiceResolverSubsetArgsDict']]]] subsets: Specifies names for custom service subsets and the conditions under which service instances belong to each subset.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceResolverSubsetArgs', 'ConfigEntryServiceResolverSubsetArgsDict', 'outputs.ConfigEntryServiceResolverSubset']]]] subsets: Specifies names for custom service subsets and the conditions under which service instances belong to each subset.
         """
         ...
     @overload
@@ -529,15 +529,15 @@ class ConfigEntryServiceResolver(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connect_timeout: pulumi.Input[Optional[_builtins.str]] = None,
                  default_subset: pulumi.Input[Optional[_builtins.str]] = None,
-                 failovers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigEntryServiceResolverFailoverArgs', 'ConfigEntryServiceResolverFailoverArgsDict']]]]] = None,
-                 load_balancers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigEntryServiceResolverLoadBalancerArgs', 'ConfigEntryServiceResolverLoadBalancerArgsDict']]]]] = None,
+                 failovers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigEntryServiceResolverFailoverArgs', 'ConfigEntryServiceResolverFailoverArgsDict', 'outputs.ConfigEntryServiceResolverFailover']]]]] = None,
+                 load_balancers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigEntryServiceResolverLoadBalancerArgs', 'ConfigEntryServiceResolverLoadBalancerArgsDict', 'outputs.ConfigEntryServiceResolverLoadBalancer']]]]] = None,
                  meta: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  namespace: pulumi.Input[Optional[_builtins.str]] = None,
                  partition: pulumi.Input[Optional[_builtins.str]] = None,
-                 redirects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigEntryServiceResolverRedirectArgs', 'ConfigEntryServiceResolverRedirectArgsDict']]]]] = None,
+                 redirects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigEntryServiceResolverRedirectArgs', 'ConfigEntryServiceResolverRedirectArgsDict', 'outputs.ConfigEntryServiceResolverRedirect']]]]] = None,
                  request_timeout: pulumi.Input[Optional[_builtins.str]] = None,
-                 subsets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigEntryServiceResolverSubsetArgs', 'ConfigEntryServiceResolverSubsetArgsDict']]]]] = None,
+                 subsets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigEntryServiceResolverSubsetArgs', 'ConfigEntryServiceResolverSubsetArgsDict', 'outputs.ConfigEntryServiceResolverSubset']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -570,15 +570,15 @@ class ConfigEntryServiceResolver(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             connect_timeout: pulumi.Input[Optional[_builtins.str]] = None,
             default_subset: pulumi.Input[Optional[_builtins.str]] = None,
-            failovers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigEntryServiceResolverFailoverArgs', 'ConfigEntryServiceResolverFailoverArgsDict']]]]] = None,
-            load_balancers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigEntryServiceResolverLoadBalancerArgs', 'ConfigEntryServiceResolverLoadBalancerArgsDict']]]]] = None,
+            failovers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigEntryServiceResolverFailoverArgs', 'ConfigEntryServiceResolverFailoverArgsDict', 'outputs.ConfigEntryServiceResolverFailover']]]]] = None,
+            load_balancers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigEntryServiceResolverLoadBalancerArgs', 'ConfigEntryServiceResolverLoadBalancerArgsDict', 'outputs.ConfigEntryServiceResolverLoadBalancer']]]]] = None,
             meta: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             namespace: pulumi.Input[Optional[_builtins.str]] = None,
             partition: pulumi.Input[Optional[_builtins.str]] = None,
-            redirects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigEntryServiceResolverRedirectArgs', 'ConfigEntryServiceResolverRedirectArgsDict']]]]] = None,
+            redirects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigEntryServiceResolverRedirectArgs', 'ConfigEntryServiceResolverRedirectArgsDict', 'outputs.ConfigEntryServiceResolverRedirect']]]]] = None,
             request_timeout: pulumi.Input[Optional[_builtins.str]] = None,
-            subsets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigEntryServiceResolverSubsetArgs', 'ConfigEntryServiceResolverSubsetArgsDict']]]]] = None) -> 'ConfigEntryServiceResolver':
+            subsets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigEntryServiceResolverSubsetArgs', 'ConfigEntryServiceResolverSubsetArgsDict', 'outputs.ConfigEntryServiceResolverSubset']]]]] = None) -> 'ConfigEntryServiceResolver':
         """
         Get an existing ConfigEntryServiceResolver resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -588,15 +588,15 @@ class ConfigEntryServiceResolver(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] connect_timeout: Specifies the timeout duration for establishing new network connections to this service.
         :param pulumi.Input[_builtins.str] default_subset: Specifies a defined subset of service instances to use when no explicit subset is requested. If this parameter is not specified, Consul uses the unnamed default subset.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceResolverFailoverArgs', 'ConfigEntryServiceResolverFailoverArgsDict']]]] failovers: Specifies controls for rerouting traffic to an alternate pool of service instances if the target service fails.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceResolverLoadBalancerArgs', 'ConfigEntryServiceResolverLoadBalancerArgsDict']]]] load_balancers: Specifies the load balancing policy and configuration for services issuing requests to this upstream.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceResolverFailoverArgs', 'ConfigEntryServiceResolverFailoverArgsDict', 'outputs.ConfigEntryServiceResolverFailover']]]] failovers: Specifies controls for rerouting traffic to an alternate pool of service instances if the target service fails.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceResolverLoadBalancerArgs', 'ConfigEntryServiceResolverLoadBalancerArgsDict', 'outputs.ConfigEntryServiceResolverLoadBalancer']]]] load_balancers: Specifies the load balancing policy and configuration for services issuing requests to this upstream.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] meta: Specifies key-value pairs to add to the KV store.
         :param pulumi.Input[_builtins.str] name: Specifies a name for the configuration entry.
         :param pulumi.Input[_builtins.str] namespace: Specifies the namespace that the service resolver applies to.
         :param pulumi.Input[_builtins.str] partition: Specifies the admin partition that the service resolver applies to.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceResolverRedirectArgs', 'ConfigEntryServiceResolverRedirectArgsDict']]]] redirects: Specifies redirect instructions for local service traffic so that services deployed to a different network location resolve the upstream request instead.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceResolverRedirectArgs', 'ConfigEntryServiceResolverRedirectArgsDict', 'outputs.ConfigEntryServiceResolverRedirect']]]] redirects: Specifies redirect instructions for local service traffic so that services deployed to a different network location resolve the upstream request instead.
         :param pulumi.Input[_builtins.str] request_timeout: Specifies the timeout duration for receiving an HTTP response from this service.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceResolverSubsetArgs', 'ConfigEntryServiceResolverSubsetArgsDict']]]] subsets: Specifies names for custom service subsets and the conditions under which service instances belong to each subset.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceResolverSubsetArgs', 'ConfigEntryServiceResolverSubsetArgsDict', 'outputs.ConfigEntryServiceResolverSubset']]]] subsets: Specifies names for custom service subsets and the conditions under which service instances belong to each subset.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

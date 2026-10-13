@@ -241,7 +241,7 @@ class Keys(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  datacenter: pulumi.Input[Optional[_builtins.str]] = None,
-                 keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KeysKeyArgs', 'KeysKeyArgsDict']]]]] = None,
+                 keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KeysKeyArgs', 'KeysKeyArgsDict', 'outputs.KeysKey']]]]] = None,
                  namespace: pulumi.Input[Optional[_builtins.str]] = None,
                  partition: pulumi.Input[Optional[_builtins.str]] = None,
                  token: pulumi.Input[Optional[_builtins.str]] = None,
@@ -277,7 +277,7 @@ class Keys(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] datacenter: The datacenter to use. This overrides the
                agent's default datacenter and the datacenter in the provider setup.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['KeysKeyArgs', 'KeysKeyArgsDict']]]] keys: Specifies a key in Consul to be written.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['KeysKeyArgs', 'KeysKeyArgsDict', 'outputs.KeysKey']]]] keys: Specifies a key in Consul to be written.
                Supported values documented below.
         :param pulumi.Input[_builtins.str] namespace: The namespace to create the keys within.
         :param pulumi.Input[_builtins.str] partition: The partition to create the keys within.
@@ -333,7 +333,7 @@ class Keys(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  datacenter: pulumi.Input[Optional[_builtins.str]] = None,
-                 keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KeysKeyArgs', 'KeysKeyArgsDict']]]]] = None,
+                 keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KeysKeyArgs', 'KeysKeyArgsDict', 'outputs.KeysKey']]]]] = None,
                  namespace: pulumi.Input[Optional[_builtins.str]] = None,
                  partition: pulumi.Input[Optional[_builtins.str]] = None,
                  token: pulumi.Input[Optional[_builtins.str]] = None,
@@ -365,7 +365,7 @@ class Keys(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             datacenter: pulumi.Input[Optional[_builtins.str]] = None,
-            keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KeysKeyArgs', 'KeysKeyArgsDict']]]]] = None,
+            keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KeysKeyArgs', 'KeysKeyArgsDict', 'outputs.KeysKey']]]]] = None,
             namespace: pulumi.Input[Optional[_builtins.str]] = None,
             partition: pulumi.Input[Optional[_builtins.str]] = None,
             token: pulumi.Input[Optional[_builtins.str]] = None,
@@ -379,7 +379,7 @@ class Keys(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] datacenter: The datacenter to use. This overrides the
                agent's default datacenter and the datacenter in the provider setup.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['KeysKeyArgs', 'KeysKeyArgsDict']]]] keys: Specifies a key in Consul to be written.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['KeysKeyArgs', 'KeysKeyArgsDict', 'outputs.KeysKey']]]] keys: Specifies a key in Consul to be written.
                Supported values documented below.
         :param pulumi.Input[_builtins.str] namespace: The namespace to create the keys within.
         :param pulumi.Input[_builtins.str] partition: The partition to create the keys within.

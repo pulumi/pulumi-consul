@@ -139,7 +139,7 @@ class AwaitableGetKeysResult(GetKeysResult):
 
 def get_keys(datacenter: Optional[_builtins.str] = None,
              error_on_missing_keys: Optional[_builtins.bool] = None,
-             keys: Optional[Sequence[Union['GetKeysKeyArgs', 'GetKeysKeyArgsDict']]] = None,
+             keys: Optional[Sequence[Union['GetKeysKeyArgs', 'GetKeysKeyArgsDict', 'outputs.GetKeysKeyResult']]] = None,
              namespace: Optional[_builtins.str] = None,
              partition: Optional[_builtins.str] = None,
              token: Optional[_builtins.str] = None,
@@ -167,7 +167,7 @@ def get_keys(datacenter: Optional[_builtins.str] = None,
 
     :param _builtins.str datacenter: The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
     :param _builtins.bool error_on_missing_keys: Whether to return an error when a key is absent from the KV store and no default is configured. This defaults to `false`.
-    :param Sequence[Union['GetKeysKeyArgs', 'GetKeysKeyArgsDict']] keys: Specifies a key in Consul to be read. Supported values documented below. Multiple blocks supported.
+    :param Sequence[Union['GetKeysKeyArgs', 'GetKeysKeyArgsDict', 'outputs.GetKeysKeyResult']] keys: Specifies a key in Consul to be read. Supported values documented below. Multiple blocks supported.
     :param _builtins.str namespace: The namespace to lookup the keys.
     :param _builtins.str partition: The partition to lookup the keys.
     :param _builtins.str token: The ACL token to use. This overrides the token that the agent provides by default.
@@ -193,7 +193,7 @@ def get_keys(datacenter: Optional[_builtins.str] = None,
         var=pulumi.get(__ret__, 'var'))
 def get_keys_output(datacenter: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                     error_on_missing_keys: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
-                    keys: pulumi.Input[Optional[Optional[Sequence[Union['GetKeysKeyArgs', 'GetKeysKeyArgsDict']]]]] = None,
+                    keys: pulumi.Input[Optional[Optional[Sequence[Union['GetKeysKeyArgs', 'GetKeysKeyArgsDict', 'outputs.GetKeysKeyResult']]]]] = None,
                     namespace: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                     partition: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                     token: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -221,7 +221,7 @@ def get_keys_output(datacenter: pulumi.Input[Optional[Optional[_builtins.str]]] 
 
     :param _builtins.str datacenter: The datacenter to use. This overrides the agent's default datacenter and the datacenter in the provider setup.
     :param _builtins.bool error_on_missing_keys: Whether to return an error when a key is absent from the KV store and no default is configured. This defaults to `false`.
-    :param Sequence[Union['GetKeysKeyArgs', 'GetKeysKeyArgsDict']] keys: Specifies a key in Consul to be read. Supported values documented below. Multiple blocks supported.
+    :param Sequence[Union['GetKeysKeyArgs', 'GetKeysKeyArgsDict', 'outputs.GetKeysKeyResult']] keys: Specifies a key in Consul to be read. Supported values documented below. Multiple blocks supported.
     :param _builtins.str namespace: The namespace to lookup the keys.
     :param _builtins.str partition: The partition to lookup the keys.
     :param _builtins.str token: The ACL token to use. This overrides the token that the agent provides by default.
