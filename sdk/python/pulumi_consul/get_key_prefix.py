@@ -141,7 +141,7 @@ def get_key_prefix(datacenter: Optional[_builtins.str] = None,
                    namespace: Optional[_builtins.str] = None,
                    partition: Optional[_builtins.str] = None,
                    path_prefix: Optional[_builtins.str] = None,
-                   subkey_collection: Optional[Sequence[Union['GetKeyPrefixSubkeyCollectionArgs', 'GetKeyPrefixSubkeyCollectionArgsDict']]] = None,
+                   subkey_collection: Optional[Sequence[Union['GetKeyPrefixSubkeyCollectionArgs', 'GetKeyPrefixSubkeyCollectionArgsDict', 'outputs.GetKeyPrefixSubkeyCollectionResult']]] = None,
                    token: Optional[_builtins.str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKeyPrefixResult:
     """
@@ -187,7 +187,7 @@ def get_key_prefix(datacenter: Optional[_builtins.str] = None,
     :param _builtins.str path_prefix: Specifies the common prefix shared by all keys
            that will be read by this data source instance. In most cases, this will
            end with a slash to read a "folder" of subkeys.
-    :param Sequence[Union['GetKeyPrefixSubkeyCollectionArgs', 'GetKeyPrefixSubkeyCollectionArgsDict']] subkey_collection: Specifies a subkey in Consul to be read. Supported
+    :param Sequence[Union['GetKeyPrefixSubkeyCollectionArgs', 'GetKeyPrefixSubkeyCollectionArgsDict', 'outputs.GetKeyPrefixSubkeyCollectionResult']] subkey_collection: Specifies a subkey in Consul to be read. Supported
            values documented below. Multiple blocks supported.
     :param _builtins.str token: The ACL token to use. This overrides the
            token that the agent provides by default.
@@ -216,7 +216,7 @@ def get_key_prefix_output(datacenter: pulumi.Input[Optional[Optional[_builtins.s
                           namespace: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                           partition: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                           path_prefix: pulumi.Input[Optional[_builtins.str]] = None,
-                          subkey_collection: pulumi.Input[Optional[Optional[Sequence[Union['GetKeyPrefixSubkeyCollectionArgs', 'GetKeyPrefixSubkeyCollectionArgsDict']]]]] = None,
+                          subkey_collection: pulumi.Input[Optional[Optional[Sequence[Union['GetKeyPrefixSubkeyCollectionArgs', 'GetKeyPrefixSubkeyCollectionArgsDict', 'outputs.GetKeyPrefixSubkeyCollectionResult']]]]] = None,
                           token: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKeyPrefixResult]:
     """
@@ -262,7 +262,7 @@ def get_key_prefix_output(datacenter: pulumi.Input[Optional[Optional[_builtins.s
     :param _builtins.str path_prefix: Specifies the common prefix shared by all keys
            that will be read by this data source instance. In most cases, this will
            end with a slash to read a "folder" of subkeys.
-    :param Sequence[Union['GetKeyPrefixSubkeyCollectionArgs', 'GetKeyPrefixSubkeyCollectionArgsDict']] subkey_collection: Specifies a subkey in Consul to be read. Supported
+    :param Sequence[Union['GetKeyPrefixSubkeyCollectionArgs', 'GetKeyPrefixSubkeyCollectionArgsDict', 'outputs.GetKeyPrefixSubkeyCollectionResult']] subkey_collection: Specifies a subkey in Consul to be read. Supported
            values documented below. Multiple blocks supported.
     :param _builtins.str token: The ACL token to use. This overrides the
            token that the agent provides by default.

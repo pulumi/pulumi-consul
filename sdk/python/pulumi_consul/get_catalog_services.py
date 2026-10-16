@@ -114,7 +114,7 @@ class AwaitableGetCatalogServicesResult(GetCatalogServicesResult):
             tags=self.tags)
 
 
-def get_catalog_services(query_options: Optional[Sequence[Union['GetCatalogServicesQueryOptionArgs', 'GetCatalogServicesQueryOptionArgsDict']]] = None,
+def get_catalog_services(query_options: Optional[Sequence[Union['GetCatalogServicesQueryOptionArgs', 'GetCatalogServicesQueryOptionArgsDict', 'outputs.GetCatalogServicesQueryOptionResult']]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCatalogServicesResult:
     """
     The `get_services` data source returns a list of Consul services that
@@ -142,7 +142,7 @@ def get_catalog_services(query_options: Optional[Sequence[Union['GetCatalogServi
     ```
 
 
-    :param Sequence[Union['GetCatalogServicesQueryOptionArgs', 'GetCatalogServicesQueryOptionArgsDict']] query_options: See below.
+    :param Sequence[Union['GetCatalogServicesQueryOptionArgs', 'GetCatalogServicesQueryOptionArgsDict', 'outputs.GetCatalogServicesQueryOptionResult']] query_options: See below.
     """
     pulumi.log.warn("""get_catalog_services is deprecated: getCatalogServices has been deprecated in favor of getServices""")
     __args__ = dict()
@@ -157,7 +157,7 @@ def get_catalog_services(query_options: Optional[Sequence[Union['GetCatalogServi
         query_options=pulumi.get(__ret__, 'query_options'),
         services=pulumi.get(__ret__, 'services'),
         tags=pulumi.get(__ret__, 'tags'))
-def get_catalog_services_output(query_options: pulumi.Input[Optional[Optional[Sequence[Union['GetCatalogServicesQueryOptionArgs', 'GetCatalogServicesQueryOptionArgsDict']]]]] = None,
+def get_catalog_services_output(query_options: pulumi.Input[Optional[Optional[Sequence[Union['GetCatalogServicesQueryOptionArgs', 'GetCatalogServicesQueryOptionArgsDict', 'outputs.GetCatalogServicesQueryOptionResult']]]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCatalogServicesResult]:
     """
     The `get_services` data source returns a list of Consul services that
@@ -185,7 +185,7 @@ def get_catalog_services_output(query_options: pulumi.Input[Optional[Optional[Se
     ```
 
 
-    :param Sequence[Union['GetCatalogServicesQueryOptionArgs', 'GetCatalogServicesQueryOptionArgsDict']] query_options: See below.
+    :param Sequence[Union['GetCatalogServicesQueryOptionArgs', 'GetCatalogServicesQueryOptionArgsDict', 'outputs.GetCatalogServicesQueryOptionResult']] query_options: See below.
     """
     pulumi.log.warn("""get_catalog_services is deprecated: getCatalogServices has been deprecated in favor of getServices""")
     __args__ = dict()

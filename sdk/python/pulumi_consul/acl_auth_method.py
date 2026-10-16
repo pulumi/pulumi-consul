@@ -408,7 +408,7 @@ class AclAuthMethod(pulumi.CustomResource):
                  max_token_ttl: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  namespace: pulumi.Input[Optional[_builtins.str]] = None,
-                 namespace_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AclAuthMethodNamespaceRuleArgs', 'AclAuthMethodNamespaceRuleArgsDict']]]]] = None,
+                 namespace_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AclAuthMethodNamespaceRuleArgs', 'AclAuthMethodNamespaceRuleArgsDict', 'outputs.AclAuthMethodNamespaceRule']]]]] = None,
                  partition: pulumi.Input[Optional[_builtins.str]] = None,
                  token_locality: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -478,7 +478,7 @@ class AclAuthMethod(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] max_token_ttl: The maximum life of any token created by this auth method. **This attribute is required and must be set to a nonzero for the OIDC auth method.**
         :param pulumi.Input[_builtins.str] name: The name of the ACL auth method.
         :param pulumi.Input[_builtins.str] namespace: The namespace in which to create the auth method.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AclAuthMethodNamespaceRuleArgs', 'AclAuthMethodNamespaceRuleArgsDict']]]] namespace_rules: A set of rules that control which namespace tokens created via this auth method will be created within.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AclAuthMethodNamespaceRuleArgs', 'AclAuthMethodNamespaceRuleArgsDict', 'outputs.AclAuthMethodNamespaceRule']]]] namespace_rules: A set of rules that control which namespace tokens created via this auth method will be created within.
         :param pulumi.Input[_builtins.str] partition: The partition the ACL auth method is associated with.
         :param pulumi.Input[_builtins.str] token_locality: The kind of token that this auth method produces. This can be either 'local' or 'global'.
         :param pulumi.Input[_builtins.str] type: The type of the ACL auth method.
@@ -567,7 +567,7 @@ class AclAuthMethod(pulumi.CustomResource):
                  max_token_ttl: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  namespace: pulumi.Input[Optional[_builtins.str]] = None,
-                 namespace_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AclAuthMethodNamespaceRuleArgs', 'AclAuthMethodNamespaceRuleArgsDict']]]]] = None,
+                 namespace_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AclAuthMethodNamespaceRuleArgs', 'AclAuthMethodNamespaceRuleArgsDict', 'outputs.AclAuthMethodNamespaceRule']]]]] = None,
                  partition: pulumi.Input[Optional[_builtins.str]] = None,
                  token_locality: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -610,7 +610,7 @@ class AclAuthMethod(pulumi.CustomResource):
             max_token_ttl: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             namespace: pulumi.Input[Optional[_builtins.str]] = None,
-            namespace_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AclAuthMethodNamespaceRuleArgs', 'AclAuthMethodNamespaceRuleArgsDict']]]]] = None,
+            namespace_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AclAuthMethodNamespaceRuleArgs', 'AclAuthMethodNamespaceRuleArgsDict', 'outputs.AclAuthMethodNamespaceRule']]]]] = None,
             partition: pulumi.Input[Optional[_builtins.str]] = None,
             token_locality: pulumi.Input[Optional[_builtins.str]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None) -> 'AclAuthMethod':
@@ -628,7 +628,7 @@ class AclAuthMethod(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] max_token_ttl: The maximum life of any token created by this auth method. **This attribute is required and must be set to a nonzero for the OIDC auth method.**
         :param pulumi.Input[_builtins.str] name: The name of the ACL auth method.
         :param pulumi.Input[_builtins.str] namespace: The namespace in which to create the auth method.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AclAuthMethodNamespaceRuleArgs', 'AclAuthMethodNamespaceRuleArgsDict']]]] namespace_rules: A set of rules that control which namespace tokens created via this auth method will be created within.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AclAuthMethodNamespaceRuleArgs', 'AclAuthMethodNamespaceRuleArgsDict', 'outputs.AclAuthMethodNamespaceRule']]]] namespace_rules: A set of rules that control which namespace tokens created via this auth method will be created within.
         :param pulumi.Input[_builtins.str] partition: The partition the ACL auth method is associated with.
         :param pulumi.Input[_builtins.str] token_locality: The kind of token that this auth method produces. This can be either 'local' or 'global'.
         :param pulumi.Input[_builtins.str] type: The type of the ACL auth method.

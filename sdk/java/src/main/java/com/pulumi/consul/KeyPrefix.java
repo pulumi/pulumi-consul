@@ -71,16 +71,16 @@ import javax.annotation.Nullable;
  *             .token("abcd")
  *             .pathPrefix("myapp/config/")
  *             .subkeys(Map.ofEntries(
- *                 Map.entry("elb_cname", appAwsElb.dnsName()),
- *                 Map.entry("s3_bucket_name", appAwsS3Bucket.bucket()),
- *                 Map.entry("database/hostname", app.address()),
- *                 Map.entry("database/port", app.port()),
- *                 Map.entry("database/username", app.username()),
- *                 Map.entry("database/name", app.name())
+ *                 Map.entry("elb_cname", appAwsElb.get("dnsName")),
+ *                 Map.entry("s3_bucket_name", appAwsS3Bucket.get("bucket")),
+ *                 Map.entry("database/hostname", app.get("address")),
+ *                 Map.entry("database/port", app.get("port")),
+ *                 Map.entry("database/username", app.get("username")),
+ *                 Map.entry("database/name", app.get("name"))
  *             ))
  *             .subkeyCollection(KeyPrefixSubkeyCollectionArgs.builder()
  *                 .path("database/password")
- *                 .value(app.password())
+ *                 .value(app.get("password"))
  *                 .flags(2)
  *                 .build())
  *             .build());

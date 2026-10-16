@@ -124,7 +124,7 @@ class AwaitableGetCatalogServiceResult(GetCatalogServiceResult):
 def get_catalog_service(datacenter: Optional[_builtins.str] = None,
                         filter: Optional[_builtins.str] = None,
                         name: Optional[_builtins.str] = None,
-                        query_options: Optional[Sequence[Union['GetCatalogServiceQueryOptionArgs', 'GetCatalogServiceQueryOptionArgsDict']]] = None,
+                        query_options: Optional[Sequence[Union['GetCatalogServiceQueryOptionArgs', 'GetCatalogServiceQueryOptionArgsDict', 'outputs.GetCatalogServiceQueryOptionResult']]] = None,
                         tag: Optional[_builtins.str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCatalogServiceResult:
     """
@@ -158,7 +158,7 @@ def get_catalog_service(datacenter: Optional[_builtins.str] = None,
            empty, the `datacenter` value found in the Consul agent that this provider is
            configured to talk to.
     :param _builtins.str name: The service name to select.
-    :param Sequence[Union['GetCatalogServiceQueryOptionArgs', 'GetCatalogServiceQueryOptionArgsDict']] query_options: See below.
+    :param Sequence[Union['GetCatalogServiceQueryOptionArgs', 'GetCatalogServiceQueryOptionArgsDict', 'outputs.GetCatalogServiceQueryOptionResult']] query_options: See below.
     :param _builtins.str tag: A single tag that can be used to filter the list of nodes
            to return based on a single matching tag..
     """
@@ -183,7 +183,7 @@ def get_catalog_service(datacenter: Optional[_builtins.str] = None,
 def get_catalog_service_output(datacenter: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                filter: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                name: pulumi.Input[Optional[_builtins.str]] = None,
-                               query_options: pulumi.Input[Optional[Optional[Sequence[Union['GetCatalogServiceQueryOptionArgs', 'GetCatalogServiceQueryOptionArgsDict']]]]] = None,
+                               query_options: pulumi.Input[Optional[Optional[Sequence[Union['GetCatalogServiceQueryOptionArgs', 'GetCatalogServiceQueryOptionArgsDict', 'outputs.GetCatalogServiceQueryOptionResult']]]]] = None,
                                tag: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCatalogServiceResult]:
     """
@@ -217,7 +217,7 @@ def get_catalog_service_output(datacenter: pulumi.Input[Optional[Optional[_built
            empty, the `datacenter` value found in the Consul agent that this provider is
            configured to talk to.
     :param _builtins.str name: The service name to select.
-    :param Sequence[Union['GetCatalogServiceQueryOptionArgs', 'GetCatalogServiceQueryOptionArgsDict']] query_options: See below.
+    :param Sequence[Union['GetCatalogServiceQueryOptionArgs', 'GetCatalogServiceQueryOptionArgsDict', 'outputs.GetCatalogServiceQueryOptionResult']] query_options: See below.
     :param _builtins.str tag: A single tag that can be used to filter the list of nodes
            to return based on a single matching tag..
     """

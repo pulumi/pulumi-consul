@@ -315,7 +315,7 @@ class KeyPrefix(pulumi.CustomResource):
                  namespace: pulumi.Input[Optional[_builtins.str]] = None,
                  partition: pulumi.Input[Optional[_builtins.str]] = None,
                  path_prefix: pulumi.Input[Optional[_builtins.str]] = None,
-                 subkey_collection: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KeyPrefixSubkeyCollectionArgs', 'KeyPrefixSubkeyCollectionArgsDict']]]]] = None,
+                 subkey_collection: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KeyPrefixSubkeyCollectionArgs', 'KeyPrefixSubkeyCollectionArgsDict', 'outputs.KeyPrefixSubkeyCollection']]]]] = None,
                  subkeys: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  token: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -387,7 +387,7 @@ class KeyPrefix(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] path_prefix: Specifies the common prefix shared by all keys
                that will be managed by this resource instance. In most cases this will
                end with a slash, to manage a "folder" of keys.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['KeyPrefixSubkeyCollectionArgs', 'KeyPrefixSubkeyCollectionArgsDict']]]] subkey_collection: A subkey to add. Supported values documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['KeyPrefixSubkeyCollectionArgs', 'KeyPrefixSubkeyCollectionArgsDict', 'outputs.KeyPrefixSubkeyCollection']]]] subkey_collection: A subkey to add. Supported values documented below.
                Multiple blocks supported.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] subkeys: A mapping from subkey name (which will be appended
                to the given `path_prefix`) to the value that should be stored at that key.
@@ -480,7 +480,7 @@ class KeyPrefix(pulumi.CustomResource):
                  namespace: pulumi.Input[Optional[_builtins.str]] = None,
                  partition: pulumi.Input[Optional[_builtins.str]] = None,
                  path_prefix: pulumi.Input[Optional[_builtins.str]] = None,
-                 subkey_collection: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KeyPrefixSubkeyCollectionArgs', 'KeyPrefixSubkeyCollectionArgsDict']]]]] = None,
+                 subkey_collection: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KeyPrefixSubkeyCollectionArgs', 'KeyPrefixSubkeyCollectionArgsDict', 'outputs.KeyPrefixSubkeyCollection']]]]] = None,
                  subkeys: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  token: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -517,7 +517,7 @@ class KeyPrefix(pulumi.CustomResource):
             namespace: pulumi.Input[Optional[_builtins.str]] = None,
             partition: pulumi.Input[Optional[_builtins.str]] = None,
             path_prefix: pulumi.Input[Optional[_builtins.str]] = None,
-            subkey_collection: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KeyPrefixSubkeyCollectionArgs', 'KeyPrefixSubkeyCollectionArgsDict']]]]] = None,
+            subkey_collection: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KeyPrefixSubkeyCollectionArgs', 'KeyPrefixSubkeyCollectionArgsDict', 'outputs.KeyPrefixSubkeyCollection']]]]] = None,
             subkeys: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             token: pulumi.Input[Optional[_builtins.str]] = None) -> 'KeyPrefix':
         """
@@ -534,7 +534,7 @@ class KeyPrefix(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] path_prefix: Specifies the common prefix shared by all keys
                that will be managed by this resource instance. In most cases this will
                end with a slash, to manage a "folder" of keys.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['KeyPrefixSubkeyCollectionArgs', 'KeyPrefixSubkeyCollectionArgsDict']]]] subkey_collection: A subkey to add. Supported values documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['KeyPrefixSubkeyCollectionArgs', 'KeyPrefixSubkeyCollectionArgsDict', 'outputs.KeyPrefixSubkeyCollection']]]] subkey_collection: A subkey to add. Supported values documented below.
                Multiple blocks supported.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] subkeys: A mapping from subkey name (which will be appended
                to the given `path_prefix`) to the value that should be stored at that key.

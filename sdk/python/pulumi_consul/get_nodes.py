@@ -109,7 +109,7 @@ class AwaitableGetNodesResult(GetNodesResult):
             query_options=self.query_options)
 
 
-def get_nodes(query_options: Optional[Sequence[Union['GetNodesQueryOptionArgs', 'GetNodesQueryOptionArgsDict']]] = None,
+def get_nodes(query_options: Optional[Sequence[Union['GetNodesQueryOptionArgs', 'GetNodesQueryOptionArgsDict', 'outputs.GetNodesQueryOptionResult']]] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNodesResult:
     """
     The `get_nodes` data source returns a list of Consul nodes that have
@@ -135,7 +135,7 @@ def get_nodes(query_options: Optional[Sequence[Union['GetNodesQueryOptionArgs', 
     ```
 
 
-    :param Sequence[Union['GetNodesQueryOptionArgs', 'GetNodesQueryOptionArgsDict']] query_options: See below.
+    :param Sequence[Union['GetNodesQueryOptionArgs', 'GetNodesQueryOptionArgsDict', 'outputs.GetNodesQueryOptionResult']] query_options: See below.
     """
     __args__ = dict()
     __args__['queryOptions'] = query_options
@@ -149,7 +149,7 @@ def get_nodes(query_options: Optional[Sequence[Union['GetNodesQueryOptionArgs', 
         node_names=pulumi.get(__ret__, 'node_names'),
         nodes=pulumi.get(__ret__, 'nodes'),
         query_options=pulumi.get(__ret__, 'query_options'))
-def get_nodes_output(query_options: pulumi.Input[Optional[Optional[Sequence[Union['GetNodesQueryOptionArgs', 'GetNodesQueryOptionArgsDict']]]]] = None,
+def get_nodes_output(query_options: pulumi.Input[Optional[Optional[Sequence[Union['GetNodesQueryOptionArgs', 'GetNodesQueryOptionArgsDict', 'outputs.GetNodesQueryOptionResult']]]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNodesResult]:
     """
     The `get_nodes` data source returns a list of Consul nodes that have
@@ -175,7 +175,7 @@ def get_nodes_output(query_options: pulumi.Input[Optional[Optional[Sequence[Unio
     ```
 
 
-    :param Sequence[Union['GetNodesQueryOptionArgs', 'GetNodesQueryOptionArgsDict']] query_options: See below.
+    :param Sequence[Union['GetNodesQueryOptionArgs', 'GetNodesQueryOptionArgsDict', 'outputs.GetNodesQueryOptionResult']] query_options: See below.
     """
     __args__ = dict()
     __args__['queryOptions'] = query_options

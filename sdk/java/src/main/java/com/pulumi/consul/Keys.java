@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  *             .token("abcd")
  *             .keys(KeysKeyArgs.builder()
  *                 .path("service/app/elb_address")
- *                 .value(appAwsElb.dnsName())
+ *                 .value(appAwsElb.get("dnsName"))
  *                 .build())
  *             .build());
  * 

@@ -205,7 +205,7 @@ class ConfigEntryServiceSplitter(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  namespace: pulumi.Input[Optional[_builtins.str]] = None,
                  partition: pulumi.Input[Optional[_builtins.str]] = None,
-                 splits: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigEntryServiceSplitterSplitArgs', 'ConfigEntryServiceSplitterSplitArgsDict']]]]] = None,
+                 splits: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigEntryServiceSplitterSplitArgs', 'ConfigEntryServiceSplitterSplitArgsDict', 'outputs.ConfigEntryServiceSplitterSplit']]]]] = None,
                  __props__=None):
         """
         The `ConfigEntryServiceSplitter` resource configures a [service splitter](https://developer.hashicorp.com/consul/docs/connect/config-entries/service-splitter) that will redirect a percentage of incoming traffic requests for a service to one or more specific service instances.
@@ -296,7 +296,7 @@ class ConfigEntryServiceSplitter(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Specifies a name for the configuration entry.
         :param pulumi.Input[_builtins.str] namespace: Specifies the namespace to apply the configuration entry.
         :param pulumi.Input[_builtins.str] partition: Specifies the admin partition to apply the configuration entry.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceSplitterSplitArgs', 'ConfigEntryServiceSplitterSplitArgsDict']]]] splits: Defines how much traffic to send to sets of service instances during a traffic split.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceSplitterSplitArgs', 'ConfigEntryServiceSplitterSplitArgsDict', 'outputs.ConfigEntryServiceSplitterSplit']]]] splits: Defines how much traffic to send to sets of service instances during a traffic split.
         """
         ...
     @overload
@@ -406,7 +406,7 @@ class ConfigEntryServiceSplitter(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  namespace: pulumi.Input[Optional[_builtins.str]] = None,
                  partition: pulumi.Input[Optional[_builtins.str]] = None,
-                 splits: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigEntryServiceSplitterSplitArgs', 'ConfigEntryServiceSplitterSplitArgsDict']]]]] = None,
+                 splits: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigEntryServiceSplitterSplitArgs', 'ConfigEntryServiceSplitterSplitArgsDict', 'outputs.ConfigEntryServiceSplitterSplit']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -437,7 +437,7 @@ class ConfigEntryServiceSplitter(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             namespace: pulumi.Input[Optional[_builtins.str]] = None,
             partition: pulumi.Input[Optional[_builtins.str]] = None,
-            splits: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigEntryServiceSplitterSplitArgs', 'ConfigEntryServiceSplitterSplitArgsDict']]]]] = None) -> 'ConfigEntryServiceSplitter':
+            splits: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigEntryServiceSplitterSplitArgs', 'ConfigEntryServiceSplitterSplitArgsDict', 'outputs.ConfigEntryServiceSplitterSplit']]]]] = None) -> 'ConfigEntryServiceSplitter':
         """
         Get an existing ConfigEntryServiceSplitter resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -449,7 +449,7 @@ class ConfigEntryServiceSplitter(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Specifies a name for the configuration entry.
         :param pulumi.Input[_builtins.str] namespace: Specifies the namespace to apply the configuration entry.
         :param pulumi.Input[_builtins.str] partition: Specifies the admin partition to apply the configuration entry.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceSplitterSplitArgs', 'ConfigEntryServiceSplitterSplitArgsDict']]]] splits: Defines how much traffic to send to sets of service instances during a traffic split.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConfigEntryServiceSplitterSplitArgs', 'ConfigEntryServiceSplitterSplitArgsDict', 'outputs.ConfigEntryServiceSplitterSplit']]]] splits: Defines how much traffic to send to sets of service instances during a traffic split.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

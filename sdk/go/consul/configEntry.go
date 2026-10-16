@@ -226,8 +226,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			tmpJSON0, err := json.Marshal(map[string][]map[string]interface{}{
-//				"Sources": []map[string]interface{}{
+//			tmpJSON0, err := json.Marshal(map[string][]interface{}{
+//				"Sources": []interface{}{
 //					map[string]interface{}{
 //						"Action":     "allow",
 //						"Name":       "frontend-webapp",
@@ -346,7 +346,7 @@ import (
 //							},
 //							map[string]interface{}{
 //								"Name": "admin-dashboard-webapp",
-//								"Permissions": []map[string]interface{}{
+//								"Permissions": []interface{}{
 //									map[string]interface{}{
 //										"Action": "deny",
 //										"HTTP": map[string]string{

@@ -122,7 +122,7 @@ class AwaitableGetServiceResult(GetServiceResult):
 def get_service(datacenter: Optional[_builtins.str] = None,
                 filter: Optional[_builtins.str] = None,
                 name: Optional[_builtins.str] = None,
-                query_options: Optional[Sequence[Union['GetServiceQueryOptionArgs', 'GetServiceQueryOptionArgsDict']]] = None,
+                query_options: Optional[Sequence[Union['GetServiceQueryOptionArgs', 'GetServiceQueryOptionArgsDict', 'outputs.GetServiceQueryOptionResult']]] = None,
                 tag: Optional[_builtins.str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServiceResult:
     """
@@ -156,7 +156,7 @@ def get_service(datacenter: Optional[_builtins.str] = None,
            empty, the `datacenter` value found in the Consul agent that this provider is
            configured to talk to.
     :param _builtins.str name: The service name to select.
-    :param Sequence[Union['GetServiceQueryOptionArgs', 'GetServiceQueryOptionArgsDict']] query_options: See below.
+    :param Sequence[Union['GetServiceQueryOptionArgs', 'GetServiceQueryOptionArgsDict', 'outputs.GetServiceQueryOptionResult']] query_options: See below.
     :param _builtins.str tag: A single tag that can be used to filter the list of nodes
            to return based on a single matching tag..
     """
@@ -180,7 +180,7 @@ def get_service(datacenter: Optional[_builtins.str] = None,
 def get_service_output(datacenter: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                        filter: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                        name: pulumi.Input[Optional[_builtins.str]] = None,
-                       query_options: pulumi.Input[Optional[Optional[Sequence[Union['GetServiceQueryOptionArgs', 'GetServiceQueryOptionArgsDict']]]]] = None,
+                       query_options: pulumi.Input[Optional[Optional[Sequence[Union['GetServiceQueryOptionArgs', 'GetServiceQueryOptionArgsDict', 'outputs.GetServiceQueryOptionResult']]]]] = None,
                        tag: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServiceResult]:
     """
@@ -214,7 +214,7 @@ def get_service_output(datacenter: pulumi.Input[Optional[Optional[_builtins.str]
            empty, the `datacenter` value found in the Consul agent that this provider is
            configured to talk to.
     :param _builtins.str name: The service name to select.
-    :param Sequence[Union['GetServiceQueryOptionArgs', 'GetServiceQueryOptionArgsDict']] query_options: See below.
+    :param Sequence[Union['GetServiceQueryOptionArgs', 'GetServiceQueryOptionArgsDict', 'outputs.GetServiceQueryOptionResult']] query_options: See below.
     :param _builtins.str tag: A single tag that can be used to filter the list of nodes
            to return based on a single matching tag..
     """
