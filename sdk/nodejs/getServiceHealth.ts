@@ -16,6 +16,16 @@ import * as utilities from "./utilities";
  * updated, you should expect different results in a frequent basis.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ *
+ * const vault = consul.getServiceHealth({
+ *     service: "vault",
+ *     passing: true,
+ * });
+ * ```
  */
 export function getServiceHealth(args: GetServiceHealthArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceHealthResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -125,6 +135,16 @@ export interface GetServiceHealthResult {
  * updated, you should expect different results in a frequent basis.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as consul from "@pulumi/consul";
+ *
+ * const vault = consul.getServiceHealth({
+ *     service: "vault",
+ *     passing: true,
+ * });
+ * ```
  */
 export function getServiceHealthOutput(args: GetServiceHealthOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServiceHealthResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

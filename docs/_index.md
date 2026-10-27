@@ -288,7 +288,7 @@ terraform {
 }
 
 data "consul_keys" "app" {
-  keys {
+  key {
     name    = "ami"
     path    = "service/app/launch_ami"
     default = "ami-1234"

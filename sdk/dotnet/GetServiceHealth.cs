@@ -21,6 +21,23 @@ namespace Pulumi.Consul
         /// updated, you should expect different results in a frequent basis.
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Consul = Pulumi.Consul;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var vault = Consul.GetServiceHealth.Invoke(new()
+        ///     {
+        ///         Service = "vault",
+        ///         Passing = true,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetServiceHealthResult> InvokeAsync(GetServiceHealthArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServiceHealthResult>("consul:index/getServiceHealth:getServiceHealth", args ?? new GetServiceHealthArgs(), options.WithDefaults());
@@ -35,6 +52,23 @@ namespace Pulumi.Consul
         /// updated, you should expect different results in a frequent basis.
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Consul = Pulumi.Consul;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var vault = Consul.GetServiceHealth.Invoke(new()
+        ///     {
+        ///         Service = "vault",
+        ///         Passing = true,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetServiceHealthResult> Invoke(GetServiceHealthInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServiceHealthResult>("consul:index/getServiceHealth:getServiceHealth", args ?? new GetServiceHealthInvokeArgs(), options.WithDefaults());
@@ -49,6 +83,23 @@ namespace Pulumi.Consul
         /// updated, you should expect different results in a frequent basis.
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Consul = Pulumi.Consul;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var vault = Consul.GetServiceHealth.Invoke(new()
+        ///     {
+        ///         Service = "vault",
+        ///         Passing = true,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetServiceHealthResult> Invoke(GetServiceHealthInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetServiceHealthResult>("consul:index/getServiceHealth:getServiceHealth", args ?? new GetServiceHealthInvokeArgs(), options.WithDefaults());

@@ -20,6 +20,31 @@ import (
 // updated, you should expect different results in a frequent basis.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-consul/sdk/v3/go/consul"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := consul.GetServiceHealth(ctx, &consul.LookupServiceHealthArgs{
+//				Service: "vault",
+//				Passing: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupServiceHealth(ctx *pulumi.Context, args *LookupServiceHealthArgs, opts ...pulumi.InvokeOption) (*LookupServiceHealthResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupServiceHealthResult

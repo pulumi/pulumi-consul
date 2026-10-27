@@ -41,7 +41,7 @@ import (
 //				Name:        pulumi.String("foo"),
 //				Description: pulumi.String("bar"),
 //				Policies: pulumi.StringArray{
-//					read_policy.ID().ToIDOutput().ToStringOutput(),
+//					read_policy.ID(),
 //				},
 //				ServiceIdentities: consul.AclRoleServiceIdentityArray{
 //					&consul.AclRoleServiceIdentityArgs{

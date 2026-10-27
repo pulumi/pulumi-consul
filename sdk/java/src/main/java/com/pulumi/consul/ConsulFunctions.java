@@ -6315,6 +6315,38 @@ public final class ConsulFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetServiceHealthArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var vault = ConsulFunctions.getServiceHealth(GetServiceHealthArgs.builder()
+     *             .service("vault")
+     *             .passing(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetServiceHealthInvokeResult> getServiceHealth(GetServiceHealthArgs args) {
         return getServiceHealth(args, InvokeOptions.Empty);
@@ -6329,6 +6361,38 @@ public final class ConsulFunctions {
      * updated, you should expect different results in a frequent basis.
      * 
      * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetServiceHealthArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var vault = ConsulFunctions.getServiceHealth(GetServiceHealthArgs.builder()
+     *             .service("vault")
+     *             .passing(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetServiceHealthInvokeResult> getServiceHealthPlain(GetServiceHealthPlainArgs args) {
@@ -6345,6 +6409,38 @@ public final class ConsulFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetServiceHealthArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var vault = ConsulFunctions.getServiceHealth(GetServiceHealthArgs.builder()
+     *             .service("vault")
+     *             .passing(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetServiceHealthInvokeResult> getServiceHealth(GetServiceHealthArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("consul:index/getServiceHealth:getServiceHealth", TypeShape.of(GetServiceHealthInvokeResult.class), args, Utilities.withVersion(options));
@@ -6360,6 +6456,38 @@ public final class ConsulFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetServiceHealthArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var vault = ConsulFunctions.getServiceHealth(GetServiceHealthArgs.builder()
+     *             .service("vault")
+     *             .passing(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetServiceHealthInvokeResult> getServiceHealth(GetServiceHealthArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("consul:index/getServiceHealth:getServiceHealth", TypeShape.of(GetServiceHealthInvokeResult.class), args, Utilities.withVersion(options));
@@ -6374,6 +6502,38 @@ public final class ConsulFunctions {
      * updated, you should expect different results in a frequent basis.
      * 
      * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.consul.ConsulFunctions;
+     * import com.pulumi.consul.inputs.GetServiceHealthArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var vault = ConsulFunctions.getServiceHealth(GetServiceHealthArgs.builder()
+     *             .service("vault")
+     *             .passing(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetServiceHealthInvokeResult> getServiceHealthPlain(GetServiceHealthPlainArgs args, InvokeOptions options) {

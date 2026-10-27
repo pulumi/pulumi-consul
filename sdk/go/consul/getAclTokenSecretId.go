@@ -58,7 +58,7 @@ import (
 //				return err
 //			}
 //			read := consul.GetAclTokenSecretIdOutput(ctx, consul.GetAclTokenSecretIdOutputArgs{
-//				AccessorId: testAclToken.ID().ToIDOutput().ToStringOutput(),
+//				AccessorId: testAclToken.ID(),
 //				PgpKey:     pulumi.String("keybase:my_username"),
 //			}, nil)
 //			ctx.Export("consulAclTokenSecretId", read.EncryptedSecretId())
