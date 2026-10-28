@@ -41,7 +41,7 @@ import (
 //				return err
 //			}
 //			dc2 := consul.GetNetworkAreaMembersOutput(ctx, consul.GetNetworkAreaMembersOutputArgs{
-//				Uuid: dc2NetworkArea.ID().ToIDOutput().ToStringOutput(),
+//				Uuid: dc2NetworkArea.ID(),
 //			}, nil)
 //			ctx.Export("members", dc2.ApplyT(func(dc2 consul.GetNetworkAreaMembersResult) ([]consul.GetNetworkAreaMembersMember, error) {
 //				return dc2.Members.([]consul.GetNetworkAreaMembersMember), nil

@@ -177,6 +177,14 @@ def get_service_health(datacenter: Optional[_builtins.str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_consul as consul
+
+    vault = consul.get_service_health(service="vault",
+        passing=True)
+    ```
+
 
     :param _builtins.str datacenter: The Consul datacenter to query.
     :param _builtins.str filter: A filter expression to refine the list of results, see
@@ -233,6 +241,14 @@ def get_service_health_output(datacenter: pulumi.Input[Optional[Optional[_builti
     updated, you should expect different results in a frequent basis.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_consul as consul
+
+    vault = consul.get_service_health(service="vault",
+        passing=True)
+    ```
 
 
     :param _builtins.str datacenter: The Consul datacenter to query.
