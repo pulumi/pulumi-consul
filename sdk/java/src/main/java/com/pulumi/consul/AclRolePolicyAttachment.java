@@ -40,19 +40,19 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var myRole = ConsulFunctions.getAclRole(GetAclRoleArgs.builder()
  *             .name("my_role")
  *             .build());
  * 
  *         var readPolicy = new AclPolicy("readPolicy", AclPolicyArgs.builder()
  *             .name("read-policy")
- *             .rules("node \"\" { policy = \"read\" }")
+ *             .rules("node }&#92;{@code "}&#92;{@code " }{{@code  policy = }&#92;{@code "read}&#92;{@code " }}{@code ")
  *             .datacenters("dc1")
  *             .build());
  * 
@@ -61,8 +61,8 @@ import javax.annotation.Nullable;
  *             .policy(readPolicy.name())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

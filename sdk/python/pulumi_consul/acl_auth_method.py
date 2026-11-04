@@ -650,6 +650,34 @@ class AclAuthMethod(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         return AclAuthMethod(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            config_json: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            max_token_ttl: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AclAuthMethodNamespaceRuleArgs', 'AclAuthMethodNamespaceRuleArgsDict', 'outputs.AclAuthMethodNamespaceRule']]]]] = None,
+            partition: pulumi.Input[Optional[_builtins.str]] = None,
+            token_locality: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["config"] = config
+        __props__["configJson"] = config_json
+        __props__["description"] = description
+        __props__["displayName"] = display_name
+        __props__["maxTokenTtl"] = max_token_ttl
+        __props__["name"] = name
+        __props__["namespace"] = namespace
+        __props__["namespaceRules"] = namespace_rules
+        __props__["partition"] = partition
+        __props__["tokenLocality"] = token_locality
+        __props__["type"] = type
+        return pulumi.runtime.exists_resource(None, 'consul:index/aclAuthMethod:AclAuthMethod', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""The config attribute is deprecated, please use `config_json` instead.""")

@@ -27,27 +27,27 @@ namespace Pulumi.Consul.Outputs
         /// <summary>
         /// The Node ID of the Consul agent advertising the service.
         /// * [`NodeMeta`](https://www.consul.io/docs/agent/http/catalog.html#Meta) - Node
-        /// meta data tag information, if any.
+        ///   meta data tag information, if any.
         /// * [`NodeName`](https://www.consul.io/docs/agent/http/catalog.html#Node) - The
-        /// name of the Consul node.
+        ///   name of the Consul node.
         /// * [`Address`](https://www.consul.io/docs/agent/http/catalog.html#ServiceAddress) -
-        /// The IP address of the service.  If the `ServiceAddress` in the Consul catalog
-        /// is empty, this value is automatically populated with the `NodeAddress` (the
-        /// `Address` in the Consul Catalog).
+        ///   The IP address of the service.  If the `ServiceAddress` in the Consul catalog
+        ///   is empty, this value is automatically populated with the `NodeAddress` (the
+        ///   `Address` in the Consul Catalog).
         /// * [`EnableTagOverride`](https://www.consul.io/docs/agent/http/catalog.html#ServiceEnableTagOverride) -
-        /// Whether service tags can be overridden on this service.
+        ///   Whether service tags can be overridden on this service.
         /// * [`Id`](https://www.consul.io/docs/agent/http/catalog.html#ServiceID) - A
-        /// unique service instance identifier.
+        ///   unique service instance identifier.
         /// * [`Name`](https://www.consul.io/docs/agent/http/catalog.html#ServiceName) - The
-        /// name of the service.
+        ///   name of the service.
         /// * [`Port`](https://www.consul.io/docs/agent/http/catalog.html#ServicePort) -
-        /// Port number of the service.
+        ///   Port number of the service.
         /// * [`TaggedAddresses`](https://www.consul.io/docs/agent/http/catalog.html#TaggedAddresses) -
-        /// List of explicit LAN and WAN IP addresses for the agent.
+        ///   List of explicit LAN and WAN IP addresses for the agent.
         /// * [`Tags`](https://www.consul.io/docs/agent/http/catalog.html#ServiceTags) -
-        /// List of tags for the service.
+        ///   List of tags for the service.
         /// * [`Meta`](https://www.consul.io/docs/agent/http/catalog.html#Meta) - Service meta
-        /// data tag information, if any.
+        ///   data tag information, if any.
         /// </summary>
         public readonly string NodeId;
         public readonly ImmutableDictionary<string, string> NodeMeta;

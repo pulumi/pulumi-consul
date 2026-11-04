@@ -86,6 +86,12 @@ func (ConfigEntryServiceRouterState) ElementType() reflect.Type {
 	return reflect.TypeOf((*configEntryServiceRouterState)(nil)).Elem()
 }
 
+// ConfigEntryServiceRouterExists checks whether an existing ConfigEntryServiceRouter resource with the given ID exists.
+func ConfigEntryServiceRouterExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ConfigEntryServiceRouterState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("consul:index/configEntryServiceRouter:ConfigEntryServiceRouter", id, state, "", opts...)
+}
+
 type configEntryServiceRouterArgs struct {
 	// Specifies key-value pairs to add to the KV store.
 	Meta map[string]string `pulumi:"meta"`

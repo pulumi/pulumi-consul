@@ -195,6 +195,12 @@ func (NamespacePolicyAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*namespacePolicyAttachmentState)(nil)).Elem()
 }
 
+// NamespacePolicyAttachmentExists checks whether an existing NamespacePolicyAttachment resource with the given ID exists.
+func NamespacePolicyAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NamespacePolicyAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("consul:index/namespacePolicyAttachment:NamespacePolicyAttachment", id, state, "", opts...)
+}
+
 type namespacePolicyAttachmentArgs struct {
 	// The namespace to attach the policy to.
 	Namespace string `pulumi:"namespace"`

@@ -36,24 +36,24 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var test = new AclPolicy("test", AclPolicyArgs.builder()
  *             .name("my_policy")
  *             .datacenters("dc1")
  *             .rules("""
- * node_prefix \"\" {
- *   policy = \"read\"
- * }
+ * node_prefix }&#92;{@code "}&#92;{@code " }{{@code
+ *   policy = }&#92;{@code "read}&#92;{@code "
+ * }}{@code
  *             """)
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

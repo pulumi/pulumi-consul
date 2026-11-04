@@ -215,6 +215,12 @@ func (KeyPrefixState) ElementType() reflect.Type {
 	return reflect.TypeOf((*keyPrefixState)(nil)).Elem()
 }
 
+// KeyPrefixExists checks whether an existing KeyPrefix resource with the given ID exists.
+func KeyPrefixExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *KeyPrefixState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("consul:index/keyPrefix:KeyPrefix", id, state, "", opts...)
+}
+
 type keyPrefixArgs struct {
 	// The datacenter to use. This overrides the
 	// agent's default datacenter and the datacenter in the provider setup.

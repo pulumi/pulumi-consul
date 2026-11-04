@@ -193,6 +193,12 @@ func (NamespaceRoleAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*namespaceRoleAttachmentState)(nil)).Elem()
 }
 
+// NamespaceRoleAttachmentExists checks whether an existing NamespaceRoleAttachment resource with the given ID exists.
+func NamespaceRoleAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NamespaceRoleAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("consul:index/namespaceRoleAttachment:NamespaceRoleAttachment", id, state, "", opts...)
+}
+
 type namespaceRoleAttachmentArgs struct {
 	// The namespace to attach the role to.
 	Namespace string `pulumi:"namespace"`

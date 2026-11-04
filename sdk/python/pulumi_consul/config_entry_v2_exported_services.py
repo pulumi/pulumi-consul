@@ -418,6 +418,28 @@ class ConfigEntryV2ExportedServices(pulumi.CustomResource):
         __props__.__dict__["services"] = services
         return ConfigEntryV2ExportedServices(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            kind: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            partition: pulumi.Input[Optional[_builtins.str]] = None,
+            partition_consumers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            peer_consumers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            sameness_group_consumers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["kind"] = kind
+        __props__["name"] = name
+        __props__["namespace"] = namespace
+        __props__["partition"] = partition
+        __props__["partitionConsumers"] = partition_consumers
+        __props__["peerConsumers"] = peer_consumers
+        __props__["samenessGroupConsumers"] = sameness_group_consumers
+        __props__["services"] = services
+        return pulumi.runtime.exists_resource(None, 'consul:index/configEntryV2ExportedServices:ConfigEntryV2ExportedServices', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def kind(self) -> pulumi.Output[_builtins.str]:

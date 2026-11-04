@@ -142,6 +142,12 @@ func (NodeState) ElementType() reflect.Type {
 	return reflect.TypeOf((*nodeState)(nil)).Elem()
 }
 
+// NodeExists checks whether an existing Node resource with the given ID exists.
+func NodeExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NodeState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("consul:index/node:Node", id, state, "", opts...)
+}
+
 type nodeArgs struct {
 	// The address of the node being added to, or referenced in the catalog.
 	Address string `pulumi:"address"`

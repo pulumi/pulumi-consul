@@ -390,6 +390,24 @@ class Namespace(pulumi.CustomResource):
         __props__.__dict__["role_defaults"] = role_defaults
         return Namespace(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            meta: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            partition: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_defaults: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            role_defaults: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["description"] = description
+        __props__["meta"] = meta
+        __props__["name"] = name
+        __props__["partition"] = partition
+        __props__["policyDefaults"] = policy_defaults
+        __props__["roleDefaults"] = role_defaults
+        return pulumi.runtime.exists_resource(None, 'consul:index/namespace:Namespace', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:

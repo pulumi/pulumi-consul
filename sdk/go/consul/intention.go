@@ -219,6 +219,12 @@ func (IntentionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*intentionState)(nil)).Elem()
 }
 
+// IntentionExists checks whether an existing Intention resource with the given ID exists.
+func IntentionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *IntentionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("consul:index/intention:Intention", id, state, "", opts...)
+}
+
 type intentionArgs struct {
 	// The intention action. Must be one of `allow` or `deny`.
 	Action string `pulumi:"action"`

@@ -250,26 +250,22 @@ public final class PreparedQueryArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The ACL token to use when saving the prepared query. This overrides the token that the agent provides by default.
      * 
-     * @deprecated
-     * The token argument has been deprecated and will be removed in a future release.
+     * @deprecated The token argument has been deprecated and will be removed in a future release.
      * Please use the token argument in the provider configuration
      * 
      */
-    @Deprecated /* The token argument has been deprecated and will be removed in a future release.
-Please use the token argument in the provider configuration */
+    @Deprecated
     @Import(name="token")
     private @Nullable Output<String> token;
 
     /**
      * @return The ACL token to use when saving the prepared query. This overrides the token that the agent provides by default.
      * 
-     * @deprecated
-     * The token argument has been deprecated and will be removed in a future release.
+     * @deprecated The token argument has been deprecated and will be removed in a future release.
      * Please use the token argument in the provider configuration
      * 
      */
-    @Deprecated /* The token argument has been deprecated and will be removed in a future release.
-Please use the token argument in the provider configuration */
+    @Deprecated
     public Optional<Output<String>> token() {
         return Optional.ofNullable(this.token);
     }
@@ -653,13 +649,11 @@ Please use the token argument in the provider configuration */
          * 
          * @return builder
          * 
-         * @deprecated
-         * The token argument has been deprecated and will be removed in a future release.
+         * @deprecated The token argument has been deprecated and will be removed in a future release.
          * Please use the token argument in the provider configuration
          * 
          */
-        @Deprecated /* The token argument has been deprecated and will be removed in a future release.
-Please use the token argument in the provider configuration */
+        @Deprecated
         public Builder token(@Nullable Output<String> token) {
             $.token = token;
             return this;
@@ -670,13 +664,11 @@ Please use the token argument in the provider configuration */
          * 
          * @return builder
          * 
-         * @deprecated
-         * The token argument has been deprecated and will be removed in a future release.
+         * @deprecated The token argument has been deprecated and will be removed in a future release.
          * Please use the token argument in the provider configuration
          * 
          */
-        @Deprecated /* The token argument has been deprecated and will be removed in a future release.
-Please use the token argument in the provider configuration */
+        @Deprecated
         public Builder token(String token) {
             return token(Output.of(token));
         }

@@ -303,6 +303,22 @@ class ConfigEntryServiceRouter(pulumi.CustomResource):
         __props__.__dict__["routes"] = routes
         return ConfigEntryServiceRouter(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            meta: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            partition: pulumi.Input[Optional[_builtins.str]] = None,
+            routes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigEntryServiceRouterRouteArgs', 'ConfigEntryServiceRouterRouteArgsDict', 'outputs.ConfigEntryServiceRouterRoute']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["meta"] = meta
+        __props__["name"] = name
+        __props__["namespace"] = namespace
+        __props__["partition"] = partition
+        __props__["routes"] = routes
+        return pulumi.runtime.exists_resource(None, 'consul:index/configEntryServiceRouter:ConfigEntryServiceRouter', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def meta(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:

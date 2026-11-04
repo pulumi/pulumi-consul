@@ -297,6 +297,22 @@ class PeeringToken(pulumi.CustomResource):
         __props__.__dict__["server_external_addresses"] = server_external_addresses
         return PeeringToken(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            meta: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            partition: pulumi.Input[Optional[_builtins.str]] = None,
+            peer_name: pulumi.Input[Optional[_builtins.str]] = None,
+            peering_token: pulumi.Input[Optional[_builtins.str]] = None,
+            server_external_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["meta"] = meta
+        __props__["partition"] = partition
+        __props__["peerName"] = peer_name
+        __props__["peeringToken"] = peering_token
+        __props__["serverExternalAddresses"] = server_external_addresses
+        return pulumi.runtime.exists_resource(None, 'consul:index/peeringToken:PeeringToken', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def meta(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:

@@ -265,6 +265,18 @@ class AdminPartition(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         return AdminPartition(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disable_gossip: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["description"] = description
+        __props__["disableGossip"] = disable_gossip
+        __props__["name"] = name
+        return pulumi.runtime.exists_resource(None, 'consul:index/adminPartition:AdminPartition', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:

@@ -615,6 +615,34 @@ class ConfigEntryServiceResolver(pulumi.CustomResource):
         __props__.__dict__["subsets"] = subsets
         return ConfigEntryServiceResolver(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            connect_timeout: pulumi.Input[Optional[_builtins.str]] = None,
+            default_subset: pulumi.Input[Optional[_builtins.str]] = None,
+            failovers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigEntryServiceResolverFailoverArgs', 'ConfigEntryServiceResolverFailoverArgsDict', 'outputs.ConfigEntryServiceResolverFailover']]]]] = None,
+            load_balancers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigEntryServiceResolverLoadBalancerArgs', 'ConfigEntryServiceResolverLoadBalancerArgsDict', 'outputs.ConfigEntryServiceResolverLoadBalancer']]]]] = None,
+            meta: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            partition: pulumi.Input[Optional[_builtins.str]] = None,
+            redirects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigEntryServiceResolverRedirectArgs', 'ConfigEntryServiceResolverRedirectArgsDict', 'outputs.ConfigEntryServiceResolverRedirect']]]]] = None,
+            request_timeout: pulumi.Input[Optional[_builtins.str]] = None,
+            subsets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigEntryServiceResolverSubsetArgs', 'ConfigEntryServiceResolverSubsetArgsDict', 'outputs.ConfigEntryServiceResolverSubset']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["connectTimeout"] = connect_timeout
+        __props__["defaultSubset"] = default_subset
+        __props__["failovers"] = failovers
+        __props__["loadBalancers"] = load_balancers
+        __props__["meta"] = meta
+        __props__["name"] = name
+        __props__["namespace"] = namespace
+        __props__["partition"] = partition
+        __props__["redirects"] = redirects
+        __props__["requestTimeout"] = request_timeout
+        __props__["subsets"] = subsets
+        return pulumi.runtime.exists_resource(None, 'consul:index/configEntryServiceResolver:ConfigEntryServiceResolver', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="connectTimeout")
     def connect_timeout(self) -> pulumi.Output[Optional[_builtins.str]]:

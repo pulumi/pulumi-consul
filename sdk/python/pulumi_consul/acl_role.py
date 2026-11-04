@@ -470,6 +470,28 @@ class AclRole(pulumi.CustomResource):
         __props__.__dict__["templated_policies"] = templated_policies
         return AclRole(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            node_identities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AclRoleNodeIdentityArgs', 'AclRoleNodeIdentityArgsDict', 'outputs.AclRoleNodeIdentity']]]]] = None,
+            partition: pulumi.Input[Optional[_builtins.str]] = None,
+            policies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            service_identities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AclRoleServiceIdentityArgs', 'AclRoleServiceIdentityArgsDict', 'outputs.AclRoleServiceIdentity']]]]] = None,
+            templated_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AclRoleTemplatedPolicyArgs', 'AclRoleTemplatedPolicyArgsDict', 'outputs.AclRoleTemplatedPolicy']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["description"] = description
+        __props__["name"] = name
+        __props__["namespace"] = namespace
+        __props__["nodeIdentities"] = node_identities
+        __props__["partition"] = partition
+        __props__["policies"] = policies
+        __props__["serviceIdentities"] = service_identities
+        __props__["templatedPolicies"] = templated_policies
+        return pulumi.runtime.exists_resource(None, 'consul:index/aclRole:AclRole', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:

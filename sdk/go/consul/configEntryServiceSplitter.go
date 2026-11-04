@@ -199,6 +199,12 @@ func (ConfigEntryServiceSplitterState) ElementType() reflect.Type {
 	return reflect.TypeOf((*configEntryServiceSplitterState)(nil)).Elem()
 }
 
+// ConfigEntryServiceSplitterExists checks whether an existing ConfigEntryServiceSplitter resource with the given ID exists.
+func ConfigEntryServiceSplitterExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ConfigEntryServiceSplitterState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("consul:index/configEntryServiceSplitter:ConfigEntryServiceSplitter", id, state, "", opts...)
+}
+
 type configEntryServiceSplitterArgs struct {
 	// Specifies key-value pairs to add to the KV store.
 	Meta map[string]string `pulumi:"meta"`

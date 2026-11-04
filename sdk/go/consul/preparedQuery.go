@@ -261,6 +261,12 @@ func (PreparedQueryState) ElementType() reflect.Type {
 	return reflect.TypeOf((*preparedQueryState)(nil)).Elem()
 }
 
+// PreparedQueryExists checks whether an existing PreparedQuery resource with the given ID exists.
+func PreparedQueryExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PreparedQueryState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("consul:index/preparedQuery:PreparedQuery", id, state, "", opts...)
+}
+
 type preparedQueryArgs struct {
 	// When `true` the prepared query will return connect proxy services for a queried service.  Conditions such as `tags` in the prepared query will be matched against the proxy service. Defaults to false.
 	Connect *bool `pulumi:"connect"`

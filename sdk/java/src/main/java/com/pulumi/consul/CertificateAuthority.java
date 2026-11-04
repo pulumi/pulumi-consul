@@ -32,11 +32,10 @@ public class CertificateAuthority extends com.pulumi.resources.CustomResource {
     /**
      * The raw configuration to use for the chosen provider. For more information on configuring the Connect CA providers, see [Provider Config](https://developer.hashicorp.com/consul/docs/connect/ca).
      * 
-     * @deprecated
-     * The config attribute is deprecated, please use configJson instead.
+     * @deprecated The config attribute is deprecated, please use configJson instead.
      * 
      */
-    @Deprecated /* The config attribute is deprecated, please use configJson instead. */
+    @Deprecated
     @Export(name="config", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> config;
 

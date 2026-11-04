@@ -172,6 +172,12 @@ func (ConfigEntryServiceIntentionsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*configEntryServiceIntentionsState)(nil)).Elem()
 }
 
+// ConfigEntryServiceIntentionsExists checks whether an existing ConfigEntryServiceIntentions resource with the given ID exists.
+func ConfigEntryServiceIntentionsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ConfigEntryServiceIntentionsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("consul:index/configEntryServiceIntentions:ConfigEntryServiceIntentions", id, state, "", opts...)
+}
+
 type configEntryServiceIntentionsArgs struct {
 	// Specifies a JSON Web Token provider configured in a JWT provider configuration entry, as well as additional configurations for verifying a service's JWT before authorizing communication between services
 	Jwts []ConfigEntryServiceIntentionsJwt `pulumi:"jwts"`

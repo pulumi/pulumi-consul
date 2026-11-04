@@ -421,6 +421,36 @@ class License(pulumi.CustomResource):
         __props__.__dict__["warnings"] = warnings
         return License(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            customer_id: pulumi.Input[Optional[_builtins.str]] = None,
+            datacenter: pulumi.Input[Optional[_builtins.str]] = None,
+            expiration_time: pulumi.Input[Optional[_builtins.str]] = None,
+            features: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            installation_id: pulumi.Input[Optional[_builtins.str]] = None,
+            issue_time: pulumi.Input[Optional[_builtins.str]] = None,
+            license: pulumi.Input[Optional[_builtins.str]] = None,
+            license_id: pulumi.Input[Optional[_builtins.str]] = None,
+            product: pulumi.Input[Optional[_builtins.str]] = None,
+            start_time: pulumi.Input[Optional[_builtins.str]] = None,
+            valid: pulumi.Input[Optional[_builtins.bool]] = None,
+            warnings: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["customerId"] = customer_id
+        __props__["datacenter"] = datacenter
+        __props__["expirationTime"] = expiration_time
+        __props__["features"] = features
+        __props__["installationId"] = installation_id
+        __props__["issueTime"] = issue_time
+        __props__["license"] = license
+        __props__["licenseId"] = license_id
+        __props__["product"] = product
+        __props__["startTime"] = start_time
+        __props__["valid"] = valid
+        __props__["warnings"] = warnings
+        return pulumi.runtime.exists_resource(None, 'consul:index/license:License', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="customerId")
     def customer_id(self) -> pulumi.Output[_builtins.str]:

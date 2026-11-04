@@ -609,6 +609,34 @@ class AclToken(pulumi.CustomResource):
         __props__.__dict__["templated_policies"] = templated_policies
         return AclToken(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            accessor_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            expiration_time: pulumi.Input[Optional[_builtins.str]] = None,
+            local: pulumi.Input[Optional[_builtins.bool]] = None,
+            namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            node_identities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AclTokenNodeIdentityArgs', 'AclTokenNodeIdentityArgsDict', 'outputs.AclTokenNodeIdentity']]]]] = None,
+            partition: pulumi.Input[Optional[_builtins.str]] = None,
+            policies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            roles: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            service_identities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AclTokenServiceIdentityArgs', 'AclTokenServiceIdentityArgsDict', 'outputs.AclTokenServiceIdentity']]]]] = None,
+            templated_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AclTokenTemplatedPolicyArgs', 'AclTokenTemplatedPolicyArgsDict', 'outputs.AclTokenTemplatedPolicy']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessorId"] = accessor_id
+        __props__["description"] = description
+        __props__["expirationTime"] = expiration_time
+        __props__["local"] = local
+        __props__["namespace"] = namespace
+        __props__["nodeIdentities"] = node_identities
+        __props__["partition"] = partition
+        __props__["policies"] = policies
+        __props__["roles"] = roles
+        __props__["serviceIdentities"] = service_identities
+        __props__["templatedPolicies"] = templated_policies
+        return pulumi.runtime.exists_resource(None, 'consul:index/aclToken:AclToken', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessorId")
     def accessor_id(self) -> pulumi.Output[_builtins.str]:

@@ -241,7 +241,7 @@ namespace Pulumi.Consul
         /// <summary>
         /// The datacenter in which the node is running.
         /// * [`TaggedAddresses`](https://www.consul.io/docs/agent/http/catalog.html#TaggedAddresses) -
-        /// List of explicit LAN and WAN IP addresses for the agent.
+        ///   List of explicit LAN and WAN IP addresses for the agent.
         /// </summary>
         public readonly string? Datacenter;
         public readonly string? Filter;

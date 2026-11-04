@@ -388,6 +388,22 @@ class NetworkArea(pulumi.CustomResource):
         __props__.__dict__["use_tls"] = use_tls
         return NetworkArea(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            datacenter: pulumi.Input[Optional[_builtins.str]] = None,
+            peer_datacenter: pulumi.Input[Optional[_builtins.str]] = None,
+            retry_joins: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            token: pulumi.Input[Optional[_builtins.str]] = None,
+            use_tls: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["datacenter"] = datacenter
+        __props__["peerDatacenter"] = peer_datacenter
+        __props__["retryJoins"] = retry_joins
+        __props__["token"] = token
+        __props__["useTls"] = use_tls
+        return pulumi.runtime.exists_resource(None, 'consul:index/networkArea:NetworkArea', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def datacenter(self) -> pulumi.Output[_builtins.str]:

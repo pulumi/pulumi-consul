@@ -155,6 +155,12 @@ func (KeysState) ElementType() reflect.Type {
 	return reflect.TypeOf((*keysState)(nil)).Elem()
 }
 
+// KeysExists checks whether an existing Keys resource with the given ID exists.
+func KeysExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *KeysState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("consul:index/keys:Keys", id, state, "", opts...)
+}
+
 type keysArgs struct {
 	// The datacenter to use. This overrides the
 	// agent's default datacenter and the datacenter in the provider setup.

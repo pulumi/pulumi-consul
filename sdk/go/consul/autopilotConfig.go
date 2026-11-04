@@ -166,6 +166,12 @@ func (AutopilotConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*autopilotConfigState)(nil)).Elem()
 }
 
+// AutopilotConfigExists checks whether an existing AutopilotConfig resource with the given ID exists.
+func AutopilotConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AutopilotConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("consul:index/autopilotConfig:AutopilotConfig", id, state, "", opts...)
+}
+
 type autopilotConfigArgs struct {
 	// Whether to remove failing servers when a
 	// replacement comes online. Defaults to true.

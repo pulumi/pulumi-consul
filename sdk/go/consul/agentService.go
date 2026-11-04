@@ -124,6 +124,12 @@ func (AgentServiceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*agentServiceState)(nil)).Elem()
 }
 
+// AgentServiceExists checks whether an existing AgentService resource with the given ID exists.
+func AgentServiceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AgentServiceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("consul:index/agentService:AgentService", id, state, "", opts...)
+}
+
 type agentServiceArgs struct {
 	// The address of the service. Defaults to the
 	// address of the agent.

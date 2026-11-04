@@ -228,6 +228,12 @@ func (AclAuthMethodState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aclAuthMethodState)(nil)).Elem()
 }
 
+// AclAuthMethodExists checks whether an existing AclAuthMethod resource with the given ID exists.
+func AclAuthMethodExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AclAuthMethodState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("consul:index/aclAuthMethod:AclAuthMethod", id, state, "", opts...)
+}
+
 type aclAuthMethodArgs struct {
 	// The raw configuration for this ACL auth method.
 	//
